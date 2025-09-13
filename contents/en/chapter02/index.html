@@ -1,0 +1,25 @@
+---
+layout: page
+title: Chapter 2 - Predicate Logic
+permalink: /contents/chapter02/
+---
+
+<div class="chapter-intro">
+    <h1>Chương 2: Logic Vị từ</h1>
+    <p class="lead">Mở rộng logic mệnh đề với các lượng từ và vị từ để biểu diễn các mệnh đề phức tạp hơn</p>
+</div>
+
+{% assign sorted_posts = site.categories.chapter02 | sort: "order" %}
+{% for post in sorted_posts %}
+    {% if post.order %}
+        <div class="post-preview">
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <p>{{ post.excerpt | strip_html | truncate: 200 }}</p>
+            <div class="post-meta">
+                <span class="badge {% if post.required %}badge-required{% else %}badge-optional{% endif %}">
+                    {% if post.required %}{{ site.t[page.lang].required }}{% else %}{{ site.t[page.lang].optional }}{% endif %}
+                </span>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <style>
+    .MathJax {
+      padding: 2em 0.3em;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  </style>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <title>
+    
+      05-02-03 Linear Regression from Statistical Perspective &middot; Optimization in Data Science
+    
+  </title>
+
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/poole.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/syntax.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/lanyon.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/github-markdown.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/multilang.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/search.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/content-boxes.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  
+  <!-- Lunr.js for search functionality -->
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+
+  <link rel="apple-touch-icon-precomposed" sizes="122x144" href="http://localhost:4000/optimization-for-data-science-iuh-2025/public/logo.png">
+  <link rel="shortcut icon" href="http://localhost:4000/optimization-for-data-science-iuh-2025/public/convex-logo-144x144.png">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost:4000/optimization-for-data-science-iuh-2025/atom.xml">
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+
+
+  <body class="sidebar-overlay">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Optimization in Data Science</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/">Home</a>
+
+    
+
+    
+    
+    
+    <!-- Hiển thị các chương có sẵn cho ngôn ngữ hiện tại -->
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter00/">
+              00. Basic Mathematical Concepts
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter01/">
+              01. Introduction
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter02/">
+              02. Convex Sets
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter03/">
+              03. Convex Functions
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter04/">
+              04. Convex Optimization Basis
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter05/">
+              05. Canonical Problems
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter06/">
+              06. Gradient Descent
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter07/">
+              07. Subgradient
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter08/">
+              08. Subgradient Method
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter09/">
+              09. Proximal Gradient Descent and Acceleration
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter10/">
+              10. Duality in Linear Programs
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter11/">
+              11. Duality in General Programs
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter12/">
+              12. KKT Conditions
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter13/">
+              13. Duality uses and correspondences
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter14/">
+              14. Newton's Method
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter16/">
+              16. Duality Revisited
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter18/">
+              18. Quasi-Newton Methods
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter19/">
+              19. Proximal Netwon Method
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+    
+    <!-- Nếu không có nội dung cho ngôn ngữ hiện tại, hiển thị thông báo -->
+    
+    
+    <!-- Hiển thị thông tin về tình trạng dịch thuật -->
+    
+    
+    <span class="sidebar-nav-item">Currently v0.0.1</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2025. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap github-md-body">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/optimization-for-data-science-iuh-2025/" title="Home">Optimization in Data Science</a>
+            <small></small>
+          </h3>
+          <!-- Header Actions: Language Toggle and GitHub Link -->
+          <div class="header-actions">
+            <div class="language-toggle">
+              <a href="/optimization-for-data-science-iuh-2025/contents/vi/chapter05/05_02_03_Linear_Regression_Statistical_View/" class="language-switch" title="Switch to Vietnamese">Switch to Vietnamese</a>
+            </div>
+            <a class="github-logo__wrapper" target="_blank" href="https://github.com/nglelinh/optimization-for-data-science-iuh-2025" title="Github">
+             <svg class="github-logo" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48"><linearGradient id="rL2wppHyxHVbobwndsT6Ca" x1="4" x2="44" y1="23.508" y2="23.508" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4c4c4c"/><stop offset="1" stop-color="#343434"/></linearGradient><path fill="url(#rL2wppHyxHVbobwndsT6Ca)" d="M24,4C12.954,4,4,12.954,4,24c0,8.887,5.801,16.411,13.82,19.016h12.36	C38.199,40.411,44,32.887,44,24C44,12.954,35.046,4,24,4z"/><path d="M30.01,41.996L30,36.198c0-0.939-0.22-1.856-0.642-2.687c5.641-1.133,8.386-4.468,8.386-10.177	c0-2.255-0.665-4.246-1.976-5.92c0.1-0.317,0.174-0.645,0.22-0.981c0.188-1.369-0.023-2.264-0.193-2.984l-0.027-0.116	c-0.186-0.796-0.409-1.364-0.418-1.388l-0.111-0.282l-0.111-0.282l-0.302-0.032l-0.303-0.032c0,0-0.199-0.021-0.501-0.021	c-0.419,0-1.04,0.042-1.627,0.241l-0.196,0.066c-0.74,0.249-1.439,0.485-2.417,1.069c-0.286,0.171-0.599,0.366-0.934,0.584	C27.334,12.881,25.705,12.69,24,12.69c-1.722,0-3.365,0.192-4.889,0.571c-0.339-0.22-0.654-0.417-0.942-0.589	c-0.978-0.584-1.677-0.819-2.417-1.069l-0.196-0.066c-0.585-0.199-1.207-0.241-1.626-0.241c-0.302,0-0.501,0.021-0.501,0.021	l-0.302,0.032l-0.3,0.031l-0.112,0.281l-0.113,0.283c-0.01,0.026-0.233,0.594-0.419,1.391l-0.027,0.115	c-0.17,0.719-0.381,1.615-0.193,2.983c0.048,0.346,0.125,0.685,0.23,1.011c-1.285,1.666-1.936,3.646-1.936,5.89	c0,5.695,2.748,9.028,8.397,10.17c-0.194,0.388-0.345,0.798-0.452,1.224c-0.197,0.067-0.378,0.112-0.538,0.137	c-0.238,0.036-0.487,0.054-0.739,0.054c-0.686,0-1.225-0.134-1.435-0.259c-0.313-0.186-0.872-0.727-1.414-1.518	c-0.463-0.675-1.185-1.558-1.992-1.927c-0.698-0.319-1.437-0.502-2.029-0.502c-0.138,0-0.265,0.01-0.376,0.028	c-0.517,0.082-0.949,0.366-1.184,0.78c-0.203,0.357-0.235,0.773-0.088,1.141c0.219,0.548,0.851,0.985,1.343,1.255	c0.242,0.133,0.765,0.619,1.07,1.109c0.229,0.368,0.335,0.63,0.482,0.992c0.087,0.215,0.183,0.449,0.313,0.732	c0.47,1.022,1.937,1.924,2.103,2.023c0.806,0.483,2.161,0.638,3.157,0.683l0.123,0.003c0,0,0.001,0,0.001,0	c0.24,0,0.57-0.023,1.004-0.071v2.613c0.002,0.529-0.537,0.649-1.25,0.638l0.547,0.184C19.395,43.572,21.645,44,24,44	c2.355,0,4.605-0.428,6.703-1.176l0.703-0.262C30.695,42.538,30.016,42.422,30.01,41.996z" opacity=".05"/><path d="M30.781,42.797c-0.406,0.047-1.281-0.109-1.281-0.795v-5.804c0-1.094-0.328-2.151-0.936-3.052	c5.915-0.957,8.679-4.093,8.679-9.812c0-2.237-0.686-4.194-2.039-5.822c0.137-0.365,0.233-0.75,0.288-1.147	c0.175-1.276-0.016-2.086-0.184-2.801l-0.027-0.116c-0.178-0.761-0.388-1.297-0.397-1.319l-0.111-0.282l-0.303-0.032	c0,0-0.178-0.019-0.449-0.019c-0.381,0-0.944,0.037-1.466,0.215l-0.196,0.066c-0.714,0.241-1.389,0.468-2.321,1.024	c-0.332,0.198-0.702,0.431-1.101,0.694C27.404,13.394,25.745,13.19,24,13.19c-1.762,0-3.435,0.205-4.979,0.61	c-0.403-0.265-0.775-0.499-1.109-0.699c-0.932-0.556-1.607-0.784-2.321-1.024l-0.196-0.066c-0.521-0.177-1.085-0.215-1.466-0.215	c-0.271,0-0.449,0.019-0.449,0.019l-0.302,0.032l-0.113,0.283c-0.009,0.022-0.219,0.558-0.397,1.319l-0.027,0.116	c-0.169,0.715-0.36,1.524-0.184,2.8c0.056,0.407,0.156,0.801,0.298,1.174c-1.327,1.62-1.999,3.567-1.999,5.795	c0,5.703,2.766,8.838,8.686,9.806c-0.395,0.59-0.671,1.255-0.813,1.964c-0.33,0.13-0.629,0.216-0.891,0.256	c-0.263,0.04-0.537,0.06-0.814,0.06c-0.69,0-1.353-0.129-1.69-0.329c-0.44-0.261-1.057-0.914-1.572-1.665	c-0.35-0.51-1.047-1.417-1.788-1.755c-0.635-0.29-1.298-0.457-1.821-0.457c-0.11,0-0.21,0.008-0.298,0.022	c-0.366,0.058-0.668,0.252-0.828,0.534c-0.128,0.224-0.149,0.483-0.059,0.708c0.179,0.448,0.842,0.85,1.119,1.002	c0.335,0.184,0.919,0.744,1.254,1.284c0.251,0.404,0.37,0.697,0.521,1.067c0.085,0.209,0.178,0.437,0.304,0.712	c0.331,0.719,1.353,1.472,1.905,1.803c0.754,0.452,2.154,0.578,2.922,0.612l0.111,0.002c0.299,0,0.8-0.045,1.495-0.135v3.177	c0,0.779-0.991,0.81-1.234,0.81c-0.031,0,0.503,0.184,0.503,0.184C19.731,43.64,21.822,44,24,44c2.178,0,4.269-0.36,6.231-1.003	C30.231,42.997,30.812,42.793,30.781,42.797z" opacity=".07"/><path fill="#fff" d="M36.744,23.334c0-2.31-0.782-4.226-2.117-5.728c0.145-0.325,0.296-0.761,0.371-1.309	c0.172-1.25-0.031-2-0.203-2.734s-0.375-1.25-0.375-1.25s-0.922-0.094-1.703,0.172s-1.453,0.469-2.422,1.047	c-0.453,0.27-0.909,0.566-1.27,0.806C27.482,13.91,25.785,13.69,24,13.69c-1.801,0-3.513,0.221-5.067,0.652	c-0.362-0.241-0.821-0.539-1.277-0.811c-0.969-0.578-1.641-0.781-2.422-1.047s-1.703-0.172-1.703-0.172s-0.203,0.516-0.375,1.25	s-0.375,1.484-0.203,2.734c0.077,0.562,0.233,1.006,0.382,1.333c-1.31,1.493-2.078,3.397-2.078,5.704	c0,5.983,3.232,8.714,9.121,9.435c-0.687,0.726-1.148,1.656-1.303,2.691c-0.387,0.17-0.833,0.33-1.262,0.394	c-1.104,0.167-2.271,0-2.833-0.333s-1.229-1.083-1.729-1.813c-0.422-0.616-1.031-1.331-1.583-1.583	c-0.729-0.333-1.438-0.458-1.833-0.396c-0.396,0.063-0.583,0.354-0.5,0.563c0.083,0.208,0.479,0.521,0.896,0.75	c0.417,0.229,1.063,0.854,1.438,1.458c0.418,0.674,0.5,1.063,0.854,1.833c0.249,0.542,1.101,1.219,1.708,1.583	c0.521,0.313,1.562,0.491,2.688,0.542c0.389,0.018,1.308-0.096,2.083-0.206v3.75c0,0.639-0.585,1.125-1.191,1.013	C19.756,43.668,21.833,44,24,44c2.166,0,4.243-0.332,6.19-0.984C29.585,43.127,29,42.641,29,42.002v-5.804	c0-1.329-0.527-2.53-1.373-3.425C33.473,32.071,36.744,29.405,36.744,23.334z M11.239,32.727c-0.154-0.079-0.237-0.225-0.185-0.328	c0.052-0.103,0.22-0.122,0.374-0.043c0.154,0.079,0.237,0.225,0.185,0.328S11.393,32.806,11.239,32.727z M12.451,33.482	c-0.081,0.088-0.255,0.06-0.389-0.062s-0.177-0.293-0.096-0.381c0.081-0.088,0.255-0.06,0.389,0.062S12.532,33.394,12.451,33.482z M13.205,34.732c-0.102,0.072-0.275,0.005-0.386-0.15s-0.118-0.34-0.016-0.412s0.275-0.005,0.386,0.15	C13.299,34.475,13.307,34.66,13.205,34.732z M14.288,35.673c-0.069,0.112-0.265,0.117-0.437,0.012s-0.256-0.281-0.187-0.393	c0.069-0.112,0.265-0.117,0.437-0.012S14.357,35.561,14.288,35.673z M15.312,36.594c-0.213-0.026-0.371-0.159-0.353-0.297	c0.017-0.138,0.204-0.228,0.416-0.202c0.213,0.026,0.371,0.159,0.353,0.297C15.711,36.529,15.525,36.62,15.312,36.594z M16.963,36.833c-0.227-0.013-0.404-0.143-0.395-0.289c0.009-0.146,0.2-0.255,0.427-0.242c0.227,0.013,0.404,0.143,0.395,0.289	C17.381,36.738,17.19,36.846,16.963,36.833z M18.521,36.677c-0.242,0-0.438-0.126-0.438-0.281s0.196-0.281,0.438-0.281	c0.242,0,0.438,0.126,0.438,0.281S18.762,36.677,18.521,36.677z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">
+    05-02-03 Linear Regression from Statistical Perspective
+    
+  </h1>
+  <h2 id="linear-regression-from-statistical-perspective">Linear Regression from Statistical Perspective</h2>
+
+<p>In this lesson, we explore linear regression from a probabilistic and statistical viewpoint, demonstrating why minimizing the sum of squared errors (MSE) is not only intuitive but also theoretically justified through maximum likelihood estimation.</p>
+
+<h3 id="1-probabilistic-interpretation-of-linear-regression">1. Probabilistic Interpretation of Linear Regression</h3>
+
+<p>From a probabilistic perspective, we can prove that the estimates obtained from linear regression based on minimizing the sum of squared errors from the MSE function are completely natural and reasonable.</p>
+
+<p>Indeed, we assume that the target variable and input variables are related through the equation:</p>
+
+\[y_i = \mathbf{w}^\top \mathbf{x}_i + \epsilon_i\]
+
+<p>where $\epsilon_i$ represents the random error that any equation has. These are factors that cannot be explained by the model. Since our estimate is unbiased, this random error is assumed to satisfy the properties according to the Gauss-Markov hypothesis:</p>
+
+<h4 id="assumption-1-zero-mean-error">Assumption 1: Zero Mean Error</h4>
+<p>The errors $\epsilon_i$ are random variables with zero expectation:</p>
+
+\[\mathbb{E}(\epsilon_i) = 0\]
+
+<h4 id="assumption-2-uncorrelated-errors">Assumption 2: Uncorrelated Errors</h4>
+<p>The random errors have no correlation:</p>
+
+\[\mathbb{E}(\epsilon_i \epsilon_j) = 0, \quad \forall i \neq j\]
+
+<h4 id="assumption-3-constant-variance-homoscedasticity">Assumption 3: Constant Variance (Homoscedasticity)</h4>
+<p>The variance of the random error is invariant:</p>
+
+\[\text{Var}(\epsilon_i) = \sigma^2\]
+
+<h4 id="assumption-4-independence-of-errors-and-features">Assumption 4: Independence of Errors and Features</h4>
+<p>The random error $\epsilon_i$ and the input variables $\mathbf{x}_i$ have no correlation:</p>
+
+\[\text{Cov}(\mathbf{x}_i, \epsilon_i) = 0, \quad \forall i = 1, \dots, p\]
+
+<h3 id="2-gaussian-distribution-of-errors">2. Gaussian Distribution of Errors</h3>
+
+<p>Under these assumptions, the random errors $\epsilon_i$ form a Gaussian (normal) distribution with mean 0 and variance $\sigma^2$, denoted as $\epsilon_i \sim \mathcal{N}(0, \sigma^2)$. The probability density function at each point $\epsilon_i$ is:</p>
+
+\[p(\epsilon_i) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{\epsilon_i^2}{2\sigma^2} \right)\]
+
+<p>Substituting $\epsilon_i = y_i - \mathbf{w}^\top \mathbf{x}_i$ into the probability density function, we get:</p>
+
+\[p(y_i \mid \mathbf{x}_i; \mathbf{w}) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{(y_i - \mathbf{w}^\top \mathbf{x}_i)^2}{2\sigma^2} \right)\]
+
+<p>The notation $p(y_i \mid \mathbf{x}_i; \mathbf{w})$ indicates the probability of $y_i$ corresponding to $\mathbf{x}_i$, parameterized by $\mathbf{w}$. Here, $\mathbf{w}$ is known and is not considered as a condition of $y_i$, hence we use ; instead of ,.</p>
+
+<h3 id="3-maximum-likelihood-estimation">3. Maximum Likelihood Estimation</h3>
+
+<p>From a probabilistic perspective, $p(y_i \mid \mathbf{x}_i; \mathbf{w})$ is a function dependent on the input data $\mathbf{x}_i$ when the weight $\mathbf{w}$ is known. When viewing probability from the perspective of a function with respect to $\mathbf{w}$, we call it the likelihood function:</p>
+
+\[L(\mathbf{w}) = L(\mathbf{w}; \mathbf{X}, \mathbf{y}) = p(\mathbf{y} \mid \mathbf{X}; \mathbf{w})\]
+
+<p>According to condition 2 of the Gauss-Markov hypothesis, the errors are independent, so the joint probability of the data equals the product of the probability densities of each data point:</p>
+
+\[\begin{align}
+L(\mathbf{w}) &amp;= \prod_{i=1}^{n} p(y_i \mid \mathbf{x}_i; \mathbf{w}) \\
+&amp;= \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{\epsilon_i^2}{2\sigma^2} \right)
+\end{align}\]
+
+<p>The likelihood function reflects the probabilistic relationship between $\mathbf{y}$ and $\mathbf{X}$. To find $\mathbf{w}$ such that this relationship is most appropriate, according to Maximum Likelihood Estimation, we choose $\mathbf{w}$ such that $L(\mathbf{w})$ is maximized.</p>
+
+<h3 id="4-log-likelihood-optimization">4. Log-Likelihood Optimization</h3>
+
+<p>Taking the logarithm of both sides to simplify the optimization problem:</p>
+
+\[\begin{align}
+\hat{\mathbf{w}} &amp;= \arg \max \log L(\mathbf{w}) \\
+&amp;= \arg \max \log \left[ \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{\epsilon_i^2}{2\sigma^2} \right) \right] \\
+&amp;= \arg \max \sum_{i=1}^{n} \log \left[ \frac{1}{\sqrt{2\pi \sigma^2}} \exp \left( -\frac{\epsilon_i^2}{2\sigma^2} \right) \right] \\
+&amp;= \arg \max \sum_{i=1}^{n} \left[ -\frac{\epsilon_i^2}{2\sigma^2} - \log \sqrt{2\pi \sigma^2} \right] \\
+&amp;= \arg \max \left[ -\frac{1}{2\sigma^2} \sum_{i=1}^{n} \epsilon_i^2 - n \log \sqrt{2\pi \sigma^2} \right]
+\end{align}\]
+
+<p>Since $\sigma^2$ and $2\pi$ are constants, optimizing the above function is equivalent to minimizing:</p>
+
+\[\sum_{i=1}^{n} \epsilon_i^2 = \sum_{i=1}^{n} (y_i - \mathbf{w}^\top \mathbf{x}_i)^2\]
+
+<p>This is equivalent to minimizing the MSE function:</p>
+
+\[\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2\]
+
+<h3 id="5-theoretical-justification">5. Theoretical Justification</h3>
+
+<p>Thus, from a probabilistic perspective, we have proven that linear regression based on minimizing the sum of squared errors is equivalent to optimizing the likelihood function. When the conditions of the Gauss-Markov hypothesis are satisfied, our estimate is the best linear unbiased estimator (BLUE). Assumptions about confidence intervals for predicted values and evaluation of the significance of weights through P-values can be made based on the normal distribution.</p>
+
+<div id="mle-demo" style="border: 2px solid #ddd; padding: 20px; margin: 20px 0; border-radius: 10px; background-color: #f9f9f9;">
+    <h4 style="text-align: center; color: #333;">Maximum Likelihood Estimation Visualization</h4>
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
+        <!-- Canvas for visualization -->
+        <div style="flex: 1; min-width: 400px;">
+            <canvas id="mleCanvas" width="400" height="300" style="border: 1px solid #ccc; background: white;"></canvas>
+            <p style="font-size: 12px; color: #666; margin-top: 5px;">
+                <strong>Visualization:</strong> Blue dots are data points, red line is the fitted line, and the curves show the Gaussian distributions of errors.
+            </p>
+        </div>
+        
+        <!-- Controls -->
+        <div style="flex: 1; min-width: 250px;">
+            <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <h5 style="margin-top: 0; color: #444;">Parameters</h5>
+                
+                <div style="margin-bottom: 15px;">
+                    <label for="noise-slider" style="display: block; margin-bottom: 5px; font-weight: bold;">Noise Level (σ): <span id="noise-value">0.5</span></label>
+                    <input type="range" id="noise-slider" min="0.1" max="2" step="0.1" value="0.5" style="width: 100%;" />
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label for="slope-slider" style="display: block; margin-bottom: 5px; font-weight: bold;">True Slope: <span id="true-slope-value">1.0</span></label>
+                    <input type="range" id="slope-slider" min="-2" max="3" step="0.1" value="1.0" style="width: 100%;" />
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label for="intercept-slider" style="display: block; margin-bottom: 5px; font-weight: bold;">True Intercept: <span id="true-intercept-value">0.0</span></label>
+                    <input type="range" id="intercept-slider" min="-2" max="2" step="0.1" value="0.0" style="width: 100%;" />
+                </div>
+                
+                <button id="generate-data" style="width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 10px;">Generate New Data</button>
+                
+                <div id="mle-results" style="font-family: monospace; font-size: 12px; line-height: 1.4; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+                    <div><strong>MLE Estimates:</strong></div>
+                    <div>Slope: <span id="mle-slope">0.000</span></div>
+                    <div>Intercept: <span id="mle-intercept">0.000</span></div>
+                    <div>Log-Likelihood: <span id="log-likelihood">0.000</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 id="6-training-linear-regression-models-with-sklearn">6. Training Linear Regression Models with sklearn</h3>
+
+<p>Sklearn is a comprehensive Python library for data science, supporting training of most machine learning models, building pipelines, data normalization, and performing cross-validation.</p>
+
+<p>In this section, we will learn how to train linear regression models on sklearn. Returning to the previous problem, if we add information about distance to city center:</p>
+
+\[\mathbf{x}_2 = [20, 18, 17, 16, 15, 14, 12, 10, 8, 7, 5, 2, 1]\]
+
+<p>then the problem becomes multivariate regression. The process of building and training the model includes the steps:</p>
+
+<ol>
+  <li>Data collection</li>
+  <li>Data cleaning</li>
+  <li>Feature selection</li>
+  <li>Data normalization</li>
+  <li>Train/test split</li>
+  <li>Model training and evaluation</li>
+</ol>
+
+<p>In this problem, we focus on step 6 to understand how to train the model.</p>
+
+<div id="sklearn-demo" style="border: 2px solid #ddd; padding: 20px; margin: 20px 0; border-radius: 10px; background-color: #f9f9f9;">
+    <h4 style="text-align: center; color: #333;">Sklearn Linear Regression Example</h4>
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
+        <!-- Code example -->
+        <div style="flex: 1; min-width: 400px;">
+            <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 12px;"><code id="sklearn-code">import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+import matplotlib.pyplot as plt
+
+# Sample data: house prices
+# Features: [area, distance_to_center]
+X = np.array([
+    [50, 20], [60, 18], [70, 17], [80, 16], [90, 15],
+    [100, 14], [110, 12], [120, 10], [130, 8], [140, 7],
+    [150, 5], [160, 2], [170, 1]
+])
+
+# Target: prices (in thousands)
+y = np.array([150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480, 510])
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
+
+# Create and train model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate model
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+print(f"Coefficients: {model.coef_}")
+print(f"Intercept: {model.intercept_}")
+print(f"MSE: {mse:.2f}")
+print(f"R²: {r2:.3f}")
+</code></pre>
+        </div>
+        
+        <!-- Interactive results -->
+        <div style="flex: 1; min-width: 250px;">
+            <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <h5 style="margin-top: 0; color: #444;">Model Results</h5>
+                
+                <button id="run-sklearn" style="width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 15px;">Run Sklearn Example</button>
+                
+                <div id="sklearn-results" style="font-family: monospace; font-size: 12px; line-height: 1.4; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+                    <div><strong>Model Parameters:</strong></div>
+                    <div>Area coeff: <span id="area-coeff">--</span></div>
+                    <div>Distance coeff: <span id="distance-coeff">--</span></div>
+                    <div>Intercept: <span id="sklearn-intercept">--</span></div>
+                    <div><strong>Performance:</strong></div>
+                    <div>MSE: <span id="sklearn-mse">--</span></div>
+                    <div>R²: <span id="sklearn-r2">--</span></div>
+                </div>
+                
+                <div style="margin-top: 15px;">
+                    <h6 style="margin-bottom: 10px; color: #444;">Prediction Calculator</h6>
+                    <div style="margin-bottom: 10px;">
+                        <label style="display: block; margin-bottom: 5px;">Area (m²):</label>
+                        <input type="number" id="pred-area" value="100" min="50" max="200" style="width: 100%; padding: 5px; border: 1px solid #ddd; border-radius: 3px;" />
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label style="display: block; margin-bottom: 5px;">Distance to center (km):</label>
+                        <input type="number" id="pred-distance" value="10" min="1" max="20" style="width: 100%; padding: 5px; border: 1px solid #ddd; border-radius: 3px;" />
+                    </div>
+                    <button id="make-prediction" style="width: 100%; padding: 8px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">Predict Price</button>
+                    <div id="prediction-result" style="margin-top: 10px; padding: 10px; background: #e9ecef; border-radius: 3px; text-align: center; font-weight: bold;">
+                        Predicted Price: --
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 id="key-insights">Key Insights</h3>
+
+<ol>
+  <li>
+    <p><strong>Theoretical Foundation</strong>: Maximum likelihood estimation provides a solid theoretical foundation for why we minimize squared errors in linear regression.</p>
+  </li>
+  <li>
+    <p><strong>Gaussian Assumptions</strong>: The effectiveness of linear regression relies on the Gauss-Markov assumptions, particularly that errors are normally distributed.</p>
+  </li>
+  <li>
+    <p><strong>Best Linear Unbiased Estimator</strong>: Under the right conditions, OLS provides the BLUE - the most efficient unbiased linear estimator.</p>
+  </li>
+  <li>
+    <p><strong>Practical Implementation</strong>: Modern tools like sklearn make it easy to implement these theoretical concepts in practice.</p>
+  </li>
+  <li>
+    <p><strong>Model Evaluation</strong>: Understanding the statistical foundation helps in proper model evaluation using metrics like R², confidence intervals, and p-values.</p>
+  </li>
+</ol>
+
+<script>
+// MLE Visualization
+class MLEVisualization {
+    constructor() {
+        this.canvas = document.getElementById('mleCanvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.width = this.canvas.width;
+        this.height = this.canvas.height;
+        
+        // Parameters
+        this.trueSlope = 1.0;
+        this.trueIntercept = 0.0;
+        this.noiseLevel = 0.5;
+        this.dataPoints = [];
+        
+        this.setupControls();
+        this.generateData();
+        this.draw();
+    }
+    
+    setupControls() {
+        const noiseSlider = document.getElementById('noise-slider');
+        const slopeSlider = document.getElementById('slope-slider');
+        const interceptSlider = document.getElementById('intercept-slider');
+        const generateBtn = document.getElementById('generate-data');
+        
+        noiseSlider.addEventListener('input', (e) => {
+            this.noiseLevel = parseFloat(e.target.value);
+            document.getElementById('noise-value').textContent = this.noiseLevel.toFixed(1);
+            this.generateData();
+            this.draw();
+        });
+        
+        slopeSlider.addEventListener('input', (e) => {
+            this.trueSlope = parseFloat(e.target.value);
+            document.getElementById('true-slope-value').textContent = this.trueSlope.toFixed(1);
+            this.generateData();
+            this.draw();
+        });
+        
+        interceptSlider.addEventListener('input', (e) => {
+            this.trueIntercept = parseFloat(e.target.value);
+            document.getElementById('true-intercept-value').textContent = this.trueIntercept.toFixed(1);
+            this.generateData();
+            this.draw();
+        });
+        
+        generateBtn.addEventListener('click', () => {
+            this.generateData();
+            this.draw();
+        });
+    }
+    
+    generateData() {
+        this.dataPoints = [];
+        const n = 20;
+        
+        for (let i = 0; i < n; i++) {
+            const x = (i / (n - 1)) * 4 - 2; // x from -2 to 2
+            const trueY = this.trueSlope * x + this.trueIntercept;
+            const noise = (Math.random() - 0.5) * 2 * this.noiseLevel;
+            const y = trueY + noise;
+            
+            this.dataPoints.push({ x, y, trueY });
+        }
+    }
+    
+    calculateMLE() {
+        const n = this.dataPoints.length;
+        let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+        
+        for (const point of this.dataPoints) {
+            sumX += point.x;
+            sumY += point.y;
+            sumXY += point.x * point.y;
+            sumX2 += point.x * point.x;
+        }
+        
+        const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+        const intercept = (sumY - slope * sumX) / n;
+        
+        // Calculate log-likelihood
+        let logLikelihood = 0;
+        for (const point of this.dataPoints) {
+            const predicted = slope * point.x + intercept;
+            const error = point.y - predicted;
+            logLikelihood -= 0.5 * Math.log(2 * Math.PI * this.noiseLevel * this.noiseLevel);
+            logLikelihood -= (error * error) / (2 * this.noiseLevel * this.noiseLevel);
+        }
+        
+        return { slope, intercept, logLikelihood };
+    }
+    
+    draw() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+        
+        const mle = this.calculateMLE();
+        
+        // Update display
+        document.getElementById('mle-slope').textContent = mle.slope.toFixed(3);
+        document.getElementById('mle-intercept').textContent = mle.intercept.toFixed(3);
+        document.getElementById('log-likelihood').textContent = mle.logLikelihood.toFixed(2);
+        
+        // Transform coordinates
+        const transform = (x, y) => ({
+            x: (x + 2.5) * this.width / 5,
+            y: this.height - (y + 2.5) * this.height / 5
+        });
+        
+        // Draw axes
+        this.ctx.strokeStyle = '#ddd';
+        this.ctx.lineWidth = 1;
+        this.ctx.beginPath();
+        this.ctx.moveTo(0, this.height / 2);
+        this.ctx.lineTo(this.width, this.height / 2);
+        this.ctx.moveTo(this.width / 2, 0);
+        this.ctx.lineTo(this.width / 2, this.height);
+        this.ctx.stroke();
+        
+        // Draw fitted line
+        this.ctx.strokeStyle = '#ff4444';
+        this.ctx.lineWidth = 2;
+        this.ctx.beginPath();
+        const start = transform(-2, mle.slope * (-2) + mle.intercept);
+        const end = transform(2, mle.slope * 2 + mle.intercept);
+        this.ctx.moveTo(start.x, start.y);
+        this.ctx.lineTo(end.x, end.y);
+        this.ctx.stroke();
+        
+        // Draw data points and error distributions
+        for (const point of this.dataPoints) {
+            const pos = transform(point.x, point.y);
+            
+            // Draw Gaussian error distribution
+            const predicted = mle.slope * point.x + mle.intercept;
+            const errorCenter = transform(point.x, predicted);
+            
+            this.ctx.strokeStyle = '#cccccc';
+            this.ctx.lineWidth = 1;
+            this.ctx.beginPath();
+            for (let i = 0; i <= 20; i++) {
+                const t = i / 20;
+                const gaussY = predicted + (t - 0.5) * 4 * this.noiseLevel;
+                const gaussVal = Math.exp(-0.5 * Math.pow((gaussY - predicted) / this.noiseLevel, 2));
+                const gaussPos = transform(point.x + gaussVal * 0.3, gaussY);
+                
+                if (i === 0) {
+                    this.ctx.moveTo(gaussPos.x, gaussPos.y);
+                } else {
+                    this.ctx.lineTo(gaussPos.x, gaussPos.y);
+                }
+            }
+            this.ctx.stroke();
+            
+            // Draw data point
+            this.ctx.fillStyle = '#4444ff';
+            this.ctx.beginPath();
+            this.ctx.arc(pos.x, pos.y, 4, 0, 2 * Math.PI);
+            this.ctx.fill();
+            
+            // Draw error line
+            this.ctx.strokeStyle = '#888';
+            this.ctx.lineWidth = 1;
+            this.ctx.beginPath();
+            this.ctx.moveTo(pos.x, pos.y);
+            this.ctx.lineTo(errorCenter.x, errorCenter.y);
+            this.ctx.stroke();
+        }
+    }
+}
+
+// Sklearn Demo
+class SklearnDemo {
+    constructor() {
+        this.setupControls();
+        this.model = null;
+        this.data = this.generateSampleData();
+    }
+    
+    generateSampleData() {
+        return {
+            X: [
+                [50, 20], [60, 18], [70, 17], [80, 16], [90, 15],
+                [100, 14], [110, 12], [120, 10], [130, 8], [140, 7],
+                [150, 5], [160, 2], [170, 1]
+            ],
+            y: [150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480, 510]
+        };
+    }
+    
+    setupControls() {
+        const runBtn = document.getElementById('run-sklearn');
+        const predBtn = document.getElementById('make-prediction');
+        
+        runBtn.addEventListener('click', () => this.runSklearnExample());
+        predBtn.addEventListener('click', () => this.makePrediction());
+    }
+    
+    runSklearnExample() {
+        // Simulate sklearn linear regression
+        const { X, y } = this.data;
+        
+        // Calculate means
+        const meanX1 = X.reduce((sum, row) => sum + row[0], 0) / X.length;
+        const meanX2 = X.reduce((sum, row) => sum + row[1], 0) / X.length;
+        const meanY = y.reduce((sum, val) => sum + val, 0) / y.length;
+        
+        // Calculate coefficients using normal equation
+        let sumX1X1 = 0, sumX2X2 = 0, sumX1X2 = 0;
+        let sumX1Y = 0, sumX2Y = 0;
+        
+        for (let i = 0; i < X.length; i++) {
+            const x1 = X[i][0] - meanX1;
+            const x2 = X[i][1] - meanX2;
+            const yVal = y[i] - meanY;
+            
+            sumX1X1 += x1 * x1;
+            sumX2X2 += x2 * x2;
+            sumX1X2 += x1 * x2;
+            sumX1Y += x1 * yVal;
+            sumX2Y += x2 * yVal;
+        }
+        
+        // Solve 2x2 system
+        const det = sumX1X1 * sumX2X2 - sumX1X2 * sumX1X2;
+        const coeff1 = (sumX2X2 * sumX1Y - sumX1X2 * sumX2Y) / det;
+        const coeff2 = (sumX1X1 * sumX2Y - sumX1X2 * sumX1Y) / det;
+        const intercept = meanY - coeff1 * meanX1 - coeff2 * meanX2;
+        
+        // Calculate MSE and R²
+        let mse = 0, tss = 0;
+        for (let i = 0; i < X.length; i++) {
+            const predicted = coeff1 * X[i][0] + coeff2 * X[i][1] + intercept;
+            const error = y[i] - predicted;
+            mse += error * error;
+            tss += (y[i] - meanY) * (y[i] - meanY);
+        }
+        mse /= X.length;
+        const r2 = 1 - (mse * X.length) / tss;
+        
+        this.model = { coeff1, coeff2, intercept };
+        
+        // Update display
+        document.getElementById('area-coeff').textContent = coeff1.toFixed(3);
+        document.getElementById('distance-coeff').textContent = coeff2.toFixed(3);
+        document.getElementById('sklearn-intercept').textContent = intercept.toFixed(3);
+        document.getElementById('sklearn-mse').textContent = mse.toFixed(2);
+        document.getElementById('sklearn-r2').textContent = r2.toFixed(3);
+    }
+    
+    makePrediction() {
+        if (!this.model) {
+            alert('Please run the sklearn example first!');
+            return;
+        }
+        
+        const area = parseFloat(document.getElementById('pred-area').value);
+        const distance = parseFloat(document.getElementById('pred-distance').value);
+        
+        const prediction = this.model.coeff1 * area + this.model.coeff2 * distance + this.model.intercept;
+        
+        document.getElementById('prediction-result').innerHTML = 
+            `Predicted Price: <strong>$${prediction.toFixed(0)}k</strong>`;
+    }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    new MLEVisualization();
+    new SklearnDemo();
+});
+</script>
+
+<style>
+#mle-demo canvas {
+    border-radius: 5px;
+}
+
+#sklearn-demo pre {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.demo-container {
+    margin: 20px 0;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: #ddd;
+    outline: none;
+    border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #007bff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #007bff;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+}
+</style>
+
+
+</div>
+
+<!-- Back to Chapter Home Link -->
+
+  
+  
+  <div style="margin-top: 20px; padding: 10px; background-color: #f8f9fa; border-left: 4px solid #007bff;">
+    <a href="/optimization-for-data-science-iuh-2025/contents/en/chapter05/" style="text-decoration: none; color: #007bff; font-weight: bold;">
+      ← Back to Chapter Home
+    </a>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="related">
+  <ul class="related-posts">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <h2>Previous Post</h2>
+          <h3>
+            <a href="/optimization-for-data-science-iuh-2025/contents/en/chapter05/05_02_02_Geometric_Programming/">
+              05-02-02 Geometric Programming
+            </a>
+          </h3>
+        </li>
+      
+    
+      
+        <li>
+          <h2>Previous Post</h2>
+          <h3>
+            <a href="/optimization-for-data-science-iuh-2025/contents/en/chapter05/05_01_01_LP_Simple_Algorithm/">
+              05-01-01 Linear Programming - Simplex Algorithm
+            </a>
+          </h3>
+        </li>
+      
+    
+    
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  </ul>
+</div>
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="convex-optimization-for-all/convex-optimization-for-all.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script src='/optimization-for-data-science-iuh-2025/public/js/script.js'></script>
+    <script src='/optimization-for-data-science-iuh-2025/public/js/multilang.js'></script>
+    <script src='/optimization-for-data-science-iuh-2025/public/js/search.js'></script>
+  </body>
+</html>

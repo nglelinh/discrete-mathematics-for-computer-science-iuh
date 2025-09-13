@@ -1,0 +1,25 @@
+---
+layout: page
+title: Chapter 3 - Proof Methods
+permalink: /contents/chapter03/
+---
+
+<div class="chapter-intro">
+    <h1>Chương 3: Phương pháp Chứng minh</h1>
+    <p class="lead">Các phương pháp chứng minh cơ bản trong toán học và khoa học máy tính</p>
+</div>
+
+{% assign sorted_posts = site.categories.chapter03 | sort: "order" %}
+{% for post in sorted_posts %}
+    {% if post.order %}
+        <div class="post-preview">
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <p>{{ post.excerpt | strip_html | truncate: 200 }}</p>
+            <div class="post-meta">
+                <span class="badge {% if post.required %}badge-required{% else %}badge-optional{% endif %}">
+                    {% if post.required %}{{ site.t[page.lang].required }}{% else %}{{ site.t[page.lang].optional }}{% endif %}
+                </span>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

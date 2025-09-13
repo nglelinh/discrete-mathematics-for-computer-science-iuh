@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <style>
+    .MathJax {
+      padding: 2em 0.3em;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  </style>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <title>
+    
+      05-01 Linear Programming (LP) &middot; Optimization in Data Science
+    
+  </title>
+
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/poole.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/syntax.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/lanyon.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/github-markdown.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/multilang.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/search.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/content-boxes.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  
+  <!-- Lunr.js for search functionality -->
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+
+  <link rel="apple-touch-icon-precomposed" sizes="122x144" href="http://localhost:4000/optimization-for-data-science-iuh-2025/public/logo.png">
+  <link rel="shortcut icon" href="http://localhost:4000/optimization-for-data-science-iuh-2025/public/convex-logo-144x144.png">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost:4000/optimization-for-data-science-iuh-2025/atom.xml">
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+
+
+  <body class="sidebar-overlay">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Optimization in Data Science</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/">Home</a>
+
+    
+
+    
+    
+    
+    <!-- Hiển thị các chương có sẵn cho ngôn ngữ hiện tại -->
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter00/">
+              00. Basic Mathematical Concepts
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter01/">
+              01. Introduction
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter02/">
+              02. Convex Sets
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter03/">
+              03. Convex Functions
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter04/">
+              04. Convex Optimization Basis
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter05/">
+              05. Canonical Problems
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter06/">
+              06. Gradient Descent
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter07/">
+              07. Subgradient
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter08/">
+              08. Subgradient Method
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter09/">
+              09. Proximal Gradient Descent and Acceleration
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter10/">
+              10. Duality in Linear Programs
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter11/">
+              11. Duality in General Programs
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter12/">
+              12. KKT Conditions
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter13/">
+              13. Duality uses and correspondences
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter14/">
+              14. Newton's Method
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter16/">
+              16. Duality Revisited
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter18/">
+              18. Quasi-Newton Methods
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter19/">
+              19. Proximal Netwon Method
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+    
+    <!-- Nếu không có nội dung cho ngôn ngữ hiện tại, hiển thị thông báo -->
+    
+    
+    <!-- Hiển thị thông tin về tình trạng dịch thuật -->
+    
+    
+    <span class="sidebar-nav-item">Currently v0.0.1</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2025. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap github-md-body">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/optimization-for-data-science-iuh-2025/" title="Home">Optimization in Data Science</a>
+            <small></small>
+          </h3>
+          <!-- Header Actions: Language Toggle and GitHub Link -->
+          <div class="header-actions">
+            <div class="language-toggle">
+              <a href="/optimization-for-data-science-iuh-2025/contents/vi/chapter05/05_01_Linear_Programming_(LP)/" class="language-switch" title="Switch to Vietnamese">Switch to Vietnamese</a>
+            </div>
+            <a class="github-logo__wrapper" target="_blank" href="https://github.com/nglelinh/optimization-for-data-science-iuh-2025" title="Github">
+             <svg class="github-logo" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48"><linearGradient id="rL2wppHyxHVbobwndsT6Ca" x1="4" x2="44" y1="23.508" y2="23.508" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4c4c4c"/><stop offset="1" stop-color="#343434"/></linearGradient><path fill="url(#rL2wppHyxHVbobwndsT6Ca)" d="M24,4C12.954,4,4,12.954,4,24c0,8.887,5.801,16.411,13.82,19.016h12.36	C38.199,40.411,44,32.887,44,24C44,12.954,35.046,4,24,4z"/><path d="M30.01,41.996L30,36.198c0-0.939-0.22-1.856-0.642-2.687c5.641-1.133,8.386-4.468,8.386-10.177	c0-2.255-0.665-4.246-1.976-5.92c0.1-0.317,0.174-0.645,0.22-0.981c0.188-1.369-0.023-2.264-0.193-2.984l-0.027-0.116	c-0.186-0.796-0.409-1.364-0.418-1.388l-0.111-0.282l-0.111-0.282l-0.302-0.032l-0.303-0.032c0,0-0.199-0.021-0.501-0.021	c-0.419,0-1.04,0.042-1.627,0.241l-0.196,0.066c-0.74,0.249-1.439,0.485-2.417,1.069c-0.286,0.171-0.599,0.366-0.934,0.584	C27.334,12.881,25.705,12.69,24,12.69c-1.722,0-3.365,0.192-4.889,0.571c-0.339-0.22-0.654-0.417-0.942-0.589	c-0.978-0.584-1.677-0.819-2.417-1.069l-0.196-0.066c-0.585-0.199-1.207-0.241-1.626-0.241c-0.302,0-0.501,0.021-0.501,0.021	l-0.302,0.032l-0.3,0.031l-0.112,0.281l-0.113,0.283c-0.01,0.026-0.233,0.594-0.419,1.391l-0.027,0.115	c-0.17,0.719-0.381,1.615-0.193,2.983c0.048,0.346,0.125,0.685,0.23,1.011c-1.285,1.666-1.936,3.646-1.936,5.89	c0,5.695,2.748,9.028,8.397,10.17c-0.194,0.388-0.345,0.798-0.452,1.224c-0.197,0.067-0.378,0.112-0.538,0.137	c-0.238,0.036-0.487,0.054-0.739,0.054c-0.686,0-1.225-0.134-1.435-0.259c-0.313-0.186-0.872-0.727-1.414-1.518	c-0.463-0.675-1.185-1.558-1.992-1.927c-0.698-0.319-1.437-0.502-2.029-0.502c-0.138,0-0.265,0.01-0.376,0.028	c-0.517,0.082-0.949,0.366-1.184,0.78c-0.203,0.357-0.235,0.773-0.088,1.141c0.219,0.548,0.851,0.985,1.343,1.255	c0.242,0.133,0.765,0.619,1.07,1.109c0.229,0.368,0.335,0.63,0.482,0.992c0.087,0.215,0.183,0.449,0.313,0.732	c0.47,1.022,1.937,1.924,2.103,2.023c0.806,0.483,2.161,0.638,3.157,0.683l0.123,0.003c0,0,0.001,0,0.001,0	c0.24,0,0.57-0.023,1.004-0.071v2.613c0.002,0.529-0.537,0.649-1.25,0.638l0.547,0.184C19.395,43.572,21.645,44,24,44	c2.355,0,4.605-0.428,6.703-1.176l0.703-0.262C30.695,42.538,30.016,42.422,30.01,41.996z" opacity=".05"/><path d="M30.781,42.797c-0.406,0.047-1.281-0.109-1.281-0.795v-5.804c0-1.094-0.328-2.151-0.936-3.052	c5.915-0.957,8.679-4.093,8.679-9.812c0-2.237-0.686-4.194-2.039-5.822c0.137-0.365,0.233-0.75,0.288-1.147	c0.175-1.276-0.016-2.086-0.184-2.801l-0.027-0.116c-0.178-0.761-0.388-1.297-0.397-1.319l-0.111-0.282l-0.303-0.032	c0,0-0.178-0.019-0.449-0.019c-0.381,0-0.944,0.037-1.466,0.215l-0.196,0.066c-0.714,0.241-1.389,0.468-2.321,1.024	c-0.332,0.198-0.702,0.431-1.101,0.694C27.404,13.394,25.745,13.19,24,13.19c-1.762,0-3.435,0.205-4.979,0.61	c-0.403-0.265-0.775-0.499-1.109-0.699c-0.932-0.556-1.607-0.784-2.321-1.024l-0.196-0.066c-0.521-0.177-1.085-0.215-1.466-0.215	c-0.271,0-0.449,0.019-0.449,0.019l-0.302,0.032l-0.113,0.283c-0.009,0.022-0.219,0.558-0.397,1.319l-0.027,0.116	c-0.169,0.715-0.36,1.524-0.184,2.8c0.056,0.407,0.156,0.801,0.298,1.174c-1.327,1.62-1.999,3.567-1.999,5.795	c0,5.703,2.766,8.838,8.686,9.806c-0.395,0.59-0.671,1.255-0.813,1.964c-0.33,0.13-0.629,0.216-0.891,0.256	c-0.263,0.04-0.537,0.06-0.814,0.06c-0.69,0-1.353-0.129-1.69-0.329c-0.44-0.261-1.057-0.914-1.572-1.665	c-0.35-0.51-1.047-1.417-1.788-1.755c-0.635-0.29-1.298-0.457-1.821-0.457c-0.11,0-0.21,0.008-0.298,0.022	c-0.366,0.058-0.668,0.252-0.828,0.534c-0.128,0.224-0.149,0.483-0.059,0.708c0.179,0.448,0.842,0.85,1.119,1.002	c0.335,0.184,0.919,0.744,1.254,1.284c0.251,0.404,0.37,0.697,0.521,1.067c0.085,0.209,0.178,0.437,0.304,0.712	c0.331,0.719,1.353,1.472,1.905,1.803c0.754,0.452,2.154,0.578,2.922,0.612l0.111,0.002c0.299,0,0.8-0.045,1.495-0.135v3.177	c0,0.779-0.991,0.81-1.234,0.81c-0.031,0,0.503,0.184,0.503,0.184C19.731,43.64,21.822,44,24,44c2.178,0,4.269-0.36,6.231-1.003	C30.231,42.997,30.812,42.793,30.781,42.797z" opacity=".07"/><path fill="#fff" d="M36.744,23.334c0-2.31-0.782-4.226-2.117-5.728c0.145-0.325,0.296-0.761,0.371-1.309	c0.172-1.25-0.031-2-0.203-2.734s-0.375-1.25-0.375-1.25s-0.922-0.094-1.703,0.172s-1.453,0.469-2.422,1.047	c-0.453,0.27-0.909,0.566-1.27,0.806C27.482,13.91,25.785,13.69,24,13.69c-1.801,0-3.513,0.221-5.067,0.652	c-0.362-0.241-0.821-0.539-1.277-0.811c-0.969-0.578-1.641-0.781-2.422-1.047s-1.703-0.172-1.703-0.172s-0.203,0.516-0.375,1.25	s-0.375,1.484-0.203,2.734c0.077,0.562,0.233,1.006,0.382,1.333c-1.31,1.493-2.078,3.397-2.078,5.704	c0,5.983,3.232,8.714,9.121,9.435c-0.687,0.726-1.148,1.656-1.303,2.691c-0.387,0.17-0.833,0.33-1.262,0.394	c-1.104,0.167-2.271,0-2.833-0.333s-1.229-1.083-1.729-1.813c-0.422-0.616-1.031-1.331-1.583-1.583	c-0.729-0.333-1.438-0.458-1.833-0.396c-0.396,0.063-0.583,0.354-0.5,0.563c0.083,0.208,0.479,0.521,0.896,0.75	c0.417,0.229,1.063,0.854,1.438,1.458c0.418,0.674,0.5,1.063,0.854,1.833c0.249,0.542,1.101,1.219,1.708,1.583	c0.521,0.313,1.562,0.491,2.688,0.542c0.389,0.018,1.308-0.096,2.083-0.206v3.75c0,0.639-0.585,1.125-1.191,1.013	C19.756,43.668,21.833,44,24,44c2.166,0,4.243-0.332,6.19-0.984C29.585,43.127,29,42.641,29,42.002v-5.804	c0-1.329-0.527-2.53-1.373-3.425C33.473,32.071,36.744,29.405,36.744,23.334z M11.239,32.727c-0.154-0.079-0.237-0.225-0.185-0.328	c0.052-0.103,0.22-0.122,0.374-0.043c0.154,0.079,0.237,0.225,0.185,0.328S11.393,32.806,11.239,32.727z M12.451,33.482	c-0.081,0.088-0.255,0.06-0.389-0.062s-0.177-0.293-0.096-0.381c0.081-0.088,0.255-0.06,0.389,0.062S12.532,33.394,12.451,33.482z M13.205,34.732c-0.102,0.072-0.275,0.005-0.386-0.15s-0.118-0.34-0.016-0.412s0.275-0.005,0.386,0.15	C13.299,34.475,13.307,34.66,13.205,34.732z M14.288,35.673c-0.069,0.112-0.265,0.117-0.437,0.012s-0.256-0.281-0.187-0.393	c0.069-0.112,0.265-0.117,0.437-0.012S14.357,35.561,14.288,35.673z M15.312,36.594c-0.213-0.026-0.371-0.159-0.353-0.297	c0.017-0.138,0.204-0.228,0.416-0.202c0.213,0.026,0.371,0.159,0.353,0.297C15.711,36.529,15.525,36.62,15.312,36.594z M16.963,36.833c-0.227-0.013-0.404-0.143-0.395-0.289c0.009-0.146,0.2-0.255,0.427-0.242c0.227,0.013,0.404,0.143,0.395,0.289	C17.381,36.738,17.19,36.846,16.963,36.833z M18.521,36.677c-0.242,0-0.438-0.126-0.438-0.281s0.196-0.281,0.438-0.281	c0.242,0,0.438,0.126,0.438,0.281S18.762,36.677,18.521,36.677z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">
+    05-01 Linear Programming (LP)
+    
+      
+        <span class="lesson-badge required large">Required</span>
+      
+    
+  </h1>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<p>Linear Programming (LP) is one of the most fundamental and widely-used optimization techniques in mathematics, economics, and engineering. Imagine you’re a factory manager trying to maximize profit while dealing with limited resources - this is exactly the type of problem LP was designed to solve!</p>
+
+<h3 id="what-makes-a-problem-linear">What makes a problem “Linear”?</h3>
+
+<p>A problem is linear when:</p>
+<ul>
+  <li>The <strong>objective function</strong> (what you want to optimize) is a straight line relationship</li>
+  <li>All <strong>constraints</strong> (limitations) are also straight line relationships</li>
+  <li>No variables are multiplied together (no \(x_1 \cdot x_2\) terms)</li>
+  <li>No variables appear in exponents or under square roots</li>
+</ul>
+
+<h3 id="simple-example-the-farmers-problem">Simple Example: The Farmer’s Problem</h3>
+
+<p>Let’s start with an intuitive example. A farmer has 100 acres of land and wants to plant corn and wheat to maximize profit:</p>
+
+<ul>
+  <li><strong>Corn</strong>: $300 profit per acre, requires 2 hours of labor per acre</li>
+  <li><strong>Wheat</strong>: $200 profit per acre, requires 1 hour of labor per acre</li>
+  <li><strong>Available labor</strong>: 150 hours total</li>
+</ul>
+
+<p><strong>Question</strong>: How many acres of each crop should the farmer plant?</p>
+
+<div id="farmer-problem-viz" style="margin: 20px 0;"></div>
+
+<div class="content-box exercise-box">
+<strong>Interactive Exercise:</strong> Use the sliders below to explore different combinations of corn and wheat. Watch how the profit changes and whether constraints are satisfied!
+
+<div style="margin: 10px 0;">
+  <label for="corn-acres">Corn acres: <span id="corn-value">50</span></label><br />
+  <input type="range" id="corn-acres" min="0" max="100" value="50" style="width: 300px;" />
+</div>
+
+<div style="margin: 10px 0;">
+  <label for="wheat-acres">Wheat acres: <span id="wheat-value">50</span></label><br />
+  <input type="range" id="wheat-acres" min="0" max="100" value="50" style="width: 300px;" />
+</div>
+
+<div id="farmer-results" style="margin-top: 15px; font-family: monospace;">
+  <div>Total land used: <span id="land-used">100</span> / 100 acres</div>
+  <div>Total labor used: <span id="labor-used">150</span> / 150 hours</div>
+  <div>Total profit: $<span id="total-profit">25000</span></div>
+  <div id="feasibility-status" style="font-weight: bold; color: green;">✓ Feasible solution</div>
+</div>
+</div>
+
+<p>Now let’s formalize this intuition. If both the objective function and constraint functions are affine, the optimization problem is called a <em>linear program</em> (LP). The general linear program is formulated as:</p>
+
+<h3 id="general-lp">General LP</h3>
+
+<blockquote>
+\[\begin{align}
+   &amp;\text{minimize}_{x} &amp;&amp;{c^T x + d} \\\\
+   &amp;\text{subject to } &amp;&amp;{Gx \preceq h}\\\\
+   &amp; &amp;&amp;{Ax = b},\\\\
+   &amp;\text{where } &amp;&amp;G \in \mathbb{R}^{m \times n} \text{ and } A \in \mathbb{R}^{p \times n}.
+\end{align}\]
+</blockquote>
+
+<ul>
+  <li>The constant \(+d\) in the objective function does not affect the optimization process or result and can be omitted.</li>
+  <li>If you want to maximize \(c^T x + d\) under the same constraints, you can equivalently minimize \(-c^T x - d\).</li>
+  <li>The above problem seeks the minimizer \(x^*\) of the affine function \(c^T x + d\) over a polyhedral feasible set.</li>
+</ul>
+
+<h3 id="geometric-interpretation">Geometric Interpretation</h3>
+
+<p>The power of linear programming becomes clear when we visualize it geometrically. Each constraint defines a half-space, and the feasible region is the intersection of all these half-spaces - forming a <strong>polyhedron</strong>.</p>
+
+<div class="content-box insight-box">
+<strong>Key Insight:</strong> The optimal solution of a linear program always occurs at a <strong>vertex</strong> (corner point) of the feasible region! This is why the simplex method works by moving from vertex to vertex.
+</div>
+
+<div id="geometric-lp-viz" style="margin: 20px 0; text-align: center;"></div>
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/optimization-for-data-science-iuh-2025/img/chapter_img/chapter05/05_01_geometric_interpretation_of_LP.png" alt="[Fig1] Geometric interpretation of LP [1]" width="70%" />
+  <figcaption style="text-align: center;">[Fig1] Traditional geometric interpretation of LP [1]</figcaption>
+</p>
+</figure>
+
+<h2 id="lp-in-standard-form">LP in Standard form</h2>
+
+<p>Why do we need a standard form? Many LP algorithms (like the simplex method) are designed to work with a specific format. Converting to standard form allows us to use these powerful algorithms consistently.</p>
+
+<h3 id="standard-form-lp">Standard form LP</h3>
+<blockquote>
+\[\begin{align}
+   &amp;\text{minimize}_{x} &amp;&amp;{c^T x + d} \\\\
+   &amp;\text{subject to } &amp;&amp;{A x = b} \\\\
+   &amp; &amp;&amp;{x \succeq 0}.
+\end{align}\]
+</blockquote>
+
+<p><strong>Key characteristics of standard form:</strong></p>
+<ul>
+  <li><strong>Objective</strong>: Always minimization (maximization problems are converted by negating)</li>
+  <li><strong>Constraints</strong>: Only equality constraints (inequalities converted using slack variables)</li>
+  <li><strong>Variables</strong>: All variables must be non-negative</li>
+</ul>
+
+<div class="content-box insight-box">
+<strong>Why Standard Form?</strong> 
+<ul>
+<li><strong>Algorithmic efficiency:</strong> Simplex method works directly on standard form</li>
+<li><strong>Theoretical analysis:</strong> Easier to prove optimality conditions</li>
+<li><strong>Software implementation:</strong> Most LP solvers expect standard form input</li>
+</ul>
+</div>
+
+<p>All general LPs can be converted to standard form using the following steps:</p>
+
+<h3 id="converting-lps-to-standard-form">Converting LPs to standard form</h3>
+<p><strong>Step 1.</strong> Use slack variables \(s\) to convert inequality constraints into equality constraints:</p>
+<blockquote>
+\[\begin{align}
+    &amp;\text{minimize}_{x, s} &amp;&amp;{c^T x + d} \\\\
+    &amp;\text{subject to } &amp;&amp;{Gx + s = h} \\\\
+    &amp; &amp;&amp;{Ax = b},\\\\
+    &amp; &amp;&amp;{s \succeq 0}.
+\end{align}\]
+</blockquote>
+
+<p><strong>Step 2.</strong> Replace each variable \(x\) with two nonnegative variables:
+\(x = x^{+}  - x^{-}\), where \(x^{+} \text{, } x^{-} \succeq 0\).</p>
+
+<blockquote>
+\[\begin{align}
+    &amp;\text{minimize}_{x^{+}, x^{-}, s} &amp;&amp;{c^Tx^{+} - c^Tx^{-} + d} \\\\
+    &amp;\text{subject to } &amp;&amp;{Gx^{+} - Gx^{-} + s = h} \\\\
+    &amp; &amp;&amp;{Ax^{+} - Ax^{-} = b},\\\\
+    &amp; &amp;&amp;{s \succeq 0}\\\\
+    &amp; &amp;&amp;{x^{+} \succeq 0}, {x^{-} \succeq 0}.
+\end{align}\]
+</blockquote>
+
+<p><strong>Step 3.</strong> Define \(\tilde{x}\), \(\tilde{c}\), \(\tilde{b}\), and \(\tilde{A}\) as follows:</p>
+
+<blockquote>
+  <p>\(\tilde{x} =
+\begin{bmatrix}
+x^{+} \\\\
+x^{-} \\\\
+s
+\end{bmatrix}, 
+\tilde{c} =
+\begin{bmatrix}
+c \\\\
+-c \\\\
+0
+\end{bmatrix},
+\tilde{b} =
+\begin{bmatrix}
+h \\\\
+b
+\end{bmatrix}\), 
+\(\tilde{A} =
+\begin{bmatrix}
+G &amp; -G &amp; I\\\\
+A &amp; -A &amp; O
+\end{bmatrix}\)</p>
+</blockquote>
+
+<p><strong>Step 4.</strong> Substitute \(\tilde{x}\), \(\tilde{c}\), \(\tilde{b}\), and \(\tilde{A}\) into the problem from Step 2:</p>
+
+<blockquote>
+\[\begin{align}
+    &amp;\text{minimize}_{\tilde{x}} &amp;&amp;{\tilde{c}^T \tilde{x} + d} \\\\
+    &amp;\text{subject to} &amp;&amp;{\tilde{A} \tilde{x} = \tilde{b}} \\\\
+    &amp; &amp;&amp;{\tilde{x} \succeq 0}.
+\end{align}\]
+</blockquote>
+
+<h3 id="example---diet-program">Example - Diet program</h3>
+
+<p>The diet problem is a classic application of linear programming, first studied during World War II to find the most economical way to feed soldiers while meeting nutritional requirements.</p>
+
+<p><strong>Problem Setup:</strong> Find the cheapest combination of foods that meets all nutritional requirements.</p>
+
+<blockquote>
+\[\begin{align}
+    &amp;\text{minimize}_{x} &amp;&amp;{c^T x} \\\\
+    &amp;\text{subject to } &amp;&amp;{Dx \succeq d} \\\\
+    &amp; &amp;&amp;{x \succeq 0}.
+\end{align}\]
+</blockquote>
+
+<p><strong>Variables and Parameters:</strong></p>
+<ul>
+  <li>\(c_j\): Cost per unit of food item j ($/unit)</li>
+  <li>\(d_i\): Minimum recommended intake for nutrient i (units/day)</li>
+  <li>\(D_{ij}\): Amount of nutrient i in food item j (units of nutrient per unit of food)</li>
+  <li>\(x_j\): Amount of food item j in the diet (units/day)</li>
+</ul>
+
+<div class="content-box exercise-box">
+<strong>Interactive Diet Optimizer:</strong> Let's solve a simplified diet problem with 3 foods and 2 nutrients!
+
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 15px 0;">
+  <div style="text-align: center;">
+    <strong>Bread</strong><br />
+    Cost: $2/loaf<br />
+    Protein: 4g/loaf<br />
+    Calories: 200/loaf
+  </div>
+  <div style="text-align: center;">
+    <strong>Milk</strong><br />
+    Cost: $3/liter<br />
+    Protein: 8g/liter<br />
+    Calories: 150/liter
+  </div>
+  <div style="text-align: center;">
+    <strong>Meat</strong><br />
+    Cost: $8/kg<br />
+    Protein: 20g/kg<br />
+    Calories: 300/kg
+  </div>
+</div>
+
+<div style="margin: 15px 0;">
+  <strong>Requirements:</strong>
+  <div>Minimum protein: <input type="number" id="min-protein" value="20" min="10" max="50" style="width: 60px;" /> grams/day</div>
+  <div>Minimum calories: <input type="number" id="min-calories" value="800" min="500" max="1500" style="width: 80px;" /> calories/day</div>
+</div>
+
+<button id="solve-diet" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Solve Diet Problem</button>
+
+<div id="diet-results" style="margin-top: 15px; font-family: monospace; background-color: #f9f9f9; padding: 10px; border-radius: 4px;">
+  <div>Click "Solve Diet Problem" to see the optimal solution!</div>
+</div>
+</div>
+
+<div class="content-box insight-box">
+<strong>Real-world Applications:</strong>
+<ul>
+<li><strong>Military logistics:</strong> Feeding troops cost-effectively</li>
+<li><strong>Hospital meal planning:</strong> Meeting patient dietary requirements</li>
+<li><strong>Animal feed optimization:</strong> Livestock nutrition at minimum cost</li>
+<li><strong>School lunch programs:</strong> Nutritious meals within budget constraints</li>
+</ul>
+</div>
+
+<h2 id="the-simplex-algorithm">The Simplex Algorithm</h2>
+
+<p>The <strong>Simplex Algorithm</strong>, developed by George Dantzig in 1947, is one of the most important algorithms in optimization history. It revolutionized linear programming by providing an efficient method to solve LP problems systematically.</p>
+
+<h3 id="why-simplex-works-the-fundamental-theorem">Why Simplex Works: The Fundamental Theorem</h3>
+
+<div class="content-box insight-box">
+<strong>Fundamental Theorem of Linear Programming:</strong> If a linear program has an optimal solution, then there exists an optimal solution that occurs at a vertex (extreme point) of the feasible region.
+</div>
+
+<p>This theorem is the key insight behind the Simplex algorithm. Instead of searching the entire feasible region (which could be infinite), we only need to check the finite number of vertices!</p>
+
+<h3 id="how-simplex-works-the-strategy">How Simplex Works: The Strategy</h3>
+
+<p>The Simplex algorithm follows this elegant strategy:</p>
+
+<ol>
+  <li><strong>Start</strong> at any vertex of the feasible region</li>
+  <li><strong>Check</strong> if the current vertex is optimal</li>
+  <li><strong>Move</strong> to an adjacent vertex that improves the objective function</li>
+  <li><strong>Repeat</strong> until no improvement is possible (optimal solution found)</li>
+</ol>
+
+<h3 id="simplex-algorithm-steps">Simplex Algorithm Steps</h3>
+
+<p>Let’s walk through the algorithm step by step using our standard form LP:</p>
+
+<blockquote>
+\[\begin{align}
+    &amp;\text{minimize}_{x} &amp;&amp;{c^T x} \\\\
+    &amp;\text{subject to } &amp;&amp;{A x = b} \\\\
+    &amp; &amp;&amp;{x \succeq 0}.
+\end{align}\]
+</blockquote>
+
+<p><strong>Step 1: Initial Setup</strong></p>
+<ul>
+  <li>Convert the LP to standard form (if not already)</li>
+  <li>Find an initial basic feasible solution (vertex)</li>
+  <li>Set up the simplex tableau</li>
+</ul>
+
+<p><strong>Step 2: Optimality Test</strong></p>
+<ul>
+  <li>Check if the current solution is optimal</li>
+  <li>If all reduced costs are non-negative, we’re done!</li>
+</ul>
+
+<p><strong>Step 3: Choose Entering Variable</strong></p>
+<ul>
+  <li>Select the variable with the most negative reduced cost</li>
+  <li>This determines the direction to move</li>
+</ul>
+
+<p><strong>Step 4: Choose Leaving Variable</strong></p>
+<ul>
+  <li>Use the minimum ratio test to avoid infeasibility</li>
+  <li>This determines how far to move</li>
+</ul>
+
+<p><strong>Step 5: Pivot Operation</strong></p>
+<ul>
+  <li>Update the tableau using Gaussian elimination</li>
+  <li>Move to the new vertex</li>
+</ul>
+
+<p><strong>Step 6: Repeat</strong></p>
+<ul>
+  <li>Go back to Step 2 until optimal</li>
+</ul>
+
+<h3 id="interactive-simplex-example">Interactive Simplex Example</h3>
+
+<p>Let’s solve a simple 2D problem step by step to see how Simplex works in practice:</p>
+
+<div class="content-box exercise-box">
+<strong>Interactive Simplex Solver:</strong> Watch the algorithm move from vertex to vertex!
+
+**Problem:**
+$$\begin{align}
+\text{maximize } &amp; 3x_1 + 2x_2 \\
+\text{subject to } &amp; x_1 + x_2 \leq 4 \\
+&amp; 2x_1 + x_2 \leq 6 \\
+&amp; x_1, x_2 \geq 0
+\end{align}$$
+
+<div id="simplex-interactive" style="margin: 20px 0;"></div>
+
+<div style="margin: 15px 0;">
+  <button id="simplex-step" style="background-color: #2196F3; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Next Step</button>
+  <button id="simplex-reset" style="background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Reset</button>
+</div>
+
+<div id="simplex-status" style="margin-top: 15px; font-family: monospace; background-color: #f9f9f9; padding: 15px; border-radius: 4px;">
+  <div><strong>Step 0:</strong> Starting at origin (0, 0)</div>
+  <div>Current objective value: 0</div>
+  <div>Click "Next Step" to begin the Simplex algorithm!</div>
+</div>
+
+<div id="simplex-tableau" style="margin-top: 15px; font-family: monospace; background-color: #f0f8ff; padding: 15px; border-radius: 4px;">
+  <strong>Current Simplex Tableau:</strong>
+  <div id="tableau-content" style="margin-top: 10px;">
+    Click "Next Step" to see the tableau!
+  </div>
+</div>
+</div>
+
+<h3 id="why-simplex-is-efficient">Why Simplex is Efficient</h3>
+
+<p>Despite having potentially exponential worst-case complexity, Simplex is remarkably efficient in practice:</p>
+
+<div class="content-box insight-box">
+<strong>Simplex Efficiency:</strong>
+<ul>
+<li><strong>Average case:</strong> Typically visits only 2-3 times the number of constraints</li>
+<li><strong>Practical problems:</strong> Often solves in polynomial time</li>
+<li><strong>Warm starts:</strong> Can reuse previous solutions when problem changes slightly</li>
+<li><strong>Degeneracy handling:</strong> Modern implementations handle degenerate cases well</li>
+</ul>
+</div>
+
+<h3 id="simplex-variants-and-modern-developments">Simplex Variants and Modern Developments</h3>
+
+<p><strong>Revised Simplex Method:</strong></p>
+<ul>
+  <li>More numerically stable</li>
+  <li>Better for sparse matrices</li>
+  <li>Used in most commercial solvers</li>
+</ul>
+
+<p><strong>Dual Simplex Method:</strong></p>
+<ul>
+  <li>Starts with dual feasible solution</li>
+  <li>Useful for sensitivity analysis</li>
+  <li>Better for certain problem types</li>
+</ul>
+
+<p><strong>Interior Point Methods:</strong></p>
+<ul>
+  <li>Polynomial-time complexity guarantee</li>
+  <li>Better for very large problems</li>
+  <li>Complement rather than replace Simplex</li>
+</ul>
+
+<h3 id="impact-and-applications">Impact and Applications</h3>
+
+<p>The Simplex algorithm has transformed numerous industries:</p>
+
+<div class="content-box insight-box">
+<strong>Simplex Success Stories:</strong>
+<ul>
+<li><strong>Airlines:</strong> Crew scheduling, route optimization, fleet assignment</li>
+<li><strong>Manufacturing:</strong> Production planning, supply chain optimization</li>
+<li><strong>Finance:</strong> Portfolio optimization, risk management</li>
+<li><strong>Telecommunications:</strong> Network flow optimization, bandwidth allocation</li>
+<li><strong>Energy:</strong> Power grid optimization, resource allocation</li>
+</ul>
+</div>
+
+<script>
+/**
+ * Interactive Linear Programming Visualizations
+ * Implements farmer problem, geometric interpretation, diet optimizer, and norm comparisons
+ */
+
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ==================== FARMER PROBLEM INTERACTIVE ====================
+    
+    function initializeFarmerProblem() {
+        const cornSlider = document.getElementById('corn-acres');
+        const wheatSlider = document.getElementById('wheat-acres');
+        
+        if (!cornSlider || !wheatSlider) return;
+        
+        function updateFarmerResults() {
+            const corn = parseFloat(cornSlider.value);
+            const wheat = parseFloat(wheatSlider.value);
+            
+            // Update display values
+            document.getElementById('corn-value').textContent = corn;
+            document.getElementById('wheat-value').textContent = wheat;
+            
+            // Calculate metrics
+            const landUsed = corn + wheat;
+            const laborUsed = corn * 2 + wheat * 1; // 2 hours per corn acre, 1 hour per wheat acre
+            const profit = corn * 300 + wheat * 200; // $300 per corn acre, $200 per wheat acre
+            
+            // Update results
+            document.getElementById('land-used').textContent = landUsed;
+            document.getElementById('labor-used').textContent = laborUsed;
+            document.getElementById('total-profit').textContent = profit;
+            
+            // Check feasibility
+            const feasibilityStatus = document.getElementById('feasibility-status');
+            if (landUsed <= 100 && laborUsed <= 150) {
+                feasibilityStatus.textContent = '✓ Feasible solution';
+                feasibilityStatus.style.color = 'green';
+            } else {
+                feasibilityStatus.textContent = '✗ Infeasible solution';
+                feasibilityStatus.style.color = 'red';
+            }
+        }
+        
+        cornSlider.addEventListener('input', updateFarmerResults);
+        wheatSlider.addEventListener('input', updateFarmerResults);
+        
+        // Initialize
+        updateFarmerResults();
+    }
+    
+    // ==================== DIET PROBLEM SOLVER ====================
+    
+    function initializeDietSolver() {
+        const solveButton = document.getElementById('solve-diet');
+        if (!solveButton) return;
+        
+        solveButton.addEventListener('click', function() {
+            const minProtein = parseFloat(document.getElementById('min-protein').value);
+            const minCalories = parseFloat(document.getElementById('min-calories').value);
+            
+            // Simple heuristic solver (in practice, would use simplex method)
+            // Food data: [cost, protein, calories]
+            const bread = [2, 4, 200];
+            const milk = [3, 8, 150];
+            const meat = [8, 20, 300];
+            
+            // Try different combinations and find minimum cost feasible solution
+            let bestCost = Infinity;
+            let bestSolution = null;
+            
+            for (let b = 0; b <= 20; b += 0.5) {
+                for (let m = 0; m <= 10; m += 0.5) {
+                    for (let mt = 0; mt <= 5; mt += 0.5) {
+                        const protein = b * bread[1] + m * milk[1] + mt * meat[1];
+                        const calories = b * bread[2] + m * milk[2] + mt * meat[2];
+                        const cost = b * bread[0] + m * milk[0] + mt * meat[0];
+                        
+                        if (protein >= minProtein && calories >= minCalories && cost < bestCost) {
+                            bestCost = cost;
+                            bestSolution = [b, m, mt];
+                        }
+                    }
+                }
+            }
+            
+            const resultsDiv = document.getElementById('diet-results');
+            if (bestSolution) {
+                const [bread_amt, milk_amt, meat_amt] = bestSolution;
+                const totalProtein = bread_amt * bread[1] + milk_amt * milk[1] + meat_amt * meat[1];
+                const totalCalories = bread_amt * bread[2] + milk_amt * milk[2] + meat_amt * meat[2];
+                
+                resultsDiv.innerHTML = `
+                    <div><strong>Optimal Diet Solution:</strong></div>
+                    <div>Bread: ${bread_amt.toFixed(1)} loaves</div>
+                    <div>Milk: ${milk_amt.toFixed(1)} liters</div>
+                    <div>Meat: ${meat_amt.toFixed(1)} kg</div>
+                    <div>---</div>
+                    <div>Total cost: $${bestCost.toFixed(2)}</div>
+                    <div>Total protein: ${totalProtein.toFixed(1)}g (required: ${minProtein}g)</div>
+                    <div>Total calories: ${totalCalories.toFixed(0)} (required: ${minCalories})</div>
+                `;
+            } else {
+                resultsDiv.innerHTML = '<div style="color: red;">No feasible solution found!</div>';
+            }
+        });
+    }
+    
+    // ==================== SIMPLEX ALGORITHM VISUALIZATION ====================
+    
+    function initializeSimplexVisualization() {
+        const stepButton = document.getElementById('simplex-step');
+        const resetButton = document.getElementById('simplex-reset');
+        const statusDiv = document.getElementById('simplex-status');
+        const tableauDiv = document.getElementById('tableau-content');
+        const interactiveDiv = document.getElementById('simplex-interactive');
+        
+        if (!stepButton || !resetButton || !statusDiv || !tableauDiv || !interactiveDiv) return;
+        
+        // Simplex algorithm state
+        let currentStep = 0;
+        let currentVertex = [0, 0]; // Starting at origin
+        let isOptimal = false;
+        
+        // Problem: maximize 3x1 + 2x2 subject to x1 + x2 <= 4, 2x1 + x2 <= 6, x1,x2 >= 0
+        // In standard form: minimize -3x1 - 2x2 subject to x1 + x2 + s1 = 4, 2x1 + x2 + s2 = 6
+        
+        const vertices = [
+            [0, 0, 4, 6], // (x1, x2, s1, s2) - origin
+            [0, 4, 0, 2], // (0, 4, 0, 2) - intersection with x1 + x2 = 4
+            [2, 2, 0, 0], // (2, 2, 0, 0) - intersection of both constraints
+            [3, 0, 1, 0]  // (3, 0, 1, 0) - intersection with 2x1 + x2 = 6
+        ];
+        
+        const objectiveValues = [0, 8, 10, 9]; // 3x1 + 2x2 at each vertex
+        const simplexPath = [0, 3, 2]; // Path: origin -> (3,0) -> (2,2) optimal
+        
+        function createVisualization() {
+            const width = 400;
+            const height = 300;
+            const margin = {top: 20, right: 20, bottom: 40, left: 40};
+            
+            // Clear previous content
+            interactiveDiv.innerHTML = '';
+            
+            const svg = d3.select('#simplex-interactive')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            // Scales
+            const xScale = d3.scaleLinear()
+                .domain([0, 4])
+                .range([margin.left, width - margin.right]);
+            
+            const yScale = d3.scaleLinear()
+                .domain([0, 6])
+                .range([height - margin.bottom, margin.top]);
+            
+            // Draw feasible region
+            const feasibleRegion = [
+                [0, 0], [0, 4], [2, 2], [3, 0], [0, 0]
+            ];
+            
+            svg.append('path')
+                .datum(feasibleRegion)
+                .attr('fill', 'lightblue')
+                .attr('fill-opacity', 0.3)
+                .attr('stroke', 'blue')
+                .attr('stroke-width', 2)
+                .attr('d', d3.line()
+                    .x(d => xScale(d[0]))
+                    .y(d => yScale(d[1]))
+                );
+            
+            // Draw constraint lines
+            // x1 + x2 = 4
+            svg.append('line')
+                .attr('x1', xScale(0))
+                .attr('y1', yScale(4))
+                .attr('x2', xScale(4))
+                .attr('y2', yScale(0))
+                .attr('stroke', 'red')
+                .attr('stroke-width', 2)
+                .attr('stroke-dasharray', '5,5');
+            
+            // 2x1 + x2 = 6
+            svg.append('line')
+                .attr('x1', xScale(0))
+                .attr('y1', yScale(6))
+                .attr('x2', xScale(3))
+                .attr('y2', yScale(0))
+                .attr('stroke', 'green')
+                .attr('stroke-width', 2)
+                .attr('stroke-dasharray', '5,5');
+            
+            // Draw vertices
+            const vertexPoints = [[0,0], [0,4], [2,2], [3,0]];
+            svg.selectAll('.vertex')
+                .data(vertexPoints)
+                .enter()
+                .append('circle')
+                .attr('class', 'vertex')
+                .attr('cx', d => xScale(d[0]))
+                .attr('cy', d => yScale(d[1]))
+                .attr('r', 6)
+                .attr('fill', 'orange')
+                .attr('stroke', 'black')
+                .attr('stroke-width', 2);
+            
+            // Current position indicator
+            svg.append('circle')
+                .attr('id', 'current-position')
+                .attr('cx', xScale(currentVertex[0]))
+                .attr('cy', yScale(currentVertex[1]))
+                .attr('r', 8)
+                .attr('fill', 'red')
+                .attr('stroke', 'darkred')
+                .attr('stroke-width', 3);
+            
+            // Axes
+            svg.append('g')
+                .attr('transform', `translate(0,${height - margin.bottom})`)
+                .call(d3.axisBottom(xScale));
+            
+            svg.append('g')
+                .attr('transform', `translate(${margin.left},0)`)
+                .call(d3.axisLeft(yScale));
+            
+            // Axis labels
+            svg.append('text')
+                .attr('x', width / 2)
+                .attr('y', height - 5)
+                .attr('text-anchor', 'middle')
+                .text('x₁');
+            
+            svg.append('text')
+                .attr('transform', 'rotate(-90)')
+                .attr('x', -height / 2)
+                .attr('y', 15)
+                .attr('text-anchor', 'middle')
+                .text('x₂');
+            
+            // Legend
+            const legend = svg.append('g')
+                .attr('transform', `translate(${width - 150}, 30)`);
+            
+            legend.append('text')
+                .attr('x', 0)
+                .attr('y', 0)
+                .text('Constraints:')
+                .attr('font-weight', 'bold');
+            
+            legend.append('line')
+                .attr('x1', 0)
+                .attr('y1', 15)
+                .attr('x2', 20)
+                .attr('y2', 15)
+                .attr('stroke', 'red')
+                .attr('stroke-width', 2)
+                .attr('stroke-dasharray', '5,5');
+            
+            legend.append('text')
+                .attr('x', 25)
+                .attr('y', 19)
+                .text('x₁ + x₂ ≤ 4')
+                .attr('font-size', '12px');
+            
+            legend.append('line')
+                .attr('x1', 0)
+                .attr('y1', 30)
+                .attr('x2', 20)
+                .attr('y2', 30)
+                .attr('stroke', 'green')
+                .attr('stroke-width', 2)
+                .attr('stroke-dasharray', '5,5');
+            
+            legend.append('text')
+                .attr('x', 25)
+                .attr('y', 34)
+                .text('2x₁ + x₂ ≤ 6')
+                .attr('font-size', '12px');
+        }
+        
+        function updateTableau(step) {
+            let tableauHTML = '';
+            
+            switch(step) {
+                case 0:
+                    tableauHTML = `
+                        <table style="border-collapse: collapse; margin: 10px 0;">
+                            <tr style="background-color: #e0e0e0;">
+                                <th style="border: 1px solid #ccc; padding: 8px;">Basic</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">x₁</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">x₂</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">s₁</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">s₂</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">RHS</th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ccc; padding: 8px;">s₁</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">4</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ccc; padding: 8px;">s₂</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">2</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">6</td>
+                            </tr>
+                            <tr style="background-color: #fff2cc;">
+                                <td style="border: 1px solid #ccc; padding: 8px;">z</td>
+                                <td style="border: 1px solid #ccc; padding: 8px; color: red;"><strong>-3</strong></td>
+                                <td style="border: 1px solid #ccc; padding: 8px; color: red;">-2</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                            </tr>
+                        </table>
+                        <div style="margin-top: 10px;">
+                            <strong>Analysis:</strong> Most negative coefficient is -3 (x₁ column). x₁ enters the basis.
+                        </div>
+                    `;
+                    break;
+                case 1:
+                    tableauHTML = `
+                        <table style="border-collapse: collapse; margin: 10px 0;">
+                            <tr style="background-color: #e0e0e0;">
+                                <th style="border: 1px solid #ccc; padding: 8px;">Basic</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">x₁</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">x₂</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">s₁</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">s₂</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">RHS</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">Ratio</th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ccc; padding: 8px;">s₁</td>
+                                <td style="border: 1px solid #ccc; padding: 8px; background-color: #ffcccc;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">4</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">4/1 = 4</td>
+                            </tr>
+                            <tr style="background-color: #ccffcc;">
+                                <td style="border: 1px solid #ccc; padding: 8px;">s₂</td>
+                                <td style="border: 1px solid #ccc; padding: 8px; background-color: #ffcccc;"><strong>2</strong></td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">6</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;"><strong>6/2 = 3</strong></td>
+                            </tr>
+                            <tr style="background-color: #fff2cc;">
+                                <td style="border: 1px solid #ccc; padding: 8px;">z</td>
+                                <td style="border: 1px solid #ccc; padding: 8px; background-color: #ffcccc;">-3</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">-2</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">-</td>
+                            </tr>
+                        </table>
+                        <div style="margin-top: 10px;">
+                            <strong>Minimum ratio test:</strong> min{4/1, 6/2} = min{4, 3} = 3. s₂ leaves the basis.
+                        </div>
+                    `;
+                    break;
+                case 2:
+                    tableauHTML = `
+                        <table style="border-collapse: collapse; margin: 10px 0;">
+                            <tr style="background-color: #e0e0e0;">
+                                <th style="border: 1px solid #ccc; padding: 8px;">Basic</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">x₁</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">x₂</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">s₁</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">s₂</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">RHS</th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ccc; padding: 8px;">s₁</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px; color: red;"><strong>0.5</strong></td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">-0.5</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ccc; padding: 8px;">x₁</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0.5</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0.5</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">3</td>
+                            </tr>
+                            <tr style="background-color: #fff2cc;">
+                                <td style="border: 1px solid #ccc; padding: 8px;">z</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px; color: red;"><strong>-0.5</strong></td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1.5</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">9</td>
+                            </tr>
+                        </table>
+                        <div style="margin-top: 10px;">
+                            <strong>Current solution:</strong> x₁ = 3, x₂ = 0, objective = 9<br>
+                            <strong>Analysis:</strong> x₂ has negative coefficient (-0.5), so x₂ enters the basis.
+                        </div>
+                    `;
+                    break;
+                case 3:
+                    tableauHTML = `
+                        <table style="border-collapse: collapse; margin: 10px 0;">
+                            <tr style="background-color: #e0e0e0;">
+                                <th style="border: 1px solid #ccc; padding: 8px;">Basic</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">x₁</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">x₂</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">s₁</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">s₂</th>
+                                <th style="border: 1px solid #ccc; padding: 8px;">RHS</th>
+                            </tr>
+                            <tr style="background-color: #ccffcc;">
+                                <td style="border: 1px solid #ccc; padding: 8px;">x₂</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">2</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">-1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">2</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ccc; padding: 8px;">x₁</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">-1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">2</td>
+                            </tr>
+                            <tr style="background-color: #ccffcc;">
+                                <td style="border: 1px solid #ccc; padding: 8px;">z</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">0</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">1</td>
+                                <td style="border: 1px solid #ccc; padding: 8px;">10</td>
+                            </tr>
+                        </table>
+                        <div style="margin-top: 10px;">
+                            <strong>OPTIMAL SOLUTION FOUND!</strong><br>
+                            x₁ = 2, x₂ = 2, Maximum objective value = 10<br>
+                            All coefficients in the objective row are non-negative.
+                        </div>
+                    `;
+                    break;
+            }
+            
+            tableauDiv.innerHTML = tableauHTML;
+        }
+        
+        function updateStatus(step) {
+            let statusHTML = '';
+            
+            switch(step) {
+                case 0:
+                    statusHTML = `
+                        <div><strong>Step 0:</strong> Initial basic feasible solution</div>
+                        <div>Current vertex: (0, 0)</div>
+                        <div>Current objective value: 0</div>
+                        <div>Basic variables: s₁ = 4, s₂ = 6</div>
+                    `;
+                    currentVertex = [0, 0];
+                    break;
+                case 1:
+                    statusHTML = `
+                        <div><strong>Step 1:</strong> Choose entering variable</div>
+                        <div>Most negative coefficient: -3 (x₁ column)</div>
+                        <div>x₁ enters the basis</div>
+                        <div>Performing minimum ratio test...</div>
+                    `;
+                    break;
+                case 2:
+                    statusHTML = `
+                        <div><strong>Step 2:</strong> First iteration complete</div>
+                        <div>Current vertex: (3, 0)</div>
+                        <div>Current objective value: 9</div>
+                        <div>Basic variables: x₁ = 3, s₁ = 1</div>
+                    `;
+                    currentVertex = [3, 0];
+                    break;
+                case 3:
+                    statusHTML = `
+                        <div><strong>Step 3:</strong> OPTIMAL SOLUTION FOUND!</div>
+                        <div>Current vertex: (2, 2)</div>
+                        <div>Maximum objective value: 10</div>
+                        <div>Basic variables: x₁ = 2, x₂ = 2</div>
+                    `;
+                    currentVertex = [2, 2];
+                    isOptimal = true;
+                    break;
+            }
+            
+            statusDiv.innerHTML = statusHTML;
+            
+            // Update visualization
+            const currentPos = d3.select('#current-position');
+            if (currentPos.node()) {
+                const xScale = d3.scaleLinear().domain([0, 4]).range([40, 360]);
+                const yScale = d3.scaleLinear().domain([0, 6]).range([260, 40]);
+                
+                currentPos
+                    .transition()
+                    .duration(500)
+                    .attr('cx', xScale(currentVertex[0]))
+                    .attr('cy', yScale(currentVertex[1]));
+            }
+        }
+        
+        function nextStep() {
+            if (currentStep < 3) {
+                currentStep++;
+                updateStatus(currentStep);
+                updateTableau(currentStep);
+                
+                if (currentStep === 3) {
+                    stepButton.textContent = 'Algorithm Complete!';
+                    stepButton.disabled = true;
+                    stepButton.style.backgroundColor = '#4CAF50';
+                }
+            }
+        }
+        
+        function reset() {
+            currentStep = 0;
+            currentVertex = [0, 0];
+            isOptimal = false;
+            
+            stepButton.textContent = 'Next Step';
+            stepButton.disabled = false;
+            stepButton.style.backgroundColor = '#2196F3';
+            
+            updateStatus(0);
+            updateTableau(0);
+            createVisualization();
+        }
+        
+        // Event listeners
+        stepButton.addEventListener('click', nextStep);
+        resetButton.addEventListener('click', reset);
+        
+        // Initialize
+        createVisualization();
+        updateStatus(0);
+        updateTableau(0);
+    }
+    
+    // Initialize all interactive elements
+    initializeFarmerProblem();
+    initializeDietSolver();
+    initializeSimplexVisualization();
+    
+    // Trigger MathJax re-rendering if needed
+    if (window.MathJax) {
+        MathJax.typesetPromise();
+    }
+});
+</script>
+
+
+</div>
+
+<!-- Back to Chapter Home Link -->
+
+  
+  
+  <div style="margin-top: 20px; padding: 10px; background-color: #f8f9fa; border-left: 4px solid #007bff;">
+    <a href="/optimization-for-data-science-iuh-2025/contents/en/chapter05/" style="text-decoration: none; color: #007bff; font-weight: bold;">
+      ← Back to Chapter Home
+    </a>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="related">
+  <ul class="related-posts">
+    
+      
+        <li>
+          <h2>Previous Post</h2>
+          <h3>
+            <a href="/optimization-for-data-science-iuh-2025/contents/en/chapter05/05_00_Canonical_Problems/">
+              05 Canonical Problems
+            </a>
+          </h3>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <h2>Next Post</h2>
+        <h3>
+          <a href="/optimization-for-data-science-iuh-2025/contents/en/chapter05/05_02_Quadratic_Programming_(QP)-copy/">
+            05-02 Quadratic Programming (QP)
+          </a>
+        </h3>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  </ul>
+</div>
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="convex-optimization-for-all/convex-optimization-for-all.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script src='/optimization-for-data-science-iuh-2025/public/js/script.js'></script>
+    <script src='/optimization-for-data-science-iuh-2025/public/js/multilang.js'></script>
+    <script src='/optimization-for-data-science-iuh-2025/public/js/search.js'></script>
+  </body>
+</html>

@@ -1,0 +1,138 @@
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>{% if page.lang %}{{ site.t[page.lang].description }}{% else %}{{ site.description }}{% endif %}</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item{% if page.title == 'Home' %} active{% endif %}" href="{{ '/' | absolute_url }}">{% t home %}</a>
+
+    {% comment %}
+      The code below dynamically generates a sidebar nav of pages with
+      `layout: page` in the front-matter. See readme for usage.
+    {% endcomment %}
+
+    <!-- Discrete Mathematics Chapters -->
+    <div class="sidebar-section">
+      <h4 style="color: #268bd2; margin: 15px 0 10px 0; font-size: 0.9em;">{% t chapters %}</h4>
+      
+      <!-- Part I: Logic and Proofs -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần I: Logic và Chứng minh</h5>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter01' %} active{% endif %}" href="{{ '/contents/chapter01/' | absolute_url }}">
+          1. Logic mệnh đề
+        </a>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter02' %} active{% endif %}" href="{{ '/contents/chapter02/' | absolute_url }}">
+          2. Logic vị từ
+        </a>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter03' %} active{% endif %}" href="{{ '/contents/chapter03/' | absolute_url }}">
+          3. Phương pháp chứng minh
+        </a>
+      </div>
+      
+      <!-- Part II: Set Theory and Relations -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần II: Tập hợp và Quan hệ</h5>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter04' %} active{% endif %}" href="{{ '/contents/chapter04/' | absolute_url }}">
+          4. Lý thuyết tập hợp
+        </a>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter05' %} active{% endif %}" href="{{ '/contents/chapter05/' | absolute_url }}">
+          5. Quan hệ
+        </a>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter06' %} active{% endif %}" href="{{ '/contents/chapter06/' | absolute_url }}">
+          6. Hàm số
+        </a>
+      </div>
+      
+          <!-- Part III: Counting and Discrete Probability -->
+          <div class="sidebar-subsection">
+            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần III: Đếm và Xác suất</h5>
+            <a class="sidebar-nav-item{% if page.url contains 'chapter07' %} active{% endif %}" href="{{ '/contents/chapter07/' | absolute_url }}">
+              7. Nguyên lý đếm cơ bản
+            </a>
+            <a class="sidebar-nav-item{% if page.url contains 'chapter08' %} active{% endif %}" href="{{ '/contents/chapter08/' | absolute_url }}">
+              8. Nguyên lý Dirichlet
+            </a>
+            <a class="sidebar-nav-item{% if page.url contains 'chapter09' %} active{% endif %}" href="{{ '/contents/chapter09/' | absolute_url }}">
+              9. Xác suất rời rạc
+            </a>
+          </div>
+      
+      <!-- Part IV: Recurrence Relations -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần IV: Quan hệ Truy hồi</h5>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter10' %} active{% endif %}" href="{{ '/contents/chapter10/' | absolute_url }}">
+          10. Quan hệ truy hồi
+        </a>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter11' %} active{% endif %}" href="{{ '/contents/chapter11/' | absolute_url }}">
+          11. Hàm sinh
+        </a>
+      </div>
+      
+      <!-- Part V: Graph Theory -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần V: Lý thuyết Đồ thị</h5>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter12' %} active{% endif %}" href="{{ '/contents/chapter12/' | absolute_url }}">
+          12. Đồ thị cơ bản
+        </a>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter13' %} active{% endif %}" href="{{ '/contents/chapter13/' | absolute_url }}">
+          13. Cây và rừng
+        </a>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter14' %} active{% endif %}" href="{{ '/contents/chapter14/' | absolute_url }}">
+          14. Đồ thị Euler và Hamilton
+        </a>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter15' %} active{% endif %}" href="{{ '/contents/chapter15/' | absolute_url }}">
+          15. Tô màu đồ thị
+        </a>
+      </div>
+      
+          <!-- Part VI: Algebraic Structures -->
+          <div class="sidebar-subsection">
+            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần VI: Cấu trúc Đại số</h5>
+            <a class="sidebar-nav-item{% if page.url contains 'chapter16' %} active{% endif %}" href="{{ '/contents/chapter16/' | absolute_url }}">
+              16. Nhóm và vành
+            </a>
+            <a class="sidebar-nav-item{% if page.url contains 'chapter17' %} active{% endif %}" href="{{ '/contents/chapter17/' | absolute_url }}">
+              17. Trường và mã hóa
+            </a>
+          </div>
+          
+          <!-- Part VII: Applications in Computer Science -->
+          <div class="sidebar-subsection">
+            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần VII: Ứng dụng</h5>
+            <a class="sidebar-nav-item{% if page.url contains 'chapter18' %} active{% endif %}" href="{{ '/contents/chapter18/' | absolute_url }}">
+              18. Thuật toán và độ phức tạp
+            </a>
+            <a class="sidebar-nav-item{% if page.url contains 'chapter19' %} active{% endif %}" href="{{ '/contents/chapter19/' | absolute_url }}">
+              19. Cấu trúc dữ liệu rời rạc
+            </a>
+            <a class="sidebar-nav-item{% if page.url contains 'chapter20' %} active{% endif %}" href="{{ '/contents/chapter20/' | absolute_url }}">
+              20. Ứng dụng trong mật mã học
+            </a>
+          </div>
+          
+          <!-- Special Pages -->
+          <div class="sidebar-subsection" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Tính năng đặc biệt</h5>
+            <a class="sidebar-nav-item" href="{{ '/demo/' | absolute_url }}">
+              🚀 Demo tính năng
+            </a>
+            <a class="sidebar-nav-item" href="{{ '/progress/' | absolute_url }}">
+              📊 Tiến độ khóa học
+            </a>
+          </div>
+    </div>
+    
+    <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; {{ site.time | date: '%Y' }}. All rights reserved.
+    </p>
+  </div>
+</div>

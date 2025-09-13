@@ -1,0 +1,306 @@
+---
+layout: page
+title: Demo Tính năng
+permalink: /demo/
+---
+
+<div class="chapter-intro">
+    <h1>🚀 Demo Tính năng Tương tác</h1>
+    <p class="lead">Trải nghiệm các công cụ và tính năng mới của khóa học</p>
+</div>
+
+## 🔍 Tính năng Tìm kiếm
+
+Hệ thống tìm kiếm thông minh với các tính năng:
+- **Tìm kiếm nhanh**: Nhấn `Ctrl + K` để mở tìm kiếm
+- **Gợi ý từ khóa**: Tự động gợi ý các từ khóa phổ biến
+- **Lọc theo chương**: Tìm kiếm trong chương cụ thể
+- **Lịch sử tìm kiếm**: Lưu trữ các tìm kiếm gần đây
+
+<div class="math-example">
+<strong>Thử ngay:</strong> Nhấn <kbd>Ctrl + K</kbd> hoặc click vào "🔍 Tìm kiếm" trong sidebar để mở hộp tìm kiếm.
+</div>
+
+---
+
+## 📝 Hệ thống Bài tập Tương tác
+
+### Bài tập 1: Logic Cơ bản
+<div data-exercise="logic-basics"></div>
+
+### Bài tập 2: Phép toán Tập hợp  
+<div data-exercise="set-operations"></div>
+
+---
+
+## 🎨 Công cụ Trực quan hóa
+
+### 1. Trực quan hóa Phép toán Tập hợp
+
+<div id="set-demo" class="interactive-tool">
+    <h4>🎯 Demo Phép toán Tập hợp</h4>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+        <div>
+            <label><strong>Tập A:</strong></label>
+            <input type="text" id="demo-set-a" value="1,2,3,4" style="width: 100%; padding: 8px;">
+        </div>
+        <div>
+            <label><strong>Tập B:</strong></label>
+            <input type="text" id="demo-set-b" value="3,4,5,6" style="width: 100%; padding: 8px;">
+        </div>
+        <div>
+            <label><strong>Phép toán:</strong></label>
+            <select id="demo-operation" style="width: 100%; padding: 8px;">
+                <option value="union">A ∪ B (Hợp)</option>
+                <option value="intersection">A ∩ B (Giao)</option>
+                <option value="difference">A \ B (Hiệu)</option>
+                <option value="symmetric">A △ B (Hiệu đối xứng)</option>
+            </select>
+        </div>
+    </div>
+    
+    <button onclick="demoSetOperation()" style="width: 100%; margin-bottom: 20px;">
+        Thực hiện phép toán
+    </button>
+    
+    <div id="demo-result" style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
+        <p style="color: #666; text-align: center; margin: 0;">Click "Thực hiện phép toán" để xem kết quả</p>
+    </div>
+</div>
+
+<script>
+function demoSetOperation() {
+    const setA = new Set(document.getElementById('demo-set-a').value.split(',').map(x => x.trim()));
+    const setB = new Set(document.getElementById('demo-set-b').value.split(',').map(x => x.trim()));
+    const operation = document.getElementById('demo-operation').value;
+    const resultDiv = document.getElementById('demo-result');
+    
+    let result = new Set();
+    let operationName = '';
+    let operationSymbol = '';
+    
+    switch(operation) {
+        case 'union':
+            result = new Set([...setA, ...setB]);
+            operationName = 'Hợp';
+            operationSymbol = '∪';
+            break;
+        case 'intersection':
+            result = new Set([...setA].filter(x => setB.has(x)));
+            operationName = 'Giao';
+            operationSymbol = '∩';
+            break;
+        case 'difference':
+            result = new Set([...setA].filter(x => !setB.has(x)));
+            operationName = 'Hiệu';
+            operationSymbol = '\\';
+            break;
+        case 'symmetric':
+            const diff1 = new Set([...setA].filter(x => !setB.has(x)));
+            const diff2 = new Set([...setB].filter(x => !setA.has(x)));
+            result = new Set([...diff1, ...diff2]);
+            operationName = 'Hiệu đối xứng';
+            operationSymbol = '△';
+            break;
+    }
+    
+    resultDiv.innerHTML = `
+        <div style="text-align: center;">
+            <h5 style="color: #495057; margin-bottom: 15px;">Kết quả ${operationName}</h5>
+            <div style="font-size: 1.1em; margin-bottom: 15px;">
+                <strong>A = {${[...setA].join(', ')}}</strong><br>
+                <strong>B = {${[...setB].join(', ')}}</strong>
+            </div>
+            <div style="font-size: 1.3em; color: #007bff; font-weight: bold; padding: 15px; background: #f8fbff; border-radius: 6px; border: 2px solid #007bff;">
+                A ${operationSymbol} B = {${[...result].join(', ') || '∅'}}
+            </div>
+            <div style="margin-top: 15px; font-size: 0.9em; color: #666;">
+                Số phần tử: |A ${operationSymbol} B| = ${result.size}
+            </div>
+        </div>
+    `;
+}
+</script>
+
+### 2. Kiểm tra Tính chất Quan hệ
+
+<div id="relation-demo" class="interactive-tool">
+    <h4>🔍 Demo Kiểm tra Tính chất Quan hệ</h4>
+    
+    <div style="margin-bottom: 20px;">
+        <label><strong>Tập hợp A:</strong></label>
+        <input type="text" id="demo-set-rel" value="1,2,3" style="width: 100%; padding: 8px; margin-top: 5px;">
+    </div>
+    
+    <div style="margin-bottom: 20px;">
+        <label><strong>Quan hệ R:</strong></label>
+        <input type="text" id="demo-relation" value="(1,1),(1,2),(2,2),(2,3),(3,3)" style="width: 100%; padding: 8px; margin-top: 5px;">
+    </div>
+    
+    <button onclick="demoRelationCheck()" style="width: 100%; margin-bottom: 20px;">
+        Kiểm tra tính chất
+    </button>
+    
+    <div id="demo-relation-result" style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
+        <p style="color: #666; text-align: center; margin: 0;">Nhập quan hệ và click "Kiểm tra tính chất"</p>
+    </div>
+</div>
+
+<script>
+function demoRelationCheck() {
+    const setA = document.getElementById('demo-set-rel').value.split(',').map(x => x.trim());
+    const relationInput = document.getElementById('demo-relation').value;
+    const resultDiv = document.getElementById('demo-relation-result');
+    
+    try {
+        // Parse relation
+        const pairMatches = relationInput.match(/\([^)]+\)/g);
+        const relation = pairMatches.map(pair => {
+            const content = pair.slice(1, -1);
+            const [a, b] = content.split(',').map(x => x.trim());
+            return [a, b];
+        });
+        
+        const relationSet = new Set(relation.map(([a, b]) => `${a},${b}`));
+        
+        // Check properties
+        const reflexive = setA.every(a => relationSet.has(`${a},${a}`));
+        const symmetric = relation.every(([a, b]) => relationSet.has(`${b},${a}`));
+        const antisymmetric = relation.every(([a, b]) => {
+            if (a !== b && relationSet.has(`${b},${a}`)) return false;
+            return true;
+        });
+        
+        let transitive = true;
+        for (const [a, b] of relation) {
+            for (const [c, d] of relation) {
+                if (b === c && !relationSet.has(`${a},${d}`)) {
+                    transitive = false;
+                    break;
+                }
+            }
+            if (!transitive) break;
+        }
+        
+        // Determine relation type
+        let relationType = '';
+        if (reflexive && symmetric && transitive) {
+            relationType = '🎯 <strong>Quan hệ tương đương</strong>';
+        } else if (reflexive && antisymmetric && transitive) {
+            relationType = '📊 <strong>Quan hệ thứ tự (một phần)</strong>';
+        } else {
+            relationType = '🔍 <strong>Quan hệ thông thường</strong>';
+        }
+        
+        resultDiv.innerHTML = `
+            <div style="text-align: center;">
+                <h5 style="color: #495057; margin-bottom: 15px;">Kết quả phân tích</h5>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                    <strong>A = {${setA.join(', ')}}</strong><br>
+                    <strong>R = {${relation.map(([a,b]) => `(${a},${b})`).join(', ')}}</strong>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div style="background: ${reflexive ? '#d4edda' : '#f8d7da'}; padding: 12px; border-radius: 6px;">
+                        <strong style="color: ${reflexive ? '#155724' : '#721c24'};">
+                            ${reflexive ? '✅' : '❌'} Phản xạ
+                        </strong>
+                    </div>
+                    <div style="background: ${symmetric ? '#d4edda' : '#f8d7da'}; padding: 12px; border-radius: 6px;">
+                        <strong style="color: ${symmetric ? '#155724' : '#721c24'};">
+                            ${symmetric ? '✅' : '❌'} Đối xứng
+                        </strong>
+                    </div>
+                    <div style="background: ${antisymmetric ? '#d4edda' : '#f8d7da'}; padding: 12px; border-radius: 6px;">
+                        <strong style="color: ${antisymmetric ? '#155724' : '#721c24'};">
+                            ${antisymmetric ? '✅' : '❌'} Phản đối xứng
+                        </strong>
+                    </div>
+                    <div style="background: ${transitive ? '#d4edda' : '#f8d7da'}; padding: 12px; border-radius: 6px;">
+                        <strong style="color: ${transitive ? '#155724' : '#721c24'};">
+                            ${transitive ? '✅' : '❌'} Bắc cầu
+                        </strong>
+                    </div>
+                </div>
+                
+                <div style="background: #e3f2fd; padding: 15px; border-radius: 6px; border-left: 4px solid #1976d2;">
+                    ${relationType}
+                </div>
+            </div>
+        `;
+        
+    } catch (error) {
+        resultDiv.innerHTML = `<p style="color: #dc3545; text-align: center; margin: 0;">Lỗi: Định dạng không hợp lệ</p>`;
+    }
+}
+</script>
+
+---
+
+## 📊 Thống kê và Tiến độ
+
+<div class="interactive-tool">
+    <h4>📈 Thống kê Học tập</h4>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+        <div style="background: #d4edda; padding: 20px; border-radius: 8px; text-align: center;">
+            <h3 style="color: #155724; margin: 0;">6</h3>
+            <p style="margin: 5px 0 0 0; color: #155724;">Chương đã hoàn thành</p>
+        </div>
+        <div style="background: #cce5ff; padding: 20px; border-radius: 8px; text-align: center;">
+            <h3 style="color: #004085; margin: 0;">15+</h3>
+            <p style="margin: 5px 0 0 0; color: #004085;">Công cụ tương tác</p>
+        </div>
+        <div style="background: #fff3cd; padding: 20px; border-radius: 8px; text-align: center;">
+            <h3 style="color: #856404; margin: 0;">50+</h3>
+            <p style="margin: 5px 0 0 0; color: #856404;">Bài tập thực hành</p>
+        </div>
+        <div style="background: #f8d7da; padding: 20px; border-radius: 8px; text-align: center;">
+            <h3 style="color: #721c24; margin: 0;">100+</h3>
+            <p style="margin: 5px 0 0 0; color: #721c24;">Ví dụ minh họa</p>
+        </div>
+    </div>
+</div>
+
+---
+
+## 🎯 Hướng dẫn Sử dụng
+
+### Tính năng Tìm kiếm
+1. **Mở tìm kiếm**: `Ctrl + K` hoặc click "🔍 Tìm kiếm" trong sidebar
+2. **Nhập từ khóa**: Gõ từ khóa bạn muốn tìm
+3. **Sử dụng bộ lọc**: Chọn chương hoặc loại nội dung cụ thể
+4. **Chọn kết quả**: Click vào kết quả để đi đến trang tương ứng
+
+### Hệ thống Bài tập
+1. **Làm bài**: Chọn đáp án hoặc nhập câu trả lời
+2. **Nộp bài**: Click "Nộp bài" để kiểm tra kết quả
+3. **Xem giải thích**: Đọc phần giải thích cho từng câu
+4. **Làm lại**: Click "Làm lại" để thử lại bài tập
+
+### Công cụ Tương tác
+1. **Nhập dữ liệu**: Điền thông tin vào các ô input
+2. **Chọn tùy chọn**: Sử dụng dropdown để chọn phép toán
+3. **Thực hiện**: Click nút để xem kết quả
+4. **Phân tích**: Đọc kết quả và giải thích chi tiết
+
+---
+
+<div class="math-definition">
+    <h5>💡 Mẹo sử dụng hiệu quả</h5>
+    <ul>
+        <li><strong>Keyboard shortcuts</strong>: Sử dụng phím tắt để truy cập nhanh</li>
+        <li><strong>Bookmark</strong>: Lưu các trang quan trọng vào bookmark</li>
+        <li><strong>Thực hành thường xuyên</strong>: Làm bài tập để củng cố kiến thức</li>
+        <li><strong>Tương tác với công cụ</strong>: Thử nghiệm với các giá trị khác nhau</li>
+    </ul>
+</div>
+
+---
+
+<div style="text-align: center; margin: 40px 0;">
+    <p style="color: #666; font-style: italic;">
+        Khám phá thêm nhiều tính năng thú vị khác trong các chương của khóa học! 🚀
+    </p>
+</div>

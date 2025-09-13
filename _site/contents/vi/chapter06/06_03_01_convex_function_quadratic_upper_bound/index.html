@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <style>
+    .MathJax {
+      padding: 2em 0.3em;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  </style>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <title>
+    
+      06-03-01 Cận trên bậc hai của hàm lồi &middot; Optimization in Data Science
+    
+  </title>
+
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/poole.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/syntax.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/lanyon.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/github-markdown.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/multilang.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/search.css">
+  <link rel="stylesheet" href="/optimization-for-data-science-iuh-2025/public/css/content-boxes.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  
+  <!-- Lunr.js for search functionality -->
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+
+  <link rel="apple-touch-icon-precomposed" sizes="122x144" href="http://localhost:4000/optimization-for-data-science-iuh-2025/public/logo.png">
+  <link rel="shortcut icon" href="http://localhost:4000/optimization-for-data-science-iuh-2025/public/convex-logo-144x144.png">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost:4000/optimization-for-data-science-iuh-2025/atom.xml">
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+
+
+  <body class="sidebar-overlay">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Tối ưu hóa trong Khoa học Dữ liệu</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/">Trang chủ</a>
+
+    
+
+    
+    
+    
+    <!-- Hiển thị các chương có sẵn cho ngôn ngữ hiện tại -->
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter00/">
+              00. Các Khái Niệm Toán Học Cơ Bản
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter01/">
+              01. Giới thiệu
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter02/">
+              02. Tập Lồi
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter03/">
+              03. Hàm Lồi
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter04/">
+              04. Cơ bản về Tối ưu hóa Lồi
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter05/">
+              05. Các Bài Toán Chuẩn
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter06/">
+              06. Gradient Descent
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter07/">
+              07. Subgradient
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter08/">
+              08. Subgradient Method
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter09/">
+              09. Proximal Gradient Descent and Acceleration
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter10/">
+              10. Duality in Linear Programs
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter11/">
+              11. Duality in General Programs
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter12/">
+              12. KKT Conditions
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter13/">
+              13. Duality uses and correspondences
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter14/">
+              14. Newton's Method
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter16/">
+              16. Duality Revisited
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter18/">
+              18. Quasi-Newton Methods
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+            <a class="sidebar-nav-item" href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter19/">
+              19. Proximal Netwon Method
+              
+            </a>
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+      
+        
+          
+          
+        
+      
+    
+    
+    <!-- Nếu không có nội dung cho ngôn ngữ hiện tại, hiển thị thông báo -->
+    
+    
+    <!-- Hiển thị thông tin về tình trạng dịch thuật -->
+    
+      <div class="sidebar-nav-item" style="font-size: 0.8em; color: #999; margin-top: 10px;">
+        📝 26 chương đã dịch / 26 chương tổng
+      </div>
+    
+    
+    <span class="sidebar-nav-item">Currently v0.0.1</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2025. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap github-md-body">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/optimization-for-data-science-iuh-2025/" title="Trang chủ">Tối ưu hóa trong Khoa học Dữ liệu</a>
+            <small></small>
+          </h3>
+          <!-- Header Actions: Language Toggle and GitHub Link -->
+          <div class="header-actions">
+            <div class="language-toggle">
+              <a href="/optimization-for-data-science-iuh-2025/contents/en/chapter06/06_03_01_convex_function_quadratic_upper_bound/" class="language-switch" title="Chuyển sang tiếng Anh">Chuyển sang tiếng Anh</a>
+            </div>
+            <a class="github-logo__wrapper" target="_blank" href="https://github.com/nglelinh/optimization-for-data-science-iuh-2025" title="Github">
+             <svg class="github-logo" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48"><linearGradient id="rL2wppHyxHVbobwndsT6Ca" x1="4" x2="44" y1="23.508" y2="23.508" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4c4c4c"/><stop offset="1" stop-color="#343434"/></linearGradient><path fill="url(#rL2wppHyxHVbobwndsT6Ca)" d="M24,4C12.954,4,4,12.954,4,24c0,8.887,5.801,16.411,13.82,19.016h12.36	C38.199,40.411,44,32.887,44,24C44,12.954,35.046,4,24,4z"/><path d="M30.01,41.996L30,36.198c0-0.939-0.22-1.856-0.642-2.687c5.641-1.133,8.386-4.468,8.386-10.177	c0-2.255-0.665-4.246-1.976-5.92c0.1-0.317,0.174-0.645,0.22-0.981c0.188-1.369-0.023-2.264-0.193-2.984l-0.027-0.116	c-0.186-0.796-0.409-1.364-0.418-1.388l-0.111-0.282l-0.111-0.282l-0.302-0.032l-0.303-0.032c0,0-0.199-0.021-0.501-0.021	c-0.419,0-1.04,0.042-1.627,0.241l-0.196,0.066c-0.74,0.249-1.439,0.485-2.417,1.069c-0.286,0.171-0.599,0.366-0.934,0.584	C27.334,12.881,25.705,12.69,24,12.69c-1.722,0-3.365,0.192-4.889,0.571c-0.339-0.22-0.654-0.417-0.942-0.589	c-0.978-0.584-1.677-0.819-2.417-1.069l-0.196-0.066c-0.585-0.199-1.207-0.241-1.626-0.241c-0.302,0-0.501,0.021-0.501,0.021	l-0.302,0.032l-0.3,0.031l-0.112,0.281l-0.113,0.283c-0.01,0.026-0.233,0.594-0.419,1.391l-0.027,0.115	c-0.17,0.719-0.381,1.615-0.193,2.983c0.048,0.346,0.125,0.685,0.23,1.011c-1.285,1.666-1.936,3.646-1.936,5.89	c0,5.695,2.748,9.028,8.397,10.17c-0.194,0.388-0.345,0.798-0.452,1.224c-0.197,0.067-0.378,0.112-0.538,0.137	c-0.238,0.036-0.487,0.054-0.739,0.054c-0.686,0-1.225-0.134-1.435-0.259c-0.313-0.186-0.872-0.727-1.414-1.518	c-0.463-0.675-1.185-1.558-1.992-1.927c-0.698-0.319-1.437-0.502-2.029-0.502c-0.138,0-0.265,0.01-0.376,0.028	c-0.517,0.082-0.949,0.366-1.184,0.78c-0.203,0.357-0.235,0.773-0.088,1.141c0.219,0.548,0.851,0.985,1.343,1.255	c0.242,0.133,0.765,0.619,1.07,1.109c0.229,0.368,0.335,0.63,0.482,0.992c0.087,0.215,0.183,0.449,0.313,0.732	c0.47,1.022,1.937,1.924,2.103,2.023c0.806,0.483,2.161,0.638,3.157,0.683l0.123,0.003c0,0,0.001,0,0.001,0	c0.24,0,0.57-0.023,1.004-0.071v2.613c0.002,0.529-0.537,0.649-1.25,0.638l0.547,0.184C19.395,43.572,21.645,44,24,44	c2.355,0,4.605-0.428,6.703-1.176l0.703-0.262C30.695,42.538,30.016,42.422,30.01,41.996z" opacity=".05"/><path d="M30.781,42.797c-0.406,0.047-1.281-0.109-1.281-0.795v-5.804c0-1.094-0.328-2.151-0.936-3.052	c5.915-0.957,8.679-4.093,8.679-9.812c0-2.237-0.686-4.194-2.039-5.822c0.137-0.365,0.233-0.75,0.288-1.147	c0.175-1.276-0.016-2.086-0.184-2.801l-0.027-0.116c-0.178-0.761-0.388-1.297-0.397-1.319l-0.111-0.282l-0.303-0.032	c0,0-0.178-0.019-0.449-0.019c-0.381,0-0.944,0.037-1.466,0.215l-0.196,0.066c-0.714,0.241-1.389,0.468-2.321,1.024	c-0.332,0.198-0.702,0.431-1.101,0.694C27.404,13.394,25.745,13.19,24,13.19c-1.762,0-3.435,0.205-4.979,0.61	c-0.403-0.265-0.775-0.499-1.109-0.699c-0.932-0.556-1.607-0.784-2.321-1.024l-0.196-0.066c-0.521-0.177-1.085-0.215-1.466-0.215	c-0.271,0-0.449,0.019-0.449,0.019l-0.302,0.032l-0.113,0.283c-0.009,0.022-0.219,0.558-0.397,1.319l-0.027,0.116	c-0.169,0.715-0.36,1.524-0.184,2.8c0.056,0.407,0.156,0.801,0.298,1.174c-1.327,1.62-1.999,3.567-1.999,5.795	c0,5.703,2.766,8.838,8.686,9.806c-0.395,0.59-0.671,1.255-0.813,1.964c-0.33,0.13-0.629,0.216-0.891,0.256	c-0.263,0.04-0.537,0.06-0.814,0.06c-0.69,0-1.353-0.129-1.69-0.329c-0.44-0.261-1.057-0.914-1.572-1.665	c-0.35-0.51-1.047-1.417-1.788-1.755c-0.635-0.29-1.298-0.457-1.821-0.457c-0.11,0-0.21,0.008-0.298,0.022	c-0.366,0.058-0.668,0.252-0.828,0.534c-0.128,0.224-0.149,0.483-0.059,0.708c0.179,0.448,0.842,0.85,1.119,1.002	c0.335,0.184,0.919,0.744,1.254,1.284c0.251,0.404,0.37,0.697,0.521,1.067c0.085,0.209,0.178,0.437,0.304,0.712	c0.331,0.719,1.353,1.472,1.905,1.803c0.754,0.452,2.154,0.578,2.922,0.612l0.111,0.002c0.299,0,0.8-0.045,1.495-0.135v3.177	c0,0.779-0.991,0.81-1.234,0.81c-0.031,0,0.503,0.184,0.503,0.184C19.731,43.64,21.822,44,24,44c2.178,0,4.269-0.36,6.231-1.003	C30.231,42.997,30.812,42.793,30.781,42.797z" opacity=".07"/><path fill="#fff" d="M36.744,23.334c0-2.31-0.782-4.226-2.117-5.728c0.145-0.325,0.296-0.761,0.371-1.309	c0.172-1.25-0.031-2-0.203-2.734s-0.375-1.25-0.375-1.25s-0.922-0.094-1.703,0.172s-1.453,0.469-2.422,1.047	c-0.453,0.27-0.909,0.566-1.27,0.806C27.482,13.91,25.785,13.69,24,13.69c-1.801,0-3.513,0.221-5.067,0.652	c-0.362-0.241-0.821-0.539-1.277-0.811c-0.969-0.578-1.641-0.781-2.422-1.047s-1.703-0.172-1.703-0.172s-0.203,0.516-0.375,1.25	s-0.375,1.484-0.203,2.734c0.077,0.562,0.233,1.006,0.382,1.333c-1.31,1.493-2.078,3.397-2.078,5.704	c0,5.983,3.232,8.714,9.121,9.435c-0.687,0.726-1.148,1.656-1.303,2.691c-0.387,0.17-0.833,0.33-1.262,0.394	c-1.104,0.167-2.271,0-2.833-0.333s-1.229-1.083-1.729-1.813c-0.422-0.616-1.031-1.331-1.583-1.583	c-0.729-0.333-1.438-0.458-1.833-0.396c-0.396,0.063-0.583,0.354-0.5,0.563c0.083,0.208,0.479,0.521,0.896,0.75	c0.417,0.229,1.063,0.854,1.438,1.458c0.418,0.674,0.5,1.063,0.854,1.833c0.249,0.542,1.101,1.219,1.708,1.583	c0.521,0.313,1.562,0.491,2.688,0.542c0.389,0.018,1.308-0.096,2.083-0.206v3.75c0,0.639-0.585,1.125-1.191,1.013	C19.756,43.668,21.833,44,24,44c2.166,0,4.243-0.332,6.19-0.984C29.585,43.127,29,42.641,29,42.002v-5.804	c0-1.329-0.527-2.53-1.373-3.425C33.473,32.071,36.744,29.405,36.744,23.334z M11.239,32.727c-0.154-0.079-0.237-0.225-0.185-0.328	c0.052-0.103,0.22-0.122,0.374-0.043c0.154,0.079,0.237,0.225,0.185,0.328S11.393,32.806,11.239,32.727z M12.451,33.482	c-0.081,0.088-0.255,0.06-0.389-0.062s-0.177-0.293-0.096-0.381c0.081-0.088,0.255-0.06,0.389,0.062S12.532,33.394,12.451,33.482z M13.205,34.732c-0.102,0.072-0.275,0.005-0.386-0.15s-0.118-0.34-0.016-0.412s0.275-0.005,0.386,0.15	C13.299,34.475,13.307,34.66,13.205,34.732z M14.288,35.673c-0.069,0.112-0.265,0.117-0.437,0.012s-0.256-0.281-0.187-0.393	c0.069-0.112,0.265-0.117,0.437-0.012S14.357,35.561,14.288,35.673z M15.312,36.594c-0.213-0.026-0.371-0.159-0.353-0.297	c0.017-0.138,0.204-0.228,0.416-0.202c0.213,0.026,0.371,0.159,0.353,0.297C15.711,36.529,15.525,36.62,15.312,36.594z M16.963,36.833c-0.227-0.013-0.404-0.143-0.395-0.289c0.009-0.146,0.2-0.255,0.427-0.242c0.227,0.013,0.404,0.143,0.395,0.289	C17.381,36.738,17.19,36.846,16.963,36.833z M18.521,36.677c-0.242,0-0.438-0.126-0.438-0.281s0.196-0.281,0.438-0.281	c0.242,0,0.438,0.126,0.438,0.281S18.762,36.677,18.521,36.677z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">
+    06-03-01 Cận trên bậc hai của hàm lồi
+    
+  </h1>
+  <h2 id="giới-thiệu">Giới thiệu</h2>
+
+<p><strong>Cận trên bậc hai</strong> là một tính chất cơ bản của các hàm lồi trơn, cung cấp một công cụ quan trọng để phân tích và thiết kế các thuật toán tối ưu hóa. Tính chất này thiết lập rằng bất kỳ hàm lồi trơn nào cũng có thể được chặn trên bởi một hàm bậc hai, điều này có những ý nghĩa quan trọng cho việc phân tích hội tụ của các phương pháp dựa trên gradient.</p>
+
+<h2 id="động-lực">Động lực</h2>
+
+<p>Tại sao chúng ta quan tâm đến cận trên bậc hai?</p>
+
+<ol>
+  <li>
+    <p><strong>Thiết kế thuật toán</strong>: Nhiều thuật toán tối ưu hóa (như gradient descent) dựa vào các xấp xỉ cục bộ của hàm mục tiêu. Cận trên bậc hai cung cấp một cách hệ thống để xây dựng các xấp xỉ này.</p>
+  </li>
+  <li>
+    <p><strong>Phân tích hội tụ</strong>: Cận trên bậc hai cho phép chúng ta chứng minh tốc độ hội tụ cho các thuật toán tối ưu hóa bằng cách chặn mức độ thay đổi của hàm.</p>
+  </li>
+  <li>
+    <p><strong>Lựa chọn bước nhảy</strong>: Hằng số Lipschitz \(L\) trong cận trực tiếp xác định bước nhảy an toàn cho gradient descent.</p>
+  </li>
+</ol>
+
+<h2 id="tính-chất-cận-trên-bậc-hai">Tính chất Cận trên Bậc hai</h2>
+
+<p><strong>Định lý</strong>: Nếu \(f\) là lồi và \(\nabla f\) liên tục Lipschitz với hằng số \(L\), thì \(f\) thỏa mãn cận trên bậc hai:</p>
+
+<blockquote>
+\[\begin{align}
+f(y) &amp; \le f(x) + \nabla f(x)^T (y-x) + \frac{L}{2} \| y - x \|^2_2 \quad \forall x, y
+\end{align}\]
+</blockquote>
+
+<h3 id="diễn-giải-hình-học">Diễn giải Hình học</h3>
+
+<p>Bất đẳng thức này phát biểu rằng:</p>
+<ul>
+  <li><strong>Xấp xỉ tuyến tính</strong> \(f(x) + \nabla f(x)^T (y-x)\) (khai triển Taylor bậc nhất) ước lượng thấp \(f(y)\) do tính lồi</li>
+  <li><strong>Cận trên bậc hai</strong> \(f(x) + \nabla f(x)^T (y-x) + \frac{L}{2} \| y - x \|^2_2\) ước lượng cao \(f(y)\)</li>
+  <li>Hàm \(f(y)\) được “kẹp” giữa hai cận này</li>
+</ul>
+
+<h3 id="đặc-trưng-tương-đương">Đặc trưng Tương đương</h3>
+
+<p><strong>Hệ quả</strong>: Đối với bất kỳ hàm lồi trơn \(f\) nào, hàm sau đây là lồi:</p>
+
+<blockquote>
+\[\begin{align}
+g(x) &amp; = \frac{L}{2} \| x \|^2_2 - f(x) \quad \text{với } dom(g) = dom(f)
+\end{align}\]
+</blockquote>
+
+<p>Điều này có nghĩa là \(f(x)\) có thể được viết như hiệu của một hàm bậc hai và một hàm lồi.</p>
+
+<h2 id="chứng-minh">Chứng minh</h2>
+
+<p>Chúng ta sẽ chứng minh cả cận trên bậc hai và đặc trưng tương đương. Chứng minh dựa trên hai tính chất chính của các hàm lồi trơn.</p>
+
+<h3 id="kiến-thức-cần-thiết">Kiến thức Cần thiết</h3>
+
+<p><strong>Định nghĩa 1 (Toán tử Đơn điệu)</strong>: Trong không gian vector \(X\), toán tử \(T : X \to X^*\) là đơn điệu nếu:</p>
+<blockquote>
+\[(Tu - Tv, u-v) \ge 0, \quad \forall u, v \in X\]
+</blockquote>
+
+<p><strong>Tính chất 1 (Tính đơn điệu của Gradient)</strong>: Nếu \(f\) là lồi và khả vi, thì \(\nabla f\) là toán tử đơn điệu:</p>
+<blockquote>
+\[(\nabla f(y) - \nabla f(x))^T (y-x) \ge 0, \quad \forall x, y\]
+</blockquote>
+
+<p><strong>Tính chất 2 (Liên tục Lipschitz)</strong>: \(\nabla f\) liên tục Lipschitz với hằng số \(L\):</p>
+<blockquote>
+\[\| \nabla f(x) - \nabla f(y) \|_2 \le L \| x - y \|_2, \quad \forall x, y\]
+</blockquote>
+
+<h3 id="chứng-minh-cận-trên-bậc-hai">Chứng minh Cận trên Bậc hai</h3>
+
+<p><strong>Bước 1</strong>: Xét hàm \(h(t) = f(x + t(y-x))\) với \(t \in [0,1]\). Theo định lý cơ bản của giải tích:</p>
+
+<blockquote>
+\[\begin{align}
+f(y) - f(x) &amp;= h(1) - h(0) = \int_0^1 h'(t) dt \\
+&amp;= \int_0^1 \nabla f(x + t(y-x))^T (y-x) dt
+\end{align}\]
+</blockquote>
+
+<p><strong>Bước 2</strong>: Chúng ta có thể viết lại như sau:</p>
+<blockquote>
+\[\begin{align}
+f(y) - f(x) &amp;= \nabla f(x)^T (y-x) + \int_0^1 [\nabla f(x + t(y-x)) - \nabla f(x)]^T (y-x) dt
+\end{align}\]
+</blockquote>
+
+<p><strong>Bước 3</strong>: Sử dụng bất đẳng thức Cauchy-Schwarz và tính liên tục Lipschitz:</p>
+<blockquote>
+\[\begin{align}
+&amp;[\nabla f(x + t(y-x)) - \nabla f(x)]^T (y-x) \\
+&amp;\le \|\nabla f(x + t(y-x)) - \nabla f(x)\| \cdot \|y-x\| \\
+&amp;\le L \cdot t\|y-x\| \cdot \|y-x\| = Lt\|y-x\|^2
+\end{align}\]
+</blockquote>
+
+<p><strong>Bước 4</strong>: Tích phân trên \(t \in [0,1]\):</p>
+<blockquote>
+\[\begin{align}
+f(y) - f(x) &amp;\le \nabla f(x)^T (y-x) + \int_0^1 Lt\|y-x\|^2 dt \\
+&amp;= \nabla f(x)^T (y-x) + L\|y-x\|^2 \int_0^1 t dt \\
+&amp;= \nabla f(x)^T (y-x) + \frac{L}{2}\|y-x\|^2
+\end{align}\]
+</blockquote>
+
+<p>Do đó: \(f(y) \le f(x) + \nabla f(x)^T (y-x) + \frac{L}{2}\|y-x\|^2\)</p>
+
+<h3 id="chứng-minh-đặc-trưng-tương-đương">Chứng minh Đặc trưng Tương đương</h3>
+
+<p><strong>Định lý</strong>: Hàm \(g(x) = \frac{L}{2} \| x \|^2_2 - f(x)\) là lồi.</p>
+
+<p><strong>Chứng minh</strong>: Chúng ta cần chỉ ra rằng \(\nabla^2 g(x) \succeq 0\) (nửa xác định dương).</p>
+
+<p>Vì \(g(x) = \frac{L}{2} \| x \|^2_2 - f(x)\), ta có:</p>
+<ul>
+  <li>
+\[\nabla g(x) = Lx - \nabla f(x)\]
+  </li>
+  <li>
+\[\nabla^2 g(x) = LI - \nabla^2 f(x)\]
+  </li>
+</ul>
+
+<p>Với bất kỳ vector \(v\) nào, chúng ta cần chỉ ra \(v^T \nabla^2 g(x) v \ge 0\):</p>
+
+<blockquote>
+\[\begin{align}
+v^T \nabla^2 g(x) v &amp;= v^T (LI - \nabla^2 f(x)) v \\
+&amp;= L\|v\|^2 - v^T \nabla^2 f(x) v
+\end{align}\]
+</blockquote>
+
+<p>Từ tính liên tục Lipschitz của \(\nabla f\), chúng ta có thể chỉ ra rằng \(\nabla^2 f(x) \preceq LI\), có nghĩa là:
+\(v^T \nabla^2 f(x) v \le L\|v\|^2\)</p>
+
+<p>Do đó: \(v^T \nabla^2 g(x) v = L\|v\|^2 - v^T \nabla^2 f(x) v \ge 0\)</p>
+
+<p>Điều này chứng minh rằng \(g\) là lồi. \(\square\)</p>
+
+<h2 id="ví-dụ">Ví dụ</h2>
+
+<h3 id="ví-dụ-1-hàm-bậc-hai">Ví dụ 1: Hàm Bậc hai</h3>
+
+<p>Xét \(f(x) = \frac{1}{2}x^T A x + b^T x + c\) với \(A \succeq 0\) (nửa xác định dương).</p>
+
+<ul>
+  <li>
+\[\nabla f(x) = Ax + b\]
+  </li>
+  <li>
+\[\nabla^2 f(x) = A\]
+  </li>
+  <li>Nếu \(\lambda_{max}(A) = L\), thì \(\|\nabla f(x) - \nabla f(y)\| = \|A(x-y)\| \le L\|x-y\|\)</li>
+</ul>
+
+<p>Cận trên bậc hai trở thành:
+\(f(y) \le f(x) + (Ax + b)^T(y-x) + \frac{L}{2}\|y-x\|^2\)</p>
+
+<p>Đối với hàm bậc hai, cận này là <strong>chặt</strong> khi \(L = \lambda_{max}(A)\).</p>
+
+<h3 id="ví-dụ-2-hàm-mất-mát-logistic">Ví dụ 2: Hàm Mất mát Logistic</h3>
+
+<p>Xét hàm mất mát logistic \(f(x) = \log(1 + e^{a^T x})\) với \(a \in \mathbb{R}^n\).</p>
+
+<ul>
+  <li>
+\[\nabla f(x) = \frac{e^{a^T x}}{1 + e^{a^T x}} a = \sigma(a^T x) a\]
+  </li>
+  <li>
+\[\nabla^2 f(x) = \sigma(a^T x)(1 - \sigma(a^T x)) aa^T\]
+  </li>
+</ul>
+
+<p>Vì \(\sigma(t)(1-\sigma(t)) \le \frac{1}{4}\) với mọi \(t\), ta có:
+\(\nabla^2 f(x) \preceq \frac{1}{4} aa^T \preceq \frac{\|a\|^2}{4} I\)</p>
+
+<p>Do đó, \(L = \frac{\|a\|^2}{4}\) và cận trên bậc hai là:
+\(f(y) \le f(x) + \sigma(a^T x) a^T(y-x) + \frac{\|a\|^2}{8}\|y-x\|^2\)</p>
+
+<h3 id="ví-dụ-3-bình-phương-tối-thiểu">Ví dụ 3: Bình phương Tối thiểu</h3>
+
+<p>Với \(f(x) = \frac{1}{2}\|Ax - b\|^2\) trong đó \(A \in \mathbb{R}^{m \times n}\):</p>
+
+<ul>
+  <li>
+\[\nabla f(x) = A^T(Ax - b)\]
+  </li>
+  <li>
+\[\nabla^2 f(x) = A^T A\]
+  </li>
+  <li>\(L = \lambda_{max}(A^T A) = \sigma_{max}^2(A)\) (bình phương giá trị kỳ dị lớn nhất)</li>
+</ul>
+
+<p>Cận trên bậc hai là:
+\(f(y) \le f(x) + (A^T(Ax - b))^T(y-x) + \frac{\sigma_{max}^2(A)}{2}\|y-x\|^2\)</p>
+
+<h2 id="ứng-dụng-trong-tối-ưu-hóa">Ứng dụng trong Tối ưu hóa</h2>
+
+<h3 id="1-kích-thước-bước-nhảy-của-gradient-descent">1. Kích thước Bước nhảy của Gradient Descent</h3>
+
+<p>Cận trên bậc hai trực tiếp xác định <strong>kích thước bước nhảy an toàn tối đa</strong> cho gradient descent. Nếu chúng ta sử dụng kích thước bước \(\alpha \le \frac{1}{L}\), thì:</p>
+
+\[f(x - \alpha \nabla f(x)) \le f(x) - \alpha \|\nabla f(x)\|^2 + \frac{L\alpha^2}{2}\|\nabla f(x)\|^2\]
+
+<p>Khi \(\alpha \le \frac{1}{L}\), vế phải đơn giản hóa thành:
+\(f(x - \alpha \nabla f(x)) \le f(x) - \frac{\alpha}{2}\|\nabla f(x)\|^2\)</p>
+
+<p>Điều này đảm bảo <strong>giảm đủ</strong> tại mỗi lần lặp.</p>
+
+<h3 id="2-phân-tích-tốc-độ-hội-tụ">2. Phân tích Tốc độ Hội tụ</h3>
+
+<p>Đối với gradient descent với kích thước bước \(\alpha = \frac{1}{L}\), cận trên bậc hai cho phép chúng ta chứng minh:</p>
+
+\[f(x_{k+1}) - f^* \le \left(1 - \frac{\mu}{L}\right)(f(x_k) - f^*)\]
+
+<p>trong đó \(\mu\) là tham số lồi mạnh. Điều này cho <strong>hội tụ tuyến tính</strong> với tốc độ \(\left(1 - \frac{\mu}{L}\right)\).</p>
+
+<h3 id="3-phương-pháp-gradient-gần-kề">3. Phương pháp Gradient Gần kề</h3>
+
+<p>Trong tối ưu hóa tổng hợp \(\min_x f(x) + g(x)\) với \(f\) trơn và \(g\) không trơn, cận trên bậc hai của \(f\) dẫn đến cập nhật gradient gần kề:</p>
+
+\[x_{k+1} = \text{prox}_{\alpha g}\left(x_k - \alpha \nabla f(x_k)\right)\]
+
+<p>trong đó \(\alpha \le \frac{1}{L}\) đảm bảo hội tụ.</p>
+
+<h3 id="4-phương-pháp-tăng-tốc">4. Phương pháp Tăng tốc</h3>
+
+<p>Các phương pháp tiên tiến như <strong>gradient tăng tốc Nesterov</strong> và <strong>FISTA</strong> cũng dựa vào cận trên bậc hai để đạt được tốc độ hội tụ tối ưu \(O(1/k^2)\) cho các hàm lồi trơn.</p>
+
+<h2 id="những-điểm-chính">Những Điểm Chính</h2>
+
+<ol>
+  <li>
+    <p><strong>Tính chất Cơ bản</strong>: Cận trên bậc hai là nền tảng của lý thuyết tối ưu hóa lồi trơn.</p>
+  </li>
+  <li>
+    <p><strong>Thiết kế Thuật toán</strong>: Nó cung cấp cơ sở lý thuyết để chọn kích thước bước trong các phương pháp dựa trên gradient.</p>
+  </li>
+  <li>
+    <p><strong>Phân tích Hội tụ</strong>: Nó cho phép chứng minh nghiêm ngặt tốc độ hội tụ của các thuật toán tối ưu hóa.</p>
+  </li>
+  <li>
+    <p><strong>Tác động Thực tế</strong>: Hiểu biết về \(L\) giúp các nhà thực hành điều chỉnh thuật toán hiệu quả.</p>
+  </li>
+  <li>
+    <p><strong>Trực giác Hình học</strong>: Nó hình thức hóa ý tưởng rằng các hàm lồi trơn không “cong quá mức” - chúng được chặn trên bởi các parabola.</p>
+  </li>
+</ol>
+
+<h2 id="trực-quan-tương-tác">Trực quan Tương tác</h2>
+
+<p>Sơ đồ sau minh họa tính chất cận trên bậc hai:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      f(y)
+        |
+        |     Cận Trên Bậc Hai
+        |    f(x) + ∇f(x)ᵀ(y-x) + (L/2)||y-x||²
+        |   /
+        |  /
+        | /     Hàm thực f(y)
+        |/     /
+       /|     /
+      / |    /
+     /  |   /    Xấp xỉ Tuyến tính
+    /   |  /     f(x) + ∇f(x)ᵀ(y-x)
+   /    | /
+  /     |/
+ /      x        y
+/       |         →
+        |
+</code></pre></div></div>
+
+<p><strong>Những Quan sát Chính</strong>:</p>
+<ul>
+  <li><strong>Xấp xỉ tuyến tính</strong> (đường tiếp tuyến) nằm dưới \(f(y)\) do tính lồi</li>
+  <li><strong>Cận trên bậc hai</strong> nằm trên \(f(y)\)</li>
+  <li><strong>Hàm thực</strong> \(f(y)\) được kẹp giữa hai cận này</li>
+  <li>Khoảng cách giữa các cận phụ thuộc vào \(L\) (hằng số Lipschitz) và \(\|y-x\|^2\)</li>
+</ul>
+
+<h2 id="cân-nhắc-tính-toán">Cân nhắc Tính toán</h2>
+
+<h3 id="ước-lượng-hằng-số-lipschitz">Ước lượng Hằng số Lipschitz</h3>
+
+<p>Trong thực tế, việc tìm hằng số Lipschitz chính xác \(L\) có thể khó khăn. Các phương pháp phổ biến:</p>
+
+<ol>
+  <li><strong>Phân tích Lý thuyết</strong>: Đối với các lớp hàm cụ thể (bậc hai, logistic, v.v.)</li>
+  <li><strong>Phương pháp Phổ</strong>: \(L = \lambda_{max}(\nabla^2 f)\) khi có Hessian</li>
+  <li><strong>Phương pháp Thích ứng</strong>: Bắt đầu với ước lượng và điều chỉnh dựa trên điều kiện giảm đủ</li>
+  <li><strong>Tìm kiếm Đường</strong>: Sử dụng backtracking để tìm kích thước bước phù hợp</li>
+</ol>
+
+<h3 id="triển-khai-thuật-toán-thực-tế">Triển khai Thuật toán Thực tế</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">gradient_descent_with_lipschitz</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">grad_f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">L_estimate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">
+    Gradient descent với ước lượng hằng số Lipschitz thích ứng
+    </span><span class="sh">"""</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">L_estimate</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">grad</span> <span class="o">=</span> <span class="nf">grad_f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="c1"># Thử bước với ước lượng L hiện tại
+</span>        <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">L</span>
+        <span class="n">x_new</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">grad</span>
+        
+        <span class="c1"># Kiểm tra điều kiện giảm đủ
+</span>        <span class="k">if</span> <span class="nf">f</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="nf">norm</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x_new</span>  <span class="c1"># Chấp nhận bước
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="n">L</span> <span class="o">*=</span> <span class="mi">2</span>  <span class="c1"># Tăng ước lượng L và thử lại
+</span>            <span class="k">continue</span>
+            
+        <span class="c1"># Tùy chọn: giảm L nếu bước quá bảo thủ
+</span>        <span class="k">if</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">L</span> <span class="o">*=</span> <span class="mf">0.9</span>
+            
+    <span class="k">return</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<p>Phương pháp thích ứng này đảm bảo hội tụ trong khi tự động điều chỉnh ước lượng hằng số Lipschitz.</p>
+
+</div>
+
+<!-- Back to Chapter Home Link -->
+
+  
+  
+  <div style="margin-top: 20px; padding: 10px; background-color: #f8f9fa; border-left: 4px solid #007bff;">
+    <a href="/optimization-for-data-science-iuh-2025/contents/vi/chapter06/" style="text-decoration: none; color: #007bff; font-weight: bold;">
+      ← Quay lại đầu chương
+    </a>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="related">
+  <ul class="related-posts">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <h2>Previous Post</h2>
+          <h3>
+            <a href="/optimization-for-data-science-iuh-2025/contents/vi/chapter06/06_01_05_hessian_exercises/">
+              06-01-05 Bài tập: Hiểu về Kích thước Bước và Độ cong
+            </a>
+          </h3>
+        </li>
+      
+    
+      
+        <li>
+          <h2>Previous Post</h2>
+          <h3>
+            <a href="/optimization-for-data-science-iuh-2025/contents/vi/chapter06/06_03_convergence_analysis/">
+              06-03 Phân tích hội tụ
+            </a>
+          </h3>
+        </li>
+      
+    
+      
+    
+      
+    
+    
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <h2>Next Post</h2>
+        <h3>
+          <a href="/optimization-for-data-science-iuh-2025/contents/vi/chapter06/06_03_02_convergence_analysis_and_proof/">
+            06-03-02 Convergence analysis & Proof
+          </a>
+        </h3>
+      </li>
+    
+  
+  </ul>
+</div>
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="convex-optimization-for-all/convex-optimization-for-all.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script src='/optimization-for-data-science-iuh-2025/public/js/script.js'></script>
+    <script src='/optimization-for-data-science-iuh-2025/public/js/multilang.js'></script>
+    <script src='/optimization-for-data-science-iuh-2025/public/js/search.js'></script>
+  </body>
+</html>

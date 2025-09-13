@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/optimization-for-data-science-iuh-2025/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/optimization-for-data-science-iuh-2025/" rel="alternate" type="text/html" /><updated>2025-09-13T11:28:32+07:00</updated><id>http://localhost:4000/optimization-for-data-science-iuh-2025/feed.xml</id><title type="html">Optimization in Data Science</title><subtitle>Optimization in Data Science</subtitle><author><name>Nguyen Le Linh</name><email>nglelinh@gmail.com</email></author><entry><title type="html">author details</title><link href="http://localhost:4000/optimization-for-data-science-iuh-2025/home/author-details/" rel="alternate" type="text/html" title="author details" /><published>2021-05-20T00:00:00+07:00</published><updated>2021-05-20T00:00:00+07:00</updated><id>http://localhost:4000/optimization-for-data-science-iuh-2025/home/author-details</id><content type="html" xml:base="http://localhost:4000/optimization-for-data-science-iuh-2025/home/author-details/"><![CDATA[]]></content><author><name>Nguyen Le Linh</name><email>nglelinh@gmail.com</email></author><category term="home" /><summary type="html"><![CDATA[]]></summary></entry><entry xml:lang="vi"><title type="html">17-03 Some history</title><link href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_03_some_history/" rel="alternate" type="text/html" title="17-03 Some history" /><published>2021-05-01T00:00:00+07:00</published><updated>2021-05-01T00:00:00+07:00</updated><id>http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_03_some_history</id><content type="html" xml:base="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_03_some_history/"><![CDATA[<p>Generally, modern state-of-the-art LP Solvers use both Simplex method and interior-point method.</p>
+
+<ul>
+  <li>
+    <p>Dantzig (1940s): Simplex method, the first method to solve the general form of LP, obtaining exact solutions without iteration. It remains one of the best-known and most studied algorithms for LP to this day.</p>
+  </li>
+  <li>
+    <p>Klee and Minty (1972): A pathological LP with \(n\) variables and \(2n\) constraints. Solving with the Simplex method requires \(2^n\) iterations.</p>
+  </li>
+  <li>
+    <p>Khachiyan (1979): A polynomial-time algorithm for LP based on the ellipsoid method of Nemirovski and Yudin (1976), which is theoretically strong but not so in practice.</p>
+  </li>
+  <li>
+    <p>Karmarkar (1984): An interior-point polynomial-time LP method that is quite effective and became a breakthrough research. (US Patent 4,744,026, expired in 2006).</p>
+  </li>
+  <li>
+    <p>Renegar (1988): Newton-based interior-point algorithm for LP. It had the theoretically best computational complexity until the latest research by Lee-Sidford emerged.</p>
+  </li>
+</ul>]]></content><author><name>Nguyen Le Linh</name><email>nglelinh@gmail.com</email></author><category term="contents" /><category term="vi" /><category term="chapter17" /><summary type="html"><![CDATA[Generally, modern state-of-the-art LP Solvers use both Simplex method and interior-point method.]]></summary></entry><entry xml:lang="vi"><title type="html">17-02 Primal-dual interior-point method</title><link href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_02_primal_dual_interior_point_method/" rel="alternate" type="text/html" title="17-02 Primal-dual interior-point method" /><published>2021-05-01T00:00:00+07:00</published><updated>2021-05-01T00:00:00+07:00</updated><id>http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_02_primal_dual_interior_point_method</id><content type="html" xml:base="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_02_primal_dual_interior_point_method/"><![CDATA[<p>Like the barrier method, the <strong>primal-dual interior-point method</strong> also aims to (approximately) compute points on the central path. However, the two methods have several differences.</p>
+
+<h2 id="differences-between-primal-dual-interior-point-method-and-barrier-method">Differences between Primal-dual interior-point method and barrier method</h2>
+<ul>
+  <li>Generally performs <strong>one Newton step</strong> per iteration. (That is, there is no additional loop for the centering step.)</li>
+  <li><strong>Does not necessarily need to be feasible</strong>. (Pushes toward feasible regions through backtracking line search.)</li>
+  <li>Generally <strong>more effective</strong>. Particularly shows superior performance compared to linear convergence under appropriate conditions.</li>
+  <li>Somewhat less intuitive compared to the barrier method.</li>
+</ul>]]></content><author><name>Nguyen Le Linh</name><email>nglelinh@gmail.com</email></author><category term="contents" /><category term="vi" /><category term="chapter17" /><summary type="html"><![CDATA[Like the barrier method, the primal-dual interior-point method also aims to (approximately) compute points on the central path. However, the two methods have several differences.]]></summary></entry><entry xml:lang="vi"><title type="html">17-02-03 Primal-Dual Algorithm</title><link href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_02_03_primal_dual_algorithm/" rel="alternate" type="text/html" title="17-02-03 Primal-Dual Algorithm" /><published>2021-05-01T00:00:00+07:00</published><updated>2021-05-01T00:00:00+07:00</updated><id>http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_02_03_primal_dual_algorithm</id><content type="html" xml:base="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_02_03_primal_dual_algorithm/"><![CDATA[<p>To define the Primal-Dual algorithm, let’s first define \(\tau(x,u)\) as follows</p>
+<blockquote>
+\[\tau(x,u) := -\frac{h(x)^Tu}{m} \quad \text{with} \quad h (x) \le 0, u \ge 0\]
+</blockquote>
+
+<p>For reference, \(t\) and \(\mu\) in the Barrier method are redefined and denoted as \(\tau\) and \(\sigma\) in the Primal-Dual algorithm.</p>
+<blockquote>
+\[\tau = \frac{1}{t}, \quad \sigma = \frac{1}{\mu}\]
+</blockquote>
+
+<h2 id="primal-dual-algorithm">Primal-Dual Algorithm</h2>
+<p>The Primal-Dual algorithm is as follows.</p>
+<blockquote>
+  <ol>
+    <li>Choose \(\sigma\) (\(\sigma ∈ (0,1)\))<br /></li>
+    <li>Choose \((x^0,u^0,v^0)\) \((h(x^0) &lt; 0\). \(u^0 &gt; 0\))<br /></li>
+    <li>Repeat the following steps (\(k = 0,1,...\))<br />
+\(\quad\) * Calculate Newton step :<br />
+\(\qquad \quad (x,u,v) = (x^k,u^k,v^k)\) <br />
+\(\qquad \quad \tau := \sigma \tau(x^k,u^k)\) 계산<br />
+\(\qquad \quad \tau\)에 대해 \((\Delta x,\Delta u,\Delta v)\) 계산<br />
+\(\quad\) * Select step length \(θ_k\) with Backtracking<br />
+\(\quad\) * Primal-Dual update :<br />
+\(\qquad \quad (x^{k+1},u^{k+1},v^{k+1}) := (x^k,u^k,v^k) + \theta_k(\Delta x,\Delta u,\Delta v)\)<br /></li>
+    <li>Termination condition : Stop if the conditions \(-h(x^{k+1})^Tu \le \epsilon\) and \((\parallel r_{prim} \parallel^2_2 + \parallel r_{dual} \parallel^2_2)^{1/2} \le \epsilon\) are satisfied <br /></li>
+  </ol>
+</blockquote>
+
+<p>The algorithm calculates \((\Delta x,\Delta u,\Delta v)\) by executing Newton step at each stage and obtains \((x^{k+1},u^{k+1},v^{k+1})\) by performing Primal-Dual updates. However, \(\theta_k\) is selected through Backtracking line search so that the Primal-Dual variables become feasible. The algorithm terminates when the surrogate duality gap and primal and dual residuals become smaller than \(\epsilon\).</p>
+
+<h2 id="backtracking-line-search">Backtracking line search</h2>
+<p>Since the Primal-Dual algorithm executes Newton step only once, it can be viewed as finding the direction of the solution rather than finding the exact solution. Therefore, an appropriate step length must be found so that moving in that direction can enter the feasible set.</p>
+
+<p>That is, at each step of the algorithm, \(θ\) is obtained to update the primal-dual variables.</p>
+
+<blockquote>
+\[x^+ = x + θ\Delta x, \quad  u^+ = u + θ\Delta u, \quad v^+ = v + θ\Delta v\]
+</blockquote>
+
+<p>This process has two main objectives.</p>
+
+<ul>
+  <li>Maintaining the condition \(h(x) &lt; 0, u &gt; 0\)</li>
+  <li>Decreasing \(\parallel r(x,u,v) \parallel\)</li>
+</ul>
+
+<p>For this purpose, <strong>multi-stage backtracking line search</strong> is used.</p>
+
+<h3 id="stage-1-dual-feasibility-u-gt-0">Stage 1: dual feasibility \(u \gt 0\)</h3>
+<p>Initially, we start with the largest step \(\theta_{max} \leq 1\) that satisfies \(u + \theta \Delta u \geq 0\).</p>
+
+<blockquote>
+\[\theta_{\max} = \min \Biggl\{1,\  \min \Bigl\{ −\frac{u_i}{\Delta u_i} : ∆u_i &lt; 0 \Bigr\} \Biggr\}\]
+</blockquote>
+
+<p>The above equation is derived as follows.</p>
+
+<blockquote>
+\[\begin{align}
+&amp;u + \theta \Delta u &amp;&amp; \ge 0  \\\\
+\Leftrightarrow \quad &amp;u &amp;&amp; \ge -\theta \Delta u \\\\
+\Leftrightarrow \quad &amp;- u/\Delta u &amp;&amp; \ge \theta \quad  \text{ such that }-\Delta u \gt 0  \\\\
+\end{align}\]
+</blockquote>
+
+<p>This is the process of making \(u\) feasible.</p>
+
+<h3 id="stage-2-primal-feasibility-hx-lt-0">Stage 2: primal feasibility \(h(x) \lt 0\)</h3>
+<p>Next, with parameters \(\alpha, \beta \in (0,1)\) and \(\theta\) set to \(0.99\theta_{max}\), the following update is performed.</p>
+
+<ul>
+  <li>Update \(\theta = \beta\theta\) until \(h_i(x^+) &lt; 0, i = 1,...m\) is satisfied <br /></li>
+</ul>
+
+<p>This is the process of making \(x\) feasible.</p>
+
+<h3 id="stage-3--reduce-parallel-rxuv-parallel">Stage 3 : reduce \(\parallel r(x,u,v) \parallel\)</h3>
+<ul>
+  <li>Update \(\theta = \beta \theta\) until \(\| r(x^+,u^+,v^+) \| \leq (1−\alpha \theta) \| r(x,u,v) \|\) is satisfied</li>
+</ul>
+
+<p>The update equation in Stage 3 is the same as the existing backtracking line search algorithm.</p>
+
+<p>The right-hand side of the above equation can be derived as follows. First, we obtain the following result from Newton’s method.</p>
+<blockquote>
+\[\begin{align}
+\Delta w = (\Delta x, \Delta u, \Delta v) &amp;\approx -r^{'}(w)^{-1} r(w) \\\\
+\Leftrightarrow r(w)  &amp;\approx  -r^{'}(w) \Delta w \\\\
+\end{align}\]
+</blockquote>
+
+<p>Since \(r^{'}(w) \Delta w \approx -r(w)\) in the above equation, we substitute this into the first-order Taylor approximation below.</p>
+<blockquote>
+\[\begin{align}
+r(w + \theta \Delta w) &amp; \approx r(w) +  r^{'}(w) (\theta \Delta w) \\\\
+&amp;\approx (1-\theta) r(w) \\\\
+\end{align}\]
+</blockquote>
+
+<p>As a result, we get \(r(w + \alpha \theta \Delta w) \approx (1-\alpha  \theta) r(w)\).</p>]]></content><author><name>Nguyen Le Linh</name><email>nglelinh@gmail.com</email></author><category term="contents" /><category term="vi" /><category term="chapter17" /><summary type="html"><![CDATA[To define the Primal-Dual algorithm, let’s first define \(\tau(x,u)\) as follows \[\tau(x,u) := -\frac{h(x)^Tu}{m} \quad \text{with} \quad h (x) \le 0, u \ge 0\]]]></summary></entry><entry xml:lang="vi"><title type="html">17-02-02 Surrogate duality gap, residuals</title><link href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_02_02_surrogate_duality_gap_residuals/" rel="alternate" type="text/html" title="17-02-02 Surrogate duality gap, residuals" /><published>2021-05-01T00:00:00+07:00</published><updated>2021-05-01T00:00:00+07:00</updated><id>http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_02_02_surrogate_duality_gap_residuals</id><content type="html" xml:base="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_02_02_surrogate_duality_gap_residuals/"><![CDATA[<p>To define the Primal-Dual algorithm, let’s first define three types of residuals and the surrogate duality gap. Residuals and surrogate duality gap are the objectives to be minimized in the Primal-Dual algorithm.</p>
+
+<h2 id="residuals">Residuals</h2>
+<p>The dual, central, and primal residuals at \((x,u,v)\) are defined as follows.</p>
+
+<blockquote>
+  <p>\(r_{dual} = \nabla f(x) +\nabla h(x)u + A^Tv\\\)
+\(r_{cent} =  Uh(x) + τ\mathbb{1} \\\) 
+\(r_{prim} = Ax−b\)</p>
+</blockquote>
+
+<p>These correspond to each row of the function \(r(x,u,v)\). The <strong>Primal-dual interior point method</strong> executes in the direction of satisfying 0 rather than continuously making these three residuals equal to 0. This means that it is not necessary to be feasible during the execution process.</p>
+
+<p>The reason \(r_{dual}\) is called the dual residual is that, as shown in the equation below, if \(r_{dual} = 0\), it guarantees that \(u, v\) are in the domain of \(g\), which means dual feasible.</p>
+
+<blockquote>
+\[\begin{align}
+&amp; r_{dual} = \nabla f(x) +\nabla h(x)u + A^Tv = 0 \\\\
+&amp; \iff \min_{x} L(x,u.v) = g(u,v) \\\\
+\end{align}\]
+</blockquote>
+
+<p>Similarly, satisfying \(r_{prim}=0\) means primal feasible, so \(r_{prim}\) is called the primal residual.</p>
+
+<h2 id="surrogate-duality-gap">Surrogate duality gap</h2>
+<p>While the barrier method has a duality gap because it is feasible, the primal-dual interior-point method uses <strong>surrogate duality gap</strong> because it doesn’t necessarily need to be feasible. <strong>Surrogate duality gap</strong> is defined by the following equation.</p>
+
+<blockquote>
+\[−h(x)^Tu  \quad \text{for} \quad h(x) \le 0, u \ge 0\]
+</blockquote>
+
+<p>If \(r_{dual} = 0\) and \(r_{prim} = 0\), then the surrogate duality gap becomes the true duality gap. In other words, if primal and dual feasible, the surrogate duality gap becomes equal to the actual duality gap \(\frac{m}{t}\).</p>
+
+<p><strong>[Reference] Perturbed KKT conditions and parameter t</strong> <br /></p>
+
+<ul>
+  <li>In the perturbed KKT conditions, the parameter t is \(t = −\frac{m}{h(x)^Tu}\).</li>
+  <li>For detailed information, see <a href="/contents/en/chapter15/chapter16/15_03_01_perturbed_kkt_conditions/">15-03-01 Perturbed KKT conditions</a> and <a href="/contents/en/chapter15/15_03_02_suboptimality_gap/">15-03-02 Suboptimality gap</a></li>
+</ul>
+
+<p>Furthermore, if \(u &gt; 0,h(x) &lt; 0\) and the following condition is satisfied, then \((x,u,v)\) exists on the central path.</p>
+
+<blockquote>
+  <p>\(r(x,u,v) = 0\) for \(\tau = -\frac{h(x)^Tu}{m}\)</p>
+</blockquote>
+
+<p>In other words, the residual is 0 at points existing on the central path.</p>]]></content><author><name>Nguyen Le Linh</name><email>nglelinh@gmail.com</email></author><category term="contents" /><category term="vi" /><category term="chapter17" /><summary type="html"><![CDATA[To define the Primal-Dual algorithm, let’s first define three types of residuals and the surrogate duality gap. Residuals and surrogate duality gap are the objectives to be minimized in the Primal-Dual algorithm.]]></summary></entry><entry xml:lang="vi"><title type="html">17-02-01 Central path equations and Newton step</title><link href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_02_01_central_path_equations_and_newton_step/" rel="alternate" type="text/html" title="17-02-01 Central path equations and Newton step" /><published>2021-05-01T00:00:00+07:00</published><updated>2021-05-01T00:00:00+07:00</updated><id>http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_02_01_central_path_equations_and_newton_step</id><content type="html" xml:base="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_02_01_central_path_equations_and_newton_step/"><![CDATA[<p>The <strong>Primal-dual interior-point method</strong> is a method that finds solutions by finding the central path, similar to the barrier method. To do this, it defines perturbed KKT conditions as residual functions and finds solutions that make them zero. This section aims to explain this approach.</p>
+
+<h2 id="central-path-equations">Central path equations</h2>
+<p>By moving the right-hand side to the left-hand side in the central path equations explained in the previous <a href="/contents/vi/chapter17/17_01_barrier_method_duality_optimality_revisited/">17-01 Optimality conditions</a>, we can organize them as follows. (The optimality conditions of central path equations are also called perturbed KKT conditions.)</p>
+<blockquote>
+\[\begin{array}{rcl}
+∇f(x) +∇h(x)u + A^Tv &amp; = &amp; 0 \\\
+ Uh(x) + \tau\mathbb{1}  &amp; = &amp; 0 \\\
+Ax−b &amp; = &amp; 0 \\\
+u,−h(x)  &amp; &gt; &amp; 0
+\end{array}\]
+</blockquote>
+
+<p>Note that the complementary slackness and inequality constraints in the KKT conditions for the original problem differ from those in the perturbed KKT conditions. For the original problem, \(Uh(x) = 0\) and \(u,−h(x)  \ge 0\), but in the perturbed KKT conditions, \(Uh(x) = - \tau\mathbb{1}\) and \(u,−h(x)  \gt 0\).</p>
+
+<p>These organized nonlinear equations, the perturbed KKT conditions, can be solved by approximating them as linear equations using the root finding version of Newton’s method.</p>
+
+<h2 id="newton-step">Newton step</h2>
+<p>Now let’s learn about the method of finding solutions by linearly approximating the perturbed KKT conditions. The perturbed KKT conditions equation can be defined as the following residual function \(r(x, u, v) = 0\). (The reason for naming it residual is that these values must be 0 to be optimal.)</p>
+
+<blockquote>
+\[r(x,u,v) :=
+\begin{bmatrix}
+∇f(x) +∇h(x)u + A^Tv \\\
+Uh(x) + τ\mathbb{1} \\\
+Ax−b
+\end{bmatrix}, H(x) = \text{Diag}(h(x))\]
+</blockquote>
+
+<p>To find the roots of the function, approximating \(r(x, u, v)\) with a first-order Taylor expansion gives us the following. (This process approximates non-linear equations to linear equations. For detailed information, see <a href="/contents/vi/chapter14/14_01_newton_method/">14-02-01 Root finding</a>)</p>
+<blockquote>
+\[\begin{align}
+0 &amp; = r(x + \Delta x, u + \Delta u, r + \Delta v)  \\\\
+  &amp; \approx r(x, u, v) + \nabla r(x, u, v) 
+\begin{pmatrix}
+\Delta x \\\\
+\Delta u \\\\
+\Delta v \\\\
+\end{pmatrix} \\\\
+\end{align}\]
+</blockquote>
+
+<p>Accordingly, the function \(r(x, u, v)\) can be organized as follows.</p>
+
+<blockquote>
+\[\begin{align}
+\nabla r(x, u, v) 
+\begin{pmatrix}
+\Delta x \\\\
+\Delta u \\\\
+\Delta v \\\\
+\end{pmatrix} = -r(x, u, v) \\\\
+\end{align}\]
+</blockquote>
+
+<p>By differentiating \(r(x, u, v)\) with respect to \(x, u, v\) to obtain the Jacobian matrix \(\nabla r(x, u, v)\) and substituting the above equation, we get the following.</p>
+<blockquote>
+  <p>\(\begin{bmatrix}
+\nabla^2f(x) + \sum_i u_i \nabla^2h_i(x) &amp; \nabla h(x) &amp; A^T \\\
+ U \nabla  h(x)^T &amp; H(x) &amp; 0 \\\
+A &amp; 0 &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+\Delta x \\\
+\Delta u \\\
+\Delta v
+\end{bmatrix} = −r(x,u,v)\)
+where
+\(r(x,u,v) :=
+\begin{bmatrix}
+\nabla f(x) +\nabla h(x)u + A^Tv \\\
+Uh(x) + τ\mathbb{1} \\\
+Ax−b
+\end{bmatrix}, H(x) = \text{Diag}(h(x))\)</p>
+</blockquote>
+
+<p>The solution \((\Delta x, \Delta u, \Delta v)\) to this equation is the update direction for the primal and dual variables. The reason why the method introduced in this chapter is called the <strong>Primal-Dual</strong> interior point method is that it simultaneously updates primal and dual variables using residual functions.</p>]]></content><author><name>Nguyen Le Linh</name><email>nglelinh@gmail.com</email></author><category term="contents" /><category term="vi" /><category term="chapter17" /><summary type="html"><![CDATA[The Primal-dual interior-point method is a method that finds solutions by finding the central path, similar to the barrier method. To do this, it defines perturbed KKT conditions as residual functions and finds solutions that make them zero. This section aims to explain this approach.]]></summary></entry><entry xml:lang="vi"><title type="html">17-01 Barrier method &amp;amp; duality &amp;amp; optimality revisited</title><link href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_01_barrier_method_duality_optimality_revisited/" rel="alternate" type="text/html" title="17-01 Barrier method &amp;amp; duality &amp;amp; optimality revisited" /><published>2021-05-01T00:00:00+07:00</published><updated>2021-05-01T00:00:00+07:00</updated><id>http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_01_barrier_method_duality_optimality_revisited</id><content type="html" xml:base="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_01_barrier_method_duality_optimality_revisited/"><![CDATA[<p>In Chapter 15, we examined the barrier method, and in Chapters 13 and 16, we looked at duality.
+Before covering the content of this chapter, we want to briefly review the barrier method and duality.</p>
+
+<h2 id="barrier-method">Barrier method</h2>
+<p>When the following primal problem is convex and \(f, h_i , i = 1, . . . m\) are differentiable,</p>
+<blockquote>
+\[\begin{align}
+&amp;\min_{x} &amp;&amp; f(x) \\
+&amp;\text{subject to } &amp;&amp;h_{i}(x) \leq 0, i = 1, \dotsc, m \\
+&amp;&amp;&amp; Ax = b \\
+\end{align}\]
+</blockquote>
+
+<p>Using the log barrier function, the primal problem can be transformed into a barrier problem as follows:</p>
+
+<blockquote>
+\[\begin{align}
+&amp; \min_{x} &amp;&amp; f(x) + \frac{1}{t} \phi(x) &amp; \qquad &amp; \min_{x} &amp;&amp; tf(x) + \phi(x) \\
+&amp; \text{subject to } &amp;&amp; Ax = b &amp; \iff \qquad &amp; \text{subject to } &amp;&amp; Ax = b \\
+&amp; \text{where } &amp;&amp; \phi(x) = - \sum_{i=1}^{m} \log(-h_i(x))
+\end{align}\]
+</blockquote>
+
+<p>The algorithm starts with \(t = t^{(0)}\) satisfying \(t &gt; 0\) and increases until \(\frac{m}{t}\) becomes less than or equal to \(\epsilon\). At this time, Newton’s method is used to find \(x^{\star}(t)\) for the initial value \(x^{(0)}\), and the process of finding \(x^{(k+1)} = x^{\star}(t)\) at each step for \(k = 1, 2, 3, . . .\) is repeated.</p>
+
+<p>The algorithm can be briefly summarized as follows:</p>
+
+<ol>
+  <li>Choose \(t^{(0)} \gt 0\) and \(k := 0\).</li>
+  <li>Solve the barrier problem at \(t = t^{(0)}\) to find \(x^{(0)} = x^{\star}(t)\).</li>
+  <li>While \(m/t \gt \epsilon\) <br />
+  3-1. Update \(t^{(k+1)} = µt\) where \((µ &gt; 1)\) <br />
+  3-2. Initialize Newton’s method with \(x^{(k)}\) (warm start)<br />
+     Solve the barrier problem at \(t = t^{(k+1)}\) to find \(x^{(k+1)} = x^{\star}(t)\).<br />
+  end while<br /></li>
+</ol>
+
+<ul>
+  <li>For detailed information, see <a href="/contents/vi/chapter15/15_01_02_log_barrier_function_and_barrier_method/">15-01-02 Log barrier function &amp; barrier method</a></li>
+</ul>
+
+<h2 id="duality">Duality</h2>
+<p>When the following primal problem is given:</p>
+<blockquote>
+\[\begin{align}
+   \mathop{\text{minimize}}_x &amp;\quad f(x) \\\\
+   \text{subject to} &amp;\quad f Ax = b \\\\
+   &amp;\quad h(x) \le 0
+\end{align}\]
+</blockquote>
+
+<p>This can be transformed into Lagrangian form as follows:</p>
+<blockquote>
+\[L(x,u,v) = f(x) + u^Th(x) + v^T(Ax - b)\]
+</blockquote>
+
+<p>Using the Lagrangian defined in this way, primal and dual problems can be redefined in the following form. Please refer to Chapter 16 for detailed information.<br /></p>
+<h3 id="primal-problem">Primal Problem</h3>
+<blockquote>
+\[\min_x \mathop{\max_{u,v}}_{u \geq 0} L(x,u,v)\]
+</blockquote>
+
+<h3 id="dual-problem">Dual problem</h3>
+<blockquote>
+\[\mathop{\max_{u,v}}_{u \geq 0} \min_x L(x,u,v)\]
+</blockquote>
+
+<h2 id="optimality-conditions">Optimality conditions</h2>
+
+<p>When \(f,h_1,...h_m\) are convex and differentiable, and the given problem satisfies strong duality, the KKT optimality conditions for this problem are as follows:</p>
+
+<blockquote>
+\[\begin{array}{rcl}
+∇f(x) +∇h(x)u + A^Tv &amp; = &amp; 0 &amp; \text{(Stationarity)}\\\
+ Uh(x) &amp; = &amp; 0 &amp; \text{(Complementary Slackness)} \\\
+Ax &amp; = &amp; b &amp; \text{(Primal Feasibility)}\\\
+u,−h(x)  &amp; ≥ &amp; 0 &amp; \text{(Dual Feasibility)}
+\end{array}\]
+</blockquote>
+
+<p>Here, \(U\) means \(\text{diag}(u)\), and \(∇h(x)\) means \([ ∇h_1(x) ··· ∇h_m(x) ]\).</p>
+
+<ul>
+  <li>For detailed information, see <a href="/contents/vi/chapter12/12_00_KKT_conditions/">Chapter 12 KKT conditions</a></li>
+</ul>
+
+<h2 id="central-path-equations">Central path equations</h2>
+<p>The function \(f(x)\) can be redefined as a barrier problem as follows.<br />
+In the equation below, \(τ\) is \(\frac{1}{t}\), and by making \(τ\) gradually approach 0 and iteratively finding solutions, we ultimately obtain the solution to the original problem.</p>
+
+<blockquote>
+\[\begin{align}
+&amp;\min_{x} &amp;&amp; {f(x) + τ\phi(x)} \\\\
+&amp; &amp;&amp;{Ax = b} \\\
+&amp; \text{where } &amp;&amp; \phi(x) = −\sum_{i=1}^m \log(−h_i(x)).
+\end{align}\]
+</blockquote>
+
+<p>That is, in the above equation, differences from the primal problem occur depending on \(τ\), and the trajectory generated according to \(τ\), i.e., the set of solutions to the barrier problem, is called the central path.</p>
+
+<p>And the optimality conditions for this barrier problem are as follows:</p>
+<blockquote>
+\[\begin{array}{rcl}
+∇f(x) +∇h(x)u + A^Tv  &amp; = &amp; 0 \\\
+Uh(x) &amp; = &amp; −τ\mathbb{1} \\\
+Ax &amp; = &amp; b \\\
+u,−h(x)  &amp; &gt; &amp; 0
+\end{array}\]
+</blockquote>
+
+<ul>
+  <li>For detailed information, see <a href="/contents/vi/chapter16/16_02_optimality_conditions/">16-02 Optimality conditions</a></li>
+</ul>
+
+<p>The <strong>Primal-Dual interior point method</strong> introduced in this chapter is a method that defines the first three equations above as residuals and finds solutions by reducing them to \(0\).</p>
+
+<h4 id="useful-fact">Useful fact</h4>
+<p>The solution \((x(τ),u(τ),v(τ))\) has a duality gap of size \(mτ\), i.e., \(\frac{m}{t}\), as follows:</p>
+<blockquote>
+\[f(x(τ))−\min_x L(x,u(τ),v(τ)) = mτ= \frac{m}{t}\]
+</blockquote>]]></content><author><name>Nguyen Le Linh</name><email>nglelinh@gmail.com</email></author><category term="contents" /><category term="vi" /><category term="chapter17" /><summary type="html"><![CDATA[In Chapter 15, we examined the barrier method, and in Chapters 13 and 16, we looked at duality. Before covering the content of this chapter, we want to briefly review the barrier method and duality.]]></summary></entry><entry xml:lang="en"><title type="html">17 Primal-Dual Interior-Point Methods</title><link href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter17/17_primal_dual_interior_point_method/" rel="alternate" type="text/html" title="17 Primal-Dual Interior-Point Methods" /><published>2021-05-01T00:00:00+07:00</published><updated>2021-05-01T00:00:00+07:00</updated><id>http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter17/17_primal_dual_interior_point_method</id><content type="html" xml:base="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter17/17_primal_dual_interior_point_method/"><![CDATA[<p>In this chapter, we will examine the <strong>Primal-Dual Interior-Point Method</strong>, which improves performance by reducing the centering step of the Barrier method we learned earlier to a single step.</p>
+
+<p>The <strong>Primal-Dual Interior-Point Method</strong> relaxes the constraint that the centering step must be feasible and uses the root finding version of Newton’s Method to approximate nonlinear equations with linear equations to find solutions, making it faster and more accurate than the Barrier method.</p>
+
+<h2 id="references-and-further-readings">References and further readings</h2>
+<ul>
+  <li>S. Boyd and L. Vandenberghe (2004), “Convex optimization,” Chapter 11</li>
+  <li>S. Wright (1997), “Primal-dual interior-point methods,” Chapters 5 and 6</li>
+  <li>J. Renegar (2001), “A mathematical view of interior-point methods”</li>
+  <li>Y. Nesterov and M. Todd (1998), “Primal-dual interior-point methods for self-scaled cones.” SIAM J. Optim.</li>
+</ul>]]></content><author><name>Nguyen Le Linh</name><email>nglelinh@gmail.com</email></author><category term="contents" /><category term="en" /><category term="chapter17" /><summary type="html"><![CDATA[In this chapter, we will examine the Primal-Dual Interior-Point Method, which improves performance by reducing the centering step of the Barrier method we learned earlier to a single step.]]></summary></entry><entry xml:lang="en"><title type="html">17-05 Optimality conditions for semidefinite programming</title><link href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter17/17_05_optimality_conditions_for_semidefinite_programming/" rel="alternate" type="text/html" title="17-05 Optimality conditions for semidefinite programming" /><published>2021-05-01T00:00:00+07:00</published><updated>2021-05-01T00:00:00+07:00</updated><id>http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter17/17_05_optimality_conditions_for_semidefinite_programming</id><content type="html" xml:base="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/en/chapter17/17_05_optimality_conditions_for_semidefinite_programming/"><![CDATA[<p>In this section, we want to look at an example of the Primal-Dual method for SDP (semidefinite programming) problems.</p>
+
+<h2 id="sdp-semidefinite-programming">SDP (semidefinite programming)</h2>
+<p>The primal problem of SDP is defined as follows.</p>
+<blockquote>
+\[\begin{align}
+   &amp;\min_{x} &amp;&amp; {C \cdot X} \\\\
+   &amp;\text{subject to } &amp;&amp; {A_i \cdot X = b_i, i = 1,...,m} \\\\
+   &amp; &amp;&amp;{X \succeq 0}
+\end{align}\]
+</blockquote>
+
+<p>The dual problem of SDP is defined as follows.</p>
+<blockquote>
+\[\begin{align}
+   &amp;\max_{y} &amp;&amp; {b^Ty} \\\\
+   &amp;\text{subject to } &amp;&amp; {\sum^m_{X_i=1} y_iA_i + S = C} \\\\
+   &amp; &amp;&amp;{S \succeq 0}
+\end{align}\]
+</blockquote>
+
+<p>For reference, the trace inner product of \(\mathbb{S}^n\) is denoted as follows.</p>
+<blockquote>
+\[X \cdot S = \text{trace}(XS)\]
+</blockquote>
+
+<h2 id="optimality-conditions-for-sdp">Optimality conditions for SDP</h2>
+<p>The primal and dual problems of SDP can be defined using linear maps as follows.</p>
+
+<blockquote>
+\[\begin{align}
+   &amp;\min_{x} &amp;&amp; {C \cdot X} &amp; \qquad \qquad \qquad &amp; \max_{y,S}  &amp;&amp; {b^Ty} \\\\
+   &amp;\text{subject to } &amp;&amp; {\mathcal{A}(X) = b} &amp; \qquad \qquad \qquad &amp; \text{subject to } &amp;&amp; {\mathcal{A}^{∗}(y) + S = C} \\\\\
+   &amp; &amp;&amp;{X \succeq 0} &amp; \qquad \qquad \qquad &amp; &amp;&amp;{S \succeq 0}
+\end{align}\]
+</blockquote>
+
+<p>Here \(\mathcal{A}: \mathbb{S}^n \to \mathbb{R}^m\) means a linear map.</p>
+
+<p>Assuming strong duality is satisfied, \(X^{\star}\) and \((y^{\star}, S^{\star})\) where \((X^{\star}, y^{\star}, S^{\star})\) is a solution are optimal solutions for primal and dual, and vice versa.</p>
+
+<blockquote>
+\[\begin{array}{rcl}
+\mathcal{A}^∗(y) + S &amp; = &amp; C \\\
+\mathcal{A}(X) &amp; = &amp; b \\\
+XS &amp; = &amp; 0 \\\
+X,S &amp; \succeq &amp; 0
+\end{array}\]
+</blockquote>
+
+<h2 id="central-path-for-sdp">Central path for SDP</h2>
+<p><strong>Primal barrier problem</strong></p>
+<blockquote>
+\[\begin{align}
+   &amp;\min_{x} &amp;&amp; {C \cdot X−τ \log(det(X))} \\\\
+   &amp;\text{subject to } &amp;&amp; {A(X) = b} 
+\end{align}\]
+</blockquote>
+
+<p><strong>Dual barrier problem</strong></p>
+<blockquote>
+\[\begin{align}
+   &amp;\max_{y, S} &amp;&amp; {b^Ty + τ \log(det(S))} \\\\
+   &amp;\text{subject to } &amp;&amp; {\mathcal{A}^∗(y) + S = C} 
+\end{align}\]
+</blockquote>
+
+<p><strong>Primal &amp; dual을 위한 Optimality conditions</strong></p>
+<blockquote>
+\[\begin{array}{rcl}
+\mathcal{A}^∗(y) + S &amp; = &amp; C \\\
+\mathcal{A}(X) &amp; = &amp; b \\\
+XS &amp; = &amp; τI \\\
+X,S &amp; \succ &amp; 0
+\end{array}\]
+</blockquote>
+
+<h2 id="newton-step">Newton step</h2>
+<p>Primal central path equations</p>
+<blockquote>
+\[\begin{array}{rcl}
+\mathcal{A}^∗(y) + \tau X^{−1} &amp; = &amp; C \\\
+\mathcal{A}(X) &amp; = &amp; b \\\
+X &amp; \succ &amp; 0
+\end{array}\]
+</blockquote>
+
+<p>Newton equations</p>
+<blockquote>
+  <p>\(τX^{−1}\Delta XX^{−1} +\mathcal{A}^∗(\Delta y) = −(\mathcal{A}^∗(y) + \tau X^{−1} −C)\)
+\(\mathcal{A}(\Delta X) = −(\mathcal{A}(X)−b)\)</p>
+</blockquote>
+
+<p>The central path equation and Newton equation for the dual are similarly defined including \((y,S)\).</p>
+
+<h2 id="primal-dual-newton-step">Primal-dual Newton step</h2>
+<p>Primal central path equations</p>
+<blockquote>
+\[\begin{bmatrix}
+\mathcal{A}^∗(y) + S - C  \\\
+\mathcal{A}(X) - b \\\
+XS
+\end{bmatrix} =
+\begin{bmatrix}
+0 \\\
+0 \\\
+τI
+\end{bmatrix}
+, X, S \succ 0\]
+</blockquote>
+
+<p>Newton step:</p>
+<blockquote>
+\[\begin{bmatrix}
+0 &amp; \mathcal{A}^∗ &amp; I \\\
+\mathcal{A} &amp; 0 &amp; 0 \\\
+S &amp; 0 &amp; X 
+\end{bmatrix}
+\begin{bmatrix}
+\Delta X \\\
+\Delta y \\\
+\Delta S
+\end{bmatrix}= −
+\begin{bmatrix}
+\mathcal{A}^∗(y) + s−c \\\
+\mathcal{A}(x) − b \\\
+XS − \tau I 
+\end{bmatrix}\]
+</blockquote>]]></content><author><name>Nguyen Le Linh</name><email>nglelinh@gmail.com</email></author><category term="contents" /><category term="en" /><category term="chapter17" /><summary type="html"><![CDATA[In this section, we want to look at an example of the Primal-Dual method for SDP (semidefinite programming) problems.]]></summary></entry><entry xml:lang="vi"><title type="html">17 Primal-Dual Interior-Point Methods</title><link href="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_primal_dual_interior_point_method/" rel="alternate" type="text/html" title="17 Primal-Dual Interior-Point Methods" /><published>2021-05-01T00:00:00+07:00</published><updated>2021-05-01T00:00:00+07:00</updated><id>http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_primal_dual_interior_point_method</id><content type="html" xml:base="http://localhost:4000/optimization-for-data-science-iuh-2025/contents/vi/chapter17/17_primal_dual_interior_point_method/"><![CDATA[<p>In this chapter, we will examine the <strong>Primal-Dual Interior-Point Method</strong>, which improves performance by reducing the centering step of the Barrier method we learned earlier to a single step.</p>
+
+<p>The <strong>Primal-Dual Interior-Point Method</strong> relaxes the constraint that the centering step must be feasible and uses the root finding version of Newton’s Method to approximate nonlinear equations with linear equations to find solutions, making it faster and more accurate than the Barrier method.</p>
+
+<h2 id="references-and-further-readings">References and further readings</h2>
+<ul>
+  <li>S. Boyd and L. Vandenberghe (2004), “Convex optimization,” Chapter 11</li>
+  <li>S. Wright (1997), “Primal-dual interior-point methods,” Chapters 5 and 6</li>
+  <li>J. Renegar (2001), “A mathematical view of interior-point methods”</li>
+  <li>Y. Nesterov and M. Todd (1998), “Primal-dual interior-point methods for self-scaled cones.” SIAM J. Optim.</li>
+</ul>]]></content><author><name>Nguyen Le Linh</name><email>nglelinh@gmail.com</email></author><category term="contents" /><category term="vi" /><category term="chapter17" /><summary type="html"><![CDATA[In this chapter, we will examine the Primal-Dual Interior-Point Method, which improves performance by reducing the centering step of the Barrier method we learned earlier to a single step.]]></summary></entry></feed>

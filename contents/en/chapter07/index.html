@@ -1,0 +1,25 @@
+---
+layout: page
+title: Chapter 7 - Basic Counting Principles
+permalink: /contents/chapter07/
+---
+
+<div class="chapter-intro">
+    <h1>Chương 7: Nguyên lý Đếm cơ bản</h1>
+    <p class="lead">Nền tảng của tổ hợp học - đếm các cấu hình và sắp xếp</p>
+</div>
+
+{% assign sorted_posts = site.categories.chapter07 | sort: "order" %}
+{% for post in sorted_posts %}
+    {% if post.order %}
+        <div class="post-preview">
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <p>{{ post.excerpt | strip_html | truncate: 200 }}</p>
+            <div class="post-meta">
+                <span class="badge {% if post.required %}badge-required{% else %}badge-optional{% endif %}">
+                    {% if post.required %}{{ site.t[page.lang].required }}{% else %}{{ site.t[page.lang].optional }}{% endif %}
+                </span>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}

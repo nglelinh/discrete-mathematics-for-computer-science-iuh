@@ -1,0 +1,8564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+    <url>
+      <loc>http://localhost:4000/home/author-details/</loc>
+      
+        <lastmod>2021-05-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter17/17_primal_dual_interior_point_method/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter17/17_05_optimality_conditions_for_semidefinite_programming/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter17/17_04_special_case_linear_programming/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter17/17_03_some_history/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter17/17_02_primal_dual_interior_point_method/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter17/17_02_03_primal_dual_algorithm/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter17/17_02_02_surrogate_duality_gap_residuals/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter17/17_02_01_central_path_equations_and_newton_step/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter17/17_01_barrier_method_duality_optimality_revisited/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter17/17_primal_dual_interior_point_method/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter17/17_05_optimality_conditions_for_semidefinite_programming/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter17/17_04_special_case_linear_programming/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter17/17_03_some_history/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter17/17_02_primal_dual_interior_point_method/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter17/17_02_03_primal_dual_algorithm/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter17/17_02_02_surrogate_duality_gap_residuals/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter17/17_02_01_central_path_equations_and_newton_step/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter17/17_01_barrier_method_duality_optimality_revisited/</loc>
+      
+        <lastmod>2021-05-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter13/13_Duality_uses_and_correspondences/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter13/13_06_Dual_subtleties_Double_dual/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter13/13_05_Dual_cones/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter13/13_04_Conjugate_function/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter13/13_04_03_Shifting_linear_transformations/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter13/13_04_02_Conjugates_and_dual_problems/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter13/13_04_01_Example_lasso_dual/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter13/13_03_Dual_norms/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter13/13_02_Solving_the_primal_via_the_dual/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter13/13_01_Uses_of_duality/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter13/13_Duality_uses_and_correspondences/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter13/13_06_Dual_subtleties_Double_dual/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter13/13_05_Dual_cones/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter13/13_04_Conjugate_function/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter13/13_04_03_Shifting_linear_transformations/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter13/13_04_02_Conjugates_and_dual_problems/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter13/13_04_01_Example_lasso_dual/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter13/13_03_Dual_norms/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter13/13_02_Solving_the_primal_via_the_dual/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter13/13_01_Uses_of_duality/</loc>
+      
+        <lastmod>2021-04-05T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter12/12_06_Uniqueness_in_L1_penalized_problems/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter12/12_05_Constrained_and_Lagrange_forms/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter12/12_04_Example_support_vector_machines/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter12/12_03_Example_water_filling/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter12/12_02_Example_quadratic_with_equality_constraints/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter12/12_01_Karush_Kuhn_Tucker_conditions/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter12/12_00_KKT_conditions/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter12/12_06_Uniqueness_in_L1_penalized_problems/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter12/12_05_Constrained_and_Lagrange_forms/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter12/12_04_Example_support_vector_machines/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter12/12_03_Example_water_filling/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter12/12_02_Example_quadratic_with_equality_constraints/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter12/12_01_Karush_Kuhn_Tucker_conditions/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter12/12_00_KKT_conditions/</loc>
+      
+        <lastmod>2021-04-02T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter16/16_duality_revisited/</loc>
+      
+        <lastmod>2021-03-31T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter16/16_03_fenchel_duality/</loc>
+      
+        <lastmod>2021-03-31T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter16/16_02_optimality_conditions/</loc>
+      
+        <lastmod>2021-03-31T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter16/16_01_lagrangian_duality_revisited/</loc>
+      
+        <lastmod>2021-03-31T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter16/16_duality_revisited/</loc>
+      
+        <lastmod>2021-03-31T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter16/16_03_fenchel_duality/</loc>
+      
+        <lastmod>2021-03-31T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter16/16_02_optimality_conditions/</loc>
+      
+        <lastmod>2021-03-31T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter16/16_01_lagrangian_duality_revisited/</loc>
+      
+        <lastmod>2021-03-31T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter21/21_06_Faster_convergence_with_subprogram_parametrization_-_example_of_the_2d_fused_lasso_problem/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter21/21_05_Consensus_ADMM/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter21/21_04_Example_-_Sparse_subspace_estimation_and_sparse_plus_low_rank_decomposition/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter21/21_03_Example_-_Lasso_regression_and_group_lasso_Regression/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter21/21_02_Connection_to_proximal_operators/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter21/21_01_Last_time_Dual_method,_Augmented_Lagrangian_method,_ADMM,_ADMM_in_scaled_form/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter21/21_00_Alternating_Direction_Method_of_Multipliers/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter21/21_06_Faster_convergence_with_subprogram_parametrization_-_example_of_the_2d_fused_lasso_problem/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter21/21_05_Consensus_ADMM/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter21/21_04_Example_-_Sparse_subspace_estimation_and_sparse_plus_low_rank_decomposition/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter21/21_03_Example_-_Lasso_regression_and_group_lasso_Regression/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter21/21_02_Connection_to_proximal_operators/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter21/21_01_Last_time_Dual_method,_Augmented_Lagrangian_method,_ADMM,_ADMM_in_scaled_form/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter21/21_00_Alternating_Direction_Method_of_Multipliers/</loc>
+      
+        <lastmod>2021-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/reference/26_reference/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter25/25_Mixed_integer_programming/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter25/25_02_Two_extended_examples/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter25/25_02_02_Least_mean_squares/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter25/25_02_01_Best_subset_selection/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter25/25_01_Cutting_planes/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter25/25_01_04_Branch_and_cut_algorithm/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter25/25_01_03_Gomory_cuts/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter25/25_01_02_Cutting_plane_algorithm/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter25/25_01_01_Convexification/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter24/24_Mixed_integer_programming/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter24/24_05_Branch_and_bound_algorithm/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter24/24_04_Relaxations/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter24/24_03_Solving_integer_programs/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter24/24_02_Example_of_integer_programs/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter24/24_01_Definition/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter23/23_Coordinate_Descent/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter23/23_04_Example_pathwise_coordinate/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter23/23_03_Example_lasso_regression/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter23/23_02_Example_linear_regression/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter23/23_01_Coordinate_descent/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter22/22_Conditional_Gradient_Method/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter22/22_04_Properties_and_variants/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter22/22_03_Convergence_analysis/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter22/22_02_Conditional_gradient_method/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter22/22_01_Last_time_ADMM/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/chapter16/15_barrier_method/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/chapter16/15_08_formal_barrier_method/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/chapter16/15_07_feasibility_methods/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/15_06_barrier_method_v2/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/chapter16/15_05_convergence_analysis/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/chapter16/15_04_barrier_method_v0_and_v1/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/chapter16/15_03_properties_and_interpretation/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/15_03_02_suboptimality_gap/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/chapter16/15_03_01_perturbed_kkt_conditions/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/15_02_central_path/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/15_01_barrier_method_and_log_barrier_function/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/15_01_03_log_barrier_calculus/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/15_01_02_log_barrier_function_and_barrier_method/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter15/15_01_01_inequality_constrained_minimization_problems/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter25/25_Mixed_integer_programming/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter25/25_02_Two_extended_examples/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter25/25_02_02_Least_mean_squares/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter25/25_02_01_Best_subset_selection/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter25/25_01_Cutting_planes/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter25/25_01_04_Branch_and_cut_algorithm/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter25/25_01_03_Gomory_cuts/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter25/25_01_02_Cutting_plane_algorithm/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter25/25_01_01_Convexification/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter24/24_Mixed_integer_programming/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter24/24_05_Branch_and_bound_algorithm/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter24/24_04_Relaxations/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter24/24_03_Solving_integer_programs/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter24/24_02_Example_of_integer_programs/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter24/24_01_Definition/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter23/23_Coordinate_Descent/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter23/23_04_Example_pathwise_coordinate/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter23/23_03_Example_lasso_regression/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter23/23_02_Example_linear_regression/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter23/23_01_Coordinate_descent/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter22/22_Conditional_Gradient_Method/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter22/22_04_Properties_and_variants/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter22/22_03_Convergence_analysis/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter22/22_02_Conditional_gradient_method/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter22/22_01_Last_time_ADMM/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/chapter16/15_barrier_method/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/chapter16/15_08_formal_barrier_method/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/chapter16/15_07_feasibility_methods/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/15_06_barrier_method_v2/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/chapter16/15_05_convergence_analysis/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/chapter16/15_04_barrier_method_v0_and_v1/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/chapter16/15_03_properties_and_interpretation/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/15_03_02_suboptimality_gap/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/chapter16/15_03_01_perturbed_kkt_conditions/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/15_02_central_path/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/15_01_barrier_method_and_log_barrier_function/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/15_01_03_log_barrier_calculus/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/15_01_02_log_barrier_function_and_barrier_method/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter15/15_01_01_inequality_constrained_minimization_problems/</loc>
+      
+        <lastmod>2021-03-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_05_References/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_04_04_Example-_Alternating_Projection/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_04_03_ADMM_in_Scaled_Form/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_04_02_Converegence_Guarantee/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_04_01_ADMM/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_04_00_A_peak_at_ADMM/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_03_Augmented_Lagrangians/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_02_02_Dual_Decomposition_with_Inequality_Constraint/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_02_01_Dual_Decomposition_with_Equality_Constraint/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_02_00_Dual_Decomposition/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_01_01_Convergence_Analysis/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_01_00_Dual_(sub)gradient_methods/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter20/20_00_Dual_Methods/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_05_References/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_04_04_Example-_Alternating_Projection/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_04_03_ADMM_in_Scaled_Form/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_04_02_Converegence_Guarantee/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_04_01_ADMM/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_04_00_A_peak_at_ADMM/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_03_Augmented_Lagrangians/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_02_02_Dual_Decomposition_with_Inequality_Constraint/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_02_01_Dual_Decomposition_with_Equality_Constraint/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_02_00_Dual_Decomposition/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_01_01_Convergence_Analysis/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_01_00_Dual_(sub)gradient_methods/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter20/20_00_Dual_Methods/</loc>
+      
+        <lastmod>2021-03-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_newton_method/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_09_quasi_newton_methods/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_08_special_cases/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_07_comparison_to_first_order_method/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_06_self_concordance/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_06_02_convergence_analysis_for_self_concordant_functions/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_06_01_definition_of_self_concordant_functions/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_05_convergence_analysis/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_04_backtracking_line_search/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_03_newton_decrement/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_02_interpretation_and_properties/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_02_03_local_convergence_analysis/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_02_02_affine_invariance_of_newton_method/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_02_01_root_finding/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_01_newton_method/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter14/14_01_01_newton_method_interpretation/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_newton_method/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_09_quasi_newton_methods/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_08_special_cases/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_07_comparison_to_first_order_method/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_06_self_concordance/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_06_02_convergence_analysis_for_self_concordant_functions/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_06_01_definition_of_self_concordant_functions/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_05_convergence_analysis/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_04_backtracking_line_search/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_03_newton_decrement/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_02_interpretation_and_properties/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_02_03_local_convergence_analysis/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_02_02_affine_invariance_of_newton_method/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_02_01_root_finding/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_01_newton_method/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter14/14_01_01_newton_method_interpretation/</loc>
+      
+        <lastmod>2021-03-26T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter07/07_03_subgradient_optimality_condition/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter07/07_03_05_example_distance_to_convex_set/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter07/07_03_04_example_soft-thresholding/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter07/07_03_03_example_lasso_optimality_condition/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter07/07_03_02_derivation_of_first-order_optimality_condition/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter07/07_03_01_subgradient_optimality_condition/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter07/07_02_subdifferentials/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter07/07_02_02_subgradient_calculus/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter07/07_02_01_connection_to_a_convexity_geometry/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter07/07_01_subgradient/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter07/07_00_subgradient/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter07/07_03_subgradient_optimality_condition/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter07/07_03_05_example_distance_to_convex_set/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter07/07_03_04_example_soft-thresholding/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter07/07_03_03_example_lasso_optimality_condition/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter07/07_03_02_derivation_of_first-order_optimality_condition/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter07/07_03_01_subgradient_optimality_condition/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter07/07_02_subdifferentials/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter07/07_02_02_subgradient_calculus/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter07/07_02_01_connection_to_a_convexity_geometry/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter07/07_01_subgradient/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter07/07_00_subgradient/</loc>
+      
+        <lastmod>2021-03-25T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter19/19_07_Projected_Newton_method/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter19/19_06_Proximal_quasi_Newton_methods/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter19/19_05_Notable_examples/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter19/19_04_Convergence_analysis/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter19/19_03_When_would_we_use_proximal_Newton/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter19/19_02_Backtracking_line_search/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter19/19_01_03_Scaled_proximal_map/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter19/19_01_02_Proximal_Newton_method/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter19/19_01_01_Reminder-_proximal_gradient_descent/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter19/19_01_00_Proximal_Newton_method/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter19/19_00_Proximal_Newton_Method/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter11/11_05_Duality_gap/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter11/11_04_Strong_duality/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter11/11_03_Lagrange_dual_problem/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter11/11_02_Lagrange_dual_function/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter11/11_01_Lagrangian/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter11/11_00_Duality_in_General_Programs/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter19/19_07_Projected_Newton_method/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter19/19_06_Proximal_quasi_Newton_methods/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter19/19_05_Notable_examples/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter19/19_04_Convergence_analysis/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter19/19_03_When_would_we_use_proximal_Newton/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter19/19_02_Backtracking_line_search/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter19/19_01_03_Scaled_proximal_map/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter19/19_01_02_Proximal_Newton_method/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter19/19_01_01_Reminder-_proximal_gradient_descent/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter19/19_01_00_Proximal_Newton_method/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter19/19_00_Proximal_Newton_Method/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter11/11_05_Duality_gap/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter11/11_04_Strong_duality/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter11/11_03_Lagrange_dual_problem/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter11/11_02_Lagrange_dual_function/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter11/11_01_Lagrangian/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter11/11_00_Duality_in_General_Programs/</loc>
+      
+        <lastmod>2021-03-24T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter18/18_07_Limited_Memory_BFGS_(LBFGS)/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter18/18_06_Superlinear_convergence/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter18/18_05_The_Broyden_Class/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter18/18_04_Broyden_Fletcher_Goldfarb_Shanno_(BFGS)_update/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter18/18_03_Davidon_Fletcher_Powell_(DFP)_Update/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter18/18_02_Symmetric_Rank_One_Update_(SR1)/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter18/18_01_Secant_Equation_and_Curvature_Condition/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter18/18_00_Quasi_Newton_methods/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter18/18_07_Limited_Memory_BFGS_(LBFGS)/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter18/18_06_Superlinear_convergence/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter18/18_05_The_Broyden_Class/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter18/18_04_Broyden_Fletcher_Goldfarb_Shanno_(BFGS)_update/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter18/18_03_Davidon_Fletcher_Powell_(DFP)_Update/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter18/18_02_Symmetric_Rank_One_Update_(SR1)/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter18/18_01_Secant_Equation_and_Curvature_Condition/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter18/18_00_Quasi_Newton_methods/</loc>
+      
+        <lastmod>2021-03-23T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter10/10_Duality_in_Linear_Programs/</loc>
+      
+        <lastmod>2021-03-22T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter10/10_05_Matrix_Games/</loc>
+      
+        <lastmod>2021-03-22T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter10/10_04_Another_Perspective_on_LP_duality/</loc>
+      
+        <lastmod>2021-03-22T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter10/10_03_Max_flow_and_min_cut/</loc>
+      
+        <lastmod>2021-03-22T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter10/10_02_Duality_in_general_LPs/</loc>
+      
+        <lastmod>2021-03-22T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter10/10_01_Lower_Bounds_in_Linear_Programs/</loc>
+      
+        <lastmod>2021-03-22T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter10/10_Duality_in_Linear_Programs/</loc>
+      
+        <lastmod>2021-03-22T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter10/10_05_Matrix_Games/</loc>
+      
+        <lastmod>2021-03-22T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter10/10_04_Another_Perspective_on_LP_duality/</loc>
+      
+        <lastmod>2021-03-22T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter10/10_03_Max_flow_and_min_cut/</loc>
+      
+        <lastmod>2021-03-22T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter10/10_02_Duality_in_general_LPs/</loc>
+      
+        <lastmod>2021-03-22T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter10/10_01_Lower_Bounds_in_Linear_Programs/</loc>
+      
+        <lastmod>2021-03-22T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_07_regularization_and_loss_functions/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_06_gradent_descent_with_momentum/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_05_stochastic_gradient_descent/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_04_gradient_boosting/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_03_convergence_analysis/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_03_06_can_we_do_better/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_03_05_look_at_the_conditions_and_practicalities/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_03_04_convergence_analysis_under_strong_convexity/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_03_03_convergence_analysis_for_backtracking/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_03_02_convergence_analysis_and_proof/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_03_01_convex_function_quadratic_upper_bound/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_02_how_to_choose_step_sizes/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_02_03_exact_line_search/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_02_02_backtracking_line_search/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_02_01_fixed_step_size/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_01_gradient_descent/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_01_05_hessian_exercises/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_01_05_hessian_approximation/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter06/06_00_gradient_descent/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_07_regularization_and_loss_functions/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_06_gradent_descent_with_momentum/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_05_stochastic_gradient_descent/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_04_gradient_boosting/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_03_convergence_analysis/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_03_06_can_we_do_better/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_03_05_look_at_the_conditions_and_practicalities/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_03_04_convergence_analysis_under_strong_convexity/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_03_03_convergence_analysis_for_backtracking/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_03_02_convergence_analysis_and_proof/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_03_01_convex_function_quadratic_upper_bound/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_02_how_to_choose_step_sizes/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_02_03_exact_line_search/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_02_02_backtracking_line_search/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_02_01_fixed_step_size/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_01_gradient_descent/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter06/06_00_gradient_descent/</loc>
+      
+        <lastmod>2021-03-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_07_euclidean_norm_convexity_proof/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_06_convexity_with_respect_to_generalized_inequalities/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_05_log_concave_and_log_convex_functions/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_04_04_operations_that_preserve_quasiconvexity/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_04_03_differentiable_quasiconvex_functions/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_04_02_basic_properties_of_quasiconvex_functions/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_04_01_quasiconvex_functions_definition_and_examples/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_04_00_Quasiconvex_functions/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_03_the_conjugate_function/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_02_operations_that_preserve_convexity/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_01_03_key_properties_of_convex_functions/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_01_02_examples_of_convex_function/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_01_01_convex_functions_definition/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_01_00_Basic_properties_and_examples/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter03/03_00_Convex_functions/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_07_euclidean_norm_convexity_proof/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_06_convexity_with_respect_to_generalized_inequalities/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_05_log_concave_and_log_convex_functions/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_04_04_operations_that_preserve_quasiconvexity/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_04_03_differentiable_quasiconvex_functions/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_04_02_basic_properties_of_quasiconvex_functions/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_04_01_quasiconvex_functions_definition_and_examples/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_04_00_Quasiconvex_functions/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_03_the_conjugate_function/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_02_operations_that_preserve_convexity/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_01_03_key_properties_of_convex_functions/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_01_02_examples_of_convex_function/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_01_01_convex_functions_definition/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_01_00_Basic_properties_and_examples/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter03/03_00_Convex_functions/</loc>
+      
+        <lastmod>2021-02-12T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_Convex_sets/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_06_Dual_cones_and_generalized_inequalities/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_06_02_Dual_generalized_inequalities/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_06_01_Dual_cones/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_05_Separating_and_supporting_hyperplanes/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_04_Generalized_inequalities/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_03_Operations_that_preserve_convexity/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_02_Some_important_examples/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_02_02_Convex_cone_examples/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_02_01_Convex_sets_examples/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_Convex_sets/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_06_Dual_cones_and_generalized_inequalities/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_06_02_Dual_generalized_inequalities/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_06_01_Dual_cones/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_05_Separating_and_supporting_hyperplanes/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_04_Generalized_inequalities/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_03_Operations_that_preserve_convexity/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_02_Some_important_examples/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_02_02_Convex_cone_examples/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_02_01_Convex_sets_examples/</loc>
+      
+        <lastmod>2021-02-11T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter05/05_06_Conic_Programming_(CP)/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter05/05_05_Semidefinite_Programming_(SDP)/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter05/05_04_Second_Order_Cone_Programming_(SOCP)/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter05/05_03_Quadratically_Constrained_Quadratic_Programming_(QCQP)/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter05/05_02_Quadratic_Programming_(QP)-copy/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter05/05_02_03_Linear_Regression_Statistical_View/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter05/05_02_02_Geometric_Programming/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter05/05_02_01_Least_Square/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter05/05_01_Linear_Programming_(LP)/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter05/05_01_01_LP_Simple_Algorithm/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter05/05_00_Canonical_Problems/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_01_05_Hyperplane/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_01_04_Convex_cone/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_01_03_Convex-set/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_01_02_Affine_set/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_01_01_Line_line_segment_ray/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter05/05_06_Conic_Programming_(CP)/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter05/05_05_Semidefinite_Programming_(SDP)/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter05/05_04_Second_Order_Cone_Programming_(SOCP)/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter05/05_03_Quadratically_Constrained_Quadratic_Programming_(QCQP)/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter05/05_02_Quadratic_Programming_(QP)-copy/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter05/05_02_03_Linear_Regression_Statistical_View/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter05/05_02_02_Geometric_Programming/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter05/05_02_01_Least_Square/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter05/05_01_Linear_Programming_(LP)/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter05/05_01_01_LP_Simple_Algorithm/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter05/05_00_Canonical_Problems/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_01_05_Hyperplane/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_01_04_Convex_cone/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_01_03_Convex-set/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_01_02_Affine_set/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_01_01_Line_line_segment_ray/</loc>
+      
+        <lastmod>2021-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/home/makers/</loc>
+      
+        <lastmod>2021-02-03T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contribution/conventions/</loc>
+      
+        <lastmod>2021-02-03T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter01/01_04_brief_history_of_convex_optimization/</loc>
+      
+        <lastmod>2021-01-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter01/01_03_goals_and_topics/</loc>
+      
+        <lastmod>2021-01-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter01/01_02_convex_optimization_problem/</loc>
+      
+        <lastmod>2021-01-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter01/01_04_brief_history_of_convex_optimization/</loc>
+      
+        <lastmod>2021-01-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter01/01_03_goals_and_topics/</loc>
+      
+        <lastmod>2021-01-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter01/01_02_convex_optimization_problem/</loc>
+      
+        <lastmod>2021-01-28T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/home/link_to_how_to_contribute/</loc>
+      
+        <lastmod>2021-01-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contribution/initial_settings/</loc>
+      
+        <lastmod>2021-01-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contribution/how_to_contribute/</loc>
+      
+        <lastmod>2021-01-27T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/home/introduction/</loc>
+      
+        <lastmod>2021-01-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/home/contents/</loc>
+      
+        <lastmod>2021-01-20T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter02/02_01_Affine_and_Convex_Sets/</loc>
+      
+        <lastmod>2021-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter02/02_01_Affine_and_Convex_Sets/</loc>
+      
+        <lastmod>2021-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter01/01_01_optimization_problems/</loc>
+      
+        <lastmod>2021-01-07T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter01/01_00_Introduction/</loc>
+      
+        <lastmod>2021-01-07T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter01/01_01_optimization_problems/</loc>
+      
+        <lastmod>2021-01-07T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter01/01_00_Introduction/</loc>
+      
+        <lastmod>2021-01-07T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_Introduction/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_04_Probability_and_Statistics/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_04_02_Common_Probability_Distributions/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_04_01_Basic_Probability_Theory/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_03_Real_Analysis_and_Set_Theory/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_03_02_Topology_in_Real_Analysis/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_03_01_Set_Theory_Fundamentals/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_02_Basic_Linear_Algebra/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_02_03_Eigenvalues_and_Eigenvectors/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_02_02_Matrices_and_Linear_Transformations/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_02_01_Vectors_and_Vector_Spaces/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_01_Calculus/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_01_04_Taylor_Series/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_01_03_Gradient_and_Directional_Derivatives/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_01_02_Derivatives_and_Multivariable_Calculus/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter00/00_01_01_Continuity_and_Uniform_Continuity/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_Introduction/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_04_Probability_and_Statistics/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_04_02_Common_Probability_Distributions/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_04_01_Basic_Probability_Theory/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_03_Real_Analysis_and_Set_Theory/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_03_02_Topology_in_Real_Analysis/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_03_01_Set_Theory_Fundamentals/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_02_Basic_Linear_Algebra/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_02_03_Eigenvalues_and_Eigenvectors/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_02_02_Matrices_and_Linear_Transformations/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_02_01_Vectors_and_Vector_Spaces/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_01_Calculus/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_01_04_Taylor_Series/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_01_03_Gradient_and_Directional_Derivatives/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_01_02_Derivatives_and_Multivariable_Calculus/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter00/00_01_01_Continuity_and_Uniform_Continuity/</loc>
+      
+        <lastmod>2021-01-01T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_03_improving_on_the_subgradient_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_02_stochastic_subgradient_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_02_04_batch_vs_stochastic_methods/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_02_03_convergence_rate_of_stochastic_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_02_02_convergence_of_stochastic_methods/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_02_01_stochastic_subgradient_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_01_subgradient_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_01_08_projected_subgradient_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_01_07_example_intersection_of_sets/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_01_06_polyak_step_sizes/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_01_05_example_regularized_logistic_regression/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_01_04_convergence_rate/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_01_03_convergence_analysis/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_01_02_basic_inequality/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_01_01_step_size_choices/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter08/08_00_subgradient_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_03_improving_on_the_subgradient_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_02_stochastic_subgradient_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_02_04_batch_vs_stochastic_methods/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_02_03_convergence_rate_of_stochastic_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_02_02_convergence_of_stochastic_methods/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_02_01_stochastic_subgradient_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_01_subgradient_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_01_08_projected_subgradient_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_01_07_example_intersection_of_sets/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_01_06_polyak_step_sizes/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_01_05_example_regularized_logistic_regression/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_01_04_convergence_rate/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_01_03_convergence_analysis/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_01_02_basic_inequality/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_01_01_step_size_choices/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter08/08_00_subgradient_method/</loc>
+      
+        <lastmod>2020-03-29T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter04/04_08_Relaxation/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter04/04_07_Slack_variables/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter04/04_06_Eliminating_equality_constraints/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter04/04_05_Transformations_and_change_of_variables/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter04/04_04_Partial_optimization/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter04/04_03_Optimality_conditions/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter04/04_02_Convex_solution_sets/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter04/04_01_Basic_terminology/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter04/04_00_Convex_optimization_basics/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter04/04_08_Relaxation/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter04/04_07_Slack_variables/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter04/04_06_Eliminating_equality_constraints/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter04/04_05_Transformations_and_change_of_variables/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter04/04_04_Partial_optimization/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter04/04_03_Optimality_conditions/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter04/04_02_Convex_solution_sets/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter04/04_01_Basic_terminology/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter04/04_00_Convex_optimization_basics/</loc>
+      
+        <lastmod>2020-02-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter09/09_proximal_gradient_descent_and_acceleration/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter09/09_05_acceleration/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter09/09_05_04_is_acceleration_always_useful/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter09/09_05_03_example_FISTA/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter09/09_05_02_convergence_analysis/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter09/09_05_01_accelerated_proximal_gradient_method/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter09/09_04_special_cases/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter09/09_03_example_matrix_completion/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter09/09_02_convergence_analysis/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/vi/chapter09/09_01_proximal_gradient_descent/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter09/09_proximal_gradient_descent_and_acceleration/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter09/09_05_acceleration/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter09/09_05_04_is_acceleration_always_useful/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter09/09_05_03_example_FISTA/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter09/09_05_02_convergence_analysis/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter09/09_05_01_accelerated_proximal_gradient_method/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter09/09_04_special_cases/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter09/09_03_example_matrix_completion/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter09/09_02_convergence_analysis/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/contents/en/chapter09/09_01_proximal_gradient_descent/</loc>
+      
+        <lastmod>2020-01-08T00:00:00+07:00</lastmod>
+      
+
+      
+        <changefreq>weekly</changefreq>
+      
+
+      
+          <priority>0.5</priority>
+      
+
+    </url>
+  
+</urlset>
