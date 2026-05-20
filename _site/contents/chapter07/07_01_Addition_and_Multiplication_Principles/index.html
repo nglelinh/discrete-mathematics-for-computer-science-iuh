@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <style>
+    .MathJax {
+      padding: 2em 0.3em;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  </style>
+  <script src="/discrete-mathematics-for-computer-science-iuh/mathjax-config.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <title>
+    
+      Quy tắc Cộng và Nhân &middot; Discrete Mathematics for Computer Science
+    
+  </title>
+
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/poole.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/syntax.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/lanyon.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/github-markdown.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/multilang.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/content-boxes.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/discrete-math.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  
+  <script src="/discrete-mathematics-for-computer-science-iuh/public/js/exercise-system.js"></script>
+
+  <link rel="apple-touch-icon-precomposed" sizes="122x144" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/public/logo.png">
+  <link rel="shortcut icon" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/public/convex-logo-144x144.png">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/atom.xml">
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+
+
+  <body class="sidebar-overlay">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Discrete Mathematics for Computer Science - IUH</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/">Trang chủ</a>
+
+    
+
+    <!-- Discrete Mathematics Chapters -->
+    <div class="sidebar-section">
+      <h4 style="color: #268bd2; margin: 15px 0 10px 0; font-size: 0.9em;">Các chương</h4>
+      
+      <!-- Part I: Logic and Proofs -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần I: Logic và Chứng minh</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter01/">
+          1. Logic mệnh đề
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter02/">
+          2. Logic vị từ
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter03/">
+          3. Phương pháp chứng minh
+        </a>
+      </div>
+      
+      <!-- Part II: Set Theory and Relations -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần II: Tập hợp và Quan hệ</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter04/">
+          4. Lý thuyết tập hợp
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter05/">
+          5. Quan hệ
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter06/">
+          6. Hàm số
+        </a>
+      </div>
+      
+          <!-- Part III: Counting and Discrete Probability -->
+          <div class="sidebar-subsection">
+            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần III: Đếm và Xác suất</h5>
+            <a class="sidebar-nav-item active" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter07/">
+              7. Nguyên lý đếm cơ bản
+            </a>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter08/">
+              8. Nguyên lý Dirichlet
+            </a>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter09/">
+              9. Xác suất rời rạc
+            </a>
+          </div>
+      
+      <!-- Part IV: Recurrence Relations -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần IV: Quan hệ Truy hồi</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter10/">
+          10. Quan hệ truy hồi
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter11/">
+          11. Hàm sinh
+        </a>
+      </div>
+      
+      <!-- Part V: Graph Theory -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần V: Lý thuyết Đồ thị</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter12/">
+          12. Đồ thị cơ bản
+        </a>
+      </div>
+      
+      <!-- Part VI: Advanced Topics -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần VI: Chủ đề Nâng cao</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter13/">
+          13. Đại số Boole
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter14/">
+          14. Thuật toán
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter15/">
+          15. Lý thuyết Số
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter16/">
+          16. Cây
+        </a>
+      </div>
+      
+      <!-- Special Pages -->
+          <div class="sidebar-subsection" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Tính năng đặc biệt</h5>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/demo/">
+              🚀 Demo tính năng
+            </a>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/progress/">
+              📊 Tiến độ khóa học
+            </a>
+          </div>
+    </div>
+    
+    <span class="sidebar-nav-item">Currently v0.0.1</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2026. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap github-md-body">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/discrete-mathematics-for-computer-science-iuh/" title="Trang chủ">Discrete Mathematics for Computer Science</a>
+            <small></small>
+          </h3>
+          <!-- Header Actions: Language Toggle and GitHub Link -->
+          <div class="header-actions">
+            <div class="language-toggle">
+              <!-- language_switch disabled -->
+            </div>
+            <a class="github-logo__wrapper" target="_blank" href="https://github.com/nglelinh/optimization-for-data-science-iuh-2025" title="Github">
+             <svg class="github-logo" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48"><linearGradient id="rL2wppHyxHVbobwndsT6Ca" x1="4" x2="44" y1="23.508" y2="23.508" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4c4c4c"/><stop offset="1" stop-color="#343434"/></linearGradient><path fill="url(#rL2wppHyxHVbobwndsT6Ca)" d="M24,4C12.954,4,4,12.954,4,24c0,8.887,5.801,16.411,13.82,19.016h12.36	C38.199,40.411,44,32.887,44,24C44,12.954,35.046,4,24,4z"/><path d="M30.01,41.996L30,36.198c0-0.939-0.22-1.856-0.642-2.687c5.641-1.133,8.386-4.468,8.386-10.177	c0-2.255-0.665-4.246-1.976-5.92c0.1-0.317,0.174-0.645,0.22-0.981c0.188-1.369-0.023-2.264-0.193-2.984l-0.027-0.116	c-0.186-0.796-0.409-1.364-0.418-1.388l-0.111-0.282l-0.111-0.282l-0.302-0.032l-0.303-0.032c0,0-0.199-0.021-0.501-0.021	c-0.419,0-1.04,0.042-1.627,0.241l-0.196,0.066c-0.74,0.249-1.439,0.485-2.417,1.069c-0.286,0.171-0.599,0.366-0.934,0.584	C27.334,12.881,25.705,12.69,24,12.69c-1.722,0-3.365,0.192-4.889,0.571c-0.339-0.22-0.654-0.417-0.942-0.589	c-0.978-0.584-1.677-0.819-2.417-1.069l-0.196-0.066c-0.585-0.199-1.207-0.241-1.626-0.241c-0.302,0-0.501,0.021-0.501,0.021	l-0.302,0.032l-0.3,0.031l-0.112,0.281l-0.113,0.283c-0.01,0.026-0.233,0.594-0.419,1.391l-0.027,0.115	c-0.17,0.719-0.381,1.615-0.193,2.983c0.048,0.346,0.125,0.685,0.23,1.011c-1.285,1.666-1.936,3.646-1.936,5.89	c0,5.695,2.748,9.028,8.397,10.17c-0.194,0.388-0.345,0.798-0.452,1.224c-0.197,0.067-0.378,0.112-0.538,0.137	c-0.238,0.036-0.487,0.054-0.739,0.054c-0.686,0-1.225-0.134-1.435-0.259c-0.313-0.186-0.872-0.727-1.414-1.518	c-0.463-0.675-1.185-1.558-1.992-1.927c-0.698-0.319-1.437-0.502-2.029-0.502c-0.138,0-0.265,0.01-0.376,0.028	c-0.517,0.082-0.949,0.366-1.184,0.78c-0.203,0.357-0.235,0.773-0.088,1.141c0.219,0.548,0.851,0.985,1.343,1.255	c0.242,0.133,0.765,0.619,1.07,1.109c0.229,0.368,0.335,0.63,0.482,0.992c0.087,0.215,0.183,0.449,0.313,0.732	c0.47,1.022,1.937,1.924,2.103,2.023c0.806,0.483,2.161,0.638,3.157,0.683l0.123,0.003c0,0,0.001,0,0.001,0	c0.24,0,0.57-0.023,1.004-0.071v2.613c0.002,0.529-0.537,0.649-1.25,0.638l0.547,0.184C19.395,43.572,21.645,44,24,44	c2.355,0,4.605-0.428,6.703-1.176l0.703-0.262C30.695,42.538,30.016,42.422,30.01,41.996z" opacity=".05"/><path d="M30.781,42.797c-0.406,0.047-1.281-0.109-1.281-0.795v-5.804c0-1.094-0.328-2.151-0.936-3.052	c5.915-0.957,8.679-4.093,8.679-9.812c0-2.237-0.686-4.194-2.039-5.822c0.137-0.365,0.233-0.75,0.288-1.147	c0.175-1.276-0.016-2.086-0.184-2.801l-0.027-0.116c-0.178-0.761-0.388-1.297-0.397-1.319l-0.111-0.282l-0.303-0.032	c0,0-0.178-0.019-0.449-0.019c-0.381,0-0.944,0.037-1.466,0.215l-0.196,0.066c-0.714,0.241-1.389,0.468-2.321,1.024	c-0.332,0.198-0.702,0.431-1.101,0.694C27.404,13.394,25.745,13.19,24,13.19c-1.762,0-3.435,0.205-4.979,0.61	c-0.403-0.265-0.775-0.499-1.109-0.699c-0.932-0.556-1.607-0.784-2.321-1.024l-0.196-0.066c-0.521-0.177-1.085-0.215-1.466-0.215	c-0.271,0-0.449,0.019-0.449,0.019l-0.302,0.032l-0.113,0.283c-0.009,0.022-0.219,0.558-0.397,1.319l-0.027,0.116	c-0.169,0.715-0.36,1.524-0.184,2.8c0.056,0.407,0.156,0.801,0.298,1.174c-1.327,1.62-1.999,3.567-1.999,5.795	c0,5.703,2.766,8.838,8.686,9.806c-0.395,0.59-0.671,1.255-0.813,1.964c-0.33,0.13-0.629,0.216-0.891,0.256	c-0.263,0.04-0.537,0.06-0.814,0.06c-0.69,0-1.353-0.129-1.69-0.329c-0.44-0.261-1.057-0.914-1.572-1.665	c-0.35-0.51-1.047-1.417-1.788-1.755c-0.635-0.29-1.298-0.457-1.821-0.457c-0.11,0-0.21,0.008-0.298,0.022	c-0.366,0.058-0.668,0.252-0.828,0.534c-0.128,0.224-0.149,0.483-0.059,0.708c0.179,0.448,0.842,0.85,1.119,1.002	c0.335,0.184,0.919,0.744,1.254,1.284c0.251,0.404,0.37,0.697,0.521,1.067c0.085,0.209,0.178,0.437,0.304,0.712	c0.331,0.719,1.353,1.472,1.905,1.803c0.754,0.452,2.154,0.578,2.922,0.612l0.111,0.002c0.299,0,0.8-0.045,1.495-0.135v3.177	c0,0.779-0.991,0.81-1.234,0.81c-0.031,0,0.503,0.184,0.503,0.184C19.731,43.64,21.822,44,24,44c2.178,0,4.269-0.36,6.231-1.003	C30.231,42.997,30.812,42.793,30.781,42.797z" opacity=".07"/><path fill="#fff" d="M36.744,23.334c0-2.31-0.782-4.226-2.117-5.728c0.145-0.325,0.296-0.761,0.371-1.309	c0.172-1.25-0.031-2-0.203-2.734s-0.375-1.25-0.375-1.25s-0.922-0.094-1.703,0.172s-1.453,0.469-2.422,1.047	c-0.453,0.27-0.909,0.566-1.27,0.806C27.482,13.91,25.785,13.69,24,13.69c-1.801,0-3.513,0.221-5.067,0.652	c-0.362-0.241-0.821-0.539-1.277-0.811c-0.969-0.578-1.641-0.781-2.422-1.047s-1.703-0.172-1.703-0.172s-0.203,0.516-0.375,1.25	s-0.375,1.484-0.203,2.734c0.077,0.562,0.233,1.006,0.382,1.333c-1.31,1.493-2.078,3.397-2.078,5.704	c0,5.983,3.232,8.714,9.121,9.435c-0.687,0.726-1.148,1.656-1.303,2.691c-0.387,0.17-0.833,0.33-1.262,0.394	c-1.104,0.167-2.271,0-2.833-0.333s-1.229-1.083-1.729-1.813c-0.422-0.616-1.031-1.331-1.583-1.583	c-0.729-0.333-1.438-0.458-1.833-0.396c-0.396,0.063-0.583,0.354-0.5,0.563c0.083,0.208,0.479,0.521,0.896,0.75	c0.417,0.229,1.063,0.854,1.438,1.458c0.418,0.674,0.5,1.063,0.854,1.833c0.249,0.542,1.101,1.219,1.708,1.583	c0.521,0.313,1.562,0.491,2.688,0.542c0.389,0.018,1.308-0.096,2.083-0.206v3.75c0,0.639-0.585,1.125-1.191,1.013	C19.756,43.668,21.833,44,24,44c2.166,0,4.243-0.332,6.19-0.984C29.585,43.127,29,42.641,29,42.002v-5.804	c0-1.329-0.527-2.53-1.373-3.425C33.473,32.071,36.744,29.405,36.744,23.334z M11.239,32.727c-0.154-0.079-0.237-0.225-0.185-0.328	c0.052-0.103,0.22-0.122,0.374-0.043c0.154,0.079,0.237,0.225,0.185,0.328S11.393,32.806,11.239,32.727z M12.451,33.482	c-0.081,0.088-0.255,0.06-0.389-0.062s-0.177-0.293-0.096-0.381c0.081-0.088,0.255-0.06,0.389,0.062S12.532,33.394,12.451,33.482z M13.205,34.732c-0.102,0.072-0.275,0.005-0.386-0.15s-0.118-0.34-0.016-0.412s0.275-0.005,0.386,0.15	C13.299,34.475,13.307,34.66,13.205,34.732z M14.288,35.673c-0.069,0.112-0.265,0.117-0.437,0.012s-0.256-0.281-0.187-0.393	c0.069-0.112,0.265-0.117,0.437-0.012S14.357,35.561,14.288,35.673z M15.312,36.594c-0.213-0.026-0.371-0.159-0.353-0.297	c0.017-0.138,0.204-0.228,0.416-0.202c0.213,0.026,0.371,0.159,0.353,0.297C15.711,36.529,15.525,36.62,15.312,36.594z M16.963,36.833c-0.227-0.013-0.404-0.143-0.395-0.289c0.009-0.146,0.2-0.255,0.427-0.242c0.227,0.013,0.404,0.143,0.395,0.289	C17.381,36.738,17.19,36.846,16.963,36.833z M18.521,36.677c-0.242,0-0.438-0.126-0.438-0.281s0.196-0.281,0.438-0.281	c0.242,0,0.438,0.126,0.438,0.281S18.762,36.677,18.521,36.677z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">
+    Quy tắc Cộng và Nhân
+    
+  </h1>
+  <h1 id="quy-tắc-cộng-và-nhân">Quy tắc Cộng và Nhân</h1>
+
+<p>Một hệ thống có bao nhiêu cách gán mật khẩu 6 ký tự? Một menu có bao nhiêu combo? Một thuật toán có bao nhiêu trạng thái đầu vào cần xét? Trong khoa học máy tính, trước khi tối ưu hay kiểm thử, ta thường phải biết mình đang đối mặt với <strong>bao nhiêu khả năng</strong>.</p>
+
+<p>Hai công cụ đếm cơ bản nhất là <strong>quy tắc cộng</strong> và <strong>quy tắc nhân</strong>. Chúng nghe đơn giản, nhưng là nền móng của phân tích độ phức tạp, xác suất, thiết kế test case và bảo mật. Học tốt phần này giống như có được phép nhân bảng cửu chương của thế giới đếm rời rạc: những chương sau sẽ dùng nó liên tục.</p>
+
+<h2 id="quy-tắc-cộng-addition-principle">Quy tắc Cộng (Addition Principle)</h2>
+
+<p><strong>Nguyên lý</strong>: Nếu một tác vụ có thể được thực hiện theo m cách hoặc theo n cách (không trùng lặp), thì tổng số cách thực hiện tác vụ là m + n.</p>
+
+<h3 id="định-nghĩa-chính-thức">Định nghĩa chính thức</h3>
+<p>Nếu A và B là hai tập hợp rời nhau (A ∩ B = ∅), thì |A ∪ B| = |A| + |B|.</p>
+
+<h3 id="ví-dụ-1-chọn-môn-học">Ví dụ 1: Chọn môn học</h3>
+<p>Một sinh viên có thể chọn:</p>
+<ul>
+  <li>3 môn toán học: Giải tích, Đại số, Hình học</li>
+  <li>2 môn tin học: Lập trình, Cấu trúc dữ liệu</li>
+</ul>
+
+<p><strong>Hỏi</strong>: Có bao nhiêu cách chọn 1 môn học?
+<strong>Đáp án</strong>: 3 + 2 = 5 cách</p>
+
+<h3 id="ví-dụ-2-đi-từ-a-đến-c">Ví dụ 2: Đi từ A đến C</h3>
+<p>Từ thành phố A đến C có thể đi:</p>
+<ul>
+  <li>Đường bộ: 4 tuyến đường</li>
+  <li>Đường hàng không: 2 chuyến bay</li>
+  <li>Đường thủy: 1 tuyến tàu</li>
+</ul>
+
+<p><strong>Tổng số cách</strong>: 4 + 2 + 1 = 7 cách</p>
+
+<h2 id="quy-tắc-nhân-multiplication-principle">Quy tắc Nhân (Multiplication Principle)</h2>
+
+<p><strong>Nguyên lý</strong>: Nếu một tác vụ gồm k bước liên tiếp, bước thứ i có nᵢ cách thực hiện, thì tổng số cách thực hiện tác vụ là n₁ × n₂ × … × nₖ.</p>
+
+<h3 id="ví-dụ-3-tạo-mật-khẩu">Ví dụ 3: Tạo mật khẩu</h3>
+<p>Tạo mật khẩu gồm:</p>
+<ul>
+  <li>Ký tự đầu: 1 trong 26 chữ cái</li>
+  <li>Ký tự thứ 2: 1 trong 10 chữ số</li>
+  <li>Ký tự thứ 3: 1 trong 26 chữ cái</li>
+</ul>
+
+<p><strong>Tổng số mật khẩu</strong>: 26 × 10 × 26 = 6,760 mật khẩu</p>
+
+<h3 id="ví-dụ-4-đi-từ-a-đến-c-qua-b">Ví dụ 4: Đi từ A đến C qua B</h3>
+<ul>
+  <li>Từ A đến B: 3 cách</li>
+  <li>Từ B đến C: 4 cách</li>
+</ul>
+
+<p><strong>Tổng số cách đi từ A đến C qua B</strong>: 3 × 4 = 12 cách</p>
+
+<h2 id="tích-descartes-cartesian-product">Tích Descartes (Cartesian Product)</h2>
+
+<p>Tích Descartes là một khái niệm quan trọng kết nối lý thuyết tập hợp với quy tắc nhân.</p>
+
+<h3 id="định-nghĩa">Định nghĩa</h3>
+
+<p>Tích Descartes của hai tập hợp A và B, ký hiệu A × B, là tập hợp tất cả các cặp có thứ tự (a, b) với a ∈ A và b ∈ B.</p>
+
+\[A \times B = \{(a, b) \;|\; a \in A, b \in B\}\]
+
+<h3 id="công-thức-về-lực-lượng">Công thức về lực lượng</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Nếu</td>
+      <td>A</td>
+      <td>= m và</td>
+      <td>B</td>
+      <td>= n, thì</td>
+      <td>A × B</td>
+      <td>= m × n.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Tổng quát hơn, tích Descartes của k tập hợp A₁ × A₂ × … × Aₖ có lực lượng:</p>
+
+\[|A_1 \times A_2 \times \cdots \times A_k| = |A_1| \times |A_2| \times \cdots \times |A_k|\]
+
+<h3 id="ví-dụ-5-tích-descartes-của-hai-tập-hợp">Ví dụ 5: Tích Descartes của hai tập hợp</h3>
+
+<p>Cho A = {a, b, c} và B = {1, 2}. Tìm A × B.</p>
+
+<p><strong>Giải</strong>: A × B = {(a,1), (a,2), (b,1), (b,2), (c,1), (c,2)}. Có 3 × 2 = 6 phần tử.</p>
+
+<h3 id="ví-dụ-6-mã-sinh-viên">Ví dụ 6: Mã sinh viên</h3>
+
+<p>Một trường đại học tạo mã sinh viên gồm 2 chữ cái in hoa (A-Z) và 3 chữ số (0-9). Hỏi có bao nhiêu mã khác nhau?</p>
+
+<p><strong>Giải</strong>: Gọi A là tập 26 chữ cái, B là tập 10 chữ số. Mỗi mã là một phần tử của A × A × B × B × B. Số mã là 26 × 26 × 10 × 10 × 10 = 676.000.</p>
+
+<h3 id="mối-liên-hệ-với-quy-tắc-nhân">Mối liên hệ với quy tắc nhân</h3>
+
+<p>Quy tắc nhân thực chất là hệ quả trực tiếp của công thức tính lực lượng tích Descartes. Khi một tác vụ gồm k bước, với bước thứ i có nᵢ cách thực hiện, ta có thể xem mỗi cách thực hiện toàn bộ tác vụ là một phần tử của tích Descartes của k tập hợp, trong đó tập thứ i có nᵢ phần tử.</p>
+
+<h2 id="nguyên-lý-chuồng-bồ-câu-pigeonhole-principle">Nguyên lý Chuồng Bồ câu (Pigeonhole Principle)</h2>
+
+<p><strong>Nguyên lý</strong>: Nếu có \(n\) vật thể đặt vào \(m\) hộp, với \(n &gt; m\), thì ít nhất một hộp chứa từ 2 vật thể trở lên.</p>
+
+\[n &gt; m \implies \exists \text{ hộp chứa } \geq 2 \text{ vật}\]
+
+<p><strong>Ví dụ 1</strong>: Trong một lớp có 13 sinh viên, có ít nhất 2 sinh viên sinh cùng tháng (vì 13 &gt; 12 tháng).</p>
+
+<p><strong>Ví dụ 2</strong>: Trong một nhóm 367 người, có ít nhất 2 người có cùng ngày sinh (vì 367 &gt; 366 ngày trong năm).</p>
+
+<p><strong>Nguyên lý tổng quát</strong>: Nếu có \(n\) vật thể đặt vào \(m\) hộp, thì ít nhất một hộp chứa từ \(\lceil n/m \rceil\) vật thể trở lên.</p>
+
+<p><strong>Ví dụ 3</strong>: Nếu có 100 sinh viên làm 3 bài kiểm tra, có ít nhất \(\lceil 100/3 \rceil = 34\) sinh viên có cùng số bài đạt yêu cầu.</p>
+
+<div class="content-box example-box">
+  <p><strong>Ví dụ 4 - Ứng dụng trong CS</strong>: Một mảng gồm 10 số nguyên. Chứng minh rằng tồn tại hai phần tử có hiệu chia hết cho 9.</p>
+
+  <p><strong>Giải</strong>: Khi chia một số nguyên cho 9, số dư chỉ có thể là 0, 1, …, 8 (9 loại). Với 10 số, theo nguyên lý chuồng bồ câu, có ít nhất hai số cùng số dư khi chia cho 9. Hiệu của chúng chia hết cho 9.</p>
+</div>
+
+<h2 id="công-cụ-tương-tác-máy-tính-quy-tắc-đếm">Công cụ tương tác: Máy tính Quy tắc Đếm</h2>
+
+<div id="counting-calculator" class="interactive-tool">
+    <h4>🧮 Máy tính Quy tắc Đếm</h4>
+    
+    <div style="margin-bottom: 20px;">
+        <label><strong>Chọn loại bài toán:</strong></label>
+        <select id="problem-type" onchange="updateProblemInterface()" style="width: 100%; padding: 8px; margin-top: 5px;">
+            <option value="addition">Quy tắc Cộng</option>
+            <option value="multiplication">Quy tắc Nhân</option>
+            <option value="mixed">Kết hợp Cộng và Nhân</option>
+        </select>
+    </div>
+    
+    <div id="problem-interface">
+        <!-- Interface sẽ được tạo động -->
+    </div>
+    
+    <button onclick="calculateResult()" style="width: 100%; margin: 20px 0; padding: 12px; background: #007bff; color: white; border: none; border-radius: 6px; font-weight: bold;">
+        Tính toán
+    </button>
+    
+    <div id="calculation-result" style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
+        <p style="color: #666; text-align: center; margin: 0;">Chọn loại bài toán và nhập dữ liệu</p>
+    </div>
+    
+    <div id="step-by-step" style="margin-top: 20px; background: #f8f9fa; padding: 15px; border-radius: 8px; display: none;">
+        <h5>📝 Giải chi tiết:</h5>
+        <div id="solution-steps"></div>
+    </div>
+</div>
+
+<script>
+function updateProblemInterface() {
+    const problemType = document.getElementById('problem-type').value;
+    const interfaceDiv = document.getElementById('problem-interface');
+    
+    switch(problemType) {
+        case 'addition':
+            interfaceDiv.innerHTML = `
+                <div style="background: #e8f4fd; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                    <strong>Quy tắc Cộng:</strong> Đếm số cách thực hiện khi có nhiều lựa chọn độc lập
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label>Số lựa chọn (cách nhau bởi dấu phẩy):</label>
+                    <input type="text" id="addition-choices" placeholder="3,2,4,1" style="width: 100%; padding: 8px; margin-top: 5px;">
+                    <small style="color: #666;">Ví dụ: 3,2,4,1 có nghĩa là có 3 cách cho lựa chọn 1, 2 cách cho lựa chọn 2, v.v.</small>
+                </div>
+            `;
+            break;
+            
+        case 'multiplication':
+            interfaceDiv.innerHTML = `
+                <div style="background: #fff3cd; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                    <strong>Quy tắc Nhân:</strong> Đếm số cách thực hiện khi có nhiều bước liên tiếp
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label>Số cách cho mỗi bước (cách nhau bởi dấu phẩy):</label>
+                    <input type="text" id="multiplication-steps" placeholder="26,10,26" style="width: 100%; padding: 8px; margin-top: 5px;">
+                    <small style="color: #666;">Ví dụ: 26,10,26 có nghĩa là bước 1 có 26 cách, bước 2 có 10 cách, bước 3 có 26 cách</small>
+                </div>
+            `;
+            break;
+            
+        case 'mixed':
+            interfaceDiv.innerHTML = `
+                <div style="background: #d4edda; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                    <strong>Kết hợp:</strong> Sử dụng cả quy tắc cộng và nhân
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label>Mô tả bài toán:</label>
+                    <select id="mixed-example" style="width: 100%; padding: 8px; margin-top: 5px;">
+                        <option value="travel">Đi từ A đến C (qua B hoặc trực tiếp)</option>
+                        <option value="password">Tạo mật khẩu với nhiều định dạng</option>
+                        <option value="menu">Chọn món ăn từ menu</option>
+                    </select>
+                </div>
+                <div id="mixed-parameters">
+                    <!-- Sẽ được cập nhật dựa trên lựa chọn -->
+                </div>
+            `;
+            updateMixedParameters();
+            break;
+    }
+}
+
+function updateMixedParameters() {
+    const example = document.getElementById('mixed-example')?.value;
+    const parametersDiv = document.getElementById('mixed-parameters');
+    
+    if (!parametersDiv) return;
+    
+    switch(example) {
+        case 'travel':
+            parametersDiv.innerHTML = `
+                <div style="margin-bottom: 10px;">
+                    <label>Từ A đến B:</label>
+                    <input type="number" id="a-to-b" value="3" style="width: 100%; padding: 6px;">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label>Từ B đến C:</label>
+                    <input type="number" id="b-to-c" value="4" style="width: 100%; padding: 6px;">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label>Từ A trực tiếp đến C:</label>
+                    <input type="number" id="a-to-c" value="2" style="width: 100%; padding: 6px;">
+                </div>
+            `;
+            break;
+            
+        case 'password':
+            parametersDiv.innerHTML = `
+                <div style="margin-bottom: 10px;">
+                    <label>Định dạng 1 - Chữ cái + Số:</label>
+                    <input type="text" id="format1" value="26,10" style="width: 100%; padding: 6px;">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label>Định dạng 2 - Số + Chữ cái + Số:</label>
+                    <input type="text" id="format2" value="10,26,10" style="width: 100%; padding: 6px;">
+                </div>
+            `;
+            break;
+            
+        case 'menu':
+            parametersDiv.innerHTML = `
+                <div style="margin-bottom: 10px;">
+                    <label>Món khai vị:</label>
+                    <input type="number" id="appetizer" value="5" style="width: 100%; padding: 6px;">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label>Món chính:</label>
+                    <input type="number" id="main" value="8" style="width: 100%; padding: 6px;">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <label>Món tráng miệng:</label>
+                    <input type="number" id="dessert" value="4" style="width: 100%; padding: 6px;">
+                </div>
+            `;
+            break;
+    }
+}
+
+function calculateResult() {
+    const problemType = document.getElementById('problem-type').value;
+    const resultDiv = document.getElementById('calculation-result');
+    const stepsDiv = document.getElementById('step-by-step');
+    const solutionDiv = document.getElementById('solution-steps');
+    
+    let result = 0;
+    let steps = [];
+    
+    try {
+        switch(problemType) {
+            case 'addition':
+                const choices = document.getElementById('addition-choices').value
+                    .split(',').map(x => parseInt(x.trim())).filter(x => !isNaN(x));
+                
+                if (choices.length === 0) throw new Error('Vui lòng nhập số lựa chọn hợp lệ');
+                
+                result = choices.reduce((sum, choice) => sum + choice, 0);
+                steps = [
+                    'Áp dụng quy tắc cộng:',
+                    `Tổng số cách = ${choices.join(' + ')}`,
+                    `= ${result} cách`
+                ];
+                break;
+                
+            case 'multiplication':
+                const stepCounts = document.getElementById('multiplication-steps').value
+                    .split(',').map(x => parseInt(x.trim())).filter(x => !isNaN(x));
+                
+                if (stepCounts.length === 0) throw new Error('Vui lòng nhập số bước hợp lệ');
+                
+                result = stepCounts.reduce((product, count) => product * count, 1);
+                steps = [
+                    'Áp dụng quy tắc nhân:',
+                    `Tổng số cách = ${stepCounts.join(' × ')}`,
+                    `= ${result} cách`
+                ];
+                break;
+                
+            case 'mixed':
+                const example = document.getElementById('mixed-example').value;
+                switch(example) {
+                    case 'travel':
+                        const aToB = parseInt(document.getElementById('a-to-b').value) || 0;
+                        const bToC = parseInt(document.getElementById('b-to-c').value) || 0;
+                        const aToC = parseInt(document.getElementById('a-to-c').value) || 0;
+                        
+                        const viaB = aToB * bToC;
+                        result = viaB + aToC;
+                        
+                        steps = [
+                            'Phân tích bài toán:',
+                            '• Đi qua B: Áp dụng quy tắc nhân',
+                            `  Số cách = ${aToB} × ${bToC} = ${viaB} cách`,
+                            '• Đi trực tiếp: ' + aToC + ' cách',
+                            '• Tổng cộng: Áp dụng quy tắc cộng',
+                            `  Tổng số cách = ${viaB} + ${aToC} = ${result} cách`
+                        ];
+                        break;
+                        
+                    case 'password':
+                        const format1 = document.getElementById('format1').value
+                            .split(',').map(x => parseInt(x.trim()));
+                        const format2 = document.getElementById('format2').value
+                            .split(',').map(x => parseInt(x.trim()));
+                        
+                        const count1 = format1.reduce((p, c) => p * c, 1);
+                        const count2 = format2.reduce((p, c) => p * c, 1);
+                        result = count1 + count2;
+                        
+                        steps = [
+                            'Tính số mật khẩu cho mỗi định dạng:',
+                            `• Định dạng 1: ${format1.join(' × ')} = ${count1}`,
+                            `• Định dạng 2: ${format2.join(' × ')} = ${count2}`,
+                            'Tổng số mật khẩu:',
+                            `${count1} + ${count2} = ${result} mật khẩu`
+                        ];
+                        break;
+                        
+                    case 'menu':
+                        const appetizer = parseInt(document.getElementById('appetizer').value) || 0;
+                        const main = parseInt(document.getElementById('main').value) || 0;
+                        const dessert = parseInt(document.getElementById('dessert').value) || 0;
+                        
+                        result = appetizer * main * dessert;
+                        steps = [
+                            'Chọn thực đơn gồm 3 món:',
+                            'Áp dụng quy tắc nhân:',
+                            `Số cách chọn = ${appetizer} × ${main} × ${dessert}`,
+                            `= ${result} cách`
+                        ];
+                        break;
+                }
+                break;
+        }
+        
+        // Display result
+        resultDiv.innerHTML = `
+            <div style="text-align: center;">
+                <h5 style="color: #495057; margin-bottom: 15px;">Kết quả</h5>
+                <div style="font-size: 2em; color: #007bff; font-weight: bold; margin: 15px 0;">
+                    ${result.toLocaleString()} cách
+                </div>
+                <div style="color: #666; font-size: 0.9em;">
+                    ${problemType === 'addition' ? 'Quy tắc Cộng' : 
+                      problemType === 'multiplication' ? 'Quy tắc Nhân' : 'Kết hợp Cộng và Nhân'}
+                </div>
+            </div>
+        `;
+        
+        // Display steps
+        solutionDiv.innerHTML = steps.map(step => 
+            `<div style="margin: 8px 0; padding: 8px; background: white; border-left: 3px solid #007bff; border-radius: 3px;">${step}</div>`
+        ).join('');
+        stepsDiv.style.display = 'block';
+        
+    } catch (error) {
+        resultDiv.innerHTML = `<p style="color: #dc3545; text-align: center; margin: 0;">Lỗi: ${error.message}</p>`;
+        stepsDiv.style.display = 'none';
+    }
+}
+
+// Initialize interface
+document.addEventListener('DOMContentLoaded', () => {
+    updateProblemInterface();
+    
+    // Add event listener for mixed example changes
+    document.addEventListener('change', (e) => {
+        if (e.target.id === 'mixed-example') {
+            updateMixedParameters();
+        }
+    });
+});
+</script>
+
+<h2 id="kết-hợp-quy-tắc-cộng-và-nhân">Kết hợp Quy tắc Cộng và Nhân</h2>
+
+<p>Nhiều bài toán thực tế cần kết hợp cả hai quy tắc.</p>
+
+<h3 id="ví-dụ-5-đi-du-lịch">Ví dụ 5: Đi du lịch</h3>
+<p>Từ Hà Nội đến Đà Nẵng có thể:</p>
+<ul>
+  <li><strong>Bay trực tiếp</strong>: 3 chuyến bay</li>
+  <li><strong>Đi qua TP.HCM</strong>:
+    <ul>
+      <li>Hà Nội → TP.HCM: 4 chuyến bay</li>
+      <li>TP.HCM → Đà Nẵng: 2 chuyến bay</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Giải</strong>:</p>
+<ul>
+  <li>Đi qua TP.HCM: 4 × 2 = 8 cách (quy tắc nhân)</li>
+  <li>Tổng cộng: 3 + 8 = 11 cách (quy tắc cộng)</li>
+</ul>
+
+<h3 id="ví-dụ-6-tạo-tài-khoản">Ví dụ 6: Tạo tài khoản</h3>
+<p>Một website cho phép tạo username theo 2 định dạng:</p>
+<ul>
+  <li><strong>Định dạng 1</strong>: 1 chữ cái + 3 chữ số</li>
+  <li><strong>Định dạng 2</strong>: 2 chữ cái + 2 chữ số</li>
+</ul>
+
+<p><strong>Giải</strong>:</p>
+<ul>
+  <li>Định dạng 1: 26 × 10 × 10 × 10 = 26,000 username</li>
+  <li>Định dạng 2: 26 × 26 × 10 × 10 = 67,600 username</li>
+  <li>Tổng cộng: 26,000 + 67,600 = 93,600 username</li>
+</ul>
+
+<h2 id="ứng-dụng-trong-khoa-học-máy-tính">Ứng dụng trong Khoa học Máy tính</h2>
+
+<h3 id="1-phân-tích-thuật-toán">1. Phân tích Thuật toán</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">count_operations</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">Đếm số phép toán trong thuật toán</span><span class="sh">"""</span>
+    <span class="c1"># Vòng lặp ngoài: n lần
+</span>    <span class="c1"># Vòng lặp trong: n lần
+</span>    <span class="c1"># Mỗi lần: 1 phép toán
+</span>    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">1</span>  <span class="c1"># Quy tắc nhân: O(n²)
+</span>
+<span class="k">def</span> <span class="nf">count_paths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">Đếm số đường đi trong đồ thị</span><span class="sh">"""</span>
+    <span class="c1"># Sử dụng quy tắc cộng cho các đường đi khác nhau
+</span>    <span class="c1"># Sử dụng quy tắc nhân cho chuỗi cạnh liên tiếp
+</span>    <span class="k">pass</span>
+</code></pre></div></div>
+
+<h3 id="2-mật-mã-học">2. Mật mã học</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">password_strength</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">charset_size</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">Tính số mật khẩu có thể tạo</span><span class="sh">"""</span>
+    <span class="c1"># Mỗi vị trí có charset_size lựa chọn
+</span>    <span class="c1"># Tổng cộng length vị trí
+</span>    <span class="k">return</span> <span class="n">charset_size</span> <span class="o">**</span> <span class="n">length</span>  <span class="c1"># Quy tắc nhân
+</span>
+<span class="c1"># Ví dụ: Mật khẩu 8 ký tự, bao gồm chữ và số
+</span><span class="n">strength</span> <span class="o">=</span> <span class="nf">password_strength</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">36</span><span class="p">)</span>  <span class="c1"># 36^8 ≈ 2.8 × 10^12
+</span></code></pre></div></div>
+
+<h3 id="3-cơ-sở-dữ-liệu">3. Cơ sở dữ liệu</h3>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Đếm số bản ghi có thể tạo từ các bảng</span>
+<span class="c1">-- Sử dụng quy tắc nhân cho JOIN</span>
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">FROM</span> 
+    <span class="p">(</span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">users</span> <span class="k">FROM</span> <span class="n">Users</span><span class="p">)</span> <span class="n">u</span><span class="p">,</span>
+    <span class="p">(</span><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">orders</span> <span class="k">FROM</span> <span class="n">Orders</span><span class="p">)</span> <span class="n">o</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="bài-tập-thực-hành">Bài tập thực hành</h2>
+
+<h3 id="bài-tập-1-quy-tắc-cộng">Bài tập 1: Quy tắc Cộng</h3>
+<ol>
+  <li>
+    <p>Một sinh viên có thể chọn 1 trong 5 môn toán, 1 trong 3 môn lý, hoặc 1 trong 4 môn hóa. Hỏi có bao nhiêu cách chọn?</p>
+  </li>
+  <li>
+    <p>Từ thành phố A đến B có 3 đường bộ, 2 đường sắt, và 1 đường hàng không. Có bao nhiêu cách đi?</p>
+  </li>
+</ol>
+
+<h3 id="bài-tập-2-quy-tắc-nhân">Bài tập 2: Quy tắc Nhân</h3>
+<ol>
+  <li>
+    <p>Tạo mã số gồm 2 chữ cái đầu và 3 chữ số cuối. Có bao nhiêu mã số khác nhau?</p>
+  </li>
+  <li>
+    <p>Một bữa ăn gồm 1 món khai vị (4 loại), 1 món chính (6 loại), và 1 món tráng miệng (3 loại). Có bao nhiêu cách chọn thực đơn?</p>
+  </li>
+</ol>
+
+<h3 id="bài-tập-3-kết-hợp">Bài tập 3: Kết hợp</h3>
+<ol>
+  <li>
+    <p>Từ A đến C có thể đi trực tiếp (2 cách) hoặc qua B (A→B có 3 cách, B→C có 4 cách). Tổng cộng có bao nhiêu cách?</p>
+  </li>
+  <li>
+    <p>Tạo mật khẩu theo 2 định dạng:</p>
+    <ul>
+      <li>Định dạng 1: 3 chữ cái + 2 chữ số</li>
+      <li>Định dạng 2: 2 chữ số + 3 chữ cái</li>
+    </ul>
+
+    <p>Có bao nhiêu mật khẩu khác nhau?</p>
+  </li>
+</ol>
+
+<details>
+<summary>Đáp án</summary>
+
+**Bài tập 1:**
+1. 5 + 3 + 4 = 12 cách
+2. 3 + 2 + 1 = 6 cách
+
+**Bài tập 2:**
+1. 26 × 26 × 10 × 10 × 10 = 676,000 mã số
+2. 4 × 6 × 3 = 72 cách
+
+**Bài tập 3:**
+1. 2 + (3 × 4) = 2 + 12 = 14 cách
+2. (26³ × 10²) + (10² × 26³) = 1,757,600 + 1,757,600 = 3,515,200 mật khẩu
+
+</details>
+
+<h2 id="lỗi-thường-gặp">Lỗi thường gặp</h2>
+
+<h3 id="1-nhầm-lẫn-giữa-cộng-và-nhân">1. Nhầm lẫn giữa Cộng và Nhân</h3>
+<p>❌ <strong>Sai</strong>: Đi từ A đến C qua B: 3 + 4 = 7 cách
+✅ <strong>Đúng</strong>: Đi từ A đến C qua B: 3 × 4 = 12 cách</p>
+
+<h3 id="2-không-nhận-ra-các-lựa-chọn-trùng-lặp">2. Không nhận ra các lựa chọn trùng lặp</h3>
+<p>❌ <strong>Sai</strong>: Chọn 1 môn từ {Toán, Lý} hoặc 1 môn từ {Lý, Hóa}: 2 + 2 = 4 cách
+✅ <strong>Đúng</strong>: Cần loại trừ môn Lý bị trùng: 3 cách (Toán, Lý, Hóa)</p>
+
+<h3 id="3-quên-các-bước-trung-gian">3. Quên các bước trung gian</h3>
+<p>❌ <strong>Sai</strong>: Tạo mật khẩu 3 ký tự từ 26 chữ cái: 26 + 26 + 26 = 78
+✅ <strong>Đúng</strong>: 26 × 26 × 26 = 17,576 mật khẩu</p>
+
+<h2 id="tóm-tắt">Tóm tắt</h2>
+
+<p><strong>Quy tắc Cộng</strong>: Sử dụng khi có <strong>nhiều lựa chọn độc lập</strong></p>
+<ul>
+  <li>Công thức: n₁ + n₂ + … + nₖ</li>
+  <li>Từ khóa: “hoặc”, “có thể chọn”</li>
+</ul>
+
+<p><strong>Quy tắc Nhân</strong>: Sử dụng khi có <strong>nhiều bước liên tiếp</strong></p>
+<ul>
+  <li>Công thức: n₁ × n₂ × … × nₖ</li>
+  <li>Từ khóa: “và”, “sau đó”, “gồm”</li>
+</ul>
+
+<p><strong>Kết hợp</strong>: Nhiều bài toán thực tế cần dùng cả hai quy tắc</p>
+
+<p>Trong bài tiếp theo, chúng ta sẽ học về <strong>Hoán vị và Tổ hợp</strong> - các công cụ mạnh mẽ để đếm các cách sắp xếp và chọn lựa.</p>
+
+</div>
+
+<!-- Back to Chapter Home Link -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="convex-optimization-for-all/convex-optimization-for-all.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script src='/discrete-mathematics-for-computer-science-iuh/public/js/script.js'></script>
+    <script src='/discrete-mathematics-for-computer-science-iuh/public/js/multilang.js'></script>
+  </body>
+</html>

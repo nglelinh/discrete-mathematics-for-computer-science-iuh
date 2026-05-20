@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <style>
+    .MathJax {
+      padding: 2em 0.3em;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  </style>
+  <script src="/discrete-mathematics-for-computer-science-iuh/mathjax-config.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <title>
+    
+      Giới thiệu Quan hệ Truy hồi &middot; Discrete Mathematics for Computer Science
+    
+  </title>
+
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/poole.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/syntax.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/lanyon.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/github-markdown.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/multilang.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/content-boxes.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/discrete-math.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  
+  <script src="/discrete-mathematics-for-computer-science-iuh/public/js/exercise-system.js"></script>
+
+  <link rel="apple-touch-icon-precomposed" sizes="122x144" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/public/logo.png">
+  <link rel="shortcut icon" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/public/convex-logo-144x144.png">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/atom.xml">
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+
+
+  <body class="sidebar-overlay">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Toán Rời Rạc cho Khoa học Máy tính - IUH</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/">Trang chủ</a>
+
+    
+
+    <!-- Discrete Mathematics Chapters -->
+    <div class="sidebar-section">
+      <h4 style="color: #268bd2; margin: 15px 0 10px 0; font-size: 0.9em;">Các chương</h4>
+      
+      <!-- Part I: Logic and Proofs -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần I: Logic và Chứng minh</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter01/">
+          1. Logic mệnh đề
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter02/">
+          2. Logic vị từ
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter03/">
+          3. Phương pháp chứng minh
+        </a>
+      </div>
+      
+      <!-- Part II: Set Theory and Relations -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần II: Tập hợp và Quan hệ</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter04/">
+          4. Lý thuyết tập hợp
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter05/">
+          5. Quan hệ
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter06/">
+          6. Hàm số
+        </a>
+      </div>
+      
+          <!-- Part III: Counting and Discrete Probability -->
+          <div class="sidebar-subsection">
+            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần III: Đếm và Xác suất</h5>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter07/">
+              7. Nguyên lý đếm cơ bản
+            </a>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter08/">
+              8. Nguyên lý Dirichlet
+            </a>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter09/">
+              9. Xác suất rời rạc
+            </a>
+          </div>
+      
+      <!-- Part IV: Recurrence Relations -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần IV: Quan hệ Truy hồi</h5>
+        <a class="sidebar-nav-item active" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter10/">
+          10. Quan hệ truy hồi
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter11/">
+          11. Hàm sinh
+        </a>
+      </div>
+      
+      <!-- Part V: Graph Theory -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần V: Lý thuyết Đồ thị</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter12/">
+          12. Đồ thị cơ bản
+        </a>
+      </div>
+      
+      <!-- Part VI: Advanced Topics -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần VI: Chủ đề Nâng cao</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter13/">
+          13. Đại số Boole
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter14/">
+          14. Thuật toán
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter15/">
+          15. Lý thuyết Số
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter16/">
+          16. Cây
+        </a>
+      </div>
+      
+      <!-- Special Pages -->
+          <div class="sidebar-subsection" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Tính năng đặc biệt</h5>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/demo/">
+              🚀 Demo tính năng
+            </a>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/progress/">
+              📊 Tiến độ khóa học
+            </a>
+          </div>
+    </div>
+    
+    <span class="sidebar-nav-item">Currently v0.0.1</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2026. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap github-md-body">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/discrete-mathematics-for-computer-science-iuh/" title="Trang chủ">Discrete Mathematics for Computer Science</a>
+            <small></small>
+          </h3>
+          <!-- Header Actions: Language Toggle and GitHub Link -->
+          <div class="header-actions">
+            <div class="language-toggle">
+              <!-- language_switch disabled -->
+            </div>
+            <a class="github-logo__wrapper" target="_blank" href="https://github.com/nglelinh/optimization-for-data-science-iuh-2025" title="Github">
+             <svg class="github-logo" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48"><linearGradient id="rL2wppHyxHVbobwndsT6Ca" x1="4" x2="44" y1="23.508" y2="23.508" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4c4c4c"/><stop offset="1" stop-color="#343434"/></linearGradient><path fill="url(#rL2wppHyxHVbobwndsT6Ca)" d="M24,4C12.954,4,4,12.954,4,24c0,8.887,5.801,16.411,13.82,19.016h12.36	C38.199,40.411,44,32.887,44,24C44,12.954,35.046,4,24,4z"/><path d="M30.01,41.996L30,36.198c0-0.939-0.22-1.856-0.642-2.687c5.641-1.133,8.386-4.468,8.386-10.177	c0-2.255-0.665-4.246-1.976-5.92c0.1-0.317,0.174-0.645,0.22-0.981c0.188-1.369-0.023-2.264-0.193-2.984l-0.027-0.116	c-0.186-0.796-0.409-1.364-0.418-1.388l-0.111-0.282l-0.111-0.282l-0.302-0.032l-0.303-0.032c0,0-0.199-0.021-0.501-0.021	c-0.419,0-1.04,0.042-1.627,0.241l-0.196,0.066c-0.74,0.249-1.439,0.485-2.417,1.069c-0.286,0.171-0.599,0.366-0.934,0.584	C27.334,12.881,25.705,12.69,24,12.69c-1.722,0-3.365,0.192-4.889,0.571c-0.339-0.22-0.654-0.417-0.942-0.589	c-0.978-0.584-1.677-0.819-2.417-1.069l-0.196-0.066c-0.585-0.199-1.207-0.241-1.626-0.241c-0.302,0-0.501,0.021-0.501,0.021	l-0.302,0.032l-0.3,0.031l-0.112,0.281l-0.113,0.283c-0.01,0.026-0.233,0.594-0.419,1.391l-0.027,0.115	c-0.17,0.719-0.381,1.615-0.193,2.983c0.048,0.346,0.125,0.685,0.23,1.011c-1.285,1.666-1.936,3.646-1.936,5.89	c0,5.695,2.748,9.028,8.397,10.17c-0.194,0.388-0.345,0.798-0.452,1.224c-0.197,0.067-0.378,0.112-0.538,0.137	c-0.238,0.036-0.487,0.054-0.739,0.054c-0.686,0-1.225-0.134-1.435-0.259c-0.313-0.186-0.872-0.727-1.414-1.518	c-0.463-0.675-1.185-1.558-1.992-1.927c-0.698-0.319-1.437-0.502-2.029-0.502c-0.138,0-0.265,0.01-0.376,0.028	c-0.517,0.082-0.949,0.366-1.184,0.78c-0.203,0.357-0.235,0.773-0.088,1.141c0.219,0.548,0.851,0.985,1.343,1.255	c0.242,0.133,0.765,0.619,1.07,1.109c0.229,0.368,0.335,0.63,0.482,0.992c0.087,0.215,0.183,0.449,0.313,0.732	c0.47,1.022,1.937,1.924,2.103,2.023c0.806,0.483,2.161,0.638,3.157,0.683l0.123,0.003c0,0,0.001,0,0.001,0	c0.24,0,0.57-0.023,1.004-0.071v2.613c0.002,0.529-0.537,0.649-1.25,0.638l0.547,0.184C19.395,43.572,21.645,44,24,44	c2.355,0,4.605-0.428,6.703-1.176l0.703-0.262C30.695,42.538,30.016,42.422,30.01,41.996z" opacity=".05"/><path d="M30.781,42.797c-0.406,0.047-1.281-0.109-1.281-0.795v-5.804c0-1.094-0.328-2.151-0.936-3.052	c5.915-0.957,8.679-4.093,8.679-9.812c0-2.237-0.686-4.194-2.039-5.822c0.137-0.365,0.233-0.75,0.288-1.147	c0.175-1.276-0.016-2.086-0.184-2.801l-0.027-0.116c-0.178-0.761-0.388-1.297-0.397-1.319l-0.111-0.282l-0.303-0.032	c0,0-0.178-0.019-0.449-0.019c-0.381,0-0.944,0.037-1.466,0.215l-0.196,0.066c-0.714,0.241-1.389,0.468-2.321,1.024	c-0.332,0.198-0.702,0.431-1.101,0.694C27.404,13.394,25.745,13.19,24,13.19c-1.762,0-3.435,0.205-4.979,0.61	c-0.403-0.265-0.775-0.499-1.109-0.699c-0.932-0.556-1.607-0.784-2.321-1.024l-0.196-0.066c-0.521-0.177-1.085-0.215-1.466-0.215	c-0.271,0-0.449,0.019-0.449,0.019l-0.302,0.032l-0.113,0.283c-0.009,0.022-0.219,0.558-0.397,1.319l-0.027,0.116	c-0.169,0.715-0.36,1.524-0.184,2.8c0.056,0.407,0.156,0.801,0.298,1.174c-1.327,1.62-1.999,3.567-1.999,5.795	c0,5.703,2.766,8.838,8.686,9.806c-0.395,0.59-0.671,1.255-0.813,1.964c-0.33,0.13-0.629,0.216-0.891,0.256	c-0.263,0.04-0.537,0.06-0.814,0.06c-0.69,0-1.353-0.129-1.69-0.329c-0.44-0.261-1.057-0.914-1.572-1.665	c-0.35-0.51-1.047-1.417-1.788-1.755c-0.635-0.29-1.298-0.457-1.821-0.457c-0.11,0-0.21,0.008-0.298,0.022	c-0.366,0.058-0.668,0.252-0.828,0.534c-0.128,0.224-0.149,0.483-0.059,0.708c0.179,0.448,0.842,0.85,1.119,1.002	c0.335,0.184,0.919,0.744,1.254,1.284c0.251,0.404,0.37,0.697,0.521,1.067c0.085,0.209,0.178,0.437,0.304,0.712	c0.331,0.719,1.353,1.472,1.905,1.803c0.754,0.452,2.154,0.578,2.922,0.612l0.111,0.002c0.299,0,0.8-0.045,1.495-0.135v3.177	c0,0.779-0.991,0.81-1.234,0.81c-0.031,0,0.503,0.184,0.503,0.184C19.731,43.64,21.822,44,24,44c2.178,0,4.269-0.36,6.231-1.003	C30.231,42.997,30.812,42.793,30.781,42.797z" opacity=".07"/><path fill="#fff" d="M36.744,23.334c0-2.31-0.782-4.226-2.117-5.728c0.145-0.325,0.296-0.761,0.371-1.309	c0.172-1.25-0.031-2-0.203-2.734s-0.375-1.25-0.375-1.25s-0.922-0.094-1.703,0.172s-1.453,0.469-2.422,1.047	c-0.453,0.27-0.909,0.566-1.27,0.806C27.482,13.91,25.785,13.69,24,13.69c-1.801,0-3.513,0.221-5.067,0.652	c-0.362-0.241-0.821-0.539-1.277-0.811c-0.969-0.578-1.641-0.781-2.422-1.047s-1.703-0.172-1.703-0.172s-0.203,0.516-0.375,1.25	s-0.375,1.484-0.203,2.734c0.077,0.562,0.233,1.006,0.382,1.333c-1.31,1.493-2.078,3.397-2.078,5.704	c0,5.983,3.232,8.714,9.121,9.435c-0.687,0.726-1.148,1.656-1.303,2.691c-0.387,0.17-0.833,0.33-1.262,0.394	c-1.104,0.167-2.271,0-2.833-0.333s-1.229-1.083-1.729-1.813c-0.422-0.616-1.031-1.331-1.583-1.583	c-0.729-0.333-1.438-0.458-1.833-0.396c-0.396,0.063-0.583,0.354-0.5,0.563c0.083,0.208,0.479,0.521,0.896,0.75	c0.417,0.229,1.063,0.854,1.438,1.458c0.418,0.674,0.5,1.063,0.854,1.833c0.249,0.542,1.101,1.219,1.708,1.583	c0.521,0.313,1.562,0.491,2.688,0.542c0.389,0.018,1.308-0.096,2.083-0.206v3.75c0,0.639-0.585,1.125-1.191,1.013	C19.756,43.668,21.833,44,24,44c2.166,0,4.243-0.332,6.19-0.984C29.585,43.127,29,42.641,29,42.002v-5.804	c0-1.329-0.527-2.53-1.373-3.425C33.473,32.071,36.744,29.405,36.744,23.334z M11.239,32.727c-0.154-0.079-0.237-0.225-0.185-0.328	c0.052-0.103,0.22-0.122,0.374-0.043c0.154,0.079,0.237,0.225,0.185,0.328S11.393,32.806,11.239,32.727z M12.451,33.482	c-0.081,0.088-0.255,0.06-0.389-0.062s-0.177-0.293-0.096-0.381c0.081-0.088,0.255-0.06,0.389,0.062S12.532,33.394,12.451,33.482z M13.205,34.732c-0.102,0.072-0.275,0.005-0.386-0.15s-0.118-0.34-0.016-0.412s0.275-0.005,0.386,0.15	C13.299,34.475,13.307,34.66,13.205,34.732z M14.288,35.673c-0.069,0.112-0.265,0.117-0.437,0.012s-0.256-0.281-0.187-0.393	c0.069-0.112,0.265-0.117,0.437-0.012S14.357,35.561,14.288,35.673z M15.312,36.594c-0.213-0.026-0.371-0.159-0.353-0.297	c0.017-0.138,0.204-0.228,0.416-0.202c0.213,0.026,0.371,0.159,0.353,0.297C15.711,36.529,15.525,36.62,15.312,36.594z M16.963,36.833c-0.227-0.013-0.404-0.143-0.395-0.289c0.009-0.146,0.2-0.255,0.427-0.242c0.227,0.013,0.404,0.143,0.395,0.289	C17.381,36.738,17.19,36.846,16.963,36.833z M18.521,36.677c-0.242,0-0.438-0.126-0.438-0.281s0.196-0.281,0.438-0.281	c0.242,0,0.438,0.126,0.438,0.281S18.762,36.677,18.521,36.677z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">
+    Giới thiệu Quan hệ Truy hồi
+    
+  </h1>
+  <h1 id="giới-thiệu-quan-hệ-truy-hồi">Giới thiệu Quan hệ Truy hồi</h1>
+
+<p>Nhiều quá trình trong khoa học máy tính không được mô tả tốt bằng một công thức đóng ngay từ đầu. Số phép tính của thuật toán chia để trị phụ thuộc vào kích thước nhỏ hơn; dân số ở tháng này phụ thuộc tháng trước; số chuỗi độ dài n thường được xây từ số chuỗi độ dài n−1 hoặc n−2. Đó là lúc ta cần một cách mô tả “hiện tại dựa trên quá khứ”.</p>
+
+<p><strong>Quan hệ truy hồi</strong> chính là ngôn ngữ cho kiểu phụ thuộc đó. Nó xuất hiện trong phân tích thuật toán, dynamic programming, đếm cấu hình, mô hình tăng trưởng và nhiều cấu trúc đệ quy. Học tốt truy hồi giúp bạn nhìn ra nhịp vận động của bài toán thay vì chỉ nhìn kết quả cuối cùng.</p>
+
+<h2 id="định-nghĩa-và-khái-niệm">Định nghĩa và Khái niệm</h2>
+
+<h3 id="quan-hệ-truy-hồi">Quan hệ Truy hồi</h3>
+
+<p><strong>Định nghĩa</strong>: Quan hệ truy hồi là một phương trình biểu diễn số hạng thứ \(n\) của một dãy số theo một hoặc nhiều số hạng đứng trước nó.</p>
+
+<p><strong>Dạng tổng quát</strong>:</p>
+
+\[a_n = f(a_{n-1}, a_{n-2}, \dots, a_{n-k}, n)\]
+
+<p>Trong đó:</p>
+
+<ul>
+  <li>\(a_n\) là số hạng thứ \(n\) của dãy</li>
+  <li>\(f\) là một hàm số xác định mối liên hệ</li>
+  <li>\(k\) là <strong>bậc</strong> (order) của quan hệ truy hồi — cho biết cần bao nhiêu số hạng đằng trước để tính \(a_n\)</li>
+  <li>Cần có \(k\) <strong>điều kiện đầu</strong> (initial conditions): \(a_0, a_1, \dots, a_{k-1}\)</li>
+</ul>
+
+<div class="content-box insight-box">
+  <p><strong>Tại sao cần điều kiện đầu?</strong> Hãy tưởng tượng quan hệ truy hồi như một cỗ máy sản xuất: nó biết cách tạo ra số hạng tiếp theo từ những số hạng trước, nhưng không thể tự sinh ra số hạng đầu tiên. Điều kiện đầu chính là “nguyên liệu khởi tạo” cho cỗ máy đó.</p>
+</div>
+
+<h3 id="ví-dụ-cơ-bản">Ví dụ Cơ bản</h3>
+
+<h4 id="1-dãy-fibonacci-và-bài-toán-đôi-thỏ">1. Dãy Fibonacci và bài toán đôi thỏ</h4>
+
+<p><strong>Bài toán gốc</strong> (Fibonacci, 1202): Một đôi thỏ (gồm một thỏ đực và một thỏ cái) cứ mỗi tháng đẻ được một đôi thỏ con (cũng gồm một đực và một cái). Mỗi đôi thỏ con, khi tròn hai tháng tuổi, lại mỗi tháng đẻ ra một đôi thỏ con và quá trình sinh nở cứ thế tiếp diễn. Hỏi có bao nhiêu đôi thỏ sau \(n\) tháng?</p>
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter10/fibonacci_rabbits.svg" alt="Minh họa bài toán đôi thỏ Fibonacci" width="70%" height="70%" />
+  <figcaption style="text-align: center;">Hình 10.2: Bài toán đôi thỏ của Fibonacci — nguồn gốc kinh điển của dãy số Fibonacci.</figcaption>
+</p>
+</figure>
+
+<p><strong>Phân tích</strong>: Gọi \(F_n\) là số đôi thỏ sau \(n\) tháng.</p>
+
+<ul>
+  <li>Tháng 1: 1 đôi (thỏ ban đầu) \(\to F_1 = 1\)</li>
+  <li>Tháng 2: 1 đôi (thỏ ban đầu chưa đẻ) \(\to F_2 = 1\)</li>
+  <li>Tháng 3: 2 đôi (thỏ ban đầu + 1 đôi con) \(\to F_3 = 2\)</li>
+  <li>Tháng \(n\): số thỏ tháng \(n-1\) cộng với số thỏ con mới sinh (bằng số thỏ tháng \(n-2\) vì mỗi đôi thỏ cần 2 tháng tuổi để sinh).</li>
+</ul>
+
+<p><strong>Quan hệ truy hồi Fibonacci</strong>:</p>
+
+\[F_n = F_{n-1} + F_{n-2}, \quad F_1 = 1, F_2 = 1\]
+
+<p><strong>Dãy</strong>: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …</p>
+
+<div class="content-box fun-fact-box">
+  <p><strong>Giai thoại</strong>: Leonardo Fibonacci — nhà toán học người Ý thời Trung Cổ — không hề biết rằng dãy số mang tên ông sau này lại xuất hiện trong đến thế: tỷ lệ vàng trong kiến trúc, đường xoắn ốc trong vỏ ốc, sự sắp xếp lá cây, và thậm chí là thuật toán tìm kiếm trong khoa học máy tính hiện đại.</p>
+</div>
+
+<h4 id="2-giai-thừa">2. Giai thừa</h4>
+
+<p><strong>Quan hệ</strong>: \(n! = n \times (n-1)!\)</p>
+
+<p><strong>Điều kiện ban đầu</strong>: \(0! = 1\)</p>
+
+<p><strong>Dãy</strong>: 1, 1, 2, 6, 24, 120, 720, …</p>
+
+<h4 id="3-tháp-hà-nội">3. Tháp Hà Nội</h4>
+
+<p>Trò chơi Tháp Hà Nội (Tower of Hanoi) gồm ba cọc và \(n\) đĩa kích thước khác nhau. Mỗi lần chỉ được di chuyển một đĩa, và không được đặt đĩa lớn lên trên đĩa nhỏ.</p>
+
+<p><strong>Quan hệ</strong>: \(H_n = 2H_{n-1} + 1\)</p>
+
+<p><strong>Điều kiện ban đầu</strong>: \(H_1 = 1\)</p>
+
+<p><strong>Dãy</strong>: 1, 3, 7, 15, 31, 63, …</p>
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter10/tower_of_hanoi.svg" alt="Bài toán Tháp Hà Nội với 3 đĩa" width="70%" height="70%" />
+  <figcaption style="text-align: center;">Hình 10.3: Tháp Hà Nội — một bài toán đệ quy cổ điển được mô hình hóa bằng quan hệ truy hồi $$H_n = 2H_{n-1} + 1$$.</figcaption>
+</p>
+</figure>
+
+<h2 id="phân-loại-quan-hệ-truy-hồi">Phân loại Quan hệ Truy hồi</h2>
+
+<h3 id="1-theo-tính-tuyến-tính-linear-vs-nonlinear">1. Theo Tính tuyến tính (Linear vs Nonlinear)</h3>
+
+<p>Một quan hệ truy hồi được gọi là <strong>tuyến tính</strong> nếu nó có dạng tổng của các số hạng trước nhân với hệ số, không có tích hoặc lũy thừa giữa các số hạng.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Loại</th>
+      <th style="text-align: left">Dạng</th>
+      <th style="text-align: left">Ví dụ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Tuyến tính</strong></td>
+      <td style="text-align: left">\(a_n = c_1 a_{n-1} + c_2 a_{n-2} + \dots + c_k a_{n-k} + f(n)\)</td>
+      <td style="text-align: left">\(a_n = 3a_{n-1} - 2a_{n-2}\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Phi tuyến</strong></td>
+      <td style="text-align: left">Có tích, lũy thừa giữa các \(a_{n-i}\)</td>
+      <td style="text-align: left">\(a_n = a_{n-1} \times a_{n-2}\) hoặc \(a_n = a_{n-1}^2 + 1\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Ví dụ phân biệt</strong>:</p>
+
+<ul>
+  <li>\(a_n = 2a_{n-1} + a_{n-2}\) là <strong>tuyến tính</strong> (hệ số hằng, không có tích)</li>
+  <li>\(a_n = a_{n-1} \cdot a_{n-2}\) là <strong>phi tuyến</strong> (có tích giữa các số hạng)</li>
+  <li>\(a_n = \sqrt{a_{n-1}}\) là <strong>phi tuyến</strong> (có căn thức)</li>
+</ul>
+
+<h3 id="2-theo-tính-thuần-nhất-homogeneous-vs-nonhomogeneous">2. Theo Tính thuần nhất (Homogeneous vs Nonhomogeneous)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Loại</th>
+      <th style="text-align: left">Dạng</th>
+      <th style="text-align: left">Ví dụ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Thuần nhất</strong></td>
+      <td style="text-align: left">\(a_n = c_1 a_{n-1} + \dots + c_k a_{n-k}\)</td>
+      <td style="text-align: left">\(a_n = 3a_{n-1} - 2a_{n-2}\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Không thuần nhất</strong></td>
+      <td style="text-align: left">Có thêm \(f(n) \neq 0\)</td>
+      <td style="text-align: left">\(a_n = 2a_{n-1} + n\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Ví dụ</strong>:</p>
+
+<ul>
+  <li>\(F_n = F_{n-1} + F_{n-2}\) là <strong>tuyến tính thuần nhất</strong> bậc 2</li>
+  <li>\(H_n = 2H_{n-1} + 1\) là <strong>tuyến tính không thuần nhất</strong> bậc 1</li>
+  <li>\(a_n = a_{n-1} \cdot a_{n-2}\) là <strong>phi tuyến</strong></li>
+</ul>
+
+<div class="content-box warning-box">
+  <p><strong>Sai lầm thường gặp</strong>: Nhiều sinh viên nhầm lẫn giữa “bậc” và “tính tuyến tính”. Bậc là số số hạng đằng trước được dùng để tính số hạng hiện tại. Tuyến tính là không có tích hay lũy thừa giữa các số hạng. Một quan hệ có thể bậc cao nhưng vẫn tuyến tính, và ngược lại — bậc thấp nhưng phi tuyến.</p>
+</div>
+
+<h2 id="mô-hình-hóa-bài-toán-bằng-quan-hệ-truy-hồi">Mô hình hóa bài toán bằng Quan hệ Truy hồi</h2>
+
+<p>Quan hệ truy hồi không chỉ là công cụ toán học trừu tượng — chúng xuất hiện tự nhiên khi mô hình hóa các bài toán thực tế có tính chất đệ quy. Quá trình mô hình hóa gồm ba bước:</p>
+
+<ol>
+  <li><strong>Xác định dãy số</strong>: Xác định đại lượng cần tính (\(a_n\)) và ý nghĩa của chỉ số \(n\) trong bài toán.</li>
+  <li><strong>Thiết lập quan hệ</strong>: Tìm mối liên hệ giữa \(a_n\) và các số hạng trước đó dựa trên cấu trúc bài toán.</li>
+  <li><strong>Xác định điều kiện đầu</strong>: Tìm giá trị của một vài số hạng đầu tiên từ dữ kiện bài toán.</li>
+</ol>
+
+<div class="content-box example-box">
+  <p><strong>Ví dụ 1: Lãi kép (Compound Interest)</strong></p>
+
+  <p>Gửi tiết kiệm 10 triệu đồng với lãi suất 0.5% mỗi tháng, lãi nhập gốc hàng tháng. Gọi \(a_n\) là số tiền sau \(n\) tháng.</p>
+
+  <p>Sau mỗi tháng, số tiền tăng thêm 0.5% so với tháng trước:</p>
+
+\[a_n = a_{n-1} + 0.005 \cdot a_{n-1} = 1.005 \cdot a_{n-1}\]
+
+  <p>Điều kiện đầu: \(a_0 = 10\,000\,000\) (tiền gốc)</p>
+
+  <p>Đây là quan hệ truy hồi tuyến tính thuần nhất bậc 1. Nghiệm:</p>
+
+  <p>\(a_n = 10\,000\,000 \cdot (1.005)^n\)</p>
+</div>
+
+<div class="content-box example-box">
+  <p><strong>Ví dụ 2: Số xâu nhị phân không chứa hai số 0 liên tiếp</strong></p>
+
+  <p>Đếm số xâu nhị phân độ dài \(n\) không có hai bit 0 đứng cạnh nhau. Gọi \(a_n\) là số xâu thỏa mãn.</p>
+
+  <p>Xét bit cuối cùng của xâu:</p>
+
+  <ul>
+    <li>Nếu bit cuối là 1: \(n-1\) bit đầu có thể là bất kỳ xâu hợp lệ độ dài \(n-1\) — \(a_{n-1}\) cách</li>
+    <li>Nếu bit cuối là 0: bit kề cuối phải là 1, và \(n-2\) bit đầu là xâu hợp lệ độ dài \(n-2\) — \(a_{n-2}\) cách</li>
+  </ul>
+
+  <p>Vậy:</p>
+
+\[a_n = a_{n-1} + a_{n-2}\]
+
+  <p>Điều kiện đầu: \(a_1 = 2\) (xâu “0” và “1”), \(a_2 = 3\) (xâu “01”, “10”, “11”)</p>
+</div>
+
+<div class="content-box example-box">
+  <p><strong>Ví dụ 3: Số cách lên cầu thang</strong></p>
+
+  <p>Có \(n\) bậc thang, mỗi bước có thể đi 1 hoặc 2 bậc. Gọi \(a_n\) là số cách lên đến bậc thứ \(n\).</p>
+
+  <p>Để đến bậc \(n\), ta phải đến từ bậc \(n-1\) (đi 1 bước) hoặc bậc \(n-2\) (đi 2 bước):</p>
+
+\[a_n = a_{n-1} + a_{n-2}\]
+
+  <p>Điều kiện đầu: \(a_1 = 1\) (chỉ 1 cách: đi 1 bước), \(a_2 = 2\) (1+1 hoặc 2)</p>
+
+  <p>Dãy số thu được: 1, 2, 3, 5, 8, 13, … — đây là dãy Fibonacci nhưng với điều kiện đầu khác.</p>
+</div>
+
+<h2 id="quan-hệ-truy-hồi-bậc-nhất">Quan hệ Truy hồi Bậc nhất</h2>
+
+<h3 id="định-nghĩa">Định nghĩa</h3>
+
+<p>Quan hệ truy hồi bậc nhất có dạng tổng quát:</p>
+
+\[a_n = f(a_{n-1}, n)\]
+
+<p>nghĩa là \(a_n\) chỉ phụ thuộc vào số hạng ngay trước nó (\(a_{n-1}\)) và có thể cả chỉ số \(n\).</p>
+
+<h3 id="truy-hồi-tuyến-tính-bậc-nhất-thuần-nhất">Truy hồi tuyến tính bậc nhất thuần nhất</h3>
+
+<p>Dạng chuẩn:</p>
+
+\[a_n = c \cdot a_{n-1} \quad \text{với} \quad a_0 = A\]
+
+<p>Nghiệm tổng quát:</p>
+
+\[a_n = A \cdot c^n\]
+
+<p><strong>Chứng minh</strong>: Bằng quy nạp đơn giản:</p>
+
+<ul>
+  <li>\(n = 0\): \(a_0 = A = A \cdot c^0\) (đúng)</li>
+  <li>\(n = 1\): \(a_1 = c \cdot a_0 = cA = A \cdot c^1\)</li>
+  <li>Giả sử \(a_{n-1} = A \cdot c^{n-1}\), thì \(a_n = c \cdot a_{n-1} = c \cdot A \cdot c^{n-1} = A \cdot c^n\)</li>
+</ul>
+
+<div class="content-box example-box">
+  <p><strong>Ví dụ</strong>: Dân số một thành phố hiện là 1,2 triệu người và tăng 1,5% mỗi năm. Gọi \(a_n\) là dân số sau \(n\) năm.</p>
+
+\[a_n = 1.015 \cdot a_{n-1}, \quad a_0 = 1.2 \times 10^6\]
+
+  <p>Nghiệm: \(a_n = 1.2 \times 10^6 \cdot (1.015)^n\)</p>
+
+  <p>Sau 10 năm: \(a_{10} = 1.2 \times 10^6 \cdot (1.015)^{10} \approx 1.393 \times 10^6\) người.</p>
+</div>
+
+<h3 id="truy-hồi-tuyến-tính-bậc-nhất-không-thuần-nhất">Truy hồi tuyến tính bậc nhất không thuần nhất</h3>
+
+<p>Dạng chuẩn:</p>
+
+\[a_n = c \cdot a_{n-1} + f(n) \quad \text{với} \quad a_0 = A\]
+
+<p>Phương pháp giải gồm hai bước:</p>
+
+<ol>
+  <li>Tìm nghiệm thuần nhất: \(a_n^{(h)} = A_0 \cdot c^n\)</li>
+  <li>Tìm một nghiệm riêng \(a_n^{(p)}\) phụ thuộc vào dạng của \(f(n)\)</li>
+  <li>Nghiệm tổng quát: \(a_n = a_n^{(h)} + a_n^{(p)}\)</li>
+</ol>
+
+<h4 id="trường-hợp-fn--d-hằng-số">Trường hợp \(f(n) = d\) (hằng số)</h4>
+
+<p>Nghiệm riêng có dạng hằng số \(a_n^{(p)} = K\). Thay vào quan hệ:</p>
+
+\[K = c \cdot K + d \quad\Rightarrow\quad K(1-c) = d \quad\Rightarrow\quad K = \frac{d}{1-c}\]
+
+<p>(Chú ý: trường hợp \(c = 1\) cần xử lý riêng với nghiệm dạng \(K \cdot n\))</p>
+
+<div class="content-box example-box">
+  <p><strong>Ví dụ</strong>: Giải \(a_n = 3a_{n-1} + 4\) với \(a_0 = 1\)</p>
+
+  <p>Nghiệm thuần nhất: \(a_n^{(h)} = A \cdot 3^n\)</p>
+
+  <p>Nghiệm riêng: \(K = \frac{4}{1-3} = -2\)</p>
+
+  <p>Nghiệm tổng quát: \(a_n = A \cdot 3^n - 2\)</p>
+
+  <p>Từ \(a_0 = 1\): \(1 = A - 2 \Rightarrow A = 3\)</p>
+
+  <p>Vậy: \(a_n = 3 \cdot 3^n - 2 = 3^{n+1} - 2\)</p>
+
+  <p>Kiểm tra: \(a_1 = 3^2 - 2 = 7\), truy hồi: \(3 \cdot 1 + 4 = 7\) ✓</p>
+</div>
+
+<h4 id="trường-hợp-fn-là-đa-thức-bậc-m">Trường hợp \(f(n)\) là đa thức bậc \(m\)</h4>
+
+<p>Nghiệm riêng có dạng đa thức cùng bậc:</p>
+
+\[a_n^{(p)} = b_0 + b_1 n + b_2 n^2 + \cdots + b_m n^m\]
+
+<div class="content-box example-box">
+  <p><strong>Ví dụ</strong>: Giải \(a_n = 2a_{n-1} + 3n + 1\) với \(a_0 = 2\)</p>
+
+  <p>Nghiệm thuần nhất: \(a_n^{(h)} = A \cdot 2^n\)</p>
+
+  <p>Nghiệm riêng dạng: \(a_n^{(p)} = B_0 + B_1 n\)</p>
+
+  <p>Thay vào: \(B_0 + B_1 n = 2(B_0 + B_1(n-1)) + 3n + 1\)</p>
+
+\[B_0 + B_1 n = 2B_0 + 2B_1 n - 2B_1 + 3n + 1\]
+
+  <p>Cân bằng hệ số:</p>
+
+  <ul>
+    <li>Hệ số của \(n\): \(B_1 = 2B_1 + 3 \Rightarrow -B_1 = 3 \Rightarrow B_1 = -3\)</li>
+    <li>Hằng số: \(B_0 = 2B_0 - 2B_1 + 1 = 2B_0 + 6 + 1 \Rightarrow -B_0 = 7 \Rightarrow B_0 = -7\)</li>
+  </ul>
+
+  <p>Nghiệm tổng quát: \(a_n = A \cdot 2^n - 3n - 7\)</p>
+
+  <p>Từ \(a_0 = 2\): \(2 = A - 7 \Rightarrow A = 9\)</p>
+
+  <p>Vậy: \(a_n = 9 \cdot 2^n - 3n - 7\)</p>
+
+  <p>Kiểm tra: \(a_1 = 18 - 3 - 7 = 8\), truy hồi: \(2 \cdot 2 + 3 + 1 = 8\) ✓</p>
+</div>
+
+<div class="content-box warning-box">
+  <p><strong>Sai lầm thường gặp</strong>: Khi tìm nghiệm riêng, sinh viên thường quên kiểm tra xem dạng nghiệm thử có trùng với nghiệm thuần nhất không. Nếu trùng, cần nhân thêm \(n\) (hoặc \(n^s\)) vào nghiệm thử. Chúng ta sẽ học chi tiết về điều này trong Bài 10.3.</p>
+</div>
+
+<h2 id="công-cụ-tương-tác-khám-phá-quan-hệ-truy-hồi">Công cụ tương tác: Khám phá Quan hệ Truy hồi</h2>
+
+<div id="recurrence-explorer" class="interactive-tool" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
+  <h4 style="color: #6f42c1;">Khám phá Quan hệ Truy hồi</h4>
+  <p>Hãy nhập các hệ số và điều kiện đầu để xem dãy số được sinh ra như thế nào.</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+    <div>
+      <label><strong>Quan hệ truy hồi bậc 2:</strong></label><br />
+      $$a_n =$$ <input type="text" id="coeff1" value="1" style="width: 50px;" /> $$\cdot a_{n-1} +$$ <input type="text" id="coeff2" value="1" style="width: 50px;" /> $$\cdot a_{n-2}$$ 
+    </div>
+    <div>
+      <label><strong>Điều kiện đầu:</strong></label><br />
+      $$a_0 =$$ <input type="text" id="init0" value="0" style="width: 50px;" /> 
+      $$a_1 =$$ <input type="text" id="init1" value="1" style="width: 50px;" />
+    </div>
+  </div>
+  <button onclick="generateSequence()" style="background: #6f42c1; color: white; border: none; padding: 10px 20px; border-radius: 5px; margin-top: 15px;">Sinh dãy số</button>
+  <div id="sequence-output" style="margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 5px; font-family: monospace;">
+    Nhấn "Sinh dãy số" để xem kết quả.
+  </div>
+</div>
+
+<script>
+function generateSequence() {
+  const c1 = parseFloat(document.getElementById('coeff1').value) || 0;
+  const c2 = parseFloat(document.getElementById('coeff2').value) || 0;
+  const a0 = parseFloat(document.getElementById('init0').value) || 0;
+  const a1 = parseFloat(document.getElementById('init1').value) || 0;
+  
+  let seq = [a0, a1];
+  for (let n = 2; n < 20; n++) {
+    seq.push(c1 * seq[n-1] + c2 * seq[n-2]);
+  }
+  
+  document.getElementById('sequence-output').innerHTML = 
+    '<strong>Dãy số (20 số hạng đầu):</strong><br>' + 
+    seq.map((v, i) => `a<sub>${i}</sub> = ${Number.isInteger(v) ? v : v.toFixed(4)}`).join(', ');
+}
+</script>
+
+<h2 id="ứng-dụng-trong-khoa-học-máy-tính">Ứng dụng trong Khoa học Máy tính</h2>
+
+<h3 id="phân-tích-độ-phức-tạp-thuật-toán">Phân tích độ phức tạp thuật toán</h3>
+
+<p>Các thuật toán đệ quy thường có độ phức tạp thời gian được biểu diễn bằng quan hệ truy hồi. Ví dụ:</p>
+
+<ul>
+  <li><strong>Merge Sort</strong>: \(T(n) = 2T(n/2) + n\)</li>
+  <li><strong>Binary Search</strong>: \(T(n) = T(n/2) + 1\)</li>
+  <li><strong>Thuật toán Fibonacci đệ quy</strong>: \(T(n) = T(n-1) + T(n-2) + 1\)</li>
+</ul>
+
+<h3 id="quy-hoạch-động-dynamic-programming">Quy hoạch động (Dynamic Programming)</h3>
+
+<p>Quy hoạch động là kỹ thuật giải bài toán bằng cách kết hợp lời giải của các bài toán con — bản chất chính là xây dựng và giải các quan hệ truy hồi. Bài toán ba lô (Knapsack), chuỗi con chung dài nhất (LCS), và đường đi ngắn nhất (Bellman-Ford) đều dùng quan hệ truy hồi.</p>
+
+<h3 id="mô-hình-hóa-hệ-thống">Mô hình hóa hệ thống</h3>
+
+<p>Từ dân số, lãi suất ngân hàng, đến lan truyền virus trong mạng máy tính — tất cả đều có thể mô hình hóa bằng quan hệ truy hồi, giúp ta dự đoán được tương lai dựa trên quá khứ.</p>
+
+<h2 id="bài-tập-thực-hành">Bài tập thực hành</h2>
+
+<h3 id="bài-tập-1-xác-định-loại-quan-hệ-truy-hồi">Bài tập 1: Xác định loại quan hệ truy hồi</h3>
+
+<p>Phân loại các quan hệ truy hồi sau (tuyến tính/phi tuyến, thuần nhất/không thuần nhất, bậc mấy):</p>
+
+<p>a) \(a_n = 3a_{n-1} - 2a_{n-2}\)
+b) \(a_n = a_{n-1}^2 + 1\)
+c) \(a_n = 2a_{n-1} + n^2\)
+d) \(a_n = a_{n-1} \cdot a_{n-2} + a_{n-3}\)</p>
+
+<details>
+<summary>Đáp án</summary>
+
+a) Tuyến tính thuần nhất, bậc 2.
+b) Phi tuyến (có bình phương số hạng), bậc 1.
+c) Tuyến tính không thuần nhất (có $$f(n) = n^2$$), bậc 1.
+d) Phi tuyến (có tích $$a_{n-1} \cdot a_{n-2}$$), bậc 3.
+
+</details>
+
+<h3 id="bài-tập-2-thiết-lập-quan-hệ-truy-hồi">Bài tập 2: Thiết lập quan hệ truy hồi</h3>
+
+<p>Một người gửi 50 triệu đồng vào ngân hàng với lãi suất 0.7% mỗi tháng. Mỗi tháng, người đó rút ra 3 triệu đồng để tiêu. Thiết lập quan hệ truy hồi cho số dư sau \(n\) tháng.</p>
+
+<details>
+<summary>Đáp án</summary>
+
+Gọi $$a_n$$ là số dư sau $$n$$ tháng. Sau mỗi tháng, số tiền tăng 0.7% (nhân 1.007) rồi trừ đi 3 triệu:
+
+$$a_n = 1.007 \cdot a_{n-1} - 3, \quad a_0 = 50$$
+
+Kiểm tra: $$a_1 = 1.007 \cdot 50 - 3 = 47.35$$ (triệu đồng) ✓
+</details>
+
+<h3 id="bài-tập-3-giải-truy-hồi-bậc-nhất">Bài tập 3: Giải truy hồi bậc nhất</h3>
+
+<p>Giải các quan hệ truy hồi sau:</p>
+
+<p>a) \(a_n = 2a_{n-1}\) với \(a_0 = 5\)
+b) \(a_n = a_{n-1} + 3\) với \(a_0 = 4\)
+c) \(a_n = -3a_{n-1}\) với \(a_0 = 2\)</p>
+
+<details>
+<summary>Đáp án</summary>
+
+a) Nghiệm: $$a_n = 5 \cdot 2^n$$ (cấp số nhân). Dãy: 5, 10, 20, 40, 80, ...
+
+b) Nghiệm: $$a_n = 4 + 3n$$ (cấp số cộng). Dãy: 4, 7, 10, 13, 16, ...
+
+c) Nghiệm: $$a_n = 2 \cdot (-3)^n$$. Dãy: 2, -6, 18, -54, 162, ...
+</details>
+
+<h3 id="bài-tập-4-ứng-dụng-thực-tế">Bài tập 4: Ứng dụng thực tế</h3>
+
+<p>Một công ty khởi nghiệp có 1000 người dùng vào tháng đầu tiên. Mỗi tháng, số người dùng tăng gấp đôi so với tháng trước. Hỏi sau 12 tháng có bao nhiêu người dùng?</p>
+
+<details>
+<summary>Đáp án</summary>
+
+Gọi $$u_n$$ là số người dùng sau $$n$$ tháng.
+
+$$u_n = 2u_{n-1}, \quad u_1 = 1000$$
+
+Nghiệm: $$u_n = 1000 \cdot 2^{n-1}$$
+
+Sau 12 tháng: $$u_{12} = 1000 \cdot 2^{11} = 1000 \cdot 2048 = 2.048.000$$ người dùng.
+</details>
+
+<h2 id="tóm-tắt">Tóm tắt</h2>
+
+<ul>
+  <li><strong>Quan hệ truy hồi</strong>: phương trình biểu diễn \(a_n\) theo các số hạng trước đó</li>
+  <li><strong>Bậc</strong> của quan hệ truy hồi: số số hạng đằng trước cần để tính \(a_n\)</li>
+  <li><strong>Phân loại</strong>: tuyến tính/phi tuyến, thuần nhất/không thuần nhất</li>
+  <li><strong>Điều kiện đầu</strong>: cần thiết để xác định duy nhất một dãy số</li>
+  <li><strong>Mô hình hóa</strong>: quy trình 3 bước (xác định dãy, thiết lập quan hệ, điều kiện đầu)</li>
+  <li><strong>Truy hồi bậc nhất thuần nhất</strong>: \(a_n = A \cdot c^n\)</li>
+  <li><strong>Truy hồi bậc nhất không thuần nhất</strong>: nghiệm = nghiệm thuần nhất + nghiệm riêng</li>
+</ul>
+
+<p>Trong bài tiếp theo, chúng ta sẽ học phương pháp giải quan hệ truy hồi tuyến tính thuần nhất bậc cao bằng phương trình đặc trưng — một kỹ thuật mạnh mẽ để tìm công thức tường minh cho dãy Fibonacci và nhiều dãy số quan trọng khác.</p>
+
+</div>
+
+<!-- Back to Chapter Home Link -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="convex-optimization-for-all/convex-optimization-for-all.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script src='/discrete-mathematics-for-computer-science-iuh/public/js/script.js'></script>
+    <script src='/discrete-mathematics-for-computer-science-iuh/public/js/multilang.js'></script>
+  </body>
+</html>

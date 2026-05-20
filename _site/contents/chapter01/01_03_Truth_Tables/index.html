@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <style>
+    .MathJax {
+      padding: 2em 0.3em;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  </style>
+  <script src="/discrete-mathematics-for-computer-science-iuh/mathjax-config.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <title>
+    
+      Bảng Chân Trị và Ứng dụng &middot; Discrete Mathematics for Computer Science
+    
+  </title>
+
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/poole.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/syntax.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/lanyon.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/github-markdown.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/multilang.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/content-boxes.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/discrete-math.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  
+  <script src="/discrete-mathematics-for-computer-science-iuh/public/js/exercise-system.js"></script>
+
+  <link rel="apple-touch-icon-precomposed" sizes="122x144" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/public/logo.png">
+  <link rel="shortcut icon" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/public/convex-logo-144x144.png">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/atom.xml">
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+
+
+  <body class="sidebar-overlay">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Discrete Mathematics for Computer Science - IUH</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/">Trang chủ</a>
+
+    
+
+    <!-- Discrete Mathematics Chapters -->
+    <div class="sidebar-section">
+      <h4 style="color: #268bd2; margin: 15px 0 10px 0; font-size: 0.9em;">Các chương</h4>
+      
+      <!-- Part I: Logic and Proofs -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần I: Logic và Chứng minh</h5>
+        <a class="sidebar-nav-item active" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter01/">
+          1. Logic mệnh đề
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter02/">
+          2. Logic vị từ
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter03/">
+          3. Phương pháp chứng minh
+        </a>
+      </div>
+      
+      <!-- Part II: Set Theory and Relations -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần II: Tập hợp và Quan hệ</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter04/">
+          4. Lý thuyết tập hợp
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter05/">
+          5. Quan hệ
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter06/">
+          6. Hàm số
+        </a>
+      </div>
+      
+          <!-- Part III: Counting and Discrete Probability -->
+          <div class="sidebar-subsection">
+            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần III: Đếm và Xác suất</h5>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter07/">
+              7. Nguyên lý đếm cơ bản
+            </a>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter08/">
+              8. Nguyên lý Dirichlet
+            </a>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter09/">
+              9. Xác suất rời rạc
+            </a>
+          </div>
+      
+      <!-- Part IV: Recurrence Relations -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần IV: Quan hệ Truy hồi</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter10/">
+          10. Quan hệ truy hồi
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter11/">
+          11. Hàm sinh
+        </a>
+      </div>
+      
+      <!-- Part V: Graph Theory -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần V: Lý thuyết Đồ thị</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter12/">
+          12. Đồ thị cơ bản
+        </a>
+      </div>
+      
+      <!-- Part VI: Advanced Topics -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần VI: Chủ đề Nâng cao</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter13/">
+          13. Đại số Boole
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter14/">
+          14. Thuật toán
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter15/">
+          15. Lý thuyết Số
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter16/">
+          16. Cây
+        </a>
+      </div>
+      
+      <!-- Special Pages -->
+          <div class="sidebar-subsection" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Tính năng đặc biệt</h5>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/demo/">
+              🚀 Demo tính năng
+            </a>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/progress/">
+              📊 Tiến độ khóa học
+            </a>
+          </div>
+    </div>
+    
+    <span class="sidebar-nav-item">Currently v0.0.1</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2026. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap github-md-body">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/discrete-mathematics-for-computer-science-iuh/" title="Trang chủ">Discrete Mathematics for Computer Science</a>
+            <small></small>
+          </h3>
+          <!-- Header Actions: Language Toggle and GitHub Link -->
+          <div class="header-actions">
+            <div class="language-toggle">
+              <!-- language_switch disabled -->
+            </div>
+            <a class="github-logo__wrapper" target="_blank" href="https://github.com/nglelinh/optimization-for-data-science-iuh-2025" title="Github">
+             <svg class="github-logo" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48"><linearGradient id="rL2wppHyxHVbobwndsT6Ca" x1="4" x2="44" y1="23.508" y2="23.508" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4c4c4c"/><stop offset="1" stop-color="#343434"/></linearGradient><path fill="url(#rL2wppHyxHVbobwndsT6Ca)" d="M24,4C12.954,4,4,12.954,4,24c0,8.887,5.801,16.411,13.82,19.016h12.36	C38.199,40.411,44,32.887,44,24C44,12.954,35.046,4,24,4z"/><path d="M30.01,41.996L30,36.198c0-0.939-0.22-1.856-0.642-2.687c5.641-1.133,8.386-4.468,8.386-10.177	c0-2.255-0.665-4.246-1.976-5.92c0.1-0.317,0.174-0.645,0.22-0.981c0.188-1.369-0.023-2.264-0.193-2.984l-0.027-0.116	c-0.186-0.796-0.409-1.364-0.418-1.388l-0.111-0.282l-0.111-0.282l-0.302-0.032l-0.303-0.032c0,0-0.199-0.021-0.501-0.021	c-0.419,0-1.04,0.042-1.627,0.241l-0.196,0.066c-0.74,0.249-1.439,0.485-2.417,1.069c-0.286,0.171-0.599,0.366-0.934,0.584	C27.334,12.881,25.705,12.69,24,12.69c-1.722,0-3.365,0.192-4.889,0.571c-0.339-0.22-0.654-0.417-0.942-0.589	c-0.978-0.584-1.677-0.819-2.417-1.069l-0.196-0.066c-0.585-0.199-1.207-0.241-1.626-0.241c-0.302,0-0.501,0.021-0.501,0.021	l-0.302,0.032l-0.3,0.031l-0.112,0.281l-0.113,0.283c-0.01,0.026-0.233,0.594-0.419,1.391l-0.027,0.115	c-0.17,0.719-0.381,1.615-0.193,2.983c0.048,0.346,0.125,0.685,0.23,1.011c-1.285,1.666-1.936,3.646-1.936,5.89	c0,5.695,2.748,9.028,8.397,10.17c-0.194,0.388-0.345,0.798-0.452,1.224c-0.197,0.067-0.378,0.112-0.538,0.137	c-0.238,0.036-0.487,0.054-0.739,0.054c-0.686,0-1.225-0.134-1.435-0.259c-0.313-0.186-0.872-0.727-1.414-1.518	c-0.463-0.675-1.185-1.558-1.992-1.927c-0.698-0.319-1.437-0.502-2.029-0.502c-0.138,0-0.265,0.01-0.376,0.028	c-0.517,0.082-0.949,0.366-1.184,0.78c-0.203,0.357-0.235,0.773-0.088,1.141c0.219,0.548,0.851,0.985,1.343,1.255	c0.242,0.133,0.765,0.619,1.07,1.109c0.229,0.368,0.335,0.63,0.482,0.992c0.087,0.215,0.183,0.449,0.313,0.732	c0.47,1.022,1.937,1.924,2.103,2.023c0.806,0.483,2.161,0.638,3.157,0.683l0.123,0.003c0,0,0.001,0,0.001,0	c0.24,0,0.57-0.023,1.004-0.071v2.613c0.002,0.529-0.537,0.649-1.25,0.638l0.547,0.184C19.395,43.572,21.645,44,24,44	c2.355,0,4.605-0.428,6.703-1.176l0.703-0.262C30.695,42.538,30.016,42.422,30.01,41.996z" opacity=".05"/><path d="M30.781,42.797c-0.406,0.047-1.281-0.109-1.281-0.795v-5.804c0-1.094-0.328-2.151-0.936-3.052	c5.915-0.957,8.679-4.093,8.679-9.812c0-2.237-0.686-4.194-2.039-5.822c0.137-0.365,0.233-0.75,0.288-1.147	c0.175-1.276-0.016-2.086-0.184-2.801l-0.027-0.116c-0.178-0.761-0.388-1.297-0.397-1.319l-0.111-0.282l-0.303-0.032	c0,0-0.178-0.019-0.449-0.019c-0.381,0-0.944,0.037-1.466,0.215l-0.196,0.066c-0.714,0.241-1.389,0.468-2.321,1.024	c-0.332,0.198-0.702,0.431-1.101,0.694C27.404,13.394,25.745,13.19,24,13.19c-1.762,0-3.435,0.205-4.979,0.61	c-0.403-0.265-0.775-0.499-1.109-0.699c-0.932-0.556-1.607-0.784-2.321-1.024l-0.196-0.066c-0.521-0.177-1.085-0.215-1.466-0.215	c-0.271,0-0.449,0.019-0.449,0.019l-0.302,0.032l-0.113,0.283c-0.009,0.022-0.219,0.558-0.397,1.319l-0.027,0.116	c-0.169,0.715-0.36,1.524-0.184,2.8c0.056,0.407,0.156,0.801,0.298,1.174c-1.327,1.62-1.999,3.567-1.999,5.795	c0,5.703,2.766,8.838,8.686,9.806c-0.395,0.59-0.671,1.255-0.813,1.964c-0.33,0.13-0.629,0.216-0.891,0.256	c-0.263,0.04-0.537,0.06-0.814,0.06c-0.69,0-1.353-0.129-1.69-0.329c-0.44-0.261-1.057-0.914-1.572-1.665	c-0.35-0.51-1.047-1.417-1.788-1.755c-0.635-0.29-1.298-0.457-1.821-0.457c-0.11,0-0.21,0.008-0.298,0.022	c-0.366,0.058-0.668,0.252-0.828,0.534c-0.128,0.224-0.149,0.483-0.059,0.708c0.179,0.448,0.842,0.85,1.119,1.002	c0.335,0.184,0.919,0.744,1.254,1.284c0.251,0.404,0.37,0.697,0.521,1.067c0.085,0.209,0.178,0.437,0.304,0.712	c0.331,0.719,1.353,1.472,1.905,1.803c0.754,0.452,2.154,0.578,2.922,0.612l0.111,0.002c0.299,0,0.8-0.045,1.495-0.135v3.177	c0,0.779-0.991,0.81-1.234,0.81c-0.031,0,0.503,0.184,0.503,0.184C19.731,43.64,21.822,44,24,44c2.178,0,4.269-0.36,6.231-1.003	C30.231,42.997,30.812,42.793,30.781,42.797z" opacity=".07"/><path fill="#fff" d="M36.744,23.334c0-2.31-0.782-4.226-2.117-5.728c0.145-0.325,0.296-0.761,0.371-1.309	c0.172-1.25-0.031-2-0.203-2.734s-0.375-1.25-0.375-1.25s-0.922-0.094-1.703,0.172s-1.453,0.469-2.422,1.047	c-0.453,0.27-0.909,0.566-1.27,0.806C27.482,13.91,25.785,13.69,24,13.69c-1.801,0-3.513,0.221-5.067,0.652	c-0.362-0.241-0.821-0.539-1.277-0.811c-0.969-0.578-1.641-0.781-2.422-1.047s-1.703-0.172-1.703-0.172s-0.203,0.516-0.375,1.25	s-0.375,1.484-0.203,2.734c0.077,0.562,0.233,1.006,0.382,1.333c-1.31,1.493-2.078,3.397-2.078,5.704	c0,5.983,3.232,8.714,9.121,9.435c-0.687,0.726-1.148,1.656-1.303,2.691c-0.387,0.17-0.833,0.33-1.262,0.394	c-1.104,0.167-2.271,0-2.833-0.333s-1.229-1.083-1.729-1.813c-0.422-0.616-1.031-1.331-1.583-1.583	c-0.729-0.333-1.438-0.458-1.833-0.396c-0.396,0.063-0.583,0.354-0.5,0.563c0.083,0.208,0.479,0.521,0.896,0.75	c0.417,0.229,1.063,0.854,1.438,1.458c0.418,0.674,0.5,1.063,0.854,1.833c0.249,0.542,1.101,1.219,1.708,1.583	c0.521,0.313,1.562,0.491,2.688,0.542c0.389,0.018,1.308-0.096,2.083-0.206v3.75c0,0.639-0.585,1.125-1.191,1.013	C19.756,43.668,21.833,44,24,44c2.166,0,4.243-0.332,6.19-0.984C29.585,43.127,29,42.641,29,42.002v-5.804	c0-1.329-0.527-2.53-1.373-3.425C33.473,32.071,36.744,29.405,36.744,23.334z M11.239,32.727c-0.154-0.079-0.237-0.225-0.185-0.328	c0.052-0.103,0.22-0.122,0.374-0.043c0.154,0.079,0.237,0.225,0.185,0.328S11.393,32.806,11.239,32.727z M12.451,33.482	c-0.081,0.088-0.255,0.06-0.389-0.062s-0.177-0.293-0.096-0.381c0.081-0.088,0.255-0.06,0.389,0.062S12.532,33.394,12.451,33.482z M13.205,34.732c-0.102,0.072-0.275,0.005-0.386-0.15s-0.118-0.34-0.016-0.412s0.275-0.005,0.386,0.15	C13.299,34.475,13.307,34.66,13.205,34.732z M14.288,35.673c-0.069,0.112-0.265,0.117-0.437,0.012s-0.256-0.281-0.187-0.393	c0.069-0.112,0.265-0.117,0.437-0.012S14.357,35.561,14.288,35.673z M15.312,36.594c-0.213-0.026-0.371-0.159-0.353-0.297	c0.017-0.138,0.204-0.228,0.416-0.202c0.213,0.026,0.371,0.159,0.353,0.297C15.711,36.529,15.525,36.62,15.312,36.594z M16.963,36.833c-0.227-0.013-0.404-0.143-0.395-0.289c0.009-0.146,0.2-0.255,0.427-0.242c0.227,0.013,0.404,0.143,0.395,0.289	C17.381,36.738,17.19,36.846,16.963,36.833z M18.521,36.677c-0.242,0-0.438-0.126-0.438-0.281s0.196-0.281,0.438-0.281	c0.242,0,0.438,0.126,0.438,0.281S18.762,36.677,18.521,36.677z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">
+    Bảng Chân Trị và Ứng dụng
+    
+  </h1>
+  <h1 id="bảng-chân-trị-và-ứng-dụng">Bảng Chân Trị và Ứng dụng</h1>
+
+<p>Sau khi học các phép toán logic như <code class="language-plaintext highlighter-rouge">and</code>, <code class="language-plaintext highlighter-rouge">or</code>, <code class="language-plaintext highlighter-rouge">not</code>, ta có thể viết được những biểu thức điều kiện khá phức tạp. Nhưng có một vấn đề rất thực tế: <strong>trực giác của con người thường không đủ đáng tin</strong> khi biểu thức bắt đầu dài ra.</p>
+
+<p>Một điều kiện nhìn có vẻ hợp lý vẫn có thể sai ở đúng <strong>một trường hợp hiếm gặp</strong> — và chính trường hợp đó có thể làm hỏng một giao dịch ngân hàng, mở nhầm quyền truy cập, cho kết quả tìm kiếm sai, hoặc khiến test case bỏ sót lỗi quan trọng nhất. Trong kỹ thuật phần mềm, rất nhiều bug khó chịu không nằm ở cú pháp, mà nằm ở chỗ lập trình viên <strong>tin rằng mình hiểu biểu thức</strong>, trong khi máy tính lại hiểu theo một cách khác.</p>
+
+<p>Đó là lý do ta cần đến <strong>bảng chân trị</strong>. Có thể xem bảng chân trị như một chiếc đèn pha chiếu sáng toàn bộ biểu thức logic: thay vì đoán mò hoặc thử vài ví dụ, ta liệt kê <strong>mọi khả năng có thể xảy ra</strong> và kiểm tra từng trường hợp một cách có hệ thống.</p>
+
+<p>Nhờ bảng chân trị, chúng ta có thể:</p>
+
+<ul>
+  <li>biết chắc một biểu thức hoạt động ra sao trong mọi trường hợp,</li>
+  <li>kiểm tra hai cách viết điều kiện có thật sự tương đương hay không,</li>
+  <li>phát hiện các mệnh đề luôn đúng hoặc luôn sai,</li>
+  <li>và xác định những tổ hợp đầu vào quan trọng cần được kiểm thử trong phần mềm thực tế.</li>
+</ul>
+
+<p>Nói cách khác, bảng chân trị biến logic từ thứ “có vẻ đúng” thành thứ <strong>được chứng minh là đúng</strong>. Trong bài này, chúng ta sẽ học cách xây dựng bảng chân trị, đọc ý nghĩa của nó và dùng nó như một công cụ kiểm chứng cho tư duy logic cũng như cho các biểu thức điều kiện trong lập trình.</p>
+
+<h2 id="mục-tiêu-học-tập">Mục tiêu học tập</h2>
+
+<p>Sau bài học này, sinh viên có thể:</p>
+
+<ul>
+  <li><strong>Xây dựng</strong> bảng chân trị cho biểu thức có 2, 3 hoặc nhiều biến.</li>
+  <li><strong>Tính</strong> giá trị của biểu thức phức hợp từng bước.</li>
+  <li><strong>Phân loại</strong> biểu thức thành hằng đúng, hằng sai, hoặc mệnh đề thường.</li>
+  <li><strong>Kiểm tra</strong> hai biểu thức có tương đương logic không.</li>
+  <li><strong>Ứng dụng</strong> bảng chân trị để thiết kế test case bao phủ đủ trường hợp.</li>
+</ul>
+
+<p><strong>Từ khóa</strong>: Bảng chân trị (truth table), tautology, contradiction, contingency, test case, exhaustive checking.</p>
+
+<h2 id="bảng-chân-trị-là-gì">Bảng chân trị là gì?</h2>
+
+<p><strong>Định nghĩa</strong>: Bảng chân trị là bảng liệt kê tất cả các khả năng về giá trị chân lý của các mệnh đề thành phần và giá trị chân lý tương ứng của mệnh đề phức hợp.</p>
+
+<h2 id="cách-xây-dựng-bảng-chân-trị">Cách xây dựng bảng chân trị</h2>
+
+<h3 id="bước-1-xác-định-số-biến">Bước 1: Xác định số biến</h3>
+<ul>
+  <li>Với n biến, ta có 2ⁿ dòng trong bảng chân trị</li>
+</ul>
+
+<h3 id="bước-2-liệt-kê-tất-cả-tổ-hợp">Bước 2: Liệt kê tất cả tổ hợp</h3>
+<ul>
+  <li>Liệt kê tất cả các tổ hợp có thể của các biến</li>
+</ul>
+
+<h3 id="bước-3-tính-toán-từng-bước">Bước 3: Tính toán từng bước</h3>
+<ul>
+  <li>Tính giá trị của các biểu thức con trước</li>
+  <li>Sau đó tính biểu thức chính</li>
+</ul>
+
+<div class="content-box insight-box">
+  <p><strong>Mẹo liệt kê tổ hợp</strong>: Để không bỏ sót tổ hợp nào, hãy tưởng tượng bạn đang đếm nhị phân. Với 3 biến p, q, r: liệt kê p với 4 T rồi 4 F; q với 2 T, 2 F, 2 T, 2 F; r với T, F, T, F, T, F, T, F. Các giá trị luân phiên theo lũy thừa giảm dần của 2.</p>
+</div>
+
+<h2 id="ví-dụ-1-bảng-chân-trị-cho-p--q--r">Ví dụ 1: Bảng chân trị cho (p ∧ q) → r</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>p</th>
+      <th>q</th>
+      <th>r</th>
+      <th>p ∧ q</th>
+      <th>(p ∧ q) → r</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Phân tích</strong>: Chỉ có hàng thứ hai (p = T, q = T, r = F) làm cho biểu thức sai. Điều này có nghĩa: nếu cả p và q đều đúng mà r lại sai, thì lời hứa “nếu p và q thì r” bị vi phạm.</p>
+
+<h2 id="ví-dụ-2-bảng-chân-trị-cho-p--q--p--q">Ví dụ 2: Bảng chân trị cho ¬(p ∨ q) ↔ (¬p ∧ ¬q)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>p</th>
+      <th>q</th>
+      <th>p ∨ q</th>
+      <th>¬(p ∨ q)</th>
+      <th>¬p</th>
+      <th>¬q</th>
+      <th>¬p ∧ ¬q</th>
+      <th>¬(p ∨ q) ↔ (¬p ∧ ¬q)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Kết luận</strong>: Biểu thức này luôn đúng (tautology). Đây chính là <strong>định luật De Morgan</strong> — một trong những tương đương quan trọng nhất trong logic!</p>
+
+<h2 id="các-khái-niệm-quan-trọng">Các khái niệm quan trọng</h2>
+
+<h3 id="1-tautology-hằng-đúng">1. Tautology (Hằng đúng)</h3>
+<p>Mệnh đề luôn có giá trị T trong mọi trường hợp.</p>
+
+<p><strong>Ví dụ</strong>: p ∨ ¬p</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>p</th>
+      <th>¬p</th>
+      <th>p ∨ ¬p</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="2-contradiction-hằng-sai">2. Contradiction (Hằng sai)</h3>
+<p>Mệnh đề luôn có giá trị F trong mọi trường hợp.</p>
+
+<p><strong>Ví dụ</strong>: p ∧ ¬p</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>p</th>
+      <th>¬p</th>
+      <th>p ∧ ¬p</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>T</td>
+      <td>F</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="3-contingency-mệnh-đề-thường">3. Contingency (Mệnh đề thường)</h3>
+<p>Mệnh đề có thể đúng hoặc sai tùy thuộc vào giá trị của các biến.</p>
+
+<h2 id="những-nhầm-lẫn-thường-gặp">Những nhầm lẫn thường gặp</h2>
+
+<p><strong>Nhầm lẫn 1 — Quên số dòng</strong>: Với n biến, bảng có 2ⁿ dòng, không phải 2n. Nhiều sinh viên mới học chỉ liệt kê n+1 dòng và bỏ sót tổ hợp.</p>
+
+<p><strong>Nhầm lẫn 2 — Tính toán sai implication</strong>: Implication (→) <strong>chỉ sai khi p=T và q=F</strong>. Mọi trường hợp khác đều đúng. Đây là lỗi phổ biến nhất.</p>
+
+<p><strong>Nhầm lẫn 3 — Nhầm thứ tự ưu tiên</strong>: ¬ có độ ưu tiên cao hơn ∧, ∧ cao hơn ∨, ∨ cao hơn →, → cao hơn ↔. Nếu không chắc, hãy dùng dấu ngoặc.</p>
+
+<h2 id="ứng-dụng-của-bảng-chân-trị">Ứng dụng của bảng chân trị</h2>
+
+<h3 id="1-kiểm-tra-tính-tương-đương-logic">1. Kiểm tra tính tương đương logic</h3>
+<p>Hai mệnh đề tương đương nếu chúng có cùng bảng chân trị.</p>
+
+<p><strong>Ví dụ</strong>: Kiểm tra p → q ≡ ¬p ∨ q</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>p</th>
+      <th>q</th>
+      <th>p → q</th>
+      <th>¬p</th>
+      <th>¬p ∨ q</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Kết luận</strong>: p → q ≡ ¬p ∨ q (tương đương)</p>
+
+<h3 id="2-kiểm-tra-tính-hợp-lệ-của-lập-luận">2. Kiểm tra tính hợp lệ của lập luận</h3>
+<p>Lập luận hợp lệ nếu kết luận đúng khi tất cả tiền đề đúng.</p>
+
+<p><strong>Ví dụ</strong>:</p>
+<ul>
+  <li>Tiền đề 1: p → q</li>
+  <li>Tiền đề 2: p</li>
+  <li>Kết luận: q</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>p</th>
+      <th>q</th>
+      <th>p → q</th>
+      <th>p ∧ (p → q)</th>
+      <th>[p ∧ (p → q)] → q</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td>F</td>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>T</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>F</td>
+      <td>T</td>
+      <td>F</td>
+      <td>T</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Kết luận</strong>: Lập luận hợp lệ (cột cuối toàn T)</p>
+
+<h3 id="3-thiết-kế-mạch-logic">3. Thiết kế mạch logic</h3>
+
+<p>Ví dụ: Thiết kế mạch cho (A ∧ B) ∨ C</p>
+
+<p>Bảng chân trị:
+| A | B | C | A ∧ B | (A ∧ B) ∨ C |
+|—|—|—|—|————-|
+| 0 | 0 | 0 |   0   |      0      |
+| 0 | 0 | 1 |   0   |      1      |
+| 0 | 1 | 0 |   0   |      0      |
+| 0 | 1 | 1 |   0   |      1      |
+| 1 | 0 | 0 |   0   |      0      |
+| 1 | 0 | 1 |   0   |      1      |
+| 1 | 1 | 0 |   1   |      1      |
+| 1 | 1 | 1 |   1   |      1      |</p>
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter01/truth_table_diagram.svg" alt="Sơ đồ minh họa cấu trúc bảng chân trị" width="60%" height="60%" />
+  <figcaption style="text-align: center;">Hình 1.3: Cấu trúc bảng chân trị — cột biến, cột trung gian, cột kết quả</figcaption>
+</p>
+</figure>
+
+<h2 id="công-cụ-tương-tác">Công cụ tương tác</h2>
+
+<div class="interactive-tool">
+  <h3 id="my-tnh-bng-chn-tr">Máy tính bảng chân trị</h3>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>Nhập biểu thức logic (sử dụng &amp;,</td>
+        <td>, !, -&gt;, &lt;-&gt;) và xem bảng chân trị tự động:</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><input type="text" id="logic-expression" placeholder="Ví dụ: (p &amp; q) | r" style="width: 80%; padding: 8px; margin: 10px 0;" />
+<button onclick="generateTruthTable()">Tạo bảng</button></p>
+  <div id="truth-table-result" style="margin-top: 15px;"></div>
+
+  <script>
+function generateTruthTable() {
+    const expression = document.getElementById('logic-expression').value;
+    const resultDiv = document.getElementById('truth-table-result');
+    
+    if (!expression) {
+        resultDiv.innerHTML = '<p style="color: #e63946;">Vui lòng nhập biểu thức!</p>';
+        return;
+    }
+    
+    // Phân tích biểu thức để tìm biến
+    const vars = [...new Set(expression.match(/[a-z]/g) || ['p'])];
+    const n = vars.length;
+    const rows = Math.pow(2, n);
+    
+    let html = '<table style="border-collapse: collapse; margin: 10px 0;"><tr>';
+    for (const v of vars) html += `<th style="border: 1px solid #ccc; padding: 6px 12px;">${v}</th>`;
+    html += '<th style="border: 1px solid #ccc; padding: 6px 12px;">Kết quả</th></tr>';
+    
+    for (let i = 0; i < rows; i++) {
+        html += '<tr>';
+        const vals = {};
+        for (let j = 0; j < n; j++) {
+            const val = (i & Math.pow(2, n-1-j)) !== 0;
+            vals[vars[j]] = val;
+            html += `<td style="border: 1px solid #ccc; padding: 6px 12px; text-align: center;">${val ? 'T' : 'F'}</td>`;
+        }
+        // Tính đơn giản - trong thực tế cần parser
+        const result = evaluateSimple(expression, vals);
+        html += `<td style="border: 1px solid #ccc; padding: 6px 12px; text-align: center; font-weight: bold;">${result ? 'T' : 'F'}</td>`;
+        html += '</tr>';
+    }
+    html += '</table>';
+    html += '<p><em>Gợi ý: Hãy thử nhập các biểu thức như (p & q) | r, p -> q, hoặc !(p | q) &lt;-&gt; (!p & !q)</em></p>';
+    resultDiv.innerHTML = html;
+}
+
+function evaluateSimple(expr, vals) {
+    // Thay thế biến bằng giá trị
+    let e = expr;
+    for (const [v, val] of Object.entries(vals)) {
+        e = e.replace(new RegExp(v, 'g'), val ? '1' : '0');
+    }
+    // Chuyển ký hiệu
+    e = e.replace(/1/g, 'true').replace(/0/g, 'false');
+    e = e.replace(/&/g, '&&').replace(/\|/g, '||').replace(/!/g, '!');
+    e = e.replace(/->/g, ') <= false || ('); // đơn giản hóa
+    try {
+        return eval(e);
+    } catch {
+        return null;
+    }
+}
+</script>
+
+</div>
+
+<h2 id="bài-tập-thực-hành">Bài tập thực hành</h2>
+
+<h3 id="bài-tập-1-xây-dựng-bảng-chân-trị">Bài tập 1: Xây dựng bảng chân trị</h3>
+<p>Xây dựng bảng chân trị cho các biểu thức sau:</p>
+<ol>
+  <li>(p → q) ∧ (q → r) → (p → r)</li>
+  <li>(p ∨ q) ∧ ¬(p ∧ q)</li>
+  <li>(p ↔ q) ↔ ((p → q) ∧ (q → p))</li>
+</ol>
+
+<h3 id="bài-tập-2-phân-loại-mệnh-đề">Bài tập 2: Phân loại mệnh đề</h3>
+<p>Xác định các mệnh đề sau là tautology, contradiction hay contingency:</p>
+<ol>
+  <li>p → (q → p)</li>
+  <li>(p ∧ q) ∧ ¬(p ∨ q)</li>
+  <li>(p → q) → ((¬q) → (¬p))</li>
+</ol>
+
+<details>
+<summary>Gợi ý Bài tập 2</summary>
+
+1. **Tautology** - Luôn đúng
+2. **Contradiction** - Luôn sai  
+3. **Tautology** - Đây là định luật contrapositive
+
+</details>
+
+<h3 id="bài-tập-3-ứng-dụng-thực-tế">Bài tập 3: Ứng dụng thực tế</h3>
+<p>Một hệ thống báo động có 3 cảm biến A, B, C. Báo động kích hoạt khi:</p>
+<ul>
+  <li>Cả A và B đều kích hoạt, HOẶC</li>
+  <li>C kích hoạt và ít nhất một trong A hoặc B kích hoạt</li>
+</ul>
+
+<p>Viết biểu thức logic và tạo bảng chân trị cho hệ thống này.</p>
+
+<h3 id="bài-tập-4-bảng-chân-trị-cho-kiểm-thử-phần-mềm">Bài tập 4: Bảng chân trị cho kiểm thử phần mềm</h3>
+
+<p>Một hệ thống cho phép sinh viên xem điểm nếu:</p>
+
+<ul>
+  <li>\(p\): Sinh viên đã đăng nhập.</li>
+  <li>\(q\): Sinh viên thuộc lớp học phần.</li>
+  <li>\(r\): Giảng viên đã công bố điểm.</li>
+</ul>
+
+<p>Điều kiện: \(p \land q \land r\).</p>
+
+<ol>
+  <li>Lập bảng chân trị đầy đủ.</li>
+  <li>Từ bảng đó, chọn ít nhất 4 test case quan trọng.</li>
+  <li>Giải thích vì sao test case “đã đăng nhập nhưng không thuộc lớp” cần được kiểm thử.</li>
+</ol>
+
+<h3 id="bài-tập-5-so-sánh-hai-điều-kiện-phân-quyền">Bài tập 5: So sánh hai điều kiện phân quyền</h3>
+
+<p>Kiểm tra bằng bảng chân trị xem hai biểu thức sau có tương đương không:</p>
+
+\[p \lor (q \land \neg r)\]
+
+\[(p \lor q) \land \neg r\]
+
+<p>Trong đó \(p\) là “admin”, \(q\) là “owner”, \(r\) là “resource locked”. Nếu không tương đương, hãy chỉ ra một hàng làm phản ví dụ.</p>
+
+<h2 id="tóm-tắt">Tóm tắt</h2>
+
+<ul>
+  <li><strong>Bảng chân trị</strong> liệt kê mọi tổ hợp giá trị biến và kết quả tương ứng</li>
+  <li>Với n biến, có 2ⁿ dòng</li>
+  <li><strong>Tautology</strong>: luôn đúng ở mọi dòng</li>
+  <li><strong>Contradiction</strong>: luôn sai ở mọi dòng</li>
+  <li><strong>Contingency</strong>: có dòng đúng, có dòng sai</li>
+  <li>Ứng dụng: kiểm tra tương đương, lập luận hợp lệ, thiết kế mạch, kiểm thử phần mềm</li>
+</ul>
+
+<p>Trong bài tiếp theo, chúng ta sẽ học về <strong>các tương đương logic</strong> và cách đưa biểu thức về dạng chuẩn tắc.</p>
+
+</div>
+
+<!-- Back to Chapter Home Link -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="convex-optimization-for-all/convex-optimization-for-all.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script src='/discrete-mathematics-for-computer-science-iuh/public/js/script.js'></script>
+    <script src='/discrete-mathematics-for-computer-science-iuh/public/js/multilang.js'></script>
+  </body>
+</html>

@@ -82,11 +82,11 @@ $$\theta x_1 + (1-\theta)x_2 \in C$$
 
 ### 2.4 Hyperlink Convention
 
-- Blog 내의 Post에 대한 hyperlink는 jekyll multilang_post_url 사용합니다. 첫 번째 Post인 [Optimization problems?]({% multilang_post_url contents/chapter01/21-01-07-01_01_optimization_problems %}
+- Blog 내의 Post에 대한 hyperlink는 jekyll multilang_post_url 사용합니다. 첫 번째 Post인 [Optimization problems?](/contents/chapter01/21-01-07-01_01_optimization_problems/
 )의 hyperlink는 아래와 같이 작성합니다.
 
 ```
-[Optimization problems?]({% multilang_post_url contents/chapter01/21-01-07-01_01_optimization_problems %})
+[Optimization problems?](/contents/chapter01/21-01-07-01_01_optimization_problems/)
 ```
 
 - 기타 외부 Url로의 hyperlink는 다음과 같이 작성할 수 있습니다.

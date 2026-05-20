@@ -43,6 +43,9 @@ module Jekyll
     end
 
     def create_redirect_page(site, from_path, to_url)
+      from_url = "/#{from_path.sub(%r{/index\.html$}, '/') }"
+      return if site.pages.any? { |page| page.url == from_url }
+
       # Tạo nội dung redirect page
       redirect_content = <<~HTML
         <!DOCTYPE html>

@@ -7,9 +7,9 @@ layout: default
     {{ page.title }}
     {% if page.lesson_type %}
       {% if page.lesson_type == 'required' %}
-        <span class="lesson-badge required large">{% t required %}</span>
+        <span class="lesson-badge required large">Bắt buộc</span>
       {% elsif page.lesson_type == 'optional' %}
-        <span class="lesson-badge optional large">{% t optional %}</span>
+        <span class="lesson-badge optional large">Tùy chọn</span>
       {% endif %}
     {% endif %}
   </h1>

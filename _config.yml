@@ -8,10 +8,10 @@ paginate:            5
 permalink:           pretty
 
 # Multi-language support
-languages:           ["en", "vi"]
-default_lang:        "en"
-exclude_from_localization: ["javascript", "images", "css", "public"]
-parallel_localization: true
+#languages:           ["en", "vi"]
+#default_lang:        "en"
+#exclude_from_localization: ["javascript", "images", "css", "public"]
+#parallel_localization: true
 
 # Language-specific configurations
 t:

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <style>
+    .MathJax {
+      padding: 2em 0.3em;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  </style>
+  <script src="/discrete-mathematics-for-computer-science-iuh/mathjax-config.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <title>
+    
+      Lý thuyết Xác suất — Tiên đề và Tính chất &middot; Discrete Mathematics for Computer Science
+    
+  </title>
+
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/poole.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/syntax.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/lanyon.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/github-markdown.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/multilang.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/content-boxes.css">
+  <link rel="stylesheet" href="/discrete-mathematics-for-computer-science-iuh/public/css/discrete-math.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  
+  <script src="/discrete-mathematics-for-computer-science-iuh/public/js/exercise-system.js"></script>
+
+  <link rel="apple-touch-icon-precomposed" sizes="122x144" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/public/logo.png">
+  <link rel="shortcut icon" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/public/convex-logo-144x144.png">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/atom.xml">
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+</head>
+
+
+  <body class="sidebar-overlay">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>Discrete Mathematics for Computer Science - IUH</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/">Trang chủ</a>
+
+    
+
+    <!-- Discrete Mathematics Chapters -->
+    <div class="sidebar-section">
+      <h4 style="color: #268bd2; margin: 15px 0 10px 0; font-size: 0.9em;">Các chương</h4>
+      
+      <!-- Part I: Logic and Proofs -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần I: Logic và Chứng minh</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter01/">
+          1. Logic mệnh đề
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter02/">
+          2. Logic vị từ
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter03/">
+          3. Phương pháp chứng minh
+        </a>
+      </div>
+      
+      <!-- Part II: Set Theory and Relations -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần II: Tập hợp và Quan hệ</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter04/">
+          4. Lý thuyết tập hợp
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter05/">
+          5. Quan hệ
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter06/">
+          6. Hàm số
+        </a>
+      </div>
+      
+          <!-- Part III: Counting and Discrete Probability -->
+          <div class="sidebar-subsection">
+            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần III: Đếm và Xác suất</h5>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter07/">
+              7. Nguyên lý đếm cơ bản
+            </a>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter08/">
+              8. Nguyên lý Dirichlet
+            </a>
+            <a class="sidebar-nav-item active" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter09/">
+              9. Xác suất rời rạc
+            </a>
+          </div>
+      
+      <!-- Part IV: Recurrence Relations -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần IV: Quan hệ Truy hồi</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter10/">
+          10. Quan hệ truy hồi
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter11/">
+          11. Hàm sinh
+        </a>
+      </div>
+      
+      <!-- Part V: Graph Theory -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần V: Lý thuyết Đồ thị</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter12/">
+          12. Đồ thị cơ bản
+        </a>
+      </div>
+      
+      <!-- Part VI: Advanced Topics -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần VI: Chủ đề Nâng cao</h5>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter13/">
+          13. Đại số Boole
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter14/">
+          14. Thuật toán
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter15/">
+          15. Lý thuyết Số
+        </a>
+        <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/contents/chapter16/">
+          16. Cây
+        </a>
+      </div>
+      
+      <!-- Special Pages -->
+          <div class="sidebar-subsection" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Tính năng đặc biệt</h5>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/demo/">
+              🚀 Demo tính năng
+            </a>
+            <a class="sidebar-nav-item" href="https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/progress/">
+              📊 Tiến độ khóa học
+            </a>
+          </div>
+    </div>
+    
+    <span class="sidebar-nav-item">Currently v0.0.1</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2026. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap github-md-body">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/discrete-mathematics-for-computer-science-iuh/" title="Trang chủ">Discrete Mathematics for Computer Science</a>
+            <small></small>
+          </h3>
+          <!-- Header Actions: Language Toggle and GitHub Link -->
+          <div class="header-actions">
+            <div class="language-toggle">
+              <!-- language_switch disabled -->
+            </div>
+            <a class="github-logo__wrapper" target="_blank" href="https://github.com/nglelinh/optimization-for-data-science-iuh-2025" title="Github">
+             <svg class="github-logo" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48"><linearGradient id="rL2wppHyxHVbobwndsT6Ca" x1="4" x2="44" y1="23.508" y2="23.508" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4c4c4c"/><stop offset="1" stop-color="#343434"/></linearGradient><path fill="url(#rL2wppHyxHVbobwndsT6Ca)" d="M24,4C12.954,4,4,12.954,4,24c0,8.887,5.801,16.411,13.82,19.016h12.36	C38.199,40.411,44,32.887,44,24C44,12.954,35.046,4,24,4z"/><path d="M30.01,41.996L30,36.198c0-0.939-0.22-1.856-0.642-2.687c5.641-1.133,8.386-4.468,8.386-10.177	c0-2.255-0.665-4.246-1.976-5.92c0.1-0.317,0.174-0.645,0.22-0.981c0.188-1.369-0.023-2.264-0.193-2.984l-0.027-0.116	c-0.186-0.796-0.409-1.364-0.418-1.388l-0.111-0.282l-0.111-0.282l-0.302-0.032l-0.303-0.032c0,0-0.199-0.021-0.501-0.021	c-0.419,0-1.04,0.042-1.627,0.241l-0.196,0.066c-0.74,0.249-1.439,0.485-2.417,1.069c-0.286,0.171-0.599,0.366-0.934,0.584	C27.334,12.881,25.705,12.69,24,12.69c-1.722,0-3.365,0.192-4.889,0.571c-0.339-0.22-0.654-0.417-0.942-0.589	c-0.978-0.584-1.677-0.819-2.417-1.069l-0.196-0.066c-0.585-0.199-1.207-0.241-1.626-0.241c-0.302,0-0.501,0.021-0.501,0.021	l-0.302,0.032l-0.3,0.031l-0.112,0.281l-0.113,0.283c-0.01,0.026-0.233,0.594-0.419,1.391l-0.027,0.115	c-0.17,0.719-0.381,1.615-0.193,2.983c0.048,0.346,0.125,0.685,0.23,1.011c-1.285,1.666-1.936,3.646-1.936,5.89	c0,5.695,2.748,9.028,8.397,10.17c-0.194,0.388-0.345,0.798-0.452,1.224c-0.197,0.067-0.378,0.112-0.538,0.137	c-0.238,0.036-0.487,0.054-0.739,0.054c-0.686,0-1.225-0.134-1.435-0.259c-0.313-0.186-0.872-0.727-1.414-1.518	c-0.463-0.675-1.185-1.558-1.992-1.927c-0.698-0.319-1.437-0.502-2.029-0.502c-0.138,0-0.265,0.01-0.376,0.028	c-0.517,0.082-0.949,0.366-1.184,0.78c-0.203,0.357-0.235,0.773-0.088,1.141c0.219,0.548,0.851,0.985,1.343,1.255	c0.242,0.133,0.765,0.619,1.07,1.109c0.229,0.368,0.335,0.63,0.482,0.992c0.087,0.215,0.183,0.449,0.313,0.732	c0.47,1.022,1.937,1.924,2.103,2.023c0.806,0.483,2.161,0.638,3.157,0.683l0.123,0.003c0,0,0.001,0,0.001,0	c0.24,0,0.57-0.023,1.004-0.071v2.613c0.002,0.529-0.537,0.649-1.25,0.638l0.547,0.184C19.395,43.572,21.645,44,24,44	c2.355,0,4.605-0.428,6.703-1.176l0.703-0.262C30.695,42.538,30.016,42.422,30.01,41.996z" opacity=".05"/><path d="M30.781,42.797c-0.406,0.047-1.281-0.109-1.281-0.795v-5.804c0-1.094-0.328-2.151-0.936-3.052	c5.915-0.957,8.679-4.093,8.679-9.812c0-2.237-0.686-4.194-2.039-5.822c0.137-0.365,0.233-0.75,0.288-1.147	c0.175-1.276-0.016-2.086-0.184-2.801l-0.027-0.116c-0.178-0.761-0.388-1.297-0.397-1.319l-0.111-0.282l-0.303-0.032	c0,0-0.178-0.019-0.449-0.019c-0.381,0-0.944,0.037-1.466,0.215l-0.196,0.066c-0.714,0.241-1.389,0.468-2.321,1.024	c-0.332,0.198-0.702,0.431-1.101,0.694C27.404,13.394,25.745,13.19,24,13.19c-1.762,0-3.435,0.205-4.979,0.61	c-0.403-0.265-0.775-0.499-1.109-0.699c-0.932-0.556-1.607-0.784-2.321-1.024l-0.196-0.066c-0.521-0.177-1.085-0.215-1.466-0.215	c-0.271,0-0.449,0.019-0.449,0.019l-0.302,0.032l-0.113,0.283c-0.009,0.022-0.219,0.558-0.397,1.319l-0.027,0.116	c-0.169,0.715-0.36,1.524-0.184,2.8c0.056,0.407,0.156,0.801,0.298,1.174c-1.327,1.62-1.999,3.567-1.999,5.795	c0,5.703,2.766,8.838,8.686,9.806c-0.395,0.59-0.671,1.255-0.813,1.964c-0.33,0.13-0.629,0.216-0.891,0.256	c-0.263,0.04-0.537,0.06-0.814,0.06c-0.69,0-1.353-0.129-1.69-0.329c-0.44-0.261-1.057-0.914-1.572-1.665	c-0.35-0.51-1.047-1.417-1.788-1.755c-0.635-0.29-1.298-0.457-1.821-0.457c-0.11,0-0.21,0.008-0.298,0.022	c-0.366,0.058-0.668,0.252-0.828,0.534c-0.128,0.224-0.149,0.483-0.059,0.708c0.179,0.448,0.842,0.85,1.119,1.002	c0.335,0.184,0.919,0.744,1.254,1.284c0.251,0.404,0.37,0.697,0.521,1.067c0.085,0.209,0.178,0.437,0.304,0.712	c0.331,0.719,1.353,1.472,1.905,1.803c0.754,0.452,2.154,0.578,2.922,0.612l0.111,0.002c0.299,0,0.8-0.045,1.495-0.135v3.177	c0,0.779-0.991,0.81-1.234,0.81c-0.031,0,0.503,0.184,0.503,0.184C19.731,43.64,21.822,44,24,44c2.178,0,4.269-0.36,6.231-1.003	C30.231,42.997,30.812,42.793,30.781,42.797z" opacity=".07"/><path fill="#fff" d="M36.744,23.334c0-2.31-0.782-4.226-2.117-5.728c0.145-0.325,0.296-0.761,0.371-1.309	c0.172-1.25-0.031-2-0.203-2.734s-0.375-1.25-0.375-1.25s-0.922-0.094-1.703,0.172s-1.453,0.469-2.422,1.047	c-0.453,0.27-0.909,0.566-1.27,0.806C27.482,13.91,25.785,13.69,24,13.69c-1.801,0-3.513,0.221-5.067,0.652	c-0.362-0.241-0.821-0.539-1.277-0.811c-0.969-0.578-1.641-0.781-2.422-1.047s-1.703-0.172-1.703-0.172s-0.203,0.516-0.375,1.25	s-0.375,1.484-0.203,2.734c0.077,0.562,0.233,1.006,0.382,1.333c-1.31,1.493-2.078,3.397-2.078,5.704	c0,5.983,3.232,8.714,9.121,9.435c-0.687,0.726-1.148,1.656-1.303,2.691c-0.387,0.17-0.833,0.33-1.262,0.394	c-1.104,0.167-2.271,0-2.833-0.333s-1.229-1.083-1.729-1.813c-0.422-0.616-1.031-1.331-1.583-1.583	c-0.729-0.333-1.438-0.458-1.833-0.396c-0.396,0.063-0.583,0.354-0.5,0.563c0.083,0.208,0.479,0.521,0.896,0.75	c0.417,0.229,1.063,0.854,1.438,1.458c0.418,0.674,0.5,1.063,0.854,1.833c0.249,0.542,1.101,1.219,1.708,1.583	c0.521,0.313,1.562,0.491,2.688,0.542c0.389,0.018,1.308-0.096,2.083-0.206v3.75c0,0.639-0.585,1.125-1.191,1.013	C19.756,43.668,21.833,44,24,44c2.166,0,4.243-0.332,6.19-0.984C29.585,43.127,29,42.641,29,42.002v-5.804	c0-1.329-0.527-2.53-1.373-3.425C33.473,32.071,36.744,29.405,36.744,23.334z M11.239,32.727c-0.154-0.079-0.237-0.225-0.185-0.328	c0.052-0.103,0.22-0.122,0.374-0.043c0.154,0.079,0.237,0.225,0.185,0.328S11.393,32.806,11.239,32.727z M12.451,33.482	c-0.081,0.088-0.255,0.06-0.389-0.062s-0.177-0.293-0.096-0.381c0.081-0.088,0.255-0.06,0.389,0.062S12.532,33.394,12.451,33.482z M13.205,34.732c-0.102,0.072-0.275,0.005-0.386-0.15s-0.118-0.34-0.016-0.412s0.275-0.005,0.386,0.15	C13.299,34.475,13.307,34.66,13.205,34.732z M14.288,35.673c-0.069,0.112-0.265,0.117-0.437,0.012s-0.256-0.281-0.187-0.393	c0.069-0.112,0.265-0.117,0.437-0.012S14.357,35.561,14.288,35.673z M15.312,36.594c-0.213-0.026-0.371-0.159-0.353-0.297	c0.017-0.138,0.204-0.228,0.416-0.202c0.213,0.026,0.371,0.159,0.353,0.297C15.711,36.529,15.525,36.62,15.312,36.594z M16.963,36.833c-0.227-0.013-0.404-0.143-0.395-0.289c0.009-0.146,0.2-0.255,0.427-0.242c0.227,0.013,0.404,0.143,0.395,0.289	C17.381,36.738,17.19,36.846,16.963,36.833z M18.521,36.677c-0.242,0-0.438-0.126-0.438-0.281s0.196-0.281,0.438-0.281	c0.242,0,0.438,0.126,0.438,0.281S18.762,36.677,18.521,36.677z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">
+    Lý thuyết Xác suất — Tiên đề và Tính chất
+    
+  </h1>
+  <h1 id="lý-thuyết-xác-suất--tiên-đề-và-tính-chất">Lý thuyết Xác suất — Tiên đề và Tính chất</h1>
+
+<p>Khi bài toán xác suất bắt đầu có nhiều biến cố cùng lúc, trực giác lại dễ sai. Hai sự kiện có thể chồng lấn, loại trừ nhau, độc lập hoặc hoàn toàn phụ thuộc lẫn nhau. Trong phân tích rủi ro hay thiết kế hệ thống, nhầm một trong các mối quan hệ này có thể dẫn đến ước lượng sai rất xa thực tế.</p>
+
+<p>Bài này đi sâu hơn vào các quy tắc vận hành của xác suất: cách cộng, cách nhân, cách hiểu giao–hợp–bù, và cách đọc đúng mối liên hệ giữa các biến cố. Mục tiêu không chỉ là tính ra đáp án, mà là xây được một mô hình đúng cho tình huống ngẫu nhiên đang xét.</p>
+
+<h2 id="1-không-gian-xác-suất">1. Không gian xác suất</h2>
+
+<p><strong>Định nghĩa</strong>: Một <strong>không gian xác suất</strong> gồm ba thành phần $(S,\mathcal{F},P)$:</p>
+
+<ul>
+  <li>$S$: không gian mẫu, tập tất cả kết quả có thể.</li>
+  <li>$\mathcal{F}$: họ các biến cố, thường là tập con của $S$ trong trường hợp hữu hạn.</li>
+  <li>$P$: hàm xác suất gán cho mỗi biến cố $E$ một số thực $P(E)$.</li>
+</ul>
+
+<p>Trong môn học này, ta chủ yếu xét không gian mẫu hữu hạn, nên có thể hiểu biến cố là mọi tập con $E\subseteq S$.</p>
+
+<p><strong>Ví dụ</strong>: Tung một con xúc xắc cân bằng. Khi đó $S={1,2,3,4,5,6}$; biến cố “ra số chẵn” là $E={2,4,6}$ và $P(E)=3/6=1/2$.</p>
+
+<h2 id="2-ba-tiên-đề-kolmogorov">2. Ba tiên đề Kolmogorov</h2>
+
+<p>Với mọi biến cố $E$ và các biến cố đôi một xung khắc $E_1,E_2,\ldots$, xác suất thỏa:</p>
+
+<ol>
+  <li><strong>Không âm</strong>: $P(E)\ge 0$.</li>
+  <li><strong>Chuẩn hóa</strong>: $P(S)=1$.</li>
+  <li><strong>Cộng tính</strong>: Nếu $E_i\cap E_j=\emptyset$ khi $i\ne j$, thì</li>
+</ol>
+
+\[P\left(\bigcup_i E_i\right)=\sum_i P(E_i).\]
+
+<div class="content-box theorem-box">
+  <p><strong>Tư tưởng cốt lõi</strong>: Xác suất là “độ đo” của biến cố. Một biến cố không thể có xác suất âm, toàn bộ không gian chắc chắn xảy ra, và các phần không chồng lấn thì cộng được.</p>
+</div>
+
+<h2 id="3-các-hệ-quả-quan-trọng">3. Các hệ quả quan trọng</h2>
+
+<h3 id="31-xác-suất-biến-cố-rỗng">3.1. Xác suất biến cố rỗng</h3>
+
+<p>Vì $S$ và $\emptyset$ xung khắc, đồng thời $S\cup\emptyset=S$, ta có</p>
+
+\[1=P(S)=P(S\cup\emptyset)=P(S)+P(\emptyset)=1+P(\emptyset).\]
+
+<p>Suy ra $P(\emptyset)=0$.</p>
+
+<h3 id="32-biến-cố-đối">3.2. Biến cố đối</h3>
+
+<p>Nếu $\overline{E}=S\setminus E$, thì $E\cap\overline{E}=\emptyset$ và $E\cup\overline{E}=S$. Do đó</p>
+
+\[P(\overline{E})=1-P(E).\]
+
+<h3 id="33-quy-tắc-cộng-tổng-quát">3.3. Quy tắc cộng tổng quát</h3>
+
+<p>Với hai biến cố bất kỳ,</p>
+
+\[P(A\cup B)=P(A)+P(B)-P(A\cap B).\]
+
+<p>Đây là phiên bản xác suất của nguyên lý bù trừ.</p>
+
+<p><strong>Chứng minh</strong>: Tách $A\cup B$ thành ba phần rời nhau: chỉ thuộc $A$, chỉ thuộc $B$, và thuộc cả hai. Khi cộng $P(A)+P(B)$, phần $A\cap B$ bị tính hai lần, nên phải trừ một lần.</p>
+
+<h2 id="4-không-gian-mẫu-đồng-khả-năng">4. Không gian mẫu đồng khả năng</h2>
+
+<p>Nếu $S$ hữu hạn và mọi kết quả có khả năng như nhau, thì với mọi biến cố $E$,</p>
+
+\[P(E)=\frac{|E|}{|S|}.\]
+
+<p><strong>Ví dụ</strong>: Chọn ngẫu nhiên một chuỗi nhị phân độ dài 4. Có $2^4=16$ chuỗi. Biến cố có đúng hai bit 1 có $\binom{4}{2}=6$ chuỗi, nên xác suất là $6/16=3/8$.</p>
+
+<h2 id="5-xác-suất-có-điều-kiện">5. Xác suất có điều kiện</h2>
+
+<p><strong>Định nghĩa</strong>: Nếu $P(B)&gt;0$, xác suất của $A$ khi biết $B$ đã xảy ra là</p>
+
+\[P(A\mid B)=\frac{P(A\cap B)}{P(B)}.\]
+
+<p>Công thức này không phải là mẹo tính toán; nó định nghĩa một không gian mẫu mới. Khi biết $B$ xảy ra, ta chỉ còn xét các kết quả nằm trong $B$.</p>
+
+<p><strong>Quy tắc nhân</strong>:</p>
+
+\[P(A\cap B)=P(A\mid B)P(B)=P(B\mid A)P(A).\]
+
+<div class="interactive-tool">
+  <p><strong>Demo tương tác đề xuất</strong>: Người học chọn một sơ đồ Venn gồm hai biến cố $A,B$. Công cụ tô lại vùng $B$ thành không gian mẫu mới và hiển thị tỉ lệ của phần $A\cap B$ bên trong $B$.</p>
+</div>
+
+<h2 id="6-biến-cố-độc-lập">6. Biến cố độc lập</h2>
+
+<p><strong>Định nghĩa</strong>: Hai biến cố $A$ và $B$ độc lập nếu</p>
+
+\[P(A\cap B)=P(A)P(B).\]
+
+<p>Nếu $P(B)&gt;0$, điều này tương đương với $P(A\mid B)=P(A)$: biết $B$ xảy ra không làm thay đổi xác suất của $A$.</p>
+
+<div class="content-box warning-box">
+  <p><strong>Nhầm lẫn thường gặp</strong>:</p>
+
+  <ul>
+    <li><strong>Độc lập</strong> không có nghĩa là <strong>xung khắc</strong>. Nếu $A$ và $B$ xung khắc và đều có xác suất dương, chúng không độc lập.</li>
+    <li>$P(A\mid B)$ không bằng $P(B\mid A)$ nói chung.</li>
+    <li>Xác suất nhỏ không đồng nghĩa với không thể xảy ra; xác suất 0 trong mô hình liên tục cũng không nhất thiết là bất khả.</li>
+  </ul>
+</div>
+
+<h2 id="7-ứng-dụng-trong-khoa-học-máy-tính">7. Ứng dụng trong Khoa học Máy tính</h2>
+
+<p>Trong thuật toán ngẫu nhiên, ta dùng xác suất để mô tả thời gian chạy trung bình và xác suất lỗi. Trong học máy, mô hình phân loại dự đoán nhãn dựa trên phân phối xác suất. Trong an toàn thông tin, xác suất giúp đánh giá khả năng đoán mật khẩu, va chạm hàm băm và rủi ro tấn công. Trong kiểm thử phần mềm, xác suất được dùng để lấy mẫu đầu vào và ước lượng độ tin cậy.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+
+<span class="c1"># Xác suất một chuỗi nhị phân độ dài 8 có đúng ba bit 1
+</span><span class="kn">from</span> <span class="n">math</span> <span class="kn">import</span> <span class="n">comb</span>
+<span class="n">p</span> <span class="o">=</span> <span class="nc">Fraction</span><span class="p">(</span><span class="nf">comb</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="bài-tập-thực-hành">Bài tập thực hành</h2>
+
+<h3 id="bài-tập-1">Bài tập 1</h3>
+
+<p>Tung hai xúc xắc cân bằng. Tính xác suất tổng bằng 7.</p>
+
+<details>
+<summary>Đáp án</summary>
+
+Không gian mẫu có 36 kết quả. Có 6 kết quả cho tổng 7: $(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$. Xác suất là $6/36=1/6$.
+
+</details>
+
+<h3 id="bài-tập-2">Bài tập 2</h3>
+
+<p>Một chuỗi nhị phân độ dài 5 được chọn ngẫu nhiên. Tính xác suất chuỗi có ít nhất một bit 1.</p>
+
+<details>
+<summary>Đáp án</summary>
+
+Dùng biến cố đối: chỉ có một chuỗi không có bit 1 là `00000`. Do đó xác suất là $1-1/32=31/32$.
+
+</details>
+
+<h3 id="bài-tập-3">Bài tập 3</h3>
+
+<p>Nếu $P(A)=0.4$, $P(B)=0.5$, $P(A\cap B)=0.2$, hai biến cố có độc lập không?</p>
+
+<details>
+<summary>Đáp án</summary>
+
+Có, vì $P(A)P(B)=0.4\cdot0.5=0.2=P(A\cap B)$.
+
+</details>
+
+<h2 id="tóm-tắt">Tóm tắt</h2>
+
+<ul>
+  <li>Không gian xác suất gồm không gian mẫu, họ biến cố và hàm xác suất.</li>
+  <li>Ba tiên đề Kolmogorov dẫn đến các quy tắc quen thuộc như biến cố đối và quy tắc cộng.</li>
+  <li>Xác suất có điều kiện thu hẹp không gian mẫu về biến cố đã biết.</li>
+  <li>Độc lập nghĩa là thông tin về biến cố này không làm thay đổi xác suất của biến cố kia.</li>
+  <li>Các khái niệm này là nền tảng cho thuật toán ngẫu nhiên, học máy, bảo mật và kiểm thử.</li>
+</ul>
+
+</div>
+
+<!-- Back to Chapter Home Link -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://utteranc.es/client.js"
+        repo="convex-optimization-for-all/convex-optimization-for-all.github.io"
+        issue-term="title"
+        label="Comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script src='/discrete-mathematics-for-computer-science-iuh/public/js/script.js'></script>
+    <script src='/discrete-mathematics-for-computer-science-iuh/public/js/multilang.js'></script>
+  </body>
+</html>

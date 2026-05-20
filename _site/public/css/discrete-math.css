@@ -1,0 +1,433 @@
+/* Custom CSS for Discrete Mathematics Course */
+
+/* Chapter Introduction Styling */
+.chapter-intro {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.chapter-intro h1 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    font-weight: 300;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.chapter-intro .lead {
+    font-size: 1.2em;
+    opacity: 0.9;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* Interactive Tools Styling */
+.interactive-tool {
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 25px 0;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.interactive-tool:hover {
+    border-color: #007bff;
+    box-shadow: 0 5px 15px rgba(0,123,255,0.1);
+}
+
+.interactive-tool h4 {
+    color: #495057;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.interactive-tool input, 
+.interactive-tool select {
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.interactive-tool input:focus,
+.interactive-tool select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.interactive-tool button {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.interactive-tool button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+}
+
+/* Mathematical Content Styling */
+.math-definition {
+    background: #e8f4fd;
+    border-left: 4px solid #007bff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.math-theorem {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.math-example {
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.math-warning {
+    background: #f8d7da;
+    border-left: 4px solid #dc3545;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Proof Styling */
+.proof-container {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.proof-step {
+    margin: 10px 0;
+    padding: 12px;
+    background: white;
+    border-left: 3px solid #6c757d;
+    border-radius: 0 4px 4px 0;
+    transition: border-color 0.2s ease;
+}
+
+.proof-step:hover {
+    border-left-color: #007bff;
+}
+
+.proof-step.base-case {
+    border-left-color: #28a745;
+    background: #f8fff9;
+}
+
+.proof-step.inductive-step {
+    border-left-color: #007bff;
+    background: #f8fbff;
+}
+
+.proof-step.contradiction {
+    border-left-color: #dc3545;
+    background: #fff8f8;
+}
+
+/* Set Theory Visualizations */
+.venn-diagram {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 20px 0;
+    position: relative;
+}
+
+.set-element {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 4px 8px;
+    margin: 2px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* Exercise Styling */
+.exercise-container {
+    background: #fff;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 25px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.exercise-container h4 {
+    color: #495057;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.exercise-item {
+    margin: 15px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #6c757d;
+}
+
+.exercise-item.solved {
+    border-left-color: #28a745;
+    background: #f8fff9;
+}
+
+/* Code Blocks */
+.code-example {
+    background: #2d3748;
+    color: #e2e8f0;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+.code-example .comment {
+    color: #68d391;
+    font-style: italic;
+}
+
+.code-example .keyword {
+    color: #63b3ed;
+    font-weight: bold;
+}
+
+.code-example .string {
+    color: #fbb6ce;
+}
+
+/* Tables */
+.math-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.math-table th {
+    background: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.math-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.math-table tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.math-table tr:hover {
+    background: #e3f2fd;
+}
+
+/* Truth Table Styling */
+.truth-table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.truth-table th {
+    background: #495057;
+    color: white;
+    padding: 12px 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.truth-table td {
+    padding: 10px 15px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+}
+
+.truth-table .true {
+    color: #28a745;
+}
+
+.truth-table .false {
+    color: #dc3545;
+}
+
+/* Badges and Labels */
+.lesson-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.lesson-badge.required {
+    background: #dc3545;
+    color: white;
+}
+
+.lesson-badge.optional {
+    background: #6c757d;
+    color: white;
+}
+
+.badge-required {
+    background: #dc3545;
+    color: white;
+}
+
+.badge-optional {
+    background: #6c757d;
+    color: white;
+}
+
+/* Sidebar Enhancements */
+.sidebar-section h4 {
+    font-size: 0.9em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px 0 10px 0;
+}
+
+.sidebar-subsection {
+    margin-bottom: 20px;
+}
+
+.sidebar-subsection h5 {
+    font-size: 0.8em;
+    font-weight: 500;
+    margin: 15px 0 8px 0;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chapter-intro {
+        padding: 30px 20px;
+    }
+    
+    .chapter-intro h1 {
+        font-size: 2em;
+    }
+    
+    .interactive-tool {
+        padding: 20px 15px;
+    }
+    
+    .math-table, .truth-table {
+        font-size: 0.9em;
+    }
+    
+    .math-table th, .math-table td,
+    .truth-table th, .truth-table td {
+        padding: 8px 10px;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Success/Error Messages */
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.info-message {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+/* Print Styles */
+@media print {
+    .interactive-tool,
+    .sidebar,
+    .chapter-intro {
+        display: none;
+    }
+    
+    .math-table, .truth-table {
+        break-inside: avoid;
+    }
+    
+    .proof-container {
+        break-inside: avoid;
+    }
+}
