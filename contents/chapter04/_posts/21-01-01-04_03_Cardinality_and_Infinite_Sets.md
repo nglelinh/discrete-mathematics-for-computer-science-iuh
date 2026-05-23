@@ -10,9 +10,15 @@ lang: en
 
 # Lực lượng Tập hợp và Nguyên lý Bao hàm - Loại trừ
 
-Đếm số phần tử của một danh sách hữu hạn là chuyện quen thuộc. Nhưng điều gì xảy ra khi ta hỏi có bao nhiêu số nguyên, bao nhiêu số hữu tỉ, hay có phải mọi vô hạn đều “to” như nhau? Đây là chỗ toán rời rạc bắt đầu chuyển từ trực giác đời thường sang những ý tưởng đủ lạ để thay đổi cả nền tảng toán học hiện đại.
+Khi hệ thống tăng quy mô, câu hỏi không còn chỉ là "có những phần tử nào" mà còn là "có bao nhiêu phần tử". Một nền tảng có bao nhiêu người dùng hoạt động, một bộ test có bao nhiêu trường hợp khác nhau, hay hai tập điều kiện chồng lấn nhau ở mức nào, tất cả đều là bài toán đếm.
 
-Khái niệm **lực lượng tập hợp** giúp ta đo kích thước của tập, còn các tập vô hạn buộc ta suy nghĩ lại về từ “nhiều”. Chủ đề này không chỉ đẹp về mặt lý thuyết; nó còn liên hệ đến khả năng biểu diễn dữ liệu, đếm trạng thái của hệ thống và hiểu giới hạn của những gì máy tính có thể duyệt hết hay mô tả hết.
+
+Tư duy tập hợp giúp ta mô tả dữ liệu, miền giá trị và ràng buộc một cách chính xác, nên phần này là nền cho cả lập trình lẫn mô hình hóa.
+Khái niệm **lực lượng của tập hợp** cho ta cách đo kích thước của một tập, kể cả khi tập đó vô hạn. Từ đây, ta bắt đầu thấy vì sao toán rời rạc không chỉ nói về cấu trúc, mà còn nói về quy mô và giới hạn của cấu trúc đó.
+
+Nhưng việc đếm hiếm khi thẳng băng. Khi các tập chồng lấn, cộng riêng từng phần rồi cộng lại thường dẫn đến đếm trùng. **Nguyên lý bao hàm, loại trừ** ra đời đúng để sửa lỗi tự nhiên đó, và nó xuất hiện rất nhiều trong combinatorics, xác suất và phân tích thuật toán.
+
+Trong bài này, chúng ta sẽ đi từ việc đo kích thước tập hợp đến kỹ thuật đếm chính xác khi nhiều tập giao nhau, một kỹ năng rất quan trọng cho các bài toán rời rạc và CS.
 
 ## 1. Lực lượng của tập hợp
 
@@ -106,9 +112,13 @@ $$50+40+30-20-15-10+5=80.$$
 
 ## 7. Công cụ tương tác
 
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
+
 <div class="interactive-tool" data-tool="venn-counter">
   <p><strong>Demo đề xuất:</strong> nhập kích thước ba tập và các giao, công cụ vẽ Venn diagram và tính $$|A\cup B\cup C|$$ theo bao hàm - loại trừ.</p>
 </div>
+
+<script src="{{ '/public/js/venn-counter.js' | relative_url }}"></script>
 
 ## 8. Nhầm lẫn thường gặp
 
@@ -136,5 +146,7 @@ print(len(learns_any))
 - **Lý thuyết tính toán**: tính không đếm được giải thích vì sao có nhiều bài toán hơn số chương trình có thể viết.
 
 ## Tóm tắt
+
+Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
 
 Lực lượng đo kích thước tập hợp. Với tập hữu hạn, lực lượng là số phần tử; với tập lũy thừa, số tập con là $$2^n$$. Nguyên lý bao hàm - loại trừ sửa lỗi đếm trùng khi các tập giao nhau. Với tập vô hạn, khái niệm đếm được và không đếm được mở đường cho các giới hạn căn bản của tính toán.

@@ -10,11 +10,19 @@ lang: en
 
 # Giới thiệu về Cây
 
-Không phải mọi mạng liên kết đều hỗn loạn như đồ thị tổng quát. Có những cấu trúc phân nhánh rất gọn: thư mục trong máy tính, cây DOM của trang web, cây tổ chức nhân sự, cây quyết định trong machine learning, cây cú pháp trong trình biên dịch. Chúng vừa đủ linh hoạt để biểu diễn phân cấp, vừa đủ có trật tự để thuật toán khai thác hiệu quả.
+Không phải mọi mạng liên kết đều rối như đồ thị tổng quát. Có những cấu trúc phân nhánh rất gọn, như thư mục trong máy tính, cây DOM của trang web, cây tổ chức nhân sự, cây cú pháp trong trình biên dịch hay cây quyết định trong machine learning.
 
-Đó là lý do **cây** trở thành một trong những cấu trúc quan trọng nhất của toán rời rạc và khoa học máy tính. Học về cây là học cách mô hình hóa hệ thống phân cấp, đệ quy và lan truyền thông tin theo nhánh — những thứ xuất hiện liên tục từ cấu trúc dữ liệu đến AI và hệ điều hành.
+
+Cây xuất hiện ở rất nhiều tầng của hệ thống, nên việc hiểu cấu trúc và cách thao tác trên cây sẽ giúp các khái niệm sau này bớt rời rạc hơn.
+Đó là lý do **cây** trở thành một trong những cấu trúc quan trọng nhất của toán rời rạc và khoa học máy tính. Nó vừa đủ linh hoạt để biểu diễn phân cấp, vừa đủ có trật tự để thuật toán khai thác hiệu quả.
+
+Học về cây là học cách mô hình hóa hệ thống phân cấp, đệ quy và lan truyền thông tin theo nhánh, những thứ xuất hiện liên tục từ cấu trúc dữ liệu đến AI. Đây cũng là bước tự nhiên sau chương đồ thị, khi ta muốn tập trung vào một lớp đồ thị đặc biệt nhưng cực kỳ hữu ích.
+
+Trong bài này, chúng ta sẽ xây bộ khái niệm nền về cây để chuẩn bị cho các kỹ thuật duyệt, cây khung và ứng dụng ở các bài tiếp theo.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -34,6 +42,8 @@ Sau bài học này, sinh viên có thể:
 </figure>
 
 ## 1. Định nghĩa Cây
+
+Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc định nghĩa trước sẽ giúp các ví dụ và định lý phía sau trở nên dễ theo dõi hơn.
 
 **Định nghĩa**: Cây (tree) là một đồ thị vô hướng, liên thông và không có chu trình đơn.
 
@@ -121,7 +131,14 @@ Sau bài học này, sinh viên có thể:
 Đây là cách heap sort và priority queue được cài đặt hiệu quả trong thực tế.
 </div>
 
+<div class="interactive-tool" markdown="1">
+<div data-demo="tree-traversal-visualizer"></div>
+</div>
+<script src="{{ '/public/js/tree-traversal-visualizer.js' | relative_url }}"></script>
+
 ## 4. Ứng dụng CS Quan trọng
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Cây xuất hiện trong hầu hết mọi lĩnh vực của khoa học máy tính:
 
@@ -139,6 +156,8 @@ Cây xuất hiện trong hầu hết mọi lĩnh vực của khoa học máy tí
 </div>
 
 ## Bài tập
+
+Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, dạng bài và công cụ phù hợp trước khi tính toán. Cách tiếp cận này thường giúp tránh sai từ bước đầu.
 
 1. Cho đồ thị với 8 đỉnh và 7 cạnh, liên thông. Đây có phải cây không? Giải thích.
 2. Một cây nhị phân đầy đủ có 15 nút trong. Tính tổng số đỉnh và số lá.

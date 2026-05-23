@@ -10,9 +10,15 @@ lang: vi
 
 # Quan hệ Truy hồi Không Thuần nhất và Ứng dụng
 
-Không phải truy hồi nào cũng “sạch” đến mức mỗi số hạng chỉ là tổ hợp của các số hạng trước. Nhiều hệ thống còn có lực tác động từ bên ngoài: thêm một lượng cố định mỗi vòng, cộng một hàm theo n, hay chịu một nguồn vào mới ở mỗi bước. Những phần “ngoại sinh” đó làm bài toán thực tế hơn — và cũng khó hơn.
+Không phải mọi truy hồi đều được xây từ các giá trị trước đó một cách "sạch". Nhiều quá trình còn có thêm nguồn tác động bên ngoài, như chi phí cố định mỗi bước, lượng dữ liệu được bơm thêm, hay số lượng yêu cầu mới phát sinh theo thời gian.
 
-**Truy hồi không thuần nhất** giúp mô hình hóa chính những tình huống đó. Học cách xử lý chúng là bước quan trọng để phân tích thuật toán có chi phí phụ thêm, mô hình hóa tiến trình có đầu vào liên tục, và hiểu cách một hệ quy luật nội tại phản ứng trước tác động từ bên ngoài.
+
+Quan hệ truy hồi cho phép ta mô tả tiến trình theo từng bước, đúng với cách nhiều thuật toán đệ quy và dynamic programming vận hành.
+Đó là lúc xuất hiện **quan hệ truy hồi không thuần nhất**. Ngoài phần phụ thuộc vào quá khứ, truy hồi còn có một thành phần bổ sung. Thành phần này làm bài toán phong phú hơn và cũng gần với ứng dụng hơn rất nhiều.
+
+Trong phân tích thuật toán, dạng truy hồi này thường xuất hiện khi mỗi lời gọi còn kèm một lượng công việc phụ thêm. Trong mô hình hệ thống, nó mô tả các quá trình vừa kế thừa trạng thái cũ vừa nhận tác động mới từ môi trường.
+
+Bài học này sẽ giúp chúng ta mở rộng kỹ thuật giải truy hồi sang trường hợp không thuần nhất, rồi dùng chúng để đọc các bài toán ứng dụng thực tế hơn.
 
 ## 1. Dạng tổng quát
 
@@ -60,6 +66,8 @@ Nếu dạng thử trùng với nghiệm thuần nhất, nhân thêm $n$ đủ s
 
 ## 4. Ví dụ với hằng số
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 Giải
 
 $$
@@ -81,6 +89,8 @@ a_n=4\cdot2^n-3.
 $$
 
 ## 5. Ví dụ với đa thức
+
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
 Giải dạng tổng quát:
 
@@ -120,9 +130,13 @@ $$
 
 <div class="interactive-tool" markdown="1">
 **Demo tương tác đề xuất**: Người học chọn dạng $f(n)$ và nghiệm đặc trưng. Công cụ đề xuất dạng nghiệm riêng, cảnh báo khi xảy ra cộng hưởng và tự nhân thêm $n$.
+<div data-demo="characteristic-solver"></div>
 </div>
+<script src="{{ '/public/js/characteristic-solver.js' | relative_url }}"></script>
 
 ## 7. Ứng dụng phân tích thuật toán
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Quan hệ
 
@@ -152,6 +166,8 @@ và nghiệm riêng bậc hai cho ta tổng chi phí bậc $\Theta(n^2)$.
 </div>
 
 ## 9. Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Truy hồi không thuần nhất mô hình hóa chi phí thuật toán khi mỗi bước có chi phí xử lý riêng. Nó cũng xuất hiện trong tài chính tính toán, mô phỏng hệ thống, hàng đợi, tăng trưởng dữ liệu và phân tích amortized. Biết tách nghiệm thuần nhất và nghiệm riêng giúp ta nhìn rõ phần nào đến từ “trạng thái cũ” và phần nào do “chi phí mới”.
 

@@ -143,6 +143,8 @@ $$(l_{11} \lor l_{12} \lor \cdots) \land (l_{21} \lor l_{22} \lor \cdots) \land 
   <p><strong>Demo đề xuất:</strong> nhập một biểu thức như <code>(p -> q) and (q -> r)</code>, công cụ sinh bảng chân trị, DNF và CNF tương ứng.</p>
 </div>
 
+<script src="{{ '/public/js/truth-table-normal-form.js' | relative_url }}"></script>
+
 ## 7. Nhầm lẫn thường gặp
 
 <div class="content-box warning-box" markdown="1">

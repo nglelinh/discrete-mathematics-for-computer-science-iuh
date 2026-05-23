@@ -10,9 +10,15 @@ lang: en
 
 # Hàm nghịch đảo và Hàm hợp
 
-Trong một hệ thống lớn, dữ liệu hiếm khi đi qua đúng một bước. Nó được chuẩn hóa, mã hóa, ánh xạ, rồi chuyển tiếp qua nhiều tầng xử lý. Vì thế, hai câu hỏi quan trọng luôn xuất hiện: có thể đảo ngược phép biến đổi này không, và nếu ghép nhiều phép biến đổi lại thì kết quả cuối cùng ra sao?
+Trong phần mềm, dữ liệu hiếm khi chỉ đi qua một bước. Nó thường được biến đổi theo chuỗi: parse rồi validate, encode rồi transmit, normalize rồi index. Cũng có lúc ta cần đi ngược lại, từ kết quả quay về dữ liệu gốc. Hai nhu cầu đó dẫn thẳng đến **hàm hợp** và **hàm nghịch đảo**.
 
-**Hàm ngược** và **hợp hàm** trả lời trực tiếp hai câu hỏi đó. Chúng đứng sau quy trình mã hóa–giải mã, pipeline xử lý dữ liệu, chuyển đổi kiểu, và rất nhiều cấu trúc trong toán rời rạc. Nắm chắc phần này giúp bạn nhìn các phép biến đổi như những khối lắp ghép có quy luật, không phải các thao tác rời rạc không liên quan.
+
+Trong khoa học máy tính, hàm số xuất hiện ở khắp nơi, từ ánh xạ đầu vào sang đầu ra đến biến đổi dữ liệu và mô hình hóa trạng thái.
+Hàm hợp mô tả việc ghép nhiều ánh xạ thành một pipeline duy nhất. Hàm nghịch đảo trả lời câu hỏi khó hơn: sau khi biến đổi, ta có thể phục hồi chính xác đầu vào ban đầu hay không? Đây là ý tưởng rất quen trong mã hóa, chuyển đổi kiểu dữ liệu, biên dịch và xử lý tín hiệu.
+
+Điểm then chốt là không phải hàm nào cũng có nghịch đảo. Muốn đảo được, hàm phải đủ chính xác để không làm mất thông tin. Vì vậy, chủ đề này nối trực tiếp với các tính chất đơn ánh, toàn ánh và song ánh của bài trước.
+
+Trong bài này, chúng ta sẽ học cách ghép hàm, tìm hàm nghịch đảo khi có thể, và dùng các khái niệm đó để nhìn rõ hơn cấu trúc của các phép biến đổi.
 
 ## 1. Hàm hợp
 
@@ -112,9 +118,13 @@ Hàm $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^2$$ không có nghịch đảo trê
 
 ## 8. Công cụ tương tác
 
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
+
 <div class="interactive-demo" data-demo="composition-inverse-pipeline">
   <p><strong>Demo đề xuất:</strong> kéo các hàm vào pipeline để xem $$g\circ f$$, thử thêm hàm nghịch đảo và quan sát khi pipeline trở về hàm đồng nhất.</p>
+  <div data-demo="function-composition-pipeline"></div>
 </div>
+<script src="{{ '/public/js/function-composition-pipeline.js' | relative_url }}"></script>
 
 ## 9. Nhầm lẫn thường gặp
 
@@ -144,5 +154,7 @@ result = tokenize(clean("  Discrete Math  "))
 - **Lập trình hàm**: composition giúp xây dựng chương trình lớn từ hàm nhỏ.
 
 ## Tóm tắt
+
+Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
 
 Hàm hợp ghép các biến đổi theo thứ tự xác định và có tính kết hợp nhưng không giao hoán. Hàm đồng nhất là phần tử trung hòa. Hàm nghịch đảo tồn tại chính xác khi hàm ban đầu là song ánh; nó mô hình hóa thao tác undo, decode, deserialize và các biến đổi không mất thông tin.

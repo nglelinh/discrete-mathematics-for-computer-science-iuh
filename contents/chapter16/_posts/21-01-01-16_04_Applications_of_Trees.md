@@ -10,11 +10,19 @@ lang: en
 
 # Ứng dụng của Cây trong Khoa học Máy tính
 
-Sau khi học định nghĩa, tính chất, cách duyệt và cây khung, câu hỏi lớn còn lại là: cây thật sự được dùng ở đâu? Câu trả lời là gần như khắp nơi trong khoa học máy tính: từ cấu trúc dữ liệu tìm kiếm, hệ thống file, chỉ mục cơ sở dữ liệu, cây quyết định, đến phân tích cú pháp và nén dữ liệu.
+Nếu phải chọn một cấu trúc xuất hiện ở gần như mọi tầng của khoa học máy tính, cây chắc chắn là ứng viên hàng đầu. Từ hệ thống tập tin, DOM, AST, chỉ mục cơ sở dữ liệu, heap, trie đến cây quyết định, dấu vết của nó ở khắp nơi.
 
-Bài này tập trung vào **ứng dụng của cây** để nối lý thuyết với thực hành. Mục tiêu không chỉ là biết thêm ví dụ, mà là nhìn ra vì sao khi một bài toán có phân cấp, có chia nhánh hoặc cần tìm kiếm hiệu quả, cấu trúc cây thường là lựa chọn tự nhiên và mạnh mẽ nhất.
+
+Cây xuất hiện ở rất nhiều tầng của hệ thống, nên việc hiểu cấu trúc và cách thao tác trên cây sẽ giúp các khái niệm sau này bớt rời rạc hơn.
+Điều làm cây đặc biệt là khả năng biểu diễn phân cấp và chia nhỏ bài toán theo cách rất tự nhiên. Nhiều hệ thống dùng cây không phải vì nó đẹp về mặt hình học, mà vì nó giúp thao tác tìm kiếm, lưu trữ, suy luận và cập nhật trở nên hiệu quả hơn.
+
+Sau khi đã học khái niệm cây, cách duyệt và cây khung, bước cuối cùng rất nên làm là nhìn lại toàn bộ chủ đề dưới ánh sáng ứng dụng. Khi đó, các thuật ngữ như gốc, lá, cây con hay chiều cao không còn là từ vựng rời rạc.
+
+Trong bài này, chúng ta sẽ đi qua những ứng dụng tiêu biểu của cây để thấy rõ vì sao đây là một cấu trúc trung tâm của khoa học máy tính.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -170,15 +178,21 @@ Cây quyết định là nền tảng của:
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Mã hóa Huffman</h3>
 <p>Nhập một văn bản và công cụ sẽ xây dựng cây Huffman, hiển thị mã nhị phân cho mỗi ký tự, và tính tỉ lệ nén. Quan sát cách các ký tự xuất hiện thường xuyên được mã ngắn hơn. <strong>Hãy thử:</strong> So sánh mã Huffman của một văn bản tiếng Việt với văn bản tiếng Anh.</p>
+<div data-demo="huffman-coding"></div>
 </div>
+<script src="{{ '/public/js/huffman-coding.js' | relative_url }}"></script>
 
 ## Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Cây là cấu trúc dữ liệu linh hoạt nhất trong khoa học máy tính. Nó xuất hiện ở mọi cấp độ — từ kiến trúc vi xử lý (cây quyết định trong branch prediction) đến các ứng dụng web (DOM tree), từ nén file (Huffman) đến trí tuệ nhân tạo (decision tree, random forest).
 
 Hiểu cây không chỉ giúp bạn giải bài toán hiệu quả hơn, mà còn giúp bạn *thiết kế* cấu trúc dữ liệu mới khi cần. Rất nhiều cấu trúc dữ liệu hiện đại (BKD-tree, R-tree, quadtree) là những biến thể của cây, được tối ưu cho các bài toán cụ thể.
 
 ## Bài tập
+
+Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, dạng bài và công cụ phù hợp trước khi tính toán. Cách tiếp cận này thường giúp tránh sai từ bước đầu.
 
 1. Xây dựng cây Huffman cho văn bản "AABBBCCCDDDDEEEEE" (A=2, B=3, C=3, D=4, E=5). Tính tỉ lệ nén.
 2. Chèn các số [5, 3, 7, 2, 4, 6, 8] vào BST rỗng. Vẽ cây kết quả. Tìm kiếm 4 cần bao nhiêu bước?

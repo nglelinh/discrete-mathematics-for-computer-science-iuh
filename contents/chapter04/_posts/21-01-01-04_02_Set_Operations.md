@@ -10,9 +10,15 @@ lang: en
 
 # Phép toán Tập hợp
 
-Có dữ liệu khách hàng VIP, dữ liệu khách đã mua hàng, dữ liệu khách đang hoạt động. Câu hỏi thực tế luôn là: ai vừa VIP **và** đã mua, ai thuộc nhóm này **hoặc** nhóm kia, ai nằm trong danh sách nhưng chưa được xử lý? Những thao tác nghe rất nghiệp vụ ấy thực ra đều là phép toán trên tập hợp.
+Biết một tập hợp là gì mới chỉ là bước đầu. Trong thực tế, ta gần như luôn cần kết hợp, so sánh hoặc loại trừ giữa nhiều tập: người dùng thuộc nhóm A **hoặc** B, bản ghi có trong log hôm qua nhưng không có hôm nay, tập tài nguyên chung của hai service, hay danh sách node chưa được thăm.
 
-Bài này biến các thao tác “lọc”, “gộp”, “loại trừ”, “so phần chung” thành ngôn ngữ chính xác bằng **hợp, giao, hiệu, phần bù**. Khi nắm được chúng, bạn không chỉ giải bài tập tập hợp mà còn đọc truy vấn dữ liệu tốt hơn, hiểu cách bộ lọc hoạt động và mô hình hóa các bài toán phân loại một cách gọn gàng hơn.
+
+Tư duy tập hợp giúp ta mô tả dữ liệu, miền giá trị và ràng buộc một cách chính xác, nên phần này là nền cho cả lập trình lẫn mô hình hóa.
+Các **phép toán tập hợp** như hợp, giao, hiệu và phần bù chính là công cụ để diễn đạt những thao tác đó một cách ngắn gọn và chính xác. Chúng không chỉ là ký hiệu của toán, mà còn là nền tảng cho truy vấn dữ liệu, tối ưu điều kiện logic và mô hình hóa trạng thái trong chương trình.
+
+Điều đáng chú ý là nhiều sai sót trong phân tích bài toán đến từ việc hiểu mơ hồ các phép này. Nhầm giao với hợp hay bỏ quên miền nền có thể khiến kết quả lệch hoàn toàn dù hình thức nhìn rất hợp lý.
+
+Bài học này sẽ giúp chúng ta nhìn các phép toán tập hợp như những thao tác rất thực tế, rồi chuyển dần sang cách viết và suy luận chuẩn trong toán rời rạc.
 
 ## Các phép toán cơ bản
 
@@ -144,38 +150,11 @@ not (x in A and x in B) == (x not in A) or (x not in B)
 
 ## Công cụ tương tác: Trực quan hóa phép toán tập hợp
 
-<div id="set-operations-visualizer" class="interactive-tool">
-    <h4>🎨 Trực quan hóa phép toán tập hợp</h4>
-    
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-        <div>
-            <label><strong>Tập A:</strong></label>
-            <input type="text" id="set-a-ops" placeholder="1,2,3,4" style="width: 100%; padding: 8px;">
-        </div>
-        <div>
-            <label><strong>Tập B:</strong></label>
-            <input type="text" id="set-b-ops" placeholder="3,4,5,6" style="width: 100%; padding: 8px;">
-        </div>
-        <div>
-            <label><strong>Phép toán:</strong></label>
-            <select id="operation-select" style="width: 100%; padding: 8px;">
-                <option value="union">A ∪ B (Hợp)</option>
-                <option value="intersection">A ∩ B (Giao)</option>
-                <option value="difference">A \ B (Hiệu)</option>
-                <option value="symmetric">A △ B (Hiệu đối xứng)</option>
-            </select>
-        </div>
-    </div>
-    
-    <button onclick="visualizeOperation()" style="width: 100%; margin-bottom: 20px;">
-        Thực hiện phép toán
-    </button>
-    
-    <div id="operation-result" style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
-        <p style="color: #666; text-align: center; margin: 0;">Nhập tập hợp và chọn phép toán để xem kết quả</p>
-    </div>
-    
-    <div id="venn-diagram" style="margin-top: 20px; text-align: center;">
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
+
+<div id="set-operations-visualizer" class="interactive-tool"></div>
+
+<script src="{{ '/public/js/set-operations-visualizer.js' | relative_url }}"></script>: 20px; text-align: center;">
         <!-- Venn diagram sẽ được tạo bằng JavaScript -->
     </div>
 </div>

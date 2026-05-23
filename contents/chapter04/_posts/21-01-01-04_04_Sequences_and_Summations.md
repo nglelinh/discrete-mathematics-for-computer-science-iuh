@@ -10,9 +10,15 @@ lang: en
 
 # Dãy số và Tổng
 
-Khi phân tích một thuật toán, ta thường gặp những đại lượng không đứng yên: số phép so sánh ở bước thứ n, doanh thu theo từng tháng, số node sinh ra theo từng mức của cây, hay tổng chi phí tích lũy sau nhiều vòng lặp. Những mẫu biến thiên như vậy cần một ngôn ngữ gọn hơn việc viết từng giá trị rời rạc.
+Rất nhiều đối tượng trong khoa học máy tính không đứng yên, chúng xuất hiện theo thứ tự: dãy phép đo theo thời gian, dãy giá trị do một thuật toán sinh ra, dãy trạng thái của một tiến trình, hay các mức chi phí khi đầu vào tăng dần. Khi đó, ta cần ngôn ngữ để mô tả từng phần tử và cả toàn bộ mẫu hình của chúng.
 
-**Dãy số** và **ký hiệu tổng** chính là ngôn ngữ đó. Chúng giúp ta mô tả quy luật, nén các biểu thức dài và chuẩn bị cho những chương sau như đếm, xác suất, truy hồi, phân tích thuật toán. Nói cách khác, đây là lúc ta học cách nhìn dữ liệu rời rạc như một cấu trúc có nhịp điệu thay vì một đống con số tách rời.
+
+Tư duy tập hợp giúp ta mô tả dữ liệu, miền giá trị và ràng buộc một cách chính xác, nên phần này là nền cho cả lập trình lẫn mô hình hóa.
+**Dãy số** giúp ta biểu diễn cấu trúc theo thứ tự, còn **tổng** giúp ta gom nhiều giá trị thành một đại lượng có thể phân tích. Từ số phép gán trong một vòng lặp, tổng độ dài các đoạn dữ liệu, đến công thức đếm trong tổ hợp, hai khái niệm này xuất hiện liên tục.
+
+Điểm hay là nhiều biểu thức nhìn dài và rối thực ra có quy luật rất rõ nếu ta biết cách viết bằng ký hiệu sigma hoặc nhận ra kiểu dãy quen thuộc. Khi đó, một bài toán tưởng thuần tính toán lại trở thành bài toán nhận dạng cấu trúc.
+
+Trong bài học này, chúng ta sẽ xây nền về dãy số, các loại tổng thường gặp, và cách dùng chúng để diễn đạt gọn những mô hình tăng trưởng quen thuộc trong toán và lập trình.
 
 ## 1. Dãy số
 
@@ -150,9 +156,13 @@ $$\sum_{i=1}^{n} i = \frac{n(n+1)}{2} = \Theta(n^2).$$
 
 ## 8. Công cụ tương tác
 
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
+
 <div class="interactive-demo" data-demo="summation-loop-visualizer">
   <p><strong>Demo đề xuất:</strong> chọn kiểu vòng lặp, công cụ hiển thị tổng Sigma tương ứng và số ô được duyệt trong lưới.</p>
 </div>
+
+<script src="{{ '/public/js/summation-loop-visualizer.js' | relative_url }}"></script>
 
 ## 9. Nhầm lẫn thường gặp
 
@@ -172,5 +182,7 @@ $$\sum_{i=1}^{n} i = \frac{n(n+1)}{2} = \Theta(n^2).$$
 - **Cơ sở dữ liệu**: aggregation như `SUM`, `AVG` là biểu hiện trực tiếp của ký hiệu tổng.
 
 ## Tóm tắt
+
+Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
 
 Dãy số mô tả giá trị theo chỉ số; tổng Sigma viết gọn phép cộng nhiều số hạng. Các công thức tổng cơ bản giúp chuyển vòng lặp thành biểu thức đóng và đánh giá độ phức tạp. Dãy đệ quy như Fibonacci kết nối trực tiếp với lập trình đệ quy và tối ưu bằng ghi nhớ.

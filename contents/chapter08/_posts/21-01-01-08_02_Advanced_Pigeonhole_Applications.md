@@ -10,9 +10,15 @@ lang: en
 
 # Ứng dụng Nâng cao của Nguyên lý Dirichlet
 
-Ở mức cơ bản, nguyên lý Dirichlet cho ta những kết luận kiểu “phải có ít nhất hai phần tử rơi chung một nhóm”. Nhưng sức mạnh thật sự của nó lộ ra khi bài toán không còn hiển nhiên: chia điểm dữ liệu thành khoảng, ràng buộc phần dư, chứng minh tồn tại cấu hình đặc biệt mà không cần chỉ ra cụ thể nó là gì.
+Sau khi nắm được phiên bản cơ bản của nguyên lý Dirichlet, điều thú vị nhất là thấy nó mở rộng mạnh đến đâu. Một nguyên lý nhìn rất đơn giản có thể tạo ra các kết luận tinh tế về số học, hình học, tổ hợp và cả các bài toán trong khoa học máy tính.
 
-Phần nâng cao này cho thấy một ý tưởng rất nhỏ có thể đi xa đến đâu. Khi biết chọn đúng “chuồng” và đúng cách phân bố, ta có thể giải những bài toán tưởng như không liên quan đến bồ câu chút nào. Đây là kiểu tư duy cực kỳ hữu ích trong olympic tin, thiết kế chứng minh và phân tích cấu trúc rời rạc.
+
+Nguyên lý Dirichlet thường được dùng khi ta không cần biết chính xác đối tượng nào trùng nhau, chỉ cần chứng minh chắc chắn rằng sự trùng lặp phải xảy ra.
+Ở mức nâng cao, ta không chỉ hỏi "có ít nhất hai phần tử rơi cùng một ngăn hay không". Ta còn muốn biết ít nhất bao nhiêu phần tử phải rơi vào cùng một nhóm, hoặc phải chia ngăn như thế nào để ép một cấu trúc nhất định xuất hiện.
+
+Đây là lúc khả năng mô hình hóa trở nên quan trọng hơn bản thân công thức. Chọn sai cách chia nhóm thì bài toán bế tắc, chọn đúng thì lời giải trở nên rất ngắn.
+
+Trong bài này, chúng ta sẽ xem các biến thể tổng quát hơn của nguyên lý Dirichlet và dùng chúng để giải những bài toán đòi hỏi góc nhìn tinh hơn.
 
 ## Nguyên lý Dirichlet Tổng quát
 
@@ -44,6 +50,8 @@ Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 s
 **Chứng minh**: Xét dãy a^1, a^2, ..., a^p (mod p). Có p số và p-1 giá trị có thể (1,2,...,p-1). Theo nguyên lý Dirichlet...
 
 ## Công cụ tương tác: Xấp xỉ Diophantine
+
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
 
 <div id="diophantine-approximation" class="interactive-tool">
     <h4>📐 Xấp xỉ Diophantine</h4>
@@ -460,6 +468,8 @@ def constructive_pigeonhole(objects, groups, property_checker):
 ```
 
 ## Tóm tắt
+
+Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
 
 **Nguyên lý Dirichlet Nâng cao** mở ra nhiều ứng dụng mạnh mẽ:
 

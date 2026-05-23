@@ -10,9 +10,15 @@ lang: en
 
 # Lý thuyết Xác suất — Tiên đề và Tính chất
 
-Khi bài toán xác suất bắt đầu có nhiều biến cố cùng lúc, trực giác lại dễ sai. Hai sự kiện có thể chồng lấn, loại trừ nhau, độc lập hoặc hoàn toàn phụ thuộc lẫn nhau. Trong phân tích rủi ro hay thiết kế hệ thống, nhầm một trong các mối quan hệ này có thể dẫn đến ước lượng sai rất xa thực tế.
+Khi nói một sự kiện có xác suất 0.7 hay 0.2, ta đang gán số cho sự không chắc chắn. Nhưng vì sao phép gán đó là hợp lệ? Muốn dùng xác suất nghiêm túc trong toán và khoa học máy tính, ta cần một nền tảng chặt chẽ hơn trực giác.
 
-Bài này đi sâu hơn vào các quy tắc vận hành của xác suất: cách cộng, cách nhân, cách hiểu giao–hợp–bù, và cách đọc đúng mối liên hệ giữa các biến cố. Mục tiêu không chỉ là tính ra đáp án, mà là xây được một mô hình đúng cho tình huống ngẫu nhiên đang xét.
+
+Xác suất giúp ta chuyển từ trực giác mơ hồ sang đánh giá định lượng, điều rất quan trọng khi phân tích thuật toán ngẫu nhiên, dữ liệu nhiễu và rủi ro hệ thống.
+Các **tiên đề xác suất** đóng vai trò đó. Từ một vài quy tắc rất ngắn gọn, ta suy ra được hàng loạt tính chất quan trọng để tính toán, so sánh và kiểm tra kết quả. Đây là bước chuyển từ cảm giác về ngẫu nhiên sang một hệ thống suy luận chính xác.
+
+Trong thực tế, những tính chất này giúp ta tránh nhiều sai lầm quen thuộc như cộng xác suất sai cách, nhầm biến cố đối, hoặc đánh giá quá mức các tình huống có giao nhau.
+
+Trong bài này, chúng ta sẽ đi từ các tiên đề nền tảng đến những hệ quả thường dùng, để mọi công thức xác suất sau này đều có chỗ đứng rõ ràng.
 
 ## 1. Không gian xác suất
 
@@ -102,7 +108,9 @@ $$
 
 <div class="interactive-tool" markdown="1">
 **Demo tương tác đề xuất**: Người học chọn một sơ đồ Venn gồm hai biến cố $A,B$. Công cụ tô lại vùng $B$ thành không gian mẫu mới và hiển thị tỉ lệ của phần $A\cap B$ bên trong $B$.
+<div data-demo="conditional-probability-viz"></div>
 </div>
+<script src="{{ '/public/js/conditional-probability-viz.js' | relative_url }}"></script>
 
 ## 6. Biến cố độc lập
 
@@ -123,6 +131,8 @@ Nếu $P(B)>0$, điều này tương đương với $P(A\mid B)=P(A)$: biết $B
 </div>
 
 ## 7. Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Trong thuật toán ngẫu nhiên, ta dùng xác suất để mô tả thời gian chạy trung bình và xác suất lỗi. Trong học máy, mô hình phân loại dự đoán nhãn dựa trên phân phối xác suất. Trong an toàn thông tin, xác suất giúp đánh giá khả năng đoán mật khẩu, va chạm hàm băm và rủi ro tấn công. Trong kiểm thử phần mềm, xác suất được dùng để lấy mẫu đầu vào và ước lượng độ tin cậy.
 

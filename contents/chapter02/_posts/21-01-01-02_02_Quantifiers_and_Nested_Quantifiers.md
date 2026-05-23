@@ -138,6 +138,8 @@ $$\forall a\,\exists! e\,PrimaryEmail(a,e).$$
   <p><strong>Demo đề xuất:</strong> bật/tắt các ô trong ma trận sinh viên-môn học để quan sát khi nào $$\forall x\exists y$$ đúng và khi nào $$\exists y\forall x$$ đúng.</p>
 </div>
 
+<script src="{{ '/public/js/nested-quantifier-grid.js' | relative_url }}"></script>
+
 ## 9. Nhầm lẫn thường gặp
 
 <div class="content-box warning-box" markdown="1">

@@ -10,11 +10,19 @@ lang: en
 
 # Ứng dụng của Lý thuyết Số trong Khoa học Máy tính
 
-Nếu chỉ học định lý và phép tính rồi dừng lại, lý thuyết số dễ bị hiểu lầm là đẹp nhưng xa đời sống. Thực tế thì ngược lại: rất nhiều hệ thống số hiện đại vận hành nhờ những kết quả nghe có vẻ “thuần toán” như chia hết, modulo, gcd hay số nguyên tố.
+Có những chủ đề thoạt nhìn rất "toán thuần" nhưng lại nằm ngay trong lõi của hệ thống hiện đại. Lý thuyết số là một ví dụ rõ nhất. Từ mật mã, chữ ký số, kiểm tra lỗi, đến các thuật toán tính toán trên số nguyên lớn, dấu vết của nó xuất hiện ở khắp nơi.
 
-Bài này kéo các khái niệm đã học ra khỏi khung lý thuyết để nhìn vào **ứng dụng** của chúng trong mật mã, kiểm lỗi, đồng bộ, hashing và thiết kế thuật toán. Đây là lúc ta thấy rõ vì sao toán rời rạc không chỉ để chứng minh trên giấy, mà để bảo vệ, nén, kiểm tra và truyền thông tin trong thế giới số.
+
+Lý thuyết số trong chương này không đứng riêng lẻ, nó là nền cho mã hóa, kiểm tra tính đúng đắn và nhiều cơ chế bảo mật hiện đại.
+Sau khi học chia hết, số nguyên tố và đồng dư, câu hỏi tự nhiên là: những khái niệm đó đi vào khoa học máy tính như thế nào? Câu trả lời không chỉ nằm ở RSA, mà còn ở nhiều cơ chế xử lý, xác thực và tối ưu dữ liệu khác.
+
+Phần ứng dụng này rất quan trọng vì nó nối lại mạch của cả chương. Nó cho thấy các định lý và phép tính không đứng riêng lẻ, mà là nền của những công nghệ mà chúng ta dùng mỗi ngày.
+
+Trong bài này, chúng ta sẽ nhìn lý thuyết số dưới góc độ ứng dụng để thấy rõ hơn giá trị thực hành của những công cụ đã học.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -126,15 +134,21 @@ NIST (Viện Tiêu chuẩn Mỹ) đã chọn các thuật toán hậu lượng t
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Tính toán Hash</h3>
 <p>Công cụ này cho phép bạn nhập một thông điệp và xem giá trị hash của nó dùng SHA-256. Quan sát hiệu ứng lan truyền (avalanche effect): thay đổi một ký tự sẽ làm thay đổi hoàn toàn giá trị hash. <strong>Hãy thử:</strong> So sánh hash của "cat" và "cat " (thêm một khoảng trắng ở cuối).</p>
+<div data-demo="number-theory-apps"></div>
 </div>
+<script src="{{ '/public/js/number-theory-apps.js' | relative_url }}"></script>
 
 ## Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Lý thuyết số hiện diện trong mọi lớp của stack công nghệ: từ trình biên dịch (tối ưu hóa modulo), cơ sở dữ liệu (hash indexing), đến tầng ứng dụng (mã hóa, chữ ký số). Sinh viên CS không cần trở thành chuyên gia mật mã, nhưng *phải* hiểu đủ để không mắc lỗi bảo mật cơ bản — như dùng MD5 (đã bị phá) hay tự "phát minh" thuật toán mã hóa.
 
 **Nguyên tắc vàng của mật mã học**: Không bao giờ tự phát minh thuật toán mã hóa. Luôn dùng thư viện chuẩn, đã được kiểm chứng bởi cộng đồng bảo mật.
 
 ## Bài tập
+
+Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, dạng bài và công cụ phù hợp trước khi tính toán. Cách tiếp cận này thường giúp tránh sai từ bước đầu.
 
 1. Tính SHA-256 của tên bạn (dùng công cụ online). Thay đổi một ký tự, so sánh kết quả.
 2. Với LCG: $$a = 7, c = 3, m = 10, x_0 = 2$$, sinh 10 số đầu tiên. Nhận xét về chu kỳ.

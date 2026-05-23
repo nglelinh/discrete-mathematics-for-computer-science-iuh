@@ -10,9 +10,15 @@ lang: en
 
 # Tính chất của Hàm số
 
-Không phải hàm nào cũng “tốt” theo cùng một nghĩa. Có hàm làm hai đầu vào khác nhau đổ vào cùng một kết quả; có hàm bao phủ toàn bộ đầu ra; có hàm vừa phân biệt được mọi đầu vào vừa khớp kín mọi đầu ra. Trong kỹ thuật phần mềm, những khác biệt đó ảnh hưởng trực tiếp đến mã hóa dữ liệu, ánh xạ khóa, nén thông tin và thiết kế API.
+Biết một ánh xạ là hàm vẫn chưa đủ để hiểu nó mạnh đến đâu. Trong nhiều bài toán, điều quan trọng là xem hàm có làm mất thông tin không, có bao phủ hết miền đích không, và có thể đảo ngược được không.
 
-Các tính chất **đơn ánh, toàn ánh, song ánh** giúp ta đo chất lượng của một phép ánh xạ. Chúng cho biết thông tin có bị mất không, mọi đích có được dùng hết không, và liệu ta có thể “đi ngược” lại từ đầu ra về đầu vào hay không. Đây là phần rất toán học nhưng cũng rất thực dụng.
+
+Trong khoa học máy tính, hàm số xuất hiện ở khắp nơi, từ ánh xạ đầu vào sang đầu ra đến biến đổi dữ liệu và mô hình hóa trạng thái.
+Đó là lý do các tính chất như **đơn ánh**, **toàn ánh** và **song ánh** trở nên rất quan trọng. Chúng xuất hiện trong thiết kế mã định danh, băm hoàn hảo, nén và giải nén dữ liệu, ánh xạ địa chỉ bộ nhớ, cũng như nhiều chứng minh về số lượng phần tử giữa các tập hợp.
+
+Một hàm đơn ánh nói rằng các đầu vào khác nhau không bị gộp mất. Một hàm toàn ánh nói rằng mọi giá trị ở đầu ra đều thật sự được chạm tới. Khi cả hai cùng đúng, ta có song ánh, một tình huống cực kỳ đẹp vì nó cho phép ghép cặp chính xác giữa hai tập.
+
+Trong bài học này, chúng ta sẽ học cách kiểm tra các tính chất đó và hiểu vì sao chúng là chìa khóa cho nhiều khái niệm sâu hơn ở phía sau.
 
 ## 1. Đơn ánh
 
@@ -91,9 +97,13 @@ Nếu $$A$$ và $$B$$ hữu hạn:
 
 ## 6. Công cụ tương tác
 
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
+
 <div class="interactive-tool" data-tool="function-property-checker">
   <p><strong>Demo đề xuất:</strong> sinh viên nối mũi tên giữa hai tập hữu hạn; công cụ kiểm tra đơn ánh, toàn ánh, song ánh và giải thích bằng phần tử gây lỗi.</p>
 </div>
+
+<script src="{{ '/public/js/function-property-checker.js' | relative_url }}"></script>
 
 ## 7. Nhầm lẫn thường gặp
 
@@ -114,5 +124,7 @@ Nếu $$A$$ và $$B$$ hữu hạn:
 - **Load balancing** thường là toàn ánh nếu mọi server đều nhận ít nhất một job.
 
 ## Tóm tắt
+
+Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
 
 Đơn ánh bảo toàn phân biệt đầu vào; toàn ánh phủ hết codomain; song ánh làm cả hai và do đó có thể đảo ngược. Khi xét các tính chất này, luôn nêu rõ domain và codomain. Với tập hữu hạn, các tính chất này liên hệ trực tiếp với so sánh lực lượng.

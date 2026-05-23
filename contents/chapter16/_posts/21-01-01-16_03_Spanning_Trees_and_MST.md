@@ -10,11 +10,19 @@ lang: en
 
 # Cây khung và Cây khung Nhỏ nhất
 
-Trong một mạng kết nối nhiều điểm, đôi khi ta không muốn giữ mọi cạnh. Ta chỉ cần đủ liên thông, không thừa vòng, và nếu có thể thì tổng chi phí còn phải thấp nhất. Bài toán này xuất hiện ở thiết kế mạng điện, kéo cáp, routing, phân cụm dữ liệu và nhiều bài toán hạ tầng có chi phí thật sự bằng tiền.
+Khi một mạng đã có rất nhiều cạnh, ta thường không muốn giữ tất cả. Trong thiết kế hạ tầng, mạng điện, mạng truyền thông hay đường giao thông, mục tiêu thường là giữ hệ thống **vẫn liên thông** nhưng dùng ít liên kết hơn, và tốt nhất là tổng chi phí nhỏ nhất.
 
-**Cây khung** và **cây khung nhỏ nhất** cho ta mô hình toán học của nhu cầu đó. Đây là nơi cấu trúc cây gặp bài toán tối ưu trên đồ thị, và cũng là một ví dụ rất đẹp về việc một khái niệm rời rạc trừu tượng có thể dẫn thẳng tới các thuật toán vận hành trong thế giới thật.
+
+Cây xuất hiện ở rất nhiều tầng của hệ thống, nên việc hiểu cấu trúc và cách thao tác trên cây sẽ giúp các khái niệm sau này bớt rời rạc hơn.
+Ý tưởng đó dẫn đến **cây khung** và **cây khung nhỏ nhất**. Một cây khung giữ lại đủ cạnh để nối tất cả các đỉnh mà không tạo chu trình. Nếu mỗi cạnh có chi phí, ta muốn chọn cây khung có tổng trọng số thấp nhất.
+
+Đây là một chủ đề rất đẹp vì nó nối đồ thị, cây và tối ưu thành một bài toán vừa lý thuyết vừa cực kỳ thực tế. Nhiều bài toán thiết kế mạng trong đời sống có thể mô hình hóa rất trực tiếp bằng MST.
+
+Trong bài này, chúng ta sẽ học khái niệm cây khung, hiểu mục tiêu của MST và chuẩn bị nền cho các thuật toán xây dựng chúng.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -70,6 +78,8 @@ MST sẽ chọn các cạnh (B,C)=1, (A,C)=2, (B,D)=3 → tổng chi phí = 6.
 
 ## 3. Thuật toán Kruskal
 
+Ở phần này, đừng chỉ nhớ các bước. Hãy chú ý điều kiện áp dụng, thông tin được duy trì sau mỗi bước và lý do thuật toán cho kết quả đúng.
+
 **Ý tưởng tham lam**: Sắp xếp các cạnh theo trọng số tăng dần, lần lượt thêm cạnh vào cây khung nếu cạnh đó không tạo chu trình.
 
 ```
@@ -109,6 +119,8 @@ Kết quả: BC + AC + BD = 1 + 2 + 3 = 6.
 Độ phức tạp: $$O(E \log E)$$ (chủ yếu do sắp xếp cạnh).
 
 ## 4. Thuật toán Prim
+
+Ở phần này, đừng chỉ nhớ các bước. Hãy chú ý điều kiện áp dụng, thông tin được duy trì sau mỗi bước và lý do thuật toán cho kết quả đúng.
 
 **Ý tưởng**: Bắt đầu từ một đỉnh, mỗi bước thêm cạnh **nhỏ nhất** nối một đỉnh trong cây khung với một đỉnh ngoài cây khung.
 
@@ -163,9 +175,13 @@ Kết quả: AC + CB + BD = 2 + 1 + 3 = 6. Giống Kruskal!
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Mô phỏng Thuật toán MST</h3>
 <p>Công cụ cho phép bạn vẽ đồ thị có trọng số và xem từng bước của Kruskal và Prim — các cạnh được tô màu khi được chọn, và tổng trọng số cập nhật theo thời gian thực. <strong>Hãy thử:</strong> Vẽ một đồ thị 6 đỉnh, chạy cả hai thuật toán và so sánh kết quả.</p>
+<div data-demo="kruskal-algorithm"></div>
 </div>
+<script src="{{ '/public/js/kruskal-algorithm.js' | relative_url }}"></script>
 
 ## Bài tập
+
+Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, dạng bài và công cụ phù hợp trước khi tính toán. Cách tiếp cận này thường giúp tránh sai từ bước đầu.
 
 1. Tìm tất cả cây khung của đồ thị 4 đỉnh hình vuông (A-B, B-C, C-D, D-A, A-C).
 2. Cho đồ thị 5 đỉnh với các cạnh: (A,B,2), (A,C,3), (B,C,1), (B,D,4), (C,D,5), (C,E,4), (D,E,3). Tìm MST bằng Kruskal và Prim.

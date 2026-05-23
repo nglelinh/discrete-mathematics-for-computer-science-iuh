@@ -10,9 +10,15 @@ lang: en
 
 # Nguyên lý Dirichlet cơ bản
 
-Có những kết luận nghe rất bất ngờ nhưng lại đúng chỉ vì… không còn chỗ. Nếu có 13 người trong một lớp thì chắc chắn có ít nhất hai người sinh cùng tháng; nếu lưu quá nhiều giá trị vào quá ít bucket thì va chạm là điều không tránh khỏi. Đó là kiểu chắc chắn không cần tính xác suất, chỉ cần nhìn vào cấu trúc phân bố.
+Nếu có 11 file mà chỉ 10 thư mục để chứa, ít nhất một thư mục phải nhận từ 2 file trở lên. Phát biểu nghe gần như hiển nhiên, nhưng đằng sau nó là một nguyên lý đếm cực mạnh, đủ sức giải nhiều bài toán mà thoạt nhìn chẳng liên quan gì đến "chim bồ câu và chuồng".
 
-**Nguyên lý Dirichlet** — hay nguyên lý chuồng bồ câu — là một trong những công cụ đơn giản nhất nhưng mạnh nhất của toán rời rạc. Nó giúp ta chứng minh sự tồn tại của hiện tượng trùng lặp, va chạm, quá tải hay gom nhóm bắt buộc. Và trong khoa học máy tính, đó là chuyện xảy ra mỗi ngày: hashing, load balancing, lưu trữ, phân trang, lập lịch.
+
+Nguyên lý Dirichlet thường được dùng khi ta không cần biết chính xác đối tượng nào trùng nhau, chỉ cần chứng minh chắc chắn rằng sự trùng lặp phải xảy ra.
+**Nguyên lý Dirichlet** cho phép ta kết luận sự tồn tại mà không cần chỉ ra đối tượng cụ thể. Nó xuất hiện trong phân tích xung đột băm, phân phối dữ liệu, lập lịch, nén thông tin, và nhiều chứng minh tổ hợp rất gọn nhưng sắc.
+
+Điểm hay của nguyên lý này là nó biến trực giác về "không thể phân bố đều mãi" thành một công cụ hình thức. Chỉ cần mô hình hóa đúng đâu là đồ vật, đâu là ngăn chứa, ta có thể rút ra kết luận bất ngờ từ một quan sát rất cơ bản.
+
+Trong bài này, chúng ta sẽ học phát biểu chuẩn của nguyên lý Dirichlet và luyện cách nhận ra nó trong những bài toán tưởng như không liên quan.
 
 ## Phát biểu Nguyên lý
 
@@ -55,6 +61,8 @@ Trong 11 bài kiểm tra, mỗi bài được chấm từ 0-10 điểm. Chứng 
 - Theo nguyên lý Dirichlet: 11 = 11, nhưng nếu có 12 bài thì chắc chắn có 2 bài cùng điểm.
 
 ## Công cụ tương tác: Mô phỏng Nguyên lý Dirichlet
+
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
 
 <div id="pigeonhole-simulator" class="interactive-tool">
     <h4>🐦 Mô phỏng Nguyên lý Dirichlet</h4>
@@ -117,7 +125,10 @@ Trong 11 bài kiểm tra, mỗi bài được chấm từ 0-10 điểm. Chứng 
             <div id="log-content">Sẵn sàng bắt đầu...</div>
         </div>
     </div>
+    <div data-demo="pigeonhole-visualizer"></div>
 </div>
+
+<script src="{{ '/public/js/pigeonhole-visualizer.js' | relative_url }}"></script>
 
 <script>
 let simulationState = {
@@ -448,6 +459,8 @@ Nếu N đối tượng được phân bố liên tục trên độ dài L, thì
 Nếu phân bố ngẫu nhiên N đối tượng vào n nhóm, xác suất để mỗi nhóm chứa ≤ k đối tượng giảm exponentially khi N tăng.
 
 ## Tóm tắt
+
+Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
 
 **Nguyên lý Dirichlet** là công cụ chứng minh mạnh mẽ:
 

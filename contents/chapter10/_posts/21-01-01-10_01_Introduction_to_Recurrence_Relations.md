@@ -10,9 +10,15 @@ lang: vi
 
 # Giới thiệu Quan hệ Truy hồi
 
-Nhiều quá trình trong khoa học máy tính không được mô tả tốt bằng một công thức đóng ngay từ đầu. Số phép tính của thuật toán chia để trị phụ thuộc vào kích thước nhỏ hơn; dân số ở tháng này phụ thuộc tháng trước; số chuỗi độ dài n thường được xây từ số chuỗi độ dài n−1 hoặc n−2. Đó là lúc ta cần một cách mô tả “hiện tại dựa trên quá khứ”.
+Nhiều bài toán không mô tả trực tiếp kết quả ở bước $$n$$, mà mô tả nó thông qua các bước trước đó. Dãy Fibonacci là ví dụ kinh điển, nhưng ý tưởng này còn xuất hiện trong đệ quy, phân tích thuật toán, mô hình dân số, lan truyền thông tin và dynamic programming.
 
-**Quan hệ truy hồi** chính là ngôn ngữ cho kiểu phụ thuộc đó. Nó xuất hiện trong phân tích thuật toán, dynamic programming, đếm cấu hình, mô hình tăng trưởng và nhiều cấu trúc đệ quy. Học tốt truy hồi giúp bạn nhìn ra nhịp vận động của bài toán thay vì chỉ nhìn kết quả cuối cùng.
+
+Quan hệ truy hồi cho phép ta mô tả tiến trình theo từng bước, đúng với cách nhiều thuật toán đệ quy và dynamic programming vận hành.
+**Quan hệ truy hồi** là cách viết chính xác cho kiểu phụ thuộc đó. Thay vì cho công thức đóng ngay từ đầu, ta mô tả quy tắc sinh ra phần tử tiếp theo từ một hoặc nhiều phần tử trước. Cách biểu diễn này rất tự nhiên với những quá trình tiến triển theo thời gian hay theo kích thước bài toán.
+
+Điều quan trọng là truy hồi không chỉ là một công thức đẹp. Nó phản ánh cách hệ thống thực sự vận động, và giúp ta chuyển từ mô tả cục bộ sang hiểu biết toàn cục về cả dãy.
+
+Trong bài học này, chúng ta sẽ làm quen với khái niệm quan hệ truy hồi, cách đọc các thành phần của nó và vì sao nó lại quan trọng trong toán rời rạc lẫn khoa học máy tính.
 
 ## Định nghĩa và Khái niệm
 
@@ -89,6 +95,11 @@ Trò chơi Tháp Hà Nội (Tower of Hanoi) gồm ba cọc và $$n$$ đĩa kích
   <figcaption style="text-align: center;">Hình 10.3: Tháp Hà Nội — một bài toán đệ quy cổ điển được mô hình hóa bằng quan hệ truy hồi $$H_n = 2H_{n-1} + 1$$.</figcaption>
 </p>
 </figure>
+
+<div class="interactive-tool" markdown="1">
+<div data-demo="recurrence-visualizer"></div>
+</div>
+<script src="{{ '/public/js/recurrence-visualizer.js' | relative_url }}"></script>
 
 ## Phân loại Quan hệ Truy hồi
 
@@ -287,6 +298,8 @@ Kiểm tra: $$a_1 = 18 - 3 - 7 = 8$$, truy hồi: $$2 \cdot 2 + 3 + 1 = 8$$ ✓
 </div>
 
 ## Công cụ tương tác: Khám phá Quan hệ Truy hồi
+
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
 
 <div id="recurrence-explorer" class="interactive-tool" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
   <h4 style="color: #6f42c1;">Khám phá Quan hệ Truy hồi</h4>

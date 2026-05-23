@@ -10,11 +10,19 @@ lang: en
 
 # Chứng minh Trực tiếp
 
-Chạy vài test case và thấy kết quả đúng không có nghĩa là mệnh đề luôn đúng. Một hàm có thể qua 100 bộ dữ liệu nhưng vẫn hỏng ở trường hợp thứ 101; một lập luận nghe hợp lý vẫn có thể sai vì thiếu đúng một bước trung gian. Toán học cần nhiều hơn niềm tin, và khoa học máy tính cũng vậy.
+Từ bài toán kiểm tra điều kiện trong code đến việc chứng minh một thuật toán luôn cho kết quả đúng, ta đều gặp cùng một yêu cầu: nếu giả thiết đúng, kết luận phải đi ra một cách rõ ràng và không có khoảng trống lập luận.
 
-**Chứng minh trực tiếp** là cách đi thẳng từ giả thiết đến kết luận, từng bước một, không dựa vào cảm giác. Đây là kiểu tư duy đứng sau việc giải thích vì sao một thuật toán đúng, vì sao một điều kiện đủ chặt, hay vì sao một tính chất luôn giữ được sau mỗi bước xử lý. Học nó không chỉ để viết chứng minh đẹp, mà để tập suy nghĩ như người xây hệ thống đáng tin cậy.
+
+Trong chứng minh, mục tiêu không chỉ là đi đến kết luận đúng mà còn cho thấy vì sao từng bước đều hợp lệ, giống như khi ta giải thích tính đúng đắn của một thuật toán.
+**Chứng minh trực tiếp** là kỹ thuật cơ bản nhất để làm điều đó. Ta bắt đầu từ các giả thiết đã biết, dùng định nghĩa, tính chất và suy luận hợp lệ để tiến từng bước đến kết luận. Cách làm này rất gần với cách một lập trình viên giải thích vì sao một hàm hoạt động đúng với mọi đầu vào thỏa điều kiện tiền đề.
+
+Điểm quan trọng là chứng minh trực tiếp rèn cho ta thói quen không nhảy bước. Trong toán rời rạc, chỉ một suy luận tưởng như hiển nhiên nhưng thiếu căn cứ cũng đủ làm hỏng toàn bộ chứng minh. Trong kỹ thuật phần mềm, đó cũng là khác biệt giữa một lập luận chắc chắn và một đoạn giải thích chỉ dựa vào trực giác.
+
+Trong bài này, chúng ta sẽ bắt đầu với khuôn mẫu đơn giản nhất của chứng minh, rồi xem khi nào nên dùng nó và cách viết sao cho ngắn gọn nhưng chặt chẽ.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -38,6 +46,8 @@ Sau bài học này, sinh viên có thể:
 | 5 phút | Tổng kết | Checklist viết chứng minh |
 
 ## 1. Định nghĩa
+
+Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc định nghĩa trước sẽ giúp các ví dụ và định lý phía sau trở nên dễ theo dõi hơn.
 
 **Chứng minh trực tiếp** của mệnh đề có dạng "Nếu P thì Q" ($$P \to Q$$) là một chuỗi suy luận bắt đầu bằng việc giả sử $$P$$ đúng, sau đó dùng định nghĩa, định lý đã biết và quy tắc logic để suy ra $$Q$$.
 
@@ -159,32 +169,12 @@ Chứng minh bất biến này thường dùng quy nạp, nhưng bước chuyể
 4. Vậy bất biến vẫn đúng cho $$k+1$$ phần tử.
 
 <div class="interactive-tool" markdown="1">
-### Công cụ tương tác: Các bước chứng minh
+### Công cụ tương tác: Kéo-thả các bước chứng minh
 
-Sắp xếp các bước sau thành chứng minh trực tiếp đúng cho định lý "Nếu n là số lẻ thì n² là số lẻ":
-
-<select id="step1" style="width: 100%; padding: 8px; margin: 5px 0;">
-  <option value="">Chọn bước 1...</option>
-  <option value="a">n² = (2k+1)² = 4k² + 4k + 1 = 2(2k² + 2k) + 1</option>
-  <option value="b">Giả sử n là số lẻ</option>
-  <option value="c">Vậy n² là số lẻ</option>
-  <option value="d">Theo định nghĩa, tồn tại k∈ℤ sao cho n = 2k+1</option>
-</select>
-<button onclick="checkProofOrder()" style="margin: 10px 0;">Kiểm tra</button>
-<div id="proof-result" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 6px;"></div>
-
-<script>
-function checkProofOrder() {
-    const s1 = document.getElementById('step1').value;
-    const result = document.getElementById('proof-result');
-    if (s1 === 'b') {
-        result.innerHTML = 'Đúng! Bước 1 là "Giả sử n là số lẻ". Hãy tiếp tục với: mở định nghĩa → biến đổi → kết luận.';
-    } else {
-        result.innerHTML = 'Hãy nhớ: chứng minh trực tiếp bắt đầu bằng giả thiết, không phải bằng kết luận hay biến đổi.';
-    }
-}
-</script>
+<div data-demo="direct-proof-builder"></div>
 </div>
+
+<script src="{{ '/public/js/direct-proof-builder.js' | relative_url }}"></script>
 
 ## 4. Checklist khi viết chứng minh trực tiếp
 
@@ -213,6 +203,8 @@ Cần mở định nghĩa: $$n = 2k$$, rồi biến đổi.
 Kiểm tra $$n=2,4,6$$ không đủ để chứng minh cho mọi số chẵn. Ví dụ giúp hiểu; chứng minh cần bao quát mọi trường hợp.
 
 ## Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Chứng minh trực tiếp được dùng khi ta cần bảo đảm một đoạn logic luôn đúng. Ví dụ: chứng minh hàm kiểm tra quyền truy cập không cấp quyền sai, chứng minh một bộ lọc SQL không trả về dữ liệu ngoài phạm vi, hoặc chứng minh một thuật toán đơn giản luôn trả về kết quả thỏa điều kiện.
 

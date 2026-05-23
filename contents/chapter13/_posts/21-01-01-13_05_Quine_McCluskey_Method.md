@@ -10,11 +10,19 @@ lang: en
 
 # Phương pháp Quine-McCluskey
 
-Bản đồ Karnaugh rất mạnh khi số biến còn ít, nhưng khi bài toán lớn dần thì mắt người không còn là công cụ đáng tin. Ta cần một phương pháp có thể làm theo quy tắc, mở rộng được, và cuối cùng còn có thể giao cho máy tính thực hiện. Đó là lúc tối thiểu hóa hàm Boole rời khỏi bảng ô vuông để bước sang tư duy thuật toán.
+Khi số biến tăng lên, bản đồ Karnaugh bắt đầu mất lợi thế. Những gì còn trực quan với 3 hoặc 4 biến sẽ nhanh chóng trở nên rối. Lúc đó, ta cần một quy trình có hệ thống hơn để tối thiểu hóa hàm Boole.
 
-**Phương pháp Quine–McCluskey** chính là phiên bản có hệ thống của việc rút gọn logic. Nó đặc biệt quan trọng vì cho thấy cách một bài toán thiết kế mạch được biến thành quy trình tính toán rõ ràng — tiền đề cho CAD tools, logic synthesis và các phần mềm thiết kế phần cứng hiện đại.
+
+Đại số Boole nối logic với phần cứng và tối ưu biểu thức, vì vậy phần này vừa có ý nghĩa toán học vừa rất gần với thiết kế mạch và điều kiện trong code.
+**Phương pháp Quine, McCluskey** chính là phiên bản mang tính thuật toán của bài toán đó. Nó đặc biệt quan trọng vì có thể cơ giới hóa, rất phù hợp với tư duy lập trình và các công cụ thiết kế mạch tự động.
+
+Thay vì dựa vào trực giác hình ảnh, phương pháp này làm việc bằng cách nhóm, rút gọn và chọn các implicant thiết yếu theo từng bước rõ ràng. Nó cho thấy một bài toán logic có thể được chuyển thành quy trình tính toán cụ thể như thế nào.
+
+Trong bài này, chúng ta sẽ học quy trình Quine, McCluskey và hiểu khi nào nó phù hợp hơn các phương pháp trực quan như Karnaugh.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -252,6 +260,8 @@ Vậy: $$F = x'y' + yz' + wx'$$
 
 ## Ứng dụng trong Khoa học Máy tính
 
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+
 Thuật toán Quine-McCluskey và các biến thể của nó là nền tảng của:
 
 - **Tổng hợp logic (logic synthesis)**: Các công cụ như Synopsys, Cadence, Yosys dùng các thuật toán tối thiểu hóa để thiết kế chip.
@@ -262,7 +272,9 @@ Thuật toán Quine-McCluskey và các biến thể của nó là nền tảng c
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Mô phỏng Quine-McCluskey</h3>
 <p>Công cụ này thực hiện từng bước của thuật toán Quine-McCluskey trên hàm bạn nhập. Quan sát cách các minterm được nhóm, kết hợp, và cuối cùng chọn implicant tối ưu. <strong>Hãy thử:</strong> So sánh kết quả của Quine-McCluskey trên một hàm 4 biến với kết quả từ K-map ở bài trước.</p>
+<div data-demo="quine-mccluskey-simplifier"></div>
 </div>
+<script src="{{ '/public/js/quine-mccluskey-simplifier.js' | relative_url }}"></script>
 
 ## Bài tập
 

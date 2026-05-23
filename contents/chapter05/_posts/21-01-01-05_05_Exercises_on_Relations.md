@@ -10,9 +10,15 @@ lang: en
 
 # Bài tập Tổng hợp về Quan hệ
 
-Sau khi đã học định nghĩa, tính chất, quan hệ tương đương, thứ tự bộ phận và closure, điều quan trọng không còn là “nhớ tên khái niệm” mà là nhận ra chúng trong bài toán mới. Một quan hệ cho trước có thể trông lộn xộn, nhưng chỉ cần hỏi đúng vài câu, cấu trúc của nó sẽ hiện ra.
+Một chủ đề chỉ thật sự hiểu khi ta dùng được nó trên nhiều dạng bài khác nhau. Với quan hệ cũng vậy, đọc định nghĩa là một chuyện, còn nhận ra cấu trúc quan hệ trong bài toán cụ thể lại là chuyện khác.
 
-Bài luyện tập này là nơi biến lý thuyết thành phản xạ. Bạn sẽ phải tự phân tích, tự kiểm tra tính chất, tự quyết định nên dùng ma trận, đồ thị hay suy luận ký hiệu. Đây cũng là kiểu kỹ năng rất gần với công việc thực tế: không ai đưa sẵn nhãn cho dữ liệu, ta phải tự khám phá cấu trúc của nó.
+
+Khi đọc phần này, hãy nghĩ đến các liên kết giữa đối tượng trong cơ sở dữ liệu, đồ thị và hệ thống phân quyền, vì quan hệ chính là cách ta mô tả những liên kết đó.
+Phần bài tập tổng hợp giúp ta nối lại toàn bộ mạch kiến thức của chương: từ định nghĩa quan hệ, các tính chất cơ bản, đến quan hệ tương đương, thứ tự bộ phận, phép toán và bao đóng. Đây cũng là lúc những điểm dễ nhầm bắt đầu lộ ra rất rõ.
+
+Trong khoa học máy tính, sai ở phần nền thường kéo theo sai dây chuyền ở phần mô hình hóa. Vì vậy, luyện tập không chỉ để ra đáp án đúng, mà để hình thành phản xạ đọc đề, chọn công cụ và kiểm tra lập luận của chính mình.
+
+Bài này sẽ đóng vai trò như một buổi tổng duyệt, giúp chúng ta củng cố khái niệm trước khi bước sang các cấu trúc trừu tượng tiếp theo.
 
 ## 1. Ôn tập khái niệm cốt lõi
 
@@ -36,6 +42,8 @@ Bài luyện tập này là nơi biến lý thuyết thành phản xạ. Bạn s
 <div class="interactive-tool" data-tool="relation-practice-checker">
   <p><strong>Demo đề xuất:</strong> sinh viên nhập các cặp của quan hệ, công cụ kiểm tra từng tính chất và yêu cầu sinh viên chỉ ra phản ví dụ trước khi xem đáp án.</p>
 </div>
+
+<script src="{{ '/public/js/relation-property-checker.js' | relative_url }}"></script>
 
 ## 3. Bài tập về biểu diễn quan hệ
 
@@ -179,6 +187,8 @@ Có. Vì có đường đi $$a\to b\to c\to a$$, nên $$(a,a)$$ thuộc bao đó
 
 ## 8. Ứng dụng trong Khoa học Máy tính
 
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+
 Các bài tập trên tương ứng trực tiếp với tác vụ CS:
 
 - Ma trận quan hệ là ma trận kề của đồ thị.
@@ -197,5 +207,7 @@ Các bài tập trên tương ứng trực tiếp với tác vụ CS:
 </div>
 
 ## Tóm tắt
+
+Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
 
 Khi giải bài quan hệ, luôn kiểm tra từng tính chất bằng định nghĩa và phản ví dụ cụ thể. Quan hệ tương đương cần phản xạ, đối xứng, bắc cầu; thứ tự bộ phận cần phản xạ, phản đối xứng, bắc cầu. Bao đóng là thao tác thêm tối thiểu các cặp để đạt tính chất mong muốn.

@@ -10,9 +10,15 @@ lang: vi
 
 # Giới thiệu Lý thuyết Đồ thị
 
-Từ Google Maps tìm đường ngắn nhất, Facebook gợi ý bạn bè, đến hệ thống mạng trong doanh nghiệp hay pipeline phụ thuộc giữa các tác vụ, rất nhiều bài toán hiện đại đều xoay quanh một ý tưởng chung: có những đối tượng và có những kết nối giữa chúng. Khi số kết nối lớn lên, ta cần một mô hình đủ gọn để nhìn toàn cục mà không lạc trong chi tiết.
+Từ Google Maps tìm đường, mạng xã hội gợi ý kết nối, đến dependency giữa các tác vụ build, rất nhiều hệ thống hiện đại đều xoay quanh một ý tưởng chung: có những đối tượng và có những liên kết giữa chúng. Khi số liên kết tăng lên, ta cần một mô hình đủ gọn để nhìn toàn cục mà không lạc trong chi tiết.
 
-**Lý thuyết đồ thị** chính là mô hình đó. Nó biến thành phố, mạng xã hội, mạng máy tính hay dependency graph thành đỉnh và cạnh để ta có thể đặt câu hỏi chính xác: có đường đi không, thành phần nào quan trọng, chỗ nào tắc nghẽn, cấu trúc nào tối ưu hơn? Đây là một trong những chương gắn với khoa học máy tính rõ nhất của toàn bộ môn học.
+
+Đồ thị là mô hình chuẩn cho mạng, phụ thuộc và đường đi, nên mỗi khái niệm ở đây đều có thể nối trực tiếp sang bài toán thực tế trong phần mềm.
+**Lý thuyết đồ thị** chính là mô hình đó. Nó biến thành phố, người dùng, server, package hay tác vụ thành các đỉnh và cạnh để ta có thể hỏi những câu rất thực tế: có đường đi hay không, điểm nào đang là nút cổ chai, thành phần nào tách biệt, cấu trúc nào tối ưu hơn.
+
+Đây là một trong những chương gần với khoa học máy tính nhất của môn học. Rất nhiều thuật toán nền tảng, từ tìm kiếm, định tuyến, tối ưu mạng đến mô hình hóa quan hệ phụ thuộc, đều bắt đầu bằng việc nhìn bài toán như một đồ thị.
+
+Trong bài này, chúng ta sẽ xây bộ khái niệm cơ bản đầu tiên để từ đó đọc và mô hình hóa được nhiều hệ thống kết nối quen thuộc.
 
 ## Định nghĩa và Khái niệm Cơ bản
 
@@ -108,6 +114,8 @@ Trong thực tế lập trình, **danh sách kề** được dùng phổ biến 
 
 ## Công cụ tương tác: Trình tạo và Phân tích Đồ thị
 
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
+
 <div id="graph-builder" class="interactive-tool">
     <h4>Trình tạo và Phân tích Đồ thị</h4>
     
@@ -156,7 +164,10 @@ D-A</textarea>
             </div>
         </div>
     </div>
+    <div data-demo="graph-adjacency-builder"></div>
 </div>
+
+<script src="{{ '/public/js/graph-adjacency-builder.js' | relative_url }}"></script>
 
 <script>
 let currentGraph = {

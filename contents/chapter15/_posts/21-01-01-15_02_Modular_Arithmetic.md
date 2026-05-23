@@ -10,11 +10,19 @@ lang: en
 
 # Số học Modulo và Đồng dư
 
-Đồng hồ chỉ 14 giờ rồi quay về 2 giờ; checksum cộng đến một mức nào đó rồi lấy phần dư; rất nhiều thuật toán mã hóa và băm hoạt động không phải trên số nguyên “thẳng”, mà trên số nguyên theo chu kỳ. Nếu chưa quen, kiểu tính toán này có cảm giác như toán học đang tự bẻ luật của chính nó.
+Đồng hồ 24 giờ, chỉ số vòng trong buffer tròn, checksum, mã hóa RSA, tất cả đều dùng một ý tưởng quen mà đôi khi ta không gọi tên: sau khi vượt một ngưỡng, giá trị quay về đầu vòng. Đó chính là tinh thần của **số học modulo**.
 
-Thực ra đó là **số học modulo** — một trong những công cụ hữu ích nhất của lý thuyết số ứng dụng. Nó giúp ta làm việc với phần dư có quy tắc, rút gọn phép tính lớn, và xây nền cho mật mã, hashing, randomization cùng nhiều kỹ thuật tối ưu trong khoa học máy tính.
+
+Lý thuyết số trong chương này không đứng riêng lẻ, nó là nền cho mã hóa, kiểm tra tính đúng đắn và nhiều cơ chế bảo mật hiện đại.
+Khi làm việc theo modulo, nhiều phép tính lớn trở nên gọn hơn và có cấu trúc hơn. Quan hệ **đồng dư** cho ta cách nói hai số "giống nhau trong cùng một vòng lặp" theo một mô đun cho trước. Đây là công cụ trung tâm của lý thuyết số ứng dụng.
+
+Trong khoa học máy tính, modulo xuất hiện ở khắp nơi, từ băm, mật mã, lịch biểu tuần hoàn đến xử lý địa chỉ trong cấu trúc dữ liệu vòng. Vì vậy, đây không phải một phần phụ, mà là ngôn ngữ nền của rất nhiều kỹ thuật thực tế.
+
+Trong bài này, chúng ta sẽ học cách tính toán trong modulo và hiểu rõ ý nghĩa của đồng dư trước khi đi sang mật mã và ứng dụng sâu hơn.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -191,15 +199,21 @@ Kết quả: $$3^{13} \bmod 7 = 3$$. Kiểm tra: $$3^{13} = 1594323 = 7 \times 2
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Máy tính Modulo</h3>
 <p>Công cụ này thực hiện các phép tính modulo cơ bản: cộng, trừ, nhân, nghịch đảo, lũy thừa. Quan sát từng bước của thuật toán Euclid mở rộng. <strong>Hãy thử:</strong> Tính $$5^{17} \bmod 23$$ bằng lũy thừa modulo nhanh — đây là phép tính cốt lõi trong Diffie-Hellman!</p>
+<div data-demo="modular-arithmetic-calc"></div>
 </div>
+<script src="{{ '/public/js/modular-arithmetic-calc.js' | relative_url }}"></script>
 
 ## Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Số học modulo xuất hiện trong: băm (hash maps), kiểm tra tính nguyên tố (Miller-Rabin), sinh số ngẫu nhiên (LGC), mã hóa RSA và ElGamal, chữ ký số DSA, và giao thức trao đổi khóa Diffie-Hellman.
 
 Lũy thừa modulo nhanh là một trong những thuật toán được gọi nhiều nhất trong mọi hệ thống bảo mật web (TLS/HTTPS). Mỗi khi bạn truy cập một trang web có ổ khóa xanh, trình duyệt của bạn đã thực hiện hàng chục phép lũy thừa modulo với số mũ hàng trăm chữ số!
 
 ## Bài tập
+
+Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, dạng bài và công cụ phù hợp trước khi tính toán. Cách tiếp cận này thường giúp tránh sai từ bước đầu.
 
 1. Tính $$(47 \times 93) \bmod 13$$ bằng cách rút gọn modulo.
 2. Giải $$4x \equiv 5 \pmod{9}$$.

@@ -10,9 +10,15 @@ lang: en
 
 # Hoán vị và Tổ hợp
 
-Khi tổ chức dữ liệu hay lựa chọn phương án, có lúc thứ tự là tất cả, có lúc thứ tự hoàn toàn không quan trọng. Mã OTP 123456 khác 654321, nhưng một nhóm 3 sinh viên làm bài tập thì không đổi bản chất chỉ vì đổi chỗ ngồi. Nhầm hai tình huống này là một trong những lỗi đếm phổ biến nhất.
+Khi sắp lịch thuyết trình, chọn đội thi, sinh chuỗi ký tự, hay xét mọi cách điền dữ liệu vào các vị trí khác nhau, câu hỏi không chỉ là chọn **những gì** mà còn là có quan tâm đến **thứ tự** hay không.
 
-**Hoán vị** và **tổ hợp** giúp ta phân biệt rõ “sắp xếp” với “chọn lựa”. Đây là công cụ xuất hiện từ bài toán lên lịch, sinh test case, brute-force password cho đến xác suất và thống kê. Nắm chắc chúng, bạn sẽ đếm không chỉ nhanh hơn mà còn đúng bản chất hơn.
+
+Các quy tắc đếm cho ta cách ước lượng số cấu hình có thể xảy ra mà không cần liệt kê hết, đây là kỹ năng rất gần với phân tích thuật toán và kiểm thử.
+Đó là ranh giới giữa **hoán vị** và **tổ hợp**. Nếu thứ tự quan trọng, số khả năng tăng rất nhanh. Nếu thứ tự không quan trọng, nhiều cấu hình tưởng khác nhau thực ra lại là một. Phân biệt đúng hai kiểu bài này là kỹ năng cốt lõi trong combinatorics và cũng rất thực tế trong lập trình.
+
+Các công thức quen thuộc như giai thừa, chỉnh hợp, tổ hợp không nên được học như danh sách phải nhớ. Chúng nên được nhìn như kết quả tự nhiên của việc phân tích quá trình chọn và sắp xếp.
+
+Trong bài học này, chúng ta sẽ đi từ trực giác đếm đơn giản đến các công thức chuẩn, đồng thời luyện cách nhận ra bài toán thuộc loại nào trước khi tính.
 
 ## Giai thừa (Factorial)
 
@@ -214,6 +220,8 @@ Từ các chữ số 0, 1, 2, 3, 4, 5 có thể lập được bao nhiêu số t
 
 ## Bài tập tự luyện
 
+Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, dạng bài và công cụ phù hợp trước khi tính toán. Cách tiếp cận này thường giúp tránh sai từ bước đầu.
+
 1. Có bao nhiêu cách sắp xếp 5 học sinh ngồi vào một hàng ghế có 5 chỗ?
 
 2. Một hộp có 10 viên bi đỏ và 8 viên bi xanh. Có bao nhiêu cách chọn 4 viên bi trong đó có ít nhất 1 viên bi đỏ?
@@ -229,6 +237,8 @@ Từ các chữ số 0, 1, 2, 3, 4, 5 có thể lập được bao nhiêu số t
 7. Một cửa hàng kem có 5 vị khác nhau. Bạn muốn mua 3 cây kem, mỗi cây có thể chọn bất kỳ vị nào. Có bao nhiêu cách chọn?
 
 ## Công cụ tương tác: Máy tính Hoán vị và Tổ hợp
+
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
 
 <div id="combinatorics-calculator" class="interactive-tool">
     <h4>🧮 Máy tính Hoán vị và Tổ hợp</h4>
@@ -600,6 +610,8 @@ def permutation_sort_complexity(n):
 </details>
 
 ## Tóm tắt
+
+Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
 
 **Giai thừa**: n! = n × (n-1) × ... × 1
 - Cơ sở cho hoán vị và tổ hợp

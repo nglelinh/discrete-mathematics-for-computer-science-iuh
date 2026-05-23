@@ -10,11 +10,19 @@ lang: en
 
 # Giới thiệu về Thuật toán
 
-Có nhiều cách giải cùng một bài toán, nhưng trong khoa học máy tính, “chạy được” chưa bao giờ là đủ. Một chương trình có thể cho ra đáp án đúng nhưng quá chậm, quá tốn bộ nhớ, hoặc không mở rộng nổi khi dữ liệu tăng lên. Sự khác biệt giữa phần mềm nghiệp dư và hệ thống chuyên nghiệp thường nằm ở chỗ ta chọn **thuật toán** nào.
+Khi người dùng bấm tìm kiếm, khi hệ thống sắp xếp dữ liệu, khi ứng dụng kiểm tra đường đi hay mã hóa thông tin, đằng sau mỗi hành động đều có một chuỗi bước xử lý rõ ràng. Chuỗi bước đó chính là **thuật toán**.
 
-Bài mở đầu này đặt nền cho tư duy thuật toán: mô tả từng bước giải quyết vấn đề, đánh giá chất lượng lời giải và hiểu vì sao cùng một bài toán lại có thể có những cách làm chênh nhau hàng nghìn lần về hiệu năng. Đây là nơi toán rời rạc gặp trực tiếp engineering.
+
+Phân tích thuật toán không chỉ hỏi chương trình chạy được hay không, mà còn hỏi nó còn dùng được khi dữ liệu lớn lên nhanh đến mức nào.
+Thuật toán không chỉ là đoạn code chạy được. Nó là ý tưởng giải bài toán một cách chính xác, hữu hạn và có thể lặp lại. Cùng một bài toán có thể có nhiều cách giải, nhưng không phải cách nào cũng hiệu quả, dễ kiểm chứng hay dễ mở rộng.
+
+Học về thuật toán trong toán rời rạc giúp ta nhìn trước phần cài đặt. Ta học cách mô tả lời giải, phân tích tính đúng và so sánh chất lượng của các cách tiếp cận, thay vì lao ngay vào code.
+
+Trong bài này, chúng ta sẽ xây khái niệm nền về thuật toán và lý do vì sao nó là trung tâm của toàn bộ khoa học máy tính.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -34,6 +42,8 @@ Sau bài học này, sinh viên có thể:
 </figure>
 
 ## 1. Thuật toán là gì?
+
+Ở phần này, đừng chỉ nhớ các bước. Hãy chú ý điều kiện áp dụng, thông tin được duy trì sau mỗi bước và lý do thuật toán cho kết quả đúng.
 
 **Định nghĩa**: Thuật toán (algorithm) là một dãy hữu hạn các chỉ thị (instructions) chính xác để giải quyết một lớp bài toán. Thuật toán nhận **đầu vào** và sinh ra **đầu ra** sau một số hữu hạn bước.
 
@@ -79,6 +89,8 @@ THUẬT TOÁN: Tìm-Phần-Tử-Lớn-Nhất
 </div>
 
 ## 3. Thuật toán Tìm kiếm Tuyến tính
+
+Ở phần này, đừng chỉ nhớ các bước. Hãy chú ý điều kiện áp dụng, thông tin được duy trì sau mỗi bước và lý do thuật toán cho kết quả đúng.
 
 Thuật toán tìm kiếm đơn giản nhất: duyệt qua từng phần tử.
 
@@ -162,6 +174,8 @@ Hầu hết mọi hệ thống phần mềm đều dùng sắp xếp ở một h
 
 ## Ứng dụng trong Khoa học Máy tính
 
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+
 Thuật toán xuất hiện khắp mọi nơi trong CS:
 
 - **Công cụ tìm kiếm**: Google dùng thuật toán PageRank để xếp hạng trang web.
@@ -176,9 +190,13 @@ Hiểu thuật toán giúp bạn không chỉ *dùng* thư viện mà còn *tự
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Trực quan hóa Thuật toán Sắp xếp</h3>
 <p>Công cụ này cho phép bạn xem trực quan cách Bubble Sort hoạt động: các thanh màu đại diện cho các phần tử, và bạn thấy từng bước so sánh và đổi chỗ. <strong>Hãy thử:</strong> So sánh số bước của Bubble Sort với Insertion Sort trên cùng một dữ liệu đầu vào.</p>
+<div data-demo="algorithm-visualization"></div>
 </div>
+<script src="{{ '/public/js/algorithm-visualization.js' | relative_url }}"></script>
 
 ## Bài tập
+
+Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, dạng bài và công cụ phù hợp trước khi tính toán. Cách tiếp cận này thường giúp tránh sai từ bước đầu.
 
 1. Viết mã giả cho thuật toán đếm số phần tử chẵn trong mảng.
 2. Vết thuật toán tìm kiếm tuyến tính với mảng `[3, 7, 1, 9, 4]` và `x = 9`.

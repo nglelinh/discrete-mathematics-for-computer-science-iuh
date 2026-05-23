@@ -10,11 +10,19 @@ lang: en
 
 # Giới thiệu Hàm số
 
-Trong lập trình, khái niệm “hàm” quen đến mức ta dễ quên rằng nó là một ý tưởng toán học rất sâu: mỗi đầu vào phải được ghép với đúng một đầu ra. Từ hàm `abs(x)` trong Python đến API biến yêu cầu người dùng thành kết quả trả về, từ bộ mã hóa dữ liệu đến mô hình machine learning, tư duy hàm xuất hiện ở khắp nơi.
+Từ một user ID trả về hồ sơ người dùng, từ một chuỗi đầu vào trả về giá trị băm, hay từ một chỉ số mảng lấy ra đúng một phần tử, ta đều đang dùng cùng một ý tưởng: mỗi đầu vào hợp lệ phải được gắn với **một** đầu ra xác định.
 
-Bài này đưa khái niệm đó về nền tảng rời rạc: **hàm số** như một quan hệ đặc biệt, có miền xác định, miền giá trị và quy tắc ánh xạ rõ ràng. Hiểu hàm ở mức bản chất giúp ta đọc đặc tả chính xác hơn, phân tích dependency tốt hơn và chuẩn bị cho các chủ đề về đếm, thuật toán, mật mã và cấu trúc dữ liệu.
+
+Trong khoa học máy tính, hàm số xuất hiện ở khắp nơi, từ ánh xạ đầu vào sang đầu ra đến biến đổi dữ liệu và mô hình hóa trạng thái.
+Đó chính là tinh thần của **hàm số**. Trong toán rời rạc, hàm là một dạng quan hệ rất đặc biệt. Trong khoa học máy tính, nó là mô hình phía sau lời gọi hàm, ánh xạ khóa và giá trị, biến đổi dữ liệu, mã hóa và rất nhiều cơ chế xử lý thông tin khác.
+
+Điều quan trọng không nằm ở ký hiệu, mà ở tính xác định. Nếu cùng một đầu vào sinh ra nhiều đầu ra khác nhau, ta không còn hàm nữa. Nhận ra ranh giới này giúp ta mô hình hóa đúng và tránh nhầm lẫn giữa quan hệ tổng quát với hàm số.
+
+Trong bài này, chúng ta sẽ đi từ định nghĩa hình thức của hàm đến miền xác định, miền giá trị và cách nhìn hàm như một công cụ ánh xạ trong toán lẫn lập trình.
 
 ## 1. Định nghĩa hàm số
+
+Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc định nghĩa trước sẽ giúp các ví dụ và định lý phía sau trở nên dễ theo dõi hơn.
 
 **Định nghĩa**: Cho hai tập $$A$$ và $$B$$. Một **hàm số** $$f$$ từ $$A$$ đến $$B$$, ký hiệu $$f:A\to B$$, là một quy tắc gán cho mỗi phần tử $$x\in A$$ đúng một phần tử $$y\in B$$.
 
@@ -91,9 +99,13 @@ Nếu xem kiểu `int -> int`, đây là một mô hình của hàm toán học.
 
 ## 7. Công cụ tương tác
 
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
+
 <div class="interactive-demo" data-demo="function-arrow-checker">
   <p><strong>Demo đề xuất:</strong> kéo mũi tên từ domain sang codomain; công cụ báo khi một quan hệ không phải hàm vì thiếu đầu ra hoặc có nhiều đầu ra.</p>
 </div>
+
+<script src="{{ '/public/js/function-arrow-checker.js' | relative_url }}"></script>
 
 ## 8. Nhầm lẫn thường gặp
 
@@ -114,5 +126,7 @@ Nếu xem kiểu `int -> int`, đây là một mô hình của hàm toán học.
 - **Machine learning**: mô hình học máy là hàm xấp xỉ từ đặc trưng đầu vào đến dự đoán.
 
 ## Tóm tắt
+
+Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
 
 Hàm số là quan hệ gán mỗi đầu vào đúng một đầu ra. Cần phân biệt domain, codomain và range. Hàm có thể biểu diễn bằng công thức, bảng, tập cặp hoặc sơ đồ. Trong khoa học máy tính, hàm là mô hình trung tâm của tính toán xác định.

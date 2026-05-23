@@ -10,11 +10,19 @@ lang: en
 
 # Hàm Boole và Các Dạng Chuẩn
 
-Sau khi có các luật cơ bản của đại số Boole, câu hỏi tự nhiên tiếp theo là: làm sao biến chúng thành một “hàm” nhận đầu vào 0/1 và tạo ra đầu ra 0/1? Đây không còn là chuyện ký hiệu trên giấy nữa; đây là cách máy tính ra quyết định, cách mạch số phản ứng với tín hiệu, và cách một bảng chân trị được hiện thực hóa thành hành vi cụ thể.
+Một biểu thức logic có thể viết theo nhiều cách khác nhau nhưng vẫn biểu diễn cùng một hành vi đầu vào, đầu ra. Khi thiết kế mạch số hoặc phân tích điều kiện trong hệ thống, ta cần một cách biểu diễn có cấu trúc để dễ so sánh và xử lý hơn.
 
-**Hàm Boole** là mô hình của mọi khối quyết định nhị phân trong phần cứng và nhiều hệ thống logic trong phần mềm. Hiểu cách biểu diễn, đọc và biến đổi hàm Boole sẽ giúp ta chuẩn bị trực tiếp cho thiết kế mạch, tối thiểu hóa biểu thức và các kỹ thuật tối ưu hóa ở những bài sau.
+
+Đại số Boole nối logic với phần cứng và tối ưu biểu thức, vì vậy phần này vừa có ý nghĩa toán học vừa rất gần với thiết kế mạch và điều kiện trong code.
+**Hàm Boole** cho ta cách nhìn biểu thức logic như một ánh xạ từ các giá trị 0, 1 sang 0, 1. Từ đó, các **dạng chuẩn** như DNF hay CNF trở nên rất hữu ích vì chúng đưa biểu thức về khuôn nhất quán.
+
+Cách chuẩn hóa này quan trọng trong tối ưu logic, kiểm chứng mạch, SAT solving và nhiều hệ thống suy luận tự động. Một biểu thức viết chuẩn thường dễ phân tích và dễ chuyển thành phần cứng hoặc thuật toán hơn.
+
+Trong bài này, chúng ta sẽ đi từ khái niệm hàm Boole đến các dạng chuẩn thường dùng và ý nghĩa thực tế của việc chuẩn hóa biểu thức.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -237,6 +245,8 @@ Có 16 hàm Boole 2 biến. Dưới đây là các hàm quan trọng:
 
 ## Ứng dụng trong Khoa học Máy tính
 
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+
 Các dạng chuẩn SOP và POS là nền tảng của **thiết kế mạch số** (digital circuit design). Mọi chip máy tính đều được tổng hợp từ các biểu thức Boole. Phần mềm CAD (Computer-Aided Design) tự động chuyển đổi bảng chân trị thành mạch logic, và các kỹ thuật tối thiểu hóa (mà chúng ta sẽ học ở các bài sau) là trái tim của công cụ đó.
 
 Một ứng dụng ít ngờ tới: các **cơ sở dữ liệu quan hệ** dùng đại số Boole để tối ưu hóa truy vấn. Khi bạn viết `SELECT * FROM employees WHERE (dept = 'IT' AND salary > 50000) OR (dept = 'HR' AND salary > 40000)`, trình tối ưu hóa truy vấn chuyển nó thành một biểu thức Boole, tìm dạng chuẩn tắc, và chọn kế hoạch thực thi nhanh nhất.
@@ -244,7 +254,9 @@ Một ứng dụng ít ngờ tới: các **cơ sở dữ liệu quan hệ** dùn
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Xây dựng Hàm Boole từ Bảng Chân trị</h3>
 <p>Nhập bảng chân trị cho hàm Boole và công cụ sẽ tự động sinh ra dạng SOP và POS chuẩn tắc. Quan sát cách minterm và maxterm được xây dựng. <strong>Hãy thử:</strong> Tạo hàm majority (đầu ra 1 khi có >= 2 biến đầu vào bằng 1) và xem cả hai dạng chuẩn.</p>
+<div data-demo="boolean-expression-evaluator"></div>
 </div>
+<script src="{{ '/public/js/boolean-expression-evaluator.js' | relative_url }}"></script>
 
 ## Bài tập
 

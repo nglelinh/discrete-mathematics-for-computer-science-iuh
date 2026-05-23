@@ -10,9 +10,15 @@ lang: en
 
 # Quy tắc Cộng và Nhân
 
-Một hệ thống có bao nhiêu cách gán mật khẩu 6 ký tự? Một menu có bao nhiêu combo? Một thuật toán có bao nhiêu trạng thái đầu vào cần xét? Trong khoa học máy tính, trước khi tối ưu hay kiểm thử, ta thường phải biết mình đang đối mặt với **bao nhiêu khả năng**.
+Một hệ thống có bao nhiêu cách đăng nhập, một bộ mật khẩu có bao nhiêu khả năng, một thuật toán sinh ra bao nhiêu cấu hình, đó đều là các câu hỏi đếm. Trước khi học những công thức phức tạp hơn, ta cần nắm hai nguyên tắc nền tảng nhất của tổ hợp.
 
-Hai công cụ đếm cơ bản nhất là **quy tắc cộng** và **quy tắc nhân**. Chúng nghe đơn giản, nhưng là nền móng của phân tích độ phức tạp, xác suất, thiết kế test case và bảo mật. Học tốt phần này giống như có được phép nhân bảng cửu chương của thế giới đếm rời rạc: những chương sau sẽ dùng nó liên tục.
+
+Các quy tắc đếm cho ta cách ước lượng số cấu hình có thể xảy ra mà không cần liệt kê hết, đây là kỹ năng rất gần với phân tích thuật toán và kiểm thử.
+**Quy tắc cộng** áp dụng khi các lựa chọn loại trừ nhau. **Quy tắc nhân** áp dụng khi một quá trình gồm nhiều bước nối tiếp. Hai ý tưởng này nghe rất cơ bản, nhưng chúng là khung xương cho hầu hết bài toán đếm sau này.
+
+Nhiều sai lầm xảy ra không phải vì công thức khó, mà vì đọc sai cấu trúc của bài toán. Lúc nào là "hoặc", lúc nào là "và", các trường hợp có giao nhau hay không, đó mới là phần quyết định.
+
+Trong bài này, chúng ta sẽ luyện cách nhìn bài toán đếm qua cấu trúc lựa chọn, rồi dùng quy tắc cộng và nhân để biến những tình huống thực tế thành phép đếm rõ ràng.
 
 ## Quy tắc Cộng (Addition Principle)
 
@@ -110,6 +116,8 @@ $$n > m \implies \exists \text{ hộp chứa } \geq 2 \text{ vật}$$
 </div>
 
 ## Công cụ tương tác: Máy tính Quy tắc Đếm
+
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
 
 <div id="counting-calculator" class="interactive-tool">
     <h4>🧮 Máy tính Quy tắc Đếm</h4>
@@ -503,6 +511,8 @@ SELECT COUNT(*) FROM
 ✅ **Đúng**: 26 × 26 × 26 = 17,576 mật khẩu
 
 ## Tóm tắt
+
+Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
 
 **Quy tắc Cộng**: Sử dụng khi có **nhiều lựa chọn độc lập**
 - Công thức: n₁ + n₂ + ... + nₖ

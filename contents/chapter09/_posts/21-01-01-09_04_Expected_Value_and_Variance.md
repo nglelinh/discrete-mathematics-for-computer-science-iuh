@@ -10,9 +10,15 @@ lang: en
 
 # Kỳ vọng và Phương sai
 
-Biết một biến cố có thể xảy ra chưa đủ; ta còn muốn biết trung bình lâu dài sẽ ra sao và mức dao động quanh trung bình lớn đến mức nào. Một game có lợi nhuận kỳ vọng dương nhưng biến động quá lớn vẫn có thể nguy hiểm; một thuật toán ngẫu nhiên chạy nhanh trung bình nhưng phương sai cao có thể gây trải nghiệm thất thường.
+Biết xác suất của từng kết quả vẫn chưa đủ khi ta muốn tóm tắt hành vi của cả một quá trình ngẫu nhiên. Nếu một thuật toán ngẫu nhiên chạy nhiều lần, ta muốn biết nó thường tốn bao nhiêu bước. Nếu một hệ thống chịu nhiễu, ta muốn biết kết quả dao động mạnh hay yếu quanh mức trung bình.
 
-**Kỳ vọng** và **phương sai** giúp ta đo hai khía cạnh đó một cách gọn gàng. Chúng là công cụ cốt lõi của thống kê, mô phỏng, phân tích thuật toán ngẫu nhiên, tài chính và đánh giá hiệu năng hệ thống. Đây là lúc xác suất bắt đầu trở thành ngôn ngữ để ra quyết định, không chỉ là trò tung đồng xu.
+
+Xác suất giúp ta chuyển từ trực giác mơ hồ sang đánh giá định lượng, điều rất quan trọng khi phân tích thuật toán ngẫu nhiên, dữ liệu nhiễu và rủi ro hệ thống.
+**Kỳ vọng** giúp ta đo giá trị trung bình dài hạn, còn **phương sai** đo mức độ phân tán quanh giá trị đó. Hai khái niệm này là bộ đôi trung tâm trong xác suất, thống kê và phân tích hiệu năng.
+
+Trong khoa học máy tính, chúng xuất hiện khi đánh giá randomized algorithm, phân tích tải hệ thống, học máy, xử lý tín hiệu và nhiều mô hình có thành phần ngẫu nhiên. Chúng cho ta cái nhìn sâu hơn nhiều so với chỉ nhìn từng xác suất rời rạc.
+
+Trong bài này, chúng ta sẽ xây trực giác cho kỳ vọng và phương sai, rồi dùng chúng để đọc hành vi tổng thể của biến ngẫu nhiên một cách có hệ thống.
 
 ## 1. Biến ngẫu nhiên rời rạc
 
@@ -114,7 +120,9 @@ $$
 
 <div class="interactive-tool" markdown="1">
 **Demo tương tác đề xuất**: Người học thay đổi $n$ và $p$ của phân phối nhị thức. Công cụ vẽ biểu đồ cột, đánh dấu kỳ vọng và hiển thị phương sai.
+<div data-demo="binomial-distribution"></div>
 </div>
+<script src="{{ '/public/js/binomial-distribution.js' | relative_url }}"></script>
 
 ## 6. Ghi chú dễ nhầm
 
@@ -128,6 +136,8 @@ $$
 </div>
 
 ## 7. Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Trong phân tích thuật toán, kỳ vọng đo thời gian chạy trung bình của quicksort, hashing và randomized algorithms. Phương sai giúp đánh giá độ ổn định: hai thuật toán có cùng kỳ vọng nhưng thuật toán có phương sai thấp thường dễ dự đoán hơn. Trong học máy, kỳ vọng và phương sai xuất hiện trong bias-variance tradeoff, đánh giá rủi ro và tối ưu hàm mất mát.
 

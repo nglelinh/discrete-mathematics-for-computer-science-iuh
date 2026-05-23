@@ -10,11 +10,19 @@ lang: en
 
 # Tính chia hết và Số nguyên tố
 
-Số học nghe có vẻ xa lập trình hơn đồ thị hay thuật toán, nhưng thực tế nhiều công nghệ số hiện đại lại đứng trên các tính chất rất cổ điển của số nguyên. Từ việc kiểm tra dữ liệu, thiết kế hàm băm, đến nền tảng của mật mã khóa công khai, những câu hỏi kiểu “chia hết không?” hay “có phải số nguyên tố không?” vẫn giữ vai trò trung tâm.
+Khi máy tính mã hóa dữ liệu, sinh khóa, kiểm tra tính hợp lệ của số học modulo hay phân tích cấu trúc của các số nguyên, nó đang chạm tới một vùng rất cổ điển của toán học: **lý thuyết số**.
 
-Bài này mở đầu bằng **tính chia hết** và **số nguyên tố** — hai khái niệm nền móng của lý thuyết số rời rạc. Chúng không chỉ đẹp về mặt toán học; chúng còn là vật liệu xây nên RSA, kiểm tra tính nhất quán của thuật toán số học và nhiều kỹ thuật trong bảo mật, mã hóa, sinh số giả ngẫu nhiên.
+
+Lý thuyết số trong chương này không đứng riêng lẻ, nó là nền cho mã hóa, kiểm tra tính đúng đắn và nhiều cơ chế bảo mật hiện đại.
+Mọi thứ thường bắt đầu từ hai khái niệm nền nhất, **tính chia hết** và **số nguyên tố**. Chúng nghe cơ bản, nhưng lại là viên gạch đầu tiên cho đồng dư, thuật toán Euclid, RSA và nhiều ứng dụng quan trọng trong khoa học máy tính.
+
+Điểm đáng học ở đây là cấu trúc. Các số nguyên không chỉ là dãy số để tính toán, chúng có quy luật phân rã và quan hệ chia hết rất sâu. Hiểu nền đó giúp các chủ đề mật mã và thuật toán số học phía sau trở nên tự nhiên hơn nhiều.
+
+Trong bài này, chúng ta sẽ bắt đầu từ những khái niệm nền của lý thuyết số và xem vì sao chúng lại có sức sống mạnh đến vậy trong CS hiện đại.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -108,6 +116,11 @@ THUẬT TOÁN: Sàng-Eratosthenes(n)
 **Tại sao bắt đầu từ $$i^2$$?** Vì các bội số nhỏ hơn $$i^2$$ (như $$2i, 3i, \ldots, (i-1)i$$) đã được đánh dấu bởi các số nguyên tố nhỏ hơn $$i$$ rồi. Cải tiến này giúp sàng Eratosthenes đạt độ phức tạp $$O(n \log \log n)$$ — cực kỳ hiệu quả.
 </div>
 
+<div class="interactive-tool" markdown="1">
+<div data-demo="modular-calculator"></div>
+</div>
+<script src="{{ '/public/js/modular-calculator.js' | relative_url }}"></script>
+
 ## 3. Ước chung Lớn nhất (GCD)
 
 **Định nghĩa**: Cho $$a, b \in \mathbb{Z}$$, không đồng thời bằng 0. Ước chung lớn nhất của $$a$$ và $$b$$, ký hiệu $$\gcd(a, b)$$, là số nguyên dương lớn nhất $$d$$ sao cho $$d \mid a$$ và $$d \mid b$$.
@@ -150,6 +163,12 @@ $$\gcd(252, 105) = 21$$
 **Tốc độ của Euclid**: Thuật toán Euclid chạy trong $$O(\log(\min(a,b)))$$ bước. Lý do: sau mỗi bước, tích $$a \times b$$ giảm ít nhất một nửa. Với số 2048-bit (như trong RSA), thuật toán chỉ mất tối đa khoảng 2000 bước — cực kỳ nhanh!
 </div>
 
+<div class="interactive-tool" markdown="1">
+**Demo tương tác đề xuất**: Người học nhập hai số nguyên, công cụ chạy thuật toán Euclid từng bước và hiển thị ước chung lớn nhất.
+<div data-demo="euclidean-algorithm"></div>
+</div>
+<script src="{{ '/public/js/euclidean-algorithm.js' | relative_url }}"></script>
+
 ### Đồng nhất thức Bézout
 
 Tồn tại số nguyên $$s, t$$ sao cho: $$\gcd(a, b) = s \cdot a + t \cdot b$$.
@@ -157,6 +176,8 @@ Tồn tại số nguyên $$s, t$$ sao cho: $$\gcd(a, b) = s \cdot a + t \cdot b$
 Thuật toán Euclid mở rộng tính $$s, t$$ đồng thời với GCD — công cụ then chốt để tính nghịch đảo modulo trong mật mã RSA.
 
 ## Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Số nguyên tố là nền tảng của mật mã học hiện đại (RSA, Diffie-Hellman), hàm băm (hash function), sinh số giả ngẫu nhiên, và kiểm tra tính toàn vẹn dữ liệu (checksum). Thuật toán Euclid chạy trong $$O(\log(\min(a,b)))$$ — cực kỳ nhanh, được dùng trong mọi thư viện mật mã.
 
@@ -168,6 +189,8 @@ Số nguyên tố là nền tảng của mật mã học hiện đại (RSA, Dif
 </div>
 
 ## Bài tập
+
+Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, dạng bài và công cụ phù hợp trước khi tính toán. Cách tiếp cận này thường giúp tránh sai từ bước đầu.
 
 1. Tìm thương và số dư của $$a = -45$$ chia cho $$d = 7$$.
 2. Dùng sàng Eratosthenes tìm tất cả số nguyên tố từ 1 đến 100.

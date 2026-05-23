@@ -10,9 +10,15 @@ lang: en
 
 # Định lý Bayes và Ứng dụng
 
-Một email trông giống spam chưa chắc là spam; một xét nghiệm dương tính chưa chắc người bệnh thật sự mắc bệnh; một người dùng vừa click quảng cáo chưa chắc họ có ý định mua cao. Trong mọi tình huống như vậy, ta luôn phải cập nhật niềm tin ban đầu sau khi thấy thêm dữ liệu mới.
+Một email bị bộ lọc đánh dấu spam không có nghĩa nó chắc chắn là spam. Một kết quả xét nghiệm dương tính không có nghĩa bệnh chắc chắn hiện diện. Trong rất nhiều hệ thống, ta phải cập nhật niềm tin của mình sau khi quan sát thêm dữ liệu mới.
 
-**Định lý Bayes** là công thức hóa của quá trình cập nhật đó. Nó cực kỳ quan trọng trong AI, machine learning, lọc thư rác, chẩn đoán, hệ gợi ý và ra quyết định dưới bất định. Học Bayes là học cách không để trực giác đánh lừa khi dữ liệu mới xuất hiện.
+
+Xác suất giúp ta chuyển từ trực giác mơ hồ sang đánh giá định lượng, điều rất quan trọng khi phân tích thuật toán ngẫu nhiên, dữ liệu nhiễu và rủi ro hệ thống.
+**Định lý Bayes** là công cụ làm đúng việc đó. Nó cho phép đảo chiều điều kiện, từ xác suất quan sát khi giả thuyết đúng sang xác suất giả thuyết đúng khi đã có quan sát. Đây là nền tảng của chẩn đoán, phân loại, học máy và nhiều hệ thống ra quyết định dưới bất định.
+
+Điều khiến Bayes vừa mạnh vừa dễ bị hiểu sai là con người thường bỏ qua xác suất nền. Một tín hiệu có vẻ rất mạnh vẫn có thể dẫn đến kết luận yếu nếu trường hợp gốc vốn rất hiếm.
+
+Trong bài này, chúng ta sẽ học phát biểu của định lý Bayes, cách tính từng thành phần, và cách dùng nó để đọc đúng những tình huống mà trực giác thường đánh lừa.
 
 ## 1. Phát biểu định lý Bayes
 
@@ -53,6 +59,7 @@ Có thể nhớ ngắn gọn:
 
 $$
 \text{posterior}=\frac{\text{likelihood}\times\text{prior}}{\text{evidence}}.
+$$
 
 
 ## 3. Dạng phân hoạch
@@ -70,6 +77,8 @@ P(B)=\sum_{i=1}^{n}P(B\mid A_i)P(A_i).
 $$
 
 ## 4. Ví dụ chẩn đoán y khoa
+
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
 Một bệnh có tỉ lệ trong dân số là $0.1\%$. Xét nghiệm có độ nhạy $99\%$ và tỉ lệ dương tính giả $1\%$. Nếu một người xét nghiệm dương tính, xác suất người đó thật sự có bệnh là bao nhiêu?
 
@@ -90,7 +99,10 @@ Nghĩa là chỉ khoảng $9.02\%$, dù xét nghiệm có vẻ “chính xác 99
 
 <div class="interactive-demo" markdown="1">
 **Demo tương tác đề xuất**: Thanh kéo điều chỉnh tỉ lệ bệnh, độ nhạy và tỉ lệ dương tính giả. Công cụ hiển thị cây xác suất trên 10.000 người và tính posterior.
+
+<div data-demo="bayes-calculator"></div>
 </div>
+<script src="{{ '/public/js/bayes-calculator.js' | relative_url }}"></script>
 
 ## 5. Naive Bayes trong phân loại văn bản
 
@@ -126,6 +138,8 @@ Giả định này không hoàn toàn đúng trong ngôn ngữ tự nhiên, như
 </div>
 
 ## 7. Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Bayes là nền tảng của nhiều hệ thống suy luận trong AI: lọc spam, phân loại văn bản, nhận dạng bệnh từ triệu chứng, cập nhật niềm tin trong robot, và mô hình chủ đề. Trong an ninh mạng, Bayes giúp đánh giá khả năng một cảnh báo thật sự là tấn công khi biết tỉ lệ cảnh báo giả. Trong A/B testing, tư duy Bayes giúp cập nhật niềm tin về hiệu quả của phiên bản mới khi dữ liệu đến liên tục.
 

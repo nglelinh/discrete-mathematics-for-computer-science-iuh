@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
-      <loc>https://nglelinh.github.io/home/author-details/</loc>
+      <loc>http://localhost:4000/home/author-details/</loc>
       
         <lastmod>2021-05-20T00:00:00+07:00</lastmod>
       
@@ -18,7 +18,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/reference/26_reference/</loc>
+      <loc>http://localhost:4000/reference/26_reference/</loc>
       
         <lastmod>2021-03-28T00:00:00+07:00</lastmod>
       
@@ -34,7 +34,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/home/makers/</loc>
+      <loc>http://localhost:4000/home/makers/</loc>
       
         <lastmod>2021-02-03T00:00:00+07:00</lastmod>
       
@@ -50,7 +50,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contribution/conventions/</loc>
+      <loc>http://localhost:4000/contribution/conventions/</loc>
       
         <lastmod>2021-02-03T00:00:00+07:00</lastmod>
       
@@ -66,7 +66,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/home/link_to_how_to_contribute/</loc>
+      <loc>http://localhost:4000/home/link_to_how_to_contribute/</loc>
       
         <lastmod>2021-01-27T00:00:00+07:00</lastmod>
       
@@ -82,7 +82,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contribution/initial_settings/</loc>
+      <loc>http://localhost:4000/contribution/initial_settings/</loc>
       
         <lastmod>2021-01-27T00:00:00+07:00</lastmod>
       
@@ -98,7 +98,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contribution/how_to_contribute/</loc>
+      <loc>http://localhost:4000/contribution/how_to_contribute/</loc>
       
         <lastmod>2021-01-27T00:00:00+07:00</lastmod>
       
@@ -114,7 +114,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/home/introduction/</loc>
+      <loc>http://localhost:4000/home/introduction/</loc>
       
         <lastmod>2021-01-20T00:00:00+07:00</lastmod>
       
@@ -130,7 +130,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/home/contents/</loc>
+      <loc>http://localhost:4000/home/contents/</loc>
       
         <lastmod>2021-01-20T00:00:00+07:00</lastmod>
       
@@ -146,7 +146,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter16/16_04_Applications_of_Trees/</loc>
+      <loc>http://localhost:4000/contents/chapter16/16_04_Applications_of_Trees/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -162,7 +162,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter16/16_03_Spanning_Trees_and_MST/</loc>
+      <loc>http://localhost:4000/contents/chapter16/16_03_Spanning_Trees_and_MST/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -178,7 +178,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter16/16_02_Tree_Traversal/</loc>
+      <loc>http://localhost:4000/contents/chapter16/16_02_Tree_Traversal/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -194,7 +194,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter16/16_01_Introduction_to_Trees/</loc>
+      <loc>http://localhost:4000/contents/chapter16/16_01_Introduction_to_Trees/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -210,7 +210,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter15/15_04_Applications_of_Number_Theory/</loc>
+      <loc>http://localhost:4000/contents/chapter15/15_04_Applications_of_Number_Theory/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -226,7 +226,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter15/15_03_Introduction_to_Cryptography/</loc>
+      <loc>http://localhost:4000/contents/chapter15/15_03_Introduction_to_Cryptography/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -242,7 +242,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter15/15_02_Modular_Arithmetic/</loc>
+      <loc>http://localhost:4000/contents/chapter15/15_02_Modular_Arithmetic/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -258,7 +258,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter15/15_01_Divisibility_and_Primes/</loc>
+      <loc>http://localhost:4000/contents/chapter15/15_01_Divisibility_and_Primes/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -274,7 +274,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter14/14_03_Complexity_of_Algorithms/</loc>
+      <loc>http://localhost:4000/contents/chapter14/14_03_Complexity_of_Algorithms/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -290,7 +290,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter14/14_02_Growth_of_Functions_and_Big_O_Notation/</loc>
+      <loc>http://localhost:4000/contents/chapter14/14_02_Growth_of_Functions_and_Big_O_Notation/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -306,7 +306,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter14/14_01_Introduction_to_Algorithms/</loc>
+      <loc>http://localhost:4000/contents/chapter14/14_01_Introduction_to_Algorithms/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -322,7 +322,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter13/13_05_Quine_McCluskey_Method/</loc>
+      <loc>http://localhost:4000/contents/chapter13/13_05_Quine_McCluskey_Method/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -338,7 +338,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter13/13_04_Karnaugh_Maps/</loc>
+      <loc>http://localhost:4000/contents/chapter13/13_04_Karnaugh_Maps/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -354,7 +354,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter13/13_03_Logic_Gates_and_Minimization/</loc>
+      <loc>http://localhost:4000/contents/chapter13/13_03_Logic_Gates_and_Minimization/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -370,7 +370,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter13/13_02_Boolean_Functions/</loc>
+      <loc>http://localhost:4000/contents/chapter13/13_02_Boolean_Functions/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -386,7 +386,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter13/13_01_Boolean_Algebra_Basics/</loc>
+      <loc>http://localhost:4000/contents/chapter13/13_01_Boolean_Algebra_Basics/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -402,7 +402,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter12/12_06_Graph_Isomorphism_and_Network_Applications/</loc>
+      <loc>http://localhost:4000/contents/chapter12/12_06_Graph_Isomorphism_and_Network_Applications/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -418,7 +418,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter12/12_05_Planar_Graphs_and_Graph_Coloring/</loc>
+      <loc>http://localhost:4000/contents/chapter12/12_05_Planar_Graphs_and_Graph_Coloring/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -434,7 +434,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter12/12_04_Shortest_Path_Problems/</loc>
+      <loc>http://localhost:4000/contents/chapter12/12_04_Shortest_Path_Problems/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -450,7 +450,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter12/12_03_Euler_and_Hamilton_Graphs/</loc>
+      <loc>http://localhost:4000/contents/chapter12/12_03_Euler_and_Hamilton_Graphs/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -466,7 +466,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter12/12_02_Paths_Cycles_and_Connectivity/</loc>
+      <loc>http://localhost:4000/contents/chapter12/12_02_Paths_Cycles_and_Connectivity/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -482,7 +482,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter12/12_01_Introduction_to_Graphs/</loc>
+      <loc>http://localhost:4000/contents/chapter12/12_01_Introduction_to_Graphs/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -498,7 +498,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter11/11_04_Applications_of_Inclusion_Exclusion/</loc>
+      <loc>http://localhost:4000/contents/chapter11/11_04_Applications_of_Inclusion_Exclusion/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -514,7 +514,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter11/11_03_Inclusion_Exclusion_Principle/</loc>
+      <loc>http://localhost:4000/contents/chapter11/11_03_Inclusion_Exclusion_Principle/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -530,7 +530,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter11/11_02_Solving_Recurrences_with_Generating_Functions/</loc>
+      <loc>http://localhost:4000/contents/chapter11/11_02_Solving_Recurrences_with_Generating_Functions/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -546,7 +546,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter11/11_01_Introduction_to_Generating_Functions/</loc>
+      <loc>http://localhost:4000/contents/chapter11/11_01_Introduction_to_Generating_Functions/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -562,7 +562,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter10/10_03_Nonhomogeneous_Recurrences/</loc>
+      <loc>http://localhost:4000/contents/chapter10/10_03_Nonhomogeneous_Recurrences/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -578,7 +578,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter10/10_02_Solving_Linear_Recurrence_Relations/</loc>
+      <loc>http://localhost:4000/contents/chapter10/10_02_Solving_Linear_Recurrence_Relations/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -594,7 +594,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter10/10_01_Introduction_to_Recurrence_Relations/</loc>
+      <loc>http://localhost:4000/contents/chapter10/10_01_Introduction_to_Recurrence_Relations/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -610,7 +610,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter09/09_04_Expected_Value_and_Variance/</loc>
+      <loc>http://localhost:4000/contents/chapter09/09_04_Expected_Value_and_Variance/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -626,7 +626,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter09/09_03_Bayes_Theorem/</loc>
+      <loc>http://localhost:4000/contents/chapter09/09_03_Bayes_Theorem/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -642,7 +642,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter09/09_02_Probability_Theory/</loc>
+      <loc>http://localhost:4000/contents/chapter09/09_02_Probability_Theory/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -658,7 +658,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter09/09_01_Basic_Probability_Theory/</loc>
+      <loc>http://localhost:4000/contents/chapter09/09_01_Basic_Probability_Theory/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -674,7 +674,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter08/08_02_Advanced_Pigeonhole_Applications/</loc>
+      <loc>http://localhost:4000/contents/chapter08/08_02_Advanced_Pigeonhole_Applications/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -690,7 +690,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter08/08_01_Pigeonhole_Principle_Basics/</loc>
+      <loc>http://localhost:4000/contents/chapter08/08_01_Pigeonhole_Principle_Basics/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -706,7 +706,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter07/07_05_Generalized_Permutations_and_Combinations/</loc>
+      <loc>http://localhost:4000/contents/chapter07/07_05_Generalized_Permutations_and_Combinations/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -722,7 +722,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter07/07_04_Binomial_Coefficients_and_Identities/</loc>
+      <loc>http://localhost:4000/contents/chapter07/07_04_Binomial_Coefficients_and_Identities/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -738,7 +738,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter07/07_03_Inclusion_Exclusion_Principle/</loc>
+      <loc>http://localhost:4000/contents/chapter07/07_03_Inclusion_Exclusion_Principle/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -754,7 +754,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter07/07_02_Permutations_and_Combinations/</loc>
+      <loc>http://localhost:4000/contents/chapter07/07_02_Permutations_and_Combinations/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -770,7 +770,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter07/07_01_Addition_and_Multiplication_Principles/</loc>
+      <loc>http://localhost:4000/contents/chapter07/07_01_Addition_and_Multiplication_Principles/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -786,7 +786,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter06/06_03_Inverse_Functions_and_Composition/</loc>
+      <loc>http://localhost:4000/contents/chapter06/06_03_Inverse_Functions_and_Composition/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -802,7 +802,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter06/06_02_Properties_of_Functions/</loc>
+      <loc>http://localhost:4000/contents/chapter06/06_02_Properties_of_Functions/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -818,7 +818,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter06/06_01_Introduction_to_Functions/</loc>
+      <loc>http://localhost:4000/contents/chapter06/06_01_Introduction_to_Functions/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -834,7 +834,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter05/05_05_Exercises_on_Relations/</loc>
+      <loc>http://localhost:4000/contents/chapter05/05_05_Exercises_on_Relations/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -850,7 +850,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter05/05_04_Relation_Operations_and_Closures/</loc>
+      <loc>http://localhost:4000/contents/chapter05/05_04_Relation_Operations_and_Closures/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -866,7 +866,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter05/05_03_Equivalence_Relations_and_Partial_Orders/</loc>
+      <loc>http://localhost:4000/contents/chapter05/05_03_Equivalence_Relations_and_Partial_Orders/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -882,7 +882,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter05/05_02_Properties_of_Relations/</loc>
+      <loc>http://localhost:4000/contents/chapter05/05_02_Properties_of_Relations/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -898,7 +898,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter05/05_01_Introduction_to_Relations/</loc>
+      <loc>http://localhost:4000/contents/chapter05/05_01_Introduction_to_Relations/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -914,7 +914,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter04/04_04_Sequences_and_Summations/</loc>
+      <loc>http://localhost:4000/contents/chapter04/04_04_Sequences_and_Summations/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -930,7 +930,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter04/04_03_Cardinality_and_Infinite_Sets/</loc>
+      <loc>http://localhost:4000/contents/chapter04/04_03_Cardinality_and_Infinite_Sets/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -946,7 +946,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter04/04_02_Set_Operations/</loc>
+      <loc>http://localhost:4000/contents/chapter04/04_02_Set_Operations/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -962,7 +962,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter04/04_01_Introduction_to_Sets/</loc>
+      <loc>http://localhost:4000/contents/chapter04/04_01_Introduction_to_Sets/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -978,7 +978,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter03/03_03_Mathematical_Induction/</loc>
+      <loc>http://localhost:4000/contents/chapter03/03_03_Mathematical_Induction/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -994,7 +994,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter03/03_02_Proof_by_Contradiction/</loc>
+      <loc>http://localhost:4000/contents/chapter03/03_02_Proof_by_Contradiction/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -1010,7 +1010,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter03/03_01_Direct_Proof/</loc>
+      <loc>http://localhost:4000/contents/chapter03/03_01_Direct_Proof/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -1026,7 +1026,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter02/02_03_Rules_of_Inference_for_Predicate_Logic/</loc>
+      <loc>http://localhost:4000/contents/chapter02/02_03_Rules_of_Inference_for_Predicate_Logic/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -1042,7 +1042,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter02/02_02_Quantifiers_and_Nested_Quantifiers/</loc>
+      <loc>http://localhost:4000/contents/chapter02/02_02_Quantifiers_and_Nested_Quantifiers/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -1058,7 +1058,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter02/02_01_Introduction_to_Predicate_Logic/</loc>
+      <loc>http://localhost:4000/contents/chapter02/02_01_Introduction_to_Predicate_Logic/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -1074,7 +1074,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter01/01_04_Logical_Equivalences_and_Normal_Forms/</loc>
+      <loc>http://localhost:4000/contents/chapter01/01_04_Logical_Equivalences_and_Normal_Forms/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -1090,7 +1090,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter01/01_03_Truth_Tables/</loc>
+      <loc>http://localhost:4000/contents/chapter01/01_03_Truth_Tables/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -1106,7 +1106,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter01/01_02_Logical_Operators/</loc>
+      <loc>http://localhost:4000/contents/chapter01/01_02_Logical_Operators/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       
@@ -1122,7 +1122,7 @@
     </url>
   
     <url>
-      <loc>https://nglelinh.github.io/contents/chapter01/01_01_Introduction_to_Propositional_Logic/</loc>
+      <loc>http://localhost:4000/contents/chapter01/01_01_Introduction_to_Propositional_Logic/</loc>
       
         <lastmod>2021-01-01T00:00:00+07:00</lastmod>
       

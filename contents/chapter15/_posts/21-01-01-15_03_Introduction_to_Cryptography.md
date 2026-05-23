@@ -10,11 +10,19 @@ lang: en
 
 # Mật mã học Cơ bản
 
-Mỗi lần bạn đăng nhập ngân hàng, gửi tin nhắn mã hóa hay truy cập một trang web có biểu tượng ổ khóa, đằng sau đó là một lời hứa rất lớn: dữ liệu nhạy cảm phải đi qua môi trường công khai mà vẫn an toàn. Câu hỏi là làm sao một thông tin ai cũng có thể chặn được trên đường truyền lại chỉ người nhận hợp lệ mới đọc được?
+Mỗi lần bạn đăng nhập qua HTTPS, gửi tin nhắn được mã hóa, hay ký số một tài liệu, có một câu hỏi nền đang được giải ở phía sau: làm sao để chỉ đúng người nhận mới đọc được dữ liệu, và làm sao để tin được dữ liệu chưa bị sửa?
 
-**Mật mã học** trả lời câu hỏi ấy bằng cách kết hợp toán học với engineering. Và điều thú vị là rất nhiều ý tưởng cốt lõi của nó quay về lý thuyết số, modulo và số nguyên tố. Bài mở đầu này cho thấy vì sao một chủ đề từng bị xem là bí thuật quân sự nay lại là hạ tầng mặc định của internet hiện đại.
+
+Lý thuyết số trong chương này không đứng riêng lẻ, nó là nền cho mã hóa, kiểm tra tính đúng đắn và nhiều cơ chế bảo mật hiện đại.
+**Mật mã học** ra đời để trả lời những câu hỏi đó. Đây là nơi toán rời rạc, đặc biệt là logic, xác suất và lý thuyết số, đi thẳng vào một ứng dụng sống còn của khoa học máy tính.
+
+Điều thú vị là nhiều hệ mật mã cơ bản dựa trên các ý tưởng toán học rất gọn, nhưng tạo ra khả năng bảo vệ thông tin cực kỳ mạnh. Vì vậy, học mật mã ở mức nhập môn là cơ hội rất tốt để thấy toán trừu tượng biến thành công nghệ thật như thế nào.
+
+Trong bài này, chúng ta sẽ làm quen với các khái niệm cơ bản của mật mã và vai trò của chúng trong việc bảo vệ dữ liệu và giao tiếp số.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -141,9 +149,13 @@ Bob tính $$K = 8^{15} \bmod 23 = 2$$ ✓
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Mô phỏng RSA</h3>
 <p>Công cụ này mô phỏng toàn bộ quá trình RSA: chọn p, q, tính n và phi(n), tạo khóa, mã hóa và giải mã. Quan sát từng bước và hiểu cách các phép toán kết nối với nhau. <strong>Hãy thử:</strong> Chọn p=17, q=19, e=5 và mã hóa số 42. Kiểm tra xem giải mã có cho kết quả đúng không.</p>
+<div data-demo="rsa-simulator"></div>
 </div>
+<script src="{{ '/public/js/rsa-simulator.js' | relative_url }}"></script>
 
 ## Bài tập
+
+Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, dạng bài và công cụ phù hợp trước khi tính toán. Cách tiếp cận này thường giúp tránh sai từ bước đầu.
 
 1. Mã hóa "MATH" bằng Caesar cipher với $$k = 5$$.
 2. Trong Affine cipher với $$a = 7, b = 3$$, mã hóa "YES". Tìm công thức giải mã.

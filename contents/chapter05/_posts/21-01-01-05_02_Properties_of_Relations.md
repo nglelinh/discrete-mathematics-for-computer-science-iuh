@@ -10,9 +10,15 @@ lang: en
 
 # Tính chất của Quan hệ
 
-Không phải quan hệ nào cũng giống nhau. Quan hệ “bạn cùng lớp với” có tính đối xứng, “nhỏ hơn” thì không; quan hệ “bằng” có phản xạ và bắc cầu, còn “thích” trong đời thực thì thường chẳng có quy luật đẹp như vậy. Muốn dùng quan hệ để mô hình hóa bài toán, ta phải biết nó mang những tính chất nào.
+Sau khi biết quan hệ là gì, bước quan trọng tiếp theo là phân biệt các kiểu hành vi khác nhau của quan hệ. Không phải cứ có liên kết giữa hai đối tượng là ta hiểu được cấu trúc của cả hệ thống.
 
-Các tính chất như **phản xạ, đối xứng, phản đối xứng, bắc cầu** đóng vai trò như bảng kiểm cấu trúc. Chúng giúp ta phân loại quan hệ, dự đoán hành vi của hệ thống, và chuẩn bị cho những khái niệm quan trọng hơn như quan hệ tương đương, thứ tự bộ phận, closure và biểu diễn bằng ma trận hay đồ thị.
+
+Khi đọc phần này, hãy nghĩ đến các liên kết giữa đối tượng trong cơ sở dữ liệu, đồ thị và hệ thống phân quyền, vì quan hệ chính là cách ta mô tả những liên kết đó.
+Ví dụ, quan hệ "bằng nhau" rất khác quan hệ "nhỏ hơn hoặc bằng", và cả hai lại khác hoàn toàn quan hệ "theo dõi nhau" trên mạng xã hội. Sự khác biệt đó được mô tả bằng các tính chất như phản xạ, đối xứng, phản đối xứng và bắc cầu.
+
+Những tính chất này không phải để nhớ máy móc. Chúng quyết định ta có thể nhóm phần tử thành lớp tương đương, sắp xếp chúng theo thứ tự, hay suy luận thêm liên kết mới hay không. Trong thiết kế dữ liệu và thuật toán, hiểu sai một tính chất có thể kéo theo mô hình sai ngay từ đầu.
+
+Trong bài này, chúng ta sẽ học cách nhận diện từng tính chất qua ví dụ cụ thể và thấy vì sao chúng lại quan trọng đến vậy trong toán rời rạc và CS.
 
 ## Các tính chất cơ bản
 
@@ -96,6 +102,8 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 | Bắc cầu | (a,b) + (b,c) ⟹ (a,c) | Tích ma trận (sẽ học) | Đường đi → cung trực tiếp |
 
 ## Công cụ tương tác: Kiểm tra tính chất quan hệ
+
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
 
 <div id="relation-properties-checker" class="interactive-tool">
     <h4>🔍 Công cụ kiểm tra tính chất quan hệ</h4>

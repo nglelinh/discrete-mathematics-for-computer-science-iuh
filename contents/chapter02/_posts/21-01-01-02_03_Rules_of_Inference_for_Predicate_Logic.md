@@ -124,7 +124,10 @@ Lập luận:
 
 <div class="interactive-tool" data-tool="predicate-proof-builder">
   <p><strong>Demo đề xuất:</strong> kéo-thả UI, UG, EI, EG và Modus Ponens vào từng dòng để xây dựng chứng minh hợp lệ.</p>
+  <div id="predicate-proof-demo"></div>
 </div>
+
+<script src="{{ '/public/js/predicate-proof-dnd.js' | relative_url }}"></script>
 
 ## 9. Nhầm lẫn thường gặp
 

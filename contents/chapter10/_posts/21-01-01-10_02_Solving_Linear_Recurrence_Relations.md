@@ -10,9 +10,15 @@ lang: vi
 
 # Giải Quan hệ Truy hồi Tuyến tính
 
-Viết được một quan hệ truy hồi mới chỉ mô tả bài toán; để thật sự hiểu hệ thống, ta còn muốn biết công thức tường minh của nó tăng nhanh đến đâu, dao động ra sao, và khi n lớn thì điều gì thống trị. Trong phân tích thuật toán, câu hỏi này gần như là bắt buộc.
+Viết được quan hệ truy hồi mới chỉ là nửa chặng đường. Trong thực tế, ta còn muốn biết giá trị ở bước thứ 50, thứ 1000, hay tốc độ tăng trưởng của cả dãy mà không phải tính lần lượt từng bước một.
 
-Các **quan hệ truy hồi tuyến tính** là lớp vừa đủ mạnh để mô hình hóa nhiều bài toán quan trọng, vừa đủ có cấu trúc để giải bằng phương pháp hệ thống. Khi giải được chúng, ta biến một mô tả từng bước thành cái nhìn tổng quát về hành vi dài hạn của dãy hay thuật toán.
+
+Quan hệ truy hồi cho phép ta mô tả tiến trình theo từng bước, đúng với cách nhiều thuật toán đệ quy và dynamic programming vận hành.
+Với lớp bài toán quan trọng nhất, **quan hệ truy hồi tuyến tính**, ta có thể tìm được công thức tường minh hoặc ít nhất mô tả rất rõ cấu trúc nghiệm. Đây là kỹ năng cực kỳ hữu ích trong phân tích thuật toán và các mô hình rời rạc.
+
+Từ số phép gọi đệ quy, số cấu hình ở mỗi mức, đến độ phức tạp của những thuật toán chia để trị đơn giản, rất nhiều bài toán quy về giải đúng một truy hồi tuyến tính.
+
+Trong bài này, chúng ta sẽ học các kỹ thuật giải loại truy hồi này và thấy vì sao một phương trình nhìn ngắn có thể chứa bên trong cả một quy luật tăng trưởng lớn.
 
 ## 1. Dạng tổng quát
 
@@ -139,7 +145,9 @@ Mỗi nghiệm phân biệt $r_i$ đóng góp một hạng $\alpha_i r_i^n$; ngh
 
 <div class="interactive-demo" markdown="1">
 **Demo tương tác đề xuất**: Người học nhập hệ số $c_1,c_2$ và điều kiện đầu. Công cụ vẽ nghiệm đặc trưng trên trục số/phức và hiển thị vài số hạng đầu của dãy.
+<div data-demo="linear-recurrence-solver"></div>
 </div>
+<script src="{{ '/public/js/linear-recurrence-solver.js' | relative_url }}"></script>
 
 ## 7. Ghi chú dễ nhầm
 
@@ -153,6 +161,8 @@ Mỗi nghiệm phân biệt $r_i$ đóng góp một hạng $\alpha_i r_i^n$; ngh
 </div>
 
 ## 8. Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Quan hệ truy hồi tuyến tính xuất hiện trong phân tích thuật toán đệ quy, số cách lát bảng, số chuỗi nhị phân tránh mẫu, và phân tích cấu trúc dữ liệu. Dãy Fibonacci cũng mô tả số lời gọi trong thuật toán Fibonacci đệ quy ngây thơ, cho thấy thời gian chạy tăng theo hàm mũ.
 

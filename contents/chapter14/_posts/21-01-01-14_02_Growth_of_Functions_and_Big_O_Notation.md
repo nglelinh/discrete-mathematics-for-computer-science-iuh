@@ -10,11 +10,19 @@ lang: en
 
 # Tăng trưởng của Hàm và Ký hiệu Big-O
 
-Một thuật toán chạy 0.01 giây với 100 phần tử nghe có vẻ tuyệt vời, nhưng nếu lên 10 triệu phần tử thì sao? Khi dữ liệu tăng, điều quan trọng không còn là vài mili giây đo được trên máy hôm nay, mà là **tốc độ tăng trưởng** của chi phí tính toán. Đó là lý do dân khoa học máy tính cần một ngôn ngữ nói về xu hướng, không chỉ về con số cụ thể.
+Một thuật toán chạy 0.01 giây với 100 phần tử chưa chắc vẫn ổn với 10 triệu phần tử. Trong khoa học máy tính, câu hỏi quan trọng không chỉ là chương trình chạy được, mà là nó tăng chi phí như thế nào khi đầu vào lớn dần.
 
-**Big-O** và các ký hiệu tăng trưởng của hàm là ngôn ngữ đó. Chúng cho phép ta so sánh thuật toán ở quy mô lớn, bỏ qua chi tiết vụn vặt để nhìn vào yếu tố thống trị. Đây là công cụ cốt lõi cho mọi quyết định chọn cấu trúc dữ liệu, tối ưu code và thiết kế hệ thống có khả năng mở rộng.
+
+Phân tích thuật toán không chỉ hỏi chương trình chạy được hay không, mà còn hỏi nó còn dùng được khi dữ liệu lớn lên nhanh đến mức nào.
+Đó là lúc ta cần nhìn vào **tăng trưởng của hàm** thay vì các con số riêng lẻ. **Ký hiệu Big-O** cho phép ta mô tả tốc độ tăng của thời gian hoặc bộ nhớ theo cách đủ gọn để so sánh các thuật toán với nhau.
+
+Điều này đặc biệt quan trọng vì phần cứng nhanh hơn không xóa được một thuật toán tăng trưởng tệ. Một giải pháp $$O(n \log n)$$ và một giải pháp $$O(n^2)$$ có thể khác nhau rất lớn khi quy mô tăng lên.
+
+Trong bài này, chúng ta sẽ học cách đọc tốc độ tăng trưởng, hiểu ý nghĩa của Big-O và dùng nó để nói về hiệu năng một cách chặt chẽ hơn.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -148,15 +156,21 @@ Mỗi vòng lặp, không gian tìm kiếm giảm một nửa: $$n \to n/2 \to n
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: So sánh Tốc độ Tăng trưởng</h3>
 <p>Nhập hai hàm và xem đồ thị so sánh của chúng. Công cụ tự động tìm điểm giao nhau và cho biết hàm nào "thắng" khi n đủ lớn. <strong>Hãy thử:</strong> So sánh $$1000n$$ và $$n^2$$. Với n nhỏ, $$n^2$$ thắng, nhưng sau điểm giao nhau, mọi thứ đảo ngược!</p>
+<div data-demo="big-o-growth-comparator"></div>
 </div>
+<script src="{{ '/public/js/big-o-growth-comparator.js' | relative_url }}"></script>
 
 ## Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Big-O là công cụ chuẩn trong phỏng vấn kỹ thuật và thiết kế hệ thống. Khi xây dựng hệ thống phục vụ hàng triệu người dùng, sự khác biệt giữa $$O(n)$$ và $$O(n^2)$$ là sự khác biệt giữa *chạy được* và *sập server*. Big-O còn là cơ sở để phân loại bài toán P, NP — trung tâm của lý thuyết độ phức tạp tính toán.
 
 **Ví dụ thực tế**: Google xử lý hàng tỷ tìm kiếm mỗi ngày. Nếu thuật toán tìm kiếm của họ là $$O(n^2)$$ thay vì $$O(\log n)$$, họ sẽ cần một trung tâm dữ liệu lớn gấp hàng triệu lần. Big-O quyết định khả thi hay không khả thi.
 
 ## Bài tập
+
+Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, dạng bài và công cụ phù hợp trước khi tính toán. Cách tiếp cận này thường giúp tránh sai từ bước đầu.
 
 1. Chứng minh $$f(n) = 7n^3 + 2n^2 + 4$$ là $$O(n^3)$$.
 2. Sắp xếp các hàm sau theo thứ tự tăng dần của Big-O: $$n!,\; 2^n,\; n^3,\; n^2,\; n\log n,\; n,\; \log n,\; 1$$

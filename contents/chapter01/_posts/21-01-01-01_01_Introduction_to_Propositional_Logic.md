@@ -181,24 +181,10 @@ can_register = paid_tuition and account_active and (passed_prerequisite or advis
 <div class="interactive-tool" markdown="1">
 ### Công cụ tương tác: Kiểm tra mệnh đề
 
-Nhập một câu vào ô dưới đây và thử xác định xem nó có phải mệnh đề không:
-
-<input type="text" id="prop-check-input" placeholder="Ví dụ: 2 + 2 = 4" style="width: 80%; padding: 8px; margin: 10px 0;">
-<button onclick="checkProposition()">Kiểm tra</button>
-<div id="prop-check-result" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 6px;"></div>
-
-<script>
-function checkProposition() {
-    const input = document.getElementById('prop-check-input').value.trim();
-    const result = document.getElementById('prop-check-result');
-    if (!input) {
-        result.innerHTML = '<span style="color: #e63946;">Vui lòng nhập một câu!</span>';
-        return;
-    }
-    result.innerHTML = 'Gợi ý: Hãy tự hỏi — câu này có thể xác định đúng/sai một cách khách quan không? Nếu có thể thì nó là mệnh đề. Nếu là câu hỏi, câu mệnh lệnh, hoặc ý kiến chủ quan thì không.';
-}
-</script>
+<div data-demo="proposition-checker"></div>
 </div>
+
+<script src="{{ '/public/js/logic-operator-widgets.js' | relative_url }}"></script>
 
 ## Bài tập thực hành
 

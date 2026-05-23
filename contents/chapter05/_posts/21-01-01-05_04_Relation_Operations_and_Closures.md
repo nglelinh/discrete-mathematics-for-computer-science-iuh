@@ -10,9 +10,15 @@ lang: en
 
 # Phép toán Quan hệ và Bao đóng
 
-Trong dữ liệu thực tế, quan hệ ban đầu hiếm khi đủ dùng. Ta có thể biết A liên hệ với B và B liên hệ với C, nhưng hệ thống lại cần suy ra A liên hệ với C; ta có thể có quan hệ “đi được một bước”, nhưng ứng dụng cần biết “đi được bao nhiêu bước cũng được”. Khi đó, ta không chỉ đọc quan hệ — ta phải **xử lý** nó.
+Khi làm việc với quan hệ trong hệ thống thực, ta không chỉ quan sát một quan hệ có sẵn. Ta thường phải đảo chiều liên kết, ghép hai quan hệ thành một đường suy diễn mới, hoặc thêm vào những cặp còn thiếu để quan hệ đạt một tính chất mong muốn.
 
-Các phép toán trên quan hệ và khái niệm **closure** cho phép mở rộng quan hệ đến mức đáp ứng đúng nhu cầu suy luận. Đây là phần rất gần với database, reachability trong đồ thị, phân tích dependency và thiết kế thuật toán. Nói ngắn gọn: từ dữ liệu liên kết thô, ta xây thành tri thức có thể dùng được.
+
+Khi đọc phần này, hãy nghĩ đến các liên kết giữa đối tượng trong cơ sở dữ liệu, đồ thị và hệ thống phân quyền, vì quan hệ chính là cách ta mô tả những liên kết đó.
+Đó là lúc các **phép toán trên quan hệ** và khái niệm **bao đóng** trở nên quan trọng. Chúng giúp ta chuyển từ mô tả tĩnh sang thao tác chủ động trên cấu trúc liên hệ, rất giống cách ta biến dữ liệu thô thành dữ liệu có thể dùng được.
+
+Ví dụ, từ quan hệ phụ thuộc trực tiếp giữa các module, ta muốn suy ra phụ thuộc gián tiếp. Từ quan hệ kết nối trong mạng, ta muốn biết cặp node nào cuối cùng vẫn liên thông với nhau. Những câu hỏi như vậy dẫn thẳng đến bao đóng bắc cầu.
+
+Trong bài học này, chúng ta sẽ học cách đảo, hợp thành và mở rộng quan hệ để khai thác được nhiều thông tin hơn từ cùng một mô hình ban đầu.
 
 ## 1. Quan hệ ngược
 
@@ -92,6 +98,8 @@ trong đó $$I_A=\{(a,a)\mid a\in A\}$$.
 
 ## 6. Thuật toán Warshall
 
+Ở phần này, đừng chỉ nhớ các bước. Hãy chú ý điều kiện áp dụng, thông tin được duy trì sau mỗi bước và lý do thuật toán cho kết quả đúng.
+
 **Ý tưởng**: Warshall tính bao đóng bắc cầu từ ma trận kề. Cho phép từng đỉnh $$k$$ làm đỉnh trung gian, cập nhật:
 
 $$M[i,j]=M[i,j]\lor(M[i,k]\land M[k,j]).$$
@@ -108,9 +116,13 @@ def warshall(M):
 
 ## 7. Công cụ tương tác
 
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
+
 <div class="interactive-demo" data-demo="relation-closure-warshall">
   <p><strong>Demo đề xuất:</strong> nhập ma trận quan hệ, công cụ tô sáng từng bước Warshall và hiển thị các cặp được thêm vào bao đóng bắc cầu.</p>
 </div>
+
+<script src="{{ '/public/js/warshall-visualizer.js' | relative_url }}"></script>
 
 ## 8. Nhầm lẫn thường gặp
 
@@ -130,5 +142,7 @@ def warshall(M):
 - **Bảo mật**: quan hệ quyền truy cập kế thừa cần bao đóng theo cây vai trò.
 
 ## Tóm tắt
+
+Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
 
 Quan hệ ngược đảo chiều cặp; hợp thành ghép hai bước thành một bước; lũy thừa quan hệ mô tả đường đi nhiều bước. Bao đóng phản xạ, đối xứng và bắc cầu thêm tối thiểu các cặp để quan hệ có tính chất mong muốn. Warshall là thuật toán cổ điển để tính bao đóng bắc cầu trên tập hữu hạn.

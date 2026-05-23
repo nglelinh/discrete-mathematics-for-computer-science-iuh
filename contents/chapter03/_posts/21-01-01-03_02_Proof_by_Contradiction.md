@@ -10,11 +10,19 @@ lang: en
 
 # Chứng minh Phản chứng
 
-Có những kết luận ta tin là đúng nhưng đi thẳng đến chúng lại rất khó. Khi đó, một chiến lược khôn ngoan là thử “đi đường ngược”: giả sử điều ta muốn bác bỏ lại xảy ra, rồi quan sát xem cả hệ thống có tự mâu thuẫn hay không. Trong bảo mật, thiết kế thuật toán hay lý thuyết số, kiểu lập luận này xuất hiện nhiều hơn sinh viên thường nghĩ.
+Có những mệnh đề rất khó đi thẳng từ giả thiết đến kết luận. Nhưng nếu giả sử điều ngược lại và hệ quả dẫn đến mâu thuẫn, ta biết ngay giả sử đó không thể đúng. Đây là kiểu tư duy xuất hiện không chỉ trong toán, mà cả trong debug và kiểm thử hệ thống.
 
-**Chứng minh phản chứng** mạnh ở chỗ nó biến một phát biểu trừu tượng thành cuộc kiểm tra độ nhất quán. Nếu giả sử ngược dẫn đến điều vô lý, ta buộc phải quay lại và công nhận mệnh đề ban đầu. Đây là công cụ rất lợi hại khi chứng minh sự không tồn tại, tính duy nhất, hoặc các kết quả mà mọi con đường trực tiếp đều quá gập ghềnh.
+
+Trong chứng minh, mục tiêu không chỉ là đi đến kết luận đúng mà còn cho thấy vì sao từng bước đều hợp lệ, giống như khi ta giải thích tính đúng đắn của một thuật toán.
+Khi một chương trình được cho là không thể rơi vào trạng thái lỗi nào đó, ta thường thử dựng tình huống phản lại. Nếu giả định ấy kéo theo điều vô lý, vi phạm ràng buộc hoặc tự mâu thuẫn với dữ liệu ban đầu, ta đã có một lập luận mạnh. **Chứng minh phản chứng** vận hành đúng theo tinh thần đó.
+
+Kỹ thuật này đặc biệt hữu ích với các mệnh đề phủ định, mệnh đề tồn tại duy nhất, hoặc những kết luận mà đường đi trực tiếp quá dài. Nó không thay thế chứng minh trực tiếp, nhưng mở thêm một lối vào khi bài toán tưởng như bế tắc.
+
+Trong bài học này, chúng ta sẽ học cách đặt giả thiết phủ định đúng chỗ, lần theo hệ quả của nó, và nhận ra đâu là mâu thuẫn đủ để kết thúc chứng minh.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau khi học xong bài này, sinh viên có thể:
 
@@ -133,6 +141,8 @@ Một khuôn mẫu an toàn là:
 
 ## Ví dụ 1: Chứng minh √2 là số vô tỷ
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 Đây là ví dụ kinh điển nhất, vì nó cho thấy phản chứng có thể biến một phát biểu trông rất khó thành một chuỗi suy luận ngắn và sắc bén.
 
 **Định lý:** `√2` là số vô tỷ (irrational number).
@@ -176,6 +186,8 @@ Mâu thuẫn không xuất hiện ngay lập tức. Nó được tạo ra bằng
 
 ## Ví dụ 2: Có vô hạn số nguyên tố
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 **Định lý:** Có vô hạn số nguyên tố.
 
 **Chứng minh:**
@@ -209,6 +221,8 @@ Ví dụ này rất đẹp vì mâu thuẫn đến từ việc **tự xây một
 
 ## Ví dụ 3: Không tồn tại số nguyên tố lớn nhất
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 Ví dụ này giúp sinh viên thấy phản chứng không chỉ dùng cho số vô tỷ hay số nguyên tố, mà còn rất hợp với lập luận "cực tiểu" (minimal counterexample intuition).
 
 **Mệnh đề:** Không tồn tại số nguyên tố lớn nhất.
@@ -233,6 +247,8 @@ Không phải lúc nào phản chứng cũng phải triển khai từ đầu. Đ
 </figure>
 
 ## Ví dụ 4: Trực giác về Bài toán dừng (Halting Problem)
+
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
 Đây là ví dụ khoa học máy tính rất nổi tiếng. Ở đây ta chỉ trình bày **trực giác chính xác về mặt khái niệm**, không đi quá sâu vào logic hình thức.
 
@@ -279,6 +295,8 @@ Nó chỉ nói rằng:
 
 ## Ví dụ 5: Trạng thái bất khả thi trong thiết kế hệ thống
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 Phản chứng không chỉ sống trong toán thuần túy. Trong thiết kế hệ thống (system design), ta thường dùng nó để chứng minh một trạng thái nào đó là **không thể xảy ra** nếu các bất biến (invariants) được giữ đúng.
 
 **Bối cảnh:** Xét một hàng đợi (queue) với hai bất biến:
@@ -316,6 +334,8 @@ Trong kiểm chứng chương trình (program verification), lập luận kiểu
 
 ## Ví dụ 6: Trực giác phản chứng trong cận độ phức tạp
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 Ta xét một ví dụ ở mức trực giác, phù hợp với sinh viên mới học.
 
 **Phát biểu:** Bất kỳ thuật toán tìm phần tử lớn nhất trong một mảng chưa sắp xếp gồm `n` phần tử đều cần ít nhất `n - 1` phép so sánh trong trường hợp xấu nhất.
@@ -344,6 +364,8 @@ Nhiều chứng minh lower bound (cận dưới) có tinh thần phản chứng 
 - sau đó chỉ ra rằng lượng thông tin nó thu được là chưa đủ để quyết định đúng trong mọi trường hợp.
 
 ## Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Phản chứng xuất hiện tự nhiên trong rất nhiều nhánh của khoa học máy tính.
 

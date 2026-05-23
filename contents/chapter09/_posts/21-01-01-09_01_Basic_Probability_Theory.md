@@ -10,9 +10,15 @@ lang: en
 
 # Lý thuyết Xác suất Cơ bản
 
-Trong thế giới phần mềm, không phải mọi thứ đều chắc chắn như logic. Gói tin có thể thất lạc, người dùng có thể click vào quảng cáo hoặc không, một thuật toán ngẫu nhiên có thể thành công với xác suất rất cao nhưng không phải 100%. Muốn ra quyết định tốt trong môi trường có bất định, ta cần ngôn ngữ của **xác suất**.
+Trong kỹ thuật phần mềm, ta không phải lúc nào cũng dự đoán được kết quả chính xác của một sự kiện đơn lẻ. Gói tin có thể mất, người dùng có thể bấm nhầm, cảm biến có thể nhiễu, thuật toán ngẫu nhiên có thể cho kết quả khác nhau qua từng lần chạy. Khi đó, thay vì hỏi "điều gì chắc chắn xảy ra", ta hỏi "điều gì có khả năng xảy ra đến mức nào".
 
-Bài mở đầu này xây nền cho cách đo khả năng xảy ra của biến cố. Nó giúp ta chuyển từ trực giác “có vẻ dễ xảy ra” sang con số có nghĩa, từ cảm tính sang mô hình. Đây là nền tảng cho machine learning, phân tích dữ liệu, độ tin cậy hệ thống, A/B testing và rất nhiều bài toán trong khoa học máy tính hiện đại.
+
+Xác suất giúp ta chuyển từ trực giác mơ hồ sang đánh giá định lượng, điều rất quan trọng khi phân tích thuật toán ngẫu nhiên, dữ liệu nhiễu và rủi ro hệ thống.
+**Xác suất** là ngôn ngữ để làm việc với sự không chắc chắn đó. Nó là nền cho thống kê, machine learning, mô phỏng, đánh giá rủi ro và rất nhiều quyết định tự động trong hệ thống hiện đại.
+
+Điều quan trọng là xác suất không thay thế tư duy logic, nó bổ sung cho logic. Ta vẫn cần mô hình đúng không gian khả năng xảy ra, biến cố và quan hệ giữa các biến cố trước khi tính toán bất kỳ con số nào.
+
+Trong bài học này, chúng ta sẽ xây những khái niệm đầu tiên của lý thuyết xác suất để có nền vững cho các công cụ mạnh hơn ở các bài sau.
 
 ## Khái niệm Cơ bản
 
@@ -56,6 +62,8 @@ Với không gian mẫu hữu hạn và các kết quả đồng khả năng:
 - Nếu A ⊆ B thì P(A) ≤ P(B)
 
 ## Công cụ tương tác: Mô phỏng Xác suất
+
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
 
 <div id="probability-simulator" class="interactive-tool">
     <h4>🎲 Mô phỏng Thí nghiệm Xác suất</h4>
@@ -127,7 +135,10 @@ Với không gian mẫu hữu hạn và các kết quả đồng khả năng:
             <canvas id="probability-chart" width="400" height="200" style="width: 100%; max-width: 400px; height: 200px;"></canvas>
         </div>
     </div>
+    <div data-demo="dice-probability-simulator"></div>
 </div>
+
+<script src="{{ '/public/js/dice-probability-simulator.js' | relative_url }}"></script>
 
 <script>
 let simulationConfig = {
@@ -875,6 +886,8 @@ def simulate_server_load(arrival_rate, service_rate, simulation_time):
 </details>
 
 ## Tóm tắt
+
+Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
 
 **Xác suất Cơ bản** cung cấp nền tảng cho:
 

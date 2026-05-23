@@ -10,9 +10,15 @@ lang: vi
 
 # Ứng dụng của Nguyên lý Bao hàm - Loại trừ
 
-Một nguyên lý toán học chỉ thật sự “sống” khi nó giải được bài toán cụ thể. Với bao hàm – loại trừ, sức mạnh không nằm ở công thức trừ qua cộng lại, mà ở khả năng áp nó vào các tình huống tưởng rất khác nhau: hoán vị có điểm cố định, số nghiệm nguyên, ràng buộc chia hết, hay các bài toán chọn lựa có điều kiện cấm.
+Một nguyên lý chỉ thật sự sống khi nó giải được bài toán cụ thể. Với bao hàm, loại trừ cũng vậy. Sức mạnh của nó lộ rõ nhất khi các điều kiện giao nhau chằng chịt và những cách đếm đơn giản đều dẫn đến sai số.
 
-Bài này tập trung vào ứng dụng để biến kỹ thuật thành phản xạ. Mục tiêu là khi gặp một bài toán đếm phức tạp, bạn nhận ra ngay đâu là các tập cần đếm, đâu là phần giao phải hiệu chỉnh, và vì sao cách tổ chức bài toán quyết định gần hết độ khó của lời giải.
+
+Hàm sinh mạnh ở chỗ nó đổi một dãy số thành đối tượng đại số dễ thao tác hơn, khá giống cách ta chọn biểu diễn phù hợp để làm bài toán đơn giản đi.
+Trong tổ hợp, ta dùng nó để đếm các cấu hình tránh ràng buộc nào đó. Trong xác suất, ta dùng nó để tính khả năng xảy ra ít nhất một biến cố. Trong khoa học máy tính, nó xuất hiện khi phân tích tập bản ghi thỏa nhiều điều kiện hoặc số cấu hình hợp lệ trong hệ thống có ràng buộc chồng lấn.
+
+Phần khó nhất thường không phải là thực hiện phép cộng trừ, mà là mô hình hóa đúng tập cần đếm và giao của các tập con liên quan. Khi làm đúng bước đó, công thức còn lại khá cơ học.
+
+Bài này sẽ tập trung vào các ví dụ ứng dụng để biến một nguyên lý trừu tượng thành công cụ thực chiến trong giải bài toán.
 
 ## 1. Sàng Legendre và đếm số nguyên tố
 
@@ -60,11 +66,15 @@ $$
 
 ## 5. Ứng dụng trong tô màu và ràng buộc
 
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+
 Trong bài toán tô màu, ta thường cần đếm số cách gán màu sao cho các điều kiện cấm không xảy ra. Gọi $A_i$ là tập cách tô vi phạm cạnh thứ $i$. Số cách tô hợp lệ là tổng số cách tô trừ đi hợp các vi phạm, tức là dùng bao hàm - loại trừ.
 
 <div class="interactive-demo" markdown="1">
 **Demo tương tác đề xuất**: Người học chọn số phần tử miền nguồn và miền đích. Công cụ hiển thị số toàn ánh bằng cách trừ các hàm bỏ sót giá trị đích.
+<div data-demo="surjection-counter"></div>
 </div>
+<script src="{{ '/public/js/surjection-counter.js' | relative_url }}"></script>
 
 ## 6. Ghi chú dễ nhầm
 
@@ -78,6 +88,8 @@ Trong bài toán tô màu, ta thường cần đếm số cách gán màu sao ch
 </div>
 
 ## 7. Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Trong kiểm thử phần mềm, số toàn ánh mô hình hóa việc phân phối ca kiểm thử sao cho mọi module đều được chạm tới. Trong bảo mật, derangement liên quan đến tráo khóa và phân phối bí mật sao cho không ai nhận đúng khóa cũ. Trong tối ưu tổ hợp, bao hàm - loại trừ là nền tảng của nhiều thuật toán đếm chính xác nhưng có độ phức tạp lũy thừa.
 

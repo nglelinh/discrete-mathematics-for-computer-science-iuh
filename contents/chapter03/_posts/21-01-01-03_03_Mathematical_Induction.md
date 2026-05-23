@@ -10,11 +10,19 @@ lang: en
 
 # Quy nạp Toán học
 
-Khi một mệnh đề nói về 10 phần tử, ta còn có thể kiểm tra từng cái. Nhưng khi nó nói về mọi số tự nhiên, mọi bước lặp của thuật toán, hay mọi cây có độ cao bất kỳ, cách “thử hết” lập tức sụp đổ. Ta cần một cơ chế chứng minh kiểu domino: đẩy đúng viên đầu tiên và đảm bảo mỗi viên đều làm ngã viên kế tiếp.
+Nhiều cấu trúc trong khoa học máy tính được xây theo từng bước: dãy Fibonacci, lời gọi đệ quy, số mức của cây, hay chi phí của một thuật toán khi kích thước đầu vào tăng dần. Nếu muốn chứng minh một tính chất đúng với mọi số tự nhiên, kiểm tra vài giá trị đầu tiên là chưa đủ.
 
-Đó chính là **quy nạp toán học**. Nó không chỉ giúp chứng minh công thức tổng hay tính chia hết, mà còn dạy cách suy nghĩ về đệ quy, vòng lặp, cấu trúc cây và tính đúng đắn của chương trình. Với dân khoa học máy tính, quy nạp là cây cầu nối giữa chứng minh toán học và reasoning về code.
+
+Trong chứng minh, mục tiêu không chỉ là đi đến kết luận đúng mà còn cho thấy vì sao từng bước đều hợp lệ, giống như khi ta giải thích tính đúng đắn của một thuật toán.
+**Quy nạp toán học** cho ta một cách rất mạnh để xử lý kiểu bài toán đó. Ta chứng minh mệnh đề đúng ở điểm khởi đầu, rồi chỉ ra rằng nếu nó đúng ở bước hiện tại thì nó cũng đúng ở bước kế tiếp. Một khi mắt xích này khép kín, toàn bộ chuỗi phía sau được kéo theo.
+
+Cách nghĩ này rất gần với lập trình đệ quy. Muốn tin một hàm đệ quy là đúng, ta phải tin trường hợp cơ sở đúng và bước đệ quy bảo toàn tính đúng. Vì vậy, học quy nạp không chỉ để chứng minh công thức, mà còn để hiểu sâu hơn cách xây dựng và kiểm tra lời giải đệ quy.
+
+Trong bài này, chúng ta sẽ đi từ ý tưởng trực quan của hiệu ứng domino đến dạng phát biểu chuẩn của quy nạp, rồi áp dụng vào những mệnh đề quen thuộc trong toán rời rạc.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -124,6 +132,8 @@ Khi viết bài, nên theo khuôn sau:
 
 ## Ví dụ 1: Tổng của $n$ số tự nhiên đầu tiên
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 **Mệnh đề.** Với mọi $n \ge 1$,
 
 $$1 + 2 + \cdots + n = \frac{n(n+1)}{2}$$
@@ -158,6 +168,8 @@ Vậy theo nguyên lý quy nạp toán học, công thức đúng với mọi $n
 
 ## Ví dụ 2: Tổng cấp số nhân
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 **Mệnh đề.** Với mọi $n \ge 0$,
 
 $$1 + 2 + 2^2 + \cdots + 2^n = 2^{n+1} - 1$$
@@ -187,6 +199,8 @@ Vậy mệnh đề đúng với mọi $n \ge 0$. $\square$
 Tổng này thường xuất hiện khi đếm số nút của cây nhị phân đầy đủ theo từng mức, hoặc khi phân tích các thuật toán tách đôi dữ liệu.
 
 ## Ví dụ 3: Tính chia hết
+
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
 **Mệnh đề.** Với mọi $n \ge 1$, số $7^n - 1$ chia hết cho $6$.
 
@@ -226,6 +240,8 @@ với $d$ là số cần chứng minh chia hết.
 
 ## Ví dụ 4: Bất đẳng thức Bernoulli
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 **Mệnh đề.** Với mọi $n \in \mathbb{N}$ và mọi $x \ge -1$,
 
 $$ (1+x)^n \ge 1 + nx $$
@@ -264,6 +280,8 @@ Vậy mệnh đề đúng với mọi $n \in \mathbb{N}$. $\square$
 
 ## Ví dụ 5: Tổng các số lẻ đầu tiên
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 **Mệnh đề.** Với mọi $n \ge 1$,
 
 $$1 + 3 + 5 + \cdots + (2n-1) = n^2$$
@@ -293,6 +311,8 @@ Vậy mệnh đề đúng với mọi $n \ge 1$. $\square$
 Mỗi khi từ hình vuông cạnh $k$ sang hình vuông cạnh $k+1$, ta chỉ cần thêm một "viền" gồm đúng $2k+1$ ô vuông. Đây là một ví dụ đẹp cho thấy quy nạp không chỉ là đại số mà còn có trực giác hình học.
 
 ## Ví dụ 6: Ứng dụng trong Khoa học Máy tính — bất biến vòng lặp
+
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
 Khi học lập trình, sinh viên thường nghe cụm từ **loop invariant** (bất biến vòng lặp). Bản chất của nó rất gần với quy nạp.
 
@@ -332,6 +352,8 @@ Quy nạp không nằm ngoài lập trình. Nó là xương sống của rất n
 
 ## Ví dụ 7: Ứng dụng trong Khoa học Máy tính — số nút của cây nhị phân đầy đủ
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 **Mệnh đề.** Cây nhị phân đầy đủ có chiều cao $h$ (gốc ở mức $0$) thì có:
 
 $$1 + 2 + 2^2 + \cdots + 2^h = 2^{h+1} - 1$$
@@ -364,6 +386,8 @@ Biết quy nạp trên cây hoặc trên chiều cao của cây là kỹ năng r
 
 ## Ví dụ 8: Ứng dụng trong Khoa học Máy tính — tính đúng đắn của công thức truy hồi
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 Xét thuật toán đệ quy tính giai thừa:
 
 ```text
@@ -395,6 +419,8 @@ Do đó, chương trình đúng với mọi $n \ge 0$. $\square$
 Chứng minh chương trình đệ quy thường đi cùng quy nạp, vì bản thân lời gọi đệ quy đang dựa trên việc giải đúng những bài toán nhỏ hơn.
 
 ## Ví dụ 9: Ứng dụng trong Khoa học Máy tính — cận trên cho truy hồi
+
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
 Giả sử thuật toán chia để trị có thời gian chạy thỏa:
 
@@ -443,6 +469,8 @@ $\square$
 Đây là mô hình điển hình khi phân tích merge sort, thuật toán trên cây đoạn, hoặc nhiều bài toán chia để trị khác.
 
 ## Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Quy nạp xuất hiện rất thường xuyên trong khoa học máy tính, không chỉ trong môn Toán rời rạc.
 
@@ -525,33 +553,12 @@ Khi làm bài, bạn có thể theo checklist sau:
 9. Kết thúc bằng câu khẳng định rõ ràng.
 
 <div class="interactive-tool" markdown="1">
-### Công cụ tương tác: Kiểm tra bước quy nạp
+### Công cụ tương tác: Xây dựng chứng minh quy nạp
 
-Một sinh viên viết chứng minh quy nạp cho công thức tổng $1 + 2 + \cdots + n = n(n+1)/2$ và nói "Giả sử đúng với $k+1$, suy ra đúng." Hãy chọn câu trả lời đúng:
-
-<select id="induction-mistake" style="width: 100%; padding: 8px; margin: 10px 0;">
-  <option value="">-- Chọn đánh giá --</option>
-  <option value="correct">Đúng, đó là cách làm quy nạp chuẩn</option>
-  <option value="wrong">Sai, cần giả sử đúng với k rồi chứng minh đúng với k+1</option>
-  <option value="maybe">Có thể đúng tùy bài toán</option>
-</select>
-<button onclick="checkInduction()" style="margin: 10px 0;">Kiểm tra</button>
-<div id="induction-result" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 6px;"></div>
-
-<script>
-function checkInduction() {
-    const val = document.getElementById('induction-mistake').value;
-    const result = document.getElementById('induction-result');
-    if (val === 'wrong') {
-        result.innerHTML = 'Chính xác! Trong quy nạp, ta phải giả sử $P(k)$ đúng (giả thiết quy nạp) và chứng minh $P(k+1)$ đúng. Giả sử $P(k+1)$ đúng là đi ngược chiều suy luận.';
-    } else if (val === 'correct' || val === 'maybe') {
-        result.innerHTML = 'Sai rồi! Hãy nhớ: bước quy nạp là "giả sử P(k) đúng → chứng minh P(k+1) đúng", không phải ngược lại.';
-    } else {
-        result.innerHTML = 'Hãy chọn một câu trả lời.';
-    }
-}
-</script>
+<div data-demo="induction-checker"></div>
 </div>
+
+<script src="{{ '/public/js/induction-step-checker.js' | relative_url }}"></script>
 
 ## Bài tập tự luyện
 

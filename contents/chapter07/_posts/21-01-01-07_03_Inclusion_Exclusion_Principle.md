@@ -10,9 +10,15 @@ lang: en
 
 # Nguyên lý Bù trừ
 
-Khi đếm từng nhóm riêng lẻ rồi cộng lại, ta rất dễ đếm trùng phần giao nhau. Doanh nghiệp có nhóm khách mua sản phẩm A, nhóm khách mua sản phẩm B, nhóm khách mua cả hai; hệ thống có tập user thuộc role X, role Y, và user nằm ở cả hai role. Nếu chỉ cộng thẳng, kết quả sẽ đẹp nhưng sai.
+Khi nhiều điều kiện chồng lấn lên nhau, việc đếm bằng trực giác rất dễ sai. Ta cộng số phần tử của từng nhóm riêng lẻ, rồi vô tình đếm lặp những phần tử thuộc nhiều nhóm cùng lúc. Đây là lỗi rất thường gặp trong phân tích dữ liệu và cả trong xác suất.
 
-**Nguyên lý bao hàm – loại trừ** sửa chính lỗi đó. Nó dạy ta cộng rồi trừ có kỷ luật để xử lý các phần chồng lấn. Đây là kỹ thuật quan trọng trong đếm, xác suất, truy vấn dữ liệu và nhiều bài toán mà cấu trúc giao nhau mới là thứ quyết định đáp án.
+
+Các quy tắc đếm cho ta cách ước lượng số cấu hình có thể xảy ra mà không cần liệt kê hết, đây là kỹ năng rất gần với phân tích thuật toán và kiểm thử.
+**Nguyên lý bù trừ** cho ta một cách sửa sai có hệ thống. Ta cộng những gì cần có, trừ đi phần đã đếm trùng, và nếu nhiều lớp chồng lấn phức tạp hơn thì tiếp tục cộng trừ theo nhịp đúng.
+
+Điều làm nguyên lý này quan trọng là nó không chỉ giải bài toán trên giấy. Nó xuất hiện khi đếm bản ghi thỏa nhiều điều kiện, khi tính xác suất hợp của nhiều biến cố, hay khi phân tích số cấu hình hợp lệ trong một hệ thống có ràng buộc giao nhau.
+
+Trong bài này, chúng ta sẽ học cách dùng nguyên lý bù trừ từ trường hợp hai tập đơn giản đến các tình huống phức tạp hơn, nơi trực giác rất dễ đánh lừa chúng ta.
 
 ## 1. Đếm hợp của hai tập hợp
 
@@ -41,27 +47,28 @@ Không thể trả lời $50$ chỉ vì $30+20=50$; con số $10$ ở phần gia
 Với ba tập $A,B,C$, công thức là
 
 $$
-\egin{aligned}
+\begin{aligned}
 |A \cup B \cup C|
-&= |A| + |B| + |C| \
-&\quad - |A \cap B| - |A \cap C| - |B \cap C| \
+&= |A| + |B| + |C| \\
+&\quad - |A \cap B| - |A \cap C| - |B \cap C| \\
 &\quad + |A \cap B \cap C|.
 \end{aligned}
 $$
 
 **Tại sao phải cộng lại giao ba?** Một phần tử nằm trong cả ba tập được đếm $3$ lần ở bước cộng tập đơn, bị trừ $3$ lần ở bước trừ giao đôi, nên tổng tạm thời là $0$. Ta phải cộng lại một lần để nó được đếm đúng một lần.
 
-<div class="interactive-tool" markdown="1">
+<div class="interactive-tool" data-demo="inclusion-exclusion-toggle" markdown="1">
 **Mô phỏng tương tác đề xuất**: Một bảng có ba công tắc `A`, `B`, `C`. Khi chọn vị trí của một phần tử trong sơ đồ Venn, công cụ hiển thị phần tử đó được cộng/trừ bao nhiêu lần trong công thức bù trừ.
 </div>
+
+<script src="{{ '/public/js/inclusion-exclusion-toggle.js' | relative_url }}"></script>
 
 ## 3. Công thức tổng quát cho $n$ tập hợp
 
 Cho $A_1,A_2,\ldots,A_n$ là các tập hữu hạn. Khi đó
 
 $$
-\left|\igcup_{i=1}^{n} A_i
-ight|
+\left|\bigcup_{i=1}^{n} A_i\right|
 = \sum_i |A_i|
 - \sum_{i<j}|A_i\cap A_j|
 + \sum_{i<j<k}|A_i\cap A_j\cap A_k|
@@ -72,26 +79,23 @@ $$
 Dạng compact hơn:
 
 $$
-\left|\igcup_{i=1}^{n} A_i
-ight|
-= \sum_{\emptyset 
-eq I \subseteq \{1,2,\ldots,n\}} (-1)^{|I|+1}\left|\igcap_{i\in I} A_i
-ight|.
-
+\left|\bigcup_{i=1}^{n} A_i\right|
+= \sum_{\emptyset \neq I \subseteq \{1,2,\ldots,n\}} (-1)^{|I|+1}\left|\bigcap_{i\in I} A_i\right|.
+$$
 
 **Khối chứng minh**: Xét một phần tử $x$ thuộc đúng $r$ trong $n$ tập. Trong vế phải, $x$ đóng góp
 
 $$
-\inom{r}{1}-\inom{r}{2}+\inom{r}{3}-\cdots+(-1)^{r+1}\inom{r}{r}.
+\binom{r}{1}-\binom{r}{2}+\binom{r}{3}-\cdots+(-1)^{r+1}\binom{r}{r}.
 $$
 
 Theo khai triển nhị thức,
 
 $$
-(1-1)^r = \inom{r}{0}-\inom{r}{1}+\inom{r}{2}-\cdots+(-1)^r\inom{r}{r}=0.
+(1-1)^r = \binom{r}{0}-\binom{r}{1}+\binom{r}{2}-\cdots+(-1)^r\binom{r}{r}=0.
 $$
 
-Suy ra tổng xen kẽ không có hạng $\inom{r}{0}$ bằng $1$. Vậy mỗi phần tử thuộc hợp được đếm đúng một lần.
+Suy ra tổng xen kẽ không có hạng $\binom{r}{0}$ bằng $1$. Vậy mỗi phần tử thuộc hợp được đếm đúng một lần.
 
 ## 4. Dạng bù: đếm phần tử không vi phạm điều kiện nào
 
@@ -100,8 +104,7 @@ Nhiều bài toán dễ hơn nếu đếm số đối tượng **vi phạm ít n
 Nếu $U$ là không gian tất cả đối tượng và $A_i$ là tập các đối tượng vi phạm điều kiện thứ $i$, thì số đối tượng hợp lệ là
 
 $$
-|U|-\left|\igcup_i A_i
-ight|.
+|U|-\left|\bigcup_i A_i\right|.
 $$
 
 **Ví dụ**: Có bao nhiêu số từ $1$ đến $100$ không chia hết cho $2$, $3$, hoặc $5$?
@@ -134,6 +137,8 @@ Do đó số bị loại là $50+33+20-16-10-6+3=74$. Số hợp lệ là $100-7
 </div>
 
 ## 6. Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Trong cơ sở dữ liệu, truy vấn `OR` giữa nhiều điều kiện có thể tạo ra bản ghi trùng. Hệ quản trị phải loại trùng tương tự nguyên lý bù trừ. Trong bảo mật, khi đếm số mật khẩu thỏa các điều kiện “có chữ hoa”, “có chữ số”, “có ký tự đặc biệt”, cách hiệu quả là đếm phần bù: mật khẩu thiếu ít nhất một loại ký tự. Trong thuật toán, bù trừ xuất hiện trong sàng số nguyên tố, tính xác suất lỗi của hệ thống nhiều thành phần và phân tích các cấu hình bị cấm.
 

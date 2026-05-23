@@ -10,9 +10,15 @@ lang: vi
 
 # Giải Quan hệ Truy hồi bằng Hàm sinh
 
-Truy hồi cho ta biết mỗi bước phụ thuộc vào bước trước, nhưng đôi khi giải nó bằng phương trình đặc trưng không thuận tiện hoặc không áp dụng đẹp. Đây là lúc hàm sinh trở thành “bộ đổi miền”: biến một bài toán trên dãy thành một bài toán đại số trên chuỗi lũy thừa.
+Khi một quan hệ truy hồi quá khó nhìn ra công thức nghiệm bằng các kỹ thuật quen thuộc, ta có thể đổi góc nhìn. Thay vì bám vào từng số hạng, ta chuyển cả dãy sang một hàm sinh rồi thao tác ở cấp biểu thức.
 
-Kỹ thuật này rất đáng học vì nó cho thấy một mô hình quen thuộc của toán học và khoa học máy tính: đổi cách nhìn bài toán để nó trở nên dễ xử lý hơn. Khi giải truy hồi bằng hàm sinh, ta không chỉ tìm công thức; ta còn học một chiến lược tư duy có thể tái sử dụng ở nhiều nơi khác.
+
+Hàm sinh mạnh ở chỗ nó đổi một dãy số thành đối tượng đại số dễ thao tác hơn, khá giống cách ta chọn biểu diễn phù hợp để làm bài toán đơn giản đi.
+Đây là một ý tưởng rất mạnh: biến bài toán truy hồi trong miền chỉ số thành bài toán đại số trong miền hàm. Nhiều truy hồi vốn rối khi nhìn trực tiếp lại trở nên dễ xử lý hơn hẳn sau bước biến đổi này.
+
+Cách làm đó cũng phản ánh một tư duy quan trọng trong khoa học máy tính, chọn biểu diễn thích hợp để lời giải tự nhiên hơn. Không phải lúc nào ta cũng giải bài toán ở dạng ban đầu của nó.
+
+Trong bài này, chúng ta sẽ học cách dùng hàm sinh để giải truy hồi, từ thiết lập biểu thức ban đầu đến rút ra hệ số và công thức cần tìm.
 
 ## 1. Quy trình 4 bước
 
@@ -26,6 +32,8 @@ Kỹ thuật này rất đáng học vì nó cho thấy một mô hình quen thu
 </div>
 
 ## 2. Ví dụ Fibonacci
+
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
 Xét dãy Fibonacci
 
@@ -107,7 +115,9 @@ Phân tích thành phần đơn sẽ cho công thức đóng của $a_n$.
 
 <div class="interactive-demo" markdown="1">
 **Demo tương tác đề xuất**: Chọn một truy hồi bậc 1 hoặc bậc 2, công cụ tự động dựng phương trình cho $G(x)$ và hiển thị bước chuyển từ truy hồi sang phương trình đại số.
+<div data-demo="gf-recurrence-solver"></div>
 </div>
+<script src="{{ '/public/js/gf-recurrence-solver.js' | relative_url }}"></script>
 
 ## 5. Ghi chú dễ nhầm
 
@@ -121,6 +131,8 @@ Phân tích thành phần đơn sẽ cho công thức đóng của $a_n$.
 </div>
 
 ## 6. Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Hàm sinh cho phép giải các truy hồi xuất hiện trong phân tích thuật toán, đếm đường đi trên lưới, mô hình hóa chuỗi ký tự và tính số cấu hình trong tổ hợp. Nhiều bài toán trong lý thuyết ngôn ngữ hình thức cũng biểu diễn tự nhiên bằng hàm sinh, đặc biệt khi số đối tượng theo độ dài cần được mô tả.
 

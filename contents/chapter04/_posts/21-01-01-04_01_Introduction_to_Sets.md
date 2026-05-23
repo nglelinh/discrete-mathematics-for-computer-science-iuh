@@ -10,11 +10,19 @@ lang: en
 
 # Giới thiệu Tập hợp
 
-Trong lập trình, ta liên tục gom các đối tượng thành nhóm: danh sách người dùng đang online, tập quyền của một tài khoản, tập đỉnh đã thăm trong DFS, tập từ khóa khớp với truy vấn tìm kiếm. Đằng sau những cấu trúc quen thuộc đó là một ý tưởng rất căn bản nhưng cực kỳ mạnh: **tập hợp**.
+Khi viết truy vấn SQL, lọc người dùng theo vai trò, gom các node đã thăm trong thuật toán, hay mô tả tập ký tự hợp lệ của một bộ phân tích cú pháp, ta đang làm việc với cùng một ý tưởng rất nền tảng: **tập hợp**.
 
-Lý thuyết tập hợp cho ta ngôn ngữ để nói chính xác “có thuộc hay không”, “trùng hay khác”, “bao nhiêu phần tử”, và “hai nhóm dữ liệu chồng lên nhau ở đâu”. Nó là nền móng của database, machine learning, phân tích dữ liệu, xác suất và gần như mọi chương khác trong toán rời rạc. Hiểu tập hợp tốt giống như học đúng bảng chữ cái trước khi viết những câu phức tạp hơn.
+
+Tư duy tập hợp giúp ta mô tả dữ liệu, miền giá trị và ràng buộc một cách chính xác, nên phần này là nền cho cả lập trình lẫn mô hình hóa.
+Tập hợp cho phép ta nói chính xác cái gì thuộc về một nhóm và cái gì không. Nghe đơn giản, nhưng đây là ngôn ngữ đứng phía sau dữ liệu, quan hệ, hàm số, xác suất, đồ thị và rất nhiều mô hình mà khoa học máy tính dùng hằng ngày.
+
+Nếu thiếu tư duy tập hợp, nhiều phát biểu kỹ thuật sẽ trở nên mơ hồ. Hai điều kiện tưởng giống nhau có thể khác hoàn toàn chỉ vì miền phần tử khác nhau. Một lỗi nhỏ trong cách mô tả tập đầu vào cũng có thể kéo theo sai lệch trong thiết kế thuật toán hay chứng minh.
+
+Trong bài này, chúng ta sẽ xây nền từ khái niệm phần tử, cách ký hiệu tập hợp, đến những kiểu tập quen thuộc mà bạn sẽ gặp xuyên suốt phần còn lại của môn học.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -26,6 +34,8 @@ Sau bài học này, sinh viên có thể:
 - **Áp dụng** khái niệm tập hợp trong lập trình Python.
 
 ## Định nghĩa Tập hợp
+
+Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc định nghĩa trước sẽ giúp các ví dụ và định lý phía sau trở nên dễ theo dõi hơn.
 
 **Định nghĩa**: Tập hợp là một bộ sưu tập các đối tượng riêng biệt, được gọi là các **phần tử** hay **thành phần** của tập hợp.
 
@@ -168,6 +178,8 @@ print({'c'}.issubset(A))  # False
 </div>
 
 ## Công cụ tương tác: Trình khám phá tập hợp
+
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
 
 <div id="set-explorer" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
     <h4>🔍 Công cụ khám phá tập hợp</h4>

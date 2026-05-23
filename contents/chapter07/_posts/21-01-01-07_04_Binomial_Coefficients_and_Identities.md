@@ -10,9 +10,15 @@ lang: en
 
 # Hệ số Nhị thức và Đồng nhất thức Tổ hợp
 
-Hệ số nhị thức xuất hiện ở những nơi tưởng chừng không liên quan nhau: số cách chọn nhóm, hệ số trong khai triển `(a+b)^n`, cấu trúc của tam giác Pascal, thậm chí trong phân bố xác suất và phân tích thuật toán. Đó không phải sự trùng hợp; nó cho thấy cùng một cấu trúc đếm đang lặp lại dưới nhiều lớp vỏ khác nhau.
+Một biểu thức như $$(a+b)^n$$ nhìn đại số, nhưng phía sau nó là một câu chuyện đếm rất rõ: ở mỗi lần nhân, ta chọn lấy $$a$$ hay $$b$$, rồi xem một hạng tử cụ thể xuất hiện bao nhiêu lần. Từ đó, **hệ số nhị thức** bước ra như cầu nối rất đẹp giữa đại số và tổ hợp.
 
-Bài này giúp ta nhìn ra cấu trúc chung đó qua **hệ số nhị thức** và các **đồng nhất thức** đi kèm. Khi hiểu được vì sao một đẳng thức đếm là đúng, bạn không chỉ nhớ công thức tốt hơn mà còn có thêm trực giác để biến đổi biểu thức và phát hiện mô hình lặp trong các bài toán rời rạc.
+
+Các quy tắc đếm cho ta cách ước lượng số cấu hình có thể xảy ra mà không cần liệt kê hết, đây là kỹ năng rất gần với phân tích thuật toán và kiểm thử.
+Trong khoa học máy tính, những hệ số này xuất hiện khi đếm số cách chọn, phân tích cấu hình bit, mô hình hóa xác suất rời rạc, và đánh giá số trường hợp mà một thuật toán phải xử lý. Chúng không chỉ là ký hiệu trong tam giác Pascal.
+
+Khi đã hiểu ý nghĩa đếm của hệ số nhị thức, nhiều **đồng nhất thức tổ hợp** trở nên dễ nhớ hơn rất nhiều. Thay vì thuộc công thức khô, ta có thể nhìn chúng như hai cách khác nhau để đếm cùng một đối tượng.
+
+Trong bài này, chúng ta sẽ đi từ định nghĩa hệ số nhị thức đến các đồng nhất thức quen thuộc, rồi thấy sức mạnh của cách chứng minh bằng lập luận tổ hợp.
 
 ## 1. Hệ số nhị thức
 
@@ -136,6 +142,8 @@ $$
 
 ## 6. Ứng dụng trong Khoa học Máy tính
 
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+
 Hệ số nhị thức xuất hiện trong phân tích thuật toán chia để trị, xác suất Bernoulli, mã sửa lỗi, học máy và sinh ngẫu nhiên tập con. Trong kiểm thử phần mềm, nếu cần chọn mọi tập con gồm $k$ tính năng từ $n$ tính năng để kiểm tra tương tác, số ca kiểm thử là $\binom{n}{k}$.
 
 ```python
@@ -145,6 +153,13 @@ n = 20
 for k in range(0, 6):
     print(k, comb(n, k))
 ```
+
+<div class="interactive-tool" markdown="1">
+<h3>🔬 Công cụ Tương tác: Máy tính Hệ số Nhị thức</h3>
+<p>Công cụ này tính $$C(n,k)$$, tô sáng vị trí tương ứng trong tam giác Pascal và hiển thị khai triển $$(a+b)^n$$.</p>
+<div data-demo="binomial-coefficient-calc"></div>
+</div>
+<script src="{{ '/public/js/binomial-coefficient-calc.js' | relative_url }}"></script>
 
 ## Bài tập thực hành
 

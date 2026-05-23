@@ -10,11 +10,19 @@ lang: en
 
 # Giới thiệu Quan hệ
 
-Biết từng đối tượng riêng lẻ là chưa đủ; điều quan trọng hơn nhiều là chúng **liên hệ với nhau thế nào**. Trong mạng xã hội có quan hệ “theo dõi”, trong cơ sở dữ liệu có quan hệ giữa khóa chính và khóa ngoại, trong toán học có quan hệ “nhỏ hơn”, “bằng nhau”, “chia hết”. Chính mạng lưới liên kết đó mới tạo nên cấu trúc thật của bài toán.
+Trong dữ liệu và hệ thống, các đối tượng hiếm khi tồn tại một mình. Sinh viên học môn học, người dùng theo dõi người dùng khác, tiến trình phụ thuộc tài nguyên, hai node có kết nối với nhau. Điều quan trọng không chỉ là có những phần tử nào, mà còn là chúng **liên hệ** với nhau ra sao.
 
-**Quan hệ** là công cụ để mô tả các kết nối ấy một cách chính xác. Khi học quan hệ, ta bắt đầu chuyển từ tư duy “phần tử nào nằm trong tập” sang tư duy “phần tử này gắn với phần tử kia ra sao”. Đây là nền tảng cho database, đồ thị, machine learning trên mạng, và nhiều cấu trúc tổ chức dữ liệu trong khoa học máy tính.
+
+Khi đọc phần này, hãy nghĩ đến các liên kết giữa đối tượng trong cơ sở dữ liệu, đồ thị và hệ thống phân quyền, vì quan hệ chính là cách ta mô tả những liên kết đó.
+**Quan hệ** là công cụ để mô hình hóa chính xác các liên kết đó. Từ góc nhìn toán học, quan hệ là tập con của tích Descartes. Từ góc nhìn khoa học máy tính, nó là nền tảng của cơ sở dữ liệu quan hệ, ma trận kề, mô hình trạng thái, hệ thống phân quyền và rất nhiều cấu trúc khác.
+
+Một khi đã nhìn bài toán dưới dạng quan hệ, ta có thể đặt ra những câu hỏi sâu hơn: quan hệ này có đối xứng không, có phản xạ không, có cho phép suy ra quan hệ mới hay không? Những câu hỏi đó sẽ dẫn thẳng đến các chương sau về thứ tự, tương đương và đồ thị.
+
+Bài này sẽ đặt nền cho toàn bộ phần đó bằng cách giới thiệu định nghĩa quan hệ, cách biểu diễn và cách đọc ý nghĩa của quan hệ trong ngữ cảnh thực tế.
 
 ## Định nghĩa Quan hệ
+
+Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc định nghĩa trước sẽ giúp các ví dụ và định lý phía sau trở nên dễ theo dõi hơn.
 
 **Định nghĩa**: Quan hệ R từ tập hợp A đến tập hợp B là một tập con của tích Cartesian A × B.
 
@@ -74,6 +82,8 @@ Ma trận M_R có M_R[i][j] = 1 nếu (aᵢ, bⱼ) ∈ R, ngược lại = 0
 
 ## Công cụ tương tác: Trình khám phá quan hệ
 
+Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
+
 <div id="relation-explorer" class="interactive-tool">
     <h4>🔍 Công cụ khám phá quan hệ</h4>
     
@@ -112,6 +122,8 @@ Ma trận M_R có M_R[i][j] = 1 nếu (aᵢ, bⱼ) ∈ R, ngược lại = 0
         </div>
     </div>
 </div>
+
+<script src="{{ '/public/js/relation-matrix-toggle.js' | relative_url }}"></script>
 
 <script>
 function analyzeRelation() {

@@ -10,9 +10,15 @@ lang: vi
 
 # Đường đi, Chu trình và Tính liên thông
 
-Biết một đồ thị có những đỉnh và cạnh vẫn chưa nói được nhiều nếu ta không hiểu chúng liên kết thành dòng chảy ra sao. Một mạng có thể rất lớn nhưng bị chia cắt; một hệ thống có thể tồn tại chu trình gây lặp vô hạn; một ứng dụng dẫn đường cần biết liệu có đi từ A đến B được không trước khi bàn chuyện tối ưu.
+Biết một đồ thị có những đỉnh và cạnh nào vẫn chưa đủ để hiểu hành vi của nó. Trong mạng máy tính, điều ta quan tâm là dữ liệu có đi từ máy A sang máy B được không. Trong giao thông, ta muốn biết có tuyến nào nối hai điểm. Trong dependency graph, ta cần phát hiện vòng lặp để tránh hệ thống mắc kẹt.
 
-Vì thế, các khái niệm **đường đi, chu trình, liên thông** là lớp từ vựng đầu tiên để “đọc” một đồ thị. Chúng giúp ta mô tả khả năng tiếp cận, phát hiện vòng lặp, hiểu cấu trúc mạng và chuẩn bị cho các bài toán quan trọng hơn như Euler, Hamilton, shortest path và spanning tree.
+
+Đồ thị là mô hình chuẩn cho mạng, phụ thuộc và đường đi, nên mỗi khái niệm ở đây đều có thể nối trực tiếp sang bài toán thực tế trong phần mềm.
+Những câu hỏi đó dẫn trực tiếp đến ba khái niệm cốt lõi: **đường đi**, **chu trình** và **tính liên thông**. Chúng cho ta biết một mạng có thật sự kết nối, có chứa vòng lặp, hay bị chia thành nhiều mảnh rời nhau hay không.
+
+Đây là nền cho hàng loạt thuật toán sau này. Chỉ khi hiểu rõ đường đi và liên thông, ta mới phân tích được thành phần liên thông, tìm đường ngắn nhất hay xây cây khung một cách có ý nghĩa.
+
+Trong bài này, chúng ta sẽ học cách đọc cấu trúc kết nối của đồ thị qua những khái niệm nền tảng nhưng cực kỳ quan trọng này.
 
 ## 1. Đường đi (Path)
 
@@ -70,7 +76,10 @@ DFS khám phá đồ thị bằng cách đi sâu nhất có thể trước khi q
 
 <div class="interactive-tool" markdown="1">
 **Demo tương tác đề xuất**: Người học chọn một đỉnh bắt đầu. Công cụ hiển thị quá trình BFS và DFS song song, tô màu các đỉnh theo thứ tự thăm.
+
+<div data-demo="bfs-dfs-visualizer"></div>
 </div>
+<script src="{{ '/public/js/bfs-dfs-visualizer.js' | relative_url }}"></script>
 
 ## 5. Cầu và điểm khớp
 
@@ -92,6 +101,8 @@ Các khái niệm này quan trọng trong phân tích độ bền của mạng.
 </div>
 
 ## 7. Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Trong mạng máy tính, BFS và DFS được dùng để tìm đường định tuyến, phát hiện vòng lặp, và kiểm tra khả năng kết nối. Trong phân tích mạng xã hội, tính liên thông giúp xác định các cộng đồng. Trong hệ điều hành, phát hiện deadlock liên quan đến tìm chu trình trong đồ thị chờ tài nguyên.
 

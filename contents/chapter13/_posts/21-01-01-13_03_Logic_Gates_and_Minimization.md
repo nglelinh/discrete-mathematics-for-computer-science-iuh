@@ -10,11 +10,19 @@ lang: en
 
 # Mạng các Cổng Logic và Tối thiểu hóa Hàm Boole
 
-Trong bài trước, chúng ta đã biết cách biểu diễn một hàm Boole dưới dạng tổng các tích (SOP) hoặc tích các tổng (POS). Nhưng khi mang biểu thức đó ra khỏi trang giấy, ta phải đối mặt với câu hỏi thực tế hơn nhiều: làm sao để những bit 0 và 1 ấy thật sự chạy bên trong phần cứng? Câu trả lời nằm ở **mạng các cổng logic** — những “công nhân tí hon” làm việc không ngừng trong CPU, bộ nhớ và mọi mạch số quanh ta.
+Một biểu thức logic không chỉ nằm trên giấy. Trong mạch số, nó phải được hiện thực bằng các **cổng logic** thật, với chi phí phần cứng, độ trễ và độ phức tạp kết nối cụ thể.
 
-Một hàm Boole thường có thể được thực thi bằng nhiều mạng cổng khác nhau, nhưng không phải mạng nào cũng đáng giá như nhau. Dùng ít cổng hơn có thể làm chip nhỏ hơn, mạch nhanh hơn, tiêu thụ điện thấp hơn và tỏa nhiệt ít hơn — những khác biệt mà Intel, AMD hay NVIDIA phải trả bằng rất nhiều tiền và công sức kỹ thuật. Vì vậy, **tối thiểu hóa** không chỉ là rút gọn cho đẹp; đó là bước biến biểu thức logic thành thiết kế phần cứng hiệu quả.
+
+Đại số Boole nối logic với phần cứng và tối ưu biểu thức, vì vậy phần này vừa có ý nghĩa toán học vừa rất gần với thiết kế mạch và điều kiện trong code.
+Vì vậy, việc tối thiểu hóa hàm Boole không phải chuyện thẩm mỹ ký hiệu. Biểu thức gọn hơn có thể dẫn đến mạch ít cổng hơn, ít tầng hơn, dễ kiểm thử hơn và đôi khi tiết kiệm năng lượng hơn. Đây là điểm giao rất rõ giữa toán rời rạc và kiến trúc máy tính.
+
+Khi đã nhìn biểu thức như một mạng cổng, nhiều câu hỏi trở nên rất thực tế: có thể thay thế cấu trúc này bằng cấu trúc gọn hơn không, hai mạch có tương đương không, đâu là điểm dư thừa?
+
+Trong bài này, chúng ta sẽ nối logic đại số với mạch số, rồi học cách đơn giản hóa hàm Boole theo góc nhìn triển khai thực tế.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -266,7 +274,9 @@ $$C_{out} = AB + AC_{in} + BC_{in}$$
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Mô phỏng Cổng Logic</h3>
 <p>Một mô phỏng trực quan cho phép bạn kéo-thả các cổng AND, OR, NOT, NAND, NOR, XOR để xây dựng mạch. Bật/tắt đầu vào để xem tín hiệu lan truyền qua các cổng như thế nào. <strong>Hãy thử:</strong> Xây dựng bộ cộng nửa (half adder) và kiểm tra với cả 4 tổ hợp đầu vào.</p>
+<div data-demo="logic-gates-builder"></div>
 </div>
+<script src="{{ '/public/js/logic-gates-builder.js' | relative_url }}"></script>
 
 ## Bài tập
 

@@ -10,11 +10,19 @@ lang: en
 
 # Bản đồ Karnaugh và Tối thiểu hóa Trực quan
 
-Khi biểu thức Boole chỉ có vài biến, ta còn có thể rút gọn bằng luật đại số. Nhưng chỉ cần số hạng bắt đầu nhiều lên, việc biến đổi bằng tay rất dễ rối, dễ sót và khó nhìn ra đâu là cơ hội gom nhóm tốt nhất. Trong thiết kế mạch, một bước rút gọn bỏ lỡ có thể đồng nghĩa với thêm cổng, thêm tầng trễ và thêm chi phí sản xuất.
+Có những biểu thức Boole đủ nhỏ để ta không cần lao ngay vào thuật toán đầy đủ. Chỉ cần sắp xếp các giá trị đầu ra theo một bảng đặc biệt, những vùng có thể gộp sẽ lộ ra rất trực quan. Đó là lý do **bản đồ Karnaugh** được dùng rất nhiều trong thiết kế logic cơ bản.
 
-**Bản đồ Karnaugh** ra đời để giải đúng nỗi đau đó. Nó biến bài toán đại số thành bài toán hình ảnh: nhóm các ô 1 hoặc 0 kề nhau để nhìn ra biểu thức ngắn nhất một cách trực quan. Đây là công cụ cực kỳ thực dụng cho những hàm có số biến vừa phải, nơi con mắt con người vẫn còn đánh bại được sự lộn xộn của ký hiệu.
+
+Đại số Boole nối logic với phần cứng và tối ưu biểu thức, vì vậy phần này vừa có ý nghĩa toán học vừa rất gần với thiết kế mạch và điều kiện trong code.
+K-map biến việc tối thiểu hóa từ một chuỗi biến đổi đại số dễ nhầm thành một thao tác quan sát có quy tắc. Với số biến vừa phải, đây là cách nhanh và sáng sủa để rút gọn biểu thức.
+
+Công cụ này đặc biệt hữu ích cho sinh viên vì nó giúp thấy trực tiếp vì sao các hạng tử được gộp, thay vì chỉ áp công thức máy móc. Từ đó, trực giác về tối thiểu hóa hàm Boole cũng mạnh lên rõ rệt.
+
+Trong bài này, chúng ta sẽ học cách đọc và nhóm ô trên bản đồ Karnaugh, rồi dùng nó để tối thiểu hóa hàm Boole một cách trực quan nhưng vẫn chính xác.
 
 ## Mục tiêu học tập
+
+Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
 
 Sau bài học này, sinh viên có thể:
 
@@ -164,6 +172,11 @@ Với bốn biến $$w, x, y, z$$, K-map có 16 ô:
 | $$11$$ | $$wxy'z'$$ | $$wxy'z$$ | $$wxyz$$ | $$wxyz'$$ |
 | $$10$$ | $$wx'y'z'$$ | $$wx'y'z$$ | $$wx'yz$$ | $$wx'yz'$$ |
 
+<div class="interactive-tool" markdown="1">
+<div data-demo="kmap-interactive"></div>
+</div>
+<script src="{{ '/public/js/kmap-interactive.js' | relative_url }}"></script>
+
 ### Ví dụ 3: K-map 4 biến
 
 Cho hàm $$F(w, x, y, z) = \sum m(0, 1, 2, 4, 5, 6, 8, 9, 12, 13, 14)$$:
@@ -247,6 +260,8 @@ Kết quả tối ưu: $$F_a = A + B'D' + C + BD$$
 </div>
 
 ## Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 K-map là công cụ chuẩn trong thiết kế mạch số. Các ứng dụng cụ thể:
 

@@ -10,9 +10,15 @@ lang: vi
 
 # Nguyên lý Bao hàm - Loại trừ
 
-Có những bài toán đếm tưởng đã quen nhưng càng thêm ràng buộc càng dễ đếm trùng, đếm thiếu, hoặc lẫn giữa các trường hợp giao nhau. Khi đó, nguyên lý bao hàm – loại trừ quay trở lại như một công cụ không thể thiếu, nhưng ở mức tinh tế hơn trước.
+Khi đếm các đối tượng thỏa nhiều điều kiện cùng lúc, cách cộng thẳng từng nhóm gần như chắc chắn sẽ sai nếu các nhóm có giao nhau. Đây là một vấn đề rất thực trong xác suất, truy vấn dữ liệu và cả các bài toán tổ hợp.
 
-Chương này đặt nguyên lý đó vào bối cảnh sâu hơn của tổ hợp và hàm sinh: không chỉ biết công thức, mà còn biết khi nào nên kích hoạt nó và cách tổ chức các tập điều kiện cho gọn. Đây là kỹ năng quan trọng trong đếm cấu hình, tránh trùng lặp và xây lời giải có cấu trúc cho những bài toán nhiều điều kiện cấm.
+
+Hàm sinh mạnh ở chỗ nó đổi một dãy số thành đối tượng đại số dễ thao tác hơn, khá giống cách ta chọn biểu diễn phù hợp để làm bài toán đơn giản đi.
+**Nguyên lý bao hàm, loại trừ** cho ta một khuôn mẫu chính xác để sửa hiện tượng đếm trùng. Ta cộng các nhóm riêng lẻ, trừ đi các phần giao đã bị tính hai lần, rồi tiếp tục điều chỉnh khi có giao của ba nhóm, bốn nhóm và hơn nữa.
+
+Điều làm nguyên lý này đáng học là nó xuất hiện lặp đi lặp lại trong nhiều bối cảnh khác nhau. Một công cụ đúng ở tập hợp cũng đúng ở xác suất và nhiều bài toán đếm cấu hình.
+
+Trong bài học này, chúng ta sẽ xây lại nguyên lý một cách có hệ thống và chuẩn bị nền cho các ứng dụng mạnh hơn ngay sau đó.
 
 ## 1. Công thức cho hai và ba tập
 
@@ -37,6 +43,7 @@ Cho các tập $A_1,\ldots,A_n$, ta có
 $$
 \left|\bigcup_{i=1}^{n}A_i\right|
 =\sum_{\emptyset\neq I\subseteq\{1,\ldots,n\}}(-1)^{|I|+1}\left|\bigcap_{i\in I}A_i\right|.
+$$
 
 
 **Chứng minh bằng đếm số lần**: Xét một phần tử thuộc đúng $r$ tập. Trong tổng trên, nó được tính
@@ -63,6 +70,8 @@ $$
 
 ## 4. Ví dụ với chia hết
 
+Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
+
 Đếm các số từ 1 đến 100 chia hết cho 2 hoặc 5.
 
 Gọi $A$ là tập số chia hết cho 2, $B$ là tập số chia hết cho 5. Khi đó
@@ -79,7 +88,9 @@ $$
 
 <div class="interactive-tool" markdown="1">
 **Demo tương tác đề xuất**: Công cụ cho phép bật/tắt ba tập trong sơ đồ Venn và hiển thị số lần mỗi vùng được cộng hoặc trừ trong công thức.
+<div data-demo="venn-ie-three-sets"></div>
 </div>
+<script src="{{ '/public/js/venn-ie-three-sets.js' | relative_url }}"></script>
 
 ## 5. Ghi chú dễ nhầm
 
@@ -93,6 +104,8 @@ $$
 </div>
 
 ## 6. Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Nguyên lý này xuất hiện trong sàng số nguyên tố, đếm mật khẩu thỏa ràng buộc, phân tích truy vấn cơ sở dữ liệu nhiều điều kiện, và đếm cấu hình cấm trong tự động hữu hạn. Trong lý thuyết độ phức tạp, nguyên lý bù trừ còn hỗ trợ đếm các đối tượng tránh một tập mẫu con nhất định.
 

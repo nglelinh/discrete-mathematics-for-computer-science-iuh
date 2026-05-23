@@ -10,9 +10,15 @@ lang: vi
 
 # Đồ thị Phẳng và Tô màu Đồ thị
 
-Có những mạng lưới ta có thể vẽ gọn gàng trên mặt phẳng mà không để các cạnh cắt nhau; có những mạng khác thì không thể tránh rối. Cũng có những bài toán mà mục tiêu không phải đi trên đồ thị, mà là gán “màu” hay tài nguyên sao cho các phần tử xung đột không đụng nhau. Hai ý tưởng này nghe khác nhau, nhưng đều liên quan sâu đến cấu trúc không gian của đồ thị.
+Có những bài toán mạng không chỉ quan tâm ai nối với ai, mà còn quan tâm cách biểu diễn hoặc phân bổ tài nguyên sao cho không xung đột. Bản đồ vùng lãnh thổ, thiết kế mạch, lập lịch thi, gán tần số vô tuyến, tất cả đều dẫn đến những câu hỏi kiểu này.
 
-**Đồ thị phẳng** và **tô màu đồ thị** xuất hiện trong thiết kế mạch, lập lịch thi, phân kênh tần số, cấp phát tài nguyên và trực quan hóa mạng. Chúng cho thấy đồ thị không chỉ để biểu diễn kết nối, mà còn để giải các bài toán tránh xung đột và tối ưu bố trí trong thế giới thật.
+
+Đồ thị là mô hình chuẩn cho mạng, phụ thuộc và đường đi, nên mỗi khái niệm ở đây đều có thể nối trực tiếp sang bài toán thực tế trong phần mềm.
+**Đồ thị phẳng** hỏi liệu ta có thể vẽ đồ thị trên mặt phẳng mà không để các cạnh cắt nhau hay không. **Tô màu đồ thị** hỏi cần bao nhiêu màu để các đỉnh kề nhau không trùng màu. Hai chủ đề nghe hình học, nhưng lại có rất nhiều ứng dụng hệ thống và tối ưu.
+
+Điểm hấp dẫn là chúng biến một vấn đề trực quan thành một đối tượng toán học có thể phân tích chặt chẽ. Từ đó, ta hiểu rõ hơn giới hạn của cấu trúc mạng và chi phí tối thiểu để tránh xung đột.
+
+Trong bài này, chúng ta sẽ tiếp cận hai khái niệm này như những công cụ mô hình hóa thực tế, rồi dần đi vào các kết quả nền tảng của chúng.
 
 ## 1. Đồ thị phẳng
 
@@ -75,7 +81,10 @@ $$
 
 <div class="interactive-tool" markdown="1">
 **Demo tương tác đề xuất**: Người học vẽ đồ thị nhỏ, công cụ kiểm tra điều kiện phẳng sơ bộ và cho phép tô màu đỉnh, cảnh báo khi hai đỉnh kề nhau cùng màu.
+
+<div data-demo="graph-coloring-interactive"></div>
 </div>
+<script src="{{ '/public/js/graph-coloring-interactive.js' | relative_url }}"></script>
 
 ## 7. Ghi chú dễ nhầm
 
@@ -89,6 +98,8 @@ $$
 </div>
 
 ## 8. Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Đồ thị phẳng xuất hiện trong thiết kế mạch VLSI, mạng giao thông, hình học tính toán và mesh trong đồ họa. Tô màu đồ thị được dùng trong lập lịch thi, cấp phát thanh ghi trong trình biên dịch, phân bổ tần số vô tuyến và giải Sudoku. Nhiều biến thể tô màu là NP-hard, nên thuật toán heuristic rất quan trọng trong thực tế.
 

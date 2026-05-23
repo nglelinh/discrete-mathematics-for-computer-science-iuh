@@ -261,32 +261,10 @@ Cho p = T, q = F, r = T. Tính giá trị của: ¬p ∨ (q → r)
 <div class="interactive-tool" markdown="1">
 ### Công cụ tương tác: Tính giá trị biểu thức logic
 
-Nhập giá trị cho p, q, r (T hoặc F) và xem kết quả của biểu thức:
-
-<p>
-  p: <select id="val-p"><option value="T">T</option><option value="F">F</option></select>
-  q: <select id="val-q"><option value="T">T</option><option value="F">F</option></select>
-  r: <select id="val-r"><option value="T">T</option><option value="F">F</option></select>
-</p>
-<p>Biểu thức: <code>(p ∧ q) → (¬r ∨ q)</code></p>
-<button onclick="evalLogicExpr()">Tính</button>
-<div id="logic-expr-result" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 6px;"></div>
-
-<script>
-function evalLogicExpr() {
-    const p = document.getElementById('val-p').value === 'T';
-    const q = document.getElementById('val-q').value === 'T';
-    const r = document.getElementById('val-r').value === 'T';
-    // (p ∧ q) → (¬r ∨ q)
-    const left = p && q;
-    const right = !r || q;
-    const result = (!left) || right;
-    document.getElementById('logic-expr-result').innerHTML =
-        `<strong>Kết quả:</strong> ${result ? 'T (đúng)' : 'F (sai)'} <br>` +
-        `<small>(p∧q) = ${left ? 'T' : 'F'}, (¬r∨q) = ${right ? 'T' : 'F'}</small>`;
-}
-</script>
+<div data-demo="logic-evaluator"></div>
 </div>
+
+<script src="{{ '/public/js/logic-operator-widgets.js' | relative_url }}"></script>
 
 ## Ứng dụng trong lập trình
 

@@ -10,11 +10,19 @@ lang: vi
 
 # Bài toán Đường đi Ngắn nhất
 
-Trong bản đồ số, mạng máy tính hay hệ thống giao hàng, câu hỏi “có đường đi không?” chỉ là bước khởi động. Câu hỏi thật sự có giá trị là: đi **đường nào ngắn nhất**, rẻ nhất hoặc nhanh nhất? Khi dữ liệu có hàng triệu đỉnh và cạnh, chọn sai đường không chỉ lãng phí vài phút mà có thể kéo theo chi phí vận hành khổng lồ.
+Khi dùng bản đồ số, tối ưu route giao hàng, tìm đường truyền dữ liệu ít trễ nhất, hay chọn chuỗi phụ thuộc có chi phí thấp nhất, ta đang hỏi cùng một câu: từ điểm xuất phát đến đích, đâu là con đường tốt nhất theo một tiêu chí nào đó?
 
-Bài toán **đường đi ngắn nhất** vì thế là một trong những bài toán cốt lõi nhất của khoa học máy tính ứng dụng. Nó nối lý thuyết đồ thị với thuật toán, tối ưu và thiết kế hệ thống. Học phần này là học cách biến một mạng liên kết phức tạp thành quyết định tốt nhất theo tiêu chí rõ ràng.
+
+Đồ thị là mô hình chuẩn cho mạng, phụ thuộc và đường đi, nên mỗi khái niệm ở đây đều có thể nối trực tiếp sang bài toán thực tế trong phần mềm.
+Trong lý thuyết đồ thị, đó là **bài toán đường đi ngắn nhất**. "Ngắn nhất" có thể là ít cạnh nhất, tổng trọng số nhỏ nhất, thời gian nhỏ nhất, hay chi phí thấp nhất. Chỉ cần mô hình đúng, rất nhiều tình huống thực tế đều rơi vào khuôn mẫu này.
+
+Đây là một chủ đề cực kỳ quan trọng trong khoa học máy tính vì nó đứng sau định tuyến mạng, navigation, tối ưu logistics và nhiều bài toán AI cổ điển. Đồng thời, nó cũng cho thấy cách một mô hình toán học trừu tượng có thể đi thẳng vào ứng dụng.
+
+Trong bài này, chúng ta sẽ học cách phát biểu bài toán, phân biệt các trường hợp thường gặp và chuẩn bị nền cho các thuật toán giải tương ứng.
 
 ## 1. Phát biểu bài toán
+
+Trước khi giải, ta cần phát biểu bài toán thật chính xác. Chỉ cần sai mô hình hoặc sai giả thiết, toàn bộ lời giải phía sau sẽ lệch hướng.
 
 Cho đồ thị có trọng số $G=(V,E,w)$, trong đó $w(e)$ là trọng số của cạnh $e$. Với đỉnh nguồn $s$, cần tìm khoảng cách ngắn nhất
 
@@ -43,6 +51,8 @@ dist[v]=dist[u]+w(u,v).
 $$
 
 ## 3. Thuật toán Dijkstra
+
+Ở phần này, đừng chỉ nhớ các bước. Hãy chú ý điều kiện áp dụng, thông tin được duy trì sau mỗi bước và lý do thuật toán cho kết quả đúng.
 
 **Điều kiện**: Mọi trọng số cạnh không âm.
 
@@ -105,7 +115,9 @@ Nghĩa là đường từ $i$ đến $j$ có thể không đi qua $k$, hoặc đ
 
 <div class="interactive-tool" markdown="1">
 **Demo tương tác đề xuất**: Người học chọn từng bước của Dijkstra; công cụ tô màu đỉnh đã chốt, cạnh được relaxation và bảng `dist` hiện tại.
+<div data-demo="dijkstra-visualizer"></div>
 </div>
+<script src="{{ '/public/js/dijkstra-visualizer.js' | relative_url }}"></script>
 
 ## 8. Ghi chú dễ nhầm
 
@@ -119,6 +131,8 @@ Nghĩa là đường từ $i$ đến $j$ có thể không đi qua $k$, hoặc đ
 </div>
 
 ## 9. Ứng dụng trong Khoa học Máy tính
+
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Đường đi ngắn nhất xuất hiện trong định tuyến Internet, hệ thống bản đồ, logistics, robot, game pathfinding, phân tích phụ thuộc phần mềm và tối ưu chi phí trong mạng. Trong AI game, A* mở rộng Dijkstra bằng heuristic để tìm đường nhanh hơn khi có thông tin hình học.
 
