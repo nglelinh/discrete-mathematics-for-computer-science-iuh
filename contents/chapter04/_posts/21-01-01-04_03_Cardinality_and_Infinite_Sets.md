@@ -145,6 +145,41 @@ print(len(learns_any))
 - **Kiểm thử phần mềm**: bao hàm - loại trừ giúp ước lượng số ca test phủ nhiều điều kiện.
 - **Lý thuyết tính toán**: tính không đếm được giải thích vì sao có nhiều bài toán hơn số chương trình có thể viết.
 
+## Bài tập thực hành
+
+### Bài tập 1: So sánh lực lượng
+
+Chứng minh rằng tập hợp các số tự nhiên $$\N$$ và tập hợp các số chẵn dương có cùng lực lượng.
+
+<details>
+<summary>Đáp án</summary>
+
+Ánh xạ $$f: \N \to 2\N$$, $$f(n) = 2n$$ là song ánh. Do đó $$|\N| = |2\N| = \aleph_0$$.
+
+</details>
+
+### Bài tập 2: Lực lượng tập con
+
+Tính lực lượng của tập hợp tất cả tập con của $$\{1,2,3\}$$.
+
+<details>
+<summary>Đáp án</summary>
+
+$$2^3 = 8$$ tập con (bao gồm cả tập rỗng và tập đầy đủ).
+
+</details>
+
+### Bài tập 3: Ứng dụng bao hàm - loại trừ
+
+Có 50 sinh viên học Python, 40 học Java, 30 học cả hai. Hỏi có bao nhiêu sinh viên học ít nhất một ngôn ngữ?
+
+<details>
+<summary>Đáp án</summary>
+
+$$|P \cup J| = 50 + 40 - 30 = 60$$.
+
+</details>
+
 ## Tóm tắt
 
 Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.

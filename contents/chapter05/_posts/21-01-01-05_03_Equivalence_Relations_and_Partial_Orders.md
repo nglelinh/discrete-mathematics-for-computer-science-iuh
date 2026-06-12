@@ -115,6 +115,55 @@ Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới t
 - **Dependency graph**: thứ tự bộ phận mô hình hóa quan hệ phụ thuộc giữa task.
 - **Version control**: lịch sử commit tạo DAG, thường được xem qua quan hệ tổ tiên.
 
+## Tổ chức dữ liệu và AI
+
+Quan hệ tương đương tạo ra **phân hoạch** nên rất hợp với bài toán gom nhóm dữ liệu: hash bucket, data sharding theo khóa, hoặc chia người dùng thành các nhóm có cùng thuộc tính. Trong xử lý dữ liệu lớn, mỗi lớp tương đương có thể được xử lý như một partition độc lập.
+
+Quan hệ thứ tự bộ phận xuất hiện khi không phải mọi đối tượng đều so sánh trực tiếp được. Priority queue và task scheduling dựa trên quan hệ “phải làm trước”, còn dependency graph trong `npm` hay `pip` dùng thứ tự này để giải bài toán cài đặt gói.
+
+Khi mọi phần tử đều so sánh được, ta có **thứ tự toàn phần**. Đây là nền tảng của sorting algorithms, binary search trees và mọi cấu trúc cần sắp xếp tuyến tính.
+
+Trong recommendation systems, quan hệ giữa người dùng và sản phẩm thường được lưu như ma trận user-item. Quan hệ này không phải tương đương hay thứ tự, nhưng ý tưởng tổ chức dữ liệu theo tập cặp vẫn là nền để suy ra người dùng giống nhau, sản phẩm liên quan và điểm gợi ý.
+
+## Bài tập thực hành
+
+### Bài tập 1: Kiểm tra quan hệ tương đương
+
+Xét quan hệ $$R$$ trên $$\Z$$: $$aRb \iff a - b$$ chia hết cho 3. Chứng minh $$R$$ là quan hệ tương đương.
+
+<details>
+<summary>Đáp án</summary>
+
+- Phản xạ: $$a-a=0$$ chia hết cho 3.
+- Đối xứng: Nếu $$a-b$$ chia hết cho 3 thì $$b-a = -(a-b)$$ cũng chia hết.
+- Bắc cầu: Nếu $$a-b$$ và $$b-c$$ chia hết cho 3 thì $$a-c$$ cũng chia hết.
+
+</details>
+
+### Bài tập 2: Phân hoạch
+
+Tìm các lớp tương đương của quan hệ "cùng số dư khi chia 4" trên tập $$\{0,1,2,3,4,5,6,7\}$$.
+
+<details>
+<summary>Đáp án</summary>
+
+Lớp: [0,4], [1,5], [2,6], [3,7].
+
+</details>
+
+### Bài tập 3: Thứ tự bộ phận
+
+Vẽ Hasse diagram cho tập $$\{1,2,3,6,12\}$$ với quan hệ chia hết.
+
+<details>
+<summary>Đáp án</summary>
+
+1 → 2 → 6 → 12  
+1 → 3 → 6 → 12  
+1 → 6 → 12 (các cạnh bao hàm rút gọn)
+
+</details>
+
 ## Tóm tắt
 
 Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.

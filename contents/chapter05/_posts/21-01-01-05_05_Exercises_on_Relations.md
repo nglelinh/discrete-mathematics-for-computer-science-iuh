@@ -206,6 +206,47 @@ Các bài tập trên tương ứng trực tiếp với tác vụ CS:
 **Nhầm lẫn 3**: Vẽ biểu đồ Hasse nhưng giữ cả cạnh bắc cầu. Biểu đồ Hasse chỉ giữ quan hệ phủ.
 </div>
 
+## Bài tập thực hành
+
+### Bài tập 1: Kiểm tra tính chất
+
+Cho quan hệ $$R = \{(1,1),(2,2),(3,3),(1,2),(2,1)\}$$ trên $$\{1,2,3\}$$.  
+Xác định các tính chất: phản xạ, đối xứng, bắc cầu.
+
+<details>
+<summary>Đáp án</summary>
+
+- Phản xạ: Có (có cặp chéo)
+- Đối xứng: Có
+- Bắc cầu: Có (vì chỉ có 1-2 và 2-1)
+
+</details>
+
+### Bài tập 2: Tìm lớp tương đương
+
+Tìm tất cả quan hệ tương đương trên tập $$\{a,b\}$$.
+
+<details>
+<summary>Đáp án</summary>
+
+Có 2 quan hệ tương đương: quan hệ đồng nhất và quan hệ toàn phần.
+
+</details>
+
+### Bài tập 3: Hasse diagram
+
+Vẽ Hasse diagram cho tập con của $$\{1,2,3\}$$ theo quan hệ chứa.
+
+<details>
+<summary>Đáp án</summary>
+
+∅ → {1} → {1,2} → {1,2,3}  
+∅ → {2} → {2,3} → {1,2,3}  
+∅ → {3} → {1,3} → {1,2,3}  
+(và các nhánh khác)
+
+</details>
+
 ## Tóm tắt
 
 Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.

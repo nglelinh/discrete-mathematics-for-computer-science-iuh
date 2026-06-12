@@ -153,6 +153,48 @@ result = tokenize(clean("  Discrete Math  "))
 - **Serialization**: `decode(encode(x)) = x` là điều kiện nghịch đảo một phía quan trọng.
 - **Lập trình hàm**: composition giúp xây dựng chương trình lớn từ hàm nhỏ.
 
+## Bài tập thực hành
+
+### Bài tập 1: Tính hàm hợp
+
+Cho $$f(x) = 2x$$ và $$g(x) = x+3$$. Tính $$f \circ g$$ và $$g \circ f$$.
+
+<details>
+<summary>Đáp án</summary>
+
+- $$f \circ g (x) = 2(x+3) = 2x+6$$
+- $$g \circ f (x) = 2x+3$$
+
+</details>
+
+### Bài tập 2: Kiểm tra hàm nghịch đảo
+
+Hàm $$f(x) = 3x + 1$$ có nghịch đảo không? Nếu có, tìm $$f^{-1}$$.
+
+<details>
+<summary>Đáp án</summary>
+
+Có (song ánh trên $$\R$$). $$f^{-1}(x) = \frac{x-1}{3}$$.
+
+</details>
+
+### Bài tập 3: Ứng dụng
+
+Viết hàm Python minh họa composition của hai hàm.
+
+<details>
+<summary>Đáp án</summary>
+
+```python
+def compose(f, g):
+    return lambda x: f(g(x))
+
+h = compose(lambda x: x*2, lambda x: x+1)
+print(h(3))  # 8
+```
+
+</details>
+
 ## Tóm tắt
 
 Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.

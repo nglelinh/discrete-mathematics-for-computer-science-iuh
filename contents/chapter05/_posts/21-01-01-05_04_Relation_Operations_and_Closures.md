@@ -141,6 +141,42 @@ Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới t
 - **Compiler**: phân tích call graph để biết hàm nào có thể gọi gián tiếp hàm nào.
 - **Bảo mật**: quan hệ quyền truy cập kế thừa cần bao đóng theo cây vai trò.
 
+## Bài tập thực hành
+
+### Bài tập 1: Tính quan hệ hợp thành
+
+Cho $$R = \{(1,2),(2,3)\}$$ và $$S = \{(2,4),(3,5)\}$$. Tính $$R \circ S$$ và $$S \circ R$$.
+
+<details>
+<summary>Đáp án</summary>
+
+- $$R \circ S = \{(2,4),(3,5)\}$$ (không có cặp nào thỏa)
+- $$S \circ R = \{(1,4),(2,5)\}$$
+
+</details>
+
+### Bài tập 2: Bao đóng
+
+Tìm bao đóng phản xạ và bắc cầu nhỏ nhất của quan hệ $$R = \{(1,2),(2,3)\}$$ trên $$\{1,2,3\}$$.
+
+<details>
+<summary>Đáp án</summary>
+
+Bao đóng phản xạ + bắc cầu: $$\{(1,1),(2,2),(3,3),(1,2),(2,3),(1,3)\}$$
+
+</details>
+
+### Bài tập 3: Ma trận Warshall
+
+Cho ma trận quan hệ 3×3, áp dụng thuật toán Warshall một bước.
+
+<details>
+<summary>Đáp án</summary>
+
+Thực hiện $$W = W \lor (W[:,k] \land W[k,:])$$ với mỗi k.
+
+</details>
+
 ## Tóm tắt
 
 Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.

@@ -172,6 +172,69 @@ if (not is_admin) or (not is_active):
     deny_access()
 ```
 
+## Bài tập thực hành
+
+### Bài tập 1: Chứng minh tương đương bằng bảng chân trị
+
+Chứng minh rằng $$p \to (q \lor r) \equiv (p \to q) \lor (p \to r)$$ bằng cách lập bảng chân trị đầy đủ cho cả hai vế.
+
+<details>
+<summary>Đáp án</summary>
+
+Bảng chân trị 8 hàng cho 3 biến cho thấy hai cột cuối luôn giống nhau ở mọi tổ hợp giá trị. Do đó hai biểu thức tương đương.
+
+</details>
+
+### Bài tập 2: Rút gọn biểu thức
+
+Rút gọn biểu thức sau về dạng đơn giản nhất:
+
+$$\neg(p \land \neg q) \lor (\neg p \land q)$$
+
+<details>
+<summary>Đáp án</summary>
+
+Áp dụng De Morgan và các luật bù, đồng nhất:
+
+$$\equiv (\neg p \lor q) \lor (\neg p \land q) \equiv \neg p \lor q$$
+
+</details>
+
+### Bài tập 3: Chuyển sang DNF và CNF
+
+Cho biểu thức $$(p \lor q) \land (\neg p \lor r)$$.
+
+1. Viết dạng DNF đầy đủ.
+2. Viết dạng CNF (đã là CNF).
+
+<details>
+<summary>Đáp án</summary>
+
+- DNF: $$(p \land \neg p) \lor (p \land r) \lor (q \land \neg p) \lor (q \land r)$$ (rút gọn thành $$(p \land r) \lor (q \land \neg p) \lor (q \land r)$$).
+- CNF: Giữ nguyên $$(p \lor q) \land (\neg p \lor r)$$.
+
+</details>
+
+### Bài tập 4: Ứng dụng thực tế
+
+Viết một đoạn mã Python kiểm tra điều kiện `not (user.is_banned() and user.is_inactive())` theo hai cách tương đương. Giải thích tại sao một trong hai cách dễ đọc và tối ưu hơn.
+
+<details>
+<summary>Đáp án</summary>
+
+```python
+if not (user.is_banned() and user.is_inactive()):
+    allow_access()
+
+# Tương đương (De Morgan)
+if (not user.is_banned()) or (not user.is_inactive()):
+    allow_access()
+```
+
+Cách thứ hai dễ đọc hơn và có thể tận dụng short-circuit evaluation tốt hơn trong một số trình biên dịch.
+
+</details>
+
 ## Tóm tắt
 
 Tương đương logic cho phép ta biến đổi biểu thức mà không đổi ý nghĩa. Các luật như De Morgan, phân phối, hấp thụ và kéo theo là công cụ đại số của logic mệnh đề. DNF mô tả các trường hợp làm công thức đúng, còn CNF mô tả ràng buộc dạng clause, đặc biệt quan trọng trong SAT và kiểm chứng chương trình.

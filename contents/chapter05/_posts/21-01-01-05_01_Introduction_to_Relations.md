@@ -215,6 +215,30 @@ function analyzeRelation() {
 ### 1. Cơ sở dữ liệu quan hệ
 Mô hình quan hệ (relational model) do Edgar Codd đề xuất năm 1970 là nền tảng của hầu hết cơ sở dữ liệu hiện đại. Mỗi bảng (table) là một quan hệ, mỗi hàng là một bộ (tuple), và mỗi cột là một thuộc tính.
 
+Trong cách nhìn này, lược đồ `Enrollments(student_id, course_id)` được xây từ tích Cartesian `Students × Courses`, còn quan hệ thật sự chỉ lấy những cặp có nghĩa như `(S01, CS101)`. Quan hệ one-to-many xuất hiện ở `Departments × Students`, còn many-to-many xuất hiện ở `Students × Courses`.
+
+### 2. Quan hệ và truy vấn SQL
+Các phép SQL quen thuộc chính là cách thao tác trên quan hệ: `SELECT` gần với phép chiếu thuộc tính, `WHERE` lọc những bộ thỏa điều kiện, còn `JOIN` ghép các quan hệ qua thuộc tính chung.
+
+```sql
+SELECT s.name, c.title
+FROM Students s
+JOIN Enrollments e ON s.id = e.student_id
+JOIN Courses c ON c.id = e.course_id
+WHERE c.department = 'CS';
+```
+
+Ở đây, `JOIN` nối các cặp liên hệ, `WHERE` giữ lại các bộ thuộc khoa `CS`, và `SELECT` chỉ chiếu ra hai thuộc tính cần xem.
+
+```python
+students = {"S01", "S02"}
+courses = {"CS101", "MATH101"}
+enrollments = {("S01", "CS101"), ("S01", "MATH101"), ("S02", "CS101")}
+cs_only = {sid for (sid, cid) in enrollments if cid == "CS101"}
+```
+
+Đoạn mã trên biểu diễn quan hệ như một tập các bộ. Đây là cách rất gần với định nghĩa toán học `R ⊆ A × B`.
+
 ### 2. Đồ thị và mạng xã hội
 Quan hệ "bạn bè" trên Facebook là quan hệ hai ngôi. Đồ thị có hướng của quan hệ giúp phân tích mạng xã hội: ai là người có ảnh hưởng, ai kết nối các nhóm.
 

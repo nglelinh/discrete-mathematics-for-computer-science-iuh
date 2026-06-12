@@ -123,6 +123,43 @@ Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới t
 - **Database primary key** tạo đơn ánh từ bản ghi sang khóa.
 - **Load balancing** thường là toàn ánh nếu mọi server đều nhận ít nhất một job.
 
+## Bài tập thực hành
+
+### Bài tập 1: Kiểm tra tính chất
+
+Xét $$f: \R \to \R$$, $$f(x) = x^2$$.  
+Hỏi $$f$$ có phải đơn ánh? Toàn ánh? Giải thích.
+
+<details>
+<summary>Đáp án</summary>
+
+- Không đơn ánh ($$f(2) = f(-2)$$)
+- Không toàn ánh (không có $$x$$ nào cho $$f(x) = -1$$)
+
+</details>
+
+### Bài tập 2: Tìm hàm song ánh
+
+Tìm một hàm song ánh từ $$\{1,2,3\}$$ sang $$\{a,b,c\}$$.
+
+<details>
+<summary>Đáp án</summary>
+
+$$f(1)=a, f(2)=b, f(3)=c$$ (bất kỳ hoán vị nào cũng được).
+
+</details>
+
+### Bài tập 3: Ứng dụng
+
+Giải thích tại sao hàm băm tốt thường được thiết kế gần như đơn ánh.
+
+<details>
+<summary>Đáp án</summary>
+
+Để giảm va chạm (collision). Nếu hai input khác nhau cho cùng output thì dễ xảy ra xung đột trong bảng băm.
+
+</details>
+
 ## Tóm tắt
 
 Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.

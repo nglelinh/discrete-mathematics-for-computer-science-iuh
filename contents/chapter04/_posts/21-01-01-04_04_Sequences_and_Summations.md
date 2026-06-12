@@ -181,6 +181,49 @@ Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới t
 - **Xử lý tín hiệu và AI**: vector, chuỗi thời gian, gradient descent đều dùng dãy và tổng.
 - **Cơ sở dữ liệu**: aggregation như `SUM`, `AVG` là biểu hiện trực tiếp của ký hiệu tổng.
 
+## Bài tập thực hành
+
+### Bài tập 1: Tính tổng
+
+Tính $$\sum_{k=1}^{n} (2k-1)$$ và chứng minh kết quả bằng quy nạp.
+
+<details>
+<summary>Đáp án</summary>
+
+Kết quả: $$n^2$$.  
+Chứng minh quy nạp: bước cơ sở $$n=1$$ đúng; giả sử đúng đến $$n$$, với $$n+1$$: $$n^2 + (2(n+1)-1) = n^2 + 2n + 1 = (n+1)^2$$.
+
+</details>
+
+### Bài tập 2: Dãy Fibonacci
+
+Viết công thức đệ quy của dãy Fibonacci và tính $$F_7$$.
+
+<details>
+<summary>Đáp án</summary>
+
+$$F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2}$$.  
+$$F_7 = 13$$.
+
+</details>
+
+### Bài tập 3: Ứng dụng vòng lặp
+
+Viết biểu thức Sigma tương đương với đoạn code:
+
+```python
+total = 0
+for i in range(1, n+1):
+    total += i * i
+```
+
+<details>
+<summary>Đáp án</summary>
+
+$$\sum_{i=1}^{n} i^2 = \frac{n(n+1)(2n+1)}{6}$$
+
+</details>
+
 ## Tóm tắt
 
 Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.

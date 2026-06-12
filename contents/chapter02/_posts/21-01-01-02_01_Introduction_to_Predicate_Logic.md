@@ -177,6 +177,22 @@ function identity<T>(x: T): T { return x; }
 Bất biến vòng lặp thường được biểu diễn bằng vị từ và lượng từ:
 - $$\forall i (0 \leq i < k \implies P(a[i]))$$ — mọi phần tử trong đoạn [0..k-1] đều thỏa P
 
+## Logic vị từ trong Trí tuệ Nhân tạo
+
+Logic vị từ mở rộng logic mệnh đề bằng cách cho phép mô tả **quan hệ giữa các đối tượng**. Thay vì chỉ có mệnh đề nguyên tử như `p`, ta có thể viết `Knows(Alice, Bob)` hay `Enrolled(x, y)` để diễn đạt cấu trúc tri thức rõ hơn.
+
+Các hệ suy luận AI như Prolog hay knowledge base dựa trên vị từ để rút ra kết luận mới từ luật cũ. Ví dụ, nếu biết `Student(An)` và luật `∀x (Student(x) → HasID(x))`, hệ có thể suy ra `HasID(An)`.
+
+Trong NLP, predicate structure giúp mô hình hóa quan hệ giữa từ và thực thể: ai làm hành động nào, tác động lên đối tượng nào, và trong ngữ cảnh gì. Đây là nền của information extraction và semantic parsing.
+
+Ví dụ tiêu biểu trong logic bậc nhất là:
+
+$$Knows(Alice, Bob)$$
+
+$$\forall x\,(Student(x) \to \exists y\,(Course(y) \land Enrolled(x,y)))$$
+
+Mệnh đề thứ hai diễn đạt: mọi sinh viên đều tồn tại ít nhất một học phần mà họ đăng ký.
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Biểu diễn vị từ

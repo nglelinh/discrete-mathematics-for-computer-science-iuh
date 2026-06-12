@@ -125,6 +125,69 @@ Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới t
 - **Functional programming**: ưu tiên hàm thuần túy để dễ kiểm thử và suy luận.
 - **Machine learning**: mô hình học máy là hàm xấp xỉ từ đặc trưng đầu vào đến dự đoán.
 
+## Hàm số trong AI và Machine Learning
+
+Trong AI, mô hình thường được nhìn như một hàm ánh xạ đầu vào sang đầu ra: ảnh $$\to$$ nhãn lớp, văn bản $$\to$$ cảm xúc, hay dữ liệu lịch sử $$\to$$ giá trị dự đoán. Vì thế, bài toán classification và regression đều có thể xem là xây hàm xấp xỉ từ dữ liệu.
+
+Neural network là hợp của nhiều hàm nhỏ: phép nhân ma trận, cộng bias và activation function như ReLU hay sigmoid. Mỗi tầng nhận đầu ra của tầng trước, nên toàn mạng là một composition of functions.
+
+Trong recommendation systems, ta thường cần hàm $$f(user, item)\to rating$$ để dự đoán mức độ phù hợp giữa người dùng và sản phẩm.
+
+```python
+def classify(score):
+    return "pass" if score >= 0.5 else "fail"
+
+class MockModel:
+    def predict(self, X):
+        return [classify(x[0]) for x in X]
+```
+
+Đoạn mã trên mô phỏng kiểu `predict()` quen thuộc trong `sklearn`: nhận tập đầu vào và trả về đầu ra xác định cho từng mẫu.
+
+## Bài tập thực hành
+
+### Bài tập 1: Kiểm tra hàm
+
+Xét quan hệ $$R = \{(1,2),(2,4),(3,6)\}$$ trên $$\N$$.  
+Hỏi $$R$$ có phải là hàm không? Giải thích.
+
+<details>
+<summary>Đáp án</summary>
+
+Có, vì mỗi phần tử domain chỉ ánh xạ đến đúng một giá trị.
+
+</details>
+
+### Bài tập 2: Xác định domain, codomain, range
+
+Cho hàm $$f: \N \to \N$$, $$f(x) = x^2 + 1$$.  
+Xác định domain, codomain và range.
+
+<details>
+<summary>Đáp án</summary>
+
+- Domain: $$\N$$
+- Codomain: $$\N$$
+- Range: $$\{2,5,10,17,...\}$$ (các số có dạng $$n^2+1$$)
+
+</details>
+
+### Bài tập 3: Hàm trong Python
+
+Viết hàm Python tương ứng với $$f(x) = 2x + 1$$ và kiểm tra với input 3.
+
+<details>
+<summary>Đáp án</summary>
+
+```python
+def f(x):
+    return 2 * x + 1
+
+print(f(3))  # 7
+```
+
+</details>
+
 ## Tóm tắt
 
 Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.

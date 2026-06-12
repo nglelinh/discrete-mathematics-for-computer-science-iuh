@@ -146,6 +146,55 @@ Lập luận:
 - **Program verification**: Đặc tả như "mọi trạng thái reachable đều thỏa invariant" cần UI/UG để chứng minh.
 - **Database logic**: Query optimizer và Datalog dựa trên suy luận với biến và lượng từ.
 
+## Bài tập thực hành
+
+### Bài tập 1: Nhận diện quy tắc
+
+Xác định quy tắc suy luận nào được dùng trong mỗi bước sau:
+
+1. $$\forall x (P(x) \to Q(x))$$, $$P(a)$$ → $$Q(a)$$
+2. $$P(c)$$ → $$\exists x P(x)$$
+
+<details>
+<summary>Đáp án</summary>
+
+1. Universal Instantiation (UI)
+2. Existential Generalization (EG)
+
+</details>
+
+### Bài tập 2: Hoàn thiện chứng minh
+
+Cho: $$\forall x (Student(x) \to HasID(x))$$ và $$\exists x Student(x)$$.  
+Chứng minh: $$\exists x HasID(x)$$.
+
+<details>
+<summary>Đáp án</summary>
+
+1. $$\exists x Student(x)$$ (tiền đề)
+2. $$Student(c)$$ (EI)
+3. $$Student(c) \to HasID(c)$$ (UI)
+4. $$HasID(c)$$ (Modus Ponens)
+5. $$\exists x HasID(x)$$ (EG)
+
+</details>
+
+### Bài tập 3: Tìm lỗi
+
+Tìm và sửa lỗi trong lập luận sau:
+
+> Mọi sinh viên đều học Discrete Math.  
+> Lan là sinh viên.  
+> Vậy Lan học Discrete Math.  
+> Do đó mọi sinh viên đều học Discrete Math.
+
+<details>
+<summary>Đáp án</summary>
+
+Lỗi ở bước cuối: từ một trường hợp cụ thể (Lan) không được suy ra "mọi" (UG chỉ áp dụng khi đối tượng là tùy ý, không phải tên riêng).
+
+</details>
+
 ## Tóm tắt
 
 UI đi từ "mọi" đến "một trường hợp cụ thể". UG đi từ "phần tử tùy ý" đến "mọi". EI đi từ "tồn tại" đến một nhân chứng mới. EG đi từ một nhân chứng cụ thể đến kết luận tồn tại. Sử dụng đúng điều kiện của từng quy tắc là chìa khóa để tránh lập luận sai.

@@ -170,6 +170,71 @@ WHERE EXISTS (
 
 Lượng từ cũng xuất hiện trong đặc tả phần mềm: "mọi request hợp lệ đều nhận response", "tồn tại một đường đi từ node nguồn đến node đích", "mỗi khóa ánh xạ đến đúng một giá trị".
 
+## Bài tập thực hành
+
+### Bài tập 1: Phủ định lượng từ
+
+Viết phủ định của các công thức sau:
+
+1. $$\forall x (P(x) \to Q(x))$$
+2. $$\exists x \forall y (R(x,y))$$
+
+<details>
+<summary>Đáp án</summary>
+
+1. $$\exists x (P(x) \land \lnot Q(x))$$
+2. $$\forall x \exists y \lnot R(x,y)$$
+
+</details>
+
+### Bài tập 2: Dịch sang logic vị từ
+
+Dịch câu sau sang ngôn ngữ logic vị từ (x là sinh viên, y là môn học):
+
+"Mọi sinh viên đều có ít nhất một môn học mà họ đạt điểm tối đa."
+
+<details>
+<summary>Đáp án</summary>
+
+$$\forall x \exists y (Student(x) \land Course(y) \land Takes(x,y) \land Score(x,y,10))$$
+
+</details>
+
+### Bài tập 3: Phân biệt thứ tự lượng từ
+
+Giải thích tại sao hai công thức sau **không** tương đương:
+
+- $$\forall x \exists y (y > x)$$
+- $$\exists y \forall x (y > x)$$
+
+<details>
+<summary>Đáp án</summary>
+
+Công thức thứ nhất đúng trên $$\mathbb{R}$$ (với mọi x luôn tồn tại y = x+1). Công thức thứ hai sai vì không tồn tại một y nào lớn hơn mọi x.
+
+</details>
+
+### Bài tập 4: Ứng dụng Python/SQL
+
+Viết đoạn code Python và câu truy vấn SQL tương ứng với mệnh đề:
+
+" Tồn tại một sinh viên có điểm trung bình > 9.0 "
+
+<details>
+<summary>Đáp án</summary>
+
+```python
+any(student.gpa > 9.0 for student in students)
+```
+
+```sql
+SELECT EXISTS (
+  SELECT 1 FROM students WHERE gpa > 9.0
+);
+```
+
+</details>
+
 ## Tóm tắt
 
 Lượng từ biến vị từ thành mệnh đề có giá trị đúng-sai. $$\forall$$ yêu cầu mọi phần tử thỏa mãn, $$\exists$$ chỉ cần một nhân chứng, còn $$\exists!$$ yêu cầu đúng một nhân chứng. Với lượng từ lồng nhau, thứ tự rất quan trọng; khi phủ định, phải đổi $$\forall$$ thành $$\exists$$ và ngược lại, đồng thời phủ định vị từ bên trong.

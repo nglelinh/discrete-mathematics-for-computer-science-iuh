@@ -271,6 +271,28 @@ function checkProperties() {
 }
 </script>
 
+## Ứng dụng kỹ thuật: khóa và phép chiếu
+
+Trong cơ sở dữ liệu, tính chất của quan hệ không chỉ để phân loại mà còn để bảo đảm dữ liệu nhất quán qua thời gian. Một **primary key** phải xác định duy nhất mỗi bộ, nghĩa là không thể để hai hàng khác nhau có cùng khóa.
+
+Nếu không gian khóa quá nhỏ so với số bản ghi, nguyên lý pigeonhole cho thấy trùng lặp là không tránh khỏi. Vì vậy, thiết kế khóa phải đủ lớn và ổn định để duy trì tính duy nhất lâu dài.
+
+**Phép chiếu** (projection, $$\pi$$) trong đại số quan hệ là thao tác chọn một số thuộc tính từ mỗi bộ. Đây là bản dịch trực tiếp của ý tưởng toán học: từ bộ nhiều thành phần, ta chỉ giữ lại những tọa độ cần thiết.
+
+```sql
+SELECT DISTINCT student_id
+FROM Enrollments;
+```
+
+Lệnh này chính là phép chiếu $$\pi_{student\_id}(Enrollments)$$, đồng thời `DISTINCT` loại các bộ trùng sau khi bỏ bớt thuộc tính.
+
+```python
+enrollments = {("S01", "CS101"), ("S01", "MATH101"), ("S02", "CS101")}
+projection = {student_id for (student_id, _) in enrollments}
+```
+
+Ở đây, `projection` là kết quả chiếu quan hệ hai ngôi xuống thuộc tính thứ nhất.
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Nhận diện tính chất
