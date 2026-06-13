@@ -32,13 +32,6 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Quine-McCluskey, implicant nguyên tố (prime implicant), bảng phủ (covering table), Petrick's method, biểu thức tối tiểu.
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter13/qm_algorithm_flowchart.svg" alt="Sơ đồ khối thuật toán Quine-McCluskey hai pha" width="70%" height="70%">
-  <figcaption style="text-align: center;">Hình 13.5 — Hai pha của thuật toán Quine-McCluskey: tìm implicant nguyên tố và chọn implicant tối ưu.</figcaption>
-</p>
-</figure>
-
 ## Giới thiệu
 
 ### Khi nào dùng Quine-McCluskey?

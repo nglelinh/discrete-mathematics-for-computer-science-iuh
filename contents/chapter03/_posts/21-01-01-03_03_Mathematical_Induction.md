@@ -18,12 +18,9 @@ Cách nghĩ này rất gần với lập trình đệ quy. Muốn tin một hàm
 
 Trong bài này, chúng ta sẽ đi từ ý tưởng trực quan của hiệu ứng domino đến dạng phát biểu chuẩn của quy nạp, rồi áp dụng vào những mệnh đề quen thuộc trong toán rời rạc.
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/assets/img/03-03-induction/induction-domino.svg" alt="Hiệu ứng domino" width="60%" height="60%">
-  <figcaption style="text-align: center;">Hình 3.1: Hiệu ứng domino — nếu quân đầu ngã và mỗi quân làm quân sau ngã, thì tất cả đều ngã</figcaption>
-</p>
-</figure>
+![Hiệu ứng domino](https://commons.wikimedia.org/wiki/Special:FilePath/Domino_effect_(50_fps).gif)
+
+*Hình 3.1: Hiệu ứng domino — nếu quân đầu ngã và mỗi quân làm quân sau ngã, thì tất cả đều ngã.*
 
 ## Mục tiêu học tập
 
@@ -81,13 +78,6 @@ Trong lập trình, nhiều đối tượng được định nghĩa đệ quy:
 - cây nhị phân: một cây gồm nút gốc và hai cây con trái/phải
 
 Khi đối tượng được định nghĩa đệ quy, kỹ thuật chứng minh tự nhiên nhất thường cũng là quy nạp.
-
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter03/domino_induction.svg" alt="Hình ảnh domino minh họa quy nạp: viên đầu ngã và mỗi viên kéo theo viên tiếp" width="60%" height="60%">
-  <figcaption style="text-align: center;">Hình 3.3: Domino — phép ẩn dụ kinh điển cho quy nạp: bước cơ sở (đổ viên đầu) và bước quy nạp (mỗi viên kéo theo viên kế)</figcaption>
-</p>
-</figure>
 
 ## Nguyên lý quy nạp toán học
 

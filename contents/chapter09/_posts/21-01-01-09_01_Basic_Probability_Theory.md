@@ -226,6 +226,68 @@ def simulate_server_load(arrival_rate, service_rate, simulation_time):
 
 </details>
 
+### Bài tập 4: Random Binary Matrices
+
+**A.16** For some $$k \le n$$, suppose we sample a uniformly random $$n \times n$$ matrix with $$k$$ many 1s and $$n^2 - k$$ many 0s.
+
+(a) What's the probability that all 1s are in the same row?
+
+(b) What's the probability that all 1s are in different rows?
+
+<details>
+<summary>Đáp án</summary>
+
+Tổng số ma trận $$n \times n$$ với đúng $$k$$ số 1: $$\binom{n^2}{k}$$ (chọn $$k$$ vị trí trong $$n^2$$ ô).
+
+(a) "Tất cả số 1 cùng một hàng": chọn 1 hàng trong $$n$$ hàng ($$n$$ cách), sau đó chọn $$k$$ ô trong $$n$$ ô của hàng đó ($$\binom{n}{k}$$ cách). Vậy:
+
+$$P = \frac{n \cdot \binom{n}{k}}{\binom{n^2}{k}}$$
+
+(b) "Tất cả số 1 ở các hàng khác nhau": cần chọn $$k$$ hàng phân biệt từ $$n$$ hàng ($$\binom{n}{k}$$ cách), rồi trong mỗi hàng đã chọn, chọn đúng 1 ô (mỗi hàng có $$n$$ lựa chọn). Vậy số cách sắp xếp là $$\binom{n}{k} \cdot n^k$$. Do đó:
+
+$$P = \frac{\binom{n}{k} \cdot n^k}{\binom{n^2}{k}}$$
+
+</details>
+
+### Bài tập 5: Probability Calisthenics
+
+**A.17** Here are some calisthenics for probability calculations.
+
+(a) Two fair dice are rolled. Given that the sum of the dice is at most 4, what's the conditional probability of getting doubles (that is, the two dice show the same value)?
+
+(b) You have a bag with three coins: an ordinary fair coin, a coin with heads on both sides, and a coin with tails on both sides. You close your eyes, select a coin uniformly at random from the bag, toss it, then see that it landed with heads showing. What's the conditional probability that the other side of the coin you selected is also heads?
+
+(c) A computer system has $$n$$ machines. There are $$k \le n$$ jobs, and the system assigns each job to one of the machines selected uniformly at random, independent of the other jobs. What's the probability that at least one machine gets at least two jobs?
+
+(d) Two fair $$n$$-sided dice are rolled (with faces labeled by numbers in $$[n]$$). What's the probability that the sum of the dice is an even number? Hint: There are two cases, depending on whether $$n$$ is even or odd.
+
+<details>
+<summary>Đáp án</summary>
+
+(a) Không gian mẫu thu gọn: các cặp $$(a,b)$$ với $$a+b \le 4$$. Các cặp: (1,1), (1,2), (1,3), (2,1), (2,2), (3,1) — tổng cộng 6 kết quả. Trong đó doubles: (1,1), (2,2) — 2 kết quả. Vậy:
+
+$$P(\text{doubles} \mid \text{sum} \le 4) = \frac{2}{6} = \frac{1}{3}.$$
+
+(b) Gọi H = sấp ngửa thấy mặt heads. Ba đồng xu: fair (F), two-heads (H₂), two-tails (T₂). Xác suất chọn mỗi đồng = 1/3. Bayes:
+
+$$P(\text{H}_2 \mid H) = \frac{P(H \mid \text{H}_2) \cdot P(\text{H}_2)}{P(H)} = \frac{1 \cdot 1/3}{P(H)}.$$
+
+$$P(H) = P(H \mid F) \cdot \frac{1}{3} + P(H \mid \text{H}_2) \cdot \frac{1}{3} + P(H \mid \text{T}_2) \cdot \frac{1}{3} = \frac{1}{2} \cdot \frac{1}{3} + 1 \cdot \frac{1}{3} + 0 \cdot \frac{1}{3} = \frac{1}{6} + \frac{1}{3} = \frac{1}{2}.$$
+
+Vậy $$P(\text{H}_2 \mid H) = \frac{1/3}{1/2} = \frac{2}{3}.$$
+
+(c) Xác suất cần tìm = 1 - P(không có máy nào nhận ≥ 2 jobs) = 1 - P(mỗi máy nhận tối đa 1 job). Vì có $$k \le n$$ jobs, mỗi máy tối đa 1 job nghĩa là $$k$$ jobs được phân vào $$k$$ máy khác nhau. Số cách: chọn $$k$$ máy từ $$n$$ ($$\binom{n}{k}$$) × hoán vị $$k$$ jobs vào $$k$$ máy ($$k!$$). Tổng số cách phân $$k$$ jobs vào $$n$$ máy: $$n^k$$. Vậy:
+
+$$P = 1 - \frac{\binom{n}{k} \cdot k!}{n^k} = 1 - \frac{n!}{(n-k)! \cdot n^k}.$$
+
+(d) Với hai xúc xắc $$n$$-mặt, tổng số kết quả: $$n^2$$. Số cặp có tổng chẵn: cần hai số cùng chẵn hoặc cùng lẻ.
+
+- Nếu $$n$$ chẵn: có $$n/2$$ số chẵn và $$n/2$$ số lẻ. Số cặp cùng chẵn: $$(n/2)^2$$, cùng lẻ: $$(n/2)^2$$. Tổng: $$2 \cdot (n/2)^2 = n^2/2$$. Xác suất: $$\frac{n^2/2}{n^2} = \frac{1}{2}$$.
+
+- Nếu $$n$$ lẻ: có $$\frac{n+1}{2}$$ số lẻ và $$\frac{n-1}{2}$$ số chẵn. Số cặp cùng lẻ: $$\big(\frac{n+1}{2}\big)^2$$, cùng chẵn: $$\big(\frac{n-1}{2}\big)^2$$. Tổng: $$\frac{(n+1)^2 + (n-1)^2}{4} = \frac{2n^2 + 2}{4} = \frac{n^2 + 1}{2}$$. Xác suất: $$\frac{n^2 + 1}{2n^2} = \frac{1}{2} + \frac{1}{2n^2}$$.
+
+</details>
+
 ## Tóm tắt
 
 Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.

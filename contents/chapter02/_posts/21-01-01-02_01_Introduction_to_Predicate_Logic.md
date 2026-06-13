@@ -148,13 +148,6 @@ Thứ tự của các lượng từ rất quan trọng!
 
 
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter02/predicate_structure.svg" alt="Sơ đồ cấu trúc logic vị từ: vị từ, miền, lượng từ" width="65%" height="65%">
-  <figcaption style="text-align: center;">Hình 2.1: Ba thành phần của logic vị từ — vị từ (tính chất/quan hệ), miền xác định (tập đối tượng), lượng từ (∀ và ∃)</figcaption>
-</p>
-</figure>
-
 ## Ứng dụng trong Khoa học Máy tính
 
 ### 1. SQL và Cơ sở dữ liệu

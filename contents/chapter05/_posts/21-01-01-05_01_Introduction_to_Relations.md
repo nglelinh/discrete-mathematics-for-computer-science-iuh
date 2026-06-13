@@ -81,12 +81,9 @@ Ma trận M_R có M_R[i][j] = 1 nếu (aᵢ, bⱼ) ∈ R, ngược lại = 0
 - **Cột** = phần tử đích (đến B)
 - Nếu A = B → ma trận **vuông**
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/assets/img/05-01-relations/digraph.svg" alt="Đồ thị có hướng" width="50%" height="50%">
-  <figcaption style="text-align: center;">Hình 5.1: Biểu diễn quan hệ bằng đồ thị có hướng</figcaption>
-</p>
-</figure>
+![Đồ thị có hướng](https://commons.wikimedia.org/wiki/Special:FilePath/Example_of_simple_directed_graph.svg?width=400)
+
+*Hình 5.1: Biểu diễn quan hệ bằng đồ thị có hướng — mỗi cung thể hiện một cặp (a, b) ∈ R.*
 
 ## Ứng dụng trong Khoa học Máy tính
 

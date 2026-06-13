@@ -45,6 +45,8 @@ Hãy tưởng tượng **miền xác định** là sân chơi, và vị từ là
 - Miền càng rộng → Luật càng khó đúng
 - Miền càng hẹp → Luật dễ đúng hơn
 
+
+
 **Ví dụ trong SQL**:
 
 ```sql

@@ -389,6 +389,98 @@ và engineering có trách nhiệm.
 
 ---
 
+## 5. Chứng minh bằng đếm (Proof by counting)
+
+Một kỹ thuật chứng minh đặc biệt hữu ích trong toán rời rạc là **đếm cùng một đối tượng theo hai cách khác nhau**, từ đó suy ra hai biểu thức bằng nhau.
+
+### 5.1. Đếm bằng hai cách (Counting in two ways)
+
+**Định lý (Handshaking Lemma).** Trong mọi đồ thị vô hướng, tổng bậc của các đỉnh là một số chẵn.
+
+*Chứng minh.* Xét đồ thị vô hướng $$G = (V,E)$$. Mỗi cạnh không phải khuyên góp 1 vào bậc của hai đỉnh, mỗi khuyên góp 2 vào bậc của một đỉnh. Do đó mỗi cạnh đóng góp 2 vào tổng $$\sum_{v \in V} \deg(v)$$. Vậy:
+
+$$\sum_{v \in V} \deg(v) = 2 \cdot |E|$$
+
+— là một số chẵn. ∎
+
+Đây là một ví dụ kinh điển của "đếm bằng hai cách": đếm tổng bậc theo hướng đỉnh (node-centric) và theo hướng cạnh (edge-centric) cho cùng một kết quả.
+
+**Ví dụ ứng dụng:** Trong siêu khối $$n$$-chiều $$\{0,1\}^n$$, mỗi đỉnh có bậc $$n$$ (vì có thể đảo một trong $$n$$ bit). Có $$2^n$$ đỉnh, nên tổng bậc là $$n 2^n$$, suy ra số cạnh là $$n 2^{n-1}$$.
+
+### 5.2. Nguyên lý chuồng bồ câu (Pigeonhole Principle)
+
+**Nguyên lý:** Nếu có nhiều hơn $$n$$ chim bồ câu bay vào $$n$$ chuồng, thì ít nhất một chuồng có ít nhất hai chim.
+
+Phát biểu hình thức: Với mọi tập hữu hạn $$S$$ và $$T$$ thỏa $$|S| > |T|$$ và mọi hàm $$f: S \to T$$, tồn tại $$x \ne y \in S$$ sao cho $$f(x) = f(y)$$.
+
+> **Ví dụ 1:** Trong số 367 người, có ít nhất hai người sinh cùng ngày (vì chỉ có 366 ngày trong năm kể cả năm nhuận).
+>
+> **Ví dụ 2:** Trong số $$n+1$$ số nguyên bất kỳ, có ít nhất hai số có cùng số dư khi chia cho $$n$$.
+>
+> **Ví dụ 3 (ứng dụng CS):** Trong một mạng có $$n$$ máy tính, nếu có $$n+1$$ kết nối đồng thời, thì ít nhất một máy phải xử lý ít nhất hai kết nối.
+
+## 6. Chứng minh bằng thuật toán (Proof by algorithm)
+
+Nhiều định lý có thể được chứng minh bằng cách **xây dựng một thuật toán** và chứng minh nó luôn cho kết quả đúng. Kỹ thuật này đặc biệt phổ biến trong khoa học máy tính.
+
+### 6.1. Dùng thuật toán để khẳng định tồn tại
+
+Để chứng minh một đối tượng tồn tại, ta có thể đưa ra một thuật toán xây dựng nó.
+
+**Định lý.** Trong mọi đồ thị vô hướng, nếu tồn tại đường đi (walk) từ $$u$$ đến $$v$$, thì tồn tại đường đi đơn (path) — không lặp đỉnh — từ $$u$$ đến $$v$$.
+
+*Chứng minh bằng thuật toán:*
+
+```
+Đầu vào: đồ thị G, hai đỉnh u, v; biết có walk P từ u đến v
+while (P có đỉnh lặp):
+    tìm đỉnh w lặp đầu tiên trên P
+    // P có dạng u → ... → w → ... → w → ... → v
+    xóa đoạn giữa hai lần xuất hiện của w
+    // P trở thành u → ... → w → ... → v (ngắn hơn)
+kết thúc: P là walk không lặp đỉnh = path từ u đến v
+```
+
+*Tính đúng đắn:* Vòng lặp duy trì bất biến "P là walk từ u đến v". Mỗi bước xóa đoạn giữa các đỉnh lặp làm P ngắn hơn (giảm số cạnh) nhưng vẫn là walk hợp lệ. Vòng lặp kết thúc vì độ dài P không thể âm. Khi dừng, P không lặp đỉnh, nên là một path. ∎
+
+### 6.2. Dùng thuật toán để chứng minh đẳng thức
+
+**Ví dụ:** Chứng minh $$2^{n-1} + 2^{n-2} + \cdots + 2^1 + 2^0 = 2^n - 1$$.
+
+*Chứng minh bằng thuật toán (cộng nhị phân):* Biểu diễn các lũy thừa trong hệ nhị phân:
+
+```
+  1000...000  (n-1 số 0)  = 2^{n-1}
++ 0100...000               = 2^{n-2}
++ 0010...000               = 2^{n-3}
+  ...
++ 0000...010               = 2^1
++ 0000...001               = 2^0
+= 1111...111               (n số 1)
+```
+
+Nếu cộng thêm 1 vào số này, tất cả các bit 1 sẽ flip thành 0 khi carry lan đến đầu, cho kết quả là $$1\;000\!\cdots\!000$$ (1 theo sau $$n$$ số 0), tức là $$2^n$$. Vậy tổng ban đầu $$= 2^n - 1$$. ∎
+
+### 6.3. Thuật toán đệ quy
+
+**Định lý.** Với mọi cây nhị phân, số lá bằng số đỉnh trong cộng 1.
+
+*Chứng minh bằng thuật toán (co cây dần):*
+
+```
+Khởi tạo G ← cây nhị phân ban đầu
+while (G có nhiều hơn 1 đỉnh):
+    tìm đỉnh trong v ở độ sâu lớn nhất
+    xóa hai con u, w của v (là lá)
+    // Số lá giảm 1 (mất 2 lá, thêm v thành lá mới)
+    // Số đỉnh trong giảm 1 (mất v)
+kết thúc: G còn đúng 1 đỉnh (1 lá, 0 đỉnh trong)
+```
+
+Bất biến của vòng lặp là **"số lá - số đỉnh trong = 1"** luôn được duy trì. Ở cuối, đồ thị còn 1 đỉnh, là 1 lá và 0 đỉnh trong, thỏa bất biến. Vì bất biến đúng từ đầu, cây ban đầu cũng thỏa mãn. ∎
+
+> **Nhận xét:** Chứng minh bằng thuật toán rất gần với lập trình. Bất biến vòng lặp (loop invariant) là cầu nối giữa chứng minh toán học và kiểm thử phần mềm.
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Chọn phương pháp chứng minh phù hợp
@@ -437,4 +529,14 @@ x = x + 1
 
 ## Tóm tắt
 
-Chứng minh là ngôn ngữ của toán học và cũng là tiêu chuẩn của tri thức. Trong khoa học máy tính, đó là nền của correctness, security, và engineering có trách nhiệm. Các phương pháp direct proof, contradiction, induction và Hoare logic là những công cụ thiết yếu để xây dựng phần mềm đáng tin cậy.
+Chứng minh là ngôn ngữ của toán học và cũng là tiêu chuẩn của tri thức. Trong khoa học máy tính, đó là nền của correctness, security, và engineering có trách nhiệm.
+
+**Các phương pháp chứng minh đã học:**
+- **Chứng minh trực tiếp (Direct proof):** từ giả thiết suy ra kết luận.
+- **Chứng minh phản chứng (Proof by contradiction):** giả sử kết luận sai → mâu thuẫn.
+- **Quy nạp toán học (Mathematical induction):** chứng minh mệnh đề đúng với mọi số tự nhiên.
+- **Chứng minh bằng đếm (Proof by counting):** đếm cùng đối tượng bằng hai cách, hoặc dùng nguyên lý chuồng bồ câu.
+- **Chứng minh bằng thuật toán (Proof by algorithm):** xây dựng thuật toán và dùng bất biến vòng lặp để chứng minh tính đúng đắn.
+- **Hoare logic:** kiểm chứng chương trình bằng tiền điều kiện và hậu điều kiện.
+
+Bất biến (invariant) là sợi chỉ đỏ xuyên suốt: từ chứng minh quy nạp, bất biến vòng lặp, đến kiểm chứng hình thức.

@@ -32,13 +32,6 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Bản đồ Karnaugh (Karnaugh map), ô kề (adjacent cell), implicant nguyên tố (prime implicant), don't-care, biểu thức tối tiểu (minimal expression).
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter13/karnaugh_map_layout.svg" alt="Cấu trúc bản đồ Karnaugh cho 2, 3 và 4 biến" width="90%" height="90%">
-  <figcaption style="text-align: center;">Hình 13.4 — Bố trí bản đồ Karnaugh cho 2, 3 và 4 biến. Lưu ý thứ tự hàng/cột theo mã Gray.</figcaption>
-</p>
-</figure>
-
 ## Mã Gray (Gray Code)
 
 Mã Gray là hệ thống mã nhị phân trong đó hai giá trị liên tiếp chỉ khác nhau **đúng một bit**. Điều này rất quan trọng trong bản đồ Karnaugh vì nó đảm bảo các ô kề nhau chỉ khác nhau một biến.

@@ -32,13 +32,6 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Thuật toán (algorithm), đầu vào (input), đầu ra (output), mã giả (pseudocode), tính đúng đắn (correctness), tính hữu hạn (finiteness), tính xác định (definiteness).
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter14/algorithm_puzzle.svg" alt="Minh họa khái niệm thuật toán như một chiếc máy nhận đầu vào và sinh đầu ra sau một số hữu hạn bước" width="70%" height="70%">
-  <figcaption style="text-align: center;">Hình 14.1 — Thuật toán nhận đầu vào, xử lý theo từng bước xác định, và sinh ra đầu ra.</figcaption>
-</p>
-</figure>
-
 ## 1. Thuật toán là gì?
 
 Ở phần này, đừng chỉ nhớ các bước. Hãy chú ý điều kiện áp dụng, thông tin được duy trì sau mỗi bước và lý do thuật toán cho kết quả đúng.

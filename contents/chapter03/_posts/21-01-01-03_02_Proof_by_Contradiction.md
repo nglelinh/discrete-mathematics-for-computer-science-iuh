@@ -251,13 +251,6 @@ Vậy không tồn tại số nguyên tố lớn nhất. ∎
 
 Không phải lúc nào phản chứng cũng phải triển khai từ đầu. Đôi khi ta có thể dùng một định lý đã chứng minh trước đó để tạo mâu thuẫn nhanh gọn.
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter03/contradiction_flow.svg" alt="Sơ đồ chứng minh phản chứng: giả sử ngược lại → suy luận → mâu thuẫn → kết luận" width="65%" height="65%">
-  <figcaption style="text-align: center;">Hình 3.2: Luồng của chứng minh phản chứng — giả sử điều ngược lại, suy luận đến mâu thuẫn, kết luận điều ban đầu đúng</figcaption>
-</p>
-</figure>
-
 ## Ví dụ 4: Trực giác về Bài toán dừng (Halting Problem)
 
 Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.

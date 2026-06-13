@@ -32,13 +32,6 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Hàm Boole (Boolean function), dạng tổng các tích (SOP - Sum of Products), dạng tích các tổng (POS - Product of Sums), minterm, maxterm, dạng chuẩn tắc (canonical form).
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter13/boolean_function_mapping.svg" alt="Ánh xạ từ đầu vào nhị phân sang đầu ra trong hàm Boole n biến" width="70%" height="70%">
-  <figcaption style="text-align: center;">Hình 13.2 — Hàm Boole $$F: \{0,1\}^n \to \{0,1\}$$ ánh xạ mỗi tổ hợp đầu vào thành một giá trị đầu ra.</figcaption>
-</p>
-</figure>
-
 ## Định nghĩa Hàm Boole
 
 ### Hàm Boole $$n$$ biến

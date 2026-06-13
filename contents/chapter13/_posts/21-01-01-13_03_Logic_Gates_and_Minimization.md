@@ -32,13 +32,6 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Cổng logic (logic gate), mạch tổ hợp (combinational circuit), tối thiểu hóa (minimization), đa thức tối tiểu (minimal polynomial), độ phức tạp mạch (circuit complexity).
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter13/logic_gates_symbols.svg" alt="Ký hiệu chuẩn của các cổng logic AND, OR, NOT, NAND, NOR, XOR" width="80%" height="80%">
-  <figcaption style="text-align: center;">Hình 13.3 — Ký hiệu IEEE chuẩn cho sáu cổng logic cơ bản.</figcaption>
-</p>
-</figure>
-
 ## Các Cổng Logic Cơ bản
 
 ### Cổng AND

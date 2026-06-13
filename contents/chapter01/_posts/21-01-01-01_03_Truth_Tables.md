@@ -195,13 +195,6 @@ Bảng chân trị:
 | 1 | 1 | 0 |   1   |      1      |
 | 1 | 1 | 1 |   1   |      1      |
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter01/truth_table_diagram.svg" alt="Sơ đồ minh họa cấu trúc bảng chân trị" width="60%" height="60%">
-  <figcaption style="text-align: center;">Hình 1.3: Cấu trúc bảng chân trị — cột biến, cột trung gian, cột kết quả</figcaption>
-</p>
-</figure>
-
 ### Máy tính bảng chân trị
 
 Nhập biểu thức logic (sử dụng &, |, !, ->, <->) và xem bảng chân trị tự động:

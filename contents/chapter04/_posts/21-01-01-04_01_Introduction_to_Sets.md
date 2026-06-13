@@ -63,12 +63,9 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 **Cú pháp**: {x | P(x)} hoặc {x : P(x)}
 Đọc: "Tập hợp các x sao cho P(x)"
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/assets/img/04-01-sets/venn-diagram.svg" alt="Biểu đồ Venn 3 tập" width="60%" height="60%">
-  <figcaption style="text-align: center;">Hình 4.1: Biểu đồ Venn minh họa giao và hợp của 3 tập hợp</figcaption>
-</p>
-</figure>
+![Biểu đồ Venn 3 tập](https://commons.wikimedia.org/wiki/Special:FilePath/Venn3.svg?width=640)
+
+*Hình 4.1: Biểu đồ Venn minh họa giao và hợp của 3 tập hợp.*
 
 **Ví dụ**:
 - A = {x | x là số nguyên và 1 ≤ x ≤ 5}

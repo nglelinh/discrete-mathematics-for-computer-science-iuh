@@ -45,13 +45,6 @@ Trong đó:
 
 **Bài toán gốc** (Fibonacci, 1202): Một đôi thỏ (gồm một thỏ đực và một thỏ cái) cứ mỗi tháng đẻ được một đôi thỏ con (cũng gồm một đực và một cái). Mỗi đôi thỏ con, khi tròn hai tháng tuổi, lại mỗi tháng đẻ ra một đôi thỏ con và quá trình sinh nở cứ thế tiếp diễn. Hỏi có bao nhiêu đôi thỏ sau $$n$$ tháng?
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter10/fibonacci_rabbits.svg" alt="Minh họa bài toán đôi thỏ Fibonacci" width="70%" height="70%">
-  <figcaption style="text-align: center;">Hình 10.2: Bài toán đôi thỏ của Fibonacci — nguồn gốc kinh điển của dãy số Fibonacci.</figcaption>
-</p>
-</figure>
-
 **Phân tích**: Gọi $$F_n$$ là số đôi thỏ sau $$n$$ tháng.
 
 - Tháng 1: 1 đôi (thỏ ban đầu) $$\to F_1 = 1$$
@@ -86,13 +79,6 @@ Trò chơi Tháp Hà Nội (Tower of Hanoi) gồm ba cọc và $$n$$ đĩa kích
 **Điều kiện ban đầu**: $$H_1 = 1$$
 
 **Dãy**: 1, 3, 7, 15, 31, 63, ...
-
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter10/tower_of_hanoi.svg" alt="Bài toán Tháp Hà Nội với 3 đĩa" width="70%" height="70%">
-  <figcaption style="text-align: center;">Hình 10.3: Tháp Hà Nội — một bài toán đệ quy cổ điển được mô hình hóa bằng quan hệ truy hồi $$H_n = 2H_{n-1} + 1$$.</figcaption>
-</p>
-</figure>
 
 <div class="interactive-tool" markdown="1">
 <div data-demo="recurrence-visualizer"></div>

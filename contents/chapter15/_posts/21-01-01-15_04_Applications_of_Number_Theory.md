@@ -32,13 +32,6 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Hàm băm (hash), MD5, SHA, số giả ngẫu nhiên (PRNG), mã hóa đường cong elliptic (ECC), mật mã hậu lượng tử (post-quantum).
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter15/number_theory_apps.svg" alt="Sơ đồ các ứng dụng của lý thuyết số trong khoa học máy tính" width="80%" height="80%">
-  <figcaption style="text-align: center;">Hình 15.4 — Các ứng dụng chính của lý thuyết số trong CS: mật mã, hàm băm, PRNG, và kiểm tra tính nguyên tố.</figcaption>
-</p>
-</figure>
-
 ## 1. Hàm băm Mật mã
 
 Hàm băm $$H(m) = h$$ ánh xạ thông điệp độ dài tùy ý thành giá trị băm có độ dài cố định.

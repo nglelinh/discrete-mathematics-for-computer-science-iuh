@@ -124,6 +124,8 @@ $$
 
 Giả định này không hoàn toàn đúng trong ngôn ngữ tự nhiên, nhưng thường đủ tốt để tạo bộ phân loại nhanh, dễ cài đặt và hiệu quả.
 
+
+
 ## 7. Ứng dụng trong Khoa học Máy tính
 
 Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.

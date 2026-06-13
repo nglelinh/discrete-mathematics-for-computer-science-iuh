@@ -32,13 +32,6 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Đại số Boole (Boolean algebra), phần tử bù (complement), phép cộng logic (OR), phép nhân logic (AND), nguyên lý đối ngẫu (duality principle).
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter13/boolean_truth_table.svg" alt="Minh họa ba phép toán cơ bản của đại số Boole trên hai giá trị 0 và 1" width="80%" height="80%">
-  <figcaption style="text-align: center;">Hình 13.1 — Ba phép toán cơ bản của đại số Boole: AND, OR, NOT trên tập {0, 1}</figcaption>
-</p>
-</figure>
-
 ## Định nghĩa Đại số Boole
 
 ### Khái niệm Trực quan

@@ -32,13 +32,6 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Mã hóa (encryption), giải mã (decryption), khóa công khai (public key), khóa riêng (private key), RSA, Diffie-Hellman, Caesar cipher.
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter15/encryption_decryption.svg" alt="Sơ đồ quá trình mã hóa và giải mã với khóa" width="80%" height="80%">
-  <figcaption style="text-align: center;">Hình 15.3 — Quá trình mã hóa và giải mã: bản rõ → thuật toán mã hóa + khóa → bản mã → thuật toán giải mã + khóa → bản rõ.</figcaption>
-</p>
-</figure>
-
 ## 1. Mã hóa Cổ điển
 
 ### Caesar Cipher

@@ -32,13 +32,6 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Độ phức tạp thời gian (time complexity), độ phức tạp không gian (space complexity), trường hợp xấu nhất (worst-case), trung bình (average-case), bài toán P và NP.
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter14/time_space_tradeoff.svg" alt="Minh họa sự đánh đổi giữa thời gian và không gian trong các thuật toán" width="70%" height="70%">
-  <figcaption style="text-align: center;">Hình 14.3 — Sự đánh đổi giữa thời gian và không gian: thuật toán nhanh hơn thường cần nhiều bộ nhớ hơn.</figcaption>
-</p>
-</figure>
-
 ## 1. Phân tích Độ phức tạp Thời gian
 
 Độ phức tạp thời gian được đo bằng số **phép toán cơ bản** (so sánh, gán, cộng trừ...) thực hiện bởi thuật toán, là hàm theo kích thước đầu vào $$n$$.

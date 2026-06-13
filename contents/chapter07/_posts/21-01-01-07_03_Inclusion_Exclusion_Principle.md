@@ -123,6 +123,8 @@ $$
 
 Do đó số bị loại là $50+33+20-16-10-6+3=74$. Số hợp lệ là $100-74=26$.
 
+
+
 ## 6. Ứng dụng trong Khoa học Máy tính
 
 Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
@@ -179,6 +181,55 @@ Các số lượng đơn: $333,200,142$. Giao đôi: chia hết cho $15,21,35$ l
 $$
 333+200+142-66-47-28+9=543.
 $$
+
+</details>
+
+### Bài tập 4: Mật khẩu nhiều loại ký tự
+
+**A.15** Suppose passwords are strings where the alphabet has 10 digits, 26 lower-case letters, 26 upper-case letters, and 15 special symbols.
+
+(a) How many length-$$n$$ passwords contain at least two of the four types of characters?
+
+(b) How many length-$$n$$ passwords have no two adjacent identical characters?
+
+(c) How many length-$$n$$ passwords contain at least two of the four types of characters **and** have no two adjacent identical characters?
+
+<details>
+<summary>Đáp án</summary>
+
+Đặt các loại ký tự: D = digit (10), L = lower (26), U = upper (26), S = special (15). Tổng bảng chữ: $$10+26+26+15 = 77$$.
+
+(a) Dùng bù trừ. Tổng số password độ dài $$n$$: $$77^n$$.
+
+Số password chỉ dùng **một** loại: $$10^n + 26^n + 26^n + 15^n = 10^n + 2 \cdot 26^n + 15^n$$.
+
+Số password chỉ dùng đúng **hai** loại: Có $$C(4,2) = 6$$ cặp. Với mỗi cặp có kích thước $$a,b$$, số password chỉ từ hai loại đó là $$(a+b)^n - a^n - b^n$$. Tổng cộng:
+
+$$S_2 = (10+26)^n - 10^n - 26^n \quad\text{(D,L)}$$
+$$+ (10+26)^n - 10^n - 26^n \quad\text{(D,U)}$$
+$$+ (10+15)^n - 10^n - 15^n \quad\text{(D,S)}$$
+$$+ (26+26)^n - 26^n - 26^n \quad\text{(L,U)}$$
+$$+ (26+15)^n - 26^n - 15^n \quad\text{(L,S)}$$
+$$+ (26+15)^n - 26^n - 15^n \quad\text{(U,S)}$$
+
+$$= 2(36^n - 10^n - 26^n) + (25^n - 10^n - 15^n) + (52^n - 2\cdot 26^n) + 2(41^n - 26^n - 15^n)$$
+
+Yêu cầu "ít nhất hai loại" = Total - một loại - hai loại = $$77^n - (10^n + 2\cdot 26^n + 15^n) - S_2$$.
+
+(b) Password không có hai ký tự kề giống nhau: ký tự đầu có 77 cách chọn, mỗi ký tự sau có 76 cách (khác ký tự trước). Vậy số lượng = $$77 \times 76^{n-1}$$.
+
+(c) Kết hợp cả hai điều kiện. Gọi A = có ít nhất hai loại ký tự, B = không có hai ký tự kề giống nhau. Ta cần $$|A \cap B| = |B| - |\bar{A} \cap B|$$, với $$\bar{A}$$ = chỉ dùng 0 hoặc 1 loại ký tự.
+
+Tính $$|\bar{A} \cap B|$$: số password chỉ dùng 1 loại và không có ký tự kề giống nhau. Với mỗi loại có $$k$$ ký tự, số lượng là $$k \times (k-1)^{n-1}$$ ($$k \ge 2$$) hoặc $$k$$ nếu $$k=1$$. Vậy:
+
+- Chỉ digit: $$10 \times 9^{n-1}$$ ($$k=10$$)
+- Chỉ lower: $$26 \times 25^{n-1}$$
+- Chỉ upper: $$26 \times 25^{n-1}$$
+- Chỉ special: $$15 \times 14^{n-1}$$
+
+Tổng $$|\bar{A} \cap B| = 10 \times 9^{n-1} + 2 \cdot 26 \times 25^{n-1} + 15 \times 14^{n-1}$$.
+
+Vậy kết quả: $$|A \cap B| = 77 \times 76^{n-1} - \big(10 \times 9^{n-1} + 52 \times 25^{n-1} + 15 \times 14^{n-1}\big)$$.
 
 </details>
 

@@ -32,13 +32,6 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Chia hết (divisibility), số nguyên tố (prime), ước chung lớn nhất (GCD), thuật toán Euclid, định lý cơ bản số học.
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter15/prime_spiral.svg" alt="Xoắn ốc Ulam — các số nguyên tố được đánh dấu trên một đường xoắn ốc các số tự nhiên" width="70%" height="70%">
-  <figcaption style="text-align: center;">Hình 15.1 — Xoắn ốc Ulam: các số nguyên tố (chấm đen) trên đường xoắn ốc các số tự nhiên. Một số đường chéo chứa nhiều số nguyên tố bất thường.</figcaption>
-</p>
-</figure>
-
 ## 1. Tính chia hết
 
 **Định nghĩa**: Cho $$a, b \in \mathbb{Z}$$ với $$b \neq 0$$. Ta nói $$b$$ **chia hết** $$a$$, ký hiệu $$b \mid a$$, nếu tồn tại số nguyên $$c$$ sao cho $$a = bc$$.

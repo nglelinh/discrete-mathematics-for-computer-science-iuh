@@ -60,13 +60,6 @@ Giả thiết P ──────[các bước suy luận]──────▶
 **Nguyên tắc quan trọng**: Trong chứng minh trực tiếp, bạn không được giả sử kết luận $$Q$$ đúng. Bạn chỉ được bắt đầu từ giả thiết $$P$$ và những định nghĩa/định lý đã biết.
 </div>
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter03/direct_proof_flow.svg" alt="Sơ đồ cấu trúc chứng minh trực tiếp: từ giả thiết đến kết luận qua các bước suy luận" width="65%" height="65%">
-  <figcaption style="text-align: center;">Hình 3.1: Cấu trúc chứng minh trực tiếp — bắt đầu từ giả thiết P, qua các bước suy luận (mỗi bước có lý do), đi đến kết luận Q</figcaption>
-</p>
-</figure>
-
 ## 2. Ví dụ toán học cơ bản
 
 ### Ví dụ 1: Số chẵn
@@ -173,4 +166,41 @@ Chứng minh bất biến này thường dùng quy nạp, nhưng bước chuyể
 - Không bắt đầu bằng điều cần chứng minh.
 - Mỗi bước phải có lý do: định nghĩa, tính chất đại số, định lý đã biết, hoặc suy luận logic.
 - Kết luận cuối cùng phải đúng dạng của mệnh đề cần chứng minh.
+
+## 5. Phong cách viết chứng minh
+
+Một chứng minh không chỉ đúng mà còn phải dễ đọc. Dưới đây là một số nguyên tắc từ tài liệu tham khảo *Discrete Math* (Watson, 2026):
+
+### 5.1. Cân bằng giữa ký hiệu và văn xuôi
+
+Khi viết chứng minh, hãy dùng câu tiếng Việt hoàn chỉnh, diễn đạt luồng logic bằng các từ như **"với mọi"** thay vì ∀, **"và"** thay vì ∧, **"nếu...thì"** thay vì ⇒. Ký hiệu và công thức như $$x+1$$ nên là một phần của câu.
+
+Có sự đánh đổi: chứng minh sẽ khó đọc nếu quá dày đặc ký hiệu trong khi văn xuôi đơn giản đã đủ; nhưng chứng minh cũng sẽ nặng nề nếu dùng quá nhiều văn xuôi trong khi ký hiệu ngắn gọn, súc tích sẽ tốt hơn.
+
+> **Ví dụ**: Thay vì viết:
+> ```
+> ∀x∈ℤ, x>0 ⇒ x+1>0
+> ```
+> Hãy viết:
+> "Với mọi số nguyên dương $$x$$, ta có $$x+1 > 0$$."
+
+### 5.2. Tính chặt chẽ (rigor)
+
+Một chứng minh là một dãy các mệnh đề, mỗi mệnh đề hoặc là một sự thật hiển nhiên (như "$$x+y \le x$$ nếu $$y \le 0$$") hoặc suy ra từ các mệnh đề trước bằng một quy tắc logic hiển nhiên (như "nếu $$P \lor Q$$ và $$\lnot P$$ đã được thiết lập, thì $$Q$$ có thể suy ra").
+
+Mặc dù từng bước có thể rất đơn giản, toàn bộ chứng minh có thể đáng ngạc nhiên và thanh lịch. Những nốt nhạc riêng lẻ có thể nhàm chán, nhưng khi kết hợp đúng cách sẽ tạo nên một giai điệu đẹp.
+
+### 5.3. Ví dụ và phản ví dụ (Counterexamples)
+
+Khi gặp mệnh đề dạng "với mọi $$x$$, $$P(x)$$ đúng", cách nhanh nhất để bác bỏ nó là tìm một **phản ví dụ** — một giá trị $$x$$ làm $$P(x)$$ sai.
+
+> **Ví dụ**: Mệnh đề "mọi số nguyên tố đều là số lẻ" — phản ví dụ là $$2$$.
+>
+> **Ví dụ**: Mệnh đề "với mọi số thực $$a,b$$, $$(a+b)^2 = a^2 + b^2$$" — phản ví dụ là $$a=1, b=1$$ vì $$(1+1)^2 = 4 \ne 1+1 = 2$$.
+
+Ngược lại, để khẳng định một mệnh đề tồn tại "có $$x$$ sao cho $$P(x)$$ đúng", chỉ cần đưa ra một **ví dụ cụ thể**.
+
+> **Ví dụ**: "Tồn tại số nguyên $$n$$ sao cho $$n^2 - n + 41$$ là hợp số." Ví dụ: $$n = 41$$ cho $$41^2 - 41 + 41 = 41^2$$, là hợp số.
+
+Kỹ thuật này rất hữu ích trong khoa học máy tính: khi ai đó khẳng định "thuật toán này luôn chạy trong $$O(n)$$", một phản ví dụ về input làm nó chạy $$O(n^2)$$ là đủ để bác bỏ.
 

@@ -158,6 +158,26 @@ Cây tương ứng:
 
 **Nhận xét**: Cây giúp ta thấy rõ **thứ tự tính toán** và **cấu trúc phân cấp** của công thức. Mỗi phép toán tương ứng với một nút trong, và các biến là lá.
 
+![Expression tree](https://source.unsplash.com/800x600/?tree,structure,algorithm,computer)
+
+*Hình 1.16: Biểu diễn công thức Boolean dưới dạng cây*
+
+![De Morgan](https://source.unsplash.com/800x600/?logic,diagram,mathematics)
+
+*Hình 1.17: Minh họa luật De Morgan*
+
+![DNF construction](https://source.unsplash.com/800x600/?boolean,logic,diagram)
+
+*Hình 1.18: Xây dựng DNF từ bảng chân trị*
+
+![CNF construction](https://source.unsplash.com/800x600/?boolean,logic,construction)
+
+*Hình 1.19: Xây dựng CNF từ bảng chân trị*
+
+![Boolean function](https://source.unsplash.com/800x600/?function,boolean,mathematics)
+
+*Hình 1.20: Biểu diễn hàm Boolean*
+
 **Lưu ý quan trọng**: Các phép toán `∧`, `∨`, `⊕`, `↔` là **giao hoán** (đổi chỗ được) và **kết hợp** (dấu ngoặc không quan trọng). Riêng `→` không có hai tính chất này.
 
 Do đó ta có thể viết `R ∧ Q ∧ P` thay vì `(R ∧ Q) ∧ P`, và viết các biến theo bất kỳ thứ tự nào.
@@ -265,13 +285,6 @@ $$(l_{11} \lor l_{12} \lor \cdots) \land (l_{21} \lor l_{22} \lor \cdots) \land 
 **Ký hiệu**: Mỗi ngoặc trong CNF thường được gọi là một **mệnh đề con** (clause). CNF là dạng chuẩn mà nhiều SAT solver nhận vào.
 
 **Lưu ý**: Chúng ta thường dùng bit `1` và `0` thay cho `T` và `F`, và ký hiệu biến là \(x_1, \dots, x_n\). Ví dụ: gán \(x = 101\) vào công thức \((x_1 \land x_2 \land x_3) \lor (\neg x_1 \land \neg x_2 \land \neg x_3)\) cho kết quả `0`.
-
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/assets/img/01-04-logical-equivalences/boolean-algebra.svg" alt="Boolean algebra" width="50%" height="50%">
-  <figcaption style="text-align: center;">Hình 1.4: Đại số Boolean — nền tảng của logic số</figcaption>
-</p>
-</figure>
 
 **Toán tử bitwise trên chuỗi bit**: Chúng ta có thể mở rộng các phép toán logic thành toán tử trên **chuỗi bit** bằng cách áp dụng từng bit một. Ví dụ:
 

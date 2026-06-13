@@ -32,13 +32,6 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Đồng dư (congruence), modulo, nghịch đảo modulo (modular inverse), CRT, lũy thừa modulo, $$a^{-1} \bmod n$$.
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter15/modular_clock.svg" alt="Minh họa đồng hồ modulo 12 — các số quay vòng sau 12" width="60%" height="60%">
-  <figcaption style="text-align: center;">Hình 15.2 — Đồng hồ modulo 12: $$13 \equiv 1 \pmod{12}$$, $$17 \equiv 5 \pmod{12}$$.</figcaption>
-</p>
-</figure>
-
 ## 1. Đồng dư
 
 **Định nghĩa**: Cho $$a, b \in \mathbb{Z}$$, $$n \in \mathbb{Z}^+$$. Ta nói $$a$$ **đồng dư** với $$b$$ modulo $$n$$, ký hiệu:

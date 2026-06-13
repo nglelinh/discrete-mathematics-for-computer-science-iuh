@@ -16,6 +16,26 @@ Câu trả lời nằm ở **SAT Solver** — một trong những công cụ qua
 
 **Định nghĩa**: **SAT** (Boolean Satisfiability Problem) là bài toán xác định xem có tồn tại một phép gán giá trị cho các biến sao cho công thức Boolean cho kết quả đúng hay không.
 
+![SAT problem](https://source.unsplash.com/800x600/?puzzle,solution,algorithm,computer)
+
+*Hình 1.26: Bài toán SAT*
+
+![Backtracking tree](https://source.unsplash.com/800x600/?tree,algorithm,structure,computer)
+
+*Hình 1.27: Cây backtracking*
+
+![DPLL algorithm](https://source.unsplash.com/800x600/?algorithm,flowchart,diagram)
+
+*Hình 1.28: Thuật toán DPLL*
+
+![CDCL solver](https://source.unsplash.com/800x600/?solver,algorithm,computer,science)
+
+*Hình 1.29: Conflict-Driven Clause Learning*
+
+![Sudoku solver](https://source.unsplash.com/800x600/?sudoku,puzzle,game,logic)
+
+*Hình 1.30: Giải Sudoku bằng SAT solver*
+
 **Ví dụ đơn giản**:
 
 Cho biểu thức:

@@ -32,13 +32,6 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Big-O, Big-Omega ($$\Omega$$), Big-Theta ($$\Theta$$), tốc độ tăng trưởng (growth rate), bậc (order), trội (dominant term).
 
-<figure class="image" style="align: center;">
-<p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter14/big_o_graph.svg" alt="Đồ thị so sánh tốc độ tăng trưởng của các hàm O(1), O(log n), O(n), O(n log n), O(n^2), O(2^n)" width="80%" height="80%">
-  <figcaption style="text-align: center;">Hình 14.2 — Tốc độ tăng trưởng của các hàm phổ biến. Trục tung là thời gian (số bước), trục hoành là kích thước đầu vào.</figcaption>
-</p>
-</figure>
-
 ## 1. Vấn đề
 
 Xét hai thuật toán sắp xếp một mảng $$n$$ phần tử:
@@ -210,6 +203,37 @@ Verify that:
 (c) Nếu f = Ω(g), tồn tại C > 0, n₀ sao cho f(n) ≥ C·g(n) với mọi n ≥ n₀. Với n chẵn, f(n) = g(n) nên C ≤ 1. Với n lẻ n = 2k+1, f(2k+1) = k!, g(2k+1) = (k+1)! = (k+1)·k!. Tỉ số f/g = 1/(k+1) → 0. Vậy không tồn tại C > 0 thỏa mãn. Do đó f ≠ Ω(g).
 
 (d) Hàm giai thừa là đơn điệu tăng, và cả floor và ceiling đều là hàm không giảm theo n. Với n bất kỳ: n+1 > n ⇒ ⌊(n+1)/2⌋ ≥ ⌊n/2⌋ và ⌈(n+1)/2⌉ ≥ ⌈n/2⌉. Kết hợp với tính đơn điệu của giai thừa, f và g đều không giảm.
+
+</details>
+
+### Bài tập 7: Big-O and Little-o Algebraic Properties
+
+**A.14** Show that the following properties hold, using the definitions of big-O and little-o.
+
+(a) For every constant $$a > 0$$ (not necessarily an integer), if $$f = O(g)$$ then $$f^a = O(g^a)$$.
+
+(b) If $$f_1 = O(g_1)$$ and $$f_2 = o(g_2)$$ then $$f_1 f_2 = o(g_1 g_2)$$.
+
+(c) $$O_\lor$$ is equivalent to $$O_+$$, defined as follows: $$f(m,n) = O_+(g(m,n))$$ when:
+
+$$(\exists c > 0) (\exists n_0 \in \mathbb{N}) (\forall (m,n) \in \mathbb{N}^2) \big( m+n \ge n_0 \Rightarrow f(m,n) \le c \cdot g(m,n) \big)$$
+
+<details>
+<summary>Đáp án</summary>
+
+(a) Từ $$f = O(g)$$, tồn tại $$C, n_0$$ sao cho $$f(n) \le C \cdot g(n)$$ với mọi $$n \ge n_0$$. Với $$a > 0$$, lũy thừa bậc $$a$$ là hàm đơn điệu tăng trên $$(0, \infty)$$, nên $$f(n)^a \le (C \cdot g(n))^a = C^a \cdot g(n)^a$$ với mọi $$n \ge n_0$$. Đặt $$C' = C^a$$, ta có $$f^a = O(g^a)$$.
+
+(b) Từ $$f_1 = O(g_1)$$, tồn tại $$C, n_1$$ sao cho $$f_1(n) \le C \cdot g_1(n)$$ với $$n \ge n_1$$. Từ $$f_2 = o(g_2)$$, với mọi $$\varepsilon > 0$$ tồn tại $$n_2$$ sao cho $$|f_2(n)| \le \varepsilon \cdot |g_2(n)|$$ với $$n \ge n_2$$. Với $$n \ge \max(n_1, n_2)$$:
+
+$$|f_1(n) f_2(n)| \le C \cdot g_1(n) \cdot \varepsilon \cdot g_2(n) = (C \varepsilon) \cdot g_1(n) g_2(n).$$
+
+Vì $$\varepsilon$$ có thể chọn tùy ý nhỏ, $$C \varepsilon$$ cũng tùy ý nhỏ. Vậy $$f_1 f_2 = o(g_1 g_2)$$.
+
+(c) Ta chứng minh hai định nghĩa tương đương.
+
+$$(\Rightarrow)$$ Giả sử $$f = O_\lor(g)$$, nghĩa là tồn tại $$c, n_0$$ sao cho với mọi $$m,n$$, nếu $$m \ge n_0$$ hoặc $$n \ge n_0$$ thì $$f(m,n) \le c \cdot g(m,n)$$. Chọn $$n_0' = n_0$$. Với mọi $$(m,n)$$ thỏa $$m+n \ge n_0$$, ta có $$m \ge n_0$$ hoặc $$n \ge n_0$$ (nếu cả hai đều nhỏ hơn $$n_0$$ thì $$m+n < 2n_0$$, không đảm bảo). Cần chọn $$n_0' = 2n_0$$: nếu $$m+n \ge 2n_0$$ thì $$m \ge n_0$$ hoặc $$n \ge n_0$$, nên $$f(m,n) \le c \cdot g(m,n)$$. Vậy $$f = O_+(g)$$.
+
+$$(\Leftarrow)$$ Giả sử $$f = O_+(g)$$, tồn tại $$c, n_0$$ sao cho $$m+n \ge n_0 \Rightarrow f(m,n) \le c \cdot g(m,n)$$. Chọn cùng $$c$$ và $$n_0$$. Với mọi $$(m,n)$$, nếu $$m \ge n_0$$ thì $$m+n \ge n_0$$, nên $$f(m,n) \le c \cdot g(m,n)$$. Tương tự nếu $$n \ge n_0$$. Vậy $$f = O_\lor(g)$$.
 
 </details>
 
