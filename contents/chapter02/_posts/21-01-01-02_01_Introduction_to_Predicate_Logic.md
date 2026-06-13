@@ -255,13 +255,147 @@ Biểu diễn bằng vị từ và lượng từ:
 
 </details>
 
-## Tóm tắt
+### Bài tập 5: Xác định vị từ và miền xác định
 
-- Logic mệnh đề không đủ để biểu diễn câu có cấu trúc bên trong
-- **Vị từ** (predicate) là hàm trả về True/False, mô tả tính chất hoặc quan hệ
-- **Miền xác định** (domain) là tập giá trị của biến
-- Vị từ P(x) trở thành mệnh đề khi thay x bằng một giá trị cụ thể
-- **Lượng từ toàn thể** ∀ và **lượng từ tồn tại** ∃ cho phép nói về "mọi" hoặc "một số"
-- Thứ tự lượng từ thay đổi ý nghĩa của mệnh đề
+Cho các câu sau, hãy xác định vị từ (predicate) và miền xác định (domain) phù hợp:
+
+(a) "Mọi số nguyên tố đều lớn hơn 1."
+(b) "Có một số thực x sao cho x² = -1."
+(c) "Mọi sinh viên CNTT đều học Toán Rời Rạc."
+(d) "Một vài hàm số là không liên tục."
+(e) "Tất cả loài chim đều biết bay."
+
+<details>
+<summary>Đáp án</summary>
+
+(a) Vị từ $$P(x)$$: "x là số nguyên tố" với miền $$U = \mathbb{Z}$$.
+    Hoặc: $$P(x)$$: "x > 1" với miền $$U = \{\text{số nguyên tố}\}$$.
+    Dạng logic: $$\forall x (Prime(x) \to x > 1)$$.
+
+(b) Vị từ $$Q(x)$$: "x² = -1" với miền $$U = \mathbb{R}$$.
+    Dạng logic: $$\exists x (x^2 = -1)$$.
+    Giá trị: **Sai** — không có số thực nào thỏa mãn x² = -1.
+
+(c) Vị từ $$S(x)$$: "x học Toán Rời Rạc" với miền $$U = \{\text{sinh viên CNTT}\}$$.
+    Dạng logic: $$\forall x S(x)$$.
+
+(d) Vị từ $$F(x)$$: "x là không liên tục" với miền $$U = \{\text{các hàm số}\}$$.
+    Dạng logic: $$\exists x F(x)$$.
+    Giá trị: **Đúng** — ví dụ hàm $$f(x) = \frac{1}{x}$$ không liên tục tại x = 0.
+
+(e) Vị từ $$B(x)$$: "x biết bay" với miền $$U = \{\text{loài chim}\}$$.
+    Dạng logic: $$\forall x B(x)$$.
+    Giá trị: **Sai** — có những loài chim không bay được như đà điểu (ostrich), chim cánh cụt (penguin).
+
+</details>
+
+### Bài tập 6: Từ vị từ đến hàm Boolean
+
+Chuyển các vị từ sau thành hàm Python (trả về True/False):
+
+(a) P(x): "x là số chẵn" với miền ℤ.
+(b) Q(x, y): "x chia hết cho y" với miền ℤ × ℤ⁺.
+(c) R(x): "x là palindrome" với miền là các chuỗi ký tự.
+(d) S(x, y, z): "z là tổng của x và y" với miền ℤ × ℤ × ℤ.
+
+<details>
+<summary>Đáp án</summary>
+
+```python
+def P(x):
+    """x là số chẵn"""
+    return x % 2 == 0
+
+def Q(x, y):
+    """x chia hết cho y"""
+    if y <= 0:
+        raise ValueError("y phải là số nguyên dương")
+    return x % y == 0
+
+def R(x):
+    """x là palindrome"""
+    if not isinstance(x, str):
+        raise TypeError("x phải là chuỗi")
+    cleaned = x.lower().replace(" ", "")
+    return cleaned == cleaned[::-1]
+
+def S(x, y, z):
+    """z là tổng của x và y"""
+    return z == x + y
+
+# Test cases
+print(P(4))     # True
+print(P(7))     # False
+print(Q(10, 5)) # True
+print(Q(10, 3)) # False
+print(R("racecar"))    # True
+print(R("hello"))     # False
+print(R("A man a plan a canal panama"))  # True
+print(S(2, 3, 5))  # True
+print(S(2, 3, 6))  # False
+```
+
+</details>
+
+### Bài tập 7: Phân biệt ngữ nghĩa vị từ
+
+Trong mỗi cặp sau, hai phát biểu có khác nhau về mặt logic không? Giải thích.
+
+(a) "Tất cả sinh viên đều giỏi toán." và "Không có sinh viên nào không giỏi toán."
+(b) "Một số người thích cà phê." và "Không phải mọi người đều không thích cà phê."
+(c) "Mọi số thực đều có bình phương không âm." và "Tồn tại số thực có bình phương âm."
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Tương đương.** Đặt $$G(x)$$: "x giỏi toán".
+    - Câu 1: $$\forall x G(x)$$
+    - Câu 2: $$\neg\exists x \neg G(x)$$ — "không có ai không giỏi toán"
+    Theo luật tương đương: $$\forall x G(x) \equiv \neg\exists x \neg G(x)$$
+
+(b) **Tương đương.** Đặt $$C(x)$$: "x thích cà phê".
+    - Câu 1: $$\exists x C(x)$$
+    - Câu 2: $$\neg\forall x \neg C(x)$$ — "không phải mọi người đều không thích cà phê"
+    Theo luật tương đương: $$\exists x C(x) \equiv \neg\forall x \neg C(x)$$
+
+(c) **Phủ định của nhau.** Đặt $$N(x)$$: "x có bình phương không âm".
+    - Câu 1: $$\forall x N(x)$$ — đúng với số thực (vì $$x^2 \geq 0$$ với mọi $$x \in \mathbb{R}$$)
+    - Câu 2: $$\exists x \neg N(x)$$ — sai vì không có số thực nào có bình phương âm
+    Hai câu là phủ định của nhau: $$\neg\forall x N(x) \equiv \exists x \neg N(x)$$.
+
+</details>
+
+### Bài tập 8: Vị từ trong xử lý ảnh
+
+Trong một hệ thống nhận dạng ảnh, ta có các vị từ sau với miền là các pixel:
+- $$R(p)$$: pixel p có màu đỏ
+- $$G(p)$$: pixel p có màu xanh lá
+- $$B(p)$$: pixel p có màu xanh dương
+- $$E(p)$$: pixel p là biên (edge)
+- $$Bright(p)$$: pixel p có độ sáng > 200
+
+Viết công thức logic cho:
+
+(a) "Mọi pixel ở biên đều có độ sáng cao."
+(b) "Có ít nhất một pixel màu đỏ và xanh dương." (Chỉ một pixel không thể vừa đỏ vừa xanh dương — hãy giải thích!)
+(c) "Mọi pixel không phải biên đều không phải màu đỏ."
+(d) "Tồn tại một pixel vừa là biên vừa có màu xanh lá."
+
+<details>
+<summary>Đáp án</summary>
+
+(a) $$\forall p (E(p) \to Bright(p))$$
+    "Nếu p là biên thì p có độ sáng cao."
+
+(b) $$\exists p (R(p) \land B(p))$$
+    Về mặt logic, công thức này hoàn toàn hợp lệ. Trong thực tế, một pixel không thể vừa đỏ vừa xanh dương (mỗi pixel có một màu duy nhất trong hệ màu RGB), nhưng xét thuần túy logic, không có ràng buộc nào cấm cả hai vị từ cùng đúng. Đây là điểm khác biệt giữa logic và thực tế vật lý — nếu muốn mô hình hóa chính xác, ta cần thêm ràng buộc: mỗi pixel chỉ có đúng một màu.
+
+(c) $$\forall p (\neg E(p) \to \neg R(p))$$
+    Tương đương với: $$\forall p (R(p) \to E(p))$$ (theo contrapositive).
+    Nghĩa là mọi pixel đỏ đều là biên — điều này khác với câu gốc về mặt ngữ nghĩa, dù tương đương về mặt logic.
+
+(d) $$\exists p (E(p) \land G(p))$$
+
+</details>
 
 Trong bài tiếp theo, chúng ta sẽ học chi tiết về **lượng từ và lượng từ lồng nhau**.

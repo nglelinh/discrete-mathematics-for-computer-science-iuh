@@ -68,6 +68,44 @@ can_login = correct_password and account_active and (not unknown_device or corre
 Nếu bỏ dấu ngoặc, chương trình vẫn chạy nhưng có thể cho phép hoặc từ chối sai người dùng.
 </div>
 
+## Phân loại mệnh đề
+
+Mệnh đề trong logic được phân thành hai loại:
+
+### Mệnh đề sơ cấp (nguyên thủy)
+
+**Định nghĩa**: Một **mệnh đề sơ cấp** (hay mệnh đề nguyên thủy) là mệnh đề **không thể xây dựng từ các mệnh đề khác** thông qua các liên từ logic hoặc trạng từ "không".
+
+**Đặc điểm**:
+- Không chứa phép toán logic (∧, ∨, ¬, →, ↔).
+- Là đơn vị cơ bản nhất trong hệ thống logic.
+- Được ký hiệu bằng chữ cái thường: `p`, `q`, `r`, `s`, ...
+
+**Ví dụ**:
+- "Hôm nay trời nắng"
+- "2 + 3 = 5"
+- "Tôi có tiền"
+- "Cửa hàng mở cửa"
+
+### Mệnh đề phức hợp
+
+**Định nghĩa**: Một **mệnh đề phức hợp** là mệnh đề **được xây dựng từ các mệnh đề khác** nhờ liên kết bằng các **liên từ** (và, hay, khi và chỉ khi, …) hoặc **trạng từ "không"**.
+
+**Đặc điểm**:
+- Chứa ít nhất một phép toán logic.
+- Được tạo thành từ mệnh đề sơ cấp thông qua các phép nối.
+- Có thể phân tích thành các thành phần nhỏ hơn.
+
+**Ví dụ**:
+- "Tôi có tiền **và** cửa hàng mở cửa" → `p ∧ q`
+- "Trời mưa **hoặc** đường ướt" → `p ∨ q`
+- "**Không** phải hôm nay trời nắng" → `¬p`
+- "Nếu trời mưa **thì** đường ướt" → `p → q`
+
+<div class="content-box insight-box" markdown="1">
+**Lưu ý**: Việc phân loại mệnh đề sơ cấp và phức hợp giúp ta xác định được đâu là "nguyên tử" và đâu là "phân tử" trong biểu thức logic. Khi phân tích điều kiện trong code, ta luôn bắt đầu bằng việc xác định các mệnh đề sơ cấp trước khi ghép chúng bằng các phép toán.
+</div>
+
 ## 1. Phép phủ định (Negation) - NOT
 
 **Ký hiệu**: ¬p hoặc ~p hoặc !p
@@ -527,16 +565,106 @@ Cho p = T, q = F, r = T. Tính:
 
 </details>
 
-### Bài tập 2: Dịch sang ngôn ngữ tự nhiên
-Cho:
-- p: "Tôi có thời gian"
-- q: "Tôi có tiền"
-- r: "Tôi đi xem phim"
+## Quy tắc suy diễn (Rules of Inference)
 
-Dịch các biểu thức sau:
-1. p ∧ q → r
-2. ¬p ∨ ¬q
-3. r ↔ (p ∧ q)
+**Định nghĩa**: Quy tắc suy diễn là những quy tắc hợp lệ cho phép ta suy ra mệnh đề mới từ các mệnh đề đã biết là đúng. Đây là nền tảng của chứng minh toán học và lập luận logic.
+
+### 1. Quy tắc khẳng định (Modus Ponens)
+
+**Công thức**:
+$$(p \to q) \land p \implies q$$
+
+**Ý nghĩa**: Nếu "p kéo theo q" đúng và p đúng, thì q phải đúng.
+
+**Bảng chân trị chứng minh** (sinh viên tự điền):
+
+| p | q | p → q | (p → q) ∧ p | [(p → q) ∧ p] → q |
+|:---:|:---:|:---:|:---:|:---:|
+| T | T | T | T | T |
+| T | F | F | F | T |
+| F | T | T | F | T |
+| F | F | T | F | T |
+
+**Ví dụ**:
+- "Nếu trời mưa thì đường ướt" (p → q)
+- "Trời mưa" (p)
+- **Kết luận**: "Đường ướt" (q)
+
+### 2. Quy tắc phủ định (Modus Tollens)
+
+**Công thức**:
+$$(p \to q) \land \neg q \implies \neg p$$
+
+**Ý nghĩa**: Nếu "p kéo theo q" đúng và q sai, thì p phải sai.
+
+**Bảng chân trị chứng minh** (sinh viên tự điền):
+
+| p | q | p → q | ¬q | (p → q) ∧ ¬q | [(p → q) ∧ ¬q] → ¬p |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| T | T | T | F | F | T |
+| T | F | F | T | F | T |
+| F | T | T | F | F | T |
+| F | F | T | T | T | T |
+
+**Ví dụ**:
+- "Nếu trời mưa thì đường ướt" (p → q)
+- "Đường khô" (¬q)
+- **Kết luận**: "Trời không mưa" (¬p)
+
+### 3. Quy tắc tam đoạn luận (Hypothetical Syllogism)
+
+**Công thức**:
+$$(p \to q) \land (q \to r) \implies (p \to r)$$
+
+**Ý nghĩa**: Nếu p kéo theo q, và q kéo theo r, thì p kéo theo r.
+
+**Nguyên lý loại trừ (Dichotomy)**: Quy tắc tam đoạn luận phản ánh một nguyên lý logic cơ bản — **nếu có hai trường hợp có thể xảy ra, và một trường hợp sai, thì trường hợp còn lại phải đúng**.
+
+- Trong tam đoạn luận, ta có chuỗi: p → q → r
+- Nếu ta biết p đúng nhưng r sai → suy ra q phải sai (vì nếu q đúng thì r phải đúng)
+- Ngược lại, nếu p đúng và r đúng → không thể kết luận gì về q (q có thể đúng hoặc sai)
+
+**Bảng chân trị chứng minh** (sinh viên tự điền):
+
+| p | q | r | p → q | q → r | (p → q) ∧ (q → r) | (p → q) ∧ (q → r) → (p → r) |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T | T | T | T | T | T | T |
+| T | T | F | T | F | F | T |
+| T | F | T | F | T | F | T |
+| T | F | F | F | T | F | T |
+| F | T | T | T | T | T | T |
+| F | T | F | T | F | F | T |
+| F | F | T | T | T | T | T |
+| F | F | F | T | T | T | T |
+
+**Ví dụ**:
+- "Nếu trời mưa thì đường ướt" (p → q)
+- "Nếu đường ướt thì xe trượt" (q → r)
+- **Kết luận**: "Nếu trời mưa thì xe trượt" (p → r)
+
+### 4. Quy tắc phản chứng (Proof by Contradiction)
+
+**Công thức**:
+$$\neg p \to \bot \implies p$$
+
+**Ý nghĩa**: Nếu giả sử ¬p dẫn đến mâu thuẫn (⊥), thì p phải đúng.
+
+**Quy trình chứng minh**:
+1. Giả sử ¬p đúng.
+2. Suy diễn từ giả thiết và ¬p.
+3. Đi đến mâu thuẫn (ví dụ: r ∧ ¬r).
+4. Kết luận: giả thiết ¬p sai, do đó p đúng.
+
+**Ví dụ**: Chứng minh √2 vô tỷ
+- Giả sử √2 = a/b (a, b nguyên tố cùng nhau).
+- Suy ra: 2b² = a² → a chẵn → a = 2k.
+- Thay vào: 2b² = 4k² → b² = 2k² → b chẵn.
+- Mâu thuẫn: a và b cùng chẵn → không nguyên tố cùng nhau.
+- **Kết luận**: √2 không phải phân số → √2 vô tỷ.
+
+<div class="content-box insight-box" markdown="1">
+**Lưu ý**: Quy tắc suy diễn là công cụ mạnh mẽ trong chứng minh và kiểm chứng phần mềm. Modus Ponens và Modus Tollens là hai quy tắc cơ bản nhất, xuất hiện trong hầu hết các chứng minh logic.
+</div>
 
 ### Bài tập 3: Điều kiện phân quyền
 
@@ -560,5 +688,222 @@ can_edit = is_admin or is_author and not is_locked
 1. Theo thứ tự ưu tiên toán tử trong Python, biểu thức này được hiểu như thế nào?
 2. Hãy thêm dấu ngoặc để biểu thức rõ nghĩa.
 3. Nếu yêu cầu đổi thành "admin cũng không được sửa bài đã khóa", biểu thức mới là gì?
+
+### Bài tập 5: Chứng minh tương đương logic
+
+**Ví dụ**: Cho `p`, `q`, `r` là các biến mệnh đề. Chứng minh rằng:
+
+$$(\neg p \to r) \land (q \to r) \iff (p \to q) \to r$$
+
+**Giải**:
+
+**Phương pháp 1: Bảng chân trị (8 dòng)**
+
+| p | q | r | ¬p | ¬p → r | q → r | (¬p → r) ∧ (q → r) | p → q | (p → q) → r | Kết quả |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T | T | T | F | T | T | T | T | T | T |
+| T | T | F | F | T | T | T | T | F | F |
+| T | F | T | F | T | T | T | F | T | T |
+| T | F | F | F | T | F | F | F | T | F |
+| F | T | T | T | T | T | T | T | T | T |
+| F | T | F | T | F | T | F | T | F | F |
+| F | F | T | T | T | T | T | T | T | T |
+| F | F | F | T | F | T | F | T | F | F |
+
+**Kết luận**: Hai vế có cùng cột chân trị → tương đương.
+
+**Phương pháp 2: Luật tương đương (phân tích từng bước)**
+
+Bước 1: Viết vế trái theo định nghĩa kéo theo
+$$(\neg p \to r) \equiv (p \lor r)$$
+$$(q \to r) \equiv (\neg q \lor r)$$
+
+Bước 2: Vế trái trở thành
+$$(p \lor r) \land (\neg q \lor r) \equiv (p \land \neg q) \lor r$$ (phân phối)
+
+Bước 3: Vế phải
+$$(p \to q) \to r \equiv (\neg p \lor q) \to r \equiv \neg(\neg p \lor q) \lor r \equiv (p \land \neg q) \lor r$$
+
+Bước 4: Hai vế bằng nhau → chứng minh xong.
+
+<div class="content-box example-box" markdown="1">
+**Lưu ý**: Khi gặp bài tập chứng minh tương đương, sinh viên có thể chọn:
+- Bảng chân trị (luôn đúng, nhưng dài)
+- Luật tương đương (ngắn gọn hơn, cần nắm vững các luật)
+</div>
+
+### Bài tập 6: Mệnh đề kéo theo trong đời thường
+
+Cho các mệnh đề:
+
+- $$p$$: "Bạn chăm chỉ học tập"
+- $$q$$: "Bạn đạt điểm cao"
+- $$r$$: "Bạn có việc làm tốt"
+- $$s$$: "Bạn hài lòng với cuộc sống"
+
+Viết các câu sau dưới dạng ký hiệu logic:
+
+(a) "Nếu bạn chăm chỉ học tập thì bạn đạt điểm cao."
+(b) "Chỉ khi bạn đạt điểm cao bạn mới có việc làm tốt."
+(c) "Bạn có việc làm tốt là đủ để bạn hài lòng với cuộc sống."
+(d) "Bạn chăm chỉ học tập là cần thiết để đạt điểm cao."
+(e) "Nếu không chăm chỉ thì không đạt điểm cao, và nếu không đạt điểm cao thì không có việc làm tốt."
+
+<details>
+<summary>Đáp án</summary>
+
+(a) $$p \to q$$ — Nếu p thì q.
+
+(b) $$q \to r$$ — "Chỉ khi q mới r" tương đương "r kéo theo q". Thực chất: nếu có việc làm tốt thì phải có điểm cao, tức $$r \to q$$.
+    Cần phân biệt: "q là điều kiện cần cho r" = $$r \to q$$.
+
+(c) $$r \to s$$ — "r là đủ để s" = $$r \to s$$.
+
+(d) $$p \to q$$ — "p là cần thiết cho q" nghĩa là không thể có q nếu không có p, tức $$q \to p$$.
+    Chính xác: "p là cần thiết cho q" = "nếu q thì p" = $$q \to p$$.
+    
+    Vậy đáp án đúng: $$q \to p$$ (không phải $$p \to q$$ — đây là lỗi thường gặp!).
+
+(e) $$\neg p \to \neg q$$ và $$\neg q \to \neg r$$.
+    Kết hợp: $$(\neg p \to \neg q) \land (\neg q \to \neg r)$$.
+    Theo tam đoạn luận giả định: $$\neg p \to \neg r$$ (nếu không chăm chỉ thì không có việc làm tốt).
+
+</details>
+
+### Bài tập 7: XOR vs OR trong thực tế
+
+Trong mỗi tình huống sau, "hoặc" được dùng theo nghĩa OR bao hàm (inclusive) hay XOR (loại trừ)? Giải thích.
+
+(a) "Sinh viên được nhận học bổng nếu có điểm trung bình >= 8.0 hoặc có thành tích nghiên cứu."
+(b) "Bạn có thể chọn thanh toán bằng thẻ tín dụng hoặc chuyển khoản."
+(c) "Hệ thống cảnh báo nếu nhiệt độ > 100°C hoặc áp suất < 1 atm."
+(d) "Trong trận đấu, đội thắng được 3 điểm, đội hòa được 1 điểm, hoặc đội thua được 0 điểm."
+(e) "Để đăng nhập, bạn cần nhập đúng tên người dùng và mật khẩu, hoặc sử dụng xác thực vân tay."
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **OR bao hàm** — Sinh viên có thể vừa có điểm cao vừa có nghiên cứu, và vẫn nhận học bổng. Cả hai đều đúng thì kết quả vẫn đúng.
+
+(b) **XOR** — Bạn thường chỉ được chọn một phương thức thanh toán, không thể cả hai. Trong giao diện, đây thường là nút radio, không phải checkbox.
+
+(c) **OR bao hàm** — Cả hai điều kiện có thể xảy ra cùng lúc và hệ thống vẫn cảnh báo. Một cảnh báo vẫn là cảnh báo, dù có nhiều lý do.
+
+(d) **XOR** — Một đội chỉ nhận được một kết quả duy nhất. Không thể vừa thắng vừa hòa. Ba trường hợp loại trừ lẫn nhau.
+
+(e) **OR bao hàm** — Người dùng có thể vừa nhập đúng tên/mật khẩu vừa có vân tay, và vẫn đăng nhập được. Hệ thống thường chấp nhận cả hai.
+
+</details>
+
+### Bài tập 8: Biểu diễn điều kiện phức hợp bằng Python
+
+Viết hàm Python cho mỗi yêu cầu sau, sử dụng các phép toán logic:
+
+(a) `can_publish(post)` — Bài viết được đăng nếu đã được duyệt (reviewed) VÀ (nội dung đã hoàn chỉnh HOẶC tác giả là editor).
+
+(b) `should_send_alert(system)` — Cảnh báo được gửi nếu (CPU > 90% HOẶC memory > 85%) VÀ không phải giờ bảo trì.
+
+(c) `is_eligible_for_scholarship(student)` — Sinh viên đủ điều kiện nếu (GPA >= 3.5 VÀ không bị kỷ luật) HOẶC có giải thưởng đặc biệt.
+
+<details>
+<summary>Đáp án</summary>
+
+```python
+def can_publish(post):
+    """Bài viết được đăng nếu đã duyệt và (hoàn chỉnh hoặc tác giả là editor)"""
+    return post['reviewed'] and (post['complete'] or post['is_editor'])
+
+# Test cases
+print(can_publish({'reviewed': True, 'complete': True, 'is_editor': False}))   # True
+print(can_publish({'reviewed': True, 'complete': False, 'is_editor': True}))   # True
+print(can_publish({'reviewed': True, 'complete': False, 'is_editor': False}))  # False
+print(can_publish({'reviewed': False, 'complete': True, 'is_editor': False}))  # False
+
+def should_send_alert(system):
+    """Cảnh báo nếu (CPU > 90% hoặc memory > 85%) và không phải giờ bảo trì"""
+    high_load = system['cpu'] > 90 or system['memory'] > 85
+    return high_load and not system['maintenance_hour']
+
+print(should_send_alert({'cpu': 95, 'memory': 80, 'maintenance_hour': False}))  # True
+print(should_send_alert({'cpu': 80, 'memory': 90, 'maintenance_hour': True}))   # False
+print(should_send_alert({'cpu': 50, 'memory': 50, 'maintenance_hour': False}))  # False
+
+def is_eligible_for_scholarship(student):
+    """Học bổng nếu (GPA >= 3.5 và không kỷ luật) hoặc có giải thưởng"""
+    good_grades = student['gpa'] >= 3.5
+    no_discipline = not student['has_discipline']
+    return (good_grades and no_discipline) or student['has_award']
+
+print(is_eligible_for_scholarship({'gpa': 3.7, 'has_discipline': False, 'has_award': False}))  # True
+print(is_eligible_for_scholarship({'gpa': 3.7, 'has_discipline': True, 'has_award': False}))   # False
+print(is_eligible_for_scholarship({'gpa': 3.0, 'has_discipline': False, 'has_award': True}))    # True
+```
+
+</details>
+
+### Bài tập 9: Dịch biểu thức logic thành câu tự nhiên
+
+Cho các mệnh đề:
+- $$a$$: "Tài khoản là admin"
+- $$m$$: "Tài khoản là moderator"
+- $$b$$: "Tài khoản bị khóa"
+- $$v$$: "Tài khoản đã xác thực email"
+
+Diễn giải các biểu thức sau thành câu tự nhiên:
+
+(a) $$(a \lor m) \land \neg b$$
+(b) $$v \to (a \lor m)$$
+(c) $$(a \lor m) \leftrightarrow \neg b$$
+(d) $$(a \land \neg b) \lor (m \land v)$$
+(e) $$\neg v \to b$$
+
+<details>
+<summary>Đáp án</summary>
+
+(a) "Tài khoản là admin hoặc moderator, và không bị khóa." — Điều kiện để có quyền truy cập đặc biệt.
+
+(b) "Nếu tài khoản đã xác thực email thì nó là admin hoặc moderator." — Chỉ admin/moderator mới bắt buộc xác thực email? (Điều này có vẻ ngược — thực tế thường tất cả tài khoản đều cần xác thực. Đây là tình huống giả định.)
+
+(c) "Tài khoản là admin hoặc moderator nếu và chỉ nếu nó không bị khóa." — Mọi tài khoản không bị khóa đều là admin/moderator (hơi vô lý!), hoặc mọi admin/moderator đều không bị khóa. Đây là bài học về việc đọc kỹ biểu thức: thực tế chiều $$\neg b \to (a \lor m)$$ không đúng (tài khoản thường cũng không bị khóa).
+
+(d) "Hoặc (tài khoản là admin và không bị khóa) hoặc (tài khoản là moderator và đã xác thực email)." — Hai nhóm quyền riêng biệt.
+
+(e) "Nếu tài khoản chưa xác thực email thì nó bị khóa." — Chính sách bảo mật yêu cầu xác thực email để tránh khóa tài khoản.
+
+</details>
+
+### Bài tập 10: Phân tích lỗi logic từ đề bài thực tế
+
+Một đề bài yêu cầu sinh viên viết điều kiện: "Cho phép truy cập nếu người dùng đã đăng nhập và (có quyền admin hoặc là chủ sở hữu tài liệu)."
+
+Sinh viên A viết: `if logged_in and is_admin or is_owner:`
+Sinh viên B viết: `if logged_in and (is_admin or is_owner):`
+
+(a) Biểu thức của sinh viên nào đúng? Giải thích.
+(b) Với `logged_in = False, is_admin = True, is_owner = False`, kết quả mỗi biểu thức là gì?
+(c) Lỗi của sinh viên A thuộc loại lỗi nào trong lập trình? Làm sao để tránh?
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Sinh viên B đúng**. Trong hầu hết ngôn ngữ lập trình, `and` có độ ưu tiên cao hơn `or`. Biểu thức của A được hiểu là:
+    `(logged_in and is_admin) or is_owner` — khác hoàn toàn với yêu cầu.
+    Biểu thức của B: `logged_in and (is_admin or is_owner)` — khớp với yêu cầu.
+
+(b) Với `logged_in = False, is_admin = True, is_owner = False`:
+    - Sinh viên A: `(False and True) or False = False or False = False`
+    - Sinh viên B: `False and (True or False) = False and True = False`
+    Trong trường hợp này cả hai đều cho False, nhưng sẽ khác nhau ở các trường hợp khác.
+    
+    Thử với `logged_in = False, is_admin = False, is_owner = True`:
+    - Sinh viên A: `(False and False) or True = False or True = True` — **sai!** Cho phép truy cập dù chưa đăng nhập.
+    - Sinh viên B: `False and (False or True) = False and True = False` — **đúng**.
+
+(c) Lỗi của sinh viên A là **lỗi thứ tự ưu tiên toán tử** (operator precedence bug). Đây là một trong những lỗi logic phổ biến nhất trong lập trình. Cách tránh:
+    - Luôn dùng dấu ngoặc khi kết hợp `and`/`or` với nhau
+    - Viết test case bao phủ ít nhất một trường hợp mỗi nhánh
+    - Dùng công cụ phân tích tĩnh (linter) để phát hiện biểu thức mơ hồ
+
+</details>
 
 

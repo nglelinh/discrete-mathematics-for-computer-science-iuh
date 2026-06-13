@@ -329,4 +329,143 @@ Dec: {0,1}² → {0,1}⁴ where Dec(i) = bit string with 1 at index i and 0s els
 (d) Write the table for the 4-to-2 priority encoder partial function:
 Enc: {0,1}⁴ → {0,1}² where Enc(x) = index of the first 1 in x, or undefined if x has no 1
 
+### Bài tập 7: Bảng chân trị 3 biến
+
+Xây dựng bảng chân trị đầy đủ cho các biểu thức sau:
+
+(a) $$(p \lor q) \land (q \lor r) \land (r \lor p)$$
+(b) $$(p \to q) \lor (q \to r)$$
+(c) $$p \oplus q \oplus r$$ (XOR ba ngôi — đúng khi có lẻ số biến đúng)
+(d) $$(p \land q) \lor (q \land r) \lor (r \land p)$$
+
+<details>
+<summary>Đáp án</summary>
+
+Bảng chân trị 3 biến (8 dòng):
+
+| p | q | r | (a) (p∨q)∧(q∨r)∧(r∨p) | (b) (p→q)∨(q→r) | (c) p⊕q⊕r | (d) (p∧q)∨(q∧r)∨(r∧p) |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| F | F | F | F | T | F | F |
+| F | F | T | F | T | T | F |
+| F | T | F | F | T | T | F |
+| F | T | T | T | T | F | T |
+| T | F | F | F | T | T | F |
+| T | F | T | T | T | F | F |
+| T | T | F | T | T | F | T |
+| T | T | T | T | T | T | T |
+
+Nhận xét:
+- (a) chỉ đúng khi có ít nhất 2 trong 3 biến đúng.
+- (b) là **tautology** — luôn đúng (vì $$p \to q$$ chỉ sai khi p=T,q=F và $$q \to r$$ chỉ sai khi q=T,r=F, hai trường hợp không thể đồng thời xảy ra).
+- (c) là parity check: đúng khi số biến True là lẻ.
+- (d) đúng khi có ít nhất 2 biến đúng — giống (a) nhưng viết khác.
+
+</details>
+
+### Bài tập 8: Từ bảng chân trị sang biểu thức
+
+Cho bảng chân trị sau, hãy tìm biểu thức logic tương ứng:
+
+| p | q | r | Kết quả |
+|:---:|:---:|:---:|:---:|
+| F | F | F | T |
+| F | F | T | F |
+| F | T | F | F |
+| F | T | T | T |
+| T | F | F | F |
+| T | F | T | T |
+| T | T | F | F |
+| T | T | T | T |
+
+Gợi ý: Dùng phương pháp tổng các tích (sum of products) — tìm các hàng có kết quả T và viết hội của các tuyển.
+
+<details>
+<summary>Đáp án</summary>
+
+Các hàng có kết quả True:
+- Hàng 1: p=F, q=F, r=F → $$\neg p \land \neg q \land \neg r$$
+- Hàng 4: p=F, q=T, r=T → $$\neg p \land q \land r$$
+- Hàng 6: p=T, q=F, r=T → $$p \land \neg q \land r$$
+- Hàng 8: p=T, q=T, r=T → $$p \land q \land r$$
+
+Biểu thức DNF:
+$$(\neg p \land \neg q \land \neg r) \lor (\neg p \land q \land r) \lor (p \land \neg q \land r) \lor (p \land q \land r)$$
+
+Rút gọn:
+- $$(\neg p \land \neg q \land \neg r) \lor (p \land q \land r) \lor [(\neg p \land q \land r) \lor (p \land \neg q \land r)]$$
+- Có thể rút gọn thêm: Nhóm $$r \land [(\neg p \land q) \lor (p \land \neg q)] = r \land (p \oplus q)$$
+- Kết quả cuối: $$(\neg p \land \neg q \land \neg r) \lor (p \land q \land r) \lor (r \land (p \oplus q))$$
+
+</details>
+
+### Bài tập 9: Ứng dụng bảng chân trị trong kiểm thử
+
+Một hàm Python kiểm tra điều kiện nhập học:
+
+```python
+def can_enroll(has_degree, passed_exam, is_priority):
+    return (has_degree or passed_exam) and not is_priority
+```
+
+(a) Lập bảng chân trị cho hàm `can_enroll`.
+(b) Có bao nhiêu test case cần để bao phủ 100% tổ hợp đầu vào?
+(c) Nếu thay đổi yêu cầu thành "cần có bằng hoặc thi đỗ, và không thuộc diện ưu tiên, và (có bằng hoặc ưu tiên)", hãy viết biểu thức mới và so sánh bảng chân trị.
+
+<details>
+<summary>Đáp án</summary>
+
+(a) Bảng chân trị:
+
+| has_degree | passed_exam | is_priority | (h.d ∨ p.e) | (h.d ∨ p.e) ∧ ¬i.p | Kết quả |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| F | F | F | F | F | F |
+| F | F | T | F | F | F |
+| F | T | F | T | T | T |
+| F | T | T | T | F | F |
+| T | F | F | T | T | T |
+| T | F | T | T | F | F |
+| T | T | F | T | T | T |
+| T | T | T | T | F | F |
+
+(b) Có 3 biến → $$2^3 = 8$$ test case để bao phủ 100% tổ hợp đầu vào (exhaustive testing).
+
+(c) Biểu thức mới: `(has_degree or passed_exam) and not is_priority and (has_degree or is_priority)`
+
+Rút gọn: $$(p \lor q) \land \neg r \land (p \lor r)$$
+= $$(p \lor q) \land (p \lor r) \land \neg r$$
+= $$(p \lor (q \land r)) \land \neg r$$ (luật phân phối)
+= $$(p \land \neg r) \lor (q \land r \land \neg r)$$
+= $$p \land \neg r$$ (vì $$q \land r \land \neg r = F$$)
+
+Kết quả: Biểu thức mới tương đương với "có bằng và không thuộc diện ưu tiên" — hoàn toàn khác với bảng gốc!
+
+</details>
+
+### Bài tập 10: Tautology, Contradiction, Contingency
+
+Phân loại các biểu thức sau:
+
+(a) $$(p \to q) \lor (q \to p)$$
+(b) $$(p \to q) \land (p \land \neg q)$$
+(c) $$(p \land q) \to (p \lor q)$$
+(d) $$(p \to q) \land (q \to r) \land \neg(p \to r)$$
+(e) $$(p \oplus q) \to (p \lor q)$$
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Tautology** — Với mọi tổ hợp p,q, luôn có ít nhất một trong hai mệnh đề kéo theo đúng. Nếu p=T,q=F thì p→q=F nhưng q→p=T. Nếu p=F,q=T thì p→q=T.
+
+(b) **Contradiction** — $$p \to q \equiv \neg p \lor q$$. Kết hợp với $$p \land \neg q$$:
+    $$(\neg p \lor q) \land p \land \neg q$$
+    Phân phối: $$(\neg p \land p \land \neg q) \lor (q \land p \land \neg q) = F \lor F = F$$
+
+(c) **Tautology** — Nếu cả p∧q đúng thì p và q đều đúng, do đó p∨q cũng đúng. Nếu p∧q sai thì mệnh đề kéo theo luôn đúng.
+
+(d) **Contradiction** — Nếu p→q và q→r đúng, theo tam đoạn luận giả định thì p→r phải đúng. Do đó không thể có p→r sai. Đây là dạng phủ định của một quy tắc suy diễn hợp lệ.
+
+(e) **Tautology** — p⊕q (XOR) đúng khi p và q khác nhau. Khi đó p∨q luôn đúng (vì ít nhất một biến đúng). Vậy p⊕q→p∨q là hằng đúng. Kiểm tra hàng duy nhất cần quan tâm: nếu p=F,q=F thì p⊕q=F nên mệnh đề kéo theo đúng; nếu p⊕q=T thì p∨q=T nên mệnh đề kéo theo cũng đúng.
+
+</details>
+
 

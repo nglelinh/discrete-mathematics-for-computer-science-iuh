@@ -103,7 +103,72 @@ $$\sum_{i=m}^{n}(a_i+b_i)=\sum_{i=m}^{n}a_i+\sum_{i=m}^{n}b_i.$$
 
 $$\sum_{i=m}^{n}c = c(n-m+1).$$
 
-## 6. Các công thức tổng quan trọng
+## 6. Ký hiệu tích (Product notation)
+
+Tương tự ký hiệu tổng, ta có ký hiệu tích để viết gọn phép nhân nhiều số hạng.
+
+**Định nghĩa**:
+
+$$\prod_{i=m}^{n} a_i = a_m \cdot a_{m+1} \cdot \ldots \cdot a_n.$$
+
+**Ví dụ**:
+
+$$\prod_{i=1}^{4} i = 1\cdot2\cdot3\cdot4 = 24 = 4!.$$
+
+**Tính chất**:
+
+- $$\prod_{i=m}^{n} (c \cdot a_i) = c^{n-m+1} \prod_{i=m}^{n} a_i.$$
+- $$\prod_{i=m}^{n} (a_i \cdot b_i) = \left( \prod_{i=m}^{n} a_i \right) \cdot \left( \prod_{i=m}^{n} b_i \right).$$
+
+**Nhận xét CS**: Giai thừa $$n!$$ chính là tích từ 1 đến n, xuất hiện trong tổ hợp, hoán vị, và phân tích độ phức tạp.
+
+## 7. Thay đổi chỉ số tổng (Reindexing)
+
+Khi biến đổi biểu thức tổng, ta thường cần thay đổi cận và chỉ số để hai tổng có cùng dạng.
+
+**Quy tắc**: Nếu $$j = i + k$$ ($$k$$ hằng số), thì:
+
+- Khi $$i = m$$ thì $$j = m+k$$.
+- Khi $$i = n$$ thì $$j = n+k$$.
+- Số hạng $$a_i$$ trở thành $$a_{j-k}$$.
+
+**Ví dụ**: Đổi chỉ số để $$\sum_{i=0}^{n-1} a_{i+1}$$ thành tổng chạy từ $$j=1$$ đến $$n$$:
+
+$$\sum_{i=0}^{n-1} a_{i+1} = \sum_{j=1}^{n} a_j.$$
+
+**Ứng dụng**: Khi cộng hai tổng có chỉ số khác nhau, ta đổi để chúng "cùng biên".
+
+## 8. Dãy số tăng/giảm đơn điệu (Monotonic sequences)
+
+**Định nghĩa**:
+
+- Dãy **tăng đơn điệu** (non-decreasing): $$a_n \le a_{n+1}$$ với mọi $$n$$.
+- Dãy **giảm đơn điệu** (non-increasing): $$a_n \ge a_{n+1}$$ với mọi $$n$$.
+- Dãy **tăng chặt** (strictly increasing): $$a_n < a_{n+1}$$ với mọi $$n$$.
+- Dãy **giảm chặt** (strictly decreasing): $$a_n > a_{n+1}$$ với mọi $$n$$.
+
+**Ví dụ**:
+
+- $$a_n = n$$ là dãy tăng chặt.
+- $$a_n = \frac{1}{n}$$ là dãy giảm chặt.
+- $$a_n = 2$$ (hằng số) là vừa tăng vừa giảm đơn điệu (không chặt).
+
+**Nhận xét**: Tính đơn điệu thường dùng trong chứng minh quy nạp hoặc khi phân tích hội tụ của dãy.
+
+## 9. Số điều hòa (Harmonic numbers)
+
+**Định nghĩa**: Số điều hòa thứ $$n$$ là:
+
+$$H_n = \sum_{k=1}^{n} \frac{1}{k} = 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}.$$
+
+**Tính chất quan trọng** (không chứng minh chi tiết ở đây):
+
+- $$H_n \approx \ln n + \gamma$$ ($$\gamma \approx 0.57721$$ là hằng số Euler–Mascheroni).
+- $$H_n = \Theta(\ln n)$$.
+
+**Ứng dụng CS**: Thời gian chạy trung bình của một số thuật toán sắp xếp, phân tích cây nhị phân tìm kiếm, và phân tích thuật toán băm đều dẫn đến số điều hòa.
+
+## 10. Các công thức tổng quan trọng
 
 | Tổng | Công thức |
 |---|---|
@@ -127,7 +192,7 @@ Vậy:
 
 $$S=\frac{n(n+1)}{2}.$$
 
-## 7. Tổng và vòng lặp
+## 11. Tổng và vòng lặp
 
 Vòng lặp đơn:
 
@@ -152,7 +217,7 @@ Số phép toán:
 
 $$\sum_{i=1}^{n} i = \frac{n(n+1)}{2} = \Theta(n^2).$$
 
-## 10. Ứng dụng trong Khoa học Máy tính
+## 12. Ứng dụng trong Khoa học Máy tính
 
 - **Phân tích thuật toán**: số phép toán thường là tổng theo kích thước đầu vào.
 - **Đệ quy**: dãy mô tả kích thước bài toán qua từng lời gọi.

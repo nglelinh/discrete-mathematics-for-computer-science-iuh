@@ -357,4 +357,169 @@ Một website cho phép người dùng tải file nếu người đó đã đăn
 2. Viết mệnh đề phức hợp biểu diễn điều kiện tải file.
 3. Viết điều kiện tương ứng bằng Python hoặc JavaScript.
 
+### Bài tập 4: Phân biệt mệnh đề và không phải mệnh đề
+
+Trong các câu sau, câu nào là mệnh đề? Nếu là mệnh đề, cho biết giá trị chân lý.
+
+(a) $$1 + 1 = 3$$.
+(b) Hãy đóng cửa lại!
+(c) Hôm nay là thứ Hai.
+(d) $$x + 5 = 10$$.
+(e) Nếu tam giác có ba cạnh bằng nhau thì nó là tam giác đều.
+(f) 2026 là năm nhuận.
+(g) Câu này là sai.
+(h) Có vô hạn số nguyên tố.
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Mệnh đề** — Giá trị: F (sai, vì 1+1=2, không phải 3).
+(b) **Không phải mệnh đề** — Câu mệnh lệnh, không có giá trị chân lý.
+(c) **Mệnh đề** — Giá trị phụ thuộc vào ngày hiện tại. Nếu hôm nay là thứ Hai thì T, ngược lại F.
+(d) **Không phải mệnh đề** — Câu chứa biến $$x$$, chưa xác định được đúng/sai (vị từ, không phải mệnh đề).
+(e) **Mệnh đề** — Giá trị: T (theo định nghĩa tam giác đều).
+(f) **Mệnh đề** — 2026 không chia hết cho 4, nên không phải năm nhuận → F.
+(g) **Không phải mệnh đề** — Nghịch lý tự tham chiếu (nếu cho là đúng thì hóa ra sai và ngược lại).
+(h) **Mệnh đề** — Giá trị: T (đây là định lý Euclid đã được chứng minh).
+
+</details>
+
+### Bài tập 5: Xác định mệnh đề sơ cấp
+
+Phân tích các mệnh đề phức hợp sau thành các mệnh đề sơ cấp:
+
+(a) "Nếu trời mưa và tôi có ô thì tôi sẽ đi làm."
+(b) "Số chia hết cho 2 và cho 3 khi và chỉ khi số đó chia hết cho 6."
+(c) "Hoặc bạn làm bài tập hoặc bạn sẽ không qua môn."
+(d) "Người dùng không phải admin và tài khoản đã bị khóa."
+
+<details>
+<summary>Đáp án</summary>
+
+(a) $$p$$: "Trời mưa", $$q$$: "Tôi có ô", $$r$$: "Tôi sẽ đi làm".
+    Mệnh đề phức hợp: $$(p \land q) \to r$$
+
+(b) $$p$$: "Số chia hết cho 2", $$q$$: "Số chia hết cho 3", $$r$$: "Số chia hết cho 6".
+    Mệnh đề phức hợp: $$(p \land q) \leftrightarrow r$$
+
+(c) $$p$$: "Bạn làm bài tập", $$q$$: "Bạn sẽ qua môn".
+    Mệnh đề phức hợp: $$p \lor \neg q$$ (hoặc dạng tương đương $$\neg p \to \neg q$$)
+
+(d) $$p$$: "Người dùng là admin", $$q$$: "Tài khoản đã bị khóa".
+    Mệnh đề phức hợp: $$\neg p \land q$$
+
+</details>
+
+### Bài tập 6: Chuyển đổi câu tự nhiên thành logic
+
+Viết các câu sau dưới dạng ký hiệu logic với các biến mệnh đề được đặt tên phù hợp:
+
+(a) "Bạn được phép vào câu lạc bộ nếu bạn trên 18 tuổi và có thẻ thành viên."
+(b) "Hệ thống gửi cảnh báo khi nhiệt độ vượt quá 100°C hoặc áp suất dưới mức an toàn."
+(c) "Sinh viên được nhận học bổng nếu (điểm trung bình >= 8.0 và hạnh kiểm Tốt) hoặc (có thành tích nghiên cứu đặc biệt)."
+(d) "Không thể vừa đăng nhập thành công vừa đăng nhập thất bại tại cùng một thời điểm."
+(e) "Nếu hôm nay là cuối tuần và không có deadline thì tôi sẽ đi chơi, nếu không tôi sẽ học bài."
+
+<details>
+<summary>Đáp án</summary>
+
+(a) Đặt $$p$$: "Bạn trên 18 tuổi", $$q$$: "Bạn có thẻ thành viên", $$r$$: "Bạn được phép vào câu lạc bộ".
+    Công thức: $$(p \land q) \to r$$
+
+(b) Đặt $$t$$: "Nhiệt độ > 100°C", $$p$$: "Áp suất < mức an toàn", $$w$$: "Hệ thống gửi cảnh báo".
+    Công thức: $$(t \lor p) \to w$$
+
+(c) Đặt $$g$$: "Điểm TB >= 8.0", $$h$$: "Hạnh kiểm Tốt", $$r$$: "Có thành tích nghiên cứu", $$s$$: "Được nhận học bổng".
+    Công thức: $$((g \land h) \lor r) \to s$$
+
+(d) Đặt $$p$$: "Đăng nhập thành công", $$q$$: "Đăng nhập thất bại".
+    Công thức: $$\neg(p \land q)$$ — không thể cả hai cùng xảy ra (luật phi mâu thuẫn).
+
+(e) Đặt $$w$$: "Hôm nay là cuối tuần", $$d$$: "Có deadline", $$g$$: "Tôi đi chơi", $$s$$: "Tôi học bài".
+    Công thức: $$((w \land \neg d) \to g) \land (\neg(w \land \neg d) \to s)$$
+
+</details>
+
+### Bài tập 7: Mệnh đề trong kiểm thử phần mềm
+
+Một hàm kiểm tra đầu vào có điều kiện:
+
+```python
+def validate_input(x, y, z):
+    if (x > 0 and y < 100) or (z == "active" and x > 0):
+        return "Hợp lệ"
+    else:
+        return "Không hợp lệ"
+```
+
+(a) Đặt ký hiệu cho từng mệnh đề sơ cấp trong điều kiện.
+(b) Viết mệnh đề phức hợp hoàn chỉnh.
+(c) Liệt kê tất cả các tổ hợp đầu vào cần kiểm thử để đảm bảo bao phủ 100% điều kiện (bạn có thể dùng bảng liệt kê).
+
+<details>
+<summary>Đáp án</summary>
+
+(a)
+- $$p$$: "$$x > 0$$"
+- $$q$$: "$$y < 100$$"
+- $$r$$: "$$z = \text{"active"}$$"
+
+(b) Mệnh đề phức hợp: $$(p \land q) \lor (r \land p)$$
+    Rút gọn: $$p \land (q \lor r)$$ (tính phân phối)
+
+(c) Các tổ hợp kiểm thử cần thiết (để bao phủ mọi nhánh):
+
+| $$p$$ (x>0) | $$q$$ (y<100) | $$r$$ (z=active) | $$p \land (q \lor r)$$ | Kết quả |
+|:---:|:---:|:---:|:---:|:---|
+| F | F | F | F | Không hợp lệ |
+| F | F | T | F | Không hợp lệ |
+| F | T | F | F | Không hợp lệ |
+| F | T | T | F | Không hợp lệ |
+| T | F | F | F | Không hợp lệ |
+| T | F | T | T | Hợp lệ |
+| T | T | F | T | Hợp lệ |
+| T | T | T | T | Hợp lệ |
+
+Từ bảng, ta thấy điều kiện chỉ cần $$p$$ (x>0) và ít nhất một trong $$q$$ hoặc $$r$$. Các test case tối thiểu: một case với $$p=T, (q \lor r)=T$$ và một case với $$p=F$$.
+
+</details>
+
+### Bài tập 8: Dịch ngược — từ code sang logic
+
+Đoạn code sau kiểm tra quyền truy cập vào một tài liệu:
+
+```python
+if user.is_authenticated:
+    if user.is_admin or (doc.is_public and not doc.is_archived):
+        allow_access()
+    else:
+        show_preview()
+else:
+    redirect_to_login()
+```
+
+(a) Đặt ký hiệu cho các mệnh đề sơ cấp.
+(b) Viết biểu thức logic cho từng hành động (allow_access, show_preview, redirect_to_login).
+(c) Với người dùng đã xác thực nhưng không phải admin, tài liệu public nhưng đã archived — hành động nào xảy ra?
+
+<details>
+<summary>Đáp án</summary>
+
+(a)
+- $$a$$: "user.is_authenticated"
+- $$i$$: "user.is_admin"
+- $$p$$: "doc.is_public"
+- $$r$$: "doc.is_archived"
+
+(b)
+- **allow_access**: $$a \land (i \lor (p \land \neg r))$$
+- **show_preview**: $$a \land \neg(i \lor (p \land \neg r))$$ (đã xác thực nhưng không đủ quyền)
+- **redirect_to_login**: $$\neg a$$ (chưa xác thực)
+
+(c) Với $$a = T$$ (đã xác thực), $$i = F$$ (không admin), $$p = T$$ (public), $$r = T$$ (đã archived):
+    $$i \lor (p \land \neg r) = F \lor (T \land F) = F$$
+    Vậy **show_preview** được thực thi: người dùng chỉ thấy bản xem trước, không được truy cập đầy đủ.
+
+</details>
+
 

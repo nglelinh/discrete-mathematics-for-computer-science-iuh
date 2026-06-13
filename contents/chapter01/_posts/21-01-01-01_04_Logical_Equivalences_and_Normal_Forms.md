@@ -220,7 +220,150 @@ $$\begin{aligned}
 
 **Nhận xét**: Mỗi dòng biến đổi phải nêu rõ luật được dùng. Trong chứng minh toán học và kiểm chứng chương trình, việc ghi luật giúp phát hiện sai sót sớm.
 
-## 4. Dạng chuẩn tắc tuyển DNF
+## 4. Công thức Dạng Rút gọn (Reduced Forms)
+
+### 4.1. Vì sao cần rút gọn?
+
+Một biểu thức logic có thể viết bằng rất nhiều cách khác nhau — nhưng không phải cách nào cũng tiện lợi. Trong thực tế, biểu thức dài thường đồng nghĩa với:
+
+- **Code khó đọc**: `if ((a && b) || (a && !b))` làm người đọc phải dừng lại suy nghĩ.
+- **Mạch tốn diện tích**: mỗi cổng logic là transistor thật trên silicon.
+- **Xử lý chậm hơn**: nhiều phép toán hơn → nhiều thời gian CPU hơn.
+
+**Bài toán rút gọn**: Cho một biểu thức logic, tìm biểu thức **ngắn nhất có thể** mà vẫn tương đương logic với biểu thức ban đầu.
+
+### 4.2. Rút gọn bằng Luật Tương đương
+
+Các luật tương đương ở Section 2 là công cụ chính để rút gọn. Chiến lược chung:
+
+1. **Loại bỏ kéo theo**: thay $$p \to q$$ bằng $$\neg p \lor q$$.
+2. **Áp dụng De Morgan** để đẩy phủ định vào sâu bên trong.
+3. **Phân phối** và **gộp** các thành phần giống nhau.
+4. **Loại bỏ hằng số** bằng luật đồng nhất, nuốt, bù.
+
+**Ví dụ 1**: Rút gọn $$(\neg p \land q) \lor (\neg p \land \neg q)$$.
+
+$$\begin{aligned}
+(\neg p \land q) \lor (\neg p \land \neg q)
+&\equiv \neg p \land (q \lor \neg q) && \text{(phân phối)} \\
+&\equiv \neg p \land T && \text{(luật bù)} \\
+&\equiv \neg p && \text{(đồng nhất)}.
+\end{aligned}$$
+
+**Ví dụ 2 (tối ưu điều kiện trong code)**:
+
+```python
+# Biểu thức gốc
+if (x > 0 and y > 0) or (x > 0 and y <= 0):
+    do_something()
+
+# Sau rút gọn: x > 0
+if x > 0:
+    do_something()
+```
+
+Điều kiện đầu tương đương $$(p \land q) \lor (p \land \neg q)$$ với $$p = (x > 0)$$ và $$q = (y > 0)$$, và ta đã biết nó rút gọn thành $$p$$.
+
+**Quan sát chính**: Hai hội $$p \land q$$ và $$p \land \neg q$$ chỉ khác nhau ở một literal ($$q$$ và $$\neg q$$). Khi gặp cặp như vậy, ta luôn gộp được thành $$p$$ (mất biến $$q$$). Đây là ý tưởng nền tảng của mọi thuật toán rút gọn: **phát hiện các cặp chỉ khác nhau một literal và gộp chúng**.
+
+### 4.3. Bìa Karnaugh (Karnaugh Map)
+
+Khi biểu thức phức tạp, việc nhìn ra các cặp có thể gộp bằng mắt thường rất khó. **Bìa Karnaugh** (K-map) là công cụ trực quan giúp giải quyết vấn đề này cho tối đa 4 biến.
+
+Bìa Karnaugh sắp xếp bảng chân trị thành lưới 2 chiều sao cho các ô **kề nhau** chỉ khác nhau đúng **một biến** (mã Gray).
+
+#### Bìa 2 biến
+
+Xét hàm $$f(p,q)$$ với bảng chân trị:
+
+| $$p$$ | $$q$$ | $$f(p,q)$$ |
+|:---:|:---:|:---:|
+| 0 | 0 | 1 |
+| 0 | 1 | 1 |
+| 1 | 0 | 0 |
+| 1 | 1 | 1 |
+
+Bìa Karnaugh tương ứng:
+
+```
+       q=0    q=1
+p=0  |  1  |  1  |
+p=1  |  0  |  1  |
+```
+
+**Cách đọc**: Mỗi ô mang giá trị 1 tương ứng với một hàng TRUE trong bảng chân trị.
+- Ô (0,0): $$p=0, q=0$$
+- Ô (0,1): $$p=0, q=1$$
+- Ô (1,0): $$p=1, q=0$$ (kết quả 0 — bỏ qua)
+- Ô (1,1): $$p=1, q=1$$
+
+**Gộp ô**: Các ô 1 liền kề (theo hàng hoặc cột) được gộp thành nhóm hình chữ nhật kích thước $$2^k$$:
+- Nhóm 2 ô ở hàng $$p=0$$: biến $$q$$ thay đổi (0→1) nhưng cả hai ô đều là 1 → chỉ còn $$\neg p$$.
+- Nhóm 2 ô ở cột $$q=1$$: biến $$p$$ thay đổi (0→1) nhưng cả hai ô đều là 1 → chỉ còn $$q$$.
+
+Kết quả rút gọn: $$\neg p \lor q$$.
+
+#### Bìa 3 biến
+
+Xét hàm $$f(p,q,r)$$ với bảng chân trị cho thấy $$f = T$$ khi $$p = 1$$ (bất kể $$q, r$$) và $$f = F$$ khi $$p = 0$$:
+
+```
+         q=0       q=1
+       r=0  r=1  r=0  r=1
+p=0  |  0 |  0 |  0 |  0 |
+p=1  |  1 |  1 |  1 |  1 |
+```
+
+Nhóm 4 ô ở hàng $$p=1$$ (chiếm cả nửa bìa): biến $$q$$ và $$r$$ thay đổi nhưng kết quả luôn 1 → chỉ còn $$p$$.
+
+**Quy tắc gộp ô trên bìa Karnaugh**:
+1. Các ô trong nhóm phải là **hình chữ nhật** (kể cả "bọc quanh" mép bìa — cạnh trên dính với cạnh dưới, trái dính với phải).
+2. Kích thước nhóm phải là **lũy thừa của 2**: 1, 2, 4, 8, ...
+3. **Ưu tiên nhóm lớn nhất có thể** (càng lớn → biểu thức càng ngắn).
+4. Mỗi ô 1 phải được gộp vào **ít nhất một** nhóm (có thể nhiều nhóm).
+5. Kết quả là OR của tất cả các nhóm; mỗi nhóm chỉ giữ lại các biến **không đổi** trong nhóm.
+
+<div class="content-box insight-box" markdown="1">
+**Minh họa trực quan**: Hãy tưởng tượng bìa Karnaugh như một "bản đồ vùng đúng". Mỗi ô 1 là một điểm cần được phủ. Mỗi nhóm hình chữ nhật là một "tấm phủ" — tấm càng lớn càng che được nhiều điểm, và biểu thức càng ngắn. Gộp ô là cách tìm bộ tấm phủ nhỏ nhất.
+</div>
+
+### 4.4. Rút gọn với Nhiều hơn 4 Biến
+
+Khi số biến lớn hơn 4, bìa Karnaugh không còn trực quan (bìa 5 biến đã rất rối, 6 biến gần như không dùng được). Các phương pháp đại số có hệ thống được dùng thay thế:
+
+**Thuật toán Quine–McCluskey** (QM) hoạt động như sau:
+1. Liệt kê tất cả các tổ hợp biến cho kết quả TRUE (theo số lượng bit 1).
+2. Gộp các cặp chỉ khác nhau 1 bit thành nhóm lớn hơn (dùng dấu `-` để chỉ bit "không quan tâm").
+3. Lặp lại cho đến khi không còn cặp nào gộp được.
+4. Các nhóm không gộp được ở bất kỳ bước nào là **prime implicant**.
+5. Chọn tập prime implicant phủ hết tất cả tổ hợp TRUE ban đầu với chi phí nhỏ nhất.
+
+**Ví dụ**: Với 4 tổ hợp TRUE: $$000, 001, 011, 111$$
+
+- Bước 1: Nhóm theo số bit 1: (000), (001), (011), (111).
+- Bước 2: Gộp: $$000+001 \to 00-$$, $$001+011 \to 0-1$$, $$011+111 \to -11$$.
+- Bước 3: Prime implicants: $$00-$$, $$0-1$$, $$-11$$.
+- Bước 4: Chọn tập phủ tối thiểu: $$00-$$ và $$-11$$.
+
+### 4.5. Ứng dụng Thực tế
+
+**Thiết kế mạch logic (VLSI)**: Mỗi cổng logic tiêu tốn diện tích silicon, năng lượng, và thời gian trễ. Rút gọn biểu thức đồng nghĩa với chip nhỏ hơn, nhanh hơn, tiết kiệm pin hơn. Các công cụ tổng hợp logic như **Espresso**, **ABC** (Berkeley), **Yosys** tự động thực hiện tối thiểu hóa Boolean cho mạch với hàng trăm biến.
+
+**Compiler tối ưu**: Trình biên dịch (LLVM, GCC) áp dụng các luật tương đương để rút gọn điều kiện trong code.
+
+**Cơ sở dữ liệu**: Query optimizer rút gọn điều kiện WHERE để giảm số hàng cần kiểm tra.
+
+```sql
+-- WHERE (a > 5 AND b < 10) OR (a > 5 AND b >= 10)
+-- Rút gọn thành:
+WHERE a > 5
+```
+
+<div class="content-box warning-box" markdown="1">
+**Lưu ý**: Biểu thức rút gọn **không duy nhất** — cùng một hàm Boolean có thể có nhiều dạng rút gọn khác nhau, tùy thuộc vào thứ tự gộp và cách chọn nhóm. Tìm dạng tối thiểu tuyệt đối là bài toán NP-hard (thời gian mũ), nhưng các thuật toán heuristic cho kết quả đủ tốt trong thực tế.
+</div>
+
+## 5. Dạng chuẩn tắc tuyển DNF
 
 **Định nghĩa**: **Dạng chuẩn tắc tuyển** (Disjunctive Normal Form, DNF) là biểu thức có dạng tuyển của các hội, trong đó mỗi thành phần nhỏ là một literal hoặc phủ định của literal:
 
@@ -274,7 +417,7 @@ Ví dụ trên, ta đang tô 3 ô, và có thể gộp thành $$\neg p \lor q$$.
 
 Đây chính là ý tưởng đằng sau các thuật toán tối thiểu hóa logic (Karnaugh map, Espresso, Quine–McCluskey) mà compiler và công cụ thiết kế mạch sử dụng.
 
-## 5. Dạng chuẩn tắc hội CNF
+## 6. Dạng chuẩn tắc hội CNF
 
 **Định nghĩa**: **Dạng chuẩn tắc hội** (Conjunctive Normal Form, CNF) là biểu thức có dạng hội của các tuyển:
 
@@ -345,7 +488,7 @@ def is_satisfied(p, q, r):
 
 Mỗi `clause` là một ràng buộc. SAT solver phải tìm một assignment sao cho **không có ràng buộc nào bị vi phạm**. Đây là lý do CNF là dạng đầu vào tự nhiên cho hầu hết các bộ giải SAT hiện đại.
 
-## 6. Các định lý quan trọng về DNF và CNF
+## 7. Các định lý quan trọng về DNF và CNF
 
 ### Định lý 1: Sự tồn tại DNF và CNF
 **Mọi biểu thức mệnh đề đều có thể đưa về DNF và CNF.**
@@ -501,5 +644,166 @@ For i ∈ [16], define fᵢ: {0,1}² → {0,1} to be the i-th such function in l
 (d) (P ∧ Q) ⇒ R ≡ (P ⇒ R) ∨ (Q ⇒ R)
 
 (e) (P ⇔ Q) ⇒ R ≡ (P ⇒ R) ⇔ (Q ⇒ R)
+
+### Bài tập 7: Áp dụng luật De Morgan
+
+Rút gọn các biểu thức sau bằng luật De Morgan và các luật tương đương khác:
+
+(a) $$\neg(p \lor \neg q)$$
+(b) $$\neg(\neg p \land (q \lor r))$$
+(c) $$(\neg p \land \neg q) \lor \neg(\neg r \lor p)$$
+(d) $$\neg((p \land q) \lor (\neg p \land \neg q))$$
+(e) $$\neg(p \to q) \lor \neg(q \to p)$$
+
+<details>
+<summary>Đáp án</summary>
+
+(a) $$\neg(p \lor \neg q) \equiv \neg p \land \neg(\neg q) \equiv \neg p \land q$$
+
+(b) $$\neg(\neg p \land (q \lor r)) \equiv \neg(\neg p) \lor \neg(q \lor r) \equiv p \lor (\neg q \land \neg r)$$
+
+(c) $$(\neg p \land \neg q) \lor \neg(\neg r \lor p)$$
+    $$\equiv (\neg p \land \neg q) \lor (\neg(\neg r) \land \neg p)$$
+    $$\equiv (\neg p \land \neg q) \lor (r \land \neg p)$$
+    $$\equiv \neg p \land (\neg q \lor r)$$ (luật phân phối)
+
+(d) $$\neg((p \land q) \lor (\neg p \land \neg q))$$
+    $$\equiv \neg(p \land q) \land \neg(\neg p \land \neg q)$$
+    $$\equiv (\neg p \lor \neg q) \land (p \lor q)$$
+    $$\equiv (\neg p \land p) \lor (\neg p \land q) \lor (\neg q \land p) \lor (\neg q \land q)$$
+    $$\equiv F \lor (\neg p \land q) \lor (p \land \neg q) \lor F$$
+    $$\equiv (\neg p \land q) \lor (p \land \neg q) \equiv p \oplus q$$
+    Kết luận: Biểu thức gốc tương đương với **XOR**.
+
+(e) $$\neg(p \to q) \lor \neg(q \to p)$$
+    $$\equiv \neg(\neg p \lor q) \lor \neg(\neg q \lor p)$$
+    $$\equiv (p \land \neg q) \lor (q \land \neg p)$$
+    $$\equiv p \oplus q$$
+    Kết luận: Cũng tương đương với **XOR**!
+
+</details>
+
+### Bài tập 8: Kiểm tra tương đương bằng biến đổi
+
+Không dùng bảng chân trị, hãy chứng minh các tương đương sau bằng biến đổi logic:
+
+(a) $$p \to (q \to r) \equiv (p \land q) \to r$$
+(b) $$(p \to q) \land (p \to r) \equiv p \to (q \land r)$$
+(c) $$p \leftrightarrow q \equiv (p \to q) \land (q \to p)$$
+(d) $$p \to (q \to p)$$ là hằng đúng
+
+<details>
+<summary>Đáp án</summary>
+
+(a) 
+    $$p \to (q \to r) \equiv \neg p \lor (\neg q \lor r) \equiv (\neg p \lor \neg q) \lor r \equiv \neg(p \land q) \lor r \equiv (p \land q) \to r$$
+    Đây là luật **exportation**: điều kiện lồng nhau tương đương với điều kiện hội.
+
+(b)
+    $$(p \to q) \land (p \to r) \equiv (\neg p \lor q) \land (\neg p \lor r)$$
+    $$\equiv \neg p \lor (q \land r)$$ (luật phân phối)
+    $$\equiv p \to (q \land r)$$
+
+(c) Đây là định nghĩa của tương đương:
+    $$p \leftrightarrow q \equiv (p \to q) \land (q \to p)$$
+    Đây chính là định nghĩa, không cần chứng minh — nhưng có thể kiểm tra bằng bảng chân trị.
+
+(d)
+    $$p \to (q \to p) \equiv \neg p \lor (\neg q \lor p) \equiv (\neg p \lor p) \lor \neg q \equiv T \lor \neg q \equiv T$$
+    Vậy đây là hằng đúng (tautology). Câu nói này có nghĩa: "Nếu p đúng, thì (bất kỳ điều gì cũng kéo theo p)" — một sự thật hiển nhiên về logic.
+
+</details>
+
+### Bài tập 9: Chuyển đổi giữa DNF và CNF
+
+Cho biểu thức: $$(p \land q) \lor (\neg p \land \neg q)$$
+
+(a) Biểu thức này đã ở dạng DNF chưa? Giải thích.
+(b) Chuyển sang dạng CNF.
+(c) Nhận xét về ý nghĩa của biểu thức này — nó tương ứng với phép toán logic nào?
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Đã ở dạng DNF** — DNF là tuyển của các hội. Biểu thức có dạng $$C_1 \lor C_2$$ với $$C_1 = p \land q$$ và $$C_2 = \neg p \land \neg q$$. Mỗi hội chứa đúng hai literal, mỗi biến xuất hiện đúng một lần.
+
+(b) Chuyển sang CNF:
+    $$(p \land q) \lor (\neg p \land \neg q)$$
+    Phân phối: $$\equiv [(p \land q) \lor \neg p] \land [(p \land q) \lor \neg q]$$
+    $$\equiv [(p \lor \neg p) \land (q \lor \neg p)] \land [(p \lor \neg q) \land (q \lor \neg q)]$$
+    $$\equiv [T \land (q \lor \neg p)] \land [(p \lor \neg q) \land T]$$
+    $$\equiv (q \lor \neg p) \land (p \lor \neg q)$$
+    CNF: $$(\neg p \lor q) \land (p \lor \neg q)$$
+
+(c) Biểu thức này tương đương với **$$p \leftrightarrow q$$** (tương đương). Dạng DNF nói: "hoặc cả hai cùng đúng, hoặc cả hai cùng sai". Dạng CNF nói: "nếu p thì q, và nếu q thì p" — cùng một ý nghĩa.
+
+</details>
+
+### Bài tập 10: Ứng dụng rút gọn biểu thức trong code
+
+Một lập trình viên viết điều kiện phức tạp:
+
+```python
+if (user.is_active and not user.is_banned) or (user.is_active and user.has_vip):
+    grant_access()
+```
+
+(a) Viết biểu thức logic cho điều kiện này.
+(b) Rút gọn biểu thức bằng các luật tương đương.
+(c) Viết lại code Python tối ưu hơn.
+(d) Kiểm tra: với `user.is_active = True, user.is_banned = True, user.has_vip = False`, code gốc và code rút gọn có cho cùng kết quả không?
+
+<details>
+<summary>Đáp án</summary>
+
+(a) Đặt $$a$$: "user.is_active", $$b$$: "user.is_banned", $$v$$: "user.has_vip"
+    Biểu thức: $$(a \land \neg b) \lor (a \land v)$$
+
+(b) Rút gọn:
+    $$(a \land \neg b) \lor (a \land v)$$
+    $$\equiv a \land (\neg b \lor v)$$ (luật phân phối)
+    
+    Ý nghĩa: "Người dùng đang hoạt động VÀ (không bị cấm HOẶC có VIP)".
+
+(c) Code rút gọn:
+    ```python
+    if user.is_active and (not user.is_banned or user.has_vip):
+        grant_access()
+    ```
+
+(d) Kiểm tra với $$a = T, b = T, v = F$$:
+    - Code gốc: $$(T \land \neg T) \lor (T \land F) = (T \land F) \lor F = F \lor F = F$$
+    - Code rút gọn: $$T \land (\neg T \lor F) = T \land (F \lor F) = T \land F = F$$
+    Hai kết quả giống nhau (cả hai đều từ chối truy cập).
+
+</details>
+
+### Bài tập 11: Xác định dạng chuẩn
+
+Cho các biểu thức sau, xác định xem biểu thức đã ở dạng DNF, CNF, cả hai, hay không phải dạng nào:
+
+(a) $$(p \lor q) \land (\neg p \lor r)$$
+(b) $$(p \land \neg q) \lor (q \land r) \lor (\neg p \land \neg r)$$
+(c) $$(p \lor q) \land (r)$$
+(d) $$p \lor (q \land r)$$
+(e) $$(p \to q) \land (q \to r)$$
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **CNF** — Hội của các tuyển. Mỗi clause là tuyển của các literal: $$(p \lor q)$$ và $$(\neg p \lor r)$$.
+
+(b) **DNF** — Tuyển của các hội. Mỗi term là hội của các literal: $$(p \land \neg q)$$, $$(q \land r)$$, $$(\neg p \land \neg r)$$.
+
+(c) **Cả DNF và CNF**:
+    - Là CNF: hội của hai clause: $$(p \lor q)$$ và $$(r)$$.
+    - Là DNF: tuyển của hai term: $$(p \land r)$$ và $$(q \land r)$$ (nếu phân phối). Thực ra dạng hiện tại là hội của $$(p \lor q)$$ và $$r$$ nên là CNF. Muốn là DNF thì phải biến đổi.
+
+(d) **DNF** — Tuyển của hai term: $$p$$ và $$(q \land r)$$. Lưu ý $$p$$ là hội của một literal (trường hợp đặc biệt của DNF).
+
+(e) **Không phải dạng chuẩn** — Vì chứa $$p \to q$$ và $$q \to r$$, không phải literal. Cần loại bỏ kéo theo trước:
+    $$(\neg p \lor q) \land (\neg q \lor r)$$ — lúc này là CNF.
+
+</details>
 
 

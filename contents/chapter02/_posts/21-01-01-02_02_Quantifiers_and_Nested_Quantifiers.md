@@ -281,6 +281,155 @@ SELECT EXISTS (
 
 </details>
 
-## Tóm tắt
+### Bài tập 7: Phủ định lượng từ trong đời thường
 
-Lượng từ biến vị từ thành mệnh đề có giá trị đúng-sai. $$\forall$$ yêu cầu mọi phần tử thỏa mãn, $$\exists$$ chỉ cần một nhân chứng, còn $$\exists!$$ yêu cầu đúng một nhân chứng. Với lượng từ lồng nhau, thứ tự rất quan trọng; khi phủ định, phải đổi $$\forall$$ thành $$\exists$$ và ngược lại, đồng thời phủ định vị từ bên trong.
+Phủ định các câu sau và viết dưới dạng câu tự nhiên (không dùng ký hiệu toán học):
+
+(a) "Mọi sinh viên trong lớp đều nộp bài đúng hạn."
+(b) "Có ít nhất một server còn hoạt động."
+(c) "Mọi giao dịch đều được ghi log."
+(d) "Tồn tại một lỗ hổng bảo mật chưa được vá."
+(e) "Không ai không thích âm nhạc." (gợi ý: viết lại dưới dạng lượng từ trước)
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Phủ định**: "Có ít nhất một sinh viên trong lớp không nộp bài đúng hạn."
+    Ký hiệu: $$\neg\forall x N(x) \equiv \exists x \neg N(x)$$
+
+(b) **Phủ định**: "Mọi server đều ngừng hoạt động." (không còn server nào hoạt động)
+    Ký hiệu: $$\neg\exists x H(x) \equiv \forall x \neg H(x)$$
+
+(c) **Phủ định**: "Có ít nhất một giao dịch không được ghi log."
+    Ký hiệu: $$\neg\forall x L(x) \equiv \exists x \neg L(x)$$
+
+(d) **Phủ định**: "Mọi lỗ hổng bảo mật đều đã được vá."
+    Ký hiệu: $$\neg\exists x V(x) \equiv \forall x \neg V(x)$$
+
+(e) "Không ai không thích âm nhạc" = $$\neg\exists x \neg M(x) \equiv \forall x M(x)$$.
+    **Phủ định**: "Có người không thích âm nhạc." ($$\exists x \neg M(x)$$)
+    
+    Lưu ý: Câu gốc "không ai không thích" là câu phủ định kép, tương đương với "mọi người đều thích". Việc nắm vững phủ định lượng từ giúp tránh hiểu nhầm các câu phức tạp trong đời thường và trong văn bản pháp lý.
+
+</details>
+
+### Bài tập 8: Dịch câu tiếng Việt có lượng từ lồng nhau
+
+Dịch các câu sau sang logic vị từ. Xác định miền xác định phù hợp.
+
+(a) "Mọi sinh viên đều có một mã số duy nhất."
+(b) "Có một cuốn sách mà mọi sinh viên đều đọc."
+(c) "Mọi người đều có người mà họ yêu thương." (không nhất thiết là cùng một người)
+(d) "Có một người mà mọi người đều kính trọng."
+(e) "Không có sinh viên nào thích tất cả các môn học."
+
+<details>
+<summary>Đáp án</summary>
+
+(a) $$\forall s \in Student\; \exists! m \in ID\; HasID(s, m)$$
+    "Mỗi sinh viên s có duy nhất một mã số m." Lượng từ tồn tại duy nhất (∃!) dùng để diễn tả "duy nhất".
+    
+    Không dùng ∃!? Có thể viết: $$\forall s \exists m (HasID(s,m) \land \forall n (HasID(s,n) \to n = m))$$
+
+(b) $$\exists b \in Book\; \forall s \in Student\; Read(s, b)$$
+    "Tồn tại một cuốn sách b mà mọi sinh viên s đều đọc b."
+    Lưu ý thứ tự: ∃ trước ∀ — có cùng một cuốn sách.
+
+(c) $$\forall p \in People\; \exists q \in People\; Love(p, q)$$
+    "Với mọi người p, tồn tại người q (có thể phụ thuộc vào p) sao cho p yêu q."
+    Lưu ý: q phụ thuộc vào p — mỗi người có thể yêu một người khác nhau.
+
+(d) $$\exists p \in People\; \forall q \in People\; Respect(q, p)$$
+    "Tồn tại người p mà mọi người q đều kính trọng p."
+    Đây là mệnh đề rất mạnh — chỉ một người duy nhất được mọi người kính trọng.
+
+(e) $$\neg\exists s \in Student\; \forall m \in Subject\; Like(s, m)$$
+    Tương đương: $$\forall s \in Student\; \exists m \in Subject\; \neg Like(s, m)$$
+    "Với mọi sinh viên s, tồn tại ít nhất một môn m mà s không thích."
+
+</details>
+
+### Bài tập 9: Xác định chân trị với lượng từ lồng nhau
+
+Cho miền $$U = \mathbb{Z}$$ (số nguyên). Xác định các mệnh đề sau đúng hay sai:
+
+(a) $$\forall x\; \exists y\; (x + y = 0)$$
+(b) $$\exists y\; \forall x\; (x + y = 0)$$
+(c) $$\forall x\; \forall y\; (x < y \to x^2 < y^2)$$
+(d) $$\exists x\; \exists y\; (x^2 + y^2 = 0)$$
+(e) $$\forall x\; \exists y\; (y = x^2)$$
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Đúng.** Với mọi x, chọn y = -x (số đối). Khi đó x + (-x) = 0. Lưu ý y phụ thuộc vào x.
+
+(b) **Sai.** Mệnh đề này yêu cầu tồn tại một y duy nhất cộng với mọi x đều bằng 0. Nếu y = 0, thì với x = 1: 1 + 0 = 1 ≠ 0. Với y bất kỳ, chọn x ≠ -y là thấy sai. Không có y nào thỏa mãn với mọi x.
+
+(c) **Sai.** Với x = -3, y = 2: x < y (-3 < 2) đúng, nhưng x² = 9 > 4 = y². Mệnh đề chỉ đúng trên ℕ (số tự nhiên không âm), không đúng trên ℤ.
+
+(d) **Đúng.** Chọn x = 0, y = 0: 0² + 0² = 0. Đây là cặp duy nhất thỏa mãn.
+
+(e) **Sai.** Với x = -1: y = (-1)² = 1 — vậy thỏa mãn. Nhưng y = x² luôn không âm. Với mọi x, y = x² luôn tồn tại. WAIT: Mệnh đề này nói "với mọi x, tồn tại y sao cho y = x²" — điều này **đúng** vì với mỗi x, ta chỉ cần gán y = x². Tuy nhiên cần lưu ý: y có phải là số nguyên không? x² luôn là số nguyên với x ∈ ℤ, nên y ∈ ℤ. Vậy mệnh đề **đúng**.
+
+</details>
+
+### Bài tập 10: Ứng dụng truy vấn cơ sở dữ liệu
+
+Cho lược đồ CSDL:
+- SinhVien(mãSV, tên, tuổi, lớp)
+- HọcPhần(mãHP, tênHP, tínChỉ)
+- ĐăngKý(mãSV, mãHP, điểm)
+
+Viết câu SQL và câu logic vị từ tương ứng cho:
+
+(a) "Tìm tất cả sinh viên đăng ký học phần 'Toán Rời Rạc'."
+(b) "Sinh viên nào đã đăng ký mọi học phần?"
+(c) "Học phần nào không có sinh viên nào đăng ký?"
+(d) "Tìm các sinh viên đã đăng ký ít nhất một học phần 3 tín chỉ."
+
+<details>
+<summary>Đáp án</summary>
+
+Đặt các vị từ:
+- $$SV(s, n, t, l)$$: s là sinh viên với tên n, tuổi t, lớp l
+- $$HP(m, ten, tc)$$: m là mã học phần với tên ten, số tín chỉ tc
+- $$DK(s, m, d)$$: sinh viên s đăng ký học phần m với điểm d
+
+(a) $$\exists m (HP(m, "Toán Rời Rạc", tc) \land DK(s, m, d))$$
+```sql
+SELECT sv.* FROM SinhVien sv
+JOIN DangKy dk ON sv.maSV = dk.maSV
+JOIN HocPhan hp ON dk.maHP = hp.maHP
+WHERE hp.tenHP = 'Toán Rời Rạc'
+```
+
+(b) $$\forall m (HP(m, ten, tc) \to \exists d DK(s, m, d))$$
+```sql
+SELECT maSV FROM SinhVien sv
+WHERE NOT EXISTS (
+    SELECT maHP FROM HocPhan
+    WHERE maHP NOT IN (
+        SELECT maHP FROM DangKy WHERE maSV = sv.maSV
+    )
+)
+```
+Đây là phép chia (division) trong đại số quan hệ.
+
+(c) $$\neg\exists s, d\; DK(s, m, d)$$
+```sql
+SELECT * FROM HocPhan hp
+WHERE NOT EXISTS (
+    SELECT 1 FROM DangKy WHERE maHP = hp.maHP
+)
+```
+
+(d) $$\exists m, ten, d (HP(m, ten, 3) \land DK(s, m, d))$$
+```sql
+SELECT DISTINCT sv.* FROM SinhVien sv
+JOIN DangKy dk ON sv.maSV = dk.maSV
+JOIN HocPhan hp ON dk.maHP = hp.maHP
+WHERE hp.tinChi = 3
+```
+
+</details>
