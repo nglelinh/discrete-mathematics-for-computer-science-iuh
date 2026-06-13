@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Mạng các Cổng Logic và Tối thiểu hóa Hàm Boole
-
 Một biểu thức logic không chỉ nằm trên giấy. Trong mạch số, nó phải được hiện thực bằng các **cổng logic** thật, với chi phí phần cứng, độ trễ và độ phức tạp kết nối cụ thể.
 
 

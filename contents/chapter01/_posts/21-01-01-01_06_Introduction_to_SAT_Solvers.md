@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Giới thiệu SAT Solver
-
 Sau khi học về **Dạng chuẩn tắc hội (CNF)** và các **định lý về DNF/CNF**, một câu hỏi tự nhiên xuất hiện: **Làm thế nào máy tính có thể tự động kiểm tra một công thức Boolean có thỏa mãn được không?**
 
 Câu trả lời nằm ở **SAT Solver** — một trong những công cụ quan trọng nhất của khoa học máy tính hiện đại. SAT solver không chỉ giải bài toán lý thuyết mà còn được dùng hàng ngày trong thiết kế vi mạch, kiểm chứng phần mềm, lập lịch, và trí tuệ nhân tạo.

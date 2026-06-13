@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Lượng từ và Lượng từ lồng nhau
-
 Ở bài trước, chúng ta đã biết vị từ là gì và cách biến một phát biểu có biến thành mệnh đề bằng cách gán giá trị cụ thể. Nhưng trong toán học và lập trình, ta hiếm khi nói về một đối tượng cụ thể — ta cần nói về **tất cả** hoặc **ít nhất một** phần tử trong tập hợp.
 
 Và chỉ cần thay một chữ "mọi" bằng "tồn tại", ý nghĩa của phát biểu có thể đảo ngược hoàn toàn:
@@ -232,6 +230,52 @@ SELECT EXISTS (
   SELECT 1 FROM students WHERE gpa > 9.0
 );
 ```
+
+</details>
+
+### Bài tập 5: Quantifiers with Floor and Ceiling
+
+**A.10** For each of the following propositions, determine whether it's true or false, and justify your answer. (The floor function ⌊x⌋ rounds x down to an integer toward −∞, and the ceiling function ⌈x⌉ rounds x up to an integer toward +∞.)
+
+(a) (∃x ∈ ℝ) (∀y ∈ ℝ) (x + y = x y)
+
+(b) (∃x ∈ ℝ) (∀y ∈ ℝ) (x + y ≤ 2 x y)
+
+(c) (∃x ∈ ℝ) (∀y ∈ ℝ) (⌈y⌉ = ⌊y + x⌋)
+
+(d) (∀x ∈ ℤ) (∃y ∈ ℕ) (y² ≤ x² ⇒ x ≤ 0) Hint: Use P ⇒ Q ≡ ¬P ∨ Q.
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Sai.** Giả sử tồn tại x. Với y = 0: x + 0 = x·0 ⇔ x = 0. Với y = 1: x + 1 = x·1 ⇔ x + 1 = x ⇔ 1 = 0 (vô lý). Vậy không tồn tại x thỏa mãn.
+
+(b) **Sai.** Giả sử tồn tại x. Với y = 0, bất phương trình: x + 0 ≤ 2·x·0 ⇔ x ≤ 0. Với y = 1: x + 1 ≤ 2x ⇔ 1 ≤ x. Kết hợp x ≤ 0 và x ≥ 1 là vô lý.
+
+(c) **Sai.** Giả sử tồn tại x. Chọn y = 0: ⌈0⌉ = 0, ⌊0 + x⌋ = ⌊x⌋ = 0 ⇒ x ∈ [0,1). Chọn y = 1: ⌈1⌉ = 1, ⌊1 + x⌋. Với x ∈ [0,1): 1 + x ∈ [1,2) ⇒ ⌊1 + x⌋ = 1. OK. Nhưng chọn y = 0.5: ⌈0.5⌉ = 1, ⌊0.5 + x⌋. Với x ∈ [0,1): ⌊0.5 + x⌋ = 0 hoặc 1. Để bằng 1, cần 0.5 + x ≥ 1 ⇒ x ≥ 0.5. Nhưng với x ∈ [0.5,1), chọn y = -0.5: ⌈-0.5⌉ = 0, ⌊-0.5 + x⌋. Với x < 1: -0.5 + x < 0.5 ⇒ ⌊-0.5 + x⌋ ∈ {-1, 0}. Để bằng 0, cần -0.5 + x ≥ 0 ⇒ x ≥ 0.5. Với x ∈ [0.5,1): -0.5 + x ∈ [0, 0.5) ⇒ ⌊-0.5 + x⌋ = 0 ≠ ⌈-0.5⌉ = 0. OK. Thực tế x = 0.5 thỏa mãn? Kiểm tra: y = -0.5 ⇒ ⌈-0.5⌉ = 0, ⌊-0.5 + 0.5⌋ = ⌊0⌋ = 0 OK. Vậy mệnh đề **đúng** với x = 0.5.
+
+(d) **Đúng.** Với x ∈ ℤ, cần tìm y ∈ ℕ sao cho (y² ≤ x² ⇒ x ≤ 0). Biến đổi P ⇒ Q ≡ ¬P ∨ Q ≡ (y² > x²) ∨ (x ≤ 0). Với x ≤ 0, chọn y = 0 bất kỳ đều thỏa mãn vì Q đúng. Với x > 0 (x ≥ 1), cần ¬P đúng, tức y² > x², hay y > x. Chọn y = x + 1 ∈ ℕ, ta có y² > x². Vậy với mọi x, luôn tồn tại y thỏa mãn.
+
+</details>
+
+### Bài tập 6: Quantifier Equivalence Laws
+
+**A.11** Determine which of the following hold. For each, if equivalent then informally explain why, and if inequivalent then exhibit particular predicates that form a counterexample. Assume the domains are always non-empty.
+
+(a) ∃x (P(x) ∧ ∀y Q(y)) ≡ ∀y ∃x (P(x) ∧ Q(y))
+
+(b) ∀x ∃y (P(x, y) ∨ Q(x, y)) ≡ (∀x ∃y P(x, y)) ∨ (∀x ∃y Q(x, y))
+
+(c) (∃x ∀y P(x, y)) ⇒ (∀y ∃x P(x, y)) ≡ (∃x ∀y P(x, y)) ⇒ (∃x ∃y P(x, y))
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Tương đương.** Vế trái: ∃x P(x) ∧ ∀y Q(y) — nghĩa là tồn tại x thỏa P và mọi y thỏa Q. Vế phải: ∀y ∃x (P(x) ∧ Q(y)) — với mọi y, tồn tại x (phụ thuộc vào y) sao cho P(x) và Q(y). Nếu vế trái đúng với x₀, thì với mọi y, chọn x = x₀, ta có P(x₀) ∧ Q(y). Ngược lại, nếu vế phải đúng thì với mọi y, tồn tại x_y. Vì Q(y) đúng với mọi y (theo ∀y), và miền không rỗng, chọn y₀ bất kỳ, x_{y₀} thỏa P. Hơn nữa Q(y) đúng với mọi y, nên vế trái đúng.
+
+(b) **Không tương đương.** Phản ví dụ: Miền {0,1}. Đặt P(0,0)=T, P(0,1)=F, P(1,0)=F, P(1,1)=T, Q(0,0)=F, Q(0,1)=T, Q(1,0)=T, Q(1,1)=F. Vế trái: ∀x∃y (P(x,y)∨Q(x,y)). Với x=0: P(0,0)∨Q(0,0)=T∨F=T. Với x=1: P(1,1)∨Q(1,1)=T∨F=T. Vế trái đúng. Vế phải: (∀x∃y P(x,y)) ∨ (∀x∃y Q(x,y)). Vế trái của ∨: với x=0 ∃y P(0,y)=T (y=0), với x=1 ∃y P(1,y)=T (y=1) ⇒ đúng. Vế phải của ∨: với x=0 ∃y Q(0,y)=T (y=1), với x=1 ∃y Q(1,y)=T (y=0) ⇒ đúng. Cần phản ví dụ khác. Đặt P(0,0)=T, P(0,1)=F, P(1,0)=F, P(1,1)=F. Q(0,0)=F, Q(0,1)=T, Q(1,0)=F, Q(1,1)=F. Vế trái: x=0: T∨F=T, x=1: F∨F=F ⇒ vế trái sai. Vế phải: ∀x∃y P: x=0 ∃y P=T, x=1 ∃y P=F ⇒ sai. ∀x∃y Q: x=0 ∃y Q=T, x=1 ∃y Q=F ⇒ sai. Sai ∨ Sai = Sai. Vậy tương đương trong trường hợp này. Thử P(0,0)=T, P(0,1)=F, P(1,0)=F, P(1,1)=F. Q(0,0)=F, Q(0,1)=F, Q(1,0)=F, Q(1,1)=T. Vế trái: x=0: T∨F=T, x=1: F∨T=T ⇒ đúng. Vế phải: ∀x∃y P: x=0 T, x=1 F ⇒ sai. ∀x∃y Q: x=0 F, x=1 T ⇒ sai. Sai∨Sai = Sai. Vậy vế trái đúng, vế phải sai ⇒ **không tương đương**.
+
+(c) **Tương đương.** Cả hai vế đều có dạng A ⇒ B. A = ∃x∀y P(x,y). B₁ = ∀y∃x P(x,y), B₂ = ∃x∃y P(x,y). Đã biết ∃x∀y P ⇒ ∀y∃x P (luôn đúng trong logic bậc nhất). Và ∀y∃x P ⇒ ∃x∃y P (vì nếu với mọi y tồn tại x, thì hiển nhiên tồn tại x và y). Vậy B₁ ⇒ B₂. Do đó khi A đúng, A ⇒ B₁ và A ⇒ B₂ đều đúng. Khi A sai, cả hai đều đúng (vì false ⇒ anything). Vậy hai vế tương đương.
 
 </details>
 

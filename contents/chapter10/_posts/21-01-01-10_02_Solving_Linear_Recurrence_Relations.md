@@ -8,8 +8,6 @@ required: true
 lang: vi
 ---
 
-# Giải Quan hệ Truy hồi Tuyến tính
-
 Viết được quan hệ truy hồi mới chỉ là nửa chặng đường. Trong thực tế, ta còn muốn biết giá trị ở bước thứ 50, thứ 1000, hay tốc độ tăng trưởng của cả dãy mà không phải tính lần lượt từng bước một.
 
 

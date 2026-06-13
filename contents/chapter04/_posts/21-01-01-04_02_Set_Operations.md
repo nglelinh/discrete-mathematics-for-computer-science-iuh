@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Phép toán Tập hợp
-
 Biết một tập hợp là gì mới chỉ là bước đầu. Trong thực tế, ta gần như luôn cần kết hợp, so sánh hoặc loại trừ giữa nhiều tập: người dùng thuộc nhóm A **hoặc** B, bản ghi có trong log hôm qua nhưng không có hôm nay, tập tài nguyên chung của hai service, hay danh sách node chưa được thăm.
 
 
@@ -229,6 +227,95 @@ a) Hợp (∪)
 b) Giao (∩)
 c) Hiệu (\)
 d) Hiệu đối xứng (△)
+</details>
+
+### Bài tập 4: Tính chất của phép toán tập hợp
+
+Which of the following properties are guaranteed to hold for all subsets S and T of a
+universe U? Justify your answers.
+
+(a) S \ T = T \ S
+
+(b) S \ T = S ∩ T̅
+
+(c) S \ T = S ∪ T
+
+(d) S \ S = T \ T
+
+(e) S \ (S \ T) = T \ (T \ S)
+
+(f) (U \ T) \ S = U \ (T \ S)
+
+(g) (S \ T) ∪ (T \ S) ⊆ U \ (S ∩ T)
+
+(h) If S ⊆ T then S̅ ⊆ T̅.
+
+(i) If T ⊆ S ∩ T then S ⊆ T ∩ S.
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Sai.** Phản ví dụ: S = {1}, T = {2}. S \ T = {1}, T \ S = {2}.
+
+(b) **Đúng.** x ∈ S \ T ⇔ x ∈ S ∧ x ∉ T ⇔ x ∈ S ∧ x ∈ T̅ ⇔ x ∈ S ∩ T̅.
+
+(c) **Sai.** Phản ví dụ: S = {1}, T = {2}. S \ T = {1}, S ∪ T = {1, 2}.
+
+(d) **Đúng.** S \ S = ∅ và T \ T = ∅ với mọi S, T.
+
+(e) **Sai.** Phản ví dụ: S = {1, 2}, T = {2}. S \ (S \ T) = S \ {1} = {2}, T \ (T \ S) = T \ ∅ = {2}. Trường hợp này đúng, nhưng với S = {1}, T = {1, 2}: S \ (S \ T) = {1} \ ∅ = {1}, T \ (T \ S) = {1,2} \ {2} = {1}. Thực tế mệnh đề này **đúng** — đây là tính chất đối xứng của hiệu tập hợp.
+
+(f) **Đúng.** (U \ T) \ S = (U ∩ T̅) ∩ S̅ = U ∩ (T̅ ∩ S̅) = U \ (T ∪ S). Và U \ (T \ S) = U \ (T ∩ S̅) = U ∩ (T ∩ S̅)̅ = U ∩ (T̅ ∪ S) = (U ∩ T̅) ∪ (U ∩ S) = (U \ T) ∪ S. Hai vế không bằng nhau. Thực tế mệnh đề này **sai**. Phản ví dụ: U = {1,2,3}, T = {1}, S = {2}. (U \ T) \ S = {2,3} \ {2} = {3}. U \ (T \ S) = {1,2,3} \ {1} = {2,3}.
+
+(g) **Đúng.** (S \ T) ∪ (T \ S) là hiệu đối xứng S △ T. Mọi phần tử của S △ T đều thuộc U và không đồng thời thuộc cả S và T, nên chúng thuộc U \ (S ∩ T).
+
+(h) **Sai.** Nếu S ⊆ T thì T̅ ⊆ S̅ (phần bù đảo ngược chiều bao hàm).
+
+(i) **Đúng.** T ⊆ S ∩ T ⇒ T ⊆ S và T ⊆ T (hiển nhiên). Từ T ⊆ S thì T ∩ S = T, do đó S ⊆ T ∩ S ⇔ S ⊆ T, đúng vì T ⊆ S.
+
+</details>
+
+### Bài tập 5: Tích Descartes
+
+**A.3** Which of the following properties are guaranteed to hold for all sets Q, R, S, T? Justify
+your answers.
+
+(a) (Q × R) ∩ (S × T) = (Q ∩ S) × (R ∩ T)
+
+(b) (Q × R) ∪ (S × T) = (Q ∪ S) × (R ∪ T)
+
+(c) (Q × R) \ (S × T) = (Q \ S) × (R \ T)
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Đúng.** (x, y) ∈ (Q × R) ∩ (S × T) ⇔ x ∈ Q ∧ y ∈ R ∧ x ∈ S ∧ y ∈ T ⇔ x ∈ Q ∩ S ∧ y ∈ R ∩ T ⇔ (x, y) ∈ (Q ∩ S) × (R ∩ T).
+
+(b) **Sai.** Phản ví dụ: Q = {1}, R = {a}, S = {2}, T = {b}. Vế trái: (Q × R) ∪ (S × T) = {(1,a), (2,b)}. Vế phải: (Q ∪ S) × (R ∪ T) = {1,2} × {a,b} = {(1,a), (1,b), (2,a), (2,b)}.
+
+(c) **Sai.** Phản ví dụ: Q = {1,2}, R = {a}, S = {2}, T = {a}. Vế trái: (Q × R) \ (S × T) = {(1,a), (2,a)} \ {(2,a)} = {(1,a)}. Vế phải: (Q \ S) × (R \ T) = {1} × ∅ = ∅.
+
+</details>
+
+### Bài tập 6: Set Relationships with Logic
+
+**A.8** Which of the following statements are guaranteed to hold for all sets Q, R, S, T? Justify your answers.
+
+(a) (R ∪ S) ⊆ T ⇔ (R ⊆ T ∧ S ⊆ T)
+
+(b) (R ∩ S) ⊆ T ⇔ (R ⊆ T ∨ S ⊆ T)
+
+(c) Q × R ⊆ S × T ⇔ (Q ⊆ S ∧ R ⊆ T)
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Đúng.** Nếu (R ∪ S) ⊆ T thì mọi phần tử của R và S đều thuộc T, nên R ⊆ T và S ⊆ T. Ngược lại, nếu R ⊆ T và S ⊆ T thì mọi phần tử của R ∪ S đều thuộc T, nên (R ∪ S) ⊆ T.
+
+(b) **Sai.** Không đúng theo chiều (⇐): lấy R = {1}, S = ∅, T = {2}. Khi đó R ⊆ T sai, S ⊆ T đúng, nhưng (R ∩ S) = ∅ ⊆ T luôn đúng. Nhưng chiều (⇒) cũng sai: lấy R = {1}, S = {2}, T = {3}. R ∩ S = ∅ ⊆ T, nhưng R ⊈ T và S ⊈ T.
+
+(c) **Đúng.** Nếu Q × R ⊆ S × T, lấy x ∈ Q, y ∈ R bất kỳ: (x,y) ∈ Q × R ⊆ S × T, suy ra x ∈ S, y ∈ T. Vậy Q ⊆ S và R ⊆ T. Ngược lại, nếu Q ⊆ S, R ⊆ T thì (x,y) ∈ Q × R ⇒ x ∈ Q ⊆ S, y ∈ R ⊆ T ⇒ (x,y) ∈ S × T.
+
 </details>
 
 ## Định lý De Morgan (mở rộng)

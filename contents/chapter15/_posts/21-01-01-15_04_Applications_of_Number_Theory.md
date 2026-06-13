@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Ứng dụng của Lý thuyết Số trong Khoa học Máy tính
-
 Có những chủ đề thoạt nhìn rất "toán thuần" nhưng lại nằm ngay trong lõi của hệ thống hiện đại. Lý thuyết số là một ví dụ rõ nhất. Từ mật mã, chữ ký số, kiểm tra lỗi, đến các thuật toán tính toán trên số nguyên lớn, dấu vết của nó xuất hiện ở khắp nơi.
 
 

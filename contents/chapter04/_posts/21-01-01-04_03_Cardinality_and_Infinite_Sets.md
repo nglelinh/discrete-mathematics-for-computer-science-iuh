@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Lực lượng Tập hợp và Nguyên lý Bao hàm - Loại trừ
-
 Khi hệ thống tăng quy mô, câu hỏi không còn chỉ là "có những phần tử nào" mà còn là "có bao nhiêu phần tử". Một nền tảng có bao nhiêu người dùng hoạt động, một bộ test có bao nhiêu trường hợp khác nhau, hay hai tập điều kiện chồng lấn nhau ở mức nào, tất cả đều là bài toán đếm.
 
 

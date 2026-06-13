@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Giới thiệu Máy hữu hạn trạng thái
-
 Một máy bán nước tự động chỉ "biết" vài điều: hiện đang có bao nhiêu tiền trong khe, đã chọn loại nước nào chưa, và đã đến lúc nhả hàng hay chưa. Nó không cần ghi nhớ lịch sử mua hàng của tất cả khách trước đó - nó chỉ cần biết **trạng thái hiện tại** (current state) và **đầu vào tiếp theo** (next input) là một đồng xu hay một nút bấm. Mô hình đơn giản này được gọi là **máy hữu hạn trạng thái** (finite-state machine, FSM), và nó nằm ở trung tâm của mọi thứ từ đèn giao thông, bộ điều khiển vi xử lý, đến trình phân tích từ vựng của một trình biên dịch.
 
 Một FSM được mô tả bởi một tập trạng thái hữu hạn, một bảng chữ cái đầu vào, một hàm chuyển trạng thái $$\delta$$, một trạng thái khởi đầu $$q_0$$, và một tập trạng thái kết thúc. Sự tinh tế nằm ở chỗ: chỉ với một tập **hữu hạn** trạng thái và bộ nhớ bằng không, FSM vẫn có thể nhận diện được toàn bộ lớp **ngôn ngữ chính quy** (regular languages) - cùng lớp ngôn ngữ mà biểu thức chính quy (regular expressions) trong các công cụ như `grep` hay `sed` mô tả. Đây là cây cầu đầu tiên giữa **logic toán học** và **mô hình tính toán** mà chúng ta sẽ đi qua.

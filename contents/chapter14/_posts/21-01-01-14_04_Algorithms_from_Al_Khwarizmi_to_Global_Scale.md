@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Thuật toán: Từ Al-Khwarizmi đến Quy mô Toàn cầu
-
 Không có từ nào trong khoa học máy tính quen hơn “algorithm”.
 Nhưng chính vì quen,
 ta dễ quên rằng thuật toán không chỉ là đoạn code.

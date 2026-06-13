@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Hàm sinh trong Phép đếm và Mã hóa
-
 Trong nhiều phần của toán rời rạc,
 ta đếm bằng cách liệt kê,
 dùng công thức,

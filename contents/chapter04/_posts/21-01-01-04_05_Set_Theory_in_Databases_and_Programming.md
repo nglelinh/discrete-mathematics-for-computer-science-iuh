@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Lý thuyết Tập hợp trong Cơ sở Dữ liệu và Lập trình
-
 Nhiều sinh viên gặp lý thuyết tập hợp và nghĩ rằng đó là phần “rất toán”,
 khá xa thực tế phần mềm.
 Nhưng nếu nhìn kỹ,

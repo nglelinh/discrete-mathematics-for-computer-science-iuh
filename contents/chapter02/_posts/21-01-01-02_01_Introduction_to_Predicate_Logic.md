@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Giới thiệu Logic Vị từ
-
 Trong chương trước, logic mệnh đề đã cho chúng ta khả năng phân tích các phát biểu đúng/sai và ghép chúng lại bằng các phép toán. Nhưng hãy thử diễn đạt câu sau bằng logic mệnh đề: *"Mọi sinh viên đều phải đăng ký ít nhất một học phần."* Bạn sẽ thấy ngay vấn đề — logic mệnh đề không có cách nào nói về "mọi", "tồn tại", hay "với mỗi đối tượng x thỏa tính chất P".
 
 Đây không phải hạn chế lý thuyết suông. Trong thực tế, hầu hết các yêu cầu phần mềm đều chứa cấu trúc kiểu này:
@@ -238,6 +236,31 @@ Biểu diễn bằng vị từ và lượng từ:
 1. Mọi số chẵn đều chia hết cho 2.
 2. Có một số nguyên tố nhỏ hơn 5.
 3. Không phải mọi loài chim đều biết bay.
+
+### Bài tập 4: Truth of Quantified Predicates
+
+**A.9** Let P(x, y) be the predicate "x < y < x + 1". For each of the following propositions, determine whether it's true or false, and justify your answer.
+
+(a) (∀x ∈ ℤ) (∃y ∈ ℝ) P(x, y)
+
+(b) (∀x ∈ ℝ) (∃y ∈ ℤ) P(x, y)
+
+(c) (∃y ∈ ℝ) (∀x ∈ ℤ) ¬P(x, y)
+
+(d) (∃y ∈ ℤ) (∀x ∈ ℝ) ¬P(x, y)
+
+<details>
+<summary>Đáp án</summary>
+
+(a) **Đúng.** Với mọi số nguyên x, ta chọn y = x + 0.5. Khi đó x < x + 0.5 < x + 1 luôn đúng.
+
+(b) **Sai.** Chọn x = 0. Chọn y nguyên bất kỳ. Điều kiện y < x + 1 = 1 và y > x = 0 cho thấy y phải là số thực giữa 0 và 1, không có số nguyên nào thỏa mãn. Phản ví dụ: x = 0, không tồn tại y ∈ ℤ để 0 < y < 1.
+
+(c) **Đúng.** Lấy y = 0.5. Với mọi x ∈ ℤ, P(x, 0.5) tức x < 0.5 < x + 1 luôn sai khi x ≠ 0 (vì nếu x ≥ 1 thì x > 0.5, nếu x ≤ -1 thì x + 1 ≤ 0 < 0.5). Với x = 0, 0 < 0.5 < 1 là đúng, nhưng ta cần ¬P(x, y) cho mọi x, và x = 0 là phản ví dụ. Thực tế mệnh đề này **sai** vì ∀x ∈ ℤ: x < 0.5 < x + 1 chỉ sai với x ≥ 1 hoặc x ≤ -1, nhưng với x = 0 thì đúng.
+
+(d) **Sai.** Lấy y nguyên bất kỳ. Với x = y, P(y, y) tức y < y < y + 1, hiển nhiên sai. Nhưng cần ¬P(x, y) đúng với ∀x ∈ ℝ. Với x = y - 0.5, P(y - 0.5, y): y - 0.5 < y < y + 0.5 đúng, nên ¬P sai. Vậy không tồn tại y ∈ ℤ thỏa mãn.
+
+</details>
 
 ## Tóm tắt
 

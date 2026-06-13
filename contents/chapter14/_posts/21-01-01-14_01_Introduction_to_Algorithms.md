@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Giới thiệu về Thuật toán
-
 Khi người dùng bấm tìm kiếm, khi hệ thống sắp xếp dữ liệu, khi ứng dụng kiểm tra đường đi hay mã hóa thông tin, đằng sau mỗi hành động đều có một chuỗi bước xử lý rõ ràng. Chuỗi bước đó chính là **thuật toán**.
 
 

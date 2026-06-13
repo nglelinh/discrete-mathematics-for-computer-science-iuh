@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Phép toán Quan hệ và Bao đóng
-
 Khi làm việc với quan hệ trong hệ thống thực, ta không chỉ quan sát một quan hệ có sẵn. Ta thường phải đảo chiều liên kết, ghép hai quan hệ thành một đường suy diễn mới, hoặc thêm vào những cặp còn thiếu để quan hệ đạt một tính chất mong muốn.
 
 

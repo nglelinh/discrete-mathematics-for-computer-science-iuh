@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Tính chia hết và Số nguyên tố
-
 Khi máy tính mã hóa dữ liệu, sinh khóa, kiểm tra tính hợp lệ của số học modulo hay phân tích cấu trúc của các số nguyên, nó đang chạm tới một vùng rất cổ điển của toán học: **lý thuyết số**.
 
 

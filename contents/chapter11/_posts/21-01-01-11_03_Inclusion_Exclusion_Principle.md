@@ -8,8 +8,6 @@ required: true
 lang: vi
 ---
 
-# Nguyên lý Bao hàm - Loại trừ
-
 Khi đếm các đối tượng thỏa nhiều điều kiện cùng lúc, cách cộng thẳng từng nhóm gần như chắc chắn sẽ sai nếu các nhóm có giao nhau. Đây là một vấn đề rất thực trong xác suất, truy vấn dữ liệu và cả các bài toán tổ hợp.
 
 

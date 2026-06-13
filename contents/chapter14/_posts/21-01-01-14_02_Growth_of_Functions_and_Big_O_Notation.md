@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Tăng trưởng của Hàm và Ký hiệu Big-O
-
 Một thuật toán chạy 0.01 giây với 100 phần tử chưa chắc vẫn ổn với 10 triệu phần tử. Trong khoa học máy tính, câu hỏi quan trọng không chỉ là chương trình chạy được, mà là nó tăng chi phí như thế nào khi đầu vào lớn dần.
 
 
@@ -186,6 +184,33 @@ $$n! = 1 \times 2 \times 3 \times \ldots \times n \leq n \times n \times n \time
 Vậy với mọi $$n \geq 1$$, $$n! \leq 1 \cdot n^n$$. Chọn $$C = 1, n_0 = 1$$, ta có $$n! = O(n^n)$$.
 
 Đây là một cận trên rất rộng. Cận chặt hơn (công thức Stirling) cho biết $$n! \sim \sqrt{2\pi n}(n/e)^n$$.
+</details>
+
+### Bài tập 6: Little-o vs Big-O vs Omega
+
+**A.13** This exercise shows that "f = o(g)" is not always the same as "f = O(g) and f ≠ Ω(g)", even for monotonically nondecreasing functions (f(n) ≤ f(n + 1) and g(n) ≤ g(n + 1) for all n ∈ ℕ). Consider the functions f(n) = ⌊n/2⌋! and g(n) = ⌈n/2⌉!. (Here ! means factorial.)
+
+Verify that:
+
+(a) f ≠ o(g)
+
+(b) f = O(g)
+
+(c) f ≠ Ω(g)
+
+(d) f and g are monotonically nondecreasing
+
+<details>
+<summary>Đáp án</summary>
+
+(a) Ta có g(n) = ⌈n/2⌉!, f(n) = ⌊n/2⌋!. Với n chẵn, n = 2k: f(2k) = k!, g(2k) = k!. Khi đó tỉ số f(2k)/g(2k) = 1, không tiến về 0. Với n lẻ, n = 2k+1: f(2k+1) = k!, g(2k+1) = (k+1)!. Tỉ số f/g = k!/(k+1)! = 1/(k+1) → 0. Nhưng định nghĩa f = o(g) yêu cầu lim_{n→∞} f(n)/g(n) = 0, và dãy con n = 2k cho thấy giới hạn không thể bằng 0. Vậy f ≠ o(g).
+
+(b) Với mọi n, ⌊n/2⌋ ≤ ⌈n/2⌉, nên ⌊n/2⌋! ≤ ⌈n/2⌉!, tức f(n) ≤ g(n) với mọi n. Chọn C = 1, n₀ = 1, ta có f(n) = O(g(n)).
+
+(c) Nếu f = Ω(g), tồn tại C > 0, n₀ sao cho f(n) ≥ C·g(n) với mọi n ≥ n₀. Với n chẵn, f(n) = g(n) nên C ≤ 1. Với n lẻ n = 2k+1, f(2k+1) = k!, g(2k+1) = (k+1)! = (k+1)·k!. Tỉ số f/g = 1/(k+1) → 0. Vậy không tồn tại C > 0 thỏa mãn. Do đó f ≠ Ω(g).
+
+(d) Hàm giai thừa là đơn điệu tăng, và cả floor và ceiling đều là hàm không giảm theo n. Với n bất kỳ: n+1 > n ⇒ ⌊(n+1)/2⌋ ≥ ⌊n/2⌋ và ⌈(n+1)/2⌉ ≥ ⌈n/2⌉. Kết hợp với tính đơn điệu của giai thừa, f và g đều không giảm.
+
 </details>
 
 ## Tóm tắt

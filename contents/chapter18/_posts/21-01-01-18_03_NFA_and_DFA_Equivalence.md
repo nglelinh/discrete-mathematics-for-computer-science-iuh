@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# NFA và Sự tương đương với DFA
-
 Hãy tưởng tượng bạn cần thiết kế một máy nhận diện các chuỗi trên $$\{0, 1\}$$ **kết thúc bằng `01`**. Với DFA, bạn phải cẩn thận ghi nhớ "mình vừa đọc gì" bằng các trạng thái: chưa thấy gì, vừa thấy `0`, vừa thấy `01`. Nếu yêu cầu phức tạp hơn - "chứa **một trong các mẫu** `01`, `100`, `1110`" - DFA sẽ phình ra rất nhanh. Thay vào đó, nếu cho phép máy "đoán" mẫu nào sẽ xuất hiện và "chạy nhiều khả năng song song", ta được một mô hình gọn hơn nhiều: **automat hữu hạn không tất định** (Nondeterministic Finite Automaton, NFA).
 
 NFA nghe có vẻ "mạnh hơn" DFA vì nó có khả năng đoán đúng - nhưng một định lý đẹp khẳng định rằng **NFA và DFA tương đương về sức biểu đạt**: cùng nhận diện đúng lớp ngôn ngữ chính quy. Cái giá là số trạng thái: chuyển từ NFA sang DFA có thể làm số trạng thái tăng theo cấp số mũ. Bài này sẽ trình bày định nghĩa NFA, thuật toán **xây dựng tập con** (subset construction) chuyển NFA về DFA, và hệ quả thực tế trong cài đặt biểu thức chính quy.

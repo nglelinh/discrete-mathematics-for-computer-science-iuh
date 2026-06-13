@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Bản đồ Karnaugh và Tối thiểu hóa Trực quan
-
 Có những biểu thức Boole đủ nhỏ để ta không cần lao ngay vào thuật toán đầy đủ. Chỉ cần sắp xếp các giá trị đầu ra theo một bảng đặc biệt, những vùng có thể gộp sẽ lộ ra rất trực quan. Đó là lý do **bản đồ Karnaugh** được dùng rất nhiều trong thiết kế logic cơ bản.
 
 

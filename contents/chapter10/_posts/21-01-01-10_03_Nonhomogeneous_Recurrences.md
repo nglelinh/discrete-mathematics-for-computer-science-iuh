@@ -8,8 +8,6 @@ required: true
 lang: vi
 ---
 
-# Quan hệ Truy hồi Không Thuần nhất và Ứng dụng
-
 Không phải mọi truy hồi đều được xây từ các giá trị trước đó một cách "sạch". Nhiều quá trình còn có thêm nguồn tác động bên ngoài, như chi phí cố định mỗi bước, lượng dữ liệu được bơm thêm, hay số lượng yêu cầu mới phát sinh theo thời gian.
 
 

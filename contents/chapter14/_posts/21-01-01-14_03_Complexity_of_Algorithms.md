@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Độ phức tạp của Thuật toán
-
 Sau khi có ngôn ngữ Big-O để mô tả tăng trưởng, bước tiếp theo là dùng nó để phân tích **độ phức tạp của thuật toán** một cách có phương pháp. Đây là kỹ năng cốt lõi nếu ta muốn so sánh lời giải không chỉ bằng cảm giác.
 
 

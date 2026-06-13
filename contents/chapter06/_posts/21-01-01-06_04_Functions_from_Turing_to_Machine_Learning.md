@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Hàm số: Từ Turing đến Học máy
-
 Ý tưởng về hàm số nghe có vẻ quen đến mức dễ bị xem nhẹ.
 Ta đã thấy nó từ phổ thông:
 mỗi đầu vào cho đúng một đầu ra.

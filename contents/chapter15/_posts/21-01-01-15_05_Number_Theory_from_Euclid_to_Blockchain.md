@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Lý thuyết Số: Từ Euclid đến Blockchain
-
 Nếu có một chương trong toán rời rạc khiến nhiều sinh viên bất ngờ nhất về sức ảnh hưởng thực tế,
 đó thường là number theory.
 Rất nhiều khái niệm nghe có vẻ cổ điển và xa đời sống — chia hết,

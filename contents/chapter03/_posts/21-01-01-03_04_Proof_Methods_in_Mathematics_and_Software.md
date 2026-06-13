@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Các Phương pháp Chứng minh trong Toán học và Phần mềm
-
 Trong khoa học máy tính,
 không phải mọi câu hỏi quan trọng đều là “chạy được chưa”.
 Có những lúc ta cần câu hỏi khó hơn:

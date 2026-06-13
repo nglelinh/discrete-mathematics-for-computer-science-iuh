@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Chứng minh Trực tiếp
-
 Từ bài toán kiểm tra điều kiện trong code đến việc chứng minh một thuật toán luôn cho kết quả đúng, ta đều gặp cùng một yêu cầu: nếu giả thiết đúng, kết luận phải đi ra một cách rõ ràng và không có khoảng trống lập luận.
 
 

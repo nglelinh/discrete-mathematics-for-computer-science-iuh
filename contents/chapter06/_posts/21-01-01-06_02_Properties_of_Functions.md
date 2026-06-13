@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Tính chất của Hàm số
-
 Biết một ánh xạ là hàm vẫn chưa đủ để hiểu nó mạnh đến đâu. Trong nhiều bài toán, điều quan trọng là xem hàm có làm mất thông tin không, có bao phủ hết miền đích không, và có thể đảo ngược được không.
 
 

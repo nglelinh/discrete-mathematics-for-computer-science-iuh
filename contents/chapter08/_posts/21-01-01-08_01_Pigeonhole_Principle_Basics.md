@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Nguyên lý Dirichlet cơ bản
-
 Nếu có 11 file mà chỉ 10 thư mục để chứa, ít nhất một thư mục phải nhận từ 2 file trở lên. Phát biểu nghe gần như hiển nhiên, nhưng đằng sau nó là một nguyên lý đếm cực mạnh, đủ sức giải nhiều bài toán mà thoạt nhìn chẳng liên quan gì đến "chim bồ câu và chuồng".
 
 

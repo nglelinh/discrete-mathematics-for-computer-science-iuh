@@ -8,8 +8,6 @@ required: true
 lang: vi
 ---
 
-# Giới thiệu Quan hệ Truy hồi
-
 Nhiều bài toán không mô tả trực tiếp kết quả ở bước $$n$$, mà mô tả nó thông qua các bước trước đó. Dãy Fibonacci là ví dụ kinh điển, nhưng ý tưởng này còn xuất hiện trong đệ quy, phân tích thuật toán, mô hình dân số, lan truyền thông tin và dynamic programming.
 
 

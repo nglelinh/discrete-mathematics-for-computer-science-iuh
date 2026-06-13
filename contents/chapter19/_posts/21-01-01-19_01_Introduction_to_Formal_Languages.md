@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Giới thiệu Ngôn ngữ Hình thức
-
 Mỗi khi bạn gõ một câu lệnh vào terminal, một dòng mã Python, hay một biểu thức tìm kiếm `grep`, máy tính phải quyết định xem chuỗi ký tự đó có **hợp lệ** hay không trước khi thực thi. Trình biên dịch Python từ chối `def 1foo():` nhưng chấp nhận `def foo1():`. Lệnh `grep "^[A-Z].*\.$"` tìm các dòng bắt đầu bằng chữ hoa và kết thúc bằng dấu chấm. Cả hai đều dựa trên cùng một câu hỏi nền tảng: **chuỗi ký tự này có thuộc về ngôn ngữ mà ta định nghĩa hay không?**
 
 **Ngôn ngữ hình thức** (formal language) là khung lý thuyết trả lời câu hỏi đó. Khác với ngôn ngữ tự nhiên - đầy mơ hồ và ngữ cảnh - ngôn ngữ hình thức được định nghĩa bằng các quy tắc toán học chính xác, có thể kiểm tra bằng thuật toán. Chương này xây dựng nền tảng đó: bảng chữ cái, chuỗi, ngôn ngữ, và các phép toán trên chúng. Đây là ngôn ngữ chung của Chương 18 (máy tính toán) và Chương 20 (lý thuyết độ phức tạp).

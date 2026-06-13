@@ -8,8 +8,6 @@ required: true
 lang: vi
 ---
 
-# Giải Quan hệ Truy hồi bằng Hàm sinh
-
 Khi một quan hệ truy hồi quá khó nhìn ra công thức nghiệm bằng các kỹ thuật quen thuộc, ta có thể đổi góc nhìn. Thay vì bám vào từng số hạng, ta chuyển cả dãy sang một hàm sinh rồi thao tác ở cấp biểu thức.
 
 

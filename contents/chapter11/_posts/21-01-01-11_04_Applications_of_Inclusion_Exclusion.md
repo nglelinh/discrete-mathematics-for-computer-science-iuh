@@ -8,8 +8,6 @@ required: false
 lang: vi
 ---
 
-# Ứng dụng của Nguyên lý Bao hàm - Loại trừ
-
 Một nguyên lý chỉ thật sự sống khi nó giải được bài toán cụ thể. Với bao hàm, loại trừ cũng vậy. Sức mạnh của nó lộ rõ nhất khi các điều kiện giao nhau chằng chịt và những cách đếm đơn giản đều dẫn đến sai số.
 
 

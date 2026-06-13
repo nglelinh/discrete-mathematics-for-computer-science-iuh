@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Hệ thức Truy hồi trong Thuật toán và Hệ thống
-
 Một trong những điều đẹp nhất của toán rời rạc là khả năng mô tả cấu trúc lớn bằng quy tắc nhỏ lặp lại.
 Hệ thức truy hồi làm đúng điều đó.
 

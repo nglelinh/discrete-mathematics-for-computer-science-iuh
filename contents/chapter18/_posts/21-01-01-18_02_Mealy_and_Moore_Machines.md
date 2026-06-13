@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Máy Mealy và Máy Moore
-
 Một bộ điều khiển đèn giao thông cần làm nhiều việc hơn là "chấp nhận" hay "từ chối" một chuỗi sự kiện - nó phải **phát ra tín hiệu** điều khiển đèn đỏ, vàng, xanh cho phù hợp. Một bộ giải mã (decoder) trong vi xử lý không chỉ nhận chuỗi bit, nó còn phải sinh ra chuỗi bit khác làm tín hiệu điều khiển. Khi ta cần một máy hữu hạn trạng thái **xuất ra dữ liệu**, ta dùng một trong hai mô hình kinh điển: **máy Mealy** và **máy Moore**.
 
 Cả hai đều mở rộng DFA bằng cách thêm bảng chữ cái đầu ra và hàm sinh đầu ra. Khác biệt duy nhất là **thời điểm** sinh đầu ra: máy Moore phát ra một ký hiệu ứng với mỗi trạng thái, còn máy Mealy phát ra ký hiệu ứng với mỗi **cạnh chuyển** (tức là phụ thuộc vào cả trạng thái và đầu vào). Khác biệt nhỏ này dẫn đến những hệ quả thực tế: máy Mealy thường có ít trạng thái hơn, máy Moore lại dễ phân tích thời gian hơn trong thiết kế mạch số.

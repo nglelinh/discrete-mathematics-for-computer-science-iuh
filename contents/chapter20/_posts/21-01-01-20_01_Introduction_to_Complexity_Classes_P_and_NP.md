@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Giới thiệu Lớp Phức tạp P và NP
-
 Sắp xếp một danh sách một triệu số là chuyện vài giây trên một laptop hiện đại. Nhưng tìm **đường đi ngắn nhất** đi qua 50 thành phố và quay về điểm xuất phát - bài toán **người du lịch** (Traveling Salesman Problem, TSP) - thì có thể khiến cả một trung tâm dữ liệu chạy hàng giờ vẫn chưa cho ra lời giải tối ưu. Sự khác biệt này không phải do lập trình viên chưa đủ giỏi; nó là một sự thật **toán học** sâu sắc về bản chất của hai loại bài toán.
 
 Khoa học máy tính lý thuyết phân loại các bài toán quyết định theo lượng tài nguyên (thời gian, bộ nhớ) cần để giải chúng. Hai lớp quan trọng nhất là **P** - các bài toán có thể **giải** trong thời gian đa thức - và **NP** - các bài toán mà một lời giải đề xuất có thể được **kiểm tra** trong thời gian đa thức. Câu hỏi $$P \stackrel{?}{=} NP$$ - liệu mọi bài toán có lời giải dễ kiểm tra có lời giải dễ tìm hay không - là **bài toán mở nổi tiếng nhất** của khoa học máy tính, với giải thưởng một triệu USD từ Viện Clay dành cho ai chứng minh được đáp án.

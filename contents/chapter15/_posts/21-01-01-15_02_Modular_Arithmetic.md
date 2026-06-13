@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Số học Modulo và Đồng dư
-
 Đồng hồ 24 giờ, chỉ số vòng trong buffer tròn, checksum, mã hóa RSA, tất cả đều dùng một ý tưởng quen mà đôi khi ta không gọi tên: sau khi vượt một ngưỡng, giá trị quay về đầu vòng. Đó chính là tinh thần của **số học modulo**.
 
 

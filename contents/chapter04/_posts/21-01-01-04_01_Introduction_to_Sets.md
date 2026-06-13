@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Giới thiệu Tập hợp
-
 Khi viết truy vấn SQL, lọc người dùng theo vai trò, gom các node đã thăm trong thuật toán, hay mô tả tập ký tự hợp lệ của một bộ phân tích cú pháp, ta đang làm việc với cùng một ý tưởng rất nền tảng: **tập hợp**.
 
 
@@ -67,8 +65,8 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 
 <figure class="image" style="align: center;">
 <p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/chapter_img/chapter04/venn-set-representation.svg" alt="Minh họa ba cách biểu diễn tập hợp" width="70%" height="70%">
-  <figcaption style="text-align: center;">Hình 4.1: Ba cách biểu diễn tập hợp: liệt kê (trái), mô tả tính chất (giữa), và biểu đồ Venn (phải)</figcaption>
+  <img src="/discrete-mathematics-for-computer-science-iuh/assets/img/04-01-sets/venn-diagram.svg" alt="Biểu đồ Venn 3 tập" width="60%" height="60%">
+  <figcaption style="text-align: center;">Hình 4.1: Biểu đồ Venn minh họa giao và hợp của 3 tập hợp</figcaption>
 </p>
 </figure>
 
@@ -205,6 +203,29 @@ print(is_subset(A, B))  # True
 # Cách ngắn hơn:
 print(A.issubset(B))  # True
 ```
+</details>
+
+### Bài tập 5: Tập lũy thừa (Power Set)
+
+**A.2** The power set of a set S is pow(S) = {T : T ⊆ S}, the set of all subsets of S. For example,
+pow({1, 2, 3}) = {∅, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}}.
+
+(a) Write all the elements of pow(pow({1})).
+
+(b) Is it true that S ∩ T ∈ pow(S) ∩ pow(T) for all sets S and T? Justify your answer.
+
+(c) Is it true that S ∪ T ∈ pow(S) ∪ pow(T) for all sets S and T? Justify your answer.
+
+<details>
+<summary>Đáp án</summary>
+
+(a) pow({1}) = {∅, {1}}. Do đó:
+pow(pow({1})) = {∅, {∅}, {{1}}, {∅, {1}}}.
+
+(b) **Đúng.** Nếu x ∈ S ∩ T thì x ∈ S và x ∈ T, suy ra x ⊆ S và x ⊆ T (vì x là tập con của S và T do x ∈ pow(S) và x ∈ pow(T)). Vậy x ∈ pow(S) ∩ pow(T). Do đó S ∩ T ⊆ pow(S) ∩ pow(T). Chiều ngược lại cũng đúng nếu ta coi mọi phần tử của pow(S) ∩ pow(T) đều là tập con của S và T.
+
+(c) **Sai.** Lấy S = {1}, T = {2}. Khi đó S ∪ T = {1, 2} ∉ pow(S) ∪ pow(T) vì {1, 2} không phải tập con của S hay T riêng lẻ.
+
 </details>
 
 ## Định lý: Số tập con của một tập hữu hạn

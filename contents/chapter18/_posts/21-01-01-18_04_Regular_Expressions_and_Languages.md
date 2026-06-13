@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Biểu thức chính quy và Ngôn ngữ chính quy
-
 Lệnh `grep "^[A-Z][a-z]*ing$" file.txt` tìm các dòng bắt đầu bằng một chữ hoa, theo sau là các chữ thường, kết thúc bằng `ing`. Cú pháp ngắn gọn đó là một **biểu thức chính quy** (regular expression, regex), và nó được dùng khắp nơi: trong trình soạn thảo (`vim`, `vscode`), trình biên dịch, ngôn ngữ kịch bản (`sed`, `awk`, JavaScript, Python). Mọi regex đều **tương đương** với một automat hữu hạn nào đó - đây là nội dung **định lý Kleene**, một trong những kết quả nền tảng của lý thuyết automat.
 
 Bài này định nghĩa hình thức regex, trình bày định lý Kleene (regex $$\Leftrightarrow$$ FSM), đưa ra hai cấu trúc đối ngẫu - **Thompson** (regex sang $$\varepsilon$$-NFA) và **state elimination** (DFA sang regex), và kết thúc bằng **bổ đề bơm** (pumping lemma) - công cụ chứng minh một ngôn ngữ **không** chính quy. Đây là điểm gặp nhau giữa **lý thuyết** (lớp ngôn ngữ chính quy có cấu trúc đại số đẹp) và **thực hành** (thư viện regex của mọi ngôn ngữ lập trình hiện đại).

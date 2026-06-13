@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Nguyên lý Bù trừ
-
 Khi nhiều điều kiện chồng lấn lên nhau, việc đếm bằng trực giác rất dễ sai. Ta cộng số phần tử của từng nhóm riêng lẻ, rồi vô tình đếm lặp những phần tử thuộc nhiều nhóm cùng lúc. Đây là lỗi rất thường gặp trong phân tích dữ liệu và cả trong xác suất.
 
 

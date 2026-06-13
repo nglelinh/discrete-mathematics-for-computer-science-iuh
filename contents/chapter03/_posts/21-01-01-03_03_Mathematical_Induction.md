@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Quy nạp Toán học
-
 Nhiều cấu trúc trong khoa học máy tính được xây theo từng bước: dãy Fibonacci, lời gọi đệ quy, số mức của cây, hay chi phí của một thuật toán khi kích thước đầu vào tăng dần. Nếu muốn chứng minh một tính chất đúng với mọi số tự nhiên, kiểm tra vài giá trị đầu tiên là chưa đủ.
 
 
@@ -19,6 +17,13 @@ Trong chứng minh, mục tiêu không chỉ là đi đến kết luận đúng 
 Cách nghĩ này rất gần với lập trình đệ quy. Muốn tin một hàm đệ quy là đúng, ta phải tin trường hợp cơ sở đúng và bước đệ quy bảo toàn tính đúng. Vì vậy, học quy nạp không chỉ để chứng minh công thức, mà còn để hiểu sâu hơn cách xây dựng và kiểm tra lời giải đệ quy.
 
 Trong bài này, chúng ta sẽ đi từ ý tưởng trực quan của hiệu ứng domino đến dạng phát biểu chuẩn của quy nạp, rồi áp dụng vào những mệnh đề quen thuộc trong toán rời rạc.
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/assets/img/03-03-induction/induction-domino.svg" alt="Hiệu ứng domino" width="60%" height="60%">
+  <figcaption style="text-align: center;">Hình 3.1: Hiệu ứng domino — nếu quân đầu ngã và mỗi quân làm quân sau ngã, thì tất cả đều ngã</figcaption>
+</p>
+</figure>
 
 ## Mục tiêu học tập
 

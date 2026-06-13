@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Giới thiệu Quan hệ
-
 Trong dữ liệu và hệ thống, các đối tượng hiếm khi tồn tại một mình. Sinh viên học môn học, người dùng theo dõi người dùng khác, tiến trình phụ thuộc tài nguyên, hai node có kết nối với nhau. Điều quan trọng không chỉ là có những phần tử nào, mà còn là chúng **liên hệ** với nhau ra sao.
 
 
@@ -82,6 +80,13 @@ Ma trận M_R có M_R[i][j] = 1 nếu (aᵢ, bⱼ) ∈ R, ngược lại = 0
 - **Hàng** = phần tử nguồn (từ A)
 - **Cột** = phần tử đích (đến B)
 - Nếu A = B → ma trận **vuông**
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/assets/img/05-01-relations/digraph.svg" alt="Đồ thị có hướng" width="50%" height="50%">
+  <figcaption style="text-align: center;">Hình 5.1: Biểu diễn quan hệ bằng đồ thị có hướng</figcaption>
+</p>
+</figure>
 
 ## Ứng dụng trong Khoa học Máy tính
 

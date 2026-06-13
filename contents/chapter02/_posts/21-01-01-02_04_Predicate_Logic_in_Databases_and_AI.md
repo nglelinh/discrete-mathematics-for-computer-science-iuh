@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Logic Vị từ trong Cơ sở Dữ liệu và Trí tuệ Nhân tạo
-
 Có những ý tưởng toán học sinh ra trong thế kỷ XIX,
 trước cả máy tính điện tử,
 nhưng lại trở thành ngôn ngữ nền của database,
@@ -632,6 +630,33 @@ $$\forall x (Mammal(x) \to WarmBlooded(x))$$
 Hoặc dùng quan hệ lớp:
 
 $$\forall C (subClassOf(C, Mammal) \to property(C, WarmBlooded))$$
+
+</details>
+
+### Bài tập 4: Expressivity of Quantifier Logic
+
+**A.12** Supposing P(n) is a predicate over the natural numbers, write formulas expressing the following statements. You may use standard quantifiers (∃ and ∀), logical connectives, arithmetic, and equality/inequalities.
+
+(a) There are exactly two values that make P true.
+
+(b) There are no three consecutive values for which P has the same truth value.
+
+(c) There are infinitely many pairs of distinct values that make P true and that are within some fixed distance of each other. (For the specific case where P(n) = "n is prime", this is a deep and celebrated theorem of number theory.)
+
+<details>
+<summary>Đáp án</summary>
+
+(a) ∃a∃b (a ≠ b ∧ P(a) ∧ P(b) ∧ ∀c(P(c) → (c = a ∨ c = b)))
+
+Giải thích: Tồn tại hai giá trị khác nhau a, b thỏa P, và mọi giá trị c thỏa P đều phải bằng a hoặc b.
+
+(b) ∀n(¬(P(n) ∧ P(n+1) ∧ P(n+2)) ∧ ¬(¬P(n) ∧ ¬P(n+1) ∧ ¬P(n+2)))
+
+Giải thích: Với mọi n, không thể có ba số liên tiếp đều đúng hoặc đều sai.
+
+(c) ∃d∀n∃m(m > n ∧ P(m) ∧ P(m+d))
+
+Giải thích: Tồn tại khoảng cách d sao cho với mọi n, ta luôn tìm được m > n mà cả m và m+d đều thỏa P. Điều này nói rằng có vô hạn cặp số thỏa P cách nhau một khoảng cố định d. Với P(n) = "n là số nguyên tố" và d = 2, đây chính là giả thuyết số nguyên tố sinh đôi (twin prime conjecture).
 
 </details>
 

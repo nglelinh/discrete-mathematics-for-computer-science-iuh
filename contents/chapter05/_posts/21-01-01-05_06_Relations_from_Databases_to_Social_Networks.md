@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Quan hệ: Từ Cơ sở Dữ liệu đến Mạng Xã hội
-
 Chúng ta sống trong thế giới của các quan hệ.
 Sinh viên đăng ký môn học.
 Người dùng theo dõi nhau trên mạng xã hội.

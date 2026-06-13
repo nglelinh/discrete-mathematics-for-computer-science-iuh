@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Chứng minh Phản chứng
-
 Có những mệnh đề rất khó đi thẳng từ giả thiết đến kết luận. Nhưng nếu giả sử điều ngược lại và hệ quả dẫn đến mâu thuẫn, ta biết ngay giả sử đó không thể đúng. Đây là kiểu tư duy xuất hiện không chỉ trong toán, mà cả trong debug và kiểm thử hệ thống.
 
 

@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Quy tắc Cộng và Nhân
-
 Một hệ thống có bao nhiêu cách đăng nhập, một bộ mật khẩu có bao nhiêu khả năng, một thuật toán sinh ra bao nhiêu cấu hình, đó đều là các câu hỏi đếm. Trước khi học những công thức phức tạp hơn, ta cần nắm hai nguyên tắc nền tảng nhất của tổ hợp.
 
 

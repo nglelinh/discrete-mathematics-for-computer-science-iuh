@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Hoán vị và Tổ hợp
-
 Khi sắp lịch thuyết trình, chọn đội thi, sinh chuỗi ký tự, hay xét mọi cách điền dữ liệu vào các vị trí khác nhau, câu hỏi không chỉ là chọn **những gì** mà còn là có quan tâm đến **thứ tự** hay không.
 
 

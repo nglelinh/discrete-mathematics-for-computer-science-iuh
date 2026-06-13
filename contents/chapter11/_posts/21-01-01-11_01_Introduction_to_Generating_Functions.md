@@ -8,8 +8,6 @@ required: true
 lang: vi
 ---
 
-# Giới thiệu Hàm sinh
-
 Có những lúc ta muốn nén cả một dãy vô hạn vào trong một biểu thức duy nhất để dễ thao tác hơn. Nghe lạ, nhưng đó chính là điều **hàm sinh** làm được, và cũng là lý do nó trở thành một công cụ rất đẹp trong combinatorics.
 
 

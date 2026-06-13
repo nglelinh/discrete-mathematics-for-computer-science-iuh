@@ -266,6 +266,13 @@ $$(l_{11} \lor l_{12} \lor \cdots) \land (l_{21} \lor l_{22} \lor \cdots) \land 
 
 **Lưu ý**: Chúng ta thường dùng bit `1` và `0` thay cho `T` và `F`, và ký hiệu biến là \(x_1, \dots, x_n\). Ví dụ: gán \(x = 101\) vào công thức \((x_1 \land x_2 \land x_3) \lor (\neg x_1 \land \neg x_2 \land \neg x_3)\) cho kết quả `0`.
 
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/assets/img/01-04-logical-equivalences/boolean-algebra.svg" alt="Boolean algebra" width="50%" height="50%">
+  <figcaption style="text-align: center;">Hình 1.4: Đại số Boolean — nền tảng của logic số</figcaption>
+</p>
+</figure>
+
 **Toán tử bitwise trên chuỗi bit**: Chúng ta có thể mở rộng các phép toán logic thành toán tử trên **chuỗi bit** bằng cách áp dụng từng bit một. Ví dụ:
 
 - \(1010 = 0101\)
@@ -461,5 +468,25 @@ if (not user.is_banned()) or (not user.is_inactive()):
 Cách thứ hai dễ đọc hơn và có thể tận dụng short-circuit evaluation tốt hơn trong một số trình biên dịch.
 
 </details>
+
+### Bài tập 5: Boolean Functions and Lexicographic Order
+
+**A.5** Recall the lexicographic order on {0,1}ⁿ. We extend this to the lexicographic order on all functions f: {0,1}ⁿ → {0,1}: We say f lexicographically precedes g when f(x) = 0 and g(x) = 1 for the lexicographically lowest x such that f(x) ≠ g(x).
+
+For i ∈ [16], define fᵢ: {0,1}² → {0,1} to be the i-th such function in lexicographic order. Write the 2-dimensional table for F: {0,1}² × [16] → {0,1} where F(x, i) = fᵢ(x).
+
+### Bài tập 6: Logical Equivalences with Conditionals
+
+**A.7** Determine which of the following hold. For each, if equivalent then write the shared truth table, and if inequivalent then give a counterexample truth assignment.
+
+(a) ¬(P ⇔ Q) ≡ ¬P ⇔ Q
+
+(b) ¬(P ⇒ Q) ≡ ¬P ⇒ Q
+
+(c) (P ∨ Q) ⇒ R ≡ (P ⇒ R) ∧ (Q ⇒ R)
+
+(d) (P ∧ Q) ⇒ R ≡ (P ⇒ R) ∨ (Q ⇒ R)
+
+(e) (P ⇔ Q) ⇒ R ≡ (P ⇒ R) ⇔ (Q ⇒ R)
 
 

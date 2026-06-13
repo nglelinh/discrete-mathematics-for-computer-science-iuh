@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Phương pháp Quine-McCluskey
-
 Khi số biến tăng lên, bản đồ Karnaugh bắt đầu mất lợi thế. Những gì còn trực quan với 3 hoặc 4 biến sẽ nhanh chóng trở nên rối. Lúc đó, ta cần một quy trình có hệ thống hơn để tối thiểu hóa hàm Boole.
 
 

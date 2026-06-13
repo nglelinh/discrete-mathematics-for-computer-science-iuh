@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Hoán vị và Tổ hợp Mở rộng
-
 Trong bài toán thực tế, các đối tượng không phải lúc nào cũng phân biệt hoàn toàn. Có khi phần tử được phép lặp lại, có khi nhiều phần tử giống nhau, có khi số cách chọn phải tính dưới ràng buộc bổ sung. Lúc đó, các công thức cơ bản của hoán vị và tổ hợp không còn đủ.
 
 

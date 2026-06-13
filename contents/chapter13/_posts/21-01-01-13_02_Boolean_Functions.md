@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Hàm Boole và Các Dạng Chuẩn
-
 Một biểu thức logic có thể viết theo nhiều cách khác nhau nhưng vẫn biểu diễn cùng một hành vi đầu vào, đầu ra. Khi thiết kế mạch số hoặc phân tích điều kiện trong hệ thống, ta cần một cách biểu diễn có cấu trúc để dễ so sánh và xử lý hơn.
 
 

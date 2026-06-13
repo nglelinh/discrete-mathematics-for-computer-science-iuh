@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Giới thiệu Hàm số
-
 Từ một user ID trả về hồ sơ người dùng, từ một chuỗi đầu vào trả về giá trị băm, hay từ một chỉ số mảng lấy ra đúng một phần tử, ta đều đang dùng cùng một ý tưởng: mỗi đầu vào hợp lệ phải được gắn với **một** đầu ra xác định.
 
 

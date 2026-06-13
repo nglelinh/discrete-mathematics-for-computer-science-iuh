@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Dãy số và Tổng
-
 Rất nhiều đối tượng trong khoa học máy tính không đứng yên, chúng xuất hiện theo thứ tự: dãy phép đo theo thời gian, dãy giá trị do một thuật toán sinh ra, dãy trạng thái của một tiến trình, hay các mức chi phí khi đầu vào tăng dần. Khi đó, ta cần ngôn ngữ để mô tả từng phần tử và cả toàn bộ mẫu hình của chúng.
 
 

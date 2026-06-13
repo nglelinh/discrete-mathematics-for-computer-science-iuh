@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Kỳ vọng và Phương sai
-
 Biết xác suất của từng kết quả vẫn chưa đủ khi ta muốn tóm tắt hành vi của cả một quá trình ngẫu nhiên. Nếu một thuật toán ngẫu nhiên chạy nhiều lần, ta muốn biết nó thường tốn bao nhiêu bước. Nếu một hệ thống chịu nhiễu, ta muốn biết kết quả dao động mạnh hay yếu quanh mức trung bình.
 
 

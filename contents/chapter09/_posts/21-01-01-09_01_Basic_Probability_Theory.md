@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Lý thuyết Xác suất Cơ bản
-
 Trong kỹ thuật phần mềm, ta không phải lúc nào cũng dự đoán được kết quả chính xác của một sự kiện đơn lẻ. Gói tin có thể mất, người dùng có thể bấm nhầm, cảm biến có thể nhiễu, thuật toán ngẫu nhiên có thể cho kết quả khác nhau qua từng lần chạy. Khi đó, thay vì hỏi "điều gì chắc chắn xảy ra", ta hỏi "điều gì có khả năng xảy ra đến mức nào".
 
 

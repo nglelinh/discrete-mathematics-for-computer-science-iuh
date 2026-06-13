@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Hàm nghịch đảo và Hàm hợp
-
 Trong phần mềm, dữ liệu hiếm khi chỉ đi qua một bước. Nó thường được biến đổi theo chuỗi: parse rồi validate, encode rồi transmit, normalize rồi index. Cũng có lúc ta cần đi ngược lại, từ kết quả quay về dữ liệu gốc. Hai nhu cầu đó dẫn thẳng đến **hàm hợp** và **hàm nghịch đảo**.
 
 

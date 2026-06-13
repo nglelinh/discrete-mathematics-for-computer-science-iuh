@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Lý thuyết Xác suất — Tiên đề và Tính chất
-
 Khi nói một sự kiện có xác suất 0.7 hay 0.2, ta đang gán số cho sự không chắc chắn. Nhưng vì sao phép gán đó là hợp lệ? Muốn dùng xác suất nghiêm túc trong toán và khoa học máy tính, ta cần một nền tảng chặt chẽ hơn trực giác.
 
 

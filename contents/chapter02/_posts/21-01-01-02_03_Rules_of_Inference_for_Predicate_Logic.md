@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Quy tắc Suy luận trong Logic Vị từ
-
 Trong hai bài trước, chúng ta đã học cách biểu diễn các phát biểu phức tạp bằng vị từ và lượng từ. Nhưng biểu diễn được mới chỉ là nửa chặng đường. Câu hỏi quan trọng hơn là: **từ những gì đã biết, ta có thể suy ra kết luận gì — và bằng cách nào cho đúng?**
 
 Đây không phải bài toán trừu tượng. Mỗi khi một hệ thống kiểm chứng phần mềm xác nhận rằng "chương trình thỏa mãn đặc tả", nó đang thực hiện một chuỗi suy luận logic hình thức. Mỗi khi một lập trình viên đọc tài liệu đặc tả và kết luận rằng hàm X phải trả về kết quả Y trong trường hợp Z, người đó cũng đang suy luận — dù thường là không hình thức.

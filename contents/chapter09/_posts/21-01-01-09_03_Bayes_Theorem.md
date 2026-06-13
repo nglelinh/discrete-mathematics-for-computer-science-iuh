@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Định lý Bayes và Ứng dụng
-
 Một email bị bộ lọc đánh dấu spam không có nghĩa nó chắc chắn là spam. Một kết quả xét nghiệm dương tính không có nghĩa bệnh chắc chắn hiện diện. Trong rất nhiều hệ thống, ta phải cập nhật niềm tin của mình sau khi quan sát thêm dữ liệu mới.
 
 

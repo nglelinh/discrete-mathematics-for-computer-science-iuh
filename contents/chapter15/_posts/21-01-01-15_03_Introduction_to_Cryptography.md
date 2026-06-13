@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Mật mã học Cơ bản
-
 Mỗi lần bạn đăng nhập qua HTTPS, gửi tin nhắn được mã hóa, hay ký số một tài liệu, có một câu hỏi nền đang được giải ở phía sau: làm sao để chỉ đúng người nhận mới đọc được dữ liệu, và làm sao để tin được dữ liệu chưa bị sửa?
 
 

@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Tính chất của Quan hệ
-
 Sau khi biết quan hệ là gì, bước quan trọng tiếp theo là phân biệt các kiểu hành vi khác nhau của quan hệ. Không phải cứ có liên kết giữa hai đối tượng là ta hiểu được cấu trúc của cả hệ thống.
 
 

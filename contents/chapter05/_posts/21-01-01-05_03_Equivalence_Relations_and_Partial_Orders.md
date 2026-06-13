@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Quan hệ Tương đương và Thứ tự Bộ phận
-
 Một số quan hệ giúp ta gom các đối tượng "giống nhau" theo một tiêu chí nào đó. Một số quan hệ khác giúp ta nói đối tượng nào đứng trước, bao hàm hơn, hoặc phụ thuộc vào đối tượng nào khác. Hai hướng này xuất hiện khắp nơi trong khoa học máy tính.
 
 

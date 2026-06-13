@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Hệ số Nhị thức và Đồng nhất thức Tổ hợp
-
 Một biểu thức như $$(a+b)^n$$ nhìn đại số, nhưng phía sau nó là một câu chuyện đếm rất rõ: ở mỗi lần nhân, ta chọn lấy $$a$$ hay $$b$$, rồi xem một hạng tử cụ thể xuất hiện bao nhiêu lần. Từ đó, **hệ số nhị thức** bước ra như cầu nối rất đẹp giữa đại số và tổ hợp.
 
 

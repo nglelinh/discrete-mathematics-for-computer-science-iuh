@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Xác suất trong Khoa học Máy tính Hiện đại
-
 Máy tính thường được xem như cỗ máy của sự chính xác tuyệt đối.
 Một lệnh đúng là đúng,
 một bit là 0 hoặc 1,

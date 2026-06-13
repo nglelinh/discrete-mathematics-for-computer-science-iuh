@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Phân cấp Chomsky
-
 Năm 1956, **Noam Chomsky** - khi đó là một nhà ngôn ngữ học trẻ tại MIT - công bố bài báo "Three Models for the Description of Language". Mục đích của Chomsky là phân tích **ngôn ngữ tự nhiên** (tiếng Anh, tiếng Việt), nhưng phát hiện của ông lại định hình toàn bộ khoa học máy tính: ngôn ngữ có thể được phân loại theo **độ phức tạp của quy tắc tạo ra chúng**, và mỗi cấp ứng với một loại máy nhận khác nhau.
 
 Hệ phân cấp này - gọi là **phân cấp Chomsky** (Chomsky hierarchy) - giải thích vì sao **regex** không đủ mạnh để parse HTML, vì sao trình biên dịch C cần **parser** mạnh hơn lexer, và vì sao tồn tại bài toán mà **không máy tính nào** giải được trong thời gian hữu hạn. Bài học này khảo sát chi tiết bốn cấp đó.

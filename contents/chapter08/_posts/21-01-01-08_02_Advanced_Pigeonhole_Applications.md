@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Ứng dụng Nâng cao của Nguyên lý Dirichlet
-
 Sau khi nắm được phiên bản cơ bản của nguyên lý Dirichlet, điều thú vị nhất là thấy nó mở rộng mạnh đến đâu. Một nguyên lý nhìn rất đơn giản có thể tạo ra các kết luận tinh tế về số học, hình học, tổ hợp và cả các bài toán trong khoa học máy tính.
 
 

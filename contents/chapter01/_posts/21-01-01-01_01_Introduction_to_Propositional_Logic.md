@@ -39,6 +39,13 @@ Sau bài học này, sinh viên có thể:
 
 **Định nghĩa**: Mệnh đề (proposition) là một câu khẳng định có thể xác định được tính đúng hoặc sai, nhưng không thể vừa đúng vừa sai.
 
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/assets/img/01-01-propositional-logic/aristotle-logic.svg" alt="Aristotle - cha đẻ của logic" width="40%" height="40%">
+  <figcaption style="text-align: center;">Hình 1.1: Aristotle (384–322 TCN) — người đầu tiên hệ thống hóa các quy luật suy luận</figcaption>
+</p>
+</figure>
+
 ### Ví dụ về mệnh đề:
 - "2 + 3 = 5" (đúng)
 - "Hà Nội là thủ đô của Việt Nam" (đúng)  

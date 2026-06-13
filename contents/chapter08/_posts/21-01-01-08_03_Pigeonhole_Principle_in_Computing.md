@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Nguyên lý Chuồng chim trong Khoa học Máy tính
-
 Có những định lý mạnh một cách khó tin vì chúng quá đơn giản.
 Nguyên lý chuồng chim là ví dụ hoàn hảo.
 

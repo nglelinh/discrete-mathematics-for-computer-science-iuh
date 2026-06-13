@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Đại số Boole: Từ Boole đến Chip Hiện đại
-
 Có rất ít ý tưởng toán học mang hành trình lạ như đại số Boole.
 Nó bắt đầu như công trình logic trừu tượng ở thế kỷ XIX,
 rồi được Claude Shannon nối với mạch điện,

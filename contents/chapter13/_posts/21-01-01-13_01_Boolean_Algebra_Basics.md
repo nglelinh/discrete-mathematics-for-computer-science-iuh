@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Đại số Boole
-
 Mỗi lần CPU đánh giá một điều kiện, mạch số mở hoặc đóng transistor, hay chương trình ghép các cờ trạng thái bằng `and`, `or`, `not`, ta đang đứng trên cùng một nền toán học: **đại số Boole**.
 
 

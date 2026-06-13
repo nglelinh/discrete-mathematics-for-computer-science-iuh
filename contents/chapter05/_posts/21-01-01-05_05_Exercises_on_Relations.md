@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Bài tập Tổng hợp về Quan hệ
-
 Một chủ đề chỉ thật sự hiểu khi ta dùng được nó trên nhiều dạng bài khác nhau. Với quan hệ cũng vậy, đọc định nghĩa là một chuyện, còn nhận ra cấu trúc quan hệ trong bài toán cụ thể lại là chuyện khác.
 
 

@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Máy Turing
-
 Năm 1936, hai năm trước khi máy tính điện tử đầu tiên ra đời, một nhà toán học người Anh tên Alan Turing đã đề xuất một mô hình tính toán đơn giản đến mức gần như tầm thường: một dải băng vô hạn chia thành các ô, một đầu đọc-ghi di chuyển trái-phải, và một bộ điều khiển hữu hạn quyết định "viết gì - đi đâu - sang trạng thái nào". Bốn mươi năm sau, mô hình đó - **máy Turing** (Turing machine, TM) - vẫn là **chuẩn mực** của khái niệm "thuật toán" trong khoa học máy tính lý thuyết. Mọi định nghĩa khác về tính toán (lambda calculus, máy đệ quy, máy Post, ngay cả mọi ngôn ngữ lập trình hiện đại) đều **tương đương** với máy Turing.
 
 Máy Turing vượt qua hạn chế của FSM ở một điểm cốt lõi: nó có **bộ nhớ vô hạn** (dải băng). Nhờ vậy nó có thể giải các bài toán mà FSM và automat đẩy xuống không giải được, như nhận diện $$\{a^n b^n c^n : n \geq 0\}$$. Quan trọng hơn, nó cho ta một định nghĩa hình thức của **tính tính toán được** (computability), từ đó dẫn đến những phát hiện chấn động: tồn tại các bài toán **không thể giải bằng thuật toán**, đáng chú ý nhất là **bài toán dừng** (halting problem). Đó là chủ đề chính của chương 20.

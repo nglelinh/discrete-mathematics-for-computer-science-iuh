@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Phép đếm: Từ Cờ bạc đến An ninh mạng
-
 Có những lúc khoa học lớn bắt đầu từ câu hỏi rất đời thường.
 Trong trường hợp của xác suất và phép đếm,
 một trong những động lực đầu tiên lại đến từ cờ bạc.
