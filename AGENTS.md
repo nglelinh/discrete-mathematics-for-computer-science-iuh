@@ -40,7 +40,7 @@ Jekyll 4.3 static course site for "Discrete Mathematics for Computer Science" at
 | `_config.yml` | config | root | Jekyll config, bilingual UI labels, plugins, author metadata. |
 | `redirect_generator.rb` | plugin | `_plugins/` | Only active plugin; emits redirect pages on build. |
 | `multilang.rb.disabled` | disabled plugin | `_plugins/` | Multilingual filtering; not loaded. |
-| `multilang_post_url.rb.disabled` | disabled plugin | `_plugins/` | `{% multilang_post_url %}` Liquid tag; not loaded. |
+| `multilang_post_url.rb.disabled` | disabled plugin | `_plugins/` | `{% raw %}{% multilang_post_url %}{% endraw %}` Liquid tag; not loaded. |
 | `mathjax-config.js` | JS config | root | MathJax 3 setup; custom macros (`\N \Z \floor \ceil \deg \O \Theta` etc). |
 | `discrete-math.css` | CSS | `public/css/` | Course-specific math/UI styling, plus legacy `.math-*` callout classes. |
 | `content-boxes.css` | CSS | `public/css/` | Modern callouts: `insight-box`, `exercise-box`, `summary-box`, `warning-box`, `info-box`, `note-box`, `example-box`, `question-box`. |
