@@ -39,21 +39,53 @@ Sau bài học này, sinh viên có thể:
 
 **Định nghĩa**: Bảng chân trị là bảng liệt kê tất cả các khả năng về giá trị chân lý của các mệnh đề thành phần và giá trị chân lý tương ứng của mệnh đề phức hợp.
 
-## Cách xây dựng bảng chân trị
+## Cách xây dựng bảng chân trị (3 bước đơn giản)
 
 ### Bước 1: Xác định số biến
-- Với n biến, ta có 2ⁿ dòng trong bảng chân trị
+Với n biến, ta có đúng **2ⁿ dòng** trong bảng chân trị.
 
-### Bước 2: Liệt kê tất cả tổ hợp
-- Liệt kê tất cả các tổ hợp có thể của các biến
+**Quy tắc nhanh**:
+- 2 biến → 4 dòng
+- 3 biến → 8 dòng
+- 4 biến → 16 dòng
 
-### Bước 3: Tính toán từng bước
-- Tính giá trị của các biểu thức con trước
-- Sau đó tính biểu thức chính
+### Bước 2: Liệt kê tất cả tổ hợp (không bỏ sót)
 
-<div class="content-box insight-box" markdown="1">
-**Mẹo liệt kê tổ hợp**: Để không bỏ sót tổ hợp nào, hãy tưởng tượng bạn đang đếm nhị phân. Với 3 biến p, q, r: liệt kê p với 4 T rồi 4 F; q với 2 T, 2 F, 2 T, 2 F; r với T, F, T, F, T, F, T, F. Các giá trị luân phiên theo lũy thừa giảm dần của 2.
-</div>
+**Mẹo trực quan**: Hãy tưởng tượng bạn đang đếm nhị phân từ 0 đến 2ⁿ−1.
+
+Với 3 biến p, q, r:
+
+| p | q | r | Ghi chú |
+|:---:|:---:|:---:|:---|
+| T | T | T | 111 |
+| T | T | F | 110 |
+| T | F | T | 101 |
+| T | F | F | 100 |
+| F | T | T | 011 |
+| F | T | F | 010 |
+| F | F | T | 001 |
+| F | F | F | 000 |
+
+**Quy tắc luân phiên**:
+- Biến đầu tiên: thay đổi mỗi 2^(n−1) dòng
+- Biến thứ hai: thay đổi mỗi 2^(n−2) dòng
+- Biến cuối cùng: thay đổi mỗi dòng (T, F, T, F...)
+
+### Bước 3: Tính toán từng bước (từ trong ra ngoài)
+
+**Quy tắc vàng**: Luôn tính các biểu thức con trước, sau đó mới tính biểu thức chính.
+
+**Ví dụ minh họa**:
+
+```python
+# Biểu thức: (p ∧ q) → r
+# Ta tính theo thứ tự:
+
+1. Tính p ∧ q trước
+2. Sau đó mới tính (kết quả) → r
+```
+
+**Mẹo thực tế**: Khi vẽ bảng, thêm cột phụ cho từng biểu thức con để dễ theo dõi.
 
 ## Ví dụ 1: Bảng chân trị cho (p ∧ q) → r
 

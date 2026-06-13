@@ -47,9 +47,24 @@ Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc địn
 - Quan hệ thuộc: a ∈ A (a thuộc A)
 - Quan hệ không thuộc: a ∉ A (a không thuộc A)
 
-<div class="content-box warning-box" markdown="1">
-**Lỗi thường gặp**: Sinh viên hay nhầm ký hiệu $$\in$$ (phần tử thuộc tập hợp) với $$\subseteq$$ (tập con). Ví dụ: $$1 \in \{1,2\}$$ là đúng, nhưng $$1 \subseteq \{1,2\}$$ là **sai** vì 1 không phải là tập hợp.
-</div>
+#### Minh họa trực quan: ∈ vs ⊆
+
+**Quy tắc nhanh**:
+- $$\in$$: "là phần tử của" → dùng với **phần tử**
+- $$\subseteq$$: "là tập con của" → dùng với **tập hợp**
+
+**Bảng so sánh**:
+
+| Biểu thức | Đúng/Sai | Lý do |
+|:---:|:---:|:---|
+| $$1 \in \{1,2\}$$ | Đúng | 1 là phần tử |
+| $$1 \subseteq \{1,2\}$$ | Sai | 1 không phải tập hợp |
+| $$\{1\} \subseteq \{1,2\}$$ | Đúng | {1} là tập con |
+| $$\{1,2\} \in \{1,2\}$$ | Sai | {1,2} không phải phần tử |
+
+**Mẹo nhớ**: 
+- $$\in$$ = "thuộc về" (phần tử)
+- $$\subseteq$$ = "bên trong" (tập hợp)
 
 ## Cách biểu diễn tập hợp
 

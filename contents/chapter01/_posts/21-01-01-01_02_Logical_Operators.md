@@ -84,10 +84,27 @@ Nếu bỏ dấu ngoặc, chương trình vẫn chạy nhưng có thể cho phé
 - p: "Hôm nay trời nắng"
 - ¬p: "Hôm nay trời không nắng"
 
-**Phủ định bất đẳng thức**: Khi phủ định một bất đẳng thức, ta đảo ngược dấu so sánh:
-- Phủ định của $$n > 5$$ là $$n \leq 5$$
-- Phủ định của $$x \geq 0$$ là $$x < 0$$
-- Phủ định của $$a = b$$ là $$a \neq b$$
+**Phủ định bất đẳng thức** (cách làm trực quan):
+
+Khi phủ định một bất đẳng thức, ta làm theo **3 bước đơn giản**:
+
+1. Giữ nguyên biến.
+2. Đảo ngược dấu so sánh.
+3. Viết kết quả.
+
+**Bảng quy tắc nhanh**:
+
+| Biểu thức gốc | Phủ định | Ghi nhớ |
+|:---:|:---:|:---|
+| $$n > 5$$ | $$n \leq 5$$ | Lớn hơn → nhỏ hơn hoặc bằng |
+| $$x \geq 0$$ | $$x < 0$$ | Lớn hơn hoặc bằng → nhỏ hơn |
+| $$a = b$$ | $$a \neq b$$ | Bằng → khác |
+| $$x < 3$$ | $$x \geq 3$$ | Nhỏ hơn → lớn hơn hoặc bằng |
+
+**Ví dụ thực tế**:
+
+- "Tuổi lớn hơn 18" → Phủ định: "Tuổi nhỏ hơn hoặc bằng 18"
+- "Điểm số >= 5" → Phủ định: "Điểm số < 5"
 
 ## 2. Phép hội (Conjunction) - AND
 
@@ -123,13 +140,19 @@ if order_total >= 500000 and customer_tier == "vip":
 
 **Định nghĩa**: p ∨ q chỉ sai khi cả p và q đều sai.
 
+### Cách nhớ trực quan (OR)
+
+OR đúng khi **ít nhất một** cái đúng. Dễ nhớ bằng quy tắc:
+
+> "Một cái đúng → cả OR đúng"
+
 ### Bảng chân trị:
-| p | q | p ∨ q |
-|---|---|-------|
-| T | T | T |
-| T | F | T |
-| F | T | T |
-| F | F | F |
+| p | q | p ∨ q | Ghi nhớ |
+|:---:|:---:|:---:|:---|
+| T | T | T | Có ít nhất 1 cái đúng |
+| T | F | T | p đúng |
+| F | T | T | q đúng |
+| F | F | F | Cả hai sai |
 
 **Ví dụ**:
 - p: "Tôi đi xe bus"

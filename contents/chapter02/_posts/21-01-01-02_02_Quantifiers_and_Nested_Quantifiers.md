@@ -35,9 +35,27 @@ Trong bài này, chúng ta sẽ học cách sử dụng lượng từ phổ dụ
 
 **Ví dụ**: Nếu $$U = \mathbb{Z}$$ và $$P(x)$$ là "$$x$$ chia hết cho 2", thì $$P(4)$$ đúng, $$P(5)$$ sai.
 
-<div class="content-box warning-box" markdown="1">
-**Lưu ý quan trọng**: Miền xác định quyết định ý nghĩa câu. Mệnh đề "mọi $$x$$ đều có $$x^2 \ge 0$$" đúng trên $$\mathbb{R}$$, nhưng câu "mọi $$x$$ đều có nghịch đảo" sai trên $$\mathbb{R}$$ nếu miền chứa 0, và đúng trên $$\mathbb{R}\setminus\{0\}$$.
-</div>
+#### Minh họa trực quan: Miền xác định như "sân chơi"
+
+Hãy tưởng tượng **miền xác định** là sân chơi, và vị từ là luật chơi:
+
+- **Sân chơi**: $$\mathbb{R}$$ (tất cả số thực)
+- **Luật**: "Mọi $$x$$ đều có $$x^2 \geq 0$$" → Đúng với mọi sân chơi
+- **Luật**: "Mọi $$x$$ đều có nghịch đảo" → **Sai** nếu sân chơi có 0 (vì 0 không có nghịch đảo)
+
+**Quy tắc nhanh**:
+- Miền càng rộng → Luật càng khó đúng
+- Miền càng hẹp → Luật dễ đúng hơn
+
+**Ví dụ trong SQL**:
+
+```sql
+-- Miền: tất cả sinh viên
+SELECT * FROM students WHERE gpa >= 0;        -- Luôn đúng
+
+-- Miền: sinh viên có điểm
+SELECT * FROM students WHERE gpa >= 3.5;      -- Có thể đúng/sai
+```
 
 ## 2. Lượng từ toàn thể
 

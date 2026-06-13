@@ -27,6 +27,22 @@ Chính vì vậy, bài học này giới thiệu hai ý tưởng cực kỳ quan
 
 Trong bài này, chúng ta sẽ học cách nhận ra khi nào hai công thức thực sự tương đương, cách áp dụng các luật biến đổi cơ bản, và cách đưa biểu thức về các dạng chuẩn quen thuộc như DNF và CNF — những dạng xuất hiện rất nhiều trong logic toán, trí tuệ nhân tạo và kiểm chứng hệ thống.
 
+### Minh họa trực quan: Hai biểu thức, một ý nghĩa
+
+Hãy quan sát hai đoạn code sau:
+
+```python
+# Cách 1
+if not (is_admin or is_active):
+    deny_access()
+
+# Cách 2  
+if not is_admin and not is_active:
+    deny_access()
+```
+
+Hai điều kiện này **hoàn toàn tương đương** về mặt logic, dù cú pháp khác nhau. Người đọc code dễ hiểu hơn với Cách 2, nhưng cả hai đều cho kết quả giống hệt nhau trên mọi đầu vào. Đây chính là ý nghĩa của **tương đương logic**.
+
 ## Mục tiêu học tập
 
 Sau bài này, sinh viên có thể:
@@ -62,6 +78,25 @@ Tương đương với việc $$P \leftrightarrow Q$$ là một hằng đúng.
 
 Hai cột cuối giống nhau ở mọi hàng, do đó $$p \to q \equiv \neg p \lor q$$.
 
+### Minh họa bằng code: Kiểm tra tương đương thực tế
+
+Thay vì chỉ nhìn bảng chân trị, ta có thể viết một đoạn code nhỏ để kiểm tra hai biểu thức có luôn cho cùng kết quả không:
+
+```python
+def check_equivalence():
+    """Kiểm tra p → q ≡ ¬p ∨ q trên tất cả tổ hợp"""
+    for p in [True, False]:
+        for q in [True, False]:
+            left = (not p) or q          # ¬p ∨ q
+            right = (not p) or q         # p → q cũng viết là (not p) or q
+            print(f"p={p}, q={q} → left={left}, right={right}, equal={left == right}")
+
+check_equivalence()
+# Kết quả: luôn equal = True
+```
+
+**Bài học từ ví dụ**: Khi bạn thấy một điều kiện phức tạp trong code, hãy thử viết phiên bản tương đương đơn giản hơn. Compiler và database engine cũng làm điều tương tự để tối ưu.
+
 <div class="content-box insight-box" markdown="1">
 **Ghi nhớ**: Tương đương logic là quan hệ "thay thế an toàn". Nếu $$P \equiv Q$$, ta có thể thay $$P$$ bằng $$Q$$ trong bất kỳ biểu thức lớn hơn nào mà không đổi bảng chân trị của toàn bộ biểu thức.
 </div>
@@ -94,6 +129,15 @@ Ta chứng minh $$\neg(p \land q) \equiv \neg p \lor \neg q$$ bằng bảng châ
 
 Hai cột $$\neg(p \land q)$$ và $$\neg p \lor \neg q$$ giống nhau. Vậy luật đúng.
 
+#### Minh họa bằng mạch logic
+
+Luật De Morgan có ý nghĩa rất trực quan khi ta vẽ **mạch logic**:
+
+- **Vế trái** `NOT (A AND B)`: một cổng AND rồi đảo ngược đầu ra.
+- **Vế phải** `NOT A OR NOT B`: hai cổng NOT riêng biệt, rồi cho vào cổng OR.
+
+Hai mạch này **luôn cho cùng kết quả** trên mọi đầu vào. Đây là lý do De Morgan cực kỳ quan trọng trong thiết kế mạch số và tối ưu phần cứng.
+
 ## 3. Biến đổi biểu thức logic
 
 **Ví dụ**: Rút gọn biểu thức $$\neg(p \lor \neg q) \land (r \lor \neg r)$$.
@@ -115,15 +159,51 @@ $$(l_{11} \land l_{12} \land \cdots) \lor (l_{21} \land l_{22} \land \cdots) \lo
 
 **Ví dụ**: $$(p \land q) \lor (\neg p \land r)$$ là DNF.
 
-### Tạo DNF từ bảng chân trị
+### Tạo DNF từ bảng chân trị (cách trực quan)
 
-Với mỗi hàng làm công thức đúng, tạo một hội mô tả đúng hàng đó; sau đó lấy tuyển của các hội.
+Hãy làm theo **3 bước đơn giản**:
 
-**Ví dụ**: Với $$p \to q$$, các hàng đúng là $$(T,T), (F,T), (F,F)$$. Do đó DNF đầy đủ là:
+1. **Nhìn vào bảng chân trị**, chỉ quan tâm đến những hàng có kết quả **TRUE**.
+2. **Với mỗi hàng TRUE**, viết một hội (AND) mô tả đúng hàng đó:
+   - Nếu biến là `TRUE` → giữ nguyên biến.
+   - Nếu biến là `FALSE` → lấy phủ định của biến.
+3. **Lấy tuyển (OR)** của tất cả các hội vừa tạo.
 
-$$(p \land q) \lor (\neg p \land q) \lor (\neg p \land \neg q).$$
+**Ví dụ**: Xây dựng DNF cho $$p \to q$$
 
-Biểu thức này có thể rút gọn thành $$\neg p \lor q$$.
+Bảng chân trị:
+
+| $$p$$ | $$q$$ | $$p \to q$$ |
+|:---:|:---:|:---:|
+| T | T | **T** |
+| T | F | F |
+| F | T | **T** |
+| F | F | **T** |
+
+**Bước 1 & 2**: Chỉ giữ 3 hàng TRUE:
+
+- Hàng 1 (`T, T`): $$p \land q$$
+- Hàng 3 (`F, T`): $$\neg p \land q$$
+- Hàng 4 (`F, F`): $$\neg p \land \neg q$$
+
+**Bước 3**: Lấy tuyển:
+
+$$
+(p \land q) \lor (\neg p \land q) \lor (\neg p \land \neg q)
+$$
+
+Đây chính là **DNF đầy đủ** của $$p \to q$$.
+
+#### Minh họa trực quan: DNF như một "bản đồ vùng đúng"
+
+Hãy tưởng tượng bảng chân trị là một lưới 2×2 (với 2 biến). Mỗi ô tương ứng với một assignment:
+
+- DNF đầy đủ chính là **tô màu tất cả các ô đúng**, mỗi ô được tô bằng một "hình chữ nhật nhỏ" (một term).
+- Khi rút gọn, ta **gộp các ô liền kề** thành một hình chữ nhật lớn hơn → biểu thức ngắn hơn.
+
+Ví dụ trên, ta đang tô 3 ô, và có thể gộp thành $$\neg p \lor q$$.
+
+Đây chính là ý tưởng đằng sau các thuật toán tối thiểu hóa logic (Karnaugh map, Espresso, Quine–McCluskey) mà compiler và công cụ thiết kế mạch sử dụng.
 
 ## 5. Dạng chuẩn tắc hội CNF
 
@@ -134,6 +214,59 @@ $$(l_{11} \lor l_{12} \lor \cdots) \land (l_{21} \lor l_{22} \lor \cdots) \land 
 **Ví dụ**: $$(p \lor q) \land (\neg p \lor r) \land (q \lor \neg r)$$ là CNF.
 
 **Ký hiệu**: Mỗi ngoặc trong CNF thường được gọi là một **mệnh đề con** (clause). CNF là dạng chuẩn mà nhiều SAT solver nhận vào.
+
+### Tạo CNF từ bảng chân trị (cách trực quan)
+
+Tương tự DNF, ta cũng có thể xây dựng CNF từ bảng chân trị theo **3 bước**:
+
+1. **Nhìn vào bảng chân trị**, chỉ quan tâm đến những hàng có kết quả **FALSE**.
+2. **Với mỗi hàng FALSE**, viết một tuyển (OR) mô tả đúng hàng đó:
+   - Nếu biến là `TRUE` → lấy **phủ định** của biến.
+   - Nếu biến là `FALSE` → giữ nguyên biến.
+3. **Lấy hội (AND)** của tất cả các tuyển vừa tạo.
+
+**Ví dụ**: Xây dựng CNF cho $$p \to q$$
+
+Bảng chân trị (chỉ quan tâm hàng FALSE):
+
+| $$p$$ | $$q$$ | $$p \to q$$ |
+|:---:|:---:|:---:|
+| T | T | T |
+| T | F | **F** |
+| F | T | T |
+| F | F | T |
+
+**Bước 1 & 2**: Chỉ có 1 hàng FALSE (`T, F`):
+
+- Biến `p = TRUE` → lấy $$\neg p$$
+- Biến `q = FALSE` → giữ nguyên $$q$$
+
+→ Viết tuyển: $$\neg p \lor q$$
+
+**Bước 3**: Vì chỉ có 1 clause, CNF chính là:
+
+$$
+\neg p \lor q
+$$
+
+(Trong trường hợp có nhiều hàng FALSE, ta sẽ lấy **hội** của tất cả các tuyển.)
+
+#### Minh họa: CNF như "danh sách các ràng buộc"
+
+Hãy xem CNF dưới góc nhìn lập trình:
+
+```python
+# CNF: (p ∨ q) ∧ (¬p ∨ r) ∧ (q ∨ ¬r)
+# Ý nghĩa: TẤT CẢ các mệnh đề con phải đúng
+
+def is_satisfied(p, q, r):
+    clause1 = p or q
+    clause2 = (not p) or r
+    clause3 = q or (not r)
+    return clause1 and clause2 and clause3
+```
+
+Mỗi `clause` là một ràng buộc. SAT solver phải tìm một assignment sao cho **không có ràng buộc nào bị vi phạm**. Đây là lý do CNF là dạng đầu vào tự nhiên cho hầu hết các bộ giải SAT hiện đại.
 
 ## 6. Các định lý quan trọng về DNF và CNF
 
