@@ -42,9 +42,18 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 
 **Trong đồ thị có hướng**: Mỗi đỉnh đều có vòng (loop) -- khuyên từ đỉnh về chính nó.
 
-<div class="content-box warning-box" markdown="1">
-**Lỗi thường gặp**: Đừng nhầm "phản xạ" với "phản đối xứng"! Phản xạ = mọi phần tử đều có quan hệ với chính nó. Phản đối xứng = nếu a quan hệ với b và b quan hệ với a thì a = b. Hai khái niệm hoàn toàn khác nhau.
-</div>
+#### Minh họa trực quan: Phản xạ vs Phản đối xứng
+
+**Bảng so sánh nhanh**:
+
+| Tính chất | Ý nghĩa | Ví dụ |
+|:---|:---|:---|
+| **Phản xạ** | Mọi phần tử liên hệ với chính nó | `a R a` luôn đúng |
+| **Phản đối xứng** | Nếu hai chiều thì phải bằng nhau | `a R b` và `b R a` ⇒ `a = b` |
+
+**Mẹo nhớ**:
+- Phản xạ = "tự liên hệ với mình"
+- Phản đối xứng = "không có hai chiều trừ khi bằng nhau"
 
 ### 2. Tính đối xứng (Symmetric)
 

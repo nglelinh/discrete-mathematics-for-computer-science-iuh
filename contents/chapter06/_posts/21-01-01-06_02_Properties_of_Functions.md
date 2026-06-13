@@ -79,41 +79,7 @@ Cùng một công thức có thể có tính chất khác nhau nếu domain/codo
 - $$f:\mathbb{R}\to[0,\infty)$$: không đơn ánh, nhưng toàn ánh.
 - $$f:[0,\infty)\to[0,\infty)$$: song ánh.
 
-<div class="content-box warning-box" markdown="1">
-**Ghi nhớ**: Không thể kết luận đơn ánh/toàn ánh chỉ từ công thức. Phải biết domain và codomain.
-</div>
 
-## 5. Hàm hữu hạn và nguyên lý đếm
-
-Nếu $$A$$ và $$B$$ hữu hạn:
-
-- Nếu $$f:A\to B$$ đơn ánh thì $$|A|\le |B|$$.
-- Nếu $$f:A\to B$$ toàn ánh thì $$|A|\ge |B|$$.
-- Nếu $$f:A\to B$$ song ánh thì $$|A|=|B|$$.
-
-### Chứng minh trực giác
-
-Đơn ánh không cho phép hai phần tử của $$A$$ dùng chung một phần tử của $$B$$, nên $$B$$ phải có ít nhất đủ chỗ. Toàn ánh yêu cầu phủ hết $$B$$, nên $$A$$ phải có đủ phần tử để tạo ảnh cho mọi phần tử của $$B$$.
-
-## 6. Công cụ tương tác
-
-Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
-
-<div class="interactive-tool" data-tool="function-property-checker">
-  <p><strong>Demo đề xuất:</strong> sinh viên nối mũi tên giữa hai tập hữu hạn; công cụ kiểm tra đơn ánh, toàn ánh, song ánh và giải thích bằng phần tử gây lỗi.</p>
-</div>
-
-<script src="{{ '/public/js/function-property-checker.js' | relative_url }}"></script>
-
-## 7. Nhầm lẫn thường gặp
-
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn 1**: Đơn ánh không có nghĩa là mọi phần tử codomain đều được dùng. Đó là toàn ánh.
-
-**Nhầm lẫn 2**: Toàn ánh vẫn cho phép nhiều đầu vào cùng một đầu ra. Điều này chỉ bị cấm bởi đơn ánh.
-
-**Nhầm lẫn 3**: Song ánh không chỉ là "có vẻ ghép đôi"; phải chứng minh cả đơn ánh và toàn ánh.
-</div>
 
 ## 8. Ứng dụng trong Khoa học Máy tính
 

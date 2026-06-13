@@ -122,13 +122,7 @@ $$
 
 Nếu $P(B)>0$, điều này tương đương với $P(A\mid B)=P(A)$: biết $B$ xảy ra không làm thay đổi xác suất của $A$.
 
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn thường gặp**:
 
-- **Độc lập** không có nghĩa là **xung khắc**. Nếu $A$ và $B$ xung khắc và đều có xác suất dương, chúng không độc lập.
-- $P(A\mid B)$ không bằng $P(B\mid A)$ nói chung.
-- Xác suất nhỏ không đồng nghĩa với không thể xảy ra; xác suất 0 trong mô hình liên tục cũng không nhất thiết là bất khả.
-</div>
 
 ## 7. Ứng dụng trong Khoa học Máy tính
 

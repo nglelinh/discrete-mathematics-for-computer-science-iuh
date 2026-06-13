@@ -126,15 +126,6 @@ Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới t
 </div>
 <script src="{{ '/public/js/function-composition-pipeline.js' | relative_url }}"></script>
 
-## 9. Nhầm lẫn thường gặp
-
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn 1**: Tính $$g\circ f$$ theo thứ tự trái sang phải. Thực ra $$f$$ chạy trước.
-
-**Nhầm lẫn 2**: Nghĩ mọi hàm đều có nghịch đảo. Chỉ song ánh mới có nghịch đảo hai phía.
-
-**Nhầm lẫn 3**: Ký hiệu $$f^{-1}$$ cho hàm nghịch đảo không giống $$1/f(x)$$. Ví dụ $$f(x)=x+1$$ thì $$f^{-1}(x)=x-1$$, không phải $$1/(x+1)$$.
-</div>
 
 ## 10. Ứng dụng trong Khoa học Máy tính
 

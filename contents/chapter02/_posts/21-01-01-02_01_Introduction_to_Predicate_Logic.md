@@ -148,9 +148,7 @@ Thứ tự của các lượng từ rất quan trọng!
 - ∀x ∃y L(x,y): "Với mọi x, tồn tại y > x" (ĐÚNG với số thực)
 - ∃y ∀x L(x,y): "Tồn tại y sao cho mọi x đều < y" (SAI với số thực)
 
-<div class="content-box warning-box" markdown="1">
-**Lỗi thường gặp**: Nhiều sinh viên nghĩ ∀x ∃y và ∃y ∀x là như nhau. Hoàn toàn không! Hãy nhớ: ∀x ∃y — mỗi x chọn y riêng; ∃y ∀x — cùng một y cho mọi x. Đây là khác biệt cốt lõi và sẽ xuất hiện xuyên suốt chương này.
-</div>
+
 
 <figure class="image" style="align: center;">
 <p align="center">

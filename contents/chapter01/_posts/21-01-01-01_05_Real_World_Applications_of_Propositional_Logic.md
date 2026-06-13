@@ -31,7 +31,28 @@ Trong *Organon*, Aristotle đã hệ thống hóa lần đầu tiên trong lịc
 ![Aristotle - cha đẻ của logic học phương Tây]
 *Hình 1: Tượng Aristotle tại Đại học Aristotle, Thessaloniki, Hy Lạp. Ông là người đầu tiên hệ thống hóa các quy luật suy luận.*
 
-Aristotle đã phân loại các mệnh đề thành bốn kiểu cơ bản: "Mọi A là B", "Không A nào là B", "Một số A là B", và "Một số A không là B". Đây chính là nguồn gốc của các lượng từ ∀ (với mọi) và ∃ (tồn tại) mà chúng ta sẽ gặp ở chương sau. Trong suốt gần 2000 năm sau Aristotle, logic học hầu như không có bước tiến đáng kể nào — các học giả trung cổ chủ yếu bình luận và mở rộng công trình của ông.
+#### Minh họa trực quan: Tam đoạn luận của Aristotle
+
+**Cấu trúc tam đoạn luận** (syllogism) có thể được biểu diễn như một **cây suy luận**:
+
+```
+              Socrates phải chết
+                     ↑
+         (Mọi người đều phải chết)
+                     ↑
+              Socrates là người
+```
+
+**Bốn kiểu mệnh đề** Aristotle phân loại:
+
+| Kiểu | Dạng | Ví dụ | Ký hiệu |
+|:---|:---|:---|:---|
+| A | Mọi A là B | Mọi người đều phải chết | ∀x (A(x) → B(x)) |
+| E | Không A nào là B | Không ai là bất tử | ∀x (A(x) → ¬B(x)) |
+| I | Một số A là B | Một số người là triết gia | ∃x (A(x) ∧ B(x)) |
+| O | Một số A không là B | Một số người không phải triết gia | ∃x (A(x) ∧ ¬B(x)) |
+
+**Lưu ý**: Kiểu A và E là **phổ quát** (universal), kiểu I và O là **riêng lẻ** (particular). Đây chính là nguồn gốc của các lượng từ ∀ và ∃ mà chúng ta sẽ học ở chương 2.
 
 ### 1.2. Leibniz và giấc mơ về "ngôn ngữ phổ quát" (1646–1716)
 
@@ -44,17 +65,59 @@ Leibniz có một giấc mơ vĩ đại: tạo ra một **"calculus ratiocinator
 
 Nghe quen không? Đó chính xác là những gì máy tính làm ngày nay! Leibniz đã hình dung ra máy tính 300 năm trước khi chiếc máy tính đầu tiên ra đời. Ông thậm chí còn thiết kế một cỗ máy tính cơ học có thể thực hiện bốn phép tính số học — một trong những tiền thân của máy tính hiện đại.
 
-Tuy nhiên, giấc mơ của Leibniz vượt xa khả năng kỹ thuật ở thời đại ông. Phải đợi đến thế kỷ 19, công cụ toán học cần thiết mới xuất hiện.
+#### Minh họa trực quan: Giấc mơ của Leibniz
+
+Leibniz hình dung một **"máy tính suy luận"** hoạt động như sau:
+
+```
+Tranh cãi triết học
+        ↓
+Chuyển thành ký hiệu logic
+        ↓
+Áp dụng phép tính (như đại số)
+        ↓
+Kết quả: Đúng / Sai (không cần tranh cãi!)
+```
+
+**So sánh với máy tính hiện đại**:
+
+| Leibniz (1646–1716) | Máy tính ngày nay |
+|:---|:---|
+| `calculus ratiocinator` | CPU + ALU |
+| Ký hiệu logic | Bit (0/1) |
+| Phép tính suy luận | AND, OR, NOT gates |
+| Giải tranh cãi triết học | Kiểm chứng phần mềm, SAT solver |
+
+Leibniz đã **hình dung trước máy tính 300 năm**! Ông thậm chí còn thiết kế một cỗ máy tính cơ học thực hiện 4 phép tính số học — tiền thân của máy tính hiện đại.
 
 ### 1.3. George Boole và cuộc cách mạng đại số (1815–1864)
 
 Năm 1847, một thầy giáo tự học người Anh tên là **George Boole** xuất bản một cuốn sách mỏng với tựa đề khiêm tốn: *"The Mathematical Analysis of Logic"*. Bảy năm sau, ông hoàn thiện ý tưởng của mình trong tác phẩm để đời: *"An Investigation of the Laws of Thought"* (1854).
 
-Điều Boole làm được thực sự là một cuộc cách mạng: **ông biến logic thành đại số**. Thay vì nói về "đúng" và "sai" bằng ngôn ngữ tự nhiên mơ hồ, Boole gán cho chúng các giá trị số: **1 cho đúng, 0 cho sai**. Sau đó, ông định nghĩa các phép toán trên những giá trị này:
+#### Minh họa trực quan: Đại số Boole
 
-- **AND** (∧) hoạt động giống như phép nhân: 1·1=1, còn lại bằng 0
-- **OR** (∨) hoạt động gần giống phép cộng: 0+0=0, còn lại bằng 1
-- **NOT** (¬) là phép đảo: 1→0, 0→1
+Boole đã **gán số cho logic**:
+
+| Logic | Số học (Boole) |
+|:---|:---|
+| Đúng (True) | 1 |
+| Sai (False) | 0 |
+
+**Bảng phép toán**:
+
+| AND (∧) | OR (∨) | NOT (¬) |
+|:---:|:---:|:---:|
+| 1 ∧ 1 = 1 | 1 ∨ 1 = 1 | ¬1 = 0 |
+| 1 ∧ 0 = 0 | 1 ∨ 0 = 1 | ¬0 = 1 |
+| 0 ∧ 1 = 0 | 0 ∨ 1 = 1 | |
+| 0 ∧ 0 = 0 | 0 ∨ 0 = 0 | |
+
+**Nhận xét**: 
+- AND giống như **phép nhân** thông thường
+- OR giống như **phép cộng** nhưng 1+1=1 (không tràn)
+- NOT giống như **phép trừ 1 − x**
+
+Đây chính là nền tảng của **mạch logic** trong mọi con chip ngày nay!
 
 ![George Boole - nhà toán học Anh thế kỷ 19]
 *Hình 2: Chân dung George Boole. Đại số của ông là nền tảng toán học cho toàn bộ khoa học máy tính hiện đại.*

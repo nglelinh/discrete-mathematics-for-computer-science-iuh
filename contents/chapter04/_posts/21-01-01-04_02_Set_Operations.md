@@ -95,15 +95,7 @@ Phần bù phụ thuộc vào tập vũ trụ U. Nếu thay đổi U, phần bù
 - U = {1, 2, 3, 4, 5}, A = {1, 3, 5}
 - Aᶜ = {2, 4}
 
-<div class="content-box warning-box" markdown="1">
-**Lỗi thường gặp**: Nhiều sinh viên quên mất tập vũ trụ khi nói về phần bù. Aᶜ không có ý nghĩa nếu không biết U là gì. Trong Python, "phần bù" của một set không phải là phép toán có sẵn -- bạn phải xác định U trước:
-```python
-U = {1, 2, 3, 4, 5}
-A = {1, 3, 5}
-complement = U - A
-print(complement)  # {2, 4}
-```
-</div>
+
 
 ### 5. Hiệu đối xứng (Symmetric Difference) -- △
 
@@ -136,8 +128,9 @@ Giống như đại số có các hằng đẳng thức (a + b)² = a² + 2ab + 
 | Phần tử nuốt | A ∪ U = U, A ∩ ∅ = ∅ |
 | Lũy đẳng | A ∪ A = A, A ∩ A = A |
 
-<div class="content-box insight-box" markdown="1">
-**Luật De Morgan** là một trong những công cụ mạnh nhất để biến đổi biểu thức tập hợp. Nó cho phép "phân phối" phép bù vào trong dấu ngoặc, đồng thời đổi ∪ thành ∩ và ngược lại. Trong lập trình, De Morgan tương ứng với việc đảo ngược điều kiện logic:
+#### Minh họa trực quan: Luật De Morgan trong code
+
+**Luật De Morgan** cho phép "phân phối" phép bù:
 
 ```python
 # (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ
@@ -146,7 +139,8 @@ not (x in A or x in B) == (x not in A) and (x not in B)
 # (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ
 not (x in A and x in B) == (x not in A) or (x not in B)
 ```
-</div>
+
+**Mẹo nhớ**: Đảo dấu `not` → đổi `and` thành `or` (và ngược lại).
 
 ## Công cụ tương tác: Trực quan hóa phép toán tập hợp
 

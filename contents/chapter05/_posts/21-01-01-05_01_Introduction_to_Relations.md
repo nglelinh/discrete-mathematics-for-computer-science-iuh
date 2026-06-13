@@ -76,9 +76,12 @@ Ma trận M_R có M_R[i][j] = 1 nếu (aᵢ, bⱼ) ∈ R, ngược lại = 0
 - Đỉnh: các phần tử của tập hợp
 - Cung (mũi tên): các cặp trong quan hệ
 
-<div class="content-box warning-box" markdown="1">
-**Lỗi thường gặp**: Khi biểu diễn quan hệ bằng ma trận, nhớ rằng hàng là phần tử nguồn (từ A), cột là phần tử đích (đến B). Với quan hệ trên cùng tập A (A = B), hàng và cột cùng một tập, và ma trận là vuông.
-</div>
+#### Minh họa trực quan: Ma trận quan hệ
+
+**Quy tắc nhanh**:
+- **Hàng** = phần tử nguồn (từ A)
+- **Cột** = phần tử đích (đến B)
+- Nếu A = B → ma trận **vuông**
 
 ## Công cụ tương tác: Trình khám phá quan hệ
 

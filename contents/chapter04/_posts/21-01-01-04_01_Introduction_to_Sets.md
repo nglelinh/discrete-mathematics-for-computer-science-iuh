@@ -47,25 +47,6 @@ Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc địn
 - Quan hệ thuộc: a ∈ A (a thuộc A)
 - Quan hệ không thuộc: a ∉ A (a không thuộc A)
 
-#### Minh họa trực quan: ∈ vs ⊆
-
-**Quy tắc nhanh**:
-- $$\in$$: "là phần tử của" → dùng với **phần tử**
-- $$\subseteq$$: "là tập con của" → dùng với **tập hợp**
-
-**Bảng so sánh**:
-
-| Biểu thức | Đúng/Sai | Lý do |
-|:---:|:---:|:---|
-| $$1 \in \{1,2\}$$ | Đúng | 1 là phần tử |
-| $$1 \subseteq \{1,2\}$$ | Sai | 1 không phải tập hợp |
-| $$\{1\} \subseteq \{1,2\}$$ | Đúng | {1} là tập con |
-| $$\{1,2\} \in \{1,2\}$$ | Sai | {1,2} không phải phần tử |
-
-**Mẹo nhớ**: 
-- $$\in$$ = "thuộc về" (phần tử)
-- $$\subseteq$$ = "bên trong" (tập hợp)
-
 ## Cách biểu diễn tập hợp
 
 ### 1. Liệt kê (Roster Method)
@@ -103,48 +84,7 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 - (0, 1) = {x ∈ ℝ | 0 < x < 1}
 - [0, ∞) = {x ∈ ℝ | x ≥ 0}
 
-<div class="content-box note-box" markdown="1">
-**Lưu ý**: Dấu ngoặc vuông `[ ]` nghĩa là "bao gồm điểm đầu/cuối", dấu ngoặc tròn `( )` nghĩa là "không bao gồm". Trong Python, `range(1, 5)` cho {1, 2, 3, 4} -- tương tự nửa khoảng $$[1, 5)$$.
-</div>
 
-## Các tập hợp số quan trọng
-
-Trong toán rời rạc, chúng ta thường xuyên làm việc với các tập hợp số sau:
-
-| Ký hiệu | Tên | Định nghĩa | Ghi chú |
-|---------|-----|------------|---------|
-| ℕ | Số tự nhiên | {1, 2, 3, 4, ...} | Có tài liệu lấy ℕ = {0, 1, 2, ...} |
-| ℕ₀ | Số tự nhiên và 0 | {0, 1, 2, 3, ...} | Rõ ràng hơn |
-| ℤ | Số nguyên | {..., -2, -1, 0, 1, 2, ...} | |
-| ℚ | Số hữu tỷ | {p/q | p, q ∈ ℤ, q ≠ 0} | Số thập phân vô hạn tuần hoàn |
-| ℝ | Số thực | Tất cả số thực | Gồm hữu tỷ + vô tỷ |
-| ℂ | Số phức | {a + bi | a, b ∈ ℝ} | i² = -1 |
-
-<div class="content-box insight-box" markdown="1">
-**Bao hàm** (inclusion): Các tập hợp số lồng nhau:
-$$\mathbb{N} \subset \mathbb{N}_0 \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C}$$
-
-Minh họa: Mọi số tự nhiên đều là số nguyên, mọi số nguyên đều là số hữu tỷ, v.v.
-</div>
-
-## Khái niệm cơ bản
-
-### 1. Tập hợp rỗng (Empty Set)
-
-**Định nghĩa**: Tập hợp không chứa phần tử nào.
-**Ký hiệu**: ∅ hoặc {}
-
-> Một câu chuyện vui trong toán học: Khi được hỏi "Tập hợp rỗng có gì đặc biệt?", một sinh viên trả lời: "Nó chứa tất cả những thứ không tồn tại!"
-
-**Ví dụ**:
-- {x ∈ ℝ | x² = -1} = ∅
-- {x ∈ ℕ | x < 0} = ∅
-
-<div class="content-box warning-box" markdown="1">
-**Lỗi thường gặp**: ∅ ≠ {∅}. Tập rỗng không chứa gì cả. Nhưng {∅} là tập hợp **chứa** tập rỗng, nên nó có một phần tử! Đây là một trong những điểm tinh tế hay gây nhầm lẫn nhất.
-- |∅| = 0 (tập rỗng không có phần tử)
-- |{∅}| = 1 (tập chứa tập rỗng có một phần tử)
-</div>
 
 ### 2. Tập hợp con (Subset)
 

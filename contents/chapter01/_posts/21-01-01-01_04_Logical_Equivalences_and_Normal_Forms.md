@@ -103,20 +103,69 @@ check_equivalence()
 
 ## 2. Các luật tương đương cơ bản
 
-| Tên luật | Công thức tiêu biểu |
-|---|---|
-| Đồng nhất | $$p \land T \equiv p$$, $$p \lor F \equiv p$$ |
-| Nuốt | $$p \lor T \equiv T$$, $$p \land F \equiv F$$ |
-| Lũy đẳng | $$p \lor p \equiv p$$, $$p \land p \equiv p$$ |
-| Phủ định kép | $$\neg\neg p \equiv p$$ |
-| Giao hoán | $$p \lor q \equiv q \lor p$$, $$p \land q \equiv q \land p$$ |
-| Kết hợp | $$(p \lor q) \lor r \equiv p \lor (q \lor r)$$ |
-| Phân phối | $$p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$$ |
-| De Morgan | $$\neg(p \land q) \equiv \neg p \lor \neg q$$ |
-| Hấp thụ | $$p \lor (p \land q) \equiv p$$ |
-| Bù | $$p \lor \neg p \equiv T$$, $$p \land \neg p \equiv F$$ |
+**Lưu ý**: Ký hiệu \(\equiv\) **không phải** là một phép toán logic — nó là một khẳng định về hai công thức (hai công thức này có cùng bảng chân trị).
 
-### Khối chứng minh: Luật De Morgan
+| Tên luật | Công thức tiêu biểu | Ghi chú |
+|:---|:---|:---|
+| Đồng nhất | $$p \land T \equiv p$$, $$p \lor F \equiv p$$ | T và F là hằng |
+| Nuốt | $$p \lor T \equiv T$$, $$p \land F \equiv F$$ | Bị "nuốt" bởi hằng |
+| Lũy đẳng | $$p \lor p \equiv p$$, $$p \land p \equiv p$$ | Lặp lại không đổi |
+| Phủ định kép | $$\neg\neg p \equiv p$$ | Hai lần phủ định |
+| Giao hoán | $$p \lor q \equiv q \lor p$$, $$p \land q \equiv q \land p$$ | Đổi chỗ |
+| Kết hợp | $$(p \lor q) \lor r \equiv p \lor (q \lor r)$$ | Dấu ngoặc không quan trọng |
+| Phân phối | $$p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$$ | Phân phối OR qua AND |
+| De Morgan | $$\neg(p \land q) \equiv \neg p \lor \neg q$$ | Phủ định của AND/OR |
+| Hấp thụ | $$p \lor (p \land q) \equiv p$$ | Bị "hấp thụ" |
+| Bù | $$p \lor \neg p \equiv T$$, $$p \land \neg p \equiv F$$ | Luật bù |
+
+**Mẹo nhớ**: Các luật De Morgan, Phân phối, và Bù là những luật hay dùng nhất khi rút gọn biểu thức.
+
+## Công thức Boolean dưới dạng cây
+
+Một công thức Boolean có thể được biểu diễn dưới dạng **cây** (rooted tree):
+
+- **Nút gốc và nút trong**: được gán nhãn bởi các phép toán logic (`¬`, `∧`, `∨`, `→`, `↔`, `⊕`).
+- **Lá (nút cuối)**: được gán nhãn bởi các biến (`p`, `q`, `r`, ...) hoặc hằng (`T`, `F`).
+
+Cấu trúc của cây được xác định bởi **dấu ngoặc** trong công thức.
+
+**Ví dụ chi tiết**: Xét công thức `((p ∨ q) → ¬r) ↔ p`
+
+Cây tương ứng:
+
+```
+          ↔
+         / \
+       →    p
+      / \
+    ∨    ¬
+   / \    \
+  p   q    r
+```
+
+**Bảng chân trị** của công thức này (thứ tự lexicographic, T trước F):
+
+| p | q | r | (p ∨ q) | ¬r | (p ∨ q) → ¬r | ((p ∨ q) → ¬r) ↔ p |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| T | T | T | T | F | F | F |
+| T | T | F | T | T | T | T |
+| T | F | T | T | F | F | F |
+| T | F | F | T | T | T | T |
+| F | T | T | T | F | F | T |
+| F | T | F | T | T | T | F |
+| F | F | T | F | F | T | F |
+| F | F | F | F | T | T | F |
+
+**Nhận xét**: Cây giúp ta thấy rõ **thứ tự tính toán** và **cấu trúc phân cấp** của công thức. Mỗi phép toán tương ứng với một nút trong, và các biến là lá.
+
+**Lưu ý quan trọng**: Các phép toán `∧`, `∨`, `⊕`, `↔` là **giao hoán** (đổi chỗ được) và **kết hợp** (dấu ngoặc không quan trọng). Riêng `→` không có hai tính chất này.
+
+Do đó ta có thể viết `R ∧ Q ∧ P` thay vì `(R ∧ Q) ∧ P`, và viết các biến theo bất kỳ thứ tự nào.
+
+**Ứng dụng**:
+- **Trình biên dịch** biểu diễn biểu thức Boolean dưới dạng cây trước khi tối ưu.
+- **Mạch logic** trong phần cứng chính là cây Boolean (mỗi cổng là một nút).
+- **Kiểm chứng hình thức** thường làm việc trên cấu trúc cây của công thức.
 
 Ta chứng minh $$\neg(p \land q) \equiv \neg p \lor \neg q$$ bằng bảng chân trị.
 
@@ -214,6 +263,14 @@ $$(l_{11} \lor l_{12} \lor \cdots) \land (l_{21} \lor l_{22} \lor \cdots) \land 
 **Ví dụ**: $$(p \lor q) \land (\neg p \lor r) \land (q \lor \neg r)$$ là CNF.
 
 **Ký hiệu**: Mỗi ngoặc trong CNF thường được gọi là một **mệnh đề con** (clause). CNF là dạng chuẩn mà nhiều SAT solver nhận vào.
+
+**Lưu ý**: Chúng ta thường dùng bit `1` và `0` thay cho `T` và `F`, và ký hiệu biến là \(x_1, \dots, x_n\). Ví dụ: gán \(x = 101\) vào công thức \((x_1 \land x_2 \land x_3) \lor (\neg x_1 \land \neg x_2 \land \neg x_3)\) cho kết quả `0`.
+
+**Toán tử bitwise trên chuỗi bit**: Chúng ta có thể mở rộng các phép toán logic thành toán tử trên **chuỗi bit** bằng cách áp dụng từng bit một. Ví dụ:
+
+- \(1010 = 0101\)
+- \(1010 \land 0110 = 0010\)
+- \(1010 \lor 0110 = 1110\)
 
 ### Tạo CNF từ bảng chân trị (cách trực quan)
 

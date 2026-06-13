@@ -124,15 +124,6 @@ Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới t
 
 <script src="{{ '/public/js/warshall-visualizer.js' | relative_url }}"></script>
 
-## 8. Nhầm lẫn thường gặp
-
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn 1**: Đảo thứ tự hợp thành. $$S\circ R$$ nghĩa là đi theo $$R$$ trước, không phải $$S$$ trước.
-
-**Nhầm lẫn 2**: Bao đóng không phải thêm tùy ý. Nó là quan hệ nhỏ nhất thỏa tính chất cần có.
-
-**Nhầm lẫn 3**: Bao đóng đối xứng khác quan hệ ngược. Bao đóng đối xứng là $$R\cup R^{-1}$$.
-</div>
 
 ## 9. Ứng dụng trong Khoa học Máy tính
 

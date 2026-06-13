@@ -33,9 +33,23 @@ Sau khi học xong bài này, sinh viên có thể:
 5. Áp dụng phương pháp này vào các ví dụ toán học cổ điển và các bối cảnh khoa học máy tính.
 6. Tránh các lỗi thường gặp khi sử dụng phản chứng.
 
-## Ý tưởng cốt lõi
+## Ý tưởng cốt lõi (4 bước trực quan)
 
 Muốn chứng minh mệnh đề `P` đúng, ta làm như sau:
+
+#### Minh họa trực quan: Chứng minh phản chứng như "phản chứng giả định"
+
+```
+Giả sử ¬P đúng
+        ↓
+Dẫn đến mâu thuẫn
+        ↓
+Vậy ¬P phải sai
+        ↓
+Kết luận: P đúng
+```
+
+**4 bước**:
 
 1. **Giả sử ngược lại** rằng `P` là sai, tức là `¬P` đúng.
 2. Từ giả sử đó, kết hợp với các sự kiện đã biết, ta suy ra một điều vô lý.

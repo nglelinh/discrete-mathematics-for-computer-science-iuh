@@ -196,15 +196,6 @@ Các bài tập trên tương ứng trực tiếp với tác vụ CS:
 - Thứ tự bộ phận dùng trong topological sort.
 - Bao đóng bắc cầu dùng trong reachability và truy vấn phân cấp.
 
-## 9. Nhầm lẫn thường gặp
-
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn 1**: Kiểm tra bắc cầu bằng mắt mà không xét tất cả chuỗi hai bước. Hãy tìm mọi $$(a,b)$$ và $$(b,c)$$ rồi kiểm tra $$(a,c)$$.
-
-**Nhầm lẫn 2**: Kết luận quan hệ tương đương chỉ vì các phần tử được chia nhóm. Vẫn phải chứng minh phản xạ, đối xứng và bắc cầu hoặc chỉ ra phân hoạch rõ ràng.
-
-**Nhầm lẫn 3**: Vẽ biểu đồ Hasse nhưng giữ cả cạnh bắc cầu. Biểu đồ Hasse chỉ giữ quan hệ phủ.
-</div>
 
 ## Bài tập thực hành
 

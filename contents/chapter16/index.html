@@ -6,20 +6,5 @@ permalink: /contents/chapter16/
 
 <div class="chapter-intro">
     <h1>Chương 16: Cây</h1>
-    <p class="lead">Cây, cây nhị phân, duyệt cây và ứng dụng</p>
+    <p class="lead">Nội dung chương này hiện không còn.</p>
 </div>
-
-{% assign sorted_posts = site.categories.chapter16 | sort: "order" %}
-{% for post in sorted_posts %}
-    {% if post.order %}
-        <div class="post-preview">
-            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-            <p>{{ post.excerpt | strip_html | truncate: 200 }}</p>
-            <div class="post-meta">
-                <span class="badge {% if post.required %}badge-required{% else %}badge-optional{% endif %}">
-                    {% if post.required %}{{ site.t[page.lang].required }}{% else %}{{ site.t[page.lang].optional }}{% endif %}
-                </span>
-            </div>
-        </div>
-    {% endif %}
-{% endfor %}

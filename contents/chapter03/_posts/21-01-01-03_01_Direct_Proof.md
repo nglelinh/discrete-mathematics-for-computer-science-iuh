@@ -34,30 +34,29 @@ Sau bài học này, sinh viên có thể:
 
 **Từ khóa**: Chứng minh trực tiếp (direct proof), giả thiết (hypothesis), kết luận (conclusion), định nghĩa (definition), bất biến (invariant), correctness.
 
-## Cấu trúc bài giảng (60 phút)
-
-| Thời gian | Nội dung | Hoạt động |
-|-----------|----------|-----------|
-| 5 phút | Mở đầu | Vì sao test không thay thế chứng minh? |
-| 10 phút | Cấu trúc chứng minh trực tiếp | P → Q, giả thiết, kết luận |
-| 15 phút | Ví dụ số học | Số chẵn, số lẻ, chia hết |
-| 15 phút | Ví dụ khoa học máy tính | Input validation, loop invariant, hàm lọc dữ liệu |
-| 10 phút | Lỗi thường gặp | Suy luận ngược, thiếu định nghĩa |
-| 5 phút | Tổng kết | Checklist viết chứng minh |
-
 ## 1. Định nghĩa
 
 Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc định nghĩa trước sẽ giúp các ví dụ và định lý phía sau trở nên dễ theo dõi hơn.
 
 **Chứng minh trực tiếp** của mệnh đề có dạng "Nếu P thì Q" ($$P \to Q$$) là một chuỗi suy luận bắt đầu bằng việc giả sử $$P$$ đúng, sau đó dùng định nghĩa, định lý đã biết và quy tắc logic để suy ra $$Q$$.
 
-### Cấu trúc chung
+### Cấu trúc chung (5 bước trực quan)
 
-1. **Giả sử** $$P$$ đúng.
-2. **Mở định nghĩa** của các khái niệm trong $$P$$.
-3. **Biến đổi** hoặc suy luận từng bước.
-4. **Đạt được** đúng dạng của $$Q$$.
-5. **Kết luận** mệnh đề đã được chứng minh.
+**Bước 1**: **Giả sử** $$P$$ đúng.  
+**Bước 2**: **Mở định nghĩa** của các khái niệm trong $$P$$.  
+**Bước 3**: **Biến đổi** hoặc suy luận từng bước.  
+**Bước 4**: **Đạt được** đúng dạng của $$Q$$.  
+**Bước 5**: **Kết luận** mệnh đề đã được chứng minh.
+
+#### Minh họa trực quan: Cấu trúc chứng minh như một "đường hầm"
+
+```
+Giả thiết P ──────[các bước suy luận]──────▶ Kết luận Q
+     ↑                                              ↑
+  (đã biết)                                    (cần chứng minh)
+```
+
+**Mẹo thực tế**: Hãy tưởng tượng bạn đang **viết code** giải thích cho máy tính. Mỗi bước phải có "lý do" rõ ràng, giống như comment trong code.
 
 <div class="content-box warning-box" markdown="1">
 **Nguyên tắc quan trọng**: Trong chứng minh trực tiếp, bạn không được giả sử kết luận $$Q$$ đúng. Bạn chỉ được bắt đầu từ giả thiết $$P$$ và những định nghĩa/định lý đã biết.
@@ -184,80 +183,3 @@ Chứng minh bất biến này thường dùng quy nạp, nhưng bước chuyể
 - Mỗi bước phải có lý do: định nghĩa, tính chất đại số, định lý đã biết, hoặc suy luận logic.
 - Kết luận cuối cùng phải đúng dạng của mệnh đề cần chứng minh.
 
-## 5. Lỗi thường gặp
-
-### Lỗi 1: Chứng minh ngược
-
-Sai: Muốn chứng minh "n chẵn ⇒ n² chẵn", nhưng bắt đầu bằng "Giả sử n² chẵn".
-
-Đó là chứng minh chiều ngược, không phải chứng minh trực tiếp cho mệnh đề ban đầu.
-
-### Lỗi 2: Bỏ qua định nghĩa
-
-Không nên viết: "n chẵn nên n² chẵn là hiển nhiên".
-
-Cần mở định nghĩa: $$n = 2k$$, rồi biến đổi.
-
-### Lỗi 3: Dùng ví dụ thay cho chứng minh
-
-Kiểm tra $$n=2,4,6$$ không đủ để chứng minh cho mọi số chẵn. Ví dụ giúp hiểu; chứng minh cần bao quát mọi trường hợp.
-
-## Ứng dụng trong Khoa học Máy tính
-
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
-
-Chứng minh trực tiếp được dùng khi ta cần bảo đảm một đoạn logic luôn đúng. Ví dụ: chứng minh hàm kiểm tra quyền truy cập không cấp quyền sai, chứng minh một bộ lọc SQL không trả về dữ liệu ngoài phạm vi, hoặc chứng minh một thuật toán đơn giản luôn trả về kết quả thỏa điều kiện.
-
-Trong kiểm thử phần mềm, test case chỉ kiểm tra một số đầu vào cụ thể. Chứng minh trực tiếp giúp ta hiểu lý do vì sao code đúng cho mọi đầu vào hợp lệ — đặc biệt quan trọng với bảo mật, tài chính, y tế và hệ thống nhúng.
-
-## Bài tập thực hành
-
-### Bài tập 1: Số chẵn và số lẻ
-
-Chứng minh trực tiếp:
-
-1. Nếu $$n$$ là số lẻ thì $$n^2$$ là số lẻ.
-2. Nếu $$a$$ là số chẵn và $$b$$ là số lẻ thì $$a+b$$ là số lẻ.
-3. Nếu $$a \mid b$$ thì $$a \mid bc$$ với mọi $$c \in \mathbb{Z}$$.
-
-### Bài tập 2: Logic trong code
-
-Cho đoạn code:
-
-```python
-can_view_grade = is_logged_in and is_in_class and grade_published
-```
-
-Chứng minh trực tiếp: nếu `can_view_grade` là `True`, thì sinh viên đã đăng nhập, thuộc lớp học phần, và điểm đã được công bố.
-
-### Bài tập 3: Kiểm tra đầu vào
-
-Một API chỉ nhận request hợp lệ nếu:
-
-```python
-valid_request = has_token and token_not_expired and payload_size <= 1024
-```
-
-1. Đặt các mệnh đề sơ cấp.
-2. Viết mệnh đề logic.
-3. Chứng minh trực tiếp: nếu `valid_request` đúng thì request có token, token chưa hết hạn, và payload không vượt quá 1024 bytes.
-
-### Bài tập 4: Tìm lỗi chứng minh
-
-Sinh viên viết: "Giả sử $$n^2$$ chẵn. Khi đó $$n$$ chẵn. Vậy nếu $$n$$ chẵn thì $$n^2$$ chẵn."
-
-1. Lỗi nằm ở đâu?
-2. Hãy viết lại chứng minh đúng.
-
-### Bài tập 5: Bất biến nhỏ
-
-Cho thuật toán tìm giá trị lớn nhất trong mảng. Chứng minh trực tiếp rằng sau mỗi lần cập nhật `max_value = a[i]`, biến `max_value` vẫn là một phần tử đã xuất hiện trong đoạn mảng đã duyệt.
-
-## Tóm tắt
-
-- Chứng minh trực tiếp bắt đầu từ giả thiết và đi đến kết luận.
-- Công cụ quan trọng nhất là mở đúng định nghĩa.
-- Trong CS, chứng minh trực tiếp giúp giải thích vì sao điều kiện, hàm, hoặc bước thuật toán luôn đúng.
-- Test case rất hữu ích, nhưng không thay thế được chứng minh khi ta cần bảo đảm cho mọi đầu vào.
-
-Trong bài tiếp theo, chúng ta sẽ học về **chứng minh phản chứng** — một phương pháp mạnh để chứng minh các mệnh đề khó đi thẳng từ giả thiết.
