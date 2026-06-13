@@ -120,15 +120,6 @@ Lập luận:
 5. Từ $$Student(a)$$ và $$CanLearnDiscreteMath(a)$$, lập hội: $$Student(a)\land CanLearnDiscreteMath(a)$$.
 6. Dùng EG: $$\exists x(Student(x)\land CanLearnDiscreteMath(x))$$.
 
-## 8. Công cụ tương tác
-
-<div class="interactive-tool" data-tool="predicate-proof-builder">
-  <p><strong>Demo đề xuất:</strong> kéo-thả UI, UG, EI, EG và Modus Ponens vào từng dòng để xây dựng chứng minh hợp lệ.</p>
-  <div id="predicate-proof-demo"></div>
-</div>
-
-<script src="{{ '/public/js/predicate-proof-dnd.js' | relative_url }}"></script>
-
 ## 10. Ứng dụng trong Khoa học Máy tính
 
 - **Type systems**: Kiểu tổng quát như `List<T>` dùng ý tưởng "với mọi kiểu T".

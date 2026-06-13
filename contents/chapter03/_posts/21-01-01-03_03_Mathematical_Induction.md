@@ -553,13 +553,6 @@ Khi làm bài, bạn có thể theo checklist sau:
 9. Kết thúc bằng câu khẳng định rõ ràng.
 
 <div class="interactive-tool" markdown="1">
-### Công cụ tương tác: Xây dựng chứng minh quy nạp
-
-<div data-demo="induction-checker"></div>
-</div>
-
-<script src="{{ '/public/js/induction-step-checker.js' | relative_url }}"></script>
-
 ## Bài tập tự luyện
 
 ### Bài 1

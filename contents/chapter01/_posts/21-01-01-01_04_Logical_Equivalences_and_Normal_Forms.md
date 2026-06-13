@@ -382,14 +382,6 @@ Do đó $$ D_1 \equiv D_2 $$.
 - **Thuật toán tối thiểu hóa logic** (Quine–McCluskey, Espresso): rút gọn DNF/CNF để giảm số cổng logic.
 - **SAT solver**: nhận đầu vào dạng CNF và tìm cách gán biến sao cho biểu thức đúng.
 
-## 7. Công cụ tương tác
-
-<div class="interactive-tool" data-tool="truth-table-normal-form">
-  <p><strong>Demo đề xuất:</strong> nhập một biểu thức như <code>(p -> q) and (q -> r)</code>, công cụ sinh bảng chân trị, DNF và CNF tương ứng.</p>
-</div>
-
-<script src="{{ '/public/js/truth-table-normal-form.js' | relative_url }}"></script>
-
 ## 8. Ứng dụng trong Khoa học Máy tính
 
 - **Tối ưu điều kiện trong chương trình**: Compiler có thể thay `not (a and b)` bằng `(not a) or (not b)` để đơn giản hóa nhánh.

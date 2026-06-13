@@ -202,9 +202,6 @@ Bảng chân trị:
 </p>
 </figure>
 
-## Công cụ tương tác
-
-<div class="interactive-tool" markdown="1">
 ### Máy tính bảng chân trị
 
 Nhập biểu thức logic (sử dụng &, |, !, ->, <->) và xem bảng chân trị tự động:

@@ -297,48 +297,6 @@ Kiểm tra: $$a_1 = 18 - 3 - 7 = 8$$, truy hồi: $$2 \cdot 2 + 3 + 1 = 8$$ ✓
 **Sai lầm thường gặp**: Khi tìm nghiệm riêng, sinh viên thường quên kiểm tra xem dạng nghiệm thử có trùng với nghiệm thuần nhất không. Nếu trùng, cần nhân thêm $$n$$ (hoặc $$n^s$$) vào nghiệm thử. Chúng ta sẽ học chi tiết về điều này trong Bài 10.3.
 </div>
 
-## Công cụ tương tác: Khám phá Quan hệ Truy hồi
-
-Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
-
-<div id="recurrence-explorer" class="interactive-tool" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
-  <h4 style="color: #6f42c1;">Khám phá Quan hệ Truy hồi</h4>
-  <p>Hãy nhập các hệ số và điều kiện đầu để xem dãy số được sinh ra như thế nào.</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-    <div>
-      <label><strong>Quan hệ truy hồi bậc 2:</strong></label><br>
-      $$a_n =$$ <input type="text" id="coeff1" value="1" style="width: 50px;"> $$\cdot a_{n-1} +$$ <input type="text" id="coeff2" value="1" style="width: 50px;"> $$\cdot a_{n-2}$$ 
-    </div>
-    <div>
-      <label><strong>Điều kiện đầu:</strong></label><br>
-      $$a_0 =$$ <input type="text" id="init0" value="0" style="width: 50px;"> 
-      $$a_1 =$$ <input type="text" id="init1" value="1" style="width: 50px;">
-    </div>
-  </div>
-  <button onclick="generateSequence()" style="background: #6f42c1; color: white; border: none; padding: 10px 20px; border-radius: 5px; margin-top: 15px;">Sinh dãy số</button>
-  <div id="sequence-output" style="margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 5px; font-family: monospace;">
-    Nhấn "Sinh dãy số" để xem kết quả.
-  </div>
-</div>
-
-<script>
-function generateSequence() {
-  const c1 = parseFloat(document.getElementById('coeff1').value) || 0;
-  const c2 = parseFloat(document.getElementById('coeff2').value) || 0;
-  const a0 = parseFloat(document.getElementById('init0').value) || 0;
-  const a1 = parseFloat(document.getElementById('init1').value) || 0;
-  
-  let seq = [a0, a1];
-  for (let n = 2; n < 20; n++) {
-    seq.push(c1 * seq[n-1] + c2 * seq[n-2]);
-  }
-  
-  document.getElementById('sequence-output').innerHTML = 
-    '<strong>Dãy số (20 số hạng đầu):</strong><br>' + 
-    seq.map((v, i) => `a<sub>${i}</sub> = ${Number.isInteger(v) ? v : v.toFixed(4)}`).join(', ');
-}
-</script>
-
 ## Ứng dụng trong Khoa học Máy tính
 
 ### Phân tích độ phức tạp thuật toán

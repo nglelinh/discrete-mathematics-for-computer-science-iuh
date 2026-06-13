@@ -97,16 +97,6 @@ def square(x):
 
 Nếu xem kiểu `int -> int`, đây là một mô hình của hàm toán học. Tuy nhiên, trong lập trình thực tế còn có ngoại lệ, trạng thái toàn cục, I/O và không dừng; các yếu tố này làm hàm lập trình phức tạp hơn hàm toán học thuần túy.
 
-## 7. Công cụ tương tác
-
-Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
-
-<div class="interactive-demo" data-demo="function-arrow-checker">
-  <p><strong>Demo đề xuất:</strong> kéo mũi tên từ domain sang codomain; công cụ báo khi một quan hệ không phải hàm vì thiếu đầu ra hoặc có nhiều đầu ra.</p>
-</div>
-
-<script src="{{ '/public/js/function-arrow-checker.js' | relative_url }}"></script>
-
 ## Định lý: Số hàm từ tập hữu hạn sang tập hữu hạn
 
 **Định lý**: Số hàm từ tập \( A \) (\( |A| = n \)) sang tập \( B \) (\( |B| = m \)) là \( m^n \).

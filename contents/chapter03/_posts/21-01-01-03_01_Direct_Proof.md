@@ -168,13 +168,6 @@ Chứng minh bất biến này thường dùng quy nạp, nhưng bước chuyể
 4. Vậy bất biến vẫn đúng cho $$k+1$$ phần tử.
 
 <div class="interactive-tool" markdown="1">
-### Công cụ tương tác: Kéo-thả các bước chứng minh
-
-<div data-demo="direct-proof-builder"></div>
-</div>
-
-<script src="{{ '/public/js/direct-proof-builder.js' | relative_url }}"></script>
-
 ## 4. Checklist khi viết chứng minh trực tiếp
 
 - Gạch chân giả thiết và kết luận.

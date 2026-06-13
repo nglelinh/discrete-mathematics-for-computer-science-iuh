@@ -150,14 +150,6 @@ $$\exists s\,\forall c\,(Required(c) \to Takes(s,c)).$$
 
 $$\forall a\,\exists! e\,PrimaryEmail(a,e).$$
 
-## 8. Công cụ tương tác
-
-<div class="interactive-demo" data-demo="nested-quantifier-grid">
-  <p><strong>Demo đề xuất:</strong> bật/tắt các ô trong ma trận sinh viên-môn học để quan sát khi nào $$\forall x\exists y$$ đúng và khi nào $$\exists y\forall x$$ đúng.</p>
-</div>
-
-<script src="{{ '/public/js/nested-quantifier-grid.js' | relative_url }}"></script>
-
 ## 10. Ứng dụng trong Khoa học Máy tính
 
 ```python

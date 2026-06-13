@@ -110,16 +110,6 @@ $$50+40+30-20-15-10+5=80.$$
 
 **Ý tưởng đường chéo Cantor**: Tập số thực trong đoạn $$(0,1)$$ không đếm được. Nếu giả sử liệt kê được mọi số thực trong $$(0,1)$$, ta có thể tạo một số mới khác số thứ nhất ở chữ số thập phân thứ nhất, khác số thứ hai ở chữ số thứ hai, và cứ thế. Số mới này không nằm trong danh sách, mâu thuẫn.
 
-## 7. Công cụ tương tác
-
-Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
-
-<div class="interactive-tool" data-tool="venn-counter">
-  <p><strong>Demo đề xuất:</strong> nhập kích thước ba tập và các giao, công cụ vẽ Venn diagram và tính $$|A\cup B\cup C|$$ theo bao hàm - loại trừ.</p>
-</div>
-
-<script src="{{ '/public/js/venn-counter.js' | relative_url }}"></script>
-
 ## Định lý Schröder–Bernstein
 
 **Định lý**: Nếu tồn tại hai hàm đơn ánh \( f: A \to B \) và \( g: B \to A \), thì tồn tại một song ánh giữa \( A \) và \( B \). Nói cách khác:

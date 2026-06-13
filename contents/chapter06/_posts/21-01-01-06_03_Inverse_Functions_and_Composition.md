@@ -116,17 +116,6 @@ $$f^{-1}(x)=\frac{x+2}{3}.$$
 
 Hàm $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^2$$ không có nghịch đảo trên toàn $$\mathbb{R}$$ vì không đơn ánh: $$f(2)=f(-2)$$. Nếu hạn chế domain thành $$[0,\infty)$$ và codomain $$[0,\infty)$$, hàm trở thành song ánh và có nghịch đảo $$f^{-1}(x)=\sqrt{x}$$.
 
-## 8. Công cụ tương tác
-
-Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
-
-<div class="interactive-demo" data-demo="composition-inverse-pipeline">
-  <p><strong>Demo đề xuất:</strong> kéo các hàm vào pipeline để xem $$g\circ f$$, thử thêm hàm nghịch đảo và quan sát khi pipeline trở về hàm đồng nhất.</p>
-  <div data-demo="function-composition-pipeline"></div>
-</div>
-<script src="{{ '/public/js/function-composition-pipeline.js' | relative_url }}"></script>
-
-
 ## 10. Ứng dụng trong Khoa học Máy tính
 
 ```python

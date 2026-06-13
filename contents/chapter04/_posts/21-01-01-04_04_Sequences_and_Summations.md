@@ -154,16 +154,6 @@ Số phép toán:
 
 $$\sum_{i=1}^{n} i = \frac{n(n+1)}{2} = \Theta(n^2).$$
 
-## 8. Công cụ tương tác
-
-Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
-
-<div class="interactive-demo" data-demo="summation-loop-visualizer">
-  <p><strong>Demo đề xuất:</strong> chọn kiểu vòng lặp, công cụ hiển thị tổng Sigma tương ứng và số ô được duyệt trong lưới.</p>
-</div>
-
-<script src="{{ '/public/js/summation-loop-visualizer.js' | relative_url }}"></script>
-
 ## 10. Ứng dụng trong Khoa học Máy tính
 
 - **Phân tích thuật toán**: số phép toán thường là tổng theo kích thước đầu vào.

@@ -114,17 +114,6 @@ def warshall(M):
     return M
 ```
 
-## 7. Công cụ tương tác
-
-Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới thao tác. Việc so sánh dự đoán với kết quả thật sẽ giúp khái niệm bám chắc hơn.
-
-<div class="interactive-demo" data-demo="relation-closure-warshall">
-  <p><strong>Demo đề xuất:</strong> nhập ma trận quan hệ, công cụ tô sáng từng bước Warshall và hiển thị các cặp được thêm vào bao đóng bắc cầu.</p>
-</div>
-
-<script src="{{ '/public/js/warshall-visualizer.js' | relative_url }}"></script>
-
-
 ## 9. Ứng dụng trong Khoa học Máy tính
 
 - **Đồ thị**: bao đóng bắc cầu trả lời truy vấn reachability.
