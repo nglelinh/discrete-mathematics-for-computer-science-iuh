@@ -43,7 +43,6 @@ There is NO `contents/en/` or `contents/vi/` subdirectory. The tree was flattene
 - Do not leave `{{...}}` mathematical sets unescaped in Jekyll-processed files.
 - Do not rename dated post files without checking generated permalink impact.
 - Do not mass-change `lang:` values across many files; the field has been inconsistent historically and bulk edits have caused regressions.
-- Do not invent `{% multilang_post_url %}` cross-references; the plugin is disabled (see `../_plugins/AGENTS.md`). No production lesson uses post cross-links - write prose references to lesson titles or a hand-crafted relative URL instead.
 
 ## NOTES
 - The historically failing pattern `E = {{1,2}, {2,3}}` in `chapter12/_posts/21-01-01-12_01_Introduction_to_Graphs.md` has been fixed using `$$E = [\{1,2\}, \{2,3\}]$$` (square brackets wrap the set literal to avoid the `{{` Liquid open tag). Use this file as the canonical example for graph-related set notation.

@@ -32,14 +32,6 @@ Make sure your repository has the following settings:
 2. Set **Source** to "GitHub Actions"
 3. The workflow will automatically deploy on pushes to the `main` branch
 
-## Multilang Support
-
-The site supports English and Vietnamese content with automatic language switching. Custom Liquid tags:
-
-- `{% t key %}` - Translate text based on current language
-- `{% language_switch %}` - Generate language switch button
-- `{% multilang_post_url %}` - Generate multilingual post URLs
-
 ## URL Structure
 
 - English: `/contents/en/chapter00/`
