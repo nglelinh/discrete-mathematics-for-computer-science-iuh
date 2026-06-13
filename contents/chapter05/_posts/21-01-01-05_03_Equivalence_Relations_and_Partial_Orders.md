@@ -98,15 +98,26 @@ Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới t
 
 <script src="{{ '/public/js/relation-properties-checker.js' | relative_url }}"></script>
 
-## 7. Nhầm lẫn thường gặp
+## Định lý: Quan hệ tương đương ⇔ Phân hoạch
 
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn 1**: Đối xứng và phản đối xứng không phải là phủ định của nhau. Một quan hệ có thể vừa đối xứng vừa phản đối xứng trong trường hợp đặc biệt.
+**Định lý**: Cho tập \( A \).  
+- Nếu \( R \) là quan hệ tương đương trên \( A \), thì các lớp tương đương của \( R \) tạo thành một **phân hoạch** của \( A \) (các tập con rời nhau, hợp lại bằng \( A \)).  
+- Ngược lại, nếu \( \{A_i\} \) là một phân hoạch của \( A \), thì quan hệ “cùng nằm trong một \( A_i \)” là một quan hệ tương đương.
 
-**Nhầm lẫn 2**: Nghĩ thứ tự bộ phận phải so sánh được mọi cặp. Điều đó là thứ tự toàn phần, mạnh hơn thứ tự bộ phận.
+**Chứng minh** (chiều thuận):
 
-**Nhầm lẫn 3**: Lớp tương đương không phải một phần tử; nó là một tập các phần tử tương đương với nhau.
-</div>
+1. **Phản xạ**: \( a R a \) vì \( a \) cùng lớp với chính nó.  
+2. **Đối xứng**: Nếu \( a R b \) thì \( a, b \) cùng lớp ⇒ \( b R a \).  
+3. **Bắc cầu**: Nếu \( a R b \) và \( b R c \) thì cả ba cùng lớp ⇒ \( a R c \).  
+4. Các lớp rời nhau: nếu \( a \in [b] \cap [c] \) thì \( b R c \), nên \( [b] = [c] \).  
+5. Hợp các lớp = \( A \): mọi \( a \) thuộc lớp \( [a] \).
+
+Chiều ngược cũng dễ chứng minh tương tự.
+
+**Hệ quả CS**:
+- **Hash table**: mỗi bucket là một lớp tương đương (cùng hash).
+- **Database sharding**: mỗi shard là một lớp.
+- **Type equivalence** trong compiler.
 
 ## 8. Ứng dụng trong Khoa học Máy tính
 

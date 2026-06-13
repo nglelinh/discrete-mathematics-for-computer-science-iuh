@@ -458,6 +458,24 @@ Nếu N đối tượng được phân bố liên tục trên độ dài L, thì
 ### 3. Nguyên lý Dirichlet xác suất
 Nếu phân bố ngẫu nhiên N đối tượng vào n nhóm, xác suất để mỗi nhóm chứa ≤ k đối tượng giảm exponentially khi N tăng.
 
+## Định lý Dirichlet tổng quát – Chứng minh
+
+**Định lý**: Nếu \( N \) đối tượng được phân vào \( n \) nhóm, thì ít nhất một nhóm chứa ít nhất \( \lceil N/n \rceil \) đối tượng.
+
+**Chứng minh** (phản chứng):
+
+Giả sử mọi nhóm chứa nhiều nhất \( \lceil N/n \rceil - 1 \) đối tượng.  
+Tổng số đối tượng ≤ \( n(\lceil N/n \rceil - 1) < N \), mâu thuẫn.
+
+Do đó, ít nhất một nhóm phải chứa ≥ \( \lceil N/n \rceil \) đối tượng.
+
+**Hệ quả** (dạng hay dùng trong CS):
+- Nếu \( N > n(k-1) \), thì ít nhất một nhóm chứa ≥ \( k \) đối tượng.
+
+**Ý nghĩa CS**:
+- **Hash collision**: \( n+1 \) khóa vào bảng \( n \) ô → chắc chắn có va chạm.
+- **Load balancing**: \( N \) tác vụ, \( n \) máy → ít nhất một máy nhận ≥ \( \lceil N/n \rceil \) tác vụ.
+
 ## Tóm tắt
 
 Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.

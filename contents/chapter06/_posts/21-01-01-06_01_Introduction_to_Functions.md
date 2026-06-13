@@ -107,15 +107,23 @@ Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới t
 
 <script src="{{ '/public/js/function-arrow-checker.js' | relative_url }}"></script>
 
-## 8. Nhầm lẫn thường gặp
+## Định lý: Số hàm từ tập hữu hạn sang tập hữu hạn
 
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn 1**: Một đầu ra có thể nhận từ nhiều đầu vào vẫn là hàm. Điều bị cấm là một đầu vào có nhiều đầu ra.
+**Định lý**: Số hàm từ tập \( A \) (\( |A| = n \)) sang tập \( B \) (\( |B| = m \)) là \( m^n \).
 
-**Nhầm lẫn 2**: Quên khai báo domain. Công thức $$\sqrt{x}$$ có ý nghĩa khác nhau trên $$\mathbb{R}_{\ge0}$$ và trên $$\mathbb{R}$$.
+**Chứng minh**:
 
-**Nhầm lẫn 3**: Nghĩ mọi quan hệ đều là hàm. Hàm là quan hệ có ràng buộc duy nhất ở đầu vào.
-</div>
+Mỗi hàm \( f: A \to B \) được xác định bởi giá trị \( f(a) \) cho từng \( a \in A \).  
+Với mỗi \( a \), có \( m \) lựa chọn trong \( B \).  
+Tổng số cách: \( m \times m \times \cdots \times m \) (\( n \) lần) = \( m^n \).
+
+**Hệ quả**:
+- Số hàm từ \( \{0,1\}^n \) sang \( \{0,1\} \): \( 2^{2^n} \) (đúng bằng số hàm Boolean trên \( n \) biến — đã gặp ở 01_01).
+- Số hàm từ tập \( n \) phần tử sang chính nó: \( n^n \) (số hoán vị chỉ là \( n! \)).
+
+**Ý nghĩa CS**:
+- **Không gian hàm** trong machine learning rất lớn → cần regularization / inductive bias.
+- **Enumeration** của tất cả hàm khả dĩ chỉ thực tế khi \( n \) nhỏ.
 
 ## 9. Ứng dụng trong Khoa học Máy tính
 

@@ -140,16 +140,6 @@ $$\forall a\,\exists! e\,PrimaryEmail(a,e).$$
 
 <script src="{{ '/public/js/nested-quantifier-grid.js' | relative_url }}"></script>
 
-## 9. Nhầm lẫn thường gặp
-
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn 1**: Đổi thứ tự $$\forall$$ và $$\exists$$ tùy ý. Thực tế $$\forall x\exists y$$ thường không tương đương với $$\exists y\forall x$$.
-
-**Nhầm lẫn 2**: Phủ định lượng từ nhưng quên phủ định vị từ bên trong.
-
-**Nhầm lẫn 3**: Dùng kéo theo sai trong câu "mọi A là B". Dạng đúng là $$\forall x(A(x)\to B(x))$$, không phải $$\forall x(A(x)\land B(x))$$.
-</div>
-
 ## 10. Ứng dụng trong Khoa học Máy tính
 
 ```python

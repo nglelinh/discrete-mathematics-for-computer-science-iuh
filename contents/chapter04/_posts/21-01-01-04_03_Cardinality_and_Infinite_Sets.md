@@ -120,15 +120,30 @@ Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới t
 
 <script src="{{ '/public/js/venn-counter.js' | relative_url }}"></script>
 
-## 8. Nhầm lẫn thường gặp
+## Định lý Schröder–Bernstein
 
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn 1**: Cộng $$|A|+|B|$$ ngay cả khi hai tập giao nhau. Phải trừ $$|A\cap B|$$.
+**Định lý**: Nếu tồn tại hai hàm đơn ánh \( f: A \to B \) và \( g: B \to A \), thì tồn tại một song ánh giữa \( A \) và \( B \). Nói cách khác:
+$$
+|A| \leq |B| \quad \text{và} \quad |B| \leq |A| \quad \implies \quad |A| = |B|.
+$$
 
-**Nhầm lẫn 2**: Nghĩ mọi vô hạn đều bằng nhau. Trong lý thuyết tập hợp, có vô hạn đếm được và vô hạn không đếm được.
+**Chứng minh (phác thảo)**:
 
-**Nhầm lẫn 3**: Với tập lũy thừa, nhầm $$|\mathcal{P}(A)|=2|A|$$ thay vì $$2^{|A|}$$.
-</div>
+1. Vì \( f \) là đơn ánh, \( A \) "nhúng" được vào \( B \), nên \( |A| \leq |B| \).
+
+2. Tương tự, \( g \) đơn ánh nên \( |B| \leq |A| \).
+
+3. Ý tưởng chứng minh: Xây dựng một song ánh \( h: A \to B \) bằng cách "ghép" \( f \) và \( g^{-1} \) trên các tập con thích hợp (dùng chuỗi tiền ảnh dưới \( g \circ f \)).
+
+   (Chi tiết chứng minh thường dùng định lý điểm cố định hoặc phân hoạch \( A \) thành các chuỗi và chọn \( f \) hoặc \( g^{-1} \) trên từng chuỗi.)
+
+**Hệ quả**:
+- \( |\N| = |2\N| = |\Z| = |\Q| = \aleph_0 \) (tập đếm được).
+- \( |\R| = |(0,1)| = |[0,1]| = 2^{\aleph_0} \) (lực lượng continuum).
+
+**Ý nghĩa CS**:
+- So sánh độ phức tạp của không gian trạng thái mà không cần xây dựng song ánh tường minh.
+- Dùng trong chứng minh một số bài toán NP-đầy đủ có cùng độ khó.
 
 ## 9. Ứng dụng trong Khoa học Máy tính
 

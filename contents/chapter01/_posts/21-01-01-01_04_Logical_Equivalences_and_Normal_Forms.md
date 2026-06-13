@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Tương đương Logic và Các Dạng Chuẩn tắc
-
 Cùng một ý logic có thể được viết theo rất nhiều cách khác nhau. Một lập trình viên thích điều kiện ngắn gọn, một database engine lại muốn biểu thức dễ tối ưu, còn SAT solver hay công cụ kiểm chứng hình thức lại cần công thức ở một dạng chuẩn để xử lý hàng triệu biến. Nhìn bề ngoài, các biểu thức này có thể khác nhau hoàn toàn — nhưng câu hỏi quan trọng là: **chúng có thật sự nói cùng một điều không?**
 
 Đây không chỉ là câu hỏi của toán học thuần túy. Trong khoa học máy tính, khả năng biến đổi biểu thức logic một cách an toàn có ảnh hưởng rất lớn đến thực tế:
@@ -137,23 +135,70 @@ $$(l_{11} \lor l_{12} \lor \cdots) \land (l_{21} \lor l_{22} \lor \cdots) \land 
 
 **Ký hiệu**: Mỗi ngoặc trong CNF thường được gọi là một **mệnh đề con** (clause). CNF là dạng chuẩn mà nhiều SAT solver nhận vào.
 
-## 6. Công cụ tương tác
+## 6. Các định lý quan trọng về DNF và CNF
+
+### Định lý 1: Sự tồn tại DNF và CNF
+**Mọi biểu thức mệnh đề đều có thể đưa về DNF và CNF.**
+
+**Chứng minh (phác thảo)**: Từ bảng chân trị, ta luôn xây dựng được DNF bằng cách tuyển các hội tương ứng với các hàng đúng; tương tự CNF bằng hội các tuyển tương ứng với các hàng sai. Do mọi biểu thức đều có bảng chân trị hữu hạn, nên DNF/CNF luôn tồn tại.
+
+### Định lý 2: Tính duy nhất của DNF/CNF đầy đủ
+
+**Định nghĩa**: Một **DNF đầy đủ** (full DNF / canonical DNF) của hàm Boolean $$ f $$ trên $$ n $$ biến là biểu thức DNF trong đó **mỗi term** chứa đúng $$ n $$ literal (mỗi biến xuất hiện đúng một lần, có thể phủ định). Tương tự, **CNF đầy đủ** (full CNF) là CNF trong đó mỗi clause chứa đúng $$ n $$ literal.
+
+**Định lý**: Mọi hàm Boolean $$ f:\{T,F\}^n\to\{T,F\} $$ đều có **đúng một** DNF đầy đủ và **đúng một** CNF đầy đủ (duy nhất, không kể thứ tự các term/clause và thứ tự literal bên trong term/clause).
+
+**Chứng minh (Tính duy nhất của DNF đầy đủ)**:
+
+Giả sử $$ D_1 $$ và $$ D_2 $$ là hai DNF đầy đủ cùng biểu diễn hàm $$ f $$.
+
+1. **Mỗi term trong DNF đầy đủ tương ứng duy nhất với một assignment**:
+   - Với assignment $$ \alpha = (a_1, \dots, a_n) \in \{T,F\}^n $$, ta xây dựng term:
+     $$
+     m_\alpha = \bigwedge_{i=1}^n \ell_i, \quad \text{trong đó } \ell_i = x_i \text{ nếu } a_i = T,\quad \ell_i = \neg x_i \text{ nếu } a_i = F.
+     $$
+   - Term $$ m_\alpha $$ chỉ đúng duy nhất tại assignment $$ \alpha $$, và $$ m_\alpha(\alpha) = T $$.
+
+2. **Mối quan hệ giữa DNF đầy đủ và bảng chân trị**:
+   - Giả sử $$ D_1 = m_{\alpha_1} \lor m_{\alpha_2} \lor \cdots \lor m_{\alpha_k} $$, trong đó $$ f(\alpha_j) = T $$ với mọi $$ j $$.
+   - Tương tự $$ D_2 = m_{\beta_1} \lor \cdots \lor m_{\beta_m} $$.
+   - Vì $$ D_1 \equiv f $$ và $$ D_2 \equiv f $$, nên tập $$ \{\alpha_1,\dots,\alpha_k\} $$ chính là tập tất cả các assignment mà $$ f = T $$. Tương tự với $$ D_2 $$.
+
+3. **Mâu thuẫn nếu hai DNF khác nhau**:
+   - Giả sử $$ D_1 \not\equiv D_2 $$ (không kể thứ tự term). Khi đó tồn tại ít nhất một assignment $$ \alpha^* $$ sao cho $$ m_{\alpha^*} $$ xuất hiện trong $$ D_1 $$ nhưng không xuất hiện trong $$ D_2 $$ (hoặc ngược lại).
+   - Xét giá trị của hai DNF tại assignment $$ \alpha^* $$:
+     - $$ D_1(\alpha^*) = T $$ (vì chứa term $$ m_{\alpha^*} $$ đúng tại $$ \alpha^* $$).
+     - $$ D_2(\alpha^*) = F $$ (vì không chứa term nào đúng tại $$ \alpha^* $$).
+   - Điều này mâu thuẫn với giả thiết $$ D_1 \equiv D_2 $$.
+
+Do đó $$ D_1 \equiv D_2 $$.
+
+**Chứng minh cho CNF đầy đủ**: Hoàn toàn tương tự bằng cách dual hóa (thay $$ \lor $$ bằng $$ \land $$, $$ T $$ bằng $$ F $$, và literal bằng phủ định của nó), hoặc áp dụng Định lý 3 bên dưới cho $$ \neg f $$.
+
+**Hệ quả quan trọng**:
+- DNF đầy đủ và CNF đầy đủ là **dạng chuẩn tắc** (canonical form) của hàm Boolean.
+- Hai hàm Boolean bằng nhau khi và chỉ khi DNF đầy đủ (hoặc CNF đầy đủ) của chúng trùng nhau.
+
+### Định lý 3: Mối quan hệ giữa DNF và CNF qua phủ định
+**Nếu** $$P$$ **có DNF** $$(l_{11} \land l_{12} \land \cdots) \lor (l_{21} \land l_{22} \land \cdots) \lor \cdots$$, **thì** $$\neg P$$ **có CNF** $$( \neg l_{11} \lor \neg l_{12} \lor \cdots) \land ( \neg l_{21} \lor \neg l_{22} \lor \cdots) \land \cdots$$.
+
+**Hệ quả**: Phủ định của DNF là CNF và ngược lại (áp dụng De Morgan mở rộng).
+
+### Định lý 4: Biểu diễn hàm Boolean
+**Mọi hàm Boolean** $$f: \{T,F\}^n \to \{T,F\}$$ **đều có biểu diễn DNF và CNF duy nhất** (đầy đủ).
+
+**Ý nghĩa CS**: Đây là nền tảng của:
+- **Bảng LUT** (Look-Up Table) trong FPGA: mỗi hàm Boolean được lưu dưới dạng DNF/CNF.
+- **Thuật toán tối thiểu hóa logic** (Quine–McCluskey, Espresso): rút gọn DNF/CNF để giảm số cổng logic.
+- **SAT solver**: nhận đầu vào dạng CNF và tìm cách gán biến sao cho biểu thức đúng.
+
+## 7. Công cụ tương tác
 
 <div class="interactive-tool" data-tool="truth-table-normal-form">
   <p><strong>Demo đề xuất:</strong> nhập một biểu thức như <code>(p -> q) and (q -> r)</code>, công cụ sinh bảng chân trị, DNF và CNF tương ứng.</p>
 </div>
 
 <script src="{{ '/public/js/truth-table-normal-form.js' | relative_url }}"></script>
-
-## 7. Nhầm lẫn thường gặp
-
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn 1**: Nghĩ rằng $$\neg(p \land q)$$ bằng $$\neg p \land \neg q$$. Thực ra phải đổi phép toán: $$\neg(p \land q) \equiv \neg p \lor \neg q$$.
-
-**Nhầm lẫn 2**: Lẫn lộn $$\equiv$$ và $$\leftrightarrow$$. Ký hiệu $$\leftrightarrow$$ tạo ra một mệnh đề mới; ký hiệu $$\equiv$$ nói rằng hai mệnh đề có cùng bảng chân trị.
-
-**Nhầm lẫn 3**: Cho rằng CNF và DNF là duy nhất. Dạng chuẩn đầy đủ có thể duy nhất theo bảng chân trị, nhưng sau rút gọn có nhiều biểu thức tương đương khác nhau.
-</div>
 
 ## 8. Ứng dụng trong Khoa học Máy tính
 
@@ -235,6 +280,4 @@ Cách thứ hai dễ đọc hơn và có thể tận dụng short-circuit evalua
 
 </details>
 
-## Tóm tắt
 
-Tương đương logic cho phép ta biến đổi biểu thức mà không đổi ý nghĩa. Các luật như De Morgan, phân phối, hấp thụ và kéo theo là công cụ đại số của logic mệnh đề. DNF mô tả các trường hợp làm công thức đúng, còn CNF mô tả ràng buộc dạng clause, đặc biệt quan trọng trong SAT và kiểm chứng chương trình.

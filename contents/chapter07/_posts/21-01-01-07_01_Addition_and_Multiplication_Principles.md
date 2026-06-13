@@ -510,6 +510,24 @@ SELECT COUNT(*) FROM
 ❌ **Sai**: Tạo mật khẩu 3 ký tự từ 26 chữ cái: 26 + 26 + 26 = 78
 ✅ **Đúng**: 26 × 26 × 26 = 17,576 mật khẩu
 
+## Định lý: Quy tắc Nhân tổng quát (Generalized Product Rule)
+
+**Định lý**: Nếu một tác vụ gồm \( k \) bước liên tiếp, bước \( i \) có \( n_i \) cách thực hiện (có thể phụ thuộc vào các bước trước), thì tổng số cách thực hiện là
+$$
+n_1 \times n_2 \times \cdots \times n_k.
+$$
+
+**Chứng minh** (bằng quy nạp):
+
+- Với \( k=1 \): hiển nhiên.
+- Giả sử đúng cho \( k-1 \) bước. Với \( k \) bước, sau khi thực hiện \( k-1 \) bước đầu (có \( N = n_1\cdots n_{k-1} \) cách), bước cuối có \( n_k \) lựa chọn. Tổng số = \( N \times n_k \).
+
+**Hệ quả**: Số cách chọn \( k \) phần tử có thứ tự từ tập \( n \) phần tử là \( P(n,k) = n(n-1)\cdots(n-k+1) \).
+
+**Ý nghĩa CS**:
+- Đếm không gian mật khẩu, khóa, trạng thái của hệ thống.
+- Phân tích độ phức tạp thời gian của thuật toán sinh cấu hình.
+
 ## Tóm tắt
 
 Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.

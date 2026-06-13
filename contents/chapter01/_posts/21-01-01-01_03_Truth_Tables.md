@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Bảng Chân Trị và Ứng dụng
-
 Sau khi học các phép toán logic như `and`, `or`, `not`, ta có thể viết được những biểu thức điều kiện khá phức tạp. Nhưng có một vấn đề rất thực tế: **trực giác của con người thường không đủ đáng tin** khi biểu thức bắt đầu dài ra.
 
 Một điều kiện nhìn có vẻ hợp lý vẫn có thể sai ở đúng **một trường hợp hiếm gặp** — và chính trường hợp đó có thể làm hỏng một giao dịch ngân hàng, mở nhầm quyền truy cập, cho kết quả tìm kiếm sai, hoặc khiến test case bỏ sót lỗi quan trọng nhất. Trong kỹ thuật phần mềm, rất nhiều bug khó chịu không nằm ở cú pháp, mà nằm ở chỗ lập trình viên **tin rằng mình hiểu biểu thức**, trong khi máy tính lại hiểu theo một cách khác.
@@ -293,13 +291,4 @@ $$(p \lor q) \land \neg r$$
 
 Trong đó $$p$$ là "admin", $$q$$ là "owner", $$r$$ là "resource locked". Nếu không tương đương, hãy chỉ ra một hàng làm phản ví dụ.
 
-## Tóm tắt
 
-- **Bảng chân trị** liệt kê mọi tổ hợp giá trị biến và kết quả tương ứng
-- Với n biến, có 2ⁿ dòng
-- **Tautology**: luôn đúng ở mọi dòng
-- **Contradiction**: luôn sai ở mọi dòng
-- **Contingency**: có dòng đúng, có dòng sai
-- Ứng dụng: kiểm tra tương đương, lập luận hợp lệ, thiết kế mạch, kiểm thử phần mềm
-
-Trong bài tiếp theo, chúng ta sẽ học về **các tương đương logic** và cách đưa biểu thức về dạng chuẩn tắc.

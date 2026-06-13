@@ -311,6 +311,30 @@ c) Hiệu (\)
 d) Hiệu đối xứng (△)
 </details>
 
+## Định lý De Morgan (mở rộng)
+
+**Định lý**: Với mọi tập \( A, B \subseteq U \),
+
+$$
+(A \cup B)^c = A^c \cap B^c, \qquad (A \cap B)^c = A^c \cup B^c.
+$$
+
+**Chứng minh** (bằng định nghĩa):
+
+- \( x \in (A \cup B)^c \iff x \notin A \cup B \iff x \notin A \land x \notin B \iff x \in A^c \land x \in B^c \iff x \in A^c \cap B^c \).
+
+Tương tự cho đẳng thức thứ hai.
+
+**Hệ quả** (De Morgan cho n tập):
+
+$$
+\left( \bigcup_{i=1}^n A_i \right)^c = \bigcap_{i=1}^n A_i^c, \qquad \left( \bigcap_{i=1}^n A_i \right)^c = \bigcup_{i=1}^n A_i^c.
+$$
+
+**Ý nghĩa CS**:
+- `NOT (A OR B)` = `NOT A AND NOT B` (rất hay gặp trong điều kiện lọc).
+- Dùng trong tối ưu truy vấn SQL và biểu thức Boolean.
+
 ## Tóm tắt
 
 - **Hợp** A ∪ B: gom tất cả phần tử của cả hai tập

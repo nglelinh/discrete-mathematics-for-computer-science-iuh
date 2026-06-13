@@ -126,17 +126,6 @@ $$
 
 Giả định này không hoàn toàn đúng trong ngôn ngữ tự nhiên, nhưng thường đủ tốt để tạo bộ phân loại nhanh, dễ cài đặt và hiệu quả.
 
-## 6. Ghi chú dễ nhầm
-
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn thường gặp**:
-
-- $P(A\mid B)$ và $P(B\mid A)$ thường rất khác nhau.
-- Không được bỏ qua prior. Đây là lỗi tỉ lệ nền (base rate fallacy).
-- Evidence $P(B)$ không phải là hằng số vô nghĩa; nó chuẩn hóa để tổng xác suất posterior bằng 1.
-- “Naive” trong Naive Bayes không có nghĩa là thuật toán tệ; nó chỉ nói về giả định độc lập có điều kiện.
-</div>
-
 ## 7. Ứng dụng trong Khoa học Máy tính
 
 Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.

@@ -164,16 +164,6 @@ Nếu dùng công cụ này, hãy dự đoán kết quả trước rồi mới t
 
 <script src="{{ '/public/js/summation-loop-visualizer.js' | relative_url }}"></script>
 
-## 9. Nhầm lẫn thường gặp
-
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn 1**: Quên rằng tổng hằng $$c$$ từ 1 đến $$n$$ là $$cn$$, không phải $$c$$.
-
-**Nhầm lẫn 2**: Dùng công thức hình học cho $$r=1$$. Khi $$r=1$$, tổng là $$n+1$$ nếu chạy từ 0 đến $$n$$.
-
-**Nhầm lẫn 3**: Nhầm chỉ số bắt đầu từ 0 và từ 1. Luôn kiểm tra số lượng số hạng.
-</div>
-
 ## 10. Ứng dụng trong Khoa học Máy tính
 
 - **Phân tích thuật toán**: số phép toán thường là tổng theo kích thước đầu vào.

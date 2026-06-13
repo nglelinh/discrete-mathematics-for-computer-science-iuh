@@ -129,16 +129,6 @@ Lập luận:
 
 <script src="{{ '/public/js/predicate-proof-dnd.js' | relative_url }}"></script>
 
-## 9. Nhầm lẫn thường gặp
-
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn 1**: Từ $$\exists xP(x)$$ chọn ngay một đối tượng quen thuộc. EI chỉ cho phép đặt tên mới, không gán đặc điểm chưa biết.
-
-**Nhầm lẫn 2**: Tổng quát hóa từ ví dụ riêng. Từ $$P(3)$$ không suy ra $$\forall xP(x)$$.
-
-**Nhầm lẫn 3**: Quên kết hợp quy tắc vị từ với quy tắc mệnh đề. Sau UI, thường cần Modus Ponens hoặc tách hội để đi tiếp.
-</div>
-
 ## 10. Ứng dụng trong Khoa học Máy tính
 
 - **Type systems**: Kiểu tổng quát như `List<T>` dùng ý tưởng "với mọi kiểu T".

@@ -8,8 +8,6 @@ required: false
 lang: en
 ---
 
-# Logic Mệnh đề và Thế giới Thực: Từ Aristotle đến Trí tuệ Nhân tạo
-
 Có bao giờ bạn tự hỏi: tại sao một lý thuyết toán học ra đời từ hơn 2300 năm trước — khi chưa có máy tính, chưa có điện, chưa có Internet — lại trở thành nền tảng của mọi hệ thống máy tính hiện đại? Câu trả lời nằm ở một sự thật đơn giản nhưng sâu sắc: **logic mệnh đề không chỉ là công cụ của toán học — nó là ngôn ngữ của tư duy chính xác**, và máy tính, xét cho cùng, chỉ là cỗ máy thực thi tư duy chính xác đó với tốc độ khủng khiếp.
 
 Hành trình của logic mệnh đề trải dài từ những cuộc tranh luận triết học ở Athens cổ đại, qua cuộc cách mạng công nghiệp với đại số Boole, đến kỷ nguyên số với hàng tỷ transistor trong chip xử lý, và xa hơn nữa — đến những hệ thống trí tuệ nhân tạo có khả năng suy luận, chứng minh định lý và thậm chí viết code. Trong bài học đặc biệt này, chúng ta sẽ không học công thức hay làm bài tập. Chúng ta sẽ **du hành xuyên thời gian** để thấy logic mệnh đề đã định hình thế giới như thế nào — và vẫn đang tiếp tục định hình tương lai ra sao.
@@ -328,6 +326,4 @@ Rút gọn thành $$(A \land B) \lor (A \land C) \lor (B \land C)$$.
 
 </details>
 
-## Tóm tắt
 
-Logic mệnh đề là nền tảng của mọi quyết định nhị phân trong máy tính — từ điều kiện `if`, truy vấn SQL, đến SAT solver và thiết kế chip. Việc nắm vững các luật tương đương và dạng chuẩn giúp chúng ta viết code rõ ràng, tối ưu truy vấn, và xây dựng công cụ kiểm chứng mạnh mẽ hơn.

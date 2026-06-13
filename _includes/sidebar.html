@@ -79,6 +79,9 @@
         <a class="sidebar-nav-item{% if page.url contains 'chapter12' %} active{% endif %}" href="{{ '/contents/chapter12/' | absolute_url }}">
           12. Đồ thị cơ bản
         </a>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter17' %} active{% endif %}" href="{{ '/contents/chapter17/' | absolute_url }}">
+          17. Đồ thị nâng cao
+        </a>
       </div>
       
       <!-- Part VI: Advanced Topics -->
@@ -98,14 +101,25 @@
         </a>
       </div>
       
+      <!-- Part VII: Theory of Computation -->
+      <div class="sidebar-subsection">
+        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần VII: Lý thuyết Tính toán</h5>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter18' %} active{% endif %}" href="{{ '/contents/chapter18/' | absolute_url }}">
+          18. Mô hình hóa tính toán
+        </a>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter19' %} active{% endif %}" href="{{ '/contents/chapter19/' | absolute_url }}">
+          19. Ngôn ngữ hình thức
+        </a>
+        <a class="sidebar-nav-item{% if page.url contains 'chapter20' %} active{% endif %}" href="{{ '/contents/chapter20/' | absolute_url }}">
+          20. Độ phức tạp P và NP
+        </a>
+      </div>
+      
       <!-- Special Pages -->
           <div class="sidebar-subsection" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
             <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Tính năng đặc biệt</h5>
             <a class="sidebar-nav-item" href="{{ '/demo/' | absolute_url }}">
               🚀 Demo tính năng
-            </a>
-            <a class="sidebar-nav-item" href="{{ '/progress/' | absolute_url }}">
-              📊 Tiến độ khóa học
             </a>
           </div>
     </div>

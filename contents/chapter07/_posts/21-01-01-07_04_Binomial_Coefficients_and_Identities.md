@@ -129,17 +129,6 @@ $$
 
 **Chứng minh tổ hợp**: Chọn $r$ người từ một lớp gồm $m$ nam và $n$ nữ. Nếu chọn đúng $i$ nam thì có $\binom{m}{i}\binom{n}{r-i}$ cách. Cộng trên mọi $i$ cho kết quả bằng cách chọn trực tiếp $r$ người từ $m+n$ người.
 
-## 5. Ghi chú dễ nhầm
-
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn thường gặp**:
-
-- $\binom{n}{k}$ không xét thứ tự; nếu thứ tự quan trọng phải dùng chỉnh hợp.
-- Không được rút gọn $\frac{n!}{k!(n-k)!}$ bằng cách “bỏ” sai các thừa số không chung.
-- Trong định lý nhị thức, hệ số của $x^ay^b$ chỉ tồn tại khi $a+b=n$.
-- Tam giác Pascal không chỉ là bảng số; nó mã hóa một quan hệ truy hồi.
-</div>
-
 ## 6. Ứng dụng trong Khoa học Máy tính
 
 Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.

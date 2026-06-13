@@ -125,17 +125,6 @@ $$
 
 Do đó số bị loại là $50+33+20-16-10-6+3=74$. Số hợp lệ là $100-74=26$.
 
-## 5. Ghi chú dễ nhầm
-
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn thường gặp**:
-
-- Chỉ trừ giao đôi trong bài toán ba tập mà quên cộng giao ba.
-- Dùng công thức cho tập rời nhau trong khi các tập có giao nhau.
-- Đếm giao bằng cách lấy ước chung sai: số chia hết cho $2$ và $6$ là số chia hết cho $\operatorname{lcm}(2,6)=6$, không phải $12$.
-- Quên xác định không gian nền $U$ khi dùng dạng bù.
-</div>
-
 ## 6. Ứng dụng trong Khoa học Máy tính
 
 Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.

@@ -8,8 +8,6 @@ required: true
 lang: en
 ---
 
-# Phép toán Logic
-
 Ở bài trước, chúng ta đã biết mệnh đề là gì và vì sao mỗi phát biểu logic đều phải gắn với giá trị đúng hoặc sai. Nhưng trong thế giới thực, hệ thống hiếm khi phải ra quyết định chỉ dựa trên **một** điều kiện duy nhất.
 
 Một website chỉ cho đăng nhập khi **mật khẩu đúng và tài khoản chưa bị khóa**. Một đơn hàng được giảm giá nếu **khách là thành viên VIP hoặc có mã khuyến mãi**. Một API chỉ cho truy cập nếu **người dùng đã xác thực và có quyền tương ứng**. Khi đó, bài toán không còn là "mệnh đề này đúng hay sai?" mà trở thành:
@@ -90,10 +88,6 @@ Nếu bỏ dấu ngoặc, chương trình vẫn chạy nhưng có thể cho phé
 - Phủ định của $$n > 5$$ là $$n \leq 5$$
 - Phủ định của $$x \geq 0$$ là $$x < 0$$
 - Phủ định của $$a = b$$ là $$a \neq b$$
-
-<div class="content-box warning-box" markdown="1">
-**Nhầm lẫn thường gặp**: Nhiều sinh viên viết phủ định của "n > 5" là "n < 5". Sai! Phủ định của "lớn hơn" phải là "nhỏ hơn hoặc bằng".
-</div>
 
 ## 2. Phép hội (Conjunction) - AND
 
@@ -223,6 +217,24 @@ Kết quả gồm sản phẩm thuộc ít nhất một trong hai loại. Trong 
 </p>
 </figure>
 
+## Định lý: Tính đầy đủ của {¬, ∧, ∨}
+
+**Định lý**: Tập hợp ba phép toán **{¬, ∧, ∨}** là **đầy đủ về mặt hàm (functionally complete)**. Nghĩa là, mọi hàm Boolean đều có thể biểu diễn chỉ bằng ¬, ∧ và ∨.
+
+**Chứng minh** (bằng cách xây dựng):
+
+1. **Phủ định kép**: \( \neg\neg p \equiv p \).  
+2. **Luật De Morgan**: \( \neg(p \land q) \equiv \neg p \lor \neg q \) và \( \neg(p \lor q) \equiv \neg p \land \neg q \).  
+3. **Kéo theo**: \( p \to q \equiv \neg p \lor q \).  
+4. **Tương đương**: \( p \leftrightarrow q \equiv (p \to q) \land (q \to p) \equiv (\neg p \lor q) \land (\neg q \lor p) \).  
+5. **XOR**: \( p \oplus q \equiv (p \lor q) \land \neg(p \land q) \).
+
+Vì mọi hàm Boolean đều có thể viết dưới dạng DNF hoặc CNF (xem bài 01_04), và DNF/CNF chỉ dùng ¬, ∧, ∨, nên ba phép toán này đủ để biểu diễn bất kỳ hàm Boolean nào.
+
+**Hệ quả**:
+- Trong phần cứng, chỉ cần 3 cổng cơ bản (NOT, AND, OR) là đủ để xây dựng mọi mạch logic.
+- Trong ngôn ngữ lập trình, `not`, `and`, `or` là đủ để viết mọi điều kiện Boolean.
+
 ## Tổng kết năm phép toán cơ bản
 
 | Phép toán | Ký hiệu | Đọc là | Đúng khi |
@@ -286,6 +298,295 @@ result_not = not p   # False
 result_xor = p != q  # True
 ```
 
+## Biểu thức logic
+
+**Biểu thức logic** (logical expression) là sự kết hợp của các mệnh đề sơ cấp bằng các phép toán logic (¬, ∧, ∨, →, ↔, ⊕) và dấu ngoặc.
+
+### Cú pháp biểu thức logic
+
+Một biểu thức logic được xây dựng theo quy tắc:
+
+- Mọi mệnh đề sơ cấp (p, q, r,...) là biểu thức logic.
+- Nếu E là biểu thức logic thì ¬E cũng là biểu thức logic.
+- Nếu E₁ và E₂ là biểu thức logic thì (E₁ ∧ E₂), (E₁ ∨ E₂), (E₁ → E₂), (E₁ ↔ E₂), (E₁ ⊕ E₂) cũng là biểu thức logic.
+
+**Ví dụ biểu thức logic**:
+- $$p \land q$$
+- $$\neg p \lor (q \land r)$$
+- $$(p \to q) \land (q \to p)$$
+- $$p \oplus (q \land \neg r)$$
+
+### Thứ tự ưu tiên toán tử
+
+Khi viết biểu thức không có dấu ngoặc, thứ tự thực hiện là:
+
+| Ưu tiên | Toán tử | Tên |
+|:---:|:---|:---|
+| 1 (cao nhất) | ¬ | Phủ định |
+| 2 | ∧ | Hội |
+| 3 | ∨ | Tuyển |
+| 4 | → | Kéo theo |
+| 5 | ↔ | Tương đương |
+| 6 (thấp nhất) | ⊕ | XOR |
+
+**Ví dụ**: $$p \land q \lor r$$ được hiểu là $$(p \land q) \lor r$$ (không phải $$p \land (q \lor r)$$).
+
+<div class="content-box warning-box" markdown="1">
+**Lưu ý**: Luôn dùng dấu ngoặc để biểu thức rõ ràng, tránh nhầm lẫn khi chuyển sang code.
+</div>
+
+## Bảng chân trị cho biểu thức phức hợp
+
+Bảng chân trị không chỉ dùng cho từng phép toán riêng lẻ, mà còn dùng để phân tích toàn bộ biểu thức logic.
+
+### Cách xây dựng bảng chân trị
+
+**Bước 1**: Xác định số biến (n). Bảng có $$2^n$$ dòng.
+
+**Bước 2**: Liệt kê tất cả tổ hợp giá trị chân lý của các biến.
+
+**Bước 3**: Tính giá trị từng biểu thức con, từ trong ra ngoài.
+
+**Bước 4**: Xác định giá trị cuối cùng của biểu thức.
+
+### Ví dụ: Biểu thức $$(p \land q) \lor \neg r$$
+
+| p | q | r | p ∧ q | ¬r | (p ∧ q) ∨ ¬r |
+|---|---|---|-------|----|--------------|
+| T | T | T | T     | F  | T            |
+| T | T | F | T     | T  | T            |
+| T | F | T | F     | F  | F            |
+| T | F | F | F     | T  | T            |
+| F | T | T | F     | F  | F            |
+| F | T | F | F     | T  | T            |
+| F | F | T | F     | F  | F            |
+| F | F | F | F     | T  | T            |
+
+Biểu thức đúng trong 4/8 trường hợp.
+
+## Biểu thức tương đương
+
+Hai biểu thức logic **E₁** và **E₂** là **tương đương** (logically equivalent) nếu chúng có cùng giá trị chân lý trong mọi trường hợp. Ký hiệu: $$E_1 \equiv E_2$$.
+
+### Cách chứng minh tương đương
+
+**Phương pháp 1 — Bảng chân trị**: Xây dựng bảng chân trị cho cả hai biểu thức, so sánh cột cuối cùng.
+
+**Phương pháp 2 — Luật logic**: Biến đổi biểu thức này thành biểu thức kia bằng các luật logic (xem phần sau).
+
+### Ví dụ: $$p \to q \equiv \neg p \lor q$$
+
+Chứng minh bằng bảng chân trị:
+
+| p | q | p → q | ¬p | ¬p ∨ q |
+|---|---|-------|----|--------|
+| T | T | T     | F  | T      |
+| T | F | F     | F  | F      |
+| F | T | T     | T  | T      |
+| F | F | T     | T  | T      |
+
+Hai cột cuối cùng giống hệt → hai biểu thức **tương đương**.
+
+**Ý nghĩa thực tiễn**: Khi code, ta có thể thay `if p then q` bằng `not p or q` tùy ngữ cảnh.
+
+## Các luật logic cơ bản
+
+Dưới đây là các luật logic thường dùng để biến đổi biểu thức:
+
+### 1. Luật phủ định kép (Double Negation)
+
+$$\neg (\neg p) \equiv p$$
+
+### 2. Luật De Morgan
+
+$$\neg (p \land q) \equiv \neg p \lor \neg q$$
+$$\neg (p \lor q) \equiv \neg p \land \neg q$$
+
+**Ví dụ**: Phủ định của "Tôi có tiền và cửa hàng mở cửa" là "Tôi không có tiền HOẶC cửa hàng không mở cửa".
+
+### 3. Luật giao hoán (Commutative)
+
+$$p \land q \equiv q \land p$$
+$$p \lor q \equiv q \lor p$$
+
+### 4. Luật kết hợp (Associative)
+
+$$(p \land q) \land r \equiv p \land (q \land r)$$
+$$(p \lor q) \lor r \equiv p \lor (q \lor r)$$
+
+### 5. Luật phân phối (Distributive)
+
+$$p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$$
+$$p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$$
+
+### 6. Luật hấp thụ (Absorption)
+
+$$p \land (p \lor q) \equiv p$$
+$$p \lor (p \land q) \equiv p$$
+
+### 7. Luật đồng nhất (Identity)
+
+$$p \land T \equiv p$$
+$$p \lor F \equiv p$$
+
+### 8. Luật triệt tiêu (Domination)
+
+$$p \land F \equiv F$$
+$$p \lor T \equiv T$$
+
+### 9. Luật bổ sung (Complement)
+
+$$p \land \neg p \equiv F$$
+$$p \lor \neg p \equiv T$$
+
+<div class="content-box insight-box" markdown="1">
+**Mẹo nhớ De Morgan**: Khi phủ định một biểu thức có ngoặc, đổi dấu ngoặc thành dấu kia VÀ phủ định từng thành phần bên trong.
+</div>
+
+## Ví dụ: Trang danh sách sản phẩm
+
+### Yêu cầu lọc sản phẩm
+
+Một trang thương mại điện tử có các bộ lọc:
+
+- Danh mục: Điện thoại HOẶC Máy tính bảng
+- Giá: Từ 5 triệu đến 15 triệu
+- Thương hiệu: Samsung HOẶC Apple
+- Còn hàng: true
+- Đánh giá: ≥ 4 sao HOẶC có ≥ 100 lượt đánh giá
+
+### Biểu thức logic
+
+Ký hiệu:
+- $$p$$: Danh mục là Điện thoại
+- $$q$$: Danh mục là Máy tính bảng
+- $$r$$: Giá ∈ [5tr, 15tr]
+- $$s$$: Thương hiệu Samsung
+- $$t$$: Thương hiệu Apple
+- $$u$$: Còn hàng
+- $$v$$: Đánh giá ≥ 4 sao
+- $$w$$: Số lượt đánh giá ≥ 100
+
+**Điều kiện lọc**:
+
+$$(p \lor q) \land r \land (s \lor t) \land u \land (v \lor w)$$
+
+### Code JavaScript
+
+```javascript
+const filteredProducts = products.filter(product => {
+  const categoryMatch = product.category === 'phone' || product.category === 'tablet';
+  const priceMatch = product.price >= 5000000 && product.price <= 15000000;
+  const brandMatch = product.brand === 'Samsung' || product.brand === 'Apple';
+  const inStock = product.inStock === true;
+  const ratingMatch = product.rating >= 4 || product.reviewCount >= 100;
+  
+  return categoryMatch && priceMatch && brandMatch && inStock && ratingMatch;
+});
+```
+
+**Nhận xét**: Nếu nhầm `&&` với `||` ở điều kiện giá, kết quả lọc sẽ sai hoàn toàn.
+
+## Ví dụ: Validator trong web form
+
+### Yêu cầu kiểm tra form đăng ký
+
+Form yêu cầu:
+- Tên không được rỗng
+- Email hợp lệ (xem phần sau)
+- Mật khẩu ≥ 8 ký tự VÀ chứa ít nhất 1 chữ hoa VÀ 1 chữ số
+- Xác nhận mật khẩu trùng với mật khẩu
+- Đồng ý điều khoản: true
+
+### Biểu thức logic
+
+Ký hiệu:
+- $$p$$: Tên ≠ rỗng
+- $$q$$: Email hợp lệ
+- $$r$$: Mật khẩu ≥ 8 ký tự
+- $$s$$: Mật khẩu chứa chữ hoa
+- $$t$$: Mật khẩu chứa chữ số
+- $$u$$: Xác nhận mật khẩu = mật khẩu
+- $$v$$: Đồng ý điều khoản
+
+**Điều kiện submit**:
+
+$$p \land q \land (r \land s \land t) \land u \land v$$
+
+### Code JavaScript
+
+```javascript
+function validateForm(formData) {
+  const errors = [];
+  
+  if (!formData.name) errors.push("Tên không được rỗng");
+  if (!isValidEmail(formData.email)) errors.push("Email không hợp lệ");
+  if (formData.password.length < 8) errors.push("Mật khẩu ≥ 8 ký tự");
+  if (!/[A-Z]/.test(formData.password)) errors.push("Mật khẩu cần chữ hoa");
+  if (!/[0-9]/.test(formData.password)) errors.push("Mật khẩu cần chữ số");
+  if (formData.password !== formData.confirmPassword) errors.push("Mật khẩu không khớp");
+  if (!formData.agreeTerms) errors.push("Bạn phải đồng ý điều khoản");
+  
+  return errors.length === 0 ? { valid: true } : { valid: false, errors };
+}
+```
+
+## Validator email
+
+### Yêu cầu kiểm tra email
+
+Email hợp lệ nếu:
+- Có đúng 1 ký tự `@`
+- Phần trước `@` không rỗng VÀ chỉ chứa chữ cái, chữ số, dấu chấm, gạch dưới
+- Phần sau `@` có ít nhất 1 dấu chấm VÀ kết thúc bằng domain hợp lệ (.com, .vn, .org,...)
+
+### Biểu thức logic (đơn giản hóa)
+
+Ký hiệu:
+- $$p$$: Có đúng 1 `@`
+- $$q$$: Phần local không rỗng
+- $$r$$: Phần local chỉ chứa ký tự hợp lệ
+- $$s$$: Phần domain có ≥ 1 dấu chấm
+- $$t$$: Domain kết thúc bằng TLD hợp lệ
+
+**Điều kiện email hợp lệ**:
+
+$$p \land q \land r \land s \land t$$
+
+### Code JavaScript (regex + logic)
+
+```javascript
+function isValidEmail(email) {
+  // Bước 1: Kiểm tra cấu trúc cơ bản bằng regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) return false;
+  
+  const [localPart, domain] = email.split('@');
+  
+  // Bước 2: Kiểm tra phần local
+  const localValid = localPart.length > 0 && /^[a-zA-Z0-9._]+$/.test(localPart);
+  
+  // Bước 3: Kiểm tra phần domain
+  const domainParts = domain.split('.');
+  const domainValid = domainParts.length >= 2 && 
+                      domainParts.every(part => part.length > 0) &&
+                      ['com', 'vn', 'org', 'net', 'edu'].includes(domainParts[domainParts.length - 1]);
+  
+  return localValid && domainValid;
+}
+
+// Test cases
+console.log(isValidEmail("user@example.com"));      // true
+console.log(isValidEmail("user.name@domain.vn"));   // true
+console.log(isValidEmail("user@domain"));           // false (thiếu TLD)
+console.log(isValidEmail("@example.com"));          // false (local rỗng)
+console.log(isValidEmail("user@@example.com"));     // false (nhiều @)
+```
+
+<div class="content-box insight-box" markdown="1">
+**Lưu ý**: Validator email thực tế phức tạp hơn nhiều (RFC 5321). Ví dụ trên chỉ minh họa cách dùng logic mệnh đề để phân rã yêu cầu.
+</div>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Tính giá trị chân lý
@@ -339,16 +640,4 @@ can_edit = is_admin or is_author and not is_locked
 2. Hãy thêm dấu ngoặc để biểu thức rõ nghĩa.
 3. Nếu yêu cầu đổi thành "admin cũng không được sửa bài đã khóa", biểu thức mới là gì?
 
-## Tóm tắt
 
-Các phép toán logic cơ bản:
-- **¬p**: phủ định (NOT)
-- **p ∧ q**: hội (AND)
-- **p ∨ q**: tuyển (OR)
-- **p → q**: kéo theo (IF...THEN)
-- **p ↔ q**: tương đương (IF AND ONLY IF)
-- **p ⊕ q**: tuyển loại trừ (XOR)
-- Thứ tự ưu tiên: ¬ > ∧ > ∨ > → > ↔
-- Implication chỉ sai khi giả thiết đúng và kết luận sai
-
-Trong bài tiếp theo, chúng ta sẽ học về **bảng chân trị** và cách sử dụng chúng để phân tích các mệnh đề phức tạp.
