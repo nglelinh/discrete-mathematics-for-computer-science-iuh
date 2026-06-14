@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Giới thiệu SAT Solver"
+title: "Giới thiệu SAT Solver (optional)"
 categories: chapter01
 date: 2021-01-01
 order: 6

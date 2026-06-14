@@ -222,6 +222,22 @@ $$\begin{aligned}
 
 ## 4. Công thức Dạng Rút gọn (Reduced Forms)
 
+### 4.0. Định nghĩa Dạng Rút gọn
+
+**Định nghĩa**: Một biểu thức logic $$E$$ được gọi là **dạng rút gọn** (reduced form) nếu nó thỏa mãn đồng thời 3 điều kiện sau:
+
+1. **Không chứa hằng số** $$T$$ hoặc $$F$$ (trừ khi biểu thức chỉ là hằng số đó).
+2. **Không chứa cặp bù** (literal và phủ định của nó trong cùng một clause hoặc term).
+3. **Không chứa thừa số chung** (các literal lặp lại trong cùng một clause/term, hoặc các term/clause trùng nhau).
+
+**Ví dụ**:
+- $$\neg p \land q$$ là dạng rút gọn.
+- $$(\neg p \land q) \lor (\neg p \land \neg q)$$ **không** phải dạng rút gọn (có thể rút gọn thành $$\neg p$$).
+- $$p \lor \neg p$$ **không** phải dạng rút gọn (cặp bù → rút gọn thành $$T$$).
+- $$p \land p$$ **không** phải dạng rút gọn (thừa số → rút gọn thành $$p$$).
+
+**Mục tiêu**: Tìm dạng rút gọn ngắn nhất (ít literal nhất) tương đương với biểu thức ban đầu.
+
 ### 4.1. Vì sao cần rút gọn?
 
 Một biểu thức logic có thể viết bằng rất nhiều cách khác nhau — nhưng không phải cách nào cũng tiện lợi. Trong thực tế, biểu thức dài thường đồng nghĩa với:
@@ -265,103 +281,6 @@ if x > 0:
 Điều kiện đầu tương đương $$(p \land q) \lor (p \land \neg q)$$ với $$p = (x > 0)$$ và $$q = (y > 0)$$, và ta đã biết nó rút gọn thành $$p$$.
 
 **Quan sát chính**: Hai hội $$p \land q$$ và $$p \land \neg q$$ chỉ khác nhau ở một literal ($$q$$ và $$\neg q$$). Khi gặp cặp như vậy, ta luôn gộp được thành $$p$$ (mất biến $$q$$). Đây là ý tưởng nền tảng của mọi thuật toán rút gọn: **phát hiện các cặp chỉ khác nhau một literal và gộp chúng**.
-
-### 4.3. Bìa Karnaugh (Karnaugh Map)
-
-Khi biểu thức phức tạp, việc nhìn ra các cặp có thể gộp bằng mắt thường rất khó. **Bìa Karnaugh** (K-map) là công cụ trực quan giúp giải quyết vấn đề này cho tối đa 4 biến.
-
-Bìa Karnaugh sắp xếp bảng chân trị thành lưới 2 chiều sao cho các ô **kề nhau** chỉ khác nhau đúng **một biến** (mã Gray).
-
-#### Bìa 2 biến
-
-Xét hàm $$f(p,q)$$ với bảng chân trị:
-
-| $$p$$ | $$q$$ | $$f(p,q)$$ |
-|:---:|:---:|:---:|
-| 0 | 0 | 1 |
-| 0 | 1 | 1 |
-| 1 | 0 | 0 |
-| 1 | 1 | 1 |
-
-Bìa Karnaugh tương ứng:
-
-```
-       q=0    q=1
-p=0  |  1  |  1  |
-p=1  |  0  |  1  |
-```
-
-**Cách đọc**: Mỗi ô mang giá trị 1 tương ứng với một hàng TRUE trong bảng chân trị.
-- Ô (0,0): $$p=0, q=0$$
-- Ô (0,1): $$p=0, q=1$$
-- Ô (1,0): $$p=1, q=0$$ (kết quả 0 — bỏ qua)
-- Ô (1,1): $$p=1, q=1$$
-
-**Gộp ô**: Các ô 1 liền kề (theo hàng hoặc cột) được gộp thành nhóm hình chữ nhật kích thước $$2^k$$:
-- Nhóm 2 ô ở hàng $$p=0$$: biến $$q$$ thay đổi (0→1) nhưng cả hai ô đều là 1 → chỉ còn $$\neg p$$.
-- Nhóm 2 ô ở cột $$q=1$$: biến $$p$$ thay đổi (0→1) nhưng cả hai ô đều là 1 → chỉ còn $$q$$.
-
-Kết quả rút gọn: $$\neg p \lor q$$.
-
-#### Bìa 3 biến
-
-Xét hàm $$f(p,q,r)$$ với bảng chân trị cho thấy $$f = T$$ khi $$p = 1$$ (bất kể $$q, r$$) và $$f = F$$ khi $$p = 0$$:
-
-```
-         q=0       q=1
-       r=0  r=1  r=0  r=1
-p=0  |  0 |  0 |  0 |  0 |
-p=1  |  1 |  1 |  1 |  1 |
-```
-
-Nhóm 4 ô ở hàng $$p=1$$ (chiếm cả nửa bìa): biến $$q$$ và $$r$$ thay đổi nhưng kết quả luôn 1 → chỉ còn $$p$$.
-
-**Quy tắc gộp ô trên bìa Karnaugh**:
-1. Các ô trong nhóm phải là **hình chữ nhật** (kể cả "bọc quanh" mép bìa — cạnh trên dính với cạnh dưới, trái dính với phải).
-2. Kích thước nhóm phải là **lũy thừa của 2**: 1, 2, 4, 8, ...
-3. **Ưu tiên nhóm lớn nhất có thể** (càng lớn → biểu thức càng ngắn).
-4. Mỗi ô 1 phải được gộp vào **ít nhất một** nhóm (có thể nhiều nhóm).
-5. Kết quả là OR của tất cả các nhóm; mỗi nhóm chỉ giữ lại các biến **không đổi** trong nhóm.
-
-<div class="content-box insight-box" markdown="1">
-**Minh họa trực quan**: Hãy tưởng tượng bìa Karnaugh như một "bản đồ vùng đúng". Mỗi ô 1 là một điểm cần được phủ. Mỗi nhóm hình chữ nhật là một "tấm phủ" — tấm càng lớn càng che được nhiều điểm, và biểu thức càng ngắn. Gộp ô là cách tìm bộ tấm phủ nhỏ nhất.
-</div>
-
-### 4.4. Rút gọn với Nhiều hơn 4 Biến
-
-Khi số biến lớn hơn 4, bìa Karnaugh không còn trực quan (bìa 5 biến đã rất rối, 6 biến gần như không dùng được). Các phương pháp đại số có hệ thống được dùng thay thế:
-
-**Thuật toán Quine–McCluskey** (QM) hoạt động như sau:
-1. Liệt kê tất cả các tổ hợp biến cho kết quả TRUE (theo số lượng bit 1).
-2. Gộp các cặp chỉ khác nhau 1 bit thành nhóm lớn hơn (dùng dấu `-` để chỉ bit "không quan tâm").
-3. Lặp lại cho đến khi không còn cặp nào gộp được.
-4. Các nhóm không gộp được ở bất kỳ bước nào là **prime implicant**.
-5. Chọn tập prime implicant phủ hết tất cả tổ hợp TRUE ban đầu với chi phí nhỏ nhất.
-
-**Ví dụ**: Với 4 tổ hợp TRUE: $$000, 001, 011, 111$$
-
-- Bước 1: Nhóm theo số bit 1: (000), (001), (011), (111).
-- Bước 2: Gộp: $$000+001 \to 00-$$, $$001+011 \to 0-1$$, $$011+111 \to -11$$.
-- Bước 3: Prime implicants: $$00-$$, $$0-1$$, $$-11$$.
-- Bước 4: Chọn tập phủ tối thiểu: $$00-$$ và $$-11$$.
-
-### 4.5. Ứng dụng Thực tế
-
-**Thiết kế mạch logic (VLSI)**: Mỗi cổng logic tiêu tốn diện tích silicon, năng lượng, và thời gian trễ. Rút gọn biểu thức đồng nghĩa với chip nhỏ hơn, nhanh hơn, tiết kiệm pin hơn. Các công cụ tổng hợp logic như **Espresso**, **ABC** (Berkeley), **Yosys** tự động thực hiện tối thiểu hóa Boolean cho mạch với hàng trăm biến.
-
-**Compiler tối ưu**: Trình biên dịch (LLVM, GCC) áp dụng các luật tương đương để rút gọn điều kiện trong code.
-
-**Cơ sở dữ liệu**: Query optimizer rút gọn điều kiện WHERE để giảm số hàng cần kiểm tra.
-
-```sql
--- WHERE (a > 5 AND b < 10) OR (a > 5 AND b >= 10)
--- Rút gọn thành:
-WHERE a > 5
-```
-
-<div class="content-box warning-box" markdown="1">
-**Lưu ý**: Biểu thức rút gọn **không duy nhất** — cùng một hàm Boolean có thể có nhiều dạng rút gọn khác nhau, tùy thuộc vào thứ tự gộp và cách chọn nhóm. Tìm dạng tối thiểu tuyệt đối là bài toán NP-hard (thời gian mũ), nhưng các thuật toán heuristic cho kết quả đủ tốt trong thực tế.
-</div>
 
 ## 5. Dạng chuẩn tắc tuyển DNF
 

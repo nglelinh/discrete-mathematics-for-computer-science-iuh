@@ -188,12 +188,12 @@ OR đúng khi **ít nhất một** cái đúng. Dễ nhớ bằng quy tắc:
 
 ### Bảng chân trị:
 
-| p | q | p ∨ q | Ghi nhớ |
-|:---:|:---:|:---:|:---|
-| T | T | T | Có ít nhất 1 cái đúng |
-| T | F | T | p đúng |
-| F | T | T | q đúng |
-| F | F | F | Cả hai sai |
+| p | q | p ∨ q |
+|:---:|:---:|:---:|
+| T | T | T | 
+| T | F | T | 
+| F | T | T | 
+| F | F | F | 
 
 **Ví dụ**:
 - p: "Tôi đi xe bus"
@@ -564,107 +564,6 @@ Cho p = T, q = F, r = T. Tính:
 4. ¬(p ∧ q) ∨ r = T ∨ T = T
 
 </details>
-
-## Quy tắc suy diễn (Rules of Inference)
-
-**Định nghĩa**: Quy tắc suy diễn là những quy tắc hợp lệ cho phép ta suy ra mệnh đề mới từ các mệnh đề đã biết là đúng. Đây là nền tảng của chứng minh toán học và lập luận logic.
-
-### 1. Quy tắc khẳng định (Modus Ponens)
-
-**Công thức**:
-$$(p \to q) \land p \implies q$$
-
-**Ý nghĩa**: Nếu "p kéo theo q" đúng và p đúng, thì q phải đúng.
-
-**Bảng chân trị chứng minh** (sinh viên tự điền):
-
-| p | q | p → q | (p → q) ∧ p | [(p → q) ∧ p] → q |
-|:---:|:---:|:---:|:---:|:---:|
-| T | T | T | T | T |
-| T | F | F | F | T |
-| F | T | T | F | T |
-| F | F | T | F | T |
-
-**Ví dụ**:
-- "Nếu trời mưa thì đường ướt" (p → q)
-- "Trời mưa" (p)
-- **Kết luận**: "Đường ướt" (q)
-
-### 2. Quy tắc phủ định (Modus Tollens)
-
-**Công thức**:
-$$(p \to q) \land \neg q \implies \neg p$$
-
-**Ý nghĩa**: Nếu "p kéo theo q" đúng và q sai, thì p phải sai.
-
-**Bảng chân trị chứng minh** (sinh viên tự điền):
-
-| p | q | p → q | ¬q | (p → q) ∧ ¬q | [(p → q) ∧ ¬q] → ¬p |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| T | T | T | F | F | T |
-| T | F | F | T | F | T |
-| F | T | T | F | F | T |
-| F | F | T | T | T | T |
-
-**Ví dụ**:
-- "Nếu trời mưa thì đường ướt" (p → q)
-- "Đường khô" (¬q)
-- **Kết luận**: "Trời không mưa" (¬p)
-
-### 3. Quy tắc tam đoạn luận (Hypothetical Syllogism)
-
-**Công thức**:
-$$(p \to q) \land (q \to r) \implies (p \to r)$$
-
-**Ý nghĩa**: Nếu p kéo theo q, và q kéo theo r, thì p kéo theo r.
-
-**Nguyên lý loại trừ (Dichotomy)**: Quy tắc tam đoạn luận phản ánh một nguyên lý logic cơ bản — **nếu có hai trường hợp có thể xảy ra, và một trường hợp sai, thì trường hợp còn lại phải đúng**.
-
-- Trong tam đoạn luận, ta có chuỗi: p → q → r
-- Nếu ta biết p đúng nhưng r sai → suy ra q phải sai (vì nếu q đúng thì r phải đúng)
-- Ngược lại, nếu p đúng và r đúng → không thể kết luận gì về q (q có thể đúng hoặc sai)
-
-**Bảng chân trị chứng minh** (sinh viên tự điền):
-
-| p | q | r | p → q | q → r | (p → q) ∧ (q → r) | (p → q) ∧ (q → r) → (p → r) |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| T | T | T | T | T | T | T |
-| T | T | F | T | F | F | T |
-| T | F | T | F | T | F | T |
-| T | F | F | F | T | F | T |
-| F | T | T | T | T | T | T |
-| F | T | F | T | F | F | T |
-| F | F | T | T | T | T | T |
-| F | F | F | T | T | T | T |
-
-**Ví dụ**:
-- "Nếu trời mưa thì đường ướt" (p → q)
-- "Nếu đường ướt thì xe trượt" (q → r)
-- **Kết luận**: "Nếu trời mưa thì xe trượt" (p → r)
-
-### 4. Quy tắc phản chứng (Proof by Contradiction)
-
-**Công thức**:
-$$\neg p \to \bot \implies p$$
-
-**Ý nghĩa**: Nếu giả sử ¬p dẫn đến mâu thuẫn (⊥), thì p phải đúng.
-
-**Quy trình chứng minh**:
-1. Giả sử ¬p đúng.
-2. Suy diễn từ giả thiết và ¬p.
-3. Đi đến mâu thuẫn (ví dụ: r ∧ ¬r).
-4. Kết luận: giả thiết ¬p sai, do đó p đúng.
-
-**Ví dụ**: Chứng minh √2 vô tỷ
-- Giả sử √2 = a/b (a, b nguyên tố cùng nhau).
-- Suy ra: 2b² = a² → a chẵn → a = 2k.
-- Thay vào: 2b² = 4k² → b² = 2k² → b chẵn.
-- Mâu thuẫn: a và b cùng chẵn → không nguyên tố cùng nhau.
-- **Kết luận**: √2 không phải phân số → √2 vô tỷ.
-
-<div class="content-box insight-box" markdown="1">
-**Lưu ý**: Quy tắc suy diễn là công cụ mạnh mẽ trong chứng minh và kiểm chứng phần mềm. Modus Ponens và Modus Tollens là hai quy tắc cơ bản nhất, xuất hiện trong hầu hết các chứng minh logic.
-</div>
 
 ### Bài tập 3: Điều kiện phân quyền
 

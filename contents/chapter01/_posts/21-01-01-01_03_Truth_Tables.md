@@ -184,6 +184,7 @@ Lập luận hợp lệ nếu kết luận đúng khi tất cả tiền đề đ
 Ví dụ: Thiết kế mạch cho (A ∧ B) ∨ C
 
 Bảng chân trị:
+
 | A | B | C | A ∧ B | (A ∧ B) ∨ C |
 |---|---|---|---|-------------|
 | 0 | 0 | 0 |   0   |      0      |
@@ -194,70 +195,6 @@ Bảng chân trị:
 | 1 | 0 | 1 |   0   |      1      |
 | 1 | 1 | 0 |   1   |      1      |
 | 1 | 1 | 1 |   1   |      1      |
-
-### Máy tính bảng chân trị
-
-Nhập biểu thức logic (sử dụng &, |, !, ->, <->) và xem bảng chân trị tự động:
-
-<input type="text" id="logic-expression" placeholder='Ví dụ: (p & q) | r' style="width: 80%; padding: 8px; margin: 10px 0;">
-<button onclick="generateTruthTable()">Tạo bảng</button>
-<div id="truth-table-result" style="margin-top: 15px;"></div>
-
-<script>
-function generateTruthTable() {
-    const expression = document.getElementById('logic-expression').value;
-    const resultDiv = document.getElementById('truth-table-result');
-    
-    if (!expression) {
-        resultDiv.innerHTML = '<p style="color: #e63946;">Vui lòng nhập biểu thức!</p>';
-        return;
-    }
-    
-    // Phân tích biểu thức để tìm biến
-    const vars = [...new Set(expression.match(/[a-z]/g) || ['p'])];
-    const n = vars.length;
-    const rows = Math.pow(2, n);
-    
-    let html = '<table style="border-collapse: collapse; margin: 10px 0;"><tr>';
-    for (const v of vars) html += `<th style="border: 1px solid #ccc; padding: 6px 12px;">${v}</th>`;
-    html += '<th style="border: 1px solid #ccc; padding: 6px 12px;">Kết quả</th></tr>';
-    
-    for (let i = 0; i < rows; i++) {
-        html += '<tr>';
-        const vals = {};
-        for (let j = 0; j < n; j++) {
-            const val = (i & Math.pow(2, n-1-j)) !== 0;
-            vals[vars[j]] = val;
-            html += `<td style="border: 1px solid #ccc; padding: 6px 12px; text-align: center;">${val ? 'T' : 'F'}</td>`;
-        }
-        // Tính đơn giản - trong thực tế cần parser
-        const result = evaluateSimple(expression, vals);
-        html += `<td style="border: 1px solid #ccc; padding: 6px 12px; text-align: center; font-weight: bold;">${result ? 'T' : 'F'}</td>`;
-        html += '</tr>';
-    }
-    html += '</table>';
-    html += '<p><em>Gợi ý: Hãy thử nhập các biểu thức như (p & q) | r, p -> q, hoặc !(p | q) &lt;-&gt; (!p & !q)</em></p>';
-    resultDiv.innerHTML = html;
-}
-
-function evaluateSimple(expr, vals) {
-    // Thay thế biến bằng giá trị
-    let e = expr;
-    for (const [v, val] of Object.entries(vals)) {
-        e = e.replace(new RegExp(v, 'g'), val ? '1' : '0');
-    }
-    // Chuyển ký hiệu
-    e = e.replace(/1/g, 'true').replace(/0/g, 'false');
-    e = e.replace(/&/g, '&&').replace(/\|/g, '||').replace(/!/g, '!');
-    e = e.replace(/->/g, ') <= false || ('); // đơn giản hóa
-    try {
-        return eval(e);
-    } catch {
-        return null;
-    }
-}
-</script>
-</div>
 
 ## Bài tập thực hành
 
