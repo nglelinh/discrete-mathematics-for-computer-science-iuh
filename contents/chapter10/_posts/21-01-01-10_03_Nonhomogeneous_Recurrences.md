@@ -49,6 +49,10 @@ trong đó:
 
 **Chứng minh**: Nếu $L$ là toán tử tuyến tính tương ứng với vế trái sau khi chuyển hết về một phía, thì quan hệ có dạng $L(a)=f$. Nếu $L(h)=0$ và $L(p)=f$, thì $L(h+p)=L(h)+L(p)=f$. Do đó tổng của nghiệm thuần nhất và một nghiệm riêng là nghiệm của bài toán đầy đủ.
 
+![Nguyên lý chồng chất — nghiệm tổng quát](https://commons.wikimedia.org/wiki/Special:FilePath/Constant-recursive-sequences.svg?width=640)
+
+*Hình 10.11: Nghiệm tổng quát = nghiệm thuần nhất + nghiệm riêng — nguyên lý chồng chất mở rộng kỹ thuật giải truy hồi.*
+
 ## 3. Phương pháp hệ số bất định
 
 Khi $f(n)$ có dạng quen thuộc, ta đoán nghiệm riêng cùng “họ” với $f(n)$.
@@ -61,6 +65,10 @@ Khi $f(n)$ có dạng quen thuộc, ta đoán nghiệm riêng cùng “họ” v
 | $n^m b^n$ | đa thức bậc $m$ nhân $b^n$ |
 
 Nếu dạng thử trùng với nghiệm thuần nhất, nhân thêm $n$ đủ số lần để độc lập tuyến tính.
+
+![Phương pháp hệ số bất định](https://commons.wikimedia.org/wiki/Special:FilePath/Recursive_problem_solving.svg?width=640)
+
+*Hình 10.12: Đoán nghiệm riêng cùng "họ" với $f(n)$ — hằng số, đa thức, hoặc $b^n$ — rồi xác định hệ số bằng thế.*
 
 ## 4. Ví dụ với hằng số
 
@@ -110,6 +118,10 @@ $$
 
 Đây chính là tổng $1+2+\cdots+n$.
 
+![Dãy số học — tổng $1+2+\cdots+n$](https://commons.wikimedia.org/wiki/Special:FilePath/Arithmetic_progression.svg?width=640)
+
+*Hình 10.13: Truy hồi $a_n = a_{n-1} + n$ có nghiệm riêng bậc hai — chính là công thức tổng Gauss.*
+
 ## 6. Trường hợp cộng hưởng
 
 Xét
@@ -143,6 +155,10 @@ T(n)=2T(n/2)+n
 $$
 
 mô tả nhiều thuật toán chia để trị như merge sort. Đây không phải truy hồi tuyến tính theo chỉ số $n-1$, nhưng tư tưởng vẫn giống: nghiệm gồm phần do đệ quy và phần chi phí ngoài $n$ ở mỗi mức. Kết quả $T(n)=\Theta(n\log n)$ cho thấy thành phần không thuần nhất quyết định đáng kể độ phức tạp.
+
+![Dãy hình học — thành phần $f(n)$ trong truy hồi](https://commons.wikimedia.org/wiki/Special:FilePath/Geometric_sequence.svg?width=640)
+
+*Hình 10.14: Thành phần $f(n)$ trong truy hồi không thuần nhất mô tả tác động bên ngoài — chi phí cố định, dữ liệu mới, hoặc công việc phụ mỗi bước.*
 
 Với truy hồi tuyến tính, ví dụ số phép gán trong một vòng lặp tích lũy có thể thỏa
 

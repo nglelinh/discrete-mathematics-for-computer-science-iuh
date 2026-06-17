@@ -10,13 +10,32 @@ lang: en
 
 Có những chủ đề thoạt nhìn rất "toán thuần" nhưng lại nằm ngay trong lõi của hệ thống hiện đại. Lý thuyết số là một ví dụ rõ nhất. Từ mật mã, chữ ký số, kiểm tra lỗi, đến các thuật toán tính toán trên số nguyên lớn, dấu vết của nó xuất hiện ở khắp nơi.
 
-
 Lý thuyết số trong chương này không đứng riêng lẻ, nó là nền cho mã hóa, kiểm tra tính đúng đắn và nhiều cơ chế bảo mật hiện đại.
 Sau khi học chia hết, số nguyên tố và đồng dư, câu hỏi tự nhiên là: những khái niệm đó đi vào khoa học máy tính như thế nào? Câu trả lời không chỉ nằm ở RSA, mà còn ở nhiều cơ chế xử lý, xác thực và tối ưu dữ liệu khác.
 
 Phần ứng dụng này rất quan trọng vì nó nối lại mạch của cả chương. Nó cho thấy các định lý và phép tính không đứng riêng lẻ, mà là nền của những công nghệ mà chúng ta dùng mỗi ngày.
 
 Trong bài này, chúng ta sẽ nhìn lý thuyết số dưới góc độ ứng dụng để thấy rõ hơn giá trị thực hành của những công cụ đã học.
+
+![Ứng dụng đồng dư](https://commons.wikimedia.org/wiki/Special:FilePath/Modular_arithmetic.svg?width=640)
+
+*Hình 15.16: Checksum, mã hóa đơn giản và xoay vòng chỉ số đều dùng arithmetic modulo.*
+
+![Hashing và bucket](https://commons.wikimedia.org/wiki/Special:FilePath/Hash_table_simple_999.svg?width=640)
+
+*Hình 15.17: Phân bố bucket bằng modulo — trực giác số học cho cấu trúc dữ liệu.*
+
+![Chữ ký số](https://commons.wikimedia.org/wiki/Special:FilePath/RSA_key_generation.svg?width=640)
+
+*Hình 15.18: Chữ ký số và xác thực danh tính — ứng dụng trực tiếp của lý thuyết số.*
+
+![Kiểm tra số nguyên tố](https://commons.wikimedia.org/wiki/Special:FilePath/Prime_factorization.svg?width=640)
+
+*Hình 15.19: Miller–Rabin và các test xác suất — ứng dụng đồng dư trong bảo mật.*
+
+![Mã sửa lỗi](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 15.20: Reed–Solomon và Hamming — đại số hữu hạn bảo vệ dữ liệu truyền thông và lưu trữ.*
 
 ## Mục tiêu học tập
 

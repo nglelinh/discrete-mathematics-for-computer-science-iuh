@@ -10,13 +10,32 @@ lang: en
 
 Có những biểu thức Boole đủ nhỏ để ta không cần lao ngay vào thuật toán đầy đủ. Chỉ cần sắp xếp các giá trị đầu ra theo một bảng đặc biệt, những vùng có thể gộp sẽ lộ ra rất trực quan. Đó là lý do **bản đồ Karnaugh** được dùng rất nhiều trong thiết kế logic cơ bản.
 
-
 Đại số Boole nối logic với phần cứng và tối ưu biểu thức, vì vậy phần này vừa có ý nghĩa toán học vừa rất gần với thiết kế mạch và điều kiện trong code.
 K-map biến việc tối thiểu hóa từ một chuỗi biến đổi đại số dễ nhầm thành một thao tác quan sát có quy tắc. Với số biến vừa phải, đây là cách nhanh và sáng sủa để rút gọn biểu thức.
 
 Công cụ này đặc biệt hữu ích cho sinh viên vì nó giúp thấy trực tiếp vì sao các hạng tử được gộp, thay vì chỉ áp công thức máy móc. Từ đó, trực giác về tối thiểu hóa hàm Boole cũng mạnh lên rõ rệt.
 
 Trong bài này, chúng ta sẽ học cách đọc và nhóm ô trên bản đồ Karnaugh, rồi dùng nó để tối thiểu hóa hàm Boole một cách trực quan nhưng vẫn chính xác.
+
+![Bản đồ Karnaugh 4 biến](https://commons.wikimedia.org/wiki/Special:FilePath/Karnaugh_map.svg?width=640)
+
+*Hình 13.16: K-map sắp xếp minterm theo mã Gray — ô kề chỉ khác đúng một biến.*
+
+![Mã Gray](https://commons.wikimedia.org/wiki/Special:FilePath/Gray_code.svg?width=640)
+
+*Hình 13.17: Mã Gray đảm bảo hai giá trị liên tiếp chỉ khác một bit — nền tảng sắp xếp hàng/cột K-map.*
+
+![Từ K-map sang mạch](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
+
+*Hình 13.18: Biểu thức tối tiểu từ K-map được hiện thực bằng cổng logic.*
+
+![Implicant nguyên tố](https://commons.wikimedia.org/wiki/Special:FilePath/Boolean_algebra.svg?width=640)
+
+*Hình 13.19: Nhóm lớn nhất trên K-map tương ứng prime implicant — hạng tích không thể thu gọn thêm.*
+
+![Don't-care conditions](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 13.20: Ô don't-care (X) linh hoạt chọn 0 hoặc 1 để tạo nhóm lớn hơn và biểu thức ngắn hơn.*
 
 ## Mục tiêu học tập
 
@@ -36,30 +55,129 @@ Sau bài học này, sinh viên có thể:
 
 Mã Gray là hệ thống mã nhị phân trong đó hai giá trị liên tiếp chỉ khác nhau **đúng một bit**. Điều này rất quan trọng trong bản đồ Karnaugh vì nó đảm bảo các ô kề nhau chỉ khác nhau một biến.
 
-**So sánh mã Gray và mã nhị phân thông thường cho 2 bit**:
+### Tại sao mã Gray quan trọng?
+
+Trong mã nhị phân thông thường, khi chuyển từ một số sang số tiếp theo, nhiều bit có thể thay đổi đồng thời. Ví dụ, từ 0111 (7) sang 1000 (8), cả 4 bit đều thay đổi. Điều này gây ra vấn đề trong các mạch số vì các bit không thay đổi chính xác cùng một lúc, dẫn đến trạng thái trung gian sai.
+
+Mã Gray giải quyết vấn đề này bằng cách đảm bảo mỗi bước chỉ thay đổi **đúng một bit**, loại bỏ hoàn toàn lỗi trạng thái trung gian.
+
+### So sánh mã Gray và mã nhị phân thông thường
+
+**Ví dụ 2 bit**:
+
+| Số thập phân | Mã nhị phân | Số bit thay đổi | Mã Gray | Số bit thay đổi |
+|:---:|:---:|:---:|:---:|:---:|
+| 0 | 00 | - | 00 | - |
+| 1 | 01 | 1 | 01 | 1 |
+| 2 | 10 | 2 | 11 | 1 |
+| 3 | 11 | 1 | 10 | 1 |
+
+Trong mã nhị phân thông thường, từ 01 (1) sang 10 (2) có **2 bit thay đổi**. Trong mã Gray, mỗi bước chỉ thay đổi 1 bit: 00 → 01 → 11 → 10.
+
+**Ví dụ 3 bit**:
 
 | Số thập phân | Mã nhị phân | Mã Gray |
 |:---:|:---:|:---:|
-| 0 | 00 | 00 |
-| 1 | 01 | 01 |
-| 2 | 10 | 11 |
-| 3 | 11 | 10 |
+| 0 | 000 | 000 |
+| 1 | 001 | 001 |
+| 2 | 010 | 011 |
+| 3 | 011 | 010 |
+| 4 | 100 | 110 |
+| 5 | 101 | 111 |
+| 6 | 110 | 101 |
+| 7 | 111 | 100 |
 
-Trong mã nhị phân thông thường, từ 01 (1) sang 10 (2) có 2 bit thay đổi. Trong mã Gray, mỗi bước chỉ thay đổi 1 bit: 00 → 01 → 11 → 10.
+### Các tính chất của mã Gray
 
-**Cách xây dựng mã Gray cho $$n$$ bit**:
-1. Bắt đầu với mã Gray 1 bit: 0, 1
-2. Với mã $$n$$ bit, lấy mã $$n-1$$ bit, viết xuôi rồi viết ngược
-3. Thêm 0 vào đầu nửa xuôi, thêm 1 vào đầu nửa ngược
+1. **Tính duy nhất**: Mỗi số nguyên có đúng một mã Gray tương ứng.
+2. **Tính chu kỳ**: Mã Gray cuối cùng (10...0) chỉ khác mã Gray đầu tiên (00...0) đúng một bit, tạo thành chu trình khép kín.
+3. **Tính đối xứng**: Mã Gray có tính đối xứng qua trung tâm.
+4. **Độ dài bit**: Với $$n$$ bit, mã Gray biểu diễn được $$2^n$$ giá trị từ 0 đến $$2^n - 1$$.
+
+### Công thức chuyển đổi
+
+#### Từ mã nhị phân sang mã Gray
+
+Cho mã nhị phân $$b_{n-1}b_{n-2}\ldots b_1b_0$$, mã Gray tương ứng $$g_{n-1}g_{n-2}\ldots g_1g_0$$ được tính bằng:
+
+$$g_{n-1} = b_{n-1}$$ (bit cao nhất giữ nguyên)
+
+$$g_i = b_{i+1} \oplus b_i$$ cho $$i = 0, 1, \ldots, n-2$$
+
+Trong đó $$\oplus$$ là phép XOR (phép cộng modulo 2).
+
+**Ví dụ**: Chuyển mã nhị phân $$1011_2$$ sang mã Gray:
+- $$g_3 = b_3 = 1$$
+- $$g_2 = b_3 \oplus b_2 = 1 \oplus 0 = 1$$
+- $$g_1 = b_2 \oplus b_1 = 0 \oplus 1 = 1$$
+- $$g_0 = b_1 \oplus b_0 = 1 \oplus 1 = 0$$
+
+Kết quả: $$1011_2 \rightarrow 1110_{\text{Gray}}$$
+
+#### Từ mã Gray sang mã nhị phân
+
+Cho mã Gray $$g_{n-1}g_{n-2}\ldots g_1g_0$$, mã nhị phân tương ứng $$b_{n-1}b_{n-2}\ldots b_1b_0$$ được tính bằng:
+
+$$b_{n-1} = g_{n-1}$$ (bit cao nhất giữ nguyên)
+
+$$b_i = b_{i+1} \oplus g_i$$ cho $$i = 0, 1, \ldots, n-2$$
+
+**Ví dụ**: Chuyển mã Gray $$1110$$ sang mã nhị phân:
+- $$b_3 = g_3 = 1$$
+- $$b_2 = b_3 \oplus g_2 = 1 \oplus 1 = 0$$
+- $$b_1 = b_2 \oplus g_1 = 0 \oplus 1 = 1$$
+- $$b_0 = b_1 \oplus g_0 = 1 \oplus 0 = 1$$
+
+Kết quả: $$1110_{\text{Gray}} \rightarrow 1011_2$$
+
+### Cách xây dựng mã Gray theo phương pháp phản chiếu
+
+Đây là phương pháp trực quan để xây dựng mã Gray cho $$n$$ bit:
+
+1. **Bước 1**: Bắt đầu với mã Gray 1 bit: 0, 1
+2. **Bước 2**: Với mã $$n$$ bit, lấy mã $$n-1$$ bit, viết xuôi rồi viết ngược
+3. **Bước 3**: Thêm 0 vào đầu nửa xuôi, thêm 1 vào đầu nửa ngược
 
 **Ví dụ xây dựng mã Gray 3 bit**:
-- Gray 1 bit: 0, 1
-- Gray 2 bit: 00, 01, 11, 10
-- Gray 3 bit: 000, 001, 011, 010, 110, 111, 101, 100
+
+- **Gray 1 bit**: 0, 1
+- **Gray 2 bit**: 
+  - Lấy Gray 1 bit: 0, 1
+  - Viết xuôi: 0, 1
+  - Viết ngược: 1, 0
+  - Thêm 0 vào đầu nửa xuôi: 00, 01
+  - Thêm 1 vào đầu nửa ngược: 11, 10
+  - Kết quả: 00, 01, 11, 10
+
+- **Gray 3 bit**:
+  - Lấy Gray 2 bit: 00, 01, 11, 10
+  - Viết xuôi: 00, 01, 11, 10
+  - Viết ngược: 10, 11, 01, 00
+  - Thêm 0 vào đầu nửa xuôi: 000, 001, 011, 010
+  - Thêm 1 vào đầu nửa ngược: 110, 111, 101, 100
+  - Kết quả: 000, 001, 011, 010, 110, 111, 101, 100
 
 <div class="content-box insight-box" markdown="1">
-**Mã Gray trong thực tế**: Mã Gray không chỉ dùng trong K-map. Nó được dùng trong các bộ mã hóa vị trí (rotary encoders), cảm biến góc, và trong giao tiếp giữa các bộ phận của CPU để tránh lỗi khi nhiều bit thay đổi đồng thời.
+**Mã Gray trong thực tế**: Mã Gray không chỉ dùng trong K-map. Nó được dùng trong các bộ mã hóa vị trí (rotary encoders), cảm biến góc, và trong giao tiếp giữa các bộ phận của CPU để tránh lỗi khi nhiều bit thay đổi đồng thời. Ứng dụng quan trọng khác bao gồm:
+- **Bộ mã hóa vị trí**: Sử dụng trong động cơ servo và robot để xác định góc quay chính xác.
+- **Mã hóa tín hiệu**: Tr truyền thông số để giảm lỗi bit.
+- **Thiết kế mạch số**: Đảm bảo chuyển trạng thái an toàn trong các FSM (Finite State Machines).
 </div>
+
+### Ứng dụng trong bản đồ Karnaugh
+
+Mã Gray được sử dụng trong K-map để đảm bảo tính kề nhau giữa các ô. Khi sắp xếp các hàng và cột theo mã Gray, mỗi ô kề nhau chỉ khác đúng một biến, giúp việc nhóm các ô có giá trị 1 trở nên trực quan hơn.
+
+**Ví dụ**: K-map 4 biến với các hàng và cột được sắp xếp theo mã Gray:
+
+| $$xy$$ \ $$zw$$ | 00 | 01 | 11 | 10 |
+|:---:|:---:|:---:|:---:|:---:|
+| 00 | $$x'y'z'w'$$ | $$x'y'z'w$$ | $$x'y'zw$$ | $$x'y'zw'$$ |
+| 01 | $$x'yz'w'$$ | $$x'yz'w$$ | $$x'yzw$$ | $$x'yzw'$$ |
+| 11 | $$xyz'w'$$ | $$xyz'w$$ | $$xyzw$$ | $$xyzw'$$ |
+| 10 | $$xy'z'w'$$ | $$xy'z'w$$ | $$xy'zw$$ | $$xy'zw'$$ |
+
+Chú ý: các hàng (00, 01, 11, 10) và cột (00, 01, 11, 10) đều được sắp xếp theo mã Gray.
 
 ## Giới thiệu Bản đồ Karnaugh
 
@@ -130,239 +248,108 @@ Xác định các nhóm:
 
 Kết quả: $$F = x'y' + x'z' + xz$$
 
-### Ví dụ 2: Nhóm bao biên
+## K-map 4 biến
 
-Cho hàm $$F(x, y, z) = \sum m(0, 2, 4, 6)$$:
+Với bốn biến $$x, y, z, w$$, K-map có 16 ô:
+
+| $$xy$$ \ $$zw$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
+|:---:|:---:|:---:|:---:|:---:|
+| $$00$$ | $$x'y'z'w'$$ | $$x'y'z'w$$ | $$x'y'zw$$ | $$x'y'zw'$$ |
+| $$01$$ | $$x'yz'w'$$ | $$x'yz'w$$ | $$x'yzw$$ | $$x'yzw'$$ |
+| $$11$$ | $$xyz'w'$$ | $$xyz'w$$ | $$xyzw$$ | $$xyzw'$$ |
+| $$10$$ | $$xy'z'w'$$ | $$xy'z'w$$ | $$xy'zw$$ | $$xy'zw'$$ |
+
+### Ví dụ 2: Tối thiểu hóa 4 biến
+
+Cho hàm $$F(x, y, z, w) = \sum m(0, 1, 2, 5, 6, 7, 8, 9, 10, 14)$$:
+
+| $$xy$$ \ $$zw$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
+|:---:|:---:|:---:|:---:|:---:|
+| $$00$$ | 1 | 1 | 0 | 1 |
+| $$01$$ | 0 | 1 | 1 | 1 |
+| $$11$$ | 0 | 0 | 0 | 1 |
+| $$10$$ | 1 | 1 | 0 | 1 |
+
+Xác định các nhóm:
+- Nhóm lớn: 4 ô ở góc (00,00), (00,10), (10,00), (10,10): $$z'w'$$
+- Nhóm 2: ô (00,01) và (10,01): $$x'w$$
+- Nhóm 2: ô (01,01) và (01,11): $$x'yz$$
+- Nhóm 2: ô (01,10) và (11,10): $$yzw'$$
+
+Kết quả: $$F = z'w' + x'w + x'yz + yzw'$$
+
+## Điều kiện Don't-care
+
+Trong thực tế, có những trường hợp hàm Boole không quan tâm đến giá trị đầu ra. Các điều kiện này được gọi là **don't-care conditions** và được ký hiệu bằng $$X$$ trên K-map.
+
+Don't-care giúp việc nhóm trở nên linh hoạt hơn vì ta có thể coi chúng là 0 hoặc 1 tùy lợi.
+
+### Ví dụ 3: Sử dụng Don't-care
+
+Cho hàm $$F(x, y, z) = \sum m(0, 1, 3) + \sum d(5, 7)$$, trong đó $$d$$ là don't-care:
 
 | $$xy$$ \ $$z$$ | $$0$$ | $$1$$ |
 |:---:|:---:|:---:|
-| $$00$$ | 1 | 0 |
-| $$01$$ | 1 | 0 |
-| $$11$$ | 1 | 0 |
-| $$10$$ | 1 | 0 |
+| $$00$$ | 1 | 1 |
+| $$01$$ | 0 | X |
+| $$11$$ | 0 | X |
+| $$10$$ | 0 | 0 |
 
-Cột $$z = 0$$ có 4 ô: toàn bộ cột. Nhưng 4 ô này cũng tạo thành 2 nhóm bao biên:
-- Các ô ở biên trái và phải (cột $$z = 0$$) kề nhau qua wrap-around
+Ta có thể nhóm:
+- Nhóm 1: ô (00,0) và (00,1): $$x'y'$$
+- Nhóm 2: ô (00,1), (01,1), (11,1), (10,1) sử dụng don't-care: $$z$$
 
-Tuy nhiên, 4 ô này thực chất là tất cả các tổ hợp với $$z = 0$$:
+Kết quả: $$F = x'y' + z$$
 
-$$F = z'$$
+## So sánh K-map với tối thiểu hóa đại số
 
-<div class="content-box warning-box" markdown="1">
-**Sai lầm thường gặp**: Sinh viên thường quên quy tắc "wrap-around" — các ô ở cạnh trên kề với cạnh dưới, cạnh trái kề với cạnh phải. Hãy tưởng tượng K-map như một hình xuyến (torus) — các cạnh đối diện thực sự chạm nhau!
-</div>
-
-## K-map 4 biến
-
-Với bốn biến $$w, x, y, z$$, K-map có 16 ô:
-
-| $$wx$$ \ $$yz$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
-|:---:|:---:|:---:|:---:|:---:|
-| $$00$$ | $$w'x'y'z'$$ | $$w'x'y'z$$ | $$w'x'yz$$ | $$w'x'yz'$$ |
-| $$01$$ | $$w'xy'z'$$ | $$w'xy'z$$ | $$w'xyz$$ | $$w'xyz'$$ |
-| $$11$$ | $$wxy'z'$$ | $$wxy'z$$ | $$wxyz$$ | $$wxyz'$$ |
-| $$10$$ | $$wx'y'z'$$ | $$wx'y'z$$ | $$wx'yz$$ | $$wx'yz'$$ |
-
-<div class="interactive-tool" markdown="1">
-<div data-demo="kmap-interactive"></div>
-</div>
-<script src="{{ '/public/js/kmap-interactive.js' | relative_url }}"></script>
-
-### Ví dụ 3: K-map 4 biến
-
-Cho hàm $$F(w, x, y, z) = \sum m(0, 1, 2, 4, 5, 6, 8, 9, 12, 13, 14)$$:
-
-| $$wx$$ \ $$yz$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
-|:---:|:---:|:---:|:---:|:---:|
-| $$00$$ | 1 | 1 | 0 | 1 |
-| $$01$$ | 1 | 1 | 0 | 1 |
-| $$11$$ | 1 | 1 | 0 | 1 |
-| $$10$$ | 1 | 1 | 0 | 1 |
-
-Nhìn kỹ, các ô với $$y = 0$$ (cột $$yz = 00, 01, 10$$) đều là 1:
-
-$$F = y'$$
-
-### Ví dụ 4: Tối thiểu hóa phức tạp hơn
-
-Cho $$F(w, x, y, z) = \sum m(0, 2, 8, 10, 12, 14)$$:
-
-| $$wx$$ \ $$yz$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
-|:---:|:---:|:---:|:---:|:---:|
-| $$00$$ | 1 | 0 | 0 | 1 |
-| $$01$$ | 0 | 0 | 0 | 0 |
-| $$11$$ | 0 | 0 | 0 | 1 |
-| $$10$$ | 1 | 0 | 0 | 1 |
-
-Nhóm 1: bốn góc (ô 0, 2, 8, 10): $$w'z'$$
-- Các góc kề nhau qua wrap-around theo cả hai chiều
-
-Nhóm 2: hai ô ở hàng $$wx = 11$$, cột $$10$$ và hàng $$wx = 10$$, cột $$10$$: $$wyz'$$
-
-Kết quả: $$F = w'z' + wyz'$$
-
-## Điều kiện "Không cần quan tâm" (Don't-care Conditions)
-
-### Khái niệm
-
-Trong nhiều mạch thực tế, một số tổ hợp đầu vào không bao giờ xảy ra. Với các tổ hợp này, đầu ra không được xác định (có thể là 0 hoặc 1). Ta ký hiệu chúng bằng $$X$$ (don't-care) trên K-map và có thể chọn giá trị phù hợp để tối ưu hóa.
-
-### Ví dụ: Mạch hiển thị 7 đoạn
-
-Xét mạch điều khiển đèn LED hiển thị số thập phân (0-9) trên 4 bit $$A, B, C, D$$. Các tổ hợp từ 1010 đến 1111 không bao giờ xảy ra (don't-care).
-
-Hàm điều khiển đoạn a (đoạn trên cùng) với don't-care:
-
-K-map:
-
-| $$AB$$ \ $$CD$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
-|:---:|:---:|:---:|:---:|:---:|
-| $$00$$ | 1 | 0 | 1 | 1 |
-| $$01$$ | 0 | 1 | 1 | 1 |
-| $$11$$ | X | X | X | X |
-| $$10$$ | 1 | 1 | X | X |
-
-Nếu coi X = 1 ở những vị trí chiến lược, ta có thể nhóm lớn hơn:
-- Coi X ở (11, 00), (11, 10), (10, 10) = 1: nhóm 8 ô (hàng 00 và 10, cột 00 và 10): $$B'D'$$
-- Coi X ở (11, 10), (11, 11), (10, 11) = 1: nhóm 8 ô $$C$$
-
-Kết quả tối ưu: $$F_a = A + B'D' + C + BD$$
-
-<div class="content-box warning-box" markdown="1">
-**Lưu ý về don't-care**: 
-- Các ô don't-care chỉ nên được gán 1 nếu chúng giúp tạo nhóm lớn hơn.
-- Không bắt buộc phải nhóm tất cả các ô don't-care.
-- Một ô don't-care có thể được dùng trong nhiều nhóm khác nhau.
-- Việc gán giá trị cho don't-care ảnh hưởng đến mạch thực tế, nhưng không ảnh hưởng đến hành vi mong muốn.
-</div>
-
-## Quy trình Tối thiểu hóa bằng K-map
-
-1. Vẽ K-map với kích thước phù hợp (2, 3, hoặc 4 biến).
-2. Điền giá trị từ bảng chân trị hoặc từ dạng $$\sum m$$.
-3. Xác định tất cả các implicant nguyên tố (prime implicant) — nhóm lớn nhất có thể.
-4. Chọn các implicant nguyên tố cốt yếu (essential prime implicant) — nhóm duy nhất phủ một ô 1 nào đó.
-5. Nếu còn ô 1 chưa được phủ, chọn thêm implicant để phủ chúng.
-6. Viết biểu thức tối tiểu: mỗi implicant thành một tích, lấy tổng các tích.
-
-<div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
-<h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Trình tối thiểu hóa bằng K-map</h3>
-<p>Công cụ trực quan này cho phép bạn nhập bảng chân trị (hoặc nhấp vào các ô trên K-map để bật/tắt) và xem kết quả tối thiểu hóa ngay lập tức. Các nhóm được tô màu và giải thích chi tiết. <strong>Hãy thử:</strong> Tạo hàm với một số don't-care và xem cách chúng giúp tối ưu biểu thức.</p>
-</div>
-
-## Ứng dụng trong Khoa học Máy tính
-
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
-
-K-map là công cụ chuẩn trong thiết kế mạch số. Các ứng dụng cụ thể:
-
-- **Thiết kế ALU**: Tối ưu hóa mạch số học và logic trong CPU.
-- **Bộ giải mã (decoder)**: Mạch chuyển mã nhị phân sang 7-đoạn, hoặc địa chỉ bộ nhớ.
-- **Bộ đa hợp (multiplexer)**: Chọn một trong nhiều đầu vào dựa trên tín hiệu điều khiển.
-- **Máy tính nhúng**: Tối ưu hóa mạch điều khiển trong các thiết bị IoT.
-- **FPGA**: Các công cụ CAD tự động dùng K-map và các biến thể để tổng hợp mạch.
+| Tiêu chí | K-map | Đại số Boole |
+|---|---|---|
+| Phạm vi | 2-4 biến hiệu quả | Mọi số biến |
+| Tính trực quan | Cao | Thấp |
+| Tốc độ | Nhanh với số biến nhỏ | Chậm hơn |
+| Độ chính xác | Đúng tuyệt đối | Phụ thuộc kỹ năng |
+| Ứng dụng | Thiết kế mạch cơ bản | Chứng minh, phát triển lý thuyết |
 
 ## Bài tập
 
-### Bài tập 1: K-map 3 biến
+### Bài tập 1: Xây dựng mã Gray
 
-Dùng K-map tối thiểu hóa:
+1. Xây dựng danh sách mã Gray 4 bit bằng phương pháp phản chiếu.
+2. Chuyển mã nhị phân $$1101_2$$ sang mã Gray.
+3. Chuyển mã Gray $$1011$$ sang mã nhị phân.
 
-a) $$F(x, y, z) = \sum m(0, 2, 4, 6)$$
+### Bài tập 2: Sử dụng K-map
 
-b) $$F(x, y, z) = \sum m(1, 3, 5, 7)$$
+1. Tối thiểu hóa hàm $$F(x, y) = \sum m(0, 2, 3)$$ bằng K-map 2 biến.
+2. Tối thiểu hóa hàm $$F(x, y, z) = \sum m(0, 1, 2, 4, 5)$$ bằng K-map 3 biến.
+3. Tối thiểu hóa hàm $$F(x, y, z, w) = \sum m(0, 1, 2, 3, 8, 9, 10, 11)$$ bằng K-map 4 biến.
 
-<details>
-<summary>Đáp án</summary>
+### Bài tập 3: Don't-care conditions
 
-a) 
-| $$xy$$ \ $$z$$ | $$0$$ | $$1$$ |
-|:---:|:---:|:---:|
-| $$00$$ | 1 | 0 |
-| $$01$$ | 1 | 0 |
-| $$11$$ | 1 | 0 |
-| $$10$$ | 1 | 0 |
+1. Tối thiểu hóa hàm $$F(x, y, z) = \sum m(0, 1, 5) + \sum d(2, 7)$$.
+2. Tìm hàm Boole đơn giản nhất thỏa mãn bảng chân trị sau với don't-care:
 
-Nhóm 4 ô ở cột $$z = 0$$: $$F = z'$$
+| $$x$$ | $$y$$ | $$z$$ | $$F$$ |
+|:---:|:---:|:---:|:---:|
+| 0 | 0 | 0 | 1 |
+| 0 | 0 | 1 | 0 |
+| 0 | 1 | 0 | 1 |
+| 0 | 1 | 1 | X |
+| 1 | 0 | 0 | 0 |
+| 1 | 0 | 1 | 1 |
+| 1 | 1 | 0 | X |
+| 1 | 1 | 1 | 1 |
 
-b)
-| $$xy$$ \ $$z$$ | $$0$$ | $$1$$ |
-|:---:|:---:|:---:|
-| $$00$$ | 0 | 1 |
-| $$01$$ | 0 | 1 |
-| $$11$$ | 0 | 1 |
-| $$10$$ | 0 | 1 |
+## Kết luận
 
-Nhóm 4 ô ở cột $$z = 1$$: $$F = z$$
+Trong bài này, chúng ta đã học:
 
-</details>
+1. **Mã Gray**: Hệ thống mã nhị phân đảm bảo mỗi bước chỉ thay đổi 1 bit, rất quan trọng trong thiết kế mạch số.
+2. **Bản đồ Karnaugh**: Phương pháp trực quan để tối thiểu hóa hàm Boole.
+3. **Quy tắc nhóm**: Các nguyên tắc để nhóm ô trên K-map.
+4. **Điều kiện Don't-care**: Cách tận dụng các giá trị không quan tâm để tối ưu hóa.
 
-### Bài tập 2: K-map 4 biến
+Mã Gray và K-map có mối liên hệ chặt chẽ: mã Gray đảm bảo tính kề nhau giữa các ô, trong khi K-map tận dụng tính chất này để nhóm các hạng tử một cách trực quan. Hiểu rõ cả hai sẽ giúp sinh viên thiết kế mạch số hiệu quả hơn và tối thiểu hóa hàm Boole chính xác hơn.
 
-Cho hàm $$F(w, x, y, z) = \sum m(0, 1, 3, 4, 5, 7, 12, 13, 15)$$.
-
-a) Vẽ K-map.
-b) Xác định các implicant nguyên tố.
-c) Viết biểu thức tối tiểu dạng SOP.
-
-<details>
-<summary>Đáp án</summary>
-
-K-map:
-
-| $$wx$$ \ $$yz$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
-|:---:|:---:|:---:|:---:|:---:|
-| $$00$$ | 1 | 1 | 1 | 0 |
-| $$01$$ | 1 | 1 | 1 | 0 |
-| $$11$$ | 1 | 1 | 1 | 0 |
-| $$10$$ | 0 | 0 | 0 | 0 |
-
-Các implicant nguyên tố:
-- Nhóm 8 ô (hàng 00 và 01, cột 00, 01, 11) và (hàng 11, cột 00, 01, 11) thực chất là toàn bộ các hàng 00, 01, 11 với các cột 00, 01, 11: tất cả các ô có $$y = 0$$ hoặc $$z = 1??$$ 
-
-Thực tế, nhìn kỹ: tất cả các ô 1 đều có $$x = 0$$ (hàng 00 và 01). Vậy $$F = x'$$.
-
-</details>
-
-### Bài tập 3: Don't-care
-
-Tối thiểu hóa hàm $$F(A, B, C, D) = \sum m(2, 3, 7, 9, 11, 13) + d(1, 10, 15)$$ với d là don't-care.
-
-<details>
-<summary>Đáp án</summary>
-
-K-map với don't-care (ghi X cho các ô không cần quan tâm):
-
-| $$AB$$ \ $$CD$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
-|:---:|:---:|:---:|:---:|:---:|
-| $$00$$ | 0 | X | 1 | 1 |
-| $$01$$ | 0 | 0 | 1 | 0 |
-| $$11$$ | 0 | 1 | X | 1 |
-| $$10$$ | 0 | 1 | 0 | X |
-
-Coi X = 1 ở các ô chiến lược:
-
-Nhóm tối ưu:
-- Nhóm 1: ô (00, 10), (00, 11), (01, 10), (01, 11)... được $$A'C$$
-- Nhóm 2: ô (00, 11), (11, 01), (10, 01) với X giúp: $$BD$$
-- Nhóm 3: ô (00, 10), (10, 10) với X giúp: $$B'CD'$$
-
-Kết quả: $$F = A'C + BD + B'CD'$$
-
-</details>
-
-## Tóm tắt
-
-- **Bản đồ Karnaugh**: công cụ đồ họa cho tối thiểu hóa hàm Boole 2-4 biến.
-- **Ô kề**: khác nhau đúng 1 biến, có thể ở vị trí biên đối diện (wrap-around).
-- **Nhóm**: kích thước lũy thừa của 2, càng lớn càng đơn giản.
-- **Implicant nguyên tố**: nhóm lớn nhất không thể mở rộng thêm.
-- **Implicant nguyên tố cốt yếu**: nhóm duy nhất phủ một ô 1 nào đó.
-- **Don't-care**: tận dụng để tối ưu thêm, không bắt buộc phải nhóm hết.
-
-Trong bài tiếp theo, chúng ta sẽ học phương pháp Quine-McCluskey dùng cho hàm nhiều biến hơn.
-
-## Tài liệu Tham khảo
-
-1. Maurice Karnaugh, "The Map Method for Synthesis of Combinational Logic Circuits," *Transactions of the AIEE*, 1953 — bài báo gốc.
-2. M. Morris Mano, *Digital Design*, chương 3 về K-map.
+**Từ khóa**: Mã Gray (Gray Code), mã hóa phản chiếu (reflected binary code), bản đồ Karnaugh (Karnaugh map), tối thiểu hóa hàm Boole (Boolean function minimization), implicant nguyên tố (prime implicant), điều kiện don't-care.

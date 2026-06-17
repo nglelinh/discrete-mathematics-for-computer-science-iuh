@@ -10,13 +10,32 @@ lang: en
 
 Sau khi có ngôn ngữ Big-O để mô tả tăng trưởng, bước tiếp theo là dùng nó để phân tích **độ phức tạp của thuật toán** một cách có phương pháp. Đây là kỹ năng cốt lõi nếu ta muốn so sánh lời giải không chỉ bằng cảm giác.
 
-
 Phân tích thuật toán không chỉ hỏi chương trình chạy được hay không, mà còn hỏi nó còn dùng được khi dữ liệu lớn lên nhanh đến mức nào.
 Trong thực tế, hai đoạn code cùng cho ra kết quả đúng có thể khác nhau rất xa về thời gian chạy hoặc mức dùng bộ nhớ. Một lựa chọn hợp lý với dữ liệu nhỏ có thể trở thành nút cổ chai khi hệ thống mở rộng.
 
 Phân tích độ phức tạp giúp ta nhìn vào cấu trúc của thuật toán, số vòng lặp, số lời gọi đệ quy, kiểu thao tác dữ liệu, rồi dự đoán chi phí trước cả khi triển khai trên quy mô lớn. Đây là một trong những kỹ năng phân tích quan trọng nhất của người làm CS.
 
 Trong bài này, chúng ta sẽ đi từ các ví dụ quen thuộc đến cách ước lượng và so sánh độ phức tạp thời gian, không gian của các thuật toán khác nhau.
+
+![Phân loại độ phức tạp](https://commons.wikimedia.org/wiki/Special:FilePath/Comparison_computational_complexity.svg?width=640)
+
+*Hình 14.11: Phân loại thuật toán theo thời gian và không gian — trụ cột phân tích hiệu năng.*
+
+![So sánh thuật toán sắp xếp](https://commons.wikimedia.org/wiki/Special:FilePath/Sorting_algorithms_comparison.svg?width=640)
+
+*Hình 14.12: Bubble sort $O(n^2)$ vs merge sort $O(n\log n)$ — cùng đúng, khác hiệu quả.*
+
+![Bubble sort](https://commons.wikimedia.org/wiki/Special:FilePath/Bubble_sort_animation.gif?width=640)
+
+*Hình 14.13: Bubble sort minh họa vì sao $O(n^2)$ trở nên không chấp nhận được khi $n$ lớn.*
+
+![Không gian quyết định](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 14.14: Độ phức tạp không gian đo bộ nhớ phụ — quan trọng trong embedded và big data.*
+
+![Trường hợp xấu nhất](https://commons.wikimedia.org/wiki/Special:FilePath/Big-O-notation.png?width=640)
+
+*Hình 14.15: Phân tích worst-case, average-case và best-case — ba góc nhìn đánh giá thuật toán.*
 
 ## Mục tiêu học tập
 

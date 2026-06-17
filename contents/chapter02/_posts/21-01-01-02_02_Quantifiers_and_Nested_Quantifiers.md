@@ -45,7 +45,9 @@ Hãy tưởng tượng **miền xác định** là sân chơi, và vị từ là
 - Miền càng rộng → Luật càng khó đúng
 - Miền càng hẹp → Luật dễ đúng hơn
 
+![Miền xác định](https://commons.wikimedia.org/wiki/Special:FilePath/Universe_of_discourse_1.png?width=640)
 
+*Hình 2.6: Miền xác định (universe of discourse) — tập hợp tất cả giá trị mà biến trong vị từ có thể nhận; phạm vi miền ảnh hưởng trực tiếp đến chân trị của mệnh đề lượng từ.*
 
 **Ví dụ trong SQL**:
 
@@ -71,6 +73,10 @@ SELECT * FROM students WHERE gpa >= 3.5;      -- Có thể đúng/sai
 
 **Chứng minh một mệnh đề toàn thể** thường cần lập luận cho một phần tử tùy ý. Ví dụ, để chứng minh $$\forall n \in \mathbb{Z},\ n(n+1)$$ chẵn, lấy $$n$$ tùy ý. Trong hai số liên tiếp $$n$$ và $$n+1$$, một số chẵn, nên tích chia hết cho 2.
 
+![Bảng đối lập với một vị từ](https://commons.wikimedia.org/wiki/Special:FilePath/Square_of_opposition,_one_predicate.svg?width=640)
+
+*Hình 2.7: Bảng đối lập (square of opposition) với một vị từ — minh họa quan hệ logic giữa các mệnh đề lượng từ toàn thể và phủ định.*
+
 ## 3. Lượng từ tồn tại
 
 **Định nghĩa**: $$\exists x\,P(x)$$ đọc là "tồn tại ít nhất một $$x$$ sao cho $$P(x)$$ đúng".
@@ -84,6 +90,10 @@ SELECT * FROM students WHERE gpa >= 3.5;      -- Có thể đúng/sai
 - $$\exists p \in \mathbb{P},\ p$$ chẵn đúng vì $$p=2$$.
 
 **Chứng minh tồn tại** có thể bằng cách đưa ra nhân chứng (witness). Ví dụ, để chứng minh $$\exists x \in \mathbb{Z}, x^2 = 16$$, chỉ cần nêu $$x=4$$.
+
+![Lượng từ tồn tại](https://commons.wikimedia.org/wiki/Special:FilePath/Existential_quantification.svg?width=640)
+
+*Hình 2.8: Ký hiệu ∃ (existential quantification) — khẳng định tồn tại ít nhất một phần tử trong miền thỏa mãn vị từ.*
 
 ## 4. Lượng từ duy nhất
 
@@ -116,6 +126,10 @@ Giả sử có ba sinh viên An, Bình, Chi và ba môn Toán, Lý, Tin.
 
 Khi đó $$\forall x\exists y\,T(x,y)$$ đúng: ai cũng có ít nhất một môn thích. Nhưng $$\exists y\forall x\,T(x,y)$$ sai: không có môn chung cho cả ba.
 
+![Lượng từ lồng nhau](https://commons.wikimedia.org/wiki/Special:FilePath/Square_of_opposition,_set_diagrams.svg?width=640)
+
+*Hình 2.9: Sơ đồ tập hợp minh họa quan hệ giữa các mệnh đề lượng từ — hỗ trợ đọc đúng ý nghĩa khi nhiều lượng từ lồng nhau.*
+
 ## 6. Phủ định lượng từ
 
 **Định lý De Morgan cho lượng từ**:
@@ -135,6 +149,10 @@ Phủ định đúng là: "Tồn tại ít nhất một sinh viên không nộp 
 $$\exists x\,\neg N(x)$$
 
 Không được phủ định thành "mọi sinh viên đều không nộp bài".
+
+![Biểu đồ Venn AND/OR](https://commons.wikimedia.org/wiki/Special:FilePath/Venn-Diagram-AND-OR.png?width=640)
+
+*Hình 2.10: Biểu đồ Venn cho phép AND và OR — trực quan hóa luật De Morgan khi phủ định lượng từ (∀ ↔ ∃).*
 
 ## 7. Dịch câu tự nhiên sang logic
 

@@ -21,6 +21,26 @@ mỗi bộ giải SAT trong công nghiệp
 
 ---
 
+![George Boole](https://commons.wikimedia.org/wiki/Special:FilePath/George_Boole.jpg?width=640)
+
+*Hình 13.26: Boole tạo ngôn ngữ logic đại số; Shannon biến nó thành nguyên lý của mạch số.*
+
+![Claude Shannon](https://commons.wikimedia.org/wiki/Special:FilePath/Claude_Shannon.jpg?width=640)
+
+*Hình 13.27: Claude Shannon (1916–2001) — nối đại số Boole với mạch relay và thông tin số.*
+
+![Từ truth table đến silicon](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
+
+*Hình 13.28: Mỗi cổng logic là hiện thân vật lý của biểu thức Boole trên chip.*
+
+![SAT solver workflow](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 13.29: SAT solvers biến logic Boolean thành động cơ giải verification và scheduling ở quy mô công nghiệp.*
+
+![Tối giản logic trên chip](https://commons.wikimedia.org/wiki/Special:FilePath/Half_Adder.svg?width=640)
+
+*Hình 13.30: Biểu thức ngắn hơn → ít cổng → ít transistor → ít điện năng và độ trễ thấp hơn.*
+
 ## Phần 1: Boole, Shannon, và cuộc cách mạng nối logic với điện
 
 ### 1.1. George Boole và tham vọng đại số hóa tư duy
@@ -44,9 +64,6 @@ khớp hoàn hảo với mạch relay switching:
 
 Đây là một trong những cú ghép ý tưởng vĩ đại nhất lịch sử engineering.
 Logic trở thành điện.
-
-![George Boole và Claude Shannon]
-*Hình 1: Boole tạo ngôn ngữ logic đại số; Shannon biến nó thành nguyên lý của mạch số.*
 
 ---
 
@@ -123,9 +140,6 @@ ta giao phần search cực khó cho SAT solver tối ưu rất mạnh.
 
 Điều này cho thấy đại số Boole không chỉ tạo ra mạch.
 Nó còn tạo ra format chung cho nhiều bài toán quyết định.
-
-![SAT solver workflow]
-*Hình 2: SAT solvers biến logic Boolean thành động cơ giải quyết bài toán verification và scheduling ở quy mô công nghiệp.*
 
 ---
 

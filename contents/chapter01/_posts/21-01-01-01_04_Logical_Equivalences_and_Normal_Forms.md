@@ -158,25 +158,25 @@ Cây tương ứng:
 
 **Nhận xét**: Cây giúp ta thấy rõ **thứ tự tính toán** và **cấu trúc phân cấp** của công thức. Mỗi phép toán tương ứng với một nút trong, và các biến là lá.
 
-![Expression tree](https://source.unsplash.com/800x600/?tree,structure,algorithm,computer)
+![Cây quyết định — cấu trúc công thức Boolean](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=500)
 
-*Hình 1.16: Biểu diễn công thức Boolean dưới dạng cây*
+*Hình 1.16: Biểu diễn công thức Boolean dưới dạng cây — mỗi nút là một phép toán, lá là biến hoặc hằng.*
 
-![De Morgan](https://source.unsplash.com/800x600/?logic,diagram,mathematics)
+![Luật De Morgan trên biểu đồ Venn](https://commons.wikimedia.org/wiki/Special:FilePath/Intersections_of_two_sets_and_their_complements.svg?width=640)
 
-*Hình 1.17: Minh họa luật De Morgan*
+*Hình 1.17: Luật De Morgan — ¬(p ∧ q) ≡ ¬p ∨ ¬q, công cụ biến đổi quan trọng nhất khi rút gọn điều kiện.*
 
-![DNF construction](https://source.unsplash.com/800x600/?boolean,logic,diagram)
+![DNF — tổng các tích (disjunction of conjunctions)](https://commons.wikimedia.org/wiki/Special:FilePath/Venn-Diagram-OR.png?width=400)
 
-*Hình 1.18: Xây dựng DNF từ bảng chân trị*
+*Hình 1.18: Dạng chuẩn tắc tuyển (DNF) — tổng (OR) của các tích (AND), xây từ các hàng có kết quả Đúng trong bảng chân trị.*
 
-![CNF construction](https://source.unsplash.com/800x600/?boolean,logic,construction)
+![CNF — tích các tổng (conjunction of disjunctions)](https://commons.wikimedia.org/wiki/Special:FilePath/Venn-Diagram-AND.png?width=400)
 
-*Hình 1.19: Xây dựng CNF từ bảng chân trị*
+*Hình 1.19: Dạng chuẩn tắc hội (CNF) — tích (AND) của các tổng (OR), dạng chuẩn mà SAT solver yêu cầu.*
 
-![Boolean function](https://source.unsplash.com/800x600/?function,boolean,mathematics)
+![Hàm Boolean và cổng logic](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
 
-*Hình 1.20: Biểu diễn hàm Boolean*
+*Hình 1.20: Mỗi hàm Boolean tương ứng một mạch logic — DNF/CNF là cách chuẩn hóa để máy tính xử lý.*
 
 **Lưu ý quan trọng**: Các phép toán `∧`, `∨`, `⊕`, `↔` là **giao hoán** (đổi chỗ được) và **kết hợp** (dấu ngoặc không quan trọng). Riêng `→` không có hai tính chất này.
 

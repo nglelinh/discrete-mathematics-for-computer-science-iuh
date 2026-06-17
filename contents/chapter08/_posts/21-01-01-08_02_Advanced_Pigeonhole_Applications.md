@@ -18,6 +18,10 @@ Nguyên lý Dirichlet thường được dùng khi ta không cần biết chính
 
 Trong bài này, chúng ta sẽ xem các biến thể tổng quát hơn của nguyên lý Dirichlet và dùng chúng để giải những bài toán đòi hỏi góc nhìn tinh hơn.
 
+![Nguyên lý chuồng chim — phiên bản nâng cao](https://commons.wikimedia.org/wiki/Special:FilePath/Pigeonhole.jpg?width=640)
+
+*Hình 8.6: Biến thể tổng quát hỏi ít nhất bao nhiêu phần tử phải rơi vào cùng một nhóm, không chỉ có hay không.*
+
 ## Nguyên lý Dirichlet Tổng quát
 
 ### Nguyên lý Dirichlet với Trọng số
@@ -41,6 +45,10 @@ Trong bài này, chúng ta sẽ xem các biến thể tổng quát hơn của ng
 **Chứng minh**: Xét N+1 số {0, {α}, {2α}, ..., {Nα}} trong đoạn [0,1).
 Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 số {iα}, {jα} trong cùng một đoạn.
 
+![Dirichlet — ứng dụng trong lý thuyết số](https://commons.wikimedia.org/wiki/Special:FilePath/Dirichlet.jpg?width=640)
+
+*Hình 8.7: Định lý Dirichlet về xấp xỉ Diophantine — chia đoạn [0,1) thành $N$ chuồng để ép hai phân số gần nhau.*
+
 ### Bài toán Tồn tại Nghiệm
 
 **Bài toán**: Chứng minh rằng với mọi số nguyên a không chia hết cho p (p là số nguyên tố), tồn tại số nguyên n sao cho a^n ≡ 1 (mod p).
@@ -48,6 +56,10 @@ Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 s
 **Chứng minh**: Xét dãy a^1, a^2, ..., a^p (mod p). Có p số và p-1 giá trị có thể (1,2,...,p-1). Theo nguyên lý Dirichlet...
 
 ## Ứng dụng trong Hình học
+
+![Biểu đồ Venn — phân vùng không gian](https://commons.wikimedia.org/wiki/Special:FilePath/Venn3.svg?width=640)
+
+*Hình 8.8: Chia hình vuông thành các ô — mỗi ô là một chuồng, mỗi điểm là một bồ câu trong bài toán hình học.*
 
 ### Bài toán Erdős-Ko-Rado
 
@@ -66,6 +78,10 @@ Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 s
 **Bài toán**: Trong 6 người, chứng minh rằng có 3 người quen nhau hoặc 3 người không quen nhau.
 
 **Chứng minh**: Chọn 1 người A. Chia 5 người còn lại thành 2 nhóm: quen A và không quen A. Theo nguyên lý Dirichlet, một nhóm có ≥ 3 người...
+
+![Ramsey theory — trật tự bắt buộc xuất hiện](https://commons.wikimedia.org/wiki/Special:FilePath/TooManyPigeons.jpg?width=640)
+
+*Hình 8.9: Ramsey theory mở rộng tinh thần chuồng chim — cấu trúc đủ lớn thì một mẫu trật tự nhất định không thể tránh.*
 
 ## Ứng dụng trong Khoa học Máy tính
 
@@ -96,6 +112,10 @@ md5_analysis = PigeonholeHashAnalysis(128, 2**65)
 print(f"Birthday attack: ~2^64 attempts")
 print(f"Pigeonhole guarantee: 2^128 + 1 attempts")
 ```
+
+![Birthday attack — va chạm hash](https://commons.wikimedia.org/wiki/Special:FilePath/Birthdaymatch.svg?width=640)
+
+*Hình 8.10: Phân tích hash collision kết hợp nguyên lý chuồng chim và birthday bound — hai công cụ nền trong cryptography.*
 
 ### 2. Load Balancing và Distributed Systems
 

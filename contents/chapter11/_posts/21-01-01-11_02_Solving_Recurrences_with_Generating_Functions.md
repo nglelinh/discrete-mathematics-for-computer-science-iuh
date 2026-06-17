@@ -10,13 +10,32 @@ lang: vi
 
 Khi một quan hệ truy hồi quá khó nhìn ra công thức nghiệm bằng các kỹ thuật quen thuộc, ta có thể đổi góc nhìn. Thay vì bám vào từng số hạng, ta chuyển cả dãy sang một hàm sinh rồi thao tác ở cấp biểu thức.
 
-
 Hàm sinh mạnh ở chỗ nó đổi một dãy số thành đối tượng đại số dễ thao tác hơn, khá giống cách ta chọn biểu diễn phù hợp để làm bài toán đơn giản đi.
 Đây là một ý tưởng rất mạnh: biến bài toán truy hồi trong miền chỉ số thành bài toán đại số trong miền hàm. Nhiều truy hồi vốn rối khi nhìn trực tiếp lại trở nên dễ xử lý hơn hẳn sau bước biến đổi này.
 
 Cách làm đó cũng phản ánh một tư duy quan trọng trong khoa học máy tính, chọn biểu diễn thích hợp để lời giải tự nhiên hơn. Không phải lúc nào ta cũng giải bài toán ở dạng ban đầu của nó.
 
 Trong bài này, chúng ta sẽ học cách dùng hàm sinh để giải truy hồi, từ thiết lập biểu thức ban đầu đến rút ra hệ số và công thức cần tìm.
+
+![Dãy Fibonacci](https://commons.wikimedia.org/wiki/Special:FilePath/Fibonacci_spiral.svg?width=640)
+
+*Hình 11.6: Dãy Fibonacci $F_n=F_{n-1}+F_{n-2}$ — ví dụ kinh điển giải truy hồi bằng hàm sinh.*
+
+![Biến truy hồi thành phương trình](https://commons.wikimedia.org/wiki/Special:FilePath/Generating_function.svg?width=640)
+
+*Hình 11.7: Nhân truy hồi với $x^n$ rồi cộng theo $n$ biến quan hệ đệ quy thành phương trình trên $G(x)$.*
+
+![Khai triển chuỗi lũy thừa](https://commons.wikimedia.org/wiki/Special:FilePath/Power_series.svg?width=640)
+
+*Hình 11.8: Sau khi tìm $G(x)$ dạng phân thức, khai triển lại để đọc hệ số $a_n$.*
+
+![Dãy hình học](https://commons.wikimedia.org/wiki/Special:FilePath/Geometric_sequence.svg?width=640)
+
+*Hình 11.9: Truy hồi bậc 1 thường cho hàm sinh chứa nhân tử $1/(1-rx)$ — dãy hình học.*
+
+![Cây quyết định phân tích](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 11.10: Phân tích truy hồi theo từng bước — tư duy hệ thống giống duyệt cây trong thuật toán.*
 
 ## 1. Quy trình 4 bước
 

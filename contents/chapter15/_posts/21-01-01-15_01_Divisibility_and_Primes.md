@@ -10,13 +10,32 @@ lang: en
 
 Khi máy tính mã hóa dữ liệu, sinh khóa, kiểm tra tính hợp lệ của số học modulo hay phân tích cấu trúc của các số nguyên, nó đang chạm tới một vùng rất cổ điển của toán học: **lý thuyết số**.
 
-
 Lý thuyết số trong chương này không đứng riêng lẻ, nó là nền cho mã hóa, kiểm tra tính đúng đắn và nhiều cơ chế bảo mật hiện đại.
 Mọi thứ thường bắt đầu từ hai khái niệm nền nhất, **tính chia hết** và **số nguyên tố**. Chúng nghe cơ bản, nhưng lại là viên gạch đầu tiên cho đồng dư, thuật toán Euclid, RSA và nhiều ứng dụng quan trọng trong khoa học máy tính.
 
 Điểm đáng học ở đây là cấu trúc. Các số nguyên không chỉ là dãy số để tính toán, chúng có quy luật phân rã và quan hệ chia hết rất sâu. Hiểu nền đó giúp các chủ đề mật mã và thuật toán số học phía sau trở nên tự nhiên hơn nhiều.
 
 Trong bài này, chúng ta sẽ bắt đầu từ những khái niệm nền của lý thuyết số và xem vì sao chúng lại có sức sống mạnh đến vậy trong CS hiện đại.
+
+![Euclid](https://commons.wikimedia.org/wiki/Special:FilePath/Euclid.jpg?width=640)
+
+*Hình 15.1: Euclid (~300 TCN) — chứng minh vô hạn số nguyên tố, nền móng lý thuyết số.*
+
+![Elements của Euclid](https://commons.wikimedia.org/wiki/Special:FilePath/Euclid-Elements.jpg?width=640)
+
+*Hình 15.2: Tác phẩm *Elements* hệ thống hóa số học và hình học cổ đại.*
+
+![Phân tích thừa số nguyên tố](https://commons.wikimedia.org/wiki/Special:FilePath/Prime_factorization.svg?width=640)
+
+*Hình 15.3: Định lý cơ bản số học: mọi số nguyên $>1$ phân tích duy nhất thành tích số nguyên tố.*
+
+![Carl Friedrich Gauss](https://commons.wikimedia.org/wiki/Special:FilePath/Carl_Friedrich_Gauss.jpg?width=640)
+
+*Hình 15.4: Gauss (1777–1855) — phát triển lý thuyết số hiện đại và đồng dư.*
+
+![Cấu trúc số nguyên](https://commons.wikimedia.org/wiki/Special:FilePath/Euler_diagram_of_number_sets.svg?width=640)
+
+*Hình 15.5: Chia hết, ước, bội — quan hệ cấu trúc trên tập $\mathbb{Z}$.*
 
 ## Mục tiêu học tập
 

@@ -10,13 +10,32 @@ lang: en
 
 Mỗi lần bạn đăng nhập qua HTTPS, gửi tin nhắn được mã hóa, hay ký số một tài liệu, có một câu hỏi nền đang được giải ở phía sau: làm sao để chỉ đúng người nhận mới đọc được dữ liệu, và làm sao để tin được dữ liệu chưa bị sửa?
 
-
 Lý thuyết số trong chương này không đứng riêng lẻ, nó là nền cho mã hóa, kiểm tra tính đúng đắn và nhiều cơ chế bảo mật hiện đại.
 **Mật mã học** ra đời để trả lời những câu hỏi đó. Đây là nơi toán rời rạc, đặc biệt là logic, xác suất và lý thuyết số, đi thẳng vào một ứng dụng sống còn của khoa học máy tính.
 
 Điều thú vị là nhiều hệ mật mã cơ bản dựa trên các ý tưởng toán học rất gọn, nhưng tạo ra khả năng bảo vệ thông tin cực kỳ mạnh. Vì vậy, học mật mã ở mức nhập môn là cơ hội rất tốt để thấy toán trừu tượng biến thành công nghệ thật như thế nào.
 
 Trong bài này, chúng ta sẽ làm quen với các khái niệm cơ bản của mật mã và vai trò của chúng trong việc bảo vệ dữ liệu và giao tiếp số.
+
+![Sơ đồ RSA](https://commons.wikimedia.org/wiki/Special:FilePath/RSA_diagram.svg?width=640)
+
+*Hình 15.11: RSA: mã hóa bằng khóa công khai $(e,n)$, giải mã bằng khóa riêng $(d,n)$.*
+
+![Sinh khóa RSA](https://commons.wikimedia.org/wiki/Special:FilePath/RSA_key_generation.svg?width=640)
+
+*Hình 15.12: Chọn hai số nguyên tố lớn $p,q$ — nhân dễ, phân tích khó tạo asymmetry bảo mật.*
+
+![Độ khó phân tích thừa số](https://commons.wikimedia.org/wiki/Special:FilePath/Prime_factorization.svg?width=640)
+
+*Hình 15.13: Bảo mật RSA dựa trên giả thuyết phân tích tích hai số nguyên tố lớn là khó.*
+
+![Mũ modulo](https://commons.wikimedia.org/wiki/Special:FilePath/Modular_arithmetic.svg?width=640)
+
+*Hình 15.14: Mã hóa RSA dùng $c \equiv m^e \pmod n$ — số học mô-đun ở lõi mật mã.*
+
+![Lịch sử mật mã](https://commons.wikimedia.org/wiki/Special:FilePath/Carl_Friedrich_Gauss.jpg?width=640)
+
+*Hình 15.15: Từ Gauss đến Diffie–Hellman và RSA — lý thuyết số thuần trở thành hạ tầng Internet.*
 
 ## Mục tiêu học tập
 

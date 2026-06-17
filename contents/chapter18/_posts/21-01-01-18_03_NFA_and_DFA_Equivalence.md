@@ -12,6 +12,26 @@ Hãy tưởng tượng bạn cần thiết kế một máy nhận diện các ch
 
 NFA nghe có vẻ "mạnh hơn" DFA vì nó có khả năng đoán đúng - nhưng một định lý đẹp khẳng định rằng **NFA và DFA tương đương về sức biểu đạt**: cùng nhận diện đúng lớp ngôn ngữ chính quy. Cái giá là số trạng thái: chuyển từ NFA sang DFA có thể làm số trạng thái tăng theo cấp số mũ. Bài này sẽ trình bày định nghĩa NFA, thuật toán **xây dựng tập con** (subset construction) chuyển NFA về DFA, và hệ quả thực tế trong cài đặt biểu thức chính quy.
 
+![Ví dụ NFA](https://commons.wikimedia.org/wiki/Special:FilePath/NFA_example.svg?width=640)
+
+*Hình 18.11: NFA cho phép nhiều chuyển trên cùng ký hiệu và chuyển $\varepsilon$ — không tất định.*
+
+![Ví dụ DFA](https://commons.wikimedia.org/wiki/Special:FilePath/DFA_example.svg?width=640)
+
+*Hình 18.12: DFA: mỗi $(q,a)$ có đúng một trạng thái kế — dễ mô phỏng và hiện thực.*
+
+![Tương đương NFA và DFA](https://commons.wikimedia.org/wiki/Special:FilePath/Finite_state_machine.svg?width=640)
+
+*Hình 18.13: Mọi NFA có DFA tương đương — xây bằng tập lũy thừa trạng thái (subset construction).*
+
+![Xây dựng DFA từ NFA](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 18.14: Subset construction: mỗi trạng thái DFA là tập con trạng thái NFA.*
+
+![Ngôn ngữ chính quy](https://commons.wikimedia.org/wiki/Special:FilePath/Example_of_a_Turing_machine.svg?width=640)
+
+*Hình 18.15: NFA và DFA nhận diện cùng lớp ngôn ngữ chính quy (regular languages).*
+
 ## Mục tiêu học tập
 
 Sau khi hoàn thành bài này, sinh viên có thể:

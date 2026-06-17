@@ -33,6 +33,10 @@ Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc địn
 
 **Ví dụ**: Hàm $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^2$$ có domain và codomain đều là $$\mathbb{R}$$, nhưng ảnh là $$[0,\infty)$$.
 
+![Hàm số như máy ánh xạ đầu vào → đầu ra](https://commons.wikimedia.org/wiki/Special:FilePath/Function_machine2.svg?width=640)
+
+*Hình 6.1: Hàm số ánh xạ mỗi phần tử miền xác định đến đúng một phần tử miền đích — mô hình "hộp hàm".*
+
 ## 2. Hàm số như quan hệ đặc biệt
 
 Một quan hệ $$R\subseteq A\times B$$ là hàm từ $$A$$ đến $$B$$ nếu:
@@ -41,6 +45,10 @@ Một quan hệ $$R\subseteq A\times B$$ là hàm từ $$A$$ đến $$B$$ nếu:
 2. **Duy nhất**: nếu $$(a,b_1)\in R$$ và $$(a,b_2)\in R$$ thì $$b_1=b_2$$.
 
 **Ví dụ**: $$R=\{(1,a),(2,b),(3,b)\}$$ là hàm từ $$\{1,2,3\}$$ đến $$\{a,b\}$$. Nhưng $$S=\{(1,a),(1,b),(2,b)\}$$ không là hàm vì đầu vào 1 có hai đầu ra.
+
+![Hàm song ánh — mỗi đầu vào một đầu ra](https://commons.wikimedia.org/wiki/Special:FilePath/Bijection.svg?width=640)
+
+*Hình 6.2: Hàm là quan hệ đặc biệt — mỗi phần tử domain có đúng một mũi tên đi ra (tồn tại + duy nhất).*
 
 ## 3. Domain, codomain và range
 
@@ -80,11 +88,19 @@ $$f=\{(1,4),(2,7),(3,10)\}.$$
 
 Mỗi phần tử domain có đúng một mũi tên đi ra.
 
+![Sơ đồ mũi tên — biểu diễn hàm số](https://commons.wikimedia.org/wiki/Special:FilePath/Directed_graph.svg?width=640)
+
+*Hình 6.3: Sơ đồ mũi tên thể hiện ánh xạ từ tập A sang tập B — mỗi phần tử A có đúng một cung đi ra.*
+
 ## 5. Hàm toàn phần và hàm bộ phận
 
 **Định nghĩa**: Hàm trong toán rời rạc thường là **hàm toàn phần**: mọi phần tử của domain đều có ảnh. Trong lập trình, ta cũng gặp **hàm bộ phận**, tức chỉ xác định trên một phần domain.
 
 **Ví dụ**: $$g(x)=1/x$$ là hàm từ $$\mathbb{R}\setminus\{0\}$$ đến $$\mathbb{R}$$, nhưng không là hàm toàn phần từ $$\mathbb{R}$$ đến $$\mathbb{R}$$.
+
+![Hàm đơn ánh — không gộp hai đầu vào](https://commons.wikimedia.org/wiki/Special:FilePath/Injection.svg?width=640)
+
+*Hình 6.4: Hàm bộ phần chỉ xác định trên một phần domain — tương tự hàm đơn ánh không cho hai đầu vào khác nhau cùng đầu ra.*
 
 ## 6. Hàm trong lập trình
 
@@ -113,19 +129,15 @@ Tổng số cách: \( m \times m \times \cdots \times m \) (\( n \) lần) = \( 
 - **Không gian hàm** trong machine learning rất lớn → cần regularization / inductive bias.
 - **Enumeration** của tất cả hàm khả dĩ chỉ thực tế khi \( n \) nhỏ.
 
-## 9. Ứng dụng trong Khoa học Máy tính
-
-- **API**: ánh xạ request hợp lệ đến response.
-- **Hash function**: ánh xạ dữ liệu sang giá trị băm.
-- **Database key**: ánh xạ khóa chính đến bản ghi.
-- **Functional programming**: ưu tiên hàm thuần túy để dễ kiểm thử và suy luận.
-- **Machine learning**: mô hình học máy là hàm xấp xỉ từ đặc trưng đầu vào đến dự đoán.
-
 ## Hàm số trong AI và Machine Learning
 
 Trong AI, mô hình thường được nhìn như một hàm ánh xạ đầu vào sang đầu ra: ảnh $$\to$$ nhãn lớp, văn bản $$\to$$ cảm xúc, hay dữ liệu lịch sử $$\to$$ giá trị dự đoán. Vì thế, bài toán classification và regression đều có thể xem là xây hàm xấp xỉ từ dữ liệu.
 
 Neural network là hợp của nhiều hàm nhỏ: phép nhân ma trận, cộng bias và activation function như ReLU hay sigmoid. Mỗi tầng nhận đầu ra của tầng trước, nên toàn mạng là một composition of functions.
+
+![Mạng neural — hợp của nhiều hàm](https://commons.wikimedia.org/wiki/Special:FilePath/Neural_network.svg?width=640)
+
+*Hình 6.5: Neural network là composition of functions — mỗi tầng là một hàm ánh xạ vector đầu vào sang vector đầu ra.*
 
 Trong recommendation systems, ta thường cần hàm $$f(user, item)\to rating$$ để dự đoán mức độ phù hợp giữa người dùng và sản phẩm.
 
@@ -139,6 +151,18 @@ class MockModel:
 ```
 
 Đoạn mã trên mô phỏng kiểu `predict()` quen thuộc trong `sklearn`: nhận tập đầu vào và trả về đầu ra xác định cho từng mẫu.
+
+## 9. Ứng dụng trong Khoa học Máy tính
+
+- **API**: ánh xạ request hợp lệ đến response.
+- **Hash function**: ánh xạ dữ liệu sang giá trị băm.
+- **Database key**: ánh xạ khóa chính đến bản ghi.
+- **Functional programming**: ưu tiên hàm thuần túy để dễ kiểm thử và suy luận.
+- **Machine learning**: mô hình học máy là hàm xấp xỉ từ đặc trưng đầu vào đến dự đoán.
+
+![Hash function — ánh xạ khóa → giá trị](https://commons.wikimedia.org/wiki/Special:FilePath/Database.svg?width=640)
+
+*Hình 6.6: Hash function và database key là ví dụ hàm thực tế — ánh xạ dữ liệu đầu vào sang giá trị xác định.*
 
 ## Bài tập thực hành
 

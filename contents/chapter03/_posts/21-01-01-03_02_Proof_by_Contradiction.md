@@ -54,6 +54,10 @@ Kết luận: P đúng
 3. Vì điều vô lý không thể xảy ra, nên giả sử `¬P` phải sai.
 4. Do đó, `P` phải đúng.
 
+![Tam giác mâu thuẫn](https://commons.wikimedia.org/wiki/Special:FilePath/Absurd_triangle.svg?width=640)
+
+*Hình 3.6: Tam giác mâu thuẫn (reductio ad absurdum) — minh họa trực quan chứng minh phản chứng: giả sử phủ định dẫn đến điều vô lý.*
+
 Nói ngắn gọn:
 
 > Nếu giả sử "`P` sai" dẫn đến mâu thuẫn, thì `P` phải đúng.
@@ -94,6 +98,10 @@ Về mặt logic hình thức:
 - nên `P` phải đúng.
 
 Trong đó, `(Q ∧ ¬Q)` là một mâu thuẫn rõ ràng: một mệnh đề vừa đúng vừa sai cùng lúc.
+
+![Chứng minh Pythagore](https://commons.wikimedia.org/wiki/Special:FilePath/Pythagorean_proof.svg?width=640)
+
+*Hình 3.7: Chứng minh hình học cổ điển — nền tảng của lập luận chặt chẽ mà phản chứng kế thừa khi cần loại bỏ khả năng ngược lại.*
 
 ## Khi nào nên nghĩ đến phản chứng?
 
@@ -186,6 +194,10 @@ Vậy `b²` là số chẵn, suy ra `b` cũng là số chẵn.
 Như vậy, cả `a` và `b` đều chẵn. Điều này mâu thuẫn với điều kiện `gcd(a, b) = 1`, vì nếu cả hai cùng chẵn thì chúng có ước chung ít nhất là `2`.
 
 Vậy giả sử `√2` là số hữu tỷ là sai. Do đó `√2` là số vô tỷ. ∎
+
+![Số nguyên tố](https://commons.wikimedia.org/wiki/Special:FilePath/Prime_numbers.svg?width=640)
+
+*Hình 3.8: Sàng Eratosthenes — số nguyên tố là bối cảnh của nhiều chứng minh phản chứng kinh điển (vô tỷ, vô hạn số nguyên tố).*
 
 ### Điều đáng học từ ví dụ này
 
@@ -287,6 +299,10 @@ Trong cả hai trường hợp, `H` đều dự đoán sai về `D(D)`.
 Mâu thuẫn xuất hiện vì ta đã giả sử `H` là bộ quyết định đúng cho **mọi** chương trình và **mọi** input.
 
 Vậy không tồn tại thuật toán tổng quát như vậy. ∎
+
+![Đồ thị luồng điều khiển](https://commons.wikimedia.org/wiki/Special:FilePath/Control_flow_graph_of_function_with_two_if_else_statements.svg?width=640)
+
+*Hình 3.9: Đồ thị luồng điều khiển — mô hình hóa vòng lặp vô hạn trong chứng minh Halting Problem bằng phản chứng.*
 
 ### Điều cần hiểu đúng
 
@@ -409,6 +425,10 @@ Trong thiết kế hệ thống thực tế, đôi khi ba yêu cầu tưởng nh
 - xuất hiện mâu thuẫn.
 
 Ở mức nhập môn, sinh viên chỉ cần nhớ rằng phản chứng là công cụ rất mạnh để lập luận về **impossibility**, **invariant**, và **lower bound**.
+
+![Cây quyết định](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 3.10: Cây quyết định — mỗi nhánh "không thể" trong thiết kế hệ thống thường được chứng minh bằng phản chứng.*
 
 ## Cách nhận diện mâu thuẫn
 

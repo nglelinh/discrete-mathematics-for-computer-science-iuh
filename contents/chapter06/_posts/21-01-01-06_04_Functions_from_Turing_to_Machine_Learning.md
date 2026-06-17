@@ -71,8 +71,9 @@ Trong đó,
 hàm tính toán được (computable function)
 trở thành đối tượng cốt lõi.
 
-![Church và Turing]
-*Hình 1: Church và Turing giúp biến “hàm” từ khái niệm toán học thành khái niệm trung tâm của computation.*
+![Alan Turing — nền tảng tính toán](https://commons.wikimedia.org/wiki/Special:FilePath/Alan_Turing_Aged_16.jpg?width=640)
+
+*Hình 6.19: Alan Turing và Alonzo Church (lambda calculus) đặt "hàm tính toán được" làm trung tâm của khoa học máy tính.*
 
 ---
 
@@ -106,6 +107,10 @@ total = sum(nums)
 Mỗi thao tác ở đây là cách áp dụng hàm lên tập dữ liệu.
 Không cần viết vòng lặp tay cho mọi việc.
 Ta mô tả phép biến đổi ở mức cao hơn.
+
+![Lập trình hàm — map, filter, reduce](https://commons.wikimedia.org/wiki/Special:FilePath/Function_machine2.svg?width=640)
+
+*Hình 6.20: map, filter, reduce áp dụng hàm lên tập dữ liệu — tinh thần functional programming.*
 
 ### 2.3. Composition và tái sử dụng
 
@@ -193,8 +198,9 @@ Nói cách khác,
 ngay cả khi mô hình rất hiện đại,
 ngôn ngữ cơ bản để mô tả nó vẫn là ngôn ngữ của hàm.
 
-![Mô hình học máy như hàm ánh xạ]
-*Hình 2: Từ input đến prediction, machine learning có thể được hiểu như họ các hàm được học từ dữ liệu.*
+![Mô hình học máy như hàm ánh xạ](https://commons.wikimedia.org/wiki/Special:FilePath/Neural_network.svg?width=640)
+
+*Hình 6.21: Mô hình ML là hàm $$f: X \to Y$$ được học từ dữ liệu — từ đặc trưng đầu vào đến dự đoán đầu ra.*
 
 ---
 
@@ -233,6 +239,10 @@ Nó còn cần:
 trong computing,
 hàm không chỉ là ánh xạ.
 Nó còn mang specification rất cụ thể.
+
+![Hàm băm — toàn ánh nhưng không đơn ánh](https://commons.wikimedia.org/wiki/Special:FilePath/Surjection.svg?width=640)
+
+*Hình 6.22: SHA-256 là hàm toàn ánh (mọi digest đều khả dĩ) nhưng không đơn ánh (domain vô hạn → collision không tránh khỏi).*
 
 ### 4.3. Ứng dụng của hash
 
@@ -294,6 +304,10 @@ giúp kỹ sư viết code chính xác hơn,
 review tốt hơn,
 và tài liệu hóa rõ hơn.
 
+![API design — đặc tả hàm rõ ràng](https://commons.wikimedia.org/wiki/Special:FilePath/Function_machine2.svg?width=640)
+
+*Hình 6.23: API tốt giống hàm tốt — input, output, preconditions và errors phải được đặc tả không mơ hồ.*
+
 ### 5.3. Pure interface, messy world
 
 Dĩ nhiên,
@@ -322,6 +336,10 @@ tư duy hàm càng hữu ích:
 
 Ngay cả trong distributed systems đầy side effects,
 kỹ sư giỏi vẫn thường cố đẩy nhiều phần nhất có thể về dạng “hàm sạch, dễ reason”.
+
+![Hàm hợp trong hệ thống phân tán](https://commons.wikimedia.org/wiki/Special:FilePath/Example_for_a_composition_of_two_functions.svg?width=640)
+
+*Hình 6.24: Serverless functions và data pipelines là chuỗi hàm hợp — mỗi bước ánh xạ input sang output xác định.*
 
 ---
 

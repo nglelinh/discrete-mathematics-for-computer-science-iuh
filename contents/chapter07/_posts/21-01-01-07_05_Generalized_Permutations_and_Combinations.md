@@ -28,6 +28,10 @@ $$
 \binom{n+r-1}{r}=\binom{n+r-1}{n-1}.
 $$
 
+![Tổ hợp có lặp — chọn r đồ vật từ n loại](https://commons.wikimedia.org/wiki/Special:FilePath/Combination.svg?width=640)
+
+*Hình 7.21: Tổ hợp có lặp đếm số cách chọn $r$ đồ vật từ $n$ loại, mỗi loại có thể được chọn nhiều lần.*
+
 ### Phương pháp Stars and Bars
 
 Biểu diễn $r$ đồ vật bằng $r$ ngôi sao và dùng $n-1$ vạch để chia thành $n$ nhóm. Mỗi nhóm cho biết số đồ vật thuộc một loại.
@@ -45,6 +49,10 @@ $$
 $$
 
 **Chứng minh**: Ta sắp xếp $r$ sao và $n-1$ vạch trên một hàng gồm $r+n-1$ vị trí. Chọn vị trí cho các vạch là đủ xác định cấu hình, do đó có $\binom{r+n-1}{n-1}$ cách.
+
+![Giai thừa trong công thức stars and bars](https://commons.wikimedia.org/wiki/Special:FilePath/Factorial_1-5.svg?width=640)
+
+*Hình 7.22: Phương pháp stars and bars biến bài toán phân phối thành chọn vị trí cho $n-1$ vạch ngăn giữa $r$ sao.*
 
 <div class="interactive-tool" data-demo="stars-bars-visualizer" markdown="1">
 **Demo tương tác đề xuất**: Thanh kéo chọn $n$ và $r$, công cụ sinh các chuỗi sao-vạch tương ứng và chuyển từng chuỗi thành nghiệm $(x_1,\ldots,x_n)$.
@@ -90,6 +98,10 @@ $$
 \frac{n!}{n_1!n_2!\cdots n_k!}.
 $$
 
+![Hoán vị của đa tập — phần tử lặp](https://commons.wikimedia.org/wiki/Special:FilePath/Permutation.svg?width=640)
+
+*Hình 7.23: Hoán vị đa tập chia cho giai thừa các nhóm trùng để loại bỏ các sắp xếp không phân biệt được.*
+
 **Ví dụ**: Từ `MISSISSIPPI` có 11 chữ cái: M xuất hiện 1, I xuất hiện 4, S xuất hiện 4, P xuất hiện 2. Số hoán vị phân biệt là
 
 $$
@@ -114,6 +126,10 @@ $$
 $$
 
 Các hệ số này gọi là **hệ số đa thức** (multinomial coefficients).
+
+![Tam giác Pascal mở rộng](https://commons.wikimedia.org/wiki/Special:FilePath/Pascal_triangle_extended.svg?width=640)
+
+*Hình 7.24: Hệ số đa thức tổng quát hóa hệ số nhị thức sang khai triển nhiều biến $(x_1+\cdots+x_m)^n$.*
 
 ## 5. Ràng buộc trên và nguyên lý bù trừ
 

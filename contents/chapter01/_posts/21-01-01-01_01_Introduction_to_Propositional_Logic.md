@@ -43,21 +43,21 @@ Sau bài học này, sinh viên có thể:
 
 *Hình 1.1: Tượng bán thân Aristotle tại Palazzo Altemps, Roma — người đầu tiên hệ thống hóa các quy luật suy luận*
 
-![Logic symbols](https://source.unsplash.com/800x600/?logic,mathematics,symbols)
+![George Boole — cha đẻ logic Boolean](https://commons.wikimedia.org/wiki/Special:FilePath/George_Boole.jpg?width=400)
 
-*Hình 1.2: Các ký hiệu logic cơ bản*
+*Hình 1.2: George Boole (1815–1864), nhà toán học người Anh, người đặt nền móng cho logic Boolean dùng trong máy tính hiện đại.*
 
-![Formal logic history](https://source.unsplash.com/800x600/?history,philosophy,ancient)
+![Bảng tứ đối — nền tảng suy luận cổ điển](https://commons.wikimedia.org/wiki/Special:FilePath/Square_of_opposition%2C_set_diagrams.svg?width=500)
 
-*Hình 1.3: Lịch sử phát triển của logic học*
+*Hình 1.3: Bảng tứ đối (square of opposition) — mô hình quan hệ giữa các mệnh đề trong logic cổ điển, tiền thân của logic hình thức.*
 
-![Truth values](https://source.unsplash.com/800x600/?true,false,decision)
+![Cổng logic AND — giá trị chân lý nhị phân](https://commons.wikimedia.org/wiki/Special:FilePath/AND_ANSI_Labelled.svg?width=400)
 
-*Hình 1.4: Giá trị chân lý Đúng/Sai*
+*Hình 1.4: Cổng AND — chỉ cho kết quả Đúng (1) khi cả hai đầu vào đều Đúng, minh họa giá trị chân lý trong logic Boolean.*
 
-![Boolean logic](https://source.unsplash.com/800x600/?boolean,logic,computer)
+![Các cổng logic cơ bản](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
 
-*Hình 1.5: Logic Boolean trong máy tính*
+*Hình 1.5: Các cổng logic Boolean (NOT, AND, OR, XOR…) — nền tảng phần cứng của mọi bộ xử lý hiện đại.*
 
 ### Ví dụ về mệnh đề:
 - "2 + 3 = 5" (đúng)

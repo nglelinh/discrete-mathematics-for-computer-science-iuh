@@ -12,6 +12,26 @@ Một máy bán nước tự động chỉ "biết" vài điều: hiện đang c
 
 Một FSM được mô tả bởi một tập trạng thái hữu hạn, một bảng chữ cái đầu vào, một hàm chuyển trạng thái $$\delta$$, một trạng thái khởi đầu $$q_0$$, và một tập trạng thái kết thúc. Sự tinh tế nằm ở chỗ: chỉ với một tập **hữu hạn** trạng thái và bộ nhớ bằng không, FSM vẫn có thể nhận diện được toàn bộ lớp **ngôn ngữ chính quy** (regular languages) - cùng lớp ngôn ngữ mà biểu thức chính quy (regular expressions) trong các công cụ như `grep` hay `sed` mô tả. Đây là cây cầu đầu tiên giữa **logic toán học** và **mô hình tính toán** mà chúng ta sẽ đi qua.
 
+![Máy hữu hạn trạng thái](https://commons.wikimedia.org/wiki/Special:FilePath/Finite_state_machine.svg?width=640)
+
+*Hình 18.1: FSM: tập trạng thái hữu hạn, bảng chữ cái đầu vào và hàm chuyển trạng thái $\delta$.*
+
+![Ví dụ DFA](https://commons.wikimedia.org/wiki/Special:FilePath/DFA_example.svg?width=640)
+
+*Hình 18.2: DFA nhận diện chuỗi chẵn số bit 1 — minh họa trạng thái, chuyển và chấp nhận.*
+
+![Sơ đồ chuyển trạng thái](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 18.3: State diagram: nút là trạng thái, cạnh có nhãn ký hiệu đầu vào.*
+
+![Giới hạn FSM](https://commons.wikimedia.org/wiki/Special:FilePath/Example_of_a_Turing_machine.svg?width=640)
+
+*Hình 18.4: FSM không có bộ nhớ tự do — dẫn đến mô hình mạnh hơn như máy Turing.*
+
+![FSM trong phần cứng](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
+
+*Hình 18.5: Mạch tuần tự và bộ điều khiển vi xử lý được đặc tả bằng FSM.*
+
 ## Mục tiêu học tập
 
 Sau khi hoàn thành bài này, sinh viên có thể:

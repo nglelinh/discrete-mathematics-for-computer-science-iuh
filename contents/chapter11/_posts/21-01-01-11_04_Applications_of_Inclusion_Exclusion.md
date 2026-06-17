@@ -10,13 +10,32 @@ lang: vi
 
 Một nguyên lý chỉ thật sự sống khi nó giải được bài toán cụ thể. Với bao hàm, loại trừ cũng vậy. Sức mạnh của nó lộ rõ nhất khi các điều kiện giao nhau chằng chịt và những cách đếm đơn giản đều dẫn đến sai số.
 
-
 Hàm sinh mạnh ở chỗ nó đổi một dãy số thành đối tượng đại số dễ thao tác hơn, khá giống cách ta chọn biểu diễn phù hợp để làm bài toán đơn giản đi.
 Trong tổ hợp, ta dùng nó để đếm các cấu hình tránh ràng buộc nào đó. Trong xác suất, ta dùng nó để tính khả năng xảy ra ít nhất một biến cố. Trong khoa học máy tính, nó xuất hiện khi phân tích tập bản ghi thỏa nhiều điều kiện hoặc số cấu hình hợp lệ trong hệ thống có ràng buộc chồng lấn.
 
 Phần khó nhất thường không phải là thực hiện phép cộng trừ, mà là mô hình hóa đúng tập cần đếm và giao của các tập con liên quan. Khi làm đúng bước đó, công thức còn lại khá cơ học.
 
 Bài này sẽ tập trung vào các ví dụ ứng dụng để biến một nguyên lý trừu tượng thành công cụ thực chiến trong giải bài toán.
+
+![Ứng dụng bao hàm–loại trừ](https://commons.wikimedia.org/wiki/Special:FilePath/Inclusion-exclusion-3sets.svg?width=640)
+
+*Hình 11.16: Sàng Legendre và hàm Euler đều dùng cùng khuôn: cộng, trừ giao, cộng lại giao cao hơn.*
+
+![Phân tích thừa số nguyên tố](https://commons.wikimedia.org/wiki/Special:FilePath/Prime_factorization.svg?width=640)
+
+*Hình 11.17: Hàm $\phi(n)$ loại các số chia hết cho từng thừa số nguyên tố của $n$.*
+
+![Cấu trúc số nguyên](https://commons.wikimedia.org/wiki/Special:FilePath/Euler_diagram_of_number_sets.svg?width=640)
+
+*Hình 11.18: Đếm số nguyên tố cùng nhau, số toàn ánh và derangement đều là bài toán đếm trên tập số.*
+
+![Đếm cấu hình có ràng buộc](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 11.19: Bài toán tô màu: mỗi vi phạm là một tập con — bao hàm–loại trừ đếm cách tô hợp lệ.*
+
+![Ánh xạ và đếm](https://commons.wikimedia.org/wiki/Special:FilePath/Hash_table_simple_999.svg?width=640)
+
+*Hình 11.20: Số toàn ánh đếm ánh xạ không bỏ sót giá trị đích — ứng dụng trong phân bố và hashing.*
 
 ## 1. Sàng Legendre và đếm số nguyên tố
 

@@ -10,13 +10,32 @@ lang: en
 
 Một thuật toán chạy 0.01 giây với 100 phần tử chưa chắc vẫn ổn với 10 triệu phần tử. Trong khoa học máy tính, câu hỏi quan trọng không chỉ là chương trình chạy được, mà là nó tăng chi phí như thế nào khi đầu vào lớn dần.
 
-
 Phân tích thuật toán không chỉ hỏi chương trình chạy được hay không, mà còn hỏi nó còn dùng được khi dữ liệu lớn lên nhanh đến mức nào.
 Đó là lúc ta cần nhìn vào **tăng trưởng của hàm** thay vì các con số riêng lẻ. **Ký hiệu Big-O** cho phép ta mô tả tốc độ tăng của thời gian hoặc bộ nhớ theo cách đủ gọn để so sánh các thuật toán với nhau.
 
 Điều này đặc biệt quan trọng vì phần cứng nhanh hơn không xóa được một thuật toán tăng trưởng tệ. Một giải pháp $$O(n \log n)$$ và một giải pháp $$O(n^2)$$ có thể khác nhau rất lớn khi quy mô tăng lên.
 
 Trong bài này, chúng ta sẽ học cách đọc tốc độ tăng trưởng, hiểu ý nghĩa của Big-O và dùng nó để nói về hiệu năng một cách chặt chẽ hơn.
+
+![Ký hiệu Big-O](https://commons.wikimedia.org/wiki/Special:FilePath/Big-O-notation.png?width=640)
+
+*Hình 14.6: Big-O mô tả giới hạn trên của tốc độ tăng — so sánh thuật toán khi $n$ lớn.*
+
+![Các lớp phức tạp phổ biến](https://commons.wikimedia.org/wiki/Special:FilePath/BigOnotation_popular.svg?width=640)
+
+*Hình 14.7: Thứ tự tăng: $O(1)$, $O(\log n)$, $O(n)$, $O(n\log n)$, $O(n^2)$, $O(2^n)$.*
+
+![So sánh độ phức tạp](https://commons.wikimedia.org/wiki/Special:FilePath/Comparison_computational_complexity.svg?width=640)
+
+*Hình 14.8: Cùng bài toán, khác hàm tăng — chọn thuật toán quyết định khả năng mở rộng hệ thống.*
+
+![Hàm tuyến tính O(n)](https://commons.wikimedia.org/wiki/Special:FilePath/Arithmetic_progression.svg?width=640)
+
+*Hình 14.9: Vòng lặp đơn cho $O(n)$ — tăng tuyến tính theo kích thước đầu vào.*
+
+![Hàm mũ và đệ quy](https://commons.wikimedia.org/wiki/Special:FilePath/Fibonacci_spiral.svg?width=640)
+
+*Hình 14.10: Đệ quy lặp không tối ưu có thể dẫn đến $O(2^n)$ — cần phân tích tăng trưởng.*
 
 ## Mục tiêu học tập
 

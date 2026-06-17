@@ -30,6 +30,10 @@ $$
 
 **Chứng minh**: Khi tính $|A| + |B|$, mỗi phần tử chỉ thuộc $A$ hoặc chỉ thuộc $B$ được đếm đúng một lần. Mỗi phần tử thuộc $A \cap B$ được đếm hai lần: một lần trong $|A|$ và một lần trong $|B|$. Vì trong hợp ta chỉ muốn đếm nó một lần, ta trừ đi $|A \cap B|$. Do đó công thức đúng.
 
+![Phép hợp hai tập — nguyên lý bù trừ](https://commons.wikimedia.org/wiki/Special:FilePath/Venn_A_union_B.svg?width=640)
+
+*Hình 7.11: $|A \cup B| = |A| + |B| - |A \cap B|$ — trừ phần giao để không đếm trùng.*
+
 <div class="content-box example-box" markdown="1">
 **Ví dụ**: Trong một lớp có 50 sinh viên, 30 sinh viên học tiếng Anh, 20 sinh viên học tiếng Pháp, 10 sinh viên học cả hai. Số sinh viên học ít nhất một ngoại ngữ là
 
@@ -54,6 +58,10 @@ $$
 $$
 
 **Tại sao phải cộng lại giao ba?** Một phần tử nằm trong cả ba tập được đếm $3$ lần ở bước cộng tập đơn, bị trừ $3$ lần ở bước trừ giao đôi, nên tổng tạm thời là $0$. Ta phải cộng lại một lần để nó được đếm đúng một lần.
+
+![Nguyên lý bù trừ — ba tập hợp](https://commons.wikimedia.org/wiki/Special:FilePath/Inclusion-exclusion-3sets.svg?width=640)
+
+*Hình 7.12: Công thức bù trừ cho ba tập — cộng tập đơn, trừ giao đôi, cộng lại giao ba.*
 
 <div class="interactive-tool" data-demo="inclusion-exclusion-toggle" markdown="1">
 **Mô phỏng tương tác đề xuất**: Một bảng có ba công tắc `A`, `B`, `C`. Khi chọn vị trí của một phần tử trong sơ đồ Venn, công cụ hiển thị phần tử đó được cộng/trừ bao nhiêu lần trong công thức bù trừ.
@@ -95,6 +103,10 @@ $$
 
 Suy ra tổng xen kẽ không có hạng $\binom{r}{0}$ bằng $1$. Vậy mỗi phần tử thuộc hợp được đếm đúng một lần.
 
+![Phép giao hai tập](https://commons.wikimedia.org/wiki/Special:FilePath/Venn_A_intersect_B.svg?width=640)
+
+*Hình 7.13: Mỗi giao $|A_i \cap A_j|$ trong công thức tổng quát đại diện phần bị đếm trùng.*
+
 ## 4. Dạng bù: đếm phần tử không vi phạm điều kiện nào
 
 Nhiều bài toán dễ hơn nếu đếm số đối tượng **vi phạm ít nhất một điều kiện**, rồi lấy tổng trừ đi số đó.
@@ -123,7 +135,13 @@ $$
 
 Do đó số bị loại là $50+33+20-16-10-6+3=74$. Số hợp lệ là $100-74=26$.
 
+![Biểu đồ Venn ba tập](https://commons.wikimedia.org/wiki/Special:FilePath/Venn3.svg?width=640)
 
+*Hình 7.14: Dạng bù đếm các số không chia hết cho 2, 3 hoặc 5 — loại phần vi phạm ít nhất một điều kiện.*
+
+![Birthday paradox — va chạm sớm hơn trực giác](https://commons.wikimedia.org/wiki/Special:FilePath/Birthdaymatch.svg?width=640)
+
+*Hình 7.15: Nguyên lý bù trừ cũng xuất hiện khi đếm xác suất hợp nhiều biến cố — tương tự birthday paradox.*
 
 ## 6. Ứng dụng trong Khoa học Máy tính
 

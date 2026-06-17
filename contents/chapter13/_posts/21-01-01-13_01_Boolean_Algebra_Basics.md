@@ -10,13 +10,32 @@ lang: en
 
 Mỗi lần CPU đánh giá một điều kiện, mạch số mở hoặc đóng transistor, hay chương trình ghép các cờ trạng thái bằng `and`, `or`, `not`, ta đang đứng trên cùng một nền toán học: **đại số Boole**.
 
-
 Đại số Boole nối logic với phần cứng và tối ưu biểu thức, vì vậy phần này vừa có ý nghĩa toán học vừa rất gần với thiết kế mạch và điều kiện trong code.
 Nếu logic mệnh đề cho ta ngôn ngữ đúng và sai, thì đại số Boole cho ta cách thao tác có hệ thống trên các biểu thức đó như một dạng đại số thật sự. Đây là cây cầu nối rất đẹp giữa suy luận logic và thiết kế mạch số.
 
 Chủ đề này quan trọng vì nó cho phép ta đơn giản hóa biểu thức, chứng minh hai mạch tương đương, và chuẩn bị nền cho việc tối thiểu hóa hàm Boole ở các bài sau. Trong hardware lẫn software, biểu thức gọn hơn thường đồng nghĩa với hệ thống rõ hơn và đôi khi nhanh hơn.
 
 Trong bài này, chúng ta sẽ xây những quy tắc nền tảng của đại số Boole và nhìn chúng dưới cả hai góc độ, toán học và ứng dụng số.
+
+![George Boole](https://commons.wikimedia.org/wiki/Special:FilePath/George_Boole.jpg?width=640)
+
+*Hình 13.1: George Boole (1815–1864) — người đặt nền móng cho đại số logic dùng trong máy tính hiện đại.*
+
+![Cấu trúc đại số Boole](https://commons.wikimedia.org/wiki/Special:FilePath/Boolean_algebra.svg?width=640)
+
+*Hình 13.2: Đại số Boole trên $\{0,1\}$ với phép OR, AND và phần bù — nền tảng thiết kế mạch số.*
+
+![Các cổng logic](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
+
+*Hình 13.3: Các cổng logic Boolean (NOT, AND, OR, XOR…) — hiện thân phần cứng của biểu thức Boole.*
+
+![Cổng AND](https://commons.wikimedia.org/wiki/Special:FilePath/AND_ANSI_Labelled.svg?width=640)
+
+*Hình 13.4: Cổng AND — chỉ cho kết quả 1 khi cả hai đầu vào đều 1, tương ứng phép nhân logic.*
+
+![Cổng NOT](https://commons.wikimedia.org/wiki/Special:FilePath/NOT_ANSI_Labelled.svg?width=640)
+
+*Hình 13.5: Cổng NOT — phủ định giá trị logic, tương ứng phần bù trong đại số Boole.*
 
 ## Mục tiêu học tập
 

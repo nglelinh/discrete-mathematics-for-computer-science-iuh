@@ -30,6 +30,10 @@ Phép hợp gom tất cả phần tử thuộc ít nhất một trong hai tập.
 - A = {1, 2, 3}, B = {3, 4, 5}
 - A ∪ B = {1, 2, 3, 4, 5}
 
+![Biểu đồ Venn: hợp A ∪ B](https://commons.wikimedia.org/wiki/Special:FilePath/Union_of_sets_A_and_B.svg?width=500)
+
+*Hình 4.9: Phép hợp A ∪ B — vùng tô màu gồm mọi phần tử thuộc A, thuộc B, hoặc thuộc cả hai.*
+
 <div class="math-example">
 <strong>Ví dụ thực tế</strong>: Tập hợp sinh viên học Python hoặc Java
 <br>Python = {An, Bình, Chi}, Java = {Bình, Dung, Em}
@@ -54,6 +58,10 @@ Giao chỉ gồm các phần tử thuộc **đồng thời** cả hai tập.
 - A = {1, 2, 3}, B = {3, 4, 5}
 - A ∩ B = {3}
 
+![Biểu đồ Venn: giao A ∩ B](https://commons.wikimedia.org/wiki/Special:FilePath/Venn_A_intersect_B.svg?width=500)
+
+*Hình 4.10: Phép giao A ∩ B — chỉ vùng chồng lấn giữa hai tập được tô màu.*
+
 <div class="math-example">
 <strong>Ví dụ thực tế</strong>: Sinh viên học cả Python và Java
 <br>Python ∩ Java = {Bình}
@@ -66,6 +74,10 @@ print(Python.intersection(Java))
 
 **Tính chất**: Nếu A ∩ B = ∅, ta nói A và B **rời nhau** (disjoint).
 
+![Hai tập rời nhau (disjoint)](https://commons.wikimedia.org/wiki/Special:FilePath/Veranschaulichung_von_disjunkten_Mengen.svg?width=500)
+
+*Hình 4.11: Khi A ∩ B = ∅, hai tập không có phần tử chung — vùng giao trên biểu đồ Venn rỗng.*
+
 ### 3. Hiệu (Difference) -- \
 
 **Định nghĩa**: A \ B = {x | x ∈ A và x ∉ B}
@@ -76,6 +88,10 @@ Hiệu lấy các phần tử thuộc A nhưng không thuộc B. **Không giao h
 - A = {1, 2, 3}, B = {3, 4, 5}
 - A \ B = {1, 2}
 - B \ A = {4, 5}
+
+![Biểu đồ Venn: hiệu A \ B](https://commons.wikimedia.org/wiki/Special:FilePath/Venn_A_setminus_B.svg?width=500)
+
+*Hình 4.12: Phép hiệu A \ B — lấy phần thuộc A nhưng không thuộc B (lưu ý: A \ B ≠ B \ A).*
 
 ```python
 print(Python - Java)    # {'An', 'Chi'} -- học Python nhưng không học Java
@@ -93,7 +109,9 @@ Phần bù phụ thuộc vào tập vũ trụ U. Nếu thay đổi U, phần bù
 - U = {1, 2, 3, 4, 5}, A = {1, 3, 5}
 - Aᶜ = {2, 4}
 
+![Biểu đồ Venn: phần bù Aᶜ](https://commons.wikimedia.org/wiki/Special:FilePath/Venn-Diagram-NOT-P.png?width=400)
 
+*Hình 4.13: Phần bù Aᶜ = U \ A — mọi phần tử trong tập vũ trụ U nhưng không thuộc A.*
 
 ### 5. Hiệu đối xứng (Symmetric Difference) -- △
 
@@ -104,6 +122,10 @@ Hiệu đối xứng lấy các phần tử thuộc đúng một trong hai tập
 **Ví dụ**:
 - A = {1, 2, 3}, B = {3, 4, 5}
 - A △ B = {1, 2, 4, 5}
+
+![Biểu đồ Venn: hiệu đối xứng A △ B](https://commons.wikimedia.org/wiki/Special:FilePath/Venn_A_symmetric_minus_B.svg?width=500)
+
+*Hình 4.14: Hiệu đối xứng A △ B — các phần tử thuộc đúng một trong hai tập (tương đương XOR trong logic).*
 
 ```python
 print(Python ^ Java)   # {'An', 'Chi', 'Dung', 'Em'} 
@@ -128,6 +150,10 @@ Giống như đại số có các hằng đẳng thức (a + b)² = a² + 2ab + 
 
 #### Minh họa trực quan: Luật De Morgan trong code
 
+![Minh họa De Morgan trên biểu đồ Venn](https://commons.wikimedia.org/wiki/Special:FilePath/Intersections_of_two_sets_and_their_complements.svg?width=640)
+
+*Hình 4.15: Luật De Morgan — phần bù của hợp/giao tương ứng với giao/hợp của các phần bù.*
+
 **Luật De Morgan** cho phép "phân phối" phép bù:
 
 ```python
@@ -143,6 +169,10 @@ not (x in A and x in B) == (x not in A) or (x not in B)
 ## Ứng dụng trong Khoa học Máy tính
 
 ### 1. Cơ sở dữ liệu (SQL)
+
+![Cơ sở dữ liệu quan hệ và phép JOIN](https://commons.wikimedia.org/wiki/Special:FilePath/Square_join.png?width=500)
+
+*Hình 4.16: Phép JOIN trong SQL — kết hợp hai bảng (hai tập bộ) theo điều kiện khớp, tư duy tập hợp nằm ở lõi truy vấn.*
 
 Các phép toán tập hợp tương ứng trực tiếp với các truy vấn SQL:
 

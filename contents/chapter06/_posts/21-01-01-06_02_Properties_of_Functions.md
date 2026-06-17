@@ -40,6 +40,10 @@ Vậy $$f$$ đơn ánh.
 
 **Phản ví dụ**: $$g:\mathbb{R}\to\mathbb{R}$$, $$g(x)=x^2$$ không đơn ánh vì $$g(2)=g(-2)=4$$ nhưng $$2\ne-2$$.
 
+![Hàm đơn ánh (injective)](https://commons.wikimedia.org/wiki/Special:FilePath/Injection.svg?width=640)
+
+*Hình 6.7: Hàm đơn ánh — hai đầu vào khác nhau luôn cho hai đầu ra khác nhau; không có hai mũi tên trùng đích.*
+
 ## 2. Toàn ánh
 
 **Định nghĩa**: Hàm $$f:A\to B$$ là **toàn ánh** (surjective, onto) nếu mọi phần tử của codomain đều được đạt tới:
@@ -51,6 +55,10 @@ $$\forall y\in B,\exists x\in A\text{ sao cho }f(x)=y.$$
 **Chứng minh**: Lấy $$y\in\mathbb{R}$$ tùy ý. Chọn $$x=\sqrt[3]{y}$$. Khi đó $$f(x)=x^3=y$$. Vậy mọi $$y$$ đều có tiền ảnh.
 
 **Phản ví dụ**: $$g:\mathbb{R}\to\mathbb{R}$$, $$g(x)=x^2$$ không toàn ánh vì không có $$x\in\mathbb{R}$$ nào thỏa $$x^2=-1$$.
+
+![Hàm toàn ánh (surjective)](https://commons.wikimedia.org/wiki/Special:FilePath/Surjection.svg?width=640)
+
+*Hình 6.8: Hàm toàn ánh — mọi phần tử codomain đều được chạm tới; không có phần tử đích bị bỏ trống.*
 
 ## 3. Song ánh
 
@@ -67,6 +75,10 @@ Song ánh thiết lập sự ghép cặp một-một giữa $$A$$ và $$B$$. Khi
 
 Vậy $$f$$ song ánh.
 
+![Hàm song ánh (bijective)](https://commons.wikimedia.org/wiki/Special:FilePath/Bijection.svg?width=640)
+
+*Hình 6.9: Hàm song ánh vừa đơn ánh vừa toàn ánh — thiết lập ghép cặp một-một giữa hai tập, có thể đảo ngược.*
+
 ## 4. Vai trò của domain và codomain
 
 Cùng một công thức có thể có tính chất khác nhau nếu domain/codomain khác nhau.
@@ -77,7 +89,9 @@ Cùng một công thức có thể có tính chất khác nhau nếu domain/codo
 - $$f:\mathbb{R}\to[0,\infty)$$: không đơn ánh, nhưng toàn ánh.
 - $$f:[0,\infty)\to[0,\infty)$$: song ánh.
 
+![Cùng công thức, khác tính chất theo domain/codomain](https://commons.wikimedia.org/wiki/Special:FilePath/Function_machine2.svg?width=640)
 
+*Hình 6.10: Domain và codomain quyết định tính chất — cùng $$f(x)=x^2$$ nhưng khác domain/codomain cho kết quả đơn/toàn/song ánh khác nhau.*
 
 ## 8. Ứng dụng trong Khoa học Máy tính
 
@@ -86,6 +100,14 @@ Cùng một công thức có thể có tính chất khác nhau nếu domain/codo
 - **Serialization** tốt nên gần song ánh: serialize rồi deserialize phải thu lại dữ liệu ban đầu.
 - **Database primary key** tạo đơn ánh từ bản ghi sang khóa.
 - **Load balancing** thường là toàn ánh nếu mọi server đều nhận ít nhất một job.
+
+![Mã hóa khả nghịch cần song ánh](https://commons.wikimedia.org/wiki/Special:FilePath/Bijection.svg?width=640)
+
+*Hình 6.11: Mã hóa/giải mã và serialization cần song ánh — encode rồi decode phải thu lại dữ liệu ban đầu.*
+
+![Hash table — gần đơn ánh để giảm va chạm](https://commons.wikimedia.org/wiki/Special:FilePath/Injection.svg?width=640)
+
+*Hình 6.12: Hash function tốt nên gần đơn ánh — hai input khác nhau cho cùng output gây collision trong bảng băm.*
 
 ## Bài tập thực hành
 

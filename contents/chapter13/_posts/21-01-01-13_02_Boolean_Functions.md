@@ -10,13 +10,32 @@ lang: en
 
 Một biểu thức logic có thể viết theo nhiều cách khác nhau nhưng vẫn biểu diễn cùng một hành vi đầu vào, đầu ra. Khi thiết kế mạch số hoặc phân tích điều kiện trong hệ thống, ta cần một cách biểu diễn có cấu trúc để dễ so sánh và xử lý hơn.
 
-
 Đại số Boole nối logic với phần cứng và tối ưu biểu thức, vì vậy phần này vừa có ý nghĩa toán học vừa rất gần với thiết kế mạch và điều kiện trong code.
 **Hàm Boole** cho ta cách nhìn biểu thức logic như một ánh xạ từ các giá trị 0, 1 sang 0, 1. Từ đó, các **dạng chuẩn** như DNF hay CNF trở nên rất hữu ích vì chúng đưa biểu thức về khuôn nhất quán.
 
 Cách chuẩn hóa này quan trọng trong tối ưu logic, kiểm chứng mạch, SAT solving và nhiều hệ thống suy luận tự động. Một biểu thức viết chuẩn thường dễ phân tích và dễ chuyển thành phần cứng hoặc thuật toán hơn.
 
 Trong bài này, chúng ta sẽ đi từ khái niệm hàm Boole đến các dạng chuẩn thường dùng và ý nghĩa thực tế của việc chuẩn hóa biểu thức.
+
+![Hàm Boolean và cổng logic](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
+
+*Hình 13.6: Mỗi hàm Boolean $f:\{0,1\}^n\to\{0,1\}$ tương ứng một mạch logic.*
+
+![Bảng chân trị](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 13.7: Bảng chân trị liệt kê mọi tổ hợp đầu vào — không gian quyết định $2^n$ dòng.*
+
+![Mạch Half Adder](https://commons.wikimedia.org/wiki/Special:FilePath/Half_Adder.svg?width=640)
+
+*Hình 13.8: Half Adder minh họa cách xây hàm Boolean từ bảng chân trị sang mạch.*
+
+![Biểu thức SOP và POS](https://commons.wikimedia.org/wiki/Special:FilePath/Boolean_algebra.svg?width=640)
+
+*Hình 13.9: Dạng tổng các tích (SOP) và tích các tổng (POS) — hai cách chuẩn biểu diễn hàm Boole.*
+
+![Biểu đồ Venn AND](https://commons.wikimedia.org/wiki/Special:FilePath/Venn-Diagram-AND.png?width=640)
+
+*Hình 13.10: Phép AND tương ứng vùng giao trên biểu đồ Venn — trực giác cho hàm Boolean.*
 
 ## Mục tiêu học tập
 

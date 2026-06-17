@@ -81,9 +81,13 @@ Ma trận M_R có M_R[i][j] = 1 nếu (aᵢ, bⱼ) ∈ R, ngược lại = 0
 - **Cột** = phần tử đích (đến B)
 - Nếu A = B → ma trận **vuông**
 
-![Đồ thị có hướng](https://commons.wikimedia.org/wiki/Special:FilePath/Example_of_simple_directed_graph.svg?width=400)
+![Đồ thị có hướng](https://commons.wikimedia.org/wiki/Special:FilePath/Example_of_simple_directed_graph.svg?width=640)
 
 *Hình 5.1: Biểu diễn quan hệ bằng đồ thị có hướng — mỗi cung thể hiện một cặp (a, b) ∈ R.*
+
+![Tích Cartesian A × B](https://commons.wikimedia.org/wiki/Special:FilePath/Cartesian_Product_qtl1.svg?width=640)
+
+*Hình 5.2: Tích Cartesian A × B — mỗi cặp (a, b) ghép một phần tử từ A với một phần tử từ B.*
 
 ## Ứng dụng trong Khoa học Máy tính
 
@@ -91,6 +95,10 @@ Ma trận M_R có M_R[i][j] = 1 nếu (aᵢ, bⱼ) ∈ R, ngược lại = 0
 Mô hình quan hệ (relational model) do Edgar Codd đề xuất năm 1970 là nền tảng của hầu hết cơ sở dữ liệu hiện đại. Mỗi bảng (table) là một quan hệ, mỗi hàng là một bộ (tuple), và mỗi cột là một thuộc tính.
 
 Trong cách nhìn này, lược đồ `Enrollments(student_id, course_id)` được xây từ tích Cartesian `Students × Courses`, còn quan hệ thật sự chỉ lấy những cặp có nghĩa như `(S01, CS101)`. Quan hệ one-to-many xuất hiện ở `Departments × Students`, còn many-to-many xuất hiện ở `Students × Courses`.
+
+![Biểu tượng cơ sở dữ liệu quan hệ](https://commons.wikimedia.org/wiki/Special:FilePath/Database.svg?width=640)
+
+*Hình 5.3: Mô hình quan hệ — mỗi bảng là một quan hệ, mỗi hàng là một bộ (tuple).*
 
 ### 2. Quan hệ và truy vấn SQL
 Các phép SQL quen thuộc chính là cách thao tác trên quan hệ: `SELECT` gần với phép chiếu thuộc tính, `WHERE` lọc những bộ thỏa điều kiện, còn `JOIN` ghép các quan hệ qua thuộc tính chung.
@@ -105,6 +113,10 @@ WHERE c.department = 'CS';
 
 Ở đây, `JOIN` nối các cặp liên hệ, `WHERE` giữ lại các bộ thuộc khoa `CS`, và `SELECT` chỉ chiếu ra hai thuộc tính cần xem.
 
+![Phép JOIN trong SQL](https://commons.wikimedia.org/wiki/Special:FilePath/Square_join.png?width=640)
+
+*Hình 5.4: Phép JOIN ghép hai quan hệ qua thuộc tính chung — tương đương lọc tích Cartesian theo điều kiện khớp khóa.*
+
 ```python
 students = {"S01", "S02"}
 courses = {"CS101", "MATH101"}
@@ -116,6 +128,14 @@ cs_only = {sid for (sid, cid) in enrollments if cid == "CS101"}
 
 ### 2. Đồ thị và mạng xã hội
 Quan hệ "bạn bè" trên Facebook là quan hệ hai ngôi. Đồ thị có hướng của quan hệ giúp phân tích mạng xã hội: ai là người có ảnh hưởng, ai kết nối các nhóm.
+
+![Đồ thị có hướng minh họa quan hệ](https://commons.wikimedia.org/wiki/Special:FilePath/Directed_graph.svg?width=640)
+
+*Hình 5.5: Đồ thị có hướng — mỗi cung (mũi tên) biểu diễn một cặp có trong quan hệ.*
+
+![Phân tích mạng xã hội](https://commons.wikimedia.org/wiki/Special:FilePath/Social_Network_Analysis_Visualization.png?width=640)
+
+*Hình 5.6: Mạng xã hội thực tế là đồ thị quan hệ quy mô lớn — phân tích liên kết giúp tìm nhóm, ảnh hưởng và cấu trúc cộng đồng.*
 
 ### 3. Lý thuyết đồ thị
 Mọi đồ thị có hướng đều biểu diễn một quan hệ. Đồ thị vô hướng biểu diễn quan hệ đối xứng.

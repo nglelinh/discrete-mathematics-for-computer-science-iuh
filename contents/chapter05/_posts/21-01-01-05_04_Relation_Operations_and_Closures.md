@@ -34,6 +34,10 @@ $$(R^{-1})^{-1}=R.$$
 
 Nếu $$R$$ đối xứng thì $$R^{-1}=R$$.
 
+![Quan hệ ngược — đảo chiều cung](https://commons.wikimedia.org/wiki/Special:FilePath/Directed_graph.svg?width=640)
+
+*Hình 5.19: Quan hệ ngược $$R^{-1}$$ đảo hướng mọi cung — từ (a, b) ∈ R suy ra (b, a) ∈ R⁻¹.*
+
 ## 2. Hợp thành quan hệ
 
 **Định nghĩa**: Cho $$R\subseteq A\times B$$ và $$S\subseteq B\times C$$. Hợp thành $$S\circ R$$ là quan hệ từ $$A$$ đến $$C$$:
@@ -49,6 +53,10 @@ $$S\circ R=\{(a,c)\mid \exists b\in B,\ (a,b)\in R\land (b,c)\in S\}.$$
 
 Vậy $$S\circ R=\{(1,1),(2,3)\}$$.
 
+![Hợp thành quan hệ — ghép hai bước](https://commons.wikimedia.org/wiki/Special:FilePath/Directed_graph.svg?width=640)
+
+*Hình 5.20: Hợp thành $$S \circ R$$ ghép hai quan hệ: (a, c) ∈ S∘R khi tồn tại b sao cho (a, b) ∈ R và (b, c) ∈ S.*
+
 ## 3. Ma trận quan hệ và tích Boolean
 
 Nếu $$R$$ và $$S$$ được biểu diễn bằng ma trận 0-1, thì ma trận của $$S\circ R$$ được tính bằng tích Boolean:
@@ -56,6 +64,10 @@ Nếu $$R$$ và $$S$$ được biểu diễn bằng ma trận 0-1, thì ma trậ
 $$M_{S\circ R}[i,j]=\bigvee_k(M_R[i,k]\land M_S[k,j]).$$
 
 Ở đây phép nhân thường được thay bằng AND, phép cộng thường được thay bằng OR.
+
+![Ma trận quan hệ và tích Boolean](https://commons.wikimedia.org/wiki/Special:FilePath/Set_partitions_4;_Hasse;_matrices.svg?width=640)
+
+*Hình 5.21: Tích Boolean của hai ma trận quan hệ tính hợp thành — AND thay nhân, OR thay cộng.*
 
 ## 4. Lũy thừa quan hệ
 
@@ -65,6 +77,10 @@ $$M_{S\circ R}[i,j]=\bigvee_k(M_R[i,k]\land M_S[k,j]).$$
 - $$R^{n+1}=R^n\circ R$$.
 
 **Ý nghĩa**: $$(a,b)\in R^k$$ nếu tồn tại đường đi độ dài $$k$$ từ $$a$$ đến $$b$$ trong đồ thị của $$R$$.
+
+![Lũy thừa quan hệ — đường đi nhiều bước](https://commons.wikimedia.org/wiki/Special:FilePath/Example_of_simple_directed_graph.svg?width=640)
+
+*Hình 5.22: $$R^k$$ chứa các cặp (a, b) có đường đi độ dài k từ a đến b trong đồ thị của R.*
 
 ## 5. Bao đóng
 
@@ -94,6 +110,10 @@ $$R^*=I_A\cup R^+,$$
 
 trong đó $$I_A=\{(a,a)\mid a\in A\}$$.
 
+![Bao đóng bắc cầu — thêm cung gián tiếp](https://commons.wikimedia.org/wiki/Special:FilePath/Directed_graph.svg?width=640)
+
+*Hình 5.23: Bao đóng bắc cầu $$R^*$$ thêm mọi cặp (a, c) có đường đi từ a đến c, kể cả vòng phản xạ.*
+
 ## 6. Thuật toán Warshall
 
 Ở phần này, đừng chỉ nhớ các bước. Hãy chú ý điều kiện áp dụng, thông tin được duy trì sau mỗi bước và lý do thuật toán cho kết quả đúng.
@@ -111,6 +131,10 @@ def warshall(M):
                 M[i][j] = M[i][j] or (M[i][k] and M[k][j])
     return M
 ```
+
+![Thuật toán Warshall — reachability](https://commons.wikimedia.org/wiki/Special:FilePath/Example_of_simple_directed_graph.svg?width=640)
+
+*Hình 5.24: Warshall tính bao đóng bắc cầu trên ma trận kề — trả lời truy vấn reachability giữa mọi cặp đỉnh.*
 
 ## 9. Ứng dụng trong Khoa học Máy tính
 

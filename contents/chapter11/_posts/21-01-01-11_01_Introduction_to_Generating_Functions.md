@@ -10,13 +10,32 @@ lang: vi
 
 Có những lúc ta muốn nén cả một dãy vô hạn vào trong một biểu thức duy nhất để dễ thao tác hơn. Nghe lạ, nhưng đó chính là điều **hàm sinh** làm được, và cũng là lý do nó trở thành một công cụ rất đẹp trong combinatorics.
 
-
 Hàm sinh mạnh ở chỗ nó đổi một dãy số thành đối tượng đại số dễ thao tác hơn, khá giống cách ta chọn biểu diễn phù hợp để làm bài toán đơn giản đi.
 Thay vì nhìn dãy như danh sách rời rạc từng số hạng, ta gói chúng vào một chuỗi hình thức. Khi đó, các phép cộng, nhân, đạo hàm hay biến đổi đại số trên hàm sinh sẽ phản ánh trực tiếp cấu trúc của bài toán đếm hoặc truy hồi phía sau.
 
 Từ góc nhìn khoa học máy tính, đây là một cách đổi biểu diễn để làm bài toán dễ hơn, khá giống việc chọn cấu trúc dữ liệu hay mô hình trung gian phù hợp trước khi xử lý. Đổi góc nhìn đúng thường giúp lời giải gọn hơn rất nhiều.
 
 Trong bài này, chúng ta sẽ làm quen với hàm sinh, ý nghĩa của các hệ số trong chuỗi, và vì sao công cụ này lại mạnh đến vậy trong toán rời rạc.
+
+![Chuỗi lũy thừa hình thức](https://commons.wikimedia.org/wiki/Special:FilePath/Power_series.svg?width=640)
+
+*Hình 11.1: Chuỗi lũy thừa $G(x)=\sum a_n x^n$ — mỗi hệ số $a_n$ mã hóa một số hạng của dãy.*
+
+![Hàm sinh (generating function)](https://commons.wikimedia.org/wiki/Special:FilePath/Generating_function.svg?width=640)
+
+*Hình 11.2: Hàm sinh gói cả dãy số vào một biểu thức duy nhất để thao tác bằng đại số.*
+
+![Leonhard Euler](https://commons.wikimedia.org/wiki/Special:FilePath/Leonhard_Euler.jpg?width=640)
+
+*Hình 11.3: Leonhard Euler (1707–1783) — nhà toán học tiên phong trong lý thuyết hàm sinh và chuỗi lũy thừa.*
+
+![Dãy số học](https://commons.wikimedia.org/wiki/Special:FilePath/Arithmetic_progression.svg?width=640)
+
+*Hình 11.4: Dãy số học là ví dụ đầu tiên: hệ số tăng tuyến tính tương ứng với cấu trúc đếm đơn giản.*
+
+![Ký hiệu tổng Σ](https://commons.wikimedia.org/wiki/Special:FilePath/Sigma_summation_notation.svg?width=640)
+
+*Hình 11.5: Ký hiệu Σ liên kết hàm sinh với các tổng hữu hạn và vô hạn trong tổ hợp.*
 
 ## 1. Định nghĩa
 
@@ -47,8 +66,6 @@ G(x)=\sum_{n\ge0}a_nx^n
 $$
 
 như một **chuỗi lũy thừa hình thức** (formal power series). Điều quan trọng nhất không phải giá trị của $x$, mà là các quy tắc trên hệ số.
-
-
 
 ## 7. Ứng dụng trong Khoa học Máy tính
 

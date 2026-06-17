@@ -26,6 +26,26 @@ và coding theory.
 
 ---
 
+![Euler và hàm sinh](https://commons.wikimedia.org/wiki/Special:FilePath/Leonhard_Euler.jpg?width=640)
+
+*Hình 11.21: Euler biến các dãy số thành đối tượng đại số, mở ra một trong những công cụ đẹp nhất của tổ hợp học.*
+
+![Hàm sinh xác suất (PGF)](https://commons.wikimedia.org/wiki/Special:FilePath/Generating_function.svg?width=640)
+
+*Hình 11.22: Hàm sinh xác suất biến phân phối rời rạc thành đối tượng có thể vi phân, nhân và phân tích.*
+
+![Đếm tổ hợp bằng hệ số](https://commons.wikimedia.org/wiki/Special:FilePath/Power_series.svg?width=640)
+
+*Hình 11.23: Nhân các chuỗi hình thức — hệ số của $x^n$ cho số cách đạt tổng $n$.*
+
+![Giải truy hồi bằng hàm sinh](https://commons.wikimedia.org/wiki/Special:FilePath/Fibonacci_spiral.svg?width=640)
+
+*Hình 11.24: Truy hồi khó trở nên phương trình đại số sau khi chuyển sang miền hàm sinh.*
+
+![Weight enumerator trong mã hóa](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 11.25: Đa thức đếm codeword theo trọng số Hamming — họ hàng gần của hàm sinh trong coding theory.*
+
 ## Phần 1: Euler và cú nhảy năm 1748
 
 ### 1.1. Euler nhìn dãy số như đối tượng đại số
@@ -53,9 +73,6 @@ và biến đổi chuỗi để rút kết quả đếm.
 
 Đây là kiểu “đổi ngôn ngữ để bài toán dễ hơn”
 mà khoa học máy tính rất quen thuộc.
-
-![Euler và generating functions]
-*Hình 1: Euler biến các dãy số thành đối tượng đại số, mở ra một trong những công cụ đẹp nhất của tổ hợp học.*
 
 ---
 
@@ -127,9 +144,6 @@ Trong các hệ thống như hàng đợi,
 traffic processes,
 và mô hình ngẫu nhiên theo thời gian,
 generating functions từng là công cụ chuẩn để phân tích phân phối trạng thái.
-
-![Probability generating function intuition]
-*Hình 2: Hàm sinh xác suất biến phân phối rời rạc thành đối tượng có thể vi phân, nhân, và phân tích theo cách rất tiện lợi.*
 
 ---
 

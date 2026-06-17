@@ -10,13 +10,32 @@ lang: en
 
 Khi số biến tăng lên, bản đồ Karnaugh bắt đầu mất lợi thế. Những gì còn trực quan với 3 hoặc 4 biến sẽ nhanh chóng trở nên rối. Lúc đó, ta cần một quy trình có hệ thống hơn để tối thiểu hóa hàm Boole.
 
-
 Đại số Boole nối logic với phần cứng và tối ưu biểu thức, vì vậy phần này vừa có ý nghĩa toán học vừa rất gần với thiết kế mạch và điều kiện trong code.
 **Phương pháp Quine, McCluskey** chính là phiên bản mang tính thuật toán của bài toán đó. Nó đặc biệt quan trọng vì có thể cơ giới hóa, rất phù hợp với tư duy lập trình và các công cụ thiết kế mạch tự động.
 
 Thay vì dựa vào trực giác hình ảnh, phương pháp này làm việc bằng cách nhóm, rút gọn và chọn các implicant thiết yếu theo từng bước rõ ràng. Nó cho thấy một bài toán logic có thể được chuyển thành quy trình tính toán cụ thể như thế nào.
 
 Trong bài này, chúng ta sẽ học quy trình Quine, McCluskey và hiểu khi nào nó phù hợp hơn các phương pháp trực quan như Karnaugh.
+
+![Bảng Quine–McCluskey](https://commons.wikimedia.org/wiki/Special:FilePath/Quine-McCluskey_table.svg?width=640)
+
+*Hình 13.21: Phương pháp Quine–McCluskey tìm prime implicant bằng bảng có hệ thống — phù hợp nhiều biến.*
+
+![So sánh với K-map](https://commons.wikimedia.org/wiki/Special:FilePath/Karnaugh_map.svg?width=640)
+
+*Hình 13.22: K-map trực quan cho 2–4 biến; Quine–McCluskey mở rộng cho hàm nhiều biến hơn.*
+
+![Bảng chân trị và minterm](https://commons.wikimedia.org/wiki/Special:FilePath/Boolean_algebra.svg?width=640)
+
+*Hình 13.23: Mỗi hàng bảng chân trị là một minterm — điểm xuất phát của thuật toán.*
+
+![Biểu thức tối tiểu](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
+
+*Hình 13.24: Kết quả tối thiểu hóa dẫn đến mạch ít cổng hơn và tiết kiệm transistor.*
+
+![Nhóm theo số bit 1](https://commons.wikimedia.org/wiki/Special:FilePath/Gray_code.svg?width=640)
+
+*Hình 13.25: Quine–McCluskey nhóm minterm theo số lượng bit 1 — tương tự cấu trúc mã Gray.*
 
 ## Mục tiêu học tập
 

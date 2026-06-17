@@ -51,8 +51,9 @@ Kiểu reasoning này xuất hiện rất nhiều trong toán học và computer
 - phải có thông điệp không phân biệt được,
 - phải có cấu hình lặp.
 
-![Dirichlet và nguyên lý chuồng chim]
-*Hình 1: Một lập luận đếm ngắn của Dirichlet trở thành công cụ nền cho rất nhiều kết quả hiện đại.*
+![Johann Peter Gustav Lejeune Dirichlet](https://commons.wikimedia.org/wiki/Special:FilePath/Dirichlet.jpg?width=640)
+
+*Hình 8.11: Một lập luận đếm ngắn của Dirichlet trở thành công cụ nền cho rất nhiều kết quả hiện đại trong khoa học máy tính.*
 
 ---
 
@@ -91,6 +92,10 @@ hoặc các chiến lược khác.
 Điểm quan trọng là:
 nguyên lý chuồng chim giải thích ngay từ đầu vì sao xử lý collision không phải “edge case”.
 Nó là phần tất yếu của thiết kế.
+
+![Nguyên lý chuồng chim — hash collision](https://commons.wikimedia.org/wiki/Special:FilePath/Pigeonhole.jpg?width=640)
+
+*Hình 8.12: Hash collision là hệ quả logic — nhiều đầu vào hơn đầu ra thì ít nhất hai input phải ánh xạ cùng một giá trị.*
 
 ---
 
@@ -131,8 +136,13 @@ và phân bố không đồng đều.
 Không có cấu trúc,
 không có phép màu.
 
-![Lossless compression impossibility intuition]
-*Hình 2: Nguyên lý chuồng chim cho thấy vì sao lossless compression không thể thắng tuyệt đối trên mọi dữ liệu.*
+![Quá nhiều file — không thể nén tất cả](https://commons.wikimedia.org/wiki/Special:FilePath/TooManyPigeons.jpg?width=640)
+
+*Hình 8.13: Nguyên lý chuồng chim cho thấy vì sao lossless compression không thể thắng tuyệt đối trên mọi dữ liệu.*
+
+![Birthday paradox — giới hạn ánh xạ song ánh](https://commons.wikimedia.org/wiki/Special:FilePath/Birthdaymatch.svg?width=640)
+
+*Hình 8.14: Nén lossless là ánh xạ song ánh — khi số file lớn hơn số chuỗi ngắn hơn, collision là bất khả tránh.*
 
 ---
 
@@ -169,6 +179,10 @@ ta phân tách không gian lỗi đến mức nào?
 tư duy chuồng chim vẫn hiện diện:
 số lượng pattern cần phân biệt so với số lượng codewords/metadata sẵn có.
 
+![Cây quyết định — phân tách không gian lỗi](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 8.15: Với số bit kiểm tra hữu hạn, số pattern lỗi có thể phân biệt cũng hữu hạn — nguyên lý chuồng chim đặt giới hạn cho coding theory.*
+
 ---
 
 ## Phần 5: Ramsey theory — trật tự xuất hiện từ hỗn độn
@@ -196,6 +210,10 @@ Ramsey-style thinking chạm vào:
 
 Đó là minh chứng rằng từ nguyên lý cực đơn giản,
 toán học có thể đi rất xa.
+
+![Ramsey theory — mẫu trật tự bắt buộc](https://commons.wikimedia.org/wiki/Special:FilePath/Venn3.svg?width=640)
+
+*Hình 8.16: Ramsey theory nghiên cứu khi nào một cấu trúc nhất định phải xuất hiện trong hệ thống đủ lớn.*
 
 ---
 

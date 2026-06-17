@@ -50,6 +50,10 @@ Xét các mệnh đề sau:
 
 Logic mệnh đề không thể biểu diễn được cấu trúc bên trong của các mệnh đề này.
 
+![Chân dung Aristotle](https://commons.wikimedia.org/wiki/Special:FilePath/Aristotle.jpg?width=640)
+
+*Hình 2.1: Aristotle — một trong những nền tảng của logic hình thức phương Tây; logic vị từ mở rộng logic mệnh đề để biểu diễn cấu trúc bên trong phát biểu.*
+
 <div class="content-box insight-box" markdown="1">
 **Tại sao không?** Trong logic mệnh đề, bạn chỉ có thể đặt tên cho toàn bộ câu. p = "Tất cả sinh viên đều học toán". Nhưng nếu muốn suy luận "An là sinh viên, vậy An học toán", bạn cần biết cấu trúc bên trong của p — điều mà logic mệnh đề không cho phép. Logic vị từ giải quyết vấn đề này.
 </div>
@@ -90,6 +94,10 @@ is_student("An")      # True hoặc False
 is_student("Nguyễn")  # True hoặc False
 ```
 
+![Cú pháp logic bậc nhất](https://commons.wikimedia.org/wiki/Special:FilePath/Logiquepremierordre_syntaxe.svg?width=640)
+
+*Hình 2.2: Cây cú pháp của công thức logic bậc nhất — vị từ kết hợp với lượng từ và các phép toán logic tạo thành công thức có cấu trúc phân cấp.*
+
 ### 2. Miền (Domain/Universe)
 **Định nghĩa**: Tập hợp tất cả các giá trị có thể của biến.
 
@@ -113,6 +121,10 @@ is_student("Nguyễn")  # True hoặc False
 **Ví dụ**:
 - ∃x (x² = 4): "Tồn tại x sao cho x² = 4"
 - ∃x (Student(x) ∧ GoodAtProgramming(x)): "Có sinh viên giỏi lập trình"
+
+![Ký hiệu hai lượng từ](https://commons.wikimedia.org/wiki/Special:FilePath/Symboles_mathématiques_des_deux_quantificateurs_logiques.png?width=640)
+
+*Hình 2.3: Ký hiệu ∀ (với mọi) và ∃ (tồn tại) — hai lượng từ cơ bản mở rộng logic mệnh đề sang logic vị từ.*
 
 ## Ví dụ chi tiết
 
@@ -146,7 +158,9 @@ Thứ tự của các lượng từ rất quan trọng!
 - ∀x ∃y L(x,y): "Với mọi x, tồn tại y > x" (ĐÚNG với số thực)
 - ∃y ∀x L(x,y): "Tồn tại y sao cho mọi x đều < y" (SAI với số thực)
 
+![Phạm vi lượng từ lồng nhau](https://commons.wikimedia.org/wiki/Special:FilePath/QuantifierScopes_svg.svg?width=640)
 
+*Hình 2.4: Phạm vi (scope) của lượng từ — thứ tự và phạm vi ∀, ∃ quyết định ý nghĩa khi nhiều lượng từ xuất hiện trong cùng một công thức.*
 
 ## Ứng dụng trong Khoa học Máy tính
 
@@ -185,6 +199,10 @@ function identity<T>(x: T): T { return x; }
 
 Bất biến vòng lặp thường được biểu diễn bằng vị từ và lượng từ:
 - $$\forall i (0 \leq i < k \implies P(a[i]))$$ — mọi phần tử trong đoạn [0..k-1] đều thỏa P
+
+![George Boole](https://commons.wikimedia.org/wiki/Special:FilePath/George_Boole.jpg?width=640)
+
+*Hình 2.5: George Boole — cha đẻ của đại số Boolean; nền tảng của logic mệnh đề và mở rộng sang logic vị từ trong khoa học máy tính.*
 
 ## Logic vị từ trong Trí tuệ Nhân tạo
 

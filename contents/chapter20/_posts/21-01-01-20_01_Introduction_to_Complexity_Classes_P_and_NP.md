@@ -18,6 +18,26 @@ Khoa học máy tính lý thuyết phân loại các bài toán quyết định 
 Đây là bài mở đầu chương 20. Nội dung chi tiết sẽ được bổ sung trong các phiên bản tiếp theo.
 </div>
 
+![Bài toán P vs NP](https://commons.wikimedia.org/wiki/Special:FilePath/P_vs_NP.svg?width=640)
+
+*Hình 20.1: Câu hỏi $P \stackrel{?}{=} NP$ — bài toán mở nổi tiếng nhất khoa học máy tính.*
+
+![Bài toán NP-đầy đủ](https://commons.wikimedia.org/wiki/Special:FilePath/NP-complete.svg?width=640)
+
+*Hình 20.2: NP-complete: thuộc NP và mọi bài NP rút gọn đa thức về nó — SAT là ví dụ đầu tiên.*
+
+![Độ phức tạp đa thức](https://commons.wikimedia.org/wiki/Special:FilePath/Comparison_computational_complexity.svg?width=640)
+
+*Hình 20.3: Lớp P: giải trong thời gian đa thức; NP: kiểm tra lời giải trong thời gian đa thức.*
+
+![Mô hình Turing](https://commons.wikimedia.org/wiki/Special:FilePath/Example_of_a_Turing_machine.svg?width=640)
+
+*Hình 20.4: Máy Turing đo độ phức tạp thời gian — nền định nghĩa hình thức lớp P và NP.*
+
+![Rút gọn đa thức](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 20.5: Polynomial-time reduction — chứng minh NP-hard bằng cách rút gọn SAT hoặc 3-SAT.*
+
 ## Mục tiêu học tập
 
 Sau khi hoàn thành bài này, sinh viên sẽ:

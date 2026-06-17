@@ -10,13 +10,32 @@ lang: en
 
 Một biểu thức logic không chỉ nằm trên giấy. Trong mạch số, nó phải được hiện thực bằng các **cổng logic** thật, với chi phí phần cứng, độ trễ và độ phức tạp kết nối cụ thể.
 
-
 Đại số Boole nối logic với phần cứng và tối ưu biểu thức, vì vậy phần này vừa có ý nghĩa toán học vừa rất gần với thiết kế mạch và điều kiện trong code.
 Vì vậy, việc tối thiểu hóa hàm Boole không phải chuyện thẩm mỹ ký hiệu. Biểu thức gọn hơn có thể dẫn đến mạch ít cổng hơn, ít tầng hơn, dễ kiểm thử hơn và đôi khi tiết kiệm năng lượng hơn. Đây là điểm giao rất rõ giữa toán rời rạc và kiến trúc máy tính.
 
 Khi đã nhìn biểu thức như một mạng cổng, nhiều câu hỏi trở nên rất thực tế: có thể thay thế cấu trúc này bằng cấu trúc gọn hơn không, hai mạch có tương đương không, đâu là điểm dư thừa?
 
 Trong bài này, chúng ta sẽ nối logic đại số với mạch số, rồi học cách đơn giản hóa hàm Boole theo góc nhìn triển khai thực tế.
+
+![Cổng logic cơ bản](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
+
+*Hình 13.11: Thiết kế mạch bắt đầu từ cổng NOT, AND, OR rồi mở rộng sang NAND, NOR, XOR.*
+
+![Mạch số từ hàm Boole](https://commons.wikimedia.org/wiki/Special:FilePath/Half_Adder.svg?width=640)
+
+*Hình 13.12: Mạch cộng nhị phân — ví dụ thực tế của tối thiểu hóa và hiện thực hóa hàm Boolean.*
+
+![Bản đồ Karnaugh](https://commons.wikimedia.org/wiki/Special:FilePath/Karnaugh_map.svg?width=640)
+
+*Hình 13.13: K-map nhóm các minterm kề nhau để rút gọn biểu thức Boole trực quan.*
+
+![Tối thiểu hóa đại số](https://commons.wikimedia.org/wiki/Special:FilePath/Boolean_algebra.svg?width=640)
+
+*Hình 13.14: Luật Boole (hấp thụ, phân phối, De Morgan) rút gọn biểu thức trước khi vẽ mạch.*
+
+![Cổng NOT trong tối ưu](https://commons.wikimedia.org/wiki/Special:FilePath/NOT_ANSI_Labelled.svg?width=640)
+
+*Hình 13.15: Mỗi cổng logic thêm vào mạch tăng transistor và độ trễ — tối thiểu hóa có ý nghĩa vật lý.*
 
 ## Mục tiêu học tập
 

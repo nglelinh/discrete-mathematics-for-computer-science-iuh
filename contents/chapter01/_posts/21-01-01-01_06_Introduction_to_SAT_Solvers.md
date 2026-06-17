@@ -16,25 +16,25 @@ Câu trả lời nằm ở **SAT Solver** — một trong những công cụ qua
 
 **Định nghĩa**: **SAT** (Boolean Satisfiability Problem) là bài toán xác định xem có tồn tại một phép gán giá trị cho các biến sao cho công thức Boolean cho kết quả đúng hay không.
 
-![SAT problem](https://source.unsplash.com/800x600/?puzzle,solution,algorithm,computer)
+![Bài toán SAT — tìm phép gán thỏa mãn CNF](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=500)
 
-*Hình 1.26: Bài toán SAT*
+*Hình 1.26: Bài toán SAT — tìm phép gán giá trị cho n biến sao cho công thức CNF đúng (không gian tìm kiếm 2ⁿ).*
 
-![Backtracking tree](https://source.unsplash.com/800x600/?tree,algorithm,structure,computer)
+![Cây backtracking — duyệt không gian nghiệm](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=500)
 
-*Hình 1.27: Cây backtracking*
+*Hình 1.27: Backtracking — thử gán từng biến, quay lui khi gặp mâu thuẫn (conflict).*
 
-![DPLL algorithm](https://source.unsplash.com/800x600/?algorithm,flowchart,diagram)
+![Thuật toán DPLL — gán biến và suy diễn đơn vị](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
 
-*Hình 1.28: Thuật toán DPLL*
+*Hình 1.28: DPLL kết hợp gán biến, unit propagation và backtracking — nền tảng của mọi SAT solver hiện đại.*
 
-![CDCL solver](https://source.unsplash.com/800x600/?solver,algorithm,computer,science)
+![CDCL — học từ mâu thuẫn (Conflict-Driven Clause Learning)](https://commons.wikimedia.org/wiki/Special:FilePath/Half_Adder.svg?width=500)
 
-*Hình 1.29: Conflict-Driven Clause Learning*
+*Hình 1.29: CDCL ghi nhớ các mâu thuẫn đã gặp để cắt nhánh tìm kiếm — SAT solver hiện đại giải được hàng triệu biến.*
 
-![Sudoku solver](https://source.unsplash.com/800x600/?sudoku,puzzle,game,logic)
+![Giải Sudoku bằng SAT solver](https://source.unsplash.com/800x600/?sudoku,puzzle,game,logic)
 
-*Hình 1.30: Giải Sudoku bằng SAT solver*
+*Hình 1.30: Sudoku có thể mã hóa thành CNF — một ví dụ thú vị về ứng dụng SAT solver ngoài kiểm chứng phần cứng.*
 
 **Ví dụ đơn giản**:
 

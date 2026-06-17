@@ -10,13 +10,32 @@ lang: vi
 
 Khi đếm các đối tượng thỏa nhiều điều kiện cùng lúc, cách cộng thẳng từng nhóm gần như chắc chắn sẽ sai nếu các nhóm có giao nhau. Đây là một vấn đề rất thực trong xác suất, truy vấn dữ liệu và cả các bài toán tổ hợp.
 
-
 Hàm sinh mạnh ở chỗ nó đổi một dãy số thành đối tượng đại số dễ thao tác hơn, khá giống cách ta chọn biểu diễn phù hợp để làm bài toán đơn giản đi.
 **Nguyên lý bao hàm, loại trừ** cho ta một khuôn mẫu chính xác để sửa hiện tượng đếm trùng. Ta cộng các nhóm riêng lẻ, trừ đi các phần giao đã bị tính hai lần, rồi tiếp tục điều chỉnh khi có giao của ba nhóm, bốn nhóm và hơn nữa.
 
 Điều làm nguyên lý này đáng học là nó xuất hiện lặp đi lặp lại trong nhiều bối cảnh khác nhau. Một công cụ đúng ở tập hợp cũng đúng ở xác suất và nhiều bài toán đếm cấu hình.
 
 Trong bài học này, chúng ta sẽ xây lại nguyên lý một cách có hệ thống và chuẩn bị nền cho các ứng dụng mạnh hơn ngay sau đó.
+
+![Bao hàm–loại trừ ba tập](https://commons.wikimedia.org/wiki/Special:FilePath/Inclusion-exclusion-3sets.svg?width=640)
+
+*Hình 11.11: Công thức bao hàm–loại trừ cho ba tập — cộng từng tập, trừ giao đôi, cộng giao ba.*
+
+![Giao hai tập A ∩ B](https://commons.wikimedia.org/wiki/Special:FilePath/Venn_A_intersect_B.svg?width=640)
+
+*Hình 11.12: Phần giao bị đếm hai lần khi cộng $|A|+|B|$ — phải trừ $|A\cap B|$.*
+
+![Hợp hai tập A ∪ B](https://commons.wikimedia.org/wiki/Special:FilePath/Union_of_sets_A_and_B.svg?width=640)
+
+*Hình 11.13: Nguyên lý bao hàm–loại trừ cho $|A\cup B|$ — nền tảng đếm có điều kiện chồng lấn.*
+
+![De Morgan và bao hàm](https://commons.wikimedia.org/wiki/Special:FilePath/Intersections_of_two_sets_and_their_complements.svg?width=640)
+
+*Hình 11.14: Dạng bù: đếm phần tử không vi phạm điều kiện bằng tổng không gian trừ hợp vi phạm.*
+
+![Biểu đồ Venn ba tập](https://commons.wikimedia.org/wiki/Special:FilePath/Venn3.svg?width=640)
+
+*Hình 11.15: Mô hình hóa trực quan các tập $A_i$ và giao của chúng trước khi áp công thức.*
 
 ## 1. Công thức cho hai và ba tập
 
@@ -42,7 +61,6 @@ $$
 \left|\bigcup_{i=1}^{n}A_i\right|
 =\sum_{\emptyset\neq I\subseteq\{1,\ldots,n\}}(-1)^{|I|+1}\left|\bigcap_{i\in I}A_i\right|.
 $$
-
 
 **Chứng minh bằng đếm số lần**: Xét một phần tử thuộc đúng $r$ tập. Trong tổng trên, nó được tính
 

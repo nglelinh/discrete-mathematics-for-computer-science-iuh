@@ -39,6 +39,10 @@ Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc địn
 
 > Cantor đã định nghĩa tập hợp một cách trực quan: "Một tập hợp là sự kết hợp thành một tổng thể của những đối tượng xác định, phân biệt của trực giác hay tư duy của chúng ta."
 
+![Georg Cantor — cha đẻ lý thuyết tập hợp](https://commons.wikimedia.org/wiki/Special:FilePath/Georg_Cantor_1894.jpg?width=300)
+
+*Hình 4.1: Georg Cantor (1845–1918), nhà toán học người Đức, người đặt nền móng cho lý thuyết tập hợp hiện đại.*
+
 ### Ký hiệu:
 - Tập hợp: A, B, C, ... (chữ cái in hoa)
 - Phần tử: a, b, c, ... (chữ cái thường)
@@ -56,6 +60,10 @@ Liệt kê tất cả các phần tử trong dấu ngoặc nhọn. Đây là cá
 - B = {a, e, i, o, u} (các nguyên âm)
 - C = {đỏ, xanh, vàng}
 
+![Các phần tử riêng biệt trong một tập hợp](https://source.unsplash.com/800x600/?collection,objects,group)
+
+*Hình 4.2: Phương pháp liệt kê — mỗi phần tử trong tập phải **riêng biệt** và được ghi rõ trong dấu ngoặc nhọn.*
+
 ### 2. Mô tả tính chất (Set-Builder Notation)
 
 Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữu ích khi tập có quá nhiều phần tử hoặc vô hạn.
@@ -65,7 +73,7 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 
 ![Biểu đồ Venn 3 tập](https://commons.wikimedia.org/wiki/Special:FilePath/Venn3.svg?width=640)
 
-*Hình 4.1: Biểu đồ Venn minh họa giao và hợp của 3 tập hợp.*
+*Hình 4.3: Biểu đồ Venn minh họa quan hệ giữa 3 tập hợp — vùng giao (intersection) và vùng hợp (union).*
 
 **Ví dụ**:
 - A = {x | x là số nguyên và 1 ≤ x ≤ 5}
@@ -79,7 +87,9 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 - (0, 1) = {x ∈ ℝ | 0 < x < 1}
 - [0, ∞) = {x ∈ ℝ | x ≥ 0}
 
+![Ký hiệu khoảng trên trục số thực](https://commons.wikimedia.org/wiki/Special:FilePath/Interval.svg?width=640)
 
+*Hình 4.4: Minh họa khoảng đóng [a, b], khoảng mở (a, b) và khoảng nửa mở trên trục số thực.*
 
 ### 2. Tập hợp con (Subset)
 
@@ -93,6 +103,14 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 - ∅ ⊆ A với mọi tập hợp A
 - A ⊆ A với mọi tập hợp A
 - Nếu A ⊆ B và B ⊆ C thì A ⊆ C (bắc cầu)
+
+![Biểu đồ Venn: A là tập con của B](https://commons.wikimedia.org/wiki/Special:FilePath/Venn_A_subset_B.svg?width=500)
+
+*Hình 4.5: Khi A ⊆ B, mọi phần tử của A đều nằm bên trong vùng của B trên biểu đồ Venn.*
+
+![Ký hiệu tập rỗng ∅](https://commons.wikimedia.org/wiki/Special:FilePath/Empty_set.svg?width=400)
+
+*Hình 4.6: Tập rỗng ∅ — tập hợp không chứa phần tử nào, nhưng vẫn là tập con của mọi tập hợp.*
 
 <div class="content-box example-box" markdown="1">
 **Ví dụ trực quan**: Cho A = {a, b}, hãy liệt kê tất cả tập con của A.
@@ -225,7 +243,11 @@ pow(pow({1})) = {∅, {∅}, {{1}}, {∅, {1}}}.
 
 </details>
 
-## Định lý: Số tập con của một tập hữu hạn
+## Định lý: Số tập con của một tập hợp hữu hạn
+
+![Sơ đồ tập lũy thừa (power set)](https://commons.wikimedia.org/wiki/Special:FilePath/Powerset.svg?width=500)
+
+*Hình 4.7: Tập lũy thừa P(S) gồm tất cả tập con của S — với |S| = n phần tử thì |P(S)| = 2ⁿ.*
 
 **Định lý**: Một tập hợp hữu hạn \( A \) có đúng \( 2^{|A|} \) tập con (bao gồm cả ∅ và \( A \)).
 
@@ -253,6 +275,14 @@ Giả sử \( A = \{a_1, a_2, \dots, a_n\} \), \( |A| = n \).
 **Ý nghĩa trong Khoa học Máy tính**:
 - **Không gian trạng thái** của một hệ thống \( n \) bit có \( 2^n \) trạng thái.
 - **Tập con** xuất hiện trong thiết kế thuật toán (subset sum, knapsack), database (power set indexing), và AI (feature selection).
+
+## Các tập hợp số quan trọng
+
+Trong toán học và khoa học máy tính, ta thường gặp các tập số lồng nhau:
+
+![Sơ đồ các tập hợp số ℕ, ℤ, ℚ, ℝ, ℂ](https://commons.wikimedia.org/wiki/Special:FilePath/Euler_diagram_of_number_sets.svg?width=640)
+
+*Hình 4.8: Quan hệ lồng nhau giữa các tập số — số tự nhiên ℕ ⊂ số nguyên ℤ ⊂ số hữu tỉ ℚ ⊂ số thực ℝ ⊂ số phức ℂ.*
 
 ## Tóm tắt
 

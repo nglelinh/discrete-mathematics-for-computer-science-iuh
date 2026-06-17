@@ -10,13 +10,32 @@ lang: en
 
 Khi người dùng bấm tìm kiếm, khi hệ thống sắp xếp dữ liệu, khi ứng dụng kiểm tra đường đi hay mã hóa thông tin, đằng sau mỗi hành động đều có một chuỗi bước xử lý rõ ràng. Chuỗi bước đó chính là **thuật toán**.
 
-
 Phân tích thuật toán không chỉ hỏi chương trình chạy được hay không, mà còn hỏi nó còn dùng được khi dữ liệu lớn lên nhanh đến mức nào.
 Thuật toán không chỉ là đoạn code chạy được. Nó là ý tưởng giải bài toán một cách chính xác, hữu hạn và có thể lặp lại. Cùng một bài toán có thể có nhiều cách giải, nhưng không phải cách nào cũng hiệu quả, dễ kiểm chứng hay dễ mở rộng.
 
 Học về thuật toán trong toán rời rạc giúp ta nhìn trước phần cài đặt. Ta học cách mô tả lời giải, phân tích tính đúng và so sánh chất lượng của các cách tiếp cận, thay vì lao ngay vào code.
 
 Trong bài này, chúng ta sẽ xây khái niệm nền về thuật toán và lý do vì sao nó là trung tâm của toàn bộ khoa học máy tính.
+
+![Al-Khwarizmi](https://commons.wikimedia.org/wiki/Special:FilePath/Al-Khwarizmi.jpg?width=640)
+
+*Hình 14.1: Al-Khwarizmi (thế kỷ IX) — nguồn gốc từ ngữ *algorithm*, quy trình giải bài toán có hệ thống.*
+
+![Nhà toán học Ba Tư](https://commons.wikimedia.org/wiki/Special:FilePath/Muhammad_ibn_Musa_al-Khwarizmi.jpg?width=640)
+
+*Hình 14.2: Các công trình đại số và số học của Al-Khwarizmi đặt nền cho thuật toán hiện đại.*
+
+![Luồng thuật toán](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+
+*Hình 14.3: Thuật toán là dãy bước xác định — mô hình hóa bằng sơ đồ quyết định và luồng điều khiển.*
+
+![Tìm kiếm nhị phân](https://commons.wikimedia.org/wiki/Special:FilePath/Binary_search_into_array.svg?width=640)
+
+*Hình 14.4: Tìm kiếm nhị phân — ví dụ kinh điển: đầu vào có cấu trúc, đầu ra đúng, số bước hữu hạn.*
+
+![Sắp xếp trộn](https://commons.wikimedia.org/wiki/Special:FilePath/Merge_sort_algorithm_diagram.svg?width=640)
+
+*Hình 14.5: Merge sort — chia để trị, minh họa tư duy thuật toán đệ quy và phân tích độ phức tạp.*
 
 ## Mục tiêu học tập
 

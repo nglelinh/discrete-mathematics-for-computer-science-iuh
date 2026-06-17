@@ -33,6 +33,10 @@ $$
 
 **Ví dụ**: Fibonacci thỏa $F_n=F_{n-1}+F_{n-2}$ với $F_0=0,F_1=1$.
 
+![Dãy truy hồi tuyến tính hệ số hằng](https://commons.wikimedia.org/wiki/Special:FilePath/Constant-recursive-sequences.svg?width=640)
+
+*Hình 10.6: Truy hồi tuyến tính thuần nhất bậc $k$ — nghiệm là tổng các hạng dạng $r_i^n$.*
+
 ## 2. Ý tưởng nghiệm dạng $r^n$
 
 Giả sử $a_n=r^n$ với $r\ne0$. Thay vào truy hồi bậc hai
@@ -54,6 +58,10 @@ r^2-c_1r-c_2=0.
 $$
 
 Đây là **phương trình đặc trưng**.
+
+![Giải bài toán đệ quy — phương trình đặc trưng](https://commons.wikimedia.org/wiki/Special:FilePath/Recursive_problem_solving.svg?width=640)
+
+*Hình 10.7: Phương trình đặc trưng $r^k - c_1 r^{k-1} - \cdots - c_k = 0$ quyết định cấu trúc nghiệm của truy hồi tuyến tính.*
 
 <div class="content-box insight-box" markdown="1">
 **Trực giác**: Nếu một dãy tăng theo quy luật nhân lặp lại, tỉ số giữa các số hạng liên tiếp gần giống một hằng số. Vì vậy nghiệm mũ $r^n$ là ứng viên tự nhiên cho hệ tuyến tính hệ số hằng.
@@ -125,6 +133,10 @@ $$
 
 Trường hợp này xuất hiện trong các mô hình dao động rời rạc, bộ lọc tín hiệu và phân tích hệ thống tuyến tính.
 
+![Tỷ lệ vàng — nghiệm của Fibonacci](https://commons.wikimedia.org/wiki/Special:FilePath/Golden_ratio_line.svg?width=640)
+
+*Hình 10.8: Nghiệm phức của phương trình đặc trưng Fibonacci liên quan tỷ lệ vàng $\varphi = \frac{1+\sqrt{5}}{2}$.*
+
 ## 6. Bậc cao hơn
 
 Với truy hồi bậc $k$,
@@ -140,6 +152,14 @@ r^k-c_1r^{k-1}-c_2r^{k-2}-\cdots-c_k=0.
 $$
 
 Mỗi nghiệm phân biệt $r_i$ đóng góp một hạng $\alpha_i r_i^n$; nghiệm bội đóng góp thêm các nhân tử đa thức theo $n$.
+
+![Merge Sort — truy hồi chia để trị](https://commons.wikimedia.org/wiki/Special:FilePath/Merge_sort_algorithm_diagram.svg?width=640)
+
+*Hình 10.9: Phân tích thuật toán đệ quy thường quy về truy hồi — ví dụ $T(n) = 2T(n/2) + n$ của merge sort.*
+
+![Master Theorem — giải truy hồi chia để trị](https://commons.wikimedia.org/wiki/Special:FilePath/Master_theorem.png?width=640)
+
+*Hình 10.10: Master Theorem giải nhanh dạng $T(n) = aT(n/b) + f(n)$ — công cụ công nghiệp cho phân tích thuật toán.*
 
 <div class="interactive-demo" markdown="1">
 **Demo tương tác đề xuất**: Người học nhập hệ số $c_1,c_2$ và điều kiện đầu. Công cụ vẽ nghiệm đặc trưng trên trục số/phức và hiển thị vài số hạng đầu của dãy.

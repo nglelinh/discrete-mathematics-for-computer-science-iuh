@@ -32,6 +32,10 @@ $$a: \mathbb{N}\to\mathbb{R},\quad n\mapsto a_n.$$
 - Dãy bình phương: $$a_n=n^2$$ cho $$1,4,9,16,\ldots$$.
 - Dãy Fibonacci: $$F_1=1,F_2=1,F_n=F_{n-1}+F_{n-2}$$.
 
+![Dãy số — giá trị theo chỉ số](https://source.unsplash.com/800x600/?sequence,numbers,pattern)
+
+*Hình 4.24: Dãy số gán mỗi chỉ số n một giá trị aₙ — mô hình hóa dữ liệu theo thời gian, vòng lặp, và độ phức tạp thuật toán.*
+
 ## 2. Dãy số học và dãy hình học
 
 ### Dãy số học
@@ -44,6 +48,10 @@ trong đó $$d$$ là công sai.
 
 **Ví dụ**: Dãy $$3,7,11,15,\ldots$$ có $$a_1=3,d=4$$, nên $$a_{100}=3+99\cdot4=399$$.
 
+![Dãy số học (cấp số cộng)](https://commons.wikimedia.org/wiki/Special:FilePath/Arithmetic_progression.svg?width=640)
+
+*Hình 4.25: Dãy số học — hiệu d giữa hai số hạng liên tiếp không đổi, đồ thị là đường thẳng.*
+
 ### Dãy hình học
 
 **Định nghĩa**: Dãy hình học (cấp số nhân) có tỉ số giữa hai số hạng liên tiếp không đổi.
@@ -54,6 +62,10 @@ trong đó $$r$$ là công bội.
 
 **Ví dụ**: Dãy $$2,6,18,54,\ldots$$ có $$a_1=2,r=3$$, nên $$a_{10}=2\cdot3^9$$.
 
+![Dãy hình học (cấp số nhân)](https://commons.wikimedia.org/wiki/Special:FilePath/Geometric_sequence.svg?width=640)
+
+*Hình 4.26: Dãy hình học — tỉ số r giữa hai số hạng liên tiếp không đổi, đồ thị tăng theo hàm mũ.*
+
 ## 3. Dãy được định nghĩa đệ quy
 
 **Định nghĩa**: Một dãy được định nghĩa đệ quy khi số hạng sau phụ thuộc vào một hoặc nhiều số hạng trước.
@@ -61,6 +73,10 @@ trong đó $$r$$ là công bội.
 **Ví dụ**:
 
 $$F_0=0,\quad F_1=1,\quad F_n=F_{n-1}+F_{n-2}\quad(n\ge 2).$$
+
+![Xoắn ốc Fibonacci](https://commons.wikimedia.org/wiki/Special:FilePath/Fibonacci_spiral.svg?width=500)
+
+*Hình 4.27: Dãy Fibonacci — mỗi số hạng là tổng hai số hạng trước; xuất hiện trong đệ quy, dynamic programming và phân tích thuật toán.*
 
 ### Nhận xét CS
 
@@ -92,6 +108,10 @@ $$\sum_{i=m}^{n} a_i = a_m+a_{m+1}+\cdots+a_n.$$
 **Ví dụ**:
 
 $$\sum_{i=1}^{5} i = 1+2+3+4+5=15.$$
+
+![Ký hiệu tổng Sigma (Σ)](https://commons.wikimedia.org/wiki/Special:FilePath/Sigma_summation_notation.svg?width=640)
+
+*Hình 4.28: Ký hiệu Σ viết gọn tổng nhiều số hạng — chỉ số chạy từ cận dưới m đến cận trên n.*
 
 ## 5. Tính chất của tổng
 
@@ -161,6 +181,10 @@ $$\sum_{i=0}^{n-1} a_{i+1} = \sum_{j=1}^{n} a_j.$$
 
 $$H_n = \sum_{k=1}^{n} \frac{1}{k} = 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}.$$
 
+![Số điều hòa Hₙ tăng chậm như ln n](https://source.unsplash.com/800x600/?harmonic,mathematics,graph)
+
+*Hình 4.30: Số điều hòa Hₙ ≈ ln n + γ — xuất hiện trong phân tích thuật toán sắp xếp và cấu trúc dữ liệu.*
+
 **Tính chất quan trọng** (không chứng minh chi tiết ở đây):
 
 - $$H_n \approx \ln n + \gamma$$ ($$\gamma \approx 0.57721$$ là hằng số Euler–Mascheroni).
@@ -191,6 +215,10 @@ $$2S=(n+1)+(n+1)+\cdots+(n+1)=n(n+1).$$
 Vậy:
 
 $$S=\frac{n(n+1)}{2}.$$
+
+![Công thức tổng 1+2+…+n của Gauss](https://commons.wikimedia.org/wiki/Special:FilePath/Sigmaschreibweise_f%C3%BCr_Summen.svg?width=640)
+
+*Hình 4.29: Chứng minh tổng số tự nhiên — cộng hai dãy đối xứng cho 2S = n(n+1), nền tảng đánh giá vòng lặp Θ(n²).*
 
 ## 11. Tổng và vòng lặp
 

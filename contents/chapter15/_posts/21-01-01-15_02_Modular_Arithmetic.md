@@ -10,13 +10,32 @@ lang: en
 
 Đồng hồ 24 giờ, chỉ số vòng trong buffer tròn, checksum, mã hóa RSA, tất cả đều dùng một ý tưởng quen mà đôi khi ta không gọi tên: sau khi vượt một ngưỡng, giá trị quay về đầu vòng. Đó chính là tinh thần của **số học modulo**.
 
-
 Lý thuyết số trong chương này không đứng riêng lẻ, nó là nền cho mã hóa, kiểm tra tính đúng đắn và nhiều cơ chế bảo mật hiện đại.
 Khi làm việc theo modulo, nhiều phép tính lớn trở nên gọn hơn và có cấu trúc hơn. Quan hệ **đồng dư** cho ta cách nói hai số "giống nhau trong cùng một vòng lặp" theo một mô đun cho trước. Đây là công cụ trung tâm của lý thuyết số ứng dụng.
 
 Trong khoa học máy tính, modulo xuất hiện ở khắp nơi, từ băm, mật mã, lịch biểu tuần hoàn đến xử lý địa chỉ trong cấu trúc dữ liệu vòng. Vì vậy, đây không phải một phần phụ, mà là ngôn ngữ nền của rất nhiều kỹ thuật thực tế.
 
 Trong bài này, chúng ta sẽ học cách tính toán trong modulo và hiểu rõ ý nghĩa của đồng dư trước khi đi sang mật mã và ứng dụng sâu hơn.
+
+![Số học modulo](https://commons.wikimedia.org/wiki/Special:FilePath/Modular_arithmetic.svg?width=640)
+
+*Hình 15.6: Đồng dư modulo $n$ — hai số cùng số dư khi chia cho $n$.*
+
+![Gauss và đồng dư](https://commons.wikimedia.org/wiki/Special:FilePath/Carl_Friedrich_Gauss.jpg?width=640)
+
+*Hình 15.7: Gauss hệ thống hóa modular arithmetic — nền cho RSA và nhiều giao thức bảo mật.*
+
+![Modulo trong hashing](https://commons.wikimedia.org/wiki/Special:FilePath/Hash_table_simple_999.svg?width=640)
+
+*Hình 15.8: `hash(key) % table_size` — ứng dụng thực tế nhất của số học mô-đun.*
+
+![Định lý Fermat nhỏ](https://commons.wikimedia.org/wiki/Special:FilePath/Prime_factorization.svg?width=640)
+
+*Hình 15.9: Với $p$ nguyên tố và $\gcd(a,p)=1$: $a^{p-1}\equiv 1 \pmod p$ — cốt lõi kiểm tra số nguyên tố.*
+
+![Thuật toán Euclid mở rộng](https://commons.wikimedia.org/wiki/Special:FilePath/Euclid.jpg?width=640)
+
+*Hình 15.10: Thuật toán Euclid mở rộng tìm nghịch đảo modulo — cần cho RSA.*
 
 ## Mục tiêu học tập
 
