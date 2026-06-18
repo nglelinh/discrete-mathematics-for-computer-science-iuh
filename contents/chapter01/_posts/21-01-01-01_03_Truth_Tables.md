@@ -187,27 +187,6 @@ Lập luận hợp lệ nếu kết luận đúng khi tất cả tiền đề đ
 
 **Kết luận**: Lập luận hợp lệ (cột cuối toàn T)
 
-### 3. Thiết kế mạch logic
-
-![Mạch Half Adder — ứng dụng bảng chân trị](https://commons.wikimedia.org/wiki/Special:FilePath/Half_Adder.svg?width=500)
-
-*Hình 1.15: Mạch Half Adder được thiết kế từ bảng chân trị — mỗi cổng logic tương ứng một cột trong bảng.*
-
-Ví dụ: Thiết kế mạch cho (A ∧ B) ∨ C
-
-Bảng chân trị:
-
-| A | B | C | A ∧ B | (A ∧ B) ∨ C |
-|---|---|---|---|-------------|
-| 0 | 0 | 0 |   0   |      0      |
-| 0 | 0 | 1 |   0   |      1      |
-| 0 | 1 | 0 |   0   |      0      |
-| 0 | 1 | 1 |   0   |      1      |
-| 1 | 0 | 0 |   0   |      0      |
-| 1 | 0 | 1 |   0   |      1      |
-| 1 | 1 | 0 |   1   |      1      |
-| 1 | 1 | 1 |   1   |      1      |
-
 ## Bài tập thực hành
 
 ### Bài tập 1: Xây dựng bảng chân trị
@@ -262,23 +241,7 @@ $$(p \lor q) \land \neg r$$
 
 Trong đó $$p$$ là "admin", $$q$$ là "owner", $$r$$ là "resource locked". Nếu không tương đương, hãy chỉ ra một hàng làm phản ví dụ.
 
-### Bài tập 6: Digital Logic Components
-
-**A.4** This is about basic components in digital logic design. For this exercise, assume a length-n bit string has positions indexed from 0 to n−1, and view the indices as binary (base two) numbers. For example, 0101₁₀ = 0 because the subscript 10 means index two, which is the third position from the left, which is a 0 in 0101.
-
-(a) Write the 2-dimensional table for the 2-to-1 multiplexer function:
-Mux: {0,1}² × {0,1} → {0,1} where Mux(x, i) = xᵢ
-
-(b) Write the 2-dimensional table for the 1-to-2 demultiplexer function:
-Demux: {0,1} × {0,1} → {0,1}² where Demux(y, i) = bit string with y at index i and 0s elsewhere
-
-(c) Write the table for the 2-to-4 decoder function:
-Dec: {0,1}² → {0,1}⁴ where Dec(i) = bit string with 1 at index i and 0s elsewhere
-
-(d) Write the table for the 4-to-2 priority encoder partial function:
-Enc: {0,1}⁴ → {0,1}² where Enc(x) = index of the first 1 in x, or undefined if x has no 1
-
-### Bài tập 7: Bảng chân trị 3 biến
+### Bài tập 6: Bảng chân trị 3 biến
 
 Xây dựng bảng chân trị đầy đủ cho các biểu thức sau:
 
@@ -311,7 +274,7 @@ Nhận xét:
 
 </details>
 
-### Bài tập 8: Từ bảng chân trị sang biểu thức
+### Bài tập 7: Từ bảng chân trị sang biểu thức
 
 Cho bảng chân trị sau, hãy tìm biểu thức logic tương ứng:
 
@@ -347,7 +310,7 @@ Rút gọn:
 
 </details>
 
-### Bài tập 9: Ứng dụng bảng chân trị trong kiểm thử
+### Bài tập 8: Ứng dụng bảng chân trị trong kiểm thử
 
 Một hàm Python kiểm tra điều kiện nhập học:
 
@@ -390,7 +353,7 @@ Kết quả: Biểu thức mới tương đương với "có bằng và không t
 
 </details>
 
-### Bài tập 10: Tautology, Contradiction, Contingency
+### Bài tập 9: Tautology, Contradiction, Contingency
 
 Phân loại các biểu thức sau:
 

@@ -10,7 +10,7 @@ lang: en
 
 Mỗi lần bạn viết `if (score >= 5)` hay thêm điều kiện `WHERE status = "active"`, bạn đang buộc máy tính phải trả lời một câu hỏi rất cổ điển: **mệnh đề này đúng hay sai?** 
 
-Nghe có vẻ đơn giản, nhưng chính kiểu quyết định nhị phân này — đúng hoặc sai, 1 hoặc 0, true hoặc false — là viên gạch đầu tiên xây nên toàn bộ tòa nhà khoa học máy tính. Từ điều kiện `if` trong code, đến truy vấn SQL lọc hàng triệu bản ghi, đến mạch logic bên trong CPU quyết định mở hay đóng transistor, tất cả đều dựa trên một nền tảng chung: **logic mệnh đề**.
+Nghe có vẻ đơn giản, nhưng chính kiểu quyết định nhị phân này — đúng hoặc sai, 1 hoặc 0, true hoặc false — là viên gạch đầu tiên xây nên toàn bộ tòa nhà khoa học máy tính. Từ điều kiện `if` trong code, đến truy vấn SQL lọc hàng triệu bản ghi, đến các quy tắc phân quyền và kiểm thử tự động, tất cả đều dựa trên một nền tảng chung: **logic mệnh đề**.
 
 Nhưng tại sao một khái niệm nghe có vẻ "hiển nhiên" như vậy lại cần được học một cách chính thức? Câu trả lời nằm ở chỗ: khi hệ thống phức tạp lên, trực giác của con người rất dễ sai. Một điều kiện nhìn "hợp lý" vẫn có thể cho kết quả ngược lại ở đúng một trường hợp hiếm gặp. Một câu yêu cầu nghiệp vụ viết bằng tiếng Việt có thể bị hiểu theo nhiều cách khác nhau. Một đoạn code "chạy được" không có nghĩa là "đúng với mọi đầu vào".
 
@@ -50,14 +50,6 @@ Sau bài học này, sinh viên có thể:
 ![Bảng tứ đối — nền tảng suy luận cổ điển](https://commons.wikimedia.org/wiki/Special:FilePath/Square_of_opposition%2C_set_diagrams.svg?width=500)
 
 *Hình 1.3: Bảng tứ đối (square of opposition) — mô hình quan hệ giữa các mệnh đề trong logic cổ điển, tiền thân của logic hình thức.*
-
-![Cổng logic AND — giá trị chân lý nhị phân](https://commons.wikimedia.org/wiki/Special:FilePath/AND_ANSI_Labelled.svg?width=400)
-
-*Hình 1.4: Cổng AND — chỉ cho kết quả Đúng (1) khi cả hai đầu vào đều Đúng, minh họa giá trị chân lý trong logic Boolean.*
-
-![Các cổng logic cơ bản](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
-
-*Hình 1.5: Các cổng logic Boolean (NOT, AND, OR, XOR…) — nền tảng phần cứng của mọi bộ xử lý hiện đại.*
 
 ### Ví dụ về mệnh đề:
 - "2 + 3 = 5" (đúng)
@@ -315,7 +307,7 @@ can_register = paid_tuition and account_active and (passed_prerequisite or advis
 **Ý nghĩa trong Khoa học Máy tính**:
 - **Bảng chân trị** chỉ khả thi khi \( n \leq 5 \) hoặc 6. Với \( n \geq 10 \), không thể liệt kê hết.
 - **SAT solver** phải dùng thuật toán thông minh (resolution, DPLL, CDCL) thay vì duyệt brute-force.
-- **FPGA / LUT** (Look-Up Table) chỉ có thể hiện thực trực tiếp các hàm Boolean nhỏ (\( n \leq 6 \)). Các hàm lớn phải được phân rã.
+- **Kiểm thử phần mềm** cần chiến lược thông minh (pairwise, symbolic execution) thay vì kiểm tra vét cạn mọi tổ hợp đầu vào.
 
 ## Bài tập thực hành
 

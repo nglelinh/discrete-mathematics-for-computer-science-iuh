@@ -10,7 +10,7 @@ lang: en
 
 Sau khi học về **Dạng chuẩn tắc hội (CNF)** và các **định lý về DNF/CNF**, một câu hỏi tự nhiên xuất hiện: **Làm thế nào máy tính có thể tự động kiểm tra một công thức Boolean có thỏa mãn được không?**
 
-Câu trả lời nằm ở **SAT Solver** — một trong những công cụ quan trọng nhất của khoa học máy tính hiện đại. SAT solver không chỉ giải bài toán lý thuyết mà còn được dùng hàng ngày trong thiết kế vi mạch, kiểm chứng phần mềm, lập lịch, và trí tuệ nhân tạo.
+Câu trả lời nằm ở **SAT Solver** — một trong những công cụ quan trọng nhất của khoa học máy tính hiện đại. SAT solver không chỉ giải bài toán lý thuyết mà còn được dùng hàng ngày trong kiểm chứng phần mềm, lập lịch, lập kế hoạch AI, và phân tích bảo mật.
 
 ## SAT là gì?
 
@@ -24,17 +24,17 @@ Câu trả lời nằm ở **SAT Solver** — một trong những công cụ qua
 
 *Hình 1.27: Backtracking — thử gán từng biến, quay lui khi gặp mâu thuẫn (conflict).*
 
-![Thuật toán DPLL — gán biến và suy diễn đơn vị](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
+![Thuật toán DPLL — gán biến và suy diễn đơn vị](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=500)
 
 *Hình 1.28: DPLL kết hợp gán biến, unit propagation và backtracking — nền tảng của mọi SAT solver hiện đại.*
 
-![CDCL — học từ mâu thuẫn (Conflict-Driven Clause Learning)](https://commons.wikimedia.org/wiki/Special:FilePath/Half_Adder.svg?width=500)
+![CDCL — học từ mâu thuẫn (Conflict-Driven Clause Learning)](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=500)
 
 *Hình 1.29: CDCL ghi nhớ các mâu thuẫn đã gặp để cắt nhánh tìm kiếm — SAT solver hiện đại giải được hàng triệu biến.*
 
 ![Giải Sudoku bằng SAT solver](https://source.unsplash.com/800x600/?sudoku,puzzle,game,logic)
 
-*Hình 1.30: Sudoku có thể mã hóa thành CNF — một ví dụ thú vị về ứng dụng SAT solver ngoài kiểm chứng phần cứng.*
+*Hình 1.30: Sudoku có thể mã hóa thành CNF — một ví dụ thú vị về ứng dụng SAT solver trong giải đố và lập kế hoạch.*
 
 **Ví dụ đơn giản**:
 
@@ -99,15 +99,7 @@ Khi số biến tăng lên 100, không gian tìm kiếm là \(2^{100} \approx 10
 
 Nghe có vẻ chỉ là bài toán logic, nhưng rất nhiều vấn đề thực tế có thể chuyển thành SAT.
 
-### 1. Kiểm chứng chip (Hardware Verification)
-
-Các công ty như Intel, AMD, NVIDIA dùng SAT solver để kiểm tra:
-
-> "Thiết kế chip có trường hợp nào hoạt động sai không?"
-
-Nếu SAT tìm được nghiệm → có bug.
-
-### 2. Kiểm chứng phần mềm
+### 1. Kiểm chứng phần mềm
 
 Kiểm tra:
 
@@ -115,13 +107,13 @@ Kiểm tra:
 
 Nhiều công cụ phân tích tĩnh hiện đại dựa trên SAT/SMT.
 
-### 3. Lập lịch
+### 2. Lập lịch
 
 Ví dụ: 100 nhân viên, 30 ca làm, hàng trăm ràng buộc về thời gian và kỹ năng.
 
 SAT solver tìm lịch thỏa mãn tất cả điều kiện.
 
-### 4. Giải Sudoku
+### 3. Giải Sudoku
 
 Sudoku có thể chuyển thành hàng nghìn mệnh đề CNF. Nếu SAT tìm được nghiệm → Sudoku có lời giải.
 
@@ -193,7 +185,7 @@ CDCL là thuật toán được dùng trong hầu hết SAT solver công nghiệ
 
 Nếu biểu thức Boolean là một **mê cung** của các điều kiện, thì SAT solver là một người dò đường cực kỳ thông minh, biết học từ các ngõ cụt để không bao giờ đi lặp lại sai lầm cũ.
 
-Đó là lý do SAT solver trở thành một trong những công cụ nền tảng của thiết kế chip, kiểm chứng phần mềm và tối ưu hóa hiện đại.
+Đó là lý do SAT solver trở thành một trong những công cụ nền tảng của kiểm chứng phần mềm, lập lịch và tối ưu hóa hiện đại.
 
 ## Đầu vào và đầu ra của SAT solver
 
@@ -220,7 +212,7 @@ Nếu biểu thức Boolean là một **mê cung** của các điều kiện, th
 - **SAT** là bài toán kiểm tra sự thỏa mãn của công thức Boolean.
 - **CNF** là dạng lý tưởng vì dễ biểu diễn ràng buộc.
 - Các thuật toán chính: **Backtracking → DPLL → CDCL**.
-- SAT solver được dùng rộng rãi trong **verification**, **scheduling**, **AI planning**, và **hardware design**.
+- SAT solver được dùng rộng rãi trong **verification**, **scheduling**, **AI planning**, và **phân tích bảo mật**.
 
 Bài học này khép lại chuỗi kiến thức về **logic mệnh đề** và mở ra cánh cửa đến một trong những công cụ mạnh mẽ nhất của khoa học máy tính hiện đại.
 

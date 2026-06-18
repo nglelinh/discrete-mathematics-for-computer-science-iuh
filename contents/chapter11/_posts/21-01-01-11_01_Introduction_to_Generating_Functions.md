@@ -17,11 +17,11 @@ Từ góc nhìn khoa học máy tính, đây là một cách đổi biểu diễ
 
 Trong bài này, chúng ta sẽ làm quen với hàm sinh, ý nghĩa của các hệ số trong chuỗi, và vì sao công cụ này lại mạnh đến vậy trong toán rời rạc.
 
-![Chuỗi lũy thừa hình thức](https://commons.wikimedia.org/wiki/Special:FilePath/Power_series.svg?width=640)
+![Chuỗi lũy thừa hình thức](https://commons.wikimedia.org/wiki/Special:FilePath/Laurent_series.svg?width=640)
 
 *Hình 11.1: Chuỗi lũy thừa $G(x)=\sum a_n x^n$ — mỗi hệ số $a_n$ mã hóa một số hạng của dãy.*
 
-![Hàm sinh (generating function)](https://commons.wikimedia.org/wiki/Special:FilePath/Generating_function.svg?width=640)
+![Hàm sinh (generating function)](https://commons.wikimedia.org/wiki/Special:FilePath/R._V._Lapshin,_Generating_functions_and_squares.png?width=640)
 
 *Hình 11.2: Hàm sinh gói cả dãy số vào một biểu thức duy nhất để thao tác bằng đại số.*
 

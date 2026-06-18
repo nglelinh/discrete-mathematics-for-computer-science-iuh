@@ -15,10 +15,9 @@ Cùng một ý logic có thể được viết theo rất nhiều cách khác nh
 - giúp rút gọn điều kiện để code dễ đọc hơn,
 - giúp tối ưu truy vấn và luật lọc trong hệ thống,
 - giúp chuẩn hóa công thức cho bộ giải SAT,
-- giúp thiết kế mạch logic,
 - và giúp các công cụ kiểm chứng phần mềm xử lý bài toán hiệu quả hơn.
 
-Một phép biến đổi nhỏ trên biểu thức có thể làm chương trình dễ hiểu hơn, mạch logic gọn hơn, hoặc bộ giải chạy nhanh hơn rất nhiều. Nhưng điều đó chỉ đúng khi ta biến đổi **đúng luật**. Nếu suy luận cảm tính, chỉ cần đổi sai một bước là toàn bộ ý nghĩa logic của biểu thức có thể bị phá vỡ.
+Một phép biến đổi nhỏ trên biểu thức có thể làm chương trình dễ hiểu hơn, điều kiện gọn hơn, hoặc bộ giải chạy nhanh hơn rất nhiều. Nhưng điều đó chỉ đúng khi ta biến đổi **đúng luật**. Nếu suy luận cảm tính, chỉ cần đổi sai một bước là toàn bộ ý nghĩa logic của biểu thức có thể bị phá vỡ.
 
 Chính vì vậy, bài học này giới thiệu hai ý tưởng cực kỳ quan trọng:
 
@@ -174,18 +173,14 @@ Cây tương ứng:
 
 *Hình 1.19: Dạng chuẩn tắc hội (CNF) — tích (AND) của các tổng (OR), dạng chuẩn mà SAT solver yêu cầu.*
 
-![Hàm Boolean và cổng logic](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
-
-*Hình 1.20: Mỗi hàm Boolean tương ứng một mạch logic — DNF/CNF là cách chuẩn hóa để máy tính xử lý.*
-
 **Lưu ý quan trọng**: Các phép toán `∧`, `∨`, `⊕`, `↔` là **giao hoán** (đổi chỗ được) và **kết hợp** (dấu ngoặc không quan trọng). Riêng `→` không có hai tính chất này.
 
 Do đó ta có thể viết `R ∧ Q ∧ P` thay vì `(R ∧ Q) ∧ P`, và viết các biến theo bất kỳ thứ tự nào.
 
 **Ứng dụng**:
 - **Trình biên dịch** biểu diễn biểu thức Boolean dưới dạng cây trước khi tối ưu.
-- **Mạch logic** trong phần cứng chính là cây Boolean (mỗi cổng là một nút).
 - **Kiểm chứng hình thức** thường làm việc trên cấu trúc cây của công thức.
+- **Phân tích tĩnh** dùng cây biểu thức để phát hiện nhánh chết hoặc điều kiện luôn đúng/sai.
 
 Ta chứng minh $$\neg(p \land q) \equiv \neg p \lor \neg q$$ bằng bảng chân trị.
 
@@ -198,14 +193,21 @@ Ta chứng minh $$\neg(p \land q) \equiv \neg p \lor \neg q$$ bằng bảng châ
 
 Hai cột $$\neg(p \land q)$$ và $$\neg p \lor \neg q$$ giống nhau. Vậy luật đúng.
 
-#### Minh họa bằng mạch logic
+#### Minh họa bằng code
 
-Luật De Morgan có ý nghĩa rất trực quan khi ta vẽ **mạch logic**:
+Luật De Morgan cũng xuất hiện liên tục khi viết điều kiện phủ định:
 
-- **Vế trái** `NOT (A AND B)`: một cổng AND rồi đảo ngược đầu ra.
-- **Vế phải** `NOT A OR NOT B`: hai cổng NOT riêng biệt, rồi cho vào cổng OR.
+```python
+# Vế trái: NOT (A AND B)
+if not (is_admin and is_active):
+    deny_access()
 
-Hai mạch này **luôn cho cùng kết quả** trên mọi đầu vào. Đây là lý do De Morgan cực kỳ quan trọng trong thiết kế mạch số và tối ưu phần cứng.
+# Vế phải: NOT A OR NOT B — tương đương logic
+if (not is_admin) or (not is_active):
+    deny_access()
+```
+
+Hai điều kiện **luôn cho cùng kết quả** trên mọi đầu vào. Đây là lý do De Morgan cực kỳ quan trọng khi rút gọn biểu thức trong lập trình và tối ưu truy vấn.
 
 ## 3. Biến đổi biểu thức logic
 
@@ -243,7 +245,7 @@ $$\begin{aligned}
 Một biểu thức logic có thể viết bằng rất nhiều cách khác nhau — nhưng không phải cách nào cũng tiện lợi. Trong thực tế, biểu thức dài thường đồng nghĩa với:
 
 - **Code khó đọc**: `if ((a && b) || (a && !b))` làm người đọc phải dừng lại suy nghĩ.
-- **Mạch tốn diện tích**: mỗi cổng logic là transistor thật trên silicon.
+- **Truy vấn nặng hơn**: nhiều điều kiện lồng nhau khiến database engine khó tối ưu.
 - **Xử lý chậm hơn**: nhiều phép toán hơn → nhiều thời gian CPU hơn.
 
 **Bài toán rút gọn**: Cho một biểu thức logic, tìm biểu thức **ngắn nhất có thể** mà vẫn tương đương logic với biểu thức ban đầu.
@@ -334,7 +336,7 @@ Hãy tưởng tượng bảng chân trị là một lưới 2×2 (với 2 biến
 
 Ví dụ trên, ta đang tô 3 ô, và có thể gộp thành $$\neg p \lor q$$.
 
-Đây chính là ý tưởng đằng sau các thuật toán tối thiểu hóa logic (Karnaugh map, Espresso, Quine–McCluskey) mà compiler và công cụ thiết kế mạch sử dụng.
+Đây chính là ý tưởng đằng sau các thuật toán tối thiểu hóa biểu thức Boolean mà compiler và công cụ tối ưu truy vấn sử dụng.
 
 ## 6. Dạng chuẩn tắc hội CNF
 
@@ -460,14 +462,13 @@ Do đó $$ D_1 \equiv D_2 $$.
 **Mọi hàm Boolean** $$f: \{T,F\}^n \to \{T,F\}$$ **đều có biểu diễn DNF và CNF duy nhất** (đầy đủ).
 
 **Ý nghĩa CS**: Đây là nền tảng của:
-- **Bảng LUT** (Look-Up Table) trong FPGA: mỗi hàm Boolean được lưu dưới dạng DNF/CNF.
-- **Thuật toán tối thiểu hóa logic** (Quine–McCluskey, Espresso): rút gọn DNF/CNF để giảm số cổng logic.
+- **Compiler optimization**: rút gọn biểu thức Boolean trong mã nguồn và mã trung gian.
+- **Query optimization**: chuẩn hóa điều kiện lọc trong SQL để database engine xử lý hiệu quả hơn.
 - **SAT solver**: nhận đầu vào dạng CNF và tìm cách gán biến sao cho biểu thức đúng.
 
 ## 8. Ứng dụng trong Khoa học Máy tính
 
 - **Tối ưu điều kiện trong chương trình**: Compiler có thể thay `not (a and b)` bằng `(not a) or (not b)` để đơn giản hóa nhánh.
-- **Mạch số**: Cổng AND, OR, NOT tương ứng trực tiếp với hội, tuyển, phủ định.
 - **SAT solver**: Nhiều bài toán lập lịch, kiểm chứng phần mềm, giải Sudoku và phân tích phụ thuộc được mã hóa thành CNF.
 - **Cơ sở dữ liệu**: Tối ưu truy vấn SQL dùng các luật tương đương để đẩy điều kiện lọc xuống sớm hơn.
 

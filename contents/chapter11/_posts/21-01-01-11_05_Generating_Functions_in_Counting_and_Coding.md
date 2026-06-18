@@ -30,11 +30,11 @@ và coding theory.
 
 *Hình 11.21: Euler biến các dãy số thành đối tượng đại số, mở ra một trong những công cụ đẹp nhất của tổ hợp học.*
 
-![Hàm sinh xác suất (PGF)](https://commons.wikimedia.org/wiki/Special:FilePath/Generating_function.svg?width=640)
+![Hàm sinh xác suất (PGF)](https://commons.wikimedia.org/wiki/Special:FilePath/3D_surface_graph_of_generating_function_for_Fibonacci_numbers.png?width=640)
 
 *Hình 11.22: Hàm sinh xác suất biến phân phối rời rạc thành đối tượng có thể vi phân, nhân và phân tích.*
 
-![Đếm tổ hợp bằng hệ số](https://commons.wikimedia.org/wiki/Special:FilePath/Power_series.svg?width=640)
+![Đếm tổ hợp bằng hệ số](https://commons.wikimedia.org/wiki/Special:FilePath/Za_by_Power_Series_Expansion_(n=4).png?width=640)
 
 *Hình 11.23: Nhân các chuỗi hình thức — hệ số của $x^n$ cho số cách đạt tổng $n$.*
 

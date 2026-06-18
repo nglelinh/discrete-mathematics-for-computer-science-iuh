@@ -119,10 +119,6 @@ Mệnh đề trong logic được phân thành hai loại:
 | T | F |
 | F | T |
 
-![Cổng NOT — phủ định](https://commons.wikimedia.org/wiki/Special:FilePath/NOT_ANSI_Labelled.svg?width=400)
-
-*Hình 1.6: Phép phủ định ¬p — đảo ngược giá trị chân lý (Đúng ↔ Sai).*
-
 **Ví dụ**:
 - p: "Hôm nay trời nắng"
 - ¬p: "Hôm nay trời không nắng"
@@ -257,10 +253,6 @@ Kết quả gồm sản phẩm thuộc ít nhất một trong hai loại. Trong 
 ![Luật De Morgan trên biểu đồ Venn](https://commons.wikimedia.org/wiki/Special:FilePath/Intersections_of_two_sets_and_their_complements.svg?width=640)
 
 *Hình 1.11: Luật De Morgan — ¬(p ∧ q) ≡ ¬p ∨ ¬q và ¬(p ∨ q) ≡ ¬p ∧ ¬q, rất quan trọng khi viết điều kiện phủ định trong code.*
-
-![Tổng quan các cổng logic](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
-
-*Hình 1.12: Các phép toán logic tương ứng trực tiếp với cổng logic trong phần cứng và mạch số.*
 
 ## Ứng dụng trong lập trình
 
