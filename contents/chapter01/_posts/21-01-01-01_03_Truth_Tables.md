@@ -380,4 +380,28 @@ Phân loại các biểu thức sau:
 
 </details>
 
+## Bài tập bổ sung: Tạo bảng chân trị (từ ccrr1_baitap1)
+
+**Hướng dẫn chung:** Lập bảng chân trị với tất cả giá trị có thể của các mệnh đề thành phần. Sử dụng các phép toán logic cơ bản để tính toán.
+
+**Bài tập 1: Biểu thức đơn giản**
+P ∨ ¬Q
+
+**Bài tập 2: Biểu thức kết hợp**
+(P ∧ Q) → ¬R
+
+**Bài tập 3: Biểu thức phức tạp hơn**
+¬(P ∨ Q) ↔ (¬P ∧ ¬Q)
+
+**Bài tập 4: Biểu thức với ba mệnh đề**
+(P ∧ (Q ∨ R)) → (P ∧ Q)
+
+**Bài tập 5: Biểu thức với phủ định và hàm kéo theo**
+(¬P ∨ Q) → (P → Q)
+
+**Bài tập bổ sung từ slide (hoàn thành bảng chân trị):**
+
+Bài tập 1: Cho các mệnh đề tham biến P: x<0 và Q: y>0. Hoàn thành bảng chân trị cho các biểu thức (các cột cần điền giá trị cho P, Q, và các phép toán).
+
+
 

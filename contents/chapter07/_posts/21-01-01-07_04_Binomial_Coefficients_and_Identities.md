@@ -222,4 +222,14 @@ Cũng bằng $\binom{9}{3}=84$.
 - **Đồng nhất thức tổ hợp** thường có hai kiểu chứng minh: đại số và đếm hai cách.
 - **Ứng dụng CS** gồm kiểm thử tổ hợp, xác suất, sinh tập con và phân tích thuật toán.
 
+## Bài tập bổ sung: Công thức Nhị thức Newton (từ ccrr1_baitap2)
+
+Khai triển và tìm hệ số:
+
+**Bài 1:** Hệ số của x² y³ trong (x + y)^5
+
+**Bài 2:** Hệ số của x²y trong (2x − 3y)^3
+
+**Bài 3:** Hệ số của x^{15} trong (3x – x²)^{12}
+
 Trong bài tiếp theo, chúng ta sẽ học về hoán vị và tổ hợp mở rộng.

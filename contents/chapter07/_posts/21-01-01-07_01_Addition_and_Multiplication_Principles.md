@@ -235,3 +235,25 @@ SELECT COUNT(*) FROM
 
 </details>
 
+## Bài tập bổ sung: Quy tắc cộng và nhân, điện thoại, biển số, mật khẩu (từ ccrr1_baitap2)
+
+**Bài 1:** Chọn một cán bộ hoặc sinh viên tham gia hội đồng. Có 37 cán bộ và 63 sinh viên. Bao nhiêu cách?
+
+**Bài 2:** Có bao nhiêu xâu nhị phân độ dài 7?
+
+**Bài 3:** Số điện thoại di động VN: XXXNNNNNNN (XXX code mạng, N 0-9).
+a) Vietel cần tối thiểu bao nhiêu code cho 38.249.516 thuê bao?
+b) Số VIP: XXXYYYYNNN (4 chữ số trùng) hoặc XXXNNNNYYY (3 chữ số trùng). Mỗi code có bao nhiêu VIP?
+
+**Bài 4:** Biển số A1A2A3N1N2N3N4N5N6 (A: A-Z, N:0-9). Bao nhiêu biển khác nhau?
+
+**Bài 5:** Số 10 chữ số mà 3 chữ đầu và 3 chữ cuối giống nhau?
+
+**Bài 6:** Đếm số n 5 chữ số nếu:
+- n chẵn
+- n lẻ gồm 2 chữ số khác nhau
+- n chẵn gồm 2 chữ số khác nhau
+
+**Bài 7:** Mật khẩu: 1 chữ cái + 3 hoặc 4 chữ số. Tối đa bao nhiêu? Không lặp chữ số thì sao?
+
+

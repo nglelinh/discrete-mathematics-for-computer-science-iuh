@@ -294,3 +294,72 @@ Trong toán học và khoa học máy tính, ta thường gặp các tập số 
 - Các tập hợp số: ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ
 
 Trong bài tiếp theo, chúng ta sẽ tìm hiểu các phép toán trên tập hợp: hợp, giao, hiệu, phần bù và hiệu đối xứng -- những công cụ mạnh mẽ để kết hợp và biến đổi các tập hợp.
+
+## Bài tập bổ sung: Tập hợp (từ ccrr1_baitap2)
+
+**Bài 1:** Danh sách tất cả các tập con của {1, 2, {b}}.
+
+**Bài 2:** Giả sử U = {1,2,3,4,5,6,7,8,9,10}. Biểu diễn:
+- A = tập số nguyên lẻ ⊆ U
+- B = tập số nguyên chẵn ⊆ U
+- C = tập số nguyên nhỏ hơn 5 ⊆ U
+Tìm A ∪ B, A ∩ C.
+
+**Bài 3:** Cho 
+A = {1, {2}, 3, {4}, 5}
+B = {1, {4}, 5, 3}
+C = {{1,2,3}}
+D = {1,3}
+E = {1, {3}, 4, {5}}
+F = {1,2,3,4,8}
+Tìm: A ∩ C, B ∩ F, D ∪ C, C ∩ E, C ∪ (D ∩ F)
+
+**Bài 4:** Liệt kê tất cả phần tử của {b,c,d} × {e,o}
+
+**Bài 5:** Chứng minh với mọi tập A, B: nếu (A ∪ B) ⊆ (A ∩ B) thì A = B.
+
+### Tập hợp các tập hợp con (Power set) - từ slide
+
+Cho tập X, tập tất cả các tập con của X (Tập hợp lũy thừa P(X)) .
+
+Ví dụ: X = {0, 1, 2}
+
+P(X) = { ∅, {0}, {1}, {2}, {0,1}, {0,2}, {1,2}, {0,1,2} }
+
+**Tính chất:**
+- X ⊂ Y ⇒ P(X) ⊂ P(Y)
+- Nếu X có n phần tử thì P(X) có 2^n phần tử.
+
+Điều này quan trọng trong lý thuyết tính toán và độ phức tạp (số tập con là 2^ n).
+
+### Biểu diễn tập hợp trên máy tính (từ slide PPT)
+
+Có nhiều cách biểu diễn tập hợp trên máy tính. Một phương pháp phổ biến là sử dụng xâu bit (bit vector) khi tập vũ trụ U là hữu hạn.
+
+**Phương pháp:**
+
+Giả sử U = {a1, a2, ..., an} sắp xếp tùy ý.
+
+Tập con A ⊆ U được biểu diễn bằng xâu bit độ dài n, trong đó bit thứ i là 1 nếu ai ∈ A, 0 nếu không.
+
+**Ví dụ:**
+
+U = {1,2,3,4,5,6,7,8,9,10} sắp xếp tăng dần.
+
+A = {1,2,3,4,5} → 11111 00000
+
+B = {1,3,5,7,9} → 10101 01010
+
+**Phép toán trên bit:**
+
+- Hợp A ∪ B: OR bit-wise
+
+- Giao A ∩ B: AND bit-wise
+
+Ví dụ: A ∪ B = 11111 00000 ∨ 10101 01010 = 11111 01010 → {1,2,3,4,5,7,9}
+
+A ∩ B = 11111 00000 ∧ 10101 01010 = 10101 00000 → {1,3,5}
+
+Lưu ý: Tập rỗng là 000...0 , U là 111...1 .
+
+Điều này hữu ích trong lập trình (bitmask, Bloom filter, etc.).

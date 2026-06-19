@@ -1,0 +1,724 @@
+====================
+SLIDE 1
+====================
+CẤU TRÚC RỜI RẠC
+1
+Discrete Mathematics 
+
+====================
+SLIDE 2
+====================
+CHƯƠNG I: CƠ SỞ LÔGIC
+
+Mệnh đề
+Biểu thức logic (Dạng mệnh đề)
+Qui tắc suy diễn
+Vị từ, lượng từ
+Quy nạp toán học
+2
+
+====================
+SLIDE 3
+====================
+1. Mệnh đề
+Định nghĩa: Mệnh đề là một khẳng định/phát biểu có giá trị chân lý xác định; đúng hoặc sai.
+Câu hỏi, câu cảm thán, mệnh lệnh… không là mệnh đề.
+Ví dụ: 
+1+7=8
+Hôm nay bạn đẹp quá!  (không là mệnh đề)
+Hôm nay là thứ mấy? (không là mệnh đề)
+3
+
+====================
+SLIDE 4
+====================
+Mệnh đề
+Ký hiệu: Người ta dùng các ký hiệu P, Q, R… (p,q,r,…) để chỉ mệnh đề.
+Chân trị của mệnh đề: Một mệnh đề chỉ có thể đúng hoặc sai, không thể đồng thời vừa đúng vừa sai. Khi mệnh đề P đúng ta nói P có chân trị đúng, ngược lại ta nói P có chân trị sai. 
+Chân trị đúng và chân trị sai sẽ được ký hiệu lần lượt là 1 (hay Đ,T) và 0 (hay S,F)
+4
+
+====================
+SLIDE 5
+====================
+Mệnh đề
+Phân loại: Gồm 2 loại
+Mệnh đề sơ cấp (nguyên thủy): Là mệnh đề không thể xây dựng từ các mệnh đề khác thông qua liên từ hoặc trạng từ “không”
+Mệnh đề phức hợp: là mệnh đề được xây dựng từ các mệnh đề khác nhờ liên kết bằng các liên từ (và, hay, khi và chỉ khi,…) hoặc trạng từ “không”
+5
+
+====================
+SLIDE 6
+====================
+Mệnh đề
+Ví dụ:
+2 là số nguyên tố.
+2 không là số nguyên tố.
+2 là số nguyên tố và là số lẻ.
+An đang xem ti vi hay đang học bài.
+6
+
+====================
+SLIDE 7
+====================
+Các phép toán: có 5 phép toán cơ bản
+Phép phủ định: Phủ định của mệnh đề P là một mệnh đề, ký hiệu là  P hay    (đọc là “không” P hay “phủ định của” P) có giá trị ngược lại với P. 
+Bảng chân trị : 
+Ví dụ:
+2 là số nguyên tố.
+Phủ định: 2 không là số nguyên tố
+n > 5  có phủ định: n ≤ 5
+
+Mệnh đề
+7
+
+====================
+SLIDE 8
+====================
+ Phép hội (nối liền, giao): của hai mệnh đề P, Q là một mệnh đề, kí hiệu P  Q (đọc là “P và Q) và có bảng chân trị ở hình bên.
+Nhận xét: PQ đúng khi và chỉ khi P và Q đồng thời đúng.
+Ví dụ:
+  P: “Hôm nay là chủ nhật”
+  Q: “Hôm nay trời mưa”
+  P  Q: “Hôm nay là chủ nhật và trời mưa”
+Mệnh đề
+8
+
+====================
+SLIDE 9
+====================
+ Phép tuyển (nối rời, hợp): của hai mệnh đề P, Q là một mệnh đề, kí hiệu P  Q (đọc là “P hay Q”). Bảng chân trị:
+
+
+Nhận xét: 
+P  Q sai khi và chỉ khi P và Q đồng thời sai.
+ Ví dụ:
+e > 4 hay e > 5 (S)
+2 là số nguyên tố hay là số lẻ (Đ)
+Mệnh đề
+9
+
+====================
+SLIDE 10
+====================
+ Phép kéo theo: Mệnh đề P kéo theo mệnh đề Q là một mệnh đề, kí hiệu P  Q (đọc là “P kéo theo Q” hay “Nếu P thì Q” hay “P là điều kiện đủ của Q” hay “Q là điều kiện cần của P”). 
+Bảng chân trị:
+NX: P  Q sai khi và chỉ 
+khi P đúng mà Q sai.
+ Ví dụ:
+ 3 >4 kéo theo 5>6
+
+
+Mệnh đề
+10
+
+====================
+SLIDE 11
+====================
+ Phép kéo theo hai chiều (phép tương đương): Mệnh đề P kéo theo mệnh đề Q và ngược lại (mệnh đề P tương đương với mệnh đề Q) là một mệnh đề, ký hiệu P  Q (đọc là “P nếu và chỉ nếu Q” hay “P khi và chỉ khi Q” hay “P là điều  kiện cần và đủ của Q”). 
+Bảng chân trị:
+NX: P  Q đúng khi và chỉ
+ khi P và Q có cùng chân trị
+Ví dụ: 6 chia hết cho 3 khi
+và chỉ khi 6 chia hết cho 2
+
+
+Mệnh đề
+11
+
+====================
+SLIDE 12
+====================
+ Định nghĩa: Biểu thức logic được cấu tạo từ:
+ - Các mệnh đề (các hằng mệnh đề)
+ - Các biến mệnh đề p, q, r, …, tức là các biến lấy giá trị là các mệnh đề nào đó
+ - Các phép toán logic , , , ,  và dấu đóng mở ngoặc () để chỉ rõ thứ tự thực hiện của các phép toán.
+Ví dụ:
+E(p,q) = (p  q)
+F(p,q,r) = (p  q)  (q  r)
+
+
+2. Biểu thức logic (Dạng mệnh đề)
+12
+
+====================
+SLIDE 13
+====================
+ Độ ưu tiên của các toán tử logic: 
+- Ưu tiên mức 1: ()
+- Ưu tiên mức 2: 
+- Ưu tiên mức 3: , 
+- Ưu tiên mức 4: ,  
+Bảng chân trị của một biểu thức logic: là bảng liệt kê chân trị của biểu thức logic theo các trường hợp về chân trị của tất cả các biến mệnh đề trong biểu thức logic hay theo các bộ giá trị của bộ biến mệnh đề. 
+Biểu thức logic
+13
+
+====================
+SLIDE 14
+====================
+Bảng chân trị của một biểu thức logic.
+Ví dụ: 
+Với một biến mệnh đề, ta có hai trường hợp là 0 hoặc 1.
+Với hai biến mệnh đề p,q ta có bốn trường hợp chân trị của bộ biến (p,q) là các bộ giá trị (0,0), (0,1), (1,0) và (1,1).
+NX: Trong trường hợp tổng quát, nếu có n biến mệnh đề thì ta có     trường hợp chân trị cho bộ n biến. 
+Biểu thức logic
+14
+
+====================
+SLIDE 15
+====================
+ Ví dụ: Cho E(p,q,r) =(p  q)  r . 
+Ta có bảng chân trị sau:
+
+Biểu thức logic
+15
+
+====================
+SLIDE 16
+====================
+Bài tập 1: Cho các mệnh đề tham biến P: x<0 và Q: y>0. Hoàn thành bảng chân trị dưới đây:
+16
+
+====================
+SLIDE 17
+====================
+Bài tập 2: Viết biểu thức logic mệnh đề cho các mô tả dưới đây:
+17
+1. Điều kiện để tháng (m) là dữ liệu hợp lệ
+2. Điều kiện để tháng m có 30 ngày
+3. Điều kiện để tháng 2 có 29 ngày
+4. Điều kiện để A, B, C là các góc của một tam giác
+5. Điều kiện để A, B, C là các góc của một tam giác vuông
+6. Điều kiện để A, B, C là các góc của một tam giác cân
+7. Điều kiện để A, B, C là các góc của một tam giác đều.
+8. Điều kiện để học sinh A xét điểm theo tổ hợp A0 đậu vào khoa CNTT IUH năm 2019
+9. Điều kiện để bạn được nhận học bổng 100% trong học kỳ 1 năm học 2020-2021.
+10. Điều kiện tiếng Anh để bạn được đăng ký học phần năm 3.
+
+====================
+SLIDE 18
+====================
+18
+Bài tập 3: Hàm eq(X,Y) trả về 1 khi giá trị của X và Y là như nhau, trả về 0 trong các trường hợp còn lại. Biểu thức nào dưới đây là điều kiện cần và đủ để nhận về 1 khi hàm eq(eq(A,B), eq(B,C)) được gọi?
+(A=B và B=C) hoặc (A#B và B#C)
+(A=B và B=C) hoặc (A#B hoặc B#C)
+(A=B và B=C) hoặc (A=C)
+(A=B hoặc B=C) hoặc (A=C)
+
+
+
+
+
+====================
+SLIDE 19
+====================
+Tương đương logic: Hai biểu thức logic E và F theo các biến mệnh đề nào đó được gọi là tương đương logic nếu chúng có cùng bảng chân trị.
+Ký hiệu: E  F  (E tương đương với F).
+Ví dụ:  (p  q)  p  q
+Biểu thức logic E được gọi là hằng đúng nếu chân trị của E luôn bằng 1(đúng) trong mọi trường hợp về chân trị của các biến mệnh đề có trong E. Nói cách khác, E là hằng đúng khi ta có E  1.
+Biểu thức logic
+19
+
+====================
+SLIDE 20
+====================
+Tương tự, E là một hằng sai khi ta có E  0.
+Ví dụ: E(p,q) = p  p là hằng sai.
+	   F(p,q) =(pq)  (p  q) là hằng đúng.
+Định lý: Hai biểu thức logic E và F tương đương với nhau khi và chỉ khi E  F là hằng đúng.
+Ví dụ: (pq)  (p  q)
+Hệ quả logic: F được gọi là hệ quả logic của E nếu E  F là hằng đúng.
+Ký hiệu: E  F
+Ví dụ: (p  q)  p
+
+Biểu thức logic
+20
+
+====================
+SLIDE 21
+====================
+Phủ định của phủ định: p  p
+Qui tắc De Morgan:	 (p  q)   p   q
+	 (p  q)   p   q
+Luật giao hoán: 	p  q  q  p
+				p  q  q  p
+Luật kết hợp:	(p  q)  r  p  (q  r)
+			(p  q)  r  p  (q  r)
+Các luật logic
+21
+
+====================
+SLIDE 22
+====================
+Luật phân phối: p  (q  r)  (p  q)  (p  r)
+			 p  (q  r)  (p  q)  (p  r)
+Luật lũy đẳng:	 	p  p  p
+			 	p  p  p
+Luật trung hòa:		p  0  p
+				p  1  p
+Luật về phần tử bù:	p  p  0 
+				p  p  1 
+Các luật logic
+22
+
+====================
+SLIDE 23
+====================
+ Luật thống trị: 		p  0  0 
+				p  1  1
+ Luật hấp thu: 		p  (p  q)  p
+				p  (p  q)  p
+ Luật về phép kéo theo:	p  q  p  q
+					 	   q   p
+Ví dụ: Cho p, q, r là các biến mệnh đề. Chứng minh rằng: (p  r)  (q  r)  (p  q)  r 
+Các luật logic
+23
+
+====================
+SLIDE 24
+====================
+Các luật logic
+24
+Qui tắc De Morgan:	 (p  q)   p   q
+                                   (p  q)   p   q
+VD: Dùng bảng chân trị chứng minh qui tắc De Morgan
+
+====================
+SLIDE 25
+====================
+Ví dụ: Cho p, q, r là các biến mệnh đề. Chứng minh rằng: (p  r)  (q  r)  (p  q)  r .
+Giải:
+  
+Các luật logic
+25
+ ( p  r)   (q  r)
+  ( p  r )   ( q  r) //kéo theo
+  ( p   q )  r //phân phối
+  ( p  q )  r // de morgan
+  ( p   q )  r //kéo theo
+  (p  q )  r //kéo theo
+
+====================
+SLIDE 26
+====================
+Bài tập 4: Tìm sơ đồ khối tương đương
+26
+
+====================
+SLIDE 27
+====================
+Bài tập 5: Tìm bảng chân trị của biểu thức Z 
+27
+
+====================
+SLIDE 28
+====================
+28
+
+====================
+SLIDE 29
+====================
+29
+
+====================
+SLIDE 30
+====================
+30
+
+====================
+SLIDE 31
+====================
+31
+
+====================
+SLIDE 32
+====================
+32
+
+====================
+SLIDE 33
+====================
+33
+
+====================
+SLIDE 34
+====================
+Định nghĩa: 
+Trong các chứng minh toán học, ta thường thấy những lý luận dẫn xuất có dạng: nếu    và     và    thì q. 
+Dạng lý luận này là đúng khi ta có biểu thức
+                                    là hằng đúng.
+Ta gọi dạng lý luận trên là một quy tắc suy diễn và  thường được viết theo các cách sau đây:
+Cách 1: Biểu thức hằng đúng
+Qui tắc suy diễn
+34
+
+====================
+SLIDE 35
+====================
+Định nghĩa: 
+Cách 2: Dòng suy diễn
+
+Cách 3: Mô hình suy diễn
+
+
+
+
+Các biểu thức logic                  được gọi là giả thiết (hay tiên đề), biểu thức q được gọi là kết luận.
+Qui tắc suy diễn
+35
+
+====================
+SLIDE 36
+====================
+36
+
+====================
+SLIDE 37
+====================
+ Qui tắc khẳng định (Modus Ponens):
+	[(p  q)  p]  q
+	
+Ví dụ: 
+Học tốt thi đậu 		      
+SV A  học tốt
+Suy ra: SV A  thi đậu
+ Nếu chuồn chuồn bay thấp thì mưa	       
+ Thấy chuồn chuồn bay thấp
+Suy ra: trời mưa
+Qui tắc suy diễn 
+37
+
+====================
+SLIDE 38
+====================
+38
+
+====================
+SLIDE 39
+====================
+2. Qui tắc phủ định (Modus Tollens):
+ [(p  q)  q ]   p 
+	
+Ví dụ: 
+• Nếu A đi học đầy đủ thì A đậu toán rời rạc.
+• A không đậu toán rời rạc.
+Suy ra: A không đi học đầy đủ.
+Qui tắc suy diễn
+39
+
+====================
+SLIDE 40
+====================
+40
+
+====================
+SLIDE 41
+====================
+3. Qui tắc tam đoạn luận: 
+Hypothetical Syllogism
+ [(p  q)  (q  r)]  (p  r)
+	
+Ví dụ: 
+• Nếu trời mưa thì đường ướt
+• Nếu đường ướt thì đường trơn
+Suy ra: nếu trời mưa thì đường trơn.
+Qui tắc suy diễn
+41
+
+====================
+SLIDE 42
+====================
+42
+
+====================
+SLIDE 43
+====================
+43
+Qui tắc suy diễnDisjunctive Syllogism – Tam đoạn luận rời
+
+====================
+SLIDE 44
+====================
+44
+
+====================
+SLIDE 45
+====================
+ Qui tắc phản chứng: Reductio ad absurdum
+
+ * Tổng quát:
+
+
+
+Qui tắc suy diễn
+45
+Để chứng minh vế trái là một hằng đúng, ta chứng minh nếu thêm phủ định của q vào các tiên đề thì được một mâu thuẫn.
+
+====================
+SLIDE 46
+====================
+46
+
+====================
+SLIDE 47
+====================
+ Qui tắc phản chứng:
+Ví dụ: 
+
+Qui tắc suy diễn
+47
+
+====================
+SLIDE 48
+====================
+ Qui tắc chứng minh theo trường hợp :
+          [(p  r)  (q  r)]  [(p  q)r]
+* Tổng quát:
+
+
+
+Qui tắc suy diễn
+48
+
+====================
+SLIDE 49
+====================
+49
+
+====================
+SLIDE 50
+====================
+6.Phản ví dụ: counterexample
+Để chứng minh một phép suy luận là sai hay không là một hằng đúng, ta chỉ cần chỉ ra một phản ví dụ.
+Qui tắc suy diễn
+50
+Để tìm một phản ví dụ ta chỉ cần chỉ ra một trường hợp về chân trị của các biến mệnh đề sao cho các tiên đề trong phép suy luận là đúng còn kết luận là sai.
+
+====================
+SLIDE 51
+====================
+6.Phản ví dụ: 
+Ví dụ: Hãy kiểm tra suy luận:
+
+NX: Ta sẽ tìm p,q,r thỏa
+
+
+
+Dễ dàng tìm thấy một phản ví dụ:  p=1,q=0,r=1.
+Vậy suy luận đã cho là không đúng
+Qui tắc suy diễn
+51
+
+====================
+SLIDE 52
+====================
+ Ví dụ: Suy luận sau đúng hay sai
+
+
+
+
+
+Qui tắc suy diễn
+52
+
+====================
+SLIDE 53
+====================
+53
+ Ví dụ:Suy luận sau đúng hay sai
+
+
+
+
+
+HD: Dùng phản ví dụ: Chọn 
+
+Qui tắc suy diễn
+53
+p=1, q=0, r=1, s=0, t=1
+
+====================
+SLIDE 54
+====================
+Qui tắc  suy diễn
+54
+
+====================
+SLIDE 55
+====================
+Giải
+55
+
+====================
+SLIDE 56
+====================
+Logic vị từ
+56
+
+====================
+SLIDE 57
+====================
+Định nghĩa: 
+Vị từ - predicate logic - là một khẳng định p(x,y,..), trong đó x,y...là các biến thuộc tập hợp A, B,.. cho trước sao cho:
+- Bản thân p(x,y,..) không phải là mệnh đề
+- Nếu thay x,y,.. thành giá trị cụ thể thì p(x,y,..) là mệnh đề.
+Ví dụ:
+- p(n) =  “n +1 là số nguyên tố”
+- q(x,y) = “x + y = 1” 
+Vị từ - Lượng từ
+57
+
+====================
+SLIDE 58
+====================
+Các phép toán trên vị từ
+Cho trước các vị từ p(x), q(x) theo một biến xA. Khi ấy, ta cũng có các phép toán tương ứng như trên mệnh đề: 
+ Phủ định: p(x)
+ Phép nối liền (hội, giao): p(x)  q(x)
+ Phép nối rời (tuyển, hợp): p(x)  q(x)
+ Phép kéo theo: p(x)  q(x)
+ Phép kéo theo hai chiều:  p(x)  q(x)
+Vị từ - Lượng từ
+58
+
+====================
+SLIDE 59
+====================
+Cho p(x) là một vị từ theo một biến xác định trên A. Các mệnh đề lượng từ hóa của p(x) được định nghĩa như sau:
+- Mệnh đề “Với mọi x thuộc A, p(x) ”, kí hiệu: “x  A, p(x)” là mđ đúng khi và chỉ khi p(a) luôn đúng với mọi giá trị a  A.  đgl lượng từ phổ dụng
+- Mệnh đề “Tồn tại (có ít nhất một) x thuộc A, p(x)” kí hiệu “x  A, p(x)” là mệnh đề đúng khi và chỉ khi có ít nhất một giá trị x= a’ A nào đó sao cho mệnh đề p(a’) đúng.  đgl lượng từ tồn tại
+Vị từ - Lượng từ
+59
+
+====================
+SLIDE 60
+====================
+60
+
+====================
+SLIDE 61
+====================
+Cho p(x, y) là một vị từ theo hai biến x, y xác định trên AB. Ta định nghĩa các mệnh đề lượng từ hóa của p(x, y) như sau:
+“xA,yB, p(x, y)”  “xA, (yB, p(x, y))”
+“xA, yB, p(x, y)”  “xA, (yB, p(x, y))”
+“xA, yB, p(x, y)”  “xA, (yB, p(x, y))”
+“xA, yB, p(x, y)”  “xA, (yB, p(x, y))”
+Vị từ - Lượng từ
+61
+
+====================
+SLIDE 62
+====================
+Ví dụ: Các mệnh đề sau đúng hay sai?
+- “x  R,                         ”
+- “x  R,                          ”
+- “x  R, y  R, 2x + y < 1”
+- “x  R, y  R, 2x + y < 1”
+- “x  R, y  R, x + 2y < 1”
+- “x  R, y  R, x + 2y < 1”
+
+Vị từ - Lượng từ
+62
+
+====================
+SLIDE 63
+====================
+63
+
+====================
+SLIDE 64
+====================
+64
+
+====================
+SLIDE 65
+====================
+Định lý
+Cho p(x, y) là một vị từ theo hai biến x, y xác định trên AB. Khi đó:
+ “xA, yB, p(x, y)”  “yB, xA, p(x, y)”
+ “xA, yB, p(x, y)”  “yB, xA, p(x, y)”
+ “xA, yB, p(x, y)”  “yB, xA, p(x, y)”
+Phủ định của mệnh đề lượng từ hóa vị từ p(x,y,..) có được bằng cách: thay  thành , thay  thành , và p(x,y,..) thành  p(x,y,..).
+Vị từ - Lượng từ
+65
+
+====================
+SLIDE 66
+====================
+Với vị từ theo 1 biến ta có :
+
+
+Với vị từ theo 2 biến 
+
+Vị từ - Lượng từ
+66
+
+====================
+SLIDE 67
+====================
+Ví dụ phủ định các mệnh đề sau
+- “x  A, 2x + 1  0”
+- “>0,  > 0:(xR: x – a<  f(x) – f(a)<)”
+Vị từ - Lượng từ
+67
+
+====================
+SLIDE 68
+====================
+68
+
+====================
+SLIDE 69
+====================
+Qui tắc đặc biệt hóa phổ dụng: 
+69
+
+====================
+SLIDE 70
+====================
+Cho n0N và p(n) là một vị từ theo biến tự nhiên n  n0.
+Để chứng minh tính đúng đắn của mệnh đề:
+				n  n0, p(n)
+ta có thể dùng các dạng nguyên lý quy nạp như sau:
+*Nguyên lý quy nạp yếu (giả thiết đúng với k)
+Mô hình suy diễn:	
+
+Qui nạp
+70
+(cơ sở)
+(GTQN)
+
+====================
+SLIDE 71
+====================
+*Nguyên lý quy nạp mạnh (giả thiết đúng đến k)
+Mô hình suy diễn:	
+
+(cơ sở)
+(GTQN)
+
+Qui nạp
+71
+
+====================
+SLIDE 72
+====================
+72
+
+====================
+SLIDE 73
+====================
+Ví dụ :
+Chứng minh
+
+
+Ví dụ :
+Chứng minh
+
+Qui nạp
+73
+
+====================
+SLIDE 74
+====================
+74

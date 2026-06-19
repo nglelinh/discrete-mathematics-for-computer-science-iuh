@@ -382,4 +382,17 @@ $$
 - Các phép toán tuân theo luật: giao hoán, kết hợp, phân phối, De Morgan
 - Ứng dụng thực tế: SQL queries, lọc dữ liệu, Bloom filter
 
+## Bài tập bổ sung: Phép toán tập hợp (từ ccrr1_baitap2)
+
+**Bài 1:** Danh sách tất cả tập con của {1, 2, {b}}.
+
+**Bài 2:** U = {1..10}, A lẻ, B chẵn, C <5. Tính A∪B, A∩C.
+
+**Bài 3:** A={1,{2},3,{4},5}, B={1,{4},5,3}, C={{1,2,3}}, D={1,3}, E={1,{3},4,{5}}, F={1,2,3,4,8}
+Tính A∩C, B∩F, D∪C, C∩E, C∪(D∩F)
+
+**Bài 4:** Liệt kê {b,c,d} × {e,o}
+
+**Bài 5:** Chứng minh: nếu (A ∪ B) ⊆ (A ∩ B) thì A = B.
+
 Trong bài tiếp theo, chúng ta sẽ tìm hiểu về lực lượng tập hợp, tập lũy thừa, nguyên lý bao hàm -- loại trừ và khái niệm về tập vô hạn đếm được / không đếm được.

@@ -56,6 +56,20 @@ Trong đó:
 
 $$F_n = F_{n-1} + F_{n-2}, \quad F_1 = 1, F_2 = 1$$
 
+**Phân loại hệ thức truy hồi (từ slide bài giảng):**
+- Tuyến tính / không tuyến tính
+- Thuần nhất / không thuần nhất
+- Hệ số hằng / biến thiên
+
+Ví dụ tuyến tính thuần nhất: Fibonacci.
+
+Hệ thức đệ quy tuyến tính thuần nhất có nghiệm tổng quát dựa trên phương trình đặc trưng.
+
+**Ví dụ từ slide:**
+Bài toán thỏ Fibonacci dẫn đến F1=1, F2=1, Fn = Fn-1 + Fn-2 với n>2.
+
+Tương tự cho các dãy số khác.
+
 **Dãy**: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
 
 ![Xoắn ốc Fibonacci](https://commons.wikimedia.org/wiki/Special:FilePath/Fibonacci_spiral.svg?width=640)

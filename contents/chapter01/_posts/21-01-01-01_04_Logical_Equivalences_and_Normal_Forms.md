@@ -726,4 +726,24 @@ Cho các biểu thức sau, xác định xem biểu thức đã ở dạng DNF, 
 
 </details>
 
+## Bài tập bổ sung: Sử dụng các luật logic mệnh đề (từ ccrr1_baitap1)
+
+**Hướng dẫn chung:** Sử dụng các luật logic để rút gọn biểu thức.
+
+Ví dụ luật:
+- De Morgan: ¬(P ∧ Q) ≡ ¬P ∨ ¬Q
+- Phân phối: P ∧ (Q ∨ R) ≡ (P ∧ Q) ∨ (P ∧ R)
+- Đồng nhất: P ∨ (P ∧ Q) ≡ P
+- Bổ sung: P ∨ (¬P ∧ Q) ≡ P ∨ Q
+- Tương đương: (P → Q) ↔ (¬P ∨ Q)
+
+**Bài tập 1:** ¬(p ∨ ¬q) → ¬p
+
+**Bài tập 2:** ¬(p → q) → p
+
+**Bài tập 3:** ¬(p ∧ (¬q ∧ q))
+
+**Bài tập 4:** (p ∨ q) ∧ ¬(¬p ∧ q)
+
+
 

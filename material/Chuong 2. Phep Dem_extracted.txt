@@ -1,0 +1,930 @@
+====================
+SLIDE 1
+====================
+CẤU TRÚC RỜI RẠC
+CHƯƠNG II: 
+CÁC PHƯƠNG PHÁP ĐẾM
+
+====================
+SLIDE 2
+====================
+CÁC PHƯƠNG PHÁP ĐẾM
+Tập hợp các tập hợp con. Biểu diễn tập hợp trên máy tính. Các phép toán tập hợp và các tính chất liên quan. Tập hợp tích Descartes.
+Nguyên lý cộng, Nguyên lý nhân, Nguyên lý chuồng bồ câu.
+Hoán vị, Tổ hợp và Chỉnh hợp. Công thức nhị thức Newton.
+Hoán vị và tổ hợp lặp.
+
+2
+
+====================
+SLIDE 3
+====================
+TẬP HỢP
+1. Khái niệm
+2. Quan hệ giữa các tập hợp
+ 3. Các cách xác định tập hợp
+4. Tập hợp các tập hợp con (Tập hợp lũy thừa) 
+3
+
+====================
+SLIDE 4
+====================
+
+Một tụ tập của vô hạn hay hữu hạn các đối tượng có một tính chất chung nào đó gọi là một tập hợp.
+Các đối tượng trong một tập hợp được gọi là các phần tử của tập hợp đó.
+Các phần tử của tập hợp là khác nhau, không quan tâm đến thứ tự
+Tập hợp thường gọi vắn tắt là tập.
+ 
+Định nghĩa tập hợp:
+KHÁI NIỆM
+4
+
+====================
+SLIDE 5
+====================
+ Ví dụ:
+R là tập các số thực.
+Z là tập các số nguyên.
+N là tập các số tự nhiên.
+Ghi chú:
+x ∈ A để chỉ x là phần tử của tập A 
+x ∉ A để chỉ x không phải là phần tử của tập A
+∅ (tập rỗng): là tập không chứa bất kì phần tử nào
+KHÁI NIỆM
+5
+
+====================
+SLIDE 6
+====================
+Tập hợp bằng nhau: Hai tập hợp A và B được gọi là bằng nhau khi và chỉ khi chúng có cùng các phần tử, tức là mỗi phần tử thuộc A đều là phần tử thuộc B và ngược lại. Kí hiệu: A=B.
+Ví dụ: {1, 3, 5} và {3, 5, 1} 
+Tập con: Tập A được gọi là tập con của tập B khi và chỉ khi mọi phần tử của A đều là phần tử của B.
+Kí hiệu: A  B.
+Nhận xét: (A  B)  x (x A  x  B) là đúng
+
+6
+QUAN HỆ GIỮA CÁC TẬP HỢP
+
+====================
+SLIDE 7
+====================
+Ví dụ: Tập các số nguyên dương lẻ nhỏ hơn 10 là một tập con của tập các số nguyên dương nhỏ hơn 10 . 
+Ghi chú: Khi muốn nhấn mạnh tập A là tập con của tập B nhưng A≠B, ta viết A⊂B và nói rằng A là tập con thật sự của B.
+Nhận xét: 
+ Nếu A⊆B và B⊆A  thì A=B.
+ Tập rỗng là con của mọi tập hợp.
+ Mọi tập hợp đều là tập con của chính nó.
+QUAN HỆ GIỮA CÁC TẬP HỢP
+7
+
+====================
+SLIDE 8
+====================
+Một tập hợp có thể được xác định bằng cách liệt kê tất cả các phần tử của nó. Chúng ta sẽ dùng ký hiệu trong đó tất cả các phần tử của một tập hợp được liệt kê ở giữa hai dấu móc.
+  Ví dụ:
+ V = {a, e, i o, u} 
+ O = {1,3, 5, 7, 9}
+ N = {0, 1, 2, 3, …} 
+ Z = {…., 0, 1, 2, 3, …}.
+
+
+
+
+
+
+
+
+1. Liệt kê các phần tử
+CÁC CÁCH XÁC ĐỊNH TẬP HỢP
+8
+
+====================
+SLIDE 9
+====================
+ Một tập hợp cũng có thể được xác định bằng cách chỉ ra rõ các thuộc tính đặc trưng của các phần tử của nó. 
+Cách viết:   A={xU| p(x)} (A ={xU:p(x)}) hay vắn tắt  A={x| p(x)}  (A ={x: p(x)})
+  Ví dụ:
+V = {x | x là nguyên âm}
+O = {x | x là số nguyên dương nhỏ hơn 10} 
+A = {x | x = 2n, nN }
+B = {nN | n là số nguyên tố} .
+
+
+
+
+
+
+
+
+2. Chỉ ra các thuộc tính đặc trưng của phần tử
+CÁC CÁCH XÁC ĐỊNH TẬP HỢP
+9
+
+====================
+SLIDE 10
+====================
+Cách viết:   A={f(x)| xB}    (A ={f(x): xB})
+ 
+ Ví dụ:
+ A = {(2n+1)| nN} .
+ B = {2x| xR} 
+
+
+
+
+
+
+
+
+3. Cách xác định tập hợp dưới dạng ảnh của một tập hợp khác
+CÁC CÁCH XÁC ĐỊNH TẬP HỢP
+10
+
+====================
+SLIDE 11
+====================
+  
+
+
+
+
+ Cho tập X, tập tất cả các tập con của X (còn gọi là tập lũy thừa của X) được kí hiệu là P(X). Nói cách khác, P(X) là một tập hợp mà mỗi phần tử của nó là một tập hợp con của X.
+Ví dụ: X ={0, 1, 2}
+
+ 
+ 
+   
+
+
+
+
+
+
+TẬP HỢP CÁC TẬP HỢP CON
+P(X) = {∅, {0}, {1}, {2}, {0,1}, {0,2},{1,2},{0,1,2}}. 
+Chú ý:
+ X  Y P(X)  P(Y).
+ Nếu X có n phần tử (nN) thì P(X) có 2n phần      tử.
+11
+
+====================
+SLIDE 12
+====================
+ Có nhiều cách biểu diễn tập hợp trên máy tính. 
+
+Ở đây chúng ta sẽ nói đến một phương pháp lưu trữ các phần tử bằng cách dùng sự sắp xếp tùy ý các phần tử của tập vũ trụ. 
+
+1. Phương pháp biểu diễn
+BIỂU DIỄN TẬP HỢP TRÊN MÁY TÍNH
+12
+
+====================
+SLIDE 13
+====================
+BIỂU DIỄN CÁC TẬP HỢP TRÊN MÁY TÍNH
+Phương pháp biểu diễn
+Giả sử tập vũ trụ U là hữu hạn. Trước hết sắp xếp tuỳ ý các phần tử của U, ví dụ a1, a2, …,an, sau đó biểu diễn tập con A của U bằng một xâu bit có chiều dài n, trong đó bit thứ i là 1 nếu ai thuộc A và là 0 nếu ai không thuộc A.
+
+  
+13
+
+====================
+SLIDE 14
+====================
+Cho U = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} và sự sắp xếp các phần tử trong U theo thứ tự tăng dần, tức là ai = i. 
+ Khi đó, chuỗi bit biểu diễn tập con A = {1, 2, 3, 4, 5} là 11111 00000; xâu bit biểu diễn tập con B = {1, 3, 5, 7, 9} là 10101 01010. 
+ Để nhận được xâu bit cho các tập là hợp và giao của hai tập hợp, ta sẽ thực hiện phép toán Boole trên các xâu bit biểu diễn hai tập hợp đó.
+ Xâu bit đối với hợp của hai tập là:
+11111 00000 ∨ 10101 01010 = 11111 01010 
+	        A∪B = {1, 2, 3, 4, 5, 7, 9}.
+ Xâu bit đối với giao của hai tập này là: 
+11111 00000 ^ 10101 01010 = 10101 00000 
+	        A∩B = {1, 3, 5}.
+2. Ví dụ
+BIỂU DIỄN CÁC TẬP HỢP TRÊN MÁY TÍNH
+14
+
+====================
+SLIDE 15
+====================
+1. Phép hợp
+2. Phép giao
+3. Phép hiệu
+4. Các tính chất liên quan
+CÁC PHÉP TOÁN TẬP HỢP
+15
+
+====================
+SLIDE 16
+====================
+ Định nghĩa: Cho A và B là hai tập hợp. Hợp của hai tập hợp A và B, được ký hiệu là A∪B, là tập hợp chứa các phần tử, hoặc thuộc A hoặc thuộc B hoặc thuộc cả hai. 
+
+
+
+
+
+Ví dụ:
+ Cho A = {1, 2, 3} và B = {1, 3, 5} thì A∪B = {1, 2, 3, 5}. 
+A∪B ={x|(x ∈A)∨(x ∈B)}
+Giản đồ Venn biểu diễn hợp của A và B
+1. Phép hợp
+CÁC PHÉP TOÁN TẬP HỢP
+16
+
+====================
+SLIDE 17
+====================
+
+
+
+
+
+Định nghĩa: Hợp của n tập hợp là một tập hợp chứa tất cả các phần tử thuộc ít nhất một trong số n tập hợp đó. 
+Ta ký hiệu:
+
+để chỉ hợp của các tập hợp A1, A2, ..., An . 
+Ví dụ: 
+          Cho Ai= {i, i+1, i+2, …}. Khi đó: 
+
+
+
+
+
+
+
+
+
+
+1. Phép hợp
+CÁC PHÉP TOÁN TẬP HỢP
+17
+
+====================
+SLIDE 18
+====================
+
+Định nghĩa: Cho A và B là hai tập hợp. Giao của hai tập hợp A và B, được ký hiệu là A∩B, là tập hợp chứa các phần tử thuộc cả hai tập A và B. 
+
+
+
+
+
+
+Ví dụ:
+ Cho A = {1, 2, 3} và B = {1, 3, 5} thì A∩B = {1, 3}.
+ Cho M={1,2} và N={3,4} thì M∩N = ∅, khi đó ta nói 
+M, N rời nhau.
+A∩B ={x| (x ∈A)∧(x ∈B)}
+Giản đồ Venn biểu diễn giao của A và B
+     2. Phép giao
+CÁC PHÉP TOÁN TẬP HỢP
+18
+
+====================
+SLIDE 19
+====================
+
+
+
+
+
+
+Định nghĩa: Giao của n tập hợp là một tập hợp chứa các phần tử thuộc tất cả n tập hợp đó. Ta ký hiệu:
+
+
+để chỉ giao của các tập hợp A1, A2, ..., An . 
+Ví dụ:  Cho Ai= {i, i+1, i+2, …}. Khi đó: 
+
+
+
+
+
+
+
+
+
+2. Phép giao
+CÁC PHÉP TOÁN TẬP HỢP
+19
+
+====================
+SLIDE 20
+====================
+Định nghĩa: Cho A và B là hai tập hợp, hiệu của A và B, được ký hiệu là A–B, là tập hợp chứa các phần tử thuộc A nhưng không thuộc B. Hiệu của A và B cũng được gọi là phần bù của B đối với A.
+
+
+
+
+
+
+Ví dụ:
+ Cho A={1, 2, 3} và B={1, 3, 5} thì A–B={2}; B–A={5}.
+A–B={x| (x∈A) ∧ (x∉B)} 
+Giản đồ Venn biểu diễn hiệu A-B
+3. Phép hiệu
+CÁC PHÉP TOÁN TẬP HỢP
+20
+
+====================
+SLIDE 21
+====================
+Nhận xét: A-B=B-A khi và chỉ khi A=B. Khi đó A-B=B-A=∅.
+Định nghĩa: Cho U là tập vũ trụ. Phần bù của tập A, được kí hiệu là Ā, là phần bù của A đối với U: Ā={x| x∉A}.
+Ví dụ: Cho A={a, e, i, o, u } thì Ā={b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, y, z} (ở đây tập vũ trụ là tập các chữ cái tiếng Anh).
+
+
+3. Phép hiệu
+CÁC PHÉP TOÁN TẬP HỢP
+21
+
+====================
+SLIDE 22
+====================
+      CÁC TÍNH CHẤT LIÊN QUAN
+22
+
+====================
+SLIDE 23
+====================
+Định nghĩa 1: Cho hai tập A và B. Tích Descartes của A và B, được ký hiệu là A×B, là tập hợp gồm tất cả các cặp (a, b) với a∈A và b∈B. 
+               A×B={(a, b)| (a∈A) ∧ (b∈B)}.
+Ví dụ: Cho A={1, 2}, B={a, b, c} thì: 
+A×B={(1,a), (1, b), (1, c), (2, a), (2, b), (2, c)} 
+B×A ={(a, 1), (a, 2), (b, 1), (b, 2), (c, 1), (c, 2)} 
+A2=A×A={(1, 1), (1, 2), (2, 1), (2, 2)}
+Nhận xét: A×B ≠ B×A.
+TÍCH DESCARTES
+23
+
+====================
+SLIDE 24
+====================
+TÍCH DESCARTES
+Định nghĩa 2:Tích Descartes của n (n>1) tập hợp A1, A2, …, An , được ký hiệu bởi A1×A2×…×An , là tập hợp gồm tất cả các bộ n phần tử (a1, a2, …, an) trong đó ai∈ Ai với i=1, 2, …n. 
+A1×A2×…×An= {(a1, a2, …, an)| ai ∈Ai với i=1,2, …n}
+
+Ví dụ: Cho A={0, 1}, B = {1, 2}, C ={0, 1, 2} thì: 
+A×B×C={(0,1,0), (0,1,1), (0,1,2), (0,2,0), (0,2,1), (0,2,2), (1,1,0), (1,1,1), (1,1,2)}.
+
+24
+
+====================
+SLIDE 25
+====================
+
+Ghi chú
+
+Lũy thừa bậc 2 Descartes (hay bình phương Descartes) của tập A được định nghĩa là tích Descartes của A với A:
+                     A2 = A×A
+Tương tự, lũy thừa Descartes bậc n của tập A là tích Descartes của n tập A:
+                     An = A×A×...×A
+                     (có n tập A ở vế phải).
+25
+TÍCH DESCARTES
+
+====================
+SLIDE 26
+====================
+* Số phần tử của một tập hợp hữu hạn A được ký hiệu
+là A và gọi là lực lượng của tập A.
+* Nếu tập hợp A không hữu hạn, ta nói A là một tập vô
+hạn và viết: A = . 
+* Quy ước: ∅ = 0.
+* Tính chất: Cho A, B là các tập hữu hạn. Khi đó: 
+1) AB = A+ B -  AB .
+2) AB = A .B 
+3) P(A) = 2 A
+
+VD: A=1, 3, 5, 7; B= 3, 5,6; AB = {1,3,5,6,7}; AB={3,5}
+|A| = 4; |B|= 3; |AB|= 2; |AB |= 5; |AxB| = 12;|P(A)| =24=16
+LỰC LƯỢNG CỦA TẬP HỢP
+26
+
+====================
+SLIDE 27
+====================
+1. Trong tổng số 2504 sinh viên của một khoa công nghệ thông tin, có 1876 theo học môn ngôn ngữ lập trình Pascal, 999 học môn ngôn ngữ Fortran và 345 học ngôn ngữ C. Ngoài ra còn biết 876 sinh viên học cả Pascal và Fortran, 232 học cả Fortran và C, 290 học cả Pascal và C. Nếu 189 sinh viên học cả 3 môn Pascal, Fortran và C thì trong trường hợp đó có bao nhiêu sinh viên không học môn nào trong 3 môn ngôn ngữ lập trình kể trên.
+2. Một cuộc họp gồm 12 người tham dự để bàn về 3 vấn đề. Có 8 người phát biểu về vấn đề I, 5 người phát biểu về vấn đề II  và 7 người phát biểu về vấn đề III. Ngoài ra, có đúng 1 người không phát biểu vấn đề nào. Hỏi nhiều lắm là có bao nhiêu người phát biểu cả 3 vấn đề.
+
+27
+
+====================
+SLIDE 28
+====================
+CÁC NGUYÊN LÝ
+1. Nguyên lý cộng
+28
+Mệnh đề: Cho A và B là hai tập hữu hạn rời nhau, nghĩa là A∩B = ∅. Khi đó ta có:
+		|A  B| = |A| +|B|
+* Tổng quát: Nếu A1, A2, …, An là các tập hữu hạn rời nhau, nghĩa là Ai ∩ Aj = ∅ (i ≠ j; i, j=1, 2, …n) thì
+	| A1  A2  …  An | = |A1| +|A2|+…+ |An| 
+
+====================
+SLIDE 29
+====================
+CÁC NGUYÊN LÝ
+1.Nguyên lý cộng
+
+   Giả sử để thực hiện một công việc nào đó, ta có 2 phương pháp, trong đó:
+	- Phương pháp 1 có n cách thực hiện
+	- Phương pháp 2 có m cách thực hiện
+Khi đó, số cách thực hiện công việc trên là n + m
+
+29
+ Tổng quát?
+
+====================
+SLIDE 30
+====================
+CÁC NGUYÊN LÝ
+1.Nguyên lý cộng
+Ví dụ: Ngọc có 5 cái áo thun, 6 cái áo sơ mi.
+Vậy Ngọc sẽ có bao nhiêu cách chọn áo để mặc.
+		
+30
+Giải:
+	Ngọc có 5 cách chọn áo thun
+	Ngọc có 6 cách chọn áo sơ mi
+
+Vậy Ngọc sẽ có 5+6 =11 cách chọn áo để mặc.
+
+
+====================
+SLIDE 31
+====================
+CÁC NGUYÊN LÝ
+ 2.Nguyên lý nhân
+31
+Mệnh đề: Cho A và B là hai tập hữu hạn. Khi đó ta có:
+		|A × B| = |A| .|B|
+* Tổng quát: Nếu A1, A2, …, An là các tập hữu hạn thì
+	| A1 × A2 × … × An | = |A1| .|A2|.  …  . |An| 
+
+====================
+SLIDE 32
+====================
+CÁC NGUYÊN LÝ
+2.Nguyên lý nhân
+
+Giả sử để thực hiên một công việc nào đó, ta cần thực hiện 2 bước (giai đoạn), trong đó
+  - Bước 1 có n cách thực hiện
+  - Bước 2 có m cách thực hiện
+Khi đó, số cách thực hiện công việc trên là n.m
+
+32
+ Tổng quát?
+
+====================
+SLIDE 33
+====================
+CÁC NGUYÊN LÝ
+2.Nguyên lý nhân
+33
+Giải:
+        Giai đoạn 1 (A đến B): có 3 cách thực hiện
+        Giai đoạn 2 (B đến C): có 4 cách thực hiện
+
+Vậy Phúc muốn tới Trường Đại học Công Nghiệp thì sẽ có 3.4=12 cách.
+
+Ví dụ: Bạn Phúc từ Quận 9 (A) muốn tới trường Đại học Công Nghiệp, phải qua chặng Ngã tư Thủ Đức (B). Biết từ A tới B có 3 tuyến xe buýt để đi, và từ B tới C có 4 tuyến xe buýt để đi.
+
+====================
+SLIDE 34
+====================
+     CÁC NGUYÊN LÝ
+ 3.Nguyên lý chuồng bồ câu(Dirichlet)
+a. Giới thiệu
+Nguyên lý chuồng bồ câu được phát triển từ mệnh đề: “Giả sử có một đàn chim bồ câu bay vào chuồng. Nếu số chim nhiều hơn số ô trong chuồng thì chắc chắn có ít nhất một ô chứa nhiều hơn một con chim.”
+
+
+34
+
+====================
+SLIDE 35
+====================
+     CÁC NGUYÊN LÝ
+ 3.Nguyên lý chuồng bồ câu(Dirichlet)
+35
+b.Nguyên lý cơ bản
+      Nếu ta đặt n đối tượng nào đó vào k hộp, và số hộp k nhỏ hơn số đối tượng n, thì có ít nhất một hộp chứa từ 2 đối tượng trở lên.
+
+
+====================
+SLIDE 36
+====================
+     CÁC NGUYÊN LÝ
+ 3.Nguyên lý chuồng bồ câu(Dirichlet)
+36
+b.Nguyên lý mở rộng
+      Nếu ta đặt n đối tượng vào k hộp thì sẽ tồn tại một hộp chứa ít nhất là ]n/k[ đối tượng.
+
+Chú ý: Ký hiệu ]a[ dùng để chỉ số nguyên nhỏ nhất lớn hơn hoặc bằng a. 
+  Ví dụ: ]5[=5, ]4/3[=2
+               
+
+
+====================
+SLIDE 37
+====================
+     CÁC NGUYÊN LÝ
+ 3.Nguyên lý chuồng bồ câu(Dirichlet)
+37
+Ví dụ: Có 20 chim bồ câu ở trong chuồng có 7 ô. Khi đó sẽ có ít nhất 1 ô chứa ]20/7[=3 con bồ câu trở lên.
+
+Ví dụ: Có 100 người thì có ít nhất ]100/12[= 9 người sinh cùng tháng.
+
+====================
+SLIDE 38
+====================
+Bài tập 1
+38
+Có năm loại học bổng khác nhau. Hỏi rằng phải có ít nhất bao nhiêu sinh viên để chắc chắn rằng có ít ra là 6 người cùng nhận học bổng như nhau?
+ 
+Gọi N là số sinh viên, khi đó  ]N/5[ = 6 khi và chỉ khi 5 < N/5  6 hay 25 < N  30. Vậy số N cần tìm là 26. 
+
+====================
+SLIDE 39
+====================
+Bài tập 2
+39
+Số mã vùng cần thiết nhỏ nhất phải là bao nhiêu để đảm bảo 25 triệu máy điện thoại trong nước có số điện thoại khác nhau, mỗi số có 9 chữ số (giả sử số điện thoại có dạng 0XX - 8XXXXX với X nhận các giá trị từ 0 đến 9)?
+  
+Có 107 = 10.000.000 số điện thoại khác nhau có dạng 0XX - 8XXXXX. Vì vậy theo nguyên lý Dirichlet tổng quát, trong số 25 triệu máy điện thoại ít nhất có ]25.000.000/10.000.000[ = 3 có cùng một số. Để đảm bảo mỗi máy có một số cần có ít nhất 3 mã vùng. 
+
+====================
+SLIDE 40
+====================
+Ứng dụng 1
+40
+Trong một phòng họp có n người, bao giờ cũng tìm được 2 người có số người quen trong số những người dự họp là như nhau?
+
+Số người quen của mỗi người trong phòng họp nhận các giá trị từ 0 đến n  1. Rõ ràng trong phòng không thể đồng thời có người có số người quen là 0 (tức là không quen ai) và có người có số người quen là n  1 (tức là quen tất cả). Vì vậy theo số lượng người quen, ta chỉ có thể phân n người ra thành n 1 nhóm. Vậy theo nguyên lý Dirichlet tồn tai một nhóm có ít nhất 2 người, tức là luôn tìm được ít nhất 2 người có số người quen là như nhau. 
+
+====================
+SLIDE 41
+====================
+Ứng dụng 2
+41
+Trong một tháng gồm 30 ngày, một đội bóng chuyền thi đấu mỗi ngày ít nhất 1 trận nhưng chơi không quá 45 trận. Chứng minh rằng tìm được một giai đoạn gồm một số ngày liên tục nào đó trong tháng sao cho trong giai đoạn đó đội chơi đúng 14 trận. 
+
+Gọi aj là số trận mà đội đã chơi từ ngày đầu tháng đến hết ngày j. Khi đó
+1  a1 < a2 < ... < a30 < 45
+15  a1+14 < a2+14 < ... < a30+14 < 59.
+Sáu mươi số nguyên a1, a2, ..., a30, a1+ 14, a2 + 14, ..., a30+14 nằm giữa 1 và 59. Do đó theo nguyên lý Dirichlet có ít nhất 2 trong 60 số này bằng nhau. Vì vậy tồn tại i và j sao cho ai = aj + 14 (j < i). Điều này có nghĩa là từ ngày j + 1 đến hết ngày i đội đã chơi đúng 14 trận.
+
+====================
+SLIDE 42
+====================
+Ứng dụng 3
+42
+Giả sử trong một nhóm 6 người mỗi cặp hai hoặc là bạn hoặc là thù. Chứng tỏ rằng trong nhóm có ba người là bạn lẫn nhau hoặc có ba người là kẻ thù lẫn nhau.
+
+Gọi A là một trong 6 người. Trong số 5 người của nhóm hoặc là có ít nhất ba người là bạn của A hoặc có ít nhất ba người là kẻ thù của A, điều này suy ra từ nguyên lý Dirichlet tổng quát, vì ]5/2[ = 3. Trong trường hợp đầu ta gọi B, C, D là bạn của A. nếu trong ba người này có hai người là bạn thì họ cùng với A lập thành một bộ ba người bạn lẫn nhau, ngược lại, tức là nếu trong ba người B, C, D không có ai là bạn ai cả thì chứng tỏ họ là bộ ba người thù lẫn nhau. Tương tự có thể chứng minh trong trường hợp có ít nhất ba người là kẻ thù của A.  
+
+====================
+SLIDE 43
+====================
+HOÁN VỊ
+43
+    Cho tập hợp A gồm n phần tử (n>0). Mỗi cách sắp đặt có thứ tự n phần tử của A được gọi là một hoán vị của n phần tử. Số các hoán vị của n phần tử được ký hiệu là Pn . 
+
+  Ví dụ 1:
+1
+2
+3
+1
+2
+3
+4
+5
+6
+Pn=n!
+a.Định nghĩa:
+
+====================
+SLIDE 44
+====================
+HOÁN VỊ
+44
+ 3
+Số cách chọn:
+ 2
+ 1
+x
+x
+Pn=n! = 1.2…(n-1).n
+
+= 3!
+0! = 1
+b. Công thức:
+
+====================
+SLIDE 45
+====================
+HOÁN VỊ
+45
+Ví dụ 2: Một đoàn khách du lịch dự định đến tham quan 7 điểm A,B,C,D,E,F,G. Hỏi có bao nhiêu cách chọn thứ tự tham quan?
+
+Giải:
+Mỗi cách họ chọn thứ tự tham quan là một hoán vị của tập A,B,C,D,E,F,G.
+
+Do vậy đoàn khách có tất cả: P7 = 7!=5040 cách chọn thứ tự tham quan.
+
+====================
+SLIDE 46
+====================
+46
+
+====================
+SLIDE 47
+====================
+HOÁN VỊ VÒNG QUANH
+47
+Một hoán vị vòng tròn của nnn phần tử là một cách sắp xếp các phần tử của một tập hợp sao cho thứ tự của các phần tử được xem xét theo dạng vòng tròn, nghĩa là không có sự phân biệt giữa điểm bắt đầu và điểm kết thúc trong chuỗi sắp xếp.
+Pn=(n-1)! = 1.2…(n-1)
+  Ví dụ 1: Giả sử bạn có 5 người bạn muốn sắp xếp ngồi quanh một bàn tròn. Các người bạn này là A, B, C, D, và E.
+a.Định nghĩa:
+
+====================
+SLIDE 48
+====================
+48
+
+====================
+SLIDE 49
+====================
+HOÁN VỊ LẶP
+49
+a. Định nghĩa: Cho n đối tượng, trong đó có ni đối tượng loại i giống hệt nhau (i =1,2,…,k) và n1+ n2,…+ nk= n. Mỗi cách sắp xếp có thứ tự n đối tượng đã cho gọi là một hoán vị lặp của n.
+b. Công thức:
+Số hoán vị của n đối tượng, trong đó có 
+n1  đối tượng giống nhau thuộc loại 1, 
+n2  đối tượng giống nhau thuộc loại 2,
+…, 
+nk  đối tượng giống nhau thuộc loại k, 
+(n1+ n2,…+ nk= n) là
+
+====================
+SLIDE 50
+====================
+50
+Ví dụ: Có bao nhiêu chuỗi ký tự khác nhau 
+nhận được bằng cách sắp xếp lại các ký tự của 
+chuỗi: “YAMAHAM”
+
+
+
+HOÁN VỊ LẶP
+Số ký tự có trong chuỗi là: n=7
+Có 3 ký tự ‘A’
+Có 2 ký tự ‘M’
+Có 1 ký tự ‘Y’ 
+Có 1 ký tự ‘H’
+
+Do đó số chuỗi có được là 
+
+====================
+SLIDE 51
+====================
+CHỈNH HỢP KHÔNG LẶP
+51
+    Cho tập hợp A gồm n phần tử (n>0). Mỗi bộ gồm k phần tử (1  k  n) sắp thứ tự của tập A được gọi là một chỉnh hợp chập k của n phần tử. Số các chỉnh hợp chập k của n phần tử được ký hiệu là      . 
+
+a.Định nghĩa:
+  Nhận xét: Lập một chỉnh hợp chập k của n phần tử chính là lấy ra k phần tử từ n phần tử đó, có quan tâm đến thứ tự.
+
+====================
+SLIDE 52
+====================
+52
+
+====================
+SLIDE 53
+====================
+CHỈNH HỢP
+53
+b.Công thức:
+Nói cách khác, hai chỉnh hợp khác nhau khi và chỉ khi hoặc có ít nhất một phần tử của chỉnh hợp này không là phần tử của chỉnh hợp kia hoặc các phần tử của 2 chỉnh hợp giống nhau nhưng được sắp xếp theo thứ tự khác nhau.
+
+====================
+SLIDE 54
+====================
+CHỈNH HỢP
+54
+Ví dụ: Từ 3 điểm A,B và C sẽ lập được bao nhiêu vector?
+
+Giải:
+Số vector được tạo thành từ 3 điểm A,B,C chính là số chỉnhchập 2 của 3:
+
+Vậy có 6 vector được tạo thành từ 3 điểm A,B,C.
+ 
+
+====================
+SLIDE 55
+====================
+TỔ HỢP
+55
+    Cho tập hợp A gồm n phần tử (n>0). Mỗi tập con gồm k phần tử (0  k  n) của A được gọi là một tổ hợp chập k của n phần tử. Số các tổ hợp chập k của n phần tử được ký hiệu là       . 
+
+a.Định nghĩa:
+  Nhận xét: Lấy một tổ hợp chập k của n phần tử chính là lấy ra k phần tử từ n phần tử đó mà không quan tâm đến thứ tự.
+
+====================
+SLIDE 56
+====================
+TỔ HỢP
+56
+c.Tính chất:
+b.Công thức:
+
+====================
+SLIDE 57
+====================
+57
+Ví dụ: Cho tập A gồm 4
+số tự nhiên {1,2,3,4}. Tìm
+tất cả các tập con của A
+sao cho các tập con chỉ có
+3 phần tử.
+
+
+
+TỔ HỢP
+1
+2
+3
+4
+1
+2
+3
+1
+2
+4
+1
+3
+4
+2
+3
+4
+
+====================
+SLIDE 58
+====================
+TỔ HỢP
+58
+Ví dụ: Từ 3 điểm A,B và C, bạn sẽ có bao nhiêu đoạn thẳng được tạo ra?
+
+Giải:
+Số đoạn thẳng được tạo thành từ 3 điểm A,B,C chính là số tổ hợp chập 2 của 3:
+
+Vậy có 3 đoạn thẳng được tạo thành từ 3 điểm A,B,C.
+ 
+
+====================
+SLIDE 59
+====================
+CÔNG THỨC NHỊ THỨC NEWTON
+59
+Isaac Newton (1643-1727)
+
+====================
+SLIDE 60
+====================
+CÔNG THỨC NHỊ THỨC NEWTON
+60
+Định lý: Với a, b  R và n là số nguyên dương ta có:
+
+
+
+Ví dụ:
+
+====================
+SLIDE 61
+====================
+CÔNG THỨC NHỊ THỨC NEWTON
+61
+Tính chất:
+   - Số các số hạng của công thức là n+1.
+   - Tổng các số mũ của a và b trong mỗi số hạng luôn luôn 
+      bằng số mũ của nhị thức: k+n-k= n
+- Số hạng tổng quát của nhị thức là: 
+- Các hệ số nhị thức cách đều hai số hạng đầu và cuối thì bằng nhau.
+
+====================
+SLIDE 62
+====================
+Một số khai triển hay sử dụng:
+
+62
+CÔNG THỨC NHỊ THỨC NEWTON
+
+====================
+SLIDE 63
+====================
+Ví dụ:
+
+63
+CÔNG THỨC NHỊ THỨC NEWTON
+Ví dụ: Tìm hệ số của x4 trong khai triển (x2 -2)5
+
+Khi k = 2 thì hệ số của x4:
+
+
+====================
+SLIDE 64
+====================
+64
+Khai triển mở rộng nhị thức Newton
+với các số nguyên không âm n1,n2,…,nk  
+thoả n1+n2+…+nk = n, ký hiệu
+
+
+
+====================
+SLIDE 65
+====================
+65
+Vậy hệ số cần tìm:
+
+
+Khai triển mở rộng nhị thức Newton
+
+====================
+SLIDE 66
+====================
+66
+a. Định nghĩa:
+Mỗi cách chọn ra k vật từ n loại vật khác nhau
+(trong đó mỗi loại vật có thể được chọn lại nhiều
+lần) được gọi là tổ hợp lặp chập k của n. Số các
+tổ hợp lặp chập k của n được ký hiệu là
+
+TỔ HỢP LẶP
+
+====================
+SLIDE 67
+====================
+67
+b. Công thức:
+
+
+TỔ HỢP LẶP
+
+Ví dụ: Có 3 loại nón A, B, C. An mua 2 cái nón. Hỏi An có bao nhiêu cách chọn?
+Ta có mỗi cách chọn là mỗi tổ hợp lặp chập 2 của 3. Số cách chọn:
+(Cụ thể AA, AB, AC, BB, BC, CC)
+
+====================
+SLIDE 68
+====================
+68
+TỔ HỢP LẶP
+c. Hệ quả: Số nghiệm nguyên không âm (x1,x2,…,xn) (mỗi xi đều nguyên không âm) của phương trình x1+ x2+…+ xn= k là 
+Số cách chia k vật đồng chất nhau vào n hộp phân biệt cũng chính bằng số tổ hợp lặp chập k của n. 
+
+====================
+SLIDE 69
+====================
+TỔ HỢP LẶP
+69
+
+====================
+SLIDE 70
+====================
+70
+Ví dụ: Tìm số nghiệm nguyên không âm của phương trình 
+x1+ x2 + x3 + x4  = 20				 (1)
+Thỏa điều kiện  x1  3; x2  2; x3 > 4 (). 
+Giải:
+Ta viết điều kiện đã cho thành  x1  3; x2  2; x3  5. 
+Xét các điều kiện sau:
+x2  2; x3  5 	 	 ()
+x1  4; x2  2; x3  5 	()
+Gọi p, q, r lần lượt là các số nghiệm nguyên không âm của phương trình (1) thỏa các điều kiện (*), (**), (***). Ta có:
+TỔ HỢP LẶP
+p = q – r
+
+====================
+SLIDE 71
+====================
+71
+Trước hết ta tìm q. 
+Đặt 
+x1’ = x1; x2’ = x2 – 2; x3’ = x3 - 5; x4’ = x4
+Phương trình (1) trở thành 
+x1’+ x2’ + x3’ + x4’  = 13				 (2)
+Số nghiệm nguyên không âm của phương trình (1) thỏa điều kiện (**) bằng số nghiệm nguyên không âm của phương trình (2) 
+TỔ HỢP LẶP
+Ví dụ: 
+
+====================
+SLIDE 72
+====================
+72
+Tương tự, ta có:                   .
+
+	
+
+Vậy số nghiệm nguyên không âm của phương trình (1) thỏa điều kiện (*) là 340. 
+TỔ HỢP LẶP
+Ví dụ: 

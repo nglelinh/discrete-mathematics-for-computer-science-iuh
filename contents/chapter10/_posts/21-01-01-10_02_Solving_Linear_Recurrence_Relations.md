@@ -59,6 +59,15 @@ $$
 
 Đây là **phương trình đặc trưng**.
 
+**Từ slide bài giảng (bổ sung):**
+Hệ thức đệ quy tuyến tính thuần nhất có nghiệm tổng quát là tổ hợp tuyến tính của các nghiệm đặc trưng.
+
+Nếu hai nghiệm phân biệt r1, r2: a_n = A r1^n + B r2^n
+
+Nếu nghiệm kép r: a_n = (A + B n) r^n
+
+Ví dụ từ slide: Fibonacci dẫn đến việc khảo sát dãy với F1=1, F2=1, Fn=Fn-1+Fn-2.
+
 ![Giải bài toán đệ quy — phương trình đặc trưng](https://commons.wikimedia.org/wiki/Special:FilePath/Recursive_problem_solving.svg?width=640)
 
 *Hình 10.7: Phương trình đặc trưng $r^k - c_1 r^{k-1} - \cdots - c_k = 0$ quyết định cấu trúc nghiệm của truy hồi tuyến tính.*

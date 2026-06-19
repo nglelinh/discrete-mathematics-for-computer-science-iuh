@@ -416,4 +416,20 @@ Viết công thức logic cho:
 
 </details>
 
+## Bài tập bổ sung: Xác định giá trị chân lý (từ ccrr1_baitap1)
+
+**Bài tập logic vị từ:** Xác định giá trị chân lý (true/false) của các mệnh đề sau (với miền xác định R số thực):
+
+1. ∃x ∈ R, x² = 2
+
+2. ∃x ∈ R ∃y ∈ R, x + y ≠ y + x
+
+3. ∃x ∈ R ∃y ∈ R, (x + 2y = 2) ∧ (2x + 4y = 5)
+
+4. ∃x ∈ R, 2x² + 3x − 5 = 0
+
+5. ∀x ∈ R, (3x² + 4x + 5 = 0) → (2x³ + 3x − 1 = 0)
+
+6. ∀x ∈ [0, 5], (2/3)x³ + 2x ≥ −2
+
 Trong bài tiếp theo, chúng ta sẽ học chi tiết về **lượng từ và lượng từ lồng nhau**.

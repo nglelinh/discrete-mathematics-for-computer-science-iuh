@@ -662,4 +662,23 @@ Nếu câu trả lời là có, hãy quay lại đúng khung chuẩn:
 
 Làm đúng đủ nhiều lần, quy nạp sẽ trở thành một phản xạ tự nhiên khi bạn chứng minh trong toán và trong khoa học máy tính.
 
+## Bài tập bổ sung: Quy nạp toán học (từ ccrr1_baitap1)
+
+**Hướng dẫn chung:** 
+1. Chứng minh P(n) đúng với giá trị nhỏ nhất n₀.
+2. Giả thiết quy nạp: Giả sử P(k) đúng với mọi n ≥ n₀.
+3. Chứng minh nếu P(k) đúng thì P(k+1) cũng đúng.
+
+**Bài tập 1:** ∑_{k=1}^n k = n(n+1)/2
+
+**Bài tập 2:** 2^n ≥ n² cho tất cả n ≥ 4
+
+**Bài tập 3:** 1 + 3 + 5 + … + (2n − 1) = n²
+
+**Bài tập 4:** 3^n ≥ 2^{n+1} cho tất cả n ≥ 1
+
+**Bài tập 5:** n³ − n chia hết cho 6 cho tất cả n ≥ 1
+
+**Bài tập 6:** n(n+1)(2n+1)/6 là số nguyên cho tất cả n ≥ 1
+
 Trong chương tiếp theo, chúng ta sẽ chuyển sang **lý thuyết tập hợp** — một trong những nền tảng quan trọng nhất của toán học rời rạc.

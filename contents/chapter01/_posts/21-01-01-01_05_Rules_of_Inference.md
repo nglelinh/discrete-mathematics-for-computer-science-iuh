@@ -666,3 +666,23 @@ Sử dụng quy tắc **Resolution** $$(p \lor q) \land (\neg p \lor r) \implies
     p và ¬p là cặp bù. Kết quả là tuyển của các literal còn lại.
 
 </details>
+
+### Qui tắc bổ sung từ slide bài giảng PPT
+
+**Qui tắc phản chứng (Reductio ad absurdum):**
+Để chứng minh mệnh đề p là hằng đúng, ta thêm ¬p vào các tiên đề và dẫn đến mâu thuẫn.
+
+Tổng quát: ¬p → (q ∧ ¬q)  ⇒  p
+
+**Ví dụ:** Chứng minh √2 là số vô tỷ.
+
+**Qui tắc chứng minh theo trường hợp:**
+[(p → r) ∧ (q → r)] ⇒ (p ∨ q) → r
+
+**Phản ví dụ:**
+Để chứng minh suy luận sai, tìm trường hợp tiên đề đúng, kết luận sai.
+
+Ví dụ trong slide: Dùng p=1, q=0, r=1 để phản ví dụ cho một suy luận.
+
+**Qui tắc phản ví dụ (counterexample):**
+Chỉ cần một trường hợp làm các giả thiết đúng nhưng kết luận sai để bác bỏ.

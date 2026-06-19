@@ -259,4 +259,18 @@ Vậy kết quả: $$|A \cap B| = 77 \times 76^{n-1} - \big(10 \times 9^{n-1} + 
 - **Chứng minh phần tử** cho thấy mỗi phần tử thuộc hợp được đếm đúng một lần.
 - **Ứng dụng CS** gồm truy vấn dữ liệu, kiểm tra mật khẩu, sàng số, xác suất lỗi và phân tích cấu hình bị cấm.
 
+## Bài tập bổ sung: Nguyên lý bù trừ (từ ccrr1_baitap2)
+
+N(A ∪ B) = N(A) + N(B) – N(A ∩ B)
+
+**Bài 1:** Lớp có 25 giỏi tin học, 13 giỏi toán, 8 giỏi cả hai. Hỏi lớp có bao nhiêu nếu mỗi SV giỏi toán hoặc tin học hoặc cả hai?
+
+**Bài 2:** Số nguyên ≤1000 chia hết cho 7 hoặc 11?
+
+**Bài 3:** Xâu nhị phân độ dài 10 bắt đầu bởi 00 hoặc kết thúc bởi 11?
+
+N(A ∪ B ∪ C) = N(A)+N(B)+N(C) – N(A∩B) – N(A∩C) – N(B∩C) + N(A∩B∩C)
+
+**Bài 4:** Trong X={1..1000} có bao nhiêu số không chia hết cho 3,4,7?
+
 Trong bài tiếp theo, chúng ta sẽ học về hệ số nhị thức và các đồng nhất thức tổ hợp.

@@ -822,4 +822,84 @@ Sinh viên B viết: `if logged_in and (is_admin or is_owner):`
 
 </details>
 
+## Bài tập bổ sung: Diễn đạt vấn đề thực tế bằng logic mệnh đề (từ ccrr1_baitap1)
+
+**Hướng dẫn chung:** Xác định mệnh đề đơn (ví dụ P, Q, R), dùng →, ∧, ∨, ¬ để diễn đạt điều kiện.
+
+**Bài tập 1: Quản lý sự kiện**
+Giả sử bạn quản lý sự kiện hội thảo. Các điều kiện:
+- Nếu hội trường đủ lớn → tất cả khách có chỗ ngồi.
+- Nếu tất cả khách có chỗ → hội thảo suôn sẻ.
+- Nếu hội thảo suôn sẻ → nhận đánh giá tốt.
+- Nhận đánh giá tốt chỉ khi chuẩn bị đầy đủ.
+
+Diễn đạt bằng biểu thức logic.
+
+**Bài tập 2: Hệ thống bảo mật**
+Hệ thống cho phép truy cập nếu:
+- Đúng tên đăng nhập và mật khẩu → cho phép truy cập.
+- Không đúng tên hoặc mật khẩu → không cho phép.
+- Không cho phép → phải thử lại.
+
+Diễn đạt.
+
+**Bài tập 3: Điều kiện mua hàng**
+Cửa hàng online:
+- Đủ tiền và đúng thông tin → giao dịch thành công.
+- Không đủ tiền hoặc sai thông tin → hủy.
+- Hủy → yêu cầu kiểm tra lại.
+
+Diễn đạt.
+
+**Bài tập 4: Điều kiện học bổng**
+- GPA ≥ 3.5 hoặc thành tích đặc biệt → được xét duyệt.
+- Không GPA và không đặc biệt → không xét.
+- Được xét và nộp đơn đúng hạn → nhận học bổng.
+
+Diễn đạt.
+
+**Bài tập 5: Lập lịch làm việc**
+- Cuối tuần hoặc lễ → nghỉ.
+- Không cuối tuần và không lễ → phải đi làm.
+- Cuối tuần nhưng có dự án gấp → vẫn phải đi làm.
+
+Diễn đạt.
+
+**Bài tập 6: Tam giác**
+Cho a,b,c số thực. Diễn đạt:
+a) Cạnh tam giác?
+b) Cạnh tam giác vuông huyền c?
+c) Cạnh tam giác vuông cân huyền c?
+d) Cạnh tam giác đều?
+
+P1(a,b,c) = ? etc.
+
+### Bài tập bổ sung từ slide PPT: Viết biểu thức logic
+
+Viết biểu thức logic mệnh đề cho các mô tả sau (sử dụng biến mệnh đề phù hợp):
+
+1. Điều kiện để tháng (m) là dữ liệu hợp lệ.
+2. Điều kiện để tháng m có 30 ngày.
+3. Điều kiện để tháng 2 có 29 ngày.
+4. Điều kiện để A, B, C là các góc của một tam giác.
+5. Điều kiện để A, B, C là các góc của một tam giác vuông.
+6. Điều kiện để A, B, C là các góc của một tam giác cân.
+7. Điều kiện để A, B, C là các góc của một tam giác đều.
+8. Điều kiện để học sinh A xét điểm theo tổ hợp A0 đậu vào khoa CNTT IUH năm 2019.
+9. Điều kiện để bạn được nhận học bổng 100% trong học kỳ 1 năm học 2020-2021.
+10. Điều kiện tiếng Anh để bạn được đăng ký học phần năm 3.
+
+**Bài tập bổ sung (từ slide):** 
+
+Bài tập 3: Hàm eq(X,Y) trả về 1 khi giá trị của X và Y là như nhau, trả về 0 trong các trường hợp còn lại. Biểu thức nào dưới đây là điều kiện cần và đủ để nhận về 1 khi hàm eq(eq(A,B), eq(B,C)) được gọi?
+
+A. (A=B và B=C) hoặc (A#B và B#C)
+
+B. (A=B và B=C) hoặc (A#B hoặc B#C)
+
+C. (A=B và B=C) hoặc (A=C)
+
+D. (A=B hoặc B=C) hoặc (A=C)
+
+
 

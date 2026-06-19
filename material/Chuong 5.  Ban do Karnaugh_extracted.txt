@@ -1,0 +1,452 @@
+====================
+SLIDE 1
+====================
+Mã Gray (Gray Code)
+Mã Gray là một loại mã nhị phân trong đó hai giá trị liên tiếp chỉ khác nhau một bit. 
+Điều này rất hữu ích trong các ứng dụng như mạch giải mã vị trí (encoder) hoặc các hệ thống cần giảm thiểu lỗi khi chuyển trạng thái.
+
+11/10/2024
+Đại Số Boole
+Trang 1
+
+====================
+SLIDE 2
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 3
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 4
+====================
+Bản đồ Karnaugh
+Sử dụng bảng Karnaugh là phương pháp xác định công thức đa thức tối tiểu.
+
+Khi xây dựng bản đồ Karnaugh, một điểm quan trọng là thứ tự sắp xếp các biến trên trục (hàng và cột). Mã Gray thường được sử dụng để sắp xếp thứ tự các giá trị của các biến này, bởi vì:
+Trong mã Gray, hai giá trị liên tiếp chỉ khác nhau một bit. Điều này giúp bản đồ Karnaugh duy trì tính liên kết logic: các ô liền kề chỉ khác nhau bởi một biến đầu vào.
+
+11/10/2024
+Đại Số Boole
+Trang 4
+
+====================
+SLIDE 5
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 6
+====================
+Xây dựng bản đồ:
+	Số lượng biến logic trong biểu thức sẽ quyết định kích thước bản đồ Karnaugh.
+Mã Gray được sử dụng để đánh số hàng và cột trong bản đồ để đảm bảo các ô liền kề chỉ khác nhau 1 bit.
+Điền giá trị đầu ra vào bản đồ
+Đánh dấu các ô có dòng tương ứng trên bảng chân trị là 1
+
+
+====================
+SLIDE 7
+====================
+Xây dựng bản đồ theo mã Gray
+
+====================
+SLIDE 8
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 9
+====================
+Quy tắc gom nhóm:
+
+====================
+SLIDE 10
+====================
+Karnaugh 2 biến
+Đối với hàm Boole 2 biến x, y :
+Bảng karnaugh 2 biến có 4 ô vuông, trong đó:
+Ô được đánh số 1 để biểu diễn tiểu hạng có mặt trong hàm.
+Các ô được cho là liền nhau nếu các tiểu hạng mà chúng biểu diễn chỉ khác nhau 1 biến.
+11/10/2024
+Đại Số Boole
+Trang 10
+
+====================
+SLIDE 11
+====================
+Karnaugh 2 biến
+11/10/2024
+Đại Số Boole
+Trang 11
+
+====================
+SLIDE 12
+====================
+11/10/2024
+Đại Số Boole
+Trang 12
+
+====================
+SLIDE 13
+====================
+Gom nhóm:
+11/10/2024
+Đại Số Boole
+Trang 13
+
+====================
+SLIDE 14
+====================
+11/10/2024
+Đại Số Boole
+Trang 14
+
+====================
+SLIDE 15
+====================
+karnaugh 3 biến
+
+Bảng karnaugh 3 biến là 1 hình chữ nhật chia thành 8 ô.
+Sau khi có bảng Karnaugh, ta bắt đầu gom nhóm các tiểu hạng.
+Quy tắc tương tự Bảng Karnaugh 2 biến.
+11/10/2024
+Đại Số Boole
+Trang 15
+
+====================
+SLIDE 16
+====================
+11/10/2024
+Đại Số Boole
+Trang 16
+
+====================
+SLIDE 17
+====================
+Karnaugh 4 biến
+
+Bảng gồm 16 ô vuông như sau:
+11/10/2024
+Đại Số Boole
+Trang 17
+
+====================
+SLIDE 18
+====================
+11/10/2024
+Đại Số Boole
+Trang 18
+
+====================
+SLIDE 19
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 20
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 21
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 22
+====================
+Phủ tối tiểu của một tập
+Việc tìm tất cả các tổng chuẩn tắc không dư thừa của hàm Boole f, từ các tsc(Tổng chuẩn tắc) tối đại của f, là một vấn đề khá phức tạp. 
+Trước hết, chúng ta xét bài toán tìm phủ tối tiểu của một tập như sau.
+11/10/2024
+Đại Số Boole
+Trang 22
+
+====================
+SLIDE 23
+====================
+	Phủ của tập X
+	Cho S = X1, …, Xn là họ các tập con của X. S gọi là phủ của X nếu X = Xi.
+
+	Phủ tối tiểu của X
+	Giả sử S là một phủ của X. S gọi là phủ tối tiểu của X nếu với mọi i, S\Xi không phủ X.
+11/10/2024
+Đại Số Boole
+Trang 23
+
+====================
+SLIDE 24
+====================
+Ví dụ
+	X = a, b, c, d
+	A = a,b	 B = c,d
+	C = a,d 	 D = b,c
+	A, B, C, D phủ không tối tiểu.
+	A, B, C, D là các phủ tối tiểu.
+	A, C, D phủ không tối tiểu.
+   B, D không phủ.
+
+11/10/2024
+Đại Số Boole
+Trang 24
+
+====================
+SLIDE 25
+====================
+Gồm 5 bước:
+Bước 1: Vẽ biểu đồ karnaugh của f.
+Bước 2: Xác định tất cả các tế bào lớn của kar(f).
+Bước 3: Xác định các tế bào lớn nhất thiết phải chọn.
+Ta nhất thiết phải chọn tế bào lớn T khi tồn tại một ô của kar(f) mà ô này chỉ nằm trong tế bào lớn T và không nằm trong bất kỳ tế bào lớn nào khác.
+
+
+Thuật toán tìm công thức đa thức tối tiểu
+11/10/2024
+Đại Số Boole
+Trang 25
+
+====================
+SLIDE 26
+====================
+Bước 4: Xác định các phủ tối tiểu gồm các tế bào lớn:
+Nếu các tế bào lớn chọn được ở bước 3 đã phủ được kar(f) thì ta có duy nhất một phủ tối tiểu gồm các tế bào lớn của kar(f).
+Nếu các tế bào lớn chọn được ở bước 3 chưa phủ được kar(f) thì:
+Xét một ô chưa bị phủ, sẽ có ít nhất hai tế bào lớn chứa ô này, ta chọn một trong các tế bào lớn này.  Cứ tiếp tục như thế ta sẽ tìm được tất cả các phủ gồm các tế bào lớn của kar(f). 
+Loại bỏ các phủ không tối tiểu, ta tìm được tất cả các phủ tối tiểu gồm các tế bào lớn của kar(f).
+11/10/2024
+Đại Số Boole
+Trang 26
+
+====================
+SLIDE 27
+====================
+Bước 5: Xác định các công thức đa thức tối tiểu của f.
+Từ các phủ tối tiểu gồm các tế bào lớn của kar(f) tìm được ở bước 4 ta xác định được các công thức đa thức tương ứng của f.
+Loại bỏ các công thức đa thức mà có một công thức đa  thức nào đó thực sự đơn giản hơn chúng.
+Các công thức đa thức còn lại chính là các công thức đa thức tối tiểu của f.
+11/10/2024
+Đại Số Boole
+Trang 27
+
+====================
+SLIDE 28
+====================
+Ví dụ 1
+11/10/2024
+Đại Số Boole
+Trang 28
+
+====================
+SLIDE 29
+====================
+B3: Chọn tế bào lớn nhất thiết phải chọn: (Vì chúng chứa các các ô không nằm trong tế bào nào khác – minh hoạ với ô vàng)
+     + chọn tế bào lớn thứ 1: x
+     + chọn tế bào lớn thứ 2: yz
+B2: Xác định tất cả các tế bào lớn của f. 
+11/10/2024
+Đại Số Boole
+Trang 29
+
+====================
+SLIDE 30
+====================
+B4: Xác định họ phủ của các tế bào lớn:
+11/10/2024
+Đại Số Boole
+Trang 30
+
+====================
+SLIDE 31
+====================
+Ví dụ 2
+11/10/2024
+Đại Số Boole
+Trang 31
+
+====================
+SLIDE 32
+====================
+B2: Xác định các tế bào lớn
+11/10/2024
+Đại Số Boole
+Trang 32
+
+====================
+SLIDE 33
+====================
+B3: Xác định các tế bào lớn nhất thiết phải chọn
+11/10/2024
+Đại Số Boole
+Trang 33
+
+====================
+SLIDE 34
+====================
+B4: Xác định họ phủ tối thiểu của các tế bào lớn:
+11/10/2024
+Đại Số Boole
+Trang 34
+
+====================
+SLIDE 35
+====================
+11/10/2024
+Đại Số Boole
+Trang 35
+
+====================
+SLIDE 36
+====================
+Xây dựng bản đồ theo mã Gray
+
+====================
+SLIDE 37
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 38
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 39
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 40
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 41
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 42
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 43
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 44
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 45
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 46
+====================
+	Phương pháp Quine-McCluskey là một kỹ thuật hệ thống để tối giản hàm Boolean, đặc biệt hữu ích khi số lượng biến lớn hơn 4, khiến phương pháp Karnaugh Map (K-map) trở nên khó khăn hoặc không hiệu quả. 
+
+Phương pháp Quine-McCluskey
+11/10/2024
+Đại Số Boole
+Trang 46
+
+====================
+SLIDE 47
+====================
+	Về cơ bản, phương pháp Quine-McCluskey có hai phần. Phần đầu là tìm các số hạng là ứng viên để đưa vào khai triển cực tiểu của hàm Boole như dưới dạng chuẩn tắc tuyển.
+Phương pháp Quine-McCluskey
+11/10/2024
+Đại Số Boole
+Trang 47
+
+====================
+SLIDE 48
+====================
+Dạng chuẩn tắc tuyển
+11/10/2024
+Đại Số Boole
+Trang 48
+Là một biểu diễn của hàm Boolean dưới dạng tổng (OR) của các tích chuẩn tắc (hội sơ cấp)
+
+====================
+SLIDE 49
+====================
+Ký hiệu hội sơ cấp và phép dán
+11/10/2024
+Đại Số Boole
+Trang 49
+Phép dán là quá trình kết hợp các hội sơ cấp khác nhau đúng một bit có thể rút gọn để tạo ra các biểu thức đơn giản hơn.
+
+====================
+SLIDE 50
+====================
+Phương pháp Quine-McCluskey tìm dạng tổng chuẩn tắc thu gọn: 
+Bước 1: Viết vào cột thứ nhất các biểu diễn của các nguyên nhân hạng n của hàm Boole F. Các biểu diễn được chia thành từng nhóm, các biểu diễn trong mỗi nhóm có số các ký hiệu 1 bằng nhau và các nhóm xếp theo thứ tự số các ký hiệu 1 tăng dần. 
+11/10/2024
+Đại Số Boole
+Trang 50
+
+====================
+SLIDE 51
+====================
+Bước 2: Lần lượt thực hiện tất cả các phép dán các biểu diễn trong nhóm i với các biểu diễn trong nhóm i+1 (i=1, 2, …). 
+Biểu diễn nào tham gia ít nhất một phép dán sẽ được ghi nhận một dấu * bên cạnh. 
+Kết quả dán được ghi vào cột tiếp theo. 
+
+Bước 3: Lặp lại Bước 2 cho cột kế tiếp cho đến khi không thu thêm được cột nào mới. Khi đó tất cả các biểu diễn không có dấu * sẽ cho ta tất cả các nguyên nhân nguyên tố của F. 
+11/10/2024
+Đại Số Boole
+Trang 51
+
+====================
+SLIDE 52
+====================
+11/10/2024
+Đại Số Boole
+Trang 52
+
+====================
+SLIDE 53
+====================
+Phương pháp Quine-McCluskey tìm dạng tổng chuẩn tắc tối thiểu: 
+	Bước 1: Phát hiện tất cả các nguyên nhân nguyên tố cốt yếu. 
+	Bước 2: Xoá tất cả các cột được phủ bởi các nguyên nhân nguyên tố cốt yếu. 
+	Bước 3: Trong bảng còn lại, xoá nốt những dòng không còn dấu + và sau đó nếu có hai cột giống nhau thì xoá bớt một cột. 
+	Bước 4: Sau các bước trên, tìm một hệ S các nguyên nhân nguyên tố với số biến ít nhất phủ các cột còn lại. 
+11/10/2024
+Đại Số Boole
+Trang 53
+
+====================
+SLIDE 54
+====================
+11/10/2024
+Đại Số Boole
+Trang 54
+
+====================
+SLIDE 55
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 56
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 57
+====================
+[Không có text trực tiếp trong slide]
+
+====================
+SLIDE 58
+====================
+[Không có text trực tiếp trong slide]
