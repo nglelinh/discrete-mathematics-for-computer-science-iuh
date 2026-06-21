@@ -40,7 +40,7 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 
 **Trong đồ thị có hướng**: Mỗi đỉnh đều có vòng (loop) -- khuyên từ đỉnh về chính nó.
 
-![Đồ thị có hướng — tính phản xạ](https://commons.wikimedia.org/wiki/Special:FilePath/Example_of_simple_directed_graph.svg?width=640)
+![Đồ thị có hướng — tính phản xạ](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_simple_directed_graph.svg)
 
 *Hình 5.7: Trong đồ thị có hướng, tính phản xạ tương ứng với mỗi đỉnh có vòng (loop) quay về chính nó.*
 
@@ -73,7 +73,7 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 [b c ?]
 ```
 
-![Đồ thị vô hướng — tính đối xứng](https://commons.wikimedia.org/wiki/Special:FilePath/Undirected_graph.svg?width=640)
+![Đồ thị vô hướng — tính đối xứng](/discrete-mathematics-for-computer-science-iuh/img/course/Undirected_graph.svg)
 
 *Hình 5.8: Quan hệ đối xứng thường được mô hình hóa bằng đồ thị vô hướng — mỗi cạnh nối hai chiều.*
 
@@ -91,7 +91,7 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 - ❌ "≠" trên ℝ: nếu a ≠ b và b ≠ a thì a ≠ b (không suy ra a = b)
 
 <div class="content-box warning-box" markdown="1">
-![Đồ thị có hướng — tính phản đối xứng](https://commons.wikimedia.org/wiki/Special:FilePath/Directed_graph.svg?width=640)
+![Đồ thị có hướng — tính phản đối xứng](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
 *Hình 5.9: Tính phản đối xứng cấm hai phần tử khác nhau liên hệ hai chiều — không có cặp cung ngược nhau giữa hai đỉnh khác nhau.*
 
@@ -111,7 +111,7 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 **Bắc cầu trong CS**: Quan hệ "phụ thuộc" giữa các gói phần mềm cần có tính bắc cầu để phân tích dependency tree. Nếu package A phụ thuộc B và B phụ thuộc C, thì A phụ thuộc C (thường được suy ra bởi package manager).
 </div>
 
-![Đường đi gián tiếp — tính bắc cầu](https://commons.wikimedia.org/wiki/Special:FilePath/Directed_graph.svg?width=640)
+![Đường đi gián tiếp — tính bắc cầu](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
 *Hình 5.10: Tính bắc cầu cho phép suy ra quan hệ gián tiếp: nếu có đường a → b → c thì phải có cung (a, c).*
 
@@ -124,7 +124,7 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 | Phản đối xứng | (a,b) và (b,a) ⟹ a=b | Không có cặp đối xứng ngoài đường chéo | Không có chu trình 2 chiều |
 | Bắc cầu | (a,b) + (b,c) ⟹ (a,c) | Tích ma trận (sẽ học) | Đường đi → cung trực tiếp |
 
-![Ma trận quan hệ và ma trận kề](https://commons.wikimedia.org/wiki/Special:FilePath/Set_partitions_4;_Hasse;_matrices.svg?width=640)
+![Ma trận quan hệ và ma trận kề](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
 *Hình 5.11: Ma trận 0-1 mã hóa quan hệ — hàng i, cột j bằng 1 khi và chỉ khi (aᵢ, aⱼ) thuộc quan hệ.*
 
@@ -143,7 +143,7 @@ FROM Enrollments;
 
 Lệnh này chính là phép chiếu $$\pi_{student\_id}(Enrollments)$$, đồng thời `DISTINCT` loại các bộ trùng sau khi bỏ bớt thuộc tính.
 
-![Phép chiếu trong cơ sở dữ liệu](https://commons.wikimedia.org/wiki/Special:FilePath/Database.svg?width=640)
+![Phép chiếu trong cơ sở dữ liệu](/discrete-mathematics-for-computer-science-iuh/img/course/Database.svg)
 
 *Hình 5.12: Primary key tạo quan hệ đơn ánh giữa bản ghi và khóa; phép chiếu chọn một phần thuộc tính từ mỗi bộ.*
 

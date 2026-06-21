@@ -77,7 +77,7 @@ $$
 
 Các biểu thức $$p_1, p_2, \dots, p_n$$ được gọi là **giả thiết** (hay **tiền đề**), biểu thức $$q$$ được gọi là **kết luận**.
 
-![Bảng tứ đối — quan hệ suy luận cổ điển](https://commons.wikimedia.org/wiki/Special:FilePath/Square_of_opposition%2C_set_diagrams.svg?width=500)
+![Bảng tứ đối — quan hệ suy luận cổ điển](/discrete-mathematics-for-computer-science-iuh/img/course/Square_of_opposition__set_diagrams.svg)
 
 *Hình 1.21: Quy tắc suy diễn là nền tảng của mọi lập luận hợp lệ — từ tiền đề đúng rút ra kết luận đúng.*
 
@@ -141,7 +141,7 @@ print(check_access(16))   # DENIED
 
 Modus Ponens là nền tảng của mọi câu lệnh `if-then` trong lập trình. Mỗi khi máy tính kiểm tra điều kiện trong `if` và thực thi thân của nó, nó đang làm một phép suy diễn Modus Ponens.
 
-![Modus Ponens: p → q và p suy ra q](https://commons.wikimedia.org/wiki/Special:FilePath/Venn-Diagram-Implication.PNG?width=400)
+![Modus Ponens: p → q và p suy ra q](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-Implication.PNG)
 
 *Hình 1.22: Modus Ponens — nếu p → q đúng và p đúng, thì q phải đúng (nền tảng của mọi câu lệnh `if`).*
 
@@ -191,7 +191,7 @@ Tức $$[(p \to q) \land \neg q] \Rightarrow \neg p$$ là hằng đúng.
 
 Modus Tollens đặc biệt hữu ích trong debugging và kiểm thử: khi kết quả kỳ vọng không xảy ra, ta suy ra giả định ban đầu đã sai.
 
-![Modus Tollens: p → q và ¬q suy ra ¬p](https://commons.wikimedia.org/wiki/Special:FilePath/Venn-Diagram-NOT.png?width=400)
+![Modus Tollens: p → q và ¬q suy ra ¬p](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-NOT.png)
 
 *Hình 1.23: Modus Tollens — nếu p → q đúng nhưng q sai, thì p phải sai (dùng nhiều trong debugging và kiểm thử).*
 
@@ -232,7 +232,7 @@ Tức $$[(p \to q) \land (q \to r)] \Rightarrow (p \to r)$$.
 
 Tam đoạn luận giả định là cơ sở cho mọi chuỗi xử lý (pipeline) và kế thừa quyền (role hierarchy) trong hệ thống phần mềm. Nó cũng xuất hiện trong các chứng minh toán học dài — mỗi bước là một mắt xích trong chuỗi suy luận.
 
-![Chuỗi suy luận — nối các mệnh đề kéo theo](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=500)
+![Chuỗi suy luận — nối các mệnh đề kéo theo](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 1.24: Tam đoạn luận giả định — từ p → q và q → r suy ra p → r, nền tảng của pipeline và kế thừa quyền.*
 
@@ -278,7 +278,7 @@ $$
 
 Trong lập trình, quy tắc này thường được dùng trong xử lý ngoại lệ và chẩn đoán lỗi: khi ta thu hẹp không gian nguyên nhân, mỗi bước loại trừ là một ứng dụng của tam đoạn luận tuyển.
 
-![Tam đoạn luận tuyển: p ∨ q và ¬p suy ra q](https://commons.wikimedia.org/wiki/Special:FilePath/Venn-Diagram-OR.png?width=400)
+![Tam đoạn luận tuyển: p ∨ q và ¬p suy ra q](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-OR.png)
 
 *Hình 1.25: Tam đoạn luận tuyển — biết p ∨ q đúng và ¬p đúng, suy ra q (loại trừ nguyên nhân trong chẩn đoán lỗi).*
 

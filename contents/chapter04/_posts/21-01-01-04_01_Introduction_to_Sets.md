@@ -39,7 +39,7 @@ Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc địn
 
 > Cantor đã định nghĩa tập hợp một cách trực quan: "Một tập hợp là sự kết hợp thành một tổng thể của những đối tượng xác định, phân biệt của trực giác hay tư duy của chúng ta."
 
-![Georg Cantor — cha đẻ lý thuyết tập hợp](https://commons.wikimedia.org/wiki/Special:FilePath/Georg_Cantor_1894.jpg?width=300)
+![Georg Cantor — cha đẻ lý thuyết tập hợp](/discrete-mathematics-for-computer-science-iuh/img/course/Georg_Cantor_1894.jpg)
 
 *Hình 4.1: Georg Cantor (1845–1918), nhà toán học người Đức, người đặt nền móng cho lý thuyết tập hợp hiện đại.*
 
@@ -60,7 +60,7 @@ Liệt kê tất cả các phần tử trong dấu ngoặc nhọn. Đây là cá
 - B = {a, e, i, o, u} (các nguyên âm)
 - C = {đỏ, xanh, vàng}
 
-![Các phần tử riêng biệt trong một tập hợp](https://source.unsplash.com/800x600/?collection,objects,group)
+![Các phần tử riêng biệt trong một tập hợp](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
 *Hình 4.2: Phương pháp liệt kê — mỗi phần tử trong tập phải **riêng biệt** và được ghi rõ trong dấu ngoặc nhọn.*
 
@@ -71,7 +71,7 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 **Cú pháp**: {x | P(x)} hoặc {x : P(x)}
 Đọc: "Tập hợp các x sao cho P(x)"
 
-![Biểu đồ Venn 3 tập](https://commons.wikimedia.org/wiki/Special:FilePath/Venn3.svg?width=640)
+![Biểu đồ Venn 3 tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
 *Hình 4.3: Biểu đồ Venn minh họa quan hệ giữa 3 tập hợp — vùng giao (intersection) và vùng hợp (union).*
 
@@ -87,7 +87,7 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 - (0, 1) = {x ∈ ℝ | 0 < x < 1}
 - [0, ∞) = {x ∈ ℝ | x ≥ 0}
 
-![Ký hiệu khoảng trên trục số thực](https://commons.wikimedia.org/wiki/Special:FilePath/Interval.svg?width=640)
+![Ký hiệu khoảng trên trục số thực](/discrete-mathematics-for-computer-science-iuh/img/course/Interval.svg)
 
 *Hình 4.4: Minh họa khoảng đóng [a, b], khoảng mở (a, b) và khoảng nửa mở trên trục số thực.*
 
@@ -104,11 +104,11 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 - A ⊆ A với mọi tập hợp A
 - Nếu A ⊆ B và B ⊆ C thì A ⊆ C (bắc cầu)
 
-![Biểu đồ Venn: A là tập con của B](https://commons.wikimedia.org/wiki/Special:FilePath/Venn_A_subset_B.svg?width=500)
+![Biểu đồ Venn: A là tập con của B](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_subset_B.svg)
 
 *Hình 4.5: Khi A ⊆ B, mọi phần tử của A đều nằm bên trong vùng của B trên biểu đồ Venn.*
 
-![Ký hiệu tập rỗng ∅](https://commons.wikimedia.org/wiki/Special:FilePath/Empty_set.svg?width=400)
+![Ký hiệu tập rỗng ∅](/discrete-mathematics-for-computer-science-iuh/img/course/Empty_set.svg)
 
 *Hình 4.6: Tập rỗng ∅ — tập hợp không chứa phần tử nào, nhưng vẫn là tập con của mọi tập hợp.*
 
@@ -245,7 +245,7 @@ pow(pow({1})) = {∅, {∅}, {{1}}, {∅, {1}}}.
 
 ## Định lý: Số tập con của một tập hợp hữu hạn
 
-![Sơ đồ tập lũy thừa (power set)](https://commons.wikimedia.org/wiki/Special:FilePath/Powerset.svg?width=500)
+![Sơ đồ tập lũy thừa (power set)](/discrete-mathematics-for-computer-science-iuh/img/course/Powerset.svg)
 
 *Hình 4.7: Tập lũy thừa P(S) gồm tất cả tập con của S — với |S| = n phần tử thì |P(S)| = 2ⁿ.*
 
@@ -280,7 +280,7 @@ Giả sử \( A = \{a_1, a_2, \dots, a_n\} \), \( |A| = n \).
 
 Trong toán học và khoa học máy tính, ta thường gặp các tập số lồng nhau:
 
-![Sơ đồ các tập hợp số ℕ, ℤ, ℚ, ℝ, ℂ](https://commons.wikimedia.org/wiki/Special:FilePath/Euler_diagram_of_number_sets.svg?width=640)
+![Sơ đồ các tập hợp số ℕ, ℤ, ℚ, ℝ, ℂ](/discrete-mathematics-for-computer-science-iuh/img/course/Euler_diagram_of_number_sets.svg)
 
 *Hình 4.8: Quan hệ lồng nhau giữa các tập số — số tự nhiên ℕ ⊂ số nguyên ℤ ⊂ số hữu tỉ ℚ ⊂ số thực ℝ ⊂ số phức ℂ.*
 

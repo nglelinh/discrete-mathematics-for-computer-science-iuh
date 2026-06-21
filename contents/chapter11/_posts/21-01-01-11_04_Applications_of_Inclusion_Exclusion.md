@@ -17,23 +17,23 @@ Phần khó nhất thường không phải là thực hiện phép cộng trừ,
 
 Bài này sẽ tập trung vào các ví dụ ứng dụng để biến một nguyên lý trừu tượng thành công cụ thực chiến trong giải bài toán.
 
-![Ứng dụng bao hàm–loại trừ](https://commons.wikimedia.org/wiki/Special:FilePath/Inclusion-exclusion-3sets.svg?width=640)
+![Ứng dụng bao hàm–loại trừ](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)
 
 *Hình 11.16: Sàng Legendre và hàm Euler đều dùng cùng khuôn: cộng, trừ giao, cộng lại giao cao hơn.*
 
-![Phân tích thừa số nguyên tố](https://commons.wikimedia.org/wiki/Special:FilePath/Prime_factorization.svg?width=640)
+![Phân tích thừa số nguyên tố](/discrete-mathematics-for-computer-science-iuh/img/course/PrimeDecompositionExample.svg)
 
 *Hình 11.17: Hàm $\phi(n)$ loại các số chia hết cho từng thừa số nguyên tố của $n$.*
 
-![Cấu trúc số nguyên](https://commons.wikimedia.org/wiki/Special:FilePath/Euler_diagram_of_number_sets.svg?width=640)
+![Cấu trúc số nguyên](/discrete-mathematics-for-computer-science-iuh/img/course/Euler_diagram_of_number_sets.svg)
 
 *Hình 11.18: Đếm số nguyên tố cùng nhau, số toàn ánh và derangement đều là bài toán đếm trên tập số.*
 
-![Đếm cấu hình có ràng buộc](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+![Đếm cấu hình có ràng buộc](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 11.19: Bài toán tô màu: mỗi vi phạm là một tập con — bao hàm–loại trừ đếm cách tô hợp lệ.*
 
-![Ánh xạ và đếm](https://commons.wikimedia.org/wiki/Special:FilePath/Hash_table_simple_999.svg?width=640)
+![Ánh xạ và đếm](/discrete-mathematics-for-computer-science-iuh/img/course/Hash_table_simple_999.svg)
 
 *Hình 11.20: Số toàn ánh đếm ánh xạ không bỏ sót giá trị đích — ứng dụng trong phân bố và hashing.*
 

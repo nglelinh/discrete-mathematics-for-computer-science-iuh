@@ -28,7 +28,7 @@ $$
 
 Quy ước $\binom{n}{k}=0$ nếu $k<0$ hoặc $k>n$.
 
-![Hệ số nhị thức — n chọn k](https://commons.wikimedia.org/wiki/Special:FilePath/Combination.svg?width=640)
+![Hệ số nhị thức — n chọn k](/discrete-mathematics-for-computer-science-iuh/img/course/Combination.svg)
 
 *Hình 7.16: Hệ số nhị thức $\binom{n}{k}$ đếm số cách chọn $k$ phần tử từ $n$ phần tử, không xét thứ tự.*
 
@@ -58,7 +58,7 @@ $$
 
 mỗi hạng tử trong khai triển được tạo bằng cách chọn từ mỗi ngoặc một $x$ hoặc một $y$. Để nhận được hạng $x^{n-k}y^k$, ta phải chọn $y$ từ đúng $k$ trong $n$ ngoặc. Có $\binom{n}{k}$ cách chọn các ngoặc đó. Vì vậy hệ số của $x^{n-k}y^k$ là $\binom{n}{k}$.
 
-![Trực quan định lý nhị thức](https://commons.wikimedia.org/wiki/Special:FilePath/Binomial_theorem_visualisation.svg?width=640)
+![Trực quan định lý nhị thức](/discrete-mathematics-for-computer-science-iuh/img/course/Binomial_theorem_visualisation.svg)
 
 *Hình 7.17: Mỗi hạng trong khai triển $(x+y)^n$ tương ứng một cách chọn $k$ vị trí lấy $y$ từ $n$ ngoặc.*
 
@@ -81,7 +81,7 @@ n=4:    1 4 6 4 1
 n=5:   1 5 10 10 5 1
 ```
 
-![Tam giác Pascal](https://commons.wikimedia.org/wiki/Special:FilePath/Pascal_triangle.svg?width=640)
+![Tam giác Pascal](/discrete-mathematics-for-computer-science-iuh/img/course/Pascal_triangle.svg)
 
 *Hình 7.18: Tam giác Pascal — mỗi hệ số bằng tổng hai hệ số ngay phía trên theo quy tắc Pascal.*
 
@@ -93,7 +93,7 @@ $$
 
 **Chứng minh tổ hợp**: Chọn $k$ người từ $n$ người. Cố định một người đặc biệt tên An. Mọi nhóm được chia thành hai loại: nhóm có An, khi đó chọn thêm $k-1$ người từ $n-1$ người; nhóm không có An, khi đó chọn $k$ người từ $n-1$ người. Hai loại rời nhau và bao phủ toàn bộ khả năng.
 
-![Khai triển nhị thức và tam giác Pascal](https://commons.wikimedia.org/wiki/Special:FilePath/Binomial_expansion_with_Pascal%27s_triangle.svg?width=640)
+![Khai triển nhị thức và tam giác Pascal](/discrete-mathematics-for-computer-science-iuh/img/course/Binomial_expansion_with_Pascal_s_triangle.svg)
 
 *Hình 7.19: Khai triển $(a+b)^n$ — hệ số mỗi hạng chính là $\binom{n}{k}$ ở hàng thứ $n$ của tam giác Pascal.*
 
@@ -145,7 +145,7 @@ $$
 
 ## 6. Ứng dụng trong Khoa học Máy tính
 
-![Blaise Pascal — nhà toán học Pháp](https://commons.wikimedia.org/wiki/Special:FilePath/Blaise_Pascal_Versailles.JPG?width=640)
+![Blaise Pascal — nhà toán học Pháp](/discrete-mathematics-for-computer-science-iuh/img/course/Blaise_Pascal_Versailles.JPG)
 
 *Hình 7.20: Blaise Pascal (1623–1662) — cùng Fermat đặt nền móng cho xác suất và tổ hợp hiện đại.*
 

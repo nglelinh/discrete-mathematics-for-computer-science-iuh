@@ -39,15 +39,15 @@ Sau bài học này, sinh viên có thể:
 
 **Định nghĩa**: Mệnh đề (proposition) là một câu khẳng định có thể xác định được tính đúng hoặc sai, nhưng không thể vừa đúng vừa sai.
 
-![Aristotle - cha đẻ của logic](https://commons.wikimedia.org/wiki/Special:FilePath/Aristotle_Altemps_Inv8575.jpg?width=400)
+![Aristotle - cha đẻ của logic](/discrete-mathematics-for-computer-science-iuh/img/course/Aristotle_Altemps_Inv8575.jpg)
 
 *Hình 1.1: Tượng bán thân Aristotle tại Palazzo Altemps, Roma — người đầu tiên hệ thống hóa các quy luật suy luận*
 
-![George Boole — cha đẻ logic Boolean](https://commons.wikimedia.org/wiki/Special:FilePath/George_Boole.jpg?width=400)
+![George Boole — cha đẻ logic Boolean](/discrete-mathematics-for-computer-science-iuh/img/course/George_Boole.jpg)
 
 *Hình 1.2: George Boole (1815–1864), nhà toán học người Anh, người đặt nền móng cho logic Boolean dùng trong máy tính hiện đại.*
 
-![Bảng tứ đối — nền tảng suy luận cổ điển](https://commons.wikimedia.org/wiki/Special:FilePath/Square_of_opposition%2C_set_diagrams.svg?width=500)
+![Bảng tứ đối — nền tảng suy luận cổ điển](/discrete-mathematics-for-computer-science-iuh/img/course/Square_of_opposition__set_diagrams.svg)
 
 *Hình 1.3: Bảng tứ đối (square of opposition) — mô hình quan hệ giữa các mệnh đề trong logic cổ điển, tiền thân của logic hình thức.*
 

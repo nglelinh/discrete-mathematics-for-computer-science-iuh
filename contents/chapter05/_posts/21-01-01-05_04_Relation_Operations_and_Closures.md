@@ -34,7 +34,7 @@ $$(R^{-1})^{-1}=R.$$
 
 Nếu $$R$$ đối xứng thì $$R^{-1}=R$$.
 
-![Quan hệ ngược — đảo chiều cung](https://commons.wikimedia.org/wiki/Special:FilePath/Directed_graph.svg?width=640)
+![Quan hệ ngược — đảo chiều cung](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
 *Hình 5.19: Quan hệ ngược $$R^{-1}$$ đảo hướng mọi cung — từ (a, b) ∈ R suy ra (b, a) ∈ R⁻¹.*
 
@@ -53,7 +53,7 @@ $$S\circ R=\{(a,c)\mid \exists b\in B,\ (a,b)\in R\land (b,c)\in S\}.$$
 
 Vậy $$S\circ R=\{(1,1),(2,3)\}$$.
 
-![Hợp thành quan hệ — ghép hai bước](https://commons.wikimedia.org/wiki/Special:FilePath/Directed_graph.svg?width=640)
+![Hợp thành quan hệ — ghép hai bước](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
 *Hình 5.20: Hợp thành $$S \circ R$$ ghép hai quan hệ: (a, c) ∈ S∘R khi tồn tại b sao cho (a, b) ∈ R và (b, c) ∈ S.*
 
@@ -65,7 +65,7 @@ $$M_{S\circ R}[i,j]=\bigvee_k(M_R[i,k]\land M_S[k,j]).$$
 
 Ở đây phép nhân thường được thay bằng AND, phép cộng thường được thay bằng OR.
 
-![Ma trận quan hệ và tích Boolean](https://commons.wikimedia.org/wiki/Special:FilePath/Set_partitions_4;_Hasse;_matrices.svg?width=640)
+![Ma trận quan hệ và tích Boolean](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
 *Hình 5.21: Tích Boolean của hai ma trận quan hệ tính hợp thành — AND thay nhân, OR thay cộng.*
 
@@ -78,7 +78,7 @@ $$M_{S\circ R}[i,j]=\bigvee_k(M_R[i,k]\land M_S[k,j]).$$
 
 **Ý nghĩa**: $$(a,b)\in R^k$$ nếu tồn tại đường đi độ dài $$k$$ từ $$a$$ đến $$b$$ trong đồ thị của $$R$$.
 
-![Lũy thừa quan hệ — đường đi nhiều bước](https://commons.wikimedia.org/wiki/Special:FilePath/Example_of_simple_directed_graph.svg?width=640)
+![Lũy thừa quan hệ — đường đi nhiều bước](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_simple_directed_graph.svg)
 
 *Hình 5.22: $$R^k$$ chứa các cặp (a, b) có đường đi độ dài k từ a đến b trong đồ thị của R.*
 
@@ -110,7 +110,7 @@ $$R^*=I_A\cup R^+,$$
 
 trong đó $$I_A=\{(a,a)\mid a\in A\}$$.
 
-![Bao đóng bắc cầu — thêm cung gián tiếp](https://commons.wikimedia.org/wiki/Special:FilePath/Directed_graph.svg?width=640)
+![Bao đóng bắc cầu — thêm cung gián tiếp](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
 *Hình 5.23: Bao đóng bắc cầu $$R^*$$ thêm mọi cặp (a, c) có đường đi từ a đến c, kể cả vòng phản xạ.*
 
@@ -132,7 +132,7 @@ def warshall(M):
     return M
 ```
 
-![Thuật toán Warshall — reachability](https://commons.wikimedia.org/wiki/Special:FilePath/Example_of_simple_directed_graph.svg?width=640)
+![Thuật toán Warshall — reachability](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_simple_directed_graph.svg)
 
 *Hình 5.24: Warshall tính bao đóng bắc cầu trên ma trận kề — trả lời truy vấn reachability giữa mọi cặp đỉnh.*
 

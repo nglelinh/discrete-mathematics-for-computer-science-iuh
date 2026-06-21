@@ -51,7 +51,7 @@ Chúng thích hợp hơn với quy luật:
 Chính vì thế,
 hệ thức truy hồi trở thành cầu nối giữa pattern và prediction.
 
-![Xoắn ốc Fibonacci](https://commons.wikimedia.org/wiki/Special:FilePath/Fibonacci_spiral.svg?width=640)
+![Xoắn ốc Fibonacci](/discrete-mathematics-for-computer-science-iuh/img/course/Fibonacci_spiral.svg)
 
 *Hình 10.15: Bài toán thỏ của Fibonacci mở ra một cách mô tả tăng trưởng và cấu trúc lặp rất bền trong toán học và computing.*
 
@@ -102,11 +102,11 @@ FFT-style methods
 Phân tích recurrence vì thế không chỉ giúp qua môn.
 Nó giúp hiểu chi phí kiến trúc của nhiều hệ thống thật.
 
-![Master Theorem — phân tích chia để trị](https://commons.wikimedia.org/wiki/Special:FilePath/Master_theorem.png?width=640)
+![Master Theorem — phân tích chia để trị](/discrete-mathematics-for-computer-science-iuh/img/course/Master_theorem.png)
 
 *Hình 10.16: Master Theorem giải nhanh $T(n)=aT(n/b)+f(n)$ — công cụ nền cho phân tích merge sort, FFT và nhiều thuật toán chia để trị.*
 
-![Merge Sort — sơ đồ thuật toán](https://commons.wikimedia.org/wiki/Special:FilePath/Merge_sort_algorithm_diagram.svg?width=640)
+![Merge Sort — sơ đồ thuật toán](/discrete-mathematics-for-computer-science-iuh/img/course/Merge_sort_algorithm_diagram.svg)
 
 *Hình 10.17: Divide-and-conquer sinh truy hồi tự nhiên — chi phí chia, đệ quy con, và ghép kết quả.*
 
@@ -161,11 +161,11 @@ chúng đều nói:
 “bài toán lớn có thể xây từ bài toán con nào,
 và ta có đang lặp lại không?”
 
-![Dynamic programming — memoization](https://commons.wikimedia.org/wiki/Special:FilePath/Dsa_dynamic_programming_salmon_fish_memoized_step_n.png?width=640)
+![Dynamic programming — memoization](/discrete-mathematics-for-computer-science-iuh/img/course/Dsa_dynamic_programming_salmon_fish_memoized_step_n.png)
 
 *Hình 10.18: Dynamic programming khai thác truy hồi nhưng thêm trí nhớ, biến ý tưởng đẹp thành công cụ hiệu quả.*
 
-![Cây gọi đệ quy Fibonacci — trước memoization](https://commons.wikimedia.org/wiki/Special:FilePath/Algorithms-F6CallTreeMemoized.png?width=640)
+![Cây gọi đệ quy Fibonacci — trước memoization](/discrete-mathematics-for-computer-science-iuh/img/course/Algorithms-F6CallTreeMemoized.png)
 
 *Hình 10.19: Memoization loại bỏ tính lại — cùng truy hồi nhưng từ exponential xuống linear thời gian.*
 
@@ -204,7 +204,7 @@ tư duy tương tự xuất hiện khi mô hình hóa:
 Nghĩa là bài học về population không chỉ dành cho sinh thái học.
 Nó còn gợi trực giác về product dynamics.
 
-![Tháp Hà Nội — truy hồi exponential](https://commons.wikimedia.org/wiki/Special:FilePath/Tower_of_Hanoi.gif?width=640)
+![Tháp Hà Nội — truy hồi exponential](/discrete-mathematics-for-computer-science-iuh/img/course/Tower_of_Hanoi.gif)
 
 *Hình 10.20: Tháp Hà Nội có $H_n = 2H_{n-1}+1$ — mô hình tăng trưởng exponential từ truy hồi đơn giản.*
 

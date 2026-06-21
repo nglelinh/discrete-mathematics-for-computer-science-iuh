@@ -17,23 +17,23 @@ Từ góc nhìn khoa học máy tính, đây là một cách đổi biểu diễ
 
 Trong bài này, chúng ta sẽ làm quen với hàm sinh, ý nghĩa của các hệ số trong chuỗi, và vì sao công cụ này lại mạnh đến vậy trong toán rời rạc.
 
-![Chuỗi lũy thừa hình thức](https://commons.wikimedia.org/wiki/Special:FilePath/Laurent_series.svg?width=640)
+![Chuỗi lũy thừa hình thức](/discrete-mathematics-for-computer-science-iuh/img/course/Laurent_series.svg)
 
 *Hình 11.1: Chuỗi lũy thừa $G(x)=\sum a_n x^n$ — mỗi hệ số $a_n$ mã hóa một số hạng của dãy.*
 
-![Hàm sinh (generating function)](https://commons.wikimedia.org/wiki/Special:FilePath/R._V._Lapshin,_Generating_functions_and_squares.png?width=640)
+![Hàm sinh (generating function)](/discrete-mathematics-for-computer-science-iuh/img/course/R._V._Lapshin__Generating_functions_and_squares.png)
 
 *Hình 11.2: Hàm sinh gói cả dãy số vào một biểu thức duy nhất để thao tác bằng đại số.*
 
-![Leonhard Euler](https://commons.wikimedia.org/wiki/Special:FilePath/Leonhard_Euler.jpg?width=640)
+![Leonhard Euler](/discrete-mathematics-for-computer-science-iuh/img/course/Leonhard_Euler.jpg)
 
 *Hình 11.3: Leonhard Euler (1707–1783) — nhà toán học tiên phong trong lý thuyết hàm sinh và chuỗi lũy thừa.*
 
-![Dãy số học](https://commons.wikimedia.org/wiki/Special:FilePath/Arithmetic_progression.svg?width=640)
+![Dãy số học](/discrete-mathematics-for-computer-science-iuh/img/course/Arithmetic_progression.svg)
 
 *Hình 11.4: Dãy số học là ví dụ đầu tiên: hệ số tăng tuyến tính tương ứng với cấu trúc đếm đơn giản.*
 
-![Ký hiệu tổng Σ](https://commons.wikimedia.org/wiki/Special:FilePath/Sigma_summation_notation.svg?width=640)
+![Ký hiệu tổng Σ](/discrete-mathematics-for-computer-science-iuh/img/course/Sigma_summation_notation.svg)
 
 *Hình 11.5: Ký hiệu Σ liên kết hàm sinh với các tổng hữu hạn và vô hạn trong tổ hợp.*
 

@@ -46,7 +46,7 @@ Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc địn
 **Bước 4**: **Đạt được** đúng dạng của $$Q$$.  
 **Bước 5**: **Kết luận** mệnh đề đã được chứng minh.
 
-![Chân dung Euclid](https://commons.wikimedia.org/wiki/Special:FilePath/Euclid.jpg?width=640)
+![Chân dung Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid.jpg)
 
 *Hình 3.1: Euclid — tác giả *Elements*, mô hình chứng minh trực tiếp từ giả thiết đến kết luận qua các bước suy luận hợp lệ.*
 
@@ -83,7 +83,7 @@ Giả thiết P ──────[các bước suy luận]──────▶
 **Phân tích**: Bước quan trọng nhất là bước 2 — mở định nghĩa "số chẵn" thành dạng $$n = 2k$$. Nếu không mở định nghĩa, bạn không có gì để biến đổi. Đây là kỹ năng cốt lõi của mọi chứng minh.
 </div>
 
-![Chứng minh định lý Pythagore](https://commons.wikimedia.org/wiki/Special:FilePath/Pythagorean_proof.svg?width=640)
+![Chứng minh định lý Pythagore](/discrete-mathematics-for-computer-science-iuh/img/course/Pythagorean_proof.svg)
 
 *Hình 3.2: Chứng minh trực tiếp định lý Pythagore — minh họa cách đi từ giả thiết hình học đến kết luận bằng suy luận từng bước.*
 
@@ -111,7 +111,7 @@ Giả thiết P ──────[các bước suy luận]──────▶
    $$c = (am)n = a(mn)$$
 4. Vì $$mn \in \mathbb{Z}$$, nên $$a \mid c$$. ∎
 
-![Trang chứng minh Euclid](https://commons.wikimedia.org/wiki/Special:FilePath/Euclid-proof.jpg?width=640)
+![Trang chứng minh Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid-proof.jpg)
 
 *Hình 3.3: Trang chứng minh trong *Elements* — mẫu trình bày chứng minh trực tiếp cổ điển: giả thiết, định nghĩa, suy luận, kết luận.*
 
@@ -137,7 +137,7 @@ def is_even(n: int) -> bool:
 
 Điều này cho thấy chứng minh không chỉ dành cho toán: ta có thể chứng minh một hàm nhỏ làm đúng điều nó hứa.
 
-![Đồ thị luồng điều khiển](https://commons.wikimedia.org/wiki/Special:FilePath/Control_flow_graph_of_function_with_two_if_else_statements.svg?width=640)
+![Đồ thị luồng điều khiển](/discrete-mathematics-for-computer-science-iuh/img/course/Control_flow_graph_of_function_with_two_if_else_statements.svg)
 
 *Hình 3.4: Đồ thị luồng điều khiển — mỗi nhánh tương ứng một bước suy luận trong chứng minh trực tiếp tính đúng đắn của code.*
 
@@ -218,7 +218,7 @@ Ngược lại, để khẳng định một mệnh đề tồn tại "có $$x$$ 
 
 > **Ví dụ**: "Tồn tại số nguyên $$n$$ sao cho $$n^2 - n + 41$$ là hợp số." Ví dụ: $$n = 41$$ cho $$41^2 - 41 + 41 = 41^2$$, là hợp số.
 
-![Bản in Elements của Euclid](https://commons.wikimedia.org/wiki/Special:FilePath/Euclid's_Elements,_1482.jpg?width=640)
+![Bản in Elements của Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid_s_Elements__1482.jpg)
 
 *Hình 3.5: Bản in *Elements* (1482) — tiêu chuẩn vàng của chứng minh trực tiếp: mỗi bước phải có căn cứ, không nhảy cóc.*
 

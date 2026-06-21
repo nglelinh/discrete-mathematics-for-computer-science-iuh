@@ -12,23 +12,23 @@ Mỗi khi bạn gõ một câu lệnh vào terminal, một dòng mã Python, hay
 
 **Ngôn ngữ hình thức** (formal language) là khung lý thuyết trả lời câu hỏi đó. Khác với ngôn ngữ tự nhiên - đầy mơ hồ và ngữ cảnh - ngôn ngữ hình thức được định nghĩa bằng các quy tắc toán học chính xác, có thể kiểm tra bằng thuật toán. Chương này xây dựng nền tảng đó: bảng chữ cái, chuỗi, ngôn ngữ, và các phép toán trên chúng. Đây là ngôn ngữ chung của Chương 18 (máy tính toán) và Chương 20 (lý thuyết độ phức tạp).
 
-![Ngôn ngữ hình thức](https://commons.wikimedia.org/wiki/Special:FilePath/Formal_language.svg?width=640)
+![Ngôn ngữ hình thức](/discrete-mathematics-for-computer-science-iuh/img/course/Formal_languages.svg)
 
 *Hình 19.1: Ngôn ngữ $L$ là tập con của $\Sigma^*$ — tập mọi chuỗi trên bảng chữ cái $\Sigma$.*
 
-![Phân cấp Chomsky](https://commons.wikimedia.org/wiki/Special:FilePath/Chomsky_hierarchy.svg?width=640)
+![Phân cấp Chomsky](/discrete-mathematics-for-computer-science-iuh/img/course/Chomsky_hierarchy.svg)
 
 *Hình 19.2: Phân cấp Chomsky xếp loại ngôn ngữ theo sức mạnh grammar và máy chấp nhận.*
 
-![Ngôn ngữ chính quy](https://commons.wikimedia.org/wiki/Special:FilePath/DFA_example.svg?width=640)
+![Ngôn ngữ chính quy](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
 *Hình 19.3: Ngôn ngữ chính quy được nhận diện bởi DFA/NFA và mô tả bằng regex.*
 
-![Phép toán trên ngôn ngữ](https://commons.wikimedia.org/wiki/Special:FilePath/Finite_state_machine.svg?width=640)
+![Phép toán trên ngôn ngữ](/discrete-mathematics-for-computer-science-iuh/img/course/Finite_state_machine_example_with_comments.svg)
 
 *Hình 19.4: Hợp, giao, nối chuỗi và Kleene star — đóng trên lớp regular languages.*
 
-![Ngôn ngữ trong biên dịch](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+![Ngôn ngữ trong biên dịch](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 19.5: Compiler kiểm tra chuỗi mã nguồn có thuộc ngôn ngữ cú pháp hợp lệ hay không.*
 

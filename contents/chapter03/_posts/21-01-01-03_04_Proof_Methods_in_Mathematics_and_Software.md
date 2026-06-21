@@ -50,7 +50,7 @@ rồi từ đó xây từng định lý bằng chuỗi lập luận chặt chẽ
 
 Chính mô hình này trở thành “gold standard” của chứng minh trong hơn hai thiên niên kỷ.
 
-![Bản in Elements của Euclid](https://commons.wikimedia.org/wiki/Special:FilePath/Euclid's_Elements,_1482.jpg?width=640)
+![Bản in Elements của Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid_s_Elements__1482.jpg)
 
 *Hình 3.16: *Elements* của Euclid (1482) — một trong những mô hình thành công nhất của tri thức suy diễn có cấu trúc.*
 
@@ -169,7 +169,7 @@ seL4,
 và nhiều verified components khác
 cho thấy formal proof không còn là giấc mơ xa vời.
 
-![Đồ thị luồng điều khiển](https://commons.wikimedia.org/wiki/Special:FilePath/Control_flow_graph_of_function_with_two_if_else_statements.svg?width=640)
+![Đồ thị luồng điều khiển](/discrete-mathematics-for-computer-science-iuh/img/course/Control_flow_graph_of_function_with_two_if_else_statements.svg)
 
 *Hình 3.17: Từ loop invariant đến Hoare logic — đồ thị luồng điều khiển nối lập trình với suy luận toán học qua tiền/hậu điều kiện.*
 
@@ -285,7 +285,7 @@ Chúng dạy ta nhiều điều:
 đọc paper,
 hoặc debug giả định sai trong phần mềm.
 
-![Số nguyên tố](https://commons.wikimedia.org/wiki/Special:FilePath/Prime_numbers.svg?width=640)
+![Số nguyên tố](/discrete-mathematics-for-computer-science-iuh/img/course/Prime_numbers.svg)
 
 *Hình 3.18: Sàng Eratosthenes — chứng minh vô hạn số nguyên tố của Euclid là mẫu mực của proof by contradiction.*
 
@@ -339,7 +339,7 @@ Nói cách khác,
 testing và proof không loại trừ nhau.
 Chúng là hai lớp phòng thủ khác nhau.
 
-![Tam giác mâu thuẫn](https://commons.wikimedia.org/wiki/Special:FilePath/Absurd_triangle.svg?width=640)
+![Tam giác mâu thuẫn](/discrete-mathematics-for-computer-science-iuh/img/course/Absurd_triangle.svg)
 
 *Hình 3.19: Reductio ad absurdum — phản chứng là công cụ chứng minh "không thể" trong cả toán học lẫn kiểm chứng phần mềm.*
 
@@ -374,7 +374,7 @@ AI có thể giúp con người viết proof nhanh hơn,
 nhưng tiêu chuẩn “lập luận hợp lệ” vẫn không đổi.
 Đó là di sản của Euclid sống lại trong thế kỷ XXI.
 
-![Trực quan hóa quy nạp](https://commons.wikimedia.org/wiki/Special:FilePath/Visualization_of_induction.svg?width=640)
+![Trực quan hóa quy nạp](/discrete-mathematics-for-computer-science-iuh/img/course/Visualization_of_induction.svg)
 
 *Hình 3.20: Quy nạp toán học — nền tảng của loop invariant và chứng minh tính đúng đắn chương trình theo từng bước.*
 

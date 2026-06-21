@@ -12,23 +12,23 @@ Năm 1936, hai năm trước khi máy tính điện tử đầu tiên ra đời,
 
 Máy Turing vượt qua hạn chế của FSM ở một điểm cốt lõi: nó có **bộ nhớ vô hạn** (dải băng). Nhờ vậy nó có thể giải các bài toán mà FSM và automat đẩy xuống không giải được, như nhận diện $$\{a^n b^n c^n : n \geq 0\}$$. Quan trọng hơn, nó cho ta một định nghĩa hình thức của **tính tính toán được** (computability), từ đó dẫn đến những phát hiện chấn động: tồn tại các bài toán **không thể giải bằng thuật toán**, đáng chú ý nhất là **bài toán dừng** (halting problem). Đó là chủ đề chính của chương 20.
 
-![Máy Turing](https://commons.wikimedia.org/wiki/Special:FilePath/Example_of_a_Turing_machine.svg?width=640)
+![Máy Turing](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_a_Turing_machine.svg)
 
 *Hình 18.21: Máy Turing: băng vô hạn, đầu đọc/ghi, bảng chuyển — mô hình tính toán phổ quát.*
 
-![Máy Turing phổ quát](https://commons.wikimedia.org/wiki/Special:FilePath/Universal_Turing_machine.svg?width=640)
+![Máy Turing phổ quát](/discrete-mathematics-for-computer-science-iuh/img/course/Universal_Turing_machine.svg)
 
 *Hình 18.22: Máy Turing phổ quát mô phỏng mọi máy Turing — nền lý thuyết tính toán.*
 
-![So sánh với FSM](https://commons.wikimedia.org/wiki/Special:FilePath/Finite_state_machine.svg?width=640)
+![So sánh với FSM](/discrete-mathematics-for-computer-science-iuh/img/course/Finite_state_machine_example_with_comments.svg)
 
 *Hình 18.23: FSM có trạng thái hữu hạn; máy Turing có bộ nhớ vô hạn trên băng.*
 
-![Bài toán quyết định](https://commons.wikimedia.org/wiki/Special:FilePath/DFA_example.svg?width=640)
+![Bài toán quyết định](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
 *Hình 18.24: Máy Turing giải bài toán quyết định: dừng và chấp nhận hoặc từ chối chuỗi.*
 
-![Giới hạn tính toán](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+![Giới hạn tính toán](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 18.25: Bài toán dừng (halting problem) — không giải được bằng thuật toán, chứng minh bằng máy Turing.*
 

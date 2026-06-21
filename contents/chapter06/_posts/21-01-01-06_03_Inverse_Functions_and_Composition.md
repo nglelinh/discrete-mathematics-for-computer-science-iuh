@@ -34,7 +34,7 @@ $$(f\circ g)(x)=2x^2+1.$$
 
 Hai biểu thức thường khác nhau; phép hợp không giao hoán.
 
-![Hàm hợp g∘f — ghép hai ánh xạ](https://commons.wikimedia.org/wiki/Special:FilePath/Example_for_a_composition_of_two_functions.svg?width=640)
+![Hàm hợp g∘f — ghép hai ánh xạ](/discrete-mathematics-for-computer-science-iuh/img/course/Example_for_a_composition_of_two_functions.svg)
 
 *Hình 6.13: Hàm hợp $$(g \circ f)(x) = g(f(x))$$ — thực hiện f trước, rồi g; kết quả ánh xạ A → C.*
 
@@ -46,7 +46,7 @@ $$f(A)\subseteq \operatorname{dom}(g).$$
 
 **Ví dụ**: Nếu $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^2$$ và $$g:[0,\infty)\to\mathbb{R}$$, $$g(x)=\sqrt{x}$$, thì $$g\circ f$$ xác định vì $$f(\mathbb{R})=[0,\infty)$$.
 
-![Điều kiện hợp — ảnh của f nằm trong domain của g](https://commons.wikimedia.org/wiki/Special:FilePath/Function_machine2.svg?width=640)
+![Điều kiện hợp — ảnh của f nằm trong domain của g](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
 *Hình 6.14: Để $$g \circ f$$ xác định, mọi giá trị $$f(x)$$ phải thuộc domain của g — output của bước 1 là input của bước 2.*
 
@@ -68,7 +68,7 @@ $$[(h\circ g)\circ f](x)=(h\circ g)(f(x))=h(g(f(x))).$$
 
 Hai vế cho cùng giá trị với mọi $$x$$, nên hai hàm bằng nhau.
 
-![Tính kết hợp — (h∘g)∘f = h∘(g∘f)](https://commons.wikimedia.org/wiki/Special:FilePath/Example_for_a_composition_of_two_functions.svg?width=640)
+![Tính kết hợp — (h∘g)∘f = h∘(g∘f)](/discrete-mathematics-for-computer-science-iuh/img/course/Example_for_a_composition_of_two_functions.svg)
 
 *Hình 6.15: Phép hợp có tính kết hợp nhưng không giao hoán — thứ tự ghép hàm quan trọng.*
 
@@ -86,7 +86,7 @@ với $$f:A\to B$$.
 
 Hàm đồng nhất đóng vai trò phần tử trung hòa của phép hợp.
 
-![Hàm đồng nhất id(x) = x](https://commons.wikimedia.org/wiki/Special:FilePath/Bijection.svg?width=640)
+![Hàm đồng nhất id(x) = x](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
 *Hình 6.16: Hàm đồng nhất $$id_A$$ là phần tử trung hòa — $$f \circ id = id \circ f = f$$.*
 
@@ -110,7 +110,7 @@ Nếu $$f$$ có nghịch đảo, thì mỗi $$y\in B$$ được đạt bởi $$x
 
 Ngược lại, nếu $$f$$ song ánh, mỗi $$y\in B$$ có đúng một tiền ảnh $$x\in A$$. Định nghĩa $$f^{-1}(y)=x$$. Hàm này thỏa hai điều kiện nghịch đảo.
 
-![Hàm nghịch đảo — chỉ tồn tại khi song ánh](https://commons.wikimedia.org/wiki/Special:FilePath/Bijection.svg?width=640)
+![Hàm nghịch đảo — chỉ tồn tại khi song ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
 *Hình 6.17: Hàm nghịch đảo $$f^{-1}$$ tồn tại khi và chỉ khi f song ánh — đảo chiều mũi tên mà không mất thông tin.*
 
@@ -146,7 +146,7 @@ def tokenize(s):
 result = tokenize(clean("  Discrete Math  "))
 ```
 
-![Pipeline dữ liệu — chuỗi hàm hợp](https://commons.wikimedia.org/wiki/Special:FilePath/Function_machine2.svg?width=640)
+![Pipeline dữ liệu — chuỗi hàm hợp](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
 *Hình 6.18: Pipeline xử lý dữ liệu là hàm hợp — clean ∘ tokenize ánh xạ chuỗi thô sang danh sách token.*
 

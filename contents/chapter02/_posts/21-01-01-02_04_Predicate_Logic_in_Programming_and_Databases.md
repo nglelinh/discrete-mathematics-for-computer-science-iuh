@@ -59,7 +59,7 @@ $$\forall t \in Transactions,\ Processed(t) \limpl Verified(t)$$
 
 Đọc theo hướng lập trình: *nếu* `processed(t)` thì *bắt buộc* `verified(t)` đã đúng trước đó.
 
-![Gottlob Frege — nền tảng logic vị từ hiện đại](https://commons.wikimedia.org/wiki/Special:FilePath/Gottlob_Frege.jpg?width=640)
+![Gottlob Frege — nền tảng logic vị từ hiện đại](/discrete-mathematics-for-computer-science-iuh/img/course/gottlob_frege.svg)
 
 *Hình 2.16: Gottlob Frege — đặt nền cho logic vị từ (first-order logic); hôm nay cùng cấu trúc ∀/∃ xuất hiện trong SQL và validation code.*
 
@@ -125,7 +125,7 @@ CREATE TABLE enrollments (
 - `REFERENCES students(id)`: mọi `student_id` trong `enrollments` phải tồn tại trong `students` — $$\forall e \in Enrollments,\ \exists s \in Students,\ e.student\_id = s.id$$.
 - `PRIMARY KEY`: không tồn tại hai dòng trùng cặp khóa — tính duy nhất.
 
-![Truy vấn SQL — thể hiện ∃ và ∀ qua EXISTS, JOIN, ràng buộc](https://commons.wikimedia.org/wiki/Special:FilePath/SQL_query.png?width=640)
+![Truy vấn SQL — thể hiện ∃ và ∀ qua EXISTS, JOIN, ràng buộc](/discrete-mathematics-for-computer-science-iuh/img/course/sql_query.svg)
 
 *Hình 2.17: Truy vấn SQL biểu diễn lượng từ qua EXISTS/NOT EXISTS và ràng buộc quan hệ — cùng ý tưởng với công thức ∀/∃ trên miền bản ghi.*
 

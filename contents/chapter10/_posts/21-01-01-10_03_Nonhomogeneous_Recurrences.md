@@ -49,7 +49,7 @@ trong đó:
 
 **Chứng minh**: Nếu $L$ là toán tử tuyến tính tương ứng với vế trái sau khi chuyển hết về một phía, thì quan hệ có dạng $L(a)=f$. Nếu $L(h)=0$ và $L(p)=f$, thì $L(h+p)=L(h)+L(p)=f$. Do đó tổng của nghiệm thuần nhất và một nghiệm riêng là nghiệm của bài toán đầy đủ.
 
-![Nguyên lý chồng chất — nghiệm tổng quát](https://commons.wikimedia.org/wiki/Special:FilePath/Constant-recursive-sequences.svg?width=640)
+![Nguyên lý chồng chất — nghiệm tổng quát](/discrete-mathematics-for-computer-science-iuh/img/course/Constant-recursive-sequences.svg)
 
 *Hình 10.11: Nghiệm tổng quát = nghiệm thuần nhất + nghiệm riêng — nguyên lý chồng chất mở rộng kỹ thuật giải truy hồi.*
 
@@ -66,7 +66,7 @@ Khi $f(n)$ có dạng quen thuộc, ta đoán nghiệm riêng cùng “họ” v
 
 Nếu dạng thử trùng với nghiệm thuần nhất, nhân thêm $n$ đủ số lần để độc lập tuyến tính.
 
-![Phương pháp hệ số bất định](https://commons.wikimedia.org/wiki/Special:FilePath/Recursive_problem_solving.svg?width=640)
+![Phương pháp hệ số bất định](/discrete-mathematics-for-computer-science-iuh/img/course/Recursive_problem_solving.svg)
 
 *Hình 10.12: Đoán nghiệm riêng cùng "họ" với $f(n)$ — hằng số, đa thức, hoặc $b^n$ — rồi xác định hệ số bằng thế.*
 
@@ -118,7 +118,7 @@ $$
 
 Đây chính là tổng $1+2+\cdots+n$.
 
-![Dãy số học — tổng $1+2+\cdots+n$](https://commons.wikimedia.org/wiki/Special:FilePath/Arithmetic_progression.svg?width=640)
+![Dãy số học — tổng $1+2+\cdots+n$](/discrete-mathematics-for-computer-science-iuh/img/course/Arithmetic_progression.svg)
 
 *Hình 10.13: Truy hồi $a_n = a_{n-1} + n$ có nghiệm riêng bậc hai — chính là công thức tổng Gauss.*
 
@@ -156,7 +156,7 @@ $$
 
 mô tả nhiều thuật toán chia để trị như merge sort. Đây không phải truy hồi tuyến tính theo chỉ số $n-1$, nhưng tư tưởng vẫn giống: nghiệm gồm phần do đệ quy và phần chi phí ngoài $n$ ở mỗi mức. Kết quả $T(n)=\Theta(n\log n)$ cho thấy thành phần không thuần nhất quyết định đáng kể độ phức tạp.
 
-![Dãy hình học — thành phần $f(n)$ trong truy hồi](https://commons.wikimedia.org/wiki/Special:FilePath/Geometric_sequence.svg?width=640)
+![Dãy hình học — thành phần $f(n)$ trong truy hồi](/discrete-mathematics-for-computer-science-iuh/img/course/Geometric_sequence.svg)
 
 *Hình 10.14: Thành phần $f(n)$ trong truy hồi không thuần nhất mô tả tác động bên ngoài — chi phí cố định, dữ liệu mới, hoặc công việc phụ mỗi bước.*
 

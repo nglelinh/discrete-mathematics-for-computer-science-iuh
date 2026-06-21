@@ -17,23 +17,23 @@ Phân tích thuật toán không chỉ hỏi chương trình chạy được hay
 
 Trong bài này, chúng ta sẽ học cách đọc tốc độ tăng trưởng, hiểu ý nghĩa của Big-O và dùng nó để nói về hiệu năng một cách chặt chẽ hơn.
 
-![Ký hiệu Big-O](https://commons.wikimedia.org/wiki/Special:FilePath/Big-O-notation.png?width=640)
+![Ký hiệu Big-O](/discrete-mathematics-for-computer-science-iuh/img/course/Big-O-notation.png)
 
 *Hình 14.6: Big-O mô tả giới hạn trên của tốc độ tăng — so sánh thuật toán khi $n$ lớn.*
 
-![Các lớp phức tạp phổ biến](https://commons.wikimedia.org/wiki/Special:FilePath/BigOnotation_popular.svg?width=640)
+![Các lớp phức tạp phổ biến](/discrete-mathematics-for-computer-science-iuh/img/course/BigOnotation_popular.svg)
 
 *Hình 14.7: Thứ tự tăng: $O(1)$, $O(\log n)$, $O(n)$, $O(n\log n)$, $O(n^2)$, $O(2^n)$.*
 
-![So sánh độ phức tạp](https://commons.wikimedia.org/wiki/Special:FilePath/Comparison_computational_complexity.svg?width=640)
+![So sánh độ phức tạp](/discrete-mathematics-for-computer-science-iuh/img/course/Comparison_computational_complexity.svg)
 
 *Hình 14.8: Cùng bài toán, khác hàm tăng — chọn thuật toán quyết định khả năng mở rộng hệ thống.*
 
-![Hàm tuyến tính O(n)](https://commons.wikimedia.org/wiki/Special:FilePath/Arithmetic_progression.svg?width=640)
+![Hàm tuyến tính O(n)](/discrete-mathematics-for-computer-science-iuh/img/course/Arithmetic_progression.svg)
 
 *Hình 14.9: Vòng lặp đơn cho $O(n)$ — tăng tuyến tính theo kích thước đầu vào.*
 
-![Hàm mũ và đệ quy](https://commons.wikimedia.org/wiki/Special:FilePath/Fibonacci_spiral.svg?width=640)
+![Hàm mũ và đệ quy](/discrete-mathematics-for-computer-science-iuh/img/course/Fibonacci_spiral.svg)
 
 *Hình 14.10: Đệ quy lặp không tối ưu có thể dẫn đến $O(2^n)$ — cần phân tích tăng trưởng.*
 

@@ -28,7 +28,7 @@ $$
 \binom{n+r-1}{r}=\binom{n+r-1}{n-1}.
 $$
 
-![Tổ hợp có lặp — chọn r đồ vật từ n loại](https://commons.wikimedia.org/wiki/Special:FilePath/Combination.svg?width=640)
+![Tổ hợp có lặp — chọn r đồ vật từ n loại](/discrete-mathematics-for-computer-science-iuh/img/course/Combination.svg)
 
 *Hình 7.21: Tổ hợp có lặp đếm số cách chọn $r$ đồ vật từ $n$ loại, mỗi loại có thể được chọn nhiều lần.*
 
@@ -50,7 +50,7 @@ $$
 
 **Chứng minh**: Ta sắp xếp $r$ sao và $n-1$ vạch trên một hàng gồm $r+n-1$ vị trí. Chọn vị trí cho các vạch là đủ xác định cấu hình, do đó có $\binom{r+n-1}{n-1}$ cách.
 
-![Giai thừa trong công thức stars and bars](https://commons.wikimedia.org/wiki/Special:FilePath/Factorial_1-5.svg?width=640)
+![Giai thừa trong công thức stars and bars](/discrete-mathematics-for-computer-science-iuh/img/course/Factorial_1-5.svg)
 
 *Hình 7.22: Phương pháp stars and bars biến bài toán phân phối thành chọn vị trí cho $n-1$ vạch ngăn giữa $r$ sao.*
 
@@ -98,7 +98,7 @@ $$
 \frac{n!}{n_1!n_2!\cdots n_k!}.
 $$
 
-![Hoán vị của đa tập — phần tử lặp](https://commons.wikimedia.org/wiki/Special:FilePath/Permutation.svg?width=640)
+![Hoán vị của đa tập — phần tử lặp](/discrete-mathematics-for-computer-science-iuh/img/course/Permutation.svg)
 
 *Hình 7.23: Hoán vị đa tập chia cho giai thừa các nhóm trùng để loại bỏ các sắp xếp không phân biệt được.*
 
@@ -127,7 +127,7 @@ $$
 
 Các hệ số này gọi là **hệ số đa thức** (multinomial coefficients).
 
-![Tam giác Pascal mở rộng](https://commons.wikimedia.org/wiki/Special:FilePath/Pascal_triangle_extended.svg?width=640)
+![Tam giác Pascal mở rộng](/discrete-mathematics-for-computer-science-iuh/img/course/Pascal_triangle_extended.svg)
 
 *Hình 7.24: Hệ số đa thức tổng quát hóa hệ số nhị thức sang khai triển nhiều biến $(x_1+\cdots+x_m)^n$.*
 

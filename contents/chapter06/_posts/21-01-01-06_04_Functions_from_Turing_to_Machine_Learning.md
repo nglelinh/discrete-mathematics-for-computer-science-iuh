@@ -81,7 +81,7 @@ Trong đó,
 hàm tính toán được (computable function)
 trở thành đối tượng cốt lõi.
 
-![Alan Turing — nền tảng tính toán](https://commons.wikimedia.org/wiki/Special:FilePath/Alan_Turing_Aged_16.jpg?width=640)
+![Alan Turing — nền tảng tính toán](/discrete-mathematics-for-computer-science-iuh/img/course/Alan_Turing_Aged_16.jpg)
 
 *Hình 6.19: Alan Turing và Alonzo Church (lambda calculus) đặt "hàm tính toán được" làm trung tâm của khoa học máy tính.*
 
@@ -144,7 +144,7 @@ const revenue = paidTotals.reduce((sum, t) => sum + t, 0);  // 120
 
 Mỗi thao tác là cách áp dụng hàm lên tập dữ liệu. Ta mô tả **điều muốn biến đổi**, không mô tả từng bước lặp tay — đúng tinh thần declarative của lập trình hàm.
 
-![Lập trình hàm — map, filter, reduce](https://commons.wikimedia.org/wiki/Special:FilePath/Function_machine2.svg?width=640)
+![Lập trình hàm — map, filter, reduce](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
 *Hình 6.20: map, filter, reduce áp dụng hàm lên tập dữ liệu — tinh thần functional programming.*
 
@@ -430,7 +430,7 @@ for x, y in [(1, 2), (2, 4), (3, 6)]:
 
 Ở đây có **ba lớp hàm**: $$f_\theta$$ (dự đoán), $$L$$ (đo lỗi), và bước cập nhật $$\theta \leftarrow \theta - \eta \nabla L$$. Tách rõ từng hàm giúp debug và thay optimizer mà không đổi mô hình.
 
-![Mô hình học máy như hàm ánh xạ](https://commons.wikimedia.org/wiki/Special:FilePath/Neural_network.svg?width=640)
+![Mô hình học máy như hàm ánh xạ](/discrete-mathematics-for-computer-science-iuh/img/course/Neural_network.svg)
 
 *Hình 6.21: Mô hình ML là hàm $$f: X \to Y$$ được học từ dữ liệu — từ đặc trưng đầu vào đến dự đoán đầu ra.*
 
@@ -494,7 +494,7 @@ trong computing,
 hàm không chỉ là ánh xạ.
 Nó còn mang specification rất cụ thể.
 
-![Hàm băm — toàn ánh nhưng không đơn ánh](https://commons.wikimedia.org/wiki/Special:FilePath/Surjection.svg?width=640)
+![Hàm băm — toàn ánh nhưng không đơn ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Surjection.svg)
 
 *Hình 6.22: SHA-256 là hàm toàn ánh (mọi digest đều khả dĩ) nhưng không đơn ánh (domain vô hạn → collision không tránh khỏi).*
 
@@ -592,7 +592,7 @@ giúp kỹ sư viết code chính xác hơn,
 review tốt hơn,
 và tài liệu hóa rõ hơn.
 
-![API design — đặc tả hàm rõ ràng](https://commons.wikimedia.org/wiki/Special:FilePath/Function_machine2.svg?width=640)
+![API design — đặc tả hàm rõ ràng](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
 *Hình 6.23: API tốt giống hàm tốt — input, output, preconditions và errors phải được đặc tả không mơ hồ.*
 
@@ -648,7 +648,7 @@ def lambda_handler(event: dict, context) -> dict:
 
 **Callback và event handler** (JavaScript, GUI, game loop) cũng là hàm: `onClick`, `onMessage`, `setTimeout(fn, 1000)` — đều là $$f: \text{Event} \to \text{Action}$$.
 
-![Hàm hợp trong hệ thống phân tán](https://commons.wikimedia.org/wiki/Special:FilePath/Example_for_a_composition_of_two_functions.svg?width=640)
+![Hàm hợp trong hệ thống phân tán](/discrete-mathematics-for-computer-science-iuh/img/course/Example_for_a_composition_of_two_functions.svg)
 
 *Hình 6.24: Serverless functions và data pipelines là chuỗi hàm hợp — mỗi bước ánh xạ input sang output xác định.*
 

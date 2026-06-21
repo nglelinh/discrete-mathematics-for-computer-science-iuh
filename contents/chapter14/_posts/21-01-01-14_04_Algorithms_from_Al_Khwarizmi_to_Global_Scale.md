@@ -26,23 +26,23 @@ bài học này kể hành trình của một khái niệm đã định hình th
 
 ---
 
-![Al-Khwarizmi](https://commons.wikimedia.org/wiki/Special:FilePath/Al-Khwarizmi.jpg?width=640)
+![Al-Khwarizmi](/discrete-mathematics-for-computer-science-iuh/img/course/Al-Khwarizmi.jpg)
 
 *Hình 14.16: Từ Al-Khwarizmi, khái niệm thuật toán bắt đầu như quy trình có hệ thống để giải bài toán.*
 
-![Quy mô toàn cầu](https://commons.wikimedia.org/wiki/Special:FilePath/Comparison_computational_complexity.svg?width=640)
+![Quy mô toàn cầu](/discrete-mathematics-for-computer-science-iuh/img/course/Comparison_computational_complexity.svg)
 
 *Hình 14.17: Cùng một ý tưởng thuật toán cơ bản trở thành thách thức hệ thống khi dữ liệu lên quy mô toàn cầu.*
 
-![Sorting ở quy mô lớn](https://commons.wikimedia.org/wiki/Special:FilePath/Sorting_algorithms_comparison.svg?width=640)
+![Sorting ở quy mô lớn](/discrete-mathematics-for-computer-science-iuh/img/course/Comparison_computational_complexity.svg)
 
 *Hình 14.18: Sorting và searching ở Google/Netflix đòi hỏi distributed computation, indexing và fault tolerance.*
 
-![Tìm kiếm quy mô lớn](https://commons.wikimedia.org/wiki/Special:FilePath/Binary_search_into_array.svg?width=640)
+![Tìm kiếm quy mô lớn](/discrete-mathematics-for-computer-science-iuh/img/course/Binary_search_into_array.svg)
 
 *Hình 14.19: Search hiện đại kết hợp thuật toán với cache, network và cấu trúc chỉ mục.*
 
-![Proof-of-work](https://commons.wikimedia.org/wiki/Special:FilePath/Blockchain_scheme.svg?width=640)
+![Proof-of-work](/discrete-mathematics-for-computer-science-iuh/img/course/Blockchain.svg)
 
 *Hình 14.20: Cryptocurrency mining dùng bài toán tính toán làm cơ chế đồng thuận — thuật toán gặp kinh tế.*
 

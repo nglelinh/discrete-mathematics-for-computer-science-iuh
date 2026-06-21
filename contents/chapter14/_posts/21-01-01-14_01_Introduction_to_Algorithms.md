@@ -17,23 +17,23 @@ Học về thuật toán trong toán rời rạc giúp ta nhìn trước phần 
 
 Trong bài này, chúng ta sẽ xây khái niệm nền về thuật toán và lý do vì sao nó là trung tâm của toàn bộ khoa học máy tính.
 
-![Al-Khwarizmi](https://commons.wikimedia.org/wiki/Special:FilePath/Al-Khwarizmi.jpg?width=640)
+![Al-Khwarizmi](/discrete-mathematics-for-computer-science-iuh/img/course/Al-Khwarizmi.jpg)
 
 *Hình 14.1: Al-Khwarizmi (thế kỷ IX) — nguồn gốc từ ngữ *algorithm*, quy trình giải bài toán có hệ thống.*
 
-![Nhà toán học Ba Tư](https://commons.wikimedia.org/wiki/Special:FilePath/Muhammad_ibn_Musa_al-Khwarizmi.jpg?width=640)
+![Nhà toán học Ba Tư](/discrete-mathematics-for-computer-science-iuh/img/course/Muhammad_ibn_Musa_al-Khwarizmi.jpg)
 
 *Hình 14.2: Các công trình đại số và số học của Al-Khwarizmi đặt nền cho thuật toán hiện đại.*
 
-![Luồng thuật toán](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+![Luồng thuật toán](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 14.3: Thuật toán là dãy bước xác định — mô hình hóa bằng sơ đồ quyết định và luồng điều khiển.*
 
-![Tìm kiếm nhị phân](https://commons.wikimedia.org/wiki/Special:FilePath/Binary_search_into_array.svg?width=640)
+![Tìm kiếm nhị phân](/discrete-mathematics-for-computer-science-iuh/img/course/Binary_search_into_array.svg)
 
 *Hình 14.4: Tìm kiếm nhị phân — ví dụ kinh điển: đầu vào có cấu trúc, đầu ra đúng, số bước hữu hạn.*
 
-![Sắp xếp trộn](https://commons.wikimedia.org/wiki/Special:FilePath/Merge_sort_algorithm_diagram.svg?width=640)
+![Sắp xếp trộn](/discrete-mathematics-for-computer-science-iuh/img/course/Merge_sort_algorithm_diagram.svg)
 
 *Hình 14.5: Merge sort — chia để trị, minh họa tư duy thuật toán đệ quy và phân tích độ phức tạp.*
 

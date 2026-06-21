@@ -12,23 +12,23 @@ Một bộ điều khiển đèn giao thông cần làm nhiều việc hơn là 
 
 Cả hai đều mở rộng DFA bằng cách thêm bảng chữ cái đầu ra và hàm sinh đầu ra. Khác biệt duy nhất là **thời điểm** sinh đầu ra: máy Moore phát ra một ký hiệu ứng với mỗi trạng thái, còn máy Mealy phát ra ký hiệu ứng với mỗi **cạnh chuyển** (tức là phụ thuộc vào cả trạng thái và đầu vào). Khác biệt nhỏ này dẫn đến những hệ quả thực tế: máy Mealy thường có ít trạng thái hơn, máy Moore lại dễ phân tích thời gian hơn trong thiết kế mạch số.
 
-![Máy Mealy và Moore](https://commons.wikimedia.org/wiki/Special:FilePath/Mealy_moore.svg?width=640)
+![Máy Mealy và Moore](/discrete-mathematics-for-computer-science-iuh/img/course/mealy_moore.svg)
 
 *Hình 18.6: Mealy: đầu ra phụ thuộc trạng thái và đầu vào; Moore: đầu ra chỉ phụ thuộc trạng thái.*
 
-![Máy biến đổi](https://commons.wikimedia.org/wiki/Special:FilePath/Finite_state_machine.svg?width=640)
+![Máy biến đổi](/discrete-mathematics-for-computer-science-iuh/img/course/Finite_state_machine_example_with_comments.svg)
 
 *Hình 18.7: Transducer mở rộng acceptor — sinh đầu ra khi đọc chuỗi đầu vào.*
 
-![Thiết kế Mealy](https://commons.wikimedia.org/wiki/Special:FilePath/DFA_example.svg?width=640)
+![Thiết kế Mealy](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
 *Hình 18.8: Thiết kế Mealy machine: xác định trạng thái, chuyển và hàm đầu ra trên từng cạnh.*
 
-![Hiện thực phần cứng](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
+![Hiện thực phần cứng](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
 *Hình 18.9: Mealy/Moore hiện thực bằng thanh ghi trạng thái và logic tổ hợp.*
 
-![Đồng bộ và xung nhịp](https://commons.wikimedia.org/wiki/Special:FilePath/Half_Adder.svg?width=640)
+![Đồng bộ và xung nhịp](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
 
 *Hình 18.10: Máy Moore thường dùng trong thiết kế đồng bộ — đầu ra ổn định trong cả chu kỳ clock.*
 

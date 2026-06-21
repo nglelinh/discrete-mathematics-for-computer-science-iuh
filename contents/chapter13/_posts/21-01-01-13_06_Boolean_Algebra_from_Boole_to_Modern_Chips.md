@@ -21,23 +21,23 @@ mỗi bộ giải SAT trong công nghiệp
 
 ---
 
-![George Boole](https://commons.wikimedia.org/wiki/Special:FilePath/George_Boole.jpg?width=640)
+![George Boole](/discrete-mathematics-for-computer-science-iuh/img/course/George_Boole.jpg)
 
 *Hình 13.26: Boole tạo ngôn ngữ logic đại số; Shannon biến nó thành nguyên lý của mạch số.*
 
-![Claude Shannon](https://commons.wikimedia.org/wiki/Special:FilePath/Claude_Shannon.jpg?width=640)
+![Claude Shannon](/discrete-mathematics-for-computer-science-iuh/img/course/ClaudeShannon_MFO3807.jpg)
 
 *Hình 13.27: Claude Shannon (1916–2001) — nối đại số Boole với mạch relay và thông tin số.*
 
-![Từ truth table đến silicon](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
+![Từ truth table đến silicon](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
 *Hình 13.28: Mỗi cổng logic là hiện thân vật lý của biểu thức Boole trên chip.*
 
-![SAT solver workflow](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+![SAT solver workflow](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 13.29: SAT solvers biến logic Boolean thành động cơ giải verification và scheduling ở quy mô công nghiệp.*
 
-![Tối giản logic trên chip](https://commons.wikimedia.org/wiki/Special:FilePath/Half_Adder.svg?width=640)
+![Tối giản logic trên chip](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
 
 *Hình 13.30: Biểu thức ngắn hơn → ít cổng → ít transistor → ít điện năng và độ trễ thấp hơn.*
 

@@ -18,7 +18,7 @@ Nguyên lý Dirichlet thường được dùng khi ta không cần biết chính
 
 Trong bài này, chúng ta sẽ học phát biểu chuẩn của nguyên lý Dirichlet và luyện cách nhận ra nó trong những bài toán tưởng như không liên quan.
 
-![Nguyên lý chuồng chim — minh họa](https://commons.wikimedia.org/wiki/Special:FilePath/Pigeonhole.jpg?width=640)
+![Nguyên lý chuồng chim — minh họa](/discrete-mathematics-for-computer-science-iuh/img/course/Pigeonhole.jpg)
 
 *Hình 8.1: Nguyên lý chuồng bồ câu — nhiều chim hơn chuồng thì ít nhất một chuồng phải chứa từ hai con trở lên.*
 
@@ -36,7 +36,7 @@ Trong bài này, chúng ta sẽ học phát biểu chuẩn của nguyên lý Dir
 
 Trong đó ⌈x⌉ là hàm ceiling (làm tròn lên).
 
-![Quá nhiều bồ câu — không thể phân bố đều](https://commons.wikimedia.org/wiki/Special:FilePath/TooManyPigeons.jpg?width=640)
+![Quá nhiều bồ câu — không thể phân bố đều](/discrete-mathematics-for-computer-science-iuh/img/course/TooManyPigeons.jpg)
 
 *Hình 8.2: Phiên bản tổng quát — $N$ đối tượng vào $n$ nhóm thì ít nhất một nhóm chứa $\lceil N/n \rceil$ đối tượng.*
 
@@ -50,7 +50,7 @@ Trong một lớp có 13 học sinh, chứng minh rằng ít nhất có 2 học 
 - 12 tháng (chuồng)
 - Theo nguyên lý Dirichlet: 13 > 12, nên ít nhất một tháng có ≥ 2 học sinh sinh trong đó.
 
-![Johann Peter Gustav Lejeune Dirichlet](https://commons.wikimedia.org/wiki/Special:FilePath/Dirichlet.jpg?width=640)
+![Johann Peter Gustav Lejeune Dirichlet](/discrete-mathematics-for-computer-science-iuh/img/course/Dirichlet.jpg)
 
 *Hình 8.3: Johann Peter Gustav Lejeune Dirichlet (1805–1859) — người hệ thống hóa nguyên lý chuồng chim trong toán học.*
 
@@ -92,7 +92,7 @@ Tổng số đối tượng ≤ n × (⌈N/n⌉ - 1) < n × (N/n + 1 - 1) = N.
 
 Mâu thuẫn! Vậy ít nhất một nhóm chứa ≥ ⌈N/n⌉ đối tượng. ∎
 
-![Birthday paradox — va chạm không tránh khỏi](https://commons.wikimedia.org/wiki/Special:FilePath/Birthdaymatch.svg?width=640)
+![Birthday paradox — va chạm không tránh khỏi](/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg)
 
 *Hình 8.4: Trong hash table, khi số khóa vượt số bucket thì collision là hệ quả tất yếu của nguyên lý chuồng chim.*
 
@@ -133,7 +133,7 @@ def birthday_attack_probability(hash_bits):
 # SHA-256 (256 bits): cần ~2^128 attempts để guarantee collision
 ```
 
-![Cây quyết định — phân tích không gian trạng thái](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+![Cây quyết định — phân tích không gian trạng thái](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 8.5: Nguyên lý chuồng chim giúp chứng minh sự tồn tại mà không cần liệt kê — rất hữu ích trong phân tích thuật toán và cryptography.*
 

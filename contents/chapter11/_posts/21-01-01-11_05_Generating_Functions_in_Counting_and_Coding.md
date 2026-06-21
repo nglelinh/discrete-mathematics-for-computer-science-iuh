@@ -26,23 +26,23 @@ và coding theory.
 
 ---
 
-![Euler và hàm sinh](https://commons.wikimedia.org/wiki/Special:FilePath/Leonhard_Euler.jpg?width=640)
+![Euler và hàm sinh](/discrete-mathematics-for-computer-science-iuh/img/course/Leonhard_Euler.jpg)
 
 *Hình 11.21: Euler biến các dãy số thành đối tượng đại số, mở ra một trong những công cụ đẹp nhất của tổ hợp học.*
 
-![Hàm sinh xác suất (PGF)](https://commons.wikimedia.org/wiki/Special:FilePath/3D_surface_graph_of_generating_function_for_Fibonacci_numbers.png?width=640)
+![Hàm sinh xác suất (PGF)](/discrete-mathematics-for-computer-science-iuh/img/course/3D_surface_graph_of_generating_function_for_Fibonacci_numbers.png)
 
 *Hình 11.22: Hàm sinh xác suất biến phân phối rời rạc thành đối tượng có thể vi phân, nhân và phân tích.*
 
-![Đếm tổ hợp bằng hệ số](https://commons.wikimedia.org/wiki/Special:FilePath/Za_by_Power_Series_Expansion_(n=4).png?width=640)
+![Đếm tổ hợp bằng hệ số](/discrete-mathematics-for-computer-science-iuh/img/course/Za_by_Power_Series_Expansion.png)
 
 *Hình 11.23: Nhân các chuỗi hình thức — hệ số của $x^n$ cho số cách đạt tổng $n$.*
 
-![Giải truy hồi bằng hàm sinh](https://commons.wikimedia.org/wiki/Special:FilePath/Fibonacci_spiral.svg?width=640)
+![Giải truy hồi bằng hàm sinh](/discrete-mathematics-for-computer-science-iuh/img/course/Fibonacci_spiral.svg)
 
 *Hình 11.24: Truy hồi khó trở nên phương trình đại số sau khi chuyển sang miền hàm sinh.*
 
-![Weight enumerator trong mã hóa](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+![Weight enumerator trong mã hóa](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 11.25: Đa thức đếm codeword theo trọng số Hamming — họ hàng gần của hàm sinh trong coding theory.*
 

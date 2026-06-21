@@ -157,19 +157,19 @@ Cây tương ứng:
 
 **Nhận xét**: Cây giúp ta thấy rõ **thứ tự tính toán** và **cấu trúc phân cấp** của công thức. Mỗi phép toán tương ứng với một nút trong, và các biến là lá.
 
-![Cây quyết định — cấu trúc công thức Boolean](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=500)
+![Cây quyết định — cấu trúc công thức Boolean](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 1.16: Biểu diễn công thức Boolean dưới dạng cây — mỗi nút là một phép toán, lá là biến hoặc hằng.*
 
-![Luật De Morgan trên biểu đồ Venn](https://commons.wikimedia.org/wiki/Special:FilePath/Intersections_of_two_sets_and_their_complements.svg?width=640)
+![Luật De Morgan trên biểu đồ Venn](/discrete-mathematics-for-computer-science-iuh/img/course/Intersections_of_two_sets_and_their_complements.svg)
 
 *Hình 1.17: Luật De Morgan — ¬(p ∧ q) ≡ ¬p ∨ ¬q, công cụ biến đổi quan trọng nhất khi rút gọn điều kiện.*
 
-![DNF — tổng các tích (disjunction of conjunctions)](https://commons.wikimedia.org/wiki/Special:FilePath/Venn-Diagram-OR.png?width=400)
+![DNF — tổng các tích (disjunction of conjunctions)](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-OR.png)
 
 *Hình 1.18: Dạng chuẩn tắc tuyển (DNF) — tổng (OR) của các tích (AND), xây từ các hàng có kết quả Đúng trong bảng chân trị.*
 
-![CNF — tích các tổng (conjunction of disjunctions)](https://commons.wikimedia.org/wiki/Special:FilePath/Venn-Diagram-AND.png?width=400)
+![CNF — tích các tổng (conjunction of disjunctions)](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-AND.png)
 
 *Hình 1.19: Dạng chuẩn tắc hội (CNF) — tích (AND) của các tổng (OR), dạng chuẩn mà SAT solver yêu cầu.*
 

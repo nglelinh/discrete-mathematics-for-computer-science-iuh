@@ -65,7 +65,7 @@ Trong Chương 18, DFA gồm:
 
 Trong phần mềm, "chấp nhận" thường là trạng thái **ổn định** (stable): `SHIPPED`, `AUTHENTICATED`, `PARSED_OK`.
 
-![Sơ đồ trạng thái UML — mô hình hóa hành vi đối tượng](https://commons.wikimedia.org/wiki/Special:FilePath/UML_state_machine.svg?width=640)
+![Sơ đồ trạng thái UML — mô hình hóa hành vi đối tượng](/discrete-mathematics-for-computer-science-iuh/img/course/uml_state_machine.svg)
 
 *Hình 18.26: Sơ đồ trạng thái (state diagram) — cùng cấu trúc toán học với DFA, dùng trong thiết kế UI và domain model.*
 
@@ -119,7 +119,7 @@ def tokenize(code: str):
 
 Lexer **không** cần ngữ pháp ngữ cảnh tự do — chỉ cần lớp **regular language** (DFA/NFA đủ).
 
-![Phân tích từ vựng (lexical analysis) trong trình biên dịch](https://commons.wikimedia.org/wiki/Special:FilePath/Lexical_analysis.png?width=640)
+![Phân tích từ vựng (lexical analysis) trong trình biên dịch](/discrete-mathematics-for-computer-science-iuh/img/course/lexical_analysis.svg)
 
 *Hình 18.27: Lexical analysis — đọc chuỗi ký tự theo trạng thái; mỗi token class thường tương ứng một automaton hoặc nhánh trong NFA tổng hợp.*
 
@@ -165,7 +165,7 @@ Redux `reducer` là DFA: `(state, action) -> state`. React `useReducer` giữ gr
 
 TCP connection (đơn giản hóa): `CLOSED` → `SYN_SENT` → `ESTABLISHED` → `FIN_WAIT` → `CLOSED`. Mỗi segment nhận được là ký hiệu đầu vào; vi phạm thứ tự → reset. Đây là lý do protocol spec vẽ state diagram — implementer code đúng theo $$\delta$$.
 
-![Automaton hữu hạn — nền tảng nhận diện ngôn ngữ chính quy](https://commons.wikimedia.org/wiki/Special:FilePath/Automata_theory.svg?width=640)
+![Automaton hữu hạn — nền tảng nhận diện ngôn ngữ chính quy](/discrete-mathematics-for-computer-science-iuh/img/course/Automata_theory.svg)
 
 *Hình 18.28: Lý thuyết automata — FSM nhận diện ngôn ngữ chính quy; cùng mô hình cho regex, lexer, và protocol handler.*
 

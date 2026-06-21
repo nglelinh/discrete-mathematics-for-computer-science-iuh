@@ -77,7 +77,7 @@ def has_duplicate_slow(nums: list[int]) -> bool:
     return False
 ```
 
-![Big-O notation — so sánh tốc độ tăng trưởng](https://commons.wikimedia.org/wiki/Special:FilePath/Big_O_notation.svg?width=640)
+![Big-O notation — so sánh tốc độ tăng trưởng](/discrete-mathematics-for-computer-science-iuh/img/course/Big-O-notation.png)
 
 *Hình 20.6: Big-O — $$O(n)$$, $$O(n \log n)$$, $$O(n^2)$$ tách nhau rõ khi $$n$$ lớn; chọn sai hàm là lỗi kiến trúc, không chỉ micro-optimization.*
 
@@ -114,7 +114,7 @@ Ví dụ thực dụng trong P:
 
 Tìm lời giải từ đầu có thể khó; **kiểm tra** thường dễ hơn — đó là asymmetry cốt lõi.
 
-![Stephen Cook — định nghĩa NP-complete (định lý Cook–Levin)](https://commons.wikimedia.org/wiki/Special:FilePath/Stephen_Cook.jpg?width=640)
+![Stephen Cook — định nghĩa NP-complete (định lý Cook–Levin)](/discrete-mathematics-for-computer-science-iuh/img/course/stephen_cook.svg)
 
 *Hình 20.7: Stephen Cook — SAT là NP-complete đầu tiên; mọi bài NP có thể rút gọn về SAT (trong lý thuyết); trong thực tế, SAT solver vẫn xử lý được nhiều instance engineering.*
 
@@ -125,7 +125,7 @@ Tìm lời giải từ đầu có thể khó; **kiểm tra** thường dễ hơn
 
 **Quy tắc product**: nếu bài toán của bạn là biến thể Traveling Salesman, Bin Packing, Job Scheduling với ràng buộc tổ hợp — giả định **không** có thuật toán đa thức tối ưu toàn cục (trừ khi P = NP).
 
-![Richard Karp — 21 bài NP-complete kinh điển](https://commons.wikimedia.org/wiki/Special:FilePath/Richard_Karp.jpg?width=640)
+![Richard Karp — 21 bài NP-complete kinh điển](/discrete-mathematics-for-computer-science-iuh/img/course/richard_karp.svg)
 
 *Hình 20.8: Richard Karp — danh sách 21 bài NP-complete; nhiều tên xuất hiện trong logistics, lập lịch, và tối ưu hóa sản phẩm.*
 

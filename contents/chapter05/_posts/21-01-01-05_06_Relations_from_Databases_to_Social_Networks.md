@@ -58,7 +58,7 @@ Codd xem dữ liệu như các quan hệ có thể thao tác bằng đại số.
 Đó là một quyết định trí tuệ cực mạnh,
 vì nó tách phần “dữ liệu là gì” khỏi phần “dữ liệu được lưu ra sao”.
 
-![Mô hình quan hệ của E. F. Codd](https://commons.wikimedia.org/wiki/Special:FilePath/Database.svg?width=640)
+![Mô hình quan hệ của E. F. Codd](/discrete-mathematics-for-computer-science-iuh/img/course/Database.svg)
 
 *Hình 5.31: E. F. Codd (1970) đặt nền móng mô hình quan hệ — dữ liệu được tổ chức thành các bảng có thể thao tác bằng đại số.*
 
@@ -84,7 +84,7 @@ kỹ sư thường bắt đầu bằng ER diagram:
 - môn học có tiên quyết,
 - khoa quản lý giảng viên.
 
-![Sơ đồ ER — thực thể và quan hệ](https://commons.wikimedia.org/wiki/Special:FilePath/ERD_Representation.svg?width=640)
+![Sơ đồ ER — thực thể và quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/ERD_Representation.svg)
 
 *Hình 5.32: ER diagram mô tả thực thể (Student, Course, Instructor) và quan hệ giữa chúng trước khi chuyển sang bảng SQL.*
 
@@ -122,7 +122,7 @@ Nhiều query planner và optimizer thực hiện các phép biến đổi dựa
 DBMS không chỉ là phần mềm lưu file.
 Nó là cỗ máy suy nghĩ bằng quan hệ.
 
-![Phép JOIN trong đại số quan hệ](https://commons.wikimedia.org/wiki/Special:FilePath/Square_join.png?width=640)
+![Phép JOIN trong đại số quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/Square_join.png)
 
 *Hình 5.33: Phép JOIN ghép hai quan hệ qua khóa chung — nền tảng của truy vấn SQL và query planner.*
 
@@ -171,7 +171,7 @@ nó đang khai thác quan hệ giữa:
 
 Đó là lý do vì sao các bài toán recommendation hay được mô tả như ma trận quan hệ hoặc bipartite graph.
 
-![Mạng xã hội như đồ thị quan hệ](https://commons.wikimedia.org/wiki/Special:FilePath/Social_Network_Analysis_Visualization.png?width=640)
+![Mạng xã hội như đồ thị quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/Social_Network_Analysis_Visualization.png)
 
 *Hình 5.34: Quan hệ không chỉ sống trong bảng dữ liệu — mạng xã hội là đồ thị quan hệ quy mô hàng tỷ cung (follows, friends, likes).*
 
@@ -223,7 +223,7 @@ Collision xử lý ra sao,
 bucket phân bố đều đến đâu,
 có ảnh hưởng trực tiếp tới hiệu năng.
 
-![Equivalence partitioning — lớp tương đương trong testing](https://commons.wikimedia.org/wiki/Special:FilePath/Set_partitions_4;_Hasse;_matrices.svg?width=640)
+![Equivalence partitioning — lớp tương đương trong testing](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
 *Hình 5.35: Equivalence partitioning chia input thành các lớp tương đương — mỗi lớp đại diện cho một hành vi dự kiến giống nhau.*
 
@@ -247,7 +247,7 @@ hệ thống cố học xem ai giống ai,
 nội dung nào giống nội dung nào,
 và gợi ý nào có khả năng thành công.
 
-![Ma trận user-item — quan hệ gợi ý](https://commons.wikimedia.org/wiki/Special:FilePath/Hasse_diagram_of_powerset_of_3.svg?width=640)
+![Ma trận user-item — quan hệ gợi ý](/discrete-mathematics-for-computer-science-iuh/img/course/Hasse_diagram_of_powerset_of_3.svg)
 
 *Hình 5.36: Recommendation systems lưu quan hệ user–item dưới dạng ma trận thưa — collaborative filtering khai thác mẫu liên kết giữa người dùng và sản phẩm.*
 

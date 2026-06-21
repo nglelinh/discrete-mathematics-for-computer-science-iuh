@@ -17,23 +17,23 @@ Lý thuyết số trong chương này không đứng riêng lẻ, nó là nền 
 
 Trong bài này, chúng ta sẽ làm quen với các khái niệm cơ bản của mật mã và vai trò của chúng trong việc bảo vệ dữ liệu và giao tiếp số.
 
-![Sơ đồ RSA](https://commons.wikimedia.org/wiki/Special:FilePath/RSA_diagram.svg?width=640)
+![Sơ đồ RSA](/discrete-mathematics-for-computer-science-iuh/img/course/Public_key_encryption_keys.svg)
 
 *Hình 15.11: RSA: mã hóa bằng khóa công khai $(e,n)$, giải mã bằng khóa riêng $(d,n)$.*
 
-![Sinh khóa RSA](https://commons.wikimedia.org/wiki/Special:FilePath/RSA_key_generation.svg?width=640)
+![Sinh khóa RSA](/discrete-mathematics-for-computer-science-iuh/img/course/rsa_key_generation.svg)
 
 *Hình 15.12: Chọn hai số nguyên tố lớn $p,q$ — nhân dễ, phân tích khó tạo asymmetry bảo mật.*
 
-![Độ khó phân tích thừa số](https://commons.wikimedia.org/wiki/Special:FilePath/Prime_factorization.svg?width=640)
+![Độ khó phân tích thừa số](/discrete-mathematics-for-computer-science-iuh/img/course/PrimeDecompositionExample.svg)
 
 *Hình 15.13: Bảo mật RSA dựa trên giả thuyết phân tích tích hai số nguyên tố lớn là khó.*
 
-![Mũ modulo](https://commons.wikimedia.org/wiki/Special:FilePath/Modular_arithmetic.svg?width=640)
+![Mũ modulo](/discrete-mathematics-for-computer-science-iuh/img/course/modular_arithmetic.svg)
 
 *Hình 15.14: Mã hóa RSA dùng $c \equiv m^e \pmod n$ — số học mô-đun ở lõi mật mã.*
 
-![Lịch sử mật mã](https://commons.wikimedia.org/wiki/Special:FilePath/Carl_Friedrich_Gauss.jpg?width=640)
+![Lịch sử mật mã](/discrete-mathematics-for-computer-science-iuh/img/course/Carl_Friedrich_Gauss.jpg)
 
 *Hình 15.15: Từ Gauss đến Diffie–Hellman và RSA — lý thuyết số thuần trở thành hạ tầng Internet.*
 

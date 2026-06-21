@@ -16,23 +16,23 @@ Câu trả lời nằm ở **SAT Solver** — một trong những công cụ qua
 
 **Định nghĩa**: **SAT** (Boolean Satisfiability Problem) là bài toán xác định xem có tồn tại một phép gán giá trị cho các biến sao cho công thức Boolean cho kết quả đúng hay không.
 
-![Bài toán SAT — tìm phép gán thỏa mãn CNF](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=500)
+![Bài toán SAT — tìm phép gán thỏa mãn CNF](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 1.26: Bài toán SAT — tìm phép gán giá trị cho n biến sao cho công thức CNF đúng (không gian tìm kiếm 2ⁿ).*
 
-![Cây backtracking — duyệt không gian nghiệm](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=500)
+![Cây backtracking — duyệt không gian nghiệm](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 1.27: Backtracking — thử gán từng biến, quay lui khi gặp mâu thuẫn (conflict).*
 
-![Thuật toán DPLL — gán biến và suy diễn đơn vị](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=500)
+![Thuật toán DPLL — gán biến và suy diễn đơn vị](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 1.28: DPLL kết hợp gán biến, unit propagation và backtracking — nền tảng của mọi SAT solver hiện đại.*
 
-![CDCL — học từ mâu thuẫn (Conflict-Driven Clause Learning)](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=500)
+![CDCL — học từ mâu thuẫn (Conflict-Driven Clause Learning)](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 1.29: CDCL ghi nhớ các mâu thuẫn đã gặp để cắt nhánh tìm kiếm — SAT solver hiện đại giải được hàng triệu biến.*
 
-![Giải Sudoku bằng SAT solver](https://source.unsplash.com/800x600/?sudoku,puzzle,game,logic)
+![Giải Sudoku bằng SAT solver](/discrete-mathematics-for-computer-science-iuh/img/course/sudoku.svg)
 
 *Hình 1.30: Sudoku có thể mã hóa thành CNF — một ví dụ thú vị về ứng dụng SAT solver trong giải đố và lập kế hoạch.*
 

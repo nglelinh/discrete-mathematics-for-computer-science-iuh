@@ -17,23 +17,23 @@ Mọi thứ thường bắt đầu từ hai khái niệm nền nhất, **tính c
 
 Trong bài này, chúng ta sẽ bắt đầu từ những khái niệm nền của lý thuyết số và xem vì sao chúng lại có sức sống mạnh đến vậy trong CS hiện đại.
 
-![Euclid](https://commons.wikimedia.org/wiki/Special:FilePath/Euclid.jpg?width=640)
+![Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid.jpg)
 
 *Hình 15.1: Euclid (~300 TCN) — chứng minh vô hạn số nguyên tố, nền móng lý thuyết số.*
 
-![Elements của Euclid](https://commons.wikimedia.org/wiki/Special:FilePath/Euclid-Elements.jpg?width=640)
+![Elements của Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid_s_Elements_1482.jpg)
 
 *Hình 15.2: Tác phẩm *Elements* hệ thống hóa số học và hình học cổ đại.*
 
-![Phân tích thừa số nguyên tố](https://commons.wikimedia.org/wiki/Special:FilePath/Prime_factorization.svg?width=640)
+![Phân tích thừa số nguyên tố](/discrete-mathematics-for-computer-science-iuh/img/course/PrimeDecompositionExample.svg)
 
 *Hình 15.3: Định lý cơ bản số học: mọi số nguyên $>1$ phân tích duy nhất thành tích số nguyên tố.*
 
-![Carl Friedrich Gauss](https://commons.wikimedia.org/wiki/Special:FilePath/Carl_Friedrich_Gauss.jpg?width=640)
+![Carl Friedrich Gauss](/discrete-mathematics-for-computer-science-iuh/img/course/Carl_Friedrich_Gauss.jpg)
 
 *Hình 15.4: Gauss (1777–1855) — phát triển lý thuyết số hiện đại và đồng dư.*
 
-![Cấu trúc số nguyên](https://commons.wikimedia.org/wiki/Special:FilePath/Euler_diagram_of_number_sets.svg?width=640)
+![Cấu trúc số nguyên](/discrete-mathematics-for-computer-science-iuh/img/course/Euler_diagram_of_number_sets.svg)
 
 *Hình 15.5: Chia hết, ước, bội — quan hệ cấu trúc trên tập $\mathbb{Z}$.*
 

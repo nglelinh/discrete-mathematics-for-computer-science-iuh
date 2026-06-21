@@ -17,23 +17,23 @@ Khi đã nhìn biểu thức như một mạng cổng, nhiều câu hỏi trở 
 
 Trong bài này, chúng ta sẽ nối logic đại số với mạch số, rồi học cách đơn giản hóa hàm Boole theo góc nhìn triển khai thực tế.
 
-![Cổng logic cơ bản](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
+![Cổng logic cơ bản](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
 *Hình 13.11: Thiết kế mạch bắt đầu từ cổng NOT, AND, OR rồi mở rộng sang NAND, NOR, XOR.*
 
-![Mạch số từ hàm Boole](https://commons.wikimedia.org/wiki/Special:FilePath/Half_Adder.svg?width=640)
+![Mạch số từ hàm Boole](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
 
 *Hình 13.12: Mạch cộng nhị phân — ví dụ thực tế của tối thiểu hóa và hiện thực hóa hàm Boolean.*
 
-![Bản đồ Karnaugh](https://commons.wikimedia.org/wiki/Special:FilePath/Karnaugh_map.svg?width=640)
+![Bản đồ Karnaugh](/discrete-mathematics-for-computer-science-iuh/img/course/karnaugh_map.svg)
 
 *Hình 13.13: K-map nhóm các minterm kề nhau để rút gọn biểu thức Boole trực quan.*
 
-![Tối thiểu hóa đại số](https://commons.wikimedia.org/wiki/Special:FilePath/Boolean_algebra.svg?width=640)
+![Tối thiểu hóa đại số](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
 *Hình 13.14: Luật Boole (hấp thụ, phân phối, De Morgan) rút gọn biểu thức trước khi vẽ mạch.*
 
-![Cổng NOT trong tối ưu](https://commons.wikimedia.org/wiki/Special:FilePath/NOT_ANSI_Labelled.svg?width=640)
+![Cổng NOT trong tối ưu](/discrete-mathematics-for-computer-science-iuh/img/course/NOT_ANSI_Labelled.svg)
 
 *Hình 13.15: Mỗi cổng logic thêm vào mạch tăng transistor và độ trễ — tối thiểu hóa có ý nghĩa vật lý.*
 

@@ -39,7 +39,7 @@ Sau bài học này, sinh viên có thể:
 
 **Định nghĩa**: Bảng chân trị là bảng liệt kê tất cả các khả năng về giá trị chân lý của các mệnh đề thành phần và giá trị chân lý tương ứng của mệnh đề phức hợp.
 
-![Không gian quyết định 2ⁿ tổ hợp](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=500)
+![Không gian quyết định 2ⁿ tổ hợp](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 1.13: Với n biến, bảng chân trị có 2ⁿ dòng — liệt kê mọi tổ hợp giá trị chân lý một cách có hệ thống.*
 
@@ -117,7 +117,7 @@ Với 3 biến p, q, r:
 
 **Kết luận**: Biểu thức này luôn đúng (tautology). Đây chính là **định luật De Morgan** — một trong những tương đương quan trọng nhất trong logic!
 
-![Minh họa De Morgan bằng biểu đồ Venn](https://commons.wikimedia.org/wiki/Special:FilePath/Intersections_of_two_sets_and_their_complements.svg?width=640)
+![Minh họa De Morgan bằng biểu đồ Venn](/discrete-mathematics-for-computer-science-iuh/img/course/Intersections_of_two_sets_and_their_complements.svg)
 
 *Hình 1.14: Định luật De Morgan — phần bù của hợp/giao tương ứng với giao/hợp của các phần bù.*
 

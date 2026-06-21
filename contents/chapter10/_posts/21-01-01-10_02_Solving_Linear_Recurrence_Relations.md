@@ -33,7 +33,7 @@ $$
 
 **Ví dụ**: Fibonacci thỏa $F_n=F_{n-1}+F_{n-2}$ với $F_0=0,F_1=1$.
 
-![Dãy truy hồi tuyến tính hệ số hằng](https://commons.wikimedia.org/wiki/Special:FilePath/Constant-recursive-sequences.svg?width=640)
+![Dãy truy hồi tuyến tính hệ số hằng](/discrete-mathematics-for-computer-science-iuh/img/course/Constant-recursive-sequences.svg)
 
 *Hình 10.6: Truy hồi tuyến tính thuần nhất bậc $k$ — nghiệm là tổng các hạng dạng $r_i^n$.*
 
@@ -68,7 +68,7 @@ Nếu nghiệm kép r: a_n = (A + B n) r^n
 
 Ví dụ từ slide: Fibonacci dẫn đến việc khảo sát dãy với F1=1, F2=1, Fn=Fn-1+Fn-2.
 
-![Giải bài toán đệ quy — phương trình đặc trưng](https://commons.wikimedia.org/wiki/Special:FilePath/Recursive_problem_solving.svg?width=640)
+![Giải bài toán đệ quy — phương trình đặc trưng](/discrete-mathematics-for-computer-science-iuh/img/course/Recursive_problem_solving.svg)
 
 *Hình 10.7: Phương trình đặc trưng $r^k - c_1 r^{k-1} - \cdots - c_k = 0$ quyết định cấu trúc nghiệm của truy hồi tuyến tính.*
 
@@ -142,7 +142,7 @@ $$
 
 Trường hợp này xuất hiện trong các mô hình dao động rời rạc, bộ lọc tín hiệu và phân tích hệ thống tuyến tính.
 
-![Tỷ lệ vàng — nghiệm của Fibonacci](https://commons.wikimedia.org/wiki/Special:FilePath/Golden_ratio_line.svg?width=640)
+![Tỷ lệ vàng — nghiệm của Fibonacci](/discrete-mathematics-for-computer-science-iuh/img/course/Golden_ratio_line.svg)
 
 *Hình 10.8: Nghiệm phức của phương trình đặc trưng Fibonacci liên quan tỷ lệ vàng $\varphi = \frac{1+\sqrt{5}}{2}$.*
 
@@ -162,11 +162,11 @@ $$
 
 Mỗi nghiệm phân biệt $r_i$ đóng góp một hạng $\alpha_i r_i^n$; nghiệm bội đóng góp thêm các nhân tử đa thức theo $n$.
 
-![Merge Sort — truy hồi chia để trị](https://commons.wikimedia.org/wiki/Special:FilePath/Merge_sort_algorithm_diagram.svg?width=640)
+![Merge Sort — truy hồi chia để trị](/discrete-mathematics-for-computer-science-iuh/img/course/Merge_sort_algorithm_diagram.svg)
 
 *Hình 10.9: Phân tích thuật toán đệ quy thường quy về truy hồi — ví dụ $T(n) = 2T(n/2) + n$ của merge sort.*
 
-![Master Theorem — giải truy hồi chia để trị](https://commons.wikimedia.org/wiki/Special:FilePath/Master_theorem.png?width=640)
+![Master Theorem — giải truy hồi chia để trị](/discrete-mathematics-for-computer-science-iuh/img/course/Master_theorem.png)
 
 *Hình 10.10: Master Theorem giải nhanh dạng $T(n) = aT(n/b) + f(n)$ — công cụ công nghiệp cho phân tích thuật toán.*
 

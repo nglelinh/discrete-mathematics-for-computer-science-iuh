@@ -17,23 +17,23 @@ Cách chuẩn hóa này quan trọng trong tối ưu logic, kiểm chứng mạc
 
 Trong bài này, chúng ta sẽ đi từ khái niệm hàm Boole đến các dạng chuẩn thường dùng và ý nghĩa thực tế của việc chuẩn hóa biểu thức.
 
-![Hàm Boolean và cổng logic](https://commons.wikimedia.org/wiki/Special:FilePath/Logic_Gates.svg?width=640)
+![Hàm Boolean và cổng logic](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
 *Hình 13.6: Mỗi hàm Boolean $f:\{0,1\}^n\to\{0,1\}$ tương ứng một mạch logic.*
 
-![Bảng chân trị](https://commons.wikimedia.org/wiki/Special:FilePath/Decision_tree.svg?width=640)
+![Bảng chân trị](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 *Hình 13.7: Bảng chân trị liệt kê mọi tổ hợp đầu vào — không gian quyết định $2^n$ dòng.*
 
-![Mạch Half Adder](https://commons.wikimedia.org/wiki/Special:FilePath/Half_Adder.svg?width=640)
+![Mạch Half Adder](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
 
 *Hình 13.8: Half Adder minh họa cách xây hàm Boolean từ bảng chân trị sang mạch.*
 
-![Biểu thức SOP và POS](https://commons.wikimedia.org/wiki/Special:FilePath/Boolean_algebra.svg?width=640)
+![Biểu thức SOP và POS](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
 *Hình 13.9: Dạng tổng các tích (SOP) và tích các tổng (POS) — hai cách chuẩn biểu diễn hàm Boole.*
 
-![Biểu đồ Venn AND](https://commons.wikimedia.org/wiki/Special:FilePath/Venn-Diagram-AND.png?width=640)
+![Biểu đồ Venn AND](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-AND.png)
 
 *Hình 13.10: Phép AND tương ứng vùng giao trên biểu đồ Venn — trực giác cho hàm Boolean.*
 

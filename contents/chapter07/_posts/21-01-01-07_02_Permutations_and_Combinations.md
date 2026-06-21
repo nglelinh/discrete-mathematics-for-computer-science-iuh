@@ -26,7 +26,7 @@ Trước khi học hoán vị và tổ hợp, chúng ta cần hiểu về giai t
 
 **Quy ước**: 0! = 1
 
-![Giai thừa từ 0! đến 4!](https://commons.wikimedia.org/wiki/Special:FilePath/Factorial_from_0!_to_4!.svg?width=640)
+![Giai thừa từ 0! đến 4!](/discrete-mathematics-for-computer-science-iuh/img/course/Factorial_from_0__to_4_.svg)
 
 *Hình 7.6: Giai thừa n! tăng rất nhanh — nền tảng để tính hoán vị và tổ hợp.*
 
@@ -43,7 +43,7 @@ Trước khi học hoán vị và tổ hợp, chúng ta cần hiểu về giai t
 
 **Định nghĩa**: Hoán vị là cách sắp xếp toàn bộ n đối tượng theo một thứ tự nhất định.
 
-![Hoán vị — sắp xếp có thứ tự](https://commons.wikimedia.org/wiki/Special:FilePath/Permutation.svg?width=640)
+![Hoán vị — sắp xếp có thứ tự](/discrete-mathematics-for-computer-science-iuh/img/course/Permutation.svg)
 
 *Hình 7.7: Hoán vị đếm số cách sắp xếp n đối tượng phân biệt — thứ tự là yếu tố quyết định.*
 
@@ -112,7 +112,7 @@ $$C(n,k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}$$
 
 **Ký hiệu khác**: $C_n^k$ cũng được sử dụng trong một số tài liệu.
 
-![Tổ hợp — chọn không xét thứ tự](https://commons.wikimedia.org/wiki/Special:FilePath/Combination.svg?width=640)
+![Tổ hợp — chọn không xét thứ tự](/discrete-mathematics-for-computer-science-iuh/img/course/Combination.svg)
 
 *Hình 7.8: Tổ hợp chập k đếm số cách chọn k phần tử từ n phần tử mà không quan tâm thứ tự.*
 
@@ -195,11 +195,11 @@ $$C_R(5, 3) = \binom{5 + 3 - 1}{3} = \binom{7}{3} = 35$$
 | Tổ hợp | k ≤ n | Không | Không | n!/(k!(n-k)!) |
 | Tổ hợp lặp | k bất kỳ | Không | Có | C(n+k-1, k) |
 
-![Tam giác Pascal](https://commons.wikimedia.org/wiki/Special:FilePath/Pascal_triangle.svg?width=640)
+![Tam giác Pascal](/discrete-mathematics-for-computer-science-iuh/img/course/Pascal_triangle.svg)
 
 *Hình 7.9: Tam giác Pascal — mỗi hệ số nhị thức $\binom{n}{k}$ bằng tổng hai hệ số phía trên.*
 
-![Khai triển nhị thức và tam giác Pascal](https://commons.wikimedia.org/wiki/Special:FilePath/Binomial_theorem_visualisation.svg?width=640)
+![Khai triển nhị thức và tam giác Pascal](/discrete-mathematics-for-computer-science-iuh/img/course/Binomial_theorem_visualisation.svg)
 
 *Hình 7.10: Định lý nhị thức liên kết khai triển $(x+y)^n$ với hệ số tổ hợp trong tam giác Pascal.*
 
