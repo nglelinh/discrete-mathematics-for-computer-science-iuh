@@ -8,17 +8,26 @@ required: false
 lang: en
 ---
 
-Thứ Hai, dashboard DNS analytics màu xanh. Thứ Ba, một datacenter latency đỏ — nhưng **chỉ** trên một subset query name mà aggregate zone-level che mất.
+Thứ Hai, dashboard DNS analytics màu xanh. Thứ Ba, một datacenter latency đỏ — nhưng chỉ trên một subset query name mà aggregate zone-level che mất.
 
-Khoa, engineer analytics tại team DNS, đọc lại [How Cloudflare analyzes 1M DNS queries per second](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/) (Marek Vavruša, 2017) trong lúc debug. Cloudflare xử lý **hơn 1 triệu truy vấn DNS mỗi giây**. Mỗi query ghi: zone, response code, **query name**, thời gian, kích thước…
+Khoa, engineer analytics tại team DNS, đọc lại [bài của Marek Vavruša trên Cloudflare Blog](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/) (2017) trong lúc debug. Cloudflare xử lý **hơn 1 triệu truy vấn DNS mỗi giây**. Mỗi query ghi: zone, response code, **query name**, thời gian, kích thước…
 
-Bài trước (09_08) đếm **va chạm** trong không gian hữu hạn $$D$$ bucket. Bài này gặp biến thể production khác: không hỏi “có trùng không?” mà hỏi “**có bao nhiêu giá trị distinct** trên một cột?” — và câu trả lời quyết định aggregate có **nén** được hay không.
+Matt Might vừa giúp chúng ta đếm **va chạm** trong không gian hữu hạn $$D$$ bucket. Ở đây là biến thể production khác: không hỏi “có trùng không?” mà hỏi “**có bao nhiêu giá trị distinct** trên một cột?” — và câu trả lời quyết định aggregate có **nén** được hay không.
 
 Một bài toán toán rời rạc nổi lên ngay:
 
 > Aggregate theo cột **độ cao cardinality** (nhiều giá trị unique) có thể **không giảm** số dòng — đôi khi **tăng** so với raw log.
 
 **Response code** chỉ có khoảng 12 giá trị → aggregate theo phút **giảm** mạnh số dòng. **Query name** có thể **hàng triệu** domain khác nhau → reduction **0–60×**, không ổn định. Cardinality không phải buzzword BI — là **|tập giá trị distinct|** quyết định aggregate có **nén** được hay không.
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/hyperloglog.svg"
+       alt="HyperLogLog — ước lượng số phần tử distinct với bộ nhớ cố định"
+       width="55%" height="55%">
+  <figcaption style="text-align: center;">Hình 9.9a: Cardinality (số giá trị distinct trên một cột) quyết định aggregate có nén được hay không — response_code gọn, qname thì không (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Hyperloglog.svg">Wikimedia Commons</a>, CC BY-SA 4.0).</figcaption>
+</p>
+</figure>
 
 ---
 
@@ -30,7 +39,7 @@ Con số blog 2017 là **hơn 1 triệu queries/s** toàn cầu; con số thực
 
 *Hình 9.15: DNS analytics quy mô triệu query/giây — đếm và tổng hợp là vấn đề hạ tầng (nguồn: [Cloudflare Blog](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/)).*
 
-Pipeline Cloudflare mô tả trong blog: edge server log **Cap'n Proto** → multiplexer → Kafka → warehouse (ClickHouse). Insight quan trọng không nằm ở tên công nghệ mà ở chỗ xử lý **metadata tại edge**, không ship full DNS message — giảm bandwidth vì đếm byte có chủ đích. Khoa nhớ lại bài `09_01`: không có “plain text”, chỉ có byte và quy ước; ở đây không có “raw log thuần”, chỉ có **schema telemetry** và quyết định cột nào đáng lưu.
+Pipeline Cloudflare mô tả trong blog: edge server log **Cap'n Proto** → multiplexer → Kafka → warehouse (ClickHouse). Insight quan trọng không nằm ở tên công nghệ mà ở chỗ xử lý **metadata tại edge**, không ship full DNS message — giảm bandwidth vì đếm byte có chủ đích. Khoa nhớ lại bài Unicode: không có “plain text”, chỉ có byte và quy ước; ở đây không có “raw log thuần”, chỉ có **schema telemetry** và quyết định cột nào đáng lưu.
 
 ---
 

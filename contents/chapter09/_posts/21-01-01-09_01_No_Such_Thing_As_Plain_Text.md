@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Unicode và encoding: Không có văn bản thuần"
+title: "Unicode và encoding"
 categories: chapter09
 date: 2021-01-01
 order: 1
@@ -8,19 +8,36 @@ required: false
 lang: en
 ---
 
-Tuần đầu tiên Minh làm backend cho **TaskFlow**, anh deploy feature hiển thị tên khách hàng lên dashboard staging. API trả JSON đúng schema, test pass, QA gật đầu. Chiều thứ Sáu, product owner gửi screenshot vào Slack:
+Bài trước đã nói: mọi thứ trong RAM cuối cùng là **bit** và **byte** — chương trình mới quyết định đọc chúng là số, ảnh hay chữ. Bài này đi sâu vào trường hợp **chữ**: không có byte nào tự ghi nhãn “tôi là ký tự Unicode”.
+
+Tuần đầu tiên làm backend cho **TaskFlow**, Minh deploy feature hiển thị tên khách hàng lên dashboard staging. API trả JSON đúng schema, test pass, QA gật đầu. Chiều thứ Sáu, product owner gửi screenshot vào Slack:
 
 > Sao `Nguyễn Thị Lan` thành `Nguyá»…n Thá»‹ Lan`?
 
-Không ai sửa database. Không ai hack. Minh mở `psql`, `SELECT name FROM customers WHERE id = 42` — vẫn `Nguyễn Thị Lan`. Bug không nằm trong bảng; nó nằm giữa Postgres, driver JDBC, serializer JSON, và trình duyệt — đoạn pipeline mà tuần trước anh gọi là “chỉ trả string ra frontend thôi mà”.
+Không ai sửa database. Không ai hack. Minh mở `psql`, `SELECT name FROM customers WHERE id = 42` — vẫn `Nguyễn Thị Lan`. Bug không nằm trong bảng; nó nằm giữa Postgres, driver JDBC, serializer JSON, và trình duyệt. Tuần trước anh gọi đoạn đó là “chỉ trả string ra frontend thôi mà”.
 
-Để sửa, anh phải tách hai khái niệm mà người mới hay gộp chung: **Unicode** (chữ là số nào) và **encoding** (số đó ghi thành byte nào). Bài này đi sâu vào hai khái niệm đó — không phải để thi lịch sử OEM, mà để hiểu vì sao bug im lặng, và vì sao sáu tháng sau channel `#incidents` của TaskFlow lại nhận thêm ticket email tiếng Nhật toàn dấu `????`.
+Để sửa, anh phải tách hai khái niệm mà người mới hay gộp chung: **Unicode** (chữ là số nào) và **encoding** (số đó ghi thành byte nào). Bài này đi sâu vào hai khái niệm đó — không để thi lịch sử OEM, mà để hiểu vì sao bug im lặng, và vì sao sáu tháng sau channel `#incidents` của TaskFlow lại nhận thêm ticket email tiếng Nhật toàn dấu `????`.
+
+Toàn bộ pipeline từ chữ bạn đọc được xuống byte trên disk — và ngược lại khi decode — có thể gói trong một sơ đồ:
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/UTF-8_Encoding_Scheme.png"
+       alt="Sơ đồ UTF-8 — code point được mã hóa thành 1–4 byte theo quy tắc prefix bit"
+       width="55%" height="55%">
+  <figcaption style="text-align: center;">Hình 9.1a: Unicode trả lời “ký tự là số nào”; UTF-8 trả lời “ghi số đó thành byte nào” — cùng một chuỗi byte, decode sai encoding là mojibake (nguồn: <a href="https://commons.wikimedia.org/wiki/File:UTF-8_Encoding_Scheme.png">Callidus / Wikimedia Commons</a>, CC BY-SA 3.0).</figcaption>
+</p>
+</figure>
+
+Ba tầng cần nhớ: **bộ ký tự** (character repertoire) gán số cho từng ký tự; **encoding** biến số đó thành dãy byte; **decoding** đọc byte ngược lại — nhưng chỉ đúng khi hai đầu cùng biết đang dùng encoding nào. Minh sẽ gặp lại sơ đồ này khi trace JDBC và browser ở cuối bài.
 
 ---
 
 ## Joel và câu hỏi “plain text”
 
-Năm 2003, Joel Spolsky sửa bug email tiếng Nhật trong **FogBUGZ**. Thư viện parse email bỏ qua header `charset`, nhảy thẳng từ byte lên “chữ hiển thị” mà không qua bước chọn bảng mã. Kanji thành `????`. Vendor không sửa. Joel viết [bài blog](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/) mà người ta vẫn paste vào Slack khi hỏi “sao chữ bị lỗi?” — kết bài bằng **There Ain't No Such Thing As Plain Text.** Trên máy tính **không có “văn bản thuần”**. Mở file `.txt`, gõ vào ô chat, nhận JSON từ API — bên dưới đều là **byte**. File “text” chỉ là thỏa thuận ngầm: “cùng hiểu đây là UTF-8” hoặc “cùng hiểu đây là Windows-1252”. Thỏa thuận không được ghi ra thì máy **đoán** — và đoán sai cho ra mojibake (`Nguyá»…n`), ký tự thay thế `U+FFFD`, hoặc dấu `?` khi font/codec không render được.
+Năm 2003, Joel Spolsky sửa bug email tiếng Nhật trong **FogBUGZ**. Thư viện parse email bỏ qua header `charset`, nhảy thẳng từ byte lên “chữ hiển thị” mà không qua bước chọn bảng mã. Kanji thành `????`. Vendor không sửa. Joel viết [bài blog](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/) mà người ta vẫn paste vào Slack khi hỏi “sao chữ bị lỗi?”.
+
+Kết bài của Joel là câu **There Ain't No Such Thing As Plain Text.** Trên máy tính không có “văn bản thuần”. Mở file `.txt`, gõ vào ô chat, nhận JSON từ API — bên dưới đều là **byte**. File “text” chỉ là thỏa thuận ngầm: “cùng hiểu đây là UTF-8” hoặc “cùng hiểu đây là Windows-1252”. Thỏa thuận không được ghi ra thì máy đoán — và đoán sai cho ra mojibake (`Nguyá»…n`), ký tự thay thế `U+FFFD`, hoặc dấu `?` khi font/codec không render được.
 
 Minh đọc bài Joel lúc nửa đêm và hiểu vì sao `SELECT` trong psql đẹp mà JSON trên browser hỏng: hai đầu pipeline đang dùng **hai quy ước decode khác nhau** trên cùng một dãy byte.
 

@@ -210,16 +210,4 @@ Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại �
 
 **Kỹ thuật chứng minh**: Thường dùng phản chứng hoặc đếm trực tiếp
 
-## Bài tập bổ sung: Nguyên lý Dirichlet (từ ccrr1_baitap2)
-
-**Bài 1:** Trong 13 người, ít nhất 2 người sinh cùng tháng? 
-
-**Bài 2:** Trong 100 người, ít nhất 2 người sinh cùng ngày trong tuần?
-
-**Bài 3:** Hộp 10 bi đỏ + 15 bi xanh. Chọn 16 bi, chứng minh ít nhất 2 cùng màu.
-
-**Bài 4:** 5 cặp găng tay (10 chiếc) trong hộp. Chọn ngẫu nhiên 6 chiếc, chứng minh ít nhất một cặp hoàn chỉnh.
-
-**Bài 5:** Bàn cờ 8x8, đặt 9 quân hậu, chứng minh ít nhất một hàng hoặc cột có ít nhất 2 quân hậu.
-
 Trong bài tiếp theo, chúng ta sẽ học về **Nguyên lý Dirichlet nâng cao** với các ứng dụng phức tạp hơn trong lý thuyết số và hình học.

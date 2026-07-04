@@ -8,13 +8,22 @@ required: false
 lang: en
 ---
 
-Sau buổi học Year 2038, Lan mang về nhà câu hỏi mà cả lớp SCADA đều thấy trừu tượng: **cộng một** trên 32-bit signed thực sự xảy ra ở đâu trong máy? Giáo viên nói “trong ALU”, nhưng ALU là hộp đen. Tối đó Lan xem loạt video của Ben Eater — anh không vẽ ALU lên slide rồi bảo “phần còn lại để sinh viên tự tìm hiểu”. Anh dùng breadboard, transistor thật, LED nhấp nháy từng bit, và xây [**máy tính 8-bit hoàn chỉnh**](https://eater.net/8bit/): program counter, register, ALU, RAM, control unit — rồi chạy Fibonacci bằng opcode assembly thật.
+Sau buổi học Year 2038, Lan mang về nhà câu hỏi mà cả lớp SCADA đều thấy trừu tượng: **cộng một** trên 32-bit signed thực sự xảy ra ở đâu trong máy? Giáo viên nói “trong ALU”, nhưng ALU là hộp đen. Tối đó Lan xem loạt video của Ben Eater — anh không vẽ ALU lên slide rồi bảo “phần còn lại để các bạn tự tìm hiểu”. Anh dùng breadboard, transistor thật, LED nhấp nháy từng bit, và xây [**máy tính 8-bit hoàn chỉnh**](https://eater.net/8bit/): program counter, register, ALU, RAM, control unit — rồi chạy Fibonacci bằng opcode assembly thật.
 
-Xem [video lập trình máy](https://www.youtube.com/watch?v=9PPrrSyubG0) lần đầu, nhiều người nghĩ: “Ồ, `a + b` trong C **là** hàng chục cổng logic đang chạy.” Đúng vậy — chỉ là trên laptop bạn không thấy LED. Chương 13 dạy đại số Boole và Karnaugh trên giấy. Ben Eater cho thấy Boole **là silicon** — và mọi `if (x && y)` cuối cùng đứng trên transistor.
+Xem [video lập trình máy](https://www.youtube.com/watch?v=9PPrrSyubG0) lần đầu, nhiều người nghĩ: “Ồ, `a + b` trong C **là** hàng chục cổng logic đang chạy.” Đúng vậy — chỉ là trên laptop bạn không thấy LED. Chương 13 dạy đại số Boole và Karnaugh trên giấy; Ben Eater cho thấy Boole **là silicon** — và mọi `if (x && y)` cuối cùng đứng trên transistor.
 
 ![Ben Eater 8-bit computer](/discrete-mathematics-for-computer-science-iuh/img/course/maxresdefault.jpg)
 
 *Hình 9.7: Máy 8-bit trên breadboard — mỗi đèn là một bit (YouTube / Ben Eater).*
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/transistor.svg"
+       alt="Ký hiệu transistor BJT — công tắc điện tử của bit"
+       width="45%" height="45%">
+  <figcaption style="text-align: center;">Hình 9.4a: Từ transistor đến `a + b` trong C — Year 2038 overflow xảy ra trong ALU, không phải trên slide (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Transistor.svg">sventeeuwen / Wikimedia Commons</a>, public domain).</figcaption>
+</p>
+</figure>
 
 ---
 
@@ -74,7 +83,7 @@ Phép cộng hai bit $$a$$ và $$b$$ là bài toán Boole thuần túy. Khi cả
 
 ## Từ breadboard đến two's complement
 
-Bài trước (09_03) đã thấy two's complement trên giấy: cộng 1 vào giá trị max của 32-bit signed đưa timestamp về năm 1901. Máy Ben Eater dùng số **không dấu** trên breadboard để bạn **nhìn** carry chain từng bit — LED nhấp nháy từ hàng đơn vị lên hàng cao. CPU thật dùng **cùng mạch cộng không dấu**; khác biệt nằm ở tầng ISA: CPU **đọc** bit cao nhất như sign bit và bật cờ overflow khi cộng hai số dương mà ra kết quả âm.
+Ở bài Year 2038, chúng ta đã thấy two's complement trên giấy: cộng 1 vào giá trị max của 32-bit signed đưa timestamp về năm 1901. Máy Ben Eater dùng số **không dấu** trên breadboard để bạn **nhìn** carry chain từng bit — LED nhấp nháy từ hàng đơn vị lên hàng cao. CPU thật dùng **cùng mạch cộng không dấu**; khác biệt nằm ở tầng ISA: CPU **đọc** bit cao nhất như sign bit và bật cờ overflow khi cộng hai số dương mà ra kết quả âm.
 
 Ví dụ 8-bit cho dễ hình dung: max không dấu là `11111111` (255). Cộng 1 → `00000000` (0) với carry-out bị bỏ qua — wrap-around bình thường. Cùng pattern bit `01111111` (127) cộng 1 thành `10000000`: nếu đọc **không dấu** thì được 128; nếu đọc **two's complement** thì `10000000` là −128. **Cùng mạch cộng, khác quy ước đọc** — đó là cầu nối giữa LED nhấp nháy trên breadboard và Year 2038 trên firmware PLC mà Lan vừa ghi vào risk register.
 

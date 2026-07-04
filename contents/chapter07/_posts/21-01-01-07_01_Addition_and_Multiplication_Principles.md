@@ -18,10 +18,6 @@ Nhiều sai lầm xảy ra không phải vì công thức khó, mà vì đọc s
 
 Trong bài này, chúng ta sẽ luyện cách nhìn bài toán đếm qua cấu trúc lựa chọn, rồi dùng quy tắc cộng và nhân để biến những tình huống thực tế thành phép đếm rõ ràng.
 
-![Cây quyết định — quy tắc nhân](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
-
-*Hình 7.1: Quy tắc nhân tương ứng với cây quyết định — mỗi nhánh là một lựa chọn, tổng số đường đi bằng tích số cách ở từng bước.*
-
 ## Quy tắc Cộng (Addition Principle)
 
 **Nguyên lý**: Nếu một tác vụ có thể được thực hiện theo m cách hoặc theo n cách (không trùng lặp), thì tổng số cách thực hiện tác vụ là m + n.
@@ -108,30 +104,6 @@ Một trường đại học tạo mã sinh viên gồm 2 chữ cái in hoa (A-Z
 ### Mối liên hệ với quy tắc nhân
 
 Quy tắc nhân thực chất là hệ quả trực tiếp của công thức tính lực lượng tích Descartes. Khi một tác vụ gồm k bước, với bước thứ i có nᵢ cách thực hiện, ta có thể xem mỗi cách thực hiện toàn bộ tác vụ là một phần tử của tích Descartes của k tập hợp, trong đó tập thứ i có nᵢ phần tử.
-
-## Nguyên lý Chuồng Bồ câu (Pigeonhole Principle)
-
-**Nguyên lý**: Nếu có $$n$$ vật thể đặt vào $$m$$ hộp, với $$n > m$$, thì ít nhất một hộp chứa từ 2 vật thể trở lên.
-
-$$n > m \implies \exists \text{ hộp chứa } \geq 2 \text{ vật}$$
-
-![Nguyên lý chuồng chim — minh họa](/discrete-mathematics-for-computer-science-iuh/img/course/Pigeonhole.jpg)
-
-*Hình 7.5: Nguyên lý chuồng bồ câu — nhiều đối tượng hơn ngăn chứa thì ít nhất một ngăn phải chứa từ hai đối tượng trở lên.*
-
-**Ví dụ 1**: Trong một lớp có 13 sinh viên, có ít nhất 2 sinh viên sinh cùng tháng (vì 13 > 12 tháng).
-
-**Ví dụ 2**: Trong một nhóm 367 người, có ít nhất 2 người có cùng ngày sinh (vì 367 > 366 ngày trong năm).
-
-**Nguyên lý tổng quát**: Nếu có $$n$$ vật thể đặt vào $$m$$ hộp, thì ít nhất một hộp chứa từ $$\lceil n/m \rceil$$ vật thể trở lên.
-
-**Ví dụ 3**: Nếu có 100 sinh viên làm 3 bài kiểm tra, có ít nhất $$\lceil 100/3 \rceil = 34$$ sinh viên có cùng số bài đạt yêu cầu.
-
-<div class="content-box example-box" markdown="1">
-**Ví dụ 4 - Ứng dụng trong CS**: Một mảng gồm 10 số nguyên. Chứng minh rằng tồn tại hai phần tử có hiệu chia hết cho 9.
-
-**Giải**: Khi chia một số nguyên cho 9, số dư chỉ có thể là 0, 1, ..., 8 (9 loại). Với 10 số, theo nguyên lý chuồng bồ câu, có ít nhất hai số cùng số dư khi chia cho 9. Hiệu của chúng chia hết cho 9.
-</div>
 
 ## Kết hợp Quy tắc Cộng và Nhân
 
@@ -234,26 +206,5 @@ SELECT COUNT(*) FROM
 2. (26³ × 10²) + (10² × 26³) = 1,757,600 + 1,757,600 = 3,515,200 mật khẩu
 
 </details>
-
-## Bài tập bổ sung: Quy tắc cộng và nhân, điện thoại, biển số, mật khẩu (từ ccrr1_baitap2)
-
-**Bài 1:** Chọn một cán bộ hoặc sinh viên tham gia hội đồng. Có 37 cán bộ và 63 sinh viên. Bao nhiêu cách?
-
-**Bài 2:** Có bao nhiêu xâu nhị phân độ dài 7?
-
-**Bài 3:** Số điện thoại di động VN: XXXNNNNNNN (XXX code mạng, N 0-9).
-a) Vietel cần tối thiểu bao nhiêu code cho 38.249.516 thuê bao?
-b) Số VIP: XXXYYYYNNN (4 chữ số trùng) hoặc XXXNNNNYYY (3 chữ số trùng). Mỗi code có bao nhiêu VIP?
-
-**Bài 4:** Biển số A1A2A3N1N2N3N4N5N6 (A: A-Z, N:0-9). Bao nhiêu biển khác nhau?
-
-**Bài 5:** Số 10 chữ số mà 3 chữ đầu và 3 chữ cuối giống nhau?
-
-**Bài 6:** Đếm số n 5 chữ số nếu:
-- n chẵn
-- n lẻ gồm 2 chữ số khác nhau
-- n chẵn gồm 2 chữ số khác nhau
-
-**Bài 7:** Mật khẩu: 1 chữ cái + 3 hoặc 4 chữ số. Tối đa bao nhiêu? Không lặp chữ số thì sao?
 
 

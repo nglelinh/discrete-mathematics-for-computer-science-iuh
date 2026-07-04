@@ -26,7 +26,16 @@ Minh, backend engineer hai năm kinh nghiệm, vừa mở laptop thì thấy b�
 
 Minh thở dài. Không phải một bug. Bốn bug. Và cả bốn đều có thể đã được **tránh** nếu tuần trước họ ngồi xuống đếm — thật sự đếm — thay vì viết “API login + session” rồi ship.
 
-Chương 9 của khóa học này đã dạy từng mảnh: Joel và email Nhật, endianness, Y2038, Ben Eater và bit trên silicon, HikariCP, combinatorial testing, birthday paradox, Matt Might, Cloudflare DNS. Bài cuối không thêm công thức lạ. Bài cuối kể **một ngày** mà tất cả các mảnh đó cùng đổ vào một cửa — cửa đăng nhập.
+Cả chương vừa rồi — Joel và email Nhật, endianness, Y2038, Ben Eater và bit trên silicon, HikariCP, combinatorial testing, birthday paradox, Matt Might, Cloudflare DNS — mỗi bài là một mảnh. Bài này không thêm công thức lạ. Bài này kể **một ngày** mà tất cả các mảnh đó cùng đổ vào một cửa: cửa đăng nhập.
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/OSI_Model_v1.svg"
+       alt="Mô hình OSI 7 tầng — mỗi request đăng nhập đi qua nhiều lớp xử lý"
+       width="55%" height="55%">
+  <figcaption style="text-align: center;">Hình 9.10a: Một request đăng nhập — năm incident từ năm bài trước cùng xuất hiện trong một buổi sáng TaskFlow (nguồn: <a href="https://commons.wikimedia.org/wiki/File:OSI_Model_v1.svg">Wikimedia Commons</a>, CC BY-SA 4.0).</figcaption>
+</p>
+</figure>
 
 ---
 
@@ -100,7 +109,7 @@ Giải pháp Minh đề xuất trong thread incident (và sau đó ghi design do
 Tuấn im một lúc, rồi reply: “Ừ. DAU không bằng connection. Anh nhầm cả đời.”
 
 <div class="content-box insight-box" markdown="1">
-**Điểm Chương 9:** Incident “10k user” thường là nhầm **DAU**, **concurrent user**, hay **RPS**. Chỉ $$ \lambda \times W $$ mới trả lời pool.
+Incident “10k user” thường là nhầm **DAU**, **concurrent user**, hay **RPS**. Chỉ $$ \lambda \times W $$ mới trả lời pool.
 </div>
 
 ---

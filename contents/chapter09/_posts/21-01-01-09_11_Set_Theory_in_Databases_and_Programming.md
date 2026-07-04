@@ -20,9 +20,18 @@ SELECT email FROM loyalty_vip;
 
 PM đếm: 48.000 email unique trong CRM, nhưng SendGrid báo **61.000** recipients. Không phải bug ESP — là bug **tập hợp**. `UNION ALL` giữ **mọi bản sao**; `UNION` mới là **hợp** (dedup). Intern hiểu SQL như cú pháp ghép chuỗi, không hiểu như phép toán trên tập.
 
-Bài trước (`09_10`) kể một buổi sáng TaskFlow sập vì đếm sai connection, cardinality metric, và UUID — tất cả qua cửa login. Bài này là **lời kết Chương 9**: quay lại lý thuyết tập hợp từ chương 4, nhưng đặt ngay dưới chân PostgreSQL, Redis, TypeScript, và câu hỏi `if user_id in cache`. Từ tranh cãi Cantor thế kỷ XIX, qua nghịch lý Russell, đến Bloom filter trong crawler — cùng một ngôn ngữ: **phần tử có thuộc tập không**, **hợp–giao–hiệu** ra sao.
+Case study TaskFlow vừa rồi gom hết lỗi đếm — connection pool, cardinality metric, UUID — vào một buổi sáng login sập. Bài này là **lời kết Chương 9**: quay lại lý thuyết tập hợp từ chương 4, nhưng đặt ngay dưới chân PostgreSQL, Redis, TypeScript, và câu hỏi `if user_id in cache`. Từ tranh cãi Cantor thế kỷ XIX, qua nghịch lý Russell, đến Bloom filter trong crawler — cùng một ngôn ngữ: **phần tử có thuộc tập không**, **hợp–giao–hiệu** ra sao.
 
-Nhiều sinh viên học ch04 rồi nghĩ tập hợp “rất toán”, xa production. Thực tế set theory nằm dưới chân mọi thứ Chương 9 đã chạm: cardinality analytics (`09_09`), hash collision (`09_07`–`08`), connection pool đếm session (`09_05`). Linh sửa campaign không cần thêm công thức lạ — chỉ cần nhớ `UNION` là hợp hai tập kết quả, không phải nối hai danh sách.
+Nhiều bạn học ch04 rồi nghĩ tập hợp “rất toán”, xa production. Thực tế set theory nằm dưới chân mọi thứ chúng ta vừa chạm: cardinality analytics, hash collision, connection pool đếm session. Linh sửa campaign không cần thêm công thức lạ — chỉ cần nhớ `UNION` là hợp hai tập kết quả, không phải nối hai danh sách.
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg"
+       alt="Biểu đồ Venn ba tập — hợp, giao, hiệu trên tập hợp"
+       width="55%" height="55%">
+  <figcaption style="text-align: center;">Hình 9.11a: Tập hợp không chỉ trên giấy — bảng SQL, `set` Python, và Bloom filter đều hỏi cùng một câu: phần tử có thuộc tập không? (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Venn3.svg">Wikimedia Commons</a>, public domain).</figcaption>
+</p>
+</figure>
 
 ---
 

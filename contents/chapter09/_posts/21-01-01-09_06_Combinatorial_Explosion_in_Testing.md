@@ -8,11 +8,20 @@ required: false
 lang: en
 ---
 
-Release thứ Tư, 16 giờ. PM hỏi trong standup: *“Sao không test hết combination?”*
+Trong standup thứ Tư, PM hỏi: *“Sao không test hết combination?”*
 
 Hương, QA lead của team checkout, không giận — cô đã nghe câu đó ở mỗi sprint. Cô mở spreadsheet luồng **đăng ký / checkout** mà dev vừa ship: trình duyệt, hệ điều hành, loại user, thiết bị, trạng thái đăng nhập — năm tham số, mỗi tham số vài giá trị. Nhân lại theo quy tắc tích từ chương đếm, chỉ riêng **một flow** đã là **324 cấu hình**. Thêm payment gateway, locale, mạng chậm — con số nhảy lên **hàng nghìn**. Mỗi cấu hình mười bước kiểm tra thì sprint hai tuần không đủ cho cả regression suite khác.
 
-Đây là **combinatorial explosion** — không phải QA lười, mà **tổ hợp** lớn hơn thời gian con người. [testRigor](https://testrigor.com/blog/what-is-combinatorial-testing/) mô tả hiện tượng này trong kiểm thử phần mềm; [Optivem Journal](https://journal.optivem.com/p/combinatorial-explosion) (Valentina Jemuović) phân tích sâu hơn: explosion không chỉ ở UI mà còn ở unit test khi nhân tham số đầu vào. Giải pháp không phải “test ít đi” mà **pairwise (2-wise) testing** — đảm bảo **mọi cặp** giá trị từ hai tham số đều xuất hiện ít nhất một lần, thường chỉ cần **15–20** test thay vì 324.
+Đó là **combinatorial explosion** — không phải QA lười, mà **tổ hợp** lớn hơn thời gian con người. [testRigor](https://testrigor.com/blog/what-is-combinatorial-testing/) mô tả hiện tượng này trong kiểm thử phần mềm; [Optivem Journal](https://journal.optivem.com/p/combinatorial-explosion) (Valentina Jemuović) phân tích sâu hơn: explosion không chỉ ở UI mà còn ở unit test khi nhân tham số đầu vào. Giải pháp không phải “test ít đi” mà **pairwise (2-wise) testing** — đảm bảo **mọi cặp** giá trị từ hai tham số đều xuất hiện ít nhất một lần, thường chỉ cần **15–20** test thay vì 324.
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/Exponential.svg"
+       alt="So sánh tăng trưởng tuyến tính, lũy thừa và hàm mũ 2^x"
+       width="55%" height="55%">
+  <figcaption style="text-align: center;">Hình 9.6a: Quy tắc nhân tạo 324 cấu hình; pairwise giảm xuống ~15 test bằng cách cover mọi *cặp* tham số, không mọi *bộ* năm chiều (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Exponential.svg">McSush / Wikimedia Commons</a>, public domain / CC0).</figcaption>
+</p>
+</figure>
 
 ---
 

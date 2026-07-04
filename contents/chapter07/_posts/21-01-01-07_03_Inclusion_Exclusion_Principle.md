@@ -25,14 +25,14 @@ Trong bài này, chúng ta sẽ học cách dùng nguyên lý bù trừ từ tr�
 **Định lý**: Nếu $A$ và $B$ hữu hạn thì
 
 $$
-|A \cup B| = |A| + |B| - |A \cap B|.
+\lvert A \cup B \rvert = \lvert A \rvert + \lvert B \rvert - \lvert A \cap B \rvert.
 $$
 
-**Chứng minh**: Khi tính $|A| + |B|$, mỗi phần tử chỉ thuộc $A$ hoặc chỉ thuộc $B$ được đếm đúng một lần. Mỗi phần tử thuộc $A \cap B$ được đếm hai lần: một lần trong $|A|$ và một lần trong $|B|$. Vì trong hợp ta chỉ muốn đếm nó một lần, ta trừ đi $|A \cap B|$. Do đó công thức đúng.
+**Chứng minh**: Khi tính $$\lvert A \rvert + \lvert B \rvert$$, mỗi phần tử chỉ thuộc $$A$$ hoặc chỉ thuộc $$B$$ được đếm đúng một lần. Mỗi phần tử thuộc $$A \cap B$$ được đếm hai lần: một lần trong $$\lvert A \rvert$$ và một lần trong $$\lvert B \rvert$$. Vì trong hợp ta chỉ muốn đếm nó một lần, ta trừ đi $$\lvert A \cap B \rvert$$. Do đó công thức đúng.
 
 ![Phép hợp hai tập — nguyên lý bù trừ](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_union_B.svg)
 
-*Hình 7.11: $|A \cup B| = |A| + |B| - |A \cap B|$ — trừ phần giao để không đếm trùng.*
+*Hình 7.11: $$\lvert A \cup B \rvert = \lvert A \rvert + \lvert B \rvert - \lvert A \cap B \rvert$$ — trừ phần giao để không đếm trùng.*
 
 <div class="content-box example-box" markdown="1">
 **Ví dụ**: Trong một lớp có 50 sinh viên, 30 sinh viên học tiếng Anh, 20 sinh viên học tiếng Pháp, 10 sinh viên học cả hai. Số sinh viên học ít nhất một ngoại ngữ là
@@ -50,10 +50,10 @@ Với ba tập $A,B,C$, công thức là
 
 $$
 \begin{aligned}
-|A \cup B \cup C|
-&= |A| + |B| + |C| \\
-&\quad - |A \cap B| - |A \cap C| - |B \cap C| \\
-&\quad + |A \cap B \cap C|.
+\lvert A \cup B \cup C \rvert
+&= \lvert A \rvert + \lvert B \rvert + \lvert C \rvert \\
+&\quad - \lvert A \cap B \rvert - \lvert A \cap C \rvert - \lvert B \cap C \rvert \\
+&\quad + \lvert A \cap B \cap C \rvert.
 \end{aligned}
 $$
 
@@ -74,19 +74,19 @@ $$
 Cho $A_1,A_2,\ldots,A_n$ là các tập hữu hạn. Khi đó
 
 $$
-\left|\bigcup_{i=1}^{n} A_i\right|
-= \sum_i |A_i|
-- \sum_{i<j}|A_i\cap A_j|
-+ \sum_{i<j<k}|A_i\cap A_j\cap A_k|
+\left\lvert\bigcup_{i=1}^{n} A_i\right\rvert
+= \sum_i \lvert A_i \rvert
+- \sum_{i<j}\lvert A_i\cap A_j \rvert
++ \sum_{i<j<k}\lvert A_i\cap A_j\cap A_k \rvert
 - \cdots
-+ (-1)^{n+1}|A_1\cap\cdots\cap A_n|.
++ (-1)^{n+1}\lvert A_1\cap\cdots\cap A_n \rvert.
 $$
 
 Dạng compact hơn:
 
 $$
-\left|\bigcup_{i=1}^{n} A_i\right|
-= \sum_{\emptyset \neq I \subseteq \{1,2,\ldots,n\}} (-1)^{|I|+1}\left|\bigcap_{i\in I} A_i\right|.
+\left\lvert\bigcup_{i=1}^{n} A_i\right\rvert
+= \sum_{\emptyset \neq I \subseteq \{1,2,\ldots,n\}} (-1)^{\lvert I \rvert+1}\left\lvert\bigcap_{i\in I} A_i\right\rvert.
 $$
 
 **Khối chứng minh**: Xét một phần tử $x$ thuộc đúng $r$ trong $n$ tập. Trong vế phải, $x$ đóng góp
@@ -105,7 +105,7 @@ Suy ra tổng xen kẽ không có hạng $\binom{r}{0}$ bằng $1$. Vậy mỗi 
 
 ![Phép giao hai tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_intersect_B.svg)
 
-*Hình 7.13: Mỗi giao $|A_i \cap A_j|$ trong công thức tổng quát đại diện phần bị đếm trùng.*
+*Hình 7.13: Mỗi giao $$\lvert A_i \cap A_j \rvert$$ trong công thức tổng quát đại diện phần bị đếm trùng.*
 
 ## 4. Dạng bù: đếm phần tử không vi phạm điều kiện nào
 
@@ -114,7 +114,7 @@ Nhiều bài toán dễ hơn nếu đếm số đối tượng **vi phạm ít n
 Nếu $U$ là không gian tất cả đối tượng và $A_i$ là tập các đối tượng vi phạm điều kiện thứ $i$, thì số đối tượng hợp lệ là
 
 $$
-|U|-\left|\bigcup_i A_i\right|.
+\lvert U \rvert-\left\lvert\bigcup_i A_i\right\rvert.
 $$
 
 **Ví dụ**: Có bao nhiêu số từ $1$ đến $100$ không chia hết cho $2$, $3$, hoặc $5$?
@@ -122,15 +122,15 @@ $$
 Gọi $A_2,A_3,A_5$ lần lượt là các số chia hết cho $2,3,5$. Ta có
 
 $$
-|A_2|=50,\quad |A_3|=33,\quad |A_5|=20,
+\lvert A_2 \rvert=50,\quad \lvert A_3 \rvert=33,\quad \lvert A_5 \rvert=20,
 $$
 
 $$
-|A_2\cap A_3|=16,\quad |A_2\cap A_5|=10,\quad |A_3\cap A_5|=6,
+\lvert A_2\cap A_3 \rvert=16,\quad \lvert A_2\cap A_5 \rvert=10,\quad \lvert A_3\cap A_5 \rvert=6,
 $$
 
 $$
-|A_2\cap A_3\cap A_5|=3.
+\lvert A_2\cap A_3\cap A_5 \rvert=3.
 $$
 
 Do đó số bị loại là $50+33+20-16-10-6+3=74$. Số hợp lệ là $100-74=26$.
@@ -236,18 +236,18 @@ Yêu cầu "ít nhất hai loại" = Total - một loại - hai loại = $$77^n 
 
 (b) Password không có hai ký tự kề giống nhau: ký tự đầu có 77 cách chọn, mỗi ký tự sau có 76 cách (khác ký tự trước). Vậy số lượng = $$77 \times 76^{n-1}$$.
 
-(c) Kết hợp cả hai điều kiện. Gọi A = có ít nhất hai loại ký tự, B = không có hai ký tự kề giống nhau. Ta cần $$|A \cap B| = |B| - |\bar{A} \cap B|$$, với $$\bar{A}$$ = chỉ dùng 0 hoặc 1 loại ký tự.
+(c) Kết hợp cả hai điều kiện. Gọi A = có ít nhất hai loại ký tự, B = không có hai ký tự kề giống nhau. Ta cần $$\lvert A \cap B \rvert = \lvert B \rvert - \lvert\bar{A} \cap B \rvert$$, với $$\bar{A}$$ = chỉ dùng 0 hoặc 1 loại ký tự.
 
-Tính $$|\bar{A} \cap B|$$: số password chỉ dùng 1 loại và không có ký tự kề giống nhau. Với mỗi loại có $$k$$ ký tự, số lượng là $$k \times (k-1)^{n-1}$$ ($$k \ge 2$$) hoặc $$k$$ nếu $$k=1$$. Vậy:
+Tính $$\lvert\bar{A} \cap B \rvert$$: số password chỉ dùng 1 loại và không có ký tự kề giống nhau. Với mỗi loại có $$k$$ ký tự, số lượng là $$k \times (k-1)^{n-1}$$ ($$k \ge 2$$) hoặc $$k$$ nếu $$k=1$$. Vậy:
 
 - Chỉ digit: $$10 \times 9^{n-1}$$ ($$k=10$$)
 - Chỉ lower: $$26 \times 25^{n-1}$$
 - Chỉ upper: $$26 \times 25^{n-1}$$
 - Chỉ special: $$15 \times 14^{n-1}$$
 
-Tổng $$|\bar{A} \cap B| = 10 \times 9^{n-1} + 2 \cdot 26 \times 25^{n-1} + 15 \times 14^{n-1}$$.
+Tổng $$\lvert\bar{A} \cap B \rvert = 10 \times 9^{n-1} + 2 \cdot 26 \times 25^{n-1} + 15 \times 14^{n-1}$$.
 
-Vậy kết quả: $$|A \cap B| = 77 \times 76^{n-1} - \big(10 \times 9^{n-1} + 52 \times 25^{n-1} + 15 \times 14^{n-1}\big)$$.
+Vậy kết quả: $$\lvert A \cap B \rvert = 77 \times 76^{n-1} - \big(10 \times 9^{n-1} + 52 \times 25^{n-1} + 15 \times 14^{n-1}\big)$$.
 
 </details>
 
@@ -258,19 +258,5 @@ Vậy kết quả: $$|A \cap B| = 77 \times 76^{n-1} - \big(10 \times 9^{n-1} + 
 - **Dạng bù** đặc biệt hữu ích khi đếm các đối tượng không vi phạm điều kiện nào.
 - **Chứng minh phần tử** cho thấy mỗi phần tử thuộc hợp được đếm đúng một lần.
 - **Ứng dụng CS** gồm truy vấn dữ liệu, kiểm tra mật khẩu, sàng số, xác suất lỗi và phân tích cấu hình bị cấm.
-
-## Bài tập bổ sung: Nguyên lý bù trừ (từ ccrr1_baitap2)
-
-N(A ∪ B) = N(A) + N(B) – N(A ∩ B)
-
-**Bài 1:** Lớp có 25 giỏi tin học, 13 giỏi toán, 8 giỏi cả hai. Hỏi lớp có bao nhiêu nếu mỗi SV giỏi toán hoặc tin học hoặc cả hai?
-
-**Bài 2:** Số nguyên ≤1000 chia hết cho 7 hoặc 11?
-
-**Bài 3:** Xâu nhị phân độ dài 10 bắt đầu bởi 00 hoặc kết thúc bởi 11?
-
-N(A ∪ B ∪ C) = N(A)+N(B)+N(C) – N(A∩B) – N(A∩C) – N(B∩C) + N(A∩B∩C)
-
-**Bài 4:** Trong X={1..1000} có bao nhiêu số không chia hết cho 3,4,7?
 
 Trong bài tiếp theo, chúng ta sẽ học về hệ số nhị thức và các đồng nhất thức tổ hợp.

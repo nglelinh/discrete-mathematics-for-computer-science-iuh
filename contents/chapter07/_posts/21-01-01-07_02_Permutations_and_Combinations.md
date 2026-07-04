@@ -57,21 +57,6 @@ $$P(n) = n!$$
 
 **Giải**: P(4) = 4! = 24 cách
 
-### Hoán vị có lặp
-
-Khi có các đối tượng giống nhau, số hoán vị giảm đi do các đối tượng cùng loại không thể phân biệt.
-
-**Công thức**: Cho n đối tượng gồm k loại, loại thứ i có nᵢ đối tượng giống nhau (n₁ + n₂ + ... + nₖ = n). Số hoán vị có lặp là:
-
-$$\frac{n!}{n_1! \times n_2! \times \cdots \times n_k!}$$
-
-**Ví dụ**: Có bao nhiêu cách sắp xếp các chữ cái trong từ "BANANA"?
-
-**Giải**: 
-- Tổng: 6 chữ cái
-- B: 1, A: 3, N: 2
-- Kết quả: 6!/(1! × 3! × 2!) = 720/(1 × 6 × 2) = 60 cách
-
 ## Chỉnh hợp (k-Permutations)
 
 **Định nghĩa**: Chỉnh hợp chập k của n là cách chọn k đối tượng từ n đối tượng phân biệt và sắp xếp chúng theo một thứ tự nhất định. Khác với hoán vị, chỉnh hợp chỉ lấy k đối tượng (k ≤ n) thay vì tất cả n đối tượng.
@@ -127,81 +112,33 @@ $$C(n,k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}$$
 - Chọn 2 nữ từ 8 nữ: C(8,2) = 28 cách
 - Theo quy tắc nhân: 66 × 28 = 1.848 cách
 
-## Tổ hợp lặp (Combinations with Repetition)
+## So sánh Hoán vị và Tổ hợp
 
-**Định nghĩa**: Tổ hợp lặp chập k từ n loại đối tượng là cách chọn k đối tượng (không quan tâm thứ tự) từ n loại, trong đó mỗi loại có thể được chọn nhiều lần.
+| Khía cạnh | Hoán vị / Chỉnh hợp | Tổ hợp |
+|-----------|---------------------|--------|
+| **Thứ tự** | Quan trọng | Không quan trọng |
+| **Công thức** | P(n,k) = n!/(n-k)! | C(n,k) = n!/(k!(n-k)!) |
+| **Ví dụ** | Sắp xếp học sinh | Chọn đội tuyển |
+| **Kết quả** | P(n,k) ≥ C(n,k) | C(n,k) ≤ P(n,k) |
 
-**Công thức**: Số tổ hợp lặp chập k từ n loại là:
+**Mối quan hệ**: P(n,k) = k! × C(n,k). Mỗi tổ hợp có thể sắp xếp thành k! hoán vị.
 
-$$C_R(n,k) = C(n+k-1,k) = \binom{n+k-1}{k} = \frac{(n+k-1)!}{k!(n-1)!}$$
-
-**Ví dụ 1**: Một cửa hàng bán 4 loại bánh: A, B, C, D. Bạn muốn mua 5 cái bánh. Hỏi có bao nhiêu cách chọn?
-
-**Giải**: Đây là tổ hợp lặp chập 5 từ 4 loại:
-
-C_R(4,5) = C(4+5-1,5) = C(8,5) = C(8,3) = 56 cách
-
-**Ví dụ 2**: Có bao nhiêu nghiệm nguyên không âm của phương trình x₁ + x₂ + x₃ = 6?
-
-**Giải**: Mỗi nghiệm tương ứng với một tổ hợp lặp chập 6 từ 3 loại:
-
-C_R(3,6) = C(3+6-1,6) = C(8,6) = C(8,2) = 28 nghiệm
-
-## Công thức Nhị thức Newton (Binomial Theorem)
-
-**Định lý**: Với mọi số nguyên $$n \geq 0$$:
-
-$$(x + y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^k = \binom{n}{0} x^n + \binom{n}{1} x^{n-1} y + \binom{n}{2} x^{n-2} y^2 + \cdots + \binom{n}{n} y^n$$
-
-**Ví dụ 1**: Khai triển $$(x + y)^3$$:
-$$(x + y)^3 = \binom{3}{0}x^3 + \binom{3}{1}x^2 y + \binom{3}{2}xy^2 + \binom{3}{3}y^3 = x^3 + 3x^2 y + 3xy^2 + y^3$$
-
-**Ví dụ 2**: Tìm hệ số của $$x^3 y^2$$ trong khai triển $$(x + y)^5$$:
-Hệ số là $$\binom{5}{2} = 10$$.
-
-**Hệ quả quan trọng**:
-- Tổng các hệ số: $$\sum_{k=0}^{n} \binom{n}{k} = 2^n$$ (cho $$x = y = 1$$)
-- Tổng các hệ số đan dấu: $$\sum_{k=0}^{n} (-1)^k \binom{n}{k} = 0$$ (cho $$x = 1, y = -1$$)
-
-## Hoán vị lặp và Tổ hợp lặp (Repeated Permutations & Combinations)
-
-Những công thức này được dùng khi các đối tượng có thể được chọn nhiều lần.
-
-### Hoán vị lặp
-
-Khi có $$n$$ đối tượng gồm $$k$$ loại, loại thứ $$i$$ có $$n_i$$ đối tượng giống nhau ($$\sum n_i = n$$):
-
-Số hoán vị lặp = $$\frac{n!}{n_1! \times n_2! \times \cdots \times n_k!}$$
-
-**Ví dụ**: Số cách sắp xếp các chữ cái trong từ "BANANA":
-$$\frac{6!}{1! \times 3! \times 2!} = \frac{720}{1 \times 6 \times 2} = 60$$
-
-### Tổ hợp lặp (Combinations with Repetition)
-
-Số cách chọn $$k$$ đối tượng từ $$n$$ loại (mỗi loại không giới hạn số lượng, không quan tâm thứ tự):
-
-$$C_R(n, k) = \binom{n + k - 1}{k}$$
-
-**Ví dụ**: Một tiệm kem có 5 vị. Có bao nhiêu cách chọn 3 cây kem?
-$$C_R(5, 3) = \binom{5 + 3 - 1}{3} = \binom{7}{3} = 35$$
-
-## Bảng tổng kết các công thức
+## Bảng tổng kết các công thức cơ bản
 
 | Khái niệm | Chọn k từ n? | Thứ tự? | Lặp? | Công thức |
 |:-----------|:------------:|:-------:|:----:|:----------|
 | Hoán vị | n (tất cả) | Có | Không | n! |
-| Hoán vị có lặp | n (tất cả) | Có | Có | n!/(n₁!×...×nₖ!) |
 | Chỉnh hợp | k ≤ n | Có | Không | n!/(n-k)! |
 | Tổ hợp | k ≤ n | Không | Không | n!/(k!(n-k)!) |
-| Tổ hợp lặp | k bất kỳ | Không | Có | C(n+k-1, k) |
 
-![Tam giác Pascal](/discrete-mathematics-for-computer-science-iuh/img/course/Pascal_triangle.svg)
+<div class="content-box info-box" markdown="1">
 
-*Hình 7.9: Tam giác Pascal — mỗi hệ số nhị thức $\binom{n}{k}$ bằng tổng hai hệ số phía trên.*
+**Mở rộng ở các bài sau**
 
-![Khai triển nhị thức và tam giác Pascal](/discrete-mathematics-for-computer-science-iuh/img/course/Binomial_theorem_visualisation.svg)
+- **Hoán vị/tổ hợp có lặp**, stars and bars, phương trình nghiệm nguyên → bài [Hoán vị và Tổ hợp Mở rộng]({{ '/contents/chapter07/21/01/01/Generalized_Permutations_and_Combinations.html' | relative_url }}) (`07_05`)
+- **Hệ số nhị thức**, tam giác Pascal, đồng nhất thức tổ hợp → bài [Hệ số Nhị thức và Đồng nhất thức Tổ hợp]({{ '/contents/chapter07/21/01/01/Binomial_Coefficients_and_Identities.html' | relative_url }}) (`07_04`)
 
-*Hình 7.10: Định lý nhị thức liên kết khai triển $(x+y)^n$ với hệ số tổ hợp trong tam giác Pascal.*
+</div>
 
 ## Bài tập có lời giải
 
@@ -249,48 +186,6 @@ Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, d�
 4. Có bao nhiêu cách xếp 3 quyển sách Toán, 2 quyển sách Văn và 4 quyển sách Anh lên kệ sao cho các quyển cùng môn không nhất thiết đứng cạnh nhau?
 
 5. Một nhóm có 10 nam và 7 nữ. Cần chọn ra 5 người sao cho số nam nhiều hơn số nữ. Hỏi có bao nhiêu cách chọn?
-
-6. Tìm số nghiệm nguyên không âm của phương trình x₁ + x₂ + x₃ + x₄ = 8.
-
-7. Một cửa hàng kem có 5 vị khác nhau. Bạn muốn mua 3 cây kem, mỗi cây có thể chọn bất kỳ vị nào. Có bao nhiêu cách chọn?
-
-## So sánh Hoán vị và Tổ hợp
-
-| Khía cạnh | Hoán vị | Tổ hợp |
-|-----------|---------|--------|
-| **Thứ tự** | Quan trọng | Không quan trọng |
-| **Công thức** | P(n,k) = n!/(n-k)! | C(n,k) = n!/(k!(n-k)!) |
-| **Ví dụ** | Sắp xếp học sinh | Chọn đội tuyển |
-| **Kết quả** | P(n,k) ≥ C(n,k) | C(n,k) ≤ P(n,k) |
-
-### Mối quan hệ
-P(n,k) = k! × C(n,k)
-
-**Giải thích**: Mỗi tổ hợp có thể sắp xếp thành k! hoán vị.
-
-## Tính chất của Tổ hợp
-
-### 1. Tính đối xứng
-C(n,k) = C(n,n-k)
-
-**Ví dụ**: C(10,3) = C(10,7) = 120
-
-### 2. Tam giác Pascal
-C(n,k) = C(n-1,k-1) + C(n-1,k)
-
-**Tam giác Pascal**:
-```
-        1
-      1   1
-    1   2   1
-  1   3   3   1
-1   4   6   4   1
-```
-
-### 3. Tổng các tổ hợp
-∑(k=0 to n) C(n,k) = 2ⁿ
-
-**Ví dụ**: C(3,0) + C(3,1) + C(3,2) + C(3,3) = 1 + 3 + 3 + 1 = 8 = 2³
 
 ## Ứng dụng trong Khoa học Máy tính
 
@@ -346,7 +241,7 @@ def permutation_sort_complexity(n):
 ### Bài tập 3: Tổ hợp
 1. Từ 12 người, chọn 5 người vào đội bóng. Có bao nhiêu cách?
 2. Một hộp có 10 bi đỏ và 8 bi xanh. Chọn 4 bi bất kỳ. Có bao nhiêu cách?
-3. Chứng minh: C(n,0) + C(n,1) + ... + C(n,n) = 2ⁿ
+3. Từ 12 nam và 8 nữ, chọn nhóm 4 người có đúng 2 nữ. Có bao nhiêu cách?
 
 ### Bài tập 4: Ứng dụng
 1. Một mật khẩu gồm 8 ký tự (chữ và số). Có bao nhiêu mật khẩu khác nhau?
@@ -369,7 +264,7 @@ def permutation_sort_complexity(n):
 **Bài tập 3:**
 1. C(12,5) = 792 cách
 2. C(18,4) = 3,060 cách
-3. Sử dụng khai triển nhị thức (1+1)ⁿ = 2ⁿ
+3. C(12,2) × C(8,2) = 66 × 28 = 1,848 cách
 
 **Bài tập 4:**
 1. 36⁸ ≈ 2.8 × 10¹² mật khẩu
@@ -393,32 +288,8 @@ Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại �
 - C(n,k) = n!/(k!(n-k)!)
 - Không quan tâm đến thứ tự
 
+**Mở rộng**: Hoán vị/tổ hợp có lặp (`07_05`); hệ số nhị thức và Pascal (`07_04`)
+
 **Ứng dụng**: Mật mã, thuật toán, phân tích độ phức tạp
-
-## Bài tập bổ sung: Hoán vị, chỉnh hợp, tổ hợp (từ ccrr1_baitap2)
-
-**Bài toán về hoán vị**
-1. Bao nhiêu cách xếp 5 người thành một hàng?
-2. Từ 0,1,2,3,4 lập bao nhiêu số tự nhiên 5 chữ số khác nhau?
-3. Thương nhân bán hàng 8 thành phố: bắt đầu 1, qua 7 cái kia bất kỳ thứ tự. Bao nhiêu lộ trình?
-4. Sắp xếp 5 người vào bàn tròn 5 chỗ (xoay cùng chiều coi như giống)?
-5. Hoán vị của MISSISSIPPI?
-
-**Bài toán chỉnh hợp**
-1. Xếp 5 người vào băng ghế 7 chỗ?
-2. Số tự nhiên 4 chữ số khác nhau từ {0,1,2,3,4,5}?
-3. 8 vận động viên: huy chương vàng, bạc, đồng. Bao nhiêu cách (tất cả kết cục xảy ra)?
-4. Đội 20 cầu thủ chọn 11, phân 11 vị trí:
-   a. Ai cũng chơi bất cứ vị trí?
-   b. 1 thủ môn chỉ định, còn lại bất kỳ?
-   c. 3 thủ môn chỉ định, còn lại bất kỳ?
-5. 8 người thang máy tòa 13 tầng:
-   a. Mỗi người tầng khác?
-   b. Mỗi người tầng bất kỳ?
-
-**Bài toán tổ hợp**
-1. Biển đăng ký ô tô 6 chữ số + 2 chữ cái (không O,I). Tối đa bao nhiêu?
-2. Nhóm 5 nam 3 nữ. Chọn 3 người có ít nhất 1 nữ?
-3. Số 4 chữ số khác nhau chữ số giảm dần?
 
 Trong bài tiếp theo, chúng ta sẽ học về **Nguyên lý Bao hàm-Loại trừ** - công cụ mạnh mẽ để đếm các tập hợp có giao nhau.

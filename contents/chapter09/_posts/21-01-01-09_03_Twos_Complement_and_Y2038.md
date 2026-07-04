@@ -12,9 +12,18 @@ Nhiều máy tính không lưu “ngày giờ” như bạn nhìn trên đồng 
 
 Lan làm kỹ sư tại nhà máy nước ở Đồng Nai. Cô đọc bài [Inside the Math That Will Break Time: The Y2K38 Problem](https://planetmainframe.com/2026/01/inside-the-math-that-will-break-time-the-y2k38-problem/) (Planet Mainframe, 2026) rồi hỏi đồng nghiệp: tủ điều khiển cũ trong xưởng — lắp từ 2012, firmware không ai sửa — có bị chuyện này không? Màn hình vẫn hiện đúng năm 2026. Nhưng không ai trong team trả lời được câu hỏi đơn giản hơn: **máy đó đếm giây bằng biến 32 bit hay 64 bit?**
 
-Bài trước (09_02) nói: cùng một dãy byte, đọc theo thứ tự khác thì ra số khác — đó là **endianness**. Bài này hỏi điều tương tự nhưng với **số có dấu**: cùng các bit trong bộ nhớ, máy đọc theo quy tắc **two's complement** (bù hai) để biết số đó dương hay âm. Khi số đã đạt **lớn nhất** mà 32 bit cho phép, cộng 1 không cho ra “giây tiếp theo” — mà nhảy sang vùng **âm**, tức ngày tháng lùi lại rất xa.
+Bài endianness vừa rồi cho thấy: cùng một dãy byte, đọc theo thứ tự khác thì ra số khác. Bài này gặp biến thể tương tự với **số có dấu**: cùng các bit trong bộ nhớ, máy đọc theo quy tắc **two's complement** (bù hai) để biết số đó dương hay âm. Khi số đã chạm **lớn nhất** mà 32 bit cho phép, cộng 1 không cho ra “giây tiếp theo” — mà nhảy sang vùng **âm**, tức ngày tháng lùi lại rất xa.
 
-Khác Y2K (lưu năm bằng hai chữ số `00` rồi nhầm 1900/2000). Y2038 là chuyện **ô nhớ đầy**: không sửa bằng cách “viết thêm chữ số”, mà phải dùng biến **rộng hơn** hoặc thay thiết bị cũ. Nếu bạn mới học, chỉ cần nhớ một ý: **thời gian trong máy = số nguyên có biên; +1 ở biên có thể đổi cả thế kỷ.**
+Khác Y2K (lưu năm bằng hai chữ số `00` rồi nhầm 1900/2000). Y2038 là chuyện **ô nhớ đầy**: không sửa bằng cách “viết thêm chữ số”, mà phải dùng biến **rộng hơn** hoặc thay thiết bị cũ. Ghi nhớ một ý: **thời gian trong máy = số nguyên có biên; +1 ở biên có thể đổi cả thế kỷ.**
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/Binary_clock.svg"
+       alt="Đồng hồ nhị phân — thời gian hiển thị được ghi bằng pattern bit"
+       width="55%" height="55%">
+  <figcaption style="text-align: center;">Hình 9.3a: Đồng hồ trên UI là lớp trên cùng; bên dưới là số nguyên có biên — cộng 1 ở max 32-bit signed nhảy sang vùng âm, tức năm 1901 (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Binary_clock.svg">Alexander Jones &amp; Eric Pierce / Wikimedia Commons</a>, CC BY-SA 3.0).</figcaption>
+</p>
+</figure>
 
 ---
 
@@ -97,7 +106,7 @@ Với $$w=32$$: max dương = $$2^{31}-1$$, min âm = $$-2^{31}$$. Dải **khôn
 Lan hay dùng mô hình **8-bit** để giải thích cho thực tập sinh mới vào nhà máy: max dương = $$2^7 - 1 = 127$$, pattern `01111111`. Cộng 1 → `10000000` = **−128**, không phải 128. Cùng mạch cộng, cùng dãy bit — chỉ khác **cách CPU diễn giải sign bit**. Year 2038 trên 32-bit là cùng câu chuyện, chỉ scale lên từ 127 sang hơn hai tỷ.
 
 <div class="content-box insight-box" markdown="1">
-Hai lớp dễ lẫn giống endianness ở bài trước: **(1)** dãy bit vật lý trong register sau phép cộng; **(2)** kiểu dữ liệu trong ngôn ngữ (`uint32_t` vs `int32_t`) quyết định **đọc** dãy đó là bao nhiêu. `1000…000` là −2³¹ nếu signed, là 2³¹ nếu unsigned — cùng bit, hai số.
+Hai lớp dễ lẫn — giống chuyện endianness: **(1)** dãy bit vật lý trong register sau phép cộng; **(2)** kiểu dữ liệu trong ngôn ngữ (`uint32_t` vs `int32_t`) quyết định **đọc** dãy đó là bao nhiêu. `1000…000` là −2³¹ nếu signed, là 2³¹ nếu unsigned — cùng bit, hai số.
 </div>
 
 ---

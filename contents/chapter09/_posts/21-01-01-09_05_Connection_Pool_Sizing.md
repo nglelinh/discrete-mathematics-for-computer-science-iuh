@@ -8,11 +8,9 @@ required: false
 lang: en
 ---
 
-Thứ Sáu, 14 giờ 30 — demo cho khách hàng enterprise.
+Demo cho khách hàng enterprise, thứ Sáu 14 giờ 30. API login của startup fintech **vừa được báo** “10.000 user đồng thời”. CTO gửi Slack: *“Tăng HikariCP lên 200 mỗi pod cho chắc. User đông mà.”*
 
-API login của startup fintech **vừa được báo** “10.000 user đồng thời”. CTO gửi Slack: *“Tăng HikariCP lên 200 mỗi pod cho chắc. User đông mà.”*
-
-DevOps lead Dũng mở Grafana. PostgreSQL `active_connections` đã chạm **180** trên máy **8 core + 1 SSD**. P99 query từ 12 ms nhảy lên **340 ms**. Log app:
+Dũng, DevOps lead, mở Grafana. PostgreSQL `active_connections` đã chạm **180** trên máy **8 core + 1 SSD**. P99 query từ 12 ms nhảy lên **340 ms**. Log app:
 
 ```text
 HikariPool-1 - Connection is not available, request timed out after 30000ms
@@ -21,6 +19,15 @@ HikariPool-1 - Connection is not available, request timed out after 30000ms
 Nghịch lý khiến Dũng dừng tay trước khi sửa config: pool **lớn hơn** → DB **chậm hơn** → request **chờ lâu hơn** → timeout nhiều hơn. Khách enterprise vẫn đang chờ trong phòng họp; CTO vẫn tin rằng “càng nhiều connection càng an toàn”.
 
 Brett Wooldridge, tác giả **HikariCP**, viết wiki [About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) dựa trên queuing theory và benchmark PostgreSQL: pool quá lớn làm throughput **giảm** vì context switch và lock contention. Câu trả lời không nằm trong cảm giác “càng nhiều càng tốt” — nằm trong **Little's Law** và một công thức đếm mà Dũng đã gặp ở chương hàng đợi.
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/Client-server-model.svg"
+       alt="Mô hình client–server — nhiều client chia sẻ tài nguyên server qua pool kết nối"
+       width="55%" height="55%">
+  <figcaption style="text-align: center;">Hình 9.5a: “10k user” không đi thẳng thành 10k connection — chỉ $$L = \lambda \times W$$ mới cho biết cần bao nhiêu kết nối DB thực sự busy (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Client-server-model.svg">Wikimedia Commons</a>, CC BY-SA 3.0).</figcaption>
+</p>
+</figure>
 
 ---
 
@@ -69,7 +76,7 @@ $$L = 1000 \times 0{,}005 = 5$$
 Trung bình chỉ **5 connection busy** — pool **10–15** là hợp lý cho một pod. Không phải 200. Dũng gửi lại Slack với bảng tính: “10k user” mà marketing nói có thể là DAU cả ngày; concurrent thực tế lúc peak chỉ vài trăm RPS, và Little's Law cho ra con số đếm được.
 
 <div class="content-box insight-box" markdown="1">
-**Điểm Chương 9:** Incident “10k user” thường là nhầm **DAU**, **concurrent user**, hay **RPS**. Chỉ $$\lambda \times W$$ mới trả lời pool — đó là phép đếm có điều kiện trên workload thật, không phải trên headline marketing.
+Incident “10k user” thường là nhầm **DAU**, **concurrent user**, hay **RPS**. Chỉ $$\lambda \times W$$ mới trả lời pool — đó là phép đếm trên workload thật, không phải trên headline marketing.
 </div>
 
 ---

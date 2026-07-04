@@ -10,13 +10,22 @@ lang: en
 
 Thứ Tư, cuộc họp staffing cho thử nghiệm lâm sàng mới. Protocol liệt kê **500 mã bệnh** có thể đăng ký; dự kiến **1.000 bệnh nhân** trong sáu tháng đầu. Ban quản trị hỏi Dr. Phương — nhà nghiên cứu xây dựng **mạng match bệnh nhân–bệnh** — cần bao nhiêu nurse để review từng lần bệnh nhân mới “trùng” với ai đã trong mạng.
 
-Đồng nghiệp gợi ý: *“Cứ nhân đôi số bệnh nhân là đủ.”* Dr. Phương lắc đầu. Bài trước (09_07), [Tom Archer](https://tomarcher.io/posts/birthday-paradox/) trả lời câu *“Có **ít nhất một** cặp trùng không?”* — xác suất $$P(\text{collision})$$, một con số từ 0 đến 1. Câu hỏi của cô **khác**: khi bệnh nhân thứ $$k$$ đăng ký, **bao nhiêu lần** người đó trùng mã với ai đã có? Đó là **kỳ vọng số lần match**, không phải xác suất có hay không.
+Đồng nghiệp gợi ý: *“Cứ nhân đôi số bệnh nhân là đủ.”* Dr. Phương lắc đầu. Bài birthday paradox vừa rồi — và [blog của Tom Archer](https://tomarcher.io/posts/birthday-paradox/) — trả lời câu *“Có **ít nhất một** cặp trùng không?”*: xác suất $$P(\text{collision})$$, một con số từ 0 đến 1. Câu hỏi của cô khác hẳn: khi bệnh nhân thứ $$k$$ đăng ký, **bao nhiêu lần** người đó trùng mã với ai đã có? Đó là **kỳ vọng số lần match**, không phải xác suất có hay không.
 
 Matt Might — giáo sư tại University of Utah, blogger về PL và bioinformatics — đặt đúng câu hỏi đó trong [Counting hash collisions with the birthday paradox](https://matt.might.net/articles/counting-hash-collisions/). Cùng mô hình “người lần lượt bước vào phòng”, nhưng đếm **tổng số lần người mới trùng** thay vì hỏi “có ≥1 cặp không”. Công thức kỳ vọng:
 
 $$E[\text{matches}] = n - D + D\left(\frac{D-1}{D}\right)^n$$
 
 Trong đó $$D$$ là kích thước không gian (ngày sinh, bucket hash, mã bệnh), $$n$$ là số phần tử đã đưa vào. Dr. Phương mở spreadsheet — cô cần con số để justify staffing, không phải party trick.
+
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/Hash_table_simple_999.svg"
+       alt="Hash table — nhiều key ánh xạ vào cùng bucket khi va chạm"
+       width="55%" height="55%">
+  <figcaption style="text-align: center;">Hình 9.8a: Cùng mô hình “người bước vào phòng”, nhưng hai câu hỏi — xác suất có va chạm (Tom Archer) và kỳ vọng số lần match (Matt Might) (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Hash_table_simple_999.svg">Wikimedia Commons</a>, CC BY-SA 3.0).</figcaption>
+</p>
+</figure>
 
 ---
 

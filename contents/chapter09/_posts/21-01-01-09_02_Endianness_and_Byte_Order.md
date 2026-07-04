@@ -8,21 +8,26 @@ required: false
 lang: en
 ---
 
-Tuần thực tập, Lan mở file log mà team backend gửi từ server khác. Trong file có một dãy byte ghi thời điểm sự kiện xảy ra. Lan viết vài dòng Python để đọc, chạy thử — kết quả nhảy tới năm 2286. Cô sửa code, đổi một ký tự trong lệnh `unpack`, chạy lại — ra đúng ngày giờ. Không ai ghi sai số vào file. Chỉ có điều: Lan lần đầu **đọc byte theo thứ tự mà máy cô không dùng**.
+Tuần thực tập, Lan mở file log mà team backend gửi từ server khác. Trong file có một dãy byte ghi thời điểm sự kiện xảy ra. Cô viết vài dòng Python để đọc, chạy thử — kết quả nhảy tới năm 2286. Đổi một ký tự trong lệnh `unpack`, chạy lại — ra đúng ngày giờ. Không ai ghi sai số vào file; Lan chỉ đọc byte theo thứ tự mà máy cô không dùng.
 
-Bài trước (09_01) nói về chữ: Unicode cho biết ký tự là số nào, encoding cho biết ghi số đó thành byte thế nào. Bài này gặp câu hỏi tương tự, nhưng với **số nguyên** — timestamp, cổng mạng, độ dài gói tin. Khi một số cần nhiều hơn một byte, máy tính phải quyết định: byte nào đứng trước, byte nào đứng sau trong bộ nhớ? Hai cách xếp đó gọi là **big-endian** và **little-endian**. Cả lớp quy ước này gọi chung là **endianness** (thứ tự byte).
+Ở bài Unicode, chúng ta đã tách hai lớp: Unicode cho biết ký tự là số nào, encoding cho biết ghi số đó thành byte thế nào. Câu hỏi tương tự lặp lại với **số nguyên** — timestamp, cổng mạng, độ dài gói tin. Khi một số cần nhiều hơn một byte, máy phải quyết định byte nào đứng trước, byte nào đứng sau trong bộ nhớ. Hai cách xếp đó gọi là **big-endian** và **little-endian**; cả lớp quy ước này gọi chung là **endianness** (thứ tự byte).
 
-Nếu bạn mới học năm 1 hoặc năm 2, hãy đọc bài theo một ý chính: **cùng một giá trị số, nhưng có thể được cất trong RAM theo hai kiểu xếp byte khác nhau.** Hiểu được điều đó là đủ để tránh hàng loạt lỗi khó thấy khi đọc file binary, làm mạng, hoặc copy chữ UTF-16 giữa hai máy.
+Một ý cần giữ suốt bài: **cùng một giá trị số, nhưng có thể được cất trong RAM theo hai kiểu xếp byte khác nhau.** Nắm được điều đó là đủ để tránh lỗi khó thấy khi đọc file binary, parse header mạng, hoặc copy chữ UTF-16 giữa hai máy.
 
----
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/32bit-Endianess.svg"
+       alt="Số nguyên 32-bit 0x0A0B0C0D lưu trong RAM theo big-endian và little-endian"
+       width="65%" height="65%">
+  <figcaption style="text-align: center;">Hình 9.2a: Cùng một giá trị số, hai cách xếp byte trong RAM — đọc sai convention là đủ để timestamp nhảy sang năm 2286 như Lan gặp (nguồn: <a href="https://commons.wikimedia.org/wiki/File:32bit-Endianess.svg">Aeroid / Wikimedia Commons</a>, CC BY-SA 4.0).</figcaption>
+</p>
+</figure>
 
 ## Vì sao một số cần nhiều byte?
 
 Một ô nhớ nhỏ nhất gọi là **byte**, lưu được số từ 0 đến 255. Số lớn hơn 255 thì một byte không đủ. Ví dụ số **4660** viết trong hệ hexadecimal là **0x1234** — tức là cần **hai byte**: một byte mang phần `12`, một byte mang phần `34`.
 
-Trong hai byte đó, người ta gọi `12` là **byte cao** (MSB — phần “nặng” hơn, giống chữ số hàng chục trong số thập phân) và `34` là **byte thấp** (LSB — phần “nhẹ” hơn, giống hàng đơn vị). Khi bạn viết `0x1234` lên giấy, bạn luôn viết `12` trước rồi mới đến `34`. Nhiều sinh viên mới học cũng mặc định máy tính sẽ cất trong bộ nhớ y hệt như vậy. Thực tế không phải lúc nào cũng thế — và đó chính là chỗ gây nhầm.
-
----
+Trong hai byte đó, người ta gọi `12` là **byte cao** (MSB — phần “nặng” hơn, giống chữ số hàng chục trong số thập phân) và `34` là **byte thấp** (LSB — phần “nhẹ” hơn, giống hàng đơn vị). Khi bạn viết `0x1234` lên giấy, bạn luôn viết `12` trước rồi mới đến `34`. Nhiều bạn mới học cũng mặc định máy tính sẽ cất trong bộ nhớ y hệt như vậy — thực tế không phải lúc nào cũng thế, và đó chính là chỗ gây nhầm.
 
 ## Địa chỉ 1000 chứa `12` — bên trong ô nhớ là gì?
 
@@ -66,7 +71,7 @@ Một số hệ thống và nhiều **chuẩn trên mạng** dùng big-endian. K
 
 **Little-endian** làm ngược lại: byte **thấp** (`0x34`) nằm ở ô có địa chỉ **thấp hơn**, byte **cao** (`0x12`) nằm ở ô kế tiếp.
 
-Cùng số `0x1234`, cùng hai ô `1000` và `1001`, nhưng lần này ô `1000` chứa `0x34`, ô `1001` chứa `0x12`. Hex dump hiện `34 12`. Sinh viên mới hay mắc lỗi ở đây: nhìn `34 12` mà vẫn ghép trái sang phải thành `0x3412` — ra số **13330**, hoàn toàn sai. Muốn đọc đúng trên máy little-endian, bạn phải biết quy tắc: ô trước là byte thấp, ô sau là byte cao, rồi mới ghép thành `0x1234`.
+Cùng số `0x1234`, cùng hai ô `1000` và `1001`, nhưng lần này ô `1000` chứa `0x34`, ô `1001` chứa `0x12`. Hex dump hiện `34 12`. Lỗi hay gặp nhất: nhìn `34 12` mà vẫn ghép trái sang phải thành `0x3412` — ra **13330**, hoàn toàn sai. Muốn đọc đúng trên máy little-endian, bạn cần nhớ ô trước là byte thấp, ô sau là byte cao, rồi mới ghép thành `0x1234`.
 
 Phần lớn máy tính cá nhân hôm nay — Windows, Linux, Mac trên chip Intel hoặc Apple Silicon — dùng **little-endian**. Vì vậy khi bạn học lập trình trên PC, dãy byte trong RAM thường “trông ngược” so với cách viết hex trên giấy. Đó không phải bug; đó là quy ước phần cứng.
 
@@ -118,7 +123,7 @@ Vấn đề của Lan là dùng `>` trên file mà thực tế được ghi ki�
 
 ## Endianness cũng ảnh hưởng tới chữ (UTF-16)
 
-Bài 09_01 giới thiệu UTF-16: mỗi ký tự (trong phạm vi cơ bản) thường chiếm **hai byte**. Chữ `H` có mã Unicode `U+0048`, tức hai byte hex là `00` và `48`. Câu hỏi endian lại xuất hiện: byte `00` đứng trước hay byte `48` đứng trước?
+Nhớ lại UTF-16 từ bài Unicode: mỗi ký tự (trong phạm vi cơ bản) thường chiếm **hai byte**. Chữ `H` có mã Unicode `U+0048`, tức hai byte hex là `00` và `48`. Câu hỏi endian lại xuất hiện: byte `00` đứng trước hay byte `48` đứng trước?
 
 Với big-endian, file chứa `00 48`. Với little-endian, file chứa `48 00`. Cùng một chữ `H`, nhưng nhìn hex dump đã khác. Cả chuỗi `Hello` cũng vậy — một máy có thể ghi `00 48 00 65…`, máy kia ghi `48 00 65 00…`. Copy file qua USB mà không biết máy ghi theo kiểu nào, chữ có thể thành ô vuông, ký tự lạ, hoặc mất hẳn.
 

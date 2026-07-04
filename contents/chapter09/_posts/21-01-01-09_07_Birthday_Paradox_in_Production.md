@@ -8,9 +8,7 @@ required: false
 lang: en
 ---
 
-2 giờ 17 sáng. PagerDuty gọi.
-
-Huy — SRE ca đêm của startup **SessionHub** — mở laptop trong bóng tối phòng trọ. Grafana đỏ một góc. Log PostgreSQL lặp lại cùng một dòng:
+Huy, SRE ca đêm của startup **SessionHub**, bị PagerDuty đánh thức lúc 2 giờ 17 sáng. Grafana đỏ một góc. Log PostgreSQL lặp lại cùng một dòng:
 
 ```text
 DuplicateKeyException: duplicate key value violates unique constraint "sessions_pkey"
@@ -18,11 +16,18 @@ DuplicateKeyException: duplicate key value violates unique constraint "sessions_
 
 Hai request đăng nhập khác nhau, hai user khác nhau, nhưng cùng `session_id` — một số nguyên 32-bit được sinh “ngẫu nhiên” bằng `random.randint`. Một user vào được dashboard; user kia thấy session của người lạ. Team rollback feature flag “fast session ID” trước khi khách enterprise thức dậy.
 
-Huy không nghĩ tới hacker. Không nghĩ tới race condition trên một dòng DB. Anh nghĩ tới bài toán sinh nhật mà thầy dạy ở chương xác suất: trong phòng có **23 người**, xác suất hai người **cùng sinh nhật** đã vượt 50%. Trực giác bảo phải cần khoảng 183 người — một nửa 365. Trực giác sai; cùng toán học đó quyết định khi **UUID**, **64-bit ID**, hay **32-bit random** trong database **đụng nhau** — và quyết định lúc 2 giờ sáng Huy có ngủ tiếp được hay không.
+Huy không nghĩ tới hacker, cũng không nghĩ tới race condition trên một dòng DB. Anh nghĩ tới bài toán sinh nhật mà thầy dạy ở chương xác suất: trong phòng có **23 người**, xác suất hai người **cùng sinh nhật** đã vượt 50%. Trực giác bảo phải cần khoảng 183 người — một nửa 365. Trực giác sai. Cùng toán học đó quyết định khi **UUID**, **64-bit ID**, hay **32-bit random** trong database **đụng nhau**.
 
-Bài này không phải party trick. Nó là lý do GitHub mở rộng integer ID, lý do không dùng INT32 random cho bất cứ thứ gì sống quá một quý, và anchor thực tế cho paradox đã nhắc ở ch07 và ch08. Tom Archer viết [The Birthday Paradox in Production](https://tomarcher.io/posts/birthday-paradox/) (2024) kèm code Python, Monte Carlo, và case study GitHub — bài đọc mà Huy bookmark ngay sau incident.
+Đây không phải party trick. Đây là lý do GitHub mở rộng integer ID, lý do không nên dùng INT32 random cho thứ gì sống quá một quý — và lý do Huy bookmark ngay [bài của Tom Archer](https://tomarcher.io/posts/birthday-paradox/) (2024) sau incident. Một ý then chốt: **rủi ro va chạm không tỉ lệ với “còn bao nhiêu slot trống”, mà tỉ lệ với số cặp so sánh — và số cặp tăng theo $$n^2$$.**
 
-Nếu bạn mới học năm 1 hoặc năm 2, hãy đọc theo một ý chính: **rủi ro va chạm không tỉ lệ với “còn bao nhiêu slot trống”, mà tỉ lệ với số cặp so sánh — và số cặp tăng theo $$n^2$$.**
+<figure class="image" style="align: center;">
+<p align="center">
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg"
+       alt="Đồ thị xác suất không trùng sinh nhật giảm nhanh khi số người trong phòng tăng"
+       width="55%" height="55%">
+  <figcaption style="text-align: center;">Hình 9.7a: Va chạm do số *cặp* so sánh (~$$n^2$$), không do “còn bao nhiêu slot trống” — 32-bit nguy hiểm ở ~77k, UUID an toàn hàng thập kỷ (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Birthdaymatch.svg">Guillaume Jacquenot / Wikimedia Commons</a>, CC BY-SA 3.0).</figcaption>
+</p>
+</figure>
 
 ---
 
