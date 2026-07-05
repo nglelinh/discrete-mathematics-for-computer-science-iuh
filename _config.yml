@@ -1,6 +1,6 @@
 # Setup
 title:               "Discrete Mathematics for Computer Science"
-description:         'Discrete Mathematics for Computer Science - IUH'
+description:         'Discrete Mathematics for Computer Science'
 url:                 https://nglelinh.github.io
 baseurl:             '/discrete-mathematics-for-computer-science-iuh'
 imgurl:              https://nglelinh.github.io/discrete-mathematics-for-computer-science-iuh/img
@@ -17,7 +17,7 @@ permalink:           pretty
 t:
   en:
     title: "Discrete Mathematics for Computer Science"
-    description: "Discrete Mathematics for Computer Science - IUH"
+    description: "Discrete Mathematics for Computer Science"
     home: "Home"
     chapters: "Chapters"
     language: "Language"
@@ -26,7 +26,7 @@ t:
     optional: "Optional"
   vi:
     title: "Toán Rời Rạc cho Khoa học Máy tính"
-    description: "Toán Rời Rạc cho Khoa học Máy tính - IUH"
+    description: "Toán Rời Rạc cho Khoa học Máy tính"
     home: "Trang chủ"
     chapters: "Các chương"
     language: "Ngôn ngữ"

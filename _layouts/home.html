@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<article class="textbook-home-page">
+  <header class="textbook-chapter-header">
+    <p class="textbook-chapter-label">Giáo trình</p>
+    <h1 class="textbook-chapter-title">Toán Rời Rạc cho Khoa học Máy tính</h1>
+    <p class="textbook-chapter-subtitle">Discrete Mathematics for Computer Science</p>
+  </header>
+
+  <div class="textbook-home-body">
+    {{ content }}
+  </div>
+
+  <section class="textbook-toc textbook-home-toc">
+    <h2 class="textbook-toc-heading">Mục lục các chương</h2>
+    <ol class="textbook-toc-list">
+      {% for i in (1..20) %}
+        {% assign ch_key = i | append: "" %}
+        {% assign ch = site.data.chapters[ch_key] %}
+        {% if ch %}
+        <li class="textbook-toc-item">
+          <span class="textbook-toc-number">{{ i }}</span>
+          <div class="textbook-toc-body">
+            <a class="textbook-toc-link" href="{{ '/contents/' | append: ch.slug | append: '/' | relative_url }}">{{ ch.title_vn }}</a>
+            {% if ch.title_en %}
+              <p class="textbook-toc-excerpt">{{ ch.title_en }}</p>
+            {% endif %}
+            {% if ch.summary %}
+              <p class="textbook-toc-excerpt">{{ ch.summary | truncate: 200 }}</p>
+            {% endif %}
+            {% if ch.empty %}
+              <span class="textbook-toc-badge optional">Đang cập nhật</span>
+            {% else %}
+              <span class="textbook-toc-badge required">Có bài học</span>
+            {% endif %}
+          </div>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+  </section>
+</article>

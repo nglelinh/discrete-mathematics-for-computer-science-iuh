@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Big-O growth">
+  <rect width="720" height="420" fill="#fafbfc"/>
+  <text x="360.0" y="34" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">Các bậc phức tạp phổ biến</text>
+  <text x="360.0" y="52" text-anchor="middle" font-size="12" fill="#5c6370">So sánh tốc độ tăng khi n → ∞</text>
+  <line x1="80" y1="60" x2="80" y2="350" stroke="#c5cad1"/>
+  <line x1="80" y1="350" x2="690" y2="350" stroke="#c5cad1"/>
+  <text x="385.0" y="400" text-anchor="middle" font-size="12" fill="#5c6370">n</text>
+  <text x="24" y="205.0" text-anchor="middle" font-size="12" fill="#5c6370" transform="rotate(-90 24 205.0)">thời gian</text>
+  <polyline fill="none" stroke="#64748b" stroke-width="2.5" points="80.0,350.0 110.5,350.0 141.0,350.0 171.5,350.0 202.0,350.0 232.5,350.0 263.0,350.0 293.5,350.0 324.0,350.0 354.5,350.0 385.0,350.0 415.5,350.0 446.0,350.0 476.5,350.0 507.0,350.0 537.5,350.0 568.0,350.0 598.5,350.0 629.0,350.0 659.5,350.0 690.0,350.0"/>
+  <text x="680" y="350" text-anchor="end" font-size="11" fill="#64748b" font-weight="600">O(1)</text>
+  <polyline fill="none" stroke="#0d9488" stroke-width="2.5" points="80.0,350.0 110.5,350.0 141.0,350.0 171.5,350.0 202.0,350.0 232.5,350.0 263.0,350.0 293.5,350.0 324.0,350.0 354.5,350.0 385.0,350.0 415.5,350.0 446.0,350.0 476.5,350.0 507.0,350.0 537.5,350.0 568.0,350.0 598.5,350.0 629.0,350.0 659.5,350.0 690.0,350.0"/>
+  <text x="680" y="350" text-anchor="end" font-size="11" fill="#0d9488" font-weight="600">O(log n)</text>
+  <polyline fill="none" stroke="#2563eb" stroke-width="2.5" points="80.0,350.0 110.5,350.0 141.0,350.0 171.5,350.0 202.0,350.0 232.5,350.0 263.0,350.0 293.5,350.0 324.0,350.0 354.5,350.0 385.0,350.0 415.5,350.0 446.0,350.0 476.5,350.0 507.0,350.0 537.5,350.0 568.0,350.0 598.5,350.0 629.0,350.0 659.5,350.0 690.0,350.0"/>
+  <text x="680" y="350" text-anchor="end" font-size="11" fill="#2563eb" font-weight="600">O(n)</text>
+  <polyline fill="none" stroke="#7c3aed" stroke-width="2.5" points="80.0,350.0 110.5,350.0 141.0,350.0 171.5,350.0 202.0,350.0 232.5,350.0 263.0,350.0 293.5,350.0 324.0,350.0 354.5,350.0 385.0,350.0 415.5,350.0 446.0,350.0 476.5,350.0 507.0,350.0 537.5,350.0 568.0,350.0 598.5,350.0 629.0,350.0 659.5,350.0 690.0,350.0"/>
+  <text x="680" y="350" text-anchor="end" font-size="11" fill="#7c3aed" font-weight="600">O(n log n)</text>
+  <polyline fill="none" stroke="#dc2626" stroke-width="2.5" points="80.0,350.0 110.5,350.0 141.0,350.0 171.5,350.0 202.0,350.0 232.5,350.0 263.0,350.0 293.5,350.0 324.0,350.0 354.5,350.0 385.0,350.0 415.5,350.0 446.0,350.0 476.5,350.0 507.0,349.9 537.5,349.9 568.0,349.9 598.5,349.9 629.0,349.9 659.5,349.9 690.0,349.9"/>
+  <text x="680" y="350" text-anchor="end" font-size="11" fill="#dc2626" font-weight="600">O(n²)</text>
+  <polyline fill="none" stroke="#b45309" stroke-width="2.5" points="80.0,350.0 110.5,350.0 141.0,350.0 171.5,350.0 202.0,350.0 232.5,350.0 263.0,350.0 293.5,350.0 324.0,349.9 354.5,349.9 385.0,349.7 415.5,349.4 446.0,348.9 476.5,347.7 507.0,345.5 537.5,340.9 568.0,331.9 598.5,313.8 629.0,277.5 659.5,205.0 690.0,60.0"/>
+  <text x="680" y="60" text-anchor="end" font-size="11" fill="#b45309" font-weight="600">O(2ⁿ)</text>
+</svg>

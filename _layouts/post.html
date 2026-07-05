@@ -2,19 +2,25 @@
 layout: default
 ---
 
-<div class="post">
-  <h1 class="post-title">
-    {{ page.title }}
-    {% if page.lesson_type %}
-      {% if page.lesson_type == 'required' %}
-        <span class="lesson-badge required large">Bắt buộc</span>
-      {% elsif page.lesson_type == 'optional' %}
-        <span class="lesson-badge optional large">Tùy chọn</span>
-      {% endif %}
-    {% endif %}
-  </h1>
-  {{ content }}
-</div>
+{% assign chapter_raw = page.categories | first | default: "" %}
+{% assign chapter_num = chapter_raw | remove: "chapter" | plus: 0 %}
+{% assign lesson_num = page.order | default: 1 %}
+
+<article
+  class="textbook-lesson post"
+  data-chapter="{{ chapter_num }}"
+  data-lesson="{{ lesson_num }}"
+  style="--tb-prefix: '{{ chapter_num }}.{{ lesson_num }}.'; counter-reset: tb-section 0 tb-subsection 0 tb-example 0 tb-equation 0 tb-figure 0;"
+>
+  <header class="textbook-chapter-header">
+    <p class="textbook-chapter-label">Chương {{ chapter_num }}</p>
+    <h1 class="textbook-lesson-title">{{ chapter_num }}.{{ lesson_num }} {{ page.title }}</h1>
+  </header>
+
+  <div class="textbook-body">
+    {{ content }}
+  </div>
+</article>
 
 <!-- Back to Chapter Home Link -->
 {% if page.chapter %}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Modular arithmetic clock">
+  <rect width="400" height="340" fill="#fafbfc"/>
+
+  <text x="200" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">Số học modulo 12</text>
+  <circle cx="200" cy="170" r="120" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <circle cx="200" cy="170" r="4" fill="#004586"/>
+  <line x1="200.0" y1="70.0" x2="200.0" y2="55.0" stroke="#94a3b8"/>
+  <text x="200.0" y="86.0" text-anchor="middle" font-size="12" fill="#1a1a2e">0</text>
+  <line x1="250.0" y1="83.4" x2="257.5" y2="70.4" stroke="#94a3b8"/>
+  <text x="244.0" y="97.8" text-anchor="middle" font-size="12" fill="#1a1a2e">1</text>
+  <line x1="286.6" y1="120.0" x2="299.6" y2="112.5" stroke="#94a3b8"/>
+  <text x="276.2" y="130.0" text-anchor="middle" font-size="12" fill="#1a1a2e">2</text>
+  <line x1="300.0" y1="170.0" x2="315.0" y2="170.0" stroke="#94a3b8"/>
+  <text x="288.0" y="174.0" text-anchor="middle" font-size="12" fill="#1a1a2e">3</text>
+  <line x1="286.6" y1="220.0" x2="299.6" y2="227.5" stroke="#94a3b8"/>
+  <text x="276.2" y="218.0" text-anchor="middle" font-size="12" fill="#1a1a2e">4</text>
+  <line x1="250.0" y1="256.6" x2="257.5" y2="269.6" stroke="#94a3b8"/>
+  <text x="244.0" y="250.2" text-anchor="middle" font-size="12" fill="#1a1a2e">5</text>
+  <line x1="200.0" y1="270.0" x2="200.0" y2="285.0" stroke="#94a3b8"/>
+  <text x="200.0" y="262.0" text-anchor="middle" font-size="12" fill="#1a1a2e">6</text>
+  <line x1="150.0" y1="256.6" x2="142.5" y2="269.6" stroke="#94a3b8"/>
+  <text x="156.0" y="250.2" text-anchor="middle" font-size="12" fill="#1a1a2e">7</text>
+  <line x1="113.4" y1="220.0" x2="100.4" y2="227.5" stroke="#94a3b8"/>
+  <text x="123.8" y="218.0" text-anchor="middle" font-size="12" fill="#1a1a2e">8</text>
+  <line x1="100.0" y1="170.0" x2="85.0" y2="170.0" stroke="#94a3b8"/>
+  <text x="112.0" y="174.0" text-anchor="middle" font-size="12" fill="#1a1a2e">9</text>
+  <line x1="113.4" y1="120.0" x2="100.4" y2="112.5" stroke="#94a3b8"/>
+  <text x="123.8" y="130.0" text-anchor="middle" font-size="12" fill="#1a1a2e">10</text>
+  <line x1="150.0" y1="83.4" x2="142.5" y2="70.4" stroke="#94a3b8"/>
+  <text x="156.0" y="97.8" text-anchor="middle" font-size="12" fill="#1a1a2e">11</text>
+  <line x1="200" y1="170" x2="200" y2="70" stroke="#004586" stroke-width="3"/>
+  <text x="200" y="320" text-anchor="middle" font-size="13" fill="#5c6370">14 mod 12 = 2 · kim chỉ 2 giờ</text>
+</svg>

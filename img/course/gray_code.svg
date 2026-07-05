@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 310" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Gray code">
+  <rect width="520" height="310" fill="#fafbfc"/>
+
+  <text x="260" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Mã Gray (3-bit)</text>
+  <rect x="100" y="50" width="100" height="28" fill="#004586"/><text x="150" y="69" text-anchor="middle" font-size="12" fill="#fff">Nhị phân</text>
+  <rect x="220" y="50" width="100" height="28" fill="#004586"/><text x="270" y="69" text-anchor="middle" font-size="12" fill="#fff">Gray</text>
+  <rect x="100" y="78" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="150" y="96" text-anchor="middle" font-size="12">000</text>
+  <rect x="220" y="78" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="270" y="96" text-anchor="middle" font-size="12">000</text>
+  <rect x="100" y="104" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="150" y="122" text-anchor="middle" font-size="12">001</text>
+  <rect x="220" y="104" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="270" y="122" text-anchor="middle" font-size="12">001</text>
+  <rect x="100" y="130" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="150" y="148" text-anchor="middle" font-size="12">010</text>
+  <rect x="220" y="130" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="270" y="148" text-anchor="middle" font-size="12">011</text>
+  <rect x="100" y="156" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="150" y="174" text-anchor="middle" font-size="12">011</text>
+  <rect x="220" y="156" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="270" y="174" text-anchor="middle" font-size="12">010</text>
+  <rect x="100" y="182" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="150" y="200" text-anchor="middle" font-size="12">100</text>
+  <rect x="220" y="182" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="270" y="200" text-anchor="middle" font-size="12">110</text>
+  <rect x="100" y="208" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="150" y="226" text-anchor="middle" font-size="12">101</text>
+  <rect x="220" y="208" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="270" y="226" text-anchor="middle" font-size="12">111</text>
+  <rect x="100" y="234" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="150" y="252" text-anchor="middle" font-size="12">110</text>
+  <rect x="220" y="234" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="270" y="252" text-anchor="middle" font-size="12">101</text>
+  <rect x="100" y="260" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="150" y="278" text-anchor="middle" font-size="12">111</text>
+  <rect x="220" y="260" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="270" y="278" text-anchor="middle" font-size="12">100</text>
+  <text x="260" y="295" text-anchor="middle" font-size="12" fill="#5c6370">Hai giá trị liên tiếp chỉ khác 1 bit</text>
+</svg>

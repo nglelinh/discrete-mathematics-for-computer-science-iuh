@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="230" viewBox="0 0 520 230">
+  <title>Hệ số đa thức — chia n đối tượng vào m nhóm</title>
+  <rect width="520" height="230" fill="#ffffff"/>
+  <text x="260" y="28" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold">Hệ số đa thức: chia 10 SV vào 3 nhóm 4, 3, 3</text>
+  <text x="260" y="48" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#444">(x₁+x₂+x₃)¹⁰ — hệ số của x₁⁴x₂³x₃³</text>
+
+  <!-- 10 people dots -->
+  <g transform="translate(50, 65)">
+    <circle cx="0" cy="0" r="10" fill="#4299e1"/><circle cx="28" cy="0" r="10" fill="#4299e1"/>
+    <circle cx="56" cy="0" r="10" fill="#4299e1"/><circle cx="84" cy="0" r="10" fill="#4299e1"/>
+    <circle cx="112" cy="0" r="10" fill="#48bb78"/><circle cx="140" cy="0" r="10" fill="#48bb78"/>
+    <circle cx="168" cy="0" r="10" fill="#48bb78"/><circle cx="196" cy="0" r="10" fill="#ed8936"/>
+    <circle cx="224" cy="0" r="10" fill="#ed8936"/><circle cx="252" cy="0" r="10" fill="#ed8936"/>
+    <text x="126" y="30" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#444">10 đối tượng phân biệt</text>
+  </g>
+
+  <!-- groups -->
+  <rect x="40" y="115" width="130" height="70" rx="8" fill="#ebf8ff" stroke="#3182ce" stroke-width="2"/>
+  <text x="105" y="140" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold">Nhóm 1 (x₁)</text>
+  <text x="105" y="162" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13">k₁ = 4</text>
+
+  <rect x="195" y="115" width="130" height="70" rx="8" fill="#f0fff4" stroke="#38a169" stroke-width="2"/>
+  <text x="260" y="140" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold">Nhóm 2 (x₂)</text>
+  <text x="260" y="162" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13">k₂ = 3</text>
+
+  <rect x="350" y="115" width="130" height="70" rx="8" fill="#fffaf0" stroke="#dd6b20" stroke-width="2"/>
+  <text x="415" y="140" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold">Nhóm 3 (x₃)</text>
+  <text x="415" y="162" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13">k₃ = 3</text>
+
+  <text x="260" y="210" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold">C(10; 4,3,3) = 10! / (4!·3!·3!) = 4 200</text>
+</svg>

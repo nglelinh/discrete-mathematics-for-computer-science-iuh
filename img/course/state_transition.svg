@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="State transition">
+  <rect width="600" height="250" fill="#fafbfc"/>
+
+  <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#004586"/></marker></defs>
+  <text x="300" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Sơ đồ chuyển trạng thái (FSM)</text>
+  <circle cx="80" cy="120" r="6" fill="#004586"/>
+  <line x1="86" y1="120" x2="130" y2="120" stroke="#004586" marker-end="url(#arr)"/>
+  <circle cx="170" cy="120" r="32" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="170" y="125" text-anchor="middle" font-size="12">q₀</text>
+  <line x1="202" y1="120" x2="268" y2="120" stroke="#004586" marker-end="url(#arr)"/>
+  <text x="235" y="110" font-size="10" fill="#5c6370">a</text>
+  <rect x="300" y="88" width="80" height="64" rx="16" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="340" y="125" text-anchor="middle" font-size="12">q₁</text>
+  <line x1="380" y1="120" x2="446" y2="120" stroke="#004586" marker-end="url(#arr)"/>
+  <text x="413" y="110" font-size="10" fill="#5c6370">b</text>
+  <circle cx="490" cy="120" r="32" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="490" y="125" text-anchor="middle" font-size="12">q₂</text>
+  <path d="M340,152 Q340,200 170,200 Q80,200 80,152" fill="none" stroke="#004586" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="220" y="215" font-size="10" fill="#5c6370">b (quay lại)</text>
+</svg>

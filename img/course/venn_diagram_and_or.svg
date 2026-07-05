@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Venn AND OR">
+  <rect width="720" height="250" fill="#fafbfc"/>
+
+  <text x="360" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Phép toán logic trên tập</text>
+  <text x="180" y="52" text-anchor="middle" font-size="13" fill="#004586">AND (∧) = giao</text>
+  <text x="540" y="52" text-anchor="middle" font-size="13" fill="#b42318">OR (∨) = hợp</text>
+  <circle cx="150" cy="150" r="55" fill="#dbeafe" fill-opacity="0.7" stroke="#004586" stroke-width="2"/>
+  <circle cx="210" cy="150" r="55" fill="#fecaca" fill-opacity="0.7" stroke="#b42318" stroke-width="2"/>
+  <text x="120" y="155" font-size="15" font-weight="600" fill="#004586">A</text>
+  <text x="245" y="155" font-size="15" font-weight="600" fill="#b42318">B</text>
+  <text x="180" y="155" text-anchor="middle" font-size="12" fill="#1a1a2e">A∧B</text>
+  <circle cx="510" cy="150" r="55" fill="#dbeafe" fill-opacity="0.55" stroke="#004586" stroke-width="2"/>
+  <circle cx="570" cy="150" r="55" fill="#fecaca" fill-opacity="0.55" stroke="#b42318" stroke-width="2"/>
+  <text x="480" y="155" font-size="15" font-weight="600" fill="#004586">A</text>
+  <text x="605" y="155" font-size="15" font-weight="600" fill="#b42318">B</text>
+  <text x="180" y="230" text-anchor="middle" font-size="12" fill="#5c6370">Chỉ vùng giao tô đậm</text>
+  <text x="540" y="230" text-anchor="middle" font-size="12" fill="#5c6370">Toàn bộ vùng A ∪ B</text>
+</svg>

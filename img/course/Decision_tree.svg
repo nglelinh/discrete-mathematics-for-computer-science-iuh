@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Decision tree">
+  <rect width="720" height="300" fill="#fafbfc"/>
+
+  <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#004586"/></marker></defs>
+  <text x="360" y="30" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Cây quyết định / backtracking</text>
+  <rect x="310" y="50" width="100" height="36" rx="6" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="360" y="73" text-anchor="middle" font-size="12" fill="#1a1a2e">x₁ = ?</text>
+  <line x1="330" y1="86" x2="200" y2="120" stroke="#004586" marker-end="url(#arr)"/>
+  <line x1="390" y1="86" x2="520" y2="120" stroke="#004586" marker-end="url(#arr)"/>
+  <text x="250" y="110" font-size="11" fill="#5c6370">0</text><text x="470" y="110" font-size="11" fill="#5c6370">1</text>
+  <rect x="150" y="120" width="100" height="36" rx="6" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="200" y="143" text-anchor="middle" font-size="12">x₂ = ?</text>
+  <rect x="470" y="120" width="100" height="36" rx="6" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="520" y="143" text-anchor="middle" font-size="12">x₂ = ?</text>
+  <line x1="170" y1="156" x2="100" y2="200" stroke="#004586" marker-end="url(#arr)"/>
+  <line x1="230" y1="156" x2="300" y2="200" stroke="#004586" marker-end="url(#arr)"/>
+  <line x1="490" y1="156" x2="420" y2="200" stroke="#004586" marker-end="url(#arr)"/>
+  <line x1="550" y1="156" x2="620" y2="200" stroke="#22c55e" marker-end="url(#arr)"/>
+  <rect x="50" y="200" width="100" height="32" rx="6" fill="#fee2e2" stroke="#dc2626"/><text x="100" y="221" text-anchor="middle" font-size="11">UNSAT</text>
+  <rect x="250" y="200" width="100" height="32" rx="6" fill="#fee2e2" stroke="#dc2626"/><text x="300" y="221" text-anchor="middle" font-size="11">UNSAT</text>
+  <rect x="370" y="200" width="100" height="32" rx="6" fill="#fee2e2" stroke="#dc2626"/><text x="420" y="221" text-anchor="middle" font-size="11">UNSAT</text>
+  <rect x="570" y="200" width="100" height="32" rx="6" fill="#dcfce7" stroke="#16a34a"/><text x="620" y="221" text-anchor="middle" font-size="11">SAT ✓</text>
+  <text x="360" y="280" text-anchor="middle" font-size="12" fill="#5c6370">Gán biến → kiểm tra ràng buộc → cắt nhánh (prune)</text>
+</svg>

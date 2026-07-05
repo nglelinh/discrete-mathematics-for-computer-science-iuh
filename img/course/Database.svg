@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="210mm" height="297mm">
+  <defs>
+    <linearGradient id="b">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="a">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#729fcf"/>
+    </linearGradient>
+    <linearGradient id="e">
+      <stop offset="0" stop-color="#204a87"/>
+      <stop offset="1" stop-color="#3465a4"/>
+    </linearGradient>
+    <linearGradient id="f">
+      <stop offset="0"/>
+      <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="c">
+      <stop offset="0" stop-color="#3465a4"/>
+      <stop offset="1" stop-color="#729fcf" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="d">
+      <stop offset="0" stop-color="#729fcf"/>
+      <stop offset=".31578946" stop-color="#a5bfda"/>
+      <stop offset="1" stop-color="#376ca4"/>
+    </linearGradient>
+    <linearGradient xlink:href="#a" id="k" x1="24" x2="24" y1="16.525082" y2="13.284962" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#b" id="l" x1="16.07143" x2="15.785715" y1="19.5" y2="30" gradientTransform="translate(-152.982 9.37161) scale(21.14292)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#c" id="j" x1="17.160095" x2="37.969398" y1="14.004482" y2="56.575912" gradientTransform="translate(-149.9615 -46.50619) scale(21.14292)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#d" id="h" x1="9.3030529" x2="38.826412" y1="26.71875" y2="26.71875" gradientTransform="translate(-149.9615 -46.50619) scale(21.14292)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#e" id="i" x1="25.064732" x2="25.207588" y1="21.857143" y2="25.428572" gradientTransform="translate(-149.9615 -46.50619) scale(21.14292)" gradientUnits="userSpaceOnUse"/>
+    <radialGradient xlink:href="#f" id="g" cx="23.857143" cy="40" r="17.142857" fx="23.857143" fy="40" gradientTransform="matrix(1 0 0 .5 0 20)" gradientUnits="userSpaceOnUse"/>
+  </defs>
+  <path fill="none" d="M-64.879845 115.85568h850v850h-850z"/>
+  <path fill="url(#g)" d="M41 40a17.142857 8.5714283 0 1 1-34.2857132 0A17.142857 8.5714283 0 1 1 41 40z" display="block" overflow="visible" style="marker:none" transform="matrix(22.38511 0 0 24.34097 -173.556 -227.5451)"/>
+  <path fill="url(#h)" stroke="url(#i)" stroke-miterlimit="10" stroke-width="21.14291763" d="M356.14658 141.79793c-166.17064 0-301.286141 59.25303-301.286141 132.14323v488.92993c0 72.89021 135.115501 132.14324 301.286141 132.14324 166.17062 0 306.66742-59.25303 306.66742-132.14324V273.94116c0-72.8902-140.4968-132.14323-306.66742-132.14323z" display="block" overflow="visible" style="marker:none"/>
+  <path fill="none" stroke="url(#j)" stroke-miterlimit="10" stroke-width="21.14291763" d="M356.32841 158.27504c-154.92895 0-280.90458 55.24474-280.90458 123.20421v467.81387c0 67.95926 125.97563 123.20399 280.90458 123.20399 154.93104 0 285.92199-55.24473 285.92199-123.20399V281.47925c0-67.95947-130.99095-123.20421-285.92199-123.20421z" display="block" opacity=".5443038" overflow="visible" style="marker:none"/>
+  <path fill="#3465a4" stroke="url(#k)" stroke-miterlimit="10" stroke-width="1.00492704" d="M36.857142 14.071428a12.857142 5.5 0 1 1-25.714284 0 12.857142 5.5 0 1 1 25.714284 0z" display="block" overflow="visible" style="marker:none" transform="matrix(21.93136 0 0 20.18343 -168.884 -11.86222)"/>
+  <path fill="url(#l)" d="m138.48871 370.3112 7.55013 354.89907 96.65274 27.18366-3.01921-353.38862s43.79544 0 114.77644-4.53071c-110.27723-4.92778-236.4497-52.32195-279.389474-83.06143 29.958034 44.23478 63.429374 58.89803 63.429374 58.89803z" display="block" opacity=".49367083" overflow="visible" style="marker:none"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="HyperLogLog">
+  <rect width="560" height="190" fill="#fafbfc"/>
+
+  <text x="280" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">HyperLogLog — ước lượng cardinality</text>
+  <rect x="40" y="55" width="480" height="50" rx="8" fill="#e2e8f0" stroke="#e8eaed"/>
+  <circle cx="80" cy="80" r="10" fill="#004586"/><circle cx="150" cy="80" r="10" fill="#004586"/>
+  <circle cx="250" cy="80" r="10" fill="#94a3b8"/><circle cx="350" cy="80" r="10" fill="#004586"/>
+  <circle cx="450" cy="80" r="10" fill="#94a3b8"/>
+  <text x="280" y="140" text-anchor="middle" font-size="13">hash(x) → đếm số 0 đầu dãy → ước lượng |S|</text>
+  <text x="280" y="170" text-anchor="middle" font-size="12" fill="#5c6370">Bộ nhớ O(1), sai số ~1–2%</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Stephen Cook">
+  <rect width="300" height="380" fill="#fafbfc"/>
+
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8eef5"/><stop offset="100%" stop-color="#f8fafc"/></linearGradient></defs>
+  <rect width="300" height="380" fill="url(#bg)"/>
+  <rect x="20" y="20" width="260" height="340" rx="12" fill="#fff" stroke="#c5cad1"/>
+  <circle cx="150" cy="115" r="62" fill="#dbeafe" stroke="#004586" stroke-width="2"/>
+  <text x="150" y="122" text-anchor="middle" font-size="42" fill="#004586">👤</text>
+  <text x="150" y="210" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Stephen Cook</text>
+  <text x="150" y="235" text-anchor="middle" font-size="13" fill="#5c6370">b. 1939</text>
+  <line x1="60" y1="252" x2="240" y2="252" stroke="#e8eaed"/>
+  <text x="150" y="278" text-anchor="middle" font-size="13" font-weight="600" fill="#004586">NP-completeness</text>
+  <text x="150" y="305" text-anchor="middle" font-size="12" fill="#5c6370">Định lý Cook–Levin 1971</text>
+</svg>

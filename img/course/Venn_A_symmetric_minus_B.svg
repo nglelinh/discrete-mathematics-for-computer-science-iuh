@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 230" width="300" height="230">
+  <rect x="10" y="10" width="280" height="210" fill="none" stroke="black"/>
+  <circle id="set_a" cx="100" cy="100" r="80"  fill="#d8d1f7" stroke="none"/>
+  <circle id="set_b" cx="200" cy="100" r="80"  fill="#d8d1f7" stroke="none"/>
+  <path id="a_union_b" fill="white" stroke="none" d="M 150 37.59375 C 131.72362 52.259454 120 74.761222 120 100 C 120 125.23878 131.72362 147.74055 150 162.40625 C 168.27638 147.74055 180 125.23878 180 100 C 180 74.761222 168.27638 52.259454 150 37.59375 z " />
+  <circle id="frame_a" cx="100" cy="100" r="80"  fill="none" stroke="black"/>
+  <circle id="frame_b" cx="200" cy="100" r="80"  fill="none" stroke="black"/>
+  <g font-family="DejaVuSans">
+    <text id="text_a" x="70" y="55" font-size="23">A</text>
+    <text id="text_b" x="215" y="55" font-size="23">B</text>
+    <!-- text id="text_a_b" x="100" y="160" font-size="16" style="text-anchor:middle;">A ∖ B</text -->
+    <!-- text id="text_b_a" x="200" y="160" font-size="16" style="text-anchor:middle;">B ∖ A</text -->
+    <text id="text_a_sm_b" x="150" y="205" font-size="16" style="text-anchor:middle;">A ∆ B</text>
+  </g>
+  <path id="line_a" d="M 120,163 L 140,190" fill="none" stroke="black" />
+  <path id="line_b" d="M 180,163 L 160,190" fill="none" stroke="black" />
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 200" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="RSA">
+  <rect width="580" height="200" fill="#fafbfc"/>
+
+  <text x="300" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Sinh khóa RSA</text>
+  <text x="40" y="70" font-size="13">① Chọn số nguyên tố p, q</text>
+  <text x="40" y="95" font-size="13">② n = p·q, φ(n) = (p−1)(q−1)</text>
+  <text x="40" y="120" font-size="13">③ Chọn e: gcd(e, φ(n)) = 1</text>
+  <text x="40" y="145" font-size="13">④ d ≡ e⁻¹ (mod φ(n))</text>
+  <rect x="340" y="60" width="200" height="55" rx="8" fill="#dbeafe" stroke="#004586"/>
+  <text x="440" y="85" text-anchor="middle" font-size="13" font-weight="600">Khóa công khai</text>
+  <text x="440" y="105" text-anchor="middle" font-size="12">(e, n)</text>
+  <rect x="340" y="130" width="200" height="55" rx="8" fill="#fef3c7" stroke="#d97706"/>
+  <text x="440" y="155" text-anchor="middle" font-size="13" font-weight="600">Khóa bí mật</text>
+  <text x="440" y="175" text-anchor="middle" font-size="12">(d, n)</text>
+</svg>

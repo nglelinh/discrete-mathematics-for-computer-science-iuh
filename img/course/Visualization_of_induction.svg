@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="200"
+   height="376.64868"
+   id="svg2"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Veranschaulichung_der_vollständigen_Induktion.svg">
+  <metadata
+     id="metadata3093">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1676"
+     inkscape:window-height="1027"
+     id="namedview3091"
+     showgrid="false"
+     inkscape:zoom="2.1983351"
+     inkscape:cx="0.60659997"
+     inkscape:cy="188.32434"
+     inkscape:window-x="0"
+     inkscape:window-y="19"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs4" />
+  <use
+     xlink:href="#rect2383"
+     height="376.64868"
+     width="200"
+     y="0"
+     x="0"
+     id="use7612"
+     transform="translate(0,220.9626)" />
+  <use
+     xlink:href="#rect2383"
+     height="376.64868"
+     width="200"
+     y="0"
+     x="0"
+     id="use7610"
+     transform="translate(0,147.37754)" />
+  <use
+     xlink:href="#rect2383"
+     height="376.64868"
+     width="200"
+     y="0"
+     x="0"
+     id="use7608"
+     transform="translate(0,73.896254)" />
+  <rect
+     style="fill:#eeb422;fill-opacity:1;stroke:#000000;stroke-width:1.10517752;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     id="rect2383"
+     y="36.872574"
+     x="1.5865836"
+     height="36.312973"
+     width="196.82684" />
+  <path
+     d="m 40.66025,319.15358 -3.64476,12.31468 -3.64573,-12.30804 1.82262,-0.002 -9.8e-4,-24.62269 3.64524,-0.003 9.9e-4,24.62269 1.82262,-0.002 z"
+     id="path3281"
+     style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.16747727px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     inkscape:connector-curvature="0" />
+  <text
+     x="42.799145"
+     y="320.80359"
+     transform="scale(1.0120974,0.9880472)"
+     id="text3283"
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:14.55956841px;line-height:125%;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+     sodipodi:linespacing="125%"><tspan
+       x="42.799145"
+       y="320.80359"
+       id="tspan3285"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:start;writing-mode:lr-tb;text-anchor:start">induction step</tspan></text>
+  <text
+     style="font-size:14.73569965px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+     xml:space="preserve"
+     id="text3287"
+     y="336.9675"
+     x="34.370197"><tspan
+       id="tspan3289"
+       y="336.9675"
+       x="34.370197" /></text>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     id="path3305"
+     d="m -77.82725,764.04385 a 0,0 0 0 0 0,0 0,0 0 0 0 0,0 z" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.47356999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     id="path3307"
+     d="m 40.0072,342.75656 a 3.683925,3.683925 0 0 1 -7.36785,0 3.683925,3.683925 0 1 1 7.36785,0 z" />
+  <path
+     d="m 40.66023,24.96267 -3.64476,12.31468 -3.64573,-12.30804 1.82262,-0.002 -9.8e-4,-24.62269 3.64524,-0.003 9.9e-4,24.62269 1.82262,-0.002 z"
+     id="path3361"
+     style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.16747727px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     inkscape:connector-curvature="0" />
+  <text
+     x="42.799137"
+     y="23.053728"
+     transform="scale(1.0120974,0.9880472)"
+     id="text3363"
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:14.55956841px;line-height:125%;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+     sodipodi:linespacing="125%"><tspan
+       x="42.799137"
+       y="23.053728"
+       id="tspan3365"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:start;writing-mode:lr-tb;text-anchor:start">induction base</tspan></text>
+  <text
+     style="font-style:normal;font-weight:normal;font-size:16px;line-height:125%;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"
+     id="text3173"
+     y="59.09433"
+     x="40.618305"
+     sodipodi:linespacing="125%"><tspan
+       id="tspan3175"
+       y="59.09433"
+       x="40.618305"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:start;writing-mode:lr-tb;text-anchor:start">A(n) holds for n=1</tspan></text>
+  <text
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"
+     id="text3196"
+     y="132.89102"
+     x="40.675861"
+     sodipodi:linespacing="125%"><tspan
+       id="tspan3198"
+       y="132.89102"
+       x="40.675861"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:start;writing-mode:lr-tb;text-anchor:start">A(n) holds for n=2</tspan></text>
+  <text
+     style="font-style:normal;font-weight:normal;font-size:14.73569965px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"
+     id="text3267"
+     y="206.26181"
+     x="40.528339"><tspan
+       id="tspan3269"
+       y="206.26181"
+       x="40.528339"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:start;writing-mode:lr-tb;text-anchor:start">A(n) holds for n=3</tspan></text>
+  <text
+     style="font-style:normal;font-weight:normal;font-size:14.73569965px;line-height:125%;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"
+     id="text3253"
+     y="279.94034"
+     x="40.35207"
+     sodipodi:linespacing="125%"><tspan
+       id="tspan3255"
+       y="279.94034"
+       x="40.35207"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:start;writing-mode:lr-tb;text-anchor:start">A(n) holds for n=4</tspan></text>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.16747727px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="path3146"
+     d="m 40.66025,244.86014 -3.64476,12.31468 -3.64573,-12.30804 1.82262,-0.002 -9.8e-4,-24.62269 3.64524,-0.003 9.9e-4,24.62269 1.82262,-0.002 z" />
+  <text
+     style="font-style:normal;font-weight:normal;font-size:14.55956841px;line-height:125%;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"
+     id="text3148"
+     transform="scale(1.0120974,0.9880472)"
+     y="245.61139"
+     x="42.799145"
+     sodipodi:linespacing="125%"><tspan
+       id="tspan3150"
+       y="245.61139"
+       x="42.799145"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:start;writing-mode:lr-tb;text-anchor:start">induction step</tspan></text>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.16747727px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="path3138"
+     d="m 40.66025,171.22694 -3.64476,12.31468 -3.64573,-12.30804 1.82262,-0.002 -9.8e-4,-24.62269 3.64524,-0.003 9.9e-4,24.62269 1.82262,-0.002 z" />
+  <text
+     style="font-style:normal;font-weight:normal;font-size:14.55956841px;line-height:125%;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"
+     id="text3140"
+     transform="scale(1.0120974,0.9880472)"
+     y="171.08742"
+     x="42.799145"
+     sodipodi:linespacing="125%"><tspan
+       id="tspan3142"
+       y="171.08742"
+       x="42.799145"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:start;writing-mode:lr-tb;text-anchor:start">induction step</tspan></text>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.16747727px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     id="path3130"
+     d="m 40.66025,97.74046 -3.64476,12.31468 -3.64573,-12.30804 1.82262,-0.002 -9.8e-4,-24.62269 3.64524,-0.003 9.9e-4,24.62269 1.82262,-0.002 z" />
+  <text
+     style="font-style:normal;font-weight:normal;font-size:14.55956841px;line-height:125%;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"
+     id="text3132"
+     transform="scale(1.0120974,0.9880472)"
+     y="96.711952"
+     x="42.799145"
+     sodipodi:linespacing="125%"><tspan
+       id="tspan3134"
+       y="96.711952"
+       x="42.799145"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans';text-align:start;writing-mode:lr-tb;text-anchor:start">induction step</tspan></text>
+  <use
+     xlink:href="#path3307"
+     height="376.64868"
+     width="200"
+     y="0"
+     x="0"
+     id="use7614"
+     transform="translate(0,14.72623)" />
+  <use
+     xlink:href="#path3307"
+     height="376.64868"
+     width="200"
+     y="0"
+     x="0"
+     id="use7616"
+     transform="translate(0,29.481261)" />
+</svg>

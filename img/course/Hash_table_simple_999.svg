@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">  
+<!-- Created with Emacs from Inkscape original -->
+<!-- Last edited on 2009-04-02 05:51:32 by stolfilocal -->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="290"
+  height="300"
+  id="fig"
+  pagecolor="#ffff00"
+  pageopacity="0.0">
+
+  <defs>
+    <!-- Dot at start of pointer arrow: -->
+    <marker id="ptdot" viewBox="-3 -3 6 6" markerWidth="6" markerHeight="6" orient="auto">
+      <circle  cx="0" cy="0" r="3"/>
+    </marker>
+
+    <!-- Arrow tip: -->
+    <marker id="arrowtip" viewBox="-16 -4 16 8" markerWidth="16" markerHeight="8" orient="auto">
+      <polygon points = "-16,0  -16,-4  0,0  -16,+4"/>
+    </marker>
+    
+    <!-- Box for key string: -->
+    <rect id="keybox"   y="0" x="0" width="90" height="20" fill="#00ffff" stroke="#000000" />
+    
+    <!-- background for hash value: -->
+    <rect id="hashbox" x="1" y="1" width="30" height="18" fill="#ffee99" stroke="none" />
+    
+    <!-- Vertical dots: -->
+    <g id="vdots">
+      <rect x="0" y="06" width="2" height="2" />
+      <rect x="0" y="12" width="2" height="2" />
+    </g>
+    
+    <!-- Key-Value table: -->
+    <g id="entrybox" fill="#9cff9c" stroke="#000000">
+      <rect x="000" y="0" width="080" height="20" />
+    </g>
+ </defs>
+ 
+  <!-- Rectangle to test the figure size -->
+  <!-- <rect x="000" y="000" width="480" height="300" fill="#ffcc55" /> -->
+   
+  <g
+    stroke-linecap="round"
+    fill-opacity="1"
+    fill-rule="evenodd"
+    stroke="#000000"
+    stroke-linejoin="round"
+    stroke-opacity="1"
+    font-family="Bitstream Courier"
+    font-style="normal"
+    font-weight="normal"
+    font-size="12px"
+    transform="scale(1.0) translate(10,040)"
+  >
+
+    <!-- Keys -->
+    <g transform="translate(000,000)" text-anchor="middle">
+
+      <text x="45" y="-15" font-size="18px" font-weight="bold" fill="#000000" stroke="none">
+        Keys
+      </text>
+
+      <g transform="translate(0,060)">
+        <use xlink:href="#keybox" /> 
+        <text x="45" y="14" stroke="none">John Smith</text>
+      </g>
+      <g transform="translate(0,110)"> 
+        <use xlink:href="#keybox" /> 
+        <text x="45" y="14" stroke="none">Lisa Smith</text>
+      </g>
+      <g transform="translate(0,160)"> 
+        <use xlink:href="#keybox" /> 
+        <text x="45" y="14" stroke="none">Sam Doe</text>
+      </g>
+    </g>
+
+    <!-- Key-Value records -->
+    <g transform="translate(150,000)" fill="#000000" stroke="none">
+
+      <text x="+75" y="-15" text-anchor="middle" font-size="18px" font-weight="bold" fill="#000000" stroke="none">
+        Values
+      </text>
+
+      <g transform="translate(000,000)">
+        <use  xlink:href="#hashbox" />
+        <text x="002" y="14">000</text>
+        <use x="35" xlink:href="#entrybox" />
+      </g>
+      <g transform="translate(000,020)">
+        <use  xlink:href="#hashbox" />
+        <text x="002" y="14">001</text>
+        <use x="35" xlink:href="#entrybox" />
+        <text x="075" y="14" text-anchor="middle" stroke="none">521-8976</text>
+      </g>
+      <g transform="translate(000,040)">
+        <use  xlink:href="#hashbox" />
+        <text x="002" y="14">000</text>
+        <use x="35" xlink:href="#entrybox" />
+      </g>
+      <g transform="translate(000,060)">
+        <use x="019" y="00" xlink:href="#vdots" />
+        <use x="44" fill="#000000" stroke="none" xlink:href="#vdots" />
+      </g>
+      <g transform="translate(000,080)">
+        <use  xlink:href="#hashbox" />
+        <text x="002" y="14">872</text>
+        <use x="35" xlink:href="#entrybox" />
+      </g>
+      <g transform="translate(000,100)">
+        <use  xlink:href="#hashbox" />
+        <text x="002" y="14">873</text>
+        <use x="35" xlink:href="#entrybox" />
+        <text x="075" y="14" text-anchor="middle" stroke="none">521-1234</text>
+      </g>
+      <g transform="translate(000,120)">
+        <use  xlink:href="#hashbox" />
+        <text x="002" y="14">874</text>
+        <use x="35" xlink:href="#entrybox" />
+      </g>
+      <g transform="translate(000,140)">
+        <use  xlink:href="#hashbox" />
+        <text x="002" y="14">872</text>
+        <use x="35" xlink:href="#entrybox" />
+      </g>
+      <g transform="translate(000,160)">
+        <use  x="019" y="00" xlink:href="#vdots" />
+        <use x="44" fill="#000000" stroke="none" xlink:href="#vdots" />
+      </g>
+      <g transform="translate(000,180)">
+        <use  xlink:href="#hashbox" />
+        <text x="002" y="14">872</text>
+        <use x="35" xlink:href="#entrybox" />
+      </g>
+      <g transform="translate(000,200)">
+        <use  xlink:href="#hashbox" />
+        <text x="002" y="14">998</text>
+        <use x="35" xlink:href="#entrybox" />
+        <text x="075" y="14" text-anchor="middle" stroke="none">521-5030</text>
+      </g>
+      <g transform="translate(000,220)">
+        <use  xlink:href="#hashbox" />
+        <text x="002" y="14">999</text>
+        <use x="35" xlink:href="#entrybox" />
+      </g>
+    </g>
+
+    <!-- Hash function arrows -->
+    <g transform="translate(090,000)" stroke="#000000">
+      <g transform="translate(0,060)">
+        <line x1="00" y1="10" x2="060" y2="+050" marker-end="url(#arrowtip)" />
+      </g>
+      <g transform="translate(0,110)"> 
+        <line x1="00" y1="10" x2="060" y2="-080" marker-end="url(#arrowtip)" />
+      </g>
+      <g transform="translate(0,160)"> 
+        <line x1="00" y1="10" x2="060" y2="+050" marker-end="url(#arrowtip)" />
+      </g>
+    </g>
+  </g>
+</svg>

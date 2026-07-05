@@ -1,0 +1,856 @@
+/**
+ * Textbook lesson styling — inspired by Jurafsky & Martin SLP3
+ * Clean academic typography, numbered sections, minimal decoration.
+ */
+
+/* ── Lesson shell ─────────────────────────────────────────────── */
+
+.textbook-lesson {
+  --tb-text: #1a1a1a;
+  --tb-muted: #4a4a4a;
+  --tb-border: #c8c8c8;
+  --tb-accent: #2c5282;
+  --tb-bg-subtle: #f7f7f5;
+  --tb-serif: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --tb-sans: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  counter-reset: tb-section tb-subsection tb-example tb-equation tb-figure;
+  font-family: var(--tb-serif);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--tb-text);
+  max-width: 42rem;
+  margin: 0 auto;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.textbook-lesson .textbook-body {
+  margin-top: 1.5rem;
+}
+
+/* Hide duplicate in-body H1 when layout provides the title */
+.textbook-lesson .textbook-body > h1:first-child {
+  display: none;
+}
+
+/* ── Chapter / lesson header (SLP3 "CHAPTER N Title") ───────── */
+
+.textbook-chapter-header {
+  text-align: left;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--tb-border);
+}
+
+.textbook-chapter-label {
+  font-family: var(--tb-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tb-muted);
+  margin: 0 0 0.35rem;
+}
+
+.textbook-lesson-title {
+  font-family: var(--tb-sans);
+  font-size: 1.85rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--tb-text);
+  margin: 0;
+  text-align: left;
+}
+
+.textbook-lesson .post-title {
+  display: none;
+}
+
+/* ── Epigraph (opening quote) ─────────────────────────────────── */
+
+.textbook-epigraph {
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--tb-muted);
+  margin: 0 0 1.75rem;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid var(--tb-border);
+  text-align: left;
+}
+
+.textbook-epigraph cite,
+.textbook-epigraph .epigraph-attribution {
+  display: block;
+  font-style: normal;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: var(--tb-muted);
+}
+
+/* ── Lead paragraph ───────────────────────────────────────────── */
+
+.textbook-lead,
+.textbook-body > p:first-of-type {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Section numbering: C.L.S and C.L.S.T ───────────────────── */
+
+.textbook-lesson .textbook-body h2 {
+  font-family: var(--tb-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--tb-text);
+  margin: 2.25rem 0 1rem;
+  padding: 0;
+  border: none;
+  text-align: left;
+  counter-increment: tb-section;
+  counter-reset: tb-subsection tb-example;
+}
+
+.textbook-lesson .textbook-body h2::before {
+  content: var(--tb-prefix) counter(tb-section) " ";
+  font-variant-numeric: tabular-nums;
+}
+
+.textbook-lesson .textbook-body h3 {
+  font-family: var(--tb-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--tb-text);
+  margin: 1.75rem 0 0.75rem;
+  text-align: left;
+  counter-increment: tb-subsection;
+}
+
+.textbook-lesson .textbook-body h3::before {
+  content: var(--tb-prefix) counter(tb-section) "." counter(tb-subsection) " ";
+  font-variant-numeric: tabular-nums;
+}
+
+.textbook-lesson .textbook-body h4 {
+  font-family: var(--tb-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.5rem;
+  text-align: left;
+}
+
+/* Learning objectives — subdued textbook sidebar note */
+.textbook-lesson .textbook-body h2#muc-tieu-hoc-tap,
+.textbook-lesson .textbook-body h2:first-of-type {
+  /* first h2 still gets numbered */
+}
+
+.textbook-objectives {
+  background: var(--tb-bg-subtle);
+  border: 1px solid var(--tb-border);
+  padding: 1rem 1.25rem;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.98rem;
+  text-align: left;
+}
+
+.textbook-objectives strong {
+  font-family: var(--tb-sans);
+  font-weight: 600;
+}
+
+/* ── Definitions, theorems, examples (SLP3 formal blocks) ─────── */
+
+.textbook-definition,
+.textbook-theorem,
+.textbook-lemma {
+  margin: 1.25rem 0;
+  padding: 0;
+  text-align: left;
+}
+
+.textbook-definition > strong:first-child,
+.textbook-theorem > strong:first-child,
+.textbook-lemma > strong:first-child {
+  font-family: var(--tb-sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.textbook-example {
+  margin: 1.25rem 0;
+  padding-left: 0;
+  text-align: left;
+  counter-increment: tb-example;
+}
+
+.textbook-example::before {
+  content: "(" var(--tb-prefix) counter(tb-example) ") ";
+  font-family: var(--tb-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.textbook-example > strong:first-child {
+  font-family: var(--tb-sans);
+  font-weight: 600;
+}
+
+/* ── Content boxes → textbook marginal notes ──────────────────── */
+
+.textbook-lesson .content-box,
+.textbook-lesson .textbook-block {
+  background: var(--tb-bg-subtle);
+  border: 1px solid var(--tb-border);
+  border-left: 3px solid var(--tb-muted);
+  border-radius: 0;
+  padding: 0.85rem 1.1rem;
+  margin: 1.25rem 0;
+  font-size: 0.98rem;
+  text-align: left;
+}
+
+.textbook-lesson .insight-box,
+.textbook-lesson .example-box,
+.textbook-lesson .exercise-box,
+.textbook-lesson .summary-box,
+.textbook-lesson .warning-box,
+.textbook-lesson .info-box,
+.textbook-lesson .note-box,
+.textbook-lesson .question-box {
+  background: var(--tb-bg-subtle);
+  border-left-color: var(--tb-muted);
+}
+
+.textbook-lesson .content-box strong {
+  font-family: var(--tb-sans);
+  color: var(--tb-text);
+}
+
+/* ── Figures (SLP3 "Figure C.L caption") ──────────────────────── */
+
+.textbook-lesson figure,
+.textbook-lesson .image {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.textbook-lesson figure img,
+.textbook-lesson .image img {
+  margin: 0 auto;
+  border-radius: 0;
+  max-width: 100%;
+}
+
+.textbook-lesson figcaption,
+.textbook-lesson .textbook-figure-caption,
+.textbook-lesson em:has(+ img),
+.textbook-lesson p > em:only-child {
+  font-family: var(--tb-sans);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--tb-muted);
+  text-align: center;
+  margin-top: 0.5rem;
+  font-style: normal;
+}
+
+.textbook-lesson figcaption::before {
+  content: "Hình " counter(tb-figure) ": ";
+  font-weight: 600;
+}
+
+.textbook-figure-caption::before {
+  content: "Hình ";
+  font-weight: 600;
+}
+
+.textbook-lesson figure {
+  counter-increment: tb-figure;
+}
+
+/* ── Equations (SLP3 numbered display math) ───────────────────── */
+
+.textbook-lesson .MathJax {
+  padding: 0.5rem 0;
+  overflow-x: auto;
+}
+
+.textbook-equation {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.25rem 0;
+  counter-increment: tb-equation;
+}
+
+.textbook-equation > .MathJax,
+.textbook-equation > mjx-container,
+.textbook-equation > p {
+  grid-column: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.textbook-equation > p:only-child {
+  grid-column: 1 / -1;
+}
+
+.textbook-equation-number {
+  grid-column: 2;
+  align-self: center;
+  font-family: var(--tb-sans);
+  font-size: 0.9rem;
+  color: var(--tb-muted);
+  white-space: nowrap;
+  min-width: 3.25rem;
+  text-align: right;
+}
+
+.textbook-equation-number::before {
+  content: "(" var(--tb-prefix) counter(tb-equation) ")";
+}
+
+/* ── Tables ─────────────────────────────────────────────────────── */
+
+.textbook-lesson table {
+  font-family: var(--tb-sans);
+  font-size: 0.92rem;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  width: 100%;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.textbook-lesson table th {
+  background: var(--tb-bg-subtle);
+  color: var(--tb-text);
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--tb-border);
+}
+
+.textbook-lesson table td {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--tb-border);
+}
+
+.textbook-lesson table tr:nth-child(even) {
+  background: transparent;
+}
+
+.textbook-lesson table tr:hover {
+  background: var(--tb-bg-subtle);
+}
+
+/* ── Code ─────────────────────────────────────────────────────── */
+
+.textbook-lesson code {
+  font-family: "SF Mono", "Consolas", "Liberation Mono", Menlo, monospace;
+  font-size: 0.88em;
+  background: var(--tb-bg-subtle);
+  border: 1px solid #e2e2e2;
+  border-radius: 2px;
+  padding: 0.1em 0.35em;
+}
+
+.textbook-lesson pre {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  background: #f4f4f2;
+  border: 1px solid var(--tb-border);
+  border-radius: 0;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.textbook-lesson pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* ── Blockquotes & footnotes ──────────────────────────────────── */
+
+.textbook-lesson blockquote {
+  margin: 1.25rem 0;
+  padding: 0.5rem 0 0.5rem 1rem;
+  border-left: 2px solid var(--tb-border);
+  color: var(--tb-muted);
+  font-style: italic;
+}
+
+.textbook-footnote {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--tb-muted);
+  border-top: 1px solid var(--tb-border);
+  margin-top: 2rem;
+  padding-top: 0.75rem;
+}
+
+/* ── Exercises (end-of-section style) ─────────────────────────── */
+
+.textbook-lesson details {
+  border: 1px solid var(--tb-border);
+  margin: 0.75rem 0 1.25rem;
+  padding: 0;
+  background: var(--tb-bg-subtle);
+}
+
+.textbook-lesson details summary {
+  font-family: var(--tb-sans);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.textbook-lesson details summary::before {
+  content: "▸ ";
+}
+
+.textbook-lesson details[open] summary::before {
+  content: "▾ ";
+}
+
+.textbook-lesson details > *:not(summary) {
+  padding: 0 1rem 1rem;
+  text-align: left;
+}
+
+/* ── Links ────────────────────────────────────────────────────── */
+
+.textbook-lesson a {
+  color: var(--tb-accent);
+  text-decoration: none;
+}
+
+.textbook-lesson a:hover {
+  text-decoration: underline;
+}
+
+/* ── Index terms (SLP3 margin vocabulary) ─────────────────────── */
+
+.textbook-term {
+  font-weight: 600;
+  font-variant: small-caps;
+  letter-spacing: 0.03em;
+}
+
+/* ── Navigation & meta outside lesson column ────────────────────── */
+
+.textbook-lesson ~ .related,
+.textbook-lesson ~ div[style*="border-left"] {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Print ────────────────────────────────────────────────────── */
+
+@media print {
+  .textbook-lesson {
+    max-width: none;
+    font-size: 11pt;
+  }
+
+  .textbook-lesson details {
+    border: none;
+    background: transparent;
+  }
+
+  .textbook-lesson details summary {
+    display: none;
+  }
+
+  .textbook-lesson details > *:not(summary) {
+    padding: 0;
+  }
+}
+
+/* ── Chapter index pages (SLP3 "CHAPTER N") ───────────────────── */
+
+.textbook-chapter-page {
+  --tb-text: #1a1a1a;
+  --tb-muted: #4a4a4a;
+  --tb-border: #c8c8c8;
+  --tb-accent: #2c5282;
+  --tb-bg-subtle: #f7f7f5;
+  --tb-serif: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --tb-sans: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-family: var(--tb-serif);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--tb-text);
+  max-width: 42rem;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.textbook-chapter-page .textbook-chapter-header {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--tb-border);
+}
+
+.textbook-chapter-page .textbook-chapter-title {
+  font-family: var(--tb-sans);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.35rem;
+}
+
+.textbook-chapter-subtitle {
+  font-family: var(--tb-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--tb-muted);
+  margin: 0;
+  font-style: italic;
+}
+
+.textbook-chapter-page .textbook-epigraph {
+  margin-bottom: 1.5rem;
+}
+
+.textbook-chapter-overview {
+  margin: 0 0 2rem;
+  text-align: justify;
+  line-height: 1.7;
+}
+
+.textbook-chapter-empty {
+  background: var(--tb-bg-subtle);
+  border: 1px solid var(--tb-border);
+  padding: 1rem 1.25rem;
+  font-size: 0.98rem;
+}
+
+.textbook-toc-heading {
+  font-family: var(--tb-sans);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--tb-border);
+}
+
+.textbook-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: tb-toc;
+}
+
+.textbook-toc-item {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 0.75rem 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--tb-border);
+  align-items: start;
+}
+
+.textbook-toc-item:last-child {
+  border-bottom: none;
+}
+
+.textbook-toc-number {
+  font-family: var(--tb-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--tb-muted);
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.1rem;
+}
+
+.textbook-toc-link {
+  font-family: var(--tb-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--tb-accent);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.textbook-toc-link:hover {
+  text-decoration: underline;
+}
+
+.textbook-toc-excerpt {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--tb-muted);
+  margin: 0 0 0.4rem;
+}
+
+.textbook-toc-badge {
+  display: inline-block;
+  font-family: var(--tb-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--tb-border);
+  color: var(--tb-muted);
+}
+
+.textbook-toc-badge.required {
+  border-color: #9a3412;
+  color: #9a3412;
+}
+
+.textbook-toc-badge.optional {
+  border-color: var(--tb-muted);
+  color: var(--tb-muted);
+}
+
+/* Hide legacy chapter intro on converted pages */
+.textbook-chapter-page .chapter-intro,
+.textbook-chapter-page .post-preview {
+  display: none;
+}
+
+/* ── Home page (same typography as chapter index) ─────────────── */
+
+.textbook-home-page {
+  --tb-text: #1a1a1a;
+  --tb-muted: #4a4a4a;
+  --tb-border: #c8c8c8;
+  --tb-accent: #2c5282;
+  --tb-bg-subtle: #f7f7f5;
+  --tb-serif: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --tb-sans: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-family: var(--tb-serif);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--tb-text);
+  max-width: 42rem;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Override github-markdown.css on .wrap.github-md-body */
+.github-md-body .textbook-home-page,
+.github-md-body .textbook-home-page .textbook-home-body {
+  font-family: var(--tb-serif);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--tb-text);
+}
+
+.github-md-body .textbook-home-page h2,
+.github-md-body .textbook-home-page h3,
+.github-md-body .textbook-home-page h4 {
+  font-family: var(--tb-sans);
+  color: var(--tb-text);
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.github-md-body .textbook-home-page h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 2.25rem 0 1rem;
+}
+
+.github-md-body .textbook-home-page h3 {
+  font-size: 1.05rem;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.github-md-body .textbook-home-page table tr:nth-child(2n) {
+  background: transparent;
+}
+
+.github-md-body .textbook-home-page table th,
+.github-md-body .textbook-home-page table td {
+  border: 1px solid var(--tb-border);
+}
+
+.textbook-home-page .textbook-epigraph {
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--tb-muted);
+  margin: 0 0 1.75rem;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid var(--tb-border);
+  text-align: left;
+}
+
+.textbook-home-page .textbook-epigraph .epigraph-attribution {
+  display: block;
+  font-style: normal;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: var(--tb-muted);
+}
+
+.textbook-home-page .textbook-chapter-header {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--tb-border);
+}
+
+.textbook-home-body {
+  text-align: justify;
+  line-height: 1.7;
+}
+
+.textbook-home-body > p:first-of-type {
+  font-size: 1.05rem;
+  margin-bottom: 1.25rem;
+}
+
+.textbook-home-body h2 {
+  font-family: var(--tb-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--tb-text);
+  margin: 2.25rem 0 1rem;
+  padding: 0;
+  border: none;
+}
+
+.textbook-home-body h3 {
+  font-family: var(--tb-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.textbook-home-body .textbook-epigraph {
+  margin-bottom: 1.5rem;
+}
+
+.textbook-home-body .textbook-objectives,
+.textbook-home-body .textbook-definition,
+.textbook-home-body .textbook-home-topic,
+.textbook-home-body .content-box,
+.textbook-home-body .note-box {
+  background: var(--tb-bg-subtle);
+  border: 1px solid var(--tb-border);
+  border-left: 3px solid var(--tb-muted);
+  border-radius: 0;
+  padding: 0.85rem 1.1rem;
+  margin: 1.25rem 0;
+  font-size: 0.98rem;
+  text-align: left;
+}
+
+.textbook-home-body .textbook-definition {
+  border-left-color: var(--tb-accent);
+}
+
+.textbook-home-body .textbook-home-topic strong {
+  font-family: var(--tb-sans);
+  font-weight: 600;
+}
+
+.textbook-home-body .textbook-home-topic p {
+  margin: 0 0 0.5rem;
+}
+
+.textbook-home-body .textbook-home-topic p:last-child {
+  margin-bottom: 0;
+}
+
+.textbook-home-body table {
+  font-family: var(--tb-sans);
+  font-size: 0.92rem;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  width: 100%;
+}
+
+.textbook-home-body table th {
+  background: var(--tb-bg-subtle);
+  color: var(--tb-text);
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--tb-border);
+  text-align: left;
+}
+
+.textbook-home-body table td {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--tb-border);
+  vertical-align: top;
+}
+
+.textbook-home-body ul,
+.textbook-home-body ol {
+  margin: 0.75rem 0 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.textbook-home-body li {
+  margin-bottom: 0.35rem;
+}
+
+.textbook-home-body a {
+  color: var(--tb-accent);
+  text-decoration: none;
+}
+
+.textbook-home-body a:hover {
+  text-decoration: underline;
+}
+
+.textbook-home-toc {
+  margin-top: 2.5rem;
+  padding-top: 0.5rem;
+}
+
+/* Hide duplicate markdown H1 when layout provides title */
+.textbook-home-body > h1:first-child {
+  display: none;
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .textbook-home-page {
+    padding: 0 0.25rem;
+  }
+
+  .textbook-home-body {
+    text-align: left;
+  }
+
+  .textbook-lesson {
+    font-size: 1rem;
+    text-align: left;
+    hyphens: none;
+    padding: 0 0.25rem;
+  }
+
+  .textbook-lesson-title {
+    font-size: 1.5rem;
+  }
+
+  .textbook-chapter-page {
+    padding: 0 0.25rem;
+  }
+
+  .textbook-chapter-page .textbook-chapter-title {
+    font-size: 1.6rem;
+  }
+
+  .textbook-toc-item {
+    grid-template-columns: 2.75rem 1fr;
+  }
+}

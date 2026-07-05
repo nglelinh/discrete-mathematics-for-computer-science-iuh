@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="SQL query">
+  <rect width="520" height="200" fill="#fafbfc"/>
+
+  <rect width="520" height="200" rx="10" fill="#1e293b"/>
+  <rect x="0" y="0" width="520" height="32" rx="10" fill="#0f172a"/>
+  <circle cx="18" cy="16" r="5" fill="#ef4444"/><circle cx="36" cy="16" r="5" fill="#eab308"/><circle cx="54" cy="16" r="5" fill="#22c55e"/>
+  <text x="260" y="20" text-anchor="middle" font-size="11" fill="#94a3b8">SQL — Predicate logic</text>
+  <text x="24" y="62" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#93c5fd">SELECT s.name, c.title</text>
+  <text x="24" y="86" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#93c5fd">FROM Students s</text>
+  <text x="24" y="110" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#93c5fd">JOIN Enrollments e ON s.id = e.student_id</text>
+  <text x="24" y="134" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#93c5fd">WHERE e.grade &gt;= 5;</text>
+  <text x="24" y="170" font-size="11" fill="#64748b">∃x · ∀y — lọc theo điều kiện lượng từ</text>
+</svg>

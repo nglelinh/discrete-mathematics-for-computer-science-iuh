@@ -1,0 +1,66 @@
+---
+layout: default
+---
+
+{% assign ch_key = page.chapter | append: "" %}
+{% assign ch_meta = site.data.chapters[ch_key] %}
+{% assign epigraph = site.data.textbook_epigraphs[ch_key] %}
+{% assign cat_name = ch_meta.slug %}
+{% assign cat_posts = site.categories[cat_name] %}
+{% if cat_posts and cat_posts.size > 0 %}
+  {% assign sorted_posts = cat_posts | sort: "order" %}
+{% else %}
+  {% assign sorted_posts = "" | split: "|" %}
+{% endif %}
+
+<article class="textbook-chapter-page">
+  <header class="textbook-chapter-header">
+    <p class="textbook-chapter-label">Chương {{ page.chapter }}</p>
+    <h1 class="textbook-chapter-title">{{ ch_meta.title_vn }}</h1>
+    {% if ch_meta.title_en %}
+      <p class="textbook-chapter-subtitle">{{ ch_meta.title_en }}</p>
+    {% endif %}
+  </header>
+
+  {% if epigraph %}
+  <div class="textbook-epigraph" markdown="1">
+    "{{ epigraph.quote }}"
+    <span class="epigraph-attribution">— {{ epigraph.attribution }}</span>
+  </div>
+  {% endif %}
+
+  <div class="textbook-chapter-overview" markdown="1">
+    {{ ch_meta.summary }}
+  </div>
+
+  {% unless ch_meta.empty %}
+  <section class="textbook-toc">
+    <h2 class="textbook-toc-heading">Nội dung chương</h2>
+    <ol class="textbook-toc-list">
+      {% for post in sorted_posts %}
+        {% if post.order == 0 or post.order %}
+        <li class="textbook-toc-item">
+          <span class="textbook-toc-number">{{ page.chapter }}.{{ post.order }}</span>
+          <div class="textbook-toc-body">
+            <a class="textbook-toc-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            {% assign toc_excerpt = post.excerpt | strip_html | strip_newlines | strip %}
+            {% if toc_excerpt != "" %}
+              <p class="textbook-toc-excerpt">{{ toc_excerpt | truncate: 160 }}</p>
+            {% endif %}
+            <span class="textbook-toc-badge {% if post.required %}required{% else %}optional{% endif %}">
+              {% if post.required %}Bắt buộc{% else %}Tùy chọn{% endif %}
+            </span>
+          </div>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+  </section>
+  {% else %}
+  <div class="textbook-chapter-empty" markdown="1">
+    **Lưu ý.** Chương này chưa có bài học được xuất bản. Nội dung sẽ được bổ sung trong các phiên bản sau của giáo trình.
+  </div>
+  {% endunless %}
+
+  {{ content }}
+</article>

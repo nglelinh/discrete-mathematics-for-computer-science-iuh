@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="-7 -132 240 320">
+ <title>permutation count calculation</title>
+ <desc>Calculating the number of permutations of four unique objects using factorials by CMG Lee.</desc>
+ <style type="text/css">
+svg  { font-family:'Liberation Sans',Helvetica,Arial,sans-serif; font-weight:bold; font-size:7px; text-anchor:middle; fill:none; stroke:#666; stroke-width:0.7; marker-end:url(#marker_end); }
+text { fill:#000; stroke:none; }
+.dot { stroke-dasharray:6,4; marker-end:none; }
+.on  { fill-opacity:1; }
+ </style>
+ <defs>
+  <filter id="filter_blur"><feGaussianBlur stdDeviation="4"/></filter>
+  <radialGradient id="grad_sphere" cx="50%" cy="50%" r="50%" fx="50%" fy="90%">
+   <stop offset="0%"  stop-color="#000" stop-opacity="0"/>
+   <stop offset="99%" stop-color="#000" stop-opacity="0.3"/>
+  </radialGradient>
+  <linearGradient id="grad_highlight" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="10%" stop-color="#fff" stop-opacity="0.9"/>
+   <stop offset="99%" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
+  <g id="orb" transform="scale(0.04)">
+   <circle  cx="0" cy="0" r="100"/>
+   <circle  cx="0" cy="0" r="100" fill="url(#grad_sphere)"/>
+   <ellipse cx="0" cy="-45" rx="70" ry="50" fill="url(#grad_highlight)" stroke="none" filter="url(#filter_blur)"/>
+  </g>
+  <g id="a"><use xlink:href="#orb" fill="#f69"/><text y="0.7ex">A</text></g>
+  <g id="b"><use xlink:href="#orb" fill="#fc0"/><text y="0.7ex">B</text></g>
+  <g id="c"><use xlink:href="#orb" fill="#0c9"/><text y="0.7ex">C</text></g>
+  <g id="d"><use xlink:href="#orb" fill="#69f"/><text y="0.7ex">D</text></g>
+  <linearGradient id="grad_blank" x1="0%" y1="0%" x2="0%" y2="100%">
+   <stop offset="0%"  stop-color="#bbb"/>
+   <stop offset="90%" stop-color="#eee"/>
+  </linearGradient>
+  <marker id="marker_end" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+   <path d="M 0,2 Q 4,4 8,4 Q 4,4 0,6" marker-end="none"/>
+  </marker>
+  <pattern id="pattern_3" patternUnits="userSpaceOnUse" width="26" height="62">
+   <path d="M 1,31 l 15, 18"/>
+   <path d="M 1,31 l 15,-18"/>
+   <path d="M 1,31 h 15"/>
+  </pattern>
+  <pattern id="pattern_2" patternUnits="userSpaceOnUse" width="26" height="20.5">
+   <path d="M 1,10.5 l 13, 5"/>
+   <path d="M 1,10.5 l 13,-5"/>
+  </pattern>
+  <pattern id="pattern_1" patternUnits="userSpaceOnUse" width="15" height="10.3">
+   <path d="M 1,5 h 13"/>
+  </pattern>
+ </defs>
+ <circle cx="0" cy="0" r="99999" fill="#fff"/>
+ <path id="_" d="M 4,0 a 4,4 0 1 0 0,0.01 M 12,0 a 4,4 0 1 0 0,0.01 M 20,0 a 4,4 0 1 0 0,0.01 M 28,0 a 4,4 0 1 0 0,0.01" fill="url(#grad_blank)" stroke="#ccc" marker-end="none"/>
+ <g transform="translate(50,0)">
+  <g transform="translate(0,-94)"><g id="a_" ><use xlink:href="#_" /><use xlink:href="#a"/></g></g>
+  <g transform="translate(0,-32)"><g id="b_" ><use xlink:href="#_" /><use xlink:href="#b"/></g></g>
+  <g transform="translate(0, 32)"><g id="c_" ><use xlink:href="#_" /><use xlink:href="#c"/></g></g>
+  <g transform="translate(0, 94)"><g id="d_" ><use xlink:href="#_" /><use xlink:href="#d"/></g></g>
+ </g>
+ <g transform="translate(100,0)">
+  <g transform="translate(0,-114)"><g id="ab" ><use xlink:href="#a_"/><use xlink:href="#b" transform="translate(8,0)"/></g></g>
+  <g transform="translate(0, -94)"><g id="ac" ><use xlink:href="#a_"/><use xlink:href="#c" transform="translate(8,0)"/></g></g>
+  <g transform="translate(0, -74)"><g id="ad" ><use xlink:href="#a_"/><use xlink:href="#d" transform="translate(8,0)"/></g></g>
+  <g transform="translate(0, -52)"><g id="ba" ><use xlink:href="#b_"/><use xlink:href="#a" transform="translate(8,0)"/></g></g>
+  <g transform="translate(0, -32)"><g id="bc" ><use xlink:href="#b_"/><use xlink:href="#c" transform="translate(8,0)"/></g></g>
+  <g transform="translate(0, -12)"><g id="bd" ><use xlink:href="#b_"/><use xlink:href="#d" transform="translate(8,0)"/></g></g>
+  <g transform="translate(0,  12)"><g id="ca" ><use xlink:href="#c_"/><use xlink:href="#a" transform="translate(8,0)"/></g></g>
+  <g transform="translate(0,  32)"><g id="cb" ><use xlink:href="#c_"/><use xlink:href="#b" transform="translate(8,0)"/></g></g>
+  <g transform="translate(0,  52)"><g id="cd" ><use xlink:href="#c_"/><use xlink:href="#d" transform="translate(8,0)"/></g></g>
+  <g transform="translate(0,  74)"><g id="da" ><use xlink:href="#d_"/><use xlink:href="#a" transform="translate(8,0)"/></g></g>
+  <g transform="translate(0,  94)"><g id="db" ><use xlink:href="#d_"/><use xlink:href="#b" transform="translate(8,0)"/></g></g>
+  <g transform="translate(0, 114)"><g id="dc" ><use xlink:href="#d_"/><use xlink:href="#c" transform="translate(8,0)"/></g></g>
+ </g>
+ <use xlink:href="#common" transform="translate(-50,0)" fill-opacity="0"/>
+ <g id="common" transform="translate(200,0)">
+  <g transform="translate(0,-118)"><g class="on"><use xlink:href="#ab"/><use xlink:href="#c" transform="translate(16,0)"/></g><use xlink:href="#d" transform="translate(24,0)"/></g>
+  <g transform="translate(0,-109)"><g class="on"><use xlink:href="#ab"/><use xlink:href="#d" transform="translate(16,0)"/></g><use xlink:href="#c" transform="translate(24,0)"/></g>
+  <g transform="translate(0, -98)"><g class="on"><use xlink:href="#ac"/><use xlink:href="#b" transform="translate(16,0)"/></g><use xlink:href="#d" transform="translate(24,0)"/></g>
+  <g transform="translate(0, -89)"><g class="on"><use xlink:href="#ac"/><use xlink:href="#d" transform="translate(16,0)"/></g><use xlink:href="#b" transform="translate(24,0)"/></g>
+  <g transform="translate(0, -78)"><g class="on"><use xlink:href="#ad"/><use xlink:href="#b" transform="translate(16,0)"/></g><use xlink:href="#c" transform="translate(24,0)"/></g>
+  <g transform="translate(0, -69)"><g class="on"><use xlink:href="#ad"/><use xlink:href="#c" transform="translate(16,0)"/></g><use xlink:href="#b" transform="translate(24,0)"/></g>
+  <g transform="translate(0, -56)"><g class="on"><use xlink:href="#ba"/><use xlink:href="#c" transform="translate(16,0)"/></g><use xlink:href="#d" transform="translate(24,0)"/></g>
+  <g transform="translate(0, -47)"><g class="on"><use xlink:href="#ba"/><use xlink:href="#d" transform="translate(16,0)"/></g><use xlink:href="#c" transform="translate(24,0)"/></g>
+  <g transform="translate(0, -36)"><g class="on"><use xlink:href="#bc"/><use xlink:href="#a" transform="translate(16,0)"/></g><use xlink:href="#d" transform="translate(24,0)"/></g>
+  <g transform="translate(0, -27)"><g class="on"><use xlink:href="#bc"/><use xlink:href="#d" transform="translate(16,0)"/></g><use xlink:href="#a" transform="translate(24,0)"/></g>
+  <g transform="translate(0, -16)"><g class="on"><use xlink:href="#bd"/><use xlink:href="#a" transform="translate(16,0)"/></g><use xlink:href="#c" transform="translate(24,0)"/></g>
+  <g transform="translate(0,  -7)"><g class="on"><use xlink:href="#bd"/><use xlink:href="#c" transform="translate(16,0)"/></g><use xlink:href="#a" transform="translate(24,0)"/></g>
+  <g transform="translate(0,   7)"><g class="on"><use xlink:href="#ca"/><use xlink:href="#b" transform="translate(16,0)"/></g><use xlink:href="#d" transform="translate(24,0)"/></g>
+  <g transform="translate(0,  16)"><g class="on"><use xlink:href="#ca"/><use xlink:href="#d" transform="translate(16,0)"/></g><use xlink:href="#b" transform="translate(24,0)"/></g>
+  <g transform="translate(0,  27)"><g class="on"><use xlink:href="#cb"/><use xlink:href="#a" transform="translate(16,0)"/></g><use xlink:href="#d" transform="translate(24,0)"/></g>
+  <g transform="translate(0,  36)"><g class="on"><use xlink:href="#cb"/><use xlink:href="#d" transform="translate(16,0)"/></g><use xlink:href="#a" transform="translate(24,0)"/></g>
+  <g transform="translate(0,  47)"><g class="on"><use xlink:href="#cd"/><use xlink:href="#a" transform="translate(16,0)"/></g><use xlink:href="#b" transform="translate(24,0)"/></g>
+  <g transform="translate(0,  56)"><g class="on"><use xlink:href="#cd"/><use xlink:href="#b" transform="translate(16,0)"/></g><use xlink:href="#a" transform="translate(24,0)"/></g>
+  <g transform="translate(0,  69)"><g class="on"><use xlink:href="#da"/><use xlink:href="#b" transform="translate(16,0)"/></g><use xlink:href="#c" transform="translate(24,0)"/></g>
+  <g transform="translate(0,  78)"><g class="on"><use xlink:href="#da"/><use xlink:href="#c" transform="translate(16,0)"/></g><use xlink:href="#b" transform="translate(24,0)"/></g>
+  <g transform="translate(0,  89)"><g class="on"><use xlink:href="#db"/><use xlink:href="#a" transform="translate(16,0)"/></g><use xlink:href="#c" transform="translate(24,0)"/></g>
+  <g transform="translate(0,  98)"><g class="on"><use xlink:href="#db"/><use xlink:href="#c" transform="translate(16,0)"/></g><use xlink:href="#a" transform="translate(24,0)"/></g>
+  <g transform="translate(0, 109)"><g class="on"><use xlink:href="#dc"/><use xlink:href="#a" transform="translate(16,0)"/></g><use xlink:href="#b" transform="translate(24,0)"/></g>
+  <g transform="translate(0, 118)"><g class="on"><use xlink:href="#dc"/><use xlink:href="#b" transform="translate(16,0)"/></g><use xlink:href="#a" transform="translate(24,0)"/></g>
+ </g>
+ <use xlink:href="#half" transform="scale(1,-1)"/>
+ <g id="half">
+  <path d="M 29,0 l 15,30"/>
+  <path d="M 29,0 l 18,90"/>
+ </g>
+ <g stroke="none" marker-end="none">
+  <path d="M  79,-124 h 16 V 124 h -16" fill="url(#pattern_3)"/>
+  <path d="M 130,-124 h 16 V 124 h -16" fill="url(#pattern_2)"/>
+  <path d="M 180,-124 h 16 V 124 h -16" fill="url(#pattern_1)"/>
+ </g>
+ <text transform="translate(0,-128)" y="0.7ex"
+  ><tspan>4!</tspan><tspan x="18" >=</tspan
+  ><tspan x="38" >4</tspan><tspan x="62" >&#215;</tspan
+  ><tspan x="87" >3</tspan><tspan x="112">&#215;</tspan
+  ><tspan x="137">2</tspan><tspan x="162">&#215;</tspan
+  ><tspan x="187">1</tspan><tspan x="208">=</tspan
+  ><tspan x="224">24</tspan></text>
+ <!--
+ <text transform="translate(0,110)"
+  ><tspan x="2">4</tspan><tspan dy="0.7ex">P</tspan
+  ><tspan dy="0.7ex">0</tspan><tspan x="18" dy="-0.7ex">=</tspan
+  ><tspan x="38" dy="-1ex">4&#215;3&#215;2&#215;1</tspan
+  ><tspan x="38">_______</tspan
+  ><tspan x="38" dy="2ex">4&#215;3&#215;2&#215;1</tspan
+  ><tspan x="58" dy="-1ex">=</tspan
+  ><tspan x="67" dy="-1ex">4!</tspan
+  ><tspan x="67">__</tspan
+  ><tspan x="67" dy="2ex">4!</tspan
+  ><tspan x="75" dy="-1ex">=</tspan><tspan x="81">1</tspan></text>
+ -->
+ <text transform="translate(0,130)"
+  ><tspan x="2">4</tspan><tspan dy="0.7ex">P</tspan
+  ><tspan dy="0.7ex">1</tspan><tspan x="18" dy="-0.7ex">=</tspan
+  ><tspan x="37" >4</tspan><tspan x="62">=</tspan
+  ><tspan x="87" dy="-1ex">4&#215;3&#215;2&#215;1</tspan
+  ><tspan x="87">_______</tspan
+  ><tspan x="87" dy="2ex">3&#215;2&#215;1</tspan
+  ><tspan x="112" dy="-1ex">=</tspan
+  ><tspan x="125" dy="-1ex">4!</tspan
+  ><tspan x="125">__</tspan
+  ><tspan x="125" dy="2ex">3!</tspan></text>
+ <text transform="translate(0,155)"
+  ><tspan x="2">4</tspan><tspan dy="0.7ex">P</tspan
+  ><tspan dy="0.7ex">2</tspan><tspan x="18" dy="-0.7ex">=</tspan
+  ><tspan x="37" >4</tspan><tspan x="62" >&#215;</tspan
+  ><tspan x="87" >3</tspan><tspan x="112">=</tspan
+  ><tspan x="137" dy="-1ex">4&#215;3&#215;2&#215;1</tspan
+  ><tspan x="137">_______</tspan
+  ><tspan x="137" dy="2ex">2&#215;1</tspan
+  ><tspan x="161" dy="-1ex">=</tspan
+  ><tspan x="173" dy="-1ex">4!</tspan
+  ><tspan x="173">__</tspan
+  ><tspan x="173" dy="2ex">2!</tspan
+  ><tspan x="183" dy="-1ex">=</tspan
+  ><tspan x="194">12</tspan></text>
+ <text transform="translate(0,180)"
+  ><tspan x="2">4</tspan><tspan dy="0.7ex">P</tspan
+  ><tspan dy="0.7ex">3</tspan><tspan x="18" dy="-0.7ex">=</tspan
+  ><tspan x="37" >4</tspan><tspan x="62" >&#215;</tspan
+  ><tspan x="87" >3</tspan><tspan x="112">&#215;</tspan
+  ><tspan x="137">2</tspan><tspan x="150">=</tspan
+  ><tspan x="173" dy="-1ex">4&#215;3&#215;2&#215;1</tspan
+  ><tspan x="173">_______</tspan
+  ><tspan x="173" dy="2ex">1</tspan
+  ><tspan x="194" dy="-1ex">=</tspan
+  ><tspan x="204" dy="-1ex">4!</tspan
+  ><tspan x="204">__</tspan
+  ><tspan x="204" dy="2ex">1!</tspan
+  ><tspan x="214" dy="-1ex">=</tspan
+  ><tspan x="224">24</tspan></text>
+ <path d="M -5,119 v 3 h 88 v -3 M -5,144 v 3 h 138 v -3 M -5,169 v 3 h 188 v -3" marker-end="none"/>
+</svg>

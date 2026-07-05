@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"><!--
+
+
+ Author : Yves Baelde
+
+--><svg width="432" height="324"
+pointer-events="none" stroke-width="2"
+xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+viewBox="-81 -144 432 324" preserveAspectRatio="xMinYMin"><style
+type="text/css"><![CDATA[
+
+text.nr {fill:#222;font-family:sans-serif}
+text.sk {font-style:italic}
+text {font-family:serif}
+
+.tk {stroke-width:5}
+circle.tk {stroke:#777}
+
+]]></style><path
+ fill="#fff" d="M171-144H-81V60"/><switch font-size="21"><g
+ systemLanguage="fr"><path id="jj" pointer-events="visible"
+ title=" Triangle  ABC  incroyable "
+ d="M171-144H351V180H-81V60" fill="#ccc"/><text
+ x="-66" y="-108">Unité d’angle :<tspan x="-66"
+ y="-81">le  degré</tspan></text></g><g
+ systemLanguage="en"><path title=" Unbelievable  triangle  ABC "
+ d="M171-144H351V180H-81V60" fill="#ccc"/><text
+ x="-66" y="-108">Angle  unit:<tspan
+ x="-66" y="-81">the  degree</tspan></text></g></switch><g
+ fill="none" stroke="#444"><circle r="26"/><circle r="31"/><circle
+ r="36"/><circle class="tk" cx="58" cy="140" r="42"/><circle
+ r="51" cx="58" cy="140" class="tk"/><path class="tk"
+ d="m0 0 58 140 h60 q99 0 189-180-111-120-225-30z"
+ stroke="#222"/></g><path fill="#fff" d="m0 0 58 140 h60 q99 0
+ 189-180-111-120-225-30M96-144H351V195H-81V-60H66"
+ pointer-events="visible"/><text class="sk nr" font-size="30"
+ x="312" y="-54">K<tspan x="-33" y="3">A</tspan><tspan
+ x="24" y="162">U</tspan></text><text class="sk" font-size="24"
+ x="45" y="18">90 + a<tspan y="90" x="-66">u &#62; 0</tspan><tspan
+ x="90">90 + u</tspan><tspan
+ x="-66" y="60">a &#62; 0</tspan></text></svg>

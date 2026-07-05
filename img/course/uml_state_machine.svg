@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 160" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="UML state machine">
+  <rect width="560" height="160" fill="#fafbfc"/>
+
+  <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#004586"/></marker></defs>
+  <text x="280" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">UML State Machine</text>
+  <circle cx="70" cy="100" r="28" fill="#fff" stroke="#004586" stroke-width="2"/><text x="70" y="105" text-anchor="middle" font-size="11">Idle</text>
+  <rect x="170" y="72" width="90" height="56" rx="14" fill="#fff" stroke="#004586" stroke-width="2"/><text x="215" y="105" text-anchor="middle" font-size="11">Active</text>
+  <circle cx="360" cy="100" r="28" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/><text x="360" y="105" text-anchor="middle" font-size="11">Done</text>
+  <line x1="98" y1="100" x2="170" y2="100" stroke="#004586" marker-end="url(#arr)"/><text x="134" y="90" font-size="10">start</text>
+  <line x1="260" y1="100" x2="332" y2="100" stroke="#004586" marker-end="url(#arr)"/><text x="296" y="90" font-size="10">finish</text>
+</svg>

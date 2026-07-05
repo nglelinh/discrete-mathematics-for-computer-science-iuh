@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+""" To recover the Python script to generate this SVG, delete the line above -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="-384 -512 1536 1024">
+ <title>Pascal triangle extended</title>
+ <desc>Binomial coefficients ''C''(''n'', ''k'') extended for negative and fractional ''n'', illustrated with expansion of a simple binomial by CMG Lee. It can be observed that Pascal's triangle is rotated and alternate terms are negated. The case ''n''&#160;=&#160;&#8722;1 gives Grandi's series.</desc>
+ <style type="text/css">
+.main   { font-family:Helvetica,Arial,sans-serif; font-size:32px; letter-spacing:-1px; text-anchor:middle;
+          fill:#000000; stroke-linejoin:round; stroke-linecap:round; }
+text    { stroke:none; cursor:default; }
+.var    { font-style:italic; }
+.sup    { font-size:75%; }
+.faint  { fill-opacity:0.25; }
+ </style>
+ <defs>
+<!-- BEGIN_DYNAMIC_DEFS -->
+
+<!--   END_DYNAMIC_DEFS -->
+  <path id="arrow" d="M 0,25 v 20 m -4,-7 l 4,7 l 4,-7"/>
+  <g id="arrows" transform="translate(10,5)" fill="none" stroke="#000000" stroke-opacity="0.1" stroke-width="2">
+   <use xlink:href="#arrow" transform="rotate(-30)"/>
+   <use xlink:href="#arrow" transform="rotate( 30)"/>
+   <path d="M 45,30 h 10 m -5,-5 v 10"/>
+  </g>
+  <clipPath id="clip_shade">
+   <rect x="-420" y="-700" width="800" height="1300"/>
+  </clipPath>
+ </defs>
+ <circle cx="0" cy="0" r="99999" fill="#ffffff"/>
+ <g class="main">
+  <g transform="translate(24,-42)" fill="#ffee00" clip-path="url(#clip_shade)">
+   <path id="triangle" d="M 0,2 l -1100,1900 h 2200 z"/>
+   <use xlink:href="#triangle" transform="rotate(240)" fill="#ffcc00"/>
+   <path d="M 11,19 A 22,22 0 0 0 22,0 m -2,4 l 2,-4 l 1.3,4" fill="none" stroke="#cc6600" transform="scale(4.8)"/>
+  </g>
+  <rect x="630" y="11" width="525" height="50" rx="9" ry="9" fill="#99ccff"/>
+<!-- BEGIN_DYNAMIC_MAIN -->
+  <g transform="translate(0,0)">
+   <g transform="translate(200,-490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;7</tspan></text>
+   </g>
+   <g transform="translate(280,-490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(360,-490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(160,-420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;6</tspan></text>
+   </g>
+   <g transform="translate(240,-420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(320,-420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>&#8722;6</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(400,-420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(120,-350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;5</tspan></text>
+   </g>
+   <g transform="translate(200,-350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(280,-350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>&#8722;5</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(360,-350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(80,-280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;4</tspan></text>
+   </g>
+   <g transform="translate(160,-280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(240,-280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>&#8722;4</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(320,-280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+10</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(400,-280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(40,-210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;3</tspan></text>
+   </g>
+   <g transform="translate(120,-210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(200,-210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>&#8722;3</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(280,-210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+6</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(360,-210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(0,-140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;2</tspan></text>
+   </g>
+   <g transform="translate(80,-140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(160,-140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>&#8722;2</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(240,-140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+3</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(320,-140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>&#8722;4</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(400,-140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-40,-70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;1</tspan></text>
+   </g>
+   <g transform="translate(40,-70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(120,-70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>&#8722;1</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(200,-70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+1</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(280,-70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>&#8722;1</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(360,-70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-80,0) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="2ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">0</tspan></text>
+   </g>
+   <g transform="translate(0,0) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(80,0) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(160,0) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(240,0) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(320,0) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(400,0) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-120,70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="2ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">1</tspan></text>
+   </g>
+   <g transform="translate(-40,70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(40,70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+1</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(120,70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(200,70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(280,70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(360,70) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-160,140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="2ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">2</tspan></text>
+   </g>
+   <g transform="translate(-80,140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(0,140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+2</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(80,140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+1</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(160,140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(240,140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(320,140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">5</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(400,140) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-200,210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="2ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">3</tspan></text>
+   </g>
+   <g transform="translate(-120,210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-40,210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+3</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(40,210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+3</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(120,210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+1</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(200,210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(280,210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">5</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(360,210) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-240,280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="2ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">4</tspan></text>
+   </g>
+   <g transform="translate(-160,280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-80,280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+4</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(0,280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+6</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(80,280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+4</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(160,280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+1</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(240,280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">5</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(320,280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">6</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(400,280) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-280,350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="2ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">5</tspan></text>
+   </g>
+   <g transform="translate(-200,350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-120,350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+5</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-40,350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+10</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(40,350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+10</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(120,350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+5</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(200,350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+1</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">5</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(280,350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">6</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(360,350) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-320,420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="2ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">6</tspan></text>
+   </g>
+   <g transform="translate(-240,420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-160,420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+6</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-80,420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+15</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(0,420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+20</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(80,420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+15</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(160,420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+6</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">5</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(240,420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+1</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">6</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(320,420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">+0</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">7</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(400,420) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-360,490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="2ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">7</tspan></text>
+   </g>
+   <g transform="translate(-280,490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+   </g>
+   <g transform="translate(-200,490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+7</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+   </g>
+   <g transform="translate(-120,490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+21</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+   </g>
+   <g transform="translate(-40,490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+35</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+   </g>
+   <g transform="translate(40,490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+35</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+   </g>
+   <g transform="translate(120,490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+21</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">5</tspan></text>
+   </g>
+   <g transform="translate(200,490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+7</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">6</tspan></text>
+   </g>
+   <g transform="translate(280,490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan>+1</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">7</tspan></text>
+   </g>
+   <g transform="translate(360,490) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+  </g>
+  <g transform="translate(768,0)">
+   <g transform="translate(180,-455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;6.5</tspan></text>
+   </g>
+   <g transform="translate(260,-455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(340,-455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(140,-385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;5.5</tspan></text>
+   </g>
+   <g transform="translate(220,-385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(300,-385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">11</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(380,-385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(100,-315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;4.5</tspan></text>
+   </g>
+   <g transform="translate(180,-315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(260,-315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">9</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(340,-315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(60,-245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;3.5</tspan></text>
+   </g>
+   <g transform="translate(140,-245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(220,-245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">7</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(300,-245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">63</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">8</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(380,-245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(20,-175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;2.5</tspan></text>
+   </g>
+   <g transform="translate(100,-175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(180,-175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">5</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(260,-175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">35</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">8</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(340,-175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-20,-105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;1.5</tspan></text>
+   </g>
+   <g transform="translate(60,-105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(140,-105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">3</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(220,-105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">15</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">8</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(300,-105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">35</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">16</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(380,-105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-60,-35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">&#8722;0.5</tspan></text>
+   </g>
+   <g transform="translate(20,-35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(100,-35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">1</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(180,-35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">3</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">8</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(260,-35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">5</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">16</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(340,-35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-100,35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">0.5</tspan></text>
+   </g>
+   <g transform="translate(-20,35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(60,35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">1</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(140,35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">1</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">8</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(220,35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">1</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">16</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(300,35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">5</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">128</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(380,35) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-140,105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">1.5</tspan></text>
+   </g>
+   <g transform="translate(-60,105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(20,105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">3</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(100,105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">3</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">8</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(180,105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">1</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">16</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(260,105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">3</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">128</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(340,105) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-180,175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">2.5</tspan></text>
+   </g>
+   <g transform="translate(-100,175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-20,175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">5</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(60,175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">15</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">8</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(140,175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">5</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">16</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(220,175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">5</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">128</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(300,175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">3</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">256</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">5</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(380,175) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-220,245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">3.5</tspan></text>
+   </g>
+   <g transform="translate(-140,245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-60,245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">7</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(20,245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">35</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">8</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(100,245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">35</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">16</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(180,245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">35</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">128</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(260,245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">7</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">256</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">5</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(340,245) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-260,315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">4.5</tspan></text>
+   </g>
+   <g transform="translate(-180,315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-100,315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">9</tspan><tspan x="0">_</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-20,315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">63</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">8</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(60,315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">105</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">16</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(140,315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">315</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">128</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(220,315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">63</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">256</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">5</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(300,315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">&#8722;</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">21</tspan><tspan x="0">____</tspan><tspan x="0" dy="1em">1024</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">6</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(380,315) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-300,385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">5.5</tspan></text>
+   </g>
+   <g transform="translate(-220,385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-140,385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">11</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-60,385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">99</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">8</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(20,385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">231</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">16</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(100,385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">1155</tspan><tspan x="0">____</tspan><tspan x="0" dy="1em">128</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(180,385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">693</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">256</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">5</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(260,385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">231</tspan><tspan x="0">____</tspan><tspan x="0" dy="1em">1024</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">6</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(340,385) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+   <g transform="translate(-340,455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="1ex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">6.5</tspan></text>
+   </g>
+   <g transform="translate(-260,455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-180,455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">13</tspan><tspan x="0">__</tspan><tspan x="0" dy="1em">2</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-100,455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">143</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">8</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">2</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(-20,455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">429</tspan><tspan x="0">___</tspan><tspan x="0" dy="1em">16</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">3</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(60,455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">3003</tspan><tspan x="0">____</tspan><tspan x="0" dy="1em">128</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">4</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(140,455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">3003</tspan><tspan x="0">____</tspan><tspan x="0" dy="1em">256</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">5</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(220,455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">3003</tspan><tspan x="0">____</tspan><tspan x="0" dy="1em">1024</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">6</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(300,455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan><tspan x="-2ex">+</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">429</tspan><tspan x="0">____</tspan><tspan x="0" dy="1em">2048</tspan></tspan></tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan><tspan class="faint sup" dx="0.2ex" dy="-1ex">7</tspan></text>
+    <use xlink:href="#arrows"/>
+   </g>
+   <g transform="translate(380,455) scale(0.8,1)">
+    <text x="0" y="0.7ex"><tspan dx="-1.3ex" class="faint">+...</tspan></text>
+   </g>
+  </g>
+<!--   END_DYNAMIC_MAIN -->
+ </g>
+</svg>
+<!-- Please retain this and other comments, which contain Python code to generate this SVG. """
+
+import re, math, fractions
+def fmt(string): ## string.format(**vars()) using tags {expression!format} by CMG Lee
+ def f(tag): i_sep = tag.rfind('!'); return (re.sub('\.0$', '', str(eval(tag[1:-1])))
+  if (i_sep < 0) else ('{:%s}' % tag[i_sep + 1:-1]).format(eval(tag[1:i_sep])))
+ return (re.sub(r'(?<!{){[^{}]+}', lambda m:f(m.group()), string)
+         .replace('{{', '{').replace('}}', '}'))
+def append(obj, string): return obj.append(fmt(string))
+def tabbify(cellss, separator='|'):
+ if isinstance(cellss, dict): return tabbify([[k] + v for (k, v) in cellss.items()])
+ cellpadss = [list(rows) + [''] * (len(max(cellss, key=len)) - len(rows)) for rows in cellss]
+ fmts = ['%%%ds' % (max([len(str(cell)) for cell in cols])) for cols in zip(*cellpadss)]
+ return '\n'.join([separator.join(fmts) % tuple(rows) for rows in cellpadss])
+def hex_rgb(colour): ## convert [#]RGB to #RRGGBB and [#]RRGGBB to #RRGGBB
+ return '#%s' % (colour if len(colour) > 4 else ''.join([c * 2 for c in colour])).lstrip('#')
+def roundm(x, multiple=1):
+ if   (isinstance(x, tuple)): return tuple(roundm(list(x), multiple))
+ elif (isinstance(x, list )): return [roundm(x_i, multiple) for x_i in x]
+ else: return int(math.floor(float(x) / multiple + 0.5)) * multiple
+
+n_max  = 7
+k_max  = 8
+datass = {n2 * 0.5:[1] for n2 in range(-n_max * 2 - 1, n_max * 2 + 2)}
+k_half = 1
+for n2 in range(n_max * 2 + 2):
+ n = n2 * 0.5
+ for k in range(1, k_max + 1):
+  if   n == 0.0: datass[n].append(0); continue
+  elif n == 0.5: k_half *= (fractions.Fraction(3, 2) - k) / k; datass[n].append(k_half)
+  else:
+   datass[n].append(datass[n - 1][k] + datass[n - 1][k - 1])
+  datass[-n].append(datass[1 - n][k] - datass[-n   ][k - 1])
+print(tabbify(datass))
+
+(out_defs, out_mains) = ([], [])
+for (i_offset, offset) in enumerate([0, 0.5]):
+ out_offsets = []
+ for  n1 in range(-n_max, n_max + 1):
+  n = n1 + offset
+  if n > n_max: continue
+  for k  in range(-1    , k_max + 2):
+   out_label = '<tspan dx="-1.3ex" class="faint">+...</tspan>'
+   is_last   = True
+   if k - n // 2 + 3 < k_max:
+    is_last   = False
+    out_coeff = '%s%s' % ('' if datass[n][k] < 0 else '+', datass[n][k])
+    if '/' in out_coeff:
+     out_coeffs = out_coeff.split('/')
+     out_coeff  = '<tspan x="-2ex">%s</tspan><tspan class="sup"><tspan x="0" dy="-1.2ex">%s</tspan><tspan x="0">%s</tspan><tspan x="0" dy="1em">%s</tspan></tspan>' % (
+      out_coeffs[0][0], out_coeffs[0][1:], '_' * max(len(out_coeffs[0][1:]), len(out_coeffs[1])),
+      out_coeffs[1])
+    out_label = (
+     '<tspan dx="%sex">(1&#8202;+&#8202;</tspan><tspan class="var">x</tspan><tspan>)</tspan><tspan class="sup" dy="-1ex">%s</tspan>' % (1 if n < 0 else 1 if offset > 0 else 2, n)
+     if k < 0 else '<tspan class="faint">=</tspan><tspan dx="0.8ex">1</tspan>' if k < 1 else (
+      '<tspan%s>%s</tspan><tspan x="2.3ex" y="0.7ex" class="faint var">x</tspan>%s' % (
+       '' if out_coeff != '+0' else ' class="faint"', out_coeff,
+       '' if k == 1 else '<tspan class="faint sup" dx="0.2ex" dy="-1ex">%d</tspan>' % (k))
+     )).replace('>-', '>&#8722;')
+   out_arrows = '' if k < 0 or n == n_max or is_last else '''
+    <use xlink:href="#arrows"/>'''
+   append(out_offsets, '''\
+   <g transform="translate({k * 80 - n * 40},{n * 70}) scale(0.8,1)">
+    <text x="0" y="0.7ex">{out_label}</text>{out_arrows}
+   </g>''')
+   if is_last: break
+ append(out_mains, '''\
+  <g transform="translate({i_offset * 768},0)">
+{'\\n'.join(out_offsets)}
+  </g>''')
+
+out_p = fmt('width="100%" height="100%" viewBox="-384 -512 1536 1024"')
+
+## Compile everything into an .svg file
+myself   = open(__file__, 'r').read() ## the contents of this very file
+file_out = open(__file__[:__file__.rfind('.')] + '.svg', 'w') ## *.* -> *.svg
+try: ## use try/finally so that file is closed even if write fails
+ file_out.write('''<?xml version="1.0" encoding="utf-8"?><!%s%s
+%s%s%s\n%s%s\n%s%s''' % ('-', '-', ## because SVG comments cannot have 2 consecutive '-'s
+  myself[:myself.find('width',myself.find('<svg'))], ## assume width specified before height/viewBox
+  out_p, ## replace SVG width/height/viewBox with {out_p} & dynamic SVG blocks with {out*s} contents
+  myself[myself.find ('>',myself.find('<svg')):
+         myself.find ('\n',myself.find('BEGIN_'+'DYNAMIC_DEFS'))], '\n'.join(out_defs),
+  myself[myself.rfind('\n',0,myself.find('END_'+'DYNAMIC_DEFS')):
+         myself.find ('\n',myself.find('BEGIN_'+'DYNAMIC_MAIN'))], '\n'.join(out_mains),
+  myself[myself.rfind('\n',0,myself.find('END_'+'DYNAMIC_MAIN')):]))
+finally:
+ file_out.close()
+
+## SVG-Python near-polyglot framework version 3 by CMG Lee (March 2018) -->

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="240" viewBox="0 0 560 240">
+  <title>Stars and Bars — phương pháp sao và vạch</title>
+  <rect width="560" height="240" fill="#ffffff"/>
+  <text x="280" y="28" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold">Stars and Bars: ★★|★★★|</text>
+  <text x="280" y="48" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#444">5 sao, 2 vạch → 3 nhóm → x₁=2, x₂=3, x₃=0</text>
+
+  <!-- sequence row -->
+  <g transform="translate(80, 75)">
+    <rect x="0" y="0" width="400" height="56" rx="6" fill="#f7fafc" stroke="#cbd5e0" stroke-width="1.5"/>
+    <!-- stars and bars -->
+    <text x="30" y="36" font-family="monospace" font-size="28" fill="#2d3748">★ ★</text>
+    <line x1="108" y1="10" x2="108" y2="46" stroke="#e53e3e" stroke-width="4"/>
+    <text x="130" y="36" font-family="monospace" font-size="28" fill="#2d3748">★ ★ ★</text>
+    <line x1="248" y1="10" x2="248" y2="46" stroke="#e53e3e" stroke-width="4"/>
+    <text x="280" y="36" font-family="monospace" font-size="20" fill="#a0aec0">(rỗng)</text>
+  </g>
+
+  <!-- mapping arrows -->
+  <text x="100" y="155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12">Nhóm 1</text>
+  <text x="220" y="155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12">Nhóm 2</text>
+  <text x="340" y="155" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12">Nhóm 3</text>
+  <text x="100" y="175" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold">x₁=2</text>
+  <text x="220" y="175" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold">x₂=3</text>
+  <text x="340" y="175" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold">x₃=0</text>
+
+  <text x="280" y="210" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14">Số cách = chọn vị trí 2 vạch trong 7 vị trí = C(7,2) = 21</text>
+</svg>

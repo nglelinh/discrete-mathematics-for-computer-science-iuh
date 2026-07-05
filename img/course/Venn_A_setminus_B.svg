@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="243px" height="197px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 243 197">
+ <defs>
+  <font id="FontID0" font-variant="normal" style="fill-rule:nonzero" font-style="normal" font-weight="400">
+	<font-face 
+		font-family="DejaVu Sans Mono">
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="B" horiz-adv-x="602"><path d="M180.165 348.165l0 -267.165 116.669 0c57.3307,0 98.1654,10 122.496,30 24.5039,20 36.6693,53 36.6693,99 0,47.5039 -12.8346,82.3307 -38.4961,104.669 -25.8346,22.3307 -66,33.4961 -120.669,33.4961l-116.669 0zm0 299.835l0 -219.835 114.669 0c47.6693,0 82,9.16535 103.331,27.3386 21.3386,18.3307 32,47.6614 32,88.4961 0,36.6693 -10.4961,63.3307 -31.4961,79.5039 -21,16.3307 -55.5039,24.4961 -103.835,24.4961l-114.669 0zm-99.1654 81l215.835 0c74.6693,0 132,-16.1654 172.496,-48.3307 40.3386,-32.1654 60.5039,-77.8346 60.5039,-136.669 0,-44.6693 -10.6693,-79.8346 -32,-105.496 -21.3307,-25.8346 -53.3307,-41.8346 -96,-48.3386 47.8346,-7.16535 85.3307,-27.6614 112.496,-61.3307 27.1732,-33.6693 40.8346,-76.5039 40.8346,-128.669 0,-66 -21.6614,-116 -65,-149.661 -43.1654,-33.6693 -107.661,-50.5039 -193.331,-50.5039l-215.835 0 0 729z"/></glyph>
+   <glyph unicode="A" horiz-adv-x="602"><path d="M300.835 642l-104.165 -373 208.165 0 -104 373zm-59.6693 87l119.669 0 223.165 -729 -102 0 -53.8346 189.835 -255.331 0 -52.8346 -189.835 -102 0 223.165 729z"/></glyph>
+   <glyph unicode="\" horiz-adv-x="602"><path d="M143.165 729l383.835 -821.835 -92.8346 0 -384.331 821.835 93.3307 0z"/></glyph>
+  </font>
+  <style type="text/css">
+   <![CDATA[
+    @font-face { font-family:"DejaVu Sans Mono";src:url("#FontID0") format(svg)}
+    .str0 {stroke:#1F1A17;stroke-width:2.00126}
+    .fil3 {fill:none}
+    .fil2 {fill:#1F1A17}
+    .fil0 {fill:#FFFB9C}
+    .fil1 {fill:white}
+    .fnt0 {font-weight:normal;font-size:36;font-family:'DejaVu Sans Mono'}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <circle class="fil0 str0" cx="73.4117" cy="68.3473" r="62.9048"/>
+  <circle class="fil1 str0" cx="169" cy="68.3473" r="62.9048"/>
+  <text x="62.8997" y="81.4694"  class="fil2 fnt0">A</text>
+  <text x="159.007" y="81.4694"  class="fil2 fnt0">B</text>
+  <text x="89.5408" y="172.596"  class="fil2 fnt0">A\B</text>
+  <circle class="fil3 str0" cx="73.4117" cy="68.3473" r="62.9048"/>
+ </g>
+</svg>

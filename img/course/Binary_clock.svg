@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="539" height="395">
+	<style>
+		text {
+			font-family: "Bitstream Vera Sans";
+		}
+		.h {
+			font-size: 56px;
+			text-anchor: middle;
+		}
+	</style>
+	<defs>
+		<circle id="bit0" fill="#5f5a59" r="19" stroke="#000" stroke-width="3"/>
+		<circle id="bit1" fill="#ff3fff" r="19" stroke="#000" stroke-width="3"/>
+	</defs>
+	
+	<g transform="translate(32,2)">
+		<rect width="151" height="281" fill="#fde6e2" stroke="#d45253" stroke-width="3"/>
+		<text class="h" x="32" y="58">H</text>
+		<text class="h" x="119" y="58">H</text>
+		<use xlink:href="#bit1" x="32" y="251"/>
+		<use xlink:href="#bit0" x="32" y="202"/>
+		<use xlink:href="#bit0" x="119" y="251"/>
+		<use xlink:href="#bit0" x="119" y="202"/>
+		<use xlink:href="#bit0" x="119" y="153"/>
+		<use xlink:href="#bit0" x="119" y="104"/>
+	</g>
+	<g transform="translate(209,2)">
+		<rect width="151" height="281" fill="#e7ffed" stroke="#2a9425" stroke-width="3"/>
+		<text class="h" x="32" y="58">M</text>
+		<text class="h" x="119" y="58">M</text>
+		<use xlink:href="#bit1" x="32" y="251"/>
+		<use xlink:href="#bit1" x="32" y="202"/>
+		<use xlink:href="#bit0" x="32" y="153"/>
+		<use xlink:href="#bit1" x="119" y="251"/>
+		<use xlink:href="#bit1" x="119" y="202"/>
+		<use xlink:href="#bit1" x="119" y="153"/>
+		<use xlink:href="#bit0" x="119" y="104"/>
+	</g>
+	<g transform="translate(386,2)">
+		<rect width="151" height="281" fill="#e6e5fd" stroke="#0e00cd" stroke-width="3"/>
+		<text class="h" x="32" y="58">S</text>
+		<text class="h" x="119" y="58">S</text>
+		<use xlink:href="#bit0" x="32" y="251"/>
+		<use xlink:href="#bit0" x="32" y="202"/>
+		<use xlink:href="#bit1" x="32" y="153"/>
+		<use xlink:href="#bit1" x="119" y="251"/>
+		<use xlink:href="#bit0" x="119" y="202"/>
+		<use xlink:href="#bit0" x="119" y="153"/>
+		<use xlink:href="#bit1" x="119" y="104"/>
+	</g>
+	
+	<g transform="translate(2,117)" font-size="37">
+		<text y="0">8</text>
+		<text y="49">4</text>
+		<text y="98">2</text>
+		<text y="147">1</text>
+	</g>
+	<g transform="translate(0,320)" font-size="37" text-anchor="middle">
+		<text x="64">1</text>
+		<text x="151">0</text>
+		<text x="241">3</text>
+		<text x="328">7</text>
+		<text x="418">4</text>
+		<text x="505">9</text>
+	</g>
+	<text x="50%" y="390" class="h">10:37:49</text>
+</svg>

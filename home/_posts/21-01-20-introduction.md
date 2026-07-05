@@ -8,7 +8,7 @@ owner: nglelinh
 
 # Chào mừng đến với khóa học Toán Rời Rạc
 
-Khóa học **Toán Rời Rạc cho Khoa học Máy tính** tại IUH được thiết kế để cung cấp nền tảng toán học vững chắc cho sinh viên Khoa học Máy tính. Nội dung được xây dựng đặc biệt để phù hợp với chương trình đào tạo của IUH, tập trung vào các ứng dụng thực tế trong lập trình và khoa học máy tính.
+Khóa học **Toán Rời Rạc cho Khoa học Máy tính** được thiết kế để cung cấp nền tảng toán học vững chắc cho sinh viên Khoa học Máy tính, tập trung vào các ứng dụng thực tế trong lập trình và khoa học máy tính.
 
 ## Học viên đạt được gì khi kết thúc khóa học
 

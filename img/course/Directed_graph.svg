@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="185pt" height="122pt"
+ viewBox = "0 0 185 122"
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" style="font-family:Times-Roman;font-size:14.00;">
+<polygon style="fill:white;stroke:white;" points="-2,124 -2,-2 187,-2 187,124 -2,124"/>
+<g id="node1" class="node">
+<ellipse style="fill:none;stroke:black;" cx="45" cy="100" rx="17" ry="17"/>
+<text text-anchor="middle" x="45" y="105">1</text>
+</g>
+<g id="node3" class="node">
+<ellipse style="fill:none;stroke:black;" cx="22" cy="32" rx="17" ry="17"/>
+<text text-anchor="middle" x="22" y="37">2</text>
+</g>
+<g id="edge2" class="edge">
+<path style="fill:none;stroke:black;" d="M40,84C37,76 34,67 31,58"/>
+<polygon style="fill:black;stroke:black;" points="28,59 28,48 34,57 28,59"/>
+</g>
+<g id="node5" class="node">
+<ellipse style="fill:none;stroke:black;" cx="94" cy="46" rx="17" ry="17"/>
+<text text-anchor="middle" x="94" y="51">3</text>
+</g>
+<g id="edge4" class="edge">
+<path style="fill:none;stroke:black;" d="M57,87C63,81 69,73 75,67"/>
+<polygon style="fill:black;stroke:black;" points="73,64 82,59 78,69 73,64"/>
+</g>
+<g id="edge6" class="edge">
+<path style="fill:none;stroke:black;" d="M77,43C69,42 58,39 49,37"/>
+<polygon style="fill:black;stroke:black;" points="48,40 39,35 49,34 48,40"/>
+</g>
+<g id="node8" class="node">
+<ellipse style="fill:none;stroke:black;" cx="163" cy="22" rx="17" ry="17"/>
+<text text-anchor="middle" x="163" y="27">4</text>
+</g>
+<g id="edge8" class="edge">
+<path style="fill:none;stroke:black;" d="M108,35C116,31 127,28 136,25"/>
+<polygon style="fill:black;stroke:black;" points="135,22 146,22 137,28 135,22"/>
+</g>
+<g id="edge10" class="edge">
+<path style="fill:none;stroke:black;" d="M150,33C142,37 131,40 121,43"/>
+<polygon style="fill:black;stroke:black;" points="122,46 111,46 120,40 122,46"/>
+</g>
+</g>
+</svg>

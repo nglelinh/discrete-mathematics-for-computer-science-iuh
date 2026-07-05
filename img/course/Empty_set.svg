@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Empty set">
+  <rect width="720" height="380" fill="#fafbfc"/>
+
+  <text x="360" y="40" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">Tập rỗng ∅</text>
+  <rect x="80" y="70" width="560" height="280" rx="12" fill="#fff" stroke="#c5cad1" stroke-width="2"/>
+  <text x="360" y="200" text-anchor="middle" font-size="96" fill="#1a1a2e">∅</text>
+  <text x="360" y="270" text-anchor="middle" font-size="20" fill="#004586">|∅| = 0</text>
+  <text x="360" y="310" text-anchor="middle" font-size="14" fill="#5c6370">Không chứa phần tử nào — quy ước: ∅ ⊂ A với mọi tập A</text>
+</svg>

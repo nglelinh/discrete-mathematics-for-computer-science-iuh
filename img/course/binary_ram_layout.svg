@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 280" font-family="Inter, Arial, sans-serif">
+  <rect width="620" height="280" fill="#f8fafc"/>
+  <text x="310" y="28" text-anchor="middle" font-size="16" font-weight="600">RAM: dãy byte liên tiếp</text>
+  <text x="310" y="48" text-anchor="middle" font-size="12" fill="#64748b">Mỗi địa chỉ = một ô = 8 bit</text>
+
+  <rect x="30" y="70" width="560" height="56" rx="8" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
+  <text x="50" y="92" font-size="11" fill="#64748b">địa chỉ thấp</text>
+  <text x="560" y="92" text-anchor="end" font-size="11" fill="#64748b">địa chỉ cao</text>
+
+  <g font-size="12" font-weight="600">
+    <rect x="50" y="100" width="70" height="18" fill="#dbeafe" stroke="#334155"/><text x="85" y="113" text-anchor="middle">1000</text>
+    <rect x="130" y="100" width="70" height="18" fill="#dbeafe" stroke="#334155"/><text x="165" y="113" text-anchor="middle">1001</text>
+    <rect x="210" y="100" width="70" height="18" fill="#dbeafe" stroke="#334155"/><text x="245" y="113" text-anchor="middle">1002</text>
+    <rect x="290" y="100" width="70" height="18" fill="#dbeafe" stroke="#334155"/><text x="325" y="113" text-anchor="middle">1003</text>
+    <rect x="370" y="100" width="70" height="18" fill="#dbeafe" stroke="#334155"/><text x="405" y="113" text-anchor="middle">1004</text>
+    <rect x="450" y="100" width="70" height="18" fill="#dbeafe" stroke="#334155"/><text x="485" y="113" text-anchor="middle">1005</text>
+    <rect x="530" y="100" width="50" height="18" fill="#dbeafe" stroke="#334155"/><text x="555" y="113" text-anchor="middle">…</text>
+  </g>
+
+  <g font-size="13" font-weight="700">
+    <rect x="50" y="122" width="70" height="28" fill="#fff" stroke="#334155"/><text x="85" y="141" text-anchor="middle">0x41</text>
+    <rect x="130" y="122" width="70" height="28" fill="#fff" stroke="#334155"/><text x="165" y="141" text-anchor="middle">0x42</text>
+    <rect x="210" y="122" width="70" height="28" fill="#fff" stroke="#334155"/><text x="245" y="141" text-anchor="middle">0x43</text>
+    <rect x="290" y="122" width="70" height="28" fill="#ffedd5" stroke="#334155"/><text x="325" y="141" text-anchor="middle">0x00</text>
+    <rect x="370" y="122" width="70" height="28" fill="#ffedd5" stroke="#334155"/><text x="405" y="141" text-anchor="middle">0x2A</text>
+    <rect x="450" y="122" width="70" height="28" fill="#ffedd5" stroke="#334155"/><text x="485" y="141" text-anchor="middle">0x00</text>
+    <rect x="530" y="122" width="50" height="28" fill="#f1f5f9" stroke="#cbd5e1"/><text x="555" y="141" text-anchor="middle">…</text>
+  </g>
+
+  <text x="185" y="175" text-anchor="middle" font-size="11" fill="#1d4ed8">chuỗi "ABC" (UTF-8)</text>
+  <text x="405" y="175" text-anchor="middle" font-size="11" fill="#c2410c">số 42 (little-endian 16-bit)</text>
+
+  <rect x="40" y="195" width="540" height="68" rx="6" fill="#fff" stroke="#cbd5e1"/>
+  <text x="310" y="218" text-anchor="middle" font-size="12" fill="#475569">Cùng một dãy byte — ý nghĩa phụ thuộc chương trình đọc:</text>
+  <text x="310" y="238" text-anchor="middle" font-size="12" fill="#475569">0x41 có thể là chữ 'A', số 65, hoặc một phần của ảnh JPEG.</text>
+  <text x="310" y="256" text-anchor="middle" font-size="12" fill="#475569">Bit không tự biết nó là chữ hay số — chỉ có quy ước (kiểu dữ liệu).</text>
+</svg>

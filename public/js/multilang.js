@@ -101,26 +101,6 @@
         }
     }
 
-    // Add language indicator to posts
-    function addLanguageIndicators() {
-        const posts = document.querySelectorAll('.post');
-        const currentLang = getCurrentLanguage();
-        
-        posts.forEach(post => {
-            const existingIndicator = post.querySelector('.post-language');
-            if (!existingIndicator) {
-                const indicator = document.createElement('span');
-                indicator.className = `post-language lang-${currentLang}`;
-                indicator.textContent = currentLang === 'vi' ? 'Tiếng Việt' : 'English';
-                
-                const postHeader = post.querySelector('.post-title') || post.querySelector('h1') || post.querySelector('h2');
-                if (postHeader) {
-                    postHeader.parentNode.insertBefore(indicator, postHeader);
-                }
-            }
-        });
-    }
-
     // Keyboard navigation for language switching
     function initKeyboardNavigation() {
         document.addEventListener('keydown', function(e) {
@@ -190,8 +170,6 @@
     function init() {
         updateLanguageAttributes();
         initLanguageSwitch();
-        addLanguageIndicators();
-        initKeyboardNavigation();
         enhanceAccessibility();
         storeLanguagePreference();
         loadLanguagePreference();
