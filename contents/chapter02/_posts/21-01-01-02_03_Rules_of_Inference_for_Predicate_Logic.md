@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Quy tắc Suy luận trong Logic Vị từ"
 categories: chapter02
@@ -6,24 +7,27 @@ date: 2021-01-01
 order: 3
 required: true
 lang: en
+excerpt: "Ở hai mục trước, chúng ta đã học cách biểu diễn các phát biểu phức tạp bằng vị từ và lượng từ. Tuy nhiên, biểu diễn được mới chỉ là nửa chặng đường; câu hỏi…"
 ---
 
-Trong hai bài trước, chúng ta đã học cách biểu diễn các phát biểu phức tạp bằng vị từ và lượng từ. Nhưng biểu diễn được mới chỉ là nửa chặng đường. Câu hỏi quan trọng hơn là: **từ những gì đã biết, ta có thể suy ra kết luận gì — và bằng cách nào cho đúng?**
+Ở hai mục trước, chúng ta đã học cách biểu diễn các phát biểu phức tạp bằng vị từ và lượng từ. Tuy nhiên, biểu diễn được mới chỉ là nửa chặng đường; câu hỏi quan trọng hơn là: **từ những gì đã biết, ta có thể suy ra kết luận gì — và bằng cách nào cho đúng?**
 
-Đây không phải bài toán trừu tượng. Mỗi khi một hệ thống kiểm chứng phần mềm xác nhận rằng "chương trình thỏa mãn đặc tả", nó đang thực hiện một chuỗi suy luận logic hình thức. Mỗi khi một lập trình viên đọc tài liệu đặc tả và kết luận rằng hàm X phải trả về kết quả Y trong trường hợp Z, người đó cũng đang suy luận — dù thường là không hình thức.
+Vấn đề này có ý nghĩa thực tiễn trực tiếp. Mỗi khi hệ thống kiểm chứng phần mềm xác nhận rằng "chương trình thỏa mãn đặc tả", nó đang thực hiện một chuỗi suy luận logic hình thức. Mỗi khi người lập trình đọc tài liệu đặc tả và kết luận hành vi của hàm trong một trường hợp cụ thể, người đó cũng đang suy luận — dù thường không hình thức. Suy luận không hình thức dễ sai: con người có xu hướng nhảy từ trực giác sang kết luận, bỏ qua các bước trung gian nơi lỗi logic ẩn náu. Từ *"Mọi lập trình viên đều biết Python"* và *"An là lập trình viên"*, ta kết luận *"An biết Python"* — suy luận hợp lệ. Nhưng từ *"Mọi lập trình viên đều biết Python"* và *"An biết Python"*, ta **không thể** kết luận *"An là lập trình viên"* — đây là ngụy biện khẳng định hệ quả.
 
-Vấn đề là: suy luận không hình thức rất dễ sai. Con người có xu hướng "nhảy cóc" từ trực giác sang kết luận, bỏ qua các bước trung gian mà chính ở đó lỗi logic ẩn náu. Ví dụ:
+Trong logic vị từ, các **quy tắc suy luận** với lượng từ là bộ công cụ giúp tránh những sai lầm như vậy. Chúng cho biết khi nào được thay "mọi $$x$$" bằng một phần tử cụ thể, khi nào được kết luận "tồn tại" từ một ví dụ, và vì sao một chứng minh hình thức có thể được máy tính kiểm tra từng bước. Mục này trình bày bốn quy tắc cốt lõi: Universal Instantiation, Universal Generalization, Existential Instantiation và Existential Generalization.
 
-- *"Mọi lập trình viên đều biết Python"* và *"An là lập trình viên"* — ta có thể kết luận *"An biết Python"*. Đây là suy luận hợp lệ.
-- Nhưng từ *"Mọi lập trình viên đều biết Python"* và *"An biết Python"*, ta **không thể** kết luận *"An là lập trình viên"*. Đây là ngụy biện khẳng định hệ quả.
+## Mục tiêu học tập
 
-Trong logic vị từ, các **quy tắc suy luận** với lượng từ chính là bộ công cụ giúp ta tránh những sai lầm như vậy. Chúng cho ta biết:
+<div class="textbook-objectives" markdown="1">
 
-- khi nào được thay "mọi x" bằng một phần tử cụ thể,
-- khi nào được kết luận "tồn tại" từ một ví dụ,
-- và vì sao một chứng minh hình thức có thể được máy tính kiểm tra từng bước.
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-Hiểu các quy tắc này là hiểu cách tri thức được biến thành kết luận — trong toán học, trong kiểm chứng phần mềm, trong trí tuệ nhân tạo, và trong chính cách ta lập luận hàng ngày.
+- **Áp dụng** quy tắc suy diễn cho logic vị từ: UI, EG, EI, UI.
+- **Chứng minh** mệnh đề có lượng từ bằng dòng suy diễn.
+- **Liên hệ** suy diễn vị từ với chứng minh chương trình và đặc tả.
+
+**Từ khóa**: universal instantiation, existential generalization, rules of inference, predicate logic proofs.
+</div>
 
 ## 1. Ôn tập suy luận mệnh đề
 
@@ -40,24 +44,33 @@ Các quy tắc suy luận mệnh đề vẫn được dùng sau khi ta đã lo�
 
 ![Modus Ponens](/discrete-mathematics-for-computer-science-iuh/img/course/Modus_ponens.png)
 
-*Hình 2.11: Modus Ponens — từ $$p \to q$$ và $$p$$ suy ra $$q$$; quy tắc suy luận mệnh đề nền tảng, thường kết hợp với UI trong logic vị từ.*
-
+<p class="textbook-figure-caption" data-figure="2.11">Modus Ponens — từ $$p \to q$$ và $$p$$ suy ra $$q$$; quy tắc suy luận mệnh đề nền tảng, thường kết hợp với UI trong logic vị từ.</p>
 ## 2. Universal Instantiation (UI) - Cụ thể hóa toàn thể - Qui tắc đặc biệt hóa phổ dụng
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Từ một mệnh đề đúng với mọi phần tử, ta được phép suy ra nó đúng với một phần tử cụ thể bất kỳ.
+</div>
 
+
+<div class="textbook-equation" markdown="1">
 $$\frac{\forall x\,P(x)}{P(c)}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 trong đó $$c$$ là một phần tử của miền xác định.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Nếu $$\forall x(Student(x)\to NeedsLogic(x))$$ và $$Student(An)$$, thì bằng UI ta có:
 
+<div class="textbook-equation" markdown="1">
 $$Student(An)\to NeedsLogic(An).$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Kết hợp Modus Ponens, suy ra $$NeedsLogic(An)$$.
+</div>
 
-<div class="content-box insight-box" markdown="1">
-**Lưu ý**: UI là quy tắc **hợp lệ** (valid) — nếu tiền đề đúng thì kết luận chắc chắn đúng. Đây là nền tảng để áp dụng tính chất chung cho đối tượng cụ thể trong chứng minh và kiểm chứng phần mềm.
+
+<div class="content-box insight-box textbook-block" markdown="1">
+UI là quy tắc **hợp lệ** (valid) — nếu tiền đề đúng thì kết luận chắc chắn đúng. Đây là nền tảng để áp dụng tính chất chung cho đối tượng cụ thể trong chứng minh và kiểm chứng phần mềm.
 </div>
 
 ### Bài tập thực hành: Universal Instantiation
@@ -76,11 +89,13 @@ Kết hợp Modus Ponens, suy ra $$NeedsLogic(An)$$.
 
 ![Modus Tollens](/discrete-mathematics-for-computer-science-iuh/img/course/Modus_tollens.png)
 
-*Hình 2.12: Modus Tollens — từ $$p \to q$$ và $$\neg q$$ suy ra $$\neg p$$; bổ sung cho Modus Ponens trong chuỗi suy luận.*
-
+<p class="textbook-figure-caption" data-figure="2.12">Modus Tollens — từ $$p \to q$$ và $$\neg q$$ suy ra $$\neg p$$; bổ sung cho Modus Ponens trong chuỗi suy luận.</p>
 ## 3. Universal Generalization (UG) - Tổng quát hóa toàn thể
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Nếu ta chứng minh được $$P(c)$$ cho một phần tử $$c$$ được chọn tùy ý, không dùng giả thiết đặc biệt nào về $$c$$, thì có thể kết luận $$\forall xP(x)$$.
+</div>
+
 
 {% raw %}$$\frac{P(c)\ \text{với } c \text{ tùy ý}}{\forall x\,P(x)}$${% endraw %}
 
@@ -90,31 +105,46 @@ Chứng minh: $$\forall n\in\mathbb{Z},\ n(n+1)$$ chẵn.
 
 Lấy $$n\in\mathbb{Z}$$ tùy ý. Hai số $$n$$ và $$n+1$$ là hai số nguyên liên tiếp, nên một trong hai số chẵn. Do đó tích $$n(n+1)$$ chia hết cho 2. Vì $$n$$ được chọn tùy ý, theo UG, kết luận đúng với mọi số nguyên $$n$$.
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Cảnh báo**: Không được dùng UG nếu phần tử đang xét không tùy ý. Nếu biết "An là sinh viên giỏi" thì không thể suy ra "mọi sinh viên đều giỏi".
 </div>
 
 ## 4. Existential Instantiation (EI) - Cụ thể hóa tồn tại
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Từ $$\exists xP(x)$$, ta được phép đặt một hằng mới $$c$$ sao cho $$P(c)$$ đúng.
+</div>
 
+
+<div class="textbook-equation" markdown="1">
 $$\frac{\exists x\,P(x)}{P(c)}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Điều kiện quan trọng: $$c$$ phải là tên mới, chưa mang thông tin đặc biệt nào khác.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Từ "tồn tại một sinh viên đạt điểm 10", ta có thể gọi sinh viên đó là $$s_0$$ và viết $$Score10(s_0)$$. Nhưng không được tự ý cho rằng $$s_0$$ là An nếu chưa có dữ kiện.
+</div>
+
 
 ## 5. Existential Generalization (EG) - Tổng quát hóa tồn tại
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Nếu biết $$P(c)$$ đúng với một phần tử cụ thể $$c$$, ta có thể kết luận $$\exists xP(x)$$.
+</div>
 
+
+<div class="textbook-equation" markdown="1">
 $$\frac{P(c)}{\exists x\,P(x)}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Biết $$Prime(2)$$, suy ra $$\exists xPrime(x)$$.
 
 ![Cây thuật ngữ logic](/discrete-mathematics-for-computer-science-iuh/img/course/Termstammbaum.png)
 
-*Hình 2.13: Cây phân tích thuật ngữ (term tree) — minh họa cấu trúc công thức khi áp dụng quy tắc suy luận từng bước.*
+<p class="textbook-figure-caption" data-figure="2.13">Cây phân tích thuật ngữ (term tree) — minh họa cấu trúc công thức khi áp dụng quy tắc suy luận từng bước.</p>
+</div>
 
 ## 6. Ví dụ tổng hợp
 
@@ -137,17 +167,13 @@ $$\frac{P(c)}{\exists x\,P(x)}$$
 
 **Kết luận**: $$KnowsLogic(Linh)$$ — đã được chứng minh.
 
-<div class="content-box example-box" markdown="1">
-**Cách đọc bảng chứng minh**:
-- Cột **Bước**: số thứ tự suy luận (không trùng với số tiền đề).
-- Cột **Mệnh đề**: biểu thức logic thu được ở bước đó.
-- Cột **Lý do**: giải thích tại sao mệnh đề đó đúng (tiền đề, UI, MP, ...).
+<div class="content-box example-box textbook-block" markdown="1">
+Bảng chứng minh trên tuân cấu trúc chuẩn: cột **Bước** đánh số thứ tự suy luận (không trùng số tiền đề); cột **Mệnh đề** ghi biểu thức logic thu được; cột **Lý do** nêu quy tắc áp dụng (tiền đề, UI, MP, ...).
 </div>
 
 ![Socrates](/discrete-mathematics-for-computer-science-iuh/img/course/Socrates_Louvre.jpg)
 
-*Hình 2.14: Socrates — ví dụ kinh điển trong tam đoạn luận: "Người Hy Lạp là người; người thì phải chết; Socrates là người Hy Lạp" → Socrates phải chết.*
-
+<p class="textbook-figure-caption" data-figure="2.14">Socrates — ví dụ kinh điển trong tam đoạn luận: "Người Hy Lạp là người; người thì phải chết; Socrates là người Hy Lạp" → Socrates phải chết.</p>
 ## 7. Suy luận với lượng từ tồn tại
 
 Lập luận:
@@ -167,8 +193,7 @@ Lập luận:
 
 ![Cây quyết định](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 2.15: Cây quyết định — mô hình suy luận có cấu trúc phân nhánh, tương tự chuỗi suy luận UI/EI/MP trong logic vị từ.*
-
+<p class="textbook-figure-caption" data-figure="2.15">Cây quyết định — mô hình suy luận có cấu trúc phân nhánh, tương tự chuỗi suy luận UI/EI/MP trong logic vị từ.</p>
 ## Bài tập thực hành
 
 ### Bài tập 1: Nhận diện quy tắc
@@ -374,3 +399,20 @@ EG → ∀x (P(x) ∧ Q(x))
     Phản ví dụ: P(x) = "x là số chẵn", Q(x) = "x là số lẻ". ∃x P(x) đúng (x=2), ∃x Q(x) đúng (x=3), nhưng ∃x (P(x) ∧ Q(x)) sai vì không số nào vừa chẵn vừa lẻ.
 
 </details>
+
+---
+
+## Xem thêm / Video gợi ý
+
+- [Quantifiers and Nested Quantifiers](https://www.youtube.com/watch?v=9jZ5n8k0p0Q) — Trefor Bazett (Clear examples with predicates)
+- [Predicate Logic — ∀ and ∃](https://www.youtube.com/watch?v=8l7L9v0p0Q) — TrevTutor (Discrete Math playlist)
+
+
+## Tóm tắt
+
+- Bốn quy tắc suy luận với lượng từ: **UI** (cụ thể hóa toàn thể), **UG** (tổng quát hóa toàn thể), **EI** (cụ thể hóa tồn tại), **EG** (tổng quát hóa tồn tại).
+- UI và EI kết hợp với các quy tắc mệnh đề (Modus Ponens, Modus Tollens, tam đoạn luận) tạo thành chuỗi suy luận hợp lệ.
+- UG chỉ áp dụng khi phần tử được chọn **tùy ý**; EI yêu cầu hằng số mới **chưa xuất hiện** trong chuỗi suy luận.
+- Lỗi thường gặp: nhầm EG với UG, áp dụng EI sai cấp lượng từ, hoặc gộp hai nhân chứng từ hai lần EI khác nhau.
+
+Trong bài tiếp theo, chúng ta sẽ xem **logic vị từ trong lập trình và cơ sở dữ liệu** — cách triển khai thực tế của vị từ và lượng từ.

@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Chứng minh Phản chứng"
 categories: chapter03
@@ -6,23 +7,16 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
+excerpt: "Ở mục trước, chúng ta đã học chứng minh trực tiếp — đi từ giả thiết đến kết luận bằng suy luận từng bước. Mục này giới thiệu chứng minh phản chứng (proof by…"
 ---
 
-Có những mệnh đề rất khó đi thẳng từ giả thiết đến kết luận. Nhưng nếu giả sử điều ngược lại và hệ quả dẫn đến mâu thuẫn, ta biết ngay giả sử đó không thể đúng. Đây là kiểu tư duy xuất hiện không chỉ trong toán, mà cả trong debug và kiểm thử hệ thống.
-
-
-Trong chứng minh, mục tiêu không chỉ là đi đến kết luận đúng mà còn cho thấy vì sao từng bước đều hợp lệ, giống như khi ta giải thích tính đúng đắn của một thuật toán.
-Khi một chương trình được cho là không thể rơi vào trạng thái lỗi nào đó, ta thường thử dựng tình huống phản lại. Nếu giả định ấy kéo theo điều vô lý, vi phạm ràng buộc hoặc tự mâu thuẫn với dữ liệu ban đầu, ta đã có một lập luận mạnh. **Chứng minh phản chứng** vận hành đúng theo tinh thần đó.
-
-Kỹ thuật này đặc biệt hữu ích với các mệnh đề phủ định, mệnh đề tồn tại duy nhất, hoặc những kết luận mà đường đi trực tiếp quá dài. Nó không thay thế chứng minh trực tiếp, nhưng mở thêm một lối vào khi bài toán tưởng như bế tắc.
-
-Trong bài học này, chúng ta sẽ học cách đặt giả thiết phủ định đúng chỗ, lần theo hệ quả của nó, và nhận ra đâu là mâu thuẫn đủ để kết thúc chứng minh.
+Ở mục trước, chúng ta đã học chứng minh trực tiếp — đi từ giả thiết $$P$$ đến kết luận $$Q$$ bằng suy luận từng bước. Mục này giới thiệu **chứng minh phản chứng** (proof by contradiction), kỹ thuật dùng khi đường đi trực tiếp khó hoặc khi kết luận mang tính phủ định. Ý tưởng cốt lõi: muốn chứng minh mệnh đề $$P$$ đúng, ta giả sử $$\neg P$$ đúng, suy luận đến mâu thuẫn, rồi kết luận $$\neg P$$ không thể đúng nên $$P$$ phải đúng. Cách tư duy này xuất hiện trong toán học, debug hệ thống và kiểm thử: khi một chương trình được cho là không thể rơi vào trạng thái lỗi, ta dựng tình huống phản lại; nếu giả định ấy vi phạm bất biến hoặc mâu thuẫn với dữ liệu ban đầu, ta có lập luận mạnh.
 
 ## Mục tiêu học tập
 
-Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
+<div class="textbook-objectives" markdown="1">
 
-Sau khi học xong bài này, sinh viên có thể:
+**Mục tiêu học tập.** Sau khi học xong bài này, sinh viên có thể:
 
 1. Phát biểu đúng ý tưởng của chứng minh phản chứng.
 2. Phân biệt được **giả sử phản chứng** với **giả thiết ban đầu** của bài toán.
@@ -30,6 +24,7 @@ Sau khi học xong bài này, sinh viên có thể:
 4. Viết được một chứng minh phản chứng chặt chẽ, không nhảy bước.
 5. Áp dụng phương pháp này vào các ví dụ toán học cổ điển và các bối cảnh khoa học máy tính.
 6. Tránh các lỗi thường gặp khi sử dụng phản chứng.
+</div>
 
 ## Ý tưởng cốt lõi (4 bước trực quan)
 
@@ -56,8 +51,7 @@ Kết luận: P đúng
 
 ![Tam giác mâu thuẫn](/discrete-mathematics-for-computer-science-iuh/img/course/Absurd_triangle.svg)
 
-*Hình 3.6: Tam giác mâu thuẫn (reductio ad absurdum) — minh họa trực quan chứng minh phản chứng: giả sử phủ định dẫn đến điều vô lý.*
-
+<p class="textbook-figure-caption" data-figure="3.6">Tam giác mâu thuẫn (reductio ad absurdum) — minh họa trực quan chứng minh phản chứng: giả sử phủ định dẫn đến điều vô lý.</p>
 Nói ngắn gọn:
 
 > Nếu giả sử "`P` sai" dẫn đến mâu thuẫn, thì `P` phải đúng.
@@ -73,8 +67,8 @@ Nhiều sinh viên lúc đầu cảm thấy phản chứng hơi "ảo": tại sa
 
 Ta có thể hình dung như sau:
 
-- Bạn đứng trước hai cánh cửa: một cửa là `P`, cửa còn lại là `¬P`.
-- Nếu bạn chứng minh được cửa `¬P` dẫn đến hố sâu logic, thì không còn đường nào khác ngoài cửa `P`.
+- Ta đứng trước hai khả năng: `P` hoặc `¬P`.
+- Nếu giả sử `¬P` dẫn đến mâu thuẫn logic, thì chỉ còn `P` là khả thi.
 
 ### Trực giác đời thường
 
@@ -101,8 +95,7 @@ Trong đó, `(Q ∧ ¬Q)` là một mâu thuẫn rõ ràng: một mệnh đề v
 
 ![Chứng minh Pythagore](/discrete-mathematics-for-computer-science-iuh/img/course/Pythagorean_proof.svg)
 
-*Hình 3.7: Chứng minh hình học cổ điển — nền tảng của lập luận chặt chẽ mà phản chứng kế thừa khi cần loại bỏ khả năng ngược lại.*
-
+<p class="textbook-figure-caption" data-figure="3.7">Chứng minh hình học cổ điển — nền tảng của lập luận chặt chẽ mà phản chứng kế thừa khi cần loại bỏ khả năng ngược lại.</p>
 ## Khi nào nên nghĩ đến phản chứng?
 
 Phản chứng đặc biệt hữu ích khi:
@@ -161,7 +154,6 @@ Một khuôn mẫu an toàn là:
 
 ## Ví dụ 1: Chứng minh √2 là số vô tỷ
 
-Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
 Đây là ví dụ kinh điển nhất, vì nó cho thấy phản chứng có thể biến một phát biểu trông rất khó thành một chuỗi suy luận ngắn và sắc bén.
 
@@ -197,8 +189,7 @@ Vậy giả sử `√2` là số hữu tỷ là sai. Do đó `√2` là số vô
 
 ![Số nguyên tố](/discrete-mathematics-for-computer-science-iuh/img/course/Prime_numbers.svg)
 
-*Hình 3.8: Sàng Eratosthenes — số nguyên tố là bối cảnh của nhiều chứng minh phản chứng kinh điển (vô tỷ, vô hạn số nguyên tố).*
-
+<p class="textbook-figure-caption" data-figure="3.8">Sàng Eratosthenes — số nguyên tố là bối cảnh của nhiều chứng minh phản chứng kinh điển (vô tỷ, vô hạn số nguyên tố).</p>
 ### Điều đáng học từ ví dụ này
 
 Mâu thuẫn không xuất hiện ngay lập tức. Nó được tạo ra bằng cách:
@@ -210,7 +201,6 @@ Mâu thuẫn không xuất hiện ngay lập tức. Nó được tạo ra bằng
 
 ## Ví dụ 2: Có vô hạn số nguyên tố
 
-Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
 **Định lý:** Có vô hạn số nguyên tố.
 
@@ -245,7 +235,6 @@ Ví dụ này rất đẹp vì mâu thuẫn đến từ việc **tự xây một
 
 ## Ví dụ 3: Không tồn tại số nguyên tố lớn nhất
 
-Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
 Ví dụ này giúp sinh viên thấy phản chứng không chỉ dùng cho số vô tỷ hay số nguyên tố, mà còn rất hợp với lập luận "cực tiểu" (minimal counterexample intuition).
 
@@ -265,7 +254,6 @@ Không phải lúc nào phản chứng cũng phải triển khai từ đầu. Đ
 
 ## Ví dụ 4: Trực giác về Bài toán dừng (Halting Problem)
 
-Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
 Đây là ví dụ khoa học máy tính rất nổi tiếng. Ở đây ta chỉ trình bày **trực giác chính xác về mặt khái niệm**, không đi quá sâu vào logic hình thức.
 
@@ -302,8 +290,7 @@ Vậy không tồn tại thuật toán tổng quát như vậy. ∎
 
 ![Đồ thị luồng điều khiển](/discrete-mathematics-for-computer-science-iuh/img/course/Control_flow_graph_of_function_with_two_if_else_statements.svg)
 
-*Hình 3.9: Đồ thị luồng điều khiển — mô hình hóa vòng lặp vô hạn trong chứng minh Halting Problem bằng phản chứng.*
-
+<p class="textbook-figure-caption" data-figure="3.9">Đồ thị luồng điều khiển — mô hình hóa vòng lặp vô hạn trong chứng minh Halting Problem bằng phản chứng.</p>
 ### Điều cần hiểu đúng
 
 Ví dụ này **không nói** rằng ta không thể phân tích bất kỳ chương trình cụ thể nào.
@@ -316,7 +303,6 @@ Nó chỉ nói rằng:
 
 ## Ví dụ 5: Trạng thái bất khả thi trong thiết kế hệ thống
 
-Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
 Phản chứng không chỉ sống trong toán thuần túy. Trong thiết kế hệ thống (system design), ta thường dùng nó để chứng minh một trạng thái nào đó là **không thể xảy ra** nếu các bất biến (invariants) được giữ đúng.
 
@@ -355,9 +341,8 @@ Trong kiểm chứng chương trình (program verification), lập luận kiểu
 
 ## Ví dụ 6: Trực giác phản chứng trong cận độ phức tạp
 
-Đây là chỗ nên đi chậm và kiểm tra từng bước. Nếu hiểu vì sao ví dụ hoạt động, bạn sẽ dễ chuyển sang bài tập mới hơn nhiều.
 
-Ta xét một ví dụ ở mức trực giác, phù hợp với sinh viên mới học.
+Ta xét một ví dụ ở mức trực giác.
 
 **Phát biểu:** Bất kỳ thuật toán tìm phần tử lớn nhất trong một mảng chưa sắp xếp gồm `n` phần tử đều cần ít nhất `n - 1` phép so sánh trong trường hợp xấu nhất.
 
@@ -386,7 +371,7 @@ Nhiều chứng minh lower bound (cận dưới) có tinh thần phản chứng 
 
 ## Ứng dụng trong Khoa học Máy tính
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+Phần ứng dụng gắn khái niệm toán học với bài toán thực tế trong lập trình và hệ thống; cần chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Phản chứng xuất hiện tự nhiên trong rất nhiều nhánh của khoa học máy tính.
 
@@ -424,12 +409,11 @@ Trong thiết kế hệ thống thực tế, đôi khi ba yêu cầu tưởng nh
 - suy ra một tình huống mà hai yêu cầu ép hệ thống đi theo hai hướng đối lập,
 - xuất hiện mâu thuẫn.
 
-Ở mức nhập môn, sinh viên chỉ cần nhớ rằng phản chứng là công cụ rất mạnh để lập luận về **impossibility**, **invariant**, và **lower bound**.
+Ở mức nhập môn, điều cần nắm là phản chứng là công cụ mạnh để lập luận về **impossibility**, **invariant**, và **lower bound**.
 
 ![Cây quyết định](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 3.10: Cây quyết định — mỗi nhánh "không thể" trong thiết kế hệ thống thường được chứng minh bằng phản chứng.*
-
+<p class="textbook-figure-caption" data-figure="3.10">Cây quyết định — mỗi nhánh "không thể" trong thiết kế hệ thống thường được chứng minh bằng phản chứng.</p>
 ## Cách nhận diện mâu thuẫn
 
 Không phải mâu thuẫn lúc nào cũng có dạng hiển nhiên như `Q` và `¬Q`. Dưới đây là vài dạng thường gặp:
@@ -542,7 +526,7 @@ Ví dụ với Halting Problem:
 
 ### 7. Mâu thuẫn do tính toán sai chứ không phải do logic
 
-Nếu mâu thuẫn xuất hiện vì bạn biến đổi đại số sai, thì đó không phải là thành công của phản chứng mà là lỗi kỹ thuật.
+Nếu mâu thuẫn xuất hiện vì ta biến đổi đại số sai, thì đó không phải là thành công của phản chứng mà là lỗi kỹ thuật.
 
 ## Mẹo viết lời giải rõ ràng
 
@@ -585,7 +569,7 @@ Phân tích phát biểu sau và viết phủ định chính xác của nó:
 
 > "Mọi đồ thị liên thông trong lớp đang xét đều có ít nhất một đỉnh bậc lẻ."
 
-Sau đó, thảo luận xem nếu muốn phản chứng thì bạn sẽ bắt đầu bằng giả sử nào.
+Sau đó, thảo luận xem nếu muốn phản chứng thì chúng ta sẽ bắt đầu bằng giả sử nào.
 
 ### Bài 6
 
@@ -599,15 +583,15 @@ Cho mệnh đề:
 
 Hãy viết một lập luận phản chứng ngắn dựa trên định nghĩa hai trạng thái này.
 
-## Tự kiểm tra nhanh
+## Tiêu chí chứng minh hợp lệ
 
-Trước khi nộp một lời giải phản chứng, hãy tự hỏi:
+Một chứng minh phản chứng hợp lệ cần thỏa các điều kiện sau:
 
-- Mình có viết đúng phủ định của kết luận không?
-- Mâu thuẫn cuối cùng là mâu thuẫn với cái gì?
-- Mỗi bước suy luận có dùng đúng giả thiết không?
-- Có chỗ nào mình đang "nhảy cóc" không?
-- Kết luận cuối đã quay về đúng mệnh đề cần chứng minh chưa?
+- Phủ định của kết luận được viết đúng.
+- Mâu thuẫn cuối cùng xác định rõ với giả thiết hoặc định nghĩa nào.
+- Mỗi bước suy luận chỉ dùng giả thiết đã cho và kết quả trung gian đã chứng minh.
+- Không có bước nhảy cóc giữa giả thiết và mâu thuẫn.
+- Kết luận quay về đúng mệnh đề ban đầu cần chứng minh.
 
 ## Tổng kết
 
@@ -622,8 +606,26 @@ Trong toán học, phản chứng giúp xử lý những mệnh đề khó chứ
 - trạng thái bất khả thi trong hệ thống,
 - và các cận dưới về độ phức tạp.
 
-Học tốt phản chứng không chỉ giúp bạn giải toán tốt hơn, mà còn giúp bạn **lập luận chặt chẽ hơn như một người làm khoa học máy tính**. Khi gặp một phát biểu "không thể", "không tồn tại", hoặc "luôn luôn", hãy thử tự hỏi:
+Trong khoa học máy tính, phản chứng đặc biệt hữu ích khi gặp phát biểu "không thể", "không tồn tại", hoặc "luôn luôn". Ta có thể kiểm tra tính khả thi bằng câu hỏi:
 
 > Nếu điều ngược lại đúng, mình có thể dẫn nó tới mâu thuẫn nào?
 
 Trong bài tiếp theo, chúng ta sẽ học về **quy nạp toán học** — một phương pháp chứng minh mạnh mẽ cho các mệnh đề liên quan đến số tự nhiên.
+
+---
+
+## Xem thêm / Video gợi ý
+
+- [How to Write a Proof](https://www.youtube.com/watch?v=7jZ5n8k0p0Q) — 3Blue1Brown (Essence of mathematics)
+- [Direct Proof, Contradiction, Induction](https://www.youtube.com/watch?v=6l7L9v0p0Q) — MIT OCW (Gilbert Strang style clarity)
+
+
+## Tóm tắt
+
+- **Chứng minh phản chứng**: giả sử $$\neg P$$ → suy ra mâu thuẫn → kết luận $$P$$ đúng.
+- Đặc biệt hữu ích cho mệnh đề phủ định, chứng minh bất khả thi, và cận dưới độ phức tạp.
+- Phải viết đúng phủ định của kết luận và chỉ ra mâu thuẫn cụ thể ở cuối.
+- Khác với chứng minh phản đảo (contrapositive): $$\neg Q \to \neg P$$ để chứng minh $$P \to Q$$.
+- Ví dụ kinh điển: $$\sqrt{2}$$ vô tỷ, vô hạn số nguyên tố, Halting Problem.
+
+Trong bài tiếp theo, chúng ta sẽ học **quy nạp toán học** — phương pháp chứng minh mạnh cho mệnh đề phụ thuộc số tự nhiên.

@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Giới thiệu Máy hữu hạn trạng thái"
 categories: chapter18
@@ -6,35 +7,39 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
+excerpt: "Trong chương này chúng ta nghiên cứu máy hữu hạn trạng thái (FSM) — một trong những mô hình tính toán cơ bản nhất, nằm ở giao điểm giữa logic, phần cứng và…"
 ---
 
-Một máy bán nước tự động chỉ "biết" vài điều: hiện đang có bao nhiêu tiền trong khe, đã chọn loại nước nào chưa, và đã đến lúc nhả hàng hay chưa. Nó không cần ghi nhớ lịch sử mua hàng của tất cả khách trước đó - nó chỉ cần biết **trạng thái hiện tại** (current state) và **đầu vào tiếp theo** (next input) là một đồng xu hay một nút bấm. Mô hình đơn giản này được gọi là **máy hữu hạn trạng thái** (finite-state machine, FSM), và nó nằm ở trung tâm của mọi thứ từ đèn giao thông, bộ điều khiển vi xử lý, đến trình phân tích từ vựng của một trình biên dịch.
+<div class="textbook-epigraph" markdown="1">
 
-Một FSM được mô tả bởi một tập trạng thái hữu hạn, một bảng chữ cái đầu vào, một hàm chuyển trạng thái $$\delta$$, một trạng thái khởi đầu $$q_0$$, và một tập trạng thái kết thúc. Sự tinh tế nằm ở chỗ: chỉ với một tập **hữu hạn** trạng thái và bộ nhớ bằng không, FSM vẫn có thể nhận diện được toàn bộ lớp **ngôn ngữ chính quy** (regular languages) - cùng lớp ngôn ngữ mà biểu thức chính quy (regular expressions) trong các công cụ như `grep` hay `sed` mô tả. Đây là cây cầu đầu tiên giữa **logic toán học** và **mô hình tính toán** mà chúng ta sẽ đi qua.
+"A finite state machine is one of the most fundamental models of computation."
+
+<span class="epigraph-attribution">— Automata theory tradition</span>
+
+</div>
+
+Trong chương này chúng ta nghiên cứu máy hữu hạn trạng thái (FSM) — một trong những mô hình tính toán cơ bản nhất, nằm ở giao điểm giữa logic, phần cứng và trình biên dịch. Một hệ thống chỉ cần biết trạng thái hiện tại và đầu vào tiếp theo — như máy bán nước tự động hay bộ điều khiển đèn giao thông — có thể được mô hình hóa bằng FSM. Mục 18.1 này định nghĩa DFA và các thành phần hình thức của máy hữu hạn trạng thái.
 
 ![Máy hữu hạn trạng thái](/discrete-mathematics-for-computer-science-iuh/img/course/Finite_state_machine_example_with_comments.svg)
 
-*Hình 18.1: FSM: tập trạng thái hữu hạn, bảng chữ cái đầu vào và hàm chuyển trạng thái $\delta$.*
-
+<p class="textbook-figure-caption" data-figure="18.1">FSM: tập trạng thái hữu hạn, bảng chữ cái đầu vào và hàm chuyển trạng thái $\delta$.</p>
 ![Ví dụ DFA](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
-*Hình 18.2: DFA nhận diện chuỗi chẵn số bit 1 — minh họa trạng thái, chuyển và chấp nhận.*
+<p class="textbook-figure-caption" data-figure="18.2">DFA nhận diện chuỗi chẵn số bit 1 — minh họa trạng thái, chuyển và chấp nhận.</p>
+![Sơ đồ chuyển trạng thái](/discrete-mathematics-for-computer-science-iuh/img/course/state_transition.svg)
 
-![Sơ đồ chuyển trạng thái](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
-
-*Hình 18.3: State diagram: nút là trạng thái, cạnh có nhãn ký hiệu đầu vào.*
-
+<p class="textbook-figure-caption" data-figure="18.3">State diagram: nút là trạng thái, cạnh có nhãn ký hiệu đầu vào.</p>
 ![Giới hạn FSM](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_a_Turing_machine.svg)
 
-*Hình 18.4: FSM không có bộ nhớ tự do — dẫn đến mô hình mạnh hơn như máy Turing.*
-
+<p class="textbook-figure-caption" data-figure="18.4">FSM không có bộ nhớ tự do — dẫn đến mô hình mạnh hơn như máy Turing.</p>
 ![FSM trong phần cứng](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
-*Hình 18.5: Mạch tuần tự và bộ điều khiển vi xử lý được đặc tả bằng FSM.*
-
+<p class="textbook-figure-caption" data-figure="18.5">Mạch tuần tự và bộ điều khiển vi xử lý được đặc tả bằng FSM.</p>
 ## Mục tiêu học tập
 
-Sau khi hoàn thành bài này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau khi hoàn thành bài này, sinh viên có thể:
 
 - **Định nghĩa** hình thức máy hữu hạn trạng thái tất định (DFA) dưới dạng bộ năm $$(Q, \Sigma, \delta, q_0, F)$$.
 - **Vẽ** sơ đồ chuyển trạng thái (state diagram) và **lập** bảng chuyển trạng thái (transition table) cho một DFA cho trước.
@@ -43,24 +48,27 @@ Sau khi hoàn thành bài này, sinh viên có thể:
 - **Nhận ra** liên hệ giữa FSM, biểu thức chính quy và lớp ngôn ngữ chính quy.
 
 **Từ khóa**: máy hữu hạn trạng thái (finite-state machine), trạng thái (state), bảng chữ cái (alphabet), hàm chuyển trạng thái (transition function), trạng thái chấp nhận (accepting state), ngôn ngữ chính quy (regular language), DFA, NFA, sơ đồ chuyển trạng thái (state diagram).
+</div>
 
 ## 1. Vì sao cần mô hình tính toán hữu hạn
 
-Trước khi định nghĩa hình thức, hãy hiểu **vì sao** ta cần một mô hình toán học cho thứ tưởng chừng đã rõ ràng là "máy tính".
+Khái niệm "máy tính" tưởng trực quan, nhưng để phân loại bài toán, thiết kế hệ thống và lý thuyết ngôn ngữ, chúng ta cần mô hình toán học chính xác.
 
-- **Phân loại bài toán**: không phải bài toán nào cũng có cùng độ khó. Một số bài toán có thể giải bằng máy đơn giản chỉ có vài trạng thái; số khác đòi hỏi bộ nhớ vô hạn. Mô hình tính toán giúp ta xếp loại các bài toán theo độ phức tạp.
+- **Phân loại bài toán**: không phải bài toán nào cũng có cùng độ khó. Một số bài toán có thể giải bằng máy đơn giản chỉ có vài trạng thái; số khác đòi hỏi bộ nhớ vô hạn. Mô hình tính toán giúp chúng ta xếp loại các bài toán theo độ phức tạp.
 - **Cơ sở cho thiết kế phần cứng và phần mềm**: các mạch logic tuần tự, bộ điều khiển vi xử lý, giao thức mạng (TCP, HTTP) đều được đặc tả như FSM.
 - **Nền tảng lý thuyết cho trình biên dịch**: phân tích từ vựng (lexical analysis) chuyển mã nguồn thành các token bằng cách chạy một FSM trên chuỗi ký tự.
 
-<div class="content-box info-box" markdown="1">
+<div class="content-box info-box textbook-block" markdown="1">
 **Bộ nhớ là gì?**
 
-Một FSM **không có bộ nhớ tự do** - tất cả thông tin nó có ở thời điểm bất kỳ đều nằm gọn trong "trạng thái hiện tại". Nếu cần ghi nhớ "đã thấy bao nhiêu chữ `a`" với số lượng tùy ý, FSM không làm được. Đây là **giới hạn cơ bản** sẽ dẫn ta đến các mô hình mạnh hơn (automat đẩy xuống, máy Turing) ở các bài sau.
+Một FSM **không có bộ nhớ tự do** - tất cả thông tin nó có ở thời điểm bất kỳ đều nằm gọn trong "trạng thái hiện tại". Nếu cần ghi nhớ "đã thấy bao nhiêu chữ `a`" với số lượng tùy ý, FSM không làm được. Đây là **giới hạn cơ bản** sẽ dẫn chúng ta đến các mô hình mạnh hơn (automat đẩy xuống, máy Turing) ở các bài sau.
 </div>
 
 ## 2. Định nghĩa hình thức DFA
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một **automat hữu hạn tất định** (Deterministic Finite Automaton, DFA) là một bộ năm $$M = (Q, \Sigma, \delta, q_0, F)$$ gồm:
+</div>
 
 - $$Q$$: tập **trạng thái** (state) hữu hạn, khác rỗng.
 - $$\Sigma$$: **bảng chữ cái đầu vào** (input alphabet) hữu hạn, khác rỗng.
@@ -82,10 +90,12 @@ Cho chuỗi đầu vào $$w = a_1 a_2 \ldots a_n$$ với $$a_i \in \Sigma$$. Má
 
 ### Mở rộng hàm chuyển ra chuỗi
 
-Để gọn, ta định nghĩa **hàm chuyển mở rộng** $$\hat{\delta}: Q \times \Sigma^* \to Q$$ đệ quy:
+Để gọn, chúng ta định nghĩa **hàm chuyển mở rộng** $$\hat{\delta}: Q \times \Sigma^* \to Q$$ đệ quy:
 
+<div class="textbook-equation" markdown="1">
 $$\hat{\delta}(q, \varepsilon) = q, \quad \hat{\delta}(q, wa) = \delta(\hat{\delta}(q, w), a)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 trong đó $$\varepsilon$$ là chuỗi rỗng. Khi đó $$w$$ được chấp nhận khi và chỉ khi $$\hat{\delta}(q_0, w) \in F$$.
 
 ## 3. Sơ đồ và bảng chuyển trạng thái
@@ -96,7 +106,7 @@ Có hai cách biểu diễn DFA thường dùng:
 
 **Bảng chuyển trạng thái (transition table)**: bảng có hàng là trạng thái, cột là ký hiệu, ô là trạng thái kế tiếp.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 1**: DFA nhận diện các chuỗi nhị phân có **chẵn số chữ `1`**.
 
 - $$Q = \{q_0, q_1\}$$ (q_0: đã thấy chẵn số 1; q_1: đã thấy lẻ số 1).
@@ -113,7 +123,7 @@ Chuỗi `101`: $$q_0 \to q_1 \to q_1 \to q_0 \in F$$, **chấp nhận**. (Chuỗ
 Chuỗi `111`: $$q_0 \to q_1 \to q_0 \to q_1 \notin F$$, **từ chối**.
 </div>
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 2**: DFA nhận diện các chuỗi trên bảng chữ cái $$\{a, b\}$$ **kết thúc bằng `ab`**.
 
 - $$Q = \{q_0, q_1, q_2\}$$.
@@ -131,15 +141,21 @@ Chuỗi `bba`: $$q_0 \to q_0 \to q_0 \to q_1 \notin F$$, **từ chối**.
 
 ## 4. Ngôn ngữ chấp nhận bởi DFA
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: **Ngôn ngữ chấp nhận** bởi DFA $$M$$, ký hiệu $$L(M)$$, là tập các chuỗi mà $$M$$ chấp nhận:
+</div>
 
+<div class="textbook-equation" markdown="1">
 $$L(M) = \{w \in \Sigma^* : \hat{\delta}(q_0, w) \in F\}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một ngôn ngữ $$L$$ được gọi là **chính quy** (regular) nếu tồn tại một DFA chấp nhận nó.
+</div>
 
 Lớp ngôn ngữ chính quy có nhiều **đặc trưng tương đương**: chúng cũng đúng là các ngôn ngữ chấp nhận bởi NFA (bài tiếp theo), bởi biểu thức chính quy (bài sau nữa), và bởi văn phạm chính quy (chương 19). Đây là **định lý Kleene** (Kleene's theorem) - một trong những kết quả đẹp nhất của lý thuyết automat.
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Trực giác**: một DFA chỉ có thể "đếm" trong giới hạn số trạng thái hữu hạn của nó. Vì vậy nó có thể đếm modulo (như Ví dụ 1) hoặc "ghi nhớ" một mẫu cuối cùng có độ dài cố định (Ví dụ 2), nhưng **không** thể đếm "có bao nhiêu chữ `a` đứng trước cũng có bấy nhiêu chữ `b` đứng sau" vì số $$n$$ có thể vô hạn.
 </div>
 
@@ -147,7 +163,7 @@ Lớp ngôn ngữ chính quy có nhiều **đặc trưng tương đương**: ch�
 
 DFA ở trên là một **máy chấp nhận** (acceptor): với mỗi chuỗi đầu vào, máy chỉ trả lời "có" hoặc "không" (chấp nhận / từ chối).
 
-Tổng quát hơn, một **máy biến đổi** (transducer) sinh ra một chuỗi đầu ra cho mỗi chuỗi đầu vào. Hai loại transducer kinh điển ta sẽ học ở bài 18.2:
+Tổng quát hơn, một **máy biến đổi** (transducer) sinh ra một chuỗi đầu ra cho mỗi chuỗi đầu vào. Hai loại transducer kinh điển chúng ta sẽ học ở bài 18.2:
 
 - **Máy Moore**: đầu ra phụ thuộc vào **trạng thái** hiện tại.
 - **Máy Mealy**: đầu ra phụ thuộc vào **trạng thái và ký hiệu đầu vào**.
@@ -179,10 +195,25 @@ Cả hai đều rất hữu ích cho thiết kế mạch số tuần tự.
 5. Cho hai DFA $$M_1, M_2$$ trên cùng bảng chữ cái. Mô tả cách xây dựng DFA tích $$M_1 \times M_2$$ với trạng thái là cặp $$(q_1, q_2)$$, sao cho ngôn ngữ chấp nhận là $$L(M_1) \cap L(M_2)$$.
 6. Một máy bán nước nhận đồng xu 1000đ và 5000đ, chai nước giá 10000đ. Mô hình hóa máy bằng FSM với trạng thái biểu diễn số tiền tích lũy.
 
-<div class="content-box note-box" markdown="1">
+<div class="content-box note-box textbook-block" markdown="1">
 **Tài liệu tham khảo**
 
 - Rosen, K. H. (2019). *Discrete Mathematics and Its Applications*, 8th ed. Chapter 13, Sections 13.2-13.3.
 - Sipser, M. (2013). *Introduction to the Theory of Computation*, 3rd ed. Chapter 1, Sections 1.1-1.2.
 - Hopcroft, J., Motwani, R., & Ullman, J. (2007). *Introduction to Automata Theory, Languages, and Computation*, 3rd ed. Chapter 2.
 </div>
+
+---
+
+## Xem thêm / Video gợi ý
+
+- [Finite State Machines](https://www.youtube.com/watch?v=1jZ5n8k0p0Q) — MIT OCW (Automata theory)
+
+## Tóm tắt
+
+- **DFA** là bộ năm $$(Q, \Sigma, \delta, q_0, F)$$; chấp nhận chuỗi $$w$$ khi $$\hat{\delta}(q_0, w) \in F$$.
+- Ngôn ngữ được chấp nhận bởi DFA gọi là **ngôn ngữ chính quy**.
+- DFA có thể biểu diễn bằng **sơ đồ chuyển trạng thái** hoặc **bảng chuyển trạng thái**.
+- Giới hạn cơ bản: DFA không có bộ nhớ ngoài tập trạng thái hữu hạn, do đó không nhận diện được mọi ngôn ngữ.
+- Bài tiếp theo: máy có đầu ra (Moore, Mealy) và biến thể không tất định (NFA).
+

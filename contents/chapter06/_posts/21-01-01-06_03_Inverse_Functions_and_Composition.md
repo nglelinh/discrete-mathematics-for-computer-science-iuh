@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Hàm nghịch đảo và Hàm hợp"
 categories: chapter06
@@ -6,103 +7,145 @@ date: 2021-01-01
 order: 3
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã học tính chất đơn ánh, toàn ánh và song ánh. Mục này giới thiệu hàm hợp và hàm nghịch đảo — hai khái niệm nối trực tiếp với pipeline…"
 ---
 
-Trong phần mềm, dữ liệu hiếm khi chỉ đi qua một bước. Nó thường được biến đổi theo chuỗi: parse rồi validate, encode rồi transmit, normalize rồi index. Cũng có lúc ta cần đi ngược lại, từ kết quả quay về dữ liệu gốc. Hai nhu cầu đó dẫn thẳng đến **hàm hợp** và **hàm nghịch đảo**.
+Ở mục trước chúng ta đã học tính chất đơn ánh, toàn ánh và song ánh. Mục này giới thiệu **hàm hợp** và **hàm nghịch đảo** — hai khái niệm nối trực tiếp với pipeline xử lý dữ liệu và các phép biến đổi khả nghịch.
 
+Trong phần mềm, dữ liệu hiếm khi chỉ đi qua một bước: nó thường được biến đổi theo chuỗi parse–validate–encode. Hàm hợp mô tả việc ghép nhiều ánh xạ thành một pipeline; hàm nghịch đảo trả lời liệu chúng ta có thể phục hồi chính xác đầu vào ban đầu hay không. Không phải hàm nào cũng có nghịch đảo — điều kiện cần là tính song ánh.
 
-Trong khoa học máy tính, hàm số xuất hiện ở khắp nơi, từ ánh xạ đầu vào sang đầu ra đến biến đổi dữ liệu và mô hình hóa trạng thái.
-Hàm hợp mô tả việc ghép nhiều ánh xạ thành một pipeline duy nhất. Hàm nghịch đảo trả lời câu hỏi khó hơn: sau khi biến đổi, ta có thể phục hồi chính xác đầu vào ban đầu hay không? Đây là ý tưởng rất quen trong mã hóa, chuyển đổi kiểu dữ liệu, biên dịch và xử lý tín hiệu.
+## Mục tiêu học tập
 
-Điểm then chốt là không phải hàm nào cũng có nghịch đảo. Muốn đảo được, hàm phải đủ chính xác để không làm mất thông tin. Vì vậy, chủ đề này nối trực tiếp với các tính chất đơn ánh, toàn ánh và song ánh của bài trước.
+<div class="textbook-objectives" markdown="1">
 
-Trong bài này, chúng ta sẽ học cách ghép hàm, tìm hàm nghịch đảo khi có thể, và dùng các khái niệm đó để nhìn rõ hơn cấu trúc của các phép biến đổi.
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
+
+- **Tính** hàm hợp $$(g \circ f)(x)$$ và hàm đồng nhất.
+- **Xác định** điều kiện tồn tại hàm nghịch đảo.
+- **Áp dụng** composition trong pipeline dữ liệu và lập trình hàm.
+
+**Từ khóa**: hàm hợp, hàm nghịch đảo, đồng nhất, composition.
+</div>
 
 ## 1. Hàm hợp
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Cho $$f:A\to B$$ và $$g:B\to C$$. **Hàm hợp** của $$g$$ sau $$f$$ là hàm $$g\circ f:A\to C$$ xác định bởi:
+</div>
 
+<div class="textbook-equation" markdown="1">
 $$(g\circ f)(x)=g(f(x)).$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Ký hiệu**: $$g\circ f$$ đọc là "g hợp f" hoặc "g sau f". Tính $$f$$ trước, rồi tính $$g$$.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Với $$f(x)=2x+1$$ và $$g(x)=x^2$$:
 
+<div class="textbook-equation" markdown="1">
 $$(g\circ f)(x)=(2x+1)^2,$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$(f\circ g)(x)=2x^2+1.$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Hai biểu thức thường khác nhau; phép hợp không giao hoán.
 
 ![Hàm hợp g∘f — ghép hai ánh xạ](/discrete-mathematics-for-computer-science-iuh/img/course/Example_for_a_composition_of_two_functions.svg)
 
-*Hình 6.13: Hàm hợp $$(g \circ f)(x) = g(f(x))$$ — thực hiện f trước, rồi g; kết quả ánh xạ A → C.*
+<p class="textbook-figure-caption" data-figure="6.13">Hàm hợp $$(g \circ f)(x) = g(f(x))$$ — thực hiện f trước, rồi g; kết quả ánh xạ A → C.</p>
+</div>
 
 ## 2. Điều kiện để hợp được
 
 Để $$g\circ f$$ xác định, mọi giá trị $$f(x)$$ phải thuộc domain của $$g$$. Nói cách khác:
 
+<div class="textbook-equation" markdown="1">
 $$f(A)\subseteq \operatorname{dom}(g).$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Nếu $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^2$$ và $$g:[0,\infty)\to\mathbb{R}$$, $$g(x)=\sqrt{x}$$, thì $$g\circ f$$ xác định vì $$f(\mathbb{R})=[0,\infty)$$.
 
 ![Điều kiện hợp — ảnh của f nằm trong domain của g](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
-*Hình 6.14: Để $$g \circ f$$ xác định, mọi giá trị $$f(x)$$ phải thuộc domain của g — output của bước 1 là input của bước 2.*
+<p class="textbook-figure-caption" data-figure="6.14">Để $$g \circ f$$ xác định, mọi giá trị $$f(x)$$ phải thuộc domain của g — output của bước 1 là input của bước 2.</p>
+</div>
 
 ## 3. Tính kết hợp của hàm hợp
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Nếu các hàm hợp xác định, thì:
+</div>
 
+<div class="textbook-equation" markdown="1">
 $$h\circ(g\circ f)=(h\circ g)\circ f.$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 ### Chứng minh
 
 Với mọi $$x$$ trong domain của $$f$$:
 
+<div class="textbook-equation" markdown="1">
 $$[h\circ(g\circ f)](x)=h((g\circ f)(x))=h(g(f(x))).$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Mặt khác:
 
+<div class="textbook-equation" markdown="1">
 $$[(h\circ g)\circ f](x)=(h\circ g)(f(x))=h(g(f(x))).$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Hai vế cho cùng giá trị với mọi $$x$$, nên hai hàm bằng nhau.
 
 ![Tính kết hợp — (h∘g)∘f = h∘(g∘f)](/discrete-mathematics-for-computer-science-iuh/img/course/Example_for_a_composition_of_two_functions.svg)
 
-*Hình 6.15: Phép hợp có tính kết hợp nhưng không giao hoán — thứ tự ghép hàm quan trọng.*
-
+<p class="textbook-figure-caption" data-figure="6.15">Phép hợp có tính kết hợp nhưng không giao hoán — thứ tự ghép hàm quan trọng.</p>
 ## 4. Hàm đồng nhất
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm đồng nhất trên $$A$$ là $$id_A:A\to A$$, $$id_A(x)=x$$.
+</div>
 
 **Tính chất**:
 
+<div class="textbook-equation" markdown="1">
 $$f\circ id_A=f,$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$id_B\circ f=f$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 với $$f:A\to B$$.
 
 Hàm đồng nhất đóng vai trò phần tử trung hòa của phép hợp.
 
 ![Hàm đồng nhất id(x) = x](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
-*Hình 6.16: Hàm đồng nhất $$id_A$$ là phần tử trung hòa — $$f \circ id = id \circ f = f$$.*
-
+<p class="textbook-figure-caption" data-figure="6.16">Hàm đồng nhất $$id_A$$ là phần tử trung hòa — $$f \circ id = id \circ f = f$$.</p>
 ## 5. Hàm nghịch đảo
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Với $$f:A\to B$$, một hàm $$g:B\to A$$ được gọi là **hàm nghịch đảo** của $$f$$ nếu:
+</div>
 
+<div class="textbook-equation" markdown="1">
 $$g\circ f=id_A$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 và
 
+<div class="textbook-equation" markdown="1">
 $$f\circ g=id_B.$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+Khi tồn tại, chúng ta viết $$g=f^{-1}$$.
 
-Khi tồn tại, ta viết $$g=f^{-1}$$.
-
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Hàm $$f:A\to B$$ có nghịch đảo hai phía khi và chỉ khi $$f$$ là song ánh.
+</div>
 
 ### Chứng minh ý chính
 
@@ -112,23 +155,31 @@ Ngược lại, nếu $$f$$ song ánh, mỗi $$y\in B$$ có đúng một tiền 
 
 ![Hàm nghịch đảo — chỉ tồn tại khi song ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
-*Hình 6.17: Hàm nghịch đảo $$f^{-1}$$ tồn tại khi và chỉ khi f song ánh — đảo chiều mũi tên mà không mất thông tin.*
-
+<p class="textbook-figure-caption" data-figure="6.17">Hàm nghịch đảo $$f^{-1}$$ tồn tại khi và chỉ khi f song ánh — đảo chiều mũi tên mà không mất thông tin.</p>
 ## 6. Tìm hàm nghịch đảo
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Tìm nghịch đảo của $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=3x-2$$.
 
 Đặt $$y=3x-2$$. Giải theo $$x$$:
 
+<div class="textbook-equation" markdown="1">
 $$x=\frac{y+2}{3}.$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Vậy:
 
+<div class="textbook-equation" markdown="1">
 $$f^{-1}(y)=\frac{y+2}{3}.$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Đổi biến thường viết:
 
+<div class="textbook-equation" markdown="1">
 $$f^{-1}(x)=\frac{x+2}{3}.$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+</div>
 
 ## 7. Khi nào không có nghịch đảo?
 
@@ -148,8 +199,7 @@ result = tokenize(clean("  Discrete Math  "))
 
 ![Pipeline dữ liệu — chuỗi hàm hợp](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
-*Hình 6.18: Pipeline xử lý dữ liệu là hàm hợp — clean ∘ tokenize ánh xạ chuỗi thô sang danh sách token.*
-
+<p class="textbook-figure-caption" data-figure="6.18">Pipeline xử lý dữ liệu là hàm hợp — clean ∘ tokenize ánh xạ chuỗi thô sang danh sách token.</p>
 - **Pipeline dữ liệu**: mỗi bước là một hàm, toàn pipeline là hàm hợp.
 - **Mật mã học**: mã hóa và giải mã phải là hai hàm nghịch đảo trên không gian thông điệp hợp lệ.
 - **Serialization**: `decode(encode(x)) = x` là điều kiện nghịch đảo một phía quan trọng.
@@ -197,8 +247,13 @@ print(h(3))  # 8
 
 </details>
 
+## Xem thêm / Video gợi ý
+
+- [Injective, Surjective, Bijective](https://www.youtube.com/watch?v=2jZ5n8k0p0Q) — 3Blue1Brown (Visual explanation)
+
 ## Tóm tắt
 
-Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
-
-Hàm hợp ghép các biến đổi theo thứ tự xác định và có tính kết hợp nhưng không giao hoán. Hàm đồng nhất là phần tử trung hòa. Hàm nghịch đảo tồn tại chính xác khi hàm ban đầu là song ánh; nó mô hình hóa thao tác undo, decode, deserialize và các biến đổi không mất thông tin.
+- **Hàm hợp** $$(g \circ f)(x) = g(f(x))$$: thực hiện $$f$$ trước, rồi $$g$$; có tính kết hợp nhưng không giao hoán
+- **Hàm đồng nhất** $$id_A$$: phần tử trung hòa của phép hợp
+- **Hàm nghịch đảo** $$f^{-1}$$ tồn tại khi và chỉ khi $$f$$ song ánh
+- **Ứng dụng CS**: pipeline dữ liệu, mật mã học, serialization, lập trình hàm

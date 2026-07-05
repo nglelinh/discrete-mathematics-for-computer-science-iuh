@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Tính chất của Quan hệ"
 categories: chapter05
@@ -6,17 +7,25 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã định nghĩa quan hệ, các cách biểu diễn và ứng dụng cơ bản trong cơ sở dữ liệu và đồ thị. Mục này giới thiệu bốn tính chất cơ bản —…"
 ---
 
-Sau khi biết quan hệ là gì, bước quan trọng tiếp theo là phân biệt các kiểu hành vi khác nhau của quan hệ. Không phải cứ có liên kết giữa hai đối tượng là ta hiểu được cấu trúc của cả hệ thống.
+Ở mục trước chúng ta đã định nghĩa quan hệ, các cách biểu diễn và ứng dụng cơ bản trong cơ sở dữ liệu và đồ thị. Mục này giới thiệu bốn tính chất cơ bản — phản xạ, đối xứng, phản đối xứng và bắc cầu — dùng để phân loại và phân tích cấu trúc quan hệ.
 
+Không phải mọi liên kết giữa hai đối tượng đều có cùng bản chất: quan hệ "bằng nhau" khác quan hệ "nhỏ hơn hoặc bằng", và cả hai lại khác quan hệ "theo dõi" trên mạng xã hội. Các tính chất này quyết định liệu chúng ta có thể nhóm phần tử thành lớp tương đương, sắp xếp theo thứ tự hay suy luận thêm liên kết mới hay không. Trong thiết kế dữ liệu và thuật toán, hiểu sai một tính chất có thể dẫn đến mô hình sai ngay từ đầu.
 
-Khi đọc phần này, hãy nghĩ đến các liên kết giữa đối tượng trong cơ sở dữ liệu, đồ thị và hệ thống phân quyền, vì quan hệ chính là cách ta mô tả những liên kết đó.
-Ví dụ, quan hệ "bằng nhau" rất khác quan hệ "nhỏ hơn hoặc bằng", và cả hai lại khác hoàn toàn quan hệ "theo dõi nhau" trên mạng xã hội. Sự khác biệt đó được mô tả bằng các tính chất như phản xạ, đối xứng, phản đối xứng và bắc cầu.
+## Mục tiêu học tập
 
-Những tính chất này không phải để nhớ máy móc. Chúng quyết định ta có thể nhóm phần tử thành lớp tương đương, sắp xếp chúng theo thứ tự, hay suy luận thêm liên kết mới hay không. Trong thiết kế dữ liệu và thuật toán, hiểu sai một tính chất có thể kéo theo mô hình sai ngay từ đầu.
+<div class="textbook-objectives" markdown="1">
 
-Trong bài này, chúng ta sẽ học cách nhận diện từng tính chất qua ví dụ cụ thể và thấy vì sao chúng lại quan trọng đến vậy trong toán rời rạc và CS.
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
+
+- **Kiểm tra** tính phản xạ, đối xứng, bắc cầu của quan hệ.
+- **Phân biệt** quan hệ tương đương và thứ tự bộ phận.
+- **Nhận diện** các tính chất trong schema CSDL và đồ thị.
+
+**Từ khóa**: phản xạ, đối xứng, bắc cầu, quan hệ tương đương, thứ tự bộ phận.
+</div>
 
 ## Các tính chất cơ bản
 
@@ -24,8 +33,11 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 
 ### 1. Tính phản xạ (Reflexive)
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: R là phản xạ nếu ∀a ∈ A: (a, a) ∈ R
+</div>
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - ✅ "=" trên ℝ: mọi số đều bằng chính nó
 - ✅ "≤" trên ℝ: mọi số đều ≤ chính nó  
@@ -42,7 +54,8 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 
 ![Đồ thị có hướng — tính phản xạ](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_simple_directed_graph.svg)
 
-*Hình 5.7: Trong đồ thị có hướng, tính phản xạ tương ứng với mỗi đỉnh có vòng (loop) quay về chính nó.*
+<p class="textbook-figure-caption" data-figure="5.7">Trong đồ thị có hướng, tính phản xạ tương ứng với mỗi đỉnh có vòng (loop) quay về chính nó.</p>
+</div>
 
 #### Minh họa trực quan: Phản xạ vs Phản đối xứng
 
@@ -53,14 +66,17 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 | **Phản xạ** | Mọi phần tử liên hệ với chính nó | `a R a` luôn đúng |
 | **Phản đối xứng** | Nếu hai chiều thì phải bằng nhau | `a R b` và `b R a` ⇒ `a = b` |
 
-**Mẹo nhớ**:
+**Quy tắc nhớ**:
 - Phản xạ = "tự liên hệ với mình"
 - Phản đối xứng = "không có hai chiều trừ khi bằng nhau"
 
 ### 2. Tính đối xứng (Symmetric)
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: R là đối xứng nếu ∀a, b ∈ A: (a, b) ∈ R ⟹ (b, a) ∈ R
+</div>
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - ✅ "=" trên ℝ: nếu a = b thì b = a
 - ✅ "≠" trên ℝ: nếu a ≠ b thì b ≠ a
@@ -75,46 +91,53 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 
 ![Đồ thị vô hướng — tính đối xứng](/discrete-mathematics-for-computer-science-iuh/img/course/Undirected_graph.svg)
 
-*Hình 5.8: Quan hệ đối xứng thường được mô hình hóa bằng đồ thị vô hướng — mỗi cạnh nối hai chiều.*
+<p class="textbook-figure-caption" data-figure="5.8">Quan hệ đối xứng thường được mô hình hóa bằng đồ thị vô hướng — mỗi cạnh nối hai chiều.</p>
+</div>
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Trong CS**: Quan hệ "hai máy tính có kết nối mạng trực tiếp" là đối xứng. Quan hệ "thư mục cha chứa thư mục con" là không đối xứng (nếu A chứa B thì B không thể chứa A).
 </div>
 
 ### 3. Tính phản đối xứng (Antisymmetric)
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: R là phản đối xứng nếu ∀a, b ∈ A: (a, b) ∈ R ∧ (b, a) ∈ R ⟹ a = b
+</div>
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - ✅ "≤" trên ℝ: nếu a ≤ b và b ≤ a thì a = b
 - ✅ "⊆" trên tập hợp: nếu A ⊆ B và B ⊆ A thì A = B
 - ❌ "≠" trên ℝ: nếu a ≠ b và b ≠ a thì a ≠ b (không suy ra a = b)
+</div>
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 ![Đồ thị có hướng — tính phản đối xứng](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
-*Hình 5.9: Tính phản đối xứng cấm hai phần tử khác nhau liên hệ hai chiều — không có cặp cung ngược nhau giữa hai đỉnh khác nhau.*
-
+<p class="textbook-figure-caption" data-figure="5.9">Tính phản đối xứng cấm hai phần tử khác nhau liên hệ hai chiều — không có cặp cung ngược nhau giữa hai đỉnh khác nhau.</p>
 **Phân biệt tinh tế**: Đối xứng và phản đối xứng **không phải** hai mặt đối lập! Một quan hệ có thể vừa đối xứng vừa phản đối xứng (ví dụ: quan hệ "="). Một quan hệ cũng có thể không đối xứng cũng không phản đối xứng (ví dụ: R = {(1,2), (2,1), (1,3)} -- có (1,2) và (2,1) nhưng không có (3,1)).
 </div>
 
 ### 4. Tính bắc cầu (Transitive)
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: R là bắc cầu nếu ∀a, b, c ∈ A: (a, b) ∈ R ∧ (b, c) ∈ R ⟹ (a, c) ∈ R
+</div>
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - ✅ "<" trên ℝ: nếu a < b và b < c thì a < c
 - ✅ "⊆" trên tập hợp: nếu A ⊆ B và B ⊆ C thì A ⊆ C
 - ❌ "là cha của": nếu A là cha của B và B là cha của C thì A không phải là cha của C (mà là ông)
+</div>
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Bắc cầu trong CS**: Quan hệ "phụ thuộc" giữa các gói phần mềm cần có tính bắc cầu để phân tích dependency tree. Nếu package A phụ thuộc B và B phụ thuộc C, thì A phụ thuộc C (thường được suy ra bởi package manager).
 </div>
 
 ![Đường đi gián tiếp — tính bắc cầu](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
-*Hình 5.10: Tính bắc cầu cho phép suy ra quan hệ gián tiếp: nếu có đường a → b → c thì phải có cung (a, c).*
-
+<p class="textbook-figure-caption" data-figure="5.10">Tính bắc cầu cho phép suy ra quan hệ gián tiếp: nếu có đường a → b → c thì phải có cung (a, c).</p>
 ### Bảng tổng kết nhanh
 
 | Tính chất | Điều kiện | Ma trận | Đồ thị |
@@ -126,15 +149,14 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 
 ![Ma trận quan hệ và ma trận kề](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
-*Hình 5.11: Ma trận 0-1 mã hóa quan hệ — hàng i, cột j bằng 1 khi và chỉ khi (aᵢ, aⱼ) thuộc quan hệ.*
-
+<p class="textbook-figure-caption" data-figure="5.11">Ma trận 0-1 mã hóa quan hệ — hàng i, cột j bằng 1 khi và chỉ khi (aᵢ, aⱼ) thuộc quan hệ.</p>
 ## Ứng dụng kỹ thuật: khóa và phép chiếu
 
 Trong cơ sở dữ liệu, tính chất của quan hệ không chỉ để phân loại mà còn để bảo đảm dữ liệu nhất quán qua thời gian. Một **primary key** phải xác định duy nhất mỗi bộ, nghĩa là không thể để hai hàng khác nhau có cùng khóa.
 
 Nếu không gian khóa quá nhỏ so với số bản ghi, nguyên lý pigeonhole cho thấy trùng lặp là không tránh khỏi. Vì vậy, thiết kế khóa phải đủ lớn và ổn định để duy trì tính duy nhất lâu dài.
 
-**Phép chiếu** (projection, $$\pi$$) trong đại số quan hệ là thao tác chọn một số thuộc tính từ mỗi bộ. Đây là bản dịch trực tiếp của ý tưởng toán học: từ bộ nhiều thành phần, ta chỉ giữ lại những tọa độ cần thiết.
+**Phép chiếu** (projection, $$\pi$$) trong đại số quan hệ là thao tác chọn một số thuộc tính từ mỗi bộ. Đây là bản dịch trực tiếp của ý tưởng toán học: từ bộ nhiều thành phần, chúng ta chỉ giữ lại những tọa độ cần thiết.
 
 ```sql
 SELECT DISTINCT student_id
@@ -145,8 +167,7 @@ Lệnh này chính là phép chiếu $$\pi_{student\_id}(Enrollments)$$, đồng
 
 ![Phép chiếu trong cơ sở dữ liệu](/discrete-mathematics-for-computer-science-iuh/img/course/Database.svg)
 
-*Hình 5.12: Primary key tạo quan hệ đơn ánh giữa bản ghi và khóa; phép chiếu chọn một phần thuộc tính từ mỗi bộ.*
-
+<p class="textbook-figure-caption" data-figure="5.12">Primary key tạo quan hệ đơn ánh giữa bản ghi và khóa; phép chiếu chọn một phần thuộc tính từ mỗi bộ.</p>
 ```python
 enrollments = {("S01", "CS101"), ("S01", "MATH101"), ("S02", "CS101")}
 projection = {student_id for (student_id, _) in enrollments}
@@ -185,6 +206,10 @@ So sánh tính chất của quan hệ "≤" và "<" trên ℝ.
 | Phản đối xứng | ✅ (a ≤ b và b ≤ a ⇒ a = b) | ✅ (a < b và b < a không bao giờ xảy ra) |
 | Bắc cầu | ✅ (a ≤ b và b ≤ c ⇒ a ≤ c) | ✅ (a < b và b < c ⇒ a < c) |
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Relations and Functions](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — Trefor Bazett (Equivalence relations)
 
 ## Tóm tắt
 

@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Ngôn ngữ Hình thức trong Trình biên dịch và Parser"
 categories: chapter19
@@ -6,33 +7,16 @@ date: 2021-01-01
 order: 3
 required: false
 lang: en
+excerpt: "Chương 19 đã xây dựng nền ngôn ngữ hình thức và phân cấp Chomsky. Mục bổ sung này khảo sát vai trò của lý thuyết ngôn ngữ trong trình biên dịch và parser — từ…"
 ---
 
-Mỗi lần bạn chạy `python main.py` hay `tsc app.ts`, trình biên dịch/thông dịch đang trả lời một câu hỏi logic vị từ: **chuỗi ký tự này có thuộc ngôn ngữ cú pháp hợp lệ không?**
-
-```python
-# Mini-grammar cho biểu thức số học (BNF)
-# Expr  -> Expr '+' Term | Term
-# Term  -> Term '*' Factor | Factor
-# Factor -> NUMBER | '(' Expr ')'
-
-def parse_expr(tokens, pos=0):
-    """Recursive descent — triển khai CFG ở trên."""
-    left, pos = parse_term(tokens, pos)
-    while pos < len(tokens) and tokens[pos] == "+":
-        pos += 1
-        right, pos = parse_term(tokens, pos)
-        left = ("add", left, right)
-    return left, pos
-```
-
-Pipeline `source code → tokens → parse tree → AST → bytecode` là chuỗi **nhận diện ngôn ngữ** theo phân cấp Chomsky: regex/DFA cho token, CFG + parser cho cú pháp, rồi semantic analysis.
-
-Từ Chomsky và BNF đến lexer/parser thực tế — bài này nối Chương 19 với cách ngôn ngữ lập trình được định nghĩa và xử lý.
+Chương 19 đã xây dựng nền ngôn ngữ hình thức và phân cấp Chomsky. Mục bổ sung này khảo sát vai trò của lý thuyết ngôn ngữ trong **trình biên dịch và parser** — từ lexical analysis bằng FSM đến syntax analysis bằng grammar — là pipeline mà mọi ngôn ngữ lập trình đều đi qua.
 
 ## Mục tiêu học tập
 
-Sau bài học này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Đọc** grammar BNF/EBNF mô tả cú pháp ngôn ngữ lập trình.
 - **Phân biệt** lexical analysis (regular) và syntax analysis (context-free).
@@ -41,6 +25,7 @@ Sau bài học này, sinh viên có thể:
 - **Đặt** ngôn ngữ vào phân cấp Chomsky và chọn công cụ phù hợp.
 
 **Từ khóa**: ngôn ngữ hình thức (formal language), CFG, BNF, lexer, parser, AST, phân cấp Chomsky (Chomsky hierarchy), trình biên dịch (compiler).
+</div>
 
 ---
 
@@ -54,8 +39,7 @@ Ví dụ Python hợp lệ là tập **rất lớn** nhưng **cấu trúc**: kh�
 
 ![Noam Chomsky — phân cấp ngôn ngữ hình thức](/discrete-mathematics-for-computer-science-iuh/img/course/Noam_Chomsky.jpg)
 
-*Hình 19.11: Noam Chomsky — phân cấp bốn loại grammar; Type-3 (regex) và Type-2 (CFG) là xương sống compiler.*
-
+<p class="textbook-figure-caption" data-figure="19.11">Noam Chomsky — phân cấp bốn loại grammar; Type-3 (regex) và Type-2 (CFG) là xương sống compiler.</p>
 ### 1.2. Phân cấp Chomsky trong một bảng
 
 | Loại | Grammar | Máy / công cụ | Ví dụ trong compiler |
@@ -65,14 +49,13 @@ Ví dụ Python hợp lệ là tập **rất lớn** nhưng **cấu trúc**: kh�
 | Type-1 CS | phụ thuộc ngữ cảnh | LBA | Một số ràng buộc ngữ nghĩa |
 | Type-0 | không hạn chế | Turing | Không dùng trực tiếp trong parser |
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Nhận xét**: Tách lexer (regular) và parser (CFG) không phải ngẫu nhiên — đơn giản hóa thiết kế, tăng tốc, và báo lỗi rõ (token sai vs cú pháp sai).
 </div>
 
 ![Phân cấp Chomsky — sức mạnh grammar và máy chấp nhận](/discrete-mathematics-for-computer-science-iuh/img/course/Chomsky_hierarchy.svg)
 
-*Hình 19.12: Phân cấp Chomsky — lexer nằm ở tầng regular; parser cú pháp ở context-free.*
-
+<p class="textbook-figure-caption" data-figure="19.12">Phân cấp Chomsky — lexer nằm ở tầng regular; parser cú pháp ở context-free.</p>
 ---
 
 ## Phần 2: Lexer — regular language
@@ -107,8 +90,7 @@ Parser **không** đọc byte trực tiếp — chỉ đọc dòng token (giốn
 
 ![Lexical analysis — tách mã nguồn thành token](/discrete-mathematics-for-computer-science-iuh/img/course/lexical_analysis.svg)
 
-*Hình 19.13: Lexical analysis — bước đầu pipeline compiler; mỗi token thuộc lớp regular language.*
-
+<p class="textbook-figure-caption" data-figure="19.13">Lexical analysis — bước đầu pipeline compiler; mỗi token thuộc lớp regular language.</p>
 ---
 
 ## Phần 3: Parser — context-free grammar
@@ -156,12 +138,10 @@ Mỗi nonterminal → một hàm `parse_*`. Đây là cách hand-written parser 
 
 ![Cây cú pháp trừu tượng (AST)](/discrete-mathematics-for-computer-science-iuh/img/course/Abstract_syntax_tree_for_Euclidean_algorithm.svg)
 
-*Hình 19.14: AST — biểu diễn cấu trúc chương trình sau parser; input cho type checker và code generator.*
-
+<p class="textbook-figure-caption" data-figure="19.14">AST — biểu diễn cấu trúc chương trình sau parser; input cho type checker và code generator.</p>
 ![Parse tree — mọi bước suy diễn grammar](/discrete-mathematics-for-computer-science-iuh/img/course/Parse_tree.png)
 
-*Hình 19.15: Parse tree — chi tiết hơn AST; hữu ích khi debug grammar và lỗi cú pháp.*
-
+<p class="textbook-figure-caption" data-figure="19.15">Parse tree — chi tiết hơn AST; hữu ích khi debug grammar và lỗi cú pháp.</p>
 ---
 
 ## Phần 4: Sau parser — semantics và codegen
@@ -186,7 +166,7 @@ tree = ast.parse("price * (1 + tax)")
 # ast.walk(tree) để duyệt node
 ```
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Cẩn thận**: Ambiguous grammar (nhiều parse tree cho cùng chuỗi) gây bug ngầm. Ngôn ngữ production dùng precedence/associativity declaration hoặc grammar LL/LR đã chứng minh không ambiguous.
 </div>
 
@@ -304,6 +284,11 @@ Liệt kê 5 bước từ file `.java` đến bytecode JVM, gắn mỗi bước 
 5. Codegen → bytecode — IR transformation.
 
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
 
 ## Tóm tắt
 

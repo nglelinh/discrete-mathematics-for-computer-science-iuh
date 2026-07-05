@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Cardinality và analytics: Bài học từ 1M DNS queries/giây của Cloudflare"
 categories: chapter09
@@ -6,13 +7,10 @@ date: 2021-01-01
 order: 9
 required: false
 lang: en
+excerpt: "Ở mục trước chúng ta đã phân biệt và . Mục này xét đại lượng đếm khác: cardinality — , số giá trị distinct trên một cột — quyết định aggregate log/analytics…"
 ---
 
-Thứ Hai, dashboard DNS analytics màu xanh. Thứ Ba, một datacenter latency đỏ — nhưng chỉ trên một subset query name mà aggregate zone-level che mất.
-
-Khoa, engineer analytics tại team DNS, đọc lại [bài của Marek Vavruša trên Cloudflare Blog](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/) (2017) trong lúc debug. Cloudflare xử lý **hơn 1 triệu truy vấn DNS mỗi giây**. Mỗi query ghi: zone, response code, **query name**, thời gian, kích thước…
-
-Matt Might vừa giúp chúng ta đếm **va chạm** trong không gian hữu hạn $$D$$ bucket. Ở đây là biến thể production khác: không hỏi “có trùng không?” mà hỏi “**có bao nhiêu giá trị distinct** trên một cột?” — và câu trả lời quyết định aggregate có **nén** được hay không.
+Ở mục trước chúng ta đã phân biệt $$P(\text{collision})$$ và $$E[\text{matches}]$$. Mục này xét đại lượng đếm khác: **cardinality** — $$|V_C|$$, số giá trị **distinct** trên một cột — quyết định aggregate log/analytics có **nén** được hay không. [Cloudflare Blog](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/) (Vavruša, 2017) mô tả hệ thống xử lý **hơn 1 triệu DNS queries/giây**: aggregate theo `response_code` (~12 giá trị) giảm mạnh số dòng; aggregate theo `query_name` (có thể hàng triệu unique) có thể **không nén** (reduction 0–60×, worst case 1×). Incident điển hình: dashboard zone-level “xanh” trong khi subset `qname` cụ thể “đỏ” — signal nằm ở chiều high-cardinality bị dilute khi aggregate sai chiều.
 
 Một bài toán toán rời rạc nổi lên ngay:
 
@@ -37,8 +35,7 @@ Con số blog 2017 là **hơn 1 triệu queries/s** toàn cầu; con số thực
 
 ![Cloudflare DNS analytics — blog header](/discrete-mathematics-for-computer-science-iuh/img/course/how-cloudflare-analyzes-1m-dns-queries-per-second.png)
 
-*Hình 9.15: DNS analytics quy mô triệu query/giây — đếm và tổng hợp là vấn đề hạ tầng (nguồn: [Cloudflare Blog](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/)).*
-
+<p class="textbook-figure-caption" data-figure="9.15">DNS analytics quy mô triệu query/giây — đếm và tổng hợp là vấn đề hạ tầng (nguồn: [Cloudflare Blog](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/)).</p>
 Pipeline Cloudflare mô tả trong blog: edge server log **Cap'n Proto** → multiplexer → Kafka → warehouse (ClickHouse). Insight quan trọng không nằm ở tên công nghệ mà ở chỗ xử lý **metadata tại edge**, không ship full DNS message — giảm bandwidth vì đếm byte có chủ đích. Khoa nhớ lại bài Unicode: không có “plain text”, chỉ có byte và quy ước; ở đây không có “raw log thuần”, chỉ có **schema telemetry** và quyết định cột nào đáng lưu.
 
 ---
@@ -51,14 +48,16 @@ Với **response code**, $$|V| \approx 12$$. Một triệu query trong phút, ph
 
 Với **query name**, $$|V|$$ có thể tiệm cận hàng triệu: typo, subdomain ngẫu nhiên, random subdomain attacks. Blog Cloudflare ghi reduction chỉ **0–60×** — không ổn định. Worst case: mỗi query name unique → **1M dòng/phút**, reduction **1×**, không giảm gì so với raw.
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 Khi $$|V|$$ gần $$R$$, mỗi dòng aggregate gần như một unique key → **không nén được**. Nhiều chiều cardinality cao nhân với nhau — **explosion** ô aggregate.
 </div>
 
 Khi aggregate theo $$k$$ cột với cardinality $$c_1, \ldots, c_k$$ trong cùng cửa sổ:
 
+<div class="textbook-equation" markdown="1">
 $$R' \leq \min\left(R,\; \prod_{i=1}^{k} c_i'\right)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Ví dụ zone (10.000 giá trị) × qname (1M unique trong giờ) → upper bound lý thuyết **10 tỷ** ô; thực tế sparsity giảm nhưng vẫn đủ gây **explosion** storage và query cost. Khoa gặp đúng pattern này khi materialized view `zone + qname + minute` phình to nhanh hơn raw log sampled — vì mỗi ô aggregate vẫn phải lưu key đủ dài.
 
 ---
@@ -83,8 +82,7 @@ Merge HLL từ phút → giờ → ngày qua materialized view ClickHouse — c�
 
 ![HyperLogLog concept — Wikimedia](/discrete-mathematics-for-computer-science-iuh/img/course/hyperloglog.svg)
 
-*Hình 9.16: HyperLogLog — đếm gần đúng số phần tử distinct với bộ nhớ cố định (nguồn: Wikimedia Commons).*
-
+<p class="textbook-figure-caption" data-figure="9.16">HyperLogLog — đếm gần đúng số phần tử distinct với bộ nhớ cố định (nguồn: Wikimedia Commons).</p>
 Cloudflare **bỏ stream processor** riêng — ingestion + materialized view đủ cho trend API. ClickHouse merge segment khi insert → đồng thời update bảng aggregate (counters, uniques, quantiles). Khoa không cần nhớ chi tiết thuật toán HLL; anh cần nhớ **khi nào** dùng: câu hỏi “bao nhiêu unique?” trên cột cardinality cao, không cần liệt kê từng key.
 
 **Primary key** là quyết định đếm thứ hai. Sort theo `zone` trước `timestamp` → query một zone đọc contiguous trên disk, nhanh cho dashboard per-customer. Query toàn cầu all zones → scan lớn → cần bảng pre-aggregated hoặc sampled. Chọn primary key = chọn **một** thứ tự sắp xếp; không tối ưu mọi query cùng lúc — giống endianness (bài `09_02`): một quy ước, nhiều workload đọc theo chiều khác nhau.
@@ -114,8 +112,10 @@ Phân bố đều qua 12 mã → tối đa **12 dòng/phút** mỗi bucket thờ
 
 Reduction:
 
+<div class="textbook-equation" markdown="1">
 $$\frac{900{,}000}{12} = 75{,}000$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Tức reduction khoảng **75.000×** trong trường hợp lý tưởng. Thực tế có thể ít hơn nếu một vài mã chiếm đa số traffic, nhưng vẫn là low-cardinality aggregate — đúng pattern dashboard SLA.
 
 </details>
@@ -131,8 +131,10 @@ Mỗi qname unique → **900.000 dòng/phút** sau aggregate (mỗi key một d�
 
 Reduction:
 
+<div class="textbook-equation" markdown="1">
 $$\frac{900{,}000}{900{,}000} = 1$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Reduction **1×** — không nén được. Đây là lý do Cloudflare blog ghi reduction 0–60× cho qname: worst case gần 1×; best case vẫn xa so với response_code.
 
 </details>
@@ -146,8 +148,10 @@ Materialized view aggregate theo `zone` ($$c_1 = 5{,}000$$) × `query_name` ($$c
 
 Upper bound lý thuyết:
 
+<div class="textbook-equation" markdown="1">
 $$5{,}000 \times 200{,}000 \times 12 = 12 \times 10^{12}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Tức **12 nghìn tỷ** ô aggregate tối đa — vượt xa 50 triệu dòng raw. Công thức $$R' \leq \min(R, \prod c_i')$$ cho **trần**; thực tế sparsity làm ít ô được điền, nhưng vẫn đủ lớn để warehouse và merge cost phình to. Ba chiều cardinality cao **nhân** nhau — không cộng — nên một chiều qname đã đủ phá schema aggregate.
 
 </details>
@@ -166,6 +170,12 @@ Hai lớp hợp lý: (1) **pre-aggregated** `zone + response_code` (và có th�
 </details>
 
 ---
+
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
 
 ## Tóm tắt
 

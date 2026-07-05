@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Quy tắc Suy diễn"
 categories: chapter01
@@ -6,24 +7,29 @@ date: 2021-01-01
 order: 5
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã học tương đương logic và dạng chuẩn tắc (DNF, CNF). Mục này giới thiệu quy tắc suy diễn (rules of inference) — các mẫu lập luận hợp lệ…"
 ---
 
-Biết một điều kiện là đúng hay sai đã khó, nhưng đó mới chỉ là bước đầu. Trong thực tế, chúng ta hiếm khi có sẵn tất cả sự thật — ta phải **suy luận** để đi từ những điều đã biết đến những kết luận mới.
+Ở mục trước chúng ta đã học **tương đương logic** và **dạng chuẩn tắc** (DNF, CNF). Mục này giới thiệu **quy tắc suy diễn** (rules of inference) — các mẫu lập luận hợp lệ cho phép rút ra kết luận mới từ các tiền đề đã biết.
 
-Một thám tử có nhiều manh mối: "Nếu hung thủ có chìa khóa thì đó là nội bộ" và "Hung thủ có chìa khóa". Ông ta kết luận: "Đây là nội bộ". Một compiler thấy: "Nếu kiểu dữ liệu không khớp thì báo lỗi" và "Kiểu không khớp". Nó kết luận: "Báo lỗi". Một hệ thống kiểm soát truy cập thấy: "Nếu người dùng có token hợp lệ thì cho phép truy cập" và "Người dùng có token hợp lệ". Nó kết luận: "Cho phép truy cập".
-
-Cả ba tình huống trên đều dùng cùng một khuôn mẫu suy luận — một **quy tắc suy diễn**. Bài học này sẽ giới thiệu những quy tắc suy diễn cơ bản nhất, giúp bạn đi từ giả thiết đến kết luận một cách chắc chắn.
+Biết một điều kiện đúng hay sai chỉ là bước đầu. Trong thực tế, chúng ta hiếm khi có sẵn mọi sự thật mà phải **suy luận** từ những gì đã biết. Thám tử có manh mối "Nếu hung thủ có chìa khóa thì đó là nội bộ" và "Hung thủ có chìa khóa", rồi kết luận "Đây là nội bộ". Trình biên dịch thấy "Nếu kiểu không khớp thì báo lỗi" và "Kiểu không khớp", rồi kết luận "Báo lỗi". Hệ thống kiểm soát truy cập thấy "Nếu có token hợp lệ thì cho phép truy cập" và "Có token hợp lệ", rồi kết luận "Cho phép truy cập". Cả ba tình huống đều dùng cùng một khuôn mẫu — **quy tắc suy diễn**. Mục này trình bày các quy tắc cơ bản nhất, giúp chúng ta đi từ giả thiết đến kết luận một cách chắc chắn.
 
 ## Mục tiêu học tập
 
-Sau bài học này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Giải thích** quy tắc suy diễn là gì và vì sao nó cần thiết.
 - **Nhận diện** và **áp dụng** các quy tắc suy diễn cơ bản: Modus Ponens, Modus Tollens, tam đoạn luận giả định, tam đoạn luận tuyển, phép thêm, phép giản lược, phép nối, phép giải.
 - **Kiểm tra** tính hợp lệ của một suy luận bằng quy tắc suy diễn.
 - **Áp dụng** quy tắc suy diễn vào suy luận trong code, bảo mật, và kiểm thử.
 
+
 **Từ khóa**: rule of inference, Modus Ponens, Modus Tollens, hypothetical syllogism, disjunctive syllogism, addition, simplification, conjunction, resolution, validity.
+</div>
+
 
 ---
 
@@ -35,24 +41,29 @@ Trong các chứng minh toán học (và trong cả lập trình, phân tích h�
 
 Dạng lý luận này là **đúng** khi biểu thức
 
+<div class="textbook-equation" markdown="1">
 $$
 (p_1 \land p_2 \land \dots \land p_n) \to q
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 là **hằng đúng** (luôn đúng với mọi tổ hợp chân trị).
 
 Ta gọi dạng lý luận trên là một **quy tắc suy diễn** (rule of inference). Có ba cách biểu diễn một quy tắc suy diễn:
 
 **Cách 1 – Biểu thức hằng đúng:**
 
+<div class="textbook-equation" markdown="1">
 $$
 (p_1 \land p_2 \land \dots \land p_n) \Rightarrow q
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 (ký hiệu $$\Rightarrow$$ có nghĩa "kéo theo một cách logic", tức $$(p_1 \land \dots \land p_n) \to q$$ là hằng đúng).
 
 **Cách 2 – Dòng suy diễn:**
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{array}{c}
 p_1 \\
@@ -63,7 +74,8 @@ p_n \\
 \therefore q
 \end{array}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Cách 3 – Mô hình suy diễn:**
 
 > $$p_1$$
@@ -79,14 +91,14 @@ Các biểu thức $$p_1, p_2, \dots, p_n$$ được gọi là **giả thiết**
 
 ![Bảng tứ đối — quan hệ suy luận cổ điển](/discrete-mathematics-for-computer-science-iuh/img/course/Square_of_opposition__set_diagrams.svg)
 
-*Hình 1.21: Quy tắc suy diễn là nền tảng của mọi lập luận hợp lệ — từ tiền đề đúng rút ra kết luận đúng.*
-
+<p class="textbook-figure-caption" data-figure="1.21">Quy tắc suy diễn là nền tảng của mọi lập luận hợp lệ — từ tiền đề đúng rút ra kết luận đúng.</p>
 ---
 
 ## 2. Modus Ponens (Quy tắc Khẳng định)
 
-Đây có lẽ là quy tắc suy diễn quen thuộc nhất. Nó nói rằng: nếu ta biết một mệnh đề kéo theo đúng và vế trái của nó đúng, thì vế phải cũng đúng.
+Đây là quy tắc suy diễn quen thuộc nhất: nếu mệnh đề kéo theo $$p \to q$$ đúng và $$p$$ đúng, thì $$q$$ cũng đúng.
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{array}{c}
 p \to q \\
@@ -95,13 +107,16 @@ p \\
 \therefore q
 \end{array}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Tương đương với hằng đẳng thức:
 
+<div class="textbook-equation" markdown="1">
 $$
 [(p \to q) \land p] \Rightarrow q
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Ví dụ 1 (học tập):**
 
 > Nếu học tốt thì thi đậu.
@@ -143,14 +158,14 @@ Modus Ponens là nền tảng của mọi câu lệnh `if-then` trong lập trì
 
 ![Modus Ponens: p → q và p suy ra q](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-Implication.PNG)
 
-*Hình 1.22: Modus Ponens — nếu p → q đúng và p đúng, thì q phải đúng (nền tảng của mọi câu lệnh `if`).*
-
+<p class="textbook-figure-caption" data-figure="1.22">Modus Ponens — nếu p → q đúng và p đúng, thì q phải đúng (nền tảng của mọi câu lệnh `if`).</p>
 ---
 
 ## 3. Modus Tollens (Quy tắc Phủ định)
 
 Quy tắc này là "ngược" của Modus Ponens: nếu $$p \to q$$ đúng nhưng $$q$$ sai (phủ định), thì $$p$$ cũng phải sai.
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{array}{c}
 p \to q \\
@@ -159,7 +174,8 @@ p \to q \\
 \therefore \neg p
 \end{array}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Tức $$[(p \to q) \land \neg q] \Rightarrow \neg p$$ là hằng đúng.
 
 **Ví dụ 1 (bảo mật):**
@@ -193,14 +209,14 @@ Modus Tollens đặc biệt hữu ích trong debugging và kiểm thử: khi k�
 
 ![Modus Tollens: p → q và ¬q suy ra ¬p](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-NOT.png)
 
-*Hình 1.23: Modus Tollens — nếu p → q đúng nhưng q sai, thì p phải sai (dùng nhiều trong debugging và kiểm thử).*
-
+<p class="textbook-figure-caption" data-figure="1.23">Modus Tollens — nếu p → q đúng nhưng q sai, thì p phải sai (dùng nhiều trong debugging và kiểm thử).</p>
 ---
 
 ## 4. Tam đoạn luận Giả định (Hypothetical Syllogism)
 
 Quy tắc này cho phép "nối chuỗi" các mệnh đề kéo theo:
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{array}{c}
 p \to q \\
@@ -209,7 +225,8 @@ q \to r \\
 \therefore p \to r
 \end{array}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Tức $$[(p \to q) \land (q \to r)] \Rightarrow (p \to r)$$.
 
 **Ví dụ 1 (xử lý pipeline):**
@@ -234,14 +251,14 @@ Tam đoạn luận giả định là cơ sở cho mọi chuỗi xử lý (pipeli
 
 ![Chuỗi suy luận — nối các mệnh đề kéo theo](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 1.24: Tam đoạn luận giả định — từ p → q và q → r suy ra p → r, nền tảng của pipeline và kế thừa quyền.*
-
+<p class="textbook-figure-caption" data-figure="1.24">Tam đoạn luận giả định — từ p → q và q → r suy ra p → r, nền tảng của pipeline và kế thừa quyền.</p>
 ---
 
 ## 5. Tam đoạn luận Tuyển (Disjunctive Syllogism)
 
 Khi ta biết một trong hai mệnh đề đúng, và một mệnh đề sai, thì mệnh đề còn lại phải đúng:
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{array}{c}
 p \lor q \\
@@ -257,7 +274,8 @@ p \lor q \\
 \therefore p
 \end{array}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Ví dụ 1 (xử lý lỗi):**
 
 > Lỗi xuất phát từ database hoặc từ network.
@@ -280,14 +298,14 @@ Trong lập trình, quy tắc này thường được dùng trong xử lý ngo�
 
 ![Tam đoạn luận tuyển: p ∨ q và ¬p suy ra q](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-OR.png)
 
-*Hình 1.25: Tam đoạn luận tuyển — biết p ∨ q đúng và ¬p đúng, suy ra q (loại trừ nguyên nhân trong chẩn đoán lỗi).*
-
+<p class="textbook-figure-caption" data-figure="1.25">Tam đoạn luận tuyển — biết p ∨ q đúng và ¬p đúng, suy ra q (loại trừ nguyên nhân trong chẩn đoán lỗi).</p>
 ---
 
 ## 6. Phép Thêm (Addition)
 
 Từ một mệnh đề đúng, ta có thể thêm bất kỳ mệnh đề nào vào bằng phép tuyển (kết quả vẫn đúng):
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{array}{c}
 p \\
@@ -295,8 +313,9 @@ p \\
 \therefore p \lor q
 \end{array}
 $$
-
-Dù nghe có vẻ hiển nhiên, quy tắc này rất hữu ích trong các chứng minh phức tạp — nó cho phép ta mở rộng giả thiết khi cần:
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+Quy tắc này hữu ích trong các chứng minh phức tạp vì cho phép mở rộng giả thiết khi cần:
 
 **Ví dụ:**
 
@@ -312,6 +331,7 @@ Dù nghe có vẻ hiển nhiên, quy tắc này rất hữu ích trong các ch�
 
 Ngược lại với phép thêm: từ một mệnh đề hội đúng, ta suy ra mỗi thành phần của nó cũng đúng:
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{array}{c}
 p \land q \\
@@ -325,7 +345,8 @@ p \land q \\
 \therefore q
 \end{array}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Ví dụ (kiểm tra điều kiện phức hợp):**
 
 > Tài khoản hợp lệ **và** mật khẩu đúng.
@@ -342,6 +363,7 @@ Khi một hàm trong code trả về tuple `(status, data)`, và ta chỉ quan t
 
 Nếu hai mệnh đề đều đúng, ta có thể nối chúng thành một mệnh đề hội:
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{array}{c}
 p \\
@@ -350,7 +372,8 @@ q \\
 \therefore p \land q
 \end{array}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Ví dụ (kiểm tra bảo mật):**
 
 > Người dùng đã xác thực.
@@ -368,6 +391,7 @@ Phép nối thường dùng ở cuối một chuỗi suy luận để tổng h�
 
 Quy tắc này đặc biệt quan trọng trong các thuật toán chứng minh tự động (automated theorem proving) và SAT solvers:
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{array}{c}
 p \lor q \\
@@ -376,7 +400,8 @@ p \lor q \\
 \therefore q \lor r
 \end{array}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Nói cách khác: nếu $$p$$ đúng thì từ $$p \lor q$$ ta có $$q$$, còn nếu $$p$$ sai thì từ $$\neg p \lor r$$ ta có $$r$$. Dù thế nào, $$q \lor r$$ cũng đúng.
 
 **Ví dụ (trí tuệ nhân tạo – suy luận trong hệ chuyên gia):**
@@ -577,7 +602,7 @@ Nếu ta muốn thêm một giả thiết để suy ra $$t$$, có thể thêm $$
 Xác định quy tắc suy diễn được dùng trong mỗi tình huống sau:
 
 (a) "Nếu trời mưa thì đường ướt. Trời mưa. Vậy đường ướt."
-(b) "Nếu tôi là sinh viên IUH thì tôi học Toán Rời Rạc. Tôi học Toán Rời Rạc. Vậy tôi là sinh viên IUH." — Suy luận này có hợp lệ không?
+(b) "Nếu tôi là sinh viên thì tôi học Toán Rời Rạc. Tôi học Toán Rời Rạc. Vậy tôi là sinh viên." — Suy luận này có hợp lệ không?
 (c) "Nếu hệ thống bảo mật phát hiện xâm nhập thì nó sẽ ghi log và gửi cảnh báo. Hệ thống không ghi log. Vậy không có xâm nhập." — Suy luận này có hợp lệ không?
 (d) "Nếu $$x$$ chia hết cho 4 thì $$x$$ là số chẵn. $$x$$ là số chẵn. Vậy $$x$$ chia hết cho 4." — Nếu sai, hãy cho phản ví dụ.
 
@@ -686,3 +711,21 @@ Ví dụ trong slide: Dùng p=1, q=0, r=1 để phản ví dụ cho một suy lu
 
 **Qui tắc phản ví dụ (counterexample):**
 Chỉ cần một trường hợp làm các giả thiết đúng nhưng kết luận sai để bác bỏ.
+
+---
+
+## Xem thêm / Video gợi ý
+
+- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (Truth table proof + laws)
+- [Discrete Math Full Course — Logic & Proofs](https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKZS) — Trefor Bazett (Complete semester playlist)
+
+
+## Tóm tắt
+
+- **Quy tắc suy diễn** là dạng lập luận $$(p_1 \land \cdots \land p_n) \to q$$ hằng đúng; có thể biểu diễn bằng biểu thức, dòng suy diễn, hoặc mô hình suy diễn.
+- Các quy tắc cơ bản: **Modus Ponens**, **Modus Tollens**, **tam đoạn luận giả định**, **tam đoạn luận tuyển**, **phép thêm**, **phép giản lược**, **phép nối**, **phép giải** (resolution).
+- Modus Ponens là nền tảng của mọi câu lệnh `if-then`; Modus Tollens hữu ích trong debugging và kiểm thử.
+- Resolution là nền tảng của chứng minh bác bỏ (refutation) và SAT solver.
+- Ứng dụng trong kiểm chứng hình thức, hệ chuyên gia, hệ thống kiểu, và phân tích bảo mật.
+
+Trong bài tiếp theo (tùy chọn), chúng ta giới thiệu **SAT solver** — công cụ tự động kiểm tra tính thỏa mãn của công thức Boolean ở dạng CNF.

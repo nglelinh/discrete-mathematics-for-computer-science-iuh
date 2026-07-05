@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Nguyên lý Dirichlet cơ bản"
 categories: chapter08
@@ -6,21 +7,34 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
+excerpt: "Trong chương này chúng ta nghiên cứu nguyên lý Dirichlet (nguyên lý chuồng chim) — công cụ chứng minh sự tồn tại dựa trên lập luận đếm đơn giản. Nếu có 11…"
 ---
 
-Nếu có 11 file mà chỉ 10 thư mục để chứa, ít nhất một thư mục phải nhận từ 2 file trở lên. Phát biểu nghe gần như hiển nhiên, nhưng đằng sau nó là một nguyên lý đếm cực mạnh, đủ sức giải nhiều bài toán mà thoạt nhìn chẳng liên quan gì đến "chim bồ câu và chuồng".
+<div class="textbook-epigraph" markdown="1">
 
+"If you put infinitely many balls into finitely many boxes, some box must contain more than one ball."
 
-Nguyên lý Dirichlet thường được dùng khi ta không cần biết chính xác đối tượng nào trùng nhau, chỉ cần chứng minh chắc chắn rằng sự trùng lặp phải xảy ra.
-**Nguyên lý Dirichlet** cho phép ta kết luận sự tồn tại mà không cần chỉ ra đối tượng cụ thể. Nó xuất hiện trong phân tích xung đột băm, phân phối dữ liệu, lập lịch, nén thông tin, và nhiều chứng minh tổ hợp rất gọn nhưng sắc.
+<span class="epigraph-attribution">— Pigeonhole Principle (folk)</span>
 
-Điểm hay của nguyên lý này là nó biến trực giác về "không thể phân bố đều mãi" thành một công cụ hình thức. Chỉ cần mô hình hóa đúng đâu là đồ vật, đâu là ngăn chứa, ta có thể rút ra kết luận bất ngờ từ một quan sát rất cơ bản.
+</div>
 
-Trong bài này, chúng ta sẽ học phát biểu chuẩn của nguyên lý Dirichlet và luyện cách nhận ra nó trong những bài toán tưởng như không liên quan.
+Trong chương này chúng ta nghiên cứu **nguyên lý Dirichlet** (nguyên lý chuồng chim) — công cụ chứng minh sự tồn tại dựa trên lập luận đếm đơn giản. Nếu có 11 file mà chỉ 10 thư mục để chứa, ít nhất một thư mục phải nhận từ hai file trở lên. Mục 8.1 này bắt đầu từ phát biểu chuẩn và các ví dụ cơ bản.
 
-![Nguyên lý chuồng chim — minh họa](/discrete-mathematics-for-computer-science-iuh/img/course/Pigeonhole.jpg)
+Nguyên lý Dirichlet cho phép kết luận sự tồn tại mà không cần chỉ ra đối tượng cụ thể. Nó xuất hiện trong phân tích xung đột băm, phân phối dữ liệu, lập lịch và nhiều chứng minh tổ hợp gọn nhưng sắc. Chỉ cần mô hình hóa đúng đâu là đồ vật, đâu là ngăn chứa, chúng ta có thể rút ra kết luận mạnh từ một quan sát cơ bản.
 
-*Hình 8.1: Nguyên lý chuồng bồ câu — nhiều chim hơn chuồng thì ít nhất một chuồng phải chứa từ hai con trở lên.*
+## Mục tiêu học tập
+
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
+
+- **Phát biểu** nguyên lý Dirichlet đơn giản và tổng quát.
+- **Áp dụng** nguyên lý để chứng minh sự tồn tại (không cần xây dựng đối tượng).
+- **Mô hình hóa** bài toán thành đối tượng và ngăn chứa.
+- **Giải thích** ứng dụng trong hash collision và phân phối tài nguyên.
+
+**Từ khóa**: nguyên lý Dirichlet (pigeonhole principle), tồn tại, mô hình hóa, $$\lceil N/n \rceil$$.
+</div>
 
 ## Phát biểu Nguyên lý
 
@@ -38,11 +52,11 @@ Trong đó ⌈x⌉ là hàm ceiling (làm tròn lên).
 
 ![Quá nhiều bồ câu — không thể phân bố đều](/discrete-mathematics-for-computer-science-iuh/img/course/TooManyPigeons.jpg)
 
-*Hình 8.2: Phiên bản tổng quát — $N$ đối tượng vào $n$ nhóm thì ít nhất một nhóm chứa $\lceil N/n \rceil$ đối tượng.*
-
+<p class="textbook-figure-caption" data-figure="8.2">Phiên bản tổng quát — $N$ đối tượng vào $n$ nhóm thì ít nhất một nhóm chứa $\lceil N/n \rceil$ đối tượng.</p>
 ## Ví dụ cơ bản
 
-### Ví dụ 1: Sinh nhật
+<div class="textbook-example" markdown="1">
+**Ví dụ** 1: Sinh nhật:
 Trong một lớp có 13 học sinh, chứng minh rằng ít nhất có 2 học sinh sinh trong cùng một tháng.
 
 **Giải**:
@@ -52,23 +66,28 @@ Trong một lớp có 13 học sinh, chứng minh rằng ít nhất có 2 học 
 
 ![Johann Peter Gustav Lejeune Dirichlet](/discrete-mathematics-for-computer-science-iuh/img/course/Dirichlet.jpg)
 
-*Hình 8.3: Johann Peter Gustav Lejeune Dirichlet (1805–1859) — người hệ thống hóa nguyên lý chuồng chim trong toán học.*
+<p class="textbook-figure-caption" data-figure="8.3">Johann Peter Gustav Lejeune Dirichlet (1805–1859) — người hệ thống hóa nguyên lý chuồng chim trong toán học.</p>
+</div>
 
-### Ví dụ 2: Tóc trên đầu
+<div class="textbook-example" markdown="1">
+**Ví dụ** 2: Tóc trên đầu:
 Chứng minh rằng ở Hà Nội có ít nhất 2 người có cùng số sợi tóc trên đầu.
 
 **Giải**:
 - Dân số Hà Nội: ~8 triệu người
 - Số sợi tóc tối đa: ~200,000 sợi
 - 8,000,000 > 200,000, nên ít nhất 2 người có cùng số sợi tóc.
+</div>
 
-### Ví dụ 3: Điểm số
+<div class="textbook-example" markdown="1">
+**Ví dụ** 3: Điểm số:
 Trong 11 bài kiểm tra, mỗi bài được chấm từ 0-10 điểm. Chứng minh rằng có ít nhất 2 bài có cùng điểm số.
 
 **Giải**:
 - 11 bài kiểm tra
 - 11 điểm số có thể (0,1,2,...,10)
 - Theo nguyên lý Dirichlet: 11 = 11, nhưng nếu có 12 bài thì chắc chắn có 2 bài cùng điểm.
+</div>
 
 ## Chứng minh Nguyên lý Dirichlet
 
@@ -78,7 +97,7 @@ Trong 11 bài kiểm tra, mỗi bài được chấm từ 0-10 điểm. Chứng 
 
 Khi đó, tổng số bồ câu ≤ n × 1 = n.
 
-Nhưng ta có n + 1 con bồ câu, mâu thuẫn với giả thiết.
+Nhưng chúng ta có n + 1 con bồ câu, mâu thuẫn với giả thiết.
 
 Vậy ít nhất một chuồng chứa ≥ 2 con bồ câu. ∎
 
@@ -94,8 +113,7 @@ Mâu thuẫn! Vậy ít nhất một nhóm chứa ≥ ⌈N/n⌉ đối tượng.
 
 ![Birthday paradox — va chạm không tránh khỏi](/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg)
 
-*Hình 8.4: Trong hash table, khi số khóa vượt số bucket thì collision là hệ quả tất yếu của nguyên lý chuồng chim.*
-
+<p class="textbook-figure-caption" data-figure="8.4">Trong hash table, khi số khóa vượt số bucket thì collision là hệ quả tất yếu của nguyên lý chuồng chim.</p>
 ## Ứng dụng trong Khoa học Máy tính
 
 ### 1. Hash Tables và Collision
@@ -135,8 +153,7 @@ def birthday_attack_probability(hash_bits):
 
 ![Cây quyết định — phân tích không gian trạng thái](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 8.5: Nguyên lý chuồng chim giúp chứng minh sự tồn tại mà không cần liệt kê — rất hữu ích trong phân tích thuật toán và cryptography.*
-
+<p class="textbook-figure-caption" data-figure="8.5">Nguyên lý chuồng chim giúp chứng minh sự tồn tại mà không cần liệt kê — rất hữu ích trong phân tích thuật toán và cryptography.</p>
 ## Bài tập thực hành
 
 ### Bài tập 1: Cơ bản
@@ -176,7 +193,9 @@ Nếu phân bố ngẫu nhiên N đối tượng vào n nhóm, xác suất để
 
 ## Định lý Dirichlet tổng quát – Chứng minh
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Nếu \( N \) đối tượng được phân vào \( n \) nhóm, thì ít nhất một nhóm chứa ít nhất \( \lceil N/n \rceil \) đối tượng.
+</div>
 
 **Chứng minh** (phản chứng):
 
@@ -192,10 +211,11 @@ Do đó, ít nhất một nhóm phải chứa ≥ \( \lceil N/n \rceil \) đối
 - **Hash collision**: \( n+1 \) khóa vào bảng \( n \) ô → chắc chắn có va chạm.
 - **Load balancing**: \( N \) tác vụ, \( n \) máy → ít nhất một máy nhận ≥ \( \lceil N/n \rceil \) tác vụ.
 
+## Xem thêm / Video gợi ý
+
+- [Pigeonhole Principle — Advanced](https://www.youtube.com/watch?v=9jZ5n8k0p0Q) — 3Blue1Brown (Generalized version)
+
 ## Tóm tắt
-
-Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
-
 **Nguyên lý Dirichlet** là công cụ chứng minh mạnh mẽ:
 
 **Phát biểu cơ bản**: N đối tượng, n nhóm (N > n) → ít nhất 1 nhóm có ≥ 2 đối tượng

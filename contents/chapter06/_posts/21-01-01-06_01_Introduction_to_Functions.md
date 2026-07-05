@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Giới thiệu Hàm số"
 categories: chapter06
@@ -6,23 +7,38 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
+excerpt: "Trong chương này chúng ta nghiên cứu hàm số — ánh xạ gán mỗi phần tử miền xác định đúng một phần tử miền đích. Từ một user ID trả về hồ sơ người dùng, từ một…"
 ---
 
-Từ một user ID trả về hồ sơ người dùng, từ một chuỗi đầu vào trả về giá trị băm, hay từ một chỉ số mảng lấy ra đúng một phần tử, ta đều đang dùng cùng một ý tưởng: mỗi đầu vào hợp lệ phải được gắn với **một** đầu ra xác định.
+<div class="textbook-epigraph" markdown="1">
 
+"A function is a rule that assigns to each input exactly one output."
 
-Trong khoa học máy tính, hàm số xuất hiện ở khắp nơi, từ ánh xạ đầu vào sang đầu ra đến biến đổi dữ liệu và mô hình hóa trạng thái.
-Đó chính là tinh thần của **hàm số**. Trong toán rời rạc, hàm là một dạng quan hệ rất đặc biệt. Trong khoa học máy tính, nó là mô hình phía sau lời gọi hàm, ánh xạ khóa và giá trị, biến đổi dữ liệu, mã hóa và rất nhiều cơ chế xử lý thông tin khác.
+<span class="epigraph-attribution">— Dirichlet (paraphrased)</span>
 
-Điều quan trọng không nằm ở ký hiệu, mà ở tính xác định. Nếu cùng một đầu vào sinh ra nhiều đầu ra khác nhau, ta không còn hàm nữa. Nhận ra ranh giới này giúp ta mô hình hóa đúng và tránh nhầm lẫn giữa quan hệ tổng quát với hàm số.
+</div>
 
-Trong bài này, chúng ta sẽ đi từ định nghĩa hình thức của hàm đến miền xác định, miền giá trị và cách nhìn hàm như một công cụ ánh xạ trong toán lẫn lập trình.
+Trong chương này chúng ta nghiên cứu **hàm số** — ánh xạ gán mỗi phần tử miền xác định đúng một phần tử miền đích. Từ một user ID trả về hồ sơ người dùng, từ một chuỗi đầu vào trả về giá trị băm, hay từ một chỉ số mảng lấy ra đúng một phần tử, chúng ta đều dùng cùng một ý tưởng toán học. Mục 6.1 này bắt đầu từ định nghĩa hàm, miền xác định, miền đích và các cách biểu diễn.
+
+Trong toán rời rạc, hàm là quan hệ đặc biệt thỏa tính tồn tại và duy nhất; trong khoa học máy tính, nó là mô hình phía sau lời gọi hàm, ánh xạ khóa–giá trị, biến đổi dữ liệu và mã hóa. Điều then chốt là tính xác định: cùng một đầu vào phải sinh ra đúng một đầu ra.
+
+## Mục tiêu học tập
+
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
+
+- **Định nghĩa** hàm số $$f: A \to B$$ và phân biệt domain, codomain, range.
+- **Biểu diễn** hàm bằng bảng, công thức và đồ thị.
+- **Liên hệ** hàm toán học với hàm trong lập trình.
+
+**Từ khóa**: hàm số (function), domain, codomain, range (ảnh), ánh xạ.
+</div>
 
 ## 1. Định nghĩa hàm số
-
-Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc định nghĩa trước sẽ giúp các ví dụ và định lý phía sau trở nên dễ theo dõi hơn.
-
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Cho hai tập $$A$$ và $$B$$. Một **hàm số** $$f$$ từ $$A$$ đến $$B$$, ký hiệu $$f:A\to B$$, là một quy tắc gán cho mỗi phần tử $$x\in A$$ đúng một phần tử $$y\in B$$.
+</div>
 
 **Ký hiệu**:
 
@@ -31,11 +47,13 @@ Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc địn
 - $$f(x)$$: giá trị của hàm tại $$x$$.
 - $$f(A)=\{f(x)\mid x\in A\}$$: ảnh hoặc tập giá trị thực sự đạt được.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Hàm $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^2$$ có domain và codomain đều là $$\mathbb{R}$$, nhưng ảnh là $$[0,\infty)$$.
 
 ![Hàm số như máy ánh xạ đầu vào → đầu ra](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
-*Hình 6.1: Hàm số ánh xạ mỗi phần tử miền xác định đến đúng một phần tử miền đích — mô hình "hộp hàm".*
+<p class="textbook-figure-caption" data-figure="6.1">Hàm số ánh xạ mỗi phần tử miền xác định đến đúng một phần tử miền đích — mô hình "hộp hàm".</p>
+</div>
 
 ## 2. Hàm số như quan hệ đặc biệt
 
@@ -44,27 +62,33 @@ Một quan hệ $$R\subseteq A\times B$$ là hàm từ $$A$$ đến $$B$$ nếu:
 1. **Tồn tại**: với mọi $$a\in A$$, tồn tại $$b\in B$$ sao cho $$(a,b)\in R$$.
 2. **Duy nhất**: nếu $$(a,b_1)\in R$$ và $$(a,b_2)\in R$$ thì $$b_1=b_2$$.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: $$R=\{(1,a),(2,b),(3,b)\}$$ là hàm từ $$\{1,2,3\}$$ đến $$\{a,b\}$$. Nhưng $$S=\{(1,a),(1,b),(2,b)\}$$ không là hàm vì đầu vào 1 có hai đầu ra.
 
 ![Hàm song ánh — mỗi đầu vào một đầu ra](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
-*Hình 6.2: Hàm là quan hệ đặc biệt — mỗi phần tử domain có đúng một mũi tên đi ra (tồn tại + duy nhất).*
+<p class="textbook-figure-caption" data-figure="6.2">Hàm là quan hệ đặc biệt — mỗi phần tử domain có đúng một mũi tên đi ra (tồn tại + duy nhất).</p>
+</div>
 
 ## 3. Domain, codomain và range
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**:
+</div>
 
 - **Domain**: tập tất cả đầu vào hợp lệ.
 - **Codomain**: tập mà đầu ra được khai báo thuộc về.
 - **Range/Image**: tập đầu ra thật sự xuất hiện.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Với $$f:\mathbb{Z}\to\mathbb{Z}$$, $$f(n)=2n$$:
 
 - Domain: $$\mathbb{Z}$$.
 - Codomain: $$\mathbb{Z}$$.
 - Range: tập số chẵn.
+</div>
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Nhầm lẫn phổ biến**: Codomain và range không nhất thiết giống nhau. Codomain là nơi hàm được khai báo trả về; range là phần thật sự được chạm tới.
 </div>
 
@@ -72,8 +96,10 @@ Một quan hệ $$R\subseteq A\times B$$ là hàm từ $$A$$ đến $$B$$ nếu:
 
 ### Bằng công thức
 
+<div class="textbook-equation" markdown="1">
 $$f(x)=3x+1.$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 ### Bằng bảng
 
 | $$x$$ | 1 | 2 | 3 |
@@ -82,25 +108,30 @@ $$f(x)=3x+1.$$
 
 ### Bằng tập cặp có thứ tự
 
+<div class="textbook-equation" markdown="1">
 $$f=\{(1,4),(2,7),(3,10)\}.$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 ### Bằng sơ đồ mũi tên
 
 Mỗi phần tử domain có đúng một mũi tên đi ra.
 
 ![Sơ đồ mũi tên — biểu diễn hàm số](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
-*Hình 6.3: Sơ đồ mũi tên thể hiện ánh xạ từ tập A sang tập B — mỗi phần tử A có đúng một cung đi ra.*
-
+<p class="textbook-figure-caption" data-figure="6.3">Sơ đồ mũi tên thể hiện ánh xạ từ tập A sang tập B — mỗi phần tử A có đúng một cung đi ra.</p>
 ## 5. Hàm toàn phần và hàm bộ phận
 
-**Định nghĩa**: Hàm trong toán rời rạc thường là **hàm toàn phần**: mọi phần tử của domain đều có ảnh. Trong lập trình, ta cũng gặp **hàm bộ phận**, tức chỉ xác định trên một phần domain.
+<div class="textbook-definition" markdown="1">
+**Định nghĩa**: Hàm trong toán rời rạc thường là **hàm toàn phần**: mọi phần tử của domain đều có ảnh. Trong lập trình, chúng ta cũng gặp **hàm bộ phận**, tức chỉ xác định trên một phần domain.
+</div>
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: $$g(x)=1/x$$ là hàm từ $$\mathbb{R}\setminus\{0\}$$ đến $$\mathbb{R}$$, nhưng không là hàm toàn phần từ $$\mathbb{R}$$ đến $$\mathbb{R}$$.
 
 ![Hàm đơn ánh — không gộp hai đầu vào](/discrete-mathematics-for-computer-science-iuh/img/course/Injection.svg)
 
-*Hình 6.4: Hàm bộ phần chỉ xác định trên một phần domain — tương tự hàm đơn ánh không cho hai đầu vào khác nhau cùng đầu ra.*
+<p class="textbook-figure-caption" data-figure="6.4">Hàm bộ phần chỉ xác định trên một phần domain — tương tự hàm đơn ánh không cho hai đầu vào khác nhau cùng đầu ra.</p>
+</div>
 
 ## 6. Hàm trong lập trình
 
@@ -113,7 +144,9 @@ Nếu xem kiểu `int -> int`, đây là một mô hình của hàm toán học.
 
 ## Định lý: Số hàm từ tập hữu hạn sang tập hữu hạn
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Số hàm từ tập $$A$$ ($$\lvert A \rvert = n$$) sang tập $$B$$ ($$\lvert B \rvert = m$$) là $$m^n$$.
+</div>
 
 **Chứng minh**:
 
@@ -139,9 +172,8 @@ Neural network là hợp của nhiều hàm nhỏ: phép nhân ma trận, cộng
 
 ![Mạng neural — hợp của nhiều hàm](/discrete-mathematics-for-computer-science-iuh/img/course/Neural_network.svg)
 
-*Hình 6.5: Neural network là composition of functions — mỗi tầng là một hàm ánh xạ vector đầu vào sang vector đầu ra.*
-
-Trong recommendation systems, ta thường cần hàm $$f(user, item)\to rating$$ để dự đoán mức độ phù hợp giữa người dùng và sản phẩm.
+<p class="textbook-figure-caption" data-figure="6.5">Neural network là composition of functions — mỗi tầng là một hàm ánh xạ vector đầu vào sang vector đầu ra.</p>
+Trong recommendation systems, chúng ta thường cần hàm $$f(user, item)\to rating$$ để dự đoán mức độ phù hợp giữa người dùng và sản phẩm.
 
 ```python
 def classify(score):
@@ -164,8 +196,7 @@ class MockModel:
 
 ![Hash function — ánh xạ khóa → giá trị](/discrete-mathematics-for-computer-science-iuh/img/course/Database.svg)
 
-*Hình 6.6: Hash function và database key là ví dụ hàm thực tế — ánh xạ dữ liệu đầu vào sang giá trị xác định.*
-
+<p class="textbook-figure-caption" data-figure="6.6">Hash function và database key là ví dụ hàm thực tế — ánh xạ dữ liệu đầu vào sang giá trị xác định.</p>
 ## Bài tập thực hành
 
 ### Bài tập 1: Kiểm tra hàm
@@ -210,8 +241,16 @@ print(f(3))  # 7
 
 </details>
 
+## Xem thêm / Video gợi ý
+
+- [Injective, Surjective, Bijective](https://www.youtube.com/watch?v=2jZ5n8k0p0Q) — 3Blue1Brown (Visual explanation)
+
 ## Tóm tắt
 
-Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
+- **Hàm số** $$f: A \to B$$: mỗi $$a \in A$$ được gán đúng một $$f(a) \in B$$
+- Phân biệt **domain**, **codomain** và **range** (ảnh thực sự đạt được)
+- Biểu diễn: công thức, bảng, tập cặp, sơ đồ mũi tên
+- Số hàm từ tập $$n$$ phần tử sang tập $$m$$ phần tử là $$m^n$$
+- **Ứng dụng CS**: API, hash function, khóa cơ sở dữ liệu, mô hình học máy
 
-Hàm số là quan hệ gán mỗi đầu vào đúng một đầu ra. Cần phân biệt domain, codomain và range. Hàm có thể biểu diễn bằng công thức, bảng, tập cặp hoặc sơ đồ. Trong khoa học máy tính, hàm là mô hình trung tâm của tính toán xác định.
+Trong bài tiếp theo, chúng ta sẽ xem xét tính chất đơn ánh, toàn ánh và song ánh.

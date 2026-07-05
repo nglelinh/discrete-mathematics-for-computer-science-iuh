@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Hàm sinh trong Phép đếm và Mã hóa"
 categories: chapter11
@@ -6,46 +7,28 @@ date: 2021-01-01
 order: 5
 required: false
 lang: en
+excerpt: "Ở các mục trước chúng ta đã định nghĩa hàm sinh, dùng nó giải truy hồi, và học nguyên lý bao hàm–loại trừ. Mục cuối Chương 11 tổng hợp ứng dụng mở rộng của…"
 ---
 
-Trong nhiều phần của toán rời rạc,
-ta đếm bằng cách liệt kê,
-dùng công thức,
-hoặc dựng recurrence.
-Nhưng đến một lúc,
-ta cần công cụ mạnh hơn:
-một cách gói cả dãy số vô hạn vào một biểu thức duy nhất.
-
-Đó là lúc generating functions xuất hiện.
-Nghe trừu tượng,
-nhưng chúng từng được Euler dùng đầy sức mạnh,
-và ngày nay vẫn liên hệ tới combinatorics,
-probability,
-algorithm analysis,
-và coding theory.
+Ở các mục trước chúng ta đã định nghĩa hàm sinh, dùng nó giải truy hồi, và học nguyên lý bao hàm–loại trừ. Mục cuối Chương 11 tổng hợp **ứng dụng mở rộng** của hàm sinh: Euler (1748) đã biến dãy số thành đối tượng đại số; ngày nay công cụ này vẫn liên hệ trực tiếp tới đếm tổ hợp (partition), **hàm sinh xác suất** (PGF), giải recurrence khó, và **weight enumerator** trong lý thuyết mã hóa. Khi liệt kê hoặc công thức trực tiếp không đủ, gói cả dãy vào $$G(x)=\sum a_n x^n$$ cho phép thao tác bằng đại số thay vì đếm tay từng bước.
 
 ---
 
 ![Euler và hàm sinh](/discrete-mathematics-for-computer-science-iuh/img/course/Leonhard_Euler.jpg)
 
-*Hình 11.21: Euler biến các dãy số thành đối tượng đại số, mở ra một trong những công cụ đẹp nhất của tổ hợp học.*
-
+<p class="textbook-figure-caption" data-figure="11.21">Euler biến các dãy số thành đối tượng đại số, mở ra một trong những công cụ đẹp nhất của tổ hợp học.</p>
 ![Hàm sinh xác suất (PGF)](/discrete-mathematics-for-computer-science-iuh/img/course/3D_surface_graph_of_generating_function_for_Fibonacci_numbers.png)
 
-*Hình 11.22: Hàm sinh xác suất biến phân phối rời rạc thành đối tượng có thể vi phân, nhân và phân tích.*
-
+<p class="textbook-figure-caption" data-figure="11.22">Hàm sinh xác suất biến phân phối rời rạc thành đối tượng có thể vi phân, nhân và phân tích.</p>
 ![Đếm tổ hợp bằng hệ số](/discrete-mathematics-for-computer-science-iuh/img/course/Za_by_Power_Series_Expansion.png)
 
-*Hình 11.23: Nhân các chuỗi hình thức — hệ số của $x^n$ cho số cách đạt tổng $n$.*
-
+<p class="textbook-figure-caption" data-figure="11.23">Nhân các chuỗi hình thức — hệ số của $x^n$ cho số cách đạt tổng $n$.</p>
 ![Giải truy hồi bằng hàm sinh](/discrete-mathematics-for-computer-science-iuh/img/course/Fibonacci_spiral.svg)
 
-*Hình 11.24: Truy hồi khó trở nên phương trình đại số sau khi chuyển sang miền hàm sinh.*
-
+<p class="textbook-figure-caption" data-figure="11.24">Truy hồi khó trở nên phương trình đại số sau khi chuyển sang miền hàm sinh.</p>
 ![Weight enumerator trong mã hóa](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 11.25: Đa thức đếm codeword theo trọng số Hamming — họ hàng gần của hàm sinh trong coding theory.*
-
+<p class="textbook-figure-caption" data-figure="11.25">Đa thức đếm codeword theo trọng số Hamming — họ hàng gần của hàm sinh trong coding theory.</p>
 ## Phần 1: Euler và cú nhảy năm 1748
 
 ### 1.1. Euler nhìn dãy số như đối tượng đại số
@@ -58,10 +41,12 @@ Ví dụ,
 dãy $a_0, a_1, a_2, ...$
 có thể được đóng gói thành:
 
+<div class="textbook-equation" markdown="1">
 $$
 A(x)=a_0+a_1x+a_2x^2+\cdots
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Ý tưởng đó mở cánh cửa cực lớn.
 
 ### 1.2. Vì sao cách nhìn này mạnh
@@ -88,10 +73,12 @@ Ví dụ,
 nếu mỗi giá trị có thể chọn 0, 1, 2, ... lần,
 ta gặp dạng:
 
+<div class="textbook-equation" markdown="1">
 $$
 1+x+x^2+x^3+\cdots = \frac{1}{1-x}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Khi nhân nhiều chuỗi như vậy,
 hệ số của $x^n$ nói số cách đạt tổng $n$.
 
@@ -118,10 +105,12 @@ thấy cách mã hóa cấu trúc rời rạc vào biểu diễn đại số đ�
 Nếu biến ngẫu nhiên rời rạc $X$ nhận các giá trị không âm,
 ta có probability generating function:
 
+<div class="textbook-equation" markdown="1">
 $$
 G_X(s)=\sum_{k\ge0} P(X=k)s^k
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Nhờ đó,
 phân phối xác suất được gói lại thành một object đại số thuận tiện.
 
@@ -279,6 +268,11 @@ Giải thích vai trò của hàm sinh trong lý thuyết mã (weight enumerator
 Weight enumerator polynomial mô tả phân bố trọng số của mã, giúp đánh giá khả năng phát hiện/sửa lỗi.
 
 </details>
+
+
+## Xem thêm / Video gợi ý
+
+- [Injective, Surjective, Bijective](https://www.youtube.com/watch?v=2jZ5n8k0p0Q) — 3Blue1Brown (Visual explanation)
 
 ## Tóm tắt
 

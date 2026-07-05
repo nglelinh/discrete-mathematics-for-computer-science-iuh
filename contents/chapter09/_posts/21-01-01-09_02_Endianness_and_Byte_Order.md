@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Endianness và Byte Order Mark: Khi cùng một số, hai cách lưu"
 categories: chapter09
@@ -6,13 +7,12 @@ date: 2021-01-01
 order: 2
 required: false
 lang: en
+excerpt: "Ở mục Unicode, chúng ta đã tách hai lớp: Unicode cho biết ký tự là số nào, encoding cho biết ghi số đó thành byte thế nào. Câu hỏi tương tự lặp lại với số…"
 ---
 
-Tuần thực tập, Lan mở file log mà team backend gửi từ server khác. Trong file có một dãy byte ghi thời điểm sự kiện xảy ra. Cô viết vài dòng Python để đọc, chạy thử — kết quả nhảy tới năm 2286. Đổi một ký tự trong lệnh `unpack`, chạy lại — ra đúng ngày giờ. Không ai ghi sai số vào file; Lan chỉ đọc byte theo thứ tự mà máy cô không dùng.
+Ở mục Unicode, chúng ta đã tách hai lớp: Unicode cho biết ký tự là số nào, encoding cho biết ghi số đó thành byte thế nào. Câu hỏi tương tự lặp lại với **số nguyên** — timestamp, cổng mạng, độ dài gói tin. Khi một số cần nhiều hơn một byte, máy phải quyết định byte nào đứng trước, byte nào đứng sau trong bộ nhớ; hai quy ước xếp đó gọi là **big-endian** và **little-endian**, và toàn bộ quy ước này gọi chung là **endianness** (thứ tự byte).
 
-Ở bài Unicode, chúng ta đã tách hai lớp: Unicode cho biết ký tự là số nào, encoding cho biết ghi số đó thành byte thế nào. Câu hỏi tương tự lặp lại với **số nguyên** — timestamp, cổng mạng, độ dài gói tin. Khi một số cần nhiều hơn một byte, máy phải quyết định byte nào đứng trước, byte nào đứng sau trong bộ nhớ. Hai cách xếp đó gọi là **big-endian** và **little-endian**; cả lớp quy ước này gọi chung là **endianness** (thứ tự byte).
-
-Một ý cần giữ suốt bài: **cùng một giá trị số, nhưng có thể được cất trong RAM theo hai kiểu xếp byte khác nhau.** Nắm được điều đó là đủ để tránh lỗi khó thấy khi đọc file binary, parse header mạng, hoặc copy chữ UTF-16 giữa hai máy.
+Một ý cần giữ suốt mục này: **cùng một giá trị số có thể được cất trong RAM theo hai kiểu xếp byte khác nhau.** Đọc sai quy ước — ví dụ dùng `struct.unpack(">I", ...)` trên file little-endian — có thể biến timestamp hợp lệ thành năm 2286 dù byte trong file không đổi. Nắm được điều đó là đủ để tránh lỗi khó thấy khi đọc file nhị phân, parse header mạng, hoặc copy chuỗi UTF-16 giữa hai máy.
 
 <figure class="image" style="align: center;">
 <p align="center">
@@ -27,11 +27,11 @@ Một ý cần giữ suốt bài: **cùng một giá trị số, nhưng có th�
 
 Một ô nhớ nhỏ nhất gọi là **byte**, lưu được số từ 0 đến 255. Số lớn hơn 255 thì một byte không đủ. Ví dụ số **4660** viết trong hệ hexadecimal là **0x1234** — tức là cần **hai byte**: một byte mang phần `12`, một byte mang phần `34`.
 
-Trong hai byte đó, người ta gọi `12` là **byte cao** (MSB — phần “nặng” hơn, giống chữ số hàng chục trong số thập phân) và `34` là **byte thấp** (LSB — phần “nhẹ” hơn, giống hàng đơn vị). Khi bạn viết `0x1234` lên giấy, bạn luôn viết `12` trước rồi mới đến `34`. Nhiều bạn mới học cũng mặc định máy tính sẽ cất trong bộ nhớ y hệt như vậy — thực tế không phải lúc nào cũng thế, và đó chính là chỗ gây nhầm.
+Trong hai byte đó, người ta gọi `12` là **byte cao** (MSB — phần “nặng” hơn, giống chữ số hàng chục trong số thập phân) và `34` là **byte thấp** (LSB — phần “nhẹ” hơn, giống hàng đơn vị). Khi chúng ta viết `0x1234` lên giấy, chúng ta luôn viết `12` trước rồi mới đến `34`. Nhiều chúng ta mới học cũng mặc định máy tính sẽ cất trong bộ nhớ y hệt như vậy — thực tế không phải lúc nào cũng thế, và đó chính là chỗ gây nhầm.
 
 ## Địa chỉ 1000 chứa `12` — bên trong ô nhớ là gì?
 
-Khi bài học viết “ô `1000` chứa `12`”, nhiều bạn hình dung sai: tưởng trong RAM có chữ `1` và chữ `2`, hoặc tưởng số `1234` nằm trọn trong một ô. Không phải vậy.
+Khi bài học viết “ô `1000` chứa `12`”, nhiều chúng ta hình dung sai: tưởng trong RAM có chữ `1` và chữ `2`, hoặc tưởng số `1234` nằm trọn trong một ô. Không phải vậy.
 
 **Địa chỉ** (ví dụ `1000`, `1001`) giống **số nhà** trên một con phố dài gọi là RAM. Mỗi số nhà trỏ tới **đúng một ô**, và mỗi ô lưu **đúng một byte** — tức **8 bit** (tám chỗ chỉ được điện cao `1` hoặc thấp `0`). Không có ô nào lưu cả số `1234` một lần; số lớn phải **chia** ra nhiều ô liền kề.
 
@@ -39,15 +39,14 @@ Giá trị hex **`0x12`** là cách viết gọn của số **18** trong hệ th
 
 `0001 0010` (nhị phân)
 
-Bit bên trái là bit “nặng” nhất của byte, bit bên phải là bit “nhẹ” nhất. Máy không lưu ký hiệu `12` như trong sách; nó lưu **mẫu điện** trên tám đường dây. Khi bạn xem hex dump, công cụ chỉ **dịch** mẫu đó ra hai ký tự `1` và `2` cho dễ đọc.
+Bit bên trái là bit “nặng” nhất của byte, bit bên phải là bit “nhẹ” nhất. Máy không lưu ký hiệu `12` như trong sách; nó lưu **mẫu điện** trên tám đường dây. Khi chúng ta xem hex dump, công cụ chỉ **dịch** mẫu đó ra hai ký tự `1` và `2` cho dễ đọc.
 
 Ô kế tiếp, địa chỉ `1001`, chứa byte **`0x34`** (tức 52 thập phân), với tám bit khác: `0011 0100`. Hai ô `1000` và `1001` **đứng cạnh nhau** trên con phố RAM. Khi CPU cần đọc một số 16-bit bắt đầu tại `1000`, nó lấy nội dung ô `1000`, lấy nội dung ô `1001`, rồi **ghép** theo quy tắc endian — đó mới thành `0x1234`.
 
 ![Một ô nhớ chứa byte 0x12](/discrete-mathematics-for-computer-science-iuh/img/course/memory_byte_12.svg)
 
-*Hình 9.4: Một địa chỉ = một byte = 8 bit. `0x12` là cách viết hex của giá trị lưu trong ô.*
-
-<div class="content-box insight-box" markdown="1">
+<p class="textbook-figure-caption" data-figure="9.4">Một địa chỉ = một byte = 8 bit. `0x12` là cách viết hex của giá trị lưu trong ô.</p>
+<div class="content-box insight-box textbook-block" markdown="1">
 Tóm lại ba tầng dễ lẫn: **(1)** số toán học `4660` hay `0x1234`; **(2)** từng **byte** `0x12`, `0x34` trong từng ô nhớ; **(3)** bên trong mỗi byte là **8 bit** nhị phân. Endianness chỉ nói byte `0x12` và `0x34` nằm ở ô `1000` hay `1001` — không đổi bit bên trong từng byte.
 </div>
 
@@ -55,7 +54,7 @@ Tóm lại ba tầng dễ lẫn: **(1)** số toán học `4660` hay `0x1234`; *
 
 ## Big-endian — xếp giống cách viết trên giấy
 
-**Big-endian** nghĩa là: byte cao được đặt ở **địa chỉ bộ nhớ thấp hơn** (ô nhớ đứng trước khi bạn đọc từ trái sang phải).
+**Big-endian** nghĩa là: byte cao được đặt ở **địa chỉ bộ nhớ thấp hơn** (ô nhớ đứng trước khi chúng ta đọc từ trái sang phải).
 
 Quay lại ví dụ trên: số `0x1234` được cất bắt đầu từ ô `1000`. Với big-endian, ô `1000` chứa byte `0x12` (tám bit `0001 0010`), ô `1001` chứa byte `0x34` (tám bit `0011 0100`). Hex dump hiện `12 34` — đúng thứ tự viết trên giấy. CPU đọc ô `1000` trước, lấy phần cao; đọc ô `1001` sau, lấy phần thấp; ghép lại được `0x1234`.
 
@@ -71,11 +70,11 @@ Một số hệ thống và nhiều **chuẩn trên mạng** dùng big-endian. K
 
 **Little-endian** làm ngược lại: byte **thấp** (`0x34`) nằm ở ô có địa chỉ **thấp hơn**, byte **cao** (`0x12`) nằm ở ô kế tiếp.
 
-Cùng số `0x1234`, cùng hai ô `1000` và `1001`, nhưng lần này ô `1000` chứa `0x34`, ô `1001` chứa `0x12`. Hex dump hiện `34 12`. Lỗi hay gặp nhất: nhìn `34 12` mà vẫn ghép trái sang phải thành `0x3412` — ra **13330**, hoàn toàn sai. Muốn đọc đúng trên máy little-endian, bạn cần nhớ ô trước là byte thấp, ô sau là byte cao, rồi mới ghép thành `0x1234`.
+Cùng số `0x1234`, cùng hai ô `1000` và `1001`, nhưng lần này ô `1000` chứa `0x34`, ô `1001` chứa `0x12`. Hex dump hiện `34 12`. Lỗi hay gặp nhất: nhìn `34 12` mà vẫn ghép trái sang phải thành `0x3412` — ra **13330**, hoàn toàn sai. Muốn đọc đúng trên máy little-endian, chúng ta cần nhớ ô trước là byte thấp, ô sau là byte cao, rồi mới ghép thành `0x1234`.
 
-Phần lớn máy tính cá nhân hôm nay — Windows, Linux, Mac trên chip Intel hoặc Apple Silicon — dùng **little-endian**. Vì vậy khi bạn học lập trình trên PC, dãy byte trong RAM thường “trông ngược” so với cách viết hex trên giấy. Đó không phải bug; đó là quy ước phần cứng.
+Phần lớn máy tính cá nhân hôm nay — Windows, Linux, Mac trên chip Intel hoặc Apple Silicon — dùng **little-endian**. Vì vậy khi chúng ta học lập trình trên PC, dãy byte trong RAM thường “trông ngược” so với cách viết hex trên giấy. Đó không phải bug; đó là quy ước phần cứng.
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 Đừng nhầm little-endian với “đảo ngược từng bit”. Bên trong mỗi byte, bit vẫn xếp bình thường. Chỉ có **thứ tự hai byte** (hoặc bốn byte, tám byte…) khi ghép thành một số lớn là đổi chỗ. Số 4660 vẫn là 4660; thay đổi duy nhất là ô nhớ nào giữ `12`, ô nào giữ `34`.
 </div>
 
@@ -85,13 +84,13 @@ Phần lớn máy tính cá nhân hôm nay — Windows, Linux, Mac trên chip In
 
 Câu hỏi tự nhiên sau khi biết big và little: **sao không chọn một kiểu cho cả thế giới?** Lý do không phải vì một kiểu “sai” và kiể kia “đúng”. Cả hai đều là **quy ước** — cách các nhóm kỹ sư khác nhau quyết định xếp byte khi thiết kế chip và giao thức, từ những thập niên 1970–1980. Khi đã có hàng triệu máy, file, và chương trình chạy theo một quy ước, đổi toàn bộ rất tốn kém — nên hai kiểu cùng tồn tại đến hôm nay.
 
-**Big-endian** được nhiều người thấy “tự nhiên” vì hex dump đọc giống cách viết số trên giấy: `12` trước, `34` sau. Các máy mainframe, một số chip MIPS/PowerPC, và đặc biệt **giao thức mạng** (Internet) chọn kiểu này để hai máy khác hãng nói chuyện mà không phải đoán. Khi bạn đọc tài liệu RFC hay spec file PNG, thường gặp quy ước “byte cao trước” — đó là di sản của lựa chọn này.
+**Big-endian** được nhiều người thấy “tự nhiên” vì hex dump đọc giống cách viết số trên giấy: `12` trước, `34` sau. Các máy mainframe, một số chip MIPS/PowerPC, và đặc biệt **giao thức mạng** (Internet) chọn kiểu này để hai máy khác hãng nói chuyện mà không phải đoán. Khi chúng ta đọc tài liệu RFC hay spec file PNG, thường gặp quy ước “byte cao trước” — đó là di sản của lựa chọn này.
 
-**Little-endian** xuất phát từ cách CPU làm việc với số nhiều byte. Nhiều phép tính (cộng, nhân từng bước) xử lý từ **bit/byte thấp** lên **byte cao** — giống bạn cộng số từ hàng đơn vị lên hàng chục. Đặt byte thấp ở địa chỉ nhỏ hơn giúp vi xử lý Intel (x86) từ thập niên 1978 tiện khi đọc tuần tự địa chỉ tăng dần. PC phổ biến ngày nay kế thừa dòng quy ước đó, nên RAM máy bạn thường là little-endian.
+**Little-endian** xuất phát từ cách CPU làm việc với số nhiều byte. Nhiều phép tính (cộng, nhân từng bước) xử lý từ **bit/byte thấp** lên **byte cao** — giống chúng ta cộng số từ hàng đơn vị lên hàng chục. Đặt byte thấp ở địa chỉ nhỏ hơn giúp vi xử lý Intel (x86) từ thập niên 1978 tiện khi đọc tuần tự địa chỉ tăng dần. PC phổ biến ngày nay kế thừa dòng quy ước đó, nên RAM máy chúng ta thường là little-endian.
 
 Hai hãng, hai thời điểm, hai ưu tiên thiết kế — không có cuộc họp toàn cầu bắt buộc thống nhất. Kết quả: thế giới thật **lẫn cả hai**. Giải pháp thực tế không phải “chọn một kiểu và xóa kiểu kia”, mà là **ghi rõ trong spec** (file này big hay little), **quy ước chung trên dây mạng** (luôn big-endian), và **hàm chuyển đổi** trong code (`htonl`, `ntohl`, dấu `<` / `>` trong Python). Lập trình viên học cách hỏi “byte nào trước?” thay vì giả định mọi nơi giống máy mình.
 
-<div class="content-box note-box" markdown="1">
+<div class="content-box note-box textbook-block" markdown="1">
 Có thể hình dung như hai quốc gia viết ngày-tháng: `21/06/2026` hay `06/21/2026`. Cùng một ngày, không ai sai toán — chỉ khác **thói quen ghi**. Khi trao đổi, phải nói rõ đang dùng format nào; endianness cũng vậy.
 </div>
 
@@ -137,21 +136,20 @@ UTF-8 ít dính chuyện endian hơn vì mỗi ký tự là dãy byte đọc tu�
 
 Hai máy khác endian gửi cho nhau số cổng 8080 hoặc độ dài gói tin. Nếu máy A gửi byte theo RAM của A, máy B đọc theo RAM của B, kết quả lệch ngay. Giải pháp lâu đời: trên dây mạng luôn dùng **big-endian**, gọi là **network byte order**.
 
-Trên PC little-endian, trước khi gửi đi bạn chuyển sang dạng mạng, sau khi nhận về bạn chuyển lại dạng máy mình. Trong C có sẵn hàm `htonl` (host to network, long) và `ntohl` (network to host). Tên hàm nghe khó, nhưng ý rất đơn giản: **đừng để mỗi máy tự đoán; trên dây luôn dùng một quy ước chung.**
+Trên PC little-endian, trước khi gửi đi chúng ta chuyển sang dạng mạng, sau khi nhận về chúng ta chuyển lại dạng máy mình. Trong C có sẵn hàm `htonl` (host to network, long) và `ntohl` (network to host). Tên hàm nghe khó, nhưng ý rất đơn giản: **đừng để mỗi máy tự đoán; trên dây luôn dùng một quy ước chung.**
 
 ![Mô hình OSI](/discrete-mathematics-for-computer-science-iuh/img/course/OSI_Model_v1.svg)
 
-*Hình 9.6: Trong header gói tin, các trường số nhiều byte phải hiểu cùng một thứ tự.*
-
+<p class="textbook-figure-caption" data-figure="9.6">Trong header gói tin, các trường số nhiều byte phải hiểu cùng một thứ tự.</p>
 ---
 
 ## Làm sao biết file hoặc API dùng kiểu nào?
 
-Không có “file binary thuần” theo nghĩa mọi byte đều giống nhau trên mọi máy. Mỗi định dạng ghi rõ trong tài liệu. File PNG quy định độ dài mỗi khối là bốn byte **big-endian**. Java `ByteBuffer` mặc định có thể khác với RAM PC; bạn phải gọi `buf.order(ByteOrder.BIG_ENDIAN)` nếu spec yêu cầu.
+Không có “file binary thuần” theo nghĩa mọi byte đều giống nhau trên mọi máy. Mỗi định dạng ghi rõ trong tài liệu. File PNG quy định độ dài mỗi khối là bốn byte **big-endian**. Java `ByteBuffer` mặc định có thể khác với RAM PC; chúng ta phải gọi `buf.order(ByteOrder.BIG_ENDIAN)` nếu spec yêu cầu.
 
 Trong Python, dấu `<` sau lệnh unpack nghĩa là little-endian, dấu `>` là big-endian. Chữ `I` nghĩa là số nguyên không dấu 32 bit. Vì vậy `struct.unpack("<I", data)` đọc bốn byte theo kiểu PC; `struct.unpack(">I", data)` đọc theo kiểu mạng hoặc nhiều file chuẩn cũ.
 
-Thói quen tốt khi mới học: mỗi lần mở file binary hoặc parse buffer, hãy hỏi **“tài liệu nói byte nào trước?”** — không đoán theo máy mình.
+Khi đọc file nhị phân hoặc parse buffer, luôn tra cứu trong tài liệu định dạng **byte nào được ghi trước** — không suy đoán theo endianness của máy cục bộ.
 
 ---
 
@@ -170,7 +168,7 @@ Little-endian đặt byte thấp ở địa chỉ thấp hơn. Ô `1000` là `34
 
 ### Bài tập 2
 
-Cùng hai byte `34` và `12`, nhưng bạn vô tình đọc như big-endian (ghép trái sang phải thành một số hex). Kết quả là gì?
+Cùng hai byte `34` và `12`, nhưng chúng ta vô tình đọc như big-endian (ghép trái sang phải thành một số hex). Kết quả là gì?
 
 <details>
 <summary>Đáp án</summary>
@@ -208,10 +206,16 @@ File bắt đầu bằng `FE FF 00 48`. Đây là UTF-16 kiểu nào? Ba byte sa
 
 ---
 
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
+
 ## Tóm tắt
 
-Endianness là câu chuyện **cùng một số, nhưng xếp byte khác nhau trong RAM**. Big-endian giống cách viết hex trên giấy — byte cao trước. Little-endian đặt byte thấp trước — đây là kiểu phổ biến trên PC bạn đang dùng. Nhầm kiểu đọc thì hex dump vẫn “có vẻ hợp lý” nhưng số ra sai, như Lan thấy với timestamp năm 2286.
+Endianness là câu chuyện **cùng một số, nhưng xếp byte khác nhau trong RAM**. Big-endian giống cách viết hex trên giấy — byte cao trước. Little-endian đặt byte thấp trước — đây là kiểu phổ biến trên PC chúng ta đang dùng. Nhầm kiểu đọc thì hex dump vẫn “có vẻ hợp lý” nhưng số ra sai, như Lan thấy với timestamp năm 2286.
 
-Chữ UTF-16 cũng chịu ảnh hưởng vì mỗi ký tự là hai byte; BOM ở đầu file giúp máy biết đọc theo chiều nào. Trên mạng, mọi người thống nhất big-endian để khỏi đoán. Khi code, hãy đọc spec hoặc dùng đúng dấu `<` / `>` trong Python — đó là cách bạn nói với máy: “hãy đọc byte theo thứ tự này”.
+Chữ UTF-16 cũng chịu ảnh hưởng vì mỗi ký tự là hai byte; BOM ở đầu file giúp máy biết đọc theo chiều nào. Trên mạng, mọi người thống nhất big-endian để khỏi đoán. Khi code, hãy đọc spec hoặc dùng đúng dấu `<` / `>` trong Python — đó là cách chúng ta nói với máy: “hãy đọc byte theo thứ tự này”.
 
-Bài sau chúng ta bỏ endian, đi vào **số có dấu trong máy**: cộng một giây vào timestamp 32-bit có thể đưa đồng hồ về năm 1901 — hiện tượng Year 2038 và cách máy lưu số âm bằng two's complement.
+Trong bài tiếp theo, chúng ta chuyển sang **số có dấu trong máy**: cộng một giây vào timestamp 32-bit có thể đưa đồng hồ về năm 1901 — hiện tượng Year 2038 và cách máy lưu số âm bằng two's complement.

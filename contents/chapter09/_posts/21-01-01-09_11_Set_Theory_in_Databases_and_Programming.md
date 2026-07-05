@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Tập hợp trong CSDL và lập trình: Từ Russell đến Bloom filter"
 categories: chapter09
@@ -6,11 +7,12 @@ date: 2021-01-01
 order: 11
 required: false
 lang: en
+excerpt: "Ở mục trước chúng ta đã thấy cardinality quyết định aggregate có nén được hay không. Mục cuối Chương 9 quay lại lý thuyết tập hợp (Chương 4) dưới chân…"
 ---
 
-Thứ Tư, 9 giờ sáng — campaign email “khách hàng VIP” gửi **hai lần** cho cùng một địa chỉ.
+Ở mục trước chúng ta đã thấy **cardinality** quyết định aggregate có nén được hay không. Mục cuối Chương 9 quay lại **lý thuyết tập hợp** (Chương 4) dưới chân PostgreSQL, Redis, TypeScript, và Bloom filter — mọi lớp đều hỏi cùng một câu: phần tử có thuộc tập không, và hợp–giao–hiệu ra sao. Minh họa điển hình: campaign email gửi **hai lần** cho cùng địa chỉ vì dùng `UNION ALL` thay vì `UNION` — nhầm phép **hợp** tập với phép nối bag.
 
-Linh, data engineer tại startup e-commerce, mở query mà intern viết đêm qua:
+Linh, data engineer tại startup e-commerce, mở query mà intern viết:
 
 ```sql
 SELECT email FROM newsletter_subscribers
@@ -22,7 +24,7 @@ PM đếm: 48.000 email unique trong CRM, nhưng SendGrid báo **61.000** recipi
 
 Case study TaskFlow vừa rồi gom hết lỗi đếm — connection pool, cardinality metric, UUID — vào một buổi sáng login sập. Bài này là **lời kết Chương 9**: quay lại lý thuyết tập hợp từ chương 4, nhưng đặt ngay dưới chân PostgreSQL, Redis, TypeScript, và câu hỏi `if user_id in cache`. Từ tranh cãi Cantor thế kỷ XIX, qua nghịch lý Russell, đến Bloom filter trong crawler — cùng một ngôn ngữ: **phần tử có thuộc tập không**, **hợp–giao–hiệu** ra sao.
 
-Nhiều bạn học ch04 rồi nghĩ tập hợp “rất toán”, xa production. Thực tế set theory nằm dưới chân mọi thứ chúng ta vừa chạm: cardinality analytics, hash collision, connection pool đếm session. Linh sửa campaign không cần thêm công thức lạ — chỉ cần nhớ `UNION` là hợp hai tập kết quả, không phải nối hai danh sách.
+Nhiều chúng ta học ch04 rồi nghĩ tập hợp “rất toán”, xa production. Thực tế set theory nằm dưới chân mọi thứ chúng ta vừa chạm: cardinality analytics, hash collision, connection pool đếm session. Linh sửa campaign không cần thêm công thức lạ — chỉ cần nhớ `UNION` là hợp hai tập kết quả, không phải nối hai danh sách.
 
 <figure class="image" style="align: center;">
 <p align="center">
@@ -37,18 +39,16 @@ Nhiều bạn học ch04 rồi nghĩ tập hợp “rất toán”, xa productio
 
 ## Russell và bài học về tự tham chiếu
 
-Georg Cantor dám hỏi: các loại vô hạn có kích thước khác nhau không? Ông biến set theory thành ngôn ngữ chung cho số, hàm, quan hệ — nền mà khoa học máy tính thừa hưởng. Khi bạn viết `SELECT DISTINCT`, bạn đang yêu cầu engine loại phần tử trùng trong một tập tuple; khi bạn khai báo `type ID = string | number`, bạn đang mô tả hợp hai tập giá trị hợp lệ. Cantor không viết PostgreSQL, nhưng mọi phép “có thuộc tập không” trong code đều mượn trực giác ông đặt nền.
+Georg Cantor dám hỏi: các loại vô hạn có kích thước khác nhau không? Ông biến set theory thành ngôn ngữ chung cho số, hàm, quan hệ — nền mà khoa học máy tính thừa hưởng. Khi chúng ta viết `SELECT DISTINCT`, chúng ta đang yêu cầu engine loại phần tử trùng trong một tập tuple; khi chúng ta khai báo `type ID = string | number`, chúng ta đang mô tả hợp hai tập giá trị hợp lệ. Cantor không viết PostgreSQL, nhưng mọi phép “có thuộc tập không” trong code đều mượn trực giác ông đặt nền.
 
 ![Georg Cantor](/discrete-mathematics-for-computer-science-iuh/img/course/Georg_Cantor_1894.jpg)
 
-*Hình 9.18: Georg Cantor (1845–1918) — nền móng lý thuyết tập hợp hiện đại.*
-
+<p class="textbook-figure-caption" data-figure="9.18">Georg Cantor (1845–1918) — nền móng lý thuyết tập hợp hiện đại.</p>
 Bertrand Russell sau đó nêu nghịch lý: xét tập hợp của mọi tập hợp **không** chứa chính nó. Tập đó có chứa chính nó không? Có → theo định nghĩa không được chứa; không → theo định nghĩa phải chứa. Logic bế tắc — không phải trò đố vui.
 
 ![Bertrand Russell](/discrete-mathematics-for-computer-science-iuh/img/course/Bertrand_Russell_photo.jpg)
 
-*Hình 9.19: Bertrand Russell — cảnh báo nguy hiểm của tự tham chiếu trong định nghĩa tập.*
-
+<p class="textbook-figure-caption" data-figure="9.19">Bertrand Russell — cảnh báo nguy hiểm của tự tham chiếu trong định nghĩa tập.</p>
 Đây không chỉ là cú sốc triết học. Đó là lời nhắc hiện đại: schema “tập hợp mọi thứ” không kiểm soát tự tham chiếu dễ mâu thuẫn — giống JSON lồng vô hạn, hay foreign key vòng `A → B → A`. E. F. Codd (1970) đặt nền **mô hình quan hệ** trên tập hợp có cấu trúc (tuple, domain), tránh “tập của mọi tập” kiểu naive. Mỗi bảng là tập các bộ có kiểu; mỗi cột thuộc một domain — không phải “mọi giá trị có thể tưởng tượng”.
 
 ---
@@ -57,8 +57,7 @@ Bertrand Russell sau đó nêu nghịch lý: xét tập hợp của mọi tập 
 
 ![Cơ sở dữ liệu quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/Database.svg)
 
-*Hình 9.20: Mỗi bảng là tập các bộ (tuple); truy vấn là phép chọn tập con.*
-
+<p class="textbook-figure-caption" data-figure="9.20">Mỗi bảng là tập các bộ (tuple); truy vấn là phép chọn tập con.</p>
 Một bảng = tập các tuple. `WHERE` = **selection** — lấy tập con thỏa điều kiện:
 
 ```sql
@@ -67,7 +66,7 @@ FROM Employees
 WHERE department = 'IT';
 ```
 
-Kết quả không phải “danh sách” theo nghĩa thứ tự quan trọng; về mặt đại số quan hệ, đó là tập (hoặc bag nếu bạn bật `DISTINCT` tắt và cho phép trùng). Linh sửa campaign query:
+Kết quả không phải “danh sách” theo nghĩa thứ tự quan trọng; về mặt đại số quan hệ, đó là tập (hoặc bag nếu chúng ta bật `DISTINCT` tắt và cho phép trùng). Linh sửa campaign query:
 
 ```sql
 SELECT email FROM newsletter_subscribers
@@ -97,8 +96,7 @@ Incident email của Linh là case **hợp** sai: `UNION ALL` không dedup, nên
 
 ![Phép JOIN trong SQL](/discrete-mathematics-for-computer-science-iuh/img/course/Square_join.png)
 
-*Hình 9.21: JOIN — kết hợp hai bảng theo khóa khớp.*
-
+<p class="textbook-figure-caption" data-figure="9.21">JOIN — kết hợp hai bảng theo khóa khớp.</p>
 ```sql
 SELECT s.name, c.title
 FROM Students s
@@ -106,9 +104,9 @@ JOIN Enrollments e ON s.id = e.student_id
 JOIN Courses c ON e.course_id = c.id;
 ```
 
-Về bản chất, đây là tích Descartes của `Students × Enrollments × Courses`, rồi **lọc** những bộ mà `s.id = e.student_id` và `e.course_id = c.id`. Incident email là case **hợp** sai; incident chậm query tuần trước của Linh là case **tích** phình — `JOIN` thiếu điều kiện `ON`, Cartesian product 10⁶ dòng trước khi `WHERE` kịp cắt. Cùng chương tập hợp, hai thảm họa khác nhau: một thừa phần tử, một nhân phần tử.
+Về bản chất, đây là tích Descartes của `Students × Enrollments × Courses`, rồi **lọc** những bộ mà `s.id = e.student_id` và `e.course_id = c.id`. Incident email là case **hợp** sai; incident chậm query tuần trước của Linh là case **tích** phình — `JOIN` thiếu điều kiện `ON`, Cartesian product 10⁶ dòng trước khi `WHERE` kịp cắt. Cùng chương tập hợp, hai lỗi nghiêm trọng khác nhau: một thừa phần tử, một nhân phần tử.
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 `INNER JOIN` ≈ giao có điều kiện trên khóa; `LEFT JOIN` giữ cả phần tử “mồ côi” bên trái. Nhầm hai phép → mất dòng hoặc nhân dòng — không phải lỗi cú pháp, lỗi **tập**.
 </div>
 
@@ -130,7 +128,7 @@ if "u2" in vip:
     ...
 ```
 
-`|`, `&`, `-`, `in` — ánh xạ trực tiếp từ ch04. Dictionary không phải tập thuần (key–value), nhưng `if user_id in cache` là câu hỏi **membership** trên tập key — cùng câu hỏi Cantor đặt nền, chỉ khác là bạn trả lời bằng hash lookup thay vì suy luận trên giấy.
+`|`, `&`, `-`, `in` — ánh xạ trực tiếp từ ch04. Dictionary không phải tập thuần (key–value), nhưng `if user_id in cache` là câu hỏi **membership** trên tập key — cùng câu hỏi Cantor đặt nền, chỉ khác là chúng ta trả lời bằng hash lookup thay vì suy luận trên giấy.
 
 Linh dùng set trong ETL vì dedup trong RAM nhanh hơn `SELECT DISTINCT` trên staging table khi dataset vừa phải. Khi scale lên hàng chục triệu `user_id`, set Python không còn vừa RAM — lúc đó Bloom filter hoặc `UNION` trong SQL trên warehouse mới là lựa chọn đúng.
 
@@ -144,8 +142,7 @@ Bloom filter không lưu trọn tập; nó lưu “dấu vết” bit qua vài h
 
 ![Bloom filter](/discrete-mathematics-for-computer-science-iuh/img/course/Bloom_filter.svg)
 
-*Hình 9.22: Bloom filter — membership xác suất, chấp nhận false positive để đổi RAM.*
-
+<p class="textbook-figure-caption" data-figure="9.22">Bloom filter — membership xác suất, chấp nhận false positive để đổi RAM.</p>
 Liên hệ bài `09_07`–`08`: hash vào $$D$$ bucket, xác suất va chạm — cùng họ tư duy **đếm membership** dưới quy mô lớn. Bloom filter là tập **xấp xỉ**; bài `09_09` Cloudflare cũng chấp nhận xấp xỉ (HyperLogLog) thay vì đếm distinct chính xác trên terabyte log. Ứng dụng thực tế: cache negative lookup, distributed DB, web crawler (“URL đã crawl chưa?”), storage engine — mọi nơi cần trả lời “có trong tập không?” mà không mang cả tập theo.
 
 ---
@@ -156,8 +153,7 @@ Hash table: tập keys, ánh xạ key → bucket, xử lý collision khi hai key
 
 ![Hash table](/discrete-mathematics-for-computer-science-iuh/img/course/Hash_table_simple_999.svg)
 
-*Hình 9.23: Hash table — tra cứu membership trung bình O(1).*
-
+<p class="textbook-figure-caption" data-figure="9.23">Hash table — tra cứu membership trung bình O(1).</p>
 Trong PostgreSQL, **index** trên `customer_id` giúp:
 
 ```sql
@@ -182,9 +178,8 @@ type ID = string | number;
 
 ![Union of sets](/discrete-mathematics-for-computer-science-iuh/img/course/Union_of_sets_A_and_B.svg)
 
-*Hình 9.24: Union type — hợp tập giá trị trong type system.*
-
-Type checker hỏi: giá trị runtime có **thuộc** tập mà type cho phép không? Cùng câu hỏi membership với `IN` trong SQL và `in` trong Python — ba tầng, một trực giác. Khi bạn viết `function process(id: string | number)`, compiler từ chối `process(true)` vì `true` không thuộc hợp `{string} ∪ {number}`.
+<p class="textbook-figure-caption" data-figure="9.24">Union type — hợp tập giá trị trong type system.</p>
+Type checker hỏi: giá trị runtime có **thuộc** tập mà type cho phép không? Cùng câu hỏi membership với `IN` trong SQL và `in` trong Python — ba tầng, một trực giác. Khi chúng ta viết `function process(id: string | number)`, compiler từ chối `process(true)` vì `true` không thuộc hợp `{string} ∪ {number}`.
 
 Discriminated union (`type Result = { ok: true, data: T } | { ok: false, error: string }`) là cách type system mô tả **phân hoạch** tập kết quả — mỗi nhánh là tập con disjoint, hợp lại là toàn bộ không gian lỗi/thành công. Đó là set partition trong ch04, chỉ đổi tên thành “algebraic data type”.
 
@@ -194,9 +189,9 @@ Discriminated union (`type Result = { ok: true, data: T } | { ok: false, error: 
 
 Linh sửa `UNION ALL` → `UNION`, rerun campaign — 48.012 recipients, khớp CRM. Intern viết post-mortem một dòng: *“SQL là đại số tập, không phải nối chuỗi.”*
 
-Case study TaskFlow (`09_10`) cho thấy một buổi sáng login có thể sập vì đếm sai connection, cardinality metric, UUID collision — tất cả qua một cửa. Bài này bổ sung **lớp tập hợp** dưới SQL, cache, và type system mà case study giả định bạn đã cảm được: mỗi `UNION` là hợp, mỗi `JOIN` là tích có lọc, mỗi Bloom filter là membership xấp xỉ, mỗi `string | number` là hợp tập giá trị.
+Case study TaskFlow (`09_10`) cho thấy một buổi sáng login có thể sập vì đếm sai connection, cardinality metric, UUID collision — tất cả qua một cửa. Bài này bổ sung **lớp tập hợp** dưới SQL, cache, và type system mà case study giả định chúng ta đã cảm được: mỗi `UNION` là hợp, mỗi `JOIN` là tích có lọc, mỗi Bloom filter là membership xấp xỉ, mỗi `string | number` là hợp tập giá trị.
 
-Cantor và Russell không viết PostgreSQL. Nhưng mỗi lần bạn chọn `UNION` hay `UNION ALL`, đặt Bloom filter trước DB, hay khai báo union type, bạn đang vận hành set theory đã được kiểm chứng — trên dữ liệu thật, tiền thật, email trùng thật.
+Cantor và Russell không viết PostgreSQL. Nhưng mỗi lần chúng ta chọn `UNION` hay `UNION ALL`, đặt Bloom filter trước DB, hay khai báo union type, chúng ta đang vận hành set theory đã được kiểm chứng — trên dữ liệu thật, tiền thật, email trùng thật.
 
 **Đọc thêm**: [PostgreSQL — UNION, INTERSECT, EXCEPT](https://www.postgresql.org/docs/current/queries-union.html) · [Use The Index, Luke — Anatomy of an Index](https://use-the-index-luke.com/sql/anatomy) · [Wikipedia — Bloom filter](https://en.wikipedia.org/wiki/Bloom_filter)
 
@@ -215,16 +210,22 @@ Bảng `newsletter_subscribers` có 30.000 email distinct. Bảng `loyalty_vip` 
 
 `UNION ALL` giữ mọi bản sao:
 
+<div class="textbook-equation" markdown="1">
 $$30{,}000 + 22{,}000 = 52{,}000 \text{ dòng}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 `UNION` loại trùng (hợp tập):
 
+<div class="textbook-equation" markdown="1">
 $$30{,}000 + 22{,}000 - 4{,}000 = 48{,}000 \text{ email distinct}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Chênh lệch:
 
+<div class="textbook-equation" markdown="1">
 $$52{,}000 - 48{,}000 = 4{,}000$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 — đúng bằng số email nằm trong cả hai tập (bị đếm hai lần khi dùng `UNION ALL`). Incident 61.000 recipients với CRM 48.000 unique cho thấy overlap hoặc nguồn dữ liệu còn nhiều hơn hai bảng đơn giản — có thể thêm nhánh query, staging trùng, hoặc `UNION ALL` nhiều lần — nhưng **cơ chế** giống nhau: bag lớn hơn set vì không dedup.
 
 </details>
@@ -245,8 +246,10 @@ Tính $$|(A \cap B) \setminus C|$$ — tức sinh viên học cả DM và DB nh�
 
 Học cả DM và DB: $$|A \cap B| = 50$$. Trong đó có 5 người cũng học AI, nên:
 
+<div class="textbook-equation" markdown="1">
 $$|(A \cap B) \setminus C| = 50 - 5 = 45$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 SQL:
 
 ```sql
@@ -263,17 +266,21 @@ EXCEPT
 
 ### Bài tập 3
 
-Bloom filter với $$m = 10{,}000$$ bit và $$k = 3$$ hàm hash. Ước lượng false positive rate khi đã insert $$n = 1{,}000$$ phần tử (dùng xấp xỉ $$p \approx (1 - e^{-kn/m})^k$$). Nếu chấp nhận tối đa 1% false positive, bạn nên làm gì khi $$n$$ tăng lên 5.000 — tăng $$m$$, tăng $$k$$, hay query DB bỏ filter?
+Bloom filter với $$m = 10{,}000$$ bit và $$k = 3$$ hàm hash. Ước lượng false positive rate khi đã insert $$n = 1{,}000$$ phần tử (dùng xấp xỉ $$p \approx (1 - e^{-kn/m})^k$$). Nếu chấp nhận tối đa 1% false positive, chúng ta nên làm gì khi $$n$$ tăng lên 5.000 — tăng $$m$$, tăng $$k$$, hay query DB bỏ filter?
 
 <details>
 <summary>Đáp án</summary>
 
 Với $$n = 1{,}000$$:
 
+<div class="textbook-equation" markdown="1">
 $$\frac{kn}{m} = \frac{3 \times 1{,}000}{10{,}000} = 0.3$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$p \approx (1 - e^{-0.3})^3 \approx (1 - 0.741)^3 \approx 0.017$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 — khoảng **1,7%** false positive.
 
 Khi $$n = 5{,}000$$, $$\frac{kn}{m} = 1.5$$ → $$p$$ tăng mạnh (có thể vài chục %). Để giữ ~1% FP:
@@ -319,6 +326,12 @@ vip = {"u2", "u3"}
 </details>
 
 ---
+
+
+## Xem thêm / Video gợi ý
+
+- [Set Theory — Cardinality and Infinity](https://www.youtube.com/watch?v=5jZ5n8k0p0Q) — Numberphile (Hilbert's Hotel)
+- [Introduction to Sets](https://www.youtube.com/watch?v=4l7L9v0p0Q) — Khan Academy (Basics + notation)
 
 ## Tóm tắt
 

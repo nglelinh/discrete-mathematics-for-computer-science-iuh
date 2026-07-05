@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Hoán vị và Tổ hợp"
 categories: chapter07
@@ -6,34 +7,45 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã học quy tắc cộng và quy tắc nhân. Mục này giới thiệu hoán vị và tổ hợp — hai khái niệm phân biệt theo việc thứ tự có quan trọng hay…"
 ---
 
-Khi sắp lịch thuyết trình, chọn đội thi, sinh chuỗi ký tự, hay xét mọi cách điền dữ liệu vào các vị trí khác nhau, câu hỏi không chỉ là chọn **những gì** mà còn là có quan tâm đến **thứ tự** hay không.
+Ở mục trước chúng ta đã học quy tắc cộng và quy tắc nhân. Mục này giới thiệu **hoán vị** và **tổ hợp** — hai khái niệm phân biệt theo việc thứ tự có quan trọng hay không.
 
+Khi sắp lịch thuyết trình, chọn đội thi hay sinh chuỗi ký tự, câu hỏi không chỉ là chọn **những gì** mà còn là có quan tâm đến **thứ tự** hay không. Nếu thứ tự quan trọng, số khả năng tăng rất nhanh; nếu không, nhiều cấu hình tưởng khác nhau thực ra là một. Các công thức giai thừa, chỉnh hợp và tổ hợp là kết quả tự nhiên của việc phân tích quá trình chọn và sắp xếp.
 
-Các quy tắc đếm cho ta cách ước lượng số cấu hình có thể xảy ra mà không cần liệt kê hết, đây là kỹ năng rất gần với phân tích thuật toán và kiểm thử.
-Đó là ranh giới giữa **hoán vị** và **tổ hợp**. Nếu thứ tự quan trọng, số khả năng tăng rất nhanh. Nếu thứ tự không quan trọng, nhiều cấu hình tưởng khác nhau thực ra lại là một. Phân biệt đúng hai kiểu bài này là kỹ năng cốt lõi trong combinatorics và cũng rất thực tế trong lập trình.
+## Mục tiêu học tập
 
-Các công thức quen thuộc như giai thừa, chỉnh hợp, tổ hợp không nên được học như danh sách phải nhớ. Chúng nên được nhìn như kết quả tự nhiên của việc phân tích quá trình chọn và sắp xếp.
+<div class="textbook-objectives" markdown="1">
 
-Trong bài học này, chúng ta sẽ đi từ trực giác đếm đơn giản đến các công thức chuẩn, đồng thời luyện cách nhận ra bài toán thuộc loại nào trước khi tính.
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
+
+- **Tính** hoán vị $$P(n,r)$$ và tổ hợp $$C(n,r)$$.
+- **Phân biệt** bối cảnh có thứ tự và không thứ tự.
+- **Giải** bài toán chọn nhóm, xếp hàng, phân công.
+
+**Từ khóa**: hoán vị (permutation), tổ hợp (combination), $$n!$$, $$\binom{n}{r}$$.
+</div>
 
 ## Giai thừa (Factorial)
 
 Trước khi học hoán vị và tổ hợp, chúng ta cần hiểu về giai thừa.
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: n! = n × (n-1) × (n-2) × ... × 2 × 1
+</div>
 
 **Quy ước**: 0! = 1
 
-![Giai thừa từ 0! đến 4!](/discrete-mathematics-for-computer-science-iuh/img/course/Factorial_from_0__to_4_.svg)
+![Giá trị giai thừa n! — tăng rất nhanh](/discrete-mathematics-for-computer-science-iuh/img/course/Factorial_growth.svg)
 
-*Hình 7.6: Giai thừa n! tăng rất nhanh — nền tảng để tính hoán vị và tổ hợp.*
-
+<p class="textbook-figure-caption" data-figure="7.6">Giá trị n! tăng rất nhanh (thang log₁₀) — từ 0! = 1 đến 10! = 3.628.800; nền tảng để tính hoán vị và tổ hợp.</p>
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - 3! = 3 × 2 × 1 = 6
 - 5! = 5 × 4 × 3 × 2 × 1 = 120
 - 0! = 1
+</div>
 
 ### Tính chất của giai thừa
 - n! = n × (n-1)!
@@ -41,32 +53,41 @@ Trước khi học hoán vị và tổ hợp, chúng ta cần hiểu về giai t
 
 ## Hoán vị (Permutations)
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hoán vị là cách sắp xếp toàn bộ n đối tượng theo một thứ tự nhất định.
+</div>
 
 ![Hoán vị — sắp xếp có thứ tự](/discrete-mathematics-for-computer-science-iuh/img/course/Permutation.svg)
 
-*Hình 7.7: Hoán vị đếm số cách sắp xếp n đối tượng phân biệt — thứ tự là yếu tố quyết định.*
-
+<p class="textbook-figure-caption" data-figure="7.7">Hoán vị đếm số cách sắp xếp n đối tượng phân biệt — thứ tự là yếu tố quyết định.</p>
 ### Hoán vị không lặp
 
 **Công thức**: Số hoán vị của n đối tượng phân biệt là:
 
+<div class="textbook-equation" markdown="1">
 $$P(n) = n!$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Có bao nhiêu cách sắp xếp 4 người ngồi thành hàng?
 
 **Giải**: P(4) = 4! = 24 cách
+</div>
 
 ## Chỉnh hợp (k-Permutations)
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Chỉnh hợp chập k của n là cách chọn k đối tượng từ n đối tượng phân biệt và sắp xếp chúng theo một thứ tự nhất định. Khác với hoán vị, chỉnh hợp chỉ lấy k đối tượng (k ≤ n) thay vì tất cả n đối tượng.
+</div>
 
 ### Chỉnh hợp không lặp
 
 **Công thức**: Số chỉnh hợp chập k của n là:
 
+<div class="textbook-equation" markdown="1">
 $$P(n,k) = \frac{n!}{(n-k)!} = n \times (n-1) \times \cdots \times (n-k+1)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Ý nghĩa**: Chọn k đối tượng từ n đối tượng và sắp xếp chúng (thứ tự có ý nghĩa).
 
 **Ví dụ 1**: Có 10 học sinh, chọn 3 em để xếp thành hàng (chọn và sắp xếp thứ tự). Có bao nhiêu cách?
@@ -89,18 +110,21 @@ P(8,3) = 8!/(8-3)! = 8!/5! = 8 × 7 × 6 = 336 cách
 
 ## Tổ hợp (Combinations)
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Tổ hợp chập k của n là cách chọn k đối tượng từ n đối tượng phân biệt mà không quan tâm đến thứ tự.
+</div>
 
 **Công thức**: Số tổ hợp chập k của n là:
 
+<div class="textbook-equation" markdown="1">
 $$C(n,k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Ký hiệu khác**: $C_n^k$ cũng được sử dụng trong một số tài liệu.
 
 ![Tổ hợp — chọn không xét thứ tự](/discrete-mathematics-for-computer-science-iuh/img/course/Combination.svg)
 
-*Hình 7.8: Tổ hợp chập k đếm số cách chọn k phần tử từ n phần tử mà không quan tâm thứ tự.*
-
+<p class="textbook-figure-caption" data-figure="7.8">Tổ hợp chập k đếm số cách chọn k phần tử từ n phần tử mà không quan tâm thứ tự.</p>
 **Ví dụ 1**: Từ 10 học sinh, chọn 3 em để tham gia đội tuyển. Có bao nhiêu cách?
 
 **Giải**: C(10,3) = 10!/(3!×7!) = (10×9×8)/(3×2×1) = 120 cách
@@ -131,7 +155,7 @@ $$C(n,k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}$$
 | Chỉnh hợp | k ≤ n | Có | Không | n!/(n-k)! |
 | Tổ hợp | k ≤ n | Không | Không | n!/(k!(n-k)!) |
 
-<div class="content-box info-box" markdown="1">
+<div class="content-box info-box textbook-block" markdown="1">
 
 **Mở rộng ở các bài sau**
 
@@ -155,7 +179,7 @@ Có 5 cuốn sách Toán, 4 cuốn sách Lý và 3 cuốn sách Hóa. Có bao nh
 
 Một lớp có 15 nam và 12 nữ. Cần chọn một ủy ban gồm 5 người. Có bao nhiêu cách chọn nếu ủy ban phải có ít nhất 2 nữ?
 
-**Giải**: Ta tính tổng số cách chọn có 2 nữ, 3 nữ, 4 nữ và 5 nữ:
+**Giải**: Chúng ta tính tổng số cách chọn có 2 nữ, 3 nữ, 4 nữ và 5 nữ:
 - 2 nữ + 3 nam: C(12,2) × C(15,3) = 66 × 455 = 30.030
 - 3 nữ + 2 nam: C(12,3) × C(15,2) = 220 × 105 = 23.100
 - 4 nữ + 1 nam: C(12,4) × C(15,1) = 495 × 15 = 7.425
@@ -273,10 +297,12 @@ def permutation_sort_complexity(n):
 
 </details>
 
+## Xem thêm / Video gợi ý
+
+- [Permutations and Combinations](https://www.youtube.com/watch?v=1jZ5n8k0p0Q) — Khan Academy (Core counting)
+- [Pigeonhole Principle](https://www.youtube.com/watch?v=0jZ5n8k0p0Q) — Numberphile (Classic examples)
+
 ## Tóm tắt
-
-Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
-
 **Giai thừa**: n! = n × (n-1) × ... × 1
 - Cơ sở cho hoán vị và tổ hợp
 

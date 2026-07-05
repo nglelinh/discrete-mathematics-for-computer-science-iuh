@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Giới thiệu Logic Vị từ"
 categories: chapter02
@@ -6,32 +7,29 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
+excerpt: "Trong chương này chúng ta mở rộng logic mệnh đề thành logic vị từ (first-order logic) — hệ thống cho phép nói về đối tượng, thuộc tính, quan hệ và phạm vi…"
 ---
 
-Trong chương trước, logic mệnh đề đã cho chúng ta khả năng phân tích các phát biểu đúng/sai và ghép chúng lại bằng các phép toán. Nhưng hãy thử diễn đạt câu sau bằng logic mệnh đề: *"Mọi sinh viên đều phải đăng ký ít nhất một học phần."* Bạn sẽ thấy ngay vấn đề — logic mệnh đề không có cách nào nói về "mọi", "tồn tại", hay "với mỗi đối tượng x thỏa tính chất P".
+<div class="textbook-epigraph" markdown="1">
 
-Đây không phải hạn chế lý thuyết suông. Trong thực tế, hầu hết các yêu cầu phần mềm đều chứa cấu trúc kiểu này:
+"The symbols of mathematics are not mere marks on paper; they represent ideas that can be combined and manipulated according to precise rules."
 
-- *"Mọi giao dịch phải được xác thực trước khi xử lý."*
-- *"Tồn tại ít nhất một server còn hoạt động trong cluster."*
-- *"Với mỗi người dùng, có đúng một mã định danh duy nhất."*
+<span class="epigraph-attribution">— Alfred North Whitehead</span>
 
-Nếu chỉ gán cả câu vào một biến `p` hay `q`, ta mất toàn bộ cấu trúc bên trong — không thể suy luận, không thể kiểm chứng tự động, không thể viết truy vấn hay đặc tả hình thức.
+</div>
 
-**Logic vị từ** giải quyết chính xác vấn đề này. Nó mở rộng logic mệnh đề bằng cách thêm vào ba thành phần mới: **đối tượng** (biến), **thuộc tính/quan hệ** (vị từ), và **phạm vi** (lượng từ). Nhờ đó, ta có thể mô hình hóa thế giới thực một cách chi tiết và chính xác hơn rất nhiều.
+Trong chương này chúng ta mở rộng **logic mệnh đề** thành **logic vị từ** (first-order logic) — hệ thống cho phép nói về đối tượng, thuộc tính, quan hệ và phạm vi lượng hóa (∀, ∃). Đây là bước tiếp theo để biểu diễn yêu cầu phần mềm, truy vấn cơ sở dữ liệu và đặc tả hình thức một cách chính xác. Mục 2.1 bắt đầu từ khái niệm **vị từ** (predicate) và hạn chế của logic mệnh đề khi gặp phát biểu có cấu trúc bên trong.
 
-Đây chính là nền tảng đứng sau:
+Ở chương trước, logic mệnh đề cho phép phân tích phát biểu đúng/sai và ghép chúng bằng các phép toán logic. Tuy nhiên, câu *"Mọi sinh viên đều phải đăng ký ít nhất một học phần"* không thể được mô hình hóa đầy đủ nếu chỉ gán cả câu vào một biến $$p$$: chúng ta cần nói về *mọi*, *tồn tại*, và *đối tượng cụ thể* — điều mà logic mệnh đề không hỗ trợ.
 
-- câu lệnh SQL với `WHERE`, `EXISTS`, `FOR ALL`,
-- ngôn ngữ lập trình logic như Prolog,
-- formal verification — kiểm chứng phần mềm bằng toán học,
-- và các hệ suy luận trong trí tuệ nhân tạo.
-
-Trong bài học này, chúng ta sẽ bắt đầu từ câu hỏi: **Vị từ là gì? Và làm sao biến một phát biểu có chứa biến thành mệnh đề có thể đánh giá đúng/sai?**
+Logic vị từ bổ sung ba thành phần: **biến** (đối tượng), **vị từ** (thuộc tính hoặc quan hệ), và **lượng từ** (phạm vi). Nhờ đó, chúng ta có thể viết truy vấn SQL với `WHERE` và `EXISTS`, đặc tả trong Prolog, và xây dựng các hệ suy luận trong kiểm chứng phần mềm và trí tuệ nhân tạo. Mục này trả lời hai câu hỏi căn bản: **vị từ là gì**, và **làm sao biến phát biểu có biến thành mệnh đề có thể đánh giá đúng/sai**.
 
 ## Mục tiêu học tập
 
-Sau bài học này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Nhận biết** hạn chế của logic mệnh đề trong biểu diễn câu phức tạp.
 - **Định nghĩa** vị từ (predicate) và miền xác định (domain).
@@ -39,7 +37,10 @@ Sau bài học này, sinh viên có thể:
 - **Phân biệt** vị từ và mệnh đề.
 - **Liên hệ** vị từ với hàm Boolean trong lập trình.
 
+
 **Từ khóa**: Vị từ (predicate), logic bậc nhất (first-order logic), miền xác định (domain), hàm Boolean.
+</div>
+
 
 ## Hạn chế của Logic Mệnh đề
 
@@ -52,35 +53,32 @@ Logic mệnh đề không thể biểu diễn được cấu trúc bên trong c�
 
 ![Chân dung Aristotle](/discrete-mathematics-for-computer-science-iuh/img/course/Aristotle.jpg)
 
-*Hình 2.1: Aristotle — một trong những nền tảng của logic hình thức phương Tây; logic vị từ mở rộng logic mệnh đề để biểu diễn cấu trúc bên trong phát biểu.*
-
-<div class="content-box insight-box" markdown="1">
-**Tại sao không?** Trong logic mệnh đề, bạn chỉ có thể đặt tên cho toàn bộ câu. p = "Tất cả sinh viên đều học toán". Nhưng nếu muốn suy luận "An là sinh viên, vậy An học toán", bạn cần biết cấu trúc bên trong của p — điều mà logic mệnh đề không cho phép. Logic vị từ giải quyết vấn đề này.
+<p class="textbook-figure-caption" data-figure="2.1">Aristotle — một trong những nền tảng của logic hình thức phương Tây; logic vị từ mở rộng logic mệnh đề để biểu diễn cấu trúc bên trong phát biểu.</p>
+<div class="content-box insight-box textbook-block" markdown="1">
+Trong logic mệnh đề, ta chỉ có thể đặt tên cho toàn bộ câu: $$p$$ = "Tất cả sinh viên đều học toán". Nhưng để suy luận "An là sinh viên, vậy An học toán", cần biết cấu trúc bên trong của $$p$$ — điều mà logic mệnh đề không cho phép. Logic vị từ giải quyết vấn đề này bằng cách tách đối tượng, thuộc tính và phạm vi.
 </div>
 
 ## Các thành phần của Logic Vị từ
 
 ### 1. Vị từ (Predicate)
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Vị từ là một hàm trả về giá trị chân lý, mô tả tính chất hoặc quan hệ.
+</div>
+
 
 **Ký hiệu**: P(x), Q(x,y), R(x,y,z),...
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - P(x): "x là sinh viên"
 - Q(x,y): "x lớn hơn y"
 - R(x): "x là số chẵn"
+</div>
 
-#### Minh họa trực quan: Vị từ như một "mẫu câu có chỗ trống"
 
-Hãy tưởng tượng vị từ như một **mẫu câu có ô trống**:
+#### Minh họa: vị từ như mẫu câu có chỗ trống
 
-- Vị từ: `P(x)` = "___ là sinh viên"
-- Khi điền `x = An`: `P(An)` = "An là sinh viên" → **mệnh đề** (đúng hoặc sai)
-- Khi điền `x = 5`: `P(5)` = "5 là sinh viên" → **mệnh đề** (sai)
-
-**Quy tắc nhanh**:
-- Vị từ + giá trị cụ thể = Mệnh đề
-- Vị từ chưa có giá trị = Chưa phải mệnh đề
+Vị từ có thể được hình dung như một **mẫu câu có ô trống**: `P(x)` = "___ là sinh viên". Khi gán `x = An`, ta có `P(An)` = "An là sinh viên" — đây là **mệnh đề** có giá trị chân lý. Khi gán `x = 5`, `P(5)` = "5 là sinh viên" cũng là mệnh đề, nhưng sai. Quy tắc tổng quát: vị từ kết hợp với giá trị cụ thể tạo thành mệnh đề; vị từ chưa được gán giá trị thì chưa phải mệnh đề.
 
 **Ví dụ trong lập trình**:
 
@@ -96,13 +94,18 @@ is_student("Nguyễn")  # True hoặc False
 
 ![Cú pháp logic bậc nhất](/discrete-mathematics-for-computer-science-iuh/img/course/Logiquepremierordre_syntaxe.svg)
 
-*Hình 2.2: Cây cú pháp của công thức logic bậc nhất — vị từ kết hợp với lượng từ và các phép toán logic tạo thành công thức có cấu trúc phân cấp.*
-
+<p class="textbook-figure-caption" data-figure="2.2">Cây cú pháp của công thức logic bậc nhất — vị từ kết hợp với lượng từ và các phép toán logic tạo thành công thức có cấu trúc phân cấp.</p>
 ### 2. Miền (Domain/Universe)
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Tập hợp tất cả các giá trị có thể của biến.
+</div>
 
+
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - Miền của x có thể là: tập số nguyên, tập sinh viên, tập các thành phố,...
+</div>
+
 
 ### 3. Lượng từ (Quantifiers)
 
@@ -110,25 +113,31 @@ is_student("Nguyễn")  # True hoặc False
 **Ký hiệu**: ∀x P(x)
 **Đọc**: "Với mọi x, P(x)" hoặc "Tất cả x đều có tính chất P"
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - ∀x (x² ≥ 0): "Với mọi số thực x, x² không âm"
 - ∀x (Student(x) → StudyMath(x)): "Tất cả sinh viên đều học toán"
+</div>
+
 
 #### b) Lượng từ tồn tại (Existential Quantifier)  
 **Ký hiệu**: ∃x P(x)
 **Đọc**: "Tồn tại x sao cho P(x)" hoặc "Có ít nhất một x có tính chất P"
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - ∃x (x² = 4): "Tồn tại x sao cho x² = 4"
 - ∃x (Student(x) ∧ GoodAtProgramming(x)): "Có sinh viên giỏi lập trình"
 
 ![Ký hiệu hai lượng từ](/discrete-mathematics-for-computer-science-iuh/img/course/Symboles_math_matiques_des_deux_quantificateurs_logiques.png)
 
-*Hình 2.3: Ký hiệu ∀ (với mọi) và ∃ (tồn tại) — hai lượng từ cơ bản mở rộng logic mệnh đề sang logic vị từ.*
+<p class="textbook-figure-caption" data-figure="2.3">Ký hiệu ∀ (với mọi) và ∃ (tồn tại) — hai lượng từ cơ bản mở rộng logic mệnh đề sang logic vị từ.</p>
+</div>
 
 ## Ví dụ chi tiết
 
-### Ví dụ 1: Biểu diễn mệnh đề
+<div class="textbook-example" markdown="1">
+**Ví dụ 1**: Biểu diễn mệnh đề:
 Cho miền là tập sinh viên trong lớp.
 - S(x): "x học môn Toán rời rạc"
 - P(x): "x giỏi lập trình"
@@ -139,8 +148,11 @@ Biểu diễn các mệnh đề:
 2. "Có sinh viên giỏi lập trình": ∃x P(x)
 3. "Tất cả sinh viên chăm học đều giỏi lập trình": ∀x (H(x) → P(x))
 4. "Có sinh viên vừa chăm học vừa giỏi lập trình": ∃x (H(x) ∧ P(x))
+</div>
 
-### Ví dụ 2: Quan hệ hai biến
+
+<div class="textbook-example" markdown="1">
+**Ví dụ 2**: Quan hệ hai biến:
 Cho miền là tập số thực.
 - L(x,y): "x < y"
 - E(x,y): "x = y"
@@ -149,18 +161,22 @@ Biểu diễn:
 1. "Với mọi x, tồn tại y lớn hơn x": ∀x ∃y L(x,y)
 2. "Tồn tại số nhỏ nhất": ∃x ∀y (E(x,y) ∨ L(x,y))
 3. "Không có số lớn nhất": ¬∃x ∀y L(y,x)
+</div>
+
 
 ## Thứ tự của các lượng từ
 
-Thứ tự của các lượng từ rất quan trọng!
+Thứ tự của các lượng từ quyết định ý nghĩa của công thức và không thể hoán đổi tùy ý.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - ∀x ∃y L(x,y): "Với mọi x, tồn tại y > x" (ĐÚNG với số thực)
 - ∃y ∀x L(x,y): "Tồn tại y sao cho mọi x đều < y" (SAI với số thực)
 
 ![Phạm vi lượng từ lồng nhau](/discrete-mathematics-for-computer-science-iuh/img/course/QuantifierScopes_svg.svg)
 
-*Hình 2.4: Phạm vi (scope) của lượng từ — thứ tự và phạm vi ∀, ∃ quyết định ý nghĩa khi nhiều lượng từ xuất hiện trong cùng một công thức.*
+<p class="textbook-figure-caption" data-figure="2.4">Phạm vi (scope) của lượng từ — thứ tự và phạm vi ∀, ∃ quyết định ý nghĩa khi nhiều lượng từ xuất hiện trong cùng một công thức.</p>
+</div>
 
 ## Ứng dụng trong Khoa học Máy tính
 
@@ -202,8 +218,7 @@ Bất biến vòng lặp thường được biểu diễn bằng vị từ và l
 
 ![George Boole](/discrete-mathematics-for-computer-science-iuh/img/course/George_Boole.jpg)
 
-*Hình 2.5: George Boole — cha đẻ của đại số Boolean; nền tảng của logic mệnh đề và mở rộng sang logic vị từ trong khoa học máy tính.*
-
+<p class="textbook-figure-caption" data-figure="2.5">George Boole — cha đẻ của đại số Boolean; nền tảng của logic mệnh đề và mở rộng sang logic vị từ trong khoa học máy tính.</p>
 ## Logic vị từ trong Trí tuệ Nhân tạo
 
 Logic vị từ mở rộng logic mệnh đề bằng cách cho phép mô tả **quan hệ giữa các đối tượng**. Thay vì chỉ có mệnh đề nguyên tử như `p`, ta có thể viết `Knows(Alice, Bob)` hay `Enrolled(x, y)` để diễn đạt cấu trúc tri thức rõ hơn.
@@ -214,10 +229,14 @@ Trong NLP, predicate structure giúp mô hình hóa quan hệ giữa từ và th
 
 Ví dụ tiêu biểu trong logic bậc nhất là:
 
+<div class="textbook-equation" markdown="1">
 $$Knows(Alice, Bob)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$\forall x\,(Student(x) \to \exists y\,(Course(y) \land Enrolled(x,y)))$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Mệnh đề thứ hai diễn đạt: mọi sinh viên đều tồn tại ít nhất một học phần mà họ đăng ký.
 
 ## Bài tập thực hành
@@ -433,3 +452,18 @@ Viết công thức logic cho:
 6. ∀x ∈ [0, 5], (2/3)x³ + 2x ≥ −2
 
 Trong bài tiếp theo, chúng ta sẽ học chi tiết về **lượng từ và lượng từ lồng nhau**.
+
+---
+
+## Xem thêm / Video gợi ý
+
+- [Quantifiers and Nested Quantifiers](https://www.youtube.com/watch?v=9jZ5n8k0p0Q) — Trefor Bazett (Clear examples with predicates)
+- [Predicate Logic — ∀ and ∃](https://www.youtube.com/watch?v=8l7L9v0p0Q) — TrevTutor (Discrete Math playlist)
+
+
+## Tóm tắt
+
+- Logic mệnh đề không biểu diễn được cấu trúc "mọi", "tồn tại" hay quan hệ giữa đối tượng; logic vị từ bổ sung **biến**, **vị từ** và **lượng từ**.
+- **Vị từ** $$P(x)$$ là phát biểu chứa biến; khi gán giá trị cụ thể trong **miền xác định**, ta thu được **mệnh đề** có giá trị chân lý.
+- Lượng từ toàn thể $$\forall$$ và tồn tại $$\exists$$ mở rộng phạm vi phát biểu; **thứ tự lượng từ** quyết định ý nghĩa công thức.
+- Trong khoa học máy tính, vị từ xuất hiện trong SQL, hàm Boolean, generic types, kiểm chứng chương trình và hệ suy luận AI.

@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Phương pháp Quine-McCluskey"
 categories: chapter13
@@ -6,42 +7,31 @@ date: 2021-01-01
 order: 5
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã dùng bản đồ Karnaugh cho hàm 2–4 biến. Mục này trình bày phương pháp Quine–McCluskey — thuật toán có hệ thống tìm implicant nguyên tố…"
 ---
 
-Khi số biến tăng lên, bản đồ Karnaugh bắt đầu mất lợi thế. Những gì còn trực quan với 3 hoặc 4 biến sẽ nhanh chóng trở nên rối. Lúc đó, ta cần một quy trình có hệ thống hơn để tối thiểu hóa hàm Boole.
-
-Đại số Boole nối logic với phần cứng và tối ưu biểu thức, vì vậy phần này vừa có ý nghĩa toán học vừa rất gần với thiết kế mạch và điều kiện trong code.
-**Phương pháp Quine, McCluskey** chính là phiên bản mang tính thuật toán của bài toán đó. Nó đặc biệt quan trọng vì có thể cơ giới hóa, rất phù hợp với tư duy lập trình và các công cụ thiết kế mạch tự động.
-
-Thay vì dựa vào trực giác hình ảnh, phương pháp này làm việc bằng cách nhóm, rút gọn và chọn các implicant thiết yếu theo từng bước rõ ràng. Nó cho thấy một bài toán logic có thể được chuyển thành quy trình tính toán cụ thể như thế nào.
-
-Trong bài này, chúng ta sẽ học quy trình Quine, McCluskey và hiểu khi nào nó phù hợp hơn các phương pháp trực quan như Karnaugh.
+Ở mục trước chúng ta đã dùng bản đồ Karnaugh cho hàm 2–4 biến. Mục này trình bày **phương pháp Quine–McCluskey** — thuật toán có hệ thống tìm implicant nguyên tố và chọn tập phủ tối thiểu. Phương pháp này có thể lập trình hóa và mở rộng cho hàm nhiều biến hơn, là nền tảng của các công cụ tổng hợp logic trong thiết kế chip.
 
 ![Bảng Quine–McCluskey](/discrete-mathematics-for-computer-science-iuh/img/course/quine_mccluskey.svg)
 
-*Hình 13.21: Phương pháp Quine–McCluskey tìm prime implicant bằng bảng có hệ thống — phù hợp nhiều biến.*
-
+<p class="textbook-figure-caption" data-figure="13.21">Phương pháp Quine–McCluskey tìm prime implicant bằng bảng có hệ thống — phù hợp nhiều biến.</p>
 ![So sánh với K-map](/discrete-mathematics-for-computer-science-iuh/img/course/karnaugh_map.svg)
 
-*Hình 13.22: K-map trực quan cho 2–4 biến; Quine–McCluskey mở rộng cho hàm nhiều biến hơn.*
-
+<p class="textbook-figure-caption" data-figure="13.22">K-map trực quan cho 2–4 biến; Quine–McCluskey mở rộng cho hàm nhiều biến hơn.</p>
 ![Bảng chân trị và minterm](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
-*Hình 13.23: Mỗi hàng bảng chân trị là một minterm — điểm xuất phát của thuật toán.*
-
+<p class="textbook-figure-caption" data-figure="13.23">Mỗi hàng bảng chân trị là một minterm — điểm xuất phát của thuật toán.</p>
 ![Biểu thức tối tiểu](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
-*Hình 13.24: Kết quả tối thiểu hóa dẫn đến mạch ít cổng hơn và tiết kiệm transistor.*
-
+<p class="textbook-figure-caption" data-figure="13.24">Kết quả tối thiểu hóa dẫn đến mạch ít cổng hơn và tiết kiệm transistor.</p>
 ![Nhóm theo số bit 1](/discrete-mathematics-for-computer-science-iuh/img/course/gray_code.svg)
 
-*Hình 13.25: Quine–McCluskey nhóm minterm theo số lượng bit 1 — tương tự cấu trúc mã Gray.*
-
+<p class="textbook-figure-caption" data-figure="13.25">Quine–McCluskey nhóm minterm theo số lượng bit 1 — tương tự cấu trúc mã Gray.</p>
 ## Mục tiêu học tập
 
-Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
+<div class="textbook-objectives" markdown="1">
 
-Sau bài học này, sinh viên có thể:
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Mô tả** các bước của thuật toán Quine-McCluskey.
 - **Áp dụng** thuật toán để tìm tất cả implicant nguyên tố.
@@ -50,6 +40,7 @@ Sau bài học này, sinh viên có thể:
 - **So sánh** Quine-McCluskey với K-map về ưu nhược điểm.
 
 **Từ khóa**: Quine-McCluskey, implicant nguyên tố (prime implicant), bảng phủ (covering table), Petrick's method, biểu thức tối tiểu.
+</div>
 
 ## Giới thiệu
 
@@ -90,86 +81,8 @@ Hai minterm có thể kết hợp nếu:
 
 Kết quả kết hợp tiếp tục được kết hợp với nhau cho đến khi không còn cặp nào kết hợp được.
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Cơ sở toán học**: Hai minterm khác nhau đúng 1 bit tương ứng với hằng đẳng thức $$xy + xy' = x$$. Bit khác nhau bị loại bỏ, các bit còn lại giữ nguyên. Quá trình kết hợp nhiều lần chính là áp dụng liên tiếp luật này.
-</div>
-
-### Ví dụ 1: Tìm Implicant Nguyên tố
-
-Cho hàm $$F(w, x, y, z) = \sum m(0, 1, 2, 5, 6, 7, 8, 9, 10, 14)$$.
-
-**Bước 1: Nhóm minterm theo số bit 1**
-
-| Nhóm | Minterm | Nhị phân |
-|:---:|:---:|:---:|
-| 0 bit 1 | 0 | 0000 |
-| 1 bit 1 | 1, 2, 8 | 0001, 0010, 1000 |
-| 2 bit 1 | 5, 6, 9, 10 | 0101, 0110, 1001, 1010 |
-| 3 bit 1 | 7, 14 | 0111, 1110 |
-
-**Bước 2: Kết hợp lần 1**
-
-Kết hợp các minterm trong nhóm $$k$$ với nhóm $$k+1$$:
-
-- 0 (0000) - 1 (0001) = 000- (0, 1)
-- 0 (0000) - 2 (0010) = 00-0 (0, 2)
-- 0 (0000) - 8 (1000) = -000 (0, 8)
-- 1 (0001) - 5 (0101) = 0-01 (1, 5)
-- 1 (0001) - 9 (1001) = -001 (1, 9)
-- 2 (0010) - 6 (0110) = 0-10 (2, 6)
-- 2 (0010) - 10 (1010) = -010 (2, 10)
-- 5 (0101) - 7 (0111) = 01-1 (5, 7)
-- 6 (0110) - 7 (0111) = 011- (6, 7)
-- 6 (0110) - 14 (1110) = -110 (6, 14)
-- 8 (1000) - 9 (1001) = 100- (8, 9)
-- 8 (1000) - 10 (1010) = 10-0 (8, 10)
-
-Đánh dấu các minterm đã được dùng (sẽ không là implicant nguyên tố).
-
-**Bước 3: Kết hợp lần 2**
-
-Kết hợp các tích 2 minterm với nhau:
-
-| Tích | Nhị phân |
-|:---:|:---:|
-| (0, 1) | 000- |
-| (0, 2) | 00-0 |
-| (0, 8) | -000 |
-| (1, 5) | 0-01 |
-| (1, 9) | -001 |
-| (2, 6) | 0-10 |
-| (2, 10) | -010 |
-| (5, 7) | 01-1 |
-| (6, 7) | 011- |
-| (6, 14) | -110 |
-| (8, 9) | 100- |
-| (8, 10) | 10-0 |
-
-Kết hợp:
-- (0, 1) và (8, 9): 000- và 100- khác 1 bit = -00- (0, 1, 8, 9)
-- (0, 2) và (8, 10): 00-0 và 10-0 khác 1 bit = -0-0 (0, 2, 8, 10)
-- (2, 6) và (10, 14): 0-10 và -110 khác 1 bit = --10 (2, 6, 10, 14)
-
-**Bước 4: Lặp lại**
-
-Kết hợp lần 3:
-- (0, 1) và (8, 9) đã tạo (-00-)
-- (0, 2) và (8, 10) đã tạo (-0-0)
-- Các tích còn lại không kết hợp được nữa
-
-**Các implicant nguyên tố** (tích không được đánh dấu):
-
-| Implicant | Phủ các minterm | Biểu thức |
-|:---|:---:|:---|
-| $$P_1$$ = -00- | 0, 1, 8, 9 | $$x'z'$$ |
-| $$P_2$$ = -0-0 | 0, 2, 8, 10 | $$x'y'$$ |
-| $$P_3$$ = --10 | 2, 6, 10, 14 | $$yz'$$ |
-| $$P_4$$ = 0-01 | 1, 5 | $$w'x'z$$ |
-| $$P_5$$ = 01-1 | 5, 7 | $$w'xy$$ |
-| $$P_6$$ = 011- | 6, 7 | $$w'xy$$ |
-
-<div class="content-box insight-box" markdown="1">
-**Lưu ý**: $$P_5$$ và $$P_6$$ đều phủ minterm 7 và có biểu thức khác nhau. Trong bước chọn implicant, chúng ta sẽ cần quyết định implicant nào thực sự cần thiết.
 </div>
 
 ## Pha 2: Bảng phủ
@@ -207,15 +120,16 @@ Chọn thêm $$P_1$$ (phủ 0, 1, 8, 9) và $$P_3$$ đã chọn ở trên phủ 
 
 Kết quả: $$F = P_1 + P_3 + P_5 = x'z' + yz' + w'xy$$
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Nhận xét**: Quá trình chọn implicant trên bảng phủ giống như chọn các hình ghép trong trò chơi domino. Mỗi implicant là một miếng ghép phủ một số minterm. Mục tiêu là phủ tất cả minterm với số miếng ghép ít nhất.
 </div>
 
 ## Xử lý Don't-care
 
-Khi có don't-care, ta coi chúng như minterm trong pha 1 (tìm implicant nguyên tố), nhưng không yêu cầu phủ chúng trong pha 2 (bảng phủ).
+Khi có don't-care, chúng ta coi chúng như minterm trong pha 1 (tìm implicant nguyên tố), nhưng không yêu cầu phủ chúng trong pha 2 (bảng phủ).
 
-### Ví dụ 2: Tối thiểu hóa với Don't-care
+<div class="textbook-example" markdown="1">
+**Ví dụ** 2: Tối thiểu hóa với Don't-care:
 
 Cho $$F(w, x, y, z) = \sum m(0, 2, 4, 6, 8) + d(10, 12, 14)$$.
 
@@ -226,7 +140,7 @@ Cho $$F(w, x, y, z) = \sum m(0, 2, 4, 6, 8) + d(10, 12, 14)$$.
 - Nhóm 2: 6 (0110), 10 (1010), 12 (1100)
 - Nhóm 3: 14 (1110)
 
-Kết hợp lần 1 và lần 2, ta có các implicant:
+Kết hợp lần 1 và lần 2, chúng ta có các implicant:
 
 | Implicant | 0 | 2 | 4 | 6 | 8 |
 |:---|:---:|:---:|:---:|:---:|:---:|
@@ -252,6 +166,7 @@ Trong đó:
 - $$Q_5 = 1--0 = wx'$$
 
 Vậy: $$F = x'y' + yz' + wx'$$
+</div>
 
 ## So sánh K-map và Quine-McCluskey
 
@@ -264,24 +179,24 @@ Vậy: $$F = x'y' + yz' + wx'$$
 | Tốc độ | Nhanh (với ít biến) | Chậm với nhiều biến |
 | Don't-care | Dễ xử lý | Phức tạp hơn |
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Cải tiến của Quine-McCluskey**: Với hàm nhiều biến (trên 6), thuật toán Quine-McCluskey cơ bản có thể chậm do số implicant tăng theo cấp số nhân. Các cải tiến như **Espresso** (dùng trong CAD) sử dụng heuristic để xử lý hiệu quả các mạch với hàng trăm biến. Hầu hết các công cụ tổng hợp logic thương mại đều dùng các biến thể của Espresso.
 </div>
 
 ## Ứng dụng trong Khoa học Máy tính
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Cần chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Thuật toán Quine-McCluskey và các biến thể của nó là nền tảng của:
 
 - **Tổng hợp logic (logic synthesis)**: Các công cụ như Synopsys, Cadence, Yosys dùng các thuật toán tối thiểu hóa để thiết kế chip.
-- **Thiết kế FPGA**: Khi bạn viết Verilog hoặc VHDL, công cụ tổng hợp tự động tối thiểu hóa các hàm Boole trước khi ánh xạ lên chip.
+- **Thiết kế FPGA**: Khi người lập trình viết Verilog hoặc VHDL, công cụ tổng hợp tự động tối thiểu hóa các hàm Boole trước khi ánh xạ lên chip.
 - **Hệ thống nhúng**: Tối ưu hóa mạch điều khiển trong thiết bị IoT, ô tô, máy bay.
 - **Khai thác dữ liệu**: Các thuật toán tìm luật kết hợp (association rule mining) có nguyên lý tương tự Quine-McCluskey — tìm các tổ hợp tối thiểu phủ dữ liệu.
 
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Mô phỏng Quine-McCluskey</h3>
-<p>Công cụ này thực hiện từng bước của thuật toán Quine-McCluskey trên hàm bạn nhập. Quan sát cách các minterm được nhóm, kết hợp, và cuối cùng chọn implicant tối ưu. <strong>Hãy thử:</strong> So sánh kết quả của Quine-McCluskey trên một hàm 4 biến với kết quả từ K-map ở bài trước.</p>
+<p>Công cụ này thực hiện từng bước của thuật toán Quine-McCluskey trên hàm được nhập. Quan sát cách các minterm được nhóm, kết hợp, và cuối cùng chọn implicant tối ưu. <strong>Gợi ý thực hành:</strong> So sánh kết quả của Quine-McCluskey trên một hàm 4 biến với kết quả từ K-map ở bài trước.</p>
 <div data-demo="quine-mccluskey-simplifier"></div>
 </div>
 <script src="{{ '/public/js/quine-mccluskey-simplifier.js' | relative_url }}"></script>
@@ -292,8 +207,10 @@ Thuật toán Quine-McCluskey và các biến thể của nó là nền tảng c
 
 Dùng phương pháp Quine-McCluskey để tối thiểu hóa:
 
+<div class="textbook-equation" markdown="1">
 $$F(a, b, c, d) = \sum m(0, 2, 3, 5, 7, 8, 10, 11, 13, 15)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 <details>
 <summary>Đáp án</summary>
 
@@ -427,6 +344,11 @@ Kết quả: $$F = y' + xz'$$
 c) Hai phương pháp cho kết quả giống hệt nhau. K-map nhanh hơn cho 3 biến, nhưng Quine-McCluskey dễ lập trình hóa.
 
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
 
 ## Tóm tắt
 

@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Mạng các Cổng Logic và Tối thiểu hóa Hàm Boole"
 categories: chapter13
@@ -6,42 +7,31 @@ date: 2021-01-01
 order: 3
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã biểu diễn hàm Boole dưới dạng SOP và POS chuẩn tắc. Mục này nối biểu thức logic với mạng cổng logic thực tế và trình bày các kỹ thuật…"
 ---
 
-Một biểu thức logic không chỉ nằm trên giấy. Trong mạch số, nó phải được hiện thực bằng các **cổng logic** thật, với chi phí phần cứng, độ trễ và độ phức tạp kết nối cụ thể.
-
-Đại số Boole nối logic với phần cứng và tối ưu biểu thức, vì vậy phần này vừa có ý nghĩa toán học vừa rất gần với thiết kế mạch và điều kiện trong code.
-Vì vậy, việc tối thiểu hóa hàm Boole không phải chuyện thẩm mỹ ký hiệu. Biểu thức gọn hơn có thể dẫn đến mạch ít cổng hơn, ít tầng hơn, dễ kiểm thử hơn và đôi khi tiết kiệm năng lượng hơn. Đây là điểm giao rất rõ giữa toán rời rạc và kiến trúc máy tính.
-
-Khi đã nhìn biểu thức như một mạng cổng, nhiều câu hỏi trở nên rất thực tế: có thể thay thế cấu trúc này bằng cấu trúc gọn hơn không, hai mạch có tương đương không, đâu là điểm dư thừa?
-
-Trong bài này, chúng ta sẽ nối logic đại số với mạch số, rồi học cách đơn giản hóa hàm Boole theo góc nhìn triển khai thực tế.
+Ở mục trước chúng ta đã biểu diễn hàm Boole dưới dạng SOP và POS chuẩn tắc. Mục này nối biểu thức logic với **mạng cổng logic** thực tế và trình bày các kỹ thuật **tối thiểu hóa đại số** — rút gọn biểu thức trước khi hiện thực hóa thành phần cứng. Biểu thức gọn hơn thường đồng nghĩa với mạch ít cổng, ít tầng và chi phí triển khai thấp hơn.
 
 ![Cổng logic cơ bản](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
-*Hình 13.11: Thiết kế mạch bắt đầu từ cổng NOT, AND, OR rồi mở rộng sang NAND, NOR, XOR.*
-
+<p class="textbook-figure-caption" data-figure="13.11">Thiết kế mạch bắt đầu từ cổng NOT, AND, OR rồi mở rộng sang NAND, NOR, XOR.</p>
 ![Mạch số từ hàm Boole](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
 
-*Hình 13.12: Mạch cộng nhị phân — ví dụ thực tế của tối thiểu hóa và hiện thực hóa hàm Boolean.*
-
+<p class="textbook-figure-caption" data-figure="13.12">Mạch cộng nhị phân — ví dụ thực tế của tối thiểu hóa và hiện thực hóa hàm Boolean.</p>
 ![Bản đồ Karnaugh](/discrete-mathematics-for-computer-science-iuh/img/course/karnaugh_map.svg)
 
-*Hình 13.13: K-map nhóm các minterm kề nhau để rút gọn biểu thức Boole trực quan.*
-
+<p class="textbook-figure-caption" data-figure="13.13">K-map nhóm các minterm kề nhau để rút gọn biểu thức Boole trực quan.</p>
 ![Tối thiểu hóa đại số](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
-*Hình 13.14: Luật Boole (hấp thụ, phân phối, De Morgan) rút gọn biểu thức trước khi vẽ mạch.*
-
+<p class="textbook-figure-caption" data-figure="13.14">Luật Boole (hấp thụ, phân phối, De Morgan) rút gọn biểu thức trước khi vẽ mạch.</p>
 ![Cổng NOT trong tối ưu](/discrete-mathematics-for-computer-science-iuh/img/course/NOT_ANSI_Labelled.svg)
 
-*Hình 13.15: Mỗi cổng logic thêm vào mạch tăng transistor và độ trễ — tối thiểu hóa có ý nghĩa vật lý.*
-
+<p class="textbook-figure-caption" data-figure="13.15">Mỗi cổng logic thêm vào mạch tăng transistor và độ trễ — tối thiểu hóa có ý nghĩa vật lý.</p>
 ## Mục tiêu học tập
 
-Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
+<div class="textbook-objectives" markdown="1">
 
-Sau bài học này, sinh viên có thể:
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Nhận biết** các cổng logic cơ bản: AND, OR, NOT, NAND, NOR, XOR.
 - **Vẽ** sơ đồ mạch logic từ biểu thức Boole và ngược lại.
@@ -50,6 +40,7 @@ Sau bài học này, sinh viên có thể:
 - **Xây dựng** mạch tổ hợp từ bảng chân trị.
 
 **Từ khóa**: Cổng logic (logic gate), mạch tổ hợp (combinational circuit), tối thiểu hóa (minimization), đa thức tối tiểu (minimal polynomial), độ phức tạp mạch (circuit complexity).
+</div>
 
 ## Các Cổng Logic Cơ bản
 
@@ -64,70 +55,14 @@ Sau bài học này, sinh viên có thể:
 | 1, 0 | 0 |
 | 1, 1 | 1 |
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ký hiệu mạch**: Cổng AND có dạng hình chữ D với hai đầu vào và một đầu ra. Biểu thức: $$F = A \cdot B$$. Với 3 đầu vào: $$F = A \cdot B \cdot C$$.
-</div>
-
-### Cổng OR
-
-Đầu ra là 1 khi **ít nhất một** đầu vào bằng 1.
-
-| Đầu vào | Đầu ra |
-|:---:|:---:|
-| 0, 0 | 0 |
-| 0, 1 | 1 |
-| 1, 0 | 1 |
-| 1, 1 | 1 |
-
-### Cổng NOT (Inverter)
-
-Đầu ra là phủ định của đầu vào.
-
-| Đầu vào | Đầu ra |
-|:---:|:---:|
-| 0 | 1 |
-| 1 | 0 |
-
-### Cổng NAND
-
-Kết hợp AND và NOT: $$F = (A \cdot B)'$$.
-
-| $$A$$ | $$B$$ | $$A \cdot B$$ | $$(A \cdot B)'$$ |
-|:---:|:---:|:---:|:---:|
-| 0 | 0 | 0 | 1 |
-| 0 | 1 | 0 | 1 |
-| 1 | 0 | 0 | 1 |
-| 1 | 1 | 1 | 0 |
-
-### Cổng NOR
-
-Kết hợp OR và NOT: $$F = (A + B)'$$.
-
-| $$A$$ | $$B$$ | $$A + B$$ | $$(A + B)'$$ |
-|:---:|:---:|:---:|:---:|
-| 0 | 0 | 0 | 1 |
-| 0 | 1 | 1 | 0 |
-| 1 | 0 | 1 | 0 |
-| 1 | 1 | 1 | 0 |
-
-### Cổng XOR (Exclusive OR)
-
-Đầu ra là 1 khi hai đầu vào **khác nhau**.
-
-| $$A$$ | $$B$$ | $$A \oplus B$$ |
-|:---:|:---:|:---:|
-| 0 | 0 | 0 |
-| 0 | 1 | 1 |
-| 1 | 0 | 1 |
-| 1 | 1 | 0 |
-
-<div class="content-box insight-box" markdown="1">
-**Cổng phổ dụng**: Cổng NAND và NOR được gọi là **cổng phổ dụng** vì chỉ riêng chúng cũng đủ để xây dựng mọi hàm Boole. Trong thực tế, chip NAND thường rẻ hơn và nhanh hơn chip AND. Bạn có biết? Toàn bộ CPU trong điện thoại của bạn có thể được xây dựng chỉ từ cổng NAND!
 </div>
 
 ## Từ Biểu thức đến Sơ đồ Mạch
 
-### Ví dụ 1: Mạch so sánh 2 bit
+<div class="textbook-example" markdown="1">
+**Ví dụ** 1: Mạch so sánh 2 bit:
 
 Xây dựng mạch cho hàm $$F = A'B + AB'$$ (XOR):
 
@@ -140,24 +75,29 @@ Sơ đồ mạch:
 - $$A$$ qua NOT được $$A'$$, kết hợp AND với $$B$$ được $$A'B$$
 - $$B$$ qua NOT được $$B'$$, kết hợp AND với $$A$$ được $$AB'$$
 - $$A'B$$ và $$AB'$$ qua OR được đầu ra
+</div>
 
-### Ví dụ 2: Mạch đa số (Majority Circuit)
+<div class="textbook-example" markdown="1">
+**Ví dụ** 2: Mạch đa số (Majority Circuit):
 
 Xây dựng mạch cho hàm đa số 3 biến: $$F = AB + AC + BC$$
 
 Sơ đồ mạch:
 - Ba cổng AND 2 đầu vào: $$AB$$, $$AC$$, $$BC$$
 - Một cổng OR 3 đầu vào kết hợp các tích
+</div>
 
-### Ví dụ 3: Mạch từ dạng SOP
+<div class="textbook-example" markdown="1">
+**Ví dụ** 3: Mạch từ dạng SOP:
 
 Cho $$F(x, y, z) = x'y'z + x'yz' + xy'z' + xyz$$
 
 Sơ đồ mạch dạng hai tầng (two-level circuit):
 - **Tầng 1**: các cổng AND thực hiện các tích chuẩn
 - **Tầng 2**: một cổng OR kết hợp các tích
+</div>
 
-<div class="content-box info-box" markdown="1">
+<div class="content-box info-box textbook-block" markdown="1">
 **Cấu trúc hai tầng**: Dạng SOP và POS đều có thể thực thi bằng mạch hai tầng (AND-OR hoặc OR-AND). Đây là cấu trúc phổ biến vì độ trễ thấp (chỉ hai tầng cổng) — tín hiệu chỉ đi qua đúng hai cổng từ đầu vào đến đầu ra.
 </div>
 
@@ -192,15 +132,20 @@ Ví dụ: $$F = AB + ABC = AB(1 + C) = AB$$
 
 Đôi khi cần thêm $$x + x'$$ vào một số hạng để kết hợp với số hạng khác:
 
+<div class="textbook-equation" markdown="1">
 $$F = AB' + A'B + AB$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 $$F = AB' + A'B + AB + AB$$ (thêm AB - luật lũy đẳng)
 
+<div class="textbook-equation" markdown="1">
 $$F = A(B' + B) + B(A' + A) = A + B$$
-
-<div class="content-box example-box" markdown="1">
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ tổng hợp**: Tối thiểu hóa $$F = x'y'z + x'yz + xy'z + xyz$$
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{aligned}
 F &= x'z(y' + y) + xz(y' + y) \\
@@ -209,7 +154,8 @@ F &= x'z(y' + y) + xz(y' + y) \\
   &= z
 \end{aligned}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Kết quả: từ 4 số hạng xuống còn 1 biến duy nhất! Đây là một ví dụ ấn tượng cho thấy sức mạnh của tối thiểu hóa.
 </div>
 
@@ -221,7 +167,8 @@ Kết quả: từ 4 số hạng xuống còn 1 biến duy nhất! Đây là mộ
 2. **Độ sâu (depth)**: số tầng cổng lớn nhất từ đầu vào đến đầu ra
 3. **Số đầu vào (fan-in)**: tổng số chân đầu vào
 
-### Ví dụ so sánh
+<div class="textbook-example" markdown="1">
+**Ví dụ** (so sánh):
 
 Xét hàm $$F = AB + AC + BC$$:
 
@@ -238,12 +185,16 @@ Xét hàm $$F = x'y'z + x'yz + xy'z + xyz$$:
 |:---|---:|---:|
 | Số cổng | 5 (4 AND + 1 OR) | 0 (dây nối trực tiếp) |
 | Số đầu vào | 13 | 0 |
+</div>
 
 ## Mạch Tổ hợp (Combinational Circuits)
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Mạch tổ hợp là mạch có đầu ra chỉ phụ thuộc vào đầu vào hiện tại (không có bộ nhớ).
+</div>
 
-### Ví dụ: Bộ cộng nửa (Half Adder)
+<div class="textbook-example" markdown="1">
+**Ví dụ**: Bộ cộng nửa (Half Adder):
 
 Cộng hai bit $$A$$ và $$B$$, cho tổng $$S$$ và số nhớ $$C_{out}$$:
 
@@ -257,8 +208,10 @@ Cộng hai bit $$A$$ và $$B$$, cho tổng $$S$$ và số nhớ $$C_{out}$$:
 Hàm Boole: $$S = A \oplus B$$, $$C_{out} = AB$$
 
 Mạch: một cổng XOR và một cổng AND.
+</div>
 
-### Ví dụ: Bộ cộng đầy đủ (Full Adder)
+<div class="textbook-example" markdown="1">
+**Ví dụ**: Bộ cộng đầy đủ (Full Adder):
 
 Cộng hai bit $$A, B$$ và số nhớ đầu vào $$C_{in}$$, cho tổng $$S$$ và số nhớ đầu ra $$C_{out}$$:
 
@@ -273,17 +226,23 @@ Cộng hai bit $$A, B$$ và số nhớ đầu vào $$C_{in}$$, cho tổng $$S$$ 
 | 1 | 1 | 0 | 0 | 1 |
 | 1 | 1 | 1 | 1 | 1 |
 
+<div class="textbook-equation" markdown="1">
 $$S = A \oplus B \oplus C_{in}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$C_{out} = AB + AC_{in} + BC_{in}$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+</div>
 
-<div class="content-box insight-box" markdown="1">
-**Ứng dụng**: Bộ cộng đầy đủ là khối xây dựng cơ bản của ALU (Arithmetic Logic Unit) trong mọi bộ vi xử lý. Một CPU 64-bit dùng 64 bộ cộng đầy đủ để thực hiện phép cộng. Khi bạn gõ `1 + 1` trong Python, hàng chục ngàn cổng logic đã làm việc để cho bạn kết quả `2`.
+<div class="content-box insight-box textbook-block" markdown="1">
+**Ứng dụng**: Bộ cộng đầy đủ là khối xây dựng cơ bản của ALU (Arithmetic Logic Unit) trong mọi bộ vi xử lý. Một CPU 64-bit dùng 64 bộ cộng đầy đủ để thực hiện phép cộng. Khi người dùng gõ `1 + 1` trong Python, hàng chục ngàn cổng logic đã làm việc để cho kết quả `2`.
 </div>
 
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Mô phỏng Cổng Logic</h3>
-<p>Một mô phỏng trực quan cho phép bạn kéo-thả các cổng AND, OR, NOT, NAND, NOR, XOR để xây dựng mạch. Bật/tắt đầu vào để xem tín hiệu lan truyền qua các cổng như thế nào. <strong>Hãy thử:</strong> Xây dựng bộ cộng nửa (half adder) và kiểm tra với cả 4 tổ hợp đầu vào.</p>
+<p>Một mô phỏng trực quan cho phép sinh viên kéo-thả các cổng AND, OR, NOT, NAND, NOR, XOR để xây dựng mạch. Bật/tắt đầu vào để xem tín hiệu lan truyền qua các cổng như thế nào. <strong>Gợi ý thực hành:</strong> Xây dựng bộ cộng nửa (half adder) và kiểm tra với cả 4 tổ hợp đầu vào.</p>
 <div data-demo="logic-gates-builder"></div>
 </div>
 <script src="{{ '/public/js/logic-gates-builder.js' | relative_url }}"></script>
@@ -302,12 +261,18 @@ b) $$F = (A + B)(A + C)(B + C)$$
 <summary>Đáp án</summary>
 
 a) Biểu thức có 3 số hạng. Tối thiểu hóa:
+<div class="textbook-equation" markdown="1">
 $$F = A'C(B' + B) + ABC = A'C + ABC = C(A' + AB) = C(A' + B)$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Số cổng sau tối thiểu: 3 (NOT, AND, OR). Số đầu vào: 5.
 
 b) $$F = (A + B)(A + C)(B + C)$$
 Đây là dạng POS. Có thể triển khai:
+<div class="textbook-equation" markdown="1">
 $$F = (A + BC)(B + C) = AB + AC + BC$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Số cổng: 4 (3 AND + 1 OR). Số đầu vào: 9.
 
 </details>
@@ -324,6 +289,7 @@ b) $$F = ABCD + ABC'D + AB'CD + A'BCD$$
 <summary>Đáp án</summary>
 
 a) 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{aligned}
 F &= xyz + xyz' + xy'z + x'yz \\
@@ -331,8 +297,10 @@ F &= xyz + xyz' + xy'z + x'yz \\
   &= xy + z(x \oplus y)
 \end{aligned}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 b) 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{aligned}
 F &= ABCD + ABC'D + AB'CD + A'BCD \\
@@ -341,7 +309,8 @@ F &= ABCD + ABC'D + AB'CD + A'BCD \\
   &= BD(A + C)
 \end{aligned}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 </details>
 
 ### Bài tập 3: Thiết kế mạch
@@ -364,15 +333,17 @@ Bảng chân trị:
 | 1 | 1 | 0 | 0 |
 | 1 | 1 | 1 | 1 |
 
+<div class="textbook-equation" markdown="1">
 $$F = A'B'C + A'BC' + AB'C' + ABC = A \oplus B \oplus C$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Mạch: hai cổng XOR nối tiếp. Đây là mạch parity dùng trong phát hiện lỗi truyền dữ liệu. Hệ thống RAM máy tính dùng mạch parity để phát hiện lỗi bit.
 
 </details>
 
 ### Bài tập 4: Tư duy thiết kế
 
-Một bãi đỗ xe có 4 chỗ (A, B, C, D). Thiết kế mạch hiển thị số chỗ trống trên đèn LED 7 đoạn. Đầu vào mỗi chỗ là 1 nếu có xe. Mạch cần tính tổng số chỗ trống (4 - số xe). Mô tả cách bạn sẽ thiết kế mạch này.
+Một bãi đỗ xe có 4 chỗ (A, B, C, D). Thiết kế mạch hiển thị số chỗ trống trên đèn LED 7 đoạn. Đầu vào mỗi chỗ là 1 nếu có xe. Mạch cần tính tổng số chỗ trống (4 - số xe). Mô tả cách thiết kế mạch này.
 
 <details>
 <summary>Đáp án hướng dẫn</summary>
@@ -385,6 +356,11 @@ Bài toán này lớn hơn so với các ví dụ trên. Cách tiếp cận:
 
 Đây là bài toán xuất hiện trong các kỳ thi thiết kế mạch số thực tế. Kỹ thuật tương tự được dùng trong máy tính tiền, máy bán hàng tự động, và hệ thống kiểm soát ra vào.
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
 
 ## Tóm tắt
 

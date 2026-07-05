@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Ứng dụng Nâng cao của Nguyên lý Dirichlet"
 categories: chapter08
@@ -6,49 +7,60 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã học phát biểu cơ bản và tổng quát của nguyên lý Dirichlet. Mục này trình bày các ứng dụng nâng cao và biến thể mở rộng của nguyên lý."
 ---
 
-Sau khi nắm được phiên bản cơ bản của nguyên lý Dirichlet, điều thú vị nhất là thấy nó mở rộng mạnh đến đâu. Một nguyên lý nhìn rất đơn giản có thể tạo ra các kết luận tinh tế về số học, hình học, tổ hợp và cả các bài toán trong khoa học máy tính.
+Ở mục trước chúng ta đã học phát biểu cơ bản và tổng quát của nguyên lý Dirichlet. Mục này trình bày các **ứng dụng nâng cao** và biến thể mở rộng của nguyên lý.
 
+Một nguyên lý nhìn rất đơn giản có thể tạo ra các kết luận tinh tế về số học, hình học, tổ hợp và các bài toán trong khoa học máy tính. Ở mức nâng cao, chúng ta không chỉ hỏi "có ít nhất hai phần tử rơi cùng một ngăn hay không" mà còn muốn biết ít nhất bao nhiêu phần tử phải rơi vào cùng một nhóm. Khả năng mô hình hóa trở nên quan trọng hơn bản thân công thức.
 
-Nguyên lý Dirichlet thường được dùng khi ta không cần biết chính xác đối tượng nào trùng nhau, chỉ cần chứng minh chắc chắn rằng sự trùng lặp phải xảy ra.
-Ở mức nâng cao, ta không chỉ hỏi "có ít nhất hai phần tử rơi cùng một ngăn hay không". Ta còn muốn biết ít nhất bao nhiêu phần tử phải rơi vào cùng một nhóm, hoặc phải chia ngăn như thế nào để ép một cấu trúc nhất định xuất hiện.
+## Mục tiêu học tập
 
-Đây là lúc khả năng mô hình hóa trở nên quan trọng hơn bản thân công thức. Chọn sai cách chia nhóm thì bài toán bế tắc, chọn đúng thì lời giải trở nên rất ngắn.
+<div class="textbook-objectives" markdown="1">
 
-Trong bài này, chúng ta sẽ xem các biến thể tổng quát hơn của nguyên lý Dirichlet và dùng chúng để giải những bài toán đòi hỏi góc nhìn tinh hơn.
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-![Nguyên lý chuồng chim — phiên bản nâng cao](/discrete-mathematics-for-computer-science-iuh/img/course/Pigeonhole.jpg)
+- **Áp dụng** biến thể tổng quát và đa chiều của nguyên lý Dirichlet.
+- **Giải** bài toán số học, hình học và tổ hợp bằng pigeonhole.
+- **Liên hệ** nguyên lý với load balancing và xấp xỉ thuật toán.
 
-*Hình 8.6: Biến thể tổng quát hỏi ít nhất bao nhiêu phần tử phải rơi vào cùng một nhóm, không chỉ có hay không.*
+**Từ khóa**: Dirichlet tổng quát, đa chiều, load balancing, chứng minh tồn tại.
+</div>
 
 ## Nguyên lý Dirichlet Tổng quát
 
 ### Nguyên lý Dirichlet với Trọng số
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Nếu N đối tượng có tổng trọng số W được phân vào n nhóm, thì ít nhất một nhóm có tổng trọng số ≥ W/n.
+</div>
 
 **Ứng dụng**: Load balancing, phân phối tài nguyên, thuật toán xấp xỉ.
 
 ### Nguyên lý Dirichlet Đa chiều
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Nếu N điểm được đặt trong lưới k chiều với mỗi chiều có n ô, thì ít nhất một ô chứa ≥ ⌈N/n^k⌉ điểm.
+</div>
 
 ## Ứng dụng trong Lý thuyết Số
 
 ### Định lý Dirichlet về Xấp xỉ Diophantine
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Với mọi số thực α và số nguyên dương N, tồn tại các số nguyên p, q với 1 ≤ q ≤ N sao cho:
+</div>
 
-|α - p/q| < 1/(qN)
-
+<div class="textbook-equation" markdown="1">
+$$\left|\alpha - p/q\right| < 1/(qN)$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Chứng minh**: Xét N+1 số {0, {α}, {2α}, ..., {Nα}} trong đoạn [0,1).
 Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 số {iα}, {jα} trong cùng một đoạn.
 
 ![Dirichlet — ứng dụng trong lý thuyết số](/discrete-mathematics-for-computer-science-iuh/img/course/Dirichlet.jpg)
 
-*Hình 8.7: Định lý Dirichlet về xấp xỉ Diophantine — chia đoạn [0,1) thành $N$ chuồng để ép hai phân số gần nhau.*
-
+<p class="textbook-figure-caption" data-figure="8.7">Định lý Dirichlet về xấp xỉ Diophantine — chia đoạn [0,1) thành $N$ chuồng để ép hai phân số gần nhau.</p>
 ### Bài toán Tồn tại Nghiệm
 
 **Bài toán**: Chứng minh rằng với mọi số nguyên a không chia hết cho p (p là số nguyên tố), tồn tại số nguyên n sao cho a^n ≡ 1 (mod p).
@@ -59,19 +71,22 @@ Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 s
 
 ![Biểu đồ Venn — phân vùng không gian](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
-*Hình 8.8: Chia hình vuông thành các ô — mỗi ô là một chuồng, mỗi điểm là một bồ câu trong bài toán hình học.*
-
+<p class="textbook-figure-caption" data-figure="8.8">Chia hình vuông thành các ô — mỗi ô là một chuồng, mỗi điểm là một bồ câu trong bài toán hình học.</p>
 ### Bài toán Erdős-Ko-Rado
 
 **Bài toán**: Trong tập n phần tử, có bao nhiêu tập con k phần tử sao cho bất kỳ 2 tập nào cũng có giao khác rỗng?
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Số lượng tối đa là C(n-1, k-1).
+</div>
 
 **Chứng minh bằng Nguyên lý Dirichlet**: Xét n! hoán vị của n phần tử. Mỗi tập con k phần tử xuất hiện trong k!(n-k)! hoán vị...
 
 ### Định lý Sperner
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Trong tập n phần tử, số lượng tối đa các tập con sao cho không tập nào chứa tập nào khác là C(n, ⌊n/2⌋).
+</div>
 
 ### Bài toán Ramsey đơn giản
 
@@ -81,8 +96,7 @@ Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 s
 
 ![Ramsey theory — trật tự bắt buộc xuất hiện](/discrete-mathematics-for-computer-science-iuh/img/course/TooManyPigeons.jpg)
 
-*Hình 8.9: Ramsey theory mở rộng tinh thần chuồng chim — cấu trúc đủ lớn thì một mẫu trật tự nhất định không thể tránh.*
-
+<p class="textbook-figure-caption" data-figure="8.9">Ramsey theory mở rộng tinh thần chuồng chim — cấu trúc đủ lớn thì một mẫu trật tự nhất định không thể tránh.</p>
 ## Ứng dụng trong Khoa học Máy tính
 
 ### 1. Thuật toán Hash và Collision
@@ -115,8 +129,7 @@ print(f"Pigeonhole guarantee: 2^128 + 1 attempts")
 
 ![Birthday attack — va chạm hash](/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg)
 
-*Hình 8.10: Phân tích hash collision kết hợp nguyên lý chuồng chim và birthday bound — hai công cụ nền trong cryptography.*
-
+<p class="textbook-figure-caption" data-figure="8.10">Phân tích hash collision kết hợp nguyên lý chuồng chim và birthday bound — hai công cụ nền trong cryptography.</p>
 ### 2. Load Balancing và Distributed Systems
 
 ```python
@@ -197,13 +210,15 @@ def network_congestion_analysis(packets, links, link_capacity):
 
 ### 1. Nguyên lý Dirichlet Xác suất
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Nếu phân bố ngẫu nhiên N quả bóng vào n hộp, thì xác suất để có hộp chứa ≥ k quả bóng là:
+</div>
 
 P(max ≥ k) ≥ 1 - n(1 - 1/n)^N nếu k = 2
 
 ### 2. Nguyên lý Dirichlet Constructive
 
-Thay vì chỉ chứng minh tồn tại, ta có thể xây dựng thuật toán để tìm đối tượng thỏa mãn.
+Thay vì chỉ chứng minh tồn tại, chúng ta có thể xây dựng thuật toán để tìm đối tượng thỏa mãn.
 
 ```python
 def constructive_pigeonhole(objects, groups, property_checker):
@@ -226,10 +241,11 @@ def constructive_pigeonhole(objects, groups, property_checker):
     return max(group_assignments.items(), key=lambda x: len(x[1]))
 ```
 
+## Xem thêm / Video gợi ý
+
+- [Pigeonhole Principle — Advanced](https://www.youtube.com/watch?v=9jZ5n8k0p0Q) — 3Blue1Brown (Generalized version)
+
 ## Tóm tắt
-
-Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
-
 **Nguyên lý Dirichlet Nâng cao** mở ra nhiều ứng dụng mạnh mẽ:
 
 **Lý thuyết Số**:

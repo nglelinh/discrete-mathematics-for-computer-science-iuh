@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Máy Turing"
 categories: chapter18
@@ -6,35 +7,31 @@ date: 2021-01-01
 order: 5
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã nắm biểu thức chính quy và ngôn ngữ chính quy. Mục này giới thiệu máy Turing — mô hình tính toán phổ quát với băng vô hạn và bộ nhớ…"
 ---
 
-Năm 1936, hai năm trước khi máy tính điện tử đầu tiên ra đời, một nhà toán học người Anh tên Alan Turing đã đề xuất một mô hình tính toán đơn giản đến mức gần như tầm thường: một dải băng vô hạn chia thành các ô, một đầu đọc-ghi di chuyển trái-phải, và một bộ điều khiển hữu hạn quyết định "viết gì - đi đâu - sang trạng thái nào". Bốn mươi năm sau, mô hình đó - **máy Turing** (Turing machine, TM) - vẫn là **chuẩn mực** của khái niệm "thuật toán" trong khoa học máy tính lý thuyết. Mọi định nghĩa khác về tính toán (lambda calculus, máy đệ quy, máy Post, ngay cả mọi ngôn ngữ lập trình hiện đại) đều **tương đương** với máy Turing.
-
-Máy Turing vượt qua hạn chế của FSM ở một điểm cốt lõi: nó có **bộ nhớ vô hạn** (dải băng). Nhờ vậy nó có thể giải các bài toán mà FSM và automat đẩy xuống không giải được, như nhận diện $$\{a^n b^n c^n : n \geq 0\}$$. Quan trọng hơn, nó cho ta một định nghĩa hình thức của **tính tính toán được** (computability), từ đó dẫn đến những phát hiện chấn động: tồn tại các bài toán **không thể giải bằng thuật toán**, đáng chú ý nhất là **bài toán dừng** (halting problem). Đó là chủ đề chính của chương 20.
+Ở mục trước chúng ta đã nắm biểu thức chính quy và ngôn ngữ chính quy. Mục này giới thiệu **máy Turing** — mô hình tính toán phổ quát với băng vô hạn và bộ nhớ không giới hạn, là nền tảng cho lý thuyết tính toán và phân loại độ phức tạp ở các chương sau.
 
 ![Máy Turing](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_a_Turing_machine.svg)
 
-*Hình 18.21: Máy Turing: băng vô hạn, đầu đọc/ghi, bảng chuyển — mô hình tính toán phổ quát.*
-
+<p class="textbook-figure-caption" data-figure="18.21">Máy Turing: băng vô hạn, đầu đọc/ghi, bảng chuyển — mô hình tính toán phổ quát.</p>
 ![Máy Turing phổ quát](/discrete-mathematics-for-computer-science-iuh/img/course/Universal_Turing_machine.svg)
 
-*Hình 18.22: Máy Turing phổ quát mô phỏng mọi máy Turing — nền lý thuyết tính toán.*
-
+<p class="textbook-figure-caption" data-figure="18.22">Máy Turing phổ quát mô phỏng mọi máy Turing — nền lý thuyết tính toán.</p>
 ![So sánh với FSM](/discrete-mathematics-for-computer-science-iuh/img/course/Finite_state_machine_example_with_comments.svg)
 
-*Hình 18.23: FSM có trạng thái hữu hạn; máy Turing có bộ nhớ vô hạn trên băng.*
-
+<p class="textbook-figure-caption" data-figure="18.23">FSM có trạng thái hữu hạn; máy Turing có bộ nhớ vô hạn trên băng.</p>
 ![Bài toán quyết định](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
-*Hình 18.24: Máy Turing giải bài toán quyết định: dừng và chấp nhận hoặc từ chối chuỗi.*
-
+<p class="textbook-figure-caption" data-figure="18.24">Máy Turing giải bài toán quyết định: dừng và chấp nhận hoặc từ chối chuỗi.</p>
 ![Giới hạn tính toán](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 18.25: Bài toán dừng (halting problem) — không giải được bằng thuật toán, chứng minh bằng máy Turing.*
-
+<p class="textbook-figure-caption" data-figure="18.25">Bài toán dừng (halting problem) — không giải được bằng thuật toán, chứng minh bằng máy Turing.</p>
 ## Mục tiêu học tập
 
-Sau khi hoàn thành bài này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau khi hoàn thành bài này, sinh viên có thể:
 
 - **Định nghĩa** hình thức máy Turing dưới dạng bộ bảy $$(Q, \Sigma, \Gamma, \delta, q_0, q_{\text{accept}}, q_{\text{reject}})$$.
 - **Mô phỏng** hoạt động của một TM trên một đầu vào nhỏ.
@@ -43,6 +40,7 @@ Sau khi hoàn thành bài này, sinh viên có thể:
 - **Liệt kê** các biến thể TM (đa băng, không tất định) và biết chúng tương đương về sức mạnh.
 
 **Từ khóa**: máy Turing (Turing machine), dải băng (tape), đầu đọc-ghi (head), bảng chữ cái băng (tape alphabet), cấu hình (configuration), luận đề Church-Turing (Church-Turing thesis), máy Turing phổ dụng (universal Turing machine), tính tính toán được (computability).
+</div>
 
 ## 1. Hạn chế của FSM và lý do cần TM
 
@@ -53,11 +51,13 @@ FSM có bộ nhớ bằng không (ngoài tập trạng thái hữu hạn). Hệ 
 
 **Automat đẩy xuống** (Pushdown Automaton, PDA) bổ sung ngăn xếp vô hạn - đủ để nhận diện ngôn ngữ phi ngữ cảnh (chương 19), nhưng vẫn không nhận diện được $$\{a^n b^n c^n\}$$.
 
-**Máy Turing** trang bị một dải băng vô hạn cả hai chiều, đầu đọc-ghi tự do di chuyển - đây là mô hình tính toán **mạnh nhất** mà ta biết.
+**Máy Turing** trang bị một dải băng vô hạn cả hai chiều, đầu đọc-ghi tự do di chuyển - đây là mô hình tính toán **mạnh nhất** mà chúng ta biết.
 
 ## 2. Định nghĩa hình thức
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một **máy Turing** là một bộ bảy $$M = (Q, \Sigma, \Gamma, \delta, q_0, q_{\text{accept}}, q_{\text{reject}})$$ gồm:
+</div>
 
 - $$Q$$: tập trạng thái hữu hạn.
 - $$\Sigma$$: bảng chữ cái đầu vào (input alphabet), không chứa **ký hiệu trắng** $$\sqcup$$.
@@ -78,7 +78,9 @@ FSM có bộ nhớ bằng không (ngoài tập trạng thái hữu hạn). Hệ 
 
 ## 3. Cấu hình và ngôn ngữ
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: **Cấu hình** (configuration) của TM tại một thời điểm là bộ ba: nội dung băng, vị trí đầu, trạng thái hiện tại. Thường viết dạng $$uqv$$ - nghĩa là băng chứa $$uv$$, đầu ở ký hiệu đầu tiên của $$v$$, trạng thái $$q$$.
+</div>
 
 Quan hệ "một bước chuyển": $$C_1 \vdash C_2$$ nếu áp dụng $$\delta$$ đúng một lần.
 
@@ -93,7 +95,7 @@ Mọi ngôn ngữ decidable đều recognizable; chiều ngược lại **sai**.
 
 ## 4. Ví dụ
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 1**: TM tăng số nhị phân lên 1.
 
 Đầu vào: chuỗi bit, đầu ở bit thấp nhất (bên phải).
@@ -105,7 +107,7 @@ Mọi ngôn ngữ decidable đều recognizable; chiều ngược lại **sai**.
 Ví dụ `1011` $$\to$$ `1100`.
 </div>
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 2**: TM nhận diện $$L = \{a^n b^n c^n : n \geq 0\}$$ - không chính quy, **không** phi ngữ cảnh.
 
 Ý tưởng: lặp - mỗi lần xóa một `a`, một `b`, một `c`. Khi băng còn trắng và mỗi loại đều khớp: chấp nhận.
@@ -128,8 +130,8 @@ TM này dùng bộ nhớ tuyến tính so với đầu vào, dừng sau $$O(n^2)
 - Mọi mô hình tính toán hình thức được đề xuất từ 1936 đến nay (lambda calculus, hàm đệ quy partial, máy Post, máy đếm, mọi ngôn ngữ lập trình Turing-complete) đều chứng minh **tương đương** với máy Turing.
 - Không ai từng tìm ra "thuật toán trực giác" mà máy Turing không mô phỏng được.
 
-<div class="content-box insight-box" markdown="1">
-**Ý nghĩa**: luận đề Church-Turing cho phép ta nói "thuật toán" và "máy Turing" gần như đồng nghĩa khi làm lý thuyết. Khi muốn chứng minh **không có thuật toán** giải bài toán nào đó, ta chứng minh không có máy Turing giải nó. Đây là cách Turing chứng minh **bài toán dừng không quyết định được** năm 1936.
+<div class="content-box insight-box textbook-block" markdown="1">
+**Ý nghĩa**: luận đề Church-Turing cho phép chúng ta nói "thuật toán" và "máy Turing" gần như đồng nghĩa khi làm lý thuyết. Khi muốn chứng minh **không có thuật toán** giải bài toán nào đó, chúng ta chứng minh không có máy Turing giải nó. Đây là cách Turing chứng minh **bài toán dừng không quyết định được** năm 1936.
 </div>
 
 ## 6. Biến thể máy Turing
@@ -143,18 +145,22 @@ Tất cả các biến thể sau đều **tương đương** với TM gốc về
 
 ## 7. Máy Turing phổ dụng
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một **máy Turing phổ dụng** (Universal Turing Machine, UTM) là một TM $$U$$ nhận đầu vào dạng $$(\langle M \rangle, w)$$ (mã hóa của một TM $$M$$ và đầu vào $$w$$), và mô phỏng chạy $$M$$ trên $$w$$.
+</div>
 
 UTM là **mô hình toán học** của khái niệm "máy tính chương trình lưu trữ" (stored-program computer): cùng một phần cứng có thể chạy bất kỳ phần mềm nào nếu phần mềm được mã hóa thành dữ liệu trên dải băng. Đây là ý tưởng nền tảng của kiến trúc Von Neumann mà mọi máy tính hiện đại đều dựa vào.
 
-<div class="content-box info-box" markdown="1">
+<div class="content-box info-box textbook-block" markdown="1">
 **Tính phổ dụng và bài toán dừng**
 
 Sự tồn tại của UTM dẫn trực tiếp đến bài toán dừng:
 
+<div class="textbook-equation" markdown="1">
 $$\text{HALT} = \{(\langle M \rangle, w) : M \text{ dừng trên đầu vào } w\}$$
-
-Nếu HALT decidable, ta có một thuật toán quyết định mọi câu hỏi "chương trình này có dừng không". Turing chứng minh **không tồn tại** thuật toán đó - lập luận phản chứng dựa vào lý luận chéo (diagonal argument) tương tự định lý Cantor.
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+Nếu HALT decidable, chúng ta có một thuật toán quyết định mọi câu hỏi "chương trình này có dừng không". Turing chứng minh **không tồn tại** thuật toán đó - lập luận phản chứng dựa vào lý luận chéo (diagonal argument) tương tự định lý Cantor.
 </div>
 
 ## Tổng kết
@@ -164,7 +170,7 @@ Nếu HALT decidable, ta có một thuật toán quyết định mọi câu hỏ
 - **Luận đề Church-Turing**: mọi thuật toán trực giác đều mô phỏng được bằng TM.
 - Mọi biến thể TM (đa băng, không tất định) đều tương đương về sức biểu đạt.
 - **UTM** là mô hình toán học của máy tính chương trình lưu trữ.
-- TM là cơ sở cho lớp **độ phức tạp tính toán** mà ta sẽ học ở chương 20.
+- TM là cơ sở cho lớp **độ phức tạp tính toán** mà chúng ta sẽ học ở chương 20.
 
 ## Bài tập
 
@@ -176,7 +182,7 @@ Nếu HALT decidable, ta có một thuật toán quyết định mọi câu hỏ
 6. Chứng minh: nếu $$L$$ và $$\Sigma^* \setminus L$$ đều recognizable thì $$L$$ decidable. (Đây là một kết quả quan trọng cho chương 20.)
 7. Giải thích vì sao **không** có "thuật toán" quyết định liệu hai TM bất kỳ có chấp nhận cùng ngôn ngữ.
 
-<div class="content-box note-box" markdown="1">
+<div class="content-box note-box textbook-block" markdown="1">
 **Tài liệu tham khảo**
 
 - Rosen, K. H. (2019). *Discrete Mathematics and Its Applications*, 8th ed. Section 13.5.
@@ -184,3 +190,20 @@ Nếu HALT decidable, ta có một thuật toán quyết định mọi câu hỏ
 - Hopcroft, J., Motwani, R., & Ullman, J. (2007). *Introduction to Automata Theory*, 3rd ed. Chapter 8.
 - Turing, A. M. (1936). "On computable numbers, with an application to the Entscheidungsproblem." *Proceedings of the London Mathematical Society*, 2(42), 230-265. (bài báo gốc)
 </div>
+
+---
+
+## Xem thêm / Video gợi ý
+
+- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (Truth table proof + laws)
+- [Discrete Math Full Course — Logic & Proofs](https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKZS) — Trefor Bazett (Complete semester playlist)
+
+## Tóm tắt
+
+- **TM** = $$(Q, \Sigma, \Gamma, \delta, q_0, q_{\text{accept}}, q_{\text{reject}})$$ với băng vô hạn và đầu đọc-ghi tự do.
+- Hai lớp: **recognizable** (TM có thể chấp nhận nhưng có thể loop) và **decidable** (TM luôn dừng).
+- **Luận đề Church-Turing**: mọi thuật toán trực giác đều mô phỏng được bằng TM.
+- Mọi biến thể TM (đa băng, không tất định) đều tương đương về sức biểu đạt.
+- **UTM** là mô hình toán học của máy tính chương trình lưu trữ.
+- TM là cơ sở cho lớp **độ phức tạp tính toán** ở chương 20.
+

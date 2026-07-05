@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Các Phương pháp Chứng minh trong Toán học và Phần mềm"
 categories: chapter03
@@ -6,23 +7,10 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
+excerpt: "Ở ba mục trước, chúng ta đã học chứng minh trực tiếp, phản chứng và quy nạp toán học. Mục này mở rộng bức tranh: trong khoa học máy tính, không phải mọi câu…"
 ---
 
-Trong khoa học máy tính,
-không phải mọi câu hỏi quan trọng đều là “chạy được chưa”.
-Có những lúc ta cần câu hỏi khó hơn:
-“nó luôn đúng không”,
-“nó sai trong trường hợp nào”,
-“ta biết chắc bằng cách nào”.
-
-Đó là nơi các phương pháp chứng minh bước vào.
-Từ *Elements* của Euclid,
-đến loop invariants,
-Hoare logic,
-chứng minh giao thức mật mã,
-và tranh luận muôn thuở giữa testing với formal proof,
-bài học này kể câu chuyện của một kỹ năng cổ điển
-nhưng vẫn sống ở lõi của engineering hiện đại.
+Ở ba mục trước, chúng ta đã học chứng minh trực tiếp, phản chứng và quy nạp toán học. Mục này mở rộng bức tranh: trong khoa học máy tính, không phải mọi câu hỏi quan trọng đều là "chạy được chưa" — ta cần trả lời "nó luôn đúng không", "sai trong trường hợp nào", và "ta biết chắc bằng cách nào". Các phương pháp chứng minh từ *Elements* của Euclid đến loop invariants, Hoare logic, chứng minh giao thức mật mã, và quan hệ giữa testing với formal proof vẫn là nền tảng của engineering hiện đại.
 
 ---
 
@@ -30,46 +18,14 @@ nhưng vẫn sống ở lõi của engineering hiện đại.
 
 ### 1.1. Vì sao *Elements* sống hơn 2000 năm
 
-Khoảng năm 300 TCN,
-Euclid viết *Elements*.
-Đây không chỉ là sách hình học.
-Nó là một cỗ máy tổ chức tri thức.
-
-Euclid bắt đầu bằng định nghĩa,
-tiên đề,
-khái niệm chung,
-rồi từ đó xây từng định lý bằng chuỗi lập luận chặt chẽ.
-
-Điểm đặc biệt không nằm ở từng kết quả riêng lẻ.
-Điểm đặc biệt nằm ở mô hình tư duy:
-
-- nêu giả thiết rõ ràng,
-- xác định điều cần chứng minh,
-- đi từng bước hợp lệ,
-- kết thúc bằng kết luận tất yếu.
-
-Chính mô hình này trở thành “gold standard” của chứng minh trong hơn hai thiên niên kỷ.
+Khoảng năm 300 TCN, Euclid viết *Elements* — không chỉ là sách hình học mà là mô hình tổ chức tri thức suy diễn. Euclid bắt đầu bằng định nghĩa, tiên đề và khái niệm chung, rồi xây từng định lý bằng chuỗi lập luận chặt chẽ. Giá trị lâu dài không nằm ở từng kết quả riêng lẻ mà ở mô hình tư duy: nêu giả thiết rõ ràng, xác định điều cần chứng minh, đi từng bước hợp lệ, kết thúc bằng kết luận tất yếu. Mô hình này trở thành tiêu chuẩn vàng của chứng minh trong hơn hai thiên niên kỷ.
 
 ![Bản in Elements của Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid_s_Elements__1482.jpg)
 
-*Hình 3.16: *Elements* của Euclid (1482) — một trong những mô hình thành công nhất của tri thức suy diễn có cấu trúc.*
-
+<p class="textbook-figure-caption" data-figure="3.16">*Elements* của Euclid (1482) — một trong những mô hình thành công nhất của tri thức suy diễn có cấu trúc.</p>
 ### 1.2. Tại sao khoa học máy tính phải học tinh thần Euclid
 
-Máy tính hiện đại không đọc hình học Hy Lạp.
-Nhưng phần mềm đúng đắn vẫn cần thứ mà Euclid dạy:
-
-- phát biểu chính xác,
-- suy luận từng bước,
-- không dựa vào trực giác mơ hồ,
-- không nhầm ví dụ với chân lý phổ quát.
-
-Trong ngôn ngữ software,
-đó là nền của specification,
-verification,
-type soundness,
-algorithm correctness,
-và security proofs.
+Phần mềm đúng đắn vẫn cần tinh thần Euclid: phát biểu chính xác, suy luận từng bước, không dựa vào trực giác mơ hồ, không nhầm ví dụ với chân lý phổ quát. Trong ngôn ngữ software, đó là nền của specification, verification, type soundness, algorithm correctness và security proofs.
 
 ---
 
@@ -77,20 +33,7 @@ và security proofs.
 
 ### 2.1. Chạy đúng vài test chưa đủ
 
-Giả sử bạn viết hàm sắp xếp.
-Bạn test với 10 bộ dữ liệu,
-100 bộ dữ liệu,
-thậm chí 10.000 bộ dữ liệu.
-Hàm đều chạy ổn.
-
-Liệu điều đó có chứng minh hàm đúng với mọi input không?
-
-Không.
-
-Testing cho ta niềm tin mạnh hơn,
-nhưng không phải chứng minh tổng quát.
-Muốn đi xa hơn,
-ta cần reasoning về toàn bộ hành vi có thể xảy ra.
+Giả sử ta viết hàm sắp xếp và test với 10, 100, thậm chí 10.000 bộ dữ liệu — hàm đều chạy ổn. Điều đó không chứng minh hàm đúng với mọi input. Testing cho niềm tin thực nghiệm, nhưng không phải chứng minh tổng quát; muốn đi xa hơn, ta cần lập luận về toàn bộ hành vi có thể xảy ra.
 
 ### 2.2. Loop invariant: linh hồn của chứng minh vòng lặp
 
@@ -126,10 +69,12 @@ ta có chứng minh đúng đắn cho thuật toán.
 
 Hoare logic đưa ra ký hiệu nổi tiếng:
 
+<div class="textbook-equation" markdown="1">
 $$
 \{P\}\ C\ \{Q\}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Đọc là:
 
 “Nếu điều kiện trước `P` đúng,
@@ -142,15 +87,13 @@ vì nó biến chương trình thành đối tượng có thể phân tích toá
 
 Ví dụ nhỏ:
 
+<div class="textbook-equation" markdown="1">
 $$
 \{x = 5\}\ x := x + 1\ \{x = 6\}
 $$
-
-Nghe đơn giản,
-nhưng từ đây người ta xây dựng logic cho assignment,
-conditionals,
-loops,
-và procedure calls.
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+Dù đơn giản, từ đây người ta xây dựng logic cho assignment, conditionals, loops và procedure calls.
 
 ### 2.4. Nơi correctness proofs được dùng thật
 
@@ -171,15 +114,14 @@ cho thấy formal proof không còn là giấc mơ xa vời.
 
 ![Đồ thị luồng điều khiển](/discrete-mathematics-for-computer-science-iuh/img/course/Control_flow_graph_of_function_with_two_if_else_statements.svg)
 
-*Hình 3.17: Từ loop invariant đến Hoare logic — đồ thị luồng điều khiển nối lập trình với suy luận toán học qua tiền/hậu điều kiện.*
-
+<p class="textbook-figure-caption" data-figure="3.17">Từ loop invariant đến Hoare logic — đồ thị luồng điều khiển nối lập trình với suy luận toán học qua tiền/hậu điều kiện.</p>
 ---
 
 ## Phần 3: Chứng minh trong mật mã học
 
 ### 3.1. Mật mã không thể dựa vào cảm giác
 
-Bạn không muốn một giao thức bảo mật được đánh giá bằng câu:
+Ta không muốn một giao thức bảo mật được đánh giá bằng câu:
 “có vẻ khó hack”.
 
 Trong cryptography,
@@ -216,7 +158,7 @@ và attacker được cấp quyền gì.
 Trong security,
 chi tiết mô hình rất quan trọng.
 
-Bạn phải nói rõ:
+Ta phải nói rõ:
 
 - attacker có thấy toàn bộ traffic không,
 - attacker có sửa message được không,
@@ -226,8 +168,7 @@ Bạn phải nói rõ:
 Nếu không nói rõ mô hình,
 “proof” dễ thành thứ đẹp trên giấy nhưng vô dụng ngoài đời.
 
-Đó là bài học lớn mà sinh viên CS nên ghi nhớ:
-chứng minh mạnh chỉ có ý nghĩa khi giả định được phát biểu trung thực.
+Kết luận then chốt: chứng minh chỉ có ý nghĩa khi mô hình đe dọa và giả định được phát biểu một cách trung thực.
 
 ---
 
@@ -256,10 +197,12 @@ Giả sử chỉ có hữu hạn số nguyên tố:
 $p_1, p_2, ..., p_n$.
 Xét số:
 
+<div class="textbook-equation" markdown="1">
 $$
 N = p_1p_2\cdots p_n + 1
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Khi chia $N$ cho bất kỳ $p_i$ nào,
 đều dư 1.
 Vậy hoặc $N$ là nguyên tố mới,
@@ -287,8 +230,7 @@ hoặc debug giả định sai trong phần mềm.
 
 ![Số nguyên tố](/discrete-mathematics-for-computer-science-iuh/img/course/Prime_numbers.svg)
 
-*Hình 3.18: Sàng Eratosthenes — chứng minh vô hạn số nguyên tố của Euclid là mẫu mực của proof by contradiction.*
-
+<p class="textbook-figure-caption" data-figure="3.18">Sàng Eratosthenes — chứng minh vô hạn số nguyên tố của Euclid là mẫu mực của proof by contradiction.</p>
 ---
 
 ## Phần 5: Testing và formal proof — vì sao cả hai đều cần
@@ -341,18 +283,13 @@ Chúng là hai lớp phòng thủ khác nhau.
 
 ![Tam giác mâu thuẫn](/discrete-mathematics-for-computer-science-iuh/img/course/Absurd_triangle.svg)
 
-*Hình 3.19: Reductio ad absurdum — phản chứng là công cụ chứng minh "không thể" trong cả toán học lẫn kiểm chứng phần mềm.*
-
+<p class="textbook-figure-caption" data-figure="3.19">Reductio ad absurdum — phản chứng là công cụ chứng minh "không thể" trong cả toán học lẫn kiểm chứng phần mềm.</p>
 ### 5.4. Góc nhìn thực tế cho sinh viên
 
 Không phải dự án nào cũng cần Coq hay Isabelle.
 Nhưng dự án nào cũng cần tư duy chứng minh ở một mức nào đó.
 
-Khi bạn giải thích vì sao thuật toán đúng,
-vì sao loop không phá invariant,
-vì sao API không thể tạo trạng thái mâu thuẫn,
-hay vì sao optimization không đổi kết quả,
-bạn đang dùng tinh thần của proof.
+Khi giải thích vì sao thuật toán đúng, vì sao vòng lặp không phá invariant, vì sao API không thể tạo trạng thái mâu thuẫn, hay vì sao tối ưu hóa không đổi kết quả, ta đang áp dụng tinh thần của proof.
 
 ---
 
@@ -369,15 +306,11 @@ Ta sẽ thấy nhiều hơn:
 - đặc tả hình thức đi kèm code,
 - tool tự tìm invariant và counterexample.
 
-Điều thú vị là:
-AI có thể giúp con người viết proof nhanh hơn,
-nhưng tiêu chuẩn “lập luận hợp lệ” vẫn không đổi.
-Đó là di sản của Euclid sống lại trong thế kỷ XXI.
+AI có thể hỗ trợ viết proof nhanh hơn, nhưng tiêu chuẩn "lập luận hợp lệ" vẫn không đổi — di sản của Euclid trong thế kỷ XXI.
 
 ![Trực quan hóa quy nạp](/discrete-mathematics-for-computer-science-iuh/img/course/Visualization_of_induction.svg)
 
-*Hình 3.20: Quy nạp toán học — nền tảng của loop invariant và chứng minh tính đúng đắn chương trình theo từng bước.*
-
+<p class="textbook-figure-caption" data-figure="3.20">Quy nạp toán học — nền tảng của loop invariant và chứng minh tính đúng đắn chương trình theo từng bước.</p>
 ---
 
 ## Kết luận
@@ -410,8 +343,10 @@ Một kỹ thuật chứng minh đặc biệt hữu ích trong toán rời rạc
 
 *Chứng minh.* Xét đồ thị vô hướng $$G = (V,E)$$. Mỗi cạnh không phải khuyên góp 1 vào bậc của hai đỉnh, mỗi khuyên góp 2 vào bậc của một đỉnh. Do đó mỗi cạnh đóng góp 2 vào tổng $$\sum_{v \in V} \deg(v)$$. Vậy:
 
+<div class="textbook-equation" markdown="1">
 $$\sum_{v \in V} \deg(v) = 2 \cdot |E|$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 — là một số chẵn. ∎
 
 Đây là một ví dụ kinh điển của "đếm bằng hai cách": đếm tổng bậc theo hướng đỉnh (node-centric) và theo hướng cạnh (edge-centric) cho cùng một kết quả.
@@ -537,6 +472,12 @@ x = x + 1
 - Postcondition: `x = n + 1`
 
 </details>
+
+
+## Xem thêm / Video gợi ý
+
+- [How to Write a Proof](https://www.youtube.com/watch?v=7jZ5n8k0p0Q) — 3Blue1Brown (Essence of mathematics)
+- [Direct Proof, Contradiction, Induction](https://www.youtube.com/watch?v=6l7L9v0p0Q) — MIT OCW (Gilbert Strang style clarity)
 
 ## Tóm tắt
 

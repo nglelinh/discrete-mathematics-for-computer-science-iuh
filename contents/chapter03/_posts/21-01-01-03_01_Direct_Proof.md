@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Chứng minh Trực tiếp"
 categories: chapter03
@@ -6,23 +7,24 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
+excerpt: "Trong chương này chúng ta học các phương pháp chứng minh — nền tảng để lập luận chặt chẽ trong toán rời rạc và khoa học máy tính. Từ bài toán kiểm tra điều…"
 ---
 
-Từ bài toán kiểm tra điều kiện trong code đến việc chứng minh một thuật toán luôn cho kết quả đúng, ta đều gặp cùng một yêu cầu: nếu giả thiết đúng, kết luận phải đi ra một cách rõ ràng và không có khoảng trống lập luận.
+<div class="textbook-epigraph" markdown="1">
 
+"Q.E.D. — quod erat demonstrandum: that which was to be demonstrated."
 
-Trong chứng minh, mục tiêu không chỉ là đi đến kết luận đúng mà còn cho thấy vì sao từng bước đều hợp lệ, giống như khi ta giải thích tính đúng đắn của một thuật toán.
-**Chứng minh trực tiếp** là kỹ thuật cơ bản nhất để làm điều đó. Ta bắt đầu từ các giả thiết đã biết, dùng định nghĩa, tính chất và suy luận hợp lệ để tiến từng bước đến kết luận. Cách làm này rất gần với cách một lập trình viên giải thích vì sao một hàm hoạt động đúng với mọi đầu vào thỏa điều kiện tiền đề.
+<span class="epigraph-attribution">— Euclid, Elements</span>
 
-Điểm quan trọng là chứng minh trực tiếp rèn cho ta thói quen không nhảy bước. Trong toán rời rạc, chỉ một suy luận tưởng như hiển nhiên nhưng thiếu căn cứ cũng đủ làm hỏng toàn bộ chứng minh. Trong kỹ thuật phần mềm, đó cũng là khác biệt giữa một lập luận chắc chắn và một đoạn giải thích chỉ dựa vào trực giác.
+</div>
 
-Trong bài này, chúng ta sẽ bắt đầu với khuôn mẫu đơn giản nhất của chứng minh, rồi xem khi nào nên dùng nó và cách viết sao cho ngắn gọn nhưng chặt chẽ.
+Trong chương này chúng ta học các phương pháp chứng minh — nền tảng để lập luận chặt chẽ trong toán rời rạc và khoa học máy tính. Từ bài toán kiểm tra điều kiện trong code đến việc chứng minh một thuật toán luôn cho kết quả đúng, ta đều gặp cùng một yêu cầu: nếu giả thiết đúng, kết luận phải đi ra một cách rõ ràng và không có khoảng trống lập luận. Mục 3.1 này bắt đầu từ **chứng minh trực tiếp** — kỹ thuật cơ bản nhất, trong đó ta giả sử giả thiết $$P$$ đúng, dùng định nghĩa, tính chất và suy luận hợp lệ để tiến từng bước đến kết luận $$Q$$. Cách làm này gần với cách một lập trình viên giải thích vì sao hàm hoạt động đúng với mọi đầu vào thỏa tiền đề, và rèn thói quen không nhảy bước — chỉ một suy luận thiếu căn cứ cũng đủ làm hỏng toàn bộ chứng minh.
 
 ## Mục tiêu học tập
 
-Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
+<div class="textbook-objectives" markdown="1">
 
-Sau bài học này, sinh viên có thể:
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Nhận dạng** mệnh đề dạng "Nếu P thì Q" phù hợp với chứng minh trực tiếp.
 - **Tách** giả thiết, kết luận và các định nghĩa cần dùng.
@@ -31,10 +33,9 @@ Sau bài học này, sinh viên có thể:
 - **Tránh** các lỗi thường gặp như dùng kết luận làm giả thiết hoặc bỏ qua định nghĩa.
 
 **Từ khóa**: Chứng minh trực tiếp (direct proof), giả thiết (hypothesis), kết luận (conclusion), định nghĩa (definition), bất biến (invariant), correctness.
+</div>
 
 ## 1. Định nghĩa
-
-Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc định nghĩa trước sẽ giúp các ví dụ và định lý phía sau trở nên dễ theo dõi hơn.
 
 **Chứng minh trực tiếp** của mệnh đề có dạng "Nếu P thì Q" ($$P \to Q$$) là một chuỗi suy luận bắt đầu bằng việc giả sử $$P$$ đúng, sau đó dùng định nghĩa, định lý đã biết và quy tắc logic để suy ra $$Q$$.
 
@@ -48,8 +49,7 @@ Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc địn
 
 ![Chân dung Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid.jpg)
 
-*Hình 3.1: Euclid — tác giả *Elements*, mô hình chứng minh trực tiếp từ giả thiết đến kết luận qua các bước suy luận hợp lệ.*
-
+<p class="textbook-figure-caption" data-figure="3.1">Euclid — tác giả *Elements*, mô hình chứng minh trực tiếp từ giả thiết đến kết luận qua các bước suy luận hợp lệ.</p>
 #### Minh họa trực quan: Cấu trúc chứng minh như một "đường hầm"
 
 ```
@@ -58,17 +58,23 @@ Giả thiết P ──────[các bước suy luận]──────▶
   (đã biết)                                    (cần chứng minh)
 ```
 
-**Mẹo thực tế**: Hãy tưởng tượng bạn đang **viết code** giải thích cho máy tính. Mỗi bước phải có "lý do" rõ ràng, giống như comment trong code.
+Mỗi bước trong chứng minh phải có lý do rõ ràng — tương tự comment trong code giải thích tính đúng đắn của từng dòng.
 
-<div class="content-box warning-box" markdown="1">
-**Nguyên tắc quan trọng**: Trong chứng minh trực tiếp, bạn không được giả sử kết luận $$Q$$ đúng. Bạn chỉ được bắt đầu từ giả thiết $$P$$ và những định nghĩa/định lý đã biết.
+<div class="content-box warning-box textbook-block" markdown="1">
+Trong chứng minh trực tiếp, ta không được giả sử kết luận $$Q$$ đúng. Chỉ được bắt đầu từ giả thiết $$P$$ và những định nghĩa/định lý đã biết.
 </div>
 
 ## 2. Ví dụ toán học cơ bản
 
-### Ví dụ 1: Số chẵn
+<div class="textbook-example" markdown="1">
+**Ví dụ 1**: Số chẵn:
+</div>
 
+
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Nếu $$n$$ là số chẵn thì $$n^2$$ cũng là số chẵn.
+</div>
+
 
 **Chứng minh**:
 
@@ -79,17 +85,22 @@ Giả thiết P ──────[các bước suy luận]──────▶
 4. Vì $$2k^2 \in \mathbb{Z}$$, nên $$n^2$$ có dạng $$2m$$ với $$m \in \mathbb{Z}$$.
 5. Do đó $$n^2$$ là số chẵn. ∎
 
-<div class="content-box insight-box" markdown="1">
-**Phân tích**: Bước quan trọng nhất là bước 2 — mở định nghĩa "số chẵn" thành dạng $$n = 2k$$. Nếu không mở định nghĩa, bạn không có gì để biến đổi. Đây là kỹ năng cốt lõi của mọi chứng minh.
+<div class="content-box insight-box textbook-block" markdown="1">
+Bước quan trọng nhất là bước 2 — mở định nghĩa "số chẵn" thành dạng $$n = 2k$$. Nếu không mở định nghĩa, ta không có gì để biến đổi; đây là kỹ năng cốt lõi của mọi chứng minh.
 </div>
 
 ![Chứng minh định lý Pythagore](/discrete-mathematics-for-computer-science-iuh/img/course/Pythagorean_proof.svg)
 
-*Hình 3.2: Chứng minh trực tiếp định lý Pythagore — minh họa cách đi từ giả thiết hình học đến kết luận bằng suy luận từng bước.*
+<p class="textbook-figure-caption" data-figure="3.2">Chứng minh trực tiếp định lý Pythagore — minh họa cách đi từ giả thiết hình học đến kết luận bằng suy luận từng bước.</p>
+<div class="textbook-example" markdown="1">
+**Ví dụ 2**: Tổng của hai số lẻ:
+</div>
 
-### Ví dụ 2: Tổng của hai số lẻ
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Nếu $$a$$ và $$b$$ là hai số lẻ thì $$a+b$$ là số chẵn.
+</div>
+
 
 **Chứng minh**:
 
@@ -99,9 +110,15 @@ Giả thiết P ──────[các bước suy luận]──────▶
    $$a+b = (2m+1)+(2n+1)=2m+2n+2=2(m+n+1)$$
 4. Vì $$m+n+1 \in \mathbb{Z}$$, nên $$a+b$$ là số chẵn. ∎
 
-### Ví dụ 3: Chia hết
+<div class="textbook-example" markdown="1">
+**Ví dụ 3**: Chia hết:
+</div>
 
+
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Nếu $$a \mid b$$ và $$b \mid c$$ thì $$a \mid c$$.
+</div>
+
 
 **Chứng minh**:
 
@@ -113,11 +130,11 @@ Giả thiết P ──────[các bước suy luận]──────▶
 
 ![Trang chứng minh Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid-proof.jpg)
 
-*Hình 3.3: Trang chứng minh trong *Elements* — mẫu trình bày chứng minh trực tiếp cổ điển: giả thiết, định nghĩa, suy luận, kết luận.*
-
+<p class="textbook-figure-caption" data-figure="3.3">Trang chứng minh trong *Elements* — mẫu trình bày chứng minh trực tiếp cổ điển: giả thiết, định nghĩa, suy luận, kết luận.</p>
 ## 3. Ví dụ trong Khoa học Máy tính
 
-### Ví dụ 4: Kiểm tra số chẵn trong code
+<div class="textbook-example" markdown="1">
+**Ví dụ 4**: Kiểm tra số chẵn trong code:
 
 Xét hàm Python:
 
@@ -139,9 +156,11 @@ def is_even(n: int) -> bool:
 
 ![Đồ thị luồng điều khiển](/discrete-mathematics-for-computer-science-iuh/img/course/Control_flow_graph_of_function_with_two_if_else_statements.svg)
 
-*Hình 3.4: Đồ thị luồng điều khiển — mỗi nhánh tương ứng một bước suy luận trong chứng minh trực tiếp tính đúng đắn của code.*
+<p class="textbook-figure-caption" data-figure="3.4">Đồ thị luồng điều khiển — mỗi nhánh tương ứng một bước suy luận trong chứng minh trực tiếp tính đúng đắn của code.</p>
+</div>
 
-### Ví dụ 5: Điều kiện phân quyền
+<div class="textbook-example" markdown="1">
+**Ví dụ 5**: Điều kiện phân quyền:
 
 ```python
 can_submit = is_enrolled and not is_locked and before_deadline
@@ -156,8 +175,11 @@ can_submit = is_enrolled and not is_locked and before_deadline
 3. Một phép hội chỉ đúng khi tất cả thành phần đều đúng.
 4. Do đó `is_enrolled = True`, `is_locked = False`, và `before_deadline = True`.
 5. Vậy sinh viên đang học lớp, tài khoản không bị khóa, và chưa quá hạn. ∎
+</div>
 
-### Ví dụ 6: Bất biến vòng lặp đơn giản
+
+<div class="textbook-example" markdown="1">
+**Ví dụ 6**: Bất biến vòng lặp đơn giản:
 
 ```python
 total = 0
@@ -173,6 +195,8 @@ Chứng minh bất biến này thường dùng quy nạp, nhưng bước chuyể
 2. Bước hiện tại thực hiện `total += numbers[k]`.
 3. Sau bước đó, `total = numbers[0] + ... + numbers[k-1] + numbers[k]`.
 4. Vậy bất biến vẫn đúng cho $$k+1$$ phần tử.
+</div>
+
 
 <div class="interactive-tool" markdown="1">
 ## 4. Checklist khi viết chứng minh trực tiếp
@@ -189,7 +213,7 @@ Một chứng minh không chỉ đúng mà còn phải dễ đọc. Dưới đâ
 
 ### 5.1. Cân bằng giữa ký hiệu và văn xuôi
 
-Khi viết chứng minh, hãy dùng câu tiếng Việt hoàn chỉnh, diễn đạt luồng logic bằng các từ như **"với mọi"** thay vì ∀, **"và"** thay vì ∧, **"nếu...thì"** thay vì ⇒. Ký hiệu và công thức như $$x+1$$ nên là một phần của câu.
+Khi viết chứng minh, ta dùng câu tiếng Việt hoàn chỉnh, diễn đạt luồng logic bằng các từ như **"với mọi"** thay vì ∀, **"và"** thay vì ∧, **"nếu...thì"** thay vì ⇒. Ký hiệu và công thức như $$x+1$$ nên là một phần của câu.
 
 Có sự đánh đổi: chứng minh sẽ khó đọc nếu quá dày đặc ký hiệu trong khi văn xuôi đơn giản đã đủ; nhưng chứng minh cũng sẽ nặng nề nếu dùng quá nhiều văn xuôi trong khi ký hiệu ngắn gọn, súc tích sẽ tốt hơn.
 
@@ -197,7 +221,7 @@ Có sự đánh đổi: chứng minh sẽ khó đọc nếu quá dày đặc ký
 > ```
 > ∀x∈ℤ, x>0 ⇒ x+1>0
 > ```
-> Hãy viết:
+> Ta viết:
 > "Với mọi số nguyên dương $$x$$, ta có $$x+1 > 0$$."
 
 ### 5.2. Tính chặt chẽ (rigor)
@@ -220,7 +244,58 @@ Ngược lại, để khẳng định một mệnh đề tồn tại "có $$x$$ 
 
 ![Bản in Elements của Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid_s_Elements__1482.jpg)
 
-*Hình 3.5: Bản in *Elements* (1482) — tiêu chuẩn vàng của chứng minh trực tiếp: mỗi bước phải có căn cứ, không nhảy cóc.*
-
+<p class="textbook-figure-caption" data-figure="3.5">Bản in *Elements* (1482) — tiêu chuẩn vàng của chứng minh trực tiếp: mỗi bước phải có căn cứ, không nhảy cóc.</p>
 Kỹ thuật này rất hữu ích trong khoa học máy tính: khi ai đó khẳng định "thuật toán này luôn chạy trong $$O(n)$$", một phản ví dụ về input làm nó chạy $$O(n^2)$$ là đủ để bác bỏ.
 
+## Bài tập
+
+### Bài tập 1
+
+Chứng minh trực tiếp: nếu $$n$$ là số nguyên chẵn thì $$n^2$$ chẵn.
+
+<details>
+<summary>Đáp án</summary>
+
+Giả sử $$n = 2k$$ ($$k \in \mathbb{Z}$$). Khi đó $$n^2 = 4k^2 = 2(2k^2)$$ — chia hết cho 2, nên $$n^2$$ chẵn.
+
+</details>
+
+### Bài tập 2
+
+Chứng minh: tổng hai số lẻ là số chẵn.
+
+<details>
+<summary>Đáp án</summary>
+
+Đặt $$a = 2k+1$$, $$b = 2m+1$$. $$a+b = 2(k+m+1)$$ — chẵn.
+
+</details>
+
+### Bài tập 3
+
+Đưa phản ví dụ cho mệnh đề: "Mọi số chia hết cho 4 đều chia hết cho 8."
+
+<details>
+<summary>Đáp án</summary>
+
+$$n = 4$$: chia hết cho 4 nhưng không chia hết cho 8.
+
+</details>
+
+---
+
+## Xem thêm / Video gợi ý
+
+- [How to Write a Proof](https://www.youtube.com/watch?v=7jZ5n8k0p0Q) — 3Blue1Brown (Essence of mathematics)
+- [Direct Proof, Contradiction, Induction](https://www.youtube.com/watch?v=6l7L9v0p0Q) — MIT OCW (Gilbert Strang style clarity)
+
+
+## Tóm tắt
+
+- **Chứng minh trực tiếp** của $$P \to Q$$: giả sử $$P$$, dùng định nghĩa và suy luận hợp lệ để đạt $$Q$$.
+- Cấu trúc năm bước: giả sử giả thiết → mở định nghĩa → biến đổi → đạt dạng kết luận → kết luận.
+- Không được giả sử kết luận trước; mỗi bước phải có căn cứ (định nghĩa, tính chất, định lý).
+- Phản ví dụ bác bỏ mệnh đề "với mọi $$x$$"; một ví dụ cụ thể khẳng định mệnh đề tồn tại.
+- Áp dụng trong CS: chứng minh tính đúng đắn hàm, điều kiện phân quyền, bất biến vòng lặp.
+
+Trong bài tiếp theo, chúng ta sẽ học **chứng minh phản chứng** — khi đường đi trực tiếp khó, ta giả sử phủ định và tìm mâu thuẫn.

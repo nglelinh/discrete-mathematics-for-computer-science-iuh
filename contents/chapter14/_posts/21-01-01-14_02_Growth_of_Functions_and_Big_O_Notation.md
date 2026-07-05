@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Tăng trưởng của Hàm và Ký hiệu Big-O"
 categories: chapter14
@@ -6,42 +7,31 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã định nghĩa thuật toán và các tính chất cơ bản của một lời giải đúng đắn. Mục này giới thiệu ký hiệu Big-O và các bậc tăng trưởng —…"
 ---
 
-Một thuật toán chạy 0.01 giây với 100 phần tử chưa chắc vẫn ổn với 10 triệu phần tử. Trong khoa học máy tính, câu hỏi quan trọng không chỉ là chương trình chạy được, mà là nó tăng chi phí như thế nào khi đầu vào lớn dần.
-
-Phân tích thuật toán không chỉ hỏi chương trình chạy được hay không, mà còn hỏi nó còn dùng được khi dữ liệu lớn lên nhanh đến mức nào.
-Đó là lúc ta cần nhìn vào **tăng trưởng của hàm** thay vì các con số riêng lẻ. **Ký hiệu Big-O** cho phép ta mô tả tốc độ tăng của thời gian hoặc bộ nhớ theo cách đủ gọn để so sánh các thuật toán với nhau.
-
-Điều này đặc biệt quan trọng vì phần cứng nhanh hơn không xóa được một thuật toán tăng trưởng tệ. Một giải pháp $$O(n \log n)$$ và một giải pháp $$O(n^2)$$ có thể khác nhau rất lớn khi quy mô tăng lên.
-
-Trong bài này, chúng ta sẽ học cách đọc tốc độ tăng trưởng, hiểu ý nghĩa của Big-O và dùng nó để nói về hiệu năng một cách chặt chẽ hơn.
+Ở mục trước chúng ta đã định nghĩa thuật toán và các tính chất cơ bản của một lời giải đúng đắn. Mục này giới thiệu **ký hiệu Big-O** và các bậc tăng trưởng — công cụ mô tả tốc độ tăng của thời gian hoặc bộ nhớ khi kích thước đầu vào lớn dần. Phần cứng nhanh hơn không bù được thuật toán có hàm tăng trưởng kém; do đó, phân tích bậc là kỹ năng cốt lõi trong khoa học máy tính.
 
 ![Ký hiệu Big-O](/discrete-mathematics-for-computer-science-iuh/img/course/Big-O-notation.png)
 
-*Hình 14.6: Big-O mô tả giới hạn trên của tốc độ tăng — so sánh thuật toán khi $n$ lớn.*
-
+<p class="textbook-figure-caption" data-figure="14.6">Big-O mô tả giới hạn trên của tốc độ tăng — so sánh thuật toán khi $n$ lớn.</p>
 ![Các lớp phức tạp phổ biến](/discrete-mathematics-for-computer-science-iuh/img/course/BigOnotation_popular.svg)
 
-*Hình 14.7: Thứ tự tăng: $O(1)$, $O(\log n)$, $O(n)$, $O(n\log n)$, $O(n^2)$, $O(2^n)$.*
-
+<p class="textbook-figure-caption" data-figure="14.7">Thứ tự tăng: $O(1)$, $O(\log n)$, $O(n)$, $O(n\log n)$, $O(n^2)$, $O(2^n)$.</p>
 ![So sánh độ phức tạp](/discrete-mathematics-for-computer-science-iuh/img/course/Comparison_computational_complexity.svg)
 
-*Hình 14.8: Cùng bài toán, khác hàm tăng — chọn thuật toán quyết định khả năng mở rộng hệ thống.*
-
+<p class="textbook-figure-caption" data-figure="14.8">Cùng bài toán, khác hàm tăng — chọn thuật toán quyết định khả năng mở rộng hệ thống.</p>
 ![Hàm tuyến tính O(n)](/discrete-mathematics-for-computer-science-iuh/img/course/Arithmetic_progression.svg)
 
-*Hình 14.9: Vòng lặp đơn cho $O(n)$ — tăng tuyến tính theo kích thước đầu vào.*
-
+<p class="textbook-figure-caption" data-figure="14.9">Vòng lặp đơn cho $O(n)$ — tăng tuyến tính theo kích thước đầu vào.</p>
 ![Hàm mũ và đệ quy](/discrete-mathematics-for-computer-science-iuh/img/course/Fibonacci_spiral.svg)
 
-*Hình 14.10: Đệ quy lặp không tối ưu có thể dẫn đến $O(2^n)$ — cần phân tích tăng trưởng.*
-
+<p class="textbook-figure-caption" data-figure="14.10">Đệ quy lặp không tối ưu có thể dẫn đến $O(2^n)$ — cần phân tích tăng trưởng.</p>
 ## Mục tiêu học tập
 
-Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
+<div class="textbook-objectives" markdown="1">
 
-Sau bài học này, sinh viên có thể:
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Giải thích** ý nghĩa của ký hiệu Big-O, Big-Omega, Big-Theta.
 - **Phân loại** hàm vào các bậc tăng trưởng: hằng, log, tuyến tính, đa thức, mũ.
@@ -50,6 +40,7 @@ Sau bài học này, sinh viên có thể:
 - **Áp dụng** quy tắc ước lượng để phân tích vòng lặp.
 
 **Từ khóa**: Big-O, Big-Omega ($$\Omega$$), Big-Theta ($$\Theta$$), tốc độ tăng trưởng (growth rate), bậc (order), trội (dominant term).
+</div>
 
 ## 1. Vấn đề
 
@@ -60,29 +51,20 @@ Xét hai thuật toán sắp xếp một mảng $$n$$ phần tử:
 | Sắp xếp nổi bọt | $$\frac{n(n-1)}{2}$$ |
 | Sắp xếp chèn | $$\frac{n(n-1)}{2}$$ (xấu nhất) |
 
-Cả hai đều có dạng $$an^2 + bn + c$$. Hệ số $$a, b, c$$ khác nhau nhưng khi $$n$$ rất lớn, phần $$n^2$$ chi phối toàn bộ. **Big-O** là công cụ để ta bỏ qua hằng số và số hạng bậc thấp, chỉ giữ lại độ lớn chi phối.
+Cả hai đều có dạng $$an^2 + bn + c$$. Hệ số $$a, b, c$$ khác nhau nhưng khi $$n$$ rất lớn, phần $$n^2$$ chi phối toàn bộ. **Big-O** là công cụ để chúng ta bỏ qua hằng số và số hạng bậc thấp, chỉ giữ lại độ lớn chi phối.
 
 ## 2. Ký hiệu Big-O
 
-**Định nghĩa**: Cho $$f, g: \mathbb{N} \to \mathbb{R}^+$$. Ta nói $$f(n)$$ là $$O(g(n))$$ nếu tồn tại hằng số $$C > 0$$ và $$n_0$$ sao cho:
-
-$$f(n) \leq C \cdot g(n) \quad \forall n \geq n_0$$
-
-**Ý nghĩa**: $$f(n)$$ tăng không nhanh hơn $$g(n)$$ (nhân với một hằng số), khi $$n$$ đủ lớn.
-
-<div class="content-box example-box" markdown="1">
-**Ví dụ**: Chứng minh $$f(n) = 3n^2 + 5n + 7$$ là $$O(n^2)$$.
-
-Với $$n \geq 1$$: $$3n^2 + 5n + 7 \leq 3n^2 + 5n^2 + 7n^2 = 15n^2$$.
-
-Chọn $$C = 15$$, $$n_0 = 1$$, ta có: $$f(n) \leq 15n^2$$ với mọi $$n \geq 1$$. Vậy $$f(n) = O(n^2)$$.
+<div class="textbook-definition" markdown="1">
+**Định nghĩa**: Cho $$f, g: \mathbb{N} \to \mathbb{R}^+$$. Chúng ta nói $$f(n)$$ là $$O(g(n))$$ nếu tồn tại hằng số $$C > 0$$ và $$n_0$$ sao cho:
 </div>
 
-### Quy tắc ước lượng thực tế
+<div class="textbook-equation" markdown="1">
+$$f(n) \leq C \cdot g(n) \quad \forall n \geq n_0$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 
-1. **Quy tắc hằng số**: $$O(c \cdot f(n)) = O(f(n))$$ — bỏ hằng số nhân.
-2. **Quy tắc tổng**: $$O(f(n) + g(n)) = O(\max(f(n), g(n)))$$ — lấy số hạng lớn nhất.
-3. **Quy tắc tích**: $$O(f(n) \cdot g(n)) = O(f(n)) \cdot O(g(n))$$
+**Ý nghĩa**: $$f(n)$$ tăng không nhanh hơn $$g(n)$$ (nhân với một hằng số), khi $$n$$ đủ lớn.
 
 ## 3. Ký hiệu Big-Omega và Big-Theta
 
@@ -96,20 +78,22 @@ $$f(n)$$ tăng *ít nhất* nhanh bằng $$g(n)$$.
 
 $$f(n) = \Theta(g(n))$$ nếu $$f(n) = O(g(n))$$ và $$f(n) = \Omega(g(n))$$.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
+<div class="textbook-example" markdown="1">
 **Ví dụ**: $$f(n) = 5n^2 + 3n$$:
 - Là $$O(n^2)$$ (cận trên)
 - Là $$\Omega(n^2)$$ (cận dưới, vì $$5n^2 + 3n \geq 5n^2$$)
 - Vậy $$f(n) = \Theta(n^2)$$
 </div>
+</div>
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Phân biệt ba ký hiệu**: 
 - **Big-O** là cận trên — "không tệ hơn". Dùng nhiều nhất trong thực tế.
 - **Big-Omega** là cận dưới — "không tốt hơn".
 - **Big-Theta** là cận chặt — "chính xác là bậc này".
 
-Trong giao tiếp hàng ngày, người ta thường nói Big-O nhưng thực ra muốn nói Big-Theta.
+Trong giao tiếp hàng ngày, người chúng ta thường nói Big-O nhưng thực ra muốn nói Big-Theta.
 </div>
 
 ## 4. Các Bậc Tăng trưởng Phổ biến
@@ -123,7 +107,7 @@ Trong giao tiếp hàng ngày, người ta thường nói Big-O nhưng thực ra
 | $$O(n^2)$$ | Bình phương | Sắp xếp nổi bọt | 10,000 | $$10^{12}$$ |
 | $$O(2^n)$$ | Hàm mũ | Bài toán người bán hàng (duyệt toàn bộ) | ~$$10^{30}$$ | Không khả thi |
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Cảnh báo**: Thuật toán $$O(2^n)$$ với $$n = 100$$ có thể mất hàng tỷ năm. Phân biệt được bậc tăng trưởng là kỹ năng sống còn trong phỏng vấn và công việc thực tế.
 
 Để hình dung: nếu $$O(2^n)$$ chạy mất 1 giây với n=50, thì với n=100 nó mất khoảng 35 triệu năm!
@@ -148,7 +132,7 @@ END FOR
 
 Tổng: $$n \times n \times O(1) = O(n^2)$$
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ phân tích tìm kiếm nhị phân**:
 
 ```
@@ -165,18 +149,18 @@ Mỗi vòng lặp, không gian tìm kiếm giảm một nửa: $$n \to n/2 \to n
 
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: So sánh Tốc độ Tăng trưởng</h3>
-<p>Nhập hai hàm và xem đồ thị so sánh của chúng. Công cụ tự động tìm điểm giao nhau và cho biết hàm nào "thắng" khi n đủ lớn. <strong>Hãy thử:</strong> So sánh $$1000n$$ và $$n^2$$. Với n nhỏ, $$n^2$$ thắng, nhưng sau điểm giao nhau, mọi thứ đảo ngược!</p>
+<p>Nhập hai hàm và xem đồ thị so sánh của chúng. Công cụ tự động tìm điểm giao nhau và cho biết hàm nào "thắng" khi n đủ lớn. <strong>Gợi ý thực hành:</strong> So sánh $$1000n$$ và $$n^2$$. Với n nhỏ, $$n^2$$ thắng, nhưng sau điểm giao nhau, mọi thứ đảo ngược!</p>
 <div data-demo="big-o-growth-comparator"></div>
 </div>
 <script src="{{ '/public/js/big-o-growth-comparator.js' | relative_url }}"></script>
 
 ## Ứng dụng trong Khoa học Máy tính
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Cần chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Big-O là công cụ chuẩn trong phỏng vấn kỹ thuật và thiết kế hệ thống. Khi xây dựng hệ thống phục vụ hàng triệu người dùng, sự khác biệt giữa $$O(n)$$ và $$O(n^2)$$ là sự khác biệt giữa *chạy được* và *sập server*. Big-O còn là cơ sở để phân loại bài toán P, NP — trung tâm của lý thuyết độ phức tạp tính toán.
 
-**Ví dụ thực tế**: Google xử lý hàng tỷ tìm kiếm mỗi ngày. Nếu thuật toán tìm kiếm của họ là $$O(n^2)$$ thay vì $$O(\log n)$$, họ sẽ cần một trung tâm dữ liệu lớn gấp hàng triệu lần. Big-O quyết định khả thi hay không khả thi.
+**Ví dụ** (thực tế): Google xử lý hàng tỷ tìm kiếm mỗi ngày. Nếu thuật toán tìm kiếm của họ là $$O(n^2)$$ thay vì $$O(\log n)$$, họ sẽ cần một trung tâm dữ liệu lớn gấp hàng triệu lần. Big-O quyết định khả thi hay không khả thi.
 
 ## Bài tập
 
@@ -191,9 +175,11 @@ Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, d�
 <details>
 <summary>Đáp án bài 5</summary>
 
+<div class="textbook-equation" markdown="1">
 $$n! = 1 \times 2 \times 3 \times \ldots \times n \leq n \times n \times n \times \ldots \times n = n^n$$
-
-Vậy với mọi $$n \geq 1$$, $$n! \leq 1 \cdot n^n$$. Chọn $$C = 1, n_0 = 1$$, ta có $$n! = O(n^n)$$.
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+Vậy với mọi $$n \geq 1$$, $$n! \leq 1 \cdot n^n$$. Chọn $$C = 1, n_0 = 1$$, chúng ta có $$n! = O(n^n)$$.
 
 Đây là một cận trên rất rộng. Cận chặt hơn (công thức Stirling) cho biết $$n! \sim \sqrt{2\pi n}(n/e)^n$$.
 </details>
@@ -215,9 +201,9 @@ Verify that:
 <details>
 <summary>Đáp án</summary>
 
-(a) Ta có g(n) = ⌈n/2⌉!, f(n) = ⌊n/2⌋!. Với n chẵn, n = 2k: f(2k) = k!, g(2k) = k!. Khi đó tỉ số f(2k)/g(2k) = 1, không tiến về 0. Với n lẻ, n = 2k+1: f(2k+1) = k!, g(2k+1) = (k+1)!. Tỉ số f/g = k!/(k+1)! = 1/(k+1) → 0. Nhưng định nghĩa f = o(g) yêu cầu lim_{n→∞} f(n)/g(n) = 0, và dãy con n = 2k cho thấy giới hạn không thể bằng 0. Vậy f ≠ o(g).
+(a) Chúng ta có g(n) = ⌈n/2⌉!, f(n) = ⌊n/2⌋!. Với n chẵn, n = 2k: f(2k) = k!, g(2k) = k!. Khi đó tỉ số f(2k)/g(2k) = 1, không tiến về 0. Với n lẻ, n = 2k+1: f(2k+1) = k!, g(2k+1) = (k+1)!. Tỉ số f/g = k!/(k+1)! = 1/(k+1) → 0. Nhưng định nghĩa f = o(g) yêu cầu lim_{n→∞} f(n)/g(n) = 0, và dãy con n = 2k cho thấy giới hạn không thể bằng 0. Vậy f ≠ o(g).
 
-(b) Với mọi n, ⌊n/2⌋ ≤ ⌈n/2⌉, nên ⌊n/2⌋! ≤ ⌈n/2⌉!, tức f(n) ≤ g(n) với mọi n. Chọn C = 1, n₀ = 1, ta có f(n) = O(g(n)).
+(b) Với mọi n, ⌊n/2⌋ ≤ ⌈n/2⌉, nên ⌊n/2⌋! ≤ ⌈n/2⌉!, tức f(n) ≤ g(n) với mọi n. Chọn C = 1, n₀ = 1, chúng ta có f(n) = O(g(n)).
 
 (c) Nếu f = Ω(g), tồn tại C > 0, n₀ sao cho f(n) ≥ C·g(n) với mọi n ≥ n₀. Với n chẵn, f(n) = g(n) nên C ≤ 1. Với n lẻ n = 2k+1, f(2k+1) = k!, g(2k+1) = (k+1)! = (k+1)·k!. Tỉ số f/g = 1/(k+1) → 0. Vậy không tồn tại C > 0 thỏa mãn. Do đó f ≠ Ω(g).
 
@@ -235,26 +221,34 @@ Verify that:
 
 (c) $$O_\lor$$ is equivalent to $$O_+$$, defined as follows: $$f(m,n) = O_+(g(m,n))$$ when:
 
+<div class="textbook-equation" markdown="1">
 $$(\exists c > 0) (\exists n_0 \in \mathbb{N}) (\forall (m,n) \in \mathbb{N}^2) \big( m+n \ge n_0 \Rightarrow f(m,n) \le c \cdot g(m,n) \big)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 <details>
 <summary>Đáp án</summary>
 
-(a) Từ $$f = O(g)$$, tồn tại $$C, n_0$$ sao cho $$f(n) \le C \cdot g(n)$$ với mọi $$n \ge n_0$$. Với $$a > 0$$, lũy thừa bậc $$a$$ là hàm đơn điệu tăng trên $$(0, \infty)$$, nên $$f(n)^a \le (C \cdot g(n))^a = C^a \cdot g(n)^a$$ với mọi $$n \ge n_0$$. Đặt $$C' = C^a$$, ta có $$f^a = O(g^a)$$.
+(a) Từ $$f = O(g)$$, tồn tại $$C, n_0$$ sao cho $$f(n) \le C \cdot g(n)$$ với mọi $$n \ge n_0$$. Với $$a > 0$$, lũy thừa bậc $$a$$ là hàm đơn điệu tăng trên $$(0, \infty)$$, nên $$f(n)^a \le (C \cdot g(n))^a = C^a \cdot g(n)^a$$ với mọi $$n \ge n_0$$. Đặt $$C' = C^a$$, chúng ta có $$f^a = O(g^a)$$.
 
 (b) Từ $$f_1 = O(g_1)$$, tồn tại $$C, n_1$$ sao cho $$f_1(n) \le C \cdot g_1(n)$$ với $$n \ge n_1$$. Từ $$f_2 = o(g_2)$$, với mọi $$\varepsilon > 0$$ tồn tại $$n_2$$ sao cho $$|f_2(n)| \le \varepsilon \cdot |g_2(n)|$$ với $$n \ge n_2$$. Với $$n \ge \max(n_1, n_2)$$:
 
+<div class="textbook-equation" markdown="1">
 $$|f_1(n) f_2(n)| \le C \cdot g_1(n) \cdot \varepsilon \cdot g_2(n) = (C \varepsilon) \cdot g_1(n) g_2(n).$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Vì $$\varepsilon$$ có thể chọn tùy ý nhỏ, $$C \varepsilon$$ cũng tùy ý nhỏ. Vậy $$f_1 f_2 = o(g_1 g_2)$$.
 
-(c) Ta chứng minh hai định nghĩa tương đương.
+(c) Chúng ta chứng minh hai định nghĩa tương đương.
 
-$$(\Rightarrow)$$ Giả sử $$f = O_\lor(g)$$, nghĩa là tồn tại $$c, n_0$$ sao cho với mọi $$m,n$$, nếu $$m \ge n_0$$ hoặc $$n \ge n_0$$ thì $$f(m,n) \le c \cdot g(m,n)$$. Chọn $$n_0' = n_0$$. Với mọi $$(m,n)$$ thỏa $$m+n \ge n_0$$, ta có $$m \ge n_0$$ hoặc $$n \ge n_0$$ (nếu cả hai đều nhỏ hơn $$n_0$$ thì $$m+n < 2n_0$$, không đảm bảo). Cần chọn $$n_0' = 2n_0$$: nếu $$m+n \ge 2n_0$$ thì $$m \ge n_0$$ hoặc $$n \ge n_0$$, nên $$f(m,n) \le c \cdot g(m,n)$$. Vậy $$f = O_+(g)$$.
+$$(\Rightarrow)$$ Giả sử $$f = O_\lor(g)$$, nghĩa là tồn tại $$c, n_0$$ sao cho với mọi $$m,n$$, nếu $$m \ge n_0$$ hoặc $$n \ge n_0$$ thì $$f(m,n) \le c \cdot g(m,n)$$. Chọn $$n_0' = n_0$$. Với mọi $$(m,n)$$ thỏa $$m+n \ge n_0$$, chúng ta có $$m \ge n_0$$ hoặc $$n \ge n_0$$ (nếu cả hai đều nhỏ hơn $$n_0$$ thì $$m+n < 2n_0$$, không đảm bảo). Cần chọn $$n_0' = 2n_0$$: nếu $$m+n \ge 2n_0$$ thì $$m \ge n_0$$ hoặc $$n \ge n_0$$, nên $$f(m,n) \le c \cdot g(m,n)$$. Vậy $$f = O_+(g)$$.
 
 $$(\Leftarrow)$$ Giả sử $$f = O_+(g)$$, tồn tại $$c, n_0$$ sao cho $$m+n \ge n_0 \Rightarrow f(m,n) \le c \cdot g(m,n)$$. Chọn cùng $$c$$ và $$n_0$$. Với mọi $$(m,n)$$, nếu $$m \ge n_0$$ thì $$m+n \ge n_0$$, nên $$f(m,n) \le c \cdot g(m,n)$$. Tương tự nếu $$n \ge n_0$$. Vậy $$f = O_\lor(g)$$.
 
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Injective, Surjective, Bijective](https://www.youtube.com/watch?v=2jZ5n8k0p0Q) — 3Blue1Brown (Visual explanation)
 
 ## Tóm tắt
 

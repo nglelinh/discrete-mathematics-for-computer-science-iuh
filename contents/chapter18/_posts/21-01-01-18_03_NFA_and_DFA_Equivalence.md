@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "NFA và Sự tương đương với DFA"
 categories: chapter18
@@ -6,35 +7,31 @@ date: 2021-01-01
 order: 3
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã nghiên cứu máy Mealy và Moore. Mục này giới thiệu automat hữu hạn không tất định (NFA) và chứng minh tương đương NFA–DFA — mọi ngôn…"
 ---
 
-Hãy tưởng tượng bạn cần thiết kế một máy nhận diện các chuỗi trên $$\{0, 1\}$$ **kết thúc bằng `01`**. Với DFA, bạn phải cẩn thận ghi nhớ "mình vừa đọc gì" bằng các trạng thái: chưa thấy gì, vừa thấy `0`, vừa thấy `01`. Nếu yêu cầu phức tạp hơn - "chứa **một trong các mẫu** `01`, `100`, `1110`" - DFA sẽ phình ra rất nhanh. Thay vào đó, nếu cho phép máy "đoán" mẫu nào sẽ xuất hiện và "chạy nhiều khả năng song song", ta được một mô hình gọn hơn nhiều: **automat hữu hạn không tất định** (Nondeterministic Finite Automaton, NFA).
-
-NFA nghe có vẻ "mạnh hơn" DFA vì nó có khả năng đoán đúng - nhưng một định lý đẹp khẳng định rằng **NFA và DFA tương đương về sức biểu đạt**: cùng nhận diện đúng lớp ngôn ngữ chính quy. Cái giá là số trạng thái: chuyển từ NFA sang DFA có thể làm số trạng thái tăng theo cấp số mũ. Bài này sẽ trình bày định nghĩa NFA, thuật toán **xây dựng tập con** (subset construction) chuyển NFA về DFA, và hệ quả thực tế trong cài đặt biểu thức chính quy.
+Ở mục trước chúng ta đã nghiên cứu máy Mealy và Moore. Mục này giới thiệu **automat hữu hạn không tất định** (NFA) và chứng minh **tương đương NFA–DFA** — mọi ngôn ngữ chấp nhận bởi NFA đều có DFA tương đương, dù NFA thường gọn hơn khi thiết kế.
 
 ![Ví dụ NFA](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
-*Hình 18.11: NFA cho phép nhiều chuyển trên cùng ký hiệu và chuyển $\varepsilon$ — không tất định.*
-
+<p class="textbook-figure-caption" data-figure="18.11">NFA cho phép nhiều chuyển trên cùng ký hiệu và chuyển $\varepsilon$ — không tất định.</p>
 ![Ví dụ DFA](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
-*Hình 18.12: DFA: mỗi $(q,a)$ có đúng một trạng thái kế — dễ mô phỏng và hiện thực.*
-
+<p class="textbook-figure-caption" data-figure="18.12">DFA: mỗi $(q,a)$ có đúng một trạng thái kế — dễ mô phỏng và hiện thực.</p>
 ![Tương đương NFA và DFA](/discrete-mathematics-for-computer-science-iuh/img/course/Finite_state_machine_example_with_comments.svg)
 
-*Hình 18.13: Mọi NFA có DFA tương đương — xây bằng tập lũy thừa trạng thái (subset construction).*
+<p class="textbook-figure-caption" data-figure="18.13">Mọi NFA có DFA tương đương — xây bằng tập lũy thừa trạng thái (subset construction).</p>
+![Xây dựng DFA từ NFA](/discrete-mathematics-for-computer-science-iuh/img/course/state_transition.svg)
 
-![Xây dựng DFA từ NFA](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
-
-*Hình 18.14: Subset construction: mỗi trạng thái DFA là tập con trạng thái NFA.*
-
+<p class="textbook-figure-caption" data-figure="18.14">Subset construction: mỗi trạng thái DFA là tập con trạng thái NFA.</p>
 ![Ngôn ngữ chính quy](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_a_Turing_machine.svg)
 
-*Hình 18.15: NFA và DFA nhận diện cùng lớp ngôn ngữ chính quy (regular languages).*
-
+<p class="textbook-figure-caption" data-figure="18.15">NFA và DFA nhận diện cùng lớp ngôn ngữ chính quy (regular languages).</p>
 ## Mục tiêu học tập
 
-Sau khi hoàn thành bài này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau khi hoàn thành bài này, sinh viên có thể:
 
 - **Định nghĩa** hình thức NFA và $$\varepsilon$$-NFA.
 - **Vẽ** NFA cho một ngôn ngữ chính quy đơn giản, ngắn hơn DFA tương ứng.
@@ -46,10 +43,14 @@ Sau khi hoàn thành bài này, sinh viên có thể:
 
 ## 1. NFA: Định nghĩa hình thức
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một **automat hữu hạn không tất định** (NFA) là một bộ năm $$N = (Q, \Sigma, \delta, q_0, F)$$ với mọi thành phần như DFA, **trừ** hàm chuyển trạng thái:
+</div>
 
+<div class="textbook-equation" markdown="1">
 $$\delta: Q \times \Sigma \to \mathcal{P}(Q)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 trong đó $$\mathcal{P}(Q)$$ là tập lũy thừa (power set) của $$Q$$. Tức là $$\delta(q, a)$$ là một **tập con** của $$Q$$, có thể rỗng, có thể chứa nhiều phần tử.
 
 ### Hai đặc tính của NFA so với DFA
@@ -59,9 +60,9 @@ trong đó $$\mathcal{P}(Q)$$ là tập lũy thừa (power set) của $$Q$$. T�
 
 ### Quy tắc chấp nhận
 
-NFA chấp nhận chuỗi $$w$$ khi **tồn tại ít nhất một** đường chạy từ $$q_0$$, đọc hết $$w$$, và kết thúc ở một trạng thái thuộc $$F$$. Ta hình dung NFA "chạy song song" tất cả các khả năng và chấp nhận nếu có một nhánh nào đó đến đích.
+NFA chấp nhận chuỗi $$w$$ khi **tồn tại ít nhất một** đường chạy từ $$q_0$$, đọc hết $$w$$, và kết thúc ở một trạng thái thuộc $$F$$. Chúng ta hình dung NFA "chạy song song" tất cả các khả năng và chấp nhận nếu có một nhánh nào đó đến đích.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 1**: NFA trên $$\{0, 1\}$$ nhận diện các chuỗi **kết thúc bằng `01`**.
 
 - $$Q = \{q_0, q_1, q_2\}$$.
@@ -80,18 +81,24 @@ NFA này chỉ có 3 trạng thái; DFA tương ứng cần 3 trạng thái cũn
 
 ## 2. $$\varepsilon$$-NFA: Cho phép chuyển dịch tự do
 
-Đôi khi ta muốn máy chuyển trạng thái mà **không đọc ký hiệu nào**. Ta định nghĩa **$$\varepsilon$$-NFA** với hàm chuyển mở rộng:
+Đôi khi chúng ta muốn máy chuyển trạng thái mà **không đọc ký hiệu nào**. Chúng ta định nghĩa **$$\varepsilon$$-NFA** với hàm chuyển mở rộng:
 
+<div class="textbook-equation" markdown="1">
 $$\delta: Q \times (\Sigma \cup \{\varepsilon\}) \to \mathcal{P}(Q)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 trong đó $$\varepsilon$$ là chuỗi rỗng. Chuyển $$\varepsilon$$ giúp viết NFA gọn hơn nhiều khi ghép các phần.
 
 ### Đóng epsilon
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: **Đóng epsilon** (epsilon-closure) của một trạng thái $$q$$, ký hiệu $$E(q)$$, là tập tất cả các trạng thái có thể đến được từ $$q$$ chỉ bằng các chuyển $$\varepsilon$$. Hình thức:
+</div>
 
+<div class="textbook-equation" markdown="1">
 $$E(q) = \{q\} \cup \bigcup_{p \in \delta(q, \varepsilon)} E(p)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Mở rộng ra tập: $$E(S) = \bigcup_{q \in S} E(q)$$.
 
 ## 3. Thuật toán xây dựng tập con (Subset Construction)
@@ -114,7 +121,7 @@ Mở rộng ra tập: $$E(S) = \bigcup_{q \in S} E(q)$$.
 3. Với mỗi $$a \in \Sigma$$, tính $$T = \delta_D(S, a)$$. Nếu $$T$$ chưa có trong $$Q_D$$, thêm vào và đẩy vào hàng đợi.
 4. Lặp đến khi hàng đợi rỗng.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 2**: Chuyển NFA Ví dụ 1 về DFA.
 
 Bắt đầu $$\{q_0\}$$:
@@ -142,7 +149,7 @@ Không có tập mới. DFA có 3 trạng thái: $$\{q_0\}, \{q_0, q_1\}, \{q_0,
 
 Trong trường hợp xấu nhất, một NFA $$n$$ trạng thái có thể cần DFA $$2^n$$ trạng thái.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 3 (Bùng nổ)**: Ngôn ngữ $$L_n$$ trên $$\{0, 1\}$$ gồm các chuỗi mà **ký tự thứ $$n$$ từ cuối là `1`**.
 
 - NFA cho $$L_n$$ chỉ cần $$n + 1$$ trạng thái: đoán "đây là ký tự thứ $$n$$ từ cuối" và đếm xuống.
@@ -151,7 +158,7 @@ Trong trường hợp xấu nhất, một NFA $$n$$ trạng thái có thể cầ
 Đây là ví dụ cổ điển cho thấy NFA gọn hơn DFA theo cấp số mũ.
 </div>
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Hệ quả thực tiễn**: trình khớp regex thường chọn giữa **mô phỏng NFA trực tiếp** (chậm hơn theo độ dài chuỗi nhưng không cần dựng DFA lớn) và **dựng DFA trước** (nhanh khi khớp nhưng có thể tốn bộ nhớ khổng lồ). Đây là một sự đánh đổi không gian - thời gian kinh điển trong cài đặt lý thuyết ngôn ngữ chính quy.
 </div>
 
@@ -185,7 +192,7 @@ DFA hữu ích khi:
 5. Viết NFA và DFA cùng nhận diện ngôn ngữ "chứa `01` hoặc kết thúc bằng `10`". So sánh độ phức tạp.
 6. Cài đặt subset construction bằng giả mã.
 
-<div class="content-box note-box" markdown="1">
+<div class="content-box note-box textbook-block" markdown="1">
 **Tài liệu tham khảo**
 
 - Rosen, K. H. (2019). *Discrete Mathematics and Its Applications*, 8th ed. Section 13.3.
@@ -193,3 +200,18 @@ DFA hữu ích khi:
 - Hopcroft, J., Motwani, R., & Ullman, J. (2007). *Introduction to Automata Theory*, 3rd ed. Chapter 2.
 - Rabin, M. O., & Scott, D. (1959). "Finite automata and their decision problems." *IBM Journal of Research and Development*, 3(2), 114-125. (bài báo gốc về tương đương NFA-DFA)
 </div>
+
+---
+
+## Xem thêm / Video gợi ý
+
+- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (Truth table proof + laws)
+- [Discrete Math Full Course — Logic & Proofs](https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKZS) — Trefor Bazett (Complete semester playlist)
+
+## Tóm tắt
+
+- **NFA** cho phép $$\delta(q, a)$$ trả về một **tập** trạng thái; chấp nhận nếu **tồn tại** đường chạy đến trạng thái chấp nhận.
+- **$$\varepsilon$$-NFA** cho phép chuyển dịch không cần đọc ký hiệu.
+- **Subset construction** chuyển NFA về DFA: trạng thái DFA = tập con của trạng thái NFA.
+- **NFA và DFA tương đương về sức biểu đạt** (cùng lớp ngôn ngữ chính quy), nhưng có thể chênh nhau theo cấp số mũ về số trạng thái.
+

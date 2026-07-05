@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Phân cấp Chomsky"
 categories: chapter19
@@ -6,41 +7,38 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã định nghĩa bảng chữ cái, chuỗi và ngôn ngữ hình thức. Mục này trình bày phân cấp Chomsky — hệ thống phân loại ngôn ngữ và grammar theo…"
 ---
 
-Năm 1956, **Noam Chomsky** - khi đó là một nhà ngôn ngữ học trẻ tại MIT - công bố bài báo "Three Models for the Description of Language". Mục đích của Chomsky là phân tích **ngôn ngữ tự nhiên** (tiếng Anh, tiếng Việt), nhưng phát hiện của ông lại định hình toàn bộ khoa học máy tính: ngôn ngữ có thể được phân loại theo **độ phức tạp của quy tắc tạo ra chúng**, và mỗi cấp ứng với một loại máy nhận khác nhau.
-
-Hệ phân cấp này - gọi là **phân cấp Chomsky** (Chomsky hierarchy) - giải thích vì sao **regex** không đủ mạnh để parse HTML, vì sao trình biên dịch C cần **parser** mạnh hơn lexer, và vì sao tồn tại bài toán mà **không máy tính nào** giải được trong thời gian hữu hạn. Bài học này khảo sát chi tiết bốn cấp đó.
+Ở mục trước chúng ta đã định nghĩa bảng chữ cái, chuỗi và ngôn ngữ hình thức. Mục này trình bày **phân cấp Chomsky** — hệ thống phân loại ngôn ngữ và grammar theo sức mạnh biểu đạt, từ ngôn ngữ chính quy đến ngôn ngữ phụ thuộc ngữ cảnh và không giới hạn ngữ cảnh.
 
 ![Phân cấp Chomsky](/discrete-mathematics-for-computer-science-iuh/img/course/Chomsky_hierarchy.svg)
 
-*Hình 19.6: Bốn loại grammar: Type-0 (không ràng buộc) đến Type-3 (chính quy).*
-
+<p class="textbook-figure-caption" data-figure="19.6">Bốn loại grammar: Type-0 (không ràng buộc) đến Type-3 (chính quy).</p>
 ![Type-3: Regular](/discrete-mathematics-for-computer-science-iuh/img/course/Formal_languages.svg)
 
-*Hình 19.7: Regular grammar ↔ DFA/NFA ↔ regex — dùng trong lexical analysis.*
-
+<p class="textbook-figure-caption" data-figure="19.7">Regular grammar ↔ DFA/NFA ↔ regex — dùng trong lexical analysis.</p>
 ![Type-2: Context-free](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
-*Hình 19.8: Context-free grammar — parse cú pháp ngôn ngữ lập trình (CFG, BNF).*
-
+<p class="textbook-figure-caption" data-figure="19.8">Context-free grammar — parse cú pháp ngôn ngữ lập trình (CFG, BNF).</p>
 ![Type-1: Context-sensitive](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
-*Hình 19.9: Context-sensitive grammar — ràng buộc phụ thuộc ngữ cảnh khi sinh chuỗi.*
-
+<p class="textbook-figure-caption" data-figure="19.9">Context-sensitive grammar — ràng buộc phụ thuộc ngữ cảnh khi sinh chuỗi.</p>
 ![Type-0: Recursively enumerable](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_a_Turing_machine.svg)
 
-*Hình 19.10: Type-0 tương đương máy Turing — lớp mạnh nhất trong phân cấp Chomsky.*
-
+<p class="textbook-figure-caption" data-figure="19.10">Type-0 tương đương máy Turing — lớp mạnh nhất trong phân cấp Chomsky.</p>
 ## Mục tiêu học tập
 
-- Hiểu định nghĩa văn phạm (grammar) và cách sinh chuỗi.
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** - Hiểu định nghĩa văn phạm (grammar) và cách sinh chuỗi.
 - Phân biệt 4 loại văn phạm theo phân cấp Chomsky.
 - Nhận diện ngôn ngữ thuộc lớp nào dựa vào dạng quy tắc sinh.
 - Hiểu mối liên hệ giữa văn phạm và máy nhận.
 - Áp dụng phân cấp để chọn công cụ phù hợp (regex, parser, máy Turing).
 
 **Từ khóa**: grammar, production, derivation, regular grammar, context-free grammar, context-sensitive grammar, unrestricted grammar.
+</div>
 
 ## 1. Văn phạm: Hệ thống quy tắc sinh
 
@@ -53,35 +51,43 @@ Một **văn phạm** (grammar) là bộ tứ $$G = (V, T, S, P)$$ trong đó:
 - $$S \in V$$: **ký hiệu xuất phát** (start symbol).
 - $$P$$: tập hữu hạn **luật sinh** (production rule), mỗi luật có dạng $$\alpha \to \beta$$ với $$\alpha, \beta \in (V \cup T)^*$$ và $$\alpha$$ chứa ít nhất một biến.
 
-**Trực giác**: Văn phạm là "máy viết câu". Bắt đầu từ $$S$$, mỗi bước thay một chuỗi con khớp vế trái của một luật bằng vế phải. Khi chỉ còn ký hiệu tận cùng, ta được một chuỗi của ngôn ngữ.
+**Trực giác**: Văn phạm là "máy viết câu". Bắt đầu từ $$S$$, mỗi bước thay một chuỗi con khớp vế trái của một luật bằng vế phải. Khi chỉ còn ký hiệu tận cùng, chúng ta được một chuỗi của ngôn ngữ.
 
 ### Phép sinh (derivation)
 
-Cho văn phạm $$G$$ và luật $$\alpha \to \beta$$. Ta viết:
+Cho văn phạm $$G$$ và luật $$\alpha \to \beta$$. Chúng ta viết:
 
+<div class="textbook-equation" markdown="1">
 $$u \alpha v \Rightarrow u \beta v$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 (đọc: $$u \alpha v$$ sinh ra $$u \beta v$$ trong một bước). Ký hiệu $$\Rightarrow^*$$ là **phép sinh không hoặc nhiều bước** (bao đóng phản xạ-bắc cầu).
 
 **Ngôn ngữ sinh bởi văn phạm**:
 
+<div class="textbook-equation" markdown="1">
 $$L(G) = \{w \in T^* : S \Rightarrow^* w\}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 tức tập tất cả chuỗi ký hiệu tận cùng sinh được từ $$S$$.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ: Văn phạm sinh $$\{a^n b^n : n \geq 0\}$$**
 
 $$G = (\{S\}, \{a, b\}, S, P)$$ với $$P$$ gồm:
 
+<div class="textbook-equation" markdown="1">
 $$S \to aSb \mid \epsilon$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 (ký hiệu $$\mid$$ ngăn cách các luật cùng vế trái).
 
 **Sinh chuỗi $$aabb$$**:
 
+<div class="textbook-equation" markdown="1">
 $$S \Rightarrow aSb \Rightarrow aaSbb \Rightarrow aabb$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Ngôn ngữ sinh: $$L(G) = \{\epsilon, ab, aabb, aaabbb, \ldots\} = \{a^n b^n : n \geq 0\}$$.
 </div>
 
@@ -98,7 +104,7 @@ Chomsky phân loại văn phạm theo **dạng cho phép của vế trái và v�
 
 Mỗi cấp **bị bao hàm bởi cấp số nhỏ hơn**: cấp 3 ⊂ cấp 2 ⊂ cấp 1 ⊂ cấp 0.
 
-<div class="content-box info-box" markdown="1">
+<div class="content-box info-box textbook-block" markdown="1">
 **Ngữ pháp nhạy ngữ cảnh: tại sao tên gọi?**
 
 Luật cấp 1 nhìn chung có dạng $$\alpha A \gamma \to \alpha \beta \gamma$$ với $$\beta \neq \epsilon$$. Nghĩa là biến $$A$$ được thay bằng $$\beta$$ **chỉ khi đứng trong ngữ cảnh** $$\alpha \cdots \gamma$$. Phép thay phụ thuộc ngữ cảnh, đối lập với cấp 2 (phi ngữ cảnh) - nơi luật $$A \to \beta$$ áp dụng được **bất kể** xung quanh $$A$$ là gì.
@@ -116,20 +122,27 @@ Một **văn phạm chính quy** (regular grammar, RG) là văn phạm với t�
 
 Đây là **văn phạm chính quy phải** (right-linear). Có dạng đối ngẫu là **văn phạm chính quy trái** (left-linear) - cũng cho cùng lớp ngôn ngữ.
 
-### Ví dụ
+<div class="textbook-example" markdown="1">
+**Ví dụ**:
 
 Văn phạm cho ngôn ngữ "chuỗi nhị phân kết thúc bằng $$01$$":
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{aligned}
 S &\to 0S \mid 1S \mid 0A \\
 A &\to 1
 \end{aligned}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Sinh chuỗi $$10101$$:
 
+<div class="textbook-equation" markdown="1">
 $$S \Rightarrow 1S \Rightarrow 10S \Rightarrow 101S \Rightarrow 1010A \Rightarrow 10101$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+</div>
 
 ### Định lý (Kleene): Tương đương với DFA/NFA và Regex
 
@@ -154,20 +167,31 @@ Ba lớp sau **bằng nhau**:
 
 Một **văn phạm phi ngữ cảnh** (context-free grammar, CFG) có mọi luật dạng:
 
+<div class="textbook-equation" markdown="1">
 $$A \to \beta \quad (A \in V, \; \beta \in (V \cup T)^*)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Vế trái **chỉ là một biến đơn lẻ**, vế phải là chuỗi bất kỳ. "Phi ngữ cảnh" vì việc thay $$A$$ bằng $$\beta$$ không phụ thuộc ký hiệu xung quanh $$A$$.
 
-### Ví dụ 1: Cặp ngoặc cân bằng
+<div class="textbook-example" markdown="1">
+**Ví dụ** 1: Cặp ngoặc cân bằng:
 
+<div class="textbook-equation" markdown="1">
 $$S \to (S) \mid SS \mid \epsilon$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Sinh $$(())()$$:
 
+<div class="textbook-equation" markdown="1">
 $$S \Rightarrow SS \Rightarrow (S)S \Rightarrow ((S))S \Rightarrow (())S \Rightarrow (())(S) \Rightarrow (())()$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+</div>
 
-### Ví dụ 2: Biểu thức số học
+<div class="textbook-example" markdown="1">
+**Ví dụ** 2: Biểu thức số học:
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{aligned}
 E &\to E + T \mid T \\
@@ -175,8 +199,10 @@ T &\to T * F \mid F \\
 F &\to ( E ) \mid \text{num}
 \end{aligned}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Văn phạm này sinh tất cả biểu thức cộng/nhân hợp lệ.
+</div>
 
 ### Định lý: Tương đương với PDA
 
@@ -200,10 +226,12 @@ Một **văn phạm nhạy ngữ cảnh** (context-sensitive grammar, CSG) có m
 
 Tương đương dạng "có ngữ cảnh": $$\alpha_1 A \alpha_2 \to \alpha_1 \beta \alpha_2$$ với $$\beta \neq \epsilon$$.
 
-### Ví dụ: $$\{a^n b^n c^n : n \geq 1\}$$
+<div class="textbook-example" markdown="1">
+**Ví dụ**: $$\{a^n b^n c^n : n \geq 1\}$$:
 
 Đây là ngôn ngữ **không phi ngữ cảnh** (chứng minh bằng pumping lemma cho CFL), nhưng **nhạy ngữ cảnh**:
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{aligned}
 S &\to aSBC \mid aBC \\
@@ -214,8 +242,10 @@ bC &\to bc \\
 cC &\to cc
 \end{aligned}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Sinh chuỗi $$aabbcc$$ là bài tập (gợi ý: $$S \Rightarrow aSBC \Rightarrow aaBCBC \Rightarrow \ldots$$).
+</div>
 
 ### Định lý: Tương đương với LBA
 
@@ -249,7 +279,7 @@ Cụ thể: $$L \in \text{RE}$$ khi và chỉ khi có máy Turing $$M$$ sao cho 
 
 **Tồn tại** $$L \in \text{RE} \setminus \text{Recursive}$$: ví dụ kinh điển là **bài toán dừng** (halting problem - Bài 20.4). Đây là ranh giới sâu sắc nhất trong lý thuyết tính toán.
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Lưu ý quan trọng**
 
 Phân cấp Chomsky **không bao gồm** mọi ngôn ngữ. Có ngôn ngữ thậm chí không thuộc cấp 0 (không đệ quy đếm được). Ví dụ: bù của bài toán dừng. Đó là ngôn ngữ tồn tại (theo tập hợp) nhưng không máy tính nào liệt kê hết được.
@@ -257,8 +287,10 @@ Phân cấp Chomsky **không bao gồm** mọi ngôn ngữ. Có ngôn ngữ th�
 
 ## 7. Quan hệ bao hàm thực sự
 
+<div class="textbook-equation" markdown="1">
 $$\text{Reg} \subsetneq \text{CFL} \subsetneq \text{CSL} \subsetneq \text{RE}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Mỗi bao hàm là **thật sự** (proper) - tức tồn tại ngôn ngữ ở cấp lớn hơn nhưng không ở cấp nhỏ hơn:
 
 | Ngôn ngữ | Thuộc | Không thuộc |
@@ -291,7 +323,7 @@ Dùng **bổ đề bơm cho ngôn ngữ phi ngữ cảnh**: ý tưởng tương 
 | Bài toán thuộc về | $$O(n)$$ | $$O(n^3)$$ (CYK) | $$\text{PSPACE}$$ | Không quyết định được |
 | Bài toán rỗng $$L = \emptyset$$? | Quyết định được | Quyết định được | Không quyết định được | Không quyết định được |
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Mẹo nhận diện cấp**
 
 - Cần **đếm** (như $$a^n b^n$$)? → cần ít nhất CFL.
@@ -302,7 +334,7 @@ Dùng **bổ đề bơm cho ngôn ngữ phi ngữ cảnh**: ý tưởng tương 
 
 ## 9. Chọn công cụ theo phân cấp
 
-Phân cấp Chomsky cho ta **luật chọn công cụ**:
+Phân cấp Chomsky cho chúng ta **luật chọn công cụ**:
 
 | Tác vụ | Cấp cần thiết | Công cụ thực tế |
 |---|:---:|---|
@@ -314,7 +346,7 @@ Phân cấp Chomsky cho ta **luật chọn công cụ**:
 | Kiểm tra kiểu (type check) | CSL gần như | trình biên dịch riêng |
 | Kiểm tra chương trình dừng | Ngoài RE | Không tồn tại! (Bài 20.4) |
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Sai lầm phổ biến**
 
 Cố gắng parse HTML bằng regex là chuyện kinh điển - HTML có cấu trúc lồng nhau (`<div><div>...</div></div>`), tức cần **CFL**, không Reg. Bài đăng nổi tiếng trên Stack Overflow: ["You can't parse [X]HTML with regex"](https://stackoverflow.com/a/1732454/1736192) đã trở thành huyền thoại.
@@ -359,7 +391,7 @@ Cố gắng parse HTML bằng regex là chuyện kinh điển - HTML có cấu t
 
 **Bài 10.** Tìm một ngôn ngữ $$L$$ sao cho cả $$L$$ và $$\overline{L}$$ đều thuộc RE. Chứng minh khi đó $$L$$ thuộc Recursive.
 
-<div class="content-box note-box" markdown="1">
+<div class="content-box note-box textbook-block" markdown="1">
 **Tài liệu tham khảo**
 
 - Noam Chomsky, "Three Models for the Description of Language", *IRE Transactions on Information Theory* (1956) - bài báo khởi đầu.
@@ -367,3 +399,19 @@ Cố gắng parse HTML bằng regex là chuyện kinh điển - HTML có cấu t
 - Michael Sipser, *Introduction to the Theory of Computation*, 3e, Chương 2-5.
 - John Hopcroft, Rajeev Motwani, Jeffrey Ullman, *Introduction to Automata Theory*, 3e, Chương 5-9.
 </div>
+
+---
+
+## Xem thêm / Video gợi ý
+
+- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (Truth table proof + laws)
+- [Discrete Math Full Course — Logic & Proofs](https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKZS) — Trefor Bazett (Complete semester playlist)
+
+## Tóm tắt
+
+- **Văn phạm** $$G = (V, T, S, P)$$ sinh ngôn ngữ $$L(G)$$ bằng cách áp dụng luật sinh từ $$S$$.
+- **Phân cấp Chomsky** sắp xếp 4 lớp văn phạm theo độ phức tạp luật: chính quy, phi ngữ cảnh, nhạy ngữ cảnh, không hạn chế.
+- Bao hàm thực sự: $$\text{Reg} \subsetneq \text{CFL} \subsetneq \text{CSL} \subsetneq \text{RE}$$.
+- Mỗi cấp ứng với một loại máy nhận với khả năng bộ nhớ khác nhau.
+- Phân cấp là kim chỉ nam **chọn công cụ**: regex cho lexer, parser CFG cho cú pháp.
+

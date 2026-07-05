@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Unicode và encoding"
 categories: chapter09
@@ -6,9 +7,10 @@ date: 2021-01-01
 order: 1
 required: false
 lang: en
+excerpt: "Ở mục trước chúng ta đã thấy mọi dữ liệu trong RAM cuối cùng là bit và byte; chương trình mới quyết định đọc chúng là số, ảnh hay chữ. Mục này đi sâu vào…"
 ---
 
-Bài trước đã nói: mọi thứ trong RAM cuối cùng là **bit** và **byte** — chương trình mới quyết định đọc chúng là số, ảnh hay chữ. Bài này đi sâu vào trường hợp **chữ**: không có byte nào tự ghi nhãn “tôi là ký tự Unicode”.
+Ở mục trước chúng ta đã thấy mọi dữ liệu trong RAM cuối cùng là **bit** và **byte**; chương trình mới quyết định đọc chúng là số, ảnh hay chữ. Mục này đi sâu vào trường hợp **văn bản**: không có byte nào tự mang nhãn “tôi là ký tự Unicode”. Chúng ta phân tách hai lớp — **Unicode** (ký tự là số nào) và **encoding** (số đó ghi thành byte nào) — vì nhầm lẫn giữa hai lớp là nguồn gốc của mojibake trong hệ thống thực tế.
 
 Tuần đầu tiên làm backend cho **TaskFlow**, Minh deploy feature hiển thị tên khách hàng lên dashboard staging. API trả JSON đúng schema, test pass, QA gật đầu. Chiều thứ Sáu, product owner gửi screenshot vào Slack:
 
@@ -16,9 +18,9 @@ Tuần đầu tiên làm backend cho **TaskFlow**, Minh deploy feature hiển th
 
 Không ai sửa database. Không ai hack. Minh mở `psql`, `SELECT name FROM customers WHERE id = 42` — vẫn `Nguyễn Thị Lan`. Bug không nằm trong bảng; nó nằm giữa Postgres, driver JDBC, serializer JSON, và trình duyệt. Tuần trước anh gọi đoạn đó là “chỉ trả string ra frontend thôi mà”.
 
-Để sửa, anh phải tách hai khái niệm mà người mới hay gộp chung: **Unicode** (chữ là số nào) và **encoding** (số đó ghi thành byte nào). Bài này đi sâu vào hai khái niệm đó — không để thi lịch sử OEM, mà để hiểu vì sao bug im lặng, và vì sao sáu tháng sau channel `#incidents` của TaskFlow lại nhận thêm ticket email tiếng Nhật toàn dấu `????`.
+Để sửa, kỹ sư phải tách hai khái niệm mà người mới hay gộp chung: **Unicode** (chữ là số nào) và **encoding** (số đó ghi thành byte nào). Mục này đi sâu vào hai khái niệm đó — không nhằm khảo sát lịch sử OEM, mà để hiểu vì sao lỗi encoding thường im lặng và vì sao email tiếng Nhật có thể hiển thị toàn dấu `????` khi thiếu khai báo charset.
 
-Toàn bộ pipeline từ chữ bạn đọc được xuống byte trên disk — và ngược lại khi decode — có thể gói trong một sơ đồ:
+Toàn bộ pipeline từ chữ chúng ta đọc được xuống byte trên disk — và ngược lại khi decode — có thể gói trong một sơ đồ:
 
 <figure class="image" style="align: center;">
 <p align="center">
@@ -59,7 +61,7 @@ Chữ `ễ` ở đây là **một** code point dạng **tổ hợp sẵn** (prec
 
 Unicode còn tổ chức code point theo **plane**: Plane 0 (BMP, `U+0000`–`U+FFFF`) chứa hầu hết chữ dùng hàng ngày; plane bổ sung chứa emoji và chữ cổ. Code point trên `U+FFFF` (ví dụ `U+1F389`) không nằm gọn trong một “ô” 16-bit — điều này ảnh hưởng trực tiếp tới **UTF-16** (bài sau nói thêm về surrogate pair và endianness).
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 Trong toán rời rạc, tập code point Unicode (lý tưởng hóa) là domain; **encoding** là hàm $$f$$ ánh xạ chuỗi code point sang dãy byte. Hiển thị đúng là tìm được $$f$$ mà cả hai đầu pipeline cùng dùng — encode rồi decode là hàm ngược, không phải “đọc chữ có sẵn trong byte”.
 </div>
 
@@ -75,14 +77,12 @@ Thập niên 1970, **ASCII** chuẩn hóa 128 ký tự đầu (giá trị 0–12
 
 ![Bảng ASCII — Joel on Software](/discrete-mathematics-for-computer-science-iuh/img/course/joel_ascii.png)
 
-*Hình 9.1: ASCII — ký tự tiếng Anh không dấu, một byte 0–127 (Joel on Software).*
-
+<p class="textbook-figure-caption" data-figure="9.1">ASCII — ký tự tiếng Anh không dấu, một byte 0–127 (Joel on Software).</p>
 Chữ `ă`, `ê`, `ố` **không có** trong ASCII. Byte 8 bit có 256 giá trị; ASCII chỉ “cắm cờ” 0–127. Vùng 128–255: **mỗi locale một bảng** (code page, OEM, Windows-1252, ISO-8859-1…). Joel kể email **résumé**: byte `0xE9` trên máy Mỹ là `é`, trên máy Israel có thể đọc thành chữ Hebrew — **cùng byte, khác chữ**, vì không có metadata nói đang dùng bảng nào.
 
 ![OEM character set — Joel on Software](/discrete-mathematics-for-computer-science-iuh/img/course/joel_oem.png)
 
-*Hình 9.2: Byte 128–255 — mỗi locale một bảng (Joel on Software).*
-
+<p class="textbook-figure-caption" data-figure="9.2">Byte 128–255 — mỗi locale một bảng (Joel on Software).</p>
 Unicode ra đời để **một** danh bạ cho mọi ngôn ngữ. Nhưng danh bạ thống nhất chưa giải quyết xong chuyện lưu trữ: vẫn cần chọn **cách ghi số `U+xxxx` thành byte** — và đó là lúc UTF-8, UTF-16, Latin-1 cạnh tranh.
 
 ### UTF-8: biến độ dài, ASCII-compatible
@@ -108,8 +108,7 @@ Phần lớn web, API, JSON, Git, Linux, PostgreSQL hiện đại mặc định 
 
 ![Cách UTF-8 hoạt động — Joel on Software](/discrete-mathematics-for-computer-science-iuh/img/course/joel_utf8.png)
 
-*Hình 9.4: UTF-8 — ASCII gọn, ký tự quốc tế dài hơn (Joel on Software).*
-
+<p class="textbook-figure-caption" data-figure="9.4">UTF-8 — ASCII gọn, ký tự quốc tế dài hơn (Joel on Software).</p>
 ### UTF-16 và Java `String`
 
 **UTF-16** encode phần lớn BMP bằng **2 byte** mỗi code point (`H` → `00 48`), và dùng **surrogate pair** (4 byte) cho code point ngoài BMP. Trong JVM, kiểu `String` nội bộ là UTF-16 — đó là lý do “đã là Unicode trong RAM” ở Java **không** có nghĩa “đã là UTF-8 trên dây”. Khi JDBC đọc `VARCHAR` từ Postgres, driver phải **decode byte từ wire protocol** sang UTF-16 trong heap; khai báo charset sai ở đây là đủ phá tên tiếng Việt dù cột DB lưu đúng.
@@ -140,7 +139,7 @@ Một biến thể khác hay gặp: **double encoding** — chuỗi UTF-8 bị d
 
 Bug encoding hiếm khi ném exception có ý nghĩa. Thường chỉ thấy chữ lạ trên UI — giống Joel với email Nhật, giống TaskFlow với tên khách Việt.
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 Ký tự thay thế `U+FFFD` xuất hiện khi decoder UTF-8 gặp byte sequence **không hợp lệ** — thường là file bị cắt giữa chừng, hoặc byte Latin-1 bị ép qua UTF-8. Dấu `?` đôi khi là font thiếu glyph, đôi khi là codec thay ký tự không map được — cần xem hex dump, không đoán bằng mắt.
 </div>
 
@@ -159,7 +158,7 @@ Postgres và browser đồng ý UTF-8. JDBC là đoạn lệch — đủ để `
 
 Anh thêm `?characterEncoding=UTF-8` vào JDBC URL, redeploy. Tên hiển thị lại đúng. Product owner gửi emoji thumbs-up.
 
-Joel nhắc từ 2003: máy không đoán charset nếu bạn không nói. Trên thực tế, mỗi lớp có chỗ khai báo riêng — thiếu một lớp là đủ:
+Joel nhắc từ 2003: máy không đoán charset nếu chúng ta không nói. Trên thực tế, mỗi lớp có chỗ khai báo riêng — thiếu một lớp là đủ:
 
 HTTP response nên có `Content-Type: application/json; charset=utf-8`. HTML cần `<meta charset="UTF-8">`. Email multipart cần `Content-Type: text/plain; charset="UTF-8"` trên từng part — Joel sửa FogBUGZ vì thư viện bỏ qua đúng chỗ này. MySQL dùng `utf8mb4` (không phải `utf8` cũ chỉ 3 byte/chữ — đủ cắt emoji và một số ký tự CJK). PostgreSQL: `UTF8` trên cluster và client encoding khớp nhau.
 
@@ -173,4 +172,22 @@ Không có văn bản thuần. Chỉ có byte và quy ước.
 
 **Đọc thêm:** [Joel on Software — Unicode (2003)](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/) · [Unicode Standard — Character Encoding Forms](https://www.unicode.org/versions/Unicode15.0.0/ch03.pdf) · [Lịch sử UTF-8 — Ken Thompson](http://www.cl.cam.ac.uk/~mgk25/ucs/utf-8-history.txt)
 
-Bài sau: cùng code point `U+0048`, hai máy lưu byte **ngược thứ tự** — endianness, BOM, và vì sao log binary đọc timestamp sai năm.
+Trong bài tiếp theo, chúng ta xét cùng code point `U+0048` nhưng hai máy lưu byte **ngược thứ tự** — endianness, BOM, và vì sao log nhị phân đọc timestamp sai năm.
+
+---
+
+## Xem thêm / Video gợi ý
+
+- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (Truth table proof + laws)
+- [Discrete Math Full Course — Logic & Proofs](https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKZS) — Trefor Bazett (Complete semester playlist)
+
+
+## Tóm tắt
+
+- Trên máy tính không có “văn bản thuần” — chỉ có **byte** và **quy ước** encoding.
+- **Unicode** gán **code point** ($$U+xxxx$$) cho ký tự; **UTF-8** ghi code point thành 1–4 byte trên dây.
+- **Mojibake** xảy ra khi decode bằng bảng mã sai — dữ liệu gốc thường còn nguyên trong DB.
+- Pipeline phải thống nhất charset: HTTP header, JDBC, PostgreSQL, MIME email.
+- **Normalization** (NFC/NFD) quan trọng khi so sánh và lập chỉ mục chuỗi Unicode.
+
+Trong bài tiếp theo, chúng ta xét **endianness** — cùng code point hoặc số nguyên, hai máy có thể lưu byte theo thứ tự ngược nhau.

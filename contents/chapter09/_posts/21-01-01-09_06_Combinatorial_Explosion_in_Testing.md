@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Combinatorial explosion trong kiểm thử: Từ 324 xuống 15 test"
 categories: chapter09
@@ -6,11 +7,12 @@ date: 2021-01-01
 order: 6
 required: false
 lang: en
+excerpt: "Ở mục connection pool, chúng ta đã thấy nhầm lẫn giữa các đại lượng đếm (DAU, RPS, connection busy). Mục này gặp hiện tượng tương tự trong kiểm thử phần mềm:…"
 ---
 
-Trong standup thứ Tư, PM hỏi: *“Sao không test hết combination?”*
+Ở mục connection pool, chúng ta đã thấy nhầm lẫn giữa các đại lượng đếm (DAU, RPS, connection busy). Mục này gặp hiện tượng tương tự trong **kiểm thử phần mềm**: **combinatorial explosion** — khi nhân các tham số môi trường (browser × OS × device × …), số cấu hình exhaustive tăng theo **tích**, không theo tổng. Câu hỏi “sao không test hết combination?” thường xuất hiện khi PM chưa thấy con số $$N = \prod v_i$$.
 
-Hương, QA lead của team checkout, không giận — cô đã nghe câu đó ở mỗi sprint. Cô mở spreadsheet luồng **đăng ký / checkout** mà dev vừa ship: trình duyệt, hệ điều hành, loại user, thiết bị, trạng thái đăng nhập — năm tham số, mỗi tham số vài giá trị. Nhân lại theo quy tắc tích từ chương đếm, chỉ riêng **một flow** đã là **324 cấu hình**. Thêm payment gateway, locale, mạng chậm — con số nhảy lên **hàng nghìn**. Mỗi cấu hình mười bước kiểm tra thì sprint hai tuần không đủ cho cả regression suite khác.
+Hương, QA lead của team checkout, đã quen với câu hỏi đó ở mỗi sprint. Cô mở spreadsheet luồng **đăng ký / checkout** mà dev vừa ship: trình duyệt, hệ điều hành, loại user, thiết bị, trạng thái đăng nhập — năm tham số, mỗi tham số vài giá trị. Nhân lại theo quy tắc tích từ chương đếm, chỉ riêng **một flow** đã là **324 cấu hình**. Thêm payment gateway, locale, mạng chậm — con số nhảy lên **hàng nghìn**. Mỗi cấu hình mười bước kiểm tra thì sprint hai tuần không đủ cho cả regression suite khác.
 
 Đó là **combinatorial explosion** — không phải QA lười, mà **tổ hợp** lớn hơn thời gian con người. [testRigor](https://testrigor.com/blog/what-is-combinatorial-testing/) mô tả hiện tượng này trong kiểm thử phần mềm; [Optivem Journal](https://journal.optivem.com/p/combinatorial-explosion) (Valentina Jemuović) phân tích sâu hơn: explosion không chỉ ở UI mà còn ở unit test khi nhân tham số đầu vào. Giải pháp không phải “test ít đi” mà **pairwise (2-wise) testing** — đảm bảo **mọi cặp** giá trị từ hai tham số đều xuất hiện ít nhất một lần, thường chỉ cần **15–20** test thay vì 324.
 
@@ -39,14 +41,15 @@ Hương ghi lại năm tham số vào bảng để PM nhìn thấy con số, kh�
 
 Kiểm thử **exhaustive** (thử hết mọi bộ) phải chạy qua mọi tổ hợp. Với $$k$$ tham số, tham số thứ $$i$$ có $$v_i$$ giá trị, tổng số cấu hình là tích:
 
+<div class="textbook-equation" markdown="1">
 $$N = \prod_{i=1}^{5} v_i = 4 \cdot 3 \cdot 3 \cdot 3 \cdot 3 = 4 \times 3^4 = 324$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Bốn trình duyệt nhân với bốn lần “ba” — OS, user type, device, app state — không phải cộng. Mỗi tham số mới **nhân** thêm hệ số, không cộng thêm vài test. Đó là lý do PM tưởng “thêm một option nữa thôi mà” nhưng backlog QA phình gấp đôi, gấp ba.
 
 ![Combinatorial growth — Wikimedia](/discrete-mathematics-for-computer-science-iuh/img/course/Exponential.svg)
 
-*Hình 9.13: Quy tắc nhân — mỗi tham số mới nhân thêm hệ số, không cộng.*
-
+<p class="textbook-figure-caption" data-figure="9.13">Quy tắc nhân — mỗi tham số mới nhân thêm hệ số, không cộng.</p>
 Hương đã thấy hệ quả thực tế của 324 cấu hình: release chậm vì team chạy test redundant — cùng một bug được tìm lại ở Chrome/Windows và Chrome/macOS mà không tìm thêm gì mới. Ngược lại, bug chỉ khi **Chrome + Linux + Guest + Mobile + Error** xảy ra **cùng lúc** dễ bị bỏ sót nếu test ngẫu nhiên không có chiến lược. 324 test, mỗi test năm phút, đã là **27 giờ** — chưa kể suite regression khác đang chờ cùng sprint.
 
 ---
@@ -94,7 +97,7 @@ pict model.txt > tests.txt
 
 Mỗi dòng trong `tests.txt` là một bộ cấu hình; pytest `parametrize`, testRigor, hoặc framework tương đương đọc file đó và chạy cùng một kịch bản với input khác nhau. Explosion bị **đếm** trước khi chạy — PM thấy 15 dòng thay vì 324, dev thấy model.txt dễ review hơn spreadsheet.
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 Pairwise **không** cover mọi 3-tuple. Bug chỉ khi **Chrome + Linux + cổng thanh toán X** cùng lúc cần **3-wise** (hoặc test targeted cho combo biết trước là rủi ro). Pairwise là công cụ **giảm tổ hợp có chủ đích**, không thay exhaustive khi compliance hoặc hợp đồng bắt buộc test 100% cấu hình.
 </div>
 
@@ -119,8 +122,10 @@ Một form đăng ký có 3 trình duyệt, 2 hệ điều hành, 4 loại user,
 <details>
 <summary>Đáp án</summary>
 
+<div class="textbook-equation" markdown="1">
 $$N = 3 \times 2 \times 4 \times 2 = 48 \text{ cấu hình}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Quy tắc nhân: mỗi tham số nhân thêm hệ số. Thêm một giá trị cho “loại user” (4 → 5) sẽ thành $$3 \times 2 \times 5 \times 2 = 60$$ — tăng 12 cấu hình, không chỉ thêm 1 test.
 
 </details>
@@ -149,8 +154,10 @@ Cho ba tham số: **Browser** $\in \{\text{Chrome, Firefox}\}$, **OS** $\in \{\t
 
 Exhaustive:
 
+<div class="textbook-equation" markdown="1">
 $$N = 2 \times 2 \times 2 = 8 \text{ cấu hình}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Pairwise phải cover mọi cặp giá trị giữa hai trong ba cột: (Browser, OS), (Browser, Device), (OS, Device). Một hàng test chứa **một** bộ (browser, OS, device) nhưng đồng thời “phục vụ” **ba** cặp — ví dụ hàng `(Chrome, Win, Desktop)` cover (Chrome, Win), (Chrome, Desktop), (Win, Desktop). Nhờ đó PICT có thể sinh **4** test cho model này thay vì 8.
 
 Với **chỉ hai** tham số (ví dụ Browser × OS = $$2 \times 3 = 6$$), mỗi hàng chỉ cover đúng **một** cặp — 2-wise trùng exhaustive, không tiết kiệm. Lợi ích pairwise rõ khi $$k \geq 3$$ tham số, như bài 324 cấu hình với năm tham số.
@@ -171,6 +178,12 @@ Theo Optivem Journal, vì sao test end-to-end dễ explosion còn test từng cl
 </details>
 
 ---
+
+
+## Xem thêm / Video gợi ý
+
+- [Permutations and Combinations](https://www.youtube.com/watch?v=1jZ5n8k0p0Q) — Khan Academy (Core counting)
+- [Pigeonhole Principle](https://www.youtube.com/watch?v=0jZ5n8k0p0Q) — Numberphile (Classic examples)
 
 ## Tóm tắt
 

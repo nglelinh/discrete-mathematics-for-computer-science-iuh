@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Tương đương Logic và Các Dạng Chuẩn tắc"
 categories: chapter01
@@ -6,29 +7,18 @@ date: 2021-01-01
 order: 4
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã dùng bảng chân trị để liệt kê và kiểm chứng mọi trường hợp của biểu thức logic. Mục này mở rộng sang tương đương logic và dạng chuẩn…"
 ---
 
-Cùng một ý logic có thể được viết theo rất nhiều cách khác nhau. Một lập trình viên thích điều kiện ngắn gọn, một database engine lại muốn biểu thức dễ tối ưu, còn SAT solver hay công cụ kiểm chứng hình thức lại cần công thức ở một dạng chuẩn để xử lý hàng triệu biến. Nhìn bề ngoài, các biểu thức này có thể khác nhau hoàn toàn — nhưng câu hỏi quan trọng là: **chúng có thật sự nói cùng một điều không?**
+Ở mục trước chúng ta đã dùng **bảng chân trị** để liệt kê và kiểm chứng mọi trường hợp của biểu thức logic. Mục này mở rộng sang **tương đương logic** và **dạng chuẩn tắc** — hai khái niệm cho phép biến đổi biểu thức mà không thay đổi ý nghĩa.
 
-Đây không chỉ là câu hỏi của toán học thuần túy. Trong khoa học máy tính, khả năng biến đổi biểu thức logic một cách an toàn có ảnh hưởng rất lớn đến thực tế:
+Cùng một ý logic có thể được viết theo nhiều cách khác nhau. Lập trình viên ưu tiên điều kiện ngắn gọn; engine cơ sở dữ liệu cần biểu thức dễ tối ưu; SAT solver và công cụ kiểm chứng hình thức yêu cầu công thức ở dạng chuẩn để xử lý hàng triệu biến. Câu hỏi trung tâm là: các biểu thức khác hình thức có **thật sự tương đương** không?
 
-- giúp rút gọn điều kiện để code dễ đọc hơn,
-- giúp tối ưu truy vấn và luật lọc trong hệ thống,
-- giúp chuẩn hóa công thức cho bộ giải SAT,
-- và giúp các công cụ kiểm chứng phần mềm xử lý bài toán hiệu quả hơn.
+Trong khoa học máy tính, khả năng biến đổi an toàn ảnh hưởng trực tiếp đến việc rút gọn điều kiện trong mã nguồn, tối ưu truy vấn, chuẩn hóa công thức cho bộ giải SAT, và hiệu quả của công cụ kiểm chứng. Một phép biến đổi đúng luật có thể làm chương trình dễ đọc hơn hoặc bộ giải chạy nhanh hơn; một bước sai có thể phá vỡ toàn bộ ý nghĩa logic. Mục này trình bày **tương đương logic** ($$P \equiv Q$$) và **dạng chuẩn tắc** (DNF, CNF), cùng các luật biến đổi cơ bản.
 
-Một phép biến đổi nhỏ trên biểu thức có thể làm chương trình dễ hiểu hơn, điều kiện gọn hơn, hoặc bộ giải chạy nhanh hơn rất nhiều. Nhưng điều đó chỉ đúng khi ta biến đổi **đúng luật**. Nếu suy luận cảm tính, chỉ cần đổi sai một bước là toàn bộ ý nghĩa logic của biểu thức có thể bị phá vỡ.
+### Minh họa: Hai biểu thức, một ý nghĩa
 
-Chính vì vậy, bài học này giới thiệu hai ý tưởng cực kỳ quan trọng:
-
-- **Tương đương logic**: hai biểu thức khác hình thức nhưng giống nhau về ý nghĩa trong mọi trường hợp.
-- **Dạng chuẩn tắc**: những cách viết chuẩn hóa giúp biểu thức trở nên dễ xử lý hơn đối với con người lẫn máy tính.
-
-Trong bài này, chúng ta sẽ học cách nhận ra khi nào hai công thức thực sự tương đương, cách áp dụng các luật biến đổi cơ bản, và cách đưa biểu thức về các dạng chuẩn quen thuộc như DNF và CNF — những dạng xuất hiện rất nhiều trong logic toán, trí tuệ nhân tạo và kiểm chứng hệ thống.
-
-### Minh họa trực quan: Hai biểu thức, một ý nghĩa
-
-Hãy quan sát hai đoạn code sau:
+Xét hai đoạn mã sau:
 
 ```python
 # Cách 1
@@ -44,20 +34,32 @@ Hai điều kiện này **hoàn toàn tương đương** về mặt logic, dù c
 
 ## Mục tiêu học tập
 
-Sau bài này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
 
-- Phát biểu chính xác khái niệm tương đương logic.
-- Sử dụng các luật tương đương để rút gọn biểu thức mệnh đề.
-- Chuyển đổi giữa biểu thức logic, bảng chân trị, DNF và CNF.
-- Nhận ra lỗi thường gặp khi áp dụng De Morgan, kéo theo và phân phối.
-- Giải thích vai trò của CNF trong SAT solver và kiểm chứng phần mềm.
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
+
+- **Phát biểu** chính xác khái niệm tương đương logic.
+- **Sử dụng** các luật tương đương để rút gọn biểu thức mệnh đề.
+- **Chuyển đổi** giữa biểu thức logic, bảng chân trị, DNF và CNF.
+- **Nhận ra** lỗi thường gặp khi áp dụng De Morgan, kéo theo và phân phối.
+- **Giải thích** vai trò của CNF trong SAT solver và kiểm chứng phần mềm.
+
+
+**Từ khóa**: logical equivalence, De Morgan, DNF, CNF, reduced form, Boolean function, canonical form.
+</div>
 
 ## 1. Tương đương logic
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hai mệnh đề phức hợp $$P$$ và $$Q$$ được gọi là **tương đương logic** nếu chúng có cùng giá trị chân trị trong mọi phép gán giá trị cho các biến mệnh đề. Khi đó ta viết:
+</div>
 
+
+<div class="textbook-equation" markdown="1">
 $$P \equiv Q$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Tương đương với việc $$P \leftrightarrow Q$$ là một hằng đúng.
 
 **Ký hiệu**:
@@ -66,6 +68,7 @@ Tương đương với việc $$P \leftrightarrow Q$$ là một hằng đúng.
 - $$\leftrightarrow$$: phép nối hai chiều, là một toán tử nằm trong công thức.
 - $$T$$ và $$F$$: hằng đúng và hằng sai.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Chứng minh $$p \to q \equiv \neg p \lor q$$.
 
 | $$p$$ | $$q$$ | $$p \to q$$ | $$\neg p \lor q$$ |
@@ -76,6 +79,8 @@ Tương đương với việc $$P \leftrightarrow Q$$ là một hằng đúng.
 | F | F | T | T |
 
 Hai cột cuối giống nhau ở mọi hàng, do đó $$p \to q \equiv \neg p \lor q$$.
+</div>
+
 
 ### Minh họa bằng code: Kiểm tra tương đương thực tế
 
@@ -94,9 +99,9 @@ check_equivalence()
 # Kết quả: luôn equal = True
 ```
 
-**Bài học từ ví dụ**: Khi bạn thấy một điều kiện phức tạp trong code, hãy thử viết phiên bản tương đương đơn giản hơn. Compiler và database engine cũng làm điều tương tự để tối ưu.
+Khi gặp điều kiện phức tạp trong mã nguồn, ta nên thử viết phiên bản tương đương đơn giản hơn — trình biên dịch và engine cơ sở dữ liệu cũng áp dụng chiến lược tương tự khi tối ưu.
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Ghi nhớ**: Tương đương logic là quan hệ "thay thế an toàn". Nếu $$P \equiv Q$$, ta có thể thay $$P$$ bằng $$Q$$ trong bất kỳ biểu thức lớn hơn nào mà không đổi bảng chân trị của toàn bộ biểu thức.
 </div>
 
@@ -117,7 +122,7 @@ check_equivalence()
 | Hấp thụ | $$p \lor (p \land q) \equiv p$$ | Bị "hấp thụ" |
 | Bù | $$p \lor \neg p \equiv T$$, $$p \land \neg p \equiv F$$ | Luật bù |
 
-**Mẹo nhớ**: Các luật De Morgan, Phân phối, và Bù là những luật hay dùng nhất khi rút gọn biểu thức.
+Các luật **De Morgan**, **phân phối** và **bù** là những luật được dùng thường xuyên nhất khi rút gọn biểu thức.
 
 ## Công thức Boolean dưới dạng cây
 
@@ -159,20 +164,16 @@ Cây tương ứng:
 
 ![Cây quyết định — cấu trúc công thức Boolean](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 1.16: Biểu diễn công thức Boolean dưới dạng cây — mỗi nút là một phép toán, lá là biến hoặc hằng.*
-
+<p class="textbook-figure-caption" data-figure="1.16">Biểu diễn công thức Boolean dưới dạng cây — mỗi nút là một phép toán, lá là biến hoặc hằng.</p>
 ![Luật De Morgan trên biểu đồ Venn](/discrete-mathematics-for-computer-science-iuh/img/course/Intersections_of_two_sets_and_their_complements.svg)
 
-*Hình 1.17: Luật De Morgan — ¬(p ∧ q) ≡ ¬p ∨ ¬q, công cụ biến đổi quan trọng nhất khi rút gọn điều kiện.*
-
+<p class="textbook-figure-caption" data-figure="1.17">Luật De Morgan — ¬(p ∧ q) ≡ ¬p ∨ ¬q, công cụ biến đổi quan trọng nhất khi rút gọn điều kiện.</p>
 ![DNF — tổng các tích (disjunction of conjunctions)](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-OR.png)
 
-*Hình 1.18: Dạng chuẩn tắc tuyển (DNF) — tổng (OR) của các tích (AND), xây từ các hàng có kết quả Đúng trong bảng chân trị.*
-
+<p class="textbook-figure-caption" data-figure="1.18">Dạng chuẩn tắc tuyển (DNF) — tổng (OR) của các tích (AND), xây từ các hàng có kết quả Đúng trong bảng chân trị.</p>
 ![CNF — tích các tổng (conjunction of disjunctions)](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-AND.png)
 
-*Hình 1.19: Dạng chuẩn tắc hội (CNF) — tích (AND) của các tổng (OR), dạng chuẩn mà SAT solver yêu cầu.*
-
+<p class="textbook-figure-caption" data-figure="1.19">Dạng chuẩn tắc hội (CNF) — tích (AND) của các tổng (OR), dạng chuẩn mà SAT solver yêu cầu.</p>
 **Lưu ý quan trọng**: Các phép toán `∧`, `∨`, `⊕`, `↔` là **giao hoán** (đổi chỗ được) và **kết hợp** (dấu ngoặc không quan trọng). Riêng `→` không có hai tính chất này.
 
 Do đó ta có thể viết `R ∧ Q ∧ P` thay vì `(R ∧ Q) ∧ P`, và viết các biến theo bất kỳ thứ tự nào.
@@ -211,6 +212,7 @@ Hai điều kiện **luôn cho cùng kết quả** trên mọi đầu vào. Đâ
 
 ## 3. Biến đổi biểu thức logic
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Rút gọn biểu thức $$\neg(p \lor \neg q) \land (r \lor \neg r)$$.
 
 $$\begin{aligned}
@@ -221,17 +223,23 @@ $$\begin{aligned}
 \end{aligned}$$
 
 **Nhận xét**: Mỗi dòng biến đổi phải nêu rõ luật được dùng. Trong chứng minh toán học và kiểm chứng chương trình, việc ghi luật giúp phát hiện sai sót sớm.
+</div>
+
 
 ## 4. Công thức Dạng Rút gọn (Reduced Forms)
 
 ### 4.0. Định nghĩa Dạng Rút gọn
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một biểu thức logic $$E$$ được gọi là **dạng rút gọn** (reduced form) nếu nó thỏa mãn đồng thời 3 điều kiện sau:
+</div>
+
 
 1. **Không chứa hằng số** $$T$$ hoặc $$F$$ (trừ khi biểu thức chỉ là hằng số đó).
 2. **Không chứa cặp bù** (literal và phủ định của nó trong cùng một clause hoặc term).
 3. **Không chứa thừa số chung** (các literal lặp lại trong cùng một clause/term, hoặc các term/clause trùng nhau).
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - $$\neg p \land q$$ là dạng rút gọn.
 - $$(\neg p \land q) \lor (\neg p \land \neg q)$$ **không** phải dạng rút gọn (có thể rút gọn thành $$\neg p$$).
@@ -239,6 +247,8 @@ $$\begin{aligned}
 - $$p \land p$$ **không** phải dạng rút gọn (thừa số → rút gọn thành $$p$$).
 
 **Mục tiêu**: Tìm dạng rút gọn ngắn nhất (ít literal nhất) tương đương với biểu thức ban đầu.
+</div>
+
 
 ### 4.1. Vì sao cần rút gọn?
 
@@ -286,22 +296,25 @@ if x > 0:
 
 ## 5. Dạng chuẩn tắc tuyển DNF
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: **Dạng chuẩn tắc tuyển** (Disjunctive Normal Form, DNF) là biểu thức có dạng tuyển của các hội, trong đó mỗi thành phần nhỏ là một literal hoặc phủ định của literal:
+</div>
 
+
+<div class="textbook-equation" markdown="1">
 $$(l_{11} \land l_{12} \land \cdots) \lor (l_{21} \land l_{22} \land \cdots) \lor \cdots$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-example" markdown="1">
 **Ví dụ**: $$(p \land q) \lor (\neg p \land r)$$ là DNF.
+</div>
+
 
 ### Tạo DNF từ bảng chân trị (cách trực quan)
 
-Hãy làm theo **3 bước đơn giản**:
+Quy trình xây dựng DNF từ bảng chân trị gồm ba bước: (1) chỉ xét các hàng có kết quả **TRUE**; (2) với mỗi hàng đó, viết một hội (AND) — biến đúng giữ nguyên, biến sai lấy phủ định; (3) lấy tuyển (OR) của tất cả các hội.
 
-1. **Nhìn vào bảng chân trị**, chỉ quan tâm đến những hàng có kết quả **TRUE**.
-2. **Với mỗi hàng TRUE**, viết một hội (AND) mô tả đúng hàng đó:
-   - Nếu biến là `TRUE` → giữ nguyên biến.
-   - Nếu biến là `FALSE` → lấy phủ định của biến.
-3. **Lấy tuyển (OR)** của tất cả các hội vừa tạo.
-
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Xây dựng DNF cho $$p \to q$$
 
 Bảng chân trị:
@@ -321,30 +334,35 @@ Bảng chân trị:
 
 **Bước 3**: Lấy tuyển:
 
+<div class="textbook-equation" markdown="1">
 $$
 (p \land q) \lor (\neg p \land q) \lor (\neg p \land \neg q)
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Đây chính là **DNF đầy đủ** của $$p \to q$$.
+</div>
 
-#### Minh họa trực quan: DNF như một "bản đồ vùng đúng"
 
-Hãy tưởng tượng bảng chân trị là một lưới 2×2 (với 2 biến). Mỗi ô tương ứng với một assignment:
+#### Minh họa: DNF như bản đồ vùng đúng
 
-- DNF đầy đủ chính là **tô màu tất cả các ô đúng**, mỗi ô được tô bằng một "hình chữ nhật nhỏ" (một term).
-- Khi rút gọn, ta **gộp các ô liền kề** thành một hình chữ nhật lớn hơn → biểu thức ngắn hơn.
-
-Ví dụ trên, ta đang tô 3 ô, và có thể gộp thành $$\neg p \lor q$$.
-
-Đây chính là ý tưởng đằng sau các thuật toán tối thiểu hóa biểu thức Boolean mà compiler và công cụ tối ưu truy vấn sử dụng.
+Với hai biến, bảng chân trị tạo thành lưới 2×2; mỗi ô tương ứng một phép gán. DNF đầy đủ "tô" mọi ô đúng bằng một term (hình chữ nhật nhỏ); khi rút gọn, các ô liền kề được gộp thành hình chữ nhật lớn hơn, cho biểu thức ngắn hơn. Ví dụ trên có thể rút gọn thành $$\neg p \lor q$$. Đây là ý tưởng nền tảng của thuật toán tối thiểu hóa biểu thức Boolean trong trình biên dịch và tối ưu truy vấn.
 
 ## 6. Dạng chuẩn tắc hội CNF
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: **Dạng chuẩn tắc hội** (Conjunctive Normal Form, CNF) là biểu thức có dạng hội của các tuyển:
+</div>
 
+
+<div class="textbook-equation" markdown="1">
 $$(l_{11} \lor l_{12} \lor \cdots) \land (l_{21} \lor l_{22} \lor \cdots) \land \cdots$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-example" markdown="1">
 **Ví dụ**: $$(p \lor q) \land (\neg p \lor r) \land (q \lor \neg r)$$ là CNF.
+</div>
+
 
 **Ký hiệu**: Mỗi ngoặc trong CNF thường được gọi là một **mệnh đề con** (clause). CNF là dạng chuẩn mà nhiều SAT solver nhận vào.
 
@@ -366,6 +384,7 @@ Tương tự DNF, ta cũng có thể xây dựng CNF từ bảng chân trị the
    - Nếu biến là `FALSE` → giữ nguyên biến.
 3. **Lấy hội (AND)** của tất cả các tuyển vừa tạo.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Xây dựng CNF cho $$p \to q$$
 
 Bảng chân trị (chỉ quan tâm hàng FALSE):
@@ -386,15 +405,19 @@ Bảng chân trị (chỉ quan tâm hàng FALSE):
 
 **Bước 3**: Vì chỉ có 1 clause, CNF chính là:
 
+<div class="textbook-equation" markdown="1">
 $$
 \neg p \lor q
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 (Trong trường hợp có nhiều hàng FALSE, ta sẽ lấy **hội** của tất cả các tuyển.)
+</div>
 
-#### Minh họa: CNF như "danh sách các ràng buộc"
 
-Hãy xem CNF dưới góc nhìn lập trình:
+#### Minh họa: CNF như danh sách ràng buộc
+
+Xét CNF dưới góc nhìn lập trình:
 
 ```python
 # CNF: (p ∨ q) ∧ (¬p ∨ r) ∧ (q ∨ ¬r)
@@ -418,9 +441,15 @@ Mỗi `clause` là một ràng buộc. SAT solver phải tìm một assignment s
 
 ### Định lý 2: Tính duy nhất của DNF/CNF đầy đủ
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một **DNF đầy đủ** (full DNF / canonical DNF) của hàm Boolean $$ f $$ trên $$ n $$ biến là biểu thức DNF trong đó **mỗi term** chứa đúng $$ n $$ literal (mỗi biến xuất hiện đúng một lần, có thể phủ định). Tương tự, **CNF đầy đủ** (full CNF) là CNF trong đó mỗi clause chứa đúng $$ n $$ literal.
+</div>
 
+
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Mọi hàm Boolean $$ f:\{T,F\}^n\to\{T,F\} $$ đều có **đúng một** DNF đầy đủ và **đúng một** CNF đầy đủ (duy nhất, không kể thứ tự các term/clause và thứ tự literal bên trong term/clause).
+</div>
+
 
 **Chứng minh (Tính duy nhất của DNF đầy đủ)**:
 
@@ -499,15 +528,19 @@ Bảng chân trị 8 hàng cho 3 biến cho thấy hai cột cuối luôn giốn
 
 Rút gọn biểu thức sau về dạng đơn giản nhất:
 
+<div class="textbook-equation" markdown="1">
 $$\neg(p \land \neg q) \lor (\neg p \land q)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 <details>
 <summary>Đáp án</summary>
 
 Áp dụng De Morgan và các luật bù, đồng nhất:
 
+<div class="textbook-equation" markdown="1">
 $$\equiv (\neg p \lor q) \lor (\neg p \land q) \equiv \neg p \lor q$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 </details>
 
 ### Bài tập 3: Chuyển sang DNF và CNF
@@ -745,5 +778,25 @@ Ví dụ luật:
 
 **Bài tập 4:** (p ∨ q) ∧ ¬(¬p ∧ q)
 
+---
+
+## Xem thêm / Video gợi ý
+
+- [Logical Equivalences ](https://www.youtube.com/watch?v=FMc7pZbvWKA) — NotesForMsc (Truth table proof + laws)
+- [Discrete Math Full Course — Logic & Proofs](https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKZS) — Trefor Bazett (Complete semester playlist, very structured)
+
+---
+
+## Tóm tắt
+
+Tương đương logic cho phép ta biến đổi biểu thức mà không thay đổi ý nghĩa. Các luật De Morgan, phân phối, bổ sung, đồng nhất là công cụ hàng ngày của lập trình viên và kỹ sư kiểm chứng.
+
+DNF và CNF là hai dạng chuẩn quan trọng:
+- DNF (Disjunctive Normal Form): tuyển của các hội literal — dùng trong SAT solver, rule engine.
+- CNF (Conjunctive Normal Form): hội của các tuyển literal — dùng trong resolution, SAT, hardware verification.
+
+Khả năng đưa biểu thức về dạng chuẩn là kỹ năng nền tảng cho AI, tối ưu truy vấn cơ sở dữ liệu và kiểm chứng hình thức.
+
+Trong bài tiếp theo, chúng ta học **quy tắc suy diễn** — các mẫu lập luận hợp lệ từ tiền đề đến kết luận.
 
 

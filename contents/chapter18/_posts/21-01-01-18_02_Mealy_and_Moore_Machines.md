@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Máy Mealy và Máy Moore"
 categories: chapter18
@@ -6,35 +7,31 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã định nghĩa DFA và các thành phần của máy hữu hạn trạng thái. Mục này giới thiệu hai biến thể máy biến đổi — Mealy và Moore — trong đó…"
 ---
 
-Một bộ điều khiển đèn giao thông cần làm nhiều việc hơn là "chấp nhận" hay "từ chối" một chuỗi sự kiện - nó phải **phát ra tín hiệu** điều khiển đèn đỏ, vàng, xanh cho phù hợp. Một bộ giải mã (decoder) trong vi xử lý không chỉ nhận chuỗi bit, nó còn phải sinh ra chuỗi bit khác làm tín hiệu điều khiển. Khi ta cần một máy hữu hạn trạng thái **xuất ra dữ liệu**, ta dùng một trong hai mô hình kinh điển: **máy Mealy** và **máy Moore**.
-
-Cả hai đều mở rộng DFA bằng cách thêm bảng chữ cái đầu ra và hàm sinh đầu ra. Khác biệt duy nhất là **thời điểm** sinh đầu ra: máy Moore phát ra một ký hiệu ứng với mỗi trạng thái, còn máy Mealy phát ra ký hiệu ứng với mỗi **cạnh chuyển** (tức là phụ thuộc vào cả trạng thái và đầu vào). Khác biệt nhỏ này dẫn đến những hệ quả thực tế: máy Mealy thường có ít trạng thái hơn, máy Moore lại dễ phân tích thời gian hơn trong thiết kế mạch số.
+Ở mục trước chúng ta đã định nghĩa DFA và các thành phần của máy hữu hạn trạng thái. Mục này giới thiệu hai biến thể máy biến đổi — **Mealy** và **Moore** — trong đó đầu ra phụ thuộc vào chuyển trạng thái hoặc trạng thái hiện tại, là mô hình phổ biến trong thiết kế mạch tuần tự và giao thức.
 
 ![Máy Mealy và Moore](/discrete-mathematics-for-computer-science-iuh/img/course/mealy_moore.svg)
 
-*Hình 18.6: Mealy: đầu ra phụ thuộc trạng thái và đầu vào; Moore: đầu ra chỉ phụ thuộc trạng thái.*
-
+<p class="textbook-figure-caption" data-figure="18.6">Mealy: đầu ra phụ thuộc trạng thái và đầu vào; Moore: đầu ra chỉ phụ thuộc trạng thái.</p>
 ![Máy biến đổi](/discrete-mathematics-for-computer-science-iuh/img/course/Finite_state_machine_example_with_comments.svg)
 
-*Hình 18.7: Transducer mở rộng acceptor — sinh đầu ra khi đọc chuỗi đầu vào.*
-
+<p class="textbook-figure-caption" data-figure="18.7">Transducer mở rộng acceptor — sinh đầu ra khi đọc chuỗi đầu vào.</p>
 ![Thiết kế Mealy](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
-*Hình 18.8: Thiết kế Mealy machine: xác định trạng thái, chuyển và hàm đầu ra trên từng cạnh.*
-
+<p class="textbook-figure-caption" data-figure="18.8">Thiết kế Mealy machine: xác định trạng thái, chuyển và hàm đầu ra trên từng cạnh.</p>
 ![Hiện thực phần cứng](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
-*Hình 18.9: Mealy/Moore hiện thực bằng thanh ghi trạng thái và logic tổ hợp.*
-
+<p class="textbook-figure-caption" data-figure="18.9">Mealy/Moore hiện thực bằng thanh ghi trạng thái và logic tổ hợp.</p>
 ![Đồng bộ và xung nhịp](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
 
-*Hình 18.10: Máy Moore thường dùng trong thiết kế đồng bộ — đầu ra ổn định trong cả chu kỳ clock.*
-
+<p class="textbook-figure-caption" data-figure="18.10">Máy Moore thường dùng trong thiết kế đồng bộ — đầu ra ổn định trong cả chu kỳ clock.</p>
 ## Mục tiêu học tập
 
-Sau khi hoàn thành bài này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau khi hoàn thành bài này, sinh viên có thể:
 
 - **Định nghĩa** hình thức máy Mealy và máy Moore.
 - **Vẽ** sơ đồ chuyển trạng thái cho máy Mealy và máy Moore.
@@ -46,7 +43,9 @@ Sau khi hoàn thành bài này, sinh viên có thể:
 
 ## 1. Máy Moore
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một **máy Moore** là một bộ sáu $$M = (Q, \Sigma, \Delta, \delta, \lambda, q_0)$$ gồm:
+</div>
 
 - $$Q$$: tập trạng thái hữu hạn.
 - $$\Sigma$$: bảng chữ cái đầu vào (input alphabet).
@@ -61,11 +60,13 @@ Không có tập trạng thái chấp nhận vì máy Moore không "nhận diệ
 
 Cho đầu vào $$w = a_1 a_2 \ldots a_n$$, máy đi qua các trạng thái $$q_0, q_1, \ldots, q_n$$ (với $$q_i = \delta(q_{i-1}, a_i)$$) và phát ra chuỗi:
 
+<div class="textbook-equation" markdown="1">
 $$\lambda(q_0) \lambda(q_1) \ldots \lambda(q_n)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Lưu ý: đầu ra có độ dài $$n + 1$$, **dài hơn** đầu vào một ký hiệu - chính là $$\lambda(q_0)$$ phát ra trước khi đọc gì cả.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 1**: Máy Moore phát hiện **mẫu `aab`** trong chuỗi trên $$\{a, b\}$$.
 
 - $$Q = \{q_0, q_1, q_2, q_3\}$$ ứng với việc đã thấy phần đầu nào của `aab`.
@@ -82,7 +83,9 @@ Lưu ý: đầu ra có độ dài $$n + 1$$, **dài hơn** đầu vào một ký
 
 ## 2. Máy Mealy
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một **máy Mealy** là một bộ sáu $$M = (Q, \Sigma, \Delta, \delta, \omega, q_0)$$ gồm các thành phần như máy Moore, ngoại trừ:
+</div>
 
 - $$\omega: Q \times \Sigma \to \Delta$$: **hàm đầu ra Mealy** - phát ra ký hiệu ứng với mỗi cặp (trạng thái, ký hiệu đầu vào).
 
@@ -90,11 +93,13 @@ Lưu ý: đầu ra có độ dài $$n + 1$$, **dài hơn** đầu vào một ký
 
 Cho đầu vào $$w = a_1 a_2 \ldots a_n$$, máy phát ra:
 
+<div class="textbook-equation" markdown="1">
 $$\omega(q_0, a_1) \omega(q_1, a_2) \ldots \omega(q_{n-1}, a_n)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 trong đó $$q_i = \delta(q_{i-1}, a_i)$$. Đầu ra có độ dài **đúng bằng** đầu vào, không thêm ký hiệu nào.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 2**: Máy Mealy phát hiện mẫu `aab` (giải lại Ví dụ 1).
 
 - $$Q = \{q_0, q_1, q_2\}$$.
@@ -107,7 +112,7 @@ trong đó $$q_i = \delta(q_{i-1}, a_i)$$. Đầu ra có độ dài **đúng b�
   - $$\omega(q_1, a) = 0$$, $$\omega(q_1, b) = 0$$.
   - $$\omega(q_2, a) = 0$$, $$\omega(q_2, b) = 1$$ (cạnh $$q_2 \xrightarrow{b/1} q_0$$ đánh dấu khớp).
 
-Đầu vào `aabab`: trạng thái $$q_0, q_1, q_2, q_0, q_1, q_0$$; đầu ra `00100`. So với máy Moore, ta tiết kiệm 1 trạng thái.
+Đầu vào `aabab`: trạng thái $$q_0, q_1, q_2, q_0, q_1, q_0$$; đầu ra `00100`. So với máy Moore, chúng ta tiết kiệm 1 trạng thái.
 </div>
 
 ## 3. Sơ đồ chuyển trạng thái
@@ -121,13 +126,15 @@ Cùng một bài toán biến đổi chuỗi thường có **máy Mealy nhỏ h�
 
 ## 4. Sự tương đương Mealy - Moore
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Mọi máy Mealy có thể chuyển thành máy Moore tương đương (sinh cùng hàm biến đổi chuỗi đầu vào - đầu ra, có thể chênh lệch một ký hiệu khởi tạo), và ngược lại.
+</div>
 
 **Ý tưởng chuyển Mealy → Moore**: với mỗi cặp (trạng thái Mealy, ký hiệu đầu ra) tạo một trạng thái Moore mới. Tổng số trạng thái Moore không vượt quá $$|Q| \cdot |\Delta|$$.
 
 **Ý tưởng chuyển Moore → Mealy**: định nghĩa $$\omega(q, a) = \lambda(\delta(q, a))$$. Đầu ra trên cạnh đến trạng thái $$q'$$ chính là $$\lambda(q')$$.
 
-<div class="content-box info-box" markdown="1">
+<div class="content-box info-box textbook-block" markdown="1">
 **So sánh thực tế**
 
 | Tiêu chí | Máy Moore | Máy Mealy |
@@ -163,7 +170,7 @@ Trong thiết kế ASIC/FPGA, kỹ sư thường bắt đầu bằng Mealy để
 4. Một máy Mealy có 3 trạng thái và bảng chữ cái $$\{0, 1\}$$. Có tối đa bao nhiêu hàm chuyển $$\delta$$ khác nhau? Có tối đa bao nhiêu hàm đầu ra $$\omega$$ khác nhau (với $$\Delta = \{0, 1\}$$)?
 5. Mô hình hóa một **đèn giao thông hai pha** (Đỏ - Xanh) đơn giản bằng máy Moore với đầu vào là tín hiệu "đến giờ chuyển pha".
 
-<div class="content-box note-box" markdown="1">
+<div class="content-box note-box textbook-block" markdown="1">
 **Tài liệu tham khảo**
 
 - Rosen, K. H. (2019). *Discrete Mathematics and Its Applications*, 8th ed. Section 13.2.
@@ -171,3 +178,18 @@ Trong thiết kế ASIC/FPGA, kỹ sư thường bắt đầu bằng Mealy để
 - Hopcroft, J., Motwani, R., & Ullman, J. (2007). *Introduction to Automata Theory, Languages, and Computation*, 3rd ed. Chapter 2.
 - Mano, M. M., & Ciletti, M. D. (2018). *Digital Design*, 6th ed. (góc nhìn mạch số).
 </div>
+
+---
+
+## Xem thêm / Video gợi ý
+
+- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (Truth table proof + laws)
+- [Discrete Math Full Course — Logic & Proofs](https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKZS) — Trefor Bazett (Complete semester playlist)
+
+## Tóm tắt
+
+- **Máy Moore** phát đầu ra theo **trạng thái**: $$\lambda: Q \to \Delta$$.
+- **Máy Mealy** phát đầu ra theo **cạnh chuyển**: $$\omega: Q \times \Sigma \to \Delta$$.
+- Hai mô hình có **sức mạnh biểu đạt tương đương**, nhưng Mealy thường gọn hơn.
+- Cả hai là nền tảng của thiết kế **mạch tuần tự** và **bộ điều khiển nhúng**.
+

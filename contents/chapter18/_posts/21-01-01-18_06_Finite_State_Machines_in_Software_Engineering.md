@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Máy Trạng thái Hữu hạn trong Kỹ thuật Phần mềm"
 categories: chapter18
@@ -6,40 +7,16 @@ date: 2021-01-01
 order: 6
 required: false
 lang: en
+excerpt: "Chương 18 đã trình bày FSM, NFA/DFA, regex và máy Turing. Mục bổ sung này khảo sát ứng dụng máy trạng thái hữu hạn trong kỹ thuật phần mềm — từ state machine…"
 ---
 
-Mỗi lần bạn đợi nút "Gửi" chuyển sang "Đang gửi…" rồi "Thành công" hoặc "Lỗi", hay khi regex `^[a-z]+$` khớp chuỗi input — bạn đang làm việc với **máy trạng thái hữu hạn** (finite state machine, FSM).
-
-```python
-from enum import Enum, auto
-
-class OrderState(Enum):
-    DRAFT = auto()
-    PAID = auto()
-    SHIPPED = auto()
-    CANCELLED = auto()
-
-TRANSITIONS = {
-    (OrderState.DRAFT, "pay"): OrderState.PAID,
-    (OrderState.PAID, "ship"): OrderState.SHIPPED,
-    (OrderState.DRAFT, "cancel"): OrderState.CANCELLED,
-    (OrderState.PAID, "cancel"): OrderState.CANCELLED,
-}
-
-def transition(state: OrderState, event: str) -> OrderState:
-    key = (state, event)
-    if key not in TRANSITIONS:
-        raise ValueError(f"illegal transition: {state.name} + {event}")
-    return TRANSITIONS[key]
-```
-
-Đoạn code trên là DFA trong đời thực: tập trạng thái hữu hạn, bảng chữ cái sự kiện (`pay`, `ship`, `cancel`), hàm chuyển $$\delta$$ xác định. Không có "bộ nhớ tự do" — mọi thông tin cần thiết nằm trong trạng thái hiện tại.
-
-Từ DFA/NFA trong lý thuyết đến Redux reducer, giao thức TCP, và lexer regex — bài này nối Chương 18 với kỹ thuật phần mềm hàng ngày.
+Chương 18 đã trình bày FSM, NFA/DFA, regex và máy Turing. Mục bổ sung này khảo sát ứng dụng máy trạng thái hữu hạn trong kỹ thuật phần mềm — từ state machine trong UI, parser regex, đến giao thức mạng — cho thấy lý thuyết automat không chỉ nằm trong sách giáo khoa.
 
 ## Mục tiêu học tập
 
-Sau bài học này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Mô hình hóa** luồng UI, đơn hàng, và giao thức bằng FSM/DFA với trạng thái và chuyển hợp lệ.
 - **Triển khai** state machine trong Python/TypeScript và từ chối transition không hợp lệ.
@@ -48,6 +25,7 @@ Sau bài học này, sinh viên có thể:
 - **Thiết kế** protocol handler đọc byte stream theo trạng thái.
 
 **Từ khóa**: máy trạng thái hữu hạn (FSM), DFA, NFA, automaton, state machine, regex, reducer, giao thức (protocol).
+</div>
 
 ---
 
@@ -67,8 +45,7 @@ Trong phần mềm, "chấp nhận" thường là trạng thái **ổn định**
 
 ![Sơ đồ trạng thái UML — mô hình hóa hành vi đối tượng](/discrete-mathematics-for-computer-science-iuh/img/course/uml_state_machine.svg)
 
-*Hình 18.26: Sơ đồ trạng thái (state diagram) — cùng cấu trúc toán học với DFA, dùng trong thiết kế UI và domain model.*
-
+<p class="textbook-figure-caption" data-figure="18.26">Sơ đồ trạng thái (state diagram) — cùng cấu trúc toán học với DFA, dùng trong thiết kế UI và domain model.</p>
 ### 1.2. Enum + bảng chuyển = DFA có thể kiểm thử
 
 ```typescript
@@ -87,8 +64,8 @@ function step(light: TrafficLight): TrafficLight {
 
 Mỗi `light` chỉ có **một** trạng thái kế — đúng định nghĩa DFA. Unit test chỉ cần duyệt hữu hạn trạng thái.
 
-<div class="content-box insight-box" markdown="1">
-**Nhận xét**: FSM ép bạn liệt kê mọi transition hợp lệ. Bug "trạng thái không mong đợi" thường là cạnh thiếu trong $$\delta$$ — sửa bằng cách làm rõ diagram trước khi viết code.
+<div class="content-box insight-box textbook-block" markdown="1">
+**Nhận xét**: FSM ép chúng ta liệt kê mọi transition hợp lệ. Bug "trạng thái không mong đợi" thường là cạnh thiếu trong $$\delta$$ — sửa bằng cách làm rõ diagram trước khi viết code.
 </div>
 
 ---
@@ -121,8 +98,7 @@ Lexer **không** cần ngữ pháp ngữ cảnh tự do — chỉ cần lớp **
 
 ![Phân tích từ vựng (lexical analysis) trong trình biên dịch](/discrete-mathematics-for-computer-science-iuh/img/course/lexical_analysis.svg)
 
-*Hình 18.27: Lexical analysis — đọc chuỗi ký tự theo trạng thái; mỗi token class thường tương ứng một automaton hoặc nhánh trong NFA tổng hợp.*
-
+<p class="textbook-figure-caption" data-figure="18.27">Lexical analysis — đọc chuỗi ký tự theo trạng thái; mỗi token class thường tương ứng một automaton hoặc nhánh trong NFA tổng hợp.</p>
 ### 2.2. DFA vs NFA trong thực thi
 
 - **DFA**: mô phỏng $$O(n)$$ trên chuỗi dài $$n$$, một trạng thái hiện tại.
@@ -167,8 +143,7 @@ TCP connection (đơn giản hóa): `CLOSED` → `SYN_SENT` → `ESTABLISHED` �
 
 ![Automaton hữu hạn — nền tảng nhận diện ngôn ngữ chính quy](/discrete-mathematics-for-computer-science-iuh/img/course/Automata_theory.svg)
 
-*Hình 18.28: Lý thuyết automata — FSM nhận diện ngôn ngữ chính quy; cùng mô hình cho regex, lexer, và protocol handler.*
-
+<p class="textbook-figure-caption" data-figure="18.28">Lý thuyết automata — FSM nhận diện ngôn ngữ chính quy; cùng mô hình cho regex, lexer, và protocol handler.</p>
 ---
 
 ## Phần 4: Mealy/Moore và mở rộng
@@ -184,7 +159,7 @@ Trong game và embedded, Mealy/Moore chính thức hơn; trong web app, side eff
 
 Ngôn ngữ $$a^n b^n$$ không phải regular — cần **stack** (PDA / CFG). Ví dụ: kiểm tra ngoặc cân `((()))` bằng FSM thuần **không** được; parser cần Chương 19.
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Cẩn thận**: Đừng nhồi mọi biến vào "trạng thái" vô hạn. Nếu context phụ thuộc độ sâu ngăn xếp tùy ý, đó là dấu hiệu cần parser/ngữ cảnh, không chỉ FSM.
 </div>
 
@@ -309,6 +284,10 @@ Mô tả FSM cho HTTP client đơn giản: `IDLE` --(send request)--> `WAITING` 
 | ERROR | reset | IDLE |
 
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Finite State Machines](https://www.youtube.com/watch?v=1jZ5n8k0p0Q) — MIT OCW (Automata theory)
 
 ## Tóm tắt
 

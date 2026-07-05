@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Giới thiệu Ngôn ngữ Hình thức"
 categories: chapter19
@@ -6,41 +7,48 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
+excerpt: "Trong chương này chúng ta nghiên cứu ngôn ngữ hình thức — khung lý thuyết trả lời câu hỏi: chuỗi ký tự có thuộc ngôn ngữ được định nghĩa hay không? Mỗi khi…"
 ---
 
-Mỗi khi bạn gõ một câu lệnh vào terminal, một dòng mã Python, hay một biểu thức tìm kiếm `grep`, máy tính phải quyết định xem chuỗi ký tự đó có **hợp lệ** hay không trước khi thực thi. Trình biên dịch Python từ chối `def 1foo():` nhưng chấp nhận `def foo1():`. Lệnh `grep "^[A-Z].*\.$"` tìm các dòng bắt đầu bằng chữ hoa và kết thúc bằng dấu chấm. Cả hai đều dựa trên cùng một câu hỏi nền tảng: **chuỗi ký tự này có thuộc về ngôn ngữ mà ta định nghĩa hay không?**
+<div class="textbook-epigraph" markdown="1">
 
-**Ngôn ngữ hình thức** (formal language) là khung lý thuyết trả lời câu hỏi đó. Khác với ngôn ngữ tự nhiên - đầy mơ hồ và ngữ cảnh - ngôn ngữ hình thức được định nghĩa bằng các quy tắc toán học chính xác, có thể kiểm tra bằng thuật toán. Chương này xây dựng nền tảng đó: bảng chữ cái, chuỗi, ngôn ngữ, và các phép toán trên chúng. Đây là ngôn ngữ chung của Chương 18 (máy tính toán) và Chương 20 (lý thuyết độ phức tạp).
+"A language is a set of strings over an alphabet."
+
+<span class="epigraph-attribution">— Formal language theory</span>
+
+</div>
+
+Trong chương này chúng ta nghiên cứu ngôn ngữ hình thức — khung lý thuyết trả lời câu hỏi: chuỗi ký tự có thuộc ngôn ngữ được định nghĩa hay không? Mỗi khi trình biên dịch kiểm tra cú pháp, công cụ `grep` khớp mẫu, hay parser xác thực đầu vào, hệ thống đang áp dụng lý thuyết ngôn ngữ hình thức. Mục 19.1 này bắt đầu từ bảng chữ cái, chuỗi và định nghĩa ngôn ngữ.
 
 ![Ngôn ngữ hình thức](/discrete-mathematics-for-computer-science-iuh/img/course/Formal_languages.svg)
 
-*Hình 19.1: Ngôn ngữ $L$ là tập con của $\Sigma^*$ — tập mọi chuỗi trên bảng chữ cái $\Sigma$.*
-
+<p class="textbook-figure-caption" data-figure="19.1">Ngôn ngữ $L$ là tập con của $\Sigma^*$ — tập mọi chuỗi trên bảng chữ cái $\Sigma$.</p>
 ![Phân cấp Chomsky](/discrete-mathematics-for-computer-science-iuh/img/course/Chomsky_hierarchy.svg)
 
-*Hình 19.2: Phân cấp Chomsky xếp loại ngôn ngữ theo sức mạnh grammar và máy chấp nhận.*
-
+<p class="textbook-figure-caption" data-figure="19.2">Phân cấp Chomsky xếp loại ngôn ngữ theo sức mạnh grammar và máy chấp nhận.</p>
 ![Ngôn ngữ chính quy](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
-*Hình 19.3: Ngôn ngữ chính quy được nhận diện bởi DFA/NFA và mô tả bằng regex.*
-
+<p class="textbook-figure-caption" data-figure="19.3">Ngôn ngữ chính quy được nhận diện bởi DFA/NFA và mô tả bằng regex.</p>
 ![Phép toán trên ngôn ngữ](/discrete-mathematics-for-computer-science-iuh/img/course/Finite_state_machine_example_with_comments.svg)
 
-*Hình 19.4: Hợp, giao, nối chuỗi và Kleene star — đóng trên lớp regular languages.*
+<p class="textbook-figure-caption" data-figure="19.4">Hợp, giao, nối chuỗi và Kleene star — đóng trên lớp regular languages.</p>
+![Ngôn ngữ trong biên dịch](/discrete-mathematics-for-computer-science-iuh/img/course/compiler_phases.svg)
 
-![Ngôn ngữ trong biên dịch](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
-
-*Hình 19.5: Compiler kiểm tra chuỗi mã nguồn có thuộc ngôn ngữ cú pháp hợp lệ hay không.*
-
+<p class="textbook-figure-caption" data-figure="19.5">Compiler kiểm tra chuỗi mã nguồn có thuộc ngôn ngữ cú pháp hợp lệ hay không.</p>
 ## Mục tiêu học tập
 
-- Định nghĩa chính xác bảng chữ cái, chuỗi, và ngôn ngữ.
-- Thực hiện các phép toán cơ bản trên chuỗi và ngôn ngữ.
-- Phân biệt ngôn ngữ hữu hạn và vô hạn, đếm được và không đếm được.
-- Hiểu mối quan hệ giữa ngôn ngữ và máy chấp nhận chúng.
-- Nhận diện vai trò của ngôn ngữ hình thức trong khoa học máy tính.
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
+
+- **Định nghĩa** chính xác bảng chữ cái, chuỗi và ngôn ngữ.
+- **Thực hiện** các phép toán cơ bản trên chuỗi và ngôn ngữ.
+- **Phân biệt** ngôn ngữ hữu hạn và vô hạn, đếm được và không đếm được.
+- **Hiểu** mối quan hệ giữa ngôn ngữ và máy chấp nhận chúng.
+- **Nhận diện** vai trò của ngôn ngữ hình thức trong khoa học máy tính.
 
 **Từ khóa**: alphabet, string, language, concatenation, Kleene star, regular language, context-free language.
+</div>
 
 ## 1. Bảng chữ cái và Chuỗi
 
@@ -48,6 +56,7 @@ Mỗi khi bạn gõ một câu lệnh vào terminal, một dòng mã Python, hay
 
 Một **bảng chữ cái** (alphabet), ký hiệu $$\Sigma$$, là một **tập hữu hạn, khác rỗng** các ký hiệu.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 
 - $$\Sigma_1 = \{0, 1\}$$ - bảng chữ cái nhị phân, dùng trong lý thuyết tính toán.
@@ -56,6 +65,7 @@ Một **bảng chữ cái** (alphabet), ký hiệu $$\Sigma$$, là một **tập
 - $$\Sigma_4 = \{\texttt{if}, \texttt{else}, \texttt{while}, \texttt{=}, \texttt{;}, \ldots\}$$ - các token trong ngôn ngữ lập trình.
 
 Mỗi phần tử của $$\Sigma$$ gọi là một **ký hiệu** (symbol) hoặc **chữ cái** (letter).
+</div>
 
 ### Định nghĩa: Chuỗi
 
@@ -66,7 +76,7 @@ Một **chuỗi** (string, word) trên $$\Sigma$$ là một dãy hữu hạn cá
 
 **Ví dụ** với $$\Sigma = \{0, 1\}$$: $$\epsilon, 0, 1, 00, 01, 10, 11, 000, \ldots$$ Chuỗi $$w = 10110$$ có $$\lvert w \rvert = 5$$.
 
-<div class="content-box info-box" markdown="1">
+<div class="content-box info-box textbook-block" markdown="1">
 **Ký hiệu thường gặp**
 
 - $$\Sigma$$ - bảng chữ cái (alphabet).
@@ -81,8 +91,10 @@ Một **chuỗi** (string, word) trên $$\Sigma$$ là một dãy hữu hạn cá
 
 Cho hai chuỗi $$x = a_1 a_2 \ldots a_m$$ và $$y = b_1 b_2 \ldots b_n$$, **phép nối** của chúng là:
 
+<div class="textbook-equation" markdown="1">
 $$xy = a_1 a_2 \ldots a_m b_1 b_2 \ldots b_n$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Tính chất**:
 
 - Kết hợp: $$(xy)z = x(yz)$$.
@@ -111,13 +123,15 @@ Cho chuỗi $$w = xyz$$ với $$x, y, z$$ là chuỗi (có thể rỗng):
 
 Tập tất cả chuỗi (kể cả chuỗi rỗng) trên $$\Sigma$$ ký hiệu là $$\Sigma^*$$, gọi là **bao đóng Kleene** (Kleene closure) của $$\Sigma$$:
 
+<div class="textbook-equation" markdown="1">
 $$\Sigma^* = \{\epsilon\} \cup \Sigma \cup \Sigma^2 \cup \Sigma^3 \cup \ldots = \bigcup_{n \geq 0} \Sigma^n$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 trong đó $$\Sigma^n$$ là tập chuỗi có độ dài đúng $$n$$.
 
 Tập chuỗi **khác rỗng** ký hiệu $$\Sigma^+ = \Sigma^* \setminus \{\epsilon\} = \bigcup_{n \geq 1} \Sigma^n$$.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ**
 
 Với $$\Sigma = \{0, 1\}$$:
@@ -143,11 +157,13 @@ Hệ quả quan trọng: tập tất cả chương trình hợp lệ (trên bả
 
 Một **ngôn ngữ** (language) trên bảng chữ cái $$\Sigma$$ là một tập con bất kỳ của $$\Sigma^*$$:
 
+<div class="textbook-equation" markdown="1">
 $$L \subseteq \Sigma^*$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Vì $$\Sigma^*$$ đếm được, một ngôn ngữ có thể **hữu hạn** hoặc **vô hạn đếm được**.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Một số ngôn ngữ trên $$\Sigma = \{0, 1\}$$**
 
 - $$L_1 = \emptyset$$ - ngôn ngữ rỗng (không chứa chuỗi nào).
@@ -170,15 +186,19 @@ Vì $$\Sigma^*$$ đếm được, một ngôn ngữ có thể **hữu hạn** ho
 
 ## 4. Phép toán trên ngôn ngữ
 
-Vì ngôn ngữ là tập hợp, ta có ngay các phép toán tập hợp: $$L_1 \cup L_2$$, $$L_1 \cap L_2$$, $$L_1 \setminus L_2$$, $$\overline{L} = \Sigma^* \setminus L$$.
+Vì ngôn ngữ là tập hợp, chúng ta có ngay các phép toán tập hợp: $$L_1 \cup L_2$$, $$L_1 \cap L_2$$, $$L_1 \setminus L_2$$, $$\overline{L} = \Sigma^* \setminus L$$.
 
 Ngoài ra còn các phép toán đặc thù cho ngôn ngữ:
 
 ### Phép nối ngôn ngữ
 
+<div class="textbook-equation" markdown="1">
 $$L_1 L_2 = \{xy : x \in L_1, y \in L_2\}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-example" markdown="1">
 **Ví dụ**: $$L_1 = \{a, ab\}$$, $$L_2 = \{b, c\}$$. Khi đó $$L_1 L_2 = \{ab, ac, abb, abc\}$$.
+</div>
 
 ### Lũy thừa và Kleene star
 
@@ -189,7 +209,7 @@ $$L_1 L_2 = \{xy : x \in L_1, y \in L_2\}$$
 
 **Trực giác**: $$L^*$$ là tập tất cả chuỗi tạo được bằng cách nối **không hoặc nhiều** chuỗi từ $$L$$. Đây là cách viết $$\Sigma^*$$ (khi coi $$\Sigma$$ như ngôn ngữ các chuỗi độ dài 1).
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ**
 
 Cho $$L = \{ab, cd\}$$.
@@ -217,7 +237,7 @@ Câu hỏi trung tâm của lý thuyết ngôn ngữ hình thức: **một ngôn
 
 Mỗi cấp bao gồm cấp cao hơn: $$\text{Reg} \subsetneq \text{CFL} \subsetneq \text{CSL} \subsetneq \text{RE}$$.
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Ý nghĩa thực tế của phân cấp**
 
 - **Chính quy**: đủ cho biểu thức chính quy (regex), lexer, tìm kiếm văn bản.
@@ -237,17 +257,23 @@ Mỗi cấp trong phân cấp Chomsky tương ứng với một loại **máy ch
 - **Linear bounded automata** (LBA) - chấp nhận lớp ngôn ngữ nhạy ngữ cảnh.
 - **Turing machine** (Bài 18.5) - chấp nhận lớp ngôn ngữ đệ quy đếm được.
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: ngôn ngữ $$L(M)$$ được **chấp nhận** bởi máy $$M$$ là tập tất cả chuỗi $$w$$ khiến $$M$$ dừng ở trạng thái chấp nhận.
+</div>
 
 Hai ngôn ngữ nổi tiếng nằm ngoài lớp chính quy nhưng trong lớp phi ngữ cảnh:
 
+<div class="textbook-equation" markdown="1">
 $$L_{a^n b^n} = \{a^n b^n : n \geq 0\}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$L_{\text{paren}} = \text{tập các dãy ngoặc cân bằng}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Cả hai đòi hỏi "đếm" - mà DFA hữu hạn trạng thái không đếm được - nhưng PDA với stack thì làm được. Đây là lý do parser ngôn ngữ lập trình dùng stack.
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Chấp nhận khác Quyết định**
 
 Một ngôn ngữ là **đệ quy** (recursive) hay **quyết định được** (decidable) nếu có máy Turing **luôn dừng** và quyết định đúng "có/không".
@@ -272,7 +298,7 @@ Ngôn ngữ hình thức là **xương sống lý thuyết** của khoa học m�
 | Sinh ngôn ngữ tự nhiên | Phi ngữ cảnh / xác suất | NLP, GPT |
 | Phân tích DNA | Phi ngữ cảnh | `BioPython` |
 
-Mỗi khi bạn dùng `grep`, viết file `.l`/`.y`, hay parse JSON, bạn đang vận hành kết quả của lý thuyết này.
+Mỗi khi chúng ta dùng `grep`, viết file `.l`/`.y`, hay parse JSON, chúng ta đang vận hành kết quả của lý thuyết này.
 
 ## Tổng kết
 
@@ -309,7 +335,7 @@ Mỗi khi bạn dùng `grep`, viết file `.l`/`.y`, hay parse JSON, bạn đang
 
 **Bài 10.** Viết bằng tiếng Việt định nghĩa "địa chỉ email hợp lệ" theo dạng ngôn ngữ hình thức (bảng chữ cái, dạng tổng quát của chuỗi).
 
-<div class="content-box note-box" markdown="1">
+<div class="content-box note-box textbook-block" markdown="1">
 **Tài liệu tham khảo**
 
 - Kenneth H. Rosen, *Discrete Mathematics and Its Applications*, 8e, Chương 13.1-13.2.
@@ -317,3 +343,20 @@ Mỗi khi bạn dùng `grep`, viết file `.l`/`.y`, hay parse JSON, bạn đang
 - John Hopcroft, Rajeev Motwani, Jeffrey Ullman, *Introduction to Automata Theory, Languages, and Computation*, 3e, Chương 1.
 - Noam Chomsky, "Three Models for the Description of Language" (1956) - bài báo gốc đề xuất phân cấp Chomsky.
 </div>
+
+---
+
+## Xem thêm / Video gợi ý
+
+- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (Truth table proof + laws)
+- [Discrete Math Full Course — Logic & Proofs](https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKZS) — Trefor Bazett (Complete semester playlist)
+
+## Tóm tắt
+
+- **Bảng chữ cái** $$\Sigma$$ là tập hữu hạn ký hiệu; **chuỗi** là dãy ký hiệu hữu hạn; **ngôn ngữ** là tập con của $$\Sigma^*$$.
+- Phép toán cơ bản trên chuỗi: nối, đảo ngược, lũy thừa.
+- Phép toán trên ngôn ngữ: tập hợp ($$\cup, \cap, \overline{\cdot}$$), nối, Kleene star $$L^*$$.
+- $$\Sigma^*$$ luôn vô hạn đếm được, nhưng tập tất cả ngôn ngữ trên $$\Sigma$$ là **không đếm được**.
+- **Phân cấp Chomsky** sắp xếp ngôn ngữ theo độ phức tạp: chính quy $$\subsetneq$$ phi ngữ cảnh $$\subsetneq$$ nhạy ngữ cảnh $$\subsetneq$$ đệ quy đếm được.
+- Mỗi lớp ngôn ngữ ứng với một loại máy nhận, từ DFA đến máy Turing.
+

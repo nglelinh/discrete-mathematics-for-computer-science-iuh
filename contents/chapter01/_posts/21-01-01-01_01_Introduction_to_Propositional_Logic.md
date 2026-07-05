@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Giới thiệu Logic Mệnh đề"
 categories: chapter01
@@ -6,26 +7,31 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
+excerpt: "Trong chương này chúng ta xây dựng nền tảng logic mệnh đề — hệ thống hình thức cho phép biểu diễn, phân tích và suy luận về các phát biểu có giá trị đúng hoặc…"
 ---
 
-Mỗi lần bạn viết `if (score >= 5)` hay thêm điều kiện `WHERE status = "active"`, bạn đang buộc máy tính phải trả lời một câu hỏi rất cổ điển: **mệnh đề này đúng hay sai?** 
+<div class="textbook-epigraph" markdown="1">
 
-Nghe có vẻ đơn giản, nhưng chính kiểu quyết định nhị phân này — đúng hoặc sai, 1 hoặc 0, true hoặc false — là viên gạch đầu tiên xây nên toàn bộ tòa nhà khoa học máy tính. Từ điều kiện `if` trong code, đến truy vấn SQL lọc hàng triệu bản ghi, đến các quy tắc phân quyền và kiểm thử tự động, tất cả đều dựa trên một nền tảng chung: **logic mệnh đề**.
+"Logic is the beginning of wisdom, not the end of it."
 
-Nhưng tại sao một khái niệm nghe có vẻ "hiển nhiên" như vậy lại cần được học một cách chính thức? Câu trả lời nằm ở chỗ: khi hệ thống phức tạp lên, trực giác của con người rất dễ sai. Một điều kiện nhìn "hợp lý" vẫn có thể cho kết quả ngược lại ở đúng một trường hợp hiếm gặp. Một câu yêu cầu nghiệp vụ viết bằng tiếng Việt có thể bị hiểu theo nhiều cách khác nhau. Một đoạn code "chạy được" không có nghĩa là "đúng với mọi đầu vào".
+<span class="epigraph-attribution">— Leonard Nimoy (as Spock)</span>
 
-Logic mệnh đề ra đời để biến những câu khẳng định đời thường — mơ hồ, chủ quan, dễ hiểu lầm — thành thứ có thể **kiểm tra, phân tích và tính toán** một cách chính xác tuyệt đối. Khi biết cách nhìn một phát biểu dưới lăng kính đúng/sai, bạn không chỉ học toán chặt chẽ hơn mà còn:
+</div>
 
-- Viết điều kiện ít mơ hồ hơn, giảm bug logic.
-- Thiết kế test case bao phủ đủ trường hợp.
-- Đọc hiểu yêu cầu nghiệp vụ chính xác hơn.
-- Hiểu cách máy tính "suy nghĩ" ở tầng thấp nhất.
+Trong chương này chúng ta xây dựng nền tảng **logic mệnh đề** — hệ thống hình thức cho phép biểu diễn, phân tích và suy luận về các phát biểu có giá trị đúng hoặc sai. Trong khoa học máy tính, mọi quyết định nhị phân từ điều kiện `if` trong chương trình, truy vấn `WHERE` trong cơ sở dữ liệu, đến quy tắc phân quyền và kiểm thử tự động, đều dựa trên cùng một nguyên lý: mỗi phát biểu phải được đánh giá là đúng hoặc sai tại một thời điểm cho trước. Mục 1.1 bắt đầu từ khái niệm cốt lõi nhất: **mệnh đề** (proposition).
 
-Trong bài học này, chúng ta sẽ bắt đầu từ câu hỏi căn bản nhất: **Mệnh đề là gì? Và tại sao không phải mọi câu đều là mệnh đề?**
+Mỗi lần lập trình viên viết `if (score >= 5)` hay thêm điều kiện `WHERE status = "active"`, máy tính buộc phải trả lời câu hỏi cổ điển: mệnh đề này đúng hay sai? Kiểu quyết định nhị phân — đúng hoặc sai, 1 hoặc 0, `true` hoặc `false` — là viên gạch đầu tiên của toàn bộ nền tảng tính toán.
+
+Khi hệ thống phức tạp hơn, trực giác của con người dễ dẫn đến sai lầm: một điều kiện nhìn hợp lý vẫn có thể cho kết quả ngược ở đúng một trường hợp biên; yêu cầu nghiệp vụ bằng ngôn ngữ tự nhiên có thể được hiểu theo nhiều cách; đoạn mã "chạy được" chưa chắc đúng với mọi đầu vào. Logic mệnh đề chuyển các câu khẳng định mơ hồ thành đối tượng có thể **kiểm tra, phân tích và tính toán** một cách chính xác. Nắm vững khái niệm này giúp chúng ta viết điều kiện ít mơ hồ hơn, thiết kế test case bao phủ đủ trường hợp, đọc hiểu yêu cầu nghiệp vụ chính xác hơn, và hiểu cách máy tính đánh giá logic ở tầng thấp nhất.
+
+Mục này trả lời hai câu hỏi căn bản: **mệnh đề là gì**, và **vì sao không phải mọi câu đều là mệnh đề**.
 
 ## Mục tiêu học tập
 
-Sau bài học này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Nhận biết** câu nào là mệnh đề và câu nào không phải mệnh đề.
 - **Gán** ký hiệu logic cho các mệnh đề trong bài toán thực tế.
@@ -33,35 +39,44 @@ Sau bài học này, sinh viên có thể:
 - **Giải thích** vì sao logic mệnh đề quan trọng trong lập trình, cơ sở dữ liệu, AI và bảo mật.
 - **Chuyển đổi** một yêu cầu nghiệp vụ đơn giản thành điều kiện logic để dùng trong code.
 
+
 **Từ khóa**: Mệnh đề (proposition), giá trị chân lý (truth value), mệnh đề sơ cấp (atomic proposition), mệnh đề phức hợp (compound proposition), logic trong lập trình.
+</div>
+
 
 ## Mệnh đề là gì?
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Mệnh đề (proposition) là một câu khẳng định có thể xác định được tính đúng hoặc sai, nhưng không thể vừa đúng vừa sai.
+</div>
+
 
 ![Aristotle - cha đẻ của logic](/discrete-mathematics-for-computer-science-iuh/img/course/Aristotle_Altemps_Inv8575.jpg)
 
-*Hình 1.1: Tượng bán thân Aristotle tại Palazzo Altemps, Roma — người đầu tiên hệ thống hóa các quy luật suy luận*
-
+<p class="textbook-figure-caption" data-figure="1.1">Tượng bán thân Aristotle tại Palazzo Altemps, Roma — người đầu tiên hệ thống hóa các quy luật suy luận</p>
 ![George Boole — cha đẻ logic Boolean](/discrete-mathematics-for-computer-science-iuh/img/course/George_Boole.jpg)
 
-*Hình 1.2: George Boole (1815–1864), nhà toán học người Anh, người đặt nền móng cho logic Boolean dùng trong máy tính hiện đại.*
-
+<p class="textbook-figure-caption" data-figure="1.2">George Boole (1815–1864), nhà toán học người Anh, người đặt nền móng cho logic Boolean dùng trong máy tính hiện đại.</p>
 ![Bảng tứ đối — nền tảng suy luận cổ điển](/discrete-mathematics-for-computer-science-iuh/img/course/Square_of_opposition__set_diagrams.svg)
 
-*Hình 1.3: Bảng tứ đối (square of opposition) — mô hình quan hệ giữa các mệnh đề trong logic cổ điển, tiền thân của logic hình thức.*
-
-### Ví dụ về mệnh đề:
+<p class="textbook-figure-caption" data-figure="1.3">Bảng tứ đối (square of opposition) — mô hình quan hệ giữa các mệnh đề trong logic cổ điển, tiền thân của logic hình thức.</p>
+<div class="textbook-example" markdown="1">
+**Ví dụ** (về mệnh đề):
 - "2 + 3 = 5" (đúng)
 - "Hà Nội là thủ đô của Việt Nam" (đúng)  
 - "5 > 10" (sai)
 - "Tất cả số nguyên tố đều là số lẻ" (sai, vì 2 là số nguyên tố chẵn)
+</div>
 
-### Ví dụ KHÔNG phải mệnh đề:
+
+<div class="textbook-example" markdown="1">
+**Ví dụ** (KHÔNG phải mệnh đề):
 - "x + 1 = 5" (phụ thuộc vào giá trị của x)
 - "Hôm nay trời đẹp quá!" (mang tính chủ quan)
 - "Mấy giờ rồi?" (câu hỏi)
 - "Hãy đóng cửa!" (câu mệnh lệnh)
+</div>
+
 
 ## Logic học nghiên cứu cái gì?
 
@@ -77,44 +92,31 @@ Logic học không quan tâm đến **nội dung** cụ thể của các phát b
 | Giá trị chân lý | Mối quan hệ đúng/sai | Ý nghĩa thực tế của câu |
 | Suy luận | Quy tắc từ tiền đề đến kết luận | Chủ đề của cuộc tranh luận |
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Cả hai câu sau đều có cùng hình thức logic:
 - "Nếu trời mưa thì đường ướt"
 - "Nếu n chẵn thì n² chẵn"
 
 Logic học chỉ quan tâm đến cấu trúc `Nếu P thì Q`, không quan tâm P là "trời mưa" hay "n chẵn".
+</div>
 
-### Ví dụ thực tế: Tranh cãi trên mạng xã hội
 
-Một cuộc tranh cãi trên Facebook:
+<div class="textbook-example" markdown="1">
+**Ví dụ** (thực tế): Tranh cãi trên mạng xã hội
+
+Xét cuộc trao đổi sau:
 
 > **Người A**: "Nếu bạn yêu nước thì phải ủng hộ chính sách X."
 > **Người B**: "Tôi không ủng hộ chính sách X, nhưng tôi vẫn yêu nước!"
 
-Hai người đang nói về cùng một cấu trúc logic: **Nếu P thì Q**.
+Hai phát biểu trên cùng mang cấu trúc logic **Nếu P thì Q**. Đặt ký hiệu: $$p$$ — yêu nước; $$q$$ — ủng hộ chính sách X. Người A ngụ ý $$p \to q$$; người B phản bác bằng trường hợp $$\neg q \land p$$ (không ủng hộ X nhưng vẫn yêu nước). Câu "Nếu yêu nước thì phải ủng hộ X" là một **mệnh đề kéo theo** (implication); người B phủ nhận nó bằng cách chỉ ra $$p$$ đúng trong khi $$q$$ sai — đúng theo định nghĩa kéo theo (sẽ trình bày ở mục sau). Cuộc tranh cãi thực chất xoay quanh **nội dung** của $$p$$ và $$q$$, không phải **hình thức** suy luận. Logic học giúp chúng ta tách biệt hai khía cạnh này để phân tích lập luận rõ ràng hơn.
+</div>
 
-Ký hiệu:
-- $$p$$: Yêu nước
-- $$q$$: Ủng hộ chính sách X
 
-**Người A** ngụ ý: $$p \to q$$ (Yêu nước → Ủng hộ X)
+<div class="textbook-example" markdown="1">
+**Ví dụ** (thực tế): Luật an toàn giao thông
 
-**Người B** phản bác: $$\neg q \land p$$ (Không ủng hộ X VÀ vẫn yêu nước)
-
-**Phân tích logic**:
-- Câu "Nếu yêu nước thì phải ủng hộ X" là một **mệnh đề kéo theo** (implication).
-- Người A đang khẳng định $$p \to q$$ đúng.
-- Người B đang phủ nhận điều này bằng cách đưa ra trường hợp $$p$$ đúng nhưng $$q$$ sai — đúng theo định nghĩa của implication (xem chương sau).
-- Cuộc tranh cãi thực chất là về **nội dung** của p và q, không phải về **hình thức** logic.
-
-**Bài học**: Nhiều tranh cãi trên mạng xã hội thực ra là tranh cãi về **ý nghĩa** của các mệnh đề, chứ không phải về **cấu trúc suy luận**. Logic học giúp ta tách biệt hai khía cạnh này để tranh luận rõ ràng hơn.
-
-### Ví dụ thực tế: Luật an toàn giao thông (từ 1/7)
-
-Từ ngày 1/7, khi chở trẻ em dưới 10 tuổi và chiều cao dưới 1,35 m, xe ô tô gia đình, xe cá nhân **phải lắp ghế trẻ em**.
-
-**Phân tích logic**:
-
-Ký hiệu:
+Theo quy định, khi chở trẻ em dưới 10 tuổi và chiều cao dưới 1,35 m trên xe ô tô gia đình hoặc xe cá nhân, người lái **phải lắp ghế trẻ em**. Đặt ký hiệu:
 - $$p$$: Trẻ em dưới 10 tuổi
 - $$q$$: Trẻ em chiều cao dưới 1,35 m
 - $$r$$: Xe ô tô gia đình hoặc xe cá nhân
@@ -122,8 +124,10 @@ Ký hiệu:
 
 **Điều kiện bắt buộc**:
 
+<div class="textbook-equation" markdown="1">
 $$(p \land q \land r) \to s$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Nghĩa là: **Nếu** (trẻ dưới 10 tuổi **VÀ** cao dưới 1,35 m **VÀ** đi xe gia đình/cá nhân) **thì phải** lắp ghế trẻ em.
 
 **Ứng dụng trong code** (hệ thống kiểm tra đăng ký xe):
@@ -144,10 +148,9 @@ def can_register_without_child_seat(age, height, vehicle_type):
     return not requires_child_seat
 ```
 
-**Bài học**: Luật giao thông thường được viết dưới dạng **mệnh đề kéo theo** (implication). Hiểu logic giúp ta:
-- Viết điều kiện kiểm tra chính xác trong phần mềm
-- Tránh nhầm lẫn giữa `and`/`or` khi chuyển luật thành code
-- Thiết kế test case bao phủ đủ trường hợp biên (tuổi = 10, cao = 1,35 m, xe công vụ...)
+Luật giao thông thường được diễn đạt dưới dạng **mệnh đề kéo theo**. Hiểu logic giúp chúng ta viết điều kiện kiểm tra chính xác trong phần mềm, tránh nhầm lẫn giữa `and`/`or` khi chuyển luật thành mã nguồn, và thiết kế test case bao phủ các trường hợp biên (tuổi = 10, chiều cao = 1,35 m, loại xe công vụ, v.v.).
+</div>
+
 
 ## Định lý bất toàn (Gödel)
 
@@ -163,7 +166,7 @@ Nói cách khác: Không có hệ thống logic nào có thể chứng minh đư
 
 > **Một hệ thống logic nhất quán không thể chứng minh được tính nhất quán của chính nó.**
 
-Nếu một hệ thống có thể chứng minh rằng nó không mâu thuẫn, thì chính nó đã mâu thuẫn. Nói cách khác: Bạn không thể "tự chứng minh mình đúng" từ bên trong hệ thống.
+Nếu một hệ thống có thể chứng minh rằng nó không mâu thuẫn, thì chính nó đã mâu thuẫn. Nói cách khác: một hệ thống không thể "tự chứng minh tính nhất quán của chính mình" từ bên trong.
 
 ### Ý nghĩa thực tiễn
 
@@ -179,10 +182,13 @@ Nếu một hệ thống có thể chứng minh rằng nó không mâu thuẫn, 
 
 Chúng ta thường dùng các chữ cái như p, q, r, s,... để ký hiệu các mệnh đề.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - p: "Hôm nay là thứ hai"
 - q: "Trời đang mưa"
 - r: "2 + 2 = 4"
+</div>
+
 
 ## Giá trị chân lý
 
@@ -229,7 +235,7 @@ Trong ví dụ này:
 - `has_valid_id` là một mệnh đề Boolean.
 - Toàn bộ điều kiện là một mệnh đề phức hợp.
 
-Nếu bạn hiểu logic mệnh đề, bạn sẽ đọc được điều kiện phức tạp, phát hiện lỗi `and/or`, và viết test case tốt hơn.
+Nắm vững logic mệnh đề giúp chúng ta đọc được điều kiện phức tạp, phát hiện lỗi `and`/`or`, và viết test case hiệu quả hơn.
 
 ### 2. Trong Cơ sở dữ liệu
 
@@ -258,7 +264,7 @@ Hệ chuyên gia, kiểm chứng chương trình, SAT solver và nhiều kỹ th
 
 ## Ví dụ thực tế: Từ yêu cầu đến điều kiện logic
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Yêu cầu nghiệp vụ**: Sinh viên được đăng ký môn học nếu:
 
 1. Đã đóng học phí.
@@ -274,8 +280,10 @@ Ký hiệu:
 
 Điều kiện đăng ký:
 
+<div class="textbook-equation" markdown="1">
 $$p \land q \land (r \lor s)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Trong code:
 
 ```python
@@ -285,7 +293,10 @@ can_register = paid_tuition and account_active and (passed_prerequisite or advis
 
 ## Định lý quan trọng: Số lượng hàm Boolean
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Trên một tập hợp gồm \( n \) biến mệnh đề, có **đúng \( 2^{2^n} \)** hàm Boolean khác nhau.
+</div>
+
 
 **Chứng minh**:
 
@@ -446,7 +457,7 @@ def validate_input(x, y, z):
 
 (a) Đặt ký hiệu cho từng mệnh đề sơ cấp trong điều kiện.
 (b) Viết mệnh đề phức hợp hoàn chỉnh.
-(c) Liệt kê tất cả các tổ hợp đầu vào cần kiểm thử để đảm bảo bao phủ 100% điều kiện (bạn có thể dùng bảng liệt kê).
+(c) Liệt kê tất cả các tổ hợp đầu vào cần kiểm thử để đảm bảo bao phủ 100% điều kiện (có thể dùng bảng liệt kê).
 
 <details>
 <summary>Đáp án</summary>
@@ -514,4 +525,20 @@ else:
 
 </details>
 
+---
 
+## Xem thêm / Video gợi ý
+
+- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (Truth table proof + laws)
+- [Discrete Math Full Course — Logic & Proofs](https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKZS) — Trefor Bazett (Complete semester playlist)
+
+
+## Tóm tắt
+
+- **Mệnh đề** là câu khẳng định có giá trị chân lý xác định (đúng hoặc sai); câu hỏi, mệnh lệnh, câu chứa biến tự do, và phát biểu chủ quan không phải mệnh đề.
+- Logic học nghiên cứu **hình thức** và **giá trị chân lý** của phát biểu, không quan tâm nội dung cụ thể.
+- Mệnh đề được ký hiệu bằng chữ cái ($$p, q, r, \ldots$$) và phân thành **mệnh đề sơ cấp** (nguyên tử) và **mệnh đề phức hợp** (ghép từ các mệnh đề khác).
+- Logic mệnh đề là nền tảng của lập trình điều kiện, truy vấn cơ sở dữ liệu, phân quyền, kiểm thử và trí tuệ nhân tạo.
+- Trên $$n$$ biến mệnh đề có đúng $$2^{2^n}$$ hàm Boolean — lý do bảng chân trị chỉ khả thi khi $$n$$ nhỏ.
+
+Trong bài tiếp theo, chúng ta giới thiệu các **phép toán logic** dùng để ghép mệnh đề sơ cấp thành biểu thức phức hợp.

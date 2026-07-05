@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Lớp Độ phức tạp trong Kỹ thuật Phần mềm"
 categories: chapter20
@@ -6,35 +7,16 @@ date: 2021-01-01
 order: 2
 required: false
 lang: en
+excerpt: 'Chương 20 đã giới thiệu lớp P, NP và câu hỏi $P \stackrel{?}{=} NP$. Mục bổ sung này khảo sát ứng dụng lý thuyết độ phức tạp trong kỹ thuật phần mềm — cách…'
 ---
 
-Mỗi lần bạn chọn giữa thuật toán $$O(n \log n)$$ và vòng lặp lồng $$O(n^2)$$, hay khi product manager hỏi "tại sao không brute-force mọi tổ hợp?" — bạn đang áp dụng **lý thuyết độ phức tạp** vào quyết định kỹ thuật.
-
-```python
-def two_sum_bruteforce(nums: list[int], target: int) -> tuple[int, int] | None:
-    """O(n^2) — đủ cho n ≈ 10^3, chết với n ≈ 10^6"""
-    for i in range(len(nums)):
-        for j in range(i + 1, len(nums)):
-            if nums[i] + nums[j] == target:
-                return i, j
-    return None
-
-def two_sum_hash(nums: list[int], target: int) -> tuple[int, int] | None:
-    """O(n) — đổi thời gian lấy bộ nhớ"""
-    seen: dict[int, int] = {}
-    for i, x in enumerate(nums):
-        need = target - x
-        if need in seen:
-            return seen[need], i
-        seen[x] = i
-    return None
-```
-
-Hai hàm cùng đúng, nhưng **scale** khác nhau. Chương 20 đặt câu hỏi hình thức: lớp **P**, **NP**, **NP-complete** — và bài này dịch chúng thành quy tắc thiết kế hệ thống, chọn thuật toán, và biết khi nào phải xấp xỉ (approximation) thay vì tìm tối ưu chính xác.
+Chương 20 đã giới thiệu lớp P, NP và câu hỏi $P \stackrel{?}{=} NP$. Mục bổ sung này khảo sát **ứng dụng lý thuyết độ phức tạp trong kỹ thuật phần mềm** — cách phân loại bài toán ảnh hưởng đến quyết định thiết kế, lựa chọn thuật toán và kỳ vọng sản phẩm trong thực tế công nghiệp.
 
 ## Mục tiêu học tập
 
-Sau bài học này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Ước lượng** độ phức tạp thời gian/không gian của đoạn code và chọn cấu trúc dữ liệu phù hợp.
 - **Giải thích** ý nghĩa thực dụng của P, NP, NP-hard, NP-complete cho kỹ sư phần mềm.
@@ -43,6 +25,7 @@ Sau bài học này, sinh viên có thể:
 - **Đọc** benchmark và profiling để xác nhận Big-O trên dữ liệu thực.
 
 **Từ khóa**: độ phức tạp thời gian (time complexity), Big-O, lớp P, lớp NP, NP-complete, NP-hard, heuristic, xấp xỉ (approximation).
+</div>
 
 ---
 
@@ -79,14 +62,13 @@ def has_duplicate_slow(nums: list[int]) -> bool:
 
 ![Big-O notation — so sánh tốc độ tăng trưởng](/discrete-mathematics-for-computer-science-iuh/img/course/Big-O-notation.png)
 
-*Hình 20.6: Big-O — $$O(n)$$, $$O(n \log n)$$, $$O(n^2)$$ tách nhau rõ khi $$n$$ lớn; chọn sai hàm là lỗi kiến trúc, không chỉ micro-optimization.*
-
+<p class="textbook-figure-caption" data-figure="20.6">Big-O — $$O(n)$$, $$O(n \log n)$$, $$O(n^2)$$ tách nhau rõ khi $$n$$ lớn; chọn sai hàm là lỗi kiến trúc, không chỉ micro-optimization.</p>
 ### 1.2. Ẩn hằng số vẫn quan trọng ở scale vừa
 
 Big-O bỏ hằng số, nhưng $$10^6$$ lần $$O(n)$$ với $$n=10^4$$ vẫn chạy được; $$O(2^n)$$ với $$n=40$$ đã là tỷ tỷ phép. **Luôn ước lượng $$n$$** trong production.
 
-<div class="content-box insight-box" markdown="1">
-**Nhận xét**: Profile trước khi tối ưu — nhưng nếu thuật toán là $$O(n^2)$$ và $$n$$ tăng gấp 10 mỗi năm, profile chỉ xác nhận bạn cần đổi thuật toán, không chỉ đổi CPU.
+<div class="content-box insight-box textbook-block" markdown="1">
+**Nhận xét**: Profile trước khi tối ưu — nhưng nếu thuật toán là $$O(n^2)$$ và $$n$$ tăng gấp 10 mỗi năm, profile chỉ xác nhận chúng ta cần đổi thuật toán, không chỉ đổi CPU.
 </div>
 
 ---
@@ -116,19 +98,17 @@ Tìm lời giải từ đầu có thể khó; **kiểm tra** thường dễ hơn
 
 ![Stephen Cook — định nghĩa NP-complete (định lý Cook–Levin)](/discrete-mathematics-for-computer-science-iuh/img/course/stephen_cook.svg)
 
-*Hình 20.7: Stephen Cook — SAT là NP-complete đầu tiên; mọi bài NP có thể rút gọn về SAT (trong lý thuyết); trong thực tế, SAT solver vẫn xử lý được nhiều instance engineering.*
-
+<p class="textbook-figure-caption" data-figure="20.7">Stephen Cook — SAT là NP-complete đầu tiên; mọi bài NP có thể rút gọn về SAT (trong lý thuyết); trong thực tế, SAT solver vẫn xử lý được nhiều instance engineering.</p>
 ### 2.3. NP-complete và NP-hard
 
 - **NP-complete**: thuộc NP, và mọi bài NP **rút gọn đa thức** về nó.
 - **NP-hard**: ít nhất hard như NP-complete, có thể không thuộc NP (ví dụ halting).
 
-**Quy tắc product**: nếu bài toán của bạn là biến thể Traveling Salesman, Bin Packing, Job Scheduling với ràng buộc tổ hợp — giả định **không** có thuật toán đa thức tối ưu toàn cục (trừ khi P = NP).
+**Quy tắc product**: nếu bài toán của chúng ta là biến thể Traveling Salesman, Bin Packing, Job Scheduling với ràng buộc tổ hợp — giả định **không** có thuật toán đa thức tối ưu toàn cục (trừ khi P = NP).
 
 ![Richard Karp — 21 bài NP-complete kinh điển](/discrete-mathematics-for-computer-science-iuh/img/course/richard_karp.svg)
 
-*Hình 20.8: Richard Karp — danh sách 21 bài NP-complete; nhiều tên xuất hiện trong logistics, lập lịch, và tối ưu hóa sản phẩm.*
-
+<p class="textbook-figure-caption" data-figure="20.8">Richard Karp — danh sách 21 bài NP-complete; nhiều tên xuất hiện trong logistics, lập lịch, và tối ưu hóa sản phẩm.</p>
 ---
 
 ## Phần 3: Khi brute-force thất bại
@@ -167,7 +147,7 @@ Chỉ dùng khi $$n \le 10$$ trong demo — production dùng heuristic (Christof
 | Cache + incremental | Recompute khi input thay ít |
 | Chuyển bài toán | Relax constraint, solve, repair |
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Cẩn thận**: "Chạy được trên test" ≠ "scale được". Demo $$n=8$$ che giấu $$O(n!)$$. Luôn document giới hạn input và fallback khi vượt ngưỡng.
 </div>
 
@@ -262,7 +242,7 @@ Xem Phần mở đầu — lưu `seen[value] = index`, khi gặp `need in seen` 
 
 ### Bài tập 6: Reduction trực giác
 
-Giải thích vì sao "tìm clique kích thước $$k$$" trên đồ thị khó khiến "tìm đoàn bạn tối đa trong mạng xã hội" (mọi người quen nhau) cũng khó.
+Giải thích vì sao "tìm clique kích thước $$k$$" trên đồ thị khó khiến "tìm nhóm bạn tối đa trong mạng xã hội" (mọi người quen nhau) cũng khó.
 
 <details>
 <summary>Đáp án</summary>
@@ -293,6 +273,10 @@ Bài vehicle routing với time window là NP-hard. Với 500 đơn, exact solve
 
 </details>
 
+## Xem thêm / Video gợi ý
+
+- [Big O Notation — Intuition](https://www.youtube.com/watch?v=4jZ5n8k0p0Q) — 3Blue1Brown (Growth rates visualized)
+
 ## Tóm tắt
 
 - **Big-O** + ước lượng $$n$$ quyết định thuật toán có ship được không.
@@ -301,4 +285,4 @@ Bài vehicle routing với time window là NP-hard. Với 500 đơn, exact solve
 - **Engineering**: heuristic, approximation, solver + timeout, profiling — công cụ khi lý thuyết nói "khó".
 - **P = NP?** Vẫn mở — nhưng thiết kế hệ thống an toàn giả định **không** có phép màu đa thức cho mọi bài tối ưu tổ hợp.
 
-Chúng ta đã hoàn thành hành trình từ logic mệnh đề đến độ phức tạp — mỗi chương gắn với một lát cắt thực tế trong kỹ thuật phần mềm hiện đại.
+Chúng chúng ta đã hoàn thành hành trình từ logic mệnh đề đến độ phức tạp — mỗi chương gắn với một lát cắt thực tế trong kỹ thuật phần mềm hiện đại.

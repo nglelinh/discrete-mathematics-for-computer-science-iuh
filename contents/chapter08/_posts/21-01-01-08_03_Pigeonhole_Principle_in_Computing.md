@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Nguyên lý Chuồng chim trong Khoa học Máy tính"
 categories: chapter08
@@ -6,25 +7,12 @@ date: 2021-01-01
 order: 3
 required: false
 lang: en
+excerpt: "Ở các mục trước chúng ta đã học nguyên lý Dirichlet và các ứng dụng nâng cao. Mục bổ sung này trình bày vai trò của nguyên lý trong khoa học máy tính: va chạm…"
 ---
 
-Có những định lý mạnh một cách khó tin vì chúng quá đơn giản.
-Nguyên lý chuồng chim là ví dụ hoàn hảo.
+Ở các mục trước chúng ta đã học nguyên lý Dirichlet và các ứng dụng nâng cao. Mục bổ sung này trình bày vai trò của nguyên lý trong khoa học máy tính: va chạm băm, nén không mất mát, phát hiện lỗi và lý thuyết Ramsey.
 
-Nếu có nhiều chim hơn chuồng,
-thì ít nhất một chuồng phải chứa từ hai con chim trở lên.
-
-Nghe như chuyện quá hiển nhiên.
-Nhưng từ nguyên lý này,
-ta rút ra được các kết luận bất ngờ về hash collisions,
-lossless compression,
-error detection,
-và thậm chí mở cánh cửa sang Ramsey theory.
-
-Đây là bài học về một chân lý lớn của toán rời rạc:
-đôi khi ý tưởng đơn giản nhất lại là lưỡi dao sắc nhất.
-
----
+Có những định lý mạnh vì chúng quá đơn giản. Nếu có nhiều chim hơn chuồng, ít nhất một chuồng phải chứa từ hai con trở lên — từ đó, chúng ta rút ra các kết luận về hash collision, giới hạn nén và khả năng phân biệt thông điệp. Đây là minh chứng cho chân lý: đôi khi ý tưởng đơn giản nhất lại là công cụ sắc nhất.
 
 ## Phần 1: Dirichlet và nguyên lý năm 1834
 
@@ -37,11 +25,11 @@ Trong thế kỷ XIX,
 Sức mạnh của nguyên lý không nằm ở độ phức tạp kỹ thuật.
 Nó nằm ở chỗ:
 từ một lập luận đếm rất cơ bản,
-ta có thể ép buộc sự tồn tại của hiện tượng nào đó.
+chúng ta có thể ép buộc sự tồn tại của hiện tượng nào đó.
 
 ### 1.2. “Phải tồn tại” là ngôn ngữ của nhiều proof đẹp
 
-Nguyên lý chuồng chim không nói cho ta *ở đâu*.
+Nguyên lý chuồng chim không nói cho chúng ta *ở đâu*.
 Nó thường chỉ nói rằng *chắc chắn phải có*.
 
 Kiểu reasoning này xuất hiện rất nhiều trong toán học và computer science:
@@ -53,8 +41,7 @@ Kiểu reasoning này xuất hiện rất nhiều trong toán học và computer
 
 ![Johann Peter Gustav Lejeune Dirichlet](/discrete-mathematics-for-computer-science-iuh/img/course/Dirichlet.jpg)
 
-*Hình 8.11: Một lập luận đếm ngắn của Dirichlet trở thành công cụ nền cho rất nhiều kết quả hiện đại trong khoa học máy tính.*
-
+<p class="textbook-figure-caption" data-figure="8.11">Một lập luận đếm ngắn của Dirichlet trở thành công cụ nền cho rất nhiều kết quả hiện đại trong khoa học máy tính.</p>
 ---
 
 ## Phần 2: Hash collisions là không thể tránh
@@ -95,8 +82,7 @@ Nó là phần tất yếu của thiết kế.
 
 ![Nguyên lý chuồng chim — hash collision](/discrete-mathematics-for-computer-science-iuh/img/course/Pigeonhole.jpg)
 
-*Hình 8.12: Hash collision là hệ quả logic — nhiều đầu vào hơn đầu ra thì ít nhất hai input phải ánh xạ cùng một giá trị.*
-
+<p class="textbook-figure-caption" data-figure="8.12">Hash collision là hệ quả logic — nhiều đầu vào hơn đầu ra thì ít nhất hai input phải ánh xạ cùng một giá trị.</p>
 ---
 
 ## Phần 3: Lossless compression và giới hạn không thể vượt qua
@@ -105,14 +91,14 @@ Nó là phần tất yếu của thiết kế.
 
 Nhiều người mới học dễ tưởng:
 nếu thông minh đủ,
-ta có thể luôn nén file nhỏ hơn bản gốc bằng lossless compression.
+chúng ta có thể luôn nén file nhỏ hơn bản gốc bằng lossless compression.
 
 Nguyên lý chuồng chim bác bỏ điều đó rất nhanh.
 
 Nếu mọi file độ dài `n` bit
 đều được ánh xạ sang chuỗi ngắn hơn `n` bit
 và vẫn giải nén chính xác,
-thì ta đang nhét nhiều input hơn vào ít output hơn mà không collision.
+thì chúng ta đang nhét nhiều input hơn vào ít output hơn mà không collision.
 Điều đó bất khả.
 
 ### 3.2. Bài học sâu hơn về thông tin
@@ -128,7 +114,7 @@ không phải giới hạn do kỹ sư lười.
 
 ### 3.3. Vì sao insight này quan trọng
 
-Nó giúp ta hiểu đúng bản chất của compression:
+Nó giúp chúng ta hiểu đúng bản chất của compression:
 khai thác cấu trúc,
 thừa lặp,
 và phân bố không đồng đều.
@@ -138,19 +124,17 @@ không có phép màu.
 
 ![Quá nhiều file — không thể nén tất cả](/discrete-mathematics-for-computer-science-iuh/img/course/TooManyPigeons.jpg)
 
-*Hình 8.13: Nguyên lý chuồng chim cho thấy vì sao lossless compression không thể thắng tuyệt đối trên mọi dữ liệu.*
-
+<p class="textbook-figure-caption" data-figure="8.13">Nguyên lý chuồng chim cho thấy vì sao lossless compression không thể thắng tuyệt đối trên mọi dữ liệu.</p>
 ![Birthday paradox — giới hạn ánh xạ song ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg)
 
-*Hình 8.14: Nén lossless là ánh xạ song ánh — khi số file lớn hơn số chuỗi ngắn hơn, collision là bất khả tránh.*
-
+<p class="textbook-figure-caption" data-figure="8.14">Nén lossless là ánh xạ song ánh — khi số file lớn hơn số chuỗi ngắn hơn, collision là bất khả tránh.</p>
 ---
 
 ## Phần 4: Error detection codes và parity bits
 
 ### 4.1. Thêm bit để phát hiện lỗi
 
-Giả sử ta truyền 7 bit dữ liệu và thêm 1 parity bit để tổng số bit 1 là chẵn.
+Giả sử chúng ta truyền 7 bit dữ liệu và thêm 1 parity bit để tổng số bit 1 là chẵn.
 
 Nếu một bit bị lật trong quá trình truyền,
 parity sẽ đổi,
@@ -160,7 +144,7 @@ và hệ thống phát hiện có lỗi.
 
 Không gian các thông điệp nhận được rất lớn,
 trong khi số mã hợp lệ hữu hạn.
-Nguyên lý đếm và chuồng chim giúp ta hiểu rằng:
+Nguyên lý đếm và chuồng chim giúp chúng ta hiểu rằng:
 
 - có lỗi phát hiện được,
 - có lỗi không sửa được,
@@ -173,7 +157,7 @@ Reed–Solomon,
 LDPC
 đều đối đầu cùng câu hỏi nền:
 với số dư thừa hữu hạn,
-ta phân tách không gian lỗi đến mức nào?
+chúng ta phân tách không gian lỗi đến mức nào?
 
 Ở sâu bên dưới,
 tư duy chuồng chim vẫn hiện diện:
@@ -181,8 +165,7 @@ số lượng pattern cần phân biệt so với số lượng codewords/metada
 
 ![Cây quyết định — phân tách không gian lỗi](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 8.15: Với số bit kiểm tra hữu hạn, số pattern lỗi có thể phân biệt cũng hữu hạn — nguyên lý chuồng chim đặt giới hạn cho coding theory.*
-
+<p class="textbook-figure-caption" data-figure="8.15">Với số bit kiểm tra hữu hạn, số pattern lỗi có thể phân biệt cũng hữu hạn — nguyên lý chuồng chim đặt giới hạn cho coding theory.</p>
 ---
 
 ## Phần 5: Ramsey theory — trật tự xuất hiện từ hỗn độn
@@ -191,7 +174,7 @@ số lượng pattern cần phân biệt so với số lượng codewords/metada
 
 Ramsey theory nghiên cứu điều đáng kinh ngạc:
 nếu cấu trúc đủ lớn,
-ta không thể tránh hoàn toàn một số mẫu trật tự.
+chúng ta không thể tránh hoàn toàn một số mẫu trật tự.
 
 Ví dụ phổ biến:
 trong nhóm đủ đông người,
@@ -213,15 +196,14 @@ toán học có thể đi rất xa.
 
 ![Ramsey theory — mẫu trật tự bắt buộc](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
-*Hình 8.16: Ramsey theory nghiên cứu khi nào một cấu trúc nhất định phải xuất hiện trong hệ thống đủ lớn.*
-
+<p class="textbook-figure-caption" data-figure="8.16">Ramsey theory nghiên cứu khi nào một cấu trúc nhất định phải xuất hiện trong hệ thống đủ lớn.</p>
 ---
 
 ## Phần 6: Tương lai — từ systems đến theory
 
 Nguyên lý chuồng chim sẽ còn mãi hữu ích vì mọi hệ thống hữu hạn đều đối diện bài toán phân bổ.
 
-Ta gặp nó trong:
+Chúng ta gặp nó trong:
 
 - hashing,
 - compression,
@@ -247,7 +229,7 @@ Từ Dirichlet,
 compression limits,
 error detection,
 và Ramsey theory,
-ta thấy một định lý ngắn có thể mở ra hàng loạt hệ quả sâu và rất thực tế.
+chúng ta thấy một định lý ngắn có thể mở ra hàng loạt hệ quả sâu và rất thực tế.
 
 Trong khoa học máy tính,
 đó là lời nhắc quan trọng:
@@ -290,6 +272,10 @@ Một hệ thống dùng bit chẵn lẻ. Giải thích tại sao nguyên lý ch
 Nếu số bit 1 không đúng chẵn/lẻ thì chắc chắn có lỗi (một trong các "chuồng" bị vi phạm).
 
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Pigeonhole Principle — Advanced](https://www.youtube.com/watch?v=9jZ5n8k0p0Q) — 3Blue1Brown (Generalized version)
 
 ## Tóm tắt
 

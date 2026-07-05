@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Số học Modulo và Đồng dư"
 categories: chapter15
@@ -6,42 +7,31 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã xây dựng nền về chia hết, số nguyên tố và thuật toán Euclid. Mục này giới thiệu số học modulo (đồng dư) — phép toán chỉ giữ lại phần…"
 ---
 
-Đồng hồ 24 giờ, chỉ số vòng trong buffer tròn, checksum, mã hóa RSA, tất cả đều dùng một ý tưởng quen mà đôi khi ta không gọi tên: sau khi vượt một ngưỡng, giá trị quay về đầu vòng. Đó chính là tinh thần của **số học modulo**.
-
-Lý thuyết số trong chương này không đứng riêng lẻ, nó là nền cho mã hóa, kiểm tra tính đúng đắn và nhiều cơ chế bảo mật hiện đại.
-Khi làm việc theo modulo, nhiều phép tính lớn trở nên gọn hơn và có cấu trúc hơn. Quan hệ **đồng dư** cho ta cách nói hai số "giống nhau trong cùng một vòng lặp" theo một mô đun cho trước. Đây là công cụ trung tâm của lý thuyết số ứng dụng.
-
-Trong khoa học máy tính, modulo xuất hiện ở khắp nơi, từ băm, mật mã, lịch biểu tuần hoàn đến xử lý địa chỉ trong cấu trúc dữ liệu vòng. Vì vậy, đây không phải một phần phụ, mà là ngôn ngữ nền của rất nhiều kỹ thuật thực tế.
-
-Trong bài này, chúng ta sẽ học cách tính toán trong modulo và hiểu rõ ý nghĩa của đồng dư trước khi đi sang mật mã và ứng dụng sâu hơn.
+Ở mục trước chúng ta đã xây dựng nền về chia hết, số nguyên tố và thuật toán Euclid. Mục này giới thiệu **số học modulo** (đồng dư) — phép toán chỉ giữ lại phần dư khi chia, là công cụ trung tâm của RSA, hàm băm và nhiều thuật toán bảo mật.
 
 ![Số học modulo](/discrete-mathematics-for-computer-science-iuh/img/course/modular_arithmetic.svg)
 
-*Hình 15.6: Đồng dư modulo $n$ — hai số cùng số dư khi chia cho $n$.*
-
+<p class="textbook-figure-caption" data-figure="15.6">Đồng dư modulo $n$ — hai số cùng số dư khi chia cho $n$.</p>
 ![Gauss và đồng dư](/discrete-mathematics-for-computer-science-iuh/img/course/Carl_Friedrich_Gauss.jpg)
 
-*Hình 15.7: Gauss hệ thống hóa modular arithmetic — nền cho RSA và nhiều giao thức bảo mật.*
-
+<p class="textbook-figure-caption" data-figure="15.7">Gauss hệ thống hóa modular arithmetic — nền cho RSA và nhiều giao thức bảo mật.</p>
 ![Modulo trong hashing](/discrete-mathematics-for-computer-science-iuh/img/course/Hash_table_simple_999.svg)
 
-*Hình 15.8: `hash(key) % table_size` — ứng dụng thực tế nhất của số học mô-đun.*
-
+<p class="textbook-figure-caption" data-figure="15.8">`hash(key) % table_size` — ứng dụng thực tế nhất của số học mô-đun.</p>
 ![Định lý Fermat nhỏ](/discrete-mathematics-for-computer-science-iuh/img/course/PrimeDecompositionExample.svg)
 
-*Hình 15.9: Với $p$ nguyên tố và $\gcd(a,p)=1$: $a^{p-1}\equiv 1 \pmod p$ — cốt lõi kiểm tra số nguyên tố.*
-
+<p class="textbook-figure-caption" data-figure="15.9">Với $p$ nguyên tố và $\gcd(a,p)=1$: $a^{p-1}\equiv 1 \pmod p$ — cốt lõi kiểm tra số nguyên tố.</p>
 ![Thuật toán Euclid mở rộng](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid.jpg)
 
-*Hình 15.10: Thuật toán Euclid mở rộng tìm nghịch đảo modulo — cần cho RSA.*
-
+<p class="textbook-figure-caption" data-figure="15.10">Thuật toán Euclid mở rộng tìm nghịch đảo modulo — cần cho RSA.</p>
 ## Mục tiêu học tập
 
-Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
+<div class="textbook-objectives" markdown="1">
 
-Sau bài học này, sinh viên có thể:
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Thực hiện** phép cộng, trừ, nhân trong modulo $$n$$.
 - **Giải** phương trình đồng dư tuyến tính dạng $$ax \equiv b \pmod{n}$$.
@@ -53,44 +43,20 @@ Sau bài học này, sinh viên có thể:
 
 ## 1. Đồng dư
 
-**Định nghĩa**: Cho $$a, b \in \mathbb{Z}$$, $$n \in \mathbb{Z}^+$$. Ta nói $$a$$ **đồng dư** với $$b$$ modulo $$n$$, ký hiệu:
-
-$$a \equiv b \pmod{n}$$
-
-nếu $$n \mid (a - b)$$, tức $$a$$ và $$b$$ có cùng số dư khi chia cho $$n$$.
-
-<div class="content-box example-box" markdown="1">
-- $$17 \equiv 5 \pmod{12}$$ vì $$17 - 5 = 12$$ chia hết cho 12
-- $$-8 \equiv 2 \pmod{5}$$ vì $$-8 - 2 = -10$$ chia hết cho $$5$$
-- $$15 \equiv 0 \pmod{5}$$ vì $$15$$ chia hết cho $$5$$
-</div>
-
-### Phép toán Modulo
-
-Nếu $$a \equiv b \pmod{n}$$ và $$c \equiv d \pmod{n}$$ thì:
-
-- $$a + c \equiv b + d \pmod{n}$$
-- $$a - c \equiv b - d \pmod{n}$$
-- $$a \times c \equiv b \times d \pmod{n}$$
-
-<div class="content-box example-box" markdown="1">
-Tính $$(23 \times 17) \bmod 5$$:
-
-$$23 \equiv 3 \pmod{5},\quad 17 \equiv 2 \pmod{5}$$
-$$23 \times 17 \equiv 3 \times 2 = 6 \equiv 1 \pmod{5}$$
-</div>
-
-<div class="content-box warning-box" markdown="1">
-**Cảnh báo**: Phép chia trong modulo KHÔNG đơn giản như trong số học thông thường. $$a \equiv b \pmod{n}$$ KHÔNG suy ra $$a/c \equiv b/c \pmod{n}$$. Để "chia" trong modulo, ta cần dùng **nghịch đảo modulo** (sẽ học ở phần 3).
+<div class="textbook-definition" markdown="1">
+**Định nghĩa**: Cho $$a, b \in \mathbb{Z}$$, $$n \in \mathbb{Z}^+$$. Chúng ta nói $$a$$ **đồng dư** với $$b$$ modulo $$n$$, ký hiệu:
 </div>
 
 ## 2. Phương trình Đồng dư Tuyến tính
 
 Bài toán: giải $$ax \equiv b \pmod{n}$$, tìm $$x$$.
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Phương trình có nghiệm khi và chỉ khi $$d = \gcd(a, n) \mid b$$. Khi đó, có đúng $$d$$ nghiệm modulo $$n$$, không đồng dư với nhau.
+</div>
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Giải $$6x \equiv 3 \pmod{9}$$.
 
 $$\gcd(6, 9) = 3$$ và $$3 \mid 3$$ → có 3 nghiệm.
@@ -99,13 +65,18 @@ Chia cả hai vế cho 3: $$2x \equiv 1 \pmod{3}$$ → $$x \equiv 2 \pmod{3}$$.
 
 Các nghiệm modulo 9: $$x \equiv 2, 5, 8 \pmod{9}$$.
 </div>
+</div>
 
 ## 3. Nghịch đảo Modulo
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Nghịch đảo modulo của $$a$$ modulo $$n$$ là số $$\bar{a}$$ sao cho:
+</div>
 
+<div class="textbook-equation" markdown="1">
 $$a \cdot \bar{a} \equiv 1 \pmod{n}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Tồn tại khi và chỉ khi $$\gcd(a, n) = 1$$.
 
 ### Thuật toán Euclid Mở rộng
@@ -125,7 +96,7 @@ THUẬT TOÁN: Euclid-Mở-rộng(a, n)   // tìm nghịch đảo của a mod n
 8. RETURN old_s MOD n   // đảm bảo kết quả dương
 ```
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 Tìm nghịch đảo của 7 modulo 26:
 
 | Bước | old_r | r | q | old_s | s |
@@ -142,33 +113,61 @@ Kết quả: $$-11 \bmod 26 = 15$$. Kiểm tra: $$7 \times 15 = 105 \equiv 1 \pm
 
 ## 4. Định lý Số dư Trung Hoa (CRT)
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Cho $$n_1, n_2, \ldots, n_k$$ là các số nguyên dương đôi một nguyên tố cùng nhau. Hệ đồng dư:
+</div>
 
+<div class="textbook-equation" markdown="1">
 $$x \equiv a_1 \pmod{n_1}$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$x \equiv a_2 \pmod{n_2}$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$\cdots$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$x \equiv a_k \pmod{n_k}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 có nghiệm duy nhất modulo $$N = n_1 \cdot n_2 \cdots n_k$$.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Giải hệ:
+<div class="textbook-equation" markdown="1">
 $$x \equiv 2 \pmod{3}$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$x \equiv 3 \pmod{5}$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$x \equiv 2 \pmod{7}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 $$N = 3 \times 5 \times 7 = 105$$.
 $$N_1 = 105/3 = 35$$, $$y_1 = 35^{-1} \bmod 3 = 2^{-1} \bmod 3 = 2$$
 $$N_2 = 105/5 = 21$$, $$y_2 = 21^{-1} \bmod 5 = 1^{-1} \bmod 5 = 1$$
 $$N_3 = 105/7 = 15$$, $$y_3 = 15^{-1} \bmod 7 = 1^{-1} \bmod 7 = 1$$
 
+<div class="textbook-equation" markdown="1">
 $$x = 2 \cdot 35 \cdot 2 + 3 \cdot 21 \cdot 1 + 2 \cdot 15 \cdot 1 = 140 + 63 + 30 = 233$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$x \equiv 233 \bmod 105 \equiv 23 \pmod{105}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Kiểm tra: $$23 \bmod 3 = 2$$, $$23 \bmod 5 = 3$$, $$23 \bmod 7 = 2$$ ✓
 </div>
+</div>
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **CRT trong lịch sử**: Định lý này được biết đến từ thế kỷ thứ 3 ở Trung Quốc, trong cuốn sách "Tôn Tử Toán Kinh" (Sunzi Suan Jing). Bài toán gốc: "Tìm số biết rằng chia 3 dư 2, chia 5 dư 3, chia 7 dư 2." Đáp số 23 — giống hệt ví dụ trên!
 </div>
 
@@ -190,7 +189,8 @@ THUẬT TOÁN: Lũy-thừa-Modulo-Nhanh(b, e, n)
 
 Độ phức tạp: $$O(\log e)$$ — thay vì $$O(e)$$ nếu nhân tuần tự!
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Tính $$3^{13} \bmod 7$$.
 
 $$13_{10} = 1101_2$$. Các bit: 1, 1, 0, 1 (từ LSB đến MSB).
@@ -205,21 +205,22 @@ $$13_{10} = 1101_2$$. Các bit: 1, 1, 0, 1 (từ LSB đến MSB).
 
 Kết quả: $$3^{13} \bmod 7 = 3$$. Kiểm tra: $$3^{13} = 1594323 = 7 \times 227760 + 3$$ ✓
 </div>
+</div>
 
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Máy tính Modulo</h3>
-<p>Công cụ này thực hiện các phép tính modulo cơ bản: cộng, trừ, nhân, nghịch đảo, lũy thừa. Quan sát từng bước của thuật toán Euclid mở rộng. <strong>Hãy thử:</strong> Tính $$5^{17} \bmod 23$$ bằng lũy thừa modulo nhanh — đây là phép tính cốt lõi trong Diffie-Hellman!</p>
+<p>Công cụ này thực hiện các phép tính modulo cơ bản: cộng, trừ, nhân, nghịch đảo, lũy thừa. Quan sát từng bước của thuật toán Euclid mở rộng. <strong>Gợi ý thực hành:</strong> Tính $$5^{17} \bmod 23$$ bằng lũy thừa modulo nhanh — đây là phép tính cốt lõi trong Diffie-Hellman!</p>
 <div data-demo="modular-arithmetic-calc"></div>
 </div>
 <script src="{{ '/public/js/modular-arithmetic-calc.js' | relative_url }}"></script>
 
 ## Ứng dụng trong Khoa học Máy tính
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Cần chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Số học modulo xuất hiện trong: băm (hash maps), kiểm tra tính nguyên tố (Miller-Rabin), sinh số ngẫu nhiên (LGC), mã hóa RSA và ElGamal, chữ ký số DSA, và giao thức trao đổi khóa Diffie-Hellman.
 
-Lũy thừa modulo nhanh là một trong những thuật toán được gọi nhiều nhất trong mọi hệ thống bảo mật web (TLS/HTTPS). Mỗi khi bạn truy cập một trang web có ổ khóa xanh, trình duyệt của bạn đã thực hiện hàng chục phép lũy thừa modulo với số mũ hàng trăm chữ số!
+Lũy thừa modulo nhanh là một trong những thuật toán được gọi nhiều nhất trong mọi hệ thống bảo mật web (TLS/HTTPS). Mỗi khi chúng ta truy cập một trang web có ổ khóa xanh, trình duyệt của chúng ta đã thực hiện hàng chục phép lũy thừa modulo với số mũ hàng trăm chữ số!
 
 ## Bài tập
 
@@ -240,6 +241,10 @@ So sánh với nhân tuần tự: cần $$2^{2048}$$ phép nhân — một con s
 
 Đây là lý do tại sao lũy thừa modulo nhanh là một trong những thuật toán quan trọng nhất trong mật mã học.
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Modular Arithmetic](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — Numberphile (Clock arithmetic + crypto)
 
 ## Tóm tắt
 

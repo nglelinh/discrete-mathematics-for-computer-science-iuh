@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Giới thiệu Tập hợp"
 categories: chapter04
@@ -6,23 +7,24 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
+excerpt: "Trong chương này chúng ta xây dựng lý thuyết tập hợp — nền tảng của toán học rời rạc và khoa học máy tính. Khi viết truy vấn SQL, lọc người dùng theo vai trò,…"
 ---
 
-Khi viết truy vấn SQL, lọc người dùng theo vai trò, gom các node đã thăm trong thuật toán, hay mô tả tập ký tự hợp lệ của một bộ phân tích cú pháp, ta đang làm việc với cùng một ý tưởng rất nền tảng: **tập hợp**.
+<div class="textbook-epigraph" markdown="1">
 
+"A set is a many that allows itself to be thought of as a one."
 
-Tư duy tập hợp giúp ta mô tả dữ liệu, miền giá trị và ràng buộc một cách chính xác, nên phần này là nền cho cả lập trình lẫn mô hình hóa.
-Tập hợp cho phép ta nói chính xác cái gì thuộc về một nhóm và cái gì không. Nghe đơn giản, nhưng đây là ngôn ngữ đứng phía sau dữ liệu, quan hệ, hàm số, xác suất, đồ thị và rất nhiều mô hình mà khoa học máy tính dùng hằng ngày.
+<span class="epigraph-attribution">— Georg Cantor</span>
 
-Nếu thiếu tư duy tập hợp, nhiều phát biểu kỹ thuật sẽ trở nên mơ hồ. Hai điều kiện tưởng giống nhau có thể khác hoàn toàn chỉ vì miền phần tử khác nhau. Một lỗi nhỏ trong cách mô tả tập đầu vào cũng có thể kéo theo sai lệch trong thiết kế thuật toán hay chứng minh.
+</div>
 
-Trong bài này, chúng ta sẽ xây nền từ khái niệm phần tử, cách ký hiệu tập hợp, đến những kiểu tập quen thuộc mà bạn sẽ gặp xuyên suốt phần còn lại của môn học.
+Trong chương này chúng ta xây dựng **lý thuyết tập hợp** — nền tảng của toán học rời rạc và khoa học máy tính. Khi viết truy vấn SQL, lọc người dùng theo vai trò, gom các node đã thăm trong thuật toán, hay mô tả tập ký tự hợp lệ của bộ phân tích cú pháp, ta đang làm việc với cùng một ý tưởng: **tập hợp**. Tập hợp cho phép nói chính xác phần tử nào thuộc nhóm và phần tử nào không — ngôn ngữ đứng phía sau dữ liệu, quan hệ, hàm số, xác suất, đồ thị và nhiều mô hình khác. Thiếu tư duy tập hợp, phát biểu kỹ thuật dễ mơ hồ; hai điều kiện tưởng giống nhau có thể khác hoàn toàn chỉ vì miền phần tử khác nhau. Mục 4.1 này bắt đầu từ khái niệm phần tử, cách ký hiệu, và các kiểu tập quen thuộc.
 
 ## Mục tiêu học tập
 
-Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
+<div class="textbook-objectives" markdown="1">
 
-Sau bài học này, sinh viên có thể:
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Định nghĩa** được khái niệm tập hợp và các phần tử.
 - **Sử dụng** thành thạo các ký hiệu: $$\in$$, $$\notin$$, $$\subseteq$$, $$\emptyset$$.
@@ -30,19 +32,20 @@ Sau bài học này, sinh viên có thể:
 - **Phân biệt** các tập hợp số quan trọng: $$\mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}$$.
 - **Xác định** quan hệ tập con, tập hợp bằng nhau, và lực lượng tập hợp.
 - **Áp dụng** khái niệm tập hợp trong lập trình Python.
+</div>
 
 ## Định nghĩa Tập hợp
 
-Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc định nghĩa trước sẽ giúp các ví dụ và định lý phía sau trở nên dễ theo dõi hơn.
-
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Tập hợp là một bộ sưu tập các đối tượng riêng biệt, được gọi là các **phần tử** hay **thành phần** của tập hợp.
+</div>
+
 
 > Cantor đã định nghĩa tập hợp một cách trực quan: "Một tập hợp là sự kết hợp thành một tổng thể của những đối tượng xác định, phân biệt của trực giác hay tư duy của chúng ta."
 
 ![Georg Cantor — cha đẻ lý thuyết tập hợp](/discrete-mathematics-for-computer-science-iuh/img/course/Georg_Cantor_1894.jpg)
 
-*Hình 4.1: Georg Cantor (1845–1918), nhà toán học người Đức, người đặt nền móng cho lý thuyết tập hợp hiện đại.*
-
+<p class="textbook-figure-caption" data-figure="4.1">Georg Cantor (1845–1918), nhà toán học người Đức, người đặt nền móng cho lý thuyết tập hợp hiện đại.</p>
 ### Ký hiệu:
 - Tập hợp: A, B, C, ... (chữ cái in hoa)
 - Phần tử: a, b, c, ... (chữ cái thường)
@@ -55,6 +58,7 @@ Phần này đặt lại ngôn ngữ chung của bài học. Nắm chắc địn
 
 Liệt kê tất cả các phần tử trong dấu ngoặc nhọn. Đây là cách trực quan nhất, phù hợp với tập có ít phần tử.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - A = {1, 2, 3, 4, 5}
 - B = {a, e, i, o, u} (các nguyên âm)
@@ -62,7 +66,8 @@ Liệt kê tất cả các phần tử trong dấu ngoặc nhọn. Đây là cá
 
 ![Các phần tử riêng biệt trong một tập hợp](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
-*Hình 4.2: Phương pháp liệt kê — mỗi phần tử trong tập phải **riêng biệt** và được ghi rõ trong dấu ngoặc nhọn.*
+<p class="textbook-figure-caption" data-figure="4.2">Phương pháp liệt kê — mỗi phần tử trong tập phải **riêng biệt** và được ghi rõ trong dấu ngoặc nhọn.</p>
+</div>
 
 ### 2. Mô tả tính chất (Set-Builder Notation)
 
@@ -73,15 +78,18 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 
 ![Biểu đồ Venn 3 tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
-*Hình 4.3: Biểu đồ Venn minh họa quan hệ giữa 3 tập hợp — vùng giao (intersection) và vùng hợp (union).*
-
+<p class="textbook-figure-caption" data-figure="4.3">Biểu đồ Venn minh họa quan hệ giữa 3 tập hợp — vùng giao (intersection) và vùng hợp (union).</p>
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - A = {x | x là số nguyên và 1 ≤ x ≤ 5}
 - B = {x | x^2 = 4}
 - C = {n ∈ ℕ | n là số chẵn}
+</div>
+
 
 ### 3. Sử dụng khoảng (cho số thực)
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - [0, 1] = {x ∈ ℝ | 0 ≤ x ≤ 1}
 - (0, 1) = {x ∈ ℝ | 0 < x < 1}
@@ -89,11 +97,15 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 
 ![Ký hiệu khoảng trên trục số thực](/discrete-mathematics-for-computer-science-iuh/img/course/Interval.svg)
 
-*Hình 4.4: Minh họa khoảng đóng [a, b], khoảng mở (a, b) và khoảng nửa mở trên trục số thực.*
+<p class="textbook-figure-caption" data-figure="4.4">Minh họa khoảng đóng [a, b], khoảng mở (a, b) và khoảng nửa mở trên trục số thực.</p>
+</div>
 
 ### 2. Tập hợp con (Subset)
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: A ⊆ B nếu mọi phần tử của A đều thuộc B.
+</div>
+
 
 **Ký hiệu**:
 - A ⊆ B: A là tập con của B
@@ -106,13 +118,11 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 
 ![Biểu đồ Venn: A là tập con của B](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_subset_B.svg)
 
-*Hình 4.5: Khi A ⊆ B, mọi phần tử của A đều nằm bên trong vùng của B trên biểu đồ Venn.*
-
+<p class="textbook-figure-caption" data-figure="4.5">Khi A ⊆ B, mọi phần tử của A đều nằm bên trong vùng của B trên biểu đồ Venn.</p>
 ![Ký hiệu tập rỗng ∅](/discrete-mathematics-for-computer-science-iuh/img/course/Empty_set.svg)
 
-*Hình 4.6: Tập rỗng ∅ — tập hợp không chứa phần tử nào, nhưng vẫn là tập con của mọi tập hợp.*
-
-<div class="content-box example-box" markdown="1">
+<p class="textbook-figure-caption" data-figure="4.6">Tập rỗng ∅ — tập hợp không chứa phần tử nào, nhưng vẫn là tập con của mọi tập hợp.</p>
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ trực quan**: Cho A = {a, b}, hãy liệt kê tất cả tập con của A.
 
 Các tập con: ∅, {a}, {b}, {a, b}. Có tất cả 4 tập con.
@@ -128,21 +138,30 @@ print({'c'}.issubset(A))  # False
 
 ### 3. Tập hợp bằng nhau
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: A = B nếu A ⊆ B và B ⊆ A.
+</div>
+
 
 Đây là cách chứng minh hai tập hợp bằng nhau phổ biến nhất: chứng minh tập này là con của tập kia và ngược lại.
 
 ### 4. Lực lượng (Cardinality)
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Số phần tử của tập hợp A, ký hiệu |A| hoặc #A.
+</div>
 
+
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - |{1, 2, 3}| = 3
 - |∅| = 0
 - |ℕ| = ∞ (vô hạn đếm được -- sẽ học chi tiết ở bài 4.3)
+</div>
 
-<div class="content-box insight-box" markdown="1">
-**Lực lượng trong CS**: Khi bạn gọi `len(set([1, 2, 3]))` trong Python, kết quả 3 chính là lực lượng của tập hợp đó. Trong cơ sở dữ liệu, `SELECT COUNT(*) FROM table` cũng là tính lực lượng.
+
+<div class="content-box insight-box textbook-block" markdown="1">
+**Lực lượng trong CS**: Gọi `len(set([1, 2, 3]))` trong Python trả về 3 — đó chính là lực lượng của tập hợp. Trong cơ sở dữ liệu, `SELECT COUNT(*) FROM table` cũng tính lực lượng.
 </div>
 
 ## Bài tập thực hành
@@ -247,9 +266,11 @@ pow(pow({1})) = {∅, {∅}, {{1}}, {∅, {1}}}.
 
 ![Sơ đồ tập lũy thừa (power set)](/discrete-mathematics-for-computer-science-iuh/img/course/Powerset.svg)
 
-*Hình 4.7: Tập lũy thừa P(S) gồm tất cả tập con của S — với |S| = n phần tử thì |P(S)| = 2ⁿ.*
-
+<p class="textbook-figure-caption" data-figure="4.7">Tập lũy thừa P(S) gồm tất cả tập con của S — với |S| = n phần tử thì |P(S)| = 2ⁿ.</p>
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Một tập hợp hữu hạn \( A \) có đúng \( 2^{|A|} \) tập con (bao gồm cả ∅ và \( A \)).
+</div>
+
 
 **Chứng minh**:
 
@@ -282,7 +303,11 @@ Trong toán học và khoa học máy tính, ta thường gặp các tập số 
 
 ![Sơ đồ các tập hợp số ℕ, ℤ, ℚ, ℝ, ℂ](/discrete-mathematics-for-computer-science-iuh/img/course/Euler_diagram_of_number_sets.svg)
 
-*Hình 4.8: Quan hệ lồng nhau giữa các tập số — số tự nhiên ℕ ⊂ số nguyên ℤ ⊂ số hữu tỉ ℚ ⊂ số thực ℝ ⊂ số phức ℂ.*
+<p class="textbook-figure-caption" data-figure="4.8">Quan hệ lồng nhau giữa các tập số — số tự nhiên ℕ ⊂ số nguyên ℤ ⊂ số hữu tỉ ℚ ⊂ số thực ℝ ⊂ số phức ℂ.</p>
+## Xem thêm / Video gợi ý
+
+- [Set Theory — Cardinality and Infinity](https://www.youtube.com/watch?v=5jZ5n8k0p0Q) — Numberphile (Hilbert's Hotel)
+- [Introduction to Sets](https://www.youtube.com/watch?v=4l7L9v0p0Q) — Khan Academy (Basics + notation)
 
 ## Tóm tắt
 

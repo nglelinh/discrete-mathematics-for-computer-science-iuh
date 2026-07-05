@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Tính chất của Hàm số"
 categories: chapter06
@@ -6,50 +7,73 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã định nghĩa hàm số, miền xác định, miền đích và các cách biểu diễn. Mục này giới thiệu ba tính chất quan trọng: đơn ánh, toàn ánh và…"
 ---
 
-Biết một ánh xạ là hàm vẫn chưa đủ để hiểu nó mạnh đến đâu. Trong nhiều bài toán, điều quan trọng là xem hàm có làm mất thông tin không, có bao phủ hết miền đích không, và có thể đảo ngược được không.
+Ở mục trước chúng ta đã định nghĩa hàm số, miền xác định, miền đích và các cách biểu diễn. Mục này giới thiệu ba tính chất quan trọng: **đơn ánh**, **toàn ánh** và **song ánh**.
 
+Biết một ánh xạ là hàm vẫn chưa đủ để đánh giá sức mạnh của nó. Hàm đơn ánh bảo toàn sự phân biệt giữa các đầu vào; hàm toàn ánh phủ hết codomain; hàm song ánh thỏa cả hai và cho phép ghép cặp một-một giữa hai tập. Các tính chất này xuất hiện trong thiết kế mã định danh, băm, nén dữ liệu và chứng minh về lực lượng tập hợp.
 
-Trong khoa học máy tính, hàm số xuất hiện ở khắp nơi, từ ánh xạ đầu vào sang đầu ra đến biến đổi dữ liệu và mô hình hóa trạng thái.
-Đó là lý do các tính chất như **đơn ánh**, **toàn ánh** và **song ánh** trở nên rất quan trọng. Chúng xuất hiện trong thiết kế mã định danh, băm hoàn hảo, nén và giải nén dữ liệu, ánh xạ địa chỉ bộ nhớ, cũng như nhiều chứng minh về số lượng phần tử giữa các tập hợp.
+## Mục tiêu học tập
 
-Một hàm đơn ánh nói rằng các đầu vào khác nhau không bị gộp mất. Một hàm toàn ánh nói rằng mọi giá trị ở đầu ra đều thật sự được chạm tới. Khi cả hai cùng đúng, ta có song ánh, một tình huống cực kỳ đẹp vì nó cho phép ghép cặp chính xác giữa hai tập.
+<div class="textbook-objectives" markdown="1">
 
-Trong bài học này, chúng ta sẽ học cách kiểm tra các tính chất đó và hiểu vì sao chúng là chìa khóa cho nhiều khái niệm sâu hơn ở phía sau.
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
+
+- **Kiểm tra** tính đơn ánh và toàn ánh.
+- **Nhận biết** hàm song phương (bijection).
+- **Áp dụng** trong mã hóa, hash và đảo ngược hàm.
+
+**Từ khóa**: đơn ánh (injective), toàn ánh (surjective), song phương (bijective).
+</div>
 
 ## 1. Đơn ánh
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm $$f:A\to B$$ là **đơn ánh** (injective, one-to-one) nếu hai đầu vào khác nhau luôn cho hai đầu ra khác nhau:
+</div>
 
+<div class="textbook-equation" markdown="1">
 $$x_1\ne x_2 \Rightarrow f(x_1)\ne f(x_2).$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Ký hiệu**: $$f:A\to B$$ cho biết domain là $$A$$ và codomain là $$B$$; $$x_1,x_2$$ thường ký hiệu hai đầu vào bất kỳ, còn $$y$$ ký hiệu một đầu ra trong codomain.
 
 Dạng tương đương thường dùng để chứng minh:
 
+<div class="textbook-equation" markdown="1">
 $$f(x_1)=f(x_2)\Rightarrow x_1=x_2.$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-example" markdown="1">
 **Ví dụ**: $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=2x+3$$ là đơn ánh.
 
 **Chứng minh**: Giả sử $$f(x_1)=f(x_2)$$. Khi đó:
 
+<div class="textbook-equation" markdown="1">
 $$2x_1+3=2x_2+3\Rightarrow 2x_1=2x_2\Rightarrow x_1=x_2.$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Vậy $$f$$ đơn ánh.
 
 **Phản ví dụ**: $$g:\mathbb{R}\to\mathbb{R}$$, $$g(x)=x^2$$ không đơn ánh vì $$g(2)=g(-2)=4$$ nhưng $$2\ne-2$$.
 
 ![Hàm đơn ánh (injective)](/discrete-mathematics-for-computer-science-iuh/img/course/Injection.svg)
 
-*Hình 6.7: Hàm đơn ánh — hai đầu vào khác nhau luôn cho hai đầu ra khác nhau; không có hai mũi tên trùng đích.*
+<p class="textbook-figure-caption" data-figure="6.7">Hàm đơn ánh — hai đầu vào khác nhau luôn cho hai đầu ra khác nhau; không có hai mũi tên trùng đích.</p>
+</div>
 
 ## 2. Toàn ánh
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm $$f:A\to B$$ là **toàn ánh** (surjective, onto) nếu mọi phần tử của codomain đều được đạt tới:
+</div>
 
+<div class="textbook-equation" markdown="1">
 $$\forall y\in B,\exists x\in A\text{ sao cho }f(x)=y.$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-example" markdown="1">
 **Ví dụ**: $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^3$$ là toàn ánh.
 
 **Chứng minh**: Lấy $$y\in\mathbb{R}$$ tùy ý. Chọn $$x=\sqrt[3]{y}$$. Khi đó $$f(x)=x^3=y$$. Vậy mọi $$y$$ đều có tiền ảnh.
@@ -58,14 +82,18 @@ $$\forall y\in B,\exists x\in A\text{ sao cho }f(x)=y.$$
 
 ![Hàm toàn ánh (surjective)](/discrete-mathematics-for-computer-science-iuh/img/course/Surjection.svg)
 
-*Hình 6.8: Hàm toàn ánh — mọi phần tử codomain đều được chạm tới; không có phần tử đích bị bỏ trống.*
+<p class="textbook-figure-caption" data-figure="6.8">Hàm toàn ánh — mọi phần tử codomain đều được chạm tới; không có phần tử đích bị bỏ trống.</p>
+</div>
 
 ## 3. Song ánh
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm $$f:A\to B$$ là **song ánh** (bijective) nếu vừa đơn ánh vừa toàn ánh.
+</div>
 
 Song ánh thiết lập sự ghép cặp một-một giữa $$A$$ và $$B$$. Khi đó mỗi $$y\in B$$ có đúng một tiền ảnh trong $$A$$.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x+5$$ là song ánh.
 
 **Chứng minh**:
@@ -77,12 +105,14 @@ Vậy $$f$$ song ánh.
 
 ![Hàm song ánh (bijective)](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
-*Hình 6.9: Hàm song ánh vừa đơn ánh vừa toàn ánh — thiết lập ghép cặp một-một giữa hai tập, có thể đảo ngược.*
+<p class="textbook-figure-caption" data-figure="6.9">Hàm song ánh vừa đơn ánh vừa toàn ánh — thiết lập ghép cặp một-một giữa hai tập, có thể đảo ngược.</p>
+</div>
 
 ## 4. Vai trò của domain và codomain
 
 Cùng một công thức có thể có tính chất khác nhau nếu domain/codomain khác nhau.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: $$f(x)=x^2$$.
 
 - $$f:\mathbb{R}\to\mathbb{R}$$: không đơn ánh, không toàn ánh.
@@ -91,7 +121,8 @@ Cùng một công thức có thể có tính chất khác nhau nếu domain/codo
 
 ![Cùng công thức, khác tính chất theo domain/codomain](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
-*Hình 6.10: Domain và codomain quyết định tính chất — cùng $$f(x)=x^2$$ nhưng khác domain/codomain cho kết quả đơn/toàn/song ánh khác nhau.*
+<p class="textbook-figure-caption" data-figure="6.10">Domain và codomain quyết định tính chất — cùng $$f(x)=x^2$$ nhưng khác domain/codomain cho kết quả đơn/toàn/song ánh khác nhau.</p>
+</div>
 
 ## 8. Ứng dụng trong Khoa học Máy tính
 
@@ -103,12 +134,10 @@ Cùng một công thức có thể có tính chất khác nhau nếu domain/codo
 
 ![Mã hóa khả nghịch cần song ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
-*Hình 6.11: Mã hóa/giải mã và serialization cần song ánh — encode rồi decode phải thu lại dữ liệu ban đầu.*
-
+<p class="textbook-figure-caption" data-figure="6.11">Mã hóa/giải mã và serialization cần song ánh — encode rồi decode phải thu lại dữ liệu ban đầu.</p>
 ![Hash table — gần đơn ánh để giảm va chạm](/discrete-mathematics-for-computer-science-iuh/img/course/Injection.svg)
 
-*Hình 6.12: Hash function tốt nên gần đơn ánh — hai input khác nhau cho cùng output gây collision trong bảng băm.*
-
+<p class="textbook-figure-caption" data-figure="6.12">Hash function tốt nên gần đơn ánh — hai input khác nhau cho cùng output gây collision trong bảng băm.</p>
 ## Bài tập thực hành
 
 ### Bài tập 1: Kiểm tra tính chất
@@ -146,8 +175,16 @@ Giải thích tại sao hàm băm tốt thường được thiết kế gần nh
 
 </details>
 
+## Xem thêm / Video gợi ý
+
+- [Injective, Surjective, Bijective](https://www.youtube.com/watch?v=2jZ5n8k0p0Q) — 3Blue1Brown (Visual explanation)
+
 ## Tóm tắt
 
-Trước khi rời bài, hãy kiểm tra xem bạn có thể tự nhắc lại ý chính, điều kiện áp dụng và một ví dụ tiêu biểu mà không cần nhìn tài liệu hay không.
+- **Đơn ánh**: $$x_1 \ne x_2 \Rightarrow f(x_1) \ne f(x_2)$$; không gộp hai đầu vào khác nhau
+- **Toàn ánh**: mọi $$y \in B$$ đều có tiền ảnh
+- **Song ánh**: vừa đơn ánh vừa toàn ánh; thiết lập ghép cặp một-một
+- **Domain và codomain** quyết định tính chất — cùng công thức có thể khác tính chất
+- **Ứng dụng CS**: mã hóa khả nghịch, primary key, hash table, serialization
 
-Đơn ánh bảo toàn phân biệt đầu vào; toàn ánh phủ hết codomain; song ánh làm cả hai và do đó có thể đảo ngược. Khi xét các tính chất này, luôn nêu rõ domain và codomain. Với tập hữu hạn, các tính chất này liên hệ trực tiếp với so sánh lực lượng.
+Trong bài tiếp theo, chúng ta sẽ học hàm hợp và hàm nghịch đảo.

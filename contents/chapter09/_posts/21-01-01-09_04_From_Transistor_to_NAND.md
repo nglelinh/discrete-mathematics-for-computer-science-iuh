@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Từ transistor đến NAND: Xây CPU từ logic rời rạc"
 categories: chapter09
@@ -6,16 +7,16 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
+excerpt: "Ở mục Year 2038, chúng ta đã thấy cộng một trên 32-bit signed ở mức công thức — nhưng phép cộng thực sự xảy ra ở đâu trong máy? Mục này trả lời bằng cách đi…"
 ---
 
-Sau buổi học Year 2038, Lan mang về nhà câu hỏi mà cả lớp SCADA đều thấy trừu tượng: **cộng một** trên 32-bit signed thực sự xảy ra ở đâu trong máy? Giáo viên nói “trong ALU”, nhưng ALU là hộp đen. Tối đó Lan xem loạt video của Ben Eater — anh không vẽ ALU lên slide rồi bảo “phần còn lại để các bạn tự tìm hiểu”. Anh dùng breadboard, transistor thật, LED nhấp nháy từng bit, và xây [**máy tính 8-bit hoàn chỉnh**](https://eater.net/8bit/): program counter, register, ALU, RAM, control unit — rồi chạy Fibonacci bằng opcode assembly thật.
+Ở mục Year 2038, chúng ta đã thấy **cộng một** trên 32-bit signed ở mức công thức — nhưng phép cộng thực sự xảy ra ở đâu trong máy? Mục này trả lời bằng cách đi từ **transistor** đến cổng logic, latch, và ALU trên breadboard (loạt video Ben Eater). Mục tiêu: chứng minh đại số Boole (Chương 1, Chương 13) **là silicon** — mọi `if (x && y)` và mọi phép cộng two's complement cuối cùng là transistor và cổng NAND. Ben Eater dùng breadboard, LED nhấp nháy từng bit, và xây [**máy tính 8-bit hoàn chỉnh**](https://eater.net/8bit/): program counter, register, ALU, RAM, control unit — rồi chạy Fibonacci bằng opcode assembly thật.
 
-Xem [video lập trình máy](https://www.youtube.com/watch?v=9PPrrSyubG0) lần đầu, nhiều người nghĩ: “Ồ, `a + b` trong C **là** hàng chục cổng logic đang chạy.” Đúng vậy — chỉ là trên laptop bạn không thấy LED. Chương 13 dạy đại số Boole và Karnaugh trên giấy; Ben Eater cho thấy Boole **là silicon** — và mọi `if (x && y)` cuối cùng đứng trên transistor.
+Xem [video lập trình máy](https://www.youtube.com/watch?v=9PPrrSyubG0) lần đầu, nhiều người nghĩ: “Ồ, `a + b` trong C **là** hàng chục cổng logic đang chạy.” Đúng vậy — chỉ là trên laptop chúng ta không thấy LED. Chương 13 dạy đại số Boole và Karnaugh trên giấy; Ben Eater cho thấy Boole **là silicon** — và mọi `if (x && y)` cuối cùng đứng trên transistor.
 
 ![Ben Eater 8-bit computer](/discrete-mathematics-for-computer-science-iuh/img/course/maxresdefault.jpg)
 
-*Hình 9.7: Máy 8-bit trên breadboard — mỗi đèn là một bit (YouTube / Ben Eater).*
-
+<p class="textbook-figure-caption" data-figure="9.7">Máy 8-bit trên breadboard — mỗi đèn là một bit (YouTube / Ben Eater).</p>
 <figure class="image" style="align: center;">
 <p align="center">
   <img src="/discrete-mathematics-for-computer-science-iuh/img/course/transistor.svg"
@@ -33,11 +34,10 @@ Mọi câu chuyện bắt đầu từ một khối nhỏ hơn móng tay: **trans
 
 ![Transistor symbol — Wikimedia](/discrete-mathematics-for-computer-science-iuh/img/course/transistor.svg)
 
-*Hình 9.8: Transistor như khóa — nền mọi cổng logic.*
-
+<p class="textbook-figure-caption" data-figure="9.8">Transistor như khóa — nền mọi cổng logic.</p>
 Điện áp liên tục trong thế giới vật lý bị **quantize** thành hai mức — đây là mệnh đề vật lý đằng sau mọi bit: chỉ 0 hoặc 1. Ben Eater đi từng bước, không nhảy cóc: [semiconductor](https://www.youtube.com/watch?v=33vbFFFn04k) → [transistor](https://www.youtube.com/watch?v=DXvAlwMAxiA) → [logic gates](https://www.youtube.com/watch?v=sTu3LwpF6XI) → [latch / flip-flop](https://www.youtube.com/watch?v=YW-_GkUguMM). Mỗi video là một tầng xây dựng; bỏ qua tầng nào thì tầng sau trở thành phép màu.
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 Trong toán rời rạc, mỗi bit là biến Boole $$x \in \{0,1\}$$. Transistor là cách **vật lý hóa** biến đó — không phải “gần giống 0 và 1”, mà là hai trạng thái ổn định mà mạch thiết kế để máy đọc chắc chắn.
 </div>
 
@@ -49,9 +49,8 @@ Ghép vài transistor lại, ta có **cổng logic**: NOT, AND, OR — những h
 
 ![Logic gates — Wikimedia](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
-*Hình 9.9: Ký hiệu chuẩn — cùng ngôn ngữ với sơ đồ Ben Eater.*
-
-Cổng **NAND** (Sheffer) có công thức $$y = (xz)'$$: chỉ khi cả hai đầu vào đều 1 thì đầu ra mới là 0. Điều kỳ diệu là **chỉ NAND** cũng đủ biểu diễn mọi hàm Boole — tính đầy đủ mà sách giáo khoa gọi là functional completeness. Phủ định một biến: $$x' = (x \uparrow x)$$ với ký hiệu NAND. OR suy ra từ De Morgan: $$x + z = (x' \cdot z')'$$. Trong thực tế, foundry tối ưu hỗn hợp nhiều loại cổng, nhưng câu “CPU chỉ là NAND khổng lồ” vẫn đúng về mặt lý thuyết — và giúp bạn nhớ rằng phần cứng không ma thuật, chỉ là Boole được in lên silicon.
+<p class="textbook-figure-caption" data-figure="9.9">Ký hiệu chuẩn — cùng ngôn ngữ với sơ đồ Ben Eater.</p>
+Cổng **NAND** (Sheffer) có công thức $$y = (xz)'$$: chỉ khi cả hai đầu vào đều 1 thì đầu ra mới là 0. Điều kỳ diệu là **chỉ NAND** cũng đủ biểu diễn mọi hàm Boole — tính đầy đủ mà sách giáo khoa gọi là functional completeness. Phủ định một biến: $$x' = (x \uparrow x)$$ với ký hiệu NAND. OR suy ra từ De Morgan: $$x + z = (x' \cdot z')'$$. Trong thực tế, foundry tối ưu hỗn hợp nhiều loại cổng, nhưng câu “CPU chỉ là NAND khổng lồ” vẫn đúng về mặt lý thuyết — và giúp chúng ta nhớ rằng phần cứng không ma thuật, chỉ là Boole được in lên silicon.
 
 Chip NAND thường rẻ, nhanh, ít tốn diện tích hơn ghép nhiều loại cổng riêng lẻ. Karnaugh map ở chương 13 không phải bài tập trang trí: rút gọn biểu thức Boole nghĩa là **ít cổng hơn**, tức ít transistor hơn, tức ít điện năng và ít nhiệt hơn trên chip thật.
 
@@ -63,7 +62,7 @@ Cổng logic thuần chỉ tính toán: đầu vào đổi thì đầu ra đổi
 
 **D flip-flop** tiến thêm một bước: lấy mẫu giá trị đầu vào tại **cạnh clock**, rồi giữ nguyên cho đến cạnh kế tiếp. Register 8-bit trên máy Ben Eater là tám flip-flop xếp cạnh nhau — mỗi ô nhớ một bit, cùng nhịp clock. Opcode 4-bit trên máy đó cho phép $$2^4 = 16$$ lệnh máy khả dĩ; thay đổi độ rộng opcode là thay đổi **số bit nhớ trạng thái điều khiển**, không phải chỉ đổi tên lệnh trên giấy.
 
-Khi bạn debug overflow `int` trong C, bạn đang tin rằng **carry chain** của half-adder trên chip đã propagate đúng từ bit thấp lên bit cao. Ben Eater bật LED từng carry để bạn **nhìn** điều đó — còn trong laptop, chuỗi carry chạy trong nanosecond mà không có đèn nào nhấp nháy.
+Khi chúng ta debug overflow `int` trong C, chúng ta đang tin rằng **carry chain** của half-adder trên chip đã propagate đúng từ bit thấp lên bit cao. Ben Eater bật LED từng carry để chúng ta **nhìn** điều đó — còn trong laptop, chuỗi carry chạy trong nanosecond mà không có đèn nào nhấp nháy.
 
 ---
 
@@ -73,8 +72,7 @@ Phép cộng hai bit $$a$$ và $$b$$ là bài toán Boole thuần túy. Khi cả
 
 ![Half adder — Wikimedia](/discrete-mathematics-for-computer-science-iuh/img/course/Half-adder.svg)
 
-*Hình 9.10: XOR + AND — nền ALU 8-bit.*
-
+<p class="textbook-figure-caption" data-figure="9.10">XOR + AND — nền ALU 8-bit.</p>
 **Full-adder** thêm đầu vào carry-in từ bit trước; nối tám full-adder thành **8-bit adder** với carry chạy dọc theo chuỗi. Độ trễ tăng theo số bit — đó là lý do CPU 64-bit không “cộng trong một nhịp” theo nghĩa tức thì trên toàn bộ dãy bit. Ben Eater so sánh [C với machine language](https://www.youtube.com/watch?v=yOyaJXpAYZQ): vòng `for` trong ngôn ngữ cao cấp là tăng program counter, load, add, store — lặp đi lặp lại trên mạch thật, từng opcode một.
 
 <div data-demo="logic-gates-builder"></div>
@@ -83,7 +81,7 @@ Phép cộng hai bit $$a$$ và $$b$$ là bài toán Boole thuần túy. Khi cả
 
 ## Từ breadboard đến two's complement
 
-Ở bài Year 2038, chúng ta đã thấy two's complement trên giấy: cộng 1 vào giá trị max của 32-bit signed đưa timestamp về năm 1901. Máy Ben Eater dùng số **không dấu** trên breadboard để bạn **nhìn** carry chain từng bit — LED nhấp nháy từ hàng đơn vị lên hàng cao. CPU thật dùng **cùng mạch cộng không dấu**; khác biệt nằm ở tầng ISA: CPU **đọc** bit cao nhất như sign bit và bật cờ overflow khi cộng hai số dương mà ra kết quả âm.
+Ở bài Year 2038, chúng ta đã thấy two's complement trên giấy: cộng 1 vào giá trị max của 32-bit signed đưa timestamp về năm 1901. Máy Ben Eater dùng số **không dấu** trên breadboard để chúng ta **nhìn** carry chain từng bit — LED nhấp nháy từ hàng đơn vị lên hàng cao. CPU thật dùng **cùng mạch cộng không dấu**; khác biệt nằm ở tầng ISA: CPU **đọc** bit cao nhất như sign bit và bật cờ overflow khi cộng hai số dương mà ra kết quả âm.
 
 Ví dụ 8-bit cho dễ hình dung: max không dấu là `11111111` (255). Cộng 1 → `00000000` (0) với carry-out bị bỏ qua — wrap-around bình thường. Cùng pattern bit `01111111` (127) cộng 1 thành `10000000`: nếu đọc **không dấu** thì được 128; nếu đọc **two's complement** thì `10000000` là −128. **Cùng mạch cộng, khác quy ước đọc** — đó là cầu nối giữa LED nhấp nháy trên breadboard và Year 2038 trên firmware PLC mà Lan vừa ghi vào risk register.
 
@@ -138,6 +136,12 @@ Mạch cộng không đổi: carry chạy qua các bit 1 ở vị trí thấp, l
 </details>
 
 ---
+
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
 
 ## Tóm tắt
 

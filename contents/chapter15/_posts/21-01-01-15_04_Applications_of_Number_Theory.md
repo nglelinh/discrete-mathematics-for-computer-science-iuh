@@ -6,42 +6,31 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
+excerpt: "Ở mục trước chúng ta đã nắm các khái niệm mật mã cơ bản. Mục này trình bày ứng dụng của lý thuyết số trong thực tế — từ RSA và hàm băm đến chữ ký số và các…"
 ---
 
-Có những chủ đề thoạt nhìn rất "toán thuần" nhưng lại nằm ngay trong lõi của hệ thống hiện đại. Lý thuyết số là một ví dụ rõ nhất. Từ mật mã, chữ ký số, kiểm tra lỗi, đến các thuật toán tính toán trên số nguyên lớn, dấu vết của nó xuất hiện ở khắp nơi.
-
-Lý thuyết số trong chương này không đứng riêng lẻ, nó là nền cho mã hóa, kiểm tra tính đúng đắn và nhiều cơ chế bảo mật hiện đại.
-Sau khi học chia hết, số nguyên tố và đồng dư, câu hỏi tự nhiên là: những khái niệm đó đi vào khoa học máy tính như thế nào? Câu trả lời không chỉ nằm ở RSA, mà còn ở nhiều cơ chế xử lý, xác thực và tối ưu dữ liệu khác.
-
-Phần ứng dụng này rất quan trọng vì nó nối lại mạch của cả chương. Nó cho thấy các định lý và phép tính không đứng riêng lẻ, mà là nền của những công nghệ mà chúng ta dùng mỗi ngày.
-
-Trong bài này, chúng ta sẽ nhìn lý thuyết số dưới góc độ ứng dụng để thấy rõ hơn giá trị thực hành của những công cụ đã học.
+Ở mục trước chúng ta đã nắm các khái niệm mật mã cơ bản. Mục này trình bày **ứng dụng của lý thuyết số** trong thực tế — từ RSA và hàm băm đến chữ ký số và các giao thức bảo mật — cho thấy cách định lý toán học được chuyển thành cơ chế bảo vệ hệ thống.
 
 ![Ứng dụng đồng dư](/discrete-mathematics-for-computer-science-iuh/img/course/modular_arithmetic.svg)
 
-*Hình 15.16: Checksum, mã hóa đơn giản và xoay vòng chỉ số đều dùng arithmetic modulo.*
-
+<p class="textbook-figure-caption" data-figure="15.16">Checksum, mã hóa đơn giản và xoay vòng chỉ số đều dùng arithmetic modulo.</p>
 ![Hashing và bucket](/discrete-mathematics-for-computer-science-iuh/img/course/Hash_table_simple_999.svg)
 
-*Hình 15.17: Phân bố bucket bằng modulo — trực giác số học cho cấu trúc dữ liệu.*
-
+<p class="textbook-figure-caption" data-figure="15.17">Phân bố bucket bằng modulo — trực giác số học cho cấu trúc dữ liệu.</p>
 ![Chữ ký số](/discrete-mathematics-for-computer-science-iuh/img/course/rsa_key_generation.svg)
 
-*Hình 15.18: Chữ ký số và xác thực danh tính — ứng dụng trực tiếp của lý thuyết số.*
-
+<p class="textbook-figure-caption" data-figure="15.18">Chữ ký số và xác thực danh tính — ứng dụng trực tiếp của lý thuyết số.</p>
 ![Kiểm tra số nguyên tố](/discrete-mathematics-for-computer-science-iuh/img/course/PrimeDecompositionExample.svg)
 
-*Hình 15.19: Miller–Rabin và các test xác suất — ứng dụng đồng dư trong bảo mật.*
-
+<p class="textbook-figure-caption" data-figure="15.19">Miller–Rabin và các test xác suất — ứng dụng đồng dư trong bảo mật.</p>
 ![Mã sửa lỗi](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 15.20: Reed–Solomon và Hamming — đại số hữu hạn bảo vệ dữ liệu truyền thông và lưu trữ.*
-
+<p class="textbook-figure-caption" data-figure="15.20">Reed–Solomon và Hamming — đại số hữu hạn bảo vệ dữ liệu truyền thông và lưu trữ.</p>
 ## Mục tiêu học tập
 
-Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
+<div class="textbook-objectives" markdown="1">
 
-Sau bài học này, sinh viên có thể:
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Liệt kê** các ứng dụng của số nguyên tố và modulo trong CS.
 - **Hiểu** nguyên lý hoạt động của hàm băm và checksum.
@@ -50,37 +39,26 @@ Sau bài học này, sinh viên có thể:
 - **Nhận thức** về mật mã hậu lượng tử.
 
 **Từ khóa**: Hàm băm (hash), MD5, SHA, số giả ngẫu nhiên (PRNG), mã hóa đường cong elliptic (ECC), mật mã hậu lượng tử (post-quantum).
+</div>
 
 ## 1. Hàm băm Mật mã
 
-Hàm băm $$H(m) = h$$ ánh xạ thông điệp độ dài tùy ý thành giá trị băm có độ dài cố định.
+<div class="textbook-definition" markdown="1">
+**Định nghĩa**: **Hàm băm mật mã** $$H$$ ánh xạ thông điệp độ dài tùy ý thành **digest** cố định (ví dụ 256 bit). Yêu cầu:
 
-### Tính chất của Hàm băm Mật mã
+1. **Tất định**: cùng đầu vào → cùng đầu ra.
+2. **Preimage resistance**: cho $$h$$, khó tìm $$m$$ với $$H(m) = h$$.
+3. **Collision resistance**: khó tìm $$m_1 \neq m_2$$ với $$H(m_1) = H(m_2)$$.
+4. **Avalanche effect**: thay đổi nhỏ đầu vào → thay đổi lớn đầu ra.
+</div>
 
-1. **Tất định**: Cùng đầu vào → cùng đầu ra
-2. **Tính một chiều** (preimage resistance): cho $$h$$, khó tìm $$m$$ sao cho $$H(m) = h$$
-3. **Chống va chạm** (collision resistance): khó tìm $$m_1 \neq m_2$$ sao cho $$H(m_1) = H(m_2)$$
-4. **Hiệu ứng lan truyền** (avalanche effect): thay đổi nhỏ ở đầu vào → thay đổi lớn ở đầu ra
-
-<div class="content-box example-box" markdown="1">
-**SHA-256** (được dùng trong Bitcoin):
+<div class="textbook-example" markdown="1">
+**SHA-256** (Bitcoin, TLS):
 ```
 SHA256("Hello") = 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
 SHA256("hello") = 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
 ```
 Chỉ khác H/h mà kết quả hoàn toàn khác.
-</div>
-
-### Ứng dụng
-
-- **Xác thực mật khẩu**: Lưu hash thay vì mật khẩu gốc
-- **Kiểm tra toàn vẹn**: So sánh hash file tải về
-- **Blockchain**: SHA-256 là xương sống của Bitcoin
-- **Chữ ký số**: Ký hash thay vì ký toàn bộ tài liệu
-- **Git commit**: Mỗi commit là một SHA-1 hash
-
-<div class="content-box warning-box" markdown="1">
-**Cảnh báo an ninh**: MD5 và SHA-1 đã bị phá vỡ — không dùng trong ứng dụng mới. Luôn dùng SHA-256 hoặc SHA-3.
 </div>
 
 ## 2. Sinh Số Giả Ngẫu nhiên (PRNG)
@@ -89,28 +67,37 @@ Máy tính là thiết bị tất định — không thể sinh số "thực s�
 
 ### Linear Congruential Generator (LCG)
 
+<div class="textbook-equation" markdown="1">
 $$x_{n+1} = (a \cdot x_n + c) \bmod m$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 trong đó $$a, c, m$$ là các hằng số chọn cẩn thận.
 
-<div class="content-box example-box" markdown="1">
+<div class="textbook-definition" markdown="1">
+**Định nghĩa** (LCG): **Bộ sinh số giả ngẫu nhiên tuyến tính đồng dư**:
+$$x_{n+1} = (a \cdot x_n + c) \bmod m$$
+với hằng số $$a, c, m$$ chọn theo tiêu chuẩn (Hull–Dobell).
+</div>
+
+<div class="textbook-example" markdown="1">
 Với $$a = 5, c = 1, m = 8, x_0 = 0$$:
+<div class="textbook-equation" markdown="1">
 $$x_1 = 1, x_2 = 6, x_3 = 7, x_4 = 4, x_5 = 5, x_6 = 2, x_7 = 3, x_8 = 0, \ldots$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Chu kỳ $$= m = 8$$.
 </div>
 
-<div class="content-box warning-box" markdown="1">
-**Cảnh báo**: Không dùng PRNG cơ bản cho mật mã! Dùng CSPRNG (Cryptographically Secure PRNG) như `/dev/urandom` hoặc thư viện chuyên dụng.
-</div>
+**Cảnh báo**: LCG không đủ cho mật mã — dùng **CSPRNG** (`/dev/urandom`, `secrets` trong Python).
 
 ## 3. CRT trong Tính toán Song song
 
 Định lý Số dư Trung Hoa cho phép tách một phép tính modulo số lớn $$N$$ thành các phép tính modulo các thừa số nhỏ hơn:
 
-Thay vì tính $$(a \times b) \bmod N$$ trực tiếp với $$N$$ 2048-bit, ta tính riêng modulo $$p$$ và $$q$$, rồi dùng CRT để gộp kết quả. Điều này tăng tốc RSA gấp 4 lần.
+Thay vì tính $$(a \times b) \bmod N$$ trực tiếp với $$N$$ 2048-bit, chúng ta tính riêng modulo $$p$$ và $$q$$, rồi dùng CRT để gộp kết quả. Điều này tăng tốc RSA gấp 4 lần.
 
-<div class="content-box example-box" markdown="1">
-**Ứng dụng trong RSA**: Khi Bob ký một tài liệu, anh ta tính $$S = M^d \bmod n$$. Dùng CRT, thay vì tính trực tiếp modulo $$n$$ (cỡ 2048-bit), Bob tính:
+<div class="content-box example-box textbook-block" markdown="1">
+**Ứng dụng trong RSA**: Khi Bob ký một tài liệu, anh chúng ta tính $$S = M^d \bmod n$$. Dùng CRT, thay vì tính trực tiếp modulo $$n$$ (cỡ 2048-bit), Bob tính:
 - $$S_p = M^{d \bmod (p-1)} \bmod p$$
 - $$S_q = M^{d \bmod (q-1)} \bmod q$$
 - Sau đó kết hợp bằng CRT để được $$S$$.
@@ -143,14 +130,14 @@ NIST (Viện Tiêu chuẩn Mỹ) đã chọn các thuật toán hậu lượng t
 
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Tính toán Hash</h3>
-<p>Công cụ này cho phép bạn nhập một thông điệp và xem giá trị hash của nó dùng SHA-256. Quan sát hiệu ứng lan truyền (avalanche effect): thay đổi một ký tự sẽ làm thay đổi hoàn toàn giá trị hash. <strong>Hãy thử:</strong> So sánh hash của "cat" và "cat " (thêm một khoảng trắng ở cuối).</p>
+<p>Công cụ này cho phép sinh viên nhập một thông điệp và xem giá trị hash của nó dùng SHA-256. Quan sát hiệu ứng lan truyền (avalanche effect): thay đổi một ký tự sẽ làm thay đổi hoàn toàn giá trị hash. <strong>Gợi ý thực hành:</strong> So sánh hash của "cat" và "cat " (thêm một khoảng trắng ở cuối).</p>
 <div data-demo="number-theory-apps"></div>
 </div>
 <script src="{{ '/public/js/number-theory-apps.js' | relative_url }}"></script>
 
 ## Ứng dụng trong Khoa học Máy tính
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Cần chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Lý thuyết số hiện diện trong mọi lớp của stack công nghệ: từ trình biên dịch (tối ưu hóa modulo), cơ sở dữ liệu (hash indexing), đến tầng ứng dụng (mã hóa, chữ ký số). Sinh viên CS không cần trở thành chuyên gia mật mã, nhưng *phải* hiểu đủ để không mắc lỗi bảo mật cơ bản — như dùng MD5 (đã bị phá) hay tự "phát minh" thuật toán mã hóa.
 
@@ -160,7 +147,7 @@ Lý thuyết số hiện diện trong mọi lớp của stack công nghệ: từ
 
 Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, dạng bài và công cụ phù hợp trước khi tính toán. Cách tiếp cận này thường giúp tránh sai từ bước đầu.
 
-1. Tính SHA-256 của tên bạn (dùng công cụ online). Thay đổi một ký tự, so sánh kết quả.
+1. Tính SHA-256 của một chuỗi ký tự (dùng công cụ online). Thay đổi một ký tự, so sánh kết quả.
 2. Với LCG: $$a = 7, c = 3, m = 10, x_0 = 2$$, sinh 10 số đầu tiên. Nhận xét về chu kỳ.
 3. Tại sao RSA với khóa 2048-bit vẫn an toàn năm 2024 nhưng có thể không an toàn năm 2035?
 4. **Thử thách nghiên cứu**: Tìm hiểu về CRYSTALS-Kyber — thuật toán mã hóa hậu lượng tử được NIST chuẩn hóa. So sánh kích thước khóa của nó với RSA và ECC.
@@ -179,6 +166,11 @@ CRYSTALS-Kyber là thuật toán mã hóa dựa trên mạng (lattice-based). So
 
 Kyber có khóa lớn hơn ECC nhưng nhỏ hơn RSA. Tuy nhiên, Kyber được thiết kế để kháng lại tấn công từ máy tính lượng tử — một ưu điểm vô giá trong tương lai.
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
 
 ## Tóm tắt
 

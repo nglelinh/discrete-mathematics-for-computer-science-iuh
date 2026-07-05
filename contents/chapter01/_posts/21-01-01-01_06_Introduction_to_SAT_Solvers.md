@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Giới thiệu SAT Solver (optional)"
 categories: chapter01
@@ -6,44 +7,45 @@ date: 2021-01-01
 order: 6
 required: false
 lang: en
+excerpt: "Ở mục trước chúng ta đã học quy tắc suy diễn, trong đó phép giải (resolution) là nền tảng của chứng minh bác bỏ. Kết hợp với dạng chuẩn tắc hội (CNF) đã trình…"
 ---
 
-Sau khi học về **Dạng chuẩn tắc hội (CNF)** và các **định lý về DNF/CNF**, một câu hỏi tự nhiên xuất hiện: **Làm thế nào máy tính có thể tự động kiểm tra một công thức Boolean có thỏa mãn được không?**
+Ở mục trước chúng ta đã học **quy tắc suy diễn**, trong đó **phép giải** (resolution) là nền tảng của chứng minh bác bỏ. Kết hợp với **dạng chuẩn tắc hội (CNF)** đã trình bày ở Mục 1.4, ta có thể đặt câu hỏi: làm thế nào máy tính tự động kiểm tra một công thức Boolean có thỏa mãn được không?
 
-Câu trả lời nằm ở **SAT Solver** — một trong những công cụ quan trọng nhất của khoa học máy tính hiện đại. SAT solver không chỉ giải bài toán lý thuyết mà còn được dùng hàng ngày trong kiểm chứng phần mềm, lập lịch, lập kế hoạch AI, và phân tích bảo mật.
+Câu trả lời nằm ở **SAT solver** — một trong những công cụ quan trọng nhất của khoa học máy tính hiện đại. SAT solver không chỉ giải bài toán lý thuyết mà còn được dùng trong kiểm chứng phần mềm, lập lịch, lập kế hoạch AI, và phân tích bảo mật.
 
 ## SAT là gì?
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: **SAT** (Boolean Satisfiability Problem) là bài toán xác định xem có tồn tại một phép gán giá trị cho các biến sao cho công thức Boolean cho kết quả đúng hay không.
+</div>
+
 
 ![Bài toán SAT — tìm phép gán thỏa mãn CNF](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 1.26: Bài toán SAT — tìm phép gán giá trị cho n biến sao cho công thức CNF đúng (không gian tìm kiếm 2ⁿ).*
-
+<p class="textbook-figure-caption" data-figure="1.26">Bài toán SAT — tìm phép gán giá trị cho n biến sao cho công thức CNF đúng (không gian tìm kiếm 2ⁿ).</p>
 ![Cây backtracking — duyệt không gian nghiệm](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 1.27: Backtracking — thử gán từng biến, quay lui khi gặp mâu thuẫn (conflict).*
-
+<p class="textbook-figure-caption" data-figure="1.27">Backtracking — thử gán từng biến, quay lui khi gặp mâu thuẫn (conflict).</p>
 ![Thuật toán DPLL — gán biến và suy diễn đơn vị](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 1.28: DPLL kết hợp gán biến, unit propagation và backtracking — nền tảng của mọi SAT solver hiện đại.*
-
+<p class="textbook-figure-caption" data-figure="1.28">DPLL kết hợp gán biến, unit propagation và backtracking — nền tảng của mọi SAT solver hiện đại.</p>
 ![CDCL — học từ mâu thuẫn (Conflict-Driven Clause Learning)](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 1.29: CDCL ghi nhớ các mâu thuẫn đã gặp để cắt nhánh tìm kiếm — SAT solver hiện đại giải được hàng triệu biến.*
-
+<p class="textbook-figure-caption" data-figure="1.29">CDCL ghi nhớ các mâu thuẫn đã gặp để cắt nhánh tìm kiếm — SAT solver hiện đại giải được hàng triệu biến.</p>
 ![Giải Sudoku bằng SAT solver](/discrete-mathematics-for-computer-science-iuh/img/course/sudoku.svg)
 
-*Hình 1.30: Sudoku có thể mã hóa thành CNF — một ví dụ thú vị về ứng dụng SAT solver trong giải đố và lập kế hoạch.*
-
+<p class="textbook-figure-caption" data-figure="1.30">Sudoku có thể mã hóa thành CNF — một ví dụ thú vị về ứng dụng SAT solver trong giải đố và lập kế hoạch.</p>
 **Ví dụ đơn giản**:
 
 Cho biểu thức:
 
+<div class="textbook-equation" markdown="1">
 $$
 (x \lor y) \land (\neg x \lor z)
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 SAT solver sẽ tìm xem có cách gán `x, y, z` sao cho biểu thức đúng không.
 
 **Ví dụ nghiệm**:
@@ -59,20 +61,24 @@ Khi đó:
 
 Toàn bộ biểu thức:
 
+<div class="textbook-equation" markdown="1">
 $$
 \text{TRUE} \land \text{TRUE} = \text{TRUE}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 ⇒ SAT solver kết luận: **SAT** (thỏa mãn được).
 
 ### Nếu không có nghiệm thì sao?
 
 Xét biểu thức:
 
+<div class="textbook-equation" markdown="1">
 $$
 x \land \neg x
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Không có cách nào để `x` vừa đúng vừa sai. Biểu thức này **luôn sai** bất kể `x` là gì.
 
 SAT solver sẽ trả lời: **UNSAT** (không thỏa mãn được).
@@ -97,7 +103,7 @@ Khi số biến tăng lên 100, không gian tìm kiếm là \(2^{100} \approx 10
 
 ## Tại sao cần SAT solver?
 
-Nghe có vẻ chỉ là bài toán logic, nhưng rất nhiều vấn đề thực tế có thể chuyển thành SAT.
+Dù xuất phát từ bài toán logic thuần túy, rất nhiều vấn đề thực tế có thể được mã hóa thành SAT.
 
 ### 1. Kiểm chứng phần mềm
 
@@ -119,7 +125,7 @@ Sudoku có thể chuyển thành hàng nghìn mệnh đề CNF. Nếu SAT tìm �
 
 ## Tại sao CNF là dạng lý tưởng cho SAT Solver?
 
-Nhớ lại bài 01_04: mọi hàm Boolean đều có thể đưa về **CNF đầy đủ**. Điều này quan trọng vì:
+Như đã trình bày ở Mục 1.4, mọi hàm Boolean đều có thể đưa về **CNF đầy đủ**. Điều này quan trọng vì:
 
 1. **CNF = danh sách ràng buộc**: Mỗi clause là một điều kiện phải thỏa mãn.
 2. **Dễ phát hiện mâu thuẫn**: Nếu có clause `(p)` và `(\neg p)` thì chắc chắn không thỏa mãn.
@@ -181,11 +187,9 @@ CDCL là thuật toán được dùng trong hầu hết SAT solver công nghiệ
 - Khi gặp mâu thuẫn (conflict), solver **học** một clause mới (conflict clause) để tránh lặp lại sai lầm tương tự trong tương lai.
 - Kết hợp với **backjumping** (quay lui thông minh).
 
-## Có thể hình dung SAT solver như thế nào?
+## Mô hình trực quan
 
-Nếu biểu thức Boolean là một **mê cung** của các điều kiện, thì SAT solver là một người dò đường cực kỳ thông minh, biết học từ các ngõ cụt để không bao giờ đi lặp lại sai lầm cũ.
-
-Đó là lý do SAT solver trở thành một trong những công cụ nền tảng của kiểm chứng phần mềm, lập lịch và tối ưu hóa hiện đại.
+Nếu biểu thức Boolean là một **mê cung** các điều kiện, thì SAT solver đóng vai trò người dò đường học từ các ngõ cụt (conflict) để tránh lặp lại sai lầm — đặc biệt với thuật toán CDCL. Đây là lý do SAT solver trở thành công cụ nền tảng của kiểm chứng phần mềm, lập lịch và tối ưu hóa hiện đại.
 
 ## Đầu vào và đầu ra của SAT solver
 
@@ -207,6 +211,12 @@ Nếu biểu thức Boolean là một **mê cung** của các điều kiện, th
 - **CaDiCaL** – hiệu năng cao
 - **Z3** (Microsoft Research) – mở rộng SAT thành SMT, hỗ trợ số nguyên, mảng, bit-vector
 
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
+
 ## Tóm tắt
 
 - **SAT** là bài toán kiểm tra sự thỏa mãn của công thức Boolean.
@@ -214,7 +224,7 @@ Nếu biểu thức Boolean là một **mê cung** của các điều kiện, th
 - Các thuật toán chính: **Backtracking → DPLL → CDCL**.
 - SAT solver được dùng rộng rãi trong **verification**, **scheduling**, **AI planning**, và **phân tích bảo mật**.
 
-Bài học này khép lại chuỗi kiến thức về **logic mệnh đề** và mở ra cánh cửa đến một trong những công cụ mạnh mẽ nhất của khoa học máy tính hiện đại.
+Mục này khép lại chuỗi kiến thức về **logic mệnh đề** trong Chương 1 và mở ra hướng ứng dụng với một trong những công cụ mạnh mẽ nhất của khoa học máy tính hiện đại.
 
 ---
 
@@ -224,10 +234,12 @@ Bài học này khép lại chuỗi kiến thức về **logic mệnh đề** v�
 
 Cho công thức:
 
+<div class="textbook-equation" markdown="1">
 $$
 (p \lor q) \land (\neg p \lor r) \land (\neg q \lor \neg r)
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 1. Viết hàm Python kiểm tra tất cả 8 assignment.
 2. Có bao nhiêu assignment thỏa mãn?
 
@@ -235,10 +247,12 @@ $$
 
 Xét CNF:
 
+<div class="textbook-equation" markdown="1">
 $$
 (p) \land (\neg p \lor q) \land (r \lor s)
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Áp dụng unit propagation. Biến nào bị gán giá trị? Clause nào còn lại?
 
 ### Bài tập 3: Nghiên cứu
@@ -334,8 +348,10 @@ Ba người A, B, C cần xếp lịch trực. Mỗi người trực một buổ
 ### Bài tập 6: Hiểu thuật toán DPLL qua ví dụ
 
 Cho CNF:
+<div class="textbook-equation" markdown="1">
 $$(p \lor q) \land (\neg p \lor r) \land (\neg q \lor \neg r) \land (q \lor \neg r)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Mô phỏng thuật toán DPLL từng bước:
 (a) Chọn một biến để phân nhánh (split).
 (b) Áp dụng unit propagation.
@@ -420,7 +436,7 @@ Xét bàn cờ 3×3, cần đặt 3 quân xe (rook) sao cho không quân nào ă
 
 (a) Tại sao bài toán 2-SAT (mỗi clause có đúng 2 literal) có thể giải trong thời gian đa thức?
 (b) Tại sao 3-SAT lại khó hơn?
-(c) Nếu bạn có một SAT solver chạy được cho 3-SAT với 1000 biến, bạn có thể dùng nó để giải các bài toán NP-khác không?
+(c) Nếu có một SAT solver chạy được cho 3-SAT với 1000 biến, ta có thể dùng nó để giải các bài toán NP-khác không?
 
 <details>
 <summary>Đáp án</summary>

@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Logic Vị từ trong Lập trình và Cơ sở Dữ liệu"
 categories: chapter02
@@ -6,9 +7,10 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
+excerpt: "Ở ba mục trước, chúng ta đã học vị từ, lượng từ và quy tắc suy luận trong logic vị từ. Mục này nối các khái niệm đó với thực hành kỹ thuật: mỗi khi viết hay…"
 ---
 
-Mỗi lần bạn viết `assert age >= 18` hay thêm điều kiện `WHERE NOT EXISTS (...)`, bạn đang dùng cùng một ngôn ngữ toán học: **logic vị từ** (predicate logic) với lượng từ $$\forall$$ và $$\exists$$.
+Ở ba mục trước, chúng ta đã học vị từ, lượng từ và quy tắc suy luận trong logic vị từ. Mục này nối các khái niệm đó với thực hành kỹ thuật: mỗi khi viết `assert age >= 18` hay thêm điều kiện `WHERE NOT EXISTS (...)`, ta đang dùng cùng một ngôn ngữ toán học — **logic vị từ** (predicate logic) với lượng từ $$\forall$$ và $$\exists$$.
 
 ```python
 from pydantic import BaseModel, Field, field_validator
@@ -26,11 +28,14 @@ class Student(BaseModel):
 
 Đoạn code trên không chỉ "kiểm tra input". Nó là một **đặc tả** (specification): với mọi đối tượng `Student` được tạo thành công, các vị từ `id > 0`, `0 ≤ gpa ≤ 4` đều đúng. Trong SQL, cùng ý tưởng xuất hiện dưới dạng `CHECK`, `FOREIGN KEY`, và truy vấn có `EXISTS` / `NOT EXISTS`.
 
-Từ Frege và lượng từ ∀/∃ đến validation schema, contract programming, và truy vấn quan hệ — bài này nối Chương 2 với cách kỹ sư viết phần mềm an toàn hàng ngày.
+Từ Frege và lượng từ ∀/∃ đến validation schema, contract programming và truy vấn quan hệ, mục này kết nối Chương 2 với cách kỹ sư viết phần mềm an toàn hàng ngày.
 
 ## Mục tiêu học tập
 
-Sau bài học này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Dịch** yêu cầu nghiệp vụ có "mọi" / "tồn tại" sang công thức logic vị từ và sang SQL/Python tương đương.
 - **Viết** assertion, validator, và schema kiểu Pydantic/Zod như triển khai thực tế của vị từ.
@@ -38,7 +43,10 @@ Sau bài học này, sinh viên có thể:
 - **Mô hình hóa** ràng buộc CSDL (UNIQUE, FOREIGN KEY, CHECK) bằng $$\forall$$ và $$\exists$$ trên miền bản ghi.
 - **Nhận ra** khi nào cần đặc tả hình thức (formal spec) thay vì chỉ test vài trường hợp.
 
+
 **Từ khóa**: logic vị từ (predicate logic), lượng từ (quantifier), đặc tả (specification), assertion, schema validation, truy vấn quan hệ (relational query).
+</div>
+
 
 ---
 
@@ -53,23 +61,32 @@ Sau bài học này, sinh viên có thể:
 | Không tồn tại hai email trùng nhau | $$\lnot \exists u_1, u_2 \in D_{user},\ (u_1 \neq u_2 \land SameEmail(u_1,u_2))$$ |
 | Mọi đơn hàng đều có đúng một người mua | $$\forall o \in D_{order},\ \exists! u \in D_{user},\ Buyer(o,u)$$ |
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**: "Mọi giao dịch phải được xác thực trước khi xử lý"
 
+<div class="textbook-equation" markdown="1">
 $$\forall t \in Transactions,\ Processed(t) \limpl Verified(t)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Đọc theo hướng lập trình: *nếu* `processed(t)` thì *bắt buộc* `verified(t)` đã đúng trước đó.
 
 ![Gottlob Frege — nền tảng logic vị từ hiện đại](/discrete-mathematics-for-computer-science-iuh/img/course/gottlob_frege.svg)
 
-*Hình 2.16: Gottlob Frege — đặt nền cho logic vị từ (first-order logic); hôm nay cùng cấu trúc ∀/∃ xuất hiện trong SQL và validation code.*
+<p class="textbook-figure-caption" data-figure="2.16">Gottlob Frege — đặt nền cho logic vị từ (first-order logic); hôm nay cùng cấu trúc ∀/∃ xuất hiện trong SQL và validation code.</p>
+</div>
 
 ### 1.2. Phủ định lượng từ — lỗi hay gặp nhất
 
 Luật De Morgan cho lượng từ:
 
+<div class="textbook-equation" markdown="1">
 $$\lnot \forall x\, P(x) \equiv \exists x\, \lnot P(x)$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$\lnot \exists x\, P(x) \equiv \forall x\, \lnot P(x)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **SQL**: "Không có đơn hàng nào chưa thanh toán" **không** phải `NOT EXISTS (unpaid orders)` theo nghĩa mơ hồ — phải viết rõ:
 
 ```sql
@@ -80,7 +97,7 @@ FROM orders
 WHERE status = 'unpaid';
 ```
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Cẩn thận**: $$\forall x \exists y$$ và $$\exists y \forall x$$ **không** tương đương. "Mỗi sinh viên có một cố vấn" khác "Có một cố vấn cho mọi sinh viên". Thứ tự lượng từ trong spec ảnh hưởng trực tiếp đến thiết kế API và schema.
 </div>
 
@@ -127,8 +144,7 @@ CREATE TABLE enrollments (
 
 ![Truy vấn SQL — thể hiện ∃ và ∀ qua EXISTS, JOIN, ràng buộc](/discrete-mathematics-for-computer-science-iuh/img/course/sql_query.svg)
 
-*Hình 2.17: Truy vấn SQL biểu diễn lượng từ qua EXISTS/NOT EXISTS và ràng buộc quan hệ — cùng ý tưởng với công thức ∀/∃ trên miền bản ghi.*
-
+<p class="textbook-figure-caption" data-figure="2.17">Truy vấn SQL biểu diễn lượng từ qua EXISTS/NOT EXISTS và ràng buộc quan hệ — cùng ý tưởng với công thức ∀/∃ trên miền bản ghi.</p>
 ### 2.3. `CHECK` — vị từ trên từng dòng
 
 ```sql
@@ -198,8 +214,8 @@ def withdraw(balance: float, amount: float) -> float:
 
 Precondition/postcondition/invariant là ba lớp vị từ bọc hàm — tiền thân của các công cụ như Eiffel, và tinh thần của Rust `debug_assert!`, Kotlin `require`/`check`.
 
-<div class="content-box insight-box" markdown="1">
-**Nhận xét**: Test kiểm tra *một số* input; đặc tả ∀/∃ nói *mọi* input trong miền. Validation schema là điểm giao thực dụng: bạn viết vài dòng code nhưng đang mã hóa phạm vi ∀ trên request body.
+<div class="content-box insight-box textbook-block" markdown="1">
+**Nhận xét**: Test kiểm tra *một số* input; đặc tả ∀/∃ nói *mọi* input trong miền. Validation schema là điểm giao thực dụng: vài dòng code có thể mã hóa phạm vi ∀ trên request body.
 </div>
 
 ---
@@ -235,8 +251,10 @@ Viết công thức cho: "Mọi khóa học đều có ít nhất một giảng 
 <details>
 <summary>Đáp án</summary>
 
+<div class="textbook-equation" markdown="1">
 $$\forall c \in Courses,\ \exists t \in Teachers,\ Teaches(t, c)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 </details>
 
 ### Bài tập 2: SQL với EXISTS
@@ -386,6 +404,12 @@ def test_square_non_negative():
 Test chỉ kiểm tra hữu hạn giá trị; ∀ khẳng định trên vô hạn số nguyên. Cần chứng minh (induction hoặc đại số) hoặc đặc tả hình thức — đó là lý do kết hợp test + spec.
 
 </details>
+
+
+## Xem thêm / Video gợi ý
+
+- [Quantifiers and Nested Quantifiers](https://www.youtube.com/watch?v=9jZ5n8k0p0Q) — Trefor Bazett (Clear examples with predicates)
+- [Predicate Logic — ∀ and ∃](https://www.youtube.com/watch?v=8l7L9v0p0Q) — TrevTutor (Discrete Math playlist)
 
 ## Tóm tắt
 

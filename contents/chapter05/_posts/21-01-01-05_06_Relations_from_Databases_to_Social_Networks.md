@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Quan hệ: Từ Cơ sở Dữ liệu đến Mạng Xã hội"
 categories: chapter05
@@ -6,62 +7,26 @@ date: 2021-01-01
 order: 6
 required: false
 lang: en
+excerpt: "Ở các mục trước chúng ta đã xây dựng nền tảng lý thuyết về quan hệ. Mục bổ sung này trình bày ứng dụng của quan hệ trong cơ sở dữ liệu, mạng xã hội, kiểm thử…"
 ---
 
-Chúng ta sống trong thế giới của các quan hệ.
-Sinh viên đăng ký môn học.
-Người dùng theo dõi nhau trên mạng xã hội.
-Khách hàng mua sản phẩm.
-Tài khoản được gắn quyền truy cập.
-Video được đề xuất cho người xem.
+Ở các mục trước chúng ta đã xây dựng nền tảng lý thuyết về quan hệ. Mục bổ sung này trình bày ứng dụng của quan hệ trong cơ sở dữ liệu, mạng xã hội, kiểm thử phần mềm và hệ thống gợi ý.
 
-Trong toán học rời rạc,
-quan hệ có vẻ là một định nghĩa khô:
-tập con của tích Descartes.
-Nhưng trong khoa học máy tính,
-đó là một ý tưởng cực sống:
-nó là nền cho relational databases,
-graph data,
-recommendation systems,
-và cả cách ta chia thế giới input thành các lớp tương đương để test phần mềm.
-
----
+Trong toán học rời rạc, quan hệ là tập con của tích Descartes; trong khoa học máy tính, đó là nền tảng của mô hình quan hệ, đồ thị dữ liệu, hệ thống gợi ý và phân vùng kiểm thử. Sinh viên đăng ký môn học, người dùng theo dõi nhau, khách hàng mua sản phẩm — mọi tình huống đó đều được mô hình hóa bằng các cặp có cấu trúc.
 
 ## Phần 1: Lịch sử — từ set theory đến mô hình quan hệ
 
 ### 1.1. Quan hệ sinh ra từ nhu cầu mô tả kết nối
 
-Khi set theory trưởng thành,
-các nhà toán học nhận ra rằng chỉ liệt kê đối tượng là chưa đủ.
-Ta còn cần mô tả cách chúng liên kết với nhau.
-
-Quan hệ là công cụ hoàn hảo cho việc đó.
-Nó cho phép nói:
-
-- sinh viên nào học môn nào,
-- đỉnh nào kề đỉnh nào,
-- số nào chia hết cho số nào,
-- trạng thái nào chuyển sang trạng thái nào.
+Khi lý thuyết tập hợp trưởng thành, các nhà toán học nhận ra rằng chỉ liệt kê đối tượng là chưa đủ — cần mô tả cách chúng liên kết với nhau. Quan hệ là công cụ phù hợp cho mục đích đó: nó cho phép phát biểu sinh viên nào học môn nào, đỉnh nào kề đỉnh nào, số nào chia hết cho số nào, hay trạng thái nào chuyển sang trạng thái nào.
 
 ### 1.2. E. F. Codd và cuộc cách mạng năm 1970
 
-Năm 1970,
-Edgar F. Codd công bố bài báo nổi tiếng về mô hình quan hệ cho dữ liệu lớn được chia sẻ.
-Đó là một trong những khoảnh khắc định hình toàn bộ ngành database.
-
-Điểm mạnh của Codd là ông không chỉ đưa ra kỹ thuật lưu trữ.
-Ông đưa ra một mô hình toán học.
-
-Thay vì xem dữ liệu là các con trỏ và record phụ thuộc chặt vào cách lưu vật lý,
-Codd xem dữ liệu như các quan hệ có thể thao tác bằng đại số.
-
-Đó là một quyết định trí tuệ cực mạnh,
-vì nó tách phần “dữ liệu là gì” khỏi phần “dữ liệu được lưu ra sao”.
+Năm 1970, Edgar F. Codd công bố bài báo nổi tiếng về mô hình quan hệ cho dữ liệu lớn được chia sẻ — một trong những khoảnh khắc định hình toàn bộ ngành cơ sở dữ liệu. Điểm mạnh của Codd là ông không chỉ đưa ra kỹ thuật lưu trữ mà đưa ra một mô hình toán học. Thay vì xem dữ liệu là các con trỏ và bản ghi phụ thuộc chặt vào cách lưu vật lý, Codd xem dữ liệu như các quan hệ có thể thao tác bằng đại số. Quyết định này tách phần "dữ liệu là gì" khỏi phần "dữ liệu được lưu ra sao".
 
 ![Mô hình quan hệ của E. F. Codd](/discrete-mathematics-for-computer-science-iuh/img/course/Database.svg)
 
-*Hình 5.31: E. F. Codd (1970) đặt nền móng mô hình quan hệ — dữ liệu được tổ chức thành các bảng có thể thao tác bằng đại số.*
-
+<p class="textbook-figure-caption" data-figure="5.31">E. F. Codd (1970) đặt nền móng mô hình quan hệ — dữ liệu được tổ chức thành các bảng có thể thao tác bằng đại số.</p>
 ---
 
 ## Phần 2: Database design — nơi quan hệ thành hạ tầng
@@ -86,8 +51,7 @@ kỹ sư thường bắt đầu bằng ER diagram:
 
 ![Sơ đồ ER — thực thể và quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/ERD_Representation.svg)
 
-*Hình 5.32: ER diagram mô tả thực thể (Student, Course, Instructor) và quan hệ giữa chúng trước khi chuyển sang bảng SQL.*
-
+<p class="textbook-figure-caption" data-figure="5.32">ER diagram mô tả thực thể (Student, Course, Instructor) và quan hệ giữa chúng trước khi chuyển sang bảng SQL.</p>
 ### 2.2. Foreign key là quan hệ được máy cưỡng chế
 
 ```sql
@@ -118,14 +82,13 @@ Các thao tác như:
 đều là công cụ thao tác trên quan hệ.
 Nhiều query planner và optimizer thực hiện các phép biến đổi dựa trên luật đại số để tìm kế hoạch chạy tốt hơn.
 
-Điều này nhắc ta rằng:
+Điều này nhắc chúng ta rằng:
 DBMS không chỉ là phần mềm lưu file.
 Nó là cỗ máy suy nghĩ bằng quan hệ.
 
 ![Phép JOIN trong đại số quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/Square_join.png)
 
-*Hình 5.33: Phép JOIN ghép hai quan hệ qua khóa chung — nền tảng của truy vấn SQL và query planner.*
-
+<p class="textbook-figure-caption" data-figure="5.33">Phép JOIN ghép hai quan hệ qua khóa chung — nền tảng của truy vấn SQL và query planner.</p>
 ---
 
 ## Phần 3: Quan hệ trong mạng xã hội và graphs
@@ -144,16 +107,16 @@ Ví dụ:
 - `likes(A, Post42)`
 
 Khi các quan hệ này phình lên hàng tỷ bản ghi,
-ta bước từ set theory sang graph analytics ở quy mô công nghiệp.
+chúng ta bước từ set theory sang graph analytics ở quy mô công nghiệp.
 
 ### 3.2. Quan hệ có thể có hướng, không đối xứng, không bắc cầu
 
 Quan hệ “theo dõi” trên X không đối xứng.
-Quan hệ “bạn bè” trên Facebook gần hơn với đối xứng.
+Quan hệ “chúng ta bè” trên Facebook gần hơn với đối xứng.
 Quan hệ “là tổ tiên của” có tính bắc cầu.
 
 Những tính chất đã học trong toán rời rạc
-trở nên cực thực khi bạn mô hình hóa hệ thống thật.
+trở nên cực thực khi chúng ta mô hình hóa hệ thống thật.
 
 ### 3.3. Recommendation systems dựa trên các lớp quan hệ dày đặc
 
@@ -173,8 +136,7 @@ nó đang khai thác quan hệ giữa:
 
 ![Mạng xã hội như đồ thị quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/Social_Network_Analysis_Visualization.png)
 
-*Hình 5.34: Quan hệ không chỉ sống trong bảng dữ liệu — mạng xã hội là đồ thị quan hệ quy mô hàng tỷ cung (follows, friends, likes).*
-
+<p class="textbook-figure-caption" data-figure="5.34">Quan hệ không chỉ sống trong bảng dữ liệu — mạng xã hội là đồ thị quan hệ quy mô hàng tỷ cung (follows, friends, likes).</p>
 ---
 
 ## Phần 4: Equivalence classes trong testing và hashing
@@ -182,7 +144,7 @@ nó đang khai thác quan hệ giữa:
 ### 4.1. Testing không thể thử mọi input
 
 Nếu phần mềm nhận hàng triệu khả năng input,
-ta không thể test từng trường hợp.
+chúng ta không thể test từng trường hợp.
 Vì vậy,
 kỹ sư dùng **equivalence partitioning**:
 chia input thành các lớp được xem là “tương đương về hành vi dự kiến”.
@@ -225,8 +187,7 @@ có ảnh hưởng trực tiếp tới hiệu năng.
 
 ![Equivalence partitioning — lớp tương đương trong testing](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
-*Hình 5.35: Equivalence partitioning chia input thành các lớp tương đương — mỗi lớp đại diện cho một hành vi dự kiến giống nhau.*
-
+<p class="textbook-figure-caption" data-figure="5.35">Equivalence partitioning chia input thành các lớp tương đương — mỗi lớp đại diện cho một hành vi dự kiến giống nhau.</p>
 ---
 
 ## Phần 5: AI recommendation systems và ma trận quan hệ
@@ -249,18 +210,17 @@ và gợi ý nào có khả năng thành công.
 
 ![Ma trận user-item — quan hệ gợi ý](/discrete-mathematics-for-computer-science-iuh/img/course/Hasse_diagram_of_powerset_of_3.svg)
 
-*Hình 5.36: Recommendation systems lưu quan hệ user–item dưới dạng ma trận thưa — collaborative filtering khai thác mẫu liên kết giữa người dùng và sản phẩm.*
-
+<p class="textbook-figure-caption" data-figure="5.36">Recommendation systems lưu quan hệ user–item dưới dạng ma trận thưa — collaborative filtering khai thác mẫu liên kết giữa người dùng và sản phẩm.</p>
 ### 5.2. Collaborative filtering nhìn rất “quan hệ”
 
 Nếu hai người có hành vi tương tự trên nhiều item,
-ta có thể dự đoán họ sẽ thích các item giống nhau trong tương lai.
+chúng ta có thể dự đoán họ sẽ thích các item giống nhau trong tương lai.
 
 Đây là cách nhìn đặc trưng của collaborative filtering.
 Đằng sau các ma trận,
 vector embeddings,
 và factorization,
-ta vẫn thấy một câu hỏi cũ:
+chúng ta vẫn thấy một câu hỏi cũ:
 “đối tượng nào liên hệ với đối tượng nào theo mẫu nào?”
 
 ### 5.3. Từ relation đến representation learning
@@ -284,7 +244,7 @@ Nó chỉ đổi hình thức biểu diễn.
 Khi dữ liệu ngày càng liên thông,
 vai trò của quan hệ càng lớn.
 
-Ta thấy điều này trong:
+Chúng ta thấy điều này trong:
 
 - graph databases,
 - fraud detection,
@@ -314,8 +274,8 @@ khái niệm quan hệ âm thầm xuất hiện ở khắp nơi.
 
 Hiểu quan hệ,
 vì thế,
-không chỉ giúp bạn giải bài tập chương 5.
-Nó giúp bạn nhìn thấy xương sống của nhiều hệ thống số đang vận hành quanh mình.
+không chỉ giúp chúng ta giải bài tập chương 5.
+Nó giúp chúng ta nhìn thấy xương sống của nhiều hệ thống số đang vận hành quanh mình.
 
 ---
 
@@ -323,13 +283,15 @@ Nó giúp bạn nhìn thấy xương sống của nhiều hệ thống số đan
 
 ### Bài tập 1: Mô hình hóa quan hệ xã hội
 
-Viết công thức vị từ cho: "Mọi người bạn của bạn đều là bạn của tôi".
+Viết công thức vị từ cho: "Mọi người chúng ta của chúng ta đều là chúng ta của tôi".
 
 <details>
 <summary>Đáp án</summary>
 
+<div class="textbook-equation" markdown="1">
 $$\forall x \forall y (Friend(x,y) \to Friend(y,me))$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 </details>
 
 ### Bài tập 2: ER Diagram
@@ -356,6 +318,14 @@ Lớp tương đương: [0-17], [18-35], [36-60], [60+]. Chọn một giá trị
 
 </details>
 
+## Xem thêm / Video gợi ý
+
+- [Relations and Functions](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — Trefor Bazett (Equivalence relations)
+
 ## Tóm tắt
 
-Quan hệ là cầu nối giữa toán học và thực tế. Từ mô hình quan hệ của Codd, ER diagram, mạng xã hội, đến partition testing và recommendation systems — tất cả đều dựa trên ý tưởng tổ chức dữ liệu thành các cặp có cấu trúc. Hiểu sâu về quan hệ giúp bạn thiết kế hệ thống rõ ràng, dễ bảo trì và dễ kiểm chứng hơn.
+- **Mô hình quan hệ** (Codd, 1970): dữ liệu tổ chức thành bảng, thao tác bằng đại số quan hệ
+- **ER diagram và foreign key**: mô hình hóa thực thể và ràng buộc liên kết trong cơ sở dữ liệu
+- **Mạng xã hội**: quan hệ có hướng, đối xứng hoặc bắc cầu tùy loại liên kết
+- **Equivalence partitioning**: chia input thành lớp tương đương trong kiểm thử phần mềm
+- **Recommendation systems**: ma trận quan hệ user–item là nền của collaborative filtering

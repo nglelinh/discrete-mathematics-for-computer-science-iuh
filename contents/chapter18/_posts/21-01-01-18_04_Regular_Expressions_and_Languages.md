@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Biểu thức chính quy và Ngôn ngữ chính quy"
 categories: chapter18
@@ -6,35 +7,31 @@ date: 2021-01-01
 order: 4
 required: true
 lang: en
+excerpt: "Ở mục trước chúng ta đã chứng minh tương đương NFA và DFA. Mục này giới thiệu biểu thức chính quy (regular expressions) và định lý Kleene — ba cách biểu diễn…"
 ---
 
-Lệnh `grep "^[A-Z][a-z]*ing$" file.txt` tìm các dòng bắt đầu bằng một chữ hoa, theo sau là các chữ thường, kết thúc bằng `ing`. Cú pháp ngắn gọn đó là một **biểu thức chính quy** (regular expression, regex), và nó được dùng khắp nơi: trong trình soạn thảo (`vim`, `vscode`), trình biên dịch, ngôn ngữ kịch bản (`sed`, `awk`, JavaScript, Python). Mọi regex đều **tương đương** với một automat hữu hạn nào đó - đây là nội dung **định lý Kleene**, một trong những kết quả nền tảng của lý thuyết automat.
-
-Bài này định nghĩa hình thức regex, trình bày định lý Kleene (regex $$\Leftrightarrow$$ FSM), đưa ra hai cấu trúc đối ngẫu - **Thompson** (regex sang $$\varepsilon$$-NFA) và **state elimination** (DFA sang regex), và kết thúc bằng **bổ đề bơm** (pumping lemma) - công cụ chứng minh một ngôn ngữ **không** chính quy. Đây là điểm gặp nhau giữa **lý thuyết** (lớp ngôn ngữ chính quy có cấu trúc đại số đẹp) và **thực hành** (thư viện regex của mọi ngôn ngữ lập trình hiện đại).
+Ở mục trước chúng ta đã chứng minh tương đương NFA và DFA. Mục này giới thiệu **biểu thức chính quy** (regular expressions) và định lý **Kleene** — ba cách biểu diễn tương đương của lớp ngôn ngữ chính quy: DFA, NFA và regex.
 
 ![Biểu thức chính quy](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
-*Hình 18.16: Regex mô tả ngôn ngữ chính quy — cùng lớp với DFA và NFA.*
-
+<p class="textbook-figure-caption" data-figure="18.16">Regex mô tả ngôn ngữ chính quy — cùng lớp với DFA và NFA.</p>
 ![Thompson construction](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
-*Hình 18.17: Xây NFA từ regex — mỗi toán tử regex tương ứng mẫu NFA nhỏ.*
-
+<p class="textbook-figure-caption" data-figure="18.17">Xây NFA từ regex — mỗi toán tử regex tương ứng mẫu NFA nhỏ.</p>
 ![Kleene star](/discrete-mathematics-for-computer-science-iuh/img/course/Finite_state_machine_example_with_comments.svg)
 
-*Hình 18.18: Toán tử $*$ (lặp 0 hoặc nhiều lần) — nền tảng cú pháp regex.*
+<p class="textbook-figure-caption" data-figure="18.18">Toán tử $*$ (lặp 0 hoặc nhiều lần) — nền tảng cú pháp regex.</p>
+![Lexical analysis](/discrete-mathematics-for-computer-science-iuh/img/course/compiler_phases.svg)
 
-![Lexical analysis](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
-
-*Hình 18.19: Trình biên dịch dùng FSM/regex để phân tích từ vựng — tokenize mã nguồn.*
-
+<p class="textbook-figure-caption" data-figure="18.19">Trình biên dịch dùng FSM/regex để phân tích từ vựng — tokenize mã nguồn.</p>
 ![Lớp ngôn ngữ chính quy](/discrete-mathematics-for-computer-science-iuh/img/course/Chomsky_hierarchy.svg)
 
-*Hình 18.20: Regular languages nằm ở tầng thấp nhất phân cấp Chomsky.*
-
+<p class="textbook-figure-caption" data-figure="18.20">Regular languages nằm ở tầng thấp nhất phân cấp Chomsky.</p>
 ## Mục tiêu học tập
 
-Sau khi hoàn thành bài này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau khi hoàn thành bài này, sinh viên có thể:
 
 - **Định nghĩa** hình thức biểu thức chính quy và ngôn ngữ mà nó biểu diễn.
 - **Phát biểu** định lý Kleene: regex và FSM cùng định nghĩa lớp ngôn ngữ chính quy.
@@ -43,6 +40,7 @@ Sau khi hoàn thành bài này, sinh viên có thể:
 - **Nhận ra** các tính chất đóng của lớp ngôn ngữ chính quy.
 
 **Từ khóa**: biểu thức chính quy (regular expression), ngôn ngữ chính quy (regular language), định lý Kleene (Kleene's theorem), bao đóng Kleene (Kleene closure), Thompson construction, bổ đề bơm (pumping lemma), tính chất đóng (closure property).
+</div>
 
 ## 1. Định nghĩa biểu thức chính quy
 
@@ -63,7 +61,7 @@ Một số ký hiệu phái sinh:
 - $$r^k$$ (ghép $$k$$ lần).
 - $$(r)$$ dùng để gom nhóm.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 1**: Một vài regex trên $$\{0, 1\}$$:
 
 - $$(0+1)^*$$ - mọi chuỗi nhị phân.
@@ -79,13 +77,15 @@ Một số ký hiệu phái sinh:
 
 Tương đương:
 
+<div class="textbook-equation" markdown="1">
 $$\text{regex} \;\Longleftrightarrow\; \varepsilon\text{-NFA} \;\Longleftrightarrow\; \text{NFA} \;\Longleftrightarrow\; \text{DFA}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Tất cả các mô hình này cùng định nghĩa **lớp ngôn ngữ chính quy**.
 
 ### Chiều thứ nhất: regex $$\to$$ $$\varepsilon$$-NFA (Thompson construction)
 
-Cho regex $$r$$, ta xây dựng $$\varepsilon$$-NFA $$N_r$$ chấp nhận $$L(r)$$ bằng **quy nạp cấu trúc**:
+Cho regex $$r$$, chúng ta xây dựng $$\varepsilon$$-NFA $$N_r$$ chấp nhận $$L(r)$$ bằng **quy nạp cấu trúc**:
 
 - Cơ sở $$\emptyset$$, $$\varepsilon$$, $$a$$: các NFA nhỏ với 1 hoặc 2 trạng thái.
 - $$r + s$$: tạo trạng thái mới $$q_{\text{start}}$$ với hai $$\varepsilon$$-chuyển đến $$N_r$$ và $$N_s$$; nối hai trạng thái chấp nhận của $$N_r, N_s$$ vào một trạng thái chấp nhận mới bằng $$\varepsilon$$.
@@ -96,10 +96,10 @@ NFA Thompson cho regex độ dài $$n$$ có không quá $$2n$$ trạng thái - r
 
 ### Chiều thứ hai: DFA $$\to$$ regex (state elimination)
 
-Cho DFA, ta lần lượt **loại bỏ trạng thái trung gian**, mỗi lần thay các cạnh đi qua bằng regex tổng hợp các đường đi qua đó. Sau khi loại hết các trạng thái trung gian, regex còn lại trên cạnh nối $$q_0$$ với trạng thái chấp nhận chính là regex của ngôn ngữ.
+Cho DFA, chúng ta lần lượt **loại bỏ trạng thái trung gian**, mỗi lần thay các cạnh đi qua bằng regex tổng hợp các đường đi qua đó. Sau khi loại hết các trạng thái trung gian, regex còn lại trên cạnh nối $$q_0$$ với trạng thái chấp nhận chính là regex của ngôn ngữ.
 
-<div class="content-box insight-box" markdown="1">
-**Trực giác**: bất kỳ ngôn ngữ nào ta có thể **mô tả** bằng các phép hợp - ghép - sao Kleene từ các ký hiệu cơ bản, ta cũng có thể **nhận diện** bằng một máy hữu hạn trạng thái, và ngược lại. Hai cách nhìn (sản sinh chuỗi vs nhận diện chuỗi) cho cùng một lớp ngôn ngữ. Đây là kiểu kết quả "đối ngẫu" rất hay gặp trong toán học và khoa học máy tính.
+<div class="content-box insight-box textbook-block" markdown="1">
+**Trực giác**: bất kỳ ngôn ngữ nào chúng ta có thể **mô tả** bằng các phép hợp - ghép - sao Kleene từ các ký hiệu cơ bản, chúng ta cũng có thể **nhận diện** bằng một máy hữu hạn trạng thái, và ngược lại. Hai cách nhìn (sản sinh chuỗi vs nhận diện chuỗi) cho cùng một lớp ngôn ngữ. Đây là kiểu kết quả "đối ngẫu" rất hay gặp trong toán học và khoa học máy tính.
 </div>
 
 ## 3. Tính chất đóng của ngôn ngữ chính quy
@@ -116,7 +116,7 @@ Lớp ngôn ngữ chính quy **đóng** dưới nhiều phép toán:
 | Đảo ngược $$L^R$$ | Có | Đảo cạnh và đổi vai trò start/accept |
 | Đồng cấu (homomorphism) | Có | Thay mỗi ký hiệu bằng chuỗi tương ứng |
 
-Các tính chất đóng cho ta cách **chứng minh** một ngôn ngữ là chính quy bằng cách xây dựng nó từ các ngôn ngữ chính quy đã biết.
+Các tính chất đóng cho chúng ta cách **chứng minh** một ngôn ngữ là chính quy bằng cách xây dựng nó từ các ngôn ngữ chính quy đã biết.
 
 ## 4. Bổ đề bơm: chứng minh không chính quy
 
@@ -138,7 +138,7 @@ Làm sao chứng minh một ngôn ngữ **không** chính quy? Công cụ kinh �
 3. Với mọi cách phân tích $$w = xyz$$ thỏa mãn $$|y| \geq 1, |xy| \leq p$$, chỉ ra một $$i$$ sao cho $$xy^i z \notin L$$.
 4. Mâu thuẫn $$\Rightarrow$$ $$L$$ không chính quy.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 2**: Chứng minh $$L = \{0^n 1^n : n \geq 0\}$$ không chính quy.
 
 Giả sử có. Gọi $$p$$ là độ dài bơm. Chọn $$w = 0^p 1^p \in L$$, $$|w| = 2p \geq p$$.
@@ -150,7 +150,7 @@ Bơm $$i = 2$$: $$xy^2 z = 0^{p+k} 1^p$$, có $$p + k$$ chữ `0` nhưng chỉ $
 Mâu thuẫn. Vậy $$L$$ không chính quy.
 </div>
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 3**: $$L = \{w \in \{0,1\}^* : w \text{ là số nguyên tố ở dạng nhị phân}\}$$ cũng không chính quy. Một chứng minh tinh tế hơn dùng bổ đề bơm và định lý số học.
 </div>
 
@@ -161,7 +161,7 @@ Mâu thuẫn. Vậy $$L$$ không chính quy.
 - **Lập chỉ mục Lucene/Elasticsearch**: tìm kiếm văn bản nâng cao dựa trên các automat hữu hạn.
 - **Kiểm tra giao thức**: đặc tả giao thức an toàn (ví dụ SSL handshake) bằng regex và kiểm tra tính tuân thủ.
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Cảnh báo về regex "thực tế"**: các thư viện regex như PCRE (Perl Compatible Regular Expressions) bổ sung **backreference** (`\1`, `\2`), **lookahead/lookbehind**, vốn **không** thuộc lớp regex chính quy về mặt lý thuyết. Backreference cho phép biểu diễn các ngôn ngữ không chính quy (ví dụ $$ww$$), nhưng cũng làm bài toán khớp trở thành NP-khó trong trường hợp xấu nhất.
 </div>
 
@@ -183,7 +183,7 @@ Mâu thuẫn. Vậy $$L$$ không chính quy.
 6. Cho hai regex $$r = a^* b^*$$ và $$s = (ab)^*$$. Mô tả $$L(r) \cap L(s)$$.
 7. Chứng minh lớp ngôn ngữ chính quy đóng dưới phép giao bằng cách dùng DFA tích.
 
-<div class="content-box note-box" markdown="1">
+<div class="content-box note-box textbook-block" markdown="1">
 **Tài liệu tham khảo**
 
 - Rosen, K. H. (2019). *Discrete Mathematics and Its Applications*, 8th ed. Section 13.3, 13.4.
@@ -191,3 +191,19 @@ Mâu thuẫn. Vậy $$L$$ không chính quy.
 - Hopcroft, J., Motwani, R., & Ullman, J. (2007). *Introduction to Automata Theory*, 3rd ed. Chapters 3-4.
 - Kleene, S. C. (1956). "Representation of events in nerve nets and finite automata." *Automata Studies*, Princeton University Press.
 </div>
+
+---
+
+## Xem thêm / Video gợi ý
+
+- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (Truth table proof + laws)
+- [Discrete Math Full Course — Logic & Proofs](https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKZS) — Trefor Bazett (Complete semester playlist)
+
+## Tóm tắt
+
+- **Biểu thức chính quy** định nghĩa đệ quy từ $$\emptyset, \varepsilon, a$$ với ba phép toán: hợp, ghép, sao Kleene.
+- **Định lý Kleene**: regex, NFA, $$\varepsilon$$-NFA, DFA cùng định nghĩa lớp **ngôn ngữ chính quy**.
+- **Thompson construction**: regex $$\to$$ $$\varepsilon$$-NFA gọn (không quá $$2n$$ trạng thái).
+- **State elimination**: DFA $$\to$$ regex.
+- **Bổ đề bơm**: công cụ chứng minh một ngôn ngữ không chính quy (ví dụ $$0^n 1^n$$).
+

@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Hàm số: Từ Turing đến Học máy"
 categories: chapter06
@@ -6,26 +7,18 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
+excerpt: "Ở các mục trước chúng ta đã xây dựng nền tảng lý thuyết về hàm số. Mục bổ sung này nối khái niệm hàm toán học với hàm tính toán được, lập trình hàm, hàm băm…"
 ---
 
-Mỗi lần bạn gọi `user.get_profile(user_id)` hay viết `orders.map(o => o.total)`, bạn đang dùng cùng một ý tưởng toán học: **mỗi đầu vào hợp lệ được gắn với đúng một đầu ra**. Nghe quen, nhưng trong khoa học máy tính, khái niệm hàm mở rộng thành cả một cách tổ chức phần mềm.
+Ở các mục trước chúng ta đã xây dựng nền tảng lý thuyết về hàm số. Mục bổ sung này nối khái niệm hàm toán học với hàm tính toán được, lập trình hàm, hàm băm mật mã và mô hình học máy.
 
-```python
-def hash_password(plain: str) -> str:
-    return bcrypt.hashpw(plain.encode(), bcrypt.gensalt()).decode()
-
-def predict_spam(subject: str, body: str) -> bool:
-    features = extract_features(subject, body)
-    return model.predict([features])[0] == "spam"
-```
-
-Hai hàm trên trông khác nhau — một cái bảo mật, một cái học máy — nhưng cùng tuân một hợp đồng: đầu vào rõ ràng, đầu ra xác định, có thể kiểm thử độc lập. Đó là lý do **tư duy hàm** (function thinking) xuất hiện khắp nơi: lambda calculus, lập trình hàm, thiết kế API, hàm băm mật mã, và mô hình dự đoán.
-
-Từ Church và Turing đến `map`/`filter`/`reduce` trên Python và JavaScript, bài này nối lý thuyết hàm số (Chương 6) với cách kỹ sư viết code hàng ngày.
+Mỗi lần gọi `user.get_profile(user_id)` hay viết `orders.map(o => o.total)`, chúng ta đang dùng cùng một hợp đồng: đầu vào rõ ràng, đầu ra xác định, có thể kiểm thử độc lập. Từ Church và Turing đến `map`/`filter`/`reduce` và endpoint dự đoán ML, khái niệm hàm là một trong những xương sống bền nhất của khoa học máy tính.
 
 ## Mục tiêu học tập
 
-Sau bài học này, sinh viên có thể:
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Giải thích** mối liên hệ giữa hàm toán học, hàm tính toán được, và hàm trong ngôn ngữ lập trình.
 - **Viết** và **ghép** hàm bằng `map`, `filter`, `reduce`, closure, và composition.
@@ -34,6 +27,7 @@ Sau bài học này, sinh viên có thể:
 - **Áp dụng** tính chất đơn ánh/toàn ánh khi thiết kế hash function, khóa chính, và hàm đảo ngược (decode, undo).
 
 **Từ khóa**: hàm tính toán được (computable function), lập trình hàm (functional programming), hàm bậc cao (higher-order function), closure, hàm thuần (pure function), hàm băm (hash function), hợp đồng hàm (function contract).
+</div>
 
 ---
 
@@ -57,7 +51,7 @@ Khi khoa học máy tính chưa tồn tại như một ngành độc lập,
 Alonzo Church đã dùng lambda calculus để nghiên cứu computation bằng ngôn ngữ của hàm.
 
 Ý tưởng rất táo bạo:
-ta có thể biểu diễn việc tính toán như áp dụng hàm lên đối số,
+chúng ta có thể biểu diễn việc tính toán như áp dụng hàm lên đối số,
 rồi rút gọn biểu thức theo quy tắc chính xác.
 
 Lambda calculus không phải ngôn ngữ lập trình thực dụng đầu tiên,
@@ -83,8 +77,7 @@ trở thành đối tượng cốt lõi.
 
 ![Alan Turing — nền tảng tính toán](/discrete-mathematics-for-computer-science-iuh/img/course/Alan_Turing_Aged_16.jpg)
 
-*Hình 6.19: Alan Turing và Alonzo Church (lambda calculus) đặt "hàm tính toán được" làm trung tâm của khoa học máy tính.*
-
+<p class="textbook-figure-caption" data-figure="6.19">Alan Turing và Alonzo Church (lambda calculus) đặt "hàm tính toán được" làm trung tâm của khoa học máy tính.</p>
 ---
 
 ## Phần 2: Functional programming — khi chương trình được xây từ hàm
@@ -105,7 +98,7 @@ vì nó làm reasoning về chương trình dễ hơn trong nhiều tình huốn
 
 ### 2.2. `map`, `filter`, `reduce`
 
-Toán học: nếu $$f: A \to B$$ và $$S \subseteq A$$, ta có thể nói $$f(S) = \{f(x) \mid x \in S\}$$. Trong lập trình, đó chính là `map`.
+Toán học: nếu $$f: A \to B$$ và $$S \subseteq A$$, chúng ta có thể nói $$f(S) = \{f(x) \mid x \in S\}$$. Trong lập trình, đó chính là `map`.
 
 **Python**:
 
@@ -142,15 +135,14 @@ const paidTotals = orders
 const revenue = paidTotals.reduce((sum, t) => sum + t, 0);  // 120
 ```
 
-Mỗi thao tác là cách áp dụng hàm lên tập dữ liệu. Ta mô tả **điều muốn biến đổi**, không mô tả từng bước lặp tay — đúng tinh thần declarative của lập trình hàm.
+Mỗi thao tác là cách áp dụng hàm lên tập dữ liệu. Chúng ta mô tả **điều muốn biến đổi**, không mô tả từng bước lặp tay — đúng tinh thần declarative của lập trình hàm.
 
 ![Lập trình hàm — map, filter, reduce](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
-*Hình 6.20: map, filter, reduce áp dụng hàm lên tập dữ liệu — tinh thần functional programming.*
-
+<p class="textbook-figure-caption" data-figure="6.20">map, filter, reduce áp dụng hàm lên tập dữ liệu — tinh thần functional programming.</p>
 ### 2.3. Composition và tái sử dụng
 
-Nếu $$f: A \to B$$ và $$g: B \to C$$, ta có hàm hợp $$(g \circ f)(x) = g(f(x))$$. Trong code, đó là pipeline — output của hàm này là input của hàm kế tiếp.
+Nếu $$f: A \to B$$ và $$g: B \to C$$, chúng ta có hàm hợp $$(g \circ f)(x) = g(f(x))$$. Trong code, đó là pipeline — output của hàm này là input của hàm kế tiếp.
 
 ```python
 def parse_csv(raw: str) -> list[dict]:
@@ -173,7 +165,7 @@ def process_upload(raw: str) -> str:
 
 Trong data engineering và backend, pipeline thường gồm: **parse → clean → validate → transform → aggregate**. Mỗi bước là một hàm nhỏ, dễ test riêng, dễ thay thế.
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Mẹo thiết kế**: Nếu một hàm vừa đọc file, vừa parse, vừa validate, vừa ghi database — nó không còn là "một hàm" theo nghĩa dễ reason. Tách thành chuỗi hàm nhỏ; mỗi hàm một trách nhiệm (single responsibility).
 </div>
 
@@ -193,7 +185,9 @@ Nó ảnh hưởng trực tiếp đến architecture decisions.
 
 ### 2.5. Hàm bậc cao (higher-order functions)
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm bậc cao là hàm nhận hàm khác làm tham số, hoặc trả về hàm.
+</div>
 
 ```python
 def apply_twice(f, x):
@@ -277,7 +271,7 @@ def track_visit(user_id: str) -> str:
     return f"{user_id}@{datetime.datetime.now().isoformat()}"
 ```
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Thực hành tốt**: Giữ **core logic** dưới dạng hàm thuần; đẩy I/O (database, HTTP, file) ra lớp ngoài. Ví dụ: `calculate_tax(amount, rules)` thuần, `save_invoice(invoice)` impure — dễ unit test phần tính thuế mà không cần database thật.
 </div>
 
@@ -325,10 +319,12 @@ Khi domain/codomain mơ hồ (`any`, `object`, `dict` không rõ key), bug thư�
 Ở mức trừu tượng,
 model học máy là hàm:
 
+<div class="textbook-equation" markdown="1">
 $$
 f: X \to Y
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Trong đó:
 
 - $X$ là không gian đầu vào,
@@ -432,8 +428,7 @@ for x, y in [(1, 2), (2, 4), (3, 6)]:
 
 ![Mô hình học máy như hàm ánh xạ](/discrete-mathematics-for-computer-science-iuh/img/course/Neural_network.svg)
 
-*Hình 6.21: Mô hình ML là hàm $$f: X \to Y$$ được học từ dữ liệu — từ đặc trưng đầu vào đến dự đoán đầu ra.*
-
+<p class="textbook-figure-caption" data-figure="6.21">Mô hình ML là hàm $$f: X \to Y$$ được học từ dữ liệu — từ đặc trưng đầu vào đến dự đoán đầu ra.</p>
 ---
 
 ## Phần 4: Cryptographic hash functions
@@ -496,8 +491,7 @@ Nó còn mang specification rất cụ thể.
 
 ![Hàm băm — toàn ánh nhưng không đơn ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Surjection.svg)
 
-*Hình 6.22: SHA-256 là hàm toàn ánh (mọi digest đều khả dĩ) nhưng không đơn ánh (domain vô hạn → collision không tránh khỏi).*
-
+<p class="textbook-figure-caption" data-figure="6.22">SHA-256 là hàm toàn ánh (mọi digest đều khả dĩ) nhưng không đơn ánh (domain vô hạn → collision không tránh khỏi).</p>
 ### 4.3. Ứng dụng của hash
 
 Hash functions sống trong:
@@ -520,7 +514,7 @@ có thể trở thành thành phần hạ tầng cực quan trọng.
 ### 5.1. Một API tốt giống một hàm tốt
 
 Khi thiết kế API,
-ta đang làm điều gần với định nghĩa hàm:
+chúng ta đang làm điều gần với định nghĩa hàm:
 
 - input là gì,
 - output là gì,
@@ -594,8 +588,7 @@ và tài liệu hóa rõ hơn.
 
 ![API design — đặc tả hàm rõ ràng](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
-*Hình 6.23: API tốt giống hàm tốt — input, output, preconditions và errors phải được đặc tả không mơ hồ.*
-
+<p class="textbook-figure-caption" data-figure="6.23">API tốt giống hàm tốt — input, output, preconditions và errors phải được đặc tả không mơ hồ.</p>
 ### 5.3. Pure interface, messy world
 
 Dĩ nhiên,
@@ -650,15 +643,14 @@ def lambda_handler(event: dict, context) -> dict:
 
 ![Hàm hợp trong hệ thống phân tán](/discrete-mathematics-for-computer-science-iuh/img/course/Example_for_a_composition_of_two_functions.svg)
 
-*Hình 6.24: Serverless functions và data pipelines là chuỗi hàm hợp — mỗi bước ánh xạ input sang output xác định.*
-
+<p class="textbook-figure-caption" data-figure="6.24">Serverless functions và data pipelines là chuỗi hàm hợp — mỗi bước ánh xạ input sang output xác định.</p>
 ---
 
 ## Kết luận
 
 Hàm số không chỉ là chủ đề của đại số phổ thông.
 Trong khoa học máy tính,
-nó là cách ta hiểu computation,
+nó là cách chúng ta hiểu computation,
 tổ chức chương trình,
 thiết kế API,
 xây mô hình học máy,
@@ -718,7 +710,7 @@ Vì nhiều input khác nhau có thể cho cùng output (nhiều điểm dữ li
 Cho danh sách email thô:
 
 ```python
-raw = ["  AN@IUH.EDU.VN  ", "", "binh@iuh.edu.vn", "invalid"]
+raw = ["  AN@UNIV.EDU.VN  ", "", "binh@univ.edu.vn", "invalid"]
 ```
 
 Viết hàm `process_emails(raw) -> list[str]` gồm ba bước (ba hàm con):
@@ -727,7 +719,7 @@ Viết hàm `process_emails(raw) -> list[str]` gồm ba bước (ba hàm con):
 2. `drop_empty` — loại chuỗi rỗng.
 3. `normalize_case` — chuyển về chữ thường.
 
-Ghép bằng composition (gọi lần lượt hoặc dùng `map`/`filter`). Kết quả mong đợi: `["an@iuh.edu.vn", "binh@iuh.edu.vn", "invalid"]`.
+Ghép bằng composition (gọi lần lượt hoặc dùng `map`/`filter`). Kết quả mong đợi: `["an@univ.edu.vn", "binh@univ.edu.vn", "invalid"]`.
 
 <details>
 <summary>Đáp án</summary>
@@ -745,7 +737,7 @@ def normalize_case(emails: list[str]) -> list[str]:
 def process_emails(raw: list[str]) -> list[str]:
     return normalize_case(drop_empty(strip_each(raw)))
 
-assert process_emails(raw) == ["an@iuh.edu.vn", "binh@iuh.edu.vn", "invalid"]
+assert process_emails(raw) == ["an@univ.edu.vn", "binh@univ.edu.vn", "invalid"]
 ```
 
 </details>
@@ -870,6 +862,10 @@ highest = reduce(lambda a, b: a if a >= b else b, scores)
 ```
 
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Injective, Surjective, Bijective](https://www.youtube.com/watch?v=2jZ5n8k0p0Q) — 3Blue1Brown (Visual explanation)
 
 ## Tóm tắt
 

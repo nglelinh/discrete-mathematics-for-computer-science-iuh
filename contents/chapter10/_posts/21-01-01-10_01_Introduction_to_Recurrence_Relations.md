@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Giới thiệu Quan hệ Truy hồi"
 categories: chapter10
@@ -6,28 +7,53 @@ date: 2021-01-01
 order: 1
 required: true
 lang: vi
+excerpt: "Trong Chương 9, chúng ta đã gặp nhiều bài toán đếm và ước lượng tăng trưởng ở quy mô production. Chương này chuyển sang công cụ mô hình hóa tiến trình theo…"
 ---
 
-Nhiều bài toán không mô tả trực tiếp kết quả ở bước $$n$$, mà mô tả nó thông qua các bước trước đó. Dãy Fibonacci là ví dụ kinh điển, nhưng ý tưởng này còn xuất hiện trong đệ quy, phân tích thuật toán, mô hình dân số, lan truyền thông tin và dynamic programming.
+<div class="textbook-epigraph" markdown="1">
 
+"Every recursion must have a base case and a recursive step that approaches the base case."
 
-Quan hệ truy hồi cho phép ta mô tả tiến trình theo từng bước, đúng với cách nhiều thuật toán đệ quy và dynamic programming vận hành.
+<span class="epigraph-attribution">— Computer science folk wisdom</span>
+
+</div>
+
+Trong Chương 9, chúng ta đã gặp nhiều bài toán **đếm** và **ước lượng tăng trưởng** ở quy mô production. Chương này chuyển sang công cụ mô hình hóa tiến trình theo thời gian: **quan hệ truy hồi** — phương trình biểu diễn số hạng thứ $$n$$ của một dãy qua các số hạng trước. Dãy Fibonacci là ví dụ kinh điển, nhưng cùng ý tưởng xuất hiện trong đệ quy, phân tích thuật toán, mô hình dân số, lan truyền thông tin và dynamic programming.
+
 **Quan hệ truy hồi** là cách viết chính xác cho kiểu phụ thuộc đó. Thay vì cho công thức đóng ngay từ đầu, ta mô tả quy tắc sinh ra phần tử tiếp theo từ một hoặc nhiều phần tử trước. Cách biểu diễn này rất tự nhiên với những quá trình tiến triển theo thời gian hay theo kích thước bài toán.
 
 Điều quan trọng là truy hồi không chỉ là một công thức đẹp. Nó phản ánh cách hệ thống thực sự vận động, và giúp ta chuyển từ mô tả cục bộ sang hiểu biết toàn cục về cả dãy.
 
-Trong bài học này, chúng ta sẽ làm quen với khái niệm quan hệ truy hồi, cách đọc các thành phần của nó và vì sao nó lại quan trọng trong toán rời rạc lẫn khoa học máy tính.
+Mục này giới thiệu khái niệm quan hệ truy hồi, cách đọc các thành phần của nó và vai trò của nó trong toán rời rạc lẫn khoa học máy tính.
+
+## Mục tiêu học tập
+
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
+
+- **Định nghĩa** quan hệ truy hồi và phân loại tuyến tính / không tuyến tính, thuần nhất / không thuần nhất.
+- **Mô hình hóa** bài toán đệ quy và thuật toán bằng truy hồi.
+- **Giải** truy hồi đơn giản bằng liệt kê hoặc đoán mẫu.
+
+**Từ khóa**: quan hệ truy hồi (recurrence relation), điều kiện ban đầu, Fibonacci, đệ quy, dynamic programming.
+</div>
 
 ## Định nghĩa và Khái niệm
 
 ### Quan hệ Truy hồi
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Quan hệ truy hồi là một phương trình biểu diễn số hạng thứ $$n$$ của một dãy số theo một hoặc nhiều số hạng đứng trước nó.
+</div>
+
 
 **Dạng tổng quát**:
 
+<div class="textbook-equation" markdown="1">
 $$a_n = f(a_{n-1}, a_{n-2}, \dots, a_{n-k}, n)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Trong đó:
 
 - $$a_n$$ là số hạng thứ $$n$$ của dãy
@@ -35,11 +61,14 @@ Trong đó:
 - $$k$$ là **bậc** (order) của quan hệ truy hồi — cho biết cần bao nhiêu số hạng đằng trước để tính $$a_n$$
 - Cần có $$k$$ **điều kiện đầu** (initial conditions): $$a_0, a_1, \dots, a_{k-1}$$
 
-<div class="content-box insight-box" markdown="1">
-**Tại sao cần điều kiện đầu?** Hãy tưởng tượng quan hệ truy hồi như một cỗ máy sản xuất: nó biết cách tạo ra số hạng tiếp theo từ những số hạng trước, nhưng không thể tự sinh ra số hạng đầu tiên. Điều kiện đầu chính là "nguyên liệu khởi tạo" cho cỗ máy đó.
+<div class="content-box insight-box textbook-block" markdown="1">
+**Tại sao cần điều kiện đầu?** Quan hệ truy hồi chỉ định nghĩa cách tính số hạng tiếp theo từ các số hạng trước; nó không xác định được các số hạng khởi tạo. Các điều kiện đầu $$a_0, a_1, \ldots, a_{k-1}$$ đóng vai trò “mốc khởi đầu” để dãy được sinh duy nhất.
 </div>
 
-### Ví dụ Cơ bản
+<div class="textbook-example" markdown="1">
+**Ví dụ** (cơ bản):
+</div>
+
 
 #### 1. Dãy Fibonacci và bài toán đôi thỏ
 
@@ -54,29 +83,18 @@ Trong đó:
 
 **Quan hệ truy hồi Fibonacci**:
 
+<div class="textbook-equation" markdown="1">
 $$F_n = F_{n-1} + F_{n-2}, \quad F_1 = 1, F_2 = 1$$
-
-**Phân loại hệ thức truy hồi (từ slide bài giảng):**
-- Tuyến tính / không tuyến tính
-- Thuần nhất / không thuần nhất
-- Hệ số hằng / biến thiên
-
-Ví dụ tuyến tính thuần nhất: Fibonacci.
-
-Hệ thức đệ quy tuyến tính thuần nhất có nghiệm tổng quát dựa trên phương trình đặc trưng.
-
-**Ví dụ từ slide:**
-Bài toán thỏ Fibonacci dẫn đến F1=1, F2=1, Fn = Fn-1 + Fn-2 với n>2.
-
-Tương tự cho các dãy số khác.
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+**Phân loại** quan hệ truy hồi theo ba trục: tuyến tính / phi tuyến; thuần nhất / không thuần nhất; hệ số hằng / biến thiên. Dãy Fibonacci là ví dụ **tuyến tính thuần nhất** bậc 2; nghiệm tổng quát của lớp này (mục sau) dựa trên **phương trình đặc trưng**.
 
 **Dãy**: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
 
 ![Xoắn ốc Fibonacci](/discrete-mathematics-for-computer-science-iuh/img/course/Fibonacci_spiral.svg)
 
-*Hình 10.1: Dãy Fibonacci xuất hiện trong tự nhiên — tỷ lệ vàng và xoắn ốc là hệ quả của quan hệ truy hồi $F_n = F_{n-1} + F_{n-2}$.*
-
-<div class="content-box fun-fact-box" markdown="1">
+<p class="textbook-figure-caption" data-figure="10.1">Dãy Fibonacci xuất hiện trong tự nhiên — tỷ lệ vàng và xoắn ốc là hệ quả của quan hệ truy hồi $F_n = F_{n-1} + F_{n-2}$.</p>
+<div class="content-box fun-fact-box textbook-block" markdown="1">
 **Giai thoại**: Leonardo Fibonacci — nhà toán học người Ý thời Trung Cổ — không hề biết rằng dãy số mang tên ông sau này lại xuất hiện trong đến thế: tỷ lệ vàng trong kiến trúc, đường xoắn ốc trong vỏ ốc, sự sắp xếp lá cây, và thậm chí là thuật toán tìm kiếm trong khoa học máy tính hiện đại.
 </div>
 
@@ -96,8 +114,7 @@ Trò chơi Tháp Hà Nội (Tower of Hanoi) gồm ba cọc và $$n$$ đĩa kích
 
 ![Tháp Hà Nội — bài toán đệ quy kinh điển](/discrete-mathematics-for-computer-science-iuh/img/course/Tower_of_Hanoi.gif)
 
-*Hình 10.2: Tháp Hà Nội — mỗi bước phụ thuộc kết quả bước trước, mô hình hoàn hảo cho quan hệ truy hồi.*
-
+<p class="textbook-figure-caption" data-figure="10.2">Tháp Hà Nội — mỗi bước phụ thuộc kết quả bước trước, mô hình hoàn hảo cho quan hệ truy hồi.</p>
 **Điều kiện ban đầu**: $$H_1 = 1$$
 
 **Dãy**: 1, 3, 7, 15, 31, 63, ...
@@ -131,6 +148,7 @@ Một quan hệ truy hồi được gọi là **tuyến tính** nếu nó có d�
 | **Thuần nhất** | $$a_n = c_1 a_{n-1} + \dots + c_k a_{n-k}$$ | $$a_n = 3a_{n-1} - 2a_{n-2}$$ |
 | **Không thuần nhất** | Có thêm $$f(n) \neq 0$$ | $$a_n = 2a_{n-1} + n$$ |
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 
 - $$F_n = F_{n-1} + F_{n-2}$$ là **tuyến tính thuần nhất** bậc 2
@@ -139,9 +157,10 @@ Một quan hệ truy hồi được gọi là **tuyến tính** nếu nó có d�
 
 ![Dãy truy hồi tuyến tính hệ số hằng](/discrete-mathematics-for-computer-science-iuh/img/course/Constant-recursive-sequences.svg)
 
-*Hình 10.3: Phân loại truy hồi — tuyến tính/phi tuyến và thuần nhất/không thuần nhất quyết định phương pháp giải.*
+<p class="textbook-figure-caption" data-figure="10.3">Phân loại truy hồi — tuyến tính/phi tuyến và thuần nhất/không thuần nhất quyết định phương pháp giải.</p>
+</div>
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Sai lầm thường gặp**: Nhiều sinh viên nhầm lẫn giữa "bậc" và "tính tuyến tính". Bậc là số số hạng đằng trước được dùng để tính số hạng hiện tại. Tuyến tính là không có tích hay lũy thừa giữa các số hạng. Một quan hệ có thể bậc cao nhưng vẫn tuyến tính, và ngược lại — bậc thấp nhưng phi tuyến.
 </div>
 
@@ -153,23 +172,28 @@ Quan hệ truy hồi không chỉ là công cụ toán học trừu tượng —
 2. **Thiết lập quan hệ**: Tìm mối liên hệ giữa $$a_n$$ và các số hạng trước đó dựa trên cấu trúc bài toán.
 3. **Xác định điều kiện đầu**: Tìm giá trị của một vài số hạng đầu tiên từ dữ kiện bài toán.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 1: Lãi kép (Compound Interest)**
 
 Gửi tiết kiệm 10 triệu đồng với lãi suất 0.5% mỗi tháng, lãi nhập gốc hàng tháng. Gọi $$a_n$$ là số tiền sau $$n$$ tháng.
 
 Sau mỗi tháng, số tiền tăng thêm 0.5% so với tháng trước:
 
+<div class="textbook-equation" markdown="1">
 $$a_n = a_{n-1} + 0.005 \cdot a_{n-1} = 1.005 \cdot a_{n-1}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Điều kiện đầu: $$a_0 = 10\,000\,000$$ (tiền gốc)
 
 Đây là quan hệ truy hồi tuyến tính thuần nhất bậc 1. Nghiệm:
 
+<div class="textbook-equation" markdown="1">
 $$a_n = 10\,000\,000 \cdot (1.005)^n$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 </div>
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 2: Số xâu nhị phân không chứa hai số 0 liên tiếp**
 
 Đếm số xâu nhị phân độ dài $$n$$ không có hai bit 0 đứng cạnh nhau. Gọi $$a_n$$ là số xâu thỏa mãn.
@@ -181,20 +205,24 @@ Xét bit cuối cùng của xâu:
 
 Vậy:
 
+<div class="textbook-equation" markdown="1">
 $$a_n = a_{n-1} + a_{n-2}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Điều kiện đầu: $$a_1 = 2$$ (xâu "0" và "1"), $$a_2 = 3$$ (xâu "01", "10", "11")
 </div>
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ 3: Số cách lên cầu thang**
 
 Có $$n$$ bậc thang, mỗi bước có thể đi 1 hoặc 2 bậc. Gọi $$a_n$$ là số cách lên đến bậc thứ $$n$$.
 
 Để đến bậc $$n$$, ta phải đến từ bậc $$n-1$$ (đi 1 bước) hoặc bậc $$n-2$$ (đi 2 bước):
 
+<div class="textbook-equation" markdown="1">
 $$a_n = a_{n-1} + a_{n-2}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Điều kiện đầu: $$a_1 = 1$$ (chỉ 1 cách: đi 1 bước), $$a_2 = 2$$ (1+1 hoặc 2)
 
 Dãy số thu được: 1, 2, 3, 5, 8, 13, ... — đây là dãy Fibonacci nhưng với điều kiện đầu khác.
@@ -202,50 +230,62 @@ Dãy số thu được: 1, 2, 3, 5, 8, 13, ... — đây là dãy Fibonacci như
 
 ![Dãy hình học — tăng trưởng theo tỷ lệ](/discrete-mathematics-for-computer-science-iuh/img/course/Geometric_sequence.svg)
 
-*Hình 10.4: Mô hình hóa bằng truy hồi — lãi kép và tăng trưởng dân số thường là dãy hình học $a_n = r \cdot a_{n-1}$.*
-
+<p class="textbook-figure-caption" data-figure="10.4">Mô hình hóa bằng truy hồi — lãi kép và tăng trưởng dân số thường là dãy hình học $a_n = r \cdot a_{n-1}$.</p>
 ## Quan hệ Truy hồi Bậc nhất
 
 ### Định nghĩa
 
 Quan hệ truy hồi bậc nhất có dạng tổng quát:
 
+<div class="textbook-equation" markdown="1">
 $$a_n = f(a_{n-1}, n)$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 nghĩa là $$a_n$$ chỉ phụ thuộc vào số hạng ngay trước nó ($$a_{n-1}$$) và có thể cả chỉ số $$n$$.
 
 ### Truy hồi tuyến tính bậc nhất thuần nhất
 
 Dạng chuẩn:
 
+<div class="textbook-equation" markdown="1">
 $$a_n = c \cdot a_{n-1} \quad \text{với} \quad a_0 = A$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Nghiệm tổng quát:
 
+<div class="textbook-equation" markdown="1">
 $$a_n = A \cdot c^n$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Chứng minh**: Bằng quy nạp đơn giản:
 
 - $$n = 0$$: $$a_0 = A = A \cdot c^0$$ (đúng)
 - $$n = 1$$: $$a_1 = c \cdot a_0 = cA = A \cdot c^1$$
 - Giả sử $$a_{n-1} = A \cdot c^{n-1}$$, thì $$a_n = c \cdot a_{n-1} = c \cdot A \cdot c^{n-1} = A \cdot c^n$$
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Dân số một thành phố hiện là 1,2 triệu người và tăng 1,5% mỗi năm. Gọi $$a_n$$ là dân số sau $$n$$ năm.
 
+<div class="textbook-equation" markdown="1">
 $$a_n = 1.015 \cdot a_{n-1}, \quad a_0 = 1.2 \times 10^6$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Nghiệm: $$a_n = 1.2 \times 10^6 \cdot (1.015)^n$$
 
 Sau 10 năm: $$a_{10} = 1.2 \times 10^6 \cdot (1.015)^{10} \approx 1.393 \times 10^6$$ người.
 </div>
+</div>
+
 
 ### Truy hồi tuyến tính bậc nhất không thuần nhất
 
 Dạng chuẩn:
 
+<div class="textbook-equation" markdown="1">
 $$a_n = c \cdot a_{n-1} + f(n) \quad \text{với} \quad a_0 = A$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Phương pháp giải gồm hai bước:
 
 1. Tìm nghiệm thuần nhất: $$a_n^{(h)} = A_0 \cdot c^n$$
@@ -256,11 +296,14 @@ Phương pháp giải gồm hai bước:
 
 Nghiệm riêng có dạng hằng số $$a_n^{(p)} = K$$. Thay vào quan hệ:
 
+<div class="textbook-equation" markdown="1">
 $$K = c \cdot K + d \quad\Rightarrow\quad K(1-c) = d \quad\Rightarrow\quad K = \frac{d}{1-c}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 (Chú ý: trường hợp $$c = 1$$ cần xử lý riêng với nghiệm dạng $$K \cdot n$$)
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Giải $$a_n = 3a_{n-1} + 4$$ với $$a_0 = 1$$
 
 Nghiệm thuần nhất: $$a_n^{(h)} = A \cdot 3^n$$
@@ -275,14 +318,19 @@ Vậy: $$a_n = 3 \cdot 3^n - 2 = 3^{n+1} - 2$$
 
 Kiểm tra: $$a_1 = 3^2 - 2 = 7$$, truy hồi: $$3 \cdot 1 + 4 = 7$$ ✓
 </div>
+</div>
+
 
 #### Trường hợp $$f(n)$$ là đa thức bậc $$m$$
 
 Nghiệm riêng có dạng đa thức cùng bậc:
 
+<div class="textbook-equation" markdown="1">
 $$a_n^{(p)} = b_0 + b_1 n + b_2 n^2 + \cdots + b_m n^m$$
-
-<div class="content-box example-box" markdown="1">
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="content-box example-box textbook-block" markdown="1">
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Giải $$a_n = 2a_{n-1} + 3n + 1$$ với $$a_0 = 2$$
 
 Nghiệm thuần nhất: $$a_n^{(h)} = A \cdot 2^n$$
@@ -291,8 +339,10 @@ Nghiệm riêng dạng: $$a_n^{(p)} = B_0 + B_1 n$$
 
 Thay vào: $$B_0 + B_1 n = 2(B_0 + B_1(n-1)) + 3n + 1$$
 
+<div class="textbook-equation" markdown="1">
 $$B_0 + B_1 n = 2B_0 + 2B_1 n - 2B_1 + 3n + 1$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Cân bằng hệ số:
 
 - Hệ số của $$n$$: $$B_1 = 2B_1 + 3 \Rightarrow -B_1 = 3 \Rightarrow B_1 = -3$$
@@ -306,9 +356,11 @@ Vậy: $$a_n = 9 \cdot 2^n - 3n - 7$$
 
 Kiểm tra: $$a_1 = 18 - 3 - 7 = 8$$, truy hồi: $$2 \cdot 2 + 3 + 1 = 8$$ ✓
 </div>
+</div>
 
-<div class="content-box warning-box" markdown="1">
-**Sai lầm thường gặp**: Khi tìm nghiệm riêng, sinh viên thường quên kiểm tra xem dạng nghiệm thử có trùng với nghiệm thuần nhất không. Nếu trùng, cần nhân thêm $$n$$ (hoặc $$n^s$$) vào nghiệm thử. Chúng ta sẽ học chi tiết về điều này trong Bài 10.3.
+
+<div class="content-box warning-box textbook-block" markdown="1">
+**Sai lầm thường gặp**: Khi tìm nghiệm riêng, người giải thường bỏ qua bước kiểm tra dạng nghiệm thử có trùng với nghiệm thuần nhất hay không. Nếu trùng, cần nhân thêm $$n$$ (hoặc $$n^s$$) vào nghiệm thử. Chúng ta sẽ học chi tiết về điều này trong Bài 10.3.
 </div>
 
 ## Ứng dụng trong Khoa học Máy tính
@@ -323,8 +375,7 @@ Các thuật toán đệ quy thường có độ phức tạp thời gian đư�
 
 ![Dãy số học — tổng tích lũy](/discrete-mathematics-for-computer-science-iuh/img/course/Arithmetic_progression.svg)
 
-*Hình 10.5: Truy hồi không thuần nhất với $f(n)$ đa thức thường sinh ra dãy số học hoặc tổng có công thức đóng.*
-
+<p class="textbook-figure-caption" data-figure="10.5">Truy hồi không thuần nhất với $f(n)$ đa thức thường sinh ra dãy số học hoặc tổng có công thức đóng.</p>
 ### Quy hoạch động (Dynamic Programming)
 
 Quy hoạch động là kỹ thuật giải bài toán bằng cách kết hợp lời giải của các bài toán con — bản chất chính là xây dựng và giải các quan hệ truy hồi. Bài toán ba lô (Knapsack), chuỗi con chung dài nhất (LCS), và đường đi ngắn nhất (Bellman-Ford) đều dùng quan hệ truy hồi.
@@ -363,8 +414,10 @@ Một người gửi 50 triệu đồng vào ngân hàng với lãi suất 0.7% 
 
 Gọi $$a_n$$ là số dư sau $$n$$ tháng. Sau mỗi tháng, số tiền tăng 0.7% (nhân 1.007) rồi trừ đi 3 triệu:
 
+<div class="textbook-equation" markdown="1">
 $$a_n = 1.007 \cdot a_{n-1} - 3, \quad a_0 = 50$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Kiểm tra: $$a_1 = 1.007 \cdot 50 - 3 = 47.35$$ (triệu đồng) ✓
 </details>
 
@@ -395,12 +448,19 @@ Một công ty khởi nghiệp có 1000 người dùng vào tháng đầu tiên.
 
 Gọi $$u_n$$ là số người dùng sau $$n$$ tháng.
 
+<div class="textbook-equation" markdown="1">
 $$u_n = 2u_{n-1}, \quad u_1 = 1000$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Nghiệm: $$u_n = 1000 \cdot 2^{n-1}$$
 
 Sau 12 tháng: $$u_{12} = 1000 \cdot 2^{11} = 1000 \cdot 2048 = 2.048.000$$ người dùng.
 </details>
+
+
+## Xem thêm / Video gợi ý
+
+- [Relations and Functions](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — Trefor Bazett (Equivalence relations)
 
 ## Tóm tắt
 

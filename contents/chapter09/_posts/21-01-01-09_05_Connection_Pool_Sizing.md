@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Connection pool sizing: Đếm kết nối với Little's Law"
 categories: chapter09
@@ -6,9 +7,10 @@ date: 2021-01-01
 order: 5
 required: false
 lang: en
+excerpt: "Ở mục transistor và ALU, chúng ta đã thấy bit và phép cộng ở tầng phần cứng. Mục này chuyển sang hàng đợi ở tầng hệ thống: connection pool sizing — bài toán…"
 ---
 
-Demo cho khách hàng enterprise, thứ Sáu 14 giờ 30. API login của startup fintech **vừa được báo** “10.000 user đồng thời”. CTO gửi Slack: *“Tăng HikariCP lên 200 mỗi pod cho chắc. User đông mà.”*
+Ở mục transistor và ALU, chúng ta đã thấy bit và phép cộng ở tầng phần cứng. Mục này chuyển sang **hàng đợi** ở tầng hệ thống: **connection pool sizing** — bài toán đếm kết nối DB bằng **Little's Law** và công thức HikariCP. Minh họa điển hình: khi marketing báo “10.000 user đồng thời”, CTO đề xuất tăng HikariCP lên 200 mỗi pod — nhưng **concurrent user** không đồng nghĩa **connection busy**; pool quá lớn có thể làm PostgreSQL **chậm hơn**.
 
 Dũng, DevOps lead, mở Grafana. PostgreSQL `active_connections` đã chạm **180** trên máy **8 core + 1 SSD**. P99 query từ 12 ms nhảy lên **340 ms**. Log app:
 
@@ -41,8 +43,7 @@ Một user đọc dashboard 30 giây chỉ **giữ connection vài millisecond**
 
 ![Database connection pool — concept](/discrete-mathematics-for-computer-science-iuh/img/course/Client-server-model.svg)
 
-*Hình 9.12: Nhiều client chia sẻ ít connection DB qua pool — không phải 1:1 user:connection.*
-
+<p class="textbook-figure-caption" data-figure="9.12">Nhiều client chia sẻ ít connection DB qua pool — không phải 1:1 user:connection.</p>
 Dũng nhớ incident tuần trước: marketing đếm **DAU** (daily active users), SRE đếm **RPS** (request per second), CTO đếm **concurrent browser tab**. Ba con số, ba quyết định pool khác nhau — chỉ một trong số đó đúng cho PostgreSQL. Pool size không trả lời câu hỏi “bao nhiêu người đang online”; nó trả lời “bao nhiêu query đang chạy đồng thời trên DB”.
 
 ---
@@ -51,31 +52,41 @@ Dũng nhớ incident tuần trước: marketing đếm **DAU** (daily active use
 
 Trong hệ ổn định (steady state), **Little's Law** nối ba đại lượng:
 
+<div class="textbook-equation" markdown="1">
 $$L = \lambda \times W$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Ở đây $$L$$ là số “khách” trung bình đang ở trong hệ — với connection pool, đó là số connection **busy** trung bình. $$\lambda$$ là tốc độ vào, throughput: bao nhiêu query hoàn thành mỗi giây. $$W$$ là thời gian trung bình một query ở trong hệ — từ lúc bắt đầu cho tới lúc trả connection về pool.
 
 Ví dụ đơn giản: nếu DB xử lý $$\lambda = 1000$$ query/s và mỗi query mất trung bình $$W = 0{,}01$$ s (10 ms), thì trung bình có $$L = 10$$ connection busy cùng lúc. Để ít khi chờ khi có biến động spike, người ta đặt pool:
 
+<div class="textbook-equation" markdown="1">
 $$N \geq \lceil L \rceil + \text{buffer}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Buffer nhỏ cho đỉnh ngắn — **không** nhân đôi user count hay DAU.
 
 Dũng lấy số liệu demo thật từ Grafana và APM. Peak **500 request/s** tới API login. Mỗi request trung bình **2 query** xuống DB. Mỗi query mất **5 ms** trên PostgreSQL khi pool còn hợp lý. Tính throughput query:
 
+<div class="textbook-equation" markdown="1">
 $$\lambda = 500 \times 2 = 1000 \text{ query/s}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Thời gian ở trong hệ:
 
+<div class="textbook-equation" markdown="1">
 $$W = 0{,}005 \text{ s}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Số connection busy trung bình:
 
+<div class="textbook-equation" markdown="1">
 $$L = 1000 \times 0{,}005 = 5$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Trung bình chỉ **5 connection busy** — pool **10–15** là hợp lý cho một pod. Không phải 200. Dũng gửi lại Slack với bảng tính: “10k user” mà marketing nói có thể là DAU cả ngày; concurrent thực tế lúc peak chỉ vài trăm RPS, và Little's Law cho ra con số đếm được.
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 Incident “10k user” thường là nhầm **DAU**, **concurrent user**, hay **RPS**. Chỉ $$\lambda \times W$$ mới trả lời pool — đó là phép đếm trên workload thật, không phải trên headline marketing.
 </div>
 
@@ -85,20 +96,24 @@ Incident “10k user” thường là nhầm **DAU**, **concurrent user**, hay *
 
 Wiki HikariCP tóm tắt benchmark từ [PostgreSQL Wiki — Number of connections](https://wiki.postgresql.org/wiki/Number_Of_Database_Connections). Công thức khởi đầu cho OLTP trên **một** instance PostgreSQL:
 
+<div class="textbook-equation" markdown="1">
 $$\text{connections} = \text{core\_count} \times 2 + \text{effective\_spindle\_count}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **core_count** là số CPU core **của máy chạy PostgreSQL** — không phải số core trên app server hay số pod Kubernetes. **effective_spindle_count** là số ổ đĩa vật lý (spindle); với **một SSD** người ta thường lấy **1**.
 
 DB server demo của Dũng: 8 core + 1 SSD:
 
+<div class="textbook-equation" markdown="1">
 $$\text{pool} = 8 \times 2 + 1 = 17$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Khuyến nghị wiki: **không** đặt 200 “cho chắc”. PostgreSQL mỗi connection là một **backend process** cộng thêm memory riêng. Quá nhiều process → tranh CPU (context switch), lock trên shared buffer, checkpoint và IO contention. Đồ thị benchmark trên wiki cho thấy throughput đạt đỉnh ở pool **nhỏ**, rồi **giảm** khi tăng connection — đúng những gì Dũng thấy: P99 từ 12 ms nhảy 340 ms khi `active_connections` chạm 180.
 
 Dũng so sánh hai con số: Little's Law cho workload login ra $$L \approx 5$$ busy trung bình; công thức HikariCP cho **giới hạn trên** tổng connection tới một DB instance là khoảng 17. Hai công thức trả lời hai câu hỏi khác nhau — “cần bao nhiêu cho traffic này?” và “DB chịu được bao nhiêu trước khi tự làm chậm mình?” — nhưng cùng chỉ ra rằng 200 là xa cả hai.
 
-<div class="content-box warning-box" markdown="1">
-Công thức $$2 \times \text{cores} + \text{spindles}$$ là **điểm xuất phát** cho OLTP trên **một** DB instance — workload analytics, replica đọc nặng, hoặc nhiều database trên cùng máy cần profiling riêng. Đừng copy số từ blog sang production mà không đo $$\lambda$$ và $$W$$ trên hệ của bạn.
+<div class="content-box warning-box textbook-block" markdown="1">
+Công thức $$2 \times \text{cores} + \text{spindles}$$ là **điểm xuất phát** cho OLTP trên **một** DB instance — workload analytics, replica đọc nặng, hoặc nhiều database trên cùng máy cần profiling riêng. Đừng copy số từ blog sang production mà không đo $$\lambda$$ và $$W$$ trên hệ của chúng ta.
 </div>
 
 ---
@@ -128,20 +143,28 @@ API checkout xử lý peak **200 request/s**. Mỗi request gọi trung bình **
 
 Throughput query:
 
+<div class="textbook-equation" markdown="1">
 $$\lambda = 200 \times 3 = 600 \text{ query/s}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Thời gian trong hệ:
 
+<div class="textbook-equation" markdown="1">
 $$W = 0{,}008 \text{ s}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Little's Law:
 
+<div class="textbook-equation" markdown="1">
 $$L = 600 \times 0{,}008 = 4{,}8$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Trung bình khoảng **4,8** connection busy. Với buffer 5:
 
+<div class="textbook-equation" markdown="1">
 $$N \geq \lceil 4{,}8 \rceil + 5 = 5 + 5 = 10$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Gợi ý pool **10** cho một instance app phục vụ workload này — không nhân theo “số user online”.
 
 </details>
@@ -155,14 +178,18 @@ PostgreSQL chạy trên máy **16 core**, **2 SSD** (đếm effective spindle = 
 
 Công thức HikariCP:
 
+<div class="textbook-equation" markdown="1">
 $$\text{pool} = 16 \times 2 + 2 = 34$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Khuyến nghị tổng connection tới DB instance: khoảng **34**.
 
 Bốn pod, mỗi pod pool 20:
 
+<div class="textbook-equation" markdown="1">
 $$4 \times 20 = 80 \text{ connection}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **80 > 34** — vượt gần gấp đôi điểm benchmark. DB có thể vẫn “chạy được” dưới `max_connections`, nhưng throughput và latency thường xấu hơn pool nhỏ hơn. Cần giảm pool mỗi pod (ví dụ ~8–10) hoặc dùng **PgBouncer** để multiplex 80 client xuống ~34 backend thật.
 
 </details>
@@ -194,6 +221,12 @@ Little's Law áp dụng ở **tầng DB**: $$\lambda$$ và $$W$$ đo trên query
 </details>
 
 ---
+
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
 
 ## Tóm tắt
 

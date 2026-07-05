@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Đại số Boole"
 categories: chapter13
@@ -6,42 +7,39 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
+excerpt: "Trong chương này chúng ta nghiên cứu đại số Boole — nền tảng toán học của logic số, thiết kế mạch và tối ưu biểu thức điều kiện. Mỗi lần CPU đánh giá một điều…"
 ---
 
-Mỗi lần CPU đánh giá một điều kiện, mạch số mở hoặc đóng transistor, hay chương trình ghép các cờ trạng thái bằng `and`, `or`, `not`, ta đang đứng trên cùng một nền toán học: **đại số Boole**.
+<div class="textbook-epigraph" markdown="1">
 
-Đại số Boole nối logic với phần cứng và tối ưu biểu thức, vì vậy phần này vừa có ý nghĩa toán học vừa rất gần với thiết kế mạch và điều kiện trong code.
-Nếu logic mệnh đề cho ta ngôn ngữ đúng và sai, thì đại số Boole cho ta cách thao tác có hệ thống trên các biểu thức đó như một dạng đại số thật sự. Đây là cây cầu nối rất đẹp giữa suy luận logic và thiết kế mạch số.
+"Boolean algebra is the algebra of truth values — the mathematics of 0 and 1."
 
-Chủ đề này quan trọng vì nó cho phép ta đơn giản hóa biểu thức, chứng minh hai mạch tương đương, và chuẩn bị nền cho việc tối thiểu hóa hàm Boole ở các bài sau. Trong hardware lẫn software, biểu thức gọn hơn thường đồng nghĩa với hệ thống rõ hơn và đôi khi nhanh hơn.
+<span class="epigraph-attribution">— George Boole (paraphrased)</span>
 
-Trong bài này, chúng ta sẽ xây những quy tắc nền tảng của đại số Boole và nhìn chúng dưới cả hai góc độ, toán học và ứng dụng số.
+</div>
+
+Trong chương này chúng ta nghiên cứu đại số Boole — nền tảng toán học của logic số, thiết kế mạch và tối ưu biểu thức điều kiện. Mỗi lần CPU đánh giá một điều kiện, mạch số mở hoặc đóng transistor, hay chương trình ghép các cờ trạng thái bằng `and`, `or`, `not`, hệ thống đang vận hành trên cùng một cấu trúc đại số. Mục 13.1 này bắt đầu từ định nghĩa hình thức, các tiên đề Huntington và hằng đẳng thức cơ bản của đại số Boole trên tập $\{0,1\}$.
 
 ![George Boole](/discrete-mathematics-for-computer-science-iuh/img/course/George_Boole.jpg)
 
-*Hình 13.1: George Boole (1815–1864) — người đặt nền móng cho đại số logic dùng trong máy tính hiện đại.*
-
+<p class="textbook-figure-caption" data-figure="13.1">George Boole (1815–1864) — người đặt nền móng cho đại số logic dùng trong máy tính hiện đại.</p>
 ![Cấu trúc đại số Boole](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
-*Hình 13.2: Đại số Boole trên $\{0,1\}$ với phép OR, AND và phần bù — nền tảng thiết kế mạch số.*
-
+<p class="textbook-figure-caption" data-figure="13.2">Đại số Boole trên $\{0,1\}$ với phép OR, AND và phần bù — nền tảng thiết kế mạch số.</p>
 ![Các cổng logic](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
-*Hình 13.3: Các cổng logic Boolean (NOT, AND, OR, XOR…) — hiện thân phần cứng của biểu thức Boole.*
-
+<p class="textbook-figure-caption" data-figure="13.3">Các cổng logic Boolean (NOT, AND, OR, XOR…) — hiện thân phần cứng của biểu thức Boole.</p>
 ![Cổng AND](/discrete-mathematics-for-computer-science-iuh/img/course/AND_ANSI_Labelled.svg)
 
-*Hình 13.4: Cổng AND — chỉ cho kết quả 1 khi cả hai đầu vào đều 1, tương ứng phép nhân logic.*
-
+<p class="textbook-figure-caption" data-figure="13.4">Cổng AND — chỉ cho kết quả 1 khi cả hai đầu vào đều 1, tương ứng phép nhân logic.</p>
 ![Cổng NOT](/discrete-mathematics-for-computer-science-iuh/img/course/NOT_ANSI_Labelled.svg)
 
-*Hình 13.5: Cổng NOT — phủ định giá trị logic, tương ứng phần bù trong đại số Boole.*
-
+<p class="textbook-figure-caption" data-figure="13.5">Cổng NOT — phủ định giá trị logic, tương ứng phần bù trong đại số Boole.</p>
 ## Mục tiêu học tập
 
-Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
+<div class="textbook-objectives" markdown="1">
 
-Sau bài học này, sinh viên có thể:
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Phát biểu** định nghĩa đại số Boole và các tiên đề cơ bản.
 - **Nhận biết** các hằng đẳng thức quan trọng và áp dụng chúng.
@@ -50,6 +48,7 @@ Sau bài học này, sinh viên có thể:
 - **Áp dụng** nguyên lý đối ngẫu (duality principle) để sinh ra các hằng đẳng thức mới.
 
 **Từ khóa**: Đại số Boole (Boolean algebra), phần tử bù (complement), phép cộng logic (OR), phép nhân logic (AND), nguyên lý đối ngẫu (duality principle).
+</div>
 
 ## Định nghĩa Đại số Boole
 
@@ -73,13 +72,15 @@ Sau bài học này, sinh viên có thể:
   - $$0' = 1$$
   - $$1' = 0$$
 
-<div class="content-box insight-box" markdown="1">
-**Điểm khác biệt so với đại số thông thường**: Trong đại số Boole, $$1 + 1 = 1$$ (trong đại số thường, $$1 + 1 = 2$$). Đây là hệ quả của việc các phép toán làm việc trên giá trị logic, không phải số học. Sinh viên thường nhầm lẫn ở điểm này trong các bài kiểm tra đầu tiên.
+<div class="content-box insight-box textbook-block" markdown="1">
+**Điểm khác biệt so với đại số thông thường**: Trong đại số Boole, $$1 + 1 = 1$$ (trong đại số thường, $$1 + 1 = 2$$). Đây là hệ quả của việc các phép toán làm việc trên giá trị logic, không phải số học — lỗi thường gặp khi áp dụng quen thuộc của đại số số học.
 </div>
 
 ### Định nghĩa Hình thức
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một **đại số Boole** là một bộ $$(B, +, \cdot, ', 0, 1)$$, trong đó:
+</div>
 
 - $$B$$ là một tập hợp chứa ít nhất hai phần tử
 - $$+$$ và $$\cdot$$ là các phép toán hai ngôi trên $$B$$
@@ -112,13 +113,13 @@ thỏa mãn **6 tiên đề Huntington** sau đây:
 
 **Tiên đề 6 - Tính không suy biến**: $$0 \neq 1$$
 
-<div class="content-box warning-box" markdown="1">
-**Chú ý**: Tiên đề 4 khác với đại số thông thường. Trong đại số Boole, phép $$+$$ cũng phân phối với phép $$\cdot$$, không chỉ chiều ngược lại. Đây là điểm mạnh của đại số Boole và cũng là nguồn gốc của nhiều sai lầm khi sinh viên mới làm quen.
+<div class="content-box warning-box textbook-block" markdown="1">
+**Chú ý**: Tiên đề 4 khác với đại số thông thường. Trong đại số Boole, phép $$+$$ cũng phân phối với phép $$\cdot$$, không chỉ chiều ngược lại. Đây là điểm mạnh của đại số Boole và cũng là nguồn gốc của nhiều sai lầm khi mới chuyển từ đại số số học.
 </div>
 
 ## Các Hằng đẳng thức Cơ bản
 
-Từ 6 tiên đề trên, ta có thể chứng minh nhiều hằng đẳng thức quan trọng:
+Từ 6 tiên đề trên, chúng ta có thể chứng minh nhiều hằng đẳng thức quan trọng:
 
 ### Nhóm 1: Luật Lũy đẳng (Idempotent Laws)
 - $$x + x = x$$
@@ -141,18 +142,22 @@ Từ 6 tiên đề trên, ta có thể chứng minh nhiều hằng đẳng thứ
 - $$x + xy = x$$
 - $$x(x + y) = x$$
 
-<div class="content-box theorem-box" markdown="1">
+<div class="content-box theorem-box textbook-block" markdown="1">
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Mọi hằng đẳng thức trong đại số Boole đều có thể được chứng minh bằng hai cách:
 1. **Phương pháp đại số**: biến đổi từ vế này sang vế kia dùng các tiên đề và định lý đã biết.
 2. **Phương pháp bảng chân trị**: liệt kê tất cả $$2^n$$ tổ hợp giá trị và so sánh hai vế.
 </div>
+</div>
 
 ## Chứng minh Các Hằng đẳng thức
 
-### Ví dụ 1: Chứng minh $$x + x = x$$
+<div class="textbook-example" markdown="1">
+**Ví dụ** 1: Chứng minh $$x + x = x$$:
 
 **Phương pháp đại số**:
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{aligned}
 x + x &= (x + x) \cdot 1 & \text{(tiên đề 2)} \\
@@ -162,9 +167,14 @@ x + x &= (x + x) \cdot 1 & \text{(tiên đề 2)} \\
      &= x & \text{(tiên đề 2)}
 \end{aligned}
 $$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+</div>
 
-### Ví dụ 2: Chứng minh $$x + xy = x$$ (Luật Hấp thụ)
+<div class="textbook-example" markdown="1">
+**Ví dụ** 2: Chứng minh $$x + xy = x$$ (Luật Hấp thụ):
 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{aligned}
 x + xy &= x \cdot 1 + xy & \text{(tiên đề 2)} \\
@@ -173,8 +183,12 @@ x + xy &= x \cdot 1 + xy & \text{(tiên đề 2)} \\
        &= x & \text{(tiên đề 2)}
 \end{aligned}
 $$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+</div>
 
-### Ví dụ 3: Chứng minh $$(x + y)' = x' \cdot y'$$ (De Morgan)
+<div class="textbook-example" markdown="1">
+**Ví dụ** 3: Chứng minh $$(x + y)' = x' \cdot y'$$ (De Morgan):
 
 Dùng phương pháp bảng chân trị:
 
@@ -186,20 +200,21 @@ Dùng phương pháp bảng chân trị:
 | 1 | 1 | 1 | 0 | 0 | 0 | 0 |
 
 Hai cột $$(x + y)'$$ và $$x' \cdot y'$$ giống nhau, vậy hằng đẳng thức đúng.
+</div>
 
 ### Một Sai lầm Phổ biến
 
-Sinh viên thường nhầm rằng $$(x + y)' = x' + y'$$. Hãy nhớ: luật De Morgan **đảo ngược** phép toán — phủ định của tổng là tích của các phủ định. Câu thần chú: "Đảo dấu, đảo biến."
+Lỗi phổ biến: $$(x + y)' = x' + y'$$. Luật De Morgan **đảo ngược** phép toán — phủ định của tổng là tích của các phủ định. Quy tắc ghi nhớ: "Đảo dấu, đảo biến."
 
 ## Nguyên lý Đối ngẫu (Duality Principle)
 
-**Nguyên lý**: Mọi hằng đẳng thức trong đại số Boole vẫn đúng nếu ta thay:
+**Nguyên lý**: Mọi hằng đẳng thức trong đại số Boole vẫn đúng nếu chúng ta thay:
 - $$+$$ bằng $$\cdot$$ và $$\cdot$$ bằng $$+$$
 - 0 bằng 1 và 1 bằng 0
 
-Ví dụ, từ $$x + xy = x$$, đối ngẫu cho ta: $$x(x + y) = x$$.
+Ví dụ, từ $$x + xy = x$$, đối ngẫu cho chúng ta: $$x(x + y) = x$$.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Bảng đối ngẫu các hằng đẳng thức:**
 
 | Hằng đẳng thức gốc | Hằng đẳng thức đối ngẫu |
@@ -214,7 +229,7 @@ Ví dụ, từ $$x + xy = x$$, đối ngẫu cho ta: $$x(x + y) = x$$.
 
 ## Các phép toán dẫn xuất trên đại số logic B
 
-Ngoài ba phép toán cơ bản AND, OR, NOT, trên $$B = \{0, 1\}$$ ta còn định nghĩa các phép toán hai ngôi khác:
+Ngoài ba phép toán cơ bản AND, OR, NOT, trên $$B = \{0, 1\}$$ chúng ta còn định nghĩa các phép toán hai ngôi khác:
 
 | Phép toán | Ký hiệu | Công thức | Ý nghĩa |
 |:----------|:-------:|:-----------|:--------|
@@ -233,13 +248,13 @@ Ngoài ba phép toán cơ bản AND, OR, NOT, trên $$B = \{0, 1\}$$ ta còn đ�
 | 1 | 0 | 1 | 0 | 0 | 0 | 1 |
 | 1 | 1 | 0 | 1 | 1 | 0 | 0 |
 
-<div class="content-box insight-box" markdown="1">
-**Tính đầy đủ của NAND và NOR**: Chỉ riêng cổng NAND (hoặc NOR) cũng đủ để biểu diễn mọi hàm Boole. Đây là lý do trong thiết kế mạch số, người ta thường dùng cổng NAND làm cổng cơ sở — chip NAND rẻ hơn, nhanh hơn, và chiếm ít diện tích hơn chip AND.
+<div class="content-box insight-box textbook-block" markdown="1">
+**Tính đầy đủ của NAND và NOR**: Chỉ riêng cổng NAND (hoặc NOR) cũng đủ để biểu diễn mọi hàm Boole. Đây là lý do trong thiết kế mạch số, người chúng ta thường dùng cổng NAND làm cổng cơ sở — chip NAND rẻ hơn, nhanh hơn, và chiếm ít diện tích hơn chip AND.
 </div>
 
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Trình xây dựng Bảng Chân trị</h3>
-<p>Sinh viên có thể sử dụng công cụ trực quan dưới đây để tự động tạo bảng chân trị cho bất kỳ biểu thức Boole nào. Nhập biểu thức như <code>(A + B)'</code> hoặc <code>A.B + C</code> và xem kết quả ngay lập tức. <strong>Hãy thử:</strong> So sánh bảng chân trị của <code>A + B.C</code> và <code>(A+B).(A+C)</code> để kiểm chứng luật phân phối.</p>
+<p>Sinh viên có thể sử dụng công cụ trực quan dưới đây để tự động tạo bảng chân trị cho bất kỳ biểu thức Boole nào. Nhập biểu thức như <code>(A + B)'</code> hoặc <code>A.B + C</code> và xem kết quả ngay lập tức. <strong>Gợi ý thực hành:</strong> So sánh bảng chân trị của <code>A + B.C</code> và <code>(A+B).(A+C)</code> để kiểm chứng luật phân phối.</p>
 <div data-demo="boolean-algebra-checker"></div>
 </div>
 <script src="{{ '/public/js/boolean-algebra-checker.js' | relative_url }}"></script>
@@ -260,7 +275,7 @@ Ngoài ba phép toán cơ bản AND, OR, NOT, trên $$B = \{0, 1\}$$ ta còn đ�
 
 ## Ứng dụng trong Khoa học Máy tính
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Cần chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Đại số Boole là nền tảng của toàn bộ ngành khoa học máy tính hiện đại. Dưới đây là một số ứng dụng tiêu biểu:
 
@@ -270,8 +285,8 @@ Phần ứng dụng là nơi khái niệm toán học được gắn lại với
 - **Xử lý ảnh và đồ họa**: Phép toán Boole trên bitmask dùng để che, lọc, và kết hợp hình ảnh.
 - **Bảo mật và kiểm soát truy cập**: Các luật ACL (Access Control List) được đánh giá bằng biểu thức Boole.
 
-<div class="content-box example-box" markdown="1">
-**Ví dụ thực tế**: Khi bạn gõ "cat AND dog NOT fish" vào Google, công cụ tìm kiếm chuyển truy vấn này thành một biểu thức Boole trên hàng tỷ trang web để tìm kết quả phù hợp. Mỗi trang web là một "biến" với giá trị 1 (nếu chứa từ khóa) hoặc 0 (nếu không).
+<div class="content-box example-box textbook-block" markdown="1">
+**Ví dụ** (thực tế): Khi người dùng gõ "cat AND dog NOT fish" vào Google, công cụ tìm kiếm chuyển truy vấn này thành một biểu thức Boole trên hàng tỷ trang web để tìm kết quả phù hợp. Mỗi trang web là một "biến" với giá trị 1 (nếu chứa từ khóa) hoặc 0 (nếu không).
 </div>
 
 ## Bài tập
@@ -304,8 +319,10 @@ Hai cột cuối giống nhau, hằng đẳng thức đúng.
 
 **b)** Dùng biến đổi đại số:
 
+<div class="textbook-equation" markdown="1">
 $$x(x' + y) = xx' + xy = 0 + xy = xy$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 </details>
 
 ### Bài tập 2: Áp dụng De Morgan
@@ -341,6 +358,7 @@ b) $$xy + x'y' = (x + y')(x' + y)$$
 <summary>Đáp án</summary>
 
 a) 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{aligned}
 x + x'y &= (x + x')(x + y) \\
@@ -348,8 +366,10 @@ x + x'y &= (x + x')(x + y) \\
         &= x + y
 \end{aligned}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 b) 
+<div class="textbook-equation" markdown="1">
 $$
 \begin{aligned}
 xy + x'y' &= (xy + x')(xy + y') \\
@@ -358,7 +378,8 @@ xy + x'y' &= (xy + x')(xy + y') \\
           &= (x' + y)(x + y')
 \end{aligned}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 </details>
 
 ### Bài tập 4: Tư duy phản biện
@@ -370,6 +391,10 @@ Có hai sinh viên tranh luận: "Mọi hàm Boole 2 biến đều có thể bi�
 
 Người thứ nhất đúng. Bộ {OR, NOT} là một tập đầy đủ vì AND có thể được biểu diễn qua OR và NOT: $$x \cdot y = (x' + y')'$$ (luật De Morgan). Tương tự, NAND, NOR và mọi hàm khác đều có thể xây dựng từ OR và NOT. Trong thiết kế mạch, điều này cho phép dùng chỉ một loại cổng để xây dựng toàn bộ hệ thống.
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Boolean Algebra and Karnaugh Maps](https://www.youtube.com/watch?v=5jZ5n8k0p0Q) — Neso Academy (Gate level + minimization)
 
 ## Tóm tắt
 

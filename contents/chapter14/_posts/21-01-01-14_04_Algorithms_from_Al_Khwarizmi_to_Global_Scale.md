@@ -6,45 +6,39 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
+excerpt: "Chương 14 đã xây dựng khái niệm thuật toán, ký hiệu Big-O và phân tích độ phức tạp. Mục bổ sung này khảo sát hành trình của thuật toán từ Al-Khwarizmi thế kỷ…"
 ---
 
-Không có từ nào trong khoa học máy tính quen hơn “algorithm”.
-Nhưng chính vì quen,
-ta dễ quên rằng thuật toán không chỉ là đoạn code.
-Nó là ý tưởng thủ tục,
-là kế hoạch giải quyết vấn đề,
-là bộ khung quyết định hiệu năng,
-chi phí,
-và đôi khi cả khả năng tồn tại của sản phẩm.
-
-Từ Al-Khwarizmi thế kỷ IX,
-đến Google Search,
-Netflix-scale data operations,
-cryptocurrency mining,
-và computational complexity,
-bài học này kể hành trình của một khái niệm đã định hình thời đại số.
-
----
+Chương 14 đã xây dựng khái niệm thuật toán, ký hiệu Big-O và phân tích độ phức tạp. Mục bổ sung này khảo sát hành trình của thuật toán từ Al-Khwarizmi thế kỷ IX đến các hệ thống quy mô toàn cầu — PageRank, sắp xếp phân tán, proof-of-work — cho thấy một khái niệm thủ tục trở thành nền tảng của hạ tầng số hiện đại.
 
 ![Al-Khwarizmi](/discrete-mathematics-for-computer-science-iuh/img/course/Al-Khwarizmi.jpg)
 
-*Hình 14.16: Từ Al-Khwarizmi, khái niệm thuật toán bắt đầu như quy trình có hệ thống để giải bài toán.*
-
+<p class="textbook-figure-caption" data-figure="14.16">Từ Al-Khwarizmi, khái niệm thuật toán bắt đầu như quy trình có hệ thống để giải bài toán.</p>
 ![Quy mô toàn cầu](/discrete-mathematics-for-computer-science-iuh/img/course/Comparison_computational_complexity.svg)
 
-*Hình 14.17: Cùng một ý tưởng thuật toán cơ bản trở thành thách thức hệ thống khi dữ liệu lên quy mô toàn cầu.*
-
+<p class="textbook-figure-caption" data-figure="14.17">Cùng một ý tưởng thuật toán cơ bản trở thành thách thức hệ thống khi dữ liệu lên quy mô toàn cầu.</p>
 ![Sorting ở quy mô lớn](/discrete-mathematics-for-computer-science-iuh/img/course/Comparison_computational_complexity.svg)
 
-*Hình 14.18: Sorting và searching ở Google/Netflix đòi hỏi distributed computation, indexing và fault tolerance.*
-
+<p class="textbook-figure-caption" data-figure="14.18">Sorting và searching ở Google/Netflix đòi hỏi distributed computation, indexing và fault tolerance.</p>
 ![Tìm kiếm quy mô lớn](/discrete-mathematics-for-computer-science-iuh/img/course/Binary_search_into_array.svg)
 
-*Hình 14.19: Search hiện đại kết hợp thuật toán với cache, network và cấu trúc chỉ mục.*
-
+<p class="textbook-figure-caption" data-figure="14.19">Search hiện đại kết hợp thuật toán với cache, network và cấu trúc chỉ mục.</p>
 ![Proof-of-work](/discrete-mathematics-for-computer-science-iuh/img/course/Blockchain.svg)
 
-*Hình 14.20: Cryptocurrency mining dùng bài toán tính toán làm cơ chế đồng thuận — thuật toán gặp kinh tế.*
+<p class="textbook-figure-caption" data-figure="14.20">Cryptocurrency mining dùng bài toán tính toán làm cơ chế đồng thuận — thuật toán gặp kinh tế.</p>
+## Mục tiêu học tập
+
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
+
+- **Mô tả** nguồn gốc khái niệm thuật toán từ Al-Khwarizmi đến khoa học máy tính hiện đại.
+- **Giải thích** PageRank như thuật toán lặp trên đồ thị web.
+- **Nhận biết** thách thức quy mô: phân tán, fault tolerance, độ phức tạp ở hệ thống toàn cầu.
+- **Liên hệ** proof-of-work với bài toán tính toán khó nhưng kiểm tra dễ.
+
+**Từ khóa**: PageRank, distributed algorithm, proof-of-work, scalability, Al-Khwarizmi.
+</div>
 
 ## Phần 1: Al-Khwarizmi và nguồn gốc của chữ “algorithm"
 
@@ -89,7 +83,7 @@ PageRank dùng cấu trúc liên kết giữa các trang để ước lượng t
 Trang được nhiều trang quan trọng khác trỏ tới
 sẽ có điểm cao hơn.
 
-Điều thú vị là:
+Đáng chú ý là:
 một khái niệm mơ hồ như “uy tín”
 được thuật toán hóa thành quy trình lặp có thể tính được ở quy mô lớn.
 
@@ -138,8 +132,7 @@ còn phải hỏi thêm:
 
 ### 3.3. Thuật toán không sống một mình
 
-Đây là bài học lớn:
-thuật toán tốt không tồn tại tách rời hệ thống.
+Thuật toán tốt không tồn tại tách rời hệ thống.
 Nó phải phù hợp bộ nhớ,
 phần cứng,
 network,
@@ -188,7 +181,7 @@ có những bài toán mà dường như không tồn tại thuật toán hiệu
 
 ### 5.2. P, NP, NP-complete
 
-Các lớp độ phức tạp cho ta ngôn ngữ để nói về ranh giới khả thi.
+Các lớp độ phức tạp cho chúng ta ngôn ngữ để nói về ranh giới khả thi.
 Nếu một bài toán là NP-complete,
 việc tìm thuật toán đa thức cho nó
 sẽ có hệ quả chấn động.
@@ -206,7 +199,7 @@ Nó ảnh hưởng cách kỹ sư chọn:
 - problem reformulation.
 
 Biết bài toán khó đến đâu
-giúp ta tránh hứa những điều sản phẩm không thể giữ.
+giúp chúng ta tránh hứa những điều sản phẩm không thể giữ.
 
 ---
 
@@ -282,6 +275,11 @@ Tại sao thuật toán MapReduce là cần thiết khi xử lý dữ liệu quy
 Dữ liệu quá lớn để xử lý trên một máy. MapReduce chia nhỏ công việc, xử lý song song trên nhiều máy, rồi tổng hợp kết quả.
 
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
 
 ## Tóm tắt
 

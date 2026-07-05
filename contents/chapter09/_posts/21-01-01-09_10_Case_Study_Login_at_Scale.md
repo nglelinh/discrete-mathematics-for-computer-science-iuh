@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Case study: Thiết kế đăng nhập scale với toán rời rạc"
 categories: chapter09
@@ -6,13 +7,12 @@ date: 2021-01-01
 order: 10
 required: false
 lang: en
+excerpt: "Mục này tổng hợp Chương 9 qua một case study: buổi sáng login sập của TaskFlow (app quản lý việc làm, ~1 triệu DAU) — năm incident trong một cửa đăng nhập,…"
 ---
 
-# Một triệu người dùng, và buổi sáng login sập
+Mục này **tổng hợp** Chương 9 qua một case study: buổi sáng login sập của **TaskFlow** (app quản lý việc làm, ~1 triệu DAU) — năm incident trong một cửa đăng nhập, mỗi incident map tới một mục trước: pool sizing (Little's Law), combinatorial testing (pairwise), birthday paradox (session ID), Unicode/encoding (email Nhật), cardinality (metric Prometheus). Không thêm công thức mới; mục tiêu là chứng minh các mảnh toán rời rạc **cộng lại** ở một entry point thực tế.
 
-Thứ Hai, 7 giờ 45 — đúng giờ cao điểm mà mọi startup mơ ước.
-
-**TaskFlow**, app quản lý việc làm kiểu Trello cho thị trường Việt Nam và Nhật, vừa được báo đăng vì chạm **một triệu DAU**. Trên banner trang chủ, confetti digital bay lung tung. Trong Slack channel `#incidents`, màu đỏ cũng bay lung tung — nhưng không ai muốn.
+**TaskFlow** vừa chạm milestone DAU; đồng thời channel `#incidents` báo đỏ — login timeout, email `????`, bug OAuth Safari, Prometheus OOM.
 
 Minh, backend engineer hai năm kinh nghiệm, vừa mở laptop thì thấy bốn tin nhắn chồng lên nhau:
 
@@ -24,7 +24,7 @@ Minh, backend engineer hai năm kinh nghiệm, vừa mở laptop thì thấy b�
 >
 > **SRE (lần 2):** Prometheus OOM. Ai gắn `user_id` vào metric login thế?
 
-Minh thở dài. Không phải một bug. Bốn bug. Và cả bốn đều có thể đã được **tránh** nếu tuần trước họ ngồi xuống đếm — thật sự đếm — thay vì viết “API login + session” rồi ship.
+Minh nhận ra đây không phải một bug đơn lẻ mà bốn sự cố độc lập. Và cả bốn đều có thể đã được **tránh** nếu tuần trước họ ngồi xuống đếm — thật sự đếm — thay vì viết “API login + session” rồi ship.
 
 Cả chương vừa rồi — Joel và email Nhật, endianness, Y2038, Ben Eater và bit trên silicon, HikariCP, combinatorial testing, birthday paradox, Matt Might, Cloudflare DNS — mỗi bài là một mảnh. Bài này không thêm công thức lạ. Bài này kể **một ngày** mà tất cả các mảnh đó cùng đổ vào một cửa: cửa đăng nhập.
 
@@ -55,8 +55,7 @@ Browser ──HTTPS JSON──► Load Balancer ──► 6 app server (K8s)
 
 ![Luồng client–server](/discrete-mathematics-for-computer-science-iuh/img/course/Client-server-model.svg)
 
-*Hình 9.17: Đăng nhập trông như một mũi tên; thực ra là chuỗi quyết định đếm.*
-
+<p class="textbook-figure-caption" data-figure="9.17">Đăng nhập trông như một mũi tên; thực ra là chuỗi quyết định đếm.</p>
 ---
 
 ## Incident 1: “Một triệu user thì cần một triệu connection chứ?”
@@ -78,16 +77,24 @@ Minh mở spreadsheet capacity — may mắn là tuần trước anh đã lườ
 
 Anh nhớ bài HikariCP và **Little's Law** — công thức hàng đợi mà nghe phí thời gian học, giờ cứu mạng:
 
+<div class="textbook-equation" markdown="1">
 $$L = \lambda \times W$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Không phải “bao nhiêu user online”, mà **bao nhiêu query đang chạy trên DB**:
 
+<div class="textbook-equation" markdown="1">
 $$\lambda = 3000 \times 4 = 12{,}000 \text{ query/giây}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$W = 0{,}008 \text{ giây}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$L = 12{,}000 \times 0{,}008 = 96$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Ninety-six. Chỉ **96 connection busy trung bình** trên cả cluster — không phải 96 người, chắc chắn không phải một triệu. User đã login từ sáng sớm đang kéo card Kanban bằng cookie cũ; họ không giữ connection PostgreSQL.
 
 Chia cho 6 app server: mỗi instance cần khoảng **16** connection busy, cộng buffer cho spike → pool **20–25** là đủ. Tổng client tối đa ~150.
@@ -96,8 +103,10 @@ Vậy tại sao timeout?
 
 Vì tuần trước họ set `maximumPoolSize=50` trên **mỗi** pod “cho chắc”, và Postgres nhận **hàng trăm backend process** trong khi máy DB chỉ **8 core + 1 SSD**. Wiki HikariCP (và thực nghiệm PostgreSQL) gợi ý throughput tối đa quanh:
 
+<div class="textbook-equation" markdown="1">
 $$2 \times 8 + 1 = 17 \text{ connection thật}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Pool **quá lớn** không làm DB nhanh hơn — nó làm CPU đánh nhau context switch, lock `shared_buffers`, checkpoint giẫm lên nhau. Nhiều connection **chậm hơn** ít connection. Đó là điều trái trực giác mà chỉ đếm mới thấy.
 
 Giải pháp Minh đề xuất trong thread incident (và sau đó ghi design doc):
@@ -108,7 +117,7 @@ Giải pháp Minh đề xuất trong thread incident (và sau đó ghi design do
 
 Tuấn im một lúc, rồi reply: “Ừ. DAU không bằng connection. Anh nhầm cả đời.”
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 Incident “10k user” thường là nhầm **DAU**, **concurrent user**, hay **RPS**. Chỉ $$ \lambda \times W $$ mới trả lời pool.
 </div>
 
@@ -120,14 +129,18 @@ Trong lúc DB hồi phục, QA Hương ping: bug chỉ lên **Safari trên iPhon
 
 Product owner: “Sao không test hết combination?”
 
-Hương không giận — cô đưa spreadsheet. Browser 4 × OS 3 × device 3 × locale 2 × auth method 2:
+Hương đưa spreadsheet minh họa. Browser 4 × OS 3 × device 3 × locale 2 × auth method 2:
 
+<div class="textbook-equation" markdown="1">
 $$4 \times 3 \times 3 \times 2 \times 2 = 144 \text{ cấu hình}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Mỗi cấu hình 10 bước kiểm tra (form, redirect URI, cookie `SameSite`, thông báo lỗi…):
 
+<div class="textbook-equation" markdown="1">
 $$144 \times 10 = 1{,}440 \text{ bước}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Thêm trạng thái “đã có account / lần đầu OAuth” — nhân đôi hoặc nhân tư. Sprint hai tuần không có 1.440 bước manual. Đây là **combinatorial explosion** mà testRigor và Optivem Journal mô tả: không phải QA lười, là **không gian tổ hợp** lớn hơn thời gian con người.
 
 Cách industry làm: **pairwise testing**. Không cần chạy cả 144 bộ năm tham số cùng lúc — chỉ cần mọi **cặp** tham số (browser–OS, browser–locale, …) xuất hiện ít nhất một lần. PICT hoặc Hexawise thường sinh **12–18** test.
@@ -148,10 +161,12 @@ Minh gật. Test **entry point** API `POST /login` và `GET /oauth/callback` —
 
 Security review lúc chiều. Intern Trung trình bày slide đẹp: `session_id = Random.nextInt()` — INT32, “có 4 tỷ giá trị, chắc không trùng.”
 
-Minh nhớ bài [tomarcher.io](https://tomarcher.io/posts/birthday-paradox/) — **birthday paradox trong production**. Bạn không cần lấp đầy 4 tỷ ô mới trùng. Bạn chỉ cần đủ **cặp** so sánh. Ngưỡng 50% collision với INT32:
+Minh nhớ bài [tomarcher.io](https://tomarcher.io/posts/birthday-paradox/) — **birthday paradox trong production**. Chúng ta không cần lấp đầy 4 tỷ ô mới trùng. Chúng ta chỉ cần đủ **cặp** so sánh. Ngưỡng 50% collision với INT32:
 
+<div class="textbook-equation" markdown="1">
 $$n_{0.5} \approx 1{,}177 \sqrt{2^{32}} \approx 77{,}000$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Bảy mươi bảy nghìn session — không phải bốn tỷ. TaskFlow ~2 session/user/ngày → vài chục nghìn user là vào vùng rủi ro. Hai session trùng ID → user A có thể thấy board user B. Critical.
 
 Trên whiteboard Minh viết:
@@ -259,20 +274,28 @@ Startup **FlowBoard** (mô hình giống TaskFlow) vừa đạt **800.000 DAU**.
 
 (a) Throughput query:
 
+<div class="textbook-equation" markdown="1">
 $$\lambda = 2{,}500 \times 5 = 12{,}500 \text{ query/s}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$W = 0{,}010 \text{ s}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="textbook-equation" markdown="1">
 $$L = 12{,}500 \times 0{,}010 = 125$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Trung bình **125** connection busy trên cluster — không phải 800.000.
 
 (b) Chia cho 8 pod: $$125 / 8 \approx 15{,}6$$ busy/pod. Cộng buffer spike → pool **20–25/pod** hợp lý (gần incident TaskFlow: 25/pod).
 
 (c) Tám pod × 60 = **480** connection client. Công thức HikariCP:
 
+<div class="textbook-equation" markdown="1">
 $$2 \times 12 + 2 = 26$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **480 ≫ 26** — vượt gần 20 lần điểm benchmark. DB sẽ context-switch và lock contention trước khi “đủ connection cho user”. Cần giảm pool/pod hoặc thêm **PgBouncer** multiplex xuống ~20–26 backend.
 
 (d) **DAU** đếm người khác nhau trong cả ngày; nhiều người đã login từ sáng sớm không giữ connection DB. Pool cần $$\lambda$$ (query/s lúc peak) và $$W$$ (latency query) — hai đại lượng throughput, không phải headcount marketing.
@@ -290,16 +313,22 @@ Team QA của FlowBoard kế thừa ma trận test login: browser **5** × OS **
 
 (a) Cấu hình:
 
+<div class="textbook-equation" markdown="1">
 $$5 \times 4 \times 3 \times 3 \times 2 = 360$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Bước:
 
+<div class="textbook-equation" markdown="1">
 $$360 \times 8 = 2{,}880 \text{ bước}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 (b) Thời gian:
 
+<div class="textbook-equation" markdown="1">
 $$2{,}880 \times 2 = 5{,}760 \text{ phút} \approx 96 \text{ giờ}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Sprint có $$10 \times 6 = 60$$ giờ/người — **không đủ** cho một QA, chưa kể regression khác. Đây là combinatorial explosion incident 2.
 
 (c) Pairwise đảm bảo mọi **cặp** tham số (browser–locale, browser–method, locale–method, …) xuất hiện ít nhất một test. Cặp **Safari + vi** và **Safari + OAuth** và **vi + OAuth** đều được cover trong bảng 15 dòng — bug cookie `SameSite` trên Safari locale Việt lộ ra. Chrome-only không tạo cặp Safari–vi nào.
@@ -346,8 +375,10 @@ PR cuối tuần gộp hai thay đổi: (1) metric `login_requests_total{user_id
 
 (a) Mỗi `user_id` distinct → một series cho mỗi tổ hợp label khác. Cỡ đơn hàng:
 
+<div class="textbook-equation" markdown="1">
 $$500{,}000 \times 2 = 1{,}000{,}000 \text{ login/ngày}$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Nếu mỗi user_id là label, số series theo user_id có thể lên **hàng trăm nghìn đến triệu** (tùy cardinality `status` nhân vào) — Prometheus OOM như incident 5. Cardinality của label = số giá trị distinct, không phải “chỉ khi debug”.
 
 (b) Label tập nhỏ (~30 tổ hợp `status × method × region`) → **vài chục đến vài trăm** series cố định, RAM ổn định, dashboard SLA vẫn đọc được. Reduction từ triệu series xuống ~30 là khác biệt **đếm** — giống Cloudflare `response_code` vs `query_name`.
@@ -362,6 +393,12 @@ Nếu mỗi user_id là label, số series theo user_id có thể lên **hàng t
 </details>
 
 ---
+
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
 
 ## Tóm tắt
 

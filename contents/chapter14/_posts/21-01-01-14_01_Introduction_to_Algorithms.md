@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Giới thiệu về Thuật toán"
 categories: chapter14
@@ -6,42 +7,39 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
+excerpt: "Trong chương này chúng ta nghiên cứu thuật toán — từ khái niệm nền đến phân tích độ phức tạp. Khi người dùng tìm kiếm, hệ thống sắp xếp dữ liệu, hay ứng dụng…"
 ---
 
-Khi người dùng bấm tìm kiếm, khi hệ thống sắp xếp dữ liệu, khi ứng dụng kiểm tra đường đi hay mã hóa thông tin, đằng sau mỗi hành động đều có một chuỗi bước xử lý rõ ràng. Chuỗi bước đó chính là **thuật toán**.
+<div class="textbook-epigraph" markdown="1">
 
-Phân tích thuật toán không chỉ hỏi chương trình chạy được hay không, mà còn hỏi nó còn dùng được khi dữ liệu lớn lên nhanh đến mức nào.
-Thuật toán không chỉ là đoạn code chạy được. Nó là ý tưởng giải bài toán một cách chính xác, hữu hạn và có thể lặp lại. Cùng một bài toán có thể có nhiều cách giải, nhưng không phải cách nào cũng hiệu quả, dễ kiểm chứng hay dễ mở rộng.
+"An algorithm must be seen to be believed."
 
-Học về thuật toán trong toán rời rạc giúp ta nhìn trước phần cài đặt. Ta học cách mô tả lời giải, phân tích tính đúng và so sánh chất lượng của các cách tiếp cận, thay vì lao ngay vào code.
+<span class="epigraph-attribution">— Donald Knuth</span>
 
-Trong bài này, chúng ta sẽ xây khái niệm nền về thuật toán và lý do vì sao nó là trung tâm của toàn bộ khoa học máy tính.
+</div>
+
+Trong chương này chúng ta nghiên cứu thuật toán — từ khái niệm nền đến phân tích độ phức tạp. Khi người dùng tìm kiếm, hệ thống sắp xếp dữ liệu, hay ứng dụng kiểm tra đường đi, đằng sau mỗi thao tác đều có một chuỗi bước xử lý xác định. Mục 14.1 này định nghĩa thuật toán, các tính chất của thuật toán đúng đắn và cách mô tả lời giải bằng mã giả.
 
 ![Al-Khwarizmi](/discrete-mathematics-for-computer-science-iuh/img/course/Al-Khwarizmi.jpg)
 
-*Hình 14.1: Al-Khwarizmi (thế kỷ IX) — nguồn gốc từ ngữ *algorithm*, quy trình giải bài toán có hệ thống.*
-
+<p class="textbook-figure-caption" data-figure="14.1">Al-Khwarizmi (thế kỷ IX) — nguồn gốc từ ngữ *algorithm*, quy trình giải bài toán có hệ thống.</p>
 ![Nhà toán học Ba Tư](/discrete-mathematics-for-computer-science-iuh/img/course/Muhammad_ibn_Musa_al-Khwarizmi.jpg)
 
-*Hình 14.2: Các công trình đại số và số học của Al-Khwarizmi đặt nền cho thuật toán hiện đại.*
+<p class="textbook-figure-caption" data-figure="14.2">Các công trình đại số và số học của Al-Khwarizmi đặt nền cho thuật toán hiện đại.</p>
+![Luồng thuật toán](/discrete-mathematics-for-computer-science-iuh/img/course/algorithm_flow.svg)
 
-![Luồng thuật toán](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
-
-*Hình 14.3: Thuật toán là dãy bước xác định — mô hình hóa bằng sơ đồ quyết định và luồng điều khiển.*
-
+<p class="textbook-figure-caption" data-figure="14.3">Thuật toán là dãy bước xác định — mô hình hóa bằng sơ đồ quyết định và luồng điều khiển.</p>
 ![Tìm kiếm nhị phân](/discrete-mathematics-for-computer-science-iuh/img/course/Binary_search_into_array.svg)
 
-*Hình 14.4: Tìm kiếm nhị phân — ví dụ kinh điển: đầu vào có cấu trúc, đầu ra đúng, số bước hữu hạn.*
-
+<p class="textbook-figure-caption" data-figure="14.4">Tìm kiếm nhị phân — ví dụ kinh điển: đầu vào có cấu trúc, đầu ra đúng, số bước hữu hạn.</p>
 ![Sắp xếp trộn](/discrete-mathematics-for-computer-science-iuh/img/course/Merge_sort_algorithm_diagram.svg)
 
-*Hình 14.5: Merge sort — chia để trị, minh họa tư duy thuật toán đệ quy và phân tích độ phức tạp.*
-
+<p class="textbook-figure-caption" data-figure="14.5">Merge sort — chia để trị, minh họa tư duy thuật toán đệ quy và phân tích độ phức tạp.</p>
 ## Mục tiêu học tập
 
-Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
+<div class="textbook-objectives" markdown="1">
 
-Sau bài học này, sinh viên có thể:
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Định nghĩa** thuật toán và các tính chất của một thuật toán tốt.
 - **Mô tả** thuật toán bằng mã giả (pseudocode).
@@ -53,9 +51,11 @@ Sau bài học này, sinh viên có thể:
 
 ## 1. Thuật toán là gì?
 
-Ở phần này, đừng chỉ nhớ các bước. Hãy chú ý điều kiện áp dụng, thông tin được duy trì sau mỗi bước và lý do thuật toán cho kết quả đúng.
+Ở phần này, không chỉ ghi nhớ các bước. Cần chú ý điều kiện áp dụng, thông tin được duy trì sau mỗi bước và lý do thuật toán cho kết quả đúng.
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Thuật toán (algorithm) là một dãy hữu hạn các chỉ thị (instructions) chính xác để giải quyết một lớp bài toán. Thuật toán nhận **đầu vào** và sinh ra **đầu ra** sau một số hữu hạn bước.
+</div>
 
 ### Tính chất của thuật toán
 
@@ -68,12 +68,12 @@ Sau bài học này, sinh viên có thể:
 
 ### Bài toán tìm kiếm
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Bài toán**: Cho danh sách $$n$$ số nguyên $$a_1, a_2, \ldots, a_n$$ và một giá trị $$x$$. Xác định vị trí của $$x$$ trong danh sách (hoặc trả về 0 nếu không tìm thấy).
 </div>
 
-<div class="content-box insight-box" markdown="1">
-**Một câu hỏi thú vị**: Có những bài toán mà không thuật toán nào có thể giải được không? Câu trả lời là CÓ. Bài toán "dừng" (Halting Problem) — xác định xem một chương trình có dừng lại hay không — được Alan Turing chứng minh là không giải được vào năm 1936. Đây là một trong những khám phá nền tảng của khoa học máy tính lý thuyết.
+<div class="content-box insight-box textbook-block" markdown="1">
+**Câu hỏi mở**: Có những bài toán mà không thuật toán nào có thể giải được không? Câu trả lời là CÓ. Bài toán "dừng" (Halting Problem) — xác định xem một chương trình có dừng lại hay không — được Alan Turing chứng minh là không giải được vào năm 1936. Đây là một trong những khám phá nền tảng của khoa học máy tính lý thuyết.
 </div>
 
 ## 2. Mã giả (Pseudocode)
@@ -94,13 +94,13 @@ THUẬT TOÁN: Tìm-Phần-Tử-Lớn-Nhất
 7. RETURN max
 ```
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 **Ví dụ vết**: Mảng `[7, 2, 9, 4, 6]`. Ban đầu `max = 7`. So sánh: `2 < 7`, bỏ qua; `9 > 7`, `max ← 9`; `4 < 9`; `6 < 9`. Kết quả: `max = 9`.
 </div>
 
 ## 3. Thuật toán Tìm kiếm Tuyến tính
 
-Ở phần này, đừng chỉ nhớ các bước. Hãy chú ý điều kiện áp dụng, thông tin được duy trì sau mỗi bước và lý do thuật toán cho kết quả đúng.
+Ở phần này, không chỉ ghi nhớ các bước. Cần chú ý điều kiện áp dụng, thông tin được duy trì sau mỗi bước và lý do thuật toán cho kết quả đúng.
 
 Thuật toán tìm kiếm đơn giản nhất: duyệt qua từng phần tử.
 
@@ -140,7 +140,8 @@ THUẬT TOÁN: Sắp-xếp-Nổi-bọt
 8. RETURN a
 ```
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
+<div class="textbook-example" markdown="1">
 **Ví dụ**: Sắp xếp `[5, 3, 8, 1]`.
 
 Vòng 1 (i=1): `[3,5,8,1]` → `[3,5,1,8]`
@@ -148,6 +149,7 @@ Vòng 2 (i=2): `[3,1,5,8]`
 Vòng 3 (i=3): `[1,3,5,8]`
 
 Các phần tử lớn hơn "nổi" lên cuối mảng giống như bọt khí — đó là nguồn gốc tên gọi "sắp xếp nổi bọt".
+</div>
 </div>
 
 ## Các Bài toán và Thuật toán Kinh điển
@@ -172,7 +174,7 @@ Sắp xếp là nền tảng của nhiều thuật toán khác. Một số thu�
 | Chọn (Selection Sort) | Chọn phần tử nhỏ nhất | $$n(n-1)/2$$ |
 | Trộn (Merge Sort) | Chia để trị | $$n\log n$$ |
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Tại sao sắp xếp quan trọng?** Dữ liệu được sắp xếp cho phép:
 - Tìm kiếm nhanh hơn (nhị phân thay vì tuyến tính)
 - Phát hiện trùng lặp dễ dàng hơn
@@ -184,7 +186,7 @@ Hầu hết mọi hệ thống phần mềm đều dùng sắp xếp ở một h
 
 ## Ứng dụng trong Khoa học Máy tính
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Cần chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Thuật toán xuất hiện khắp mọi nơi trong CS:
 
@@ -195,11 +197,11 @@ Thuật toán xuất hiện khắp mọi nơi trong CS:
 - **AI/Machine Learning**: Gradient descent huấn luyện mạng nơ-ron.
 - **Mật mã**: RSA dùng thuật toán lũy thừa modulo nhanh.
 
-Hiểu thuật toán giúp bạn không chỉ *dùng* thư viện mà còn *tự thiết kế* giải pháp khi không có thư viện sẵn.
+Hiểu thuật toán giúp chúng ta không chỉ *dùng* thư viện mà còn *tự thiết kế* giải pháp khi không có thư viện sẵn.
 
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Trực quan hóa Thuật toán Sắp xếp</h3>
-<p>Công cụ này cho phép bạn xem trực quan cách Bubble Sort hoạt động: các thanh màu đại diện cho các phần tử, và bạn thấy từng bước so sánh và đổi chỗ. <strong>Hãy thử:</strong> So sánh số bước của Bubble Sort với Insertion Sort trên cùng một dữ liệu đầu vào.</p>
+<p>Công cụ này cho phép sinh viên xem trực quan cách Bubble Sort hoạt động: các thanh màu đại diện cho các phần tử, và chúng ta thấy từng bước so sánh và đổi chỗ. <strong>Gợi ý thực hành:</strong> So sánh số bước của Bubble Sort với Insertion Sort trên cùng một dữ liệu đầu vào.</p>
 <div data-demo="algorithm-visualization"></div>
 </div>
 <script src="{{ '/public/js/algorithm-visualization.js' | relative_url }}"></script>
@@ -232,6 +234,11 @@ THUẬT TOÁN: Fibonacci-Lặp(n)
 
 Thuật toán lặp chỉ mất $$O(n)$$ thời gian và $$O(1)$$ không gian, tốt hơn rất nhiều so với đệ quy $$O(2^n)$$ ở bài học sau.
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
 
 ## Tóm tắt
 

@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Đại số Boole: Từ Boole đến Chip Hiện đại"
 categories: chapter13
@@ -6,41 +7,26 @@ date: 2021-01-01
 order: 6
 required: false
 lang: en
+excerpt: "Chương 13 đã trình bày đại số Boole từ định nghĩa hình thức đến các phương pháp tối thiểu hóa. Mục bổ sung này khảo sát hành trình lịch sử và ứng dụng công…"
 ---
 
-Có rất ít ý tưởng toán học mang hành trình lạ như đại số Boole.
-Nó bắt đầu như công trình logic trừu tượng ở thế kỷ XIX,
-rồi được Claude Shannon nối với mạch điện,
-và cuối cùng trở thành ngôn ngữ nền cho toàn bộ máy tính số hiện đại.
-
-Mỗi vi xử lý,
-mỗi cổng logic,
-mỗi mạch điều khiển,
-mỗi bộ giải SAT trong công nghiệp
-đều đang sống nhờ một ý tưởng mà George Boole từng viết ra từ rất lâu trước transistor.
-
----
+Chương 13 đã trình bày đại số Boole từ định nghĩa hình thức đến các phương pháp tối thiểu hóa. Mục bổ sung này khảo sát hành trình lịch sử và ứng dụng công nghiệp: từ George Boole và Claude Shannon đến cổng logic trên chip, SAT solvers, tối giản logic và FPGA — cho thấy một lý thuyết trừu tượng trở thành ngôn ngữ vật lý của máy tính số.
 
 ![George Boole](/discrete-mathematics-for-computer-science-iuh/img/course/George_Boole.jpg)
 
-*Hình 13.26: Boole tạo ngôn ngữ logic đại số; Shannon biến nó thành nguyên lý của mạch số.*
-
+<p class="textbook-figure-caption" data-figure="13.26">Boole tạo ngôn ngữ logic đại số; Shannon biến nó thành nguyên lý của mạch số.</p>
 ![Claude Shannon](/discrete-mathematics-for-computer-science-iuh/img/course/ClaudeShannon_MFO3807.jpg)
 
-*Hình 13.27: Claude Shannon (1916–2001) — nối đại số Boole với mạch relay và thông tin số.*
-
+<p class="textbook-figure-caption" data-figure="13.27">Claude Shannon (1916–2001) — nối đại số Boole với mạch relay và thông tin số.</p>
 ![Từ truth table đến silicon](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
-*Hình 13.28: Mỗi cổng logic là hiện thân vật lý của biểu thức Boole trên chip.*
-
+<p class="textbook-figure-caption" data-figure="13.28">Mỗi cổng logic là hiện thân vật lý của biểu thức Boole trên chip.</p>
 ![SAT solver workflow](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-*Hình 13.29: SAT solvers biến logic Boolean thành động cơ giải verification và scheduling ở quy mô công nghiệp.*
-
+<p class="textbook-figure-caption" data-figure="13.29">SAT solvers biến logic Boolean thành động cơ giải verification và scheduling ở quy mô công nghiệp.</p>
 ![Tối giản logic trên chip](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
 
-*Hình 13.30: Biểu thức ngắn hơn → ít cổng → ít transistor → ít điện năng và độ trễ thấp hơn.*
-
+<p class="textbook-figure-caption" data-figure="13.30">Biểu thức ngắn hơn → ít cổng → ít transistor → ít điện năng và độ trễ thấp hơn.</p>
 ## Phần 1: Boole, Shannon, và cuộc cách mạng nối logic với điện
 
 ### 1.1. George Boole và tham vọng đại số hóa tư duy
@@ -50,7 +36,7 @@ George Boole không nghĩ mình đang thiết kế CPU.
 
 Ý tưởng của Boole rất táo bạo:
 thay vì xem suy luận chỉ là ngôn ngữ tự nhiên,
-ta có thể thao tác nó như biểu thức toán học.
+chúng ta có thể thao tác nó như biểu thức toán học.
 
 ### 1.2. Claude Shannon nhìn thấy tia lửa thực dụng
 
@@ -136,7 +122,7 @@ SAT được dùng trong:
 
 Nhiều bài toán khác nhau có thể được mã hóa thành formula Boole.
 Khi đó,
-ta giao phần search cực khó cho SAT solver tối ưu rất mạnh.
+chúng ta giao phần search cực khó cho SAT solver tối ưu rất mạnh.
 
 Điều này cho thấy đại số Boole không chỉ tạo ra mạch.
 Nó còn tạo ra format chung cho nhiều bài toán quyết định.
@@ -148,7 +134,7 @@ Nó còn tạo ra format chung cho nhiều bài toán quyết định.
 ### 4.1. Tối ưu logic là bài toán kinh điển
 
 Khi biểu thức Boole quá dài,
-ta muốn giảm nó mà vẫn giữ nguyên hành vi.
+chúng ta muốn giảm nó mà vẫn giữ nguyên hành vi.
 
 ### 4.2. Karnaugh maps
 
@@ -158,7 +144,7 @@ giúp con người nhìn ra nhóm hóa và rút gọn trực quan.
 ### 4.3. Quine–McCluskey và Espresso
 
 Khi bài toán lớn hơn,
-ta cần thuật toán có hệ thống hơn.
+chúng ta cần thuật toán có hệ thống hơn.
 Quine–McCluskey là phương pháp tabulation cổ điển.
 Espresso là heuristic rất nổi tiếng trong EDA.
 
@@ -175,7 +161,7 @@ và tooling công nghiệp gặp nhau.
 
 FPGA cho phép lập trình lại phần cứng logic sau khi sản xuất.
 Thay vì chế tạo chip riêng cho từng chức năng,
-ta cấu hình ma trận logic khả trình.
+chúng ta cấu hình ma trận logic khả trình.
 
 ### 5.2. Vì sao FPGA quan trọng
 
@@ -228,7 +214,7 @@ Từ Boole,
 SAT solvers,
 logic minimization,
 và FPGA,
-ta thấy một tuyến phát triển thẳng từ tư duy đến silicon.
+chúng ta thấy một tuyến phát triển thẳng từ tư duy đến silicon.
 
 Nếu muốn hiểu vì sao máy tính số hoạt động như hiện nay,
 khó có chương nào quan trọng hơn chương 13.
@@ -244,8 +230,10 @@ Viết biểu thức Boolean cho mạch có 3 input A,B,C với output = (A AND 
 <details>
 <summary>Đáp án</summary>
 
+<div class="textbook-equation" markdown="1">
 $$(A \land B) \lor \lnot C$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 </details>
 
 ### Bài tập 2: Tối ưu biểu thức
@@ -269,6 +257,10 @@ Giải thích tại sao CNF là dạng quan trọng trong thiết kế mạch v�
 CNF dễ ánh xạ sang cổng OR-AND-NOT và là đầu vào chuẩn của nhiều công cụ SAT solver dùng để kiểm chứng mạch.
 
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Boolean Algebra and Karnaugh Maps](https://www.youtube.com/watch?v=5jZ5n8k0p0Q) — Neso Academy (Gate level + minimization)
 
 ## Tóm tắt
 

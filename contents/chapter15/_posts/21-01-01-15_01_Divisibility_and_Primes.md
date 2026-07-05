@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Tính chia hết và Số nguyên tố"
 categories: chapter15
@@ -6,42 +7,39 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
+excerpt: "Trong chương này chúng ta nghiên cứu lý thuyết số — nền tảng toán học của mã hóa, đồng dư và nhiều cơ chế bảo mật hiện đại. Khi máy tính sinh khóa, kiểm tra…"
 ---
 
-Khi máy tính mã hóa dữ liệu, sinh khóa, kiểm tra tính hợp lệ của số học modulo hay phân tích cấu trúc của các số nguyên, nó đang chạm tới một vùng rất cổ điển của toán học: **lý thuyết số**.
+<div class="textbook-epigraph" markdown="1">
 
-Lý thuyết số trong chương này không đứng riêng lẻ, nó là nền cho mã hóa, kiểm tra tính đúng đắn và nhiều cơ chế bảo mật hiện đại.
-Mọi thứ thường bắt đầu từ hai khái niệm nền nhất, **tính chia hết** và **số nguyên tố**. Chúng nghe cơ bản, nhưng lại là viên gạch đầu tiên cho đồng dư, thuật toán Euclid, RSA và nhiều ứng dụng quan trọng trong khoa học máy tính.
+"Mathematics is the queen of the sciences and number theory is the queen of mathematics."
 
-Điểm đáng học ở đây là cấu trúc. Các số nguyên không chỉ là dãy số để tính toán, chúng có quy luật phân rã và quan hệ chia hết rất sâu. Hiểu nền đó giúp các chủ đề mật mã và thuật toán số học phía sau trở nên tự nhiên hơn nhiều.
+<span class="epigraph-attribution">— Carl Friedrich Gauss</span>
 
-Trong bài này, chúng ta sẽ bắt đầu từ những khái niệm nền của lý thuyết số và xem vì sao chúng lại có sức sống mạnh đến vậy trong CS hiện đại.
+</div>
+
+Trong chương này chúng ta nghiên cứu lý thuyết số — nền tảng toán học của mã hóa, đồng dư và nhiều cơ chế bảo mật hiện đại. Khi máy tính sinh khóa, kiểm tra tính hợp lệ modulo hay phân tích cấu trúc số nguyên, nó đang vận dụng các khái niệm cổ điển của lý thuyết số. Mục 15.1 này bắt đầu từ **tính chia hết** và **số nguyên tố** — hai khái niệm nền cho toàn bộ chương.
 
 ![Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid.jpg)
 
-*Hình 15.1: Euclid (~300 TCN) — chứng minh vô hạn số nguyên tố, nền móng lý thuyết số.*
-
+<p class="textbook-figure-caption" data-figure="15.1">Euclid (~300 TCN) — chứng minh vô hạn số nguyên tố, nền móng lý thuyết số.</p>
 ![Elements của Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid_s_Elements_1482.jpg)
 
-*Hình 15.2: Tác phẩm *Elements* hệ thống hóa số học và hình học cổ đại.*
-
+<p class="textbook-figure-caption" data-figure="15.2">Tác phẩm *Elements* hệ thống hóa số học và hình học cổ đại.</p>
 ![Phân tích thừa số nguyên tố](/discrete-mathematics-for-computer-science-iuh/img/course/PrimeDecompositionExample.svg)
 
-*Hình 15.3: Định lý cơ bản số học: mọi số nguyên $>1$ phân tích duy nhất thành tích số nguyên tố.*
-
+<p class="textbook-figure-caption" data-figure="15.3">Định lý cơ bản số học: mọi số nguyên $>1$ phân tích duy nhất thành tích số nguyên tố.</p>
 ![Carl Friedrich Gauss](/discrete-mathematics-for-computer-science-iuh/img/course/Carl_Friedrich_Gauss.jpg)
 
-*Hình 15.4: Gauss (1777–1855) — phát triển lý thuyết số hiện đại và đồng dư.*
-
+<p class="textbook-figure-caption" data-figure="15.4">Gauss (1777–1855) — phát triển lý thuyết số hiện đại và đồng dư.</p>
 ![Cấu trúc số nguyên](/discrete-mathematics-for-computer-science-iuh/img/course/Euler_diagram_of_number_sets.svg)
 
-*Hình 15.5: Chia hết, ước, bội — quan hệ cấu trúc trên tập $\mathbb{Z}$.*
-
+<p class="textbook-figure-caption" data-figure="15.5">Chia hết, ước, bội — quan hệ cấu trúc trên tập $\mathbb{Z}$.</p>
 ## Mục tiêu học tập
 
-Hãy đọc mục tiêu như danh sách năng lực cần đạt sau bài, vì chúng cho biết bạn nên hiểu gì, làm được gì và áp dụng vào đâu.
+<div class="textbook-objectives" markdown="1">
 
-Sau bài học này, sinh viên có thể:
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Vận dụng** định lý chia và thuật toán chia.
 - **Kiểm tra** một số có phải số nguyên tố không bằng các phương pháp cơ bản.
@@ -53,37 +51,49 @@ Sau bài học này, sinh viên có thể:
 
 ## 1. Tính chia hết
 
-**Định nghĩa**: Cho $$a, b \in \mathbb{Z}$$ với $$b \neq 0$$. Ta nói $$b$$ **chia hết** $$a$$, ký hiệu $$b \mid a$$, nếu tồn tại số nguyên $$c$$ sao cho $$a = bc$$.
+<div class="textbook-definition" markdown="1">
+**Định nghĩa**: Cho $$a, b \in \mathbb{Z}$$ với $$b \neq 0$$. Chúng ta nói $$b$$ **chia hết** $$a$$, ký hiệu $$b \mid a$$, nếu tồn tại số nguyên $$c$$ sao cho $$a = bc$$.
+</div>
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - $$3 \mid 12$$ vì $$12 = 3 \times 4$$
 - $$7 \nmid 20$$ vì 20 không chia hết cho 7
 - $$1 \mid n$$ với mọi số nguyên $$n$$
 - $$n \mid 0$$ với mọi $$n \neq 0$$
+</div>
 
 ### Định lý Chia (Division Algorithm)
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Cho $$a \in \mathbb{Z}$$ và $$d \in \mathbb{Z}^+$$. Tồn tại duy nhất cặp số nguyên $$q$$ (thương) và $$r$$ (số dư) sao cho:
+</div>
 
+<div class="textbook-equation" markdown="1">
 $$a = dq + r, \quad 0 \leq r < d$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Ký hiệu: $$a \textbf{ div } d = q$$, $$a \textbf{ mod } d = r$$.
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - $$a = 17, d = 5$$: $$17 = 5 \times 3 + 2$$ → $$q = 3, r = 2$$
 - $$a = -17, d = 5$$: $$-17 = 5 \times (-4) + 3$$ → $$q = -4, r = 3$$ (dư luôn không âm)
 </div>
+</div>
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 **Sai lầm phổ biến**: Nhiều lập trình viên nghĩ rằng `-17 % 5` trong Python cho kết quả -2. Nhưng về mặt toán học, số dư phải luôn không âm. Python thực sự trả về 3 cho `-17 % 5` — đúng theo định nghĩa toán học! Ngôn ngữ C/C++ trả về -2 (số dư âm). Đây là một cạm bẫy (pitfall) nổi tiếng.
 </div>
 
 ## 2. Số nguyên tố
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Số nguyên $$p > 1$$ là **số nguyên tố** (prime) nếu ước dương duy nhất của nó là 1 và chính nó. Số $$n > 1$$ không nguyên tố gọi là **hợp số** (composite).
+</div>
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 - **Nguyên tố**: 2, 3, 5, 7, 11, 13, 17, 19, 23, ...
 - **Hợp số**: 4, 6, 8, 9, 10, 12, 14, 15, ...
 - **Lưu ý**: 1 không phải nguyên tố cũng không phải hợp số.
@@ -91,18 +101,22 @@ Ký hiệu: $$a \textbf{ div } d = q$$, $$a \textbf{ mod } d = r$$.
 
 ### Định lý Cơ bản của Số học
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Mọi số nguyên $$n > 1$$ đều có thể biểu diễn **duy nhất** dưới dạng tích các số nguyên tố (không kể thứ tự):
+</div>
 
+<div class="textbook-equation" markdown="1">
 $$n = p_1^{e_1} \times p_2^{e_2} \times \cdots \times p_k^{e_k}$$
-
-<div class="content-box example-box" markdown="1">
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+<div class="content-box example-box textbook-block" markdown="1">
 - $$60 = 2^2 \times 3 \times 5$$
 - $$84 = 2^2 \times 3 \times 7$$
 - $$1001 = 7 \times 11 \times 13$$
 </div>
 
-<div class="content-box insight-box" markdown="1">
-**Tính duy nhất**: Đây là lý do người ta gọi số nguyên tố là "nguyên tử" của số học. Giống như mọi chất đều có công thức hóa học duy nhất, mọi số đều có phân tích thừa số nguyên tố duy nhất. Điều này không hề hiển nhiên — có những cấu trúc đại số khác (như vành số phức) mà ở đó tính duy nhất không còn đúng!
+<div class="content-box insight-box textbook-block" markdown="1">
+**Tính duy nhất**: Đây là lý do người chúng ta gọi số nguyên tố là "nguyên tử" của số học. Giống như mọi chất đều có công thức hóa học duy nhất, mọi số đều có phân tích thừa số nguyên tố duy nhất. Điều này không hề hiển nhiên — có những cấu trúc đại số khác (như vành số phức) mà ở đó tính duy nhất không còn đúng!
 </div>
 
 ### Sàng Eratosthenes
@@ -122,7 +136,7 @@ THUẬT TOÁN: Sàng-Eratosthenes(n)
 9. RETURN tất cả i có prime[i] = TRUE
 ```
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Tại sao bắt đầu từ $$i^2$$?** Vì các bội số nhỏ hơn $$i^2$$ (như $$2i, 3i, \ldots, (i-1)i$$) đã được đánh dấu bởi các số nguyên tố nhỏ hơn $$i$$ rồi. Cải tiến này giúp sàng Eratosthenes đạt độ phức tạp $$O(n \log \log n)$$ — cực kỳ hiệu quả.
 </div>
 
@@ -133,9 +147,11 @@ THUẬT TOÁN: Sàng-Eratosthenes(n)
 
 ## 3. Ước chung Lớn nhất (GCD)
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Cho $$a, b \in \mathbb{Z}$$, không đồng thời bằng 0. Ước chung lớn nhất của $$a$$ và $$b$$, ký hiệu $$\gcd(a, b)$$, là số nguyên dương lớn nhất $$d$$ sao cho $$d \mid a$$ và $$d \mid b$$.
+</div>
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 - $$\gcd(12, 18) = 6$$
 - $$\gcd(17, 23) = 1$$ → 17 và 23 là **nguyên tố cùng nhau** (relatively prime)
 - $$\gcd(0, 5) = 5$$
@@ -156,7 +172,7 @@ THUẬT TOÁN: Euclid(a, b)   // a ≥ b ≥ 0
 6. RETURN a
 ```
 
-<div class="content-box example-box" markdown="1">
+<div class="content-box example-box textbook-block" markdown="1">
 Tính $$\gcd(252, 105)$$:
 
 | Bước | a | b | r = a mod b |
@@ -166,10 +182,13 @@ Tính $$\gcd(252, 105)$$:
 | 3 | 42 | 21 | 0 |
 | 4 | 21 | 0 | dừng |
 
+<div class="textbook-equation" markdown="1">
 $$\gcd(252, 105) = 21$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 </div>
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Tốc độ của Euclid**: Thuật toán Euclid chạy trong $$O(\log(\min(a,b)))$$ bước. Lý do: sau mỗi bước, tích $$a \times b$$ giảm ít nhất một nửa. Với số 2048-bit (như trong RSA), thuật toán chỉ mất tối đa khoảng 2000 bước — cực kỳ nhanh!
 </div>
 
@@ -187,15 +206,15 @@ Thuật toán Euclid mở rộng tính $$s, t$$ đồng thời với GCD — cô
 
 ## Ứng dụng trong Khoa học Máy tính
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Hãy chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Cần chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
 
 Số nguyên tố là nền tảng của mật mã học hiện đại (RSA, Diffie-Hellman), hàm băm (hash function), sinh số giả ngẫu nhiên, và kiểm tra tính toàn vẹn dữ liệu (checksum). Thuật toán Euclid chạy trong $$O(\log(\min(a,b)))$$ — cực kỳ nhanh, được dùng trong mọi thư viện mật mã.
 
-**Một ứng dụng thú vị**: Khi bạn kết nối đến một trang web HTTPS, trình duyệt của bạn đang dùng số học modulo và thuật toán Euclid hàng trăm lần — để xác thực chứng chỉ, trao đổi khóa, và mã hóa dữ liệu. Tất cả diễn ra trong chưa đầy một giây.
+**Ứng dụng**: Khi chúng ta kết nối đến một trang web HTTPS, trình duyệt của chúng ta đang dùng số học modulo và thuật toán Euclid hàng trăm lần — để xác thực chứng chỉ, trao đổi khóa, và mã hóa dữ liệu. Tất cả diễn ra trong chưa đầy một giây.
 
 <div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
 <h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Sàng Eratosthenes</h3>
-<p>Công cụ trực quan hóa quá trình sàng Eratosthenes. Bạn sẽ thấy từng bước — các số được đánh dấu và loại bỏ dần. <strong>Hãy thử:</strong> Tìm tất cả số nguyên tố từ 1 đến 200 và quan sát mô hình xuất hiện của chúng.</p>
+<p>Công cụ trực quan hóa quá trình sàng Eratosthenes. Bạn sẽ thấy từng bước — các số được đánh dấu và loại bỏ dần. <strong>Gợi ý thực hành:</strong> Tìm tất cả số nguyên tố từ 1 đến 200 và quan sát mô hình xuất hiện của chúng.</p>
 </div>
 
 ## Bài tập
@@ -213,8 +232,10 @@ Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, d�
 
 Giả sử chỉ có hữu hạn số nguyên tố: $$p_1, p_2, \ldots, p_k$$. Xét số:
 
+<div class="textbook-equation" markdown="1">
 $$N = p_1 \times p_2 \times \cdots \times p_k + 1$$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 - N > 1, nên N phải có ít nhất một ước nguyên tố $$p$$.
 - Nếu $$p$$ là một trong các $$p_i$$, thì $$p \mid N$$ và $$p \mid p_1 \times p_2 \times \cdots \times p_k$$.
 - Suy ra $$p \mid (N - p_1 \times p_2 \times \cdots \times p_k) = 1$$. Vô lý!
@@ -223,6 +244,10 @@ Vậy giả sử sai. Có vô hạn số nguyên tố. □
 
 Đây là một trong những chứng minh đẹp nhất trong toán học — chỉ vài dòng nhưng đã đứng vững hơn 2300 năm.
 </details>
+
+## Xem thêm / Video gợi ý
+
+- [Modular Arithmetic](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — Numberphile (Clock arithmetic + crypto)
 
 ## Tóm tắt
 

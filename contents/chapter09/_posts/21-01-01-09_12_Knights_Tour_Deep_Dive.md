@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Knight's Tour: Deep dive từ cờ vua đến backtracking và Hamilton"
 categories: chapter09
@@ -6,15 +7,10 @@ date: 2021-01-01
 order: 12
 required: false
 lang: en
+excerpt: "Ở mục case study TaskFlow, chúng ta đã thấy combinatorial explosion trong kiểm thử và production. Mục bổ sung này (deep dive) xét cùng hiện tượng trong bài…"
 ---
 
-# Knight's Tour: Deep dive từ cờ vua đến backtracking và Hamilton
-
-Minh mở LeetCode lúc 23 giờ, gõ `def knightTour(board):` rồi dừng tay. Bài toán nghe đơn giản: quân **mã** (knight) trên bàn cờ $$n \times n$$ phải **đi qua mọi ô đúng một lần**. Không được đứng yên hai lần, không được bỏ sót ô. Quay về ô xuất phát bằng một nước mã hợp lệ — đó là **chu trình** (closed tour). Dừng ở ô cuối mà không đóng vòng — **đường** (open tour).
-
-Thử tay trên bàn $$5 \times 5$$, Minh tìm được một tour trong vài phút. Chuyển sang $$8 \times 8$$, cùng chiến lược “thử hướng nào cũng được” khiến máy treo sau vài giây. Không phải Python chậm — **không gian tìm kiếm** phình theo kiểu combinatorial explosion: không phải “thêm một ô” mà là **nhánh** backtrack nhân lên theo cấp số mũ.
-
-Bài này là **deep dive**: mô hình đồ thị, thuật toán backtracking, heuristic **Warnsdorf** (1823), con số tour trên bàn $$8 \times 8$$, và vì sao bài toán gắn với **đường/chu trình Hamilton** — lớp NP-hard tổng quát mà slide đồ thị (tiết 37) sẽ gặp lại.
+Ở mục case study TaskFlow, chúng ta đã thấy **combinatorial explosion** trong kiểm thử và production. Mục bổ sung này (deep dive) xét cùng hiện tượng trong bài toán cổ điển **Knight's tour**: quân **mã** trên bàn cờ $$n \times n$$ phải **đi qua mọi ô đúng một lần** — **open tour** tương ứng **đường Hamilton**, **closed tour** tương ứng **chu trình Hamilton** trên đồ thị láng giềng mã. Trên bàn $$5 \times 5$$, backtracking thuần thường đủ; trên $$8 \times 8$$, không gian tìm kiếm phình theo cấp số mũ — cần **heuristic Warnsdorf** (1823) và cắt nhánh. Mục này mô hình hóa đồ thị, khung backtracking, con số ~26.5 nghìn tỷ closed tour trên $$8 \times 8$$, và liên hệ NP-hardness với đường/chu trình Hamilton (Chương 12).
 
 <figure class="image" style="align: center;">
 <p align="center">
@@ -29,7 +25,10 @@ Bài này là **deep dive**: mô hình đồ thị, thuật toán backtracking, 
 
 ## Bài toán — đi hết bàn, mỗi ô một lần
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Cho bàn cờ $$n \times n$$. Một **Knight's tour** là dãy các ô $$(r_0,c_0), (r_1,c_1), \ldots, (r_{n^2-1}, c_{n^2-1})$$ sao cho:
+</div>
+
 
 1. Mỗi nước từ $$(r_i, c_i)$$ đến $$(r_{i+1}, c_{i+1})$$ là nước mã hợp lệ (chênh $$(\pm 2, \pm 1)$$ hoặc $$(\pm 1, \pm 2)$$).
 2. Mọi ô trên bàn xuất hiện **đúng một lần** trong dãy.
@@ -54,15 +53,14 @@ Coi mỗi ô $$(r,c)$$ là một **đỉnh**. Nối cạnh giữa hai ô nếu q
 
 ![Đồ thị vô hướng — mô hình láng giềng](/discrete-mathematics-for-computer-science-iuh/img/course/Undirected_graph.svg)
 
-*Hình 9.20: Bàn cờ → đồ thị vô hướng; tìm tour = tìm đường đi qua mọi đỉnh (nguồn: Wikimedia Commons, chỉnh cho khóa học).*
-
+<p class="textbook-figure-caption" data-figure="9.20">Bàn cờ → đồ thị vô hướng; tìm tour = tìm đường đi qua mọi đỉnh (nguồn: Wikimedia Commons, chỉnh cho khóa học).</p>
 **Open tour** ⟺ **đường Hamilton** (Hamiltonian path): đường đi qua **mọi đỉnh đúng một lần**.
 
 **Closed tour** ⟺ **chu trình Hamilton** (Hamiltonian cycle): đường Hamilton đóng.
 
 Khác **chu trình Euler** (mỗi **cạnh** một lần — điều kiện bậc chẵn, kiểm tra $$O(E)$$). Hamilton nhìn **đỉnh**, không có điều kiện bậc đơn giản tương đương, và bài toán tổng quát là **NP-hard**. Knight's graph là trường hợp **đặc biệt có cấu trúc** — nên heuristic như Warnsdorf thường tìm tour nhanh trên $$8 \times 8$$ dù bài toán tổng quát vẫn khó.
 
-<div class="content-box insight-box" markdown="1">
+<div class="content-box insight-box textbook-block" markdown="1">
 **Cùng một backtracking, hai câu chuyện**: SAT solver (slide tiết 43) gán true/false cho biến và backtrack khi clause vỡ; Knight's tour gán “ô tiếp theo” và backtrack khi kẹt. Cả hai đều duyệt không gian tổ hợp — khác ở hàm kiểm tra hợp lệ (clause vs nước mã).
 </div>
 
@@ -122,7 +120,10 @@ Trên $$5 \times 5$$, hàm này thường trả lời trong mili giây. Trên $$
 
 **Ý tưởng** (H. C. von Warnsdorf, 1823): từ ô hiện tại, chọn ô tiếp theo có **số láng giềng chưa thăm ít nhất** (accessibility thấp nhất). Ô “cổ chai” phải đi sớm; ô trung tâm nhiều lối thoát có thể để sau.
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Với ô ứng viên $$v$$, đặt $$W(v) = |\{ u : u \text{ láng giềng mã của } v,\ u \text{ chưa thăm} \}|$$. Chọn $$v$$ với $$W(v)$$ **nhỏ nhất**. Hòa số: chọn ngẫu nhiên hoặc theo thứ tự cố định (ví dụ lexicographic $$(r,c)$$).
+</div>
+
 
 ```python
 def warnsdorf_neighbors(n: int, r: int, c: int, visited: list[list[bool]]) -> list[tuple[int, int]]:
@@ -150,7 +151,7 @@ Thay vòng `for dr, dc in moves` trong `dfs` bằng `for nr, nc in warnsdorf_nei
 | DFS + Warnsdorf | Nhanh | **Thường < 1 ms** | Heuristic, không chứng minh tối ưu mọi $$n$$ |
 | Đếm **tất cả** tour | Khả thi | ~26.5 nghìn tỷ (closed, có hướng) | Cần thuật toán chuyên biệt, không Warnsdorf |
 
-<div class="content-box warning-box" markdown="1">
+<div class="content-box warning-box textbook-block" markdown="1">
 Warnsdorf **không** đảm bảo tìm tour trên mọi bàn và mọi điểm xuất phát. Tồn tại cấu hình mà heuristic chọn sai và kẹt — khi đó cần backtracking đầy đủ hoặc đổi điểm xuất phát. Trong thực hành $$n \le 8$$, Warnsdorf + backtracking khi hòa là tiêu chuẩn.
 </div>
 
@@ -276,6 +277,12 @@ $$|V| = 16$$. Ô góc bậc **2**. Tổng số cạnh: đếm tay hoặc chươn
 </details>
 
 ---
+
+
+## Xem thêm / Video gợi ý
+
+- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
+- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
 
 ## Tóm tắt
 

@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Phép toán Tập hợp"
 categories: chapter04
@@ -6,36 +7,47 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
+excerpt: "Ở mục trước, chúng ta đã định nghĩa tập hợp, phần tử, tập con và lực lượng. Mục này giới thiệu phép toán tập hợp — công cụ kết hợp, so sánh và loại trừ giữa…"
 ---
 
-Biết một tập hợp là gì mới chỉ là bước đầu. Trong thực tế, ta gần như luôn cần kết hợp, so sánh hoặc loại trừ giữa nhiều tập: người dùng thuộc nhóm A **hoặc** B, bản ghi có trong log hôm qua nhưng không có hôm nay, tập tài nguyên chung của hai service, hay danh sách node chưa được thăm.
+Ở mục trước, chúng ta đã định nghĩa tập hợp, phần tử, tập con và lực lượng. Mục này giới thiệu **phép toán tập hợp** — công cụ kết hợp, so sánh và loại trừ giữa các tập. Trong thực tế, ta gần như luôn cần các thao tác như: người dùng thuộc nhóm A **hoặc** B, bản ghi có trong log hôm qua nhưng không có hôm nay, tập tài nguyên chung của hai service, hay danh sách node chưa được thăm. Các phép hợp, giao, hiệu và phần bù diễn đạt những thao tác đó một cách ngắn gọn; chúng là nền tảng cho truy vấn dữ liệu, tối ưu điều kiện logic và mô hình hóa trạng thái. Nhiều sai sót trong phân tích bài toán đến từ việc hiểu mơ hồ các phép này — nhầm giao với hợp hay bỏ quên miền nền có thể khiến kết quả lệch hoàn toàn.
 
+## Mục tiêu học tập
 
-Tư duy tập hợp giúp ta mô tả dữ liệu, miền giá trị và ràng buộc một cách chính xác, nên phần này là nền cho cả lập trình lẫn mô hình hóa.
-Các **phép toán tập hợp** như hợp, giao, hiệu và phần bù chính là công cụ để diễn đạt những thao tác đó một cách ngắn gọn và chính xác. Chúng không chỉ là ký hiệu của toán, mà còn là nền tảng cho truy vấn dữ liệu, tối ưu điều kiện logic và mô hình hóa trạng thái trong chương trình.
+<div class="textbook-objectives" markdown="1">
 
-Điều đáng chú ý là nhiều sai sót trong phân tích bài toán đến từ việc hiểu mơ hồ các phép này. Nhầm giao với hợp hay bỏ quên miền nền có thể khiến kết quả lệch hoàn toàn dù hình thức nhìn rất hợp lý.
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-Bài học này sẽ giúp chúng ta nhìn các phép toán tập hợp như những thao tác rất thực tế, rồi chuyển dần sang cách viết và suy luận chuẩn trong toán rời rạc.
+- **Thực hiện** hợp, giao, hiệu, bù của tập hợp.
+- **Vẽ** biểu đồ Venn và chứng minh đẳng thức tập bằng phần tử.
+- **Áp dụng** phép toán tập trong SQL (UNION, INTERSECT, EXCEPT).
+
+**Từ khóa**: hợp, giao, hiệu, bù, đối xứng, luật De Morgan trên tập.
+</div>
 
 ## Các phép toán cơ bản
 
 ### 1. Hợp (Union) -- ∪
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: A ∪ B = {x | x ∈ A hoặc x ∈ B}
+</div>
+
 
 Phép hợp gom tất cả phần tử thuộc ít nhất một trong hai tập. Từ "hoặc" ở đây theo nghĩa bao hàm (inclusive or): có thể thuộc A, hoặc B, hoặc cả hai.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - A = {1, 2, 3}, B = {3, 4, 5}
 - A ∪ B = {1, 2, 3, 4, 5}
 
 ![Biểu đồ Venn: hợp A ∪ B](/discrete-mathematics-for-computer-science-iuh/img/course/Union_of_sets_A_and_B.svg)
 
-*Hình 4.9: Phép hợp A ∪ B — vùng tô màu gồm mọi phần tử thuộc A, thuộc B, hoặc thuộc cả hai.*
+<p class="textbook-figure-caption" data-figure="4.9">Phép hợp A ∪ B — vùng tô màu gồm mọi phần tử thuộc A, thuộc B, hoặc thuộc cả hai.</p>
+</div>
 
 <div class="math-example">
-<strong>Ví dụ thực tế</strong>: Tập hợp sinh viên học Python hoặc Java
+<strong>Ví dụ (thực tế)</strong>: Tập hợp sinh viên học Python hoặc Java
 <br>Python = {An, Bình, Chi}, Java = {Bình, Dung, Em}
 <br>Python ∪ Java = {An, Bình, Chi, Dung, Em}
 </div>
@@ -50,20 +62,25 @@ print(Python.union(Java))   # Tương tự
 
 ### 2. Giao (Intersection) -- ∩
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: A ∩ B = {x | x ∈ A và x ∈ B}
+</div>
+
 
 Giao chỉ gồm các phần tử thuộc **đồng thời** cả hai tập.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - A = {1, 2, 3}, B = {3, 4, 5}
 - A ∩ B = {3}
 
 ![Biểu đồ Venn: giao A ∩ B](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_intersect_B.svg)
 
-*Hình 4.10: Phép giao A ∩ B — chỉ vùng chồng lấn giữa hai tập được tô màu.*
+<p class="textbook-figure-caption" data-figure="4.10">Phép giao A ∩ B — chỉ vùng chồng lấn giữa hai tập được tô màu.</p>
+</div>
 
 <div class="math-example">
-<strong>Ví dụ thực tế</strong>: Sinh viên học cả Python và Java
+<strong>Ví dụ (thực tế)</strong>: Sinh viên học cả Python và Java
 <br>Python ∩ Java = {Bình}
 </div>
 
@@ -76,14 +93,17 @@ print(Python.intersection(Java))
 
 ![Hai tập rời nhau (disjoint)](/discrete-mathematics-for-computer-science-iuh/img/course/Veranschaulichung_von_disjunkten_Mengen.svg)
 
-*Hình 4.11: Khi A ∩ B = ∅, hai tập không có phần tử chung — vùng giao trên biểu đồ Venn rỗng.*
-
+<p class="textbook-figure-caption" data-figure="4.11">Khi A ∩ B = ∅, hai tập không có phần tử chung — vùng giao trên biểu đồ Venn rỗng.</p>
 ### 3. Hiệu (Difference) -- \
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: A \ B = {x | x ∈ A và x ∉ B}
+</div>
+
 
 Hiệu lấy các phần tử thuộc A nhưng không thuộc B. **Không giao hoán**: A \ B ≠ B \ A (trừ khi A = B).
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - A = {1, 2, 3}, B = {3, 4, 5}
 - A \ B = {1, 2}
@@ -91,44 +111,55 @@ Hiệu lấy các phần tử thuộc A nhưng không thuộc B. **Không giao h
 
 ![Biểu đồ Venn: hiệu A \ B](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_setminus_B.svg)
 
-*Hình 4.12: Phép hiệu A \ B — lấy phần thuộc A nhưng không thuộc B (lưu ý: A \ B ≠ B \ A).*
-
+<p class="textbook-figure-caption" data-figure="4.12">Phép hiệu A \ B — lấy phần thuộc A nhưng không thuộc B (lưu ý: A \ B ≠ B \ A).</p>
 ```python
 print(Python - Java)    # {'An', 'Chi'} -- học Python nhưng không học Java
 print(Java - Python)    # {'Dung', 'Em'} -- học Java nhưng không học Python
 ```
+</div>
+
 
 ### 4. Phần bù (Complement) -- Aᶜ
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: Aᶜ = U \ A = {x ∈ U | x ∉ A}
 (với U là tập vũ trụ -- universal set)
+</div>
+
 
 Phần bù phụ thuộc vào tập vũ trụ U. Nếu thay đổi U, phần bù thay đổi theo.
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - U = {1, 2, 3, 4, 5}, A = {1, 3, 5}
 - Aᶜ = {2, 4}
 
 ![Biểu đồ Venn: phần bù Aᶜ](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-NOT-P.png)
 
-*Hình 4.13: Phần bù Aᶜ = U \ A — mọi phần tử trong tập vũ trụ U nhưng không thuộc A.*
+<p class="textbook-figure-caption" data-figure="4.13">Phần bù Aᶜ = U \ A — mọi phần tử trong tập vũ trụ U nhưng không thuộc A.</p>
+</div>
 
 ### 5. Hiệu đối xứng (Symmetric Difference) -- △
 
+<div class="textbook-definition" markdown="1">
 **Định nghĩa**: A △ B = (A \ B) ∪ (B \ A) = (A ∪ B) \ (A ∩ B)
+</div>
+
 
 Hiệu đối xứng lấy các phần tử thuộc đúng một trong hai tập (không thuộc cả hai).
 
+<div class="textbook-example" markdown="1">
 **Ví dụ**:
 - A = {1, 2, 3}, B = {3, 4, 5}
 - A △ B = {1, 2, 4, 5}
 
 ![Biểu đồ Venn: hiệu đối xứng A △ B](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_symmetric_minus_B.svg)
 
-*Hình 4.14: Hiệu đối xứng A △ B — các phần tử thuộc đúng một trong hai tập (tương đương XOR trong logic).*
-
+<p class="textbook-figure-caption" data-figure="4.14">Hiệu đối xứng A △ B — các phần tử thuộc đúng một trong hai tập (tương đương XOR trong logic).</p>
 ```python
 print(Python ^ Java)   # {'An', 'Chi', 'Dung', 'Em'} 
+</div>
+
 # Hoặc:
 print(Python.symmetric_difference(Java))
 ```
@@ -152,8 +183,7 @@ Giống như đại số có các hằng đẳng thức (a + b)² = a² + 2ab + 
 
 ![Minh họa De Morgan trên biểu đồ Venn](/discrete-mathematics-for-computer-science-iuh/img/course/Intersections_of_two_sets_and_their_complements.svg)
 
-*Hình 4.15: Luật De Morgan — phần bù của hợp/giao tương ứng với giao/hợp của các phần bù.*
-
+<p class="textbook-figure-caption" data-figure="4.15">Luật De Morgan — phần bù của hợp/giao tương ứng với giao/hợp của các phần bù.</p>
 **Luật De Morgan** cho phép "phân phối" phép bù:
 
 ```python
@@ -164,7 +194,7 @@ not (x in A or x in B) == (x not in A) and (x not in B)
 not (x in A and x in B) == (x not in A) or (x not in B)
 ```
 
-**Mẹo nhớ**: Đảo dấu `not` → đổi `and` thành `or` (và ngược lại).
+**Quy tắc nhớ**: Đảo dấu `not` → đổi `and` thành `or` (và ngược lại).
 
 ## Ứng dụng trong Khoa học Máy tính
 
@@ -172,8 +202,7 @@ not (x in A and x in B) == (x not in A) or (x not in B)
 
 ![Cơ sở dữ liệu quan hệ và phép JOIN](/discrete-mathematics-for-computer-science-iuh/img/course/Square_join.png)
 
-*Hình 4.16: Phép JOIN trong SQL — kết hợp hai bảng (hai tập bộ) theo điều kiện khớp, tư duy tập hợp nằm ở lõi truy vấn.*
-
+<p class="textbook-figure-caption" data-figure="4.16">Phép JOIN trong SQL — kết hợp hai bảng (hai tập bộ) theo điều kiện khớp, tư duy tập hợp nằm ở lõi truy vấn.</p>
 Các phép toán tập hợp tương ứng trực tiếp với các truy vấn SQL:
 
 | Phép toán tập hợp | SQL | Ý nghĩa |
@@ -350,12 +379,17 @@ your answers.
 
 ## Định lý De Morgan (mở rộng)
 
+<div class="textbook-theorem" markdown="1">
 **Định lý**: Với mọi tập \( A, B \subseteq U \),
+</div>
 
+
+<div class="textbook-equation" markdown="1">
 $$
 (A \cup B)^c = A^c \cap B^c, \qquad (A \cap B)^c = A^c \cup B^c.
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Chứng minh** (bằng định nghĩa):
 
 - \( x \in (A \cup B)^c \iff x \notin A \cup B \iff x \notin A \land x \notin B \iff x \in A^c \land x \in B^c \iff x \in A^c \cap B^c \).
@@ -364,13 +398,21 @@ Tương tự cho đẳng thức thứ hai.
 
 **Hệ quả** (De Morgan cho n tập):
 
+<div class="textbook-equation" markdown="1">
 $$
 \left( \bigcup_{i=1}^n A_i \right)^c = \bigcap_{i=1}^n A_i^c, \qquad \left( \bigcap_{i=1}^n A_i \right)^c = \bigcup_{i=1}^n A_i^c.
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 **Ý nghĩa CS**:
 - `NOT (A OR B)` = `NOT A AND NOT B` (rất hay gặp trong điều kiện lọc).
 - Dùng trong tối ưu truy vấn SQL và biểu thức Boolean.
+
+
+## Xem thêm / Video gợi ý
+
+- [Set Theory — Cardinality and Infinity](https://www.youtube.com/watch?v=5jZ5n8k0p0Q) — Numberphile (Hilbert's Hotel)
+- [Introduction to Sets](https://www.youtube.com/watch?v=4l7L9v0p0Q) — Khan Academy (Basics + notation)
 
 ## Tóm tắt
 

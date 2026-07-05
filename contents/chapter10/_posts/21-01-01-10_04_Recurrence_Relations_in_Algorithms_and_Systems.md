@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "Hệ thức Truy hồi trong Thuật toán và Hệ thống"
 categories: chapter10
@@ -6,35 +7,27 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
+excerpt: "Ở các mục trước chúng ta đã định nghĩa, phân loại và giải quan hệ truy hồi tuyến tính (thuần nhất và không thuần nhất). Mục cuối Chương 10 tổng hợp ứng dụng…"
 ---
 
-Một trong những điều đẹp nhất của toán rời rạc là khả năng mô tả cấu trúc lớn bằng quy tắc nhỏ lặp lại.
-Hệ thức truy hồi làm đúng điều đó.
-
-Thay vì mô tả trực tiếp mọi giá trị,
-ta nói giá trị hiện tại phụ thuộc vào các giá trị trước như thế nào.
-
-Từ bài toán thỏ Fibonacci năm 1202,
-đến divide-and-conquer algorithms,
-dynamic programming,
-population models,
-và signal processing,
-truy hồi xuất hiện như ngôn ngữ tự nhiên của những hệ thống có ký ức.
+Ở các mục trước chúng ta đã định nghĩa, phân loại và giải quan hệ truy hồi tuyến tính (thuần nhất và không thuần nhất). Mục cuối Chương 10 tổng hợp **ứng dụng** của hệ thức truy hồi trong khoa học máy tính: thay vì mô tả trực tiếp mọi giá trị, ta nêu quy tắc “giá trị hiện tại phụ thuộc các giá trị trước như thế nào”. Từ bài toán thỏ Fibonacci (1202), đến thuật toán chia để trị, dynamic programming, mô hình dân số và xử lý tín hiệu (IIR filter), truy hồi là ngôn ngữ tự nhiên của các hệ thống có **ký ức** — trạng thái hiện tại mang dấu vết của quá khứ.
 
 ---
 
 ## Phần 1: Lịch sử — Fibonacci và bài toán thỏ
 
-### 1.1. Một bài toán tưởng vui nhưng sống rất lâu
+### 1.1. Bài toán Fibonacci và lịch sử
 
 Trong *Liber Abaci* năm 1202,
 Leonardo of Pisa — thường gọi là Fibonacci — nêu bài toán sinh sản của thỏ.
 Từ đó xuất hiện dãy số nổi tiếng:
 
+<div class="textbook-equation" markdown="1">
 $$
 F_n = F_{n-1} + F_{n-2}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Điểm hấp dẫn ở đây không chỉ là dãy số.
 Điểm hấp dẫn là ý tưởng mô tả tương lai bằng quá khứ gần.
 
@@ -53,8 +46,7 @@ hệ thức truy hồi trở thành cầu nối giữa pattern và prediction.
 
 ![Xoắn ốc Fibonacci](/discrete-mathematics-for-computer-science-iuh/img/course/Fibonacci_spiral.svg)
 
-*Hình 10.15: Bài toán thỏ của Fibonacci mở ra một cách mô tả tăng trưởng và cấu trúc lặp rất bền trong toán học và computing.*
-
+<p class="textbook-figure-caption" data-figure="10.15">Bài toán thỏ của Fibonacci mở ra một cách mô tả tăng trưởng và cấu trúc lặp rất bền trong toán học và computing.</p>
 ---
 
 ## Phần 2: Phân tích thuật toán chia để trị
@@ -68,10 +60,12 @@ chi phí thường thỏa một recurrence.
 
 Ví dụ merge sort:
 
+<div class="textbook-equation" markdown="1">
 $$
 T(n) = 2T(n/2) + n
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Đây không phải ký hiệu trang trí.
 Nó là bản tóm tắt bản chất thời gian chạy.
 
@@ -79,10 +73,12 @@ Nó là bản tóm tắt bản chất thời gian chạy.
 
 Master Theorem giúp giải nhanh nhiều recurrence kiểu:
 
+<div class="textbook-equation" markdown="1">
 $$
 T(n)=aT(n/b)+f(n)
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Từ đó,
 kỹ sư có thể phân biệt:
 
@@ -104,12 +100,10 @@ Nó giúp hiểu chi phí kiến trúc của nhiều hệ thống thật.
 
 ![Master Theorem — phân tích chia để trị](/discrete-mathematics-for-computer-science-iuh/img/course/Master_theorem.png)
 
-*Hình 10.16: Master Theorem giải nhanh $T(n)=aT(n/b)+f(n)$ — công cụ nền cho phân tích merge sort, FFT và nhiều thuật toán chia để trị.*
-
+<p class="textbook-figure-caption" data-figure="10.16">Master Theorem giải nhanh $T(n)=aT(n/b)+f(n)$ — công cụ nền cho phân tích merge sort, FFT và nhiều thuật toán chia để trị.</p>
 ![Merge Sort — sơ đồ thuật toán](/discrete-mathematics-for-computer-science-iuh/img/course/Merge_sort_algorithm_diagram.svg)
 
-*Hình 10.17: Divide-and-conquer sinh truy hồi tự nhiên — chi phí chia, đệ quy con, và ghép kết quả.*
-
+<p class="textbook-figure-caption" data-figure="10.17">Divide-and-conquer sinh truy hồi tự nhiên — chi phí chia, đệ quy con, và ghép kết quả.</p>
 ---
 
 ## Phần 3: Dynamic programming — truy hồi cộng với trí nhớ
@@ -163,12 +157,10 @@ và ta có đang lặp lại không?”
 
 ![Dynamic programming — memoization](/discrete-mathematics-for-computer-science-iuh/img/course/Dsa_dynamic_programming_salmon_fish_memoized_step_n.png)
 
-*Hình 10.18: Dynamic programming khai thác truy hồi nhưng thêm trí nhớ, biến ý tưởng đẹp thành công cụ hiệu quả.*
-
+<p class="textbook-figure-caption" data-figure="10.18">Dynamic programming khai thác truy hồi nhưng thêm trí nhớ, biến ý tưởng đẹp thành công cụ hiệu quả.</p>
 ![Cây gọi đệ quy Fibonacci — trước memoization](/discrete-mathematics-for-computer-science-iuh/img/course/Algorithms-F6CallTreeMemoized.png)
 
-*Hình 10.19: Memoization loại bỏ tính lại — cùng truy hồi nhưng từ exponential xuống linear thời gian.*
-
+<p class="textbook-figure-caption" data-figure="10.19">Memoization loại bỏ tính lại — cùng truy hồi nhưng từ exponential xuống linear thời gian.</p>
 ---
 
 ## Phần 4: Population growth và mô hình hóa quá trình
@@ -180,16 +172,20 @@ ta có recurrence.
 
 Ví dụ đơn giản:
 
+<div class="textbook-equation" markdown="1">
 $$
 P_{n+1} = 1.02P_n
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Hoặc mô hình phong phú hơn:
 
+<div class="textbook-equation" markdown="1">
 $$
 P_{n+1}=P_n + births_n - deaths_n + migration_n
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 ### 4.2. Từ sinh học đến user growth
 
 Trong digital products,
@@ -206,8 +202,7 @@ Nó còn gợi trực giác về product dynamics.
 
 ![Tháp Hà Nội — truy hồi exponential](/discrete-mathematics-for-computer-science-iuh/img/course/Tower_of_Hanoi.gif)
 
-*Hình 10.20: Tháp Hà Nội có $H_n = 2H_{n-1}+1$ — mô hình tăng trưởng exponential từ truy hồi đơn giản.*
-
+<p class="textbook-figure-caption" data-figure="10.20">Tháp Hà Nội có $H_n = 2H_{n-1}+1$ — mô hình tăng trưởng exponential từ truy hồi đơn giản.</p>
 ---
 
 ## Phần 5: Signal processing và IIR filters
@@ -223,10 +218,12 @@ nhiều bộ lọc tạo output hiện tại dựa trên:
 
 Ví dụ dạng đơn giản:
 
+<div class="textbook-equation" markdown="1">
 $$
 y_n = ax_n + by_{n-1}
 $$
-
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 Đây là recurrence rất thật.
 
 ### 5.2. Vì sao nó quan trọng với CS
@@ -313,6 +310,11 @@ Viết recurrence cho bài toán tính số cách leo cầu thang n bậc (mỗi
 $$a_n = a_{n-1} + a_{n-2}$$, $$a_1=1$$, $$a_2=2$$ (dãy Fibonacci).
 
 </details>
+
+
+## Xem thêm / Video gợi ý
+
+- [Relations and Functions](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — Trefor Bazett (Equivalence relations)
 
 ## Tóm tắt
 
