@@ -1,0 +1,82 @@
+{
+  "1": {
+    "quote": "Logic is the beginning of wisdom, not the end of it.",
+    "attribution": "Leonard Nimoy (as Spock)"
+  },
+  "2": {
+    "quote": "The symbols of mathematics are not mere marks on paper; they represent ideas that can be combined and manipulated according to precise rules.",
+    "attribution": "Alfred North Whitehead"
+  },
+  "3": {
+    "quote": "Q.E.D. — quod erat demonstrandum: that which was to be demonstrated.",
+    "attribution": "Euclid, Elements"
+  },
+  "4": {
+    "quote": "A set is a many that allows itself to be thought of as a one.",
+    "attribution": "Georg Cantor"
+  },
+  "5": {
+    "quote": "Order is the shape upon which beauty depends.",
+    "attribution": "Pearl S. Buck"
+  },
+  "6": {
+    "quote": "A function is a rule that assigns to each input exactly one output.",
+    "attribution": "Dirichlet (paraphrased)"
+  },
+  "7": {
+    "quote": "Combinatorics is the art of counting without actually counting.",
+    "attribution": "Anonymous"
+  },
+  "8": {
+    "quote": "If you put infinitely many balls into finitely many boxes, some box must contain more than one ball.",
+    "attribution": "Pigeonhole Principle (folk)"
+  },
+  "9": {
+    "quote": "There is no such thing as plain text.",
+    "attribution": "Joel Spolsky"
+  },
+  "10": {
+    "quote": "Every recursion must have a base case and a recursive step that approaches the base case.",
+    "attribution": "Computer science folk wisdom"
+  },
+  "11": {
+    "quote": "Generating functions are a bridge between discrete structures and continuous analysis.",
+    "attribution": "Herbert Wilf (paraphrased)"
+  },
+  "12": {
+    "quote": "A graph is a mathematical structure used to model pairwise relations between objects.",
+    "attribution": "Discrete mathematics standard definition"
+  },
+  "13": {
+    "quote": "Boolean algebra is the algebra of truth values — the mathematics of 0 and 1.",
+    "attribution": "George Boole (paraphrased)"
+  },
+  "14": {
+    "quote": "An algorithm must be seen to be believed.",
+    "attribution": "Donald Knuth"
+  },
+  "15": {
+    "quote": "Mathematics is the queen of the sciences and number theory is the queen of mathematics.",
+    "attribution": "Carl Friedrich Gauss"
+  },
+  "16": {
+    "quote": "Probability is the guide of life.",
+    "attribution": "Cicero (via Huygens)"
+  },
+  "17": {
+    "quote": "In theory, theory and practice are the same. In practice, they are not.",
+    "attribution": "Albert Einstein (attributed)"
+  },
+  "18": {
+    "quote": "A finite state machine is one of the most fundamental models of computation.",
+    "attribution": "Automata theory tradition"
+  },
+  "19": {
+    "quote": "A language is a set of strings over an alphabet.",
+    "attribution": "Formal language theory"
+  },
+  "20": {
+    "quote": "The question of whether P equals NP is the deepest open problem in theoretical computer science.",
+    "attribution": "Stephen Cook & Richard Karp (problem tradition)"
+  }
+}

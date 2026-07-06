@@ -2,8 +2,13 @@
 layout: default
 ---
 
-{% assign chapter_raw = page.categories | first | default: "" %}
-{% assign chapter_num = chapter_raw | remove: "chapter" | plus: 0 %}
+{% assign chapter_slug = "" %}
+{% for cat in page.categories %}
+  {% if cat contains "chapter" %}
+    {% assign chapter_slug = cat %}
+  {% endif %}
+{% endfor %}
+{% assign chapter_num = chapter_slug | remove: "chapter" | plus: 0 %}
 {% assign lesson_num = page.order | default: 1 %}
 
 <article
@@ -23,18 +28,16 @@ layout: default
 </article>
 
 <!-- Back to Chapter Home Link -->
-{% if page.chapter %}
-  {% assign chapter_path = page.lang | default: site.default_lang | append: "/chapter" | append: page.chapter | append: "/" %}
-  {% assign chapter_url = "/contents/" | append: chapter_path %}
+{% if chapter_slug != "" %}
+  {% assign chapter_url = "/contents/" | append: chapter_slug | append: "/" %}
   <div style="margin-top: 20px; padding: 10px; background-color: #f8f9fa; border-left: 4px solid #007bff;">
-    <a href="{{ site.baseurl }}{{ chapter_url }}" style="text-decoration: none; color: #007bff; font-weight: bold;">
+    <a href="{{ chapter_url | relative_url }}" style="text-decoration: none; color: #007bff; font-weight: bold;">
       ← {% if page.lang == 'vi' %}Quay lại đầu chương{% else %}Back to Chapter Home{% endif %}
     </a>
   </div>
 {% endif %}
 
-{% assign full_name = page.chapter | prepend: "chapter" %}
-{% assign all_posts = site.categories[full_name] | sort_natural: "order" %}
+{% assign all_posts = site.categories[chapter_slug] | sort_natural: "order" %}
 {% assign current_lang = page.lang | default: site.default_lang %}
 {% assign post_list = all_posts | where: "lang", current_lang %}
 
