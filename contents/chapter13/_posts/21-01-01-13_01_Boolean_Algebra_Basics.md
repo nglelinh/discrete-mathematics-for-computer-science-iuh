@@ -17,30 +17,19 @@ excerpt: "Đại số logic trên {0,1}, tiên đề Huntington, hằng đẳng 
 
 </div>
 
-Trong chương này chúng ta nghiên cứu đại số Boole — nền tảng toán học của logic số, thiết kế mạch và tối ưu biểu thức điều kiện. Mỗi lần CPU đánh giá một điều kiện, mạch số mở hoặc đóng transistor, hay chương trình ghép các cờ trạng thái bằng `and`, `or`, `not`, hệ thống đang vận hành trên cùng một cấu trúc đại số. Mục 13.1 này bắt đầu từ định nghĩa hình thức, các tiên đề Huntington và hằng đẳng thức cơ bản của đại số Boole trên tập $\{0,1\}$.
+Đại số Boole là nền tảng toán học của logic số, thiết kế mạch và tối ưu biểu thức điều kiện. Mọi phép đánh giá điều kiện trong chương trình, mọi mạng công tắc hay cổng logic đều vận hành trên cùng cấu trúc đại số với hai giá trị $$0$$ và $$1$$. Mục này trình bày đại số logic $$B=\{0,1\}$$, định nghĩa hình thức, tiên đề Huntington và các hằng đẳng thức cơ bản.
 
 ![George Boole](/discrete-mathematics-for-computer-science-iuh/img/course/George_Boole.jpg)
 
-<p class="textbook-figure-caption" data-figure="13.1">George Boole (1815–1864) — người đặt nền móng cho đại số logic dùng trong máy tính hiện đại.</p>
-![Cấu trúc đại số Boole](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
+<p class="textbook-figure-caption" data-figure="13.1">George Boole (1815–1864) — đặt nền đại số cho logic.</p>
 
-<p class="textbook-figure-caption" data-figure="13.2">Đại số Boole trên $\{0,1\}$ với phép OR, AND và phần bù — nền tảng thiết kế mạch số.</p>
-![Các cổng logic](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
-
-<p class="textbook-figure-caption" data-figure="13.3">Các cổng logic Boolean (NOT, AND, OR, XOR…) — hiện thân phần cứng của biểu thức Boole.</p>
-![Cổng AND](/discrete-mathematics-for-computer-science-iuh/img/course/AND_ANSI_Labelled.svg)
-
-<p class="textbook-figure-caption" data-figure="13.4">Cổng AND — chỉ cho kết quả 1 khi cả hai đầu vào đều 1, tương ứng phép nhân logic.</p>
-![Cổng NOT](/discrete-mathematics-for-computer-science-iuh/img/course/NOT_ANSI_Labelled.svg)
-
-<p class="textbook-figure-caption" data-figure="13.5">Cổng NOT — phủ định giá trị logic, tương ứng phần bù trong đại số Boole.</p>
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Làm việc** trên đại số logic $$B=\{0,1\}$$ với OR, AND, NOT và thuộc **mười hằng đẳng thức** cơ bản.
+- **Làm việc** trên đại số logic $$B=\{0,1\}$$ với OR, AND, NOT và mười hằng đẳng thức cơ bản.
 - **Phát biểu** định nghĩa đại số Boole và các tiên đề (Huntington).
 - **Nhận biết** ví dụ $$P(U)$$ và $$B^n$$ là đại số Boole.
 - **Chứng minh** / kiểm hằng đẳng thức bằng đại số hoặc bảng chân trị.
@@ -68,7 +57,7 @@ Biến nhận giá trị trong $$B$$ gọi là **biến logic** / **biến Boole
 **Khác đại số số học**: $$1 + 1 = 1$$ (không phải 2). Phép $$+$$ là **OR**, không phải cộng số nguyên.
 </div>
 
-### 1.2. Mười hằng đẳng thức “thuộc lòng” trên $$B$$
+### 1.2. Mười hằng đẳng thức cơ bản trên $$B$$
 
 | # | Tên | Dạng điển hình |
 |:---:|:---|:---|
@@ -280,20 +269,20 @@ Ngoài ba phép toán cơ bản AND, OR, NOT, trên $$B = \{0, 1\}$$ chúng ta c
 | 1 | 0 | 1 | 0 | 0 | 0 | 1 |
 | 1 | 1 | 0 | 1 | 1 | 0 | 0 |
 
-<div class="content-box insight-box textbook-block" markdown="1">
-**Tính đầy đủ của NAND và NOR**: Chỉ riêng cổng NAND (hoặc NOR) cũng đủ để biểu diễn mọi hàm Boole. Đây là lý do trong thiết kế mạch số, người chúng ta thường dùng cổng NAND làm cổng cơ sở — chip NAND rẻ hơn, nhanh hơn, và chiếm ít diện tích hơn chip AND.
+<div class="textbook-definition" markdown="1">
+
+**Tính đầy đủ của NAND và NOR.** Chỉ NAND (hoặc chỉ NOR) đủ biểu diễn mọi hàm Boolean. Do đó NAND thường được chọn làm cổng cơ sở trong thư viện mạch số.
+
 </div>
 
-<div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
-<h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Trình xây dựng Bảng Chân trị</h3>
-<p>Sinh viên có thể sử dụng công cụ trực quan dưới đây để tự động tạo bảng chân trị cho bất kỳ biểu thức Boole nào. Nhập biểu thức như <code>(A + B)'</code> hoặc <code>A.B + C</code> và xem kết quả ngay lập tức. <strong>Gợi ý thực hành:</strong> So sánh bảng chân trị của <code>A + B.C</code> và <code>(A+B).(A+C)</code> để kiểm chứng luật phân phối.</p>
+<div class="interactive-demo" markdown="1">
 <div data-demo="boolean-algebra-checker"></div>
 </div>
 <script src="{{ '/public/js/boolean-algebra-checker.js' | relative_url }}"></script>
 
-## Đại số Boole và Logic Mệnh đề
+## Đại số Boole và logic mệnh đề
 
-Đại số Boole có mối liên hệ mật thiết với logic mệnh đề ở Chương 1:
+Đại số Boole liên hệ trực tiếp với logic mệnh đề (Chương 1):
 
 | Logic Mệnh đề | Đại số Boole |
 |:---|:---|
@@ -305,20 +294,19 @@ Ngoài ba phép toán cơ bản AND, OR, NOT, trên $$B = \{0, 1\}$$ chúng ta c
 | Phủ định $$\neg$$ | Phần tử bù $$'$$ |
 | Hằng đúng (Tautology) | Biểu thức bằng 1 |
 
-## Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong khoa học máy tính
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Cần chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+Đại số Boolean xuất hiện ở nhiều lớp của hệ thống tính toán:
 
-Đại số Boole là nền tảng của toàn bộ ngành khoa học máy tính hiện đại. Dưới đây là một số ứng dụng tiêu biểu:
+- **Mạch số và CPU**: phép cộng, so sánh và điều khiển điều kiện được hiện thực bằng mạng cổng.
+- **Truy vấn dữ liệu**: điều kiện `WHERE` trong SQL tổ hợp bằng AND, OR, NOT.
+- **Bitmask và đồ họa**: phép AND/OR/NOT trên bit dùng để che, lọc và kết hợp mặt nạ.
+- **Kiểm soát truy cập**: chính sách ACL (*Access Control List*) được đánh giá như biểu thức Boolean trên thuộc tính chủ thể và đối tượng.
 
-- **Thiết kế vi xử lý**: Mọi lệnh trong CPU đều được thực thi bởi các mạch Boole. Một phép cộng hai số 64-bit đơn giản cần hàng nghìn cổng logic phối hợp.
-- **Truy vấn cơ sở dữ liệu**: Các điều kiện WHERE trong SQL (AND, OR, NOT) là ứng dụng trực tiếp của đại số Boole.
-- **Mạng nơ-ron nhân tạo**: Một perceptron (nơ-ron đơn giản nhất) thực chất là một hàm Boole với đầu vào và trọng số.
-- **Xử lý ảnh và đồ họa**: Phép toán Boole trên bitmask dùng để che, lọc, và kết hợp hình ảnh.
-- **Bảo mật và kiểm soát truy cập**: Các luật ACL (Access Control List) được đánh giá bằng biểu thức Boole.
+<div class="textbook-example" markdown="1">
 
-<div class="content-box example-box textbook-block" markdown="1">
-**Ví dụ** (thực tế): Khi người dùng gõ "cat AND dog NOT fish" vào Google, công cụ tìm kiếm chuyển truy vấn này thành một biểu thức Boole trên hàng tỷ trang web để tìm kết quả phù hợp. Mỗi trang web là một "biến" với giá trị 1 (nếu chứa từ khóa) hoặc 0 (nếu không).
+**Ví dụ.** Truy vấn tìm kiếm dạng “cat AND dog NOT fish” tương ứng một biểu thức Boolean trên tập tài liệu: mỗi tài liệu được gán **1** hoặc **0** theo sự hiện diện của từng từ khóa.
+
 </div>
 
 ## Bài tập
@@ -438,17 +426,17 @@ Người thứ nhất đúng. Bộ {OR, NOT} là một tập đầy đủ vì AN
 
 </details>
 
-## Xem thêm / Video gợi ý
+## Xem thêm
 
 - [Boolean Algebra and Karnaugh Maps](https://www.youtube.com/watch?v=5jZ5n8k0p0Q) — Neso Academy (Gate level + minimization)
 
 ## Tóm tắt
 
-1. **Đại số logic** $$B=\{0,1\}$$: OR, AND, NOT và **mười hằng đẳng thức** (giao hoán … hấp thụ); nhớ $$1+1=1$$.
+1. **Đại số logic** $$B=\{0,1\}$$: OR, AND, NOT và mười hằng đẳng thức cơ bản; lưu ý $$1+1=1$$.
 2. **Đại số Boole** trừu tượng: tiên đề Huntington; ví dụ $$P(U)$$ (tập con) và $$B^n$$.
 3. Chứng minh bằng **đại số** hoặc **bảng chân trị**; **đối ngẫu** nhân đôi số đẳng thức.
 4. Phép dẫn xuất: XOR, kéo theo, tương đương, **NAND/NOR** (đầy đủ chức năng).
-5. Bài 13.2: hàm Boole, minterm / **dạng nối rời chính tắc** (SOP chuẩn).
+5. Mục tiếp theo: hàm Boole, minterm và dạng nối rời chính tắc (SOP chuẩn).
 
 ## Tài liệu Tham khảo
 

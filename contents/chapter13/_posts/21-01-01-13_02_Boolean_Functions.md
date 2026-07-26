@@ -17,16 +17,16 @@ excerpt: "Hàm Boole, minterm (từ tối tiểu), dạng nối rời chính t�
 
 </div>
 
-Ở bài 13.1 chúng ta đã có đại số trên tập $$\{0,1\}$$ với AND, OR, NOT. Bài này chuyển từ *phép toán* sang *hàm*: đối tượng quan tâm không còn là một ký hiệu đơn lẻ, mà là một **ánh xạ** từ chuỗi bit đầu vào sang bit đầu ra.
+Sau đại số trên tập $$\{0,1\}$$ với các phép AND, OR, NOT, đối tượng tiếp theo là **hàm Boolean**: ánh xạ từ một bộ bit đầu vào sang một bit đầu ra.
 
-Lộ trình của bài gồm bốn bước:
+Nội dung chính gồm:
 
-1. Mô tả hàm bằng **bảng chân trị**.
-2. Viết công thức đầy đủ dạng **SOP** (tổng các tích / *Sum of Products*).
-3. Viết công thức đầy đủ dạng **POS** (tích các tổng / *Product of Sums*).
-4. Chuyển qua lại giữa hai dạng — bước trung gian trước khi rút gọn và vẽ mạch.
+1. mô tả hàm bằng **bảng chân trị**;
+2. dạng **SOP** (tổng các tích / *Sum of Products*) chuẩn;
+3. dạng **POS** (tích các tổng / *Product of Sums*) chuẩn;
+4. chuyển đổi giữa hai dạng trước khi tối thiểu hóa và hiện thực mạch.
 
-Điều kiện trong mã nguồn như `if ((x && !y) || z)` chính là một hàm $$F : \{0,1\}^n \to \{0,1\}$$. Khi $$n$$ nhỏ, bảng liệt kê hết hành vi; khi $$n$$ lớn, dạng chuẩn vẫn cho một **công thức đầy đủ** (có thể dài) trước khi tối thiểu hóa.
+Một điều kiện trong chương trình, ví dụ `if ((x && !y) || z)`, chính là một hàm $$F : \{0,1\}^n \to \{0,1\}$$. Với $$n$$ nhỏ, bảng liệt kê đầy đủ hành vi; với $$n$$ lớn, dạng chuẩn vẫn cung cấp một biểu diễn đầy đủ (có thể dài) trước bước rút gọn.
 
 ## Mục tiêu học tập
 
@@ -68,15 +68,11 @@ Với $$n = 2$$ đã có $$16$$ hàm; với $$n = 3$$ có $$256$$ hàm; với $$
 
 ![Bảng chân trị](/discrete-mathematics-for-computer-science-iuh/img/course/truth_table_grid.svg)
 
-<p class="textbook-figure-caption" data-figure="13.7">Bảng chân trị liệt kê đủ $$2^n$$ tổ hợp đầu vào; mỗi cột đầu ra định nghĩa một hàm.</p>
+<p class="textbook-figure-caption" data-figure="13.7">Bảng chân trị.</p>
 
-Bảng chân trị là “hợp đồng” hành vi: mỗi hàng là một gán biến, cột $$F$$ là kết quả. Mọi biểu thức SOP (tổng các tích) hay POS (tích các tổng) chỉ là cách **nén** bảng đó thành công thức.
+### 1.1. Thuật ngữ
 
-### 1.1. Thuật ngữ slide / giáo trình Việt
-
-Trên slide “Đại số Boole” còn dùng các tên sau — **cùng nghĩa** với thuật ngữ quốc tế:
-
-| Thuật ngữ slide | Nghĩa trong bài này |
+| Thuật ngữ | Nghĩa |
 |:---|:---|
 | **Từ đơn** | Litera: $$x_i$$ hoặc $$\bar x_i$$ |
 | **Đơn thức** | Tích các từ đơn (không chứa cả $$x_i$$ và $$\bar x_i$$); **bậc** = số từ đơn khác nhau |
@@ -95,7 +91,7 @@ Trên slide “Đại số Boole” còn dùng các tên sau — **cùng nghĩa*
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ (3 phiếu).** Mỗi phiếu $$x,y,z \in \{0,1\}$$ (1 = tán thành). Hàm $$f$$ = **1** (thông qua) khi **đa số** tán thành — tức **ít nhất hai** phiếu bằng **1**.
+**Ví dụ (3 phiếu).** Mỗi phiếu $$x,y,z \in \{0,1\}$$ (1 = tán thành). Hàm $$f$$ bằng **1** (thông qua) khi **đa số** tán thành — tức **ít nhất hai** phiếu bằng **1**.
 
 | $$x$$ | $$y$$ | $$z$$ | $$f$$ |
 |:---:|:---:|:---:|:---:|
@@ -108,7 +104,7 @@ Trên slide “Đại số Boole” còn dùng các tên sau — **cùng nghĩa*
 | 1 | 1 | 0 | **1** |
 | 1 | 1 | 1 | **1** |
 
-SOP (tổng các tích) chuẩn: $$f = \sum m(3,5,6,7)$$.  
+SOP (tổng các tích) chuẩn: $$f = m_3 + m_5 + m_6 + m_7$$ (các hàng **3, 5, 6, 7**).  
 Sau rút gọn (bài 13.3–13.4): $$f = xy + xz + yz$$ — **mạch bỏ phiếu theo đa số** (majority).
 
 </div>
@@ -142,19 +138,17 @@ $$
 F = m_{k_1} + m_{k_2} + \cdots + m_{k_r}
 $$
 
-là biểu diễn **đầy đủ** của $$F$$ — gọi là **dạng tổng các tích chuẩn** (canonical SOP). Ký hiệu gọn:
-
-$$
-F = \sum m(k_1, \ldots, k_r).
-$$
+là biểu diễn **đầy đủ** của $$F$$ — gọi là **dạng tổng các tích chuẩn** (canonical SOP / dạng nối rời chính tắc). Nói gọn: $$F$$ bằng **1** đúng tại các hàng $$k_1,\ldots,k_r$$, nên $$F$$ là tổng các minterm tương ứng.
 
 <div class="textbook-example" markdown="1">
 
 **Ví dụ.** Hàm $$F(x, y, z)$$ bằng **1** tại các tổ hợp $$001$$, $$010$$, $$100$$, $$111$$ (các hàng còn lại bằng **0**). Các minterm tương ứng là $$x'y'z$$, $$x'yz'$$, $$xy'z'$$, $$xyz$$, nên
 
 $$
-F = x'y'z + x'yz' + xy'z' + xyz = \sum m(1, 2, 4, 7).
+F = x'y'z + x'yz' + xy'z' + xyz
 $$
+
+(các hàng **1, 2, 4, 7**).
 
 </div>
 
@@ -182,7 +176,7 @@ Cách làm thực hành luôn giống nhau: nhìn cột $$F$$, lấy mọi hàng
 - Đơn thức $$\bar y$$ thiếu $$x$$: $$\bar y(x+\bar x) = x\bar y + \bar x\bar y$$.
 - Gộp, bỏ trùng: $$f = xy + x\bar y + \bar x\bar y$$.
 
-Đối chiếu bảng: $$f=1$$ tại $$(0,0),(1,0),(1,1)$$ — đúng $$\sum m(0,2,3)$$.
+Đối chiếu bảng: $$f=1$$ tại $$(0,0),(1,0),(1,1)$$ — đúng các hàng **0, 2, 3**.
 
 </div>
 
@@ -212,15 +206,15 @@ Nhờ vậy maxterm $$M_k$$ bằng **0** đúng tại hàng $$k$$, và bằng **
 Nếu $$F$$ bằng **0** đúng trên các hàng $$\ell_1, \ldots, \ell_s$$ thì
 
 $$
-F = M_{\ell_1} \cdot M_{\ell_2} \cdots M_{\ell_s} = \prod M(\ell_1, \ldots, \ell_s)
+F = M_{\ell_1} \cdot M_{\ell_2} \cdots M_{\ell_s}
 $$
 
 là **dạng tích các tổng chuẩn** (canonical POS).
 
-Với cùng ví dụ $$\sum m(1, 2, 4, 7)$$, các hàng $$F = 0$$ là $$0, 3, 5, 6$$, nên
+Với cùng ví dụ các hàng $$F=1$$ là **1, 2, 4, 7**, các hàng $$F = 0$$ là **0, 3, 5, 6**, nên
 
 $$
-F = \prod M(0, 3, 5, 6) = (x + y + z)(x + y' + z')(x' + y + z')(x' + y' + z).
+F = (x + y + z)(x + y' + z')(x' + y + z')(x' + y' + z).
 $$
 
 Hai dạng **cùng mô tả một hàm**:
@@ -232,11 +226,7 @@ SOP thuận mạch AND–OR; POS thuận mạch OR–AND. Dạng CNF trong logic
 
 ## 4. Chuyển SOP (tổng các tích) ↔ POS (tích các tổng)
 
-**Cách 1 — qua tập chỉ số.** Nếu $$F = \sum m(S)$$ trên không gian $$\{0, 1, \ldots, 2^n - 1\}$$ thì
-
-$$
-F = \prod M\bigl(\{0, \ldots, 2^n - 1\} \setminus S\bigr).
-$$
+**Cách 1 — qua tập hàng.** Nếu biết các hàng $$F=1$$ thì các hàng $$F=0$$ là phần còn lại trong $$\{0,1,\ldots,2^n-1\}$$; POS chuẩn là tích các maxterm tại các hàng $$F=0$$.
 
 **Cách 2 — qua phủ định.** Lập SOP (tổng các tích) của $$F'$$ (các minterm ở hàng $$F = 0$$), rồi áp dụng De Morgan để được POS (tích các tổng) của $$F$$.
 
@@ -262,9 +252,9 @@ Bộ $$\{AND, OR, NOT\}$$ đủ biểu diễn mọi hàm (qua SOP). Riêng NAND 
 
 ## 6. Từ SOP chuẩn đến “công thức đa thức tối tiểu”
 
-SOP (tổng các tích) **chuẩn** luôn đúng nhưng thường **dài**. Mục tiêu các bài 13.3–13.5 là tìm **công thức đa thức tối tiểu**: SOP ngắn hơn (ít hạng, ít litera) nhưng **cùng bảng chân trị**.
+SOP (tổng các tích) **chuẩn** luôn đúng nhưng thường **dài**. Các mục sau hướng tới **công thức đa thức tối tiểu**: SOP ngắn hơn (ít hạng, ít litera) nhưng **cùng bảng chân trị**.
 
-Trên slide, hai công thức $$F$$, $$G$$ được so **“đơn giản hơn”** bằng cách so số hạng và số từ đơn trong từng hạng. $$F$$ là **tối tiểu** nếu không còn $$G$$ thực sự đơn giản hơn $$F$$ (có thể có **nhiều** dạng tối tiểu “đơn giản như nhau” — K-map sẽ cho thấy).
+Hai công thức $$F$$ và $$G$$ được so sánh theo quan hệ **đơn giản hơn** dựa trên số hạng và số từ đơn trong từng hạng. $$F$$ là **tối tiểu** nếu không tồn tại $$G$$ thực sự đơn giản hơn $$F$$; có thể có nhiều dạng tối tiểu tương đương.
 
 Quy trình thực hành:
 
@@ -274,9 +264,9 @@ Quy trình thực hành:
 
 ## 7. Ứng dụng ngắn
 
-Trong lập trình và cơ sở dữ liệu, ta cũng làm việc theo cùng tư duy: viết điều kiện rõ ràng (chuẩn hóa), rồi mới tối ưu. Trình tối ưu SQL biến điều kiện `WHERE` thành cây logic và đẩy các phép AND/OR. Hiểu minterm giúp bạn đọc được vì sao một test case cụ thể bật hay tắt một nhánh `if`.
+Trong lập trình và cơ sở dữ liệu, ta cũng làm việc theo cùng tư duy: viết điều kiện rõ ràng (chuẩn hóa), rồi mới tối ưu. Trình tối ưu SQL biến điều kiện `WHERE` thành cây logic và đẩy các phép AND/OR. Hiểu minterm cho phép liên hệ từng hàng bảng chân trị với hành vi của điều kiện trong chương trình.
 
-Ở các bài 13.3–13.5, cùng ý tưởng “chuẩn hóa rồi rút gọn” sẽ áp dụng cho mạch cổng.
+Ở các bài 13.3–13.5, cùng ý tưởng “chuẩn hóa rồi rút gọn”; sang **13.6** mới gắn với thiết kế mạch.
 
 <div class="interactive-demo" markdown="1">
 Thử dựng SOP (tổng các tích) / POS (tích các tổng) từ bảng chân trị (nếu widget khả dụng).
@@ -288,13 +278,16 @@ Thử dựng SOP (tổng các tích) / POS (tích các tổng) từ bảng chân
 
 ### Bài tập 1
 
-Cho $$F = 1$$ tại $$010, 011, 101, 111$$ (các hàng khác $$0$$). Viết $$\sum m(\ldots)$$ và $$\prod M(\ldots)$$ kèm khai triển.
+Cho $$F = 1$$ tại $$010, 011, 101, 111$$ (các hàng khác $$0$$). Viết SOP chuẩn (tổng minterm) và POS chuẩn (tích maxterm), kèm khai triển.
 
 <details>
 <summary>Đáp án</summary>
 
-$$F = \sum m(2, 3, 5, 7) = x'yz' + x'yz + xy'z + xyz$$.  
-Hàng $$0$$: $$0, 1, 4, 6$$ → $$F = \prod M(0, 1, 4, 6)$$.
+Các hàng $$F=1$$: **2, 3, 5, 7**.  
+$$F = x'yz' + x'yz + xy'z + xyz$$.  
+Các hàng $$F=0$$: **0, 1, 4, 6** →  
+$$F = (x+y+z)(x+y'+z)(x'+y+z)(x'+y'+z)$$  
+(các maxterm tương ứng).
 
 </details>
 
@@ -305,19 +298,20 @@ Hàng $$0$$: $$0, 1, 4, 6$$ → $$F = \prod M(0, 1, 4, 6)$$.
 <details>
 <summary>Đáp án</summary>
 
-$$F = \sum m(3, 5, 6, 7)$$.  
+Các hàng $$F=1$$: **3, 5, 6, 7**.  
 Gom: $$A'BC + AB'C + ABC' + ABC = BC + AC + AB$$ (majority).
 
 </details>
 
 ### Bài tập 3
 
-$$F = \sum m(0, 2, 5, 7)$$. Viết POS (tích các tổng).
+$$F$$ bằng **1** tại các hàng **0, 2, 5, 7**. Viết POS (tích các tổng) chuẩn.
 
 <details>
 <summary>Đáp án</summary>
 
-$$F = \prod M(1, 3, 4, 6)$$.
+Các hàng $$F=0$$: **1, 3, 4, 6**.  
+$$F$$ là tích các maxterm $$M_1, M_3, M_4, M_6$$.
 
 </details>
 
@@ -332,22 +326,22 @@ Bốn hàng chẵn bị cố định **0**; bốn hàng lẻ tự do → $$2^4 =
 
 </details>
 
-## Xem thêm
+### Bài tập 5
 
-- Ôn De Morgan (bài 13.1) trước khi chuyển SOP ↔ POS bằng phủ định.
-- Bài 13.3 — gắn dạng chuẩn với cổng và tối thiểu hóa đại số.
-
-### Bài tập 5 — Khai triển thành SOP chuẩn
-
-Đưa $$f(x,y,z) = \bar x + \bar y z$$ về dạng nối rời chính tắc bằng **Cách B** (bổ sung từ đơn), rồi đối chiếu $$\sum m(\ldots)$$ từ bảng.
+Đưa $$f(x,y,z) = \bar x + \bar y z$$ về dạng nối rời chính tắc bằng **Cách B** (bổ sung từ đơn), rồi đối chiếu với bảng chân trị.
 
 <details>
 <summary>Đáp án</summary>
 
 $$\bar x(y+\bar y)(z+\bar z)$$ khai triển 4 minterm mang $$\bar x$$; cộng $$\bar y z(x+\bar x)$$ → thêm $$x\bar y z$$, $$\bar x\bar y z$$ (một phần trùng).  
-Kết quả: các hàng $$f=1$$ là mọi chỗ $$x=0$$ cộng $$(1,0,1)$$ → $$\sum m(0,1,2,3,5)$$ (kiểm bảng).
+Kết quả: các hàng $$f=1$$ là mọi chỗ $$x=0$$ cộng $$(1,0,1)$$ → các hàng **0, 1, 2, 3, 5** (kiểm bảng).
 
 </details>
+
+## Xem thêm
+
+- Mục 13.1 — De Morgan và hằng đẳng thức.
+- Mục 13.3 — cổng logic và tối thiểu hóa đại số.
 
 ## Tóm tắt
 
@@ -355,4 +349,4 @@ Kết quả: các hàng $$f=1$$ là mọi chỗ $$x=0$$ cộng $$(1,0,1)$$ → $
 2. **Từ tối tiểu** = minterm; **dạng nối rời chính tắc** = SOP (tổng các tích) chuẩn — lập từ bảng hoặc khai triển $$(x_i+\bar x_i)$$.
 3. Maxterm “tắt” đúng một hàng; tích các maxterm nơi $$F = 0$$ cho **POS** (tích các tổng) chuẩn.
 4. Hai dạng tương đương và chuyển được qua phần bù chỉ số.
-5. SOP chuẩn → **công thức đa thức tối tiểu** qua đại số / K-map / QM; majority $$xy+xz+yz$$ là ví dụ điển hình.
+5. SOP chuẩn được rút gọn thành **công thức đa thức tối tiểu** bằng đại số hoặc K-map; majority $$xy+xz+yz$$ là ví dụ điển hình.

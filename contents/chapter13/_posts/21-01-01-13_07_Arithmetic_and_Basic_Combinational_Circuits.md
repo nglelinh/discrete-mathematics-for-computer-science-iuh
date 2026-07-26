@@ -17,17 +17,17 @@ excerpt: "Half/full adder, bộ cộng lan truyền mang n-bit, nhân không d�
 
 </div>
 
-Ở các bài trước, bạn đã biết viết hàm Boole, vẽ cổng và rút gọn biểu thức. Bài này **ghép** những viên gạch đó thành các khối mà máy tính thật sự dùng khi làm số học:
+Các mục trước đã xây dựng hàm Boolean, cổng logic và tối thiểu hóa. Mục này **ghép** các thành phần đó thành các khối số học và tổ hợp cơ bản:
 
-1. **Bộ cộng** — half adder → full adder → bộ cộng $$n$$-bit.
+1. **Bộ cộng** — half adder, full adder, bộ cộng $$n$$-bit.
 2. **Bộ nhân** — partial product và cộng theo cột.
-3. **MUX, decoder, comparator** — các khối “xương sống” chọn nguồn và so sánh.
+3. **MUX, decoder, comparator** — chọn nguồn, giải mã và so sánh.
 
-Mỗi mạch đi theo cùng lộ trình chương 13:
+Mọi khối tuân theo cùng lộ trình:
 
-**bảng chân trị → biểu thức Boole → sơ đồ cổng.**
+**bảng chân trị → biểu thức Boolean → sơ đồ cổng.**
 
-Khi bạn gõ `a + b` hay `a * b` trong Python, máy không “hiểu” số thập phân theo cách con người; nó chạy **mạng cổng** trên bit **0**/**1**. Hiểu half adder → full adder → bộ cộng $$n$$-bit → nhân là cầu nối từ $$x \oplus y$$ trên giấy đến datapath nhiều bit.
+Phép `a + b` hay `a * b` trong ngôn ngữ lập trình được hiện thực bằng **mạng cổng** trên bit **0**/**1**. Chuỗi half adder → full adder → bộ cộng $$n$$-bit → nhân nối biểu thức $$x \oplus y$$ với datapath nhiều bit.
 
 ## Mục tiêu học tập
 
@@ -45,7 +45,7 @@ Khi bạn gõ `a + b` hay `a * b` trong Python, máy không “hiểu” số th
 
 </div>
 
-## 1. Mạch tổ hợp — nhắc nhanh
+## 1. Mạch tổ hợp
 
 <div class="textbook-definition" markdown="1">
 
@@ -53,7 +53,7 @@ Khi bạn gõ `a + b` hay `a * b` trong Python, máy không “hiểu” số th
 
 </div>
 
-Mọi khối trong bài này — cộng, nhân, MUX, decoder, so sánh — đều tổ hợp: cho vector bit vào, sau một khoảng trễ ta có vector bit ra xác định.
+Các khối cộng, nhân, MUX, decoder và so sánh trong mục này đều là mạch tổ hợp: đầu ra chỉ phụ thuộc đầu vào hiện tại (sau độ trễ lan truyền qua cổng).
 
 ![Cổng XOR](/discrete-mathematics-for-computer-science-iuh/img/course/Gate_XOR.svg)
 
@@ -199,7 +199,7 @@ Tổng $$S = (S_{n-1} \ldots S_0)_2$$; $$C_n$$ là carry ra (có thể xem như 
 
 ### 4.2. Mẫu 3-bit: half adder + hai full adder
 
-Khi $$C_0 = 0$$ cố định, cột bit thấp **không cần** full adder: **half adder** đủ (không có mang vào). Hai cột sau dùng **full adder**. Đây là sơ đồ hay gặp trên slide / bài tập:
+Khi $$C_0 = 0$$ cố định, cột bit thấp chỉ cần **half adder** (không có mang vào). Các cột sau dùng **full adder**:
 
 | Cột | Khối | Đầu vào | Đầu ra |
 |:---|:---|:---|:---|
@@ -378,15 +378,15 @@ Ghép theo bit (từ MSB) cho comparator $$n$$-bit — tương tự “ripple”
 - Array multiplier phục vụ **MUL**.
 - Decoder chọn thanh ghi hoặc góp phần giải mã lệnh.
 
-ALU không phải một phép “màu nhiệm” — chỉ là **rừng cổng** được bố trí theo đúng các khối vừa học.
+ALU là mạng cổng được tổ chức từ các khối half/full adder, MUX, comparator và các phép bitwise.
 
-## 7. Liên hệ với tối thiểu hóa (13.3–13.5)
+## 7. Liên hệ với tối thiểu hóa
 
-Half/full adder thường đã ở dạng gọn (XOR + majority). MUX và decoder dạng SOP (tổng các tích) chuẩn map rất tự nhiên xuống LUT FPGA, vì mỗi LUT chính là bảng chân trị (bài 13.6). Nếu bài tập bắt xây chỉ bằng NAND, bạn quay lại De Morgan và K-map/QM — cùng kỹ năng chương 13, chỉ khác tập cổng được phép dùng.
+Half adder và full adder thường đã ở dạng gọn (XOR và majority). MUX và decoder dạng SOP (tổng các tích) chuẩn ánh xạ tự nhiên sang LUT trên FPGA, vì mỗi LUT lưu một bảng chân trị (Mục 13.6). Khi chỉ được dùng NAND, biểu thức chuyển qua De Morgan và các phương pháp rút gọn ở Mục 13.3–13.5.
 
 ## Bài tập
 
-### Bài tập 1 — Half adder
+### Bài tập 1
 
 Lập bảng và viết $$S$$, $$C$$ cho half adder. Hiện thực $$S$$ chỉ bằng AND, OR, NOT (không XOR).
 
@@ -398,7 +398,7 @@ $$S$$: 2 NOT, 2 AND, 1 OR.
 
 </details>
 
-### Bài tập 2 — Full adder bằng tay
+### Bài tập 2
 
 Với $$A = 1$$, $$B = 0$$, $$C_{in} = 1$$, tính $$S$$, $$C_{out}$$ từ công thức và từ bảng.
 
@@ -410,7 +410,7 @@ Tổng số học $$1 + 0 + 1 = 2$$ → $$CS = 10_2$$.
 
 </details>
 
-### Bài tập 3 — Bộ cộng 4-bit
+### Bài tập 3
 
 Cộng $$A = 0110_2$$ (6) và $$B = 0001_2$$ (1) bằng chuỗi FA ($$C_0 = 0$$). Ghi $$S$$ và các carry trung gian.
 
@@ -425,7 +425,7 @@ $$S = 0111_2 = 7$$.
 
 </details>
 
-### Bài tập 4 — Trễ lan truyền mang
+### Bài tập 4
 
 Giả sử mỗi full adder trễ mang $$2\,\mathrm{ns}$$, trễ bit tổng $$3\,\mathrm{ns}$$. Ước lượng thời gian tối thiểu để $$S_{31}$$ ổn định trên bộ cộng 32-bit: mang phải chạy từ bit thấp đến bit cao, rồi mới ra $$S_{31}$$.
 
@@ -436,7 +436,7 @@ Carry qua 31 FA trước FA31: $$31 \times 2 = 62\,\mathrm{ns}$$, rồi sum FA31
 
 </details>
 
-### Bài tập 5 — Nhân 2×2
+### Bài tập 5
 
 Tính partial products và tích của $$A = 10_2$$ (2) và $$B = 11_2$$ (3).
 
@@ -457,7 +457,7 @@ Tích $$6 = 0110_2$$.
 
 </details>
 
-### Bài tập 6 — MUX
+### Bài tập 6
 
 Chứng minh bằng bảng: $$Y = I_0\bar S + I_1 S$$ cho đúng hành vi 2-to-1. Viết $$Y$$ nếu cần chọn giữa $$A \oplus B$$ và $$AB$$ theo $$S$$.
 
@@ -469,7 +469,7 @@ $$Y = (A \oplus B)\bar S + (AB)S$$.
 
 </details>
 
-### Bài tập 7 — Decoder
+### Bài tập 7
 
 Viết minterm cho $$Y_2$$ của decoder 2-to-4. Decoder 3-to-8 có bao nhiêu đầu ra? Bao nhiêu đầu ra = **1** tại một thời điểm (enable luôn bật)?
 
@@ -481,7 +481,7 @@ $$Y_2 = A_1 \bar A_0$$.
 
 </details>
 
-### Bài tập 8 (thách thức) — Phép trừ
+### Bài tập 8
 
 Giải thích cách dùng bộ cộng để tính $$A - B$$ trong bù 2: gợi ý $$A + \bar B + 1$$. $$C_0$$ ban đầu bằng bao nhiêu?
 
@@ -500,10 +500,10 @@ Bù 2 của $$B$$ là $$\bar B + 1$$. Đưa $$\bar B$$ vào ngõ B, đặt $$C_0
 
 ## Tóm tắt
 
-1. **Half adder:** $$S = A \oplus B$$, $$C = AB$$ — không Cin.
-2. **Full adder:** $$S = A \oplus B \oplus C_{in}$$, $$C_{out} = AB + AC_{in} + BC_{in}$$ — khối lặp.
-3. **Bộ cộng $$n$$-bit (ripple-carry):** chuỗi FA; trễ tỉ lệ $$n$$.
-4. **Nhân:** $$n^2$$ AND (partial products) + mạng cộng theo cột.
-5. **MUX / decoder / comparator:** chọn nguồn, one-hot địa chỉ, so sánh — keo dán ALU.
+1. Half adder: $$S = A \oplus B$$, $$C = AB$$ (không mang vào).  
+2. Full adder: $$S = A \oplus B \oplus C_{in}$$, $$C_{out} = AB + AC_{in} + BC_{in}$$.  
+3. Bộ cộng $$n$$-bit kiểu ripple-carry: chuỗi full adder; trễ mang tỉ lệ $$n$$.  
+4. Nhân không dấu: $$n^2$$ AND (partial products) kết hợp mạng cộng theo cột.  
+5. MUX, decoder và comparator thực hiện chọn nguồn, giải mã one-hot và so sánh trong datapath.
 
-Cùng ngôn ngữ Boole của chương 13, bạn vừa xây được **lõi số học tối thiểu** của một máy tính.
+Các khối trên cấu thành lõi số học tổ hợp cơ bản trên nền đại số Boolean.
