@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="AND from NOR">
+  <rect width="560" height="230" fill="#fafbfc"/>
+
+  <text x="280" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">AND chỉ bằng NOR</text>
+  <text x="280" y="50" text-anchor="middle" font-size="12" fill="#5c6370">De Morgan: AB = (A′ + B′)′</text>
+  <text x="40" y="90" font-size="14" font-weight="600" fill="#1a1a2e">A</text>
+  <text x="40" y="160" font-size="14" font-weight="600" fill="#1a1a2e">B</text>
+  <line x1="60" y1="85" x2="100" y2="85" stroke="#004586" stroke-width="2.5"/>
+  <line x1="60" y1="155" x2="100" y2="155" stroke="#004586" stroke-width="2.5"/>
+  
+  <path d="M100,65.05 Q116.416,65.05 125.65,65.05 Q146.17000000000002,65.05 146.17000000000002,85
+           Q146.17000000000002,104.95 125.65,104.95 Q116.416,104.95 100,104.95
+           Q108.208,85 100,65.05 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <circle cx="152.82000000000002" cy="85" r="4.75" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="121.54599999999999" y="90" text-anchor="middle" font-size="10" font-weight="600" fill="#004586">N</text>
+  
+  <path d="M100,135.05 Q116.416,135.05 125.65,135.05 Q146.17000000000002,135.05 146.17000000000002,155
+           Q146.17000000000002,174.95 125.65,174.95 Q116.416,174.95 100,174.95
+           Q108.208,155 100,135.05 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <circle cx="152.82000000000002" cy="155" r="4.75" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="121.54599999999999" y="160" text-anchor="middle" font-size="10" font-weight="600" fill="#004586">N</text>
+  <line x1="185" y1="85" x2="240" y2="100" stroke="#004586" stroke-width="2.5"/>
+  <line x1="185" y1="155" x2="240" y2="140" stroke="#004586" stroke-width="2.5"/>
+  
+  <path d="M240,94.8 Q260.736,94.8 272.4,94.8 Q298.32,94.8 298.32,120
+           Q298.32,145.2 272.4,145.2 Q260.736,145.2 240,145.2
+           Q250.368,120 240,94.8 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <circle cx="306.71999999999997" cy="120" r="6.0" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="267.216" y="125" text-anchor="middle" font-size="12" font-weight="600" fill="#004586">NOR</text>
+  <line x1="335" y1="120" x2="410" y2="120" stroke="#004586" stroke-width="2.5"/>
+  <text x="425" y="125" font-size="15" font-weight="600" fill="#1a1a2e">AB</text>
+  <text x="280" y="200" text-anchor="middle" font-size="13" fill="#1a1a2e">AB = A′ ↓ B′</text>
+</svg>

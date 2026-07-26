@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 180" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="K-map step 1">
+  <rect width="400" height="180" fill="#fafbfc"/>
+
+  <rect x="24" y="36" width="352" height="120" rx="12" fill="#fff" stroke="#004586" stroke-width="2.5"/>
+  <circle cx="64" cy="96" r="22" fill="#004586"/>
+  <text x="64" y="103" text-anchor="middle" font-size="18" font-weight="600" fill="#fff">1</text>
+  <text x="220" y="88" text-anchor="middle" font-size="15" font-weight="600" fill="#1a1a2e">Vẽ K-map</text>
+  <text x="220" y="118" text-anchor="middle" font-size="12" fill="#5c6370">Điền 1 (và X nếu có)</text>
+  <text x="200" y="26" text-anchor="middle" font-size="12" fill="#5c6370">K-map → SOP tối tiểu — bước 1/5</text>
+</svg>

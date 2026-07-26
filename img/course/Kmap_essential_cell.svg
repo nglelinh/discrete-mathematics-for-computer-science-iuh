@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 290" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Essential large cell">
+  <rect width="480" height="290" fill="#fafbfc"/>
+
+  <text x="240" y="26" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">Tế bào lớn cốt yếu</text>
+  <text x="240" y="48" text-anchor="middle" font-size="12" fill="#5c6370">Ô 1 chỉ thuộc một tế bào lớn → bắt buộc chọn</text>
+  <rect x="80" y="70" width="64" height="64" fill="#dbeafe" stroke="#004586" stroke-width="1.5"/>
+  <text x="112.0" y="108.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">1</text>
+  <rect x="144" y="70" width="64" height="64" fill="#dbeafe" stroke="#004586" stroke-width="1.5"/>
+  <text x="176.0" y="108.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">1</text>
+  <rect x="80" y="134" width="64" height="64" fill="#dbeafe" stroke="#004586" stroke-width="1.5"/>
+  <text x="112.0" y="172.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">1</text>
+  <rect x="144" y="134" width="64" height="64" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="176.0" y="172.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">0</text>
+  <rect x="83" y="73" width="122" height="58" fill="none" stroke="#d97706" stroke-width="2.5" rx="8"/>
+  <text x="144" y="62" text-anchor="middle" font-size="12" font-weight="600" fill="#d97706">T₁ (cốt yếu?)</text>
+  <rect x="83" y="73" width="58" height="122" fill="none" stroke="#15803d" stroke-width="2.5" rx="8"/>
+  <text x="30" y="134" font-size="12" font-weight="600" fill="#15803d">T₂</text>
+  <text x="240" y="230" text-anchor="middle" font-size="13" fill="#1a1a2e">Ô dưới-trái chỉ nằm trong T₂ → T₂ cốt yếu</text>
+  <text x="240" y="255" text-anchor="middle" font-size="12" fill="#5c6370">= essential prime implicant (QM)</text>
+</svg>

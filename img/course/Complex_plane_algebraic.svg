@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Complex plane algebraic form">
+  <rect width="720" height="400" fill="#fafbfc"/>
+  <text x="360" y="32" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">Mặt phẳng phức (Argand) — dạng đại số</text>
+  <text x="360" y="52" text-anchor="middle" font-size="13" fill="#5c6370">z = a + bi ↔ điểm (a, b) hoặc vector từ gốc O</text>
+  <defs><marker id="arr-cpa" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1a1a2e"/></marker></defs>
+  <line x1="103.6" y1="230" x2="456.4" y2="230" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#arr-cpa)"/>
+  <line x1="280" y1="406.4" x2="280" y2="53.599999999999994" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#arr-cpa)"/>
+  <text x="464.4" y="235" font-size="14" fill="#1a1a2e">Re</text>
+  <text x="288" y="47.599999999999994" font-size="14" fill="#1a1a2e">Im</text>
+  <text x="266" y="246" font-size="12" fill="#5c6370">O</text>
+  <line x1="154" y1="226" x2="154" y2="234" stroke="#1a1a2e"/>
+  <text x="154" y="248" text-anchor="middle" font-size="11" fill="#5c6370">-3</text>
+  <line x1="276" y1="356" x2="284" y2="356" stroke="#1a1a2e"/>
+  <text x="268" y="360" text-anchor="end" font-size="11" fill="#5c6370">-3</text>
+  <line x1="196" y1="226" x2="196" y2="234" stroke="#1a1a2e"/>
+  <text x="196" y="248" text-anchor="middle" font-size="11" fill="#5c6370">-2</text>
+  <line x1="276" y1="314" x2="284" y2="314" stroke="#1a1a2e"/>
+  <text x="268" y="318" text-anchor="end" font-size="11" fill="#5c6370">-2</text>
+  <line x1="238" y1="226" x2="238" y2="234" stroke="#1a1a2e"/>
+  <text x="238" y="248" text-anchor="middle" font-size="11" fill="#5c6370">-1</text>
+  <line x1="276" y1="272" x2="284" y2="272" stroke="#1a1a2e"/>
+  <text x="268" y="276" text-anchor="end" font-size="11" fill="#5c6370">-1</text>
+  <line x1="322" y1="226" x2="322" y2="234" stroke="#1a1a2e"/>
+  <text x="322" y="248" text-anchor="middle" font-size="11" fill="#5c6370">1</text>
+  <line x1="276" y1="188" x2="284" y2="188" stroke="#1a1a2e"/>
+  <text x="268" y="192" text-anchor="end" font-size="11" fill="#5c6370">1</text>
+  <line x1="364" y1="226" x2="364" y2="234" stroke="#1a1a2e"/>
+  <text x="364" y="248" text-anchor="middle" font-size="11" fill="#5c6370">2</text>
+  <line x1="276" y1="146" x2="284" y2="146" stroke="#1a1a2e"/>
+  <text x="268" y="150" text-anchor="end" font-size="11" fill="#5c6370">2</text>
+  <line x1="406" y1="226" x2="406" y2="234" stroke="#1a1a2e"/>
+  <text x="406" y="248" text-anchor="middle" font-size="11" fill="#5c6370">3</text>
+  <line x1="276" y1="104" x2="284" y2="104" stroke="#1a1a2e"/>
+  <text x="268" y="108" text-anchor="end" font-size="11" fill="#5c6370">3</text>
+  <line x1="448" y1="226" x2="448" y2="234" stroke="#1a1a2e"/>
+  <text x="448" y="248" text-anchor="middle" font-size="11" fill="#5c6370">4</text>
+  <line x1="276" y1="62" x2="284" y2="62" stroke="#1a1a2e"/>
+  <text x="268" y="66" text-anchor="end" font-size="11" fill="#5c6370">4</text>
+  <line x1="406" y1="230" x2="406" y2="146" stroke="#004586" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+  <line x1="280" y1="146" x2="406" y2="146" stroke="#004586" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+  <line x1="280" y1="230" x2="406" y2="146" stroke="#004586" stroke-width="2.5"/>
+  <circle cx="406" cy="146" r="6" fill="#004586"/>
+  <text x="418" y="140" font-size="15" font-weight="600" fill="#004586">z = 3 + 2i</text>
+  <text x="418" y="160" font-size="12" fill="#5c6370">(3, 2)</text>
+  <rect x="520" y="100" width="180" height="150" rx="8" fill="#fff" stroke="#e8eaed" stroke-width="1.5"/>
+  <text x="610" y="128" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a2e">Định nghĩa</text>
+  <text x="535" y="155" font-size="12" fill="#1a1a2e">z = a + bi</text>
+  <text x="535" y="178" font-size="12" fill="#5c6370">a, b ∈ ℝ; i² = −1</text>
+  <text x="535" y="205" font-size="12" fill="#1a1a2e">Re(z) = a</text>
+  <text x="535" y="228" font-size="12" fill="#1a1a2e">Im(z) = b</text>
+  <text x="535" y="252" font-size="12" fill="#5c6370">ℂ ⊃ ℝ (b = 0)</text>
+</svg>

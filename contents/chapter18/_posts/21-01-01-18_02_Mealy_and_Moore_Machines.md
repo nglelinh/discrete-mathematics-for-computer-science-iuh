@@ -21,9 +21,9 @@ excerpt: "Ở mục trước chúng ta đã định nghĩa DFA và các thành p
 ![Thiết kế Mealy](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
 
 <p class="textbook-figure-caption" data-figure="18.8">Thiết kế Mealy machine: xác định trạng thái, chuyển và hàm đầu ra trên từng cạnh.</p>
-![Hiện thực phần cứng](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
+![So sánh Mealy và Moore](/discrete-mathematics-for-computer-science-iuh/img/course/mealy_moore.svg)
 
-<p class="textbook-figure-caption" data-figure="18.9">Mealy/Moore hiện thực bằng thanh ghi trạng thái và logic tổ hợp.</p>
+<p class="textbook-figure-caption" data-figure="18.9">Mealy: đầu ra trên cạnh chuyển; Moore: đầu ra gắn trạng thái — hai kiểu hiện thực FSM tuần tự.</p>
 ![Đồng bộ và xung nhịp](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
 
 <p class="textbook-figure-caption" data-figure="18.10">Máy Moore thường dùng trong thiết kế đồng bộ — đầu ra ổn định trong cả chu kỳ clock.</p>

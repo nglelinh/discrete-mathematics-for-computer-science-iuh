@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Complex plane polar form">
+  <rect width="720" height="400" fill="#fafbfc"/>
+
+  <text x="360" y="32" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">Dạng cực (polar) của số phức</text>
+  <text x="360" y="52" text-anchor="middle" font-size="13" fill="#5c6370">z = ρ (cos θ + i sin θ) = ρ e^{iθ}</text>
+  <defs><marker id="arr-cpp" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1a1a2e"/></marker></defs>
+  <line x1="80" y1="230" x2="460" y2="230" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#arr-cpp)"/>
+  <line x1="260" y1="390" x2="260" y2="50" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#arr-cpp)"/>
+  <text x="468" y="235" font-size="14" fill="#1a1a2e">Re</text>
+  <text x="268" y="42" font-size="14" fill="#1a1a2e">Im</text>
+  <circle cx="260" cy="230" r="140" fill="none" stroke="#e8eaed" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <path d="M 300 230 A 40 40 0 0 0 288.3 201.7" fill="none" stroke="#15803d" stroke-width="2"/>
+  <text x="312" y="212" font-size="15" font-weight="600" fill="#15803d">θ</text>
+  <line x1="260" y1="230" x2="359.0" y2="131.0" stroke="#004586" stroke-width="2.5"/>
+  <circle cx="359.0" cy="131.0" r="6" fill="#004586"/>
+  <text x="369.0" y="123.0" font-size="15" font-weight="600" fill="#004586">z</text>
+  <text x="291.5" y="170.5" font-size="14" font-weight="600" fill="#b42318">ρ = |z|</text>
+  <rect x="480" y="90" width="220" height="200" rx="8" fill="#fff" stroke="#e8eaed" stroke-width="1.5"/>
+  <text x="590" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a2e">Công thức</text>
+  <text x="495" y="148" font-size="13" fill="#1a1a2e">ρ = √(a² + b²)</text>
+  <text x="495" y="175" font-size="13" fill="#1a1a2e">θ = arctan(b/a)  (a &gt; 0)</text>
+  <text x="495" y="210" font-size="13" fill="#1a1a2e">a = ρ cos θ</text>
+  <text x="495" y="235" font-size="13" fill="#1a1a2e">b = ρ sin θ</text>
+  <text x="495" y="268" font-size="12" fill="#004586">z̄ = ρ (cos θ − i sin θ)</text>
+</svg>

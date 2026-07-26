@@ -305,7 +305,7 @@ Cho bảng chân trị sau, hãy tìm biểu thức logic tương ứng:
 | T | T | F | F |
 | T | T | T | T |
 
-Gợi ý: Dùng phương pháp tổng các tích (sum of products) — tìm các hàng có kết quả T và viết hội của các tuyển.
+Gợi ý: Dùng phương pháp **SOP** (tổng các tích / *sum of products*) — tìm các hàng có kết quả T và viết hội của các tuyển.
 
 <details>
 <summary>Đáp án</summary>

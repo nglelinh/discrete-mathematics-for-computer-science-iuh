@@ -1,24 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 310" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Gray code">
-  <rect width="520" height="310" fill="#fafbfc"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 370" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Gray code 3-bit">
+  <rect width="400" height="370" fill="#fafbfc"/>
 
-  <text x="260" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Mã Gray (3-bit)</text>
-  <rect x="100" y="50" width="100" height="28" fill="#004586"/><text x="150" y="69" text-anchor="middle" font-size="12" fill="#fff">Nhị phân</text>
-  <rect x="220" y="50" width="100" height="28" fill="#004586"/><text x="270" y="69" text-anchor="middle" font-size="12" fill="#fff">Gray</text>
-  <rect x="100" y="78" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="150" y="96" text-anchor="middle" font-size="12">000</text>
-  <rect x="220" y="78" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="270" y="96" text-anchor="middle" font-size="12">000</text>
-  <rect x="100" y="104" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="150" y="122" text-anchor="middle" font-size="12">001</text>
-  <rect x="220" y="104" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="270" y="122" text-anchor="middle" font-size="12">001</text>
-  <rect x="100" y="130" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="150" y="148" text-anchor="middle" font-size="12">010</text>
-  <rect x="220" y="130" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="270" y="148" text-anchor="middle" font-size="12">011</text>
-  <rect x="100" y="156" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="150" y="174" text-anchor="middle" font-size="12">011</text>
-  <rect x="220" y="156" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="270" y="174" text-anchor="middle" font-size="12">010</text>
-  <rect x="100" y="182" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="150" y="200" text-anchor="middle" font-size="12">100</text>
-  <rect x="220" y="182" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="270" y="200" text-anchor="middle" font-size="12">110</text>
-  <rect x="100" y="208" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="150" y="226" text-anchor="middle" font-size="12">101</text>
-  <rect x="220" y="208" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="270" y="226" text-anchor="middle" font-size="12">111</text>
-  <rect x="100" y="234" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="150" y="252" text-anchor="middle" font-size="12">110</text>
-  <rect x="220" y="234" width="100" height="26" fill="#fff" stroke="#e8eaed"/><text x="270" y="252" text-anchor="middle" font-size="12">101</text>
-  <rect x="100" y="260" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="150" y="278" text-anchor="middle" font-size="12">111</text>
-  <rect x="220" y="260" width="100" height="26" fill="#fafbfc" stroke="#e8eaed"/><text x="270" y="278" text-anchor="middle" font-size="12">100</text>
-  <text x="260" y="295" text-anchor="middle" font-size="12" fill="#5c6370">Hai giá trị liên tiếp chỉ khác 1 bit</text>
+  <text x="200" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">Mã Gray 3-bit</text>
+  <text x="200" y="50" text-anchor="middle" font-size="12" fill="#5c6370">Hai giá trị liên tiếp chỉ khác 1 bit</text>
+  <rect x="50" y="70" width="120" height="30" fill="#004586"/><text x="110" y="90" text-anchor="middle" font-size="13" fill="#fff" font-weight="600">Nhị phân</text>
+  <rect x="180" y="70" width="120" height="30" fill="#004586"/><text x="240" y="90" text-anchor="middle" font-size="13" fill="#fff" font-weight="600">Gray</text>
+  <rect x="50" y="100" width="120" height="28" fill="#fff" stroke="#e8eaed"/>
+  <text x="110" y="119" text-anchor="middle" font-size="14" fill="#1a1a2e">000</text>
+  <rect x="180" y="100" width="120" height="28" fill="#fff" stroke="#e8eaed"/>
+  <text x="240" y="119" text-anchor="middle" font-size="14" fill="#1a1a2e">000</text>
+  <rect x="50" y="128" width="120" height="28" fill="#fafbfc" stroke="#e8eaed"/>
+  <text x="110" y="147" text-anchor="middle" font-size="14" fill="#1a1a2e">001</text>
+  <rect x="180" y="128" width="120" height="28" fill="#fafbfc" stroke="#e8eaed"/>
+  <text x="240" y="147" text-anchor="middle" font-size="14" fill="#1a1a2e">001</text>
+  <rect x="50" y="156" width="120" height="28" fill="#fff" stroke="#e8eaed"/>
+  <text x="110" y="175" text-anchor="middle" font-size="14" fill="#1a1a2e">010</text>
+  <rect x="180" y="156" width="120" height="28" fill="#fff" stroke="#e8eaed"/>
+  <text x="240" y="175" text-anchor="middle" font-size="14" fill="#1a1a2e">011</text>
+  <rect x="50" y="184" width="120" height="28" fill="#fafbfc" stroke="#e8eaed"/>
+  <text x="110" y="203" text-anchor="middle" font-size="14" fill="#1a1a2e">011</text>
+  <rect x="180" y="184" width="120" height="28" fill="#fafbfc" stroke="#e8eaed"/>
+  <text x="240" y="203" text-anchor="middle" font-size="14" fill="#1a1a2e">010</text>
+  <rect x="50" y="212" width="120" height="28" fill="#fff" stroke="#e8eaed"/>
+  <text x="110" y="231" text-anchor="middle" font-size="14" fill="#1a1a2e">100</text>
+  <rect x="180" y="212" width="120" height="28" fill="#fff" stroke="#e8eaed"/>
+  <text x="240" y="231" text-anchor="middle" font-size="14" fill="#1a1a2e">110</text>
+  <rect x="50" y="240" width="120" height="28" fill="#fafbfc" stroke="#e8eaed"/>
+  <text x="110" y="259" text-anchor="middle" font-size="14" fill="#1a1a2e">101</text>
+  <rect x="180" y="240" width="120" height="28" fill="#fafbfc" stroke="#e8eaed"/>
+  <text x="240" y="259" text-anchor="middle" font-size="14" fill="#1a1a2e">111</text>
+  <rect x="50" y="268" width="120" height="28" fill="#fff" stroke="#e8eaed"/>
+  <text x="110" y="287" text-anchor="middle" font-size="14" fill="#1a1a2e">110</text>
+  <rect x="180" y="268" width="120" height="28" fill="#fff" stroke="#e8eaed"/>
+  <text x="240" y="287" text-anchor="middle" font-size="14" fill="#1a1a2e">101</text>
+  <rect x="50" y="296" width="120" height="28" fill="#fafbfc" stroke="#e8eaed"/>
+  <text x="110" y="315" text-anchor="middle" font-size="14" fill="#1a1a2e">111</text>
+  <rect x="180" y="296" width="120" height="28" fill="#fafbfc" stroke="#e8eaed"/>
+  <text x="240" y="315" text-anchor="middle" font-size="14" fill="#1a1a2e">100</text>
+  <text x="200" y="345" text-anchor="middle" font-size="12" fill="#5c6370">Dùng làm thứ tự hàng/cột K-map</text>
 </svg>

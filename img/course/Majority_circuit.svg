@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Majority circuit">
+  <rect width="720" height="310" fill="#fafbfc"/>
+
+  <text x="360" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Mạch majority 3 biến — F = AB + AC + BC</text>
+  <text x="360" y="50" text-anchor="middle" font-size="12" fill="#5c6370">F = 1 khi ≥ 2 trong 3 ngõ bằng 1 · cũng là Cout của full adder</text>
+
+  <text x="40" y="100" font-size="14" font-weight="600">A</text>
+  <text x="40" y="160" font-size="14" font-weight="600">B</text>
+  <text x="40" y="220" font-size="14" font-weight="600">C</text>
+
+  <!-- vertical buses -->
+  <line x1="70" y1="95" x2="70" y2="220" stroke="#004586" stroke-width="1.5" opacity="0.4"/>
+  <line x1="100" y1="95" x2="100" y2="220" stroke="#004586" stroke-width="1.5" opacity="0.4"/>
+  <line x1="130" y1="95" x2="130" y2="220" stroke="#004586" stroke-width="1.5" opacity="0.4"/>
+
+  <line x1="55" y1="95" x2="180" y2="95" stroke="#004586" stroke-width="2"/>
+  <line x1="55" y1="155" x2="180" y2="155" stroke="#004586" stroke-width="2"/>
+  <line x1="55" y1="215" x2="180" y2="215" stroke="#004586" stroke-width="2"/>
+
+  <!-- AND AB -->
+  <line x1="70" y1="95" x2="200" y2="110" stroke="#004586" stroke-width="1.5"/>
+  <line x1="100" y1="155" x2="200" y2="130" stroke="#004586" stroke-width="1.5"/>
+  
+  <path d="M200,101.0 L223.94,101.0 Q253.2,101.0 253.2,120 Q253.2,139.0 223.94,139.0 L200,139.0 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="222.344" y="125" text-anchor="middle" font-size="10" font-weight="600" fill="#004586">AND</text>
+  <line x1="262" y1="120" x2="360" y2="120" stroke="#004586" stroke-width="2"/>
+  <text x="300" y="110" font-size="11" fill="#5c6370">AB</text>
+
+  <!-- AND AC -->
+  <line x1="70" y1="95" x2="200" y2="155" stroke="#004586" stroke-width="1.5"/>
+  <line x1="130" y1="215" x2="200" y2="175" stroke="#004586" stroke-width="1.5"/>
+  
+  <path d="M200,146.0 L223.94,146.0 Q253.2,146.0 253.2,165 Q253.2,184.0 223.94,184.0 L200,184.0 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="222.344" y="170" text-anchor="middle" font-size="10" font-weight="600" fill="#004586">AND</text>
+  <line x1="262" y1="165" x2="360" y2="165" stroke="#004586" stroke-width="2"/>
+  <text x="300" y="185" font-size="11" fill="#5c6370">AC</text>
+
+  <!-- AND BC -->
+  <line x1="100" y1="155" x2="200" y2="210" stroke="#004586" stroke-width="1.5"/>
+  <line x1="130" y1="215" x2="200" y2="230" stroke="#004586" stroke-width="1.5"/>
+  
+  <path d="M200,201.0 L223.94,201.0 Q253.2,201.0 253.2,220 Q253.2,239.0 223.94,239.0 L200,239.0 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="222.344" y="225" text-anchor="middle" font-size="10" font-weight="600" fill="#004586">AND</text>
+  <line x1="262" y1="220" x2="360" y2="220" stroke="#004586" stroke-width="2"/>
+  <text x="300" y="240" font-size="11" fill="#5c6370">BC</text>
+
+  <!-- OR 3-input as box -->
+  <path d="M360,100 L400,100 Q450,100 450,165 Q450,230 400,230 L360,230 Q380,165 360,100 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="400" y="170" text-anchor="middle" font-size="13" font-weight="600" fill="#004586">OR</text>
+  <line x1="450" y1="165" x2="560" y2="165" stroke="#004586" stroke-width="2"/>
+  <text x="575" y="170" font-size="15" font-weight="600" fill="#1a1a2e">F</text>
+
+  <text x="360" y="280" text-anchor="middle" font-size="12" fill="#5c6370">3 AND 2-ngõ + 1 OR 3-ngõ · không cần NOT nếu dùng biến nguyên</text>
+</svg>

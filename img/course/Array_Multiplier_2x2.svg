@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="2x2 array multiplier">
+  <rect width="720" height="320" fill="#fafbfc"/>
+
+  <text x="360" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Nhân không dấu 2×2 bit (array)</text>
+  <text x="360" y="50" text-anchor="middle" font-size="12" fill="#5c6370">Partial products aᵢbⱼ rồi cộng theo cột</text>
+
+  <text x="80" y="100" font-size="14" fill="#1a1a2e">a₁ a₀</text>
+  <text x="80" y="125" font-size="14" fill="#1a1a2e">×  b₁ b₀</text>
+  <line x1="60" y1="140" x2="200" y2="140" stroke="#1a1a2e" stroke-width="1.5"/>
+  <text x="95" y="165" font-size="13" fill="#5c6370">a₁b₀  a₀b₀</text>
+  <text x="70" y="190" font-size="13" fill="#5c6370">a₁b₁  a₀b₁</text>
+  <line x1="60" y1="205" x2="200" y2="205" stroke="#1a1a2e" stroke-width="1.5"/>
+  <text x="55" y="230" font-size="13" fill="#004586">p₃   p₂   p₁   p₀</text>
+
+  <rect x="280" y="80" width="200" height="50" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="380" y="110" text-anchor="middle" font-size="13" font-weight="600">AND → partial products</text>
+  <rect x="280" y="150" width="200" height="50" rx="6" fill="#dbeafe" stroke="#004586" stroke-width="2"/>
+  <text x="380" y="180" text-anchor="middle" font-size="13" font-weight="600">Half/Full Adder → cộng cột</text>
+  <rect x="280" y="220" width="200" height="50" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+  <text x="380" y="250" text-anchor="middle" font-size="13" font-weight="600">Tích 4 bit p₃p₂p₁p₀</text>
+
+  <text x="360" y="300" text-anchor="middle" font-size="12" fill="#5c6370">p₀=a₀b₀ · p₁=a₁b₀ ⊕ a₀b₁ · … (có carry)</text>
+</svg>

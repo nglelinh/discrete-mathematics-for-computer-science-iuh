@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 190" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Design step 1">
+  <rect width="400" height="190" fill="#fafbfc"/>
+
+  <rect x="30" y="40" width="340" height="120" rx="12" fill="#fff" stroke="#004586" stroke-width="2.5"/>
+  <circle cx="70" cy="100" r="22" fill="#004586"/>
+  <text x="70" y="107" text-anchor="middle" font-size="18" font-weight="600" fill="#fff">1</text>
+  <text x="200" y="90" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">Đặt biến</text>
+  <text x="200" y="120" text-anchor="middle" font-size="13" fill="#5c6370">Ngõ vào / ra · quy ước 0 và 1</text>
+  <text x="200" y="28" text-anchor="middle" font-size="12" fill="#5c6370">Thiết kế mạch tổ hợp — bước 1/5</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="OR from NAND">
+  <rect width="560" height="230" fill="#fafbfc"/>
+
+  <text x="280" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">OR chỉ bằng NAND</text>
+  <text x="280" y="50" text-anchor="middle" font-size="12" fill="#5c6370">De Morgan: A+B = (A′ · B′)′</text>
+  <text x="40" y="90" font-size="14" font-weight="600" fill="#1a1a2e">A</text>
+  <text x="40" y="160" font-size="14" font-weight="600" fill="#1a1a2e">B</text>
+  <line x1="60" y1="85" x2="100" y2="85" stroke="#004586" stroke-width="2.5"/>
+  <line x1="60" y1="155" x2="100" y2="155" stroke="#004586" stroke-width="2.5"/>
+  
+  <path d="M100,66.0 L120.74799999999999,66.0 Q145.448,66.0 145.448,85 Q145.448,104.0 120.74799999999999,104.0 L100,104.0 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <circle cx="152.098" cy="85" r="4.75" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="119.76" y="90" text-anchor="middle" font-size="10" font-weight="600" fill="#004586">N</text>
+  
+  <path d="M100,136.0 L120.74799999999999,136.0 Q145.448,136.0 145.448,155 Q145.448,174.0 120.74799999999999,174.0 L100,174.0 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <circle cx="152.098" cy="155" r="4.75" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="119.76" y="160" text-anchor="middle" font-size="10" font-weight="600" fill="#004586">N</text>
+  <line x1="175" y1="85" x2="230" y2="100" stroke="#004586" stroke-width="2.5"/>
+  <line x1="175" y1="155" x2="230" y2="140" stroke="#004586" stroke-width="2.5"/>
+  
+  <path d="M230,96.0 L256.20799999999997,96.0 Q287.408,96.0 287.408,120 Q287.408,144.0 256.20799999999997,144.0 L230,144.0 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <circle cx="295.808" cy="120" r="6.0" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="254.96" y="125" text-anchor="middle" font-size="12" font-weight="600" fill="#004586">NAND</text>
+  <line x1="320" y1="120" x2="400" y2="120" stroke="#004586" stroke-width="2.5"/>
+  <text x="415" y="125" font-size="15" font-weight="600" fill="#1a1a2e">A+B</text>
+  <text x="280" y="200" text-anchor="middle" font-size="13" fill="#1a1a2e">A+B = A′ | B′</text>
+</svg>

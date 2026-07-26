@@ -75,7 +75,7 @@
     "slug": "chapter13",
     "title_vn": "Đại số Boole",
     "title_en": "Boolean Algebra",
-    "summary": "Chương này xét đại số Boole, hàm Boole, cổng logic, bản đồ Karnaugh, thuật toán Quine–McCluskey và thiết kế mạch tối thiểu."
+    "summary": "Chương này xét đại số Boole, hàm Boole, cổng logic, bản đồ Karnaugh, Quine–McCluskey, mạch cộng/nhân và các khối tổ hợp cơ bản (MUX, decoder) hướng tới ALU."
   },
   "14": {
     "slug": "chapter14",

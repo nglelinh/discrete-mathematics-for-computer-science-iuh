@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Hàm Boole và Các Dạng Chuẩn"
 categories: chapter13
@@ -7,58 +6,128 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã xây dựng các quy tắc nền của đại số Boole và các hằng đẳng thức biến đổi biểu thức. Mục này giới thiệu hàm Boole — ánh xạ từ…"
+excerpt: "Hàm Boole, minterm (từ tối tiểu), dạng nối rời chính tắc / SOP–POS chuẩn, khai triển (xi+xī), majority, và công thức đa thức tối tiểu."
 ---
 
-Ở mục trước chúng ta đã xây dựng các quy tắc nền của đại số Boole và các hằng đẳng thức biến đổi biểu thức. Mục này giới thiệu **hàm Boole** — ánh xạ từ $\{0,1\}^n$ sang $\{0,1\}$ — cùng hai dạng chuẩn tắc quan trọng: tổng các tích (SOP/DNF) và tích các tổng (POS/CNF). Các dạng chuẩn này là công cụ thiết yếu cho thiết kế mạch, kiểm chứng logic và các hệ thống suy luận tự động.
+<div class="textbook-epigraph" markdown="1">
 
-![Hàm Boolean và cổng logic](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
+"A Boolean function is completely determined by its truth table — the algebra only rewrites that table more compactly."
 
-<p class="textbook-figure-caption" data-figure="13.6">Mỗi hàm Boolean $f:\{0,1\}^n\to\{0,1\}$ tương ứng một mạch logic.</p>
-![Bảng chân trị](/discrete-mathematics-for-computer-science-iuh/img/course/truth_table_grid.svg)
+<span class="epigraph-attribution">— Tinh thần thiết kế logic</span>
 
-<p class="textbook-figure-caption" data-figure="13.7">Bảng chân trị liệt kê mọi tổ hợp đầu vào — không gian quyết định $2^n$ dòng.</p>
-![Mạch Half Adder](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
+</div>
 
-<p class="textbook-figure-caption" data-figure="13.8">Half Adder minh họa cách xây hàm Boolean từ bảng chân trị sang mạch.</p>
-![Biểu thức SOP và POS](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
+Ở bài 13.1 chúng ta đã có đại số trên tập $$\{0,1\}$$ với AND, OR, NOT. Bài này chuyển từ *phép toán* sang *hàm*: đối tượng quan tâm không còn là một ký hiệu đơn lẻ, mà là một **ánh xạ** từ chuỗi bit đầu vào sang bit đầu ra.
 
-<p class="textbook-figure-caption" data-figure="13.9">Dạng tổng các tích (SOP) và tích các tổng (POS) — hai cách chuẩn biểu diễn hàm Boole.</p>
-![Biểu đồ Venn AND](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-AND.png)
+Lộ trình của bài gồm bốn bước:
 
-<p class="textbook-figure-caption" data-figure="13.10">Phép AND tương ứng vùng giao trên biểu đồ Venn — trực giác cho hàm Boolean.</p>
+1. Mô tả hàm bằng **bảng chân trị**.
+2. Viết công thức đầy đủ dạng **SOP** (tổng các tích / *Sum of Products*).
+3. Viết công thức đầy đủ dạng **POS** (tích các tổng / *Product of Sums*).
+4. Chuyển qua lại giữa hai dạng — bước trung gian trước khi rút gọn và vẽ mạch.
+
+Điều kiện trong mã nguồn như `if ((x && !y) || z)` chính là một hàm $$F : \{0,1\}^n \to \{0,1\}$$. Khi $$n$$ nhỏ, bảng liệt kê hết hành vi; khi $$n$$ lớn, dạng chuẩn vẫn cho một **công thức đầy đủ** (có thể dài) trước khi tối thiểu hóa.
+
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Định nghĩa** hàm Boole với $$n$$ biến và biểu diễn bằng bảng chân trị.
-- **Viết** hàm Boole dưới dạng tổng các tích chuẩn (SOP) và tích các tổng chuẩn (POS).
-- **Chuyển đổi** giữa các dạng biểu diễn khác nhau của hàm Boole.
-- **Xây dựng** biểu thức Boole từ bảng chân trị.
-- **Tính toán** số lượng hàm Boole với $$n$$ biến.
+- **Định nghĩa** hàm Boole $$n$$ biến và lập bảng chân trị.
+- **Viết** minterm, maxterm và dạng chuẩn SOP (tổng các tích) / POS (tích các tổng) từ bảng.
+- **Chuyển** giữa SOP (tổng các tích) và POS (tích các tổng).
+- **Đếm** số hàm Boole $$n$$ biến và giải thích $$2^{2^n}$$.
+- **Mô hình hóa** yêu cầu đơn giản (ví dụ majority) thành hàm Boole.
 
-**Từ khóa**: Hàm Boole (Boolean function), dạng tổng các tích (SOP - Sum of Products), dạng tích các tổng (POS - Product of Sums), minterm, maxterm, dạng chuẩn tắc (canonical form).
+**Từ khóa**: hàm Boole, minterm, maxterm, SOP (sum of products / tổng các tích), POS (product of sums / tích các tổng), dạng chuẩn tắc (canonical form).
+
 </div>
 
-## Định nghĩa Hàm Boole
-
-### Hàm Boole $$n$$ biến
+## 1. Hàm Boole và bảng chân trị
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Một **hàm Boole** $$n$$ biến là một ánh xạ:
+
+**Định nghĩa.** Một **hàm Boole** $$n$$ biến là ánh xạ
+
+$$
+F : \{0,1\}^n \to \{0,1\}.
+$$
+
+Hai hàm bằng nhau khi và chỉ khi chúng cho cùng giá trị trên mọi bộ $$(x_1, \ldots, x_n) \in \{0,1\}^n$$.
+
 </div>
 
-## Dạng Tổng các Tích Chuẩn (Canonical SOP)
+Miền có đúng $$2^n$$ phần tử; mỗi phần tử gán được hai giá trị đầu ra. Do đó số hàm Boole $$n$$ biến là
 
-### Minterm
+$$
+2^{(2^n)}.
+$$
+
+Với $$n = 2$$ đã có $$16$$ hàm; với $$n = 3$$ có $$256$$ hàm; với $$n = 4$$ con số vượt $$65\,000$$. Ta không liệt kê hết mọi hàm, nhưng **mô tả** từng hàm bằng bảng hoặc công thức thì luôn làm được.
+
+![Bảng chân trị](/discrete-mathematics-for-computer-science-iuh/img/course/truth_table_grid.svg)
+
+<p class="textbook-figure-caption" data-figure="13.7">Bảng chân trị liệt kê đủ $$2^n$$ tổ hợp đầu vào; mỗi cột đầu ra định nghĩa một hàm.</p>
+
+Bảng chân trị là “hợp đồng” hành vi: mỗi hàng là một gán biến, cột $$F$$ là kết quả. Mọi biểu thức SOP (tổng các tích) hay POS (tích các tổng) chỉ là cách **nén** bảng đó thành công thức.
+
+### 1.1. Thuật ngữ slide / giáo trình Việt
+
+Trên slide “Đại số Boole” còn dùng các tên sau — **cùng nghĩa** với thuật ngữ quốc tế:
+
+| Thuật ngữ slide | Nghĩa trong bài này |
+|:---|:---|
+| **Từ đơn** | Litera: $$x_i$$ hoặc $$\bar x_i$$ |
+| **Đơn thức** | Tích các từ đơn (không chứa cả $$x_i$$ và $$\bar x_i$$); **bậc** = số từ đơn khác nhau |
+| **Từ tối tiểu** / **tiểu hạng** | Đơn thức đúng $$n$$ từ đơn = **minterm** |
+| **Công thức đa thức** | Tổng (OR) các đơn thức = **SOP** (tổng các tích), chưa nhất thiết chuẩn |
+| **Dạng nối rời chính tắc** | Tổng các từ tối tiểu = **SOP (tổng các tích) chuẩn** / DNF đầy đủ |
+| **Công thức đa thức tối tiểu** | SOP “đơn giản nhất” theo số hạng và số litera (mục tiêu rút gọn / K-map) |
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ (từ vựng).** Với 3 biến $$x,y,z$$: $$x$$, $$\bar y$$ là từ đơn; $$xy$$, $$yz$$ là đơn thức; $$xy\bar z$$ là từ tối tiểu (minterm); $$E = xy + yz$$ là công thức đa thức; $$F = xyz + \bar x\bar y\bar z$$ là dạng nối rời chính tắc (hai minterm).
+
+</div>
+
+### 1.2. Ví dụ bỏ phiếu (majority)
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ (3 phiếu).** Mỗi phiếu $$x,y,z \in \{0,1\}$$ (1 = tán thành). Hàm $$f$$ = **1** (thông qua) khi **đa số** tán thành — tức **ít nhất hai** phiếu bằng **1**.
+
+| $$x$$ | $$y$$ | $$z$$ | $$f$$ |
+|:---:|:---:|:---:|:---:|
+| 0 | 0 | 0 | 0 |
+| 0 | 0 | 1 | 0 |
+| 0 | 1 | 0 | 0 |
+| 0 | 1 | 1 | **1** |
+| 1 | 0 | 0 | 0 |
+| 1 | 0 | 1 | **1** |
+| 1 | 1 | 0 | **1** |
+| 1 | 1 | 1 | **1** |
+
+SOP (tổng các tích) chuẩn: $$f = \sum m(3,5,6,7)$$.  
+Sau rút gọn (bài 13.3–13.4): $$f = xy + xz + yz$$ — **mạch bỏ phiếu theo đa số** (majority).
+
+</div>
+
+## 2. Minterm (từ tối tiểu) và dạng SOP (tổng các tích) chuẩn
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Một **minterm** (tích chuẩn) của $$n$$ biến là tích (AND) của $$n$$ biến, trong đó mỗi biến xuất hiện đúng một lần, ở dạng nguyên hoặc dạng bù.
+
+**Định nghĩa.** **Minterm** (*từ tối tiểu* / *tiểu hạng*) của $$n$$ biến là tích AND của đúng $$n$$ litera, mỗi biến xuất hiện đúng một lần ở dạng nguyên hoặc bù. Ký hiệu $$m_k$$ gắn với hàng thứ $$k$$ khi đọc tổ hợp biến như số nhị phân.
+
 </div>
 
-Với hai biến $$x, y$$:
+**Quy tắc viết minterm từ một hàng:**
+
+1. Biến mang giá trị **0** → viết dạng **bù** (ví dụ $$x'$$).
+2. Biến mang giá trị **1** → viết dạng **nguyên** (ví dụ $$x$$).
+3. Nhân (AND) tất cả các litera đó.
+
+Với hai biến $$x$$, $$y$$:
 
 | $$x$$ | $$y$$ | Minterm | Ký hiệu |
 |:---:|:---:|:---|:---:|
@@ -67,55 +136,71 @@ Với hai biến $$x, y$$:
 | 1 | 0 | $$xy'$$ | $$m_2$$ |
 | 1 | 1 | $$xy$$ | $$m_3$$ |
 
-**Quy tắc**: Biến được gán 0 thì lấy dạng bù, biến được gán 1 thì lấy dạng nguyên.
+Mỗi minterm $$m_k$$ bằng **1** đúng **một** hàng và bằng **0** ở mọi hàng khác. Hệ quả quan trọng: nếu $$F$$ bằng **1** đúng trên các hàng $$k_1, \ldots, k_r$$ thì
 
-### Xây dựng dạng SOP từ bảng chân trị
+$$
+F = m_{k_1} + m_{k_2} + \cdots + m_{k_r}
+$$
 
-Để viết hàm Boole dưới dạng tổng các tích chuẩn:
+là biểu diễn **đầy đủ** của $$F$$ — gọi là **dạng tổng các tích chuẩn** (canonical SOP). Ký hiệu gọn:
 
-1. Xác định các hàng có đầu ra $$F = 1$$.
-2. Với mỗi hàng đó, viết minterm tương ứng.
-3. Lấy tổng (OR) tất cả các minterm đó.
+$$
+F = \sum m(k_1, \ldots, k_r).
+$$
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Xét hàm $$F(x, y, z)$$ với bảng chân trị:
 
-| $$x$$ | $$y$$ | $$z$$ | $$F$$ |
-|:---:|:---:|:---:|:---:|
-| 0 | 0 | 0 | 0 |
-| 0 | 0 | 1 | 1 |
-| 0 | 1 | 0 | 1 |
-| 0 | 1 | 1 | 0 |
-| 1 | 0 | 0 | 1 |
-| 1 | 0 | 1 | 0 |
-| 1 | 1 | 0 | 0 |
-| 1 | 1 | 1 | 1 |
+**Ví dụ.** Hàm $$F(x, y, z)$$ bằng **1** tại các tổ hợp $$001$$, $$010$$, $$100$$, $$111$$ (các hàng còn lại bằng **0**). Các minterm tương ứng là $$x'y'z$$, $$x'yz'$$, $$xy'z'$$, $$xyz$$, nên
 
-Các hàng $$F = 1$$ ở các tổ hợp: $$001, 010, 100, 111$$
+$$
+F = x'y'z + x'yz' + xy'z' + xyz = \sum m(1, 2, 4, 7).
+$$
 
-<div class="textbook-equation" markdown="1">
-$$F(x, y, z) = x'y'z + x'yz' + xy'z' + xyz$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-Viết gọn: $$F(x, y, z) = m_1 + m_2 + m_4 + m_7 = \sum m(1, 2, 4, 7)$$
 </div>
 
-<div class="content-box example-box textbook-block" markdown="1">
-**Quy ước ký hiệu**:
-- $$\sum m(1, 2, 4, 7)$$: dạng tổng các minterm
-- $$m_1$$ ứng với tổ hợp nhị phân 001
-- Đây là cách viết gọn của dạng SOP chuẩn tắc
+Cách làm thực hành luôn giống nhau: nhìn cột $$F$$, lấy mọi hàng bằng **1**, viết minterm, nối bằng OR. Bảng đã chỉ định hết — không cần “đoán” biểu thức.
+
+![Half adder — SOP](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
+
+<p class="textbook-figure-caption" data-figure="13.9">Bit tổng của half adder là XOR: hai minterm $$A'B + AB'$$ — dạng SOP (tổng các tích) quen thuộc từ bảng cộng 1 bit.</p>
+
+### 2.1. Hai cách lập dạng nối rời chính tắc (SOP chuẩn)
+
+**Cách A — từ bảng chân trị** (phổ biến nhất trên bài tập): các hàng $$F=1$$ → các minterm → OR.
+
+**Cách B — khai triển từ công thức đa thức** (khi đã có biểu thức, chưa chuẩn):
+
+1. Viết $$F$$ thành tổng các đơn thức (phân phối nếu cần).
+2. Với mỗi đơn thức **thiếu** biến $$x_i$$, nhân thêm $$(x_i + \bar x_i)$$ (= **1**).
+3. Khai triển, bỏ hạng trùng → tổng các minterm = **dạng nối rời chính tắc**.
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ (Cách B).** $$f(x,y) = x + \bar y$$.
+
+- Đơn thức $$x$$ thiếu $$y$$: $$x(y+\bar y) = xy + x\bar y$$.
+- Đơn thức $$\bar y$$ thiếu $$x$$: $$\bar y(x+\bar x) = x\bar y + \bar x\bar y$$.
+- Gộp, bỏ trùng: $$f = xy + x\bar y + \bar x\bar y$$.
+
+Đối chiếu bảng: $$f=1$$ tại $$(0,0),(1,0),(1,1)$$ — đúng $$\sum m(0,2,3)$$.
+
 </div>
 
-## Dạng Tích các Tổng Chuẩn (Canonical POS)
-
-### Maxterm
+## 3. Maxterm và dạng POS (tích các tổng) chuẩn
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Một **maxterm** (tổng chuẩn) của $$n$$ biến là tổng (OR) của $$n$$ biến, trong đó mỗi biến xuất hiện đúng một lần, ở dạng nguyên hoặc dạng bù.
+
+**Định nghĩa.** **Maxterm** (tổng chuẩn) của $$n$$ biến là tổng OR của đúng $$n$$ litera, mỗi biến một lần (nguyên hoặc bù). Ký hiệu $$M_k$$.
+
 </div>
 
-Với hai biến $$x, y$$:
+**Quy tắc viết maxterm** — **ngược** minterm:
+
+1. Biến mang giá trị **1** → viết dạng **bù**.
+2. Biến mang giá trị **0** → viết dạng **nguyên**.
+3. Cộng (OR) tất cả các litera đó.
+
+Nhờ vậy maxterm $$M_k$$ bằng **0** đúng tại hàng $$k$$, và bằng **1** ở mọi hàng khác. Với hai biến:
 
 | $$x$$ | $$y$$ | Maxterm | Ký hiệu |
 |:---:|:---:|:---|:---:|
@@ -124,220 +209,150 @@ Với hai biến $$x, y$$:
 | 1 | 0 | $$x' + y$$ | $$M_2$$ |
 | 1 | 1 | $$x' + y'$$ | $$M_3$$ |
 
-**Quy tắc**: Biến được gán 1 thì lấy dạng bù, biến được gán 0 thì lấy dạng nguyên (ngược với minterm).
+Nếu $$F$$ bằng **0** đúng trên các hàng $$\ell_1, \ldots, \ell_s$$ thì
 
-### Xây dựng dạng POS từ bảng chân trị
+$$
+F = M_{\ell_1} \cdot M_{\ell_2} \cdots M_{\ell_s} = \prod M(\ell_1, \ldots, \ell_s)
+$$
 
-Để viết hàm Boole dưới dạng tích các tổng chuẩn:
+là **dạng tích các tổng chuẩn** (canonical POS).
 
-1. Xác định các hàng có đầu ra $$F = 0$$.
-2. Với mỗi hàng đó, viết maxterm tương ứng.
-3. Lấy tích (AND) tất cả các maxterm đó.
+Với cùng ví dụ $$\sum m(1, 2, 4, 7)$$, các hàng $$F = 0$$ là $$0, 3, 5, 6$$, nên
 
-Với cùng hàm $$F$$ ở ví dụ trên, các hàng $$F = 0$$ ở: $$000, 011, 101, 110$$
+$$
+F = \prod M(0, 3, 5, 6) = (x + y + z)(x + y' + z')(x' + y + z')(x' + y' + z).
+$$
 
-<div class="textbook-equation" markdown="1">
-$$F(x, y, z) = (x + y + z)(x + y' + z')(x' + y + z')(x' + y' + z)$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-Viết gọn: $$F(x, y, z) = M_0 \cdot M_3 \cdot M_5 \cdot M_6 = \prod M(0, 3, 5, 6)$$
+Hai dạng **cùng mô tả một hàm**:
 
-<div class="content-box insight-box textbook-block" markdown="1">
-**Mối liên hệ SOP và POS**: Hai dạng này bổ sung cho nhau:
-- SOP: tổng các minterm nơi $$F = 1$$
-- POS: tích các maxterm nơi $$F = 0$$
-- Chúng liên hệ qua luật De Morgan: một dạng là phủ định của dạng kia
+- **SOP** (tổng các tích) “nhìn” các chỗ hàm bằng **1**.
+- **POS** (tích các tổng) “nhìn” các chỗ hàm bằng **0**.
 
-Nếu đã có dạng SOP, hãy lấy các hàng còn lại (nơi $$F = 0$$), viết maxterm, thì thu được dạng POS ngay lập tức.
-</div>
+SOP thuận mạch AND–OR; POS thuận mạch OR–AND. Dạng CNF trong logic mệnh đề (tích các tuyển) cùng họ với POS.
 
-## Chuyển đổi giữa SOP và POS
+## 4. Chuyển SOP (tổng các tích) ↔ POS (tích các tổng)
 
-### Phương pháp 1: Dùng bảng chân trị
+**Cách 1 — qua tập chỉ số.** Nếu $$F = \sum m(S)$$ trên không gian $$\{0, 1, \ldots, 2^n - 1\}$$ thì
 
-Cho dạng SOP $$F = \sum m(1, 2, 4, 7)$$, suy ra dạng POS:
-- Các tổ hợp còn lại là $$\{0, 3, 5, 6\}$$
-- $$F = \prod M(0, 3, 5, 6)$$
+$$
+F = \prod M\bigl(\{0, \ldots, 2^n - 1\} \setminus S\bigr).
+$$
 
-### Phương pháp 2: Dùng De Morgan
+**Cách 2 — qua phủ định.** Lập SOP (tổng các tích) của $$F'$$ (các minterm ở hàng $$F = 0$$), rồi áp dụng De Morgan để được POS (tích các tổng) của $$F$$.
 
-Cho $$F = x'y'z + x'yz' + xy'z' + xyz$$:
+Cả hai cách phải ra cùng kết quả — hữu ích để tự kiểm.
 
-<div class="textbook-equation" markdown="1">
-$$F' = x'y'z' + x'yz + xy'z + xyz'$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-Áp dụng De Morgan: $$F = (F')' = (x'y'z' + x'yz + xy'z + xyz')'$$
+## 5. Vài hàm hai biến quen thuộc
 
-<div class="textbook-equation" markdown="1">
-$$F = (x + y + z)(x + y' + z')(x' + y + z')(x' + y' + z)$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-## Các Hàm Boole Cơ bản với 2 Biến
+Trong $$16$$ hàm hai biến, một số xuất hiện liên tục:
 
-Có 16 hàm Boole 2 biến. Dưới đây là các hàm quan trọng:
+| Hàm | Biểu thức | Tên |
+|:---|:---|:---|
+| Hằng | $$0$$, $$1$$ | — |
+| AND / OR | $$xy$$, $$x + y$$ | hội / tuyển |
+| XOR | $$x \oplus y = x'y + xy'$$ | loại trừ |
+| NAND / NOR | $$(xy)'$$, $$(x + y)'$$ | phủ định AND/OR |
+| XNOR | $$xy + x'y'$$ | tương đương |
 
-| Tên hàm | Biểu thức | Ký hiệu | Ý nghĩa |
-|:---|:---|:---:|:---|
-| Hằng 0 | $$F = 0$$ | 0 | Luôn sai |
-| AND | $$F = xy$$ | $$x \wedge y$$ | Cả hai đúng |
-| OR | $$F = x + y$$ | $$x \vee y$$ | Ít nhất một đúng |
-| XOR | $$F = x'y + xy'$$ | $$x \oplus y$$ | Khác nhau |
-| NAND | $$F = (xy)'$$ | $$x \uparrow y$$| Phủ định AND |
-| NOR | $$F = (x + y)'$$ | $$x \downarrow y$$ | Phủ định OR |
-| XNOR | $$F = xy + x'y'$$ | $$x \odot y$$ | Giống nhau |
-| Hằng 1 | $$F = 1$$ | 1 | Luôn đúng |
-| Bù x | $$F = x'$$ | $$\overline{x}$$ | Phủ định x |
-| Bù y | $$F = y'$$ | $$\overline{y}$$ | Phủ định y |
+Bộ $$\{AND, OR, NOT\}$$ đủ biểu diễn mọi hàm (qua SOP). Riêng NAND cũng đủ, như đã nói ở 13.1.
 
-<div class="content-box info-box textbook-block" markdown="1">
-**Tính đầy đủ của các cổng**: Bất kỳ hàm Boole nào cũng có thể được biểu diễn chỉ bằng ba cổng AND, OR, NOT (từ dạng SOP hoặc POS). Hơn nữa, chỉ riêng cổng NAND (hoặc NOR) cũng đủ để biểu diễn mọi hàm Boole.
-</div>
+![Venn AND](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-AND.png)
 
-## Ứng dụng trong Khoa học Máy tính
+<p class="textbook-figure-caption" data-figure="13.10">Phép AND như giao hai tập — trực giác tập hợp cho tích logic; OR tương ứng hợp.</p>
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Cần chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
+## 6. Từ SOP chuẩn đến “công thức đa thức tối tiểu”
 
-Các dạng chuẩn SOP và POS là nền tảng của **thiết kế mạch số** (digital circuit design). Mọi chip máy tính đều được tổng hợp từ các biểu thức Boole. Phần mềm CAD (Computer-Aided Design) tự động chuyển đổi bảng chân trị thành mạch logic, và các kỹ thuật tối thiểu hóa (mà chúng ta sẽ học ở các bài sau) là trái tim của công cụ đó.
+SOP (tổng các tích) **chuẩn** luôn đúng nhưng thường **dài**. Mục tiêu các bài 13.3–13.5 là tìm **công thức đa thức tối tiểu**: SOP ngắn hơn (ít hạng, ít litera) nhưng **cùng bảng chân trị**.
 
-Một ứng dụng ít ngờ tới: các **cơ sở dữ liệu quan hệ** dùng đại số Boole để tối ưu hóa truy vấn. Khi người lập trình viết `SELECT * FROM employees WHERE (dept = 'IT' AND salary > 50000) OR (dept = 'HR' AND salary > 40000)`, trình tối ưu hóa truy vấn chuyển nó thành một biểu thức Boole, tìm dạng chuẩn tắc, và chọn kế hoạch thực thi nhanh nhất.
+Trên slide, hai công thức $$F$$, $$G$$ được so **“đơn giản hơn”** bằng cách so số hạng và số từ đơn trong từng hạng. $$F$$ là **tối tiểu** nếu không còn $$G$$ thực sự đơn giản hơn $$F$$ (có thể có **nhiều** dạng tối tiểu “đơn giản như nhau” — K-map sẽ cho thấy).
 
-<div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
-<h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Xây dựng Hàm Boole từ Bảng Chân trị</h3>
-<p>Nhập bảng chân trị cho hàm Boole và công cụ sẽ tự động sinh ra dạng SOP và POS chuẩn tắc. Quan sát cách minterm và maxterm được xây dựng. <strong>Gợi ý thực hành:</strong> Tạo hàm majority (đầu ra 1 khi có >= 2 biến đầu vào bằng 1) và xem cả hai dạng chuẩn.</p>
+Quy trình thực hành:
+
+1. Lập SOP (tổng các tích) chuẩn từ bảng (hoặc khai triển).  
+2. Rút gọn: đại số (13.3), **K-map** (13.4), hoặc Quine–McCluskey (13.5).  
+3. Kiểm lại bằng bảng chân trị.
+
+## 7. Ứng dụng ngắn
+
+Trong lập trình và cơ sở dữ liệu, ta cũng làm việc theo cùng tư duy: viết điều kiện rõ ràng (chuẩn hóa), rồi mới tối ưu. Trình tối ưu SQL biến điều kiện `WHERE` thành cây logic và đẩy các phép AND/OR. Hiểu minterm giúp bạn đọc được vì sao một test case cụ thể bật hay tắt một nhánh `if`.
+
+Ở các bài 13.3–13.5, cùng ý tưởng “chuẩn hóa rồi rút gọn” sẽ áp dụng cho mạch cổng.
+
+<div class="interactive-demo" markdown="1">
+Thử dựng SOP (tổng các tích) / POS (tích các tổng) từ bảng chân trị (nếu widget khả dụng).
 <div data-demo="boolean-expression-evaluator"></div>
 </div>
 <script src="{{ '/public/js/boolean-expression-evaluator.js' | relative_url }}"></script>
 
 ## Bài tập
 
-### Bài tập 1: Viết dạng SOP
+### Bài tập 1
 
-Cho bảng chân trị:
-
-| $$x$$ | $$y$$ | $$z$$ | $$F$$ |
-|:---:|:---:|:---:|:---:|
-| 0 | 0 | 0 | 0 |
-| 0 | 0 | 1 | 0 |
-| 0 | 1 | 0 | 1 |
-| 0 | 1 | 1 | 1 |
-| 1 | 0 | 0 | 0 |
-| 1 | 0 | 1 | 1 |
-| 1 | 1 | 0 | 0 |
-| 1 | 1 | 1 | 1 |
-
-a) Viết dạng SOP chuẩn tắc.
-b) Viết dạng POS chuẩn tắc.
+Cho $$F = 1$$ tại $$010, 011, 101, 111$$ (các hàng khác $$0$$). Viết $$\sum m(\ldots)$$ và $$\prod M(\ldots)$$ kèm khai triển.
 
 <details>
 <summary>Đáp án</summary>
 
-a) Các hàng $$F = 1$$: $$010, 011, 101, 111$$
-   $$F = x'yz' + x'yz + xy'z + xyz$$
-   $$F = \sum m(2, 3, 5, 7)$$
-
-b) Các hàng $$F = 0$$: $$000, 001, 100, 110$$
-   $$F = (x + y + z)(x + y + z')(x' + y + z)(x' + y' + z)$$
-   $$F = \prod M(0, 1, 4, 6)$$
+$$F = \sum m(2, 3, 5, 7) = x'yz' + x'yz + xy'z + xyz$$.  
+Hàng $$0$$: $$0, 1, 4, 6$$ → $$F = \prod M(0, 1, 4, 6)$$.
 
 </details>
 
-### Bài tập 2: Xây dựng hàm từ mô tả
+### Bài tập 2
 
-Một phòng họp có 3 cảm biến $$A, B, C$$. Đèn tự động bật khi có ít nhất 2 trong 3 cảm biến kích hoạt.
-
-a) Lập bảng chân trị.
-b) Viết hàm Boole dạng SOP.
-c) Đơn giản hóa biểu thức nếu có thể.
+Đèn bật khi **ít nhất hai** trong ba cảm biến $$A, B, C$$ kích hoạt. Lập bảng, viết SOP (tổng các tích), rút gọn thành $$AB + BC + AC$$.
 
 <details>
 <summary>Đáp án</summary>
 
-a) Bảng chân trị:
-
-| $$A$$ | $$B$$ | $$C$$ | $$F$$ |
-|:---:|:---:|:---:|:---:|
-| 0 | 0 | 0 | 0 |
-| 0 | 0 | 1 | 0 |
-| 0 | 1 | 0 | 0 |
-| 0 | 1 | 1 | 1 |
-| 1 | 0 | 0 | 0 |
-| 1 | 0 | 1 | 1 |
-| 1 | 1 | 0 | 1 |
-| 1 | 1 | 1 | 1 |
-
-b) $$F = A'BC + AB'C + ABC' + ABC = \sum m(3, 5, 6, 7)$$
-
-c) Dùng đại số:
-<div class="textbook-equation" markdown="1">
-$$F = A'BC + AB'C + ABC' + ABC$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$F = BC(A' + A) + AB'C + ABC'$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$F = BC + AB'C + ABC'$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$F = BC + AC(B' + B) + ABC'$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$F = BC + AC + ABC'$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$F = BC + AC + AB$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-Vậy $$F = AB + BC + AC$$
+$$F = \sum m(3, 5, 6, 7)$$.  
+Gom: $$A'BC + AB'C + ABC' + ABC = BC + AC + AB$$ (majority).
 
 </details>
 
-### Bài tập 3: Chuyển đổi SOP sang POS
+### Bài tập 3
 
-Cho hàm $$F(x, y, z) = \sum m(0, 2, 5, 7)$$. Hãy viết dạng POS.
+$$F = \sum m(0, 2, 5, 7)$$. Viết POS (tích các tổng).
 
 <details>
 <summary>Đáp án</summary>
 
-Các minterm có mặt: $$\{0, 2, 5, 7\}$$
-Các minterm vắng mặt: $$\{1, 3, 4, 6\}$$
+$$F = \prod M(1, 3, 4, 6)$$.
 
-Dạng POS: $$F = \prod M(1, 3, 4, 6)$$
-
-<div class="textbook-equation" markdown="1">
-$$F = (x + y + z')(x + y' + z')(x' + y + z)(x' + y' + z)$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
 </details>
 
-### Bài tập 4: Tư duy
+### Bài tập 4
 
-Có bao nhiêu hàm Boole 3 biến mà đầu ra luôn bằng 0 tại các tổ hợp có số bit 1 chẵn? (Gợi ý: các tổ hợp có số bit 1 chẵn là 000, 011, 101, 110)
+Có bao nhiêu hàm 3 biến luôn bằng **0** trên mọi hàng có số bit **1** chẵn?
 
 <details>
 <summary>Đáp án</summary>
 
-Có 8 tổ hợp đầu vào. Trong đó, 4 tổ hợp có số bit 1 chẵn (000, 011, 101, 110) bị buộc phải bằng 0. Còn 4 tổ hợp có số bit 1 lẻ (001, 010, 100, 111) có thể tự do chọn 0 hoặc 1. Vậy có $$2^4 = 16$$ hàm thỏa mãn điều kiện.
+Bốn hàng chẵn bị cố định **0**; bốn hàng lẻ tự do → $$2^4 = 16$$ hàm.
 
-Đây là ví dụ về việc đếm số hàm Boole với ràng buộc — một bài toán xuất hiện trong thiết kế mạch có điều kiện.
 </details>
 
-## Xem thêm / Video gợi ý
+## Xem thêm
 
-- [Injective, Surjective, Bijective](https://www.youtube.com/watch?v=2jZ5n8k0p0Q) — 3Blue1Brown (Visual explanation)
+- Ôn De Morgan (bài 13.1) trước khi chuyển SOP ↔ POS bằng phủ định.
+- Bài 13.3 — gắn dạng chuẩn với cổng và tối thiểu hóa đại số.
+
+### Bài tập 5 — Khai triển thành SOP chuẩn
+
+Đưa $$f(x,y,z) = \bar x + \bar y z$$ về dạng nối rời chính tắc bằng **Cách B** (bổ sung từ đơn), rồi đối chiếu $$\sum m(\ldots)$$ từ bảng.
+
+<details>
+<summary>Đáp án</summary>
+
+$$\bar x(y+\bar y)(z+\bar z)$$ khai triển 4 minterm mang $$\bar x$$; cộng $$\bar y z(x+\bar x)$$ → thêm $$x\bar y z$$, $$\bar x\bar y z$$ (một phần trùng).  
+Kết quả: các hàng $$f=1$$ là mọi chỗ $$x=0$$ cộng $$(1,0,1)$$ → $$\sum m(0,1,2,3,5)$$ (kiểm bảng).
+
+</details>
 
 ## Tóm tắt
 
-- **Hàm Boole** $$F: \{0,1\}^n \to \{0,1\}$$. Có $$2^{2^n}$$ hàm Boole $$n$$ biến.
-- **Dạng SOP chuẩn tắc**: tổng các minterm (tích chuẩn) tại các hàng $$F = 1$$.
-- **Dạng POS chuẩn tắc**: tích các maxterm (tổng chuẩn) tại các hàng $$F = 0$$.
-- **Minterm**: tích của $$n$$ biến (biến = 0 lấy bù, biến = 1 lấy nguyên).
-- **Maxterm**: tổng của $$n$$ biến (biến = 1 lấy bù, biến = 0 lấy nguyên).
-- Hai dạng SOP và POS liên hệ qua bảng chân trị hoặc luật De Morgan.
-
-Trong bài tiếp theo, chúng ta sẽ học về mạng các cổng logic và cách tối thiểu hóa hàm Boole.
+1. Hàm Boole là ánh xạ $$\{0,1\}^n \to \{0,1\}$$; bảng chân trị định nghĩa nó hoàn toàn.
+2. **Từ tối tiểu** = minterm; **dạng nối rời chính tắc** = SOP (tổng các tích) chuẩn — lập từ bảng hoặc khai triển $$(x_i+\bar x_i)$$.
+3. Maxterm “tắt” đúng một hàng; tích các maxterm nơi $$F = 0$$ cho **POS** (tích các tổng) chuẩn.
+4. Hai dạng tương đương và chuyển được qua phần bù chỉ số.
+5. SOP chuẩn → **công thức đa thức tối tiểu** qua đại số / K-map / QM; majority $$xy+xz+yz$$ là ví dụ điển hình.

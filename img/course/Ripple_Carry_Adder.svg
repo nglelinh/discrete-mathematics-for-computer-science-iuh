@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Ripple carry adder 4-bit">
+  <rect width="800" height="320" fill="#fafbfc"/>
+  <text x="400" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Ripple-Carry Adder 4-bit</text>
+  <text x="400" y="50" text-anchor="middle" font-size="12" fill="#5c6370">Carry lan truyền từ bit thấp → bit cao (C0 = 0)</text>
+  <rect x="40" y="100" width="130" height="90" rx="8" fill="#dbeafe" stroke="#004586" stroke-width="2"/>
+  <text x="105" y="140" text-anchor="middle" font-size="13" font-weight="600" fill="#004586">FA0 (LSB)</text>
+  <text x="105" y="165" text-anchor="middle" font-size="12" fill="#1a1a2e">A0, B0</text>
+  <text x="105" y="250" text-anchor="middle" font-size="13" fill="#1a1a2e">S0</text>
+  <line x1="105" y1="190" x2="105" y2="230" stroke="#004586" stroke-width="2"/>
+  <line x1="170" y1="145" x2="200" y2="145" stroke="#d97706" stroke-width="2.5"/>
+  <text x="185" y="135" text-anchor="middle" font-size="11" fill="#d97706">C1</text>
+  <rect x="200" y="100" width="130" height="90" rx="8" fill="#dbeafe" stroke="#004586" stroke-width="2"/>
+  <text x="265" y="140" text-anchor="middle" font-size="13" font-weight="600" fill="#004586">FA1</text>
+  <text x="265" y="165" text-anchor="middle" font-size="12" fill="#1a1a2e">A1, B1</text>
+  <text x="265" y="250" text-anchor="middle" font-size="13" fill="#1a1a2e">S1</text>
+  <line x1="265" y1="190" x2="265" y2="230" stroke="#004586" stroke-width="2"/>
+  <line x1="330" y1="145" x2="360" y2="145" stroke="#d97706" stroke-width="2.5"/>
+  <text x="345" y="135" text-anchor="middle" font-size="11" fill="#d97706">C2</text>
+  <rect x="360" y="100" width="130" height="90" rx="8" fill="#dbeafe" stroke="#004586" stroke-width="2"/>
+  <text x="425" y="140" text-anchor="middle" font-size="13" font-weight="600" fill="#004586">FA2</text>
+  <text x="425" y="165" text-anchor="middle" font-size="12" fill="#1a1a2e">A2, B2</text>
+  <text x="425" y="250" text-anchor="middle" font-size="13" fill="#1a1a2e">S2</text>
+  <line x1="425" y1="190" x2="425" y2="230" stroke="#004586" stroke-width="2"/>
+  <line x1="490" y1="145" x2="520" y2="145" stroke="#d97706" stroke-width="2.5"/>
+  <text x="505" y="135" text-anchor="middle" font-size="11" fill="#d97706">C3</text>
+  <rect x="520" y="100" width="130" height="90" rx="8" fill="#dbeafe" stroke="#004586" stroke-width="2"/>
+  <text x="585" y="140" text-anchor="middle" font-size="13" font-weight="600" fill="#004586">FA3 (MSB)</text>
+  <text x="585" y="165" text-anchor="middle" font-size="12" fill="#1a1a2e">A3, B3</text>
+  <text x="585" y="250" text-anchor="middle" font-size="13" fill="#1a1a2e">S3</text>
+  <line x1="585" y1="190" x2="585" y2="230" stroke="#004586" stroke-width="2"/>
+  <text x="20" y="150" font-size="12" fill="#d97706">C0=0</text>
+  <line x1="10" y1="145" x2="40" y2="145" stroke="#d97706" stroke-width="2"/>
+  <line x1="650" y1="145" x2="700" y2="145" stroke="#d97706" stroke-width="2.5"/>
+  <text x="720" y="150" font-size="13" fill="#d97706">C4</text>
+  <text x="400" y="300" text-anchor="middle" font-size="12" fill="#5c6370">Trễ ≈ 4 × trễ_Cout — “ripple” qua từng full adder</text>
+</svg>

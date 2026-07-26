@@ -32,9 +32,9 @@ Trong chương này chúng ta nghiên cứu máy hữu hạn trạng thái (FSM)
 ![Giới hạn FSM](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_a_Turing_machine.svg)
 
 <p class="textbook-figure-caption" data-figure="18.4">FSM không có bộ nhớ tự do — dẫn đến mô hình mạnh hơn như máy Turing.</p>
-![FSM trong phần cứng](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
+![FSM — sơ đồ chuyển trạng thái](/discrete-mathematics-for-computer-science-iuh/img/course/state_transition.svg)
 
-<p class="textbook-figure-caption" data-figure="18.5">Mạch tuần tự và bộ điều khiển vi xử lý được đặc tả bằng FSM.</p>
+<p class="textbook-figure-caption" data-figure="18.5">FSM đặc tả bằng trạng thái và cung chuyển — dùng cho mạch tuần tự và bộ điều khiển.</p>
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
@@ -176,7 +176,7 @@ Cả hai đều rất hữu ích cho thiết kế mạch số tuần tự.
 - **Khớp mẫu (pattern matching)**: lệnh `grep`, `awk` chuyển biểu thức chính quy thành DFA để quét tệp văn bản hiệu quả.
 - **Giao thức mạng**: máy trạng thái TCP (LISTEN, SYN_SENT, ESTABLISHED, FIN_WAIT, ...) là một FSM.
 - **Bộ điều khiển nhúng**: đèn giao thông, máy giặt, lò vi sóng đều là FSM.
-- **Xử lý ngôn ngữ tự nhiên**: gắn nhãn từ loại (POS tagging) bằng các mô hình trạng thái ẩn (HMM) cũng dựa trên ý tưởng FSM.
+- **Xử lý ngôn ngữ tự nhiên**: gắn nhãn từ loại (POS tagging — *part of speech*) bằng các mô hình trạng thái ẩn (HMM) cũng dựa trên ý tưởng FSM.
 
 ## Tổng kết
 

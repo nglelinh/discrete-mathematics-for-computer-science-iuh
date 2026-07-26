@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 210" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Cổng NAND">
+  <rect width="400" height="210" fill="#fafbfc"/>
+  <text x="200" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">Cổng NAND</text>
+  <text x="200" y="48" text-anchor="middle" font-size="12" fill="#5c6370">NOT sau AND — đầy đủ chức năng</text>
+  <text x="70" y="92" text-anchor="end" font-size="14" font-weight="600" fill="#1a1a2e">A</text>
+  <text x="70" y="138" text-anchor="end" font-size="14" font-weight="600" fill="#1a1a2e">B</text>
+  <line x1="80" y1="92" x2="130" y2="96" stroke="#004586" stroke-width="2.5"/>
+  <line x1="80" y1="128" x2="130" y2="124" stroke="#004586" stroke-width="2.5"/>
+
+  <path d="M130,83.0 L159.484,83.0 Q194.584,83.0 194.584,110 Q194.584,137.0 159.484,137.0 L130,137.0 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <circle cx="204.034" cy="110" r="6.75" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="158.08" y="115" text-anchor="middle" font-size="14" font-weight="600" fill="#004586">NAND</text>
+  <line x1="230" y1="110" x2="280" y2="110" stroke="#004586" stroke-width="2.5"/>
+  <text x="295" y="115" font-size="15" font-weight="600" fill="#1a1a2e">Y</text>
+  <text x="200" y="185" text-anchor="middle" font-size="14" fill="#1a1a2e">Y = (A · B)′</text>
+</svg>

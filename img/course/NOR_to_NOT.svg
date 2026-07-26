@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 210" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="NOT from NOR">
+  <rect width="440" height="210" fill="#fafbfc"/>
+
+  <text x="220" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">NOT chỉ bằng NOR</text>
+  <text x="220" y="50" text-anchor="middle" font-size="12" fill="#5c6370">Hai ngõ vào nối chung</text>
+  <text x="60" y="120" font-size="15" font-weight="600" fill="#1a1a2e">A</text>
+  <line x1="80" y1="115" x2="130" y2="100" stroke="#004586" stroke-width="2.5"/>
+  <line x1="80" y1="115" x2="130" y2="130" stroke="#004586" stroke-width="2.5"/>
+  
+  <path d="M130,88.75 Q151.6,88.75 163.75,88.75 Q190.75,88.75 190.75,115
+           Q190.75,141.25 163.75,141.25 Q151.6,141.25 130,141.25
+           Q140.8,115 130,88.75 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <circle cx="199.5" cy="115" r="6.25" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="158.35" y="120" text-anchor="middle" font-size="12" font-weight="600" fill="#004586">NOR</text>
+  <line x1="230" y1="115" x2="300" y2="115" stroke="#004586" stroke-width="2.5"/>
+  <text x="315" y="120" font-size="15" font-weight="600" fill="#1a1a2e">A′</text>
+  <text x="220" y="185" text-anchor="middle" font-size="14" fill="#1a1a2e">A′ = A ↓ A = (A + A)′</text>
+</svg>

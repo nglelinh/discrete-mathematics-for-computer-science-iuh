@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 270" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Minimal set cover">
+  <rect width="520" height="270" fill="#fafbfc"/>
+
+  <text x="260" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">Phủ tối tiểu của một tập</text>
+  <text x="260" y="50" text-anchor="middle" font-size="12" fill="#5c6370">X = {a,b,c,d} · A={a,b} B={c,d} C={a,d} D={b,c}</text>
+
+  <rect x="40" y="70" width="200" height="100" rx="10" fill="#fff" stroke="#b42318" stroke-width="2"/>
+  <text x="140" y="100" text-anchor="middle" font-size="13" font-weight="600" fill="#b42318">Không tối tiểu</text>
+  <text x="140" y="128" text-anchor="middle" font-size="13" fill="#1a1a2e">{A, B, C, D}</text>
+  <text x="140" y="152" text-anchor="middle" font-size="12" fill="#5c6370">phủ nhưng thừa tập</text>
+
+  <rect x="280" y="70" width="200" height="100" rx="10" fill="#fff" stroke="#15803d" stroke-width="2"/>
+  <text x="380" y="100" text-anchor="middle" font-size="13" font-weight="600" fill="#15803d">Tối tiểu</text>
+  <text x="380" y="128" text-anchor="middle" font-size="13" fill="#1a1a2e">{A, B}  hoặc  {C, D}</text>
+  <text x="380" y="152" text-anchor="middle" font-size="12" fill="#5c6370">bỏ bớt → không còn phủ</text>
+
+  <text x="260" y="210" text-anchor="middle" font-size="13" fill="#1a1a2e">Trên K-map: X = các ô 1 · mỗi Xi = một tế bào lớn</text>
+  <text x="260" y="235" text-anchor="middle" font-size="12" fill="#5c6370">{B, D} không phủ X</text>
+</svg>

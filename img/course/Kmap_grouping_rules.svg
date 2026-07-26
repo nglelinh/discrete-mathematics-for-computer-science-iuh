@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="K-map grouping rules">
+  <rect width="520" height="320" fill="#fafbfc"/>
+  <text x="260" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">Quy tắc khoanh nhóm K-map</text>
+  <circle cx="50" cy="63" r="16" fill="#004586"/>
+  <text x="50" y="68" text-anchor="middle" font-size="14" font-weight="600" fill="#fff">1</text>
+  <text x="80" y="69" font-size="14" fill="#1a1a2e">Chỉ khoanh ô 1 (hoặc X)</text>
+  <circle cx="50" cy="105" r="16" fill="#004586"/>
+  <text x="50" y="110" text-anchor="middle" font-size="14" font-weight="600" fill="#fff">2</text>
+  <text x="80" y="111" font-size="14" fill="#1a1a2e">Cỡ nhóm = 2ᵏ (1, 2, 4, 8…)</text>
+  <circle cx="50" cy="147" r="16" fill="#004586"/>
+  <text x="50" y="152" text-anchor="middle" font-size="14" font-weight="600" fill="#fff">3</text>
+  <text x="80" y="153" font-size="14" fill="#1a1a2e">Ưu tiên nhóm lớn hơn</text>
+  <circle cx="50" cy="189" r="16" fill="#004586"/>
+  <text x="50" y="194" text-anchor="middle" font-size="14" font-weight="600" fill="#fff">4</text>
+  <text x="80" y="195" font-size="14" fill="#1a1a2e">Được chồng nhóm</text>
+  <circle cx="50" cy="231" r="16" fill="#004586"/>
+  <text x="50" y="236" text-anchor="middle" font-size="14" font-weight="600" fill="#fff">5</text>
+  <text x="80" y="237" font-size="14" fill="#1a1a2e">Mọi ô 1 phải phủ ≥ 1 lần</text>
+  <text x="260" y="290" text-anchor="middle" font-size="12" fill="#5c6370">Nhóm 2ᵏ ô loại được k biến → tích ngắn hơn</text>
+</svg>

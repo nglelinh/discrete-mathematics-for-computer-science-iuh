@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="2-to-1 multiplexer">
+  <rect width="600" height="300" fill="#fafbfc"/>
+
+  <text x="300" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Multiplexer 2-to-1</text>
+  <text x="40" y="90" font-size="14" fill="#1a1a2e">I₀</text>
+  <text x="40" y="150" font-size="14" fill="#1a1a2e">I₁</text>
+  <text x="120" y="210" font-size="14" fill="#1a1a2e">S</text>
+  <line x1="70" y1="85" x2="180" y2="100" stroke="#004586" stroke-width="2"/>
+  <line x1="70" y1="145" x2="180" y2="140" stroke="#004586" stroke-width="2"/>
+  <line x1="140" y1="205" x2="220" y2="175" stroke="#d97706" stroke-width="2"/>
+  <path d="M180,70 L300,100 L300,160 L180,190 Z" fill="#fff" stroke="#004586" stroke-width="2.5"/>
+  <text x="230" y="135" text-anchor="middle" font-size="14" font-weight="600" fill="#004586">MUX</text>
+  <line x1="300" y1="130" x2="420" y2="130" stroke="#004586" stroke-width="2"/>
+  <text x="440" y="135" font-size="14" fill="#1a1a2e">Y</text>
+  <text x="300" y="250" text-anchor="middle" font-size="14" fill="#1a1a2e">Y = Ī₀·S̄?  Y = I₀S̄ + I₁S</text>
+  <text x="300" y="275" text-anchor="middle" font-size="12" fill="#5c6370">S=0 chọn I₀ · S=1 chọn I₁ — “if-else phần cứng”</text>
+</svg>

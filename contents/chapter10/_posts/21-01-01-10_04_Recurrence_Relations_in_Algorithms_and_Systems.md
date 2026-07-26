@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Hệ thức Truy hồi trong Thuật toán và Hệ thống"
 categories: chapter10

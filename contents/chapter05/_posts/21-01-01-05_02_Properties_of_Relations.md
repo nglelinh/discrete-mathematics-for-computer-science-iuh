@@ -7,7 +7,7 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã định nghĩa quan hệ, các cách biểu diễn và ứng dụng cơ bản trong cơ sở dữ liệu và đồ thị. Mục này giới thiệu bốn tính chất cơ bản —…"
+excerpt: "Bốn tính chất quan hệ; kiểm phản xạ/đối xứng/phản đối xứng/bắc cầu trên ma trận 0-1 và đồ thị."
 ---
 
 Ở mục trước chúng ta đã định nghĩa quan hệ, các cách biểu diễn và ứng dụng cơ bản trong cơ sở dữ liệu và đồ thị. Mục này giới thiệu bốn tính chất cơ bản — phản xạ, đối xứng, phản đối xứng và bắc cầu — dùng để phân loại và phân tích cấu trúc quan hệ.
@@ -150,6 +150,38 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 ![Ma trận quan hệ và ma trận kề](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
 <p class="textbook-figure-caption" data-figure="5.11">Ma trận 0-1 mã hóa quan hệ — hàng i, cột j bằng 1 khi và chỉ khi (aᵢ, aⱼ) thuộc quan hệ.</p>
+
+## Kiểm tra tính chất trên ma trận quan hệ
+
+Khi $$R$$ là quan hệ trên $$A=\{a_1,\ldots,a_n\}$$ và $$M_R=[m_{ij}]$$ là ma trận $$n\times n$$ với $$m_{ij}=1$$ khi và chỉ khi $$(a_i,a_j)\in R$$, các tính chất đọc thẳng từ $$M_R$$ như sau.
+
+<div class="textbook-definition" markdown="1">
+
+**Tiêu chí ma trận.**
+
+1. **Phản xạ**: $$m_{ii}=1$$ với mọi $$i$$ (đường chéo chính toàn 1).
+2. **Đối xứng**: $$m_{ij}=m_{ji}$$ với mọi $$i,j$$ ($$M_R$$ đối xứng).
+3. **Phản đối xứng** (phản xứng): nếu $$i\neq j$$ thì $$m_{ij}=0$$ hoặc $$m_{ji}=0$$ (không có cặp 1 đối xứng ngoài đường chéo).
+4. **Bắc cầu**: nếu $$m_{ik}=1$$ và $$m_{kj}=1$$ thì $$m_{ij}=1$$ (mọi đường dài 2 đều có cung tắt). Kiểm tra thực tế thường qua lũy thừa Boolean hoặc Warshall ở bài 5.4.
+
+</div>
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ.** Trên $$A=\{1,2,3\}$$ với
+
+$$
+M_R=\begin{pmatrix}1&1&0\\0&1&1\\0&0&1\end{pmatrix}.
+$$
+
+- Đường chéo toàn 1 ⇒ phản xạ.
+- $$m_{12}=1$$ nhưng $$m_{21}=0$$ ⇒ không đối xứng; đồng thời với $$i\neq j$$ không có cặp $$1$$–$$1$$ đối xứng ⇒ phản đối xứng.
+- Có $$(1,2)$$ và $$(2,3)$$ nhưng $$m_{13}=0$$ ⇒ **không** bắc cầu.
+
+</div>
+
+**Lưu ý thực hành.** Phản xạ / đối xứng / phản đối xứng kiểm bằng mắt trên ma trận trong vài giây. Bắc cầu dễ sót khi $$n$$ lớn — đó là lý do thuật toán Warshall xuất hiện ở bài tiếp theo.
+
 ## Ứng dụng kỹ thuật: khóa và phép chiếu
 
 Trong cơ sở dữ liệu, tính chất của quan hệ không chỉ để phân loại mà còn để bảo đảm dữ liệu nhất quán qua thời gian. Một **primary key** phải xác định duy nhất mỗi bộ, nghĩa là không thể để hai hàng khác nhau có cùng khóa.
@@ -207,6 +239,26 @@ So sánh tính chất của quan hệ "≤" và "<" trên ℝ.
 | Bắc cầu | ✅ (a ≤ b và b ≤ c ⇒ a ≤ c) | ✅ (a < b và b < c ⇒ a < c) |
 </details>
 
+### Bài tập 3: Đọc tính chất từ ma trận
+
+Cho quan hệ trên $$A=\{a,b,c\}$$ với
+
+$$
+M_R=\begin{pmatrix}1&1&1\\1&1&0\\0&0&1\end{pmatrix}.
+$$
+
+Xác định phản xạ, đối xứng, phản đối xứng. Có chắc bắc cầu không? Nêu một bộ ba (nếu có) chứng minh không bắc cầu.
+
+<details>
+<summary>Đáp án</summary>
+
+- Phản xạ: ✅ (đường chéo 1).
+- Đối xứng: ❌ ($$m_{13}=1$$ nhưng $$m_{31}=0$$).
+- Phản đối xứng: ❌ (có $$m_{12}=m_{21}=1$$ với $$a\neq b$$).
+- Bắc cầu: ❌ — ví dụ $$(c,a)$$ không có; hoặc $$(a,b)$$ và $$(b,a)$$ ok nhưng kiểm $$(a,c)$$ và $$(c,\cdot)$$: có $$(b,a)$$ và $$(a,c)$$ ⇒ cần $$(b,c)$$, mà $$m_{23}=0$$. Vậy không bắc cầu.
+
+</details>
+
 ## Xem thêm / Video gợi ý
 
 - [Relations and Functions](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — Trefor Bazett (Equivalence relations)
@@ -215,8 +267,9 @@ So sánh tính chất của quan hệ "≤" và "<" trên ℝ.
 
 - **Phản xạ**: mọi phần tử có quan hệ với chính nó. Ma trận: đường chéo toàn 1
 - **Đối xứng**: nếu aR b thì bR a. Ma trận: đối xứng qua đường chéo
-- **Phản đối xứng**: không có hai phần tử khác nhau quan hệ hai chiều
+- **Phản đối xứng**: không có hai phần tử khác nhau quan hệ hai chiều; ma trận: với $$i\neq j$$ thì $$m_{ij}m_{ji}=0$$
 - **Bắc cầu**: quan hệ "bảo toàn" qua chuỗi: aR b và bR c kéo theo aR c
+- **Kiểm ma trận**: phản xạ/đối xứng/phản đối xứng đọc trực tiếp; bắc cầu cần kiểm đường dài 2 (hoặc Warshall)
 - Bốn tính chất này là nền tảng để xây dựng **quan hệ tương đương** (phản xạ + đối xứng + bắc cầu) và **quan hệ thứ tự** (phản xạ + phản đối xứng + bắc cầu)
 
 Trong bài tiếp theo, chúng ta sẽ khám phá chi tiết hai lớp quan hệ đặc biệt này và ứng dụng của chúng.

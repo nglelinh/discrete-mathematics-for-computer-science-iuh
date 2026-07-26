@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="K-map 3-var example">
+  <rect width="480" height="360" fill="#fafbfc"/>
+
+  <text x="240" y="26" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">K-map 3 biến — ví dụ</text>
+  <text x="240" y="48" text-anchor="middle" font-size="12" fill="#5c6370">F = Σ m(0,1,2,5,7)</text>
+  <text x="178" y="62" text-anchor="middle" font-size="11" fill="#5c6370">z=0　　　z=1</text>
+  <text x="112" y="103.0" text-anchor="end" font-size="12" fill="#5c6370">00</text>
+  <rect x="120" y="70" width="58" height="58" fill="#dbeafe" stroke="#004586" stroke-width="1.5"/>
+  <text x="149.0" y="105.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">1</text>
+  <rect x="178" y="70" width="58" height="58" fill="#dbeafe" stroke="#004586" stroke-width="1.5"/>
+  <text x="207.0" y="105.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">1</text>
+  <text x="112" y="161.0" text-anchor="end" font-size="12" fill="#5c6370">01</text>
+  <rect x="120" y="128" width="58" height="58" fill="#dbeafe" stroke="#004586" stroke-width="1.5"/>
+  <text x="149.0" y="163.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">1</text>
+  <rect x="178" y="128" width="58" height="58" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="207.0" y="163.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">0</text>
+  <text x="112" y="219.0" text-anchor="end" font-size="12" fill="#5c6370">11</text>
+  <rect x="120" y="186" width="58" height="58" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="149.0" y="221.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">0</text>
+  <rect x="178" y="186" width="58" height="58" fill="#dbeafe" stroke="#004586" stroke-width="1.5"/>
+  <text x="207.0" y="221.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">1</text>
+  <text x="112" y="277.0" text-anchor="end" font-size="12" fill="#5c6370">10</text>
+  <rect x="120" y="244" width="58" height="58" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="149.0" y="279.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">0</text>
+  <rect x="178" y="244" width="58" height="58" fill="#dbeafe" stroke="#004586" stroke-width="1.5"/>
+  <text x="207.0" y="279.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">1</text>
+  <rect x="123" y="73" width="110" height="52" fill="none" stroke="#d97706" stroke-width="2.5" rx="8"/>
+  <text x="178" y="88" text-anchor="middle" font-size="11" font-weight="600" fill="#d97706">x′y′</text>
+  <rect x="123" y="73" width="52" height="110" fill="none" stroke="#15803d" stroke-width="2.5" rx="8"/>
+  <text x="149.0" y="174" text-anchor="middle" font-size="11" font-weight="600" fill="#15803d">x′z′</text>
+  <rect x="181" y="189" width="52" height="110" fill="none" stroke="#004586" stroke-width="2.5" rx="8"/>
+  <text x="207.0" y="290" text-anchor="middle" font-size="11" font-weight="600" fill="#004586">xz</text>
+  <text x="240" y="330" text-anchor="middle" font-size="13" fill="#1a1a2e">Một cover: F = x′y′ + x′z′ + xz</text>
+</svg>

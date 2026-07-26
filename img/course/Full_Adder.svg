@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Full adder block">
+  <rect width="720" height="310" fill="#fafbfc"/>
+
+  <text x="360" y="28" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Mạch Full Adder (khối chức năng)</text>
+  <text x="40" y="90" font-size="14" fill="#1a1a2e">A</text>
+  <text x="40" y="130" font-size="14" fill="#1a1a2e">B</text>
+  <text x="40" y="170" font-size="14" fill="#1a1a2e">Cin</text>
+  <line x1="70" y1="85" x2="200" y2="100" stroke="#004586" stroke-width="2"/>
+  <line x1="70" y1="125" x2="200" y2="140" stroke="#004586" stroke-width="2"/>
+  <line x1="70" y1="165" x2="200" y2="180" stroke="#004586" stroke-width="2"/>
+  <rect x="200" y="80" width="160" height="120" rx="10" fill="#fff" stroke="#004586" stroke-width="2.5"/>
+  <text x="280" y="130" text-anchor="middle" font-size="16" font-weight="600" fill="#004586">Full Adder</text>
+  <text x="280" y="155" text-anchor="middle" font-size="12" fill="#5c6370">1 bit + 1 bit + Cin</text>
+  <line x1="360" y1="110" x2="480" y2="110" stroke="#004586" stroke-width="2"/>
+  <line x1="360" y1="170" x2="480" y2="170" stroke="#d97706" stroke-width="2"/>
+  <text x="500" y="115" font-size="14" fill="#1a1a2e">S (sum)</text>
+  <text x="500" y="175" font-size="14" fill="#d97706">Cout</text>
+  <text x="360" y="240" text-anchor="middle" font-size="13" fill="#1a1a2e">S = A ⊕ B ⊕ Cin</text>
+  <text x="360" y="262" text-anchor="middle" font-size="13" fill="#1a1a2e">Cout = majority(A,B,Cin) = AB + A Cin + B Cin</text>
+  <text x="360" y="290" text-anchor="middle" font-size="12" fill="#5c6370">Hai half-adder + OR · khối xây dựng bộ cộng n-bit</text>
+</svg>

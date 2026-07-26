@@ -238,6 +238,23 @@
   text-align: center;
 }
 
+/* Center every lesson image: markdown ![alt](url) → <p><img>, <figure>, raw <img> */
+.textbook-lesson img,
+.textbook-chapter-page img,
+.textbook-home-page img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  border-radius: 0;
+}
+
+.textbook-lesson p:has(> img),
+.textbook-chapter-page p:has(> img),
+.textbook-home-page p:has(> img) {
+  text-align: center;
+}
+
 .textbook-lesson figure img,
 .textbook-lesson .image img {
   margin: 0 auto;
@@ -317,27 +334,38 @@
 
 /* ── Tables ─────────────────────────────────────────────────────── */
 
-.textbook-lesson table {
+/* Center all course tables as a block (same layout rule as figures) */
+.textbook-lesson table,
+.textbook-chapter-page table,
+.textbook-home-page table,
+.textbook-home-body table {
   font-family: var(--tb-sans);
   font-size: 0.92rem;
   border-collapse: collapse;
-  margin: 1.25rem 0;
-  width: 100%;
+  margin: 1.25rem auto;
+  width: auto;
+  max-width: 100%;
   box-shadow: none;
   border-radius: 0;
 }
 
-.textbook-lesson table th {
+.textbook-lesson table th,
+.textbook-chapter-page table th,
+.textbook-home-page table th {
   background: var(--tb-bg-subtle);
   color: var(--tb-text);
   font-weight: 600;
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--tb-border);
+  text-align: center;
 }
 
-.textbook-lesson table td {
+.textbook-lesson table td,
+.textbook-chapter-page table td,
+.textbook-home-page table td {
   padding: 0.45rem 0.75rem;
   border: 1px solid var(--tb-border);
+  text-align: center;
 }
 
 .textbook-lesson table tr:nth-child(even) {
@@ -768,27 +796,20 @@
   margin-bottom: 0;
 }
 
-.textbook-home-body table {
-  font-family: var(--tb-sans);
-  font-size: 0.92rem;
-  border-collapse: collapse;
-  margin: 1.25rem 0;
-  width: 100%;
-}
-
 .textbook-home-body table th {
   background: var(--tb-bg-subtle);
   color: var(--tb-text);
   font-weight: 600;
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--tb-border);
-  text-align: left;
+  text-align: center;
 }
 
 .textbook-home-body table td {
   padding: 0.45rem 0.75rem;
   border: 1px solid var(--tb-border);
   vertical-align: top;
+  text-align: center;
 }
 
 .textbook-home-body ul,

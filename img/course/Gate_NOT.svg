@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 210" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Cổng NOT (inverter)">
+  <rect width="400" height="210" fill="#fafbfc"/>
+  <text x="200" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">Cổng NOT (inverter)</text>
+  <text x="200" y="48" text-anchor="middle" font-size="12" fill="#5c6370">Đảo bit</text>
+  <text x="70" y="115" text-anchor="end" font-size="15" font-weight="600" fill="#1a1a2e">A</text>
+  <line x1="80" y1="110" x2="120" y2="110" stroke="#004586" stroke-width="2.5"/>
+
+  <path d="M120,79.2 L163.12,110 L120,140.8 Z" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <circle cx="171.52" cy="110" r="7.0" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <line x1="185" y1="110" x2="250" y2="110" stroke="#004586" stroke-width="2.5"/>
+  <text x="265" y="115" font-size="15" font-weight="600" fill="#1a1a2e">Y</text>
+  <text x="200" y="185" text-anchor="middle" font-size="14" fill="#1a1a2e">Y = A′</text>
+</svg>

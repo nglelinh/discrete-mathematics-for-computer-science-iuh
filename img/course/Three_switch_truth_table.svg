@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 370" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Three switch truth table">
+  <rect width="360" height="370" fill="#fafbfc"/>
+  <text x="180" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">Bảng chân trị — 3 công tắc</text>
+  <text x="180" y="50" text-anchor="middle" font-size="12" fill="#5c6370">Y = 1 khi cả ba hở, hoặc A=B=1 và C hở</text>
+  <rect x="40" y="70" width="280" height="32" fill="#004586"/>
+  <text x="80" y="92" text-anchor="middle" font-size="14" fill="#fff" font-weight="600">A</text>
+  <text x="150" y="92" text-anchor="middle" font-size="14" fill="#fff" font-weight="600">B</text>
+  <text x="220" y="92" text-anchor="middle" font-size="14" fill="#fff" font-weight="600">C</text>
+  <text x="290" y="92" text-anchor="middle" font-size="14" fill="#fff" font-weight="600">Y</text>
+  <rect x="40" y="102" width="280" height="28" fill="#dbeafe" stroke="#e8eaed"/>
+  <text x="80" y="121" text-anchor="middle" font-size="14" fill="#1a1a2e">0</text>
+  <text x="150" y="121" text-anchor="middle" font-size="14" fill="#1a1a2e">0</text>
+  <text x="220" y="121" text-anchor="middle" font-size="14" fill="#1a1a2e">0</text>
+  <text x="290" y="121" text-anchor="middle" font-size="14" font-weight="600" fill="#004586">1</text>
+  <rect x="40" y="130" width="280" height="28" fill="#fafbfc" stroke="#e8eaed"/>
+  <text x="80" y="149" text-anchor="middle" font-size="14" fill="#1a1a2e">0</text>
+  <text x="150" y="149" text-anchor="middle" font-size="14" fill="#1a1a2e">0</text>
+  <text x="220" y="149" text-anchor="middle" font-size="14" fill="#1a1a2e">1</text>
+  <text x="290" y="149" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a2e">0</text>
+  <rect x="40" y="158" width="280" height="28" fill="#fff" stroke="#e8eaed"/>
+  <text x="80" y="177" text-anchor="middle" font-size="14" fill="#1a1a2e">0</text>
+  <text x="150" y="177" text-anchor="middle" font-size="14" fill="#1a1a2e">1</text>
+  <text x="220" y="177" text-anchor="middle" font-size="14" fill="#1a1a2e">0</text>
+  <text x="290" y="177" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a2e">0</text>
+  <rect x="40" y="186" width="280" height="28" fill="#fafbfc" stroke="#e8eaed"/>
+  <text x="80" y="205" text-anchor="middle" font-size="14" fill="#1a1a2e">0</text>
+  <text x="150" y="205" text-anchor="middle" font-size="14" fill="#1a1a2e">1</text>
+  <text x="220" y="205" text-anchor="middle" font-size="14" fill="#1a1a2e">1</text>
+  <text x="290" y="205" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a2e">0</text>
+  <rect x="40" y="214" width="280" height="28" fill="#fff" stroke="#e8eaed"/>
+  <text x="80" y="233" text-anchor="middle" font-size="14" fill="#1a1a2e">1</text>
+  <text x="150" y="233" text-anchor="middle" font-size="14" fill="#1a1a2e">0</text>
+  <text x="220" y="233" text-anchor="middle" font-size="14" fill="#1a1a2e">0</text>
+  <text x="290" y="233" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a2e">0</text>
+  <rect x="40" y="242" width="280" height="28" fill="#fafbfc" stroke="#e8eaed"/>
+  <text x="80" y="261" text-anchor="middle" font-size="14" fill="#1a1a2e">1</text>
+  <text x="150" y="261" text-anchor="middle" font-size="14" fill="#1a1a2e">0</text>
+  <text x="220" y="261" text-anchor="middle" font-size="14" fill="#1a1a2e">1</text>
+  <text x="290" y="261" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a2e">0</text>
+  <rect x="40" y="270" width="280" height="28" fill="#dbeafe" stroke="#e8eaed"/>
+  <text x="80" y="289" text-anchor="middle" font-size="14" fill="#1a1a2e">1</text>
+  <text x="150" y="289" text-anchor="middle" font-size="14" fill="#1a1a2e">1</text>
+  <text x="220" y="289" text-anchor="middle" font-size="14" fill="#1a1a2e">0</text>
+  <text x="290" y="289" text-anchor="middle" font-size="14" font-weight="600" fill="#004586">1</text>
+  <rect x="40" y="298" width="280" height="28" fill="#fafbfc" stroke="#e8eaed"/>
+  <text x="80" y="317" text-anchor="middle" font-size="14" fill="#1a1a2e">1</text>
+  <text x="150" y="317" text-anchor="middle" font-size="14" fill="#1a1a2e">1</text>
+  <text x="220" y="317" text-anchor="middle" font-size="14" fill="#1a1a2e">1</text>
+  <text x="290" y="317" text-anchor="middle" font-size="14" font-weight="600" fill="#1a1a2e">0</text>
+  <text x="180" y="345" text-anchor="middle" font-size="12" fill="#5c6370">Hai dòng Y=1 → SOP: ĀB̄C̄ + ABC̄</text>
+</svg>

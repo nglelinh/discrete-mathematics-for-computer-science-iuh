@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Đại số Boole"
 categories: chapter13
@@ -7,7 +6,7 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
-excerpt: "Trong chương này chúng ta nghiên cứu đại số Boole — nền tảng toán học của logic số, thiết kế mạch và tối ưu biểu thức điều kiện. Mỗi lần CPU đánh giá một điều…"
+excerpt: "Đại số logic trên {0,1}, tiên đề Huntington, hằng đẳng thức, đối ngẫu, phép dẫn xuất (XOR, NAND, NOR), và ví dụ đại số Boole (P(U), B^n)."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -41,83 +40,116 @@ Trong chương này chúng ta nghiên cứu đại số Boole — nền tảng t
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Phát biểu** định nghĩa đại số Boole và các tiên đề cơ bản.
-- **Nhận biết** các hằng đẳng thức quan trọng và áp dụng chúng.
-- **Chứng minh** các định lý đại số Boole bằng phương pháp đại số.
-- **Giải thích** mối quan hệ giữa đại số Boole và logic mệnh đề.
-- **Áp dụng** nguyên lý đối ngẫu (duality principle) để sinh ra các hằng đẳng thức mới.
+- **Làm việc** trên đại số logic $$B=\{0,1\}$$ với OR, AND, NOT và thuộc **mười hằng đẳng thức** cơ bản.
+- **Phát biểu** định nghĩa đại số Boole và các tiên đề (Huntington).
+- **Nhận biết** ví dụ $$P(U)$$ và $$B^n$$ là đại số Boole.
+- **Chứng minh** / kiểm hằng đẳng thức bằng đại số hoặc bảng chân trị.
+- **Áp dụng** nguyên lý đối ngẫu; dùng XOR, kéo theo, XNOR, NAND, NOR.
+- **Giải thích** mối quan hệ với logic mệnh đề (Chương 1).
 
-**Từ khóa**: Đại số Boole (Boolean algebra), phần tử bù (complement), phép cộng logic (OR), phép nhân logic (AND), nguyên lý đối ngẫu (duality principle).
+**Từ khóa**: đại số logic $$B$$, đại số Boole, hằng đẳng thức, phần tử bù, đối ngẫu, XOR, NAND, NOR.
 </div>
 
-## Định nghĩa Đại số Boole
+## 1. Đại số logic $$B = \{0,1\}$$
 
-### Khái niệm Trực quan
+Trước khi định nghĩa “đại số Boole” trừu tượng, ta làm việc trên **đại số logic** $$B = \{0,1\}$$ — hai giá trị **sai / đúng** (hoặc **tắt / bật**).
 
-Đại số Boole làm việc trên một tập hợp gồm **hai phần tử**: 0 (sai, false) và 1 (đúng, true), cùng với ba phép toán cơ bản:
+### 1.1. Ba phép cơ bản
 
-- **Phép cộng logic (OR)**: ký hiệu $$+$$ hoặc $$\vee$$
-  - $$0 + 0 = 0$$
-  - $$0 + 1 = 1$$
-  - $$1 + 0 = 1$$
-  - $$1 + 1 = 1$$
+| Phép | Ký hiệu thường dùng | Bảng tóm tắt |
+|:---|:---|:---|
+| **Tổng Boole** (OR) | $$x + y$$, $$x \lor y$$ | $$0+0=0$$; ra **1** nếu có ngõ **1** |
+| **Tích Boole** (AND) | $$xy$$, $$x \land y$$ | $$1\cdot1=1$$; ra **0** nếu có ngõ **0** |
+| **Bù** (NOT) | $$x'$$, $$\bar x$$, $$\lnot x$$ | $$\bar 0=1$$, $$\bar 1=0$$ |
 
-- **Phép nhân logic (AND)**: ký hiệu $$\cdot$$ hoặc $$\wedge$$
-  - $$0 \cdot 0 = 0$$
-  - $$0 \cdot 1 = 0$$
-  - $$1 \cdot 0 = 0$$
-  - $$1 \cdot 1 = 1$$
-
-- **Phép bù (NOT)**: ký hiệu $$x'$$ hoặc $$\overline{x}$$
-  - $$0' = 1$$
-  - $$1' = 0$$
+Biến nhận giá trị trong $$B$$ gọi là **biến logic** / **biến Boole**.
 
 <div class="content-box insight-box textbook-block" markdown="1">
-**Điểm khác biệt so với đại số thông thường**: Trong đại số Boole, $$1 + 1 = 1$$ (trong đại số thường, $$1 + 1 = 2$$). Đây là hệ quả của việc các phép toán làm việc trên giá trị logic, không phải số học — lỗi thường gặp khi áp dụng quen thuộc của đại số số học.
+**Khác đại số số học**: $$1 + 1 = 1$$ (không phải 2). Phép $$+$$ là **OR**, không phải cộng số nguyên.
 </div>
 
-### Định nghĩa Hình thức
+### 1.2. Mười hằng đẳng thức “thuộc lòng” trên $$B$$
+
+| # | Tên | Dạng điển hình |
+|:---:|:---|:---|
+| 1 | **Giao hoán** | $$x+y=y+x$$, $$xy=yx$$ |
+| 2 | **Kết hợp** | $$(x+y)+z=x+(y+z)$$, $$(xy)z=x(yz)$$ |
+| 3 | **Phân phối** | $$x(y+z)=xy+xz$$ **và** $$x+(yz)=(x+y)(x+z)$$ |
+| 4 | **Bù kép** | $$(x')'=x$$ |
+| 5 | **De Morgan** | $$(x+y)'=x'y'$$, $$(xy)'=x'+y'$$ |
+| 6 | **Lũy đẳng** | $$x+x=x$$, $$xx=x$$ |
+| 7 | **Trung hòa** | $$x+0=x$$, $$x\cdot 1=x$$ |
+| 8 | **Phần tử bù** | $$x+x'=1$$, $$xx'=0$$ |
+| 9 | **Thống trị (nuốt)** | $$x+1=1$$, $$x\cdot 0=0$$ |
+| 10 | **Hấp thụ** | $$x+xy=x$$, $$x(x+y)=x$$ |
+
+Phần sau chứng minh một số đẳng thức từ **tiên đề**.
+
+## 2. Định nghĩa đại số Boole (trừu tượng)
+
+### 2.1. Định nghĩa hình thức
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Một **đại số Boole** là một bộ $$(B, +, \cdot, ', 0, 1)$$, trong đó:
+**Định nghĩa.** Một **đại số Boole** là một bộ $$(A, +, \cdot, ', 0, 1)$$ (cũng viết $$(A,\lor,\land,/,0,1)$$), trong đó $$A$$ có ít nhất hai phần tử; $$+$$, $$\cdot$$ hai ngôi; $$'$$ một ngôi; $$0,1\in A$$ — thỏa các tiên đề dưới đây.
 </div>
 
-- $$B$$ là một tập hợp chứa ít nhất hai phần tử
-- $$+$$ và $$\cdot$$ là các phép toán hai ngôi trên $$B$$
-- $$'$$ là phép toán một ngôi trên $$B$$
-- $$0, 1 \in B$$ là các phần tử đặc biệt
+### 2.2. Các tiên đề
 
-thỏa mãn **6 tiên đề Huntington** sau đây:
+**Tiên đề 1 — Tính đóng.** Với mọi $$x, y \in A$$: $$x + y \in A$$, $$x \cdot y \in A$$.
 
-### Sáu Tiên đề của Đại số Boole
+**Tiên đề 2 — Phần tử trung hòa.** Tồn tại $$0, 1 \in A$$ sao cho:
+- $$x + 0 = x$$ (0 trung hòa của $$+$$)
+- $$x \cdot 1 = x$$ (1 trung hòa của $$\cdot$$)
 
-**Tiên đề 1 - Tính đóng**: Với mọi $$x, y \in B$$:
-- $$x + y \in B$$
-- $$x \cdot y \in B$$
+**Tiên đề 3 — Giao hoán.** $$x + y = y + x$$, $$x \cdot y = y \cdot x$$.
 
-**Tiên đề 2 - Phần tử trung hòa**: Tồn tại các phần tử $$0, 1 \in B$$ sao cho:
-- $$x + 0 = x$$ (0 là phần tử trung hòa của phép +)
-- $$x \cdot 1 = x$$ (1 là phần tử trung hòa của phép $$\cdot$$)
-
-**Tiên đề 3 - Tính giao hoán**:
-- $$x + y = y + x$$
-- $$x \cdot y = y \cdot x$$
-
-**Tiên đề 4 - Tính phân phối**:
+**Tiên đề 4 — Phân phối (cả hai chiều).**
 - $$x \cdot (y + z) = (x \cdot y) + (x \cdot z)$$
 - $$x + (y \cdot z) = (x + y) \cdot (x + z)$$
 
-**Tiên đề 5 - Phần tử bù**: Với mỗi $$x \in B$$, tồn tại $$x' \in B$$ sao cho:
-- $$x + x' = 1$$
-- $$x \cdot x' = 0$$
+**Tiên đề 5 — Phần tử bù.** Với mỗi $$x \in A$$ tồn tại $$x' \in A$$ sao cho $$x + x' = 1$$ và $$x \cdot x' = 0$$.
 
-**Tiên đề 6 - Tính không suy biến**: $$0 \neq 1$$
+**Tiên đề 6 — Không suy biến.** $$0 \neq 1$$.
+
+*(Một số tài liệu ghi thêm **kết hợp** như tiên đề; trên đại số Boole chuẩn, kết hợp suy được từ các tiên đề Huntington — ta vẫn dùng kết hợp thoải mái khi biến đổi.)*
 
 <div class="content-box warning-box textbook-block" markdown="1">
-**Chú ý**: Tiên đề 4 khác với đại số thông thường. Trong đại số Boole, phép $$+$$ cũng phân phối với phép $$\cdot$$, không chỉ chiều ngược lại. Đây là điểm mạnh của đại số Boole và cũng là nguồn gốc của nhiều sai lầm khi mới chuyển từ đại số số học.
+**Chú ý.** Tiên đề 4 khác đại số số học: phép $$+$$ **cũng** phân phối với $$\cdot$$. Đây vừa là sức mạnh vừa là bẫy khi mới chuyển từ số học.
 </div>
 
-## Các Hằng đẳng thức Cơ bản
+### 2.3. Ví dụ quan trọng: họ tập con $$P(U)$$
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ (đại số Boole trên tập).**  
+Cho $$U$$ bất kỳ, đặt $$A = P(U)$$ (tập các tập con của $$U$$). Định nghĩa:
+
+| Phép trên $$A$$ | Ý nghĩa tập hợp |
+|:---|:---|
+| $$X \land Y$$ | $$X \cap Y$$ |
+| $$X \lor Y$$ | $$X \cup Y$$ |
+| $$X'$$ | $$U \setminus X$$ (bù trong $$U$$) |
+| $$0$$ | $$\emptyset$$ |
+| $$1$$ | $$U$$ |
+
+Khi đó $$(P(U), \cap, \cup, {}^c, \emptyset, U)$$ là một **đại số Boole**.  
+Trường hợp “nhỏ nhất hữu ích” trong máy tính: $$U$$ một phần tử → $$P(U)$$ chỉ có hai tập, đẳng cấu với $$B = \{0,1\}$$.
+
+</div>
+
+### 2.4. Tích Descartes và $$B^n$$
+
+Nếu $$A$$ và $$C$$ là hai đại số Boole thì $$A \times C$$ cũng là đại số Boole với phép **từng thành phần**:
+
+$$
+(a_1,c_1) \land (a_2,c_2) = (a_1\land a_2,\, c_1\land c_2),
+$$
+
+tương tự $$\lor$$ và bù $$(a,c)'=(a',c')$$; phần tử 0 là $$(0,0)$$, 1 là $$(1,1)$$.
+
+Đặc biệt, $$B^n = \{0,1\}^n$$ (vector bit độ dài $$n$$) là đại số Boole — đúng không gian đầu vào của **hàm Boole $$n$$ biến** (bài 13.2).
+
+## 3. Các hằng đẳng thức cơ bản (chứng minh)
 
 Từ 6 tiên đề trên, chúng ta có thể chứng minh nhiều hằng đẳng thức quan trọng:
 
@@ -392,20 +424,31 @@ Có hai sinh viên tranh luận: "Mọi hàm Boole 2 biến đều có thể bi�
 Người thứ nhất đúng. Bộ {OR, NOT} là một tập đầy đủ vì AND có thể được biểu diễn qua OR và NOT: $$x \cdot y = (x' + y')'$$ (luật De Morgan). Tương tự, NAND, NOR và mọi hàm khác đều có thể xây dựng từ OR và NOT. Trong thiết kế mạch, điều này cho phép dùng chỉ một loại cổng để xây dựng toàn bộ hệ thống.
 </details>
 
+
+### Bài tập 5: $$P(U)$$ và $$B^n$$
+
+(a) Với $$U=\{a,b\}$$, liệt kê 4 phần tử của $$P(U)$$ và tính $$\{a\}\cup\{b\}$$, $$\{a\}\cap\{b\}$$, bù của $$\{a\}$$.  
+(b) Vì sao $$B^2$$ có 4 phần tử? Phép OR từng bit của $$(1,0)$$ và $$(0,1)$$ là gì?
+
+<details>
+<summary>Đáp án</summary>
+
+(a) $$\emptyset,\{a\},\{b\},\{a,b\}$$; hợp $$=\{a,b\}$$; giao $$=\emptyset$$; bù $$\{a\}=\{b\}$$.  
+(b) $$2^2=4$$ vector bit; OR từng bit $$(1,1)$$.
+
+</details>
+
 ## Xem thêm / Video gợi ý
 
 - [Boolean Algebra and Karnaugh Maps](https://www.youtube.com/watch?v=5jZ5n8k0p0Q) — Neso Academy (Gate level + minimization)
 
 ## Tóm tắt
 
-- **Đại số Boole** làm việc trên hai giá trị $$\{0, 1\}$$ với ba phép toán: $$+$$ (OR), $$\cdot$$ (AND), $$'$$ (NOT).
-- **6 tiên đề Huntington** định nghĩa đại số Boole: đóng, trung hòa, giao hoán, phân phối, phần tử bù, không suy biến.
-- **Hằng đẳng thức**: lũy đẳng, nuốt, bù, De Morgan, hấp thụ — là công cụ biến đổi biểu thức.
-- **Nguyên lý đối ngẫu**: mỗi hằng đẳng thức cho một hằng đẳng thức "đối xứng".
-- **Tính đầy đủ**: NAND và NOR tự chúng đã đủ để biểu diễn mọi hàm Boole.
-- **Ứng dụng**: từ thiết kế CPU và mạch số đến truy vấn cơ sở dữ liệu và mạng nơ-ron.
-
-Trong bài tiếp theo, chúng ta sẽ tìm hiểu về hàm Boole và hai dạng chuẩn tắc quan trọng — tổng các tích (SOP) và tích các tổng (POS).
+1. **Đại số logic** $$B=\{0,1\}$$: OR, AND, NOT và **mười hằng đẳng thức** (giao hoán … hấp thụ); nhớ $$1+1=1$$.
+2. **Đại số Boole** trừu tượng: tiên đề Huntington; ví dụ $$P(U)$$ (tập con) và $$B^n$$.
+3. Chứng minh bằng **đại số** hoặc **bảng chân trị**; **đối ngẫu** nhân đôi số đẳng thức.
+4. Phép dẫn xuất: XOR, kéo theo, tương đương, **NAND/NOR** (đầy đủ chức năng).
+5. Bài 13.2: hàm Boole, minterm / **dạng nối rời chính tắc** (SOP chuẩn).
 
 ## Tài liệu Tham khảo
 

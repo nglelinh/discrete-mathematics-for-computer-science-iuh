@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="3-bit ripple with HA and FA">
+  <rect width="800" height="350" fill="#fafbfc"/>
+
+  <text x="400" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">Cộng hai số 3-bit — HA + FA + FA</text>
+  <text x="400" y="50" text-anchor="middle" font-size="12" fill="#5c6370">Bit thấp không cần Cin → half adder; hai cột sau dùng full adder</text>
+
+  <!-- labels left -->
+  <text x="40" y="100" font-size="13" font-weight="600">x₀</text>
+  <text x="40" y="130" font-size="13" font-weight="600">y₀</text>
+  <text x="40" y="180" font-size="13" font-weight="600">x₁</text>
+  <text x="40" y="210" font-size="13" font-weight="600">y₁</text>
+  <text x="40" y="260" font-size="13" font-weight="600">x₂</text>
+  <text x="40" y="290" font-size="13" font-weight="600">y₂</text>
+
+  <!-- HA box -->
+  <rect x="100" y="85" width="110" height="60" rx="8" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="155" y="112" text-anchor="middle" font-size="13" font-weight="600" fill="#004586">Bộ nửa cộng</text>
+  <text x="155" y="132" text-anchor="middle" font-size="11" fill="#5c6370">HA</text>
+  <line x1="60" y1="95" x2="100" y2="100" stroke="#004586" stroke-width="2"/>
+  <line x1="60" y1="125" x2="100" y2="120" stroke="#004586" stroke-width="2"/>
+  <line x1="210" y1="100" x2="700" y2="100" stroke="#004586" stroke-width="2"/>
+  <text x="720" y="105" font-size="14" font-weight="600">s₀</text>
+  <line x1="210" y1="130" x2="280" y2="130" stroke="#004586" stroke-width="2"/>
+  <text x="230" y="122" font-size="11" fill="#5c6370">c₀</text>
+
+  <!-- FA1 -->
+  <rect x="280" y="155" width="110" height="70" rx="8" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="335" y="185" text-anchor="middle" font-size="13" font-weight="600" fill="#004586">Bộ cộng đầy đủ</text>
+  <text x="335" y="205" text-anchor="middle" font-size="11" fill="#5c6370">FA</text>
+  <line x1="210" y1="130" x2="280" y2="165" stroke="#004586" stroke-width="2"/>
+  <line x1="60" y1="175" x2="280" y2="180" stroke="#004586" stroke-width="2"/>
+  <line x1="60" y1="205" x2="280" y2="200" stroke="#004586" stroke-width="2"/>
+  <line x1="390" y1="170" x2="700" y2="170" stroke="#004586" stroke-width="2"/>
+  <text x="720" y="175" font-size="14" font-weight="600">s₁</text>
+  <line x1="390" y1="210" x2="460" y2="210" stroke="#004586" stroke-width="2"/>
+  <text x="410" y="202" font-size="11" fill="#5c6370">c₁</text>
+
+  <!-- FA2 -->
+  <rect x="460" y="235" width="110" height="70" rx="8" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="515" y="265" text-anchor="middle" font-size="13" font-weight="600" fill="#004586">Bộ cộng đầy đủ</text>
+  <text x="515" y="285" text-anchor="middle" font-size="11" fill="#5c6370">FA</text>
+  <line x1="390" y1="210" x2="460" y2="245" stroke="#004586" stroke-width="2"/>
+  <line x1="60" y1="255" x2="460" y2="260" stroke="#004586" stroke-width="2"/>
+  <line x1="60" y1="285" x2="460" y2="280" stroke="#004586" stroke-width="2"/>
+  <line x1="570" y1="250" x2="700" y2="250" stroke="#004586" stroke-width="2"/>
+  <text x="720" y="255" font-size="14" font-weight="600">s₂</text>
+  <line x1="570" y1="290" x2="700" y2="290" stroke="#004586" stroke-width="2"/>
+  <text x="720" y="295" font-size="14" font-weight="600">c₂ = s₃</text>
+
+  <text x="400" y="330" text-anchor="middle" font-size="12" fill="#5c6370">Ripple-carry: mang lan từ bit thấp → cao · tổng 4 bit (s₃ s₂ s₁ s₀)</text>
+</svg>

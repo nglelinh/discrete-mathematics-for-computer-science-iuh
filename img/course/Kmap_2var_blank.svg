@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="K-map 2-var blank">
+  <rect width="400" height="280" fill="#fafbfc"/>
+
+  <text x="200" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">K-map 2 biến — cấu trúc</text>
+  <text x="200" y="50" text-anchor="middle" font-size="12" fill="#5c6370">Hàng x · cột y · 4 ô = 4 minterm</text>
+  <text x="90" y="68" text-anchor="end" font-size="12" fill="#5c6370">x \ y</text>
+  <text x="135.0" y="72" text-anchor="middle" font-size="13" fill="#5c6370">y=0</text>
+  <text x="205.0" y="72" text-anchor="middle" font-size="13" fill="#5c6370">y=1</text>
+  <text x="88" y="120.0" text-anchor="end" font-size="13" fill="#5c6370">x=0</text>
+  <rect x="100" y="80" width="70" height="70" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="135.0" y="121.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">m₀</text>
+  <rect x="170" y="80" width="70" height="70" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="205.0" y="121.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">m₁</text>
+  <text x="88" y="190.0" text-anchor="end" font-size="13" fill="#5c6370">x=1</text>
+  <rect x="100" y="150" width="70" height="70" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="135.0" y="191.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">m₂</text>
+  <rect x="170" y="150" width="70" height="70" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="205.0" y="191.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">m₃</text>
+  <text x="200" y="250" text-anchor="middle" font-size="12" fill="#5c6370">Điền 1 theo Σm(…) rồi khoanh nhóm</text>
+</svg>

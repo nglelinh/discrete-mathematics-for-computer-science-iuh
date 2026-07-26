@@ -111,9 +111,22 @@ Tổng số đối tượng ≤ n × (⌈N/n⌉ - 1) < n × (N/n + 1 - 1) = N.
 
 Mâu thuẫn! Vậy ít nhất một nhóm chứa ≥ ⌈N/n⌉ đối tượng. ∎
 
-![Birthday paradox — va chạm không tránh khỏi](/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg)
+## Birthday paradox — xác suất vs đảm bảo
 
-<p class="textbook-figure-caption" data-figure="8.4">Trong hash table, khi số khóa vượt số bucket thì collision là hệ quả tất yếu của nguyên lý chuồng chim.</p>
+Nguyên lý Dirichlet trả lời câu *khi nào chắc chắn trùng*. **Nghịch lý sinh nhật** (birthday paradox) trả lời câu *khi nào xác suất trùng đã lớn* — và kết quả bất ngờ: với chỉ khoảng **23** người, xác suất có ít nhất hai người cùng ngày sinh đã **> 50%** (trong khi phải đợi **367** người mới *đảm bảo* trùng theo Dirichlet).
+
+Lý do: ta đếm **cặp** $$(i,j)$$, không so từng người với một mốc cố định. Số cặp là $$\binom{n}{2} = n(n-1)/2$$; với $$n=23$$ đã có 253 cặp, mỗi cặp “có cơ hội” $$1/365$$ trùng ngày.
+
+Công thức chính xác ($$n \le 365$$):
+
+$$P(\text{có trùng}) = 1 - \dfrac{365!}{(365-n)!\,365^n} \approx 1 - e^{-n(n-1)/(2\cdot 365)}.$$
+
+![Birthday paradox — xác suất trùng theo số người](/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg)
+
+<p class="textbook-figure-caption" data-figure="8.4">Đồ thị birthday paradox: trục hoành = số người $$n$$, trục tung = xác suất có ít nhất một cặp cùng ngày sinh ($$d=365$$). Khoảng $$n\approx 23$$ đã cho $$P\approx 50\%$$; $$n\approx 57$$ cho $$P\approx 99\%$$ — va chạm “cặp” xảy ra sớm hơn trực giác, khác ngưỡng đảm bảo Dirichlet $$n=367$$.</p>
+
+Trong không gian hash $$N=2^b$$, cùng ý tưởng cho *birthday bound*: khoảng $$\sqrt{N}=2^{b/2}$$ mẫu đã đủ để xác suất collision ~50%, trong khi Dirichlet chỉ *đảm bảo* khi có $$N+1$$ mẫu.
+
 ## Ứng dụng trong Khoa học Máy tính
 
 ### 1. Hash Tables và Collision

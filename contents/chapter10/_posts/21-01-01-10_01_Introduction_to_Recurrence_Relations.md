@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Giới thiệu Quan hệ Truy hồi"
 categories: chapter10
@@ -135,11 +134,13 @@ Một quan hệ truy hồi được gọi là **tuyến tính** nếu nó có d�
 | **Tuyến tính** | $$a_n = c_1 a_{n-1} + c_2 a_{n-2} + \dots + c_k a_{n-k} + f(n)$$ | $$a_n = 3a_{n-1} - 2a_{n-2}$$ |
 | **Phi tuyến** | Có tích, lũy thừa giữa các $$a_{n-i}$$ | $$a_n = a_{n-1} \times a_{n-2}$$ hoặc $$a_n = a_{n-1}^2 + 1$$ |
 
-**Ví dụ phân biệt**:
+**Ví dụ phân biệt** (cùng kiểu bài tập phân loại trong giáo trình hệ thức hồi quy):
 
-- $$a_n = 2a_{n-1} + a_{n-2}$$ là **tuyến tính** (hệ số hằng, không có tích)
-- $$a_n = a_{n-1} \cdot a_{n-2}$$ là **phi tuyến** (có tích giữa các số hạng)
-- {% raw %}$$a_n = \sqrt{a_{n-1}}$${% endraw %} là **phi tuyến** (có căn thức)
+- $$f_n = 4f_{n-1} + f_{n-2}$$ — **tuyến tính** (hệ số hằng; không có tích/lũy thừa của các số hạng dãy).
+- $$f_n = 3f_{n-1} + 2f_{n-2} + n$$ — **tuyến tính không thuần nhất** (còn thêm $$f(n)=n$$).
+- $$f_n = 3(f_{n-1})^2 + 2f_{n-2} + n$$ — **phi tuyến** (có bình phương $$f_{n-1}$$).
+- $$f_n = 2f_{n-1}\cdot f_{n-2} + n$$ — **phi tuyến** (có tích hai số hạng dãy).
+- $$f_n = n\cdot f_{n-2} + n$$ — **phi tuyến theo nghĩa hệ số phụ thuộc $$n$$ nhân với $$f_{n-2}$$** trong nhiều giáo trình (không còn “hệ số hằng”); khi giải bằng đặc trưng, ta yêu cầu hệ số **hằng**.
 
 ### 2. Theo Tính thuần nhất (Homogeneous vs Nonhomogeneous)
 

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 210" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Cổng XOR">
+  <rect width="400" height="210" fill="#fafbfc"/>
+  <text x="200" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">Cổng XOR</text>
+  <text x="200" y="48" text-anchor="middle" font-size="12" fill="#5c6370">Ra 1 khi hai ngõ khác nhau</text>
+  <text x="70" y="92" text-anchor="end" font-size="14" font-weight="600" fill="#1a1a2e">A</text>
+  <text x="70" y="138" text-anchor="end" font-size="14" font-weight="600" fill="#1a1a2e">B</text>
+  <line x1="80" y1="92" x2="130" y2="96" stroke="#004586" stroke-width="2.5"/>
+  <line x1="80" y1="128" x2="130" y2="124" stroke="#004586" stroke-width="2.5"/>
+
+  <path d="M119.2,81.65 Q137.83,110 119.2,138.35" fill="none" stroke="#004586" stroke-width="2"/>
+  <path d="M130,81.65 Q157.405,81.65 173.065,81.65 Q208.3,81.65 208.3,110
+           Q208.3,138.35 173.065,138.35 Q157.405,138.35 130,138.35
+           Q144.094,110 130,81.65 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="167.584" y="115" text-anchor="middle" font-size="15" font-weight="600" fill="#004586">XOR</text>
+  <line x1="230" y1="110" x2="280" y2="110" stroke="#004586" stroke-width="2.5"/>
+  <text x="295" y="115" font-size="15" font-weight="600" fill="#1a1a2e">Y</text>
+  <text x="200" y="185" text-anchor="middle" font-size="14" fill="#1a1a2e">Y = A ⊕ B = A′B + AB′</text>
+</svg>

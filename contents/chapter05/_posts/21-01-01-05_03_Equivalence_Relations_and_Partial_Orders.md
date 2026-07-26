@@ -7,7 +7,7 @@ date: 2021-01-01
 order: 3
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã học bốn tính chất cơ bản của quan hệ. Mục này xây dựng hai lớp quan hệ đặc biệt từ các tính chất đó: quan hệ tương đương và thứ tự bộ…"
+excerpt: "Quan hệ tương đương và tập thương; thứ tự bộ phận/toàn phần, từ điển; Hasse; min/max, tối tiểu/tối đại và thứ tự tốt."
 ---
 
 Ở mục trước chúng ta đã học bốn tính chất cơ bản của quan hệ. Mục này xây dựng hai lớp quan hệ đặc biệt từ các tính chất đó: **quan hệ tương đương** và **thứ tự bộ phận**.
@@ -20,11 +20,13 @@ Một số quan hệ giúp gom các đối tượng "giống nhau" theo một ti
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Xây dựng** lớp tương đương và phân hoạch từ quan hệ tương đương.
-- **Vẽ** sơ đồ Hasse cho thứ tự bộ phận.
+- **Xây dựng** lớp tương đương, tập thương $$A/R$$ và phân hoạch từ quan hệ tương đương.
+- **Phân biệt** thứ tự toàn phần / bộ phận; định nghĩa thứ tự từ điển trên chuỗi bit.
+- **Vẽ** sơ đồ Hasse; tìm phần tử nhỏ nhất/lớn nhất và tối tiểu/tối đại.
+- **Nhận biết** thứ tự tốt (well-order) qua ví dụ $$(\mathbb{N},\le)$$ và $$(\mathbb{Z},\le)$$.
 - **Áp dụng** modulo, phân vùng và thứ tự trong thiết kế hệ thống.
 
-**Từ khóa**: lớp tương đương, phân hoạch, thứ tự bộ phận, sơ đồ Hasse.
+**Từ khóa**: lớp tương đương, phân hoạch, tập thương, thứ tự bộ phận, thứ tự toàn phần, thứ tự từ điển, sơ đồ Hasse, min/max, tối tiểu/tối đại, thứ tự tốt.
 </div>
 
 ## 1. Quan hệ tương đương
@@ -85,6 +87,27 @@ $$[a]=\{x\in A\mid x\sim a\}.$$
 <p class="textbook-figure-caption" data-figure="5.14">Phân hoạch tạo các lớp tương đương rời nhau — tương tự cách sắp xếp phần tử theo cấu trúc thứ tự.</p>
 </div>
 
+**Tập thương.** Tập tất cả các lớp tương đương được ký hiệu $$A/R=\{[a]_R\mid a\in A\}$$ và gọi là **tập thương** (quotient set) của $$A$$ theo $$R$$. Mỗi phần tử $$x\in[a]_R$$ là một **đại diện** của lớp $$[a]_R$$.
+
+Với đồng dư modulo $$m$$, tập thương $$\mathbb{Z}/R$$ có đúng $$m$$ lớp:
+
+$$
+\mathbb{Z}_m=\bigl\{[0]_m,[1]_m,\ldots,[m-1]_m\bigr\}.
+$$
+
+Đây chính là “số nguyên modulo $$m$$” dùng trong số học máy tính và mật mã.
+
+<div class="textbook-theorem" markdown="1">
+**Mệnh đề** (lớp trùng hoặc rời). Cho quan hệ tương đương $$R$$ trên $$A$$ và $$a,b\in A$$. Ba điều kiện sau tương đương:
+
+1. $$aRb$$;
+2. $$[a]_R=[b]_R$$;
+3. $$[a]_R\cap[b]_R\neq\emptyset$$.
+
+</div>
+
+Hệ quả: các lớp hoặc **trùng nhau**, hoặc **rời nhau**; hợp của chúng bằng $$A$$ — đó chính là phân hoạch.
+
 ## 3. Quan hệ thứ tự bộ phận
 
 <div class="textbook-definition" markdown="1">
@@ -105,16 +128,48 @@ Khi đó cặp $$(A,R)$$ được gọi là một **poset**.
 - Quan hệ "module A phải biên dịch trước module B" thường là thứ tự bộ phận nếu không có vòng phụ thuộc.
 </div>
 
-## 4. Vì sao gọi là "bộ phận"?
+## 4. Thứ tự toàn phần, bộ phận và so sánh được
 
-Trong một thứ tự toàn phần, mọi cặp phần tử đều so sánh được. Trong thứ tự bộ phận, có thể có hai phần tử không so sánh được.
+<div class="textbook-definition" markdown="1">
+**Định nghĩa**: Trong poset $$(S,\preceq)$$, hai phần tử $$a,b$$ gọi là **so sánh được** nếu $$a\preceq b$$ hoặc $$b\preceq a$$; nếu không, chúng **không so sánh được**.
+
+Nếu mọi cặp phần tử của $$S$$ đều so sánh được thì $$(S,\preceq)$$ là **thứ tự toàn phần** (total / linear order). Ngược lại ta nói $$\preceq$$ là **thứ tự bán phần** (bộ phận).
+</div>
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Với $$S=\{a,b\}$$, trong $$(\mathcal{P}(S),\subseteq)$$, hai tập $$\{a\}$$ và $$\{b\}$$ không tập nào là tập con của tập kia. Vì vậy chúng không so sánh được.
+**Ví dụ**:
+
+- $$(\mathbb{Z}^+,\le)$$ là thứ tự toàn phần.
+- $$(\mathbb{Z}^+,\mid)$$ **không** toàn phần: $$5$$ và $$7$$ không so sánh được.
+- $$(\mathcal{P}(A),\subseteq)$$ không toàn phần khi $$\lvert A\rvert\ge 2$$: với $$S=\{a,b\}$$, hai tập $$\{a\}$$ và $$\{b\}$$ không so sánh được.
 
 ![Thứ tự bộ phận trên tập lũy thừa](/discrete-mathematics-for-computer-science-iuh/img/course/Hasse_diagram_of_powerset_of_3.svg)
 
 <p class="textbook-figure-caption" data-figure="5.15">Poset $$(\mathcal{P}(S), \subseteq)$$ — không phải mọi cặp phần tử đều so sánh được (ví dụ {a} và {b}).</p>
+</div>
+
+### Thứ tự từ điển trên chuỗi bit
+
+Trong tin học ta cần **một** thứ tự toàn phần trên chuỗi bit (sort, so sánh khóa, trie). Có nhiều cách định nghĩa “$$\le$$” trên $$\{0,1\}^n$$.
+
+**Thứ tự tọa độ (product order).** Đặt
+
+$$
+a_1a_2\ldots a_n\le b_1b_2\ldots b_n
+\quad\text{khi và chỉ khi}\quad
+a_i\le b_i\text{ với mọi }i.
+$$
+
+Với định nghĩa này, $$0110$$ và $$1000$$ **không so sánh được** — đây vẫn là thứ tự bộ phận.
+
+**Thứ tự từ điển (lexicographic order).** So sánh từ trái sang phải: tại vị trí khác nhau **đầu tiên** $$k$$, chuỗi có bit nhỏ hơn đứng trước. Trên $$\{0,1\}^n$$, thứ tự từ điển là **toàn phần** và trùng với thứ tự số nguyên khi đọc chuỗi như nhị phân. Đây là thứ tự `strcmp` / `sort` dùng hằng ngày.
+
+<div class="textbook-example" markdown="1">
+**Ví dụ**: Trên chuỗi độ dài 3, thứ tự từ điển:
+
+$$000\prec 001\prec 010\prec 011\prec 100\prec 101\prec 110\prec 111.$$
+
+Còn với product order, $$010$$ và $$100$$ không so sánh được.
 </div>
 
 ## 5. Biểu đồ Hasse
@@ -124,7 +179,7 @@ Trong một thứ tự toàn phần, mọi cặp phần tử đều so sánh đ�
 </div>
 
 - Bỏ các vòng phản xạ.
-- Bỏ các cạnh suy ra từ bắc cầu.
+- Bỏ các cạnh suy ra từ bắc cầu (chỉ giữ **cạnh phủ**: $$a$$ phủ $$b$$ khi $$b\prec a$$ và không có $$c$$ “ở giữa”).
 - Vẽ phần tử lớn hơn ở phía trên.
 
 <div class="textbook-example" markdown="1">
@@ -134,6 +189,78 @@ Trong một thứ tự toàn phần, mọi cặp phần tử đều so sánh đ�
 
 <p class="textbook-figure-caption" data-figure="5.16">Biểu đồ Hasse bỏ vòng phản xạ và các cạnh suy ra từ bắc cầu, chỉ giữ các cặp phủ trực tiếp.</p>
 </div>
+
+Các ví dụ Hasse quen thuộc khác: $$(\mathcal{P}(\{a,b,c\}),\subseteq)$$ (lưới Boolean 3 chiều) và các chuỗi bit độ dài 3 với product order (cũng là hình lập phương).
+
+## 6. Phần tử nhỏ nhất, lớn nhất và thứ tự tốt
+
+<div class="textbook-definition" markdown="1">
+**Định nghĩa**: Trong poset $$(S,\preceq)$$,
+
+- $$a$$ là **phần tử nhỏ nhất** (minimum, min) nếu $$a\preceq x$$ với mọi $$x\in S$$;
+- $$a$$ là **phần tử lớn nhất** (maximum, max) nếu $$x\preceq a$$ với mọi $$x\in S$$.
+</div>
+
+Nếu tồn tại, min (lần lượt max) là **duy nhất**. Ký hiệu $$\min(S)$$, $$\max(S)$$.
+
+<div class="textbook-example" markdown="1">
+**Ví dụ**:
+
+- $$S=\{m\in\mathbb{Z}\mid m^2<100\}$$ với $$\le$$: $$\min(S)=-9$$, $$\max(S)=9$$.
+- $$A=\{x\in\mathbb{R}\mid x^2<100\}$$ với $$\le$$: **không** có min cũng không có max (mở).
+- $$(\mathcal{P}(B),\subseteq)$$: $$\min=\emptyset$$, $$\max=B$$.
+</div>
+
+<div class="textbook-definition" markdown="1">
+**Định nghĩa** (thứ tự tốt / well-order). Poset $$(S,\preceq)$$ gọi là **sắp tốt** (well-ordered) nếu **mọi** tập con khác rỗng của $$S$$ đều có phần tử nhỏ nhất.
+</div>
+
+<div class="textbook-example" markdown="1">
+**Ví dụ**:
+
+- $$(\mathbb{N},\le)$$ (hoặc $$\mathbb{Z}^+$$) là sắp tốt — đây là nền tảng cho quy nạp và “mọi vòng lặp giảm biến đếm đều dừng”.
+- $$(\mathbb{Z},\le)$$ **không** sắp tốt: chính $$\mathbb{Z}$$ không có phần tử nhỏ nhất; tập các số chẵn âm cũng không.
+</div>
+
+**Liên hệ CS.** Khi chứng minh thuật toán kết thúc bằng “measure” trên $$\mathbb{N}$$, ta đang dùng tính well-order của số tự nhiên.
+
+## 7. Phần tử tối tiểu và tối đại
+
+Min/max là “đáy/đỉnh toàn cục”. Trong poset có thể không có min/max nhưng vẫn có các “đáy/đỉnh cục bộ”.
+
+<div class="textbook-definition" markdown="1">
+**Định nghĩa**: Trong poset $$(S,\preceq)$$,
+
+- $$a$$ là **tối tiểu** (minimal) nếu không tồn tại $$x\in S$$, $$x\neq a$$, sao cho $$x\preceq a$$;
+- $$a$$ là **tối đại** (maximal) nếu không tồn tại $$x\in S$$, $$x\neq a$$, sao cho $$a\preceq x$$.
+</div>
+
+**Nhận xét quan trọng.**
+
+1. Tối tiểu / tối đại **không nhất thiết duy nhất**.
+2. Nếu tồn tại phần tử nhỏ nhất thì nó là tối tiểu **duy nhất**; tương tự max là tối đại duy nhất.
+3. Trên Hasse: tối tiểu = đỉnh không có cạnh đi xuống; tối đại = đỉnh không có cạnh đi lên.
+
+<div class="textbook-example" markdown="1">
+**Ví dụ 1.** $$S=\{1,2,3\}$$ với
+
+$$
+R=\{(1,1),(2,2),(3,3),(1,2),(3,2)\}.
+$$
+
+Đây là poset. Tối tiểu: $$1$$ và $$3$$; tối đại: $$2$$. Không có min (vì không phần tử nào $$\preceq$$ cả ba).
+
+**Ví dụ 2.** Poset $$(\{2,4,5,10,12,20,25\},\mid)$$:
+
+- Tối tiểu: $$2$$, $$5$$;
+- Tối đại: $$12$$, $$20$$, $$25$$.
+
+Không có min/max toàn cục.
+
+**Ví dụ 3.** Chuỗi bit độ dài 3 với product order (hoặc từ điển trên Hasse lập phương): tối tiểu duy nhất $$000$$, tối đại duy nhất $$111$$ — chúng cũng là min và max.
+</div>
+
+**Sự tồn tại trên poset hữu hạn.** Trong poset **hữu hạn** khác rỗng, luôn tồn tại ít nhất một tối tiểu và một tối đại. Chứng minh phác: xuất phát từ $$a_0$$ bất kỳ; nếu không tối tiểu thì có $$a_1\prec a_0$$; chuỗi giảm nghiêm ngặt không thể vô hạn trong tập hữu hạn, nên dừng ở tối tiểu. Tối đại tương tự theo chiều tăng.
 
 ## Định lý: Quan hệ tương đương ⇔ Phân hoạch
 
@@ -220,16 +347,49 @@ Vẽ Hasse diagram cho tập $$\{1,2,3,6,12\}$$ với quan hệ chia hết.
 
 </details>
 
+### Bài tập 4: Min/max và tối tiểu/tối đại
+
+Cho poset $$(\{2,4,5,10,12,20,25\},\mid)$$.
+
+1. Tìm tất cả phần tử tối tiểu và tối đại.
+2. Có min và max không?
+3. $$4$$ và $$5$$ so sánh được không?
+
+<details>
+<summary>Đáp án</summary>
+
+1. Tối tiểu: $$2,5$$. Tối đại: $$12,20,25$$.
+2. Không có min (không phần tử nào chia hết mọi phần tử khác theo nghĩa “nhỏ nhất toàn cục”); không có max.
+3. Không: $$4\nmid 5$$ và $$5\nmid 4$$.
+
+</details>
+
+### Bài tập 5: Thứ tự tốt và từ điển
+
+(a) $$(\mathbb{N},\le)$$ và $$(\mathbb{Z},\le)$$ — cái nào sắp tốt? Giải thích.  
+(b) Trên $$\{0,1\}^2$$, liệt kê thứ tự từ điển và cho hai chuỗi không so sánh được theo product order.
+
+<details>
+<summary>Đáp án</summary>
+
+(a) $$(\mathbb{N},\le)$$ sắp tốt; $$(\mathbb{Z},\le)$$ không ($$\mathbb{Z}$$ không có min).  
+(b) Từ điển: $$00\prec 01\prec 10\prec 11$$. Product order: $$01$$ và $$10$$ không so sánh được.
+
+</details>
+
 ## Xem thêm / Video gợi ý
 
 - [Relations and Functions](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — Trefor Bazett (Equivalence relations)
 
 ## Tóm tắt
 
-- **Quan hệ tương đương**: phản xạ + đối xứng + bắc cầu; tạo lớp tương đương và phân hoạch
+- **Quan hệ tương đương**: phản xạ + đối xứng + bắc cầu; tạo lớp, tập thương $$A/R$$ và phân hoạch
 - **Định lý**: mỗi quan hệ tương đương tương ứng duy nhất với một phân hoạch, và ngược lại
-- **Thứ tự bộ phận**: phản xạ + phản đối xứng + bắc cầu; không phải mọi cặp đều so sánh được
-- **Biểu đồ Hasse**: vẽ poset bằng cách bỏ vòng phản xạ và các cạnh suy ra từ bắc cầu
-- **Ứng dụng CS**: union-find, type checking, dependency graph, hash bucket và sharding
+- **Thứ tự bộ phận**: phản xạ + phản đối xứng + bắc cầu; toàn phần khi mọi cặp so sánh được
+- **Thứ tự từ điển** trên chuỗi bit là toàn phần; product order thường chỉ bộ phận
+- **Hasse**: bỏ vòng và cạnh bắc cầu, chỉ giữ cạnh phủ
+- **Min/max** (toàn cục, duy nhất nếu có) ≠ **tối tiểu/tối đại** (cục bộ, có thể nhiều)
+- **Thứ tự tốt**: mọi tập con khác rỗng có min — $$(\mathbb{N},\le)$$ có, $$(\mathbb{Z},\le)$$ không
+- **Ứng dụng CS**: union-find, type checking, dependency graph, hash bucket, topological sort
 
 Trong bài tiếp theo, chúng ta sẽ học phép toán trên quan hệ và bao đóng.

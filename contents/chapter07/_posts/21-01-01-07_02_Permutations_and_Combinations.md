@@ -7,7 +7,7 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã học quy tắc cộng và quy tắc nhân. Mục này giới thiệu hoán vị và tổ hợp — hai khái niệm phân biệt theo việc thứ tự có quan trọng hay…"
+excerpt: "Hoán vị, chỉnh hợp, tổ hợp và hoán vị vòng tròn — phân biệt thứ tự, hàng thẳng so với bàn tròn, và các công thức n!, P(n,k), C(n,k), (n−1)!."
 ---
 
 Ở mục trước chúng ta đã học quy tắc cộng và quy tắc nhân. Mục này giới thiệu **hoán vị** và **tổ hợp** — hai khái niệm phân biệt theo việc thứ tự có quan trọng hay không.
@@ -20,11 +20,11 @@ Khi sắp lịch thuyết trình, chọn đội thi hay sinh chuỗi ký tự, c
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Tính** hoán vị $$P(n,r)$$ và tổ hợp $$C(n,r)$$.
-- **Phân biệt** bối cảnh có thứ tự và không thứ tự.
-- **Giải** bài toán chọn nhóm, xếp hàng, phân công.
+- **Tính** hoán vị $$P(n,r)$$, tổ hợp $$C(n,r)$$ và hoán vị vòng tròn $$(n-1)!$$.
+- **Phân biệt** bối cảnh có thứ tự / không thứ tự, xếp hàng / xếp vòng.
+- **Giải** bài toán chọn nhóm, xếp hàng, xếp bàn tròn, phân công.
 
-**Từ khóa**: hoán vị (permutation), tổ hợp (combination), $$n!$$, $$\binom{n}{r}$$.
+**Từ khóa**: hoán vị (permutation), hoán vị vòng tròn (circular permutation), tổ hợp (combination), $$n!$$, $$\binom{n}{r}$$.
 </div>
 
 ## Giai thừa (Factorial)
@@ -73,6 +73,50 @@ $$P(n) = n!$$
 
 **Giải**: P(4) = 4! = 24 cách
 </div>
+
+## Hoán vị vòng tròn (Circular permutations)
+
+Khi sắp xếp quanh **bàn tròn** (hoặc theo vòng), hai cách chỉ khác nhau bởi một **phép xoay** thường được coi là **cùng một** cách: không còn “ghế đầu” hay “ghế cuối” tuyệt đối — chỉ còn thứ tự tương đối (ai ngồi bên trái/phải ai).
+
+<div class="textbook-definition" markdown="1">
+**Định nghĩa**: Một **hoán vị vòng tròn** của $$n$$ phần tử phân biệt là cách sắp xếp các phần tử theo vòng sao cho không phân biệt điểm bắt đầu và điểm kết thúc (các cách chỉ xoay lẫn nhau là một).
+</div>
+
+**Công thức**: Số hoán vị vòng tròn của $$n$$ phần tử phân biệt là:
+
+<div class="textbook-equation" markdown="1">
+$$P_{\text{vòng}}(n) = (n-1)! = \frac{n!}{n}$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+
+**Giải thích**:
+
+1. **Cố định một phần tử** (ví dụ cố định một người ngồi “mốc”), rồi sắp xếp $$n-1$$ phần tử còn lại: $$(n-1)!$$ cách.
+2. Tương đương: có $$n!$$ cách xếp thành hàng; mỗi cấu hình vòng tương ứng đúng $$n$$ cách xoay trên hàng → chia cho $$n$$.
+
+![Hoán vị vòng tròn — cố định một người](/discrete-mathematics-for-computer-science-iuh/img/course/circular_permutation.svg)
+
+<p class="textbook-figure-caption" data-figure="7.7b">Cố định một người quanh bàn để loại bỏ sự quay vòng — số cách còn lại là $$(n-1)!$$.</p>
+
+<div class="textbook-example" markdown="1">
+**Ví dụ 1**: 5 người A, B, C, D, E ngồi quanh bàn tròn. Có bao nhiêu cách?
+
+**Giải**: $$(5-1)! = 4! = 24$$ cách.
+</div>
+
+<div class="textbook-example" markdown="1">
+**Ví dụ 2**: 8 người quanh bàn tròn (không phân biệt vị trí quay vòng). Có bao nhiêu cách?
+
+**Giải**: $$(8-1)! = 7! = 5040$$ cách.
+</div>
+
+| | Xếp hàng thẳng | Xếp vòng tròn |
+|:---|:---|:---|
+| Phân biệt vị trí tuyệt đối? | Có (đầu–cuối) | Không (chỉ xoay) |
+| Công thức | $$n!$$ | $$(n-1)!$$ |
+| Ví dụ $$n = 5$$ | $$120$$ | $$24$$ |
+
+**Ghi chú**: Nếu ghế đã **đánh số** (có “chỗ đầu bàn” cố định) thì dùng lại $$n!$$. Nếu đề còn coi hai cách **lật gương** là một (vòng cổ, không phân biệt chiều) thì thường chia thêm 2: $$(n-1)!/2$$ — chỉ áp dụng khi đề nêu rõ.
 
 ## Chỉnh hợp (k-Permutations)
 
@@ -151,7 +195,8 @@ $$C(n,k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}$$
 
 | Khái niệm | Chọn k từ n? | Thứ tự? | Lặp? | Công thức |
 |:-----------|:------------:|:-------:|:----:|:----------|
-| Hoán vị | n (tất cả) | Có | Không | n! |
+| Hoán vị (hàng) | n (tất cả) | Có | Không | n! |
+| Hoán vị vòng tròn | n (tất cả) | Có (tương đối) | Không | (n−1)! |
 | Chỉnh hợp | k ≤ n | Có | Không | n!/(n-k)! |
 | Tổ hợp | k ≤ n | Không | Không | n!/(k!(n-k)!) |
 
@@ -259,8 +304,9 @@ def permutation_sort_complexity(n):
 
 ### Bài tập 2: Hoán vị
 1. Có bao nhiêu cách sắp xếp 6 cuốn sách trên kệ?
-2. Từ 8 học sinh, chọn 3 em làm lớp trường, lớp phó, thư ký. Có bao nhiêu cách?
+2. Từ 8 học sinh, chọn 3 em làm lớp trưởng, lớp phó, thư ký. Có bao nhiêu cách?
 3. Có bao nhiêu cách sắp xếp chữ cái trong từ "COMPUTER"?
+4. Có bao nhiêu cách xếp 7 người quanh bàn tròn (không phân biệt quay vòng)?
 
 ### Bài tập 3: Tổ hợp
 1. Từ 12 người, chọn 5 người vào đội bóng. Có bao nhiêu cách?
@@ -284,6 +330,7 @@ def permutation_sort_complexity(n):
 1. 6! = 720 cách
 2. P(8,3) = 8!/(8-3)! = 336 cách
 3. 8! = 40,320 cách (tất cả chữ cái khác nhau)
+4. (7−1)! = 6! = 720 cách
 
 **Bài tập 3:**
 1. C(12,5) = 792 cách
@@ -307,8 +354,8 @@ def permutation_sort_complexity(n):
 - Cơ sở cho hoán vị và tổ hợp
 
 **Hoán vị**: Sắp xếp có thứ tự
-- P(n,k) = n!/(n-k)!
-- Quan tâm đến thứ tự
+- Hàng thẳng: $$n!$$; chỉnh hợp: $$P(n,k) = n!/(n-k)!$$
+- Vòng tròn (không phân biệt xoay): $$(n-1)!$$
 
 **Tổ hợp**: Chọn lựa không thứ tự  
 - C(n,k) = n!/(k!(n-k)!)

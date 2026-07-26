@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Bản đồ Karnaugh và Tối thiểu hóa Trực quan"
 categories: chapter13
@@ -7,299 +6,373 @@ date: 2021-01-01
 order: 4
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã tối thiểu hóa hàm Boole bằng biến đổi đại số. Mục này giới thiệu bản đồ Karnaugh (K-map) — phương pháp trực quan nhóm các minterm kề…"
+excerpt: "Mã Gray, K-map 2–4 biến, tế bào lớn và quy trình 5 bước phủ tối tiểu, don't-care và liên hệ đại số/QM."
 ---
 
-Ở mục trước chúng ta đã tối thiểu hóa hàm Boole bằng biến đổi đại số. Mục này giới thiệu **bản đồ Karnaugh** (K-map) — phương pháp trực quan nhóm các minterm kề nhau để rút gọn biểu thức. Với 2–4 biến, K-map cung cấp cách có hệ thống để tìm biểu thức tối tiểu mà không cần thao tác đại số dài dòng.
+<div class="textbook-epigraph" markdown="1">
 
-![Bản đồ Karnaugh 4 biến](/discrete-mathematics-for-computer-science-iuh/img/course/karnaugh_map.svg)
+"A Karnaugh map is a truth table rearranged so that adjacency means algebraic cancellation."
 
-<p class="textbook-figure-caption" data-figure="13.16">K-map sắp xếp minterm theo mã Gray — ô kề chỉ khác đúng một biến.</p>
-![Mã Gray](/discrete-mathematics-for-computer-science-iuh/img/course/gray_code.svg)
+<span class="epigraph-attribution">— Tinh thần K-map</span>
 
-<p class="textbook-figure-caption" data-figure="13.17">Mã Gray đảm bảo hai giá trị liên tiếp chỉ khác một bit — nền tảng sắp xếp hàng/cột K-map.</p>
-**Mã Gray (Gray Code).**
-Mã Gray là một loại mã nhị phân trong đó hai giá trị liên tiếp chỉ khác nhau một bit. 
-Điều này rất hữu ích trong các ứng dụng như mạch giải mã vị trí (encoder) hoặc các hệ thống cần giảm thiểu lỗi khi chuyển trạng thái.
+</div>
 
-Khi xây dựng bản đồ Karnaugh, một điểm quan trọng là thứ tự sắp xếp các biến trên trục (hàng và cột). Mã Gray thường được sử dụng để sắp xếp thứ tự các giá trị của các biến này, bởi vì:
-Trong mã Gray, hai giá trị liên tiếp chỉ khác nhau một bit. Điều này giúp bản đồ Karnaugh duy trì tính liên kết logic: các ô liền kề chỉ khác nhau bởi một biến đầu vào.
+Biến đổi đại số (bài 13.3) rút gọn được nhiều biểu thức, nhưng khi số minterm tăng, “nhìn ra” cặp $$xy + xy' = x$$ dễ sót.
 
-![Từ K-map sang mạch](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
+**Bản đồ Karnaugh** (K-map) giải quyết việc đó bằng cách **sắp lại** bảng chân trị trên lưới:
 
-<p class="textbook-figure-caption" data-figure="13.18">Biểu thức tối tiểu từ K-map được hiện thực bằng cổng logic.</p>
-**Xây dựng bản đồ Karnaugh.**
-- Số lượng biến logic trong biểu thức sẽ quyết định kích thước bản đồ Karnaugh.
-- Mã Gray được sử dụng để đánh số hàng và cột trong bản đồ để đảm bảo các ô liền kề chỉ khác nhau 1 bit.
-- Điền giá trị đầu ra vào bản đồ
-- Đánh dấu các ô có dòng tương ứng trên bảng chân trị là 1
+1. Mỗi ô = một minterm (một hàng của bảng).
+2. Hai ô **kề nhau** (kể cả mép đối diện) luôn khác **đúng một bit**.
+3. Gộp các ô kề = áp dụng $$xy + xy' = x$$ “bằng mắt”.
 
-Sau đó nhóm các ô 1 liền kề (số ô phải là lũy thừa của 2) để loại biến.
+Với **2–4 biến**, mắt người đọc lưới nhanh hơn chuỗi biến đổi đại số. Kết quả vẫn là **SOP** (tổng các tích) tối tiểu hai tầng, tương đương hàm gốc.
 
-![Implicant nguyên tố](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
-
-<p class="textbook-figure-caption" data-figure="13.19">Nhóm lớn nhất trên K-map tương ứng prime implicant — hạng tích không thể thu gọn thêm.</p>
-![Don't-care conditions](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
-
-<p class="textbook-figure-caption" data-figure="13.20">Ô don't-care (X) linh hoạt chọn 0 hoặc 1 để tạo nhóm lớn hơn và biểu thức ngắn hơn.</p>
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Xây dựng** bản đồ Karnaugh cho hàm 2, 3 và 4 biến.
-- **Xác định** các nhóm (implicant) trên K-map đúng quy tắc.
-- **Tìm** biểu thức tối tiểu dạng SOP từ K-map.
-- **Xử lý** các điều kiện "không cần quan tâm" (don't-care conditions).
-- **So sánh** K-map với phương pháp tối thiểu hóa đại số.
+- **Giải thích** mã Gray và vì sao K-map dùng thứ tự Gray trên trục.
+- **Dựng** K-map 2, 3, 4 biến và điền $$1$$ từ $$\sum m(\ldots)$$.
+- **Nhóm** ô đúng quy tắc (lũy thừa của 2, wrap-around, chồng nhóm).
+- **Áp dụng** quy trình 5 bước tìm **phủ tối tiểu** bằng **tế bào lớn** (implicant nguyên tố).
+- **Đọc** từng nhóm thành một tích và viết $$F$$ tối tiểu.
+- **Dùng** don't-care ($$X$$) để nới nhóm khi đặc tả cho phép.
 
-**Từ khóa**: Bản đồ Karnaugh (Karnaugh map), ô kề (adjacent cell), implicant nguyên tố (prime implicant), don't-care, biểu thức tối tiểu (minimal expression).
+**Từ khóa**: Karnaugh map, mã Gray, implicant, tế bào lớn, phủ tối tiểu, prime implicant, don't-care.
+
 </div>
 
-## Mã Gray (Gray Code)
+## 1. Mã Gray — nền tảng của sự “kề”
 
-Mã Gray là hệ thống mã nhị phân trong đó hai giá trị liên tiếp chỉ khác nhau **đúng một bit**. Điều này rất quan trọng trong bản đồ Karnaugh vì nó đảm bảo các ô kề nhau chỉ khác nhau một biến.
+Trong nhị phân thường, bước từ $$01$$ sang $$10$$ đổi **hai** bit cùng lúc. Trên K-map, nếu hai ô đó đặt cạnh nhau, việc gộp sẽ **không** tương ứng một biến bị loại. **Mã Gray** sắp thứ tự sao cho hai giá trị liên tiếp (và hai đầu mút của trục, nhờ tính chu kỳ) chỉ khác **một** bit.
 
-### Tại sao mã Gray quan trọng?
+Với hai bit, thứ tự Gray là $$00,01,11,10$$ — đúng thứ tự cột/hàng chuẩn trên K-map. Bit Gray cao nhất bằng bit nhị phân cao nhất; các bit thấp hơn $$g_i=b_{i+1}\oplus b_i$$. Ví dụ $$1011_2$$ → Gray $$1110$$ vì $$g_3=1$$, $$g_2=1\oplus0=1$$, $$g_1=0\oplus1=1$$, $$g_0=1\oplus1=0$$.
 
-Trong mã nhị phân thông thường, khi chuyển từ một số sang số tiếp theo, nhiều bit có thể thay đổi đồng thời. Ví dụ, từ 0111 (7) sang 1000 (8), cả 4 bit đều thay đổi. Điều này gây ra vấn đề trong các mạch số vì các bit không thay đổi chính xác cùng một lúc, dẫn đến trạng thái trung gian sai.
+Ngoài K-map, Gray còn giảm lỗi trạng thái trung gian ở encoder quay và một số FSM — cùng tinh thần “mỗi bước một bit”.
 
-Mã Gray giải quyết vấn đề này bằng cách đảm bảo mỗi bước chỉ thay đổi **đúng một bit**, loại bỏ hoàn toàn lỗi trạng thái trung gian.
+![Nhị phân vs Gray](/discrete-mathematics-for-computer-science-iuh/img/course/Gray_vs_binary.svg)
 
-### So sánh mã Gray và mã nhị phân thông thường
+<p class="textbook-figure-caption" data-figure="13.40">Thứ tự nhị phân thường đổi 2 bit (01→10); Gray chỉ đổi 1 bit — bắt buộc cho trục K-map.</p>
 
-**Ví dụ 2 bit**:
+![Bảng mã Gray 3-bit](/discrete-mathematics-for-computer-science-iuh/img/course/gray_code.svg)
 
-| Số thập phân | Mã nhị phân | Số bit thay đổi | Mã Gray | Số bit thay đổi |
-|:---:|:---:|:---:|:---:|:---:|
-| 0 | 00 | - | 00 | - |
-| 1 | 01 | 1 | 01 | 1 |
-| 2 | 10 | 2 | 11 | 1 |
-| 3 | 11 | 1 | 10 | 1 |
+<p class="textbook-figure-caption" data-figure="13.41">Bảng chuyển nhị phân → Gray 3-bit (dùng làm thứ tự hàng/cột).</p>
 
-Trong mã nhị phân thông thường, từ 01 (1) sang 10 (2) có **2 bit thay đổi**. Trong mã Gray, mỗi bước chỉ thay đổi 1 bit: 00 → 01 → 11 → 10.
+## 2. Ý tưởng K-map
 
-**Ví dụ 3 bit**:
+### 2.1. Ba ý chính
 
-| Số thập phân | Mã nhị phân | Mã Gray |
-|:---:|:---:|:---:|
-| 0 | 000 | 000 |
-| 1 | 001 | 001 |
-| 2 | 010 | 011 |
-| 3 | 011 | 010 |
-| 4 | 100 | 110 |
-| 5 | 101 | 111 |
-| 6 | 110 | 101 |
-| 7 | 111 | 100 |
+| Ý | Giải thích |
+|:---|:---|
+| **Ô** | Mỗi ô = một minterm (một hàng bảng chân trị) |
+| **Kề** | Hai ô kề (kể cả mép đối diện — *wrap-around*) khác đúng **một** litera |
+| **Gộp** | Gộp các ô kề = áp dụng $$xy + xy' = x$$ trên mặt phẳng |
 
-### Các tính chất của mã Gray
+### 2.2. Quy tắc khoanh nhóm (học thuộc)
 
-1. **Tính duy nhất**: Mỗi số nguyên có đúng một mã Gray tương ứng.
-2. **Tính chu kỳ**: Mã Gray cuối cùng (10...0) chỉ khác mã Gray đầu tiên (00...0) đúng một bit, tạo thành chu trình khép kín.
-3. **Tính đối xứng**: Mã Gray có tính đối xứng qua trung tâm.
-4. **Độ dài bit**: Với $$n$$ bit, mã Gray biểu diễn được $$2^n$$ giá trị từ 0 đến $$2^n - 1$$.
+1. Chỉ khoanh ô mang **1** (hoặc **X** nếu dùng don't-care).
+2. Kích thước nhóm phải là lũy thừa của 2: $$1, 2, 4, 8, \ldots$$
+3. Ưu tiên nhóm **lớn** (loại được nhiều biến hơn → tích ngắn hơn).
+4. Các nhóm **được chồng**: một ô **1** có thể thuộc nhiều nhóm.
+5. Mọi ô **1** phải được phủ **ít nhất một lần**; don't-care **không** bắt buộc phủ.
 
-### Công thức chuyển đổi
+![Năm quy tắc khoanh nhóm](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_grouping_rules.svg)
 
-#### Từ mã nhị phân sang mã Gray
+<p class="textbook-figure-caption" data-figure="13.42">Quy tắc khoanh nhóm trên K-map.</p>
 
-Cho mã nhị phân $$b_{n-1}b_{n-2}\ldots b_1b_0$$, mã Gray tương ứng $$g_{n-1}g_{n-2}\ldots g_1g_0$$ được tính bằng:
+Nhóm $$2^k$$ ô hợp lệ loại được $$k$$ biến. **Implicant nguyên tố** (prime implicant) = nhóm không còn mở rộng thêm được mà vẫn hợp lệ.
 
-$$g_{n-1} = b_{n-1}$$ (bit cao nhất giữ nguyên)
+## 3. K-map hai biến
 
-$$g_i = b_{i+1} \oplus b_i$$ cho $$i = 0, 1, \ldots, n-2$$
+Lưới $$2\times2$$ với hàng $$x$$, cột $$y$$ (mỗi ô = một **tiểu hạng** / minterm):
 
-Trong đó $$\oplus$$ là phép XOR (phép cộng modulo 2).
+![K-map 2 biến — cấu trúc](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_2var_blank.svg)
+
+<p class="textbook-figure-caption" data-figure="13.43">K-map 2 biến: bốn ô $$m_0$$–$$m_3$$.</p>
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Chuyển mã nhị phân $$1011_2$$ sang mã Gray:
-- $$g_3 = b_3 = 1$$
-- $$g_2 = b_3 \oplus b_2 = 1 \oplus 0 = 1$$
-- $$g_1 = b_2 \oplus b_1 = 0 \oplus 1 = 1$$
-- $$g_0 = b_1 \oplus b_0 = 1 \oplus 1 = 0$$
 
-Kết quả: $$1011_2 \rightarrow 1110_{\text{Gray}}$$
+**Ví dụ 1 (slide — gom một hàng).**  
+$$F = xy + x\bar y$$. Điền hai ô hàng $$x=1$$ → nhóm 2 ô: $$F = x$$.  
+Đây chính là $$x(y+\bar y)=x$$ “bằng mắt”.
+
 </div>
-
-## Giới thiệu Bản đồ Karnaugh
-
-### Tại sao cần K-map?
-
-Tối thiểu hóa bằng đại số đòi hỏi kinh nghiệm và sự tinh tế. Với các hàm có 2-4 biến, K-map cung cấp một phương pháp trực quan có hệ thống:
-
-- Các ô trên K-map được sắp xếp sao cho ô kề nhau khác nhau đúng một biến.
-- Nhóm các ô có giá trị 1 lại với nhau để tạo thành các tích đơn giản hơn.
-
-### K-map 2 biến
-
-Cho hai biến $$x, y$$:
-
-| | $$y = 0$$ | $$y = 1$$ |
-|---|:---:|:---:|
-| $$x = 0$$ | $$x'y'$$ | $$x'y$$ |
-| $$x = 1$$ | $$xy'$$ | $$xy$$ |
-
-Ví dụ: $$F(x, y) = x'y' + x'y + xy$$
-
-| | $$y = 0$$ | $$y = 1$$ |
-|---|:---:|:---:|
-| $$x = 0$$ | 1 | 1 |
-| $$x = 1$$ | 0 | 1 |
-
-Nhóm: cột $$y = 1$$ (cả 2 ô) $$= y$$, và ô $$(x=0, y=0)$$ tách riêng $$= x'y'$$
-
-Kết quả: $$F = y + x'y'$$
-
-<div class="content-box info-box textbook-block" markdown="1">
-**Quy tắc nhóm trên K-map**:
-1. Nhóm chỉ gồm các ô có giá trị 1 (hoặc don't-care).
-2. Nhóm phải là hình chữ nhật với kích thước là lũy thừa của 2 (1, 2, 4, 8, ...).
-3. Nhóm càng lớn càng tốt (càng ít biến trong tích).
-4. Nhóm có thể chồng lên nhau.
-5. Các ô ở biên đối diện được coi là kề nhau (wrap-around).
-</div>
-
-## K-map 3 biến
-
-Với ba biến $$x, y, z$$, K-map có 8 ô được sắp xếp:
-
-| $$xy$$ \ $$z$$ | $$z = 0$$ | $$z = 1$$ |
-|:---:|:---:|:---:|
-| $$00$$ | $$x'y'z'$$ | $$x'y'z$$ |
-| $$01$$ | $$x'yz'$$ | $$x'yz$$ |
-| $$11$$ | $$xyz'$$ | $$xyz$$ |
-| $$10$$ | $$xy'z'$$ | $$xy'z$$ |
-
-Chú ý: các hàng được sắp xếp theo mã Gray (00, 01, 11, 10) để đảm bảo tính kề nhau.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ** 1: Tối thiểu hóa 3 biến:
 
-Cho hàm $$F(x, y, z) = \sum m(0, 1, 2, 5, 7)$$:
+**Ví dụ 2 (slide — hai nhóm).**  
+$$A = xy + \bar x y + \bar x\bar y = \sum m(0,1,3)$$.  
+Hàng $$x=0$$ đầy $$1$$ → $$\bar x$$; cột $$y=1$$ → $$y$$.  
+$$A = \bar x + y$$ (kiểm: tại $$10$$ hàm **0**).
 
-| $$xy$$ \ $$z$$ | $$0$$ | $$1$$ |
-|:---:|:---:|:---:|
-| $$00$$ | 1 | 1 |
-| $$01$$ | 1 | 0 |
-| $$11$$ | 0 | 1 |
-| $$10$$ | 0 | 1 |
+Cùng cover với cách đọc $$m_0,m_1$$ thành $$\bar x$$ và $$m_1,m_3$$ thành $$y$$.
 
-Xác định các nhóm:
-- Nhóm 1: hai ô ở hàng $$xy = 00$$ ($$z = 0, 1$$): $$x'y'$$
-- Nhóm 2: ô $$(xy = 01, z = 0)$$ và ô $$(xy = 00, z = 0)$$: $$x'z'$$
-- Nhóm 3: ô $$(xy = 10, z = 1)$$ và ô $$(xy = 11, z = 1)$$: $$xz$$
-
-Kết quả: $$F = x'y' + x'z' + xz$$
 </div>
 
-## K-map 4 biến
+![K-map 2 biến — ví dụ](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_2var_example.svg)
 
-Với bốn biến $$x, y, z, w$$, K-map có 16 ô:
+<p class="textbook-figure-caption" data-figure="13.44">$$\sum m(0,1,3)$$: nhóm $$\bar x$$ và $$y$$ → $$A=\bar x+y$$.</p>
 
-| $$xy$$ \ $$zw$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
-|:---:|:---:|:---:|:---:|:---:|
-| $$00$$ | $$x'y'z'w'$$ | $$x'y'z'w$$ | $$x'y'zw$$ | $$x'y'zw'$$ |
-| $$01$$ | $$x'yz'w'$$ | $$x'yz'w$$ | $$x'yzw$$ | $$x'yzw'$$ |
-| $$11$$ | $$xyz'w'$$ | $$xyz'w$$ | $$xyzw$$ | $$xyzw'$$ |
-| $$10$$ | $$xy'z'w'$$ | $$xy'z'w$$ | $$xy'zw$$ | $$xy'zw'$$ |
+## 4. K-map ba biến
+
+Tám ô: thường xếp $$xy$$ theo Gray dọc ($$00,01,11,10$$) và $$z$$ ngang ($$0,1$$) — hoặc cột theo Gray $$yz$$. Hàng $$10$$ kề hàng $$00$$ nhờ wrap.
+
+![K-map 3 biến — cấu trúc](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_3var_blank.svg)
+
+<p class="textbook-figure-caption" data-figure="13.45">K-map 3 biến: hàng Gray, cột $$z$$.</p>
 
 <div class="textbook-example" markdown="1">
-**Ví dụ** 2: Tối thiểu hóa 4 biến:
 
-Cho hàm $$F(x, y, z, w) = \sum m(0, 1, 2, 5, 6, 7, 8, 9, 10, 14)$$:
+**Ví dụ (slide — 5 hạng → 2 hạng).**  
+Rút gọn
 
-| $$xy$$ \ $$zw$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
-|:---:|:---:|:---:|:---:|:---:|
-| $$00$$ | 1 | 1 | 0 | 1 |
-| $$01$$ | 0 | 1 | 1 | 1 |
-| $$11$$ | 0 | 0 | 0 | 1 |
-| $$10$$ | 1 | 1 | 0 | 1 |
+$$
+F = xy\bar z + x\bar y\bar z + \bar x y z + \bar x y\bar z + \bar x\bar y\bar z.
+$$
 
-Xác định các nhóm:
-- Nhóm lớn: 4 ô ở góc (00,00), (00,10), (10,00), (10,10): $$z'w'$$
-- Nhóm 2: ô (00,01) và (10,01): $$x'w$$
-- Nhóm 2: ô (01,01) và (01,11): $$x'yz$$
-- Nhóm 2: ô (01,10) và (11,10): $$yzw'$$
+Trên K-map (cột Gray $$yz$$): nhóm bốn ô mang $$\bar z$$ → $$\bar z$$; nhóm hai ô mang $$\bar x y$$ → $$\bar x y$$.
 
-Kết quả: $$F = z'w' + x'w + x'yz + yzw'$$
+$$
+F = \bar z + \bar x y.
+$$
+
+Kiểm nhanh: tại $$111$$, $$\bar z=0$$ và $$\bar x y=0$$ → $$F=0$$; tại $$011$$, $$\bar x y=1$$ → $$F=1$$.
+
 </div>
-
-## Điều kiện Don't-care
-
-Trong thực tế, có những trường hợp hàm Boole không quan tâm đến giá trị đầu ra. Các điều kiện này được gọi là **don't-care conditions** và được ký hiệu bằng $$X$$ trên K-map.
-
-Don't-care giúp việc nhóm trở nên linh hoạt hơn vì chúng ta có thể coi chúng là 0 hoặc 1 tùy lợi.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ** 3: Sử dụng Don't-care:
 
-Cho hàm $$F(x, y, z) = \sum m(0, 1, 3) + \sum d(5, 7)$$, trong đó $$d$$ là don't-care:
+**Ví dụ.** $$F=\sum m(0,1,2,5,7)$$.  
+Một cách nhóm: hàng $$xy=00$$ cả hai ô → $$x'y'$$; hai ô $$z=0$$ ở $$xy=00$$ và $$01$$ → $$x'z'$$; hai ô $$z=1$$ ở $$xy=11$$ và $$10$$ → $$xz$$.  
+$$F=x'y'+x'z'+xz$$. Nên đối chiếu vài vector với bảng gốc để chắc không sót/không thừa.
 
-| $$xy$$ \ $$z$$ | $$0$$ | $$1$$ |
-|:---:|:---:|:---:|
-| $$00$$ | 1 | 1 |
-| $$01$$ | 0 | X |
-| $$11$$ | 0 | X |
-| $$10$$ | 0 | 0 |
-
-Chúng ta có thể nhóm:
-- Nhóm 1: ô (00,0) và (00,1): $$x'y'$$
-- Nhóm 2: ô (00,1), (01,1), (11,1), (10,1) sử dụng don't-care: $$z$$
-
-Kết quả: $$F = x'y' + z$$
 </div>
 
-## So sánh K-map với tối thiểu hóa đại số
+![K-map 3 biến — ví dụ](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_3var_example.svg)
 
-| Tiêu chí | K-map | Đại số Boole |
-|---|---|---|
-| Phạm vi | 2-4 biến hiệu quả | Mọi số biến |
-| Tính trực quan | Cao | Thấp |
-| Tốc độ | Nhanh với số biến nhỏ | Chậm hơn |
-| Độ chính xác | Đúng tuyệt đối | Phụ thuộc kỹ năng |
-| Ứng dụng | Thiết kế mạch cơ bản | Chứng minh, phát triển lý thuyết |
+<p class="textbook-figure-caption" data-figure="13.46">Ví dụ 3 biến với ba nhóm; một cover: $$F=x'y'+x'z'+xz$$.</p>
+
+## 5. K-map bốn biến
+
+Mười sáu ô; cả hàng $$xy$$ và cột $$zw$$ đều Gray $$00,01,11,10$$. Góc bốn ô $$z'w'$$ (các tổ hợp $$**00$$ và $$**10$$ ở hai mép) thường tạo nhóm “vòng” lớn.
+
+![K-map 4 biến — cấu trúc](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_4var_blank.svg)
+
+<p class="textbook-figure-caption" data-figure="13.47">K-map 4 biến: số trong ô = chỉ số minterm.</p>
+
+![K-map 4 biến — wrap-around](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_4var_wrap.svg)
+
+<p class="textbook-figure-caption" data-figure="13.48">Bốn góc kề trên torus — nhóm wrap-around hợp lệ.</p>
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ.** $$F=\sum m(0,1,2,5,6,7,8,9,10,14)$$.  
+Một cover hay gặp trong tài liệu: $$F=z'w'+x'w+x'yz+yzw'$$ — tương ứng lần lượt nhóm góc $$z'w'$$, cặp mang $$x'w$$, v.v. Bài tập yêu cầu bạn **tự khoanh** trên giấy rồi mới chép tích; đừng học thuộc chuỗi hạng.
+
+</div>
+
+## 6. Phủ tối tiểu và tế bào lớn — quy trình 5 bước
+
+Khi đã biết “khoanh nhóm lớn”, vẫn còn câu hỏi: **chọn tập nhóm nào** để vừa phủ hết các ô $$1$$ vừa không thừa? Đây chính là bài toán **phủ tập** (set cover) trên K-map.
+
+<div class="textbook-definition" markdown="1">
+
+**Phủ và phủ tối tiểu.** Cho họ $$\mathcal{S}=\{X_1,\ldots,X_n\}$$ các tập con của $$X$$. $$\mathcal{S}$$ là **phủ** của $$X$$ nếu $$X=\bigcup_i X_i$$. Phủ gọi là **tối tiểu** (irredundant) nếu bỏ bất kỳ $$X_i$$ nào thì không còn phủ được $$X$$.
+
+</div>
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ tập.** $$X=\{a,b,c,d\}$$, $$A=\{a,b\}$$, $$B=\{c,d\}$$, $$C=\{a,d\}$$, $$D=\{b,c\}$$.  
+Họ $$\{A,B,C,D\}$$ phủ nhưng **không** tối tiểu (thừa). Các phủ tối tiểu gồm $$\{A,B\}$$ và $$\{C,D\}$$. Họ $$\{B,D\}$$ không phủ.
+
+</div>
+
+![Phủ tối tiểu](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_set_cover.svg)
+
+<p class="textbook-figure-caption" data-figure="13.49">Phủ tối tiểu trên tập: bỏ bớt tập con thì không còn phủ.</p>
+
+Trên K-map, mỗi **tế bào lớn** (nhóm lũy thừa 2 không mở rộng thêm được) ứng với một **implicant nguyên tố**. Các ô mang $$1$$ là tập $$X$$ cần phủ.
+
+![Tế bào lớn cốt yếu](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_essential_cell.svg)
+
+<p class="textbook-figure-caption" data-figure="13.50">Ô 1 chỉ thuộc một tế bào lớn → tế bào đó **cốt yếu** (essential PI).</p>
+
+Thuật toán tìm công thức đa thức tối tiểu (SOP hai cấp) gồm **năm bước** — mỗi bước một hình:
+
+![Bước 1](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_step_1.svg)
+
+<p class="textbook-figure-caption" data-figure="13.51">Bước 1: vẽ K-map và điền 1 (và X).</p>
+
+![Bước 2](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_step_2.svg)
+
+<p class="textbook-figure-caption" data-figure="13.52">Bước 2: liệt kê mọi tế bào lớn.</p>
+
+![Bước 3](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_step_3.svg)
+
+<p class="textbook-figure-caption" data-figure="13.53">Bước 3: chọn tế bào cốt yếu.</p>
+
+![Bước 4](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_step_4.svg)
+
+<p class="textbook-figure-caption" data-figure="13.54">Bước 4: hoàn tất phủ (nhánh nếu cần).</p>
+
+![Bước 5](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_step_5.svg)
+
+<p class="textbook-figure-caption" data-figure="13.55">Bước 5: đọc SOP tối tiểu.</p>
+
+<div class="textbook-definition" markdown="1">
+
+**Thuật toán 5 bước (K-map → SOP tối tiểu).**
+
+1. **Vẽ** K-map của $$f$$ và đánh dấu các ô $$1$$ (và $$X$$ nếu có).
+2. **Liệt kê** tất cả **tế bào lớn** của $$\mathrm{kar}(f)$$ — tức mọi implicant nguyên tố.
+3. **Chọn bắt buộc**: tế bào lớn $$T$$ **nhất thiết** phải chọn nếu tồn tại một ô $$1$$ **chỉ** thuộc $$T$$ (không nằm trong tế bào lớn nào khác). Đây là implicant **cốt yếu**.
+4. **Hoàn tất phủ**: nếu các tế bào ở bước 3 đã phủ hết các ô $$1$$ thì đó là (các) phủ tối tiểu. Nếu còn ô chưa phủ, với mỗi ô còn lại chọn một trong các tế bào lớn chứa nó; thu được các họ phủ, rồi **loại** các họ không tối tiểu (thừa tập).
+5. **Đọc biểu thức**: mỗi phủ tối tiểu → một SOP; giữ dạng không bị dạng khác thực sự đơn giản hơn.
+
+</div>
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ 1 (slide — phủ cốt yếu đủ).**  
+Hàm bốn biến sau khi điền K-map có các tế bào lớn gồm (trong số khác) nhóm cả “khối $$x$$” và nhóm $$yz$$, mỗi nhóm chứa ô **chỉ** thuộc nó. Bước 3 buộc chọn cả hai; bước 4 thấy đã phủ hết → phủ tối tiểu duy nhất; bước 5:
+
+$$
+f = x + yz.
+$$
+
+</div>
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ 2 (slide — hai dạng tối tiểu “đơn giản như nhau”).**  
+Khi bước 3 **chưa** phủ hết, bạn **nhánh**: với một ô còn lại, thử lần lượt từng tế bào lớn chứa nó.
+
+Giả sử các tế bào cốt yếu đã chọn là $$\bar x\bar t$$, $$xzt$$, $$\bar z\bar t$$, còn **một** ô chưa phủ nằm trong đúng hai tế bào lớn (ví dụ $$\bar x\bar y z$$ và $$\bar y zt$$). Hai phủ tối tiểu:
+
+$$
+\begin{aligned}
+f_1 &= \bar z\bar t + \bar x\bar t + xzt + \bar x\bar y z, \\
+f_2 &= \bar z\bar t + \bar x\bar t + xzt + \bar y zt.
+\end{aligned}
+$$
+
+Cùng số hạng / độ phức tạp tương đương → **cả hai** là công thức đa thức tối tiểu (không bắt buộc chỉ còn một đáp án).
+
+</div>
+
+**Liên hệ Quine–McCluskey (13.5).** Bước 2–3 trên K-map chính là “sinh implicant nguyên tố + implicant cốt yếu” của QM; bước 4 là bảng phủ / nhánh Petrick viết tay trên lưới. K-map cho mắt; QM cho máy. Slide “Bản đồ Karnaugh” cũng có phần QM — giáo trình tách sang bài 13.5 cho gọn.
+
+## 7. Don't-care
+
+Đôi khi đặc tả không quan tâm đầu ra tại vài vector (mã không dùng, trạng thái không tới). Ký $$X$$ trên K-map: được phép coi là $$1$$ để **phình** nhóm, nhưng không bắt buộc phủ nếu không có lợi. Cùng ý sẽ gặp lại ở Quine–McCluskey: don't-care tham gia sinh implicant, không buộc xuất hiện trong cover.
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ.** $$F=\sum m(0,1,3)+d(5,7)$$.  
+Dùng $$X$$ ở cột $$z=1$$ có thể kéo thành cả cột $$z$$, cộng nhóm hàng $$x'y'$$, nhận $$F=x'y'+z$$ — ngắn hơn nếu bỏ không dùng $$X$$.
+
+</div>
+
+![Don't-care trên K-map](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_dont_care.svg)
+
+<p class="textbook-figure-caption" data-figure="13.56">$$X$$ nới nhóm cột $$z$$; không bắt buộc phủ $$X$$ → $$F=x'y'+z$$.</p>
+
+## 8. K-map và đại số
+
+K-map giỏi **nhìn** với $$n\le 4$$ (năm–sáu biến đã chật). Đại số chứng minh đẳng thức và xử lý biểu thức ký hiệu. Từ năm biến trở lên, chuyển sang tabulation (13.5) hoặc heuristic công nghiệp. Cả ba tầng cùng nói ngôn ngữ implicant.
 
 ## Bài tập
 
-### Bài tập 1: Xây dựng mã Gray
+### Bài tập 1
 
-1. Xây dựng danh sách mã Gray 4 bit bằng phương pháp phản chiếu.
-2. Chuyển mã nhị phân $$1101_2$$ sang mã Gray.
-3. Chuyển mã Gray $$1011$$ sang mã nhị phân.
+Chuyển $$1101_2$$ sang Gray. Liệt kê Gray 3 bit theo thứ tự.
 
-### Bài tập 2: Sử dụng K-map
+<details>
+<summary>Đáp án</summary>
 
-1. Tối thiểu hóa hàm $$F(x, y) = \sum m(0, 2, 3)$$ bằng K-map 2 biến.
-2. Tối thiểu hóa hàm $$F(x, y, z) = \sum m(0, 1, 2, 4, 5)$$ bằng K-map 3 biến.
-3. Tối thiểu hóa hàm $$F(x, y, z, w) = \sum m(0, 1, 2, 3, 8, 9, 10, 11)$$ bằng K-map 4 biến.
+$$1101\to 1011$$ (Gray).  
+3 bit: $$000,001,011,010,110,111,101,100$$.
 
-### Bài tập 3: Don't-care conditions
+</details>
 
-1. Tối thiểu hóa hàm $$F(x, y, z) = \sum m(0, 1, 5) + \sum d(2, 7)$$.
-2. Tìm hàm Boole đơn giản nhất thỏa mãn bảng chân trị sau với don't-care:
+### Bài tập 2
 
-| $$x$$ | $$y$$ | $$z$$ | $$F$$ |
-|:---:|:---:|:---:|:---:|
-| 0 | 0 | 0 | 1 |
-| 0 | 0 | 1 | 0 |
-| 0 | 1 | 0 | 1 |
-| 0 | 1 | 1 | X |
-| 1 | 0 | 0 | 0 |
-| 1 | 0 | 1 | 1 |
-| 1 | 1 | 0 | X |
-| 1 | 1 | 1 | 1 |
+Tối thiểu hóa bằng K-map:
 
-## Xem thêm / Video gợi ý
+(a) $$F = xy + x\bar y$$ (hai biến).  
+(b) $$A = xy + \bar x y + \bar x\bar y$$.  
+(c) $$\sum m(0,1,2,4,5)$$ ba biến.
 
-- [Boolean Algebra and Karnaugh Maps](https://www.youtube.com/watch?v=5jZ5n8k0p0Q) — Neso Academy (Gate level + minimization)
+<details>
+<summary>Đáp án</summary>
+
+(a) $$F=x$$.  
+(b) $$A=\bar x + y$$.  
+(c) Một dạng gọn: $$F=x'z'+y'z'+xy'$$ — đối chiếu với bảng của bạn.
+
+</details>
+
+### Bài tập 2b — Slide 3 biến
+
+Rút gọn bằng K-map:
+
+$$
+F = xy\bar z + x\bar y\bar z + \bar x y z + \bar x y\bar z + \bar x\bar y\bar z.
+$$
+
+<details>
+<summary>Đáp án</summary>
+
+$$F = \bar z + \bar x y$$ (nhóm bốn ô $$\bar z$$ và cặp $$\bar x y$$).
+
+</details>
+
+### Bài tập 3
+
+$$F=\sum m(0,1,5)+d(2,7)$$. Dùng $$X$$ khéo để rút gọn.
+
+<details>
+<summary>Đáp án</summary>
+
+Có thể đạt $$F=x'z'+y'z$$ hoặc dạng tương đương ngắn; mọi ô $$1$$ phải phủ, $$X$$ tùy chọn.
+
+</details>
+
+### Bài tập 4 — Phủ tối tiểu
+
+Cho $$X=\{a,b,c,d\}$$ và $$A=\{a,b\}$$, $$B=\{c,d\}$$, $$C=\{a,d\}$$, $$D=\{b,c\}$$.
+
+(a) $$\{A,B,C,D\}$$ có phải phủ tối tiểu không?  
+(b) Nêu hai phủ tối tiểu khác nhau.  
+(c) Trên K-map, “tế bào lớn nhất thiết phải chọn” tương ứng khái niệm nào của QM?
+
+<details>
+<summary>Đáp án</summary>
+
+(a) Không — có thể bỏ bớt vẫn phủ.  
+(b) $$\{A,B\}$$ và $$\{C,D\}$$ (còn các phủ tối tiểu khác tùy định nghĩa).  
+(c) **Implicant nguyên tố cốt yếu** (essential prime implicant).
+
+</details>
+
+### Bài tập 5 — Năm bước
+
+Với $$F(x,y,z)=\sum m(0,2,4,5,6)$$: vẽ K-map 3 biến, liệt kê tế bào lớn, chỉ ra tế bào cốt yếu (nếu có), viết một SOP (tổng các tích) tối tiểu. Nêu rõ bạn đã đi qua bước nào của quy trình 5 bước.
+
+<details>
+<summary>Đáp án</summary>
+
+Một cover thường gặp: nhóm bốn ô $$z'=0$$ cho $$z'$$ và cặp mang $$xy'$$ hoặc tương đương — ví dụ $$F=z'+xy'$$ (kiểm bảng). Tế bào phủ một ô “cô đơn” (nếu có) là cốt yếu. Quy trình: B1 vẽ → B2 tế bào lớn → B3 cốt yếu → B4 phủ → B5 đọc SOP (tổng các tích).
+
+</details>
+
+## Xem thêm
+
+- <a href="https://www.youtube.com/watch?v=dJsguV1PaPQ">Karnaugh maps</a> — luyện khoanh nhóm
 
 ## Tóm tắt
 
-- **Mã Gray**: hai giá trị liên tiếp chỉ khác một bit; dùng để sắp xếp hàng và cột trên K-map.
-- **Bản đồ Karnaugh**: phương pháp trực quan tối thiểu hóa hàm Boole với 2–4 biến.
-- **Quy tắc nhóm**: nhóm các ô 1 (hoặc don't-care) thành hình chữ nhật có kích thước lũy thừa của 2; ưu tiên nhóm lớn nhất.
-- **Don't-care**: các tổ hợp đầu vào không quan tâm giúp tạo nhóm lớn hơn và biểu thức ngắn hơn.
-- **So sánh**: K-map trực quan và nhanh với ít biến; đại số Boole và Quine–McCluskey phù hợp khi số biến tăng.
-
-Trong bài tiếp theo, chúng ta sẽ học phương pháp Quine–McCluskey — phiên bản thuật toán của tối thiểu hóa hàm Boole.
+Gray bảo đảm kề hình học = kề Hamming. K-map biến việc gộp minterm thành thao tác hình học trên lưới 2–4 biến; **tế bào lớn** + **phủ tối tiểu** (5 bước) chọn cover không thừa; don't-care nới nhóm khi đặc tả cho phép. Bài sau thuật toán hóa cùng ý tưởng bằng **bảng Quine–McCluskey**.

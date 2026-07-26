@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Đại số Boole: Từ Boole đến Chip Hiện đại"
 categories: chapter13
@@ -7,261 +6,347 @@ date: 2021-01-01
 order: 6
 required: false
 lang: en
-excerpt: "Chương 13 đã trình bày đại số Boole từ định nghĩa hình thức đến các phương pháp tối thiểu hóa. Mục bổ sung này khảo sát hành trình lịch sử và ứng dụng công…"
+excerpt: "Tổng hợp chương 13: từ Boole và Shannon đến cổng, tối thiểu hóa, kiểm chứng logic (SAT) và FPGA — giải thích thuật ngữ từng bước."
 ---
 
-Chương 13 đã trình bày đại số Boole từ định nghĩa hình thức đến các phương pháp tối thiểu hóa. Mục bổ sung này khảo sát hành trình lịch sử và ứng dụng công nghiệp: từ George Boole và Claude Shannon đến cổng logic trên chip, SAT solvers, tối giản logic và FPGA — cho thấy một lý thuyết trừu tượng trở thành ngôn ngữ vật lý của máy tính số.
+<div class="textbook-epigraph" markdown="1">
+
+"It has been found that the symbolism of Algebra is capable of indicating… the laws of those mental operations which are involved in reasoning."
+
+<span class="epigraph-attribution">— George Boole, *An Investigation of the Laws of Thought* (1854)</span>
+
+</div>
+
+Các bài 13.1–13.5 đã trang bị **công cụ kỹ thuật**: đại số Boole, hàm và dạng chuẩn, cổng logic, K-map, Quine–McCluskey. Bài tổng hợp này trả lời câu hỏi *vì sao những công cụ đó quan trọng*: một hệ ký hiệu thế kỷ XIX trở thành ngôn ngữ chung của mạch số, và mỗi lần rút gọn biểu thức có thể đổi thành **ít cổng hơn, dễ kiểm tra hơn**.
+
+Sợi chỉ xuyên suốt chương:
+
+| Bước | Nội dung | Bài |
+|:---:|:---|:---|
+| 1 | Đại số Boole (0/1, AND/OR/NOT) | 13.1 |
+| 2 | Hàm, bảng, SOP / POS | 13.2 |
+| 3 | Cổng và tối thiểu hóa đại số | 13.3 |
+| 4 | K-map / Quine–McCluskey | 13.4–13.5 |
+| 5 | Bối cảnh ứng dụng rộng | **bài này** |
+| 6 | Mạch cộng, MUX, decoder | 13.7 |
+
+## Mục tiêu học tập
+
+<div class="textbook-objectives" markdown="1">
+
+**Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
+
+- **Tóm tắt** vai trò của Boole và Shannon trong việc nối logic với mạch chuyển mạch.
+- **Mô tả** lộ trình: yêu cầu → bảng chân trị → biểu thức → tối thiểu hóa → mạng cổng.
+- **Giải thích** (định tính) vì sao rút gọn biểu thức làm giảm số cổng.
+- **Liên hệ** CNF / bài toán SAT với việc kiểm tra hai mạch có cùng hành vi.
+- **Nhận biết** FPGA/LUT như “bảng chân trị lập trình được”.
+
+**Từ khóa**: đại số Boole, Claude Shannon, tối thiểu hóa, SAT, FPGA, LUT (lookup table).
+
+</div>
+
+## 1. Hai bước nhảy lịch sử: Boole và Shannon
+
+### 1.1. George Boole — đại số hóa suy luận
+
+George Boole (1815–1864) không thiết kế máy tính. Trong *The Laws of Thought* (1854), ông đề xuất thao tác mệnh đề / lớp bằng ký hiệu đại số — cộng, nhân, bù — với quy luật riêng (ví dụ $$1 + 1 = 1$$ trong ngữ cảnh logic).
+
+Điểm then chốt với tin học sau này: suy luận được viết dưới dạng **biểu thức** có thể biến đổi theo quy tắc, không chỉ là câu tiếng Việt hay tiếng Anh.
 
 ![George Boole](/discrete-mathematics-for-computer-science-iuh/img/course/George_Boole.jpg)
 
-<p class="textbook-figure-caption" data-figure="13.26">Boole tạo ngôn ngữ logic đại số; Shannon biến nó thành nguyên lý của mạch số.</p>
+<p class="textbook-figure-caption" data-figure="13.26">George Boole (1815–1864) — đặt nền đại số cho logic.</p>
+
+### 1.2. Claude Shannon — Boole khớp với mạch đóng/mở
+
+Năm **1937**, luận văn thạc sĩ của Claude Shannon chỉ ra sự tương ứng:
+
+| Logic / Boole | Mạch chuyển mạch (rơ-le) |
+|:---|:---|
+| **0** / **1** | hở / đóng (hoặc hai mức điện áp) |
+| AND | nối tiếp |
+| OR | song song |
+| NOT | tiếp điểm đảo |
+
+Đây là cú ghép quan trọng: **cùng một biểu thức** vừa mô tả suy luận vừa mô tả mạng công tắc. Từ đó, thiết kế mạch số có thể dùng biến đổi đại số thay vì chỉ thử–sai trên sơ đồ.
+
 ![Claude Shannon](/discrete-mathematics-for-computer-science-iuh/img/course/ClaudeShannon_MFO3807.jpg)
 
-<p class="textbook-figure-caption" data-figure="13.27">Claude Shannon (1916–2001) — nối đại số Boole với mạch relay và thông tin số.</p>
-![Từ truth table đến silicon](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
+<p class="textbook-figure-caption" data-figure="13.27">Claude Shannon (1916–2001) — nối đại số Boole với mạch rơ-le (1937).</p>
 
-<p class="textbook-figure-caption" data-figure="13.28">Mỗi cổng logic là hiện thân vật lý của biểu thức Boole trên chip.</p>
-![SAT solver workflow](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
+<div class="textbook-definition" markdown="1">
 
-<p class="textbook-figure-caption" data-figure="13.29">SAT solvers biến logic Boolean thành động cơ giải verification và scheduling ở quy mô công nghiệp.</p>
-![Tối giản logic trên chip](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
+**Không nhầm mốc.** Boole (thế kỷ XIX) = đại số logic. Shannon (1937) = **ánh xạ** đại số đó lên mạch điện. Transistor và mạch tích hợp sau này chỉ là **hiện thực vật lý** các cổng; khung logic vẫn là Boole.
 
-<p class="textbook-figure-caption" data-figure="13.30">Biểu thức ngắn hơn → ít cổng → ít transistor → ít điện năng và độ trễ thấp hơn.</p>
-## Phần 1: Boole, Shannon, và cuộc cách mạng nối logic với điện
-
-### 1.1. George Boole và tham vọng đại số hóa tư duy
-
-George Boole không nghĩ mình đang thiết kế CPU.
-Ông quan tâm đến logic như đối tượng có thể tính toán bằng ký hiệu đại số.
-
-Ý tưởng của Boole rất táo bạo:
-thay vì xem suy luận chỉ là ngôn ngữ tự nhiên,
-chúng ta có thể thao tác nó như biểu thức toán học.
-
-### 1.2. Claude Shannon nhìn thấy tia lửa thực dụng
-
-Năm 1937,
-Claude Shannon nhận ra rằng đại số Boole
-khớp hoàn hảo với mạch relay switching:
-
-- đóng/mở,
-- 1/0,
-- đúng/sai.
-
-Đây là một trong những cú ghép ý tưởng vĩ đại nhất lịch sử engineering.
-Logic trở thành điện.
-
----
-
-## Phần 2: Từ truth table đến silicon
-
-### 2.1. Mỗi cổng logic là một hiện thân vật lý của biểu thức Boole
-
-AND,
-OR,
-NOT,
-NAND,
-NOR,
-XOR
-không chỉ là ký hiệu trong sách.
-Chúng là phần tử thật trong mạch.
-
-Một truth table cho biết hành vi logic.
-Một schematic cho biết cách hiện thực hành vi đó bằng phần cứng.
-
-### 2.2. Thiết kế số là dịch biểu thức thành phần cứng
-
-Kỹ sư bắt đầu từ yêu cầu:
-
-- bộ cộng,
-- multiplexer,
-- decoder,
-- ALU,
-- finite-state controller.
-
-Rồi họ dùng đại số Boole để tối ưu và hiện thực hóa.
-
-### 2.3. Vì sao tối giản logic quan trọng
-
-Biểu thức ngắn hơn thường dẫn đến:
-
-- ít cổng hơn,
-- ít transistor hơn,
-- ít điện năng hơn,
-- độ trễ thấp hơn,
-- chi phí thấp hơn.
-
-Ở đây,
-mỗi phép biến đổi đại số có thể có hậu quả vật lý thật trên silicon.
-
----
-
-## Phần 3: SAT solvers trong công nghiệp
-
-### 3.1. Từ biểu thức logic đến bài toán thỏa mãn
-
-SAT hỏi:
-có tồn tại gán giá trị true/false cho biến để công thức Boole đúng hay không?
-
-Nghe rất lý thuyết.
-Nhưng SAT solvers là công cụ công nghiệp cực mạnh.
-
-### 3.2. Ứng dụng của SAT
-
-SAT được dùng trong:
-
-- hardware verification,
-- scheduling,
-- planning,
-- test generation,
-- package dependency resolution,
-- AI search,
-- cryptanalysis ở một số bối cảnh.
-
-### 3.3. Vì sao SAT mạnh đến vậy
-
-Nhiều bài toán khác nhau có thể được mã hóa thành formula Boole.
-Khi đó,
-chúng ta giao phần search cực khó cho SAT solver tối ưu rất mạnh.
-
-Điều này cho thấy đại số Boole không chỉ tạo ra mạch.
-Nó còn tạo ra format chung cho nhiều bài toán quyết định.
-
----
-
-## Phần 4: Logic minimization — Karnaugh, Quine–McCluskey, Espresso
-
-### 4.1. Tối ưu logic là bài toán kinh điển
-
-Khi biểu thức Boole quá dài,
-chúng ta muốn giảm nó mà vẫn giữ nguyên hành vi.
-
-### 4.2. Karnaugh maps
-
-K-map hữu ích cho biểu thức nhỏ,
-giúp con người nhìn ra nhóm hóa và rút gọn trực quan.
-
-### 4.3. Quine–McCluskey và Espresso
-
-Khi bài toán lớn hơn,
-chúng ta cần thuật toán có hệ thống hơn.
-Quine–McCluskey là phương pháp tabulation cổ điển.
-Espresso là heuristic rất nổi tiếng trong EDA.
-
-Điều đáng chú ý là:
-đây là nơi logic,
-tối ưu hóa,
-và tooling công nghiệp gặp nhau.
-
----
-
-## Phần 5: FPGA và programmable logic
-
-### 5.1. Logic không còn bị đóng cứng hoàn toàn
-
-FPGA cho phép lập trình lại phần cứng logic sau khi sản xuất.
-Thay vì chế tạo chip riêng cho từng chức năng,
-chúng ta cấu hình ma trận logic khả trình.
-
-### 5.2. Vì sao FPGA quan trọng
-
-FPGA được dùng trong:
-
-- prototyping,
-- networking,
-- embedded systems,
-- digital signal processing,
-- low-latency finance,
-- research hardware.
-
-### 5.3. Đại số Boole vẫn ở lõi
-
-Dù workflow hiện đại dùng HDL,
-synthesis tools,
-timing analysis,
-và place-and-route,
-phần lõi suy nghĩ vẫn là Boolean behavior cần được hiện thực hóa.
-
----
-
-## Phần 6: Tương lai — Boolean logic trong kỷ nguyên AI
-
-Ngay cả khi AI bùng nổ,
-Boolean logic không hề bị bỏ lại.
-
-Nó tiếp tục sống trong:
-
-- hardware accelerators,
-- verification tools,
-- synthesis,
-- compilers,
-- symbolic reasoning,
-- neurosymbolic interfaces.
-
-Máy học có thể giúp thiết kế chip tốt hơn,
-nhưng bản thân chip vẫn phải được kiểm chứng bằng logic đúng đắn.
-
----
-
-## Kết luận
-
-Đại số Boole là câu chuyện hiếm hoi nơi một ý tưởng logic trừu tượng
-trở thành ngôn ngữ vật lý của máy tính.
-
-Từ Boole,
-đến Shannon,
-đến cổng logic,
-SAT solvers,
-logic minimization,
-và FPGA,
-chúng ta thấy một tuyến phát triển thẳng từ tư duy đến silicon.
-
-Nếu muốn hiểu vì sao máy tính số hoạt động như hiện nay,
-khó có chương nào quan trọng hơn chương 13.
-
----
-
-## Bài tập thực hành
-
-### Bài tập 1: Biểu diễn mạch
-
-Viết biểu thức Boolean cho mạch có 3 input A,B,C với output = (A AND B) OR (NOT C).
-
-<details>
-<summary>Đáp án</summary>
-
-<div class="textbook-equation" markdown="1">
-$$(A \land B) \lor \lnot C$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-</details>
 
-### Bài tập 2: Tối ưu biểu thức
+## 2. Từ yêu cầu đến mạng cổng — bốn lớp cùng hành vi
 
-Rút gọn $$A \lor (A \land B)$$ thành biểu thức đơn giản nhất.
+Một chức năng số (ví dụ “cộng hai bit”) có thể mô tả ở nhiều lớp **cùng hành vi**:
+
+| Lớp | Câu hỏi | Ví dụ “cộng 1 bit” |
+|:---|:---|:---|
+| 1. **Bảng chân trị** | Input nào → output nào? | $$(1,1)$$ → carry **1**, sum **0** |
+| 2. **Biểu thức Boole** | Công thức SOP / POS? | $$s = x \oplus y$$, $$c = xy$$ |
+| 3. **Mạng cổng** | Vẽ AND/OR/NOT/XOR thế nào? | 1 XOR + 1 AND |
+| 4. **Hiện thực** | Linh kiện / chip ra sao? | transistor, hoặc LUT trên FPGA |
+
+![Bảng chân trị — điểm xuất phát](/discrete-mathematics-for-computer-science-iuh/img/course/truth_table_grid.svg)
+
+<p class="textbook-figure-caption" data-figure="13.28">Bảng chân trị — “hợp đồng” hành vi trước khi viết biểu thức hay vẽ cổng.</p>
+
+![Cổng AND](/discrete-mathematics-for-computer-science-iuh/img/course/Gate_AND.svg)
+
+<p class="textbook-figure-caption" data-figure="13.29">Cổng AND — một khối chuẩn trên sơ đồ mạch.</p>
+
+![Cổng OR](/discrete-mathematics-for-computer-science-iuh/img/course/Gate_OR.svg)
+
+<p class="textbook-figure-caption" data-figure="13.29b">Cổng OR.</p>
+
+![Cổng NOT](/discrete-mathematics-for-computer-science-iuh/img/course/Gate_NOT.svg)
+
+<p class="textbook-figure-caption" data-figure="13.29c">Cổng NOT.</p>
+
+![Transistor CMOS (mô hình)](/discrete-mathematics-for-computer-science-iuh/img/course/transistor.svg)
+
+<p class="textbook-figure-caption" data-figure="13.30">Transistor là “gạch” silicon; mỗi cổng logic gồm vài đến hàng chục transistor tùy công nghệ.</p>
+
+### 2.1. Ví dụ xuyên suốt: half adder
+
+Hai bit $$x, y$$. Tổng $$s$$ và nhớ $$c$$:
+
+| $$x$$ | $$y$$ | $$c$$ | $$s$$ |
+|:---:|:---:|:---:|:---:|
+| 0 | 0 | 0 | 0 |
+| 0 | 1 | 0 | 1 |
+| 1 | 0 | 0 | 1 |
+| 1 | 1 | 1 | 0 |
+
+Dạng SOP (tổng các tích):
+
+$$
+s = \bar x y + x \bar y = x \oplus y,\qquad
+c = x y.
+$$
+
+![Half adder](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
+
+<p class="textbook-figure-caption" data-figure="13.31">Half adder: $$s = x \oplus y$$, $$c = xy$$.</p>
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ (đếm cổng).**  
+Hiện thực $$s = \bar x y + x \bar y$$ bằng AND/OR/NOT: khoảng 2 NOT + 2 AND + 1 OR = **5 cổng**.  
+Nếu được dùng cổng XOR có sẵn: **1 XOR + 1 AND**.  
+Cùng bảng chân trị, **sơ đồ khác nhau rõ rệt** — đó là lý do ta rút gọn biểu thức trước khi vẽ mạch.
+
+</div>
+
+### 2.2. Vì sao rút gọn không chỉ “đẹp trên giấy”
+
+Hai biểu thức **tương đương** (cùng bảng chân trị):
+
+$$
+f_1 = xy + x\bar y + \bar x y,\qquad
+f_2 = x + y.
+$$
+
+| | $$f_1$$ (thừa) | $$f_2$$ (rút gọn) |
+|:---|:---:|:---:|
+| AND 2-ngõ (ước lượng) | 3 | 0 |
+| OR 2-ngõ | 2 | 1 |
+| NOT | 2 | 0 |
+| **Tổng cổng thô** | **7** | **1** |
+
+Trên bài tập, ít cổng nghĩa là vẽ và kiểm nhanh hơn. Trên phần cứng thật, ít cổng thường nghĩa là ít linh kiện, trễ thấp hơn và tiêu thụ ít hơn. K-map và Quine–McCluskey chính là công cụ biến $$f_1$$ thành $$f_2$$ một cách có hệ thống.
+
+## 3. Ba tầng công cụ tối thiểu hóa
+
+| Công cụ | Quy mô điển hình | Bản chất |
+|:---|:---|:---|
+| **Đại số** (13.3) | vài biến, làm tay | nhanh, cần kinh nghiệm |
+| **K-map** (13.4) | 2–4 biến | trực quan |
+| **Quine–McCluskey** (13.5) | vừa, bằng bảng | hệ thống, lập trình được |
+| **Phần mềm hỗ trợ** | nhiều biến | máy làm thay; cùng tư duy gộp + phủ |
+
+![Bản đồ Karnaugh](/discrete-mathematics-for-computer-science-iuh/img/course/karnaugh_map.svg)
+
+<p class="textbook-figure-caption" data-figure="13.32">K-map — tối thiểu hóa bằng mắt cho hàm nhỏ.</p>
+
+![Quine–McCluskey](/discrete-mathematics-for-computer-science-iuh/img/course/quine_mccluskey.svg)
+
+<p class="textbook-figure-caption" data-figure="13.33">Quine–McCluskey — cùng mục tiêu nhưng bằng bảng.</p>
+
+<div class="textbook-definition" markdown="1">
+
+**Thông điệp chương 13.** K-map dạy *nhìn thấy* sự rút gọn; Quine–McCluskey dạy *thuật toán*; phần mềm công nghiệp scale cùng tư duy lên quy mô lớn. Cả ba tầng đều nói ngôn ngữ Boole.
+
+</div>
+
+## 4. SAT: tìm gán biến làm công thức đúng
+
+### 4.1. Bài toán SAT
+
+<div class="textbook-definition" markdown="1">
+
+**SAT** (*Boolean satisfiability*): cho một công thức logic (thường dạng CNF — tích các tuyển), hỏi có tồn tại gán **0**/**1** cho các biến sao cho toàn công thức bằng **1** không?
+
+</div>
+
+Đây là bài NP-đầy đủ kinh điển, nhưng các chương trình giải SAT thực tế vẫn xử lý được nhiều công thức rất lớn.
+
+### 4.2. Liên hệ với kiểm tra hai mạch
+
+Giả sử hai mạch tổ hợp $$f$$ và $$g$$ cùng số ngõ vào, mỗi mạch một ngõ ra. Câu hỏi “$$f$$ và $$g$$ có **cùng hành vi** không?” có thể mã hóa thành:
+
+> Có tồn tại đầu vào sao cho $$f \neq g$$ không?  
+> Tức là: công thức $$f \oplus g$$ có thỏa được (bằng **1**) không?
+
+- Nếu **không** có đầu vào nào làm $$f \oplus g = 1$$ → hai mạch tương đương.
+- Nếu **có** → vector đó là ví dụ phản chứng (test bắt lỗi).
+
+Nói cách khác: cổng **tính** hàm Boole; SAT **tìm kiếm** trong không gian gán biến. Cùng nền tảng, hai vai trò.
+
+![Cây tìm kiếm](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
+
+<p class="textbook-figure-caption" data-figure="13.34">Trực giác tìm kiếm nhánh gán biến. Solver thật tinh vi hơn, nhưng vẫn bám cấu trúc mệnh đề Boole.</p>
+
+### 4.3. Cầu nối với dạng chuẩn
+
+CNF (tích các mệnh đề OR) là dạng đầu vào quen của nhiều chương trình SAT. Vì vậy học POS (tích các tổng) / CNF ở 13.2 không chỉ để thi: khi bạn viết ràng buộc dưới dạng mệnh đề, bạn đã đứng sát ngôn ngữ kiểm chứng.
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ.** Ràng buộc “không bật đồng thời ghi và xóa”: $$\lnot(w \land e)$$ tương đương $$\bar w \lor \bar e$$.  
+Nhiều ràng buộc kiểu này ghép thành CNF lớn.
+
+</div>
+
+## 5. FPGA: bảng chân trị lập trình được
+
+Hai hướng hiện thực mạch số (mức ý tưởng):
+
+| | **ASIC** (chip chuyên dụng) | **FPGA** |
+|:---|:---|:---|
+| Sau sản xuất | logic “đóng” cố định | nạp lại được bằng bitstream |
+| Ưu | mật độ, hiệu năng cao | linh hoạt, thử nhanh |
+| Liên hệ Boole | mạng cổng cố định | mỗi **LUT** $$k$$ ngõ ≈ bảng chân trị $$k$$ biến |
+
+**LUT** (*lookup table*) lưu sẵn cột đầu ra của bảng chân trị. Đó đúng là đối tượng đã học ở 13.2 — chỉ khác chỗ bảng nằm trong bộ nhớ cấu hình thay vì trên giấy.
+
+Người hiểu Boole đọc được vì sao một thiết kế “nặng” (nhiều biến, nhiều hàm) cần nhiều LUT hơn, và vì sao rút gọn biểu thức vẫn có ích trước khi nạp FPGA.
+
+## 6. Sợi chỉ xuyên chương 13
+
+| Bài | Đóng góp |
+|:---|:---|
+| 13.1 | Ngôn ngữ đại số $$+, \cdot, '$$ |
+| 13.2 | Hàm, SOP (tổng các tích) / POS (tích các tổng) |
+| 13.3 | Cổng và tối thiểu hóa đại số |
+| 13.4 | K-map — tối thiểu trực quan |
+| 13.5 | Quine–McCluskey — thuật toán bảng |
+| **13.6** | **Bối cảnh:** Shannon, silicon, SAT, FPGA |
+| 13.7 | Half/full adder, bộ cộng, nhân, MUX, decoder |
+
+<div class="textbook-definition" markdown="1">
+
+**Một câu chốt.** Máy tính số không “hiểu” tiếng Việt; nó chuyển mức điện áp theo hàm $$\{0,1\}^n \to \{0,1\}^m$$. Đại số Boole là toán học của các hàm đó — từ trang vở đến mạch thật.
+
+</div>
+
+## Bài tập
+
+### Bài tập 1 — Shannon map
+
+Nêu tương ứng Shannon (rơ-le) cho: (a) $$x \cdot y$$, (b) $$x + y$$, (c) $$x'$$. Vì sao AND “tự nhiên” là nối tiếp?
 
 <details>
 <summary>Đáp án</summary>
 
-$$A$$ (luật hấp thụ).
+(a) Hai switch nối tiếp — chỉ dẫn khi cả hai đóng.  
+(b) Song song — dẫn khi ít nhất một đóng.  
+(c) Tiếp điểm đảo.  
+AND = nối tiếp vì *cả hai* điều kiện đóng phải thỏa đồng thời.
 
 </details>
 
-### Bài tập 3: Ứng dụng chip
+### Bài tập 2 — Đếm cổng và tương đương
 
-Giải thích tại sao CNF là dạng quan trọng trong thiết kế mạch và kiểm chứng phần cứng.
+Cho $$f = ab + a\bar b$$.
+
+1. Chứng minh $$f = a$$ bằng đại số.  
+2. Ước lượng số cổng AND/OR/NOT nếu hiện thực $$ab + a\bar b$$ so với chỉ dây nối $$a$$.  
+3. Kết luận một câu về tối thiểu hóa.
 
 <details>
 <summary>Đáp án</summary>
 
-CNF dễ ánh xạ sang cổng OR-AND-NOT và là đầu vào chuẩn của nhiều công cụ SAT solver dùng để kiểm chứng mạch.
+1. $$ab + a\bar b = a(b + \bar b) = a$$.  
+2. Dạng dài ≈ 1 NOT + 2 AND + 1 OR; dạng rút: 0 cổng.  
+3. Biểu thức tương đương có thể khác nhau **rất xa** về số cổng.
 
 </details>
 
-## Xem thêm / Video gợi ý
+### Bài tập 3 — Half adder
 
-- [Boolean Algebra and Karnaugh Maps](https://www.youtube.com/watch?v=5jZ5n8k0p0Q) — Neso Academy (Gate level + minimization)
+Từ bảng half adder, viết SOP (tổng các tích) cho $$s$$ và $$c$$. Mô tả mạng cổng nếu được dùng XOR.
+
+<details>
+<summary>Đáp án</summary>
+
+$$s = \bar x y + x\bar y$$ hoặc $$s = x \oplus y$$; $$c = xy$$.  
+Có XOR: 1 XOR + 1 AND.
+
+</details>
+
+### Bài tập 4 — Chọn công cụ
+
+Hàm 3 biến, làm tay trên lớp → công cụ nào? Hàm 12 biến → vì sao không K-map?
+
+<details>
+<summary>Đáp án</summary>
+
+3 biến: K-map hoặc đại số.  
+12 biến: $$2^{12} = 4096$$ minterm — K-map tay không khả thi; dùng QM/phần mềm, không vẽ lưới tay.
+
+</details>
+
+### Bài tập 5 — SAT và tương đương
+
+Giải thích trong 3–5 câu: làm sao dùng SAT để kiểm tra hai mạch 1-bit output $$f$$ và $$g$$ có tương đương? (Gợi ý: xét $$f \oplus g$$.)
+
+<details>
+<summary>Đáp án</summary>
+
+Hỏi có input làm $$f \neq g$$ không, tức $$f \oplus g = 1$$.  
+Nếu **unsat** → không có input phân biệt → $$f \equiv g$$.  
+Nếu **sat** → model là counterexample.
+
+</details>
+
+### Bài tập 6 (thách thức) — LUT
+
+LUT 4-input lưu bao nhiêu bit cấu hình cho *một* hàm Boole 4 biến tùy ý? Liên hệ với bảng chân trị.
+
+<details>
+<summary>Đáp án</summary>
+
+$$2^4 = 16$$ dòng bảng → **16 bit** cho mỗi LUT 4 ngõ (chưa kể định tuyến).
+
+</details>
+
+## Xem thêm
+
+- <a href="https://www.youtube.com/watch?v=zPNdj_Qth_Q">How transistors work</a> — trực giác vật lý cổng
+- <a href="https://www.youtube.com/watch?v=dJsguV1PaPQ">Karnaugh maps</a> — ôn 13.4
 
 ## Tóm tắt
 
-Đại số Boolean là cầu nối giữa logic toán học và phần cứng thực tế. Từ Boole, Shannon đến transistor, FPGA và SAT solver — mọi mạch số đều được xây dựng từ các phép toán AND, OR, NOT. Hiểu cách biểu diễn, rút gọn và tối ưu biểu thức Boolean là kỹ năng nền tảng để thiết kế, phân tích và kiểm chứng hệ thống số hiện đại.
+1. Boole cho đại số logic; Shannon ánh xạ đại số đó lên mạch đóng/mở.
+2. Cùng hành vi có thể mô tả bằng bảng, biểu thức, mạng cổng, rồi hiện thực vật lý.
+3. Rút gọn biểu thức giảm số cổng — trên bài tập và trên phần cứng.
+4. SAT tìm gán biến; dùng được để kiểm hai mạch có cùng hành vi.
+5. FPGA/LUT là bảng chân trị lập trình được — đúng ngôn ngữ chương 13.
+
+Chương khép lại không bằng một công thức mới, mà bằng **bản đồ** từ trang vở đến mạch thật: mỗi lần bạn nhóm ô trên K-map, bạn đang làm cùng loại tối ưu mà hệ thống lớn cũng làm ở quy mô khác.

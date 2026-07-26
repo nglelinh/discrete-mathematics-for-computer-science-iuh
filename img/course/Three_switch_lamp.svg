@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 330" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="Three switch lamp circuit">
+  <rect width="600" height="330" fill="#fafbfc"/>
+
+  <text x="300" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">Mạch — 3 công tắc + đèn</text>
+  <text x="300" y="50" text-anchor="middle" font-size="12" fill="#5c6370">Y = C̄ · (A ⊙ B)</text>
+
+  <text x="50" y="100" font-size="15" font-weight="600" fill="#1a1a2e">A</text>
+  <text x="50" y="160" font-size="15" font-weight="600" fill="#1a1a2e">B</text>
+  <text x="50" y="240" font-size="15" font-weight="600" fill="#1a1a2e">C</text>
+
+  <line x1="70" y1="95" x2="140" y2="115" stroke="#004586" stroke-width="2.5"/>
+  <line x1="70" y1="155" x2="140" y2="145" stroke="#004586" stroke-width="2.5"/>
+  
+  <path d="M130.0,103.75 Q146.75,130 130.0,156.25" fill="none" stroke="#004586" stroke-width="2"/>
+  <path d="M140,103.75 Q161.6,103.75 173.75,103.75 Q199.4,103.75 199.4,130
+           Q199.4,156.25 173.75,156.25 Q161.6,156.25 140,156.25
+           Q150.8,130 140,103.75 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <circle cx="208.15" cy="130" r="6.25" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="168.35" y="135" text-anchor="middle" font-size="12" font-weight="600" fill="#004586">XNOR</text>
+  <line x1="235" y1="130" x2="300" y2="130" stroke="#004586" stroke-width="2.5"/>
+  <text x="255" y="118" font-size="12" fill="#5c6370">A⊙B</text>
+
+  <line x1="70" y1="235" x2="140" y2="235" stroke="#004586" stroke-width="2.5"/>
+  
+  <path d="M140,209.7 L175.42,235 L140,260.3 Z" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <circle cx="182.32" cy="235" r="5.75" fill="#fff" stroke="#004586" stroke-width="2"/>
+  <line x1="200" y1="235" x2="300" y2="235" stroke="#004586" stroke-width="2.5"/>
+  <line x1="300" y1="235" x2="300" y2="150" stroke="#004586" stroke-width="2.5"/>
+  <text x="215" y="255" font-size="12" fill="#5c6370">C̄</text>
+
+  <line x1="300" y1="130" x2="340" y2="130" stroke="#004586" stroke-width="2.5"/>
+  <line x1="300" y1="150" x2="340" y2="150" stroke="#004586" stroke-width="2.5"/>
+  
+  <path d="M340,115.0 L371.5,115.0 Q410.0,115.0 410.0,140 Q410.0,165.0 371.5,165.0 L340,165.0 Z"
+        fill="#fff" stroke="#004586" stroke-width="2"/>
+  <text x="369.4" y="145" text-anchor="middle" font-size="14" font-weight="600" fill="#004586">AND</text>
+  <line x1="420" y1="140" x2="500" y2="140" stroke="#004586" stroke-width="2.5"/>
+
+  <circle cx="540" cy="140" r="26" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+  <text x="540" y="146" text-anchor="middle" font-size="14" font-weight="600" fill="#d97706">Y</text>
+  <text x="540" y="185" text-anchor="middle" font-size="12" fill="#5c6370">đèn</text>
+  <text x="300" y="300" text-anchor="middle" font-size="13" fill="#1a1a2e">Rút gọn từ ĀB̄C̄ + ABC̄</text>
+</svg>

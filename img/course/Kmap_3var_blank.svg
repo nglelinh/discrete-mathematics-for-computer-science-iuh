@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 350" font-family="Source Sans Pro, Inter, Arial, sans-serif" role="img" aria-label="K-map 3-var blank">
+  <rect width="440" height="350" fill="#fafbfc"/>
+
+  <text x="220" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a2e">K-map 3 biến — cấu trúc</text>
+  <text x="220" y="50" text-anchor="middle" font-size="12" fill="#5c6370">Hàng xy theo Gray · cột z · 8 ô</text>
+  <text x="102" y="65" text-anchor="end" font-size="11" fill="#5c6370">xy\z</text>
+  <text x="138.0" y="67" text-anchor="middle" font-size="12" fill="#5c6370">z=0</text>
+  <text x="194.0" y="67" text-anchor="middle" font-size="12" fill="#5c6370">z=1</text>
+  <text x="100" y="107.0" text-anchor="end" font-size="11" fill="#5c6370">xy=00</text>
+  <rect x="110" y="75" width="56" height="56" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="138.0" y="109.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">m0</text>
+  <rect x="166" y="75" width="56" height="56" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="194.0" y="109.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">m1</text>
+  <text x="100" y="163.0" text-anchor="end" font-size="11" fill="#5c6370">xy=01</text>
+  <rect x="110" y="131" width="56" height="56" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="138.0" y="165.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">m2</text>
+  <rect x="166" y="131" width="56" height="56" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="194.0" y="165.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">m3</text>
+  <text x="100" y="219.0" text-anchor="end" font-size="11" fill="#5c6370">xy=11</text>
+  <rect x="110" y="187" width="56" height="56" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="138.0" y="221.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">m6</text>
+  <rect x="166" y="187" width="56" height="56" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="194.0" y="221.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">m7</text>
+  <text x="100" y="275.0" text-anchor="end" font-size="11" fill="#5c6370">xy=10</text>
+  <rect x="110" y="243" width="56" height="56" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="138.0" y="277.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">m4</text>
+  <rect x="166" y="243" width="56" height="56" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="194.0" y="277.0" text-anchor="middle" font-size="18" font-weight="600" fill="#1a1a2e">m5</text>
+  <text x="220" y="320" text-anchor="middle" font-size="12" fill="#5c6370">Hàng 00 kề hàng 10 (wrap) — Gray</text>
+</svg>

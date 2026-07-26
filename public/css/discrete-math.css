@@ -229,9 +229,10 @@
 
 /* Tables */
 .math-table {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 20px auto;
     background: white;
     border-radius: 8px;
     overflow: hidden;
@@ -242,13 +243,14 @@
     background: #007bff;
     color: white;
     padding: 15px;
-    text-align: left;
+    text-align: center;
     font-weight: 600;
 }
 
 .math-table td {
     padding: 12px 15px;
     border-bottom: 1px solid #e9ecef;
+    text-align: center;
 }
 
 .math-table tr:nth-child(even) {
