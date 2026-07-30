@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200" role="img" aria-label="Reduction">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .nt { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 13px; }
+    .cap { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .box { fill: white; stroke: #cbd5e1; stroke-width: 1.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+
+  <text class="t" x="360" y="26" text-anchor="middle" font-size="15" font-weight="600">Rút gọn đa thức A ≤ₚ B</text>
+  <rect class="hi" x="60" y="70" width="160" height="60" rx="8"/><text class="nt" x="140" y="105" text-anchor="middle">Instance A</text>
+  <text class="t" x="250" y="105" font-size="18">→ f · poly</text>
+  <rect class="hi" x="320" y="70" width="160" height="60" rx="8"/><text class="nt" x="400" y="105" text-anchor="middle">Instance B</text>
+  <text class="t" x="510" y="105" font-size="18">→</text>
+  <rect class="box" x="540" y="70" width="120" height="60" rx="8"/><text class="nt" x="600" y="105" text-anchor="middle">Yes/No</text>
+  <text class="cap" x="360" y="170" text-anchor="middle">Nếu B ∈ P và A ≤ₚ B thì A ∈ P · dùng để chứng minh NP-hard</text>
+
+</svg>

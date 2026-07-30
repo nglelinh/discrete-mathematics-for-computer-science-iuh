@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="720" height="280" role="img" aria-label="Diffie-Hellman">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 13px; }
+    .nt { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 14px; }
+    .cap { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .box { fill: white; stroke: #cbd5e1; stroke-width: 1.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+
+  <text class="t" x="360" y="28" text-anchor="middle" font-size="16" font-weight="600">Diffie–Hellman: khóa chung trên kênh công khai</text>
+  <rect class="box" x="40" y="55" width="200" height="160" rx="8"/>
+  <text class="nt" x="140" y="85" text-anchor="middle">Alice</text>
+  <text class="l" x="60" y="115">bí mật a</text>
+  <text class="l" x="60" y="140">A = gᵃ mod p</text>
+  <text class="l" x="60" y="165">K = Bᵃ mod p</text>
+  <text class="l" x="60" y="195">= gᵃᵇ mod p</text>
+  <rect class="box" x="480" y="55" width="200" height="160" rx="8"/>
+  <text class="nt" x="580" y="85" text-anchor="middle">Bob</text>
+  <text class="l" x="500" y="115">bí mật b</text>
+  <text class="l" x="500" y="140">B = gᵇ mod p</text>
+  <text class="l" x="500" y="165">K = Aᵇ mod p</text>
+  <text class="l" x="500" y="195">= gᵃᵇ mod p</text>
+  <text class="t" x="360" y="100" text-anchor="middle" font-size="14">công khai p, g</text>
+  <text class="l" x="360" y="130" text-anchor="middle">A →</text>
+  <text class="l" x="360" y="155" text-anchor="middle">← B</text>
+  <text class="cap" x="360" y="250" text-anchor="middle">Eve thấy p, g, A, B nhưng tính a từ A = gᵃ mod p là bài toán logarit rời rạc</text>
+
+</svg>

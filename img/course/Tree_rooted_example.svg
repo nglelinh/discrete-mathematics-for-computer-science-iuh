@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="720" height="320" role="img" aria-label="Rooted tree">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 13px; }
+    .nt { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 14px; }
+    .cap { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .e { stroke: #334155; stroke-width: 2; fill: none; }
+    .n { fill: white; stroke: #004586; stroke-width: 2.2; }
+    .box { fill: white; stroke: #cbd5e1; stroke-width: 1.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+
+  <text class="t" x="360" y="28" text-anchor="middle" font-size="16" font-weight="600">Cây có gốc — root, depth, height</text>
+  <line class="e" x1="360" y1="70" x2="220" y2="140"/>
+  <line class="e" x1="360" y1="70" x2="500" y2="140"/>
+  <line class="e" x1="220" y1="160" x2="140" y2="240"/>
+  <line class="e" x1="220" y1="160" x2="280" y2="240"/>
+  <line class="e" x1="500" y1="160" x2="500" y2="240"/>
+    <circle class="n" cx="360" cy="60" r="18"/>
+  <text class="nt" x="360" y="65" text-anchor="middle">A</text>
+    <circle class="n" cx="220" cy="150" r="18"/>
+  <text class="nt" x="220" y="155" text-anchor="middle">B</text>
+    <circle class="n" cx="500" cy="150" r="18"/>
+  <text class="nt" x="500" y="155" text-anchor="middle">C</text>
+    <circle class="n" cx="140" cy="250" r="18"/>
+  <text class="nt" x="140" y="255" text-anchor="middle">D</text>
+    <circle class="n" cx="280" cy="250" r="18"/>
+  <text class="nt" x="280" y="255" text-anchor="middle">E</text>
+    <circle class="n" cx="500" cy="250" r="18"/>
+  <text class="nt" x="500" y="255" text-anchor="middle">F</text>
+  <text class="l" x="380" y="55">gốc · depth=0</text>
+  <text class="l" x="40" y="250">lá</text>
+  <text class="cap" x="360" y="295" text-anchor="middle">|V|=6, |E|=5 = n−1 · path A–…–lá duy nhất · height = 2</text>
+
+</svg>

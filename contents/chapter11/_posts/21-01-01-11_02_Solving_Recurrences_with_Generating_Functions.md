@@ -20,13 +20,6 @@ excerpt: "Ở mục trước chúng ta đã định nghĩa hàm sinh . Mục nà
 <p class="textbook-figure-caption" data-figure="11.7">Đồ thị contour của hàm sinh Fibonacci — nhân truy hồi với $x^n$ rồi cộng theo $n$ biến quan hệ đệ quy thành phương trình trên $G(x)$.</p>
 ![Khai triển chuỗi lũy thừa](/discrete-mathematics-for-computer-science-iuh/img/course/Za_by_Power_Series_Expansion.png)
 
-<p class="textbook-figure-caption" data-figure="11.8">Khai triển chuỗi lũy thừa — sau khi tìm $G(x)$ dạng phân thức, mở rộng lại để đọc hệ số $a_n$.</p>
-![Dãy hình học](/discrete-mathematics-for-computer-science-iuh/img/course/Geometric_sequence.svg)
-
-<p class="textbook-figure-caption" data-figure="11.9">Truy hồi bậc 1 thường cho hàm sinh chứa nhân tử $1/(1-rx)$ — dãy hình học.</p>
-![Cây quyết định phân tích](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
-
-<p class="textbook-figure-caption" data-figure="11.10">Phân tích truy hồi theo từng bước — tư duy hệ thống giống duyệt cây trong thuật toán.</p>
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">

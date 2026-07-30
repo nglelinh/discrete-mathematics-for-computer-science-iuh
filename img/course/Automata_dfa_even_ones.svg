@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" width="720" height="260" role="img" aria-label="DFA even ones">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .nt { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 13px; }
+    .cap { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .e { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#ar); }
+    .n { fill: white; stroke: #004586; stroke-width: 2.2; }
+    .acc { fill: white; stroke: #004586; stroke-width: 2.2; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="360" y="26" text-anchor="middle" font-size="15" font-weight="600">DFA: chuỗi nhị phân có chẵn số bit 1</text>
+  <line x1="40" y1="120" x2="100" y2="120" stroke="#334155" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M160,100 Q250,40 340,100" class="e"/>
+  <path d="M160,140 Q250,200 340,140" class="e"/>
+  <path d="M120,90 Q100,40 140,70" class="e"/>
+  <path d="M380,90 Q400,40 360,70" class="e"/>
+    <circle class="n" cx="120" cy="120" r="22"/>
+  <circle cx="120" cy="120" r="17" fill="none" stroke="#004586" stroke-width="1.8"/>
+  <text class="nt" x="120" y="125" text-anchor="middle">q₀</text>
+    <circle class="n" cx="380" cy="120" r="22"/>
+  <text class="nt" x="380" y="125" text-anchor="middle">q₁</text>
+  <text class="l" x="240" y="55">1</text>
+  <text class="l" x="240" y="195">1</text>
+  <text class="l" x="95" y="45">0</text>
+  <text class="l" x="390" y="45">0</text>
+  <text class="l" x="60" y="105">start</text>
+  <text class="cap" x="360" y="240" text-anchor="middle">q₀ = chẵn số 1 (chấp nhận) · q₁ = lẻ · 0 không đổi parity</text>
+
+</svg>

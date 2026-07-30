@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 230" width="720" height="230" role="img" aria-label="Subset construction">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .nt { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 13px; }
+    .cap { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .e { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#ar); }
+    .n { fill: white; stroke: #004586; stroke-width: 2.2; }
+    .acc { fill: white; stroke: #004586; stroke-width: 2.2; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="360" y="26" text-anchor="middle" font-size="15" font-weight="600">Subset construction: trạng thái DFA = tập trạng thái NFA</text>
+  <rect x="40" y="50" width="200" height="120" rx="8" fill="#e8f1fb" stroke="#004586"/>
+  <text class="nt" x="140" y="80" text-anchor="middle">NFA</text>
+  <text class="l" x="60" y="110">q₀, q₁, q₂</text>
+  <text class="l" x="60" y="135">δ đa trị</text>
+  <text class="t" x="280" y="115" font-size="22">→</text>
+  <rect x="320" y="50" width="360" height="120" rx="8" fill="#e8f1fb" stroke="#004586"/>
+  <text class="nt" x="500" y="80" text-anchor="middle">DFA</text>
+  <text class="l" x="340" y="110">{q₀}, {q₀,q₁}, {q₂}, …</text>
+  <text class="l" x="340" y="135">≤ 2^|Q| trạng thái</text>
+  <text class="cap" x="360" y="210" text-anchor="middle">Tương đương sức mạnh: L(NFA)=L(DFA) · chi phí: bùng nổ trạng thái</text>
+
+</svg>

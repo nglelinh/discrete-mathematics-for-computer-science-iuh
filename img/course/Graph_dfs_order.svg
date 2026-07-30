@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" width="720" height="340" role="img" aria-label="DFS order">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #5a6570; font-size: 13px; }
+    .e { stroke: #334155; stroke-width: 2; fill: none; }
+    .ea { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .n { fill: white; stroke: #004586; stroke-width: 2.2; }
+    .nt { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 15px; }
+    .cap { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .box { fill: white; stroke: #cbd5e1; stroke-width: 1.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="360" y="28" text-anchor="middle" font-size="16" font-weight="600">DFS đi sâu trước (stack / đệ quy)</text>
+  <line class="e" x1="200" y1="100" x2="320" y2="100"/>
+  <line class="e" x1="320" y1="100" x2="440" y2="100"/>
+  <line class="e" x1="320" y1="100" x2="320" y2="200"/>
+  <line class="e" x1="200" y1="100" x2="200" y2="200"/>
+  <line class="e" x1="440" y1="100" x2="440" y2="200"/>
+  <line class="e" x1="200" y1="200" x2="320" y2="200"/>
+    <circle class="n" cx="200" cy="100" r="18"/>
+  <text class="nt" x="200" y="105" text-anchor="middle">A</text>
+    <circle class="n" cx="320" cy="100" r="18"/>
+  <text class="nt" x="320" y="105" text-anchor="middle">B</text>
+    <circle class="n" cx="440" cy="100" r="18"/>
+  <text class="nt" x="440" y="105" text-anchor="middle">C</text>
+    <circle class="n" cx="200" cy="200" r="18"/>
+  <text class="nt" x="200" y="205" text-anchor="middle">D</text>
+    <circle class="n" cx="320" cy="200" r="18"/>
+  <text class="nt" x="320" y="205" text-anchor="middle">E</text>
+  <text class="l" x="80" y="260">Một thứ tự DFS từ A: A → B → C → (back) → E → D</text>
+  <text class="l" x="80" y="285">Cạnh cây (tree edges) tạo rừng DFS; cạnh ngược giúp phát hiện chu trình</text>
+  <text class="cap" x="360" y="320" text-anchor="middle">DFS: cycle detection, topological sort trên DAG, thành phần liên thông mạnh</text>
+
+</svg>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 170" width="720" height="170" role="img" aria-label="verifier">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t{font-family:'Source Sans 3',Helvetica,Arial,sans-serif;fill:#1a2332}
+    .l{font-family:'Source Sans 3',Helvetica,Arial,sans-serif;fill:#5a6570;font-size:12px}
+    .nt{font-family:'Source Sans 3',Helvetica,Arial,sans-serif;fill:#004586;font-weight:700;font-size:13px}
+    .cap{font-family:'Source Sans 3',Helvetica,Arial,sans-serif;fill:#5a6570;font-size:11px}
+  </style>
+
+  <text class="t" x="360" y="24" text-anchor="middle" font-size="14" font-weight="600">Đặc trưng verifier của NP</text>
+  <rect x="40" y="55" width="120" height="50" rx="8" fill="#e8f1fb" stroke="#004586"/><text class="nt" x="100" y="85" text-anchor="middle">x (input)</text>
+  <rect x="200" y="55" width="120" height="50" rx="8" fill="#e8f1fb" stroke="#004586"/><text class="nt" x="260" y="85" text-anchor="middle">c (chứng chỉ)</text>
+  <text class="t" x="360" y="85" font-size="18">→</text>
+  <rect x="390" y="50" width="160" height="60" rx="8" fill="#fef3c7" stroke="#b45309"/><text class="nt" x="470" y="75" text-anchor="middle">V(x,c)</text><text class="l" x="470" y="95" text-anchor="middle">poly time</text>
+  <text class="t" x="570" y="85" font-size="18">→</text>
+  <rect x="600" y="55" width="80" height="50" rx="8" fill="#dcfce7" stroke="#15803d"/><text class="nt" x="640" y="85" text-anchor="middle">Yes/No</text>
+  <text class="cap" x="360" y="140" text-anchor="middle">x ∈ L ⇔ ∃ c, |c|≤poly(|x|), V chấp nhận · V ∈ P</text>
+
+</svg>

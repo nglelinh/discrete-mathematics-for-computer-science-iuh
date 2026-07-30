@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200" role="img" aria-label="Kleene">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .nt { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 13px; }
+    .cap { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .e { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#ar); }
+    .n { fill: white; stroke: #004586; stroke-width: 2.2; }
+    .acc { fill: white; stroke: #004586; stroke-width: 2.2; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="360" y="26" text-anchor="middle" font-size="15" font-weight="600">Định lý Kleene — ba biểu diễn tương đương</text>
+  <rect x="40" y="55" width="180" height="70" rx="8" fill="#e8f1fb" stroke="#004586"/>
+  <text class="nt" x="130" y="95" text-anchor="middle">Regex</text>
+  <rect x="270" y="55" width="180" height="70" rx="8" fill="#e8f1fb" stroke="#004586"/>
+  <text class="nt" x="360" y="95" text-anchor="middle">NFA / ε-NFA</text>
+  <rect x="500" y="55" width="180" height="70" rx="8" fill="#e8f1fb" stroke="#004586"/>
+  <text class="nt" x="590" y="95" text-anchor="middle">DFA</text>
+  <text class="t" x="240" y="95" font-size="18">↔</text>
+  <text class="t" x="470" y="95" font-size="18">↔</text>
+  <text class="cap" x="360" y="170" text-anchor="middle">Cùng lớp ngôn ngữ chính quy · Thompson · subset construction · state elimination</text>
+
+</svg>

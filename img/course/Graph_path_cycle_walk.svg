@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" role="img" aria-label="Path cycle walk">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #5a6570; font-size: 13px; }
+    .e { stroke: #334155; stroke-width: 2; fill: none; }
+    .ea { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .n { fill: white; stroke: #004586; stroke-width: 2.2; }
+    .nt { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 15px; }
+    .cap { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .box { fill: white; stroke: #cbd5e1; stroke-width: 1.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="360" y="28" text-anchor="middle" font-size="16" font-weight="600">Walk, path và cycle</text>
+  <line class="e" x1="120" y1="140" x2="220" y2="100"/>
+  <line class="e" x1="220" y1="100" x2="340" y2="100"/>
+  <line class="e" x1="340" y1="100" x2="440" y2="140"/>
+  <line class="e" x1="220" y1="100" x2="220" y2="200"/>
+  <line class="e" x1="340" y1="100" x2="340" y2="200"/>
+  <line class="e" x1="220" y1="200" x2="340" y2="200"/>
+  <line class="e" x1="440" y1="140" x2="340" y2="200"/>
+    <circle class="n" cx="120" cy="140" r="18"/>
+  <text class="nt" x="120" y="145" text-anchor="middle">A</text>
+    <circle class="n" cx="220" cy="100" r="18"/>
+  <text class="nt" x="220" y="105" text-anchor="middle">B</text>
+    <circle class="n" cx="340" cy="100" r="18"/>
+  <text class="nt" x="340" y="105" text-anchor="middle">C</text>
+    <circle class="n" cx="440" cy="140" r="18"/>
+  <text class="nt" x="440" y="145" text-anchor="middle">D</text>
+    <circle class="n" cx="220" cy="200" r="18"/>
+  <text class="nt" x="220" y="205" text-anchor="middle">E</text>
+    <circle class="n" cx="340" cy="200" r="18"/>
+  <text class="nt" x="340" y="205" text-anchor="middle">F</text>
+  <text class="l" x="80" y="260">Path: A–B–C–D (không lặp đỉnh)</text>
+  <text class="l" x="80" y="282">Cycle: B–C–F–E–B (đóng, không lặp đỉnh giữa chừng)</text>
+  <text class="l" x="80" y="304">Walk: A–B–E–F–C–B–D (đỉnh B lặp — không phải path)</text>
+
+</svg>

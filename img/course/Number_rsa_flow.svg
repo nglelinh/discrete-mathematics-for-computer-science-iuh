@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" role="img" aria-label="RSA flow">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 13px; }
+    .nt { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 14px; }
+    .cap { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .box { fill: white; stroke: #cbd5e1; stroke-width: 1.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+
+  <text class="t" x="360" y="28" text-anchor="middle" font-size="16" font-weight="600">Luồng RSA (mô hình rút gọn)</text>
+  <rect class="hi" x="40" y="60" width="140" height="70" rx="8"/>
+  <text class="nt" x="110" y="90" text-anchor="middle" font-size="13">p, q nguyên tố</text>
+  <text class="l" x="110" y="112" text-anchor="middle">n = pq</text>
+  <text class="t" x="200" y="100" font-size="20">→</text>
+  <rect class="hi" x="220" y="60" width="160" height="70" rx="8"/>
+  <text class="nt" x="300" y="90" text-anchor="middle" font-size="13">φ(n)=(p−1)(q−1)</text>
+  <text class="l" x="300" y="112" text-anchor="middle">ed ≡ 1 (mod φ)</text>
+  <text class="t" x="400" y="100" font-size="20">→</text>
+  <rect class="hi" x="420" y="60" width="120" height="70" rx="8"/>
+  <text class="nt" x="480" y="90" text-anchor="middle" font-size="13">C = Mᵉ mod n</text>
+  <text class="l" x="480" y="112" text-anchor="middle">mã hóa</text>
+  <text class="t" x="555" y="100" font-size="20">→</text>
+  <rect class="hi" x="575" y="60" width="110" height="70" rx="8"/>
+  <text class="nt" x="630" y="90" text-anchor="middle" font-size="13">M = Cᵈ mod n</text>
+  <text class="l" x="630" y="112" text-anchor="middle">giải mã</text>
+  <text class="l" x="60" y="180">Khóa công khai: (n, e) — công bố</text>
+  <text class="l" x="60" y="205">Khóa riêng: d — giữ bí mật</text>
+  <text class="l" x="60" y="230">An toàn (cổ điển): khó phân tích n = p·q khi p, q lớn</text>
+  <text class="cap" x="360" y="280" text-anchor="middle">Tính đúng dựa trên định lý Euler: M^{φ(n)} ≡ 1 (mod n) khi gcd(M,n)=1</text>
+
+</svg>

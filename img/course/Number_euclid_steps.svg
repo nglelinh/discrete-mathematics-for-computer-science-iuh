@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" width="720" height="310" role="img" aria-label="Euclid steps">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 13px; }
+    .nt { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 14px; }
+    .cap { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .box { fill: white; stroke: #cbd5e1; stroke-width: 1.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+
+  <text class="t" x="360" y="28" text-anchor="middle" font-size="16" font-weight="600">Thuật toán Euclid: gcd(252, 105)</text>
+  <rect class="box" x="40" y="55" width="640" height="200" rx="8"/>
+  <text class="l" x="60" y="90">252 = 2 · 105 + 42</text>
+  <text class="l" x="60" y="120">105 = 2 · 42 + 21</text>
+  <text class="l" x="60" y="150">42 = 2 · 21 + 0</text>
+  <text class="nt" x="60" y="190">→ gcd = 21</text>
+  <text class="l" x="60" y="225">Quy tắc: gcd(a, b) = gcd(b, a mod b)</text>
+  <text class="cap" x="360" y="285" text-anchor="middle">Số bước O(log min(a,b)) — nền cho nghịch đảo modulo và RSA</text>
+
+</svg>

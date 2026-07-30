@@ -6,14 +6,23 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "Mục 17.2 định nghĩa DAG và topological sort — thứ tự đỉnh tôn trọng mọi cạnh — với thuật toán DFS và Kahn O(V+E), ứng dụng Makefile và lịch học."
+excerpt: "DAG và topological sort; DFS postorder đảo; Kahn (indegree + queue); O(V+E); build system, lịch môn, phát hiện chu trình."
 ---
 
-`make build` chỉ biên dịch file B sau khi file A (phụ thuộc) đã xong — thứ tự đó là **sắp xếp topo** trên đồ thị task. Nếu A phụ thuộc B và B phụ thuộc A, build **deadlock** vì có **chu trình**. Mục 17.2 formal hóa DAG và hai cách topo sort chuẩn.
+<div class="textbook-epigraph" markdown="1">
 
-![Đồ thị có hướng đơn giản](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_simple_directed_graph.svg)
+"If A must finish before B, draw A → B — then ask for a linear order that respects every arrow."
 
-<p class="textbook-figure-caption" data-figure="17.2">DAG — cạnh có hướng, không chu trình; topo sort là thứ tự tôn trọng mọi mũi tên.</p>
+<span class="epigraph-attribution">— Tinh thần topological sort</span>
+
+</div>
+
+Hệ build chỉ biên dịch $$B$$ sau khi phụ thuộc $$A$$ xong — thứ tự đó là **sắp xếp topo**. Nếu $$A$$ phụ thuộc $$B$$ và $$B$$ phụ thuộc $$A$$, có **chu trình**: không tồn tại thứ tự hợp lệ. Mục này định nghĩa DAG, topo sort, và hai thuật toán $$O(V+E)$$: DFS và Kahn.
+
+![DAG topo](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_topo_dag.svg)
+
+<p class="textbook-figure-caption" data-figure="17.2">DAG: mọi cạnh có hướng, không chu trình; topo order tôn trọng mọi mũi tên.</p>
+
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
@@ -21,57 +30,71 @@ excerpt: "Mục 17.2 định nghĩa DAG và topological sort — thứ tự đ�
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Định nghĩa** DAG và topological ordering.
-- **Thực hiện** topo sort bằng DFS (postorder ngược) và Kahn (BFS trên bậc vào).
+- **Thực hiện** topo sort bằng DFS (postorder đảo) và Kahn (indegree).
 - **Phân tích** độ phức tạp $$O(V+E)$$.
-- **Áp dụng** topo sort trong build system, lịch môn học và phát hiện deadlock.
+- **Áp dụng** cho build system, lịch môn, phát hiện deadlock / circular dependency.
 
 **Từ khóa**: DAG, topological sort, in-degree, Kahn, DFS postorder, cycle detection.
+
 </div>
 
-## DAG và sắp xếp topo
+## 1. DAG và sắp xếp topo
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**:
 
-- **DAG** (Directed Acyclic Graph): Đồ thị **có hướng**, **không** chu trình.
-- **Topological sort** của DAG $$G$$: Hoán vị $$v_1, v_2, \ldots, v_n$$ của đỉnh sao cho mọi cạnh $$(u,v)$$, $$u$$ xuất hiện **trước** $$v$$ trong hoán vị.
+**Định nghĩa.**
+
+- **DAG** (*Directed Acyclic Graph*): đồ thị **có hướng**, **không** có chu trình có hướng.
+- **Topological sort** của digraph $$G$$: hoán vị $$v_1,\ldots,v_n$$ của $$V$$ sao cho mọi cạnh $$(u,v)$$, đỉnh $$u$$ xuất hiện **trước** $$v$$ trong hoán vị.
+
 </div>
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Đồ thị có hướng cho phép topo sort **khi và chỉ khi** nó là DAG (không có chu trình có hướng).
+
+**Định lý.** Digraph có topological ordering **khi và chỉ khi** nó là DAG.
+
 </div>
 
-**Liên hệ Ch.5**: Quan hệ "phải hoàn thành trước" trên task là **thứ tự bộ phận** nếu không có phụ thuộc vòng.
+Nếu có chu trình, đi quanh chu trình không thể sắp “trước/sau” nhất quán. Nếu là DAG, luôn tồn tại ít nhất một topo order (có thể nhiều).
 
-## Thuật toán DFS
+**Liên hệ Ch.5 / Ch.12.** Quan hệ “phải xong trước” trên task là **thứ tự bộ phận** khi không phụ thuộc vòng; topo sort là **mở rộng tuyến tính** của thứ tự đó.
 
-1. Chạy DFS trên toàn bộ đồ thị (mọi thành phần).
-2. Khi **kết thúc** DFS tại $$u$$, **đẩy** $$u$$ vào danh sách.
-3. **Đảo** danh sách (hoặc insert đầu) → topo order.
+## 2. Thuật toán DFS
 
-**Ý tưởng**: Đỉnh được "postorder" — con cháu xử lý trước cha trong phụ thuộc.
+1. DFS trên toàn đồ thị (mọi đỉnh chưa thăm).
+2. Khi **kết thúc** thăm $$u$$ (sau mọi đỉnh reachable từ $$u$$ theo cạnh xuôi), **ghi** $$u$$ vào danh sách.
+3. **Đảo** danh sách (hoặc chèn đầu) → topo order.
 
-```
+```text
 DFS-TOPO(G):
-    visited ← ∅; order ← []
-    for each v in V:
-        if v ∉ visited: DFS-VISIT(v)
-    return reverse(order)
+  visited ← ∅; order ← []
+  for each v in V:
+    if v ∉ visited: DFS-VISIT(v)
+  return reverse(order)
+
+DFS-VISIT(u):
+  visited.add(u)
+  for each v kề từ u:
+    if v ∉ visited: DFS-VISIT(v)
+  order.append(u)   // postorder
 ```
 
-## Thuật toán Kahn (BFS)
+Phát hiện chu trình (biến thể): cạnh tới đỉnh **đang** trên stack đệ quy (màu xám) ⇒ cycle.
 
-1. Tính **bậc vào** $$\text{indeg}(v)$$ mỗi đỉnh.
-2. Queue chứa mọi đỉnh có $$\text{indeg} = 0$$.
-3. Lặp: lấy $$u$$ khỏi queue, thêm vào kết quả; với mỗi cạnh $$(u,v)$$, giảm $$\text{indeg}(v)$$; nếu 0 thì đưa $$v$$ vào queue.
-4. Nếu số đỉnh xuất < $$|V|$$ → **có chu trình**.
+## 3. Thuật toán Kahn (BFS / indegree)
 
-**Độ phức tạp**: Cả DFS và Kahn đều $$O(V+E)$$.
+1. Tính $$\mathrm{indeg}(v)$$ với mọi $$v$$.
+2. Queue các đỉnh $$\mathrm{indeg}=0$$.
+3. Lặp: lấy $$u$$; ghi vào kết quả; với mỗi $$(u,v)$$ giảm $$\mathrm{indeg}(v)$$; nếu về 0 thì enqueue $$v$$.
+4. Nếu số đỉnh xuất $$<|V|$$ ⇒ **có chu trình**.
+
+**Độ phức tạp.** Cả DFS và Kahn: $$O(V+E)$$ với danh sách kề.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Task A→B, A→C, B→D, C→D.
 
-```
+**Ví dụ.** Cạnh $$A\to B$$, $$A\to C$$, $$B\to D$$, $$C\to D$$.
+
+```text
     A
    / \
   B   C
@@ -79,59 +102,72 @@ DFS-TOPO(G):
     D
 ```
 
-Topo sort hợp lệ: **A, B, C, D** hoặc **A, C, B, D** (B và C đổi chỗ được).
+Topo hợp lệ: **A, B, C, D** hoặc **A, C, B, D**.  
+Kahn: ban đầu chỉ $$A$$ có indeg 0; sau $$A$$ thì $$B,C$$; sau cùng $$D$$.
+
 </div>
 
-## Ứng dụng
+## 4. Ứng dụng
 
 | Lĩnh vực | Mô hình |
 |:---|:---|
-| Build (Make, Cargo) | File → đỉnh; phụ thuộc → cạnh |
-| Lịch học | Môn tiên quyết → cạnh |
-| Compiler | Thứ tự phân tích / codegen |
+| Build (Make, Cargo, npm) | File/package = đỉnh; phụ thuộc = cạnh |
+| Lịch học | Môn tiên quyết = cạnh |
+| Pipeline compiler / CI | Giai đoạn = đỉnh |
 | Deadlock | Chu trình trong đồ thị chờ tài nguyên |
 
-**Phát hiện chu trình**: Topo sort thất bại ⟺ có cycle — dùng trong static analysis và dependency check.
+**Circular dependency:** topo sort thất bại ⇔ có cycle — tín hiệu lỗi kiến trúc / import vòng.
 
 ## Bài tập
 
 ### Bài tập 1
 
-DAG: P→Q, P→R, Q→S, R→S. Liệt kê **mọi** topo sort.
+DAG: $$P\to Q$$, $$P\to R$$, $$Q\to S$$, $$R\to S$$. Liệt kê mọi topo sort.
 
 <details>
 <summary>Đáp án</summary>
 
-P phải đầu, S phải cuối. Q, R đổi chỗ: **P, Q, R, S** và **P, R, Q, S**.
+$$P$$ đầu, $$S$$ cuối; $$Q$$ và $$R$$ hoán vị: **P,Q,R,S** và **P,R,Q,S**.
 
 </details>
 
 ### Bài tập 2
 
-Thêm cạnh S→P. Còn topo sort không?
+Thêm $$S\to P$$. Còn topo sort không? Kahn phát hiện thế nào?
 
 <details>
 <summary>Đáp án</summary>
 
-Không — chu trình P→…→S→P. Kahn sẽ không xử lý hết 4 đỉnh.
+Không — chu trình $$P\to\cdots\to S\to P$$. Kahn không bao giờ lấy đủ $$|V|$$ đỉnh (không còn indeg 0 sau vài bước, hoặc ngay từ đầu không xử lý hết).
 
 </details>
 
 ### Bài tập 3
 
-Cho 5 task với 6 cạnh phụ thuộc (tự vẽ DAG acyclic). Chạy Kahn — ghi từng bước queue.
+Vì sao đỉnh indeg 0 có thể đứng đầu một topo order?
 
 <details>
-<summary>Gợi ý</summary>
+<summary>Đáp án</summary>
 
-Bắt đầu từ indeg=0; mỗi lần pop ghi lại và cập nhật hàng xóm. So sánh với DFS postorder.
+Không có cạnh vào ⇒ không ràng buộc “ai phải trước nó”. Sau khi xếp nó, giảm indeg hàng xóm mô phỏng “đã thỏa điều kiện tiên quyết”.
+
+</details>
+
+### Bài tập 4
+
+So sánh ngắn DFS-topo và Kahn về cấu trúc dữ liệu phụ.
+
+<details>
+<summary>Đáp án</summary>
+
+DFS: stack đệ quy + postorder. Kahn: mảng indeg + queue. Cùng $$O(V+E)$$.
 
 </details>
 
 ## Tóm tắt
 
-- **DAG**: không chu trình có hướng — điều kiện cần và đủ cho topo sort.
-- **DFS**: postorder rồi đảo; **Kahn**: queue indeg=0.
-- $$O(V+E)$$; ứng dụng build, scheduling, phát hiện cycle.
+1. **DAG** ⇔ tồn tại topo sort.
+2. **DFS**: postorder rồi đảo; **Kahn**: queue indeg 0.
+3. $$O(V+E)$$; dùng cho build, scheduling, phát hiện cycle.
 
-Bài tùy chọn tiếp theo: **tô màu đồ thị** và **ghép cặp** — preview các bài toán đồ thị kinh điển khác.
+Bài tùy chọn tiếp theo: **tô màu** và **ghép cặp**.

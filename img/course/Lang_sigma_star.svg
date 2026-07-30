@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="720" height="220" role="img" aria-label="Sigma star">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .nt { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 13px; }
+    .cap { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .box { fill: white; stroke: #cbd5e1; stroke-width: 1.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+
+  <text class="t" x="360" y="26" text-anchor="middle" font-size="15" font-weight="600">Σ* = mọi chuỗi hữu hạn trên bảng chữ cái Σ</text>
+  <rect class="hi" x="80" y="60" width="560" height="100" rx="8"/>
+  <text class="nt" x="360" y="95" text-anchor="middle">L ⊆ Σ*</text>
+  <text class="l" x="360" y="125" text-anchor="middle">ngôn ngữ = tập chuỗi · Σ hữu hạn, khác rỗng</text>
+  <text class="cap" x="360" y="195" text-anchor="middle">ε chuỗi rỗng · |w| độ dài · ghép · Kleene star L*</text>
+
+</svg>

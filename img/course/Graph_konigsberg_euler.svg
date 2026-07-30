@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" width="720" height="350" role="img" aria-label="Konigsberg Euler">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #5a6570; font-size: 13px; }
+    .e { stroke: #334155; stroke-width: 2; fill: none; }
+    .ea { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .n { fill: white; stroke: #004586; stroke-width: 2.2; }
+    .nt { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 15px; }
+    .cap { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .box { fill: white; stroke: #cbd5e1; stroke-width: 1.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="360" y="28" text-anchor="middle" font-size="16" font-weight="600">Bài toán 7 cầu Königsberg (mô hình đồ thị)</text>
+  <!-- multigraph sketch -->
+  <path class="e" d="M200,160 Q280,80 360,160"/>
+  <path class="e" d="M200,160 Q280,120 360,160"/>
+  <path class="e" d="M200,160 Q280,200 360,160"/>
+  <path class="e" d="M360,160 Q440,80 520,160"/>
+  <path class="e" d="M360,160 Q440,120 520,160"/>
+  <path class="e" d="M200,160 Q280,260 360,260"/>
+  <path class="e" d="M360,160 Q360,220 360,260"/>
+    <circle class="n" cx="200" cy="160" r="20"/>
+  <text class="nt" x="200" y="165" text-anchor="middle">A</text>
+    <circle class="n" cx="360" cy="160" r="20"/>
+  <text class="nt" x="360" y="165" text-anchor="middle">C</text>
+    <circle class="n" cx="520" cy="160" r="20"/>
+  <text class="nt" x="520" y="165" text-anchor="middle">B</text>
+    <circle class="n" cx="360" cy="260" r="20"/>
+  <text class="nt" x="360" y="265" text-anchor="middle">D</text>
+  <text class="l" x="170" y="130">deg=5</text>
+  <text class="l" x="530" y="130">deg=3</text>
+  <text class="l" x="380" y="145">deg=5</text>
+  <text class="l" x="380" y="290">deg=3</text>
+  <text class="cap" x="360" y="325" text-anchor="middle">4 đỉnh bậc lẻ → không có đường Euler (đi qua mỗi cầu đúng một lần)</text>
+
+</svg>

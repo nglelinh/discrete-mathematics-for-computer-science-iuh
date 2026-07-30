@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="720" height="220" role="img" aria-label="karp">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t{font-family:'Source Sans 3',Helvetica,Arial,sans-serif;fill:#1a2332}
+    .l{font-family:'Source Sans 3',Helvetica,Arial,sans-serif;fill:#5a6570;font-size:12px}
+    .nt{font-family:'Source Sans 3',Helvetica,Arial,sans-serif;fill:#004586;font-weight:700;font-size:13px}
+    .cap{font-family:'Source Sans 3',Helvetica,Arial,sans-serif;fill:#5a6570;font-size:11px}
+  </style>
+
+  <text class="t" x="360" y="24" text-anchor="middle" font-size="14" font-weight="600">Mạng rút gọn Karp (ý tưởng)</text>
+  <circle cx="120" cy="100" r="36" fill="#fecaca" stroke="#b91c1c" stroke-width="2"/><text class="nt" x="120" y="105" text-anchor="middle">SAT</text>
+  <circle cx="280" cy="70" r="32" fill="#e8f1fb" stroke="#004586"/><text class="l" x="280" y="75" text-anchor="middle">3SAT</text>
+  <circle cx="280" cy="140" r="32" fill="#e8f1fb" stroke="#004586"/><text class="l" x="280" y="145" text-anchor="middle">CLIQUE</text>
+  <circle cx="440" cy="70" r="32" fill="#e8f1fb" stroke="#004586"/><text class="l" x="440" y="75" text-anchor="middle">VC</text>
+  <circle cx="440" cy="140" r="32" fill="#e8f1fb" stroke="#004586"/><text class="l" x="440" y="145" text-anchor="middle">HC</text>
+  <circle cx="600" cy="100" r="36" fill="#e8f1fb" stroke="#004586"/><text class="l" x="600" y="105" text-anchor="middle">TSP…</text>
+  <line x1="156" y1="100" x2="248" y2="75" stroke="#334155" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="156" y1="100" x2="248" y2="130" stroke="#334155" stroke-width="1.5"/>
+  <line x1="312" y1="70" x2="408" y2="70" stroke="#334155" stroke-width="1.5"/>
+  <line x1="312" y1="140" x2="408" y2="140" stroke="#334155" stroke-width="1.5"/>
+  <line x1="472" y1="85" x2="564" y2="100" stroke="#334155" stroke-width="1.5"/>
+  <defs><marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#334155"/></marker></defs>
+  <text class="cap" x="360" y="195" text-anchor="middle">Một bài NPC “kéo” hàng nghìn bài khác · Karp (1972): 21 bài gốc</text>
+
+</svg>

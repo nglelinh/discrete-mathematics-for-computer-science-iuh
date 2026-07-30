@@ -60,16 +60,16 @@
     "attribution": "Carl Friedrich Gauss"
   },
   "16": {
-    "quote": "Probability is the guide of life.",
-    "attribution": "Cicero (via Huygens)"
+    "quote": "A tree is a connected graph with no cycles — one of the most important structures in computer science.",
+    "attribution": "Discrete mathematics / CS folklore (Knuth spirit)"
   },
   "17": {
-    "quote": "In theory, theory and practice are the same. In practice, they are not.",
-    "attribution": "Albert Einstein (attributed)"
+    "quote": "Graphs are everywhere — algorithms on graphs are how computers navigate the world.",
+    "attribution": "Discrete algorithms folklore"
   },
   "18": {
-    "quote": "A finite state machine is one of the most fundamental models of computation.",
-    "attribution": "Automata theory tradition"
+    "quote": "A finite automaton is a mathematical model of a system with discrete inputs and outputs.",
+    "attribution": "Hopcroft & Ullman (spirit)"
   },
   "19": {
     "quote": "A language is a set of strings over an alphabet.",
@@ -77,6 +77,6 @@
   },
   "20": {
     "quote": "The question of whether P equals NP is the deepest open problem in theoretical computer science.",
-    "attribution": "Stephen Cook & Richard Karp (problem tradition)"
+    "attribution": "Cook–Karp tradition"
   }
 }

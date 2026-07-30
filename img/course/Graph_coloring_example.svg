@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" width="720" height="350" role="img" aria-label="Coloring">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 13px; }
+    .nt { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 14px; }
+    .cap { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .e { stroke: #334155; stroke-width: 2; fill: none; }
+    .ea { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#ar); }
+    .n { fill: white; stroke: #004586; stroke-width: 2.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="360" y="28" text-anchor="middle" font-size="16" font-weight="600">Tô màu đỉnh — hàng xóm khác màu</text>
+  <line class="e" x1="200" y1="120" x2="360" y2="80"/>
+  <line class="e" x1="360" y1="80" x2="520" y2="120"/>
+  <line class="e" x1="200" y1="120" x2="280" y2="240"/>
+  <line class="e" x1="360" y1="80" x2="360" y2="240"/>
+  <line class="e" x1="520" y1="120" x2="440" y2="240"/>
+  <line class="e" x1="280" y1="240" x2="360" y2="240"/>
+  <line class="e" x1="360" y1="240" x2="440" y2="240"/>
+  <circle cx="200" cy="120" r="20" fill="#fecaca" stroke="#004586" stroke-width="2"/>
+  <text class="nt" x="200" y="125" text-anchor="middle">A</text>
+  <circle cx="360" cy="80" r="20" fill="#bbf7d0" stroke="#004586" stroke-width="2"/>
+  <text class="nt" x="360" y="85" text-anchor="middle">B</text>
+  <circle cx="520" cy="120" r="20" fill="#fecaca" stroke="#004586" stroke-width="2"/>
+  <text class="nt" x="520" y="125" text-anchor="middle">C</text>
+  <circle cx="280" cy="240" r="20" fill="#bbf7d0" stroke="#004586" stroke-width="2"/>
+  <text class="nt" x="280" y="245" text-anchor="middle">D</text>
+  <circle cx="360" cy="240" r="20" fill="#fecaca" stroke="#004586" stroke-width="2"/>
+  <text class="nt" x="360" y="245" text-anchor="middle">E</text>
+  <circle cx="440" cy="240" r="20" fill="#bbf7d0" stroke="#004586" stroke-width="2"/>
+  <text class="nt" x="440" y="245" text-anchor="middle">F</text>
+  <text class="l" x="80" y="300">Lịch thi: môn = đỉnh, cạnh = sinh viên chung, màu = ca thi</text>
+  <text class="cap" x="360" y="325" text-anchor="middle">χ(G) = số màu tối thiểu · greedy hữu ích; tối ưu NP-hard</text>
+
+</svg>

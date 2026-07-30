@@ -6,17 +6,23 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "Mục 16.2 trình bày các thứ tự duyệt cây — preorder, inorder, postorder và level-order (BFS) — cùng độ phức tạp O(n) và ứng dụng trong compiler và cấu trúc dữ liệu."
+excerpt: "Preorder, inorder, postorder trên cây nhị phân; level-order (BFS); độ phức tạp O(n); ứng dụng serialize, BST, xóa cây."
 ---
 
-Duyệt cây là thao tác thăm mọi đỉnh **đúng một lần** theo quy tắc xác định. Thứ tự duyệt quyết định semantics: serialize cây, in BST theo thứ tự, giải phóng bộ nhớ, hoặc in DOM theo tầng. Mục 16.2 so sánh bốn thứ tự chuẩn.
+<div class="textbook-epigraph" markdown="1">
 
-![Call tree đệ quy](/discrete-mathematics-for-computer-science-iuh/img/course/Algorithms-F6CallTreeMemoized.png)
+"The order in which we visit the nodes is not cosmetic — it is the algorithm."
 
-<p class="textbook-figure-caption" data-figure="16.4">Call tree — duyệt DFS trên cây lời gọi hàm; preorder tương ứng thứ tự vào hàm.</p>
-![Cây quyết định](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
+<span class="epigraph-attribution">— Tinh thần duyệt cây</span>
 
-<p class="textbook-figure-caption" data-figure="16.5">Decision tree — mỗi nhánh là một lựa chọn; duyệt postorder thường dùng khi tính từ lá lên gốc.</p>
+</div>
+
+**Duyệt cây** là thao tác thăm mọi đỉnh **đúng một lần** theo quy tắc cố định. Thứ tự quyết định semantics: serialize, in BST theo thứ tự tăng, giải phóng bộ nhớ bottom-up, hay in DOM theo tầng. Mục này so sánh preorder, inorder, postorder và level-order.
+
+![Duyệt cây nhị phân](/discrete-mathematics-for-computer-science-iuh/img/course/Tree_binary_traversal.svg)
+
+<p class="textbook-figure-caption" data-figure="16.3">Cùng một cây nhị phân: ba thứ tự DFS khác nhau bởi thời điểm thăm gốc so với hai con.</p>
+
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
@@ -25,26 +31,28 @@ Duyệt cây là thao tác thăm mọi đỉnh **đúng một lần** theo quy t
 
 - **Thực hiện** preorder, inorder, postorder trên cây nhị phân.
 - **Thực hiện** level-order (BFS) trên cây có gốc.
-- **Giải thích** ứng dụng: serialize, BST inorder, xóa cây.
-- **Phân tích** độ phức tạp $$O(n)$$ cho mọi thứ tự duyệt.
+- **Giải thích** ứng dụng: serialize, inorder BST, xóa cây.
+- **Phân tích** độ phức tạp $$O(n)$$ và bộ nhớ phụ.
 
 **Từ khóa**: preorder, inorder, postorder, level-order, DFS trên cây, BFS trên cây.
+
 </div>
 
-## Ba thứ tự DFS trên cây nhị phân
+## 1. Ba thứ tự DFS trên cây nhị phân
 
-Cho cây nhị phân với gốc, trái, phải:
+Cho nút có con trái và con phải (có thể rỗng):
 
-| Thứ tự | Thứ tự thăm | Ứng dụng |
+| Thứ tự | Quy tắc thăm | Ứng dụng điển hình |
 |:---|:---|:---|
-| **Preorder** | Gốc → Trái → Phải | Copy cây, serialize prefix |
-| **Inorder** | Trái → Gốc → Phải | BST → thứ tự tăng |
-| **Postorder** | Trái → Phải → Gốc | Xóa cây, tính từ lá lên |
+| **Preorder** (NLR) | Gốc → Trái → Phải | Copy cây, serialize prefix, “vào” hàm |
+| **Inorder** (LNR) | Trái → Gốc → Phải | BST → dãy tăng |
+| **Postorder** (LRN) | Trái → Phải → Gốc | Xóa cây, tính biểu thức từ lá lên |
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Cây
 
-```
+**Ví dụ 1.** Cây
+
+```text
         A
        / \
       B   C
@@ -55,6 +63,7 @@ Cho cây nhị phân với gốc, trái, phải:
 - Preorder: **A, B, D, E, C, F**
 - Inorder: **D, B, E, A, C, F**
 - Postorder: **D, E, B, F, C, A**
+
 </div>
 
 ```python
@@ -80,9 +89,11 @@ def postorder(node):
     visit(node)
 ```
 
-## Level-order (BFS)
+Trên cây **không nhị phân** (nhiều con), preorder = gốc rồi lần lượt các con; postorder = các con rồi gốc; “inorder” chỉ chuẩn hóa tự nhiên cho cây nhị phân (hoặc cần quy ước thứ tự con).
 
-Duyệt theo **tầng** từ gốc xuống — dùng hàng đợi (queue).
+## 2. Level-order (BFS)
+
+Duyệt theo **tầng** từ gốc xuống — hàng đợi (*queue*).
 
 ```python
 from collections import deque
@@ -94,58 +105,93 @@ def level_order(root):
     while q:
         node = q.popleft()
         visit(node)
-        for child in node.children:
+        for child in getattr(node, "children",
+                             [c for c in (node.left, node.right) if c]):
             q.append(child)
 ```
 
-<div class="textbook-theorem" markdown="1">
-**Độ phức tạp**: Mọi thứ tự duyệt trên cây $$n$$ đỉnh chạy trong **$$O(n)$$** thời gian và **$$O(h)$$** bộ nhớ đệ quy (DFS) hoặc **$$O(w)$$** queue (BFS, $$w$$ = max width).
+<div class="textbook-example" markdown="1">
+
+**Ví dụ 2.** Cùng cây Ví dụ 1: level-order **A, B, C, D, E, F**.
+
 </div>
 
-## Liên hệ Ch.12
+## 3. Độ phức tạp và liên hệ Chương 12
 
-DFS trên **cây** = preorder / inorder / postorder tùy thời điểm `visit`. BFS trên cây = level-order. Trên đồ thị tổng quát, DFS/BFS có thể lặp đỉnh nếu không đánh dấu `visited`.
+<div class="textbook-theorem" markdown="1">
+
+**Định lý.** Trên cây $$n$$ đỉnh, mọi thứ tự duyệt trên (DFS hoặc BFS) chạy trong thời gian $$O(n)$$. Bộ nhớ phụ: $$O(h)$$ cho stack đệ quy DFS ($$h$$ = chiều cao), hoặc $$O(w)$$ cho queue BFS ($$w$$ = độ rộng tầng lớn nhất).
+
+</div>
+
+Trên **đồ thị** tổng quát, DFS/BFS cần tập `visited` để không lặp đỉnh. Trên **cây** (có gốc, cạnh chỉ cha–con), mỗi đỉnh được vào cấu trúc đúng một lần nếu chỉ đi xuống con — không cần đánh dấu chu trình.
+
+| Cấu trúc | Tương ứng duyệt cây |
+|:---|:---|
+| DFS “thăm khi vào” | Preorder |
+| DFS “thăm giữa hai con” (nhị phân) | Inorder |
+| DFS “thăm khi ra” | Postorder |
+| BFS | Level-order |
+
+## 4. Thử nghiệm tương tác
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="tree-traversal-visualizer"></div>
+</div>
+<script src="{{ '/public/js/tree-traversal-visualizer.js' | relative_url }}"></script>
 
 ## Bài tập
 
 ### Bài tập 1
 
-Cho cây mục ví dụ. Viết preorder và postorder.
+Với cây Ví dụ 1, viết preorder và postorder.
 
 <details>
 <summary>Đáp án</summary>
 
-Preorder: A, B, D, E, C, F. Postorder: D, E, B, F, C, A.
+Preorder: A, B, D, E, C, F.  
+Postorder: D, E, B, F, C, A.
 
 </details>
 
 ### Bài tập 2
 
-BST: gốc 8, trái 3, phải 10, ... (như slide 44). Inorder cho thứ tự nào?
+Vì sao **inorder** trên BST cho dãy key tăng dần?
 
 <details>
 <summary>Đáp án</summary>
 
-**Tăng dần** theo key — tính chất BST.
+Theo định nghĩa BST, mọi key trái $$<$$ gốc $$<$$ mọi key phải. Inorder thăm trái → gốc → phải nên ghép ba đoạn đã sắp thành dãy tăng toàn cục (quy nạp theo chiều cao).
 
 </details>
 
 ### Bài tập 3
 
-Vì sao postorder phù hợp khi `delete(node)` cần xóa con trước cha?
+Vì sao **postorder** phù hợp khi `delete(node)` phải giải phóng con trước cha?
 
 <details>
 <summary>Đáp án</summary>
 
-Postorder thăm con trước gốc — khi đến `node`, cả subtree đã được giải phóng.
+Postorder thăm hai con trước gốc. Khi đến `node`, toàn bộ subtree đã được giải phóng — không còn tham chiếu “treo” từ cha tới vùng nhớ đã free.
+
+</details>
+
+### Bài tập 4
+
+Cây đầy đủ nhị phân chiều cao $$h$$ (gốc depth 0) có bao nhiêu nút? Level-order thăm nút cuối cùng là nút nào về mặt vị trí?
+
+<details>
+<summary>Đáp án</summary>
+
+Số nút $$n = 2^{h+1}-1$$. Level-order thăm theo tầng; nút cuối là lá phải cùng của tầng $$h$$.
 
 </details>
 
 ## Tóm tắt
 
-- **Preorder / inorder / postorder**: DFS, $$O(n)$$.
-- **Level-order**: BFS, in theo tầng.
-- Inorder BST = sorted order.
-- Postorder = bottom-up computation / delete.
+1. **Preorder / inorder / postorder**: DFS; khác thời điểm `visit`.
+2. **Level-order**: BFS theo tầng.
+3. Tất cả $$O(n)$$; inorder BST = sorted; postorder = bottom-up.
+4. Cây không cần `visited` như đồ thị có chu trình.
 
-Trong bài tiếp theo: **cây khung** và **cây khung nhỏ nhất (MST)**.
+Trong bài tiếp theo: **cây khung** và **MST** (Kruskal, Prim).

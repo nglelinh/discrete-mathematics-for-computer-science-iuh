@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" role="img" aria-label="Chomsky">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .nt { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 13px; }
+    .cap { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .box { fill: white; stroke: #cbd5e1; stroke-width: 1.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+
+  <text class="t" x="360" y="24" text-anchor="middle" font-size="15" font-weight="600">Phân cấp Chomsky (lồng nhau)</text>
+  <rect x="80" y="50" width="560" height="200" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+  <text class="l" x="100" y="75">Type-0 · Unrestricted · TM</text>
+  <rect x="120" y="90" width="480" height="145" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text class="l" x="140" y="115">Type-1 · Context-sensitive</text>
+  <rect x="160" y="130" width="400" height="90" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+  <text class="l" x="180" y="155">Type-2 · Context-free · CFG / PDA</text>
+  <rect x="200" y="170" width="320" height="40" rx="6" fill="#e8f1fb" stroke="#004586" stroke-width="1.5"/>
+  <text class="nt" x="360" y="195" text-anchor="middle">Type-3 · Regular · DFA/NFA</text>
+  <text class="cap" x="360" y="275" text-anchor="middle">Type-3 ⊂ Type-2 ⊂ Type-1 ⊂ Type-0 (các bao hàm cổ điển)</text>
+
+</svg>

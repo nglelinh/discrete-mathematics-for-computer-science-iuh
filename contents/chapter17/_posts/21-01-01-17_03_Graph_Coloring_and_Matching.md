@@ -1,123 +1,172 @@
 ---
 layout: post
-title: "Tô màu Đồ thị và Ghép cặp — Ứng dụng"
+title: "Tô màu Đồ thị và Ghép cặp"
 categories: chapter17
 date: 2021-01-01
 order: 3
 required: false
 lang: en
-excerpt: "Mục 17.3 (tùy chọn) giới thiệu tô màu đỉnh (scheduling, register allocation), ghép cặp trên đồ thị hai phía và liên hệ với độ phức tạp NP-hard."
+excerpt: "Tô màu đỉnh, số sắc χ(G), greedy coloring; matching bipartite; liên hệ scheduling, register allocation và NP-hard."
 ---
 
-Xếp lịch thi sao cho hai môn trùng sinh viên không cùng ca? Gán thanh ghi trong compiler sao cho biến sống đồng thời không dùng chung register? Cả hai là **tô màu đồ thị**. Ghép mentor–mentee hoặc task–worker là **ghép cặp** trên đồ thị hai phía. Mục 17.3 (tùy chọn) mở đầu các chủ đề này.
+<div class="textbook-epigraph" markdown="1">
 
-![Đồ thị vô hướng](/discrete-mathematics-for-computer-science-iuh/img/course/Undirected_graph.svg)
+"Color so that neighbors disagree — match so that no two edges share a vertex."
 
-<p class="textbook-figure-caption" data-figure="17.3">Tô màu — hai đỉnh kề nhau không cùng màu; số màu tối thiểu phụ thuộc cấu trúc đồ thị.</p>
+<span class="epigraph-attribution">— Tinh thần tô màu và matching</span>
+
+</div>
+
+Xếp lịch thi: hai môn trùng sinh viên không cùng ca. Gán thanh ghi: hai biến sống đồng thời không dùng chung register. Cả hai mô hình bằng **tô màu đỉnh**. Ghép job–máy hoặc mentor–mentee là **matching** trên đồ thị hai phía. Mục tùy chọn này giới thiệu hai họ bài toán và chỗ chúng đứng so với Dijkstra / topo (đa thức) và TSP / tô màu tối ưu (NP-hard — Ch.20).
+
+![Tô màu](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_coloring_example.svg)
+
+<p class="textbook-figure-caption" data-figure="17.3">Tô màu: hai đỉnh kề khác màu; số màu tối thiểu là số sắc $$\chi(G)$$.</p>
+
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Định nghĩa** tô màu đỉnh và **số sắc** $$\chi(G)$$.
-- **Áp dụng** greedy coloring và nhận biết bài toán NP-hard tổng quát.
-- **Định nghĩa** ghép cặp và matching tối đa trên đồ thị hai phía.
-- **Liên hệ** với scheduling, register allocation và TSP/Hamilton (Ch.12).
+- **Định nghĩa** tô màu đỉnh và số sắc $$\chi(G)$$.
+- **Áp dụng** greedy coloring; nêu $$\chi$$ cho cây, $$C_n$$, $$K_n$$.
+- **Định nghĩa** matching và matching lớn nhất trên đồ thị hai phía.
+- **Đặt** các bài toán vào phổ độ khó (đa thức vs NP-hard).
 
 **Từ khóa**: graph coloring, chromatic number, greedy coloring, bipartite matching, NP-hard.
+
 </div>
 
-## Tô màu đỉnh
+## 1. Tô màu đỉnh
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: **Tô màu đỉnh** gán màu cho mỗi đỉnh sao cho hai đỉnh **kề nhau** không cùng màu. **Số sắc** $$\chi(G)$$ là số màu **ít nhất** cần thiết.
+
+**Định nghĩa.** **Tô màu đỉnh** gán mỗi đỉnh một màu sao cho hai đỉnh **kề nhau** không cùng màu. **Số sắc** $$\chi(G)$$ là số màu **ít nhất** đủ để tô $$G$$ hợp lệ.
+
 </div>
 
 <div class="textbook-example" markdown="1">
-**Ví dụ** (lịch thi): Mỗi môn = đỉnh; cạnh nối hai môn có sinh viên chung. Mỗi **màu** = một **ca thi**. $$\chi(G)$$ = số ca tối thiểu.
+
+**Ví dụ 1** (lịch thi). Môn = đỉnh; cạnh nối hai môn có sinh viên chung. Mỗi **màu** = một **ca thi**. $$\chi(G)$$ = số ca tối thiểu (lý thuyết).
+
 </div>
 
-**Thuật toán greedy**: Duyệt đỉnh theo thứ tự bất kỳ; gán màu nhỏ nhất chưa dùng bởi hàng xóm.
+**Greedy coloring.** Duyệt đỉnh theo một thứ tự; gán màu dương nhỏ nhất chưa dùng bởi các hàng xóm đã tô. Luôn cho tô hợp lệ với $$\le \Delta(G)+1$$ màu ($$\Delta$$ = bậc lớn nhất), nhưng **không** luôn đạt $$\chi$$.
 
-- **Đồ thị lá** (tree): $$\chi = 2$$ (nếu có cạnh) hoặc 1.
-- **Chu trình $$C_n$$**: $$\chi = 2$$ nếu $$n$$ chẵn, 3 nếu lẻ.
-- **Đồ thị hoàn chỉnh $$K_n$$**: $$\chi = n$$.
+| Lớp đồ thị | $$\chi$$ |
+|:---|:---|
+| Cây có cạnh | $$2$$ |
+| Chu trình $$C_n$$ | $$2$$ nếu $$n$$ chẵn; $$3$$ nếu $$n$$ lẻ |
+| Đầy đủ $$K_n$$ | $$n$$ |
+| Hai phía (có cạnh) | $$2$$ |
 
 <div class="textbook-theorem" markdown="1">
-**Định lý** (Brooks, ý tưởng): Đồ thị liên thông không phải clique hoặc cycle lẻ có $$\chi(G) \leq \Delta(G)$$ ($$\Delta$$ = bậc lớn nhất). Tìm $$\chi$$ tối ưu là **NP-hard**.
+
+**Định lý** (Brooks — ý). Nếu $$G$$ liên thông, không phải $$K_n$$ và không phải chu trình lẻ, thì $$\chi(G)\le \Delta(G)$$. Việc tính $$\chi(G)$$ tối ưu trên đồ thị tổng quát là **NP-hard**.
+
 </div>
 
-**Ứng dụng CNTT**: Register allocation (Chaitin-Briggs), xếp lịch radio, map coloring.
+**Ứng dụng CS:** register allocation (interference graph), xếp kênh tần số, map coloring cổ điển.
 
-## Đồ thị hai phía và ghép cặp
+<div class="interactive-demo" markdown="1">
+<div data-demo="graph-coloring-interactive"></div>
+</div>
+<script src="{{ '/public/js/graph-coloring-interactive.js' | relative_url }}"></script>
+
+## 2. Đồ thị hai phía và ghép cặp
+
+![Matching](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_bipartite_matching.svg)
+
+<p class="textbook-figure-caption" data-figure="17.4">Matching: tập cạnh không chung đỉnh; trên bipartite tìm matching lớn nhất trong thời gian đa thức.</p>
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**:
 
-- **Đồ thị hai phía**: $$V = L \cup R$$, mọi cạnh nối $$L$$ với $$R$$.
-- **Matching**: Tập cạnh **không chung đỉnh**.
-- **Matching lớn nhất** trên đồ thị hai phía: tìm bằng thuật toán tăng đường (Hopcroft-Karp) — $$O(E\sqrt{V})$$.
+**Định nghĩa.**
+
+- **Đồ thị hai phía**: $$V=L\cup R$$, mọi cạnh nối $$L$$–$$R$$.
+- **Matching**: tập cạnh **không** hai cạnh nào chung đỉnh.
+- **Matching lớn nhất**: matching có lực lượng cực đại (trên bipartite: thuật toán đường tăng / Hopcroft–Karp $$O(E\sqrt{V})$$).
+
 </div>
 
-**Ví dụ**: Gán job cho máy, ghép người dùng–server, assignment problem.
+<div class="textbook-example" markdown="1">
 
-| Bài toán | Đồ thị | Độ khó |
+**Ví dụ 2.** $$L=\{1,2\}$$, $$R=\{a,b,c\}$$; cạnh $$1a,1b,2b,2c$$. Matching size 2: ví dụ $$\{1a,2c\}$$.
+
+</div>
+
+Ứng dụng: gán task–worker, matching sinh viên–đề tài, assignment.
+
+## 3. Bản đồ độ khó (chương 12–17)
+
+| Bài toán | Lớp điển hình | Độ khó (giáo trình) |
 |:---|:---|:---|
-| Tô màu tối ưu | Vô hướng | NP-hard |
-| Matching max (bipartite) | Hai phía | Đa thức |
-| Hamilton cycle | Vô hướng | NP-hard (Ch.12) |
-| Shortest path (+) | Có trọng số | Dijkstra (17.1) |
+| BFS / DFS / topo / Euler | Đồ thị / DAG | **P** (đa thức) |
+| Dijkstra ($$w\ge 0$$) | Trọng số không âm | **P** |
+| Matching max bipartite | Hai phía | **P** |
+| MST | Vô hướng có trọng số | **P** |
+| Tô màu tối ưu $$\chi$$ | Vô hướng tổng quát | **NP-hard** |
+| Hamilton / TSP | Vô hướng / tối ưu | **NP-hard** (Ch.12, Ch.20) |
 
-## Tổng quan Chương 17
+Chương 17 bổ sung thuật toán **đa thức** quan trọng (shortest path, topo) và **preview** các bài NP-hard qua tô màu / Hamilton.
 
-Chúng ta đã mở rộng từ đồ thị cơ bản (Ch.12) và cây (Ch.16):
+## 4. Tổng quan Chương 17
 
-1. **Shortest path** — Dijkstra, routing.
-2. **Topo sort** — DAG, build, scheduling.
+1. **Shortest path** — Dijkstra, routing.  
+2. **Topo sort** — DAG, build, scheduling.  
 3. **Coloring / matching** — tài nguyên hữu hạn, ghép cặp.
-
-Nhiều bài toán còn lại (TSP, clique, coloring tối ưu) nằm trong **NP-hard** — chủ đề Ch.20.
 
 ## Bài tập
 
 ### Bài tập 1
 
-Đồ thị 5 đỉnh tạo vòng $$C_5$$. $$\chi$$ bằng bao nhiêu? Greedy theo thứ tự vòng có dùng đúng $$\chi$$ màu không?
+$$\chi(C_5)=?$$ Greedy theo thứ tự vòng có thể dùng bao nhiêu màu?
 
 <details>
 <summary>Đáp án</summary>
 
-$$\chi(C_5) = 3$$ (chu trình lẻ). Greedy theo vòng có thể dùng 3 màu — tối ưu; thứ tự xấu trên đồ thị khác có thể dùng thừa màu.
+$$\chi(C_5)=3$$ (chu trình lẻ). Greedy theo vòng thường dùng 3 màu — đạt tối ưu trên ví dụ này; trên đồ thị khác greedy có thể dùng thừa màu.
 
 </details>
 
 ### Bài tập 2
 
-3 môn A,B,C: A–B và B–C trùng sinh viên, A–C không. Số ca thi tối thiểu?
+Ba môn A,B,C: cạnh A–B, B–C (trùng SV); không cạnh A–C. Số ca tối thiểu?
 
 <details>
 <summary>Đáp án</summary>
 
-Đồ thị đường A–B–C: $$\chi = 2$$ (A,C cùng ca; B ca khác).
+Đường A–B–C: $$\chi=2$$ (A và C cùng ca; B ca khác).
 
 </details>
 
 ### Bài tập 3
 
-Đồ thị hai phía: L={1,2}, R={a,b,c}, cạnh 1–a, 1–b, 2–b, 2–c. Matching lớn nhất có bao nhiêu cạnh?
+Matching lớn nhất trên ví dụ mục 2 có bao nhiêu cạnh?
 
 <details>
 <summary>Đáp án</summary>
 
-**2** cạnh (ví dụ 1–a và 2–c, hoặc 1–b và 2–c).
+**2** (ví dụ $$1a$$ và $$2c$$).
+
+</details>
+
+### Bài tập 4
+
+Vì sao tô màu tối ưu “khó hơn” matching bipartite trong giáo trình này?
+
+<details>
+<summary>Đáp án</summary>
+
+Matching max bipartite có thuật toán đa thức. Tính $$\chi(G)$$ tổng quát là NP-hard — không kỳ vọng thuật toán đa thức đơn giản như Dijkstra/topo.
 
 </details>
 
 ## Tóm tắt
 
-- **Tô màu**: hàng xóm khác màu; $$\chi$$ NP-hard; greedy hữu ích thực tế.
-- **Matching bipartite**: ghép cặp tối đa, đa thức.
-- Ch.17 bổ sung **thuật toán đa thức** và **preview NP-hard** cho mô hình thực tế.
+1. **Tô màu**: hàng xóm khác màu; $$\chi$$; greedy; tối ưu NP-hard.
+2. **Matching bipartite**: ghép không chung đỉnh; max matching ∈ P.
+3. Ch.17: thuật toán đa thức + cửa sổ sang NP-hard (Ch.20).
 
-Chúng ta hoàn thành phần đồ thị nâng cao. Chương 18 trở đi chuyển sang **mô hình tính toán** — automata và ngôn ngữ hình thức.
+Chương 18 trở đi: **mô hình tính toán** — automata và ngôn ngữ hình thức.

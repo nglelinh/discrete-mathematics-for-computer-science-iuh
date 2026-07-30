@@ -6,258 +6,125 @@ date: 2021-01-01
 order: 5
 required: false
 lang: en
-excerpt: "Chương 15 đã trình bày chia hết, đồng dư, mật mã và ứng dụng thực tế. Mục bổ sung này khảo sát hành trình lý thuyết số từ Euclid và Fermat đến RSA, đường cong…"
+excerpt: "Khảo sát: Euclid–Gauss, RSA và HTTPS, hashing, Reed–Solomon, zero-knowledge và blockchain, hậu lượng tử — tổng hợp Chương 15."
 ---
 
-Chương 15 đã trình bày chia hết, đồng dư, mật mã và ứng dụng thực tế. Mục bổ sung này khảo sát hành trình lý thuyết số từ Euclid và Fermat đến RSA, đường cong elliptic và blockchain — minh chứng cho sức sống của toán học cổ điển trong bảo mật và hệ thống phân tán hiện đại.
+<div class="textbook-epigraph" markdown="1">
 
-![Euclid và Gauss](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid.jpg)
+"Number theory is the purest mathematics — and now the quiet machinery of the Internet."
 
-<p class="textbook-figure-caption" data-figure="15.21">Từ Euclid đến Gauss, number theory xây nền trí tuệ cho công nghệ bảo mật hiện đại.</p>
-![Modulo và hashing](/discrete-mathematics-for-computer-science-iuh/img/course/modular_arithmetic.svg)
+<span class="epigraph-attribution">— Tinh thần bài khảo sát 15.5</span>
 
-<p class="textbook-figure-caption" data-figure="15.22">Đồng dư và modulo sống trong hashing, indexing và hạ tầng số học của phần mềm.</p>
-![RSA và HTTPS](/discrete-mathematics-for-computer-science-iuh/img/course/Public_key_encryption_keys.svg)
+</div>
 
-<p class="textbook-figure-caption" data-figure="15.23">RSA bảo vệ kết nối HTTPS — người dùng web âm thầm dựa vào lý thuyết số.</p>
+Chương 15 đã lần lượt đưa ra chia hết, đồng dư, RSA/DH và các ứng dụng hệ thống. Mục bổ sung này **tổng hợp hành trình**: từ Euclid và Gauss đến hạ tầng HTTPS, hashing, mã sửa lỗi, zero-knowledge và blockchain — nhấn mạnh mối liên hệ khái niệm, không thay các mục kỹ thuật 15.1–15.4.
+
 ![Blockchain](/discrete-mathematics-for-computer-science-iuh/img/course/Blockchain.svg)
 
-<p class="textbook-figure-caption" data-figure="15.24">Blockchain kết hợp hashing, chữ ký số và đồng thuận — lý thuyết số gặp hệ phân tán.</p>
-![Zero-knowledge proofs](/discrete-mathematics-for-computer-science-iuh/img/course/Carl_Friedrich_Gauss.jpg)
+<p class="textbook-figure-caption" data-figure="15.8">Blockchain kết hợp hashing, chữ ký số và đồng thuận — lý thuyết số gặp hệ phân tán.</p>
 
-<p class="textbook-figure-caption" data-figure="15.25">ZK-proofs chứng minh tính đúng mà không lộ bí mật — hướng mới của mật mã và blockchain.</p>
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Trình bày** hành trình lý thuyết số từ Euclid, Gauss đến RSA và ECC.
-- **Giải thích** vai trò hashing và chữ ký số trong blockchain.
-- **Mô tả** zero-knowledge proof ở mức khái niệm.
-- **Đánh giá** tác động máy tính lượng tử lên RSA và hướng post-quantum.
+- **Tóm tắt** đường dây Euclid → Gauss → RSA/DH.
+- **Giải thích** vai trò hash và chữ ký trong blockchain ở mức khái niệm.
+- **Mô tả** zero-knowledge proof bằng một câu đúng.
+- **Đặt** mối đe dọa lượng tử và PQC vào bối cảnh chương.
 
-**Từ khóa**: blockchain, ECDSA, zero-knowledge, Shor, post-quantum cryptography.
+**Từ khóa**: Euclid, Gauss, RSA, HTTPS, blockchain, ECDSA, zero-knowledge, post-quantum.
+
 </div>
 
-## Phần 1: Từ Euclid đến Gauss
+## 1. Từ Euclid đến Gauss
 
-### 1.1. Euclid và số nguyên tố
+Euclid (~300 TCN) để lại thuật toán GCD và chứng minh vô hạn số nguyên tố — hai kết quả vẫn nằm trong Mục 15.1. Điểm then chốt không chỉ là “có vô hạn nguyên tố”, mà là nhận ra số nguyên tố như **cấu trúc cơ bản** của số học.
 
-Euclid không biết Internet,
-nhưng ông cho nhân loại một proof kinh điển về việc có vô hạn số nguyên tố.
+Gauss (1777–1855), qua *Disquisitiones Arithmeticae* (1801), đưa **đồng dư** thành ngôn ngữ chuẩn. Hầu hết giao thức ở Mục 15.2–15.3 viết bằng đúng ngôn ngữ đó: $$a\equiv b\pmod n$$, lớp thặng dư, hàm $$\varphi$$.
 
-Điểm quan trọng không chỉ là kết quả.
-Điểm quan trọng là cảm giác rằng số nguyên tố là cấu trúc cơ bản,
-sâu,
-và khó lường.
+## 2. RSA và an ninh Internet
 
-### 1.2. Gauss và arithmetic bậc cao hơn
+RSA dựa trên **bất đối xứng tính toán**: nhân hai số nguyên tố lớn thì dễ; phân tích tích $$n=pq$$ thì khó (trên máy cổ điển). Public-key cryptography cho phép:
 
-Carl Friedrich Gauss đưa number theory lên trình độ mới.
-Các ý tưởng về modular arithmetic,
-congruences,
-và cấu trúc số học trở nên có hệ thống và mạnh mẽ hơn nhiều.
-
-Ngày nay,
-rất nhiều giao thức bảo mật vẫn đứng trên nền ngôn ngữ mà Gauss giúp hoàn thiện.
-
----
-
-## Phần 2: RSA và an ninh của Internet
-
-### 2.1. Ý tưởng cốt lõi của RSA
-
-RSA dựa trên thực tế rằng:
-nhân hai số nguyên tố lớn thì dễ,
-nhưng phân tích tích của chúng thành thừa số lại khó hơn rất nhiều.
-
-Đó là ví dụ hoàn hảo của asymmetry trong computation.
-
-### 2.2. Public key cryptography thay đổi thế giới
-
-Trước public key,
-chia sẻ khóa bí mật là vấn đề khó.
-RSA cho phép:
-
-- công khai khóa mã hóa,
+- công bố khóa mã hóa,
 - giữ riêng khóa giải mã,
-- xây hệ chữ ký số,
-- xác thực kết nối an toàn.
+- chữ ký số và hạ tầng PKI.
 
-HTTPS,
-PKI,
-email security,
-software signing
-đều chịu ảnh hưởng của hướng tư duy này.
+HTTPS/TLS, ký phần mềm, email bảo mật đều chịu ảnh hưởng của mô hình này — dù triển khai hiện đại thường kết hợp ECDHE, AES, … Người dùng trình duyệt không cần nghĩ tới modulo; hạ tầng thì không thể thiếu.
 
-### 2.3. Một ví dụ đẹp của toán thuần chuyển thành hạ tầng
+## 3. Hashing và modulo thực dụng
 
-Rất ít người dùng web nghĩ về modulo và số nguyên tố khi mở trình duyệt.
-Nhưng chính những ý tưởng đó đang âm thầm bảo vệ kết nối của họ.
-
----
-
-## Phần 3: Hashing và modular arithmetic
-
-### 3.1. Modular arithmetic ở khắp nơi
-
-Khi tính hash,
-phân bố bucket,
-xoay vòng chỉ số,
-hoặc làm checksum,
-chúng ta thường gặp arithmetic modulo.
-
-Ví dụ đơn giản:
+Công thức
 
 ```python
 index = hash(key) % table_size
 ```
 
-Đây là modular arithmetic ở dạng thực dụng nhất.
+là số học modulo ở dạng kỹ thuật phần mềm hàng ngày. Hash mật mã (SHA-256, …) phức tạp hơn nhiều, nhưng trực giác **lớp thặng dư**, wrap-around và phân bố bucket vẫn hữu ích. Máy tính làm việc với từ hữu hạn bit — nhiều phép toán “tự nhiên” đã là modulo $$2^w$$.
 
-### 3.2. Hash functions không chỉ là chia lấy dư
+## 4. Mã sửa lỗi và Reed–Solomon
 
-Dĩ nhiên,
-hash hiện đại phức tạp hơn rất nhiều.
-Nhưng trực giác số học mô-đun vẫn hữu ích để hiểu:
+Truyền/lưu dữ liệu chịu nhiễu. **Reed–Solomon** và các mã liên quan dùng đại số trên **trường hữu hạn** (cấu trúc số học mở rộng) để phát hiện và sửa lỗi: CD/DVD, QR, lưu trữ phân tán, vệ tinh. Lý thuyết số / đại số hữu hạn không chỉ phục vụ RSA: còn phục vụ **độ tin cậy** dữ liệu.
 
-- phân bố residue,
-- bucket mapping,
-- wrap-around,
-- cyclic structures.
+## 5. Zero-knowledge và blockchain
 
-### 3.3. Tại sao số học mô-đun hợp với máy tính
+**Zero-knowledge proof**: chứng minh một mệnh đề (hoặc “biết bí mật”) mà **không tiết lộ** bản thân bí mật. Các biến thể zk-SNARK / zk-STARK đưa ý tưởng này vào hệ phi tập trung.
 
-Máy tính hữu hạn bit,
-nên nhiều phép toán tự nhiên diễn ra trong không gian mô-đun nào đó.
-Điều này làm number theory càng gần hardware hơn chúng ta tưởng.
+**Blockchain** (ở mức chương trình): chuỗi khối gắn bằng hash; giao dịch được **ký** (ECDSA/RSA-like); đồng thuận quyết định chuỗi hợp lệ. Số nguyên tố, modulo và đường cong elliptic xuất hiện trong chữ ký; hash bảo toàn liên kết khối. Đây không phải giáo trình blockchain đầy đủ — chỉ chỉ ra chỗ lý thuyết số “neo” vào hệ.
 
----
+## 6. Lượng tử và hậu lượng tử
 
-## Phần 4: Error-correcting codes và Reed–Solomon
+Shor đe dọa RSA và nhiều hệ DLP/ECC cổ điển. Phản ứng không phải bỏ số học, mà **chọn bài toán nền mới** (lattice, code, hash-based, …) — xem Mục 15.4. An ninh dài hạn vẫn là bài toán toán học.
 
-### 4.1. Dữ liệu truyền đi hiếm khi hoàn hảo
+## 7. Kết luận chương
 
-Khi truyền thông qua kênh nhiễu,
-hoặc lưu dữ liệu lâu dài,
-chúng ta cần cách phát hiện và sửa lỗi.
+| Mốc | Ý tưởng | Chỗ trong khóa học |
+|:---|:---|:---|
+| Euclid | GCD, vô hạn nguyên tố | 15.1 |
+| Gauss | Đồng dư | 15.2 |
+| RSA / DH | Public key | 15.3 |
+| Hash, LCG, CRT, ECC, PQC | Hệ thống | 15.4 |
+| Blockchain / ZK | Hệ phân tán, riêng tư | 15.5 (khảo sát) |
 
-### 4.2. Reed–Solomon là chiến thắng của đại số trên thực tế
+Hành trình từ Euclid đến blockchain minh họa một quy luật của khoa học cơ bản: lý thuyết thuần hôm nay có thể trở thành hạ tầng kỹ thuật sau nhiều thế kỷ.
 
-Reed–Solomon codes dùng cấu trúc đại số trên trường hữu hạn.
-Chúng cực kỳ hữu ích trong:
+## Bài tập
 
-- CD/DVD,
-- QR codes,
-- storage systems,
-- satellite communication,
-- data recovery.
+### Bài tập 1
 
-### 4.3. Ý nghĩa đối với sinh viên khoa học máy tính
-
-Nhiều người học number theory tưởng chương này chỉ xoay quanh primes và RSA.
-Nhưng coding theory cho thấy đại số số học còn mở ra cả thế giới reliability engineering.
-
----
-
-## Phần 5: Zero-knowledge proofs và blockchain
-
-### 5.1. Chứng minh mà không lộ bí mật
-
-Zero-knowledge proof là một trong những ý tưởng đẹp nhất của modern cryptography:
-chứng minh người chứng minh biết một bí mật hoặc một mệnh đề đúng,
-nhưng không tiết lộ bản thân bí mật đó.
-
-### 5.2. Vì sao blockchain quan tâm
-
-Trong blockchain và systems phi tập trung,
-người chúng ta quan tâm đến:
-
-- tính đúng đắn có thể kiểm tra công khai,
-- quyền riêng tư,
-- khả năng xác minh không cần tin cậy tuyệt đối.
-
-Các biến thể như zk-SNARKs,
-zk-STARKs
-đang đẩy number theory vào một vùng ứng dụng cực hiện đại.
-
-### 5.3. Đây không còn là lý thuyết xa xôi
-
-Number theory ngày nay không chỉ bảo vệ web.
-Nó còn tham gia tái thiết kế cách niềm tin kỹ thuật được xây dựng trong môi trường phi tập trung.
-
----
-
-## Phần 6: Tương lai — lượng tử, hậu lượng tử, và số học mới
-
-Quantum computing đe dọa một số hệ mật mã cổ điển như RSA.
-Điều đó không làm number theory yếu đi.
-Ngược lại,
-nó thúc đẩy sự tìm kiếm các nền tảng toán học mới cho post-quantum cryptography.
-
-Tương lai của an ninh số
-vẫn sẽ là tương lai rất toán học.
-
----
-
-## Kết luận
-
-Từ Euclid,
-Gauss,
-đến RSA,
-hashing,
-Reed–Solomon,
-và zero-knowledge proofs,
-number theory cho thấy một hành trình hiếm có:
-đi từ vẻ đẹp thuần túy sang giá trị công nghiệp khổng lồ.
-
-Hành trình từ Euclid đến blockchain minh chứng một nguyên tắc trong khoa học cơ bản: lý thuyết thuần túy hôm nay có thể trở thành hạ tầng công nghệ của ngày mai — đôi khi sau hàng thế kỷ.
-
----
-
-## Bài tập thực hành
-
-### Bài tập 1: Ước số chung lớn nhất
-
-Tính $$\gcd(48, 18)$$ bằng thuật toán Euclid.
+Tính $$\gcd(48,18)$$ bằng Euclid.
 
 <details>
 <summary>Đáp án</summary>
 
-48 = 2×18 + 12  
-18 = 1×12 + 6  
-12 = 2×6 + 0 → $$\gcd = 6$$
+$$48=2\cdot 18+12$$, $$18=1\cdot 12+6$$, $$12=2\cdot 6+0$$ → $$\gcd=6$$.
 
 </details>
 
-### Bài tập 2: Mã hóa RSA đơn giản
+### Bài tập 2
 
-Cho $$p=5$$, $$q=11$$, $$e=3$$. Tính $$n$$ và $$d$$.
+$$p=5$$, $$q=11$$, $$e=3$$. Tính $$n$$ và một $$d$$ hợp lệ.
 
 <details>
 <summary>Đáp án</summary>
 
-$$n = 55$$, $$\phi(n)=40$$, $$d=27$$ (vì $$3×27 \equiv 1 \pmod{40}$$).
+$$n=55$$, $$\varphi=40$$, $$d=27$$ vì $$3\cdot 27=81\equiv 1\pmod{40}$$.
 
 </details>
 
-### Bài tập 3: Ứng dụng Blockchain
+### Bài tập 3
 
-Giải thích vai trò của số nguyên tố và modulo trong chữ ký số.
+Nêu một câu về vai trò modulo / số nguyên tố trong chữ ký số trên blockchain.
 
 <details>
 <summary>Đáp án</summary>
 
-Chữ ký số dùng nghịch đảo modulo (RSA/ECDSA). Khó phân tích số nguyên tố lớn là nền tảng an toàn của blockchain.
+Chữ ký (ECDSA/RSA-like) dùng lũy thừa hoặc phép toán nhóm trên trường hữu hạn / đường cong; nghịch đảo modulo và độ khó DLP/factoring (tùy hệ) bảo vệ khóa riêng. Hash liên kết khối và thường băm thông điệp trước khi ký.
 
 </details>
-
-## Xem thêm / Video gợi ý
-
-- [Logic Gates, Truth Tables, Boolean Algebra](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — 3Blue1Brown (Animation + intuition for logic)
-- [Introduction to Propositional Logic](https://www.youtube.com/watch?v=4l7L9v0p0Q) — MIT OCW 6.042J (Tom Leighton — formal foundation)
 
 ## Tóm tắt
 
-Số học là nền tảng của bảo mật hiện đại. Từ Euclid, Fermat, Euler đến RSA, elliptic curve và blockchain — các định lý và thuật toán số học cho phép chúng ta mã hóa, xác thực và xây dựng hệ thống tin cậy mà không cần tin tưởng lẫn nhau. Hiểu sâu số học giúp chúng ta nắm bắt được bí mật đằng sau mọi hệ thống bảo mật và tiền điện tử ngày nay.
+Số học — từ chia hết và đồng dư đến RSA, hash, mã sửa lỗi và chữ ký — là nền im lặng của bảo mật và nhiều hệ phân tán. Chương 15 kết thúc bằng bức tranh tổng hợp; Chương 16 mở **cây** như cấu trúc dữ liệu–toán rời rạc tiếp theo.

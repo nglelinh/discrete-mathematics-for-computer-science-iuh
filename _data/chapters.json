@@ -69,7 +69,7 @@
     "slug": "chapter12",
     "title_vn": "Lý thuyết Đồ thị",
     "title_en": "Basic Graph Theory",
-    "summary": "Chương này giới thiệu đồ thị G = (V, E), biểu diễn ma trận kề và danh sách kề, đường đi, liên thông, Euler, Hamilton và duyệt đồ thị BFS/DFS — nền tảng cho mạng và thuật toán."
+    "summary": "Định nghĩa đồ thị G=(V,E), bậc và định lý bắt tay; ma trận kề và danh sách kề; đường đi, chu trình, liên thông; Euler, Hamilton và duyệt BFS/DFS — nền tảng mạng và thuật toán."
   },
   "13": {
     "slug": "chapter13",
@@ -81,42 +81,42 @@
     "slug": "chapter14",
     "title_vn": "Thuật toán",
     "title_en": "Algorithms",
-    "summary": "Chương này giới thiệu khái niệm thuật toán, ký hiệu O lớn, phân tích độ phức tạp thời gian và không gian, cùng vai trò của thiết kế thuật toán trong khoa học máy tính."
+    "summary": "Thuật toán và tính chất; Big-O, Θ, Ω; phân tích thời gian/không gian worst-case; so sánh thuật toán tìm kiếm, sắp xếp và chia để trị."
   },
   "15": {
     "slug": "chapter15",
     "title_vn": "Lý thuyết Số",
     "title_en": "Number Theory",
-    "summary": "Chương này trình bày tính chia hết, số nguyên tố, đồng dư, mật mã học cơ bản và ứng dụng trong bảo mật thông tin và blockchain."
+    "summary": "Chia hết, số nguyên tố, Euclid; đồng dư, CRT, lũy thừa modulo; RSA, Diffie–Hellman; hash, PRNG, ECC và hậu lượng tử — nền số học cho bảo mật."
   },
   "16": {
     "slug": "chapter16",
     "title_vn": "Cây",
     "title_en": "Trees",
-    "summary": "Chương này trình bày cây và cây có gốc, duyệt preorder/inorder/postorder, cây khung nhỏ nhất (Kruskal, Prim), mã Huffman và BST — nền tảng filesystem, DOM và cấu trúc dữ liệu."
+    "summary": "Cây và cây có gốc; duyệt preorder/inorder/postorder/level-order; MST (Kruskal, Prim); Huffman và BST — filesystem, DOM, nén và tìm kiếm."
   },
   "17": {
     "slug": "chapter17",
     "title_vn": "Lý thuyết Đồ thị Nâng cao",
     "title_en": "Advanced Graph Theory",
-    "summary": "Chương này mở rộng đồ thị với đường đi ngắn nhất (Dijkstra), sắp xếp topo trên DAG, tô màu đỉnh và ghép cặp — thuật toán routing, build system và preview bài toán NP-hard."
+    "summary": "Đường đi ngắn nhất (BFS, Dijkstra, Bellman–Ford); sắp xếp topo trên DAG; tô màu đỉnh và ghép cặp hai phía — routing, build system, scheduling."
   },
   "18": {
     "slug": "chapter18",
     "title_vn": "Mô hình hóa Tính toán",
     "title_en": "Models of Computation",
-    "summary": "Chương này giới thiệu máy hữu hạn trạng thái, NFA/DFA, biểu thức chính quy, máy Turing và vai trò của chúng trong lý thuyết ngôn ngữ hình thức và biên dịch."
+    "summary": "Lộ trình NCS 14 bài: DFA/NFA, subset construction, Kleene, pumping, Myhill–Nerode, TM, decidability — có định lý/chứng minh và lộ trình nghiên cứu automata."
   },
   "19": {
     "slug": "chapter19",
     "title_vn": "Ngôn ngữ Hình thức và Văn phạm",
     "title_en": "Formal Languages",
-    "summary": "Chương này xét bảng chữ cái, chuỗi, văn phạm, phân cấp Chomsky và ứng dụng trong trình biên dịch và phân tích cú pháp."
+    "summary": "Lộ trình NCS 12 bài: chuỗi–ngôn ngữ, Chomsky, CFG/PDA, pumping CFL, CNF/CYK, compiler — chứng minh và bắt đầu nghiên cứu ngôn ngữ hình thức."
   },
   "20": {
     "slug": "chapter20",
     "title_vn": "Độ phức tạp Tính toán",
     "title_en": "Computational Complexity",
-    "summary": "Chương này giới thiệu lớp độ phức tạp P và NP, bài toán NP-đầy đủ, giả thuyết P ≠ NP và ý nghĩa đối với thiết kế thuật toán và kỹ thuật phần mềm."
+    "summary": "Lộ trình NCS 14 bài: P/NP/coNP, ≤ₚ, Cook–Levin, rút gọn 3SAT–IS–VC–TSP (có chứng minh), xấp xỉ, FPT, ETH/average-case, và thực hành bắt đầu nghiên cứu."
   }
 }

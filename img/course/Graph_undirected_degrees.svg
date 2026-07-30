@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" role="img" aria-label="Undirected graph degrees">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #5a6570; font-size: 13px; }
+    .e { stroke: #334155; stroke-width: 2; fill: none; }
+    .ea { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .n { fill: white; stroke: #004586; stroke-width: 2.2; }
+    .nt { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 15px; }
+    .cap { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .box { fill: white; stroke: #cbd5e1; stroke-width: 1.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="360" y="28" text-anchor="middle" font-size="16" font-weight="600">Đồ thị vô hướng G = (V, E)</text>
+  <line class="e" x1="180" y1="120" x2="300" y2="90"/>
+  <line class="e" x1="300" y1="90" x2="420" y2="120"/>
+  <line class="e" x1="180" y1="120" x2="240" y2="220"/>
+  <line class="e" x1="300" y1="90" x2="360" y2="220"/>
+  <line class="e" x1="420" y1="120" x2="360" y2="220"/>
+  <line class="e" x1="240" y1="220" x2="360" y2="220"/>
+    <circle class="n" cx="180" cy="120" r="18"/>
+  <text class="nt" x="180" y="125" text-anchor="middle">A</text>
+    <circle class="n" cx="300" cy="90" r="18"/>
+  <text class="nt" x="300" y="95" text-anchor="middle">B</text>
+    <circle class="n" cx="420" cy="120" r="18"/>
+  <text class="nt" x="420" y="125" text-anchor="middle">C</text>
+    <circle class="n" cx="240" cy="220" r="18"/>
+  <text class="nt" x="240" y="225" text-anchor="middle">D</text>
+    <circle class="n" cx="360" cy="220" r="18"/>
+  <text class="nt" x="360" y="225" text-anchor="middle">E</text>
+  <text class="l" x="155" y="95">deg=2</text>
+  <text class="l" x="310" y="70">deg=3</text>
+  <text class="l" x="440" y="100">deg=2</text>
+  <text class="l" x="200" y="250">deg=2</text>
+  <text class="l" x="380" y="250">deg=3</text>
+  <text class="cap" x="360" y="300" text-anchor="middle">V = {A,B,C,D,E}, |E| = 6 · Σ deg = 12 = 2|E|</text>
+
+</svg>

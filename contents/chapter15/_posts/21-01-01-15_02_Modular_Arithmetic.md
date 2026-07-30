@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Số học Modulo và Đồng dư"
 categories: chapter15
@@ -7,258 +6,295 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã xây dựng nền về chia hết, số nguyên tố và thuật toán Euclid. Mục này giới thiệu số học modulo (đồng dư) — phép toán chỉ giữ lại phần…"
+excerpt: "Đồng dư a ≡ b (mod n), phép toán modulo, phương trình tuyến tính, nghịch đảo và Euclid mở rộng, CRT, lũy thừa modulo nhanh, Fermat và Euler."
 ---
 
-Ở mục trước chúng ta đã xây dựng nền về chia hết, số nguyên tố và thuật toán Euclid. Mục này giới thiệu **số học modulo** (đồng dư) — phép toán chỉ giữ lại phần dư khi chia, là công cụ trung tâm của RSA, hàm băm và nhiều thuật toán bảo mật.
+<div class="textbook-epigraph" markdown="1">
 
-![Số học modulo](/discrete-mathematics-for-computer-science-iuh/img/course/modular_arithmetic.svg)
+"Disquisitiones Arithmeticae made congruence the everyday language of number theory."
 
-<p class="textbook-figure-caption" data-figure="15.6">Đồng dư modulo $n$ — hai số cùng số dư khi chia cho $n$.</p>
-![Gauss và đồng dư](/discrete-mathematics-for-computer-science-iuh/img/course/Carl_Friedrich_Gauss.jpg)
+<span class="epigraph-attribution">— Tinh thần Gauss (1801)</span>
 
-<p class="textbook-figure-caption" data-figure="15.7">Gauss hệ thống hóa modular arithmetic — nền cho RSA và nhiều giao thức bảo mật.</p>
-![Modulo trong hashing](/discrete-mathematics-for-computer-science-iuh/img/course/Hash_table_simple_999.svg)
+</div>
 
-<p class="textbook-figure-caption" data-figure="15.8">`hash(key) % table_size` — ứng dụng thực tế nhất của số học mô-đun.</p>
-![Định lý Fermat nhỏ](/discrete-mathematics-for-computer-science-iuh/img/course/PrimeDecompositionExample.svg)
+Ở mục trước đã có định lý chia, GCD và Euclid. **Số học modulo** chỉ giữ lại số dư khi chia cho modulus cố định $$n$$. Khung này là công cụ trung tâm của RSA, hàm băm, sinh số giả ngẫu nhiên và nhiều thuật toán bảo mật.
 
-<p class="textbook-figure-caption" data-figure="15.9">Với $p$ nguyên tố và $\gcd(a,p)=1$: $a^{p-1}\equiv 1 \pmod p$ — cốt lõi kiểm tra số nguyên tố.</p>
-![Thuật toán Euclid mở rộng](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid.jpg)
+![Đồng dư modulo](/discrete-mathematics-for-computer-science-iuh/img/course/Number_congruence_clock.svg)
 
-<p class="textbook-figure-caption" data-figure="15.10">Thuật toán Euclid mở rộng tìm nghịch đảo modulo — cần cho RSA.</p>
+<p class="textbook-figure-caption" data-figure="15.4">Đồng dư modulo $$n$$: hai số cùng số dư khi chia cho $$n$$ — hình ảnh “đồng hồ số học”.</p>
+
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Thực hiện** phép cộng, trừ, nhân trong modulo $$n$$.
-- **Giải** phương trình đồng dư tuyến tính dạng $$ax \equiv b \pmod{n}$$.
-- **Tính** nghịch đảo modulo bằng thuật toán Euclid mở rộng.
-- **Áp dụng** Định lý Số dư Trung Hoa (CRT) cho hệ đồng dư.
-- **Tính** lũy thừa modulo nhanh (fast modular exponentiation).
+- **Định nghĩa** $$a \equiv b \pmod n$$ và thực hiện cộng, trừ, nhân modulo $$n$$.
+- **Giải** $$ax \equiv b \pmod n$$ khi điều kiện GCD thỏa.
+- **Tính** nghịch đảo modulo bằng Euclid mở rộng.
+- **Áp dụng** Định lý số dư Trung Hoa (CRT) cho hệ đồng dư.
+- **Tính** $$b^e \bmod n$$ bằng lũy thừa modulo nhanh; nêu Fermat / Euler.
 
-**Từ khóa**: Đồng dư (congruence), modulo, nghịch đảo modulo (modular inverse), CRT, lũy thừa modulo, $$a^{-1} \bmod n$$.
+**Từ khóa**: đồng dư (congruence), modulo, nghịch đảo modulo, CRT, lũy thừa modulo, định lý Fermat nhỏ, định lý Euler.
+
+</div>
 
 ## 1. Đồng dư
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Cho $$a, b \in \mathbb{Z}$$, $$n \in \mathbb{Z}^+$$. Chúng ta nói $$a$$ **đồng dư** với $$b$$ modulo $$n$$, ký hiệu:
+
+**Định nghĩa.** Cho $$a,b \in \mathbb{Z}$$ và $$n \in \mathbb{Z}^+$$. Ta nói $$a$$ **đồng dư** với $$b$$ modulo $$n$$, ký hiệu
+
+$$
+a \equiv b \pmod n,
+$$
+
+khi và chỉ khi $$n \mid (a-b)$$ — tức $$a$$ và $$b$$ có cùng số dư khi chia cho $$n$$.
+
 </div>
 
-## 2. Phương trình Đồng dư Tuyến tính
+Đồng dư theo modulus cố định là quan hệ **tương đương** trên $$\mathbb{Z}$$. Các lớp tương đương là
 
-Bài toán: giải $$ax \equiv b \pmod{n}$$, tìm $$x$$.
+$$
+[0],[1],\ldots,[n-1]
+$$
+
+(với $$[r] = \{ \ldots, r-n, r, r+n, \ldots \}$$).
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Phương trình có nghiệm khi và chỉ khi $$d = \gcd(a, n) \mid b$$. Khi đó, có đúng $$d$$ nghiệm modulo $$n$$, không đồng dư với nhau.
+
+**Định lý** (tương thích phép toán). Nếu $$a \equiv b \pmod n$$ và $$c \equiv d \pmod n$$ thì
+
+$$
+a+c \equiv b+d, \qquad a-c \equiv b-d, \qquad ac \equiv bd \pmod n.
+$$
+
 </div>
 
-<div class="content-box example-box textbook-block" markdown="1">
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Giải $$6x \equiv 3 \pmod{9}$$.
 
-$$\gcd(6, 9) = 3$$ và $$3 \mid 3$$ → có 3 nghiệm.
+**Ví dụ 1.** $$15 \equiv 3 \pmod{12}$$ vì $$15-3=12$$.  
+$$(47 \cdot 93) \bmod 13$$: $$47 \equiv 8$$, $$93 \equiv 2 \pmod{13}$$ nên $$47\cdot 93 \equiv 8\cdot 2 = 16 \equiv 3 \pmod{13}$$.
 
-Chia cả hai vế cho 3: $$2x \equiv 1 \pmod{3}$$ → $$x \equiv 2 \pmod{3}$$.
-
-Các nghiệm modulo 9: $$x \equiv 2, 5, 8 \pmod{9}$$.
-</div>
 </div>
 
-## 3. Nghịch đảo Modulo
+## 2. Phương trình đồng dư tuyến tính
+
+Bài toán: tìm $$x$$ thỏa $$ax \equiv b \pmod n$$.
+
+<div class="textbook-theorem" markdown="1">
+
+**Định lý.** Đặt $$d = \gcd(a,n)$$. Phương trình $$ax \equiv b \pmod n$$ có nghiệm khi và chỉ khi $$d \mid b$$. Khi đó có đúng $$d$$ nghiệm không đồng dư modulo $$n$$.
+
+</div>
+
+<div class="textbook-example" markdown="1">
+
+**Ví dụ 2.** Giải $$6x \equiv 3 \pmod 9$$.
+
+$$\gcd(6,9)=3$$ và $$3\mid 3$$ → có 3 nghiệm. Chia phương trình cho 3 (modulus chia cho 3):
+
+$$
+2x \equiv 1 \pmod 3.
+$$
+
+Nhân với nghịch đảo của 2 modulo 3 (là 2, vì $$2\cdot 2=4\equiv 1$$): $$x \equiv 2 \pmod 3$$.  
+Các nghiệm modulo 9: $$x \equiv 2,5,8 \pmod 9$$.
+
+</div>
+
+## 3. Nghịch đảo modulo
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Nghịch đảo modulo của $$a$$ modulo $$n$$ là số $$\bar{a}$$ sao cho:
+
+**Định nghĩa.** **Nghịch đảo modulo** của $$a$$ modulo $$n$$ là số $$\bar a$$ sao cho
+
+$$
+a \cdot \bar a \equiv 1 \pmod n.
+$$
+
+Nghịch đảo tồn tại khi và chỉ khi $$\gcd(a,n)=1$$. Ký hiệu thường gặp: $$a^{-1} \bmod n$$.
+
 </div>
 
-<div class="textbook-equation" markdown="1">
-$$a \cdot \bar{a} \equiv 1 \pmod{n}$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-Tồn tại khi và chỉ khi $$\gcd(a, n) = 1$$.
+### Euclid mở rộng
 
-### Thuật toán Euclid Mở rộng
+Từ Bézout: nếu $$\gcd(a,n)=1$$ thì tồn tại $$s,t$$ với $$sa + tn = 1$$, suy ra $$s \equiv a^{-1} \pmod n$$.
 
+```text
+Euclid-Mở-rộng(a, n)   // giả sử gcd(a,n)=1
+old_r, r ← a, n
+old_s, s ← 1, 0
+WHILE r ≠ 0 DO
+    q ← old_r DIV r
+    (old_r, r) ← (r, old_r − q·r)
+    (old_s, s) ← (s, old_s − q·s)
+RETURN old_s MOD n   // đưa về {0..n−1}
 ```
-THUẬT TOÁN: Euclid-Mở-rộng(a, n)   // tìm nghịch đảo của a mod n
-Đầu vào: a, n với gcd(a, n) = 1
-Đầu ra: nghịch đảo x sao cho a·x ≡ 1 (mod n)
 
-1. old_r, r ← a, n
-2. old_s, s ← 1, 0
-3. WHILE r ≠ 0 DO
-4.     q ← old_r DIV r
-5.     old_r, r ← r, old_r - q*r
-6.     old_s, s ← s, old_s - q*s
-7. END WHILE
-8. RETURN old_s MOD n   // đảm bảo kết quả dương
-```
+<div class="textbook-example" markdown="1">
 
-<div class="content-box example-box textbook-block" markdown="1">
-Tìm nghịch đảo của 7 modulo 26:
+**Ví dụ 3.** Nghịch đảo của $$7$$ modulo $$26$$: Euclid mở rộng cho $$-11$$, và $$-11 \bmod 26 = 15$$. Kiểm tra: $$7\cdot 15 = 105 = 4\cdot 26 + 1 \equiv 1 \pmod{26}$$.
 
-| Bước | old_r | r | q | old_s | s |
-|:------|:-------|:---|---:|:-------|:---|
-| 1 | 7 | 26 | 0 | 1 | 0 |
-| 2 | 26 | 7 | 3 | 0 | 1 |
-| 3 | 7 | 5 | 1 | 1 | -3 |
-| 4 | 5 | 2 | 2 | -3 | 4 |
-| 5 | 2 | 1 | 2 | 4 | -11 |
-| 6 | 1 | 0 | - | -11 | — |
-
-Kết quả: $$-11 \bmod 26 = 15$$. Kiểm tra: $$7 \times 15 = 105 \equiv 1 \pmod{26}$$ ✓
 </div>
 
-## 4. Định lý Số dư Trung Hoa (CRT)
+## 4. Định lý số dư Trung Hoa (CRT)
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Cho $$n_1, n_2, \ldots, n_k$$ là các số nguyên dương đôi một nguyên tố cùng nhau. Hệ đồng dư:
+
+**Định lý** (Chinese Remainder Theorem). Cho $$n_1,\ldots,n_k$$ đôi một nguyên tố cùng nhau. Hệ
+
+$$
+x \equiv a_i \pmod{n_i}, \quad i=1,\ldots,k
+$$
+
+có nghiệm duy nhất modulo $$N = n_1 n_2 \cdots n_k$$.
+
+Công thức: $$x = \sum_{i=1}^{k} a_i N_i y_i$$ với $$N_i = N/n_i$$ và $$y_i = N_i^{-1} \bmod n_i$$.
+
 </div>
 
-<div class="textbook-equation" markdown="1">
-$$x \equiv a_1 \pmod{n_1}$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$x \equiv a_2 \pmod{n_2}$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$\cdots$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$x \equiv a_k \pmod{n_k}$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-có nghiệm duy nhất modulo $$N = n_1 \cdot n_2 \cdots n_k$$.
-
-<div class="content-box example-box textbook-block" markdown="1">
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Giải hệ:
-<div class="textbook-equation" markdown="1">
-$$x \equiv 2 \pmod{3}$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$x \equiv 3 \pmod{5}$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$x \equiv 2 \pmod{7}$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-$$N = 3 \times 5 \times 7 = 105$$.
-$$N_1 = 105/3 = 35$$, $$y_1 = 35^{-1} \bmod 3 = 2^{-1} \bmod 3 = 2$$
-$$N_2 = 105/5 = 21$$, $$y_2 = 21^{-1} \bmod 5 = 1^{-1} \bmod 5 = 1$$
-$$N_3 = 105/7 = 15$$, $$y_3 = 15^{-1} \bmod 7 = 1^{-1} \bmod 7 = 1$$
 
-<div class="textbook-equation" markdown="1">
-$$x = 2 \cdot 35 \cdot 2 + 3 \cdot 21 \cdot 1 + 2 \cdot 15 \cdot 1 = 140 + 63 + 30 = 233$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$x \equiv 233 \bmod 105 \equiv 23 \pmod{105}$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-Kiểm tra: $$23 \bmod 3 = 2$$, $$23 \bmod 5 = 3$$, $$23 \bmod 7 = 2$$ ✓
-</div>
+**Ví dụ 4** (bài toán Tôn Tử). Giải
+
+$$
+x \equiv 2 \pmod 3,\quad
+x \equiv 3 \pmod 5,\quad
+x \equiv 2 \pmod 7.
+$$
+
+$$N=105$$; $$N_1=35$$, $$y_1=2$$; $$N_2=21$$, $$y_2=1$$; $$N_3=15$$, $$y_3=1$$.
+
+$$
+x = 2\cdot 35\cdot 2 + 3\cdot 21\cdot 1 + 2\cdot 15\cdot 1 = 233 \equiv 23 \pmod{105}.
+$$
+
+Kiểm tra: $$23 \bmod 3=2$$, $$23 \bmod 5=3$$, $$23 \bmod 7=2$$.
+
 </div>
 
-<div class="content-box insight-box textbook-block" markdown="1">
-**CRT trong lịch sử**: Định lý này được biết đến từ thế kỷ thứ 3 ở Trung Quốc, trong cuốn sách "Tôn Tử Toán Kinh" (Sunzi Suan Jing). Bài toán gốc: "Tìm số biết rằng chia 3 dư 2, chia 5 dư 3, chia 7 dư 2." Đáp số 23 — giống hệt ví dụ trên!
-</div>
+## 5. Lũy thừa modulo nhanh
 
-## 5. Lũy thừa Modulo Nhanh
+Tính $$b^e \bmod n$$ với $$e$$ lớn (hàng trăm–nghìn bit trong RSA):
 
-Tính $$b^e \bmod n$$ với $$e$$ rất lớn (hàng trăm chữ số — như trong RSA):
-
-```
-THUẬT TOÁN: Lũy-thừa-Modulo-Nhanh(b, e, n)
-1. result ← 1
-2. base ← b MOD n
-3. WHILE e > 0 DO
-4.     IF e lẻ THEN result ← (result * base) MOD n
-5.     base ← (base * base) MOD n
-6.     e ← e DIV 2
-7. END WHILE
-8. RETURN result
+```text
+ModExp(b, e, n)
+result ← 1; base ← b MOD n
+WHILE e > 0 DO
+    IF e lẻ THEN result ← (result · base) MOD n
+    base ← (base · base) MOD n
+    e ← e DIV 2
+RETURN result
 ```
 
-Độ phức tạp: $$O(\log e)$$ — thay vì $$O(e)$$ nếu nhân tuần tự!
+Độ phức tạp $$O(\log e)$$ phép nhân modulo — thay vì $$O(e)$$ nhân tuần tự.
 
-<div class="content-box example-box textbook-block" markdown="1">
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Tính $$3^{13} \bmod 7$$.
 
-$$13_{10} = 1101_2$$. Các bit: 1, 1, 0, 1 (từ LSB đến MSB).
+**Ví dụ 5.** $$3^{13} \bmod 7$$. $$13 = 1101_2$$. Theo từng bit (LSB trước): kết quả $$3$$. Kiểm tra: $$3^{13} = 1594323 = 7\cdot 227760 + 3$$.
 
-| Bit | base | result |
-|:---|:---|:---:|
-| - | 3 | 1 |
-| 1 (LSB) | $$3^2=9\equiv2$$ | $$1\times3=3$$ |
-| 0 | $$2^2=4$$ | 3 |
-| 1 | $$4^2=16\equiv2$$ | $$3\times2=6\equiv6$$ |
-| 1 (MSB) | $$2^2=4$$ | $$6\times4=24\equiv3$$ |
-
-Kết quả: $$3^{13} \bmod 7 = 3$$. Kiểm tra: $$3^{13} = 1594323 = 7 \times 227760 + 3$$ ✓
-</div>
 </div>
 
-<div class="interactive-tool" markdown="1" style="border: 2px solid #6f42c1; padding: 20px; margin: 20px 0; border-radius: 8px;">
-<h3 style="color: #6f42c1;">🔬 Công cụ Tương tác: Máy tính Modulo</h3>
-<p>Công cụ này thực hiện các phép tính modulo cơ bản: cộng, trừ, nhân, nghịch đảo, lũy thừa. Quan sát từng bước của thuật toán Euclid mở rộng. <strong>Gợi ý thực hành:</strong> Tính $$5^{17} \bmod 23$$ bằng lũy thừa modulo nhanh — đây là phép tính cốt lõi trong Diffie-Hellman!</p>
+## 6. Định lý Fermat nhỏ và Euler
+
+<div class="textbook-theorem" markdown="1">
+
+**Định lý** (Fermat nhỏ). Nếu $$p$$ nguyên tố và $$p \nmid a$$ thì
+
+$$
+a^{p-1} \equiv 1 \pmod p.
+$$
+
+Tương đương: $$a^p \equiv a \pmod p$$ với mọi $$a$$.
+
+</div>
+
+<div class="textbook-theorem" markdown="1">
+
+**Định lý** (Euler). Nếu $$\gcd(a,n)=1$$ thì
+
+$$
+a^{\varphi(n)} \equiv 1 \pmod n,
+$$
+
+trong đó $$\varphi$$ là **hàm Euler totient** (số các số trong $$\{1,\ldots,n-1\}$$ nguyên tố cùng nhau với $$n$$). Khi $$n=p$$ nguyên tố, $$\varphi(p)=p-1$$ — khôi phục Fermat.
+
+</div>
+
+Hai định lý này là nền **tính đúng RSA**: nếu $$ed \equiv 1 \pmod{\varphi(n)}$$ thì $$M^{ed} \equiv M \pmod n$$ trong các điều kiện chuẩn (Mục 15.3).
+
+## 7. Thử nghiệm tương tác
+
+<div class="interactive-demo" markdown="1">
 <div data-demo="modular-arithmetic-calc"></div>
 </div>
 <script src="{{ '/public/js/modular-arithmetic-calc.js' | relative_url }}"></script>
 
-## Ứng dụng trong Khoa học Máy tính
-
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Cần chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
-
-Số học modulo xuất hiện trong: băm (hash maps), kiểm tra tính nguyên tố (Miller-Rabin), sinh số ngẫu nhiên (LGC), mã hóa RSA và ElGamal, chữ ký số DSA, và giao thức trao đổi khóa Diffie-Hellman.
-
-Lũy thừa modulo nhanh là một trong những thuật toán được gọi nhiều nhất trong mọi hệ thống bảo mật web (TLS/HTTPS). Mỗi khi chúng ta truy cập một trang web có ổ khóa xanh, trình duyệt của chúng ta đã thực hiện hàng chục phép lũy thừa modulo với số mũ hàng trăm chữ số!
-
 ## Bài tập
 
-Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, dạng bài và công cụ phù hợp trước khi tính toán. Cách tiếp cận này thường giúp tránh sai từ bước đầu.
+### Bài tập 1
 
-1. Tính $$(47 \times 93) \bmod 13$$ bằng cách rút gọn modulo.
-2. Giải $$4x \equiv 5 \pmod{9}$$.
-3. Tìm nghịch đảo modulo của 11 trong modulo 26.
-4. Dùng CRT giải: $$x \equiv 1 \pmod{3}, x \equiv 2 \pmod{5}, x \equiv 3 \pmod{7}$$.
-5. **Thử thách**: Viết chương trình (pseudocode) tính $$a^b \bmod n$$ bằng lũy thừa modulo nhanh, và ước tính số phép nhân cần thiết khi $$b$$ có 2048 bit (như trong RSA).
+Tính $$(47 \times 93) \bmod 13$$ bằng rút gọn modulo.
 
 <details>
-<summary>Hướng dẫn bài 5</summary>
+<summary>Đáp án</summary>
 
-Số phép nhân cần thiết: với số mũ 2048 bit, thuật toán thực hiện đúng 2048 vòng lặp. Mỗi vòng thực hiện tối đa 2 phép nhân modulo (một cho base, một cho result nếu bit là 1). Vậy tối đa ~4096 phép nhân.
+$$47\equiv 8$$, $$93\equiv 2 \pmod{13}$$ → $$8\cdot 2=16\equiv 3 \pmod{13}$$.
 
-So sánh với nhân tuần tự: cần $$2^{2048}$$ phép nhân — một con số lớn hơn tổng số nguyên tử trong vũ trụ!
-
-Đây là lý do tại sao lũy thừa modulo nhanh là một trong những thuật toán quan trọng nhất trong mật mã học.
 </details>
 
-## Xem thêm / Video gợi ý
+### Bài tập 2
 
-- [Modular Arithmetic](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — Numberphile (Clock arithmetic + crypto)
+Giải $$4x \equiv 5 \pmod 9$$.
+
+<details>
+<summary>Đáp án</summary>
+
+$$\gcd(4,9)=1\mid 5$$. Nghịch đảo của 4 modulo 9: $$4\cdot 7=28\equiv 1$$ nên $$4^{-1}\equiv 7$$.  
+$$x \equiv 5\cdot 7 = 35 \equiv 8 \pmod 9$$.
+
+</details>
+
+### Bài tập 3
+
+Tìm nghịch đảo của 11 modulo 26.
+
+<details>
+<summary>Đáp án</summary>
+
+$$\gcd(11,26)=1$$. Euclid mở rộng: $$11\cdot 19 = 209 = 8\cdot 26 + 1$$ → $$11^{-1}\equiv 19 \pmod{26}$$.
+
+</details>
+
+### Bài tập 4
+
+CRT: $$x\equiv 1\pmod 3$$, $$x\equiv 2\pmod 5$$, $$x\equiv 3\pmod 7$$.
+
+<details>
+<summary>Đáp án</summary>
+
+$$N=105$$. Công thức CRT cho $$x \equiv 52 \pmod{105}$$ (kiểm tra: $$52\bmod 3=1$$, $$52\bmod 5=2$$, $$52\bmod 7=3$$).
+
+</details>
+
+### Bài tập 5
+
+Với số mũ 2048 bit, lũy thừa modulo nhanh cần cỡ bao nhiêu phép nhân modulo? So với nhân tuần tự?
+
+<details>
+<summary>Đáp án</summary>
+
+Khoảng $$2048$$ vòng; mỗi vòng $$\le 2$$ nhân modulo → cỡ vài nghìn phép. Nhân tuần tự cần $$\Theta(2^{2048})$$ — không khả thi.
+
+</details>
 
 ## Tóm tắt
 
-- **Đồng dư**: $$a \equiv b \pmod{n}$$ nếu $$n \mid (a - b)$$.
-- **Phép toán modulo**: cộng, trừ, nhân giữ nguyên modulo.
-- **Phương trình $$ax \equiv b \pmod{n}$$**: có nghiệm ⇔ $$\gcd(a,n) \mid b$$.
-- **Nghịch đảo modulo**: tồn tại ⇔ $$\gcd(a, n) = 1$$, tính bằng Euclid mở rộng.
-- **Định lý Số dư Trung Hoa**: giải hệ phương trình đồng dư với các modulo nguyên tố cùng nhau.
-- **Lũy thừa modulo nhanh**: $$O(\log e)$$ thay vì $$O(e)$$.
+1. $$a\equiv b\pmod n \iff n\mid(a-b)$$; cộng/trừ/nhân tương thích.
+2. $$ax\equiv b\pmod n$$ có nghiệm $$\iff \gcd(a,n)\mid b$$.
+3. Nghịch đảo tồn tại $$\iff \gcd(a,n)=1$$ — Euclid mở rộng.
+4. **CRT** ghép hệ đồng dư modulus nguyên tố cùng nhau.
+5. **ModExp** $$O(\log e)$$; **Fermat / Euler** nền RSA.
 
-Trong bài tiếp theo, chúng ta sẽ áp dụng những kiến thức này vào mật mã học.
-
-## Tài liệu Tham khảo
-
-1. Kenneth H. Rosen, *Elementary Number Theory and Its Applications*, Chương 4-5.
-2. Tôn Tử, *Tôn Tử Toán Kinh*, ~thế kỷ 3 — nguồn gốc của CRT.
-3. Carl Friedrich Gauss, *Disquisitiones Arithmeticae*, 1801 — hệ thống hóa số học modulo hiện đại.
+Trong bài tiếp theo: mật mã cổ điển, **RSA** và **Diffie–Hellman**.

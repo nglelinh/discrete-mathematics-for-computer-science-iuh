@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" role="img" aria-label="BFS layers">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #5a6570; font-size: 13px; }
+    .e { stroke: #334155; stroke-width: 2; fill: none; }
+    .ea { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .n { fill: white; stroke: #004586; stroke-width: 2.2; }
+    .nt { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 15px; }
+    .cap { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .box { fill: white; stroke: #cbd5e1; stroke-width: 1.2; }
+    .hi { fill: #e8f1fb; stroke: #004586; stroke-width: 1.5; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="360" y="28" text-anchor="middle" font-size="16" font-weight="600">BFS theo tầng (đường ngắn nhất theo số cạnh)</text>
+    <circle class="n" cx="360" cy="70" r="18"/>
+  <text class="nt" x="360" y="75" text-anchor="middle">s</text>
+  <line class="e" x1="360" y1="90" x2="240" y2="140"/>
+  <line class="e" x1="360" y1="90" x2="360" y2="140"/>
+  <line class="e" x1="360" y1="90" x2="480" y2="140"/>
+    <circle class="n" cx="240" cy="160" r="18"/>
+  <text class="nt" x="240" y="165" text-anchor="middle">a</text>
+    <circle class="n" cx="360" cy="160" r="18"/>
+  <text class="nt" x="360" y="165" text-anchor="middle">b</text>
+    <circle class="n" cx="480" cy="160" r="18"/>
+  <text class="nt" x="480" y="165" text-anchor="middle">c</text>
+  <line class="e" x1="240" y1="180" x2="180" y2="230"/>
+  <line class="e" x1="240" y1="180" x2="280" y2="230"/>
+  <line class="e" x1="360" y1="180" x2="360" y2="230"/>
+  <line class="e" x1="480" y1="180" x2="440" y2="230"/>
+  <line class="e" x1="480" y1="180" x2="540" y2="230"/>
+    <circle class="n" cx="180" cy="250" r="18"/>
+  <text class="nt" x="180" y="255" text-anchor="middle">d</text>
+    <circle class="n" cx="280" cy="250" r="18"/>
+  <text class="nt" x="280" y="255" text-anchor="middle">e</text>
+    <circle class="n" cx="360" cy="250" r="18"/>
+  <text class="nt" x="360" y="255" text-anchor="middle">f</text>
+    <circle class="n" cx="440" cy="250" r="18"/>
+  <text class="nt" x="440" y="255" text-anchor="middle">g</text>
+    <circle class="n" cx="540" cy="250" r="18"/>
+  <text class="nt" x="540" y="255" text-anchor="middle">h</text>
+  <text class="l" x="600" y="75">Tầng 0: dist = 0</text>
+  <text class="l" x="600" y="165">Tầng 1: dist = 1</text>
+  <text class="l" x="600" y="255">Tầng 2: dist = 2</text>
+  <text class="cap" x="360" y="305" text-anchor="middle">Lần đầu BFS gặp đỉnh v là qua số cạnh tối thiểu từ s</text>
+
+</svg>

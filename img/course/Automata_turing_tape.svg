@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="720" height="270" role="img" aria-label="Turing tape">
+  <rect width="100%" height="100%" fill="#fafbfc"/>
+  <style>
+    .t { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #1a2332; }
+    .l { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .nt { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #004586; font-weight: 700; font-size: 13px; }
+    .cap { font-family: 'Source Sans 3', Helvetica, Arial, sans-serif; fill: #5a6570; font-size: 12px; }
+    .e { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#ar); }
+    .n { fill: white; stroke: #004586; stroke-width: 2.2; }
+    .acc { fill: white; stroke: #004586; stroke-width: 2.2; }
+  </style>
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="360" y="26" text-anchor="middle" font-size="15" font-weight="600">Máy Turing — băng + đầu đọc/ghi + trạng thái</text>
+  <rect x="80" y="70" width="560" height="50" rx="4" fill="white" stroke="#004586" stroke-width="2"/>
+  <line x1="160" y1="70" x2="160" y2="120" stroke="#cbd5e1"/>
+  <line x1="240" y1="70" x2="240" y2="120" stroke="#cbd5e1"/>
+  <line x1="320" y1="70" x2="320" y2="120" stroke="#cbd5e1"/>
+  <line x1="400" y1="70" x2="400" y2="120" stroke="#cbd5e1"/>
+  <line x1="480" y1="70" x2="480" y2="120" stroke="#cbd5e1"/>
+  <line x1="560" y1="70" x2="560" y2="120" stroke="#cbd5e1"/>
+  <text class="nt" x="120" y="100" text-anchor="middle">1</text>
+  <text class="nt" x="200" y="100" text-anchor="middle">0</text>
+  <text class="nt" x="280" y="100" text-anchor="middle">1</text>
+  <text class="nt" x="360" y="100" text-anchor="middle">⊔</text>
+  <text class="nt" x="440" y="100" text-anchor="middle">⊔</text>
+  <text class="nt" x="520" y="100" text-anchor="middle">⊔</text>
+  <text class="nt" x="600" y="100" text-anchor="middle">⊔</text>
+  <polygon points="280,130 270,150 290,150" fill="#004586"/>
+  <text class="l" x="300" y="155">head</text>
+  <rect x="220" y="170" width="280" height="50" rx="8" fill="#e8f1fb" stroke="#004586"/>
+  <text class="nt" x="360" y="200" text-anchor="middle">δ(q,a)=(q′,b,L|R)</text>
+  <text class="cap" x="360" y="250" text-anchor="middle">Ghi b, di chuyển, đổi trạng thái · mạnh hơn FSM (bộ nhớ băng vô hạn)</text>
+
+</svg>
