@@ -3,120 +3,120 @@
     "slug": "chapter01",
     "title_vn": "Logic Mệnh đề",
     "title_en": "Propositional Logic",
-    "summary": "Chương này giới thiệu logic mệnh đề — nền tảng hình thức của tư duy toán học và khoa học máy tính. Chúng ta xét mệnh đề, phép toán logic, bảng chân lý, dạng chuẩn, quy tắc suy diễn và ứng dụng trong lập trình, cơ sở dữ liệu và kiểm chứng."
+    "summary": "Chương này giới thiệu logic mệnh đề — nền tảng hình thức của tư duy toán học và khoa học máy tính. Chúng ta xét mệnh đề, phép toán logic, bảng chân lý, dạng chuẩn, quy tắc suy diễn và ứng dụng trong lập trình, cơ sở dữ liệu và kiểm chứng. Có bài tùy chọn về SAT hiện đại (2022–2026)."
   },
   "2": {
     "slug": "chapter02",
     "title_vn": "Logic Vị từ",
     "title_en": "Predicate Logic",
-    "summary": "Chương này mở rộng logic mệnh đề bằng vị từ, biến và lượng từ (∀, ∃), cho phép biểu diễn các phát biểu có cấu trúc bên trong và mô hình hóa miền xác định — nền tảng của truy vấn SQL, đặc tả phần mềm và suy luận tự động."
+    "summary": "Chương này mở rộng logic mệnh đề bằng vị từ, biến và lượng từ (∀, ∃), cho phép biểu diễn các phát biểu có cấu trúc bên trong và mô hình hóa miền xác định — nền tảng của truy vấn SQL, đặc tả phần mềm và suy luận tự động. Có bài tùy chọn về SMT/cvc5 (2022–2026)."
   },
   "3": {
     "slug": "chapter03",
     "title_vn": "Phương pháp Chứng minh",
     "title_en": "Proof Methods",
-    "summary": "Chương này trình bày các phương pháp chứng minh toán học cơ bản: chứng minh trực tiếp, chứng minh phản chứng và quy nạp toán học, cùng vai trò của chúng trong chứng minh thuật toán và kiểm chứng phần mềm."
+    "summary": "Chương này trình bày các phương pháp chứng minh toán học cơ bản: chứng minh trực tiếp, chứng minh phản chứng và quy nạp toán học, cùng vai trò của chúng trong chứng minh thuật toán và kiểm chứng phần mềm. Có bài tùy chọn về chứng minh hình thức và AI (2022–2026)."
   },
   "4": {
     "slug": "chapter04",
     "title_vn": "Lý thuyết Tập hợp",
     "title_en": "Set Theory",
-    "summary": "Chương này xây dựng nền tảng tập hợp: định nghĩa, ký hiệu, phép toán, quan hệ tập con, lực lượng và ứng dụng trong cơ sở dữ liệu, ngôn ngữ lập trình và lý thuyết tính toán."
+    "summary": "Chương này xây dựng nền tảng tập hợp: định nghĩa, ký hiệu, phép toán, quan hệ tập con, lực lượng và ứng dụng trong cơ sở dữ liệu, ngôn ngữ lập trình và lý thuyết tính toán. Có bài tùy chọn về biểu diễn tập gọn (2022–2026)."
   },
   "5": {
     "slug": "chapter05",
     "title_vn": "Quan hệ",
     "title_en": "Relations",
-    "summary": "Chương này nghiên cứu quan hệ như tập con của tích Descartes: biểu diễn, tính chất, quan hệ tương đương, thứ tự bộ phận, bao đóng và ứng dụng trong cơ sở dữ liệu, đồ thị và hệ thống phân quyền."
+    "summary": "Chương này nghiên cứu quan hệ như tập con của tích Descartes: biểu diễn, tính chất, quan hệ tương đương, thứ tự bộ phận, bao đóng và ứng dụng trong cơ sở dữ liệu, đồ thị và hệ thống phân quyền. Có bài tùy chọn về Relational Deep Learning (2024)."
   },
   "6": {
     "slug": "chapter06",
     "title_vn": "Hàm số",
     "title_en": "Functions",
-    "summary": "Chương này định nghĩa hàm số, tính chất (đơn/ song ánh, đồng cấu), hàm hợp, hàm nghịch đảo và liên hệ với lập trình, cấu trúc dữ liệu và học máy."
+    "summary": "Chương này định nghĩa hàm số, tính chất (đơn/ song ánh, đồng cấu), hàm hợp, hàm nghịch đảo và liên hệ với lập trình, cấu trúc dữ liệu và học máy. Có bài tùy chọn về attention như một hàm exact (2022–2026)."
   },
   "7": {
     "slug": "chapter07",
     "title_vn": "Nguyên lý Đếm cơ bản",
     "title_en": "Basic Counting",
-    "summary": "Chương này trình bày nguyên lý cộng, nguyên lý nhân, hoán vị, tổ hợp, nguyên lý bao hàm–loại trừ, hệ số nhị thức và các ứng dụng đếm trong thuật toán và an ninh mạng."
+    "summary": "Chương này trình bày nguyên lý cộng, nguyên lý nhân, hoán vị, tổ hợp, nguyên lý bao hàm–loại trừ, hệ số nhị thức và các ứng dụng đếm trong thuật toán và an ninh mạng. Có bài tùy chọn về không gian tìm kiếm hiện đại (2022–2026)."
   },
   "8": {
     "slug": "chapter08",
     "title_vn": "Nguyên lý Dirichlet",
     "title_en": "Pigeonhole Principle",
-    "summary": "Chương này giới thiệu nguyên lý chuồng bồ câu (Dirichlet): phát biểu, chứng minh và các ứng dụng từ bài toán tổ hợp đến phân tích thuật toán và hệ thống máy tính."
+    "summary": "Chương này giới thiệu nguyên lý chuồng bồ câu (Dirichlet): phát biểu, chứng minh và các ứng dụng từ bài toán tổ hợp đến phân tích thuật toán và hệ thống máy tính. Có bài tùy chọn về cận filter 2022."
   },
   "9": {
     "slug": "chapter09",
     "title_vn": "Ứng dụng Toán Rời Rạc trong CNTT Hiện đại",
     "title_en": "Discrete Math in Modern Computing",
-    "summary": "Chương này liên kết toán rời rạc với thực hành kỹ thuật: biểu diễn nhị phân, endianness, bù hai, mạch logic, đếm ở quy mô lớn, xác suất va chạm và các case study từ hệ thống production."
+    "summary": "Chương này liên kết toán rời rạc với thực hành kỹ thuật: biểu diễn nhị phân, endianness, bù hai, mạch logic, đếm ở quy mô lớn, xác suất va chạm và các case study từ hệ thống production. Có bài tùy chọn cập nhật hiện vật 2022–2026."
   },
   "10": {
     "slug": "chapter10",
     "title_vn": "Quan hệ Truy hồi",
     "title_en": "Recurrence Relations",
-    "summary": "Chương này mô hình hóa bài toán đệ quy bằng quan hệ truy hồi, trình bày phương pháp giải tuyến tính thuần nhất và không thuần nhất, và ứng dụng trong phân tích độ phức tạp thuật toán."
+    "summary": "Chương này mô hình hóa bài toán đệ quy bằng quan hệ truy hồi, trình bày phương pháp giải tuyến tính thuần nhất và không thuần nhất, và ứng dụng trong phân tích độ phức tạp thuật toán. Có bài tùy chọn về truy hồi IO (FlashAttention, 2022)."
   },
   "11": {
     "slug": "chapter11",
     "title_vn": "Hàm sinh và Nguyên lý Bao hàm–Loại trừ",
     "title_en": "Generating Functions",
-    "summary": "Chương này giới thiệu hàm sinh như công cụ nén dãy số, kỹ thuật giải quan hệ truy hồi và mở rộng nguyên lý bao hàm–loại trừ cho bài toán đếm nâng cao."
+    "summary": "Chương này giới thiệu hàm sinh như công cụ nén dãy số, kỹ thuật giải quan hệ truy hồi và mở rộng nguyên lý bao hàm–loại trừ cho bài toán đếm nâng cao. Có bài tùy chọn về đếm/cận filter 2022."
   },
   "12": {
     "slug": "chapter12",
     "title_vn": "Lý thuyết Đồ thị",
     "title_en": "Basic Graph Theory",
-    "summary": "Định nghĩa đồ thị G=(V,E), bậc và định lý bắt tay; ma trận kề và danh sách kề; đường đi, chu trình, liên thông; Euler, Hamilton và duyệt BFS/DFS — nền tảng mạng và thuật toán."
+    "summary": "Định nghĩa đồ thị G=(V,E), bậc và định lý bắt tay; ma trận kề và danh sách kề; đường đi, chu trình, liên thông; Euler, Hamilton và duyệt BFS/DFS — nền tảng mạng và thuật toán. Có bài tùy chọn về GraphCast (2023)."
   },
   "13": {
     "slug": "chapter13",
     "title_vn": "Đại số Boole",
     "title_en": "Boolean Algebra",
-    "summary": "Chương này xét đại số Boole, hàm Boole, cổng logic, bản đồ Karnaugh, Quine–McCluskey, mạch cộng/nhân và các khối tổ hợp cơ bản (MUX, decoder) hướng tới ALU."
+    "summary": "Chương này xét đại số Boole, hàm Boole, cổng logic, bản đồ Karnaugh, Quine–McCluskey, mạch cộng/nhân và các khối tổ hợp cơ bản (MUX, decoder) hướng tới ALU. Có bài tùy chọn về SAT/EDA 2024."
   },
   "14": {
     "slug": "chapter14",
     "title_vn": "Thuật toán",
     "title_en": "Algorithms",
-    "summary": "Thuật toán và tính chất; Big-O, Θ, Ω; phân tích thời gian/không gian worst-case; so sánh thuật toán tìm kiếm, sắp xếp và chia để trị."
+    "summary": "Thuật toán và tính chất; Big-O, Θ, Ω; phân tích thời gian/không gian worst-case; so sánh thuật toán tìm kiếm, sắp xếp và chia để trị. Có bài tùy chọn về AlphaDev (2023)."
   },
   "15": {
     "slug": "chapter15",
     "title_vn": "Lý thuyết Số",
     "title_en": "Number Theory",
-    "summary": "Chia hết, số nguyên tố, Euclid; đồng dư, CRT, lũy thừa modulo; RSA, Diffie–Hellman; hash, PRNG, ECC và hậu lượng tử — nền số học cho bảo mật."
+    "summary": "Chia hết, số nguyên tố, Euclid; đồng dư, CRT, lũy thừa modulo; RSA, Diffie–Hellman; hash, PRNG, ECC và hậu lượng tử — nền số học cho bảo mật. Có bài tùy chọn về FIPS 203/204/205 (2024)."
   },
   "16": {
     "slug": "chapter16",
     "title_vn": "Cây",
     "title_en": "Trees",
-    "summary": "Cây và cây có gốc; duyệt preorder/inorder/postorder/level-order; MST (Kruskal, Prim); Huffman và BST — filesystem, DOM, nén và tìm kiếm."
+    "summary": "Cây và cây có gốc; duyệt preorder/inorder/postorder/level-order; MST (Kruskal, Prim); Huffman và BST — filesystem, DOM, nén và tìm kiếm. Có bài tùy chọn về Tree of Thoughts (2023)."
   },
   "17": {
     "slug": "chapter17",
     "title_vn": "Lý thuyết Đồ thị Nâng cao",
     "title_en": "Advanced Graph Theory",
-    "summary": "Đường đi ngắn nhất (BFS, Dijkstra, Bellman–Ford); sắp xếp topo trên DAG; tô màu đỉnh và ghép cặp hai phía — routing, build system, scheduling."
+    "summary": "Đường đi ngắn nhất (BFS, Dijkstra, Bellman–Ford); sắp xếp topo trên DAG; tô màu đỉnh và ghép cặp hai phía — routing, build system, scheduling. Có bài tùy chọn về CLRS-30/GraphCast (2022–2023)."
   },
   "18": {
     "slug": "chapter18",
     "title_vn": "Mô hình hóa Tính toán",
     "title_en": "Models of Computation",
-    "summary": "Lộ trình NCS 14 bài: DFA/NFA, subset construction, Kleene, pumping, Myhill–Nerode, TM, decidability — có định lý/chứng minh và lộ trình nghiên cứu automata."
+    "summary": "Lộ trình NCS 14 bài: DFA/NFA, subset construction, Kleene, pumping, Myhill–Nerode, TM, decidability — có định lý/chứng minh và lộ trình nghiên cứu automata. Có bài tùy chọn về transformer vs automata (TACL 2024)."
   },
   "19": {
     "slug": "chapter19",
     "title_vn": "Ngôn ngữ Hình thức và Văn phạm",
     "title_en": "Formal Languages",
-    "summary": "Lộ trình NCS 12 bài: chuỗi–ngôn ngữ, Chomsky, CFG/PDA, pumping CFL, CNF/CYK, compiler — chứng minh và bắt đầu nghiên cứu ngôn ngữ hình thức."
+    "summary": "Lộ trình NCS 12 bài: chuỗi–ngôn ngữ, Chomsky, CFG/PDA, pumping CFL, CNF/CYK, compiler — chứng minh và bắt đầu nghiên cứu ngôn ngữ hình thức. Có bài tùy chọn về transformer và Chomsky map (TACL 2024)."
   },
   "20": {
     "slug": "chapter20",
     "title_vn": "Độ phức tạp Tính toán",
     "title_en": "Computational Complexity",
-    "summary": "Lộ trình NCS 14 bài: P/NP/coNP, ≤ₚ, Cook–Levin, rút gọn 3SAT–IS–VC–TSP (có chứng minh), xấp xỉ, FPT, ETH/average-case, và thực hành bắt đầu nghiên cứu."
+    "summary": "Lộ trình NCS 14 bài: P/NP/coNP, ≤ₚ, Cook–Levin, rút gọn 3SAT–IS–VC–TSP (có chứng minh), xấp xỉ, FPT, ETH/average-case, và thực hành bắt đầu nghiên cứu. Có bài tùy chọn về SAT 2024 và CLRS OOD."
   }
 }
