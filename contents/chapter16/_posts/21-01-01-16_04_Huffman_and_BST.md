@@ -192,3 +192,9 @@ Cây lệch phải; tìm 5 đi 5 nút — $$O(n)$$ worst case. Cây cân bằng 
 3. Cây cân bằng / hash: chọn theo nhu cầu thứ tự vs tra cứu điểm.
 
 Chương 16 kết thúc. Chương 17 mở **đồ thị nâng cao**: đường ngắn nhất, topo sort, …
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=JsTptu56GM8">How Computers Compress Text: Huffman Coding and Huffman Trees</a> — Tom Scott, tiếng Anh. Xem trước mã Huffman và cây mã.
+- <a href="https://www.youtube.com/watch?v=co4_ahEDCho">3.4 Huffman Coding - Greedy Method</a> — Abdul Bari, tiếng Anh. Từng bước dựng cây Huffman theo tần suất.
+- <a href="https://www.youtube.com/watch?v=pYT9F8_LFTM">Data structures: Binary Search Tree</a> — mycodeschool, tiếng Anh. Cây tìm kiếm nhị phân, nửa kia của bài.

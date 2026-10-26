@@ -73,3 +73,9 @@ Sipser exercises 1.1–1.6; Hopcroft design examples.
 Invariant · hai chiều $$L(M)=L$$.
 
 **Tiếp:** NFA.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=40i4PKpM0cI">Deterministic Finite Automata (Example 1)</a> — Neso Academy, tiếng Anh. Xem trước thiết kế DFA trên một ngôn ngữ ví dụ.
+- <a href="https://www.youtube.com/watch?v=2KindKcLjos">Deterministic Finite Automata (Example 2)</a> — Neso Academy, tiếng Anh. Thêm một DFA, luyện chọn trạng thái nhớ đúng thông tin.
+- <a href="https://www.youtube.com/watch?v=_2cKtLkdwnc">Deterministic Finite Automata (Example 3)</a> — Neso Academy, tiếng Anh. Ví dụ dài hơn, thấy vì sao thiếu trạng thái thì sai ngôn ngữ.

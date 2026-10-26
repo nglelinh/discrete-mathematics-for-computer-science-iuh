@@ -84,3 +84,9 @@ Impagliazzo 1995; IPZ ETH; Williams fine-grained survey; Goldreich crypto founda
 ETH · fine-grained · average-case · crypto tách worst-case NPC.
 
 **Tiếp:** 20.14 — bắt tay nghiên cứu.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=hNesYirH8gM">Algorithms for NP-Hard Problems (Section 23.5: The Exponential Time Hypothesis)</a> — Tim Roughgarden Lectures, tiếng Anh. Xem trước giả thuyết thời gian mũ, đúng ETH của bài.
+- <a href="https://www.youtube.com/watch?v=dVQrj52JhyA">Exponential Time Hypotheses: ETH and SETH || @ CMU || Lecture 26d of CS Theory Toolkit</a> — Ryan O&#x27;Donnell, tiếng Anh. ETH và SETH, phần fine-grained.
+- <a href="https://www.youtube.com/watch?v=XV6f7XYUMg8">What Makes P vs. NP So Hard? (P ≠ EXPTIME, Time Hierarchy, Baker-Gill-Solovay)</a> — Undefined Behavior, tiếng Anh. Phân cấp thời gian, bối cảnh các giả thuyết mạnh hơn P khác NP.

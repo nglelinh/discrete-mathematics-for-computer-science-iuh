@@ -99,3 +99,9 @@ Thường ưu tiên **chặn worst-case** (SLA, an toàn) — merge/heapsort-sty
 | 14.4 | Quy mô và trade-off |
 
 Chương 15–17 áp dụng thuật toán trên số và đồ thị; Ch.20 hỏi **có** thuật toán đa thức hay không.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=0IAPZzGSbME">1. Introduction to Algorithms</a> — Abdul Bari, tiếng Anh. Xem trước khái niệm thuật toán, từ tên Al-Khwarizmi tới mô tả hình thức.
+- <a href="https://www.youtube.com/watch?v=cOwyHTiW4KE">EUCLIDEAN ALGORITHM - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Thuật toán Euclid, mẫu thuật toán cổ vẫn phân tích được độ phức tạp.
+- <a href="https://www.youtube.com/watch?v=__vX2sjlpXU">Big-O notation in 5 minutes</a> — Michael Sambol, tiếng Anh. Khi n tăng, bậc tăng trưởng quyết định quy mô, đúng mục sau của bài.

@@ -107,3 +107,9 @@ Sipser (mở đầu complexity); Arora–Barak §1; Garey–Johnson §1–2.
 Quyết định · encoding · $$P=\bigcup\mathrm{TIME}(n^k)$$.
 
 **Tiếp:** 20.2 — sâu hơn về $$P$$ và time hierarchy.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=YX40hbAHx3s">P vs. NP and the Computational Complexity Zoo</a> — hackerdashery, tiếng Anh. Xem trước bài toán quyết định và các lớp thời gian.
+- <a href="https://www.youtube.com/watch?v=__vX2sjlpXU">Big-O notation in 5 minutes</a> — Michael Sambol, tiếng Anh. Đa thức và bậc lớn hơn, thước đo thời gian theo độ dài input.
+- <a href="https://www.youtube.com/watch?v=uAdVzz1hKYY">Boolean Satisfiability Problem - Intro to Theoretical Computer Science</a> — Udacity, tiếng Anh. SAT là bài toán yes/no, đúng khung decision problem.

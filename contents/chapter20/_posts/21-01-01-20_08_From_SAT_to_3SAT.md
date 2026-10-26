@@ -95,3 +95,9 @@ Sipser; CLRS NPC; Garey–Johnson.
 Pad mệnh đề · 3SAT NPC · nguồn rút gọn đồ thị.
 
 **Tiếp:** 20.9 — IS, CLIQUE, VC.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=GCw07nZckps">SAT and 3SAT</a> — Computer Science Theory Explained, tiếng Anh. Xem trước SAT và 3SAT, hai bài toán của phép rút gọn.
+- <a href="https://www.youtube.com/watch?v=ylItc6O3A4Y">SAT to 3SAT</a> — Georgia Tech CS 3510, tiếng Anh. Dựng rút gọn SAT sang 3SAT từng bước.
+- <a href="https://www.youtube.com/watch?v=egLlOOqQ5YY">3SAT is NP-complete Proof</a> — Easy Theory, tiếng Anh. 3SAT là NP-complete sau khi có rút gọn từ SAT.

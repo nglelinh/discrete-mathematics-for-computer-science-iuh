@@ -1050,3 +1050,9 @@ $$\lvert a_{10} \rvert \le 2^{-5}\sqrt{2} = \frac{\sqrt{2}}{32} \approx 0.044$$.
 - Bậc cao hơn: mỗi nghiệm đóng góp hạng $$r_i^n$$ (và nhân tử đa thức nếu nghiệm bội).
 
 Trong bài tiếp theo, chúng ta mở rộng sang **quan hệ truy hồi không thuần nhất** — khi có thêm thành phần $$f(n)$$ bên ngoài.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=7mhvA5L7KqY">HOMOGENEOUS RECURRENCE RELATIONS - Discrete Mathematics</a> — TrevTutor, tiếng Anh. Xem trước truy hồi tuyến tính thuần nhất và phương trình đặc trưng.
+- <a href="https://www.youtube.com/watch?v=Otj2ypYXn0Q">[Discrete Mathematics] Homogeneous Recurrence Relations Examples</a> — TrevTutor, tiếng Anh. Ví dụ nghiệm phân biệt và cách gắn điều kiện đầu.
+- <a href="https://www.youtube.com/watch?v=T647CGsuOVU">Imaginary Numbers Are Real [Part 1: Introduction]</a> — Welch Labs, tiếng Anh. Số phức và mặt phẳng Argand, nền cho nghiệm phức và De Moivre ở mục 5.

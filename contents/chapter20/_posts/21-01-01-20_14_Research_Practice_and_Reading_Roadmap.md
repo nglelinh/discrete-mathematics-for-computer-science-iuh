@@ -124,3 +124,9 @@ Cook 1971; Karp 1972; Levin 1973; Ladner 1975.
 Đọc xong 20.1–20.14: bạn **viết được** hardness/alg cơ bản, **đọc được** paper complexity, **chọn được** đề mở *vừa sức* — điều kiện cần để bắt đầu nghiên cứu (cùng advisor và seminar lab).
 
 Chúc làm việc tốt.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=YX40hbAHx3s">P vs. NP and the Computational Complexity Zoo</a> — hackerdashery, tiếng Anh. Xem trước bản đồ lớp, dùng để lọc đề tài P, NPC hay còn mở.
+- <a href="https://www.youtube.com/watch?v=pQsdygaYcE4">P vs NP Explained: Computer Science&#x27;s Biggest Puzzle</a> — Quanta Magazine, tiếng Anh. P đối NP như một đề tài mở, đúng kiểu câu hỏi bài bảo chọn.
+- <a href="https://www.youtube.com/watch?v=hNesYirH8gM">Algorithms for NP-Hard Problems (Section 23.5: The Exponential Time Hypothesis)</a> — Tim Roughgarden Lectures, tiếng Anh. ETH là ví dụ giả thuyết nghiên cứu cần đọc đúng phát biểu.

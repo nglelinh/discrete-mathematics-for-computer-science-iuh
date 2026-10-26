@@ -438,3 +438,9 @@ Bài tập 1: Cho các mệnh đề tham biến P: x<0 và Q: y>0. Hoàn thành 
 - Ứng dụng trong thiết kế test case và kiểm thử phần mềm.
 
 Trong bài tiếp theo, chúng ta học **tương đương logic** và cách đưa biểu thức về các **dạng chuẩn tắc** (DNF, CNF).
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=UiGu57JzLkE">TRUTH TABLES - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước cách lập bảng chân trị từng hàng, đúng trọng tâm bài.
+- <a href="https://www.youtube.com/watch?v=9fX6n0_MDic">PROOFS with TRUTH TABLES - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Dùng bảng để chứng minh tương đương, nối với ứng dụng của bảng.
+- <a href="https://www.youtube.com/watch?v=LNSfM86I8is">Truth Table Example: ~p V ~q</a> — Dr. Trefor Bazett, tiếng Anh. Một bảng cụ thể cho biểu thức có phủ định và tuyển.

@@ -188,3 +188,9 @@ Giải thích tại sao hàm băm tốt thường được thiết kế gần nh
 - **Ứng dụng CS**: mã hóa khả nghịch, primary key, hash table, serialization
 
 Trong bài tiếp theo, chúng ta sẽ học hàm hợp và hàm nghịch đảo.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=bZred_Ksz2k">INJECTIVE, SURJECTIVE, and BIJECTIVE FUNCTIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước đơn ánh, toàn ánh và song ánh.
+- <a href="https://www.youtube.com/watch?v=VaDja04e59M">[Discrete Mathematics] Surjective Functions Examples</a> — TrevTutor, tiếng Anh. Luyện nhận toàn ánh trên ví dụ.
+- <a href="https://www.youtube.com/watch?v=Kn-LrdgHVhQ">[Discrete Mathematics] Functions Examples</a> — TrevTutor, tiếng Anh. Thêm ví dụ phân loại hàm.

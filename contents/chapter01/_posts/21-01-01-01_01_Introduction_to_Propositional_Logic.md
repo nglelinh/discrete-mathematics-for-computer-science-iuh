@@ -542,3 +542,9 @@ else:
 - Trên $$n$$ biến mệnh đề có đúng $$2^{2^n}$$ hàm Boolean — lý do bảng chân trị chỉ khả thi khi $$n$$ nhỏ.
 
 Trong bài tiếp theo, chúng ta giới thiệu các **phép toán logic** dùng để ghép mệnh đề sơ cấp thành biểu thức phức hợp.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=yF9rupvF77U">[Toán rời rạc] MỆNH ĐỀ LOGIC</a> — Đinh Thái Sơn, tiếng Việt. Xem trước bằng tiếng Việt: mệnh đề là câu có chân trị, trước khi vào ký hiệu.
+- <a href="https://www.youtube.com/watch?v=itrXYg41-V0">INTRODUCTION to PROPOSITIONAL LOGIC - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Định nghĩa statement và các câu không phải mệnh đề, khớp mục giới thiệu.
+- <a href="https://www.youtube.com/watch?v=q2eyZZK-OIk">Intro to Logical Statements</a> — Dr. Trefor Bazett, tiếng Anh. Ví dụ mệnh đề đúng hoặc sai, chuẩn bị cho phép toán ở mục sau.

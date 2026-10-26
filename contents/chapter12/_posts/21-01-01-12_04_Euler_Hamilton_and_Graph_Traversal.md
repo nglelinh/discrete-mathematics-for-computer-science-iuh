@@ -293,3 +293,9 @@ $$\mathrm{dist}(0)=0$$, $$\mathrm{dist}(1)=\mathrm{dist}(2)=1$$, $$\mathrm{dist}
 4. **DFS** duyệt sâu — chu trình, topo sort, SCC; cả hai đạt $$O(V+E)$$ trên danh sách kề.
 
 Chương 12 dừng ở tầng đồ thị cơ bản. **Chương 16** (Cây) và **Chương 17** (Đồ thị nâng cao) mở rộng sang cây khung, MST và các thuật toán trên đồ thị có trọng số.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=dSK5jTEe-AM">Euler Paths &amp; the 7 Bridges of Konigsberg | Graph Theory</a> — Dr. Trefor Bazett, tiếng Anh. Xem trước đường Euler và bảy cây cầu.
+- <a href="https://www.youtube.com/watch?v=t_6VByupc1U">[Discrete Mathematics] Hamilton Cycles</a> — TrevTutor, tiếng Anh. Chu trình Hamilton, nửa kia của tiêu đề bài.
+- <a href="https://www.youtube.com/watch?v=pcKY4hjDrxk">5.1 Graph Traversals - BFS &amp; DFS -Breadth First Search and Depth First Search</a> — Abdul Bari, tiếng Anh. BFS và DFS, phần duyệt đồ thị của bài.

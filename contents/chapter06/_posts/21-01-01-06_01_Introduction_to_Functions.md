@@ -254,3 +254,9 @@ print(f(3))  # 7
 - **Ứng dụng CS**: API, hash function, khóa cơ sở dữ liệu, mô hình học máy
 
 Trong bài tiếp theo, chúng ta sẽ xem xét tính chất đơn ánh, toàn ánh và song ánh.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=OixshZzH8t0">FUNCTIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước hàm là quan hệ đặc biệt: mỗi đầu vào một đầu ra.
+- <a href="https://www.youtube.com/watch?v=G8qvOZ9DE3c">The intuitive idea of a function</a> — Dr. Trefor Bazett, tiếng Anh. Trực giác hàm trước định nghĩa bằng tích Descartes.
+- <a href="https://www.youtube.com/watch?v=-a5FaFp87N4">Formal Definition of a Function using the Cartesian Product</a> — Dr. Trefor Bazett, tiếng Anh. Định nghĩa hình thức khớp mục định nghĩa của bài.

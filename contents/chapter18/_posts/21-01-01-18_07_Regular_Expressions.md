@@ -57,3 +57,9 @@ Sipser §1.3.
 Algebra · $$L(r)$$ · ba toán tử.
 
 **Tiếp:** Kleene theorem.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=upu_TeZImN0">Regular Expression</a> — Neso Academy, tiếng Anh. Xem trước cú pháp biểu thức chính quy trong otomat.
+- <a href="https://www.youtube.com/watch?v=paOPoZyjzdg">Regular Expression - Examples</a> — Neso Academy, tiếng Anh. Ví dụ đọc ngôn ngữ của một biểu thức.
+- <a href="https://www.youtube.com/watch?v=RxfXyvfTsgQ">Conversion of Regular Expression to Finite Automata</a> — Neso Academy, tiếng Anh. Đổi biểu thức chính quy sang otomat hữu hạn.

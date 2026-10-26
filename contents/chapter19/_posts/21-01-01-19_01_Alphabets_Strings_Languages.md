@@ -65,3 +65,9 @@ Sipser §0–1; Hopcroft §1.
 Σ · chuỗi · $$L\subseteq\Sigma^*$$.
 
 **Tiếp:** phép toán ngôn ngữ.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=7MBpk4gJRkk">[Discrete Mathematics] Formal Languages</a> — TrevTutor, tiếng Anh. Xem trước bảng chữ, xâu và ngôn ngữ hình thức.
+- <a href="https://www.youtube.com/watch?v=s6clCKVoXig">[Discrete Mathematics] Formal Languages Examples</a> — TrevTutor, tiếng Anh. Ví dụ ngôn ngữ con của Sigma sao.
+- <a href="https://www.youtube.com/watch?v=58N2N7zJGrQ">Introduction to Theory of Computation</a> — Neso Academy, tiếng Anh. Vị trí ngôn ngữ hình thức trong lý thuyết tính toán.

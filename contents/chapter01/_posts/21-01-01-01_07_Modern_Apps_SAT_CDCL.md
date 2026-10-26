@@ -44,3 +44,9 @@ Tại SAT Competition 2024 (SAT'24, Pune), Kissat 4.0 thắng cả ba hạng m�
 Bảng chân trị ở Mục 1.3 không dùng được khi $$n$$ cỡ triệu biến, nhưng cùng đại số Boole cộng heuristic CDCL vẫn giải được các instance mã hóa kiểm chứng, lập lịch và phân tích mật mã. Nếu đã đọc bài giới thiệu SAT, hãy xem ghi chú này như bản cập nhật 2024: logic mệnh đề vẫn là công nghệ production.
 
 **Câu hỏi.** (1) Vì sao mệnh đề học từ xung đột là hệ quả resolution của CNF đầu vào? (2) Vì sao chứng minh DRAT quan trọng hơn việc bộ giải chỉ in `UNSAT`?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=YUqR-8rZ_gQ">Lecture 10-3 CDCL (Lecture 5 in CS433)</a> — Automated Reasoning, tiếng Anh. Xem trước CDCL: conflict, học mệnh đề và quay lui có dẫn hướng.
+- <a href="https://www.youtube.com/watch?v=n3e-f0vMHz8">Lecture 06-1 SAT solver optimizations: 2-watched literals</a> — Automated Reasoning, tiếng Anh. Watched literals, một tối ưu CDCL trong solver cùng họ với bài.
+- <a href="https://www.youtube.com/watch?v=d76e4hV1iJY">A Peek Inside SAT Solvers - Jon Smock</a> — ClojureTV, tiếng Anh. Cách solver công nghiệp tổ chức suy diễn trên CNF lớn.

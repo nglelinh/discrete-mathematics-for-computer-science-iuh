@@ -63,3 +63,9 @@ Sipser; Hopcroft; Chomsky 1956/1959 historical.
 4 type · máy · lồng nhau.
 
 **Tiếp:** regular grammar.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=224plb3bCog">Chomsky Hierarchy - Computerphile</a> — Computerphile, tiếng Anh. Xem trước bốn bậc Chomsky và bộ nhớ tương ứng.
+- <a href="https://www.youtube.com/watch?v=VygeACNATI4">The Chomsky Hierarchy: Every Grammar Buys a Different Memory</a> — DataMListic, tiếng Anh. Mỗi lớp văn phạm mua một loại bộ nhớ khác nhau.
+- <a href="https://www.youtube.com/watch?v=9idnQ2C6HfA">Chomsky Hierarchy - Explained in Detail with examples</a> — Advanced CS IT for GATE, tiếng Anh. Bảng phân cấp kèm ví dụ ngôn ngữ.

@@ -87,3 +87,8 @@ Cygan et al. *Parameterized Algorithms*; IPEC papers.
 FPT · VC $$2^k$$ · kernel · W[1].
 
 **Tiếp:** 20.13 — ETH, fine-grained, average-case.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=dxEfqyViCJI">Fixed Parameter Tractability - Intro to Theoretical Computer Science</a> — Udacity, tiếng Anh. Xem trước FPT: thời gian f(k) nhân đa thức của n.
+- <a href="https://www.youtube.com/watch?v=kclZXaEqPjo">Fixed Parameter Tractability</a> — Alex Singh, tiếng Anh. Định nghĩa tractable theo tham số.

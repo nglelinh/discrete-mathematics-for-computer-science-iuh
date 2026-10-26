@@ -68,3 +68,9 @@ Kohavi switching; Hopcroft applications.
 Transducer · độ dài ra · mô phỏng.
 
 **Tiếp:** regex.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=0_OZKWdCixw">Mealy and Moore State Machines (Part 1)</a> — Neso Academy, tiếng Anh. Xem trước máy Mealy và Moore, đầu ra gắn với chuyển hoặc trạng thái.
+- <a href="https://www.youtube.com/watch?v=LioitkXDfmA">Construction of Mealy Machine</a> — Neso Academy, tiếng Anh. Dựng máy Mealy từ đặc tả đầu ra.
+- <a href="https://www.youtube.com/watch?v=MFnRF07SoFo">Construction of Moore Machine</a> — Neso Academy, tiếng Anh. Dựng máy Moore để đối chiếu cùng một hành vi.

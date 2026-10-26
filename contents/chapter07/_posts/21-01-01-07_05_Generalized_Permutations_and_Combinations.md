@@ -307,3 +307,9 @@ Tổng không ràng buộc: $$\binom{12}{2} = 66$$. IE: $$66 - 3\cdot 21 + 3\cdo
 - **Hoán vị có lặp**: sắp xếp $$n$$ đối tượng với $$n_i$$ phần tử giống nhau loại $$i$$ cho $$\frac{n!}{n_1! n_2! \cdots n_k!}$$ cách
 - **Phân phối vào nhóm**: đếm cách chia đối tượng vào các ô có ràng buộc
 - **Ứng dụng CS**: thiết kế mật khẩu, cấp phát tài nguyên, mã hóa và phân tích trạng thái hệ thống
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=ZcSSI6VY1kM">COMBINATIONS with REPETITION - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước tổ hợp có lặp.
+- <a href="https://www.youtube.com/watch?v=P37nKjSWv_o">Toán rời rạc 20. Tổ hợp lặp và Chỉnh hợp lặp</a> — TITV, tiếng Việt. Tổ hợp lặp và chỉnh hợp lặp bằng tiếng Việt.
+- <a href="https://www.youtube.com/watch?v=je6xyt2UZCw">How many ways are there to reorder the word MISSISSIPPI?  // Choose Formula Example</a> — Dr. Trefor Bazett, tiếng Anh. Hoán vị của từ có chữ lặp, như MISSISSIPPI.

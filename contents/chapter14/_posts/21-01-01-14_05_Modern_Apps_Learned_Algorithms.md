@@ -42,3 +42,8 @@ Họ đặt “sinh routine sort đúng” thành trò chơi một người, hu�
 Tiệm cận chúng vẫn là sort $$\Theta(1)$$ cho một số khóa cố định; câu chuyện Big-O của khóa học không đổi. Tin 2023 là *cài đặt* của một primitive được gọi hàng nghìn tỷ lần vẫn cải thiện được, và sự cải thiện được kiểm tính đúng trước khi ship.
 
 **Câu hỏi.** (1) Vì sao AlphaDev thắng `sort3` của người mà không thắng $$\Theta(n\log n)$$ của mergesort? (2) Tiêu chí Chương 14 nào là “độ trễ branchless trên Skylake”, tiêu chí nào là “hoán vị khóa đúng”?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=Gnx6EgpW6kY">AlphaDev | Daniel Mankowitz and Andrea Michi</a> — ICARL, tiếng Anh. Xem trước AlphaDev do Daniel Mankowitz và Andrea Michi trình bày, đúng hệ bài nhắc.
+- <a href="https://www.youtube.com/watch?v=__vX2sjlpXU">Big-O notation in 5 minutes</a> — Michael Sambol, tiếng Anh. Big-O vẫn là thước đo bài không thay: tối ưu hằng số không đổi bậc.

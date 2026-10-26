@@ -877,3 +877,9 @@ Trong chương tiếp theo, chúng ta sẽ chuyển sang **lý thuyết tập h�
 - Liên hệ CS: loop invariant, phân tích thời gian chạy, chứng minh hàm đệ quy đúng.
 
 Trong chương tiếp theo, chúng ta sẽ chuyển sang **lý thuyết tập hợp** — một trong những nền tảng quan trọng nhất của toán học rời rạc.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=Y58qpGu_N1U">M03 - Bài 3- Quy nạp toán học | Nguyễn Hữu Hoàng Tùng Official</a> — Nguyễn Hữu Hoàng Tùng Official, tiếng Việt. Xem trước quy nạp bằng tiếng Việt: cơ sở và bước quy nạp.
+- <a href="https://www.youtube.com/watch?v=Tm2PJPvAULs">MATHEMATICAL INDUCTION - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Khuôn chứng minh quy nạp trên dãy và tổng.
+- <a href="https://www.youtube.com/watch?v=GdM_iA1Zek4">Intro to Mathematical Induction</a> — Dr. Trefor Bazett, tiếng Anh. Một bài quy nạp đầy đủ từ giả thiết P(k) lên P(k+1).

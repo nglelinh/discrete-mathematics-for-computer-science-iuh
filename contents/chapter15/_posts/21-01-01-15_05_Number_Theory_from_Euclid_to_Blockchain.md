@@ -128,3 +128,9 @@ Chữ ký (ECDSA/RSA-like) dùng lũy thừa hoặc phép toán nhóm trên trư
 ## Tóm tắt
 
 Số học — từ chia hết và đồng dư đến RSA, hash, mã sửa lỗi và chữ ký — là nền im lặng của bảo mật và nhiều hệ phân tán. Chương 15 kết thúc bằng bức tranh tổng hợp; Chương 16 mở **cây** như cấu trúc dữ liệu–toán rời rạc tiếp theo.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=cOwyHTiW4KE">EUCLIDEAN ALGORITHM - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước Euclid, điểm đầu hành trình số học của bài.
+- <a href="https://www.youtube.com/watch?v=JD72Ry60eP4">Prime Numbers &amp; RSA Encryption Algorithm - Computerphile</a> — Computerphile, tiếng Anh. RSA, chặng mật mã khóa công khai trước hạ tầng mạng.
+- <a href="https://www.youtube.com/watch?v=bBC-nXj3Ng4">But how does bitcoin actually work?</a> — 3Blue1Brown, tiếng Anh. Bitcoin dùng băm và chữ ký, đúng phần blockchain cuối bài.

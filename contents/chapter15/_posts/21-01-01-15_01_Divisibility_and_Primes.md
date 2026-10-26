@@ -297,3 +297,9 @@ Thì $$N > 1$$ nên $$N$$ có ước nguyên tố $$p$$. Nếu $$p = p_i$$ thì 
 4. **GCD** qua Euclid; **Bézout** mở đường cho nghịch đảo modulo.
 
 Trong bài tiếp theo: **đồng dư**, phép toán modulo, nghịch đảo, CRT và lũy thừa modulo nhanh.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=K2YmMpulFA4">DIVISIBILITY - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước chia hết, ước và bội.
+- <a href="https://www.youtube.com/watch?v=Dorm0_UyKFw">[Discrete Mathematics] Primes and GCD</a> — TrevTutor, tiếng Anh. Số nguyên tố và ước chung lớn nhất.
+- <a href="https://www.youtube.com/watch?v=inUkhh8-h-I">Proof: There are infinitely many primes numbers</a> — Dr. Trefor Bazett, tiếng Anh. Chứng minh có vô hạn số nguyên tố.

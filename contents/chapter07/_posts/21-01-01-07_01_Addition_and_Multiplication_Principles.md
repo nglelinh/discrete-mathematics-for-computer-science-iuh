@@ -255,3 +255,9 @@ SELECT COUNT(*) FROM
 - **Ứng dụng CS**: đếm mật khẩu, đường đi, cấu hình hệ thống và ước lượng không gian tìm kiếm
 
 Trong bài tiếp theo, chúng ta sẽ học về hoán vị và tổ hợp.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=8JiWWvEoaoc">RULE of SUM and RULE of PRODUCT - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước quy tắc cộng và quy tắc nhân.
+- <a href="https://www.youtube.com/watch?v=t0us-MXrFZg">[Discrete Mathematics] Rule of Sum and Rule of Product Examples</a> — TrevTutor, tiếng Anh. Bài tập phân biệt khi nào cộng, khi nào nhân.
+- <a href="https://www.youtube.com/watch?v=gLfpNYg9Hyk">The summation rule for disjoint unions</a> — Dr. Trefor Bazett, tiếng Anh. Quy tắc cộng cho các trường hợp rời nhau.

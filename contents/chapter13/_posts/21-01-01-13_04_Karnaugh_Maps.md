@@ -447,3 +447,9 @@ Các bước: lập lưới; liệt kê tế bào lớn; chọn cốt yếu (n�
 3. Tế bào lớn đồng nhất với hạng nguyên tố; quy trình năm bước xây phủ không thừa.  
 4. Don't-care mở rộng nhóm mà không bắt buộc được phủ.  
 5. K-map phù hợp hàm hai đến bốn biến; với $$n$$ lớn hơn, lưới trở nên cồng kềnh.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=P_PQ0v89qr8">[TOÁN RỜI RẠC] - BẢN ĐỒ KARNAUGH 3 BIẾN - TS TRẦN HOAN</a> — Học Toán Cùng Thầy Kenka - Tiến Sĩ Trần Hoan, tiếng Việt. Xem trước bìa Karnaugh ba biến bằng tiếng Việt.
+- <a href="https://www.youtube.com/watch?v=FPrcIhqNPVo">Karnaugh Map (K&#x27; Map) - Part 1</a> — Neso Academy, tiếng Anh. Cách nhóm ô trên K-map, đúng quy tắc khoanh của bài.
+- <a href="https://www.youtube.com/watch?v=k_gavfON5uA">4 Variable Karnaugh Map (Part 1)</a> — Neso Academy, tiếng Anh. K-map bốn biến, phần bài đi sau ba biến.

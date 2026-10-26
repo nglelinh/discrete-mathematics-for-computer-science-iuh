@@ -50,3 +50,9 @@ Cách tính ngây thơ materialize ma trận $$n \times n$$ — hợp của các
 Chương 6 đã phân biệt hàm với thủ tục tính hàm. FlashAttention là ví dụ 2022: $$\mathrm{Att}$$ không đổi; cài đặt là một phân tích khác của cùng ánh xạ. Các phương pháp attention xấp xỉ tính một hàm *khác* để cắt FLOP — và bài báo lập luận chúng thường thua thời gian tường vì bỏ qua hệ thống phân cấp bộ nhớ.
 
 **Câu hỏi.** (1) Theo ngôn ngữ chương này, FlashAttention là hàm mới hay thuật toán mới cho hàm cũ? (2) Vì sao “exact” quan trọng khi so với attention hạng thấp?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=eMlx5fFNoYc">Attention in transformers, step-by-step | Deep Learning Chapter 6</a> — 3Blue1Brown, tiếng Anh. Xem trước attention là một hàm của Q, K, V, đúng công thức bài.
+- <a href="https://www.youtube.com/watch?v=LKwyHWYEIMQ">FlashAttention: Accelerate LLM training</a> — Machine Learning Studio, tiếng Anh. FlashAttention tính đúng hàm đó nhưng theo khối để giảm IO.
+- <a href="https://www.youtube.com/watch?v=fjJOgb-E41w">Attention mechanism: Overview</a> — Google Cloud Tech, tiếng Anh. Sơ đồ attention ngắn trước khi đọc phân tích IO.

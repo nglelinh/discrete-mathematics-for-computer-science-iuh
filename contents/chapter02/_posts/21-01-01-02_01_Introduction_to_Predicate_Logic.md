@@ -467,3 +467,9 @@ Trong bài tiếp theo, chúng ta sẽ học chi tiết về **lượng từ và
 - **Vị từ** $$P(x)$$ là phát biểu chứa biến; khi gán giá trị cụ thể trong **miền xác định**, ta thu được **mệnh đề** có giá trị chân lý.
 - Lượng từ toàn thể $$\forall$$ và tồn tại $$\exists$$ mở rộng phạm vi phát biểu; **thứ tự lượng từ** quyết định ý nghĩa công thức.
 - Trong khoa học máy tính, vị từ xuất hiện trong SQL, hàm Boolean, generic types, kiểm chứng chương trình và hệ suy luận AI.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=gyoqX0W-NH4">PREDICATE LOGIC and QUANTIFIER NEGATION - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước vị từ, miền và lượng từ, đúng bài mở đầu chương.
+- <a href="https://www.youtube.com/watch?v=9MPA_LUmmoo">Predicates and their Truth Sets</a> — Dr. Trefor Bazett, tiếng Anh. Tập chân trị của một vị từ, nối ký hiệu P(x) với ví dụ.
+- <a href="https://www.youtube.com/watch?v=GJpezCUMOxA">Universal and Existential Quantifiers,  ∀ &quot;For All&quot; and ∃ &quot;There Exists&quot;</a> — Dr. Trefor Bazett, tiếng Anh. Đọc ∀ và ∃ trước khi sang lượng từ lồng nhau.

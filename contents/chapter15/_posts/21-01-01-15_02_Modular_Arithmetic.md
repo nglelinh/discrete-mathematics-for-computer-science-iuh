@@ -298,3 +298,9 @@ Khoảng $$2048$$ vòng; mỗi vòng $$\le 2$$ nhân modulo → cỡ vài nghìn
 5. **ModExp** $$O(\log e)$$; **Fermat / Euler** nền RSA.
 
 Trong bài tiếp theo: mật mã cổ điển, **RSA** và **Diffie–Hellman**.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=d-n92Ml1iu0">[Discrete Mathematics] Modular Arithmetic</a> — TrevTutor, tiếng Anh. Xem trước đồng dư và phép toán modulo.
+- <a href="https://www.youtube.com/watch?v=jCUOhbk1O_o">Quotient-Remainder Theorem and Modular Arithmetic</a> — Dr. Trefor Bazett, tiếng Anh. Định lý thương-dư, nền của số học đồng dư.
+- <a href="https://www.youtube.com/watch?v=TiV-tXVKPuM">Cơ bản về số học modulo Phần 1, phép Mod, div</a> — Đỗ Văn Đức - ĐH GTVT, tiếng Việt. Phép mod và div bằng tiếng Việt.

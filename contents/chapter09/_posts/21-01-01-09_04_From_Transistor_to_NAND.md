@@ -152,3 +152,9 @@ Bài 09_03 dạy two's complement và Year 2038 trên lớp trừu tượng. Bà
 **Đọc thêm:** [Ben Eater — 8-bit computer](https://eater.net/8bit/) · [Video series — từ transistor đến CPU](https://www.youtube.com/playlist?list=PLowKtXNTBypGqPEN6Wkuy-gv1SFmc-KH8)
 
 Bài tiếp theo rời khỏi silicon, chuyển sang **hàng đợi** trên server: Brett Wooldridge và wiki [HikariCP](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) — vì sao “một triệu user online” không đồng nghĩa “một triệu connection PostgreSQL”, và pool connection quá lớn có thể làm database **chậm hơn** thay vì nhanh hơn.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=33vbFFFn04k">How semiconductors work</a> — Ben Eater, tiếng Anh. Xem trước chất bán dẫn, tầng đầu của mạch mà bài đi từ transistor.
+- <a href="https://www.youtube.com/watch?v=DXvAlwMAxiA">How a transistor works</a> — Ben Eater, tiếng Anh. Transistor như công tắc của một bit.
+- <a href="https://www.youtube.com/watch?v=sTu3LwpF6XI">Making logic gates from transistors</a> — Ben Eater, tiếng Anh. Ghép transistor thành cổng, tới NAND đủ biểu diễn logic.

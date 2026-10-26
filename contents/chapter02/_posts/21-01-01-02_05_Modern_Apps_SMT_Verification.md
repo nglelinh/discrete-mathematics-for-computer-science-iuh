@@ -50,3 +50,9 @@ Barbosa và cộng sự (TACAS 2022) mô tả cvc5: đánh giá trên toàn bộ
 Một truy vấn kiểm chứng điển hình vẫn là câu logic vị từ, ví dụ $$\forall i.\; (0 \le i < n) \rightarrow (a[i] \ge 0)$$. cvc5 không đổi nghĩa của $$\forall$$; nó quyết định các mảnh (fragment) đủ mạnh cho trình biên dịch, hợp đồng thông minh và bộ kiểm chứng chương trình. Đọc sau các mục lượng từ bắt buộc.
 
 **Câu hỏi.** (1) Phần nào của truy vấn SMT là SAT mệnh đề, phần nào là lý thuyết? (2) Vì sao thể hiện lượng từ không đầy đủ trên một số fragment mà giáo trình vẫn viết được?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=CNQwSXKBGgw">From z3 to cvc5</a> — cvc solver, tiếng Anh. Xem trước cùng họ solver: từ Z3 sang cvc5 mà bài ghi chú nhắc.
+- <a href="https://www.youtube.com/watch?v=EacYNe7moSs">Z3 Explained - Satisfiability Modulo Theories &amp; SMT Solvers</a> — Guided Hacking, tiếng Anh. SMT là SAT cộng lý thuyết, đúng khung predicate logic của chương.
+- <a href="https://www.youtube.com/watch?v=e07bWJ2L9VY">cvc5 pythonic API</a> — cvc solver, tiếng Anh. API Python của cvc5, để thấy lượng từ được gọi trong code.

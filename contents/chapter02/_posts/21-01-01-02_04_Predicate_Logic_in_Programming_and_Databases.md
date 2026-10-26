@@ -420,3 +420,9 @@ Test chỉ kiểm tra hữu hạn giá trị; ∀ khẳng định trên vô hạ
 - **Test vs spec**: test kiểm tra mẫu; ∀/∃ mô tả toàn miền — hai lớp bổ sung nhau.
 
 Trong các chương tiếp theo, chúng ta sẽ dùng cùng tinh thần "phát biểu chính xác rồi suy luận" khi học chứng minh, tập hợp, và quan hệ — nền của thiết kế phần mềm đáng tin cậy.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=76v3gRns28U">Basics of Relational Algebra</a> — Neso Academy, tiếng Anh. Xem trước đại số quan hệ, ngôn ngữ của SELECT và điều kiện.
+- <a href="https://www.youtube.com/watch?v=gyoqX0W-NH4">PREDICATE LOGIC and QUANTIFIER NEGATION - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Vị từ và lượng từ đứng sau assert và WHERE EXISTS.
+- <a href="https://www.youtube.com/watch?v=lCcBxgFWEG4">Relational Algebra Operations Explained | SQL for Beginners</a> — CodeLucky, tiếng Anh. Các phép chọn, chiếu, kết nối tương ứng điều kiện trên bảng.

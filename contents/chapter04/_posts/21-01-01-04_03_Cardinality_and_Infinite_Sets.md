@@ -283,3 +283,9 @@ $$\lvert P \cup J \rvert = 50 + 40 - 30 = 60$$.
 - Tập **đếm được** (ℕ, ℤ, ℚ) có thể liệt kê bởi ℕ; tập **không đếm được** (ℝ, (0,1)) — lập luận đường chéo Cantor.
 - **Định lý Schröder–Bernstein**: nếu $$|A| \leq |B|$$ và $$|B| \leq |A|$$ thì $$|A| = |B|$$.
 - Ứng dụng CS: phân tích không gian trạng thái $$2^n$$, đếm test case, giới hạn tính toán.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=Z_Rr4d-3fFY">Countable and Uncountable Sets - Discrete Mathematics</a> — TrevTutor, tiếng Anh. Xem trước lực lượng, tập đếm được và không đếm được.
+- <a href="https://www.youtube.com/watch?v=Uj3_KqkI9Zo">The Infinite Hotel Paradox - Jeff Dekofsky</a> — TED-Ed, tiếng Anh. Khách sạn Hilbert, trực giác tập vô hạn cùng lực lượng với tập con thực sự.
+- <a href="https://www.youtube.com/watch?v=GS7dIWA6Hpo">INCLUSION-EXCLUSION PRINCIPLE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Bao hàm–loại trừ, đúng phần đếm giao của bài này.

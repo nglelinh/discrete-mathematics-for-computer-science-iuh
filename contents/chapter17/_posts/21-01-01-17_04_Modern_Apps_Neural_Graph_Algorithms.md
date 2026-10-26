@@ -42,3 +42,9 @@ Chương 17 là thuật toán đồ thị cổ điển. Hai hướng gần đây
 **GraphCast** (*Science* 2023) không tuyên bố cài Dijkstra; nó tuyên bố message passing học trên multi-mesh là toán tử thời tiết 10 ngày hữu ích. Hai trích dẫn tách **trung thành thuật toán** (CLRS) khỏi **mô hình số hình đồ thị** (GraphCast).
 
 **Câu hỏi.** (1) “Hint” CLRS nào tương ứng mảng khoảng cách Dijkstra sau $$k$$ lần relax? (2) Vì sao sụt accuracy OOD chặn tuyên bố GNN đã học thuật toán?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=aFnHYEv71U4">An Introduction to Graph Neural Networks</a> — DataMListic, tiếng Anh. Xem trước GNN, mô hình bài bảo học thuật toán đồ thị.
+- <a href="https://www.youtube.com/watch?v=DZDrRxM6RwI">Petar Veličković (DeepMind) — Neural Algorithmic Reasoning</a> — Zeta Alpha, tiếng Anh. Neural algorithmic reasoning, hướng CLRS mà bài trích.
+- <a href="https://www.youtube.com/watch?v=0Ud4u7c0_EE">AI Weather Forecasting: What GraphCast Actually Proved (and Didn&#x27;t)</a> — Synaptorix, tiếng Anh. GraphCast, truyền thông điệp trên đồ thị ở quy mô dự báo thời tiết.

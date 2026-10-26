@@ -191,3 +191,9 @@ Trong bài tiếp theo, chúng ta xét cùng code point `U+0048` nhưng hai máy
 - **Normalization** (NFC/NFD) quan trọng khi so sánh và lập chỉ mục chuỗi Unicode.
 
 Trong bài tiếp theo, chúng ta xét **endianness** — cùng code point hoặc số nguyên, hai máy có thể lưu byte theo thứ tự ngược nhau.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=MijmeoH9LT4">Characters, Symbols and the Unicode Miracle - Computerphile</a> — Computerphile, tiếng Anh. Xem trước Unicode là bảng mã số, không phải một kiểu file.
+- <a href="https://www.youtube.com/watch?v=ut74oHojxqo">Unicode, in friendly terms: ASCII, UTF-8, code points, character encodings, and more</a> — Studying With Alex, tiếng Anh. ASCII, code point và UTF-8, đúng phần encoding trên dây.
+- <a href="https://www.youtube.com/watch?v=0j74jcxSunY">Internationalis(z)ing Code - Computerphile</a> — Computerphile, tiếng Anh. Lệch bảng mã khi đưa phần mềm ra ngoài ASCII, cùng ý mojibake.

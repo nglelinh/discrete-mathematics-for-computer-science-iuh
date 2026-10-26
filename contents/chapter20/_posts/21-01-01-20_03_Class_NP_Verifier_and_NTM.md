@@ -99,3 +99,9 @@ Sipser (NP); Arora–Barak §2.1.
 NP = short proofs · $$P\subseteq NP$$ · hai định nghĩa tương đương.
 
 **Tiếp:** 20.4 — $$\mathrm{coNP}$$.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=YX40hbAHx3s">P vs. NP and the Computational Complexity Zoo</a> — hackerdashery, tiếng Anh. Xem trước NP là lớp có chứng chỉ ngắn kiểm được nhanh.
+- <a href="https://www.youtube.com/watch?v=gQnPM6sydkk">Nondeterministic Turing Machine (Part 1)</a> — Neso Academy, tiếng Anh. Máy Turing không đơn định, định nghĩa NTM của bài.
+- <a href="https://www.youtube.com/watch?v=e2cF8a5aAhE">8. NP-Hard and NP-Complete Problems</a> — Abdul Bari, tiếng Anh. Verifier và hệ quả khi đi tới NP-complete.

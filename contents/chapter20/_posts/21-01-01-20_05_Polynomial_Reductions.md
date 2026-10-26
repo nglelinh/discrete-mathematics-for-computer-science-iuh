@@ -100,3 +100,9 @@ Sipser; Arora–Barak §2.2; Garey–Johnson §5.
 $$\le_p$$ · truyền · kéo $$P$$ · xương sống NPC.
 
 **Tiếp:** 20.6 — NP-hard / NP-complete.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=tPRYHkp21YU">Polynomial Time Reductions: Karp Reductions &amp; NP-Completeness Explained!</a> — CodeLucky, tiếng Anh. Xem trước rút gọn Karp trong thời gian đa thức.
+- <a href="https://www.youtube.com/watch?v=O7pq43hIE_0">What is a polynomial-time reduction? (NP-Hard + NP-complete)</a> — Easy Theory, tiếng Anh. Rút gọn đa thức nối NP-hard và NP-complete.
+- <a href="https://www.youtube.com/watch?v=sr9KJwaZH1A">Karp Reductions</a> — Computer Science Theory Explained, tiếng Anh. Karp reduction, đúng kiểu many-one của bài.

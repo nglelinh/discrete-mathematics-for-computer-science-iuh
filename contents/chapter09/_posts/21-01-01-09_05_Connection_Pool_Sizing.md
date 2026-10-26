@@ -237,3 +237,9 @@ Connection pool sizing là bài toán **đếm** — không phải cảm giác a
 Incident demo của Dũng là mẫu điển hình: nhầm “10k user” với “10k connection”, tăng pool, rồi timeout vì DB quá tải. Sửa bằng số — Little's Law cho workload, HikariCP cho máy DB, PgBouncer cho kiến trúc nhiều pod.
 
 Bài sau: **combinatorial explosion** trong QA — [testRigor](https://testrigor.com/blog/what-is-combinatorial-testing/) và cách giảm 324 cấu hình browser–OS–device xuống khoảng 15 test pairwise mà vẫn cover mọi **cặp** tham số, không bỏ sót tương tác hai chiều hay nhầm “test ít” với “test mù”.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=fYjiS2ogcoE">Little&#x27;s Law Explained | L = λ × W | Queueing Theory &amp; System Design</a> — Industry Ready Coder, tiếng Anh. Xem trước định luật Little: L = λW, đúng công thức sizing của bài.
+- <a href="https://www.youtube.com/watch?v=2Lx7QtaPDKw">Little’s Law In Queuing Theory</a> — Explified Labs, tiếng Anh. Little trong hàng đợi, nối user đồng thời với số kết nối.
+- <a href="https://www.youtube.com/watch?v=Cp-aFYHLiCw">Database Connection Pool Sizing - Demystified! by Jasmin Fluri</a> — Devoxx, tiếng Anh. Định cỡ pool cơ sở dữ liệu trên tải thật, đúng tình huống HikariCP.

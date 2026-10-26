@@ -244,3 +244,9 @@ Do đó, ít nhất một nhóm phải chứa ≥ \( \lceil N/n \rceil \) đối
 **Kỹ thuật chứng minh**: Thường dùng phản chứng hoặc đếm trực tiếp
 
 Trong bài tiếp theo, chúng ta sẽ học về **Nguyên lý Dirichlet nâng cao** với các ứng dụng phức tạp hơn trong lý thuyết số và hình học.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=2-mxYrCNX60">PIGEONHOLE PRINCIPLE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước nguyên lý chuồng bồ câu và cách phát biểu.
+- <a href="https://www.youtube.com/watch?v=B2A2pGrDG8I">What Is the Pigeonhole Principle?</a> — Spanning Tree, tiếng Anh. Trực giác nguyên lý trước các bài chứng minh.
+- <a href="https://www.youtube.com/watch?v=YKsHlxnWylc">Pigeonhole Principle (1 of 2: Establishing a pattern)</a> — Eddie Woo, tiếng Anh. Thiết lập mẫu trên ví dụ đếm đơn giản.

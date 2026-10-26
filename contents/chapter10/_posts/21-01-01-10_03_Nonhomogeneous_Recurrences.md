@@ -348,3 +348,8 @@ Từ $$a_0,a_1$$ giải hệ tuyến tính cho $$C_1,C_2$$ (tính số: $$n=0$$:
 - Ứng dụng: chia để trị $$T(n)=2T(n/2)+n$$.
 
 Trong bài tiếp theo, chúng ta tổng hợp ứng dụng quan hệ truy hồi trong thuật toán và hệ thống thực tế.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=EfF_XSEX1Sk">NON-HOMOGENEOUS RECURRENCE RELATIONS - Discrete Mathematics</a> — TrevTutor, tiếng Anh. Xem trước nghiệm riêng cộng nghiệm thuần nhất.
+- <a href="https://www.youtube.com/watch?v=UVuSLfdcT_Y">[Discrete Mathematics] Nonhomogeneous Recurrence Relation Examples</a> — TrevTutor, tiếng Anh. Ví dụ truy hồi không thuần nhất làm tới cùng.

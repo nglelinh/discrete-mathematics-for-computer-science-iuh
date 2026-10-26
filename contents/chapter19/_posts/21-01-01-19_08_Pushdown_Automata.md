@@ -58,3 +58,9 @@ Sipser §2.2; Hopcroft.
 Stack · ID · $$a^nb^n$$.
 
 **Tiếp:** CFG ≡ PDA.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=4ejIAmp_Atw">Pushdown Automata (Introduction)</a> — Neso Academy, tiếng Anh. Xem trước PDA: trạng thái cộng ngăn xếp.
+- <a href="https://www.youtube.com/watch?v=JtRyd7Svlew">Pushdown Automata (Formal Definition)</a> — Neso Academy, tiếng Anh. Định nghĩa hình thức, đúng bộ bảy của bài.
+- <a href="https://www.youtube.com/watch?v=eY7fwj5jvC4">Pushdown Automata (Graphical Notation)</a> — Neso Academy, tiếng Anh. Đọc sơ đồ chuyển của PDA, gồm ví dụ dạng a^n b^n.

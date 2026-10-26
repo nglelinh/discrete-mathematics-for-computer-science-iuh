@@ -220,3 +220,9 @@ Unix time là số giây từ epoch 1970 — đơn giản đến mức dễ quê
 Two's complement dùng cùng mạch cộng với số không dấu; khác biệt nằm ở cách đọc bit và ở overflow signed khi tổng “vượt” dải. Server 64-bit và `int64_t` đã giải quyết phần lớn web app, nhưng PLC, firmware, và file archive cũ vẫn là mảnh đất của Lan — nơi “chạy ổn” không đồng nghĩa “qua 2038”. Giải pháp thực tế là mở rộng biểu diễn, tập trung time authority, hoặc thay thiết bị — không có phép màu đổi endian hay đổi charset.
 
 Bài tiếp theo, Ben Eater cho ta **nhìn** bit trên breadboard — từ transistor đến NAND, rồi tới cùng mạch cộng mà ALU dùng để thực hiện phép cộng two's complement vừa học. Sau khi biết “+1 tại max” là gì trên giấy, ta sẽ thấy nó xảy ra ở đâu trong silicon.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=lKTsv6iVxV4">Binary: Plusses &amp; Minuses (Why We Use Two&#x27;s Complement) - Computerphile</a> — Computerphile, tiếng Anh. Xem trước bù hai và vì sao cộng cơ học ra số âm.
+- <a href="https://www.youtube.com/watch?v=4qH4unVtJkE">Twos complement: Negative numbers in binary</a> — Ben Eater, tiếng Anh. Dựng số âm bù hai trên mạch, đúng phần ALU của bài.
+- <a href="https://www.youtube.com/watch?v=BeK3LHegUr8">The Year 2038 Problem, Explained</a> — Code Blame, tiếng Anh. Tràn giây Unix 32-bit, đúng mốc năm 2038.

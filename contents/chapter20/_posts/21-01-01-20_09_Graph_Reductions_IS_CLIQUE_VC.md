@@ -85,3 +85,9 @@ Sipser; CLRS; Garey–Johnson.
 3SAT→IS→CLIQUE/VC · template hardness đồ thị.
 
 **Tiếp:** 20.10 — Hamilton & TSP.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=u5W32YxmnL8">NP-Complete Reductions:  Clique, Independent Set, Vertex Cover, and Dominating Set</a> — Algorithms with Attitude, tiếng Anh. Xem trước clique, tập độc lập và phủ đỉnh trên cùng một họ rút gọn.
+- <a href="https://www.youtube.com/watch?v=j6-e_iuE9fA">3SAT to independent set reduction</a> — Nickvash Kani, tiếng Anh. Từ 3SAT sang tập độc lập.
+- <a href="https://www.youtube.com/watch?v=9rzrJ4rKwPw">Independent set to vertex cover reduction</a> — Nickvash Kani, tiếng Anh. Từ tập độc lập sang phủ đỉnh, đúng một cạnh của bài.

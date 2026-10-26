@@ -41,3 +41,9 @@ Slogan hữu ích (đọc bài để thấy caveat): khi có chain-of-thought / 
 Đọc chứng minh kiểu Sipser trước. Rồi dùng survey 2024 như danh mục đọc, không phải chương thay thế.
 
 **Câu hỏi.** (1) Máy Chương 18 nào bạn nhận nếu cho transformer scratch token không chặn (tạm hiểu: một băng)? (2) Vì sao phải nêu “softmax hay hard attention” trước khi trích định lý expressivity?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=wjZofJX0v4M">Transformers, the tech behind LLMs | Deep Learning Chapter 5</a> — 3Blue1Brown, tiếng Anh. Xem trước transformer, mô hình bài đối chiếu với otomat.
+- <a href="https://www.youtube.com/watch?v=Qa6csfkK7_I">Finite State Machine (Finite Automata)</a> — Neso Academy, tiếng Anh. DFA, lớp máy hữu hạn nằm trong bản đồ bài khảo sát.
+- <a href="https://www.youtube.com/watch?v=224plb3bCog">Chomsky Hierarchy - Computerphile</a> — Computerphile, tiếng Anh. Phân cấp Chomsky, thang ngôn ngữ mà transformer được đặt lên.

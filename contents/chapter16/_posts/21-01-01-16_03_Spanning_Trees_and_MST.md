@@ -166,3 +166,9 @@ Không (theo định nghĩa phủ mọi đỉnh bằng **một** cây). Có th�
 4. Ứng dụng mạng / clustering; khác shortest path.
 
 Trong bài tiếp theo (tùy chọn): **Huffman** và **BST**.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=4ZlRH0eK-qQ">3.5 Prims and Kruskals Algorithms - Greedy Method</a> — Abdul Bari, tiếng Anh. Xem trước Prim và Kruskal cho cây khung nhỏ nhất.
+- <a href="https://www.youtube.com/watch?v=cplfcGZmX7I">Prim&#x27;s algorithm in 2 minutes</a> — Michael Sambol, tiếng Anh. Prim trên ví dụ ngắn.
+- <a href="https://www.youtube.com/watch?v=71UQH7Pr9kU">Kruskal&#x27;s algorithm in 2 minutes</a> — Michael Sambol, tiếng Anh. Kruskal trên ví dụ ngắn, đối chiếu với Prim.

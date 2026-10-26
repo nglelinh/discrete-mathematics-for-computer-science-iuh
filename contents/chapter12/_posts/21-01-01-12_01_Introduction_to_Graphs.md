@@ -267,3 +267,9 @@ Tổng bậc ra = tổng bậc vào = $$|E| = 4$$.
 4. **Định lý bắt tay**: $$\sum \deg(v) = 2|E|$$; số đỉnh bậc lẻ luôn chẵn — công cụ kiểm tra nhanh tính khả thi của dãy bậc.
 
 Trong bài tiếp theo, cùng một đồ thị trừu tượng được **biểu diễn** trên máy tính bằng ma trận kề hoặc danh sách kề; lựa chọn này quyết định độ phức tạp của các thao tác cơ bản.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=C7YrMRdLkqo">Intro to Graph Theory | Definitions &amp; Ex: 7 Bridges of Konigsberg</a> — Dr. Trefor Bazett, tiếng Anh. Xem trước định nghĩa đồ thị qua bảy cây cầu Königsberg.
+- <a href="https://www.youtube.com/watch?v=-DocD-YLlPY">#1 [Lý thuyết đồ thị | Toán rời rạc]. Các Khái Niệm Cơ Bản Của Đồ Thị | Lý Thuyết Đồ Thị Bài 1</a> — 28tech, tiếng Việt. Khái niệm cơ bản của đồ thị bằng tiếng Việt.
+- <a href="https://www.youtube.com/watch?v=HkNdNpKUByM">INTRODUCTION to GRAPH THEORY - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Bài mở đầu đồ thị rời rạc: đỉnh, cạnh, bậc.

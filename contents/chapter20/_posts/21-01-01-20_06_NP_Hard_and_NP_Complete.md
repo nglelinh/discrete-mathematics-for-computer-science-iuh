@@ -94,3 +94,9 @@ Garey–Johnson; Sipser; Ladner 1975.
 NPC = hard + in NP · một poly ⇒ sụp · checklist 2 bước.
 
 **Tiếp:** 20.7 — Cook–Levin.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=YX40hbAHx3s">P vs. NP and the Computational Complexity Zoo</a> — hackerdashery, tiếng Anh. Xem trước NP-complete nằm ở giao của NP và NP-hard.
+- <a href="https://www.youtube.com/watch?v=e2cF8a5aAhE">8. NP-Hard and NP-Complete Problems</a> — Abdul Bari, tiếng Anh. Định nghĩa NP-hard, NP-complete và ví dụ bài toán.
+- <a href="https://www.youtube.com/watch?v=W9G_1xG77LE">NP-Complete Explained (Cook-Levin Theorem)</a> — Undefined Behavior, tiếng Anh. Cook–Levin cho thấy SAT là NP-complete, mốc của lớp.

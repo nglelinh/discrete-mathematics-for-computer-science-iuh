@@ -49,3 +49,9 @@ Với sinh viên hướng compiler: **CFG và CYK vẫn parse ngôn ngữ lập 
 Đọc sau 19.10–19.12. Đây là pointer đọc, không phải pumping lemma mới.
 
 **Câu hỏi.** (1) Nêu một CFL mà pumping lemma loại; transformer-có-scratchpad có nhất thiết nhận nó? (2) Vì sao cận $$O(n^3)$$ của CYK dễ phát biểu hơn cận “expressivity” của transformer?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=wjZofJX0v4M">Transformers, the tech behind LLMs | Deep Learning Chapter 5</a> — 3Blue1Brown, tiếng Anh. Xem trước transformer, mô hình bài đặt lên bản đồ ngôn ngữ hình thức.
+- <a href="https://www.youtube.com/watch?v=224plb3bCog">Chomsky Hierarchy - Computerphile</a> — Computerphile, tiếng Anh. Phân cấp Chomsky, thang CFG và PDA của chương.
+- <a href="https://www.youtube.com/watch?v=5_tfVe7ED3g">Context Free Grammar &amp; Context Free Language</a> — Neso Academy, tiếng Anh. CFG, lớp bài khảo sát so với khả năng của transformer.

@@ -257,3 +257,9 @@ print(h(3))  # 8
 - **Hàm đồng nhất** $$id_A$$: phần tử trung hòa của phép hợp
 - **Hàm nghịch đảo** $$f^{-1}$$ tồn tại khi và chỉ khi $$f$$ song ánh
 - **Ứng dụng CS**: pipeline dữ liệu, mật mã học, serialization, lập trình hàm
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=1cvQhfZGF7Q">[Discrete Mathematics] Inverse Function Examples</a> — TrevTutor, tiếng Anh. Xem trước hàm ngược và điều kiện tồn tại.
+- <a href="https://www.youtube.com/watch?v=kEUVTLpdG0k">[Discrete Mathematics] Inverses Examples 2</a> — TrevTutor, tiếng Anh. Thêm ví dụ tìm hàm ngược.
+- <a href="https://www.youtube.com/watch?v=bZred_Ksz2k">INJECTIVE, SURJECTIVE, and BIJECTIVE FUNCTIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Song ánh là lý do hàm ngược xác định trên cả miền.

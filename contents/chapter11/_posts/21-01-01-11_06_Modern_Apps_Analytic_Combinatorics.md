@@ -41,3 +41,9 @@ Graf và Lemire (JEA 2022) cho thấy binary fuse filter cách sàn lý thuyết
 Ghi chú không dựng đồng nhất thức GF mới. Nó trỏ tới cấu trúc 2022 mà *số headline* (phần trăm trên cận) vô nghĩa nếu không đọc được như lập luận đếm.
 
 **Câu hỏi.** (1) Hàm sinh nào mã hóa “số filter $$m$$ bit”? (2) Bao hàm–loại trừ vào đâu trong tính dương tính giả với ba vị trí băm?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=-drdeNMoe8w">GENERATING FUNCTIONS - Discrete Mathematics</a> — TrevTutor, tiếng Anh. Xem trước hàm sinh, công cụ đếm mà cận lưu trữ của filter cùng họ.
+- <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Bloom filter minh họa ngân sách bit cho một tập xấp xỉ.
+- <a href="https://www.youtube.com/watch?v=eV1haPUt0NU">Hyperloglog: Facebook&#x27;s algorithm to count distinct elements</a> — Gaurav Sen, tiếng Anh. Đếm lực lượng gần đúng, cùng bài toán thông tin với fuse filter.

@@ -66,3 +66,9 @@ Sipser §3; Arora–Barak §1.
 TM · cấu hình · phổ quát.
 
 **Tiếp:** decidable vs RE.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=dNRDvLACg5Q">Turing Machines Explained - Computerphile</a> — Computerphile, tiếng Anh. Xem trước máy Turing: băng, đầu đọc và trạng thái.
+- <a href="https://www.youtube.com/watch?v=PvLaPKPzq2I">Turing Machine - Introduction (Part 1)</a> — Neso Academy, tiếng Anh. Giới thiệu từng bộ phận trước định nghĩa bộ bảy.
+- <a href="https://www.youtube.com/watch?v=yFEdBR-rP9g">Turing Machine (Formal Definition)</a> — Neso Academy, tiếng Anh. Định nghĩa hình thức, đúng mục định nghĩa của bài.

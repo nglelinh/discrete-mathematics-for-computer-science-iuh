@@ -49,3 +49,8 @@ Hệ thống công bố dự báo hàng trăm biến trong 10 ngày, độ phân
 Chương 12 đã định nghĩa $$G = (V,E)$$, kề và đường đi. GraphCast là lời nhắc 2023 rằng các đối tượng đó mở được quy mô: $$V$$ là lưới Trái Đất, $$E$$ mã hóa láng giềng (đa tỷ lệ), “thuật toán” là một số bước kết tập láng giềng cố định. Không cần khí tượng để thấy khuếch tán kiểu BFS trên đồ thị.
 
 **Câu hỏi.** (1) Grid2Mesh là đồ thị vô hướng đơn, hai phía, hay đa đồ thị — vì sao? (2) Biểu diễn Chương 12 nào bạn sẽ lưu cho mesh icosahedral tĩnh?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=0Ud4u7c0_EE">AI Weather Forecasting: What GraphCast Actually Proved (and Didn&#x27;t)</a> — Synaptorix, tiếng Anh. Xem trước GraphCast chứng minh gì khi chạy truyền thông điệp trên đồ thị đa lưới.
+- <a href="https://www.youtube.com/watch?v=1DmNdMUbDkg">Message Passing: How Graph Neural Networks Actually Work</a> — The Synthetic Mind, tiếng Anh. Truyền thông điệp, cơ chế bài gọi là message passing.

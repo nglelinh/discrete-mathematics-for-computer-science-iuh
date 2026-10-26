@@ -216,3 +216,9 @@ So sánh ưu/nhược điểm của hàm sinh và phương trình đặc trưng 
 - Truy hồi bậc 1 không thuần nhất: ví dụ $$a_n=2a_{n-1}+1$$ cho $$G(x)=x/((1-x)(1-2x))$$.
 
 Trong bài tiếp theo, chúng ta học **nguyên lý bao hàm–loại trừ** — công cụ đếm khi các tập con có giao nhau.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=Xf-mnh65CaU">RECURRENCE RELATIONS using GENERATING FUNCTIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước giải truy hồi bằng hàm sinh.
+- <a href="https://www.youtube.com/watch?v=fyDQlPNQ_y0">[Discrete Mathematics] Partial Fraction Decomposition</a> — TrevTutor, tiếng Anh. Phân tích phân thức riêng, bước lấy hệ số trong bài.
+- <a href="https://www.youtube.com/watch?v=ZyUb5UxBA9Q">[Discrete Mathematics] Coefficient Extraction and Extended Binomial Theorem</a> — TrevTutor, tiếng Anh. Rút hệ số và nhị thức mở rộng.

@@ -381,3 +381,9 @@ SOP thô: 4 hạng, mỗi hạng 3 litera. Sau rút (tùy cách) số hạng/lit
 3. Tối thiểu hóa đại số dựa trên đồng nhất, hấp thụ, gom nhân tử và De Morgan, sau đó kiểm chứng bằng bảng chân trị.  
 4. NAND và NOR mỗi cái là tập đầy đủ chức năng.  
 5. Thiết kế mạch tổ hợp và các khối số học được trình bày ở Mục 13.6–13.7.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=vJO-5gY0wpk">How Do Computers Make Decisions? Logic Gates and Boolean Logic Explained.</a> — Basics Explained, H3Vtux, tiếng Anh. Xem trước cổng logic và bảng chân trị của các phép.
+- <a href="https://www.youtube.com/watch?v=ChtmE09BSy0">NAND Gate as Universal Gate (Part 1)</a> — Neso Academy, tiếng Anh. NAND đủ để dựng các cổng khác, đúng phần đầy đủ chức năng.
+- <a href="https://www.youtube.com/watch?v=sTu3LwpF6XI">Making logic gates from transistors</a> — Ben Eater, tiếng Anh. Cổng được lắp từ transistor, nối công thức với mạch.

@@ -94,3 +94,9 @@ Arora–Barak §1.4 (hierarchy); Sipser advanced time hierarchy.
 $$P$$ đóng · hierarchy ⇒ có bài ngoài $$P$$ · chưa phải $$P$$ vs $$NP$$.
 
 **Tiếp:** 20.3 — định nghĩa $$NP$$.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=XV6f7XYUMg8">What Makes P vs. NP So Hard? (P ≠ EXPTIME, Time Hierarchy, Baker-Gill-Solovay)</a> — Undefined Behavior, tiếng Anh. Xem trước vì sao phân cấp thời gian tách P khỏi lớp mũ.
+- <a href="https://www.youtube.com/watch?v=l2aXF0B2E9M">What is the Time Hierarchy Theorem? - Easy Theory</a> — Easy Theory, tiếng Anh. Định lý phân cấp thời gian, đúng mục 3 của bài.
+- <a href="https://www.youtube.com/watch?v=YX40hbAHx3s">P vs. NP and the Computational Complexity Zoo</a> — hackerdashery, tiếng Anh. Lớp P nằm ở đâu trong sở thú độ phức tạp.

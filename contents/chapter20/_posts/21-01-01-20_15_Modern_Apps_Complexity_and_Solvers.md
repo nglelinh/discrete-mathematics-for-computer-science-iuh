@@ -44,3 +44,9 @@ SAT là NP-đầy đủ (chương này). Định lý **không** nói mọi insta
 Tổng hợp tùy chọn với 20.13 (fine-grained / average-case): SAT thi đấu và lỗ hổng OOD của CLRS chính là *lý do* các lý thuyết mịn hơn tồn tại. Ghi chú không thêm phép rút gọn.
 
 **Câu hỏi.** (1) Phát biểu Cook–Levin và kết quả huy chương SAT 2024 thành hai câu *không mâu thuẫn*. (2) Nếu GNN giải BFS CLRS 16 đỉnh 99%, tuyên bố nào vẫn bị cấm?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=YX40hbAHx3s">P vs. NP and the Computational Complexity Zoo</a> — hackerdashery, tiếng Anh. Xem trước NP-complete là xấu nhất, không phải mọi instance đều khó.
+- <a href="https://www.youtube.com/watch?v=YUqR-8rZ_gQ">Lecture 10-3 CDCL (Lecture 5 in CS433)</a> — Automated Reasoning, tiếng Anh. CDCL giải nhiều SAT công nghiệp, cùng lớp với Kissat.
+- <a href="https://www.youtube.com/watch?v=DZDrRxM6RwI">Petar Veličković (DeepMind) — Neural Algorithmic Reasoning</a> — Zeta Alpha, tiếng Anh. Mạng học thuật toán đồ thị có thể sai ngoài phân phối huấn luyện.

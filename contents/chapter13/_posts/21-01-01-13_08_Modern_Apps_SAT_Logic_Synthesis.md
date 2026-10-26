@@ -41,3 +41,9 @@ Năm 2024, trên track công khai, engine đó là Kissat 4.0: ba vàng track ch
 Thứ tự đọc: đại số Boole và cổng trước; ghi chú này sau. Bạn cần nói được, không cần lý thuyết mới, vì sao XOR hai ngõ ra $$= 0$$ là instance SAT và vì sao chứng minh UNSAT được kiểm mới là thứ team chip muốn.
 
 **Câu hỏi.** (1) Viết truy vấn SAT miter cho “$$f \equiv g$$” bằng XOR và một ngõ ra. (2) Vì sao chứng minh UNSAT đã kiểm gần Chương 13 hơn câu “neural nói có lẽ tương đương”?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=uAdVzz1hKYY">Boolean Satisfiability Problem - Intro to Theoretical Computer Science</a> — Udacity, tiếng Anh. Xem trước SAT, bài toán kiểm tương đương Boole mà EDA gọi solver.
+- <a href="https://www.youtube.com/watch?v=YUqR-8rZ_gQ">Lecture 10-3 CDCL (Lecture 5 in CS433)</a> — Automated Reasoning, tiếng Anh. CDCL, cơ chế các solver dạng Kissat và CaDiCaL.
+- <a href="https://www.youtube.com/watch?v=Usoo2j2TQio">Boolean Algebra And LUTs in FPGA</a> — nandland, tiếng Anh. LUT và đại số Boole, đích tổng hợp mạch của bài.

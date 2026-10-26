@@ -1016,3 +1016,9 @@ D. (A=B hoặc B=C) hoặc (A=C)
 - Ứng dụng trực tiếp trong kiểm tra đầu vào, phân quyền, truy vấn dữ liệu và thiết kế test case.
 
 Trong bài tiếp theo, chúng ta dùng **bảng chân trị** để liệt kê và kiểm chứng mọi trường hợp của biểu thức logic.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=p78HgbsYw2M">001B TOÁN RỜI RẠC Logic mệnh đề Thế nào là mệnh đề Phép toán mệnh đề</a> — Đỗ Văn Đức - ĐH GTVT, tiếng Việt. Xem trước các phép toán mệnh đề trên ví dụ tiếng Việt.
+- <a href="https://www.youtube.com/watch?v=7mulE-zramc">Intro to Truth Tables |  Negation, Conjunction, and Disjunction</a> — Dr. Trefor Bazett, tiếng Anh. Phủ định, hội và tuyển trên bảng chân trị — đúng các phép cơ bản của bài.
+- <a href="https://www.youtube.com/watch?v=xag9TEAORK4">CONDITIONALS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Phép kéo theo, phép hay bị đọc nhầm khi dịch câu điều kiện.

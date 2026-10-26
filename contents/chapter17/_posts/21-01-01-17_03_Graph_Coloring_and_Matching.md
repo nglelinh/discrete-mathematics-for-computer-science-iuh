@@ -170,3 +170,9 @@ Matching max bipartite có thuật toán đa thức. Tính $$\chi(G)$$ tổng qu
 3. Ch.17: thuật toán đa thức + cửa sổ sang NP-hard (Ch.20).
 
 Chương 18 trở đi: **mô hình tính toán** — automata và ngôn ngữ hình thức.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=3VeQhNF5-rE">Vertex Colorings and the Chromatic Number of Graphs | Graph Theory</a> — Wrath of Math, tiếng Anh. Xem trước tô màu đỉnh và sắc số.
+- <a href="https://www.youtube.com/watch?v=J7g5HMZgKMU">[Discrete Mathematics] Graph Coloring and Chromatic Polynomials</a> — TrevTutor, tiếng Anh. Tô màu và đa thức sắc, đúng nửa đầu bài.
+- <a href="https://www.youtube.com/watch?v=HZLKDC9OSaQ">2.11.7 Bipartite Matching</a> — MIT OpenCourseWare, tiếng Anh. Ghép cặp trên đồ thị hai phía, đúng phần matching.

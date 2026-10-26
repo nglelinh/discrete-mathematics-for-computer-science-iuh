@@ -729,3 +729,9 @@ Chỉ cần một trường hợp làm các giả thiết đúng nhưng kết lu
 - Ứng dụng trong kiểm chứng hình thức, hệ chuyên gia, hệ thống kiểu, và phân tích bảo mật.
 
 Trong bài tiếp theo (tùy chọn), chúng ta giới thiệu **SAT solver** — công cụ tự động kiểm tra tính thỏa mãn của công thức Boolean ở dạng CNF.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=8DW0K3mnc-0">RULES of INFERENCE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước các quy tắc suy diễn thường dùng trong chứng minh mệnh đề.
+- <a href="https://www.youtube.com/watch?v=NTSZMdGlo4g">Logical Arguments - Modus Ponens &amp; Modus Tollens</a> — Dr. Trefor Bazett, tiếng Anh. Modus ponens và modus tollens, hai quy tắc bài dùng nhiều nhất.
+- <a href="https://www.youtube.com/watch?v=pHWaxuyfK2s">Logical Argument Forms: Generalizations, Specialization, Contradiction</a> — Dr. Trefor Bazett, tiếng Anh. Khái quát hóa, đặc biệt hóa và mâu thuẫn trong lập luận.

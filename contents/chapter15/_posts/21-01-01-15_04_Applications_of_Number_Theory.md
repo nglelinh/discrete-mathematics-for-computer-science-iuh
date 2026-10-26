@@ -211,3 +211,9 @@ Kyber hướng kháng lượng tử; RSA/ECC cổ điển thì không (trước 
 5. **PQC**: chuẩn bị sau lượng tử; không tự phát minh crypto.
 
 Bài khảo sát 15.5 nối lịch sử từ Euclid đến blockchain; Chương 16 chuyển sang **cây**.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=e8DtzQkjOMQ">The Chinese Remainder Theorem (Solved Example 1)</a> — Neso Academy, tiếng Anh. Xem trước ví dụ định lý số dư Trung Hoa, dùng khi bài tăng tốc RSA bằng CRT.
+- <a href="https://www.youtube.com/watch?v=NF1pwjL9-DE">Elliptic Curves - Computerphile</a> — Computerphile, tiếng Anh. Đường cong elliptic, đúng phần ECC.
+- <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Va chạm hàm băm, đúng mục hàm băm mật mã mở đầu bài.

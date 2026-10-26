@@ -41,3 +41,9 @@ Graf và Lemire (JEA 2022) báo cáo binary fuse filter cách cận dưới **13
 Bài học tùy chọn: cuộc đua cấu trúc dữ liệu 2022 là cuộc thi chuồng bồ câu định lượng. Va chạm bảng băm (đã có trong mục bắt buộc) là cùng hiện tượng, khác layout. Binary fuse không bãi bỏ Dirichlet; chúng tiêu bit cẩn thận hơn sau khi chấp nhận một số lỗ phải dùng chung.
 
 **Câu hỏi.** (1) Nếu đòi $$\varepsilon = 0$$ và $$n > m$$ fingerprint, định lý nào của chương áp dụng? (2) Vì sao “cao hơn cận dưới 13%” là phát biểu chuồng bồ câu chứ không phải học máy?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Xem trước bộ lọc kiểu Bloom: bộ nhớ chặn dưới bởi số phần tử cần phân biệt.
+- <a href="https://www.youtube.com/watch?v=eV1haPUt0NU">Hyperloglog: Facebook&#x27;s algorithm to count distinct elements</a> — Gaurav Sen, tiếng Anh. HyperLogLog đếm lực lượng gần đúng, cùng họ sketch với fuse filter.
+- <a href="https://www.youtube.com/watch?v=B_PexYrEcEw">HyperLogLog Hit Counter - Computerphile</a> — Computerphile, tiếng Anh. HyperLogLog ngắn, thấy vì sao không lưu từng khóa.

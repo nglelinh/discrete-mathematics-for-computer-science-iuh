@@ -67,3 +67,9 @@ Sipser §1.2.
 Đa trị · tồn tại đường · $$L(N)$$.
 
 **Tiếp:** ε-NFA.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=ehy0jGIYRtE">Non-Deterministic Finite Automata</a> — Neso Academy, tiếng Anh. Xem trước NFA khác DFA ở chỗ không đơn định.
+- <a href="https://www.youtube.com/watch?v=egXhe55dAIk">Formal Definition of Non-Deterministic Finite Automata (NFA)</a> — Neso Academy, tiếng Anh. Bộ năm định nghĩa hình thức của NFA.
+- <a href="https://www.youtube.com/watch?v=4bjqVsoy6bA">Non-Deterministic Finite Automata (Solved Example 1)</a> — Neso Academy, tiếng Anh. Một xâu được chấp nhận theo nhánh nào, đúng quan hệ chấp nhận.

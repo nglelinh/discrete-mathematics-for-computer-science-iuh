@@ -280,3 +280,9 @@ Nếu số bit 1 không đúng chẵn/lẻ thì chắc chắn có lỗi (một t
 ## Tóm tắt
 
 Nguyên lý chuồng chim bồ câu là công cụ chứng minh sự tồn tại mà không cần xây dựng đối tượng. Trong khoa học máy tính, nó giải thích tại sao va chạm băm không tránh khỏi, nén không mất mát có giới hạn, và tại sao phát hiện lỗi luôn khả thi. Hiểu nguyên lý này giúp chúng ta thiết kế hệ thống chắc chắn và biết được giới hạn của chúng.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Xem trước va chạm băm chính là chuồng bồ câu trên tập giá trị băm.
+- <a href="https://www.youtube.com/watch?v=OUQVhnuTMVU">Closer Look at the Birthday Paradox - Numberphile</a> — Numberphile, tiếng Anh. Công thức sinh nhật, cùng ước lượng va chạm trong bài.
+- <a href="https://www.youtube.com/watch?v=2-mxYrCNX60">PIGEONHOLE PRINCIPLE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Phát biểu nguyên lý trước khi áp vào ID và bảng băm.

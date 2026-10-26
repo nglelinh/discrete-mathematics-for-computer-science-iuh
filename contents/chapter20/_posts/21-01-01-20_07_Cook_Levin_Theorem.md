@@ -83,3 +83,9 @@ Seminar: phải tường minh G1–G4.
 Tableau $$O(T^2)$$ · local gates · SAT NPC.
 
 **Tiếp:** 20.8 — SAT→3SAT.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=W9G_1xG77LE">NP-Complete Explained (Cook-Levin Theorem)</a> — Undefined Behavior, tiếng Anh. Xem trước ý định lý Cook–Levin trước chứng minh tableau.
+- <a href="https://www.youtube.com/watch?v=Kux0iFe2yyA">The Cook-Levin Theorem (part I)</a> — Computer Science Theory Explained, tiếng Anh. Phần đầu chứng minh mã hóa tính toán thành SAT.
+- <a href="https://www.youtube.com/watch?v=LW_37i96htQ">Cook-Levin Theorem: Full Proof (SAT is NP-complete)</a> — Easy Theory, tiếng Anh. Chứng minh đầy đủ SAT là NP-complete.

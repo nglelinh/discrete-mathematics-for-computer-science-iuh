@@ -223,3 +223,9 @@ R = {(a, a), (a, c), (b, b), (c, b), (c, c)}
 - Ứng dụng: cơ sở dữ liệu quan hệ (SQL JOIN), đồ thị, mạng xã hội
 
 Trong bài tiếp theo, chúng ta sẽ xem xét bốn tính chất cơ bản của quan hệ: phản xạ, đối xứng, phản đối xứng, và bắc cầu -- chìa khóa để phân loại quan hệ.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=FI6j5QZNVx0">RELATIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước quan hệ là tập con của tích Descartes.
+- <a href="https://www.youtube.com/watch?v=0dzNlrNJYdc">Relations between two sets | Definition + First Examples</a> — Dr. Trefor Bazett, tiếng Anh. Ví dụ quan hệ giữa hai tập và cách liệt kê cặp.
+- <a href="https://www.youtube.com/watch?v=cQiyDUiIcOQ">Relations and their Inverses</a> — Dr. Trefor Bazett, tiếng Anh. Quan hệ ngược, phép sẽ dùng lại ở mục bao đóng.

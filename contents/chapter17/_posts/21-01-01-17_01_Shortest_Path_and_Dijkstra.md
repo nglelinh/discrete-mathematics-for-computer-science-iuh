@@ -175,3 +175,9 @@ Dijkstra tối ưu path từ nguồn; Kruskal (MST) tối ưu tổng trọng s�
 4. Shortest path ≠ MST.
 
 Trong bài tiếp theo: **sắp xếp topo** trên DAG.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=_lHSawdgXpI">Dijkstra&#x27;s algorithm in 3 minutes</a> — Michael Sambol, tiếng Anh. Xem trước Dijkstra trong vài phút, trước chứng minh chi tiết.
+- <a href="https://www.youtube.com/watch?v=GazC3A4OQTE">Dijkstra&#x27;s Algorithm - Computerphile</a> — Computerphile, tiếng Anh. Vì sao thuật toán chọn đỉnh có nhãn nhỏ nhất.
+- <a href="https://www.youtube.com/watch?v=XB4MIexjvY0">3.6 Dijkstra Algorithm - Single Source Shortest Path - Greedy Method</a> — Abdul Bari, tiếng Anh. Một ví dụ Dijkstra đủ bảng cập nhật khoảng cách.

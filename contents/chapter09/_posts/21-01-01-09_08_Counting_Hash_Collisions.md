@@ -327,3 +327,9 @@ Hai con số không thay thế nhau. Phòng 23 người: ~50% có ít nhất m�
 Phân biệt **$$P(\text{at least one})$$** vs **$$E[\text{number of matches}]$$** là kỹ năng đếm trong production — cùng setup, câu hỏi sai → quyết địch sai (UUID vs nurse vs hash tuning).
 
 Trong bài tiếp theo, chúng ta xét quy mô khác hẳn: [Cloudflare](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/) xử lý **1M DNS queries/giây**, và vì sao aggregate theo **query name** (cardinality cao) không nén được như aggregate theo **response code** — bài toán đếm **distinct values** ở quy mô edge, không còn là phòng sinh nhật hay bucket hash.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Xem trước kỳ vọng va chạm băm và liên hệ sinh nhật.
+- <a href="https://www.youtube.com/watch?v=gmur3e33A6A">CS 124: Hashing Collisions and the Birthday Paradox</a> — CS 124, tiếng Anh. Đếm va chạm trên bảng băm, cùng hai câu hỏi của bài.
+- <a href="https://www.youtube.com/watch?v=OUQVhnuTMVU">Closer Look at the Birthday Paradox - Numberphile</a> — Numberphile, tiếng Anh. Xấp xỉ sinh nhật phía sau công thức kỳ vọng.

@@ -510,3 +510,9 @@ WHERE hp.tinChi = 3
 - Trong SQL và Python, `EXISTS`/`NOT EXISTS`, `all()`/`any()` là triển khai trực tiếp của $$\exists$$ và $$\forall$$.
 
 Trong bài tiếp theo, chúng ta sẽ học **quy tắc suy luận** với lượng từ — cách từ các tiền đề đã biết suy ra kết luận hợp lệ.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=jLVKV5LJjaw">Negating Logical Statements with Multiple Quantifiers</a> — Dr. Trefor Bazett, tiếng Anh. Xem trước lượng từ lồng nhau và thứ tự khi phủ định.
+- <a href="https://www.youtube.com/watch?v=q1rKFGSiZE8">Negating Universal and Existential Quantifiers</a> — Dr. Trefor Bazett, tiếng Anh. Phủ định ∀ và ∃ từng bước, đúng phần đổi lượng từ.
+- <a href="https://www.youtube.com/watch?v=7HvCgm4vBv4">[Discrete Mathematics] Negating Quantifiers and Translation Examples</a> — TrevTutor, tiếng Anh. Dịch câu có lượng từ và viết phủ định.

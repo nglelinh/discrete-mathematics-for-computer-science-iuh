@@ -272,3 +272,9 @@ def constructive_pigeonhole(objects, groups, property_checker):
 Nguyên lý Dirichlet là cầu nối giữa toán học thuần túy và ứng dụng thực tế, đặc biệt quan trọng trong thiết kế và phân tích hệ thống máy tính hiện đại.
 
 Trong **Chương 9: Ứng dụng Toán Rời Rạc trong CNTT Hiện đại**, chúng ta sẽ gắn các khái niệm đã học vào case study thực tế từ blog và hệ thống production.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=pPuvnD4PYNE">[Discrete Mathematics] Pigeonhole Principle Examples</a> — TrevTutor, tiếng Anh. Xem trước các ví dụ nâng cao của nguyên lý Dirichlet.
+- <a href="https://www.youtube.com/watch?v=TCZ3YwbcDaw">The Pigeon Hole Principle: 7 gorgeous proofs</a> — Mathologer, tiếng Anh. Nhiều chứng minh đẹp, dùng khi bài đòi dạng tổng quát.
+- <a href="https://www.youtube.com/watch?v=NdnByi_tK6Q">A Hairy Problem (and a Feathery Solution) - Numberphile</a> — Numberphile, tiếng Anh. Bài toán tóc và lông, mẫu đếm kiểu chuồng bồ câu.

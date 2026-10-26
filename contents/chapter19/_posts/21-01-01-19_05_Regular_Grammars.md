@@ -59,3 +59,9 @@ Hopcroft; Sipser exercises.
 Type-3 ≡ Ch.18 regular.
 
 **Tiếp:** CFG.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=WgEsPTAL55Q">Regular Grammar</a> — Neso Academy, tiếng Anh. Xem trước văn phạm chính quy và dạng luật.
+- <a href="https://www.youtube.com/watch?v=ejXgLRSIxsA">Derivations from a Grammar</a> — Neso Academy, tiếng Anh. Dẫn xuất một xâu từ văn phạm.
+- <a href="https://www.youtube.com/watch?v=upu_TeZImN0">Regular Expression</a> — Neso Academy, tiếng Anh. Biểu thức chính quy, ngôn ngữ cùng lớp với văn phạm chính quy.

@@ -155,3 +155,8 @@ Quyết định bỏ nửa trái/phải dựa trên so sánh với phần tử g
 4. Một số bài toán không có thuật toán tổng quát.
 
 Trong bài tiếp theo: **Big-O** và bậc tăng trưởng.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=0IAPZzGSbME">1. Introduction to Algorithms</a> — Abdul Bari, tiếng Anh. Xem trước thuật toán là gì và vì sao cần mô tả từng bước.
+- <a href="https://www.youtube.com/watch?v=FbYzBWdhMb0">1.2 Characteristics of Algorithm</a> — Abdul Bari, tiếng Anh. Các tính chất của một thuật toán, khớp mục giới thiệu.
