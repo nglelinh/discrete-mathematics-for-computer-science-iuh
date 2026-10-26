@@ -629,3 +629,9 @@ Trong bài tiếp theo, chúng ta sẽ học về **quy nạp toán học** — 
 - Ví dụ kinh điển: $$\sqrt{2}$$ vô tỷ, vô hạn số nguyên tố, Halting Problem.
 
 Trong bài tiếp theo, chúng ta sẽ học **quy nạp toán học** — phương pháp chứng minh mạnh cho mệnh đề phụ thuộc số tự nhiên.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=sRDwsfNDXak">PROOF by CONTRADICTION - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước giả sử phủ định rồi dẫn tới mâu thuẫn.
+- <a href="https://www.youtube.com/watch?v=huGWXh4l1M0">Proof by Contradiction | Method &amp; First Example</a> — Dr. Trefor Bazett, tiếng Anh. Khuôn chứng minh phản chứng và ví dụ đầu tiên.
+- <a href="https://www.youtube.com/watch?v=inUkhh8-h-I">Proof: There are infinitely many primes numbers</a> — Dr. Trefor Bazett, tiếng Anh. Có vô hạn số nguyên tố, mẫu phản chứng kinh điển.

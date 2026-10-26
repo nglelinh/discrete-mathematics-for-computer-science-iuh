@@ -329,3 +329,9 @@ Lớp tương đương: [0-17], [18-35], [36-60], [60+]. Chọn một giá trị
 - **Mạng xã hội**: quan hệ có hướng, đối xứng hoặc bắc cầu tùy loại liên kết
 - **Equivalence partitioning**: chia input thành lớp tương đương trong kiểm thử phần mềm
 - **Recommendation systems**: ma trận quan hệ user–item là nền của collaborative filtering
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=76v3gRns28U">Basics of Relational Algebra</a> — Neso Academy, tiếng Anh. Xem trước mô hình quan hệ của cơ sở dữ liệu.
+- <a href="https://www.youtube.com/watch?v=z9IceBT2_ws">Relational Algebra Explained: The Foundation of Databases! 🗄️</a> — CodeLucky, tiếng Anh. Phép trên bảng, đúng phần ứng dụng CSDL của bài.
+- <a href="https://www.youtube.com/watch?v=C7YrMRdLkqo">Intro to Graph Theory | Definitions &amp; Ex: 7 Bridges of Konigsberg</a> — Dr. Trefor Bazett, tiếng Anh. Đồ thị như quan hệ cặp, mô hình mạng xã hội ở cuối bài.

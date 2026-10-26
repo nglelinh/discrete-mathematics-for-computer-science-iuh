@@ -66,3 +66,9 @@ Sipser §2.1.
 CFG · derivation · $$a^nb^n$$.
 
 **Tiếp:** parse tree & ambiguity.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=5_tfVe7ED3g">Context Free Grammar &amp; Context Free Language</a> — Neso Academy, tiếng Anh. Xem trước văn phạm và ngôn ngữ phi ngữ cảnh.
+- <a href="https://www.youtube.com/watch?v=ejXgLRSIxsA">Derivations from a Grammar</a> — Neso Academy, tiếng Anh. Dẫn xuất trái và phải từ luật sinh.
+- <a href="https://www.youtube.com/watch?v=htoFbcwES28">Method to find whether a String belongs to a Grammar or not</a> — Neso Academy, tiếng Anh. Kiểm tra một xâu có thuộc ngôn ngữ của văn phạm hay không.

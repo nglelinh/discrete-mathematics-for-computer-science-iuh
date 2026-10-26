@@ -800,3 +800,9 @@ Khả năng đưa biểu thức về dạng chuẩn là kỹ năng nền tảng 
 Trong bài tiếp theo, chúng ta học **quy tắc suy diễn** — các mẫu lập luận hợp lệ từ tiền đề đến kết luận.
 
 
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=ROgJE-_BC4M">#002 TOÁN RỜI RẠC Chứng minh hai mệnh đề là tương đương logic</a> — Đỗ Văn Đức - ĐH GTVT, tiếng Việt. Xem trước cách chứng minh hai mệnh đề tương đương logic.
+- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (NotesForMsc), tiếng Anh. Các luật tương đương và kiểm bằng bảng chân trị.
+- <a href="https://www.youtube.com/watch?v=2cgHa02s_SA">Conjunctive Normal Form (CNF) and Disjunctive Normal Form (DNF)</a> — TrevTutor, tiếng Anh. Đưa công thức về DNF và CNF, đúng phần dạng chuẩn tắc.

@@ -92,3 +92,9 @@ Arora–Barak §2; Goldreich conceptual notes.
 coNP · $$P\subseteq NP\cap\mathrm{coNP}$$ · NPC∩coNP ⇒ sụp hierarchy.
 
 **Tiếp:** 20.5 — rút gọn $$\le_p$$.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=_pCw6h0Maj8">The Complexity Class coNP</a> — Computer Science Theory Explained, tiếng Anh. Xem trước coNP: chứng chỉ ngắn cho câu trả lời không.
+- <a href="https://www.youtube.com/watch?v=YX40hbAHx3s">P vs. NP and the Computational Complexity Zoo</a> — hackerdashery, tiếng Anh. Vị trí coNP cạnh NP trong bản đồ lớp.
+- <a href="https://www.youtube.com/watch?v=pQsdygaYcE4">P vs NP Explained: Computer Science&#x27;s Biggest Puzzle</a> — Quanta Magazine, tiếng Anh. P đối NP, bối cảnh hệ quả cấu trúc bài nêu.

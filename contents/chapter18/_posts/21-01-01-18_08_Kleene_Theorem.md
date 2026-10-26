@@ -74,3 +74,9 @@ Sipser; Kozen; Hopcroft.
 Kleene · Thompson · powerset · elimination.
 
 **Tiếp:** pumping lemma.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=OKFrju0HB7k">NFA to Regular Expression Conversion</a> — Neso Academy, tiếng Anh. Xem trước một chiều của Kleene: NFA sang biểu thức chính quy.
+- <a href="https://www.youtube.com/watch?v=SmT1DXLl3f4">DFA to Regular Expression Conversion</a> — Neso Academy, tiếng Anh. DFA sang biểu thức chính quy.
+- <a href="https://www.youtube.com/watch?v=RxfXyvfTsgQ">Conversion of Regular Expression to Finite Automata</a> — Neso Academy, tiếng Anh. Chiều ngược: biểu thức chính quy sang otomat.

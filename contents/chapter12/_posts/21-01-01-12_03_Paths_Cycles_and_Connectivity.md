@@ -236,3 +236,9 @@ Không phải DAG. Ví dụ chu trình: $$\mathrm{app}\to\mathrm{ui}\to\mathrm{c
 4. **DAG** không chu trình có hướng — điều kiện cần cho thứ tự tôpô và build không vòng.
 
 Trong bài tiếp theo, ta xét hai kiểu “đi hết” đặc biệt — **Euler** (cạnh) và **Hamilton** (đỉnh) — cùng hai thuật toán duyệt nền tảng **BFS** và **DFS**.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=hlHWguJVAdU">Guide to Walks, Trails, Paths, Circuits, and Cycles! [Graph Theory Tutorial]</a> — Vital Sine, tiếng Anh. Xem trước walk, trail, path, circuit và cycle.
+- <a href="https://www.youtube.com/watch?v=gC0RNpD2P1Y">Properties in Graph Theory: Complete, Connected, Subgraph, Induced Subgraph</a> — Dr. Trefor Bazett, tiếng Anh. Liên thông, đồ thị con và đồ thị đầy đủ.
+- <a href="https://www.youtube.com/watch?v=q6pKCP1W0dk">What is a Component of a Graph? | Connected Components, Graph Theory</a> — Wrath of Math, tiếng Anh. Thành phần liên thông, đúng phần liên thông của bài.

@@ -219,3 +219,9 @@ Endianness là câu chuyện **cùng một số, nhưng xếp byte khác nhau tr
 Chữ UTF-16 cũng chịu ảnh hưởng vì mỗi ký tự là hai byte; BOM ở đầu file giúp máy biết đọc theo chiều nào. Trên mạng, mọi người thống nhất big-endian để khỏi đoán. Khi code, hãy đọc spec hoặc dùng đúng dấu `<` / `>` trong Python — đó là cách chúng ta nói với máy: “hãy đọc byte theo thứ tự này”.
 
 Trong bài tiếp theo, chúng ta chuyển sang **số có dấu trong máy**: cộng một giây vào timestamp 32-bit có thể đưa đồng hồ về năm 1901 — hiện tượng Year 2038 và cách máy lưu số âm bằng two's complement.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=NcaiHcBvDR4">Endianness Explained With an Egg - Computerphile</a> — Computerphile, tiếng Anh. Xem trước big-endian và little-endian trên một số nhiều byte.
+- <a href="https://www.youtube.com/watch?v=LxvFb63OOs8">Endianness Explained</a> — Aaron Yoo, tiếng Anh. Thứ tự byte trong bộ nhớ, đúng hai cách xếp của bài.
+- <a href="https://www.youtube.com/watch?v=T1C9Kj_78ek">Lecture 22. Big Endian and Little Endian</a> — Embedded Systems and Deep Learning, tiếng Anh. So sánh hai endian trên ví dụ địa chỉ.

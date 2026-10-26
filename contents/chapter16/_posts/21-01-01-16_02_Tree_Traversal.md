@@ -195,3 +195,9 @@ Số nút $$n = 2^{h+1}-1$$. Level-order thăm theo tầng; nút cuối là lá 
 4. Cây không cần `visited` như đồ thị có chu trình.
 
 Trong bài tiếp theo: **cây khung** và **MST** (Kruskal, Prim).
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=z_OwSnFY_5s">[Discrete Mathematics] Tree Directories and Traversals</a> — TrevTutor, tiếng Anh. Xem trước duyệt cây và cây thư mục.
+- <a href="https://www.youtube.com/watch?v=HZ5YTanv5QE">Breadth-first search in 4 minutes</a> — Michael Sambol, tiếng Anh. BFS, một thứ tự duyệt theo mức.
+- <a href="https://www.youtube.com/watch?v=Urx87-NMm6c">Depth-first search in 4 minutes</a> — Michael Sambol, tiếng Anh. DFS, thứ tự đi sâu dùng trong duyệt cây có gốc.

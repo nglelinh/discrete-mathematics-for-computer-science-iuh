@@ -87,3 +87,9 @@ Vazirani; Williamson–Shmoys; Arora–Barak (PCP intro).
 Ratio · VC-2 · metric TSP · hardness xấp xỉ.
 
 **Tiếp:** 20.12 — FPT.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=6t8luYUjw88">Vertex Cover Approximation</a> — Computational Thinking, tiếng Anh. Xem trước xấp xỉ phủ đỉnh, ví dụ mở đầu của bài.
+- <a href="https://www.youtube.com/watch?v=nwZjiQra0EA">Approximation Algorithms: Introduction by the Example of Vertex Cover</a> — Algorithms Lab, tiếng Anh. Tỉ số xấp xỉ trên vertex cover.
+- <a href="https://www.youtube.com/watch?v=xyqIXdUXeU0">Approximation Algorithms 1 - Introduction and  Vertex Cover Problem</a> — Learn@Home, tiếng Anh. Khung thuật toán xấp xỉ trước khi sang ví dụ.

@@ -318,3 +318,8 @@ $$a_n = a_{n-1} + a_{n-2}$$, $$a_1=1$$, $$a_2=2$$ (dãy Fibonacci).
 ## Tóm tắt
 
 Quan hệ đệ quy là ngôn ngữ tự nhiên để mô tả thuật toán chia để trị, quy hoạch động và nhiều hệ thống thực tế. Hiểu cách viết, giải và phân tích recurrence giúp chúng ta đánh giá hiệu năng thuật toán, thiết kế giải pháp tối ưu và mô hình hóa các quá trình động. Đây là cầu nối giữa toán học rời rạc và kỹ thuật phần mềm hiệu quả.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=OynWkEj0S-s">2.4.1 Masters Theorem in Algorithms for Dividing Function #1</a> — Abdul Bari, tiếng Anh. Xem trước định lý thợ cho truy hồi chia để trị.
+- <a href="https://www.youtube.com/watch?v=eAaP4XaB8hM">RECURRENCE RELATIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Dạng truy hồi tổng quát đứng sau công thức độ phức tạp.

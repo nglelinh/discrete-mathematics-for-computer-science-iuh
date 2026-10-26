@@ -71,3 +71,9 @@ Sipser §1.4; Hopcroft.
 Pump từ chu trình DFA · phản chứng chuẩn.
 
 **Tiếp:** đóng regular.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=dikEDuepOtI">Pumping Lemma (For Regular Languages)</a> — Neso Academy, tiếng Anh. Xem trước bổ đề bơm cho ngôn ngữ chính quy.
+- <a href="https://www.youtube.com/watch?v=Ty9tpikilAo">Pumping Lemma (For Regular Languages) | Example 1</a> — Neso Academy, tiếng Anh. Một chứng minh không chính quy bằng bơm.
+- <a href="https://www.youtube.com/watch?v=kZzH8E-s-9o">Pumping Lemma (For Regular Languages) | Example 2</a> — Neso Academy, tiếng Anh. Ví dụ bơm thứ hai, luyện chọn phân tích xyz.

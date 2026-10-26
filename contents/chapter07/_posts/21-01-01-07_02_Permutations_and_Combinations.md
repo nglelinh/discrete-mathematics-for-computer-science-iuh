@@ -366,3 +366,9 @@ def permutation_sort_complexity(n):
 **Ứng dụng**: Mật mã, thuật toán, phân tích độ phức tạp
 
 Trong bài tiếp theo, chúng ta sẽ học về **Nguyên lý Bao hàm-Loại trừ** - công cụ mạnh mẽ để đếm các tập hợp có giao nhau.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=lpKiw1Xj8RQ">Toán rời rạc 18. Hoán Vị và Voán Vị Lặp</a> — TITV, tiếng Việt. Xem trước hoán vị bằng tiếng Việt, có ví dụ chỉnh hợp.
+- <a href="https://www.youtube.com/watch?v=tkhyQXqVxWA">FACTORIALS and PERMUTATIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Giai thừa và hoán vị, đúng nửa đầu bài.
+- <a href="https://www.youtube.com/watch?v=kWPj-Q5e9Lo">COMBINATIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Tổ hợp khi thứ tự không quan trọng.

@@ -507,3 +507,9 @@ Bù 2 của $$B$$ là $$\bar B + 1$$. Đưa $$\bar B$$ vào ngõ B, đặt $$C_0
 5. MUX, decoder và comparator thực hiện chọn nguồn, giải mã one-hot và so sánh trong datapath.
 
 Các khối trên cấu thành lõi số học tổ hợp cơ bản trên nền đại số Boolean.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=wvJc9CZcvBc">Learn how computers add numbers and build a 4 bit adder circuit</a> — Ben Eater, tiếng Anh. Xem trước cộng nhị phân và bộ cộng nhiều bit trên mạch thật.
+- <a href="https://www.youtube.com/watch?v=aLUY-s7LSns">Half Adder</a> — Neso Academy, tiếng Anh. Half adder từ bảng chân trị, đúng mục đầu của bài.
+- <a href="https://www.youtube.com/watch?v=FKvnmxte98A">Introduction to Multiplexers | MUX Basic</a> — Neso Academy, tiếng Anh. Bộ chọn kênh, một mạch tổ hợp bài viết hàm Boole.

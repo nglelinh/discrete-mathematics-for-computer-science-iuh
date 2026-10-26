@@ -41,3 +41,9 @@ Họ chia lưới attention $$n \times n$$ thành khối vừa SRAM, rồi tính
 Với Chương 10, hãy coi tiling là truy hồi theo kích thước khối: mỗi khối là bài toán con cộng bước trộn tuyến tính thống kê $$m$$ / $$\ell$$ (softmax ổn định). Bạn đã biết viết truy hồi; ghi chú chỉ trỏ tới hệ thống 2022 nơi truy hồi nói về *traffic bộ nhớ*, thứ chi phối thời gian tường trên GPU.
 
 **Câu hỏi.** (1) Viết truy hồi sơ đồ cho “xử lý $$n$$ token theo khối $$B$$.” (2) Nếu nút thắt là chuyển HBM chứ không phải phép tính, $$f(n)$$ là số hạng nào?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=LKwyHWYEIMQ">FlashAttention: Accelerate LLM training</a> — Machine Learning Studio, tiếng Anh. Xem trước FlashAttention: cùng hàm attention, đổi cách truy cập bộ nhớ.
+- <a href="https://www.youtube.com/watch?v=OynWkEj0S-s">2.4.1 Masters Theorem in Algorithms for Dividing Function #1</a> — Abdul Bari, tiếng Anh. Truy hồi chia để trị kiểu tiling, cùng họ phân tích IO của bài.
+- <a href="https://www.youtube.com/watch?v=FThvfkXWqtE">MedAI #54: FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness | Tri Dao</a> — Stanford MedAI, tiếng Anh. Tác giả FlashAttention giải thích IO-awareness trên attention đúng từng phần tử.

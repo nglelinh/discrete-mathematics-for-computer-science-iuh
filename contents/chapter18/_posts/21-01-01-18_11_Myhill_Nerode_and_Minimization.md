@@ -76,3 +76,9 @@ Sipser (optional MN); Hopcroft minimization; Kozen.
 Phân biệt tương lai · DFA tối tiểu · lower bound.
 
 **Tiếp:** máy Turing.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=hOzc4BUIXRk">Minimization of Deterministic Finite Automata (DFA)</a> — Neso Academy, tiếng Anh. Xem trước tối thiểu hóa DFA, đích của Myhill–Nerode trong bài.
+- <a href="https://www.youtube.com/watch?v=fWDOqJoKY3k">Myhill-Nerode Theorem for DFA Minimization</a> — Neso Academy, tiếng Anh. Định lý Myhill–Nerode và quan hệ không phân biệt được.
+- <a href="https://www.youtube.com/watch?v=0XaGAkY09Wc">Minimization of DFA (Example 1)</a> — Neso Academy, tiếng Anh. Một ví dụ gộp trạng thái tương đương.

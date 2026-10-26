@@ -73,3 +73,9 @@ Sipser §1.2; Hopcroft–Ullman.
 Powerset · $$L$$ bảo toàn · $$2^n$$ bound.
 
 **Tiếp:** Mealy/Moore.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=--CSVsFIDng">Conversion of NFA to DFA</a> — Neso Academy, tiếng Anh. Xem trước dựng DFA từ tập con trạng thái của NFA.
+- <a href="https://www.youtube.com/watch?v=pnyXgIXpKnc">Conversion of NFA to DFA (Example 1)</a> — Neso Academy, tiếng Anh. Ví dụ subset construction thứ nhất.
+- <a href="https://www.youtube.com/watch?v=i-fk9o46oVY">Conversion of NFA to DFA (Example 2)</a> — Neso Academy, tiếng Anh. Ví dụ thứ hai, đối chiếu với chứng minh tương đương.

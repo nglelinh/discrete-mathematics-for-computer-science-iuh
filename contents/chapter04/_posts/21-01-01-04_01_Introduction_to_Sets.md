@@ -365,3 +365,9 @@ A ∩ B = 11111 00000 ∧ 10101 01010 = 10101 00000 → {1,3,5}
 Lưu ý: Tập rỗng là 000...0 , U là 111...1 .
 
 Điều này hữu ích trong lập trình (bitmask, Bloom filter, etc.).
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=tyDKR4FG3Yw">INTRODUCTION to SET THEORY - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước ký hiệu tập, phần tử và các ví dụ mở đầu.
+- <a href="https://www.youtube.com/watch?v=B1v2-nGXNzs">Intro to Sets | Examples, Notation &amp; Properties</a> — Dr. Trefor Bazett, tiếng Anh. Roster và tính chất cơ bản của tập, khớp mục giới thiệu.
+- <a href="https://www.youtube.com/watch?v=H5D6EAezsXQ">SUBSETS AND POWER SETS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Tập con và tập lũy thừa, chuẩn bị lực lượng ở mục sau.

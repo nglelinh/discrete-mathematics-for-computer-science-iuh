@@ -51,3 +51,9 @@ Khung của họ: mỗi dòng là một đỉnh; mỗi liên kết khóa ngoại
 Không cần lý thuyết GNN để thấy lõi rời rạc: $$R_{\text{FK}} \subseteq T_{\text{con}} \times T_{\text{cha}}$$. Message passing là lặp theo quan hệ đó (và quan hệ ngược) — cùng kiểu đi trên quan hệ đường đi và bao đóng. RDL là ngữ cảnh tùy chọn: nghiên cứu ML 2024 tái sử dụng Chương 5 chứ không thay nó.
 
 **Câu hỏi.** (1) Vì sao khóa ngoại thường là quan hệ *nhiều-một*, và điều đó ràng buộc đồ thị ra sao? (2) Bao đóng nào của $$R_{\text{FK}} \cup R_{\text{FK}}^{-1}$$ mô tả “mọi dòng tới được bằng join”?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=eGoszzMkGfU">Graph Neural Networks Explained: A Clear Guide to GNN Basics &amp; Models</a> — IBM Technology, tiếng Anh. Xem trước mạng nơ-ron đồ thị, cấu trúc bài dùng cho quan hệ khóa.
+- <a href="https://www.youtube.com/watch?v=1DmNdMUbDkg">Message Passing: How Graph Neural Networks Actually Work</a> — The Synthetic Mind, tiếng Anh. Truyền thông điệp trên cạnh, cách học trên đồ thị quan hệ.
+- <a href="https://www.youtube.com/watch?v=aFnHYEv71U4">An Introduction to Graph Neural Networks</a> — DataMListic, tiếng Anh. GNN đọc bảng và khóa ngoại như đồ thị không đồng nhất.

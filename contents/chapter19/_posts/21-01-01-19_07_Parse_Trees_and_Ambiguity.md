@@ -65,3 +65,9 @@ Aho–Sethi–Ullman Dragon book; Sipser.
 Tree · ambiguity · ưu tiên.
 
 **Tiếp:** PDA.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=u4-rpIlV9NI">Derivation Tree (Left &amp; Right Derivation Trees)</a> — Neso Academy, tiếng Anh. Xem trước cây dẫn xuất trái và phải.
+- <a href="https://www.youtube.com/watch?v=wQjppolFdas">Ambiguous Grammar</a> — Neso Academy, tiếng Anh. Văn phạm mơ hồ khi một xâu có hai cây phân tích.
+- <a href="https://www.youtube.com/watch?v=ejXgLRSIxsA">Derivations from a Grammar</a> — Neso Academy, tiếng Anh. Dẫn xuất tương ứng từng nhánh của cây.

@@ -393,3 +393,9 @@ Cho poset $$(\{2,4,5,10,12,20,25\},\mid)$$.
 - **Ứng dụng CS**: union-find, type checking, dependency graph, hash bucket, topological sort
 
 Trong bài tiếp theo, chúng ta sẽ học phép toán trên quan hệ và bao đóng.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=T6RUxvJR8i4">Equivalence Relations  - Reflexive, Symmetric, and Transitive</a> — Dr. Trefor Bazett, tiếng Anh. Xem trước quan hệ tương đương: phản xạ, đối xứng, bắc cầu.
+- <a href="https://www.youtube.com/watch?v=R36F8CWAi2k">PARTIAL ORDERS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Thứ tự bộ phận và cách đọc quan hệ thứ tự.
+- <a href="https://www.youtube.com/watch?v=q0xN_N7l_Kw">Reflexive, Symmetric, and Transitive Relations on a Set</a> — Dr. Trefor Bazett, tiếng Anh. Ba tính chất cần đủ trước khi kết luận tương đương.

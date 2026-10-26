@@ -171,3 +171,9 @@ DFS: stack đệ quy + postorder. Kahn: mảng indeg + queue. Cùng $$O(V+E)$$.
 3. $$O(V+E)$$; dùng cho build, scheduling, phát hiện cycle.
 
 Bài tùy chọn tiếp theo: **tô màu** và **ghép cặp**.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=GYmq98CVm2c">Topological sort in 5 minutes - Inside code</a> — Inside code, tiếng Anh. Xem trước sắp xếp topo trên DAG.
+- <a href="https://www.youtube.com/watch?v=eL-KzMXSXXI">Topological Sort Algorithm | Graph Theory</a> — WilliamFiset, tiếng Anh. Topo bằng DFS và thứ tự kết thúc.
+- <a href="https://www.youtube.com/watch?v=cIBFEhD77b4">Topological Sort | Kahn&#x27;s Algorithm | Graph Theory</a> — WilliamFiset, tiếng Anh. Thuật toán Kahn theo bậc vào, cách làm thứ hai của bài.

@@ -131,3 +131,9 @@ Có: $$n^2\le n^3$$ với $$n\ge 1$$. Không: $$n^3/n^2=n\to\infty$$ không bị
 3. Mũ ≫ đa thức — nền so sánh khả thi (Ch.20).
 
 Trong bài tiếp theo: **phân tích** $$T(n)$$ của thuật toán cụ thể.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=__vX2sjlpXU">Big-O notation in 5 minutes</a> — Michael Sambol, tiếng Anh. Xem trước Big-O trong vài phút, đúng ký hiệu bài cần đọc trước.
+- <a href="https://www.youtube.com/watch?v=A03oI0znAoc">1.8.1 Asymptotic Notations Big Oh - Omega - Theta #1</a> — Abdul Bari, tiếng Anh. Big-O, Omega và Theta, đủ ba ký hiệu tiệm cận.
+- <a href="https://www.youtube.com/watch?v=BgLTDT03QtU">Big-O Notation - For Coding Interviews</a> — NeetCode, tiếng Anh. Đọc bậc tăng trưởng trên các vòng lặp thường gặp.

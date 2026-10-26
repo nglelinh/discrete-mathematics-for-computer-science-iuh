@@ -266,3 +266,8 @@ Cũng bằng $\binom{9}{3}=84$.
 - **Ứng dụng CS** gồm kiểm thử tổ hợp, xác suất, sinh tập con và phân tích thuật toán.
 
 Trong bài tiếp theo, chúng ta sẽ học về hoán vị và tổ hợp mở rộng.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=stfqYC13bSY">[Discrete Mathematics] Binomial Theorem and Pascal&#x27;s Triangle</a> — TrevTutor, tiếng Anh. Xem trước hệ số nhị thức và tam giác Pascal.
+- <a href="https://www.youtube.com/watch?v=XMriWTvPXHI">The mathematical secrets of Pascal’s triangle - Wajdi Mohamed Ratemi</a> — TED-Ed, tiếng Anh. Vì sao các hệ số xuất hiện trên tam giác Pascal.

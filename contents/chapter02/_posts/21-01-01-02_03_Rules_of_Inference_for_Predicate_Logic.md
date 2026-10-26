@@ -416,3 +416,9 @@ EG → ∀x (P(x) ∧ Q(x))
 - Lỗi thường gặp: nhầm EG với UG, áp dụng EI sai cấp lượng từ, hoặc gộp hai nhân chứng từ hai lần EI khác nhau.
 
 Trong bài tiếp theo, chúng ta sẽ xem **logic vị từ trong lập trình và cơ sở dữ liệu** — cách triển khai thực tế của vị từ và lượng từ.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=akiBw21opuw">Rules of Inference for Quantified Statements (Part 1)</a> — Neso Academy, tiếng Anh. Xem trước quy tắc suy luận cho phát biểu có lượng từ.
+- <a href="https://www.youtube.com/watch?v=RfSGkkkGtPg">Proof in predicate logic  1: Universal Instantiation</a> — Simon Cushing, tiếng Anh. Universal instantiation: đi từ ∀x P(x) xuống một phần tử.
+- <a href="https://www.youtube.com/watch?v=a11_3qvelwE">Predicate Logic Proof Example 2: Using Instantiation and Generalization</a> — FREGE: A Logic Course Elaine Rich, Alan Cline, tiếng Anh. Một chứng minh dùng instantiation và generalization.

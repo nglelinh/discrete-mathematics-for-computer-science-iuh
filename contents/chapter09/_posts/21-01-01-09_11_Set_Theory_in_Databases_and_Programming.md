@@ -340,3 +340,9 @@ Set theory từ Cantor và Russell không nằm trên giấy thi — nó nằm d
 Trong SQL, mỗi bảng là tập bộ; `WHERE` chọn tập con; `UNION` là hợp (dedup), `UNION ALL` là bag (giữ trùng) — incident email Linh là nhầm hai phép. `INTERSECT` và `EXCEPT` là giao và hiệu; `JOIN` là tích Descartes có lọc khóa — thiếu `ON` là nhân phình dòng, nhầm `INNER`/`LEFT` là mất hoặc thừa phần tử. Python `set` map trực tiếp `|`, `&`, `-`, `in`. **Bloom filter** trả lời membership xấp xỉ: không false negative, có thể false positive — đổi RAM lấy query thừa, cùng họ tư duy hash (`09_07`–`08`) và cardinality xấp xỉ (`09_09`). **Hash table** và **index** tổ chức tập để tra cứu O(1) hoặc range rẻ. **Union type** TypeScript là hợp tập giá trị hợp lệ — type checker là membership tĩnh.
 
 Case study TaskFlow (`09_10`) gom Chương 9 qua cửa login; bài này khép lại bằng lớp tập hợp dưới chân. **Chương 10: Quan hệ truy hồi** sẽ mô hình tăng trưởng theo thời gian — từ snapshot 48.012 email sang dự báo quý sau khi subscriber và campaign scale.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=tyDKR4FG3Yw">INTRODUCTION to SET THEORY - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước tập hợp, nền của SELECT, set trong Python và kiểu dữ liệu.
+- <a href="https://www.youtube.com/watch?v=4TlCToZZ5gA">SET OPERATIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Hợp, giao, hiệu trong ETL, đúng phần phép toán của bài.
+- <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Bloom filter là tập xấp xỉ khi không đủ bộ nhớ lưu membership.

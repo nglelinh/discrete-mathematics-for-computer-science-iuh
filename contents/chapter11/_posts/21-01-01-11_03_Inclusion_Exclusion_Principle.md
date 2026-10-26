@@ -202,3 +202,9 @@ $$5! - \binom{5}{1}4! + \binom{5}{2}3! - \binom{5}{3}2! + \binom{5}{4}1! - \bino
 - Ứng dụng cơ bản: đếm số chia hết cho 2 hoặc 5 trong $$1..100$$.
 
 Trong bài tiếp theo, chúng ta áp dụng nguyên lý vào sàng Legendre, hàm Euler $$\phi(n)$$, số toàn ánh và derangement.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=GS7dIWA6Hpo">INCLUSION-EXCLUSION PRINCIPLE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước phát biểu nguyên lý bao hàm–loại trừ.
+- <a href="https://www.youtube.com/watch?v=41TcebW7-4c">Counting with Triple Intersections // Example &amp; Formula</a> — Dr. Trefor Bazett, tiếng Anh. Giao của ba tập, đúng công thức mở rộng.
+- <a href="https://www.youtube.com/watch?v=D1T3xy_vtxU">[Discrete Mathematics] Inclusion-Exclusion: At Least &amp; Exactly</a> — TrevTutor, tiếng Anh. Đếm ít nhất và đúng bằng bù trừ.

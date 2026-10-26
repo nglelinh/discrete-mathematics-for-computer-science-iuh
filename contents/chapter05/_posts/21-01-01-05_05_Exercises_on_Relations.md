@@ -291,3 +291,9 @@ Vẽ Hasse diagram cho tập con của $$\{1,2,3\}$$ theo quan hệ chứa.
 - **Quan hệ tương đương** cần phản xạ, đối xứng, bắc cầu; **thứ tự bộ phận** cần phản xạ, phản đối xứng, bắc cầu
 - **Bao đóng** là thao tác thêm tối thiểu các cặp để đạt tính chất mong muốn
 - Ma trận quan hệ và đồ thị có hướng là công cụ kiểm tra có hệ thống
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=TctNssYMXJE">You need to check EVERY spot for reflexivity, symmetry, and transitivity</a> — Dr. Trefor Bazett, tiếng Anh. Xem trước trước khi làm bài: kiểm đủ mọi ô của quan hệ.
+- <a href="https://www.youtube.com/watch?v=qujnPIPjKrA">[Discrete Mathematics] Relations Examples</a> — TrevTutor, tiếng Anh. Ví dụ luyện nhận dạng tính chất, cùng dạng bài tập chương.
+- <a href="https://www.youtube.com/watch?v=YLrQWK2VBro">Can You Prove that R is an equivalence relation iff R is circular and reflexive</a> — TrevTutor, tiếng Anh. Một chứng minh quan hệ tương đương từ điều kiện phản xạ và vòng.

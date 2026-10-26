@@ -443,3 +443,9 @@ Người thứ nhất đúng. Bộ {OR, NOT} là một tập đầy đủ vì AN
 1. George Boole, *An Investigation of the Laws of Thought*, 1854.
 2. Claude E. Shannon, *A Symbolic Analysis of Relay and Switching Circuits*, MIT, 1937 — luận văn thạc sĩ đặt nền móng cho thiết kế mạch số.
 3. M. Morris Mano, *Digital Design*, Pearson, các chương 1-2.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=WW-NPtIzHwk">Introduction to Boolean Algebra (Part 1)</a> — Neso Academy, tiếng Anh. Xem trước đại số Boole trên {0,1} và các hằng đẳng thức.
+- <a href="https://www.youtube.com/watch?v=OjWmVCG8PLA">Introduction to Boolean Algebra (Part 2)</a> — Neso Academy, tiếng Anh. Tiếp các luật và ví dụ, khớp phần chứng minh đẳng thức.
+- <a href="https://www.youtube.com/watch?v=imPCCJDyCAs">Toán rời rạc 30. Giới thiệu về đại số Boole</a> — TITV, tiếng Việt. Giới thiệu đại số Boole bằng tiếng Việt.

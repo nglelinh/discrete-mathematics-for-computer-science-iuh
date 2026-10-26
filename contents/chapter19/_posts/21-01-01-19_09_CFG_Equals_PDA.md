@@ -57,3 +57,9 @@ Sipser §2.2; Hopcroft §6.
 Hai construction · CFL = PDA.
 
 **Tiếp:** pumping CFL.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=FjGrU7vczyg">Equivalence of CFG and PDA (Part 1)</a> — Neso Academy, tiếng Anh. Xem trước một chiều tương đương CFG và PDA.
+- <a href="https://www.youtube.com/watch?v=kyvLetfjOhc">Equivalence of CFG and PDA (Part 2a)</a> — Neso Academy, tiếng Anh. Tiếp chứng minh, phần đổi từ văn phạm sang máy hoặc ngược lại.
+- <a href="https://www.youtube.com/watch?v=DjbukiTf-48">Equivalence of CFG and PDA (Part 2b)</a> — Neso Academy, tiếng Anh. Nốt phần còn lại của chứng minh tương đương.

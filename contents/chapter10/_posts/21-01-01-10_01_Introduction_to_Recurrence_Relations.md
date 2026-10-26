@@ -474,3 +474,9 @@ Sau 12 tháng: $$u_{12} = 1000 \cdot 2^{11} = 1000 \cdot 2048 = 2.048.000$$ ngư
 - **Truy hồi bậc nhất không thuần nhất**: nghiệm = nghiệm thuần nhất + nghiệm riêng
 
 Trong bài tiếp theo, chúng ta sẽ học phương pháp giải quan hệ truy hồi tuyến tính thuần nhất bậc cao bằng phương trình đặc trưng — một kỹ thuật mạnh mẽ để tìm công thức tường minh cho dãy Fibonacci và nhiều dãy số quan trọng khác.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=eAaP4XaB8hM">RECURRENCE RELATIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước quan hệ truy hồi: định nghĩa dãy bằng các số hạng trước.
+- <a href="https://www.youtube.com/watch?v=0OcUAjOXmFc">Recursive Sequences</a> — Dr. Trefor Bazett, tiếng Anh. Dãy truy hồi và điều kiện đầu, khớp mục giới thiệu.
+- <a href="https://www.youtube.com/watch?v=qmm9GPhA1MY">The Miraculous Fibonacci Sequence</a> — Dr. Trefor Bazett, tiếng Anh. Fibonacci, ví dụ truy hồi bài sẽ giải ở mục sau.

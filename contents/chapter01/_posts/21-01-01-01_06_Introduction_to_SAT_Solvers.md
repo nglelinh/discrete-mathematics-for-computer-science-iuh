@@ -459,3 +459,9 @@ Xét bàn cờ 3×3, cần đặt 3 quân xe (rook) sao cho không quân nào ă
     Đây là lý do SAT solver được gọi là "cỗ máy NP" — một SAT solver nhanh có thể giải hầu hết các bài toán NP-khó trong thực tế.
 
 </details>
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=uAdVzz1hKYY">Boolean Satisfiability Problem - Intro to Theoretical Computer Science</a> — Udacity, tiếng Anh. Xem trước SAT là bài toán quyết định trên công thức Boolean.
+- <a href="https://www.youtube.com/watch?v=2cgHa02s_SA">Conjunctive Normal Form (CNF) and Disjunctive Normal Form (DNF)</a> — TrevTutor, tiếng Anh. CNF là đầu vào chuẩn của solver, nối với dạng chuẩn ở mục trước.
+- <a href="https://www.youtube.com/watch?v=d76e4hV1iJY">A Peek Inside SAT Solvers - Jon Smock</a> — ClojureTV, tiếng Anh. Bên trong một SAT solver: tìm kiếm và suy diễn trên mệnh đề.

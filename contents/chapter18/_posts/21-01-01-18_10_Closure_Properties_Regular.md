@@ -62,3 +62,9 @@ Sipser; Hopcroft.
 Product · lật F · ε-ghép.
 
 **Tiếp:** Myhill–Nerode.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=6aRJQNYYz4s">Operations on Regular Languages</a> — Neso Academy, tiếng Anh. Xem trước hợp, nối và sao trên ngôn ngữ chính quy.
+- <a href="https://www.youtube.com/watch?v=WrzaPNj9OZ4">Regular Languages</a> — Neso Academy, tiếng Anh. Ngôn ngữ chính quy là gì trước khi chứng minh đóng.
+- <a href="https://www.youtube.com/watch?v=nX4JrcHgpZY">Equivalence of Two Finite Automata</a> — Neso Academy, tiếng Anh. Hai otomat cùng ngôn ngữ, dùng khi so sánh sau các phép đóng.

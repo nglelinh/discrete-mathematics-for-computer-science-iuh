@@ -70,3 +70,9 @@ Sipser; Hopcroft ε-removal.
 $$E(S)$$ · chấp nhận có ε · ghép máy.
 
 **Tiếp:** subset construction.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=84oNUttWlN4">Epsilon NFA</a> — Neso Academy, tiếng Anh. Xem trước chuyển ε và vì sao cần epsilon-closure.
+- <a href="https://www.youtube.com/watch?v=WSGcmaHNBFM">Conversion of Epsilon NFA to NFA</a> — Neso Academy, tiếng Anh. Bỏ ε để được NFA thường.
+- <a href="https://www.youtube.com/watch?v=I6GFKekMr7s">Conversion of Epsilon NFA to NFA - Examples (Part 1)</a> — Neso Academy, tiếng Anh. Ví dụ tính closure rồi vẽ lại chuyển.

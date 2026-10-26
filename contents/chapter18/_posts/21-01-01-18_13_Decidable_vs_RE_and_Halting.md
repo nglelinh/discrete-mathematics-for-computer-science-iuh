@@ -66,3 +66,9 @@ Sipser §4–5; Davis computability.
 Decidable ⊂ RE · halting impossible.
 
 **Tiếp:** lộ trình nghiên cứu automata.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=macM_MtS_w4">Turing &amp; The Halting Problem - Computerphile</a> — Computerphile, tiếng Anh. Xem trước bài toán dừng và vì sao không quyết định được.
+- <a href="https://www.youtube.com/watch?v=6XZvw9W9QSc">The Halting Problem</a> — Neso Academy, tiếng Anh. Phát biểu bài toán dừng trong khung decidable và undecidable.
+- <a href="https://www.youtube.com/watch?v=_eM0-KfAmhQ">Undecidability of the Halting Problem</a> — Neso Academy, tiếng Anh. Chứng minh không quyết định được bằng tự áp dụng.

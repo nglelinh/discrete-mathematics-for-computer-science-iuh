@@ -475,3 +475,9 @@ $$2^4=16$$ dòng bảng → **16 bit** cho mỗi LUT bốn ngõ (chưa kể đ�
 5. SAT phục vụ kiểm tra tương đương; FPGA/LUT hiện thực bảng chân trị có cấu hình.
 
 Đại số Boole vì vậy là sợi liên tục từ mô hình công tắc đến các khối trên chip.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=7ckEQ91E6F8">How George Boole and Claude Shannon Created Computer Circuits</a> — Hypatia Arduino Lab, tiếng Anh. Xem trước Boole và Shannon đưa đại số sang mạch chuyển mạch.
+- <a href="https://www.youtube.com/watch?v=aLUY-s7LSns">Half Adder</a> — Neso Academy, tiếng Anh. Half adder, một mạch tổ hợp bài dùng làm ví dụ.
+- <a href="https://www.youtube.com/watch?v=fxpa4le_bXQ">FPGA Introduction Part 1 | LUT Basics and FPGA Building Blocks</a> — My Embedded School , tiếng Anh. LUT trên FPGA, đúng phần hiện thực hàm Boole bằng bảng.

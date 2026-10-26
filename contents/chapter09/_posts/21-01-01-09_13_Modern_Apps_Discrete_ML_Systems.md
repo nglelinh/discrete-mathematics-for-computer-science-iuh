@@ -49,3 +49,9 @@ Chương 9 đã nối toán rời rạc với production. Ghi chú này chỉ th
 Đọc như **mục lục đáp**, không phải chương lý thuyết mới. Mỗi dòng trỏ về chương bạn đã có (4–8, 12–13, 1).
 
 **Câu hỏi.** (1) Case study nào ở Chương 9 dùng cùng mô hình đếm $$2^n$$ với SAT? (2) Vì sao lưới GraphCast là *đồ thị* theo nghĩa Chương 12 chứ không phải bộ giải PDE liên tục?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=0Ud4u7c0_EE">AI Weather Forecasting: What GraphCast Actually Proved (and Didn&#x27;t)</a> — Synaptorix, tiếng Anh. Xem trước GraphCast đã chứng minh gì khi dự báo trên đồ thị lưới.
+- <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Bộ lọc tập xấp xỉ, cùng họ với binary fuse filter bài trỏ tới.
+- <a href="https://www.youtube.com/watch?v=YUqR-8rZ_gQ">Lecture 10-3 CDCL (Lecture 5 in CS433)</a> — Automated Reasoning, tiếng Anh. CDCL trên CNF, cùng lớp solver với Kissat ở SAT Competition.

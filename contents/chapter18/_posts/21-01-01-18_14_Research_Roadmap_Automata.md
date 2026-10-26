@@ -54,3 +54,9 @@ Sipser; Hopcroft–Ullman; Kozen; Sakarovitch *Elements of Automata Theory* (nâ
 ## Tóm tắt Chương 18
 
 14 bài: từ DFA đến giới hạn tính toán — sẵn sàng đọc paper automata/verification và nối Ch.19–20.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=BBuBv3P2aSs">TOC – Conclusion and Summary</a> — Neso Academy, tiếng Anh. Xem trước bản đồ cuối khóa otomat, cùng lộ trình 18.1–18.13.
+- <a href="https://www.youtube.com/watch?v=58N2N7zJGrQ">Introduction to Theory of Computation</a> — Neso Academy, tiếng Anh. Điểm vào lý thuyết tính toán trước các nhánh nghiên cứu.
+- <a href="https://www.youtube.com/watch?v=macM_MtS_w4">Turing &amp; The Halting Problem - Computerphile</a> — Computerphile, tiếng Anh. Biên decidable, nơi các câu hỏi mở của chương bắt đầu.

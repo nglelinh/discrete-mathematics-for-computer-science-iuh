@@ -492,3 +492,9 @@ Chứng minh là ngôn ngữ của toán học và cũng là tiêu chuẩn của
 - **Hoare logic:** kiểm chứng chương trình bằng tiền điều kiện và hậu điều kiện.
 
 Bất biến (invariant) là sợi chỉ đỏ xuyên suốt: từ chứng minh quy nạp, bất biến vòng lặp, đến kiểm chứng hình thức.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=HIkIqt_ytdc">Discrete Math Proofs in 22 Minutes (5 Types, 9 Examples)</a> — TrevTutor, tiếng Anh. Xem trước năm kiểu chứng minh rời rạc trong một lượt ôn.
+- <a href="https://www.youtube.com/watch?v=7_kiWYYLngQ">Loop Invariants - Principles of Imperative Computation (Carnegie Mellon University)</a> — Andy Guna, tiếng Anh. Bất biến vòng lặp, đúng phần chứng minh chương trình của bài.
+- <a href="https://www.youtube.com/watch?v=IZ7fyyAsOZc">What is a Loop Invariant?</a> — Juan Puebla, tiếng Anh. Loop invariant là phát biểu đúng trước và sau mỗi vòng.

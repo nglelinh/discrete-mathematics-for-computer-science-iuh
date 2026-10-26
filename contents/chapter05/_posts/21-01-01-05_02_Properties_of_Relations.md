@@ -273,3 +273,9 @@ Xác định phản xạ, đối xứng, phản đối xứng. Có chắc bắc 
 - Bốn tính chất này là nền tảng để xây dựng **quan hệ tương đương** (phản xạ + đối xứng + bắc cầu) và **quan hệ thứ tự** (phản xạ + phản đối xứng + bắc cầu)
 
 Trong bài tiếp theo, chúng ta sẽ khám phá chi tiết hai lớp quan hệ đặc biệt này và ứng dụng của chúng.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=q0xN_N7l_Kw">Reflexive, Symmetric, and Transitive Relations on a Set</a> — Dr. Trefor Bazett, tiếng Anh. Xem trước phản xạ, đối xứng và bắc cầu trên một tập.
+- <a href="https://www.youtube.com/watch?v=TctNssYMXJE">You need to check EVERY spot for reflexivity, symmetry, and transitivity</a> — Dr. Trefor Bazett, tiếng Anh. Phải kiểm mọi cặp, không chỉ vài ví dụ thuận tiện.
+- <a href="https://www.youtube.com/watch?v=qujnPIPjKrA">[Discrete Mathematics] Relations Examples</a> — TrevTutor, tiếng Anh. Bài tập nhận dạng tính chất trên quan hệ cho sẵn.

@@ -164,3 +164,9 @@ Rừng: $$|E| = |V| - c$$ với $$c$$ = số thành phần. $$9 = 12 - c \implie
 4. Ứng dụng: FS, DOM, AST — path duy nhất từ gốc.
 
 Trong bài tiếp theo: **duyệt cây** — preorder, inorder, postorder và level-order.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=zEQZpTizgLo">[Discrete Mathematics] Trees</a> — TrevTutor, tiếng Anh. Xem trước cây trong toán rời rạc: liên thông và không chu trình.
+- <a href="https://www.youtube.com/watch?v=tVuEZakQxhQ">Intro to Tree Graphs | Trees in Graph Theory, Equivalent Definitions</a> — Wrath of Math, tiếng Anh. Các định nghĩa tương đương của cây.
+- <a href="https://www.youtube.com/watch?v=1XC3p2zBK34">Introduction to tree algorithms | Graph Theory</a> — WilliamFiset, tiếng Anh. Cây như đồ thị đặc biệt, nối sang thuật toán trên cây.

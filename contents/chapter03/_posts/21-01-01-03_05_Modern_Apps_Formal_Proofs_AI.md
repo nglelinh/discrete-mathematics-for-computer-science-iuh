@@ -47,3 +47,9 @@ Các mục bắt buộc coi chứng minh là chuỗi hữu hạn bước đượ
 Điểm toán rời rạc không đổi: “chứng minh” mà kernel không kiểm được vẫn chỉ là phác thảo. AI đề xuất ứng viên; các phương pháp của chương này quyết định ứng viên có phải chứng minh hay không.
 
 **Câu hỏi.** (1) Tactic `by contradiction` trong Lean mã hóa phương pháp nào? (2) Vì sao bước formalize đề IMO nằm *ngoài* bảo đảm của kernel?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=4NlrfOl0l8U">The AI that solved IMO Geometry Problems | Guest video by @Aleph0</a> — 3Blue1Brown, tiếng Anh. Xem trước AlphaGeometry: suy diễn hình học có kiểm chứng, đúng hệ bài nhắc.
+- <a href="https://www.youtube.com/watch?v=prYaTrZUces">Automated Mathematical Proofs - Computerphile</a> — Computerphile, tiếng Anh. Chứng minh kiểm tra bằng máy, cùng ý chứng minh là dãy bước hợp lệ.
+- <a href="https://www.youtube.com/watch?v=POHVMMG7pqE">10 minute Lean tutorial : proving logical propositions</a> — Xena Project, tiếng Anh. Lean kiểm từng bước logic, minh họa proof assistant.

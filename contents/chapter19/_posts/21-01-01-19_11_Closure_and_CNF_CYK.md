@@ -74,3 +74,9 @@ Sipser §2.3; Hopcroft CYK; Grune parsing.
 Đóng/không đóng · CNF · CYK ∈ P.
 
 **Tiếp:** compiler.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=Mh-UQVmAxnw">Chomsky Normal Form &amp; CFG to CNF Conversion</a> — Neso Academy, tiếng Anh. Xem trước chuẩn Chomsky, dạng luật CYK cần.
+- <a href="https://www.youtube.com/watch?v=N8d4kkfxM-s">The CYK Algorithm: How does it work? Dynamic Programming!</a> — Easy Theory, tiếng Anh. Thuật toán CYK quyết định xâu có thuộc CFG hay không.
+- <a href="https://www.youtube.com/watch?v=P_F0-kY_kKQ">Closure Properties of Context-Free Languages</a> — Easy Theory, tiếng Anh. Tính đóng của ngôn ngữ phi ngữ cảnh, nửa kia của bài.

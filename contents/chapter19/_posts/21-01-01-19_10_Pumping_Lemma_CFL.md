@@ -66,3 +66,9 @@ Sipser §2.3.
 Pump CFL · $$a^nb^nc^n$$.
 
 **Tiếp:** đóng CFL.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=jRhqx1_KcCk">Pumping Lemma (For Context Free Languages)</a> — Neso Academy, tiếng Anh. Xem trước bổ đề bơm cho ngôn ngữ phi ngữ cảnh.
+- <a href="https://www.youtube.com/watch?v=eQ0XkUk3qGk">Pumping Lemma (For Context Free Languages) - Examples (Part 1)</a> — Neso Academy, tiếng Anh. Ví dụ chứng minh một ngôn ngữ không phải CFL.
+- <a href="https://www.youtube.com/watch?v=DPs8sBcIjs8">Pumping Lemma (For Context Free Languages) - Examples (Part 2)</a> — Neso Academy, tiếng Anh. Thêm ví dụ bơm, luyện chọn chuỗi và phân đoạn.

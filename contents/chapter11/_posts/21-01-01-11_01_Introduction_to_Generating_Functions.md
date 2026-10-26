@@ -211,3 +211,9 @@ $$\sum_{n \ge 0} \binom{n+2}{2} x^n = \frac{1}{(1-x)^3}$$ — hàm sinh của h�
 - Trong CS: đếm cấu hình, phân tích thuật toán, mô hình trạng thái động.
 
 Trong bài tiếp theo, chúng ta dùng hàm sinh để **giải quan hệ truy hồi** bằng phương pháp bốn bước.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=-drdeNMoe8w">GENERATING FUNCTIONS - Discrete Mathematics</a> — TrevTutor, tiếng Anh. Xem trước hàm sinh thường: dãy số thành chuỗi lũy thừa hình thức.
+- <a href="https://www.youtube.com/watch?v=YB7qnuo-GRY">A brief introduction to generating functions</a> — YY Ahn, tiếng Anh. Giới thiệu ngắn trước các phép nhân chuỗi.
+- <a href="https://www.youtube.com/watch?v=bOXCLR3Wric">Olympiad level counting  (Generating functions)</a> — 3Blue1Brown, tiếng Anh. Đếm bằng hệ số của hàm sinh, đúng mục đích bài.

@@ -277,3 +277,9 @@ Weight enumerator polynomial mô tả phân bố trọng số của mã, giúp �
 ## Tóm tắt
 
 Hàm sinh là công cụ mạnh mẽ để giải bài đếm và recurrence. Từ tổ hợp, phân hoạch, đến lý thuyết mã và xác suất — hàm sinh biến bài toán phức tạp thành bài toán đại số. Hiểu cách xây dựng và khai thác hàm sinh giúp chúng ta giải quyết nhiều bài toán tổ hợp một cách thanh lịch và có hệ thống.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=mZ9gmFtxBNg">Solve Counting Problems with Generating Functions (8.4.5)</a> — SawFin Mathematics, tiếng Anh. Xem trước đếm tổ hợp bằng hệ số hàm sinh.
+- <a href="https://www.youtube.com/watch?v=X8jsijhllIA">But what are Hamming codes? The origin of error correction</a> — 3Blue1Brown, tiếng Anh. Mã Hamming và khoảng cách, đúng phần weight enumerator của bài.
+- <a href="https://www.youtube.com/watch?v=bOXCLR3Wric">Olympiad level counting  (Generating functions)</a> — 3Blue1Brown, tiếng Anh. Nhìn hệ số như số cách, trước phần mã hóa cấu trúc.

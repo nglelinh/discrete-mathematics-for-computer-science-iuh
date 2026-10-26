@@ -226,3 +226,9 @@ Thực hiện $$W = W \lor (W[:,k] \land W[k,:])$$ với mỗi k.
 - **Warshall**: thuật toán cổ điển tính bao đóng bắc cầu (reachability) trên tập hữu hạn
 
 Trong bài tiếp theo, chúng ta sẽ luyện tập tổng hợp các khái niệm về quan hệ.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=_-p8zhizock">Warshall&#x27;s Algorithm (Finding the Transitive Closure)</a> — Neso Academy, tiếng Anh. Xem trước bao đóng bắc cầu bằng thuật toán Warshall.
+- <a href="https://www.youtube.com/watch?v=hKCqske0rAE">Warshalls Algorithm</a> — GVSUmath, tiếng Anh. Lần lại Warshall trên ma trận quan hệ.
+- <a href="https://www.youtube.com/watch?v=cQiyDUiIcOQ">Relations and their Inverses</a> — Dr. Trefor Bazett, tiếng Anh. Quan hệ ngược, một phép toán trên quan hệ của bài.

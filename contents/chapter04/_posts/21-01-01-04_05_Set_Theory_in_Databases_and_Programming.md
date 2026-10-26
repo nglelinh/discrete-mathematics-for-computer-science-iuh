@@ -259,3 +259,9 @@ Cả ba đều hỏi: giá trị có **thuộc** tập cho phép không? Khác t
 - **Union type** là hợp tập giá trị hợp lệ — type checker là membership tĩnh.
 
 Chương 4 kết tại đây. **Chương 5: Quan hệ** sẽ phát triển tích Descartes (mục 4.4) thành công cụ mô hình hóa liên kết giữa đối tượng — từ CSDL đến đồ thị và hệ thống phân quyền.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=76v3gRns28U">Basics of Relational Algebra</a> — Neso Academy, tiếng Anh. Xem trước bảng như tập các bộ và phép đại số quan hệ.
+- <a href="https://www.youtube.com/watch?v=4TlCToZZ5gA">SET OPERATIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Hợp, giao, hiệu là các phép SQL và kiểu set trong code.
+- <a href="https://www.youtube.com/watch?v=cORV6VX2Jnw">Theory Behind SQL Databases: Relational Algebra</a> — Jacob Schrum, tiếng Anh. Vì sao truy vấn quan hệ là phép toán trên tập.

@@ -92,3 +92,9 @@ Sipser §1.1; Hopcroft–Ullman; Kozen *Automata*.
 DFA · $$\hat\delta$$ · $$L(M)$$ · duy nhất đường chạy.
 
 **Tiếp:** 18.2 thiết kế DFA + chứng minh đúng.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=Qa6csfkK7_I">Finite State Machine (Finite Automata)</a> — Neso Academy, tiếng Anh. Xem trước otomat hữu hạn đơn định và cách đọc trạng thái.
+- <a href="https://www.youtube.com/watch?v=58N2N7zJGrQ">Introduction to Theory of Computation</a> — Neso Academy, tiếng Anh. Vị trí DFA trong lý thuyết tính toán, mở đầu chương.
+- <a href="https://www.youtube.com/watch?v=40i4PKpM0cI">Deterministic Finite Automata (Example 1)</a> — Neso Academy, tiếng Anh. Một DFA chấp nhận một ngôn ngữ cụ thể, đúng định nghĩa chấp nhận.

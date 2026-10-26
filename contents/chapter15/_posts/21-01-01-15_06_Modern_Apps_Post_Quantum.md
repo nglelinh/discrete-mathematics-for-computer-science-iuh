@@ -54,3 +54,9 @@ FIPS 203 quy định ML-KEM-512/768/1024. An toàn gắn với **Module Learning
 Điểm tùy chọn: số học modulo và hash không biến mất — chúng chuyển *vào* vành đa thức và SHAKE. Giả thiết cứng mới là đối tượng lý thuyết số khác. Đọc RSA trước, rồi ảnh chụp chuẩn 2024 này.
 
 **Câu hỏi.** (1) KEM *thay* primitive Chương 15 nào trong handshake kiểu TLS? (2) Vì sao “đã ship Kyber Round 3” không đồng nghĩa “tuân FIPS 203”?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=crPe69NeTdk">NIST&#x27;s Post-Quantum Cryptography Standardization Explained</a> — SandboxAQ, tiếng Anh. Xem trước chuẩn hóa mật mã hậu lượng tử của NIST.
+- <a href="https://www.youtube.com/watch?v=_MoRcYLN-7U">Post Quantum Cryptography - Computerphile</a> — Computerphile, tiếng Anh. Vì sao lượng tử đổi bài toán phân tích số và log rời rạc.
+- <a href="https://www.youtube.com/watch?v=3e-2Q0rFmd0">NIST&#x27;s Post-Quantum Cryptography Standardized: Lattice, Code, &amp; Isogeny Algorithms Explained</a> — ieeereview, tiếng Anh. Lattice, mã và isogeny trong các chuẩn NIST bài nhắc.

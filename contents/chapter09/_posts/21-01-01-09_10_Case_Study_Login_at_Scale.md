@@ -409,3 +409,9 @@ Sáng Thứ Hai của TaskFlow không phải một bug — là **năm** bài đ�
 Case study không thêm công thức lạ; nó chứng minh các mảnh Chương 9 **cộng lại** ở một entry point thực tế. Minh tắt laptop với design doc đếm được: pool theo $$\lambda \times W$$, test theo cặp tham số, ID theo $$\sqrt{d}$$, byte theo charset, metric theo $$|V|$$ label. Một triệu DAU không phải một triệu bài toán — là vài phép nhân bị bỏ qua vì trông quá đơn giản.
 
 Sau đó, **Chương 10: Quan hệ truy hồi** sẽ dạy cách mô hình hóa tăng trưởng theo thời gian — dự báo không chỉ snapshot 7:45 sáng, mà cả quý sau khi DAU đôi lên.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=fYjiS2ogcoE">Little&#x27;s Law Explained | L = λ × W | Queueing Theory &amp; System Design</a> — Industry Ready Coder, tiếng Anh. Xem trước Little's Law cho sự cố connection pool trong case login.
+- <a href="https://www.youtube.com/watch?v=MijmeoH9LT4">Characters, Symbols and the Unicode Miracle - Computerphile</a> — Computerphile, tiếng Anh. Unicode và encoding, đúng sự cố chữ và OAuth của case.
+- <a href="https://www.youtube.com/watch?v=lKTsv6iVxV4">Binary: Plusses &amp; Minuses (Why We Use Two&#x27;s Complement) - Computerphile</a> — Computerphile, tiếng Anh. Bù hai và tràn số nguyên, đúng sự cố bộ đếm 32-bit.

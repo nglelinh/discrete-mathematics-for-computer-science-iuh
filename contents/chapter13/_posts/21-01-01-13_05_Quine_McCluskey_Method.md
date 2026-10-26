@@ -481,3 +481,9 @@ Xem thêm **mục 5b** để đối chiếu từng bảng và phần kiểm ch�
 3. **Phần 2** (dạng tổng chuẩn tắc tối thiểu): **bảng phủ**, chọn **nguyên tố cốt yếu**, rồi phủ nốt phần còn lại.  
 4. **Don't-care** chỉ tham gia phần 1; phần 2 không bắt buộc phủ chúng.  
 5. K-map và Quine–McCluskey cùng khung “dán rồi phủ”, khác về hình thức trình bày và quy mô áp dụng.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=8YbbV42UX7Q">#006 TOÁN RỜI RẠC Tối thiểu hóa biểu thức logic mệnh đề  bằng Thuật toán Quine_McCluskey</a> — Đỗ Văn Đức - ĐH GTVT, tiếng Việt. Xem trước Quine–McCluskey bằng tiếng Việt trên biểu thức logic.
+- <a href="https://www.youtube.com/watch?v=l1jgq0R5EwQ">Quine-McCluskey Minimization Technique (Tabular Method)</a> — Neso Academy, tiếng Anh. Phương pháp bảng: dán minterm rồi chọn phủ.
+- <a href="https://www.youtube.com/watch?v=wmM7Y5qQqu4">Quine-McCluskey Method: Boolean Function Minimization Explained!</a> — CodeLucky, tiếng Anh. Một lượt tối thiểu hóa ngắn để đối chiếu các bước.

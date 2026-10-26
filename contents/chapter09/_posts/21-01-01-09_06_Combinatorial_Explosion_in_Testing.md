@@ -194,3 +194,9 @@ Combinatorial explosion trong kiểm thử là hệ quả của **quy tắc nhâ
 Pairwise không thay exhaustive khi compliance bắt buộc; bug cần **ba** tham số cùng lúc cần 3-wise hoặc test nhắm combo cụ thể. Đó là trade-off có chủ đích — đếm được, giải thích được cho PM, và bổ sung được khi production chỉ ra cặp hoặc bộ còn thiếu.
 
 Bài sau: **Birthday paradox trong production** — [tomarcher.io](https://tomarcher.io/posts/birthday-paradox/) và khi nào UUID, ID 32-bit hay 64-bit **va chạm** lúc 2 giờ sáng, dù “không gian” ID trông vô cùng lớn.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=jlOcUOK3gNQ">The Power of Pairwise Testing: Maximize Coverage, Minimize Effort!</a> — Testing.Business, tiếng Anh. Xem trước pairwise: phủ mọi cặp thay vì mọi bộ cấu hình.
+- <a href="https://www.youtube.com/watch?v=Kn8J4bRhghc">Using Pairwise Testing to Improve Your Test Coverage</a> — Construx Software, tiếng Anh. Cách pairwise tăng phủ mà không nhân hết tổ hợp.
+- <a href="https://www.youtube.com/watch?v=8JiWWvEoaoc">RULE of SUM and RULE of PRODUCT - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Quy tắc nhân giải thích vì sao 324 cấu hình xuất hiện.

@@ -875,3 +875,9 @@ highest = reduce(lambda a, b: a if a >= b else b, scores)
 - **ML**: `model.predict` là hàm $$f_\theta$$; training là tìm $$\theta$$ qua loss và optimizer.
 - **Hash & API**: SHA-256 và REST endpoint đều cần đặc tả tính chất hàm (xác định, toàn ánh, preconditions) rõ ràng.
 - **Tính chất toán**: đơn ánh, toàn ánh, song ánh và hàm nghịch đảo (xem bài 06_02, 06_03) giúp thiết kế khóa, undo, và giải mã chính xác.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=dNRDvLACg5Q">Turing Machines Explained - Computerphile</a> — Computerphile, tiếng Anh. Xem trước hàm tính được trên máy Turing, đúng phần lịch sử bài.
+- <a href="https://www.youtube.com/watch?v=OixshZzH8t0">FUNCTIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Hợp đồng đầu vào–đầu ra, cùng ý map và hàm trong chương trình.
+- <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Hàm băm và va chạm, đúng phần hàm băm mật mã của bài.

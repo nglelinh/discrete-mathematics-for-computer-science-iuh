@@ -41,3 +41,9 @@ Một trạng thái là $$s = [x, z_{1\cdots i}]$$ (input cộng các thought đ
 Liên hệ tùy chọn: ToT không định nghĩa cây mới. Nó là *tìm kiếm trên cây* (các phép duyệt bạn đã viết) cộng bộ đánh giá heuristic. Huffman và BST vẫn về mã hóa và khóa có thứ tự; ToT là duyệt cây trạng thái khi hệ số nhánh là ngôn ngữ chứ không phải số.
 
 **Câu hỏi.** (1) Vẽ cây trạng thái ToT cho một instance Game of 24, nhánh 3, sâu 2. (2) Phép duyệt nào khớp “mở mọi thought ở độ sâu này, giữ top $$b$$”?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=MXBxNUnC7iY">Tree of Thoughts: Deliberate Problem Solving with Large Language Models | Paper Summary</a> — Lucas Soares | Automata Learning Lab, tiếng Anh. Xem trước Tree of Thoughts: cây các lời giải dở và cách duyệt.
+- <a href="https://www.youtube.com/watch?v=ut5kp56wW_4">Tree of Thoughts: Deliberate Problem Solving with Large Language Models (Full Paper Review)</a> — Yannic Kilcher, tiếng Anh. Đọc bài báo: tìm kiếm có chủ đích trên cây suy nghĩ.
+- <a href="https://www.youtube.com/watch?v=z_OwSnFY_5s">[Discrete Mathematics] Tree Directories and Traversals</a> — TrevTutor, tiếng Anh. Duyệt cây cổ điển, cùng BFS/DFS mà phương pháp này dùng.

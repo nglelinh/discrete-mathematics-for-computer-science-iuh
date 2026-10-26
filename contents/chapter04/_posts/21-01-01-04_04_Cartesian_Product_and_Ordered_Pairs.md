@@ -219,3 +219,9 @@ $$S = \{1,2,3\}$$, $$T = \{a,b\}$$. Cho $$R = \{(1,a), (2,b), (3,a)\}$$. (a) Ch�
 - `CROSS JOIN` = tích đầy đủ; `JOIN ... ON` = tích có lọc — nhầm hai phép dễ gây truy vấn chậm hoặc kết quả sai.
 
 Trong bài tiếp theo, chúng ta quay lại **ứng dụng** tập hợp trong CSDL, lập trình và cấu trúc dữ liệu — nơi hợp, giao, hiệu và membership xuất hiện mỗi ngày trong production.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=NnEkVooAsxk">CARTESIAN PRODUCTS and ORDERED PAIRS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước cặp có thứ tự và tích Descartes.
+- <a href="https://www.youtube.com/watch?v=ufjEv-5nmcA">Cartesian Product of Two Sets A x B</a> — Dr. Trefor Bazett, tiếng Anh. Đọc A×B trên ví dụ nhỏ trước khi sang quan hệ.
+- <a href="https://www.youtube.com/watch?v=j5fnaXLOkFk">How to do a PROOF with CARTESIAN PRODUCTS - Discrete Mathematics</a> — TrevTutor, tiếng Anh. Chứng minh đẳng thức có tích Descartes.

@@ -299,3 +299,9 @@ $$n = 4$$: chia hết cho 4 nhưng không chia hết cho 8.
 - Áp dụng trong CS: chứng minh tính đúng đắn hàm, điều kiện phân quyền, bất biến vòng lặp.
 
 Trong bài tiếp theo, chúng ta sẽ học **chứng minh phản chứng** — khi đường đi trực tiếp khó, ta giả sử phủ định và tìm mâu thuẫn.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=YFZzLQN5qOU">DIRECT PROOFS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước cấu trúc chứng minh trực tiếp: giả thiết rồi suy ra kết luận.
+- <a href="https://www.youtube.com/watch?v=L74bnJWdHDo">How to Prove Math Theorems | 1st Ex: Even + Odd = Odd</a> — Dr. Trefor Bazett, tiếng Anh. Ví dụ chẵn cộng lẻ, cùng kiểu bài số nguyên của mục này.
+- <a href="https://www.youtube.com/watch?v=oqTg3D_jZWo">Step-By-Step Guide to Proofs | Ex: product of two evens is even</a> — Dr. Trefor Bazett, tiếng Anh. Từng bước viết chứng minh tích hai số chẵn là chẵn.

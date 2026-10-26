@@ -57,3 +57,9 @@ Sipser §2; Hopcroft §5.
 Production · derivation · $$L(G)$$.
 
 **Tiếp:** Chomsky hierarchy.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=224plb3bCog">Chomsky Hierarchy - Computerphile</a> — Computerphile, tiếng Anh. Xem trước văn phạm loại 0 trên phân cấp Chomsky.
+- <a href="https://www.youtube.com/watch?v=ejXgLRSIxsA">Derivations from a Grammar</a> — Neso Academy, tiếng Anh. Dẫn xuất từ một văn phạm, thao tác cơ bản của bài.
+- <a href="https://www.youtube.com/watch?v=5_tfVe7ED3g">Context Free Grammar &amp; Context Free Language</a> — Neso Academy, tiếng Anh. CFG là hạn chế của văn phạm tổng quát, để đối chiếu.

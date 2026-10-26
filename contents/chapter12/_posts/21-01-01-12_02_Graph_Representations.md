@@ -265,3 +265,9 @@ Trả về tham chiếu danh sách: $$O(1)$$. Duyệt in các láng giềng: $$O
 4. Trên digraph và đồ thị có trọng số, cùng hai khuôn mẫu được mở rộng bằng hướng cạnh và cặp $$(j,w)$$.
 
 Trong bài tiếp theo, với biểu diễn đã chọn, ta định nghĩa **đường đi**, **chu trình** và **liên thông** — các khái niệm trả lời câu hỏi “đi từ đâu đến đâu được không?”.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=5hPfm_uqXmw">6.1 Graph Representation in Data Structure(Graph Theory)|Adjacency Matrix and Adjacency List</a> — Jenny&#x27;s Lectures CS IT, tiếng Anh. Xem trước ma trận kề và danh sách kề.
+- <a href="https://www.youtube.com/watch?v=7AhHGp7EzZ8">Graph Representation with an Adjacency Matrix | Graph Theory, Adjaceny Matrices</a> — Wrath of Math, tiếng Anh. Cách điền ma trận kề từ một đồ thị vẽ sẵn.
+- <a href="https://www.youtube.com/watch?v=ze-poffnS1E">Adjacency Matrix versus Adjacency List</a> — Professor Kevin Wortman, tiếng Anh. Khi nào dùng ma trận, khi nào dùng danh sách.

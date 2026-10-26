@@ -308,3 +308,9 @@ Vậy kết quả: $$\lvert A \cap B \rvert = 77 \times 76^{n-1} - \big(10 \time
 - **Ứng dụng CS** gồm truy vấn dữ liệu, kiểm tra mật khẩu, sàng số, xác suất lỗi và phân tích cấu hình bị cấm.
 
 Trong bài tiếp theo, chúng ta sẽ học về hệ số nhị thức và các đồng nhất thức tổ hợp.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=GS7dIWA6Hpo">INCLUSION-EXCLUSION PRINCIPLE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước công thức bao hàm–loại trừ.
+- <a href="https://www.youtube.com/watch?v=U_kOuvs6zcw">Counting formula for two intersecting sets: N(A union B)=N(A)+N(B)-N(A intersect B)</a> — Dr. Trefor Bazett, tiếng Anh. Trường hợp hai tập, nền của nguyên lý bù trừ.
+- <a href="https://www.youtube.com/watch?v=Y0CYHMqomgI">[Discrete Mathematics] Inclusion Exclusion Problems</a> — TrevTutor, tiếng Anh. Bài toán nhiều tập, luyện phần ứng dụng.

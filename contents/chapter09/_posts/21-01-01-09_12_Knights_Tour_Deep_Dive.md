@@ -293,3 +293,8 @@ Brute force backtrack gặp **combinatorial explosion** — cây tìm kiếm c�
 Bàn $$8 \times 8$$ có **hơn 26 nghìn tỷ** closed tour có hướng, nhưng chỉ cần **một** tour cho ứng dụng; đếm toàn bộ là bài toán riêng. Bàn $$4 \times 4$$ không có closed tour; $$3 \times 3$$ không có tour nào đủ 9 ô.
 
 Knight's tour nối chương 9 (explosion, backtracking thực chiến) với đồ thị Hamilton (tiết 37 / chương 12): cùng kỹ thuật **mô hình hóa + tìm kiếm có cấu trúc**, khác ở domain cờ vua và heuristic Warnsdorf.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=WN_5ZOFDFqU">Backtracking Explained - Knights Tour</a> — Satheeshkumar Kanakasabapathy, tiếng Anh. Xem trước mã đi tuần của mã bằng quay lui.
+- <a href="https://www.youtube.com/watch?v=t_6VByupc1U">[Discrete Mathematics] Hamilton Cycles</a> — TrevTutor, tiếng Anh. Chu trình Hamilton: bàn cờ mã là đồ thị, tour là đường qua mọi đỉnh.

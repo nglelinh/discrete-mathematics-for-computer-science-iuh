@@ -268,3 +268,9 @@ Birthday paradox trong production là câu chuyện **đếm cặp**, không ph�
 Incident lúc 2 giờ sáng của Huy minh họa điểm then chốt: 45.000 session 32-bit đã vượt ngưỡng 1-in-million; DuplicateKeyException là hệ quả có thể ước lượng, không phải “xui”. Tom Archer blog và vài dòng Python đủ để trả lời PM trước khi bật feature flag. Cùng toán cho hash bucket (ch08): pigeonhole khi $$n > d$$; birthday khi $$n \ll d$$ nhưng vẫn đủ cặp để rủi ro đáng kể.
 
 Trong bài tiếp theo, chúng ta đặt câu hỏi **khác**: không phải “có ≥1 collision không?” mà “**trung bình bao nhiêu lần** match?” — công thức kỳ vọng của [Matt Might](https://matt.might.net/articles/counting-hash-collisions/) cho biết khi người thứ $$k$$ bước vào phòng, họ trùng sinh nhật với ai đã có bao nhiêu lần — con số staffing nurse review, không chỉ xác suất 0 hay 1.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=KtT_cgMzHx8">Check your intuition: The birthday problem - David Knuffke</a> — TED-Ed, tiếng Anh. Xem trước bài toán sinh nhật, trực giác va chạm sớm hơn mong đợi.
+- <a href="https://www.youtube.com/watch?v=ofTb57aZHZs">The Birthday Paradox</a> — Vsauce2, tiếng Anh. Cùng nghịch lý trên ví dụ đếm, trước khi áp vào session id.
+- <a href="https://www.youtube.com/watch?v=OUQVhnuTMVU">Closer Look at the Birthday Paradox - Numberphile</a> — Numberphile, tiếng Anh. Công thức xấp xỉ, dùng khi ước lượng ID ngẫu nhiên.

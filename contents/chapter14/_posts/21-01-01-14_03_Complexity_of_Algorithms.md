@@ -130,3 +130,9 @@ Nhanh và ổn định worst-case; đổi lấy $$S(n)=\Theta(n)$$ — quan tr�
 3. Không gian phụ cũng là ràng buộc thiết kế.
 
 Bài khảo sát: thuật toán từ lịch sử đến quy mô lớn.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=A03oI0znAoc">1.8.1 Asymptotic Notations Big Oh - Omega - Theta #1</a> — Abdul Bari, tiếng Anh. Xem trước các ký hiệu tiệm cận dùng khi phân tích thuật toán.
+- <a href="https://www.youtube.com/watch?v=NI4OKSvGAgM">1.9 Properties of Asymptotic Notations</a> — Abdul Bari, tiếng Anh. Tính chất của ký hiệu tiệm cận khi cộng và nhân bậc.
+- <a href="https://www.youtube.com/watch?v=OynWkEj0S-s">2.4.1 Masters Theorem in Algorithms for Dividing Function #1</a> — Abdul Bari, tiếng Anh. Định lý thợ cho thuật toán chia để trị.

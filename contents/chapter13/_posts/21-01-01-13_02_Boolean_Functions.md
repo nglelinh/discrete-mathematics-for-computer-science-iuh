@@ -350,3 +350,9 @@ Kết quả: các hàng $$f=1$$ là mọi chỗ $$x=0$$ cộng $$(1,0,1)$$ → c
 3. Maxterm “tắt” đúng một hàng; tích các maxterm nơi $$F = 0$$ cho **POS** (tích các tổng) chuẩn.
 4. Hai dạng tương đương và chuyển được qua phần bù chỉ số.
 5. SOP chuẩn được rút gọn thành **công thức đa thức tối tiểu** bằng đại số hoặc K-map; majority $$xy+xz+yz$$ là ví dụ điển hình.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=xnLBbOYYnHM">Sum of Products (Part 1) | SOP Form</a> — Neso Academy, tiếng Anh. Xem trước dạng tổng các tích, đúng SOP của bài.
+- <a href="https://www.youtube.com/watch?v=nXsiLPJfDZ4">Product of Sums (Part 1) | POS Form</a> — Neso Academy, tiếng Anh. Dạng tích các tổng, nửa POS và maxterm.
+- <a href="https://www.youtube.com/watch?v=d-amzrRVhfE">Minterms, Maxterms, and Canonical Boolean Expressions</a> — EngMicroLectures, tiếng Anh. Minterm, maxterm và dạng chính tắc từ bảng chân trị.

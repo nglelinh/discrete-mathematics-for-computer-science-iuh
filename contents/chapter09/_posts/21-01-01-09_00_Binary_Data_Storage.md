@@ -309,3 +309,9 @@ File trên disk còn có header (metadata) — thêm byte nữa; câu hỏi ch�
 - **Word**: số lớn cần nhiều byte liền kề; thứ tự byte là chủ đề endianness.
 
 Trong bài tiếp theo, chúng ta sẽ học cách **byte đó được hiểu thành chữ** — Unicode, encoding UTF-8, và vì sao Joel nói không có “văn bản thuần” trên máy tính.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=thrx3SBEpL8">Why Use Binary? - Computerphile</a> — Computerphile, tiếng Anh. Xem trước vì sao máy lưu bằng hai mức, đúng mở đầu bit và byte.
+- <a href="https://www.youtube.com/watch?v=ZL-LhaaMTTE">Understanding Binary, Hexadecimal, Decimal (Base-10), and more</a> — Corey Schafer, tiếng Anh. Đổi nhị phân, thập phân và hexadecimal, phần viết tắt bit của bài.
+- <a href="https://www.youtube.com/watch?v=a8eKbrcBYPM">Binary &amp; Hexadecimal Demystified</a> — NesHacker, tiếng Anh. Đọc byte dạng hex, khớp mục địa chỉ và dữ liệu thô.

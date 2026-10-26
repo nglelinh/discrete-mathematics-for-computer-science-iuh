@@ -231,3 +231,9 @@ $$M=9$$. Với $$n$$ nhỏ, RSA không an toàn.
 5. **Chữ ký**: khóa riêng ký, công khai xác minh.
 
 Trong bài tiếp theo: hash, PRNG, CRT tăng tốc RSA, ECC và hậu lượng tử.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=GSIDS_lvRv4">Public Key Cryptography - Computerphile</a> — Computerphile, tiếng Anh. Xem trước mật mã khóa công khai trước các thuật toán cụ thể.
+- <a href="https://www.youtube.com/watch?v=JD72Ry60eP4">Prime Numbers &amp; RSA Encryption Algorithm - Computerphile</a> — Computerphile, tiếng Anh. RSA từ số nguyên tố và mũ modulo, đúng trọng tâm bài.
+- <a href="https://www.youtube.com/watch?v=4zahvcJ9glg">The RSA Encryption Algorithm (1 of 2: Computing an Example)</a> — Eddie Woo, tiếng Anh. Một ví dụ RSA tính tay từng số.

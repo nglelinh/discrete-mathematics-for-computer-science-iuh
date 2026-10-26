@@ -62,3 +62,9 @@ Sipser; Hopcroft.
 Đại số ngôn ngữ · star lũy đẳng.
 
 **Tiếp:** grammar.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=6aRJQNYYz4s">Operations on Regular Languages</a> — Neso Academy, tiếng Anh. Xem trước hợp, nối và sao, các phép bài định nghĩa trên ngôn ngữ.
+- <a href="https://www.youtube.com/watch?v=7MBpk4gJRkk">[Discrete Mathematics] Formal Languages</a> — TrevTutor, tiếng Anh. Ngôn ngữ là tập xâu trước khi làm phép.
+- <a href="https://www.youtube.com/watch?v=s6clCKVoXig">[Discrete Mathematics] Formal Languages Examples</a> — TrevTutor, tiếng Anh. Ví dụ nhỏ để kiểm đẳng thức sau phép toán.

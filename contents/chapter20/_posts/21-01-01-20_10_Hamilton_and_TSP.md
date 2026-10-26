@@ -76,3 +76,9 @@ Garey–Johnson (Hamilton); Vazirani (metric TSP xấp xỉ — 20.11).
 HC NPC · TSP-DEC NPC · cầu Ch.12 ↔ complexity.
 
 **Tiếp:** 20.11 — xấp xỉ.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=1pmBjIZ20pE">What is the Traveling Salesman Problem?</a> — AlphaOpt, tiếng Anh. Xem trước TSP, dạng quyết định bài chứng minh NP-complete.
+- <a href="https://www.youtube.com/watch?v=4r78NtOnWWA">Hamiltonian Path is NP-Complete (Directed, Reduction from 3SAT)</a> — Easy Theory, tiếng Anh. Đường Hamilton NP-complete bằng rút gọn từ 3SAT.
+- <a href="https://www.youtube.com/watch?v=OHnX-R_SBpM">Hamiltonian Cycle is NP-Complete (Algorithms 24)</a> — Professor Bryce, tiếng Anh. Chu trình Hamilton là NP-complete, nửa kia của bài.

@@ -68,3 +68,9 @@ Sipser; Hopcroft; Aho et al. *Compilers*; Grune *Parsing Techniques*; Sakarovitc
 ## Tóm tắt Chương 19
 
 12 bài: từ chuỗi đến CFL/PDA/CYK và cửa ngõ nghiên cứu ngôn ngữ/biên dịch — nối Ch.18 (regular/TM) và Ch.20 (complexity của parsing ∈ P cho CNF, nhưng nhiều bài grammar hard).
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=bxpc9Pp5pZM">Parsing Explained - Computerphile</a> — Computerphile, tiếng Anh. Xem trước phân tích cú pháp: lexer và parser trên văn phạm.
+- <a href="https://www.youtube.com/watch?v=OIKL6wFjFOo">Introduction to Parsers</a> — Neso Academy, tiếng Anh. Parser trong thiết kế trình biên dịch, đúng bảng tầng của bài.
+- <a href="https://www.youtube.com/watch?v=upu_TeZImN0">Regular Expression</a> — Neso Academy, tiếng Anh. Biểu thức chính quy cho tầng từ vựng.

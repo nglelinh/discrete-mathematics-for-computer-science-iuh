@@ -44,3 +44,9 @@ Quy tắc nhân giải thích vì sao vét cạn chết. CNF $$n$$ biến có $$
 Pairwise testing (Chương 9) là mặt đối: *từ chối* đếm hết tích Descartes, chỉ phủ bộ đôi. Ghi chú này chỉ cập nhật bằng chứng 2023–2024: phép đếm vẫn quyết định tìm kiếm nào còn nghĩ được.
 
 **Câu hỏi.** (1) Viết $$|\text{phép gán}|$$ và $$|\text{chương trình độ dài } L|$$ bằng quy tắc nhân. (2) CDCL *tránh liệt kê* đại lượng nào?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=uAdVzz1hKYY">Boolean Satisfiability Problem - Intro to Theoretical Computer Science</a> — Udacity, tiếng Anh. Xem trước không gian 2^n phép gán của SAT, đúng quy tắc nhân trong bài.
+- <a href="https://www.youtube.com/watch?v=Gnx6EgpW6kY">AlphaDev | Daniel Mankowitz and Andrea Michi</a> — ICARL, tiếng Anh. AlphaDev, do nhóm tác giả trình bày, tìm chương trình sắp xếp trong không gian lệnh lớn.
+- <a href="https://www.youtube.com/watch?v=YUqR-8rZ_gQ">Lecture 10-3 CDCL (Lecture 5 in CS433)</a> — Automated Reasoning, tiếng Anh. CDCL cắt không gian tìm kiếm thay vì duyệt hết phép gán.

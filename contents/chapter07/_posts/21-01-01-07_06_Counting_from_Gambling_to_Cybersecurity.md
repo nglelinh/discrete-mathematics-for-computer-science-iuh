@@ -474,3 +474,9 @@ $36^6 = 2{,}176{,}782{,}336 \approx 2.2 \times 10^9$; $H \approx 6 \log_2 36 \ap
 - **Mật khẩu / PIN / mã OTP**: $a^n$; entropy $\approx n\log_2 a$; PIN $10^6$ yếu nếu không khóa; mã email $36^6 \approx 2.2 \times 10^9$.
 - **Session ID / CSRF**: không gian $2^b$; collision chắc chắn (Dirichlet) hoặc sớm (birthday ~$\sqrt{N}$); dùng CSPRNG đủ bit.
 - Tổ hợp và xác suất là công cụ đếm rủi ro — từ mật khẩu, token web, kiểm thử đến Big-O và hash collision.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=XMriWTvPXHI">The mathematical secrets of Pascal’s triangle - Wajdi Mohamed Ratemi</a> — TED-Ed, tiếng Anh. Xem trước tổ hợp từ tam giác Pascal, nguồn đếm mà bài kể từ thế kỷ XVII.
+- <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Va chạm băm và nghịch lý sinh nhật, đúng phần an ninh của bài.
+- <a href="https://www.youtube.com/watch?v=a2ey9a70yY0">23 and Football Birthdays - Numberphile</a> — Numberphile, tiếng Anh. Ví dụ sinh nhật ngắn, cùng mô hình đếm va chạm.

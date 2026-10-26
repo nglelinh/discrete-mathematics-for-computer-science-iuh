@@ -49,3 +49,9 @@ Cách đọc toán rời rạc: đối tượng lưu vẫn là biểu diễn c�
 Đọc sau các mục tập hợp bắt buộc. Đây là ảnh chụp 2022 của cách hệ thống production mã hóa tập khi RAM là tài nguyên hiếm.
 
 **Câu hỏi.** (1) Binary fuse filter là tập con của $$U$$ hay là *mã hóa mất mát* của một tập? (2) Phép toán tập nào vẫn rẻ sau khi chỉ còn filter?
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Xem trước tập xấp xỉ: Bloom filter trả lời thuộc về với sai một phía.
+- <a href="https://www.youtube.com/watch?v=kfFacplFY4Y">What Are Bloom Filters?</a> — Spanning Tree, tiếng Anh. Cách bit và hàm băm mã hóa một tập lớn trong bộ nhớ nhỏ.
+- <a href="https://www.youtube.com/watch?v=mPxslXpg8wA">Advanced Data Structures: Count-Min Sketches</a> — Niema Moshiri, tiếng Anh. Count-Min Sketch, cùng họ cấu trúc nén tập hoặc đa tập.

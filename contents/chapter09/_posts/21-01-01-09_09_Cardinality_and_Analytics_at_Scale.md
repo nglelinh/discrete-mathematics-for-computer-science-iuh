@@ -186,3 +186,9 @@ Cardinality là **|tập giá trị distinct|** trên một cột — đại lư
 Aggregate và raw không thay thế nhau: aggregate cho **trend** và chi phí storage; raw hoặc sampled log cho **root cause** khi signal nằm ở subset high-cardinality — như incident firewall rule Cloudflare mà Khoa gặp lại ở quy mô nhỏ hơn. Chọn primary key và materialized view = chọn **một** thứ tự đếm; không schema nào tối ưu mọi câu hỏi cùng lúc.
 
 Bài cuối chương: **case study tổng hợp TaskFlow** — một buổi sáng login sập, và cách pool sizing, pairwise test, birthday paradox, cardinality cùng đổ vào một cửa (`09_10`).
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=eV1haPUt0NU">Hyperloglog: Facebook&#x27;s algorithm to count distinct elements</a> — Gaurav Sen, tiếng Anh. Xem trước HyperLogLog đếm distinct mà không lưu từng khóa.
+- <a href="https://www.youtube.com/watch?v=tOsb-tFoPCg">Hyperloglog and Cardinality Estimation</a> — Arpit Bhayani, tiếng Anh. Ước lượng lực lượng trên luồng, đúng bài toán analytics.
+- <a href="https://www.youtube.com/watch?v=B_PexYrEcEw">HyperLogLog Hit Counter - Computerphile</a> — Computerphile, tiếng Anh. Bản ngắn HyperLogLog trước khi đọc case DNS.

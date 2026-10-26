@@ -162,3 +162,9 @@ $$!4 = 4!(1 - 1 + 1/2 - 1/6 + 1/24) = 24 \cdot 9/24 = 9$$.
 - **Tô màu / ràng buộc**: đếm cấu hình hợp lệ = tổng không gian trừ hợp các vi phạm.
 
 Trong bài tiếp theo, chúng ta tổng hợp **hàm sinh** trong phép đếm, xác suất và lý thuyết mã hóa.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=Y0CYHMqomgI">[Discrete Mathematics] Inclusion Exclusion Problems</a> — TrevTutor, tiếng Anh. Xem trước bài toán ứng dụng bù trừ.
+- <a href="https://www.youtube.com/watch?v=BOFWLhH0Igo">[Discrete Mathematics] Derangements</a> — TrevTutor, tiếng Anh. Sai vị trí, ứng dụng kinh điển của nguyên lý.
+- <a href="https://www.youtube.com/watch?v=D1T3xy_vtxU">[Discrete Mathematics] Inclusion-Exclusion: At Least &amp; Exactly</a> — TrevTutor, tiếng Anh. Chuyển giữa ít nhất và đúng, hay gặp trong bài tập.

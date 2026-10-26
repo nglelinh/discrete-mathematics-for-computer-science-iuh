@@ -425,3 +425,9 @@ $$
 - Ứng dụng thực tế: SQL queries, lọc dữ liệu, Bloom filter
 
 Trong bài tiếp theo, chúng ta sẽ tìm hiểu về lực lượng tập hợp, tập lũy thừa, nguyên lý bao hàm -- loại trừ và khái niệm về tập vô hạn đếm được / không đếm được.
+
+## Video tham khảo
+
+- **xem trước** <a href="https://www.youtube.com/watch?v=4TlCToZZ5gA">SET OPERATIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước hợp, giao, hiệu và phần bù.
+- <a href="https://www.youtube.com/watch?v=EF3m9bSbtdI">The union of two sets</a> — Dr. Trefor Bazett, tiếng Anh. Chứng minh bao hàm với phép hợp bằng phương pháp phần tử.
+- <a href="https://www.youtube.com/watch?v=zEvQTK17xzY">The Intersection of Two Sets</a> — Dr. Trefor Bazett, tiếng Anh. Phép giao và cách đọc trên sơ đồ.
