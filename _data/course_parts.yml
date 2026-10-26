@@ -1,0 +1,24 @@
+# Thứ tự các phần trên menu. Danh sách bài học không nằm ở đây:
+# sidebar lấy bài từ site.categories, sắp theo `order`.
+parts:
+  - title_vi: "Phần I: Logic và Chứng minh"
+    title_en: "Part I: Logic and Proofs"
+    chapters: [1, 2, 3]
+  - title_vi: "Phần II: Tập hợp và Quan hệ"
+    title_en: "Part II: Set Theory and Relations"
+    chapters: [4, 5, 6]
+  - title_vi: "Phần III: Đếm và Xác suất"
+    title_en: "Part III: Counting and Discrete Probability"
+    chapters: [7, 8, 9]
+  - title_vi: "Phần IV: Quan hệ Truy hồi"
+    title_en: "Part IV: Recurrence Relations"
+    chapters: [10, 11]
+  - title_vi: "Phần V: Chủ đề Nâng cao"
+    title_en: "Part V: Advanced Topics"
+    chapters: [13, 14, 15]
+  - title_vi: "Phần VI: Đồ thị và Cây"
+    title_en: "Part VI: Graphs and Trees"
+    chapters: [12, 16, 17]
+  - title_vi: "Phần VII: Lý thuyết Tính toán"
+    title_en: "Part VII: Theory of Computation"
+    chapters: [18, 19, 20]

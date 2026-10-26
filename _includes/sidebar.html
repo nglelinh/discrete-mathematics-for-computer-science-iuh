@@ -8,114 +8,86 @@
     <p>{% if page.lang %}{{ site.t[page.lang].description }}{% else %}{{ site.description }}{% endif %}</p>
   </div>
 
-  <nav class="sidebar-nav">
-    <a class="sidebar-nav-item{% if page.title == 'Home' %} active{% endif %}" href="{{ '/' | absolute_url }}">Trang chủ</a>
+  <nav class="sidebar-nav" aria-label="{{ site.t.vi.chapters }} / {{ site.t.en.chapters }}">
+    <a class="sidebar-nav-item{% if page.title == 'Home' %} active{% endif %}" href="{{ '/' | absolute_url }}">
+      <span class="sidebar-nav-label">{{ site.t.vi.home }}</span>
+      <span class="sidebar-nav-en">{{ site.t.en.home }}</span>
+    </a>
 
     {% comment %}
-      The code below dynamically generates a sidebar nav of pages with
-      `layout: page` in the front-matter. See readme for usage.
+      Chương lấy từ _data/course_parts.yml + _data/chapters.json.
+      Bài học sinh tự động từ site.categories[slug], sắp theo order.
+      Mỗi bài chỉ có một URL; tiêu đề bài là ngôn ngữ của bài.
+      Nhãn chương hiện cả title_vn và title_en.
     {% endcomment %}
 
-    <!-- Discrete Mathematics Chapters -->
     <div class="sidebar-section">
-      <h4 style="color: #268bd2; margin: 15px 0 10px 0; font-size: 0.9em;">Các chương</h4>
-      
-      <!-- Part I: Logic and Proofs -->
-      <div class="sidebar-subsection">
-        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần I: Logic và Chứng minh</h5>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter01' %} active{% endif %}" href="{{ '/contents/chapter01/' | absolute_url }}">
-          1. Logic mệnh đề
-        </a>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter02' %} active{% endif %}" href="{{ '/contents/chapter02/' | absolute_url }}">
-          2. Logic vị từ
-        </a>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter03' %} active{% endif %}" href="{{ '/contents/chapter03/' | absolute_url }}">
-          3. Phương pháp chứng minh
-        </a>
-      </div>
-      
-      <!-- Part II: Set Theory and Relations -->
-      <div class="sidebar-subsection">
-        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần II: Tập hợp và Quan hệ</h5>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter04' %} active{% endif %}" href="{{ '/contents/chapter04/' | absolute_url }}">
-          4. Lý thuyết tập hợp
-        </a>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter05' %} active{% endif %}" href="{{ '/contents/chapter05/' | absolute_url }}">
-          5. Quan hệ
-        </a>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter06' %} active{% endif %}" href="{{ '/contents/chapter06/' | absolute_url }}">
-          6. Hàm số
-        </a>
-      </div>
-      
-          <!-- Part III: Counting and Discrete Probability -->
-          <div class="sidebar-subsection">
-            <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần III: Đếm và Xác suất</h5>
-            <a class="sidebar-nav-item{% if page.url contains 'chapter07' %} active{% endif %}" href="{{ '/contents/chapter07/' | absolute_url }}">
-              7. Nguyên lý đếm cơ bản
-            </a>
-            <a class="sidebar-nav-item{% if page.url contains 'chapter08' %} active{% endif %}" href="{{ '/contents/chapter08/' | absolute_url }}">
-              8. Nguyên lý Dirichlet
-            </a>
-            <a class="sidebar-nav-item{% if page.url contains 'chapter09' %} active{% endif %}" href="{{ '/contents/chapter09/' | absolute_url }}">
-              9. Toán rời rạc trong CNTT
-            </a>
-          </div>
-      
-      <!-- Part IV: Recurrence Relations -->
-      <div class="sidebar-subsection">
-        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần IV: Quan hệ Truy hồi</h5>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter10' %} active{% endif %}" href="{{ '/contents/chapter10/' | absolute_url }}">
-          10. Quan hệ truy hồi
-        </a>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter11' %} active{% endif %}" href="{{ '/contents/chapter11/' | absolute_url }}">
-          11. Hàm sinh
-        </a>
-      </div>
-      
-      <!-- Part V: Advanced Topics -->
-      <div class="sidebar-subsection">
-        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần V: Chủ đề Nâng cao</h5>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter13' %} active{% endif %}" href="{{ '/contents/chapter13/' | absolute_url }}">
-          13. Đại số Boole
-        </a>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter14' %} active{% endif %}" href="{{ '/contents/chapter14/' | absolute_url }}">
-          14. Thuật toán
-        </a>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter15' %} active{% endif %}" href="{{ '/contents/chapter15/' | absolute_url }}">
-          15. Lý thuyết Số
-        </a>
-      </div>
+      <h4 class="sidebar-section-heading">{{ site.t.vi.chapters }}</h4>
+      <p class="sidebar-part-en">{{ site.t.en.chapters }}</p>
 
-      <!-- Part VI: Graphs and Trees -->
+      {% for part in site.data.course_parts.parts %}
       <div class="sidebar-subsection">
-        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần VI: Đồ thị và Cây</h5>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter12' %} active{% endif %}" href="{{ '/contents/chapter12/' | absolute_url }}">
-          12. Lý thuyết Đồ thị
-        </a>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter16' %} active{% endif %}" href="{{ '/contents/chapter16/' | absolute_url }}">
-          16. Cây
-        </a>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter17' %} active{% endif %}" href="{{ '/contents/chapter17/' | absolute_url }}">
-          17. Đồ thị nâng cao
-        </a>
+        <h5 class="sidebar-part-heading">{{ part.title_vi }}</h5>
+        <p class="sidebar-part-en">{{ part.title_en }}</p>
+
+        {% for num in part.chapters %}
+          {% assign ch_key = num | append: "" %}
+          {% assign ch = site.data.chapters[ch_key] %}
+          {% if ch %}
+            {% assign cat_posts = site.categories[ch.slug] %}
+            {% if cat_posts and cat_posts.size > 0 %}
+              {% assign sorted_posts = cat_posts | sort: "order" %}
+            {% else %}
+              {% assign sorted_posts = nil %}
+            {% endif %}
+            {% assign chapter_path = "/contents/" | append: ch.slug | append: "/" %}
+            {% assign in_chapter = false %}
+            {% if page.url contains ch.slug %}
+              {% assign in_chapter = true %}
+            {% endif %}
+            <div class="sidebar-chapter{% if in_chapter %} is-current{% endif %}">
+              {% if sorted_posts %}
+              <input
+                type="checkbox"
+                class="sidebar-chapter-checkbox"
+                id="nav-{{ ch.slug }}"
+                {% if in_chapter %}checked{% endif %}
+                aria-controls="lessons-{{ ch.slug }}"
+                aria-label="Bài học / Lessons: {{ ch.title_vn | escape }} — {{ ch.title_en | escape }}">
+              {% endif %}
+              <div class="sidebar-chapter-head">
+                <a class="sidebar-nav-item sidebar-chapter-link{% if in_chapter %} active{% endif %}" href="{{ chapter_path | absolute_url }}">
+                  <span class="sidebar-chapter-index">{{ num }}.</span>
+                  <span class="sidebar-chapter-titles">
+                    <span class="sidebar-nav-label">{{ ch.title_vn }}</span>
+                    {% if ch.title_en %}
+                    <span class="sidebar-nav-en">{{ ch.title_en }}</span>
+                    {% endif %}
+                  </span>
+                </a>
+                {% if sorted_posts %}
+                <label class="sidebar-chapter-toggle" for="nav-{{ ch.slug }}">
+                  <span class="sidebar-chapter-caret" aria-hidden="true"></span>
+                </label>
+                {% endif %}
+              </div>
+              {% if sorted_posts %}
+              <div class="sidebar-lessons" id="lessons-{{ ch.slug }}">
+                {% for post in sorted_posts %}
+                <a class="sidebar-nav-item sidebar-lesson{% if page.url == post.url %} active{% endif %}" href="{{ post.url | absolute_url }}" data-order="{{ post.order }}" data-chapter="{{ ch.slug }}">
+                  <span class="sidebar-lesson-num">{{ num }}.{{ post.order }}</span>
+                  <span class="sidebar-lesson-title">{{ post.title | escape }}</span>
+                </a>
+                {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
       </div>
-      
-      <!-- Part VII: Theory of Computation -->
-      <div class="sidebar-subsection">
-        <h5 style="color: #666; margin: 10px 0 5px 0; font-size: 0.8em;">Phần VII: Lý thuyết Tính toán</h5>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter18' %} active{% endif %}" href="{{ '/contents/chapter18/' | absolute_url }}">
-          18. Mô hình hóa tính toán
-        </a>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter19' %} active{% endif %}" href="{{ '/contents/chapter19/' | absolute_url }}">
-          19. Ngôn ngữ hình thức
-        </a>
-        <a class="sidebar-nav-item{% if page.url contains 'chapter20' %} active{% endif %}" href="{{ '/contents/chapter20/' | absolute_url }}">
-          20. Độ phức tạp P và NP
-        </a>
-      </div>
+      {% endfor %}
     </div>
-    
+
     <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
   </nav>
 
