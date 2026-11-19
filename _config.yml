@@ -57,3 +57,10 @@ markdown: kramdown
 
 # Analytics
 google_analytics_id: ""
+
+# Explainer toolchain (Svelte/Vite source). Built bundles live in public/js/explainers/.
+exclude:
+  - explainers
+  - node_modules
+  - vendor
+

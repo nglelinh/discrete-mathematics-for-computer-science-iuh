@@ -42,3 +42,11 @@ tmp/
 temp/
 
 .sisyphus/
+
+.obsidian/
+material/
+materials/
+scripts/
+
+# Explainer toolchain (source + deps). Keep built bundles in public/js/explainers/.
+explainers/node_modules/

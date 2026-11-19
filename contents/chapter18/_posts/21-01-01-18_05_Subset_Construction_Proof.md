@@ -58,6 +58,15 @@ Số tập con $$\le 2^{\lvert Q\rvert}$$. $$\square$$
 
 Tồn tại family ngôn ngữ DFA tối tiểu $$\Omega(2^n)$$ trong khi NFA $$O(n)$$ (ví dụ “ký tự thứ $$n$$ từ cuối là 1”).
 
+### Explainer tương tác
+
+Explainer otomat: xây dựng tập con từng bước, thấy bảng chuyển và DFA hiện dần; NFA 4 trạng thái cho DFA 8 trạng thái. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="automata-explainer" data-preset="nfa3" data-tab="subset"></div>
+</div>
+<script src="{{ '/public/js/explainers/automata-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 1. Chạy subset trên NFA ends-01; liệt kê reachable.  

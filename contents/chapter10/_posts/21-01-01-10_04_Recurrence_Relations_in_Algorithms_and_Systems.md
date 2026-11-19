@@ -275,6 +275,15 @@ thay vì chỉ nhìn từng bước riêng lẻ.
 
 ---
 
+### Explainer tương tác
+
+Explainer chia để trị: định lý Master với T(n)=aT(n/b)+f(n) và cây đệ quy (chế độ Fibonacci hiển thị số lần gọi). Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="recurrence-explainer" data-mode="dc"></div>
+</div>
+<script src="{{ '/public/js/explainers/recurrence-explainer.js' | relative_url }}"></script>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Viết công thức đệ quy

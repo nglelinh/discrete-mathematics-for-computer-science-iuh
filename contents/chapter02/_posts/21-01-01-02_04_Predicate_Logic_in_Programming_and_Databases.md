@@ -240,6 +240,7 @@ Rule engine, OPA (Open Policy Agent), và IAM policy JSON đều là logic vị 
 
 <div data-demo="nested-quantifier-grid"></div>
 
+<script src="{{ '/public/js/nested-quantifier-grid.js' | relative_url }}"></script>
 ---
 
 ## Bài tập thực hành

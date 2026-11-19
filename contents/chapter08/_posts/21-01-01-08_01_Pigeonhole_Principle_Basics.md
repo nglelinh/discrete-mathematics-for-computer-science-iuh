@@ -167,6 +167,16 @@ def birthday_attack_probability(hash_bits):
 ![Cây quyết định — phân tích không gian trạng thái](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
 <p class="textbook-figure-caption" data-figure="8.5">Nguyên lý chuồng chim giúp chứng minh sự tồn tại mà không cần liệt kê — rất hữu ích trong phân tích thuật toán và cryptography.</p>
+
+### Explainer tương tác
+
+Explainer đếm: nguyên lý chuồng bồ câu — kéo số bồ câu/chuồng và xem chuồng nào chắc chắn chứa ≥ ⌈n/k⌉ con. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="counting-explainer" data-tab="pigeon"></div>
+</div>
+<script src="{{ '/public/js/explainers/counting-explainer.js' | relative_url }}"></script>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Cơ bản
@@ -223,6 +233,15 @@ Do đó, ít nhất một nhóm phải chứa ≥ \( \lceil N/n \rceil \) đối
 **Ý nghĩa CS**:
 - **Hash collision**: \( n+1 \) khóa vào bảng \( n \) ô → chắc chắn có va chạm.
 - **Load balancing**: \( N \) tác vụ, \( n \) máy → ít nhất một máy nhận ≥ \( \lceil N/n \rceil \) tác vụ.
+
+
+## Công cụ tương tác
+
+Đặt $$n$$ đồ vào $$m$$ hộp và quan sát khi nào một hộp buộc phải chứa ít nhất hai (hoặc $$k$$) đồ.
+<div class="interactive-demo" markdown="1">
+<div data-demo="pigeonhole-visualizer"></div>
+</div>
+<script src="{{ '/public/js/pigeonhole-visualizer.js' | relative_url }}"></script>
 
 ## Xem thêm / Video gợi ý
 

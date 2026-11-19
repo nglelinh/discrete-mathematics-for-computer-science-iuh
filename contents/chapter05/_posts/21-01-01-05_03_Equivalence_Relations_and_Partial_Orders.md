@@ -308,6 +308,24 @@ Khi mọi phần tử đều so sánh được, chúng ta có **thứ tự toàn
 
 Trong recommendation systems, quan hệ giữa người dùng và sản phẩm thường được lưu như ma trận user-item. Quan hệ này không phải tương đương hay thứ tự, nhưng ý tưởng tổ chức dữ liệu theo tập cặp vẫn là nền để suy ra người dùng giống nhau, sản phẩm liên quan và điểm gợi ý.
 
+
+## Công cụ tương tác
+
+Vẽ lược đồ Hasse cho một thứ tự bộ phận nhỏ: chỉ giữ các cạnh che phủ, ẩn các cạnh suy ra từ bắc cầu.
+<div class="interactive-demo" markdown="1">
+<div data-demo="hasse-diagram"></div>
+</div>
+<script src="{{ '/public/js/hasse-diagram.js' | relative_url }}"></script>
+
+### Explainer tương tác
+
+Explainer quan hệ: lớp tương đương của quan hệ đồng dư, và sơ đồ Hasse của thứ tự riêng phần (ví dụ quan hệ chia hết). Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="relation-explainer" data-preset="div" data-focus="hasse"></div>
+</div>
+<script src="{{ '/public/js/explainers/relation-explainer.js' | relative_url }}"></script>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Kiểm tra quan hệ tương đương

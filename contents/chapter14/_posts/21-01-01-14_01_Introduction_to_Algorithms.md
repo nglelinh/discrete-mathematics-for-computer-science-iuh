@@ -105,6 +105,15 @@ Linear search: so $$2,5,8,12$$ — 4 lần so sánh.
 | **Tối ưu** | Cấu hình min/max chi phí (có thể khó — Ch.20) |
 | **Quyết định** | Có/Không (nền P/NP) |
 
+### Thử nghiệm: sắp xếp và tìm kiếm từng bước
+
+Đếm so sánh và hoán đổi của ba thuật toán sắp xếp; so tìm tuần tự với tìm nhị phân.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="sort-explainer" data-tab="sort"></div>
+</div>
+<script src="{{ '/public/js/explainers/recurrence-explainer.js' | relative_url }}"></script>
+
 ## 5. Thử nghiệm tương tác
 
 <div class="interactive-demo" markdown="1">

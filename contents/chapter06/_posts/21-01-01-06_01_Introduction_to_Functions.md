@@ -197,6 +197,16 @@ class MockModel:
 ![Hash function — ánh xạ khóa → giá trị](/discrete-mathematics-for-computer-science-iuh/img/course/Database.svg)
 
 <p class="textbook-figure-caption" data-figure="6.6">Hash function và database key là ví dụ hàm thực tế — ánh xạ dữ liệu đầu vào sang giá trị xác định.</p>
+
+### Explainer tương tác
+
+Explainer hàm số: chỉnh các mũi tên giữa hai tập và xem hàm có đơn ánh, toàn ánh, song ánh hay không. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="function-explainer" data-preset="inj"></div>
+</div>
+<script src="{{ '/public/js/explainers/function-explainer.js' | relative_url }}"></script>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Kiểm tra hàm

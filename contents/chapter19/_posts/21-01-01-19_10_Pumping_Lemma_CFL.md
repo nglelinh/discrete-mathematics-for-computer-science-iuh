@@ -41,6 +41,15 @@ excerpt: "Phát biểu; ý chứng minh parse tree; aⁿbⁿcⁿ không CFL."
 
 **Ý chứng minh.** CNF grammar; parse tree cao ⇒ lặp nonterminal trên path; bơm subtree. $$\square$$
 
+### Thử nghiệm: bổ đề bơm cho CFL
+
+Duyệt mọi cách chia w = uvxyz với |vxy| ≤ p và |vy| ≥ 1.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="pumping-explainer" data-kind="cfl" data-lang="anbncn" data-p="2"></div>
+</div>
+<script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
+
 ## Ứng dụng
 
 <div class="textbook-theorem" markdown="1">

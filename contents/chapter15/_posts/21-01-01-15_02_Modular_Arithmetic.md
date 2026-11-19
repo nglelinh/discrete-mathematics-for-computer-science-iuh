@@ -174,6 +174,14 @@ Kiểm tra: $$23 \bmod 3=2$$, $$23 \bmod 5=3$$, $$23 \bmod 7=2$$.
 
 </div>
 
+### Thử nghiệm: giải hệ đồng dư Trung Hoa
+
+Nhập các phương trình x ≡ aᵢ (mod mᵢ) và xem từng số hạng aᵢ·Mᵢ·yᵢ.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="crypto-explainer" data-tab="crt"></div>
+</div>
+
 ## 5. Lũy thừa modulo nhanh
 
 Tính $$b^e \bmod n$$ với $$e$$ lớn (hàng trăm–nghìn bit trong RSA):
@@ -230,6 +238,15 @@ Hai định lý này là nền **tính đúng RSA**: nếu $$ed \equiv 1 \pmod{\
 <div data-demo="modular-arithmetic-calc"></div>
 </div>
 <script src="{{ '/public/js/modular-arithmetic-calc.js' | relative_url }}"></script>
+
+### Explainer tương tác
+
+Explainer số học: mặt đồng hồ modulo, bảng cộng/nhân, nghịch đảo và giải a·x ≡ c. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="numtheory-explainer" data-tab="modular"></div>
+</div>
+<script src="{{ '/public/js/explainers/numtheory-explainer.js' | relative_url }}"></script>
 
 ## Bài tập
 

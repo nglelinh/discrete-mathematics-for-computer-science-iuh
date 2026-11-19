@@ -207,6 +207,24 @@ projection = {student_id for (student_id, _) in enrollments}
 
 Ở đây, `projection` là kết quả chiếu quan hệ hai ngôi xuống thuộc tính thứ nhất.
 
+
+## Công cụ tương tác
+
+Nhập các cặp của một quan hệ và kiểm tra tính phản xạ, đối xứng, phản đối xứng, bắc cầu.
+<div class="interactive-demo" markdown="1">
+<div data-demo="relation-classifier"></div>
+</div>
+<script src="{{ '/public/js/relation-properties-checker.js' | relative_url }}"></script>
+
+### Explainer tương tác
+
+Explainer quan hệ: mỗi tính chất (phản xạ, đối xứng, phản đối xứng, bắc cầu) hiện ra chứng cứ hoặc phản ví dụ cụ thể. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="relation-explainer" data-preset="sym" data-focus="props"></div>
+</div>
+<script src="{{ '/public/js/explainers/relation-explainer.js' | relative_url }}"></script>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Nhận diện tính chất

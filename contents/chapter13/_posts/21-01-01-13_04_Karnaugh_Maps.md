@@ -361,6 +361,26 @@ Mọi ô **1** vẫn được phủ.
 
 Với $$n\ge 5$$, lưới K-map trở nên cồng kềnh; khi đó cần các phương pháp rút gọn dạng bảng hoặc công cụ hỗ trợ ngoài phạm vi bài này.
 
+
+## Công cụ tương tác
+
+Đánh các ô 1 (và tùy chọn don't-care) trên K-map 4 biến, rồi tìm nhóm hợp lệ để rút gọn hàm.
+<div class="interactive-demo" markdown="1">
+<div data-demo="kmap-interactive"></div>
+</div>
+<script src="{{ '/public/js/kmap-interactive.js' | relative_url }}"></script>
+
+
+### Explainer liên kết: K-map, bảng chân trị và mạch SOP
+
+Bốn biến $$p,q,r,s$$. Bấm ô trên K-map hoặc cột F của bảng; các nhóm tối tiểu được khoanh và mạch SOP vẽ lại. Có thể đổi số biến (2–4) hoặc nhập biểu thức để xem nhóm tương ứng.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="boolean-explainer" data-vars="4" data-focus="kmap" data-expr="(p ∧ q) ∨ (¬r ∧ s)"></div>
+</div>
+<script src="{{ '/public/js/explainers/boolean-explainer.js' | relative_url }}"></script>
+
+
 ## Bài tập
 
 ### Bài tập 1

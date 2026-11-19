@@ -92,6 +92,23 @@ Hệ quả: thuật toán luôn thêm cạnh “an toàn” theo cut hoặc theo
 | Cấu trúc | Union–Find | Priority queue |
 | Thường hợp hợp | Đồ thị **thưa** (sort cạnh) | Đồ thị **dày** hơn / triển khai từ một gốc |
 
+
+Dùng explainer đồ thị (chọn **Kruskal** hoặc **Prim**, chỉnh trọng số, chạy từng bước) để thấy cạnh được thêm vào MST hay bị bỏ vì tạo chu trình. Widget Kruskal phía trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="graph-explainer" data-algorithm="kruskal"></div>
+</div>
+<script src="{{ '/public/js/explainers/graph-explainer.js' | relative_url }}"></script>
+
+
+### Explainer Prim: lớn dần từ một đỉnh
+
+Phiên bản Prim riêng để so với Kruskal ở trên: tập $$S$$ lớn dần từ đỉnh xuất phát, mỗi bước chọn cạnh nhẹ nhất đi ra khỏi $$S$$.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="graph-explainer" data-algorithm="prim"></div>
+</div>
+
 ## 4. Ví dụ tính tay
 
 <div class="textbook-example" markdown="1">

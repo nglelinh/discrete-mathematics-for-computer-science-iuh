@@ -155,11 +155,33 @@ $$
 
 Xét $$F(a,b,c,d)$$ bằng **1** tại các hàng **0, 2, 3, 5, 7, 8, 10, 11, 13, 15**.
 
-Sau khi nhóm theo số bit 1 và dán cặp, các nguyên nhân nguyên tố điển hình gồm $$cd$$, $$bd$$, $$\bar b\,\bar d$$. Trên bảng phủ, $$\bar b\,\bar d$$ thường **cốt yếu** vì phủ cụm $$0,2,8,10$$; sau đó chọn thêm $$cd$$ (hoặc $$bd$$) để phủ nốt. Một kết quả tối tiểu:
+Sau khi nhóm theo số bit 1, dán cặp ở cột 1 rồi dán tiếp ở cột 2, ta được **bốn** nguyên nhân nguyên tố (mỗi cái phủ 4 minterm và không dán thêm được nữa):
+
+- $$N_1=\bar b\,\bar d$$ phủ $$0,2,8,10$$;
+- $$N_2=\bar b\,c$$ phủ $$2,3,10,11$$;
+- $$N_3=cd$$ phủ $$3,7,11,15$$;
+- $$N_4=bd$$ phủ $$5,7,13,15$$.
+
+Bảng phủ (cột là mười minterm bắt buộc; dấu `+` nghĩa là “hàng này phủ cột đó”):
+
+| Nguyên nhân nguyên tố | 0 | 2 | 3 | 5 | 7 | 8 | 10 | 11 | 13 | 15 |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| $$N_1=\bar b\,\bar d$$ | + | + |  |  |  | + | + |  |  |  |
+| $$N_2=\bar b\,c$$ |  | + | + |  |  |  | + | + |  |  |
+| $$N_3=cd$$ |  |  | + |  | + |  |  | + |  | + |
+| $$N_4=bd$$ |  |  |  | + | + |  |  |  | + | + |
+
+**Nguyên tố cốt yếu.** Cột $$0$$ và $$8$$ chỉ có $$N_1$$; cột $$5$$ và $$13$$ chỉ có $$N_4$$. Vậy $$N_1=\bar b\,\bar d$$ và $$N_4=bd$$ đều **cốt yếu**. Hai nguyên tố này đã phủ $$0,2,8,10$$ và $$5,7,13,15$$; **còn lại** các cột $$3$$ và $$11$$.
+
+**Vì sao không thể bỏ $$bd$$.** Hai minterm $$5=0101$$ và $$13=1101$$ có $$c=0$$ và $$b=1$$: $$\bar b\,\bar d$$ cần $$b=0$$, còn $$cd$$ cần $$c=1$$, nên cả hai đều **không** phủ được $$5$$ và $$13$$. Chỉ $$bd$$ phủ chúng — vì vậy $$cd+\bar b\,\bar d$$ **chưa** là một cover của $$F$$.
+
+**Phủ nốt $$3$$ và $$11$$.** Cả $$N_3=cd$$ lẫn $$N_2=\bar b\,c$$ đều phủ $$3$$ và $$11$$ và cùng hai literal, nên chọn **một** trong hai là đủ. Một kết quả tối tiểu (3 hạng, 6 literal):
 
 $$
-F = cd + \bar b\,\bar d.
+F = cd + \bar b\,\bar d + bd.
 $$
+
+Phương án tương đương (cùng chi phí): $$F = \bar b\,c + \bar b\,\bar d + bd$$. Không có cover chỉ với 2 hạng, vì hai nguyên tố cốt yếu $$\bar b\,\bar d$$ và $$bd$$ chưa phủ $$3$$ và $$11$$.
 
 Hai thao tác then chốt của phương pháp: đánh dấu `*` sau mỗi phép dán (phần 1), và tìm cột chỉ còn một dấu `+` để xác định nguyên tố cốt yếu (phần 2).
 
@@ -341,6 +363,15 @@ Cốt lõi chung của hai phương pháp là **dán các nguyên nhân kề (kh
 </div>
 <script src="{{ '/public/js/quine-mccluskey-simplifier.js' | relative_url }}"></script>
 
+### Explainer tương tác
+
+Chạy Quine–McCluskey từng bước trên chính các ví dụ của bài (F₁ ở mục 5b, ví dụ don't-care ở mục 4, ví dụ bốn biến ở mục 5): xếp nhóm theo số bit 1, dán cặp có dấu «-», đánh dấu ✓, liệt kê nguyên nhân nguyên tố, rồi bảng phủ với nguyên tố cốt yếu, trội hàng/cột và phương pháp Petrick. Với 2–4 biến có K-map bên cạnh để đối chiếu. Có thể nhập minterm, don't-care hoặc một biểu thức, 2–6 biến. Widget bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="qm-explainer" data-preset="f1"></div>
+</div>
+<script src="{{ '/public/js/explainers/qm-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 ### Bài tập 1
@@ -354,7 +385,7 @@ và nêu các **nguyên nhân nguyên tố cốt yếu**.
 <details>
 <summary>Đáp án</summary>
 
-Tham khảo mục 5. Một cover tối tiểu thường gặp: $$F = cd + \bar b\,\bar d$$. Nguyên nhân $$\bar b\,\bar d$$ thường cốt yếu vì phủ cụm $$0,2,8,10$$.
+Tham khảo mục 5. Có bốn nguyên nhân nguyên tố: $$\bar b\,\bar d$$, $$\bar b\,c$$, $$cd$$, $$bd$$. **Cốt yếu** là $$\bar b\,\bar d$$ (chỉ nó phủ $$0$$ và $$8$$) và $$bd$$ (chỉ nó phủ $$5$$ và $$13$$). Phủ nốt $$3$$ và $$11$$ bằng $$cd$$ (hoặc $$\bar b\,c$$). Một cover tối tiểu: $$F = cd + \bar b\,\bar d + bd$$.
 
 </details>
 

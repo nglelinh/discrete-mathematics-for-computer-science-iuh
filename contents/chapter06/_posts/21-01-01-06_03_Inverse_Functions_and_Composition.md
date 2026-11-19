@@ -205,6 +205,24 @@ result = tokenize(clean("  Discrete Math  "))
 - **Serialization**: `decode(encode(x)) = x` là điều kiện nghịch đảo một phía quan trọng.
 - **Lập trình hàm**: composition giúp xây dựng chương trình lớn từ hàm nhỏ.
 
+
+## Công cụ tương tác
+
+Ghép hai hàm thành $$g \circ f$$ trên đường ống và xem ánh xạ kết quả.
+<div class="interactive-demo" markdown="1">
+<div data-demo="function-composition-pipeline"></div>
+</div>
+<script src="{{ '/public/js/function-composition-pipeline.js' | relative_url }}"></script>
+
+### Explainer tương tác
+
+Explainer hàm số: hàm ngược của song ánh và hợp thành g∘f hai hàm. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="function-explainer" data-preset="bij" data-focus="compose"></div>
+</div>
+<script src="{{ '/public/js/explainers/function-explainer.js' | relative_url }}"></script>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Tính hàm hợp

@@ -124,6 +124,15 @@ Worst case: chèn đã sắp tăng tạo cây **lệch** (*skewed*) — giống 
 
 Chọn BST (hoặc cây cân bằng) khi cần **range query**, predecessor/successor, hoặc duyệt theo thứ tự. Hash ưu tiên tra cứu điểm nhanh, không yêu cầu thứ tự.
 
+### Explainer tương tác
+
+Explainer cây: Huffman gộp từng cặp nhỏ nhất, bảng mã tiền tố, mã hóa/giải mã thông điệp; chuyển sang thẻ BST để chèn/tìm/xóa. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="tree-explainer" data-mode="huffman"></div>
+</div>
+<script src="{{ '/public/js/explainers/tree-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 ### Bài tập 1

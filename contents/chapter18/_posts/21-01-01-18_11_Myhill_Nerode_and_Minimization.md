@@ -61,6 +61,15 @@ $$0^n1^n$$: $$0^i\not\sim 0^j$$ ($$z=1^i$$) ⇒ vô hạn lớp ⇒ không regul
 
 Table-filling / partition refinement: gộp trạng thái không phân biệt — $$O(n\log n)$$ Hopcroft.
 
+### Explainer tương tác
+
+Explainer otomat: tối thiểu hóa DFA — các nhóm trạng thái tương đương được gộp. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="automata-explainer" data-preset="nfa101" data-tab="minimize"></div>
+</div>
+<script src="{{ '/public/js/explainers/automata-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 1. Chứng minh $$~\sim_L$$ tương đương.  

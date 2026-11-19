@@ -5,7 +5,7 @@
   }
 
   function render() {
-    const host = document.querySelector('[data-tool="venn-counter"]');
+    const host = document.querySelector('[data-demo="venn-counter"], [data-tool="venn-counter"]');
     if (!host) return;
 
     host.insertAdjacentHTML(

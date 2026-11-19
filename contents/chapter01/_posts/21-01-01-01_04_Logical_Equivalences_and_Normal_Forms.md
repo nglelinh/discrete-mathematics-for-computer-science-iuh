@@ -759,6 +759,26 @@ Cho các biểu thức sau, xác định xem biểu thức đã ở dạng DNF, 
 
 </details>
 
+
+## Công cụ tương tác
+
+Đối chiếu hai biểu thức bằng bảng chân trị và xem dạng DNF/CNF mà công cụ sinh ra — hữu ích khi kiểm tra tương đương logic.
+<div class="interactive-demo" markdown="1">
+<div data-demo="truth-table-normal-form"></div>
+</div>
+<script src="{{ '/public/js/truth-table-normal-form.js' | relative_url }}"></script>
+
+
+### Explainer liên kết: dạng SOP tối tiểu từ bảng chân trị
+
+Đưa biểu thức về SOP tối tiểu (Quine–McCluskey) và xem các nhóm trên K-map — tiện khi kiểm tra tương đương hoặc đối chiếu DNF sau khi biến đổi đại số.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="boolean-explainer" data-vars="3" data-focus="table" data-expr="(p ∨ q) ∧ ¬r"></div>
+</div>
+<script src="{{ '/public/js/explainers/boolean-explainer.js' | relative_url }}"></script>
+
+
 ## Bài tập bổ sung: Sử dụng các luật logic mệnh đề (từ ccrr1_baitap1)
 
 **Hướng dẫn chung:** Sử dụng các luật logic để rút gọn biểu thức.

@@ -92,6 +92,15 @@ Incident “10k user” thường là nhầm **DAU**, **concurrent user**, hay *
 
 ---
 
+### Thử nghiệm: hàng đợi và định luật Little
+
+Chỉnh tốc độ đến, thời gian phục vụ và số connection; xem độ dài hàng đợi, thời gian chờ và L = λW.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="sim-explainer" data-tab="queue"></div>
+</div>
+<script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
+
 ## Công thức HikariCP — vì sao 200 connection chậm hơn 20
 
 Wiki HikariCP tóm tắt benchmark từ [PostgreSQL Wiki — Number of connections](https://wiki.postgresql.org/wiki/Number_Of_Database_Connections). Công thức khởi đầu cho OLTP trên **một** instance PostgreSQL:

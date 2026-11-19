@@ -285,6 +285,26 @@ Thông thường rút gọn biểu thức trước (mục 3), rồi mới ánh x
 | **13.6** | Công tắc, năm bước thiết kế, đếm cổng, ứng dụng |
 | **13.7** | Half/full adder, MUX, decoder |
 
+
+## Công cụ tương tác
+
+Chọn cổng AND/OR/NOT/NAND/XOR, gạt công tắc đầu vào và đọc bảng chân trị đầu ra.
+<div class="interactive-demo" markdown="1">
+<div data-demo="logic-gates-builder"></div>
+</div>
+<script src="{{ '/public/js/logic-gates-builder.js' | relative_url }}"></script>
+
+
+### Explainer liên kết: từ cổng logic đến K-map
+
+Xem mạch SOP (AND–OR, vòng tròn = đảo) của cùng một hàm, liên kết với bảng chân trị và bản đồ Karnaugh. So sánh với bộ dựng cổng phía trên: explainer này sinh mạch tối tiểu tự động từ hàm.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="boolean-explainer" data-vars="3" data-focus="circuit" data-expr="p ⊕ q ⊕ r"></div>
+</div>
+<script src="{{ '/public/js/explainers/boolean-explainer.js' | relative_url }}"></script>
+
+
 ## Bài tập
 
 ### Bài tập 1

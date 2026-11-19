@@ -314,7 +314,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    const mount = document.getElementById('predicate-proof-demo');
+    const mount = document.querySelector('[data-demo="predicate-proof-dnd"]') || document.getElementById('predicate-proof-demo');
     if (!mount) return;
     new PredicateProofDnD(mount);
   });

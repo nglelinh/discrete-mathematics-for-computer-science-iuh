@@ -402,6 +402,24 @@ EG → ∀x (P(x) ∧ Q(x))
 
 ---
 
+
+### Thử nghiệm: suy luận vị từ từng dòng
+
+Duyệt từng dòng chứng minh với quy tắc UI, EI, EG, thử hai lỗi kinh điển (dùng lại tên khi EI, UG từ hằng cụ thể) và xem phản ví dụ trên mô hình nhỏ.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="predproof-explainer" data-preset="socrates"></div>
+</div>
+<script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
+
+## Công cụ tương tác
+
+Kéo thả các bước suy luận vị từ để lắp một chứng minh ngắn, rồi kiểm tra từng dòng.
+<div class="interactive-demo" markdown="1">
+<div data-demo="predicate-proof-dnd"></div>
+</div>
+<script src="{{ '/public/js/predicate-proof-dnd.js' | relative_url }}"></script>
+
 ## Xem thêm / Video gợi ý
 
 - [Quantifiers and Nested Quantifiers](https://www.youtube.com/watch?v=9jZ5n8k0p0Q) — Trefor Bazett (Clear examples with predicates)

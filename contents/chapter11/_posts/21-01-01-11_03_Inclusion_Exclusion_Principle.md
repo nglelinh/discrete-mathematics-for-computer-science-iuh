@@ -139,6 +139,15 @@ $$
 </div>
 <script src="{{ '/public/js/venn-ie-three-sets.js' | relative_url }}"></script>
 
+### Explainer tương tác
+
+Explainer Venn ở chế độ bao hàm–loại trừ để thấy vì sao các phần giao bị đếm dư rồi được trừ đi. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="venn-explainer" data-sets="3" data-focus="ie"></div>
+</div>
+<script src="{{ '/public/js/explainers/venn-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 ### Bài tập 1

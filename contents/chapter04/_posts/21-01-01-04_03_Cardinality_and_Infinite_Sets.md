@@ -188,6 +188,15 @@ $$50+40+30-20-15-10+5=80.$$
 ![Đếm được vs continuum](/discrete-mathematics-for-computer-science-iuh/img/course/Countable.vs.Continuum.svg)
 
 <p class="textbook-figure-caption" data-figure="4.23">So sánh lực lượng — tập đếm được ($$\aleph_0$$) nhỏ hơn continuum ($$2^{\aleph_0} = \lvert \R \rvert$$).</p>
+### Thử nghiệm: đường chéo Cantor, khách sạn Hilbert, hàm ghép cặp
+
+Lật đường chéo để tạo một dãy nhị phân không nằm trong danh sách nào; cho khách mới vào khách sạn vô hạn; ghép cặp ℕ × ℕ với ℕ.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="infinity-explainer" data-tab="diagonal"></div>
+</div>
+<script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
+
 ## Định lý Schröder–Bernstein
 
 <div class="textbook-theorem" markdown="1">

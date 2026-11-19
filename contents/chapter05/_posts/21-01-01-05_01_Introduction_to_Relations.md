@@ -163,6 +163,24 @@ Quan hệ "chúng ta bè" trên Facebook là quan hệ hai ngôi. Đồ thị c�
 ### 3. Lý thuyết đồ thị
 Mọi đồ thị có hướng đều biểu diễn một quan hệ. Đồ thị vô hướng biểu diễn quan hệ đối xứng.
 
+
+## Công cụ tương tác
+
+Bật/tắt các ô của ma trận quan hệ trên tập $$\{1,2,3\}$$ và xem tập cặp tương ứng.
+<div class="interactive-demo" markdown="1">
+<div data-demo="relation-matrix-toggle"></div>
+</div>
+<script src="{{ '/public/js/relation-matrix-toggle.js' | relative_url }}"></script>
+
+### Explainer tương tác
+
+Explainer quan hệ: sửa ma trận/đồ thị của quan hệ trên tập nhỏ và xem các tính chất cùng phản ví dụ. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="relation-explainer" data-preset="mod2"></div>
+</div>
+<script src="{{ '/public/js/explainers/relation-explainer.js' | relative_url }}"></script>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Tích Cartesian

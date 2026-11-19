@@ -77,6 +77,24 @@ Ngôn ngữ **chính quy** nếu $$L=L(M)$$ với một DFA $$M$$ (sẽ mở r�
 Sơ đồ: vòng đôi = $$F$$; mũi tên vào $$q_0$$.  
 Bảng: hàng trạng thái, cột ký hiệu.
 
+
+## Công cụ tương tác
+
+Chạy một DFA trên chuỗi nhập, từng ký tự một, để thấy trạng thái hiện tại và quyết định chấp nhận hay từ chối.
+<div class="interactive-demo" markdown="1">
+<div data-demo="dfa-simulator"></div>
+</div>
+<script src="{{ '/public/js/dfa-simulator.js' | relative_url }}"></script>
+
+### Explainer tương tác
+
+Explainer otomat: chạy DFA từng ký tự trên chuỗi vào và sửa chính máy. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="automata-explainer" data-preset="dfa01" data-tab="simulate"></div>
+</div>
+<script src="{{ '/public/js/explainers/automata-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 1. Chứng minh $$\hat\delta(q,xy)=\hat\delta\bigl(\hat\delta(q,x),y\bigr)$$.  

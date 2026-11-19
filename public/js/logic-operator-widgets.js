@@ -1,5 +1,10 @@
 (function () {
   function render() {
+    var wrapper = document.querySelector('[data-demo="logic-operator-widgets"]');
+    if (wrapper && !wrapper.querySelector('[data-demo="proposition-checker"]')) {
+      wrapper.insertAdjacentHTML('beforeend',
+        '<div data-demo="proposition-checker"></div><div data-demo="logic-evaluator"></div>');
+    }
     var host1 = document.querySelector('[data-demo="proposition-checker"]');
     var host2 = document.querySelector('[data-demo="logic-evaluator"]');
 

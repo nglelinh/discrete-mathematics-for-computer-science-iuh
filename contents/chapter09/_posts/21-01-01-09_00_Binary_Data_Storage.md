@@ -209,6 +209,7 @@ Số lớn hơn 255 cần **nhiều byte**. Số $$4660 = 0x1234$$ cần hai byt
 
 <div data-demo="logic-operator-widgets"></div>
 
+<script src="{{ '/public/js/logic-operator-widgets.js' | relative_url }}"></script>
 Widget trên ôn lại biến Boole $$0/1$$ — cùng hai giá trị mà mọi bit trong RAM đều dùng, dù sau này ta gom chúng thành byte, số, hoặc chữ.
 
 ## Ứng dụng trong Khoa học Máy tính

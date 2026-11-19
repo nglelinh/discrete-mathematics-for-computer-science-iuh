@@ -58,6 +58,15 @@ $$q_0$$: chẵn; $$q_1$$: lẻ. $$F=\{q_0\}$$.
 
 **Bất biến:** $$\hat\delta(q_0,w)=q_0\Leftrightarrow\#_1(w)$$ chẵn — quy nạp hiển nhiên.
 
+### Explainer tương tác
+
+Explainer otomat: thử DFA "số số 1 chẵn" với nhiều chuỗi để kiểm tra tính đúng. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="automata-explainer" data-preset="even1" data-tab="simulate"></div>
+</div>
+<script src="{{ '/public/js/explainers/automata-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 1. DFA “chứa $$aa$$” + chứng minh.  

@@ -107,6 +107,15 @@ Kahn: ban đầu chỉ $$A$$ có indeg 0; sau $$A$$ thì $$B,C$$; sau cùng $$D$
 
 </div>
 
+### Explainer sắp xếp topo: Kahn và DFS từng bước
+
+Chạy **Kahn** (bậc vào + hàng đợi) hoặc **DFS** (hậu tự đảo) trên một DAG: xem bậc vào giảm dần, hàng đợi/ngăn xếp thay đổi và thứ tự topo hình thành. Bật “thêm cạnh tạo chu trình” để thấy thuật toán phát hiện chu trình và dừng.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="topo-explainer" data-preset="courses" data-algo="kahn"></div>
+</div>
+<script src="{{ '/public/js/explainers/graph-explainer.js' | relative_url }}"></script>
+
 ## 4. Ứng dụng
 
 | Lĩnh vực | Mô hình |

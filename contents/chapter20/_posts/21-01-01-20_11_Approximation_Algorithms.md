@@ -57,6 +57,15 @@ Cover: mọi cạnh bị xóa khi một đầu đã vào $$C$$.
 $$M$$ = cạnh được chọn: matching. $$\lvert C\rvert=2\lvert M\rvert$$.  
 $$\mathrm{OPT}\ge\lvert M\rvert$$ (phủ matching). $$\square$$
 
+### Thử nghiệm: xấp xỉ gấp đôi cho Vertex Cover
+
+Lấy cạnh chưa phủ, thêm cả hai đầu mút; so với phủ đỉnh tối ưu để thấy tỉ lệ ≤ 2.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="reduction-explainer" data-tab="approx"></div>
+</div>
+<script src="{{ '/public/js/explainers/complexity-explainer.js' | relative_url }}"></script>
+
 ## 3. Metric TSP
 
 <div class="textbook-theorem" markdown="1">

@@ -144,6 +144,15 @@ Hầu hết bệnh nhân sau giai đoạn đầu đều “match” một bệnh
 
 ---
 
+### Thử nghiệm: va chạm khi băm vào bảng
+
+Thả khóa vào các ô băm, đếm ô bị chiếm và so với kỳ vọng.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="sim-explainer" data-tab="hash"></div>
+</div>
+<script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
+
 ## Hash buckets — cùng công thức, khác domain
 
 Công thức Might không chỉ cho sinh nhật hay mã bệnh. Hash function **uniform** ánh xạ key vào $$D$$ bucket; insert $$n$$ key lần lượt. $$E[\text{matches}]$$ ước lượng số lần key mới rơi vào bucket **đã có** ít nhất một key — trực tiếp liên quan chi phí **chaining** (duyệt linked list trong bucket) hoặc số lần probe trong open addressing.

@@ -71,6 +71,15 @@ Trong lập trình, nhiều đối tượng được định nghĩa đệ quy:
 
 Khi đối tượng được định nghĩa đệ quy, kỹ thuật chứng minh tự nhiên nhất thường cũng là quy nạp.
 
+### Explainer domino: cơ sở + bước quy nạp
+
+Xem các domino đổ lần lượt khi đã có **cơ sở** và **bước quy nạp**; hai ví dụ cuối cho thấy điều gì xảy ra khi thiếu cơ sở, hoặc khi chỉ kiểm tra từng trường hợp (n² + n + 41 vẫn là số nguyên tố cho n = 0…39 nhưng sai ở n = 40).
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="induction-explainer" data-preset="sum"></div>
+</div>
+<script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
+
 ## Nguyên lý quy nạp toán học
 
 Giả sử $P(n)$ là một mệnh đề phụ thuộc vào số tự nhiên $n$, và ta muốn chứng minh:
@@ -838,6 +847,15 @@ Nếu câu trả lời là có, hãy quay lại đúng khung chuẩn:
 - kết luận mạch lạc.
 
 Luyện tập đủ nhiều, quy nạp sẽ trở thành công cụ tự nhiên khi chứng minh trong toán và khoa học máy tính.
+
+
+## Công cụ tương tác
+
+Điền bước cơ sở và bước quy nạp, rồi kiểm tra xem các giả thiết đã được dùng đúng chưa.
+<div class="interactive-demo" markdown="1">
+<div data-demo="induction-checker"></div>
+</div>
+<script src="{{ '/public/js/induction-step-checker.js' | relative_url }}"></script>
 
 ## Bài tập bổ sung: Quy nạp toán học (từ ccrr1_baitap1)
 
