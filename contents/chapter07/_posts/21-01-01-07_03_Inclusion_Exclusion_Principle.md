@@ -192,6 +192,15 @@ def inclusion_exclusion(sizes):
 print(inclusion_exclusion({1: 50 + 33 + 20, 2: 16 + 10 + 6, 3: 3}))
 ```
 
+### Explainer tương tác
+
+Explainer Venn ở chế độ bao hàm–loại trừ: so sánh |A ∪ B ∪ C| tính trực tiếp với công thức. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="venn-explainer" data-sets="3" data-focus="ie"></div>
+</div>
+<script src="{{ '/public/js/explainers/venn-explainer.js' | relative_url }}"></script>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Ba câu lạc bộ

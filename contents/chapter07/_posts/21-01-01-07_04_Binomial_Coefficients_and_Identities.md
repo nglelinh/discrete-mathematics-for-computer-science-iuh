@@ -128,6 +128,15 @@ $$
 **Demo tương tác đề xuất**: Người học nhập $n,k$, công cụ tô màu hai ô $\binom{n-1}{k-1}$ và $\binom{n-1}{k}$ trong tam giác Pascal, rồi hiển thị tổng bằng $\binom{n}{k}$.
 </div>
 
+### Explainer tam giác Pascal: cộng từ đỉnh xuống
+
+Xem tam giác Pascal được xây từng hàng từ đỉnh: với mỗi ô, hai ô cha ngay phía trên sáng lên, giá trị của chúng trượt xuống và cộng lại (ví dụ 1 + 2 = 3). Có Play/Dừng, bước tiến/lùi, tốc độ, số hàng (0–14), hiển thị dạng giá trị hoặc C(n,k), tô màu chẵn/lẻ (Sierpiński), và các thẻ minh họa tổng hàng 2ⁿ, tính đối xứng và đồng nhất thức cây gậy khúc côn cầu ở mục 4. Các widget bên dưới vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="pascal-explainer" data-rows="6"></div>
+</div>
+<script src="{{ '/public/js/explainers/counting-explainer.js' | relative_url }}"></script>
+
 ## 4. Các đồng nhất thức quan trọng
 
 ### 4.1. Đối xứng
@@ -201,6 +210,15 @@ for k in range(0, 6):
 <div data-demo="binomial-coefficient-calc"></div>
 </div>
 <script src="{{ '/public/js/binomial-coefficient-calc.js' | relative_url }}"></script>
+
+### Explainer tương tác
+
+Explainer đếm: tam giác Pascal tương tác, chọn ô để xem hệ thức Pascal và tổng hàng 2ⁿ. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="counting-explainer" data-tab="pascal"></div>
+</div>
+<!-- Script counting-explainer.js đã được nạp ở khối Pascal phía trên (một bản runtime cho cả hai explainer). -->
 
 ## Bài tập thực hành
 

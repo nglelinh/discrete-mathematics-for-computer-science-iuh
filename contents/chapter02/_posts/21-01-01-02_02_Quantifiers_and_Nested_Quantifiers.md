@@ -495,6 +495,15 @@ WHERE hp.tinChi = 3
 
 ---
 
+
+## Công cụ tương tác
+
+Bật/tắt các ô trong lưới “sinh viên × môn học” để thấy sự khác nhau giữa $$\forall x\exists y$$ và $$\exists y\forall x$$.
+<div class="interactive-demo" markdown="1">
+<div data-demo="nested-quantifier-grid"></div>
+</div>
+<script src="{{ '/public/js/nested-quantifier-grid.js' | relative_url }}"></script>
+
 ## Xem thêm / Video gợi ý
 
 - [Quantifiers and Nested Quantifiers](https://www.youtube.com/watch?v=9jZ5n8k0p0Q) — Trefor Bazett (Clear examples with predicates)

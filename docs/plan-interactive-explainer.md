@@ -295,3 +295,160 @@ Khi sao chép ý tưởng hoặc đoạn mã, ghi nguồn và tuân giấy phép
 3. Không push / không mở trang công cụ mới cho đến khi flagship đồ thị ổn định trên bản local.
 
 Kế hoạch này cố ý đi từ cái đã có. Thành công không phải là 50 widget mới, mà là vài explainer sinh viên chịu mở lại khi ôn thi — và giảng viên dùng được ngay trên trang bài, trong một buổi học.
+
+
+## Tiến độ thực hiện
+
+Cập nhật: 2026-11-18 (Asia/Saigon). Làm **chỉ trên máy local**, chưa commit / chưa push. Nhánh đang checkout: `feature/interactive-explainer-plan`.
+
+### Giai đoạn 0 — xong
+
+Đã viết `docs/widget-inventory.md`: danh sách widget đã gắn, gắn dở, chưa gắn, file hạ tầng, và những file không đụng vì là thay đổi chưa commit của Linh (`bfs-dfs-visualizer.js`, `euler-hamilton-checker.js`, `dfa-simulator.js`).
+
+### Giai đoạn 1 — xong (phần P0/P1 đã lên kế hoạch gắn bài)
+
+- Sửa bốn bài có `data-demo` nhưng thiếu `<script>`: 02-04, 09-00, 09-04, 09-12.
+- Bổ sung tương thích `data-demo` cho một số widget cũ (`truth-table-normal-form`, `venn-counter`, `set-operations-visualizer`, `function-property-checker`, `predicate-proof-dnd`, wrapper `logic-operator-widgets`).
+- Nhúng các widget chưa gắn vào bài tương ứng (chi tiết trong inventory và báo cáo).
+- **Không gắn** các widget xác suất (chưa có chương riêng) và `tree-traversal-animation.js` (trùng 16-02).
+- **Không sửa** các file JS đang bẩn / untracked của Linh; `dfa-simulator.js` chỉ được nhúng vào 18-01.
+
+### Giai đoạn 2 — xong (vanilla, rồi nâng cấp Svelte + D3)
+
+Flagship Graph Explainer (BFS, DFS, Dijkstra, Kruskal, Prim), UI tiếng Việt:
+
+- Bản vanilla (vòng trước) vẫn giữ tại `public/js/graph-explainer.js` làm **dự phòng** (chạy không cần build).
+- Bản chính viết lại bằng **Svelte + D3**: chuyển động mượt, bố cục lực / kéo đỉnh, zoom, token chạy trên cạnh đang xét, bảng hàng đợi / ngăn xếp / hàng đợi ưu tiên / khoảng cách, giả mã đồng bộ, chỉnh sửa đồ thị và trọng số, chỉnh tốc độ, đồ thị mẫu.
+- Nguồn: `explainers/src/graph/`. Bundle: `public/js/explainers/graph-explainer.js`.
+- Bài 12-04, 16-03, 17-01 đã chuyển `<script>` sang bundle Svelte.
+
+**Toolchain:** thư mục `explainers/` (Vite library mode, xuất IIFE + CSS gói trong JS). Jekyll `exclude` thư mục nguồn. Hướng dẫn build: `explainers/README.md`.
+
+```bash
+cd explainers && npm install && npm run build   # ra public/js/explainers/
+cd explainers && npm run dev                    # xem trước tách Jekyll
+```
+
+### Giai đoạn 3 — xong (logic / Boole)
+
+Explainer liên kết **bảng chân trị ↔ mạch ↔ bản đồ Karnaugh** (`explainers/src/boolean/`, bundle `boolean-explainer.js`):
+
+- 2–4 biến; nhập biểu thức (∧ ∨ ¬ → ↔ ⊕) hoặc đảo bit trên bảng / K-map.
+- **Don't-care (×):** ô chu kỳ 0 → 1 → ×; Quine–McCluskey dùng × làm ô tự do nhưng chỉ phủ ô bắt buộc.
+- **SOP và CNF/POS** (khoanh các ô 0), kèm dạng chuẩn Σm / ΠM.
+- **Mạch từ AST của biểu thức gốc**, cùng mạch SOP tối tiểu và POS tối tiểu; bấm tín hiệu vào để chạy giá trị qua từng cổng.
+- **So sánh hai biểu thức** song song (tương đương hay không, phản ví dụ).
+- Nhúng: 01-03, 01-04, 13-03, 13-04.
+
+### Bổ sung — Quine–McCluskey (bài 13-05)
+
+`qm-explainer` (`explainers/src/qm/`, bundle riêng): nhập minterm + don't-care hoặc biểu thức, 2–6 biến; dán cột theo số bit 1 với dấu «-» và ✓, nguyên nhân nguyên tố, bảng phủ với nguyên tố cốt yếu, trội hàng/cột, Petrick, SOP tối tiểu; chạy/lùi/tiến từng bước kèm giải thích tiếng Việt; K-map đối chiếu cho 2–4 biến. Ví dụ mẫu khớp bài (F₁ mục 5b, don't-care mục 4, bốn biến mục 5). Test đối chiếu vét cạn trong `tests/qm.test.js`.
+
+### Giai đoạn 4 — xong (tập hợp, quan hệ, hàm)
+
+- **Venn** (`venn-explainer`): canvas 2–3 tập, biểu thức ∪ ∩ \ Δ ′ ¬, so sánh hai biểu thức, bao hàm–loại trừ, bấm vùng. Bài: 04-01, 04-02, 07-03, 11-03.
+- **Quan hệ** (`relation-explainer`): ma trận ↔ đồ thị ↔ tính chất kèm phản ví dụ, bao đóng, Warshall từng bước, lớp tương đương, Hasse. Bài: 05-01…05-04.
+- **Hàm** (`function-explainer`): vẽ mũi tên, đơn/toàn/song ánh kèm lý do, hàm ngược, hàm hợp. Bài: 06-01…06-03.
+
+### Giai đoạn 5 — xong (đếm, truy hồi)
+
+- **Đếm** (`counting-explainer`, BigInt): Pascal, liệt kê tổ hợp/hoán vị, sao–vạch, chuồng bồ câu. Bài: 07-02, 07-04, 07-05, 08-01.
+- **Truy hồi** (`recurrence-explainer`): công thức đóng (nghiệm phân biệt / kép / phức; nghiệm riêng hằng–tuyến tính–bậc hai), định lý Master, cây gọi fib. Bài: 10-01…10-04.
+
+### Giai đoạn 6 — xong (automata)
+
+`automata-explainer`: mô phỏng DFA / NFA / ε-NFA từng ký tự (tập trạng thái sống), **xây dựng tập con** từng bước (bảng + DFA hiện dần), **tối thiểu hóa DFA**, tự vẽ / sửa máy. Bài: 18-01…18-05, 18-11.
+
+### Giai đoạn 7 — xong (cây, Huffman, số học, hub)
+
+- **Cây** (`tree-explainer`): Huffman từng bước + mã hóa/giải mã, duyệt tiền/trung/hậu/mức, BST chèn/tìm/xóa. Bài: 16-01, 16-02, 16-04.
+- **Số học** (`numtheory-explainer`): Euclid mở rộng/Bézout, mặt đồng hồ modulo + bảng, lũy thừa nhanh, sàng, RSA đồ chơi. Bài: 15-01…15-04.
+- **`tools.html` thành hub:** 10 thẻ explainer (liên kết tới mọi bài có nhúng) + bảng widget cổ điển; dữ liệu sinh bởi `explainers/gen-tools-data.mjs` vào `_data/tools.yml`.
+
+### Giai đoạn 8 — chưa làm (P2, tùy chọn)
+
+Parse tree / CYK rút gọn và bộ reduction SAT–3SAT–CLIQUE (ngôn ngữ hình thức & phức tạp).
+
+### Kiểm chứng (2026-11-18)
+
+- `cd explainers && npm run build` — 10 bundle.
+- `npm test` — 86 test đơn vị đạt (gồm QM, Pascal, topo, logic, language) (Boolean, Venn, quan hệ/hàm, đếm/truy hồi, automata, cây, số học).
+- `bundle exec jekyll build` (build ra thư mục tạm) thành công; `node check-pages.mjs` trên 39 bài + `/tools/`: không lỗi console, mọi `data-demo` được mount, bấm mọi nút / đổi mọi select không ném lỗi. Chụp ảnh từng explainer để kiểm tra hiển thị.
+
+
+### Bổ sung: Tam giác Pascal (07-04)
+- `pascal-explainer` (nằm trong `counting-explainer.js`): xây tam giác từ đỉnh xuống, mỗi ô = tổng hai ô cha (hoạt ảnh trượt + cộng), tổng hàng 2ⁿ, đối xứng, cây gậy khúc côn cầu, tô màu mod 2 (Sierpiński).
+- Quy tắc: một trang chỉ nạp MỘT bundle Svelte.
+
+
+### Đợt rà soát toàn bộ bài học (2026-11-19) — đã làm
+
+Rà soát 120+ bài; hầu hết quy trình thuật toán lõi đã có explainer (BFS/DFS/Dijkstra/Kruskal/Prim, Euclid/lũy thừa nhanh/RSA, Warshall, Hasse, K-map, QM, automata, Huffman, truy hồi). Đợt này thêm 8 explainer vào các bài chỉ có chữ/bảng:
+
+| Explainer | Bài | Bundle |
+|:---|:---|:---|
+| `topo-explainer` (Kahn + DFS, chu trình) | 17-02 | `graph-explainer.js` |
+| `induction-explainer` (domino, thiếu cơ sở, n²+n+41) | 03-03 | `logic-explainer.js` (mới) |
+| `dpll-explainer` | 01-06 | `logic-explainer.js` |
+| `bits-explainer` (bù hai, cộng/tràn, endianness, Y2038) | 09-03, 09-02 | `logic-explainer.js` |
+| `cyk-explainer` | 19-11 | `language-explainer.js` (mới) |
+| `derive-explainer` (cây phân tích, nhập nhằng) | 19-07 | `language-explainer.js` |
+| `pda-explainer` | 19-08 | `language-explainer.js` |
+| `tm-explainer` | 18-12 | `language-explainer.js` |
+
+Ngoài ra 16-03 có thêm một explainer Prim riêng. Thanh điều khiển dùng chung: `src/shared/Stepper.svelte`.
+
+### Còn lại, theo thứ tự ưu tiên
+
+1. 04-03 Cantor đường chéo / khách sạn Hilbert (hoạt ảnh).
+2. 20-08 SAT → 3SAT (chuyển từng mệnh đề), 20-09 IS ↔ CLIQUE ↔ VC (bù đồ thị), 20-11 xấp xỉ vertex cover.
+3. 18-07/18-08 Regex → NFA (Thompson) và loại trạng thái (Kleene); 18-06 Mealy/Moore; 18-09, 19-10 trò chơi bổ đề bơm; 19-09 CFG → PDA.
+4. 17-03 ghép cặp (đường tăng) và tô màu tham lam theo thứ tự.
+5. 13-07 mạch cộng nhớ lan (ripple-carry) từng bit.
+6. 09-07/09-08 mô phỏng nghịch lý ngày sinh và va chạm băm; 09-05 hàng đợi.
+7. 15-xx định lý số dư Trung Hoa, Miller–Rabin, Diffie–Hellman.
+8. 01-05/02-03 kiểm tra suy diễn từng dòng; 03-02 phản chứng; 07-01 cây quyết định cho quy tắc nhân/cộng; 14-01 sắp xếp/tìm kiếm.
+
+### Kiểm chứng đợt này
+
+- `npm run build` — 13 bundle; `npm test` — 86/86; `node gen-tools-data.mjs` — 20 explainer; Jekyll build ra thư mục tạm; `check-pages.mjs` trên 49 trang + `/tools/`: 0 lỗi console.
+- Kịch bản Chrome riêng (`play`, bước, đổi preset, màn hình 390px): không tràn ngang, 0 lỗi.
+
+
+### Đợt rà soát tiếp theo (2026-11-19) — đã làm hết danh sách "còn lại" 1–8 (trừ 03-02)
+
+| Explainer | Bài | Bundle |
+|:---|:---|:---|
+| `infinity-explainer` (đường chéo Cantor, khách sạn Hilbert, ghép cặp ℕ×ℕ) | 04-03 | `logic-explainer.js` |
+| `reduction-explainer` (SAT→3SAT, IS/CLIQUE/VC, xấp xỉ VC) | 20-08, 20-09, 20-11 | `complexity-explainer.js` (mới) |
+| `regex-explainer` (Thompson, loại trạng thái) | 18-07, 18-08 | `language-explainer.js` |
+| `mealy-explainer` | 18-06 | `language-explainer.js` |
+| `pumping-explainer` (chính quy / CFL) | 18-09, 19-10 | `language-explainer.js` |
+| `cfgpda-explainer` | 19-09 | `language-explainer.js` |
+| `match-explainer` (ghép cặp Kuhn, tô màu tham lam) | 17-03 | `graph-explainer.js` |
+| `adder-explainer` (ripple-carry, cộng/trừ, tràn) | 13-07 | `logic-explainer.js` |
+| `sim-explainer` (sinh nhật, băm, hàng đợi/Little) | 09-07, 09-08, 09-05 | `logic-explainer.js` |
+| `crypto-explainer` (CRT, Miller–Rabin, Diffie–Hellman) | 15-02, 15-03 | `numtheory-explainer.js` |
+| `inference-explainer` (kiểm tra suy diễn bằng bảng chân trị) | 01-05 | `logic-explainer.js` |
+| `rule-explainer` (cây cộng/nhân + bao hàm–loại trừ) | 07-01 | `counting-explainer.js` |
+| `sort-explainer` (sắp xếp, tìm kiếm, đếm so sánh) | 14-01 | `recurrence-explainer.js` |
+
+Bài học chỉ được chèn thêm khối (sao lưu ở `/tmp/dx-backups-t84/`), không sửa nội dung.
+
+### Còn lại
+
+1. 03-02 phản chứng √2 (stepper); 02-03 suy diễn vị từ từng dòng.
+2. Các bài lý thuyết thuần (chứng minh) không có thuật toán để minh họa.
+
+### Kiểm chứng đợt này
+
+- `npm run build` — 14 bundle; `npm test` — 113/113; `node gen-tools-data.mjs` — 33 explainer; Jekyll build ra thư mục tạm; `check-pages.mjs` trên 67 trang + `/tools/`: 0 lỗi console; kịch bản Chrome riêng duyệt mọi tab/select/stepper và màn hình 390px: không tràn ngang, 0 lỗi.
+
+### Hai ứng viên cuối (2026-11-19) — đã làm
+
+| Explainer | Bài | Bundle |
+|:---|:---|:---|
+| `contradiction-explainer` (√2 vô tỷ, vô hạn số nguyên tố) | 03-02 | `logic-explainer.js` |
+| `predproof-explainer` (UI/EI/EG/UG, hai lỗi kinh điển, phản ví dụ trên mô hình ≤ 3 phần tử) | 02-03 | `logic-explainer.js` |
+
+Danh sách ứng viên đã hết. Kiểm chứng: 14 bundle, `npm test` 116/116, `gen-tools-data` 35 explainer, `check-pages` 69 trang + `/tools/` 0 lỗi console.

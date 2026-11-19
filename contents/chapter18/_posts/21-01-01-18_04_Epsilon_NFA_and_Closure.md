@@ -55,6 +55,15 @@ Bắt đầu $$E(\{q_0\})$$; chấp nhận nếu giao $$F\neq\emptyset$$.
 
 Stack/queue từ $$S$$, đi theo cạnh ε, đánh dấu visited — $$O(\lvert Q\rvert+\lvert E_\varepsilon\rvert)$$.
 
+### Explainer tương tác
+
+Explainer otomat: ε-NFA và ε-closure ngay từ bước đầu. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="automata-explainer" data-preset="enfa" data-tab="simulate"></div>
+</div>
+<script src="{{ '/public/js/explainers/automata-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 1. Chứng minh ba tính chất $$E$$.  

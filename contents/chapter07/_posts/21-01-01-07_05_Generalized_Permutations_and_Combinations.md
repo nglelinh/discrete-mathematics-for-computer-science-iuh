@@ -261,6 +261,15 @@ $$
 ---
 </div>
 
+### Explainer tương tác
+
+Explainer đếm: bài toán "ngôi sao và thanh chắn" — chia k vật vào n hộp và so với công thức tổ hợp lặp. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="counting-explainer" data-tab="stars"></div>
+</div>
+<script src="{{ '/public/js/explainers/counting-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 ### Bài tập 1

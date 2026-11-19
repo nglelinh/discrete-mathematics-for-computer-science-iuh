@@ -247,6 +247,15 @@ Ngược lại, để khẳng định một mệnh đề tồn tại "có $$x$$ 
 <p class="textbook-figure-caption" data-figure="3.5">Bản in *Elements* (1482) — tiêu chuẩn vàng của chứng minh trực tiếp: mỗi bước phải có căn cứ, không nhảy cóc.</p>
 Kỹ thuật này rất hữu ích trong khoa học máy tính: khi ai đó khẳng định "thuật toán này luôn chạy trong $$O(n)$$", một phản ví dụ về input làm nó chạy $$O(n^2)$$ là đủ để bác bỏ.
 
+
+## Công cụ tương tác
+
+Sắp xếp các bước của một chứng minh trực tiếp theo đúng thứ tự và kiểm tra lập luận.
+<div class="interactive-demo" markdown="1">
+<div data-demo="direct-proof-builder"></div>
+</div>
+<script src="{{ '/public/js/direct-proof-builder.js' | relative_url }}"></script>
+
 ## Bài tập
 
 ### Bài tập 1

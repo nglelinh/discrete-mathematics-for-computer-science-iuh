@@ -52,6 +52,15 @@ $$w\in L(N)\Leftrightarrow\hat\delta(\{q_0\},w)\cap F\neq\emptyset$$.
 
 Mẫu “kết thúc bằng $$x$$” / “chứa một trong nhiều pattern”: NFA đoán điểm bắt đầu; DFA nhớ hậu tố (có thể nhiều trạng thái hơn trước khi tối tiểu).
 
+### Explainer tương tác
+
+Explainer otomat: NFA là tập trạng thái sống đồng thời — xem tập đó thay đổi qua từng ký tự. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="automata-explainer" data-preset="nfa101" data-tab="simulate"></div>
+</div>
+<script src="{{ '/public/js/explainers/automata-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 1. Chứng minh $$1101\in L$$ NFA ends-01 bằng một đường.  

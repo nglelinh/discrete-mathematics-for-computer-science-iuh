@@ -43,6 +43,15 @@ $$\delta:Q\times(\Sigma\cup\{\varepsilon\})\times\Gamma\to\mathcal{P}(Q\times\Ga
 
 Empty stack ≡ final state (construction chuẩn Hopcroft/Sipser).
 
+### Explainer PDA: ngăn xếp từng bước
+
+Theo dõi một nhánh tính toán của PDA: chuỗi vào, trạng thái và ngăn xếp thay đổi theo từng chuyển tiếp (có ví dụ không tất định wwᴿ).
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="pda-explainer" data-preset="anbn"></div>
+</div>
+<script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 1. PDA ngoặc.  

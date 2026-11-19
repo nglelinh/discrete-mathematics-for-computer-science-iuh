@@ -42,6 +42,15 @@ $$L(r+s)=L(r)\cup L(s),\quad L(rs)=L(r)L(s),\quad L(r^*)=\bigcup_{k\ge 0}L(r)^k.
 
 $$(0+1)^*$$, $$0^*1^*$$, $$(0+1)^*01$$, $$(01)^*$$.
 
+### Thử nghiệm: dựng ε-NFA Thompson
+
+Ghép từng khối cho ký tự, nối tiếp, hợp và sao; thử chuỗi trên NFA vừa dựng.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="regex-explainer" data-tab="thompson"></div>
+</div>
+<script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 1. Regex: chẵn số 0 (trên $$\{0,1\}$$) — khó hơn nghĩ; dùng DFA trước.  

@@ -53,6 +53,15 @@ Ra $$\omega(q_0,a_1)\ldots\omega(q_{n-1},a_n)$$ độ dài $$n$$.
 **Ý.** Mealy→Moore: trạng thái $$(q,\mathrm{last\_out})$$ hoặc gán $$\lambda$$ theo cạnh vào.  
 Moore→Mealy: $$\omega(q,a)=\lambda(\delta(q,a))$$ (bỏ $$\lambda(q_0)$$ đầu nếu chuẩn hóa).
 
+### Thử nghiệm: máy Mealy và Moore
+
+Chạy máy có đầu ra từng ký tự và xem dãy đầu ra.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="mealy-explainer" data-preset="m11"></div>
+</div>
+<script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 1. Mealy đảo bit; chứng minh ra = bù từng bit.  

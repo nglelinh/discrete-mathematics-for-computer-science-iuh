@@ -80,6 +80,15 @@ Phần lớn máy tính cá nhân hôm nay — Windows, Linux, Mac trên chip In
 
 ---
 
+### Explainer thứ tự byte: big-endian và little-endian
+
+Nhập một số hex 32 bit và xem 4 byte nằm ở những địa chỉ nào trong bộ nhớ theo từng kiểu endian; đọc nhầm kiểu sẽ ra giá trị khác.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="bits-explainer" data-tab="endian"></div>
+</div>
+<script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
+
 ## Tại sao lại tồn tại cả hai cách?
 
 Câu hỏi tự nhiên sau khi biết big và little: **sao không chọn một kiểu cho cả thế giới?** Lý do không phải vì một kiểu “sai” và kiể kia “đúng”. Cả hai đều là **quy ước** — cách các nhóm kỹ sư khác nhau quyết định xếp byte khi thiết kế chip và giao thức, từ những thập niên 1970–1980. Khi đã có hàng triệu máy, file, và chương trình chạy theo một quy ước, đổi toàn bộ rất tốn kém — nên hai kiểu cùng tồn tại đến hôm nay.

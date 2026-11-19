@@ -110,6 +110,15 @@ Symlink hoặc tham chiếu chéo có thể tạo **chu trình** — khi đó c�
 
 <p class="textbook-figure-caption" data-figure="16.2">Parse tree — biểu diễn cấu trúc câu / biểu thức trong phân tích cú pháp.</p>
 
+### Explainer tương tác
+
+Explainer cây: dựng cây từ dãy khóa và xem số nút, chiều cao. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="tree-explainer" data-mode="traversal"></div>
+</div>
+<script src="{{ '/public/js/explainers/tree-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 ### Bài tập 1

@@ -131,6 +131,15 @@ def coeffs(seq):
 print(coeffs([1, 1, 1, 1]))
 ```
 
+
+## Công cụ tương tác
+
+Nhập một dãy ngắn và xem hàm sinh tương ứng, rồi thử khai triển vài số hạng đầu.
+<div class="interactive-demo" markdown="1">
+<div data-demo="generating-function-explorer"></div>
+</div>
+<script src="{{ '/public/js/generating-function-explorer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 ### Bài tập 1

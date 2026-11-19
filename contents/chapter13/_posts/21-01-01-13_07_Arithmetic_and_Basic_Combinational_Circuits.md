@@ -256,6 +256,15 @@ Với $$n$$ lớn (ví dụ 64), bộ cộng lan truyền mang **chậm**. CPU t
 
 </div>
 
+### Thử nghiệm: nhớ lan trong bộ cộng ripple-carry
+
+Bộ cộng 4 bit gồm bốn full adder nối tiếp; xem nhớ lan từng tầng, thử cộng/trừ bù hai và tràn số.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="adder-explainer" data-a="11" data-b="6"></div>
+</div>
+<script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
+
 ## 5. Mạch nhân — partial products và array
 
 ### 5.1. Ý tưởng

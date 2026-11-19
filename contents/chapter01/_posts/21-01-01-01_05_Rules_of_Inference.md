@@ -417,6 +417,15 @@ Resolution là nền tảng của **phương pháp chứng minh bác bỏ** (ref
 
 ---
 
+### Thử nghiệm: kiểm tra một suy diễn bằng bảng chân trị
+
+Chọn quy tắc mẫu hoặc tự nhập tiền đề và kết luận; bảng chân trị chỉ ra dòng phản ví dụ nếu suy diễn không hợp lệ (ví dụ hai ngụy biện).
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="inference-explainer" data-preset="mp"></div>
+</div>
+<script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
+
 ## 10. Bảng Tổng Hợp các Quy tắc Suy diễn
 
 | Tên quy tắc | Dạng suy diễn | Tên gọi |

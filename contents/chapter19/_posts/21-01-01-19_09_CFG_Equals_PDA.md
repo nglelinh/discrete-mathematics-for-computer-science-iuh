@@ -31,6 +31,15 @@ excerpt: "Hai chiều: grammar→PDA; PDA→grammar; khung chứng minh."
 
 PDA đoán production leftmost: stack giữ sentential form; match terminal với input.
 
+### Thử nghiệm: PDA mô phỏng dẫn xuất của CFG
+
+Ngăn xếp thay biến bằng vế phải luật và khớp ký hiệu kết thúc với chuỗi vào.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="cfgpda-explainer" data-preset="paren"></div>
+</div>
+<script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
+
 ## PDA → CFG
 
 Biến $$A_{pq}$$: “từ $$p$$ đến $$q$$, stack height + net 0 từ bottom symbol”.  

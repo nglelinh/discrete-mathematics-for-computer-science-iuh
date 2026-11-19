@@ -1,0 +1,462 @@
+# Tệp sinh tự động bởi explainers/gen-tools-data.mjs — đừng sửa tay.
+explainers:
+  - id: graph-explainer
+    icon: "🕸️"
+    name: "Đồ thị: BFS · DFS · Dijkstra"
+    desc: "Vẽ/sửa đồ thị, chạy thuật toán từng bước với giả mã được tô sáng."
+    lessons:
+      - "contents/chapter12/_posts/21-01-01-12_04_Euler_Hamilton_and_Graph_Traversal.md"
+      - "contents/chapter16/_posts/21-01-01-16_03_Spanning_Trees_and_MST.md"
+      - "contents/chapter17/_posts/21-01-01-17_01_Shortest_Path_and_Dijkstra.md"
+  - id: boolean-explainer
+    icon: "🔌"
+    name: "Đại số Boolean: K-map, Quine–McCluskey, mạch"
+    desc: "Bảng chân trị, SOP/POS, don’t-care, sơ đồ mạch từ biểu thức và so sánh hai biểu thức."
+    lessons:
+      - "contents/chapter01/_posts/21-01-01-01_03_Truth_Tables.md"
+      - "contents/chapter01/_posts/21-01-01-01_04_Logical_Equivalences_and_Normal_Forms.md"
+      - "contents/chapter13/_posts/21-01-01-13_03_Logic_Gates_and_Minimization.md"
+      - "contents/chapter13/_posts/21-01-01-13_04_Karnaugh_Maps.md"
+  - id: pascal-explainer
+    icon: "🔺"
+    name: "Tam giác Pascal: cộng từ đỉnh xuống"
+    desc: "Hoạt ảnh mỗi ô = tổng hai ô cha, tổng hàng 2ⁿ, đối xứng, cây gậy khúc côn cầu, tô màu mod 2."
+    lessons:
+      - "contents/chapter07/_posts/21-01-01-07_04_Binomial_Coefficients_and_Identities.md"
+  - id: qm-explainer
+    icon: "🧮"
+    name: "Quine–McCluskey từng bước"
+    desc: "Dán cột, nguyên nhân nguyên tố, bảng phủ, cốt yếu, trội hàng/cột, Petrick; 2–6 biến, don’t-care, đối chiếu K-map."
+    lessons:
+      - "contents/chapter13/_posts/21-01-01-13_05_Quine_McCluskey_Method.md"
+  - id: venn-explainer
+    icon: "⭕"
+    name: "Tập hợp: biểu đồ Venn"
+    desc: "Tô vùng theo biểu thức, so sánh hai biểu thức, bao hàm–loại trừ."
+    lessons:
+      - "contents/chapter04/_posts/21-01-01-04_01_Introduction_to_Sets.md"
+      - "contents/chapter04/_posts/21-01-01-04_02_Set_Operations.md"
+      - "contents/chapter07/_posts/21-01-01-07_03_Inclusion_Exclusion_Principle.md"
+      - "contents/chapter11/_posts/21-01-01-11_03_Inclusion_Exclusion_Principle.md"
+  - id: relation-explainer
+    icon: "🔗"
+    name: "Quan hệ: tính chất, bao đóng, Hasse"
+    desc: "Phản ví dụ cho từng tính chất, Warshall từng bước, lớp tương đương, sơ đồ Hasse."
+    lessons:
+      - "contents/chapter05/_posts/21-01-01-05_01_Introduction_to_Relations.md"
+      - "contents/chapter05/_posts/21-01-01-05_02_Properties_of_Relations.md"
+      - "contents/chapter05/_posts/21-01-01-05_03_Equivalence_Relations_and_Partial_Orders.md"
+      - "contents/chapter05/_posts/21-01-01-05_04_Relation_Operations_and_Closures.md"
+  - id: function-explainer
+    icon: "ƒ"
+    name: "Hàm số: đơn/toàn/song ánh"
+    desc: "Sửa mũi tên giữa hai tập, hàm ngược và hàm hợp."
+    lessons:
+      - "contents/chapter06/_posts/21-01-01-06_01_Introduction_to_Functions.md"
+      - "contents/chapter06/_posts/21-01-01-06_02_Properties_of_Functions.md"
+      - "contents/chapter06/_posts/21-01-01-06_03_Inverse_Functions_and_Composition.md"
+  - id: counting-explainer
+    icon: "🔢"
+    name: "Đếm: Pascal, tổ hợp, chuồng bồ câu"
+    desc: "Tam giác Pascal, liệt kê tổ hợp/hoán vị, sao–thanh chắn, chuồng bồ câu."
+    lessons:
+      - "contents/chapter07/_posts/21-01-01-07_02_Permutations_and_Combinations.md"
+      - "contents/chapter07/_posts/21-01-01-07_04_Binomial_Coefficients_and_Identities.md"
+      - "contents/chapter07/_posts/21-01-01-07_05_Generalized_Permutations_and_Combinations.md"
+      - "contents/chapter08/_posts/21-01-01-08_01_Pigeonhole_Principle_Basics.md"
+  - id: recurrence-explainer
+    icon: "🔁"
+    name: "Hệ thức truy hồi & chia để trị"
+    desc: "Công thức đóng từ đa thức đặc trưng, nghiệm riêng, định lý Master, cây đệ quy."
+    lessons:
+      - "contents/chapter10/_posts/21-01-01-10_01_Introduction_to_Recurrence_Relations.md"
+      - "contents/chapter10/_posts/21-01-01-10_02_Solving_Linear_Recurrence_Relations.md"
+      - "contents/chapter10/_posts/21-01-01-10_03_Nonhomogeneous_Recurrences.md"
+      - "contents/chapter10/_posts/21-01-01-10_04_Recurrence_Relations_in_Algorithms_and_Systems.md"
+  - id: automata-explainer
+    icon: "🤖"
+    name: "Otomat: DFA · NFA · tập con · tối thiểu hóa"
+    desc: "Mô phỏng từng ký tự, xây dựng tập con NFA→DFA, tối thiểu hóa DFA, tự vẽ máy."
+    lessons:
+      - "contents/chapter18/_posts/21-01-01-18_01_DFA_Definition_and_Acceptance.md"
+      - "contents/chapter18/_posts/21-01-01-18_02_Designing_DFAs_and_Correctness.md"
+      - "contents/chapter18/_posts/21-01-01-18_03_NFA_Definition_and_Acceptance.md"
+      - "contents/chapter18/_posts/21-01-01-18_04_Epsilon_NFA_and_Closure.md"
+      - "contents/chapter18/_posts/21-01-01-18_05_Subset_Construction_Proof.md"
+      - "contents/chapter18/_posts/21-01-01-18_11_Myhill_Nerode_and_Minimization.md"
+  - id: tree-explainer
+    icon: "🌳"
+    name: "Cây: Huffman, duyệt cây, BST"
+    desc: "Gộp Huffman từng bước, bốn kiểu duyệt cây, chèn/tìm/xóa trong BST."
+    lessons:
+      - "contents/chapter16/_posts/21-01-01-16_01_Introduction_to_Trees.md"
+      - "contents/chapter16/_posts/21-01-01-16_02_Tree_Traversal.md"
+      - "contents/chapter16/_posts/21-01-01-16_04_Huffman_and_BST.md"
+  - id: topo-explainer
+    icon: "📋"
+    name: "Sắp xếp topo: Kahn và DFS"
+    desc: "Bậc vào, hàng đợi, ngăn xếp đệ quy, hậu tự đảo; phát hiện chu trình khi thêm cạnh ngược."
+    lessons:
+      - "contents/chapter17/_posts/21-01-01-17_02_Topological_Sort.md"
+  - id: induction-explainer
+    icon: "🁢"
+    name: "Quy nạp: hiệu ứng domino"
+    desc: "Cơ sở + bước quy nạp làm domino đổ; ví dụ thiếu cơ sở và phản ví dụ n² + n + 41 tại n = 40."
+    lessons:
+      - "contents/chapter03/_posts/21-01-01-03_03_Mathematical_Induction.md"
+  - id: dpll-explainer
+    icon: "🧩"
+    name: "SAT solver DPLL từng bước"
+    desc: "Lan truyền đơn vị, quyết định, quay lui trên CNF tùy ý; ví dụ chuồng bồ câu 3→2 vô nghiệm."
+    lessons:
+      - "contents/chapter01/_posts/21-01-01-01_06_Introduction_to_SAT_Solvers.md"
+  - id: bits-explainer
+    icon: "🔢"
+    name: "Nhị phân: bù hai, cộng, endianness, Y2038"
+    desc: "Bấm bit để đọc giá trị bù hai, lấy số đối, cộng có nhớ và tràn số, thứ tự byte, tràn Unix time."
+    lessons:
+      - "contents/chapter09/_posts/21-01-01-09_02_Endianness_and_Byte_Order.md"
+      - "contents/chapter09/_posts/21-01-01-09_03_Twos_Complement_and_Y2038.md"
+  - id: cyk-explainer
+    icon: "🔺"
+    name: "CYK: bảng phân tích"
+    desc: "Điền bảng CYK từng điểm chia cho văn phạm dạng chuẩn Chomsky; tự sửa văn phạm và chuỗi."
+    lessons:
+      - "contents/chapter19/_posts/21-01-01-19_11_Closure_and_CNF_CYK.md"
+  - id: derive-explainer
+    icon: "🌲"
+    name: "Dẫn xuất trái nhất và cây phân tích"
+    desc: "Cây hiện dần theo dẫn xuất; so sánh nhiều cây của văn phạm nhập nhằng (biểu thức, dangling else)."
+    lessons:
+      - "contents/chapter19/_posts/21-01-01-19_07_Parse_Trees_and_Ambiguity.md"
+  - id: pda-explainer
+    icon: "📚"
+    name: "Otomat đẩy xuống (PDA)"
+    desc: "Chuỗi vào, trạng thái và ngăn xếp đổi theo từng chuyển tiếp; aⁿbⁿ, wwᴿ không tất định, ngoặc cân bằng."
+    lessons:
+      - "contents/chapter19/_posts/21-01-01-19_08_Pushdown_Automata.md"
+  - id: tm-explainer
+    icon: "📼"
+    name: "Máy Turing từng bước"
+    desc: "Băng, đầu đọc, bảng chuyển; cộng 1 nhị phân, nhận dạng 0ⁿ1ⁿ, cộng đơn phân."
+    lessons:
+      - "contents/chapter18/_posts/21-01-01-18_12_Turing_Machines.md"
+  - id: numtheory-explainer
+    icon: "🔐"
+    name: "Lý thuyết số: Euclid, modulo, RSA"
+    desc: "Euclid mở rộng/Bézout, mặt đồng hồ modulo, lũy thừa nhanh, sàng, RSA đồ chơi."
+    lessons:
+      - "contents/chapter15/_posts/21-01-01-15_01_Divisibility_and_Primes.md"
+      - "contents/chapter15/_posts/21-01-01-15_02_Modular_Arithmetic.md"
+      - "contents/chapter15/_posts/21-01-01-15_03_Introduction_to_Cryptography.md"
+      - "contents/chapter15/_posts/21-01-01-15_04_Applications_of_Number_Theory.md"
+  - id: infinity-explainer
+    icon: "♾️"
+    name: "Vô hạn: đường chéo Cantor, khách sạn Hilbert"
+    desc: "Lật đường chéo để tạo dãy không có trong danh sách, khách sạn vô hạn nhận thêm khách, hàm ghép cặp Cantor ℕ×ℕ → ℕ."
+    lessons:
+      - "contents/chapter04/_posts/21-01-01-04_03_Cardinality_and_Infinite_Sets.md"
+  - id: adder-explainer
+    icon: "➕"
+    name: "Bộ cộng ripple-carry"
+    desc: "Chuỗi bộ cộng toàn phần 4 bit, nhớ lan từng tầng, cộng/trừ bù hai, tràn số và độ trễ cổng."
+    lessons:
+      - "contents/chapter13/_posts/21-01-01-13_07_Arithmetic_and_Basic_Combinational_Circuits.md"
+  - id: sim-explainer
+    icon: "🎲"
+    name: "Mô phỏng xác suất: sinh nhật, băm, hàng đợi"
+    desc: "Nghịch lý sinh nhật, va chạm bảng băm, hàng đợi nhiều máy phục vụ và định luật Little."
+    lessons:
+      - "contents/chapter09/_posts/21-01-01-09_05_Connection_Pool_Sizing.md"
+      - "contents/chapter09/_posts/21-01-01-09_07_Birthday_Paradox_in_Production.md"
+      - "contents/chapter09/_posts/21-01-01-09_08_Counting_Hash_Collisions.md"
+  - id: inference-explainer
+    icon: "⚖️"
+    name: "Kiểm tra suy diễn"
+    desc: "Nhập tiền đề và kết luận, bảng chân trị tìm phản ví dụ; modus ponens/tollens, tam đoạn luận, nguỵ biện khẳng định hậu kiện."
+    lessons:
+      - "contents/chapter01/_posts/21-01-01-01_05_Rules_of_Inference.md"
+  - id: match-explainer
+    icon: "🔀"
+    name: "Ghép cặp và tô màu đồ thị"
+    desc: "Đường tăng Kuhn từng bước, điều kiện Hall; tô màu tham lam theo thứ tự đỉnh so với số màu tối ưu."
+    lessons:
+      - "contents/chapter17/_posts/21-01-01-17_03_Graph_Coloring_and_Matching.md"
+  - id: reduction-explainer
+    icon: "🔁"
+    name: "Quy dẫn NP: SAT→3SAT, IS/Clique/VC, xấp xỉ VC"
+    desc: "Tách mệnh đề thành 3-literal, tập độc lập ↔ clique ↔ phủ đỉnh, thuật toán xấp xỉ gấp đôi."
+    lessons:
+      - "contents/chapter20/_posts/21-01-01-20_08_From_SAT_to_3SAT.md"
+      - "contents/chapter20/_posts/21-01-01-20_09_Graph_Reductions_IS_CLIQUE_VC.md"
+      - "contents/chapter20/_posts/21-01-01-20_11_Approximation_Algorithms.md"
+  - id: regex-explainer
+    icon: "🧵"
+    name: "Regex ↔ otomat: Thompson, loại trạng thái"
+    desc: "Dựng ε-NFA Thompson từng khối, và loại trạng thái từng bước để lấy regex từ otomat."
+    lessons:
+      - "contents/chapter18/_posts/21-01-01-18_07_Regular_Expressions.md"
+      - "contents/chapter18/_posts/21-01-01-18_08_Kleene_Theorem.md"
+  - id: mealy-explainer
+    icon: "⇄"
+    name: "Máy Mealy và Moore"
+    desc: "Máy trạng thái có đầu ra: đầu ra theo chuyển tiếp (Mealy) hoặc theo trạng thái (Moore)."
+    lessons:
+      - "contents/chapter18/_posts/21-01-01-18_06_Mealy_and_Moore_Machines.md"
+  - id: pumping-explainer
+    icon: "🎈"
+    name: "Trò chơi bổ đề bơm"
+    desc: "Duyệt mọi cách chia xyz hoặc uvxyz và bơm để chứng minh ngôn ngữ không chính quy / không phi ngữ cảnh."
+    lessons:
+      - "contents/chapter18/_posts/21-01-01-18_09_Pumping_Lemma_Regular.md"
+      - "contents/chapter19/_posts/21-01-01-19_10_Pumping_Lemma_CFL.md"
+  - id: cfgpda-explainer
+    icon: "🔄"
+    name: "CFG → PDA"
+    desc: "Ngăn xếp mô phỏng dẫn xuất trái nhất: thay biến bằng vế phải, khớp ký hiệu kết thúc."
+    lessons:
+      - "contents/chapter19/_posts/21-01-01-19_09_CFG_Equals_PDA.md"
+  - id: crypto-explainer
+    icon: "🔑"
+    name: "CRT, Miller–Rabin, Diffie–Hellman"
+    desc: "Giải hệ đồng dư Trung Hoa, kiểm tra nguyên tố xác suất với nhân chứng, trao đổi khóa và Eve dò logarit."
+    lessons:
+      - "contents/chapter15/_posts/21-01-01-15_02_Modular_Arithmetic.md"
+      - "contents/chapter15/_posts/21-01-01-15_03_Introduction_to_Cryptography.md"
+  - id: rule-explainer
+    icon: "🌿"
+    name: "Cây quy tắc cộng và nhân"
+    desc: "Tính số cách từ lá lên gốc; cẩn thận khi các trường hợp giao nhau."
+    lessons:
+      - "contents/chapter07/_posts/21-01-01-07_01_Addition_and_Multiplication_Principles.md"
+  - id: sort-explainer
+    icon: "📊"
+    name: "Sắp xếp và tìm kiếm"
+    desc: "Bubble/insertion/selection, tuần tự và nhị phân với bộ đếm so sánh."
+    lessons:
+      - "contents/chapter14/_posts/21-01-01-14_01_Introduction_to_Algorithms.md"
+  - id: contradiction-explainer
+    icon: "⊥"
+    name: "Phản chứng từng bước"
+    desc: "Chứng minh √2 vô tỷ và vô hạn số nguyên tố theo từng dòng, tô sáng chỗ mâu thuẫn, thử số liệu."
+    lessons:
+  - id: predproof-explainer
+    icon: "∀∃"
+    name: "Suy luận vị từ từng dòng"
+    desc: "UI/UG/EI/EG với điều kiện của mỗi quy tắc, hai lỗi kinh điển và phản ví dụ trên mô hình hữu hạn."
+    lessons:
+widgets:
+  - id: algorithm-complexity-analyzer
+    name: "Algorithm complexity analyzer"
+    lessons:
+      - "contents/chapter14/_posts/21-01-01-14_03_Complexity_of_Algorithms.md"
+  - id: algorithm-visualization
+    name: "Algorithm visualization"
+    lessons:
+      - "contents/chapter14/_posts/21-01-01-14_01_Introduction_to_Algorithms.md"
+  - id: bfs-dfs-visualizer
+    name: "Bfs dfs visualizer"
+    lessons:
+      - "contents/chapter12/_posts/21-01-01-12_04_Euler_Hamilton_and_Graph_Traversal.md"
+  - id: big-o-growth-comparator
+    name: "Big o growth comparator"
+    lessons:
+      - "contents/chapter14/_posts/21-01-01-14_02_Growth_of_Functions_and_Big_O_Notation.md"
+  - id: binomial-coefficient-calc
+    name: "Binomial coefficient calc"
+    lessons:
+      - "contents/chapter07/_posts/21-01-01-07_04_Binomial_Coefficients_and_Identities.md"
+  - id: boolean-algebra-checker
+    name: "Boolean algebra checker"
+    lessons:
+      - "contents/chapter13/_posts/21-01-01-13_01_Boolean_Algebra_Basics.md"
+  - id: boolean-expression-evaluator
+    name: "Boolean expression evaluator"
+    lessons:
+      - "contents/chapter13/_posts/21-01-01-13_02_Boolean_Functions.md"
+  - id: characteristic-solver
+    name: "Characteristic solver"
+    lessons:
+      - "contents/chapter10/_posts/21-01-01-10_03_Nonhomogeneous_Recurrences.md"
+  - id: dfa-simulator
+    name: "Dfa simulator"
+    lessons:
+      - "contents/chapter18/_posts/21-01-01-18_01_DFA_Definition_and_Acceptance.md"
+  - id: dijkstra-visualizer
+    name: "Dijkstra visualizer"
+    lessons:
+      - "contents/chapter17/_posts/21-01-01-17_01_Shortest_Path_and_Dijkstra.md"
+  - id: direct-proof-builder
+    name: "Direct proof builder"
+    lessons:
+      - "contents/chapter03/_posts/21-01-01-03_01_Direct_Proof.md"
+  - id: euclidean-algorithm
+    name: "Euclidean algorithm"
+    lessons:
+      - "contents/chapter15/_posts/21-01-01-15_01_Divisibility_and_Primes.md"
+  - id: euler-hamilton-checker
+    name: "Euler hamilton checker"
+    lessons:
+      - "contents/chapter09/_posts/21-01-01-09_12_Knights_Tour_Deep_Dive.md"
+      - "contents/chapter12/_posts/21-01-01-12_04_Euler_Hamilton_and_Graph_Traversal.md"
+  - id: function-arrow-checker
+    name: "Function arrow checker"
+    lessons:
+      - "contents/chapter06/_posts/21-01-01-06_02_Properties_of_Functions.md"
+  - id: function-composition-pipeline
+    name: "Function composition pipeline"
+    lessons:
+      - "contents/chapter06/_posts/21-01-01-06_03_Inverse_Functions_and_Composition.md"
+  - id: function-property-checker
+    name: "Function property checker"
+    lessons:
+      - "contents/chapter06/_posts/21-01-01-06_02_Properties_of_Functions.md"
+  - id: generating-function-explorer
+    name: "Generating function explorer"
+    lessons:
+      - "contents/chapter11/_posts/21-01-01-11_01_Introduction_to_Generating_Functions.md"
+  - id: gf-recurrence-solver
+    name: "Gf recurrence solver"
+    lessons:
+      - "contents/chapter11/_posts/21-01-01-11_02_Solving_Recurrences_with_Generating_Functions.md"
+  - id: graph-adjacency-builder
+    name: "Graph adjacency builder"
+    lessons:
+      - "contents/chapter12/_posts/21-01-01-12_01_Introduction_to_Graphs.md"
+      - "contents/chapter12/_posts/21-01-01-12_02_Graph_Representations.md"
+      - "contents/chapter12/_posts/21-01-01-12_03_Paths_Cycles_and_Connectivity.md"
+  - id: graph-coloring-interactive
+    name: "Graph coloring interactive"
+    lessons:
+      - "contents/chapter17/_posts/21-01-01-17_03_Graph_Coloring_and_Matching.md"
+  - id: graph-isomorphism-checker
+    name: "Graph isomorphism checker"
+    lessons:
+      - "contents/chapter12/_posts/21-01-01-12_01_Introduction_to_Graphs.md"
+  - id: hasse-diagram
+    name: "Hasse diagram"
+    lessons:
+      - "contents/chapter05/_posts/21-01-01-05_03_Equivalence_Relations_and_Partial_Orders.md"
+  - id: huffman-coding
+    name: "Huffman coding"
+    lessons:
+      - "contents/chapter16/_posts/21-01-01-16_04_Huffman_and_BST.md"
+  - id: inclusion-exclusion-toggle
+    name: "Inclusion exclusion toggle"
+    lessons:
+      - "contents/chapter07/_posts/21-01-01-07_03_Inclusion_Exclusion_Principle.md"
+  - id: induction-checker
+    name: "Induction checker"
+    lessons:
+      - "contents/chapter03/_posts/21-01-01-03_03_Mathematical_Induction.md"
+  - id: kmap-interactive
+    name: "Kmap interactive"
+    lessons:
+      - "contents/chapter13/_posts/21-01-01-13_04_Karnaugh_Maps.md"
+  - id: kruskal-algorithm
+    name: "Kruskal algorithm"
+    lessons:
+      - "contents/chapter16/_posts/21-01-01-16_03_Spanning_Trees_and_MST.md"
+  - id: linear-recurrence-solver
+    name: "Linear recurrence solver"
+    lessons:
+      - "contents/chapter10/_posts/21-01-01-10_02_Solving_Linear_Recurrence_Relations.md"
+  - id: logic-evaluator
+    name: "Logic evaluator"
+    lessons:
+      - "contents/chapter01/_posts/21-01-01-01_02_Logical_Operators.md"
+  - id: logic-gates-builder
+    name: "Logic gates builder"
+    lessons:
+      - "contents/chapter09/_posts/21-01-01-09_04_From_Transistor_to_NAND.md"
+      - "contents/chapter13/_posts/21-01-01-13_03_Logic_Gates_and_Minimization.md"
+  - id: logic-operator-widgets
+    name: "Logic operator widgets"
+    lessons:
+      - "contents/chapter09/_posts/21-01-01-09_00_Binary_Data_Storage.md"
+  - id: modular-arithmetic-calc
+    name: "Modular arithmetic calc"
+    lessons:
+      - "contents/chapter15/_posts/21-01-01-15_02_Modular_Arithmetic.md"
+  - id: modular-calculator
+    name: "Modular calculator"
+    lessons:
+      - "contents/chapter15/_posts/21-01-01-15_01_Divisibility_and_Primes.md"
+  - id: nested-quantifier-grid
+    name: "Nested quantifier grid"
+    lessons:
+      - "contents/chapter02/_posts/21-01-01-02_02_Quantifiers_and_Nested_Quantifiers.md"
+      - "contents/chapter02/_posts/21-01-01-02_04_Predicate_Logic_in_Programming_and_Databases.md"
+  - id: number-theory-apps
+    name: "Number theory apps"
+    lessons:
+      - "contents/chapter15/_posts/21-01-01-15_04_Applications_of_Number_Theory.md"
+  - id: pigeonhole-visualizer
+    name: "Pigeonhole visualizer"
+    lessons:
+      - "contents/chapter08/_posts/21-01-01-08_01_Pigeonhole_Principle_Basics.md"
+  - id: predicate-proof-dnd
+    name: "Predicate proof dnd"
+    lessons:
+      - "contents/chapter02/_posts/21-01-01-02_03_Rules_of_Inference_for_Predicate_Logic.md"
+  - id: proposition-checker
+    name: "Proposition checker"
+    lessons:
+      - "contents/chapter01/_posts/21-01-01-01_02_Logical_Operators.md"
+  - id: quine-mccluskey-simplifier
+    name: "Quine mccluskey simplifier"
+    lessons:
+      - "contents/chapter13/_posts/21-01-01-13_05_Quine_McCluskey_Method.md"
+  - id: recurrence-visualizer
+    name: "Recurrence visualizer"
+    lessons:
+      - "contents/chapter10/_posts/21-01-01-10_01_Introduction_to_Recurrence_Relations.md"
+  - id: relation-classifier
+    name: "Relation classifier"
+    lessons:
+      - "contents/chapter05/_posts/21-01-01-05_02_Properties_of_Relations.md"
+  - id: relation-closure-warshall
+    name: "Relation closure warshall"
+    lessons:
+      - "contents/chapter05/_posts/21-01-01-05_04_Relation_Operations_and_Closures.md"
+  - id: relation-matrix-toggle
+    name: "Relation matrix toggle"
+    lessons:
+      - "contents/chapter05/_posts/21-01-01-05_01_Introduction_to_Relations.md"
+  - id: rsa-simulator
+    name: "Rsa simulator"
+    lessons:
+      - "contents/chapter15/_posts/21-01-01-15_03_Introduction_to_Cryptography.md"
+  - id: set-operations-visualizer
+    name: "Set operations visualizer"
+    lessons:
+      - "contents/chapter04/_posts/21-01-01-04_02_Set_Operations.md"
+  - id: stars-bars-visualizer
+    name: "Stars bars visualizer"
+    lessons:
+      - "contents/chapter07/_posts/21-01-01-07_05_Generalized_Permutations_and_Combinations.md"
+  - id: summation-loop-visualizer
+    name: "Summation loop visualizer"
+    lessons:
+      - "contents/chapter14/_posts/21-01-01-14_03_Complexity_of_Algorithms.md"
+  - id: surjection-counter
+    name: "Surjection counter"
+    lessons:
+      - "contents/chapter11/_posts/21-01-01-11_04_Applications_of_Inclusion_Exclusion.md"
+  - id: tree-traversal-visualizer
+    name: "Tree traversal visualizer"
+    lessons:
+      - "contents/chapter16/_posts/21-01-01-16_02_Tree_Traversal.md"
+  - id: truth-table-normal-form
+    name: "Truth table normal form"
+    lessons:
+      - "contents/chapter01/_posts/21-01-01-01_03_Truth_Tables.md"
+      - "contents/chapter01/_posts/21-01-01-01_04_Logical_Equivalences_and_Normal_Forms.md"
+  - id: venn-counter
+    name: "Venn counter"
+    lessons:
+      - "contents/chapter04/_posts/21-01-01-04_02_Set_Operations.md"
+  - id: venn-ie-three-sets
+    name: "Venn ie three sets"
+    lessons:
+      - "contents/chapter11/_posts/21-01-01-11_03_Inclusion_Exclusion_Principle.md"

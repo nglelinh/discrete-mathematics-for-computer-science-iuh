@@ -112,6 +112,15 @@ Hai lớp dễ lẫn — giống chuyện endianness: **(1)** dãy bit vật lý
 
 ---
 
+### Explainer bù hai, cộng có nhớ và Y2038
+
+Bấm vào từng bit để thấy giá trị bù hai (bit đầu có trọng số âm), xem cách lấy số đối bằng “đảo bit + 1”, cộng hai số từng cột để thấy tràn số, và kéo thanh trượt qua giới hạn $$2^{31}-1$$ của Unix time.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="bits-explainer" data-tab="twos"></div>
+</div>
+<script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
+
 ## ALU và overflow — cùng mạch cộng, khác cách đọc
 
 Trong ALU thật, cộng two's complement dùng **cùng mạch cộng không dấu** trên từng bit, kèm carry chain — không có “mạch cộng riêng cho số âm”. CPU chỉ thêm **lớp diễn giải** ở tầng ISA: sign bit, overflow flag, và quy tắc mở rộng dấu khi load/store. Ben Eater trên kênh YouTube thường minh họa phép cộng với số **không dấu** trên breadboard; CPU thật thêm overflow flag để phần mềm (hoặc người debug) biết khi nào phép cộng signed “vượt” dải biểu diễn.

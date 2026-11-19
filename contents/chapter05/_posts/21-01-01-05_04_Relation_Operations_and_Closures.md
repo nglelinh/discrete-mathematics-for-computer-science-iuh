@@ -177,6 +177,24 @@ def warshall(M):
 - **Compiler**: phân tích call graph để biết hàm nào có thể gọi gián tiếp hàm nào.
 - **Bảo mật**: quan hệ quyền truy cập kế thừa cần bao đóng theo cây vai trò.
 
+
+## Công cụ tương tác
+
+Chạy thuật toán Warshall từng vòng $$k$$ để tính bao đóng bắc cầu từ ma trận kề.
+<div class="interactive-demo" markdown="1">
+<div data-demo="relation-closure-warshall"></div>
+</div>
+<script src="{{ '/public/js/warshall-visualizer.js' | relative_url }}"></script>
+
+### Explainer tương tác
+
+Explainer quan hệ: bao đóng phản xạ/đối xứng và thuật toán Warshall chạy từng bước cho bao đóng bắc cầu. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="relation-explainer" data-preset="next" data-focus="warshall"></div>
+</div>
+<script src="{{ '/public/js/explainers/relation-explainer.js' | relative_url }}"></script>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Tính quan hệ hợp thành

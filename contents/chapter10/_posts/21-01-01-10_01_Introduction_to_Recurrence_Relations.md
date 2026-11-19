@@ -385,6 +385,15 @@ Quy hoạch động là kỹ thuật giải bài toán bằng cách kết hợp 
 
 Từ dân số, lãi suất ngân hàng, đến lan truyền virus trong mạng máy tính — tất cả đều có thể mô hình hóa bằng quan hệ truy hồi, giúp ta dự đoán được tương lai dựa trên quá khứ.
 
+### Explainer tương tác
+
+Explainer hệ thức truy hồi: tính số hạng, vẽ đồ thị và so sánh với công thức đóng (ví dụ Fibonacci). Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="recurrence-explainer" data-mode="linear" data-preset="fib"></div>
+</div>
+<script src="{{ '/public/js/explainers/recurrence-explainer.js' | relative_url }}"></script>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Xác định loại quan hệ truy hồi

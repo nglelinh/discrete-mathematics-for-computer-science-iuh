@@ -14,5 +14,5 @@
     window.addEventListener('resize', render); render(); result(false, 'Hãy tạo mũi tên rồi kiểm tra tính chất.');
   }
   function safeMount(host) { try { mount(host); } catch (err) { if (host) host.innerHTML = '<div class="fpc-out">Không thể tải demo hàm số. Hãy tải lại trang.</div>'; } }
-  document.addEventListener('DOMContentLoaded', function () { Array.prototype.forEach.call(document.querySelectorAll('[data-tool="function-property-checker"]'), safeMount); });
+  document.addEventListener('DOMContentLoaded', function () { Array.prototype.forEach.call(document.querySelectorAll('[data-demo="function-property-checker"], [data-tool="function-property-checker"]'), safeMount); });
 })();

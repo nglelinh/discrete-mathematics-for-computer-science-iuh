@@ -398,6 +398,26 @@ Phân loại các biểu thức sau:
 
 </details>
 
+
+## Công cụ tương tác
+
+Sinh bảng chân trị và dạng chuẩn DNF/CNF cho một biểu thức với các biến $$p, q, r$$ (dùng `and`/`or`/`not` hoặc $$\land, \lor, \to, \leftrightarrow$$).
+<div class="interactive-demo" markdown="1">
+<div data-demo="truth-table-normal-form"></div>
+</div>
+<script src="{{ '/public/js/truth-table-normal-form.js' | relative_url }}"></script>
+
+
+### Explainer liên kết: bảng chân trị ↔ mạch ↔ bản đồ Karnaugh
+
+Cùng một hàm Boolean được xem đồng thời trên bảng chân trị, mạch SOP tối tiểu, và K-map. Sửa biểu thức hoặc bấm một ô trên bảng / K-map — hai khung còn lại cập nhật theo. Dùng để đối chiếu các bài tập lập bảng ở mục dưới.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="boolean-explainer" data-vars="3" data-focus="table" data-expr="(p ∧ q) → r"></div>
+</div>
+<script src="{{ '/public/js/explainers/boolean-explainer.js' | relative_url }}"></script>
+
+
 ## Bài tập bổ sung: Tạo bảng chân trị (từ ccrr1_baitap1)
 
 **Hướng dẫn chung:** Lập bảng chân trị với tất cả giá trị có thể của các mệnh đề thành phần. Sử dụng các phép toán logic cơ bản để tính toán.

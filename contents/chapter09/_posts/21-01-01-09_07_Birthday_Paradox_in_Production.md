@@ -108,6 +108,15 @@ Huy nhìn bảng và hiểu vì sao CTO từng nói “INT32 random tiết kiệ
 
 ---
 
+### Thử nghiệm: nghịch lý sinh nhật
+
+Kéo số người hoặc số ngày để xem xác suất trùng; mô phỏng ngẫu nhiên so với công thức.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="sim-explainer" data-tab="birthday"></div>
+</div>
+<script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
+
 ## Tom Archer — từ blog đến code chạy được
 
 Tom Archer tổng hợp scenarios production:

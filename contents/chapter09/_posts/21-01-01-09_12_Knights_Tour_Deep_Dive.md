@@ -204,6 +204,7 @@ Con số ~26.5 nghìn tỷ tour **không** có nghĩa phải liệt kê hết đ
 
 <div data-demo="euler-hamilton-checker"></div>
 
+<script src="{{ '/public/js/euler-hamilton-checker.js' | relative_url }}"></script>
 Widget trên minh họa **Euler vs Hamilton** trên đồ thị nhỏ — cùng phân biệt “duyệt cạnh” và “duyệt đỉnh” mà Knight's tour thuộc về nhánh Hamilton.
 
 ---

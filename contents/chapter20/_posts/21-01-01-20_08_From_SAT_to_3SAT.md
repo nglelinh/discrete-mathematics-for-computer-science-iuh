@@ -68,6 +68,15 @@ $$
 *(⇒)* Mọi $$\ell$$ false buộc dây $$y_i$$ dẫn mâu thuẫn cuối.  
 *(⇐)* Gán $$y$$ “prefix true đến trước literal đúng”. $$\square$$
 
+### Thử nghiệm: SAT → 3SAT
+
+Tách từng mệnh đề thành mệnh đề ≤ 3 literal bằng biến phụ; kiểm tra tương đương thỏa mãn được.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="reduction-explainer" data-tab="3sat"></div>
+</div>
+<script src="{{ '/public/js/explainers/complexity-explainer.js' | relative_url }}"></script>
+
 ## 3. Tổng hợp
 
 $$f(\varphi)$$ = hội mọi mệnh đề 3-literal sau pad.  

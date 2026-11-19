@@ -42,6 +42,15 @@ excerpt: "Phát biểu; chứng minh từ DFA; ứng dụng 0ⁿ1ⁿ; checklist 
 **Chứng minh.** Cho DFA $$p=\lvert Q\rvert$$. $$w=a_1\ldots a_n$$, $$n\ge p$$. Dãy $$p+1$$ trạng thái trên tiền tố độ dài $$\le p$$: lặp $$q_i=q_j$$, $$0\le i<j\le p$$.  
 $$x$$ đến $$i$$, $$y$$ từ $$i$$ đến $$j$$, $$z$$ còn lại. Bơm = quay vòng. $$\square$$
 
+### Thử nghiệm: trò chơi bổ đề bơm (ngôn ngữ chính quy)
+
+Chọn p và duyệt mọi cách chia w = xyz; nếu không cách nào bơm được thì L không chính quy.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="pumping-explainer" data-kind="regular" data-lang="anbn"></div>
+</div>
+<script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
+
 ## Ứng dụng
 
 <div class="textbook-theorem" markdown="1">

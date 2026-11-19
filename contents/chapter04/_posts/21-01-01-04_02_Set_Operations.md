@@ -234,6 +234,15 @@ exactly_one = service_a ^ service_b
 
 Bloom filter là cấu trúc dữ liệu xác suất dùng để kiểm tra "một phần tử có thuộc tập hợp không". Nó là ứng dụng thông minh của phép toán tập hợp và hàm băm, tiết kiệm bộ nhớ nhưng có thể cho kết quả dương tính giả (false positive).
 
+### Explainer tương tác
+
+Explainer Venn: tô vùng theo biểu thức, và so sánh hai biểu thức để kiểm chứng một hằng đẳng thức tập hợp. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="venn-explainer" data-sets="3" data-expr="(A ∪ B) \ C" data-focus="compare" data-expr-b="(A \ C) ∪ (B \ C)"></div>
+</div>
+<script src="{{ '/public/js/explainers/venn-explainer.js' | relative_url }}"></script>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Tính toán cơ bản
@@ -376,6 +385,19 @@ your answers.
 (c) **Đúng.** Nếu Q × R ⊆ S × T, lấy x ∈ Q, y ∈ R bất kỳ: (x,y) ∈ Q × R ⊆ S × T, suy ra x ∈ S, y ∈ T. Vậy Q ⊆ S và R ⊆ T. Ngược lại, nếu Q ⊆ S, R ⊆ T thì (x,y) ∈ Q × R ⇒ x ∈ Q ⊆ S, y ∈ R ⊆ T ⇒ (x,y) ∈ S × T.
 
 </details>
+
+
+## Công cụ tương tác
+
+Nhập hai tập hữu hạn và xem hợp, giao, hiệu, hiệu đối xứng trên sơ đồ; bên dưới, điền lực lượng các vùng Venn ba tập để kiểm tra công thức đếm.
+<div class="interactive-demo" markdown="1">
+<div data-demo="set-operations-visualizer"></div>
+</div>
+<script src="{{ '/public/js/set-operations-visualizer.js' | relative_url }}"></script>
+<div class="interactive-demo" markdown="1">
+<div data-demo="venn-counter"></div>
+</div>
+<script src="{{ '/public/js/venn-counter.js' | relative_url }}"></script>
 
 ## Định lý De Morgan (mở rộng)
 

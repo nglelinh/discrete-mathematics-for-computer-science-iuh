@@ -190,6 +190,15 @@ Bật/tắt cạnh trên đồ thị năm đỉnh; ma trận kề và bậc cậ
 <script src="{{ '/public/js/graph-adjacency-builder.js' | relative_url }}"></script>
 
 
+
+## Công cụ tương tác
+
+So hai đồ thị nhỏ để xem chúng có cùng cấu trúc (đẳng cấu) hay không.
+<div class="interactive-demo" markdown="1">
+<div data-demo="graph-isomorphism-checker"></div>
+</div>
+<script src="{{ '/public/js/graph-isomorphism-checker.js' | relative_url }}"></script>
+
 ## Bài tập
 
 ### Bài tập 1

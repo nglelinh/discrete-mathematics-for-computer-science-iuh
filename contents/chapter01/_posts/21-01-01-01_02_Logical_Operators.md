@@ -1001,6 +1001,18 @@ D. (A=B hoặc B=C) hoặc (A=C)
 
 ---
 
+
+## Công cụ tương tác
+
+Nhập một câu để xem nó có phải mệnh đề không, rồi thử tính giá trị chân trị của biểu thức với các biến $$P, Q, R$$.
+<div class="interactive-demo" markdown="1">
+<div data-demo="proposition-checker"></div>
+</div>
+<div class="interactive-demo" markdown="1">
+<div data-demo="logic-evaluator"></div>
+</div>
+<script src="{{ '/public/js/logic-operator-widgets.js' | relative_url }}"></script>
+
 ## Xem thêm / Video gợi ý
 
 - <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (Truth table proof + laws)

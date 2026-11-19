@@ -50,6 +50,15 @@ $$O(\lvert r\rvert)$$ trạng thái.
 
 **Tính đúng:** quy nạp $$L(N_r)=L(r)$$.
 
+### Thử nghiệm: Thompson từng khối
+
+Xem NFA được dựng khối theo khối từ regex.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="regex-explainer" data-tab="thompson"></div>
+</div>
+<script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
+
 ## Chiều NFA → DFA
 
 Subset construction (bài 18.5).
@@ -58,6 +67,14 @@ Subset construction (bài 18.5).
 
 Loại bỏ trạng thái / hệ phương trình Arden:  
 $$X=A X+B\Rightarrow X=A^*B$$ (nếu $$\varepsilon\notin L(A)$$ hoặc xử lý cẩn thận).
+
+### Thử nghiệm: loại trạng thái để lấy regex
+
+Thêm S, F rồi loại từng trạng thái; thử hai thứ tự loại để thấy regex khác nhau nhưng tương đương.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="regex-explainer" data-tab="eliminate" data-preset="dfa01"></div>
+</div>
 
 ## Bài tập
 

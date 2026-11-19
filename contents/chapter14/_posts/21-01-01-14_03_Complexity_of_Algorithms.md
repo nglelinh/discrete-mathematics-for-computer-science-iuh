@@ -82,6 +82,15 @@ Merge sort: $$T(n)=2T(n/2)+\Theta(n)$$ → $$T(n)=\Theta(n\log n)$$ (master theo
 </div>
 <script src="{{ '/public/js/algorithm-complexity-analyzer.js' | relative_url }}"></script>
 
+
+## Công cụ tương tác
+
+Chọn kiểu vòng lặp (một lớp hoặc hai lớp) và $$n$$ nhỏ để thấy số lần “work” khớp với công thức $$n$$, $$n(n+1)/2$$ hay $$n^2$$.
+<div class="interactive-demo" markdown="1">
+<div data-demo="summation-loop-visualizer"></div>
+</div>
+<script src="{{ '/public/js/summation-loop-visualizer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 ### Bài tập 1

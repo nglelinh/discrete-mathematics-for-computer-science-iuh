@@ -199,6 +199,15 @@ Mâu thuẫn không xuất hiện ngay lập tức. Nó được tạo ra bằng
 
 Đây là mẫu lập luận xuất hiện nhiều trong toán rời rạc và thuật toán: giả sử một cấu trúc "đã tối ưu", sau đó suy ra nó vẫn còn rút gọn được, dẫn đến vô lý.
 
+### Thử nghiệm: phản chứng từng dòng
+
+Bấm Bước tiếp để xem chứng minh √2 vô tỷ hiện dần, với bước mâu thuẫn được tô đỏ; thử phân số bất kỳ, hoặc chuyển sang chứng minh vô hạn số nguyên tố của Euclid.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="contradiction-explainer" data-tab="sqrt2"></div>
+</div>
+<script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
+
 ## Ví dụ 2: Có vô hạn số nguyên tố
 
 

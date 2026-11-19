@@ -97,7 +97,7 @@
   }
 
   function render() {
-    const host = document.querySelector('[data-tool="truth-table-normal-form"]');
+    const host = document.querySelector('[data-demo="truth-table-normal-form"], [data-tool="truth-table-normal-form"]');
     if (!host) return;
 
     host.insertAdjacentHTML(

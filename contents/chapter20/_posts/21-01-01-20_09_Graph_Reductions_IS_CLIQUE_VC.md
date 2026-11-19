@@ -70,6 +70,15 @@ IS size $$\ge k$$ ⇔ cover size $$\le n-k$$.
 
 </div>
 
+### Thử nghiệm: tập độc lập, clique và phủ đỉnh
+
+Tập độc lập cực đại, clique của đồ thị bù và phủ đỉnh cực tiểu: ba bài toán liên hệ qua phần bù.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="reduction-explainer" data-tab="clique"></div>
+</div>
+<script src="{{ '/public/js/explainers/complexity-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 1. Vẽ gadget 2 mệnh đề $$(x\lor y\lor z)\land(\neg x\lor y\lor w)$$.  

@@ -51,6 +51,15 @@ $$\delta:(Q\setminus\{q_A,q_R\})\times\Gamma\to Q\times\Gamma\times\{L,R\}$$.
 
 Thuật toán hiệu quả ≈ TM (hoặc mô hình tương đương).
 
+### Explainer máy Turing: băng, đầu đọc, trạng thái
+
+Chạy máy Turing từng bước: đọc ký hiệu, ghi, di chuyển đầu đọc và đổi trạng thái; có máy cộng 1 nhị phân, nhận dạng 0ⁿ1ⁿ và cộng đơn phân.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="tm-explainer" data-preset="inc"></div>
+</div>
+<script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
+
 ## Bài tập
 
 1. TM nhận $$0^n1^n$$ (ý gạch).  

@@ -77,6 +77,7 @@ Phép cộng hai bit $$a$$ và $$b$$ là bài toán Boole thuần túy. Khi cả
 
 <div data-demo="logic-gates-builder"></div>
 
+<script src="{{ '/public/js/logic-gates-builder.js' | relative_url }}"></script>
 ---
 
 ## Từ breadboard đến two's complement

@@ -1,6 +1,6 @@
 (function () {
   function render() {
-    var host = document.getElementById('set-operations-visualizer');
+    var host = document.querySelector('[data-demo="set-operations-visualizer"]') || document.getElementById('set-operations-visualizer');
     if (!host) return;
 
     // Clear existing inline content and rebuild from scratch

@@ -1,462 +1,64 @@
 ---
 layout: page
-title: Công cụ Tính toán
+title: Công cụ Tương tác
 permalink: /tools/
 ---
 
 <div class="chapter-intro">
-    <h1>🧮 Công cụ Tính toán Toán Rời Rạc</h1>
-    <p class="lead">Bộ sưu tập các công cụ tính toán và trực quan hóa cho toán rời rạc</p>
+    <h1>🧮 Công cụ tương tác Toán Rời Rạc</h1>
+    <p class="lead">Mỗi explainer chạy ngay trong bài học: chỉnh dữ liệu, chạy từng bước, thấy phản ví dụ. Bấm tên bài để mở công cụ đúng chỗ trong bài.</p>
 </div>
-
-## 🔍 Danh sách Công cụ
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
-    
-    <!-- Logic Tools -->
-    <div class="tool-card" onclick="window.location.href='#logic-tools'">
-        <div class="tool-icon">🧠</div>
-        <h3>Logic và Chứng minh</h3>
-        <p>Bảng chân trị, phép toán logic, kiểm tra tautology</p>
-        <div class="tool-tags">
-            <span class="tag">Logic</span>
-            <span class="tag">Chứng minh</span>
-        </div>
-    </div>
-    
-    <!-- Set Theory Tools -->
-    <div class="tool-card" onclick="window.location.href='#set-tools'">
-        <div class="tool-icon">📊</div>
-        <h3>Lý thuyết Tập hợp</h3>
-        <p>Phép toán tập hợp, biểu đồ Venn, tính chất tập hợp</p>
-        <div class="tool-tags">
-            <span class="tag">Tập hợp</span>
-            <span class="tag">Venn</span>
-        </div>
-    </div>
-    
-    <!-- Relations Tools -->
-    <div class="tool-card" onclick="window.location.href='#relation-tools'">
-        <div class="tool-icon">🔗</div>
-        <h3>Quan hệ</h3>
-        <p>Ma trận quan hệ, đồ thị có hướng, kiểm tra tính chất</p>
-        <div class="tool-tags">
-            <span class="tag">Quan hệ</span>
-            <span class="tag">Ma trận</span>
-        </div>
-    </div>
-    
-    <!-- Combinatorics Tools -->
-    <div class="tool-card" onclick="window.location.href='#combinatorics-tools'">
-        <div class="tool-icon">🎲</div>
-        <h3>Tổ hợp</h3>
-        <p>Hoán vị, tổ hợp, giai thừa, nguyên lý đếm</p>
-        <div class="tool-tags">
-            <span class="tag">Hoán vị</span>
-            <span class="tag">Tổ hợp</span>
-        </div>
-    </div>
-    
-    <!-- Graph Theory Tools -->
-    <div class="tool-card" onclick="window.location.href='#graph-tools'">
-        <div class="tool-icon">🕸️</div>
-        <h3>Lý thuyết Đồ thị</h3>
-        <p>Tạo đồ thị, thuật toán đường đi, tô màu</p>
-        <div class="tool-tags">
-            <span class="tag">Đồ thị</span>
-            <span class="tag">Thuật toán</span>
-        </div>
-    </div>
-    
-    <!-- Probability Tools -->
-    <div class="tool-card" onclick="window.location.href='#probability-tools'">
-        <div class="tool-icon">🎯</div>
-        <h3>Xác suất</h3>
-        <p>Mô phỏng xác suất, phân phối, thống kê</p>
-        <div class="tool-tags">
-            <span class="tag">Xác suất</span>
-            <span class="tag">Thống kê</span>
-        </div>
-    </div>
-    
-</div>
-
----
-
-## 🧠 Logic và Chứng minh {#logic-tools}
-
-### Máy tính Bảng Chân trị
-
-<div id="truth-table-calculator" class="interactive-tool">
-    <h4>📋 Tạo Bảng Chân trí</h4>
-    
-    <div style="margin-bottom: 20px;">
-        <label><strong>Biểu thức logic:</strong></label>
-        <input type="text" id="logic-expression" placeholder="(P ∧ Q) → R" style="width: 100%; padding: 8px; margin-top: 5px;">
-        <small style="color: #666;">Sử dụng: ∧ (AND), ∨ (OR), ¬ (NOT), → (IMPLIES), ↔ (IFF)</small>
-    </div>
-    
-    <div style="margin-bottom: 20px;">
-        <label><strong>Biến logic (cách nhau bởi dấu phẩy):</strong></label>
-        <input type="text" id="logic-variables" placeholder="P,Q,R" value="P,Q" style="width: 100%; padding: 8px; margin-top: 5px;">
-    </div>
-    
-    <button onclick="generateTruthTable()" style="width: 100%; margin-bottom: 20px;">
-        Tạo bảng chân trí
-    </button>
-    
-    <div id="truth-table-result" style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
-        <p style="color: #666; text-align: center; margin: 0;">Nhập biểu thức logic để tạo bảng chân trí</p>
-    </div>
-</div>
-
-<script>
-function generateTruthTable() {
-    const expression = document.getElementById('logic-expression').value.trim();
-    const variables = document.getElementById('logic-variables').value.split(',').map(v => v.trim());
-    const resultDiv = document.getElementById('truth-table-result');
-    
-    if (!expression || variables.length === 0) {
-        resultDiv.innerHTML = '<p style="color: #dc3545; text-align: center; margin: 0;">Vui lòng nhập biểu thức và biến!</p>';
-        return;
-    }
-    
-    try {
-        // Generate all possible truth value combinations
-        const numVars = variables.length;
-        const numRows = Math.pow(2, numVars);
-        
-        let tableHTML = '<table style="width: 100%; border-collapse: collapse; margin: 10px 0;">';
-        
-        // Header
-        tableHTML += '<tr style="background: #f8f9fa;">';
-        variables.forEach(v => {
-            tableHTML += `<th style="border: 1px solid #dee2e6; padding: 8px; text-align: center;">${v}</th>`;
-        });
-        tableHTML += `<th style="border: 1px solid #dee2e6; padding: 8px; text-align: center; background: #e3f2fd;">${expression}</th>`;
-        tableHTML += '</tr>';
-        
-        // Rows
-        for (let i = 0; i < numRows; i++) {
-            tableHTML += '<tr>';
-            const values = [];
-            
-            // Generate truth values for this row
-            for (let j = 0; j < numVars; j++) {
-                const value = (i >> (numVars - 1 - j)) & 1;
-                values.push(value === 1);
-                tableHTML += `<td style="border: 1px solid #dee2e6; padding: 8px; text-align: center;">${value === 1 ? 'T' : 'F'}</td>`;
-            }
-            
-            // Evaluate expression (simplified for demo)
-            const result = evaluateLogicExpression(expression, variables, values);
-            const resultColor = result ? '#d4edda' : '#f8d7da';
-            tableHTML += `<td style="border: 1px solid #dee2e6; padding: 8px; text-align: center; background: ${resultColor}; font-weight: bold;">${result ? 'T' : 'F'}</td>`;
-            tableHTML += '</tr>';
-        }
-        
-        tableHTML += '</table>';
-        
-        // Analysis
-        const allTrue = checkAllRows(expression, variables, true);
-        const allFalse = checkAllRows(expression, variables, false);
-        
-        let analysis = '<div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 6px;">';
-        analysis += '<h5>📊 Phân tích:</h5>';
-        
-        if (allTrue) {
-            analysis += '<div style="color: #155724; margin: 5px 0;">✅ <strong>Tautology</strong> - Luôn đúng</div>';
-        } else if (allFalse) {
-            analysis += '<div style="color: #721c24; margin: 5px 0;">❌ <strong>Contradiction</strong> - Luôn sai</div>';
-        } else {
-            analysis += '<div style="color: #856404; margin: 5px 0;">⚖️ <strong>Contingency</strong> - Có thể đúng hoặc sai</div>';
-        }
-        
-        analysis += '</div>';
-        
-        resultDiv.innerHTML = tableHTML + analysis;
-        
-    } catch (error) {
-        resultDiv.innerHTML = `<p style="color: #dc3545; text-align: center; margin: 0;">Lỗi: ${error.message}</p>`;
-    }
-}
-
-function evaluateLogicExpression(expression, variables, values) {
-    // Simplified evaluation for demo - in practice would need proper parser
-    let expr = expression;
-    
-    // Replace variables with values
-    for (let i = 0; i < variables.length; i++) {
-        const regex = new RegExp(variables[i], 'g');
-        expr = expr.replace(regex, values[i] ? 'true' : 'false');
-    }
-    
-    // Simple pattern matching for basic operations
-    if (expr.includes('∧')) {
-        // Handle AND operations
-        expr = expr.replace(/true\s*∧\s*true/g, 'true');
-        expr = expr.replace(/true\s*∧\s*false|false\s*∧\s*true|false\s*∧\s*false/g, 'false');
-    }
-    
-    if (expr.includes('∨')) {
-        // Handle OR operations  
-        expr = expr.replace(/false\s*∨\s*false/g, 'false');
-        expr = expr.replace(/true\s*∨\s*true|true\s*∨\s*false|false\s*∨\s*true/g, 'true');
-    }
-    
-    // For demo, return a simple result based on first variable
-    return values[0] || false;
-}
-
-function checkAllRows(expression, variables, expectedValue) {
-    // Simplified check for demo
-    return false;
-}
-</script>
-
----
-
-## 📊 Lý thuyết Tập hợp {#set-tools}
-
-### Máy tính Phép toán Tập hợp
-
-<div id="set-operations-calculator" class="interactive-tool">
-    <h4>🔢 Phép toán Tập hợp</h4>
-    
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-        <div>
-            <label><strong>Tập A:</strong></label>
-            <input type="text" id="set-a-ops" placeholder="1,2,3,4" value="1,2,3,4" style="width: 100%; padding: 8px; margin-top: 5px;">
-        </div>
-        <div>
-            <label><strong>Tập B:</strong></label>
-            <input type="text" id="set-b-ops" placeholder="3,4,5,6" value="3,4,5,6" style="width: 100%; padding: 8px; margin-top: 5px;">
-        </div>
-        <div>
-            <label><strong>Phép toán:</strong></label>
-            <select id="set-operation" style="width: 100%; padding: 8px; margin-top: 5px;">
-                <option value="union">A ∪ B (Hợp)</option>
-                <option value="intersection">A ∩ B (Giao)</option>
-                <option value="difference">A \ B (Hiệu)</option>
-                <option value="symmetric">A △ B (Hiệu đối xứng)</option>
-                <option value="cartesian">A × B (Tích Cartesian)</option>
-            </select>
-        </div>
-    </div>
-    
-    <button onclick="calculateSetOperation()" style="width: 100%; margin-bottom: 20px;">
-        Thực hiện phép toán
-    </button>
-    
-    <div id="set-operation-result" style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
-        <p style="color: #666; text-align: center; margin: 0;">Chọn tập hợp và phép toán</p>
-    </div>
-</div>
-
-<script>
-function calculateSetOperation() {
-    const setAInput = document.getElementById('set-a-ops').value.trim();
-    const setBInput = document.getElementById('set-b-ops').value.trim();
-    const operation = document.getElementById('set-operation').value;
-    const resultDiv = document.getElementById('set-operation-result');
-    
-    try {
-        const setA = new Set(setAInput.split(',').map(x => x.trim()).filter(x => x));
-        const setB = new Set(setBInput.split(',').map(x => x.trim()).filter(x => x));
-        
-        let result, resultName, resultSymbol;
-        
-        switch(operation) {
-            case 'union':
-                result = new Set([...setA, ...setB]);
-                resultName = 'Hợp';
-                resultSymbol = '∪';
-                break;
-            case 'intersection':
-                result = new Set([...setA].filter(x => setB.has(x)));
-                resultName = 'Giao';
-                resultSymbol = '∩';
-                break;
-            case 'difference':
-                result = new Set([...setA].filter(x => !setB.has(x)));
-                resultName = 'Hiệu';
-                resultSymbol = '\\';
-                break;
-            case 'symmetric':
-                const diff1 = new Set([...setA].filter(x => !setB.has(x)));
-                const diff2 = new Set([...setB].filter(x => !setA.has(x)));
-                result = new Set([...diff1, ...diff2]);
-                resultName = 'Hiệu đối xứng';
-                resultSymbol = '△';
-                break;
-            case 'cartesian':
-                const cartesian = [];
-                setA.forEach(a => {
-                    setB.forEach(b => {
-                        cartesian.push(`(${a},${b})`);
-                    });
-                });
-                
-                resultDiv.innerHTML = `
-                    <div style="text-align: center;">
-                        <h5 style="color: #495057; margin-bottom: 15px;">Kết quả Tích Cartesian</h5>
-                        <div style="font-size: 1.1em; margin-bottom: 15px;">
-                            <strong>A = {${[...setA].join(', ')}}</strong><br>
-                            <strong>B = {${[...setB].join(', ')}}</strong>
-                        </div>
-                        <div style="font-size: 1.2em; color: #007bff; font-weight: bold; padding: 15px; background: #f8fbff; border-radius: 6px; border: 2px solid #007bff; margin: 15px 0;">
-                            A × B = {${cartesian.join(', ')}}
-                        </div>
-                        <div style="margin-top: 15px; font-size: 0.9em; color: #666;">
-                            Số cặp: |A × B| = |A| × |B| = ${setA.size} × ${setB.size} = ${cartesian.length}
-                        </div>
-                    </div>
-                `;
-                return;
-        }
-        
-        resultDiv.innerHTML = `
-            <div style="text-align: center;">
-                <h5 style="color: #495057; margin-bottom: 15px;">Kết quả ${resultName}</h5>
-                <div style="font-size: 1.1em; margin-bottom: 15px;">
-                    <strong>A = {${[...setA].join(', ')}}</strong><br>
-                    <strong>B = {${[...setB].join(', ')}}</strong>
-                </div>
-                <div style="font-size: 1.3em; color: #007bff; font-weight: bold; padding: 15px; background: #f8fbff; border-radius: 6px; border: 2px solid #007bff;">
-                    A ${resultSymbol} B = {${[...result].join(', ') || '∅'}}
-                </div>
-                <div style="margin-top: 15px; font-size: 0.9em; color: #666;">
-                    Số phần tử: |A ${resultSymbol} B| = ${result.size}
-                </div>
-            </div>
-        `;
-        
-    } catch (error) {
-        resultDiv.innerHTML = `<p style="color: #dc3545; text-align: center; margin: 0;">Lỗi: ${error.message}</p>`;
-    }
-}
-</script>
-
----
-
-## 🔗 Quan hệ {#relation-tools}
-
-### Phân tích Quan hệ
-
-<div id="relation-analyzer" class="interactive-tool">
-    <h4>🔍 Phân tích Tính chất Quan hệ</h4>
-    
-    <div style="margin-bottom: 20px;">
-        <label><strong>Tập hợp A:</strong></label>
-        <input type="text" id="relation-set" placeholder="1,2,3" value="1,2,3" style="width: 100%; padding: 8px; margin-top: 5px;">
-    </div>
-    
-    <div style="margin-bottom: 20px;">
-        <label><strong>Quan hệ R:</strong></label>
-        <input type="text" id="relation-pairs" placeholder="(1,1),(1,2),(2,2),(2,3),(3,3)" value="(1,1),(1,2),(2,2),(2,3),(3,3)" style="width: 100%; padding: 8px; margin-top: 5px;">
-    </div>
-    
-    <button onclick="analyzeRelation()" style="width: 100%; margin-bottom: 20px;">
-        Phân tích quan hệ
-    </button>
-    
-    <div id="relation-analysis-result" style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
-        <p style="color: #666; text-align: center; margin: 0;">Nhập quan hệ để phân tích</p>
-    </div>
-</div>
-
----
-
-## 🎲 Tổ hợp {#combinatorics-tools}
-
-### Máy tính Hoán vị và Tổ hợp
-
-<div data-exercise="logic-basics"></div>
-
----
-
-## 🕸️ Lý thuyết Đồ thị {#graph-tools}
-
-<div class="interactive-tool">
-    <h4>🎨 Trình tạo Đồ thị</h4>
-    <p style="text-align: center; color: #666; padding: 40px;">
-        🚧 Đang phát triển - Sẽ có trong phiên bản tiếp theo
-    </p>
-</div>
-
----
-
-## 🎯 Xác suất {#probability-tools}
-
-<div class="interactive-tool">
-    <h4>🎲 Mô phỏng Xác suất</h4>
-    <p style="text-align: center; color: #666; padding: 40px;">
-        🚧 Đang phát triển - Sẽ có trong phiên bản tiếp theo
-    </p>
-</div>
-
----
-
-## 🎯 Hướng dẫn Sử dụng
-
-### Mẹo sử dụng hiệu quả:
-
-1. **Bookmark trang này** để truy cập nhanh các công cụ
-2. **Thử nghiệm với dữ liệu khác nhau** để hiểu rõ khái niệm
-3. **Sử dụng kết hợp** nhiều công cụ cho bài toán phức tạp
-4. **Kiểm tra kết quả** bằng tính toán thủ công để củng cố kiến thức
-
-### Keyboard shortcuts:
-- `Tab`: Di chuyển giữa các trường nhập
-- `Enter`: Thực hiện tính toán (khi focus vào button)
 
 <style>
-.tool-card {
-    background: white;
-    border: 2px solid #e9ecef;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.tool-card:hover {
-    border-color: #007bff;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,123,255,0.15);
-}
-
-.tool-icon {
-    font-size: 3em;
-    margin-bottom: 15px;
-}
-
-.tool-card h3 {
-    color: #495057;
-    margin: 15px 0 10px 0;
-}
-
-.tool-card p {
-    color: #6c757d;
-    margin-bottom: 15px;
-    line-height: 1.5;
-}
-
-.tool-tags {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.tag {
-    background: #e3f2fd;
-    color: #1976d2;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.8em;
-    font-weight: 500;
-}
+  .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px; margin: 24px 0; }
+  .hub-card { border: 1px solid #d0d7de; border-radius: 12px; padding: 16px 18px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  .hub-card h3 { margin: 0 0 6px; font-size: 1.05rem; border: 0; }
+  .hub-card .hub-icon { font-size: 1.6rem; line-height: 1; }
+  .hub-card p { margin: 4px 0 8px; color: #475569; font-size: .9rem; }
+  .hub-card ul { margin: 0; padding-left: 1.1rem; font-size: .88rem; }
+  .hub-card li { margin: 2px 0; }
+  .hub-meta { font-size: .8rem; color: #64748b; }
+  .hub-widgets td, .hub-widgets th { vertical-align: top; padding: 4px 8px; }
 </style>
+
+## 🚀 Explainer (Svelte + D3)
+
+<div class="hub-grid">
+{% for t in site.data.tools.explainers %}
+  <div class="hub-card" id="{{ t.id }}">
+    <div class="hub-icon">{{ t.icon }}</div>
+    <h3>{{ t.name }}</h3>
+    <p>{{ t.desc }}</p>
+    <div class="hub-meta">Có trong {{ t.lessons | size }} bài học:</div>
+    <ul>
+    {% for path in t.lessons %}
+      {% assign found = site.posts | where: "path", path | first %}
+      {% if found %}<li><a href="{{ found.url | relative_url }}">{{ found.title }}</a></li>{% endif %}
+    {% endfor %}
+    </ul>
+  </div>
+{% endfor %}
+</div>
+
+## 🧩 Widget cổ điển trong bài
+
+Các widget gốc vẫn được giữ nguyên bên cạnh explainer mới.
+
+<table class="hub-widgets">
+  <thead><tr><th>Widget</th><th>Bài học</th></tr></thead>
+  <tbody>
+  {% for w in site.data.tools.widgets %}
+    <tr>
+      <td>{{ w.name }}</td>
+      <td>
+      {% for path in w.lessons %}
+        {% assign found = site.posts | where: "path", path | first %}
+        {% if found %}<a href="{{ found.url | relative_url }}">{{ found.title }}</a>{% unless forloop.last %}, {% endunless %}{% endif %}
+      {% endfor %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<p class="hub-meta">Danh sách được sinh từ <code>_data/tools.yml</code> (chạy <code>node explainers/gen-tools-data.mjs</code> sau khi thêm/bớt embed).</p>

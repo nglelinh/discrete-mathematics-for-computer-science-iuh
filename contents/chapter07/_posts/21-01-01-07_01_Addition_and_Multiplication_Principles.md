@@ -134,6 +134,15 @@ Một trường đại học tạo mã sinh viên gồm 2 chữ cái in hoa (A-Z
 
 Quy tắc nhân thực chất là hệ quả trực tiếp của công thức tính lực lượng tích Descartes. Khi một tác vụ gồm k bước, với bước thứ i có nᵢ cách thực hiện, chúng ta có thể xem mỗi cách thực hiện toàn bộ tác vụ là một phần tử của tích Descartes của k tập hợp, trong đó tập thứ i có nᵢ phần tử.
 
+### Thử nghiệm: cây quy tắc cộng và nhân
+
+Tính số cách từ lá lên gốc và xem vì sao quy tắc cộng cần các trường hợp rời nhau.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="rule-explainer" data-preset="outfit"></div>
+</div>
+<script src="{{ '/public/js/explainers/counting-explainer.js' | relative_url }}"></script>
+
 ## Kết hợp Quy tắc Cộng và Nhân
 
 Nhiều bài toán thực tế cần kết hợp cả hai quy tắc.

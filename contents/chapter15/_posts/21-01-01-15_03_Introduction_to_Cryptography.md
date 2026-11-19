@@ -123,6 +123,14 @@ $$M=123$$: $$C = 123^{17}\bmod 3233 = 855$$; giải mã bằng $$855^{2753}\bmod
 
 **Giả thuyết bảo mật.** Từ $$(n,e)$$ công khai, suy $$d$$ về thực chất đòi hỏi phân tích $$n=pq$$ — được tin khó với $$n$$ cỡ 2048 bit trở lên trên máy tính cổ điển. Thuật toán Shor trên máy lượng tử đe dọa RSA (Mục 15.4).
 
+### Thử nghiệm: kiểm tra nguyên tố Miller–Rabin
+
+Tìm nhân chứng cho hợp số, xem số Carmichael và các cơ sở “nói dối”.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="crypto-explainer" data-tab="miller" data-n="561" data-a="2"></div>
+</div>
+
 ## 4. Diffie–Hellman
 
 ![Diffie–Hellman](/discrete-mathematics-for-computer-science-iuh/img/course/Number_diffie_hellman.svg)
@@ -143,6 +151,14 @@ $$K=19^6\bmod 23=2$$ và $$K=8^{15}\bmod 23=2$$.
 
 </div>
 
+### Thử nghiệm: trao đổi khóa Diffie–Hellman
+
+Alice, Bob và Eve với p nhỏ: hai bên ra cùng khóa, Eve dò logarit rời rạc.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="crypto-explainer" data-tab="dh"></div>
+</div>
+
 ## 5. Chữ ký số
 
 <div class="textbook-definition" markdown="1">
@@ -159,6 +175,15 @@ RSA (mô hình đơn giản): $$S \equiv M^d \pmod n$$; xác minh $$S^e \equiv M
 <div data-demo="rsa-simulator"></div>
 </div>
 <script src="{{ '/public/js/rsa-simulator.js' | relative_url }}"></script>
+
+### Explainer tương tác
+
+Explainer số học: RSA đồ chơi — tạo khóa, mã hóa, giải mã với số nhỏ. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="numtheory-explainer" data-tab="rsa"></div>
+</div>
+<script src="{{ '/public/js/explainers/numtheory-explainer.js' | relative_url }}"></script>
 
 ## Bài tập
 

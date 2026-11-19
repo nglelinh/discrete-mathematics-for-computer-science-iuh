@@ -74,6 +74,15 @@ Xếp lịch thi: hai môn trùng sinh viên không cùng ca. Gán thanh ghi: ha
 </div>
 <script src="{{ '/public/js/graph-coloring-interactive.js' | relative_url }}"></script>
 
+### Thử nghiệm: tô màu tham lam so với số màu tối ưu
+
+Đổi thứ tự đỉnh và xem tham lam dùng bao nhiêu màu so với χ(G).
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="match-explainer" data-tab="coloring"></div>
+</div>
+<script src="{{ '/public/js/explainers/graph-explainer.js' | relative_url }}"></script>
+
 ## 2. Đồ thị hai phía và ghép cặp
 
 ![Matching](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_bipartite_matching.svg)
@@ -97,6 +106,14 @@ Xếp lịch thi: hai môn trùng sinh viên không cùng ca. Gán thanh ghi: ha
 </div>
 
 Ứng dụng: gán task–worker, matching sinh viên–đề tài, assignment.
+
+### Thử nghiệm: ghép cặp bằng đường tăng
+
+Thuật toán Kuhn tìm ghép cực đại từng bước; ví dụ vi phạm điều kiện Hall.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="match-explainer" data-tab="matching"></div>
+</div>
 
 ## 3. Bản đồ độ khó (chương 12–17)
 

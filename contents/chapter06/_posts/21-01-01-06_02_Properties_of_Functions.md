@@ -138,6 +138,28 @@ Cùng một công thức có thể có tính chất khác nhau nếu domain/codo
 ![Hash table — gần đơn ánh để giảm va chạm](/discrete-mathematics-for-computer-science-iuh/img/course/Injection.svg)
 
 <p class="textbook-figure-caption" data-figure="6.12">Hash function tốt nên gần đơn ánh — hai input khác nhau cho cùng output gây collision trong bảng băm.</p>
+
+## Công cụ tương tác
+
+Nối mũi tên từ miền nguồn sang miền đích, rồi kiểm tra đơn ánh, toàn ánh và song ánh.
+<div class="interactive-demo" markdown="1">
+<div data-demo="function-arrow-checker"></div>
+</div>
+<script src="{{ '/public/js/function-arrow-checker.js' | relative_url }}"></script>
+<div class="interactive-demo" markdown="1">
+<div data-demo="function-property-checker"></div>
+</div>
+<script src="{{ '/public/js/function-property-checker.js' | relative_url }}"></script>
+
+### Explainer tương tác
+
+Explainer hàm số: đơn ánh/toàn ánh kèm phần tử vi phạm cụ thể. Các widget có sẵn bên trên vẫn giữ nguyên.
+
+<div class="interactive-demo" markdown="1">
+<div data-demo="function-explainer" data-preset="surj" data-focus="props"></div>
+</div>
+<script src="{{ '/public/js/explainers/function-explainer.js' | relative_url }}"></script>
+
 ## Bài tập thực hành
 
 ### Bài tập 1: Kiểm tra tính chất
