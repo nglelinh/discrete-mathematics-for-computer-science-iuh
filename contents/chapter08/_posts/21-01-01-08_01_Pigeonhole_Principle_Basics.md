@@ -111,6 +111,14 @@ Tổng số đối tượng ≤ n × (⌈N/n⌉ - 1) < n × (N/n + 1 - 1) = N.
 
 Mâu thuẫn! Vậy ít nhất một nhóm chứa ≥ ⌈N/n⌉ đối tượng. ∎
 
+### Video ngắn: Ví dụ hình học: 5 điểm trong hình vuông 2×2
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/pigeonhole-square.mp4"></video>
+</div>
+
+Chia hình vuông $2\times2$ thành $4$ ô $1\times1$ (các "chuồng"). Đặt $5$ điểm (các "chim") thì theo nguyên lý Dirichlet có ít nhất một ô chứa hai điểm, và hai điểm cùng ô cách nhau không quá độ dài đường chéo $\sqrt2$. Video thử ba cách đặt khác nhau — lần nào cũng có cặp điểm như vậy.
+
 ## Birthday paradox — xác suất vs đảm bảo
 
 Nguyên lý Dirichlet trả lời câu *khi nào chắc chắn trùng*. **Nghịch lý sinh nhật** (birthday paradox) trả lời câu *khi nào xác suất trùng đã lớn* — và kết quả bất ngờ: với chỉ khoảng **23** người, xác suất có ít nhất hai người cùng ngày sinh đã **> 50%** (trong khi phải đợi **367** người mới *đảm bảo* trùng theo Dirichlet).

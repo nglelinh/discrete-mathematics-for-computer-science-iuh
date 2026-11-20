@@ -70,6 +70,14 @@ Hai đầu mút $$00$$ và $$10$$ cũng khác nhau một bit, nên mép đối d
 
 <p class="textbook-figure-caption" data-figure="13.41">Thứ tự Gray ba bit.</p>
 
+### Video ngắn: Mã Gray trên khối lập phương
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/gray-code-cube.mp4"></video>
+</div>
+
+Mã Gray $n$ bit được tạo bằng cách phản chiếu dãy $n-1$ bit rồi thêm tiền tố $0$ cho nửa đầu và $1$ cho nửa sau. Dãy $000,001,011,010,110,111,101,100$ đi qua cả $8$ đỉnh của khối lập phương, mỗi bước theo một cạnh (đổi đúng một bit) và quay về đỉnh xuất phát — đó là lý do hai ô kề nhau trên K-map chỉ khác nhau một biến.
+
 ## 2. Cấu trúc K-map và quy tắc nhóm
 
 ### 2.1. Ba thành phần
