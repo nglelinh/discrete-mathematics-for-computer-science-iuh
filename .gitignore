@@ -50,3 +50,6 @@ scripts/
 
 # Explainer toolchain (source + deps). Keep built bundles in public/js/explainers/.
 explainers/node_modules/
+
+# Student data (grades, attendance) - never commit
+2026/
