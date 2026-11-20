@@ -103,6 +103,14 @@ Các nghiệm modulo 9: $$x \equiv 2,5,8 \pmod 9$$.
 
 </div>
 
+### Video ngắn: Bảng cửu chương theo modulo
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/modular-times-table.mp4"></video>
+</div>
+
+Đặt $n=100$ điểm trên đường tròn và nối điểm $i$ với điểm $k\cdot i \bmod n$. Khi $k$ tăng, các đoạn thẳng tạo thành đường bao đẹp mắt: $k=2$ cho hình tim (cardioid), $k=3$ cho nephroid, và nói chung đường bao có $k-1$ điểm nhọn. Đây là phép nhân trong $\mathbb{Z}_n$ được nhìn dưới dạng hình học.
+
 ## 3. Nghịch đảo modulo
 
 <div class="textbook-definition" markdown="1">

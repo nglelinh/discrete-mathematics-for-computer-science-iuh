@@ -98,6 +98,14 @@ $$
 </div>
 Đây là kết quả kinh điển của bao hàm - loại trừ: bắt đầu từ $n!$ hoán vị, trừ hoán vị cố định ít nhất một vị trí, cộng lại hoán vị cố định ít nhất hai vị trí, v.v.
 
+### Video ngắn: Derangement và hằng số $1/e$
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/derangement-one-over-e.mp4"></video>
+</div>
+
+Trong $24$ hoán vị của $\{1,2,3,4\}$ có đúng $9$ hoán vị không có phần tử nào đứng đúng chỗ, tức $D_4=9$. Theo bao hàm–loại trừ, $D_n=n!\sum_{k=0}^{n}\frac{(-1)^k}{k!}$, nên $D_n/n!\to 1/e\approx 0{,}3679$: với $n$ lớn, khoảng $36{,}8\%$ hoán vị là derangement.
+
 ## 5. Ứng dụng trong tô màu và ràng buộc
 
 Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Phần này liên hệ khái niệm toán học với bài toán thực tế trong lập trình và hệ thống.

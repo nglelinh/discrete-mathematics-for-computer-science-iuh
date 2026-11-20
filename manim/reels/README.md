@@ -30,3 +30,6 @@ ffmpeg -i out.mp4 -i music.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -shortest ou
 | `handshake.py` | `Handshake` | `handshake-lemma.mp4` | 12-01 |
 | `konigsberg.py` | `Konigsberg` | `konigsberg-bridges.mp4` | 12-04 |
 | `fibonacci.py` | `Fibonacci` | `fibonacci-golden-ratio.mp4` | 10-02 |
+| `euclid.py` | `Euclid` | `euclid-gcd-tiling.mp4` | 15-01 |
+| `cardioid.py` | `Cardioid` | `modular-times-table.mp4` | 15-02 |
+| `derangement.py` | `Derangement` | `derangement-one-over-e.mp4` | 11-04 |
