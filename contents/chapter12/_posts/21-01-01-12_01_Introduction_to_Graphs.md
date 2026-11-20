@@ -170,6 +170,14 @@ Tổng bậc $$= 9$$ lẻ, trong khi $$2|E|$$ luôn chẵn. Theo định lý b�
 
 </div>
 
+### Video ngắn: Định lý bắt tay trong 20 giây
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/handshake-lemma.mp4"></video>
+</div>
+
+Mỗi cạnh được cộng vào bậc của **cả hai** đầu mút, nên mỗi lần thêm một cạnh thì tổng bậc tăng đúng $2$. Vì vậy $\sum_v \deg(v)=2|E|$ luôn là số chẵn, và số đỉnh bậc lẻ phải chẵn. Trong đồ thị minh hoạ có $8$ cạnh, tổng bậc $16$ và $4$ đỉnh bậc lẻ.
+
 ## 5. Ứng dụng nhanh trong tin học
 
 Việc chọn mô hình vô hướng hay có hướng không mang tính trang trí: nó phản ánh ngữ nghĩa quan hệ.

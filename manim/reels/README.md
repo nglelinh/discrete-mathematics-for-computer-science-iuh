@@ -1,17 +1,20 @@
 # Reel Manim (video dọc 9:16)
 
 Các video ngắn 20–30 giây (1080×1920, không nhạc) minh hoạ bài học bằng [Manim Community](https://www.manim.community/).
+Phong cách chung: nền tối, phụ đề tiếng Việt, vùng an toàn |x| ≤ 4, |y| ≤ 6,5 (khung 9×16 đơn vị). Cấu hình và hàm dùng chung nằm trong `common.py`.
 
 ## Cài đặt
 ```bash
 python3 -m venv venv && . venv/bin/activate
-pip install manim          # cần LaTeX (texlive) và ffmpeg
+pip install manim          # cần LaTeX (texlive-latex-extra, texlive-science, dvisvgm), ffmpeg và font DejaVu Sans
 ```
 
 ## Render
 ```bash
-manim -qh pascal_pi.py PascalPi          # -> media/videos/pascal_pi/1920p60/PascalPi.mp4
-ffmpeg -i PascalPi.mp4 -c:v libx264 -crf 26 -preset slow -pix_fmt yuv420p -movflags +faststart -an out.mp4
+cd manim/reels
+manim -qh handshake.py Handshake    # -> media/videos/handshake/1920p60/Handshake.mp4
+ffmpeg -i media/videos/handshake/1920p60/Handshake.mp4 -c:v libx264 -crf 26 -preset slow \
+  -pix_fmt yuv420p -movflags +faststart -an handshake-lemma.mp4
 ```
 File nén đặt vào `public/videos/reels/` và nhúng vào bài bằng thẻ `<video>` (xem bài 07-04).
 
@@ -21,6 +24,9 @@ ffmpeg -i out.mp4 -i music.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -shortest ou
 ```
 
 ## Danh sách
-| File | Scene | Bài |
-|---|---|---|
-| `pascal_pi.py` | `PascalPi` | 07-04 |
+| File | Scene | Video | Bài |
+|---|---|---|---|
+| `pascal_pi.py` | `PascalPi` | `pascal-to-pi.mp4` | 07-04 |
+| `handshake.py` | `Handshake` | `handshake-lemma.mp4` | 12-01 |
+| `konigsberg.py` | `Konigsberg` | `konigsberg-bridges.mp4` | 12-04 |
+| `fibonacci.py` | `Fibonacci` | `fibonacci-golden-ratio.mp4` | 10-02 |
