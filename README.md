@@ -1,10 +1,10 @@
-# Toán Rời Rạc cho Khoa học Máy tính - IUH
+# Toán Rời Rạc cho Khoa học Máy tính
 
-Tài liệu học tập cho môn **Toán Rời Rạc cho Khoa học Máy tính** tại Đại học Công nghiệp Thành phố Hồ Chí Minh (IUH).
+Tài liệu học tập mở cho môn **Toán Rời Rạc cho Khoa học Máy tính**.
 
 ## Giới thiệu khóa học
 
-Khóa học này cung cấp nền tảng toán học vững chắc về toán rời rạc cho sinh viên Khoa học Máy tính. Nội dung được thiết kế đặc biệt để phù hợp với chương trình đào tạo của IUH, tập trung vào các ứng dụng thực tế trong lập trình và khoa học máy tính.
+Khóa học này cung cấp nền tảng toán học vững chắc về toán rời rạc cho sinh viên Khoa học Máy tính, tập trung vào các ứng dụng thực tế trong lập trình và khoa học máy tính.
 
 ### Mục tiêu khóa học:
 - Hiểu các khái niệm cơ bản của toán rời rạc
@@ -35,6 +35,7 @@ Khóa học này cung cấp nền tảng toán học vững chắc về toán r�
 |:---:|:---:|:---|
 | 7 | Nguyên lý đếm cơ bản | Quy tắc cộng, nhân, hoán vị, tổ hợp, bao hàm-loại trừ |
 | 8 | Nguyên lý Dirichlet | Nguyên lý chuồng bồ câu và ứng dụng |
+| 9 | Ứng dụng CNTT hiện đại | Case study từ blog production: encoding, endianness, đếm, chip, tập hợp/SQL |
 
 ### Phần IV: Quan hệ Truy hồi và Hàm sinh
 | Chương | Tiêu đề | Nội dung chính |
@@ -98,12 +99,10 @@ Sau khi hoàn thành khóa học, sinh viên sẽ có khả năng:
 
 **Giảng viên**: Nguyễn Lê Linh  
 **Email**: nglelinh@gmail.com  
-**Trường**: Đại học Công nghiệp TP.HCM (IUH)  
-**Khoa**: Công nghệ Thông tin  
 
 ## Giấy phép và Bản quyền
 
-Tài liệu này được phát triển cho mục đích giáo dục tại IUH. Nội dung được chia sẻ theo giấy phép Creative Commons Attribution-ShareAlike 4.0 International.
+Tài liệu này được phát triển cho mục đích giáo dục. Nội dung được chia sẻ theo giấy phép Creative Commons Attribution-ShareAlike 4.0 International.
 
 ---
 

@@ -9,7 +9,7 @@ bundle install
 bundle exec jekyll serve
 ```
 
-The site will be available at `http://127.0.0.1:4000/optimization-for-data-science-iuh-2025/`
+The site will be available at `http://127.0.0.1:4000/discrete-mathematics-for-computer-science-iuh/`
 
 ## GitHub Pages Deployment
 

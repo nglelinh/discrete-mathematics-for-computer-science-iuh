@@ -1,8 +1,8 @@
 ## Authors and Contributors
 
-### IUH Course Instructor
-**Nguyen Le Linh** - Industrial University of Ho Chi Minh City (IUH)<br>
-Instructor for Optimization for Data Science course, responsible for adapting and modifying the original materials to fit the IUH curriculum. Focus on adding practical examples and exercises suitable for Vietnamese Data Science students.
+### Course Instructor
+**Nguyen Le Linh**<br>
+Instructor for Discrete Mathematics for Computer Science, responsible for adapting and extending course materials with practical examples and exercises for computer science students.
 
 ---
 
