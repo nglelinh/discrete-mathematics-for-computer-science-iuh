@@ -189,6 +189,14 @@ $$
 </div>
 **Chứng minh tổ hợp**: Chọn $r$ người từ một lớp gồm $m$ nam và $n$ nữ. Nếu chọn đúng $i$ nam thì có $\binom{m}{i}\binom{n}{r-i}$ cách. Cộng trên mọi $i$ cho kết quả bằng cách chọn trực tiếp $r$ người từ $m+n$ người.
 
+### Video ngắn: Từ tam giác Pascal ra $\pi$
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/pascal-to-pi.mp4"></video>
+</div>
+
+Chuỗi Nilakantha $\pi = 3 + \sum_{k\ge 1} (-1)^{k+1}\dfrac{4}{2k(2k+1)(2k+2)}$ có thể viết lại thành $\pi = 3 + \tfrac{2}{3}\sum_{k\ge 1} \dfrac{(-1)^{k+1}}{\binom{2k+2}{3}}$. Các mẫu số $\binom{4}{3}, \binom{6}{3}, \binom{8}{3}, \ldots = 4, 20, 56, 120, 220, \ldots$ chính là các số nằm ở đường chéo thứ ba của tam giác Pascal, lấy cách một số.
+
 ## 6. Ứng dụng trong Khoa học Máy tính
 
 ![Blaise Pascal — nhà toán học Pháp](/discrete-mathematics-for-computer-science-iuh/img/course/Blaise_Pascal_Versailles.JPG)
