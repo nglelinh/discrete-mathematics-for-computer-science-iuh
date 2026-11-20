@@ -136,7 +136,7 @@ $$
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý** (Handshaking Lemma). Với đồ thị vô hướng $$G = (V,E)$$,
+**Định lý** (Handshaking Lemma). Với đồ thị vô hướng $$G = (V,E)$$ (đơn đồ thị hoặc đa đồ thị; mỗi **khuyên** được tính **hai lần** vào bậc của đỉnh chứa nó),
 
 $$
 \sum_{v \in V} \deg(v) = 2|E|.
@@ -146,7 +146,7 @@ $$
 
 </div>
 
-*Phác thảo chứng minh.* Mỗi cạnh $$\{u,v\}$$ được đếm đúng hai lần trong tổng bậc — một lần ở $$u$$ và một lần ở $$v$$. Do đó tổng bậc bằng hai lần số cạnh.
+*Phác thảo chứng minh.* Mỗi cạnh $$\{u,v\}$$ được đếm đúng hai lần trong tổng bậc — một lần ở $$u$$ và một lần ở $$v$$. Mỗi khuyên $$\{v,v\}$$ cũng đóng góp đúng $$2$$ vào $$\deg(v)$$ theo quy ước ở Mục 3, nên vẫn được đếm hai lần. Do đó tổng bậc bằng hai lần số cạnh.
 
 Hệ quả suy ra từ quan sát: tổng các số nguyên bằng số chẵn khi và chỉ khi số các số hạng lẻ là chẵn. Vì $$2|E|$$ chẵn, số đỉnh bậc lẻ phải chẵn.
 
@@ -176,7 +176,7 @@ Tổng bậc $$= 9$$ lẻ, trong khi $$2|E|$$ luôn chẵn. Theo định lý b�
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/handshake-lemma.mp4"></video>
 </div>
 
-Mỗi cạnh được cộng vào bậc của **cả hai** đầu mút, nên mỗi lần thêm một cạnh thì tổng bậc tăng đúng $2$. Vì vậy $\sum_v \deg(v)=2|E|$ luôn là số chẵn, và số đỉnh bậc lẻ phải chẵn. Trong đồ thị minh hoạ có $8$ cạnh, tổng bậc $16$ và $4$ đỉnh bậc lẻ.
+Mỗi cạnh được cộng vào bậc của **cả hai** đầu mút, nên mỗi lần thêm một cạnh thì tổng bậc tăng đúng $$2$$ (một khuyên có hai đầu trùng nhau nên cũng cộng $$2$$ vào bậc của chính đỉnh đó). Vì vậy $$\sum_v \deg(v)=2|E|$$ luôn là số chẵn, và số đỉnh bậc lẻ phải chẵn. Trong đồ thị minh hoạ (đồ thị đơn, không có khuyên) có $$8$$ cạnh, tổng bậc $$16$$ và $$4$$ đỉnh bậc lẻ.
 
 ## 5. Ứng dụng nhanh trong tin học
 
