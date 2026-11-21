@@ -13,8 +13,6 @@ explainers:
     name: "Đại số Boolean: K-map, Quine–McCluskey, mạch"
     desc: "Bảng chân trị, SOP/POS, don’t-care, sơ đồ mạch từ biểu thức và so sánh hai biểu thức."
     lessons:
-      - "contents/chapter01/_posts/21-01-01-01_03_Truth_Tables.md"
-      - "contents/chapter01/_posts/21-01-01-01_04_Logical_Equivalences_and_Normal_Forms.md"
       - "contents/chapter13/_posts/21-01-01-13_03_Logic_Gates_and_Minimization.md"
       - "contents/chapter13/_posts/21-01-01-13_04_Karnaugh_Maps.md"
   - id: pascal-explainer
@@ -92,6 +90,12 @@ explainers:
       - "contents/chapter16/_posts/21-01-01-16_01_Introduction_to_Trees.md"
       - "contents/chapter16/_posts/21-01-01-16_02_Tree_Traversal.md"
       - "contents/chapter16/_posts/21-01-01-16_04_Huffman_and_BST.md"
+  - id: exprtree-explainer
+    icon: "🌿"
+    name: "Cây biểu thức Boolean"
+    desc: "Gõ công thức logic, xem cây cú pháp, đổi giá trị biến và tính từ lá lên gốc; chỉ ra liên kết chính."
+    lessons:
+      - "contents/chapter01/_posts/21-01-01-01_04_Logical_Equivalences_and_Normal_Forms.md"
   - id: topo-explainer
     icon: "📋"
     name: "Sắp xếp topo: Kahn và DFS"
@@ -240,11 +244,13 @@ explainers:
     name: "Phản chứng từng bước"
     desc: "Chứng minh √2 vô tỷ và vô hạn số nguyên tố theo từng dòng, tô sáng chỗ mâu thuẫn, thử số liệu."
     lessons:
+      - "contents/chapter03/_posts/21-01-01-03_02_Proof_by_Contradiction.md"
   - id: predproof-explainer
     icon: "∀∃"
     name: "Suy luận vị từ từng dòng"
     desc: "UI/UG/EI/EG với điều kiện của mỗi quy tắc, hai lỗi kinh điển và phản ví dụ trên mô hình hữu hạn."
     lessons:
+      - "contents/chapter02/_posts/21-01-01-02_03_Rules_of_Inference_for_Predicate_Logic.md"
 widgets:
   - id: algorithm-complexity-analyzer
     name: "Algorithm complexity analyzer"

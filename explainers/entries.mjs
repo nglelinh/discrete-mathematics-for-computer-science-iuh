@@ -1,5 +1,6 @@
 // Danh sách bundle: key = mode của Vite, cũng là tên file đầu ra.
 export const ENTRIES = {
+  'exprtree-explainer': { entry: 'src/exprtree/main.js', name: 'ExprTreeExplainer' },
   'graph-explainer': { entry: 'src/graph/main.js', name: 'GraphExplainer' },
   'boolean-explainer': { entry: 'src/boolean/main.js', name: 'BooleanExplainer' },
   'qm-explainer': { entry: 'src/qm/main.js', name: 'QMExplainer' },

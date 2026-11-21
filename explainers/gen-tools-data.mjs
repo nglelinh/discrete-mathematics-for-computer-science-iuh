@@ -17,6 +17,7 @@ const EXPLAINERS = {
   'recurrence-explainer': ['🔁', 'Hệ thức truy hồi & chia để trị', 'Công thức đóng từ đa thức đặc trưng, nghiệm riêng, định lý Master, cây đệ quy.'],
   'automata-explainer': ['🤖', 'Otomat: DFA · NFA · tập con · tối thiểu hóa', 'Mô phỏng từng ký tự, xây dựng tập con NFA→DFA, tối thiểu hóa DFA, tự vẽ máy.'],
   'tree-explainer': ['🌳', 'Cây: Huffman, duyệt cây, BST', 'Gộp Huffman từng bước, bốn kiểu duyệt cây, chèn/tìm/xóa trong BST.'],
+  'exprtree-explainer': ['🌿', 'Cây biểu thức Boolean', 'Gõ công thức logic, xem cây cú pháp, đổi giá trị biến và tính từ lá lên gốc; chỉ ra liên kết chính.'],
   'topo-explainer': ['📋', 'Sắp xếp topo: Kahn và DFS', 'Bậc vào, hàng đợi, ngăn xếp đệ quy, hậu tự đảo; phát hiện chu trình khi thêm cạnh ngược.'],
   'induction-explainer': ['🁢', 'Quy nạp: hiệu ứng domino', 'Cơ sở + bước quy nạp làm domino đổ; ví dụ thiếu cơ sở và phản ví dụ n² + n + 41 tại n = 40.'],
   'dpll-explainer': ['🧩', 'SAT solver DPLL từng bước', 'Lan truyền đơn vị, quyết định, quay lui trên CNF tùy ý; ví dụ chuồng bồ câu 3→2 vô nghiệm.'],

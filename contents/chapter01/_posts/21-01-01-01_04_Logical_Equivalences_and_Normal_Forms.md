@@ -140,18 +140,21 @@ Cây tương ứng:
 
 **Nhận xét**: Cây giúp ta thấy rõ **thứ tự tính toán** và **cấu trúc phân cấp** của công thức. Mỗi phép toán tương ứng với một nút trong, và các biến là lá.
 
-![Cây quyết định — cấu trúc công thức Boolean](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
+Thử gõ một công thức khác vào khung dưới đây để xem cây của nó, rồi đổi giá trị các biến và theo dõi giá trị được tính từ lá lên gốc.
 
-<p class="textbook-figure-caption" data-figure="1.16">Biểu diễn công thức Boolean dưới dạng cây — mỗi nút là một phép toán, lá là biến hoặc hằng.</p>
+<div class="interactive-demo" markdown="1">
+<div data-demo="exprtree-explainer" data-formula="((p ∨ q) → ¬r) ↔ p"></div>
+</div>
+
 ![Luật De Morgan trên biểu đồ Venn](/discrete-mathematics-for-computer-science-iuh/img/course/Intersections_of_two_sets_and_their_complements.svg)
 
-<p class="textbook-figure-caption" data-figure="1.17">Luật De Morgan — ¬(p ∧ q) ≡ ¬p ∨ ¬q, công cụ biến đổi quan trọng nhất khi rút gọn điều kiện.</p>
+<p class="textbook-figure-caption" data-figure="1.16">Luật De Morgan — ¬(p ∧ q) ≡ ¬p ∨ ¬q, công cụ biến đổi quan trọng nhất khi rút gọn điều kiện.</p>
 ![DNF — tổng các tích (disjunction of conjunctions)](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-OR.png)
 
-<p class="textbook-figure-caption" data-figure="1.18">Dạng chuẩn tắc tuyển (DNF) — tổng (OR) của các tích (AND), xây từ các hàng có kết quả Đúng trong bảng chân trị.</p>
+<p class="textbook-figure-caption" data-figure="1.17">Dạng chuẩn tắc tuyển (DNF) — tổng (OR) của các tích (AND), xây từ các hàng có kết quả Đúng trong bảng chân trị.</p>
 ![CNF — tích các tổng (conjunction of disjunctions)](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-AND.png)
 
-<p class="textbook-figure-caption" data-figure="1.19">Dạng chuẩn tắc hội (CNF) — tích (AND) của các tổng (OR), dạng chuẩn mà SAT solver yêu cầu.</p>
+<p class="textbook-figure-caption" data-figure="1.18">Dạng chuẩn tắc hội (CNF) — tích (AND) của các tổng (OR), dạng chuẩn mà SAT solver yêu cầu.</p>
 **Lưu ý quan trọng**: Các phép toán `∧`, `∨`, `⊕`, `↔` là **giao hoán** (đổi chỗ được) và **kết hợp** (dấu ngoặc không quan trọng). Riêng `→` không có hai tính chất này.
 
 Do đó ta có thể viết `R ∧ Q ∧ P` thay vì `(R ∧ Q) ∧ P`, và viết các biến theo bất kỳ thứ tự nào.
@@ -745,6 +748,7 @@ Cho các biểu thức sau, xác định xem biểu thức đã ở dạng DNF, 
 <div data-demo="truth-table-normal-form"></div>
 </div>
 <script src="{{ '/public/js/truth-table-normal-form.js' | relative_url }}"></script>
+<script src="{{ '/public/js/explainers/exprtree-explainer.js' | relative_url }}"></script>
 
 
 ## Bài tập bổ sung: Sử dụng các luật logic mệnh đề (từ ccrr1_baitap1)
