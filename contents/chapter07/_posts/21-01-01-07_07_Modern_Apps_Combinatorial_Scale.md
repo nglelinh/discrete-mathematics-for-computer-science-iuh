@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Counting search spaces in modern solvers (2022–2026)"
+title: "Ghi chú mở rộng: Đếm không gian tìm kiếm trong bộ giải hiện đại (2022–2026)"
 categories: chapter07
 date: 2021-01-01
 order: 7

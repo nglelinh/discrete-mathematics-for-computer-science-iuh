@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Search trees for language models (2023–2026)"
+title: "Ghi chú mở rộng: Cây tìm kiếm cho mô hình ngôn ngữ (2023–2026)"
 categories: chapter16
 date: 2021-01-01
 order: 5

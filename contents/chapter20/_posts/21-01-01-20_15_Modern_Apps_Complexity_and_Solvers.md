@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: NP-completeness, SAT medals, neural OOD (2022–2026)"
+title: "Ghi chú mở rộng: NP-đầy đủ, kỷ lục SAT và OOD của mạng nơ-ron (2022–2026)"
 categories: chapter20
 date: 2021-01-01
 order: 15

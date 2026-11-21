@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Transformers versus automata (2022–2026)"
+title: "Ghi chú mở rộng: Transformer và automata (2022–2026)"
 categories: chapter18
 date: 2021-01-01
 order: 15

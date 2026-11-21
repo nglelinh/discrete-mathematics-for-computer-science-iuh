@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CFG ≡ PDA"
+title: "Văn phạm phi ngữ cảnh ≡ PDA"
 categories: chapter19
 date: 2021-01-01
 order: 9

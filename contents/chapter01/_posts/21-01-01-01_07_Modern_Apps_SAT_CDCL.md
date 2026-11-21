@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Modern SAT engines (2022–2026)"
+title: "Ghi chú mở rộng: Bộ giải SAT hiện đại (2022–2026)"
 categories: chapter01
 date: 2021-01-01
 order: 7

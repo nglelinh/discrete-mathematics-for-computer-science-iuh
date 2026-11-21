@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Discrete math in 2022–2026 production systems"
+title: "Ghi chú mở rộng: Toán rời rạc trong các hệ thống thực tế 2022–2026"
 categories: chapter09
 date: 2021-01-01
 order: 13

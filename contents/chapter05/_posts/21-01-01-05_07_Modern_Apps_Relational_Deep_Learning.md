@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Relations as graphs for learning (2022–2026)"
+title: "Ghi chú mở rộng: Quan hệ như đồ thị trong học máy (2022–2026)"
 categories: chapter05
 date: 2021-01-01
 order: 7

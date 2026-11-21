@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: NIST post-quantum standards (2024)"
+title: "Ghi chú mở rộng: Chuẩn hậu lượng tử của NIST (2024)"
 categories: chapter15
 date: 2021-01-01
 order: 6

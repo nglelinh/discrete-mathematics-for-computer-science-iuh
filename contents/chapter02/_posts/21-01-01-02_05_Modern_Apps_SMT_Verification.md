@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: SMT solvers and predicate logic (2022–2026)"
+title: "Ghi chú mở rộng: Bộ giải SMT và logic vị từ (2022–2026)"
 categories: chapter02
 date: 2021-01-01
 order: 5

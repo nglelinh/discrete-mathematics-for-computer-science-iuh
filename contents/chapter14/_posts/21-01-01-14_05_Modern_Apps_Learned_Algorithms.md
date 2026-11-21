@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Algorithms discovered by RL (2022–2026)"
+title: "Ghi chú mở rộng: Thuật toán do học tăng cường tìm ra (2022–2026)"
 categories: chapter14
 date: 2021-01-01
 order: 5

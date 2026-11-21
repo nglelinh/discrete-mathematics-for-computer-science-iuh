@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Generating functions meet 2022 filters"
+title: "Ghi chú mở rộng: Hàm sinh gặp bộ lọc năm 2022"
 categories: chapter11
 date: 2021-01-01
 order: 6

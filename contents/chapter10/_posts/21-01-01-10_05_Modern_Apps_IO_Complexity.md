@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Recurrences for IO-aware algorithms (2022–2026)"
+title: "Ghi chú mở rộng: Hệ thức truy hồi cho thuật toán tính đến IO (2022–2026)"
 categories: chapter10
 date: 2021-01-01
 order: 5

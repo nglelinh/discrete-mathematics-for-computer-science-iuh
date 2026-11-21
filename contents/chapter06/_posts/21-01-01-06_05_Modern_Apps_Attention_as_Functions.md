@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Attention as an exact function (2022–2026)"
+title: "Ghi chú mở rộng: Attention như một hàm chính xác (2022–2026)"
 categories: chapter06
 date: 2021-01-01
 order: 5

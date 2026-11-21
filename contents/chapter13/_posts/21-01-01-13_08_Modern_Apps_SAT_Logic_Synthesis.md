@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: SAT engines behind Boolean design (2022–2026)"
+title: "Ghi chú mở rộng: Bộ giải SAT trong thiết kế mạch Boolean (2022–2026)"
 categories: chapter13
 date: 2021-01-01
 order: 8

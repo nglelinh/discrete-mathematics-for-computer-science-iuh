@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Neural graph algorithms (2022–2026)"
+title: "Ghi chú mở rộng: Thuật toán đồ thị bằng mạng nơ-ron (2022–2026)"
 categories: chapter17
 date: 2021-01-01
 order: 4

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Subset Construction: NFA ≡ DFA"
+title: "Xây dựng tập con: NFA ≡ DFA"
 categories: chapter18
 date: 2021-01-01
 order: 5

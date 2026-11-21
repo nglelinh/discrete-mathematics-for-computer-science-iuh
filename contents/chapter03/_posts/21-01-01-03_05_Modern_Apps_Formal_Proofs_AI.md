@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Machine-checked proofs and AI (2022–2026)"
+title: "Ghi chú mở rộng: Chứng minh được máy kiểm chứng và AI (2022–2026)"
 categories: chapter03
 date: 2021-01-01
 order: 5

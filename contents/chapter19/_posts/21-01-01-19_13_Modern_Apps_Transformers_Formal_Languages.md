@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Transformers and the Chomsky map (2024)"
+title: "Ghi chú mở rộng: Transformer và phân cấp Chomsky (2024)"
 categories: chapter19
 date: 2021-01-01
 order: 13

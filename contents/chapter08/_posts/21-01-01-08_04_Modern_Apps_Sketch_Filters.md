@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Pigeonhole bounds in modern filters (2022–2026)"
+title: "Ghi chú mở rộng: Cận chuồng bồ câu trong bộ lọc hiện đại (2022–2026)"
 categories: chapter08
 date: 2021-01-01
 order: 4

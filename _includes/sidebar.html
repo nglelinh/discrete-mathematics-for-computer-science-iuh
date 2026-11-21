@@ -8,27 +8,24 @@
     <p>{% if page.lang %}{{ site.t[page.lang].description }}{% else %}{{ site.description }}{% endif %}</p>
   </div>
 
-  <nav class="sidebar-nav" aria-label="{{ site.t.vi.chapters }} / {{ site.t.en.chapters }}">
+  <nav class="sidebar-nav" aria-label="{{ site.t.vi.chapters }}">
     <a class="sidebar-nav-item{% if page.title == 'Home' %} active{% endif %}" href="{{ '/' | absolute_url }}">
       <span class="sidebar-nav-label">{{ site.t.vi.home }}</span>
-      <span class="sidebar-nav-en">{{ site.t.en.home }}</span>
     </a>
 
     {% comment %}
       Chương lấy từ _data/course_parts.yml + _data/chapters.json.
       Bài học sinh tự động từ site.categories[slug], sắp theo order.
       Mỗi bài chỉ có một URL; tiêu đề bài là ngôn ngữ của bài.
-      Nhãn chương hiện cả title_vn và title_en.
+      Menu chỉ hiện tiếng Việt (title_vn / title_vi).
     {% endcomment %}
 
     <div class="sidebar-section">
       <h4 class="sidebar-section-heading">{{ site.t.vi.chapters }}</h4>
-      <p class="sidebar-part-en">{{ site.t.en.chapters }}</p>
 
       {% for part in site.data.course_parts.parts %}
       <div class="sidebar-subsection">
         <h5 class="sidebar-part-heading">{{ part.title_vi }}</h5>
-        <p class="sidebar-part-en">{{ part.title_en }}</p>
 
         {% for num in part.chapters %}
           {% assign ch_key = num | append: "" %}
@@ -53,16 +50,13 @@
                 id="nav-{{ ch.slug }}"
                 {% if in_chapter %}checked{% endif %}
                 aria-controls="lessons-{{ ch.slug }}"
-                aria-label="Bài học / Lessons: {{ ch.title_vn | escape }} — {{ ch.title_en | escape }}">
+                aria-label="Bài học: {{ ch.title_vn | escape }}">
               {% endif %}
               <div class="sidebar-chapter-head">
                 <a class="sidebar-nav-item sidebar-chapter-link{% if in_chapter %} active{% endif %}" href="{{ chapter_path | absolute_url }}">
                   <span class="sidebar-chapter-index">{{ num }}.</span>
                   <span class="sidebar-chapter-titles">
                     <span class="sidebar-nav-label">{{ ch.title_vn }}</span>
-                    {% if ch.title_en %}
-                    <span class="sidebar-nav-en">{{ ch.title_en }}</span>
-                    {% endif %}
                   </span>
                 </a>
                 {% if sorted_posts %}

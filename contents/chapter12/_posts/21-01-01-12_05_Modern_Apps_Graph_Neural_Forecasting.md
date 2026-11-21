@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Graphs that forecast the weather (2022–2026)"
+title: "Ghi chú mở rộng: Đồ thị dự báo thời tiết (2022–2026)"
 categories: chapter12
 date: 2021-01-01
 order: 5

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Optional note: Compact set representations (2022–2026)"
+title: "Ghi chú mở rộng: Biểu diễn tập hợp gọn (2022–2026)"
 categories: chapter04
 date: 2021-01-01
 order: 6
