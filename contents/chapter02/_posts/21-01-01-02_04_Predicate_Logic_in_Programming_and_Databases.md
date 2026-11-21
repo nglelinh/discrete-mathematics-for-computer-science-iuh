@@ -98,7 +98,7 @@ WHERE status = 'unpaid';
 ```
 
 <div class="content-box warning-box textbook-block" markdown="1">
-**Cẩn thận**: $$\forall x \exists y$$ và $$\exists y \forall x$$ **không** tương đương. "Mỗi sinh viên có một cố vấn" khác "Có một cố vấn cho mọi sinh viên". Thứ tự lượng từ trong spec ảnh hưởng trực tiếp đến thiết kế API và schema.
+**Cẩn thận**: $$\forall x \exists y$$ và $$\exists y \forall x$$ **không** tương đương. "Mỗi sinh viên có một cố vấn" khác "Có một cố vấn cho mọi sinh viên". Đổi thứ tự lượng từ trong đặc tả là đổi ý nghĩa, và API hay schema làm theo sẽ khác.
 </div>
 
 ---

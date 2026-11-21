@@ -114,7 +114,7 @@ Có những bài toán mà từ giả thiết đến kết luận không có l�
 
 ### 3. Ta muốn chỉ ra sự bất khả thi (impossibility)
 
-Trong khoa học máy tính, rất nhiều phát biểu quan trọng có dạng này:
+Nhiều phát biểu trong tin học có dạng này:
 
 - không thể quyết định bài toán đó trong mọi trường hợp,
 - không thể có cấu trúc dữ liệu thỏa mọi yêu cầu cùng lúc,
@@ -237,7 +237,7 @@ Vậy giả sử chỉ có hữu hạn số nguyên tố là sai. Do đó có v�
 
 ### Ý nghĩa sư phạm
 
-Ví dụ này rất đẹp vì mâu thuẫn đến từ việc **tự xây một đối tượng phá vỡ giả sử**. Trong khoa học máy tính, đây cũng là một chiến lược quen thuộc:
+Ví dụ này rất đẹp vì mâu thuẫn đến từ việc **tự xây một đối tượng phá vỡ giả sử**. Cách làm này cũng hay gặp ở chỗ khác:
 
 - giả sử đã liệt kê hết mọi trường hợp,
 - rồi xây một trường hợp mới không thuộc danh sách đó.
@@ -608,14 +608,14 @@ Chứng minh phản chứng là một kỹ thuật nền tảng vì nó cho phé
 
 > Nếu thế giới giả định "điều cần chứng minh là sai" tự sụp đổ vì mâu thuẫn, thì điều cần chứng minh phải đúng.
 
-Trong toán học, phản chứng giúp xử lý những mệnh đề khó chứng minh trực tiếp. Trong khoa học máy tính, nó đặc biệt quan trọng khi nói về:
+Phản chứng hay dùng cho những mệnh đề khó chứng minh trực tiếp, chẳng hạn:
 
 - giới hạn của thuật toán,
 - tính đúng đắn của cấu trúc dữ liệu,
 - trạng thái bất khả thi trong hệ thống,
 - và các cận dưới về độ phức tạp.
 
-Trong khoa học máy tính, phản chứng đặc biệt hữu ích khi gặp phát biểu "không thể", "không tồn tại", hoặc "luôn luôn". Ta có thể kiểm tra tính khả thi bằng câu hỏi:
+Gặp phát biểu "không thể", "không tồn tại" hoặc "luôn luôn", hãy thử tự hỏi:
 
 > Nếu điều ngược lại đúng, mình có thể dẫn nó tới mâu thuẫn nào?
 

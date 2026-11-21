@@ -18,7 +18,7 @@ excerpt: "Trong chương này chúng ta xây dựng nền tảng logic mệnh đ
 
 </div>
 
-Trong chương này chúng ta xây dựng nền tảng **logic mệnh đề** — hệ thống hình thức cho phép biểu diễn, phân tích và suy luận về các phát biểu có giá trị đúng hoặc sai. Trong khoa học máy tính, mọi quyết định nhị phân từ điều kiện `if` trong chương trình, truy vấn `WHERE` trong cơ sở dữ liệu, đến quy tắc phân quyền và kiểm thử tự động, đều dựa trên cùng một nguyên lý: mỗi phát biểu phải được đánh giá là đúng hoặc sai tại một thời điểm cho trước. Mục 1.1 bắt đầu từ khái niệm cốt lõi nhất: **mệnh đề** (proposition).
+Trong chương này chúng ta xây dựng nền tảng **logic mệnh đề** — hệ thống hình thức cho phép biểu diễn, phân tích và suy luận về các phát biểu có giá trị đúng hoặc sai. Ví dụ, điều kiện `if` trong chương trình hay mệnh đề `WHERE` trong truy vấn SQL đều chỉ cho ra đúng hoặc sai. Logic mệnh đề nghiên cứu chính loại phát biểu đó. Mục 1.1 bắt đầu từ khái niệm cốt lõi nhất: **mệnh đề** (proposition).
 
 Mỗi lần lập trình viên viết `if (score >= 5)` hay thêm điều kiện `WHERE status = "active"`, máy tính buộc phải trả lời câu hỏi cổ điển: mệnh đề này đúng hay sai? Kiểu quyết định nhị phân — đúng hoặc sai, 1 hoặc 0, `true` hoặc `false` — là viên gạch đầu tiên của toàn bộ nền tảng tính toán.
 

@@ -181,7 +181,7 @@ nhiều hệ thống production vẫn mượn tinh thần functional vì:
 - composition linh hoạt.
 
 Điều đó cho thấy khái niệm hàm không chỉ sống trong giáo trình.
-Nó ảnh hưởng trực tiếp đến architecture decisions.
+Nó còn ảnh hưởng đến cách ta thiết kế chương trình.
 
 ### 2.5. Hàm bậc cao (higher-order functions)
 
@@ -648,13 +648,9 @@ def lambda_handler(event: dict, context) -> dict:
 
 ## Kết luận
 
-Hàm số không chỉ là chủ đề của đại số phổ thông.
-Trong khoa học máy tính,
-nó là cách chúng ta hiểu computation,
-tổ chức chương trình,
-thiết kế API,
-xây mô hình học máy,
-và đảm bảo tính toàn vẹn dữ liệu.
+Hàm số không chỉ có trong đại số phổ thông.
+Trong lập trình, ta gặp nó ở mọi nơi:
+mỗi hàm trong code, mỗi API, mỗi mô hình học máy đều là một hàm.
 
 Từ Church và Turing,
 đến Haskell,

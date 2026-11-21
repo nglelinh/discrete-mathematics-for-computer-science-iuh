@@ -440,7 +440,7 @@ Mệnh đề đúng với $k+1$.
 
 Vậy công thức đúng với mọi $h \ge 0$. $\square$
 
-Trong khoa học máy tính, cây nhị phân xuất hiện ở:
+Cây nhị phân xuất hiện ở:
 
 - heap,
 - cây tìm kiếm nhị phân,

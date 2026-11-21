@@ -481,7 +481,7 @@ x = x + 1
 
 ## Tóm tắt
 
-Chứng minh là ngôn ngữ của toán học và cũng là tiêu chuẩn của tri thức. Trong khoa học máy tính, đó là nền của correctness, security, và engineering có trách nhiệm.
+Chứng minh là ngôn ngữ của toán học và cũng là tiêu chuẩn của tri thức. Trong lập trình, chứng minh là cách để biết chương trình đúng và an toàn.
 
 **Các phương pháp chứng minh đã học:**
 - **Chứng minh trực tiếp (Direct proof):** từ giả thiết suy ra kết luận.

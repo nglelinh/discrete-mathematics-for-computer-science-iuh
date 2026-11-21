@@ -12,9 +12,7 @@ excerpt: "Ở mục trước chúng ta đã dùng bảng chân trị để liệ
 
 Ở mục trước chúng ta đã dùng **bảng chân trị** để liệt kê và kiểm chứng mọi trường hợp của biểu thức logic. Mục này mở rộng sang **tương đương logic** và **dạng chuẩn tắc** — hai khái niệm cho phép biến đổi biểu thức mà không thay đổi ý nghĩa.
 
-Cùng một ý logic có thể được viết theo nhiều cách khác nhau. Lập trình viên ưu tiên điều kiện ngắn gọn; engine cơ sở dữ liệu cần biểu thức dễ tối ưu; SAT solver và công cụ kiểm chứng hình thức yêu cầu công thức ở dạng chuẩn để xử lý hàng triệu biến. Câu hỏi trung tâm là: các biểu thức khác hình thức có **thật sự tương đương** không?
-
-Trong khoa học máy tính, khả năng biến đổi an toàn ảnh hưởng trực tiếp đến việc rút gọn điều kiện trong mã nguồn, tối ưu truy vấn, chuẩn hóa công thức cho bộ giải SAT, và hiệu quả của công cụ kiểm chứng. Một phép biến đổi đúng luật có thể làm chương trình dễ đọc hơn hoặc bộ giải chạy nhanh hơn; một bước sai có thể phá vỡ toàn bộ ý nghĩa logic. Mục này trình bày **tương đương logic** ($$P \equiv Q$$) và **dạng chuẩn tắc** (DNF, CNF), cùng các luật biến đổi cơ bản.
+Cùng một ý có thể viết bằng nhiều biểu thức khác nhau. Hai điều kiện `if` trong ví dụ ngay dưới đây trông khác nhau, nhưng liệu chúng có luôn cho cùng kết quả không? Mục này trả lời câu hỏi đó. Ta học khi nào hai biểu thức **tương đương logic** ($$P \equiv Q$$), các luật để biến đổi biểu thức mà không đổi ý nghĩa, và cách đưa biểu thức về **dạng chuẩn tắc** (DNF, CNF). Biến đổi đúng luật thì ý nghĩa giữ nguyên, còn sai một bước là chương trình chạy sai.
 
 ### Minh họa: Hai biểu thức, một ý nghĩa
 
@@ -82,32 +80,12 @@ Hai cột cuối giống nhau ở mọi hàng, do đó $$p \to q \equiv \neg p \
 </div>
 
 
-### Minh họa bằng code: Kiểm tra tương đương thực tế
-
-Thay vì chỉ nhìn bảng chân trị, ta có thể viết một đoạn code nhỏ để kiểm tra hai biểu thức có luôn cho cùng kết quả không:
-
-```python
-def check_equivalence():
-    """Kiểm tra p → q ≡ ¬p ∨ q trên tất cả tổ hợp"""
-    for p in [True, False]:
-        for q in [True, False]:
-            left = (not p) or q          # ¬p ∨ q
-            right = (not p) or q         # p → q cũng viết là (not p) or q
-            print(f"p={p}, q={q} → left={left}, right={right}, equal={left == right}")
-
-check_equivalence()
-# Kết quả: luôn equal = True
-```
-
-Khi gặp điều kiện phức tạp trong mã nguồn, ta nên thử viết phiên bản tương đương đơn giản hơn — trình biên dịch và engine cơ sở dữ liệu cũng áp dụng chiến lược tương tự khi tối ưu.
-
 <div class="content-box insight-box textbook-block" markdown="1">
 **Ghi nhớ**: Tương đương logic là quan hệ "thay thế an toàn". Nếu $$P \equiv Q$$, ta có thể thay $$P$$ bằng $$Q$$ trong bất kỳ biểu thức lớn hơn nào mà không đổi bảng chân trị của toàn bộ biểu thức.
 </div>
 
 ## 2. Các luật tương đương cơ bản
 
-**Lưu ý**: Ký hiệu \(\equiv\) **không phải** là một phép toán logic — nó là một khẳng định về hai công thức (hai công thức này có cùng bảng chân trị).
 
 | Tên luật | Công thức tiêu biểu | Ghi chú |
 |:---|:---|:---|

@@ -231,10 +231,8 @@ error detection,
 và Ramsey theory,
 chúng ta thấy một định lý ngắn có thể mở ra hàng loạt hệ quả sâu và rất thực tế.
 
-Trong khoa học máy tính,
-đó là lời nhắc quan trọng:
-đôi khi giới hạn lớn nhất của hệ thống không nằm ở code,
-mà nằm ở toán học của việc phân bố nhiều thứ vào ít chỗ.
+Giới hạn của một hệ thống đôi khi không nằm ở code,
+mà nằm ở chuyện nhét nhiều thứ vào ít chỗ.
 
 ---
 
@@ -279,7 +277,7 @@ Nếu số bit 1 không đúng chẵn/lẻ thì chắc chắn có lỗi (một t
 
 ## Tóm tắt
 
-Nguyên lý chuồng chim bồ câu là công cụ chứng minh sự tồn tại mà không cần xây dựng đối tượng. Trong khoa học máy tính, nó giải thích tại sao va chạm băm không tránh khỏi, nén không mất mát có giới hạn, và tại sao phát hiện lỗi luôn khả thi. Hiểu nguyên lý này giúp chúng ta thiết kế hệ thống chắc chắn và biết được giới hạn của chúng.
+Nguyên lý chuồng chim bồ câu là công cụ chứng minh sự tồn tại mà không cần xây dựng đối tượng. Nó giải thích vì sao va chạm băm không tránh khỏi và vì sao nén không mất mát luôn có giới hạn.
 
 ## Video tham khảo
 

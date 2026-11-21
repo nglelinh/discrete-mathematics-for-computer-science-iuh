@@ -366,11 +366,8 @@ birthday paradox,
 và combinatorial testing,
 phép đếm luôn xuất hiện ở nơi con người cần hiểu quy mô của khả năng.
 
-Trong khoa học máy tính,
-đó là chuyện sống còn.
-Vì một hệ thống không thất bại chỉ vì nó sai logic.
-Nhiều khi,
-nó thất bại vì không ai hiểu không gian trường hợp của nó lớn đến mức nào.
+Một hệ thống không chỉ hỏng vì sai logic.
+Nhiều khi nó hỏng vì không ai tính xem có bao nhiêu trường hợp có thể xảy ra.
 
 ---
 

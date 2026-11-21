@@ -183,7 +183,7 @@ Hai khóa có cùng hash value
 thuộc cùng một “lớp bucket” ở mức triển khai.
 Collision xử lý ra sao,
 bucket phân bố đều đến đâu,
-có ảnh hưởng trực tiếp tới hiệu năng.
+quyết định chương trình chạy nhanh hay chậm.
 
 ![Equivalence partitioning — lớp tương đương trong testing](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 

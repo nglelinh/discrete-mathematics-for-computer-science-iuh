@@ -12,7 +12,7 @@ excerpt: "Ở mục trước chúng ta đã học phép toán trên quan hệ v�
 
 Ở mục trước chúng ta đã học phép toán trên quan hệ và bao đóng. Mục này tổng hợp bài tập nhằm củng cố toàn bộ kiến thức chương 5: định nghĩa quan hệ, tính chất, quan hệ tương đương, thứ tự bộ phận, phép toán và bao đóng.
 
-Một chủ đề chỉ được nắm vững khi có thể áp dụng trên nhiều dạng bài khác nhau. Phần luyện tập giúp chúng ta nối lại mạch kiến thức và phát hiện các điểm dễ nhầm lẫn. Trong khoa học máy tính, sai ở phần nền thường kéo theo sai dây chuyền ở phần mô hình hóa; vì vậy, luyện tập không chỉ để ra đáp án đúng mà còn để hình thành phản xạ đọc đề, chọn công cụ và kiểm tra lập luận.
+Một chủ đề chỉ được nắm vững khi có thể áp dụng trên nhiều dạng bài khác nhau. Phần luyện tập giúp chúng ta nối lại mạch kiến thức và phát hiện các điểm dễ nhầm lẫn. Làm bài tập không chỉ để ra đáp án đúng, mà còn để quen cách đọc đề, chọn công cụ và kiểm tra lại lập luận.
 
 ## Mục tiêu học tập
 
