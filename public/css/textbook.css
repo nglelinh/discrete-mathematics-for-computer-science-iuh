@@ -157,22 +157,70 @@
 
 /* ── Definitions, theorems, examples (SLP3 formal blocks) ─────── */
 
+/* Định nghĩa: viền xanh. Định lý / Bổ đề / Hệ quả / Mệnh đề: viền nâu đỏ. Chứng minh: nhạt, kết thúc bằng ∎. */
 .textbook-definition,
 .textbook-theorem,
-.textbook-lemma {
-  margin: 1.25rem 0;
-  padding: 0;
+.textbook-lemma,
+.textbook-proof {
+  --blk: #2c5282;
+  --blk-bg: #eef4fb;
+  margin: 1.4rem 0;
+  padding: 0.85rem 1.15rem;
   text-align: left;
+  background: var(--blk-bg);
+  border: 1px solid color-mix(in srgb, var(--blk) 22%, transparent);
+  border-left: 4px solid var(--blk);
+  border-radius: 0 6px 6px 0;
 }
 
-.textbook-definition > strong:first-child,
-.textbook-theorem > strong:first-child,
-.textbook-lemma > strong:first-child {
+.textbook-theorem,
+.textbook-lemma {
+  --blk: #9c4221;
+  --blk-bg: #fdf3ec;
+}
+
+.textbook-proof {
+  --blk: #718096;
+  --blk-bg: #f7f7f5;
+  border-left-width: 3px;
+  font-size: 0.98rem;
+}
+
+.textbook-proof::after {
+  content: "\220E";
+  display: block;
+  text-align: right;
+  color: var(--blk);
+}
+
+.textbook-definition > :first-child,
+.textbook-theorem > :first-child,
+.textbook-lemma > :first-child,
+.textbook-proof > :first-child { margin-top: 0; }
+
+.textbook-definition > :last-child,
+.textbook-theorem > :last-child,
+.textbook-lemma > :last-child,
+.textbook-proof > :last-child { margin-bottom: 0; }
+
+.textbook-definition > p:first-child > strong:first-child,
+.textbook-theorem > p:first-child > strong:first-child,
+.textbook-lemma > p:first-child > strong:first-child,
+.textbook-proof > p:first-child > strong:first-child {
   font-family: var(--tb-sans);
   font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  color: var(--blk);
 }
+
+.textbook-definition pre,
+.textbook-theorem pre,
+.textbook-lemma pre,
+.textbook-proof pre { background: #fff; }
+
+.textbook-definition .textbook-equation,
+.textbook-theorem .textbook-equation,
+.textbook-lemma .textbook-equation { margin-left: 0; margin-right: 0; }
 
 .textbook-example {
   margin: 1.25rem 0;

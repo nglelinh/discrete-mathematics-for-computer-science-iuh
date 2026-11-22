@@ -47,8 +47,10 @@ $$
 (\ell\lor u\lor v)\land(\ell\lor u\lor\neg v)\land(\ell\lor\neg u\lor v)\land(\ell\lor\neg u\lor\neg v).
 $$
 
+<div class="textbook-lemma" markdown="1">
 **Bổ đề.** Thỏa ⇔ $$\ell$$ true.  
 *Chứng minh.* $$\ell$$ true ⇒ ok. $$\ell$$ false ⇒ bốn mệnh đề yêu cầu mọi tổ hợp $$u,v$$ — mâu thuẫn. $$\square$$
+</div>
 
 ### $$\lvert C\rvert=2$$: $$(\ell_1\lor\ell_2)$$
 Biến $$u$$: $$(\ell_1\lor\ell_2\lor u)\land(\ell_1\lor\ell_2\lor\neg u)$$.  
@@ -64,9 +66,11 @@ $$
 \land(\neg y_{k-3}\lor\ell_{k-1}\lor\ell_k).
 $$
 
+<div class="textbook-lemma" markdown="1">
 **Bổ đề.** Thỏa ⇔ ∃ $$\ell_j$$ true.  
 *(⇒)* Mọi $$\ell$$ false buộc dây $$y_i$$ dẫn mâu thuẫn cuối.  
 *(⇐)* Gán $$y$$ “prefix true đến trước literal đúng”. $$\square$$
+</div>
 
 ### Thử nghiệm: SAT → 3SAT
 

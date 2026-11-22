@@ -235,8 +235,10 @@ Tổng số đối tượng ≤ $$n(\lceil N/n \rceil - 1) < N$$, mâu thuẫn.
 
 Do đó, ít nhất một nhóm phải chứa ≥ $$\lceil N/n \rceil$$ đối tượng.
 
+<div class="textbook-lemma" markdown="1">
 **Hệ quả** (dạng hay dùng trong CS):
 - Nếu $$N > n(k-1)$$, thì ít nhất một nhóm chứa ≥ $$k$$ đối tượng.
+</div>
 
 **Ý nghĩa CS**:
 - **Hash collision**: $$n+1$$ khóa vào bảng $$n$$ ô → chắc chắn có va chạm.

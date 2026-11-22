@@ -31,12 +31,13 @@ Trong phần mềm, dữ liệu hiếm khi chỉ đi qua một bước: nó thư
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Cho $$f:A\to B$$ và $$g:B\to C$$. **Hàm hợp** của $$g$$ sau $$f$$ là hàm $$g\circ f:A\to C$$ xác định bởi:
-</div>
 
 <div class="textbook-equation" markdown="1">
 $$(g\circ f)(x)=g(f(x)).$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Ký hiệu**: $$g\circ f$$ đọc là "g hợp f" hoặc "g sau f". Tính $$f$$ trước, rồi tính $$g$$.
 
 <div class="textbook-example" markdown="1">
@@ -77,12 +78,13 @@ $$f(A)\subseteq \operatorname{dom}(g).$$
 
 <div class="textbook-theorem" markdown="1">
 **Định lý**: Nếu các hàm hợp xác định, thì:
-</div>
 
 <div class="textbook-equation" markdown="1">
 $$h\circ(g\circ f)=(h\circ g)\circ f.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 ### Chứng minh
 
 Với mọi $$x$$ trong domain của $$f$$:
@@ -129,12 +131,13 @@ Hàm đồng nhất đóng vai trò phần tử trung hòa của phép hợp.
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Với $$f:A\to B$$, một hàm $$g:B\to A$$ được gọi là **hàm nghịch đảo** của $$f$$ nếu:
-</div>
 
 <div class="textbook-equation" markdown="1">
 $$g\circ f=id_A$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 và
 
 <div class="textbook-equation" markdown="1">

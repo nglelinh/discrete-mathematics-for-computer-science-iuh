@@ -49,12 +49,13 @@ Một nguyên lý nhìn rất đơn giản có thể tạo ra các kết luận 
 
 <div class="textbook-theorem" markdown="1">
 **Định lý**: Với mọi số thực α và số nguyên dương N, tồn tại các số nguyên p, q với 1 ≤ q ≤ N sao cho:
-</div>
 
 <div class="textbook-equation" markdown="1">
 $$\left|\alpha - p/q\right| < 1/(qN)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Chứng minh**: Xét N+1 số {0, {α}, {2α}, ..., {Nα}} trong đoạn [0,1).
 Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 số {iα}, {jα} trong cùng một đoạn.
 

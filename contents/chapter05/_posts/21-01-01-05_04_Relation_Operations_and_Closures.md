@@ -31,12 +31,13 @@ Trong hệ thống thực, chúng ta thường phải đảo chiều liên kết
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Với quan hệ $$R\subseteq A\times B$$, quan hệ ngược của $$R$$ là:
-</div>
 
 <div class="textbook-equation" markdown="1">
 $$R^{-1}=\{(b,a)\in B\times A\mid (a,b)\in R\}.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Nếu $$R=\{(An,Toan),(Binh,Ly),(Chi,Toan)\}$$ biểu diễn "sinh viên học môn", thì $$R^{-1}$$ biểu diễn "môn có sinh viên":
 
@@ -61,12 +62,13 @@ Nếu $$R$$ đối xứng thì $$R^{-1}=R$$.
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Cho $$R\subseteq A\times B$$ và $$S\subseteq B\times C$$. Hợp thành $$S\circ R$$ là quan hệ từ $$A$$ đến $$C$$:
-</div>
 
 <div class="textbook-equation" markdown="1">
 $$S\circ R=\{(a,c)\mid \exists b\in B,\ (a,b)\in R\land (b,c)\in S\}.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Ký hiệu**: $$S\circ R$$ đọc là "$$S$$ sau $$R$$"; thực hiện $$R$$ trước rồi $$S$$.
 
 <div class="textbook-example" markdown="1">
@@ -99,10 +101,10 @@ $$M_{S\circ R}[i,j]=\bigvee_k(M_R[i,k]\land M_S[k,j]).$$
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Với quan hệ $$R$$ trên $$A$$:
-</div>
 
 - $$R^1=R$$.
 - $$R^{n+1}=R^n\circ R$$.
+</div>
 
 **Ý nghĩa**: $$(a,b)\in R^k$$ nếu tồn tại đường đi độ dài $$k$$ từ $$a$$ đến $$b$$ trong đồ thị của $$R$$.
 

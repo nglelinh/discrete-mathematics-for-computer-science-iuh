@@ -296,11 +296,13 @@ Giả sử $$A = \{a_1, a_2, \dots, a_n\}$$, $$|A| = n$$.
    2 \times 2 \times \cdots \times 2 \quad (n \text{ lần}) = 2^n.
    $$
 
+<div class="textbook-lemma" markdown="1">
 **Hệ quả**:
 - $$|A| = 0$$ (tập rỗng): có $$2^0 = 1$$ tập con (chính nó).
 - $$|A| = 1$$: có 2 tập con.
 - $$|A| = 10$$: có $$2^{10} = 1024$$ tập con.
 - $$|A| = 20$$: đã có hơn 1 triệu tập con.
+</div>
 
 **Ý nghĩa trong Khoa học Máy tính**:
 - **Không gian trạng thái** của một hệ thống $$n$$ bit có $$2^n$$ trạng thái.

@@ -74,11 +74,11 @@ Một quan hệ $$R\subseteq A\times B$$ là hàm từ $$A$$ đến $$B$$ nếu:
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**:
-</div>
 
 - **Domain**: tập tất cả đầu vào hợp lệ.
 - **Codomain**: tập mà đầu ra được khai báo thuộc về.
 - **Range/Image**: tập đầu ra thật sự xuất hiện.
+</div>
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Với $$f:\mathbb{Z}\to\mathbb{Z}$$, $$f(n)=2n$$:
@@ -154,10 +154,12 @@ Mỗi hàm $$f: A \to B$$ được xác định bởi giá trị $$f(a)$$ cho t�
 Với mỗi $$a$$, có $$m$$ lựa chọn trong $$B$$.  
 Tổng số cách: $$m \times m \times \cdots \times m$$ ($$n$$ lần) $$= m^n$$.
 
+<div class="textbook-lemma" markdown="1">
 **Hệ quả**:
 
 - Số hàm từ $$\{0,1\}^n$$ sang $$\{0,1\}$$: $$2^{2^n}$$ (đúng bằng số hàm Boolean trên $$n$$ biến — đã gặp ở 01_01).
 - Số hàm từ tập $$n$$ phần tử sang chính nó: $$n^n$$ (số hoán vị chỉ là $$n!$$).
+</div>
 
 **Ý nghĩa CS**:
 

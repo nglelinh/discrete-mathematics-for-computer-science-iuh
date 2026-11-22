@@ -309,11 +309,13 @@ can_register = paid_tuition and account_active and (passed_prerequisite or advis
    2 \times 2 \times \cdots \times 2 \quad (2^n \text{ lần}) = 2^{2^n}.
    $$
 
+<div class="textbook-lemma" markdown="1">
 **Hệ quả quan trọng**:
 - Với $$n = 1$$: có $$2^{2} = 4$$ hàm Boolean (hằng đúng, hằng sai, identity, NOT).
 - Với $$n = 2$$: có $$2^{4} = 16$$ hàm Boolean (bao gồm AND, OR, XOR, implication, v.v.).
 - Với $$n = 3$$: đã có $$2^{8} = 256$$ hàm Boolean.
 - Với $$n = 10$$: con số lên tới $$2^{1024} \approx 10^{308}$$, lớn hơn số nguyên tử trong vũ trụ.
+</div>
 
 **Ý nghĩa trong Khoa học Máy tính**:
 - **Bảng chân trị** chỉ khả thi khi $$n \leq 5$$ hoặc 6. Với $$n \geq 10$$, không thể liệt kê hết.

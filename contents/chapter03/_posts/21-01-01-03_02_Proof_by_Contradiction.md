@@ -157,7 +157,9 @@ Một khuôn mẫu an toàn là:
 
 Đây là ví dụ kinh điển nhất, vì nó cho thấy phản chứng có thể biến một phát biểu trông rất khó thành một chuỗi suy luận ngắn và sắc bén.
 
+<div class="textbook-theorem" markdown="1">
 **Định lý:** `√2` là số vô tỷ (irrational number).
+</div>
 
 **Chứng minh:**
 
@@ -211,7 +213,9 @@ Bấm Bước tiếp để xem chứng minh √2 vô tỷ hiện dần, với b�
 ## Ví dụ 2: Có vô hạn số nguyên tố
 
 
+<div class="textbook-theorem" markdown="1">
 **Định lý:** Có vô hạn số nguyên tố.
+</div>
 
 **Chứng minh:**
 
@@ -247,7 +251,9 @@ Ví dụ này rất đẹp vì mâu thuẫn đến từ việc **tự xây một
 
 Ví dụ này giúp sinh viên thấy phản chứng không chỉ dùng cho số vô tỷ hay số nguyên tố, mà còn rất hợp với lập luận "cực tiểu" (minimal counterexample intuition).
 
+<div class="textbook-lemma" markdown="1">
 **Mệnh đề:** Không tồn tại số nguyên tố lớn nhất.
+</div>
 
 **Chứng minh bằng phản chứng:**
 
@@ -320,7 +326,9 @@ Phản chứng không chỉ sống trong toán thuần túy. Trong thiết kế 
 1. `size` luôn bằng số phần tử thực sự đang có trong cấu trúc dữ liệu.
 2. Khi `size = 0` thì con trỏ `front = null`.
 
+<div class="textbook-lemma" markdown="1">
 **Mệnh đề:** Không thể có trạng thái mà `size = 0` nhưng `front` lại trỏ đến một node hợp lệ, nếu hai bất biến trên luôn được duy trì đúng sau mỗi thao tác.
+</div>
 
 **Lập luận phản chứng:**
 

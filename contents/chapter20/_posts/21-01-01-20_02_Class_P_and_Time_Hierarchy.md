@@ -75,7 +75,9 @@ $$
 
 **Ý chứng minh:** diagonalization — máy “mô phỏng rồi đảo” mọi máy thời gian $$t_1$$ (Sipser/Arora–Barak).
 
+<div class="textbook-lemma" markdown="1">
 **Hệ quả.** $$P\subsetneq\mathrm{EXPTIME}=\bigcup_k\mathrm{TIME}(2^{n^k})$$.
+</div>
 
 **Hệ quả nghiên cứu.** Hierarchy **không** tách $$P$$ khỏi $$NP$$: kỹ thuật diagonal “đơn giản” relativize / không đủ tinh.
 

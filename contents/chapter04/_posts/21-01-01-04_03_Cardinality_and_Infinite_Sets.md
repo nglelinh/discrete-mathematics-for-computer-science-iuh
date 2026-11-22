@@ -100,13 +100,14 @@ Có $$2^3=8$$ tập con.
 
 <div class="textbook-theorem" markdown="1">
 **Định lý**:
-</div>
 
 
 <div class="textbook-equation" markdown="1">
 $$\lvert A\cup B \rvert=\lvert A \rvert+\lvert B \rvert-\lvert A\cap B \rvert.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 ### Diễn giải
 
 Khi cộng $$\lvert A \rvert+\lvert B \rvert$$, các phần tử thuộc $$A\cap B$$ bị đếm hai lần. Vì vậy ta phải trừ đi một lần.
@@ -128,13 +129,14 @@ $$25+18-10=33.$$
 
 <div class="textbook-theorem" markdown="1">
 **Định lý**:
-</div>
 
 
 <div class="textbook-equation" markdown="1">
 $$\lvert A\cup B\cup C \rvert=\lvert A \rvert+\lvert B \rvert+\lvert C \rvert-\lvert A\cap B \rvert-\lvert A\cap C \rvert-\lvert B\cap C \rvert+\lvert A\cap B\cap C \rvert.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 ### Khối suy luận
 
 - Cộng $$\lvert A \rvert+\lvert B \rvert+\lvert C \rvert$$: vùng giao đôi bị đếm thừa.
@@ -201,7 +203,6 @@ Lật đường chéo để tạo một dãy nhị phân không nằm trong danh
 
 <div class="textbook-theorem" markdown="1">
 **Định lý**: Nếu tồn tại hai hàm đơn ánh $$f: A \to B$$ và $$g: B \to A$$, thì tồn tại một song ánh giữa $$A$$ và $$B$$. Nói cách khác:
-</div>
 
 
 <div class="textbook-equation" markdown="1">
@@ -210,6 +211,8 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Chứng minh (phác thảo)**:
 
 1. Vì $$f$$ là đơn ánh, $$A$$ "nhúng" được vào $$B$$, nên $$\lvert A \rvert \leq \lvert B \rvert$$.
@@ -220,10 +223,12 @@ $$
 
    (Chi tiết chứng minh thường dùng định lý điểm cố định hoặc phân hoạch $$A$$ thành các chuỗi và chọn $$f$$ hoặc $$g^{-1}$$ trên từng chuỗi.)
 
+<div class="textbook-lemma" markdown="1">
 **Hệ quả**:
 
 - $$\lvert \N \rvert = \lvert 2\N \rvert = \lvert \Z \rvert = \lvert \Q \rvert = \aleph_0$$ (tập đếm được).
 - $$\lvert \R \rvert = \lvert (0,1) \rvert = \lvert [0,1] \rvert = 2^{\aleph_0}$$ (lực lượng continuum).
+</div>
 
 **Ý nghĩa CS**:
 - So sánh độ phức tạp của không gian trạng thái mà không cần xây dựng song ánh tường minh.

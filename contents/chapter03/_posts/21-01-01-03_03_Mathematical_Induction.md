@@ -136,12 +136,15 @@ Khi viết bài, nên theo khuôn sau:
 ## Ví dụ 1: Tổng của $n$ số tự nhiên đầu tiên
 
 
+<div class="textbook-lemma" markdown="1">
 **Mệnh đề.** Với mọi $n \ge 1$,
 
 <div class="textbook-equation" markdown="1">
 $$1 + 2 + \cdots + n = \frac{n(n+1)}{2}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Chứng minh.**
 
 **Bước cơ sở**: Với $n=1$,
@@ -186,12 +189,15 @@ Vậy theo nguyên lý quy nạp toán học, công thức đúng với mọi $n
 ## Ví dụ 2: Tổng cấp số nhân
 
 
+<div class="textbook-lemma" markdown="1">
 **Mệnh đề.** Với mọi $n \ge 0$,
 
 <div class="textbook-equation" markdown="1">
 $$1 + 2 + 2^2 + \cdots + 2^n = 2^{n+1} - 1$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Chứng minh.**
 
 **Bước cơ sở**: Với $n=0$,
@@ -227,7 +233,9 @@ Tổng này thường xuất hiện khi đếm số nút của cây nhị phân 
 ## Ví dụ 3: Tính chia hết
 
 
+<div class="textbook-lemma" markdown="1">
 **Mệnh đề.** Với mọi $n \ge 1$, số $7^n - 1$ chia hết cho $6$.
+</div>
 
 **Chứng minh.**
 
@@ -276,12 +284,15 @@ với $d$ là số cần chứng minh chia hết.
 ## Ví dụ 4: Bất đẳng thức Bernoulli
 
 
+<div class="textbook-lemma" markdown="1">
 **Mệnh đề.** Với mọi $n \in \mathbb{N}$ và mọi $x \ge -1$,
 
 <div class="textbook-equation" markdown="1">
 $$(1+x)^n \ge 1 + nx$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Chứng minh.**
 
 **Bước cơ sở**: Với $n=0$,
@@ -327,12 +338,15 @@ Vậy mệnh đề đúng với mọi $n \in \mathbb{N}$. $\square$
 ## Ví dụ 5: Tổng các số lẻ đầu tiên
 
 
+<div class="textbook-lemma" markdown="1">
 **Mệnh đề.** Với mọi $n \ge 1$,
 
 <div class="textbook-equation" markdown="1">
 $$1 + 3 + 5 + \cdots + (2n-1) = n^2$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Chứng minh.**
 
 **Bước cơ sở**: Với $n=1$,
@@ -416,12 +430,15 @@ Quy nạp không nằm ngoài lập trình. Nó là xương sống của rất n
 ## Ví dụ 7: Ứng dụng trong Khoa học Máy tính — số nút của cây nhị phân đầy đủ
 
 
+<div class="textbook-lemma" markdown="1">
 **Mệnh đề.** Cây nhị phân đầy đủ có chiều cao $h$ (gốc ở mức $0$) thì có:
 
 <div class="textbook-equation" markdown="1">
 $$1 + 2 + 2^2 + \cdots + 2^h = 2^{h+1} - 1$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 nút.
 
 **Chứng minh theo quy nạp trên $h$.**
@@ -647,12 +664,15 @@ def fib(n):
 
 Sau khi có quan hệ truy hồi, ta có thể dùng quy nạp để chứng minh các tính chất của dãy. Ví dụ:
 
+<div class="textbook-lemma" markdown="1">
 **Mệnh đề.** Với mọi $n \ge 1$,
 
 <div class="textbook-equation" markdown="1">
 $$F_1 + F_2 + \cdots + F_n = F_{n+2} - 1$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Chứng minh.**
 
 **Bước cơ sở** ($n=1$): $F_1 = 1 = F_3 - 1 = 2 - 1$. Đúng.

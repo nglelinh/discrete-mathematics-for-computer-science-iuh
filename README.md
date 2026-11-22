@@ -107,3 +107,21 @@ Tài liệu này được phát triển cho mục đích giáo dục. Nội dung
 ---
 
 *Cập nhật lần cuối: Tháng 6, 2026*
+
+## Khối Định nghĩa / Định lý
+
+Dùng `<div>` có `markdown="1"` để nội dung bên trong vẫn là Markdown (công thức `$$…$$`, danh sách, code đều dùng được). Nhãn là phần in đậm đầu đoạn đầu tiên, giữ nguyên tên và số như trong bài:
+
+```html
+<div class="textbook-definition" markdown="1">
+**Định nghĩa 1.2 (Tương đương logic)**: Hai mệnh đề $$P$$ và $$Q$$ ...
+</div>
+
+<div class="textbook-theorem" markdown="1">
+**Định lý (De Morgan)**: $$\neg(P \land Q) \equiv \neg P \lor \neg Q$$.
+</div>
+```
+
+- `textbook-definition`: viền xanh.
+- `textbook-theorem` và `textbook-lemma` (dùng cho Bổ đề, Hệ quả, Mệnh đề): viền nâu đỏ.
+- `textbook-proof`: khối nhạt, tự thêm ∎ ở cuối.

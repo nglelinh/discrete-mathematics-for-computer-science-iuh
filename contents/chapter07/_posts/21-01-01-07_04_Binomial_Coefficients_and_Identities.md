@@ -63,7 +63,6 @@ $$
 
 <div class="textbook-theorem" markdown="1">
 **Định lý**: Với $n$ là số nguyên không âm,
-</div>
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -71,6 +70,8 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Chứng minh tổ hợp**: Khi nhân
 
 <div class="textbook-equation" markdown="1">

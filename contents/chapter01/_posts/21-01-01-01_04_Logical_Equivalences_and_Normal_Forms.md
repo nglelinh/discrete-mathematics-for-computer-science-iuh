@@ -51,13 +51,14 @@ Hai điều kiện này **hoàn toàn tương đương** về mặt logic, dù c
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hai mệnh đề phức hợp $$P$$ và $$Q$$ được gọi là **tương đương logic** nếu chúng có cùng giá trị chân trị trong mọi phép gán giá trị cho các biến mệnh đề. Khi đó ta viết:
-</div>
 
 
 <div class="textbook-equation" markdown="1">
 $$P \equiv Q$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 Tương đương với việc $$P \leftrightarrow Q$$ là một hằng đúng.
 
 **Ký hiệu**:
@@ -213,12 +214,12 @@ $$\begin{aligned}
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một biểu thức logic $$E$$ được gọi là **dạng rút gọn** (reduced form) nếu nó thỏa mãn đồng thời 3 điều kiện sau:
-</div>
 
 
 1. **Không chứa hằng số** $$T$$ hoặc $$F$$ (trừ khi biểu thức chỉ là hằng số đó).
 2. **Không chứa cặp bù** (literal và phủ định của nó trong cùng một clause hoặc term).
 3. **Không chứa thừa số chung** (các literal lặp lại trong cùng một clause/term, hoặc các term/clause trùng nhau).
+</div>
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
@@ -279,13 +280,14 @@ if x > 0:
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: **Dạng chuẩn tắc tuyển** (Disjunctive Normal Form, DNF) là biểu thức có dạng tuyển của các hội, trong đó mỗi thành phần nhỏ là một literal hoặc phủ định của literal:
-</div>
 
 
 <div class="textbook-equation" markdown="1">
 $$(l_{11} \land l_{12} \land \cdots) \lor (l_{21} \land l_{22} \land \cdots) \lor \cdots$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 <div class="textbook-example" markdown="1">
 **Ví dụ**: $$(p \land q) \lor (\neg p \land r)$$ là DNF.
 </div>
@@ -333,13 +335,14 @@ Với hai biến, bảng chân trị tạo thành lưới 2×2; mỗi ô tương
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: **Dạng chuẩn tắc hội** (Conjunctive Normal Form, CNF) là biểu thức có dạng hội của các tuyển:
-</div>
 
 
 <div class="textbook-equation" markdown="1">
 $$(l_{11} \lor l_{12} \lor \cdots) \land (l_{21} \lor l_{22} \lor \cdots) \land \cdots$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 <div class="textbook-example" markdown="1">
 **Ví dụ**: $$(p \lor q) \land (\neg p \lor r) \land (q \lor \neg r)$$ là CNF.
 </div>
@@ -467,14 +470,18 @@ Do đó $$ D_1 \equiv D_2 $$.
 
 **Chứng minh cho CNF đầy đủ**: Hoàn toàn tương tự bằng cách dual hóa (thay $$ \lor $$ bằng $$ \land $$, $$ T $$ bằng $$ F $$, và literal bằng phủ định của nó), hoặc áp dụng Định lý 3 bên dưới cho $$ \neg f $$.
 
+<div class="textbook-lemma" markdown="1">
 **Hệ quả quan trọng**:
 - DNF đầy đủ và CNF đầy đủ là **dạng chuẩn tắc** (canonical form) của hàm Boolean.
 - Hai hàm Boolean bằng nhau khi và chỉ khi DNF đầy đủ (hoặc CNF đầy đủ) của chúng trùng nhau.
+</div>
 
 ### Định lý 3: Mối quan hệ giữa DNF và CNF qua phủ định
 **Nếu** $$P$$ **có DNF** $$(l_{11} \land l_{12} \land \cdots) \lor (l_{21} \land l_{22} \land \cdots) \lor \cdots$$, **thì** $$\neg P$$ **có CNF** $$( \neg l_{11} \lor \neg l_{12} \lor \cdots) \land ( \neg l_{21} \lor \neg l_{22} \lor \cdots) \land \cdots$$.
 
+<div class="textbook-lemma" markdown="1">
 **Hệ quả**: Phủ định của DNF là CNF và ngược lại (áp dụng De Morgan mở rộng).
+</div>
 
 ### Định lý 4: Biểu diễn hàm Boolean
 **Mọi hàm Boolean** $$f: \{T,F\}^n \to \{T,F\}$$ **đều có biểu diễn DNF và CNF duy nhất** (đầy đủ).

@@ -27,11 +27,11 @@ excerpt: "Ở mục case study TaskFlow, chúng ta đã thấy combinatorial exp
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Cho bàn cờ $$n \times n$$. Một **Knight's tour** là dãy các ô $$(r_0,c_0), (r_1,c_1), \ldots, (r_{n^2-1}, c_{n^2-1})$$ sao cho:
-</div>
 
 
 1. Mỗi nước từ $$(r_i, c_i)$$ đến $$(r_{i+1}, c_{i+1})$$ là nước mã hợp lệ (chênh $$(\pm 2, \pm 1)$$ hoặc $$(\pm 1, \pm 2)$$).
 2. Mọi ô trên bàn xuất hiện **đúng một lần** trong dãy.
+</div>
 
 | Loại tour | Điều kiện thêm | Ví dụ trực giác |
 |:---|:---|:---|

@@ -166,7 +166,9 @@ def is_even(n: int) -> bool:
 can_submit = is_enrolled and not is_locked and before_deadline
 ```
 
+<div class="textbook-lemma" markdown="1">
 **Mệnh đề**: Nếu `can_submit` là `True`, thì sinh viên đang học lớp đó, tài khoản không bị khóa, và chưa quá hạn nộp bài.
+</div>
 
 **Chứng minh**:
 

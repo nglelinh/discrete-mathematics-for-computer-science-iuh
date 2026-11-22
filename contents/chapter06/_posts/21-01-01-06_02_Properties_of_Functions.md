@@ -31,12 +31,13 @@ Biết một ánh xạ là hàm vẫn chưa đủ để đánh giá sức mạnh
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm $$f:A\to B$$ là **đơn ánh** (injective, one-to-one) nếu hai đầu vào khác nhau luôn cho hai đầu ra khác nhau:
-</div>
 
 <div class="textbook-equation" markdown="1">
 $$x_1\ne x_2 \Rightarrow f(x_1)\ne f(x_2).$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Ký hiệu**: $$f:A\to B$$ cho biết domain là $$A$$ và codomain là $$B$$; $$x_1,x_2$$ thường ký hiệu hai đầu vào bất kỳ, còn $$y$$ ký hiệu một đầu ra trong codomain.
 
 Dạng tương đương thường dùng để chứng minh:
@@ -67,12 +68,13 @@ Vậy $$f$$ đơn ánh.
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm $$f:A\to B$$ là **toàn ánh** (surjective, onto) nếu mọi phần tử của codomain đều được đạt tới:
-</div>
 
 <div class="textbook-equation" markdown="1">
 $$\forall y\in B,\exists x\in A\text{ sao cho }f(x)=y.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 <div class="textbook-example" markdown="1">
 **Ví dụ**: $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^3$$ là toàn ánh.
 

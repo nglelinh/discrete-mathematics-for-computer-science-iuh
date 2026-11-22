@@ -33,11 +33,11 @@ Một số quan hệ giúp gom các đối tượng "giống nhau" theo một ti
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Quan hệ $$R$$ trên tập $$A$$ là **quan hệ tương đương** nếu thỏa ba tính chất:
-</div>
 
 1. **Phản xạ**: $$\forall a\in A,\ aRa$$.
 2. **Đối xứng**: $$\forall a,b\in A,\ aRb\to bRa$$.
 3. **Bắc cầu**: $$\forall a,b,c\in A,\ (aRb\land bRc)\to aRc$$.
+</div>
 
 **Ký hiệu**: Chúng ta thường viết $$a\sim b$$ thay cho $$(a,b)\in R$$ khi nói về quan hệ tương đương.
 
@@ -65,12 +65,13 @@ Vậy đồng dư modulo $$n$$ là quan hệ tương đương.
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Với quan hệ tương đương $$\sim$$ trên $$A$$, **lớp tương đương** của $$a$$ là:
-</div>
 
 <div class="textbook-equation" markdown="1">
 $$[a]=\{x\in A\mid x\sim a\}.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 <div class="textbook-theorem" markdown="1">
 **Định lý**: Mỗi quan hệ tương đương trên $$A$$ tạo ra một phân hoạch của $$A$$ thành các lớp tương đương rời nhau; ngược lại, mỗi phân hoạch xác định một quan hệ tương đương.
 </div>
@@ -112,11 +113,11 @@ Hệ quả: các lớp hoặc **trùng nhau**, hoặc **rời nhau**; hợp củ
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Quan hệ $$R$$ trên $$A$$ là **thứ tự bộ phận** (partial order) nếu thỏa:
-</div>
 
 1. **Phản xạ**: $$aRa$$.
 2. **Phản đối xứng**: nếu $$aRb$$ và $$bRa$$ thì $$a=b$$.
 3. **Bắc cầu**: nếu $$aRb$$ và $$bRc$$ thì $$aRc$$.
+</div>
 
 Khi đó cặp $$(A,R)$$ được gọi là một **poset**.
 
@@ -176,11 +177,11 @@ Còn với product order, $$010$$ và $$100$$ không so sánh được.
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Biểu đồ Hasse là cách vẽ poset bằng cách:
-</div>
 
 - Bỏ các vòng phản xạ.
 - Bỏ các cạnh suy ra từ bắc cầu (chỉ giữ **cạnh phủ**: $$a$$ phủ $$b$$ khi $$b\prec a$$ và không có $$c$$ “ở giữa”).
 - Vẽ phần tử lớn hơn ở phía trên.
+</div>
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Poset các ước dương của 12 theo quan hệ chia hết gồm $$\{1,2,3,4,6,12\}$$. Các cạnh phủ là: $$1-2$$, $$1-3$$, $$2-4$$, $$2-6$$, $$3-6$$, $$4-12$$, $$6-12$$.

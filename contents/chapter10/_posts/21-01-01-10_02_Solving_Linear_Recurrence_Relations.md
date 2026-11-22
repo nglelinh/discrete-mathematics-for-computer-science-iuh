@@ -584,7 +584,9 @@ $$
 
 là **kết luận bắt buộc**, không phải lựa chọn tùy ý.
 
+<div class="textbook-lemma" markdown="1">
 **Hệ quả.** Nghiệm tổng quát của dãy **thực** phải có dạng
+</div>
 
 $$
 a_n = C\, r^n + \overline{C}\, \overline{r}^{n}.

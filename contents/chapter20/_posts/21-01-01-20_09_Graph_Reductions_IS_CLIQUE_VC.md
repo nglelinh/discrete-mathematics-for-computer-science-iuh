@@ -57,7 +57,9 @@ $$f(G,k)=(\overline{G},k)$$ trong $$O(n^2)$$; khả nghịch.
 
 ## IS ≤ₚ VC
 
+<div class="textbook-lemma" markdown="1">
 **Bổ đề.** $$S$$ IS ⇔ $$V\setminus S$$ vertex cover.
+</div>
 
 **Chứng minh.** Cạnh không thể nằm trọn trong IS; cover phải chạm mọi cạnh. $$\square$$
 

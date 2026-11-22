@@ -72,7 +72,6 @@ $$
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa** (tổng quát): Cho các tập hữu hạn $$A_1, \ldots, A_n$$,
-</div>
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -81,6 +80,8 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Chứng minh bằng đếm số lần**: Xét một phần tử thuộc đúng $r$ tập. Trong tổng trên, nó được tính
 
 <div class="textbook-equation" markdown="1">

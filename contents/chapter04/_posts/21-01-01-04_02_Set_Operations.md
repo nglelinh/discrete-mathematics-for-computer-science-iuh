@@ -403,7 +403,6 @@ Nhập hai tập hữu hạn và xem hợp, giao, hiệu, hiệu đối xứng t
 
 <div class="textbook-theorem" markdown="1">
 **Định lý**: Với mọi tập $$A, B \subseteq U$$,
-</div>
 
 
 <div class="textbook-equation" markdown="1">
@@ -412,12 +411,15 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Chứng minh** (bằng định nghĩa):
 
 - $$x \in (A \cup B)^c \iff x \notin A \cup B \iff x \notin A \land x \notin B \iff x \in A^c \land x \in B^c \iff x \in A^c \cap B^c$$.
 
 Tương tự cho đẳng thức thứ hai.
 
+<div class="textbook-lemma" markdown="1">
 **Hệ quả** (De Morgan cho n tập):
 
 <div class="textbook-equation" markdown="1">
@@ -426,6 +428,8 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 **Ý nghĩa CS**:
 - `NOT (A OR B)` = `NOT A AND NOT B` (rất hay gặp trong điều kiện lọc).
 - Dùng trong tối ưu truy vấn SQL và biểu thức Boolean.

@@ -339,7 +339,9 @@ Một kỹ thuật chứng minh đặc biệt hữu ích trong toán rời rạc
 
 ### Đếm bằng hai cách (Counting in two ways)
 
+<div class="textbook-theorem" markdown="1">
 **Định lý (Handshaking Lemma).** Trong mọi đồ thị vô hướng, tổng bậc của các đỉnh là một số chẵn.
+</div>
 
 *Chứng minh.* Xét đồ thị vô hướng $$G = (V,E)$$. Mỗi cạnh không phải khuyên góp 1 vào bậc của hai đỉnh, mỗi khuyên góp 2 vào bậc của một đỉnh. Do đó mỗi cạnh đóng góp 2 vào tổng $$\sum_{v \in V} \deg(v)$$. Vậy:
 
@@ -373,7 +375,9 @@ Nhiều định lý có thể được chứng minh bằng cách **xây dựng m
 
 Để chứng minh một đối tượng tồn tại, ta có thể đưa ra một thuật toán xây dựng nó.
 
+<div class="textbook-theorem" markdown="1">
 **Định lý.** Trong mọi đồ thị vô hướng, nếu tồn tại đường đi (walk) từ $$u$$ đến $$v$$, thì tồn tại đường đi đơn (path) — không lặp đỉnh — từ $$u$$ đến $$v$$.
+</div>
 
 *Chứng minh bằng thuật toán:*
 
@@ -409,7 +413,9 @@ Nếu cộng thêm 1 vào số này, tất cả các bit 1 sẽ flip thành 0 kh
 
 ### Thuật toán đệ quy
 
+<div class="textbook-theorem" markdown="1">
 **Định lý.** Với mọi cây nhị phân, số lá bằng số đỉnh trong cộng 1.
+</div>
 
 *Chứng minh bằng thuật toán (co cây dần):*
 
