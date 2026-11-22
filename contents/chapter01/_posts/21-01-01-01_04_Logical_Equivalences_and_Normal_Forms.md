@@ -347,13 +347,13 @@ $$(l_{11} \lor l_{12} \lor \cdots) \land (l_{21} \lor l_{22} \lor \cdots) \land 
 
 **Ký hiệu**: Mỗi ngoặc trong CNF thường được gọi là một **mệnh đề con** (clause). CNF là dạng chuẩn mà nhiều SAT solver nhận vào.
 
-**Lưu ý**: Chúng ta thường dùng bit `1` và `0` thay cho `T` và `F`, và ký hiệu biến là \(x_1, \dots, x_n\). Ví dụ: gán \(x = 101\) vào công thức \((x_1 \land x_2 \land x_3) \lor (\neg x_1 \land \neg x_2 \land \neg x_3)\) cho kết quả `0`.
+**Lưu ý**: Chúng ta thường dùng bit `1` và `0` thay cho `T` và `F`, và ký hiệu biến là $$x_1, \dots, x_n$$. Ví dụ: gán $$x = 101$$ vào công thức $$(x_1 \land x_2 \land x_3) \lor (\neg x_1 \land \neg x_2 \land \neg x_3)$$ cho kết quả `0`.
 
 **Toán tử bitwise trên chuỗi bit**: Chúng ta có thể mở rộng các phép toán logic thành toán tử trên **chuỗi bit** bằng cách áp dụng từng bit một. Ví dụ:
 
-- \(1010 = 0101\)
-- \(1010 \land 0110 = 0010\)
-- \(1010 \lor 0110 = 1110\)
+- $$1010 = 0101$$
+- $$1010 \land 0110 = 0010$$
+- $$1010 \lor 0110 = 1110$$
 
 ### Tạo CNF từ bảng chân trị (cách trực quan)
 

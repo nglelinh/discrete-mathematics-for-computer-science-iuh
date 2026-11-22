@@ -87,7 +87,7 @@ SAT solver sẽ trả lời: **UNSAT** (không thỏa mãn được).
 
 ### Minh họa trực quan: Không gian tìm kiếm
 
-Với 3 biến, có \(2^3 = 8\) assignment có thể. SAT solver phải tìm xem có assignment nào làm CNF đúng không.
+Với 3 biến, có $$2^3 = 8$$ assignment có thể. SAT solver phải tìm xem có assignment nào làm CNF đúng không.
 
 ```python
 # Minh họa không gian tìm kiếm
@@ -99,7 +99,7 @@ for p in [True, False]:
 print(f"Tổng số assignment: {len(assignments)}")  # 8
 ```
 
-Khi số biến tăng lên 100, không gian tìm kiếm là \(2^{100} \approx 10^{30}\). Không thể vét cạn. Cần thuật toán thông minh.
+Khi số biến tăng lên 100, không gian tìm kiếm là $$2^{100} \approx 10^{30}$$. Không thể vét cạn. Cần thuật toán thông minh.
 
 ## Tại sao cần SAT solver?
 

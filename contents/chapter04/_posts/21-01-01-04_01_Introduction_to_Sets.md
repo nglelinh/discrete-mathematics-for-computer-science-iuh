@@ -277,19 +277,19 @@ pow(pow({1})) = {∅, {∅}, {{1}}, {∅, {1}}}.
 
 <p class="textbook-figure-caption" data-figure="4.7">Tập lũy thừa P(S) gồm tất cả tập con của S — với |S| = n phần tử thì |P(S)| = 2ⁿ.</p>
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Một tập hợp hữu hạn \( A \) có đúng \( 2^{|A|} \) tập con (bao gồm cả ∅ và \( A \)).
+**Định lý**: Một tập hợp hữu hạn $$A$$ có đúng $$2^{|A|}$$ tập con (bao gồm cả ∅ và $$A$$).
 </div>
 
 
 **Chứng minh**:
 
-Giả sử \( A = \{a_1, a_2, \dots, a_n\} \), \( |A| = n \).
+Giả sử $$A = \{a_1, a_2, \dots, a_n\}$$, $$|A| = n$$.
 
-1. Mỗi tập con \( B \subseteq A \) được xác định bởi việc chọn hoặc không chọn từng phần tử \( a_i \).
+1. Mỗi tập con $$B \subseteq A$$ được xác định bởi việc chọn hoặc không chọn từng phần tử $$a_i$$.
 
-2. Với mỗi \( a_i \), có đúng 2 lựa chọn:
-   - \( a_i \in B \)
-   - \( a_i \notin B \)
+2. Với mỗi $$a_i$$, có đúng 2 lựa chọn:
+   - $$a_i \in B$$
+   - $$a_i \notin B$$
 
 3. Do đó, tổng số tập con là:
    $$
@@ -297,13 +297,13 @@ Giả sử \( A = \{a_1, a_2, \dots, a_n\} \), \( |A| = n \).
    $$
 
 **Hệ quả**:
-- \( |A| = 0 \) (tập rỗng): có \( 2^0 = 1 \) tập con (chính nó).
-- \( |A| = 1 \): có 2 tập con.
-- \( |A| = 10 \): có \( 2^{10} = 1024 \) tập con.
-- \( |A| = 20 \): đã có hơn 1 triệu tập con.
+- $$|A| = 0$$ (tập rỗng): có $$2^0 = 1$$ tập con (chính nó).
+- $$|A| = 1$$: có 2 tập con.
+- $$|A| = 10$$: có $$2^{10} = 1024$$ tập con.
+- $$|A| = 20$$: đã có hơn 1 triệu tập con.
 
 **Ý nghĩa trong Khoa học Máy tính**:
-- **Không gian trạng thái** của một hệ thống \( n \) bit có \( 2^n \) trạng thái.
+- **Không gian trạng thái** của một hệ thống $$n$$ bit có $$2^n$$ trạng thái.
 - **Tập con** xuất hiện trong thiết kế thuật toán (subset sum, knapsack), database (power set indexing), và AI (feature selection).
 
 ## Các tập hợp số quan trọng

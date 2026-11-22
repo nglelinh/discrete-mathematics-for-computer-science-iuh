@@ -294,15 +294,15 @@ can_register = paid_tuition and account_active and (passed_prerequisite or advis
 ## Định lý quan trọng: Số lượng hàm Boolean
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Trên một tập hợp gồm \( n \) biến mệnh đề, có **đúng \( 2^{2^n} \)** hàm Boolean khác nhau.
+**Định lý**: Trên một tập hợp gồm $$n$$ biến mệnh đề, có **đúng $$2^{2^n}$$** hàm Boolean khác nhau.
 </div>
 
 
 **Chứng minh**:
 
-1. Mỗi assignment cho \( n \) biến có thể được xem như một vector trong \( \{T,F\}^n \). Có đúng \( 2^n \) vector như vậy.
+1. Mỗi assignment cho $$n$$ biến có thể được xem như một vector trong $$\{T,F\}^n$$. Có đúng $$2^n$$ vector như vậy.
 
-2. Một hàm Boolean \( f \) được xác định hoàn toàn bởi giá trị của nó trên từng vector. Nghĩa là, ta cần chỉ định cho mỗi vector một giá trị \( T \) hoặc \( F \).
+2. Một hàm Boolean $$f$$ được xác định hoàn toàn bởi giá trị của nó trên từng vector. Nghĩa là, ta cần chỉ định cho mỗi vector một giá trị $$T$$ hoặc $$F$$.
 
 3. Với mỗi vector, có 2 lựa chọn. Do đó, tổng số cách chỉ định là:
    $$
@@ -310,13 +310,13 @@ can_register = paid_tuition and account_active and (passed_prerequisite or advis
    $$
 
 **Hệ quả quan trọng**:
-- Với \( n = 1 \): có \( 2^{2} = 4 \) hàm Boolean (hằng đúng, hằng sai, identity, NOT).
-- Với \( n = 2 \): có \( 2^{4} = 16 \) hàm Boolean (bao gồm AND, OR, XOR, implication, v.v.).
-- Với \( n = 3 \): đã có \( 2^{8} = 256 \) hàm Boolean.
-- Với \( n = 10 \): con số lên tới \( 2^{1024} \approx 10^{308} \), lớn hơn số nguyên tử trong vũ trụ.
+- Với $$n = 1$$: có $$2^{2} = 4$$ hàm Boolean (hằng đúng, hằng sai, identity, NOT).
+- Với $$n = 2$$: có $$2^{4} = 16$$ hàm Boolean (bao gồm AND, OR, XOR, implication, v.v.).
+- Với $$n = 3$$: đã có $$2^{8} = 256$$ hàm Boolean.
+- Với $$n = 10$$: con số lên tới $$2^{1024} \approx 10^{308}$$, lớn hơn số nguyên tử trong vũ trụ.
 
 **Ý nghĩa trong Khoa học Máy tính**:
-- **Bảng chân trị** chỉ khả thi khi \( n \leq 5 \) hoặc 6. Với \( n \geq 10 \), không thể liệt kê hết.
+- **Bảng chân trị** chỉ khả thi khi $$n \leq 5$$ hoặc 6. Với $$n \geq 10$$, không thể liệt kê hết.
 - **SAT solver** phải dùng thuật toán thông minh (resolution, DPLL, CDCL) thay vì duyệt brute-force.
 - **Kiểm thử phần mềm** cần chiến lược thông minh (pairwise, symbolic execution) thay vì kiểm tra vét cạn mọi tổ hợp đầu vào.
 

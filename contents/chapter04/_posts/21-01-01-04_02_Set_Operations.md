@@ -402,7 +402,7 @@ Nhập hai tập hữu hạn và xem hợp, giao, hiệu, hiệu đối xứng t
 ## Định lý De Morgan (mở rộng)
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Với mọi tập \( A, B \subseteq U \),
+**Định lý**: Với mọi tập $$A, B \subseteq U$$,
 </div>
 
 
@@ -414,7 +414,7 @@ $$
 </div>
 **Chứng minh** (bằng định nghĩa):
 
-- \( x \in (A \cup B)^c \iff x \notin A \cup B \iff x \notin A \land x \notin B \iff x \in A^c \land x \in B^c \iff x \in A^c \cap B^c \).
+- $$x \in (A \cup B)^c \iff x \notin A \cup B \iff x \notin A \land x \notin B \iff x \in A^c \land x \in B^c \iff x \in A^c \cap B^c$$.
 
 Tương tự cho đẳng thức thứ hai.
 
