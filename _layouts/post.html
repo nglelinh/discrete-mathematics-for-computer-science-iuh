@@ -26,6 +26,19 @@ layout: default
     {{ content }}
   </div>
 </article>
+<script>
+  (function () {
+    var a = document.querySelector('.textbook-lesson');
+    if (!a) return;
+    var re = /^\s*\d+(\.\d+)*[.)]?\s/;
+    ['h2', 'h3'].forEach(function (tag) {
+      var hs = a.querySelectorAll('.textbook-body ' + tag);
+      for (var i = 0; i < hs.length; i++) {
+        if (re.test(hs[i].textContent)) { a.classList.add('tb-manual-' + tag); break; }
+      }
+    });
+  })();
+</script>
 
 <!-- Back to Chapter Home Link -->
 {% if chapter_slug != "" %}

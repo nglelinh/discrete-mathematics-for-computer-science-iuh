@@ -114,7 +114,7 @@
 }
 
 .textbook-lesson .textbook-body h2::before {
-  content: var(--tb-prefix) counter(tb-section) " ";
+  content: counter(tb-section) ". ";
   font-variant-numeric: tabular-nums;
 }
 
@@ -129,8 +129,14 @@
 }
 
 .textbook-lesson .textbook-body h3::before {
-  content: var(--tb-prefix) counter(tb-section) "." counter(tb-subsection) " ";
+  content: counter(tb-section) "." counter(tb-subsection) " ";
   font-variant-numeric: tabular-nums;
+}
+
+/* Bài đã tự ghi số trong tiêu đề markdown thì không đánh số tự động nữa */
+.textbook-lesson.tb-manual-h2 .textbook-body h2::before,
+.textbook-lesson.tb-manual-h3 .textbook-body h3::before {
+  content: none;
 }
 
 .textbook-lesson .textbook-body h4 {
