@@ -58,7 +58,7 @@
 </script>
 
 <div class="dx cex">
-  <h4>Explainer đếm: tổ hợp, sao–vạch, chuồng bồ câu</h4>
+  <h4>Minh hoạ đếm: tổ hợp, sao–vạch, chuồng bồ câu</h4>
   <div class="dx-tabs">
     {#each Object.entries(TABS) as [id, label]}
       <button type="button" class="sec" class:on={tab === id} onclick={() => (tab = id)}>{label}</button>

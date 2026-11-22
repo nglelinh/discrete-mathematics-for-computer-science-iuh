@@ -66,7 +66,7 @@
 </script>
 
 <div class="dx rcx">
-  <h4>Explainer truy hồi</h4>
+  <h4>Minh hoạ truy hồi</h4>
   <div class="dx-tabs">
     <button type="button" class="sec" class:on={mode === 'linear'} onclick={() => (mode = 'linear')}>Dãy tuyến tính (cấp 2)</button>
     <button type="button" class="sec" class:on={mode === 'dc'} onclick={() => (mode = 'dc')}>Chia để trị T(n) = aT(n/b) + nᵈ</button>

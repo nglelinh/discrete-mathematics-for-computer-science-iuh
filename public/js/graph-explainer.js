@@ -589,7 +589,7 @@
 
     host.innerHTML =
       '<div class="gex">' +
-        '<h4>Explainer thuật toán đồ thị</h4>' +
+        '<h4>Minh hoạ thuật toán đồ thị</h4>' +
         '<p class="gex-help">Chọn thuật toán, bấm <strong>Bước sau</strong> hoặc <strong>Chạy</strong> để xem từng dòng giả mã. Có thể kéo đỉnh, thêm/xóa đỉnh và cạnh (đồ thị vô hướng). Các cạnh xanh lục thuộc cây duyệt / MST; đỏ nét đứt là cạnh bị bỏ.</p>' +
         '<div class="gex-toolbar">' +
           '<label>Thuật toán <select data-gex="algo"></select></label>' +

@@ -172,9 +172,9 @@ Bật/tắt các ô của ma trận quan hệ trên tập $$\{1,2,3\}$$ và xem 
 </div>
 <script src="{{ '/public/js/relation-matrix-toggle.js' | relative_url }}"></script>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer quan hệ: sửa ma trận/đồ thị của quan hệ trên tập nhỏ và xem các tính chất cùng phản ví dụ. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ quan hệ: sửa ma trận/đồ thị của quan hệ trên tập nhỏ và xem các tính chất cùng phản ví dụ. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="relation-explainer" data-preset="mod2"></div>

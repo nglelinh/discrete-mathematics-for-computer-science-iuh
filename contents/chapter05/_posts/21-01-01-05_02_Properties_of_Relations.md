@@ -216,9 +216,9 @@ Nhập các cặp của một quan hệ và kiểm tra tính phản xạ, đối
 </div>
 <script src="{{ '/public/js/relation-properties-checker.js' | relative_url }}"></script>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer quan hệ: mỗi tính chất (phản xạ, đối xứng, phản đối xứng, bắc cầu) hiện ra chứng cứ hoặc phản ví dụ cụ thể. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ quan hệ: mỗi tính chất (phản xạ, đối xứng, phản đối xứng, bắc cầu) hiện ra chứng cứ hoặc phản ví dụ cụ thể. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="relation-explainer" data-preset="sym" data-focus="props"></div>

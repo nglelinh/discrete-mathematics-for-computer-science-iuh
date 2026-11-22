@@ -188,9 +188,9 @@ Chạy thuật toán Warshall từng vòng $$k$$ để tính bao đóng bắc c�
 </div>
 <script src="{{ '/public/js/warshall-visualizer.js' | relative_url }}"></script>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer quan hệ: bao đóng phản xạ/đối xứng và thuật toán Warshall chạy từng bước cho bao đóng bắc cầu. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ quan hệ: bao đóng phản xạ/đối xứng và thuật toán Warshall chạy từng bước cho bao đóng bắc cầu. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="relation-explainer" data-preset="next" data-focus="warshall"></div>

@@ -217,9 +217,9 @@ Ghép hai hàm thành $$g \circ f$$ trên đường ống và xem ánh xạ kế
 </div>
 <script src="{{ '/public/js/function-composition-pipeline.js' | relative_url }}"></script>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer hàm số: hàm ngược của song ánh và hợp thành g∘f hai hàm. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ hàm số: hàm ngược của song ánh và hợp thành g∘f hai hàm. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="function-explainer" data-preset="bij" data-focus="compose"></div>

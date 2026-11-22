@@ -322,9 +322,9 @@ Vẽ lược đồ Hasse cho một thứ tự bộ phận nhỏ: chỉ giữ cá
 </div>
 <script src="{{ '/public/js/hasse-diagram.js' | relative_url }}"></script>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer quan hệ: lớp tương đương của quan hệ đồng dư, và sơ đồ Hasse của thứ tự riêng phần (ví dụ quan hệ chia hết). Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ quan hệ: lớp tương đương của quan hệ đồng dư, và sơ đồ Hasse của thứ tự riêng phần (ví dụ quan hệ chia hết). Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="relation-explainer" data-preset="div" data-focus="hasse"></div>

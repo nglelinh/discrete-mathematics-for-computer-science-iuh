@@ -107,7 +107,7 @@
 </script>
 
 <div class="dx aex">
-  <h4>Explainer otomat hữu hạn</h4>
+  <h4>Minh hoạ otomat hữu hạn</h4>
   <p class="dx-help">
     Máy hiện tại là <b>{kind}</b> trên bảng chữ {'{'}{A.join(', ')}{'}'}. Chạy từng ký tự, xem <em>tập</em> trạng thái đang "sống",
     chuyển NFA sang DFA bằng <b>xây dựng tập con</b> và tối thiểu hóa DFA. Có thể sửa máy: kéo, thêm trạng thái / chuyển, đổi trạng thái chấp nhận.

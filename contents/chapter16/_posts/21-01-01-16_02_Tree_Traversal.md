@@ -140,9 +140,9 @@ Trên **đồ thị** tổng quát, DFS/BFS cần tập `visited` để không l
 </div>
 <script src="{{ '/public/js/tree-traversal-visualizer.js' | relative_url }}"></script>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer cây: duyệt tiền/trung/hậu thứ tự và theo mức, từng nút một. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ cây: duyệt tiền/trung/hậu thứ tự và theo mức, từng nút một. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="tree-explainer" data-mode="traversal"></div>

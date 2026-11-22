@@ -371,7 +371,7 @@ Cốt lõi chung của hai phương pháp là **dán các nguyên nhân kề (kh
 </div>
 <script src="{{ '/public/js/quine-mccluskey-simplifier.js' | relative_url }}"></script>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
 Chạy Quine–McCluskey từng bước trên chính các ví dụ của bài (F₁ ở mục 5b, ví dụ don't-care ở mục 4, ví dụ bốn biến ở mục 5): xếp nhóm theo số bit 1, dán cặp có dấu «-», đánh dấu ✓, liệt kê nguyên nhân nguyên tố, rồi bảng phủ với nguyên tố cốt yếu, trội hàng/cột và phương pháp Petrick. Với 2–4 biến có K-map bên cạnh để đối chiếu. Có thể nhập minterm, don't-care hoặc một biểu thức, 2–6 biến. Widget bên trên vẫn giữ nguyên.
 

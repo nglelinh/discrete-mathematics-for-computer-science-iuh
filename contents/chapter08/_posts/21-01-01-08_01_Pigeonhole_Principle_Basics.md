@@ -180,9 +180,9 @@ def birthday_attack_probability(hash_bits):
 
 <p class="textbook-figure-caption" data-figure="8.5">Nguyên lý chuồng chim giúp chứng minh sự tồn tại mà không cần liệt kê — rất hữu ích trong phân tích thuật toán và cryptography.</p>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer đếm: nguyên lý chuồng bồ câu — kéo số bồ câu/chuồng và xem chuồng nào chắc chắn chứa ≥ ⌈n/k⌉ con. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ đếm: nguyên lý chuồng bồ câu — kéo số bồ câu/chuồng và xem chuồng nào chắc chắn chứa ≥ ⌈n/k⌉ con. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="counting-explainer" data-tab="pigeon"></div>

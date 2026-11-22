@@ -912,9 +912,9 @@ Mỗi nghiệm phân biệt $r_i$ đóng góp một hạng $\alpha_i r_i^n$; ngh
 </div>
 <script src="{{ '/public/js/linear-recurrence-solver.js' | relative_url }}"></script>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer hệ thức truy hồi: đa thức đặc trưng, nghiệm phân biệt/kép/phức và công thức đóng sinh ra. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ hệ thức truy hồi: đa thức đặc trưng, nghiệm phân biệt/kép/phức và công thức đóng sinh ra. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="recurrence-explainer" data-mode="linear" data-preset="complex"></div>

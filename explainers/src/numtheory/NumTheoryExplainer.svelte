@@ -51,7 +51,7 @@
 </script>
 
 <div class="dx nex">
-  <h4>Explainer lý thuyết số</h4>
+  <h4>Minh hoạ lý thuyết số</h4>
   <div class="dx-tabs">
     {#each Object.entries(TABS) as [id, l]}<button type="button" class="sec" class:on={tab === id} onclick={() => (tab = id)}>{l}</button>{/each}
   </div>

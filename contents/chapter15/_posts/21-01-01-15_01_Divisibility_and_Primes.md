@@ -228,9 +228,9 @@ Máy tính modulo cơ bản và thuật toán Euclid từng bước (kèm hệ s
 - **Checksum / ISBN**: tổ hợp tuyến tính modulo $$m$$.
 - **HTTPS**: trình duyệt thực hiện hàng loạt phép modulo và Euclid khi bắt tay TLS — các phép thuộc lớp thuật toán của mục này và mục 15.2–15.3.
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer số học: thuật toán Euclid và hệ thức Bézout từng bước, kèm sàng nguyên tố ở thẻ "Sàng". Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ số học: thuật toán Euclid và hệ thức Bézout từng bước, kèm sàng nguyên tố ở thẻ "Sàng". Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="numtheory-explainer" data-tab="euclid"></div>

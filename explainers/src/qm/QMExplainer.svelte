@@ -180,7 +180,7 @@
 </script>
 
 <div class="dx qmx">
-  <h4>Explainer Quine–McCluskey</h4>
+  <h4>Minh hoạ Quine–McCluskey</h4>
   <p class="dx-help">
     Nhập minterm (và don't-care) hoặc một biểu thức, rồi bấm <b>Bước tiếp</b>. Phần 1 dán các nguyên nhân thành cột để tìm <b>nguyên nhân nguyên tố</b>;
     phần 2 lập <b>bảng phủ</b>, chọn nguyên tố cốt yếu, loại hàng/cột trội, rồi dùng <b>Petrick</b> cho phần còn lại.

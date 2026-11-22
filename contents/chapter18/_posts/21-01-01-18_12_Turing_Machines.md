@@ -53,7 +53,7 @@ $$\delta:(Q\setminus\{q_A,q_R\})\times\Gamma\to Q\times\Gamma\times\{L,R\}$$.
 
 Thuật toán hiệu quả ≈ TM (hoặc mô hình tương đương).
 
-### Explainer máy Turing: băng, đầu đọc, trạng thái
+### Minh hoạ máy Turing: băng, đầu đọc, trạng thái
 
 Chạy máy Turing từng bước: đọc ký hiệu, ghi, di chuyển đầu đọc và đổi trạng thái; có máy cộng 1 nhị phân, nhận dạng 0ⁿ1ⁿ và cộng đơn phân.
 

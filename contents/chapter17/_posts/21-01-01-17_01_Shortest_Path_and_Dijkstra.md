@@ -106,7 +106,7 @@ Path tối ưu $$A\to B\to C\to D$$, tổng 4.
 <script src="{{ '/public/js/dijkstra-visualizer.js' | relative_url }}"></script>
 
 
-Explainer đồ thị dùng chung: chọn **Dijkstra**, theo dõi $$d(v)$$, tập $$S$$, và phép relax từng cạnh. Widget Dijkstra phía trên vẫn giữ nguyên.
+Minh hoạ đồ thị dùng chung: chọn **Dijkstra**, theo dõi $$d(v)$$, tập $$S$$, và phép relax từng cạnh. Widget Dijkstra phía trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="graph-explainer" data-algorithm="dijkstra"></div>

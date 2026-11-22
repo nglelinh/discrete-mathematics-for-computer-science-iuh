@@ -164,9 +164,9 @@ print({'c'}.issubset(A))  # False
 **Lực lượng trong CS**: Gọi `len(set([1, 2, 3]))` trong Python trả về 3 — đó chính là lực lượng của tập hợp. Trong cơ sở dữ liệu, `SELECT COUNT(*) FROM table` cũng tính lực lượng.
 </div>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer Venn: bấm vào từng vùng để thêm/bớt phần tử, gõ biểu thức tập hợp để xem vùng được tô. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ Venn: bấm vào từng vùng để thêm/bớt phần tử, gõ biểu thức tập hợp để xem vùng được tô. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="venn-explainer" data-sets="2" data-expr="A ∪ B"></div>

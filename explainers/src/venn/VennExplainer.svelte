@@ -172,7 +172,7 @@
 </script>
 
 <div class="dx vex">
-  <h4>Explainer tập hợp &amp; biểu đồ Venn</h4>
+  <h4>Minh hoạ tập hợp &amp; biểu đồ Venn</h4>
   <p class="dx-help">
     Nhập biểu thức (∪ ∩ \ Δ, bù <code>′</code> hoặc <code>¬</code>) để tô vùng tương ứng và xem tập kết quả trên dữ liệu bên dưới.
     Hoặc <strong>bấm thẳng vào các vùng</strong> trên hình — công cụ sinh biểu thức "hợp các vùng" cho bạn.

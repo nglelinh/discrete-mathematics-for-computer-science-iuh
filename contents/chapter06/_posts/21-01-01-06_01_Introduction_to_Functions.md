@@ -202,9 +202,9 @@ class MockModel:
 
 <p class="textbook-figure-caption" data-figure="6.6">Hash function và database key là ví dụ hàm thực tế — ánh xạ dữ liệu đầu vào sang giá trị xác định.</p>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer hàm số: chỉnh các mũi tên giữa hai tập và xem hàm có đơn ánh, toàn ánh, song ánh hay không. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ hàm số: chỉnh các mũi tên giữa hai tập và xem hàm có đơn ánh, toàn ánh, song ánh hay không. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="function-explainer" data-preset="inj"></div>

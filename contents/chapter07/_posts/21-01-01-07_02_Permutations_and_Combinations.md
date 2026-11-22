@@ -209,9 +209,9 @@ $$C(n,k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}$$
 
 </div>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer đếm: liệt kê các tổ hợp/hoán vị C(n,k), P(n,k) để thấy công thức đếm đúng. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ đếm: liệt kê các tổ hợp/hoán vị C(n,k), P(n,k) để thấy công thức đếm đúng. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="counting-explainer" data-tab="choose"></div>

@@ -295,9 +295,9 @@ Chọn cổng AND/OR/NOT/NAND/XOR, gạt công tắc đầu vào và đọc bả
 <script src="{{ '/public/js/logic-gates-builder.js' | relative_url }}"></script>
 
 
-### Explainer liên kết: từ cổng logic đến K-map
+### Minh hoạ liên kết: từ cổng logic đến K-map
 
-Xem mạch SOP (AND–OR, vòng tròn = đảo) của cùng một hàm, liên kết với bảng chân trị và bản đồ Karnaugh. So sánh với bộ dựng cổng phía trên: explainer này sinh mạch tối tiểu tự động từ hàm.
+Xem mạch SOP (AND–OR, vòng tròn = đảo) của cùng một hàm, liên kết với bảng chân trị và bản đồ Karnaugh. So sánh với bộ dựng cổng phía trên: minh hoạ này sinh mạch tối tiểu tự động từ hàm.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="boolean-explainer" data-vars="3" data-focus="circuit" data-expr="p ⊕ q ⊕ r"></div>

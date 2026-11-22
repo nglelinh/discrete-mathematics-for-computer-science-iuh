@@ -88,9 +88,9 @@ Chạy một DFA trên chuỗi nhập, từng ký tự một, để thấy trạ
 </div>
 <script src="{{ '/public/js/dfa-simulator.js' | relative_url }}"></script>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer otomat: chạy DFA từng ký tự trên chuỗi vào và sửa chính máy. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ otomat: chạy DFA từng ký tự trên chuỗi vào và sửa chính máy. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="automata-explainer" data-preset="dfa01" data-tab="simulate"></div>

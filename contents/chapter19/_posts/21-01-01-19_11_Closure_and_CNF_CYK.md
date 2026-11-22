@@ -61,7 +61,7 @@ Thời gian $$O(n^3\lvert P\rvert)$$.
 
 **Ý:** quy nạp độ dài substring. $$\square$$
 
-### Explainer CYK: điền bảng phân tích
+### Minh hoạ CYK: điền bảng phân tích
 
 Điền bảng CYK từng ô với văn phạm dạng chuẩn Chomsky: mỗi bước thử một điểm chia, ghép ô trái × ô phải qua luật A → BC. Có thể sửa văn phạm và chuỗi.
 

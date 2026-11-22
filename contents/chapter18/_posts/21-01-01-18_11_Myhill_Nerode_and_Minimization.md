@@ -61,9 +61,9 @@ $$0^n1^n$$: $$0^i\not\sim 0^j$$ ($$z=1^i$$) ⇒ vô hạn lớp ⇒ không regul
 
 Table-filling / partition refinement: gộp trạng thái không phân biệt — $$O(n\log n)$$ Hopcroft.
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer otomat: tối thiểu hóa DFA — các nhóm trạng thái tương đương được gộp. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ otomat: tối thiểu hóa DFA — các nhóm trạng thái tương đương được gộp. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="automata-explainer" data-preset="nfa101" data-tab="minimize"></div>

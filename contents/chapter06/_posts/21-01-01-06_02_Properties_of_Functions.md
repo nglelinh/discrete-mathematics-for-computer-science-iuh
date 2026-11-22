@@ -153,9 +153,9 @@ Nối mũi tên từ miền nguồn sang miền đích, rồi kiểm tra đơn �
 </div>
 <script src="{{ '/public/js/function-property-checker.js' | relative_url }}"></script>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer hàm số: đơn ánh/toàn ánh kèm phần tử vi phạm cụ thể. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ hàm số: đơn ánh/toàn ánh kèm phần tử vi phạm cụ thể. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="function-explainer" data-preset="surj" data-focus="props"></div>

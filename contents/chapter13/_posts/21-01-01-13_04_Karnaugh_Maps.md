@@ -379,7 +379,7 @@ Với $$n\ge 5$$, lưới K-map trở nên cồng kềnh; khi đó cần các ph
 <script src="{{ '/public/js/kmap-interactive.js' | relative_url }}"></script>
 
 
-### Explainer liên kết: K-map, bảng chân trị và mạch SOP
+### Minh hoạ liên kết: K-map, bảng chân trị và mạch SOP
 
 Bốn biến $$p,q,r,s$$. Bấm ô trên K-map hoặc cột F của bảng; các nhóm tối tiểu được khoanh và mạch SOP vẽ lại. Có thể đổi số biến (2–4) hoặc nhập biểu thức để xem nhóm tương ứng.
 

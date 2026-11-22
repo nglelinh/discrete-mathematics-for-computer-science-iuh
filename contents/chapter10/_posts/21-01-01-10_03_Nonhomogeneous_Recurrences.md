@@ -251,9 +251,9 @@ $$
 </div>
 và nghiệm riêng bậc hai cho ta tổng chi phí bậc $\Theta(n^2)$.
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer hệ thức truy hồi không thuần nhất: nghiệm riêng cộng nghiệm thuần nhất. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ hệ thức truy hồi không thuần nhất: nghiệm riêng cộng nghiệm thuần nhất. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="recurrence-explainer" data-mode="linear" data-preset="nonhom"></div>

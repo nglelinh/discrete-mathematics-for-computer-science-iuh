@@ -149,9 +149,9 @@ Hash bucket modulo, ISBN check digit và LCG:
 
 Lý thuyết số có mặt từ chỉ số hash, checksum đến TLS. Sinh viên CS không cần trở thành nhà mật mã, nhưng cần đủ để **không** dùng MD5/SHA-1 cho bảo mật mới, **không** tự chế cipher, và **chọn thư viện** đã review (libsodium, OpenSSL API hiện đại, WebCrypto, …).
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer số học: lũy thừa modulo nhanh (bình phương liên tiếp), nền tảng của RSA và kiểm tra nguyên tố. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ số học: lũy thừa modulo nhanh (bình phương liên tiếp), nền tảng của RSA và kiểm tra nguyên tố. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="numtheory-explainer" data-tab="fastexp"></div>

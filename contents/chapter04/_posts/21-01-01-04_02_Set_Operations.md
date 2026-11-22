@@ -234,9 +234,9 @@ exactly_one = service_a ^ service_b
 
 Bloom filter là cấu trúc dữ liệu xác suất dùng để kiểm tra "một phần tử có thuộc tập hợp không". Nó là ứng dụng thông minh của phép toán tập hợp và hàm băm, tiết kiệm bộ nhớ nhưng có thể cho kết quả dương tính giả (false positive).
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer Venn: tô vùng theo biểu thức, và so sánh hai biểu thức để kiểm chứng một hằng đẳng thức tập hợp. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ Venn: tô vùng theo biểu thức, và so sánh hai biểu thức để kiểm chứng một hằng đẳng thức tập hợp. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="venn-explainer" data-sets="3" data-expr="(A ∪ B) \ C" data-focus="compare" data-expr-b="(A \ C) ∪ (B \ C)"></div>

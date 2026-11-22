@@ -80,7 +80,7 @@ Phần lớn máy tính cá nhân hôm nay — Windows, Linux, Mac trên chip In
 
 ---
 
-### Explainer thứ tự byte: big-endian và little-endian
+### Minh hoạ thứ tự byte: big-endian và little-endian
 
 Nhập một số hex 32 bit và xem 4 byte nằm ở những địa chỉ nào trong bộ nhớ theo từng kiểu endian; đọc nhầm kiểu sẽ ra giá trị khác.
 

@@ -192,9 +192,9 @@ def inclusion_exclusion(sizes):
 print(inclusion_exclusion({1: 50 + 33 + 20, 2: 16 + 10 + 6, 3: 3}))
 ```
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer Venn ở chế độ bao hàm–loại trừ: so sánh |A ∪ B ∪ C| tính trực tiếp với công thức. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ Venn ở chế độ bao hàm–loại trừ: so sánh |A ∪ B ∪ C| tính trực tiếp với công thức. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="venn-explainer" data-sets="3" data-focus="ie"></div>

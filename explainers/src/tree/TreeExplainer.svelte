@@ -69,7 +69,7 @@
 </script>
 
 <div class="dx tex">
-  <h4>Explainer cây: Huffman, duyệt cây, BST</h4>
+  <h4>Minh hoạ cây: Huffman, duyệt cây, BST</h4>
   <div class="dx-tabs">
     <button type="button" class="sec" class:on={tab === 'huffman'} onclick={() => (tab = 'huffman')}>Mã Huffman</button>
     <button type="button" class="sec" class:on={tab === 'traversal'} onclick={() => (tab = 'traversal')}>Duyệt cây</button>

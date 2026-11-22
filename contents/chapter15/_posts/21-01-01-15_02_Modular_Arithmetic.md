@@ -247,9 +247,9 @@ Hai định lý này là nền **tính đúng RSA**: nếu $$ed \equiv 1 \pmod{\
 </div>
 <script src="{{ '/public/js/modular-arithmetic-calc.js' | relative_url }}"></script>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer số học: mặt đồng hồ modulo, bảng cộng/nhân, nghịch đảo và giải a·x ≡ c. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ số học: mặt đồng hồ modulo, bảng cộng/nhân, nghịch đảo và giải a·x ≡ c. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="numtheory-explainer" data-tab="modular"></div>

@@ -176,9 +176,9 @@ RSA (mô hình đơn giản): $$S \equiv M^d \pmod n$$; xác minh $$S^e \equiv M
 </div>
 <script src="{{ '/public/js/rsa-simulator.js' | relative_url }}"></script>
 
-### Explainer tương tác
+### Minh hoạ tương tác
 
-Explainer số học: RSA đồ chơi — tạo khóa, mã hóa, giải mã với số nhỏ. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ số học: RSA đồ chơi — tạo khóa, mã hóa, giải mã với số nhỏ. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="numtheory-explainer" data-tab="rsa"></div>

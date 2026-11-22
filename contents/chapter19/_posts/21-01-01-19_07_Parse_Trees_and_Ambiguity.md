@@ -50,7 +50,7 @@ $$G$$ **mơ hồ** nếu ∃ $$w$$ có ≥2 leftmost derivation (hoặc ≥2 par
 **Ví dụ.** $$E\to E+E\mid\mathrm{id}$$: $$id+id+id$$ hai cây.  
 **Dangling else:** cổ điển C/Java.
 
-### Explainer cây phân tích và nhập nhằng
+### Minh hoạ cây phân tích và nhập nhằng
 
 Xem dẫn xuất trái nhất tạo cây phân tích từng bước; với văn phạm nhập nhằng (biểu thức, dangling else) chuyển giữa các cây khác nhau của cùng một chuỗi.
 

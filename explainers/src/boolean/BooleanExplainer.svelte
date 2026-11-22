@@ -135,7 +135,7 @@
 </script>
 
 <div class="dx bex" class:f-table={focus === 'table'} class:f-circuit={focus === 'circuit'} class:f-kmap={focus === 'kmap'}>
-  <h4>Explainer logic &amp; đại số Boole</h4>
+  <h4>Minh hoạ logic &amp; đại số Boole</h4>
   <p class="dx-help">
     Ba khung nhìn liên kết: <strong>bảng chân trị ↔ bản đồ Karnaugh ↔ mạch</strong>. Sửa biểu thức, hoặc bấm ô F / ô K-map để đổi
     <strong>0 → 1 → ×</strong> (× = don't care). Chọn dạng tối tiểu <strong>SOP</strong> (phủ các ô 1) hoặc <strong>POS</strong> (phủ các ô 0).

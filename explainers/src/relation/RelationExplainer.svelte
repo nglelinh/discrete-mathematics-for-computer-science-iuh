@@ -106,7 +106,7 @@
 </script>
 
 <div class="dx rex">
-  <h4>Explainer quan hệ hai ngôi</h4>
+  <h4>Minh hoạ quan hệ hai ngôi</h4>
   <p class="dx-help">
     Cùng một quan hệ được xem ba cách: <strong>ma trận</strong>, <strong>đồ thị có hướng</strong> và <strong>danh sách tính chất</strong>.
     Bấm ô ma trận (hoặc bấm lần lượt hai đỉnh) để thêm/bớt cặp. Bấm một tính chất bị sai để thấy <em>phản ví dụ</em> được tô đỏ.

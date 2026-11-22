@@ -112,7 +112,7 @@ Hai lớp dễ lẫn — giống chuyện endianness: **(1)** dãy bit vật lý
 
 ---
 
-### Explainer bù hai, cộng có nhớ và Y2038
+### Minh hoạ bù hai, cộng có nhớ và Y2038
 
 Bấm vào từng bit để thấy giá trị bù hai (bit đầu có trọng số âm), xem cách lấy số đối bằng “đảo bit + 1”, cộng hai số từng cột để thấy tràn số, và kéo thanh trượt qua giới hạn $$2^{31}-1$$ của Unix time.
 

@@ -501,7 +501,7 @@
 </script>
 
 <div class="gex">
-  <h4>Explainer thuật toán đồ thị</h4>
+  <h4>Minh hoạ thuật toán đồ thị</h4>
   <p class="gex-help">
     Chọn thuật toán, quan sát từng bước trên đồ thị (màu sắc, cạnh cây, mã giả được tô), theo dõi hàng đợi / ngăn xếp / hàng đợi ưu tiên ở bảng bên dưới.
     Có thể kéo đỉnh, bật bố cục lực, hoặc sửa đồ thị rồi chạy lại.

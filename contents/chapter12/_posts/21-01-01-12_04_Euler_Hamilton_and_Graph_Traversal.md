@@ -222,9 +222,9 @@ Chạy BFS hoặc DFS từng bước: theo dõi hàng đợi / ngăn xếp, th�
 <script src="{{ '/public/js/bfs-dfs-visualizer.js' | relative_url }}"></script>
 
 
-### Explainer thuật toán đồ thị (BFS / DFS)
+### Minh hoạ thuật toán đồ thị (BFS / DFS)
 
-Dùng explainer dùng chung (canvas SVG, chỉnh được đồ thị, chạy từng bước, giả mã được tô) để so sánh BFS và DFS trên cùng một đồ thị. Widget BFS/DFS ngay phía trên vẫn giữ nguyên.
+Dùng minh hoạ dùng chung (canvas SVG, chỉnh được đồ thị, chạy từng bước, giả mã được tô) để so sánh BFS và DFS trên cùng một đồ thị. Widget BFS/DFS ngay phía trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="graph-explainer" data-algorithm="bfs"></div>

@@ -60,7 +60,7 @@
 </script>
 
 <div class="dx fex">
-  <h4>Explainer hàm số: đơn ánh, toàn ánh, song ánh</h4>
+  <h4>Minh hoạ hàm số: đơn ánh, toàn ánh, song ánh</h4>
   <p class="dx-help">
     Bấm một phần tử <strong>x</strong> (cột trái) rồi bấm phần tử <strong>y</strong> để vẽ/xóa mũi tên f(x) = y. Mỗi x chỉ có một mũi tên.
     Các tính chất được kiểm tra ngay, kèm <em>lý do cụ thể</em> khi sai.

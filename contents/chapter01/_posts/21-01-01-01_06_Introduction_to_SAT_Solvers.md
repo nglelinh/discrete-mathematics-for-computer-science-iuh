@@ -187,7 +187,7 @@ CDCL là thuật toán được dùng trong hầu hết SAT solver công nghiệ
 - Khi gặp mâu thuẫn (conflict), solver **học** một clause mới (conflict clause) để tránh lặp lại sai lầm tương tự trong tương lai.
 - Kết hợp với **backjumping** (quay lui thông minh).
 
-### Explainer DPLL: lan truyền đơn vị, quyết định, quay lui
+### Minh hoạ DPLL: lan truyền đơn vị, quyết định, quay lui
 
 Chạy DPLL từng bước trên một công thức CNF (có thể tự sửa công thức): mệnh đề đơn vị buộc biến nhận giá trị, quyết định rồi quay lui khi xung đột, kết thúc bằng SAT hoặc UNSAT.
 

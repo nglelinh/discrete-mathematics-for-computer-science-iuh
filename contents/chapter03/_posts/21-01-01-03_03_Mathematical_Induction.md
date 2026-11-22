@@ -71,7 +71,7 @@ Trong lập trình, nhiều đối tượng được định nghĩa đệ quy:
 
 Khi đối tượng được định nghĩa đệ quy, kỹ thuật chứng minh tự nhiên nhất thường cũng là quy nạp.
 
-### Explainer domino: cơ sở + bước quy nạp
+### Minh hoạ domino: cơ sở + bước quy nạp
 
 Xem các domino đổ lần lượt khi đã có **cơ sở** và **bước quy nạp**; hai ví dụ cuối cho thấy điều gì xảy ra khi thiếu cơ sở, hoặc khi chỉ kiểm tra từng trường hợp (n² + n + 41 vẫn là số nguyên tố cho n = 0…39 nhưng sai ở n = 40).
 
