@@ -25,7 +25,7 @@ excerpt: "Ở hai mục trước, chúng ta đã định nghĩa tập hợp và 
 **Từ khóa**: lực lượng (cardinality), tập lũy thừa, đếm được, không đếm được, diagonal argument.
 </div>
 
-## 1. Lực lượng của tập hợp
+## Lực lượng của tập hợp
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: **Lực lượng** (cardinality) của tập hữu hạn $$A$$, ký hiệu $$\lvert A \rvert$$, là số phần tử phân biệt trong $$A$$.
@@ -56,7 +56,7 @@ excerpt: "Ở hai mục trước, chúng ta đã định nghĩa tập hợp và 
 </div>
 
 
-## 2. Tập lũy thừa
+## Tập lũy thừa
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: **Tập lũy thừa** của $$A$$, ký hiệu $$\mathcal{P}(A)$$, là tập tất cả các tập con của $$A$$.
@@ -96,7 +96,7 @@ Có $$2^3=8$$ tập con.
 </div>
 
 
-## 3. Nguyên lý bao hàm - loại trừ cho hai tập
+## Nguyên lý bao hàm - loại trừ cho hai tập
 
 <div class="textbook-theorem" markdown="1">
 **Định lý**:
@@ -124,7 +124,7 @@ $$25+18-10=33.$$
 </div>
 
 
-## 4. Nguyên lý bao hàm - loại trừ cho ba tập
+## Nguyên lý bao hàm - loại trừ cho ba tập
 
 <div class="textbook-theorem" markdown="1">
 **Định lý**:
@@ -154,7 +154,7 @@ $$50+40+30-20-15-10+5=80.$$
 </div>
 
 
-## 5. Tập vô hạn đếm được
+## Tập vô hạn đếm được
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một tập $$A$$ là **đếm được** nếu các phần tử của nó có thể liệt kê thành một dãy $$a_1,a_2,a_3,\ldots$$, tức tồn tại song ánh giữa $$A$$ và một tập con của $$\mathbb{N}$$.
@@ -173,7 +173,7 @@ $$50+40+30-20-15-10+5=80.$$
 <p class="textbook-figure-caption" data-figure="4.21">Tập đếm được có thể đánh số 1, 2, 3, … — ví dụ ℕ, ℤ, ℚ đều đếm được (lực lượng ℵ₀).</p>
 </div>
 
-## 6. Tập không đếm được
+## Tập không đếm được
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một tập là **không đếm được** nếu không thể liệt kê tất cả phần tử của nó bằng một dãy vô hạn đánh số bởi $$\mathbb{N}$$.
@@ -229,7 +229,7 @@ $$
 - So sánh độ phức tạp của không gian trạng thái mà không cần xây dựng song ánh tường minh.
 - Dùng trong chứng minh một số bài toán NP-đầy đủ có cùng độ khó.
 
-## 9. Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong Khoa học Máy tính
 
 ```python
 python = {'An', 'Binh', 'Chi'}

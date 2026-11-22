@@ -29,7 +29,7 @@ Tham số hóa: thời gian $$f(k)n^{O(1)}$$ chấp nhận $$f$$ mũ theo $$k$$ 
 
 </div>
 
-## 1. Định nghĩa
+## Định nghĩa
 
 <div class="textbook-definition" markdown="1">
 
@@ -38,7 +38,7 @@ Tham số hóa: thời gian $$f(k)n^{O(1)}$$ chấp nhận $$f$$ mũ theo $$k$$ 
 
 </div>
 
-## 2. Vertex Cover — search tree
+## Vertex Cover — search tree
 
 ```text
 VC(G,k):
@@ -58,17 +58,17 @@ VC(G,k):
 **Đúng:** cover phải chứa $$u$$ hoặc $$v$$; quy nạp.  
 **Thời gian:** $$\le 2^{k+1}$$ lá; mỗi node poly. $$\square$$
 
-## 3. Kernel (ý)
+## Kernel (ý)
 
 Buss: đỉnh bậc $$>k$$ buộc vào cover; sau giảm, instance size $$O(k^2)$$ (hoặc tốt hơn bằng LP).  
 → Preprocess đa thức còn instance chỉ phụ thuộc $$k$$.
 
-## 4. W[1] và Clique
+## W[1] và Clique
 
 Clique tham số $$k$$: **W[1]-complete** — không FPT trừ FPT=W[1].  
 Đọc: Cygan et al.; Downey–Fellows.
 
-## 5. Treewidth (định hướng)
+## Treewidth (định hướng)
 
 Nhiều bài MSO trên treewidth $$w$$: $$f(w)n$$ (Courcelle) — hằng số lớn; DP thực dụng $$2^{O(w)}n^{O(1)}$$.
 

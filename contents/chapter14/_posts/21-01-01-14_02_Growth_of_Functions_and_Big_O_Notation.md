@@ -39,7 +39,7 @@ So sánh thuật toán không dựa vào mili-giây trên một máy, mà vào *
 
 </div>
 
-## 1. Định nghĩa
+## Định nghĩa
 
 <div class="textbook-definition" markdown="1">
 
@@ -57,7 +57,7 @@ So sánh thuật toán không dựa vào mili-giây trên một máy, mà vào *
 
 </div>
 
-## 2. Bậc thường gặp
+## Bậc thường gặp
 
 | Bậc | Tên | Ví dụ thuật toán |
 |:---|:---|:---|
@@ -69,7 +69,7 @@ So sánh thuật toán không dựa vào mili-giây trên một máy, mà vào *
 | $$O(2^n)$$ | Mũ | Tập con brute-force |
 | $$O(n!)$$ | Giai thừa | Hoán vị brute-force |
 
-## 3. Quy tắc
+## Quy tắc
 
 - **Tổng:** $$O(f)+O(g)=O(\max(f,g))$$ (cùng điều kiện chuẩn).
 - **Tích:** $$O(f)\cdot O(g)=O(fg)$$.
@@ -82,7 +82,7 @@ So sánh thuật toán không dựa vào mili-giây trên một máy, mà vào *
 
 </div>
 
-## 4. Thử nghiệm tương tác
+## Thử nghiệm tương tác
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="big-o-growth-comparator"></div>

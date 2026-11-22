@@ -32,7 +32,7 @@ excerpt: "Định lý tương đương; chứng minh L(D)=L(N); bound 2^|Q|; rea
 
 </div>
 
-## 1. Construction (không ε)
+## Construction (không ε)
 
 $$Q_D=\mathcal{P}(Q_N)$$ (hoặc chỉ reachable).  
 $$q_{D0}=\{q_0\}$$.  
@@ -41,7 +41,7 @@ $$F_D=\{S:S\cap F_N\neq\emptyset\}$$.
 
 **Có ε:** $$q_{D0}=E(\{q_0\})$$; $$\delta_D(S,a)=E(\bigcup\delta_N(q,a))$$.
 
-## 2. Định lý
+## Định lý
 
 <div class="textbook-theorem" markdown="1">
 
@@ -54,7 +54,7 @@ Bất biến: sau đọc $$w$$, trạng thái $$D$$ là $$\hat\delta_N(\{q_0\},w
 Chấp nhận ⇔ giao $$F\neq\emptyset$$ ⇔ $$w\in L(N)$$.  
 Số tập con $$\le 2^{\lvert Q\rvert}$$. $$\square$$
 
-## 3. State explosion
+## State explosion
 
 Tồn tại family ngôn ngữ DFA tối tiểu $$\Omega(2^n)$$ trong khi NFA $$O(n)$$ (ví dụ “ký tự thứ $$n$$ từ cuối là 1”).
 

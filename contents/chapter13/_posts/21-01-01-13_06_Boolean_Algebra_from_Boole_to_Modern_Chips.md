@@ -44,9 +44,9 @@ Các mục 13.1–13.5 xây dựng lần lượt đại số Boole, hàm và d�
 
 </div>
 
-## 1. Hai bước nhảy lịch sử: Boole và Shannon
+## Hai bước nhảy lịch sử: Boole và Shannon
 
-### 1.1. George Boole — đại số hóa suy luận
+### George Boole — đại số hóa suy luận
 
 George Boole (1815–1864) không thiết kế máy tính. Trong *The Laws of Thought* (1854), ông biểu diễn thao tác trên mệnh đề và lớp bằng ký hiệu đại số — cộng, nhân, bù — với các quy luật riêng, chẳng hạn $$1 + 1 = 1$$ trong ngữ cảnh logic.
 
@@ -56,7 +56,7 @@ George Boole (1815–1864) không thiết kế máy tính. Trong *The Laws of Th
 
 <p class="textbook-figure-caption" data-figure="13.26">George Boole (1815–1864) — đặt nền đại số cho logic.</p>
 
-### 1.2. Claude Shannon — Boole khớp với mạch đóng/mở
+### Claude Shannon — Boole khớp với mạch đóng/mở
 
 Năm **1937**, luận văn thạc sĩ của Claude Shannon thiết lập sự tương ứng giữa đại số Boole và mạch chuyển mạch:
 
@@ -104,7 +104,7 @@ Biểu thức thu được đã ở dạng **SOP** (tổng các tích), có th�
 
 </div>
 
-## 2. Từ yêu cầu đến mạng cổng
+## Từ yêu cầu đến mạng cổng
 
 Một chức năng số — ví dụ cộng hai bit — có thể mô tả ở nhiều lớp **tương đương về hành vi**:
 
@@ -135,7 +135,7 @@ Một chức năng số — ví dụ cộng hai bit — có thể mô tả ở n
 
 <p class="textbook-figure-caption" data-figure="13.30">Transistor là phần tử vật lý cấu thành cổng logic trên silicon.</p>
 
-### 2.1. Quy trình thiết kế năm bước
+### Quy trình thiết kế năm bước
 
 Từ mô tả bằng lời đến mạng cổng (và tiếp đến silicon hoặc FPGA) có thể tóm tắt thành năm bước:
 
@@ -165,7 +165,7 @@ $$
 
 <p class="textbook-figure-caption" data-figure="13.30c">Gán nhãn từng lớp cổng để suy ra biểu thức.</p>
 
-### 2.2. Ví dụ: ba công tắc và đèn
+### Ví dụ: ba công tắc và đèn
 
 <div class="textbook-example" markdown="1">
 
@@ -189,7 +189,7 @@ trong đó $$A \odot B$$ là phép **XNOR**. Hiện thực gọn gồm một XNO
 
 <p class="textbook-figure-caption" data-figure="13.30e">Mạng cổng cho $$Y=\bar C(A\odot B)$$.</p>
 
-### 2.3. Majority và half / full adder
+### Majority và half / full adder
 
 Hàm **majority** ba biến $$f = xy + xz + yz$$ bằng **1** khi ít nhất hai trong ba ngõ bằng **1**. Cùng biểu thức xuất hiện như bit mang ra $$C_{out}$$ của full adder.
 
@@ -227,7 +227,7 @@ $$
 
 </div>
 
-### 2.4. Vai trò của tối thiểu hóa
+### Vai trò của tối thiểu hóa
 
 Hai biểu thức cùng bảng chân trị:
 
@@ -264,7 +264,7 @@ chỉ còn một AND hai ngõ.
 
 Về mặt thư viện cổng, NAND (và NOR) là tập đầy đủ: mọi hàm Boolean đều hiện thực được chỉ bằng một loại cổng (Sheffer / Peirce; Mục 13.1, 13.3). Thông thường nên rút gọn biểu thức trước, rồi mới ánh xạ sang NAND hoặc NOR.
 
-## 3. Các mức phương pháp tối thiểu hóa
+## Các mức phương pháp tối thiểu hóa
 
 | Phương pháp | Phạm vi điển hình | Đặc trưng |
 |:---|:---|:---|
@@ -287,9 +287,9 @@ Về mặt thư viện cổng, NAND (và NOR) là tập đầy đủ: mọi hàm
 
 </div>
 
-## 4. SAT và kiểm chứng logic
+## SAT và kiểm chứng logic
 
-### 4.1. Bài toán SAT
+### Bài toán SAT
 
 <div class="textbook-definition" markdown="1">
 
@@ -299,7 +299,7 @@ Về mặt thư viện cổng, NAND (và NOR) là tập đầy đủ: mọi hàm
 
 SAT là bài toán NP-đầy đủ kinh điển; đồng thời, các bộ giải thực tế vẫn xử lý được nhiều công thức có kích thước lớn.
 
-### 4.2. Kiểm tra tương đương hai mạch
+### Kiểm tra tương đương hai mạch
 
 Cho hai mạch tổ hợp $$f$$ và $$g$$ cùng số ngõ vào, mỗi mạch một ngõ ra. Câu hỏi tương đương hành vi tương đương với:
 
@@ -315,7 +315,7 @@ Như vậy, mạng cổng **tính** hàm Boolean, còn SAT **tìm kiếm** trong
 
 <p class="textbook-figure-caption" data-figure="13.34">Minh họa tìm kiếm theo nhánh gán biến trong không gian Boolean.</p>
 
-### 4.3. Liên hệ với CNF / POS
+### Liên hệ với CNF / POS
 
 Nhiều bộ giải SAT nhận đầu vào dạng CNF. Dạng POS (tích các tổng) / CNF ở Mục 13.2 vì vậy gắn trực tiếp với ngôn ngữ đặc tả ràng buộc cho kiểm chứng.
 
@@ -325,7 +325,7 @@ Nhiều bộ giải SAT nhận đầu vào dạng CNF. Dạng POS (tích các t�
 
 </div>
 
-## 5. FPGA và LUT
+## FPGA và LUT
 
 Hai hướng hiện thực mạch số có thể đối chiếu như sau:
 
@@ -337,7 +337,7 @@ Hai hướng hiện thực mạch số có thể đối chiếu như sau:
 
 **LUT** (*lookup table*) lưu cột đầu ra của bảng chân trị. Về mặt toán học, đây chính là đối tượng hàm Boolean đã xét ở Mục 13.2; khác biệt chỉ là bảng nằm trong bộ nhớ cấu hình. Số LUT cần dùng phụ thuộc số biến và số hàm; rút gọn biểu thức trước khi ánh xạ vẫn làm giảm độ phức tạp cấu hình.
 
-## 6. Tổng kết cấu trúc chương
+## Tổng kết cấu trúc chương
 
 | Mục | Nội dung chính |
 |:---|:---|

@@ -39,7 +39,7 @@ GPS và routing mạng trả lời: từ $$s$$ đến $$t$$, đường nào **r�
 
 </div>
 
-## 1. Bài toán đường đi ngắn nhất
+## Bài toán đường đi ngắn nhất
 
 <div class="textbook-definition" markdown="1">
 
@@ -55,7 +55,7 @@ GPS và routing mạng trả lời: từ $$s$$ đến $$t$$, đường nào **r�
 
 **Khác MST.** MST tối ưu **tập cạnh** nối mọi đỉnh thành cây. Shortest path tối ưu **một path** từ nguồn đến từng đỉnh — cây các cạnh `parent` là *shortest-path tree*, **không** nhất thiết là MST.
 
-## 2. Thuật toán Dijkstra
+## Thuật toán Dijkstra
 
 **Ý tưởng greedy.** Duy trì ước lượng `dist[v]` (ban đầu $$\infty$$, `dist[s]=0`). Lặp: **chốt** đỉnh $$u$$ chưa chốt có `dist` nhỏ nhất; với mỗi cạnh $$(u,v)$$, **relax**:
 
@@ -114,7 +114,7 @@ Explainer đồ thị dùng chung: chọn **Dijkstra**, theo dõi $$d(v)$$, tậ
 <script src="{{ '/public/js/explainers/graph-explainer.js' | relative_url }}"></script>
 
 
-## 3. Bellman–Ford và trọng số âm
+## Bellman–Ford và trọng số âm
 
 <div class="textbook-theorem" markdown="1">
 
@@ -124,7 +124,7 @@ Explainer đồ thị dùng chung: chọn **Dijkstra**, theo dõi $$d(v)$$, tậ
 
 **Dijkstra sai** khi có cạnh âm: đỉnh có thể bị chốt quá sớm. Đồ thị **không liên thông** (từ $$s$$): một số `dist` vẫn $$\infty$$ — hợp lệ.
 
-## 4. Ứng dụng
+## Ứng dụng
 
 - Routing (mô hình chi phí liên kết); OSPF kiểu shortest path.
 - Pathfinding game / lưới có chi phí (A\* = Dijkstra + heuristic admissible).

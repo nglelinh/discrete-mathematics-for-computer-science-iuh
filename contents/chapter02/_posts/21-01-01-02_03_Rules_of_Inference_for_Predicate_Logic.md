@@ -29,7 +29,7 @@ Trong logic vị từ, các **quy tắc suy luận** với lượng từ là b�
 **Từ khóa**: universal instantiation, existential generalization, rules of inference, predicate logic proofs.
 </div>
 
-## 1. Ôn tập suy luận mệnh đề
+## Ôn tập suy luận mệnh đề
 
 Các quy tắc suy luận mệnh đề vẫn được dùng sau khi ta đã loại bỏ hoặc đưa vào lượng từ đúng cách.
 
@@ -45,7 +45,7 @@ Các quy tắc suy luận mệnh đề vẫn được dùng sau khi ta đã lo�
 ![Modus Ponens](/discrete-mathematics-for-computer-science-iuh/img/course/Modus_ponens.png)
 
 <p class="textbook-figure-caption" data-figure="2.11">Modus Ponens — từ $$p \to q$$ và $$p$$ suy ra $$q$$; quy tắc suy luận mệnh đề nền tảng, thường kết hợp với UI trong logic vị từ.</p>
-## 2. Universal Instantiation (UI) - Cụ thể hóa toàn thể - Qui tắc đặc biệt hóa phổ dụng
+## Universal Instantiation (UI) - Cụ thể hóa toàn thể - Qui tắc đặc biệt hóa phổ dụng
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Từ một mệnh đề đúng với mọi phần tử, ta được phép suy ra nó đúng với một phần tử cụ thể bất kỳ.
@@ -90,7 +90,7 @@ UI là quy tắc **hợp lệ** (valid) — nếu tiền đề đúng thì kết
 ![Modus Tollens](/discrete-mathematics-for-computer-science-iuh/img/course/Modus_tollens.png)
 
 <p class="textbook-figure-caption" data-figure="2.12">Modus Tollens — từ $$p \to q$$ và $$\neg q$$ suy ra $$\neg p$$; bổ sung cho Modus Ponens trong chuỗi suy luận.</p>
-## 3. Universal Generalization (UG) - Tổng quát hóa toàn thể
+## Universal Generalization (UG) - Tổng quát hóa toàn thể
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Nếu ta chứng minh được $$P(c)$$ cho một phần tử $$c$$ được chọn tùy ý, không dùng giả thiết đặc biệt nào về $$c$$, thì có thể kết luận $$\forall xP(x)$$.
@@ -109,7 +109,7 @@ Lấy $$n\in\mathbb{Z}$$ tùy ý. Hai số $$n$$ và $$n+1$$ là hai số nguyê
 **Cảnh báo**: Không được dùng UG nếu phần tử đang xét không tùy ý. Nếu biết "An là sinh viên giỏi" thì không thể suy ra "mọi sinh viên đều giỏi".
 </div>
 
-## 4. Existential Instantiation (EI) - Cụ thể hóa tồn tại
+## Existential Instantiation (EI) - Cụ thể hóa tồn tại
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Từ $$\exists xP(x)$$, ta được phép đặt một hằng mới $$c$$ sao cho $$P(c)$$ đúng.
@@ -127,7 +127,7 @@ $$\frac{\exists x\,P(x)}{P(c)}$$
 </div>
 
 
-## 5. Existential Generalization (EG) - Tổng quát hóa tồn tại
+## Existential Generalization (EG) - Tổng quát hóa tồn tại
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Nếu biết $$P(c)$$ đúng với một phần tử cụ thể $$c$$, ta có thể kết luận $$\exists xP(x)$$.
@@ -146,7 +146,7 @@ $$\frac{P(c)}{\exists x\,P(x)}$$
 <p class="textbook-figure-caption" data-figure="2.13">Cây phân tích thuật ngữ (term tree) — minh họa cấu trúc công thức khi áp dụng quy tắc suy luận từng bước.</p>
 </div>
 
-## 6. Ví dụ tổng hợp
+## Ví dụ tổng hợp
 
 **Bài toán**: Chứng minh lập luận sau hợp lệ.
 
@@ -174,7 +174,7 @@ Bảng chứng minh trên tuân cấu trúc chuẩn: cột **Bước** đánh s�
 ![Socrates](/discrete-mathematics-for-computer-science-iuh/img/course/Socrates_Louvre.jpg)
 
 <p class="textbook-figure-caption" data-figure="2.14">Socrates — ví dụ kinh điển trong tam đoạn luận: "Người Hy Lạp là người; người thì phải chết; Socrates là người Hy Lạp" → Socrates phải chết.</p>
-## 7. Suy luận với lượng từ tồn tại
+## Suy luận với lượng từ tồn tại
 
 Lập luận:
 

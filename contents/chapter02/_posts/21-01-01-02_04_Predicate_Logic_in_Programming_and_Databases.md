@@ -52,7 +52,7 @@ Từ Frege và lượng từ ∀/∃ đến validation schema, contract programm
 
 ## Phần 1: Từ yêu cầu tiếng Việt đến công thức
 
-### 1.1. Mẫu dịch thường gặp
+### Mẫu dịch thường gặp
 
 | Câu nghiệp vụ | Logic vị từ (miền $$D$$) |
 |---|---|
@@ -75,7 +75,7 @@ $$\forall t \in Transactions,\ Processed(t) \limpl Verified(t)$$
 <p class="textbook-figure-caption" data-figure="2.16">Gottlob Frege — đặt nền cho logic vị từ (first-order logic); hôm nay cùng cấu trúc ∀/∃ xuất hiện trong SQL và validation code.</p>
 </div>
 
-### 1.2. Phủ định lượng từ — lỗi hay gặp nhất
+### Phủ định lượng từ — lỗi hay gặp nhất
 
 Luật De Morgan cho lượng từ:
 
@@ -105,7 +105,7 @@ WHERE status = 'unpaid';
 
 ## Phần 2: Logic vị từ trong SQL
 
-### 2.1. `EXISTS` và `NOT EXISTS`
+### `EXISTS` và `NOT EXISTS`
 
 `EXISTS (subquery)` đúng khi subquery trả về **ít nhất một dòng** — đó chính là $$\exists$$.
 
@@ -129,7 +129,7 @@ WHERE NOT EXISTS (
 );
 ```
 
-### 2.2. `FOREIGN KEY` và `UNIQUE` như vị từ toàn cục
+### `FOREIGN KEY` và `UNIQUE` như vị từ toàn cục
 
 ```sql
 CREATE TABLE enrollments (
@@ -145,7 +145,7 @@ CREATE TABLE enrollments (
 ![Truy vấn SQL — thể hiện ∃ và ∀ qua EXISTS, JOIN, ràng buộc](/discrete-mathematics-for-computer-science-iuh/img/course/sql_query.svg)
 
 <p class="textbook-figure-caption" data-figure="2.17">Truy vấn SQL biểu diễn lượng từ qua EXISTS/NOT EXISTS và ràng buộc quan hệ — cùng ý tưởng với công thức ∀/∃ trên miền bản ghi.</p>
-### 2.3. `CHECK` — vị từ trên từng dòng
+### `CHECK` — vị từ trên từng dòng
 
 ```sql
 ALTER TABLE students
@@ -158,7 +158,7 @@ ADD CONSTRAINT gpa_range CHECK (gpa >= 0 AND gpa <= 4);
 
 ## Phần 3: Assertion và schema trong code
 
-### 3.1. `assert` — hợp đồng runtime
+### `assert` — hợp đồng runtime
 
 ```python
 def transfer(from_id: int, to_id: int, amount: float, balance: dict[int, float]) -> None:
@@ -170,7 +170,7 @@ def transfer(from_id: int, to_id: int, amount: float, balance: dict[int, float])
 
 `assert` không thay thế validation phía client, nhưng bảo vệ **invariant** nội bộ: điều kiện phải đúng với mọi trạng thái hợp lệ của chương trình.
 
-### 3.2. Pydantic / Zod — vị từ trên kiểu dữ liệu
+### Pydantic / Zod — vị từ trên kiểu dữ liệu
 
 **Python (Pydantic)**:
 
@@ -195,7 +195,7 @@ const CreateOrder = z.object({
 
 Mỗi ràng buộc `.positive()`, `.min(1)` là một vị từ một biến: $$P(x)$$ phải đúng trước khi object được chấp nhận.
 
-### 3.3. Design by Contract (DbC)
+### Design by Contract (DbC)
 
 ```python
 def withdraw(balance: float, amount: float) -> float:
@@ -222,11 +222,11 @@ Precondition/postcondition/invariant là ba lớp vị từ bọc hàm — tiề
 
 ## Phần 4: Ứng dụng nâng cao
 
-### 4.1. Kiểm chứng và SMT/SAT
+### Kiểm chứng và SMT/SAT
 
 Khi hệ thống cực kỳ nhạy cảm (hàng không, thanh toán, kernel), người ta dùng **model checker** hoặc **SMT solver** để hỏi: "Có tồn tại trạng thái vi phạm invariant không?" — tức $$\exists$$ counterexample. Nếu solver trả `unsat`, ta có bằng chứng mọi luồng thỏa spec (trong mô hình hữu hạn).
 
-### 4.2. Policy as code
+### Policy as code
 
 ```python
 def can_refund(order, user) -> bool:

@@ -27,7 +27,7 @@ Trong hệ thống thực, chúng ta thường phải đảo chiều liên kết
 **Từ khóa**: tổ hợp quan hệ, bao đóng (closure), transitive closure, Warshall.
 </div>
 
-## 1. Quan hệ ngược
+## Quan hệ ngược
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Với quan hệ $$R\subseteq A\times B$$, quan hệ ngược của $$R$$ là:
@@ -57,7 +57,7 @@ Nếu $$R$$ đối xứng thì $$R^{-1}=R$$.
 ![Quan hệ ngược — đảo chiều cung](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
 <p class="textbook-figure-caption" data-figure="5.19">Quan hệ ngược $$R^{-1}$$ đảo hướng mọi cung — từ (a, b) ∈ R suy ra (b, a) ∈ R⁻¹.</p>
-## 2. Hợp thành quan hệ
+## Hợp thành quan hệ
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Cho $$R\subseteq A\times B$$ và $$S\subseteq B\times C$$. Hợp thành $$S\circ R$$ là quan hệ từ $$A$$ đến $$C$$:
@@ -82,7 +82,7 @@ Vậy $$S\circ R=\{(1,1),(2,3)\}$$.
 <p class="textbook-figure-caption" data-figure="5.20">Hợp thành $$S \circ R$$ ghép hai quan hệ: (a, c) ∈ S∘R khi tồn tại b sao cho (a, b) ∈ R và (b, c) ∈ S.</p>
 </div>
 
-## 3. Ma trận quan hệ và tích Boolean
+## Ma trận quan hệ và tích Boolean
 
 Nếu $$R$$ và $$S$$ được biểu diễn bằng ma trận 0-1, thì ma trận của $$S\circ R$$ được tính bằng tích Boolean:
 
@@ -95,7 +95,7 @@ $$M_{S\circ R}[i,j]=\bigvee_k(M_R[i,k]\land M_S[k,j]).$$
 ![Ma trận quan hệ và tích Boolean](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
 <p class="textbook-figure-caption" data-figure="5.21">Tích Boolean của hai ma trận quan hệ tính hợp thành — AND thay nhân, OR thay cộng.</p>
-## 4. Lũy thừa quan hệ
+## Lũy thừa quan hệ
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Với quan hệ $$R$$ trên $$A$$:
@@ -109,7 +109,7 @@ $$M_{S\circ R}[i,j]=\bigvee_k(M_R[i,k]\land M_S[k,j]).$$
 ![Lũy thừa quan hệ — đường đi nhiều bước](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_simple_directed_graph.svg)
 
 <p class="textbook-figure-caption" data-figure="5.22">$$R^k$$ chứa các cặp (a, b) có đường đi độ dài k từ a đến b trong đồ thị của R.</p>
-## 5. Bao đóng
+## Bao đóng
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Bao đóng của quan hệ $$R$$ theo một tính chất là quan hệ nhỏ nhất chứa $$R$$ và có tính chất đó.
@@ -150,7 +150,7 @@ trong đó $$I_A=\{(a,a)\mid a\in A\}$$.
 ![Bao đóng bắc cầu — thêm cung gián tiếp](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
 <p class="textbook-figure-caption" data-figure="5.23">Bao đóng bắc cầu $$R^*$$ thêm mọi cặp (a, c) có đường đi từ a đến c, kể cả vòng phản xạ.</p>
-## 6. Thuật toán Warshall
+## Thuật toán Warshall
 **Ý tưởng**: Warshall tính bao đóng bắc cầu từ ma trận kề. Cho phép từng đỉnh $$k$$ làm đỉnh trung gian, cập nhật:
 
 <div class="textbook-equation" markdown="1">
@@ -170,7 +170,7 @@ def warshall(M):
 ![Thuật toán Warshall — reachability](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_simple_directed_graph.svg)
 
 <p class="textbook-figure-caption" data-figure="5.24">Warshall tính bao đóng bắc cầu trên ma trận kề — trả lời truy vấn reachability giữa mọi cặp đỉnh.</p>
-## 9. Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong Khoa học Máy tính
 
 - **Đồ thị**: bao đóng bắc cầu trả lời truy vấn reachability.
 - **Cơ sở dữ liệu**: truy vấn đệ quy như "tất cả cấp dưới của một quản lý" dùng transitive closure.

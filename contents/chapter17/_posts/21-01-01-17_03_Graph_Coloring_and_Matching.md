@@ -38,7 +38,7 @@ Xếp lịch thi: hai môn trùng sinh viên không cùng ca. Gán thanh ghi: ha
 
 </div>
 
-## 1. Tô màu đỉnh
+## Tô màu đỉnh
 
 <div class="textbook-definition" markdown="1">
 
@@ -83,7 +83,7 @@ Xếp lịch thi: hai môn trùng sinh viên không cùng ca. Gán thanh ghi: ha
 </div>
 <script src="{{ '/public/js/explainers/graph-explainer.js' | relative_url }}"></script>
 
-## 2. Đồ thị hai phía và ghép cặp
+## Đồ thị hai phía và ghép cặp
 
 ![Matching](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_bipartite_matching.svg)
 
@@ -115,7 +115,7 @@ Thuật toán Kuhn tìm ghép cực đại từng bước; ví dụ vi phạm đ
 <div data-demo="match-explainer" data-tab="matching"></div>
 </div>
 
-## 3. Bản đồ độ khó (chương 12–17)
+## Bản đồ độ khó (chương 12–17)
 
 | Bài toán | Lớp điển hình | Độ khó (giáo trình) |
 |:---|:---|:---|
@@ -128,7 +128,7 @@ Thuật toán Kuhn tìm ghép cực đại từng bước; ví dụ vi phạm đ
 
 Chương 17 bổ sung thuật toán **đa thức** quan trọng (shortest path, topo) và **preview** các bài NP-hard qua tô màu / Hamilton.
 
-## 4. Tổng quan Chương 17
+## Tổng quan Chương 17
 
 1. **Shortest path** — Dijkstra, routing.  
 2. **Topo sort** — DAG, build, scheduling.  

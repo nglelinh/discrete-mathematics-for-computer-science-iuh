@@ -49,7 +49,7 @@ excerpt: "Ở mục trước chúng ta đã chứng minh công thức bao hàm�
 </div>
 
 
-## 2. Hàm phi Euler
+## Hàm phi Euler
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: $\phi(n)$ là số các số nguyên dương không vượt quá $n$ và nguyên tố cùng nhau với $n$.
@@ -74,7 +74,7 @@ $$
 </div>
 **Ý tưởng chứng minh**: Đếm các số từ 1 đến $n$, rồi loại các số chia hết cho từng $p_i$ bằng bao hàm - loại trừ.
 
-## 3. Số toàn ánh
+## Số toàn ánh
 
 Số ánh xạ toàn ánh từ một tập $m$ phần tử sang một tập $n$ phần tử có thể đếm bằng bao hàm - loại trừ:
 
@@ -86,7 +86,7 @@ $$
 </div>
 **Trực giác**: Bắt đầu từ tất cả ánh xạ có $n^m$ cách. Trừ các ánh xạ bỏ sót ít nhất một giá trị đích. Có $\binom{n}{1}(n-1)^m$ ánh xạ bỏ sót một giá trị, cộng lại phần bỏ sót hai giá trị, và cứ tiếp tục như vậy.
 
-## 4. Hoán vị không điểm cố định
+## Hoán vị không điểm cố định
 
 Một hoán vị của $n$ phần tử không có điểm cố định gọi là **derangement**. Số derangement ký hiệu $!n$ và có công thức
 
@@ -106,7 +106,7 @@ $$
 
 Trong $24$ hoán vị của $\{1,2,3,4\}$ có đúng $9$ hoán vị không có phần tử nào đứng đúng chỗ, tức $D_4=9$. Theo bao hàm–loại trừ, $D_n=n!\sum_{k=0}^{n}\frac{(-1)^k}{k!}$, nên $D_n/n!\to 1/e\approx 0{,}3679$: với $n$ lớn, khoảng $36{,}8\%$ hoán vị là derangement.
 
-## 5. Ứng dụng trong tô màu và ràng buộc
+## Ứng dụng trong tô màu và ràng buộc
 
 Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Phần này liên hệ khái niệm toán học với bài toán thực tế trong lập trình và hệ thống.
 

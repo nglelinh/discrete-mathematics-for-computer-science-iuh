@@ -267,7 +267,7 @@ Khi làm bài tập, nên bắt đầu bằng cách xác định dữ kiện, d�
 
 ## Ứng dụng trong Khoa học Máy tính
 
-### 1. Thuật toán tìm kiếm
+### Thuật toán tìm kiếm
 ```python
 def binary_search_complexity(n):
     """Độ phức tạp tìm kiếm nhị phân"""
@@ -280,7 +280,7 @@ def combination_search(items, k):
     return math.comb(len(items), k)
 ```
 
-### 2. Mật mã học
+### Mật mã học
 ```python
 def brute_force_time(password_length, charset_size):
     """Thời gian brute force mật khẩu"""
@@ -293,7 +293,7 @@ def key_combinations(key_bits):
     return 2 ** key_bits
 ```
 
-### 3. Phân tích thuật toán
+### Phân tích thuật toán
 ```python
 def subset_generation(n):
     """Số tập con của tập n phần tử"""

@@ -29,11 +29,11 @@ Mọi hardness graph thường đi từ **3SAT**. Mục này chứng minh $$3\ma
 
 </div>
 
-## 1. $$3\mathrm{SAT}\in NP$$
+## $$3\mathrm{SAT}\in NP$$
 
 Certificate = gán. Verifier đánh giá: poly. $$\square$$
 
-## 2. Construction
+## Construction
 
 Cho $$\varphi=C_1\land\cdots\land C_m$$. Xử lý từng $$C$$:
 
@@ -77,7 +77,7 @@ Tách từng mệnh đề thành mệnh đề ≤ 3 literal bằng biến phụ;
 </div>
 <script src="{{ '/public/js/explainers/complexity-explainer.js' | relative_url }}"></script>
 
-## 3. Tổng hợp
+## Tổng hợp
 
 $$f(\varphi)$$ = hội mọi mệnh đề 3-literal sau pad.  
 Poly-time (tuyến tính).  

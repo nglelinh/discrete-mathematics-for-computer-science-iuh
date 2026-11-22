@@ -31,7 +31,7 @@ Không phải mọi liên kết giữa hai đối tượng đều có cùng bả
 
 Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 
-### 1. Tính phản xạ (Reflexive)
+### Tính phản xạ (Reflexive)
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: R là phản xạ nếu ∀a ∈ A: (a, a) ∈ R
@@ -70,7 +70,7 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 - Phản xạ = "tự liên hệ với mình"
 - Phản đối xứng = "không có hai chiều trừ khi bằng nhau"
 
-### 2. Tính đối xứng (Symmetric)
+### Tính đối xứng (Symmetric)
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: R là đối xứng nếu ∀a, b ∈ A: (a, b) ∈ R ⟹ (b, a) ∈ R
@@ -98,7 +98,7 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 **Trong CS**: Quan hệ "hai máy tính có kết nối mạng trực tiếp" là đối xứng. Quan hệ "thư mục cha chứa thư mục con" là không đối xứng (nếu A chứa B thì B không thể chứa A).
 </div>
 
-### 3. Tính phản đối xứng (Antisymmetric)
+### Tính phản đối xứng (Antisymmetric)
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: R là phản đối xứng nếu ∀a, b ∈ A: (a, b) ∈ R ∧ (b, a) ∈ R ⟹ a = b
@@ -118,7 +118,7 @@ Cho quan hệ R trên tập hợp A (R ⊆ A × A):
 **Phân biệt tinh tế**: Đối xứng và phản đối xứng **không phải** hai mặt đối lập! Một quan hệ có thể vừa đối xứng vừa phản đối xứng (ví dụ: quan hệ "="). Một quan hệ cũng có thể không đối xứng cũng không phản đối xứng (ví dụ: R = {(1,2), (2,1), (1,3)} -- có (1,2) và (2,1) nhưng không có (3,1)).
 </div>
 
-### 4. Tính bắc cầu (Transitive)
+### Tính bắc cầu (Transitive)
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: R là bắc cầu nếu ∀a, b, c ∈ A: (a, b) ∈ R ∧ (b, c) ∈ R ⟹ (a, c) ∈ R

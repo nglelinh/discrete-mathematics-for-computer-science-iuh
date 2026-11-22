@@ -33,7 +33,7 @@ Biết một điều kiện đúng hay sai chỉ là bước đầu. Trong thự
 
 ---
 
-## 1. Định nghĩa Quy tắc Suy diễn
+## Định nghĩa Quy tắc Suy diễn
 
 Trong các chứng minh toán học (và trong cả lập trình, phân tích hệ thống), ta thường thấy những lý luận dẫn xuất có dạng:
 
@@ -94,7 +94,7 @@ Các biểu thức $$p_1, p_2, \dots, p_n$$ được gọi là **giả thiết**
 <p class="textbook-figure-caption" data-figure="1.21">Quy tắc suy diễn là nền tảng của mọi lập luận hợp lệ — từ tiền đề đúng rút ra kết luận đúng.</p>
 ---
 
-## 2. Modus Ponens (Quy tắc Khẳng định)
+## Modus Ponens (Quy tắc Khẳng định)
 
 Đây là quy tắc suy diễn quen thuộc nhất: nếu mệnh đề kéo theo $$p \to q$$ đúng và $$p$$ đúng, thì $$q$$ cũng đúng.
 
@@ -161,7 +161,7 @@ Modus Ponens là nền tảng của mọi câu lệnh `if-then` trong lập trì
 <p class="textbook-figure-caption" data-figure="1.22">Modus Ponens — nếu p → q đúng và p đúng, thì q phải đúng (nền tảng của mọi câu lệnh `if`).</p>
 ---
 
-## 3. Modus Tollens (Quy tắc Phủ định)
+## Modus Tollens (Quy tắc Phủ định)
 
 Quy tắc này là "ngược" của Modus Ponens: nếu $$p \to q$$ đúng nhưng $$q$$ sai (phủ định), thì $$p$$ cũng phải sai.
 
@@ -212,7 +212,7 @@ Modus Tollens đặc biệt hữu ích trong debugging và kiểm thử: khi k�
 <p class="textbook-figure-caption" data-figure="1.23">Modus Tollens — nếu p → q đúng nhưng q sai, thì p phải sai (dùng nhiều trong debugging và kiểm thử).</p>
 ---
 
-## 4. Tam đoạn luận Giả định (Hypothetical Syllogism)
+## Tam đoạn luận Giả định (Hypothetical Syllogism)
 
 Quy tắc này cho phép "nối chuỗi" các mệnh đề kéo theo:
 
@@ -254,7 +254,7 @@ Tam đoạn luận giả định là cơ sở cho mọi chuỗi xử lý (pipeli
 <p class="textbook-figure-caption" data-figure="1.24">Tam đoạn luận giả định — từ p → q và q → r suy ra p → r, nền tảng của pipeline và kế thừa quyền.</p>
 ---
 
-## 5. Tam đoạn luận Tuyển (Disjunctive Syllogism)
+## Tam đoạn luận Tuyển (Disjunctive Syllogism)
 
 Khi ta biết một trong hai mệnh đề đúng, và một mệnh đề sai, thì mệnh đề còn lại phải đúng:
 
@@ -301,7 +301,7 @@ Trong lập trình, quy tắc này thường được dùng trong xử lý ngo�
 <p class="textbook-figure-caption" data-figure="1.25">Tam đoạn luận tuyển — biết p ∨ q đúng và ¬p đúng, suy ra q (loại trừ nguyên nhân trong chẩn đoán lỗi).</p>
 ---
 
-## 6. Phép Thêm (Addition)
+## Phép Thêm (Addition)
 
 Từ một mệnh đề đúng, ta có thể thêm bất kỳ mệnh đề nào vào bằng phép tuyển (kết quả vẫn đúng):
 
@@ -327,7 +327,7 @@ Quy tắc này hữu ích trong các chứng minh phức tạp vì cho phép m�
 
 ---
 
-## 7. Phép Giản lược (Simplification)
+## Phép Giản lược (Simplification)
 
 Ngược lại với phép thêm: từ một mệnh đề hội đúng, ta suy ra mỗi thành phần của nó cũng đúng:
 
@@ -359,7 +359,7 @@ Khi một hàm trong code trả về tuple `(status, data)`, và ta chỉ quan t
 
 ---
 
-## 8. Phép Nối (Conjunction)
+## Phép Nối (Conjunction)
 
 Nếu hai mệnh đề đều đúng, ta có thể nối chúng thành một mệnh đề hội:
 
@@ -387,7 +387,7 @@ Phép nối thường dùng ở cuối một chuỗi suy luận để tổng h�
 
 ---
 
-## 9. Phép Giải (Resolution)
+## Phép Giải (Resolution)
 
 Quy tắc này đặc biệt quan trọng trong các thuật toán chứng minh tự động (automated theorem proving) và SAT solvers:
 
@@ -426,7 +426,7 @@ Chọn quy tắc mẫu hoặc tự nhập tiền đề và kết luận; bảng 
 </div>
 <script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
 
-## 10. Bảng Tổng Hợp các Quy tắc Suy diễn
+## Bảng Tổng Hợp các Quy tắc Suy diễn
 
 | Tên quy tắc | Dạng suy diễn | Tên gọi |
 |---|---|---|
@@ -441,17 +441,17 @@ Chọn quy tắc mẫu hoặc tự nhập tiền đề và kết luận; bảng 
 
 ---
 
-## 12. Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong Khoa học Máy tính
 
-### 12.1. Kiểm chứng Hình thức (Formal Verification)
+### Kiểm chứng Hình thức (Formal Verification)
 
 Các công cụ như Dafny, Coq, và Isabelle/HoL sử dụng quy tắc suy diễn để chứng minh chương trình đúng. Mỗi bước suy luận trong chứng minh là một quy tắc suy diễn được kiểm tra bởi máy tính.
 
-### 12.2. SAT Solvers
+### SAT Solvers
 
 SAT solver chuyển bài toán thành CNF và áp dụng resolution để kiểm tra tính thỏa được. Hàng triệu phép resolution mỗi giây là cách máy tính "suy luận" ở quy mô mà con người không thể làm được.
 
-### 12.3. Hệ Thống Chuyên gia (Expert Systems)
+### Hệ Thống Chuyên gia (Expert Systems)
 
 Các hệ thống như Mycin (chẩn đoán bệnh) dùng mô hình suy diễn dạng:
 
@@ -459,7 +459,7 @@ Các hệ thống như Mycin (chẩn đoán bệnh) dùng mô hình suy diễn d
 
 Mỗi lần người dùng nhập thêm triệu chứng, hệ thống dùng Modus Ponens để rút ra kết luận mới.
 
-### 12.4. Hệ thống Kiểu (Type Systems)
+### Hệ thống Kiểu (Type Systems)
 
 Trong trình biên dịch, suy luận kiểu (type inference) dựa trên các quy tắc suy diễn. Ví dụ, một quy tắc đơn giản:
 

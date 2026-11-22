@@ -32,17 +32,17 @@ excerpt: "Transducer; λ(q) vs ω(q,a); độ dài ra; tương đương sức m�
 
 </div>
 
-## 1. Moore
+## Moore
 
 $$M=(Q,\Sigma,\Delta,\delta,\lambda,q_0)$$, $$\lambda:Q\to\Delta$$.  
 Vào $$a_1\ldots a_n$$ → ra $$\lambda(q_0)\ldots\lambda(q_n)$$ độ dài $$n+1$$.
 
-## 2. Mealy
+## Mealy
 
 $$\omega:Q\times\Sigma\to\Delta$$.  
 Ra $$\omega(q_0,a_1)\ldots\omega(q_{n-1},a_n)$$ độ dài $$n$$.
 
-## 3. Tương đương (khung)
+## Tương đương (khung)
 
 <div class="textbook-theorem" markdown="1">
 

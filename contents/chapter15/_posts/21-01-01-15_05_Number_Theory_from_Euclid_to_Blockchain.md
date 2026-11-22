@@ -38,13 +38,13 @@ Chương 15 đã lần lượt đưa ra chia hết, đồng dư, RSA/DH và các
 
 </div>
 
-## 1. Từ Euclid đến Gauss
+## Từ Euclid đến Gauss
 
 Euclid (~300 TCN) để lại thuật toán GCD và chứng minh vô hạn số nguyên tố — hai kết quả vẫn nằm trong Mục 15.1. Điểm then chốt không chỉ là “có vô hạn nguyên tố”, mà là nhận ra số nguyên tố như **cấu trúc cơ bản** của số học.
 
 Gauss (1777–1855), qua *Disquisitiones Arithmeticae* (1801), đưa **đồng dư** thành ngôn ngữ chuẩn. Hầu hết giao thức ở Mục 15.2–15.3 viết bằng đúng ngôn ngữ đó: $$a\equiv b\pmod n$$, lớp thặng dư, hàm $$\varphi$$.
 
-## 2. RSA và an ninh Internet
+## RSA và an ninh Internet
 
 RSA dựa trên **bất đối xứng tính toán**: nhân hai số nguyên tố lớn thì dễ; phân tích tích $$n=pq$$ thì khó (trên máy cổ điển). Public-key cryptography cho phép:
 
@@ -54,7 +54,7 @@ RSA dựa trên **bất đối xứng tính toán**: nhân hai số nguyên tố
 
 HTTPS/TLS, ký phần mềm, email bảo mật đều chịu ảnh hưởng của mô hình này — dù triển khai hiện đại thường kết hợp ECDHE, AES, … Người dùng trình duyệt không cần nghĩ tới modulo; hạ tầng thì không thể thiếu.
 
-## 3. Hashing và modulo thực dụng
+## Hashing và modulo thực dụng
 
 Công thức
 
@@ -64,21 +64,21 @@ index = hash(key) % table_size
 
 là số học modulo ở dạng kỹ thuật phần mềm hàng ngày. Hash mật mã (SHA-256, …) phức tạp hơn nhiều, nhưng trực giác **lớp thặng dư**, wrap-around và phân bố bucket vẫn hữu ích. Máy tính làm việc với từ hữu hạn bit — nhiều phép toán “tự nhiên” đã là modulo $$2^w$$.
 
-## 4. Mã sửa lỗi và Reed–Solomon
+## Mã sửa lỗi và Reed–Solomon
 
 Truyền/lưu dữ liệu chịu nhiễu. **Reed–Solomon** và các mã liên quan dùng đại số trên **trường hữu hạn** (cấu trúc số học mở rộng) để phát hiện và sửa lỗi: CD/DVD, QR, lưu trữ phân tán, vệ tinh. Lý thuyết số / đại số hữu hạn không chỉ phục vụ RSA: còn phục vụ **độ tin cậy** dữ liệu.
 
-## 5. Zero-knowledge và blockchain
+## Zero-knowledge và blockchain
 
 **Zero-knowledge proof**: chứng minh một mệnh đề (hoặc “biết bí mật”) mà **không tiết lộ** bản thân bí mật. Các biến thể zk-SNARK / zk-STARK đưa ý tưởng này vào hệ phi tập trung.
 
 **Blockchain** (ở mức chương trình): chuỗi khối gắn bằng hash; giao dịch được **ký** (ECDSA/RSA-like); đồng thuận quyết định chuỗi hợp lệ. Số nguyên tố, modulo và đường cong elliptic xuất hiện trong chữ ký; hash bảo toàn liên kết khối. Đây không phải giáo trình blockchain đầy đủ — chỉ chỉ ra chỗ lý thuyết số “neo” vào hệ.
 
-## 6. Lượng tử và hậu lượng tử
+## Lượng tử và hậu lượng tử
 
 Shor đe dọa RSA và nhiều hệ DLP/ECC cổ điển. Phản ứng không phải bỏ số học, mà **chọn bài toán nền mới** (lattice, code, hash-based, …) — xem Mục 15.4. An ninh dài hạn vẫn là bài toán toán học.
 
-## 7. Kết luận chương
+## Kết luận chương
 
 | Mốc | Ý tưởng | Chỗ trong khóa học |
 |:---|:---|:---|

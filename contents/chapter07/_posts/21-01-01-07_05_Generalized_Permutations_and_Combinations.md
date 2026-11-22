@@ -14,7 +14,7 @@ excerpt: "Ở mục trước chúng ta đã học hệ số nhị thức và đ�
 
 Trong bài toán thực tế, các đối tượng không phải lúc nào cũng phân biệt hoàn toàn. Có khi phần tử được phép lặp lại, có khi nhiều phần tử giống nhau, có khi số cách chọn phải tính dưới ràng buộc phân phối. Điểm khó không nằm ở công thức dài mà ở chỗ nhận ra bản chất khác biệt so với bài toán chuẩn.
 
-## 1. Tổ hợp có lặp
+## Tổ hợp có lặp
 
 **Bài toán**: Có $n$ loại đồ vật, mỗi loại có số lượng không giới hạn. Chọn $r$ đồ vật, không xét thứ tự. Có bao nhiêu cách?
 
@@ -88,7 +88,7 @@ $$
 
 <script src="{{ '/public/js/stars-bars-visualizer.js' | relative_url }}"></script>
 
-## 2. Phương trình nghiệm nguyên không âm
+## Phương trình nghiệm nguyên không âm
 
 Số nghiệm nguyên không âm của
 
@@ -143,7 +143,7 @@ $$
 **Ví dụ**: Số nghiệm của $x_1+x_2+x_3=12$ với $x_1\ge2,x_2\ge1,x_3\ge4$ là số nghiệm của $y_1+y_2+y_3=5$, bằng $\binom{7}{2}=21$.
 </div>
 
-## 3. Hoán vị của đa tập
+## Hoán vị của đa tập
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một **đa tập** (multiset) cho phép phần tử xuất hiện nhiều lần. Nếu có $n$ đối tượng, trong đó loại 1 lặp $n_1$ lần, loại 2 lặp $n_2$ lần, ..., loại $k$ lặp $n_k$ lần, với $n_1+\cdots+n_k=n$, thì số hoán vị phân biệt là
@@ -184,7 +184,7 @@ $$
 **Lý do phải chia**: Nếu tạm xem các chữ S là $S_1,S_2,S_3,S_4$ thì có $11!$ hoán vị. Nhưng hoán đổi các chữ S với nhau không tạo từ mới, nên mỗi từ bị đếm $4!$ lần do S, $4!$ lần do I và $2!$ lần do P.
 </div>
 
-## 4. Hệ số đa thức
+## Hệ số đa thức
 
 Định lý nhị thức có bản mở rộng cho nhiều biến:
 
@@ -230,7 +230,7 @@ vì đây chính là số hoán vị của đa tập gồm $n$ “bước nhân�
 ![Hệ số đa thức — chia nhóm có nhãn](/discrete-mathematics-for-computer-science-iuh/img/course/multinomial_partition.svg)
 
 <p class="textbook-figure-caption" data-figure="7.24">Hệ số đa thức $\binom{n}{k_1,\ldots,k_m}$ đếm số cách chia $n$ đối tượng phân biệt vào $m$ nhóm có kích thước cố định.</p>
-## 5. Ràng buộc trên và nguyên lý bù trừ
+## Ràng buộc trên và nguyên lý bù trừ
 
 Nếu yêu cầu $0\le x_i\le b_i$, stars and bars đơn thuần chưa đủ. Chúng ta thường đếm tất cả nghiệm không âm rồi loại nghiệm vi phạm $x_i\ge b_i+1$ bằng nguyên lý bù trừ.
 

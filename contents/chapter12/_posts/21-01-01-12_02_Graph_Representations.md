@@ -40,7 +40,7 @@ Mục này xây dựng hai biểu diễn, so sánh độ phức tạp, và nêu 
 
 </div>
 
-## 1. Ma trận kề
+## Ma trận kề
 
 Giả sử các đỉnh được đánh số $$0, 1, \ldots, n-1$$ với $$n = |V|$$.
 
@@ -87,7 +87,7 @@ Ma trận đối xứng; $$\deg(2) = 3$$ bằng tổng hàng 2.
 | Liệt kê mọi láng giềng của $$i$$ | $$O(n)$$ (duyệt cả hàng) |
 | Bộ nhớ | $$O(n^2)$$ |
 
-## 2. Danh sách kề
+## Danh sách kề
 
 <div class="textbook-definition" markdown="1">
 
@@ -120,7 +120,7 @@ Tổng độ dài các danh sách bằng $$2|E| = 8$$ trên đồ thị vô hư�
 | Duyệt láng giềng của $$i$$ | $$O(\deg(i))$$ |
 | Bộ nhớ | $$O(n + m)$$ với $$m = |E|$$ (vô hướng: $$O(n + 2m)$$ chỗ lưu chiều) |
 
-## 3. So sánh và nguyên tắc chọn
+## So sánh và nguyên tắc chọn
 
 | Tiêu chí | Ma trận kề | Danh sách kề |
 |:---|:---|:---|
@@ -151,7 +151,7 @@ Tổng độ dài các danh sách bằng $$2|E| = 8$$ trên đồ thị vô hư�
 
 </div>
 
-## 4. Biến thể và lưu ý triển khai
+## Biến thể và lưu ý triển khai
 
 - **Digraph**: danh sách kề chỉ lưu cạnh ra; nếu cần cạnh vào, có thể giữ thêm *in-list* hoặc xây từ cạnh ra khi tiền xử lý.
 - **Đa đồ thị / khuyên**: ma trận có thể lưu số cạnh thay vì bit 0/1; danh sách lưu lặp hoặc cấu trúc có bội số.
@@ -166,7 +166,7 @@ def has_edge_adj_list(graph, u, v):
     return v in graph.get(u, [])  # O(deg(u)) với list
 ```
 
-## 5. Thử nghiệm tương tác
+## Thử nghiệm tương tác
 
 Xây ma trận kề bằng cách bật/tắt cạnh; so sánh với danh sách kề suy ra từ các hàng khác 0.
 

@@ -15,7 +15,7 @@ excerpt: "Ở các mục trước chúng ta đã định nghĩa, phân loại v�
 
 ## Phần 1: Lịch sử — Fibonacci và bài toán thỏ
 
-### 1.1. Bài toán Fibonacci và lịch sử
+### Bài toán Fibonacci và lịch sử
 
 Trong *Liber Abaci* năm 1202,
 Leonardo of Pisa — thường gọi là Fibonacci — nêu bài toán sinh sản của thỏ.
@@ -30,7 +30,7 @@ $$
 Điểm hấp dẫn ở đây không chỉ là dãy số.
 Điểm hấp dẫn là ý tưởng mô tả tương lai bằng quá khứ gần.
 
-### 1.2. Tư duy truy hồi là tư duy cấu trúc
+### Tư duy truy hồi là tư duy cấu trúc
 
 Nhiều hiện tượng trong tự nhiên,
 kinh tế,
@@ -50,7 +50,7 @@ hệ thức truy hồi trở thành cầu nối giữa pattern và prediction.
 
 ## Phần 2: Phân tích thuật toán chia để trị
 
-### 2.1. Vì sao divide-and-conquer sinh ra truy hồi
+### Vì sao divide-and-conquer sinh ra truy hồi
 
 Khi thuật toán chia bài toán kích thước `n`
 thành các bài toán con,
@@ -68,7 +68,7 @@ $$
 Đây không phải ký hiệu trang trí.
 Nó là bản tóm tắt bản chất thời gian chạy.
 
-### 2.2. Master Theorem như công cụ công nghiệp nhỏ gọn
+### Master Theorem như công cụ công nghiệp nhỏ gọn
 
 Master Theorem giúp giải nhanh nhiều recurrence kiểu:
 
@@ -85,7 +85,7 @@ kỹ sư có thể phân biệt:
 - thuật toán nào tăng quá nhanh,
 - optimization nào thật sự đáng giá.
 
-### 2.3. Từ sách giáo khoa đến production
+### Từ sách giáo khoa đến production
 
 Search systems,
 parallel sort,
@@ -107,7 +107,7 @@ Nó giúp hiểu chi phí kiến trúc của nhiều hệ thống thật.
 
 ## Phần 3: Dynamic programming — truy hồi cộng với trí nhớ
 
-### 3.1. Fibonacci ngây thơ và bài học về chồng lặp
+### Fibonacci ngây thơ và bài học về chồng lặp
 
 Nếu cài Fibonacci đệ quy trực tiếp:
 
@@ -120,7 +120,7 @@ def fib(n):
 
 ta lặp lại rất nhiều lời gọi con giống nhau.
 
-### 3.2. Memoization biến truy hồi thành hiệu quả
+### Memoization biến truy hồi thành hiệu quả
 
 ```python
 memo = {}
@@ -137,7 +137,7 @@ def fib(n):
 Đây là khoảnh khắc dynamic programming tỏa sáng:
 giữ lại kết quả cũ để tránh tính lại.
 
-### 3.3. DP trong thế giới thật
+### DP trong thế giới thật
 
 Dynamic programming sống trong:
 
@@ -164,7 +164,7 @@ và ta có đang lặp lại không?”
 
 ## Phần 4: Population growth và mô hình hóa quá trình
 
-### 4.1. Truy hồi tự nhiên trong mô hình dân số
+### Truy hồi tự nhiên trong mô hình dân số
 
 Nếu dân số năm sau phụ thuộc dân số năm nay và tỷ lệ sinh-tử,
 ta có recurrence.
@@ -185,7 +185,7 @@ P_{n+1}=P_n + births_n - deaths_n + migration_n
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-### 4.2. Từ sinh học đến user growth
+### Từ sinh học đến user growth
 
 Trong digital products,
 tư duy tương tự xuất hiện khi mô hình hóa:
@@ -206,7 +206,7 @@ Nó còn gợi trực giác về product dynamics.
 
 ## Phần 5: Signal processing và IIR filters
 
-### 5.1. Bộ lọc có ký ức
+### Bộ lọc có ký ức
 
 Trong signal processing,
 nhiều bộ lọc tạo output hiện tại dựa trên:
@@ -225,7 +225,7 @@ $$
 </div>
 Đây là recurrence rất thật.
 
-### 5.2. Vì sao nó quan trọng với CS
+### Vì sao nó quan trọng với CS
 
 Không phải mọi sinh viên CS đều học DSP sâu,
 nhưng tư duy ở đây rất bổ ích:

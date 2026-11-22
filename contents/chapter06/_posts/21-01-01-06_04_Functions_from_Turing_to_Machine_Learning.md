@@ -33,7 +33,7 @@ Mỗi lần gọi `user.get_profile(user_id)` hay viết `orders.map(o => o.tota
 
 ## Phần 1: Lịch sử — từ hàm toán học đến hàm tính toán
 
-### 1.1. Hàm trước thời máy tính
+### Hàm trước thời máy tính
 
 Trong toán học cổ điển,
 hàm giúp mô tả sự phụ thuộc:
@@ -45,7 +45,7 @@ $f(x)=x^2$ là cách nén vô số cặp giá trị thành một công thức ng
 Đây là sức mạnh lớn đầu tiên của hàm:
 biến quy luật thành đối tượng có thể thao tác.
 
-### 1.2. Church, lambda calculus, và khái niệm tính toán
+### Church, lambda calculus, và khái niệm tính toán
 
 Khi khoa học máy tính chưa tồn tại như một ngành độc lập,
 Alonzo Church đã dùng lambda calculus để nghiên cứu computation bằng ngôn ngữ của hàm.
@@ -61,7 +61,7 @@ Scala,
 F#,
 và nhiều ngôn ngữ hiện đại.
 
-### 1.3. Turing và mô hình cơ học của tính toán
+### Turing và mô hình cơ học của tính toán
 
 Alan Turing tiếp cận vấn đề từ góc khác:
 thay vì bắt đầu bằng hàm trừu tượng,
@@ -82,7 +82,7 @@ trở thành đối tượng cốt lõi.
 
 ## Phần 2: Functional programming — khi chương trình được xây từ hàm
 
-### 2.1. Khai báo điều muốn làm thay vì điều khiển từng bước
+### Khai báo điều muốn làm thay vì điều khiển từng bước
 
 Functional programming đặt hàm ở trung tâm thiết kế chương trình.
 Thay vì tập trung vào biến đổi trạng thái,
@@ -96,7 +96,7 @@ nó khuyến khích:
 Ý tưởng này rất hấp dẫn,
 vì nó làm reasoning về chương trình dễ hơn trong nhiều tình huống.
 
-### 2.2. `map`, `filter`, `reduce`
+### `map`, `filter`, `reduce`
 
 Toán học: nếu $$f: A \to B$$ và $$S \subseteq A$$, chúng ta có thể nói $$f(S) = \{f(x) \mid x \in S\}$$. Trong lập trình, đó chính là `map`.
 
@@ -140,7 +140,7 @@ Mỗi thao tác là cách áp dụng hàm lên tập dữ liệu. Chúng ta mô 
 ![Lập trình hàm — map, filter, reduce](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
 <p class="textbook-figure-caption" data-figure="6.20">map, filter, reduce áp dụng hàm lên tập dữ liệu — tinh thần functional programming.</p>
-### 2.3. Composition và tái sử dụng
+### Composition và tái sử dụng
 
 Nếu $$f: A \to B$$ và $$g: B \to C$$, chúng ta có hàm hợp $$(g \circ f)(x) = g(f(x))$$. Trong code, đó là pipeline — output của hàm này là input của hàm kế tiếp.
 
@@ -169,7 +169,7 @@ Trong data engineering và backend, pipeline thường gồm: **parse → clean 
 **Mẹo thiết kế**: Nếu một hàm vừa đọc file, vừa parse, vừa validate, vừa ghi database — nó không còn là "một hàm" theo nghĩa dễ reason. Tách thành chuỗi hàm nhỏ; mỗi hàm một trách nhiệm (single responsibility).
 </div>
 
-### 2.4. Vì sao dân công nghiệp vẫn quan tâm functional style
+### Vì sao dân công nghiệp vẫn quan tâm functional style
 
 Ngay cả khi không dùng Haskell,
 nhiều hệ thống production vẫn mượn tinh thần functional vì:
@@ -183,7 +183,7 @@ nhiều hệ thống production vẫn mượn tinh thần functional vì:
 Điều đó cho thấy khái niệm hàm không chỉ sống trong giáo trình.
 Nó còn ảnh hưởng đến cách ta thiết kế chương trình.
 
-### 2.5. Hàm bậc cao (higher-order functions)
+### Hàm bậc cao (higher-order functions)
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm bậc cao là hàm nhận hàm khác làm tham số, hoặc trả về hàm.
@@ -209,7 +209,7 @@ print(triple(5))   # 15
 
 `map`, `filter`, `reduce` đều là hàm bậc cao. Decorator trong Python cũng vậy — bọc một hàm bằng hàm khác để thêm logging, cache, hoặc kiểm tra quyền.
 
-### 2.6. Closure và decorator
+### Closure và decorator
 
 **Closure**: hàm con "nhớ" biến của hàm cha ngay cả khi hàm cha đã kết thúc.
 
@@ -247,7 +247,7 @@ fetch_users()  # fetch_users took 0.1001s
 
 Decorator biến hàm gốc thành hàm mới $$(g \circ f)$$: vẫn cùng input/output, nhưng thêm hành vi phụ (đo thời gian, ghi log).
 
-### 2.7. Hàm thuần (pure) vs hàm có tác dụng phụ
+### Hàm thuần (pure) vs hàm có tác dụng phụ
 
 | | **Pure function** | **Impure function** |
 |:---|:---|:---|
@@ -275,7 +275,7 @@ def track_visit(user_id: str) -> str:
 **Thực hành tốt**: Giữ **core logic** dưới dạng hàm thuần; đẩy I/O (database, HTTP, file) ra lớp ngoài. Ví dụ: `calculate_tax(amount, rules)` thuần, `save_invoice(invoice)` impure — dễ unit test phần tính thuế mà không cần database thật.
 </div>
 
-### 2.8. Type hints và hợp đồng hàm
+### Type hints và hợp đồng hàm
 
 Type hints không thay đổi hành vi runtime, nhưng làm **hợp đồng hàm** (function contract) rõ ràng — giống khai báo domain/codomain:
 
@@ -314,7 +314,7 @@ Khi domain/codomain mơ hồ (`any`, `object`, `dict` không rõ key), bug thư�
 
 ## Phần 3: Machine learning models như các hàm dự đoán
 
-### 3.1. Một mô hình học máy có thể nhìn như hàm
+### Một mô hình học máy có thể nhìn như hàm
 
 Ở mức trừu tượng,
 model học máy là hàm:
@@ -335,7 +335,7 @@ mô hình nhận ảnh và trả nhãn,
 nhận văn bản và trả sentiment,
 nhận dữ liệu khách hàng và trả xác suất rời bỏ.
 
-### 3.2. Input-to-prediction là tư duy hàm số ở quy mô mới
+### Input-to-prediction là tư duy hàm số ở quy mô mới
 
 **Mô hình tuyến tính đơn giản** (dễ đọc, dễ test):
 
@@ -388,7 +388,7 @@ def predict_endpoint(body: CreditFeatures) -> dict:
 
 Mô hình thật có hàng triệu tham số, nhưng **hợp đồng không đổi**: vector đặc trưng vào, nhãn hoặc xác suất ra. Hàm `forward` của mạng nơ-ron cũng là $$f_\theta: X \to Y$$ với $$\theta$$ cố định sau khi train.
 
-### 3.3. Loss function, activation function, objective function
+### Loss function, activation function, objective function
 
 Thế giới ML đầy các hàm:
 
@@ -402,7 +402,7 @@ Nói cách khác,
 ngay cả khi mô hình rất hiện đại,
 ngôn ngữ cơ bản để mô tả nó vẫn là ngôn ngữ của hàm.
 
-### 3.4. Training loop — hàm loss và hàm cập nhật
+### Training loop — hàm loss và hàm cập nhật
 
 Huấn luyện ML là quá trình tìm $$\theta$$ sao cho hàm dự đoán $$f_\theta$$ khớp dữ liệu. **Loss function** $$L(\theta)$$ đo sai số; **optimizer** là hàm cập nhật tham số:
 
@@ -433,7 +433,7 @@ for x, y in [(1, 2), (2, 4), (3, 6)]:
 
 ## Phần 4: Cryptographic hash functions
 
-### 4.1. Hash function không phải hàm ngẫu nhiên
+### Hash function không phải hàm ngẫu nhiên
 
 Cryptographic hash function nhận input bất kỳ độ dài
 và trả digest kích thước cố định.
@@ -474,7 +474,7 @@ assert not verify_password("wrong", salt, stored)
 
 `verify_password` là hàm **boolean** $$f: \text{String} \times \text{Salt} \times \text{Digest} \to \{\text{True}, \text{False}\}$$ — không đơn ánh (nhiều mật khẩu sai → `False`), nhưng vẫn xác định.
 
-### 4.2. Nhưng nó cần nhiều tính chất đặc biệt
+### Nhưng nó cần nhiều tính chất đặc biệt
 
 Một hash tốt cho bảo mật không chỉ “tính ra giá trị”.
 Nó còn cần:
@@ -492,7 +492,7 @@ Nó còn mang specification rất cụ thể.
 ![Hàm băm — toàn ánh nhưng không đơn ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Surjection.svg)
 
 <p class="textbook-figure-caption" data-figure="6.22">SHA-256 là hàm toàn ánh (mọi digest đều khả dĩ) nhưng không đơn ánh (domain vô hạn → collision không tránh khỏi).</p>
-### 4.3. Ứng dụng của hash
+### Ứng dụng của hash
 
 Hash functions sống trong:
 
@@ -511,7 +511,7 @@ có thể trở thành thành phần hạ tầng cực quan trọng.
 
 ## Phần 5: API design như đặc tả hàm
 
-### 5.1. Một API tốt giống một hàm tốt
+### Một API tốt giống một hàm tốt
 
 Khi thiết kế API,
 chúng ta đang làm điều gần với định nghĩa hàm:
@@ -571,7 +571,7 @@ Hàm này tưởng đơn giản, nhưng specification cần rõ:
 
 **REST API** cũng là hàm: `POST /transfer` nhận JSON body, trả status code + JSON. OpenAPI/Swagger chính là tài liệu hóa domain/codomain của endpoint.
 
-### 5.2. Hàm mơ hồ tạo hệ thống mơ hồ
+### Hàm mơ hồ tạo hệ thống mơ hồ
 
 Rất nhiều bug sản phẩm không đến từ thuật toán khó.
 Chúng đến từ specification mờ:
@@ -589,7 +589,7 @@ và tài liệu hóa rõ hơn.
 ![API design — đặc tả hàm rõ ràng](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
 <p class="textbook-figure-caption" data-figure="6.23">API tốt giống hàm tốt — input, output, preconditions và errors phải được đặc tả không mơ hồ.</p>
-### 5.3. Pure interface, messy world
+### Pure interface, messy world
 
 Dĩ nhiên,
 phần mềm thật có side effects.

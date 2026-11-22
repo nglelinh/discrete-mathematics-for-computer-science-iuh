@@ -39,7 +39,7 @@ excerpt: "Đồng dư a ≡ b (mod n), phép toán modulo, phương trình tuy�
 
 </div>
 
-## 1. Đồng dư
+## Đồng dư
 
 <div class="textbook-definition" markdown="1">
 
@@ -78,7 +78,7 @@ $$(47 \cdot 93) \bmod 13$$: $$47 \equiv 8$$, $$93 \equiv 2 \pmod{13}$$ nên $$47
 
 </div>
 
-## 2. Phương trình đồng dư tuyến tính
+## Phương trình đồng dư tuyến tính
 
 Bài toán: tìm $$x$$ thỏa $$ax \equiv b \pmod n$$.
 
@@ -111,7 +111,7 @@ Các nghiệm modulo 9: $$x \equiv 2,5,8 \pmod 9$$.
 
 Đặt $n=100$ điểm trên đường tròn và nối điểm $i$ với điểm $k\cdot i \bmod n$. Khi $k$ tăng, các đoạn thẳng tạo thành đường bao đẹp mắt: $k=2$ cho hình tim (cardioid), $k=3$ cho nephroid, và nói chung đường bao có $k-1$ điểm nhọn. Đây là phép nhân trong $\mathbb{Z}_n$ được nhìn dưới dạng hình học.
 
-## 3. Nghịch đảo modulo
+## Nghịch đảo modulo
 
 <div class="textbook-definition" markdown="1">
 
@@ -146,7 +146,7 @@ RETURN old_s MOD n   // đưa về {0..n−1}
 
 </div>
 
-## 4. Định lý số dư Trung Hoa (CRT)
+## Định lý số dư Trung Hoa (CRT)
 
 <div class="textbook-theorem" markdown="1">
 
@@ -190,7 +190,7 @@ Nhập các phương trình x ≡ aᵢ (mod mᵢ) và xem từng số hạng a�
 <div data-demo="crypto-explainer" data-tab="crt"></div>
 </div>
 
-## 5. Lũy thừa modulo nhanh
+## Lũy thừa modulo nhanh
 
 Tính $$b^e \bmod n$$ với $$e$$ lớn (hàng trăm–nghìn bit trong RSA):
 
@@ -212,7 +212,7 @@ RETURN result
 
 </div>
 
-## 6. Định lý Fermat nhỏ và Euler
+## Định lý Fermat nhỏ và Euler
 
 <div class="textbook-theorem" markdown="1">
 
@@ -240,7 +240,7 @@ trong đó $$\varphi$$ là **hàm Euler totient** (số các số trong $$\{1,\l
 
 Hai định lý này là nền **tính đúng RSA**: nếu $$ed \equiv 1 \pmod{\varphi(n)}$$ thì $$M^{ed} \equiv M \pmod n$$ trong các điều kiện chuẩn (Mục 15.3).
 
-## 7. Thử nghiệm tương tác
+## Thử nghiệm tương tác
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="modular-arithmetic-calc"></div>

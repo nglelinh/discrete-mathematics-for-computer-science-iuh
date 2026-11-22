@@ -137,7 +137,7 @@ Trong không gian hash $$N=2^b$$, cùng ý tưởng cho *birthday bound*: khoả
 
 ## Ứng dụng trong Khoa học Máy tính
 
-### 1. Hash Tables và Collision
+### Hash Tables và Collision
 ```python
 def hash_collision_guarantee(num_keys, table_size):
     """Đảm bảo collision trong hash table"""
@@ -149,7 +149,7 @@ def hash_collision_guarantee(num_keys, table_size):
 # Chắc chắn có bucket chứa ≥ 10 keys
 ```
 
-### 2. Load Balancing
+### Load Balancing
 ```python
 def load_balancing_analysis(tasks, servers):
     """Phân tích cân bằng tải"""
@@ -161,7 +161,7 @@ def load_balancing_analysis(tasks, servers):
     }
 ```
 
-### 3. Thuật toán Randomized
+### Thuật toán Randomized
 ```python
 def birthday_attack_probability(hash_bits):
     """Tính xác suất collision trong hash function"""
@@ -213,13 +213,13 @@ Explainer đếm: nguyên lý chuồng bồ câu — kéo số bồ câu/chuồn
 
 ## Các biến thể của Nguyên lý Dirichlet
 
-### 1. Nguyên lý Dirichlet mạnh
+### Nguyên lý Dirichlet mạnh
 Nếu N đối tượng được phân vào n nhóm và N > kn, thì ít nhất một nhóm chứa > k đối tượng.
 
-### 2. Nguyên lý Dirichlet liên tục
+### Nguyên lý Dirichlet liên tục
 Nếu N đối tượng được phân bố liên tục trên độ dài L, thì có đoạn độ dài L/n chứa ≥ N/n đối tượng.
 
-### 3. Nguyên lý Dirichlet xác suất
+### Nguyên lý Dirichlet xác suất
 Nếu phân bố ngẫu nhiên N đối tượng vào n nhóm, xác suất để mỗi nhóm chứa ≤ k đối tượng giảm exponentially khi N tăng.
 
 ## Định lý Dirichlet tổng quát – Chứng minh

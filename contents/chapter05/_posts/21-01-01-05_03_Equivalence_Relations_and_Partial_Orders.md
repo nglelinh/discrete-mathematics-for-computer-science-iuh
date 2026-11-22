@@ -29,7 +29,7 @@ Một số quan hệ giúp gom các đối tượng "giống nhau" theo một ti
 **Từ khóa**: lớp tương đương, phân hoạch, tập thương, thứ tự bộ phận, thứ tự toàn phần, thứ tự từ điển, sơ đồ Hasse, min/max, tối tiểu/tối đại, thứ tự tốt.
 </div>
 
-## 1. Quan hệ tương đương
+## Quan hệ tương đương
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Quan hệ $$R$$ trên tập $$A$$ là **quan hệ tương đương** nếu thỏa ba tính chất:
@@ -61,7 +61,7 @@ Vậy đồng dư modulo $$n$$ là quan hệ tương đương.
 ![Quan hệ tương đương và phân hoạch](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
 <p class="textbook-figure-caption" data-figure="5.13">Quan hệ tương đương chia tập thành các lớp rời nhau — mỗi ma trận tương ứng một phân hoạch.</p>
-## 2. Lớp tương đương và phân hoạch
+## Lớp tương đương và phân hoạch
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Với quan hệ tương đương $$\sim$$ trên $$A$$, **lớp tương đương** của $$a$$ là:
@@ -108,7 +108,7 @@ $$
 
 Hệ quả: các lớp hoặc **trùng nhau**, hoặc **rời nhau**; hợp của chúng bằng $$A$$ — đó chính là phân hoạch.
 
-## 3. Quan hệ thứ tự bộ phận
+## Quan hệ thứ tự bộ phận
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Quan hệ $$R$$ trên $$A$$ là **thứ tự bộ phận** (partial order) nếu thỏa:
@@ -128,7 +128,7 @@ Khi đó cặp $$(A,R)$$ được gọi là một **poset**.
 - Quan hệ "module A phải biên dịch trước module B" thường là thứ tự bộ phận nếu không có vòng phụ thuộc.
 </div>
 
-## 4. Thứ tự toàn phần, bộ phận và so sánh được
+## Thứ tự toàn phần, bộ phận và so sánh được
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Trong poset $$(S,\preceq)$$, hai phần tử $$a,b$$ gọi là **so sánh được** nếu $$a\preceq b$$ hoặc $$b\preceq a$$; nếu không, chúng **không so sánh được**.
@@ -172,7 +172,7 @@ $$000\prec 001\prec 010\prec 011\prec 100\prec 101\prec 110\prec 111.$$
 Còn với product order, $$010$$ và $$100$$ không so sánh được.
 </div>
 
-## 5. Biểu đồ Hasse
+## Biểu đồ Hasse
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Biểu đồ Hasse là cách vẽ poset bằng cách:
@@ -192,7 +192,7 @@ Còn với product order, $$010$$ và $$100$$ không so sánh được.
 
 Các ví dụ Hasse quen thuộc khác: $$(\mathcal{P}(\{a,b,c\}),\subseteq)$$ (lưới Boolean 3 chiều) và các chuỗi bit độ dài 3 với product order (cũng là hình lập phương).
 
-## 6. Phần tử nhỏ nhất, lớn nhất và thứ tự tốt
+## Phần tử nhỏ nhất, lớn nhất và thứ tự tốt
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Trong poset $$(S,\preceq)$$,
@@ -224,7 +224,7 @@ Nếu tồn tại, min (lần lượt max) là **duy nhất**. Ký hiệu $$\min
 
 **Liên hệ CS.** Khi chứng minh thuật toán kết thúc bằng “measure” trên $$\mathbb{N}$$, ta đang dùng tính well-order của số tự nhiên.
 
-## 7. Phần tử tối tiểu và tối đại
+## Phần tử tối tiểu và tối đại
 
 Min/max là “đáy/đỉnh toàn cục”. Trong poset có thể không có min/max nhưng vẫn có các “đáy/đỉnh cục bộ”.
 
@@ -288,7 +288,7 @@ Chiều ngược cũng dễ chứng minh tương tự.
 ![Định lý: quan hệ tương đương ⇔ phân hoạch](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
 <p class="textbook-figure-caption" data-figure="5.17">Mỗi quan hệ tương đương tương ứng duy nhất với một phân hoạch, và ngược lại.</p>
-## 8. Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong Khoa học Máy tính
 
 - **Union-Find**: quản lý các lớp tương đương trong bài toán thành phần liên thông.
 - **Type checking**: các biểu thức cùng kiểu tạo thành nhóm tương đương theo kiểu.

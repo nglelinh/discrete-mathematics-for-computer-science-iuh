@@ -44,7 +44,7 @@ Một điều kiện trong chương trình, ví dụ `if ((x && !y) || z)`, chí
 
 </div>
 
-## 1. Hàm Boole và bảng chân trị
+## Hàm Boole và bảng chân trị
 
 <div class="textbook-definition" markdown="1">
 
@@ -70,7 +70,7 @@ Với $$n = 2$$ đã có $$16$$ hàm; với $$n = 3$$ có $$256$$ hàm; với $$
 
 <p class="textbook-figure-caption" data-figure="13.7">Bảng chân trị.</p>
 
-### 1.1. Thuật ngữ
+### Thuật ngữ
 
 | Thuật ngữ | Nghĩa |
 |:---|:---|
@@ -87,7 +87,7 @@ Với $$n = 2$$ đã có $$16$$ hàm; với $$n = 3$$ có $$256$$ hàm; với $$
 
 </div>
 
-### 1.2. Ví dụ bỏ phiếu (majority)
+### Ví dụ bỏ phiếu (majority)
 
 <div class="textbook-example" markdown="1">
 
@@ -109,7 +109,7 @@ Sau rút gọn (bài 13.3–13.4): $$f = xy + xz + yz$$ — **mạch bỏ phiế
 
 </div>
 
-## 2. Minterm (từ tối tiểu) và dạng SOP (tổng các tích) chuẩn
+## Minterm (từ tối tiểu) và dạng SOP (tổng các tích) chuẩn
 
 <div class="textbook-definition" markdown="1">
 
@@ -158,7 +158,7 @@ Cách làm thực hành luôn giống nhau: nhìn cột $$F$$, lấy mọi hàng
 
 <p class="textbook-figure-caption" data-figure="13.9">Bit tổng của half adder là XOR: hai minterm $$A'B + AB'$$ — dạng SOP (tổng các tích) quen thuộc từ bảng cộng 1 bit.</p>
 
-### 2.1. Hai cách lập dạng nối rời chính tắc (SOP chuẩn)
+### Hai cách lập dạng nối rời chính tắc (SOP chuẩn)
 
 **Cách A — từ bảng chân trị** (phổ biến nhất trên bài tập): các hàng $$F=1$$ → các minterm → OR.
 
@@ -180,7 +180,7 @@ Cách làm thực hành luôn giống nhau: nhìn cột $$F$$, lấy mọi hàng
 
 </div>
 
-## 3. Maxterm và dạng POS (tích các tổng) chuẩn
+## Maxterm và dạng POS (tích các tổng) chuẩn
 
 <div class="textbook-definition" markdown="1">
 
@@ -224,7 +224,7 @@ Hai dạng **cùng mô tả một hàm**:
 
 SOP thuận mạch AND–OR; POS thuận mạch OR–AND. Dạng CNF trong logic mệnh đề (tích các tuyển) cùng họ với POS.
 
-## 4. Chuyển SOP (tổng các tích) ↔ POS (tích các tổng)
+## Chuyển SOP (tổng các tích) ↔ POS (tích các tổng)
 
 **Cách 1 — qua tập hàng.** Nếu biết các hàng $$F=1$$ thì các hàng $$F=0$$ là phần còn lại trong $$\{0,1,\ldots,2^n-1\}$$; POS chuẩn là tích các maxterm tại các hàng $$F=0$$.
 
@@ -232,7 +232,7 @@ SOP thuận mạch AND–OR; POS thuận mạch OR–AND. Dạng CNF trong logic
 
 Cả hai cách phải ra cùng kết quả — hữu ích để tự kiểm.
 
-## 5. Vài hàm hai biến quen thuộc
+## Vài hàm hai biến quen thuộc
 
 Trong $$16$$ hàm hai biến, một số xuất hiện liên tục:
 
@@ -250,7 +250,7 @@ Bộ $$\{AND, OR, NOT\}$$ đủ biểu diễn mọi hàm (qua SOP). Riêng NAND 
 
 <p class="textbook-figure-caption" data-figure="13.10">Phép AND như giao hai tập — trực giác tập hợp cho tích logic; OR tương ứng hợp.</p>
 
-## 6. Từ SOP chuẩn đến “công thức đa thức tối tiểu”
+## Từ SOP chuẩn đến “công thức đa thức tối tiểu”
 
 SOP (tổng các tích) **chuẩn** luôn đúng nhưng thường **dài**. Các mục sau hướng tới **công thức đa thức tối tiểu**: SOP ngắn hơn (ít hạng, ít litera) nhưng **cùng bảng chân trị**.
 
@@ -262,7 +262,7 @@ Quy trình thực hành:
 2. Rút gọn: đại số (13.3), **K-map** (13.4), hoặc Quine–McCluskey (13.5).  
 3. Kiểm lại bằng bảng chân trị.
 
-## 7. Ứng dụng ngắn
+## Ứng dụng ngắn
 
 Trong lập trình và cơ sở dữ liệu, ta cũng làm việc theo cùng tư duy: viết điều kiện rõ ràng (chuẩn hóa), rồi mới tối ưu. Trình tối ưu SQL biến điều kiện `WHERE` thành cây logic và đẩy các phép AND/OR. Hiểu minterm cho phép liên hệ từng hàng bảng chân trị với hành vi của điều kiện trong chương trình.
 

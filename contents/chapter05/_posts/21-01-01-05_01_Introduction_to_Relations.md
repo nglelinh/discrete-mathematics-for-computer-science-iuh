@@ -73,17 +73,17 @@ Khi A = B, chúng ta nói R là **quan hệ trên A** (R ⊆ A × A). Đây là 
 
 ## Các cách biểu diễn quan hệ
 
-### 1. Liệt kê các cặp
+### Liệt kê các cặp
 <div class="textbook-example" markdown="1">
 **Ví dụ**: R = {(1, 2), (2, 3), (3, 1)} trên tập {1, 2, 3}
 </div>
 
-### 2. Mô tả bằng tính chất
+### Mô tả bằng tính chất
 <div class="textbook-example" markdown="1">
 **Ví dụ**: R = {(x, y) | x < y} trên tập số thực
 </div>
 
-### 3. Ma trận quan hệ
+### Ma trận quan hệ
 Cho A = {a₁, a₂, ..., aₘ}, B = {b₁, b₂, ..., bₙ}
 
 Ma trận M_R có M_R[i][j] = 1 nếu (aᵢ, bⱼ) ∈ R, ngược lại = 0
@@ -99,7 +99,7 @@ Ma trận M_R có M_R[i][j] = 1 nếu (aᵢ, bⱼ) ∈ R, ngược lại = 0
 ```
 </div>
 
-### 4. Đồ thị có hướng (Digraph)
+### Đồ thị có hướng (Digraph)
 - Đỉnh: các phần tử của tập hợp
 - Cung (mũi tên): các cặp trong quan hệ
 
@@ -118,7 +118,7 @@ Ma trận M_R có M_R[i][j] = 1 nếu (aᵢ, bⱼ) ∈ R, ngược lại = 0
 <p class="textbook-figure-caption" data-figure="5.2">Tích Cartesian A × B — mỗi cặp (a, b) ghép một phần tử từ A với một phần tử từ B.</p>
 ## Ứng dụng trong Khoa học Máy tính
 
-### 1. Cơ sở dữ liệu quan hệ
+### Cơ sở dữ liệu quan hệ
 Mô hình quan hệ (relational model) do Edgar Codd đề xuất năm 1970 là nền tảng của hầu hết cơ sở dữ liệu hiện đại. Mỗi bảng (table) là một quan hệ, mỗi hàng là một bộ (tuple), và mỗi cột là một thuộc tính.
 
 Trong cách nhìn này, lược đồ `Enrollments(student_id, course_id)` được xây từ tích Cartesian `Students × Courses`, còn quan hệ thật sự chỉ lấy những cặp có nghĩa như `(S01, CS101)`. Quan hệ one-to-many xuất hiện ở `Departments × Students`, còn many-to-many xuất hiện ở `Students × Courses`.
@@ -126,7 +126,7 @@ Trong cách nhìn này, lược đồ `Enrollments(student_id, course_id)` đư�
 ![Biểu tượng cơ sở dữ liệu quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/Database.svg)
 
 <p class="textbook-figure-caption" data-figure="5.3">Mô hình quan hệ — mỗi bảng là một quan hệ, mỗi hàng là một bộ (tuple).</p>
-### 2. Quan hệ và truy vấn SQL
+### Quan hệ và truy vấn SQL
 Các phép SQL quen thuộc chính là cách thao tác trên quan hệ: `SELECT` gần với phép chiếu thuộc tính, `WHERE` lọc những bộ thỏa điều kiện, còn `JOIN` ghép các quan hệ qua thuộc tính chung.
 
 ```sql
@@ -151,7 +151,7 @@ cs_only = {sid for (sid, cid) in enrollments if cid == "CS101"}
 
 Đoạn mã trên biểu diễn quan hệ như một tập các bộ. Đây là cách rất gần với định nghĩa toán học `R ⊆ A × B`.
 
-### 2. Đồ thị và mạng xã hội
+### Đồ thị và mạng xã hội
 Quan hệ "chúng ta bè" trên Facebook là quan hệ hai ngôi. Đồ thị có hướng của quan hệ giúp phân tích mạng xã hội: ai là người có ảnh hưởng, ai kết nối các nhóm.
 
 ![Đồ thị có hướng minh họa quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
@@ -160,7 +160,7 @@ Quan hệ "chúng ta bè" trên Facebook là quan hệ hai ngôi. Đồ thị c�
 ![Phân tích mạng xã hội](/discrete-mathematics-for-computer-science-iuh/img/course/Social_Network_Analysis_Visualization.png)
 
 <p class="textbook-figure-caption" data-figure="5.6">Mạng xã hội thực tế là đồ thị quan hệ quy mô lớn — phân tích liên kết giúp tìm nhóm, ảnh hưởng và cấu trúc cộng đồng.</p>
-### 3. Lý thuyết đồ thị
+### Lý thuyết đồ thị
 Mọi đồ thị có hướng đều biểu diễn một quan hệ. Đồ thị vô hướng biểu diễn quan hệ đối xứng.
 
 

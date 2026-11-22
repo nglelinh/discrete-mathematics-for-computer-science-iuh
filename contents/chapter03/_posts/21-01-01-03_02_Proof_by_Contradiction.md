@@ -100,7 +100,7 @@ Trong đó, `(Q ∧ ¬Q)` là một mâu thuẫn rõ ràng: một mệnh đề v
 
 Phản chứng đặc biệt hữu ích khi:
 
-### 1. Kết luận mang tính phủ định
+### Kết luận mang tính phủ định
 
 Ví dụ:
 
@@ -108,11 +108,11 @@ Ví dụ:
 - Không có số nguyên lớn nhất thỏa mãn tính chất đó.
 - Không thể xây dựng cấu hình như mô tả.
 
-### 2. Kết luận là một mệnh đề "khó đi thẳng"
+### Kết luận là một mệnh đề "khó đi thẳng"
 
 Có những bài toán mà từ giả thiết đến kết luận không có lộ trình trực tiếp rõ ràng. Nhưng nếu giả sử điều ngược lại, cấu trúc của bài toán lại "lộ ra" rất nhanh.
 
-### 3. Ta muốn chỉ ra sự bất khả thi (impossibility)
+### Ta muốn chỉ ra sự bất khả thi (impossibility)
 
 Nhiều phát biểu trong tin học có dạng này:
 
@@ -120,7 +120,7 @@ Nhiều phát biểu trong tin học có dạng này:
 - không thể có cấu trúc dữ liệu thỏa mọi yêu cầu cùng lúc,
 - không thể có lời giải nhanh hơn giới hạn nào đó nếu giả thiết kia đúng.
 
-### 4. Mâu thuẫn có thể khai thác từ định nghĩa
+### Mâu thuẫn có thể khai thác từ định nghĩa
 
 Đôi khi chỉ cần bám đúng định nghĩa là đã có mâu thuẫn.
 
@@ -384,11 +384,11 @@ Phần ứng dụng gắn khái niệm toán học với bài toán thực tế 
 
 Phản chứng xuất hiện tự nhiên trong rất nhiều nhánh của khoa học máy tính.
 
-### 1. Chứng minh không tồn tại thuật toán tổng quát
+### Chứng minh không tồn tại thuật toán tổng quát
 
 Ví dụ tiêu biểu là Halting Problem. Các lập luận kiểu này giúp ta hiểu rằng có những giới hạn mang tính bản chất, không phải do "chưa đủ thông minh để lập trình".
 
-### 2. Chứng minh trạng thái hệ thống là bất khả thi
+### Chứng minh trạng thái hệ thống là bất khả thi
 
 Trong hệ điều hành, cơ sở dữ liệu, hệ phân tán, hoặc cấu trúc dữ liệu, ta thường có các bất biến:
 
@@ -398,7 +398,7 @@ Trong hệ điều hành, cơ sở dữ liệu, hệ phân tán, hoặc cấu tr
 
 Nếu giả sử trạng thái đó xảy ra và nó mâu thuẫn với các bất biến đã định nghĩa, ta kết luận trạng thái ấy là bất khả thi.
 
-### 3. Chứng minh tính đúng đắn của thuật toán
+### Chứng minh tính đúng đắn của thuật toán
 
 Một mẫu rất thường gặp:
 
@@ -406,11 +406,11 @@ Một mẫu rất thường gặp:
 - từ đó suy ra tồn tại một đối tượng vi phạm điều kiện mà thuật toán đáng lẽ đã xử lý,
 - mâu thuẫn với chính cơ chế hoạt động của thuật toán.
 
-### 4. Chứng minh cận dưới về độ phức tạp
+### Chứng minh cận dưới về độ phức tạp
 
 Ta giả sử có thuật toán nhanh hơn mức có thể, rồi chỉ ra rằng với lượng thông tin ít như vậy, không thể phân biệt hết các trường hợp cần thiết.
 
-### 5. Chứng minh tính không thể đồng thời thỏa mãn nhiều yêu cầu
+### Chứng minh tính không thể đồng thời thỏa mãn nhiều yêu cầu
 
 Trong thiết kế hệ thống thực tế, đôi khi ba yêu cầu tưởng như hợp lý nhưng không thể đồng thời đạt được trong mọi bối cảnh. Một cách tiếp cận là:
 
@@ -490,7 +490,7 @@ Nếu có một chứng minh trực tiếp ngắn, sáng, dễ hiểu thì thư�
 
 Đây là phần cực kỳ quan trọng đối với người mới học.
 
-### 1. Phủ định sai mệnh đề cần chứng minh
+### Phủ định sai mệnh đề cần chứng minh
 
 Muốn phản chứng tốt, trước tiên phải viết đúng `¬P`.
 
@@ -499,11 +499,11 @@ Ví dụ:
 - Phủ định của "mọi phần tử đều có tính chất T" là "tồn tại ít nhất một phần tử không có tính chất T".
 - Không phải là "mọi phần tử đều không có tính chất T".
 
-### 2. Giả sử điều ngược lại nhưng không dùng hết dữ kiện
+### Giả sử điều ngược lại nhưng không dùng hết dữ kiện
 
 Sinh viên đôi khi viết "Giả sử phản chứng ..." rồi suy luận bằng cảm tính, bỏ quên các giả thiết thật sự của bài toán.
 
-### 3. Kết thúc mà không chỉ ra mâu thuẫn cụ thể
+### Kết thúc mà không chỉ ra mâu thuẫn cụ thể
 
 Không nên viết mơ hồ kiểu "điều này vô lý" mà không nói rõ vô lý ở đâu.
 
@@ -513,18 +513,18 @@ Hãy chỉ ra chính xác:
 - mâu thuẫn với giả thiết nào,
 - hay mâu thuẫn với định lý nào.
 
-### 4. Dùng ví dụ riêng để thay cho chứng minh tổng quát
+### Dùng ví dụ riêng để thay cho chứng minh tổng quát
 
 Trong phản chứng, ví dụ chỉ giúp minh họa trực giác. Nó không thay thế được lập luận tổng quát.
 
-### 5. Nhầm phản chứng với phản đảo (contrapositive)
+### Nhầm phản chứng với phản đảo (contrapositive)
 
 Hai kỹ thuật này liên quan nhưng không giống nhau.
 
 - **Phản chứng**: giả sử kết luận sai rồi đi đến mâu thuẫn.
 - **Phản đảo** (proof by contrapositive): để chứng minh `P → Q`, ta chứng minh `¬Q → ¬P`.
 
-### 6. Kết luận mạnh hơn điều đã chứng minh
+### Kết luận mạnh hơn điều đã chứng minh
 
 Đặc biệt trong ví dụ khoa học máy tính, cần tránh phát biểu quá mức.
 
@@ -533,7 +533,7 @@ Ví dụ với Halting Problem:
 - đúng: "không tồn tại bộ quyết định tổng quát luôn đúng cho mọi chương trình và mọi input",
 - không nên nói quá: "con người không thể biết chương trình có dừng hay không".
 
-### 7. Mâu thuẫn do tính toán sai chứ không phải do logic
+### Mâu thuẫn do tính toán sai chứ không phải do logic
 
 Nếu mâu thuẫn xuất hiện vì ta biến đổi đại số sai, thì đó không phải là thành công của phản chứng mà là lỗi kỹ thuật.
 

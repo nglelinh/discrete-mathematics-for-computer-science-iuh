@@ -33,8 +33,25 @@ layout: default
     if (!a) return;
     var skipBox = '[data-demo],[data-tool],[class*="explainer"],[class*="demo"],.textbook-example,details';
     var labelRe = /^\s*(Bài tập|Ví dụ|Định lý|Định nghĩa|Bổ đề|Hệ quả|Exercise|Example|Theorem|Lemma|Definition)\s*\d/i;
-    var numRe = /^\s*\d+(\.\d+)*[.)]?\s+/;
+    var numRe = /^[\s\u00a0]*(?:\d{1,2}(?:\.\d{1,2})+[.):]?|\d{1,2}[.):])[\s\u00a0]*/;
     var c = [0, 0, 0];
+    /* Bỏ số ghi cứng ở đầu tiêu đề, kể cả khi số nằm trong <strong>/<span>/<a> */
+    function stripNum(h) {
+      var w = document.createTreeWalker(h, NodeFilter.SHOW_TEXT, null);
+      var n;
+      while ((n = w.nextNode())) {
+        if (!/\S/.test(n.nodeValue)) continue;
+        if (n.parentNode.closest && n.parentNode.closest('.katex, .MathJax, code')) return;
+        var v = n.nodeValue.replace(numRe, '');
+        if (v === n.nodeValue) return;
+        if (v === '' && n.parentNode !== h && n.parentNode.childNodes.length === 1) {
+          var par = n.parentNode; par.parentNode.removeChild(par);
+          var nx = h.firstChild;
+          if (nx && nx.nodeType === 3) nx.nodeValue = nx.nodeValue.replace(/^[\s\u00a0]+/, '');
+        } else { n.nodeValue = v.replace(/^[\s\u00a0]+/, ''); }
+        return;
+      }
+    }
     var hs = a.querySelectorAll('.textbook-body h2, .textbook-body h3, .textbook-body h4');
     for (var i = 0; i < hs.length; i++) {
       var h = hs[i];
@@ -46,8 +63,7 @@ layout: default
       var n = c.slice(0, lv + 1);
       if (lv === 0) n = [c[0]];
       var t = n.join('.') + (lv === 0 ? '.' : '');
-      var f = h.firstChild;
-      if (f && f.nodeType === 3) f.nodeValue = f.nodeValue.replace(numRe, '');
+      stripNum(h);
       var sp = document.createElement('span');
       sp.className = 'tb-num';
       sp.textContent = t;

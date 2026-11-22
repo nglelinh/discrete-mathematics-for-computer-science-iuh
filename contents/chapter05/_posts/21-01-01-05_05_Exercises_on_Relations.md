@@ -27,7 +27,7 @@ Một chủ đề chỉ được nắm vững khi có thể áp dụng trên nhi
 **Từ khóa**: luyện tập quan hệ, tương đương, thứ tự, bao đóng, Warshall.
 </div>
 
-## 1. Ôn tập khái niệm cốt lõi
+## Ôn tập khái niệm cốt lõi
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một quan hệ $$R$$ từ tập $$A$$ đến tập $$B$$ là một tập con của tích Descartes $$A\times B$$. Nếu $$A=B$$, chúng ta nói $$R$$ là quan hệ trên $$A$$.
@@ -43,7 +43,7 @@ Một chủ đề chỉ được nắm vững khi có thể áp dụng trên nhi
 <p class="textbook-figure-caption" data-figure="5.25">Mọi quan hệ đều là tập con của tích Cartesian A × B.</p>
 </div>
 
-## 2. Chiến lược giải bài quan hệ
+## Chiến lược giải bài quan hệ
 
 **Quy trình đề xuất**:
 
@@ -63,7 +63,7 @@ Một chủ đề chỉ được nắm vững khi có thể áp dụng trên nhi
 ![Đồ thị có hướng — kiểm tra tính chất](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_simple_directed_graph.svg)
 
 <p class="textbook-figure-caption" data-figure="5.26">Khi giải bài, chuyển quan hệ sang ma trận hoặc đồ thị để kiểm tra từng tính chất có hệ thống.</p>
-## 3. Bài tập về biểu diễn quan hệ
+## Bài tập về biểu diễn quan hệ
 
 ### Bài 1
 
@@ -115,7 +115,7 @@ Mỗi hàng là phần tử xuất phát, mỗi cột là phần tử đích: ô
 ![Ma trận quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
 <p class="textbook-figure-caption" data-figure="5.27">Ma trận quan hệ — hàng i, cột j bằng 1 khi (aᵢ, aⱼ) thuộc R.</p>
-## 4. Bài tập về tính chất
+## Bài tập về tính chất
 
 ### Bài 3
 
@@ -143,7 +143,7 @@ Cho $$R=\{(1,2),(2,3),(1,3)\}$$ trên $$A=\{1,2,3\}$$. Quan hệ có bắc cầu
 Bắc cầu đúng vì $$(1,2)$$ và $$(2,3)$$ kéo theo $$(1,3)$$, cặp này đã có. Phản xạ sai vì thiếu $$(1,1),(2,2),(3,3)$$.
 </details>
 
-## 5. Bài tập về quan hệ tương đương
+## Bài tập về quan hệ tương đương
 
 ### Bài 5
 
@@ -172,7 +172,7 @@ Có. Mỗi xâu có cùng độ dài với chính nó; nếu xâu $$u$$ cùng đ
 ![Quan hệ tương đương — lớp và phân hoạch](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
 <p class="textbook-figure-caption" data-figure="5.29">Quan hệ tương đương phải thỏa phản xạ, đối xứng và bắc cầu — tạo ra các lớp tương đương rời nhau.</p>
-## 6. Bài tập về thứ tự bộ phận
+## Bài tập về thứ tự bộ phận
 
 ### Bài 7
 
@@ -196,7 +196,7 @@ Trong $$(\mathcal{P}(\{a,b,c\}),\subseteq)$$, hai phần tử $$\{a,b\}$$ và $$
 Không. $$\{a,b\}\nsubseteq\{b,c\}$$ vì thiếu $$a$$, và $$\{b,c\}\nsubseteq\{a,b\}$$ vì thiếu $$c$$.
 </details>
 
-## 7. Bài tập về bao đóng
+## Bài tập về bao đóng
 
 ### Bài 9
 
@@ -232,7 +232,7 @@ Có. Vì có đường đi $$a\to b\to c\to a$$, nên $$(a,a)$$ thuộc bao đó
 ![Biểu đồ Hasse — thứ tự bộ phận](/discrete-mathematics-for-computer-science-iuh/img/course/Simple_hasse_diagram.svg)
 
 <p class="textbook-figure-caption" data-figure="5.30">Hasse diagram giúp nhận diện các cặp phủ và phần tử không so sánh được trong poset.</p>
-## 8. Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong Khoa học Máy tính
 Các bài tập trên tương ứng trực tiếp với tác vụ CS:
 
 - Ma trận quan hệ là ma trận kề của đồ thị.

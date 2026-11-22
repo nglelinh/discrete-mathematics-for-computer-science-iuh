@@ -27,7 +27,7 @@ Biết một ánh xạ là hàm vẫn chưa đủ để đánh giá sức mạnh
 **Từ khóa**: đơn ánh (injective), toàn ánh (surjective), song phương (bijective).
 </div>
 
-## 1. Đơn ánh
+## Đơn ánh
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm $$f:A\to B$$ là **đơn ánh** (injective, one-to-one) nếu hai đầu vào khác nhau luôn cho hai đầu ra khác nhau:
@@ -63,7 +63,7 @@ Vậy $$f$$ đơn ánh.
 <p class="textbook-figure-caption" data-figure="6.7">Hàm đơn ánh — hai đầu vào khác nhau luôn cho hai đầu ra khác nhau; không có hai mũi tên trùng đích.</p>
 </div>
 
-## 2. Toàn ánh
+## Toàn ánh
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm $$f:A\to B$$ là **toàn ánh** (surjective, onto) nếu mọi phần tử của codomain đều được đạt tới:
@@ -85,7 +85,7 @@ $$\forall y\in B,\exists x\in A\text{ sao cho }f(x)=y.$$
 <p class="textbook-figure-caption" data-figure="6.8">Hàm toàn ánh — mọi phần tử codomain đều được chạm tới; không có phần tử đích bị bỏ trống.</p>
 </div>
 
-## 3. Song ánh
+## Song ánh
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm $$f:A\to B$$ là **song ánh** (bijective) nếu vừa đơn ánh vừa toàn ánh.
@@ -108,7 +108,7 @@ Vậy $$f$$ song ánh.
 <p class="textbook-figure-caption" data-figure="6.9">Hàm song ánh vừa đơn ánh vừa toàn ánh — thiết lập ghép cặp một-một giữa hai tập, có thể đảo ngược.</p>
 </div>
 
-## 4. Vai trò của domain và codomain
+## Vai trò của domain và codomain
 
 Cùng một công thức có thể có tính chất khác nhau nếu domain/codomain khác nhau.
 
@@ -124,7 +124,7 @@ Cùng một công thức có thể có tính chất khác nhau nếu domain/codo
 <p class="textbook-figure-caption" data-figure="6.10">Domain và codomain quyết định tính chất — cùng $$f(x)=x^2$$ nhưng khác domain/codomain cho kết quả đơn/toàn/song ánh khác nhau.</p>
 </div>
 
-## 8. Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong Khoa học Máy tính
 
 - **Mã hóa khả nghịch** cần song ánh giữa không gian bản rõ và bản mã.
 - **Hash table** thường không đơn ánh vì có va chạm.

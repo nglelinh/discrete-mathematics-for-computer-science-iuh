@@ -31,7 +31,7 @@ excerpt: "δ đa trị; đường chạy; L(N); so sánh DFA; ví dụ ends-with
 
 </div>
 
-## 1. Định nghĩa
+## Định nghĩa
 
 <div class="textbook-definition" markdown="1">
 
@@ -43,12 +43,12 @@ $$L(N)=\{w:\text{được chấp nhận}\}.$$
 
 </div>
 
-## 2. Mở rộng $$\hat\delta$$ tập
+## Mở rộng $$\hat\delta$$ tập
 
 $$\hat\delta(S,\varepsilon)=S$$, $$\hat\delta(S,a)=\bigcup_{q\in S}\delta(q,a)$$, mở rộng chuỗi.  
 $$w\in L(N)\Leftrightarrow\hat\delta(\{q_0\},w)\cap F\neq\emptyset$$.
 
-## 3. Vì sao NFA “gọn”
+## Vì sao NFA “gọn”
 
 Mẫu “kết thúc bằng $$x$$” / “chứa một trong nhiều pattern”: NFA đoán điểm bắt đầu; DFA nhớ hậu tố (có thể nhiều trạng thái hơn trước khi tối tiểu).
 

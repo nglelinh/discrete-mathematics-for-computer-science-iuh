@@ -29,7 +29,7 @@ Sau định nghĩa $$P$$, ta cần: (i) biết **cư dân** điển hình; (ii) 
 
 </div>
 
-## 1. Cư dân của $$P$$
+## Cư dân của $$P$$
 
 | Bài | Lý do ngắn |
 |:---|:---|
@@ -39,7 +39,7 @@ Sau định nghĩa $$P$$, ta cần: (i) biết **cư dân** điển hình; (ii) 
 | Linear programming | Khachiyan / Karmarkar (bit model) |
 | Primality | AKS (2002) ∈ $$P$$ |
 
-## 2. Tính đóng
+## Tính đóng
 
 <div class="textbook-theorem" markdown="1">
 
@@ -54,7 +54,7 @@ $$O(n^2)$$ ô, mỗi ô gọi $$M$$ trên chuỗi $$\le n$$: tổng $$O(n^{k+2})
 
 *(Hợp/giao/bù: chạy song song hoặc đảo output.)*
 
-## 3. Time hierarchy
+## Time hierarchy
 
 <div class="textbook-definition" markdown="1">
 

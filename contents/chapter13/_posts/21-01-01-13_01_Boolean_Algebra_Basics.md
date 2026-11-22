@@ -39,11 +39,11 @@ excerpt: "Đại số logic trên {0,1}, tiên đề Huntington, hằng đẳng 
 **Từ khóa**: đại số logic $$B$$, đại số Boole, hằng đẳng thức, phần tử bù, đối ngẫu, XOR, NAND, NOR.
 </div>
 
-## 1. Đại số logic $$B = \{0,1\}$$
+## Đại số logic $$B = \{0,1\}$$
 
 Trước khi định nghĩa “đại số Boole” trừu tượng, ta làm việc trên **đại số logic** $$B = \{0,1\}$$ — hai giá trị **sai / đúng** (hoặc **tắt / bật**).
 
-### 1.1. Ba phép cơ bản
+### Ba phép cơ bản
 
 | Phép | Ký hiệu thường dùng | Bảng tóm tắt |
 |:---|:---|:---|
@@ -57,7 +57,7 @@ Biến nhận giá trị trong $$B$$ gọi là **biến logic** / **biến Boole
 **Khác đại số số học**: $$1 + 1 = 1$$ (không phải 2). Phép $$+$$ là **OR**, không phải cộng số nguyên.
 </div>
 
-### 1.2. Mười hằng đẳng thức cơ bản trên $$B$$
+### Mười hằng đẳng thức cơ bản trên $$B$$
 
 | # | Tên | Dạng điển hình |
 |:---:|:---|:---|
@@ -74,15 +74,15 @@ Biến nhận giá trị trong $$B$$ gọi là **biến logic** / **biến Boole
 
 Phần sau chứng minh một số đẳng thức từ **tiên đề**.
 
-## 2. Định nghĩa đại số Boole (trừu tượng)
+## Định nghĩa đại số Boole (trừu tượng)
 
-### 2.1. Định nghĩa hình thức
+### Định nghĩa hình thức
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa.** Một **đại số Boole** là một bộ $$(A, +, \cdot, ', 0, 1)$$ (cũng viết $$(A,\lor,\land,/,0,1)$$), trong đó $$A$$ có ít nhất hai phần tử; $$+$$, $$\cdot$$ hai ngôi; $$'$$ một ngôi; $$0,1\in A$$ — thỏa các tiên đề dưới đây.
 </div>
 
-### 2.2. Các tiên đề
+### Các tiên đề
 
 **Tiên đề 1 — Tính đóng.** Với mọi $$x, y \in A$$: $$x + y \in A$$, $$x \cdot y \in A$$.
 
@@ -106,7 +106,7 @@ Phần sau chứng minh một số đẳng thức từ **tiên đề**.
 **Chú ý.** Tiên đề 4 khác đại số số học: phép $$+$$ **cũng** phân phối với $$\cdot$$. Đây vừa là sức mạnh vừa là bẫy khi mới chuyển từ số học.
 </div>
 
-### 2.3. Ví dụ quan trọng: họ tập con $$P(U)$$
+### Ví dụ quan trọng: họ tập con $$P(U)$$
 
 <div class="textbook-example" markdown="1">
 
@@ -126,7 +126,7 @@ Trường hợp “nhỏ nhất hữu ích” trong máy tính: $$U$$ một ph�
 
 </div>
 
-### 2.4. Tích Descartes và $$B^n$$
+### Tích Descartes và $$B^n$$
 
 Nếu $$A$$ và $$C$$ là hai đại số Boole thì $$A \times C$$ cũng là đại số Boole với phép **từng thành phần**:
 
@@ -138,7 +138,7 @@ tương tự $$\lor$$ và bù $$(a,c)'=(a',c')$$; phần tử 0 là $$(0,0)$$, 1
 
 Đặc biệt, $$B^n = \{0,1\}^n$$ (vector bit độ dài $$n$$) là đại số Boole — đúng không gian đầu vào của **hàm Boole $$n$$ biến** (bài 13.2).
 
-## 3. Các hằng đẳng thức cơ bản (chứng minh)
+## Các hằng đẳng thức cơ bản (chứng minh)
 
 Từ 6 tiên đề trên, chúng ta có thể chứng minh nhiều hằng đẳng thức quan trọng:
 

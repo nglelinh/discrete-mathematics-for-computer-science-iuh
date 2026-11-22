@@ -38,7 +38,7 @@ Biểu diễn đồ thị cho biết **ai kề ai**. Nhiều câu hỏi thực t
 
 </div>
 
-## 1. Walk, trail, path, cycle
+## Walk, trail, path, cycle
 
 <div class="textbook-definition" markdown="1">
 
@@ -73,7 +73,7 @@ cycle là dạng đóng của path (với độ dài tối thiểu 3 trên đồ
 
 Trên **đồ thị có hướng**, định nghĩa tương tự với cạnh $$(v_i, v_{i+1})$$ theo đúng hướng. Khi đó path và cycle đều mang hướng; không được “đi ngược” cạnh.
 
-## 2. Liên thông trên đồ thị vô hướng
+## Liên thông trên đồ thị vô hướng
 
 <div class="textbook-definition" markdown="1">
 
@@ -97,7 +97,7 @@ Nếu thêm đỉnh cô lập $$E$$ (không cạnh), số thành phần tăng l�
 
 Kiểm tra liên thông / liệt kê thành phần được thực hiện bằng BFS hoặc DFS từ một đỉnh, rồi lặp trên các đỉnh chưa thăm (Mục 12.4). Cấu trúc Union–Find (*disjoint-set*) xử lý cùng bài toán khi cạnh được thêm dần (ví dụ Kruskal).
 
-## 3. Liên thông trên đồ thị có hướng
+## Liên thông trên đồ thị có hướng
 
 Bỏ hướng cạnh tạo ra một đồ thị vô hướng nền. Từ đó có hai mức liên thông:
 
@@ -123,7 +123,7 @@ Liên thông mạnh $$\implies$$ liên thông yếu; chiều ngược lại sai.
 
 </div>
 
-## 4. DAG và chu trình phụ thuộc
+## DAG và chu trình phụ thuộc
 
 <div class="textbook-definition" markdown="1">
 
@@ -151,13 +151,13 @@ thì ba module tạo thành chu trình có hướng. Không có thứ tự build
 
 </div>
 
-## 5. Đồ thị con và clique
+## Đồ thị con và clique
 
 **Đồ thị con** $$G' = (V', E')$$ của $$G$$ thỏa $$V' \subseteq V$$ và $$E' \subseteq E$$, đồng thời mọi cạnh trong $$E'$$ chỉ nối các đỉnh thuộc $$V'$$.
 
 **Clique** là tập đỉnh trong đó mọi cặp phân biệt đều có cạnh — đồ thị con cảm sinh là $$K_r$$ với $$r$$ bằng lực lượng tập. Clique xuất hiện trong phân cụm quan hệ chặt (nhóm bạn bè đầy đủ, module gọi nhau đầy đủ theo nghĩa vô hướng hóa).
 
-## 6. Thử nghiệm tương tác
+## Thử nghiệm tương tác
 
 Bật/tắt cạnh và quan sát ma trận kề. Khi một đỉnh có cả hàng và cột toàn 0, đỉnh đó là thành phần cô lập. Khi đồ thị tách thành nhiều cụm, các khối 1 trên ma trận (sau hoán vị đỉnh) phản ánh thành phần liên thông.
 

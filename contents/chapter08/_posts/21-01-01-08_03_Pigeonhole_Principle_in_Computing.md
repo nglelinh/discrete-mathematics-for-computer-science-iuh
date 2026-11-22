@@ -16,7 +16,7 @@ Có những định lý mạnh vì chúng quá đơn giản. Nếu có nhiều c
 
 ## Phần 1: Dirichlet và nguyên lý năm 1834
 
-### 1.1. Ý tưởng đơn giản, tác động rộng
+### Ý tưởng đơn giản, tác động rộng
 
 Nguyên lý này thường gắn với Johann Peter Gustav Lejeune Dirichlet.
 Trong thế kỷ XIX,
@@ -27,7 +27,7 @@ Nó nằm ở chỗ:
 từ một lập luận đếm rất cơ bản,
 chúng ta có thể ép buộc sự tồn tại của hiện tượng nào đó.
 
-### 1.2. “Phải tồn tại” là ngôn ngữ của nhiều proof đẹp
+### “Phải tồn tại” là ngôn ngữ của nhiều proof đẹp
 
 Nguyên lý chuồng chim không nói cho chúng ta *ở đâu*.
 Nó thường chỉ nói rằng *chắc chắn phải có*.
@@ -46,7 +46,7 @@ Kiểu reasoning này xuất hiện rất nhiều trong toán học và computer
 
 ## Phần 2: Hash collisions là không thể tránh
 
-### 2.1. Vì sao collision là định mệnh chứ không phải tai nạn
+### Vì sao collision là định mệnh chứ không phải tai nạn
 
 Giả sử hash function ánh xạ vô số chuỗi input
 vào dải output hữu hạn 256 bit.
@@ -57,7 +57,7 @@ phải tồn tại ít nhất hai input khác nhau cho cùng hash value.
 Điều này không phụ thuộc hash tốt hay xấu.
 Nó là hệ quả logic của việc nhiều đầu vào hơn đầu ra.
 
-### 2.2. Từ inevitability đến engineering
+### Từ inevitability đến engineering
 
 Điều kỹ sư cần làm không phải “loại bỏ hoàn toàn collision”.
 Điều đó bất khả.
@@ -69,7 +69,7 @@ Nó là hệ quả logic của việc nhiều đầu vào hơn đầu ra.
 - tránh để attacker lợi dụng collision structure,
 - chọn hash phù hợp với mục tiêu hiệu năng hay bảo mật.
 
-### 2.3. Hash tables ngoài đời thật
+### Hash tables ngoài đời thật
 
 Trong hash tables,
 collision được xử lý bằng chaining,
@@ -87,7 +87,7 @@ Nó là phần tất yếu của thiết kế.
 
 ## Phần 3: Lossless compression và giới hạn không thể vượt qua
 
-### 3.1. Mọi file đều nén nhỏ hơn? Không thể
+### Mọi file đều nén nhỏ hơn? Không thể
 
 Nhiều người mới học dễ tưởng:
 nếu thông minh đủ,
@@ -101,7 +101,7 @@ và vẫn giải nén chính xác,
 thì chúng ta đang nhét nhiều input hơn vào ít output hơn mà không collision.
 Điều đó bất khả.
 
-### 3.2. Bài học sâu hơn về thông tin
+### Bài học sâu hơn về thông tin
 
 Nghĩa là:
 
@@ -112,7 +112,7 @@ Nghĩa là:
 Đây là ranh giới logic của compression,
 không phải giới hạn do kỹ sư lười.
 
-### 3.3. Vì sao insight này quan trọng
+### Vì sao insight này quan trọng
 
 Nó giúp chúng ta hiểu đúng bản chất của compression:
 khai thác cấu trúc,
@@ -132,7 +132,7 @@ không có phép màu.
 
 ## Phần 4: Error detection codes và parity bits
 
-### 4.1. Thêm bit để phát hiện lỗi
+### Thêm bit để phát hiện lỗi
 
 Giả sử chúng ta truyền 7 bit dữ liệu và thêm 1 parity bit để tổng số bit 1 là chẵn.
 
@@ -140,7 +140,7 @@ Nếu một bit bị lật trong quá trình truyền,
 parity sẽ đổi,
 và hệ thống phát hiện có lỗi.
 
-### 4.2. Nhưng không phải mọi lỗi đều được phân biệt hoàn hảo
+### Nhưng không phải mọi lỗi đều được phân biệt hoàn hảo
 
 Không gian các thông điệp nhận được rất lớn,
 trong khi số mã hợp lệ hữu hạn.
@@ -150,7 +150,7 @@ Nguyên lý đếm và chuồng chim giúp chúng ta hiểu rằng:
 - có lỗi không sửa được,
 - có giới hạn cho số pattern lỗi có thể phân biệt với số bit kiểm tra cho trước.
 
-### 4.3. Từ parity đến coding theory
+### Từ parity đến coding theory
 
 Các mã mạnh hơn như Hamming,
 Reed–Solomon,
@@ -170,7 +170,7 @@ số lượng pattern cần phân biệt so với số lượng codewords/metada
 
 ## Phần 5: Ramsey theory — trật tự xuất hiện từ hỗn độn
 
-### 5.1. Một bước xa hơn của tinh thần chuồng chim
+### Một bước xa hơn của tinh thần chuồng chim
 
 Ramsey theory nghiên cứu điều đáng kinh ngạc:
 nếu cấu trúc đủ lớn,
@@ -182,7 +182,7 @@ sẽ luôn có tập con người hoặc đôi nào quen nhau,
 hoặc đôi nào hoàn toàn không quen nhau,
 theo cấu hình nhất định.
 
-### 5.2. Vì sao điều này làm dân CS tò mò
+### Vì sao điều này làm dân CS tò mò
 
 Ramsey-style thinking chạm vào:
 

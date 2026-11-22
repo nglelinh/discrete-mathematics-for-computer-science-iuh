@@ -34,13 +34,13 @@ excerpt: "Ngôn ngữ quyết định, mã hóa input, TIME(t(n)), lớp P, Cobh
 
 </div>
 
-## 1. Từ bài thực tế đến chuỗi bit
+## Từ bài thực tế đến chuỗi bit
 
 Đồ thị, công thức, số nguyên: đều **mã hóa** được bằng chuỗi hữu hạn. Độ dài $$n=\lvert x\rvert$$ là tham số độ phức tạp (không phải “số đỉnh” trừ khi đã cố định encoding hợp lý — ví dụ ma trận kề $$n=\Theta(v^2)$$).
 
 **Quy ước nghiên cứu:** encoding *reasonable* (không pad mũ vô cớ). Xem Garey–Johnson, Arora–Barak.
 
-## 2. Bài quyết định = ngôn ngữ
+## Bài quyết định = ngôn ngữ
 
 <div class="textbook-definition" markdown="1">
 
@@ -56,7 +56,7 @@ Bài tối ưu “$$\min c(y)$$” → quyết định “$$\exists y:\,c(y)\le 
 
 </div>
 
-## 3. Thời gian và lớp $$P$$
+## Thời gian và lớp $$P$$
 
 <div class="textbook-definition" markdown="1">
 
@@ -76,7 +76,7 @@ $$
 
 **Cobham–Edmonds thesis (tinh thần):** các mô hình máy “hợp lý” (TM đa băng, RAM) mô phỏng nhau với overhead đa thức → $$P$$ ổn định.
 
-## 4. Đa thức vs mũ
+## Đa thức vs mũ
 
 | Họ | Ví dụ | $$n=40$$ |
 |:---|:---|:---|

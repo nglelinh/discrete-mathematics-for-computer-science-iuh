@@ -174,7 +174,7 @@ Một website cho phép tạo username theo 2 định dạng:
 
 ## Ứng dụng trong Khoa học Máy tính
 
-### 1. Phân tích Thuật toán
+### Phân tích Thuật toán
 ```python
 def count_operations(n):
     """Đếm số phép toán trong thuật toán"""
@@ -190,7 +190,7 @@ def count_paths(graph, start, end):
     pass
 ```
 
-### 2. Mật mã học
+### Mật mã học
 ```python
 def password_strength(length, charset_size):
     """Tính số mật khẩu có thể tạo"""
@@ -202,7 +202,7 @@ def password_strength(length, charset_size):
 strength = password_strength(8, 36)  # 36^8 ≈ 2.8 × 10^12
 ```
 
-### 3. Cơ sở dữ liệu
+### Cơ sở dữ liệu
 ```sql
 -- Đếm số bản ghi có thể tạo từ các bảng
 -- Sử dụng quy tắc nhân cho JOIN

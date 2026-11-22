@@ -38,7 +38,7 @@ Hai ứng dụng kinh điển của cây nhị phân: **mã Huffman** gán bit n
 
 </div>
 
-## 1. Mã hóa Huffman
+## Mã hóa Huffman
 
 <div class="textbook-definition" markdown="1">
 
@@ -72,7 +72,7 @@ Hai ứng dụng kinh điển của cây nhị phân: **mã Huffman** gán bit n
 </div>
 <script src="{{ '/public/js/huffman-coding.js' | relative_url }}"></script>
 
-## 2. Cây tìm kiếm nhị phân (BST)
+## Cây tìm kiếm nhị phân (BST)
 
 ![BST](/discrete-mathematics-for-computer-science-iuh/img/course/Tree_bst_example.svg)
 
@@ -113,7 +113,7 @@ SEARCH(node, x):
 
 Worst case: chèn đã sắp tăng tạo cây **lệch** (*skewed*) — giống danh sách liên kết.
 
-## 3. BST, cây cân bằng và hash table
+## BST, cây cân bằng và hash table
 
 | | BST thường | AVL / Red-Black | Hash table |
 |:---|:---|:---|:---|

@@ -44,13 +44,13 @@ Biến đổi đại số (Mục 13.3) cho phép rút gọn nhiều biểu thứ
 
 </div>
 
-## 1. Mã Gray và tính kề trên trục
+## Mã Gray và tính kề trên trục
 
-### 1.1. Thứ tự nhị phân thường
+### Thứ tự nhị phân thường
 
 Trên dãy $$00,01,10,11$$, bước từ $$01$$ sang $$10$$ thay đổi đồng thời hai bit. Nếu hai mã đó được đặt kề trên K-map và gộp thành một nhóm, phép gộp không tương ứng việc triệt một biến theo đẳng thức dạng $$xy + x\bar y = x$$.
 
-### 1.2. Mã Gray
+### Mã Gray
 
 **Mã Gray** là thứ tự các xâu bit trong đó hai mã liên tiếp khác nhau đúng một bit. Hệ quả: kề hình học trên lưới trùng với kề Hamming, do đó gộp ô tương ứng rút gọn đại số.
 
@@ -78,9 +78,9 @@ Hai đầu mút $$00$$ và $$10$$ cũng khác nhau một bit, nên mép đối d
 
 Mã Gray $n$ bit được tạo bằng cách phản chiếu dãy $n-1$ bit rồi thêm tiền tố $0$ cho nửa đầu và $1$ cho nửa sau. Dãy $000,001,011,010,110,111,101,100$ đi qua cả $8$ đỉnh của khối lập phương, mỗi bước theo một cạnh (đổi đúng một bit) và quay về đỉnh xuất phát — đó là lý do hai ô kề nhau trên K-map chỉ khác nhau một biến.
 
-## 2. Cấu trúc K-map và quy tắc nhóm
+## Cấu trúc K-map và quy tắc nhóm
 
-### 2.1. Ba thành phần
+### Ba thành phần
 
 | Thành phần | Định nghĩa |
 |:---|:---|
@@ -88,7 +88,7 @@ Mã Gray $n$ bit được tạo bằng cách phản chiếu dãy $n-1$ bit rồi
 | Kề | Hai ô kề (kể cả mép đối diện) khác đúng một biến |
 | Gộp | Nhóm các ô kề hợp lệ, tương đương $$xy + x\bar y = x$$ trên tập minterm đó |
 
-### 2.2. Quy tắc khoanh nhóm
+### Quy tắc khoanh nhóm
 
 1. Chỉ khoanh các ô mang giá trị **1**, hoặc **X** khi có don't-care.  
 2. Số ô của mỗi nhóm là lũy thừa của 2: $$1, 2, 4, 8, \ldots$$  
@@ -100,7 +100,7 @@ Mã Gray $n$ bit được tạo bằng cách phản chiếu dãy $n-1$ bit rồi
 
 <p class="textbook-figure-caption" data-figure="13.42">Quy tắc khoanh nhóm trên K-map.</p>
 
-### 2.3. Tế bào lớn và hạng nguyên tố
+### Tế bào lớn và hạng nguyên tố
 
 **Tế bào lớn** là nhóm lũy thừa của 2 không mở rộng được thêm mà vẫn hợp lệ.
 
@@ -108,7 +108,7 @@ Mã Gray $n$ bit được tạo bằng cách phản chiếu dãy $n-1$ bit rồi
 
 Một nhóm gồm $$2^{k}$$ ô hợp lệ triệt $$k$$ biến — các biến thay đổi giá trị trên nhóm — và giữ lại các biến không đổi.
 
-## 3. K-map hai biến
+## K-map hai biến
 
 Lưới $$2\times 2$$: hàng theo $$x\in\{0,1\}$$, cột theo $$y\in\{0,1\}$$. Bốn ô là bốn minterm $$m_0,\ldots,m_3$$.
 
@@ -149,9 +149,9 @@ Tại $$(1,0)$$: $$A = 0$$, khớp với việc hàng đó không xuất hiện 
 
 <p class="textbook-figure-caption" data-figure="13.44">Các minterm 0, 1, 3: $$A=\bar x+y$$.</p>
 
-## 4. K-map ba biến
+## K-map ba biến
 
-### 4.1. Sắp xếp lưới
+### Sắp xếp lưới
 
 - Hàng: $$(x,y)$$ theo Gray $$00,01,11,10$$.  
 - Cột: $$z\in\{0,1\}$$.
@@ -162,7 +162,7 @@ Hàng $$10$$ kề hàng $$00$$. Lưới gồm tám minterm.
 
 <p class="textbook-figure-caption" data-figure="13.45">K-map ba biến: hàng Gray $$(x,y)$$, cột $$z$$.</p>
 
-### 4.2. Đọc nhóm thành tích
+### Đọc nhóm thành tích
 
 Trên một nhóm hợp lệ:
 
@@ -216,9 +216,9 @@ Biểu thức này trùng bảng chân trị của tập minterm đã cho.
 
 <p class="textbook-figure-caption" data-figure="13.46">$$F=\bar x\bar y+\bar x\bar z+xz$$.</p>
 
-## 5. K-map bốn biến
+## K-map bốn biến
 
-### 5.1. Sắp xếp lưới
+### Sắp xếp lưới
 
 Mười sáu ô với:
 
@@ -231,7 +231,7 @@ Chỉ số trong ô, nếu có, là chỉ số minterm $$m_k$$.
 
 <p class="textbook-figure-caption" data-figure="13.47">K-map bốn biến.</p>
 
-### 5.2. Wrap-around
+### Wrap-around
 
 Do tính tuần hoàn của thứ tự Gray:
 
@@ -260,11 +260,11 @@ Mỗi phủ hợp lệ phải phủ đúng tập minterm của $$F$$ và không 
 
 </div>
 
-## 6. Phủ tối tiểu
+## Phủ tối tiểu
 
 Bài toán tiếp theo là chọn một họ tế bào lớn phủ mọi ô **1**, không thừa, và cho SOP gọn.
 
-### 6.1. Phủ tập
+### Phủ tập
 
 <div class="textbook-definition" markdown="1">
 
@@ -290,7 +290,7 @@ Trên K-map, $$X$$ là tập các ô **1** và mỗi $$X_i$$ là một tế bào
 
 <p class="textbook-figure-caption" data-figure="13.49">Phủ không thừa trên một họ tập con.</p>
 
-### 6.2. Tế bào cốt yếu
+### Tế bào cốt yếu
 
 Nếu một ô **1** thuộc đúng một tế bào lớn $$T$$ thì $$T$$ thuộc mọi phủ không thừa. $$T$$ được gọi là tế bào **cốt yếu** (*essential prime implicant*).
 
@@ -298,7 +298,7 @@ Nếu một ô **1** thuộc đúng một tế bào lớn $$T$$ thì $$T$$ thu�
 
 <p class="textbook-figure-caption" data-figure="13.50">Ô chỉ thuộc một tế bào lớn xác định tế bào cốt yếu.</p>
 
-### 6.3. Quy trình năm bước
+### Quy trình năm bước
 
 **Quy trình năm bước.**
 
@@ -335,7 +335,7 @@ Cả hai đều là SOP tối tiểu.
 
 </div>
 
-## 7. Don't-care
+## Don't-care
 
 Nếu đầu ra tại một số vector không được đặc tả, các ô tương ứng được ký **X** trên K-map:
 
@@ -360,7 +360,7 @@ Mọi ô **1** vẫn được phủ.
 
 <p class="textbook-figure-caption" data-figure="13.56">Don't-care mở rộng nhóm: $$F=\bar x\bar y+z$$.</p>
 
-## 8. So sánh với biến đổi đại số
+## So sánh với biến đổi đại số
 
 | Phương pháp | Phạm vi điển hình |
 |:---|:---|

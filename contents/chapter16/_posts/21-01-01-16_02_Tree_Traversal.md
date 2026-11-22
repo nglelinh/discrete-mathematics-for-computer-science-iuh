@@ -38,7 +38,7 @@ excerpt: "Preorder, inorder, postorder trên cây nhị phân; level-order (BFS)
 
 </div>
 
-## 1. Ba thứ tự DFS trên cây nhị phân
+## Ba thứ tự DFS trên cây nhị phân
 
 Cho nút có con trái và con phải (có thể rỗng):
 
@@ -91,7 +91,7 @@ def postorder(node):
 
 Trên cây **không nhị phân** (nhiều con), preorder = gốc rồi lần lượt các con; postorder = các con rồi gốc; “inorder” chỉ chuẩn hóa tự nhiên cho cây nhị phân (hoặc cần quy ước thứ tự con).
 
-## 2. Level-order (BFS)
+## Level-order (BFS)
 
 Duyệt theo **tầng** từ gốc xuống — hàng đợi (*queue*).
 
@@ -116,7 +116,7 @@ def level_order(root):
 
 </div>
 
-## 3. Độ phức tạp và liên hệ Chương 12
+## Độ phức tạp và liên hệ Chương 12
 
 <div class="textbook-theorem" markdown="1">
 
@@ -133,7 +133,7 @@ Trên **đồ thị** tổng quát, DFS/BFS cần tập `visited` để không l
 | DFS “thăm khi ra” | Postorder |
 | BFS | Level-order |
 
-## 4. Thử nghiệm tương tác
+## Thử nghiệm tương tác
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="tree-traversal-visualizer"></div>

@@ -29,11 +29,11 @@ excerpt: "Chứng minh SAT NP-complete: biến tableau, mệnh đề G1–G4, t�
 
 </div>
 
-## 1. $$\mathrm{SAT}\in NP$$
+## $$\mathrm{SAT}\in NP$$
 
 Certificate = gán chân trị. Verifier đánh giá công thức: thời gian tuyến tính theo $$\lvert\varphi\rvert$$. $$\square$$
 
-## 2. Từ verifier/TM đến CNF
+## Từ verifier/TM đến CNF
 
 Cho $$L\in NP$$, verifier/TM $$M$$ thời gian $$T=N^{O(1)}$$ trên $$z=\langle x,c\rangle$$ độ dài $$N$$. Cửa sổ băng $$[-T,T]$$.
 
@@ -63,7 +63,7 @@ $$z\mapsto\varphi_z$$ poly-time.
 
 Vậy $$L\le_p\mathrm{SAT}$$. Kết hợp §1: **SAT NP-complete**. $$\square$$
 
-## 3. Ghi chú viết paper
+## Ghi chú viết paper
 
 Thường viết: “by the standard tableau construction (Sipser / Arora–Barak)”.  
 Seminar: phải tường minh G1–G4.

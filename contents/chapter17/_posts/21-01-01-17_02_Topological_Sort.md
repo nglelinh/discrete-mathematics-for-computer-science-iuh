@@ -38,7 +38,7 @@ Hệ build chỉ biên dịch $$B$$ sau khi phụ thuộc $$A$$ xong — thứ t
 
 </div>
 
-## 1. DAG và sắp xếp topo
+## DAG và sắp xếp topo
 
 <div class="textbook-definition" markdown="1">
 
@@ -59,7 +59,7 @@ Nếu có chu trình, đi quanh chu trình không thể sắp “trước/sau”
 
 **Liên hệ Ch.5 / Ch.12.** Quan hệ “phải xong trước” trên task là **thứ tự bộ phận** khi không phụ thuộc vòng; topo sort là **mở rộng tuyến tính** của thứ tự đó.
 
-## 2. Thuật toán DFS
+## Thuật toán DFS
 
 1. DFS trên toàn đồ thị (mọi đỉnh chưa thăm).
 2. Khi **kết thúc** thăm $$u$$ (sau mọi đỉnh reachable từ $$u$$ theo cạnh xuôi), **ghi** $$u$$ vào danh sách.
@@ -81,7 +81,7 @@ DFS-VISIT(u):
 
 Phát hiện chu trình (biến thể): cạnh tới đỉnh **đang** trên stack đệ quy (màu xám) ⇒ cycle.
 
-## 3. Thuật toán Kahn (BFS / indegree)
+## Thuật toán Kahn (BFS / indegree)
 
 1. Tính $$\mathrm{indeg}(v)$$ với mọi $$v$$.
 2. Queue các đỉnh $$\mathrm{indeg}=0$$.
@@ -116,7 +116,7 @@ Chạy **Kahn** (bậc vào + hàng đợi) hoặc **DFS** (hậu tự đảo) t
 </div>
 <script src="{{ '/public/js/explainers/graph-explainer.js' | relative_url }}"></script>
 
-## 4. Ứng dụng
+## Ứng dụng
 
 | Lĩnh vực | Mô hình |
 |:---|:---|

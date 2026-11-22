@@ -39,7 +39,7 @@ excerpt: "Định nghĩa thuật toán và tính chất; mã giả; tìm kiếm 
 
 </div>
 
-## 1. Định nghĩa và tính chất
+## Định nghĩa và tính chất
 
 <div class="textbook-definition" markdown="1">
 
@@ -58,7 +58,7 @@ excerpt: "Định nghĩa thuật toán và tính chất; mã giả; tìm kiếm 
 
 **Không phải mọi bài toán đều có thuật toán.** *Halting problem* (Turing, 1936): không có thuật toán tổng quát quyết định mọi chương trình có dừng hay không (Ch.18–20).
 
-## 2. Mã giả
+## Mã giả
 
 Mã giả mô tả thuật toán độc lập ngôn ngữ lập trình: gán, điều kiện, vòng lặp, trả về.
 
@@ -84,7 +84,7 @@ BINARY-SEARCH(A[1..n], x)   // A tăng dần
 
 <p class="textbook-figure-caption" data-figure="14.2">Binary search: mỗi bước loại một nửa khoảng — cần mảng đã sắp.</p>
 
-## 3. Vết chạy
+## Vết chạy
 
 <div class="textbook-example" markdown="1">
 
@@ -96,7 +96,7 @@ Linear search: so $$2,5,8,12$$ — 4 lần so sánh.
 
 </div>
 
-## 4. Lớp bài toán thường gặp
+## Lớp bài toán thường gặp
 
 | Lớp | Câu hỏi |
 |:---|:---|
@@ -114,7 +114,7 @@ Linear search: so $$2,5,8,12$$ — 4 lần so sánh.
 </div>
 <script src="{{ '/public/js/explainers/recurrence-explainer.js' | relative_url }}"></script>
 
-## 5. Thử nghiệm tương tác
+## Thử nghiệm tương tác
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="algorithm-visualization"></div>

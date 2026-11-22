@@ -38,7 +38,7 @@ Nối mọi trạm với **tổng chi phí cáp nhỏ nhất** mà vẫn **liên
 
 </div>
 
-## 1. Cây khung và MST
+## Cây khung và MST
 
 Nhắc lại: **cây khung** của $$G$$ liên thông là cây con chứa mọi đỉnh.
 
@@ -64,7 +64,7 @@ Nếu các trọng số đôi một khác nhau, MST **duy nhất**. Trọng số
 
 Hệ quả: thuật toán luôn thêm cạnh “an toàn” theo cut hoặc theo thứ tự trọng số toàn cục vẫn đúng.
 
-## 2. Thuật toán Kruskal
+## Thuật toán Kruskal
 
 1. Sắp xếp mọi cạnh theo trọng số **tăng dần**.
 2. Khởi tạo rừng: mỗi đỉnh là một thành phần (Union–Find).
@@ -78,7 +78,7 @@ Hệ quả: thuật toán luôn thêm cạnh “an toàn” theo cut hoặc theo
 </div>
 <script src="{{ '/public/js/kruskal-algorithm.js' | relative_url }}"></script>
 
-## 3. Thuật toán Prim
+## Thuật toán Prim
 
 1. Chọn đỉnh xuất phát $$s$$; tập $$S=\{s\}$$.
 2. Lặp cho đến khi $$|S|=|V|$$: chọn cạnh **nhẹ nhất** nối một đỉnh trong $$S$$ với một đỉnh ngoài $$S$$; thêm cạnh đó vào MST và đưa đỉnh mới vào $$S$$.
@@ -109,7 +109,7 @@ Phiên bản Prim riêng để so với Kruskal ở trên: tập $$S$$ lớn d�
 <div data-demo="graph-explainer" data-algorithm="prim"></div>
 </div>
 
-## 4. Ví dụ tính tay
+## Ví dụ tính tay
 
 <div class="textbook-example" markdown="1">
 
@@ -121,7 +121,7 @@ MST: $$\{AB,BD,BC\}$$, tổng $$1+2+5=8$$.
 
 </div>
 
-## 5. Ứng dụng
+## Ứng dụng
 
 - Thiết kế LAN / cáp: liên thông với chi phí nhỏ.
 - Clustering sơ cấp: bỏ các cạnh MST nặng nhất để tách cụm.

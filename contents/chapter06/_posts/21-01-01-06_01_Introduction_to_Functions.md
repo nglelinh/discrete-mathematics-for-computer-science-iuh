@@ -35,7 +35,7 @@ Trong toán rời rạc, hàm là quan hệ đặc biệt thỏa tính tồn t�
 **Từ khóa**: hàm số (function), domain, codomain, range (ảnh), ánh xạ.
 </div>
 
-## 1. Định nghĩa hàm số
+## Định nghĩa hàm số
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Cho hai tập $$A$$ và $$B$$. Một **hàm số** $$f$$ từ $$A$$ đến $$B$$, ký hiệu $$f:A\to B$$, là một quy tắc gán cho mỗi phần tử $$x\in A$$ đúng một phần tử $$y\in B$$.
 </div>
@@ -55,7 +55,7 @@ Trong toán rời rạc, hàm là quan hệ đặc biệt thỏa tính tồn t�
 <p class="textbook-figure-caption" data-figure="6.1">Hàm số ánh xạ mỗi phần tử miền xác định đến đúng một phần tử miền đích — mô hình "hộp hàm".</p>
 </div>
 
-## 2. Hàm số như quan hệ đặc biệt
+## Hàm số như quan hệ đặc biệt
 
 Một quan hệ $$R\subseteq A\times B$$ là hàm từ $$A$$ đến $$B$$ nếu:
 
@@ -70,7 +70,7 @@ Một quan hệ $$R\subseteq A\times B$$ là hàm từ $$A$$ đến $$B$$ nếu:
 <p class="textbook-figure-caption" data-figure="6.2">Hàm là quan hệ đặc biệt — mỗi phần tử domain có đúng một mũi tên đi ra (tồn tại + duy nhất).</p>
 </div>
 
-## 3. Domain, codomain và range
+## Domain, codomain và range
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**:
@@ -92,7 +92,7 @@ Một quan hệ $$R\subseteq A\times B$$ là hàm từ $$A$$ đến $$B$$ nếu:
 **Nhầm lẫn phổ biến**: Codomain và range không nhất thiết giống nhau. Codomain là nơi hàm được khai báo trả về; range là phần thật sự được chạm tới.
 </div>
 
-## 4. Các cách biểu diễn hàm
+## Các cách biểu diễn hàm
 
 ### Bằng công thức
 
@@ -119,7 +119,7 @@ Mỗi phần tử domain có đúng một mũi tên đi ra.
 ![Sơ đồ mũi tên — biểu diễn hàm số](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
 <p class="textbook-figure-caption" data-figure="6.3">Sơ đồ mũi tên thể hiện ánh xạ từ tập A sang tập B — mỗi phần tử A có đúng một cung đi ra.</p>
-## 5. Hàm toàn phần và hàm bộ phận
+## Hàm toàn phần và hàm bộ phận
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm trong toán rời rạc thường là **hàm toàn phần**: mọi phần tử của domain đều có ảnh. Trong lập trình, chúng ta cũng gặp **hàm bộ phận**, tức chỉ xác định trên một phần domain.
@@ -133,7 +133,7 @@ Mỗi phần tử domain có đúng một mũi tên đi ra.
 <p class="textbook-figure-caption" data-figure="6.4">Hàm bộ phần chỉ xác định trên một phần domain — tương tự hàm đơn ánh không cho hai đầu vào khác nhau cùng đầu ra.</p>
 </div>
 
-## 6. Hàm trong lập trình
+## Hàm trong lập trình
 
 ```python
 def square(x):
@@ -186,7 +186,7 @@ class MockModel:
 
 Đoạn mã trên mô phỏng kiểu `predict()` quen thuộc trong `sklearn`: nhận tập đầu vào và trả về đầu ra xác định cho từng mẫu.
 
-## 9. Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong Khoa học Máy tính
 
 - **API**: ánh xạ request hợp lệ đến response.
 - **Hash function**: ánh xạ dữ liệu sang giá trị băm.

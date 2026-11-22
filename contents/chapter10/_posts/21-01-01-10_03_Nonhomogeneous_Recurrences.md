@@ -11,7 +11,7 @@ excerpt: "Truy hồi tuyến tính không thuần nhất: nguyên lý a=a_h+a_p,
 
 Ở mục trước chúng ta đã giải quan hệ truy hồi **tuyến tính thuần nhất** bằng phương trình đặc trưng. Mục này mở rộng sang **quan hệ truy hồi không thuần nhất** — khi ngoài các số hạng $$a_{n-i}$$ còn có thêm thành phần $$f(n)$$ (hằng số, đa thức, $$b^n$$, …). Dạng này mô tả nhiều quá trình thực tế hơn: mỗi bước vừa kế thừa trạng thái cũ vừa nhận tác động bên ngoài (chi phí cố định, dữ liệu mới, yêu cầu phát sinh). Trong phân tích thuật toán, ví dụ điển hình là $$T(n)=2T(n/2)+n$$ của merge sort — thuần nhất về cấu trúc đệ quy nhưng có thành phần công việc $$f(n)=n$$ ở mỗi mức. Chúng ta học **nguyên lý chồng chất** và **phương pháp hệ số bất định**, kể cả trường hợp **cộng hưởng** khi dạng nghiệm thử trùng nghiệm thuần nhất.
 
-## 1. Dạng tổng quát
+## Dạng tổng quát
 
 Quan hệ truy hồi tuyến tính không thuần nhất bậc $k$ có dạng
 
@@ -31,7 +31,7 @@ a_n=c_1a_{n-1}+c_2a_{n-2}+\cdots+c_ka_{n-k}.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-## 2. Nguyên lý chồng chất
+## Nguyên lý chồng chất
 
 Nghiệm tổng quát có dạng
 
@@ -56,7 +56,7 @@ $$
 
 nên $$b-a^{(p)}$$ là nghiệm của quan hệ **thuần nhất** liên kết — ký hiệu $$a^{(h)}$$. Vậy mọi nghiệm có dạng $$b = a^{(p)} + a^{(h)}$$. (Ngược lại: nếu $$L(h)=0$$ và $$L(p)=f$$ thì $$L(h+p)=f$$.)
 
-## 3. Phương pháp hệ số bất định
+## Phương pháp hệ số bất định
 
 Khi $f(n)$ có dạng quen thuộc, ta đoán nghiệm riêng cùng “họ” với $f(n)$.
 
@@ -110,7 +110,7 @@ Vậy $$x_n = 2^n - 1$$ (đúng $$1,3,7,15,\ldots$$).
 
 </div>
 
-## 5. Ví dụ với đa thức
+## Ví dụ với đa thức
 
 Với $f(n)$ là đa thức bậc $m$, ta chọn nghiệm riêng cùng bậc; nếu dạng thử trùng nghiệm thuần nhất thì tăng bậc một để đảm bảo độc lập tuyến tính.
 
@@ -196,7 +196,7 @@ với $$C_1,C_2$$ từ điều kiện đầu (nếu đề cho).
 
 </div>
 
-## 6. Trường hợp cộng hưởng
+## Trường hợp cộng hưởng
 
 Xét
 
@@ -222,7 +222,7 @@ $$
 </div>
 <script src="{{ '/public/js/characteristic-solver.js' | relative_url }}"></script>
 
-## 7. Ứng dụng phân tích thuật toán
+## Ứng dụng phân tích thuật toán
 
 Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Phần này liên hệ khái niệm toán học với bài toán thực tế trong lập trình và hệ thống.
 

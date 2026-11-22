@@ -39,7 +39,7 @@ Big-O cung cấp ký hiệu; mục này **đo** độ phức tạp **thời gian
 
 </div>
 
-## 1. Mô hình đếm
+## Mô hình đếm
 
 Chọn **phép toán trội** (so sánh khóa, phép gán phần tử, …). $$T(n)$$ = số phép đó theo kích thước input $$n$$ (worst-case trừ khi nói khác).
 
@@ -49,7 +49,7 @@ Chọn **phép toán trội** (so sánh khóa, phép gán phần tử, …). $$T
 | **Average** | Trung bình trên phân bố input |
 | **Worst** | Input xấu nhất — thường dùng để bảo đảm |
 
-## 2. Vòng lặp
+## Vòng lặp
 
 - Một vòng $$1..n$$ thân $$O(1)$$ → $$T(n)=\Theta(n)$$.
 - Hai vòng lồng độc lập $$i,j=1..n$$ → $$\Theta(n^2)$$.
@@ -61,7 +61,7 @@ Chọn **phép toán trội** (so sánh khóa, phép gán phần tử, …). $$T
 
 </div>
 
-## 3. Chia để trị (ý)
+## Chia để trị (ý)
 
 Merge sort: $$T(n)=2T(n/2)+\Theta(n)$$ → $$T(n)=\Theta(n\log n)$$ (master theorem / cây đệ quy).
 
@@ -69,13 +69,13 @@ Merge sort: $$T(n)=2T(n/2)+\Theta(n)$$ → $$T(n)=\Theta(n\log n)$$ (master theo
 
 <p class="textbook-figure-caption" data-figure="14.5">Merge sort: chia đôi + trộn tuyến tính — $$\Theta(n\log n)$$ thời gian, $$\Theta(n)$$ bộ nhớ phụ điển hình.</p>
 
-## 4. Không gian
+## Không gian
 
 - **In-place** (ý): $$S(n)=O(1)$$ phụ ngoài input (heap sort xấp xỉ; binary search).
 - Đệ quy sâu $$h$$: stack $$O(h)$$.
 - Mảng phụ kích thước $$n$$: $$S(n)=\Theta(n)$$.
 
-## 5. Thử nghiệm tương tác
+## Thử nghiệm tương tác
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="algorithm-complexity-analyzer"></div>

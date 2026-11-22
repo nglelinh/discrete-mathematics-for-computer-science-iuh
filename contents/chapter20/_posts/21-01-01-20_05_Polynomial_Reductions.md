@@ -33,7 +33,7 @@ Rút gọn là **công cụ so sánh độ khó**: biến instance $$A$$ thành 
 
 </div>
 
-## 1. Định nghĩa Karp
+## Định nghĩa Karp
 
 <div class="textbook-definition" markdown="1">
 
@@ -45,7 +45,7 @@ $$
 
 </div>
 
-## 2. Định lý
+## Định lý
 
 <div class="textbook-theorem" markdown="1">
 
@@ -76,7 +76,7 @@ $$\lvert f(x)\rvert\le\mathrm{poly}(\lvert x\rvert)$$ vì mỗi bước viết �
 
 </div>
 
-## 3. Karp vs Cook
+## Karp vs Cook
 
 | | Karp (many-one) | Cook (Turing) |
 |:---|:---|:---|

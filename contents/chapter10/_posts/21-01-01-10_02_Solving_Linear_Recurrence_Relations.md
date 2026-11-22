@@ -27,7 +27,7 @@ excerpt: "Phương trình đặc trưng, nghiệm phân biệt/kép/phức, số
 
 </div>
 
-## 1. Dạng tổng quát
+## Dạng tổng quát
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Quan hệ truy hồi tuyến tính thuần nhất hệ số hằng bậc $k$ có dạng
@@ -53,7 +53,7 @@ $$
 <p class="textbook-figure-caption" data-figure="10.6">Truy hồi tuyến tính thuần nhất bậc $k$ — nghiệm là tổng các hạng dạng $r_i^n$.</p>
 </div>
 
-## 2. Ý tưởng nghiệm dạng $r^n$
+## Ý tưởng nghiệm dạng $r^n$
 
 Giả sử $a_n=r^n$ với $r\ne0$. Thay vào truy hồi bậc hai
 
@@ -90,7 +90,7 @@ Nghiệm tổng quát của hệ tuyến tính thuần nhất là tổ hợp tuy
 **Trực giác**: Nếu một dãy tăng theo quy luật nhân lặp lại, tỉ số giữa các số hạng liên tiếp gần giống một hằng số. Vì vậy nghiệm mũ $r^n$ là ứng viên tự nhiên cho hệ tuyến tính hệ số hằng.
 </div>
 
-## 3. Nghiệm phân biệt
+## Nghiệm phân biệt
 
 Nếu phương trình đặc trưng bậc hai có hai nghiệm phân biệt $r_1,r_2$, nghiệm tổng quát là
 
@@ -140,7 +140,7 @@ $$
 
 Dãy Fibonacci $F_{n+1}=F_n+F_{n-1}$ có phương trình đặc trưng $r^2=r+1$ với hai nghiệm $\varphi=\frac{1+\sqrt5}{2}$ và $\psi=\frac{1-\sqrt5}{2}$. Vì $|\psi|<1$ nên $F_{n+1}/F_n\to\varphi\approx 1{,}618$, đúng như các chữ số vàng ổn định dần trong video.
 
-## 4. Nghiệm bội
+## Nghiệm bội
 
 Nếu phương trình đặc trưng có nghiệm kép $r$, nghiệm tổng quát là
 
@@ -190,7 +190,7 @@ Vậy $$X_n=1+2n$$. Kiểm: $$1,3,5,7,9,\ldots$$ và $$2\cdot 3-1=5$$, $$2\cdot 
 </div>
 
 
-## 5. Nghiệm phức và kiến thức số phức
+## Nghiệm phức và kiến thức số phức
 
 Với truy hồi bậc hai hệ số thực
 
@@ -216,7 +216,7 @@ quyết định loại nghiệm: $$\Delta > 0$$ phân biệt thực, $$\Delta = 
 **Lưu ý quan trọng.** Dãy $$a_n$$ trong bài toán thường là **số thực** (số lần gọi đệ quy, biên độ tín hiệu, …). Nghiệm đặc trưng có thể phức, nhưng công thức đóng cuối cùng nên viết bằng $$\rho^n$$, $$\cos$$, $$\sin$$ với hệ số thực — không “bỏ qua” phần ảo một cách tùy tiện.
 </div>
 
-### 5.1. Định nghĩa số phức
+### Định nghĩa số phức
 
 <div class="textbook-definition" markdown="1">
 
@@ -256,7 +256,7 @@ Các trường hợp đặc biệt:
 
 </div>
 
-### 5.2. Liên hợp phức
+### Liên hợp phức
 
 <div class="textbook-definition" markdown="1">
 
@@ -279,7 +279,7 @@ Tính chất hay dùng (kiểm tra trực tiếp từ định nghĩa):
 
 **Vai trò với truy hồi.** Đa thức đặc trưng có **hệ số thực** thì nếu $$r$$ là nghiệm phức thì $$\overline{r}$$ cũng là nghiệm. Do đó nghiệm phức luôn xuất hiện **theo cặp liên hợp** — đây là lý do dạng sin–cos có đúng hai hằng số tự do $$A,B$$ cho mỗi cặp.
 
-### 5.3. Ba cách biểu diễn
+### Ba cách biểu diễn
 
 | Dạng | Công thức | Khi dùng |
 |:---|:---|:---|
@@ -287,7 +287,7 @@ Tính chất hay dùng (kiểm tra trực tiếp từ định nghĩa):
 | **Hình học (Argand)** | điểm $$(a,b)$$ / vector $$\overrightarrow{Oz}$$ | trực giác, khoảng cách, góc |
 | **Cực / mũ** | $$z = \rho(\cos\theta + i\sin\theta) = \rho e^{i\theta}$$ | **nhân** và **lũy thừa** $$z^n$$ |
 
-### 5.4. Dạng đại số — phép toán cơ bản
+### Dạng đại số — phép toán cơ bản
 
 Với $$z_1 = a + bi$$, $$z_2 = c + di$$:
 
@@ -318,7 +318,7 @@ $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 
-### 5.5. Biểu diễn hình học — mặt phẳng phức
+### Biểu diễn hình học — mặt phẳng phức
 
 Mỗi $$z = a + bi$$ tương ứng **một điểm** $$(a,b)$$ trên **mặt phẳng phức** (complex plane / Argand diagram):
 
@@ -331,7 +331,7 @@ Mỗi $$z = a + bi$$ tương ứng **một điểm** $$(a,b)$$ trên **mặt ph�
 
 <p class="textbook-figure-caption" data-figure="10.8a">Số phức $$z = a + bi$$ tương ứng điểm $$(a,b)$$ trên mặt phẳng Argand. Ví dụ $$z = 3 + 2i$$.</p>
 
-### 5.6. Mô-đun và argument
+### Mô-đun và argument
 
 <div class="textbook-definition" markdown="1">
 
@@ -362,7 +362,7 @@ Tính chất mô-đun:
 **Với HTTH**: $$\rho = \lvert r \rvert$$ của nghiệm đặc trưng quyết định hành vi dãy khi $$n \to \infty$$ — tắt ($$\rho < 1$$), biên độ ổn định / chu kỳ ($$\rho = 1$$), hoặc phình ($$\rho > 1$$). Đây là cầu nối sang phân tích ổn định hệ tuyến tính rời rạc và bộ lọc tín hiệu.
 </div>
 
-### 5.7. Dạng cực và dạng mũ
+### Dạng cực và dạng mũ
 
 <div class="textbook-definition" markdown="1">
 
@@ -418,7 +418,7 @@ Kiểm tra ngược: $$\sqrt{2}\cdot \frac{\sqrt{2}}{2} + i\sqrt{2}\cdot\frac{\s
 
 </div>
 
-### 5.8. Định lý De Moivre
+### Định lý De Moivre
 
 <div class="textbook-theorem" markdown="1">
 
@@ -450,7 +450,7 @@ $$
 
 </div>
 
-### 5.9. Từ nghiệm phức đến dạng sin–cos (giải thích từng bước)
+### Từ nghiệm phức đến dạng sin–cos (giải thích từng bước)
 
 Mục này trả lời hai câu hỏi liên tiếp:
 
@@ -752,7 +752,7 @@ Phần thực đó, nhờ De Moivre, chính là tổ hợp $$\rho^n(A\cos n\thet
 
 </div>
 
-### 5.10. Các ví dụ giải HTTH với nghiệm phức
+### Các ví dụ giải HTTH với nghiệm phức
 
 <div class="textbook-example" markdown="1">
 
@@ -860,7 +860,7 @@ Từ điều kiện đầu: $$A = 1$$, $$B = -1$$. Vì $$\rho < 1$$, $$a_n \to 0
 
 </div>
 
-### 5.11. Bảng so sánh ba trường hợp (bậc 2)
+### Bảng so sánh ba trường hợp (bậc 2)
 
 | $$\Delta$$ | Nghiệm đặc trưng | Dạng $$a_n$$ |
 |:---:|:---|:---|
@@ -878,7 +878,7 @@ Từ điều kiện đầu: $$A = 1$$, $$B = -1$$. Vì $$\rho < 1$$, $$a_n \to 0
 
 <p class="textbook-figure-caption" data-figure="10.8">Nhắc lại: Fibonacci thuộc trường hợp nghiệm **thực** phân biệt với tỷ lệ vàng $$\varphi = (1+\sqrt{5})/2$$ — đối lập với các ví dụ phức ở trên, nhưng cùng khung phương trình đặc trưng.</p>
 
-## 6. Bậc cao hơn
+## Bậc cao hơn
 
 Với truy hồi bậc $k$,
 

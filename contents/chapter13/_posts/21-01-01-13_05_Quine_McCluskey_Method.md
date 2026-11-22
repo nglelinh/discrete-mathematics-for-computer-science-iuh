@@ -48,7 +48,7 @@ Kết quả là một SOP hai tầng tối tiểu, hoặc một trong vài cover
 
 </div>
 
-## 1. Vì sao cần thuật toán bảng?
+## Vì sao cần thuật toán bảng?
 
 K-map rất trực quan với **hai đến bốn** biến: mỗi ô là một nguyên nhân hạng $$n$$ (minterm), ô kề khác đúng một bit, khoanh nhóm là áp dụng $$xy + x\bar y = x$$ “bằng mắt”. Khi có **năm biến trở lên**, lưới chật, wrap-around nhiều hướng, và dễ bỏ sót nhóm hợp lệ.
 
@@ -68,7 +68,7 @@ Trên lớp, ta luyện tay với ví dụ **ba–bốn** biến để nắm quy
 
 <p class="textbook-figure-caption" data-figure="13.22">Cùng mục tiêu tối thiểu SOP (tổng các tích): K-map trên lưới; Quine–McCluskey trên bảng.</p>
 
-## 2. Phần 1 — Tìm dạng tổng chuẩn tắc thu gọn
+## Phần 1 — Tìm dạng tổng chuẩn tắc thu gọn
 
 ### (sinh nguyên nhân nguyên tố)
 
@@ -98,7 +98,7 @@ Chuỗi dán càng dài, tích càng ngắn (ít litera hơn), giống nhóm $$2
 
 <p class="textbook-figure-caption" data-figure="13.23">Điểm xuất phát là tập nguyên nhân hạng $$n$$ — các hàng $$F = 1$$ — tương ứng dạng nối rời chính tắc (SOP chuẩn).</p>
 
-## 3. Phần 2 — Tìm dạng tổng chuẩn tắc tối thiểu
+## Phần 2 — Tìm dạng tổng chuẩn tắc tối thiểu
 
 ### (bảng phủ và nguyên tố cốt yếu)
 
@@ -126,7 +126,7 @@ Kết quả: $$F$$ viết thành tổng các nguyên nhân trong (các nguyên t
 
 Trên K-map, các bước tương ứng là chọn tế bào cốt yếu rồi hoàn tất phủ (Mục 13.4).
 
-## 4. Don't-care trong Quine–McCluskey
+## Don't-care trong Quine–McCluskey
 
 Đôi khi đặc tả **không quan tâm** đầu ra tại vài tổ hợp (mã không dùng, trạng thái không tới). Các vị trí đó gọi là **don't-care**, ký hiệu $$d$$ hoặc $$X$$.
 
@@ -151,7 +151,7 @@ $$
 
 </div>
 
-## 5. Ví dụ bốn biến
+## Ví dụ bốn biến
 
 Xét $$F(a,b,c,d)$$ bằng **1** tại các hàng **0, 2, 3, 5, 7, 8, 10, 11, 13, 15**.
 
@@ -348,7 +348,7 @@ Cùng tập minterm **5, 6, 7, 9, 11, 15** trên K-map bốn biến cho các nh�
 
 </div>
 
-## 6. So sánh với K-map
+## So sánh với K-map
 
 | Phương pháp | Đặc trưng | Phạm vi điển hình |
 |:---|:---|:---|

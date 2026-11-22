@@ -29,7 +29,7 @@ Ba bài đồ thị “cốt lõi” — nền cho hàng loạt hardness khác.
 
 </div>
 
-## 1. $$3\mathrm{SAT}\le_p\mathrm{INDEPENDENT\text{-}SET}$$
+## $$3\mathrm{SAT}\le_p\mathrm{INDEPENDENT\text{-}SET}$$
 
 **Construction.**  
 Mệnh đề $$C_j=\{\ell_{j1},\ell_{j2},\ell_{j3}\}$$.  
@@ -49,13 +49,13 @@ $$k=m$$.
 
 </div>
 
-## 2. IS ≡ CLIQUE
+## IS ≡ CLIQUE
 
 $$\overline{G}$$: cạnh khi $$G$$ không có.  
 $$S$$ IS trong $$G$$ ⇔ $$S$$ clique trong $$\overline{G}$$.  
 $$f(G,k)=(\overline{G},k)$$ trong $$O(n^2)$$; khả nghịch.
 
-## 3. IS ≤ₚ VC
+## IS ≤ₚ VC
 
 **Bổ đề.** $$S$$ IS ⇔ $$V\setminus S$$ vertex cover.
 

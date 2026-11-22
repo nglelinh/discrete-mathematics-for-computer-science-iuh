@@ -47,7 +47,7 @@ Hai điều kiện này **hoàn toàn tương đương** về mặt logic, dù c
 **Từ khóa**: logical equivalence, De Morgan, DNF, CNF, reduced form, Boolean function, canonical form.
 </div>
 
-## 1. Tương đương logic
+## Tương đương logic
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hai mệnh đề phức hợp $$P$$ và $$Q$$ được gọi là **tương đương logic** nếu chúng có cùng giá trị chân trị trong mọi phép gán giá trị cho các biến mệnh đề. Khi đó ta viết:
@@ -84,7 +84,7 @@ Hai cột cuối giống nhau ở mọi hàng, do đó $$p \to q \equiv \neg p \
 **Ghi nhớ**: Tương đương logic là quan hệ "thay thế an toàn". Nếu $$P \equiv Q$$, ta có thể thay $$P$$ bằng $$Q$$ trong bất kỳ biểu thức lớn hơn nào mà không đổi bảng chân trị của toàn bộ biểu thức.
 </div>
 
-## 2. Các luật tương đương cơ bản
+## Các luật tương đương cơ bản
 
 
 | Tên luật | Công thức tiêu biểu | Ghi chú |
@@ -191,7 +191,7 @@ if (not is_admin) or (not is_active):
 
 Hai điều kiện **luôn cho cùng kết quả** trên mọi đầu vào. Đây là lý do De Morgan cực kỳ quan trọng khi rút gọn biểu thức trong lập trình và tối ưu truy vấn.
 
-## 3. Biến đổi biểu thức logic
+## Biến đổi biểu thức logic
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Rút gọn biểu thức $$\neg(p \lor \neg q) \land (r \lor \neg r)$$.
@@ -207,9 +207,9 @@ $$\begin{aligned}
 </div>
 
 
-## 4. Công thức Dạng Rút gọn (Reduced Forms)
+## Công thức Dạng Rút gọn (Reduced Forms)
 
-### 4.0. Định nghĩa Dạng Rút gọn
+### Định nghĩa Dạng Rút gọn
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một biểu thức logic $$E$$ được gọi là **dạng rút gọn** (reduced form) nếu nó thỏa mãn đồng thời 3 điều kiện sau:
@@ -231,7 +231,7 @@ $$\begin{aligned}
 </div>
 
 
-### 4.1. Vì sao cần rút gọn?
+### Vì sao cần rút gọn?
 
 Một biểu thức logic có thể viết bằng rất nhiều cách khác nhau — nhưng không phải cách nào cũng tiện lợi. Trong thực tế, biểu thức dài thường đồng nghĩa với:
 
@@ -241,7 +241,7 @@ Một biểu thức logic có thể viết bằng rất nhiều cách khác nhau
 
 **Bài toán rút gọn**: Cho một biểu thức logic, tìm biểu thức **ngắn nhất có thể** mà vẫn tương đương logic với biểu thức ban đầu.
 
-### 4.2. Rút gọn bằng Luật Tương đương
+### Rút gọn bằng Luật Tương đương
 
 Các luật tương đương ở Section 2 là công cụ chính để rút gọn. Chiến lược chung:
 
@@ -275,7 +275,7 @@ if x > 0:
 
 **Quan sát chính**: Hai hội $$p \land q$$ và $$p \land \neg q$$ chỉ khác nhau ở một literal ($$q$$ và $$\neg q$$). Khi gặp cặp như vậy, ta luôn gộp được thành $$p$$ (mất biến $$q$$). Đây là ý tưởng nền tảng của mọi thuật toán rút gọn: **phát hiện các cặp chỉ khác nhau một literal và gộp chúng**.
 
-## 5. Dạng chuẩn tắc tuyển DNF
+## Dạng chuẩn tắc tuyển DNF
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: **Dạng chuẩn tắc tuyển** (Disjunctive Normal Form, DNF) là biểu thức có dạng tuyển của các hội, trong đó mỗi thành phần nhỏ là một literal hoặc phủ định của literal:
@@ -329,7 +329,7 @@ $$
 
 Với hai biến, bảng chân trị tạo thành lưới 2×2; mỗi ô tương ứng một phép gán. DNF đầy đủ "tô" mọi ô đúng bằng một term (hình chữ nhật nhỏ); khi rút gọn, các ô liền kề được gộp thành hình chữ nhật lớn hơn, cho biểu thức ngắn hơn. Ví dụ trên có thể rút gọn thành $$\neg p \lor q$$. Đây là ý tưởng nền tảng của thuật toán tối thiểu hóa biểu thức Boolean trong trình biên dịch và tối ưu truy vấn.
 
-## 6. Dạng chuẩn tắc hội CNF
+## Dạng chuẩn tắc hội CNF
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: **Dạng chuẩn tắc hội** (Conjunctive Normal Form, CNF) là biểu thức có dạng hội của các tuyển:
@@ -413,7 +413,7 @@ def is_satisfied(p, q, r):
 
 Mỗi `clause` là một ràng buộc. SAT solver phải tìm một assignment sao cho **không có ràng buộc nào bị vi phạm**. Đây là lý do CNF là dạng đầu vào tự nhiên cho hầu hết các bộ giải SAT hiện đại.
 
-## 7. Các định lý quan trọng về DNF và CNF
+## Các định lý quan trọng về DNF và CNF
 
 ### Định lý 1: Sự tồn tại DNF và CNF
 **Mọi biểu thức mệnh đề đều có thể đưa về DNF và CNF.**
@@ -476,7 +476,7 @@ Do đó $$ D_1 \equiv D_2 $$.
 - **Query optimization**: chuẩn hóa điều kiện lọc trong SQL để database engine xử lý hiệu quả hơn.
 - **SAT solver**: nhận đầu vào dạng CNF và tìm cách gán biến sao cho biểu thức đúng.
 
-## 8. Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong Khoa học Máy tính
 
 - **Tối ưu điều kiện trong chương trình**: Compiler có thể thay `not (a and b)` bằng `(not a) or (not b)` để đơn giản hóa nhánh.
 - **SAT solver**: Nhiều bài toán lập lịch, kiểm chứng phần mềm, giải Sudoku và phân tích phụ thuộc được mã hóa thành CNF.

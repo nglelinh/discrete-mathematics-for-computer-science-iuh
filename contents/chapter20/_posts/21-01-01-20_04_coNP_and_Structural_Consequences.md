@@ -30,7 +30,7 @@ $$NP$$: chứng chỉ cho **Yes**. $$\mathrm{coNP}$$: chứng chỉ cho **No**. 
 
 </div>
 
-## 1. Định nghĩa
+## Định nghĩa
 
 <div class="textbook-definition" markdown="1">
 
@@ -46,7 +46,7 @@ Tương đương: No-instance có chứng chỉ ngắn kiểm đa thức.
 
 </div>
 
-## 2. Định lý
+## Định lý
 
 <div class="textbook-theorem" markdown="1">
 
@@ -72,7 +72,7 @@ Tương đương: No-instance có chứng chỉ ngắn kiểm đa thức.
 
 **Ý chứng minh.** Mọi $$A\in NP$$ có $$A\le_p L$$; membership $$\mathrm{coNP}$$ “kéo” theo rút gọn (Arora–Barak). Chiều kia đối xứng. $$\square$$
 
-## 3. Factoring (cảnh báo NCS)
+## Factoring (cảnh báo NCS)
 
 Integer factoring (dạng quyết định chuẩn) được lập luận thuộc $$NP\cap\mathrm{coNP}$$ nhưng **không** biết NPC.  
 → RSA **không** dựa trên “factoring NP-complete”.

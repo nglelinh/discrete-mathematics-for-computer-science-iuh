@@ -29,7 +29,7 @@ NPC chặn exact poly-time (nếu $$P\neq NP$$). **Xấp xỉ** hỏi: poly-time
 
 </div>
 
-## 1. Định nghĩa
+## Định nghĩa
 
 <div class="textbook-definition" markdown="1">
 
@@ -39,7 +39,7 @@ Minimization: $$A(I)\le\rho\cdot\mathrm{OPT}(I)$$, $$\rho\ge 1$$.
 
 </div>
 
-## 2. Vertex Cover ratio 2
+## Vertex Cover ratio 2
 
 ```text
 while còn cạnh:
@@ -66,7 +66,7 @@ Lấy cạnh chưa phủ, thêm cả hai đầu mút; so với phủ đỉnh t�
 </div>
 <script src="{{ '/public/js/explainers/complexity-explainer.js' | relative_url }}"></script>
 
-## 3. Metric TSP
+## Metric TSP
 
 <div class="textbook-theorem" markdown="1">
 
@@ -76,7 +76,7 @@ Lấy cạnh chưa phủ, thêm cả hai đầu mút; so với phủ đỉnh t�
 
 MST + matching đỉnh bậc lẻ + shortcut (Vazirani Ch.3).
 
-## 4. Không xấp xỉ
+## Không xấp xỉ
 
 TSP không metric: không ratio hằng trừ $$P=NP$$ (Sahni–Gonzalez).  
 PCP ⇒ inapproximability MAX-3SAT, CLIQUE, … (Arora–Barak).

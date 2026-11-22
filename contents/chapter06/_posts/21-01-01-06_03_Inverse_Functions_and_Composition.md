@@ -27,7 +27,7 @@ Trong phần mềm, dữ liệu hiếm khi chỉ đi qua một bước: nó thư
 **Từ khóa**: hàm hợp, hàm nghịch đảo, đồng nhất, composition.
 </div>
 
-## 1. Hàm hợp
+## Hàm hợp
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Cho $$f:A\to B$$ và $$g:B\to C$$. **Hàm hợp** của $$g$$ sau $$f$$ là hàm $$g\circ f:A\to C$$ xác định bởi:
@@ -57,7 +57,7 @@ Hai biểu thức thường khác nhau; phép hợp không giao hoán.
 <p class="textbook-figure-caption" data-figure="6.13">Hàm hợp $$(g \circ f)(x) = g(f(x))$$ — thực hiện f trước, rồi g; kết quả ánh xạ A → C.</p>
 </div>
 
-## 2. Điều kiện để hợp được
+## Điều kiện để hợp được
 
 Để $$g\circ f$$ xác định, mọi giá trị $$f(x)$$ phải thuộc domain của $$g$$. Nói cách khác:
 
@@ -73,7 +73,7 @@ $$f(A)\subseteq \operatorname{dom}(g).$$
 <p class="textbook-figure-caption" data-figure="6.14">Để $$g \circ f$$ xác định, mọi giá trị $$f(x)$$ phải thuộc domain của g — output của bước 1 là input của bước 2.</p>
 </div>
 
-## 3. Tính kết hợp của hàm hợp
+## Tính kết hợp của hàm hợp
 
 <div class="textbook-theorem" markdown="1">
 **Định lý**: Nếu các hàm hợp xác định, thì:
@@ -102,7 +102,7 @@ Hai vế cho cùng giá trị với mọi $$x$$, nên hai hàm bằng nhau.
 ![Tính kết hợp — (h∘g)∘f = h∘(g∘f)](/discrete-mathematics-for-computer-science-iuh/img/course/Example_for_a_composition_of_two_functions.svg)
 
 <p class="textbook-figure-caption" data-figure="6.15">Phép hợp có tính kết hợp nhưng không giao hoán — thứ tự ghép hàm quan trọng.</p>
-## 4. Hàm đồng nhất
+## Hàm đồng nhất
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hàm đồng nhất trên $$A$$ là $$id_A:A\to A$$, $$id_A(x)=x$$.
@@ -125,7 +125,7 @@ Hàm đồng nhất đóng vai trò phần tử trung hòa của phép hợp.
 ![Hàm đồng nhất id(x) = x](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
 <p class="textbook-figure-caption" data-figure="6.16">Hàm đồng nhất $$id_A$$ là phần tử trung hòa — $$f \circ id = id \circ f = f$$.</p>
-## 5. Hàm nghịch đảo
+## Hàm nghịch đảo
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Với $$f:A\to B$$, một hàm $$g:B\to A$$ được gọi là **hàm nghịch đảo** của $$f$$ nếu:
@@ -156,7 +156,7 @@ Ngược lại, nếu $$f$$ song ánh, mỗi $$y\in B$$ có đúng một tiền 
 ![Hàm nghịch đảo — chỉ tồn tại khi song ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
 <p class="textbook-figure-caption" data-figure="6.17">Hàm nghịch đảo $$f^{-1}$$ tồn tại khi và chỉ khi f song ánh — đảo chiều mũi tên mà không mất thông tin.</p>
-## 6. Tìm hàm nghịch đảo
+## Tìm hàm nghịch đảo
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Tìm nghịch đảo của $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=3x-2$$.
@@ -181,11 +181,11 @@ $$f^{-1}(x)=\frac{x+2}{3}.$$
 </div>
 </div>
 
-## 7. Khi nào không có nghịch đảo?
+## Khi nào không có nghịch đảo?
 
 Hàm $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^2$$ không có nghịch đảo trên toàn $$\mathbb{R}$$ vì không đơn ánh: $$f(2)=f(-2)$$. Nếu hạn chế domain thành $$[0,\infty)$$ và codomain $$[0,\infty)$$, hàm trở thành song ánh và có nghịch đảo $$f^{-1}(x)=\sqrt{x}$$.
 
-## 10. Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong Khoa học Máy tính
 
 ```python
 def clean(s):

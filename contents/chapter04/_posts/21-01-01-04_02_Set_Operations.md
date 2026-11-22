@@ -27,7 +27,7 @@ excerpt: "Ở mục trước, chúng ta đã định nghĩa tập hợp, phần 
 
 ## Các phép toán cơ bản
 
-### 1. Hợp (Union) -- ∪
+### Hợp (Union) -- ∪
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: A ∪ B = {x | x ∈ A hoặc x ∈ B}
@@ -60,7 +60,7 @@ print(Python | Java)        # {'An', 'Bình', 'Chi', 'Dung', 'Em'}
 print(Python.union(Java))   # Tương tự
 ```
 
-### 2. Giao (Intersection) -- ∩
+### Giao (Intersection) -- ∩
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: A ∩ B = {x | x ∈ A và x ∈ B}
@@ -94,7 +94,7 @@ print(Python.intersection(Java))
 ![Hai tập rời nhau (disjoint)](/discrete-mathematics-for-computer-science-iuh/img/course/Veranschaulichung_von_disjunkten_Mengen.svg)
 
 <p class="textbook-figure-caption" data-figure="4.11">Khi A ∩ B = ∅, hai tập không có phần tử chung — vùng giao trên biểu đồ Venn rỗng.</p>
-### 3. Hiệu (Difference) -- \
+### Hiệu (Difference) -- \
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: A \ B = {x | x ∈ A và x ∉ B}
@@ -119,7 +119,7 @@ print(Java - Python)    # {'Dung', 'Em'} -- học Java nhưng không học Pytho
 </div>
 
 
-### 4. Phần bù (Complement) -- Aᶜ
+### Phần bù (Complement) -- Aᶜ
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Aᶜ = U \ A = {x ∈ U | x ∉ A}
@@ -139,7 +139,7 @@ Phần bù phụ thuộc vào tập vũ trụ U. Nếu thay đổi U, phần bù
 <p class="textbook-figure-caption" data-figure="4.13">Phần bù Aᶜ = U \ A — mọi phần tử trong tập vũ trụ U nhưng không thuộc A.</p>
 </div>
 
-### 5. Hiệu đối xứng (Symmetric Difference) -- △
+### Hiệu đối xứng (Symmetric Difference) -- △
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: A △ B = (A \ B) ∪ (B \ A) = (A ∪ B) \ (A ∩ B)
@@ -198,7 +198,7 @@ not (x in A and x in B) == (x not in A) or (x not in B)
 
 ## Ứng dụng trong Khoa học Máy tính
 
-### 1. Cơ sở dữ liệu (SQL)
+### Cơ sở dữ liệu (SQL)
 
 ![Cơ sở dữ liệu quan hệ và phép JOIN](/discrete-mathematics-for-computer-science-iuh/img/course/Square_join.png)
 
@@ -211,7 +211,7 @@ Các phép toán tập hợp tương ứng trực tiếp với các truy vấn S
 | A ∩ B | `SELECT * FROM A INTERSECT SELECT * FROM B` | Giao |
 | A \ B | `SELECT * FROM A EXCEPT SELECT * FROM B` | Hiệu |
 
-### 2. Lọc dữ liệu trong Python
+### Lọc dữ liệu trong Python
 
 ```python
 # Giả sử có hai danh sách người dùng
@@ -230,7 +230,7 @@ both = service_a & service_b
 exactly_one = service_a ^ service_b
 ```
 
-### 3. Bloom Filter
+### Bloom Filter
 
 Bloom filter là cấu trúc dữ liệu xác suất dùng để kiểm tra "một phần tử có thuộc tập hợp không". Nó là ứng dụng thông minh của phép toán tập hợp và hàm băm, tiết kiệm bộ nhớ nhưng có thể cho kết quả dương tính giả (false positive).
 

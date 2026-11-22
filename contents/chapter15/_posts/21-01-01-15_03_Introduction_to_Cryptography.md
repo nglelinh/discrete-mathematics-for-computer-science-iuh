@@ -39,7 +39,7 @@ Số học modulo cho phép thao tác trên số dư; **mật mã học** dùng 
 
 </div>
 
-## 1. Hệ mật mã
+## Hệ mật mã
 
 <div class="textbook-definition" markdown="1">
 
@@ -56,7 +56,7 @@ Số học modulo cho phép thao tác trên số dư; **mật mã học** dùng 
 | **Integrity** | Phát hiện sửa đổi (hash, MAC) |
 | **Authentication** | Xác minh nguồn (chữ ký số) |
 
-## 2. Mã hóa cổ điển
+## Mã hóa cổ điển
 
 <div class="textbook-definition" markdown="1">
 
@@ -84,7 +84,7 @@ $$
 
 </div>
 
-## 3. RSA
+## RSA
 
 **Vấn đề trao đổi khóa.** Mã đối xứng cần hai bên đã chia sẻ $$K$$; kênh nghe lén làm việc đó khó. Khóa công khai cho phép công bố $$K_{\mathrm{pub}}$$ và giữ riêng $$K_{\mathrm{priv}}$$.
 
@@ -131,7 +131,7 @@ Tìm nhân chứng cho hợp số, xem số Carmichael và các cơ sở “nói
 <div data-demo="crypto-explainer" data-tab="miller" data-n="561" data-a="2"></div>
 </div>
 
-## 4. Diffie–Hellman
+## Diffie–Hellman
 
 ![Diffie–Hellman](/discrete-mathematics-for-computer-science-iuh/img/course/Number_diffie_hellman.svg)
 
@@ -159,7 +159,7 @@ Alice, Bob và Eve với p nhỏ: hai bên ra cùng khóa, Eve dò logarit rời
 <div data-demo="crypto-explainer" data-tab="dh"></div>
 </div>
 
-## 5. Chữ ký số
+## Chữ ký số
 
 <div class="textbook-definition" markdown="1">
 
@@ -169,7 +169,7 @@ Alice, Bob và Eve với p nhỏ: hai bên ra cùng khóa, Eve dò logarit rời
 
 RSA (mô hình đơn giản): $$S \equiv M^d \pmod n$$; xác minh $$S^e \equiv M \pmod n$$. Thực tế ký **hash** (SHA-256) của tài liệu, không ký trực tiếp file lớn.
 
-## 6. Thử nghiệm tương tác
+## Thử nghiệm tương tác
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="rsa-simulator"></div>

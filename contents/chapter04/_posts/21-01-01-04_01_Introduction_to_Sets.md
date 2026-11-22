@@ -54,7 +54,7 @@ Trong chương này chúng ta xây dựng **lý thuyết tập hợp** — nền
 
 ## Cách biểu diễn tập hợp
 
-### 1. Liệt kê (Roster Method)
+### Liệt kê (Roster Method)
 
 Liệt kê tất cả các phần tử trong dấu ngoặc nhọn. Đây là cách trực quan nhất, phù hợp với tập có ít phần tử.
 
@@ -69,7 +69,7 @@ Liệt kê tất cả các phần tử trong dấu ngoặc nhọn. Đây là cá
 <p class="textbook-figure-caption" data-figure="4.2">Phương pháp liệt kê — mỗi phần tử trong tập phải **riêng biệt** và được ghi rõ trong dấu ngoặc nhọn.</p>
 </div>
 
-### 2. Mô tả tính chất (Set-Builder Notation)
+### Mô tả tính chất (Set-Builder Notation)
 
 Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữu ích khi tập có quá nhiều phần tử hoặc vô hạn.
 
@@ -87,7 +87,7 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 </div>
 
 
-### 3. Sử dụng khoảng (cho số thực)
+### Sử dụng khoảng (cho số thực)
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
@@ -100,7 +100,7 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 <p class="textbook-figure-caption" data-figure="4.4">Minh họa khoảng đóng [a, b], khoảng mở (a, b) và khoảng nửa mở trên trục số thực.</p>
 </div>
 
-### 2. Tập hợp con (Subset)
+### Tập hợp con (Subset)
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: A ⊆ B nếu mọi phần tử của A đều thuộc B.
@@ -136,7 +136,7 @@ print({'c'}.issubset(A))  # False
 ```
 </div>
 
-### 3. Tập hợp bằng nhau
+### Tập hợp bằng nhau
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: A = B nếu A ⊆ B và B ⊆ A.
@@ -145,7 +145,7 @@ print({'c'}.issubset(A))  # False
 
 Đây là cách chứng minh hai tập hợp bằng nhau phổ biến nhất: chứng minh tập này là con của tập kia và ngược lại.
 
-### 4. Lực lượng (Cardinality)
+### Lực lượng (Cardinality)
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Số phần tử của tập hợp A, ký hiệu |A| hoặc #A.

@@ -31,7 +31,7 @@ excerpt: "Ở các mục trước chúng ta đã định nghĩa hàm sinh, dùng
 <p class="textbook-figure-caption" data-figure="11.25">Đa thức đếm codeword theo trọng số Hamming — họ hàng gần của hàm sinh trong coding theory.</p>
 ## Phần 1: Euler và cú nhảy năm 1748
 
-### 1.1. Euler nhìn dãy số như đối tượng đại số
+### Euler nhìn dãy số như đối tượng đại số
 
 Leonhard Euler là bậc thầy của việc nhìn ra cấu trúc ẩn trong những thứ tưởng rời rạc.
 Thay vì chỉ xem dãy số là danh sách,
@@ -49,7 +49,7 @@ $$
 </div>
 Ý tưởng đó mở cánh cửa cực lớn.
 
-### 1.2. Vì sao cách nhìn này mạnh
+### Vì sao cách nhìn này mạnh
 
 Khi biến bài toán đếm thành bài toán thao tác biểu thức,
 ta có thể dùng đại số,
@@ -63,7 +63,7 @@ mà khoa học máy tính rất quen thuộc.
 
 ## Phần 2: Đếm tổ hợp bằng hàm sinh
 
-### 2.1. Hệ số là câu trả lời đếm
+### Hệ số là câu trả lời đếm
 
 Giả sử ta muốn biết có bao nhiêu cách tạo tổng nào đó từ các lựa chọn nhỏ.
 Generating function cho phép mã hóa mỗi lựa chọn thành một thừa số,
@@ -82,7 +82,7 @@ $$
 Khi nhân nhiều chuỗi như vậy,
 hệ số của $x^n$ nói số cách đạt tổng $n$.
 
-### 2.2. Partition problems
+### Partition problems
 
 Một ví dụ cổ điển:
 đếm số cách phân tích một số nguyên thành tổng các số dương.
@@ -90,7 +90,7 @@ Một ví dụ cổ điển:
 Đây là kiểu bài toán mà liệt kê tay rất nhanh trở nên bất lực,
 nhưng generating functions lại đặc biệt tự nhiên.
 
-### 2.3. Vì sao dân CS nên quan tâm
+### Vì sao dân CS nên quan tâm
 
 Không phải ai cũng cần giải partition identities mỗi ngày.
 Nhưng generating functions rèn một kỹ năng rất quý:
@@ -100,7 +100,7 @@ thấy cách mã hóa cấu trúc rời rạc vào biểu diễn đại số đ�
 
 ## Phần 3: Probability generating functions
 
-### 3.1. Khi xác suất cũng được đóng gói bằng chuỗi
+### Khi xác suất cũng được đóng gói bằng chuỗi
 
 Nếu biến ngẫu nhiên rời rạc $X$ nhận các giá trị không âm,
 ta có probability generating function:
@@ -114,7 +114,7 @@ $$
 Nhờ đó,
 phân phối xác suất được gói lại thành một object đại số thuận tiện.
 
-### 3.2. Tại sao cách này hữu ích
+### Tại sao cách này hữu ích
 
 PGF giúp:
 
@@ -127,7 +127,7 @@ PGF giúp:
 ta lại thấy pattern quen thuộc:
 một cấu trúc phức tạp được biến thành hàm để thao tác dễ hơn.
 
-### 3.3. Cầu nối sang queueing và stochastic systems
+### Cầu nối sang queueing và stochastic systems
 
 Trong các hệ thống như hàng đợi,
 traffic processes,
@@ -138,7 +138,7 @@ generating functions từng là công cụ chuẩn để phân tích phân phố
 
 ## Phần 4: Giải recurrence khó bằng generating functions
 
-### 4.1. Khi recurrence không còn dễ đoán nghiệm
+### Khi recurrence không còn dễ đoán nghiệm
 
 Một số recurrence đơn giản có thể giải trực tiếp.
 Nhưng nhiều recurrence phức tạp hơn
@@ -146,7 +146,7 @@ trở nên dễ xử lý nếu ta nhân cả hai vế với $x^n$,
 cộng theo `n`,
 và biến toàn bộ bài toán thành quan hệ giữa các generating functions.
 
-### 4.2. Ý tưởng chuyển miền biểu diễn
+### Ý tưởng chuyển miền biểu diễn
 
 Đây là tư duy rất “computer science”:
 đổi representation để thao tác tốt hơn.
@@ -154,7 +154,7 @@ và biến toàn bộ bài toán thành quan hệ giữa các generating functio
 Giống như FFT đổi miền thời gian sang miền tần số,
 generating functions đổi bài toán dãy số sang bài toán hàm chuỗi.
 
-### 4.3. Ứng dụng trong algorithm analysis
+### Ứng dụng trong algorithm analysis
 
 Khi phân tích các thuật toán đếm,
 process ngẫu nhiên,
@@ -165,7 +165,7 @@ generating functions thường cho biểu thức gọn và insight sâu hơn so 
 
 ## Phần 5: Coding theory và đếm codewords
 
-### 5.1. Mã hóa không chỉ là biến bit thành bit
+### Mã hóa không chỉ là biến bit thành bit
 
 Coding theory cần hiểu:
 
@@ -174,7 +174,7 @@ Coding theory cần hiểu:
 - khoảng cách Hamming thế nào,
 - khả năng phát hiện/sửa lỗi mạnh đến đâu.
 
-### 5.2. Weight enumerator như một loại generating function
+### Weight enumerator như một loại generating function
 
 Một mã có thể gắn với đa thức đếm số codewords theo trọng số.
 Đây là họ hàng rất gần của generating functions.
@@ -184,7 +184,7 @@ ta phân tích được cấu trúc của mã,
 khả năng chống lỗi,
 và đôi khi suy ra các đẳng thức sâu.
 
-### 5.3. Từ lý thuyết đến truyền thông và lưu trữ
+### Từ lý thuyết đến truyền thông và lưu trữ
 
 Error-correcting codes đi vào:
 

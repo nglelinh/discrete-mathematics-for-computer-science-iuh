@@ -38,7 +38,7 @@ Chương 12 đã giới thiệu đồ thị tổng quát. **Cây** (*tree*) là 
 
 </div>
 
-## 1. Định nghĩa cây
+## Định nghĩa cây
 
 <div class="textbook-definition" markdown="1">
 
@@ -78,7 +78,7 @@ Chương 12 đã giới thiệu đồ thị tổng quát. **Cây** (*tree*) là 
 
 </div>
 
-## 2. Cây khung
+## Cây khung
 
 <div class="textbook-definition" markdown="1">
 
@@ -88,7 +88,7 @@ Chương 12 đã giới thiệu đồ thị tổng quát. **Cây** (*tree*) là 
 
 Mọi đồ thị vô hướng liên thông có ít nhất một cây khung. Khi cạnh mang trọng số, việc chọn cây khung **tổng trọng số nhỏ nhất** là bài toán MST (Mục 16.3).
 
-## 3. Biểu diễn và ứng dụng
+## Biểu diễn và ứng dụng
 
 ```python
 # Danh sách con (children list) — cây có gốc

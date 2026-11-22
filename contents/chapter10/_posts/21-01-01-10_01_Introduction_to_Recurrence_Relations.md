@@ -69,7 +69,7 @@ Trong đó:
 </div>
 
 
-#### 1. Dãy Fibonacci và bài toán đôi thỏ
+#### Dãy Fibonacci và bài toán đôi thỏ
 
 **Bài toán gốc** (Fibonacci, 1202): Một đôi thỏ (gồm một thỏ đực và một thỏ cái) cứ mỗi tháng đẻ được một đôi thỏ con (cũng gồm một đực và một cái). Mỗi đôi thỏ con, khi tròn hai tháng tuổi, lại mỗi tháng đẻ ra một đôi thỏ con và quá trình sinh nở cứ thế tiếp diễn. Hỏi có bao nhiêu đôi thỏ sau $$n$$ tháng?
 
@@ -97,7 +97,7 @@ $$F_n = F_{n-1} + F_{n-2}, \quad F_1 = 1, F_2 = 1$$
 **Giai thoại**: Leonardo Fibonacci — nhà toán học người Ý thời Trung Cổ — không hề biết rằng dãy số mang tên ông sau này lại xuất hiện trong đến thế: tỷ lệ vàng trong kiến trúc, đường xoắn ốc trong vỏ ốc, sự sắp xếp lá cây, và thậm chí là thuật toán tìm kiếm trong khoa học máy tính hiện đại.
 </div>
 
-#### 2. Giai thừa
+#### Giai thừa
 
 **Quan hệ**: $$n! = n \times (n-1)!$$
 
@@ -105,7 +105,7 @@ $$F_n = F_{n-1} + F_{n-2}, \quad F_1 = 1, F_2 = 1$$
 
 **Dãy**: 1, 1, 2, 6, 24, 120, 720, ...
 
-#### 3. Tháp Hà Nội
+#### Tháp Hà Nội
 
 Trò chơi Tháp Hà Nội (Tower of Hanoi) gồm ba cọc và $$n$$ đĩa kích thước khác nhau. Mỗi lần chỉ được di chuyển một đĩa, và không được đặt đĩa lớn lên trên đĩa nhỏ.
 
@@ -125,7 +125,7 @@ Trò chơi Tháp Hà Nội (Tower of Hanoi) gồm ba cọc và $$n$$ đĩa kích
 
 ## Phân loại Quan hệ Truy hồi
 
-### 1. Theo Tính tuyến tính (Linear vs Nonlinear)
+### Theo Tính tuyến tính (Linear vs Nonlinear)
 
 Một quan hệ truy hồi được gọi là **tuyến tính** nếu nó có dạng tổng của các số hạng trước nhân với hệ số, không có tích hoặc lũy thừa giữa các số hạng.
 
@@ -142,7 +142,7 @@ Một quan hệ truy hồi được gọi là **tuyến tính** nếu nó có d�
 - $$f_n = 2f_{n-1}\cdot f_{n-2} + n$$ — **phi tuyến** (có tích hai số hạng dãy).
 - $$f_n = n\cdot f_{n-2} + n$$ — **phi tuyến theo nghĩa hệ số phụ thuộc $$n$$ nhân với $$f_{n-2}$$** trong nhiều giáo trình (không còn “hệ số hằng”); khi giải bằng đặc trưng, ta yêu cầu hệ số **hằng**.
 
-### 2. Theo Tính thuần nhất (Homogeneous vs Nonhomogeneous)
+### Theo Tính thuần nhất (Homogeneous vs Nonhomogeneous)
 
 | Loại | Dạng | Ví dụ |
 |:-----|:-----|:------|

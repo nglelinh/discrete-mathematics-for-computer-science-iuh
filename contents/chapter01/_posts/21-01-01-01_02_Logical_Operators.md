@@ -115,7 +115,7 @@ Mệnh đề trong logic được phân thành hai loại:
 **Lưu ý**: Phân loại mệnh đề sơ cấp và phức hợp giúp chúng ta xác định đâu là "nguyên tử" và đâu là "phân tử" trong biểu thức logic. Khi phân tích điều kiện trong mã nguồn, ta luôn bắt đầu bằng việc xác định các mệnh đề sơ cấp trước khi ghép chúng bằng các phép toán.
 </div>
 
-## 1. Phép phủ định (Negation) - NOT
+## Phép phủ định (Negation) - NOT
 
 **Ký hiệu**: ¬p hoặc ~p hoặc !p
 
@@ -160,7 +160,7 @@ Khi phủ định một bất đẳng thức, ta làm theo **3 bước đơn gi�
 </div>
 
 
-## 2. Phép hội (Conjunction) - AND
+## Phép hội (Conjunction) - AND
 
 **Ký hiệu**: p ∧ q
 
@@ -198,7 +198,7 @@ if order_total >= 500000 and customer_tier == "vip":
 </div>
 
 
-## 3. Phép tuyển (Disjunction) - OR
+## Phép tuyển (Disjunction) - OR
 
 **Ký hiệu**: p ∨ q
 
@@ -240,7 +240,7 @@ Kết quả gồm sản phẩm thuộc ít nhất một trong hai loại. Trong 
 </div>
 
 
-## 4. Phép kéo theo (Implication) - IF...THEN
+## Phép kéo theo (Implication) - IF...THEN
 
 **Ký hiệu**: p → q
 
@@ -404,13 +404,13 @@ Hai cột cuối cùng giống hệt → hai biểu thức **tương đương**.
 
 Dưới đây là các luật logic thường dùng để biến đổi biểu thức:
 
-### 1. Luật phủ định kép (Double Negation)
+### Luật phủ định kép (Double Negation)
 
 <div class="textbook-equation" markdown="1">
 $$\neg (\neg p) \equiv p$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-### 2. Luật De Morgan
+### Luật De Morgan
 
 <div class="textbook-equation" markdown="1">
 $$\neg (p \land q) \equiv \neg p \lor \neg q$$
@@ -425,7 +425,7 @@ $$\neg (p \lor q) \equiv \neg p \land \neg q$$
 </div>
 
 
-### 3. Luật giao hoán (Commutative)
+### Luật giao hoán (Commutative)
 
 <div class="textbook-equation" markdown="1">
 $$p \land q \equiv q \land p$$
@@ -435,7 +435,7 @@ $$p \land q \equiv q \land p$$
 $$p \lor q \equiv q \lor p$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-### 4. Luật kết hợp (Associative)
+### Luật kết hợp (Associative)
 
 <div class="textbook-equation" markdown="1">
 $$(p \land q) \land r \equiv p \land (q \land r)$$
@@ -445,7 +445,7 @@ $$(p \land q) \land r \equiv p \land (q \land r)$$
 $$(p \lor q) \lor r \equiv p \lor (q \lor r)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-### 5. Luật phân phối (Distributive)
+### Luật phân phối (Distributive)
 
 <div class="textbook-equation" markdown="1">
 $$p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$$
@@ -455,7 +455,7 @@ $$p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$$
 $$p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-### 6. Luật hấp thụ (Absorption)
+### Luật hấp thụ (Absorption)
 
 <div class="textbook-equation" markdown="1">
 $$p \land (p \lor q) \equiv p$$
@@ -465,7 +465,7 @@ $$p \land (p \lor q) \equiv p$$
 $$p \lor (p \land q) \equiv p$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-### 7. Luật đồng nhất (Identity)
+### Luật đồng nhất (Identity)
 
 <div class="textbook-equation" markdown="1">
 $$p \land T \equiv p$$
@@ -475,7 +475,7 @@ $$p \land T \equiv p$$
 $$p \lor F \equiv p$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-### 8. Luật triệt tiêu (Domination)
+### Luật triệt tiêu (Domination)
 
 <div class="textbook-equation" markdown="1">
 $$p \land F \equiv F$$
@@ -485,7 +485,7 @@ $$p \land F \equiv F$$
 $$p \lor T \equiv T$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-### 9. Luật bổ sung (Complement)
+### Luật bổ sung (Complement)
 
 <div class="textbook-equation" markdown="1">
 $$p \land \neg p \equiv F$$

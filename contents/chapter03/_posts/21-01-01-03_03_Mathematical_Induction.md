@@ -560,33 +560,33 @@ Phần ứng dụng gắn khái niệm toán học với bài toán thực tế 
 
 Quy nạp xuất hiện rất thường xuyên trong khoa học máy tính, không chỉ trong môn Toán rời rạc.
 
-### 1. Chứng minh tính đúng đắn của thuật toán
+### Chứng minh tính đúng đắn của thuật toán
 
 - quy nạp theo số bước lặp,
 - quy nạp theo kích thước đầu vào,
 - quy nạp theo độ sâu lời gọi đệ quy.
 
-### 2. Phân tích cấu trúc dữ liệu đệ quy
+### Phân tích cấu trúc dữ liệu đệ quy
 
 - danh sách liên kết,
 - cây nhị phân,
 - cây tổng quát,
 - biểu thức cú pháp trừu tượng.
 
-### 3. Phân tích thời gian chạy
+### Phân tích thời gian chạy
 
 - giải quan hệ truy hồi,
 - chứng minh cận trên/cận dưới,
 - xác minh công thức thời gian của thuật toán đệ quy.
 
-### 4. Chứng minh tính chất của chương trình
+### Chứng minh tính chất của chương trình
 
 - bất biến vòng lặp,
 - điều kiện trước/sau,
 - số lượng thao tác sau $n$ vòng,
 - tính dừng của một quá trình đơn giản.
 
-### 5. Suy nghĩ theo cấu trúc
+### Suy nghĩ theo cấu trúc
 
 Một kỹ năng rất quan trọng của dân công nghệ là: "Bài toán lớn được xây từ những phần nhỏ nào?" Quy nạp buộc ta trả lời câu hỏi đó chính xác.
 

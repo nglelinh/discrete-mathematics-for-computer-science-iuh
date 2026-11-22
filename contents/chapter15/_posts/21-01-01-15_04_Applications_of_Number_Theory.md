@@ -39,7 +39,7 @@ Các mục trước đã cung cấp công cụ số học và mô hình RSA / Di
 
 </div>
 
-## 1. Hàm băm mật mã
+## Hàm băm mật mã
 
 <div class="textbook-definition" markdown="1">
 
@@ -69,7 +69,7 @@ Hai digest hoàn toàn khác — không suy ra “gần nhau” trên plaintext.
 
 Ứng dụng: toàn vẹn file, commit Git, proof-of-work, và bước hash-then-sign trong chữ ký số.
 
-## 2. Sinh số giả ngẫu nhiên (PRNG)
+## Sinh số giả ngẫu nhiên (PRNG)
 
 Máy tính số tất định không “tự sinh” entropy thuần; **PRNG** sinh dãy trông ngẫu nhiên từ seed.
 
@@ -101,7 +101,7 @@ chu kỳ $$=m=8$$.
 
 **Cảnh báo.** LCG **không** đủ cho mật mã (dễ dự đoán sau vài quan sát). Khóa, nonce, salt cần **CSPRNG** (`/dev/urandom`, `secrets` trong Python, API hệ điều hành).
 
-## 3. CRT tăng tốc RSA
+## CRT tăng tốc RSA
 
 Thay vì tính $$S = M^d \bmod n$$ trực tiếp với $$n=pq$$ lớn, có thể tính
 
@@ -112,7 +112,7 @@ $$
 
 rồi ghép $$S$$ bằng CRT. Vì $$p,q$$ khoảng một nửa số bit của $$n$$, chi phí lũy thừa giảm đáng kể — thực tế thường tăng tốc khoảng **3–4 lần** so với một lũy thừa modulo $$n$$ thuần.
 
-## 4. ECC và mật mã hậu lượng tử
+## ECC và mật mã hậu lượng tử
 
 ### Đường cong elliptic (ECC)
 
@@ -136,7 +136,7 @@ Thuật toán **Shor** (máy lượng tử) phân tích thừa số và giải D
 
 Sinh viên cần biết: “RSA 2048 vẫn dùng rộng rãi hôm nay” **không** mâu thuẫn với việc chuẩn bị lộ trình PQC cho hệ thống sống nhiều thập kỷ.
 
-## 5. Thử nghiệm tương tác
+## Thử nghiệm tương tác
 
 Hash bucket modulo, ISBN check digit và LCG:
 
@@ -145,7 +145,7 @@ Hash bucket modulo, ISBN check digit và LCG:
 </div>
 <script src="{{ '/public/js/number-theory-apps.js' | relative_url }}"></script>
 
-## 6. Nguyên tắc kỹ nghệ
+## Nguyên tắc kỹ nghệ
 
 Lý thuyết số có mặt từ chỉ số hash, checksum đến TLS. Sinh viên CS không cần trở thành nhà mật mã, nhưng cần đủ để **không** dùng MD5/SHA-1 cho bảo mật mới, **không** tự chế cipher, và **chọn thư viện** đã review (libsodium, OpenSSL API hiện đại, WebCrypto, …).
 

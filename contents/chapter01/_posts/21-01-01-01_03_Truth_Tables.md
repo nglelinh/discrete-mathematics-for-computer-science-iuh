@@ -120,7 +120,7 @@ Khi lập bảng, nên thêm cột phụ cho từng biểu thức con để theo
 <p class="textbook-figure-caption" data-figure="1.14">Định luật De Morgan — phần bù của hợp/giao tương ứng với giao/hợp của các phần bù.</p>
 ## Các khái niệm quan trọng
 
-### 1. Tautology (Hằng đúng)
+### Tautology (Hằng đúng)
 Mệnh đề luôn có giá trị T trong mọi trường hợp.
 
 <div class="textbook-example" markdown="1">
@@ -133,7 +133,7 @@ Mệnh đề luôn có giá trị T trong mọi trường hợp.
 </div>
 
 
-### 2. Contradiction (Hằng sai)
+### Contradiction (Hằng sai)
 Mệnh đề luôn có giá trị F trong mọi trường hợp.
 
 <div class="textbook-example" markdown="1">
@@ -146,7 +146,7 @@ Mệnh đề luôn có giá trị F trong mọi trường hợp.
 </div>
 
 
-### 3. Contingency (Mệnh đề thường)
+### Contingency (Mệnh đề thường)
 Mệnh đề có thể đúng hoặc sai tùy thuộc vào giá trị của các biến.
 
 ## Những nhầm lẫn thường gặp
@@ -159,7 +159,7 @@ Mệnh đề có thể đúng hoặc sai tùy thuộc vào giá trị của các
 
 ## Ứng dụng của bảng chân trị
 
-### 1. Kiểm tra tính hợp lệ của lập luận
+### Kiểm tra tính hợp lệ của lập luận
 Lập luận hợp lệ nếu kết luận đúng khi tất cả tiền đề đúng.
 
 <div class="textbook-example" markdown="1">

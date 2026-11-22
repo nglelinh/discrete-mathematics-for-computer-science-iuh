@@ -38,7 +38,7 @@ Năm 1736, Euler trả lời câu hỏi thực tế: tại Königsberg, có th�
 
 </div>
 
-## 1. Đường đi và chu trình Euler
+## Đường đi và chu trình Euler
 
 <div class="textbook-definition" markdown="1">
 
@@ -91,7 +91,7 @@ Dãy $$3,3,2,2$$: đúng hai đỉnh bậc lẻ $$\implies$$ có **đường Eul
 
 Euler mô hình hoá bốn khu đất thành bốn đỉnh và bảy cây cầu thành bảy cạnh. Bậc các đỉnh là $3,5,3,3$ — cả bốn đều lẻ. Theo định lý Euler, một đường đi qua mỗi cầu đúng một lần cần $0$ hoặc $2$ đỉnh bậc lẻ, nên lộ trình như vậy không tồn tại (thử đi sẽ luôn bị kẹt).
 
-## 2. Đường đi và chu trình Hamilton
+## Đường đi và chu trình Hamilton
 
 <div class="textbook-definition" markdown="1">
 
@@ -117,7 +117,7 @@ Euler mô hình hoá bốn khu đất thành bốn đỉnh và bảy cây cầu 
 
 **TSP** (*Traveling Salesman Problem*): trên đồ thị đầy đủ có trọng số, tìm chu trình Hamilton có tổng trọng số nhỏ nhất. Bài toán tối ưu này (và nhiều biến thể quyết định liên quan) là **NP-hard** — xem thêm Chương 20. Trong thực tế người ta dùng heuristic và xấp xỉ; điều đó **không** mâu thuẫn với việc chu trình Euler vẫn giải được nhanh.
 
-## 3. BFS — duyệt theo bề rộng
+## BFS — duyệt theo bề rộng
 
 **BFS** (*Breadth-First Search*) mở rộng đồ thị theo **tầng** khoảng cách từ đỉnh nguồn $$s$$. Cấu trúc hỗ trợ là **hàng đợi** (*queue*).
 
@@ -146,7 +146,7 @@ def bfs(graph, start):
     return order, dist
 ```
 
-## 4. DFS — duyệt theo chiều sâu
+## DFS — duyệt theo chiều sâu
 
 **DFS** (*Depth-First Search*) luôn cố gắng đi tiếp theo một cạnh tới đỉnh chưa thăm trước khi quay lui. Cấu trúc hỗ trợ là **ngăn xếp** (*stack*) tường minh hoặc stack gọi hàm khi viết đệ quy.
 
@@ -175,7 +175,7 @@ def dfs(graph, start, visited=None, order=None):
     return order
 ```
 
-## 5. Độ phức tạp chung
+## Độ phức tạp chung
 
 <div class="textbook-theorem" markdown="1">
 
@@ -201,9 +201,9 @@ Trên **ma trận kề**, cùng logic duyệt láng giềng mất $$O(|V|)$$ m�
 
 </div>
 
-## 6. Thử nghiệm tương tác
+## Thử nghiệm tương tác
 
-### 6.1. Euler và Hamilton
+### Euler và Hamilton
 
 Bật/tắt cạnh, kiểm tra điều kiện bậc cho chu trình Euler và tìm một chu trình Hamilton (nếu có) trên đồ thị nhỏ.
 
@@ -212,7 +212,7 @@ Bật/tắt cạnh, kiểm tra điều kiện bậc cho chu trình Euler và tì
 </div>
 <script src="{{ '/public/js/euler-hamilton-checker.js' | relative_url }}"></script>
 
-### 6.2. BFS / DFS từng bước
+### BFS / DFS từng bước
 
 Chạy BFS hoặc DFS từng bước: theo dõi hàng đợi / ngăn xếp, thứ tự thăm và khoảng cách $$d$$ (số cạnh từ nguồn trong BFS).
 
@@ -222,7 +222,7 @@ Chạy BFS hoặc DFS từng bước: theo dõi hàng đợi / ngăn xếp, th�
 <script src="{{ '/public/js/bfs-dfs-visualizer.js' | relative_url }}"></script>
 
 
-### 6.3. Explainer thuật toán đồ thị (BFS / DFS)
+### Explainer thuật toán đồ thị (BFS / DFS)
 
 Dùng explainer dùng chung (canvas SVG, chỉnh được đồ thị, chạy từng bước, giả mã được tô) để so sánh BFS và DFS trên cùng một đồ thị. Widget BFS/DFS ngay phía trên vẫn giữ nguyên.
 

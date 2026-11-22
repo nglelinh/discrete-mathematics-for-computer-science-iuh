@@ -16,14 +16,14 @@ excerpt: "Ở ba mục trước, chúng ta đã học chứng minh trực tiếp
 
 ## Phần 1: Euclid và tiêu chuẩn vàng của lập luận
 
-### 1.1. Vì sao *Elements* sống hơn 2000 năm
+### Vì sao *Elements* sống hơn 2000 năm
 
 Khoảng năm 300 TCN, Euclid viết *Elements* — không chỉ là sách hình học mà là mô hình tổ chức tri thức suy diễn. Euclid bắt đầu bằng định nghĩa, tiên đề và khái niệm chung, rồi xây từng định lý bằng chuỗi lập luận chặt chẽ. Giá trị lâu dài không nằm ở từng kết quả riêng lẻ mà ở mô hình tư duy: nêu giả thiết rõ ràng, xác định điều cần chứng minh, đi từng bước hợp lệ, kết thúc bằng kết luận tất yếu. Mô hình này trở thành tiêu chuẩn vàng của chứng minh trong hơn hai thiên niên kỷ.
 
 ![Bản in Elements của Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid_s_Elements__1482.jpg)
 
 <p class="textbook-figure-caption" data-figure="3.16">*Elements* của Euclid (1482) — một trong những mô hình thành công nhất của tri thức suy diễn có cấu trúc.</p>
-### 1.2. Tại sao khoa học máy tính phải học tinh thần Euclid
+### Tại sao khoa học máy tính phải học tinh thần Euclid
 
 Phần mềm đúng đắn vẫn cần tinh thần Euclid: phát biểu chính xác, suy luận từng bước, không dựa vào trực giác mơ hồ, không nhầm ví dụ với chân lý phổ quát. Trong ngôn ngữ software, đó là nền của specification, verification, type soundness, algorithm correctness và security proofs.
 
@@ -31,11 +31,11 @@ Phần mềm đúng đắn vẫn cần tinh thần Euclid: phát biểu chính x
 
 ## Phần 2: Từ chứng minh toán học đến program correctness
 
-### 2.1. Chạy đúng vài test chưa đủ
+### Chạy đúng vài test chưa đủ
 
 Giả sử ta viết hàm sắp xếp và test với 10, 100, thậm chí 10.000 bộ dữ liệu — hàm đều chạy ổn. Điều đó không chứng minh hàm đúng với mọi input. Testing cho niềm tin thực nghiệm, nhưng không phải chứng minh tổng quát; muốn đi xa hơn, ta cần lập luận về toàn bộ hành vi có thể xảy ra.
 
-### 2.2. Loop invariant: linh hồn của chứng minh vòng lặp
+### Loop invariant: linh hồn của chứng minh vòng lặp
 
 Một trong những ý tưởng đẹp nhất của correctness proofs là **loop invariant**.
 
@@ -65,7 +65,7 @@ Nếu invariant đúng lúc bắt đầu,
 và đủ mạnh tại thời điểm kết thúc,
 ta có chứng minh đúng đắn cho thuật toán.
 
-### 2.3. Hoare logic: biến chứng minh thành cú pháp
+### Hoare logic: biến chứng minh thành cú pháp
 
 Hoare logic đưa ra ký hiệu nổi tiếng:
 
@@ -95,7 +95,7 @@ $$
 </div>
 Dù đơn giản, từ đây người ta xây dựng logic cho assignment, conditionals, loops và procedure calls.
 
-### 2.4. Nơi correctness proofs được dùng thật
+### Nơi correctness proofs được dùng thật
 
 Program correctness không chỉ nằm trong giáo trình.
 Nó xuất hiện trong:
@@ -119,7 +119,7 @@ cho thấy formal proof không còn là giấc mơ xa vời.
 
 ## Phần 3: Chứng minh trong mật mã học
 
-### 3.1. Mật mã không thể dựa vào cảm giác
+### Mật mã không thể dựa vào cảm giác
 
 Ta không muốn một giao thức bảo mật được đánh giá bằng câu:
 “có vẻ khó hack”.
@@ -132,7 +132,7 @@ Ví dụ:
 - chữ ký số này có chống giả mạo không,
 - scheme mã hóa này có an toàn dưới chosen-plaintext attack không.
 
-### 3.2. Security proof thường là gì
+### Security proof thường là gì
 
 Một security proof hay đi theo dạng reduction.
 
@@ -153,7 +153,7 @@ hệ mạnh đến đâu,
 phụ thuộc giả định nào,
 và attacker được cấp quyền gì.
 
-### 3.3. Protocol proofs và mô hình đối thủ
+### Protocol proofs và mô hình đối thủ
 
 Trong security,
 chi tiết mô hình rất quan trọng.
@@ -174,7 +174,7 @@ Kết luận then chốt: chứng minh chỉ có ý nghĩa khi mô hình đe d�
 
 ## Phần 4: Những chứng minh nổi tiếng của toán học
 
-### 4.1. Chứng minh $\sqrt{2}$ là vô tỉ
+### Chứng minh $\sqrt{2}$ là vô tỉ
 
 Một trong những ví dụ kinh điển cho proof by contradiction là chứng minh $\sqrt{2}$ vô tỉ.
 
@@ -189,7 +189,7 @@ Mâu thuẫn với giả thiết tối giản.
 Điểm đáng nhớ không chỉ là kết quả.
 Điểm đáng nhớ là cách contradiction cho phép ta loại bỏ những khả năng tưởng hợp lý.
 
-### 4.2. Chứng minh có vô hạn số nguyên tố
+### Chứng minh có vô hạn số nguyên tố
 
 Euclid lại xuất hiện.
 
@@ -214,7 +214,7 @@ Mâu thuẫn.
 sạch,
 và giàu sức gợi.
 
-### 4.3. Vì sao các proof cổ điển vẫn quan trọng với dân CS
+### Vì sao các proof cổ điển vẫn quan trọng với dân CS
 
 Chúng dạy ta nhiều điều:
 
@@ -235,7 +235,7 @@ hoặc debug giả định sai trong phần mềm.
 
 ## Phần 5: Testing và formal proof — vì sao cả hai đều cần
 
-### 5.1. Testing làm gì tốt
+### Testing làm gì tốt
 
 Testing mạnh ở chỗ:
 
@@ -253,7 +253,7 @@ fuzzing,
 end-to-end test
 đều cực kỳ thực dụng.
 
-### 5.2. Proof làm gì tốt
+### Proof làm gì tốt
 
 Formal proof mạnh ở chỗ:
 
@@ -267,7 +267,7 @@ Nếu test hỏi:
 thì proof hỏi:
 “với mọi trường hợp phù hợp giả thiết, điều gì luôn đúng?”
 
-### 5.3. Vì sao đối lập testing với proof là sai
+### Vì sao đối lập testing với proof là sai
 
 Thực tế engineering tốt thường kết hợp:
 
@@ -284,7 +284,7 @@ Chúng là hai lớp phòng thủ khác nhau.
 ![Tam giác mâu thuẫn](/discrete-mathematics-for-computer-science-iuh/img/course/Absurd_triangle.svg)
 
 <p class="textbook-figure-caption" data-figure="3.19">Reductio ad absurdum — phản chứng là công cụ chứng minh "không thể" trong cả toán học lẫn kiểm chứng phần mềm.</p>
-### 5.4. Góc nhìn thực tế cho sinh viên
+### Góc nhìn thực tế cho sinh viên
 
 Không phải dự án nào cũng cần Coq hay Isabelle.
 Nhưng dự án nào cũng cần tư duy chứng minh ở một mức nào đó.
@@ -333,11 +333,11 @@ và engineering có trách nhiệm.
 
 ---
 
-## 5. Chứng minh bằng đếm (Proof by counting)
+## Chứng minh bằng đếm (Proof by counting)
 
 Một kỹ thuật chứng minh đặc biệt hữu ích trong toán rời rạc là **đếm cùng một đối tượng theo hai cách khác nhau**, từ đó suy ra hai biểu thức bằng nhau.
 
-### 5.1. Đếm bằng hai cách (Counting in two ways)
+### Đếm bằng hai cách (Counting in two ways)
 
 **Định lý (Handshaking Lemma).** Trong mọi đồ thị vô hướng, tổng bậc của các đỉnh là một số chẵn.
 
@@ -353,7 +353,7 @@ $$\sum_{v \in V} \deg(v) = 2 \cdot |E|$$
 
 **Ví dụ ứng dụng:** Trong siêu khối $$n$$-chiều $$\{0,1\}^n$$, mỗi đỉnh có bậc $$n$$ (vì có thể đảo một trong $$n$$ bit). Có $$2^n$$ đỉnh, nên tổng bậc là $$n 2^n$$, suy ra số cạnh là $$n 2^{n-1}$$.
 
-### 5.2. Nguyên lý chuồng bồ câu (Pigeonhole Principle)
+### Nguyên lý chuồng bồ câu (Pigeonhole Principle)
 
 **Nguyên lý:** Nếu có nhiều hơn $$n$$ chim bồ câu bay vào $$n$$ chuồng, thì ít nhất một chuồng có ít nhất hai chim.
 
@@ -365,11 +365,11 @@ Phát biểu hình thức: Với mọi tập hữu hạn $$S$$ và $$T$$ thỏa 
 >
 > **Ví dụ 3 (ứng dụng CS):** Trong một mạng có $$n$$ máy tính, nếu có $$n+1$$ kết nối đồng thời, thì ít nhất một máy phải xử lý ít nhất hai kết nối.
 
-## 6. Chứng minh bằng thuật toán (Proof by algorithm)
+## Chứng minh bằng thuật toán (Proof by algorithm)
 
 Nhiều định lý có thể được chứng minh bằng cách **xây dựng một thuật toán** và chứng minh nó luôn cho kết quả đúng. Kỹ thuật này đặc biệt phổ biến trong khoa học máy tính.
 
-### 6.1. Dùng thuật toán để khẳng định tồn tại
+### Dùng thuật toán để khẳng định tồn tại
 
 Để chứng minh một đối tượng tồn tại, ta có thể đưa ra một thuật toán xây dựng nó.
 
@@ -389,7 +389,7 @@ kết thúc: P là walk không lặp đỉnh = path từ u đến v
 
 *Tính đúng đắn:* Vòng lặp duy trì bất biến "P là walk từ u đến v". Mỗi bước xóa đoạn giữa các đỉnh lặp làm P ngắn hơn (giảm số cạnh) nhưng vẫn là walk hợp lệ. Vòng lặp kết thúc vì độ dài P không thể âm. Khi dừng, P không lặp đỉnh, nên là một path. ∎
 
-### 6.2. Dùng thuật toán để chứng minh đẳng thức
+### Dùng thuật toán để chứng minh đẳng thức
 
 **Ví dụ:** Chứng minh $$2^{n-1} + 2^{n-2} + \cdots + 2^1 + 2^0 = 2^n - 1$$.
 
@@ -407,7 +407,7 @@ kết thúc: P là walk không lặp đỉnh = path từ u đến v
 
 Nếu cộng thêm 1 vào số này, tất cả các bit 1 sẽ flip thành 0 khi carry lan đến đầu, cho kết quả là $$1\;000\!\cdots\!000$$ (1 theo sau $$n$$ số 0), tức là $$2^n$$. Vậy tổng ban đầu $$= 2^n - 1$$. ∎
 
-### 6.3. Thuật toán đệ quy
+### Thuật toán đệ quy
 
 **Định lý.** Với mọi cây nhị phân, số lá bằng số đỉnh trong cộng 1.
 

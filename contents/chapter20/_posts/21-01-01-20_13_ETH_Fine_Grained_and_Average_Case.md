@@ -29,7 +29,7 @@ Ba lớp công cụ **tinh** hơn NPC: giả thuyết thời gian mũ, lower bou
 
 </div>
 
-## 1. ETH
+## ETH
 
 <div class="textbook-definition" markdown="1">
 
@@ -42,14 +42,14 @@ Dùng trong paper: “assuming ETH, our $$2^{\Theta(k)}$$ is tight”.
 
 **SETH:** dạng mạnh hơn cho $$k$$-SAT khi $$k\to\infty$$ — nền edit distance, etc.
 
-## 2. Fine-grained complexity
+## Fine-grained complexity
 
 Hỏi *trong* $$P$$: APSP có $$O(n^{3-\varepsilon})$$? 3SUM có $$O(n^{2-\varepsilon})$$?  
 Rút gọn **fine-grained** dưới SETH/3SUM/APSP hypotheses (V. Vassilevska Williams surveys).
 
 **Đối với NCS:** hướng “hot” nếu thích lower bound điều kiện + thuật toán.
 
-## 3. Average-case và five worlds
+## Average-case và five worlds
 
 Impagliazzo (1995):
 
@@ -64,7 +64,7 @@ Impagliazzo (1995):
 **Bài học:** NP-complete worst-case **không** tự cho one-way function.  
 Crypto: LWE, factoring, DLOG — giả thuyết *riêng*, average-preserving reductions (Goldreich).
 
-## 4. Randomness
+## Randomness
 
 BPP, derandomization dưới circuit lower bounds — Arora–Barak.  
 #P counting (Valiant permanent) — nhánh riêng.

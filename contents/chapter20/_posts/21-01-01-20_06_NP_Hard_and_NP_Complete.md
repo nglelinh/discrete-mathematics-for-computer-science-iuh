@@ -31,7 +31,7 @@ excerpt: "Định nghĩa NP-hard/NPC; chứng minh: một NPC trong P ⇒ P=NP; 
 
 </div>
 
-## 1. Định nghĩa
+## Định nghĩa
 
 <div class="textbook-definition" markdown="1">
 
@@ -40,7 +40,7 @@ excerpt: "Định nghĩa NP-hard/NPC; chứng minh: một NPC trong P ⇒ P=NP; 
 
 </div>
 
-## 2. Định lý then chốt
+## Định lý then chốt
 
 <div class="textbook-theorem" markdown="1">
 
@@ -56,14 +56,14 @@ excerpt: "Định nghĩa NP-hard/NPC; chứng minh: một NPC trong P ⇒ P=NP; 
 
 **Chứng minh (3).** NP-hard: $$L\le_p B\le_p A\Rightarrow L\le_p A$$. $$\square$$
 
-## 3. Checklist chứng minh $$A$$ NPC
+## Checklist chứng minh $$A$$ NPC
 
 1. **$$A\in NP$$:** certificate + verifier poly.  
 2. **$$B\le_p A$$** với $$B$$ đã NPC (thường 3SAT).  
 3. Chứng minh $$x\in B\Leftrightarrow f(x)\in A$$.  
 4. $$f$$ poly-time.
 
-## 4. Ladner
+## Ladner
 
 <div class="textbook-theorem" markdown="1">
 
@@ -73,7 +73,7 @@ excerpt: "Định nghĩa NP-hard/NPC; chứng minh: một NPC trong P ⇒ P=NP; 
 
 → Dưới $$P\neq NP$$ có bài “trung gian”.
 
-## 5. Myth
+## Myth
 
 - NP ≠ “không giải được”.  
 - NP-hard ⇏ thuộc NP.  

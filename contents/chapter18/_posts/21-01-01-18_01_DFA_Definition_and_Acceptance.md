@@ -34,7 +34,7 @@ Máy hữu hạn trạng thái là mô hình tính toán với **bộ nhớ hữ
 
 </div>
 
-## 1. Định nghĩa
+## Định nghĩa
 
 <div class="textbook-definition" markdown="1">
 
@@ -42,7 +42,7 @@ Máy hữu hạn trạng thái là mô hình tính toán với **bộ nhớ hữ
 
 </div>
 
-## 2. Hàm chuyển mở rộng
+## Hàm chuyển mở rộng
 
 <div class="textbook-definition" markdown="1">
 
@@ -63,7 +63,7 @@ $$
 
 **Chứng minh.** Quy nạp $$\lvert w\rvert$$: bước $$\delta$$ xác định duy nhất. $$\square$$
 
-## 3. Ngôn ngữ
+## Ngôn ngữ
 
 <div class="textbook-definition" markdown="1">
 
@@ -72,7 +72,7 @@ Ngôn ngữ **chính quy** nếu $$L=L(M)$$ với một DFA $$M$$ (sẽ mở r�
 
 </div>
 
-## 4. Biểu diễn
+## Biểu diễn
 
 Sơ đồ: vòng đôi = $$F$$; mũi tên vào $$q_0$$.  
 Bảng: hàng trạng thái, cột ký hiệu.

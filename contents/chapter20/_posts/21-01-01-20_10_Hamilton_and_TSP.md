@@ -29,12 +29,12 @@ Ch.12: Euler đa thức, Hamilton khó. Mục này đặt vào khung NPC.
 
 </div>
 
-## 1. Thuộc NP
+## Thuộc NP
 
 **HC:** certificate = hoán vị; kiểm $$n$$ cạnh.  
 **TSP-DEC:** certificate = tour; cộng trọng số so $$K$$. $$\square$$
 
-## 2. $$\mathrm{HC}\le_p\mathrm{TSP\text{-}DEC}$$ (đầy đủ)
+## $$\mathrm{HC}\le_p\mathrm{TSP\text{-}DEC}$$ (đầy đủ)
 
 **Construction.** Từ $$G=(V,E)$$, $$\lvert V\rvert=n$$, dựng $$K_n$$:
 
@@ -50,7 +50,7 @@ Tour TSP tổng $$\le n$$: mọi cạnh weight $$\ge 1$$ ⇒ phải đúng $$n$$
 
 Poly-time. $$\square$$
 
-## 3. $$3\mathrm{SAT}\le_p\mathrm{HC}$$ (cấu trúc)
+## $$3\mathrm{SAT}\le_p\mathrm{HC}$$ (cấu trúc)
 
 Gadget đỉnh/cạnh mô phỏng literal và mệnh đề (Garey–Johnson; Sipser optional).  
 **Seminar:** đọc một nguồn, vẽ gadget, viết Yes⇔Yes 2 trang — *không* tự bịa gadget.

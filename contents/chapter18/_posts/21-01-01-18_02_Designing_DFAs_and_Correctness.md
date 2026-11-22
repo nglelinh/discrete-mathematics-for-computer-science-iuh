@@ -29,7 +29,7 @@ Thiết kế DFA = chọn **bất biến** cho mỗi trạng thái, rồi chứn
 
 </div>
 
-## 1. Quy trình
+## Quy trình
 
 1. Mô tả $$L\subseteq\Sigma^*$$ bằng tính chất.  
 2. Phân lớp tiền tố theo “thông tin cần nhớ” (hữu hạn).  
@@ -37,7 +37,7 @@ Thiết kế DFA = chọn **bất biến** cho mỗi trạng thái, rồi chứn
 4. $$F$$ = lớp thỏa thuộc $$L$$.  
 5. Chứng minh bất biến + kết thúc.
 
-## 2. Ví dụ: kết thúc bằng $$01$$
+## Ví dụ: kết thúc bằng $$01$$
 
 Trạng thái: $$q_\varepsilon,q_0,q_{01}$$ (và sink reject nếu cần).  
 Bất biến: “hậu tố liên quan đến tiền tố của $$01$$”.
@@ -52,7 +52,7 @@ Bất biến: “hậu tố liên quan đến tiền tố của $$01$$”.
 (⇒) Bất biến: vào $$q_{01}$$ ⇔ đã đọc …01.  
 (⇐) Mọi $$w\in L$$ buộc đường chạy kết thúc $$q_{01}$$. Chi tiết theo quy nạp độ dài. $$\square$$
 
-## 3. Ví dụ: chẵn số $$1$$
+## Ví dụ: chẵn số $$1$$
 
 $$q_0$$: chẵn; $$q_1$$: lẻ. $$F=\{q_0\}$$.
 

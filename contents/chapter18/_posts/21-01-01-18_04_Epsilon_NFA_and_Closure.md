@@ -28,7 +28,7 @@ excerpt: "Chuyển ε; định nghĩa E(S); thuật toán tính closure; chấp 
 
 </div>
 
-## 1. Định nghĩa
+## Định nghĩa
 
 $$\delta:Q\times(\Sigma\cup\{\varepsilon\})\to\mathcal{P}(Q)$$.
 
@@ -46,12 +46,12 @@ $$\delta:Q\times(\Sigma\cup\{\varepsilon\})\to\mathcal{P}(Q)$$.
 
 **Chứng minh.** Tính chất bao đóng phản xạ-bắc cầu của quan hệ “có đường ε”. $$\square$$
 
-## 2. Chấp nhận
+## Chấp nhận
 
 Đọc $$a$$: $$S' = E\bigl(\bigcup_{q\in S}\delta(q,a)\bigr)$$.  
 Bắt đầu $$E(\{q_0\})$$; chấp nhận nếu giao $$F\neq\emptyset$$.
 
-## 3. Thuật toán
+## Thuật toán
 
 Stack/queue từ $$S$$, đi theo cạnh ε, đánh dấu visited — $$O(\lvert Q\rvert+\lvert E_\varepsilon\rvert)$$.
 

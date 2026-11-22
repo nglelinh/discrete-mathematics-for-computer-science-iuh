@@ -43,7 +43,7 @@ excerpt: "Định lý chia, số nguyên tố, định lý cơ bản số học,
 
 </div>
 
-## 1. Tính chia hết
+## Tính chia hết
 
 <div class="textbook-definition" markdown="1">
 
@@ -86,7 +86,7 @@ Trong Python, `(-17) % 5` bằng $$3$$ — khớp định nghĩa toán. Một s�
 
 </div>
 
-## 2. Số nguyên tố
+## Số nguyên tố
 
 <div class="textbook-definition" markdown="1">
 
@@ -138,7 +138,7 @@ Sàng-Eratosthenes(n)
 
 Bắt đầu gạch từ $$i^2$$ vì các bội $$2i,\ldots,(i-1)i$$ đã bị gạch bởi các số nguyên tố nhỏ hơn $$i$$. Độ phức tạp thời gian cổ điển là $$O(n \log\log n)$$.
 
-## 3. Ước chung lớn nhất (GCD)
+## Ước chung lớn nhất (GCD)
 
 <div class="textbook-definition" markdown="1">
 
@@ -208,7 +208,7 @@ $$
 
 Thuật toán **Euclid mở rộng** tính đồng thời $$s,t$$ và GCD — công cụ then chốt để tìm **nghịch đảo modulo** khi $$\gcd(a,n)=1$$ (Mục 15.2) và bước tạo khóa RSA (Mục 15.3).
 
-## 4. Thử nghiệm tương tác
+## Thử nghiệm tương tác
 
 Máy tính modulo cơ bản và thuật toán Euclid từng bước (kèm hệ số Bézout):
 
@@ -222,7 +222,7 @@ Máy tính modulo cơ bản và thuật toán Euclid từng bước (kèm hệ s
 </div>
 <script src="{{ '/public/js/euclidean-algorithm.js' | relative_url }}"></script>
 
-## 5. Liên hệ khoa học máy tính
+## Liên hệ khoa học máy tính
 
 - **RSA / Diffie–Hellman**: cần số nguyên tố lớn, GCD, Euclid mở rộng.
 - **Checksum / ISBN**: tổ hợp tuyến tính modulo $$m$$.

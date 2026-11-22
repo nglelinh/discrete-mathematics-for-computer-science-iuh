@@ -38,11 +38,11 @@ Mục 14.1–14.3 đặt định nghĩa và Big-O. Mục khảo sát nối **l�
 
 </div>
 
-## 1. Từ Al-Khwarizmi đến Knuth
+## Từ Al-Khwarizmi đến Knuth
 
 Quy trình số học Ả Rập–Ba Tư được Latin hóa thành *algorismus*, rồi *algorithm*. Khoa học máy tính hiện đại (Knuth, CLRS, …) chuẩn hóa **phân tích tiệm cận** và mã giả — đúng tinh thần 14.1–14.3.
 
-## 2. Khi $$n$$ tăng một bậc
+## Khi $$n$$ tăng một bậc
 
 | $$n$$ | $$n$$ | $$n\log n$$ | $$n^2$$ | $$2^n$$ |
 |:---:|:---:|:---:|:---:|:---:|
@@ -52,14 +52,14 @@ Quy trình số học Ả Rập–Ba Tư được Latin hóa thành *algorismus*
 
 Bài toán “khả thi” phụ thuộc **bậc** chứ không chỉ “máy nhanh hơn năm ngoái”.
 
-## 3. Hệ thống thực tế (ý)
+## Hệ thống thực tế (ý)
 
 - **Tìm kiếm**: index + cấu trúc (cây, hash) để tránh quét $$\Theta(n)$$ toàn corpus.
 - **Sắp xếp**: merge/heap $$\Theta(n\log n)$$; external sort khi không lọt RAM.
 - **Đồ thị** (Ch.12–17): BFS/Dijkstra/MST — chi phí theo $$V,E$$.
 - **Heuristic**: khi bài NP-hard (Ch.20), chấp nhận xấp xỉ / timeout.
 
-## 4. Trade-off kỹ nghệ
+## Trade-off kỹ nghệ
 
 1. Đúng trước — rồi tối ưu chỗ hot path (đo đạc).
 2. $$\Theta(n\log n)$$ ổn định thường tốt hơn average nhanh nhưng worst thảm họa (nếu SLA cần worst).

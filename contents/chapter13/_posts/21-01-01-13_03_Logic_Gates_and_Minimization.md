@@ -37,7 +37,7 @@ Quy trình thiết kế mạch từ yêu cầu bằng lời, đếm cổng và c
 
 </div>
 
-## 1. Cổng logic là gì?
+## Cổng logic là gì?
 
 <div class="textbook-definition" markdown="1">
 
@@ -57,11 +57,11 @@ Nhớ: $$1+1=1$$ (OR logic, không phải cộng số).
 
 Phần cứng (công tắc, chip, vẽ sơ đồ) → **bài 13.6**. Ở đây cổng = **bảng + công thức**.
 
-## 2. Bảy cổng cơ bản
+## Bảy cổng cơ bản
 
 Mỗi cổng: **một câu tiếng Việt + bảng 0/1 + hình ký hiệu**.
 
-### 2.1. NOT (đảo)
+### NOT (đảo)
 
 $$Y = A'$$ (cũng viết $$\bar A$$).
 
@@ -74,7 +74,7 @@ $$Y = A'$$ (cũng viết $$\bar A$$).
 
 <p class="textbook-figure-caption" data-figure="13.11">Cổng NOT (inverter).</p>
 
-### 2.2. AND
+### AND
 
 Ra **1** khi **mọi** ngõ vào = **1**.
 
@@ -89,7 +89,7 @@ Ra **1** khi **mọi** ngõ vào = **1**.
 
 <p class="textbook-figure-caption" data-figure="13.12">Cổng AND.</p>
 
-### 2.3. OR
+### OR
 
 Ra **1** khi **ít nhất một** ngõ = **1**.
 
@@ -104,7 +104,7 @@ Ra **1** khi **ít nhất một** ngõ = **1**.
 
 <p class="textbook-figure-caption" data-figure="13.13">Cổng OR.</p>
 
-### 2.4. NAND và NOR
+### NAND và NOR
 
 | Cổng | Định nghĩa | Ý nghĩa |
 |:---|:---|:---|
@@ -126,7 +126,7 @@ Ra **1** khi **ít nhất một** ngõ = **1**.
 
 <p class="textbook-figure-caption" data-figure="13.15">Cổng NOR.</p>
 
-### 2.5. XOR và XNOR
+### XOR và XNOR
 
 | Cổng | Ra **1** khi… | Công thức |
 |:---|:---|:---|
@@ -148,7 +148,7 @@ Ra **1** khi **ít nhất một** ngõ = **1**.
 
 <p class="textbook-figure-caption" data-figure="13.17">Cổng XNOR.</p>
 
-### 2.6. Tóm tắt bảy cổng
+### Tóm tắt bảy cổng
 
 | Cổng | Ra **1** khi… | Công thức (2 ngõ) |
 |:---|:---|:---|
@@ -160,13 +160,13 @@ Ra **1** khi **ít nhất một** ngõ = **1**.
 | XOR | hai vào **khác** | $$A\oplus B$$ |
 | XNOR | hai vào **giống** | $$A\odot B$$ |
 
-## 3. Tối thiểu hóa đại số
+## Tối thiểu hóa đại số
 
 Hai biểu thức **tương đương** nếu cùng bảng chân trị. Trong lớp biểu thức tương đương, ta ưa dạng **ít hạng** và **ít litera** hơn — dễ đọc, dễ làm bài, và (khi sang 13.6) dễ vẽ mạch hơn.
 
 Tối thiểu hóa đại số = chuỗi biến đổi hợp lệ từ tiên đề / hằng đẳng thức bài 13.1. Không có “một thuật toán máy móc duy nhất”; có **các kỹ thuật** hay dùng trước K-map (13.4) và Quine–McCluskey (13.5).
 
-### 3.1. Đồng nhất và lũy đẳng
+### Đồng nhất và lũy đẳng
 
 $$
 x+x'=1,\quad xx'=0,\quad x+x=x,\quad xx=x,
@@ -189,7 +189,7 @@ Cùng bảng chân trị; dạng sau ngắn hơn rõ rệt.
 
 </div>
 
-### 3.2. Hấp thụ
+### Hấp thụ
 
 $$
 x + xy = x, \qquad x(x+y) = x.
@@ -209,7 +209,7 @@ $$
 
 </div>
 
-### 3.3. Phân phối và gom nhân tử
+### Phân phối và gom nhân tử
 
 Kéo nhân tử chung hoặc tạo cặp $$y+\bar y$$.
 
@@ -220,7 +220,7 @@ $$F = xy + x\bar y + \bar x y = x + \bar x y = x + y$$.
 
 </div>
 
-### 3.4. De Morgan
+### De Morgan
 
 $$
 (x+y)' = x'y', \qquad (xy)' = x' + y'.
@@ -234,7 +234,7 @@ $$
 
 </div>
 
-### 3.5. Thêm hạng phụ (đôi khi)
+### Thêm hạng phụ (đôi khi)
 
 Vì $$t+t=t$$, đôi khi **viết thêm** một hạng để tạo cặp gộp:
 
@@ -243,7 +243,7 @@ xy + x\bar y + \bar x y
 = (xy + x\bar y) + (\bar x y + xy) = x + y.
 $$
 
-### 3.6. Chiến lược và kiểm chứng
+### Chiến lược và kiểm chứng
 
 **Khi làm bài:**
 
@@ -264,7 +264,7 @@ Kiểm nhanh vài bộ $$(a,b,c)$$ — hai dạng phải trùng.
 
 </div>
 
-## 4. NAND và NOR đầy đủ chức năng
+## NAND và NOR đầy đủ chức năng
 
 Chỉ riêng **NAND** (hoặc chỉ **NOR**) đủ biểu diễn mọi hàm Boole — vì từ chúng dựng được NOT, AND, OR.
 
@@ -276,7 +276,7 @@ Chỉ riêng **NAND** (hoặc chỉ **NOR**) đủ biểu diễn mọi hàm Bool
 
 Thông thường rút gọn biểu thức trước (mục 3), rồi mới ánh xạ sang mạng chỉ NAND hoặc chỉ NOR khi yêu cầu hiện thực.
 
-## 5. Liên hệ lộ trình
+## Liên hệ lộ trình
 
 | Bài | Nội dung |
 |:---|:---|

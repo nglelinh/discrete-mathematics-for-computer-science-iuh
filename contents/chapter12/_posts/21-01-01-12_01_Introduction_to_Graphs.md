@@ -40,7 +40,7 @@ Mục này đặt các khái niệm cơ bản: định nghĩa, phân loại, b�
 
 </div>
 
-## 1. Định nghĩa đồ thị
+## Định nghĩa đồ thị
 
 <div class="textbook-definition" markdown="1">
 
@@ -82,7 +82,7 @@ Khi mỗi cạnh được gán một số thực (chi phí, độ trễ, băng t
 
 <p class="textbook-figure-caption" data-figure="12.3">Control-flow graph: đỉnh là basic block, cạnh là nhánh điều khiển — nền tảng phân tích chương trình tĩnh.</p>
 
-## 2. Các loại đồ thị
+## Các loại đồ thị
 
 Ngoài phân loại theo hướng và trọng số, ta phân biệt theo cấu trúc cạnh:
 
@@ -111,7 +111,7 @@ Với $$K_n$$ vô hướng đơn, mỗi đỉnh nối với $$n-1$$ đỉnh còn
 
 **Đồ thị hai phía** xuất hiện tự nhiên khi mô hình quan hệ hai vai trò (người dùng–sản phẩm, sinh viên–lớp học, job–server). Một đặc trưng quan trọng (sẽ dùng lại khi xét chu trình): đồ thị vô hướng liên thông là hai phía khi và chỉ khi mọi chu trình đều có độ dài chẵn.
 
-## 3. Bậc đỉnh
+## Bậc đỉnh
 
 <div class="textbook-definition" markdown="1">
 
@@ -132,7 +132,7 @@ $$
 
 (trên digraph), vì mỗi cạnh đóng góp đúng 1 vào tổng bậc ra và đúng 1 vào tổng bậc vào.
 
-## 4. Định lý bắt tay
+## Định lý bắt tay
 
 <div class="textbook-theorem" markdown="1">
 
@@ -178,7 +178,7 @@ Tổng bậc $$= 9$$ lẻ, trong khi $$2|E|$$ luôn chẵn. Theo định lý b�
 
 Mỗi cạnh được cộng vào bậc của **cả hai** đầu mút, nên mỗi lần thêm một cạnh thì tổng bậc tăng đúng $$2$$ (một khuyên có hai đầu trùng nhau nên cũng cộng $$2$$ vào bậc của chính đỉnh đó). Vì vậy $$\sum_v \deg(v)=2|E|$$ luôn là số chẵn, và số đỉnh bậc lẻ phải chẵn. Trong đồ thị minh hoạ (đồ thị đơn, không có khuyên) có $$8$$ cạnh, tổng bậc $$16$$ và $$4$$ đỉnh bậc lẻ.
 
-## 5. Ứng dụng nhanh trong tin học
+## Ứng dụng nhanh trong tin học
 
 Việc chọn mô hình vô hướng hay có hướng không mang tính trang trí: nó phản ánh ngữ nghĩa quan hệ.
 
@@ -188,7 +188,7 @@ Việc chọn mô hình vô hướng hay có hướng không mang tính trang tr
 
 Các mục tiếp theo sẽ gắn cấu trúc này với biểu diễn máy tính (ma trận kề, danh sách kề), đường đi–liên thông, rồi điều kiện Euler và duyệt BFS/DFS.
 
-## 6. Thử nghiệm tương tác
+## Thử nghiệm tương tác
 
 Bật/tắt cạnh trên đồ thị năm đỉnh; ma trận kề và bậc cập nhật tức thời. Kiểm tra trực tiếp hệ thức $$\sum \deg(v) = 2|E|$$.
 

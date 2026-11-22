@@ -45,7 +45,7 @@ Phép `a + b` hay `a * b` trong ngôn ngữ lập trình được hiện thực 
 
 </div>
 
-## 1. Mạch tổ hợp
+## Mạch tổ hợp
 
 <div class="textbook-definition" markdown="1">
 
@@ -63,9 +63,9 @@ Các khối cộng, nhân, MUX, decoder và so sánh trong mục này đều là
 
 <p class="textbook-figure-caption" data-figure="13.35b">Cổng AND — bit nhớ của half adder.</p>
 
-## 2. Half adder (bộ nửa cộng) — cộng hai bit, không có nhớ vào
+## Half adder (bộ nửa cộng) — cộng hai bit, không có nhớ vào
 
-### 2.1. Bảng chân trị
+### Bảng chân trị
 
 **Bộ nửa cộng** (half adder): cộng hai bit $$A, B \in \{0,1\}$$, **không** xét nhớ từ phép cộng cột trước.
 
@@ -84,7 +84,7 @@ trong đó $$S$$ là **bit tổng** (sum), $$C$$ là **bit nhớ** (carry).
 
 (Hàng bảng có thể sắp theo thứ tự bất kỳ; quan trọng là bốn tổ hợp đủ.)
 
-### 2.2. Biểu thức Boole
+### Biểu thức Boole
 
 Đọc SOP (tổng các tích) từ bảng:
 
@@ -112,9 +112,9 @@ Trong nhị phân: kết quả 2-bit là $$CS = 10_2$$.
 
 </div>
 
-## 3. Full adder (bộ cộng đầy đủ) — cộng ba bit (A, B, Cin)
+## Full adder (bộ cộng đầy đủ) — cộng ba bit (A, B, Cin)
 
-### 3.1. Vì sao cần full adder?
+### Vì sao cần full adder?
 
 Khi cộng $$n$$-bit, cột thứ $$i$$ nhận:
 
@@ -123,7 +123,7 @@ Khi cộng $$n$$-bit, cột thứ $$i$$ nhận:
 
 Mỗi cột phải cộng **ba** bit → **full adder** / **bộ cộng đầy đủ** (FA).
 
-### 3.2. Bảng chân trị (8 dòng)
+### Bảng chân trị (8 dòng)
 
 | $$A$$ | $$B$$ | $$C_{in}$$ | $$C_{out}$$ | $$S$$ | Tổng $$A + B + C_{in}$$ |
 |:---:|:---:|:---:|:---:|:---:|:---:|
@@ -142,7 +142,7 @@ $$
 A + B + C_{in} = 2 \cdot C_{out} + S.
 $$
 
-### 3.3. Biểu thức
+### Biểu thức
 
 $$S$$ là **XOR ba ngõ** (tổng modulo 2):
 
@@ -164,7 +164,7 @@ $$
 
 (Tương đương $$C_{out} = AB + (A \oplus B)C_{in}$$ — hữu ích khi ghép hai half adder.)
 
-### 3.4. Hiện thực bằng hai half adder
+### Hiện thực bằng hai half adder
 
 1. HA1: đầu vào $$A, B$$ → $$S_1 = A \oplus B$$, $$C_1 = AB$$.
 2. HA2: đầu vào $$S_1$$, $$C_{in}$$ → $$S = S_1 \oplus C_{in}$$, $$C_2 = S_1 \cdot C_{in}$$.
@@ -181,9 +181,9 @@ Kiểm: $$S = 1 \oplus 1 \oplus 1 = 1$$, $$C_{out} = 1$$.
 
 </div>
 
-## 4. Bộ cộng lan truyền mang (ripple-carry) — cộng $$n$$ bit
+## Bộ cộng lan truyền mang (ripple-carry) — cộng $$n$$ bit
 
-### 4.1. Cấu trúc
+### Cấu trúc
 
 Cho hai số không dấu $$n$$-bit $$A = (A_{n-1} \ldots A_0)_2$$, $$B = (B_{n-1} \ldots B_0)_2$$. Đặt $$C_0 = 0$$. Với $$i = 0, \ldots, n - 1$$:
 
@@ -197,7 +197,7 @@ Tổng $$S = (S_{n-1} \ldots S_0)_2$$; $$C_n$$ là carry ra (có thể xem như 
 
 <p class="textbook-figure-caption" data-figure="13.38">Bốn full adder nối tiếp: mang “gợn sóng” từ bit thấp sang bit cao.</p>
 
-### 4.2. Mẫu 3-bit: half adder + hai full adder
+### Mẫu 3-bit: half adder + hai full adder
 
 Khi $$C_0 = 0$$ cố định, cột bit thấp chỉ cần **half adder** (không có mang vào). Các cột sau dùng **full adder**:
 
@@ -227,7 +227,7 @@ Tổng 4 bit: $$(s_3 s_2 s_1 s_0)_2$$ với $$s_3 = c_2$$.
 
 </div>
 
-### 4.3. Ví dụ số 4-bit (toàn full adder)
+### Ví dụ số 4-bit (toàn full adder)
 
 Cộng $$A = 0101_2 = 5$$ và $$B = 0011_2 = 3$$ (kỳ vọng $$8 = 1000_2$$), với $$C_0 = 0$$ và bốn FA (FA bit 0 tương đương HA vì Cin = 0):
 
@@ -240,7 +240,7 @@ Cộng $$A = 0101_2 = 5$$ và $$B = 0011_2 = 3$$ (kỳ vọng $$8 = 1000_2$$), v
 
 → $$S = 1000_2 = 8$$, $$C_4 = 0$$. Đúng.
 
-### 4.4. Trễ và hạn chế
+### Trễ và hạn chế
 
 Gọi $$t_{FA}$$ là thời gian một full adder tạo ra carry-out ổn định. Mang phải ổn định **tuần tự** từ bit thấp đến bit cao:
 
@@ -265,9 +265,9 @@ Bộ cộng 4 bit gồm bốn full adder nối tiếp; xem nhớ lan từng tầ
 </div>
 <script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
 
-## 5. Mạch nhân — partial products và array
+## Mạch nhân — partial products và array
 
-### 5.1. Ý tưởng
+### Ý tưởng
 
 Nhân hai số không dấu $$n$$-bit tương tự nhân tay:
 
@@ -277,7 +277,7 @@ $$
 
 Mỗi $$A_i B_j$$ là **một AND** (partial product). Các bit cùng trọng số $$2^k$$ được **cộng** bằng half/full adder — đó là **array multiplier**.
 
-### 5.2. Trường hợp 2×2
+### Trường hợp 2×2
 
 $$A = a_1 a_0$$, $$B = b_1 b_0$$. Tích 4 bit $$p_3 p_2 p_1 p_0$$:
 
@@ -308,15 +308,15 @@ Partial: $$11 \times 1 = 11$$, $$11 \times 1$$ dịch trái = $$110$$; cộng $$
 
 </div>
 
-### 5.3. Độ phức tạp (định tính)
+### Độ phức tạp (định tính)
 
 - Số AND: $$n^2$$ (mỗi cặp bit).
 - Số adder: bậc $$\Theta(n^2)$$ trong array cổ điển.
 - Độ rộng tích: $$2n$$ bit (không dấu).
 
-## 6. Các mạch tổ hợp cơ bản khác
+## Các mạch tổ hợp cơ bản khác
 
-### 6.1. Multiplexer (MUX) 2-to-1
+### Multiplexer (MUX) 2-to-1
 
 **Chọn** một trong hai nguồn theo bit điều khiển $$S$$:
 
@@ -340,7 +340,7 @@ Trong ALU: MUX chọn giữa kết quả cộng, AND, OR, … theo mã lệnh. �
 
 **Tổng quát:** MUX $$2^k$$-to-1 có $$k$$ bit chọn; mỗi đầu ra là SOP (tổng các tích) các minterm của bit chọn nhân với đầu vào tương ứng.
 
-### 6.2. Decoder 2-to-4
+### Decoder 2-to-4
 
 Hai bit địa chỉ $$A_1 A_0$$ kích **đúng một** trong bốn đường $$Y_0, \ldots, Y_3$$:
 
@@ -367,7 +367,7 @@ $$
 
 **Ứng dụng:** chọn thanh ghi, giải mã opcode thô, xây ROM đơn giản.
 
-### 6.3. Comparator 1-bit
+### Comparator 1-bit
 
 | Đầu ra | Biểu thức |
 |:---|:---|
@@ -377,7 +377,7 @@ $$
 
 Ghép theo bit (từ MSB) cho comparator $$n$$-bit — tương tự “ripple” quyết định bất đẳng thức.
 
-### 6.4. Từ các khối đến ALU
+### Từ các khối đến ALU
 
 - Chuỗi full adder thực hiện **ADD**.
 - Muốn **trừ** trong bù 2: đảo bit của $$B$$, đặt $$C_0 = 1$$, rồi cộng.
@@ -389,7 +389,7 @@ Ghép theo bit (từ MSB) cho comparator $$n$$-bit — tương tự “ripple”
 
 ALU là mạng cổng được tổ chức từ các khối half/full adder, MUX, comparator và các phép bitwise.
 
-## 7. Liên hệ với tối thiểu hóa
+## Liên hệ với tối thiểu hóa
 
 Half adder và full adder thường đã ở dạng gọn (XOR và majority). MUX và decoder dạng SOP (tổng các tích) chuẩn ánh xạ tự nhiên sang LUT trên FPGA, vì mỗi LUT lưu một bảng chân trị (Mục 13.6). Khi chỉ được dùng NAND, biểu thức chuyển qua De Morgan và các phương pháp rút gọn ở Mục 13.3–13.5.
 

@@ -35,7 +35,7 @@ Trong chương này chúng ta học các phương pháp chứng minh — nền t
 **Từ khóa**: Chứng minh trực tiếp (direct proof), giả thiết (hypothesis), kết luận (conclusion), định nghĩa (definition), bất biến (invariant), correctness.
 </div>
 
-## 1. Định nghĩa
+## Định nghĩa
 
 **Chứng minh trực tiếp** của mệnh đề có dạng "Nếu P thì Q" ($$P \to Q$$) là một chuỗi suy luận bắt đầu bằng việc giả sử $$P$$ đúng, sau đó dùng định nghĩa, định lý đã biết và quy tắc logic để suy ra $$Q$$.
 
@@ -64,7 +64,7 @@ Mỗi bước trong chứng minh phải có lý do rõ ràng — tương tự co
 Trong chứng minh trực tiếp, ta không được giả sử kết luận $$Q$$ đúng. Chỉ được bắt đầu từ giả thiết $$P$$ và những định nghĩa/định lý đã biết.
 </div>
 
-## 2. Ví dụ toán học cơ bản
+## Ví dụ toán học cơ bản
 
 <div class="textbook-example" markdown="1">
 **Ví dụ 1**: Số chẵn:
@@ -131,7 +131,7 @@ Bước quan trọng nhất là bước 2 — mở định nghĩa "số chẵn" 
 ![Trang chứng minh Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid-proof.jpg)
 
 <p class="textbook-figure-caption" data-figure="3.3">Trang chứng minh trong *Elements* — mẫu trình bày chứng minh trực tiếp cổ điển: giả thiết, định nghĩa, suy luận, kết luận.</p>
-## 3. Ví dụ trong Khoa học Máy tính
+## Ví dụ trong Khoa học Máy tính
 
 <div class="textbook-example" markdown="1">
 **Ví dụ 4**: Kiểm tra số chẵn trong code:
@@ -199,7 +199,7 @@ Chứng minh bất biến này thường dùng quy nạp, nhưng bước chuyể
 
 
 <div class="interactive-tool" markdown="1">
-## 4. Checklist khi viết chứng minh trực tiếp
+## Checklist khi viết chứng minh trực tiếp
 
 - Gạch chân giả thiết và kết luận.
 - Viết lại các định nghĩa liên quan.
@@ -207,11 +207,11 @@ Chứng minh bất biến này thường dùng quy nạp, nhưng bước chuyể
 - Mỗi bước phải có lý do: định nghĩa, tính chất đại số, định lý đã biết, hoặc suy luận logic.
 - Kết luận cuối cùng phải đúng dạng của mệnh đề cần chứng minh.
 
-## 5. Phong cách viết chứng minh
+## Phong cách viết chứng minh
 
 Một chứng minh không chỉ đúng mà còn phải dễ đọc. Dưới đây là một số nguyên tắc từ tài liệu tham khảo *Discrete Math* (Watson, 2026):
 
-### 5.1. Cân bằng giữa ký hiệu và văn xuôi
+### Cân bằng giữa ký hiệu và văn xuôi
 
 Khi viết chứng minh, ta dùng câu tiếng Việt hoàn chỉnh, diễn đạt luồng logic bằng các từ như **"với mọi"** thay vì ∀, **"và"** thay vì ∧, **"nếu...thì"** thay vì ⇒. Ký hiệu và công thức như $$x+1$$ nên là một phần của câu.
 
@@ -224,13 +224,13 @@ Có sự đánh đổi: chứng minh sẽ khó đọc nếu quá dày đặc ký
 > Ta viết:
 > "Với mọi số nguyên dương $$x$$, ta có $$x+1 > 0$$."
 
-### 5.2. Tính chặt chẽ (rigor)
+### Tính chặt chẽ (rigor)
 
 Một chứng minh là một dãy các mệnh đề, mỗi mệnh đề hoặc là một sự thật hiển nhiên (như "$$x+y \le x$$ nếu $$y \le 0$$") hoặc suy ra từ các mệnh đề trước bằng một quy tắc logic hiển nhiên (như "nếu $$P \lor Q$$ và $$\lnot P$$ đã được thiết lập, thì $$Q$$ có thể suy ra").
 
 Mặc dù từng bước có thể rất đơn giản, toàn bộ chứng minh có thể đáng ngạc nhiên và thanh lịch. Những nốt nhạc riêng lẻ có thể nhàm chán, nhưng khi kết hợp đúng cách sẽ tạo nên một giai điệu đẹp.
 
-### 5.3. Ví dụ và phản ví dụ (Counterexamples)
+### Ví dụ và phản ví dụ (Counterexamples)
 
 Khi gặp mệnh đề dạng "với mọi $$x$$, $$P(x)$$ đúng", cách nhanh nhất để bác bỏ nó là tìm một **phản ví dụ** — một giá trị $$x$$ làm $$P(x)$$ sai.
 

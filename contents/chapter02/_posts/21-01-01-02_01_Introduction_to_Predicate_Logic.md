@@ -60,7 +60,7 @@ Trong logic mệnh đề, ta chỉ có thể đặt tên cho toàn bộ câu: $$
 
 ## Các thành phần của Logic Vị từ
 
-### 1. Vị từ (Predicate)
+### Vị từ (Predicate)
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Vị từ là một hàm trả về giá trị chân lý, mô tả tính chất hoặc quan hệ.
 </div>
@@ -95,7 +95,7 @@ is_student("Nguyễn")  # True hoặc False
 ![Cú pháp logic bậc nhất](/discrete-mathematics-for-computer-science-iuh/img/course/Logiquepremierordre_syntaxe.svg)
 
 <p class="textbook-figure-caption" data-figure="2.2">Cây cú pháp của công thức logic bậc nhất — vị từ kết hợp với lượng từ và các phép toán logic tạo thành công thức có cấu trúc phân cấp.</p>
-### 2. Miền (Domain/Universe)
+### Miền (Domain/Universe)
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Tập hợp tất cả các giá trị có thể của biến.
 </div>
@@ -107,7 +107,7 @@ is_student("Nguyễn")  # True hoặc False
 </div>
 
 
-### 3. Lượng từ (Quantifiers)
+### Lượng từ (Quantifiers)
 
 #### a) Lượng từ toàn thể (Universal Quantifier)
 **Ký hiệu**: ∀x P(x)
@@ -180,7 +180,7 @@ Thứ tự của các lượng từ quyết định ý nghĩa của công thức
 
 ## Ứng dụng trong Khoa học Máy tính
 
-### 1. SQL và Cơ sở dữ liệu
+### SQL và Cơ sở dữ liệu
 
 SQL WHERE clause là một ứng dụng trực tiếp của logic vị từ:
 
@@ -192,7 +192,7 @@ SELECT * FROM Students WHERE GPA > 3.0;
 SELECT * FROM Students WHERE Name = 'An';
 ```
 
-### 2. Kiểm tra điều kiện mảng
+### Kiểm tra điều kiện mảng
 
 ```python
 # ∀i: tất cả phần tử dương
@@ -202,7 +202,7 @@ all_satisfy = all(x > 0 for x in arr)
 exists = any(x % 2 == 0 for x in arr)
 ```
 
-### 3. Kiểu dữ liệu generic
+### Kiểu dữ liệu generic
 
 Trong TypeScript, Java, Rust — các hàm generic hoạt động "với mọi kiểu T". Đây chính là lượng từ toàn thể:
 
@@ -211,7 +211,7 @@ Trong TypeScript, Java, Rust — các hàm generic hoạt động "với mọi k
 function identity<T>(x: T): T { return x; }
 ```
 
-### 4. Kiểm chứng chương trình
+### Kiểm chứng chương trình
 
 Bất biến vòng lặp thường được biểu diễn bằng vị từ và lượng từ:
 - $$\forall i (0 \leq i < k \implies P(a[i]))$$ — mọi phần tử trong đoạn [0..k-1] đều thỏa P

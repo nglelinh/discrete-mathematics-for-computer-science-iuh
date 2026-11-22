@@ -30,7 +30,7 @@ Sau 20.1–20.13, bạn có **ngôn ngữ** để đọc paper và **bộ chứn
 
 </div>
 
-## 1. Checklist đề tài
+## Checklist đề tài
 
 **Nên hỏi**
 
@@ -46,7 +46,7 @@ Sau 20.1–20.13, bạn có **ngôn ngữ** để đọc paper và **bộ chứn
 - Brute-force + chart không baseline.  
 - DL “giải NPC” không metric/so solver.
 
-## 2. Khung paper
+## Khung paper
 
 1. Problem formal (encoding).  
 2. Related work + status table.  
@@ -56,12 +56,12 @@ Sau 20.1–20.13, bạn có **ngôn ngữ** để đọc paper và **bộ chứn
 
 **Hardness section tối thiểu:** ∈NP + reduction từ 3SAT/IS + Yes⇔Yes + poly $$f$$ (như 20.6–20.9).
 
-## 3. Solver / thực nghiệm
+## Solver / thực nghiệm
 
 SAT: Kissat/Glucose; SMT: Z3; MILP: SCIP/Gurobi.  
 Báo cáo: timeout, seed, machine, version, all instances.
 
-## 4. Lộ trình 12 tuần (NCS năm 1)
+## Lộ trình 12 tuần (NCS năm 1)
 
 | Tuần | Việc | Deliverable |
 |:---:|:---|:---|
@@ -75,7 +75,7 @@ Báo cáo: timeout, seed, machine, version, all instances.
 | 10–11 | Mini: hardness *hoặc* alg *hoặc* solver | Draft 6–8 trang |
 | 12 | Seminar talk 25 phút | Slide + Q&A list |
 
-## 5. Thư mục theo tầng
+## Thư mục theo tầng
 
 **Tầng A (bắt buộc)**  
 Sipser; Arora–Barak; Garey–Johnson; CLRS (NPC chapter).
@@ -93,7 +93,7 @@ Fortnow CACM; Aaronson P vs NP; Wigderson *Mathematics and Computation*; Impagli
 **Primary sources**  
 Cook 1971; Karp 1972; Levin 1973; Ladner 1975.
 
-## 6. Bản đồ Chương 20 (toàn bộ)
+## Bản đồ Chương 20 (toàn bộ)
 
 | # | Bài | Kỹ năng nghiên cứu |
 |:---:|:---|:---|

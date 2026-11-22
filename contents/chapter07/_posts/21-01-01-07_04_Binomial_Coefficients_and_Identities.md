@@ -27,7 +27,7 @@ Biểu thức $$(a+b)^n$$ nhìn có vẻ thuần đại số, nhưng phía sau l
 **Từ khóa**: hệ số nhị thức, tam giác Pascal, định lý nhị thức, đồng nhất tổ hợp.
 </div>
 
-## 1. Hệ số nhị thức
+## Hệ số nhị thức
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Với $0\le k\le n$, hệ số nhị thức $\binom{n}{k}$ là số cách chọn $k$ phần tử từ một tập có $n$ phần tử, không xét thứ tự.
@@ -59,7 +59,7 @@ $$
 </div>
 </div>
 
-## 2. Định lý nhị thức
+## Định lý nhị thức
 
 <div class="textbook-theorem" markdown="1">
 **Định lý**: Với $n$ là số nguyên không âm,
@@ -95,7 +95,7 @@ $$
 </div>
 </div>
 
-## 3. Tam giác Pascal và truy hồi cơ bản
+## Tam giác Pascal và truy hồi cơ bản
 
 Tam giác Pascal được xây dựng bằng quy tắc mỗi số bằng tổng của hai số ngay phía trên nó:
 
@@ -137,9 +137,9 @@ Xem tam giác Pascal được xây từng hàng từ đỉnh: với mỗi ô, ha
 </div>
 <script src="{{ '/public/js/explainers/counting-explainer.js' | relative_url }}"></script>
 
-## 4. Các đồng nhất thức quan trọng
+## Các đồng nhất thức quan trọng
 
-### 4.1. Đối xứng
+### Đối xứng
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -149,7 +149,7 @@ $$
 </div>
 Chọn $k$ phần tử để lấy tương đương với chọn $n-k$ phần tử để bỏ lại.
 
-### 4.2. Tổng một hàng
+### Tổng một hàng
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -159,7 +159,7 @@ $$
 </div>
 **Chứng minh**: Vế trái đếm tất cả tập con của một tập $n$ phần tử theo kích thước. Vế phải đếm trực tiếp: mỗi phần tử có hai lựa chọn, thuộc hoặc không thuộc tập con.
 
-### 4.3. Tổng xen kẽ
+### Tổng xen kẽ
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -169,7 +169,7 @@ $$
 </div>
 Thay $x=1,y=-1$ vào định lý nhị thức chúng ta được $(1-1)^n=0$.
 
-### 4.4. Đồng nhất thức “cây gậy khúc côn cầu”
+### Đồng nhất thức “cây gậy khúc côn cầu”
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -179,7 +179,7 @@ $$
 </div>
 **Trực giác**: Đếm số cách chọn $r+1$ phần tử từ $\{1,2,\ldots,n+1\}$. Nếu phần tử lớn nhất là $i+1$, chúng ta chọn $r$ phần tử còn lại từ $i$ phần tử nhỏ hơn, có $\binom{i}{r}$ cách.
 
-### 4.5. Đồng nhất thức Vandermonde
+### Đồng nhất thức Vandermonde
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -197,7 +197,7 @@ $$
 
 Chuỗi Nilakantha $\pi = 3 + \sum_{k\ge 1} (-1)^{k+1}\dfrac{4}{2k(2k+1)(2k+2)}$ có thể viết lại thành $\pi = 3 + \tfrac{2}{3}\sum_{k\ge 1} \dfrac{(-1)^{k+1}}{\binom{2k+2}{3}}$. Các mẫu số $\binom{4}{3}, \binom{6}{3}, \binom{8}{3}, \ldots = 4, 20, 56, 120, 220, \ldots$ chính là các số nằm ở đường chéo thứ ba của tam giác Pascal, lấy cách một số.
 
-## 6. Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong Khoa học Máy tính
 
 ![Blaise Pascal — nhà toán học Pháp](/discrete-mathematics-for-computer-science-iuh/img/course/Blaise_Pascal_Versailles.JPG)
 

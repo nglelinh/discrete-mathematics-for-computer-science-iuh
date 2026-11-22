@@ -27,7 +27,7 @@ excerpt: "Ở mục trước, chúng ta đã định nghĩa vị từ, miền x�
 **Từ khóa**: lượng từ (quantifier), lồng lượng từ, phạm vi (scope), phủ định lượng từ.
 </div>
 
-## 1. Vị từ, miền xác định và lượng từ
+## Vị từ, miền xác định và lượng từ
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Một **vị từ** $$P(x)$$ là một phát biểu chứa biến, chưa có giá trị chân trị cho đến khi biến được gán giá trị trong một **miền xác định**.
@@ -62,7 +62,7 @@ SELECT * FROM students WHERE gpa >= 0;        -- Luôn đúng
 SELECT * FROM students WHERE gpa >= 3.5;      -- Có thể đúng/sai
 ```
 
-## 2. Lượng từ toàn thể
+## Lượng từ toàn thể
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: $$\forall x\,P(x)$$ đọc là "với mọi $$x$$, $$P(x)$$ đúng". Mệnh đề này đúng khi $$P(x)$$ đúng với tất cả phần tử trong miền xác định.
@@ -85,7 +85,7 @@ SELECT * FROM students WHERE gpa >= 3.5;      -- Có thể đúng/sai
 <p class="textbook-figure-caption" data-figure="2.7">Bảng đối lập (square of opposition) với một vị từ — minh họa quan hệ logic giữa các mệnh đề lượng từ toàn thể và phủ định.</p>
 </div>
 
-## 3. Lượng từ tồn tại
+## Lượng từ tồn tại
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: $$\exists x\,P(x)$$ đọc là "tồn tại ít nhất một $$x$$ sao cho $$P(x)$$ đúng".
@@ -108,7 +108,7 @@ SELECT * FROM students WHERE gpa >= 3.5;      -- Có thể đúng/sai
 <p class="textbook-figure-caption" data-figure="2.8">Ký hiệu ∃ (existential quantification) — khẳng định tồn tại ít nhất một phần tử trong miền thỏa mãn vị từ.</p>
 </div>
 
-## 4. Lượng từ duy nhất
+## Lượng từ duy nhất
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: $$\exists!x\,P(x)$$ nghĩa là tồn tại đúng một $$x$$ sao cho $$P(x)$$ đúng.
@@ -126,7 +126,7 @@ $$\exists x\big(P(x) \land \forall y(P(y) \to y=x)\big).$$
 </div>
 
 
-## 5. Lượng từ lồng nhau
+## Lượng từ lồng nhau
 
 Lượng từ lồng nhau là nơi nhiều lỗi suy luận xuất hiện. Thứ tự lượng từ có thể thay đổi ý nghĩa hoàn toàn.
 
@@ -153,7 +153,7 @@ Khi đó $$\forall x\exists y\,T(x,y)$$ đúng: ai cũng có ít nhất một m�
 ![Lượng từ lồng nhau](/discrete-mathematics-for-computer-science-iuh/img/course/Square_of_opposition__set_diagrams.svg)
 
 <p class="textbook-figure-caption" data-figure="2.9">Sơ đồ tập hợp minh họa quan hệ giữa các mệnh đề lượng từ — hỗ trợ đọc đúng ý nghĩa khi nhiều lượng từ lồng nhau.</p>
-## 6. Phủ định lượng từ
+## Phủ định lượng từ
 
 **Định lý De Morgan cho lượng từ**:
 
@@ -187,7 +187,7 @@ Không được phủ định thành "mọi sinh viên đều không nộp bài"
 <p class="textbook-figure-caption" data-figure="2.10">Biểu đồ Venn cho phép AND và OR — trực quan hóa luật De Morgan khi phủ định lượng từ (∀ ↔ ∃).</p>
 </div>
 
-## 7. Dịch câu tự nhiên sang logic
+## Dịch câu tự nhiên sang logic
 
 **Ví dụ 1**: "Mọi số nguyên chẵn đều chia hết cho 2."
 
@@ -207,7 +207,7 @@ $$\exists s\,\forall c\,(Required(c) \to Takes(s,c)).$$
 $$\forall a\,\exists! e\,PrimaryEmail(a,e).$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-## 10. Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong Khoa học Máy tính
 
 ```python
 scores = [8, 9, 7]

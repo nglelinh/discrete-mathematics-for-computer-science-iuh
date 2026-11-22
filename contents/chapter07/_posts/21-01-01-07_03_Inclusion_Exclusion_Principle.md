@@ -26,7 +26,7 @@ Khi nhiều điều kiện chồng lên nhau, việc đếm bằng trực giác 
 **Từ khóa**: bao hàm–loại trừ, giao tập, đếm có điều kiện.
 </div>
 
-## 1. Đếm hợp của hai tập hợp
+## Đếm hợp của hai tập hợp
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Với hai tập hữu hạn $A$ và $B$, **hợp** $A \cup B$ gồm các phần tử thuộc ít nhất một trong hai tập. **Giao** $A \cap B$ gồm các phần tử thuộc cả hai tập.
@@ -61,7 +61,7 @@ Không thể trả lời $50$ chỉ vì $30+20=50$; con số $10$ ở phần gia
 </div>
 </div>
 
-## 2. Nguyên lý bù trừ cho ba tập hợp
+## Nguyên lý bù trừ cho ba tập hợp
 
 Với ba tập $A,B,C$, công thức là
 
@@ -87,7 +87,7 @@ $${% endraw %}
 
 <script src="{{ '/public/js/inclusion-exclusion-toggle.js' | relative_url }}"></script>
 
-## 3. Công thức tổng quát cho $n$ tập hợp
+## Công thức tổng quát cho $n$ tập hợp
 
 Cho $A_1,A_2,\ldots,A_n$ là các tập hữu hạn. Khi đó
 
@@ -134,7 +134,7 @@ Suy ra tổng xen kẽ không có hạng $\binom{r}{0}$ bằng $1$. Vậy mỗi 
 ![Phép giao hai tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_intersect_B.svg)
 
 <p class="textbook-figure-caption" data-figure="7.13">Mỗi giao $$\lvert A_i \cap A_j \rvert$$ trong công thức tổng quát đại diện phần bị đếm trùng.</p>
-## 4. Dạng bù: đếm phần tử không vi phạm điều kiện nào
+## Dạng bù: đếm phần tử không vi phạm điều kiện nào
 
 Nhiều bài toán dễ hơn nếu đếm số đối tượng **vi phạm ít nhất một điều kiện**, rồi lấy tổng trừ đi số đó.
 
@@ -179,7 +179,7 @@ Do đó số bị loại là $50+33+20-16-10-6+3=74$. Số hợp lệ là $100-7
 <p class="textbook-figure-caption" data-figure="7.15">Nguyên lý bù trừ cũng xuất hiện khi đếm xác suất hợp nhiều biến cố — tương tự birthday paradox.</p>
 </div>
 
-## 6. Ứng dụng trong Khoa học Máy tính
+## Ứng dụng trong Khoa học Máy tính
 Trong cơ sở dữ liệu, truy vấn `OR` giữa nhiều điều kiện có thể tạo ra bản ghi trùng. Hệ quản trị phải loại trùng tương tự nguyên lý bù trừ. Trong bảo mật, khi đếm số mật khẩu thỏa các điều kiện “có chữ hoa”, “có chữ số”, “có ký tự đặc biệt”, cách hiệu quả là đếm phần bù: mật khẩu thiếu ít nhất một loại ký tự. Trong thuật toán, bù trừ xuất hiện trong sàng số nguyên tố, tính xác suất lỗi của hệ thống nhiều thành phần và phân tích các cấu hình bị cấm.
 
 ```python

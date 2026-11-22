@@ -30,7 +30,7 @@ Công cụ **mạnh hơn pumping** cho lower bound số trạng thái và tính 
 
 </div>
 
-## 1. Quan hệ
+## Quan hệ
 
 <div class="textbook-definition" markdown="1">
 
@@ -40,7 +40,7 @@ $$x\sim_L y$$ iff $$\forall z\in\Sigma^*$$: $$xz\in L\Leftrightarrow yz\in L$$.
 
 Tương đương; lớp $$[x]$$.
 
-## 2. Định lý
+## Định lý
 
 <div class="textbook-theorem" markdown="1">
 
@@ -53,11 +53,11 @@ Khi đó DFA tối tiểu có đúng số lớp đó (mỗi lớp một trạng 
 ⇒: trạng thái $$\hat\delta(q_0,x)$$ refine $$~\sim_L$$ (cùng trạng thái ⇒ cùng tương lai).  
 ⇐: DFA các lớp; $$\delta([x],a)=[xa]$$ well-defined; $$F=\{[x]:x\in L\}$$. $$\square$$
 
-## 3. Ứng dụng
+## Ứng dụng
 
 $$0^n1^n$$: $$0^i\not\sim 0^j$$ ($$z=1^i$$) ⇒ vô hạn lớp ⇒ không regular.
 
-## 4. Minimize DFA
+## Minimize DFA
 
 Table-filling / partition refinement: gộp trạng thái không phân biệt — $$O(n\log n)$$ Hopcroft.
 

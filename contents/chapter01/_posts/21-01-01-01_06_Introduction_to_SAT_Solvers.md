@@ -105,7 +105,7 @@ Khi số biến tăng lên 100, không gian tìm kiếm là $$2^{100} \approx 10
 
 Dù xuất phát từ bài toán logic thuần túy, rất nhiều vấn đề thực tế có thể được mã hóa thành SAT.
 
-### 1. Kiểm chứng phần mềm
+### Kiểm chứng phần mềm
 
 Kiểm tra:
 
@@ -113,13 +113,13 @@ Kiểm tra:
 
 Nhiều công cụ phân tích tĩnh hiện đại dựa trên SAT/SMT.
 
-### 2. Lập lịch
+### Lập lịch
 
 Ví dụ: 100 nhân viên, 30 ca làm, hàng trăm ràng buộc về thời gian và kỹ năng.
 
 SAT solver tìm lịch thỏa mãn tất cả điều kiện.
 
-### 3. Giải Sudoku
+### Giải Sudoku
 
 Sudoku có thể chuyển thành hàng nghìn mệnh đề CNF. Nếu SAT tìm được nghiệm → Sudoku có lời giải.
 
@@ -151,7 +151,7 @@ def check_clause(clause, assignment):
 
 ## Các thuật toán SAT Solver cơ bản
 
-### 1. Backtracking (thuật toán naïf)
+### Backtracking (thuật toán naïf)
 
 Ý tưởng đơn giản: thử gán giá trị cho từng biến, nếu vi phạm ràng buộc thì quay lui.
 
@@ -172,14 +172,14 @@ def sat_backtracking(clauses, vars, assignment):
 
 **Nhược điểm**: Rất chậm khi có nhiều biến (thời gian có thể tăng theo cấp số mũ).
 
-### 2. DPLL (Davis–Putnam–Logemann–Loveland)
+### DPLL (Davis–Putnam–Logemann–Loveland)
 
 DPLL cải tiến backtracking bằng hai kỹ thuật then chốt:
 
 1. **Unit Propagation**: Nếu clause chỉ còn 1 literal chưa gán, buộc phải gán giá trị cho literal đó.
 2. **Pure Literal Elimination**: Nếu một biến chỉ xuất hiện dưới một dạng (chỉ dương hoặc chỉ âm), ta có thể gán giá trị an toàn.
 
-### 3. CDCL (Conflict-Driven Clause Learning) – hiện đại nhất
+### CDCL (Conflict-Driven Clause Learning) – hiện đại nhất
 
 CDCL là thuật toán được dùng trong hầu hết SAT solver công nghiệp hiện nay (MiniSat, Glucose, Z3, CaDiCaL...).
 

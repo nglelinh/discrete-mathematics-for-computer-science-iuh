@@ -33,7 +33,7 @@ Trực giác TSP: **kiểm** tour dễ, **tìm** tour khó. $$NP$$ hình thức 
 
 </div>
 
-## 1. Verifier
+## Verifier
 
 <div class="textbook-definition" markdown="1">
 
@@ -45,7 +45,7 @@ Trực giác TSP: **kiểm** tour dễ, **tìm** tour khó. $$NP$$ hình thức 
 
 </div>
 
-## 2. NTM
+## NTM
 
 <div class="textbook-definition" markdown="1">
 
@@ -65,7 +65,7 @@ Trực giác TSP: **kiểm** tour dễ, **tìm** tour khó. $$NP$$ hình thức 
 
 *Verifier → NTM.* Đoán $$c$$ không tất định, chạy $$V(x,c)$$. $$\square$$
 
-## 3. $$P\subseteq NP$$
+## $$P\subseteq NP$$
 
 <div class="textbook-theorem" markdown="1">
 
@@ -75,7 +75,7 @@ Trực giác TSP: **kiểm** tour dễ, **tìm** tour khó. $$NP$$ hình thức 
 
 **Chứng minh.** $$L\in P$$ với thuật toán $$A$$. Đặt $$V(x,c):=A(x)$$ (bỏ $$c$$). Đầy đủ/âm thanh/thời gian rõ. $$\square$$
 
-## 4. Bảng certificate
+## Bảng certificate
 
 | Bài | $$c$$ | $$V$$ kiểm |
 |:---|:---|:---|

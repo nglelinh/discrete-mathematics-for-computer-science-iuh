@@ -215,7 +215,7 @@ Một mệnh đề chỉ có thể mang giá trị 1 hoặc 0, không thể đ�
 
 ## Ứng dụng trong Khoa học Máy tính
 
-### 1. Trong Lập trình
+### Trong Lập trình
 
 Mọi điều kiện trong câu lệnh `if`, `while`, hay biểu thức Boolean đều là mệnh đề:
 
@@ -237,7 +237,7 @@ Trong ví dụ này:
 
 Nắm vững logic mệnh đề giúp chúng ta đọc được điều kiện phức tạp, phát hiện lỗi `and`/`or`, và viết test case hiệu quả hơn.
 
-### 2. Trong Cơ sở dữ liệu
+### Trong Cơ sở dữ liệu
 
 Truy vấn SQL cũng là logic mệnh đề:
 
@@ -248,7 +248,7 @@ WHERE gpa >= 3.2 AND credits >= 60 AND status = 'active';
 
 Mỗi dòng dữ liệu được kiểm tra bởi một mệnh đề. Nếu mệnh đề đúng, dòng đó xuất hiện trong kết quả; nếu sai, dòng đó bị loại.
 
-### 3. Trong Bảo mật
+### Trong Bảo mật
 
 Các hệ thống phân quyền dùng logic để quyết định ai được làm gì:
 
@@ -258,7 +258,7 @@ can_delete = is_admin or (is_owner and not is_locked)
 
 Câu này nghĩa là: người dùng được xóa nếu họ là admin, hoặc nếu họ là chủ sở hữu và tài nguyên chưa bị khóa. Một dấu ngoặc sai có thể tạo lỗ hổng bảo mật.
 
-### 4. Trong Trí tuệ Nhân tạo
+### Trong Trí tuệ Nhân tạo
 
 Hệ chuyên gia, kiểm chứng chương trình, SAT solver và nhiều kỹ thuật AI cổ điển đều dựa trên logic mệnh đề.
 

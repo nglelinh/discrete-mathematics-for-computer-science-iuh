@@ -16,11 +16,11 @@ Trong toán học rời rạc, quan hệ là tập con của tích Descartes; tr
 
 ## Phần 1: Lịch sử — từ set theory đến mô hình quan hệ
 
-### 1.1. Quan hệ sinh ra từ nhu cầu mô tả kết nối
+### Quan hệ sinh ra từ nhu cầu mô tả kết nối
 
 Khi lý thuyết tập hợp trưởng thành, các nhà toán học nhận ra rằng chỉ liệt kê đối tượng là chưa đủ — cần mô tả cách chúng liên kết với nhau. Quan hệ là công cụ phù hợp cho mục đích đó: nó cho phép phát biểu sinh viên nào học môn nào, đỉnh nào kề đỉnh nào, số nào chia hết cho số nào, hay trạng thái nào chuyển sang trạng thái nào.
 
-### 1.2. E. F. Codd và cuộc cách mạng năm 1970
+### E. F. Codd và cuộc cách mạng năm 1970
 
 Năm 1970, Edgar F. Codd công bố bài báo nổi tiếng về mô hình quan hệ cho dữ liệu lớn được chia sẻ — một trong những khoảnh khắc định hình toàn bộ ngành cơ sở dữ liệu. Điểm mạnh của Codd là ông không chỉ đưa ra kỹ thuật lưu trữ mà đưa ra một mô hình toán học. Thay vì xem dữ liệu là các con trỏ và bản ghi phụ thuộc chặt vào cách lưu vật lý, Codd xem dữ liệu như các quan hệ có thể thao tác bằng đại số. Quyết định này tách phần "dữ liệu là gì" khỏi phần "dữ liệu được lưu ra sao".
 
@@ -31,7 +31,7 @@ Năm 1970, Edgar F. Codd công bố bài báo nổi tiếng về mô hình quan 
 
 ## Phần 2: Database design — nơi quan hệ thành hạ tầng
 
-### 2.1. ER diagram là câu chuyện về thực thể và quan hệ
+### ER diagram là câu chuyện về thực thể và quan hệ
 
 Khi thiết kế database,
 kỹ sư thường bắt đầu bằng ER diagram:
@@ -52,7 +52,7 @@ kỹ sư thường bắt đầu bằng ER diagram:
 ![Sơ đồ ER — thực thể và quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/ERD_Representation.svg)
 
 <p class="textbook-figure-caption" data-figure="5.32">ER diagram mô tả thực thể (Student, Course, Instructor) và quan hệ giữa chúng trước khi chuyển sang bảng SQL.</p>
-### 2.2. Foreign key là quan hệ được máy cưỡng chế
+### Foreign key là quan hệ được máy cưỡng chế
 
 ```sql
 CREATE TABLE Enrollments (
@@ -69,7 +69,7 @@ chỉ tồn tại nếu các đối tượng liên quan tồn tại thật.
 
 Đó là cách database biến một quan hệ trừu tượng thành ràng buộc sống còn cho chất lượng dữ liệu.
 
-### 2.3. Relational algebra và query execution
+### Relational algebra và query execution
 
 Các thao tác như:
 
@@ -93,7 +93,7 @@ Nó là cỗ máy suy nghĩ bằng quan hệ.
 
 ## Phần 3: Quan hệ trong mạng xã hội và graphs
 
-### 3.1. Facebook, LinkedIn, X nhìn dưới lăng kính quan hệ
+### Facebook, LinkedIn, X nhìn dưới lăng kính quan hệ
 
 Trên mạng xã hội,
 mỗi người dùng có thể xem như một nút,
@@ -109,7 +109,7 @@ Ví dụ:
 Khi các quan hệ này phình lên hàng tỷ bản ghi,
 chúng ta bước từ set theory sang graph analytics ở quy mô công nghiệp.
 
-### 3.2. Quan hệ có thể có hướng, không đối xứng, không bắc cầu
+### Quan hệ có thể có hướng, không đối xứng, không bắc cầu
 
 Quan hệ “theo dõi” trên X không đối xứng.
 Quan hệ “chúng ta bè” trên Facebook gần hơn với đối xứng.
@@ -118,7 +118,7 @@ Quan hệ “là tổ tiên của” có tính bắc cầu.
 Những tính chất đã học trong toán rời rạc
 trở nên cực thực khi chúng ta mô hình hóa hệ thống thật.
 
-### 3.3. Recommendation systems dựa trên các lớp quan hệ dày đặc
+### Recommendation systems dựa trên các lớp quan hệ dày đặc
 
 Khi nền tảng gợi ý video,
 nhạc,
@@ -141,7 +141,7 @@ nó đang khai thác quan hệ giữa:
 
 ## Phần 4: Equivalence classes trong testing và hashing
 
-### 4.1. Testing không thể thử mọi input
+### Testing không thể thử mọi input
 
 Nếu phần mềm nhận hàng triệu khả năng input,
 chúng ta không thể test từng trường hợp.
@@ -158,7 +158,7 @@ với ô nhập tuổi:
 
 Ba lớp này là ba vùng quan hệ-hành-vi khác nhau.
 
-### 4.2. Equivalence relation và suy nghĩ nhóm hóa
+### Equivalence relation và suy nghĩ nhóm hóa
 
 Một equivalence relation có ba tính chất:
 
@@ -173,7 +173,7 @@ Trong computing,
 ý tưởng “chia thế giới thành các lớp mà bên trong mỗi lớp xử lý giống nhau”
 là cực kỳ thực dụng.
 
-### 4.3. Hashing cũng là một kiểu phân lớp
+### Hashing cũng là một kiểu phân lớp
 
 Hash function ánh xạ nhiều khóa vào số lượng bucket hữu hạn.
 Như vậy,
@@ -192,7 +192,7 @@ quyết định chương trình chạy nhanh hay chậm.
 
 ## Phần 5: AI recommendation systems và ma trận quan hệ
 
-### 5.1. User-item relation là trái tim của gợi ý
+### User-item relation là trái tim của gợi ý
 
 Hãy tưởng tượng bảng dữ liệu:
 
@@ -211,7 +211,7 @@ và gợi ý nào có khả năng thành công.
 ![Ma trận user-item — quan hệ gợi ý](/discrete-mathematics-for-computer-science-iuh/img/course/Hasse_diagram_of_powerset_of_3.svg)
 
 <p class="textbook-figure-caption" data-figure="5.36">Recommendation systems lưu quan hệ user–item dưới dạng ma trận thưa — collaborative filtering khai thác mẫu liên kết giữa người dùng và sản phẩm.</p>
-### 5.2. Collaborative filtering nhìn rất “quan hệ”
+### Collaborative filtering nhìn rất “quan hệ”
 
 Nếu hai người có hành vi tương tự trên nhiều item,
 chúng ta có thể dự đoán họ sẽ thích các item giống nhau trong tương lai.
@@ -223,7 +223,7 @@ và factorization,
 chúng ta vẫn thấy một câu hỏi cũ:
 “đối tượng nào liên hệ với đối tượng nào theo mẫu nào?”
 
-### 5.3. Từ relation đến representation learning
+### Từ relation đến representation learning
 
 Học máy hiện đại thường biến quan hệ thành vector spaces.
 Nhưng điểm khởi đầu vẫn là relation data:

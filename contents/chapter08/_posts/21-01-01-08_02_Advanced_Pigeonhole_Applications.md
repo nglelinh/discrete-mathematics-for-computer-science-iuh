@@ -99,7 +99,7 @@ Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 s
 <p class="textbook-figure-caption" data-figure="8.9">Ramsey theory mở rộng tinh thần chuồng chim — cấu trúc đủ lớn thì một mẫu trật tự nhất định không thể tránh.</p>
 ## Ứng dụng trong Khoa học Máy tính
 
-### 1. Thuật toán Hash và Collision
+### Thuật toán Hash và Collision
 
 ```python
 class PigeonholeHashAnalysis:
@@ -130,7 +130,7 @@ print(f"Pigeonhole guarantee: 2^128 + 1 attempts")
 ![Birthday attack — va chạm hash](/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg)
 
 <p class="textbook-figure-caption" data-figure="8.10">Phân tích hash collision kết hợp nguyên lý chuồng chim và birthday bound — hai công cụ nền trong cryptography.</p>
-### 2. Load Balancing và Distributed Systems
+### Load Balancing và Distributed Systems
 
 ```python
 def optimal_load_distribution(tasks, servers):
@@ -158,7 +158,7 @@ def cache_hit_analysis(cache_size, access_pattern_size):
     return f"At least {guaranteed_misses} cache misses guaranteed"
 ```
 
-### 3. Network Routing và Congestion
+### Network Routing và Congestion
 
 ```python
 def network_congestion_analysis(packets, links, link_capacity):
@@ -208,7 +208,7 @@ def network_congestion_analysis(packets, links, link_capacity):
 
 ## Kỹ thuật Chứng minh Nâng cao
 
-### 1. Nguyên lý Dirichlet Xác suất
+### Nguyên lý Dirichlet Xác suất
 
 <div class="textbook-theorem" markdown="1">
 **Định lý**: Nếu phân bố ngẫu nhiên N quả bóng vào n hộp, thì xác suất để có hộp chứa ≥ k quả bóng là:
@@ -216,7 +216,7 @@ def network_congestion_analysis(packets, links, link_capacity):
 
 P(max ≥ k) ≥ 1 - n(1 - 1/n)^N nếu k = 2
 
-### 2. Nguyên lý Dirichlet Constructive
+### Nguyên lý Dirichlet Constructive
 
 Thay vì chỉ chứng minh tồn tại, chúng ta có thể xây dựng thuật toán để tìm đối tượng thỏa mãn.
 
