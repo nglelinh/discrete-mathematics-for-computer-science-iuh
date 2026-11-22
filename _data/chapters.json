@@ -3,7 +3,7 @@
     "slug": "chapter01",
     "title_vn": "Logic Mệnh đề",
     "title_en": "Propositional Logic",
-    "summary": "Chương này giới thiệu logic mệnh đề — nền tảng hình thức của tư duy toán học và khoa học máy tính. Chúng ta xét mệnh đề, phép toán logic, bảng chân lý, dạng chuẩn, quy tắc suy diễn và ứng dụng trong lập trình, cơ sở dữ liệu và kiểm chứng. Có bài tùy chọn về SAT hiện đại (2022–2026)."
+    "summary": "Chương này giới thiệu logic mệnh đề — nền tảng hình thức của tư duy toán học và khoa học máy tính. Chúng ta xét mệnh đề, phép toán logic, bảng chân lý, dạng chuẩn, quy tắc suy diễn và ứng dụng trong lập trình, cơ sở dữ liệu và kiểm chứng."
   },
   "2": {
     "slug": "chapter02",

@@ -53,8 +53,6 @@ Giáo trình gồm hai mươi chương, nhóm thành sáu phần logic-tính to�
 
 **Phần VI — Mô hình tính toán và độ phức tạp** (Chương 18–20) nghiên cứu máy hữu hạn trạng thái, ngôn ngữ hình thức, máy Turing, lớp P và NP.
 
-Một số chương (12, 16, 17) đang được bổ sung nội dung; mục lục đánh dấu các chương này là *đang cập nhật*.
-
 ## Toán rời rạc và toán liên tục
 
 <div class="textbook-definition" markdown="1">
