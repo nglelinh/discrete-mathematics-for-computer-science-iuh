@@ -249,9 +249,6 @@ Tức $$[(p \to q) \land (q \to r)] \Rightarrow (p \to r)$$.
 
 Tam đoạn luận giả định là cơ sở cho mọi chuỗi xử lý (pipeline) và kế thừa quyền (role hierarchy) trong hệ thống phần mềm. Nó cũng xuất hiện trong các chứng minh toán học dài — mỗi bước là một mắt xích trong chuỗi suy luận.
 
-![Chuỗi suy luận — nối các mệnh đề kéo theo](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
-
-<p class="textbook-figure-caption" data-figure="1.24">Tam đoạn luận giả định — từ p → q và q → r suy ra p → r, nền tảng của pipeline và kế thừa quyền.</p>
 ---
 
 ## Tam đoạn luận Tuyển (Disjunctive Syllogism)

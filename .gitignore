@@ -53,3 +53,7 @@ explainers/node_modules/
 
 # Student data (grades, attendance) - never commit
 2026/
+
+# Manim build output
+__pycache__/
+manim/**/media/
