@@ -29,6 +29,14 @@ Một số quan hệ giúp gom các đối tượng "giống nhau" theo một ti
 **Từ khóa**: lớp tương đương, phân hoạch, tập thương, thứ tự bộ phận, thứ tự toàn phần, thứ tự từ điển, sơ đồ Hasse, min/max, tối tiểu/tối đại, thứ tự tốt.
 </div>
 
+### Video ngắn: Quan hệ tương đương và thứ tự bộ phận
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/equivalence-partial-order.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 27 giây: ba tính chất của quan hệ tương đương, đồng dư modulo 3 trên $$\{0,\dots,11\}$$ tách thành ba lớp tạo phân hoạch, thứ tự bộ phận, từng bước biến quan hệ chia hết trên các ước của 12 thành sơ đồ Hasse (bỏ vòng, bỏ cạnh bắc cầu), phần tử không so sánh được, nhỏ nhất/lớn nhất và tối tiểu/tối đại, và các ước của 30 tạo thành khối lập phương giống $$(\mathcal{P}(\{a,b,c\}), \subseteq)$$.
+
 ## Quan hệ tương đương
 
 <div class="textbook-definition" markdown="1">

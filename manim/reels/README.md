@@ -16,6 +16,7 @@ manim -qh handshake.py Handshake    # -> media/videos/handshake/1920p60/Handshak
 ffmpeg -i media/videos/handshake/1920p60/Handshake.mp4 -c:v libx264 -crf 26 -preset slow \
   -pix_fmt yuv420p -movflags +faststart -an handshake-lemma.mp4
 ```
+Các reel `graycode`, `fibonacci`, `incl_excl`, `perm_comb`, `stars_bars`, `tree_traversal`, `huffman`, `relations` chỉ dùng `Text` (Unicode), không cần LaTeX.
 File nén đặt vào `public/videos/reels/` và nhúng vào bài bằng thẻ `<video>` (xem bài 07-04).
 
 ## Thêm nhạc (tuỳ chọn)
@@ -29,11 +30,11 @@ ffmpeg -i out.mp4 -i music.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -shortest ou
 | `pascal_pi.py` | `PascalPi` | `pascal-to-pi.mp4` | 07-04 |
 | `handshake.py` | `Handshake` | `handshake-lemma.mp4` | 12-01 |
 | `konigsberg.py` | `Konigsberg` | `konigsberg-bridges.mp4` | 12-04 |
-| `fibonacci.py` | `Fibonacci` | `fibonacci-golden-ratio.mp4` | 10-02 |
+| `fibonacci.py` | `Fibonacci` | `fibonacci-binet.mp4` | 10-02 |
 | `euclid.py` | `Euclid` | `euclid-gcd-tiling.mp4` | 15-01 |
 | `cardioid.py` | `Cardioid` | `modular-times-table.mp4` | 15-02 |
 | `derangement.py` | `Derangement` | `derangement-one-over-e.mp4` | 11-04 |
-| `graycode.py` | `GrayCode` | `gray-code-cube.mp4` | 13-04 |
+| `graycode.py` | `GrayCode` | `karnaugh-maps-gray-code.mp4` | 13-04 |
 | `pigeonhole.py` | `Pigeonhole` | `pigeonhole-square.mp4` | 08-01 |
 | `dnf_cnf.py` | `DnfCnf` | `dnf-cnf-normal-forms.mp4` | 01-04 |
 | `induction.py` | `Induction` | `induction-dominoes.mp4` | 03-03 |
@@ -41,3 +42,9 @@ ffmpeg -i out.mp4 -i music.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -shortest ou
 | `mst.py` | `Mst` | `mst-kruskal-prim.mp4` | 16-03 |
 | `dijkstra.py` | `Dijkstra` | `dijkstra-shortest-path.mp4` | 17-01 |
 | `nfa_dfa.py` | `NfaDfa` | `nfa-to-dfa-subset-construction.mp4` | 18-05 |
+| `incl_excl.py` | `InclExcl` | `inclusion-exclusion.mp4` | 07-03, 11-03 |
+| `perm_comb.py` | `PermComb` | `permutations-combinations.mp4` | 07-02 |
+| `stars_bars.py` | `StarsBars` | `stars-and-bars.mp4` | 07-05 |
+| `tree_traversal.py` | `TreeTraversal` | `tree-traversal.mp4` | 16-02 |
+| `huffman.py` | `Huffman` | `huffman-coding.mp4` | 16-04 |
+| `relations.py` | `Relations` | `equivalence-partial-order.mp4` | 05-03 |

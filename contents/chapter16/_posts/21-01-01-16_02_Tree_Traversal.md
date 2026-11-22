@@ -38,6 +38,14 @@ excerpt: "Preorder, inorder, postorder trên cây nhị phân; level-order (BFS)
 
 </div>
 
+### Video ngắn: Duyệt cây
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/tree-traversal.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 13 giây: đi vòng quanh cây trong bài để đọc cùng lúc preorder $$ABDECF$$, inorder $$DBEACF$$ và postorder $$DEBFCA$$, cây biểu thức $$(3+4)\times(5-2)$$ với ba dạng tiền tố, trung tố, hậu tố và cách tính hậu tố bằng ngăn xếp, inorder trên BST cho dãy tăng dần, và level-order bằng hàng đợi.
+
 ## Ba thứ tự DFS trên cây nhị phân
 
 Cho nút có con trái và con phải (có thể rỗng):
