@@ -63,7 +63,7 @@ Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 s
 
 ![Dirichlet — ứng dụng trong lý thuyết số](/discrete-mathematics-for-computer-science-iuh/img/course/Dirichlet.jpg)
 
-<p class="textbook-figure-caption" data-figure="8.7">Định lý Dirichlet về xấp xỉ Diophantine — chia đoạn [0,1) thành $N$ chuồng để ép hai phân số gần nhau.</p>
+<p class="textbook-figure-caption" data-figure="8.7">Định lý Dirichlet về xấp xỉ Diophantine — chia đoạn [0,1) thành $$N$$ chuồng để ép hai phân số gần nhau.</p>
 ### Bài toán Tồn tại Nghiệm
 
 **Bài toán**: Chứng minh rằng với mọi số nguyên a không chia hết cho p (p là số nguyên tố), tồn tại số nguyên n sao cho a^n ≡ 1 (mod p).

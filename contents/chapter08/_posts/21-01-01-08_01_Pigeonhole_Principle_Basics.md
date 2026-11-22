@@ -52,7 +52,7 @@ Trong đó ⌈x⌉ là hàm ceiling (làm tròn lên).
 
 ![Quá nhiều bồ câu — không thể phân bố đều](/discrete-mathematics-for-computer-science-iuh/img/course/TooManyPigeons.jpg)
 
-<p class="textbook-figure-caption" data-figure="8.2">Phiên bản tổng quát — $N$ đối tượng vào $n$ nhóm thì ít nhất một nhóm chứa $\lceil N/n \rceil$ đối tượng.</p>
+<p class="textbook-figure-caption" data-figure="8.2">Phiên bản tổng quát — $$N$$ đối tượng vào $$n$$ nhóm thì ít nhất một nhóm chứa $$\lceil N/n \rceil$$ đối tượng.</p>
 ## Ví dụ cơ bản
 
 <div class="textbook-example" markdown="1">
@@ -121,7 +121,7 @@ Mâu thuẫn! Vậy ít nhất một nhóm chứa ≥ ⌈N/n⌉ đối tượng.
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/pigeonhole-square.mp4"></video>
 </div>
 
-Chia hình vuông $2\times2$ thành $4$ ô $1\times1$ (các "chuồng"). Đặt $5$ điểm (các "chim") thì theo nguyên lý Dirichlet có ít nhất một ô chứa hai điểm, và hai điểm cùng ô cách nhau không quá độ dài đường chéo $\sqrt2$. Video thử ba cách đặt khác nhau — lần nào cũng có cặp điểm như vậy.
+Chia hình vuông $$2\times2$$ thành $$4$$ ô $$1\times1$$ (các "chuồng"). Đặt $$5$$ điểm (các "chim") thì theo nguyên lý Dirichlet có ít nhất một ô chứa hai điểm, và hai điểm cùng ô cách nhau không quá độ dài đường chéo $$\sqrt2$$. Video thử ba cách đặt khác nhau — lần nào cũng có cặp điểm như vậy.
 
 ## Birthday paradox — xác suất vs đảm bảo
 

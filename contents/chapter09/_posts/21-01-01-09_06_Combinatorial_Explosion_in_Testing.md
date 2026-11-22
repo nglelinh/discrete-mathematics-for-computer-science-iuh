@@ -147,7 +147,7 @@ Tiết kiệm: $$(1620 - 75) / 1620 \approx 95{,}4\%$$ — khoảng **95%** th�
 
 ### Bài tập 3
 
-Cho ba tham số: **Browser** $\in \{\text{Chrome, Firefox}\}$, **OS** $\in \{\text{Win, Mac}\}$, **Device** $\in \{\text{Desktop, Mobile}\}$. Tính số cấu hình exhaustive. Giải thích vì sao pairwise với **ba** tham số mới giảm được so với exhaustive (không giảm khi chỉ có **hai** tham số).
+Cho ba tham số: **Browser** $$\in \{\text{Chrome, Firefox}\}$$, **OS** $$\in \{\text{Win, Mac}\}$$, **Device** $$\in \{\text{Desktop, Mobile}\}$$. Tính số cấu hình exhaustive. Giải thích vì sao pairwise với **ba** tham số mới giảm được so với exhaustive (không giảm khi chỉ có **hai** tham số).
 
 <details>
 <summary>Đáp án</summary>

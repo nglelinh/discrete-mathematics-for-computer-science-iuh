@@ -174,16 +174,16 @@ Kết luận then chốt: chứng minh chỉ có ý nghĩa khi mô hình đe d�
 
 ## Phần 4: Những chứng minh nổi tiếng của toán học
 
-### Chứng minh $\sqrt{2}$ là vô tỉ
+### Chứng minh $$\sqrt{2}$$ là vô tỉ
 
-Một trong những ví dụ kinh điển cho proof by contradiction là chứng minh $\sqrt{2}$ vô tỉ.
+Một trong những ví dụ kinh điển cho proof by contradiction là chứng minh $$\sqrt{2}$$ vô tỉ.
 
 Ý tưởng:
-giả sử $\sqrt{2} = a/b$ với $a,b$ tối giản.
-Suy ra $a^2 = 2b^2$,
-nên $a$ chẵn.
-Viết $a = 2k$,
-thế vào thì suy ra $b$ cũng chẵn.
+giả sử $$\sqrt{2} = a/b$$ với $$a,b$$ tối giản.
+Suy ra $$a^2 = 2b^2$$,
+nên $$a$$ chẵn.
+Viết $$a = 2k$$,
+thế vào thì suy ra $$b$$ cũng chẵn.
 Mâu thuẫn với giả thiết tối giản.
 
 Điểm đáng nhớ không chỉ là kết quả.
@@ -194,7 +194,7 @@ Mâu thuẫn với giả thiết tối giản.
 Euclid lại xuất hiện.
 
 Giả sử chỉ có hữu hạn số nguyên tố:
-$p_1, p_2, ..., p_n$.
+$$p_1, p_2, ..., p_n$$.
 Xét số:
 
 <div class="textbook-equation" markdown="1">
@@ -203,9 +203,9 @@ N = p_1p_2\cdots p_n + 1
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Khi chia $N$ cho bất kỳ $p_i$ nào,
+Khi chia $$N$$ cho bất kỳ $$p_i$$ nào,
 đều dư 1.
-Vậy hoặc $N$ là nguyên tố mới,
+Vậy hoặc $$N$$ là nguyên tố mới,
 hoặc nó có ước nguyên tố mới.
 Mâu thuẫn.
 

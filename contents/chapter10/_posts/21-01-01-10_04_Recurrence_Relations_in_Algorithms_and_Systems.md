@@ -99,7 +99,7 @@ Nó giúp hiểu chi phí kiến trúc của nhiều hệ thống thật.
 
 ![Master Theorem — phân tích chia để trị](/discrete-mathematics-for-computer-science-iuh/img/course/Master_theorem.png)
 
-<p class="textbook-figure-caption" data-figure="10.16">Master Theorem giải nhanh $T(n)=aT(n/b)+f(n)$ — công cụ nền cho phân tích merge sort, FFT và nhiều thuật toán chia để trị.</p>
+<p class="textbook-figure-caption" data-figure="10.16">Master Theorem giải nhanh $$T(n)=aT(n/b)+f(n)$$ — công cụ nền cho phân tích merge sort, FFT và nhiều thuật toán chia để trị.</p>
 ![Merge Sort — sơ đồ thuật toán](/discrete-mathematics-for-computer-science-iuh/img/course/Merge_sort_algorithm_diagram.svg)
 
 <p class="textbook-figure-caption" data-figure="10.17">Divide-and-conquer sinh truy hồi tự nhiên — chi phí chia, đệ quy con, và ghép kết quả.</p>
@@ -201,7 +201,7 @@ Nó còn gợi trực giác về product dynamics.
 
 ![Tháp Hà Nội — truy hồi exponential](/discrete-mathematics-for-computer-science-iuh/img/course/Tower_of_Hanoi.gif)
 
-<p class="textbook-figure-caption" data-figure="10.20">Tháp Hà Nội có $H_n = 2H_{n-1}+1$ — mô hình tăng trưởng exponential từ truy hồi đơn giản.</p>
+<p class="textbook-figure-caption" data-figure="10.20">Tháp Hà Nội có $$H_n = 2H_{n-1}+1$$ — mô hình tăng trưởng exponential từ truy hồi đơn giản.</p>
 ---
 
 ## Phần 5: Signal processing và IIR filters

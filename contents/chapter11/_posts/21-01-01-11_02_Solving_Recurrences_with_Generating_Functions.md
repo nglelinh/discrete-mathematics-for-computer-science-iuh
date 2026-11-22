@@ -14,10 +14,10 @@ excerpt: "Ở mục trước chúng ta đã định nghĩa hàm sinh . Mục nà
 
 ![Dãy Fibonacci](/discrete-mathematics-for-computer-science-iuh/img/course/Fibonacci_spiral.svg)
 
-<p class="textbook-figure-caption" data-figure="11.6">Dãy Fibonacci $F_n=F_{n-1}+F_{n-2}$ — ví dụ kinh điển giải truy hồi bằng hàm sinh.</p>
+<p class="textbook-figure-caption" data-figure="11.6">Dãy Fibonacci $$F_n=F_{n-1}+F_{n-2}$$ — ví dụ kinh điển giải truy hồi bằng hàm sinh.</p>
 ![Hàm sinh của dãy Fibonacci](/discrete-mathematics-for-computer-science-iuh/img/course/Contour_graph_of_generating_function_for_Fibonacci_numbers.png)
 
-<p class="textbook-figure-caption" data-figure="11.7">Đồ thị contour của hàm sinh Fibonacci — nhân truy hồi với $x^n$ rồi cộng theo $n$ biến quan hệ đệ quy thành phương trình trên $G(x)$.</p>
+<p class="textbook-figure-caption" data-figure="11.7">Đồ thị contour của hàm sinh Fibonacci — nhân truy hồi với $$x^n$$ rồi cộng theo $$n$$ biến quan hệ đệ quy thành phương trình trên $$G(x)$$.</p>
 ![Khai triển chuỗi lũy thừa](/discrete-mathematics-for-computer-science-iuh/img/course/Za_by_Power_Series_Expansion.png)
 
 ## Mục tiêu học tập
@@ -36,10 +36,10 @@ excerpt: "Ở mục trước chúng ta đã định nghĩa hàm sinh . Mục nà
 
 ## Quy trình 4 bước
 
-1. Đặt hàm sinh $G(x)=\sum_{n\ge0}a_nx^n$.
-2. Nhân truy hồi với $x^n$ rồi cộng theo $n$ để tạo phương trình cho $G(x)$.
-3. Giải đại số để tìm $G(x)$ dưới dạng phân thức.
-4. Khai triển lại để đọc hệ số $a_n$.
+1. Đặt hàm sinh $$G(x)=\sum_{n\ge0}a_nx^n$$.
+2. Nhân truy hồi với $$x^n$$ rồi cộng theo $$n$$ để tạo phương trình cho $$G(x)$$.
+3. Giải đại số để tìm $$G(x)$$ dưới dạng phân thức.
+4. Khai triển lại để đọc hệ số $$a_n$$.
 
 <div class="textbook-theorem" markdown="1">
 **Mấu chốt**: Dịch chỉ số trong truy hồi tương ứng với nhân thêm $$x$$ hoặc $$x^2$$ trong hàm sinh. Quan hệ đệ quy biến thành phương trình đại số trên $$G(x)$$.
@@ -65,7 +65,7 @@ G(x)=\sum_{n\ge0}F_nx^n.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Nhân hai vế truy hồi với $x^n$ và cộng từ $n\ge2$:
+Nhân hai vế truy hồi với $$x^n$$ và cộng từ $$n\ge2$$:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -81,7 +81,7 @@ G(x)-F_0-F_1x=x\big(G(x)-F_0\big)+x^2G(x).
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Vì $F_0=0$ và $F_1=1$,
+Vì $$F_0=0$$ và $$F_1=1$$,
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -97,7 +97,7 @@ G(x)=\frac{x}{1-x-x^2}.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Từ đó, ta có thể khai triển phân thức để thu được công thức tường minh cho $F_n$.
+Từ đó, ta có thể khai triển phân thức để thu được công thức tường minh cho $$F_n$$.
 
 ## Phân thức từng phần
 
@@ -123,7 +123,7 @@ a_n=2a_{n-1}+1,\qquad a_0=0.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Đặt $G(x)=\sum_{n\ge0}a_nx^n$. Với $n\ge1$,
+Đặt $$G(x)=\sum_{n\ge0}a_nx^n$$. Với $$n\ge1$$,
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -139,7 +139,7 @@ G(x)-a_0=2xG(x)+\frac{x}{1-x}.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Vì $a_0=0$,
+Vì $$a_0=0$$,
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -147,10 +147,10 @@ G(x)=\frac{x}{(1-x)(1-2x)}.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Phân tích thành phần đơn sẽ cho công thức đóng của $a_n$.
+Phân tích thành phần đơn sẽ cho công thức đóng của $$a_n$$.
 
 <div class="interactive-demo" markdown="1">
-**Demo tương tác đề xuất**: Chọn một truy hồi bậc 1 hoặc bậc 2, công cụ tự động dựng phương trình cho $G(x)$ và hiển thị bước chuyển từ truy hồi sang phương trình đại số.
+**Demo tương tác đề xuất**: Chọn một truy hồi bậc 1 hoặc bậc 2, công cụ tự động dựng phương trình cho $$G(x)$$ và hiển thị bước chuyển từ truy hồi sang phương trình đại số.
 <div data-demo="gf-recurrence-solver"></div>
 </div>
 <script src="{{ '/public/js/gf-recurrence-solver.js' | relative_url }}"></script>

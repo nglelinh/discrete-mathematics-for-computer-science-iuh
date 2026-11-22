@@ -85,7 +85,7 @@ $$
 > 
 > ————————————
 > 
-> $\therefore q$
+> $$\therefore q$$
 
 Các biểu thức $$p_1, p_2, \dots, p_n$$ được gọi là **giả thiết** (hay **tiền đề**), biểu thức $$q$$ được gọi là **kết luận**.
 

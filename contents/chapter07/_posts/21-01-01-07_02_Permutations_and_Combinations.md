@@ -164,7 +164,7 @@ P(8,3) = 8!/(8-3)! = 8!/5! = 8 × 7 × 6 = 336 cách
 $$C(n,k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Ký hiệu khác**: $C_n^k$ cũng được sử dụng trong một số tài liệu.
+**Ký hiệu khác**: $$C_n^k$$ cũng được sử dụng trong một số tài liệu.
 
 ![Tổ hợp — chọn không xét thứ tự](/discrete-mathematics-for-computer-science-iuh/img/course/Combination.svg)
 

@@ -13,7 +13,7 @@ excerpt: "Truy hồi tuyến tính không thuần nhất: nguyên lý a=a_h+a_p,
 
 ## Dạng tổng quát
 
-Quan hệ truy hồi tuyến tính không thuần nhất bậc $k$ có dạng
+Quan hệ truy hồi tuyến tính không thuần nhất bậc $$k$$ có dạng
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -21,7 +21,7 @@ a_n=c_1a_{n-1}+c_2a_{n-2}+\cdots+c_ka_{n-k}+f(n),
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-trong đó $f(n)$ không đồng nhất bằng 0.
+trong đó $$f(n)$$ không đồng nhất bằng 0.
 
 Quan hệ thuần nhất liên kết là
 
@@ -43,8 +43,8 @@ $$
 </div>
 trong đó:
 
-- $a_n^{(h)}$ là nghiệm tổng quát của quan hệ thuần nhất liên kết.
-- $a_n^{(p)}$ là một nghiệm riêng của quan hệ không thuần nhất.
+- $$a_n^{(h)}$$ là nghiệm tổng quát của quan hệ thuần nhất liên kết.
+- $$a_n^{(p)}$$ là một nghiệm riêng của quan hệ không thuần nhất.
 
 <div class="textbook-proof" markdown="1">
 **Chứng minh (phác).** Gọi $$L$$ là toán tử tuyến tính “chuyển vế trái”:  
@@ -60,18 +60,18 @@ nên $$b-a^{(p)}$$ là nghiệm của quan hệ **thuần nhất** liên kết �
 
 ## Phương pháp hệ số bất định
 
-Khi $f(n)$ có dạng quen thuộc, ta đoán nghiệm riêng cùng “họ” với $f(n)$.
+Khi $$f(n)$$ có dạng quen thuộc, ta đoán nghiệm riêng cùng “họ” với $$f(n)$$.
 
-| Dạng $f(n)$ | Dạng thử cho $a_n^{(p)}$ |
+| Dạng $$f(n)$$ | Dạng thử cho $$a_n^{(p)}$$ |
 |------------|---------------------------|
-| Hằng số $d$ | $A$ |
-| Đa thức bậc $m$ | đa thức bậc $m$ |
-| $b^n$ | $Ab^n$ |
-| $n^m b^n$ | đa thức bậc $m$ nhân $b^n$ |
+| Hằng số $$d$$ | $$A$$ |
+| Đa thức bậc $$m$$ | đa thức bậc $$m$$ |
+| $$b^n$$ | $$Ab^n$$ |
+| $$n^m b^n$$ | đa thức bậc $$m$$ nhân $$b^n$$ |
 
-Nếu dạng thử trùng với nghiệm thuần nhất, nhân thêm $n$ đủ số lần để độc lập tuyến tính.
+Nếu dạng thử trùng với nghiệm thuần nhất, nhân thêm $$n$$ đủ số lần để độc lập tuyến tính.
 
-Khi $f(n)$ là hằng số, theo bảng ở mục 3 ta đoán nghiệm riêng $a_n^{(p)}=A$, thế vào quan hệ để xác định $A$, rồi ghép với nghiệm thuần nhất và điều kiện ban đầu.
+Khi $$f(n)$$ là hằng số, theo bảng ở mục 3 ta đoán nghiệm riêng $$a_n^{(p)}=A$$, thế vào quan hệ để xác định $$A$$, rồi ghép với nghiệm thuần nhất và điều kiện ban đầu.
 
 Giải
 
@@ -81,9 +81,9 @@ a_n=2a_{n-1}+3,\quad a_0=1.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Phần thuần nhất: $a_n^{(h)}=C2^n$.
+Phần thuần nhất: $$a_n^{(h)}=C2^n$$.
 
-Thử nghiệm riêng hằng $a_n^{(p)}=A$. Thay vào:
+Thử nghiệm riêng hằng $$a_n^{(p)}=A$$. Thay vào:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -91,7 +91,7 @@ A=2A+3\Rightarrow A=-3.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Vậy $a_n=C2^n-3$. Từ $a_0=1$, $C-3=1$ nên $C=4$. Do đó
+Vậy $$a_n=C2^n-3$$. Từ $$a_0=1$$, $$C-3=1$$ nên $$C=4$$. Do đó
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -114,7 +114,7 @@ Vậy $$x_n = 2^n - 1$$ (đúng $$1,3,7,15,\ldots$$).
 
 ## Ví dụ với đa thức
 
-Với $f(n)$ là đa thức bậc $m$, ta chọn nghiệm riêng cùng bậc; nếu dạng thử trùng nghiệm thuần nhất thì tăng bậc một để đảm bảo độc lập tuyến tính.
+Với $$f(n)$$ là đa thức bậc $$m$$, ta chọn nghiệm riêng cùng bậc; nếu dạng thử trùng nghiệm thuần nhất thì tăng bậc một để đảm bảo độc lập tuyến tính.
 
 Giải dạng tổng quát:
 
@@ -124,7 +124,7 @@ a_n=a_{n-1}+n.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Phần thuần nhất có nghiệm $C$. Vì $f(n)=n$ là đa thức bậc 1, thử $a_n^{(p)}=An^2+Bn$. Thay vào:
+Phần thuần nhất có nghiệm $$C$$. Vì $$f(n)=n$$ là đa thức bậc 1, thử $$a_n^{(p)}=An^2+Bn$$. Thay vào:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -132,7 +132,7 @@ An^2+Bn=A(n-1)^2+B(n-1)+n.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-So sánh hệ số cho $A=\frac12$. Ta có thể chọn $B=\frac12$, khi đó
+So sánh hệ số cho $$A=\frac12$$. Ta có thể chọn $$B=\frac12$$, khi đó
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -140,11 +140,11 @@ a_n^{(p)}=\frac{n(n+1)}2.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Đây chính là tổng $1+2+\cdots+n$.
+Đây chính là tổng $$1+2+\cdots+n$$.
 
-![Dãy số học — tổng $1+2+\cdots+n$](/discrete-mathematics-for-computer-science-iuh/img/course/Arithmetic_progression.svg)
+![Dãy số học — tổng $$1+2+\cdots+n$$](/discrete-mathematics-for-computer-science-iuh/img/course/Arithmetic_progression.svg)
 
-<p class="textbook-figure-caption" data-figure="10.13">Truy hồi $a_n = a_{n-1} + n$ có nghiệm riêng bậc hai — chính là công thức tổng Gauss.</p>
+<p class="textbook-figure-caption" data-figure="10.13">Truy hồi $$a_n = a_{n-1} + n$$ có nghiệm riêng bậc hai — chính là công thức tổng Gauss.</p>
 
 <div class="textbook-example" markdown="1">
 
@@ -208,7 +208,7 @@ a_n=2a_{n-1}+2^n.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Phần thuần nhất có nghiệm $C2^n$. Nếu thử $A2^n$, nó trùng với nghiệm thuần nhất nên không thể xác định $A$. Ta phải thử
+Phần thuần nhất có nghiệm $$C2^n$$. Nếu thử $$A2^n$$, nó trùng với nghiệm thuần nhất nên không thể xác định $$A$$. Ta phải thử
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -219,7 +219,7 @@ $$
 Đây gọi là hiện tượng **cộng hưởng**: tác động ngoài có cùng dạng với nghiệm tự nhiên của hệ.
 
 <div class="interactive-tool" markdown="1">
-**Demo tương tác đề xuất**: Người học chọn dạng $f(n)$ và nghiệm đặc trưng. Công cụ đề xuất dạng nghiệm riêng, cảnh báo khi xảy ra cộng hưởng và tự nhân thêm $n$.
+**Demo tương tác đề xuất**: Người học chọn dạng $$f(n)$$ và nghiệm đặc trưng. Công cụ đề xuất dạng nghiệm riêng, cảnh báo khi xảy ra cộng hưởng và tự nhân thêm $$n$$.
 <div data-demo="characteristic-solver"></div>
 </div>
 <script src="{{ '/public/js/characteristic-solver.js' | relative_url }}"></script>
@@ -236,11 +236,11 @@ T(n)=2T(n/2)+n
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-mô tả nhiều thuật toán chia để trị như merge sort. Đây không phải truy hồi tuyến tính theo chỉ số $n-1$, nhưng tư tưởng vẫn giống: nghiệm gồm phần do đệ quy và phần chi phí ngoài $n$ ở mỗi mức. Kết quả $T(n)=\Theta(n\log n)$ cho thấy thành phần không thuần nhất quyết định đáng kể độ phức tạp.
+mô tả nhiều thuật toán chia để trị như merge sort. Đây không phải truy hồi tuyến tính theo chỉ số $$n-1$$, nhưng tư tưởng vẫn giống: nghiệm gồm phần do đệ quy và phần chi phí ngoài $$n$$ ở mỗi mức. Kết quả $$T(n)=\Theta(n\log n)$$ cho thấy thành phần không thuần nhất quyết định đáng kể độ phức tạp.
 
-![Dãy hình học — thành phần $f(n)$ trong truy hồi](/discrete-mathematics-for-computer-science-iuh/img/course/Geometric_sequence.svg)
+![Dãy hình học — thành phần $$f(n)$$ trong truy hồi](/discrete-mathematics-for-computer-science-iuh/img/course/Geometric_sequence.svg)
 
-<p class="textbook-figure-caption" data-figure="10.14">Thành phần $f(n)$ trong truy hồi không thuần nhất mô tả tác động bên ngoài — chi phí cố định, dữ liệu mới, hoặc công việc phụ mỗi bước.</p>
+<p class="textbook-figure-caption" data-figure="10.14">Thành phần $$f(n)$$ trong truy hồi không thuần nhất mô tả tác động bên ngoài — chi phí cố định, dữ liệu mới, hoặc công việc phụ mỗi bước.</p>
 Với truy hồi tuyến tính, ví dụ số phép gán trong một vòng lặp tích lũy có thể thỏa
 
 <div class="textbook-equation" markdown="1">
@@ -249,7 +249,7 @@ a_n=a_{n-1}+2n+1,
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-và nghiệm riêng bậc hai cho ta tổng chi phí bậc $\Theta(n^2)$.
+và nghiệm riêng bậc hai cho ta tổng chi phí bậc $$\Theta(n^2)$$.
 
 ### Minh hoạ tương tác
 

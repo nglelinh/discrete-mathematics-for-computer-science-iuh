@@ -30,7 +30,7 @@ excerpt: "Phương trình đặc trưng, nghiệm phân biệt/kép/phức, số
 ## Dạng tổng quát
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Quan hệ truy hồi tuyến tính thuần nhất hệ số hằng bậc $k$ có dạng
+**Định nghĩa**: Quan hệ truy hồi tuyến tính thuần nhất hệ số hằng bậc $$k$$ có dạng
 </div>
 
 
@@ -40,22 +40,22 @@ a_n=c_1a_{n-1}+c_2a_{n-2}+\cdots+c_ka_{n-k},\quad c_k\ne0.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-- **Tuyến tính**: các số hạng $a_{n-i}$ chỉ xuất hiện bậc nhất.
-- **Thuần nhất**: không có thành phần ngoài chỉ phụ thuộc vào $n$.
-- **Hệ số hằng**: $c_i$ không thay đổi theo $n$.
-- Cần $k$ điều kiện đầu để xác định duy nhất dãy.
+- **Tuyến tính**: các số hạng $$a_{n-i}$$ chỉ xuất hiện bậc nhất.
+- **Thuần nhất**: không có thành phần ngoài chỉ phụ thuộc vào $$n$$.
+- **Hệ số hằng**: $$c_i$$ không thay đổi theo $$n$$.
+- Cần $$k$$ điều kiện đầu để xác định duy nhất dãy.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Fibonacci thỏa $F_n=F_{n-1}+F_{n-2}$ với $F_0=0,F_1=1$.
+**Ví dụ**: Fibonacci thỏa $$F_n=F_{n-1}+F_{n-2}$$ với $$F_0=0,F_1=1$$.
 
 ![Dãy truy hồi tuyến tính hệ số hằng](/discrete-mathematics-for-computer-science-iuh/img/course/Constant-recursive-sequences.svg)
 
-<p class="textbook-figure-caption" data-figure="10.6">Truy hồi tuyến tính thuần nhất bậc $k$ — nghiệm là tổng các hạng dạng $r_i^n$.</p>
+<p class="textbook-figure-caption" data-figure="10.6">Truy hồi tuyến tính thuần nhất bậc $$k$$ — nghiệm là tổng các hạng dạng $$r_i^n$$.</p>
 </div>
 
-## Ý tưởng nghiệm dạng $r^n$
+## Ý tưởng nghiệm dạng $$r^n$$
 
-Giả sử $a_n=r^n$ với $r\ne0$. Thay vào truy hồi bậc hai
+Giả sử $$a_n=r^n$$ với $$r\ne0$$. Thay vào truy hồi bậc hai
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -71,7 +71,7 @@ r^n=c_1r^{n-1}+c_2r^{n-2}.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Chia cho $r^{n-2}$:
+Chia cho $$r^{n-2}$$:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -85,14 +85,14 @@ Nghiệm tổng quát của hệ tuyến tính thuần nhất là tổ hợp tuy
 
 ![Giải bài toán đệ quy — phương trình đặc trưng](/discrete-mathematics-for-computer-science-iuh/img/course/Recursive_problem_solving.svg)
 
-<p class="textbook-figure-caption" data-figure="10.7">Phương trình đặc trưng $r^k - c_1 r^{k-1} - \cdots - c_k = 0$ quyết định cấu trúc nghiệm của truy hồi tuyến tính.</p>
+<p class="textbook-figure-caption" data-figure="10.7">Phương trình đặc trưng $$r^k - c_1 r^{k-1} - \cdots - c_k = 0$$ quyết định cấu trúc nghiệm của truy hồi tuyến tính.</p>
 <div class="content-box insight-box textbook-block" markdown="1">
-**Trực giác**: Nếu một dãy tăng theo quy luật nhân lặp lại, tỉ số giữa các số hạng liên tiếp gần giống một hằng số. Vì vậy nghiệm mũ $r^n$ là ứng viên tự nhiên cho hệ tuyến tính hệ số hằng.
+**Trực giác**: Nếu một dãy tăng theo quy luật nhân lặp lại, tỉ số giữa các số hạng liên tiếp gần giống một hằng số. Vì vậy nghiệm mũ $$r^n$$ là ứng viên tự nhiên cho hệ tuyến tính hệ số hằng.
 </div>
 
 ## Nghiệm phân biệt
 
-Nếu phương trình đặc trưng bậc hai có hai nghiệm phân biệt $r_1,r_2$, nghiệm tổng quát là
+Nếu phương trình đặc trưng bậc hai có hai nghiệm phân biệt $$r_1,r_2$$, nghiệm tổng quát là
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -100,10 +100,10 @@ a_n=\alpha r_1^n+\beta r_2^n.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Các hằng số $\alpha,\beta$ được xác định từ điều kiện đầu.
+Các hằng số $$\alpha,\beta$$ được xác định từ điều kiện đầu.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Giải $a_n=5a_{n-1}-6a_{n-2}$, $a_0=2,a_1=5$.
+**Ví dụ**: Giải $$a_n=5a_{n-1}-6a_{n-2}$$, $$a_0=2,a_1=5$$.
 
 Phương trình đặc trưng:
 
@@ -121,7 +121,7 @@ a_n=\alpha2^n+\beta3^n.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Từ $a_0=2$: $\alpha+\beta=2$. Từ $a_1=5$: $2\alpha+3\beta=5$. Suy ra $\beta=1,\alpha=1$. Vậy
+Từ $$a_0=2$$: $$\alpha+\beta=2$$. Từ $$a_1=5$$: $$2\alpha+3\beta=5$$. Suy ra $$\beta=1,\alpha=1$$. Vậy
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -138,11 +138,11 @@ $$
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/fibonacci-golden-ratio.mp4"></video>
 </div>
 
-Dãy Fibonacci $F_{n+1}=F_n+F_{n-1}$ có phương trình đặc trưng $r^2=r+1$ với hai nghiệm $\varphi=\frac{1+\sqrt5}{2}$ và $\psi=\frac{1-\sqrt5}{2}$. Vì $\|\psi\|<1$ nên $F_{n+1}/F_n\to\varphi\approx 1{,}618$, đúng như các chữ số vàng ổn định dần trong video.
+Dãy Fibonacci $$F_{n+1}=F_n+F_{n-1}$$ có phương trình đặc trưng $$r^2=r+1$$ với hai nghiệm $$\varphi=\frac{1+\sqrt5}{2}$$ và $$\psi=\frac{1-\sqrt5}{2}$$. Vì $$\vert \psi\vert <1$$ nên $$F_{n+1}/F_n\to\varphi\approx 1{,}618$$, đúng như các chữ số vàng ổn định dần trong video.
 
 ## Nghiệm bội
 
-Nếu phương trình đặc trưng có nghiệm kép $r$, nghiệm tổng quát là
+Nếu phương trình đặc trưng có nghiệm kép $$r$$, nghiệm tổng quát là
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -150,7 +150,7 @@ a_n=(\alpha+\beta n)r^n.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Tổng quát hơn, nếu $r$ là nghiệm bội $m$, ta có các thành phần
+Tổng quát hơn, nếu $$r$$ là nghiệm bội $$m$$, ta có các thành phần
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -159,7 +159,7 @@ $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Giải $a_n=4a_{n-1}-4a_{n-2}$. Phương trình đặc trưng là
+**Ví dụ**: Giải $$a_n=4a_{n-1}-4a_{n-2}$$. Phương trình đặc trưng là
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -882,7 +882,7 @@ Từ điều kiện đầu: $$A = 1$$, $$B = -1$$. Vì $$\rho < 1$$, $$a_n \to 0
 
 ## Bậc cao hơn
 
-Với truy hồi bậc $k$,
+Với truy hồi bậc $$k$$,
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -898,16 +898,16 @@ r^k-c_1r^{k-1}-c_2r^{k-2}-\cdots-c_k=0.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Mỗi nghiệm phân biệt $r_i$ đóng góp một hạng $\alpha_i r_i^n$; nghiệm bội đóng góp thêm các nhân tử đa thức theo $n$.
+Mỗi nghiệm phân biệt $$r_i$$ đóng góp một hạng $$\alpha_i r_i^n$$; nghiệm bội đóng góp thêm các nhân tử đa thức theo $$n$$.
 
 ![Merge Sort — truy hồi chia để trị](/discrete-mathematics-for-computer-science-iuh/img/course/Merge_sort_algorithm_diagram.svg)
 
-<p class="textbook-figure-caption" data-figure="10.9">Phân tích thuật toán đệ quy thường quy về truy hồi — ví dụ $T(n) = 2T(n/2) + n$ của merge sort.</p>
+<p class="textbook-figure-caption" data-figure="10.9">Phân tích thuật toán đệ quy thường quy về truy hồi — ví dụ $$T(n) = 2T(n/2) + n$$ của merge sort.</p>
 ![Master Theorem — giải truy hồi chia để trị](/discrete-mathematics-for-computer-science-iuh/img/course/Master_theorem.png)
 
-<p class="textbook-figure-caption" data-figure="10.10">Master Theorem giải nhanh dạng $T(n) = aT(n/b) + f(n)$ — công cụ công nghiệp cho phân tích thuật toán.</p>
+<p class="textbook-figure-caption" data-figure="10.10">Master Theorem giải nhanh dạng $$T(n) = aT(n/b) + f(n)$$ — công cụ công nghiệp cho phân tích thuật toán.</p>
 <div class="interactive-demo" markdown="1">
-**Demo tương tác đề xuất**: Người học nhập hệ số $c_1,c_2$ và điều kiện đầu. Công cụ vẽ nghiệm đặc trưng trên trục số/phức và hiển thị vài số hạng đầu của dãy.
+**Demo tương tác đề xuất**: Người học nhập hệ số $$c_1,c_2$$ và điều kiện đầu. Công cụ vẽ nghiệm đặc trưng trên trục số/phức và hiển thị vài số hạng đầu của dãy.
 <div data-demo="linear-recurrence-solver"></div>
 </div>
 <script src="{{ '/public/js/linear-recurrence-solver.js' | relative_url }}"></script>

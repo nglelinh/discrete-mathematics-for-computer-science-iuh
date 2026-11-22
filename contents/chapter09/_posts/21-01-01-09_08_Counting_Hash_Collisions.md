@@ -283,15 +283,15 @@ Khi $$\alpha$$ tăng, $$E$$ tăng nhanh — gần nửa bucket đã có key thì
 
 ### Ngưỡng collision thực tế
 
-| Không gian $D$ | ~50% collision tại $n$ | ~21% collision tại $n$ |
+| Không gian $$D$$ | ~50% collision tại $$n$$ | ~21% collision tại $$n$$ |
 |:---|:---:|:---:|
-| 32-bit ($2^{32}$) | ~77.000 | ~45.000 |
-| 64-bit | ~$5 \times 10^9$ | ~$2 \times 10^9$ |
-| UUID v4 ($2^{122}$) | ~$2.7 \times 10^{18}$ | ~$1 \times 10^{18}$ |
+| 32-bit ($$2^{32}$$) | ~77.000 | ~45.000 |
+| 64-bit | ~$$5 \times 10^9$$ | ~$$2 \times 10^9$$ |
+| UUID v4 ($$2^{122}$$) | ~$$2.7 \times 10^{18}$$ | ~$$1 \times 10^{18}$$ |
 
-**SessionHub case (32-bit):** ~45k session active → $P(\text{collision}) \approx 21\%$ — không còn “hiếm”. `DuplicateKeyException` xuất hiện thường xuyên. Fix: chuyển sang **UUID v4** + `expires_at` dạng **BIGINT** (ms, tránh Y2038).
+**SessionHub case (32-bit):** ~45k session active → $$P(\text{collision}) \approx 21\%$$ — không còn “hiếm”. `DuplicateKeyException` xuất hiện thường xuyên. Fix: chuyển sang **UUID v4** + `expires_at` dạng **BIGINT** (ms, tránh Y2038).
 
-**Bài học:** Không gian 32-bit nghe “khủng” nhưng production scale nhanh. Khi $n$ đạt ~0.6% của $D$, rủi ro đã ở mức đáng lo.
+**Bài học:** Không gian 32-bit nghe “khủng” nhưng production scale nhanh. Khi $$n$$ đạt ~0.6% của $$D$$, rủi ro đã ở mức đáng lo.
 
 ---
 
@@ -311,7 +311,7 @@ Khi $$\alpha$$ tăng, $$E$$ tăng nhanh — gần nửa bucket đã có key thì
 
 **Triệu chứng:** Prometheus OOM sau khi thêm label `user_id` vào metric `login_total`.
 
-**Toán:** Cardinality $\|V_C\|$ = số giá trị **distinct** trên cột $C$. Mỗi user_id là một label riêng → triệu time series.
+**Toán:** Cardinality $$\vert V_C\vert $$ = số giá trị **distinct** trên cột $$C$$. Mỗi user_id là một label riêng → triệu time series.
 
 **Công thức:** Giả sử 500k DAU, mỗi user login 2 lần/ngày → ~1M series chỉ từ 1 metric.
 

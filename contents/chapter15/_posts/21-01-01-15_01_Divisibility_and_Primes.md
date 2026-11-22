@@ -192,7 +192,7 @@ Số bước thuộc $$O(\log \min(\vert a\vert ,\vert b\vert ))$$ — đủ nha
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/euclid-gcd-tiling.mp4"></video>
 </div>
 
-Hình chữ nhật $252\times105$ được lát bằng các hình vuông lớn nhất có thể: $252=2\cdot105+42$, $105=2\cdot42+21$, $42=2\cdot21+0$. Cạnh hình vuông cuối cùng chính là $\gcd(252,105)=21$ — vì thế toàn bộ hình chữ nhật lát kín bằng các ô $21\times21$.
+Hình chữ nhật $$252\times105$$ được lát bằng các hình vuông lớn nhất có thể: $$252=2\cdot105+42$$, $$105=2\cdot42+21$$, $$42=2\cdot21+0$$. Cạnh hình vuông cuối cùng chính là $$\gcd(252,105)=21$$ — vì thế toàn bộ hình chữ nhật lát kín bằng các ô $$21\times21$$.
 
 ### Đồng nhất thức Bézout
 

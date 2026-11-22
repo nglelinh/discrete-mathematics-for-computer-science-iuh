@@ -29,11 +29,11 @@ Khi nhiều điều kiện chồng lên nhau, việc đếm bằng trực giác 
 ## Đếm hợp của hai tập hợp
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Với hai tập hữu hạn $A$ và $B$, **hợp** $A \cup B$ gồm các phần tử thuộc ít nhất một trong hai tập. **Giao** $A \cap B$ gồm các phần tử thuộc cả hai tập.
+**Định nghĩa**: Với hai tập hữu hạn $$A$$ và $$B$$, **hợp** $$A \cup B$$ gồm các phần tử thuộc ít nhất một trong hai tập. **Giao** $$A \cap B$$ gồm các phần tử thuộc cả hai tập.
 </div>
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Nếu $A$ và $B$ hữu hạn thì
+**Định lý**: Nếu $$A$$ và $$B$$ hữu hạn thì
 </div>
 
 <div class="textbook-equation" markdown="1">
@@ -57,13 +57,13 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Không thể trả lời $50$ chỉ vì $30+20=50$; con số $10$ ở phần giao là thông tin bắt buộc.
+Không thể trả lời $$50$$ chỉ vì $$30+20=50$$; con số $$10$$ ở phần giao là thông tin bắt buộc.
 </div>
 </div>
 
 ## Nguyên lý bù trừ cho ba tập hợp
 
-Với ba tập $A,B,C$, công thức là
+Với ba tập $$A,B,C$$, công thức là
 
 <div class="textbook-equation" markdown="1">
 {% raw %}$$
@@ -76,7 +76,7 @@ Với ba tập $A,B,C$, công thức là
 $${% endraw %}
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Tại sao phải cộng lại giao ba?** Một phần tử nằm trong cả ba tập được đếm $3$ lần ở bước cộng tập đơn, bị trừ $3$ lần ở bước trừ giao đôi, nên tổng tạm thời là $0$. Chúng ta phải cộng lại một lần để nó được đếm đúng một lần.
+**Tại sao phải cộng lại giao ba?** Một phần tử nằm trong cả ba tập được đếm $$3$$ lần ở bước cộng tập đơn, bị trừ $$3$$ lần ở bước trừ giao đôi, nên tổng tạm thời là $$0$$. Chúng ta phải cộng lại một lần để nó được đếm đúng một lần.
 
 ![Nguyên lý bù trừ — ba tập hợp](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)
 
@@ -87,9 +87,9 @@ $${% endraw %}
 
 <script src="{{ '/public/js/inclusion-exclusion-toggle.js' | relative_url }}"></script>
 
-## Công thức tổng quát cho $n$ tập hợp
+## Công thức tổng quát cho $$n$$ tập hợp
 
-Cho $A_1,A_2,\ldots,A_n$ là các tập hữu hạn. Khi đó
+Cho $$A_1,A_2,\ldots,A_n$$ là các tập hữu hạn. Khi đó
 
 <div class="textbook-equation" markdown="1">
 {% raw %}$$
@@ -113,7 +113,7 @@ Dạng compact hơn:
 $${% endraw %}
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Khối chứng minh**: Xét một phần tử $x$ thuộc đúng $r$ trong $n$ tập. Trong vế phải, $x$ đóng góp
+**Khối chứng minh**: Xét một phần tử $$x$$ thuộc đúng $$r$$ trong $$n$$ tập. Trong vế phải, $$x$$ đóng góp
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -129,7 +129,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Suy ra tổng xen kẽ không có hạng $\binom{r}{0}$ bằng $1$. Vậy mỗi phần tử thuộc hợp được đếm đúng một lần.
+Suy ra tổng xen kẽ không có hạng $$\binom{r}{0}$$ bằng $$1$$. Vậy mỗi phần tử thuộc hợp được đếm đúng một lần.
 
 ![Phép giao hai tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_intersect_B.svg)
 
@@ -138,7 +138,7 @@ Suy ra tổng xen kẽ không có hạng $\binom{r}{0}$ bằng $1$. Vậy mỗi 
 
 Nhiều bài toán dễ hơn nếu đếm số đối tượng **vi phạm ít nhất một điều kiện**, rồi lấy tổng trừ đi số đó.
 
-Nếu $U$ là không gian tất cả đối tượng và $A_i$ là tập các đối tượng vi phạm điều kiện thứ $i$, thì số đối tượng hợp lệ là
+Nếu $$U$$ là không gian tất cả đối tượng và $$A_i$$ là tập các đối tượng vi phạm điều kiện thứ $$i$$, thì số đối tượng hợp lệ là
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -147,9 +147,9 @@ $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Có bao nhiêu số từ $1$ đến $100$ không chia hết cho $2$, $3$, hoặc $5$?
+**Ví dụ**: Có bao nhiêu số từ $$1$$ đến $$100$$ không chia hết cho $$2$$, $$3$$, hoặc $$5$$?
 
-Gọi $A_2,A_3,A_5$ lần lượt là các số chia hết cho $2,3,5$. Chúng ta có
+Gọi $$A_2,A_3,A_5$$ lần lượt là các số chia hết cho $$2,3,5$$. Chúng ta có
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -169,7 +169,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Do đó số bị loại là $50+33+20-16-10-6+3=74$. Số hợp lệ là $100-74=26$.
+Do đó số bị loại là $$50+33+20-16-10-6+3=74$$. Số hợp lệ là $$100-74=26$$.
 
 ![Biểu đồ Venn ba tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
@@ -227,18 +227,18 @@ Có bao nhiêu chuỗi nhị phân độ dài 8 chứa ít nhất một số 0 v
 <details>
 <summary>Đáp án</summary>
 
-Tổng số chuỗi là $2^8=256$. Chuỗi không có số 0 chỉ có một chuỗi `11111111`; chuỗi không có số 1 chỉ có một chuỗi `00000000`. Vậy số cần tìm là $256-2=254$.
+Tổng số chuỗi là $$2^8=256$$. Chuỗi không có số 0 chỉ có một chuỗi `11111111`; chuỗi không có số 1 chỉ có một chuỗi `00000000`. Vậy số cần tìm là $$256-2=254$$.
 
 </details>
 
 ### Bài tập 3: Chia hết
 
-Tìm số nguyên dương không vượt quá $1000$ chia hết cho $3$ hoặc $5$ hoặc $7$.
+Tìm số nguyên dương không vượt quá $$1000$$ chia hết cho $$3$$ hoặc $$5$$ hoặc $$7$$.
 
 <details>
 <summary>Đáp án</summary>
 
-Các số lượng đơn: $333,200,142$. Giao đôi: chia hết cho $15,21,35$ lần lượt là $66,47,28$. Giao ba: chia hết cho $105$ là $9$. Do đó
+Các số lượng đơn: $$333,200,142$$. Giao đôi: chia hết cho $$15,21,35$$ lần lượt là $$66,47,28$$. Giao ba: chia hết cho $$105$$ là $$9$$. Do đó
 
 <div class="textbook-equation" markdown="1">
 $$

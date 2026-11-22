@@ -92,7 +92,7 @@ $$F_n = F_{n-1} + F_{n-2}, \quad F_1 = 1, F_2 = 1$$
 
 ![Xoắn ốc Fibonacci](/discrete-mathematics-for-computer-science-iuh/img/course/Fibonacci_spiral.svg)
 
-<p class="textbook-figure-caption" data-figure="10.1">Dãy Fibonacci xuất hiện trong tự nhiên — tỷ lệ vàng và xoắn ốc là hệ quả của quan hệ truy hồi $F_n = F_{n-1} + F_{n-2}$.</p>
+<p class="textbook-figure-caption" data-figure="10.1">Dãy Fibonacci xuất hiện trong tự nhiên — tỷ lệ vàng và xoắn ốc là hệ quả của quan hệ truy hồi $$F_n = F_{n-1} + F_{n-2}$$.</p>
 <div class="content-box fun-fact-box textbook-block" markdown="1">
 **Giai thoại**: Leonardo Fibonacci — nhà toán học người Ý thời Trung Cổ — không hề biết rằng dãy số mang tên ông sau này lại xuất hiện trong đến thế: tỷ lệ vàng trong kiến trúc, đường xoắn ốc trong vỏ ốc, sự sắp xếp lá cây, và thậm chí là thuật toán tìm kiếm trong khoa học máy tính hiện đại.
 </div>
@@ -231,7 +231,7 @@ Dãy số thu được: 1, 2, 3, 5, 8, 13, ... — đây là dãy Fibonacci như
 
 ![Dãy hình học — tăng trưởng theo tỷ lệ](/discrete-mathematics-for-computer-science-iuh/img/course/Geometric_sequence.svg)
 
-<p class="textbook-figure-caption" data-figure="10.4">Mô hình hóa bằng truy hồi — lãi kép và tăng trưởng dân số thường là dãy hình học $a_n = r \cdot a_{n-1}$.</p>
+<p class="textbook-figure-caption" data-figure="10.4">Mô hình hóa bằng truy hồi — lãi kép và tăng trưởng dân số thường là dãy hình học $$a_n = r \cdot a_{n-1}$$.</p>
 ## Quan hệ Truy hồi Bậc nhất
 
 <div class="textbook-definition" id="định-nghĩa" markdown="1">
@@ -376,7 +376,7 @@ Các thuật toán đệ quy thường có độ phức tạp thời gian đư�
 
 ![Dãy số học — tổng tích lũy](/discrete-mathematics-for-computer-science-iuh/img/course/Arithmetic_progression.svg)
 
-<p class="textbook-figure-caption" data-figure="10.5">Truy hồi không thuần nhất với $f(n)$ đa thức thường sinh ra dãy số học hoặc tổng có công thức đóng.</p>
+<p class="textbook-figure-caption" data-figure="10.5">Truy hồi không thuần nhất với $$f(n)$$ đa thức thường sinh ra dãy số học hoặc tổng có công thức đóng.</p>
 ### Quy hoạch động (Dynamic Programming)
 
 Quy hoạch động là kỹ thuật giải bài toán bằng cách kết hợp lời giải của các bài toán con — bản chất chính là xây dựng và giải các quan hệ truy hồi. Bài toán ba lô (Knapsack), chuỗi con chung dài nhất (LCS), và đường đi ngắn nhất (Bellman-Ford) đều dùng quan hệ truy hồi.

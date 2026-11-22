@@ -17,16 +17,16 @@ excerpt: "Ở Chương 4 chúng ta đã làm việc với tập hợp, hợp, gi
 <p class="textbook-figure-caption" data-figure="11.11">Công thức bao hàm–loại trừ cho ba tập — cộng từng tập, trừ giao đôi, cộng giao ba.</p>
 ![Giao hai tập A ∩ B](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_intersect_B.svg)
 
-<p class="textbook-figure-caption" data-figure="11.12">Phần giao bị đếm hai lần khi cộng $|A|+|B|$ — phải trừ $|A\cap B|$.</p>
+<p class="textbook-figure-caption" data-figure="11.12">Phần giao bị đếm hai lần khi cộng $$\vert A\vert +\vert B\vert $$ — phải trừ $$\vert A\cap B\vert $$.</p>
 ![Hợp hai tập A ∪ B](/discrete-mathematics-for-computer-science-iuh/img/course/Union_of_sets_A_and_B.svg)
 
-<p class="textbook-figure-caption" data-figure="11.13">Nguyên lý bao hàm–loại trừ cho $|A\cup B|$ — nền tảng đếm có điều kiện chồng lấn.</p>
+<p class="textbook-figure-caption" data-figure="11.13">Nguyên lý bao hàm–loại trừ cho $$\vert A\cup B\vert $$ — nền tảng đếm có điều kiện chồng lấn.</p>
 ![De Morgan và bao hàm](/discrete-mathematics-for-computer-science-iuh/img/course/Intersections_of_two_sets_and_their_complements.svg)
 
 <p class="textbook-figure-caption" data-figure="11.14">Dạng bù: đếm phần tử không vi phạm điều kiện bằng tổng không gian trừ hợp vi phạm.</p>
 ![Biểu đồ Venn ba tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
-<p class="textbook-figure-caption" data-figure="11.15">Mô hình hóa trực quan các tập $A_i$ và giao của chúng trước khi áp công thức.</p>
+<p class="textbook-figure-caption" data-figure="11.15">Mô hình hóa trực quan các tập $$A_i$$ và giao của chúng trước khi áp công thức.</p>
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
@@ -50,7 +50,7 @@ excerpt: "Ở Chương 4 chúng ta đã làm việc với tập hợp, hợp, gi
 $$\vert A \cup B\vert  = \vert A\vert  + \vert B\vert  - \vert A \cap B\vert .$$
 </div>
 
-Với hai tập hữu hạn $A,B$,
+Với hai tập hữu hạn $$A,B$$,
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -58,7 +58,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Với ba tập $A,B,C$,
+Với ba tập $$A,B,C$$,
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -83,7 +83,7 @@ $$
 </div>
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh bằng đếm số lần**: Xét một phần tử thuộc đúng $r$ tập. Trong tổng trên, nó được tính
+**Chứng minh bằng đếm số lần**: Xét một phần tử thuộc đúng $$r$$ tập. Trong tổng trên, nó được tính
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -120,7 +120,7 @@ Ta áp dụng công thức bao hàm–loại trừ cho hai tập giao nhau: mỗ
 
 Đếm các số từ 1 đến 100 chia hết cho 2 hoặc 5.
 
-Gọi $A$ là tập số chia hết cho 2, $B$ là tập số chia hết cho 5. Khi đó
+Gọi $$A$$ là tập số chia hết cho 2, $$B$$ là tập số chia hết cho 5. Khi đó
 
 <div class="textbook-equation" markdown="1">
 $$

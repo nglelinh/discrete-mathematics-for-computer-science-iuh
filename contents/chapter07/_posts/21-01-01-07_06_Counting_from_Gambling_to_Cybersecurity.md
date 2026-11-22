@@ -50,7 +50,7 @@ chúng ta phải đếm rõ ràng.
 
 ### Mật khẩu mạnh hay yếu trước hết là bài toán đếm
 
-Mật khẩu dài $n$ ký tự, mỗi vị trí chọn độc lập từ bảng $a$ ký tự (quy tắc nhân — bài `07_01`):
+Mật khẩu dài $$n$$ ký tự, mỗi vị trí chọn độc lập từ bảng $$a$$ ký tự (quy tắc nhân — bài `07_01`):
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -60,12 +60,12 @@ $$
 </div>
 **Ví dụ 8 ký tự** — hai policy phổ biến trong web app:
 
-| Policy | $a$ | Không gian | Entropy $\approx n\log_2 a$ |
+| Policy | $$a$$ | Không gian | Entropy $$\approx n\log_2 a$$ |
 |:---|:---:|:---|:---|
-| Chữ thường + số | 36 | $36^8 \approx 2.8 \times 10^{12}$ | $\approx 41$ bit |
-| Hoa + thường + số + ký hiệu | 77 | $77^8 \approx 1.2 \times 10^{15}$ | $\approx 51$ bit |
+| Chữ thường + số | 36 | $$36^8 \approx 2.8 \times 10^{12}$$ | $$\approx 41$$ bit |
+| Hoa + thường + số + ký hiệu | 77 | $$77^8 \approx 1.2 \times 10^{15}$$ | $$\approx 51$$ bit |
 
-Chỉ chữ thường: $26^8 \approx 2.1 \times 10^{11}$ ($\approx 37$ bit).
+Chỉ chữ thường: $$26^8 \approx 2.1 \times 10^{11}$$ ($$\approx 37$$ bit).
 
 Ở đây, phép đếm không chỉ là toán — nó định lượng **chi phí brute-force** (số lần thử tối đa / trung bình).
 
@@ -91,10 +91,10 @@ H \approx \log_2(a^n) = n \log_2 a.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Mật khẩu ngẫu nhiên đều trên toàn bộ không gian mới đạt đúng $H$ bit; từ điển, pattern (`123456`, `password`) làm không gian **thực tế** nhỏ hơn rất nhiều.
+Mật khẩu ngẫu nhiên đều trên toàn bộ không gian mới đạt đúng $$H$$ bit; từ điển, pattern (`123456`, `password`) làm không gian **thực tế** nhỏ hơn rất nhiều.
 
 <div class="content-box warning-box textbook-block" markdown="1">
-**Cẩn thận**: Policy “ít nhất 2 trong 4 loại ký tự” **không** cho $77^8$ — phải dùng nguyên lý bù trừ (bài `07_03`). Quy tắc phức tạp $\neq$ nhân đơn giản $a^n$.
+**Cẩn thận**: Policy “ít nhất 2 trong 4 loại ký tự” **không** cho $$77^8$$ — phải dùng nguyên lý bù trừ (bài `07_03`). Quy tắc phức tạp $$\neq$$ nhân đơn giản $$a^n$$.
 </div>
 
 ![Tam giác Pascal — không gian khóa](/discrete-mathematics-for-computer-science-iuh/img/course/Pascal_triangle.svg)
@@ -102,7 +102,7 @@ Mật khẩu ngẫu nhiên đều trên toàn bộ không gian mới đạt đú
 <p class="textbook-figure-caption" data-figure="7.27">Entropy mật khẩu phản ánh kích thước không gian tổ hợp cần duyệt khi brute-force.</p>
 ### Ước lượng thời gian brute-force
 
-Giả sử kẻ tấn công thử $R$ mật khẩu/giây (offline, hash yếu). Thời gian trung bình duyệt một nửa không gian:
+Giả sử kẻ tấn công thử $$R$$ mật khẩu/giây (offline, hash yếu). Thời gian trung bình duyệt một nửa không gian:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -110,7 +110,7 @@ T \approx \frac{a^n / 2}{R}.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Ví dụ** $36^8$, $R = 10^9$/s:
+**Ví dụ** $$36^8$$, $$R = 10^9$$/s:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -118,7 +118,7 @@ T \approx \frac{1.4 \times 10^{12}}{10^9} \approx 1{,}400\ \text{s} \approx 23\ 
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Với bcrypt/Argon2, rate limiting, và salt — $R$ thực tế trên server thấp hơn nhiều; con số trên là **trần lý thuyết** khi hash bị lộ.
+Với bcrypt/Argon2, rate limiting, và salt — $$R$$ thực tế trên server thấp hơn nhiều; con số trên là **trần lý thuyết** khi hash bị lộ.
 
 ```python
 import math
@@ -130,14 +130,14 @@ print(space, entropy_bits)  # ~2.8e12, ~41.4
 
 ### Mã PIN và mã xác nhận email
 
-Nhiều cơ chế xác thực hàng ngày cũng là bài toán $a^n$ — chỉ với $n$ nhỏ hơn mật khẩu web.
+Nhiều cơ chế xác thực hàng ngày cũng là bài toán $$a^n$$ — chỉ với $$n$$ nhỏ hơn mật khẩu web.
 
-| Loại mã | Ngữ cảnh | $a$ | $n$ | Không gian | Entropy $\approx$ |
+| Loại mã | Ngữ cảnh | $$a$$ | $$n$$ | Không gian | Entropy $$\approx$$ |
 |:---|:---|:---:|:---:|:---|:---:|
-| PIN 6 số | ATM, 2FA SMS | 10 | 6 | $10^6$ | $\approx 20$ bit |
-| Mã email base36 | Xác nhận đăng ký, reset mật khẩu | 36 | 6 | $36^6 \approx 2.2 \times 10^9$ | $\approx 31$ bit |
+| PIN 6 số | ATM, 2FA SMS | 10 | 6 | $$10^6$$ | $$\approx 20$$ bit |
+| Mã email base36 | Xác nhận đăng ký, reset mật khẩu | 36 | 6 | $$36^6 \approx 2.2 \times 10^9$$ | $$\approx 31$$ bit |
 
-**PIN 6 số** ($10^6 = 1{,}000{,}000$): entropy thấp — chỉ $\approx 6 \log_2 10 \approx 19.9$ bit. Nếu **không khóa** sau vài lần sai và không rate-limit chặt, kẻ tấn công có thể brute-force trực tuyến:
+**PIN 6 số** ($$10^6 = 1{,}000{,}000$$): entropy thấp — chỉ $$\approx 6 \log_2 10 \approx 19.9$$ bit. Nếu **không khóa** sau vài lần sai và không rate-limit chặt, kẻ tấn công có thể brute-force trực tuyến:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -145,7 +145,7 @@ T \approx \frac{10^6 / 2}{R}.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Với $R \approx 3.3 \times 10^3$ lần thử/giây (API không throttle), duyệt một nửa không gian mất **khoảng 5 phút**. Thực tế ATM và SMS OTP thường **khóa sau 3–5 lần sai** hoặc giới hạn theo IP — đó là biện pháp bù cho không gian nhỏ, không phải thay thế entropy.
+Với $$R \approx 3.3 \times 10^3$$ lần thử/giây (API không throttle), duyệt một nửa không gian mất **khoảng 5 phút**. Thực tế ATM và SMS OTP thường **khóa sau 3–5 lần sai** hoặc giới hạn theo IP — đó là biện pháp bù cho không gian nhỏ, không phải thay thế entropy.
 
 **Mã xác nhận email 6 ký tự base36** (chữ thường + số, `0-9a-z`):
 
@@ -157,28 +157,28 @@ H \approx 6 \log_2 36 \approx 31\ \text{bit}.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Lớn hơn PIN gần $36^6 / 10^6 \approx 2{,}177$ lần — vẫn **nhỏ hơn nhiều** so với mật khẩu 8 ký tự ($36^8$). Mã email thường **hết hạn** (5–15 phút) và **dùng một lần**; rủi ro chính là lộ qua email bị compromise hoặc brute-force API yếu, không phải collision.
+Lớn hơn PIN gần $$36^6 / 10^6 \approx 2{,}177$$ lần — vẫn **nhỏ hơn nhiều** so với mật khẩu 8 ký tự ($$36^8$$). Mã email thường **hết hạn** (5–15 phút) và **dùng một lần**; rủi ro chính là lộ qua email bị compromise hoặc brute-force API yếu, không phải collision.
 
 <div class="content-box insight-box textbook-block" markdown="1">
-**So sánh nhanh**: PIN — không gian $10^6$, dễ brute-force nếu không khóa. Mã email base36 — $36^6 \approx 2.2 \times 10^9$, an toàn hơn ~2000× về không gian nhưng vẫn cần TTL + rate limit.
+**So sánh nhanh**: PIN — không gian $$10^6$$, dễ brute-force nếu không khóa. Mã email base36 — $$36^6 \approx 2.2 \times 10^9$$, an toàn hơn ~2000× về không gian nhưng vẫn cần TTL + rate limit.
 </div>
 
 ### Session ID — rủi ro collision
 
-**Session ID** là giá trị ngẫu nhiên map user ↔ trạng thái trên server (cookie `sessionid`, Redis, DB). Mỗi ID là một lựa chọn từ không gian $N = 2^b$ bit (hoặc $a^n$ nếu encoding chuỗi).
+**Session ID** là giá trị ngẫu nhiên map user ↔ trạng thái trên server (cookie `sessionid`, Redis, DB). Mỗi ID là một lựa chọn từ không gian $$N = 2^b$$ bit (hoặc $$a^n$$ nếu encoding chuỗi).
 
-| Cách sinh | Không gian $N$ | Ghi chú |
+| Cách sinh | Không gian $$N$$ | Ghi chú |
 |:---|:---|:---|
-| `crypto.randomBytes(16)` (128 bit) | $2^{128}$ | Production chuẩn |
-| UUID v4 (122 bit random) | $\approx 2^{122}$ | Phổ biến |
-| 32-bit `rand()` / timestamp | $2^{32}$ | **Không dùng** cho session |
+| `crypto.randomBytes(16)` (128 bit) | $$2^{128}$$ | Production chuẩn |
+| UUID v4 (122 bit random) | $$\approx 2^{122}$$ | Phổ biến |
+| 32-bit `rand()` / timestamp | $$2^{32}$$ | **Không dùng** cho session |
 
 **Hai góc đếm** (bài `08_01`, `08_03`):
 
-- **Chuồng bồ câu**: $> N$ session đồng thời → **chắc chắn** có hai ID trùng.
-- **Birthday paradox**: chỉ cần $\approx \sqrt{N}$ session → xác suất có **cặp** trùng ~50%.
+- **Chuồng bồ câu**: $$> N$$ session đồng thời → **chắc chắn** có hai ID trùng.
+- **Birthday paradox**: chỉ cần $$\approx \sqrt{N}$$ session → xác suất có **cặp** trùng ~50%.
 
-Ví dụ: ID 64-bit → ngưỡng birthday $\approx 2^{32} \approx 4 \times 10^9$. ID 128-bit → $\approx 2^{64}$ — an toàn cho web app thông thường.
+Ví dụ: ID 64-bit → ngưỡng birthday $$\approx 2^{32} \approx 4 \times 10^9$$. ID 128-bit → $$\approx 2^{64}$$ — an toàn cho web app thông thường.
 
 **Hậu quả lập trình**: hai user cùng session key → ghi đè trạng thái → **account hijack**. Không dùng `Math.random()`, counter, hay `userId` làm session ID.
 
@@ -190,15 +190,15 @@ session_id = secrets.token_hex(16)  # 128 bit
 
 ### CSRF token — rủi ro collision
 
-**CSRF token** gắn với form/request để server xác minh request đến từ trang hợp lệ, không phải site khác. Cũng là giá trị chọn từ không gian $N$ — thường lưu trong session hoặc ký HMAC.
+**CSRF token** gắn với form/request để server xác minh request đến từ trang hợp lệ, không phải site khác. Cũng là giá trị chọn từ không gian $$N$$ — thường lưu trong session hoặc ký HMAC.
 
 | Cách làm | Rủi ro |
 |:---|:---|
-| `secrets.token_hex(16)` mỗi form | $N = 2^{128}$, collision không đáng lo |
-| Token 6 chữ số `rand() % 10^6` | $N = 10^6$ — vài trăm form đồng thời đã có risk birthday |
+| `secrets.token_hex(16)` mỗi form | $$N = 2^{128}$$, collision không đáng lo |
+| Token 6 chữ số `rand() % 10^6` | $$N = 10^6$$ — vài trăm form đồng thời đã có risk birthday |
 | Reuse token cả phiên | Không phải bài collision ID — scope hẹp, dễ lộ qua tab cũ |
 
-Xác suất hai token 128-bit trùng khi có $k$ form đồng thời (xấp xỉ):
+Xác suất hai token 128-bit trùng khi có $$k$$ form đồng thời (xấp xỉ):
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -206,10 +206,10 @@ P(\text{collision}) \approx \frac{\binom{k}{2}}{2^{128}} \approx \frac{k^2}{2^{1
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Với $k = 10^6$ request, $P$ vẫn cực nhỏ. Với $N = 10^6$ (token 6 số), $k \approx \sqrt{10^6} = 1000$ đã có nguy cơ cặp trùng đáng kể.
+Với $$k = 10^6$$ request, $$P$$ vẫn cực nhỏ. Với $$N = 10^6$$ (token 6 số), $$k \approx \sqrt{10^6} = 1000$$ đã có nguy cơ cặp trùng đáng kể.
 
 <div class="content-box insight-box textbook-block" markdown="1">
-**So sánh nhanh**: Mật khẩu — brute-force duyệt **toàn bộ** $a^n$. Session/CSRF — attacker cần **đoán trúng một** giá trị đang active; rủi ro chính là **collision** (sinh trùng) hoặc **entropy thấp** (đoán được), không phải duyệt hết không gian.
+**So sánh nhanh**: Mật khẩu — brute-force duyệt **toàn bộ** $$a^n$$. Session/CSRF — attacker cần **đoán trúng một** giá trị đang active; rủi ro chính là **collision** (sinh trùng) hoặc **entropy thấp** (đoán được), không phải duyệt hết không gian.
 </div>
 
 ---
@@ -231,7 +231,7 @@ for i in range(n):
 ```
 
 Ở đây,
-số lần tăng `total` là $n^2$.
+số lần tăng `total` là $$n^2$$.
 
 Nếu không biết đếm,
 chúng ta khó có cảm giác đúng về độ lớn của vấn đề.
@@ -247,7 +247,7 @@ Nó mọc lên từ phân tích đếm các bước cơ bản.
 
 ### Tại sao điều này quan trọng ở công nghiệp
 
-Sự khác biệt giữa $n \log n$ và $n^2$
+Sự khác biệt giữa $$n \log n$$ và $$n^2$$
 có thể là:
 
 - truy vấn chạy trong mili giây hay phút,
@@ -262,7 +262,7 @@ phép đếm là điểm xuất phát của performance engineering.
 <p class="textbook-figure-caption" data-figure="7.28">Đếm thao tác là bước đầu để hiểu vì sao một thuật toán có thể thắng hay thua hoàn toàn khi dữ liệu tăng lớn.</p>
 ![Các lớp độ phức tạp tính toán](/discrete-mathematics-for-computer-science-iuh/img/course/Complexity_classes.svg)
 
-<p class="textbook-figure-caption" data-figure="7.29">Big-O phản ánh hàm tăng trưởng chính — sự khác biệt giữa $n \log n$ và $n^2$ quyết định khả năng scale của hệ thống.</p>
+<p class="textbook-figure-caption" data-figure="7.29">Big-O phản ánh hàm tăng trưởng chính — sự khác biệt giữa $$n \log n$$ và $$n^2$$ quyết định khả năng scale của hệ thống.</p>
 ---
 
 ## Phần 4: Hash collisions và birthday paradox
@@ -299,7 +299,7 @@ Nó còn là cách hiểu bề mặt tấn công của hệ thống bảo mật.
 
 ![Birthday paradox — va chạm sớm hơn trực giác](/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg)
 
-<p class="textbook-figure-caption" data-figure="7.30">Birthday paradox minh họa vì sao hash collision xảy ra sớm hơn trực giác — chỉ cần $\sqrt{N}$ phần tử trong không gian $N$ bucket.</p>
+<p class="textbook-figure-caption" data-figure="7.30">Birthday paradox minh họa vì sao hash collision xảy ra sớm hơn trực giác — chỉ cần $$\sqrt{N}$$ phần tử trong không gian $$N$$ bucket.</p>
 ---
 
 ## Phần 5: Combinatorial testing và covering arrays
@@ -408,12 +408,12 @@ Số cặp tính năng: $$\binom{5}{2} = 10$$. Mỗi cặp 4 tổ hợp → 40 t
 
 ### Bài tập 4: Entropy mật khẩu
 
-So sánh entropy (bit) của mật khẩu 8 ký tự: (a) $a=36$, (b) $a=77$.
+So sánh entropy (bit) của mật khẩu 8 ký tự: (a) $$a=36$$, (b) $$a=77$$.
 
 <details>
 <summary>Đáp án</summary>
 
-(a) $8 \log_2 36 \approx 41.4$ bit. (b) $8 \log_2 77 \approx 50.6$ bit. Chênh $\approx 9$ bit $\approx$ gấp $2^9 \approx 512$ lần không gian.
+(a) $$8 \log_2 36 \approx 41.4$$ bit. (b) $$8 \log_2 77 \approx 50.6$$ bit. Chênh $$\approx 9$$ bit $$\approx$$ gấp $$2^9 \approx 512$$ lần không gian.
 
 </details>
 
@@ -424,29 +424,29 @@ Session ID 64-bit ngẫu nhiên. Khoảng bao nhiêu session active thì xác su
 <details>
 <summary>Đáp án</summary>
 
-Ngưỡng birthday $\approx \sqrt{2^{64}} = 2^{32} \approx 4 \times 10^9$ session.
+Ngưỡng birthday $$\approx \sqrt{2^{64}} = 2^{32} \approx 4 \times 10^9$$ session.
 
 </details>
 
 ### Bài tập 6: CSRF token yếu
 
-CSRF token 6 chữ số ($N = 10^6$). Có 500 form đồng thời. Xấp xỉ xác suất có hai token trùng?
+CSRF token 6 chữ số ($$N = 10^6$$). Có 500 form đồng thời. Xấp xỉ xác suất có hai token trùng?
 
 <details>
 <summary>Đáp án</summary>
 
-$P \approx \binom{500}{2} / 10^6 \approx 124{,}750 / 10^6 \approx 0.12$ (12%) — quá cao cho production.
+$$P \approx \binom{500}{2} / 10^6 \approx 124{,}750 / 10^6 \approx 0.12$$ (12%) — quá cao cho production.
 
 </details>
 
 ### Bài tập 7: PIN ATM
 
-PIN 6 số ($10^6$ khả năng). Không khóa tài khoản, thử $R = 3.3 \times 10^3$ lần/giây. Ước lượng thời gian brute-force trung bình (một nửa không gian)?
+PIN 6 số ($$10^6$$ khả năng). Không khóa tài khoản, thử $$R = 3.3 \times 10^3$$ lần/giây. Ước lượng thời gian brute-force trung bình (một nửa không gian)?
 
 <details>
 <summary>Đáp án</summary>
 
-$T \approx \dfrac{10^6/2}{3.3 \times 10^3} \approx 150$ s $\approx$ **2.5 phút** (một nửa); toàn bộ $10^6$ mất $\approx 5$ phút. Thực tế ATM khóa sau vài lần sai.
+$$T \approx \dfrac{10^6/2}{3.3 \times 10^3} \approx 150$$ s $$\approx$$ **2.5 phút** (một nửa); toàn bộ $$10^6$$ mất $$\approx 5$$ phút. Thực tế ATM khóa sau vài lần sai.
 
 </details>
 
@@ -457,7 +457,7 @@ Mã xác nhận 6 ký tự base36. Tính không gian và entropy (bit). So với
 <details>
 <summary>Đáp án</summary>
 
-$36^6 = 2{,}176{,}782{,}336 \approx 2.2 \times 10^9$; $H \approx 6 \log_2 36 \approx 31$ bit. Tỷ lệ $36^6 / 10^6 \approx 2{,}177$ — lớn hơn PIN gần **2200×**.
+$$36^6 = 2{,}176{,}782{,}336 \approx 2.2 \times 10^9$$; $$H \approx 6 \log_2 36 \approx 31$$ bit. Tỷ lệ $$36^6 / 10^6 \approx 2{,}177$$ — lớn hơn PIN gần **2200×**.
 
 </details>
 
@@ -468,8 +468,8 @@ $36^6 = 2{,}176{,}782{,}336 \approx 2.2 \times 10^9$; $H \approx 6 \log_2 36 \ap
 
 ## Tóm tắt
 
-- **Mật khẩu / PIN / mã OTP**: $a^n$; entropy $\approx n\log_2 a$; PIN $10^6$ yếu nếu không khóa; mã email $36^6 \approx 2.2 \times 10^9$.
-- **Session ID / CSRF**: không gian $2^b$; collision chắc chắn (Dirichlet) hoặc sớm (birthday ~$\sqrt{N}$); dùng CSPRNG đủ bit.
+- **Mật khẩu / PIN / mã OTP**: $$a^n$$; entropy $$\approx n\log_2 a$$; PIN $$10^6$$ yếu nếu không khóa; mã email $$36^6 \approx 2.2 \times 10^9$$.
+- **Session ID / CSRF**: không gian $$2^b$$; collision chắc chắn (Dirichlet) hoặc sớm (birthday ~$$\sqrt{N}$$); dùng CSPRNG đủ bit.
 - Tổ hợp và xác suất là công cụ đếm rủi ro — từ mật khẩu, token web, kiểm thử đến Big-O và hash collision.
 
 ## Video tham khảo

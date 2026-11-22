@@ -30,7 +30,7 @@ Biểu thức $$(a+b)^n$$ nhìn có vẻ thuần đại số, nhưng phía sau l
 ## Hệ số nhị thức
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Với $0\le k\le n$, hệ số nhị thức $\binom{n}{k}$ là số cách chọn $k$ phần tử từ một tập có $n$ phần tử, không xét thứ tự.
+**Định nghĩa**: Với $$0\le k\le n$$, hệ số nhị thức $$\binom{n}{k}$$ là số cách chọn $$k$$ phần tử từ một tập có $$n$$ phần tử, không xét thứ tự.
 </div>
 
 <div class="textbook-equation" markdown="1">
@@ -39,12 +39,12 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Quy ước $\binom{n}{k}=0$ nếu $k<0$ hoặc $k>n$.
+Quy ước $$\binom{n}{k}=0$$ nếu $$k<0$ hoặc $k>n$$.
 
 ![Hệ số nhị thức — n chọn k](/discrete-mathematics-for-computer-science-iuh/img/course/Combination.svg)
 
-<p class="textbook-figure-caption" data-figure="7.16">Hệ số nhị thức $\binom{n}{k}$ đếm số cách chọn $k$ phần tử từ $n$ phần tử, không xét thứ tự.</p>
-**Ký hiệu**: $\binom{n}{k}$ đọc là “$n$ chọn $k$”. Trong một số tài liệu cũ, ký hiệu $C(n,k)$ hoặc $C_n^k$ cũng được dùng.
+<p class="textbook-figure-caption" data-figure="7.16">Hệ số nhị thức $$\binom{n}{k}$$ đếm số cách chọn $$k$$ phần tử từ $$n$$ phần tử, không xét thứ tự.</p>
+**Ký hiệu**: $$\binom{n}{k}$$ đọc là “$$n$$ chọn $$k$$”. Trong một số tài liệu cũ, ký hiệu $$C(n,k)$$ hoặc $$C_n^k$$ cũng được dùng.
 
 <div class="content-box example-box textbook-block" markdown="1">
 <div class="textbook-example" markdown="1">
@@ -62,7 +62,7 @@ $$
 ## Định lý nhị thức
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Với $n$ là số nguyên không âm,
+**Định lý**: Với $$n$$ là số nguyên không âm,
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -81,12 +81,12 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-mỗi hạng tử trong khai triển được tạo bằng cách chọn từ mỗi ngoặc một $x$ hoặc một $y$. Để nhận được hạng $x^{n-k}y^k$, chúng ta phải chọn $y$ từ đúng $k$ trong $n$ ngoặc. Có $\binom{n}{k}$ cách chọn các ngoặc đó. Vì vậy hệ số của $x^{n-k}y^k$ là $\binom{n}{k}$.
+mỗi hạng tử trong khai triển được tạo bằng cách chọn từ mỗi ngoặc một $$x$$ hoặc một $$y$$. Để nhận được hạng $$x^{n-k}y^k$$, chúng ta phải chọn $$y$$ từ đúng $$k$$ trong $$n$$ ngoặc. Có $$\binom{n}{k}$$ cách chọn các ngoặc đó. Vì vậy hệ số của $$x^{n-k}y^k$$ là $$\binom{n}{k}$$.
 </div>
 
 ![Trực quan định lý nhị thức](/discrete-mathematics-for-computer-science-iuh/img/course/Binomial_theorem_visualisation.svg)
 
-<p class="textbook-figure-caption" data-figure="7.17">Mỗi hạng trong khai triển $(x+y)^n$ tương ứng một cách chọn $k$ vị trí lấy $y$ từ $n$ ngoặc.</p>
+<p class="textbook-figure-caption" data-figure="7.17">Mỗi hạng trong khai triển $$(x+y)^n$$ tương ứng một cách chọn $$k$$ vị trí lấy $$y$$ từ $$n$$ ngoặc.</p>
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
 
@@ -122,13 +122,13 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Chứng minh tổ hợp**: Chọn $k$ người từ $n$ người. Cố định một người đặc biệt tên An. Mọi nhóm được chia thành hai loại: nhóm có An, khi đó chọn thêm $k-1$ người từ $n-1$ người; nhóm không có An, khi đó chọn $k$ người từ $n-1$ người. Hai loại rời nhau và bao phủ toàn bộ khả năng.
+**Chứng minh tổ hợp**: Chọn $$k$$ người từ $$n$$ người. Cố định một người đặc biệt tên An. Mọi nhóm được chia thành hai loại: nhóm có An, khi đó chọn thêm $$k-1$$ người từ $$n-1$$ người; nhóm không có An, khi đó chọn $$k$$ người từ $$n-1$$ người. Hai loại rời nhau và bao phủ toàn bộ khả năng.
 
 ![Khai triển nhị thức và tam giác Pascal](/discrete-mathematics-for-computer-science-iuh/img/course/Binomial_expansion_with_Pascal_s_triangle.svg)
 
-<p class="textbook-figure-caption" data-figure="7.19">Khai triển $(a+b)^n$ — hệ số mỗi hạng chính là $\binom{n}{k}$ ở hàng thứ $n$ của tam giác Pascal.</p>
+<p class="textbook-figure-caption" data-figure="7.19">Khai triển $$(a+b)^n$$ — hệ số mỗi hạng chính là $$\binom{n}{k}$$ ở hàng thứ $$n$$ của tam giác Pascal.</p>
 <div class="interactive-demo" markdown="1">
-**Demo tương tác đề xuất**: Người học nhập $n,k$, công cụ tô màu hai ô $\binom{n-1}{k-1}$ và $\binom{n-1}{k}$ trong tam giác Pascal, rồi hiển thị tổng bằng $\binom{n}{k}$.
+**Demo tương tác đề xuất**: Người học nhập $$n,k$$, công cụ tô màu hai ô $$\binom{n-1}{k-1}$$ và $$\binom{n-1}{k}$$ trong tam giác Pascal, rồi hiển thị tổng bằng $$\binom{n}{k}$$.
 </div>
 
 ### Minh hoạ tam giác Pascal: cộng từ đỉnh xuống
@@ -150,7 +150,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Chọn $k$ phần tử để lấy tương đương với chọn $n-k$ phần tử để bỏ lại.
+Chọn $$k$$ phần tử để lấy tương đương với chọn $$n-k$$ phần tử để bỏ lại.
 
 ### Tổng một hàng
 
@@ -160,7 +160,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Chứng minh**: Vế trái đếm tất cả tập con của một tập $n$ phần tử theo kích thước. Vế phải đếm trực tiếp: mỗi phần tử có hai lựa chọn, thuộc hoặc không thuộc tập con.
+**Chứng minh**: Vế trái đếm tất cả tập con của một tập $$n$$ phần tử theo kích thước. Vế phải đếm trực tiếp: mỗi phần tử có hai lựa chọn, thuộc hoặc không thuộc tập con.
 
 ### Tổng xen kẽ
 
@@ -170,7 +170,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Thay $x=1,y=-1$ vào định lý nhị thức chúng ta được $(1-1)^n=0$.
+Thay $$x=1,y=-1$$ vào định lý nhị thức chúng ta được $$(1-1)^n=0$$.
 
 ### Đồng nhất thức “cây gậy khúc côn cầu”
 
@@ -180,7 +180,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Trực giác**: Đếm số cách chọn $r+1$ phần tử từ $\{1,2,\ldots,n+1\}$. Nếu phần tử lớn nhất là $i+1$, chúng ta chọn $r$ phần tử còn lại từ $i$ phần tử nhỏ hơn, có $\binom{i}{r}$ cách.
+**Trực giác**: Đếm số cách chọn $$r+1$$ phần tử từ $$\{1,2,\ldots,n+1\}$$. Nếu phần tử lớn nhất là $$i+1$$, chúng ta chọn $$r$$ phần tử còn lại từ $$i$$ phần tử nhỏ hơn, có $$\binom{i}{r}$$ cách.
 
 ### Đồng nhất thức Vandermonde
 
@@ -190,22 +190,22 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Chứng minh tổ hợp**: Chọn $r$ người từ một lớp gồm $m$ nam và $n$ nữ. Nếu chọn đúng $i$ nam thì có $\binom{m}{i}\binom{n}{r-i}$ cách. Cộng trên mọi $i$ cho kết quả bằng cách chọn trực tiếp $r$ người từ $m+n$ người.
+**Chứng minh tổ hợp**: Chọn $$r$$ người từ một lớp gồm $$m$$ nam và $$n$$ nữ. Nếu chọn đúng $$i$$ nam thì có $$\binom{m}{i}\binom{n}{r-i}$$ cách. Cộng trên mọi $$i$$ cho kết quả bằng cách chọn trực tiếp $$r$$ người từ $$m+n$$ người.
 
-### Video ngắn: Từ tam giác Pascal ra $\pi$
+### Video ngắn: Từ tam giác Pascal ra $$\pi$$
 
 <div class="reel-video" style="text-align:center;margin:1.5rem 0;">
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/pascal-to-pi.mp4"></video>
 </div>
 
-Chuỗi Nilakantha $\pi = 3 + \sum_{k\ge 1} (-1)^{k+1}\dfrac{4}{2k(2k+1)(2k+2)}$ có thể viết lại thành $\pi = 3 + \tfrac{2}{3}\sum_{k\ge 1} \dfrac{(-1)^{k+1}}{\binom{2k+2}{3}}$. Các mẫu số $\binom{4}{3}, \binom{6}{3}, \binom{8}{3}, \ldots = 4, 20, 56, 120, 220, \ldots$ chính là các số nằm ở đường chéo thứ ba của tam giác Pascal, lấy cách một số.
+Chuỗi Nilakantha $$\pi = 3 + \sum_{k\ge 1} (-1)^{k+1}\dfrac{4}{2k(2k+1)(2k+2)}$$ có thể viết lại thành $$\pi = 3 + \tfrac{2}{3}\sum_{k\ge 1} \dfrac{(-1)^{k+1}}{\binom{2k+2}{3}}$$. Các mẫu số $$\binom{4}{3}, \binom{6}{3}, \binom{8}{3}, \ldots = 4, 20, 56, 120, 220, \ldots$$ chính là các số nằm ở đường chéo thứ ba của tam giác Pascal, lấy cách một số.
 
 ## Ứng dụng trong Khoa học Máy tính
 
 ![Blaise Pascal — nhà toán học Pháp](/discrete-mathematics-for-computer-science-iuh/img/course/Blaise_Pascal_Versailles.JPG)
 
 <p class="textbook-figure-caption" data-figure="7.20">Blaise Pascal (1623–1662) — cùng Fermat đặt nền móng cho xác suất và tổ hợp hiện đại.</p>
-Hệ số nhị thức xuất hiện trong phân tích thuật toán chia để trị, xác suất Bernoulli, mã sửa lỗi, học máy và sinh ngẫu nhiên tập con. Trong kiểm thử phần mềm, nếu cần chọn mọi tập con gồm $k$ tính năng từ $n$ tính năng để kiểm tra tương tác, số ca kiểm thử là $\binom{n}{k}$.
+Hệ số nhị thức xuất hiện trong phân tích thuật toán chia để trị, xác suất Bernoulli, mã sửa lỗi, học máy và sinh ngẫu nhiên tập con. Trong kiểm thử phần mềm, nếu cần chọn mọi tập con gồm $$k$$ tính năng từ $$n$$ tính năng để kiểm tra tương tác, số ca kiểm thử là $$\binom{n}{k}$$.
 
 ```python
 from math import comb
@@ -235,12 +235,12 @@ Minh hoạ đếm: tam giác Pascal tương tác, chọn ô để xem hệ thứ
 
 ### Bài tập 1: Khai triển
 
-Tìm hệ số của $x^7y^3$ trong $(x+y)^{10}$.
+Tìm hệ số của $$x^7y^3$$ trong $$(x+y)^{10}$$.
 
 <details>
 <summary>Đáp án</summary>
 
-Vì số mũ của $y$ là $3$, hệ số là
+Vì số mũ của $$y$$ là $$3$$, hệ số là
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -252,12 +252,12 @@ $$
 
 ### Bài tập 2: Chứng minh bằng tổ hợp
 
-Chứng minh $\binom{n}{1}+\binom{n}{2}+\cdots+\binom{n}{n}=2^n-1$.
+Chứng minh $$\binom{n}{1}+\binom{n}{2}+\cdots+\binom{n}{n}=2^n-1$$.
 
 <details>
 <summary>Đáp án</summary>
 
-Tổng tất cả $\binom{n}{k}$ từ $k=0$ đến $n$ là $2^n$. Hạng $k=0$ đếm tập rỗng. Bỏ tập rỗng còn $2^n-1$ tập con không rỗng.
+Tổng tất cả $$\binom{n}{k}$$ từ $$k=0$$ đến $$n$$ là $$2^n$$. Hạng $$k=0$$ đếm tập rỗng. Bỏ tập rỗng còn $$2^n-1$$ tập con không rỗng.
 
 </details>
 
@@ -277,7 +277,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Cũng bằng $\binom{9}{3}=84$.
+Cũng bằng $$\binom{9}{3}=84$$.
 
 </details>
 
@@ -288,9 +288,9 @@ Cũng bằng $\binom{9}{3}=84$.
 
 ## Tóm tắt
 
-- **Hệ số nhị thức** $\binom{n}{k}$ đếm số cách chọn $k$ phần tử từ $n$ phần tử.
-- **Định lý nhị thức** liên hệ tổ hợp với khai triển đại số của $(x+y)^n$.
-- **Tam giác Pascal** biểu diễn truy hồi $\binom{n}{k}=\binom{n-1}{k-1}+\binom{n-1}{k}$.
+- **Hệ số nhị thức** $$\binom{n}{k}$$ đếm số cách chọn $$k$$ phần tử từ $$n$$ phần tử.
+- **Định lý nhị thức** liên hệ tổ hợp với khai triển đại số của $$(x+y)^n$$.
+- **Tam giác Pascal** biểu diễn truy hồi $$\binom{n}{k}=\binom{n-1}{k-1}+\binom{n-1}{k}$$.
 - **Đồng nhất thức tổ hợp** thường có hai kiểu chứng minh: đại số và đếm hai cách.
 - **Ứng dụng CS** gồm kiểm thử tổ hợp, xác suất, sinh tập con và phân tích thuật toán.
 

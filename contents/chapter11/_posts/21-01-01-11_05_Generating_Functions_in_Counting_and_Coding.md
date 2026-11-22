@@ -22,7 +22,7 @@ excerpt: "Ở các mục trước chúng ta đã định nghĩa hàm sinh, dùng
 <p class="textbook-figure-caption" data-figure="11.22">Hàm sinh xác suất biến phân phối rời rạc thành đối tượng có thể vi phân, nhân và phân tích.</p>
 ![Đếm tổ hợp bằng hệ số](/discrete-mathematics-for-computer-science-iuh/img/course/Za_by_Power_Series_Expansion.png)
 
-<p class="textbook-figure-caption" data-figure="11.23">Nhân các chuỗi hình thức — hệ số của $x^n$ cho số cách đạt tổng $n$.</p>
+<p class="textbook-figure-caption" data-figure="11.23">Nhân các chuỗi hình thức — hệ số của $$x^n$$ cho số cách đạt tổng $$n$$.</p>
 ![Giải truy hồi bằng hàm sinh](/discrete-mathematics-for-computer-science-iuh/img/course/Fibonacci_spiral.svg)
 
 <p class="textbook-figure-caption" data-figure="11.24">Truy hồi khó trở nên phương trình đại số sau khi chuyển sang miền hàm sinh.</p>
@@ -38,7 +38,7 @@ Thay vì chỉ xem dãy số là danh sách,
 ông xem chúng như hệ số của một power series.
 
 Ví dụ,
-dãy $a_0, a_1, a_2, ...$
+dãy $$a_0, a_1, a_2, ...$$
 có thể được đóng gói thành:
 
 <div class="textbook-equation" markdown="1">
@@ -80,7 +80,7 @@ $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 Khi nhân nhiều chuỗi như vậy,
-hệ số của $x^n$ nói số cách đạt tổng $n$.
+hệ số của $$x^n$$ nói số cách đạt tổng $$n$$.
 
 ### Partition problems
 
@@ -102,7 +102,7 @@ thấy cách mã hóa cấu trúc rời rạc vào biểu diễn đại số đ�
 
 ### Khi xác suất cũng được đóng gói bằng chuỗi
 
-Nếu biến ngẫu nhiên rời rạc $X$ nhận các giá trị không âm,
+Nếu biến ngẫu nhiên rời rạc $$X$$ nhận các giá trị không âm,
 ta có probability generating function:
 
 <div class="textbook-equation" markdown="1">
@@ -142,7 +142,7 @@ generating functions từng là công cụ chuẩn để phân tích phân phố
 
 Một số recurrence đơn giản có thể giải trực tiếp.
 Nhưng nhiều recurrence phức tạp hơn
-trở nên dễ xử lý nếu ta nhân cả hai vế với $x^n$,
+trở nên dễ xử lý nếu ta nhân cả hai vế với $$x^n$$,
 cộng theo `n`,
 và biến toàn bộ bài toán thành quan hệ giữa các generating functions.
 

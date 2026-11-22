@@ -17,7 +17,7 @@ excerpt: "Ở mục trước chúng ta đã chứng minh công thức bao hàm�
 <p class="textbook-figure-caption" data-figure="11.16">Sàng Legendre và hàm Euler đều dùng cùng khuôn: cộng, trừ giao, cộng lại giao cao hơn.</p>
 ![Phân tích thừa số nguyên tố](/discrete-mathematics-for-computer-science-iuh/img/course/PrimeDecompositionExample.svg)
 
-<p class="textbook-figure-caption" data-figure="11.17">Hàm $\phi(n)$ loại các số chia hết cho từng thừa số nguyên tố của $n$.</p>
+<p class="textbook-figure-caption" data-figure="11.17">Hàm $$\phi(n)$$ loại các số chia hết cho từng thừa số nguyên tố của $$n$$.</p>
 ![Cấu trúc số nguyên](/discrete-mathematics-for-computer-science-iuh/img/course/Euler_diagram_of_number_sets.svg)
 
 <p class="textbook-figure-caption" data-figure="11.18">Đếm số nguyên tố cùng nhau, số toàn ánh và derangement đều là bài toán đếm trên tập số.</p>
@@ -42,17 +42,17 @@ excerpt: "Ở mục trước chúng ta đã chứng minh công thức bao hàm�
 
 ## Sàng Legendre và đếm số nguyên tố
 
-Để đếm số nguyên tố không vượt quá $N$, ta đếm số số bị chia hết bởi ít nhất một số nguyên tố nhỏ hơn hoặc bằng $\sqrt N$, rồi loại bỏ chúng khỏi tập ứng viên. Ý tưởng này không thay thế sàng Eratosthenes trong tính toán thực tế, nhưng minh họa rất rõ cách bao hàm - loại trừ hoạt động.
+Để đếm số nguyên tố không vượt quá $$N$$, ta đếm số số bị chia hết bởi ít nhất một số nguyên tố nhỏ hơn hoặc bằng $$\sqrt N$$, rồi loại bỏ chúng khỏi tập ứng viên. Ý tưởng này không thay thế sàng Eratosthenes trong tính toán thực tế, nhưng minh họa rất rõ cách bao hàm - loại trừ hoạt động.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Với $N=30$, các số nguyên tố không vượt quá $\sqrt{30}$ là 2, 3, 5. Đếm các số chia hết cho ít nhất một trong 2,3,5 rồi điều chỉnh để không loại nhầm chính 2,3,5.
+**Ví dụ**: Với $$N=30$$, các số nguyên tố không vượt quá $$\sqrt{30}$$ là 2, 3, 5. Đếm các số chia hết cho ít nhất một trong 2,3,5 rồi điều chỉnh để không loại nhầm chính 2,3,5.
 </div>
 
 
 ## Hàm phi Euler
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: $\phi(n)$ là số các số nguyên dương không vượt quá $n$ và nguyên tố cùng nhau với $n$.
+**Định nghĩa**: $$\phi(n)$$ là số các số nguyên dương không vượt quá $$n$$ và nguyên tố cùng nhau với $$n$$.
 </div>
 
 
@@ -72,11 +72,11 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Ý tưởng chứng minh**: Đếm các số từ 1 đến $n$, rồi loại các số chia hết cho từng $p_i$ bằng bao hàm - loại trừ.
+**Ý tưởng chứng minh**: Đếm các số từ 1 đến $$n$$, rồi loại các số chia hết cho từng $$p_i$$ bằng bao hàm - loại trừ.
 
 ## Số toàn ánh
 
-Số ánh xạ toàn ánh từ một tập $m$ phần tử sang một tập $n$ phần tử có thể đếm bằng bao hàm - loại trừ:
+Số ánh xạ toàn ánh từ một tập $$m$$ phần tử sang một tập $$n$$ phần tử có thể đếm bằng bao hàm - loại trừ:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -84,11 +84,11 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Trực giác**: Bắt đầu từ tất cả ánh xạ có $n^m$ cách. Trừ các ánh xạ bỏ sót ít nhất một giá trị đích. Có $\binom{n}{1}(n-1)^m$ ánh xạ bỏ sót một giá trị, cộng lại phần bỏ sót hai giá trị, và cứ tiếp tục như vậy.
+**Trực giác**: Bắt đầu từ tất cả ánh xạ có $$n^m$$ cách. Trừ các ánh xạ bỏ sót ít nhất một giá trị đích. Có $$\binom{n}{1}(n-1)^m$$ ánh xạ bỏ sót một giá trị, cộng lại phần bỏ sót hai giá trị, và cứ tiếp tục như vậy.
 
 ## Hoán vị không điểm cố định
 
-Một hoán vị của $n$ phần tử không có điểm cố định gọi là **derangement**. Số derangement ký hiệu $!n$ và có công thức
+Một hoán vị của $$n$$ phần tử không có điểm cố định gọi là **derangement**. Số derangement ký hiệu $$!n$$ và có công thức
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -96,21 +96,21 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Đây là kết quả kinh điển của bao hàm - loại trừ: bắt đầu từ $n!$ hoán vị, trừ hoán vị cố định ít nhất một vị trí, cộng lại hoán vị cố định ít nhất hai vị trí, v.v.
+Đây là kết quả kinh điển của bao hàm - loại trừ: bắt đầu từ $$n!$$ hoán vị, trừ hoán vị cố định ít nhất một vị trí, cộng lại hoán vị cố định ít nhất hai vị trí, v.v.
 
-### Video ngắn: Derangement và hằng số $1/e$
+### Video ngắn: Derangement và hằng số $$1/e$$
 
 <div class="reel-video" style="text-align:center;margin:1.5rem 0;">
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/derangement-one-over-e.mp4"></video>
 </div>
 
-Trong $24$ hoán vị của $\{1,2,3,4\}$ có đúng $9$ hoán vị không có phần tử nào đứng đúng chỗ, tức $D_4=9$. Theo bao hàm–loại trừ, $D_n=n!\sum_{k=0}^{n}\frac{(-1)^k}{k!}$, nên $D_n/n!\to 1/e\approx 0{,}3679$: với $n$ lớn, khoảng $36{,}8\%$ hoán vị là derangement.
+Trong $$24$$ hoán vị của $$\{1,2,3,4\}$$ có đúng $$9$$ hoán vị không có phần tử nào đứng đúng chỗ, tức $$D_4=9$$. Theo bao hàm–loại trừ, $$D_n=n!\sum_{k=0}^{n}\frac{(-1)^k}{k!}$$, nên $$D_n/n!\to 1/e\approx 0{,}3679$$: với $$n$$ lớn, khoảng $$36{,}8\%$$ hoán vị là derangement.
 
 ## Ứng dụng trong tô màu và ràng buộc
 
 Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Phần này liên hệ khái niệm toán học với bài toán thực tế trong lập trình và hệ thống.
 
-Trong bài toán tô màu, ta thường cần đếm số cách gán màu sao cho các điều kiện cấm không xảy ra. Gọi $A_i$ là tập cách tô vi phạm cạnh thứ $i$. Số cách tô hợp lệ là tổng số cách tô trừ đi hợp các vi phạm, tức là dùng bao hàm - loại trừ.
+Trong bài toán tô màu, ta thường cần đếm số cách gán màu sao cho các điều kiện cấm không xảy ra. Gọi $$A_i$$ là tập cách tô vi phạm cạnh thứ $$i$$. Số cách tô hợp lệ là tổng số cách tô trừ đi hợp các vi phạm, tức là dùng bao hàm - loại trừ.
 
 <div class="interactive-demo" markdown="1">
 **Demo tương tác đề xuất**: Người học chọn số phần tử miền nguồn và miền đích. Công cụ hiển thị số toàn ánh bằng cách trừ các hàm bỏ sót giá trị đích.

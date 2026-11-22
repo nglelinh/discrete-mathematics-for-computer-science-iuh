@@ -24,7 +24,7 @@ Mục này làm quen với định nghĩa, ký hiệu hệ số $$[x^n]G(x)$$, v
 
 ![Chuỗi lũy thừa hình thức](/discrete-mathematics-for-computer-science-iuh/img/course/Laurent_series.svg)
 
-<p class="textbook-figure-caption" data-figure="11.1">Chuỗi lũy thừa $G(x)=\sum a_n x^n$ — mỗi hệ số $a_n$ mã hóa một số hạng của dãy.</p>
+<p class="textbook-figure-caption" data-figure="11.1">Chuỗi lũy thừa $$G(x)=\sum a_n x^n$$ — mỗi hệ số $$a_n$$ mã hóa một số hạng của dãy.</p>
 ![Hàm sinh (generating function)](/discrete-mathematics-for-computer-science-iuh/img/course/R._V._Lapshin__Generating_functions_and_squares.png)
 
 <p class="textbook-figure-caption" data-figure="11.2">Hàm sinh gói cả dãy số vào một biểu thức duy nhất để thao tác bằng đại số.</p>
@@ -159,7 +159,7 @@ $$
 
 ### Bài tập 2
 
-Tìm hàm sinh của dãy $a_n=n$.
+Tìm hàm sinh của dãy $$a_n=n$$.
 
 <details>
 <summary>Đáp án</summary>
@@ -176,7 +176,7 @@ $$
 
 ### Bài tập 3
 
-Giải thích vì sao dịch chuỗi bằng cách nhân với $x$ lại hữu ích khi làm việc với truy hồi.
+Giải thích vì sao dịch chuỗi bằng cách nhân với $$x$$ lại hữu ích khi làm việc với truy hồi.
 
 <details>
 <summary>Đáp án</summary>

@@ -16,10 +16,10 @@ Trong bài toán thực tế, các đối tượng không phải lúc nào cũng
 
 ## Tổ hợp có lặp
 
-**Bài toán**: Có $n$ loại đồ vật, mỗi loại có số lượng không giới hạn. Chọn $r$ đồ vật, không xét thứ tự. Có bao nhiêu cách?
+**Bài toán**: Có $$n$$ loại đồ vật, mỗi loại có số lượng không giới hạn. Chọn $$r$$ đồ vật, không xét thứ tự. Có bao nhiêu cách?
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Số tổ hợp có lặp chập $r$ từ $n$ loại là
+**Định lý**: Số tổ hợp có lặp chập $$r$$ từ $$n$$ loại là
 </div>
 
 <div class="textbook-equation" markdown="1">
@@ -30,10 +30,10 @@ $$
 </div>
 ![Tổ hợp có lặp — chọn r đồ vật từ n loại](/discrete-mathematics-for-computer-science-iuh/img/course/combination_with_repetition.svg)
 
-<p class="textbook-figure-caption" data-figure="7.21">Tổ hợp có lặp — mỗi cách chọn ghi số lượng từng loại $(x_1,\ldots,x_n)$, không xét thứ tự, cho phép lặp.</p>
+<p class="textbook-figure-caption" data-figure="7.21">Tổ hợp có lặp — mỗi cách chọn ghi số lượng từng loại $$(x_1,\ldots,x_n)$$, không xét thứ tự, cho phép lặp.</p>
 ### Phương pháp Stars and Bars
 
-Biểu diễn $r$ đồ vật bằng $r$ ngôi sao và dùng $n-1$ vạch để chia thành $n$ nhóm. Mỗi nhóm cho biết số đồ vật thuộc một loại.
+Biểu diễn $$r$$ đồ vật bằng $$r$$ ngôi sao và dùng $$n-1$$ vạch để chia thành $$n$$ nhóm. Mỗi nhóm cho biết số đồ vật thuộc một loại.
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Chọn 5 chiếc bánh từ 3 loại. Một cấu hình
@@ -42,7 +42,7 @@ Biểu diễn $r$ đồ vật bằng $r$ ngôi sao và dùng $n-1$ vạch để 
 **|***|
 ```
 
-nghĩa là chọn 2 bánh loại 1, 3 bánh loại 2, 0 bánh loại 3. Tổng cộng có $5$ sao và $2$ vạch, nên số cách là
+nghĩa là chọn 2 bánh loại 1, 3 bánh loại 2, 0 bánh loại 3. Tổng cộng có $$5$$ sao và $$2$$ vạch, nên số cách là
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -52,7 +52,7 @@ $$
 </div>
 **Chứng minh (song ánh)** — gồm hai bước:
 
-**Bước 1. Một cách chọn ↔ một bộ đếm.** Mỗi lần chọn $r$ đồ vật từ $n$ loại (không xét thứ tự, lặp được) tương ứng duy nhất với một bộ số nguyên không âm
+**Bước 1. Một cách chọn ↔ một bộ đếm.** Mỗi lần chọn $$r$$ đồ vật từ $$n$$ loại (không xét thứ tự, lặp được) tương ứng duy nhất với một bộ số nguyên không âm
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -60,11 +60,11 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-trong đó $x_i$ là số đồ vật **loại $i$** được lấy. Ngược lại, mỗi bộ $(x_1,\ldots,x_n)$ xác định đúng một cách chọn. Vậy chúng ta chỉ cần đếm số bộ như vậy.
+trong đó $$x_i$$ là số đồ vật **loại $$i$$** được lấy. Ngược lại, mỗi bộ $$(x_1,\ldots,x_n)$$ xác định đúng một cách chọn. Vậy chúng ta chỉ cần đếm số bộ như vậy.
 
-**Bước 2. Stars and bars.** Với một bộ $(x_1,\ldots,x_n)$ cố định, vẽ $x_1$ sao, một vạch, $x_2$ sao, một vạch, …, $x_n$ sao. Tổng cộng có đúng $r$ sao và $n-1$ vạch, tức một chuỗi dài $r+n-1$ ký hiệu chỉ gồm sao và vạch.
+**Bước 2. Stars and bars.** Với một bộ $$(x_1,\ldots,x_n)$$ cố định, vẽ $$x_1$$ sao, một vạch, $$x_2$$ sao, một vạch, …, $$x_n$$ sao. Tổng cộng có đúng $$r$$ sao và $$n-1$$ vạch, tức một chuỗi dài $$r+n-1$$ ký hiệu chỉ gồm sao và vạch.
 
-Hai chuỗi khác nhau cho hai bộ $(x_1,\ldots,x_n)$ khác nhau, và mọi chuỗi hợp lệ đều sinh ra một bộ hợp lệ. Do đó số cách chọn bằng số cách sắp $r$ sao và $n-1$ vạch trên $r+n-1$ vị trí, tức số cách chọn vị trí cho các vạch:
+Hai chuỗi khác nhau cho hai bộ $$(x_1,\ldots,x_n)$$ khác nhau, và mọi chuỗi hợp lệ đều sinh ra một bộ hợp lệ. Do đó số cách chọn bằng số cách sắp $$r$$ sao và $$n-1$$ vạch trên $$r+n-1$$ vị trí, tức số cách chọn vị trí cho các vạch:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -76,14 +76,14 @@ $$
 </div>
 
 <div class="content-box insight-box textbook-block" markdown="1">
-**Nhận xét**: Công thức $\binom{n+r-1}{r}$ **không** phải $\binom{n}{r}$. Khi $r>n$, tổ hợp thường cho $0$, nhưng tổ hợp có lặp vẫn có thể lớn — vì chúng ta đang đếm **loại**, không phải $n$ vật phân biệt.
+**Nhận xét**: Công thức $$\binom{n+r-1}{r}$$ **không** phải $$\binom{n}{r}$$. Khi $$r>n$$, tổ hợp thường cho $$0$$, nhưng tổ hợp có lặp vẫn có thể lớn — vì chúng ta đang đếm **loại**, không phải $$n$$ vật phân biệt.
 </div>
 
 ![Phương pháp stars and bars](/discrete-mathematics-for-computer-science-iuh/img/course/stars_and_bars.svg)
 
-<p class="textbook-figure-caption" data-figure="7.22">Chuỗi sao–vạch tương ứng một phân phối $(x_1,x_2,x_3)$; số cách = $\binom{r+n-1}{n-1}$.</p>
+<p class="textbook-figure-caption" data-figure="7.22">Chuỗi sao–vạch tương ứng một phân phối $$(x_1,x_2,x_3)$$; số cách = $$\binom{r+n-1}{n-1}$$.</p>
 <div class="interactive-tool" data-demo="stars-bars-visualizer" markdown="1">
-**Demo tương tác đề xuất**: Thanh kéo chọn $n$ và $r$, công cụ sinh các chuỗi sao-vạch tương ứng và chuyển từng chuỗi thành nghiệm $(x_1,\ldots,x_n)$.
+**Demo tương tác đề xuất**: Thanh kéo chọn $$n$$ và $$r$$, công cụ sinh các chuỗi sao-vạch tương ứng và chuyển từng chuỗi thành nghiệm $$(x_1,\ldots,x_n)$$.
 </div>
 
 <script src="{{ '/public/js/stars-bars-visualizer.js' | relative_url }}"></script>
@@ -106,10 +106,10 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Chứng minh**: Theo Bước 1 ở mục 1, mỗi nghiệm nguyên không âm $(x_1,\ldots,x_n)$ của phương trình tương ứng một cách chọn $r$ đồ vật từ $n$ loại, và ngược lại. Số nghiệm vì thế bằng số tổ hợp có lặp, đã chứng minh ở trên. ∎
+**Chứng minh**: Theo Bước 1 ở mục 1, mỗi nghiệm nguyên không âm $$(x_1,\ldots,x_n)$$ của phương trình tương ứng một cách chọn $$r$$ đồ vật từ $$n$$ loại, và ngược lại. Số nghiệm vì thế bằng số tổ hợp có lặp, đã chứng minh ở trên. ∎
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Số nghiệm nguyên không âm của $x_1+x_2+x_3+x_4=10$ là
+**Ví dụ**: Số nghiệm nguyên không âm của $$x_1+x_2+x_3+x_4=10$$ là
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -121,7 +121,7 @@ $$
 
 ### Ràng buộc dưới
 
-Nếu $x_i\ge a_i$, đặt $y_i=x_i-a_i\ge 0$. Khi đó
+Nếu $$x_i\ge a_i$$, đặt $$y_i=x_i-a_i\ge 0$$. Khi đó
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -129,7 +129,7 @@ y_1+\cdots+y_n=r-(a_1+\cdots+a_n).
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Chứng minh (song ánh)**: Đặt $y_i=x_i-a_i$. Khi đó $x_i\ge a_i$ khi và chỉ khi $y_i\ge 0$, và
+**Chứng minh (song ánh)**: Đặt $$y_i=x_i-a_i$$. Khi đó $$x_i\ge a_i$$ khi và chỉ khi $$y_i\ge 0$$, và
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -137,16 +137,16 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Ánh xạ $(x_1,\ldots,x_n)\mapsto(y_1,\ldots,y_n)$ là song ánh giữa tập nghiệm có ràng buộc dưới và tập nghiệm không âm của phương trình mới. Số nghiệm bằng $\binom{n+r-(a_1+\cdots+a_n)-1}{n-1}$ khi vế phải không âm; nếu $r<a_1+\cdots+a_n$ thì không có nghiệm. ∎
+Ánh xạ $$(x_1,\ldots,x_n)\mapsto(y_1,\ldots,y_n)$$ là song ánh giữa tập nghiệm có ràng buộc dưới và tập nghiệm không âm của phương trình mới. Số nghiệm bằng $$\binom{n+r-(a_1+\cdots+a_n)-1}{n-1}$$ khi vế phải không âm; nếu $$r<a_1+\cdots+a_n$$ thì không có nghiệm. ∎
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Số nghiệm của $x_1+x_2+x_3=12$ với $x_1\ge2,x_2\ge1,x_3\ge4$ là số nghiệm của $y_1+y_2+y_3=5$, bằng $\binom{7}{2}=21$.
+**Ví dụ**: Số nghiệm của $$x_1+x_2+x_3=12$$ với $$x_1\ge2,x_2\ge1,x_3\ge4$$ là số nghiệm của $$y_1+y_2+y_3=5$$, bằng $$\binom{7}{2}=21$$.
 </div>
 
 ## Hoán vị của đa tập
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Một **đa tập** (multiset) cho phép phần tử xuất hiện nhiều lần. Nếu có $n$ đối tượng, trong đó loại 1 lặp $n_1$ lần, loại 2 lặp $n_2$ lần, ..., loại $k$ lặp $n_k$ lần, với $n_1+\cdots+n_k=n$, thì số hoán vị phân biệt là
+**Định nghĩa**: Một **đa tập** (multiset) cho phép phần tử xuất hiện nhiều lần. Nếu có $$n$$ đối tượng, trong đó loại 1 lặp $$n_1$$ lần, loại 2 lặp $$n_2$$ lần, ..., loại $$k$$ lặp $$n_k$$ lần, với $$n_1+\cdots+n_k=n$$, thì số hoán vị phân biệt là
 </div>
 
 <div class="textbook-equation" markdown="1">
@@ -155,9 +155,9 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Chứng minh tổ hợp**: Tạm thời **đánh nhãn** các phần tử trùng nhau để chúng trở thành phân biệt — ví dụ $S_1,S_2,S_3,S_4$ thay cho bốn chữ S giống nhau. Khi đó có $n!$ cách sắp xếp toàn bộ $n$ vị trí.
+**Chứng minh tổ hợp**: Tạm thời **đánh nhãn** các phần tử trùng nhau để chúng trở thành phân biệt — ví dụ $$S_1,S_2,S_3,S_4$$ thay cho bốn chữ S giống nhau. Khi đó có $$n!$$ cách sắp xếp toàn bộ $$n$$ vị trí.
 
-Một hoán vị **thực sự khác nhau** của đa tập (không phân biệt nhãn) tương ứng với đúng $n_1!\,n_2!\cdots n_k!$ cách sắp xếp có nhãn: chúng ta có thể hoán đổi các phần tử cùng loại mà không đổi kết quả. Mỗi hoán vị đa tập vì thế bị đếm thừa $n_1!n_2!\cdots n_k!$ lần trong $n!$.
+Một hoán vị **thực sự khác nhau** của đa tập (không phân biệt nhãn) tương ứng với đúng $$n_1!\,n_2!\cdots n_k!$$ cách sắp xếp có nhãn: chúng ta có thể hoán đổi các phần tử cùng loại mà không đổi kết quả. Mỗi hoán vị đa tập vì thế bị đếm thừa $$n_1!n_2!\cdots n_k!$$ lần trong $$n!$$.
 
 Chia cho hệ số trùng lặp:
 
@@ -171,7 +171,7 @@ $$
 
 ![Hoán vị của đa tập — MISSISSIPPI](/discrete-mathematics-for-computer-science-iuh/img/course/multiset_permutation.svg)
 
-<p class="textbook-figure-caption" data-figure="7.23">Hoán vị đa tập — chữ cùng loại (I, S, …) hoán đổi không đổi từ, nên chia $n!$ cho $n_1!\cdots n_k!$.</p>
+<p class="textbook-figure-caption" data-figure="7.23">Hoán vị đa tập — chữ cùng loại (I, S, …) hoán đổi không đổi từ, nên chia $$n!$$ cho $$n_1!\cdots n_k!$$.</p>
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Từ `MISSISSIPPI` có 11 chữ cái: M xuất hiện 1, I xuất hiện 4, S xuất hiện 4, P xuất hiện 2. Số hoán vị phân biệt là
 
@@ -181,7 +181,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Lý do phải chia**: Nếu tạm xem các chữ S là $S_1,S_2,S_3,S_4$ thì có $11!$ hoán vị. Nhưng hoán đổi các chữ S với nhau không tạo từ mới, nên mỗi từ bị đếm $4!$ lần do S, $4!$ lần do I và $2!$ lần do P.
+**Lý do phải chia**: Nếu tạm xem các chữ S là $$S_1,S_2,S_3,S_4$$ thì có $$11!$$ hoán vị. Nhưng hoán đổi các chữ S với nhau không tạo từ mới, nên mỗi từ bị đếm $$4!$$ lần do S, $$4!$$ lần do I và $$2!$$ lần do P.
 </div>
 
 ## Hệ số đa thức
@@ -214,9 +214,9 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-($n$ ngoặc). Mỗi hạng tử trong tích là tích của $n$ lựa chọn, mỗi lựa chọn lấy một biến từ một ngoặc.
+($$n$$ ngoặc). Mỗi hạng tử trong tích là tích của $$n$$ lựa chọn, mỗi lựa chọn lấy một biến từ một ngoặc.
 
-Để nhận hạng $x_1^{k_1}x_2^{k_2}\cdots x_m^{k_m}$ với $k_1+\cdots+k_m=n$, chúng ta phải chọn đúng $k_1$ ngoặc lấy $x_1$, đúng $k_2$ ngoặc lấy $x_2$, …, đúng $k_m$ ngoặc lấy $x_m$. Số cách chọn là
+Để nhận hạng $$x_1^{k_1}x_2^{k_2}\cdots x_m^{k_m}$$ với $$k_1+\cdots+k_m=n$$, chúng ta phải chọn đúng $$k_1$$ ngoặc lấy $$x_1$$, đúng $$k_2$$ ngoặc lấy $$x_2$$, …, đúng $$k_m$$ ngoặc lấy $$x_m$$. Số cách chọn là
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -224,20 +224,20 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-vì đây chính là số hoán vị của đa tập gồm $n$ “bước nhân”, trong đó $k_i$ bước giống nhau (cùng lấy $x_i$).
+vì đây chính là số hoán vị của đa tập gồm $$n$$ “bước nhân”, trong đó $$k_i$$ bước giống nhau (cùng lấy $$x_i$$).
 </div>
 
-**Ý nghĩa đếm khác**: $\binom{n}{k_1,\ldots,k_m}$ cũng bằng số cách chia $n$ đối tượng **phân biệt** vào $m$ nhóm có nhãn, sao cho nhóm $i$ chứa đúng $k_i$ phần tử.
+**Ý nghĩa đếm khác**: $$\binom{n}{k_1,\ldots,k_m}$$ cũng bằng số cách chia $$n$$ đối tượng **phân biệt** vào $$m$$ nhóm có nhãn, sao cho nhóm $$i$$ chứa đúng $$k_i$$ phần tử.
 
 ![Hệ số đa thức — chia nhóm có nhãn](/discrete-mathematics-for-computer-science-iuh/img/course/multinomial_partition.svg)
 
-<p class="textbook-figure-caption" data-figure="7.24">Hệ số đa thức $\binom{n}{k_1,\ldots,k_m}$ đếm số cách chia $n$ đối tượng phân biệt vào $m$ nhóm có kích thước cố định.</p>
+<p class="textbook-figure-caption" data-figure="7.24">Hệ số đa thức $$\binom{n}{k_1,\ldots,k_m}$$ đếm số cách chia $$n$$ đối tượng phân biệt vào $$m$$ nhóm có kích thước cố định.</p>
 ## Ràng buộc trên và nguyên lý bù trừ
 
-Nếu yêu cầu $0\le x_i\le b_i$, stars and bars đơn thuần chưa đủ. Chúng ta thường đếm tất cả nghiệm không âm rồi loại nghiệm vi phạm $x_i\ge b_i+1$ bằng nguyên lý bù trừ.
+Nếu yêu cầu $$0\le x_i\le b_i$$, stars and bars đơn thuần chưa đủ. Chúng ta thường đếm tất cả nghiệm không âm rồi loại nghiệm vi phạm $$x_i\ge b_i+1$$ bằng nguyên lý bù trừ.
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh ý tưởng**: Gọi $U$ là tập mọi nghiệm nguyên không âm của $x_1+\cdots+x_n=r$, và $A_i$ là tập nghiệm có $x_i\ge b_i+1$. Nghiệm hợp lệ là $U\setminus(A_1\cup\cdots\cup A_n)$, nên
+**Chứng minh ý tưởng**: Gọi $$U$$ là tập mọi nghiệm nguyên không âm của $$x_1+\cdots+x_n=r$$, và $$A_i$$ là tập nghiệm có $$x_i\ge b_i+1$$. Nghiệm hợp lệ là $$U\setminus(A_1\cup\cdots\cup A_n)$$, nên
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -245,16 +245,16 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Với mỗi $A_i$, đặt $x_i'=x_i-(b_i+1)\ge 0$; khi đó số nghiệm trong $A_i$ bằng số nghiệm không âm của một phương trình có tổng giảm đi $b_i+1$ — lại là một bài stars and bars. Giao $A_i\cap A_j$ xử lý tương tự bằng cách trừ đồng thời ở hai biến. Áp dụng công thức bù trừ cho $\|A_1\cup\cdots\cup A_n\|$ (xem bài `07_03`).
+Với mỗi $$A_i$$, đặt $$x_i'=x_i-(b_i+1)\ge 0$$; khi đó số nghiệm trong $$A_i$$ bằng số nghiệm không âm của một phương trình có tổng giảm đi $$b_i+1$$ — lại là một bài stars and bars. Giao $$A_i\cap A_j$$ xử lý tương tự bằng cách trừ đồng thời ở hai biến. Áp dụng công thức bù trừ cho $$\vert A_1\cup\cdots\cup A_n\vert $$ (xem bài `07_03`).
 </div>
 
 ![Bù trừ khi có ràng buộc trên](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)
 
-<p class="textbook-figure-caption" data-figure="7.25">Loại các nghiệm vi phạm $x_i\ge b_i+1$ bằng nguyên lý bù trừ (bài `07_03`).</p>
+<p class="textbook-figure-caption" data-figure="7.25">Loại các nghiệm vi phạm $$x_i\ge b_i+1$$ bằng nguyên lý bù trừ (bài `07_03`).</p>
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Số nghiệm của $x_1+x_2+x_3=10$ với $0\le x_i\le 4$.
+**Ví dụ**: Số nghiệm của $$x_1+x_2+x_3=10$$ với $$0\le x_i\le 4$$.
 
-Tổng nghiệm không âm là $\binom{12}{2}=66$. Gọi $A_i$ là tập nghiệm có $x_i\ge5$. Với $x_i'=x_i-5$, chúng ta có số nghiệm trong mỗi $A_i$ là $\binom{7}{2}=21$. Giao đôi, ví dụ $x_1,x_2\ge5$, còn tổng bằng $0$, có $1$ nghiệm. Không có giao ba. Do đó số hợp lệ là
+Tổng nghiệm không âm là $$\binom{12}{2}=66$$. Gọi $$A_i$$ là tập nghiệm có $$x_i\ge5$$. Với $$x_i'=x_i-5$$, chúng ta có số nghiệm trong mỗi $$A_i$$ là $$\binom{7}{2}=21$$. Giao đôi, ví dụ $$x_1,x_2\ge5$$, còn tổng bằng $$0$$, có $$1$$ nghiệm. Không có giao ba. Do đó số hợp lệ là
 
 <div class="textbook-equation" markdown="1">
 $$

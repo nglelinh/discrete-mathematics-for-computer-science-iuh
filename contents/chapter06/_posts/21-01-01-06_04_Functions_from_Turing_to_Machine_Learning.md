@@ -41,7 +41,7 @@ hàm giúp mô tả sự phụ thuộc:
 đầu ra thay đổi theo quy luật.
 
 Ví dụ,
-$f(x)=x^2$ là cách nén vô số cặp giá trị thành một công thức ngắn.
+$$f(x)=x^2$$ là cách nén vô số cặp giá trị thành một công thức ngắn.
 Đây là sức mạnh lớn đầu tiên của hàm:
 biến quy luật thành đối tượng có thể thao tác.
 
@@ -327,8 +327,8 @@ $$
 </div>
 Trong đó:
 
-- $X$ là không gian đầu vào,
-- $Y$ là không gian đầu ra hoặc phân phối xác suất.
+- $$X$$ là không gian đầu vào,
+- $$Y$$ là không gian đầu ra hoặc phân phối xác suất.
 
 Ví dụ,
 mô hình nhận ảnh và trả nhãn,

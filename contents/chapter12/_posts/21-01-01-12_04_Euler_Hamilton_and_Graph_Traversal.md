@@ -89,7 +89,7 @@ Dãy $$3,3,2,2$$: đúng hai đỉnh bậc lẻ $$\implies$$ có **đường Eul
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/konigsberg-bridges.mp4"></video>
 </div>
 
-Euler mô hình hoá bốn khu đất thành bốn đỉnh và bảy cây cầu thành bảy cạnh. Bậc các đỉnh là $3,5,3,3$ — cả bốn đều lẻ. Theo định lý Euler, một đường đi qua mỗi cầu đúng một lần cần $0$ hoặc $2$ đỉnh bậc lẻ, nên lộ trình như vậy không tồn tại (thử đi sẽ luôn bị kẹt).
+Euler mô hình hoá bốn khu đất thành bốn đỉnh và bảy cây cầu thành bảy cạnh. Bậc các đỉnh là $$3,5,3,3$$ — cả bốn đều lẻ. Theo định lý Euler, một đường đi qua mỗi cầu đúng một lần cần $$0$$ hoặc $$2$$ đỉnh bậc lẻ, nên lộ trình như vậy không tồn tại (thử đi sẽ luôn bị kẹt).
 
 ## Đường đi và chu trình Hamilton
 
