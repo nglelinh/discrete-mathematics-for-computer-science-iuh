@@ -44,7 +44,7 @@ excerpt: "Các thứ tự duyệt preorder, inorder, postorder trên cây nhị 
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/tree-traversal.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 13 giây: minh họa cách đi quanh cây để đọc đồng thời preorder $$ABDECF$$, inorder $$DBEACF$$ và postorder $$DEBFCA$$; xét cây biểu thức $$(3+4)\times(5-2)$$ với ba dạng tiền tố, trung tố, hậu tố và cách tính biểu thức hậu tố bằng ngăn xếp; trình bày inorder trên BST cho dãy tăng dần và level-order dùng hàng đợi.
+Video dài khoảng 3 phút: minh họa cách đi quanh cây để đọc đồng thời preorder $$ABDECF$$, inorder $$DBEACF$$ và postorder $$DEBFCA$$; xét cây biểu thức $$(3+4)\times(5-2)$$ với ba dạng tiền tố, trung tố, hậu tố và cách tính biểu thức hậu tố bằng ngăn xếp; trình bày inorder trên BST cho dãy tăng dần, level-order bằng hàng đợi, và cách dựng lại cây từ preorder kết hợp inorder (cũng như lý do preorder kết hợp postorder không đủ xác định duy nhất cây).
 
 ## Ba thứ tự DFS trên cây nhị phân
 

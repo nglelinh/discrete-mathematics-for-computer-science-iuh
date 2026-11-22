@@ -38,7 +38,7 @@ $$
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/stars-and-bars.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 15 giây, minh họa bài toán chọn 5 chiếc bánh từ 3 loại bằng dãy 5 ngôi sao và 2 vạch ngăn, đếm số cách bằng việc chọn 2 trong 7 vị trí cho vạch ($$\binom{7}{2} = 21$$, liệt kê đủ 21 dãy), tổng quát thành công thức $$\binom{r+n-1}{n-1}$$ qua ví dụ $$x_1+x_2+x_3+x_4 = 10$$, xử lý ràng buộc dưới bằng cách đổi biến và ràng buộc trên bằng nguyên lý bù trừ ($$66 - 63 + 3 = 6$$).
+Video dài khoảng 3 phút 1 giây, minh họa bài toán chọn 5 chiếc bánh từ 3 loại bằng dãy 5 ngôi sao và 2 vạch ngăn, đếm số cách bằng việc chọn 2 trong 7 vị trí cho vạch ($$\binom{7}{2} = 21$$, liệt kê đủ 21 dãy), tổng quát thành công thức $$\binom{r+n-1}{n-1}$$ qua ví dụ $$x_1+x_2+x_3+x_4 = 10$$, xử lý ràng buộc dưới bằng cách phát trước và ràng buộc trên bằng nguyên lý bù trừ ($$66 - 63 + 3 = 6$$), cùng hai bài luyện tập: mua 6 viên kẹo từ 4 loại ($$\binom{9}{6} = 84$$) và chia 10 viên bi cho 4 em mỗi em ít nhất 2 viên ($$\binom{5}{3} = 10$$).
 
 ### Phương pháp Stars and Bars (Sao và vạch)
 

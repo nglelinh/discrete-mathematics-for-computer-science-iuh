@@ -53,6 +53,14 @@ $$
 
 Biểu thức này không phải ký hiệu hình thức, mà là bản tóm tắt chính xác cấu trúc thời gian chạy của thuật toán: chia đôi mảng thành 2 bài toán con kích thước $$n/2$$ và tốn chi phí tuyến tính $$n$$ để trộn kết quả.
 
+### Video ngắn: Chia để trị và định lý thợ
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/divide-and-conquer-master.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 53 giây: cây đệ quy của $$T(n) = 2T(n/2) + n$$ với $$n = 16$$ (mỗi tầng tốn đúng $$n$$, tổng $$80 = n\log_2 n + n$$), cùng kết quả bằng cách thế ngược, tìm kiếm nhị phân $$T(n/2) + 1$$, hai trường hợp "lá thắng" $$4T(n/2) + n$$ và "gốc thắng" $$2T(n/2) + n^2$$, ba trường hợp của định lý thợ với bảng ví dụ (merge sort, Karatsuba, Strassen) và một hệ thức định lý không áp dụng được: $$2T(n/2) + n\log n$$.
+
 ### Định lý Thợ (Master Theorem) — công cụ phân tích gọn nhẹ
 
 Định lý Thợ (Master Theorem) cho phép đánh giá nhanh độ phức tạp của lớp truy hồi chia để trị phổ biến:

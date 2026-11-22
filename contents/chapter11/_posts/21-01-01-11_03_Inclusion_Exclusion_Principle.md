@@ -49,7 +49,7 @@ excerpt: "Xây dựng nguyên lý bao hàm–loại trừ (inclusion–exclusion
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/inclusion-exclusion.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 16 giây, trình bày ví dụ lớp 50 sinh viên với hai tập hợp, theo dõi số lần mỗi vùng trong biểu đồ Venn ba tập được cộng/trừ qua từng bước, tính số nguyên từ 1 đến 100 chia hết cho 2, 3 hoặc 5 (ra kết quả 74, kiểm chứng trên lưới 100 ô), phát biểu công thức tổng quát cho $$n$$ tập và giới thiệu bài toán bỏ thư sao cho không lá nào đúng phong bì.
+Video dài khoảng 3 phút 6 giây, trình bày ví dụ lớp 50 sinh viên với hai tập hợp, theo dõi số lần mỗi vùng trong biểu đồ Venn ba tập được cộng hoặc trừ qua từng bước, tính số nguyên từ 1 đến 100 chia hết cho 2, 3 hoặc 5 (kết quả 74, đối chiếu trên lưới 100 ô), bài tập đếm số từ 1 đến 1000 không chia hết cho 3, 5 và 7 (kết quả 457), phát biểu công thức tổng quát cho $$n$$ tập và giới thiệu bài toán bỏ thư sao cho không lá nào vào đúng phong bì.
 
 ## Công thức cho hai và ba tập
 

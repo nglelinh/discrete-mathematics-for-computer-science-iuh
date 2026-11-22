@@ -44,7 +44,7 @@ Hai ứng dụng kinh điển của cây nhị phân trong khoa học máy tính
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/huffman-coding.mp4"></video>
 </div>
 
-Video dài khoảng 1 phút 56 giây: đếm tần suất ký tự trong chuỗi ABRACADABRA (5, 2, 2, 1, 1 — cùng bộ tần suất với Ví dụ 1), gộp dần hai nút nhẹ nhất bằng hàng đợi ưu tiên, gán bit 0/1 cho nhánh trái/phải để nén xuống 23 bit thay vì 33 bit, minh họa giải mã bằng con trỏ đi trên cây nhờ tính chất prefix-free, và giải thích vì sao cách gộp tham lam này tối ưu. Video về các thứ tự duyệt cây nằm ở Mục 16.2.
+Video dài khoảng 3 phút 7 giây: đếm tần suất ký tự trong chuỗi ABRACADABRA (5, 2, 2, 1, 1 — cùng bộ tần suất với Ví dụ 1), gộp dần hai nút nhẹ nhất bằng hàng đợi ưu tiên, gán bit 0/1 cho nhánh trái/phải để nén xuống 23 bit thay vì 33 bit, minh họa giải mã bằng con trỏ đi trên cây nhờ tính chất prefix-free, ví dụ $$A = 0, B = 01, C = 1$$ cho thấy mã không prefix-free gây nhập nhằng, bài luyện tập MISSISSIPPI (21 bit so với 22 bit của mã độ dài cố định), và giải thích vì sao cách gộp tham lam này tối ưu. Video về các thứ tự duyệt cây nằm ở Mục 16.2.
 
 ## Mã hóa Huffman
 

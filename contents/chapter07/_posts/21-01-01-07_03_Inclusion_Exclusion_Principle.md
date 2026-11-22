@@ -32,7 +32,7 @@ Khi một bài toán có nhiều điều kiện giao nhau, việc đếm theo tr
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/inclusion-exclusion.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 16 giây, trình bày ví dụ lớp 50 sinh viên với hai tập hợp, theo dõi số lần mỗi vùng của biểu đồ Venn ba tập được cộng hoặc trừ qua từng bước, giải ví dụ đếm các số từ 1 đến 100 chia hết cho 2, 3 hoặc 5 (kết quả 74, đối chiếu trên lưới 100 ô), giới thiệu công thức tổng quát cho $$n$$ tập và ứng dụng đếm số cách bỏ thư sao cho không lá nào vào đúng phong bì.
+Video dài khoảng 3 phút 6 giây, trình bày ví dụ lớp 50 sinh viên với hai tập hợp, theo dõi số lần mỗi vùng của biểu đồ Venn ba tập được cộng hoặc trừ qua từng bước, ví dụ đếm các số từ 1 đến 100 chia hết cho 2, 3 hoặc 5 (kết quả 74, đối chiếu trên lưới 100 ô), bài tập đếm số từ 1 đến 1000 không chia hết cho 3, 5 và 7 (kết quả 457), công thức tổng quát cho $$n$$ tập, và ứng dụng đếm số cách bỏ thư sao cho không lá nào vào đúng phong bì.
 
 ## Đếm hợp của hai tập hợp
 

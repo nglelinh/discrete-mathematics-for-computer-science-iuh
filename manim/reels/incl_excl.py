@@ -35,6 +35,12 @@ assert DER == ["BCA", "CAB"] and 6 - 3 * 2 + 3 * 1 - 1 == 2
 DER4 = sum(1 for p in permutations(range(4)) if all(p[i] != i for i in range(4)))
 assert DER4 == 24 - 4 * 6 + 6 * 2 - 4 * 1 + 1 == 9
 
+# bài tập: 1..1000 không chia hết cho 3, 5, 7
+T357 = [1000 // d for d in (3, 5, 7, 15, 21, 35, 105)]
+assert T357 == [333, 200, 142, 66, 47, 28, 9]
+assert 333 + 200 + 142 - 66 - 47 - 28 + 9 == 543
+assert sum(1 for k in range(1, 1001) if k % 3 and k % 5 and k % 7) == 457 == 1000 - 543
+
 CA, CB, CC = BLUE, GOLD, GREEN
 R = 1.85
 CEN = {"A": np.array([-1.05, 3.1, 0]), "B": np.array([1.05, 3.1, 0]), "C": np.array([0, 1.25, 0])}
@@ -52,7 +58,7 @@ def region_labels(vals, color=WHITE, size=34):
 
 class InclExcl(Scene):
     def wait(self, duration=1.0, **kw):
-        super().wait(duration * 1.4, **kw)
+        super().wait(duration * 1.7, **kw)
 
     def construct(self):
         # ===== 1. Mở đầu =====
@@ -189,6 +195,37 @@ class InclExcl(Scene):
         assert [k for k in range(1, 31) if k % 2 and k % 3 and k % 5] == [1, 7, 11, 13, 17, 19, 23, 29]
         self.play(FadeIn(p), run_time=0.6)
         self.wait(4.0)
+        wipe(self, keep=[c])
+
+        # ===== 5b. Bài tập 1..1000 =====
+        c = swap_cap(self, c, cap("Bài tập: từ 1 đến 1000", 42, GOLD))
+        q = para("Có bao nhiêu số từ 1 đến 1000\nkhông chia hết cho 3, 5 và 7?", 30, WHITE, y=5.0)
+        self.play(FadeIn(q), run_time=0.6)
+        self.wait(2.0)
+        h = para("Đếm phần bù: số chia hết cho ÍT NHẤT một trong ba số.\nSố bội của d trong 1..1000 là ⌊1000/d⌋", 24, DIM, y=3.6)
+        self.play(FadeIn(h), run_time=0.5)
+        self.wait(2.0)
+        terms = [("+ ⌊1000/3⌋ + ⌊1000/5⌋ + ⌊1000/7⌋", "= 333 + 200 + 142 = 675", WHITE),
+                 ("− ⌊1000/15⌋ − ⌊1000/21⌋ − ⌊1000/35⌋", "= 66 + 47 + 28 = 141", RED),
+                 ("+ ⌊1000/105⌋", "= 9", GREEN)]
+        y = 2.2
+        for a_, b_, col in terms:
+            ta = Text(a_, font=FONT, font_size=26, color=col)
+            tb = Text(b_, font=FONT, font_size=26, color=col)
+            g = VGroup(ta, tb).arrange(DOWN, aligned_edge=LEFT, buff=0.15)
+            fitw(g).move_to([-3.7, y, 0], aligned_edge=UL)
+            self.play(FadeIn(g, shift=RIGHT * 0.2), run_time=0.5)
+            self.wait(1.6)
+            y -= g.height + 0.35
+        u = para("Chia hết cho ít nhất một số: 675 − 141 + 9 = 543", 26, GOLD, y=-1.6)
+        self.play(FadeIn(u), run_time=0.5)
+        self.wait(1.5)
+        r = para("Không chia hết: 1000 − 543 = 457", 36, GOLD, y=-2.8)
+        self.play(FadeIn(r, scale=1.2), run_time=0.6)
+        self.wait(1.5)
+        n = para("Lưu ý: 15, 21, 35, 105 là bội chung nhỏ nhất,\nđúng vì 3, 5, 7 đôi một nguyên tố cùng nhau", 22, DIM, y=-4.2)
+        self.play(FadeIn(n), run_time=0.5)
+        self.wait(3.0)
         wipe(self, keep=[c])
 
         # ===== 6. Tổng quát =====

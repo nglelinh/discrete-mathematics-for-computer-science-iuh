@@ -39,6 +39,14 @@ Khi so sánh hai thuật toán, ta không chỉ đo thời gian chạy bằng mi
 
 </div>
 
+### Video ngắn: Big-O và tốc độ tăng
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/big-o-growth.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 56 giây: so sánh số phép tính của $$n$$, $$n\log n$$, $$n^2$$, $$2^n$$ ($$2^{60}$$ phép tính mất khoảng 36 năm), minh họa các đường tăng trưởng và định nghĩa $$O$$ với $$c, n_0$$ trên đồ thị cho $$3n^2 + 5n + 2 \le 4n^2$$ khi $$n \ge 6$$ (cặp $$c = 10, n_0 = 1$$ trong bài cũng hợp lệ), giới thiệu $$\Omega$$ và $$\Theta$$, các quy tắc rút gọn, cách đếm bước trong vòng lặp và năm lỗi thường gặp.
+
 ## Định nghĩa các ký hiệu tiệm cận
 
 <div class="textbook-definition" markdown="1">

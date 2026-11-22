@@ -27,6 +27,14 @@ Từ một ý tưởng rất đơn giản, nguyên lý Dirichlet có thể dẫn
 **Từ khóa**: Dirichlet tổng quát, đa chiều, load balancing, chứng minh tồn tại.
 </div>
 
+### Video ngắn: Dirichlet nâng cao
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/pigeonhole-advanced.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 52 giây: trình bày dạng tổng quát $$\lceil N/n \rceil$$ với bảng băm và cân bằng tải, bài toán 5 điểm trong hình vuông cạnh 1 luôn có hai điểm cách nhau không quá $$\sqrt{2}/2$$ (và lý do không thể cải thiện cận này), 9 điểm luôn có tam giác diện tích không quá $$1/8$$, chọn 6 số từ 1 đến 10 luôn có cặp tổng bằng 11, dùng tổng tiền tố và số dư để tìm đoạn liên tiếp chia hết cho 7 (cùng bội của 6 chỉ gồm chữ số 0 và 1 là $$1110$$), và định lý Erdős–Szekeres qua cách gắn nhãn $$(t, g)$$ trên một dãy 10 số cụ thể.
+
 ## Các biến thể mở rộng của Nguyên lý Dirichlet
 
 ### Nguyên lý Dirichlet có trọng số
@@ -81,7 +89,9 @@ $$\left\vert \alpha - p/q\right\vert  < 1/(qN)$$
 **Bài toán**: Trong một tập gồm $$n$$ phần tử, ta có thể chọn tối đa bao nhiêu tập con gồm $$k$$ phần tử (với $$n \ge 2k$$) sao cho hai tập bất kỳ đều có giao khác rỗng?
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Khi $$n \ge 2k$$, số lượng tập con tối đa là $$C(n-1, k-1)$$.
+**Định lý** (Erdős–Ko–Rado): Khi $$n \ge 2k$$, số lượng tập con tối đa là $$C(n-1, k-1)$$, đạt được chẳng hạn khi chọn mọi tập con $$k$$ phần tử cùng chứa một phần tử cố định.
+
+*Lưu ý:* Điều kiện $$n \ge 2k$$ là cần thiết. Nếu $$n < 2k$$, hai tập con $$k$$ phần tử bất kỳ luôn giao nhau (do $$k + k > n$$), nên ta có thể chọn tất cả $$C(n, k)$$ tập, lớn hơn $$C(n-1, k-1)$$.
 </div>
 
 <div class="textbook-proof" markdown="1">
@@ -199,7 +209,7 @@ def network_congestion_analysis(packets, links, link_capacity):
 
 ### Bài tập 2: Hình học
 1. Cho 5 điểm trong hình vuông đơn vị (cạnh bằng 1). Chứng minh rằng tồn tại 2 điểm có khoảng cách không vượt quá $$\sqrt{2}/2$$.
-2. Trong hình vuông đơn vị có 9 điểm sao cho không có 3 điểm nào thẳng hàng. Chứng minh rằng tồn tại 3 điểm tạo thành một tam giác có diện tích không vượt quá $$1/8$$ (do đó cũng không vượt quá $$1/4$$).
+2. Cho 9 điểm trong hình vuông đơn vị sao cho không có 3 điểm nào thẳng hàng. Chứng minh rằng tồn tại 3 điểm tạo thành một tam giác có diện tích $$\le 1/8$$.
 
 ### Bài tập 3: Khoa học Máy tính
 1. Một bảng băm có 1.000 ngăn chứa (bucket). Cần tối thiểu bao nhiêu khóa để đảm bảo có ít nhất một ngăn chứa từ 5 khóa trở lên?
@@ -211,6 +221,14 @@ def network_congestion_analysis(packets, links, link_capacity):
 
 1. **Xét dãy $$n$$ số $$1, 11, 111, \ldots, \underbrace{11\ldots1}_{n\text{ chữ số }1}$$**: nếu có một số chia hết cho $$n$$ thì xong; ngược lại, $$n$$ số chỉ nhận các số dư trong $$n-1$$ giá trị $$1, 2, \ldots, n-1$$, nên có hai số cùng số dư khi chia cho $$n$$ và hiệu của chúng là bội số dương của $$n$$ chỉ gồm chữ số 1 và 0.
 2. **Sử dụng định lý Wilson**: $$(p-1)! \equiv -1 \pmod p$$ kết hợp với tính chất của thặng dư bậc hai theo modulo $$p$$.
+
+</details>
+
+<details>
+<summary>Gợi ý Bài tập 2</summary>
+
+1. **Chia hình vuông thành 4 ô vuông cạnh $$1/2$$**: 5 điểm vào 4 ô nên có ô chứa 2 điểm; hai điểm trong cùng một ô cách nhau không quá đường chéo ô $$\sqrt{(1/2)^2 + (1/2)^2} = \sqrt{2}/2$$.
+2. **Cũng chia thành 4 ô vuông cạnh $$1/2$$**: 9 điểm vào 4 ô nên có ô chứa ít nhất $$\lceil 9/4 \rceil = 3$$ điểm. Tam giác có 3 đỉnh nằm trong một hình vuông thì có diện tích không quá một nửa diện tích hình vuông đó, nên diện tích $$\le \frac{1}{2} \cdot \frac{1}{4} = \frac{1}{8}$$.
 
 </details>
 

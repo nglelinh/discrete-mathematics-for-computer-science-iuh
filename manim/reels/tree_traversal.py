@@ -95,6 +95,27 @@ assert PARENT == {3: 8, 10: 8, 1: 3, 6: 3, 14: 10, 4: 6, 7: 6}
 
 R = 0.42
 
+# ---------- Dựng lại cây từ preorder + inorder ----------
+PRE, INO = pre("A", KIDS), ino("A", KIDS)
+assert "".join(PRE) == "ABDECF" and "".join(INO) == "DBEACF"
+
+
+def rebuild(pr, io, K):
+    if not pr:
+        return None
+    r = pr[0]
+    k = io.index(r)
+    K[r] = (rebuild(pr[1:k + 1], io[:k], K), rebuild(pr[k + 1:], io[k + 1:], K))
+    return r
+
+
+RB = {}
+assert rebuild(PRE, INO, RB) == "A" and RB == KIDS
+assert "".join(post("A", RB)) == "DEBFCA"
+# preorder + postorder không đủ: A-B trái và A-B phải cho cùng hai dãy
+K1, K2 = {"A": ("B", None), "B": (None, None)}, {"A": (None, "B"), "B": (None, None)}
+assert pre("A", K1) == pre("A", K2) and post("A", K1) == post("A", K2) and ino("A", K1) != ino("A", K2)
+
 
 def node(lbl, p, col=BLUE, size=32):
     c = Circle(R, color=col, stroke_width=4, fill_color=CELL, fill_opacity=1).move_to([p[0], p[1], 0])
@@ -115,7 +136,7 @@ def build(K, P, root, col=BLUE, size=32):
 
 class TreeTraversal(Scene):
     def wait(self, duration=1.0, **kw):
-        super().wait(duration * 1.3, **kw)
+        super().wait(duration * 1.55, **kw)
 
     def construct(self):
         # ===== 1. Mở đầu =====
@@ -286,6 +307,50 @@ class TreeTraversal(Scene):
         r2 = para("Đây chính là BFS (Chương 12) trên cây.\nMọi cách duyệt đều O(n): mỗi nút vào/ra đúng một lần.", 24, DIM, y=-3.8)
         self.play(FadeIn(r2), run_time=0.5)
         self.wait(3.0)
+        wipe(self, keep=[c])
+
+        # ===== 5b. Dựng lại cây =====
+        c = swap_cap(self, c, cap("Dựng lại cây từ hai dãy duyệt", 38, GOLD))
+        lab1 = Text("Preorder", font=FONT, font_size=24, color=BLUE).move_to([-3.9, 5.1, 0], aligned_edge=LEFT)
+        lab2 = Text("Inorder", font=FONT, font_size=24, color=GREEN).move_to([-3.9, 4.2, 0], aligned_edge=LEFT)
+        pr = VGroup(*[Text(x, font=FONT, font_size=32).move_to([-1.2 + i * 0.85, 5.1, 0]) for i, x in enumerate(PRE)])
+        io = VGroup(*[Text(x, font=FONT, font_size=32).move_to([-1.2 + i * 0.85, 4.2, 0]) for i, x in enumerate(INO)])
+        self.play(FadeIn(lab1), FadeIn(lab2), FadeIn(pr), FadeIn(io), run_time=0.8)
+        self.wait(1.5)
+        SP = {k: (x, y - 2.6) for k, (x, y) in POS.items()}
+        nds, _ = build(KIDS, SP, "A")
+        e1 = para("Phần tử đầu của preorder là gốc: A", 24, WHITE, y=-2.6)
+        self.play(FadeIn(e1), pr[0].animate.set_color(GOLD), io[3].animate.set_color(GOLD), run_time=0.6)
+        self.play(FadeIn(nds["A"]), run_time=0.5)
+        self.wait(1.0)
+        e2 = para("Trong inorder: bên trái A là cây con trái {D, B, E},\nbên phải A là cây con phải {C, F}", 24, WHITE, y=-3.7)
+        bl = SurroundingRectangle(VGroup(io[0], io[2]), color=BLUE, buff=0.12)
+        br = SurroundingRectangle(VGroup(io[4], io[5]), color=GREEN, buff=0.12)
+        self.play(FadeIn(e2), Create(bl), Create(br), run_time=0.7)
+        self.wait(2.0)
+        e3 = para("Cây trái có 3 nút ⇒ preorder: A | B D E | C F", 24, GOLD, y=-4.8)
+        bl2 = SurroundingRectangle(VGroup(pr[1], pr[3]), color=BLUE, buff=0.12)
+        br2 = SurroundingRectangle(VGroup(pr[4], pr[5]), color=GREEN, buff=0.12)
+        self.play(FadeIn(e3), Create(bl2), Create(br2), run_time=0.7)
+        self.wait(2.0)
+        self.play(FadeOut(e1), FadeOut(e2), FadeOut(e3), run_time=0.4)
+        f1 = para("Lặp lại cho cây trái: gốc B (đầu của B D E),\ninorder D | B | E ⇒ D bên trái, E bên phải", 24, BLUE, y=-2.9)
+        self.play(FadeIn(f1), pr[1].animate.set_color(GOLD), io[1].animate.set_color(GOLD), run_time=0.6)
+        self.play(FadeIn(nds["B"]), Create(edge(SP["A"], SP["B"])), run_time=0.5)
+        self.play(FadeIn(nds["D"]), FadeIn(nds["E"]), Create(edge(SP["B"], SP["D"])), Create(edge(SP["B"], SP["E"])), run_time=0.6)
+        self.wait(2.0)
+        f2 = para("Cây phải: gốc C, inorder C | F\n⇒ C không có con trái, F là con phải", 24, GREEN, y=-4.4)
+        self.play(FadeIn(f2), pr[4].animate.set_color(GOLD), io[4].animate.set_color(GOLD), run_time=0.6)
+        self.play(FadeIn(nds["C"]), Create(edge(SP["A"], SP["C"])), run_time=0.5)
+        self.play(FadeIn(nds["F"]), Create(edge(SP["C"], SP["F"])), run_time=0.5)
+        self.wait(2.0)
+        self.play(FadeOut(f1), FadeOut(f2), run_time=0.4)
+        g1 = para("Kiểm tra: postorder của cây vừa dựng là D E B F C A ✓", 24, GREEN, y=-2.9)
+        self.play(FadeIn(g1), run_time=0.5)
+        self.wait(1.5)
+        g2 = para("Chỉ có preorder + postorder thì KHÔNG đủ:\ncây A có con trái B và cây A có con phải B\ncùng preorder A B, cùng postorder B A", 24, RED, y=-4.4)
+        self.play(FadeIn(g2), run_time=0.5)
+        self.wait(3.5)
         wipe(self, keep=[c])
 
         # ===== 6. Tóm tắt =====

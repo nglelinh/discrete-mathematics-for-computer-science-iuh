@@ -84,6 +84,14 @@ $$
 
 </div>
 
+### Video ngắn: RSA và Diffie–Hellman
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/rsa-diffie-hellman.mp4"></video>
+</div>
+
+Video dài khoảng 3 phút 22 giây: minh họa Diffie–Hellman qua hình ảnh trộn màu rồi tính bằng số ($$p = 23$$, $$g = 5$$, hai bên cùng thu được khóa chung $$K = 2$$) và bài toán logarit rời rạc; triển khai ví dụ RSA với $$p = 61$$, $$q = 53$$ ($$n = 3233$$, $$\varphi(n) = 3120$$, $$e = 17$$, tìm $$d = 2753$$ bằng thuật toán Euclid mở rộng), mã hóa $$M = 123$$ thành $$C = 855$$ bằng bình phương liên tiếp rồi giải mã lại 123, giải thích cơ sở đúng đắn từ định lý Euler và nền tảng bảo mật của RSA.
+
 ## Hệ mật RSA
 
 **Bài toán trao đổi khóa.** Mã hóa đối xứng đòi hỏi hai bên phải chia sẻ trước cùng một khóa bí mật $$K$$, điều rất khó thực hiện qua kênh truyền có thể bị nghe lén. Mã hóa khóa công khai giải quyết vấn đề này bằng cách cho phép công bố rộng rãi $$K_{\mathrm{pub}}$$ và chỉ giữ bí mật $$K_{\mathrm{priv}}$$.

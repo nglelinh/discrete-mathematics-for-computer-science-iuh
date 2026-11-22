@@ -175,6 +175,14 @@ $$50+40+30-20-15-10+5=80.$$
 <p class="textbook-figure-caption" data-figure="4.21">Tập đếm được có thể đánh số 1, 2, 3, … — các tập ℕ, ℤ, ℚ đều đếm được với lực lượng ℵ₀.</p>
 </div>
 
+### Video ngắn: Đường chéo Cantor
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/cantor-diagonal.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 57 giây: xếp $$\mathbb{Z}$$ thành một hàng $$0, 1, -1, 2, -2, \dots$$, khách sạn Hilbert, đường zigzag liệt kê $$\mathbb{Q}$$ (bỏ qua phân số chưa tối giản), lập luận đường chéo trên bảng các dãy 0/1 để dựng một dãy nằm ngoài mọi danh sách, cùng ý tưởng với số thực trong $$(0,1)$$ để có $$|\mathbb{N}| < |\mathbb{R}|$$ và $$|A| < |\mathcal{P}(A)|$$, rồi bảng chương trình – đầu vào cho thấy bài toán dừng không giải được.
+
 ## Tập không đếm được
 
 <div class="textbook-definition" markdown="1">

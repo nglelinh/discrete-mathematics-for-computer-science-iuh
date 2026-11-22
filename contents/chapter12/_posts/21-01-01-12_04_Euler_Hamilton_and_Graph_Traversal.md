@@ -117,6 +117,14 @@ Euler mô hình hóa bốn khu đất thành 4 đỉnh và bảy cây cầu thà
 
 **TSP** (*Traveling Salesman Problem*): trên đồ thị đầy đủ có trọng số, tìm chu trình Hamilton có tổng trọng số nhỏ nhất. Bài toán tối ưu này (và nhiều biến thể quyết định liên quan) thuộc lớp **NP-hard** (xem thêm Chương 20). Trong thực tế, người ta thường dùng thuật toán heuristic hoặc xấp xỉ để giải TSP; điều này không mâu thuẫn với việc chu trình Euler vẫn giải được nhanh chóng trong thời gian tuyến tính.
 
+### Video ngắn: BFS và DFS
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/bfs-vs-dfs.mp4"></video>
+</div>
+
+Video dài khoảng 3 phút 6 giây: chạy BFS (hàng đợi) và DFS (ngăn xếp/đệ quy) trên cùng một đồ thị 7 đỉnh với thứ tự duyệt đỉnh kề theo bảng chữ cái như mã nguồn trong bài; minh họa khoảng cách theo lớp và đường đi ngắn nhất $$A \to B \to D \to G$$ trên cây BFS; chỉ ra cạnh ngược $$C$$–$$A$$ trong DFS tạo chu trình $$A$$–$$B$$–$$E$$–$$C$$–$$A$$; cho thấy sự khác biệt khi đổi `popleft()` thành `pop()`; cùng bảng so sánh và ứng dụng đếm thành phần liên thông với độ phức tạp $$O(V + E)$$.
+
 ## BFS — duyệt theo chiều rộng
 
 **BFS** (*Breadth-First Search*) duyệt đồ thị theo từng **tầng** khoảng cách tăng dần tính từ đỉnh nguồn $$s$$, sử dụng cấu trúc dữ liệu **hàng đợi** (*queue*).

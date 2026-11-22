@@ -35,6 +35,14 @@ $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 
+### Video ngắn: Hệ thức không thuần nhất
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/nonhomogeneous-recurrence.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 58 giây: nghiệm tổng quát bằng nghiệm thuần nhất cộng một nghiệm riêng, ba dạng vế phải với ví dụ giải trọn và kiểm tra vài số hạng đầu (hằng số: $$a_n = 4\cdot 2^n - 3$$ và tháp Hà Nội; đa thức: $$a_n = 2^{n+1} - n - 2$$; hàm mũ: $$a_n = 3^{n+1} - 2^{n+1}$$), trường hợp cộng hưởng phải nhân thêm $$n$$ ($$a_n = (n+1)2^n$$), Ví dụ 1 bậc hai của bài ($$X_2 = 14$$, $$X_3 = 52$$) và bảng đoán dạng nghiệm riêng.
+
 ## Nguyên lý chồng chất
 
 Nghiệm tổng quát của quan hệ truy hồi tuyến tính không thuần nhất luôn có dạng:
