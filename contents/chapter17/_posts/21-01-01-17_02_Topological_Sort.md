@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "DAG và topological sort; DFS postorder đảo; Kahn (indegree + queue); O(V+E); build system, lịch môn, phát hiện chu trình."
+excerpt: "Đồ thị có hướng không chu trình (DAG) và sắp xếp topo; thuật toán DFS (postorder đảo ngược) và Kahn (bậc vào kết hợp hàng đợi); độ phức tạp O(V+E) cùng ứng dụng trong hệ thống build, xếp lịch và phát hiện chu trình."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,11 +17,11 @@ excerpt: "DAG và topological sort; DFS postorder đảo; Kahn (indegree + queue
 
 </div>
 
-Hệ build chỉ biên dịch $$B$$ sau khi phụ thuộc $$A$$ xong — thứ tự đó là **sắp xếp topo**. Nếu $$A$$ phụ thuộc $$B$$ và $$B$$ phụ thuộc $$A$$, có **chu trình**: không tồn tại thứ tự hợp lệ. Mục này định nghĩa DAG, topo sort, và hai thuật toán $$O(V+E)$$: DFS và Kahn.
+Trong một hệ thống biên dịch (build system), mô-đun $$B$$ chỉ được biên dịch sau khi mô-đun phụ thuộc $$A$$ đã hoàn tất — một thứ tự thực hiện hợp lệ như vậy gọi là **sắp xếp topo** (*topological sort*). Nếu $$A$$ phụ thuộc $$B$$ và $$B$$ lại phụ thuộc $$A$$, ta có một **chu trình** và không tồn tại thứ tự hợp lệ nào. Bài học này định nghĩa DAG, sắp xếp topo và trình bày hai thuật toán tuyến tính $$O(V+E)$$: DFS và Kahn.
 
 ![DAG topo](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_topo_dag.svg)
 
-<p class="textbook-figure-caption" data-figure="17.2">DAG: mọi cạnh có hướng, không chu trình; topo order tôn trọng mọi mũi tên.</p>
+<p class="textbook-figure-caption" data-figure="17.2">DAG là đồ thị có hướng không chu trình; thứ tự topo tôn trọng chiều của mọi cạnh.</p>
 
 ## Mục tiêu học tập
 
@@ -29,10 +29,10 @@ Hệ build chỉ biên dịch $$B$$ sau khi phụ thuộc $$A$$ xong — thứ t
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Định nghĩa** DAG và topological ordering.
-- **Thực hiện** topo sort bằng DFS (postorder đảo) và Kahn (indegree).
-- **Phân tích** độ phức tạp $$O(V+E)$$.
-- **Áp dụng** cho build system, lịch môn, phát hiện deadlock / circular dependency.
+- **Định nghĩa** DAG và thứ tự sắp xếp topo (*topological ordering*).
+- **Thực hiện** sắp xếp topo bằng DFS (đảo ngược thứ tự postorder) và bằng thuật toán Kahn (dựa trên bậc vào).
+- **Phân tích** độ phức tạp thời gian $$O(V+E)$$ của hai thuật toán.
+- **Áp dụng** sắp xếp topo cho hệ thống build, lập lịch môn học và phát hiện deadlock hoặc phụ thuộc vòng.
 
 **Từ khóa**: DAG, topological sort, in-degree, Kahn, DFS postorder, cycle detection.
 
@@ -44,26 +44,26 @@ Hệ build chỉ biên dịch $$B$$ sau khi phụ thuộc $$A$$ xong — thứ t
 
 **Định nghĩa.**
 
-- **DAG** (*Directed Acyclic Graph*): đồ thị **có hướng**, **không** có chu trình có hướng.
-- **Topological sort** của digraph $$G$$: hoán vị $$v_1,\ldots,v_n$$ của $$V$$ sao cho mọi cạnh $$(u,v)$$, đỉnh $$u$$ xuất hiện **trước** $$v$$ trong hoán vị.
+- **DAG** (*Directed Acyclic Graph*): đồ thị **có hướng** và **không** chứa chu trình có hướng.
+- **Sắp xếp topo** (*topological sort*) của đồ thị có hướng $$G$$: một hoán vị $$v_1,\ldots,v_n$$ của tập đỉnh $$V$$ sao cho với mọi cạnh có hướng $$(u,v)$$, đỉnh $$u$$ luôn đứng **trước** đỉnh $$v$$ trong hoán vị.
 
 </div>
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý.** Digraph có topological ordering **khi và chỉ khi** nó là DAG.
+**Định lý.** Một đồ thị có hướng có thứ tự sắp xếp topo **khi và chỉ khi** nó là một DAG.
 
 </div>
 
-Nếu có chu trình, đi quanh chu trình không thể sắp “trước/sau” nhất quán. Nếu là DAG, luôn tồn tại ít nhất một topo order (có thể nhiều).
+Nếu đồ thị chứa chu trình, không thể sắp xếp các đỉnh trên chu trình sao cho mọi mũi tên đều đi từ trái sang phải. Ngược lại, mọi DAG đều có ít nhất một thứ tự topo (và thường có nhiều hơn một thứ tự hợp lệ).
 
-**Liên hệ Ch.5 / Ch.12.** Quan hệ “phải xong trước” trên task là **thứ tự bộ phận** khi không phụ thuộc vòng; topo sort là **mở rộng tuyến tính** của thứ tự đó.
+**Liên hệ Chương 5 và Chương 12.** Quan hệ “phải hoàn thành trước” trên tập công việc tạo thành một **quan hệ thứ tự bộ phận** khi không có phụ thuộc vòng; sắp xếp topo chính là một **mở rộng tuyến tính** của thứ tự bộ phận đó.
 
 ## Thuật toán DFS
 
-1. DFS trên toàn đồ thị (mọi đỉnh chưa thăm).
-2. Khi **kết thúc** thăm $$u$$ (sau mọi đỉnh reachable từ $$u$$ theo cạnh xuôi), **ghi** $$u$$ vào danh sách.
-3. **Đảo** danh sách (hoặc chèn đầu) → topo order.
+1. Chạy DFS trên toàn bộ đồ thị (bắt đầu từ mọi đỉnh chưa được thăm).
+2. Khi **kết thúc** việc thăm đỉnh $$u$$ (sau khi đã thăm hết các đỉnh đi tới được từ $$u$$), **thêm** $$u$$ vào danh sách kết quả.
+3. **Đảo ngược** danh sách (hoặc chèn từng đỉnh vào đầu danh sách) để thu được thứ tự topo.
 
 ```text
 DFS-TOPO(G):
@@ -79,20 +79,20 @@ DFS-VISIT(u):
   order.append(u)   // postorder
 ```
 
-Phát hiện chu trình (biến thể): cạnh tới đỉnh **đang** trên stack đệ quy (màu xám) ⇒ cycle.
+Để phát hiện chu trình trong DFS, ta theo dõi trạng thái đỉnh đang nằm trên ngăn xếp đệ quy (màu xám): nếu gặp một cạnh đi tới đỉnh màu xám thì đồ thị có chu trình.
 
-## Thuật toán Kahn (BFS / indegree)
+## Thuật toán Kahn (BFS / bậc vào)
 
-1. Tính $$\mathrm{indeg}(v)$$ với mọi $$v$$.
-2. Queue các đỉnh $$\mathrm{indeg}=0$$.
-3. Lặp: lấy $$u$$; ghi vào kết quả; với mỗi $$(u,v)$$ giảm $$\mathrm{indeg}(v)$$; nếu về 0 thì enqueue $$v$$.
-4. Nếu số đỉnh xuất $$<\vert V\vert $$ ⇒ **có chu trình**.
+1. Tính bậc vào $$\mathrm{indeg}(v)$$ cho mọi đỉnh $$v \in V$$.
+2. Đưa tất cả các đỉnh có $$\mathrm{indeg}=0$$ vào hàng đợi.
+3. Lặp khi hàng đợi còn phần tử: lấy đỉnh $$u$$ ra và ghi vào kết quả; với mỗi cạnh $$(u,v)$$, giảm $$\mathrm{indeg}(v)$$ đi 1 và nếu $$\mathrm{indeg}(v)$$ về 0 thì đưa $$v$$ vào hàng đợi.
+4. Khi kết thúc, nếu số đỉnh đã xuất ra nhỏ hơn $$\vert V\vert $$ thì đồ thị **có chu trình**.
 
-**Độ phức tạp.** Cả DFS và Kahn: $$O(V+E)$$ với danh sách kề.
+**Độ phức tạp.** Cả DFS và Kahn đều chạy trong thời gian $$O(V+E)$$ khi đồ thị được biểu diễn bằng danh sách kề.
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ.** Cạnh $$A\to B$$, $$A\to C$$, $$B\to D$$, $$C\to D$$.
+**Ví dụ.** Xét đồ thị có các cạnh $$A\to B$$, $$A\to C$$, $$B\to D$$, $$C\to D$$:
 
 ```text
     A
@@ -102,14 +102,14 @@ Phát hiện chu trình (biến thể): cạnh tới đỉnh **đang** trên sta
     D
 ```
 
-Topo hợp lệ: **A, B, C, D** hoặc **A, C, B, D**.  
-Kahn: ban đầu chỉ $$A$$ có indeg 0; sau $$A$$ thì $$B,C$$; sau cùng $$D$$.
+Hai thứ tự topo hợp lệ là **A, B, C, D** và **A, C, B, D**.  
+Với thuật toán Kahn: ban đầu chỉ có $$A$$ đạt bậc vào bằng 0; sau khi loại $$A$$ thì $$B$$ và $$C$$ có bậc vào bằng 0; cuối cùng là $$D$$.
 
 </div>
 
-### Minh hoạ sắp xếp topo: Kahn và DFS từng bước
+### Minh họa sắp xếp topo: Kahn và DFS từng bước
 
-Chạy **Kahn** (bậc vào + hàng đợi) hoặc **DFS** (hậu tự đảo) trên một DAG: xem bậc vào giảm dần, hàng đợi/ngăn xếp thay đổi và thứ tự topo hình thành. Bật “thêm cạnh tạo chu trình” để thấy thuật toán phát hiện chu trình và dừng.
+Chạy thuật toán **Kahn** (bậc vào và hàng đợi) hoặc **DFS** (hậu tự đảo ngược) trên một DAG để quan sát bậc vào giảm dần, trạng thái hàng đợi/ngăn xếp và thứ tự topo được hình thành. Bạn có thể bật tùy chọn “thêm cạnh tạo chu trình” để xem thuật toán phát hiện chu trình và dừng lại.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="topo-explainer" data-preset="courses" data-algo="kahn"></div>
@@ -118,71 +118,71 @@ Chạy **Kahn** (bậc vào + hàng đợi) hoặc **DFS** (hậu tự đảo) t
 
 ## Ứng dụng
 
-| Lĩnh vực | Mô hình |
+| Lĩnh vực | Mô hình hóa bằng DAG |
 |:---|:---|
-| Build (Make, Cargo, npm) | File/package = đỉnh; phụ thuộc = cạnh |
-| Lịch học | Môn tiên quyết = cạnh |
-| Pipeline compiler / CI | Giai đoạn = đỉnh |
-| Deadlock | Chu trình trong đồ thị chờ tài nguyên |
+| Hệ thống build (Make, Cargo, npm) | Tệp hoặc gói là đỉnh; quan hệ phụ thuộc là cạnh |
+| Lập kế hoạch học tập | Môn học tiên quyết là cạnh có hướng |
+| Pipeline trình biên dịch / CI | Các giai đoạn xử lý là đỉnh |
+| Phát hiện deadlock | Chu trình trong đồ thị chờ tài nguyên |
 
-**Circular dependency:** topo sort thất bại ⇔ có cycle — tín hiệu lỗi kiến trúc / import vòng.
+**Phụ thuộc vòng (*circular dependency*):** sắp xếp topo thất bại tương đương với việc đồ thị tồn tại chu trình — dấu hiệu điển hình của lỗi kiến trúc hoặc vòng lặp import.
 
 ## Bài tập
 
 ### Bài tập 1
 
-DAG: $$P\to Q$$, $$P\to R$$, $$Q\to S$$, $$R\to S$$. Liệt kê mọi topo sort.
+Cho DAG gồm các cạnh $$P\to Q$$, $$P\to R$$, $$Q\to S$$, $$R\to S$$. Hãy liệt kê tất cả các thứ tự sắp xếp topo hợp lệ.
 
 <details>
 <summary>Đáp án</summary>
 
-$$P$$ đầu, $$S$$ cuối; $$Q$$ và $$R$$ hoán vị: **P,Q,R,S** và **P,R,Q,S**.
+Đỉnh $$P$$ phải đứng đầu và đỉnh $$S$$ phải đứng cuối; hai đỉnh $$Q$$ và $$R$$ có thể hoán vị cho nhau. Vậy có hai thứ tự hợp lệ là **P, Q, R, S** và **P, R, Q, S**.
 
 </details>
 
 ### Bài tập 2
 
-Thêm $$S\to P$$. Còn topo sort không? Kahn phát hiện thế nào?
+Nếu thêm cạnh $$S\to P$$ vào đồ thị ở Bài tập 1 thì còn tồn tại thứ tự topo hay không? Thuật toán Kahn phát hiện điều này như thế nào?
 
 <details>
 <summary>Đáp án</summary>
 
-Không — chu trình $$P\to\cdots\to S\to P$$. Kahn không bao giờ lấy đủ $$\vert V\vert $$ đỉnh (không còn indeg 0 sau vài bước, hoặc ngay từ đầu không xử lý hết).
+Không còn thứ tự topo vì đã hình thành chu trình $$P\to Q\to S\to P$$ (và $$P\to R\to S\to P$$). Khi chạy thuật toán Kahn, mọi đỉnh đều có bậc vào lớn hơn 0 ngay từ đầu (hoặc hàng đợi sẽ cạn sớm trước khi xử lý hết $$\vert V\vert $$ đỉnh), nên số đỉnh xuất ra nhỏ hơn $$\vert V\vert $$.
 
 </details>
 
 ### Bài tập 3
 
-Vì sao đỉnh indeg 0 có thể đứng đầu một topo order?
+Vì sao một đỉnh có bậc vào bằng 0 luôn có thể đứng ở vị trí đầu tiên trong một thứ tự topo?
 
 <details>
 <summary>Đáp án</summary>
 
-Không có cạnh vào ⇒ không ràng buộc “ai phải trước nó”. Sau khi xếp nó, giảm indeg hàng xóm mô phỏng “đã thỏa điều kiện tiên quyết”.
+Đỉnh có bậc vào bằng 0 không có cạnh nào đi vào nó, nghĩa là không có ràng buộc công việc nào phải hoàn thành trước nó. Sau khi xếp đỉnh này, việc giảm bậc vào của các đỉnh kề mô phỏng rằng điều kiện tiên quyết đó đã được thỏa mãn.
 
 </details>
 
 ### Bài tập 4
 
-So sánh ngắn DFS-topo và Kahn về cấu trúc dữ liệu phụ.
+So sánh ngắn gọn thuật toán sắp xếp topo bằng DFS và thuật toán Kahn về cấu trúc dữ liệu phụ.
 
 <details>
 <summary>Đáp án</summary>
 
-DFS: stack đệ quy + postorder. Kahn: mảng indeg + queue. Cùng $$O(V+E)$$.
+DFS sử dụng ngăn xếp đệ quy (hoặc ngăn xếp tường minh) cùng danh sách lưu thứ tự postorder, trong khi Kahn sử dụng mảng bậc vào kết hợp hàng đợi. Cả hai đều có độ phức tạp thời gian $$O(V+E)$$.
 
 </details>
 
 ## Tóm tắt
 
-1. **DAG** ⇔ tồn tại topo sort.
-2. **DFS**: postorder rồi đảo; **Kahn**: queue indeg 0.
-3. $$O(V+E)$$; dùng cho build, scheduling, phát hiện cycle.
+1. Một đồ thị có hướng là **DAG** khi và chỉ khi tồn tại thứ tự sắp xếp topo.
+2. **DFS** thu được thứ tự topo bằng cách đảo ngược postorder; **Kahn** dùng hàng đợi xử lý dần các đỉnh bậc vào bằng 0.
+3. Cả hai thuật toán đều có độ phức tạp $$O(V+E)$$, ứng dụng rộng rãi trong hệ thống build, lập lịch và phát hiện chu trình.
 
-Bài tùy chọn tiếp theo: **tô màu** và **ghép cặp**.
+Bài tùy chọn tiếp theo sẽ giới thiệu bài toán **tô màu đồ thị** và **ghép cặp trên đồ thị hai phía**.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=GYmq98CVm2c">Topological sort in 5 minutes - Inside code</a> — Inside code, tiếng Anh. Xem trước sắp xếp topo trên DAG.
-- <a href="https://www.youtube.com/watch?v=eL-KzMXSXXI">Topological Sort Algorithm | Graph Theory</a> — WilliamFiset, tiếng Anh. Topo bằng DFS và thứ tự kết thúc.
-- <a href="https://www.youtube.com/watch?v=cIBFEhD77b4">Topological Sort | Kahn&#x27;s Algorithm | Graph Theory</a> — WilliamFiset, tiếng Anh. Thuật toán Kahn theo bậc vào, cách làm thứ hai của bài.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=GYmq98CVm2c">Topological sort in 5 minutes - Inside code</a> — Inside code, tiếng Anh. Giới thiệu nhanh khái niệm và cách thực hiện sắp xếp topo trên DAG.
+- <a href="https://www.youtube.com/watch?v=eL-KzMXSXXI">Topological Sort Algorithm | Graph Theory</a> — WilliamFiset, tiếng Anh. Trình bày sắp xếp topo bằng DFS và thứ tự kết thúc.
+- <a href="https://www.youtube.com/watch?v=cIBFEhD77b4">Topological Sort | Kahn&#x27;s Algorithm | Graph Theory</a> — WilliamFiset, tiếng Anh. Trình bày thuật toán Kahn theo bậc vào, cách tiếp cận thứ hai của bài.

@@ -7,12 +7,12 @@ date: 2021-01-01
 order: 4
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã dùng bảng chân trị để liệt kê và kiểm chứng mọi trường hợp của biểu thức logic. Mục này mở rộng sang tương đương logic và dạng chuẩn…"
+excerpt: "Trình bày khái niệm tương đương logic, các luật biến đổi biểu thức mệnh đề, cây biểu thức Boolean và hai dạng chuẩn tắc DNF, CNF."
 ---
 
-Ở mục trước chúng ta đã dùng **bảng chân trị** để liệt kê và kiểm chứng mọi trường hợp của biểu thức logic. Mục này mở rộng sang **tương đương logic** và **dạng chuẩn tắc** — hai khái niệm cho phép biến đổi biểu thức mà không thay đổi ý nghĩa.
+Ở mục trước, chúng ta đã dùng **bảng chân trị** để liệt kê và kiểm chứng mọi trường hợp của biểu thức logic. Mục này mở rộng sang **tương đương logic** và **dạng chuẩn tắc** — hai khái niệm cho phép biến đổi biểu thức mà không làm thay đổi ý nghĩa.
 
-Cùng một ý có thể viết bằng nhiều biểu thức khác nhau. Hai điều kiện `if` trong ví dụ ngay dưới đây trông khác nhau, nhưng liệu chúng có luôn cho cùng kết quả không? Mục này trả lời câu hỏi đó. Ta học khi nào hai biểu thức **tương đương logic** ($$P \equiv Q$$), các luật để biến đổi biểu thức mà không đổi ý nghĩa, và cách đưa biểu thức về **dạng chuẩn tắc** (DNF, CNF). Biến đổi đúng luật thì ý nghĩa giữ nguyên, còn sai một bước là chương trình chạy sai.
+Cùng một điều kiện có thể được viết bằng nhiều biểu thức khác nhau. Hai điều kiện `if` trong ví dụ dưới đây có cú pháp khác nhau, nhưng liệu chúng có luôn cho cùng kết quả trên mọi đầu vào không? Mục này trả lời câu hỏi đó bằng cách trình bày khi nào hai biểu thức **tương đương logic** ($$P \equiv Q$$), các luật biến đổi giúp rút gọn mà vẫn giữ nguyên ngữ nghĩa, và cách đưa biểu thức về **dạng chuẩn tắc** (DNF, CNF). Biến đổi đúng luật sẽ giữ nguyên ý nghĩa của chương trình, trong khi sai một bước có thể làm thay đổi hoàn toàn hành vi thực thi.
 
 ### Minh họa: Hai biểu thức, một ý nghĩa
 
@@ -28,7 +28,7 @@ if not is_admin and not is_active:
     deny_access()
 ```
 
-Hai điều kiện này **hoàn toàn tương đương** về mặt logic, dù cú pháp khác nhau. Người đọc code dễ hiểu hơn với Cách 2, nhưng cả hai đều cho kết quả giống hệt nhau trên mọi đầu vào. Đây chính là ý nghĩa của **tương đương logic**.
+Hai điều kiện này **tương đương nhau** về mặt logic dù cú pháp khác nhau. Cách 2 thường dễ đọc hơn, nhưng cả hai đều cho kết quả giống hệt nhau trên mọi đầu vào. Đây chính là ý nghĩa của **tương đương logic**.
 
 ## Mục tiêu học tập
 
@@ -40,7 +40,7 @@ Hai điều kiện này **hoàn toàn tương đương** về mặt logic, dù c
 - **Phát biểu** chính xác khái niệm tương đương logic.
 - **Sử dụng** các luật tương đương để rút gọn biểu thức mệnh đề.
 - **Chuyển đổi** giữa biểu thức logic, bảng chân trị, DNF và CNF.
-- **Nhận ra** lỗi thường gặp khi áp dụng De Morgan, kéo theo và phân phối.
+- **Nhận ra** các lỗi thường gặp khi áp dụng luật De Morgan, phép kéo theo và luật phân phối.
 - **Giải thích** vai trò của CNF trong SAT solver và kiểm chứng phần mềm.
 
 
@@ -59,12 +59,12 @@ $$P \equiv Q$$
 </div>
 </div>
 
-Tương đương với việc $$P \leftrightarrow Q$$ là một hằng đúng.
+Điều này tương đương với việc $$P \leftrightarrow Q$$ là một hằng đúng.
 
 **Ký hiệu**:
 
-- $$\equiv$$: tương đương logic, dùng cho quan hệ giữa hai công thức.
-- $$\leftrightarrow$$: phép nối hai chiều, là một toán tử nằm trong công thức.
+- $$\equiv$$: tương đương logic, biểu thị quan hệ giữa hai công thức.
+- $$\leftrightarrow$$: phép nối hai chiều, là một toán tử nằm bên trong công thức.
 - $$T$$ và $$F$$: hằng đúng và hằng sai.
 
 <div class="textbook-example" markdown="1">
@@ -82,7 +82,7 @@ Hai cột cuối giống nhau ở mọi hàng, do đó $$p \to q \equiv \neg p \
 
 
 <div class="content-box insight-box textbook-block" markdown="1">
-**Ghi nhớ**: Tương đương logic là quan hệ "thay thế an toàn". Nếu $$P \equiv Q$$, ta có thể thay $$P$$ bằng $$Q$$ trong bất kỳ biểu thức lớn hơn nào mà không đổi bảng chân trị của toàn bộ biểu thức.
+**Ghi nhớ**: Tương đương logic là quan hệ thay thế an toàn. Nếu $$P \equiv Q$$, ta có thể thay $$P$$ bằng $$Q$$ trong bất kỳ biểu thức lớn hơn nào mà không làm thay đổi bảng chân trị của toàn bộ biểu thức.
 </div>
 
 ## Các luật tương đương cơ bản
@@ -91,28 +91,28 @@ Hai cột cuối giống nhau ở mọi hàng, do đó $$p \to q \equiv \neg p \
 | Tên luật | Công thức tiêu biểu | Ghi chú |
 |:---|:---|:---|
 | Đồng nhất | $$p \land T \equiv p$$, $$p \lor F \equiv p$$ | T và F là hằng |
-| Nuốt | $$p \lor T \equiv T$$, $$p \land F \equiv F$$ | Bị "nuốt" bởi hằng |
-| Lũy đẳng | $$p \lor p \equiv p$$, $$p \land p \equiv p$$ | Lặp lại không đổi |
-| Phủ định kép | $$\neg\neg p \equiv p$$ | Hai lần phủ định |
-| Giao hoán | $$p \lor q \equiv q \lor p$$, $$p \land q \equiv q \land p$$ | Đổi chỗ |
-| Kết hợp | $$(p \lor q) \lor r \equiv p \lor (q \lor r)$$ | Dấu ngoặc không quan trọng |
-| Phân phối | $$p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$$ | Phân phối OR qua AND |
+| Nuốt | $$p \lor T \equiv T$$, $$p \land F \equiv F$$ | Giá trị bị chi phối bởi hằng |
+| Lũy đẳng | $$p \lor p \equiv p$$, $$p \land p \equiv p$$ | Lặp lại không làm đổi giá trị |
+| Phủ định kép | $$\neg\neg p \equiv p$$ | Hai lần phủ định triệt tiêu nhau |
+| Giao hoán | $$p \lor q \equiv q \lor p$$, $$p \land q \equiv q \land p$$ | Đổi chỗ hai toán hạng |
+| Kết hợp | $$(p \lor q) \lor r \equiv p \lor (q \lor r)$$ | Dấu ngoặc không làm đổi kết quả |
+| Phân phối | $$p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$$ | Phân phối OR qua AND (và ngược lại) |
 | De Morgan | $$\neg(p \land q) \equiv \neg p \lor \neg q$$ | Phủ định của AND/OR |
-| Hấp thụ | $$p \lor (p \land q) \equiv p$$ | Bị "hấp thụ" |
-| Bù | $$p \lor \neg p \equiv T$$, $$p \land \neg p \equiv F$$ | Luật bù |
+| Hấp thụ | $$p \lor (p \land q) \equiv p$$ | Thành phần phụ bị hấp thụ |
+| Bù | $$p \lor \neg p \equiv T$$, $$p \land \neg p \equiv F$$ | Kết hợp biến với phủ định của nó |
 
 Các luật **De Morgan**, **phân phối** và **bù** là những luật được dùng thường xuyên nhất khi rút gọn biểu thức.
 
 ## Công thức Boolean dưới dạng cây
 
-Một công thức Boolean có thể được biểu diễn dưới dạng **cây** (rooted tree):
+Một công thức Boolean có thể được biểu diễn dưới dạng **cây có gốc** (rooted tree):
 
-- **Nút gốc và nút trong**: được gán nhãn bởi các phép toán logic (`¬`, `∧`, `∨`, `→`, `↔`, `⊕`).
-- **Lá (nút cuối)**: được gán nhãn bởi các biến (`p`, `q`, `r`, ...) hoặc hằng (`T`, `F`).
+- **Nút gốc và nút trong**: mang nhãn là các phép toán logic (`¬`, `∧`, `∨`, `→`, `↔`, `⊕`).
+- **Lá (nút cuối)**: mang nhãn là các biến (`p`, `q`, `r`, ...) hoặc hằng (`T`, `F`).
 
-Cấu trúc của cây được xác định bởi **dấu ngoặc** trong công thức.
+Cấu trúc của cây được xác định bởi **dấu ngoặc** và thứ tự ưu tiên trong công thức.
 
-**Ví dụ chi tiết**: Xét công thức `((p ∨ q) → ¬r) ↔ p`
+**Ví dụ chi tiết**: Xét công thức `((p ∨ q) → ¬r) ↔ p`.
 
 Cây tương ứng:
 
@@ -126,7 +126,7 @@ Cây tương ứng:
   p   q    r
 ```
 
-**Bảng chân trị** của công thức này (thứ tự lexicographic, T trước F):
+**Bảng chân trị** của công thức này (thứ tự từ điển, T trước F):
 
 | p | q | r | (p ∨ q) | ¬r | (p ∨ q) → ¬r | ((p ∨ q) → ¬r) ↔ p |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -139,9 +139,9 @@ Cây tương ứng:
 | F | F | T | F | F | T | F |
 | F | F | F | F | T | T | F |
 
-**Nhận xét**: Cây giúp ta thấy rõ **thứ tự tính toán** và **cấu trúc phân cấp** của công thức. Mỗi phép toán tương ứng với một nút trong, và các biến là lá.
+**Nhận xét**: Cây biểu thức giúp nhìn rõ **thứ tự tính toán** và **cấu trúc phân cấp** của công thức, trong đó mỗi phép toán là một nút trong và các biến là các lá.
 
-Thử gõ một công thức khác vào khung dưới đây để xem cây của nó, rồi đổi giá trị các biến và theo dõi giá trị được tính từ lá lên gốc.
+Thử nhập một công thức khác vào khung dưới đây để xem cây của nó, rồi thay đổi giá trị các biến để theo dõi quá trình tính giá trị từ lá lên gốc.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="exprtree-explainer" data-formula="((p ∨ q) → ¬r) ↔ p"></div>
@@ -149,23 +149,21 @@ Thử gõ một công thức khác vào khung dưới đây để xem cây của
 
 ![Luật De Morgan trên biểu đồ Venn](/discrete-mathematics-for-computer-science-iuh/img/course/Intersections_of_two_sets_and_their_complements.svg)
 
-<p class="textbook-figure-caption" data-figure="1.16">Luật De Morgan — ¬(p ∧ q) ≡ ¬p ∨ ¬q, công cụ biến đổi quan trọng nhất khi rút gọn điều kiện.</p>
+<p class="textbook-figure-caption" data-figure="1.16">Luật De Morgan — ¬(p ∧ q) ≡ ¬p ∨ ¬q, công cụ biến đổi quan trọng khi rút gọn điều kiện.</p>
 ![DNF — tổng các tích (disjunction of conjunctions)](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-OR.png)
 
-<p class="textbook-figure-caption" data-figure="1.17">Dạng chuẩn tắc tuyển (DNF) — tổng (OR) của các tích (AND), xây từ các hàng có kết quả Đúng trong bảng chân trị.</p>
+<p class="textbook-figure-caption" data-figure="1.17">Dạng chuẩn tắc tuyển (DNF) — tuyển (OR) của các hội (AND), xây dựng từ các hàng có kết quả Đúng trong bảng chân trị.</p>
 ![CNF — tích các tổng (conjunction of disjunctions)](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-AND.png)
 
-<p class="textbook-figure-caption" data-figure="1.18">Dạng chuẩn tắc hội (CNF) — tích (AND) của các tổng (OR), dạng chuẩn mà SAT solver yêu cầu.</p>
-**Lưu ý quan trọng**: Các phép toán `∧`, `∨`, `⊕`, `↔` là **giao hoán** (đổi chỗ được) và **kết hợp** (dấu ngoặc không quan trọng). Riêng `→` không có hai tính chất này.
-
-Do đó ta có thể viết `R ∧ Q ∧ P` thay vì `(R ∧ Q) ∧ P`, và viết các biến theo bất kỳ thứ tự nào.
+<p class="textbook-figure-caption" data-figure="1.18">Dạng chuẩn tắc hội (CNF) — hội (AND) của các tuyển (OR), dạng chuẩn mà SAT solver yêu cầu.</p>
+**Lưu ý quan trọng**: Các phép toán `∧`, `∨`, `⊕`, `↔` đều có tính **giao hoán** và **kết hợp**, còn phép kéo theo `→` thì không. Vì vậy, ta có thể viết `R ∧ Q ∧ P` thay vì `(R ∧ Q) ∧ P` và sắp xếp lại thứ tự các biến mà không làm thay đổi giá trị.
 
 **Ứng dụng**:
-- **Trình biên dịch** biểu diễn biểu thức Boolean dưới dạng cây trước khi tối ưu.
-- **Kiểm chứng hình thức** thường làm việc trên cấu trúc cây của công thức.
+- **Trình biên dịch** biểu diễn biểu thức Boolean dưới dạng cây trước khi tối ưu hóa.
+- **Kiểm chứng hình thức** thao tác trực tiếp trên cấu trúc cây của công thức.
 - **Phân tích tĩnh** dùng cây biểu thức để phát hiện nhánh chết hoặc điều kiện luôn đúng/sai.
 
-Ta chứng minh $$\neg(p \land q) \equiv \neg p \lor \neg q$$ bằng bảng chân trị.
+Ta chứng minh $$\neg(p \land q) \equiv \neg p \lor \neg q$$ bằng bảng chân trị:
 
 | $$p$$ | $$q$$ | $$p \land q$$ | $$\neg(p \land q)$$ | $$\neg p$$ | $$\neg q$$ | $$\neg p \lor \neg q$$ |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -174,11 +172,11 @@ Ta chứng minh $$\neg(p \land q) \equiv \neg p \lor \neg q$$ bằng bảng châ
 | F | T | F | T | T | F | T |
 | F | F | F | T | T | T | T |
 
-Hai cột $$\neg(p \land q)$$ và $$\neg p \lor \neg q$$ giống nhau. Vậy luật đúng.
+Hai cột $$\neg(p \land q)$$ và $$\neg p \lor \neg q$$ giống nhau ở mọi hàng, nên luật De Morgan đúng.
 
-#### Minh họa bằng code
+#### Minh họa bằng mã nguồn
 
-Luật De Morgan cũng xuất hiện liên tục khi viết điều kiện phủ định:
+Luật De Morgan xuất hiện thường xuyên khi viết điều kiện phủ định:
 
 ```python
 # Vế trái: NOT (A AND B)
@@ -190,7 +188,7 @@ if (not is_admin) or (not is_active):
     deny_access()
 ```
 
-Hai điều kiện **luôn cho cùng kết quả** trên mọi đầu vào. Đây là lý do De Morgan cực kỳ quan trọng khi rút gọn biểu thức trong lập trình và tối ưu truy vấn.
+Hai điều kiện này **luôn cho cùng kết quả** trên mọi đầu vào. Vì vậy, luật De Morgan đóng vai trò quan trọng khi rút gọn biểu thức trong lập trình và tối ưu truy vấn.
 
 ## Biến đổi biểu thức logic
 
@@ -204,7 +202,7 @@ $$\begin{aligned}
 &\equiv \neg p \land q && \text{đồng nhất.}
 \end{aligned}$$
 
-**Nhận xét**: Mỗi dòng biến đổi phải nêu rõ luật được dùng. Trong chứng minh toán học và kiểm chứng chương trình, việc ghi luật giúp phát hiện sai sót sớm.
+**Nhận xét**: Mỗi bước biến đổi cần nêu rõ luật được áp dụng. Trong chứng minh toán học và kiểm chứng chương trình, việc ghi rõ luật giúp phát hiện sai sót sớm.
 </div>
 
 
@@ -213,43 +211,43 @@ $$\begin{aligned}
 ### Định nghĩa Dạng Rút gọn
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Một biểu thức logic $$E$$ được gọi là **dạng rút gọn** (reduced form) nếu nó thỏa mãn đồng thời 3 điều kiện sau:
+**Định nghĩa**: Một biểu thức logic $$E$$ được gọi là **dạng rút gọn** (reduced form) nếu thỏa mãn đồng thời 3 điều kiện sau:
 
 
-1. **Không chứa hằng số** $$T$$ hoặc $$F$$ (trừ khi biểu thức chỉ là hằng số đó).
-2. **Không chứa cặp bù** (literal và phủ định của nó trong cùng một clause hoặc term).
-3. **Không chứa thừa số chung** (các literal lặp lại trong cùng một clause/term, hoặc các term/clause trùng nhau).
+1. **Không chứa hằng số** $$T$$ hoặc $$F$$ (trừ khi toàn bộ biểu thức chỉ là hằng số đó).
+2. **Không chứa cặp bù** (một literal và phủ định của nó trong cùng một clause hoặc term).
+3. **Không chứa thành phần dư thừa** (các literal lặp lại trong cùng một clause/term, hoặc các term/clause trùng nhau).
 </div>
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
 - $$\neg p \land q$$ là dạng rút gọn.
-- $$(\neg p \land q) \lor (\neg p \land \neg q)$$ **không** phải dạng rút gọn (có thể rút gọn thành $$\neg p$$).
-- $$p \lor \neg p$$ **không** phải dạng rút gọn (cặp bù → rút gọn thành $$T$$).
-- $$p \land p$$ **không** phải dạng rút gọn (thừa số → rút gọn thành $$p$$).
+- $$(\neg p \land q) \lor (\neg p \land \neg q)$$ **không** phải dạng rút gọn (rút gọn được thành $$\neg p$$).
+- $$p \lor \neg p$$ **không** phải dạng rút gọn (chứa cặp bù, rút gọn thành $$T$$).
+- $$p \land p$$ **không** phải dạng rút gọn (lặp literal, rút gọn thành $$p$$).
 
-**Mục tiêu**: Tìm dạng rút gọn ngắn nhất (ít literal nhất) tương đương với biểu thức ban đầu.
+**Mục tiêu**: Tìm dạng rút gọn ngắn gọn (ít literal nhất) tương đương với biểu thức ban đầu.
 </div>
 
 
 ### Vì sao cần rút gọn?
 
-Một biểu thức logic có thể viết bằng rất nhiều cách khác nhau — nhưng không phải cách nào cũng tiện lợi. Trong thực tế, biểu thức dài thường đồng nghĩa với:
+Một biểu thức logic có thể được viết theo nhiều cách khác nhau, nhưng biểu thức rườm rà thường dẫn đến:
 
-- **Code khó đọc**: `if ((a && b) || (a && !b))` làm người đọc phải dừng lại suy nghĩ.
-- **Truy vấn nặng hơn**: nhiều điều kiện lồng nhau khiến database engine khó tối ưu.
-- **Xử lý chậm hơn**: nhiều phép toán hơn → nhiều thời gian CPU hơn.
+- **Mã nguồn khó đọc**: `if ((a && b) || (a && !b))` buộc người đọc phải phân tích thêm mới thấy nó tương đương `if (a)`.
+- **Truy vấn nặng hơn**: nhiều điều kiện lồng nhau khiến bộ tối ưu truy vấn của cơ sở dữ liệu khó xử lý.
+- **Tốn thêm chi phí tính toán**: nhiều phép toán hơn dẫn đến tốn nhiều chu kỳ CPU hơn.
 
-**Bài toán rút gọn**: Cho một biểu thức logic, tìm biểu thức **ngắn nhất có thể** mà vẫn tương đương logic với biểu thức ban đầu.
+**Bài toán rút gọn**: Cho một biểu thức logic, tìm biểu thức ngắn gọn nhất có thể mà vẫn tương đương logic với biểu thức ban đầu.
 
 ### Rút gọn bằng Luật Tương đương
 
-Các luật tương đương ở Section 2 là công cụ chính để rút gọn. Chiến lược chung:
+Các luật tương đương ở bảng trên là công cụ chính để rút gọn. Quy trình thường dùng gồm bốn bước:
 
-1. **Loại bỏ kéo theo**: thay $$p \to q$$ bằng $$\neg p \lor q$$.
-2. **Áp dụng De Morgan** để đẩy phủ định vào sâu bên trong.
-3. **Phân phối** và **gộp** các thành phần giống nhau.
-4. **Loại bỏ hằng số** bằng luật đồng nhất, nuốt, bù.
+1. **Loại bỏ phép kéo theo**: thay $$p \to q$$ bằng $$\neg p \lor q$$.
+2. **Áp dụng luật De Morgan** để đẩy phép phủ định vào sát các biến.
+3. **Phân phối** và **gộp** các thành phần chung.
+4. **Loại bỏ hằng số** bằng các luật đồng nhất, nuốt và bù.
 
 **Ví dụ 1**: Rút gọn $$(\neg p \land q) \lor (\neg p \land \neg q)$$.
 
@@ -260,7 +258,7 @@ $$\begin{aligned}
 &\equiv \neg p && \text{(đồng nhất)}.
 \end{aligned}$$
 
-**Ví dụ 2 (tối ưu điều kiện trong code)**:
+**Ví dụ 2 (tối ưu điều kiện trong mã nguồn)**:
 
 ```python
 # Biểu thức gốc
@@ -272,14 +270,14 @@ if x > 0:
     do_something()
 ```
 
-Điều kiện đầu tương đương $$(p \land q) \lor (p \land \neg q)$$ với $$p = (x > 0)$$ và $$q = (y > 0)$$, và ta đã biết nó rút gọn thành $$p$$.
+Điều kiện ban đầu có dạng $$(p \land q) \lor (p \land \neg q)$$ với $$p = (x > 0)$$ và $$q = (y > 0)$$, nên rút gọn thành $$p$$.
 
-**Quan sát chính**: Hai hội $$p \land q$$ và $$p \land \neg q$$ chỉ khác nhau ở một literal ($$q$$ và $$\neg q$$). Khi gặp cặp như vậy, ta luôn gộp được thành $$p$$ (mất biến $$q$$). Đây là ý tưởng nền tảng của mọi thuật toán rút gọn: **phát hiện các cặp chỉ khác nhau một literal và gộp chúng**.
+**Quan sát chính**: Hai hội $$p \land q$$ và $$p \land \neg q$$ chỉ khác nhau ở một literal ($$q$$ và $$\neg q$$). Khi gặp cặp như vậy, ta luôn gộp được thành $$p$$ (khử biến $$q$$). Đây là ý tưởng nền tảng của các thuật toán rút gọn biểu thức Boolean: phát hiện các cặp chỉ khác nhau đúng một literal và gộp chúng lại.
 
 ## Dạng chuẩn tắc tuyển DNF
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: **Dạng chuẩn tắc tuyển** (Disjunctive Normal Form, DNF) là biểu thức có dạng tuyển của các hội, trong đó mỗi thành phần nhỏ là một literal hoặc phủ định của literal:
+**Định nghĩa**: **Dạng chuẩn tắc tuyển** (Disjunctive Normal Form, DNF) là biểu thức có dạng tuyển của các hội, trong đó mỗi thành phần nhỏ là một literal (biến hoặc phủ định của biến):
 
 
 <div class="textbook-equation" markdown="1">
@@ -289,16 +287,16 @@ $$(l_{11} \land l_{12} \land \cdots) \lor (l_{21} \land l_{22} \land \cdots) \lo
 </div>
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: $$(p \land q) \lor (\neg p \land r)$$ là DNF.
+**Ví dụ**: $$(p \land q) \lor (\neg p \land r)$$ là một biểu thức ở dạng DNF.
 </div>
 
 
 ### Tạo DNF từ bảng chân trị (cách trực quan)
 
-Quy trình xây dựng DNF từ bảng chân trị gồm ba bước: (1) chỉ xét các hàng có kết quả **TRUE**; (2) với mỗi hàng đó, viết một hội (AND) — biến đúng giữ nguyên, biến sai lấy phủ định; (3) lấy tuyển (OR) của tất cả các hội.
+Quy trình xây dựng DNF từ bảng chân trị gồm ba bước: (1) chỉ xét các hàng có kết quả **TRUE**; (2) với mỗi hàng đó, viết một hội (AND) trong đó biến có giá trị đúng giữ nguyên, biến có giá trị sai lấy phủ định; (3) lấy tuyển (OR) của tất cả các hội vừa tạo.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Xây dựng DNF cho $$p \to q$$
+**Ví dụ**: Xây dựng DNF cho $$p \to q$$.
 
 Bảng chân trị:
 
@@ -309,13 +307,13 @@ Bảng chân trị:
 | F | T | **T** |
 | F | F | **T** |
 
-**Bước 1 & 2**: Chỉ giữ 3 hàng TRUE:
+**Bước 1 & 2**: Chỉ giữ lại 3 hàng có kết quả TRUE:
 
 - Hàng 1 (`T, T`): $$p \land q$$
 - Hàng 3 (`F, T`): $$\neg p \land q$$
 - Hàng 4 (`F, F`): $$\neg p \land \neg q$$
 
-**Bước 3**: Lấy tuyển:
+**Bước 3**: Lấy tuyển của ba hội trên:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -329,7 +327,7 @@ $$
 
 #### Minh họa: DNF như bản đồ vùng đúng
 
-Với hai biến, bảng chân trị tạo thành lưới 2×2; mỗi ô tương ứng một phép gán. DNF đầy đủ "tô" mọi ô đúng bằng một term (hình chữ nhật nhỏ); khi rút gọn, các ô liền kề được gộp thành hình chữ nhật lớn hơn, cho biểu thức ngắn hơn. Ví dụ trên có thể rút gọn thành $$\neg p \lor q$$. Đây là ý tưởng nền tảng của thuật toán tối thiểu hóa biểu thức Boolean trong trình biên dịch và tối ưu truy vấn.
+Với hai biến, bảng chân trị tạo thành lưới 2×2 trong đó mỗi ô ứng với một phép gán giá trị. DNF đầy đủ phủ mọi ô có kết quả đúng bằng từng term riêng lẻ; khi rút gọn, các ô liền kề được gộp lại thành khối lớn hơn để thu được biểu thức ngắn hơn. Ví dụ trên rút gọn thành $$\neg p \lor q$$. Đây là ý tưởng nền tảng của các thuật toán tối thiểu hóa biểu thức Boolean trong trình biên dịch và tối ưu truy vấn.
 
 ## Dạng chuẩn tắc hội CNF
 
@@ -344,34 +342,34 @@ $$(l_{11} \lor l_{12} \lor \cdots) \land (l_{21} \lor l_{22} \lor \cdots) \land 
 </div>
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: $$(p \lor q) \land (\neg p \lor r) \land (q \lor \neg r)$$ là CNF.
+**Ví dụ**: $$(p \lor q) \land (\neg p \lor r) \land (q \lor \neg r)$$ là một biểu thức ở dạng CNF.
 </div>
 
 
-**Ký hiệu**: Mỗi ngoặc trong CNF thường được gọi là một **mệnh đề con** (clause). CNF là dạng chuẩn mà nhiều SAT solver nhận vào.
+**Ký hiệu**: Mỗi ngoặc trong CNF thường được gọi là một **mệnh đề con** (clause). CNF là dạng đầu vào tiêu chuẩn của nhiều bộ giải SAT.
 
-**Lưu ý**: Chúng ta thường dùng bit `1` và `0` thay cho `T` và `F`, và ký hiệu biến là $$x_1, \dots, x_n$$. Ví dụ: gán $$x = 101$$ vào công thức $$(x_1 \land x_2 \land x_3) \lor (\neg x_1 \land \neg x_2 \land \neg x_3)$$ cho kết quả `0`.
+**Lưu ý**: Trong khoa học máy tính, ta thường dùng bit `1` và `0` thay cho `T` và `F`, và ký hiệu biến là $$x_1, \dots, x_n$$. Ví dụ, gán $$x = 101$$ vào công thức $$(x_1 \land x_2 \land x_3) \lor (\neg x_1 \land \neg x_2 \land \neg x_3)$$ cho kết quả `0`.
 
-**Toán tử bitwise trên chuỗi bit**: Chúng ta có thể mở rộng các phép toán logic thành toán tử trên **chuỗi bit** bằng cách áp dụng từng bit một. Ví dụ:
+**Toán tử bitwise trên chuỗi bit**: Các phép toán logic có thể được mở rộng sang **chuỗi bit** bằng cách áp dụng theo từng vị trí bit. Ví dụ:
 
-- $$1010 = 0101$$
+- $$\neg 1010 = 0101$$
 - $$1010 \land 0110 = 0010$$
 - $$1010 \lor 0110 = 1110$$
 
 ### Tạo CNF từ bảng chân trị (cách trực quan)
 
-Tương tự DNF, ta cũng có thể xây dựng CNF từ bảng chân trị theo **3 bước**:
+Tương tự DNF, ta có thể xây dựng CNF từ bảng chân trị theo 3 bước:
 
-1. **Nhìn vào bảng chân trị**, chỉ quan tâm đến những hàng có kết quả **FALSE**.
-2. **Với mỗi hàng FALSE**, viết một tuyển (OR) mô tả đúng hàng đó:
-   - Nếu biến là `TRUE` → lấy **phủ định** của biến.
-   - Nếu biến là `FALSE` → giữ nguyên biến.
+1. **Xét bảng chân trị** và chỉ giữ lại các hàng có kết quả **FALSE**.
+2. **Với mỗi hàng FALSE**, viết một tuyển (OR) sao cho nó sai tại đúng hàng đó:
+   - Nếu biến nhận giá trị `TRUE` → lấy **phủ định** của biến.
+   - Nếu biến nhận giá trị `FALSE` → giữ nguyên biến.
 3. **Lấy hội (AND)** của tất cả các tuyển vừa tạo.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Xây dựng CNF cho $$p \to q$$
+**Ví dụ**: Xây dựng CNF cho $$p \to q$$.
 
-Bảng chân trị (chỉ quan tâm hàng FALSE):
+Bảng chân trị (chỉ xét hàng FALSE):
 
 | $$p$$ | $$q$$ | $$p \to q$$ |
 |:---:|:---:|:---:|
@@ -382,12 +380,12 @@ Bảng chân trị (chỉ quan tâm hàng FALSE):
 
 **Bước 1 & 2**: Chỉ có 1 hàng FALSE (`T, F`):
 
-- Biến `p = TRUE` → lấy $$\neg p$$
-- Biến `q = FALSE` → giữ nguyên $$q$$
+- Biến `p = TRUE` → lấy $$\neg p$$.
+- Biến `q = FALSE` → giữ nguyên $$q$$.
 
-→ Viết tuyển: $$\neg p \lor q$$
+Ta viết tuyển tương ứng: $$\neg p \lor q$$.
 
-**Bước 3**: Vì chỉ có 1 clause, CNF chính là:
+**Bước 3**: Vì chỉ có một mệnh đề con, CNF thu được là:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -395,7 +393,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-(Trong trường hợp có nhiều hàng FALSE, ta sẽ lấy **hội** của tất cả các tuyển.)
+(Nếu có nhiều hàng FALSE, ta lấy **hội** của tất cả các tuyển tương ứng.)
 </div>
 
 
@@ -414,7 +412,7 @@ def is_satisfied(p, q, r):
     return clause1 and clause2 and clause3
 ```
 
-Mỗi `clause` là một ràng buộc. SAT solver phải tìm một assignment sao cho **không có ràng buộc nào bị vi phạm**. Đây là lý do CNF là dạng đầu vào tự nhiên cho hầu hết các bộ giải SAT hiện đại.
+Mỗi `clause` đóng vai trò như một ràng buộc. SAT solver cần tìm một phép gán biến sao cho **không có ràng buộc nào bị vi phạm**. Vì thế, CNF là dạng đầu vào tự nhiên cho hầu hết các bộ giải SAT hiện đại.
 
 ### Video ngắn: DNF và CNF
 
@@ -422,61 +420,61 @@ Mỗi `clause` là một ràng buộc. SAT solver phải tìm một assignment s
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/dnf-cnf-normal-forms.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 45 giây: literal là gì, lập DNF từ các hàng T và CNF từ các hàng F của bảng chân trị, biến đổi bằng luật, kiểm tra lại bằng bảng chân trị, và vì sao SAT solver cần CNF.
+Video dài khoảng 2 phút 45 giây, trình bày khái niệm literal, cách lập DNF từ các hàng T và CNF từ các hàng F của bảng chân trị, cách biến đổi bằng luật, kiểm tra lại bằng bảng chân trị, và lý do SAT solver dùng CNF.
 
 ## Các định lý quan trọng về DNF và CNF
 
 <div class="textbook-theorem" id="định-lý-1-sự-tồn-tại-dnf-và-cnf" markdown="1">
 **Định lý 1 (Sự tồn tại DNF và CNF)**:
 
-**Mọi biểu thức mệnh đề đều có thể đưa về DNF và CNF.**
+**Mọi biểu thức mệnh đề đều có thể đưa về dạng DNF và CNF.**
 </div>
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh (phác thảo)**: Từ bảng chân trị, ta luôn xây dựng được DNF bằng cách tuyển các hội tương ứng với các hàng đúng; tương tự CNF bằng hội các tuyển tương ứng với các hàng sai. Do mọi biểu thức đều có bảng chân trị hữu hạn, nên DNF/CNF luôn tồn tại.
+**Chứng minh (phác thảo)**: Từ bảng chân trị, ta luôn xây dựng được DNF bằng cách lấy tuyển các hội ứng với các hàng đúng, và xây dựng CNF bằng cách lấy hội các tuyển ứng với các hàng sai (với hằng sai dùng quy ước tuyển rỗng, với hằng đúng dùng quy ước hội rỗng hoặc dạng tương đương $$p \land \neg p$$ / $$p \lor \neg p$$). Vì mọi biểu thức đều có bảng chân trị hữu hạn nên DNF và CNF luôn tồn tại.
 </div>
 
 ### Định lý 2: Tính duy nhất của DNF/CNF đầy đủ
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Một **DNF đầy đủ** (full DNF / canonical DNF) của hàm Boolean $$ f $$ trên $$ n $$ biến là biểu thức DNF trong đó **mỗi term** chứa đúng $$ n $$ literal (mỗi biến xuất hiện đúng một lần, có thể phủ định). Tương tự, **CNF đầy đủ** (full CNF) là CNF trong đó mỗi clause chứa đúng $$ n $$ literal.
+**Định nghĩa**: Một **DNF đầy đủ** (full DNF / canonical DNF) của hàm Boolean $$ f $$ trên $$ n $$ biến là biểu thức DNF trong đó **mỗi term** chứa đúng $$ n $$ literal (mỗi biến xuất hiện đúng một lần, ở dạng khẳng định hoặc phủ định). Tương tự, **CNF đầy đủ** (full CNF) là CNF trong đó mỗi clause chứa đúng $$ n $$ literal.
 </div>
 
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Mọi hàm Boolean $$ f:\{T,F\}^n\to\{T,F\} $$ đều có **đúng một** DNF đầy đủ và **đúng một** CNF đầy đủ (duy nhất, không kể thứ tự các term/clause và thứ tự literal bên trong term/clause).
+**Định lý**: Mọi hàm Boolean $$ f:\{T,F\}^n\to\{T,F\} $$ đều có **đúng một** DNF đầy đủ và **đúng một** CNF đầy đủ (duy nhất, không kể thứ tự các term/clause và thứ tự literal bên trong mỗi term/clause).
 </div>
 
 
 <div class="textbook-proof" markdown="1">
 **Chứng minh (Tính duy nhất của DNF đầy đủ)**:
 
-Giả sử $$ D_1 $$ và $$ D_2 $$ là hai DNF đầy đủ cùng biểu diễn hàm $$ f $$.
+Giả sử $$ D_1 $$ và $$ D_2 $$ là hai DNF đầy đủ cùng biểu diễn hàm $$ f $$ (do đó $$ D_1 \equiv D_2 $$).
 
-1. **Mỗi term trong DNF đầy đủ tương ứng duy nhất với một assignment**:
-   - Với assignment $$ \alpha = (a_1, \dots, a_n) \in \{T,F\}^n $$, ta xây dựng term:
+1. **Mỗi term trong DNF đầy đủ tương ứng duy nhất với một phép gán (assignment)**:
+   - Với phép gán $$ \alpha = (a_1, \dots, a_n) \in \{T,F\}^n $$, ta xây dựng term:
      $$
      m_\alpha = \bigwedge_{i=1}^n \ell_i, \quad \text{trong đó } \ell_i = x_i \text{ nếu } a_i = T,\quad \ell_i = \neg x_i \text{ nếu } a_i = F.
      $$
-   - Term $$ m_\alpha $$ chỉ đúng duy nhất tại assignment $$ \alpha $$, và $$ m_\alpha(\alpha) = T $$.
+   - Term $$ m_\alpha $$ chỉ nhận giá trị đúng duy nhất tại phép gán $$ \alpha $$ (tức $$ m_\alpha(\alpha) = T $$ và sai tại mọi phép gán khác).
 
 2. **Mối quan hệ giữa DNF đầy đủ và bảng chân trị**:
    - Giả sử $$ D_1 = m_{\alpha_1} \lor m_{\alpha_2} \lor \cdots \lor m_{\alpha_k} $$, trong đó $$ f(\alpha_j) = T $$ với mọi $$ j $$.
-   - Tương tự $$ D_2 = m_{\beta_1} \lor \cdots \lor m_{\beta_m} $$.
-   - Vì $$ D_1 \equiv f $$ và $$ D_2 \equiv f $$, nên tập $$ \{\alpha_1,\dots,\alpha_k\} $$ chính là tập tất cả các assignment mà $$ f = T $$. Tương tự với $$ D_2 $$.
+   - Tương tự, $$ D_2 = m_{\beta_1} \lor \cdots \lor m_{\beta_m} $$.
+   - Vì $$ D_1 \equiv f $$ và $$ D_2 \equiv f $$, tập $$ \{\alpha_1,\dots,\alpha_k\} $$ và tập $$ \{\beta_1,\dots,\beta_m\} $$ đều chính là tập tất cả các phép gán làm $$ f = T $$.
 
-3. **Mâu thuẫn nếu hai DNF khác nhau**:
-   - Giả sử $$ D_1 \not\equiv D_2 $$ (không kể thứ tự term). Khi đó tồn tại ít nhất một assignment $$ \alpha^* $$ sao cho $$ m_{\alpha^*} $$ xuất hiện trong $$ D_1 $$ nhưng không xuất hiện trong $$ D_2 $$ (hoặc ngược lại).
-   - Xét giá trị của hai DNF tại assignment $$ \alpha^* $$:
+3. **Mâu thuẫn nếu hai DNF đầy đủ khác nhau về tập term**:
+   - Giả sử $$ D_1 \neq D_2 $$ (không kể thứ tự term và literal). Khi đó tồn tại ít nhất một phép gán $$ \alpha^* $$ sao cho $$ m_{\alpha^*} $$ xuất hiện trong $$ D_1 $$ nhưng không xuất hiện trong $$ D_2 $$ (hoặc ngược lại).
+   - Xét giá trị của hai biểu thức tại phép gán $$ \alpha^* $$:
      - $$ D_1(\alpha^*) = T $$ (vì chứa term $$ m_{\alpha^*} $$ đúng tại $$ \alpha^* $$).
      - $$ D_2(\alpha^*) = F $$ (vì không chứa term nào đúng tại $$ \alpha^* $$).
    - Điều này mâu thuẫn với giả thiết $$ D_1 \equiv D_2 $$.
 
-Do đó $$ D_1 \equiv D_2 $$.
+Do đó $$ D_1 = D_2 $$ (hai DNF đầy đủ có cùng tập hợp các term).
 </div>
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh cho CNF đầy đủ**: Hoàn toàn tương tự bằng cách dual hóa (thay $$ \lor $$ bằng $$ \land $$, $$ T $$ bằng $$ F $$, và literal bằng phủ định của nó), hoặc áp dụng Định lý 3 bên dưới cho $$ \neg f $$.
+**Chứng minh cho CNF đầy đủ**: Hoàn toàn tương tự bằng cách đối ngẫu hóa (thay $$ \lor $$ bằng $$ \land $$, $$ T $$ bằng $$ F $$, và mỗi literal bằng phủ định của nó), hoặc áp dụng Định lý 3 bên dưới cho $$ \neg f $$.
 </div>
 
 <div class="textbook-lemma" markdown="1">
@@ -492,25 +490,25 @@ Do đó $$ D_1 \equiv D_2 $$.
 </div>
 
 <div class="textbook-lemma" markdown="1">
-**Hệ quả**: Phủ định của DNF là CNF và ngược lại (áp dụng De Morgan mở rộng).
+**Hệ quả**: Phủ định của DNF là CNF và ngược lại (áp dụng luật De Morgan mở rộng).
 </div>
 
 <div class="textbook-theorem" id="định-lý-4-biểu-diễn-hàm-boolean" markdown="1">
 **Định lý 4 (Biểu diễn hàm Boolean)**:
 
-**Mọi hàm Boolean** $$f: \{T,F\}^n \to \{T,F\}$$ **đều có biểu diễn DNF và CNF duy nhất** (đầy đủ).
+**Mọi hàm Boolean** $$f: \{T,F\}^n \to \{T,F\}$$ **đều có biểu diễn DNF đầy đủ và CNF đầy đủ duy nhất**.
 </div>
 
-**Ý nghĩa CS**: Đây là nền tảng của:
-- **Compiler optimization**: rút gọn biểu thức Boolean trong mã nguồn và mã trung gian.
-- **Query optimization**: chuẩn hóa điều kiện lọc trong SQL để database engine xử lý hiệu quả hơn.
-- **SAT solver**: nhận đầu vào dạng CNF và tìm cách gán biến sao cho biểu thức đúng.
+**Ý nghĩa trong khoa học máy tính**: Đây là nền tảng của:
+- **Tối ưu trình biên dịch (compiler optimization)**: rút gọn biểu thức Boolean trong mã nguồn và mã trung gian.
+- **Tối ưu truy vấn (query optimization)**: chuẩn hóa điều kiện lọc trong SQL để hệ quản trị cơ sở dữ liệu xử lý hiệu quả hơn.
+- **SAT solver**: nhận đầu vào dạng CNF và tìm phép gán biến thỏa mãn công thức.
 
 ## Ứng dụng trong Khoa học Máy tính
 
-- **Tối ưu điều kiện trong chương trình**: Compiler có thể thay `not (a and b)` bằng `(not a) or (not b)` để đơn giản hóa nhánh.
+- **Tối ưu điều kiện trong chương trình**: Trình biên dịch có thể chuyển `not (a and b)` thành `(not a) or (not b)` để đơn giản hóa nhánh điều kiện.
 - **SAT solver**: Nhiều bài toán lập lịch, kiểm chứng phần mềm, giải Sudoku và phân tích phụ thuộc được mã hóa thành CNF.
-- **Cơ sở dữ liệu**: Tối ưu truy vấn SQL dùng các luật tương đương để đẩy điều kiện lọc xuống sớm hơn.
+- **Cơ sở dữ liệu**: Bộ tối ưu truy vấn SQL áp dụng các luật tương đương để đẩy điều kiện lọc xuống sớm hơn.
 
 ```python
 # De Morgan trong kiểm tra điều kiện
@@ -531,7 +529,7 @@ Chứng minh rằng $$p \to (q \lor r) \equiv (p \to q) \lor (p \to r)$$ bằng 
 <details>
 <summary>Đáp án</summary>
 
-Bảng chân trị 8 hàng cho 3 biến cho thấy hai cột cuối luôn giống nhau ở mọi tổ hợp giá trị. Do đó hai biểu thức tương đương.
+Bảng chân trị 8 hàng cho 3 biến cho thấy hai cột kết quả của hai vế giống nhau ở mọi tổ hợp giá trị. Do đó hai biểu thức tương đương logic.
 
 </details>
 
@@ -546,7 +544,7 @@ $$\neg(p \land \neg q) \lor (\neg p \land q)$$
 <details>
 <summary>Đáp án</summary>
 
-Áp dụng De Morgan và các luật bù, đồng nhất:
+Áp dụng luật De Morgan, phủ định kép và luật hấp thụ:
 
 <div class="textbook-equation" markdown="1">
 $$\equiv (\neg p \lor q) \lor (\neg p \land q) \equiv \neg p \lor q$$
@@ -559,19 +557,21 @@ $$\equiv (\neg p \lor q) \lor (\neg p \land q) \equiv \neg p \lor q$$
 Cho biểu thức $$(p \lor q) \land (\neg p \lor r)$$.
 
 1. Viết dạng DNF đầy đủ.
-2. Viết dạng CNF (đã là CNF).
+2. Viết dạng CNF (đã ở dạng CNF).
 
 <details>
 <summary>Đáp án</summary>
 
-- DNF: $$(p \land \neg p) \lor (p \land r) \lor (q \land \neg p) \lor (q \land r)$$ (rút gọn thành $$(p \land r) \lor (q \land \neg p) \lor (q \land r)$$).
-- CNF: Giữ nguyên $$(p \lor q) \land (\neg p \lor r)$$.
+- **DNF rút gọn**: Áp dụng luật phân phối ta có $$(p \land \neg p) \lor (p \land r) \lor (q \land \neg p) \lor (q \land r) \equiv (p \land r) \lor (\neg p \land q) \lor (q \land r)$$.
+- **DNF đầy đủ** (mỗi term chứa đủ 3 biến $$p, q, r$$):
+  $$(p \land q \land r) \lor (p \land \neg q \land r) \lor (\neg p \land q \land r) \lor (\neg p \land q \land \neg r)$$.
+- **CNF**: Giữ nguyên $$(p \lor q) \land (\neg p \lor r)$$.
 
 </details>
 
 ### Bài tập 4: Ứng dụng thực tế
 
-Viết một đoạn mã Python kiểm tra điều kiện `not (user.is_banned() and user.is_inactive())` theo hai cách tương đương. Giải thích tại sao một trong hai cách dễ đọc và tối ưu hơn.
+Viết một đoạn mã Python kiểm tra điều kiện `not (user.is_banned() and user.is_inactive())` theo hai cách tương đương. Giải thích vì sao một trong hai cách dễ đọc hơn.
 
 <details>
 <summary>Đáp án</summary>
@@ -585,7 +585,7 @@ if (not user.is_banned()) or (not user.is_inactive()):
     allow_access()
 ```
 
-Cách thứ hai dễ đọc hơn và có thể tận dụng short-circuit evaluation tốt hơn trong một số trình biên dịch.
+Cách thứ hai trực quan hơn khi đọc điều kiện cho phép và tận dụng đánh giá đoản mạch (short-circuit evaluation) ngay khi điều kiện đầu tiên đúng.
 
 </details>
 
@@ -622,28 +622,28 @@ Rút gọn các biểu thức sau bằng luật De Morgan và các luật tươn
 <details>
 <summary>Đáp án</summary>
 
-(a) $$\neg(p \lor \neg q) \equiv \neg p \land \neg(\neg q) \equiv \neg p \land q$$
+(a) $$\neg(p \lor \neg q) \equiv \neg p \land \neg(\neg q) \equiv \neg p \land q$$.
 
-(b) $$\neg(\neg p \land (q \lor r)) \equiv \neg(\neg p) \lor \neg(q \lor r) \equiv p \lor (\neg q \land \neg r)$$
+(b) $$\neg(\neg p \land (q \lor r)) \equiv \neg(\neg p) \lor \neg(q \lor r) \equiv p \lor (\neg q \land \neg r)$$.
 
 (c) $$(\neg p \land \neg q) \lor \neg(\neg r \lor p)$$
     $$\equiv (\neg p \land \neg q) \lor (\neg(\neg r) \land \neg p)$$
     $$\equiv (\neg p \land \neg q) \lor (r \land \neg p)$$
-    $$\equiv \neg p \land (\neg q \lor r)$$ (luật phân phối)
+    $$\equiv \neg p \land (\neg q \lor r)$$ (luật phân phối).
 
 (d) $$\neg((p \land q) \lor (\neg p \land \neg q))$$
     $$\equiv \neg(p \land q) \land \neg(\neg p \land \neg q)$$
     $$\equiv (\neg p \lor \neg q) \land (p \lor q)$$
     $$\equiv (\neg p \land p) \lor (\neg p \land q) \lor (\neg q \land p) \lor (\neg q \land q)$$
     $$\equiv F \lor (\neg p \land q) \lor (p \land \neg q) \lor F$$
-    $$\equiv (\neg p \land q) \lor (p \land \neg q) \equiv p \oplus q$$
-    Kết luận: Biểu thức gốc tương đương với **XOR**.
+    $$\equiv (\neg p \land q) \lor (p \land \neg q) \equiv p \oplus q$$.
+    Kết luận: Biểu thức tương đương với phép **XOR**.
 
 (e) $$\neg(p \to q) \lor \neg(q \to p)$$
     $$\equiv \neg(\neg p \lor q) \lor \neg(\neg q \lor p)$$
     $$\equiv (p \land \neg q) \lor (q \land \neg p)$$
-    $$\equiv p \oplus q$$
-    Kết luận: Cũng tương đương với **XOR**!
+    $$\equiv p \oplus q$$.
+    Kết luận: Biểu thức cũng tương đương với phép **XOR**.
 
 </details>
 
@@ -654,58 +654,50 @@ Không dùng bảng chân trị, hãy chứng minh các tương đương sau b�
 (a) $$p \to (q \to r) \equiv (p \land q) \to r$$
 (b) $$(p \to q) \land (p \to r) \equiv p \to (q \land r)$$
 (c) $$p \leftrightarrow q \equiv (p \to q) \land (q \to p)$$
-(d) $$p \to (q \to p)$$ là hằng đúng
+(d) $$p \to (q \to p)$$ là hằng đúng.
 
 <details>
 <summary>Đáp án</summary>
 
-(a) 
-    $$p \to (q \to r) \equiv \neg p \lor (\neg q \lor r) \equiv (\neg p \lor \neg q) \lor r \equiv \neg(p \land q) \lor r \equiv (p \land q) \to r$$
-    Đây là luật **exportation**: điều kiện lồng nhau tương đương với điều kiện hội.
+(a) $$p \to (q \to r) \equiv \neg p \lor (\neg q \lor r) \equiv (\neg p \lor \neg q) \lor r \equiv \neg(p \land q) \lor r \equiv (p \land q) \to r$$.
+    Đây là luật **exportation**: hai điều kiện lồng nhau tương đương với điều kiện hội.
 
-(b)
-    $$(p \to q) \land (p \to r) \equiv (\neg p \lor q) \land (\neg p \lor r)$$
-    $$\equiv \neg p \lor (q \land r)$$ (luật phân phối)
-    $$\equiv p \to (q \land r)$$
+(b) $$(p \to q) \land (p \to r) \equiv (\neg p \lor q) \land (\neg p \lor r) \equiv \neg p \lor (q \land r) \equiv p \to (q \land r)$$ (áp dụng luật phân phối).
 
-(c) Đây là định nghĩa của tương đương:
-    $$p \leftrightarrow q \equiv (p \to q) \land (q \to p)$$
-    Đây chính là định nghĩa, không cần chứng minh — nhưng có thể kiểm tra bằng bảng chân trị.
+(c) Đây chính là định nghĩa của phép tương đương hai chiều: $$p \leftrightarrow q \equiv (p \to q) \land (q \to p)$$, có thể kiểm chứng trực tiếp bằng bảng chân trị.
 
-(d)
-    $$p \to (q \to p) \equiv \neg p \lor (\neg q \lor p) \equiv (\neg p \lor p) \lor \neg q \equiv T \lor \neg q \equiv T$$
-    Vậy đây là hằng đúng (tautology). Câu nói này có nghĩa: "Nếu p đúng, thì (bất kỳ điều gì cũng kéo theo p)" — một sự thật hiển nhiên về logic.
+(d) $$p \to (q \to p) \equiv \neg p \lor (\neg q \lor p) \equiv (\neg p \lor p) \lor \neg q \equiv T \lor \neg q \equiv T$$.
+    Vậy biểu thức là hằng đúng (tautology).
 
 </details>
 
 ### Bài tập 9: Chuyển đổi giữa DNF và CNF
 
-Cho biểu thức: $$(p \land q) \lor (\neg p \land \neg q)$$
+Cho biểu thức: $$(p \land q) \lor (\neg p \land \neg q)$$.
 
 (a) Biểu thức này đã ở dạng DNF chưa? Giải thích.
-(b) Chuyển sang dạng CNF.
+(b) Chuyển biểu thức sang dạng CNF.
 (c) Nhận xét về ý nghĩa của biểu thức này — nó tương ứng với phép toán logic nào?
 
 <details>
 <summary>Đáp án</summary>
 
-(a) **Đã ở dạng DNF** — DNF là tuyển của các hội. Biểu thức có dạng $$C_1 \lor C_2$$ với $$C_1 = p \land q$$ và $$C_2 = \neg p \land \neg q$$. Mỗi hội chứa đúng hai literal, mỗi biến xuất hiện đúng một lần.
+(a) **Đã ở dạng DNF** — DNF là tuyển của các hội. Biểu thức có dạng $$C_1 \lor C_2$$ với $$C_1 = p \land q$$ và $$C_2 = \neg p \land \neg q$$; mỗi hội chứa đúng hai literal và mỗi biến xuất hiện đúng một lần (đây cũng là DNF đầy đủ).
 
 (b) Chuyển sang CNF:
     $$(p \land q) \lor (\neg p \land \neg q)$$
-    Phân phối: $$\equiv [(p \land q) \lor \neg p] \land [(p \land q) \lor \neg q]$$
+    $$\equiv [(p \land q) \lor \neg p] \land [(p \land q) \lor \neg q]$$ (phân phối)
     $$\equiv [(p \lor \neg p) \land (q \lor \neg p)] \land [(p \lor \neg q) \land (q \lor \neg q)]$$
     $$\equiv [T \land (q \lor \neg p)] \land [(p \lor \neg q) \land T]$$
-    $$\equiv (q \lor \neg p) \land (p \lor \neg q)$$
-    CNF: $$(\neg p \lor q) \land (p \lor \neg q)$$
+    $$\equiv (\neg p \lor q) \land (p \lor \neg q)$$.
 
-(c) Biểu thức này tương đương với **$$p \leftrightarrow q$$** (tương đương). Dạng DNF nói: "hoặc cả hai cùng đúng, hoặc cả hai cùng sai". Dạng CNF nói: "nếu p thì q, và nếu q thì p" — cùng một ý nghĩa.
+(c) Biểu thức này tương đương với **$$p \leftrightarrow q$$** (phép tương đương). Dạng DNF diễn đạt "hoặc cả hai cùng đúng, hoặc cả hai cùng sai"; dạng CNF diễn đạt "nếu $$p$$ thì $$q$$, và nếu $$q$$ thì $$p$$".
 
 </details>
 
-### Bài tập 10: Ứng dụng rút gọn biểu thức trong code
+### Bài tập 10: Ứng dụng rút gọn biểu thức trong mã nguồn
 
-Một lập trình viên viết điều kiện phức tạp:
+Một lập trình viên viết điều kiện sau:
 
 ```python
 if (user.is_active and not user.is_banned) or (user.is_active and user.has_vip):
@@ -714,37 +706,35 @@ if (user.is_active and not user.is_banned) or (user.is_active and user.has_vip):
 
 (a) Viết biểu thức logic cho điều kiện này.
 (b) Rút gọn biểu thức bằng các luật tương đương.
-(c) Viết lại code Python tối ưu hơn.
-(d) Kiểm tra: với `user.is_active = True, user.is_banned = True, user.has_vip = False`, code gốc và code rút gọn có cho cùng kết quả không?
+(c) Viết lại đoạn mã Python gọn hơn.
+(d) Kiểm tra với `user.is_active = True, user.is_banned = True, user.has_vip = False`: mã gốc và mã sau khi rút gọn có cho cùng kết quả không?
 
 <details>
 <summary>Đáp án</summary>
 
-(a) Đặt $$a$$: "user.is_active", $$b$$: "user.is_banned", $$v$$: "user.has_vip"
-    Biểu thức: $$(a \land \neg b) \lor (a \land v)$$
+(a) Đặt $$a$$: `user.is_active`, $$b$$: `user.is_banned`, $$v$$: `user.has_vip`.
+    Biểu thức: $$(a \land \neg b) \lor (a \land v)$$.
 
-(b) Rút gọn:
-    $$(a \land \neg b) \lor (a \land v)$$
-    $$\equiv a \land (\neg b \lor v)$$ (luật phân phối)
-    
+(b) Rút gọn theo luật phân phối:
+    $$(a \land \neg b) \lor (a \land v) \equiv a \land (\neg b \lor v)$$.
     Ý nghĩa: "Người dùng đang hoạt động VÀ (không bị cấm HOẶC có VIP)".
 
-(c) Code rút gọn:
+(c) Mã nguồn sau khi rút gọn:
     ```python
     if user.is_active and (not user.is_banned or user.has_vip):
         grant_access()
     ```
 
 (d) Kiểm tra với $$a = T, b = T, v = F$$:
-    - Code gốc: $$(T \land \neg T) \lor (T \land F) = (T \land F) \lor F = F \lor F = F$$
-    - Code rút gọn: $$T \land (\neg T \lor F) = T \land (F \lor F) = T \land F = F$$
-    Hai kết quả giống nhau (cả hai đều từ chối truy cập).
+    - Mã gốc: $$(T \land \neg T) \lor (T \land F) = (T \land F) \lor F = F \lor F = F$$.
+    - Mã rút gọn: $$T \land (\neg T \lor F) = T \land (F \lor F) = T \land F = F$$.
+    Hai cách cho kết quả giống nhau (cả hai đều không cấp quyền truy cập).
 
 </details>
 
 ### Bài tập 11: Xác định dạng chuẩn
 
-Cho các biểu thức sau, xác định xem biểu thức đã ở dạng DNF, CNF, cả hai, hay không phải dạng nào:
+Cho các biểu thức sau, xác định xem mỗi biểu thức đã ở dạng DNF, CNF, cả hai hay không thuộc dạng nào:
 
 (a) $$(p \lor q) \land (\neg p \lor r)$$
 (b) $$(p \land \neg q) \lor (q \land r) \lor (\neg p \land \neg r)$$
@@ -755,25 +745,22 @@ Cho các biểu thức sau, xác định xem biểu thức đã ở dạng DNF, 
 <details>
 <summary>Đáp án</summary>
 
-(a) **CNF** — Hội của các tuyển. Mỗi clause là tuyển của các literal: $$(p \lor q)$$ và $$(\neg p \lor r)$$.
+(a) **CNF** — Hội của hai mệnh đề con tuyển các literal: $$(p \lor q)$$ và $$(\neg p \lor r)$$.
 
-(b) **DNF** — Tuyển của các hội. Mỗi term là hội của các literal: $$(p \land \neg q)$$, $$(q \land r)$$, $$(\neg p \land \neg r)$$.
+(b) **DNF** — Tuyển của ba hội các literal: $$(p \land \neg q)$$, $$(q \land r)$$ và $$(\neg p \land \neg r)$$.
 
-(c) **Cả DNF và CNF**:
-    - Là CNF: hội của hai clause: $$(p \lor q)$$ và $$(r)$$.
-    - Là DNF: tuyển của hai term: $$(p \land r)$$ và $$(q \land r)$$ (nếu phân phối). Thực ra dạng hiện tại là hội của $$(p \lor q)$$ và $$r$$ nên là CNF. Muốn là DNF thì phải biến đổi.
+(c) **CNF** — Biểu thức đang ở dạng hội của hai clause $$(p \lor q)$$ và $$(r)$$. Để đưa về DNF, cần áp dụng luật phân phối thành $$(p \land r) \lor (q \land r)$$.
 
-(d) **DNF** — Tuyển của hai term: $$p$$ và $$(q \land r)$$. Lưu ý $$p$$ là hội của một literal (trường hợp đặc biệt của DNF).
+(d) **DNF** — Tuyển của hai term $$p$$ và $$(q \land r)$$ (trong đó $$p$$ là hội của một literal).
 
-(e) **Không phải dạng chuẩn** — Vì chứa $$p \to q$$ và $$q \to r$$, không phải literal. Cần loại bỏ kéo theo trước:
-    $$(\neg p \lor q) \land (\neg q \lor r)$$ — lúc này là CNF.
+(e) **Không phải dạng chuẩn** — Biểu thức còn chứa phép kéo theo $$\to$$. Sau khi loại bỏ phép kéo theo, ta thu được $$(\neg p \lor q) \land (\neg q \lor r)$$, khi đó mới là CNF.
 
 </details>
 
 
 ## Công cụ tương tác
 
-Đối chiếu hai biểu thức bằng bảng chân trị và xem dạng DNF/CNF mà công cụ sinh ra — hữu ích khi kiểm tra tương đương logic.
+Đối chiếu hai biểu thức bằng bảng chân trị và xem dạng DNF/CNF mà công cụ sinh ra để kiểm tra tương đương logic.
 <div class="interactive-demo" markdown="1">
 <div data-demo="truth-table-normal-form"></div>
 </div>
@@ -783,22 +770,19 @@ Cho các biểu thức sau, xác định xem biểu thức đã ở dạng DNF, 
 
 ## Bài tập bổ sung: Sử dụng các luật logic mệnh đề (từ ccrr1_baitap1)
 
-**Hướng dẫn chung:** Sử dụng các luật logic để rút gọn biểu thức.
+**Hướng dẫn chung:** Sử dụng các luật logic để rút gọn các biểu thức sau.
 
-Ví dụ luật:
-- De Morgan: ¬(P ∧ Q) ≡ ¬P ∨ ¬Q
-- Phân phối: P ∧ (Q ∨ R) ≡ (P ∧ Q) ∨ (P ∧ R)
-- Đồng nhất: P ∨ (P ∧ Q) ≡ P
-- Bổ sung: P ∨ (¬P ∧ Q) ≡ P ∨ Q
-- Tương đương: (P → Q) ↔ (¬P ∨ Q)
+Một số luật thường dùng:
+- De Morgan: $$\neg(P \land Q) \equiv \neg P \lor \neg Q$$
+- Phân phối: $$P \land (Q \lor R) \equiv (P \land Q) \lor (P \land R)$$
+- Hấp thụ: $$P \lor (P \land Q) \equiv P$$
+- Rút gọn (phân phối + bù): $$P \lor (\neg P \land Q) \equiv P \lor Q$$
+- Biến đổi kéo theo: $$(P \to Q) \equiv (\neg P \lor Q)$$
 
-**Bài tập 1:** ¬(p ∨ ¬q) → ¬p
-
-**Bài tập 2:** ¬(p → q) → p
-
-**Bài tập 3:** ¬(p ∧ (¬q ∧ q))
-
-**Bài tập 4:** (p ∨ q) ∧ ¬(¬p ∧ q)
+- **Bài tập 1:** $$\neg(p \lor \neg q) \to \neg p$$
+- **Bài tập 2:** $$\neg(p \to q) \to p$$
+- **Bài tập 3:** $$\neg(p \land (\neg q \land q))$$
+- **Bài tập 4:** $$(p \lor q) \land \neg(\neg p \land q)$$
 
 ---
 
@@ -811,20 +795,20 @@ Ví dụ luật:
 
 ## Tóm tắt
 
-Tương đương logic cho phép ta biến đổi biểu thức mà không thay đổi ý nghĩa. Các luật De Morgan, phân phối, bổ sung, đồng nhất là công cụ hàng ngày của lập trình viên và kỹ sư kiểm chứng.
+Tương đương logic cho phép biến đổi biểu thức mà không làm thay đổi ý nghĩa. Các luật De Morgan, phân phối, bù và đồng nhất được sử dụng thường xuyên trong lập trình và kiểm chứng.
 
-DNF và CNF là hai dạng chuẩn quan trọng:
-- DNF (Disjunctive Normal Form): tuyển của các hội literal — dùng trong SAT solver, rule engine.
-- CNF (Conjunctive Normal Form): hội của các tuyển literal — dùng trong resolution, SAT, hardware verification.
+DNF và CNF là hai dạng chuẩn tắc quan trọng:
+- **DNF (Disjunctive Normal Form)**: tuyển của các hội literal — thường dùng trong các hệ quy tắc và biểu diễn vùng chân trị đúng.
+- **CNF (Conjunctive Normal Form)**: hội của các tuyển literal — dùng trong phép giải (resolution), bộ giải SAT và kiểm chứng phần cứng.
 
-Khả năng đưa biểu thức về dạng chuẩn là kỹ năng nền tảng cho AI, tối ưu truy vấn cơ sở dữ liệu và kiểm chứng hình thức.
+Khả năng đưa biểu thức về dạng chuẩn là kỹ năng nền tảng cho trí tuệ nhân tạo, tối ưu truy vấn cơ sở dữ liệu và kiểm chứng hình thức.
 
-Trong bài tiếp theo, chúng ta học **quy tắc suy diễn** — các mẫu lập luận hợp lệ từ tiền đề đến kết luận.
+Trong bài tiếp theo, chúng ta sẽ học **quy tắc suy diễn** — các mẫu lập luận hợp lệ đi từ tiền đề đến kết luận.
 
 
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=ROgJE-_BC4M">#002 TOÁN RỜI RẠC Chứng minh hai mệnh đề là tương đương logic</a> — Đỗ Văn Đức - ĐH GTVT, tiếng Việt. Xem trước cách chứng minh hai mệnh đề tương đương logic.
-- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (NotesForMsc), tiếng Anh. Các luật tương đương và kiểm bằng bảng chân trị.
-- <a href="https://www.youtube.com/watch?v=2cgHa02s_SA">Conjunctive Normal Form (CNF) and Disjunctive Normal Form (DNF)</a> — TrevTutor, tiếng Anh. Đưa công thức về DNF và CNF, đúng phần dạng chuẩn tắc.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=ROgJE-_BC4M">#002 TOÁN RỜI RẠC Chứng minh hai mệnh đề là tương đương logic</a> — Đỗ Văn Đức - ĐH GTVT, tiếng Việt. Hướng dẫn cách chứng minh hai mệnh đề tương đương logic.
+- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc, tiếng Anh. Trình bày các luật tương đương và cách kiểm chứng bằng bảng chân trị.
+- <a href="https://www.youtube.com/watch?v=2cgHa02s_SA">Conjunctive Normal Form (CNF) and Disjunctive Normal Form (DNF)</a> — TrevTutor, tiếng Anh. Hướng dẫn đưa công thức về dạng chuẩn tắc DNF và CNF.

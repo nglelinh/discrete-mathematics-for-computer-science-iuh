@@ -7,12 +7,12 @@ date: 2021-01-01
 order: 5
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã học tương đương logic và dạng chuẩn tắc (DNF, CNF). Mục này giới thiệu quy tắc suy diễn (rules of inference) — các mẫu lập luận hợp lệ…"
+excerpt: "Giới thiệu các quy tắc suy diễn cơ bản trong logic mệnh đề (Modus Ponens, Modus Tollens, tam đoạn luận, phép giải) và ứng dụng trong kiểm chứng."
 ---
 
-Ở mục trước chúng ta đã học **tương đương logic** và **dạng chuẩn tắc** (DNF, CNF). Mục này giới thiệu **quy tắc suy diễn** (rules of inference) — các mẫu lập luận hợp lệ cho phép rút ra kết luận mới từ các tiền đề đã biết.
+Ở mục trước, chúng ta đã học **tương đương logic** và **dạng chuẩn tắc** (DNF, CNF). Mục này giới thiệu **quy tắc suy diễn** (rules of inference) — các mẫu lập luận hợp lệ cho phép rút ra kết luận mới từ những tiền đề đã biết.
 
-Biết một điều kiện đúng hay sai chỉ là bước đầu. Trong thực tế, chúng ta hiếm khi có sẵn mọi sự thật mà phải **suy luận** từ những gì đã biết. Thám tử có manh mối "Nếu hung thủ có chìa khóa thì đó là nội bộ" và "Hung thủ có chìa khóa", rồi kết luận "Đây là nội bộ". Trình biên dịch thấy "Nếu kiểu không khớp thì báo lỗi" và "Kiểu không khớp", rồi kết luận "Báo lỗi". Hệ thống kiểm soát truy cập thấy "Nếu có token hợp lệ thì cho phép truy cập" và "Có token hợp lệ", rồi kết luận "Cho phép truy cập". Cả ba tình huống đều dùng cùng một khuôn mẫu — **quy tắc suy diễn**. Mục này trình bày các quy tắc cơ bản nhất, giúp chúng ta đi từ giả thiết đến kết luận một cách chắc chắn.
+Biết một điều kiện đúng hay sai chỉ là bước đầu. Trong thực tế, chúng ta hiếm khi có sẵn mọi thông tin mà phải **suy luận** từ các dữ kiện đã có. Một thám tử có hai dữ kiện "Nếu hung thủ có chìa khóa thì đó là người nội bộ" và "Hung thủ có chìa khóa", từ đó kết luận "Đây là người nội bộ". Trình biên dịch có quy tắc "Nếu kiểu không khớp thì báo lỗi" và phát hiện "Kiểu không khớp", nên kết luận "Báo lỗi". Hệ thống kiểm soát truy cập thấy "Nếu có token hợp lệ thì cho phép truy cập" và "Có token hợp lệ", nên kết luận "Cho phép truy cập". Cả ba tình huống đều tuân theo cùng một khuôn mẫu — **quy tắc suy diễn**. Mục này trình bày các quy tắc cơ bản giúp đi từ giả thiết đến kết luận một cách chặt chẽ.
 
 ## Mục tiêu học tập
 
@@ -21,10 +21,10 @@ Biết một điều kiện đúng hay sai chỉ là bước đầu. Trong thự
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Giải thích** quy tắc suy diễn là gì và vì sao nó cần thiết.
-- **Nhận diện** và **áp dụng** các quy tắc suy diễn cơ bản: Modus Ponens, Modus Tollens, tam đoạn luận giả định, tam đoạn luận tuyển, phép thêm, phép giản lược, phép nối, phép giải.
-- **Kiểm tra** tính hợp lệ của một suy luận bằng quy tắc suy diễn.
-- **Áp dụng** quy tắc suy diễn vào suy luận trong code, bảo mật, và kiểm thử.
+- **Giải thích** quy tắc suy diễn là gì và vai trò của nó trong lập luận hình thức.
+- **Nhận diện** và **áp dụng** các quy tắc suy diễn cơ bản: Modus Ponens, Modus Tollens, tam đoạn luận giả định, tam đoạn luận tuyển, phép thêm, phép giản lược, phép nối và phép giải.
+- **Kiểm tra** tính hợp lệ của một lập luận bằng quy tắc suy diễn.
+- **Áp dụng** quy tắc suy diễn vào phân tích mã nguồn, bảo mật và kiểm thử.
 
 
 **Từ khóa**: rule of inference, Modus Ponens, Modus Tollens, hypothetical syllogism, disjunctive syllogism, addition, simplification, conjunction, resolution, validity.
@@ -35,11 +35,11 @@ Biết một điều kiện đúng hay sai chỉ là bước đầu. Trong thự
 
 ## Định nghĩa Quy tắc Suy diễn
 
-Trong các chứng minh toán học (và trong cả lập trình, phân tích hệ thống), ta thường thấy những lý luận dẫn xuất có dạng:
+Trong chứng minh toán học cũng như phân tích hệ thống, ta thường gặp những lập luận có dạng:
 
 > Nếu $$p_1$$ và $$p_2$$ và $$\dots$$ và $$p_n$$ thì $$q$$.
 
-Dạng lý luận này là **đúng** khi biểu thức
+Lập luận này là **hợp lệ** khi biểu thức
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -47,11 +47,11 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-là **hằng đúng** (luôn đúng với mọi tổ hợp chân trị).
+là **hằng đúng** (luôn đúng với mọi tổ hợp giá trị chân lý).
 
-Ta gọi dạng lý luận trên là một **quy tắc suy diễn** (rule of inference). Có ba cách biểu diễn một quy tắc suy diễn:
+Dạng lập luận hợp lệ như trên gọi là một **quy tắc suy diễn** (rule of inference). Có ba cách biểu diễn phổ biến:
 
-**Cách 1 – Biểu thức hằng đúng:**
+**Cách 1 — Biểu thức hằng đúng:**
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -59,9 +59,9 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-(ký hiệu $$\Rightarrow$$ có nghĩa "kéo theo một cách logic", tức $$(p_1 \land \dots \land p_n) \to q$$ là hằng đúng).
+(ký hiệu $$\Rightarrow$$ có nghĩa "kéo theo logic", tức $$(p_1 \land \dots \land p_n) \to q$$ là hằng đúng).
 
-**Cách 2 – Dòng suy diễn:**
+**Cách 2 — Dòng suy diễn:**
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -76,7 +76,7 @@ p_n \\
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Cách 3 – Mô hình suy diễn:**
+**Cách 3 — Mô hình suy diễn:**
 
 > $$p_1$$
 > $$p_2$$
@@ -87,7 +87,7 @@ $$
 > 
 > $$\therefore q$$
 
-Các biểu thức $$p_1, p_2, \dots, p_n$$ được gọi là **giả thiết** (hay **tiền đề**), biểu thức $$q$$ được gọi là **kết luận**.
+Các biểu thức $$p_1, p_2, \dots, p_n$$ gọi là **giả thiết** (hay **tiền đề**), còn $$q$$ gọi là **kết luận**.
 
 ![Bảng tứ đối — quan hệ suy luận cổ điển](/discrete-mathematics-for-computer-science-iuh/img/course/Square_of_opposition__set_diagrams.svg)
 
@@ -96,7 +96,7 @@ Các biểu thức $$p_1, p_2, \dots, p_n$$ được gọi là **giả thiết**
 
 ## Modus Ponens (Quy tắc Khẳng định)
 
-Đây là quy tắc suy diễn quen thuộc nhất: nếu mệnh đề kéo theo $$p \to q$$ đúng và $$p$$ đúng, thì $$q$$ cũng đúng.
+Đây là quy tắc suy diễn quen thuộc nhất: nếu mệnh đề kéo theo $$p \to q$$ đúng và $$p$$ đúng, thì $$q$$ cũng phải đúng.
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -109,7 +109,7 @@ p \\
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Tương đương với hằng đẳng thức:
+Dạng biểu thức hằng đúng tương ứng:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -120,11 +120,11 @@ $$
 **Ví dụ 1 (học tập):**
 
 > Nếu học tốt thì thi đậu.
-> SV A học tốt.
+> Sinh viên A học tốt.
 > 
 > ——————————————
 > 
-> $$\therefore$$ SV A thi đậu.
+> $$\therefore$$ Sinh viên A thi đậu.
 
 **Ví dụ 2 (dân gian):**
 
@@ -135,10 +135,10 @@ $$
 > 
 > $$\therefore$$ Trời mưa.
 
-**Ví dụ 3 (lập trình – kiểm tra đầu vào):**
+**Ví dụ 3 (lập trình — kiểm tra đầu vào):**
 
 > Nếu `tuổi < 18` thì từ chối truy cập.
-> `tuổi = 16`, vậy `tuổi < 18` là đúng.
+> `tuổi = 16`, vậy `tuổi < 18` đúng.
 > 
 > ————————————————————
 > 
@@ -154,16 +154,16 @@ def check_access(age):
 print(check_access(16))   # DENIED
 ```
 
-Modus Ponens là nền tảng của mọi câu lệnh `if-then` trong lập trình. Mỗi khi máy tính kiểm tra điều kiện trong `if` và thực thi thân của nó, nó đang làm một phép suy diễn Modus Ponens.
+Modus Ponens là cơ chế đằng sau câu lệnh `if-then` trong lập trình: khi điều kiện trong `if` đúng, chương trình thực thi nhánh tương ứng.
 
 ![Modus Ponens: p → q và p suy ra q](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-Implication.PNG)
 
-<p class="textbook-figure-caption" data-figure="1.22">Modus Ponens — nếu p → q đúng và p đúng, thì q phải đúng (nền tảng của mọi câu lệnh `if`).</p>
+<p class="textbook-figure-caption" data-figure="1.22">Modus Ponens — nếu p → q đúng và p đúng, thì q phải đúng (nền tảng của câu lệnh `if`).</p>
 ---
 
 ## Modus Tollens (Quy tắc Phủ định)
 
-Quy tắc này là "ngược" của Modus Ponens: nếu $$p \to q$$ đúng nhưng $$q$$ sai (phủ định), thì $$p$$ cũng phải sai.
+Quy tắc này đi theo chiều ngược lại với Modus Ponens: nếu $$p \to q$$ đúng nhưng $$q$$ sai, thì $$p$$ cũng phải sai.
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -176,7 +176,7 @@ p \to q \\
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Tức $$[(p \to q) \land \neg q] \Rightarrow \neg p$$ là hằng đúng.
+Tức là $$[(p \to q) \land \neg q] \Rightarrow \neg p$$ là hằng đúng.
 
 **Ví dụ 1 (bảo mật):**
 
@@ -189,23 +189,23 @@ Tức $$[(p \to q) \land \neg q] \Rightarrow \neg p$$ là hằng đúng.
 
 **Ví dụ 2 (kiểm thử):**
 
-> Nếu module không có lỗi thì tất cả test cases đều pass.
-> Test case #7 **fail**.
+> Nếu module không có lỗi thì tất cả test case đều đạt (pass).
+> Test case #7 **không đạt (fail)**.
 > 
 > ——————————————————————————
 > 
 > $$\therefore$$ Module **có lỗi**.
 
-**Ví dụ 3 (xác thực – token):**
+**Ví dụ 3 (xác thực — token):**
 
-> Nếu token hợp lệ thì server trả về status 200.
-> Server trả về status 401 (Unauthorized).
+> Nếu token hợp lệ thì máy chủ trả về mã trạng thái 200.
+> Máy chủ trả về mã trạng thái 401 (Unauthorized).
 > 
 > ————————————————————————————
 > 
 > $$\therefore$$ Token **không hợp lệ**.
 
-Modus Tollens đặc biệt hữu ích trong debugging và kiểm thử: khi kết quả kỳ vọng không xảy ra, ta suy ra giả định ban đầu đã sai.
+Modus Tollens đặc biệt hữu ích trong gỡ lỗi (debugging) và kiểm thử: khi kết quả kỳ vọng không xảy ra, ta suy ra giả định ban đầu đã sai.
 
 ![Modus Tollens: p → q và ¬q suy ra ¬p](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-NOT.png)
 
@@ -214,7 +214,7 @@ Modus Tollens đặc biệt hữu ích trong debugging và kiểm thử: khi k�
 
 ## Tam đoạn luận Giả định (Hypothetical Syllogism)
 
-Quy tắc này cho phép "nối chuỗi" các mệnh đề kéo theo:
+Quy tắc này cho phép nối chuỗi hai mệnh đề kéo theo liên tiếp:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -227,33 +227,33 @@ q \to r \\
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Tức $$[(p \to q) \land (q \to r)] \Rightarrow (p \to r)$$.
+Tức là $$[(p \to q) \land (q \to r)] \Rightarrow (p \to r)$$.
 
-**Ví dụ 1 (xử lý pipeline):**
+**Ví dụ 1 (chuỗi xử lý — pipeline):**
 
-> Nếu nhận được request thì log vào hệ thống.
-> Nếu log thành công thì chuyển request đến controller.
+> Nếu nhận được yêu cầu (request) thì ghi log vào hệ thống.
+> Nếu ghi log thành công thì chuyển yêu cầu đến controller.
 > 
 > —————————————————————————————
 > 
-> $$\therefore$$ Nếu nhận được request thì chuyển đến controller.
+> $$\therefore$$ Nếu nhận được yêu cầu thì chuyển đến controller.
 
-**Ví dụ 2 (phân quyền – role chaining):**
+**Ví dụ 2 (phân quyền — kế thừa vai trò):**
 
-> Nếu user là editor thì user là contributor.
-> Nếu user là contributor thì có quyền chỉnh sửa bài viết.
+> Nếu người dùng là editor thì người dùng là contributor.
+> Nếu người dùng là contributor thì có quyền chỉnh sửa bài viết.
 > 
 > ————————————————————————————
 > 
-> $$\therefore$$ Nếu user là editor thì có quyền chỉnh sửa bài viết.
+> $$\therefore$$ Nếu người dùng là editor thì có quyền chỉnh sửa bài viết.
 
-Tam đoạn luận giả định là cơ sở cho mọi chuỗi xử lý (pipeline) và kế thừa quyền (role hierarchy) trong hệ thống phần mềm. Nó cũng xuất hiện trong các chứng minh toán học dài — mỗi bước là một mắt xích trong chuỗi suy luận.
+Tam đoạn luận giả định là cơ sở cho các chuỗi xử lý (pipeline) và cơ chế kế thừa quyền (role hierarchy) trong hệ thống phần mềm, đồng thời xuất hiện thường xuyên trong các chứng minh toán học nhiều bước.
 
 ---
 
 ## Tam đoạn luận Tuyển (Disjunctive Syllogism)
 
-Khi ta biết một trong hai mệnh đề đúng, và một mệnh đề sai, thì mệnh đề còn lại phải đúng:
+Khi biết ít nhất một trong hai mệnh đề là đúng và một trong hai mệnh đề đó sai, ta suy ra mệnh đề còn lại phải đúng:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -273,16 +273,16 @@ p \lor q \\
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Ví dụ 1 (xử lý lỗi):**
+**Ví dụ 1 (chẩn đoán lỗi):**
 
-> Lỗi xuất phát từ database hoặc từ network.
-> Lỗi **không phải** từ database.
+> Lỗi xuất phát từ cơ sở dữ liệu hoặc từ mạng.
+> Lỗi **không phải** từ cơ sở dữ liệu.
 > 
 > ————————————————————
 > 
-> $$\therefore$$ Lỗi từ network.
+> $$\therefore$$ Lỗi xuất phát từ mạng.
 
-**Ví dụ 2 (tuyển chọn):**
+**Ví dụ 2 (xét duyệt):**
 
 > Hồ sơ được duyệt hoặc bị từ chối.
 > Hồ sơ không bị từ chối.
@@ -291,7 +291,7 @@ $$
 > 
 > $$\therefore$$ Hồ sơ được duyệt.
 
-Trong lập trình, quy tắc này thường được dùng trong xử lý ngoại lệ và chẩn đoán lỗi: khi ta thu hẹp không gian nguyên nhân, mỗi bước loại trừ là một ứng dụng của tam đoạn luận tuyển.
+Trong kỹ thuật phần mềm, quy tắc này thường dùng trong xử lý ngoại lệ và chẩn đoán sự cố: mỗi bước loại trừ một nguyên nhân là một lần áp dụng tam đoạn luận tuyển.
 
 ![Tam đoạn luận tuyển: p ∨ q và ¬p suy ra q](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-OR.png)
 
@@ -300,7 +300,7 @@ Trong lập trình, quy tắc này thường được dùng trong xử lý ngo�
 
 ## Phép Thêm (Addition)
 
-Từ một mệnh đề đúng, ta có thể thêm bất kỳ mệnh đề nào vào bằng phép tuyển (kết quả vẫn đúng):
+Từ một mệnh đề đúng, ta có thể ghép thêm bất kỳ mệnh đề nào bằng phép tuyển mà kết quả vẫn đúng:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -312,7 +312,7 @@ p \\
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Quy tắc này hữu ích trong các chứng minh phức tạp vì cho phép mở rộng giả thiết khi cần:
+Quy tắc này hữu ích trong các chứng minh phức tạp khi cần mở rộng giả thiết sang dạng tuyển.
 
 **Ví dụ:**
 
@@ -326,7 +326,7 @@ Quy tắc này hữu ích trong các chứng minh phức tạp vì cho phép m�
 
 ## Phép Giản lược (Simplification)
 
-Ngược lại với phép thêm: từ một mệnh đề hội đúng, ta suy ra mỗi thành phần của nó cũng đúng:
+Ngược lại với phép thêm: từ một mệnh đề hội đúng, ta suy ra mỗi thành phần của nó đều đúng:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -352,13 +352,13 @@ $$
 > 
 > $$\therefore$$ Tài khoản hợp lệ.
 
-Khi một hàm trong code trả về tuple `(status, data)`, và ta chỉ quan tâm `status`, đó là một ứng dụng của Simplification.
+Khi một hàm trả về cặp `(status, data)` và ta chỉ trích xuất `status`, thao tác đó tương tự như phép giản lược.
 
 ---
 
 ## Phép Nối (Conjunction)
 
-Nếu hai mệnh đề đều đúng, ta có thể nối chúng thành một mệnh đề hội:
+Nếu hai mệnh đề đều đúng riêng lẻ, ta có thể ghép chúng thành một mệnh đề hội:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -380,13 +380,13 @@ $$
 > 
 > $$\therefore$$ Người dùng đã xác thực và có quyền admin.
 
-Phép nối thường dùng ở cuối một chuỗi suy luận để tổng hợp kết luận từ nhiều chứng cứ riêng lẻ.
+Phép nối thường được dùng ở cuối chuỗi suy luận để gộp các kết luận riêng lẻ thành một kết luận tổng hợp.
 
 ---
 
 ## Phép Giải (Resolution)
 
-Quy tắc này đặc biệt quan trọng trong các thuật toán chứng minh tự động (automated theorem proving) và SAT solvers:
+Quy tắc này giữ vai trò trung tâm trong chứng minh định lý tự động (automated theorem proving) và bộ giải SAT:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -399,9 +399,9 @@ p \lor q \\
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Nói cách khác: nếu $$p$$ đúng thì từ $$p \lor q$$ ta có $$q$$, còn nếu $$p$$ sai thì từ $$\neg p \lor r$$ ta có $$r$$. Dù thế nào, $$q \lor r$$ cũng đúng.
+Giải thích: nếu $$p$$ sai thì từ $$p \lor q$$ suy ra $$q$$ đúng; nếu $$p$$ đúng thì từ $$\neg p \lor r$$ suy ra $$r$$ đúng. Trong mọi trường hợp, $$q \lor r$$ đều đúng.
 
-**Ví dụ (trí tuệ nhân tạo – suy luận trong hệ chuyên gia):**
+**Ví dụ (trí tuệ nhân tạo — suy luận trong hệ chuyên gia):**
 
 > Dữ liệu bị hỏng ($$p$$) hoặc lỗi mạng ($$q$$).
 > Dữ liệu không bị hỏng ($$\neg p$$) hoặc lỗi phần mềm ($$r$$).
@@ -410,13 +410,13 @@ Nói cách khác: nếu $$p$$ đúng thì từ $$p \lor q$$ ta có $$q$$, còn n
 > 
 > $$\therefore$$ Lỗi mạng ($$q$$) hoặc lỗi phần mềm ($$r$$).
 
-Resolution là nền tảng của **phương pháp chứng minh bác bỏ** (refutation proof) dùng trong SAT solvers. Khi kết hợp resolution với Clausausal Normal Form (CNF), máy tính có thể kiểm tra tính thỏa được của công thức với hàng triệu biến.
+Phép giải (resolution) là nền tảng của **phương pháp chứng minh bác bỏ** (refutation proof) trong các bộ giải SAT. Khi kết hợp phép giải với dạng chuẩn tắc hội (Conjunctive Normal Form — CNF), máy tính có thể kiểm tra tính thỏa mãn của công thức với số lượng biến rất lớn.
 
 ---
 
 ### Thử nghiệm: kiểm tra một suy diễn bằng bảng chân trị
 
-Chọn quy tắc mẫu hoặc tự nhập tiền đề và kết luận; bảng chân trị chỉ ra dòng phản ví dụ nếu suy diễn không hợp lệ (ví dụ hai ngụy biện).
+Chọn quy tắc mẫu hoặc tự nhập tiền đề và kết luận; bảng chân trị sẽ chỉ ra dòng phản ví dụ nếu suy diễn không hợp lệ (ví dụ hai ngụy biện phổ biến).
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="inference-explainer" data-preset="mp"></div>
@@ -425,7 +425,7 @@ Chọn quy tắc mẫu hoặc tự nhập tiền đề và kết luận; bảng 
 
 ## Bảng Tổng Hợp các Quy tắc Suy diễn
 
-| Tên quy tắc | Dạng suy diễn | Tên gọi |
+| Tên quy tắc | Dạng suy diễn | Tên tiếng Việt |
 |---|---|---|
 | Modus Ponens | $$ \dfrac{p \to q,\; p}{\therefore q} $$ | Quy tắc khẳng định |
 | Modus Tollens | $$ \dfrac{p \to q,\; \neg q}{\therefore \neg p} $$ | Quy tắc phủ định |
@@ -442,23 +442,23 @@ Chọn quy tắc mẫu hoặc tự nhập tiền đề và kết luận; bảng 
 
 ### Kiểm chứng Hình thức (Formal Verification)
 
-Các công cụ như Dafny, Coq, và Isabelle/HoL sử dụng quy tắc suy diễn để chứng minh chương trình đúng. Mỗi bước suy luận trong chứng minh là một quy tắc suy diễn được kiểm tra bởi máy tính.
+Các công cụ như Dafny, Coq và Isabelle/HOL dùng các quy tắc suy diễn để chứng minh tính đúng đắn của chương trình; mỗi bước chứng minh đều được máy tính kiểm tra tự động.
 
 ### SAT Solvers
 
-SAT solver chuyển bài toán thành CNF và áp dụng resolution để kiểm tra tính thỏa được. Hàng triệu phép resolution mỗi giây là cách máy tính "suy luận" ở quy mô mà con người không thể làm được.
+Bộ giải SAT chuyển bài toán về dạng CNF và áp dụng phép giải (cùng các kỹ thuật tìm kiếm) để kiểm tra tính thỏa mãn của công thức ở quy mô vượt quá khả năng tính thủ công.
 
 ### Hệ Thống Chuyên gia (Expert Systems)
 
-Các hệ thống như Mycin (chẩn đoán bệnh) dùng mô hình suy diễn dạng:
+Các hệ thống như MYCIN (hỗ trợ chẩn đoán bệnh) sử dụng tập luật suy diễn có dạng:
 
 > NẾU (triệu chứng A VÀ triệu chứng B) THÌ (bệnh C) với độ tin cậy 80%.
 
-Mỗi lần người dùng nhập thêm triệu chứng, hệ thống dùng Modus Ponens để rút ra kết luận mới.
+Mỗi khi người dùng cung cấp thêm triệu chứng, hệ thống áp dụng Modus Ponens để rút ra kết luận mới.
 
 ### Hệ thống Kiểu (Type Systems)
 
-Trong trình biên dịch, suy luận kiểu (type inference) dựa trên các quy tắc suy diễn. Ví dụ, một quy tắc đơn giản:
+Trong trình biên dịch, quá trình suy luận kiểu (type inference) dựa trên các quy tắc suy diễn. Ví dụ:
 
 > Nếu $$e_1 : \text{Int}$$ và $$e_2 : \text{Int}$$ thì $$e_1 + e_2 : \text{Int}$$.
 
@@ -470,7 +470,7 @@ Trình biên dịch dùng Modus Ponens để suy ra kiểu của biểu thức p
 
 ### Bài tập 1: Nhận diện Quy tắc Suy diễn
 
-Xác định quy tắc suy diễn được dùng trong mỗi suy luận sau:
+Xác định quy tắc suy diễn được dùng trong mỗi lập luận sau:
 
 (a) Nếu hôm nay là thứ Bảy thì không có lớp học. Hôm nay là thứ Bảy. Vậy không có lớp học.
 
@@ -483,34 +483,34 @@ Xác định quy tắc suy diễn được dùng trong mỗi suy luận sau:
 <details>
 <summary>Đáp án</summary>
 
-(a) **Modus Ponens**: $$p \to q$$ (nếu thứ Bảy thì không lớp), $$p$$ (thứ Bảy), suy ra $$q$$ (không lớp).
+(a) **Modus Ponens**: $$p \to q$$ (nếu thứ Bảy thì không có lớp), $$p$$ (thứ Bảy), suy ra $$q$$ (không có lớp).
 
 (b) **Modus Tollens**: $$p \to q$$ (nếu mưa thì mang ô), $$\neg q$$ (không mang ô), suy ra $$\neg p$$ (không mưa).
 
 (c) **Hypothetical Syllogism**: $$p \to q$$ và $$q \to r$$, suy ra $$p \to r$$.
 
-(d) **Disjunctive Syllogism**: $$p \lor q$$ (ngoài hoặc trong) và $$\neg q$$ (không trong), suy ra $$p$$ (ngoài).
+(d) **Disjunctive Syllogism**: $$p \lor q$$ (bên ngoài hoặc nội bộ) và $$\neg q$$ (không từ nội bộ), suy ra $$p$$ (từ bên ngoài).
 
 </details>
 
 ### Bài tập 2: Kiểm tra Tính Hợp lệ
 
-Mỗi suy luận sau có hợp lệ không? Nếu không, hãy chỉ ra sai lầm và cho phản ví dụ.
+Mỗi suy luận sau có hợp lệ không? Nếu không, hãy chỉ ra lỗi ngụy biện và nêu phản ví dụ.
 
-(a) Nếu con số chia hết cho 2 thì nó là số chẵn. Con số là số chẵn. Vậy nó chia hết cho 2.
+(a) Nếu một số chia hết cho 2 thì nó là số chẵn. Số đó là số chẵn. Vậy nó chia hết cho 2.
 
 (b) Nếu file tồn tại thì đọc được. File không tồn tại. Vậy không đọc được.
 
-(c) Nếu kết nối có timeout thì server quá tải hoặc mạng chậm. Kết nối có timeout. Vậy server quá tải.
+(c) Nếu kết nối bị timeout thì máy chủ quá tải hoặc mạng chậm. Kết nối bị timeout. Vậy máy chủ quá tải.
 
 <details>
 <summary>Đáp án</summary>
 
-(a) **Không hợp lệ** — Sai lầm khẳng định hệ quả (affirming the consequent). $$p \to q$$ và $$q$$ không suy ra $$p$$. Phản ví dụ: số 6 là số chẵn nhưng có thể không chia hết cho 2 trong một ngữ cảnh khác? Thực tế mọi số chẵn đều chia hết cho 2 nên phản ví dụ này đặc biệt khó tìm. Tuy nhiên về mặt logic thuần túy, dạng suy luận là sai. Một phản ví dụ tổng quát hơn: "Nếu là chó thì có 4 chân. Con vật có 4 chân. Vậy nó là chó." — Sai, vì mèo cũng 4 chân.
+(a) **Không hợp lệ về mặt hình thức** — Ngụy biện khẳng định hệ quả (affirming the consequent): từ $$p \to q$$ và $$q$$ không thể suy ra $$p$$. Ở đây kết luận tình cờ đúng về mặt số học vì "chia hết cho 2" và "là số chẵn" tương đương nhau, nhưng dạng lập luận là sai. Phản ví dụ cho dạng lập luận này: "Nếu là chó thì có 4 chân. Con vật này có 4 chân. Vậy nó là chó" (sai vì mèo cũng có 4 chân).
 
-(b) **Không hợp lệ** — Sai lầm phủ định tiền đề (denying the antecedent). $$p \to q$$ và $$\neg p$$ không suy ra $$\neg q$$. Phản ví dụ: file tồn tại nhưng bị hỏng — không đọc được dù file tồn tại. Hoặc: file tồn tại nhưng không có quyền đọc.
+(b) **Không hợp lệ** — Ngụy biện phủ định tiền đề (denying the antecedent): từ $$p \to q$$ và $$\neg p$$ không thể suy ra $$\neg q$$. Phản ví dụ cần làm hai tiền đề đúng ($$p$$ sai, nên $$p \to q$$ và $$\neg p$$ đều đúng) nhưng kết luận sai ($$q$$ đúng): chẳng hạn file không còn tồn tại trên đĩa ($$p$$ sai) nhưng nội dung vẫn đọc được từ bộ nhớ đệm/cache ($$q$$ đúng). Phản ví dụ tổng quát hơn: "Nếu trời mưa thì đường ướt. Trời không mưa. Vậy đường không ướt" (sai vì đường có thể ướt do xe tưới nước).
 
-(c) **Không hợp lệ** — Đây là trường hợp thiếu kết luận. Từ $$p \to (r \lor s)$$ và $$p$$, Modus Ponens cho ta $$r \lor s$$ (server quá tải hoặc mạng chậm). Không thể kết luận riêng $$r$$ (server quá tải) vì còn khả năng $$s$$ (mạng chậm). Đây không phải là một fallacy kinh điển, nhưng suy luận đi xa hơn những gì giả thiết cho phép.
+(c) **Không hợp lệ** — Từ $$p \to (r \lor s)$$ và $$p$$, Modus Ponens chỉ cho phép suy ra $$r \lor s$$ (máy chủ quá tải hoặc mạng chậm), không thể kết luận riêng $$r$$ (máy chủ quá tải) vì có thể chỉ có $$s$$ đúng (mạng chậm trong khi máy chủ bình thường).
 
 </details>
 
@@ -525,7 +525,7 @@ else:
     document.editable = False
 ```
 
-Biết rằng `user.is_admin()` trả về `False`. Hãy dùng quy tắc suy diễn để suy ra trạng thái của `document.editable` trong hai trường hợp:
+Biết rằng `user.is_admin()` trả về `False`. Hãy dùng quy tắc suy diễn để suy ra giá trị của `document.editable` trong hai trường hợp:
 
 (a) `user.has_permission("edit")` trả về `True`.
 (b) `user.has_permission("edit")` trả về `False`.
@@ -533,13 +533,11 @@ Biết rằng `user.is_admin()` trả về `False`. Hãy dùng quy tắc suy di�
 <details>
 <summary>Đáp án</summary>
 
-Đặt $$p =$$ "user.is_admin() đúng", $$q =$$ "user.has_permission('edit') đúng". Điều kiện trong `if` là $$p \lor q$$.
+Đặt $$p$$: `user.is_admin()` đúng, $$q$$: `user.has_permission("edit")` đúng. Điều kiện của `if` là $$p \lor q$$. Ta biết $$\neg p$$ đúng.
 
-Biết $$\neg p$$ (admin trả về `False`).
+(a) Nếu $$q$$ đúng: từ $$q$$, áp dụng **Addition** (phép thêm) ta có $$p \lor q$$ đúng. Áp dụng **Modus Ponens** với nhánh `if`, suy ra `document.editable = True`.
 
-(a) Nếu $$q$$ đúng: Từ $$p \lor q$$ và $$\neg p$$, Disjunctive Syllogism cho $$q$$. Kết luận: điều kiện `if` đúng → `document.editable = True`.
-
-(b) Nếu $$q$$ sai (tức $$\neg q$$): Từ $$p \lor q$$ và $$\neg p$$, Disjunctive Syllogism không cho kết luận gì thêm vì cả hai mệnh đề đều sai. Phải dùng Modus Tollens gián tiếp: nếu điều kiện $$p \lor q$$ sai (vì cả $$p$$ và $$q$$ đều sai) thì thân `if` không được thực thi. Kết luận: `document.editable = False`.
+(b) Nếu $$q$$ sai (tức $$\neg q$$ đúng): từ $$\neg p$$ và $$\neg q$$, áp dụng **Conjunction** (phép nối) ta có $$\neg p \land \neg q$$, theo luật De Morgan tương đương với $$\neg(p \lor q)$$. Điều kiện `if` sai nên nhánh `else` được thực thi, suy ra `document.editable = False`.
 
 </details>
 
@@ -557,30 +555,30 @@ Biết người dùng không bị chặn. Hãy dùng các quy tắc suy diễn �
 <summary>Đáp án</summary>
 
 Đặt:
-- $$p =$$ "người dùng là admin"
-- $$q =$$ "người dùng có token hợp lệ"
-- $$r =$$ "người dùng được truy cập"
-- $$s =$$ "người dùng bị chặn"
+- $$p$$: "người dùng là admin"
+- $$q$$: "người dùng có token hợp lệ"
+- $$r$$: "người dùng được truy cập"
+- $$s$$: "người dùng bị chặn"
 
 Các giả thiết:
 1. $$q \to r$$ (R1)
 2. $$p \to q$$ (R2)
 3. $$p \lor s$$ (R3)
-4. $$\neg s$$ (biết)
+4. $$\neg s$$ (dữ kiện cho trước)
 
-Suy luận:
+Các bước suy luận:
 
-- Bước 1: Từ $$p \lor s$$ (3) và $$\neg s$$ (4), Disjunctive Syllogism → $$p$$.
-- Bước 2: Từ $$p \to q$$ (2) và $$p$$ (bước 1), Modus Ponens → $$q$$.
-- Bước 3: Từ $$q \to r$$ (1) và $$q$$ (bước 2), Modus Ponens → $$r$$.
+- Bước 1: Từ $$p \lor s$$ (3) và $$\neg s$$ (4), theo **Disjunctive Syllogism** → $$p$$.
+- Bước 2: Từ $$p \to q$$ (2) và $$p$$ (bước 1), theo **Modus Ponens** → $$q$$.
+- Bước 3: Từ $$q \to r$$ (1) và $$q$$ (bước 2), theo **Modus Ponens** → $$r$$.
 
-Kết luận: người dùng được truy cập.
+Kết luận: Người dùng được truy cập.
 
 </details>
 
 ### Bài tập 5: Chuỗi Suy luận
 
-Dùng các quy tắc suy diễn để chứng minh rằng từ các giả thiết sau đây, ta có thể suy ra $$t$$:
+Kiểm tra xem từ các giả thiết sau đây có thể dùng các quy tắc suy diễn để suy ra $$t$$ hay không:
 
 1. $$p \to q$$
 2. $$q \to r$$
@@ -590,38 +588,33 @@ Dùng các quy tắc suy diễn để chứng minh rằng từ các giả thiế
 <details>
 <summary>Đáp án</summary>
 
-- Bước 1: Từ (1) $$p \to q$$ và (4) $$p$$, Modus Ponens → $$q$$.
-- Bước 2: Từ (2) $$q \to r$$ và $$q$$ (bước 1), Modus Ponens → $$r$$.
-- Bước 3: Từ (3) $$r \to s$$ và $$r$$ (bước 2), Modus Ponens → $$s$$.
-- Bước 4: Từ $$s$$, Addition → $$s \lor t$$, nhưng vậy chưa đủ để có $$t$$.
+- Bước 1: Từ (1) $$p \to q$$ và (4) $$p$$, theo **Modus Ponens** → $$q$$.
+- Bước 2: Từ (2) $$q \to r$$ và $$q$$ (bước 1), theo **Modus Ponens** → $$r$$.
+- Bước 3: Từ (3) $$r \to s$$ và $$r$$ (bước 2), theo **Modus Ponens** → $$s$$.
 
-Thực tế, với các giả thiết đã cho, ta chỉ có thể suy ra $$s$$, chứ không thể suy ra $$t$$. Đây là một bài học quan trọng: **không phải mọi thứ đều suy ra được từ giả thiết**. Quy tắc suy diễn chỉ cho ta những kết luận đã được "chứa sẵn" trong giả thiết.
-
-Nếu ta muốn thêm một giả thiết để suy ra $$t$$, có thể thêm $$s \to t$$ (Hypothetical Syllogism nối chuỗi thành $$p \to t$$, rồi Modus Ponens với $$p$$ cho $$t$$) hoặc $$s$$ (rồi Addition: $$s \to s \lor t$$, nhưng vẫn chưa đủ!).
-
-**Đáp án chính xác**: Không thể suy ra $$t$$ từ các giả thiết đã cho. Chỉ suy ra được $$s$$.
+Từ các giả thiết đã cho, ta chỉ suy ra được $$s$$ chứ **không thể suy ra $$t$$** (vì không có giả thiết nào liên hệ $$t$$ với $$p, q, r, s$$; phép Addition chỉ cho $$s \lor t$$). Nếu muốn suy ra $$t$$, cần bổ sung thêm giả thiết chẳng hạn $$s \to t$$.
 
 </details>
 
 ### Bài tập 6: Ứng dụng Modus Ponens trong suy luận hàng ngày
 
-Xác định quy tắc suy diễn được dùng trong mỗi tình huống sau:
+Xác định quy tắc suy diễn (hoặc lỗi ngụy biện) trong mỗi tình huống sau:
 
 (a) "Nếu trời mưa thì đường ướt. Trời mưa. Vậy đường ướt."
 (b) "Nếu tôi là sinh viên thì tôi học Toán Rời Rạc. Tôi học Toán Rời Rạc. Vậy tôi là sinh viên." — Suy luận này có hợp lệ không?
 (c) "Nếu hệ thống bảo mật phát hiện xâm nhập thì nó sẽ ghi log và gửi cảnh báo. Hệ thống không ghi log. Vậy không có xâm nhập." — Suy luận này có hợp lệ không?
-(d) "Nếu $$x$$ chia hết cho 4 thì $$x$$ là số chẵn. $$x$$ là số chẵn. Vậy $$x$$ chia hết cho 4." — Nếu sai, hãy cho phản ví dụ.
+(d) "Nếu $$x$$ chia hết cho 4 thì $$x$$ là số chẵn. $$x$$ là số chẵn. Vậy $$x$$ chia hết cho 4." — Nếu sai, hãy nêu phản ví dụ.
 
 <details>
 <summary>Đáp án</summary>
 
-(a) **Modus Ponens**: $$p \to q$$ (mưa → ướt), $$p$$ (mưa), suy ra $$q$$ (ướt). Hợp lệ.
+(a) **Modus Ponens**: $$p \to q$$ (mưa → ướt) và $$p$$ (mưa), suy ra $$q$$ (ướt). Lập luận hợp lệ.
 
-(b) **Không hợp lệ** — Đây là sai lầm "khẳng định hệ quả" (affirming the consequent). Ký hiệu: $$p \to q$$ và $$q$$ không suy ra $$p$$. Có thể tôi học Toán Rời Rạc vì tôi là sinh viên ngành CNTT của trường khác.
+(b) **Không hợp lệ** — Ngụy biện khẳng định hệ quả (affirming the consequent): $$p \to q$$ và $$q$$ không suy ra $$p$$. Một người không phải sinh viên vẫn có thể tự học Toán Rời Rạc.
 
-(c) **Hợp lệ** — Đây là **Modus Tollens**. Đặt $$p$$: "có xâm nhập", $$q$$: "ghi log và gửi cảnh báo". Ta có $$p \to q$$ và $$\neg q$$, suy ra $$\neg p$$. Tuy nhiên cần đảm bảo $$q$$ thực sự là kết quả tất yếu của $$p$$ — nếu hệ thống có thể bị lỗi không ghi log, suy luận này không còn đáng tin cậy.
+(c) **Hợp lệ** — Đặt $$p$$: "phát hiện xâm nhập", $$q$$: "ghi log", $$r$$: "gửi cảnh báo". Ta có $$p \to (q \land r)$$ và $$\neg q$$. Từ $$\neg q$$, theo Addition có $$\neg q \lor \neg r$$, theo De Morgan là $$\neg(q \land r)$$, rồi áp dụng **Modus Tollens** suy ra $$\neg p$$ (không phát hiện xâm nhập). Lưu ý trong thực tế, kết luận chỉ đáng tin khi tiền đề $$p \to (q \land r)$$ thực sự đúng (hệ thống ghi log không bị lỗi).
 
-(d) **Không hợp lệ** — Lại là "khẳng định hệ quả". Phản ví dụ: $$x = 6$$ — 6 là số chẵn nhưng không chia hết cho 4.
+(d) **Không hợp lệ** — Ngụy biện khẳng định hệ quả. Phản ví dụ: $$x = 6$$ là số chẵn nhưng không chia hết cho 4.
 
 </details>
 
@@ -629,52 +622,46 @@ Xác định quy tắc suy diễn được dùng trong mỗi tình huống sau:
 
 Cho các giả thiết:
 
-1. Nếu hôm nay là thứ Bảy thì không có lớp học. ($$s \to \neg c$$)
-2. Nếu không có lớp học thì tôi đi bơi. ($$\neg c \to b$$)
-3. Hôm nay là thứ Bảy. ($$s$$)
+1. Nếu hôm nay là thứ Bảy thì không có lớp học ($$s \to \neg c$$).
+2. Nếu không có lớp học thì tôi đi bơi ($$\neg c \to b$$).
+3. Hôm nay là thứ Bảy ($$s$$).
 
-Hãy chứng minh: "Tôi đi bơi."
-
-Viết từng bước suy luận và chỉ rõ quy tắc suy diễn được dùng.
+Hãy chứng minh: "Tôi đi bơi." Viết rõ từng bước và nêu tên quy tắc suy diễn được dùng.
 
 <details>
 <summary>Đáp án</summary>
 
-- Bước 1: Từ (1) $$s \to \neg c$$ và (3) $$s$$, Modus Ponens → $$\neg c$$.
-- Bước 2: Từ (2) $$\neg c \to b$$ và $$\neg c$$ (bước 1), Modus Ponens → $$b$$.
+- Bước 1: Từ (1) $$s \to \neg c$$ và (3) $$s$$, theo **Modus Ponens** → $$\neg c$$.
+- Bước 2: Từ (2) $$\neg c \to b$$ và $$\neg c$$ (bước 1), theo **Modus Ponens** → $$b$$.
 
-Kết luận: Tôi đi bơi. Đây là ví dụ của **Hypothetical Syllogism** mở rộng: $$s \to \neg c$$ và $$\neg c \to b$$ cho ta $$s \to b$$, kết hợp với $$s$$ cho $$b$$.
+Kết luận: Tôi đi bơi. (Cũng có thể dùng **Hypothetical Syllogism** cho (1) và (2) để thu được $$s \to b$$, sau đó dùng Modus Ponens với (3) để suy ra $$b$$.)
 
 </details>
 
 ### Bài tập 8: Phát hiện suy luận sai
 
-Mỗi suy luận sau **có vẻ** hợp lý nhưng thực chất sai. Hãy chỉ ra lỗi:
+Mỗi suy luận sau trông có vẻ hợp lý nhưng mắc lỗi logic. Hãy chỉ ra lỗi trong từng câu:
 
 (a) "Nếu bạn học giỏi thì bạn sẽ kiếm được nhiều tiền. Bạn không học giỏi. Vậy bạn sẽ không kiếm được nhiều tiền."
 
-(b) "Nếu một số chia hết cho 6 thì nó chia hết cho 2 và cho 3. Số 18 chia hết cho 2 và cho 3. Vậy 18 chia hết cho 6." — Suy luận này hợp lệ không?
+(b) "Nếu một số chia hết cho 6 thì nó chia hết cho 2 và cho 3. Số 18 chia hết cho 2 và cho 3. Vậy 18 chia hết cho 6." — Suy luận này có hợp lệ về mặt hình thức không?
 
-(c) "Nếu là chó thì sủa. Con vật đó sủa. Vậy nó là chó."
+(c) "Nếu là chó thì biết sủa. Con vật đó biết sủa. Vậy nó là chó."
 
 <details>
 <summary>Đáp án</summary>
 
-(a) **Sai lầm: Phủ định tiền đề** (Denying the Antecedent).
-    Dạng: $$p \to q$$, $$\neg p$$, suy ra $$\neg q$$. Không hợp lệ.
-    Phản ví dụ: Bạn có thể không học giỏi nhưng trúng số độc đắc hoặc khởi nghiệp thành công và vẫn kiếm được nhiều tiền.
+(a) **Ngụy biện phủ định tiền đề** (Denying the Antecedent): dạng $$p \to q$$, $$\neg p$$, suy ra $$\neg q$$ là không hợp lệ. Phản ví dụ: một người không học giỏi vẫn có thể kiếm được nhiều tiền nhờ kinh doanh hoặc trúng thưởng.
 
-(b) **Hợp lệ** (bất ngờ!). Đây là trường hợp hiếm hoi mà affirming the consequent lại hợp lệ, vì thực tế "chia hết cho 6" và "chia hết cho 2 và cho 3" là tương đương. Nhưng về mặt logic thuần túy, dạng suy luận vẫn là không hợp lệ — nó hợp lệ ở đây vì nội dung của mệnh đề, không phải vì hình thức.
+(b) **Không hợp lệ về mặt hình thức** — Đây là dạng ngụy biện khẳng định hệ quả ($$p \to q$$ và $$q$$ không suy ra $$p$$). Kết luận ở đây đúng về mặt số học chỉ vì theo nội dung toán học, "chia hết cho 6" tương đương với "chia hết cho 2 và cho 3", chứ không phải do hình thức suy luận hợp lệ.
 
-(c) **Sai lầm: Khẳng định hệ quả** (Affirming the Consequent).
-    $$p \to q$$ (chó → sủa), $$q$$ (sủa), suy ra $$p$$ (chó). Sai.
-    Phản ví dụ: Con mèo cũng có thể... không, mèo không sủa. Một con chó sói (wolf) sủa nhưng không phải chó nhà. Hoặc một con robot biết sủa.
+(c) **Ngụy biện khẳng định hệ quả** (Affirming the Consequent): $$p \to q$$ (chó → sủa) và $$q$$ (sủa) không suy ra $$p$$ (chó). Phản ví dụ: chó sói (wolf) hoặc một con robot được lập trình phát tiếng sủa.
 
 </details>
 
 ### Bài tập 9: Resolution trong chứng minh tự động
 
-Sử dụng quy tắc **Resolution** $$(p \lor q) \land (\neg p \lor r) \implies (q \lor r)$$ để suy ra kết luận từ các cặp clause sau:
+Sử dụng quy tắc **Resolution** $$(p \lor q) \land (\neg p \lor r) \Rightarrow (q \lor r)$$ để suy ra kết luận từ các cặp mệnh đề con sau:
 
 (a) $$(a \lor b)$$ và $$(\neg a \lor c)$$
 (b) $$(x \lor \neg y)$$ và $$(y \lor z)$$
@@ -684,39 +671,26 @@ Sử dụng quy tắc **Resolution** $$(p \lor q) \land (\neg p \lor r) \implies
 <details>
 <summary>Đáp án</summary>
 
-(a) Resolution: $$(a \lor b)$$ và $$(\neg a \lor c)$$ → $$(b \lor c)$$
-    Giải thích: Nếu a đúng thì từ clause 2, c đúng. Nếu a sai thì từ clause 1, b đúng. Vậy ít nhất b hoặc c đúng.
+(a) Từ $$(a \lor b)$$ và $$(\neg a \lor c)$$ suy ra $$(b \lor c)$$. Nếu $$a$$ đúng thì từ mệnh đề 2 có $$c$$ đúng; nếu $$a$$ sai thì từ mệnh đề 1 có $$b$$ đúng.
 
-(b) Resolution: $$(x \lor \neg y)$$ và $$(y \lor z)$$ → $$(x \lor z)$$
-    Giải thích: Biến đổi $$(x \lor \neg y) \equiv (y \to x)$$ và $$(y \lor z) \equiv (\neg y \to z)$$. Theo tam đoạn luận giả định, $$(y \to x) \land (\neg y \to z)$$ cho ta kết luận gì? Resolution cho $$x \lor z$$.
+(b) Từ $$(x \lor \neg y)$$ và $$(y \lor z)$$ suy ra $$(x \lor z)$$ (khử cặp bù $$\neg y$$ và $$y$$).
 
-(c) Resolution: $$(\neg p \lor q)$$ và $$(\neg q \lor r)$$ → $$(\neg p \lor r)$$
-    Đây chính là **Hypothetical Syllogism** dưới dạng CNF: $$(\neg p \lor q) \equiv (p \to q)$$, $$(\neg q \lor r) \equiv (q \to r)$$, kết luận $$(\neg p \lor r) \equiv (p \to r)$$.
+(c) Từ $$(\neg p \lor q)$$ và $$(\neg q \lor r)$$ suy ra $$(\neg p \lor r)$$. Đây chính là **Hypothetical Syllogism** viết dưới dạng CNF vì $$(\neg p \lor q) \equiv (p \to q)$$, $$(\neg q \lor r) \equiv (q \to r)$$ và $$(\neg p \lor r) \equiv (p \to r)$$.
 
-(d) Resolution: $$(p \lor q \lor r)$$ và $$(\neg p \lor s)$$ → $$(q \lor r \lor s)$$
-    p và ¬p là cặp bù. Kết quả là tuyển của các literal còn lại.
+(d) Từ $$(p \lor q \lor r)$$ và $$(\neg p \lor s)$$ suy ra $$(q \lor r \lor s)$$: khử cặp bù $$p$$ và $$\neg p$$, giữ lại tuyển của các literal còn lại.
 
 </details>
 
-### Qui tắc bổ sung từ slide bài giảng PPT
+### Quy tắc bổ sung từ slide bài giảng PPT
 
-**Qui tắc phản chứng (Reductio ad absurdum):**
-Để chứng minh mệnh đề p là hằng đúng, ta thêm ¬p vào các tiên đề và dẫn đến mâu thuẫn.
+- **Quy tắc phản chứng (Reductio ad absurdum):** Để chứng minh mệnh đề $$p$$ là đúng, ta giả sử $$\neg p$$ rồi suy ra một mâu thuẫn:
+  $$\neg p \to (q \land \neg q) \Rightarrow p$$.
+  Ví dụ kinh điển: chứng minh $$\sqrt{2}$$ là số vô tỷ.
 
-Tổng quát: ¬p → (q ∧ ¬q)  ⇒  p
+- **Quy tắc chứng minh theo trường hợp:**
+  $$[(p \to r) \land (q \to r)] \Rightarrow ((p \lor q) \to r)$$.
 
-**Ví dụ:** Chứng minh √2 là số vô tỷ.
-
-**Qui tắc chứng minh theo trường hợp:**
-[(p → r) ∧ (q → r)] ⇒ (p ∨ q) → r
-
-**Phản ví dụ:**
-Để chứng minh suy luận sai, tìm trường hợp tiên đề đúng, kết luận sai.
-
-Ví dụ trong slide: Dùng p=1, q=0, r=1 để phản ví dụ cho một suy luận.
-
-**Qui tắc phản ví dụ (counterexample):**
-Chỉ cần một trường hợp làm các giả thiết đúng nhưng kết luận sai để bác bỏ.
+- **Quy tắc phản ví dụ (counterexample):** Để bác bỏ một suy luận, chỉ cần chỉ ra một tổ hợp giá trị làm tất cả các giả thiết đều đúng nhưng kết luận lại sai (chẳng hạn dùng $$p = 1, q = 0, r = 1$$ để kiểm tra một suy luận mẫu trong slide).
 
 ---
 
@@ -728,16 +702,16 @@ Chỉ cần một trường hợp làm các giả thiết đúng nhưng kết lu
 
 ## Tóm tắt
 
-- **Quy tắc suy diễn** là dạng lập luận $$(p_1 \land \cdots \land p_n) \to q$$ hằng đúng; có thể biểu diễn bằng biểu thức, dòng suy diễn, hoặc mô hình suy diễn.
-- Các quy tắc cơ bản: **Modus Ponens**, **Modus Tollens**, **tam đoạn luận giả định**, **tam đoạn luận tuyển**, **phép thêm**, **phép giản lược**, **phép nối**, **phép giải** (resolution).
-- Modus Ponens là nền tảng của mọi câu lệnh `if-then`; Modus Tollens hữu ích trong debugging và kiểm thử.
-- Resolution là nền tảng của chứng minh bác bỏ (refutation) và SAT solver.
-- Ứng dụng trong kiểm chứng hình thức, hệ chuyên gia, hệ thống kiểu, và phân tích bảo mật.
+- **Quy tắc suy diễn** là dạng lập luận trong đó $$(p_1 \land \cdots \land p_n) \to q$$ là hằng đúng; có thể biểu diễn dưới dạng biểu thức, dòng suy diễn hoặc mô hình suy diễn.
+- Các quy tắc cơ bản gồm: **Modus Ponens**, **Modus Tollens**, **tam đoạn luận giả định**, **tam đoạn luận tuyển**, **phép thêm**, **phép giản lược**, **phép nối** và **phép giải** (resolution).
+- Modus Ponens gắn liền với cấu trúc `if-then`, còn Modus Tollens hữu ích trong gỡ lỗi và kiểm thử.
+- Resolution là nền tảng của chứng minh bác bỏ (refutation) và bộ giải SAT.
+- Các quy tắc suy diễn được ứng dụng trong kiểm chứng hình thức, hệ chuyên gia, hệ thống kiểu và phân tích bảo mật.
 
-Trong bài tiếp theo (tùy chọn), chúng ta giới thiệu **SAT solver** — công cụ tự động kiểm tra tính thỏa mãn của công thức Boolean ở dạng CNF.
+Trong bài tiếp theo (tùy chọn), chúng ta sẽ tìm hiểu **SAT solver** — công cụ tự động kiểm tra tính thỏa mãn của công thức Boolean ở dạng CNF.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=8DW0K3mnc-0">RULES of INFERENCE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước các quy tắc suy diễn thường dùng trong chứng minh mệnh đề.
-- <a href="https://www.youtube.com/watch?v=NTSZMdGlo4g">Logical Arguments - Modus Ponens &amp; Modus Tollens</a> — Dr. Trefor Bazett, tiếng Anh. Modus ponens và modus tollens, hai quy tắc bài dùng nhiều nhất.
-- <a href="https://www.youtube.com/watch?v=pHWaxuyfK2s">Logical Argument Forms: Generalizations, Specialization, Contradiction</a> — Dr. Trefor Bazett, tiếng Anh. Khái quát hóa, đặc biệt hóa và mâu thuẫn trong lập luận.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=8DW0K3mnc-0">RULES of INFERENCE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Tổng quan các quy tắc suy diễn thường dùng trong chứng minh mệnh đề.
+- <a href="https://www.youtube.com/watch?v=NTSZMdGlo4g">Logical Arguments - Modus Ponens &amp; Modus Tollens</a> — Dr. Trefor Bazett, tiếng Anh. Giải thích chi tiết Modus Ponens và Modus Tollens — hai quy tắc được dùng nhiều nhất trong bài.
+- <a href="https://www.youtube.com/watch?v=pHWaxuyfK2s">Logical Argument Forms: Generalizations, Specialization, Contradiction</a> — Dr. Trefor Bazett, tiếng Anh. Trình bày khái quát hóa, đặc biệt hóa và chứng minh phản chứng trong lập luận.

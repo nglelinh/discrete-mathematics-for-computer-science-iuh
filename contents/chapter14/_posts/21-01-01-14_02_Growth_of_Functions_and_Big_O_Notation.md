@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "Big-O, Ω, Θ; bậc tăng trưởng; quy tắc tổng/tích; so sánh log, n, n log n, n², 2ⁿ; giới hạn hằng số."
+excerpt: "Các ký hiệu tiệm cận Big-O, Omega và Theta; thứ tự các bậc tăng trưởng phổ biến; quy tắc tổng và tích trong phân tích độ phức tạp."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,11 +17,11 @@ excerpt: "Big-O, Ω, Θ; bậc tăng trưởng; quy tắc tổng/tích; so sánh
 
 </div>
 
-So sánh thuật toán không dựa vào mili-giây trên một máy, mà vào **cách chi phí tăng theo kích thước đầu vào $$n$$**. **Big-O**, **Ω**, **Θ** là ngôn ngữ chuẩn cho phân tích tiệm cận. Mục này định nghĩa các ký hiệu, bậc thường gặp, và quy tắc thao tác.
+Khi so sánh hai thuật toán, ta không chỉ đo thời gian chạy bằng mili-giây trên một máy tính cụ thể, mà đánh giá **tốc độ tăng chi phí theo kích thước đầu vào $$n$$**. Các ký hiệu tiệm cận **Big-O** ($$O$$), **Omega** ($$\Omega$$) và **Theta** ($$\Theta$$) là ngôn ngữ chuẩn để diễn đạt tốc độ tăng trưởng này. Bài học này trình bày định nghĩa, các bậc tăng trưởng thường gặp và các quy tắc biến đổi cơ bản.
 
 ![Bậc tăng trưởng](/discrete-mathematics-for-computer-science-iuh/img/course/Algo_big_o_ladder.svg)
 
-<p class="textbook-figure-caption" data-figure="14.3">Thang tăng trưởng tương đối — mũ và giai thừa vượt xa đa thức khi $$n$$ lớn.</p>
+<p class="textbook-figure-caption" data-figure="14.3">So sánh tương đối các bậc tăng trưởng: hàm mũ và hàm giai thừa tăng vượt xa đa thức khi $$n$$ lớn.</p>
 
 ## Mục tiêu học tập
 
@@ -29,56 +29,56 @@ So sánh thuật toán không dựa vào mili-giây trên một máy, mà vào *
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Định nghĩa** $$O$$, $$\Omega$$, $$\Theta$$.
-- **Chứng minh** quan hệ Big-O đơn giản bằng định nghĩa (hằng số $$c,n_0$$).
-- **Sắp xếp** các bậc: $$1$$, $$\log n$$, $$n$$, $$n\log n$$, $$n^2$$, $$2^n$$, $$n!$$.
-- **Áp dụng** quy tắc tổng và tích.
-- **Giải thích** vì sao bỏ hằng số và hạng thấp.
+- **Định nghĩa** chính xác các ký hiệu tiệm cận $$O$$, $$\Omega$$ và $$\Theta$$.
+- **Chứng minh** quan hệ Big-O đơn giản trực tiếp từ định nghĩa bằng cách chọn cặp hằng số $$c, n_0$$.
+- **Sắp xếp** thứ tự tăng trưởng của các hàm cơ bản: $$1$$, $$\log n$$, $$n$$, $$n\log n$$, $$n^2$$, $$2^n$$, $$n!$$.
+- **Áp dụng** quy tắc tổng và quy tắc tích trên ký hiệu Big-O.
+- **Giải thích** vì sao có thể bỏ qua hằng số nhân và các hạng tử bậc thấp khi $$n$$ đủ lớn.
 
 **Từ khóa**: Big-O, Omega, Theta, asymptotic, growth rate.
 
 </div>
 
-## Định nghĩa
+## Định nghĩa các ký hiệu tiệm cận
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa.** Cho $$f,g:\mathbb{N}\to\mathbb{R}^+$$.
+**Định nghĩa.** Cho hai hàm $$f, g : \mathbb{N} \to \mathbb{R}^+$$:
 
-- $$f(n)=O(g(n))$$ nếu tồn tại $$c>0$$, $$n_0$$ sao cho với mọi $$n\ge n_0$$: $$f(n)\le c\,g(n)$$ (*chặn trên* tiệm cận).
-- $$f(n)=\Omega(g(n))$$ nếu $$g(n)=O(f(n))$$ (*chặn dưới*).
-- $$f(n)=\Theta(g(n))$$ nếu $$f=O(g)$$ và $$f=\Omega(g)$$ (*cùng bậc*).
+- $$f(n) = O(g(n))$$ nếu tồn tại các hằng số $$c > 0$$ và $$n_0$$ sao cho với mọi $$n \ge n_0$$ ta có $$f(n) \le c\,g(n)$$ (*chặn trên* tiệm cận).
+- $$f(n) = \Omega(g(n))$$ nếu $$g(n) = O(f(n))$$ (*chặn dưới* tiệm cận).
+- $$f(n) = \Theta(g(n))$$ nếu đồng thời $$f(n) = O(g(n))$$ và $$f(n) = \Omega(g(n))$$ (*cùng bậc* tăng trưởng).
 
 </div>
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ 1.** $$3n^2+5n+2 = O(n^2)$$: với $$n\ge 1$$, $$3n^2+5n+2\le 3n^2+5n^2+2n^2=10n^2$$. Cũng $$\Theta(n^2)$$.
+**Ví dụ 1.** Chứng minh $$3n^2+5n+2 = O(n^2)$$: với mọi $$n \ge 1$$, ta có $$3n^2+5n+2 \le 3n^2+5n^2+2n^2 = 10n^2$$, nên chọn $$c=10, n_0=1$$. Hơn nữa, vì $$3n^2+5n+2 \ge 3n^2$$ với mọi $$n \ge 1$$, ta cũng có $$3n^2+5n+2 = \Theta(n^2)$$.
 
 </div>
 
-## Bậc thường gặp
+## Các bậc tăng trưởng thường gặp
 
-| Bậc | Tên | Ví dụ thuật toán |
+| Bậc | Tên gọi | Ví dụ thuật toán |
 |:---|:---|:---|
-| $$O(1)$$ | Hằng | Truy cập mảng theo chỉ số |
-| $$O(\log n)$$ | Log | Binary search |
-| $$O(n)$$ | Tuyến tính | Linear scan |
-| $$O(n\log n)$$ | Linearithmic | Merge sort (tốt) |
-| $$O(n^2)$$ | Bình phương | Bubble sort lồng đôi |
-| $$O(2^n)$$ | Mũ | Tập con brute-force |
-| $$O(n!)$$ | Giai thừa | Hoán vị brute-force |
+| $$O(1)$$ | Hằng số | Truy cập phần tử mảng theo chỉ số |
+| $$O(\log n)$$ | Lôgarit | Tìm kiếm nhị phân (binary search) |
+| $$O(n)$$ | Tuyến tính | Tìm kiếm tuần tự (linear scan) |
+| $$O(n\log n)$$ | Tuyến tính–lôgarit | Sắp xếp trộn (merge sort) |
+| $$O(n^2)$$ | Bậc hai | Sắp xếp nổi bọt (bubble sort) với hai vòng lặp lồng nhau |
+| $$O(2^n)$$ | Hàm mũ | Duyệt vét cạn tất cả tập con |
+| $$O(n!)$$ | Giai thừa | Duyệt vét cạn tất cả hoán vị |
 
-## Quy tắc
+## Các quy tắc cơ bản
 
-- **Tổng:** $$O(f)+O(g)=O(\max(f,g))$$ (cùng điều kiện chuẩn).
-- **Tích:** $$O(f)\cdot O(g)=O(fg)$$.
-- **Đa thức:** bậc cao thắng: $$an^k+\cdots=O(n^k)$$.
-- **Log:** cơ số đổi chỉ nhân hằng: $$\log_2 n=\Theta(\log_{10} n)$$.
+- **Quy tắc tổng:** $$O(f) + O(g) = O(\max(f, g))$$.
+- **Quy tắc tích:** $$O(f) \cdot O(g) = O(fg)$$.
+- **Đa thức:** chỉ giữ hạng tử bậc cao nhất, tức $$a_k n^k + \cdots + a_0 = O(n^k)$$ (với $$a_k > 0$$).
+- **Lôgarit:** đổi cơ số chỉ nhân thêm một hằng số dương, nên $$\log_2 n = \Theta(\log_{10} n)$$.
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ 2.** $$T(n)=n+ n\log n + 100 = O(n\log n)=\Theta(n\log n)$$ vì $$n\log n$$ chiếm ưu thế so với $$n$$ khi $$n\to\infty$$.
+**Ví dụ 2.** Với $$T(n) = n + n\log n + 100$$, vì $$n\log n$$ tăng nhanh hơn $$n$$ và hằng số $$100$$ khi $$n \to \infty$$, ta có $$T(n) = O(n\log n) = \Theta(n\log n)$$.
 
 </div>
 
@@ -93,47 +93,48 @@ So sánh thuật toán không dựa vào mili-giây trên một máy, mà vào *
 
 ### Bài tập 1
 
-Chứng minh $$5n+20=O(n)$$ bằng định nghĩa.
+Chứng minh $$5n+20=O(n)$$ trực tiếp bằng định nghĩa.
 
 <details>
 <summary>Đáp án</summary>
 
-Với $$n\ge 20$$: $$5n+20\le 5n+n=6n$$. Lấy $$c=6$$, $$n_0=20$$.
+Với mọi $$n \ge 20$$, ta có $$5n + 20 \le 5n + n = 6n$$. Do đó chọn $$c = 6$$ và $$n_0 = 20$$ thỏa mãn định nghĩa Big-O.
 
 </details>
 
 ### Bài tập 2
 
-Sắp tăng: $$2^n$$, $$n^3$$, $$\log n$$, $$n\log n$$, $$n!$$.
+Sắp xếp các hàm sau theo thứ tự bậc tăng trưởng tăng dần: $$2^n$$, $$n^3$$, $$\log n$$, $$n\log n$$, $$n!$$.
 
 <details>
 <summary>Đáp án</summary>
 
-$$\log n \prec n\log n \prec n^3 \prec 2^n \prec n!$$ (với $$n$$ đủ lớn).
+$$\log n \prec n\log n \prec n^3 \prec 2^n \prec n!$$ (khi $$n$$ đủ lớn).
 
 </details>
 
 ### Bài tập 3
 
-$$n^2$$ có phải $$O(n^3)$$? $$n^3$$ có phải $$O(n^2)$$?
+Hàm $$n^2$$ có thuộc $$O(n^3)$$ không? Ngược lại, $$n^3$$ có thuộc $$O(n^2)$$ không?
 
 <details>
 <summary>Đáp án</summary>
 
-Có: $$n^2\le n^3$$ với $$n\ge 1$$. Không: $$n^3/n^2=n\to\infty$$ không bị chặn bởi hằng.
+- $$n^2 = O(n^3)$$ là **đúng**, vì $$n^2 \le n^3$$ với mọi $$n \ge 1$$ (chọn $$c=1, n_0=1$$).  
+- $$n^3 = O(n^2)$$ là **sai**, vì tỉ số $$n^3/n^2 = n \to \infty$$ không thể bị chặn trên bởi bất kỳ hằng số $$c$$ nào.
 
 </details>
 
 ## Tóm tắt
 
-1. $$O$$/$$\Omega$$/$$\Theta$$ mô tả tăng trưởng, không đo máy cụ thể.
-2. Bỏ hằng số và hạng thấp khi $$n\to\infty$$.
-3. Mũ ≫ đa thức — nền so sánh khả thi (Ch.20).
+1. Các ký hiệu $$O$$, $$\Omega$$ và $$\Theta$$ mô tả tốc độ tăng trưởng tiệm cận của hàm, độc lập với cấu hình phần cứng cụ thể.
+2. Khi $$n \to \infty$$, ta bỏ qua hằng số nhân và các hạng tử bậc thấp hơn.
+3. Hàm mũ tăng nhanh hơn nhiều so với hàm đa thức — ranh giới quan trọng khi đánh giá tính khả thi của thuật toán (Chương 20).
 
-Trong bài tiếp theo: **phân tích** $$T(n)$$ của thuật toán cụ thể.
+Bài tiếp theo sẽ áp dụng các ký hiệu này để **phân tích độ phức tạp** $$T(n)$$ và $$S(n)$$ của các thuật toán cụ thể.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=__vX2sjlpXU">Big-O notation in 5 minutes</a> — Michael Sambol, tiếng Anh. Xem trước Big-O trong vài phút, đúng ký hiệu bài cần đọc trước.
-- <a href="https://www.youtube.com/watch?v=A03oI0znAoc">1.8.1 Asymptotic Notations Big Oh - Omega - Theta #1</a> — Abdul Bari, tiếng Anh. Big-O, Omega và Theta, đủ ba ký hiệu tiệm cận.
-- <a href="https://www.youtube.com/watch?v=BgLTDT03QtU">Big-O Notation - For Coding Interviews</a> — NeetCode, tiếng Anh. Đọc bậc tăng trưởng trên các vòng lặp thường gặp.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=__vX2sjlpXU">Big-O notation in 5 minutes</a> — Michael Sambol, tiếng Anh. Tóm tắt trực quan về ký hiệu Big-O trong 5 phút.
+- <a href="https://www.youtube.com/watch?v=A03oI0znAoc">1.8.1 Asymptotic Notations Big Oh - Omega - Theta #1</a> — Abdul Bari, tiếng Anh. Giải thích chi tiết cả ba ký hiệu tiệm cận Big-O, Omega và Theta.
+- <a href="https://www.youtube.com/watch?v=BgLTDT03QtU">Big-O Notation - For Coding Interviews</a> — NeetCode, tiếng Anh. Cách xác định bậc tăng trưởng từ các cấu trúc vòng lặp quen thuộc.

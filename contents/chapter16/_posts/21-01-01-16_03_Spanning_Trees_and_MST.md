@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 3
 required: true
 lang: en
-excerpt: "Cây khung; MST; tính chất greedy; Kruskal (Union-Find) và Prim (priority queue); độ phức tạp và ứng dụng mạng."
+excerpt: "Cây khung, cây khung nhỏ nhất (MST), tính chất tham lam (cut property), thuật toán Kruskal (Union–Find) và Prim (hàng đợi ưu tiên), độ phức tạp và ứng dụng mạng."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,11 +17,11 @@ excerpt: "Cây khung; MST; tính chất greedy; Kruskal (Union-Find) và Prim (p
 
 </div>
 
-Nối mọi trạm với **tổng chi phí cáp nhỏ nhất** mà vẫn **liên thông** là bài toán **cây khung nhỏ nhất** (*Minimum Spanning Tree*, **MST**). Khác đường đi ngắn nhất (tối ưu path từ một nguồn), MST tối ưu **tập cạnh** tạo cây phủ toàn bộ đỉnh. Mục này định nghĩa MST và hai thuật toán greedy chuẩn: Kruskal và Prim.
+Bài toán kết nối toàn bộ các trạm với **tổng chi phí cáp nhỏ nhất** sao cho mạng vẫn **liên thông** được mô hình hóa bằng **cây khung nhỏ nhất** (*Minimum Spanning Tree*, **MST**). Khác với bài toán đường đi ngắn nhất (tối ưu đường đi từ một đỉnh nguồn), MST tối ưu **tập cạnh** tạo thành một cây phủ toàn bộ tập đỉnh. Bài học này trình bày định nghĩa MST và hai thuật toán tham lam kinh điển: Kruskal và Prim.
 
 ![MST](/discrete-mathematics-for-computer-science-iuh/img/course/Tree_mst_example.svg)
 
-<p class="textbook-figure-caption" data-figure="16.4">MST: $$n-1$$ cạnh (đậm), không chu trình, tổng trọng số nhỏ nhất trong các cây khung.</p>
+<p class="textbook-figure-caption" data-figure="16.4">MST gồm $$n-1$$ cạnh (nét đậm), không có chu trình và có tổng trọng số nhỏ nhất trong mọi cây khung.</p>
 
 ## Mục tiêu học tập
 
@@ -29,10 +29,10 @@ Nối mọi trạm với **tổng chi phí cáp nhỏ nhất** mà vẫn **liên
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Định nghĩa** cây khung và MST trên đồ thị vô hướng có trọng số liên thông.
-- **Mô tả** Kruskal (sort + Union–Find) và Prim (mở rộng từ tập đỉnh).
-- **Nêu** độ phức tạp tiêu biểu $$O(E\log E)$$ và $$O(E\log V)$$.
-- **Áp dụng** ý tưởng MST cho thiết kế mạng / clustering sơ cấp.
+- **Định nghĩa** cây khung và cây khung nhỏ nhất (MST) trên đồ thị vô hướng liên thông có trọng số.
+- **Mô tả** thuật toán Kruskal (sắp xếp cạnh kết hợp Union–Find) và Prim (mở rộng dần từ một tập đỉnh).
+- **Nêu** độ phức tạp tiêu biểu $$O(E\log E)$$ của Kruskal và $$O(E\log V)$$ của Prim.
+- **Áp dụng** ý tưởng MST vào bài toán thiết kế mạng và phân cụm sơ cấp.
 
 **Từ khóa**: spanning tree, MST, Kruskal, Prim, Union–Find, greedy.
 
@@ -40,38 +40,38 @@ Nối mọi trạm với **tổng chi phí cáp nhỏ nhất** mà vẫn **liên
 
 ## Cây khung và MST
 
-Nhắc lại: **cây khung** của $$G$$ liên thông là cây con chứa mọi đỉnh.
+Nhắc lại: **cây khung** của đồ thị liên thông $$G$$ là một cây con chứa tất cả các đỉnh của $$G$$.
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa.** Cho đồ thị vô hướng **liên thông** $$G=(V,E)$$ với trọng số $$w(e)$$ trên mỗi cạnh. **Cây khung nhỏ nhất** (MST) là cây khung $$T\subseteq E$$ sao cho
+**Định nghĩa.** Cho đồ thị vô hướng **liên thông** $$G=(V,E)$$ với trọng số $$w(e)$$ trên mỗi cạnh. **Cây khung nhỏ nhất** (MST) là một cây khung $$T\subseteq E$$ sao cho tổng trọng số
 
 $$
 \sum_{e\in T} w(e)
 $$
 
-là **nhỏ nhất** trong mọi cây khung của $$G$$.
+đạt giá trị **nhỏ nhất** trong số mọi cây khung của $$G$$.
 
 </div>
 
-Nếu các trọng số đôi một khác nhau, MST **duy nhất**. Trọng số trùng có thể cho nhiều MST khác nhau cùng tổng.
+Nếu trọng số của các cạnh đôi một khác nhau thì MST là **duy nhất**. Khi có các cạnh trùng trọng số, đồ thị có thể có nhiều MST khác nhau nhưng có cùng tổng trọng số.
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý** (tính chất cạnh an toàn / cut property — dạng greedy). Xét phân hoạch $$V = S \cup (V\setminus S)$$ với $$S$$ khác rỗng và khác $$V$$. Nếu $$e$$ là cạnh **nhẹ nhất** có đúng một đầu trong $$S$$, thì tồn tại một MST chứa $$e$$.
+**Định lý** (Tính chất lát cắt / *cut property*). Xét một phân hoạch bất kỳ $$V = S \cup (V\setminus S)$$ với $$S \neq \emptyset$$ và $$S \neq V$$. Nếu $$e$$ là cạnh có trọng số **nhỏ nhất** nối một đỉnh thuộc $$S$$ với một đỉnh ngoài $$S$$, thì tồn tại ít nhất một MST chứa cạnh $$e$$.
 
 </div>
 
-Hệ quả: thuật toán luôn thêm cạnh “an toàn” theo cut hoặc theo thứ tự trọng số toàn cục vẫn đúng.
+Nhờ tính chất lát cắt, một chiến lược tham lam luôn chọn cạnh “an toàn” theo từng lát cắt hoặc theo thứ tự trọng số tăng dần toàn cục vẫn đảm bảo tìm ra MST tối ưu.
 
 ## Thuật toán Kruskal
 
-1. Sắp xếp mọi cạnh theo trọng số **tăng dần**.
-2. Khởi tạo rừng: mỗi đỉnh là một thành phần (Union–Find).
-3. Duyệt cạnh $$(u,v)$$ theo thứ tự: nếu $$u$$ và $$v$$ thuộc **hai thành phần khác nhau**, **thêm** cạnh vào MST và **hợp** hai thành phần; nếu cùng thành phần thì **bỏ** (tránh chu trình).
-4. Dừng khi đã chọn $$\vert V\vert -1$$ cạnh.
+1. Sắp xếp tất cả các cạnh theo trọng số **tăng dần**.
+2. Khởi tạo rừng ban đầu gồm các cây đơn lẻ: mỗi đỉnh là một thành phần riêng (quản lý bằng Union–Find).
+3. Duyệt lần lượt từng cạnh $$(u,v)$$: nếu $$u$$ và $$v$$ thuộc **hai thành phần khác nhau**, **thêm** cạnh vào MST và **hợp nhất** hai thành phần; nếu đã cùng thành phần thì **bỏ qua** để tránh tạo chu trình.
+4. Dừng khi đã chọn đủ $$\vert V\vert -1$$ cạnh.
 
-**Độ phức tạp:** $$O(E\log E)$$ cho sort; Union–Find gần $$O(E\,\alpha(V))$$ với path compression / union by rank.
+**Độ phức tạp:** bước sắp xếp tốn $$O(E\log E)$$, còn các thao tác Union–Find (với nén đường đi và hợp nhất theo hạng) tốn gần như tuyến tính $$O(E\,\alpha(V))$$.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="kruskal-algorithm"></div>
@@ -80,30 +80,28 @@ Hệ quả: thuật toán luôn thêm cạnh “an toàn” theo cut hoặc theo
 
 ## Thuật toán Prim
 
-1. Chọn đỉnh xuất phát $$s$$; tập $$S=\{s\}$$.
-2. Lặp cho đến khi $$\vert S\vert =\vert V\vert $$: chọn cạnh **nhẹ nhất** nối một đỉnh trong $$S$$ với một đỉnh ngoài $$S$$; thêm cạnh đó vào MST và đưa đỉnh mới vào $$S$$.
-3. Cấu trúc hỗ trợ: hàng đợi ưu tiên (binary heap / Fibonacci heap).
+1. Chọn một đỉnh xuất phát $$s$$ và khởi tạo tập đỉnh đã phủ $$S=\{s\}$$.
+2. Lặp cho đến khi $$\vert S\vert =\vert V\vert $$: chọn cạnh **nhẹ nhất** nối một đỉnh trong $$S$$ với một đỉnh ngoài $$S$$; thêm cạnh đó vào MST và bổ sung đỉnh mới vào $$S$$.
+3. Cấu trúc dữ liệu hỗ trợ: hàng đợi ưu tiên (binary heap hoặc Fibonacci heap).
 
-**Độ phức tạp:** với binary heap thường $$O(E\log V)$$.
+**Độ phức tạp:** với binary heap, thuật toán có độ phức tạp $$O(E\log V)$$.
 
-| | Kruskal | Prim |
+| Tiêu chí | Kruskal | Prim |
 |:---|:---|:---|
-| Greedy trên | Cạnh toàn cục (đã sort) | Cạnh ra khỏi tập $$S$$ |
-| Cấu trúc | Union–Find | Priority queue |
-| Thường hợp hợp | Đồ thị **thưa** (sort cạnh) | Đồ thị **dày** hơn / triển khai từ một gốc |
+| Chiến lược tham lam | Xét cạnh toàn cục (đã sắp xếp) | Xét cạnh đi ra khỏi tập $$S$$ |
+| Cấu trúc dữ liệu | Union–Find | Hàng đợi ưu tiên (*priority queue*) |
+| Thường phù hợp | Đồ thị **thưa** | Đồ thị **dày** hoặc mở rộng từ một gốc |
 
-
-Dùng minh hoạ đồ thị (chọn **Kruskal** hoặc **Prim**, chỉnh trọng số, chạy từng bước) để thấy cạnh được thêm vào MST hay bị bỏ vì tạo chu trình. Widget Kruskal phía trên vẫn giữ nguyên.
+Dùng minh họa đồ thị dưới đây (chọn **Kruskal** hoặc **Prim**, điều chỉnh trọng số và chạy từng bước) để quan sát cạnh nào được thêm vào MST và cạnh nào bị loại vì tạo chu trình:
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="graph-explainer" data-algorithm="kruskal"></div>
 </div>
 <script src="{{ '/public/js/explainers/graph-explainer.js' | relative_url }}"></script>
 
+### Minh họa Prim: mở rộng dần từ một đỉnh
 
-### Minh hoạ Prim: lớn dần từ một đỉnh
-
-Phiên bản Prim riêng để so với Kruskal ở trên: tập $$S$$ lớn dần từ đỉnh xuất phát, mỗi bước chọn cạnh nhẹ nhất đi ra khỏi $$S$$.
+Minh họa riêng cho thuật toán Prim để đối chiếu với Kruskal ở trên: tập $$S$$ lớn dần từ đỉnh xuất phát, ở mỗi bước chọn cạnh nhẹ nhất đi ra khỏi $$S$$.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="graph-explainer" data-algorithm="prim"></div>
@@ -115,85 +113,85 @@ Phiên bản Prim riêng để so với Kruskal ở trên: tập $$S$$ lớn d�
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/mst-kruskal-prim.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 50 giây: chạy Kruskal rồi Prim trên cùng một đồ thị 6 đỉnh, các cạnh bị bỏ vì tạo chu trình, hai thuật toán ra cùng một cây tổng 20, và tính chất lát cắt cùng phép đổi cạnh giải thích vì sao chọn tham lam vẫn tối ưu.
+Video dài khoảng 2 phút 50 giây: chạy lần lượt Kruskal và Prim trên cùng một đồ thị 6 đỉnh, chỉ rõ các cạnh bị loại do tạo chu trình, xác nhận cả hai thuật toán cùng tạo ra cây khung tổng trọng số 20 và giải thích tính tối ưu bằng tính chất lát cắt cùng phép đổi cạnh.
 
 ## Ví dụ tính tay
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ.** Bốn đỉnh $$A,B,C,D$$; cạnh  
+**Ví dụ.** Cho đồ thị gồm 4 đỉnh $$A,B,C,D$$ với các cạnh:  
 $$(A,B,1)$$, $$(B,D,2)$$, $$(A,D,4)$$, $$(B,C,5)$$, $$(C,D,6)$$.
 
-Kruskal: lấy $$AB(1)$$, $$BD(2)$$, bỏ $$AD(4)$$ (cùng thành phần $$A$$–$$B$$–$$D$$), lấy $$BC(5)$$.  
-MST: $$\{AB,BD,BC\}$$, tổng $$1+2+5=8$$.
+Chạy thuật toán Kruskal: chọn $$AB(1)$$, chọn $$BD(2)$$, bỏ qua $$AD(4)$$ (vì $$A$$ và $$D$$ đã cùng thành phần $$A$$–$$B$$–$$D$$), sau đó chọn $$BC(5)$$.  
+Cây khung nhỏ nhất thu được là $$\{AB,BD,BC\}$$ với tổng trọng số $$1+2+5=8$$.
 
 </div>
 
 ## Ứng dụng
 
-- Thiết kế LAN / cáp: liên thông với chi phí nhỏ.
-- Clustering sơ cấp: bỏ các cạnh MST nặng nhất để tách cụm.
-- Xấp xỉ một số bài toán mạng (nền cho thuật toán nâng cao hơn).
+- Thiết kế mạng LAN hoặc hệ thống đường dây nhằm đảm bảo liên thông với chi phí thấp nhất.
+- Phân cụm dữ liệu (*clustering*) sơ cấp bằng cách bỏ đi các cạnh nặng nhất trong MST để tách thành các cụm.
+- Làm bước khởi tạo cho thuật toán xấp xỉ ở một số bài toán mạng nâng cao.
 
-**Không nhầm với** đường đi ngắn nhất (Dijkstra): MST không đảm bảo path từ $$s$$ đến $$t$$ là ngắn nhất.
+**Lưu ý phân biệt với đường đi ngắn nhất (Dijkstra):** MST tối ưu tổng chi phí của toàn bộ cây, nên không đảm bảo đường đi trên MST giữa hai đỉnh $$s$$ và $$t$$ là đường đi ngắn nhất.
 
 ## Bài tập
 
 ### Bài tập 1
 
-Với ví dụ mục 4, tổng trọng số MST là bao nhiêu? Có MST khác cùng tổng không nếu đổi trọng số $$BC$$ thành 6 và $$CD$$ thành 5?
+Trong ví dụ tính tay ở trên, tổng trọng số MST là bao nhiêu? Nếu đổi trọng số cạnh $$BC$$ thành 6 và cạnh $$CD$$ thành 5 thì MST thay đổi thế nào và tổng trọng số bằng bao nhiêu?
 
 <details>
 <summary>Đáp án</summary>
 
-Tổng **8**. Nếu $$BC=6$$, $$CD=5$$: Kruskal lấy $$AB,BD,CD$$ tổng $$1+2+5=8$$ — MST khác cạnh nhưng cùng tổng có thể xảy ra tùy bộ trọng số; ở đây vẫn 8.
+Tổng trọng số MST ban đầu là **8**. Khi đổi $$BC=6$$ và $$CD=5$$, Kruskal sẽ chọn các cạnh $$AB, BD, CD$$ với tổng trọng số $$1+2+5=8$$. Tập cạnh của MST thay đổi nhưng tổng trọng số tối ưu vẫn bằng 8.
 
 </details>
 
 ### Bài tập 2
 
-Vì sao Kruskal bỏ cạnh tạo chu trình?
+Vì sao thuật toán Kruskal loại bỏ các cạnh tạo thành chu trình?
 
 <details>
 <summary>Đáp án</summary>
 
-Cây khung có đúng $$\vert V\vert -1$$ cạnh và không chu trình. Cạnh nối hai đỉnh đã cùng thành phần sẽ tạo chu trình và không cần cho liên thông của rừng đang xây.
+Một cây khung có đúng $$\vert V\vert -1$$ cạnh và không được chứa chu trình. Cạnh nối hai đỉnh đã thuộc cùng một thành phần liên thông sẽ tạo ra chu trình và không giúp kết nối thêm đỉnh mới nào cho rừng đang xây dựng.
 
 </details>
 
 ### Bài tập 3
 
-MST của đồ thị liên thông $$n$$ đỉnh có bao nhiêu cạnh?
+MST của một đồ thị liên thông gồm $$n$$ đỉnh có bao nhiêu cạnh?
 
 <details>
 <summary>Đáp án</summary>
 
-Đúng $$n-1$$ cạnh.
+Có đúng $$n-1$$ cạnh.
 
 </details>
 
 ### Bài tập 4
 
-Đồ thị không liên thông có MST không?
+Một đồ thị không liên thông có MST hay không?
 
 <details>
 <summary>Đáp án</summary>
 
-Không (theo định nghĩa phủ mọi đỉnh bằng **một** cây). Có thể nói **rừng khung nhỏ nhất** trên từng thành phần.
+Không, vì theo định nghĩa MST phải phủ tất cả các đỉnh bằng **một** cây duy nhất. Với đồ thị không liên thông, ta tìm **rừng khung nhỏ nhất** gồm các MST trên từng thành phần liên thông.
 
 </details>
 
 ## Tóm tắt
 
-1. **MST**: cây khung tổng trọng số nhỏ nhất.
-2. **Cut property** biện minh greedy.
-3. **Kruskal**: sort + Union–Find; **Prim**: mở rộng $$S$$ + heap.
-4. Ứng dụng mạng / clustering; khác shortest path.
+1. **MST** là cây khung có tổng trọng số cạnh nhỏ nhất trên đồ thị vô hướng liên thông.
+2. **Tính chất lát cắt (*cut property*)** là cơ sở chứng minh tính đúng đắn của các thuật toán tham lam tìm MST.
+3. **Kruskal** dùng sắp xếp cạnh và Union–Find; **Prim** mở rộng tập đỉnh $$S$$ bằng hàng đợi ưu tiên.
+4. MST ứng dụng trong thiết kế mạng và phân cụm, khác về mục tiêu tối ưu so với bài toán đường đi ngắn nhất.
 
-Trong bài tiếp theo (tùy chọn): **Huffman** và **BST**.
+Trong bài tùy chọn tiếp theo, ta sẽ tìm hiểu **mã hóa Huffman** và **cây tìm kiếm nhị phân (BST)**.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=4ZlRH0eK-qQ">3.5 Prims and Kruskals Algorithms - Greedy Method</a> — Abdul Bari, tiếng Anh. Xem trước Prim và Kruskal cho cây khung nhỏ nhất.
-- <a href="https://www.youtube.com/watch?v=cplfcGZmX7I">Prim&#x27;s algorithm in 2 minutes</a> — Michael Sambol, tiếng Anh. Prim trên ví dụ ngắn.
-- <a href="https://www.youtube.com/watch?v=71UQH7Pr9kU">Kruskal&#x27;s algorithm in 2 minutes</a> — Michael Sambol, tiếng Anh. Kruskal trên ví dụ ngắn, đối chiếu với Prim.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=4ZlRH0eK-qQ">3.5 Prims and Kruskals Algorithms - Greedy Method</a> — Abdul Bari, tiếng Anh. Trình bày tổng quan thuật toán Prim và Kruskal cho bài toán cây khung nhỏ nhất.
+- <a href="https://www.youtube.com/watch?v=cplfcGZmX7I">Prim&#x27;s algorithm in 2 minutes</a> — Michael Sambol, tiếng Anh. Minh họa nhanh thuật toán Prim trên ví dụ ngắn.
+- <a href="https://www.youtube.com/watch?v=71UQH7Pr9kU">Kruskal&#x27;s algorithm in 2 minutes</a> — Michael Sambol, tiếng Anh. Minh họa nhanh thuật toán Kruskal để đối chiếu với Prim.

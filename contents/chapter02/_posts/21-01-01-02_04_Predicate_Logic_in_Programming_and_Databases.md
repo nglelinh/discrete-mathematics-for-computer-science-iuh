@@ -7,10 +7,10 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
-excerpt: "Ở ba mục trước, chúng ta đã học vị từ, lượng từ và quy tắc suy luận trong logic vị từ. Mục này nối các khái niệm đó với thực hành kỹ thuật: mỗi khi viết hay…"
+excerpt: "Kết nối vị từ và lượng từ với thực hành kỹ thuật phần mềm: truy vấn SQL (EXISTS, CHECK, FOREIGN KEY), assertion, schema validation và Design by Contract."
 ---
 
-Ở ba mục trước, chúng ta đã học vị từ, lượng từ và quy tắc suy luận trong logic vị từ. Mục này nối các khái niệm đó với thực hành kỹ thuật: mỗi khi viết `assert age >= 18` hay thêm điều kiện `WHERE NOT EXISTS (...)`, ta đang dùng cùng một ngôn ngữ toán học — **logic vị từ** (predicate logic) với lượng từ $$\forall$$ và $$\exists$$.
+Ở ba mục trước, chúng ta đã học vị từ, lượng từ và quy tắc suy luận trong logic vị từ. Mục này kết nối các khái niệm đó với thực hành kỹ thuật phần mềm: mỗi khi viết `assert age >= 18` hay thêm điều kiện `WHERE NOT EXISTS (...)`, ta đang sử dụng cùng một nền tảng toán học — **logic vị từ** (predicate logic) với hai lượng từ $$\forall$$ và $$\exists$$.
 
 ```python
 from pydantic import BaseModel, Field, field_validator
@@ -26,9 +26,9 @@ class Student(BaseModel):
         return v
 ```
 
-Đoạn code trên không chỉ "kiểm tra input". Nó là một **đặc tả** (specification): với mọi đối tượng `Student` được tạo thành công, các vị từ `id > 0`, `0 ≤ gpa ≤ 4` đều đúng. Trong SQL, cùng ý tưởng xuất hiện dưới dạng `CHECK`, `FOREIGN KEY`, và truy vấn có `EXISTS` / `NOT EXISTS`.
+Đoạn mã trên không chỉ kiểm tra dữ liệu đầu vào mà còn đóng vai trò như một **đặc tả** (specification): với mọi đối tượng `Student` được khởi tạo hợp lệ, các vị từ `id > 0` và `0 ≤ gpa ≤ 4` đều đúng. Trong SQL, cùng ý tưởng đó thể hiện qua các ràng buộc `CHECK`, `FOREIGN KEY` và truy vấn `EXISTS` / `NOT EXISTS`.
 
-Từ Frege và lượng từ ∀/∃ đến validation schema, contract programming và truy vấn quan hệ, mục này kết nối Chương 2 với cách kỹ sư viết phần mềm an toàn hàng ngày.
+Từ nền tảng logic vị từ của Frege đến validation schema, lập trình theo hợp đồng (Design by Contract) và truy vấn quan hệ, mục này kết nối kiến thức Chương 2 với cách kỹ sư phần mềm xây dựng hệ thống an toàn hàng ngày.
 
 ## Mục tiêu học tập
 
@@ -37,11 +37,11 @@ Từ Frege và lượng từ ∀/∃ đến validation schema, contract programm
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Dịch** yêu cầu nghiệp vụ có "mọi" / "tồn tại" sang công thức logic vị từ và sang SQL/Python tương đương.
-- **Viết** assertion, validator, và schema kiểu Pydantic/Zod như triển khai thực tế của vị từ.
-- **Phân biệt** phủ định lượng từ ($$\lnot \forall$$ ↔ $$\exists \lnot$$) khi đọc `NOT EXISTS` và điều kiện lồng nhau.
-- **Mô hình hóa** ràng buộc CSDL (UNIQUE, FOREIGN KEY, CHECK) bằng $$\forall$$ và $$\exists$$ trên miền bản ghi.
-- **Nhận ra** khi nào cần đặc tả hình thức (formal spec) thay vì chỉ test vài trường hợp.
+- **Dịch** yêu cầu nghiệp vụ có "mọi" hoặc "tồn tại" sang công thức logic vị từ và sang mã SQL/Python tương đương.
+- **Viết** assertion, validator và schema (Pydantic/Zod) như hiện thực trực tiếp của vị từ.
+- **Phân biệt** quy tắc phủ định lượng từ ($$\lnot \forall$$ ↔ $$\exists \lnot$$) khi đọc `NOT EXISTS` và các điều kiện lồng nhau.
+- **Mô hình hóa** các ràng buộc cơ sở dữ liệu (`UNIQUE`, `FOREIGN KEY`, `CHECK`) bằng $$\forall$$ và $$\exists$$ trên miền bản ghi.
+- **Nhận biết** sự khác nhau giữa kiểm thử một số mẫu và đặc tả trên toàn miền.
 
 
 **Từ khóa**: logic vị từ (predicate logic), lượng từ (quantifier), đặc tả (specification), assertion, schema validation, truy vấn quan hệ (relational query).
@@ -57,25 +57,25 @@ Từ Frege và lượng từ ∀/∃ đến validation schema, contract programm
 | Câu nghiệp vụ | Logic vị từ (miền $$D$$) |
 |---|---|
 | Mọi sinh viên đều đã đăng ký ít nhất một học phần | $$\forall s \in D_{student},\ \exists c \in D_{course},\ Enrolled(s,c)$$ |
-| Có ít nhất một server còn sống | $$\exists h \in D_{host},\ Healthy(h)$$ |
+| Có ít nhất một máy chủ còn hoạt động | $$\exists h \in D_{host},\ Healthy(h)$$ |
 | Không tồn tại hai email trùng nhau | $$\lnot \exists u_1, u_2 \in D_{user},\ (u_1 \neq u_2 \land SameEmail(u_1,u_2))$$ |
 | Mọi đơn hàng đều có đúng một người mua | $$\forall o \in D_{order},\ \exists! u \in D_{user},\ Buyer(o,u)$$ |
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: "Mọi giao dịch phải được xác thực trước khi xử lý"
+**Ví dụ**: "Mọi giao dịch phải được xác thực trước khi xử lý."
 
 <div class="textbook-equation" markdown="1">
 $$\forall t \in Transactions,\ Processed(t) \limpl Verified(t)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Đọc theo hướng lập trình: *nếu* `processed(t)` thì *bắt buộc* `verified(t)` đã đúng trước đó.
+Diễn giải theo góc nhìn lập trình: *nếu* `processed(t)` đúng thì *bắt buộc* `verified(t)` đã đúng trước đó.
 
 ![Gottlob Frege — nền tảng logic vị từ hiện đại](/discrete-mathematics-for-computer-science-iuh/img/course/gottlob_frege.svg)
 
-<p class="textbook-figure-caption" data-figure="2.16">Gottlob Frege — đặt nền cho logic vị từ (first-order logic); hôm nay cùng cấu trúc ∀/∃ xuất hiện trong SQL và validation code.</p>
+<p class="textbook-figure-caption" data-figure="2.16">Gottlob Frege — đặt nền móng cho logic vị từ (first-order logic); ngày nay cùng cấu trúc ∀/∃ xuất hiện trong SQL và mã kiểm tra dữ liệu.</p>
 </div>
 
-### Phủ định lượng từ — lỗi hay gặp nhất
+### Phủ định lượng từ — lỗi thường gặp nhất
 
 Luật De Morgan cho lượng từ:
 
@@ -87,7 +87,7 @@ $$\lnot \forall x\, P(x) \equiv \exists x\, \lnot P(x)$$
 $$\lnot \exists x\, P(x) \equiv \forall x\, \lnot P(x)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**SQL**: "Không có đơn hàng nào chưa thanh toán" **không** phải `NOT EXISTS (unpaid orders)` theo nghĩa mơ hồ — phải viết rõ:
+**Trong SQL**: phát biểu "Không có đơn hàng nào chưa thanh toán" ($$\neg\exists o,\, status(o) = \text{'unpaid'}$$, tương đương $$\forall o,\, status(o) \neq \text{'unpaid'}$$) được viết rõ ràng như sau:
 
 ```sql
 -- ∀ order: NOT (status = 'unpaid')
@@ -98,7 +98,7 @@ WHERE status = 'unpaid';
 ```
 
 <div class="content-box warning-box textbook-block" markdown="1">
-**Cẩn thận**: $$\forall x \exists y$$ và $$\exists y \forall x$$ **không** tương đương. "Mỗi sinh viên có một cố vấn" khác "Có một cố vấn cho mọi sinh viên". Đổi thứ tự lượng từ trong đặc tả là đổi ý nghĩa, và API hay schema làm theo sẽ khác.
+**Cẩn thận**: $$\forall x \exists y$$ và $$\exists y \forall x$$ **không** tương đương. "Mỗi sinh viên có một cố vấn" khác với "Có một cố vấn cho mọi sinh viên". Đổi thứ tự lượng từ trong đặc tả sẽ làm thay đổi yêu cầu, kéo theo thiết kế API và lược đồ cơ sở dữ liệu cũng khác đi.
 </div>
 
 ---
@@ -107,7 +107,7 @@ WHERE status = 'unpaid';
 
 ### `EXISTS` và `NOT EXISTS`
 
-`EXISTS (subquery)` đúng khi subquery trả về **ít nhất một dòng** — đó chính là $$\exists$$.
+Biểu thức `EXISTS (subquery)` nhận giá trị đúng khi truy vấn con trả về **ít nhất một dòng** — tương ứng trực tiếp với lượng từ $$\exists$$.
 
 ```sql
 -- Sinh viên đã đăng ký ít nhất một học phần
@@ -139,8 +139,8 @@ CREATE TABLE enrollments (
 );
 ```
 
-- `REFERENCES students(id)`: mọi `student_id` trong `enrollments` phải tồn tại trong `students` — $$\forall e \in Enrollments,\ \exists s \in Students,\ e.student\_id = s.id$$.
-- `PRIMARY KEY`: không tồn tại hai dòng trùng cặp khóa — tính duy nhất.
+- `REFERENCES students(id)`: mọi `student_id` trong `enrollments` phải tồn tại trong `students`, tức $$\forall e \in Enrollments,\ \exists s \in Students,\ e.student\_id = s.id$$.
+- `PRIMARY KEY`: không tồn tại hai dòng trùng cùng cặp khóa — bảo đảm tính duy nhất.
 
 ![Truy vấn SQL — thể hiện ∃ và ∀ qua EXISTS, JOIN, ràng buộc](/discrete-mathematics-for-computer-science-iuh/img/course/sql_query.svg)
 
@@ -152,13 +152,13 @@ ALTER TABLE students
 ADD CONSTRAINT gpa_range CHECK (gpa >= 0 AND gpa <= 4);
 ```
 
-Đây là $$\forall s \in Students,\ 0 \le s.gpa \le 4$$ được DBMS kiểm tra mỗi lần `INSERT`/`UPDATE`.
+Ràng buộc này biểu diễn $$\forall s \in Students,\ 0 \le s.gpa \le 4$$ và được hệ quản trị cơ sở dữ liệu kiểm tra mỗi khi thực hiện `INSERT` hoặc `UPDATE`.
 
 ---
 
-## Phần 3: Assertion và schema trong code
+## Phần 3: Assertion và schema trong mã nguồn
 
-### `assert` — hợp đồng runtime
+### `assert` — hợp đồng kiểm tra tại thời điểm chạy
 
 ```python
 def transfer(from_id: int, to_id: int, amount: float, balance: dict[int, float]) -> None:
@@ -168,7 +168,7 @@ def transfer(from_id: int, to_id: int, amount: float, balance: dict[int, float])
     balance[to_id] = balance.get(to_id, 0) + amount
 ```
 
-`assert` không thay thế validation phía client, nhưng bảo vệ **invariant** nội bộ: điều kiện phải đúng với mọi trạng thái hợp lệ của chương trình.
+`assert` không thay thế việc kiểm tra dữ liệu đầu vào từ phía người dùng, nhưng giúp bảo vệ **bất biến (invariant)** nội bộ — những điều kiện phải luôn đúng ở mọi trạng thái hợp lệ của chương trình.
 
 ### Pydantic / Zod — vị từ trên kiểu dữ liệu
 
@@ -193,7 +193,7 @@ const CreateOrder = z.object({
 });
 ```
 
-Mỗi ràng buộc `.positive()`, `.min(1)` là một vị từ một biến: $$P(x)$$ phải đúng trước khi object được chấp nhận.
+Mỗi ràng buộc như `.positive()`, `.min(1)` là một vị từ một biến $$P(x)$$ phải thỏa mãn trước khi đối tượng được chấp nhận.
 
 ### Design by Contract (DbC)
 
@@ -212,10 +212,10 @@ def withdraw(balance: float, amount: float) -> float:
     return new_balance
 ```
 
-Precondition/postcondition/invariant là ba lớp vị từ bọc hàm — tiền thân của các công cụ như Eiffel, và tinh thần của Rust `debug_assert!`, Kotlin `require`/`check`.
+Tiền điều kiện (precondition), hậu điều kiện (postcondition) và bất biến (invariant) là ba lớp vị từ bao quanh một hàm — nền tảng của ngôn ngữ Eiffel và tinh thần của `debug_assert!` trong Rust hay `require`/`check` trong Kotlin.
 
 <div class="content-box insight-box textbook-block" markdown="1">
-**Nhận xét**: Test kiểm tra *một số* input; đặc tả ∀/∃ nói *mọi* input trong miền. Validation schema là điểm giao thực dụng: vài dòng code có thể mã hóa phạm vi ∀ trên request body.
+**Nhận xét**: Kiểm thử (test) chỉ kiểm tra trên *một số* đầu vào cụ thể, còn đặc tả $$\forall/\exists$$ phát biểu cho *toàn bộ* miền giá trị. Validation schema là điểm giao thực dụng: chỉ cần vài dòng mã để mã hóa điều kiện $$\forall$$ áp dụng cho mọi dữ liệu yêu cầu (request body).
 </div>
 
 ---
@@ -224,7 +224,7 @@ Precondition/postcondition/invariant là ba lớp vị từ bọc hàm — tiề
 
 ### Kiểm chứng và SMT/SAT
 
-Khi hệ thống cực kỳ nhạy cảm (hàng không, thanh toán, kernel), người ta dùng **model checker** hoặc **SMT solver** để hỏi: "Có tồn tại trạng thái vi phạm invariant không?" — tức $$\exists$$ counterexample. Nếu solver trả `unsat`, ta có bằng chứng mọi luồng thỏa spec (trong mô hình hữu hạn).
+Với các hệ thống đòi hỏi độ tin cậy cao (hàng không, thanh toán, nhân hệ điều hành), kỹ sư sử dụng **model checker** hoặc **SMT solver** để hỏi: "Có tồn tại trạng thái nào vi phạm bất biến không?" — tức tìm một phản ví dụ theo lượng từ $$\exists$$. Nếu bộ giải trả về `unsat`, ta có chứng cứ rằng mọi luồng thực thi trong mô hình đều thỏa mãn đặc tả.
 
 ### Policy as code
 
@@ -234,7 +234,7 @@ def can_refund(order, user) -> bool:
     return order.user_id == user.id or user.role == "admin"
 ```
 
-Rule engine, OPA (Open Policy Agent), và IAM policy JSON đều là logic vị từ ẩn: biến (subject, resource), vị từ (`is_owner`, `has_role`), lượng từ trong rule tập hợp (`any`, `all`).
+Các hệ quy tắc (rule engine), OPA (Open Policy Agent) và chính sách IAM dạng JSON đều dựa trên cấu trúc logic vị từ: biến (chủ thể, tài nguyên), vị từ (`is_owner`, `has_role`) và lượng từ trên tập hợp (`any`, `all`).
 
 ## Công cụ tương tác
 
@@ -247,7 +247,7 @@ Rule engine, OPA (Open Policy Agent), và IAM policy JSON đều là logic vị 
 
 ### Bài tập 1: Dịch sang logic vị từ
 
-Viết công thức cho: "Mọi khóa học đều có ít nhất một giảng viên phụ trách."
+Viết công thức logic vị từ cho câu: "Mọi khóa học đều có ít nhất một giảng viên phụ trách."
 
 <details>
 <summary>Đáp án</summary>
@@ -260,7 +260,7 @@ $$\forall c \in Courses,\ \exists t \in Teachers,\ Teaches(t, c)$$
 
 ### Bài tập 2: SQL với EXISTS
 
-Viết truy vấn trả về `course_id` của các khóa **chưa có** sinh viên nào đăng ký. Bảng: `courses(id, title)`, `enrollments(student_id, course_id)`.
+Viết truy vấn trả về `id` và `title` của các khóa học **chưa có** sinh viên nào đăng ký, cho hai bảng `courses(id, title)` và `enrollments(student_id, course_id)`.
 
 <details>
 <summary>Đáp án</summary>
@@ -275,13 +275,13 @@ WHERE NOT EXISTS (
 );
 ```
 
-Tương đương: $$\forall s,\ \lnot Enrolled(s, c)$$ cho từng khóa $$c$$ được chọn.
+Tương đương với $$\forall s,\ \lnot Enrolled(s, c)$$ cho từng khóa học $$c$$ được chọn.
 
 </details>
 
 ### Bài tập 3: Phủ định lượng từ
 
-Câu "Không phải mọi sinh viên đều đạt điểm ≥ 5" tương đương công thức nào?
+Câu "Không phải mọi sinh viên đều đạt điểm ≥ 5" tương đương với công thức nào sau đây?
 
 (a) $$\forall s,\ Score(s) < 5$$
 
@@ -292,15 +292,15 @@ Câu "Không phải mọi sinh viên đều đạt điểm ≥ 5" tương đươ
 <details>
 <summary>Đáp án</summary>
 
-**(b)**. $$\lnot \forall s,\ Score(s) \ge 5 \equiv \exists s,\ \lnot(Score(s) \ge 5) \equiv \exists s,\ Score(s) < 5$$.
+**(b)**. Theo luật De Morgan cho lượng từ: $$\lnot \forall s,\ Score(s) \ge 5 \equiv \exists s,\ \lnot(Score(s) \ge 5) \equiv \exists s,\ Score(s) < 5$$.
 
-(a) sai vì nói *mọi* sinh viên đều dưới 5. (c) sai vì phủ định *tồn tại* người đạt ≥ 5.
+Phương án (a) sai vì khẳng định *mọi* sinh viên đều dưới 5; phương án (c) sai vì phủ định hoàn toàn việc có sinh viên đạt ≥ 5.
 
 </details>
 
 ### Bài tập 4: Pydantic validator
 
-Thêm validator đảm bảo `end_date >= start_date` cho class:
+Bổ sung validator bảo đảm `end_date >= start_date` cho lớp sau:
 
 ```python
 class Booking(BaseModel):
@@ -326,13 +326,13 @@ class Booking(BaseModel):
         return self
 ```
 
-Vị từ: $$\forall booking,\ booking.end\_date \ge booking.start\_date$$.
+Vị từ tương ứng: $$\forall booking,\ booking.end\_date \ge booking.start\_date$$.
 
 </details>
 
 ### Bài tập 5: Thứ tự lượng từ
 
-Phân biệt nghĩa hai câu:
+Phân biệt ý nghĩa của hai công thức sau:
 
 1. $$\forall s \in Students,\ \exists m \in Mentors,\ Assigned(s,m)$$
 2. $$\exists m \in Mentors,\ \forall s \in Students,\ Assigned(s,m)$$
@@ -340,14 +340,14 @@ Phân biệt nghĩa hai câu:
 <details>
 <summary>Đáp án</summary>
 
-1. Mỗi sinh viên có **một** cố vấn (cố vấn có thể khác nhau giữa các sinh viên).
-2. Có **một** cố vấn chung phụ trách **tất cả** sinh viên — mạnh hơn và hiếm khi đúng trong thực tế.
+1. Mỗi sinh viên đều có một cố vấn (cố vấn có thể khác nhau giữa các sinh viên).
+2. Có một cố vấn chung phụ trách tất cả sinh viên — phát biểu mạnh hơn và ít gặp hơn trong thực tế.
 
 </details>
 
 ### Bài tập 6: Invariant tài khoản
 
-Viết `assert` hoặc `if/raise` bảo vệ invariant: tổng số dư mọi tài khoản không đổi sau `transfer`.
+Viết `assert` hoặc `if`/`raise` để bảo vệ bất biến: tổng số dư của tất cả các tài khoản không thay đổi sau khi gọi `transfer`.
 
 ```python
 def transfer(balances: dict[str, float], src: str, dst: str, amt: float) -> None:
@@ -373,7 +373,7 @@ def transfer(balances: dict[str, float], src: str, dst: str, amt: float) -> None
 
 ### Bài tập 7: Zod schema
 
-Viết schema Zod cho user: `email` hợp lệ, `age` số nguyên từ 18 đến 120.
+Viết schema Zod cho đối tượng người dùng gồm `email` hợp lệ và `age` là số nguyên trong đoạn từ 18 đến 120.
 
 <details>
 <summary>Đáp án</summary>
@@ -389,9 +389,9 @@ const UserSchema = z.object({
 
 </details>
 
-### Bài tập 8: Từ spec đến test
+### Bài tập 8: Từ đặc tả đến kiểm thử
 
-Cho vị từ $$\forall x \in \mathbb{Z},\ x^2 \ge 0$$. Đề xuất **một** test Python và giải thích vì sao test alone không chứng minh ∀.
+Cho vị từ $$\forall x \in \mathbb{Z},\ x^2 \ge 0$$. Đề xuất một hàm kiểm thử Python và giải thích vì sao chỉ chạy kiểm thử không đủ để chứng minh mệnh đề với $$\forall$$.
 
 <details>
 <summary>Đáp án</summary>
@@ -402,7 +402,7 @@ def test_square_non_negative():
         assert x * x >= 0
 ```
 
-Test chỉ kiểm tra hữu hạn giá trị; ∀ khẳng định trên vô hạn số nguyên. Cần chứng minh (induction hoặc đại số) hoặc đặc tả hình thức — đó là lý do kết hợp test + spec.
+Kiểm thử chỉ đánh giá được trên một số hữu hạn giá trị, trong khi $$\forall$$ khẳng định trên tập vô hạn các số nguyên. Để khẳng định cho toàn miền, cần chứng minh toán học (đại số hoặc quy nạp) hoặc kiểm chứng hình thức; vì vậy kiểm thử và đặc tả luôn bổ sung cho nhau.
 
 </details>
 
@@ -414,16 +414,16 @@ Test chỉ kiểm tra hữu hạn giá trị; ∀ khẳng định trên vô hạ
 
 ## Tóm tắt
 
-- **∀ / ∃**: xương sống của yêu cầu "mọi" và "có tồn tại"; dịch sang SQL (`EXISTS`, ràng buộc) và validation schema.
-- **Phủ định lượng từ**: `NOT EXISTS` phải đọc qua luật De Morgan; tránh nhầm thứ tự lượng từ lồng nhau.
-- **Ràng buộc CSDL**: FOREIGN KEY, UNIQUE, CHECK là vị từ toàn cục trên miền bản ghi.
-- **Code**: `assert`, Pydantic/Zod, DbC là triển khai thực dụng của precondition/postcondition/invariant.
-- **Test vs spec**: test kiểm tra mẫu; ∀/∃ mô tả toàn miền — hai lớp bổ sung nhau.
+- **$$\forall$$ / $$\exists$$**: nền tảng của các yêu cầu "mọi" và "tồn tại", ánh xạ trực tiếp sang SQL (`EXISTS`, ràng buộc bảng) và validation schema.
+- **Phủ định lượng từ**: khi đọc `NOT EXISTS` cần áp dụng luật De Morgan và tránh nhầm thứ tự lượng từ lồng nhau.
+- **Ràng buộc cơ sở dữ liệu**: `FOREIGN KEY`, `UNIQUE`, `CHECK` thực chất là các vị từ trên miền bản ghi.
+- **Trong mã nguồn**: `assert`, Pydantic/Zod và Design by Contract là hiện thực của tiền điều kiện, hậu điều kiện và bất biến.
+- **Kiểm thử và đặc tả**: kiểm thử kiểm tra trên mẫu cụ thể, còn $$\forall/\exists$$ mô tả toàn miền — hai lớp bảo đảm bổ trợ cho nhau.
 
-Trong các chương tiếp theo, chúng ta sẽ dùng cùng tinh thần "phát biểu chính xác rồi suy luận" khi học chứng minh, tập hợp, và quan hệ — nền của thiết kế phần mềm đáng tin cậy.
+Trong các chương tiếp theo, chúng ta sẽ tiếp tục áp dụng cách tiếp cận phát biểu chính xác rồi suy luận khi học về chứng minh, tập hợp và quan hệ.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=76v3gRns28U">Basics of Relational Algebra</a> — Neso Academy, tiếng Anh. Xem trước đại số quan hệ, ngôn ngữ của SELECT và điều kiện.
-- <a href="https://www.youtube.com/watch?v=gyoqX0W-NH4">PREDICATE LOGIC and QUANTIFIER NEGATION - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Vị từ và lượng từ đứng sau assert và WHERE EXISTS.
-- <a href="https://www.youtube.com/watch?v=lCcBxgFWEG4">Relational Algebra Operations Explained | SQL for Beginners</a> — CodeLucky, tiếng Anh. Các phép chọn, chiếu, kết nối tương ứng điều kiện trên bảng.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=76v3gRns28U">Basics of Relational Algebra</a> — Neso Academy, tiếng Anh. Giới thiệu đại số quan hệ — cơ sở lý thuyết của `SELECT` và các điều kiện lọc.
+- <a href="https://www.youtube.com/watch?v=gyoqX0W-NH4">PREDICATE LOGIC and QUANTIFIER NEGATION - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Củng cố kiến thức vị từ và lượng từ đứng sau `assert` và `WHERE EXISTS`.
+- <a href="https://www.youtube.com/watch?v=lCcBxgFWEG4">Relational Algebra Operations Explained | SQL for Beginners</a> — CodeLucky, tiếng Anh. Giải thích các phép chọn, chiếu, kết nối tương ứng với điều kiện trên bảng dữ liệu.

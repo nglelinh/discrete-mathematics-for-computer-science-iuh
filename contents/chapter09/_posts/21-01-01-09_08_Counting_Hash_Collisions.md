@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Đếm va chạm hash: Công thức kỳ vọng của Matt Might"
 categories: chapter09
@@ -7,171 +6,184 @@ date: 2021-01-01
 order: 8
 required: false
 lang: en
-excerpt: "Ở mục trước chúng ta đã học birthday paradox và câu hỏi xác suất: có ít nhất một va chạm không? → . Mục này đặt câu hỏi đếm khác: trung bình có bao nhiêu lần…"
+excerpt: "Phân biệt xác suất có ít nhất một va chạm P(collision) với kỳ vọng số lần trùng lặp E[matches] theo công thức Matt Might, ứng dụng trong ước lượng tải công việc và bảng băm."
 ---
 
-Ở mục trước chúng ta đã học **birthday paradox** và câu hỏi xác suất: *có ít nhất một va chạm không?* → $$P(\text{collision})$$. Mục này đặt câu hỏi **đếm** khác: *trung bình có bao nhiêu lần phần tử mới “trùng” với phần tử đã có?* → **kỳ vọng số lần match** $$E[\text{matches}]$$. Matt Might ([matt.might.net](https://matt.might.net/articles/counting-hash-collisions/)) dẫn công thức từ cùng mô hình “người lần lượt bước vào phòng”, nhưng đếm tổng số lần trùng theo thứ tự insert — hữu ích cho staffing (mạng match bệnh nhân), ước lượng chi phí chaining trong hash table, và phân biệt với ngưỡng xác suất của Tom Archer.
+Ở bài trước, chúng ta đã tìm hiểu **nghịch lý sinh nhật** với câu hỏi xác suất: *có ít nhất một va chạm xảy ra hay không?* — đại lượng $$P(\text{collision})$$. Mục này đặt một câu hỏi **đếm** khác: *trung bình có bao nhiêu lần một phần tử mới đưa vào bị trùng với phần tử đã có?* — tức **kỳ vọng số lần trùng** $$E[\text{matches}]$$. Từ cùng mô hình “từng người lần lượt bước vào phòng”, Matt Might ([matt.might.net](https://matt.might.net/articles/counting-hash-collisions/)) xây dựng công thức đóng tính tổng số lần trùng theo thứ tự thêm vào. Kết quả này giúp ước lượng nhân sự xử lý hồ sơ trùng (như mạng lưới đối chiếu bệnh nhân), tính chi phí nối chuỗi (chaining) trong bảng băm, và tách bạch rõ ràng với ngưỡng xác suất ở bài Tom Archer.
 
-Minh họa: trong thử nghiệm lâm sàng với **500 mã bệnh** và **1.000 bệnh nhân** dự kiến, câu hỏi “cần bao nhiêu nurse review?” không trả lời được bằng $$P(\text{collision})$$; nó cần $$E[\text{matches}]$$.
+Xét ví dụ thực tế trong một thử nghiệm lâm sàng gồm **500 mã bệnh** và dự kiến **1.000 bệnh nhân**: câu hỏi “cần bao nhiêu điều dưỡng để rà soát các ca trùng mã?” không thể trả lời bằng $$P(\text{collision})$$ (vốn đã gần như bằng 1), mà phải dùng $$E[\text{matches}]$$.
 
-Matt Might — giáo sư tại University of Utah, blogger về PL và bioinformatics — đặt đúng câu hỏi đó trong [Counting hash collisions with the birthday paradox](https://matt.might.net/articles/counting-hash-collisions/). Cùng mô hình “người lần lượt bước vào phòng”, nhưng đếm **tổng số lần người mới trùng** thay vì hỏi “có ≥1 cặp không”. Công thức kỳ vọng:
+Matt Might — giáo sư tại Đại học Utah, tác giả nhiều bài viết về ngôn ngữ lập trình và tin sinh học — trình bày bài toán này trong [Counting hash collisions with the birthday paradox](https://matt.might.net/articles/counting-hash-collisions/). Thay vì hỏi “có tồn tại ít nhất một cặp trùng không?”, ông đếm **tổng số lần phần tử mới trùng với phần tử đã xuất hiện trước đó**, dẫn tới công thức kỳ vọng:
 
 <div class="textbook-equation" markdown="1">
 $$E[\text{matches}] = n - D + D\left(\frac{D-1}{D}\right)^n$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Trong đó $$D$$ là kích thước không gian (ngày sinh, bucket hash, mã bệnh), $$n$$ là số phần tử đã đưa vào. Trong thử nghiệm lâm sàng, đại lượng này dùng để ước lượng staffing — không chỉ để minh họa xác suất mà để ra quyết định vận hành.
+
+Trong đó $$D$$ là kích thước không gian giá trị (số ngày sinh, số bucket băm hoặc số mã bệnh) và $$n$$ là số phần tử đã đưa vào. Trong ví dụ thử nghiệm lâm sàng, đại lượng này trực tiếp phục vụ việc hoạch định nhân sự vận hành.
 
 <figure class="image" style="align: center;">
 <p align="center">
   <img src="/discrete-mathematics-for-computer-science-iuh/img/course/Hash_table_simple_999.svg"
        alt="Hash table — nhiều key ánh xạ vào cùng bucket khi va chạm"
        width="55%" height="55%">
-  <figcaption style="text-align: center;">Hình 9.8a: Cùng mô hình “người bước vào phòng”, nhưng hai câu hỏi — xác suất có va chạm (Tom Archer) và kỳ vọng số lần match (Matt Might) (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Hash_table_simple_999.svg">Wikimedia Commons</a>, CC BY-SA 3.0).</figcaption>
+  <figcaption style="text-align: center;">Hình 9.8a: Cùng mô hình “lần lượt đưa phần tử vào không gian $$D$$”, nhưng hai câu hỏi cho hai đại lượng khác nhau — xác suất có va chạm (Tom Archer) và kỳ vọng số lần trùng (Matt Might) (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Hash_table_simple_999.svg">Wikimedia Commons</a>, CC BY-SA 3.0).</figcaption>
 </p>
 </figure>
 
 ---
 
-## Hai câu hỏi — hai con số khác nhau
+## Hai câu hỏi — hai đại lượng khác nhau
 
-Cùng setup birthday: $$D$$ “ô” có thể chọn, $$n$$ người (hoặc key, hoặc bệnh nhân) lần lượt vào. Hai câu hỏi cho **hai đại lượng khác nhau**:
+Trên cùng một thiết lập với $$D$$ ô giá trị và $$n$$ phần tử lần lượt đi vào, hai câu hỏi dẫn đến hai đại lượng hoàn toàn tách biệt:
 
-| Câu hỏi | Đại lượng | Blog tham chiếu |
+| Câu hỏi | Đại lượng | Tài liệu tham chiếu |
 |:---|:---|:---|
-| Có ≥1 cặp trùng? | $$P(\text{collision})$$ | tomarcher.io (09_07) |
-| Trung bình bao nhiêu lần “người mới trùng”? | $$E[\text{matches}]$$ | matt.might.net |
+| Có ít nhất một cặp trùng nhau không? | $$P(\text{collision})$$ | tomarcher.io (`09_07`) |
+| Trung bình có bao nhiêu lần phần tử mới trùng với phần tử đã có? | $$E[\text{matches}]$$ | matt.might.net |
 
-Nhầm hai câu hỏi là nhầm quyết định. Trong phòng **23 người**, $$P(\geq 1 \text{ collision}) \approx 50\%$$ — nghĩa là *có khả năng cao* ít nhất một cặp cùng sinh nhật. Nhưng **trung bình** bao nhiêu lần người mới “đụng” vào sinh nhật đã có? Might tính ra khoảng **5** — không phải 0 hay 1, và cũng không phải “50%”.
+Nhầm lẫn hai đại lượng này sẽ dẫn đến quyết định sai. Trong phòng **23 người** ($$D = 365$$), xác suất có ít nhất một cặp trùng sinh nhật là $$P(\geq 1 \text{ collision}) \approx 50{,}7\%$$. Trong khi đó, **số lần trung bình** một người mới bước vào trùng sinh nhật với người đã ở trong phòng chỉ là $$E[\text{matches}] \approx 0{,}68$$ — tức trung bình chưa tới 1 lần trùng, không phải con số “50%”.
 
-Ví dụ Might minh họa: ba người sinh **cố ý** cùng ngày **1/7**:
+Để hiểu rõ cách đếm của Matt Might, xét ví dụ ba người cố ý có cùng ngày sinh **01/07**:
 
-- Người 1 vào: 0 match
-- Người 2 vào: 1 match (trùng người 1)
-- Người 3 vào: 1 match (trùng người 1 hoặc 2)
-- **Tổng = 2 matches**
+- Người 1 bước vào: 0 lần trùng.
+- Người 2 bước vào: 1 lần trùng (trùng với người 1).
+- Người 3 bước vào: 1 lần trùng (trùng với ngày đã có trong phòng).
+- **Tổng số lần trùng = 2**.
 
-Nhưng chỉ **một cặp unique** nếu đếm theo kiểu “ba người cùng ngày”. Công thức Might đếm **lần người mới trùng** khi lần lượt vào phòng — không đếm unique pairs. Đó là lý do $$E$$ có thể lớn hơn nhiều so với trực giác “chỉ có vài cặp trùng”.
+Lưu ý rằng nếu đếm theo số cặp hai người không phân biệt thứ tự, ba người tạo ra $$\binom{3}{2} = 3$$ cặp; còn định nghĩa của Might đếm **số sự kiện phần tử mới rơi vào giá trị đã có mặt**. Nhờ định nghĩa này, $$E[\text{matches}]$$ phản ánh chính xác số lần cần xử lý một phần tử “đụng” giá trị cũ khi dữ liệu đến tuần tự.
 
 <div class="content-box insight-box textbook-block" markdown="1">
-Khi $$n \ll \sqrt{D}$$, $$E \approx \binom{n}{2}/D$$ — gần xấp xỉ birthday pairwise. Hai công thức hội tụ khi $$n$$ nhỏ; phân tách khi $$n$$ lớn. Lúc $$n$$ gần hoặc vượt $$D$$, hầu hết người mới đều match — $$E$$ tiệm cận $$n$$, trong khi $$P(\text{collision})$$ đã gần 1 từ lâu.
+Khi $$n \ll \sqrt{D}$$, ta có xấp xỉ $$E \approx \binom{n}{2}/D$$ — gần với xấp xỉ số cặp của nghịch lý sinh nhật. Hai đại lượng tiến gần nhau khi $$n$$ nhỏ, nhưng tách biệt rõ khi $$n$$ lớn: khi $$n$$ tiến gần hoặc vượt $$D$$, xác suất $$P(\text{collision})$$ đã bão hòa gần 1 từ rất sớm, còn $$E$$ tiếp tục tăng và tiệm cận $$n - D$$ (hầu như mỗi phần tử mới đều trùng).
 </div>
 
-Dr. Phương ghi nhớ: $$P(\text{collision})$$ trả lời “có rủi ro không” — hữu ích khi thiết kế UUID hay session ID. $$E[\text{matches}]$$ trả lời “workload trung bình bao nhiêu” — hữu ích khi staffing nurse review, ước lượng chi phí chaining trong hash table, hoặc đếm số lần key mới rơi vào bucket đã có người.
+Bác sĩ Phương phân biệt rạch ròi: $$P(\text{collision})$$ trả lời “có rủi ro va chạm không?” — phù hợp khi thiết kế UUID hay session ID; còn $$E[\text{matches}]$$ trả lời “khối lượng xử lý trùng lặp trung bình là bao nhiêu?” — phù hợp khi tính nhân sự rà soát hồ sơ hoặc ước lượng số lần chèn khóa gặp bucket đã có phần tử trong bảng băm.
 
 ---
 
-## Dẫn chứng — từ xác suất từng bước đến cấp số nhân
+## Chứng minh công thức — từ xác suất từng bước đến tổng cấp số nhân
 
-Might xây công thức từng bước — không magic. Trong phòng đã có $$k-1$$ người, không gian $$D$$ ngày (hoặc bucket, hoặc mã bệnh), xác suất người thứ $$k$$ **trùng** với ít nhất một người trước đó:
+Công thức của Matt Might được suy ra trực tiếp qua từng bước. Giả sử trong phòng đã có $$k-1$$ người và không gian có $$D$$ giá trị (phân bố đều, độc lập). Xác suất để người thứ $$k$$ **trùng** với ít nhất một trong $$k-1$$ người trước đó là:
 
 <div class="textbook-equation" markdown="1">
 $$P(\text{người } k \text{ trùng}) = 1 - \left(\frac{D-1}{D}\right)^{k-1}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Giải thích ngắn: $$\left(\frac{D-1}{D}\right)^{k-1}$$ là xác suất $$k-1$$ người trước **không** trùng ngày của người mới (mô hình uniform, độc lập). Lấy 1 trừ đi là xác suất có match.
 
-Tổng kỳ vọng qua $$n$$ người — cộng xác suất match từng bước:
+Ở đây, $$\left(\frac{D-1}{D}\right)^{k-1}$$ là xác suất cả $$k-1$$ người trước đều **khác** giá trị của người thứ $$k$$; lấy 1 trừ đi ta thu được xác suất có trùng lặp.
+
+Nhờ tính tuyến tính của kỳ vọng, tổng kỳ vọng số lần trùng sau $$n$$ người là tổng xác suất qua từng bước:
 
 <div class="textbook-equation" markdown="1">
 $$E = \sum_{k=1}^{n} \left[1 - \left(\frac{D-1}{D}\right)^{k-1}\right] = n - \sum_{k=0}^{n-1} r^k$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+
 với $$r = \frac{D-1}{D}$$.
 
-Tổng cấp số nhân (đã gặp ở ch03/ch10):
+Áp dụng công thức tổng cấp số nhân (đã học ở Chương 3 và Chương 10):
 
 <div class="textbook-equation" markdown="1">
 $$\sum_{k=0}^{m} r^k = \frac{1-r^{m+1}}{1-r}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Thay $$m = n-1$$, rút gọn (chi tiết đại số trong blog Might):
+
+Thay $$m = n - 1$$ và $$1 - r = \frac{1}{D}$$ vào rồi rút gọn, ta thu được công thức đóng:
 
 <div class="textbook-equation" markdown="1">
 $$E = n - D + D\left(\frac{D-1}{D}\right)^n$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Kiểm tra nhanh với $$n=23, D=365$$:
+
+Kiểm tra nhanh với bài toán sinh nhật $$n = 23$$, $$D = 365$$:
 
 <div class="textbook-equation" markdown="1">
-$$E \approx 23 - 365 + 365 \cdot (364/365)^{23} \approx 5.0$$
+$$E = 23 - 365 + 365 \cdot \left(\frac{364}{365}\right)^{23} \approx 23 - 365 + 342{,}68 \approx 0{,}68$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Trung bình ~**5 lần** “người mới trùng sinh nhật” trong phòng 23 người — khác hẳn $$P(\geq 1 \text{ collision}) \approx 50\%$$. Cùng phòng, cùng $$D$$ và $$n$$, hai câu hỏi, hai con số. Dr. Phương nhìn lại slide staffing: cô không cần biết “50% có match” — cô cần biết nurse sẽ mở bao nhiêu hồ sơ trùng mã **trung bình** mỗi tháng.
+
+Như vậy, trong phòng 23 người, trung bình chỉ có khoảng **0,68 lần** người mới trùng ngày sinh với người đã vào trước đó, dù xác suất có ít nhất một cặp trùng là ~50,7%. Với kế hoạch nhân sự của bác sĩ Phương, con số cần quan tâm không phải “xác suất có ít nhất một ca trùng” mà là **số hồ sơ trùng mã trung bình** mà đội điều dưỡng phải xử lý mỗi tháng.
 
 ---
 
-## Patient matching — ước lượng workload thật
+## Đối chiếu bệnh nhân — ước lượng khối lượng công việc thực tế
 
-Might mô tả mạng match bệnh nhân theo mã bệnh: mỗi bệnh nhân mang một mã trong $$D$$ loại — giống “sinh nhật” trong $$D$$ ngày. Mô hình đơn giản: phân bố **gần uniform**, mỗi bệnh nhân chọn mã độc lập.
+Trong mô hình mạng đối chiếu bệnh nhân theo mã bệnh của Matt Might, mỗi bệnh nhân mang một mã trong $$D$$ loại, tương tự “ngày sinh” trong $$D$$ ngày. Giả sử ở mức cơ sở (baseline), các mã bệnh phân bố gần đều và độc lập.
 
-Dr. Phương nhập số dự kiến từ protocol:
+Bác sĩ Phương thay số liệu dự kiến từ đề cương thử nghiệm:
 
 - $$D = 500$$ mã bệnh,
-- $$n = 1{,}000$$ bệnh nhân đã vào mạng.
+- $$n = 1{,}000$$ bệnh nhân tham gia.
 
 <div class="textbook-equation" markdown="1">
 $$E = 1000 - 500 + 500 \cdot \left(\frac{499}{500}\right)^{1000}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Xấp xỉ: $$\left(\frac{499}{500}\right)^{1000} \approx e^{-2} \approx 0.135$$ (vì $$\ln(499/500) \approx -1/500$$).
+
+Sử dụng xấp xỉ $$\left(\frac{499}{500}\right)^{1000} \approx e^{-2} \approx 0{,}135$$ (do $$\ln(499/500) \approx -1/500$$):
 
 <div class="textbook-equation" markdown="1">
-$$E \approx 1000 - 500 + 500 \times 0.135 = 1000 - 500 + 67.5 \approx 567.5$$
+$$E \approx 1000 - 500 + 500 \times 0{,}135 = 500 + 67{,}5 = 567{,}5$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-→ Trung bình **~568 lần** bệnh nhân mới trùng mã với ai đó đã có. Không phải “có thể có match” — mà **gần 568 lần** match khi đã có 1.000 bệnh nhân. Workload nurse review cao vì $$n \gg D$$: không gian 500 mã đã bão hòa, hầu hết người mới đều “đụng” vào mã cũ.
+
+Trung bình sẽ có khoảng **568 lần** bệnh nhân mới trùng mã với bệnh nhân đã đăng ký trước đó. Khi $$n > D$$, không gian 500 mã đã gần bão hòa nên phần lớn ca đăng ký mới đều rơi vào mã đã có người.
 
 <div class="content-box info-box textbook-block" markdown="1">
-Công thức giả định mỗi bệnh nhân chọn mã **ngẫu nhiên độc lập** trong $$D$$ giá trị. Dịch tập trung (đại dịch, cluster địa lý) làm match **cao hơn** vì vài mã chiếm tỷ lệ lớn; phân bố lệch (mã hiếm vs mã phổ biến) làm match **thấp hơn** uniform. Dùng $$E$$ làm baseline, rồi điều chỉnh theo dữ liệu thực tế.
+Công thức giả định mỗi bệnh nhân chọn mã **đều và độc lập** trong $$D$$ giá trị. Khi có dịch bệnh tập trung cục bộ (một vài mã chiếm tỷ lệ lớn), số lần trùng thực tế sẽ **cao hơn** mức phân bố đều. Cần xem $$E$$ là mức chuẩn ban đầu rồi hiệu chỉnh theo phân bố dữ liệu thực tế.
 </div>
 
-Khi scale lên — giả sử chỉ còn $$D=200$$ bệnh trong danh mục rút gọn, nhưng $$n=5000$$ bệnh nhân:
+Xét thêm kịch bản mở rộng quy mô với danh mục rút gọn $$D = 200$$ mã bệnh nhưng $$n = 5{,}000$$ bệnh nhân:
 
 <div class="textbook-equation" markdown="1">
-$$E = 5000 - 200 + 200 \cdot (199/200)^{5000}$$
+$$E = 5000 - 200 + 200 \cdot \left(\frac{199}{200}\right)^{5000}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+
 <div class="textbook-equation" markdown="1">
-$$(199/200)^{5000} \approx e^{-25} \approx 1.4 \times 10^{-11}$$
+$$\left(\frac{199}{200}\right)^{5000} \approx e^{-25} \approx 1{,}4 \times 10^{-11}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+
 <div class="textbook-equation" markdown="1">
-$$E \approx 5000 - 200 + \text{~0} \approx 4800$$
+$$E \approx 5000 - 200 + 0 = 4800$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Hầu hết bệnh nhân sau giai đoạn đầu đều “match” một bệnh đã có — nurse review **không** scale tuyến tính với $$n$$. Thêm 1.000 bệnh nhân nữa không thêm ~1.000 review mới; gần như mỗi người mới đều kéo theo một lần mở hồ sơ. Dr. Phương dùng con số này trong slide: justify thêm **2 FTE** nurse review thay vì “cảm giác sẽ đông”. Might’s formula không sexy như Monte Carlo — nhưng đóng form, chứng minh được từ tổng cấp số nhân, và đổi được staffing plan trước khi trial mở cổng đăng ký.
+
+Sau giai đoạn đầu khi 200 mã đã có mặt, gần như mọi bệnh nhân đăng ký thêm đều tạo ra một lần trùng mã. Nhờ con số định lượng này (suy trực tiếp từ tổng cấp số nhân), bác sĩ Phương có cơ sở rõ ràng để đề xuất bổ sung **2 vị trí điều dưỡng toàn thời gian (2 FTE)** trước khi mở cổng đăng ký thay vì ước lượng cảm tính.
 
 ---
 
 ### Thử nghiệm: va chạm khi băm vào bảng
 
-Thả khóa vào các ô băm, đếm ô bị chiếm và so với kỳ vọng.
+Thả các khóa vào các ô băm để đếm số ô bị chiếm và đối chiếu với giá trị kỳ vọng.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="sim-explainer" data-tab="hash"></div>
 </div>
 <script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
 
-## Hash buckets — cùng công thức, khác domain
+## Bảng băm (hash buckets) — cùng công thức trên một miền ứng dụng khác
 
-Công thức Might không chỉ cho sinh nhật hay mã bệnh. Hash function **uniform** ánh xạ key vào $$D$$ bucket; insert $$n$$ key lần lượt. $$E[\text{matches}]$$ ước lượng số lần key mới rơi vào bucket **đã có** ít nhất một key — trực tiếp liên quan chi phí **chaining** (duyệt linked list trong bucket) hoặc số lần probe trong open addressing.
+Công thức của Matt Might áp dụng trực tiếp cho bảng băm có hàm băm phân bố đều trên $$D$$ bucket khi chèn lần lượt $$n$$ khóa. Đại lượng $$E[\text{matches}]$$ cho biết trung bình có bao nhiêu lần thao tác chèn rơi vào một bucket **đã có sẵn** ít nhất một khóa — liên quan trực tiếp đến chi phí nối chuỗi (chaining) hoặc thăm dò (probing) trong open addressing.
 
-Ví dụ thiết kế bảng băm: $$D=1024$$ bucket, $$n=100$$ key uniform:
-
-<div class="textbook-equation" markdown="1">
-$$E = 100 - 1024 + 1024 \cdot (1023/1024)^{100} \approx 2.7$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-Trung bình khoảng **2,7 lần** insert “đụng” bucket không rỗng — nhỏ vì $$n \ll D$$. Khi $$n$$ tăng lên 800 cùng 1024 bucket:
+Xét bảng băm có $$D = 1024$$ bucket với $$n = 100$$ khóa phân bố đều:
 
 <div class="textbook-equation" markdown="1">
-$$E \approx 800 - 1024 + 1024 \cdot (1023/1024)^{800} \approx 259$$
+$$E = 100 - 1024 + 1024 \cdot \left(\frac{1023}{1024}\right)^{100} \approx 4{,}68$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Load factor $$\alpha = n/D \approx 0.78$$ — gần đầy — và kỳ vọng match đã lên hàng trăm. Công thức không thay thế phân tích load factor đầy đủ (variance, worst case), nhưng cho **intuition** nhanh trước khi profile thật: “với $$n$$ key và $$D$$ bucket uniform, trung bình bao nhiêu lần phải so sánh vì bucket đã có người?”
 
-Dr. Phương nhận ra pattern: birthday paradox (09_07) hỏi **có** collision không; Might đếm **bao nhiêu lần** collision theo thứ tự insert. Cùng toán, khác output — và khác quyết định: UUID strategy vs nurse staffing vs hash table tuning.
+Trung bình chỉ khoảng **4,7 lần** chèn gặp bucket không rỗng vì $$n \ll D$$. Khi tăng lên $$n = 800$$ khóa trên cùng 1024 bucket:
+
+<div class="textbook-equation" markdown="1">
+$$E = 800 - 1024 + 1024 \cdot \left(\frac{1023}{1024}\right)^{800} \approx 244{,}6$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+
+Lúc này hệ số tải $$\alpha = n/D \approx 0{,}78$$ và số lần chèn đụng bucket cũ đã lên tới khoảng **245 lần**. Tuy công thức không thay thế phân tích đầy đủ về phương sai hay trường hợp xấu nhất, nó cung cấp một ước lượng nhanh trước khi tiến hành đo đạc hiệu năng chi tiết.
+
+Tóm lại, bài `09_07` (nghịch lý sinh nhật) trả lời *có va chạm hay không*, còn bài này (Matt Might) trả lời *trung bình có bao nhiêu lần va chạm theo thứ tự chèn* — hai đầu ra khác nhau phục vụ các quyết định thiết kế khác nhau (chiến lược UUID, hoạch định nhân sự hay tinh chỉnh bảng băm).
 
 **Đọc thêm**: [matt.might.net — Counting hash collisions](https://matt.might.net/articles/counting-hash-collisions/)
 
@@ -181,146 +193,155 @@ Dr. Phương nhận ra pattern: birthday paradox (09_07) hỏi **có** collision
 
 ### Bài tập 1
 
-Phòng có $$D=365$$ ngày sinh, $$n=23$$ người vào lần lượt (mô hình uniform). Dùng công thức Might, tính $$E[\text{matches}]$$. So sánh ngắn với $$P(\geq 1 \text{ collision}) \approx 50\%$$ từ bài 09_07.
+Một phòng có $$D = 365$$ ngày sinh và $$n = 23$$ người lần lượt bước vào (phân bố đều). Áp dụng công thức Matt Might để tính $$E[\text{matches}]$$ và so sánh ngắn gọn với $$P(\geq 1 \text{ collision}) \approx 50{,}7\%$$ ở bài `09_07`.
 
 <details>
 <summary>Đáp án</summary>
 
 <div class="textbook-equation" markdown="1">
-$$E = 23 - 365 + 365 \cdot (364/365)^{23}$$
+$$E = 23 - 365 + 365 \cdot \left(\frac{364}{365}\right)^{23}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Tính $$(364/365)^{23} \approx 0.940$$:
+
+Vì $$\left(\frac{364}{365}\right)^{23} \approx 0{,}93885$$:
 
 <div class="textbook-equation" markdown="1">
-$$E \approx 23 - 365 + 365 \times 0.940 \approx 23 - 365 + 343.1 \approx 5.0$$
+$$E \approx 23 - 365 + 365 \times 0{,}93885 \approx 23 - 365 + 342{,}68 \approx 0{,}68$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Trung bình **~5 lần** người mới trùng sinh nhật đã có. $$P(\geq 1 \text{ collision}) \approx 50\%$$ chỉ nói “có khả năng cao ít nhất một cặp trùng” — không cho biết workload **5 lần** match theo thứ tự vào phòng. Hai đại lượng bổ sung nhau, không thay thế.
+
+Trung bình chỉ có khoảng **0,68 lần** người mới trùng ngày sinh với người đã vào trước đó. Trong khi $$P(\geq 1 \text{ collision}) \approx 50{,}7\%$$ cho biết khả năng xuất hiện ít nhất một cặp trùng đã quá nửa, $$E[\text{matches}] \approx 0{,}68$$ cho biết số lần trùng trung bình theo thứ tự vào phòng. Hai đại lượng bổ sung cho nhau chứ không thay thế nhau.
 
 </details>
 
 ### Bài tập 2
 
-Ba người có sinh nhật **1/7**, **1/7**, **1/7** (cố ý trùng). Liệt kê số match từng bước và tổng $$E$$ theo định nghĩa Might. Có bao nhiêu **cặp unique** cùng ngày? Giải thích vì sao hai con số khác nhau.
+Ba người có cùng ngày sinh là **01/07**. Liệt kê số lần trùng ở từng bước và tổng số lần trùng theo định nghĩa của Matt Might. Có bao nhiêu **cặp phân biệt** cùng ngày sinh? Giải thích vì sao hai con số khác nhau.
 
 <details>
 <summary>Đáp án</summary>
 
-- Người 1: 0 match
-- Người 2: 1 match (trùng người 1)
-- Người 3: 1 match (trùng người 1 hoặc 2)
+- Người 1: 0 lần trùng.
+- Người 2: 1 lần trùng (trùng người 1).
+- Người 3: 1 lần trùng (trùng với ngày đã có của người 1 và 2).
 
-**Tổng $$E = 2$$** theo Might.
+**Tổng theo định nghĩa Might**: $$2$$ lần trùng.
 
-**Cặp unique** cùng ngày: $$\binom{3}{2} = 3$$ cặp (1–2, 1–3, 2–3) — nhưng khi đếm “lần người mới trùng”, người 3 chỉ góp **1** lần, không góp 2 lần cho hai cặp riêng. Might đếm **sự kiện** “người $$k$$ match với ai đó trước đó”, không đếm toàn bộ unordered pairs trong tập cuối.
+**Số cặp phân biệt** cùng ngày sinh: $$\binom{3}{2} = 3$$ cặp (1–2, 1–3 và 2–3). Hai con số khác nhau vì công thức Might đếm **sự kiện** “người thứ $$k$$ có trùng với ít nhất một người trước đó hay không” (mỗi người mới đóng góp tối đa 1), chứ không đếm toàn bộ số cặp không có thứ tự trong tập kết quả.
 
 </details>
 
 ### Bài tập 3
 
-Mạng match bệnh nhân: $$D=500$$ mã, $$n=1000$$ bệnh nhân uniform. Tính $$E$$ (có thể dùng xấp xỉ $$e^{-n/D}$$). Nếu mỗi match cần **15 phút** nurse review, ước lượng tổng giờ review **kỳ vọng** (coi mỗi match độc lập).
+Trong mạng lưới đối chiếu bệnh nhân với $$D = 500$$ mã bệnh và $$n = 1000$$ bệnh nhân (phân bố đều), tính $$E$$ (có thể dùng xấp xỉ $$e^{-n/D}$$). Nếu mỗi lần trùng cần **15 phút** rà soát của điều dưỡng, ước lượng tổng số giờ rà soát kỳ vọng.
 
 <details>
 <summary>Đáp án</summary>
 
 <div class="textbook-equation" markdown="1">
-$$E = 1000 - 500 + 500 \cdot (499/500)^{1000}$$
+$$E = 1000 - 500 + 500 \cdot \left(\frac{499}{500}\right)^{1000}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-<div class="textbook-equation" markdown="1">
-$$(499/500)^{1000} \approx e^{-2} \approx 0.135$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$E \approx 1000 - 500 + 67.5 = 567.5$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-Tổng giờ review kỳ vọng:
 
 <div class="textbook-equation" markdown="1">
-$$567.5 \times 15 \text{ phút} = 8512.5 \text{ phút} \approx 142 \text{ giờ}$$
+$$\left(\frac{499}{500}\right)^{1000} \approx e^{-2} \approx 0{,}135$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Đây là baseline uniform — dịch tập trung có thể làm $$E$$ cao hơn; phân bố lệch có thể thấp hơn.
+
+<div class="textbook-equation" markdown="1">
+$$E \approx 1000 - 500 + 67{,}5 = 567{,}5$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+
+Tổng thời gian rà soát kỳ vọng:
+
+<div class="textbook-equation" markdown="1">
+$$567{,}5 \times 15 \text{ phút} = 8512{,}5 \text{ phút} \approx 142 \text{ giờ}$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+
+Đây là ước lượng cơ sở dưới giả định phân bố đều; nếu bệnh nhân tập trung vào một số ít mã bệnh phổ biến, số lần trùng thực tế sẽ cao hơn.
 
 </details>
 
 ### Bài tập 4
 
-Hash table: $$D=1024$$ bucket, $$n=100$$ key uniform. Tính $$E[\text{matches}]$$. Nếu $$n=500$$, $$E$$ xấp xỉ bao nhiêu? Load factor $$\alpha = n/D$$ trong hai trường hợp là gì?
+Xét bảng băm có $$D = 1024$$ bucket với hàm băm đều. Tính $$E[\text{matches}]$$ và hệ số tải $$\alpha = n/D$$ trong hai trường hợp: $$n = 100$$ và $$n = 500$$.
 
 <details>
 <summary>Đáp án</summary>
 
-$$n=100$$:
+Với $$n = 100$$:
 
 <div class="textbook-equation" markdown="1">
-$$E = 100 - 1024 + 1024 \cdot (1023/1024)^{100} \approx 2.7$$
+$$E = 100 - 1024 + 1024 \cdot \left(\frac{1023}{1024}\right)^{100} \approx 4{,}68$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-<div class="textbook-equation" markdown="1">
-$$\alpha = 100/1024 \approx 0.098$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-$$n=500$$:
 
 <div class="textbook-equation" markdown="1">
-$$E = 500 - 1024 + 1024 \cdot (1023/1024)^{500} \approx 159$$
+$$\alpha = \frac{100}{1024} \approx 0{,}098$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+
+Với $$n = 500$$:
+
 <div class="textbook-equation" markdown="1">
-$$\alpha = 500/1024 \approx 0.49$$
+$$E = 500 - 1024 + 1024 \cdot \left(\frac{1023}{1024}\right)^{500} \approx 104{,}3$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Khi $$\alpha$$ tăng, $$E$$ tăng nhanh — gần nửa bucket đã có key thì trung bình ~159 lần insert chạm bucket không rỗng.
+
+<div class="textbook-equation" markdown="1">
+$$\alpha = \frac{500}{1024} \approx 0{,}49$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+
+Khi hệ số tải $$\alpha$$ tăng từ ~0,1 lên ~0,49, số lần chèn chạm bucket đã có khóa tăng vọt từ ~4,7 lên ~104 lần.
 
 </details>
 
 ---
 
-## Production: khi collision không còn là lý thuyết
+## Production: khi va chạm không còn là lý thuyết
 
-### Ngưỡng collision thực tế
+### Ngưỡng va chạm thực tế
 
-| Không gian $$D$$ | ~50% collision tại $$n$$ | ~21% collision tại $$n$$ |
+| Không gian $$D$$ | Ngưỡng ~50% va chạm tại $$n$$ | Ngưỡng ~21% va chạm tại $$n$$ |
 |:---|:---:|:---:|
 | 32-bit ($$2^{32}$$) | ~77.000 | ~45.000 |
-| 64-bit | ~$$5 \times 10^9$$ | ~$$2 \times 10^9$$ |
-| UUID v4 ($$2^{122}$$) | ~$$2.7 \times 10^{18}$$ | ~$$1 \times 10^{18}$$ |
+| 64-bit ($$2^{64}$$) | ~$$5 \times 10^9$$ | ~$$2 \times 10^9$$ |
+| UUID v4 ($$2^{122}$$) | ~$$2{,}7 \times 10^{18}$$ | ~$$1 \times 10^{18}$$ |
 
-**SessionHub case (32-bit):** ~45k session active → $$P(\text{collision}) \approx 21\%$$ — không còn “hiếm”. `DuplicateKeyException` xuất hiện thường xuyên. Fix: chuyển sang **UUID v4** + `expires_at` dạng **BIGINT** (ms, tránh Y2038).
+**Tình huống SessionHub (32-bit):** Khi có khoảng 45.000 phiên hoạt động, $$P(\text{collision}) \approx 21\%$$ khiến `DuplicateKeyException` xuất hiện thường xuyên. Cách khắc phục là chuyển sang **UUID v4** kết hợp `expires_at` kiểu **BIGINT** (mili giây, tránh sự cố Y2038).
 
-**Bài học:** Không gian 32-bit nghe “khủng” nhưng production scale nhanh. Khi $$n$$ đạt ~0.6% của $$D$$, rủi ro đã ở mức đáng lo.
-
----
-
-### Incident 4 — Email Nhật `????`
-
-**Triệu chứng:** Email tiếng Nhật hiển thị `????` trong log và UI.
-
-**Nguyên nhân:** Thiếu `charset=UTF-8` trên MIME header. Hệ thống hash email theo byte string, nhưng encoding không nhất quán → cùng nội dung email nhưng hash khác nhau (hoặc ngược lại).
-
-**Fix:** Chuẩn hóa UTF-8 cho mọi input email trước khi hash. Joel Spolsky: “Plain text không tồn tại — chỉ có text + encoding.”
-
-**Bài:** 09_01 (character encoding), 09_08 (hash consistency).
+**Bài học:** Không gian 32-bit trông có vẻ rất lớn (~4,3 tỷ), nhưng chỉ cần $$n$$ đạt khoảng **0,001%** của $$D$$ (45.000 trên 4,3 tỷ), rủi ro va chạm đã ở mức đáng báo động.
 
 ---
 
-### Incident 5 — Metric cardinality bùng nổ
+### Incident 4 — Email tiếng Nhật hiển thị `????`
 
-**Triệu chứng:** Prometheus OOM sau khi thêm label `user_id` vào metric `login_total`.
+**Triệu chứng:** Email tiếng Nhật hiển thị toàn dấu `????` trong nhật ký và giao diện người dùng.
 
-**Toán:** Cardinality $$\vert V_C\vert $$ = số giá trị **distinct** trên cột $$C$$. Mỗi user_id là một label riêng → triệu time series.
+**Nguyên nhân:** Thiếu khai báo `charset=UTF-8` trong tiêu đề MIME. Hệ thống tính băm theo chuỗi byte, nhưng encoding không nhất quán khiến cùng một nội dung văn bản lại cho ra giá trị băm khác nhau.
 
-**Công thức:** Giả sử 500k DAU, mỗi user login 2 lần/ngày → ~1M series chỉ từ 1 metric.
+**Cách khắc phục:** Chuẩn hóa toàn bộ đầu vào email sang UTF-8 trước khi băm và truyền tải, tuân theo nguyên tắc của Joel Spolsky: không có “văn bản thuần”, chỉ có byte kèm bảng mã.
 
-**Fix:** Giữ label `status`, `method`, `region` — **không** `user_id`/`email`. Cardinality thấp → compression tốt, query nhanh.
-
-**Bài:** 09_09 (Cardinality analytics).
+**Liên hệ bài học:** `09_01` (Unicode và encoding), `09_08` (tính nhất quán của hàm băm).
 
 ---
 
+### Incident 5 — Bùng nổ cardinality trên metric
+
+**Triệu chứng:** Prometheus hết bộ nhớ (OOM) ngay sau khi thêm nhãn `user_id` vào metric `login_total`.
+
+**Cơ sở toán học:** Lực lượng (cardinality) $$\vert V_C\vert $$ là số giá trị **phân biệt** trên cột hoặc nhãn $$C$$. Gắn `user_id` làm nhãn biến mỗi người dùng thành một chuỗi thời gian (time series) riêng.
+
+**Ước lượng:** Với 500.000 DAU, mỗi người đăng nhập trung bình 2 lần/ngày, chỉ riêng một metric đã có thể sinh ra hàng trăm nghìn đến hàng triệu time series khi kết hợp thêm các nhãn khác.
+
+**Cách khắc phục:** Chỉ giữ các nhãn có lực lượng thấp như `status`, `method`, `region` — tuyệt đối không đưa `user_id` hay `email` vào nhãn metric.
+
+**Liên hệ bài học:** `09_09` (Cardinality và analytics ở quy mô lớn).
+
+---
 
 ## Xem thêm / Video gợi ý
 
@@ -329,16 +350,16 @@ Khi $$\alpha$$ tăng, $$E$$ tăng nhanh — gần nửa bucket đã có key thì
 
 ## Tóm tắt
 
-Matt Might đặt câu hỏi **đếm** bên cạnh câu hỏi **xác suất** của birthday paradox. Bài 09_07: *có ≥1 collision không?* → $$P(\text{collision})$$. Bài này: *trung bình bao nhiêu lần người mới trùng?* → $$E[\text{matches}] = n - D + D\left(\frac{D-1}{D}\right)^n$$, dẫn từ xác suất match từng bước và tổng cấp số nhân.
+Công thức của Matt Might bổ sung góc nhìn **đếm kỳ vọng** bên cạnh câu hỏi **xác suất** của nghịch lý sinh nhật. Nếu bài `09_07` hỏi *có ít nhất một va chạm không?* ($$P(\text{collision})$$), thì bài này trả lời *trung bình có bao nhiêu lần phần tử mới trùng với phần tử đã có?* bằng công thức $$E[\text{matches}] = n - D + D\left(\frac{D-1}{D}\right)^n$$, suy ra từ xác suất từng bước và tổng cấp số nhân.
 
-Hai con số không thay thế nhau. Phòng 23 người: ~50% có ít nhất một cặp trùng, nhưng kỳ vọng chỉ ~5 lần “người mới đụng sinh nhật cũ”. Dr. Phương dùng $$E$$ để staffing mạng match bệnh nhân — với $$D=500, n=1000$$, ~568 lần match, không scale tuyến tính khi $$n \gg D$$. Cùng công thức áp cho hash bucket: ước lượng số lần key mới rơi vào bucket đã có người trước khi profile chi tiết.
+Hai đại lượng này phục vụ các mục đích khác nhau: trong phòng 23 người, xác suất có ít nhất một cặp trùng là ~50,7% nhưng kỳ vọng số lần người mới trùng chỉ là ~0,68. Bác sĩ Phương dùng $$E$$ để tính nhân sự cho mạng đối chiếu bệnh nhân (với $$D = 500, n = 1000$$ cho ~568 lần trùng), còn kỹ sư hệ thống dùng cùng công thức để ước lượng số lần chèn khóa chạm bucket đã có phần tử trong bảng băm.
 
-Phân biệt **$$P(\text{at least one})$$** vs **$$E[\text{number of matches}]$$** là kỹ năng đếm trong production — cùng setup, câu hỏi sai → quyết địch sai (UUID vs nurse vs hash tuning).
+Phân biệt rõ **$$P(\text{at least one})$$** và **$$E[\text{matches}]$$** giúp chọn đúng chỉ số cho từng quyết định kỹ thuật (thiết kế UUID, hoạch định nhân sự hay tinh chỉnh bảng băm).
 
-Trong bài tiếp theo, chúng ta xét quy mô khác hẳn: [Cloudflare](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/) xử lý **1M DNS queries/giây**, và vì sao aggregate theo **query name** (cardinality cao) không nén được như aggregate theo **response code** — bài toán đếm **distinct values** ở quy mô edge, không còn là phòng sinh nhật hay bucket hash.
+Trong bài tiếp theo, chúng ta sẽ khảo sát bài toán ở quy mô mạng biên: cách [Cloudflare](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/) xử lý **hơn 1 triệu truy vấn DNS mỗi giây** và vì sao tổng hợp theo `query_name` (cardinality cao) không thể nén hiệu quả như tổng hợp theo `response_code`.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Xem trước kỳ vọng va chạm băm và liên hệ sinh nhật.
-- <a href="https://www.youtube.com/watch?v=gmur3e33A6A">CS 124: Hashing Collisions and the Birthday Paradox</a> — CS 124, tiếng Anh. Đếm va chạm trên bảng băm, cùng hai câu hỏi của bài.
-- <a href="https://www.youtube.com/watch?v=OUQVhnuTMVU">Closer Look at the Birthday Paradox - Numberphile</a> — Numberphile, tiếng Anh. Xấp xỉ sinh nhật phía sau công thức kỳ vọng.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Giới thiệu va chạm băm và mối liên hệ với nghịch lý sinh nhật.
+- <a href="https://www.youtube.com/watch?v=gmur3e33A6A">CS 124: Hashing Collisions and the Birthday Paradox</a> — CS 124, tiếng Anh. Phân tích bài toán đếm va chạm trên bảng băm tương ứng hai câu hỏi trong bài.
+- <a href="https://www.youtube.com/watch?v=OUQVhnuTMVU">Closer Look at the Birthday Paradox - Numberphile</a> — Numberphile, tiếng Anh. Trình bày các xấp xỉ sinh nhật phía sau công thức kỳ vọng.

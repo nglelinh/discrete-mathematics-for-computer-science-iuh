@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. Binary fuse filters (JEA 2022) sit a few perc
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite the pigeonhole principle or the existing computing applications lesson.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại nguyên lý Dirichlet hay bài ứng dụng trong khoa học máy tính.
+Ghi chú ứng dụng song ngữ (tiếng Anh, sau đó là tiếng Việt). Bài này **không** thay thế nội dung về nguyên lý Dirichlet hay bài ứng dụng trong khoa học máy tính.
 
 </div>
 
@@ -34,16 +34,16 @@ The optional takeaway for Chapter 8: the 2022 data-structure race is a quantitat
 
 ## Tiếng Việt
 
-Nguyên lý Dirichlet giải thích vì sao thành viên tập **hoàn hảo** và siêu gọn là bất khả: nhiều chim hơn lỗ buộc va chạm. Cấu trúc thành viên xấp xỉ chấp nhận tỷ lệ dương tính giả $$\varepsilon$$ rồi hỏi chúng cách sàn lý thuyết thông tin $$\approx n \log_2(1/\varepsilon)$$ bit bao xa.
+Nguyên lý Dirichlet giải thích vì sao không thể xây dựng một cấu trúc kiểm tra phần tử thuộc tập (membership) vừa **chính xác tuyệt đối** vừa siêu gọn: khi số khóa (bồ câu) lớn hơn số mẫu bit khả dĩ (chuồng), va chạm chắc chắn xảy ra. Các cấu trúc kiểm tra xấp xỉ chấp nhận một tỷ lệ dương tính giả $$\varepsilon$$, rồi đặt câu hỏi bộ nhớ cần dùng tiến gần đến cận dưới lý thuyết thông tin $$\approx n \log_2(1/\varepsilon)$$ bit (cho $$n$$ khóa) đến mức nào.
 
-Graf và Lemire (JEA 2022) báo cáo binary fuse filter cách cận dưới **13%** (khoảng **8%** nếu layout chậm hơn), thắng xor filter về không gian và thường cả thời gian xây, đồng thời so với Bloom, cuckoo và ribbon.
+Trong công trình trên tạp chí *J. Exp. Algorithmics* (2022), Graf và Lemire báo cáo bộ lọc **binary fuse filter** chỉ lớn hơn cận dưới lý thuyết khoảng **13%** (hoặc khoảng **8%** nếu dùng bố cục chậm hơn), vượt qua xor filter về dung lượng bộ nhớ và thường nhanh hơn về thời gian xây dựng, đồng thời so sánh trực tiếp với các bộ lọc Bloom, cuckoo và ribbon.
 
-Bài học tùy chọn: cuộc đua cấu trúc dữ liệu 2022 là cuộc thi chuồng bồ câu định lượng. Va chạm bảng băm (đã có trong mục bắt buộc) là cùng hiện tượng, khác layout. Binary fuse không bãi bỏ Dirichlet; chúng tiêu bit cẩn thận hơn sau khi chấp nhận một số lỗ phải dùng chung.
+Điểm đáng rút ra cho Chương 8 là cuộc đua tối ưu các cấu trúc dữ liệu bộ lọc thực chất là một bài toán chuồng bồ câu định lượng. Hiện tượng va chạm trong bảng băm (đã học ở phần bắt buộc) có cùng bản chất, chỉ khác cách tổ chức bộ nhớ. Binary fuse filter không phá vỡ nguyên lý Dirichlet; thay vào đó, khi đã chấp nhận một số ngăn chứa phải dùng chung, chúng sử dụng từng bit bộ nhớ một cách tiết kiệm hơn.
 
-**Câu hỏi.** (1) Nếu đòi $$\varepsilon = 0$$ và $$n > m$$ fingerprint, định lý nào của chương áp dụng? (2) Vì sao “cao hơn cận dưới 13%” là phát biểu chuồng bồ câu chứ không phải học máy?
+**Câu hỏi.** (1) Nếu yêu cầu $$\varepsilon = 0$$ với $$n > m$$ dấu vân tay (fingerprint), định lý nào của chương này được áp dụng? (2) Vì sao phát biểu “cao hơn cận dưới 13%” mang bản chất của nguyên lý chuồng bồ câu chứ không phải học máy?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Xem trước bộ lọc kiểu Bloom: bộ nhớ chặn dưới bởi số phần tử cần phân biệt.
-- <a href="https://www.youtube.com/watch?v=eV1haPUt0NU">Hyperloglog: Facebook&#x27;s algorithm to count distinct elements</a> — Gaurav Sen, tiếng Anh. HyperLogLog đếm lực lượng gần đúng, cùng họ sketch với fuse filter.
-- <a href="https://www.youtube.com/watch?v=B_PexYrEcEw">HyperLogLog Hit Counter - Computerphile</a> — Computerphile, tiếng Anh. HyperLogLog ngắn, thấy vì sao không lưu từng khóa.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Giới thiệu trực quan bộ lọc Bloom và lý do bộ nhớ bị chặn dưới bởi số phần tử cần phân biệt.
+- <a href="https://www.youtube.com/watch?v=eV1haPUt0NU">Hyperloglog: Facebook&#x27;s algorithm to count distinct elements</a> — Gaurav Sen, tiếng Anh. Giới thiệu HyperLogLog để đếm lực lượng gần đúng, thuộc cùng họ cấu trúc tóm tắt (sketch) với fuse filter.
+- <a href="https://www.youtube.com/watch?v=B_PexYrEcEw">HyperLogLog Hit Counter - Computerphile</a> — Computerphile, tiếng Anh. Minh họa ngắn gọn về HyperLogLog, làm rõ vì sao không cần lưu riêng từng khóa.

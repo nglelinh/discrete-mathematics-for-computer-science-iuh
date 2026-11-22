@@ -6,9 +6,8 @@ date: 2021-01-01
 order: 14
 required: true
 lang: en
-excerpt: "Nhánh nghiên cứu; paper mẫu; 10 tuần đọc; liên hệ Ch.19–20."
+excerpt: "Tổng hợp mạch kiến thức 18.1–18.13, các nhánh nghiên cứu hiện đại về ô-tô-mát, kế hoạch tự đọc 10 tuần và liên hệ với Chương 19–20."
 ---
-
 
 <div class="textbook-epigraph" markdown="1">
 
@@ -18,45 +17,45 @@ excerpt: "Nhánh nghiên cứu; paper mẫu; 10 tuần đọc; liên hệ Ch.19�
 
 </div>
 
-## Bản đồ 18.1–18.13
+## Bản đồ kiến thức 18.1–18.13
 
-DFA → NFA ≡ → regex/Kleene → pump/MN → TM → undecidable.
+Mạch lý thuyết của chương đi theo trình tự: DFA → sự tương đương NFA ≡ DFA → biểu thức chính quy và định lý Kleene → bổ đề bơm và định lý Myhill–Nerode → máy Turing → tính không quyết định được.
 
-## Nhánh nghiên cứu
+## Các nhánh nghiên cứu chính
 
-| Nhánh | Chủ đề | Hội nghị/sách |
+| Nhánh nghiên cứu | Chủ đề tiêu biểu | Hội nghị / tài liệu chính |
 |:---|:---|:---|
-| Descriptional complexity | state complexity | DCFS |
-| Weighted/timed automata | verification | CONCUR, CAV |
-| Learning automata | Angluin L* | ICML/ALT |
-| Circuit vs automata | complexity | CCC |
-| Logic + automata | MSO, Büchi | LICS |
+| Descriptional complexity | Độ phức tạp trạng thái (*state complexity*) | DCFS |
+| Weighted / timed automata | Kiểm chứng hình thức (*verification*) | CONCUR, CAV |
+| Learning automata | Thuật toán học $$L^*$$ của Angluin | ICML, ALT |
+| Circuit vs. automata | Độ phức tạp mạch và ô-tô-mát | CCC |
+| Logic và automata | Logic bậc hai đơn ngôi (MSO), ô-tô-mát Büchi | LICS |
 
-## 10 tuần
+## Kế hoạch tự đọc trong 10 tuần
 
-1–3: Sipser 1 + chứng minh subset/pump/MN  
-4–5: Kleene + closure  
-6–7: TM + undecidability  
-8: chọn nhánh + 10 paper  
-9–10: note 6 trang / talk
+- **Tuần 1–3:** Đọc Sipser Chương 1 và tự chứng minh lại xây dựng tập con, bổ đề bơm, Myhill–Nerode.
+- **Tuần 4–5:** Ôn định lý Kleene và các tính chất đóng.
+- **Tuần 6–7:** Máy Turing và tính không quyết định được.
+- **Tuần 8:** Chọn một nhánh nghiên cứu và đọc khảo sát khoảng 10 bài báo.
+- **Tuần 9–10:** Viết ghi chú tổng hợp khoảng 6 trang hoặc chuẩn bị bài trình bày ngắn.
 
-## Portfolio tối thiểu
+## Danh mục bài tập cốt lõi
 
-1. Subset construction tay  
-2. Pump $$0^n1^n$$  
-3. MN infinite classes  
-4. Tableau vs Ch.20 Cook–Levin (cùng tinh thần)
+1. Thực hiện phép xây dựng tập con hoàn toàn bằng tay.
+2. Chứng minh $$0^n1^n$$ không chính quy bằng bổ đề bơm.
+3. Chứng minh một ngôn ngữ có vô hạn lớp tương đương theo Myhill–Nerode.
+4. Đối chiếu khái niệm bảng cấu hình (*tableau*) của máy Turing với định lý Cook–Levin ở Chương 20.
 
-## Đọc cốt lõi
+## Tài liệu đọc cốt lõi
 
-Sipser; Hopcroft–Ullman; Kozen; Sakarovitch *Elements of Automata Theory* (nâng cao).
+Sipser; Hopcroft–Ullman; Kozen; Sakarovitch, *Elements of Automata Theory* (mức nâng cao).
 
 ## Tóm tắt Chương 18
 
-14 bài: từ DFA đến giới hạn tính toán — sẵn sàng đọc paper automata/verification và nối Ch.19–20.
+Qua 14 bài học từ DFA đến giới hạn tính toán của máy Turing, bạn đã có nền tảng để tiếp cận các công trình về ô-tô-mát và kiểm chứng hình thức, đồng thời sẵn sàng chuyển tiếp sang Chương 19 và Chương 20.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=BBuBv3P2aSs">TOC – Conclusion and Summary</a> — Neso Academy, tiếng Anh. Xem trước bản đồ cuối khóa otomat, cùng lộ trình 18.1–18.13.
-- <a href="https://www.youtube.com/watch?v=58N2N7zJGrQ">Introduction to Theory of Computation</a> — Neso Academy, tiếng Anh. Điểm vào lý thuyết tính toán trước các nhánh nghiên cứu.
-- <a href="https://www.youtube.com/watch?v=macM_MtS_w4">Turing &amp; The Halting Problem - Computerphile</a> — Computerphile, tiếng Anh. Biên decidable, nơi các câu hỏi mở của chương bắt đầu.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=BBuBv3P2aSs">TOC – Conclusion and Summary</a> — Neso Academy, tiếng Anh. Tổng kết bản đồ lý thuyết ô-tô-mát tương ứng với lộ trình 18.1–18.13.
+- <a href="https://www.youtube.com/watch?v=58N2N7zJGrQ">Introduction to Theory of Computation</a> — Neso Academy, tiếng Anh. Điểm khởi đầu vào lý thuyết tính toán trước khi chọn nhánh nghiên cứu.
+- <a href="https://www.youtube.com/watch?v=macM_MtS_w4">Turing &amp; The Halting Problem - Computerphile</a> — Computerphile, tiếng Anh. Ranh giới của tính quyết định được, nơi mở ra nhiều câu hỏi nghiên cứu.

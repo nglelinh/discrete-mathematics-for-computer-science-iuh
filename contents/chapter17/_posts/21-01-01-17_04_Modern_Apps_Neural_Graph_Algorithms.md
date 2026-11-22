@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. CLRS-30 (ICML 2022) asks GNNs to execute Dijk
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite Dijkstra, topological sort, or coloring/matching.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại Dijkstra, sắp xếp topo, tô màu hay ghép cặp.
+Bài ghi chú ứng dụng song ngữ. Bài này **không** thay thế các nội dung về Dijkstra, sắp xếp topo, tô màu hay ghép cặp.
 
 </div>
 
@@ -35,16 +35,16 @@ Chapter 17 is classical graph algorithms: shortest paths, topo order, matching. 
 
 ## Tiếng Việt
 
-Chương 17 là thuật toán đồ thị cổ điển. Hai hướng gần đây hỏi liệu thủ tục message passing **học được** có *bắt chước* các thuật toán đó — hoặc thay bộ giải số trên đồ thị rất lớn.
+Chương 17 tập trung vào các thuật toán đồ thị cổ điển. Hai hướng nghiên cứu gần đây đặt câu hỏi liệu một cơ chế truyền thông điệp (*message passing*) **được học từ dữ liệu** có thể *mô phỏng* những thuật toán đó, hay thậm chí thay thế bộ giải số trên các đồ thị quy mô rất lớn hay không.
 
-**CLRS-30** (Veličković et al., ICML 2022) cung cấp quỹ đạo (input, hint, output) cho 30 thuật toán giáo khoa, gồm các routine đồ thị. GNN encode–process–decode dự đoán đáp án và con trỏ trung gian. Quan sát lặp lại: điểm in-distribution trên đồ thị 16 đỉnh có thể cao trong khi test **OOD** 64 đỉnh sụp — “mạng chạy Dijkstra” không có nghĩa “mạng *là* Dijkstra.”
+**CLRS-30** (Veličković và cộng sự, ICML 2022) cung cấp các chuỗi thực thi (gồm đầu vào, gợi ý trung gian *hint* và đầu ra) cho 30 thuật toán kinh điển, bao gồm nhiều thuật toán đồ thị. Mạng nơ-ron đồ thị (GNN) theo kiến trúc encode–process–decode dự đoán đồng thời cả kết quả cuối lẫn các con trỏ trạng thái trung gian. Một kết quả thường lặp lại là mô hình đạt điểm cao trên phân phối huấn luyện (đồ thị 16 đỉnh) nhưng giảm mạnh khi kiểm thử **ngoài phân phối (OOD)** trên đồ thị 64 đỉnh — cho thấy việc “mạng chạy ra kết quả giống Dijkstra” không đồng nghĩa với việc “mạng *chính là* thuật toán Dijkstra”.
 
-**GraphCast** (*Science* 2023) không tuyên bố cài Dijkstra; nó tuyên bố message passing học trên multi-mesh là toán tử thời tiết 10 ngày hữu ích. Hai trích dẫn tách **trung thành thuật toán** (CLRS) khỏi **mô hình số hình đồ thị** (GraphCast).
+**GraphCast** (*Science*, 2023) không tuyên bố cài đặt Dijkstra mà chứng minh rằng cơ chế truyền thông điệp học được trên lưới đa tầng (*multi-mesh*) có thể đóng vai trò một toán tử dự báo thời tiết 10 ngày hiệu quả. Đặt cạnh nhau, hai công trình này phân tách rõ **độ trung thành về thuật toán** (CLRS) với **mô hình số mang cấu trúc đồ thị** (GraphCast).
 
-**Câu hỏi.** (1) “Hint” CLRS nào tương ứng mảng khoảng cách Dijkstra sau $$k$$ lần relax? (2) Vì sao sụt accuracy OOD chặn tuyên bố GNN đã học thuật toán?
+**Câu hỏi.** (1) Gợi ý (*hint*) nào trong CLRS tương ứng với mảng khoảng cách của Dijkstra sau $$k$$ bước relax? (2) Vì sao sự sụt giảm độ chính xác trên dữ liệu OOD lại bác bỏ nhận định rằng GNN đã thực sự “học được” thuật toán?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=aFnHYEv71U4">An Introduction to Graph Neural Networks</a> — DataMListic, tiếng Anh. Xem trước GNN, mô hình bài bảo học thuật toán đồ thị.
-- <a href="https://www.youtube.com/watch?v=DZDrRxM6RwI">Petar Veličković (DeepMind) — Neural Algorithmic Reasoning</a> — Zeta Alpha, tiếng Anh. Neural algorithmic reasoning, hướng CLRS mà bài trích.
-- <a href="https://www.youtube.com/watch?v=0Ud4u7c0_EE">AI Weather Forecasting: What GraphCast Actually Proved (and Didn&#x27;t)</a> — Synaptorix, tiếng Anh. GraphCast, truyền thông điệp trên đồ thị ở quy mô dự báo thời tiết.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=aFnHYEv71U4">An Introduction to Graph Neural Networks</a> — DataMListic, tiếng Anh. Giới thiệu tổng quan về mạng nơ-ron đồ thị (GNN), mô hình được dùng để học thuật toán đồ thị.
+- <a href="https://www.youtube.com/watch?v=DZDrRxM6RwI">Petar Veličković (DeepMind) — Neural Algorithmic Reasoning</a> — Zeta Alpha, tiếng Anh. Bài nói về hướng nghiên cứu *neural algorithmic reasoning* và bộ chuẩn CLRS được trích dẫn trong bài.
+- <a href="https://www.youtube.com/watch?v=0Ud4u7c0_EE">AI Weather Forecasting: What GraphCast Actually Proved (and Didn&#x27;t)</a> — Synaptorix, tiếng Anh. Phân tích GraphCast — ứng dụng truyền thông điệp trên đồ thị ở quy mô dự báo thời tiết toàn cầu.

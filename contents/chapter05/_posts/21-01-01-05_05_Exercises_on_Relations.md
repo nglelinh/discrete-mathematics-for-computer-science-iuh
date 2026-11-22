@@ -7,12 +7,12 @@ date: 2021-01-01
 order: 5
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã học phép toán trên quan hệ và bao đóng. Mục này tổng hợp bài tập nhằm củng cố toàn bộ kiến thức chương 5: định nghĩa quan hệ, tính…"
+excerpt: "Tổng hợp bài tập thực hành củng cố toàn bộ kiến thức Chương 5: biểu diễn quan hệ, kiểm tra bốn tính chất, quan hệ tương đương, thứ tự bộ phận, biểu đồ Hasse và bao đóng."
 ---
 
-Ở mục trước chúng ta đã học phép toán trên quan hệ và bao đóng. Mục này tổng hợp bài tập nhằm củng cố toàn bộ kiến thức chương 5: định nghĩa quan hệ, tính chất, quan hệ tương đương, thứ tự bộ phận, phép toán và bao đóng.
+Ở mục trước, chúng ta đã học các phép toán trên quan hệ và khái niệm bao đóng. Mục này tổng hợp các bài tập nhằm củng cố toàn bộ kiến thức của Chương 5: định nghĩa và cách biểu diễn quan hệ, bốn tính chất cơ bản, quan hệ tương đương, thứ tự bộ phận, biểu đồ Hasse và bao đóng.
 
-Một chủ đề chỉ được nắm vững khi có thể áp dụng trên nhiều dạng bài khác nhau. Phần luyện tập giúp chúng ta nối lại mạch kiến thức và phát hiện các điểm dễ nhầm lẫn. Làm bài tập không chỉ để ra đáp án đúng, mà còn để quen cách đọc đề, chọn công cụ và kiểm tra lại lập luận.
+Việc luyện tập trên nhiều dạng bài khác nhau giúp hệ thống hóa kiến thức và nhận diện sớm các điểm dễ nhầm lẫn. Khi giải bài tập, mục tiêu không chỉ là tìm ra kết quả đúng mà còn rèn quy trình đọc đề, chọn cách biểu diễn phù hợp và kiểm tra lại lập luận bằng định nghĩa hoặc phản ví dụ.
 
 ## Mục tiêu học tập
 
@@ -20,49 +20,49 @@ Một chủ đề chỉ được nắm vững khi có thể áp dụng trên nhi
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Ôn tập** định nghĩa quan hệ, tính chất và phép toán qua bài tập tổng hợp.
-- **Áp dụng** quy trình: đọc đề → mô hình hóa → kiểm tra tính chất → kết luận.
-- **Nhận diện** lỗi thường gặp khi làm bài quan hệ và bao đóng.
+- **Ôn tập** định nghĩa quan hệ, bốn tính chất cơ bản và các phép toán qua hệ thống bài tập tổng hợp.
+- **Áp dụng** quy trình giải bài: đọc đề → biểu diễn quan hệ → kiểm tra từng tính chất → kết luận.
+- **Nhận diện** các lỗi thường gặp khi chứng minh quan hệ tương đương, vẽ biểu đồ Hasse và tìm bao đóng.
 
-**Từ khóa**: luyện tập quan hệ, tương đương, thứ tự, bao đóng, Warshall.
+**Từ khóa**: luyện tập quan hệ, quan hệ tương đương, thứ tự bộ phận, bao đóng, thuật toán Warshall.
 </div>
 
 ## Ôn tập khái niệm cốt lõi
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Một quan hệ $$R$$ từ tập $$A$$ đến tập $$B$$ là một tập con của tích Descartes $$A\times B$$. Nếu $$A=B$$, chúng ta nói $$R$$ là quan hệ trên $$A$$.
+**Định nghĩa**: Một quan hệ $$R$$ từ tập $$A$$ đến tập $$B$$ là một tập con của tích Descartes $$A\times B$$. Khi $$A=B$$, ta nói $$R$$ là một quan hệ trên $$A$$.
 </div>
 
-**Ký hiệu**: Viết $$(a,b)\in R$$ hoặc $$aRb$$ để nói rằng $$a$$ có quan hệ với $$b$$. Các tính chất cần kiểm tra gồm phản xạ, đối xứng, phản đối xứng và bắc cầu.
+**Ký hiệu**: Viết $$(a,b)\in R$$ hoặc $$aRb$$ để chỉ $$a$$ có quan hệ $$R$$ với $$b$$. Bốn tính chất cơ bản cần kiểm tra là phản xạ, đối xứng, phản đối xứng và bắc cầu.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Trên $$A=\{1,2,3\}$$, quan hệ $$R=\{(1,1),(2,2),(3,3),(1,2)\}$$ là phản xạ nhưng không đối xứng vì có $$(1,2)$$ mà thiếu $$(2,1)$$.
+**Ví dụ**: Trên $$A=\{1,2,3\}$$, quan hệ $$R=\{(1,1),(2,2),(3,3),(1,2)\}$$ có tính phản xạ nhưng không đối xứng vì có $$(1,2)$$ nhưng thiếu $$(2,1)$$.
 
 ![Tích Cartesian — nền tảng quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/Cartesian_Product_qtl1.svg)
 
-<p class="textbook-figure-caption" data-figure="5.25">Mọi quan hệ đều là tập con của tích Cartesian A × B.</p>
+<p class="textbook-figure-caption" data-figure="5.25">Mọi quan hệ hai ngôi đều là một tập con của tích Descartes A × B.</p>
 </div>
 
 ## Chiến lược giải bài quan hệ
 
-**Quy trình đề xuất**:
+**Quy trình kiểm tra đề xuất**:
 
-1. Xác định tập nền $$A$$ và các cặp thuộc $$R$$.
-2. Kiểm tra phản xạ: mọi $$(a,a)$$ có mặt chưa?
-3. Kiểm tra đối xứng: nếu $$(a,b)$$ có mặt thì $$(b,a)$$ có mặt không?
-4. Kiểm tra phản đối xứng: có cặp khác nhau $$a\ne b$$ mà cả hai chiều đều có không?
-5. Kiểm tra bắc cầu: nếu $$(a,b)$$ và $$(b,c)$$ có mặt thì $$(a,c)$$ có mặt không?
-6. Kết luận loại quan hệ và nêu phản ví dụ nếu tính chất sai.
+1. Xác định rõ tập nền $$A$$ và tập các cặp thuộc $$R$$.
+2. Kiểm tra tính phản xạ: mọi cặp $$(a,a)$$ với $$a \in A$$ đã có mặt chưa?
+3. Kiểm tra tính đối xứng: với mỗi $$(a,b) \in R$$, cặp $$(b,a)$$ có thuộc $$R$$ không?
+4. Kiểm tra tính phản đối xứng: có tồn tại hai phần tử khác nhau $$a \ne b$$ sao cho cả $$(a,b)$$ và $$(b,a)$$ đều thuộc $$R$$ không?
+5. Kiểm tra tính bắc cầu: với mọi $$(a,b) \in R$$ và $$(b,c) \in R$$, cặp $$(a,c)$$ có thuộc $$R$$ không?
+6. Kết luận loại quan hệ và nêu rõ phản ví dụ cho mỗi tính chất không thỏa mãn.
 
 <div class="interactive-tool" data-tool="relation-practice-checker">
-  <p><strong>Demo đề xuất:</strong> sinh viên nhập các cặp của quan hệ, công cụ kiểm tra từng tính chất và yêu cầu sinh viên chỉ ra phản ví dụ trước khi xem đáp án.</p>
+  <p><strong>Công cụ thực hành:</strong> nhập các cặp của một quan hệ để kiểm tra từng tính chất và xác định phản ví dụ trước khi đối chiếu đáp án.</p>
 </div>
 
 <script src="{{ '/public/js/relation-property-checker.js' | relative_url }}"></script>
 
 ![Đồ thị có hướng — kiểm tra tính chất](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_simple_directed_graph.svg)
 
-<p class="textbook-figure-caption" data-figure="5.26">Khi giải bài, chuyển quan hệ sang ma trận hoặc đồ thị để kiểm tra từng tính chất có hệ thống.</p>
+<p class="textbook-figure-caption" data-figure="5.26">Chuyển quan hệ sang ma trận 0-1 hoặc đồ thị có hướng giúp kiểm tra từng tính chất một cách có hệ thống.</p>
 ## Bài tập về biểu diễn quan hệ
 
 ### Bài 1
@@ -90,12 +90,12 @@ $$R=\{(1,x),(1,y),(3,x),(3,y)\}.$$
 
 ### Bài 2
 
-Cho quan hệ $$R=\{(1,1),(1,3),(2,1),(3,2)\}$$ trên $$A=\{1,2,3\}$$. Viết ma trận quan hệ theo thứ tự hàng/cột $$1,2,3$$.
+Cho quan hệ $$R=\{(1,1),(1,3),(2,1),(3,2)\}$$ trên $$A=\{1,2,3\}$$. Viết ma trận quan hệ theo thứ tự hàng và cột $$1,2,3$$.
 
 <details>
 <summary>Đáp án và giải thích</summary>
 
-Ma trận là (hàng/cột theo thứ tự $$1,2,3$$):
+Ma trận quan hệ (hàng và cột theo thứ tự $$1,2,3$$) là:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -109,38 +109,39 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Mỗi hàng là phần tử xuất phát, mỗi cột là phần tử đích: ô $$(i,j)=1$$ khi $$(i,j)\in R$$.
+Mỗi hàng ứng với phần tử nguồn và mỗi cột ứng với phần tử đích: ô $$(i,j)=1$$ khi $$(i,j)\in R$$.
 </details>
 
 ![Ma trận quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
-<p class="textbook-figure-caption" data-figure="5.27">Ma trận quan hệ — hàng i, cột j bằng 1 khi (aᵢ, aⱼ) thuộc R.</p>
+<p class="textbook-figure-caption" data-figure="5.27">Ma trận quan hệ — phần tử tại hàng i, cột j bằng 1 khi và chỉ khi (aᵢ, aⱼ) ∈ R.</p>
 ## Bài tập về tính chất
 
 ### Bài 3
 
-Xét $$R=\{(1,1),(2,2),(3,3),(1,2),(2,1)\}$$ trên $$A=\{1,2,3\}$$. Quan hệ này có phản xạ, đối xứng, phản đối xứng, bắc cầu không?
+Xét $$R=\{(1,1),(2,2),(3,3),(1,2),(2,1)\}$$ trên $$A=\{1,2,3\}$$. Quan hệ này có phản xạ, đối xứng, phản đối xứng và bắc cầu không?
 
 <details>
 <summary>Đáp án và giải thích</summary>
 
-- Phản xạ: có $$(1,1),(2,2),(3,3)$$ nên đúng.
-- Đối xứng: $$(1,2)$$ và $$(2,1)$$ cùng có; các vòng tự đối xứng, nên đúng.
-- Phản đối xứng: sai vì $$1\ne2$$ nhưng có cả $$(1,2)$$ và $$(2,1)$$.
-- Bắc cầu: đúng. Thành phần $$\{1,2\}$$ có đủ các cặp cần thiết, và $$3$$ chỉ liên hệ với chính nó.
+- Phản xạ: có, vì đủ ba cặp $$(1,1),(2,2),(3,3)$$.
+- Đối xứng: có, vì $$(1,2)$$ và $$(2,1)$$ cùng có mặt, còn các cặp trên đường chéo tự đối xứng.
+- Phản đối xứng: không, vì $$1\ne 2$$ nhưng cả $$(1,2)$$ và $$(2,1)$$ đều thuộc $$R$$.
+- Bắc cầu: có, vì mọi chuỗi hợp lệ trên $$\{1,2\}$$ đều đóng (chẳng hạn $$(1,2)$$ và $$(2,1)$$ kéo theo $$(1,1) \in R$$, $$(2,1)$$ và $$(1,2)$$ kéo theo $$(2,2) \in R$$), còn $$3$$ chỉ liên hệ với chính nó.
 </details>
 
 ![So sánh tính phản xạ, đối xứng, bắc cầu](/discrete-mathematics-for-computer-science-iuh/img/course/Undirected_graph.svg)
 
-<p class="textbook-figure-caption" data-figure="5.28">Đối xứng ↔ đồ thị vô hướng; bắc cầu ↔ đường đi gián tiếp suy ra cung trực tiếp.</p>
+<p class="textbook-figure-caption" data-figure="5.28">Quan hệ đối xứng tương ứng với đồ thị vô hướng; tính bắc cầu đòi hỏi mọi đường đi độ dài 2 đều có cung trực tiếp.</p>
 ### Bài 4
 
-Cho $$R=\{(1,2),(2,3),(1,3)\}$$ trên $$A=\{1,2,3\}$$. Quan hệ có bắc cầu không? Có phản xạ không?
+Cho $$R=\{(1,2),(2,3),(1,3)\}$$ trên $$A=\{1,2,3\}$$. Quan hệ này có bắc cầu không? Có phản xạ không?
 
 <details>
 <summary>Đáp án và giải thích</summary>
 
-Bắc cầu đúng vì $$(1,2)$$ và $$(2,3)$$ kéo theo $$(1,3)$$, cặp này đã có. Phản xạ sai vì thiếu $$(1,1),(2,2),(3,3)$$.
+- Bắc cầu: có, vì cặp đường đi duy nhất độ dài 2 là $$(1,2)$$ và $$(2,3)$$, và cặp $$(1,3)$$ đã có mặt trong $$R$$.
+- Phản xạ: không, vì thiếu các cặp $$(1,1),(2,2),(3,3)$$.
 </details>
 
 ## Bài tập về quan hệ tương đương
@@ -156,51 +157,51 @@ Trên $$\mathbb{Z}$$, định nghĩa $$aRb$$ khi $$a-b$$ chia hết cho 4. Chứ
 - Đối xứng: nếu $$4\mid(a-b)$$ thì $$4\mid(b-a)$$.
 - Bắc cầu: nếu $$4\mid(a-b)$$ và $$4\mid(b-c)$$ thì $$4\mid(a-c)$$.
 
-Các lớp tương đương là $$[0],[1],[2],[3]$$ theo số dư modulo 4.
+Bốn lớp tương đương tương ứng với bốn số dư khi chia cho 4 là $$[0],[1],[2],[3]$$.
 </details>
 
 ### Bài 6
 
-Quan hệ "có cùng độ dài" trên tập các xâu nhị phân có phải quan hệ tương đương không?
+Quan hệ "có cùng độ dài" trên tập các xâu nhị phân có phải là quan hệ tương đương không?
 
 <details>
 <summary>Đáp án và giải thích</summary>
 
-Có. Mỗi xâu có cùng độ dài với chính nó; nếu xâu $$u$$ cùng độ dài với $$v$$ thì $$v$$ cùng độ dài với $$u$$; nếu $$u$$ cùng độ dài với $$v$$ và $$v$$ cùng độ dài với $$w$$ thì $$u$$ cùng độ dài với $$w$$.
+Có. Mỗi xâu có cùng độ dài với chính nó (phản xạ); nếu xâu $$u$$ cùng độ dài với $$v$$ thì $$v$$ cùng độ dài với $$u$$ (đối xứng); và nếu $$u$$ cùng độ dài với $$v$$, $$v$$ cùng độ dài với $$w$$ thì $$u$$ cùng độ dài với $$w$$ (bắc cầu).
 </details>
 
 ![Quan hệ tương đương — lớp và phân hoạch](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
-<p class="textbook-figure-caption" data-figure="5.29">Quan hệ tương đương phải thỏa phản xạ, đối xứng và bắc cầu — tạo ra các lớp tương đương rời nhau.</p>
+<p class="textbook-figure-caption" data-figure="5.29">Quan hệ tương đương thỏa mãn đồng thời phản xạ, đối xứng và bắc cầu, phân hoạch tập nền thành các lớp rời nhau.</p>
 ## Bài tập về thứ tự bộ phận
 
 ### Bài 7
 
-Xét quan hệ chia hết $$\mid$$ trên $$A=\{1,2,3,6\}$$. Chứng minh đây là thứ tự bộ phận và nêu các cặp phủ trong biểu đồ Hasse.
+Xét quan hệ chia hết $$\mid$$ trên $$A=\{1,2,3,6\}$$. Chứng minh đây là một thứ tự bộ phận và nêu các cặp phủ trong biểu đồ Hasse.
 
 <details>
 <summary>Đáp án và giải thích</summary>
 
-Chia hết phản xạ vì $$a\mid a$$. Phản đối xứng vì nếu $$a\mid b$$ và $$b\mid a$$ với số dương thì $$a=b$$. Bắc cầu vì nếu $$a\mid b$$ và $$b\mid c$$ thì $$a\mid c$$.
+Quan hệ chia hết trên tập số nguyên dương có tính phản xạ ($$a\mid a$$), phản đối xứng (nếu $$a\mid b$$ và $$b\mid a$$ với $$a,b>0$$ thì $$a=b$$) và bắc cầu (nếu $$a\mid b$$ và $$b\mid c$$ thì $$a\mid c$$).
 
-Các cặp phủ: $$(1,2),(1,3),(2,6),(3,6)$$.
+Các cặp phủ trong biểu đồ Hasse là: $$(1,2), (1,3), (2,6), (3,6)$$.
 </details>
 
 ### Bài 8
 
-Trong $$(\mathcal{P}(\{a,b,c\}),\subseteq)$$, hai phần tử $$\{a,b\}$$ và $$\{b,c\}$$ có so sánh được không?
+Trong poset $$(\mathcal{P}(\{a,b,c\}),\subseteq)$$, hai phần tử $$\{a,b\}$$ và $$\{b,c\}$$ có so sánh được với nhau không?
 
 <details>
 <summary>Đáp án và giải thích</summary>
 
-Không. $$\{a,b\}\nsubseteq\{b,c\}$$ vì thiếu $$a$$, và $$\{b,c\}\nsubseteq\{a,b\}$$ vì thiếu $$c$$.
+Không. Ta có $$\{a,b\}\nsubseteq\{b,c\}$$ (vì $$a \notin \{b,c\}$$) và $$\{b,c\}\nsubseteq\{a,b\}$$ (vì $$c \notin \{a,b\}$$).
 </details>
 
 ## Bài tập về bao đóng
 
 ### Bài 9
 
-Cho $$R=\{(1,2),(2,3)\}$$ trên $$A=\{1,2,3\}$$. Tìm bao đóng phản xạ và bao đóng bắc cầu.
+Cho $$R=\{(1,2),(2,3)\}$$ trên $$A=\{1,2,3\}$$. Tìm bao đóng phản xạ và bao đóng bắc cầu của $$R$$.
 
 <details>
 <summary>Đáp án và giải thích</summary>
@@ -208,10 +209,10 @@ Cho $$R=\{(1,2),(2,3)\}$$ trên $$A=\{1,2,3\}$$. Tìm bao đóng phản xạ và
 Bao đóng phản xạ:
 
 <div class="textbook-equation" markdown="1">
-$$R\cup\{(1,1),(2,2),(3,3)\}.$$
+$$R_{\text{ref}} = R\cup\{(1,1),(2,2),(3,3)\}.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Bao đóng bắc cầu: vì có đường $$1\to2\to3$$ nên thêm $$(1,3)$$. Do đó:
+Bao đóng bắc cầu: vì có đường đi $$1\to 2\to 3$$ nên cần bổ sung cặp $$(1,3)$$. Do đó:
 
 <div class="textbook-equation" markdown="1">
 $$R^+=\{(1,2),(2,3),(1,3)\}.$$
@@ -221,63 +222,66 @@ $$R^+=\{(1,2),(2,3),(1,3)\}.$$
 
 ### Bài 10
 
-Cho $$R=\{(a,b),(b,c),(c,a)\}$$. Bao đóng bắc cầu có chứa $$(a,a)$$ không?
+Cho $$R=\{(a,b),(b,c),(c,a)\}$$. Bao đóng bắc cầu của $$R$$ có chứa cặp $$(a,a)$$ không?
 
 <details>
 <summary>Đáp án và giải thích</summary>
 
-Có. Vì có đường đi $$a\to b\to c\to a$$, nên $$(a,a)$$ thuộc bao đóng bắc cầu. Tương tự $$(b,b)$$ và $$(c,c)$$ cũng thuộc bao đóng bắc cầu.
+Có. Vì tồn tại đường đi độ dài 3 là $$a\to b\to c\to a$$, cặp $$(a,a)$$ thuộc bao đóng bắc cầu $$R^+$$. Tương tự, $$(b,b)$$ và $$(c,c)$$ cũng thuộc $$R^+$$.
 </details>
 
 ![Biểu đồ Hasse — thứ tự bộ phận](/discrete-mathematics-for-computer-science-iuh/img/course/Simple_hasse_diagram.svg)
 
-<p class="textbook-figure-caption" data-figure="5.30">Hasse diagram giúp nhận diện các cặp phủ và phần tử không so sánh được trong poset.</p>
+<p class="textbook-figure-caption" data-figure="5.30">Biểu đồ Hasse giúp nhận diện các cặp phủ và các cặp phần tử không so sánh được trong poset.</p>
 ## Ứng dụng trong Khoa học Máy tính
-Các bài tập trên tương ứng trực tiếp với tác vụ CS:
 
-- Ma trận quan hệ là ma trận kề của đồ thị.
-- Quan hệ tương đương là nền tảng của union-find.
-- Thứ tự bộ phận dùng trong topological sort.
-- Bao đóng bắc cầu dùng trong reachability và truy vấn phân cấp.
+Các dạng bài tập trên tương ứng trực tiếp với nhiều kỹ thuật trong khoa học máy tính:
 
-## Bài tập thực hành
+- Ma trận quan hệ chính là ma trận kề của đồ thị.
+- Quan hệ tương đương là cơ sở lý thuyết của cấu trúc dữ liệu Union-Find.
+- Thứ tự bộ phận là nền tảng của thuật toán sắp xếp tô-pô (topological sort).
+- Bao đóng bắc cầu giải bài toán liên thông (reachability) và các truy vấn phân cấp.
+
+## Bài tập thực hành bổ sung
 
 ### Bài tập 1: Kiểm tra tính chất
 
 Cho quan hệ $$R = \{(1,1),(2,2),(3,3),(1,2),(2,1)\}$$ trên $$\{1,2,3\}$$.  
-Xác định các tính chất: phản xạ, đối xứng, bắc cầu.
+Xác định các tính chất: phản xạ, đối xứng và bắc cầu.
 
 <details>
 <summary>Đáp án</summary>
 
-- Phản xạ: Có (có cặp chéo)
-- Đối xứng: Có
-- Bắc cầu: Có (vì chỉ có 1-2 và 2-1)
+- Phản xạ: Có (chứa đủ các cặp chéo $$(1,1),(2,2),(3,3)$$).
+- Đối xứng: Có (có cả $$(1,2)$$ và $$(2,1)$$).
+- Bắc cầu: Có (các tổ hợp giữa $$(1,2)$$ và $$(2,1)$$ tạo ra $$(1,1)$$ và $$(2,2)$$, đều đã thuộc $$R$$).
 
 </details>
 
-### Bài tập 2: Tìm lớp tương đương
+### Bài tập 2: Đếm quan hệ tương đương
 
-Tìm tất cả quan hệ tương đương trên tập $$\{a,b\}$$.
+Tìm tất cả các quan hệ tương đương trên tập $$A = \{a,b\}$$.
 
 <details>
 <summary>Đáp án</summary>
 
-Có 2 quan hệ tương đương: quan hệ đồng nhất và quan hệ toàn phần.
+Có đúng 2 quan hệ tương đương (tương ứng 2 phân hoạch của $$\{a,b\}$$): quan hệ đồng nhất $$\{(a,a),(b,b)\}$$ và quan hệ toàn phần $$\{(a,a),(b,b),(a,b),(b,a)\}$$.
 
 </details>
 
-### Bài tập 3: Hasse diagram
+### Bài tập 3: Biểu đồ Hasse của tập lũy thừa
 
-Vẽ Hasse diagram cho tập con của $$\{1,2,3\}$$ theo quan hệ chứa.
+Vẽ biểu đồ Hasse cho tập lũy thừa của $$\{1,2,3\}$$ theo quan hệ bao hàm $$\subseteq$$.
 
 <details>
 <summary>Đáp án</summary>
 
-∅ → {1} → {1,2} → {1,2,3}  
-∅ → {2} → {2,3} → {1,2,3}  
-∅ → {3} → {1,3} → {1,2,3}  
-(và các nhánh khác)
+Các mức từ dưới lên trên (mỗi cạnh nối hai tập hơn kém nhau đúng 1 phần tử):
+
+- Mức 0: $$\emptyset$$
+- Mức 1: $$\{1\}, \{2\}, \{3\}$$ (đều phủ $$\emptyset$$)
+- Mức 2: $$\{1,2\}$$ phủ $$\{1\}, \{2\}$$; $$\{1,3\}$$ phủ $$\{1\}, \{3\}$$; $$\{2,3\}$$ phủ $$\{2\}, \{3\}$$
+- Mức 3: $$\{1,2,3\}$$ phủ $$\{1,2\}, \{1,3\}, \{2,3\}$$
 
 </details>
 
@@ -287,13 +291,13 @@ Vẽ Hasse diagram cho tập con của $$\{1,2,3\}$$ theo quan hệ chứa.
 
 ## Tóm tắt
 
-- Khi giải bài quan hệ, luôn kiểm tra từng tính chất bằng định nghĩa và phản ví dụ cụ thể
-- **Quan hệ tương đương** cần phản xạ, đối xứng, bắc cầu; **thứ tự bộ phận** cần phản xạ, phản đối xứng, bắc cầu
-- **Bao đóng** là thao tác thêm tối thiểu các cặp để đạt tính chất mong muốn
-- Ma trận quan hệ và đồ thị có hướng là công cụ kiểm tra có hệ thống
+- Khi giải bài toán quan hệ, luôn kiểm tra từng tính chất theo đúng định nghĩa và đưa ra phản ví dụ cụ thể khi tính chất không đúng.
+- **Quan hệ tương đương** đòi hỏi phản xạ, đối xứng và bắc cầu; **thứ tự bộ phận** đòi hỏi phản xạ, phản đối xứng và bắc cầu.
+- **Bao đóng** là thao tác bổ sung ít cặp nhất để quan hệ đạt tính chất yêu cầu.
+- Ma trận 0-1 và đồ thị có hướng giúp kiểm tra tính chất có hệ thống và hạn chế sai sót.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=TctNssYMXJE">You need to check EVERY spot for reflexivity, symmetry, and transitivity</a> — Dr. Trefor Bazett, tiếng Anh. Xem trước trước khi làm bài: kiểm đủ mọi ô của quan hệ.
-- <a href="https://www.youtube.com/watch?v=qujnPIPjKrA">[Discrete Mathematics] Relations Examples</a> — TrevTutor, tiếng Anh. Ví dụ luyện nhận dạng tính chất, cùng dạng bài tập chương.
-- <a href="https://www.youtube.com/watch?v=YLrQWK2VBro">Can You Prove that R is an equivalence relation iff R is circular and reflexive</a> — TrevTutor, tiếng Anh. Một chứng minh quan hệ tương đương từ điều kiện phản xạ và vòng.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=TctNssYMXJE">You need to check EVERY spot for reflexivity, symmetry, and transitivity</a> — Dr. Trefor Bazett, tiếng Anh. Lưu ý kiểm tra đầy đủ mọi cặp phần tử trước khi kết luận tính chất của quan hệ.
+- <a href="https://www.youtube.com/watch?v=qujnPIPjKrA">[Discrete Mathematics] Relations Examples</a> — TrevTutor, tiếng Anh. Các ví dụ luyện nhận dạng tính chất quan hệ, sát với dạng bài tập trong chương.
+- <a href="https://www.youtube.com/watch?v=YLrQWK2VBro">Can You Prove that R is an equivalence relation iff R is circular and reflexive</a> — TrevTutor, tiếng Anh. Chứng minh quan hệ tương đương dựa trên điều kiện phản xạ và tính tuần hoàn.

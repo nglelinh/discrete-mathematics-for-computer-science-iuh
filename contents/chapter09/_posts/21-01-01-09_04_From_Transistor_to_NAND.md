@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Từ transistor đến NAND: Xây CPU từ logic rời rạc"
 categories: chapter09
@@ -7,22 +6,23 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
-excerpt: "Ở mục Year 2038, chúng ta đã thấy cộng một trên 32-bit signed ở mức công thức — nhưng phép cộng thực sự xảy ra ở đâu trong máy? Mục này trả lời bằng cách đi…"
+excerpt: "Đi từ transistor đến cổng logic NAND, latch, flip-flop và mạch cộng ALU trên breadboard, cho thấy đại số Boole trực tiếp tạo nên phần cứng máy tính."
 ---
 
-Ở mục Year 2038, chúng ta đã thấy **cộng một** trên 32-bit signed ở mức công thức — nhưng phép cộng thực sự xảy ra ở đâu trong máy? Mục này trả lời bằng cách đi từ **transistor** đến cổng logic, latch, và ALU trên breadboard (loạt video Ben Eater). Mục tiêu: chứng minh đại số Boole (Chương 1, Chương 13) **là silicon** — mọi `if (x && y)` và mọi phép cộng two's complement cuối cùng là transistor và cổng NAND. Ben Eater dùng breadboard, LED nhấp nháy từng bit, và xây [**máy tính 8-bit hoàn chỉnh**](https://eater.net/8bit/): program counter, register, ALU, RAM, control unit — rồi chạy Fibonacci bằng opcode assembly thật.
+Ở bài Year 2038, chúng ta đã phân tích phép **cộng 1** trên số 32-bit có dấu ở mức công thức; vậy phép cộng đó thực sự diễn ra ở đâu bên trong máy tính? Mục này trả lời câu hỏi đó bằng cách đi từng tầng phần cứng từ **transistor** đến cổng logic, latch, flip-flop và mạch cộng ALU trên breadboard theo loạt video của Ben Eater. Mục tiêu là thấy rõ đại số Boole (Chương 1, Chương 13) hiện diện trực tiếp trong **phần cứng silicon**: mọi câu lệnh `if (x && y)` và mọi phép cộng bù hai cuối cùng đều được thực hiện bởi transistor và cổng NAND. Ben Eater dùng breadboard cùng đèn LED hiển thị từng bit để xây dựng một [**máy tính 8-bit hoàn chỉnh**](https://eater.net/8bit/) gồm program counter, thanh ghi (register), ALU, RAM và khối điều khiển (control unit), rồi chạy chương trình tính dãy Fibonacci bằng mã lệnh assembly thực thụ.
 
-Xem [video lập trình máy](https://www.youtube.com/watch?v=9PPrrSyubG0) lần đầu, nhiều người nghĩ: “Ồ, `a + b` trong C **là** hàng chục cổng logic đang chạy.” Đúng vậy — chỉ là trên laptop chúng ta không thấy LED. Chương 13 dạy đại số Boole và Karnaugh trên giấy; Ben Eater cho thấy Boole **là silicon** — và mọi `if (x && y)` cuối cùng đứng trên transistor.
+Khi xem [video lập trình máy tính 8-bit](https://www.youtube.com/watch?v=9PPrrSyubG0) lần đầu, người học dễ nhận ra rằng phép `a + b` trong C thực chất là hàng chục cổng logic đang chuyển trạng thái cùng lúc — chỉ khác là trên máy tính cá nhân ta không nhìn thấy đèn LED. Nếu Chương 13 trình bày đại số Boole và bìa Karnaugh trên giấy, thì dự án của Ben Eater cho thấy các biểu thức Boole đó vận hành trực tiếp trên mạch vật lý như thế nào.
 
 ![Ben Eater 8-bit computer](/discrete-mathematics-for-computer-science-iuh/img/course/maxresdefault.jpg)
 
-<p class="textbook-figure-caption" data-figure="9.7">Máy 8-bit trên breadboard — mỗi đèn là một bit (YouTube / Ben Eater).</p>
+<p class="textbook-figure-caption" data-figure="9.7">Máy tính 8-bit trên breadboard — mỗi đèn LED biểu thị trạng thái của một bit (YouTube / Ben Eater).</p>
+
 <figure class="image" style="align: center;">
 <p align="center">
   <img src="/discrete-mathematics-for-computer-science-iuh/img/course/transistor.svg"
        alt="Ký hiệu transistor BJT — công tắc điện tử của bit"
        width="45%" height="45%">
-  <figcaption style="text-align: center;">Hình 9.4a: Từ transistor đến `a + b` trong C — Year 2038 overflow xảy ra trong ALU, không phải trên slide (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Transistor.svg">sventeeuwen / Wikimedia Commons</a>, public domain).</figcaption>
+  <figcaption style="text-align: center;">Hình 9.4a: Từ transistor đến phép `a + b` trong C — hiện tượng tràn số Year 2038 diễn ra ngay bên trong mạch ALU (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Transistor.svg">sventeeuwen / Wikimedia Commons</a>, public domain).</figcaption>
 </p>
 </figure>
 
@@ -30,63 +30,67 @@ Xem [video lập trình máy](https://www.youtube.com/watch?v=9PPrrSyubG0) lần
 
 ## Transistor: công tắc của bit
 
-Mọi câu chuyện bắt đầu từ một khối nhỏ hơn móng tay: **transistor**. Trong mạch digital, transistor hoạt động như **công tắc**: điện áp cao (HIGH, 1) cho phép dòng chạy qua, điện áp thấp (LOW, 0) chặn dòng. Không có “một chút mở” trong logic rời rạc — chỉ có hai trạng thái ổn định. Hàng tỷ transistor trên chip M1, M2 hay Ryzen là biến thể thu nhỏ của ý tưởng này: cùng một nguyên lý khóa/mở, chỉ nhỏ hơn và nhanh hơn khủng khiếp.
+Mọi mạch số đều khởi đầu từ một linh kiện cơ bản là **transistor**. Trong mạch kỹ thuật số, transistor đóng vai trò một **công tắc điện tử**: mức điện áp cao (HIGH, 1) cho dòng điện đi qua, còn mức điện áp thấp (LOW, 0) ngắt dòng. Logic rời rạc chỉ làm việc với hai trạng thái ổn định này chứ không xét trạng thái trung gian. Hàng tỷ transistor trên các bộ xử lý hiện đại như Apple M1, M2 hay AMD Ryzen đều dựa trên cùng nguyên lý đóng/mở này, chỉ được thu nhỏ kích thước và tăng tốc độ chuyển mạch lên rất nhiều lần.
 
 ![Transistor symbol — Wikimedia](/discrete-mathematics-for-computer-science-iuh/img/course/transistor.svg)
 
-<p class="textbook-figure-caption" data-figure="9.8">Transistor như khóa — nền mọi cổng logic.</p>
-Điện áp liên tục trong thế giới vật lý bị **quantize** thành hai mức — đây là mệnh đề vật lý đằng sau mọi bit: chỉ 0 hoặc 1. Ben Eater đi từng bước, không nhảy cóc: [semiconductor](https://www.youtube.com/watch?v=33vbFFFn04k) → [transistor](https://www.youtube.com/watch?v=DXvAlwMAxiA) → [logic gates](https://www.youtube.com/watch?v=sTu3LwpF6XI) → [latch / flip-flop](https://www.youtube.com/watch?v=YW-_GkUguMM). Mỗi video là một tầng xây dựng; bỏ qua tầng nào thì tầng sau trở thành phép màu.
+<p class="textbook-figure-caption" data-figure="9.8">Transistor đóng vai trò công tắc — nền tảng của mọi cổng logic.</p>
+
+Điện áp liên tục trong tự nhiên được **lượng tử hóa** thành hai mức rời rạc — đây là cơ sở vật lý cho mọi bit 0 và 1. Ben Eater xây dựng từng lớp theo trình tự chặt chẽ: [chất bán dẫn (semiconductor)](https://www.youtube.com/watch?v=33vbFFFn04k) → [transistor](https://www.youtube.com/watch?v=DXvAlwMAxiA) → [cổng logic](https://www.youtube.com/watch?v=sTu3LwpF6XI) → [latch / flip-flop](https://www.youtube.com/watch?v=YW-_GkUguMM). Mỗi tầng dựa trực tiếp lên tầng ngay dưới nó, giúp người học hiểu mạch hoạt động thay vì xem phần cứng như hộp đen.
 
 <div class="content-box insight-box textbook-block" markdown="1">
-Trong toán rời rạc, mỗi bit là biến Boole $$x \in \{0,1\}$$. Transistor là cách **vật lý hóa** biến đó — không phải “gần giống 0 và 1”, mà là hai trạng thái ổn định mà mạch thiết kế để máy đọc chắc chắn.
+Trong toán rời rạc, mỗi bit là một biến Boole $$x \in \{0,1\}$$. Transistor là linh kiện **hiện thực hóa** biến đó ở tầng vật lý bằng hai trạng thái điện áp ổn định mà mạch có thể đọc chính xác.
 </div>
 
 ---
 
-## Cổng logic và NAND đủ cho mọi thứ
+## Cổng logic và tính đầy đủ của cổng NAND
 
-Ghép vài transistor lại, ta có **cổng logic**: NOT, AND, OR — những hàm Boole quen từ chương 1 và chương 13. Trên breadboard của Ben Eater, LED sáng hoặc tắt **chính là** một dòng trong bảng chân trị; không có lớp trừu tượng nào che giữa công thức trên giấy và ánh sáng trên mạch.
+Ghép một vài transistor lại với nhau, ta thu được các **cổng logic** cơ bản như NOT, AND, OR — chính là các phép toán Boole đã học ở Chương 1 và Chương 13. Trên breadboard của Ben Eater, trạng thái sáng hoặc tắt của đèn LED tương ứng trực tiếp với từng dòng trong bảng chân trị, không còn khoảng cách giữa công thức trên giấy và mạch điện thật.
 
 ![Logic gates — Wikimedia](/discrete-mathematics-for-computer-science-iuh/img/course/Logic_Gates.svg)
 
-<p class="textbook-figure-caption" data-figure="9.9">Ký hiệu chuẩn — cùng ngôn ngữ với sơ đồ Ben Eater.</p>
-Cổng **NAND** (Sheffer) có công thức $$y = (xz)'$$: chỉ khi cả hai đầu vào đều 1 thì đầu ra mới là 0. Điều kỳ diệu là **chỉ NAND** cũng đủ biểu diễn mọi hàm Boole — tính đầy đủ mà sách giáo khoa gọi là functional completeness. Phủ định một biến: $$x' = (x \uparrow x)$$ với ký hiệu NAND. OR suy ra từ De Morgan: $$x + z = (x' \cdot z')'$$. Trong thực tế, foundry tối ưu hỗn hợp nhiều loại cổng, nhưng câu “CPU chỉ là NAND khổng lồ” vẫn đúng về mặt lý thuyết — và giúp chúng ta nhớ rằng phần cứng không ma thuật, chỉ là Boole được in lên silicon.
+<p class="textbook-figure-caption" data-figure="9.9">Ký hiệu cổng logic chuẩn — đồng nhất với sơ đồ mạch của Ben Eater.</p>
 
-Chip NAND thường rẻ, nhanh, ít tốn diện tích hơn ghép nhiều loại cổng riêng lẻ. Karnaugh map ở chương 13 không phải bài tập trang trí: rút gọn biểu thức Boole nghĩa là **ít cổng hơn**, tức ít transistor hơn, tức ít điện năng và ít nhiệt hơn trên chip thật.
+Cổng **NAND** (phép Sheffer) có biểu thức $$y = (xz)'$$: đầu ra chỉ bằng 0 khi cả hai đầu vào cùng bằng 1. Một tính chất quan trọng của NAND là **tính đầy đủ hàm** (functional completeness): chỉ cần dùng duy nhất cổng NAND cũng đủ xây dựng mọi hàm Boole. Cụ thể, phép phủ định viết là $$x' = (x \uparrow x)$$ (ký hiệu NAND), còn phép OR suy ra từ định luật De Morgan: $$x + z = (x' \cdot z')'$$. Trong sản xuất chip thực tế, các xưởng đúc vẫn kết hợp nhiều loại cổng khác nhau để tối ưu hiệu năng, nhưng về mặt lý thuyết, toàn bộ CPU có thể quy về tổ hợp của các cổng NAND.
 
----
-
-## Latch, flip-flop — nhớ một bit
-
-Cổng logic thuần chỉ tính toán: đầu vào đổi thì đầu ra đổi theo, không “nhớ” gì cả. Muốn có **bộ nhớ**, cần **phản hồi** — đầu ra quay ngược về đầu vào. Hai cổng nối chéo tạo **SR latch**: hai trạng thái ổn định, mỗi trạng thái là một bit được giữ cho đến khi tín hiệu điều khiển bắt đổi.
-
-**D flip-flop** tiến thêm một bước: lấy mẫu giá trị đầu vào tại **cạnh clock**, rồi giữ nguyên cho đến cạnh kế tiếp. Register 8-bit trên máy Ben Eater là tám flip-flop xếp cạnh nhau — mỗi ô nhớ một bit, cùng nhịp clock. Opcode 4-bit trên máy đó cho phép $$2^4 = 16$$ lệnh máy khả dĩ; thay đổi độ rộng opcode là thay đổi **số bit nhớ trạng thái điều khiển**, không phải chỉ đổi tên lệnh trên giấy.
-
-Khi chúng ta debug overflow `int` trong C, chúng ta đang tin rằng **carry chain** của half-adder trên chip đã propagate đúng từ bit thấp lên bit cao. Ben Eater bật LED từng carry để chúng ta **nhìn** điều đó — còn trong laptop, chuỗi carry chạy trong nanosecond mà không có đèn nào nhấp nháy.
+Trên phần cứng, mạch NAND thường gọn, nhanh và tiết kiệm diện tích hơn so với việc ghép nhiều loại cổng riêng lẻ. Vì vậy, việc rút gọn biểu thức Boole bằng bìa Karnaugh ở Chương 13 mang ý nghĩa kỹ thuật trực tiếp: **ít cổng logic hơn** đồng nghĩa với **ít transistor hơn**, giúp chip tiêu thụ ít điện năng và tỏa ít nhiệt hơn.
 
 ---
 
-## Half-adder: cộng là logic
+## Latch và flip-flop — ghi nhớ một bit
 
-Phép cộng hai bit $$a$$ và $$b$$ là bài toán Boole thuần túy. Khi cả hai đều 0, tổng 0 và không nhớ; khi một trong hai là 1, tổng 1 và không nhớ; khi cả hai đều 1, tổng 0 nhưng **carry** (nhớ sang) là 1. Tổng chính là XOR: $$\text{Sum} = a \oplus b$$. Carry là AND: $$\text{Carry} = a \cdot b$$. Không có phép “cộng số học” riêng ở tầng transistor — chỉ có AND, OR, NOT (hoặc NAND) được dây nối đúng cách.
+Các cổng logic tổ hợp thuần túy chỉ tính đầu ra theo đầu vào hiện tại mà không lưu giữ trạng thái cũ. Để tạo ra **bộ nhớ**, mạch cần có **vòng phản hồi** (feedback) đưa đầu ra quay ngược trở lại đầu vào. Ghép chéo hai cổng logic tạo thành **SR latch** với hai trạng thái ổn định, giữ nguyên giá trị một bit cho đến khi tín hiệu điều khiển yêu cầu thay đổi.
+
+**D flip-flop** bổ sung khả năng đồng bộ theo xung nhịp: nó lấy mẫu giá trị đầu vào tại **cạnh xung clock** rồi giữ cố định giá trị đó cho đến cạnh xung kế tiếp. Một thanh ghi (register) 8-bit trên máy Ben Eater đơn giản là tám flip-flop đặt song song, cùng nhận một xung clock. Tương tự, mã lệnh (opcode) 4-bit trên máy này cho phép tối đa $$2^4 = 16$$ lệnh máy khác nhau; mở rộng độ rộng opcode nghĩa là tăng số bit lưu trạng thái điều khiển trong phần cứng.
+
+Khi gỡ lỗi tràn số kiểu `int` trong C, ta đang dựa vào hoạt động chính xác của **chuỗi nhớ** (carry chain) lan truyền từ bit thấp lên bit cao bên trong chip. Trên breadboard, Ben Eater gắn đèn LED cho từng bit nhớ để người xem quan sát trực tiếp, còn trên CPU hiện đại quá trình đó diễn ra trong vài nano giây.
+
+---
+
+## Half-adder: phép cộng thực chất là logic
+
+Phép cộng hai bit đơn $$a$$ và $$b$$ hoàn toàn là một bài toán logic Boole: nếu cả hai bằng 0 thì tổng bằng 0 và nhớ 0; nếu đúng một bit bằng 1 thì tổng bằng 1 và nhớ 0; nếu cả hai cùng bằng 1 thì tổng bằng 0 và bit **nhớ** (carry) bằng 1. Do đó, tổng chính là phép XOR: $$\text{Sum} = a \oplus b$$, còn bit nhớ là phép AND: $$\text{Carry} = a \cdot b$$. Ở tầng transistor không tồn tại “phép cộng số học” tách biệt — chỉ có các cổng AND, OR, NOT (hoặc NAND) nối theo đúng cấu trúc.
 
 ![Half adder — Wikimedia](/discrete-mathematics-for-computer-science-iuh/img/course/Half-adder.svg)
 
-<p class="textbook-figure-caption" data-figure="9.10">XOR + AND — nền ALU 8-bit.</p>
-**Full-adder** thêm đầu vào carry-in từ bit trước; nối tám full-adder thành **8-bit adder** với carry chạy dọc theo chuỗi. Độ trễ tăng theo số bit — đó là lý do CPU 64-bit không “cộng trong một nhịp” theo nghĩa tức thì trên toàn bộ dãy bit. Ben Eater so sánh [C với machine language](https://www.youtube.com/watch?v=yOyaJXpAYZQ): vòng `for` trong ngôn ngữ cao cấp là tăng program counter, load, add, store — lặp đi lặp lại trên mạch thật, từng opcode một.
+<p class="textbook-figure-caption" data-figure="9.10">Cổng XOR kết hợp cổng AND tạo nên mạch bán cộng (half-adder) — nền tảng của ALU 8-bit.</p>
+
+Mạch **full-adder** (mạch cộng đầy đủ) bổ sung thêm đầu vào carry-in từ cột bit đứng trước; ghép nối tiếp tám full-adder tạo thành **bộ cộng 8-bit** có bit nhớ lan truyền dọc theo chuỗi. Do thời gian lan truyền tăng theo số bit, CPU 64-bit cần các kỹ thuật thiết kế mạch tiên tiến hơn thay vì cộng nối tiếp đơn thuần. Trong video so sánh [ngôn ngữ C với mã máy](https://www.youtube.com/watch?v=yOyaJXpAYZQ), Ben Eater chỉ rõ một vòng `for` ở bậc cao thực chất được dịch thành chuỗi thao tác tăng program counter, nạp dữ liệu (load), cộng (add) và lưu lại (store) lặp đi lặp lại trên mạch thật theo từng opcode.
 
 <div data-demo="logic-gates-builder"></div>
 
 <script src="{{ '/public/js/logic-gates-builder.js' | relative_url }}"></script>
+
 ---
 
-## Từ breadboard đến two's complement
+## Từ breadboard đến bù hai (two's complement)
 
-Ở bài Year 2038, chúng ta đã thấy two's complement trên giấy: cộng 1 vào giá trị max của 32-bit signed đưa timestamp về năm 1901. Máy Ben Eater dùng số **không dấu** trên breadboard để chúng ta **nhìn** carry chain từng bit — LED nhấp nháy từ hàng đơn vị lên hàng cao. CPU thật dùng **cùng mạch cộng không dấu**; khác biệt nằm ở tầng ISA: CPU **đọc** bit cao nhất như sign bit và bật cờ overflow khi cộng hai số dương mà ra kết quả âm.
+Ở bài Year 2038, chúng ta đã xét bù hai trên công thức: cộng 1 vào cực đại 32-bit có dấu khiến timestamp lùi về năm 1901. Trên breadboard, Ben Eater dùng số **không dấu** để người xem dễ theo dõi chuỗi bit nhớ lan truyền qua các đèn LED từ bit thấp lên bit cao. CPU thực tế dùng **chính mạch cộng không dấu đó**; khác biệt nằm ở tầng tập lệnh (ISA), nơi CPU diễn giải bit cao nhất là bit dấu và bật cờ tràn (overflow flag) khi cộng hai số dương mà kết quả lại mang bit dấu 1.
 
-Ví dụ 8-bit cho dễ hình dung: max không dấu là `11111111` (255). Cộng 1 → `00000000` (0) với carry-out bị bỏ qua — wrap-around bình thường. Cùng pattern bit `01111111` (127) cộng 1 thành `10000000`: nếu đọc **không dấu** thì được 128; nếu đọc **two's complement** thì `10000000` là −128. **Cùng mạch cộng, khác quy ước đọc** — đó là cầu nối giữa LED nhấp nháy trên breadboard và Year 2038 trên firmware PLC mà Lan vừa ghi vào risk register.
+Xét ví dụ 8-bit để thấy rõ: cực đại không dấu là `11111111` (255), cộng 1 cho ra `00000000` (0) và bỏ bit nhớ ra ngoài. Với mẫu bit `01111111` (127), cộng thêm 1 cho ra `10000000`: nếu đọc **không dấu** thì giá trị là 128, nhưng nếu đọc theo **bù hai** thì đó là −128. **Cùng một mạch cộng nhưng khác quy ước đọc** — đây là cầu nối trực tiếp giữa đèn LED trên breadboard và rủi ro Year 2038 trên firmware PLC mà Lan ghi vào sổ quản lý rủi ro.
 
-Lan tua lại video ALU của Ben Eater sau khi đọc Planet Mainframe. Lần này cô không chỉ thấy “cộng bit” — cô thấy **cùng sự kiện vật lý** mà bài 09_03 mô tả bằng công thức: dương cộng dương mà sign bit bật lên 1. Silicon không biết năm 2038; nó chỉ biết carry propagating đúng hay sai.
+Khi xem lại video về ALU của Ben Eater sau khi đọc bài viết trên Planet Mainframe, Lan nhận ra sự kiện phần cứng đằng sau bài `09_03`: hai số dương cộng với nhau làm bit dấu bật từ 0 lên 1. Mạch silicon không biết đến khái niệm “năm 2038”; nó chỉ thực hiện đúng quy tắc lan truyền bit nhớ.
 
 ---
 
@@ -94,50 +98,49 @@ Lan tua lại video ALU của Ben Eater sau khi đọc Planet Mainframe. Lần n
 
 ### Bài tập 1
 
-Chỉ dùng cổng NAND, biểu diễn phủ định $$x'$$ từ một biến $$x$$.
+Chỉ sử dụng cổng NAND, hãy biểu diễn phép phủ định $$x'$$ của một biến $$x$$.
 
 <details>
 <summary>Đáp án</summary>
 
-Nối cả hai đầu vào của một cổng NAND cùng vào $$x$$: $$x' = x \uparrow x = (xx)' = x'$$. Đây là bước cơ bản để chứng minh NAND đủ dựng mọi hàm Boole.
+Nối cả hai đầu vào của một cổng NAND vào cùng biến $$x$$: $$x' = x \uparrow x = (xx)' = x'$$. Đây là bước đầu tiên để chứng minh tập chỉ gồm cổng NAND đủ để xây dựng mọi hàm Boole.
 
 </details>
 
 ### Bài tập 2
 
-Half-adder có $$a = 1$$, $$b = 1$$. Sum và Carry là gì?
+Một mạch half-adder nhận đầu vào $$a = 1$$ và $$b = 1$$. Tính giá trị của Sum và Carry.
 
 <details>
 <summary>Đáp án</summary>
 
-$$\text{Sum} = 1 \oplus 1 = 0$$. $$\text{Carry} = 1 \cdot 1 = 1$$. Hai bit 1 cộng lại cho tổng 0 tại bit hiện tại và nhớ 1 sang bit kế tiếp — đúng với cộng nhị phân $$1 + 1 = 10_2$$.
+$$\text{Sum} = 1 \oplus 1 = 0$$ và $$\text{Carry} = 1 \cdot 1 = 1$$. Hai bit 1 cộng lại cho tổng 0 ở cột hiện tại và nhớ 1 sang cột kế tiếp, khớp với phép cộng nhị phân $$1 + 1 = 10_2$$.
 
 </details>
 
 ### Bài tập 3
 
-Register 8-bit trên máy Ben Eater cần bao nhiêu flip-flop? Nếu opcode rộng 4 bit, tối đa bao nhiêu lệnh máy khác nhau?
+Một thanh ghi 8-bit trên máy tính của Ben Eater cần bao nhiêu flip-flop? Nếu opcode rộng 4 bit, máy hỗ trợ tối đa bao nhiêu lệnh máy khác nhau?
 
 <details>
 <summary>Đáp án</summary>
 
-Register 8-bit cần **8 flip-flop** (mỗi flip-flop giữ 1 bit). Opcode 4-bit biểu diễn $$2^4 = 16$$ tổ hợp khác nhau, tức tối đa **16 lệnh máy** nếu mỗi pattern opcode map tới một lệnh riêng.
+Thanh ghi 8-bit cần **8 flip-flop** (mỗi flip-flop lưu 1 bit). Opcode 4-bit tạo ra $$2^4 = 16$$ tổ hợp khác nhau, tương ứng tối đa **16 lệnh máy** nếu mỗi mã ứng với một lệnh riêng.
 
 </details>
 
 ### Bài tập 4
 
-Trên 8-bit, pattern `01111111` (127) cộng 1 ra `10000000`. Giải thích vì sao kết quả là 128 nếu đọc không dấu nhưng là −128 nếu đọc two's complement — và liên hệ với overflow signed.
+Trên 8 bit, lấy mẫu `01111111` (127) cộng thêm 1 thu được `10000000`. Giải thích vì sao kết quả là 128 khi đọc không dấu nhưng lại là −128 khi đọc theo bù hai, và liên hệ với tràn số có dấu.
 
 <details>
 <summary>Đáp án</summary>
 
-Mạch cộng không đổi: carry chạy qua các bit 1 ở vị trí thấp, làm bit cao nhất từ 0 thành 1. Đọc **unsigned**, `10000000` = $$2^7 = 128$$. Đọc **two's complement** 8-bit, bit sign = 1 nên giá trị = $$-2^7 = -128$$. Đây là overflow signed kiểu “dương + dương → âm” — cùng hiện tượng ở quy mô 32-bit tạo Year 2038 khi `0111…111` + 1 thành `1000…000`.
+Mạch cộng thực hiện cùng một thao tác: bit nhớ lan truyền qua bảy bit 1 ở các vị trí thấp, làm bit cao nhất chuyển từ 0 sang 1. Khi đọc **không dấu** (unsigned), `10000000` bằng $$2^7 = 128$$. Khi đọc theo **bù hai** 8-bit, bit dấu bằng 1 nên giá trị là $$-2^7 = -128$$. Đây là tràn số có dấu dạng “dương + dương → âm”, có cùng cơ chế với sự cố Year 2038 ở quy mô 32-bit khi `0111…111` + 1 biến thành `1000…000`.
 
 </details>
 
 ---
-
 
 ## Xem thêm / Video gợi ý
 
@@ -146,16 +149,16 @@ Mạch cộng không đổi: carry chạy qua các bit 1 ở vị trí thấp, l
 
 ## Tóm tắt
 
-Ben Eater xây máy tính 8-bit trên breadboard để chứng minh điều mà đại số Boole trên giấy hay nói qua loa: **mọi lệnh trong chương trình cuối cùng là cổng logic, và mọi cổng logic cuối cùng là transistor**. Transistor digital là công tắc hai trạng thái; từ đó ghép NOT, AND, OR, và đặc biệt NAND — cổng đủ để dựng mọi hàm Boole. Thêm phản hồi chéo ta có latch và flip-flop để **nhớ bit**; xếp flip-flop thành register và nối half-adder/full-adder thành chuỗi carry ta có **ALU cộng**.
+Dự án máy tính 8-bit trên breadboard của Ben Eater cho thấy rõ mối liên hệ giữa lý thuyết và phần cứng: **mọi lệnh trong chương trình cuối cùng đều quy về cổng logic, và mọi cổng logic đều cấu tạo từ transistor**. Transistor trong mạch số đóng vai trò công tắc hai trạng thái; từ đó xây dựng các cổng NOT, AND, OR và đặc biệt là NAND — cổng có tính đầy đủ để tạo mọi hàm Boole. Bổ sung vòng phản hồi cho ra latch và flip-flop để **lưu bit**; ghép flip-flop thành thanh ghi và ghép các bộ cộng half-adder/full-adder theo chuỗi nhớ tạo nên **mạch cộng ALU**.
 
-Bài 09_03 dạy two's complement và Year 2038 trên lớp trừu tượng. Bài này cho thấy **cùng mạch cộng** đứng sau cả hai: CPU không có mạch riêng cho “số âm”; nó cộng bit như không dấu, rồi ISA quy định cách đọc sign bit và khi nào báo overflow. Karnaugh map và tối ưu Boole ở chương 13 không xa rời thực tế — ít cổng hơn nghĩa là ít transistor, ít điện năng, chip chạy nhanh hơn.
+Bài `09_03` phân tích bù hai và Year 2038 ở mức biểu diễn số học, còn bài này cho thấy **chính một mạch cộng** đứng sau cả số không dấu lẫn số có dấu: CPU cộng bit như nhau rồi dùng quy ước tập lệnh (ISA) để đọc bit dấu và bật cờ tràn. Bìa Karnaugh và tối ưu biểu thức Boole ở Chương 13 gắn trực tiếp với kỹ thuật chip: giảm số cổng đồng nghĩa với giảm transistor, điện năng và nhiệt lượng.
 
 **Đọc thêm:** [Ben Eater — 8-bit computer](https://eater.net/8bit/) · [Video series — từ transistor đến CPU](https://www.youtube.com/playlist?list=PLowKtXNTBypGqPEN6Wkuy-gv1SFmc-KH8)
 
-Bài tiếp theo rời khỏi silicon, chuyển sang **hàng đợi** trên server: Brett Wooldridge và wiki [HikariCP](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) — vì sao “một triệu user online” không đồng nghĩa “một triệu connection PostgreSQL”, và pool connection quá lớn có thể làm database **chậm hơn** thay vì nhanh hơn.
+Bài tiếp theo rời khỏi tầng silicon để chuyển sang **bài toán hàng đợi trên máy chủ**: wiki [HikariCP](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) của Brett Wooldridge — vì sao “một triệu người dùng trực tuyến” không tương đương “một triệu kết nối PostgreSQL”, và vì sao cấu hình connection pool quá lớn lại khiến cơ sở dữ liệu **chậm đi**.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=33vbFFFn04k">How semiconductors work</a> — Ben Eater, tiếng Anh. Xem trước chất bán dẫn, tầng đầu của mạch mà bài đi từ transistor.
-- <a href="https://www.youtube.com/watch?v=DXvAlwMAxiA">How a transistor works</a> — Ben Eater, tiếng Anh. Transistor như công tắc của một bit.
-- <a href="https://www.youtube.com/watch?v=sTu3LwpF6XI">Making logic gates from transistors</a> — Ben Eater, tiếng Anh. Ghép transistor thành cổng, tới NAND đủ biểu diễn logic.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=33vbFFFn04k">How semiconductors work</a> — Ben Eater, tiếng Anh. Giới thiệu nguyên lý chất bán dẫn, lớp vật lý nền trước khi đi vào transistor.
+- <a href="https://www.youtube.com/watch?v=DXvAlwMAxiA">How a transistor works</a> — Ben Eater, tiếng Anh. Minh họa hoạt động của transistor như một công tắc biểu diễn bit.
+- <a href="https://www.youtube.com/watch?v=sTu3LwpF6XI">Making logic gates from transistors</a> — Ben Eater, tiếng Anh. Cách ghép transistor thành các cổng logic, tiến tới cổng NAND có tính đầy đủ.

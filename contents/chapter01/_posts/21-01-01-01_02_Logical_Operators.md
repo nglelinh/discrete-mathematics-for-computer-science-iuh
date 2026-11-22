@@ -7,14 +7,14 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã định nghĩa mệnh đề và thấy rằng mỗi phát biểu logic phải gắn với giá trị đúng hoặc sai. Mục này mở rộng sang phép toán logic — các…"
+excerpt: "Giới thiệu các phép toán logic cơ bản (phủ định, hội, tuyển, XOR, kéo theo, tương đương), thứ tự ưu tiên toán tử và các luật biến đổi biểu thức."
 ---
 
-Ở mục trước chúng ta đã định nghĩa **mệnh đề** và thấy rằng mỗi phát biểu logic phải gắn với giá trị đúng hoặc sai. Mục này mở rộng sang **phép toán logic** — các toán tử dùng để ghép nhiều mệnh đề sơ cấp thành biểu thức phức hợp.
+Ở mục trước, chúng ta đã định nghĩa **mệnh đề** và thấy rằng mỗi phát biểu logic đều gắn với một giá trị đúng hoặc sai. Mục này mở rộng sang **phép toán logic** — các toán tử dùng để ghép nhiều mệnh đề sơ cấp thành biểu thức phức hợp.
 
-Trong thực tế, hệ thống phần mềm hiếm khi ra quyết định chỉ dựa trên một điều kiện duy nhất. Website chỉ cho đăng nhập khi mật khẩu đúng **và** tài khoản chưa bị khóa; đơn hàng được giảm giá nếu khách là thành viên VIP **hoặc** có mã khuyến mãi; API chỉ cho truy cập khi người dùng đã xác thực **và** có quyền tương ứng. Bài toán khi đó không còn là "mệnh đề này đúng hay sai?" mà là làm sao **ghép nhiều điều kiện**, hiểu đúng nghĩa của **và**, **hoặc**, **không** trong ngữ cảnh logic, và tránh các lỗi nhỏ trong biểu thức gây hậu quả lớn.
+Trong thực tế, hệ thống phần mềm hiếm khi ra quyết định chỉ dựa trên một điều kiện duy nhất. Một website chỉ cho phép đăng nhập khi mật khẩu đúng **và** tài khoản chưa bị khóa; đơn hàng được giảm giá nếu khách hàng là thành viên VIP **hoặc** có mã khuyến mãi; API chỉ cấp quyền truy cập khi người dùng đã xác thực **và** có vai trò phù hợp. Khi đó, bài toán không còn là xét riêng lẻ từng mệnh đề, mà là **ghép nhiều điều kiện**, hiểu chính xác nghĩa của **và**, **hoặc**, **không** trong ngữ cảnh logic, và tránh những sai sót nhỏ trong biểu thức có thể gây hậu quả lớn.
 
-Các phép toán logic là nền tảng đứng sau `if`, `while`, bộ lọc tìm kiếm, kiểm soát truy cập, luật nghiệp vụ và hệ thống cảnh báo. Nhiều lỗi nghiêm trọng trong phần mềm không đến từ thuật toán phức tạp mà từ điều kiện tưởng quen thuộc: nhầm `and` với `or`, thiếu dấu ngoặc, hay hiểu sai mệnh đề kéo theo có thể dẫn đến mở nhầm quyền, từ chối giao dịch hợp lệ, bỏ sót test case, hoặc tạo bug logic khó phát hiện. Mục này trình bày lần lượt các phép nối cơ bản: phủ định, hội, tuyển, XOR, kéo theo và tương đương.
+Các phép toán logic là nền tảng của câu lệnh `if`, `while`, bộ lọc tìm kiếm, kiểm soát truy cập, luật nghiệp vụ và hệ thống cảnh báo. Nhiều lỗi nghiêm trọng trong phần mềm không xuất phát từ thuật toán phức tạp mà từ các điều kiện tưởng chừng quen thuộc: nhầm `and` với `or`, thiếu dấu ngoặc, hoặc hiểu sai mệnh đề kéo theo đều có thể dẫn đến cấp nhầm quyền, từ chối giao dịch hợp lệ, bỏ sót test case hoặc tạo ra lỗi logic khó phát hiện. Mục này trình bày lần lượt các phép nối cơ bản: phủ định, hội, tuyển, XOR, kéo theo và tương đương.
 
 ## Mục tiêu học tập
 
@@ -24,10 +24,10 @@ Các phép toán logic là nền tảng đứng sau `if`, `while`, bộ lọc t�
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
 - **Sử dụng** chính xác các phép toán NOT, AND, OR, XOR, IF...THEN, IF AND ONLY IF.
-- **Đọc** một điều kiện lập trình và chuyển nó sang ký hiệu logic.
-- **Giải thích** vì sao mệnh đề kéo theo $$p \to q$$ đúng khi $$p$$ sai.
-- **Phân biệt** OR bao hàm và XOR trong ngôn ngữ tự nhiên.
-- **Áp dụng** các phép toán logic vào kiểm tra đầu vào, phân quyền, truy vấn dữ liệu và test case.
+- **Đọc** một điều kiện lập trình và chuyển đổi sang ký hiệu logic.
+- **Giải thích** vì sao mệnh đề kéo theo $$p \to q$$ vẫn đúng khi $$p$$ sai.
+- **Phân biệt** phép OR bao hàm và phép XOR trong ngôn ngữ tự nhiên.
+- **Áp dụng** các phép toán logic vào kiểm tra đầu vào, phân quyền, truy vấn dữ liệu và thiết kế test case.
 
 
 **Từ khóa**: NOT, AND, OR, XOR, implication, biconditional, truth value, condition, access control.
@@ -37,7 +37,7 @@ Các phép toán logic là nền tảng đứng sau `if`, `while`, bộ lọc t�
 ## Câu chuyện mở đầu: Điều kiện đăng nhập
 
 <div class="content-box example-box textbook-block" markdown="1">
-Một hệ thống chỉ cho phép đăng nhập nếu:
+Một hệ thống chỉ cho phép đăng nhập nếu thỏa mãn các điều kiện sau:
 
 - Người dùng nhập đúng mật khẩu.
 - Tài khoản chưa bị khóa.
@@ -56,13 +56,13 @@ Ký hiệu:
 $$p \land q \land (\neg r \lor s)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Trong code:
+Trong mã nguồn:
 
 ```python
 can_login = correct_password and account_active and (not unknown_device or correct_otp)
 ```
 
-Nếu bỏ dấu ngoặc, chương trình vẫn chạy nhưng có thể cho phép hoặc từ chối sai người dùng do thứ tự ưu tiên toán tử.
+Nếu bỏ dấu ngoặc, chương trình vẫn chạy bình thường nhưng có thể cho phép hoặc từ chối sai người dùng do thứ tự ưu tiên toán tử thay đổi.
 </div>
 
 ## Phân loại mệnh đề
@@ -77,29 +77,29 @@ Mệnh đề trong logic được phân thành hai loại:
 
 
 **Đặc điểm**:
-- Không chứa phép toán logic (∧, ∨, ¬, →, ↔).
+- Không chứa phép toán logic (`∧`, `∨`, `¬`, `→`, `↔`).
 - Là đơn vị cơ bản nhất trong hệ thống logic.
-- Được ký hiệu bằng chữ cái thường: `p`, `q`, `r`, `s`, ...
+- Thường được ký hiệu bằng chữ cái thường: `p`, `q`, `r`, `s`, ...
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
-- "Hôm nay trời nắng"
-- "2 + 3 = 5"
-- "Tôi có tiền"
-- "Cửa hàng mở cửa"
+- "Hôm nay trời nắng."
+- "2 + 3 = 5."
+- "Tôi có tiền."
+- "Cửa hàng mở cửa."
 </div>
 
 
 ### Mệnh đề phức hợp
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Một **mệnh đề phức hợp** là mệnh đề **được xây dựng từ các mệnh đề khác** nhờ liên kết bằng các **liên từ** (và, hay, khi và chỉ khi, …) hoặc **trạng từ "không"**.
+**Định nghĩa**: Một **mệnh đề phức hợp** là mệnh đề **được xây dựng từ các mệnh đề khác** nhờ liên kết bằng các **liên từ** (và, hay, khi và chỉ khi, ...) hoặc **trạng từ "không"**.
 </div>
 
 
 **Đặc điểm**:
 - Chứa ít nhất một phép toán logic.
-- Được tạo thành từ mệnh đề sơ cấp thông qua các phép nối.
+- Được tạo thành từ các mệnh đề sơ cấp thông qua các phép nối.
 - Có thể phân tích thành các thành phần nhỏ hơn.
 
 <div class="textbook-example" markdown="1">
@@ -112,19 +112,19 @@ Mệnh đề trong logic được phân thành hai loại:
 
 
 <div class="content-box insight-box textbook-block" markdown="1">
-**Lưu ý**: Phân loại mệnh đề sơ cấp và phức hợp giúp chúng ta xác định đâu là "nguyên tử" và đâu là "phân tử" trong biểu thức logic. Khi phân tích điều kiện trong mã nguồn, ta luôn bắt đầu bằng việc xác định các mệnh đề sơ cấp trước khi ghép chúng bằng các phép toán.
+**Lưu ý**: Phân biệt mệnh đề sơ cấp và mệnh đề phức hợp giúp xác định rõ các thành phần cơ bản và cấu trúc ghép nối trong biểu thức logic. Khi phân tích một điều kiện trong mã nguồn, ta luôn bắt đầu bằng việc tách ra các mệnh đề sơ cấp trước khi ghép chúng lại bằng các phép toán.
 </div>
 
-## Phép phủ định (Negation) - NOT
+## Phép phủ định (Negation) — NOT
 
-**Ký hiệu**: ¬p hoặc ~p hoặc !p
+**Ký hiệu**: `¬p`, `~p` hoặc `!p`
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Phủ định của mệnh đề p là mệnh đề có giá trị chân lý ngược lại với p.
+**Định nghĩa**: Phủ định của mệnh đề $$p$$ là mệnh đề có giá trị chân lý ngược lại với $$p$$.
 </div>
 
 
-### Bảng chân trị:
+### Bảng chân trị
 
 | p | ¬p |
 |---|---|
@@ -133,15 +133,15 @@ Mệnh đề trong logic được phân thành hai loại:
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
-- p: "Hôm nay trời nắng"
-- ¬p: "Hôm nay trời không nắng"
+- $$p$$: "Hôm nay trời nắng."
+- $$\neg p$$: "Hôm nay trời không nắng."
 
 **Phủ định bất đẳng thức** (cách làm trực quan):
 
-Khi phủ định một bất đẳng thức, ta làm theo **3 bước đơn giản**:
+Khi phủ định một bất đẳng thức, ta thực hiện theo 3 bước:
 
-1. Giữ nguyên biến.
-2. Đảo ngược dấu so sánh.
+1. Giữ nguyên biến và giá trị so sánh.
+2. Đảo ngược dấu so sánh (lưu ý kèm hoặc bỏ dấu bằng tương ứng).
 3. Viết kết quả.
 
 **Bảng quy tắc nhanh**:
@@ -155,21 +155,21 @@ Khi phủ định một bất đẳng thức, ta làm theo **3 bước đơn gi�
 
 **Ví dụ** (thực tế):
 
-- "Tuổi lớn hơn 18" → Phủ định: "Tuổi nhỏ hơn hoặc bằng 18"
-- "Điểm số >= 5" → Phủ định: "Điểm số < 5"
+- "Tuổi lớn hơn 18" → Phủ định: "Tuổi nhỏ hơn hoặc bằng 18."
+- "Điểm số >= 5" → Phủ định: "Điểm số < 5."
 </div>
 
 
-## Phép hội (Conjunction) - AND
+## Phép hội (Conjunction) — AND
 
-**Ký hiệu**: p ∧ q
+**Ký hiệu**: `p ∧ q`
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: p ∧ q chỉ đúng khi cả p và q đều đúng.
+**Định nghĩa**: $$p \land q$$ chỉ đúng khi cả $$p$$ và $$q$$ đều đúng.
 </div>
 
 
-### Bảng chân trị:
+### Bảng chân trị
 
 | p | q | p ∧ q |
 |---|---|-------|
@@ -183,9 +183,9 @@ Khi phủ định một bất đẳng thức, ta làm theo **3 bước đơn gi�
 <p class="textbook-figure-caption" data-figure="1.7">Phép hội p ∧ q — chỉ đúng khi cả p và q đều đúng (vùng giao trên biểu đồ Venn).</p>
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
-- p: "Tôi có tiền"
-- q: "Cửa hàng mở cửa"
-- p ∧ q: "Tôi có tiền và cửa hàng mở cửa"
+- $$p$$: "Tôi có tiền."
+- $$q$$: "Cửa hàng mở cửa."
+- $$p \land q$$: "Tôi có tiền và cửa hàng mở cửa."
 
 **Ví dụ trong lập trình**:
 
@@ -194,40 +194,40 @@ if order_total >= 500000 and customer_tier == "vip":
     apply_discount()
 ```
 
-Điều kiện chỉ đúng khi **cả hai** điều kiện con đều đúng. Đây là dạng phổ biến trong thương mại điện tử: đủ giá trị đơn hàng và đúng loại khách hàng.
+Điều kiện chỉ đúng khi **cả hai** điều kiện con đều đúng. Đây là dạng phổ biến trong thương mại điện tử: đơn hàng đạt giá trị tối thiểu và khách hàng thuộc đúng nhóm ưu đãi.
 </div>
 
 
-## Phép tuyển (Disjunction) - OR
+## Phép tuyển (Disjunction) — OR
 
-**Ký hiệu**: p ∨ q
+**Ký hiệu**: `p ∨ q`
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: p ∨ q chỉ sai khi cả p và q đều sai.
+**Định nghĩa**: $$p \lor q$$ chỉ sai khi cả $$p$$ và $$q$$ đều sai.
 </div>
 
 
 ### Tính chất (OR)
 
-Phép tuyển đúng khi **ít nhất một** toán hạng đúng: nếu một trong hai mệnh đề đúng thì $$p \lor q$$ đúng.
+Phép tuyển đúng khi có **ít nhất một** toán hạng đúng: chỉ cần một trong hai mệnh đề đúng thì $$p \lor q$$ đã đúng.
 
-### Bảng chân trị:
+### Bảng chân trị
 
 | p | q | p ∨ q |
 |:---:|:---:|:---:|
-| T | T | T | 
-| T | F | T | 
-| F | T | T | 
-| F | F | F | 
+| T | T | T |
+| T | F | T |
+| F | T | T |
+| F | F | F |
 
 ![Biểu đồ Venn: phép OR (∨)](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-OR.png)
 
 <p class="textbook-figure-caption" data-figure="1.8">Phép tuyển p ∨ q — đúng khi ít nhất một trong hai mệnh đề đúng (OR bao hàm).</p>
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
-- p: "Tôi đi xe bus"
-- q: "Tôi đi xe máy"
-- p ∨ q: "Tôi đi xe bus hoặc xe máy"
+- $$p$$: "Tôi đi xe bus."
+- $$q$$: "Tôi đi xe máy."
+- $$p \lor q$$: "Tôi đi xe bus hoặc xe máy."
 
 **Ví dụ trong tìm kiếm**:
 
@@ -236,20 +236,20 @@ SELECT * FROM products
 WHERE category = 'Laptop' OR category = 'Tablet';
 ```
 
-Kết quả gồm sản phẩm thuộc ít nhất một trong hai loại. Trong logic toán, OR thường là **OR bao hàm**: nếu một sản phẩm thỏa cả hai điều kiện thì vẫn được chọn.
+Kết quả gồm các sản phẩm thuộc ít nhất một trong hai loại. Trong logic toán, OR mặc định là **OR bao hàm** (inclusive OR): nếu một đối tượng thỏa mãn đồng thời cả hai điều kiện thì kết quả vẫn đúng.
 </div>
 
 
-## Phép kéo theo (Implication) - IF...THEN
+## Phép kéo theo (Implication) — IF...THEN
 
-**Ký hiệu**: p → q
+**Ký hiệu**: `p → q`
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: p → q chỉ sai khi p đúng và q sai.
+**Định nghĩa**: $$p \to q$$ chỉ sai khi $$p$$ đúng và $$q$$ sai.
 </div>
 
 
-### Bảng chân trị:
+### Bảng chân trị
 
 | p | q | p → q |
 |---|---|-------|
@@ -260,26 +260,26 @@ Kết quả gồm sản phẩm thuộc ít nhất một trong hai loại. Trong 
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
-- p: "Trời mưa"
-- q: "Đường ướt"
-- p → q: "Nếu trời mưa thì đường ướt"
+- $$p$$: "Trời mưa."
+- $$q$$: "Đường ướt."
+- $$p \to q$$: "Nếu trời mưa thì đường ướt."
 </div>
 
 
-### Lưu ý quan trọng:
-- p được gọi là **giả thiết** (hypothesis)
-- q được gọi là **kết luận** (conclusion)
-- Khi p sai, p → q luôn đúng (vacuously true)
+### Lưu ý quan trọng
+- $$p$$ được gọi là **giả thiết** (hypothesis).
+- $$q$$ được gọi là **kết luận** (conclusion).
+- Khi $$p$$ sai, $$p \to q$$ luôn đúng (vacuously true).
 
 ![Biểu đồ Venn: mệnh đề kéo theo (→)](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-Implication.PNG)
 
 <p class="textbook-figure-caption" data-figure="1.9">Mệnh đề kéo theo p → q — chỉ sai khi p đúng mà q sai; khi p sai thì luôn đúng (vacuously true).</p>
 ![Biểu đồ Venn: phép XOR (⊕)](/discrete-mathematics-for-computer-science-iuh/img/course/Venn-Diagram-XOR.png)
 
-<p class="textbook-figure-caption" data-figure="1.10">Phép XOR p ⊕ q — đúng khi đúng đúng một trong hai mệnh đề (loại trừ lẫn nhau).</p>
+<p class="textbook-figure-caption" data-figure="1.10">Phép XOR p ⊕ q — đúng khi đúng một trong hai mệnh đề đúng (loại trừ lẫn nhau).</p>
 ![Luật De Morgan trên biểu đồ Venn](/discrete-mathematics-for-computer-science-iuh/img/course/Intersections_of_two_sets_and_their_complements.svg)
 
-<p class="textbook-figure-caption" data-figure="1.11">Luật De Morgan — ¬(p ∧ q) ≡ ¬p ∨ ¬q và ¬(p ∨ q) ≡ ¬p ∧ ¬q, rất quan trọng khi viết điều kiện phủ định trong code.</p>
+<p class="textbook-figure-caption" data-figure="1.11">Luật De Morgan — ¬(p ∧ q) ≡ ¬p ∨ ¬q và ¬(p ∨ q) ≡ ¬p ∧ ¬q, rất quan trọng khi viết điều kiện phủ định trong mã nguồn.</p>
 ## Ứng dụng trong lập trình
 
 ```python
@@ -302,15 +302,15 @@ result_xor = p != q  # True
 
 ## Biểu thức logic
 
-**Biểu thức logic** (logical expression) là sự kết hợp của các mệnh đề sơ cấp bằng các phép toán logic (¬, ∧, ∨, →, ↔, ⊕) và dấu ngoặc.
+**Biểu thức logic** (logical expression) là sự kết hợp của các mệnh đề sơ cấp bằng các phép toán logic (`¬`, `∧`, `∨`, `→`, `↔`, `⊕`) và dấu ngoặc.
 
 ### Cú pháp biểu thức logic
 
-Một biểu thức logic được xây dựng theo quy tắc:
+Một biểu thức logic được xây dựng theo các quy tắc sau:
 
-- Mọi mệnh đề sơ cấp (p, q, r,...) là biểu thức logic.
-- Nếu E là biểu thức logic thì ¬E cũng là biểu thức logic.
-- Nếu E₁ và E₂ là biểu thức logic thì (E₁ ∧ E₂), (E₁ ∨ E₂), (E₁ → E₂), (E₁ ↔ E₂), (E₁ ⊕ E₂) cũng là biểu thức logic.
+- Mọi mệnh đề sơ cấp (`p`, `q`, `r`, ...) đều là biểu thức logic.
+- Nếu `E` là biểu thức logic thì `¬E` cũng là biểu thức logic.
+- Nếu `E₁` và `E₂` là biểu thức logic thì `(E₁ ∧ E₂)`, `(E₁ ∨ E₂)`, `(E₁ → E₂)`, `(E₁ ↔ E₂)`, `(E₁ ⊕ E₂)` cũng là biểu thức logic.
 
 **Ví dụ biểu thức logic**:
 - $$p \land q$$
@@ -320,7 +320,7 @@ Một biểu thức logic được xây dựng theo quy tắc:
 
 ### Thứ tự ưu tiên toán tử
 
-Khi viết biểu thức không có dấu ngoặc, thứ tự thực hiện là:
+Khi viết biểu thức không có dấu ngoặc, thứ tự thực hiện các phép toán là:
 
 | Ưu tiên | Toán tử | Tên |
 |:---:|:---|:---|
@@ -337,22 +337,19 @@ Khi viết biểu thức không có dấu ngoặc, thứ tự thực hiện là:
 
 
 <div class="content-box warning-box textbook-block" markdown="1">
-**Lưu ý**: Luôn dùng dấu ngoặc để biểu thức rõ ràng, tránh nhầm lẫn khi chuyển sang code.
+**Lưu ý**: Luôn dùng dấu ngoặc để biểu thức rõ nghĩa và tránh nhầm lẫn khi chuyển sang mã nguồn.
 </div>
 
 ## Bảng chân trị cho biểu thức phức hợp
 
-Bảng chân trị không chỉ dùng cho từng phép toán riêng lẻ, mà còn dùng để phân tích toàn bộ biểu thức logic.
+Bảng chân trị không chỉ dùng cho từng phép toán riêng lẻ mà còn dùng để phân tích toàn bộ một biểu thức logic phức hợp.
 
 ### Cách xây dựng bảng chân trị
 
-**Bước 1**: Xác định số biến (n). Bảng có $$2^n$$ dòng.
-
-**Bước 2**: Liệt kê tất cả tổ hợp giá trị chân lý của các biến.
-
-**Bước 3**: Tính giá trị từng biểu thức con, từ trong ra ngoài.
-
-**Bước 4**: Xác định giá trị cuối cùng của biểu thức.
+- **Bước 1**: Xác định số biến $$n$$. Bảng sẽ có đúng $$2^n$$ dòng.
+- **Bước 2**: Liệt kê tất cả các tổ hợp giá trị chân lý của các biến.
+- **Bước 3**: Tính giá trị từng biểu thức con theo thứ tự từ trong ra ngoài.
+- **Bước 4**: Xác định giá trị cuối cùng của toàn bộ biểu thức.
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Biểu thức $$(p \land q) \lor \neg r$$:
@@ -368,24 +365,21 @@ Bảng chân trị không chỉ dùng cho từng phép toán riêng lẻ, mà c�
 | F | F | T | F     | F  | F            |
 | F | F | F | F     | T  | T            |
 
-Biểu thức đúng trong 4/8 trường hợp.
+Biểu thức đúng trong 5/8 trường hợp.
 </div>
 
 
 ## Biểu thức tương đương
 
-Hai biểu thức logic **E₁** và **E₂** là **tương đương** (logically equivalent) nếu chúng có cùng giá trị chân lý trong mọi trường hợp. Ký hiệu: $$E_1 \equiv E_2$$.
+Hai biểu thức logic $$E_1$$ và $$E_2$$ là **tương đương** (logically equivalent) nếu chúng có cùng giá trị chân lý trong mọi trường hợp. Ký hiệu: $$E_1 \equiv E_2$$.
 
 ### Cách chứng minh tương đương
 
-**Phương pháp 1 — Bảng chân trị**: Xây dựng bảng chân trị cho cả hai biểu thức, so sánh cột cuối cùng.
-
-**Phương pháp 2 — Luật logic**: Biến đổi biểu thức này thành biểu thức kia bằng các luật logic (xem phần sau).
+- **Phương pháp 1 — Bảng chân trị**: Lập bảng chân trị cho cả hai biểu thức rồi so sánh hai cột kết quả cuối cùng.
+- **Phương pháp 2 — Luật logic**: Biến đổi biểu thức này thành biểu thức kia bằng các luật tương đương (trình bày ở phần sau).
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: $$p \to q \equiv \neg p \lor q$$:
-
-Chứng minh bằng bảng chân trị:
+**Ví dụ**: Chứng minh $$p \to q \equiv \neg p \lor q$$ bằng bảng chân trị:
 
 | p | q | p → q | ¬p | ¬p ∨ q |
 |---|---|-------|----|--------|
@@ -394,9 +388,9 @@ Chứng minh bằng bảng chân trị:
 | F | T | T     | T  | T      |
 | F | F | T     | T  | T      |
 
-Hai cột cuối cùng giống hệt → hai biểu thức **tương đương**.
+Hai cột kết quả giống nhau ở mọi dòng, nên hai biểu thức **tương đương**.
 
-**Ý nghĩa thực tiễn**: Trong lập trình, ta có thể thay `if p then q` bằng `not p or q` tùy ngữ cảnh — đây là biểu diễn tương đương của mệnh đề kéo theo.
+**Ý nghĩa thực tiễn**: Trong lập trình, ta có thể biểu diễn điều kiện kéo theo `if p then q` bằng `not p or q` tùy ngữ cảnh.
 </div>
 
 
@@ -496,32 +490,32 @@ $$p \lor \neg p \equiv T$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 <div class="content-box insight-box textbook-block" markdown="1">
-**Ghi nhớ De Morgan**: Khi phủ định một biểu thức có ngoặc, đổi phép hội thành tuyển (hoặc ngược lại) **và** phủ định từng thành phần bên trong.
+**Ghi nhớ De Morgan**: Khi phủ định một biểu thức trong ngoặc, ta đổi phép hội thành phép tuyển (hoặc ngược lại) **và** phủ định từng thành phần bên trong.
 </div>
 
 ## Ví dụ: Trang danh sách sản phẩm
 
 ### Yêu cầu lọc sản phẩm
 
-Một trang thương mại điện tử có các bộ lọc:
+Một trang thương mại điện tử áp dụng các bộ lọc sau:
 
-- Danh mục: Điện thoại HOẶC Máy tính bảng
-- Giá: Từ 5 triệu đến 15 triệu
-- Thương hiệu: Samsung HOẶC Apple
-- Còn hàng: true
-- Đánh giá: ≥ 4 sao HOẶC có ≥ 100 lượt đánh giá
+- Danh mục: Điện thoại HOẶC Máy tính bảng.
+- Giá: Từ 5 triệu đến 15 triệu.
+- Thương hiệu: Samsung HOẶC Apple.
+- Còn hàng: `true`.
+- Đánh giá: ≥ 4 sao HOẶC có ≥ 100 lượt đánh giá.
 
 ### Biểu thức logic
 
 Ký hiệu:
-- $$p$$: Danh mục là Điện thoại
-- $$q$$: Danh mục là Máy tính bảng
-- $$r$$: Giá ∈ [5tr, 15tr]
-- $$s$$: Thương hiệu Samsung
-- $$t$$: Thương hiệu Apple
-- $$u$$: Còn hàng
-- $$v$$: Đánh giá ≥ 4 sao
-- $$w$$: Số lượt đánh giá ≥ 100
+- $$p$$: Danh mục là Điện thoại.
+- $$q$$: Danh mục là Máy tính bảng.
+- $$r$$: Giá nằm trong khoảng [5 triệu, 15 triệu].
+- $$s$$: Thương hiệu Samsung.
+- $$t$$: Thương hiệu Apple.
+- $$u$$: Còn hàng.
+- $$v$$: Đánh giá ≥ 4 sao.
+- $$w$$: Số lượt đánh giá ≥ 100.
 
 **Điều kiện lọc**:
 
@@ -529,7 +523,7 @@ Ký hiệu:
 $$(p \lor q) \land r \land (s \lor t) \land u \land (v \lor w)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-### Code JavaScript
+### Mã nguồn JavaScript
 
 ```javascript
 const filteredProducts = products.filter(product => {
@@ -543,37 +537,37 @@ const filteredProducts = products.filter(product => {
 });
 ```
 
-**Nhận xét**: Nếu nhầm `&&` với `||` ở điều kiện giá, kết quả lọc sẽ sai hoàn toàn.
+**Nhận xét**: Nếu viết nhầm `&&` thành `||` ở điều kiện giá, kết quả lọc sẽ sai hoàn toàn.
 
 ## Ví dụ: Validator trong web form
 
 ### Yêu cầu kiểm tra form đăng ký
 
-Form yêu cầu:
-- Tên không được rỗng
-- Email hợp lệ (xem phần sau)
-- Mật khẩu ≥ 8 ký tự VÀ chứa ít nhất 1 chữ hoa VÀ 1 chữ số
-- Xác nhận mật khẩu trùng với mật khẩu
-- Đồng ý điều khoản: true
+Form đăng ký yêu cầu:
+- Tên không được để trống.
+- Email hợp lệ (xem phần tiếp theo).
+- Mật khẩu dài ≥ 8 ký tự VÀ chứa ít nhất 1 chữ hoa VÀ 1 chữ số.
+- Xác nhận mật khẩu trùng với mật khẩu.
+- Đã đồng ý điều khoản (`true`).
 
 ### Biểu thức logic
 
 Ký hiệu:
-- $$p$$: Tên ≠ rỗng
-- $$q$$: Email hợp lệ
-- $$r$$: Mật khẩu ≥ 8 ký tự
-- $$s$$: Mật khẩu chứa chữ hoa
-- $$t$$: Mật khẩu chứa chữ số
-- $$u$$: Xác nhận mật khẩu = mật khẩu
-- $$v$$: Đồng ý điều khoản
+- $$p$$: Tên không rỗng.
+- $$q$$: Email hợp lệ.
+- $$r$$: Mật khẩu ≥ 8 ký tự.
+- $$s$$: Mật khẩu chứa chữ hoa.
+- $$t$$: Mật khẩu chứa chữ số.
+- $$u$$: Xác nhận mật khẩu trùng mật khẩu.
+- $$v$$: Đồng ý điều khoản.
 
-**Điều kiện submit**:
+**Điều kiện gửi form (submit)**:
 
 <div class="textbook-equation" markdown="1">
 $$p \land q \land (r \land s \land t) \land u \land v$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-### Code JavaScript
+### Mã nguồn JavaScript
 
 ```javascript
 function validateForm(formData) {
@@ -595,19 +589,19 @@ function validateForm(formData) {
 
 ### Yêu cầu kiểm tra email
 
-Email hợp lệ nếu:
-- Có đúng 1 ký tự `@`
-- Phần trước `@` không rỗng VÀ chỉ chứa chữ cái, chữ số, dấu chấm, gạch dưới
-- Phần sau `@` có ít nhất 1 dấu chấm VÀ kết thúc bằng domain hợp lệ (.com, .vn, .org,...)
+Một địa chỉ email được xem là hợp lệ (ở mức đơn giản hóa) nếu:
+- Có đúng 1 ký tự `@`.
+- Phần trước `@` không rỗng VÀ chỉ chứa chữ cái, chữ số, dấu chấm hoặc gạch dưới.
+- Phần sau `@` có ít nhất 1 dấu chấm VÀ kết thúc bằng tên miền hợp lệ (`.com`, `.vn`, `.org`, ...).
 
 ### Biểu thức logic (đơn giản hóa)
 
 Ký hiệu:
-- $$p$$: Có đúng 1 `@`
-- $$q$$: Phần local không rỗng
-- $$r$$: Phần local chỉ chứa ký tự hợp lệ
-- $$s$$: Phần domain có ≥ 1 dấu chấm
-- $$t$$: Domain kết thúc bằng TLD hợp lệ
+- $$p$$: Có đúng 1 ký tự `@`.
+- $$q$$: Phần local không rỗng.
+- $$r$$: Phần local chỉ chứa ký tự hợp lệ.
+- $$s$$: Phần domain có ≥ 1 dấu chấm.
+- $$t$$: Domain kết thúc bằng TLD hợp lệ.
 
 **Điều kiện email hợp lệ**:
 
@@ -615,7 +609,7 @@ Ký hiệu:
 $$p \land q \land r \land s \land t$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-### Code JavaScript (regex + logic)
+### Mã nguồn JavaScript (regex + logic)
 
 ```javascript
 function isValidEmail(email) {
@@ -646,25 +640,25 @@ console.log(isValidEmail("user@@example.com"));     // false (nhiều @)
 ```
 
 <div class="content-box insight-box textbook-block" markdown="1">
-**Lưu ý**: Validator email thực tế phức tạp hơn nhiều (RFC 5321). Ví dụ trên chỉ minh họa cách dùng logic mệnh đề để phân rã yêu cầu.
+**Lưu ý**: Trình kiểm tra email trong thực tế phức tạp hơn nhiều (chuẩn RFC 5321). Ví dụ trên chỉ minh họa cách dùng logic mệnh đề để phân rã yêu cầu kiểm tra.
 </div>
 
 ## Bài tập thực hành
 
 ### Bài tập 1: Tính giá trị chân lý
-Cho p = T, q = F, r = T. Tính:
-1. p ∧ ¬q
-2. (p ∨ q) → r
-3. p ↔ (q ∨ r)
-4. ¬(p ∧ q) ∨ r
+Cho $$p = T$$, $$q = F$$, $$r = T$$. Tính giá trị chân lý của các biểu thức sau:
+1. $$p \land \neg q$$
+2. $$(p \lor q) \to r$$
+3. $$p \leftrightarrow (q \lor r)$$
+4. $$\neg(p \land q) \lor r$$
 
 <details>
 <summary>Đáp án</summary>
 
-1. p ∧ ¬q = T ∧ T = T
-2. (p ∨ q) → r = T → T = T
-3. p ↔ (q ∨ r) = T ↔ T = T
-4. ¬(p ∧ q) ∨ r = T ∨ T = T
+1. $$p \land \neg q = T \land T = T$$.
+2. $$(p \lor q) \to r = T \to T = T$$.
+3. $$p \leftrightarrow (q \lor r) = T \leftrightarrow T = T$$.
+4. $$\neg(p \land q) \lor r = T \lor T = T$$.
 
 </details>
 
@@ -681,7 +675,7 @@ Một hệ thống cho phép người dùng sửa bài viết nếu:
 
 ### Bài tập 4: Tìm lỗi logic
 
-Lập trình viên viết:
+Một lập trình viên viết điều kiện sau:
 
 ```python
 can_edit = is_admin or is_author and not is_locked
@@ -694,7 +688,7 @@ can_edit = is_admin or is_author and not is_locked
 ### Bài tập 5: Chứng minh tương đương logic
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Cho `p`, `q`, `r` là các biến mệnh đề. Chứng minh rằng:
+**Ví dụ**: Cho $$p, q, r$$ là các biến mệnh đề. Chứng minh rằng:
 
 <div class="textbook-equation" markdown="1">
 $$(\neg p \to r) \land (q \to r) \iff (p \to q) \to r$$
@@ -704,22 +698,22 @@ $$(\neg p \to r) \land (q \to r) \iff (p \to q) \to r$$
 
 **Phương pháp 1: Bảng chân trị (8 dòng)**
 
-| p | q | r | ¬p | ¬p → r | q → r | (¬p → r) ∧ (q → r) | p → q | (p → q) → r | Kết quả |
+| p | q | r | ¬p | ¬p → r | q → r | (¬p → r) ∧ (q → r) | p → q | (p → q) → r | Kết quả (↔) |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | T | T | T | F | T | T | T | T | T | T |
-| T | T | F | F | T | T | T | T | F | F |
+| T | T | F | F | T | F | F | T | F | T |
 | T | F | T | F | T | T | T | F | T | T |
-| T | F | F | F | T | F | F | F | T | F |
+| T | F | F | F | T | T | T | F | T | T |
 | F | T | T | T | T | T | T | T | T | T |
-| F | T | F | T | F | T | F | T | F | F |
+| F | T | F | T | F | F | F | T | F | T |
 | F | F | T | T | T | T | T | T | T | T |
-| F | F | F | T | F | T | F | T | F | F |
+| F | F | F | T | F | T | F | T | F | T |
 
-**Kết luận**: Hai vế có cùng cột chân trị → tương đương.
+**Kết luận**: Hai vế có cột giá trị chân lý giống hệt nhau ở cả 8 dòng (cột tương đương toàn T), nên hai biểu thức tương đương.
 
-**Phương pháp 2: Luật tương đương (phân tích từng bước)**
+**Phương pháp 2: Luật tương đương (biến đổi từng bước)**
 
-Bước 1: Viết vế trái theo định nghĩa kéo theo
+Bước 1: Biến đổi vế trái theo định nghĩa phép kéo theo:
 <div class="textbook-equation" markdown="1">
 $$(\neg p \to r) \equiv (p \lor r)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
@@ -728,32 +722,32 @@ $$(\neg p \to r) \equiv (p \lor r)$$
 $$(q \to r) \equiv (\neg q \lor r)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Bước 2: Vế trái trở thành
-$$(p \lor r) \land (\neg q \lor r) \equiv (p \land \neg q) \lor r$$ (phân phối)
+Bước 2: Áp dụng luật phân phối cho vế trái:
+$$(p \lor r) \land (\neg q \lor r) \equiv (p \land \neg q) \lor r$$.
 
-Bước 3: Vế phải
+Bước 3: Biến đổi vế phải:
 <div class="textbook-equation" markdown="1">
 $$(p \to q) \to r \equiv (\neg p \lor q) \to r \equiv \neg(\neg p \lor q) \lor r \equiv (p \land \neg q) \lor r$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Bước 4: Hai vế bằng nhau → chứng minh xong.
+Bước 4: Hai vế cùng tương đương với $$(p \land \neg q) \lor r$$, suy ra điều phải chứng minh.
 </div>
 
 
 <div class="content-box example-box textbook-block" markdown="1">
-**Lưu ý**: Khi gặp bài tập chứng minh tương đương, sinh viên có thể chọn:
-- Bảng chân trị (luôn đúng, nhưng dài)
-- Luật tương đương (ngắn gọn hơn, cần nắm vững các luật)
+**Lưu ý**: Khi gặp bài tập chứng minh tương đương, sinh viên có thể chọn một trong hai cách:
+- Bảng chân trị (luôn kiểm chứng được đầy đủ, nhưng dài khi có nhiều biến).
+- Luật tương đương (ngắn gọn hơn, đòi hỏi nắm vững các luật biến đổi).
 </div>
 
 ### Bài tập 6: Mệnh đề kéo theo trong đời thường
 
 Cho các mệnh đề:
 
-- $$p$$: "Bạn chăm chỉ học tập"
-- $$q$$: "Bạn đạt điểm cao"
-- $$r$$: "Bạn có việc làm tốt"
-- $$s$$: "Bạn hài lòng với cuộc sống"
+- $$p$$: "Bạn chăm chỉ học tập."
+- $$q$$: "Bạn đạt điểm cao."
+- $$r$$: "Bạn có việc làm tốt."
+- $$s$$: "Bạn hài lòng với cuộc sống."
 
 Viết các câu sau dưới dạng ký hiệu logic:
 
@@ -766,27 +760,21 @@ Viết các câu sau dưới dạng ký hiệu logic:
 <details>
 <summary>Đáp án</summary>
 
-(a) $$p \to q$$ — Nếu p thì q.
+(a) $$p \to q$$ — "Nếu $$p$$ thì $$q$$".
 
-(b) $$q \to r$$ — "Chỉ khi q mới r" tương đương "r kéo theo q". Thực chất: nếu có việc làm tốt thì phải có điểm cao, tức $$r \to q$$.
-    Cần phân biệt: "q là điều kiện cần cho r" = $$r \to q$$.
+(b) $$r \to q$$ — "Chỉ khi $$q$$ mới $$r$$" có nghĩa là nếu có việc làm tốt thì bắt buộc phải đạt điểm cao (tức $$q$$ là điều kiện cần cho $$r$$).
 
-(c) $$r \to s$$ — "r là đủ để s" = $$r \to s$$.
+(c) $$r \to s$$ — "$$r$$ là điều kiện đủ để $$s$$".
 
-(d) $$p \to q$$ — "p là cần thiết cho q" nghĩa là không thể có q nếu không có p, tức $$q \to p$$.
-    Chính xác: "p là cần thiết cho q" = "nếu q thì p" = $$q \to p$$.
-    
-    Vậy đáp án đúng: $$q \to p$$ (không phải $$p \to q$$ — đây là lỗi thường gặp!).
+(d) $$q \to p$$ — "$$p$$ là điều kiện cần cho $$q$$" nghĩa là không thể có $$q$$ nếu không có $$p$$, hay "nếu $$q$$ thì $$p$$" (lưu ý tránh viết nhầm thành $$p \to q$$).
 
-(e) $$\neg p \to \neg q$$ và $$\neg q \to \neg r$$.
-    Kết hợp: $$(\neg p \to \neg q) \land (\neg q \to \neg r)$$.
-    Theo tam đoạn luận giả định: $$\neg p \to \neg r$$ (nếu không chăm chỉ thì không có việc làm tốt).
+(e) $$(\neg p \to \neg q) \land (\neg q \to \neg r)$$. Theo tam đoạn luận giả định, từ hai mệnh đề này có thể suy ra $$\neg p \to \neg r$$ ("nếu không chăm chỉ thì không có việc làm tốt").
 
 </details>
 
-### Bài tập 7: XOR vs OR trong thực tế
+### Bài tập 7: XOR và OR trong thực tế
 
-Trong mỗi tình huống sau, "hoặc" được dùng theo nghĩa OR bao hàm (inclusive) hay XOR (loại trừ)? Giải thích.
+Trong mỗi tình huống sau, từ "hoặc" được dùng theo nghĩa OR bao hàm (inclusive) hay XOR (loại trừ)? Giải thích.
 
 (a) "Sinh viên được nhận học bổng nếu có điểm trung bình >= 8.0 hoặc có thành tích nghiên cứu."
 (b) "Bạn có thể chọn thanh toán bằng thẻ tín dụng hoặc chuyển khoản."
@@ -797,23 +785,23 @@ Trong mỗi tình huống sau, "hoặc" được dùng theo nghĩa OR bao hàm (
 <details>
 <summary>Đáp án</summary>
 
-(a) **OR bao hàm** — Sinh viên có thể vừa có điểm cao vừa có nghiên cứu, và vẫn nhận học bổng. Cả hai đều đúng thì kết quả vẫn đúng.
+(a) **OR bao hàm** — Sinh viên có thể vừa có điểm trung bình >= 8.0 vừa có thành tích nghiên cứu và vẫn nhận học bổng.
 
-(b) **XOR** — Bạn thường chỉ được chọn một phương thức thanh toán, không thể cả hai. Trong giao diện, đây thường là nút radio, không phải checkbox.
+(b) **XOR** — Người dùng thường chỉ chọn một phương thức thanh toán cho mỗi giao dịch; trong giao diện, đây thường là nút radio thay vì checkbox.
 
-(c) **OR bao hàm** — Cả hai điều kiện có thể xảy ra cùng lúc và hệ thống vẫn cảnh báo. Một cảnh báo vẫn là cảnh báo, dù có nhiều lý do.
+(c) **OR bao hàm** — Cả hai điều kiện đều có thể xảy ra đồng thời và hệ thống vẫn phát cảnh báo.
 
-(d) **XOR** — Một đội chỉ nhận được một kết quả duy nhất. Không thể vừa thắng vừa hòa. Ba trường hợp loại trừ lẫn nhau.
+(d) **XOR** — Một đội chỉ nhận một kết quả duy nhất trong trận đấu; ba trường hợp loại trừ lẫn nhau.
 
-(e) **OR bao hàm** — Người dùng có thể vừa nhập đúng tên/mật khẩu vừa có vân tay, và vẫn đăng nhập được. Hệ thống thường chấp nhận cả hai.
+(e) **OR bao hàm** — Người dùng có thể thỏa mãn cả hai phương thức xác thực và vẫn đăng nhập được.
 
 </details>
 
 ### Bài tập 8: Biểu diễn điều kiện phức hợp bằng Python
 
-Viết hàm Python cho mỗi yêu cầu sau, sử dụng các phép toán logic:
+Viết hàm Python cho mỗi yêu cầu sau bằng các phép toán logic:
 
-(a) `can_publish(post)` — Bài viết được đăng nếu đã được duyệt (reviewed) VÀ (nội dung đã hoàn chỉnh HOẶC tác giả là editor).
+(a) `can_publish(post)` — Bài viết được đăng nếu đã được duyệt (`reviewed`) VÀ (nội dung đã hoàn chỉnh HOẶC tác giả là editor).
 
 (b) `should_send_alert(system)` — Cảnh báo được gửi nếu (CPU > 90% HOẶC memory > 85%) VÀ không phải giờ bảo trì.
 
@@ -858,12 +846,12 @@ print(is_eligible_for_scholarship({'gpa': 3.0, 'has_discipline': False, 'has_awa
 ### Bài tập 9: Dịch biểu thức logic thành câu tự nhiên
 
 Cho các mệnh đề:
-- $$a$$: "Tài khoản là admin"
-- $$m$$: "Tài khoản là moderator"
-- $$b$$: "Tài khoản bị khóa"
-- $$v$$: "Tài khoản đã xác thực email"
+- $$a$$: "Tài khoản là admin."
+- $$m$$: "Tài khoản là moderator."
+- $$b$$: "Tài khoản bị khóa."
+- $$v$$: "Tài khoản đã xác thực email."
 
-Diễn giải các biểu thức sau thành câu tự nhiên:
+Diễn giải các biểu thức sau thành câu tiếng Việt tự nhiên:
 
 (a) $$(a \lor m) \land \neg b$$
 (b) $$v \to (a \lor m)$$
@@ -876,135 +864,121 @@ Diễn giải các biểu thức sau thành câu tự nhiên:
 
 (a) "Tài khoản là admin hoặc moderator, và không bị khóa." — Điều kiện để có quyền truy cập đặc biệt.
 
-(b) "Nếu tài khoản đã xác thực email thì nó là admin hoặc moderator." — Chỉ admin/moderator mới bắt buộc xác thực email? (Điều này có vẻ ngược — thực tế thường tất cả tài khoản đều cần xác thực. Đây là tình huống giả định.)
+(b) "Nếu tài khoản đã xác thực email thì nó là admin hoặc moderator." — Tình huống giả định, cho thấy chiều kéo theo khác với yêu cầu thực tế thông thường.
 
-(c) "Tài khoản là admin hoặc moderator nếu và chỉ nếu nó không bị khóa." — Mọi tài khoản không bị khóa đều là admin/moderator (hơi vô lý!), hoặc mọi admin/moderator đều không bị khóa. Biểu thức cho thấy tầm quan trọng của thứ tự toán tử logic: thực tế chiều $$\neg b \to (a \lor m)$$ không đúng (tài khoản thường cũng không bị khóa).
+(c) "Tài khoản là admin hoặc moderator khi và chỉ khi nó không bị khóa." — Mệnh đề hai chiều này khẳng định cả hai chiều, trong đó chiều $$\neg b \to (a \lor m)$$ ngụ ý mọi tài khoản không bị khóa đều là admin hoặc moderator (thường không đúng trong hệ thống thực tế vì tài khoản thường cũng không bị khóa).
 
-(d) "Hoặc (tài khoản là admin và không bị khóa) hoặc (tài khoản là moderator và đã xác thực email)." — Hai nhóm quyền riêng biệt.
+(d) "Hoặc (tài khoản là admin và không bị khóa), hoặc (tài khoản là moderator và đã xác thực email)." — Mô tả hai nhóm điều kiện phân quyền riêng biệt.
 
-(e) "Nếu tài khoản chưa xác thực email thì nó bị khóa." — Chính sách bảo mật yêu cầu xác thực email để tránh khóa tài khoản.
+(e) "Nếu tài khoản chưa xác thực email thì nó bị khóa." — Chính sách yêu cầu xác thực email để không bị khóa tài khoản.
 
 </details>
 
 ### Bài tập 10: Phân tích lỗi logic từ đề bài thực tế
 
-Một đề bài yêu cầu sinh viên viết điều kiện: "Cho phép truy cập nếu người dùng đã đăng nhập và (có quyền admin hoặc là chủ sở hữu tài liệu)."
+Một đề bài yêu cầu viết điều kiện: "Cho phép truy cập nếu người dùng đã đăng nhập và (có quyền admin hoặc là chủ sở hữu tài liệu)."
 
 Sinh viên A viết: `if logged_in and is_admin or is_owner:`
 Sinh viên B viết: `if logged_in and (is_admin or is_owner):`
 
 (a) Biểu thức của sinh viên nào đúng? Giải thích.
-(b) Với `logged_in = False, is_admin = True, is_owner = False`, kết quả mỗi biểu thức là gì?
-(c) Lỗi của sinh viên A thuộc loại lỗi nào trong lập trình? Làm sao để tránh?
+(b) Với `logged_in = False, is_admin = True, is_owner = False`, kết quả của mỗi biểu thức là gì?
+(c) Lỗi của sinh viên A thuộc loại lỗi nào trong lập trình và cách phòng tránh là gì?
 
 <details>
 <summary>Đáp án</summary>
 
-(a) **Sinh viên B đúng**. Trong hầu hết ngôn ngữ lập trình, `and` có độ ưu tiên cao hơn `or`. Biểu thức của A được hiểu là:
-    `(logged_in and is_admin) or is_owner` — khác hoàn toàn với yêu cầu.
-    Biểu thức của B: `logged_in and (is_admin or is_owner)` — khớp với yêu cầu.
+(a) **Sinh viên B đúng**. Trong hầu hết ngôn ngữ lập trình, `and` có độ ưu tiên cao hơn `or`. Biểu thức của sinh viên A được hiểu là `(logged_in and is_admin) or is_owner`, khác với yêu cầu đề bài. Biểu thức của sinh viên B (`logged_in and (is_admin or is_owner)`) khớp với yêu cầu.
 
 (b) Với `logged_in = False, is_admin = True, is_owner = False`:
-    - Sinh viên A: `(False and True) or False = False or False = False`
-    - Sinh viên B: `False and (True or False) = False and True = False`
-    Trong trường hợp này cả hai đều cho False, nhưng sẽ khác nhau ở các trường hợp khác.
-    
-    Thử với `logged_in = False, is_admin = False, is_owner = True`:
-    - Sinh viên A: `(False and False) or True = False or True = True` — **sai!** Cho phép truy cập dù chưa đăng nhập.
-    - Sinh viên B: `False and (False or True) = False and True = False` — **đúng**.
+    - Sinh viên A: `(False and True) or False = False`.
+    - Sinh viên B: `False and (True or False) = False`.
+    Trong trường hợp này cả hai đều trả về `False`, nhưng sẽ khác nhau ở các tổ hợp khác. Ví dụ với `logged_in = False, is_admin = False, is_owner = True`:
+    - Sinh viên A: `(False and False) or True = True` (**sai**, cho phép truy cập dù chưa đăng nhập).
+    - Sinh viên B: `False and (False or True) = False` (**đúng**).
 
-(c) Lỗi của sinh viên A là **lỗi thứ tự ưu tiên toán tử** (operator precedence bug). Đây là một trong những lỗi logic phổ biến nhất trong lập trình. Cách tránh:
-    - Luôn dùng dấu ngoặc khi kết hợp `and`/`or` với nhau
-    - Viết test case bao phủ ít nhất một trường hợp mỗi nhánh
-    - Dùng công cụ phân tích tĩnh (linter) để phát hiện biểu thức mơ hồ
+(c) Lỗi của sinh viên A là **lỗi thứ tự ưu tiên toán tử** (operator precedence bug). Cách phòng tránh:
+    - Luôn dùng dấu ngoặc rõ ràng khi kết hợp `and` và `or`.
+    - Viết test case bao phủ các nhánh điều kiện.
+    - Sử dụng công cụ phân tích tĩnh (linter) để phát hiện biểu thức dễ gây nhầm lẫn.
 
 </details>
 
 ## Bài tập bổ sung: Diễn đạt vấn đề thực tế bằng logic mệnh đề (từ ccrr1_baitap1)
 
-**Hướng dẫn chung:** Xác định mệnh đề đơn (ví dụ P, Q, R), dùng →, ∧, ∨, ¬ để diễn đạt điều kiện.
+**Hướng dẫn chung:** Đặt ký hiệu cho các mệnh đề đơn (ví dụ $$P, Q, R$$) và sử dụng các phép toán $$\to, \land, \lor, \neg$$ để biểu diễn từng điều kiện.
 
 **Bài tập 1: Quản lý sự kiện**
-Giả sử một người quản lý sự kiện hội thảo. Các điều kiện:
-- Nếu hội trường đủ lớn → tất cả khách có chỗ ngồi.
-- Nếu tất cả khách có chỗ → hội thảo suôn sẻ.
-- Nếu hội thảo suôn sẻ → nhận đánh giá tốt.
-- Nhận đánh giá tốt chỉ khi chuẩn bị đầy đủ.
-
-Diễn đạt bằng biểu thức logic.
+Giả sử một người quản lý sự kiện hội thảo cần mô hình hóa các điều kiện sau bằng biểu thức logic:
+- Nếu hội trường đủ lớn thì tất cả khách đều có chỗ ngồi.
+- Nếu tất cả khách có chỗ ngồi thì hội thảo diễn ra suôn sẻ.
+- Nếu hội thảo diễn ra suôn sẻ thì nhận được đánh giá tốt.
+- Chỉ nhận được đánh giá tốt khi đã chuẩn bị đầy đủ.
 
 **Bài tập 2: Hệ thống bảo mật**
-Hệ thống cho phép truy cập nếu:
-- Đúng tên đăng nhập và mật khẩu → cho phép truy cập.
-- Không đúng tên hoặc mật khẩu → không cho phép.
-- Không cho phép → phải thử lại.
-
-Diễn đạt.
+Biểu diễn các quy tắc truy cập sau bằng logic mệnh đề:
+- Đúng tên đăng nhập và đúng mật khẩu thì cho phép truy cập.
+- Không đúng tên đăng nhập hoặc không đúng mật khẩu thì không cho phép truy cập.
+- Nếu không được phép truy cập thì phải thử lại.
 
 **Bài tập 3: Điều kiện mua hàng**
-Cửa hàng online:
-- Đủ tiền và đúng thông tin → giao dịch thành công.
-- Không đủ tiền hoặc sai thông tin → hủy.
-- Hủy → yêu cầu kiểm tra lại.
-
-Diễn đạt.
+Biểu diễn các quy tắc xử lý giao dịch của một cửa hàng trực tuyến:
+- Đủ tiền và đúng thông tin thì giao dịch thành công.
+- Không đủ tiền hoặc sai thông tin thì hủy giao dịch.
+- Nếu hủy giao dịch thì yêu cầu kiểm tra lại.
 
 **Bài tập 4: Điều kiện học bổng**
-- GPA ≥ 3.5 hoặc thành tích đặc biệt → được xét duyệt.
-- Không GPA và không đặc biệt → không xét.
-- Được xét và nộp đơn đúng hạn → nhận học bổng.
-
-Diễn đạt.
+Biểu diễn các điều kiện xét học bổng sau:
+- GPA ≥ 3.5 hoặc có thành tích đặc biệt thì được xét duyệt.
+- Không đạt GPA ≥ 3.5 và không có thành tích đặc biệt thì không được xét duyệt.
+- Được xét duyệt và nộp đơn đúng hạn thì nhận học bổng.
 
 **Bài tập 5: Lập lịch làm việc**
-- Cuối tuần hoặc lễ → nghỉ.
-- Không cuối tuần và không lễ → phải đi làm.
-- Cuối tuần nhưng có dự án gấp → vẫn phải đi làm.
-
-Diễn đạt.
+Biểu diễn các quy tắc lịch làm việc sau:
+- Là cuối tuần hoặc ngày lễ thì được nghỉ.
+- Không phải cuối tuần và không phải ngày lễ thì phải đi làm.
+- Là cuối tuần nhưng có dự án gấp thì vẫn phải đi làm.
 
 **Bài tập 6: Tam giác**
-Cho a,b,c số thực. Diễn đạt:
-a) Cạnh tam giác?
-b) Cạnh tam giác vuông huyền c?
-c) Cạnh tam giác vuông cân huyền c?
-d) Cạnh tam giác đều?
-
-P1(a,b,c) = ? etc.
+Cho $$a, b, c$$ là các số thực. Viết biểu thức logic diễn đạt điều kiện để $$a, b, c$$ lần lượt là:
+(a) Độ dài ba cạnh của một tam giác.
+(b) Độ dài ba cạnh của một tam giác vuông có cạnh huyền $$c$$.
+(c) Độ dài ba cạnh của một tam giác vuông cân có cạnh huyền $$c$$.
+(d) Độ dài ba cạnh của một tam giác đều.
 
 ### Bài tập bổ sung từ slide PPT: Viết biểu thức logic
 
-Viết biểu thức logic mệnh đề cho các mô tả sau (sử dụng biến mệnh đề phù hợp):
+Viết biểu thức logic mệnh đề cho các mô tả sau (đặt biến mệnh đề phù hợp):
 
-1. Điều kiện để tháng (m) là dữ liệu hợp lệ.
-2. Điều kiện để tháng m có 30 ngày.
+1. Điều kiện để tháng `m` là dữ liệu hợp lệ.
+2. Điều kiện để tháng `m` có 30 ngày.
 3. Điều kiện để tháng 2 có 29 ngày.
-4. Điều kiện để A, B, C là các góc của một tam giác.
-5. Điều kiện để A, B, C là các góc của một tam giác vuông.
-6. Điều kiện để A, B, C là các góc của một tam giác cân.
-7. Điều kiện để A, B, C là các góc của một tam giác đều.
+4. Điều kiện để `A, B, C` là các góc của một tam giác.
+5. Điều kiện để `A, B, C` là các góc của một tam giác vuông.
+6. Điều kiện để `A, B, C` là các góc của một tam giác cân.
+7. Điều kiện để `A, B, C` là các góc của một tam giác đều.
 8. Điều kiện để học sinh A xét điểm theo tổ hợp A0 đậu vào khoa CNTT năm 2019.
-9. Điều kiện để bạn được nhận học bổng 100% trong học kỳ 1 năm học 2020-2021.
+9. Điều kiện để bạn được nhận học bổng 100% trong học kỳ 1 năm học 2020–2021.
 10. Điều kiện tiếng Anh để bạn được đăng ký học phần năm 3.
 
-**Bài tập bổ sung (từ slide):** 
+**Bài tập bổ sung (từ slide):**
 
-Bài tập 3: Hàm eq(X,Y) trả về 1 khi giá trị của X và Y là như nhau, trả về 0 trong các trường hợp còn lại. Biểu thức nào dưới đây là điều kiện cần và đủ để nhận về 1 khi hàm eq(eq(A,B), eq(B,C)) được gọi?
+Bài tập 3: Hàm `eq(X, Y)` trả về `1` khi giá trị của `X` và `Y` bằng nhau, và trả về `0` trong các trường hợp còn lại. Biểu thức nào dưới đây là điều kiện cần và đủ để lời gọi `eq(eq(A, B), eq(B, C))` trả về `1`?
 
-A. (A=B và B=C) hoặc (A#B và B#C)
+A. `(A = B và B = C) hoặc (A ≠ B và B ≠ C)`
 
-B. (A=B và B=C) hoặc (A#B hoặc B#C)
+B. `(A = B và B = C) hoặc (A ≠ B hoặc B ≠ C)`
 
-C. (A=B và B=C) hoặc (A=C)
+C. `(A = B và B = C) hoặc (A = C)`
 
-D. (A=B hoặc B=C) hoặc (A=C)
+D. `(A = B hoặc B = C) hoặc (A = C)`
 
 ---
 
 
 ## Công cụ tương tác
 
-Nhập một câu để xem nó có phải mệnh đề không, rồi thử tính giá trị chân trị của biểu thức với các biến $$P, Q, R$$.
+Nhập một câu để kiểm tra xem nó có phải mệnh đề không, rồi tính giá trị chân trị của biểu thức với các biến $$P, Q, R$$.
 <div class="interactive-demo" markdown="1">
 <div data-demo="proposition-checker"></div>
 </div>
@@ -1021,16 +995,16 @@ Nhập một câu để xem nó có phải mệnh đề không, rồi thử tín
 
 ## Tóm tắt
 
-- **Phép toán logic** (¬, ∧, ∨, →, ↔, ⊕) ghép mệnh đề sơ cấp thành mệnh đề phức hợp; mỗi phép có bảng chân trị và cú pháp tương ứng trong ngôn ngữ lập trình.
+- **Phép toán logic** (`¬`, `∧`, `∨`, `→`, `↔`, `⊕`) ghép các mệnh đề sơ cấp thành mệnh đề phức hợp; mỗi phép toán có bảng chân trị riêng và toán tử tương ứng trong ngôn ngữ lập trình.
 - **Mệnh đề kéo theo** $$p \to q$$ chỉ sai khi $$p$$ đúng và $$q$$ sai; khi $$p$$ sai thì luôn đúng (vacuously true).
-- **Biểu thức logic** tuân thứ tự ưu tiên: ¬ > ∧ > ∨ > → > ↔ > ⊕; nên dùng dấu ngoặc để tránh nhầm lẫn.
-- Hai biểu thức **tương đương** ($$\equiv$$) khi có cùng bảng chân trị; các **luật logic** (De Morgan, phân phối, hấp thụ, bù, v.v.) cho phép biến đổi an toàn.
-- Ứng dụng trực tiếp trong kiểm tra đầu vào, phân quyền, truy vấn dữ liệu và thiết kế test case.
+- **Biểu thức logic** tuân theo thứ tự ưu tiên: `¬` > `∧` > `∨` > `→` > `↔` > `⊕`; nên dùng dấu ngoặc để tránh nhầm lẫn.
+- Hai biểu thức **tương đương** ($$\equiv$$) khi có cùng bảng chân trị; các **luật logic** (De Morgan, phân phối, hấp thụ, bù, v.v.) cho phép biến đổi biểu thức mà không làm thay đổi ý nghĩa.
+- Các phép toán logic được ứng dụng trực tiếp trong kiểm tra đầu vào, phân quyền, truy vấn dữ liệu và thiết kế test case.
 
-Trong bài tiếp theo, chúng ta dùng **bảng chân trị** để liệt kê và kiểm chứng mọi trường hợp của biểu thức logic.
+Trong bài tiếp theo, chúng ta sẽ dùng **bảng chân trị** để liệt kê và kiểm chứng mọi trường hợp của biểu thức logic.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=p78HgbsYw2M">001B TOÁN RỜI RẠC Logic mệnh đề Thế nào là mệnh đề Phép toán mệnh đề</a> — Đỗ Văn Đức - ĐH GTVT, tiếng Việt. Xem trước các phép toán mệnh đề trên ví dụ tiếng Việt.
-- <a href="https://www.youtube.com/watch?v=7mulE-zramc">Intro to Truth Tables |  Negation, Conjunction, and Disjunction</a> — Dr. Trefor Bazett, tiếng Anh. Phủ định, hội và tuyển trên bảng chân trị — đúng các phép cơ bản của bài.
-- <a href="https://www.youtube.com/watch?v=xag9TEAORK4">CONDITIONALS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Phép kéo theo, phép hay bị đọc nhầm khi dịch câu điều kiện.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=p78HgbsYw2M">001B TOÁN RỜI RẠC Logic mệnh đề Thế nào là mệnh đề Phép toán mệnh đề</a> — Đỗ Văn Đức - ĐH GTVT, tiếng Việt. Minh họa các phép toán mệnh đề qua ví dụ tiếng Việt.
+- <a href="https://www.youtube.com/watch?v=7mulE-zramc">Intro to Truth Tables |  Negation, Conjunction, and Disjunction</a> — Dr. Trefor Bazett, tiếng Anh. Trình bày phủ định, hội và tuyển trên bảng chân trị, khớp với các phép toán cơ bản của bài.
+- <a href="https://www.youtube.com/watch?v=xag9TEAORK4">CONDITIONALS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Giải thích phép kéo theo — phép toán thường bị hiểu nhầm khi chuyển từ câu điều kiện tự nhiên.

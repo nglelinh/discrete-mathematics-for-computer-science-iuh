@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. SAT 2024 and AlphaDev (Nature 2023) are count
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite addition/multiplication rules, binomial identities, or the existing cybersecurity counting lesson.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại quy tắc cộng/nhân, hệ số nhị thức, hay bài đếm từ cờ bạc đến an ninh mạng.
+Ghi chú ứng dụng song ngữ (tiếng Anh, sau đó là tiếng Việt). Bài này **không** thay thế nội dung về quy tắc cộng/nhân, hệ số nhị thức hay bài phép đếm từ cờ bạc đến an ninh mạng.
 
 </div>
 
@@ -36,17 +36,17 @@ Pairwise test design (already in Chapter 9) is the dual: you *refuse* to count t
 
 ## Tiếng Việt
 
-Quy tắc nhân giải thích vì sao vét cạn chết. CNF $$n$$ biến có $$2^n$$ phép gán; chương trình assembly độ dài $$L$$ trên ISA cỡ $$A$$ có tới $$A^L$$ ứng viên. Hai kết quả 2023–2024 đáng đọc *vì* các con số đó vẫn khổng lồ, nhưng tìm kiếm vẫn khai thác cấu trúc.
+Quy tắc nhân giải thích vì sao cách tiếp cận vét cạn nhanh chóng trở nên bất khả thi. Một công thức CNF gồm $$n$$ biến có $$2^n$$ phép gán chân trị; một chương trình hợp ngữ (assembly) tuyến tính dài $$L$$ lệnh trên tập lệnh (ISA) kích thước $$A$$ có tối đa $$A^L$$ chương trình ứng viên. Hai kết quả giai đoạn 2023–2024 dưới đây đáng chú ý chính *vì* không gian tìm kiếm vẫn khổng lồ như vậy, nhưng các kỹ thuật tìm kiếm vẫn khai thác được cấu trúc bên trong:
 
-- **SAT Competition 2024.** Kissat 4.0 thắng ba huy chương vàng track chính. Bộ giải không liệt kê $$2^n$$; nó cắt nhánh bằng CDCL. Bài học đếm: cắt nhánh là bắt buộc.
-- **AlphaDev** (*Nature* 2023) coi tìm assembly như trò chơi một người và ra routine `sort3`/`sort4`/`sort5` ngắn hơn, đã vào LLVM libc++. Đối tượng tổ hợp là chương trình — cùng tăng trưởng $$a^n$$ như không gian khóa.
+- **SAT Competition 2024.** Bộ giải Kissat 4.0 giành cả ba huy chương vàng ở hạng mục chính (SAT, UNSAT và SAT+UNSAT). Thay vì liệt kê toàn bộ $$2^n$$ phép gán, bộ giải cắt tỉa không gian tìm kiếm bằng thuật toán CDCL. Bài học từ phép đếm rất rõ: cắt nhánh là yêu cầu bắt buộc.
+- **AlphaDev** (*Nature* 2023) mô hình hóa việc tìm kiếm chương trình hợp ngữ như một trò chơi một người và phát hiện các đoạn mã sắp xếp `sort3`/`sort4`/`sort5` ngắn hơn, hiện đã được đưa vào thư viện LLVM libc++. Đối tượng tổ hợp ở đây là chương trình thay vì mật khẩu, nhưng vẫn tuân theo tốc độ tăng trưởng $$a^n$$ giống không gian khóa.
 
-Pairwise testing (Chương 9) là mặt đối: *từ chối* đếm hết tích Descartes, chỉ phủ bộ đôi. Ghi chú này chỉ cập nhật bằng chứng 2023–2024: phép đếm vẫn quyết định tìm kiếm nào còn nghĩ được.
+Kiểm thử từng cặp (pairwise testing, ở Chương 9) thể hiện hướng tiếp cận đối lập: thay vì duyệt hết tích Descartes, ta chỉ bao phủ các cặp giá trị 2 chiều. Ghi chú này cập nhật bằng chứng từ giai đoạn 2023–2024 cho thấy phép đếm vẫn quyết định những bài toán tìm kiếm nào là khả thi trên thực tế.
 
-**Câu hỏi.** (1) Viết $$\vert \text{phép gán}\vert $$ và $$\vert \text{chương trình độ dài } L\vert $$ bằng quy tắc nhân. (2) CDCL *tránh liệt kê* đại lượng nào?
+**Câu hỏi.** (1) Hãy viết biểu thức cho $$\vert \text{phép gán}\vert $$ và $$\vert \text{chương trình hợp ngữ độ dài } L\vert $$ bằng quy tắc nhân. (2) Thuật toán CDCL *tránh phải liệt kê* đại lượng nào?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=uAdVzz1hKYY">Boolean Satisfiability Problem - Intro to Theoretical Computer Science</a> — Udacity, tiếng Anh. Xem trước không gian 2^n phép gán của SAT, đúng quy tắc nhân trong bài.
-- <a href="https://www.youtube.com/watch?v=Gnx6EgpW6kY">AlphaDev | Daniel Mankowitz and Andrea Michi</a> — ICARL, tiếng Anh. AlphaDev, do nhóm tác giả trình bày, tìm chương trình sắp xếp trong không gian lệnh lớn.
-- <a href="https://www.youtube.com/watch?v=YUqR-8rZ_gQ">Lecture 10-3 CDCL (Lecture 5 in CS433)</a> — Automated Reasoning, tiếng Anh. CDCL cắt không gian tìm kiếm thay vì duyệt hết phép gán.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=uAdVzz1hKYY">Boolean Satisfiability Problem - Intro to Theoretical Computer Science</a> — Udacity, tiếng Anh. Giới thiệu không gian $$2^n$$ phép gán của bài toán SAT, minh họa trực tiếp quy tắc nhân trong bài.
+- <a href="https://www.youtube.com/watch?v=Gnx6EgpW6kY">AlphaDev | Daniel Mankowitz and Andrea Michi</a> — ICARL, tiếng Anh. Nhóm tác giả trình bày cách AlphaDev tìm kiếm chương trình sắp xếp trong không gian lệnh khổng lồ.
+- <a href="https://www.youtube.com/watch?v=YUqR-8rZ_gQ">Lecture 10-3 CDCL (Lecture 5 in CS433)</a> — Automated Reasoning, tiếng Anh. Giải thích cách CDCL cắt tỉa không gian tìm kiếm thay vì duyệt hết mọi phép gán.

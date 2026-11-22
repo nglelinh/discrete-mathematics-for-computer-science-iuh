@@ -7,14 +7,14 @@ order: 6
 required: false
 lesson_type: optional
 lang: vi
-excerpt: "Bài tùy chọn song ngữ. Cận lưu trữ của binary fuse filter (JEA 2022) là bài toán đếm / hàm sinh thông tin — cùng họ công cụ với hàm sinh và bao hàm–loại trừ. Không viết lại lý thuyết."
+excerpt: "Bài ghi chú tùy chọn song ngữ: cận lưu trữ của binary fuse filter (JEA 2022) nhìn từ góc độ bài toán đếm, hàm sinh và nguyên lý bao hàm–loại trừ."
 ---
 
 <div class="note-box" markdown="1">
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite generating-function algebra or inclusion–exclusion. Tagged `lang: vi` with this chapter’s theory posts.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại đại số hàm sinh hay bao hàm–loại trừ.
+Bài ghi chú ứng dụng song ngữ, **không** viết lại phần lý thuyết đại số hàm sinh hay nguyên lý bao hàm–loại trừ.
 
 </div>
 
@@ -34,16 +34,16 @@ This optional note does not derive a new GF identity. It points at a 2022 struct
 
 ## Tiếng Việt
 
-Hàm sinh thường gói dãy đếm $$(a_n)$$ thành $$A(x) = \sum a_n x^n$$. Cận dưới không gian cho tập xấp xỉ là cùng kiểu đếm: có bao nhiêu filter $$m$$ bit phân biệt được, và phải tách bao nhiêu tập $$n$$ phần tử với tỷ lệ dương tính giả $$\varepsilon$$?
+Hàm sinh thông thường đóng gói một dãy đếm $$(a_n)$$ thành $$A(x) = \sum a_n x^n$$. Cận dưới về dung lượng lưu trữ cho cấu trúc biểu diễn tập xấp xỉ cũng thuộc cùng dạng bài toán đếm này: có bao nhiêu bộ lọc $$m$$ bit phân biệt nhau, và chúng cần phân tách bao nhiêu tập $$n$$ phần tử với tỷ lệ dương tính giả không vượt quá $$\varepsilon$$?
 
-Graf và Lemire (JEA 2022) cho thấy binary fuse filter cách sàn lý thuyết thông tin **13%** (hoặc **8%**). Bản thân sàn là phát biểu đếm / hàm sinh: số mẫu “yes” biểu diễn được không thể nhỏ hơn số tập bạn tuyên bố phân biệt. Bao hàm–loại trừ xuất hiện khi ước lượng xác suất va chạm trên nhiều vị trí băm — cùng căng thẳng bound hợp / đếm đúng như bài toán derangement.
+Graf và Lemire (JEA 2022) chỉ ra rằng bộ lọc binary fuse chỉ vượt cận dưới lý thuyết thông tin khoảng **13%** (hoặc **8%**). Bản thân cận dưới đó là một lập luận đếm / hàm sinh: số mẫu trạng thái “có” biểu diễn được không thể nhỏ hơn số tập hợp mà bộ lọc cần phân biệt. Nguyên lý bao hàm–loại trừ xuất hiện khi ước lượng xác suất va chạm trên nhiều vị trí băm — tương tự mối quan hệ giữa cận hợp (union bound) và phép đếm chính xác trong bài toán derangement.
 
-Ghi chú không dựng đồng nhất thức GF mới. Nó trỏ tới cấu trúc 2022 mà *số headline* (phần trăm trên cận) vô nghĩa nếu không đọc được như lập luận đếm.
+Ghi chú này không xây dựng thêm đồng nhất thức hàm sinh mới, mà giới thiệu một cấu trúc dữ liệu năm 2022 trong đó con số tiêu biểu (phần trăm vượt trên cận dưới) chỉ thực sự có ý nghĩa khi được hiểu dưới góc độ lập luận đếm.
 
-**Câu hỏi.** (1) Hàm sinh nào mã hóa “số filter $$m$$ bit”? (2) Bao hàm–loại trừ vào đâu trong tính dương tính giả với ba vị trí băm?
+**Câu hỏi.** (1) Hàm sinh nào có thể mã hóa “số lượng bộ lọc $$m$$ bit”? (2) Nguyên lý bao hàm–loại trừ xuất hiện ở bước nào khi tính tỷ lệ dương tính giả với ba vị trí băm?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=-drdeNMoe8w">GENERATING FUNCTIONS - Discrete Mathematics</a> — TrevTutor, tiếng Anh. Xem trước hàm sinh, công cụ đếm mà cận lưu trữ của filter cùng họ.
-- <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Bloom filter minh họa ngân sách bit cho một tập xấp xỉ.
-- <a href="https://www.youtube.com/watch?v=eV1haPUt0NU">Hyperloglog: Facebook&#x27;s algorithm to count distinct elements</a> — Gaurav Sen, tiếng Anh. Đếm lực lượng gần đúng, cùng bài toán thông tin với fuse filter.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=-drdeNMoe8w">GENERATING FUNCTIONS - Discrete Mathematics</a> — TrevTutor, tiếng Anh. Giới thiệu hàm sinh — công cụ đếm có cùng bản chất với cận lưu trữ của bộ lọc.
+- <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Minh họa Bloom filter và ngân sách bit khi biểu diễn tập xấp xỉ.
+- <a href="https://www.youtube.com/watch?v=eV1haPUt0NU">Hyperloglog: Facebook&#x27;s algorithm to count distinct elements</a> — Gaurav Sen, tiếng Anh. Bài toán ước lượng lực lượng tập hợp, cùng hướng tiếp cận lý thuyết thông tin với fuse filter.

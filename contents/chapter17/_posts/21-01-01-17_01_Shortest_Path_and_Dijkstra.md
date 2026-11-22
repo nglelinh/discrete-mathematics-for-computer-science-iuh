@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
-excerpt: "Shortest path: BFS (không trọng số), Dijkstra (trọng số ≥ 0), Bellman–Ford (cạnh âm); relax, heap O((V+E) log V); khác MST."
+excerpt: "Bài toán đường đi ngắn nhất: BFS (không trọng số), Dijkstra (trọng số ≥ 0), Bellman–Ford (có cạnh âm); phép relax, binary heap O((V+E) log V) và phân biệt với MST."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,11 +17,11 @@ excerpt: "Shortest path: BFS (không trọng số), Dijkstra (trọng số ≥ 0
 
 </div>
 
-GPS và routing mạng trả lời: từ $$s$$ đến $$t$$, đường nào **rẻ nhất** (km, độ trễ, chi phí)? Khi mọi cạnh có độ dài 1, **BFS** (Ch.12) đủ. Khi cạnh mang **trọng số không âm**, cần **Dijkstra**. Mục này định nghĩa single-source shortest path, mô tả Dijkstra, và nêu Bellman–Ford khi có cạnh âm.
+Hệ thống dẫn đường GPS và định tuyến mạng đều cần giải bài toán: từ đỉnh $$s$$ đến đỉnh $$t$$, đường đi nào có **chi phí nhỏ nhất** (theo quãng đường, độ trễ hoặc cước phí)? Khi mọi cạnh có cùng độ dài bằng 1, thuật toán **BFS** (Chương 12) là đủ. Khi các cạnh mang **trọng số không âm**, ta cần **thuật toán Dijkstra**. Bài học này định nghĩa bài toán đường đi ngắn nhất từ một nguồn, trình bày Dijkstra và giới thiệu Bellman–Ford cho trường hợp đồ thị có cạnh trọng số âm.
 
 ![Dijkstra](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_dijkstra_example.svg)
 
-<p class="textbook-figure-caption" data-figure="17.1">Ví dụ Dijkstra từ $$A$$: chốt đỉnh theo dist tăng dần; relax cạnh kề cập nhật ứng viên.</p>
+<p class="textbook-figure-caption" data-figure="17.1">Minh họa Dijkstra xuất phát từ $$A$$: chốt dần các đỉnh theo giá trị khoảng cách tăng dần và dùng phép relax trên cạnh kề để cập nhật ứng viên.</p>
 
 ## Mục tiêu học tập
 
@@ -29,11 +29,11 @@ GPS và routing mạng trả lời: từ $$s$$ đến $$t$$, đường nào **r�
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Phân biệt** shortest path không trọng số (BFS) và có trọng số (Dijkstra / Bellman–Ford).
-- **Mô tả** Dijkstra: extract-min, **relax**, mảng `parent`.
-- **Nêu** độ phức tạp với binary heap $$O((V+E)\log V)$$.
-- **Giải thích** vì sao trọng số âm phá Dijkstra; vai trò Bellman–Ford.
-- **So sánh** shortest path với **MST** (Ch.16).
+- **Phân biệt** bài toán đường đi ngắn nhất không trọng số (BFS) và có trọng số (Dijkstra, Bellman–Ford).
+- **Mô tả** cơ chế của Dijkstra gồm thao tác trích cực tiểu (*extract-min*), phép **relax** và mảng `parent`.
+- **Nêu** độ phức tạp $$O((V+E)\log V)$$ khi cài đặt bằng binary heap.
+- **Giải thích** vì sao cạnh trọng số âm làm sai thuật toán Dijkstra và vai trò của Bellman–Ford.
+- **So sánh** bài toán đường đi ngắn nhất với bài toán **cây khung nhỏ nhất (MST)** ở Chương 16.
 
 **Từ khóa**: single-source shortest path, Dijkstra, relax, priority queue, Bellman–Ford, chu trình âm.
 
@@ -43,21 +43,21 @@ GPS và routing mạng trả lời: từ $$s$$ đến $$t$$, đường nào **r�
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa.** Cho đồ thị $$G=(V,E)$$ (có hướng hoặc vô hướng) với trọng số $$w(e)$$ trên cạnh, và đỉnh nguồn $$s$$. **Khoảng cách ngắn nhất** $$\mathrm{dist}(s,v)$$ là **tổng trọng số nhỏ nhất** trên mọi path từ $$s$$ đến $$v$$. Nếu không có path: $$\mathrm{dist}(s,v)=\infty$$.
+**Định nghĩa.** Cho đồ thị $$G=(V,E)$$ (có hướng hoặc vô hướng) với trọng số $$w(e)$$ trên mỗi cạnh và một đỉnh nguồn $$s$$. **Khoảng cách ngắn nhất** $$\mathrm{dist}(s,v)$$ là **tổng trọng số nhỏ nhất** trong tất cả các đường đi từ $$s$$ đến $$v$$. Nếu không tồn tại đường đi từ $$s$$ đến $$v$$, ta quy ước $$\mathrm{dist}(s,v)=\infty$$.
 
 </div>
 
-| Loại trọng số | Thuật toán điển hình | Độ phức tạp (tiêu biểu) |
+| Loại trọng số | Thuật toán tiêu biểu | Độ phức tạp (tiêu biểu) |
 |:---|:---|:---|
-| Mọi cạnh độ dài 1 (hoặc không trọng số) | **BFS** | $$O(V+E)$$ |
-| $$w(e)\ge 0$$ | **Dijkstra** | $$O((V+E)\log V)$$ (binary heap) |
-| Có $$w(e)<0$$ (không chu trình âm, hoặc cần phát hiện) | **Bellman–Ford** | $$O(VE)$$ |
+| Mọi cạnh có độ dài 1 (không trọng số) | **BFS** | $$O(V+E)$$ |
+| Trọng số không âm $$w(e)\ge 0$$ | **Dijkstra** | $$O((V+E)\log V)$$ (binary heap) |
+| Có cạnh âm $$w(e)<0$$ (không có chu trình âm, hoặc cần phát hiện) | **Bellman–Ford** | $$O(VE)$$ |
 
-**Khác MST.** MST tối ưu **tập cạnh** nối mọi đỉnh thành cây. Shortest path tối ưu **một path** từ nguồn đến từng đỉnh — cây các cạnh `parent` là *shortest-path tree*, **không** nhất thiết là MST.
+**Phân biệt với MST.** Cây khung nhỏ nhất (MST) tối ưu tổng trọng số của **tập cạnh** phủ toàn bộ đỉnh. Ngược lại, bài toán đường đi ngắn nhất tối ưu **từng đường đi** xuất phát từ đỉnh nguồn $$s$$ — tập các cạnh `parent` tạo thành *cây đường đi ngắn nhất* (*shortest-path tree*), và cây này **không** nhất thiết trùng với MST.
 
 ## Thuật toán Dijkstra
 
-**Ý tưởng greedy.** Duy trì ước lượng `dist[v]` (ban đầu $$\infty$$, `dist[s]=0`). Lặp: **chốt** đỉnh $$u$$ chưa chốt có `dist` nhỏ nhất; với mỗi cạnh $$(u,v)$$, **relax**:
+**Ý tưởng tham lam.** Duy trì ước lượng khoảng cách `dist[v]` (khởi tạo $$\infty$$ với mọi đỉnh, riêng `dist[s]=0`). Ở mỗi bước, **chốt** đỉnh $$u$$ chưa được chốt có `dist[u]` nhỏ nhất; sau đó với mỗi cạnh $$(u,v)$$ đi ra từ $$u$$, thực hiện phép **relax**:
 
 $$
 \text{nếu } \mathrm{dist}[u]+w(u,v) < \mathrm{dist}[v]
@@ -79,24 +79,24 @@ DIJKSTRA(G, w, s):
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý.** Nếu mọi trọng số **không âm**, thì ngay sau khi $$u$$ bị extract-min, $$\mathrm{dist}[u]$$ bằng khoảng cách ngắn nhất thực sự từ $$s$$ đến $$u$$.
+**Định lý.** Nếu mọi cạnh của đồ thị đều có trọng số **không âm**, thì ngay tại thời điểm đỉnh $$u$$ được lấy ra bởi thao tác extract-min, giá trị $$\mathrm{dist}[u]$$ chính là khoảng cách ngắn nhất thực sự từ $$s$$ đến $$u$$.
 
 </div>
 
-*Phác thảo.* Giả sử $$u$$ là đỉnh chốt sai đầu tiên. Path tối ưu tới $$u$$ phải rời tập đã chốt qua một cạnh; nhờ $$w\ge 0$$, không path nào “đi vòng” rẻ hơn ước lượng đã có khi chốt — mâu thuẫn.
+*Phác thảo chứng minh.* Giả sử $$u$$ là đỉnh đầu tiên bị chốt với giá trị khoảng cách sai. Đường đi tối ưu từ $$s$$ đến $$u$$ phải rời khỏi tập đỉnh đã chốt qua một cạnh nào đó; do mọi trọng số đều $$w \ge 0$$, không thể tồn tại đường đi vòng qua các đỉnh chưa chốt mà có tổng độ dài nhỏ hơn ước lượng tại thời điểm chọn $$u$$ — dẫn tới mâu thuẫn.
 
-**Độ phức tạp.** Binary heap: $$O((V+E)\log V)$$. Fibonacci heap (lý thuyết): $$O(E + V\log V)$$.
+**Độ phức tạp.** Khi dùng binary heap, thuật toán chạy trong $$O((V+E)\log V)$$; với Fibonacci heap (về mặt lý thuyết) là $$O(E + V\log V)$$.
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ.** Cạnh $$(A,B,1)$$, $$(A,C,4)$$, $$(B,C,2)$$, $$(B,D,6)$$, $$(C,D,1)$$. Từ $$A$$:
+**Ví dụ.** Xét đồ thị có các cạnh $$(A,B,1)$$, $$(A,C,4)$$, $$(B,C,2)$$, $$(B,D,6)$$, $$(C,D,1)$$. Chạy Dijkstra từ đỉnh nguồn $$A$$:
 
-- Chốt $$A$$ (0); relax → $$B=1$$, $$C=4$$.
-- Chốt $$B$$ (1); relax $$C=\min(4,1+2)=3$$, $$D=7$$.
-- Chốt $$C$$ (3); relax $$D=\min(7,3+1)=4$$.
+- Chốt $$A$$ (0); relax các cạnh kề được $$B=1$$, $$C=4$$.
+- Chốt $$B$$ (1); relax được $$C=\min(4,1+2)=3$$ và $$D=7$$.
+- Chốt $$C$$ (3); relax được $$D=\min(7,3+1)=4$$.
 - Chốt $$D$$ (4).
 
-Path tối ưu $$A\to B\to C\to D$$, tổng 4.
+Đường đi ngắn nhất từ $$A$$ đến $$D$$ là $$A\to B\to C\to D$$ với tổng trọng số bằng 4.
 
 </div>
 
@@ -105,14 +105,12 @@ Path tối ưu $$A\to B\to C\to D$$, tổng 4.
 </div>
 <script src="{{ '/public/js/dijkstra-visualizer.js' | relative_url }}"></script>
 
-
-Minh hoạ đồ thị dùng chung: chọn **Dijkstra**, theo dõi $$d(v)$$, tập $$S$$, và phép relax từng cạnh. Widget Dijkstra phía trên vẫn giữ nguyên.
+Minh họa đồ thị dùng chung: chọn **Dijkstra** để theo dõi nhãn $$d(v)$$, tập đỉnh đã chốt $$S$$ và phép relax trên từng cạnh.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="graph-explainer" data-algorithm="dijkstra"></div>
 </div>
 <script src="{{ '/public/js/explainers/graph-explainer.js' | relative_url }}"></script>
-
 
 ### Video ngắn: Dijkstra từng bước
 
@@ -120,81 +118,81 @@ Minh hoạ đồ thị dùng chung: chọn **Dijkstra**, theo dõi $$d(v)$$, t�
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/dijkstra-shortest-path.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 58 giây: chạy Dijkstra từng bước trên đồ thị có hướng 6 đỉnh, theo dõi nhãn $$d[v]$$, phép relax và hàng đợi ưu tiên, dựng cây đường đi ngắn nhất (đường 5 cạnh dài 8 ngắn hơn đường 3 cạnh dài 10), giải thích vì sao bước chốt đúng khi trọng số không âm, và một ví dụ cạnh âm làm Dijkstra cho kết quả sai.
+Video dài khoảng 2 phút 58 giây: chạy Dijkstra từng bước trên đồ thị có hướng 6 đỉnh, theo dõi nhãn $$d[v]$$, phép relax và hàng đợi ưu tiên; dựng cây đường đi ngắn nhất (cho thấy đường 5 cạnh có tổng trọng số 8 vẫn ngắn hơn đường 3 cạnh tổng 10); giải thích vì sao bước chốt đúng khi trọng số không âm và nêu ví dụ cạnh âm khiến Dijkstra trả về kết quả sai.
 
 ## Bellman–Ford và trọng số âm
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý / quan sát.** Nếu tồn tại **chu trình âm** reachable từ $$s$$, khoảng cách ngắn nhất **không bị chặn dưới** (đi vòng vô hạn). **Bellman–Ford** thực hiện $$\vert V\vert -1$$ vòng relax mọi cạnh; vòng thứ $$\vert V\vert $$ còn cải thiện được $$\implies$$ có chu trình âm.
+**Định lý.** Nếu tồn tại một **chu trình âm** có thể đi tới từ đỉnh nguồn $$s$$, thì khoảng cách ngắn nhất **không bị chặn dưới** (có thể đi vòng vô hạn để giảm tổng trọng số). Thuật toán **Bellman–Ford** thực hiện $$\vert V\vert -1$$ lượt relax toàn bộ các cạnh; nếu ở lượt thứ $$\vert V\vert $$ vẫn còn cạnh có thể cải thiện khoảng cách thì đồ thị tồn tại chu trình âm.
 
 </div>
 
-**Dijkstra sai** khi có cạnh âm: đỉnh có thể bị chốt quá sớm. Đồ thị **không liên thông** (từ $$s$$): một số `dist` vẫn $$\infty$$ — hợp lệ.
+**Dijkstra cho kết quả sai** khi có cạnh âm vì một đỉnh có thể bị chốt quá sớm trước khi đường đi vòng qua cạnh âm được xét đến. Với đồ thị **không liên thông** từ $$s$$, các đỉnh không thể đi tới vẫn giữ giá trị `dist` bằng $$\infty$$, đây là kết quả hợp lệ.
 
 ## Ứng dụng
 
-- Routing (mô hình chi phí liên kết); OSPF kiểu shortest path.
-- Pathfinding game / lưới có chi phí (A\* = Dijkstra + heuristic admissible).
-- Mạng quan hệ với trọng số (không chỉ số hop BFS).
+- Định tuyến mạng theo chi phí liên kết (như giao thức OSPF dựa trên đường đi ngắn nhất).
+- Tìm đường trên bản đồ hoặc lưới trò chơi có chi phí (thuật toán A\* mở rộng Dijkstra bằng một hàm heuristic chấp nhận được).
+- Phân tích mạng quan hệ có trọng số, thay vì chỉ đếm số bước nhảy như BFS.
 
 ## Bài tập
 
 ### Bài tập 1
 
-Với ví dụ mục 2, $$\mathrm{dist}(A,D)=?$$ Path?
+Trong ví dụ ở mục Thuật toán Dijkstra, hãy cho biết $$\mathrm{dist}(A,D)$$ và đường đi ngắn nhất tương ứng.
 
 <details>
 <summary>Đáp án</summary>
 
-$$\mathrm{dist}(A,D)=4$$; path $$A\to B\to C\to D$$ (1+2+1).
+$$\mathrm{dist}(A,D)=4$$ theo đường đi $$A\to B\to C\to D$$ (tổng $$1+2+1$$).
 
 </details>
 
 ### Bài tập 2
 
-Vì sao BFS không đúng khi cạnh có trọng số 1 và 10?
+Vì sao BFS không cho kết quả đúng khi đồ thị có các cạnh trọng số 1 và 10?
 
 <details>
 <summary>Đáp án</summary>
 
-BFS tối ưu **số cạnh**, không tổng trọng số. Path 2 cạnh tổng 2 có thể rẻ hơn path 1 cạnh trọng số 10 — BFS có thể chọn path “ít hop” đắt hơn.
+BFS chỉ tối ưu **số cạnh** chứ không tối ưu tổng trọng số. Một đường đi gồm 2 cạnh với tổng trọng số bằng 2 có thể ngắn hơn đường đi 1 cạnh trọng số 10, nhưng BFS sẽ ưu tiên chọn đường ít cạnh hơn dù tổng chi phí lớn hơn.
 
 </details>
 
 ### Bài tập 3
 
-Có cạnh $$(A,B,-1)$$. Dùng Dijkstra từ $$A$$ có an toàn không? Thuật toán nào?
+Nếu đồ thị có cạnh $$(A,B,-1)$$, dùng thuật toán Dijkstra xuất phát từ $$A$$ có đảm bảo đúng không? Nên dùng thuật toán nào?
 
 <details>
 <summary>Đáp án</summary>
 
-Không an toàn. Dùng **Bellman–Ford**; nếu phát hiện chu trình âm reachable thì báo không có shortest path hữu hạn.
+Không đảm bảo đúng vì có cạnh trọng số âm. Trong trường hợp này cần dùng **Bellman–Ford**; nếu thuật toán phát hiện chu trình âm đi tới được từ $$A$$ thì kết luận không tồn tại đường đi ngắn nhất hữu hạn.
 
 </details>
 
 ### Bài tập 4
 
-Nêu một khác biệt cốt lõi giữa Dijkstra và Kruskal.
+Nêu một điểm khác biệt cốt lõi giữa thuật toán Dijkstra và thuật toán Kruskal.
 
 <details>
 <summary>Đáp án</summary>
 
-Dijkstra tối ưu path từ nguồn; Kruskal (MST) tối ưu tổng trọng số cây phủ mọi đỉnh, không quan tâm path từ một $$s$$ cố định.
+Dijkstra tìm đường đi ngắn nhất xuất phát từ một đỉnh nguồn cố định $$s$$ đến các đỉnh còn lại, trong khi Kruskal tìm cây khung có tổng trọng số nhỏ nhất phủ toàn bộ tập đỉnh mà không phụ thuộc vào đỉnh nguồn.
 
 </details>
 
 ## Tóm tắt
 
-1. **BFS**: ít cạnh nhất — $$O(V+E)$$.
-2. **Dijkstra**: $$w\ge 0$$; greedy + relax + heap.
-3. **Bellman–Ford**: cạnh âm; phát hiện chu trình âm.
-4. Shortest path ≠ MST.
+1. **BFS** tìm đường đi ít cạnh nhất trong $$O(V+E)$$.
+2. **Dijkstra** áp dụng cho đồ thị có trọng số không âm ($$w\ge 0$$), kết hợp chọn tham lam, phép relax và hàng đợi ưu tiên.
+3. **Bellman–Ford** xử lý được cạnh trọng số âm và phát hiện chu trình âm.
+4. Cây đường đi ngắn nhất khác với cây khung nhỏ nhất (MST).
 
-Trong bài tiếp theo: **sắp xếp topo** trên DAG.
+Trong bài tiếp theo, ta sẽ học về **sắp xếp topo** trên đồ thị có hướng không chu trình (DAG).
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=_lHSawdgXpI">Dijkstra&#x27;s algorithm in 3 minutes</a> — Michael Sambol, tiếng Anh. Xem trước Dijkstra trong vài phút, trước chứng minh chi tiết.
-- <a href="https://www.youtube.com/watch?v=GazC3A4OQTE">Dijkstra&#x27;s Algorithm - Computerphile</a> — Computerphile, tiếng Anh. Vì sao thuật toán chọn đỉnh có nhãn nhỏ nhất.
-- <a href="https://www.youtube.com/watch?v=XB4MIexjvY0">3.6 Dijkstra Algorithm - Single Source Shortest Path - Greedy Method</a> — Abdul Bari, tiếng Anh. Một ví dụ Dijkstra đủ bảng cập nhật khoảng cách.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=_lHSawdgXpI">Dijkstra&#x27;s algorithm in 3 minutes</a> — Michael Sambol, tiếng Anh. Giới thiệu nhanh cơ chế của Dijkstra trước khi đi vào chứng minh chi tiết.
+- <a href="https://www.youtube.com/watch?v=GazC3A4OQTE">Dijkstra&#x27;s Algorithm - Computerphile</a> — Computerphile, tiếng Anh. Giải thích trực giác vì sao thuật toán luôn chọn đỉnh có nhãn khoảng cách nhỏ nhất.
+- <a href="https://www.youtube.com/watch?v=XB4MIexjvY0">3.6 Dijkstra Algorithm - Single Source Shortest Path - Greedy Method</a> — Abdul Bari, tiếng Anh. Minh họa đầy đủ một ví dụ Dijkstra kèm bảng cập nhật khoảng cách.

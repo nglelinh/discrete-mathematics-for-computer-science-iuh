@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 10
 required: true
 lang: en
-excerpt: "HC∈NP; HC≤ₚTSP-DEC chứng minh đầy đủ; cấu trúc rút gọn 3SAT→HC; liên hệ Ch.12."
+excerpt: "Chứng minh HC và TSP-DEC thuộc NP, chứng minh đầy đủ HC≤ₚTSP-DEC, cấu trúc gadget cho 3SAT≤ₚHC và liên hệ với Chương 12."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,68 +17,67 @@ excerpt: "HC∈NP; HC≤ₚTSP-DEC chứng minh đầy đủ; cấu trúc rút g
 
 </div>
 
-Ch.12: Euler đa thức, Hamilton khó. Mục này đặt vào khung NPC.
+Ở Chương 12, ta đã thấy bài toán chu trình Euler giải được trong thời gian đa thức trong khi chu trình Hamilton lại khó. Bài học này đặt chu trình Hamilton và bài toán người du lịch (TSP) vào khung lý thuyết NP-complete.
 
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
 
-- **Chứng minh** HC, TSP-DEC ∈ NP.
-- **Chứng minh** $$\mathrm{HC}\le_p\mathrm{TSP\text{-}DEC}$$.
-- **Mô tả** cấu trúc chứng minh $$3\mathrm{SAT}\le_p\mathrm{HC}$$ (gadget — đọc Garey–Johnson).
+- **Chứng minh** hai bài toán HC và TSP-DEC thuộc lớp $$NP$$.
+- **Chứng minh** đầy đủ phép rút gọn $$\mathrm{HC}\le_p\mathrm{TSP\text{-}DEC}$$.
+- **Mô tả** cấu trúc phép rút gọn $$3\mathrm{SAT}\le_p\mathrm{HC}$$ bằng gadget (tham khảo Garey–Johnson).
 
 </div>
 
-## Thuộc NP
+## Chứng minh thuộc lớp $$NP$$
 
-**HC:** certificate = hoán vị; kiểm $$n$$ cạnh.  
-**TSP-DEC:** certificate = tour; cộng trọng số so $$K$$. $$\square$$
+- **HC:** chứng chỉ là một hoán vị các đỉnh; bộ kiểm chứng kiểm tra xem $$n$$ cạnh liên tiếp khép kín có đều thuộc $$E$$ hay không.
+- **TSP-DEC:** chứng chỉ là một hành trình qua đủ $$n$$ đỉnh; bộ kiểm chứng cộng tổng trọng số các cạnh và so sánh với ngưỡng $$K$$. $$\square$$
 
-## $$\mathrm{HC}\le_p\mathrm{TSP\text{-}DEC}$$ (đầy đủ)
+## Chứng minh đầy đủ $$\mathrm{HC}\le_p\mathrm{TSP\text{-}DEC}$$
 
-**Construction.** Từ $$G=(V,E)$$, $$\lvert V\rvert=n$$, dựng $$K_n$$:
+**Phép dựng:** Từ đồ thị $$G=(V,E)$$ có $$\lvert V\rvert=n$$ đỉnh, ta xây dựng đồ thị đầy đủ có trọng số $$K_n$$ trên cùng tập đỉnh $$V$$ với hàm trọng số:
 
 $$
 w(e)=\begin{cases}1&e\in E\\2&e\notin E.\end{cases}
 $$
 
-Hỏi: có tour độ dài $$\le n$$?
+Ta đặt câu hỏi TSP-DEC: đồ thị đầy đủ này có hành trình Hamilton với tổng trọng số $$\le n$$ hay không?
 
-**Tính đúng.**  
-Tour Hamilton trong $$G$$ ⇒ $$n$$ cạnh weight 1 ⇒ tổng $$n$$.  
-Tour TSP tổng $$\le n$$: mọi cạnh weight $$\ge 1$$ ⇒ phải đúng $$n$$ cạnh weight 1 ⇒ chu trình trong $$G$$.
+**Tính đúng đắn:**  
+- Nếu $$G$$ có chu trình Hamilton thì hành trình đó gồm $$n$$ cạnh đều thuộc $$E$$ (mỗi cạnh có trọng số 1), nên tổng trọng số đúng bằng $$n$$.  
+- Ngược lại, nếu $$K_n$$ có hành trình tổng trọng số $$\le n$$ thì vì mọi cạnh đều có trọng số $$\ge 1$$, hành trình buộc phải dùng đúng $$n$$ cạnh có trọng số 1 — nghĩa là tất cả các cạnh đều thuộc $$E$$ và tạo thành một chu trình Hamilton trong $$G$$.
 
-Poly-time. $$\square$$
+Phép dựng chỉ tốn thời gian đa thức $$O(n^2)$$. $$\square$$
 
-## $$3\mathrm{SAT}\le_p\mathrm{HC}$$ (cấu trúc)
+## Cấu trúc rút gọn $$3\mathrm{SAT}\le_p\mathrm{HC}$$
 
-Gadget đỉnh/cạnh mô phỏng literal và mệnh đề (Garey–Johnson; Sipser optional).  
-**Seminar:** đọc một nguồn, vẽ gadget, viết Yes⇔Yes 2 trang — *không* tự bịa gadget.
+Phép rút gọn sử dụng các gadget đỉnh/cạnh để mô phỏng từng biến, từng literal và từng mệnh đề (xem Garey–Johnson hoặc mục bổ sung trong Sipser). Khi trình bày seminar, nên đọc kỹ một nguồn chuẩn, tự vẽ lại gadget và viết tường minh lập luận hai chiều trong khoảng 2 trang thay vì tự đoán cấu trúc gadget.
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý.** HC và TSP-DEC NP-complete (HC từ literature gadget + TSP từ §2).
+**Định lý.** Cả HC và TSP-DEC đều là bài toán NP-complete (HC suy từ phép rút gọn gadget 3SAT→HC và TSP-DEC suy từ phép rút gọn HC→TSP-DEC ở trên).
 
 </div>
 
 ## Bài tập
 
-1. Viết đủ chứng minh HC→TSP-DEC.  
-2. Vì sao weight $$2$$ đủ lớn? (tổng $$\ge n+1$$ nếu một cạnh “giả”)  
-3. Euler vs Hamilton: đối chiếu certificate/thuật toán.
+1. Trình bày lại đầy đủ chứng minh $$\mathrm{HC}\le_p\mathrm{TSP\text{-}DEC}$$.
+2. Giải thích vì sao chọn trọng số $$2$$ cho các cạnh không thuộc $$E$$ là đủ lớn (nếu dùng ít nhất một cạnh “giả”, tổng trọng số sẽ $$\ge n+1$$).
+3. Đối chiếu chu trình Euler và chu trình Hamilton về mặt chứng chỉ và thuật toán giải.
 
-## Đọc
+## Tài liệu đọc thêm
 
-Garey–Johnson (Hamilton); Vazirani (metric TSP xấp xỉ — 20.11).
+Garey–Johnson (phần Hamilton); Vazirani (thuật toán xấp xỉ cho Metric TSP ở Bài 20.11).
 
 ## Tóm tắt
 
-HC NPC · TSP-DEC NPC · cầu Ch.12 ↔ complexity.
+Chu trình Hamilton và bài toán TSP phiên bản quyết định đều là NP-complete, kết nối trực tiếp lý thuyết đồ thị ở Chương 12 với lý thuyết độ phức tạp.
 
-**Tiếp:** 20.11 — xấp xỉ.
+**Bài tiếp theo:** 20.11 — Thuật toán xấp xỉ.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=1pmBjIZ20pE">What is the Traveling Salesman Problem?</a> — AlphaOpt, tiếng Anh. Xem trước TSP, dạng quyết định bài chứng minh NP-complete.
-- <a href="https://www.youtube.com/watch?v=4r78NtOnWWA">Hamiltonian Path is NP-Complete (Directed, Reduction from 3SAT)</a> — Easy Theory, tiếng Anh. Đường Hamilton NP-complete bằng rút gọn từ 3SAT.
-- <a href="https://www.youtube.com/watch?v=OHnX-R_SBpM">Hamiltonian Cycle is NP-Complete (Algorithms 24)</a> — Professor Bryce, tiếng Anh. Chu trình Hamilton là NP-complete, nửa kia của bài.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=1pmBjIZ20pE">What is the Traveling Salesman Problem?</a> — AlphaOpt, tiếng Anh. Giới thiệu bài toán TSP và phiên bản quyết định được chứng minh NP-complete trong bài.
+- <a href="https://www.youtube.com/watch?v=4r78NtOnWWA">Hamiltonian Path is NP-Complete (Directed, Reduction from 3SAT)</a> — Easy Theory, tiếng Anh. Chứng minh đường đi Hamilton có hướng là NP-complete bằng rút gọn từ 3SAT.
+- <a href="https://www.youtube.com/watch?v=OHnX-R_SBpM">Hamiltonian Cycle is NP-Complete (Algorithms 24)</a> — Professor Bryce, tiếng Anh. Chứng minh chu trình Hamilton là NP-complete.

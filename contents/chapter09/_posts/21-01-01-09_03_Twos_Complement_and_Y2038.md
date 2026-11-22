@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Two's complement và Year 2038: Khi +1 giây phá vỡ thời gian"
 categories: chapter09
@@ -7,79 +6,81 @@ date: 2021-01-01
 order: 3
 required: false
 lang: en
-excerpt: "Ở mục endianness, chúng ta đã thấy cùng một dãy byte có thể đọc ra số khác nhau tùy quy ước thứ tự. Mục này xét biến thể tương tự với số có dấu: cùng các bit…"
+excerpt: "Tìm hiểu cách máy tính biểu diễn số nguyên có dấu bằng bù hai (two's complement), phân biệt giới hạn 32-bit signed/unsigned và cơ chế tràn số gây ra sự cố Year 2038."
 ---
 
-Ở mục endianness, chúng ta đã thấy cùng một dãy byte có thể đọc ra số khác nhau tùy quy ước thứ tự. Mục này xét biến thể tương tự với **số có dấu**: cùng các bit trong bộ nhớ, máy đọc theo quy tắc **two's complement** (bù hai) để biết số đó dương hay âm. Nhiều hệ thống không lưu “ngày giờ” như hiển thị trên đồng hồ mà lưu **một số nguyên** đếm giây từ epoch Unix (1/1/1970). Mỗi giây trôi qua, số đó tăng thêm 1; khi biến chỉ có **32 bit signed**, giá trị max là $$2^{31}-1$$ tương ứng **19/1/2038, 03:14:07 UTC** — cộng thêm 1 giây sẽ **tràn** và timestamp có thể nhảy về khoảng năm **1901**.
+Ở bài endianness, chúng ta đã thấy cùng một dãy byte có thể cho ra những giá trị khác nhau tùy theo quy ước sắp xếp thứ tự byte. Mục này xét một vấn đề tương tự đối với **số nguyên có dấu**: trên cùng một dãy bit trong bộ nhớ, máy tính áp dụng quy tắc **bù hai** (two's complement) để phân biệt số dương và số âm. Nhiều hệ thống không lưu “ngày giờ” theo định dạng hiển thị trên đồng hồ mà lưu **một số nguyên** đếm số giây trôi qua kể từ mốc epoch Unix (01/01/1970). Mỗi giây, số này tăng thêm 1; khi biến đếm chỉ rộng **32 bit có dấu** (signed), giá trị cực đại là $$2^{31}-1$$, tương ứng **03:14:07 UTC ngày 19/01/2038**. Cộng thêm 1 giây nữa sẽ gây **tràn số** (overflow) và đẩy timestamp quay ngược về khoảng năm **1901**.
 
-Khác **Y2K** (lưu năm hai chữ số rồi nhầm 1900/2000), **Y2038** là chuyện **ô nhớ đầy**: không sửa bằng “thêm chữ số”, mà phải mở rộng biểu diễn (`int64_t`, `time_t` 64-bit) hoặc thay thiết bị cũ. Ghi nhớ: **thời gian trong máy = số nguyên có biên; +1 ở biên có thể đổi cả thế kỷ.** Minh họa thực tế: firmware PLC, camera IP, và file archive lưu timestamp `int32` vẫn “chạy đúng” năm 2026 nhưng có thể gặp sự cố sau 2038 nếu không được kiểm tra.
+Khác với sự cố **Y2K** (do lưu năm bằng hai chữ số dẫn đến nhầm lẫn giữa 1900 và 2000), **Y2038** bắt nguồn từ việc **ô nhớ đầy**: không thể khắc phục chỉ bằng cách “thêm chữ số”, mà phải mở rộng độ rộng biểu diễn (`int64_t`, `time_t` 64-bit) hoặc thay thế thiết bị cũ. Điểm cần nhớ: **thời gian trong máy tính là một số nguyên có giới hạn biên; cộng thêm 1 tại biên có thể làm lệch cả một thế kỷ.** Trong thực tế, các firmware PLC, camera IP và định dạng tệp lưu trữ dùng timestamp `int32` vẫn chạy bình thường vào năm 2026 nhưng có nguy cơ gặp sự cố sau năm 2038 nếu không được kiểm tra và nâng cấp.
 
 <figure class="image" style="align: center;">
 <p align="center">
   <img src="/discrete-mathematics-for-computer-science-iuh/img/course/Binary_clock.svg"
        alt="Đồng hồ nhị phân — thời gian hiển thị được ghi bằng pattern bit"
        width="55%" height="55%">
-  <figcaption style="text-align: center;">Hình 9.3a: Đồng hồ trên UI là lớp trên cùng; bên dưới là số nguyên có biên — cộng 1 ở max 32-bit signed nhảy sang vùng âm, tức năm 1901 (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Binary_clock.svg">Alexander Jones &amp; Eric Pierce / Wikimedia Commons</a>, CC BY-SA 3.0).</figcaption>
+  <figcaption style="text-align: center;">Hình 9.3a: Đồng hồ trên giao diện chỉ là lớp hiển thị; bên dưới là số nguyên có giới hạn biên — cộng 1 tại giá trị cực đại 32-bit có dấu sẽ nhảy sang vùng âm, tương ứng năm 1901 (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Binary_clock.svg">Alexander Jones &amp; Eric Pierce / Wikimedia Commons</a>, CC BY-SA 3.0).</figcaption>
 </p>
 </figure>
 
 ---
 
-## Unix time — đếm giây từ một ngày bất kỳ
+## Unix time — đếm giây từ một mốc quy ước
 
-Hầu hết hệ điều hành Unix và nhiều hệ nhúng dùng **Unix time**: số giây đã trôi qua kể từ **00:00:00 UTC ngày 1 tháng 1 năm 1970**, gọi là **epoch**. Không có phép màu ở đây — chỉ là quy ước chọn một mốc 0 rồi đếm tăng dần mỗi giây. Giá trị `0` tương ứng 1970-01-01 00:00:00 UTC. Giá trị `1_000_000_000` tương ứng khoảng 2001-09-09 — mốc “tỷ giây” mà nhiều blog kỹ thuật từng ghi nhận.
+Phần lớn hệ điều hành họ Unix và nhiều hệ thống nhúng dùng **Unix time**: số giây đã trôi qua kể từ **00:00:00 UTC ngày 1 tháng 1 năm 1970**, gọi là mốc **epoch**. Đây đơn thuần là một quy ước chọn mốc 0 rồi đếm tăng dần theo từng giây. Giá trị `0` ứng với 1970-01-01 00:00:00 UTC, còn giá trị `1_000_000_000` ứng với khoảng ngày 09/09/2001 — mốc “một tỷ giây” thường được nhắc đến trong các tài liệu kỹ thuật.
 
-Khi biến lưu Unix time là **signed 32-bit integer**, nó chỉ chứa được một **tập số nguyên hữu hạn**. Không phải đồng hồ “sai”; tập đó có đúng $$2^{32}$$ giá trị khác nhau, từ min âm đến max dương theo quy tắc two's complement. Mọi timestamp nằm ngoài dải đó — hoặc không biểu diễn được, hoặc bị wrap theo quy tắc phần cứng — đều là hệ quả của việc **chọn kiểu biến quá nhỏ**, không phải vì UTC bản thân nó hỏng.
+Khi Unix time được lưu trong biến **số nguyên 32-bit có dấu**, tập giá trị biểu diễn được là **hữu hạn**, gồm đúng $$2^{32}$$ giá trị khác nhau từ cận dưới âm đến cận trên dương theo quy tắc bù hai. Mọi thời điểm nằm ngoài dải này đều không thể biểu diễn trực tiếp hoặc sẽ bị quay vòng (wrap) theo cơ chế phần cứng — hệ quả của việc **chọn kiểu dữ liệu quá hẹp**, không phải do bản thân chuẩn thời gian UTC gặp lỗi.
 
 ![Unix time timeline — Wikimedia](/discrete-mathematics-for-computer-science-iuh/img/course/Unix_timeline.en.svg)
 
-<p class="textbook-figure-caption" data-figure="9.11">Unix time tăng đều theo giây — cho đến khi hết bit trong biến 32-bit signed (nguồn: Wikimedia Commons).</p>
-Lan nhìn đường thời gian trên hình và thấy điều Planet Mainframe nhấn mạnh: nhiều thiết bị công nghiệp **hoạt động đúng thiết kế** suốt hai thập kỷ nhưng không được nâng cấp trước 2038 vì chi phí recertification — thay firmware PLC có thể cần downtime nhà máy, kiểm định an toàn, và giấy phép vận hành mới. Bug không nằm trong logic điều khiển van; nó nằm trong **ô nhớ đếm giây**.
+<p class="textbook-figure-caption" data-figure="9.11">Unix time tăng đều mỗi giây cho đến khi chạm giới hạn bit của biến 32-bit có dấu (nguồn: Wikimedia Commons).</p>
 
-**Y2K** và **Y2038** nghe giống nhau — cả hai đều là “năm máy tính bị lỗi” — nhưng bản chất khác hẳn:
+Nhìn vào trục thời gian này, Lan thấy rõ điểm mà Planet Mainframe nhấn mạnh: nhiều thiết bị công nghiệp **vận hành đúng thiết kế** suốt hai thập kỷ nhưng rất khó được nâng cấp trước năm 2038 vì chi phí tái kiểm định (recertification) — cập nhật firmware PLC có thể đòi hỏi dừng dây chuyền nhà máy, kiểm định an toàn lại và xin cấp phép vận hành mới. Lỗi không nằm ở logic điều khiển thiết bị mà nằm ngay ở **ô nhớ đếm giây**.
+
+**Y2K** và **Y2038** cùng là sự cố liên quan đến mốc thời gian, nhưng bản chất hoàn toàn khác nhau:
 
 | | Y2K (2000) | Y2038 |
 |:---|:---|:---|
-| Nguyên nhân | Lưu năm 2 chữ số | **Tràn** 32-bit signed |
-| Bản chất | Quy ước lưu trữ | **Giới hạn toán** |
-| Hệ ảnh hưởng | Business apps | **Nhúng**, firmware, PLC, legacy |
+| Nguyên nhân | Lưu năm bằng 2 chữ số | **Tràn số** 32-bit có dấu |
+| Bản chất | Quy ước lưu trữ văn bản/trường năm | **Giới hạn biểu diễn nhị phân** |
+| Hệ thống ảnh hưởng | Ứng dụng nghiệp vụ | **Hệ nhúng**, firmware, PLC, hệ thống cũ |
 
-Y2K sửa bằng cách thêm hai chữ số vào field năm trong database. Y2038 không có “thêm chữ số” nào cứu được nếu biến vẫn chỉ rộng 32 bit và vẫn đọc theo signed two's complement — chúng ta phải **mở rộng biểu diễn** hoặc **thay phần cứng** đã chạy đúng spec cũ.
+Y2K được khắc phục bằng cách mở rộng trường năm trong cơ sở dữ liệu thêm hai chữ số. Với Y2038, nếu biến vẫn chỉ rộng 32 bit và đọc theo bù hai có dấu thì không thể vá cục bộ — bắt buộc phải **mở rộng kiểu biểu diễn** hoặc **thay thế phần cứng/firmware** cũ.
 
-## Giới hạn 32-bit — signed hay unsigned?
+## Giới hạn 32-bit — có dấu hay không dấu?
 
-Một câu hỏi hay gặp trước khi nói tới Year 2038: **32 bit thì số đó giới hạn là bao nhiêu?** Câu trả lời phụ thuộc vào **cách máy đọc** các bit — không chỉ vào số bit.
+Một câu hỏi thường gặp trước khi đi sâu vào Year 2038 là: **32 bit biểu diễn được đến giá trị nào?** Câu trả lời không chỉ phụ thuộc vào số bit mà còn phụ thuộc vào **quy ước đọc** dãy bit đó.
 
-32 bit, mỗi bit là 0 hoặc 1, nên tổng cộng có đúng $$2^{32} = 4\,294\,967\,296$$ **tổ hợp bit khác nhau**. Nhưng **giá trị số** min/max phụ thuộc kiểu dữ liệu:
+Với 32 bit, mỗi bit nhận giá trị 0 hoặc 1, tổng cộng có đúng $$2^{32} = 4\,294\,967\,296$$ **tổ hợp bit khác nhau**. Tuy nhiên, giá trị nhỏ nhất và lớn nhất lại phụ thuộc vào kiểu dữ liệu:
 
-| Kiểu | Nhỏ nhất | Lớn nhất | Ý nghĩa với Unix time |
+| Kiểu dữ liệu | Nhỏ nhất | Lớn nhất | Hệ quả với Unix time |
 |:---|:---|:---|:---|
-| **Signed** (`int32_t`, two's complement) | $$-2^{31} = -2\,147\,483\,648$$ | $$2^{31} - 1 = 2\,147\,483\,647$$ | Overflow **2038** → nhảy **1901** |
-| **Unsigned** (`uint32_t`) | $$0$$ | $$2^{32} - 1 = 4\,294\,967\,295$$ | Overflow **~2106** → wrap về **1970** |
+| **Có dấu** (`int32_t`, bù hai) | $$-2^{31} = -2\,147\,483\,648$$ | $$2^{31} - 1 = 2\,147\,483\,647$$ | Tràn năm **2038** → nhảy về **1901** |
+| **Không dấu** (`uint32_t`) | $$0$$ | $$2^{32} - 1 = 4\,294\,967\,295$$ | Tràn khoảng năm **2106** → quay về **1970** |
 
-**Signed** chia không gian $$2^{32}$$ thành nửa âm và nửa không âm; dải **không đối xứng** — có thể biểu diễn $$+2^{31}-1$$ nhưng không có $$+2^{31}$$, vì pattern tương ứng đã dành cho số âm. **Unsigned** dùng toàn bộ không gian cho số không âm, nên max gần gấp đôi signed max.
+Kiểu **có dấu** chia không gian $$2^{32}$$ tổ hợp thành một nửa cho số âm và một nửa cho số không âm; dải giá trị **không đối xứng** (biểu diễn được $$+2^{31}-1$$ nhưng không có $$+2^{31}$$, vì tổ hợp bit tương ứng dành cho số âm nhỏ nhất). Kiểu **không dấu** dùng toàn bộ không gian cho số không âm nên giá trị cực đại gần gấp đôi kiểu có dấu.
 
-Unix timestamp trên hệ cũ thường lưu trong **signed 32-bit**, nên giới hạn quyết định Year 2038 là **2,147,483,647** — không phải 4,294,967,295.
+Vì Unix timestamp trên các hệ thống cũ thường dùng **32-bit có dấu**, giới hạn quyết định sự cố Year 2038 là **2,147,483,647**, chứ không phải 4,294,967,295.
 
 <div class="content-box insight-box textbook-block" markdown="1">
-**Ghi nhớ nhanh**: Signed max = **2,147,483,647** (03:14:07 UTC, 19/01/2038); signed min = **−2,147,483,648** (~1901 sau overflow); unsigned max = **4,294,967,295** (overflow ~2106). Cùng 32 bit — khác kiểu đọc, khác ngày “vỡ”.
+**Ghi nhớ nhanh**: Cực đại có dấu = **2,147,483,647** (03:14:07 UTC, 19/01/2038); cực tiểu có dấu = **−2,147,483,648** (~1901 sau tràn số); cực đại không dấu = **4,294,967,295** (tràn khoảng năm 2106). Cùng 32 bit nhưng khác kiểu đọc sẽ cho ra mốc tràn khác nhau.
 </div>
 
 ---
 
-## Two's complement — khi +1 biến max thành min âm
+## Bù hai (two's complement) — khi +1 biến cực đại thành cực tiểu âm
 
-Số nguyên có dấu trong máy tính hiện đại hầu như luôn dùng **two's complement** (bù hai). Với 32 bit, **một bit** đứng vai trò **sign** (0 = không âm, 1 = âm), **31 bit** còn lại tham gia vào giá trị magnitude theo công thức đặc biệt — không phải “bit dấu riêng, 31 bit giá trị tuyệt đối” như người mới hay tưởng.
+Máy tính hiện đại hầu như luôn biểu diễn số nguyên có dấu bằng **bù hai** (two's complement). Trong 32 bit, **bit cao nhất** đóng vai trò **bit dấu** (0 là không âm, 1 là âm), còn **31 bit** còn lại kết hợp theo trọng số của quy tắc bù hai — không phải dạng “1 bit dấu tách rời và 31 bit trị tuyệt đối” như nhiều người dễ nhầm.
 
-Giá trị **lớn nhất** mà 32-bit signed biểu diễn được có bit pattern `0111…111` (31 chữ số 1 sau một số 0):
+Giá trị dương **lớn nhất** mà số 32-bit có dấu biểu diễn được có mẫu bit `0111…111` (một bit 0 đứng trước 31 bit 1):
 
 <div class="textbook-equation" markdown="1">
 $$2^{31} - 1 = 2\,147\,483\,647$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Đó chính là **03:14:07 UTC ngày 19/01/2038** — giây Unix cuối cùng trước overflow trên biến signed 32-bit. Lan ghi con số này lên bảng trắng trong phòng họp: không phải ngày “ma quái” do ai chọn bừa, mà là **đỉnh của dải số** mà kiểu `int32_t` cho phép.
 
-Cộng thêm 1 vào max — phép cộng nhị phân bình thường, cùng mạch ALU như cộng số không dấu:
+Đó chính là mốc **03:14:07 UTC ngày 19/01/2038** — giây Unix cuối cùng trước khi tràn trên biến `int32_t`. Đây không phải một mốc thời gian ngẫu nhiên mà là **cận trên toán học** của kiểu dữ liệu 32-bit có dấu.
+
+Khi cộng thêm 1 vào giá trị cực đại bằng phép cộng nhị phân thông thường (trên cùng mạch ALU như số không dấu):
 
 ```
   0111...111
@@ -88,13 +89,13 @@ Cộng thêm 1 vào max — phép cộng nhị phân bình thường, cùng mạ
   1000...000   ← sign bit = 1, các bit khác = 0
 ```
 
-Pattern `1000…000` trong two's complement không phải “số dương lớn hơn max”. Theo quy tắc đọc, nó là **−2³¹ = −2,147,483,648** — giá trị **âm nhỏ nhất** (magnitude lớn nhất về phía âm) mà 32-bit signed chứa được. Đếm **lùi** 2,147,483,648 giây từ epoch 1970 → ra **1901-12-13 20:45:52 UTC** — con số mà [Planet Mainframe](https://planetmainframe.com/2026/01/inside-the-math-that-will-break-time-the-y2k38-problem/) và [Wikipedia — Year 2038 problem](https://en.wikipedia.org/wiki/Year_2038_problem) đồng thuận. HMI có thể hiển thị năm 1901; log audit ghi timestamp lùi một thế kỷ; job “chạy lúc 03:15” có thể không bao giờ fire vì scheduler nghĩ “thời điểm đó đã qua từ 124 năm trước”.
+Trong hệ bù hai, mẫu bit `1000…000` không phải là một số dương lớn hơn mà biểu diễn **−2³¹ = −2,147,483,648** — giá trị **âm nhỏ nhất** của 32-bit có dấu. Đếm lùi 2,147,483,648 giây tính từ mốc epoch 1970 sẽ cho ra **1901-12-13 20:45:52 UTC**, đúng như [Planet Mainframe](https://planetmainframe.com/2026/01/inside-the-math-that-will-break-time-the-y2k38-problem/) và [Wikipedia — Year 2038 problem](https://en.wikipedia.org/wiki/Year_2038_problem) ghi nhận. Khi sự cố xảy ra, màn hình HMI có thể báo năm 1901, nhật ký kiểm toán ghi mốc thời gian lùi hơn một thế kỷ, và các tác vụ lập lịch cho “03:15” có thể không bao giờ chạy vì bộ lập lịch tưởng thời điểm đó đã trôi qua từ hơn trăm năm trước.
 
 <div class="content-box warning-box textbook-block" markdown="1">
-Trong C, `time_t` overflow trên kiểu signed là **undefined behavior** nếu compiler không đảm bảo wrap — về mặt chuẩn ngôn ngữ, chúng ta không được giả định kết quả. Thực tế hầu hết nền tảng hiện đại wrap theo two's complement, nhưng ứng dụng vẫn thấy thời gian sai dù “phần cứng cộng đúng”. Đừng nhầm “wrap có quy luật” với “ứng dụng vẫn an toàn”.
+Trong ngôn ngữ C, tràn số trên kiểu có dấu như `time_t` là **hành vi không xác định** (undefined behavior) về mặt tiêu chuẩn ngôn ngữ, nên lập trình viên không được giả định kết quả. Dù trên thực tế hầu hết kiến trúc phần cứng đều quay vòng theo bù hai, ứng dụng vẫn nhận sai thời gian dù mạch cộng hoạt động đúng. “Quay vòng có quy luật” hoàn toàn không đồng nghĩa với “ứng dụng an toàn”.
 </div>
 
-Công thức tổng quát cho word $$w$$ bit, với các bit $$b_{w-1} \ldots b_0$$ (bit $$b_{w-1}$$ là sign):
+Công thức tổng quát của biểu diễn bù hai cho từ máy $$w$$ bit với các bit $$b_{w-1} \ldots b_0$$ (trong đó $$b_{w-1}$$ là bit dấu):
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -102,42 +103,43 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Với $$w=32$$: max dương = $$2^{31}-1$$, min âm = $$-2^{31}$$. Dải **không đối xứng** — có thể biểu diễn $$+2^{31}-1$$ nhưng không có $$+2^{31}$$, vì pattern dương tương ứng đã bị dành cho số âm.
 
-Lan hay dùng mô hình **8-bit** để giải thích cho thực tập sinh mới vào nhà máy: max dương = $$2^7 - 1 = 127$$, pattern `01111111`. Cộng 1 → `10000000` = **−128**, không phải 128. Cùng mạch cộng, cùng dãy bit — chỉ khác **cách CPU diễn giải sign bit**. Year 2038 trên 32-bit là cùng câu chuyện, chỉ scale lên từ 127 sang hơn hai tỷ.
+Với $$w = 32$$, cực đại dương là $$2^{31}-1$$ và cực tiểu âm là $$-2^{31}$$. Dải biểu diễn không đối xứng vì tổ hợp bit tương ứng với $$2^{31}$$ đã được dùng cho $$-2^{31}$$.
+
+Để giải thích trực quan cho thực tập sinh mới vào nhà máy, Lan thường lấy mô hình **8-bit**: cực đại dương là $$2^7 - 1 = 127$$ (`01111111`); cộng thêm 1 cho ra `10000000`, đọc theo bù hai là **−128** chứ không phải 128. Cùng một mạch cộng và cùng một dãy bit, sự khác biệt chỉ nằm ở **cách CPU diễn giải bit dấu**. Year 2038 trên 32-bit có cơ chế giống hệt, chỉ mở rộng từ 127 lên hơn hai tỷ.
 
 <div class="content-box insight-box textbook-block" markdown="1">
-Hai lớp dễ lẫn — giống chuyện endianness: **(1)** dãy bit vật lý trong register sau phép cộng; **(2)** kiểu dữ liệu trong ngôn ngữ (`uint32_t` vs `int32_t`) quyết định **đọc** dãy đó là bao nhiêu. `1000…000` là −2³¹ nếu signed, là 2³¹ nếu unsigned — cùng bit, hai số.
+Tương tự bài endianness, cần tách hai lớp: **(1)** dãy bit vật lý trong thanh ghi sau phép cộng; **(2)** kiểu dữ liệu (`uint32_t` hay `int32_t`) quyết định cách đọc giá trị của dãy bit đó. Mẫu `1000…000` là $$-2^{31}$$ nếu đọc có dấu, nhưng là $$2^{31}$$ nếu đọc không dấu.
 </div>
 
 ---
 
-### Minh hoạ bù hai, cộng có nhớ và Y2038
+### Minh họa bù hai, cộng có nhớ và Y2038
 
-Bấm vào từng bit để thấy giá trị bù hai (bit đầu có trọng số âm), xem cách lấy số đối bằng “đảo bit + 1”, cộng hai số từng cột để thấy tràn số, và kéo thanh trượt qua giới hạn $$2^{31}-1$$ của Unix time.
+Nhấn vào từng bit để xem giá trị bù hai (bit đầu có trọng số âm), cách lấy số đối bằng “đảo bit + 1”, phép cộng từng cột gây tràn số, và kéo thanh trượt qua ngưỡng $$2^{31}-1$$ của Unix time.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="bits-explainer" data-tab="twos"></div>
 </div>
 <script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
 
-## ALU và overflow — cùng mạch cộng, khác cách đọc
+## ALU và tràn số — cùng mạch cộng, khác cách đọc
 
-Trong ALU thật, cộng two's complement dùng **cùng mạch cộng không dấu** trên từng bit, kèm carry chain — không có “mạch cộng riêng cho số âm”. CPU chỉ thêm **lớp diễn giải** ở tầng ISA: sign bit, overflow flag, và quy tắc mở rộng dấu khi load/store. Ben Eater trên kênh YouTube thường minh họa phép cộng với số **không dấu** trên breadboard; CPU thật thêm overflow flag để phần mềm (hoặc người debug) biết khi nào phép cộng signed “vượt” dải biểu diễn.
+Trong bộ số học logic (ALU) thực tế, phép cộng bù hai sử dụng **chính mạch cộng số không dấu** trên từng bit kèm chuỗi nhớ (carry chain) — không cần một mạch cộng riêng cho số âm. CPU chỉ bổ sung **lớp diễn giải** ở tầng tập lệnh (ISA): bit dấu, cờ tràn số (overflow flag) và quy tắc mở rộng dấu khi nạp/lưu dữ liệu. Loạt video của Ben Eater minh họa phép cộng không dấu trên breadboard, còn CPU thực tế đặt thêm cờ tràn để phần mềm phát hiện khi phép cộng có dấu vượt khỏi dải biểu diễn.
 
-**Overflow** signed (tràn có dấu) xảy ra khi cộng hai số cùng dấu mà kết quả mang dấu ngược — ví dụ hai số dương mà tổng bị đọc thành âm, hoặc hai số âm mà tổng bị đọc thành dương. Year 2038 là case **dương + dương → âm** kinh điển trong sách giáo khoa kiến trúc máy tính — và nó xảy ra đồng loạt trên hàng triệu thiết bị cùng **một giây** thực lịch, không cần hacker, không cần cập nhật mã độc.
+**Tràn số có dấu** (signed overflow) xảy ra khi cộng hai số cùng dấu nhưng kết quả lại mang dấu ngược lại — tức hai số dương cộng ra âm, hoặc hai số âm cộng ra dương. Year 2038 là ví dụ kinh điển cho trường hợp **dương + dương → âm**, xảy ra đồng loạt trên hàng triệu thiết bị tại cùng một giây lịch thực mà không cần bất kỳ tác động bên ngoài nào.
 
-Lan không cần mở schematic PLC để tin điều này. Cô chỉ cần biết firmware lưu epoch trong `int32_t` signed, rồi tự tay cộng 1 vào 2,147,483,647 trên giấy — bit pattern nhảy sang min âm, timestamp nhảy sang 1901. Đó là lý do bài này nằm trong chương “máy tính lưu gì trong bit”, không nằm trong chương “quản lý dự án IT”.
+Lan không cần mở sơ đồ mạch của PLC để kiểm chứng nguy cơ này: chỉ cần biết firmware lưu epoch bằng `int32_t` có dấu rồi tự cộng 1 vào 2,147,483,647 trên giấy là đủ thấy mẫu bit nhảy sang cực tiểu âm và timestamp lùi về năm 1901.
 
 ---
 
-## Ai còn rủi ro, ai đã qua — và làm gì thực tế
+## Hệ thống nào còn rủi ro và giải pháp thực tế
 
-Phần lớn server Linux/macOS 64-bit và ứng dụng Java dùng `long` cho epoch millis đã **qua** nguy cơ Y2038 trên kiểu 32-bit — `time_t` trên nhiều bản phân phối hiện đại là 64-bit. Điện thoại và laptop chúng ta đang dùng có thể không bao giờ gặp bug này trên OS layer.
+Phần lớn máy chủ Linux/macOS 64-bit và ứng dụng Java (dùng kiểu `long` cho epoch tính theo mili giây) đã vượt qua giới hạn 32-bit, vì `time_t` trên đa số hệ điều hành hiện đại đã là 64-bit. Điện thoại và máy tính cá nhân thông thường khó gặp lỗi này ở tầng hệ điều hành.
 
-Rủi ro tập trung ở chỗ **ít ai ngó tới**: firmware router cũ, camera IP treo trần, PLC công nghiệp như tủ Lan mở — thiết bị chạy ổn định, không ai muốn downtime để flash firmware. File format hoặc backup archive ghi timestamp kiểu `int32` vẫn “đúng” năm 2037; mở lại năm 2039 có thể thấy mọi mốc thời gian nhảy về 1901. Embedded C trên vi điều khiển 32-bit mà không đổi ABI vẫn mang `time_t` 32-bit trong thư viện chuẩn cũ.
+Rủi ro thực sự tập trung ở các hệ thống **ít được cập nhật**: firmware router cũ, camera IP, PLC công nghiệp hoạt động ổn định nhiều năm nên ít đơn vị muốn dừng hệ thống để nạp lại firmware. Ngoài ra, các định dạng tệp hoặc bản sao lưu ghi timestamp bằng `int32` vẫn đọc bình thường đến năm 2037, nhưng sang năm 2039 có thể hiển thị thời gian nhảy về 1901. Mã C nhúng trên vi điều khiển 32-bit giữ nguyên ABI cũ cũng vẫn mang `time_t` 32-bit trong thư viện chuẩn.
 
-Giảm thiểu thực tế không phải meme “đổi sang unsigned là xong”. Nâng `time_t` lên 64-bit (Linux 5.6+ trên nhiều kiến trúc đã đi hướng này) là hướng chuẩn. Một mô hình Lan hay gặp trong nhà máy: **time authority** tập trung trên server 64-bit; thiết bị nhúng chỉ sync offset hoặc nhận giờ đã parse, không tự giữ epoch 32-bit làm nguồn sự thật lâu dài. Trong code mới, lưu trữ dài hạn nên dùng kiểu rộng hơn ngay từ đầu:
+Giải pháp bền vững không phải là chuyển sang `unsigned` 32-bit mà là nâng `time_t` lên **64-bit** (Linux từ phiên bản 5.6 trở đi đã hỗ trợ rộng rãi hướng này trên nhiều kiến trúc). Trong môi trường nhà máy, một mô hình thực tế khác là đặt **máy chủ chuẩn thời gian** (time authority) 64-bit tập trung; thiết bị nhúng chỉ đồng bộ độ lệch hoặc nhận thời gian đã xử lý thay vì tự lưu epoch 32-bit lâu dài. Trong mã nguồn mới, cần dùng kiểu 64-bit ngay từ đầu cho dữ liệu lưu trữ dài hạn:
 
 ```c
 #include <stdint.h>
@@ -147,9 +149,9 @@ Giảm thiểu thực tế không phải meme “đổi sang unsigned là xong�
 int64_t t = (int64_t)time(NULL);
 ```
 
-Nếu ai đó chọn `time_t` **unsigned** 32-bit, overflow xảy ra **muộn hơn** — max tương ứng khoảng năm **2106**, wrap về 0 (1970), không nhảy 1901. Đó là trade-off khác (mất khoảng thời gian trước 1970), không phải “an toàn vĩnh viễn”. Lan ghi vào risk register nhà máy một dòng khô khan: “PLC line 3 — firmware 2012, giả định `time_t` 32-bit signed, cần test overflow trên staging trước Q4/2037.” Không drama. Chỉ **đếm bit** và **cộng 1** trước khi giây thứ 2,147,483,648 đến.
+Nếu chuyển `time_t` sang **không dấu** 32-bit, thời điểm tràn chỉ bị đẩy lùi sang khoảng năm **2106** (và quay về 0 tức năm 1970, đồng thời không biểu diễn được thời điểm trước năm 1970) — đây chỉ là giải pháp trì hoãn chứ không giải quyết triệt để. Trong sổ quản lý rủi ro nhà máy, Lan ghi ngắn gọn: “PLC dây chuyền 3 — firmware 2012, giả định `time_t` 32-bit có dấu, cần kiểm thử tràn số trên môi trường staging trước Q4/2037.”
 
-Y2038 không phải meme xa vời — tính từ 2026 còn khoảng **12 năm**. Khác Y2K: không sửa bằng patch “thêm hai chữ số năm”; sửa bằng **rộng biểu diễn**, **thay thiết bị**, hoặc chấp nhận downtime và chi phí kiểm định mà thiết bị công nghiệp đã né suốt hai thập kỷ.
+Tính từ năm 2026, mốc Y2038 chỉ còn khoảng **12 năm**. Khác với Y2K, vấn đề này không thể vá bằng cách thêm chữ số hiển thị mà đòi hỏi **mở rộng độ rộng biểu diễn**, **thay thế thiết bị** hoặc chấp nhận chi phí dừng máy và kiểm định lại.
 
 **Đọc thêm**: [Planet Mainframe — Y2K38 (2026)](https://planetmainframe.com/2026/01/inside-the-math-that-will-break-time-the-y2k38-problem/) · [Wikipedia — Year 2038 problem](https://en.wikipedia.org/wiki/Year_2038_problem)
 
@@ -159,61 +161,67 @@ Y2038 không phải meme xa vời — tính từ 2026 còn khoảng **12 năm**.
 
 ### Bài tập 1
 
-Với 8-bit signed two's complement, giá trị lớn nhất là bao nhiêu? Cộng 1 vào giá trị đó cho bit pattern nào và số thập phân bao nhiêu?
+Với số nguyên 8-bit có dấu theo bù hai, giá trị lớn nhất là bao nhiêu? Khi cộng thêm 1 vào giá trị đó, mẫu bit và giá trị thập phân thu được là gì?
 
 <details>
 <summary>Đáp án</summary>
 
-Max = $$2^7 - 1 = 127$$, pattern `01111111`. Cộng 1 → `10000000` = **−128** (min âm), không phải 128.
+Giá trị lớn nhất là $$2^7 - 1 = 127$$, mẫu bit `01111111`. Cộng thêm 1 cho ra `10000000`, biểu diễn **−128** (giá trị âm nhỏ nhất), không phải 128.
 
 </details>
 
 ### Bài tập 2
 
-Unix time lưu trong `int32_t` signed đạt giá trị $$2\,147\,483\,647$$ tại 03:14:07 UTC 19/01/2038. Ngay giây sau, biến chứa bao nhiêu (theo two's complement)? Timestamp lịch tương ứng khoảng năm nào?
+Unix time lưu trong `int32_t` có dấu đạt giá trị $$2\,147\,483\,647$$ tại 03:14:07 UTC ngày 19/01/2038. Ngay giây kế tiếp, biến chứa giá trị nào theo bù hai và tương ứng với khoảng thời gian nào?
 
 <details>
 <summary>Đáp án</summary>
 
-Giá trị = $$-2\,147\,483\,648 = -2^{31}$$. Đếm lùi từ epoch → khoảng **13/12/1901** (UTC). Đây là cơ chế Year 2038, không phải đồng hồ hỏng ngẫu nhiên.
+Giá trị biến trở thành $$-2\,147\,483\,648 = -2^{31}$$. Đếm lùi từ mốc epoch 1970 cho ra khoảng ngày **13/12/1901** (UTC). Đây là cơ chế tràn số học của sự cố Year 2038, không phải lỗi hỏng đồng hồ ngẫu nhiên.
 
 </details>
 
 ### Bài tập 3
 
-Dùng công thức two's complement với $$w=4$$, tính giá trị thập phân của pattern `1010`.
+Áp dụng công thức bù hai với $$w = 4$$, tính giá trị thập phân của mẫu bit `1010`.
 
 <details>
 <summary>Đáp án</summary>
 
-Bit sign $$b_3 = 1$$: $$\text{value} = -1 \cdot 2^3 + 0 \cdot 2^2 + 1 \cdot 2^1 + 0 \cdot 2^0 = -8 + 2 = -6$$.
+Với bit dấu $$b_3 = 1$$: $$\text{value} = -1 \cdot 2^3 + 0 \cdot 2^2 + 1 \cdot 2^1 + 0 \cdot 2^0 = -8 + 2 = -6$$.
 
 </details>
 
 ### Bài tập 4
 
-Hệ thống A dùng `time_t` signed 32-bit; hệ thống B dùng `time_t` unsigned 32-bit. Cùng overflow “vòng” một vòng quanh giới hạn 32-bit, mô tả ngắn sự khác biệt về năm hiển thị sau overflow.
+Hệ thống A dùng `time_t` 32-bit có dấu; hệ thống B dùng `time_t` 32-bit không dấu. Khi cả hai đều bị tràn quay vòng qua giới hạn 32-bit, nêu ngắn gọn sự khác nhau về năm hiển thị sau khi tràn.
 
 <details>
 <summary>Đáp án</summary>
 
-**Signed**: sau max → nhảy sang min âm → timestamp ~**1901**. **Unsigned**: sau max (~2106) → wrap về **0** → hiển thị ~**1970**. Cả hai đều hỏng ứng dụng nếu không migrate, nhưng **triệu chứng** khác nhau.
+- **Có dấu**: sau khi vượt cực đại (năm 2038), giá trị nhảy sang cực tiểu âm, hiển thị khoảng năm **1901**.
+- **Không dấu**: sau khi vượt cực đại (khoảng năm 2106), giá trị quay về **0**, hiển thị năm **1970**.
+
+Cả hai trường hợp đều gây lỗi ứng dụng nếu không chuyển đổi kiểu dữ liệu, nhưng biểu hiện thời gian sau tràn là khác nhau.
 
 </details>
 
 ### Bài tập 5: Giới hạn 32-bit
 
-(a) Liệt kê min, max và tổng số giá trị biểu diễn được của signed 32-bit two's complement. (b) Làm tương tự với unsigned 32-bit. (c) Vì sao Year 2038 xảy ra ở **2,147,483,647** chứ không ở **4,294,967,295**?
+(a) Liệt kê giá trị nhỏ nhất, lớn nhất và tổng số giá trị biểu diễn được của kiểu 32-bit có dấu theo bù hai. (b) Thực hiện tương tự với kiểu 32-bit không dấu. (c) Vì sao sự cố Year 2038 xảy ra ở mốc **2,147,483,647** chứ không phải **4,294,967,295**?
 
 <details>
 <summary>Đáp án</summary>
 
-(a) Signed: min = $$-2^{31} = -2\,147\,483\,648$$, max = $$2^{31}-1 = 2\,147\,483\,647$$, tổng cộng $$2^{32} = 4\,294\,967\,296$$ giá trị. (b) Unsigned: min = $$0$$, max = $$2^{32}-1 = 4\,294\,967\,295$$, cũng $$2^{32}$$ giá trị. (c) Unix time trên hệ cũ dùng **signed** `int32_t`; giây cuối trước overflow là max signed, không phải max unsigned.
+(a) Kiểu có dấu: nhỏ nhất $$-2^{31} = -2\,147\,483\,648$$, lớn nhất $$2^{31}-1 = 2\,147\,483\,647$$, tổng cộng $$2^{32} = 4\,294\,967\,296$$ giá trị.
+
+(b) Kiểu không dấu: nhỏ nhất $$0$$, lớn nhất $$2^{32}-1 = 4\,294\,967\,295$$, cũng gồm $$2^{32}$$ giá trị.
+
+(c) Unix time trên các hệ thống cũ dùng kiểu `int32_t` **có dấu**, nên giây cuối cùng trước khi tràn là cực đại của kiểu có dấu, không phải cực đại của kiểu không dấu.
 
 </details>
 
 ---
-
 
 ## Xem thêm / Video gợi ý
 
@@ -222,16 +230,16 @@ Hệ thống A dùng `time_t` signed 32-bit; hệ thống B dùng `time_t` unsig
 
 ## Tóm tắt
 
-**Giới hạn 32-bit**: luôn có $$2^{32}$$ tổ hợp bit; signed max = **2,147,483,647**, min = **−2,147,483,648**; unsigned max = **4,294,967,295**. Cùng 32 bit — khác kiểu đọc (`int32_t` vs `uint32_t`), khác ngày overflow.
+Với 32 bit luôn có $$2^{32}$$ tổ hợp bit khác nhau: kiểu có dấu có dải từ **−2,147,483,648** đến **2,147,483,647**, còn kiểu không dấu có cực đại **4,294,967,295**. Cùng 32 bit nhưng khác kiểu đọc (`int32_t` so với `uint32_t`) sẽ dẫn đến thời điểm tràn số khác nhau.
 
-Unix time là số giây từ epoch 1970 — đơn giản đến mức dễ quên rằng nó vẫn phải nằm trong **biên của kiểu biến**. Khi biến là signed 32-bit two's complement, giây cuối cùng “hợp lệ” là 2,147,483,647 (19/01/2038 03:14:07 UTC). Cộng thêm 1 không tạo ra số dương lớn hơn; nó lật sign bit và biến thành −2³¹, kéo timestamp về khoảng năm 1901. Đó là Year 2038 — không phải quy ước lưu năm hai chữ số như Y2K, mà là **tràn số học** có thể minh họa bằng phép cộng nhị phân trên giấy.
+Unix time đếm số giây từ mốc epoch 1970 và vẫn bị ràng buộc bởi biên của kiểu dữ liệu. Với 32-bit có dấu theo bù hai, giây hợp lệ cuối cùng là 2,147,483,647 (03:14:07 UTC ngày 19/01/2038). Cộng thêm 1 làm lật bit dấu sang $$-2^{31}$$, kéo thời gian về khoảng năm 1901. Khác với Y2K, Year 2038 là hiện tượng **tràn số học** trong biểu diễn nhị phân.
 
-Two's complement dùng cùng mạch cộng với số không dấu; khác biệt nằm ở cách đọc bit và ở overflow signed khi tổng “vượt” dải. Server 64-bit và `int64_t` đã giải quyết phần lớn web app, nhưng PLC, firmware, và file archive cũ vẫn là mảnh đất của Lan — nơi “chạy ổn” không đồng nghĩa “qua 2038”. Giải pháp thực tế là mở rộng biểu diễn, tập trung time authority, hoặc thay thiết bị — không có phép màu đổi endian hay đổi charset.
+Phép cộng bù hai dùng chung mạch cộng với số không dấu; sự khác biệt nằm ở cách diễn giải bit dấu và phát hiện tràn số. Dù máy chủ 64-bit và `int64_t` đã giải quyết phần lớn ứng dụng web, các thiết bị PLC, firmware và tệp lưu trữ cũ vẫn cần được rà soát để mở rộng biểu diễn, đồng bộ thời gian tập trung hoặc thay thế phần cứng trước năm 2038.
 
-Bài tiếp theo, Ben Eater cho ta **nhìn** bit trên breadboard — từ transistor đến NAND, rồi tới cùng mạch cộng mà ALU dùng để thực hiện phép cộng two's complement vừa học. Sau khi biết “+1 tại max” là gì trên giấy, ta sẽ thấy nó xảy ra ở đâu trong silicon.
+Trong bài tiếp theo, loạt dự án của Ben Eater sẽ giúp ta quan sát trực tiếp **bit trên breadboard** — từ transistor đến cổng NAND và chính mạch cộng ALU thực hiện phép cộng bù hai vừa học.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=lKTsv6iVxV4">Binary: Plusses &amp; Minuses (Why We Use Two&#x27;s Complement) - Computerphile</a> — Computerphile, tiếng Anh. Xem trước bù hai và vì sao cộng cơ học ra số âm.
-- <a href="https://www.youtube.com/watch?v=4qH4unVtJkE">Twos complement: Negative numbers in binary</a> — Ben Eater, tiếng Anh. Dựng số âm bù hai trên mạch, đúng phần ALU của bài.
-- <a href="https://www.youtube.com/watch?v=BeK3LHegUr8">The Year 2038 Problem, Explained</a> — Code Blame, tiếng Anh. Tràn giây Unix 32-bit, đúng mốc năm 2038.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=lKTsv6iVxV4">Binary: Plusses &amp; Minuses (Why We Use Two&#x27;s Complement) - Computerphile</a> — Computerphile, tiếng Anh. Giải thích quy tắc bù hai và lý do phép cộng nhị phân cơ học hoạt động tự nhiên với số âm.
+- <a href="https://www.youtube.com/watch?v=4qH4unVtJkE">Twos complement: Negative numbers in binary</a> — Ben Eater, tiếng Anh. Minh họa cách dựng số âm bù hai trên mạch phần cứng, gắn với phần ALU của bài.
+- <a href="https://www.youtube.com/watch?v=BeK3LHegUr8">The Year 2038 Problem, Explained</a> — Code Blame, tiếng Anh. Trình bày sự cố tràn bộ đếm giây Unix 32-bit tại mốc năm 2038.

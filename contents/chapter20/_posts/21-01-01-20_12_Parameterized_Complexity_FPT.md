@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 12
 required: true
 lang: en
-excerpt: "FPT; chứng minh VC search tree 2ᵏn; kernel (ý); W[1] và Clique; treewidth (định hướng)."
+excerpt: "Độ phức tạp tham số hóa (FPT so với XP), chứng minh cây tìm kiếm 2ᵏ·poly(n) cho Vertex Cover, kỹ thuật kernelization, lớp W[1] với bài toán Clique và treewidth."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,15 +17,15 @@ excerpt: "FPT; chứng minh VC search tree 2ᵏn; kernel (ý); W[1] và Clique; 
 
 </div>
 
-Tham số hóa: thời gian $$f(k)n^{O(1)}$$ chấp nhận $$f$$ mũ theo $$k$$ nếu $$k$$ nhỏ (solution size, treewidth, …).
+Độ phức tạp tham số hóa tách phần tăng trưởng hàm mũ khỏi kích thước đầu vào $$n$$: thuật toán có thời gian $$f(k)n^{O(1)}$$ vẫn thực thi nhanh khi tham số cấu trúc $$k$$ nhỏ (như kích thước lời giải hoặc *treewidth*), ngay cả khi $$n$$ rất lớn.
 
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
 
-- **Định nghĩa** FPT.
-- **Chứng minh** VC-FPT $$O(2^k n^{O(1)})$$.
-- **Phân biệt** FPT vs XP; nêu W[1]-hard.
+- **Định nghĩa** lớp FPT (*Fixed-Parameter Tractable*).
+- **Chứng minh** thuật toán FPT cho Vertex Cover chạy trong $$O(2^k n^{O(1)})$$.
+- **Phân biệt** FPT với XP và nêu ý nghĩa của tính W[1]-hard.
 
 </div>
 
@@ -33,12 +33,14 @@ Tham số hóa: thời gian $$f(k)n^{O(1)}$$ chấp nhận $$f$$ mũ theo $$k$$ 
 
 <div class="textbook-definition" markdown="1">
 
-**FPT:** thời gian $$f(k)\cdot n^{O(1)}$$, $$f$$ chỉ phụ thuộc $$k$$.  
-**XP:** $$n^{g(k)}$$ — yếu hơn (số mũ phụ thuộc $$k$$).
+Cho bài toán đi kèm tham số $$k$$:
+
+- **FPT** (*Fixed-Parameter Tractable*): tồn tại thuật toán chạy trong thời gian $$f(k)\cdot n^{O(1)}$$, với $$f$$ là hàm tính được chỉ phụ thuộc vào $$k$$ (số mũ của $$n$$ không phụ thuộc $$k$$).
+- **XP**: thời gian chạy có dạng $$n^{g(k)}$$ — yếu hơn nhiều vì bậc đa thức theo $$n$$ tăng theo $$k$$.
 
 </div>
 
-## Vertex Cover — search tree
+## Thuật toán cây tìm kiếm cho Vertex Cover
 
 ```text
 VC(G,k):
@@ -51,44 +53,42 @@ VC(G,k):
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý.** Thuật toán đúng và chạy $$O(2^k\cdot\mathrm{poly}(n))$$.
+**Định lý.** Thuật toán trên giải đúng bài toán Vertex Cover tham số hóa và chạy trong thời gian $$O(2^k\cdot\mathrm{poly}(n))$$.
 
 </div>
 
-**Đúng:** cover phải chứa $$u$$ hoặc $$v$$; quy nạp.  
-**Thời gian:** $$\le 2^{k+1}$$ lá; mỗi node poly. $$\square$$
+**Tính đúng đắn:** với mọi cạnh $$\{u,v\}$$, bất kỳ phủ đỉnh hợp lệ nào cũng phải chứa ít nhất một trong hai đỉnh $$u$$ hoặc $$v$$; lập luận quy nạp theo $$k$$ khẳng định phép phân nhánh không bỏ sót nghiệm.  
+**Thời gian chạy:** cây đệ quy nhị phân có độ sâu tối đa $$k$$ nên có không quá $$2^{k+1}$$ nút, và mỗi nút thực hiện thao tác trong thời gian đa thức theo $$n$$. $$\square$$
 
-## Kernel (ý)
+## Kỹ thuật rút gọn hạt nhân (*Kernelization*)
 
-Buss: đỉnh bậc $$>k$$ buộc vào cover; sau giảm, instance size $$O(k^2)$$ (hoặc tốt hơn bằng LP).  
-→ Preprocess đa thức còn instance chỉ phụ thuộc $$k$$.
+Theo quy tắc Buss cho Vertex Cover, mọi đỉnh có bậc lớn hơn $$k$$ bắt buộc phải thuộc phủ đỉnh kích thước $$\le k$$ (nếu không thì phải chọn hơn $$k$$ đỉnh kề của nó). Sau khi tiền xử lý trong thời gian đa thức và loại các đỉnh cô lập, đồ thị còn lại có kích thước chỉ phụ thuộc vào $$k$$ — cụ thể $$O(k^2)$$ (và có thể giảm sâu hơn bằng quy hoạch tuyến tính).
 
-## W[1] và Clique
+## Lớp W[1] và bài toán Clique
 
-Clique tham số $$k$$: **W[1]-complete** — không FPT trừ FPT=W[1].  
-Đọc: Cygan et al.; Downey–Fellows.
+Khác với Vertex Cover, bài toán Clique tham số hóa theo kích thước $$k$$ là **W[1]-complete** — được tin là không thuộc FPT (trừ khi $$\mathrm{FPT}=\mathrm{W}[1]$$). Xem thêm Cygan et al. và Downey–Fellows.
 
-## Treewidth (định hướng)
+## Độ rộng cây (*Treewidth*)
 
-Nhiều bài MSO trên treewidth $$w$$: $$f(w)n$$ (Courcelle) — hằng số lớn; DP thực dụng $$2^{O(w)}n^{O(1)}$$.
+Nhiều bài toán biểu diễn được bằng logic bậc hai đơn ngôi (MSO) trên đồ thị có *treewidth* $$w$$ đều giải được trong thời gian $$f(w)n$$ theo định lý Courcelle; tuy hằng số lý thuyết rất lớn, quy hoạch động trực tiếp trên phân rã cây thường đạt $$2^{O(w)}n^{O(1)}$$ trong thực hành.
 
 ## Bài tập
 
-1. Chứng minh VC-FPT đầy đủ.  
-2. Phân tích nếu nhánh 3 theo đỉnh bậc ≥3 (tùy biến).  
-3. Đọc 1 kernel proof (Buss).
+1. Viết đầy đủ chứng minh tính đúng đắn và độ phức tạp cho thuật toán VC-FPT.
+2. Phân tích cải tiến phân nhánh khi ưu tiên chọn đỉnh có bậc $$\ge 3$$ (rẽ nhánh chọn đỉnh đó hoặc toàn bộ các đỉnh kề của nó).
+3. Đọc chi tiết một chứng minh hạt nhân hóa (quy tắc Buss).
 
-## Đọc
+## Tài liệu đọc thêm
 
-Cygan et al. *Parameterized Algorithms*; IPEC papers.
+Cygan et al., *Parameterized Algorithms*; kỷ yếu hội nghị IPEC.
 
 ## Tóm tắt
 
-FPT · VC $$2^k$$ · kernel · W[1].
+Lớp FPT cô lập bùng nổ tổ hợp vào tham số $$k$$ (như cây tìm kiếm $$2^k$$ và hạt nhân $$O(k^2)$$ cho Vertex Cover), trong khi tính W[1]-hard đóng vai trò tương tự NP-hard để chỉ ra bài toán khó ngay cả khi tham số hóa.
 
-**Tiếp:** 20.13 — ETH, fine-grained, average-case.
+**Bài tiếp theo:** 20.13 — ETH, độ phức tạp mịn (*fine-grained*) và độ khó trường hợp trung bình.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=dxEfqyViCJI">Fixed Parameter Tractability - Intro to Theoretical Computer Science</a> — Udacity, tiếng Anh. Xem trước FPT: thời gian f(k) nhân đa thức của n.
-- <a href="https://www.youtube.com/watch?v=kclZXaEqPjo">Fixed Parameter Tractability</a> — Alex Singh, tiếng Anh. Định nghĩa tractable theo tham số.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=dxEfqyViCJI">Fixed Parameter Tractability - Intro to Theoretical Computer Science</a> — Udacity, tiếng Anh. Giới thiệu khái niệm FPT với thời gian $$f(k)\cdot\mathrm{poly}(n)$$.
+- <a href="https://www.youtube.com/watch?v=kclZXaEqPjo">Fixed Parameter Tractability</a> — Alex Singh, tiếng Anh. Giải thích định nghĩa khả giải theo tham số cố định.

@@ -6,9 +6,8 @@ date: 2021-01-01
 order: 1
 required: true
 lang: en
-excerpt: "Σ, w, ε, Σ*; định nghĩa L; ghép chuỗi."
+excerpt: "Định nghĩa bảng chữ cái Σ, chuỗi w, chuỗi rỗng ε, bao đóng Σ*, ngôn ngữ hình thức L và các tính chất cơ bản của phép nối chuỗi."
 ---
-
 
 <div class="textbook-epigraph" markdown="1">
 
@@ -20,14 +19,14 @@ excerpt: "Σ, w, ε, Σ*; định nghĩa L; ghép chuỗi."
 
 ![Σ*](/discrete-mathematics-for-computer-science-iuh/img/course/Lang_sigma_star.svg)
 
-<p class="textbook-figure-caption" data-figure="19.1">$$L\subseteq\Sigma^*$$.</p>
+<p class="textbook-figure-caption" data-figure="19.1">Ngôn ngữ hình thức là một tập con $$L\subseteq\Sigma^*$$.</p>
 
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
 
-- **Định nghĩa** alphabet, string, language.
-- **Chứng minh** đẳng thức cơ bản về ghép/độ dài.
+- **Định nghĩa** bảng chữ cái (*alphabet*), chuỗi (*string*) và ngôn ngữ hình thức (*language*).
+- **Chứng minh** các đẳng thức cơ bản về phép nối chuỗi và độ dài chuỗi.
 
 </div>
 
@@ -35,41 +34,43 @@ excerpt: "Σ, w, ε, Σ*; định nghĩa L; ghép chuỗi."
 
 <div class="textbook-definition" markdown="1">
 
-$$\Sigma$$ hữu hạn ≠∅.  
-Chuỗi: dãy hữu hạn; $$\varepsilon$$; $$\lvert w\rvert$$.  
-$$\Sigma^*=\bigcup_{k\ge 0}\Sigma^k$$, $$\Sigma^0=\{\varepsilon\}$$.  
-**Ngôn ngữ:** $$L\subseteq\Sigma^*$$.
+- **Bảng chữ cái** $$\Sigma$$ là một tập hữu hạn khác rỗng các ký hiệu.
+- **Chuỗi** (*string*) là một dãy hữu hạn các ký hiệu thuộc $$\Sigma$$; chuỗi rỗng ký hiệu là $$\varepsilon$$ và độ dài của chuỗi $$w$$ ký hiệu là $$\lvert w\rvert$$.
+- Tập tất cả các chuỗi hữu hạn trên $$\Sigma$$ là $$\Sigma^*=\bigcup_{k\ge 0}\Sigma^k$$, với $$\Sigma^0=\{\varepsilon\}$$.
+- **Ngôn ngữ hình thức** trên $$\Sigma$$ là một tập con bất kỳ $$L\subseteq\Sigma^*$$.
 
 </div>
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý.** $$\lvert xy\rvert=\lvert x\rvert+\lvert y\rvert$$; $$(xy)z=x(yz)$$; $$w\varepsilon=\varepsilon w=w$$.
+**Định lý.** Với mọi chuỗi $$x, y, z, w \in \Sigma^*$$, ta có: $$\lvert xy\rvert=\lvert x\rvert+\lvert y\rvert$$, tính kết hợp $$(xy)z=x(yz)$$ và phần tử đơn vị $$w\varepsilon=\varepsilon w=w$$.
 
 </div>
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh.** Theo định nghĩa dãy hữu hạn / nối.
+
+**Chứng minh.** Suy trực tiếp từ định nghĩa dãy hữu hạn và phép nối hai dãy ký hiệu.
+
 </div>
 
 ## Bài tập
 
-1. Liệt kê $$\Sigma^{\le 2}$$ với $$\Sigma=\{a,b\}$$.  
-2. Chứng minh $$\lvert w^R\rvert=\lvert w\rvert$$.  
-3. $$\emptyset$$ vs $$\{\varepsilon\}$$.
+1. Liệt kê tất cả các chuỗi trong $$\Sigma^{\le 2}$$ với $$\Sigma=\{a,b\}$$.
+2. Chứng minh độ dài của chuỗi đảo ngược bằng độ dài chuỗi ban đầu: $$\lvert w^R\rvert=\lvert w\rvert$$.
+3. Phân biệt rõ hai ngôn ngữ $$\emptyset$$ và $$\{\varepsilon\}$$.
 
-## Đọc
+## Tài liệu đọc thêm
 
 Sipser §0–1; Hopcroft §1.
 
 ## Tóm tắt
 
-Σ · chuỗi · $$L\subseteq\Sigma^*$$.
+Ngôn ngữ hình thức được xây dựng từ ba khái niệm cơ sở: bảng chữ cái $$\Sigma$$, chuỗi hữu hạn và tập con $$L\subseteq\Sigma^*$$.
 
-**Tiếp:** phép toán ngôn ngữ.
+**Bài tiếp theo:** Các phép toán trên ngôn ngữ.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=7MBpk4gJRkk">[Discrete Mathematics] Formal Languages</a> — TrevTutor, tiếng Anh. Xem trước bảng chữ, xâu và ngôn ngữ hình thức.
-- <a href="https://www.youtube.com/watch?v=s6clCKVoXig">[Discrete Mathematics] Formal Languages Examples</a> — TrevTutor, tiếng Anh. Ví dụ ngôn ngữ con của Sigma sao.
-- <a href="https://www.youtube.com/watch?v=58N2N7zJGrQ">Introduction to Theory of Computation</a> — Neso Academy, tiếng Anh. Vị trí ngôn ngữ hình thức trong lý thuyết tính toán.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=7MBpk4gJRkk">[Discrete Mathematics] Formal Languages</a> — TrevTutor, tiếng Anh. Giới thiệu bảng chữ cái, chuỗi và ngôn ngữ hình thức.
+- <a href="https://www.youtube.com/watch?v=s6clCKVoXig">[Discrete Mathematics] Formal Languages Examples</a> — TrevTutor, tiếng Anh. Các ví dụ về ngôn ngữ con của $$\Sigma^*$$.
+- <a href="https://www.youtube.com/watch?v=58N2N7zJGrQ">Introduction to Theory of Computation</a> — Neso Academy, tiếng Anh. Đặt ngôn ngữ hình thức vào tổng thể lý thuyết tính toán.

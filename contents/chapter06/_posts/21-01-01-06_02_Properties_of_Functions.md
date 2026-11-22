@@ -7,12 +7,12 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã định nghĩa hàm số, miền xác định, miền đích và các cách biểu diễn. Mục này giới thiệu ba tính chất quan trọng: đơn ánh, toàn ánh và…"
+excerpt: "Sau khi tìm hiểu định nghĩa và cách biểu diễn hàm số ở mục trước, bài học này giới thiệu ba tính chất cốt lõi: đơn ánh, toàn ánh và song ánh."
 ---
 
-Ở mục trước chúng ta đã định nghĩa hàm số, miền xác định, miền đích và các cách biểu diễn. Mục này giới thiệu ba tính chất quan trọng: **đơn ánh**, **toàn ánh** và **song ánh**.
+Ở mục trước, chúng ta đã định nghĩa hàm số, phân biệt miền xác định với miền đích và xem các cách biểu diễn hàm. Mục này giới thiệu ba tính chất quan trọng của ánh xạ: **đơn ánh**, **toàn ánh** và **song ánh**.
 
-Biết một ánh xạ là hàm vẫn chưa đủ để đánh giá sức mạnh của nó. Hàm đơn ánh bảo toàn sự phân biệt giữa các đầu vào; hàm toàn ánh phủ hết codomain; hàm song ánh thỏa cả hai và cho phép ghép cặp một-một giữa hai tập. Các tính chất này xuất hiện trong thiết kế mã định danh, băm, nén dữ liệu và chứng minh về lực lượng tập hợp.
+Chỉ biết một ánh xạ là hàm vẫn chưa đủ để đánh giá các đặc tính cấu trúc của nó. Hàm đơn ánh bảo toàn sự phân biệt giữa các đầu vào; hàm toàn ánh phủ kín toàn bộ codomain; còn hàm song ánh thỏa mãn cả hai điều kiện, cho phép ghép cặp một–một giữa hai tập hợp. Những tính chất này xuất hiện thường xuyên trong thiết kế mã định danh, hàm băm, nén dữ liệu và các chứng minh về lực lượng tập hợp.
 
 ## Mục tiêu học tập
 
@@ -20,17 +20,17 @@ Biết một ánh xạ là hàm vẫn chưa đủ để đánh giá sức mạnh
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Kiểm tra** tính đơn ánh và toàn ánh.
-- **Nhận biết** hàm song phương (bijection).
-- **Áp dụng** trong mã hóa, hash và đảo ngược hàm.
+- **Kiểm tra** tính đơn ánh và tính toàn ánh của một hàm số.
+- **Nhận biết** hàm song ánh (bijection).
+- **Áp dụng** các tính chất này trong mã hóa, hàm băm và bài toán đảo ngược hàm.
 
-**Từ khóa**: đơn ánh (injective), toàn ánh (surjective), song phương (bijective).
+**Từ khóa**: đơn ánh (injective), toàn ánh (surjective), song ánh (bijective).
 </div>
 
 ## Đơn ánh
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Hàm $$f:A\to B$$ là **đơn ánh** (injective, one-to-one) nếu hai đầu vào khác nhau luôn cho hai đầu ra khác nhau:
+**Định nghĩa**: Hàm $$f:A\to B$$ được gọi là **đơn ánh** (injective, one-to-one) nếu hai đầu vào khác nhau luôn cho hai đầu ra khác nhau:
 
 <div class="textbook-equation" markdown="1">
 $$x_1\ne x_2 \Rightarrow f(x_1)\ne f(x_2).$$
@@ -38,16 +38,16 @@ $$x_1\ne x_2 \Rightarrow f(x_1)\ne f(x_2).$$
 </div>
 </div>
 
-**Ký hiệu**: $$f:A\to B$$ cho biết domain là $$A$$ và codomain là $$B$$; $$x_1,x_2$$ thường ký hiệu hai đầu vào bất kỳ, còn $$y$$ ký hiệu một đầu ra trong codomain.
+**Ký hiệu**: $$f:A\to B$$ cho biết miền xác định là $$A$$ và miền đích là $$B$$; $$x_1,x_2$$ thường ký hiệu hai đầu vào bất kỳ, còn $$y$$ ký hiệu một đầu ra thuộc miền đích.
 
-Dạng tương đương thường dùng để chứng minh:
+Dạng tương đương (phản đảo) thường dùng khi chứng minh:
 
 <div class="textbook-equation" markdown="1">
 $$f(x_1)=f(x_2)\Rightarrow x_1=x_2.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 <div class="textbook-example" markdown="1">
-**Ví dụ**: $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=2x+3$$ là đơn ánh.
+**Ví dụ**: Hàm $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=2x+3$$ là đơn ánh.
 
 **Chứng minh**: Giả sử $$f(x_1)=f(x_2)$$. Khi đó:
 
@@ -55,19 +55,19 @@ $$f(x_1)=f(x_2)\Rightarrow x_1=x_2.$$
 $$2x_1+3=2x_2+3\Rightarrow 2x_1=2x_2\Rightarrow x_1=x_2.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Vậy $$f$$ đơn ánh.
+Vậy $$f$$ là hàm đơn ánh.
 
-**Phản ví dụ**: $$g:\mathbb{R}\to\mathbb{R}$$, $$g(x)=x^2$$ không đơn ánh vì $$g(2)=g(-2)=4$$ nhưng $$2\ne-2$$.
+**Phản ví dụ**: Hàm $$g:\mathbb{R}\to\mathbb{R}$$, $$g(x)=x^2$$ không đơn ánh vì $$g(2)=g(-2)=4$$ nhưng $$2\ne-2$$.
 
 ![Hàm đơn ánh (injective)](/discrete-mathematics-for-computer-science-iuh/img/course/Injection.svg)
 
-<p class="textbook-figure-caption" data-figure="6.7">Hàm đơn ánh — hai đầu vào khác nhau luôn cho hai đầu ra khác nhau; không có hai mũi tên trùng đích.</p>
+<p class="textbook-figure-caption" data-figure="6.7">Hàm đơn ánh — hai đầu vào khác nhau luôn cho hai đầu ra khác nhau; không có hai mũi tên nào cùng trỏ về một đích.</p>
 </div>
 
 ## Toàn ánh
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Hàm $$f:A\to B$$ là **toàn ánh** (surjective, onto) nếu mọi phần tử của codomain đều được đạt tới:
+**Định nghĩa**: Hàm $$f:A\to B$$ được gọi là **toàn ánh** (surjective, onto) nếu mọi phần tử của codomain đều là ảnh của ít nhất một phần tử trong domain:
 
 <div class="textbook-equation" markdown="1">
 $$\forall y\in B,\exists x\in A\text{ sao cho }f(x)=y.$$
@@ -76,46 +76,46 @@ $$\forall y\in B,\exists x\in A\text{ sao cho }f(x)=y.$$
 </div>
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^3$$ là toàn ánh.
+**Ví dụ**: Hàm $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^3$$ là toàn ánh.
 
-**Chứng minh**: Lấy $$y\in\mathbb{R}$$ tùy ý. Chọn $$x=\sqrt[3]{y}$$. Khi đó $$f(x)=x^3=y$$. Vậy mọi $$y$$ đều có tiền ảnh.
+**Chứng minh**: Lấy $$y\in\mathbb{R}$$ tùy ý và chọn $$x=\sqrt[3]{y}$$. Khi đó $$f(x)=x^3=y$$. Vậy mọi $$y \in \mathbb{R}$$ đều có tiền ảnh.
 
-**Phản ví dụ**: $$g:\mathbb{R}\to\mathbb{R}$$, $$g(x)=x^2$$ không toàn ánh vì không có $$x\in\mathbb{R}$$ nào thỏa $$x^2=-1$$.
+**Phản ví dụ**: Hàm $$g:\mathbb{R}\to\mathbb{R}$$, $$g(x)=x^2$$ không toàn ánh vì không tồn tại $$x\in\mathbb{R}$$ sao cho $$x^2=-1$$.
 
 ![Hàm toàn ánh (surjective)](/discrete-mathematics-for-computer-science-iuh/img/course/Surjection.svg)
 
-<p class="textbook-figure-caption" data-figure="6.8">Hàm toàn ánh — mọi phần tử codomain đều được chạm tới; không có phần tử đích bị bỏ trống.</p>
+<p class="textbook-figure-caption" data-figure="6.8">Hàm toàn ánh — mọi phần tử trong codomain đều được chạm tới; không có phần tử đích nào bị bỏ trống.</p>
 </div>
 
 ## Song ánh
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Hàm $$f:A\to B$$ là **song ánh** (bijective) nếu vừa đơn ánh vừa toàn ánh.
+**Định nghĩa**: Hàm $$f:A\to B$$ được gọi là **song ánh** (bijective) nếu nó vừa đơn ánh vừa toàn ánh.
 </div>
 
-Song ánh thiết lập sự ghép cặp một-một giữa $$A$$ và $$B$$. Khi đó mỗi $$y\in B$$ có đúng một tiền ảnh trong $$A$$.
+Song ánh thiết lập phép ghép cặp một–một giữa $$A$$ và $$B$$, nghĩa là mỗi phần tử $$y\in B$$ có đúng một tiền ảnh trong $$A$$.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x+5$$ là song ánh.
+**Ví dụ**: Hàm $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x+5$$ là song ánh.
 
 **Chứng minh**:
 
 - Đơn ánh: $$x_1+5=x_2+5\Rightarrow x_1=x_2$$.
-- Toàn ánh: với $$y\in\mathbb{R}$$, chọn $$x=y-5$$ thì $$f(x)=y$$.
+- Toàn ánh: với mọi $$y\in\mathbb{R}$$, chọn $$x=y-5$$ ta có $$f(x)=y$$.
 
-Vậy $$f$$ song ánh.
+Vậy $$f$$ là hàm song ánh.
 
 ![Hàm song ánh (bijective)](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
-<p class="textbook-figure-caption" data-figure="6.9">Hàm song ánh vừa đơn ánh vừa toàn ánh — thiết lập ghép cặp một-một giữa hai tập, có thể đảo ngược.</p>
+<p class="textbook-figure-caption" data-figure="6.9">Hàm song ánh vừa đơn ánh vừa toàn ánh — thiết lập ghép cặp một-một giữa hai tập và có thể đảo ngược.</p>
 </div>
 
 ## Vai trò của domain và codomain
 
-Cùng một công thức có thể có tính chất khác nhau nếu domain/codomain khác nhau.
+Cùng một công thức đại số có thể mang những tính chất khác nhau khi ta thay đổi domain hoặc codomain.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: $$f(x)=x^2$$.
+**Ví dụ**: Xét công thức $$f(x)=x^2$$.
 
 - $$f:\mathbb{R}\to\mathbb{R}$$: không đơn ánh, không toàn ánh.
 - $$f:\mathbb{R}\to[0,\infty)$$: không đơn ánh, nhưng toàn ánh.
@@ -123,27 +123,27 @@ Cùng một công thức có thể có tính chất khác nhau nếu domain/codo
 
 ![Cùng công thức, khác tính chất theo domain/codomain](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
-<p class="textbook-figure-caption" data-figure="6.10">Domain và codomain quyết định tính chất — cùng $$f(x)=x^2$$ nhưng khác domain/codomain cho kết quả đơn/toàn/song ánh khác nhau.</p>
+<p class="textbook-figure-caption" data-figure="6.10">Domain và codomain quyết định tính chất của hàm — cùng công thức $$f(x)=x^2$$ nhưng thay đổi domain/codomain sẽ cho kết quả đơn ánh, toàn ánh hay song ánh khác nhau.</p>
 </div>
 
 ## Ứng dụng trong Khoa học Máy tính
 
-- **Mã hóa khả nghịch** cần song ánh giữa không gian bản rõ và bản mã.
-- **Hash table** thường không đơn ánh vì có va chạm.
-- **Serialization** tốt nên gần song ánh: serialize rồi deserialize phải thu lại dữ liệu ban đầu.
-- **Database primary key** tạo đơn ánh từ bản ghi sang khóa.
-- **Load balancing** thường là toàn ánh nếu mọi server đều nhận ít nhất một job.
+- **Mã hóa khả nghịch**: cần song ánh giữa không gian bản rõ và không gian bản mã để có thể giải mã chính xác.
+- **Bảng băm (Hash table)**: hàm băm thường không đơn ánh vì miền khóa lớn hơn số ngăn chứa, dẫn đến va chạm (collision).
+- **Tuần tự hóa (Serialization)**: một cơ chế tốt cần hoạt động như ánh xạ khả nghịch — serialize rồi deserialize phải khôi phục đúng dữ liệu ban đầu.
+- **Khóa chính cơ sở dữ liệu (Database primary key)**: tạo ánh xạ đơn ánh từ bản ghi sang khóa định danh.
+- **Cân bằng tải (Load balancing)**: ánh xạ tác vụ sang máy chủ là toàn ánh khi mọi máy chủ đều nhận được ít nhất một tác vụ.
 
 ![Mã hóa khả nghịch cần song ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
-<p class="textbook-figure-caption" data-figure="6.11">Mã hóa/giải mã và serialization cần song ánh — encode rồi decode phải thu lại dữ liệu ban đầu.</p>
+<p class="textbook-figure-caption" data-figure="6.11">Mã hóa/giải mã và serialization cần tính song ánh — encode rồi decode phải thu lại đúng dữ liệu ban đầu.</p>
 ![Hash table — gần đơn ánh để giảm va chạm](/discrete-mathematics-for-computer-science-iuh/img/course/Injection.svg)
 
-<p class="textbook-figure-caption" data-figure="6.12">Hash function tốt nên gần đơn ánh — hai input khác nhau cho cùng output gây collision trong bảng băm.</p>
+<p class="textbook-figure-caption" data-figure="6.12">Hàm băm tốt cần hạn chế trùng lặp đầu ra — hai đầu vào khác nhau cho cùng đầu ra sẽ gây va chạm (collision) trong bảng băm.</p>
 
 ## Công cụ tương tác
 
-Nối mũi tên từ miền nguồn sang miền đích, rồi kiểm tra đơn ánh, toàn ánh và song ánh.
+Nối mũi tên từ miền xác định sang miền đích, sau đó kiểm tra xem ánh xạ có đơn ánh, toàn ánh hay song ánh không.
 <div class="interactive-demo" markdown="1">
 <div data-demo="function-arrow-checker"></div>
 </div>
@@ -155,7 +155,7 @@ Nối mũi tên từ miền nguồn sang miền đích, rồi kiểm tra đơn �
 
 ### Minh hoạ tương tác
 
-Minh hoạ hàm số: đơn ánh/toàn ánh kèm phần tử vi phạm cụ thể. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ tính đơn ánh và toàn ánh của hàm số, kèm chỉ báo phần tử vi phạm cụ thể.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="function-explainer" data-preset="surj" data-focus="props"></div>
@@ -166,14 +166,13 @@ Minh hoạ hàm số: đơn ánh/toàn ánh kèm phần tử vi phạm cụ th�
 
 ### Bài tập 1: Kiểm tra tính chất
 
-Xét $$f: \R \to \R$$, $$f(x) = x^2$$.  
-Hỏi $$f$$ có phải đơn ánh? Toàn ánh? Giải thích.
+Xét hàm $$f: \R \to \R$$, $$f(x) = x^2$$. Hỏi $$f$$ có phải là đơn ánh hay toàn ánh không? Giải thích.
 
 <details>
 <summary>Đáp án</summary>
 
-- Không đơn ánh ($$f(2) = f(-2)$$)
-- Không toàn ánh (không có $$x$$ nào cho $$f(x) = -1$$)
+- Không đơn ánh vì $$f(2) = f(-2) = 4$$ nhưng $$2 \ne -2$$.
+- Không toàn ánh vì không tồn tại $$x \in \R$$ sao cho $$f(x) = -1$$.
 
 </details>
 
@@ -184,18 +183,18 @@ Tìm một hàm song ánh từ $$\{1,2,3\}$$ sang $$\{a,b,c\}$$.
 <details>
 <summary>Đáp án</summary>
 
-$$f(1)=a, f(2)=b, f(3)=c$$ (bất kỳ hoán vị nào cũng được).
+$$f(1)=a, f(2)=b, f(3)=c$$ (hoặc bất kỳ hoán vị nào khác của $$\{a,b,c\}$$).
 
 </details>
 
 ### Bài tập 3: Ứng dụng
 
-Giải thích tại sao hàm băm tốt thường được thiết kế gần như đơn ánh.
+Giải thích tại sao hàm băm tốt thường được thiết kế để giảm thiểu việc hai đầu vào khác nhau cho cùng một đầu ra (gần như đơn ánh trên tập dữ liệu thực tế).
 
 <details>
 <summary>Đáp án</summary>
 
-Để giảm va chạm (collision). Nếu hai input khác nhau cho cùng output thì dễ xảy ra xung đột trong bảng băm.
+Để giảm thiểu va chạm (collision). Nếu nhiều đầu vào khác nhau cùng ánh xạ vào một giá trị băm, bảng băm sẽ phát sinh xung đột và làm giảm hiệu năng tra cứu.
 
 </details>
 
@@ -205,16 +204,16 @@ Giải thích tại sao hàm băm tốt thường được thiết kế gần nh
 
 ## Tóm tắt
 
-- **Đơn ánh**: $$x_1 \ne x_2 \Rightarrow f(x_1) \ne f(x_2)$$; không gộp hai đầu vào khác nhau
-- **Toàn ánh**: mọi $$y \in B$$ đều có tiền ảnh
-- **Song ánh**: vừa đơn ánh vừa toàn ánh; thiết lập ghép cặp một-một
-- **Domain và codomain** quyết định tính chất — cùng công thức có thể khác tính chất
-- **Ứng dụng CS**: mã hóa khả nghịch, primary key, hash table, serialization
+- **Đơn ánh**: $$x_1 \ne x_2 \Rightarrow f(x_1) \ne f(x_2)$$; không gộp hai đầu vào khác nhau về cùng một đầu ra.
+- **Toàn ánh**: mọi $$y \in B$$ đều có ít nhất một tiền ảnh trong $$A$$.
+- **Song ánh**: vừa đơn ánh vừa toàn ánh, thiết lập ghép cặp một–một giữa hai tập hợp.
+- **Domain và codomain** quyết định tính chất của hàm — cùng một công thức nhưng khác miền có thể cho tính chất khác nhau.
+- **Ứng dụng trong Khoa học Máy tính**: mã hóa khả nghịch, khóa chính, bảng băm, serialization.
 
-Trong bài tiếp theo, chúng ta sẽ học hàm hợp và hàm nghịch đảo.
+Trong bài tiếp theo, chúng ta sẽ tìm hiểu hàm hợp và hàm nghịch đảo.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=bZred_Ksz2k">INJECTIVE, SURJECTIVE, and BIJECTIVE FUNCTIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước đơn ánh, toàn ánh và song ánh.
-- <a href="https://www.youtube.com/watch?v=VaDja04e59M">[Discrete Mathematics] Surjective Functions Examples</a> — TrevTutor, tiếng Anh. Luyện nhận toàn ánh trên ví dụ.
-- <a href="https://www.youtube.com/watch?v=Kn-LrdgHVhQ">[Discrete Mathematics] Functions Examples</a> — TrevTutor, tiếng Anh. Thêm ví dụ phân loại hàm.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=bZred_Ksz2k">INJECTIVE, SURJECTIVE, and BIJECTIVE FUNCTIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Giới thiệu trực quan về đơn ánh, toàn ánh và song ánh.
+- <a href="https://www.youtube.com/watch?v=VaDja04e59M">[Discrete Mathematics] Surjective Functions Examples</a> — TrevTutor, tiếng Anh. Luyện tập nhận diện hàm toàn ánh qua các ví dụ cụ thể.
+- <a href="https://www.youtube.com/watch?v=Kn-LrdgHVhQ">[Discrete Mathematics] Functions Examples</a> — TrevTutor, tiếng Anh. Bổ sung thêm ví dụ phân loại tính chất hàm số.

@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. A short 2022–2026 pointer pack: Kissat, bin
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite the binary-data, testing, or login case studies.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại các case study nhị phân, kiểm thử hay login.
+Ghi chú ứng dụng song ngữ (tiếng Anh trước, tiếng Việt sau). Nội dung này chỉ bổ sung tài liệu tham chiếu gần đây, **không** thay thế các bài học về dữ liệu nhị phân, kiểm thử hay đăng nhập ở trên.
 
 </div>
 
@@ -38,20 +38,20 @@ Read this as a **landing index**, not a new theory chapter. Each row points at a
 
 ## Tiếng Việt
 
-Chương 9 đã nối toán rời rạc với production. Ghi chú này chỉ thêm **ba hiện vật có năm** 2022–2024.
+Chương 9 đã kết nối toán rời rạc với các hệ thống vận hành thực tế (endianness, connection pool, kiểm thử pairwise, va chạm băm). Ghi chú ngắn này bổ sung **ba công trình tiêu biểu** giai đoạn 2022–2024 để người học có thể tham khảo mở rộng:
 
-| Năm | Hiện vật | Đối tượng rời rạc | Vì sao nằm đây |
+| Năm | Công trình / Hệ thống | Đối tượng toán rời rạc | Lý do liên hệ với Chương 9 |
 |:---:|:---|:---|:---|
-| 2022 | Binary fuse filter (Graf & Lemire) | Tập xấp xỉ | Cùng ngân sách va chạm như birthday/hash |
-| 2023 | GraphCast (Lam et al., *Science*) | Đồ thị lưới + GNN | Đồ thị và message passing quy mô thời tiết |
-| 2024 | Kissat tại SAT Competition | CNF / CDCL | Logic và combinatorial explosion, có huy chương |
+| 2022 | Binary fuse filter (Graf & Lemire, JEA) | Tập hợp xấp xỉ | Cùng bài toán ngân sách va chạm như nghịch lý sinh nhật và bảng băm |
+| 2023 | GraphCast (Lam et al., *Science*) | Đồ thị lưới + GNN | Đồ thị và truyền thông điệp (message passing) ở quy mô dự báo thời tiết toàn cầu |
+| 2024 | Kissat tại SAT Competition | CNF / CDCL | Logic mệnh đề và bài toán bùng nổ tổ hợp trong các bộ giải SAT hiện đại |
 
-Đọc như **mục lục đáp**, không phải chương lý thuyết mới. Mỗi dòng trỏ về chương bạn đã có (4–8, 12–13, 1).
+Hãy xem bảng trên như một **chỉ mục tham khảo mở rộng**, không phải chương lý thuyết mới — mỗi dòng đều nối trực tiếp về các chương đã học trong giáo trình (Chương 1, 4–8, 12–13).
 
-**Câu hỏi.** (1) Case study nào ở Chương 9 dùng cùng mô hình đếm $$2^n$$ với SAT? (2) Vì sao lưới GraphCast là *đồ thị* theo nghĩa Chương 12 chứ không phải bộ giải PDE liên tục?
+**Câu hỏi gợi mở.** (1) Tình huống nào trong Chương 9 chia sẻ cùng mô hình đếm tăng trưởng mũ $$2^n$$ với bài toán SAT? (2) Vì sao lưới dự báo của GraphCast được mô hình hóa như một *đồ thị* theo nghĩa của Chương 12 thay vì một bộ giải phương trình đạo hàm riêng (PDE) liên tục?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=0Ud4u7c0_EE">AI Weather Forecasting: What GraphCast Actually Proved (and Didn&#x27;t)</a> — Synaptorix, tiếng Anh. Xem trước GraphCast đã chứng minh gì khi dự báo trên đồ thị lưới.
-- <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Bộ lọc tập xấp xỉ, cùng họ với binary fuse filter bài trỏ tới.
-- <a href="https://www.youtube.com/watch?v=YUqR-8rZ_gQ">Lecture 10-3 CDCL (Lecture 5 in CS433)</a> — Automated Reasoning, tiếng Anh. CDCL trên CNF, cùng lớp solver với Kissat ở SAT Competition.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=0Ud4u7c0_EE">AI Weather Forecasting: What GraphCast Actually Proved (and Didn&#x27;t)</a> — Synaptorix, tiếng Anh. Phân tích những gì GraphCast chứng minh được khi dự báo thời tiết trên đồ thị lưới.
+- <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Trình bày bộ lọc tập xấp xỉ, cùng họ cấu trúc dữ liệu với binary fuse filter.
+- <a href="https://www.youtube.com/watch?v=YUqR-8rZ_gQ">Lecture 10-3 CDCL (Lecture 5 in CS433)</a> — Automated Reasoning, tiếng Anh. Giới thiệu thuật toán CDCL trên dạng chuẩn hội (CNF), cùng họ bộ giải với Kissat tại SAT Competition.

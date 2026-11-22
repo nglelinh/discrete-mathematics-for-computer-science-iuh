@@ -7,40 +7,40 @@ date: 2021-01-01
 order: 3
 required: true
 lang: vi
-excerpt: "Ở Chương 4 chúng ta đã làm việc với tập hợp, hợp, giao và hiệu. Mục này xây dựng nguyên lý bao hàm–loại trừ (inclusion–exclusion) — công thức chính xác đếm…"
+excerpt: "Xây dựng nguyên lý bao hàm–loại trừ (inclusion–exclusion) để đếm chính xác hợp của nhiều tập hợp giao nhau, kèm chứng minh tổng quát và dạng bù."
 ---
 
-Ở Chương 4 chúng ta đã làm việc với tập hợp, hợp, giao và hiệu. Mục này xây dựng **nguyên lý bao hàm–loại trừ** (inclusion–exclusion) — công thức chính xác đếm $$\vert A_1 \cup \cdots \cup A_n\vert $$ khi các tập con có giao nhau. Cộng thẳng $$\vert A_i\vert $$ sẽ đếm trùng phần giao; nguyên lý bù trừ xen kẽ theo kích thước giao sửa sai số đó. Công cụ này xuất hiện trong xác suất, truy vấn dữ liệu (`UNION`/`INTERSECT` trong SQL) và nhiều bài toán tổ hợp có ràng buộc chồng lấn.
+Ở Chương 4, chúng ta đã làm việc với tập hợp cùng các phép toán hợp, giao và hiệu. Mục này xây dựng **nguyên lý bao hàm–loại trừ** (inclusion–exclusion) — công thức đếm chính xác $$\vert A_1 \cup \cdots \cup A_n\vert $$ khi các tập hợp có phần giao nhau. Nếu chỉ cộng trực tiếp $$\vert A_i\vert $$, các phần tử nằm trong phần giao sẽ bị đếm trùng; nguyên lý bù trừ xen kẽ dấu theo kích thước phần giao để khử sai số đó. Công cụ này được dùng rộng rãi trong lý thuyết xác suất, truy vấn cơ sở dữ liệu (`UNION`/`INTERSECT` trong SQL) và nhiều bài toán tổ hợp có ràng buộc chồng lấn.
 
 ![Bao hàm–loại trừ ba tập](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)
 
-<p class="textbook-figure-caption" data-figure="11.11">Công thức bao hàm–loại trừ cho ba tập — cộng từng tập, trừ giao đôi, cộng giao ba.</p>
+<p class="textbook-figure-caption" data-figure="11.11">Công thức bao hàm–loại trừ cho ba tập: cộng từng tập, trừ các giao đôi, rồi cộng lại giao ba.</p>
 ![Giao hai tập A ∩ B](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_intersect_B.svg)
 
-<p class="textbook-figure-caption" data-figure="11.12">Phần giao bị đếm hai lần khi cộng $$\vert A\vert +\vert B\vert $$ — phải trừ $$\vert A\cap B\vert $$.</p>
+<p class="textbook-figure-caption" data-figure="11.12">Phần giao bị đếm hai lần khi cộng $$\vert A\vert +\vert B\vert $$, do đó cần trừ đi $$\vert A\cap B\vert $$.</p>
 ![Hợp hai tập A ∪ B](/discrete-mathematics-for-computer-science-iuh/img/course/Union_of_sets_A_and_B.svg)
 
-<p class="textbook-figure-caption" data-figure="11.13">Nguyên lý bao hàm–loại trừ cho $$\vert A\cup B\vert $$ — nền tảng đếm có điều kiện chồng lấn.</p>
+<p class="textbook-figure-caption" data-figure="11.13">Nguyên lý bao hàm–loại trừ cho $$\vert A\cup B\vert $$ — nền tảng của phép đếm có điều kiện chồng lấn.</p>
 ![De Morgan và bao hàm](/discrete-mathematics-for-computer-science-iuh/img/course/Intersections_of_two_sets_and_their_complements.svg)
 
-<p class="textbook-figure-caption" data-figure="11.14">Dạng bù: đếm phần tử không vi phạm điều kiện bằng tổng không gian trừ hợp vi phạm.</p>
+<p class="textbook-figure-caption" data-figure="11.14">Dạng bù: đếm các phần tử không vi phạm điều kiện bằng cách lấy kích thước không gian mẫu trừ đi hợp các tập vi phạm.</p>
 ![Biểu đồ Venn ba tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
-<p class="textbook-figure-caption" data-figure="11.15">Mô hình hóa trực quan các tập $$A_i$$ và giao của chúng trước khi áp công thức.</p>
+<p class="textbook-figure-caption" data-figure="11.15">Mô hình hóa trực quan các tập $$A_i$$ và phần giao giữa chúng trước khi áp dụng công thức.</p>
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Áp dụng** công thức bao hàm–loại trừ cho 2, 3 và $$n$$ tập.
-- **Chứng minh** công thức tổng quát bằng đếm số lần mỗi phần tử xuất hiện.
-- **Dùng dạng bù** đếm phần tử không vi phạm ràng buộc.
-- **Liên hệ** với hàm sinh: hệ số trong $$G(x)$$ đôi khi lấy từ IE trên các lớp tương đương (mục 11.4–11.5).
+- **Áp dụng** công thức bao hàm–loại trừ cho 2, 3 và $$n$$ tập hợp.
+- **Chứng minh** công thức tổng quát bằng cách đếm số lần mỗi phần tử được tính.
+- **Sử dụng dạng bù** để đếm các phần tử không vi phạm ràng buộc nào.
+- **Liên hệ** với hàm sinh: nhiều hệ số trong $$G(x)$$ có thể tính qua bao hàm–loại trừ trên các lớp tương đương (mục 11.4–11.5).
 
 **Từ khóa**: bao hàm–loại trừ (inclusion–exclusion), dạng bù, giao tập, đếm có ràng buộc, derangement (xem 11.4).
 
-**Khác Ch.7**: Mục 7.3 giới thiệu IE cơ bản trong đếm; mục này (Ch.11) nhấn mạnh **chứng minh tổng quát**, **dạng bù** và **cầu nối sang hàm sinh** cho bài toán nâng cao.
+**Khác với Chương 7**: Mục 7.3 giới thiệu bao hàm–loại trừ cơ bản trong phép đếm; mục này (Chương 11) tập trung vào **chứng minh tổng quát**, **dạng bù** và **cầu nối sang hàm sinh** cho các bài toán nâng cao.
 </div>
 
 ### Video ngắn: Nguyên lý bù trừ
@@ -49,16 +49,16 @@ excerpt: "Ở Chương 4 chúng ta đã làm việc với tập hợp, hợp, gi
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/inclusion-exclusion.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 16 giây: ví dụ lớp 50 sinh viên với hai tập, đếm xem mỗi vùng của biểu đồ Venn ba tập được cộng/trừ bao nhiêu lần qua từng bước, ví dụ số từ 1 đến 100 chia hết cho 2, 3 hoặc 5 (ra 74, kiểm tra trên lưới 100 ô), công thức tổng quát cho $$n$$ tập, và ứng dụng đếm số cách bỏ thư mà không lá nào đúng phong bì.
+Video dài khoảng 2 phút 16 giây, trình bày ví dụ lớp 50 sinh viên với hai tập hợp, theo dõi số lần mỗi vùng trong biểu đồ Venn ba tập được cộng/trừ qua từng bước, tính số nguyên từ 1 đến 100 chia hết cho 2, 3 hoặc 5 (ra kết quả 74, kiểm chứng trên lưới 100 ô), phát biểu công thức tổng quát cho $$n$$ tập và giới thiệu bài toán bỏ thư sao cho không lá nào đúng phong bì.
 
 ## Công thức cho hai và ba tập
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa** (hai tập): Với $$A, B$$ hữu hạn,
+**Định nghĩa** (hai tập): Với hai tập hữu hạn $$A, B$$,
 $$\vert A \cup B\vert  = \vert A\vert  + \vert B\vert  - \vert A \cap B\vert .$$
 </div>
 
-Với hai tập hữu hạn $$A,B$$,
+Với hai tập hữu hạn $$A,B$$:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -66,7 +66,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Với ba tập $$A,B,C$$,
+Với ba tập hữu hạn $$A,B,C$$:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -74,7 +74,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Giải thích**: Một phần tử nằm trong đúng một tập được đếm đúng một lần; nằm trong hai tập thì bị cộng hai lần rồi trừ một lần; nằm trong ba tập thì bị cộng ba lần, trừ ba lần, rồi cộng lại một lần.
+**Giải thích**: Một phần tử thuộc đúng một tập được đếm đúng một lần; thuộc hai tập sẽ bị cộng hai lần rồi trừ một lần; thuộc cả ba tập sẽ bị cộng ba lần, trừ ba lần, rồi cộng lại một lần.
 
 ## Công thức tổng quát
 
@@ -91,7 +91,7 @@ $$
 </div>
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh bằng đếm số lần**: Xét một phần tử thuộc đúng $$r$$ tập. Trong tổng trên, nó được tính
+**Chứng minh bằng đếm số lần**: Xét một phần tử bất kỳ thuộc đúng $$r$$ tập trong số $$A_1, \ldots, A_n$$ ($$r \ge 1$$). Trong vế phải của công thức trên, số lần phần tử này được đếm là
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -99,19 +99,19 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Do đó mỗi phần tử trong hợp được đếm đúng một lần.
+Do đó, mỗi phần tử thuộc hợp đều được đếm đúng một lần.
 </div>
 
 <div class="textbook-theorem" markdown="1">
-**Quy tắc nhớ**: Dấu xen kẽ theo kích thước giao: tập đơn cộng, giao đôi trừ, giao ba cộng, rồi tiếp tục như vậy.
+**Quy tắc ghi nhớ**: Dấu trong công thức xen kẽ theo số tập tham gia phép giao: cộng từng tập đơn, trừ giao hai tập, cộng giao ba tập và tiếp tục tương tự.
 </div>
 
 ## Dạng bù
 
-Thay vì đếm phần hợp trực tiếp, ta thường đếm số phần tử **không vi phạm điều kiện nào** bằng cách lấy tổng không gian mẫu trừ đi hợp của các tập vi phạm.
+Thay vì đếm trực tiếp hợp của các tập, ta thường đếm số phần tử **không vi phạm điều kiện nào** bằng cách lấy tổng số phần tử của không gian mẫu trừ đi kích thước hợp của các tập vi phạm.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Số chuỗi nhị phân độ dài 8 có ít nhất một bit 0 và ít nhất một bit 1 là
+**Ví dụ**: Số chuỗi nhị phân độ dài 8 chứa ít nhất một bit 0 và ít nhất một bit 1 (tức loại trừ hai chuỗi toàn 0 và toàn 1) là
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -122,13 +122,13 @@ $$
 </div>
 
 
-## Ví dụ với chia hết
+## Ví dụ với điều kiện chia hết
 
-Ta áp dụng công thức bao hàm–loại trừ cho hai tập giao nhau: mỗi tập mô tả một điều kiện chia hết, giao tương ứng phần tử thỏa cả hai.
+Ta áp dụng công thức bao hàm–loại trừ cho hai tập giao nhau: mỗi tập ứng với một điều kiện chia hết, còn phần giao ứng với các số thỏa mãn đồng thời cả hai điều kiện.
 
-Đếm các số từ 1 đến 100 chia hết cho 2 hoặc 5.
+Đếm các số nguyên từ 1 đến 100 chia hết cho 2 hoặc 5.
 
-Gọi $$A$$ là tập số chia hết cho 2, $$B$$ là tập số chia hết cho 5. Khi đó
+Gọi $$A$$ là tập các số chia hết cho 2 và $$B$$ là tập các số chia hết cho 5 trong đoạn từ 1 đến 100. Khi đó:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -136,7 +136,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Vậy
+Suy ra:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -145,14 +145,14 @@ $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 <div class="interactive-tool" markdown="1">
-**Demo tương tác đề xuất**: Công cụ cho phép bật/tắt ba tập trong sơ đồ Venn và hiển thị số lần mỗi vùng được cộng hoặc trừ trong công thức.
+**Demo tương tác đề xuất**: Công cụ cho phép bật/tắt ba tập hợp trong biểu đồ Venn và hiển thị số lần mỗi vùng được cộng hoặc trừ trong công thức.
 <div data-demo="venn-ie-three-sets"></div>
 </div>
 <script src="{{ '/public/js/venn-ie-three-sets.js' | relative_url }}"></script>
 
-### Minh hoạ tương tác
+### Minh họa tương tác
 
-Minh hoạ Venn ở chế độ bao hàm–loại trừ để thấy vì sao các phần giao bị đếm dư rồi được trừ đi. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh họa biểu đồ Venn ở chế độ bao hàm–loại trừ giúp quan sát trực tiếp vì sao các vùng giao bị đếm dư rồi được trừ lại.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="venn-explainer" data-sets="3" data-focus="ie"></div>
@@ -163,45 +163,45 @@ Minh hoạ Venn ở chế độ bao hàm–loại trừ để thấy vì sao cá
 
 ### Bài tập 1
 
-Trong lớp 30 học sinh, 18 học Toán, 15 học Lý, 8 học cả hai. Hỏi có bao nhiêu học sinh học ít nhất một trong hai môn?
+Trong một lớp có 30 học sinh, 18 em học Toán, 15 em học Lý và 8 em học cả hai môn. Hỏi có bao nhiêu học sinh học ít nhất một trong hai môn?
 
 <details>
 <summary>Đáp án</summary>
 
-$$\vert A \cup B\vert  = 18 + 15 - 8 = 25$$.
+$$\vert A \cup B\vert  = 18 + 15 - 8 = 25$$ học sinh.
 
 </details>
 
 ### Bài tập 2
 
-Đếm số nguyên từ 1 đến 1000 **không** chia hết cho 2, 3 và 5.
+Đếm số nguyên từ 1 đến 1000 **không** chia hết cho bất kỳ số nào trong 2, 3 và 5.
 
 <details>
 <summary>Đáp án</summary>
 
-Dạng bù: $$1000 - \vert A_2 \cup A_3 \cup A_5\vert $$ với $$\vert A_2\vert =500$$, $$\vert A_3\vert =333$$, $$\vert A_5\vert =200$$, giao đôi 166, 100, 66, giao ba 33. IE: $$500+333+200-166-100-66+33=734$$ vi phạm. Đáp số: $$1000 - 734 = 266$$.
+Áp dụng dạng bù: $$1000 - \vert A_2 \cup A_3 \cup A_5\vert $$, trong đó $$\vert A_2\vert =500$$, $$\vert A_3\vert =333$$, $$\vert A_5\vert =200$$; các giao đôi lần lượt là $$\vert A_2 \cap A_3\vert = 166$$, $$\vert A_2 \cap A_5\vert = 100$$, $$\vert A_3 \cap A_5\vert = 66$$; giao ba là $$\vert A_2 \cap A_3 \cap A_5\vert = 33$$. Theo công thức bao hàm–loại trừ: $$500+333+200-166-100-66+33=734$$ số chia hết cho ít nhất một trong ba số. Đáp số: $$1000 - 734 = 266$$.
 
 </details>
 
 ### Bài tập 3
 
-Giải thích vì sao trong chứng minh IE, phần tử thuộc đúng $$r$$ tập được đếm đúng một lần (công thức $$\binom{r}{1} - \binom{r}{2} + \cdots = 1$$).
+Giải thích vì sao trong chứng minh nguyên lý bao hàm–loại trừ, một phần tử thuộc đúng $$r$$ tập được đếm đúng một lần (tức là $$\binom{r}{1} - \binom{r}{2} + \cdots + (-1)^{r+1}\binom{r}{r} = 1$$).
 
 <details>
 <summary>Đáp án</summary>
 
-Đó là khai triển $$(1-1)^r$$ với dấu $$(-1)^{k+1}$$ trên $$\binom{r}{k}$$ — tổng binô âm bằng 0 trừ hạng $$k=0$$; ở đây ta bắt đầu từ $$k=1$$ nên còn 1.
+Theo khai triển nhị thức Newton, $$(1-1)^r = \sum_{k=0}^{r} (-1)^k \binom{r}{k} = 0$$. Khi tách hạng tử $$k=0$$ (bằng $$\binom{r}{0} = 1$$) sang vế kia và đổi dấu, ta thu được $$\binom{r}{1} - \binom{r}{2} + \cdots + (-1)^{r+1}\binom{r}{r} = 1$$.
 
 </details>
 
 ### Bài tập 4
 
-Có bao nhiêu hoán vị của $$\{1,\ldots,5\}$$ **không** có điểm cố định (derangement)? (Gợi ý: dùng dạng bù với $$A_i$$ = “vị trí $$i$$ cố định”.)
+Có bao nhiêu hoán vị của $$\{1,\ldots,5\}$$ **không** có điểm cố định (derangement)? (Gợi ý: dùng dạng bù với $$A_i$$ là tập các hoán vị giữ cố định vị trí $$i$$.)
 
 <details>
 <summary>Đáp án</summary>
 
-$$5! - \binom{5}{1}4! + \binom{5}{2}3! - \binom{5}{3}2! + \binom{5}{4}1! - \binom{5}{5}0! = 120 - 120 + 60 - 20 + 5 - 1 = 44$$. (Công thức đầy đủ ở mục 11.4.)
+$$5! - \binom{5}{1}4! + \binom{5}{2}3! - \binom{5}{3}2! + \binom{5}{4}1! - \binom{5}{5}0! = 120 - 120 + 60 - 20 + 5 - 1 = 44$$. (Công thức tổng quát được trình bày ở mục 11.4.)
 
 </details>
 
@@ -215,16 +215,16 @@ $$5! - \binom{5}{1}4! + \binom{5}{2}3! - \binom{5}{3}2! + \binom{5}{4}1! - \bino
 
 ## Tóm tắt
 
-- Hai tập: $$\vert A \cup B\vert  = \vert A\vert  + \vert B\vert  - \vert A \cap B\vert $$; ba tập: công thức cộng–trừ giao đôi, giao ba.
+- Công thức cho hai tập: $$\vert A \cup B\vert  = \vert A\vert  + \vert B\vert  - \vert A \cap B\vert $$; với ba tập, ta cộng các tập đơn, trừ các giao đôi và cộng lại giao ba.
 - Công thức tổng quát: $$\vert \bigcup A_i\vert  = \sum (-1)^{\vert I\vert +1} \vert \bigcap_{i\in I} A_i\vert $$.
-- **Chứng minh đếm số lần**: phần tử thuộc đúng $$r$$ tập được đếm đúng một lần.
-- **Dạng bù**: đếm phần tử không vi phạm = không gian mẫu trừ hợp các tập vi phạm.
-- Ứng dụng cơ bản: đếm số chia hết cho 2 hoặc 5 trong $$1..100$$.
+- **Chứng minh bằng đếm số lần**: mỗi phần tử thuộc đúng $$r$$ tập đều được đếm đúng một lần.
+- **Dạng bù**: số phần tử không vi phạm điều kiện bằng kích thước không gian mẫu trừ đi hợp các tập vi phạm.
+- Ứng dụng cơ bản: đếm số chia hết cho 2 hoặc 5 trong đoạn $$1..100$$.
 
-Trong bài tiếp theo, chúng ta áp dụng nguyên lý vào sàng Legendre, hàm Euler $$\phi(n)$$, số toàn ánh và derangement.
+Trong bài tiếp theo, chúng ta sẽ áp dụng nguyên lý này vào sàng Legendre, hàm Euler $$\phi(n)$$, số toàn ánh và derangement.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=GS7dIWA6Hpo">INCLUSION-EXCLUSION PRINCIPLE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước phát biểu nguyên lý bao hàm–loại trừ.
-- <a href="https://www.youtube.com/watch?v=41TcebW7-4c">Counting with Triple Intersections // Example &amp; Formula</a> — Dr. Trefor Bazett, tiếng Anh. Giao của ba tập, đúng công thức mở rộng.
-- <a href="https://www.youtube.com/watch?v=D1T3xy_vtxU">[Discrete Mathematics] Inclusion-Exclusion: At Least &amp; Exactly</a> — TrevTutor, tiếng Anh. Đếm ít nhất và đúng bằng bù trừ.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=GS7dIWA6Hpo">INCLUSION-EXCLUSION PRINCIPLE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Trình bày phát biểu nguyên lý bao hàm–loại trừ.
+- <a href="https://www.youtube.com/watch?v=41TcebW7-4c">Counting with Triple Intersections // Example &amp; Formula</a> — Dr. Trefor Bazett, tiếng Anh. Minh họa công thức mở rộng cho giao của ba tập hợp.
+- <a href="https://www.youtube.com/watch?v=D1T3xy_vtxU">[Discrete Mathematics] Inclusion-Exclusion: At Least &amp; Exactly</a> — TrevTutor, tiếng Anh. Kỹ thuật đếm điều kiện “ít nhất” và “đúng bằng” bằng nguyên lý bù trừ.

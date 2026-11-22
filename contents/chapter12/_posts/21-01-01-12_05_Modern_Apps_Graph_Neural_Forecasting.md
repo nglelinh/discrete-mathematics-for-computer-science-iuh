@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. GraphCast (Science 2023) runs message passing
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite definitions, representations, or Euler/Hamilton lessons.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại định nghĩa, biểu diễn, hay Euler/Hamilton.
+Bài ghi chú ứng dụng song ngữ, **không** viết lại phần định nghĩa đồ thị, biểu diễn đồ thị hay bài toán Euler/Hamilton.
 
 </div>
 
@@ -38,19 +38,19 @@ Chapter 12 already defined $$G = (V,E)$$, adjacency, and walks. GraphCast is a 2
 
 ## Tiếng Việt
 
-GraphCast (Lam và cộng sự, *Science* 2023) là GNN theo mẫu encode–process–decode:
+GraphCast (Lam và cộng sự, *Science* 2023) là một mạng nơ-ron đồ thị (GNN) hoạt động theo kiến trúc encode–process–decode:
 
-- **Grid2Mesh** — đồ thị hai phía từ lưới vĩ–kinh độ sang **multi-mesh** icosahedral;
-- **Mesh** — message passing trên đỉnh và cạnh lưới;
-- **Mesh2Grid** — đồ thị hai phía trở lại lưới.
+- **Grid2Mesh**: đồ thị hai phía ánh xạ từ lưới kinh–vĩ độ sang lưới đa phân giải (**multi-mesh**) dạng khối hai mươi mặt (icosahedral);
+- **Mesh**: thực hiện truyền thông điệp (message passing) trên các đỉnh và cạnh của lưới;
+- **Mesh2Grid**: đồ thị hai phía ánh xạ kết quả trở lại lưới kinh–vĩ độ.
 
-Hệ thống công bố dự báo hàng trăm biến trong 10 ngày, độ phân giải $$0.25^\circ$$ toàn cầu, dưới một phút, và thắng baseline deterministic vận hành trên **90% trong 1380** mục kiểm tra, kể cả bão, sông khí quyển và cực đoan.
+Theo công bố, hệ thống có thể dự báo hàng trăm biến khí tượng trong 10 ngày ở độ phân giải toàn cầu $$0.25^\circ$$ trong vòng dưới một phút, đồng thời đạt độ chính xác cao hơn mô hình tất định chuẩn vận hành trên **90% trong tổng số 1380** chỉ tiêu kiểm chứng, bao gồm dự báo xoáy thuận, sông khí quyển và các hiện tượng thời tiết cực đoan.
 
-Chương 12 đã định nghĩa $$G = (V,E)$$, kề và đường đi. GraphCast là lời nhắc 2023 rằng các đối tượng đó mở được quy mô: $$V$$ là lưới Trái Đất, $$E$$ mã hóa láng giềng (đa tỷ lệ), “thuật toán” là một số bước kết tập láng giềng cố định. Không cần khí tượng để thấy khuếch tán kiểu BFS trên đồ thị.
+Chương 12 đã giới thiệu cấu trúc $$G = (V,E)$$, quan hệ kề và đường đi. GraphCast cho thấy các khái niệm này có thể mở rộng lên quy mô toàn cầu: $$V$$ là tập đỉnh trên lưới phủ bề mặt Trái Đất, $$E$$ mã hóa các láng giềng cục bộ và đa tỷ lệ, còn quá trình tính toán gồm một số bước tổng hợp thông tin từ láng giềng cố định. Ngay cả khi không chuyên về khí tượng học, ta vẫn dễ nhận ra cơ chế lan truyền thông tin trên đồ thị tương tự cách mở rộng theo tầng của BFS.
 
-**Câu hỏi.** (1) Grid2Mesh là đồ thị vô hướng đơn, hai phía, hay đa đồ thị — vì sao? (2) Biểu diễn Chương 12 nào bạn sẽ lưu cho mesh icosahedral tĩnh?
+**Câu hỏi.** (1) Grid2Mesh là đồ thị vô hướng đơn, đồ thị hai phía hay đa đồ thị — giải thích vì sao? (2) Bạn sẽ chọn cách biểu diễn nào trong Chương 12 để lưu trữ một lưới icosahedral tĩnh?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=0Ud4u7c0_EE">AI Weather Forecasting: What GraphCast Actually Proved (and Didn&#x27;t)</a> — Synaptorix, tiếng Anh. Xem trước GraphCast chứng minh gì khi chạy truyền thông điệp trên đồ thị đa lưới.
-- <a href="https://www.youtube.com/watch?v=1DmNdMUbDkg">Message Passing: How Graph Neural Networks Actually Work</a> — The Synthetic Mind, tiếng Anh. Truyền thông điệp, cơ chế bài gọi là message passing.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=0Ud4u7c0_EE">AI Weather Forecasting: What GraphCast Actually Proved (and Didn&#x27;t)</a> — Synaptorix, tiếng Anh. Phân tích những kết quả thực tế của GraphCast khi chạy truyền thông điệp trên đồ thị đa lưới.
+- <a href="https://www.youtube.com/watch?v=1DmNdMUbDkg">Message Passing: How Graph Neural Networks Actually Work</a> — The Synthetic Mind, tiếng Anh. Giải thích cơ chế truyền thông điệp (message passing) trong mạng nơ-ron đồ thị.

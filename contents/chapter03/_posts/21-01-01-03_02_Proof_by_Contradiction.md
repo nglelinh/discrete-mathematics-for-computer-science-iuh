@@ -7,10 +7,10 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "Ở mục trước, chúng ta đã học chứng minh trực tiếp — đi từ giả thiết đến kết luận bằng suy luận từng bước. Mục này giới thiệu chứng minh phản chứng (proof by…"
+excerpt: "Giới thiệu phương pháp chứng minh phản chứng (proof by contradiction), cách nhận diện mâu thuẫn và ứng dụng trong toán rời rạc cùng khoa học máy tính."
 ---
 
-Ở mục trước, chúng ta đã học chứng minh trực tiếp — đi từ giả thiết $$P$$ đến kết luận $$Q$$ bằng suy luận từng bước. Mục này giới thiệu **chứng minh phản chứng** (proof by contradiction), kỹ thuật dùng khi đường đi trực tiếp khó hoặc khi kết luận mang tính phủ định. Ý tưởng cốt lõi: muốn chứng minh mệnh đề $$P$$ đúng, ta giả sử $$\neg P$$ đúng, suy luận đến mâu thuẫn, rồi kết luận $$\neg P$$ không thể đúng nên $$P$$ phải đúng. Cách tư duy này xuất hiện trong toán học, debug hệ thống và kiểm thử: khi một chương trình được cho là không thể rơi vào trạng thái lỗi, ta dựng tình huống phản lại; nếu giả định ấy vi phạm bất biến hoặc mâu thuẫn với dữ liệu ban đầu, ta có lập luận mạnh.
+Ở mục trước, chúng ta đã học chứng minh trực tiếp — đi từ giả thiết $$P$$ đến kết luận $$Q$$ bằng chuỗi suy luận từng bước. Mục này giới thiệu **chứng minh phản chứng** (proof by contradiction), một kỹ thuật phù hợp khi hướng đi trực tiếp khó thực hiện hoặc khi kết luận mang tính phủ định. Ý tưởng cốt lõi là: để chứng minh mệnh đề $$P$$ đúng, ta giả sử $$\neg P$$ đúng, suy luận đến một mâu thuẫn, rồi kết luận $$\neg P$$ không thể đúng nên $$P$$ phải đúng. Lối tư duy này cũng quen thuộc trong gỡ lỗi và kiểm thử phần mềm: khi khẳng định một chương trình không thể rơi vào trạng thái lỗi, ta giả định trạng thái lỗi đó xảy ra; nếu giả định ấy vi phạm bất biến hoặc mâu thuẫn với dữ kiện ban đầu, ta có cơ sở để loại trừ trạng thái đó.
 
 ## Mục tiêu học tập
 
@@ -18,19 +18,19 @@ excerpt: "Ở mục trước, chúng ta đã học chứng minh trực tiếp �
 
 **Mục tiêu học tập.** Sau khi học xong bài này, sinh viên có thể:
 
-1. Phát biểu đúng ý tưởng của chứng minh phản chứng.
-2. Phân biệt được **giả sử phản chứng** với **giả thiết ban đầu** của bài toán.
-3. Nhận diện được mâu thuẫn (contradiction) dưới nhiều dạng khác nhau.
-4. Viết được một chứng minh phản chứng chặt chẽ, không nhảy bước.
-5. Áp dụng phương pháp này vào các ví dụ toán học cổ điển và các bối cảnh khoa học máy tính.
-6. Tránh các lỗi thường gặp khi sử dụng phản chứng.
+1. Phát biểu đúng nguyên lý của chứng minh phản chứng.
+2. Phân biệt **giả sử phản chứng** với **giả thiết ban đầu** của bài toán.
+3. Nhận diện mâu thuẫn (contradiction) dưới nhiều dạng khác nhau.
+4. Viết một chứng minh phản chứng chặt chẽ, không nhảy bước.
+5. Áp dụng phương pháp phản chứng cho các ví dụ toán học kinh điển và các bài toán trong khoa học máy tính.
+6. Tránh những lỗi thường gặp khi sử dụng phản chứng.
 </div>
 
-## Ý tưởng cốt lõi (4 bước trực quan)
+## Ý tưởng cốt lõi (4 bước cơ bản)
 
-Muốn chứng minh mệnh đề `P` đúng, ta làm như sau:
+Để chứng minh mệnh đề `P` đúng, ta thực hiện như sau:
 
-#### Minh họa trực quan: Chứng minh phản chứng như "phản chứng giả định"
+#### Minh họa trực quan: Cấu trúc chứng minh phản chứng
 
 ```
 Giả sử ¬P đúng
@@ -42,11 +42,11 @@ Vậy ¬P phải sai
 Kết luận: P đúng
 ```
 
-**4 bước**:
+**4 bước thực hiện**:
 
-1. **Giả sử ngược lại** rằng `P` là sai, tức là `¬P` đúng.
-2. Từ giả sử đó, kết hợp với các sự kiện đã biết, ta suy ra một điều vô lý.
-3. Vì điều vô lý không thể xảy ra, nên giả sử `¬P` phải sai.
+1. **Giả sử ngược lại** rằng `P` sai, tức là `¬P` đúng.
+2. Từ giả sử đó, kết hợp với các giả thiết và kiến thức đã biết, suy ra một điều vô lý (mâu thuẫn).
+3. Vì mâu thuẫn không thể xảy ra, giả sử `¬P` phải sai.
 4. Do đó, `P` phải đúng.
 
 ![Tam giác mâu thuẫn](/discrete-mathematics-for-computer-science-iuh/img/course/Absurd_triangle.svg)
@@ -56,89 +56,75 @@ Nói ngắn gọn:
 
 > Nếu giả sử "`P` sai" dẫn đến mâu thuẫn, thì `P` phải đúng.
 
-## Vì sao phản chứng hoạt động? (why contradiction works)
+## Vì sao phản chứng hoạt động?
 
-Đây là phần rất quan trọng về mặt trực giác.
+Nhiều sinh viên mới học thường băn khoăn vì sao việc giả sử điều ngược lại dẫn đến vô lý lại cho phép ta kết luận mệnh đề ban đầu đúng. Cơ sở của phương pháp này nằm ở một nguyên lý logic cơ bản:
 
-Nhiều sinh viên lúc đầu cảm thấy phản chứng hơi "ảo": tại sao chỉ vì giả sử ngược lại dẫn đến vô lý mà ta được quyền kết luận điều ban đầu đúng? Câu trả lời nằm ở nguyên lý logic rất cơ bản:
-
-- Với một mệnh đề `P`, chỉ có hai khả năng: `P` đúng hoặc `P` sai.
-- Nếu ta kiểm tra khả năng "`P` sai" và thấy khả năng này **không thể tồn tại**, thì chỉ còn lại khả năng "`P` đúng".
-
-Ta có thể hình dung như sau:
-
-- Ta đứng trước hai khả năng: `P` hoặc `¬P`.
-- Nếu giả sử `¬P` dẫn đến mâu thuẫn logic, thì chỉ còn `P` là khả thi.
+- Với một mệnh đề `P`, chỉ có hai khả năng: `P` đúng hoặc `P` sai (`¬P` đúng).
+- Nếu kiểm tra khả năng `¬P` và thấy khả năng này dẫn đến mâu thuẫn logic (tức không thể tồn tại), thì chỉ còn lại khả năng `P` đúng.
 
 ### Trực giác đời thường
 
-Giả sử ai đó nói: "Thiết bị này không thể cùng lúc vừa **tắt nguồn hoàn toàn** vừa **đang gửi dữ liệu qua mạng**."
+Giả sử có phát biểu: "Thiết bị này không thể cùng lúc vừa **tắt nguồn hoàn toàn** vừa **đang gửi dữ liệu qua mạng**."
 
-Nếu muốn kiểm tra phát biểu này, ta có thể giả sử điều ngược lại xảy ra:
+Để kiểm tra phát biểu này bằng phản chứng, ta giả sử điều ngược lại xảy ra: thiết bị đang tắt nguồn hoàn toàn nhưng đồng thời vẫn truyền dữ liệu qua mạng. Hai trạng thái này mâu thuẫn trực tiếp với chính định nghĩa của "tắt nguồn hoàn toàn", nên giả sử đó không thể đúng.
 
-- thiết bị đang tắt nguồn hoàn toàn,
-- nhưng đồng thời vẫn đang thực hiện truyền dữ liệu.
+Chứng minh phản chứng vận hành theo đúng nguyên tắc đó: ta kiểm tra xem hệ thống suy luận có thể nhất quán dưới giả sử phủ định hay không; nếu không thể, kết luận ban đầu được xác nhận.
 
-Hai trạng thái này mâu thuẫn với chính định nghĩa của "tắt nguồn hoàn toàn". Vì vậy, giả sử đó không thể đúng.
-
-Phản chứng hoạt động chính xác theo kiểu như vậy: ta kiểm tra xem thế giới có thể tồn tại dưới giả sử phủ định hay không. Nếu không thể, kết luận ban đầu được xác nhận.
-
-### Cơ sở logic ngắn gọn
+### Cơ sở logic hình thức
 
 Về mặt logic hình thức:
 
 - Nếu `¬P → (Q ∧ ¬Q)`
 - thì `¬P` không thể đúng
-- nên `P` phải đúng.
+- suy ra `P` phải đúng.
 
-Trong đó, `(Q ∧ ¬Q)` là một mâu thuẫn rõ ràng: một mệnh đề vừa đúng vừa sai cùng lúc.
+Trong đó, `(Q ∧ ¬Q)` là một mâu thuẫn rõ ràng: một mệnh đề `Q` đồng thời vừa đúng vừa sai.
 
 ![Chứng minh Pythagore](/discrete-mathematics-for-computer-science-iuh/img/course/Pythagorean_proof.svg)
 
 <p class="textbook-figure-caption" data-figure="3.7">Chứng minh hình học cổ điển — nền tảng của lập luận chặt chẽ mà phản chứng kế thừa khi cần loại bỏ khả năng ngược lại.</p>
 ## Khi nào nên nghĩ đến phản chứng?
 
-Phản chứng đặc biệt hữu ích khi:
+Phản chứng đặc biệt phù hợp trong các tình huống sau:
 
 ### Kết luận mang tính phủ định
 
 Ví dụ:
 
-- Không tồn tại thuật toán như vậy.
+- Không tồn tại thuật toán thỏa mãn yêu cầu đã cho.
 - Không có số nguyên lớn nhất thỏa mãn tính chất đó.
 - Không thể xây dựng cấu hình như mô tả.
 
-### Kết luận là một mệnh đề "khó đi thẳng"
+### Kết luận khó tiếp cận trực tiếp
 
-Có những bài toán mà từ giả thiết đến kết luận không có lộ trình trực tiếp rõ ràng. Nhưng nếu giả sử điều ngược lại, cấu trúc của bài toán lại "lộ ra" rất nhanh.
+Có những bài toán mà từ giả thiết đến kết luận không có lộ trình biến đổi trực tiếp rõ ràng, nhưng khi giả sử điều ngược lại, ta có thêm thông tin cụ thể để khai thác và cấu trúc bài toán sớm lộ ra.
 
-### Ta muốn chỉ ra sự bất khả thi (impossibility)
+### Chứng minh tính bất khả thi (impossibility)
 
-Nhiều phát biểu trong tin học có dạng này:
+Nhiều phát biểu trong khoa học máy tính có dạng này:
 
-- không thể quyết định bài toán đó trong mọi trường hợp,
-- không thể có cấu trúc dữ liệu thỏa mọi yêu cầu cùng lúc,
-- không thể có lời giải nhanh hơn giới hạn nào đó nếu giả thiết kia đúng.
+- Không thể quyết định một bài toán trong mọi trường hợp.
+- Không thể có cấu trúc dữ liệu đồng thời thỏa mãn mọi yêu cầu đặt ra.
+- Không thể có thuật toán nhanh hơn một giới hạn nhất định dưới giả thiết đã cho.
 
-### Mâu thuẫn có thể khai thác từ định nghĩa
+### Mâu thuẫn rút ra trực tiếp từ định nghĩa
 
-Đôi khi chỉ cần bám đúng định nghĩa là đã có mâu thuẫn.
+Đôi khi chỉ cần bám sát định nghĩa là đủ để phát hiện mâu thuẫn, chẳng hạn:
 
-Ví dụ:
-
-- một số vừa chẵn vừa lẻ,
-- một phần tử vừa thuộc tập vừa không thuộc tập,
-- một trạng thái hệ thống vừa "reachable" vừa "unreachable".
+- Một số vừa chẵn vừa lẻ.
+- Một phần tử vừa thuộc tập hợp vừa không thuộc tập hợp đó.
+- Một trạng thái hệ thống vừa đạt được ("reachable") vừa không đạt được ("unreachable").
 
 ## Quy trình viết chứng minh phản chứng
 
-Một khuôn mẫu an toàn là:
+Một khuôn mẫu an toàn gồm năm bước:
 
 1. **Nêu rõ điều cần chứng minh.**
-2. **Giả sử phản chứng**: viết chính xác phủ định của kết luận.
-3. **Suy luận từng bước** từ giả sử phản chứng cùng với dữ kiện đã biết.
+2. **Đặt giả sử phản chứng**: viết chính xác phủ định của kết luận.
+3. **Suy luận từng bước** từ giả sử phản chứng kết hợp với các dữ kiện đã biết.
 4. **Chỉ rõ mâu thuẫn** nằm ở đâu.
-5. **Kết luận** giả sử phản chứng sai, nên mệnh đề ban đầu đúng.
+5. **Kết luận** giả sử phản chứng sai, suy ra mệnh đề ban đầu đúng.
 
 ### Mẫu trình bày
 
@@ -148,14 +134,13 @@ Một khuôn mẫu an toàn là:
 >
 > Từ giả sử này, suy ra ...
 >
-> Nhưng điều đó mâu thuẫn với ...
+> Tuy nhiên, điều này mâu thuẫn với ...
 >
-> Vậy giả sử `¬P` là sai. Do đó `P` đúng. ∎
+> Vậy giả sử `¬P` sai. Do đó `P` đúng. ∎
 
 ## Ví dụ 1: Chứng minh √2 là số vô tỷ
 
-
-Đây là ví dụ kinh điển nhất, vì nó cho thấy phản chứng có thể biến một phát biểu trông rất khó thành một chuỗi suy luận ngắn và sắc bén.
+Đây là ví dụ kinh điển cho thấy phản chứng có thể chuyển một khẳng định phủ định ("không phải số hữu tỷ") thành một chuỗi suy luận ngắn gọn và chặt chẽ.
 
 <div class="textbook-theorem" markdown="1">
 **Định lý:** `√2` là số vô tỷ (irrational number).
@@ -164,19 +149,17 @@ Một khuôn mẫu an toàn là:
 <div class="textbook-proof" markdown="1">
 **Chứng minh:**
 
-Giả sử phản chứng rằng `√2` là số hữu tỷ. Khi đó tồn tại các số nguyên `a, b` sao cho:
+Giả sử phản chứng rằng `√2` là số hữu tỷ. Khi đó, tồn tại các số nguyên `a, b` sao cho:
 
 - `b ≠ 0`,
-- `gcd(a, b) = 1`,
+- `gcd(a, b) = 1` (tức phân số `a / b` tối giản),
 - và `√2 = a / b`.
 
-Bình phương hai vế, ta được:
-
-`2 = a² / b²`, hay `a² = 2b²`.
+Bình phương hai vế, ta được `2 = a² / b²`, hay `a² = 2b²`.
 
 Từ đây suy ra `a²` là số chẵn, nên `a` cũng phải là số chẵn. Do đó tồn tại số nguyên `k` sao cho `a = 2k`.
 
-Thế vào phương trình `a² = 2b²`:
+Thế `a = 2k` vào phương trình `a² = 2b²`:
 
 `(2k)² = 2b²`
 
@@ -193,19 +176,14 @@ Vậy giả sử `√2` là số hữu tỷ là sai. Do đó `√2` là số vô
 
 ![Số nguyên tố](/discrete-mathematics-for-computer-science-iuh/img/course/Prime_numbers.svg)
 
-<p class="textbook-figure-caption" data-figure="3.8">Sàng Eratosthenes — số nguyên tố là bối cảnh của nhiều chứng minh phản chứng kinh điển (vô tỷ, vô hạn số nguyên tố).</p>
+<p class="textbook-figure-caption" data-figure="3.8">Sàng Eratosthenes — số nguyên tố là bối cảnh của nhiều chứng minh phản chứng kinh điển như tính vô tỷ của căn bậc hai và sự vô hạn của tập số nguyên tố.</p>
 ### Điều đáng học từ ví dụ này
 
-Mâu thuẫn không xuất hiện ngay lập tức. Nó được tạo ra bằng cách:
+Mâu thuẫn trong bài không xuất hiện ngay lập tức mà được dẫn ra qua hai bước: giả sử tồn tại một biểu diễn tối giản, sau đó chứng minh biểu diễn ấy thực chất vẫn còn rút gọn được. Mẫu lập luận này xuất hiện thường xuyên trong toán rời rạc và thiết kế thuật toán: giả sử một cấu trúc đã đạt cực trị hoặc tối ưu, rồi chỉ ra vẫn có thể cải thiện hoặc rút gọn nó, từ đó thu được mâu thuẫn.
 
-- giả sử tồn tại biểu diễn tối giản,
-- rồi chứng minh biểu diễn đó thực ra chưa tối giản.
+### Thử nghiệm: Phản chứng từng dòng
 
-Đây là mẫu lập luận xuất hiện nhiều trong toán rời rạc và thuật toán: giả sử một cấu trúc "đã tối ưu", sau đó suy ra nó vẫn còn rút gọn được, dẫn đến vô lý.
-
-### Thử nghiệm: phản chứng từng dòng
-
-Bấm Bước tiếp để xem chứng minh √2 vô tỷ hiện dần, với bước mâu thuẫn được tô đỏ; thử phân số bất kỳ, hoặc chuyển sang chứng minh vô hạn số nguyên tố của Euclid.
+Bấm **Bước tiếp** để xem chứng minh `√2` vô tỷ hiện dần với bước mâu thuẫn được tô đỏ; bạn cũng có thể thử với một phân số bất kỳ hoặc chuyển sang chứng minh vô hạn số nguyên tố của Euclid.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="contradiction-explainer" data-tab="sqrt2"></div>
@@ -213,7 +191,6 @@ Bấm Bước tiếp để xem chứng minh √2 vô tỷ hiện dần, với b�
 <script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
 
 ## Ví dụ 2: Có vô hạn số nguyên tố
-
 
 <div class="textbook-theorem" markdown="1">
 **Định lý:** Có vô hạn số nguyên tố.
@@ -230,30 +207,24 @@ Xét số:
 
 `N = p₁p₂...pₙ + 1`.
 
-Ta biết `N > 1`, nên `N` phải có ít nhất một ước nguyên tố.
+Vì `N > 1`, nên `N` phải có ít nhất một ước nguyên tố. Gọi `p` là một ước nguyên tố của `N`. Theo giả sử ban đầu, mọi số nguyên tố đều nằm trong danh sách `p₁, p₂, ..., pₙ`, nên `p` phải là một trong các số đó.
 
-Gọi `p` là một ước nguyên tố của `N`. Vì theo giả sử, mọi số nguyên tố đều nằm trong danh sách `p₁, p₂, ..., pₙ`, nên `p` phải là một trong các số đó.
+Khi đó, tích `p₁p₂...pₙ` chia hết cho `p` (tức `p` là ước của `p₁p₂...pₙ`), đồng thời `N` cũng chia hết cho `p`. Do đó hiệu của chúng cũng phải chia hết cho `p`:
 
-Khi đó `p` chia hết cho tích `p₁p₂...pₙ`, nên `p` cũng chia hết cho:
+`N - p₁p₂...pₙ = 1` chia hết cho `p`.
 
-`N - p₁p₂...pₙ = 1`.
-
-Nhưng không có số nguyên tố nào chia hết cho `1`. Mâu thuẫn.
+Tuy nhiên, `1` không chia hết cho bất kỳ số nguyên tố nào (vì mọi số nguyên tố đều lớn hơn `1`). Điều này dẫn đến mâu thuẫn.
 
 Vậy giả sử chỉ có hữu hạn số nguyên tố là sai. Do đó có vô hạn số nguyên tố.
 </div>
 
 ### Ý nghĩa sư phạm
 
-Ví dụ này rất đẹp vì mâu thuẫn đến từ việc **tự xây một đối tượng phá vỡ giả sử**. Cách làm này cũng hay gặp ở chỗ khác:
-
-- giả sử đã liệt kê hết mọi trường hợp,
-- rồi xây một trường hợp mới không thuộc danh sách đó.
+Điểm nổi bật của chứng minh này là mâu thuẫn được tạo ra bằng cách **xây dựng một đối tượng mới phá vỡ giả sử**. Đây cũng là kỹ thuật phổ biến: giả sử đã liệt kê hết mọi đối tượng, sau đó xây dựng một đối tượng mới không thể thuộc danh sách đó.
 
 ## Ví dụ 3: Không tồn tại số nguyên tố lớn nhất
 
-
-Ví dụ này giúp sinh viên thấy phản chứng không chỉ dùng cho số vô tỷ hay số nguyên tố, mà còn rất hợp với lập luận "cực tiểu" (minimal counterexample intuition).
+Ví dụ này cho thấy ta có thể kết hợp phản chứng với một định lý đã biết để suy ra mâu thuẫn một cách ngắn gọn.
 
 <div class="textbook-lemma" markdown="1">
 **Mệnh đề:** Không tồn tại số nguyên tố lớn nhất.
@@ -264,28 +235,27 @@ Ví dụ này giúp sinh viên thấy phản chứng không chỉ dùng cho số
 
 Giả sử tồn tại số nguyên tố lớn nhất, gọi là `p`.
 
-Theo Ví dụ 2, nếu có số nguyên tố lớn nhất thì số lượng số nguyên tố phải là hữu hạn. Nhưng điều đó mâu thuẫn với định lý "có vô hạn số nguyên tố".
+Khi đó, mọi số nguyên tố đều nhỏ hơn hoặc bằng `p`, nên số lượng số nguyên tố là hữu hạn. Điều này mâu thuẫn với định lý "có vô hạn số nguyên tố" ở Ví dụ 2.
 
 Vậy không tồn tại số nguyên tố lớn nhất.
 </div>
 
 ### Bài học ở đây
 
-Không phải lúc nào phản chứng cũng phải triển khai từ đầu. Đôi khi ta có thể dùng một định lý đã chứng minh trước đó để tạo mâu thuẫn nhanh gọn.
+Không phải lúc nào chứng minh phản chứng cũng phải xây dựng lại từ đầu; đôi khi ta có thể sử dụng trực tiếp một định lý đã chứng minh trước đó để chỉ ra mâu thuẫn.
 
 ## Ví dụ 4: Trực giác về Bài toán dừng (Halting Problem)
 
+Đây là một ví dụ nổi tiếng trong khoa học máy tính. Ở đây ta trình bày trực giác chính xác về mặt khái niệm mà không đi sâu vào chi tiết của logic hình thức.
 
-Đây là ví dụ khoa học máy tính rất nổi tiếng. Ở đây ta chỉ trình bày **trực giác chính xác về mặt khái niệm**, không đi quá sâu vào logic hình thức.
-
-**Phát biểu:** Không tồn tại một thuật toán tổng quát quyết định đúng cho mọi chương trình `P` và input `I` rằng `P(I)` có dừng hay không.
+**Phát biểu:** Không tồn tại một thuật toán tổng quát quyết định đúng cho mọi chương trình `P` và mọi đầu vào `I` rằng `P(I)` có dừng hay không.
 
 **Ý tưởng phản chứng:**
 
-Giả sử tồn tại một bộ quyết định hoàn hảo `H(P, I)` với đầu ra:
+Giả sử tồn tại một bộ quyết định `H(P, I)` luôn trả về đúng kết quả:
 
-- `YES` nếu chương trình `P` dừng trên input `I`,
-- `NO` nếu chương trình `P` không dừng trên input `I`.
+- `YES` nếu chương trình `P` dừng trên đầu vào `I`,
+- `NO` nếu chương trình `P` không dừng trên đầu vào `I`.
 
 Ta xây dựng một chương trình mới `D(X)` như sau:
 
@@ -296,36 +266,29 @@ else:
     halt immediately
 ```
 
-Bây giờ xét `D(D)`.
-
-Có hai khả năng:
+Bây giờ xét lời gọi `D(D)`. Có hai khả năng xảy ra:
 
 1. Nếu `H(D, D) = YES`, thì theo định nghĩa của `D`, chương trình `D(D)` sẽ lặp vô hạn.
 2. Nếu `H(D, D) = NO`, thì theo định nghĩa của `D`, chương trình `D(D)` sẽ dừng ngay.
 
-Trong cả hai trường hợp, `H` đều dự đoán sai về `D(D)`.
-
-Mâu thuẫn xuất hiện vì ta đã giả sử `H` là bộ quyết định đúng cho **mọi** chương trình và **mọi** input.
+Trong cả hai trường hợp, `H` đều dự đoán sai hành vi của `D(D)`. Điều này mâu thuẫn với giả sử rằng `H` quyết định đúng cho **mọi** chương trình và **mọi** đầu vào.
 
 Vậy không tồn tại thuật toán tổng quát như vậy. ∎
 
 ![Đồ thị luồng điều khiển](/discrete-mathematics-for-computer-science-iuh/img/course/Control_flow_graph_of_function_with_two_if_else_statements.svg)
 
-<p class="textbook-figure-caption" data-figure="3.9">Đồ thị luồng điều khiển — mô hình hóa vòng lặp vô hạn trong chứng minh Halting Problem bằng phản chứng.</p>
+<p class="textbook-figure-caption" data-figure="3.9">Đồ thị luồng điều khiển — mô hình hóa nhánh lặp vô hạn trong chứng minh Bài toán dừng bằng phản chứng.</p>
 ### Điều cần hiểu đúng
 
-Ví dụ này **không nói** rằng ta không thể phân tích bất kỳ chương trình cụ thể nào.
+Kết quả này **không có nghĩa** là ta không thể phân tích xem một chương trình cụ thể nào đó có dừng hay không. Nó chỉ khẳng định:
 
-Nó chỉ nói rằng:
+> Không tồn tại một thuật toán duy nhất, tổng quát, luôn trả lời đúng cho mọi chương trình và mọi đầu vào.
 
-> Không có một thuật toán duy nhất, tổng quát, luôn luôn đúng cho mọi chương trình và mọi input.
-
-Đây là một điểm rất quan trọng để tránh overclaim.
+Phân biệt rõ phạm vi khẳng định giúp ta tránh diễn giải quá mức nội dung của định lý.
 
 ## Ví dụ 5: Trạng thái bất khả thi trong thiết kế hệ thống
 
-
-Phản chứng không chỉ sống trong toán thuần túy. Trong thiết kế hệ thống (system design), ta thường dùng nó để chứng minh một trạng thái nào đó là **không thể xảy ra** nếu các bất biến (invariants) được giữ đúng.
+Trong thiết kế hệ thống (system design), phản chứng thường được dùng để chứng minh một trạng thái nào đó là **không thể xảy ra** khi các bất biến (invariants) của hệ thống được duy trì.
 
 **Bối cảnh:** Xét một hàng đợi (queue) với hai bất biến:
 
@@ -333,231 +296,150 @@ Phản chứng không chỉ sống trong toán thuần túy. Trong thiết kế 
 2. Khi `size = 0` thì con trỏ `front = null`.
 
 <div class="textbook-lemma" markdown="1">
-**Mệnh đề:** Không thể có trạng thái mà `size = 0` nhưng `front` lại trỏ đến một node hợp lệ, nếu hai bất biến trên luôn được duy trì đúng sau mỗi thao tác.
+**Mệnh đề:** Nếu hai bất biến trên luôn được duy trì đúng sau mỗi thao tác, thì không thể xuất hiện trạng thái mà `size = 0` nhưng `front` lại trỏ đến một nút hợp lệ.
 </div>
 
 **Lập luận phản chứng:**
 
-Giả sử tồn tại một thời điểm mà:
+Giả sử tồn tại một thời điểm mà `size = 0` nhưng `front ≠ null`. Theo bất biến thứ hai, khi `size = 0` thì bắt buộc `front = null`. Như vậy, ta đồng thời có `front = null` và `front ≠ null`, đây là mâu thuẫn.
 
-- `size = 0`,
-- nhưng `front ≠ null`.
-
-Theo bất biến thứ hai, khi `size = 0` thì bắt buộc `front = null`.
-
-Vậy ta nhận được:
-
-- `front = null`,
-- và đồng thời `front ≠ null`.
-
-Đó là mâu thuẫn.
-
-Do đó, nếu các bất biến thực sự được duy trì đúng, trạng thái trên là bất khả thi. ∎
+Do đó, khi các bất biến được bảo toàn, trạng thái trên không thể xảy ra. ∎
 
 ### Vì sao ví dụ này quan trọng?
 
-Trong kiểm chứng chương trình (program verification), lập luận kiểu này được dùng để:
+Trong kiểm chứng chương trình (program verification), dạng lập luận này được dùng để phát hiện lỗi logic, chứng minh tính đúng đắn của cấu trúc dữ liệu và khẳng định rằng một nhánh xử lý lỗi không bao giờ bị rơi vào.
 
-- phát hiện bug,
-- chứng minh tính đúng đắn của cấu trúc dữ liệu,
-- chỉ ra rằng một nhánh xử lý "không bao giờ xảy ra".
+## Ví dụ 6: Trực giác phản chứng trong cận dưới độ phức tạp
 
-## Ví dụ 6: Trực giác phản chứng trong cận độ phức tạp
+**Phát biểu:** Bất kỳ thuật toán nào tìm phần tử lớn nhất trong một mảng chưa sắp xếp gồm `n` phần tử đều cần ít nhất `n - 1` phép so sánh trong trường hợp xấu nhất.
 
-
-Ta xét một ví dụ ở mức trực giác.
-
-**Phát biểu:** Bất kỳ thuật toán tìm phần tử lớn nhất trong một mảng chưa sắp xếp gồm `n` phần tử đều cần ít nhất `n - 1` phép so sánh trong trường hợp xấu nhất.
-
-Đây là một định lý chuẩn trong phân tích thuật toán. Ta dùng phản chứng để hiểu trực giác.
+Đây là một kết quả cơ bản trong phân tích thuật toán, có thể giải thích trực quan bằng phản chứng.
 
 **Lập luận:**
 
-Giả sử tồn tại một thuật toán có thể luôn tìm ra phần tử lớn nhất với ít hơn `n - 1` phép so sánh.
+Giả sử tồn tại một thuật toán luôn tìm được phần tử lớn nhất với ít hơn `n - 1` phép so sánh. Mỗi phép so sánh giữa hai phần tử `a` và `b` chỉ loại bỏ được tối đa **một ứng viên** khỏi khả năng là lớn nhất (phần tử nhỏ hơn trong cặp so sánh).
 
-Mỗi phép so sánh chỉ có thể loại bỏ tối đa **một ứng viên** khỏi khả năng là lớn nhất, vì khi so sánh `a` với `b`, ta chỉ biết phần tử nhỏ hơn không thể là lớn nhất.
+Ban đầu có `n` ứng viên. Để xác định chắc chắn một phần tử là lớn nhất, thuật toán phải loại bỏ `n - 1` ứng viên còn lại. Nếu thực hiện ít hơn `n - 1` phép so sánh, vẫn còn ít nhất hai ứng viên chưa từng bị loại; khi đó thuật toán chưa đủ thông tin để khẳng định chắc chắn phần tử nào lớn nhất trong mọi trường hợp.
 
-Ban đầu có `n` ứng viên. Muốn xác định chắc chắn một phần tử là lớn nhất, ta phải loại `n - 1` ứng viên còn lại.
-
-Nếu dùng ít hơn `n - 1` phép so sánh, sẽ còn ít nhất hai ứng viên chưa từng bị loại hoàn toàn theo thông tin hiện có. Khi đó thuật toán chưa có đủ cơ sở để khẳng định phần tử nào lớn nhất trong mọi trường hợp.
-
-Mâu thuẫn với giả sử rằng thuật toán luôn đúng.
-
-Vậy trong trường hợp xấu nhất, cần ít nhất `n - 1` phép so sánh. ∎
+Điều này mâu thuẫn với giả sử rằng thuật toán luôn cho kết quả đúng. Vậy trong trường hợp xấu nhất, cần ít nhất `n - 1` phép so sánh. ∎
 
 ### Liên hệ với khoa học máy tính
 
-Nhiều chứng minh lower bound (cận dưới) có tinh thần phản chứng như trên:
-
-- giả sử thuật toán "quá nhanh",
-- sau đó chỉ ra rằng lượng thông tin nó thu được là chưa đủ để quyết định đúng trong mọi trường hợp.
+Nhiều chứng minh cận dưới (lower bound) mang tinh thần phản chứng tương tự: giả sử tồn tại thuật toán chạy nhanh hơn giới hạn đặt ra, sau đó chỉ ra lượng thông tin thu được là không đủ để phân biệt hết các trường hợp đầu vào.
 
 ## Ứng dụng trong Khoa học Máy tính
 
-Phần ứng dụng gắn khái niệm toán học với bài toán thực tế trong lập trình và hệ thống; cần chú ý mô hình nào được giữ lại và mô hình nào đã được lược bỏ.
-
-Phản chứng xuất hiện tự nhiên trong rất nhiều nhánh của khoa học máy tính.
+Khi áp dụng lập luận toán học vào lập trình và hệ thống, cần chú ý rõ những yếu tố nào được đưa vào mô hình và những yếu tố nào đã được lược bỏ. Phản chứng xuất hiện thường xuyên trong nhiều lĩnh vực của khoa học máy tính:
 
 ### Chứng minh không tồn tại thuật toán tổng quát
 
-Ví dụ tiêu biểu là Halting Problem. Các lập luận kiểu này giúp ta hiểu rằng có những giới hạn mang tính bản chất, không phải do "chưa đủ thông minh để lập trình".
+Ví dụ tiêu biểu là Bài toán dừng (Halting Problem). Các chứng minh dạng này cho thấy tồn tại những giới hạn bản chất về mặt tính toán, không thể khắc phục chỉ bằng cách cải tiến kỹ thuật lập trình.
 
 ### Chứng minh trạng thái hệ thống là bất khả thi
 
-Trong hệ điều hành, cơ sở dữ liệu, hệ phân tán, hoặc cấu trúc dữ liệu, ta thường có các bất biến:
+Trong hệ điều hành, cơ sở dữ liệu, hệ phân tán hoặc cấu trúc dữ liệu, các hệ thống đều duy trì những bất biến nhất định. Chẳng hạn, không thể xảy ra tình huống:
 
-- một khóa vừa ở trạng thái khóa vừa ở trạng thái mở,
-- một transaction vừa committed vừa aborted,
-- một node vừa trong cây vừa không nối với cây.
+- Một khóa (lock) vừa ở trạng thái khóa vừa ở trạng thái mở.
+- Một giao dịch (transaction) vừa đã xác nhận (committed) vừa đã hủy bỏ (aborted).
+- Một nút vừa thuộc cây vừa không nối với cây.
 
-Nếu giả sử trạng thái đó xảy ra và nó mâu thuẫn với các bất biến đã định nghĩa, ta kết luận trạng thái ấy là bất khả thi.
+Nếu giả sử trạng thái bất thường đó xảy ra và suy ra mâu thuẫn với bất biến đã định nghĩa, ta kết luận trạng thái ấy là bất khả thi.
 
 ### Chứng minh tính đúng đắn của thuật toán
 
-Một mẫu rất thường gặp:
-
-- giả sử thuật toán kết thúc nhưng kết quả sai,
-- từ đó suy ra tồn tại một đối tượng vi phạm điều kiện mà thuật toán đáng lẽ đã xử lý,
-- mâu thuẫn với chính cơ chế hoạt động của thuật toán.
+Một mẫu lập luận phổ biến là giả sử thuật toán kết thúc nhưng trả về kết quả sai, từ đó suy ra tồn tại một đối tượng vi phạm điều kiện mà thuật toán phải xử lý, dẫn đến mâu thuẫn với chính cơ chế hoạt động của thuật toán.
 
 ### Chứng minh cận dưới về độ phức tạp
 
-Ta giả sử có thuật toán nhanh hơn mức có thể, rồi chỉ ra rằng với lượng thông tin ít như vậy, không thể phân biệt hết các trường hợp cần thiết.
+Ta giả sử có một thuật toán thực hiện ít thao tác hơn mức cận dưới, rồi chỉ ra với lượng thông tin hạn chế như vậy, thuật toán không thể phân biệt đúng mọi trường hợp đầu vào.
 
 ### Chứng minh tính không thể đồng thời thỏa mãn nhiều yêu cầu
 
-Trong thiết kế hệ thống thực tế, đôi khi ba yêu cầu tưởng như hợp lý nhưng không thể đồng thời đạt được trong mọi bối cảnh. Một cách tiếp cận là:
+Trong thiết kế hệ thống, có những bộ yêu cầu tưởng chừng hợp lý nhưng không thể cùng đạt được trong mọi bối cảnh. Ta giả sử có một hệ thống thỏa mãn đồng thời tất cả các yêu cầu đó, rồi chỉ ra một tình huống khiến hai yêu cầu buộc hệ thống hành xử trái ngược nhau, dẫn đến mâu thuẫn.
 
-- giả sử có hệ thống thỏa cả ba,
-- suy ra một tình huống mà hai yêu cầu ép hệ thống đi theo hai hướng đối lập,
-- xuất hiện mâu thuẫn.
-
-Ở mức nhập môn, điều cần nắm là phản chứng là công cụ mạnh để lập luận về **impossibility**, **invariant**, và **lower bound**.
+Ở mức nhập môn, điểm cần nắm là phản chứng là công cụ quan trọng để lập luận về **tính bất khả thi (impossibility)**, **bất biến (invariant)** và **cận dưới (lower bound)**.
 
 ![Cây quyết định](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-<p class="textbook-figure-caption" data-figure="3.10">Cây quyết định — mỗi nhánh "không thể" trong thiết kế hệ thống thường được chứng minh bằng phản chứng.</p>
+<p class="textbook-figure-caption" data-figure="3.10">Cây quyết định — các nhánh không khả thi trong thiết kế hệ thống thường được loại trừ bằng chứng minh phản chứng.</p>
 ## Cách nhận diện mâu thuẫn
 
-Không phải mâu thuẫn lúc nào cũng có dạng hiển nhiên như `Q` và `¬Q`. Dưới đây là vài dạng thường gặp:
+Mâu thuẫn không phải lúc nào cũng xuất hiện dưới dạng tường minh `Q` và `¬Q`. Dưới đây là năm dạng thường gặp:
 
 ### Dạng 1: Trái với định nghĩa
 
-Ví dụ:
-
-- một số nguyên tố lại có nhiều hơn hai ước dương,
-- một cây (tree) lại chứa chu trình,
-- một trạng thái "empty" nhưng vẫn có phần tử đầu.
+Ví dụ: một số nguyên tố có nhiều hơn hai ước dương; một cây lại chứa chu trình; một hàng đợi ở trạng thái rỗng nhưng vẫn có phần tử đầu.
 
 ### Dạng 2: Trái với giả thiết ban đầu
 
-Ví dụ:
-
-- ban đầu giả sử `gcd(a, b) = 1`, sau đó suy ra cả `a` và `b` cùng chẵn.
+Ví dụ: ban đầu giả sử `gcd(a, b) = 1`, sau đó suy ra cả `a` và `b` cùng chẵn.
 
 ### Dạng 3: Trái với định lý đã biết
 
-Ví dụ:
+Ví dụ: suy ra chỉ có hữu hạn số nguyên tố, mâu thuẫn với định lý về sự vô hạn của tập số nguyên tố.
 
-- suy ra tồn tại số nguyên tố lớn nhất, mâu thuẫn với định lý vô hạn số nguyên tố.
+### Dạng 4: Một đối tượng phải đồng thời thỏa hai điều loại trừ nhau
 
-### Dạng 4: Một đối tượng phải đồng thời thỏa hai điều không thể cùng đúng
+Ví dụ: chương trình `D(D)` vừa phải dừng vừa phải không dừng; một biến vừa bằng `null` vừa khác `null`.
 
-Ví dụ:
+### Dạng 5: Trái với tính cực trị hoặc tối giản
 
-- chương trình `D(D)` vừa phải dừng vừa phải không dừng,
-- một biến vừa `null` vừa khác `null`.
-
-### Dạng 5: Trái với cực trị hoặc tối ưu
-
-Ví dụ:
-
-- giả sử đã có biểu diễn tối giản nhất, rồi suy ra vẫn còn rút gọn được.
+Ví dụ: giả sử phân số đã ở dạng tối giản, nhưng sau đó chứng minh tử số và mẫu số vẫn còn ước chung lớn hơn `1`.
 
 ## So sánh với chứng minh trực tiếp
 
 ### Chứng minh trực tiếp
 
-Ta đi từ giả thiết đến kết luận.
-
-Ưu điểm:
-
-- tự nhiên,
-- thường dễ đọc,
-- giúp thấy rõ cơ chế tạo ra kết luận.
+Ta đi thẳng từ giả thiết đến kết luận. Cách này tự nhiên, dễ theo dõi và cho thấy rõ cơ chế tạo ra kết luận.
 
 ### Chứng minh phản chứng
 
-Ta giả sử kết luận sai rồi đi đến vô lý.
+Ta giả sử kết luận sai rồi dẫn đến mâu thuẫn. Cách này phù hợp khi kết luận mang tính phủ định, khi hướng trực tiếp khó triển khai hoặc khi cần chứng minh tính bất khả thi.
 
-Ưu điểm:
+### Ghi chú khi lựa chọn phương pháp
 
-- mạnh khi kết luận là phủ định,
-- hữu ích khi chứng minh trực tiếp bị "bí đường",
-- rất hợp với các bài toán bất khả thi.
+Nếu bài toán có một chứng minh trực tiếp ngắn gọn và rõ ràng, nên ưu tiên trình bày theo hướng trực tiếp. Chứng minh phản chứng đặc biệt phát huy tác dụng khi hướng trực tiếp gặp bế tắc.
 
-### Ghi chú quan trọng
-
-Nếu có một chứng minh trực tiếp ngắn, sáng, dễ hiểu thì thường nên ưu tiên chứng minh trực tiếp trong lần trình bày đầu tiên. Tuy nhiên, phản chứng thường là công cụ cứu nguy khi hướng trực tiếp không hiệu quả.
-
-## Những lỗi thường gặp (common pitfalls)
-
-Đây là phần cực kỳ quan trọng đối với người mới học.
+## Những lỗi thường gặp
 
 ### Phủ định sai mệnh đề cần chứng minh
 
-Muốn phản chứng tốt, trước tiên phải viết đúng `¬P`.
+Để phản chứng đúng, trước hết phải viết chính xác phủ định `¬P`. Ví dụ, phủ định của mệnh đề "mọi phần tử đều có tính chất T" là "tồn tại ít nhất một phần tử không có tính chất T", chứ không phải "mọi phần tử đều không có tính chất T".
 
-Ví dụ:
+### Giả sử ngược lại nhưng bỏ sót dữ kiện
 
-- Phủ định của "mọi phần tử đều có tính chất T" là "tồn tại ít nhất một phần tử không có tính chất T".
-- Không phải là "mọi phần tử đều không có tính chất T".
+Người viết đôi khi đặt giả sử phản chứng rồi suy luận cảm tính, quên khai thác các giả thiết ban đầu của bài toán.
 
-### Giả sử điều ngược lại nhưng không dùng hết dữ kiện
+### Kết thúc mà không chỉ rõ mâu thuẫn
 
-Sinh viên đôi khi viết "Giả sử phản chứng ..." rồi suy luận bằng cảm tính, bỏ quên các giả thiết thật sự của bài toán.
+Không nên kết luận chung chung kiểu "điều này vô lý". Cần chỉ ra cụ thể mâu thuẫn xảy ra với định nghĩa nào, giả thiết nào hoặc định lý nào.
 
-### Kết thúc mà không chỉ ra mâu thuẫn cụ thể
+### Dùng ví dụ riêng thay cho chứng minh tổng quát
 
-Không nên viết mơ hồ kiểu "điều này vô lý" mà không nói rõ vô lý ở đâu.
-
-Hãy chỉ ra chính xác:
-
-- mâu thuẫn với định nghĩa nào,
-- mâu thuẫn với giả thiết nào,
-- hay mâu thuẫn với định lý nào.
-
-### Dùng ví dụ riêng để thay cho chứng minh tổng quát
-
-Trong phản chứng, ví dụ chỉ giúp minh họa trực giác. Nó không thay thế được lập luận tổng quát.
+Trong chứng minh phản chứng, ví dụ cụ thể chỉ có vai trò minh họa trực giác, không thay thế cho lập luận tổng quát.
 
 ### Nhầm phản chứng với phản đảo (contrapositive)
 
-Hai kỹ thuật này liên quan nhưng không giống nhau.
+Hai kỹ thuật này có liên hệ nhưng khác nhau về cấu trúc:
 
-- **Phản chứng**: giả sử kết luận sai rồi đi đến mâu thuẫn.
-- **Phản đảo** (proof by contrapositive): để chứng minh `P → Q`, ta chứng minh `¬Q → ¬P`.
+- **Phản chứng**: giả sử kết luận sai (kết hợp với giả thiết) rồi dẫn đến một mâu thuẫn bất kỳ.
+- **Phản đảo** (proof by contrapositive): để chứng minh `P → Q`, ta chứng minh trực tiếp mệnh đề tương đương `¬Q → ¬P`.
 
 ### Kết luận mạnh hơn điều đã chứng minh
 
-Đặc biệt trong ví dụ khoa học máy tính, cần tránh phát biểu quá mức.
+Đặc biệt trong các ví dụ khoa học máy tính, cần phát biểu đúng phạm vi đã chứng minh. Với Bài toán dừng, phát biểu đúng là "không tồn tại bộ quyết định tổng quát luôn đúng cho mọi chương trình và mọi đầu vào", không nên diễn đạt quá mức thành "con người không thể biết một chương trình có dừng hay không".
 
-Ví dụ với Halting Problem:
+### Mâu thuẫn phát sinh do tính toán sai
 
-- đúng: "không tồn tại bộ quyết định tổng quát luôn đúng cho mọi chương trình và mọi input",
-- không nên nói quá: "con người không thể biết chương trình có dừng hay không".
-
-### Mâu thuẫn do tính toán sai chứ không phải do logic
-
-Nếu mâu thuẫn xuất hiện vì ta biến đổi đại số sai, thì đó không phải là thành công của phản chứng mà là lỗi kỹ thuật.
+Nếu mâu thuẫn xuất hiện do biến đổi đại số hoặc suy luận sai, thì đó là lỗi kỹ thuật chứ không phải một chứng minh phản chứng hợp lệ.
 
 ## Mẹo viết lời giải rõ ràng
 
-1. Viết nguyên câu "Giả sử ngược lại rằng ...".
-2. Nêu rõ phủ định của kết luận là gì.
-3. Mỗi bước suy luận nên có lý do.
-4. Đến cuối, gọi tên mâu thuẫn một cách minh bạch.
-5. Kết bằng câu chuẩn: "Vậy giả sử phản chứng là sai, do đó mệnh đề ban đầu đúng."
+1. Mở đầu rõ ràng bằng câu "Giả sử ngược lại rằng ...".
+2. Nêu chính xác phủ định của kết luận.
+3. Đảm bảo mỗi bước suy luận đều có lý do cụ thể.
+4. Ở cuối bài, chỉ rõ mâu thuẫn nằm ở đâu.
+5. Kết thúc bằng câu khẳng định: "Vậy giả sử phản chứng là sai, do đó mệnh đề ban đầu đúng."
 
 ## Bài tập luyện tập
 
@@ -565,26 +447,26 @@ Nếu mâu thuẫn xuất hiện vì ta biến đổi đại số sai, thì đó
 
 Chứng minh bằng phản chứng rằng không tồn tại số hữu tỷ `r` sao cho `r² = 3`.
 
-**Gợi ý:** Làm tương tự ví dụ `√2`, nhưng thay `2` bằng `3`.
+**Gợi ý:** Làm tương tự ví dụ `√2`, thay `2` bằng `3`.
 
 ### Bài 2
 
-Chứng minh rằng không tồn tại số nguyên tố nhỏ nhất lớn hơn mọi số nguyên tố khác.
+Chứng minh rằng không tồn tại số nguyên tố lớn hơn mọi số nguyên tố khác.
 
-**Gợi ý:** Hãy diễn đạt lại phát biểu cho chuẩn, rồi dùng kết quả "có vô hạn số nguyên tố".
+**Gợi ý:** Diễn đạt lại phát biểu dưới dạng "tồn tại số nguyên tố lớn nhất", rồi dùng kết quả "có vô hạn số nguyên tố".
 
 ### Bài 3
 
-Cho một stack với bất biến:
+Cho một ngăn xếp (stack) thỏa mãn các bất biến:
 
-- khi `top = null` thì số phần tử bằng `0`,
-- khi số phần tử bằng `0` thì không có node nào thuộc stack.
+- Khi `top = null` thì số phần tử bằng `0`.
+- Khi số phần tử bằng `0` thì không có nút nào thuộc stack.
 
-Hãy dùng phản chứng để giải thích vì sao trạng thái "số phần tử bằng `0` nhưng `top` vẫn trỏ tới một node hợp lệ" là bất khả thi.
+Hãy dùng phản chứng để giải thích vì sao trạng thái "số phần tử bằng `0` nhưng `top` vẫn trỏ tới một nút hợp lệ" là bất khả thi.
 
 ### Bài 4
 
-Giả sử có thuật toán khẳng định luôn tìm được phần tử nhỏ nhất của mảng `n` phần tử với ít hơn `n - 1` phép so sánh trong mọi trường hợp. Hãy dùng ý tưởng phản chứng để giải thích vì sao điều này không thể đúng.
+Giả sử có một thuật toán khẳng định luôn tìm được phần tử nhỏ nhất của mảng gồm `n` phần tử với ít hơn `n - 1` phép so sánh trong mọi trường hợp. Hãy dùng ý tưởng phản chứng để giải thích vì sao điều này không thể đúng.
 
 ### Bài 5
 
@@ -592,48 +474,29 @@ Phân tích phát biểu sau và viết phủ định chính xác của nó:
 
 > "Mọi đồ thị liên thông trong lớp đang xét đều có ít nhất một đỉnh bậc lẻ."
 
-Sau đó, thảo luận xem nếu muốn phản chứng thì chúng ta sẽ bắt đầu bằng giả sử nào.
+Sau đó, xác định giả sử phản chứng cần đặt nếu muốn chứng minh phát biểu này bằng phản chứng.
 
 ### Bài 6
 
-Viết lại chứng minh về Halting Problem ở mức ngắn gọn 8–12 dòng, sao cho không overclaim và vẫn thể hiện rõ mâu thuẫn tại `D(D)`.
+Viết lại chứng minh về Bài toán dừng (Halting Problem) trong khoảng 8–12 dòng, đảm bảo không diễn đạt quá phạm vi định lý và thể hiện rõ mâu thuẫn tại `D(D)`.
 
 ### Bài 7
 
 Cho mệnh đề:
 
-> "Không thể tồn tại một trạng thái của hệ thống mà transaction vừa committed vừa aborted."
+> "Không thể tồn tại một trạng thái của hệ thống mà giao dịch (transaction) vừa ở trạng thái committed vừa ở trạng thái aborted."
 
-Hãy viết một lập luận phản chứng ngắn dựa trên định nghĩa hai trạng thái này.
+Hãy viết một lập luận phản chứng ngắn dựa trên định nghĩa của hai trạng thái này.
 
 ## Tiêu chí chứng minh hợp lệ
 
-Một chứng minh phản chứng hợp lệ cần thỏa các điều kiện sau:
+Một chứng minh phản chứng hợp lệ cần đáp ứng các yêu cầu sau:
 
-- Phủ định của kết luận được viết đúng.
-- Mâu thuẫn cuối cùng xác định rõ với giả thiết hoặc định nghĩa nào.
-- Mỗi bước suy luận chỉ dùng giả thiết đã cho và kết quả trung gian đã chứng minh.
-- Không có bước nhảy cóc giữa giả thiết và mâu thuẫn.
+- Phủ định của kết luận được viết chính xác.
+- Mâu thuẫn cuối cùng được chỉ rõ là trái với giả thiết, định nghĩa hay định lý nào.
+- Mỗi bước suy luận chỉ sử dụng giả thiết đã cho và các kết quả trung gian đã được thiết lập.
+- Không nhảy bước giữa giả thiết và mâu thuẫn.
 - Kết luận quay về đúng mệnh đề ban đầu cần chứng minh.
-
-## Tổng kết
-
-Chứng minh phản chứng là một kỹ thuật nền tảng vì nó cho phép ta lập luận về những điều **không thể xảy ra**, **không thể tồn tại**, hoặc **không thể luôn đúng**. Sức mạnh của nó đến từ một ý tưởng rất đơn giản nhưng rất sâu:
-
-> Nếu thế giới giả định "điều cần chứng minh là sai" tự sụp đổ vì mâu thuẫn, thì điều cần chứng minh phải đúng.
-
-Phản chứng hay dùng cho những mệnh đề khó chứng minh trực tiếp, chẳng hạn:
-
-- giới hạn của thuật toán,
-- tính đúng đắn của cấu trúc dữ liệu,
-- trạng thái bất khả thi trong hệ thống,
-- và các cận dưới về độ phức tạp.
-
-Gặp phát biểu "không thể", "không tồn tại" hoặc "luôn luôn", hãy thử tự hỏi:
-
-> Nếu điều ngược lại đúng, mình có thể dẫn nó tới mâu thuẫn nào?
-
-Trong bài tiếp theo, chúng ta sẽ học về **quy nạp toán học** — một phương pháp chứng minh mạnh mẽ cho các mệnh đề liên quan đến số tự nhiên.
 
 ---
 
@@ -645,16 +508,16 @@ Trong bài tiếp theo, chúng ta sẽ học về **quy nạp toán học** — 
 
 ## Tóm tắt
 
-- **Chứng minh phản chứng**: giả sử $$\neg P$$ → suy ra mâu thuẫn → kết luận $$P$$ đúng.
-- Đặc biệt hữu ích cho mệnh đề phủ định, chứng minh bất khả thi, và cận dưới độ phức tạp.
-- Phải viết đúng phủ định của kết luận và chỉ ra mâu thuẫn cụ thể ở cuối.
-- Khác với chứng minh phản đảo (contrapositive): $$\neg Q \to \neg P$$ để chứng minh $$P \to Q$$.
-- Ví dụ kinh điển: $$\sqrt{2}$$ vô tỷ, vô hạn số nguyên tố, Halting Problem.
+- **Chứng minh phản chứng**: giả sử $$\neg P$$ đúng → suy ra mâu thuẫn → kết luận $$P$$ đúng.
+- Đặc biệt hữu ích cho mệnh đề phủ định, chứng minh tính bất khả thi và chứng minh cận dưới độ phức tạp.
+- Cần viết chính xác phủ định của kết luận và chỉ rõ mâu thuẫn cụ thể ở bước cuối.
+- Phân biệt với chứng minh phản đảo (contrapositive): chứng minh $$\neg Q \to \neg P$$ để suy ra $$P \to Q$$.
+- Các ví dụ kinh điển: $$\sqrt{2}$$ là số vô tỷ, có vô hạn số nguyên tố và Bài toán dừng (Halting Problem).
 
-Trong bài tiếp theo, chúng ta sẽ học **quy nạp toán học** — phương pháp chứng minh mạnh cho mệnh đề phụ thuộc số tự nhiên.
+Trong bài tiếp theo, chúng ta sẽ học **quy nạp toán học** — phương pháp chứng minh cho các mệnh đề phụ thuộc vào số tự nhiên.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=sRDwsfNDXak">PROOF by CONTRADICTION - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước giả sử phủ định rồi dẫn tới mâu thuẫn.
-- <a href="https://www.youtube.com/watch?v=huGWXh4l1M0">Proof by Contradiction | Method &amp; First Example</a> — Dr. Trefor Bazett, tiếng Anh. Khuôn chứng minh phản chứng và ví dụ đầu tiên.
-- <a href="https://www.youtube.com/watch?v=inUkhh8-h-I">Proof: There are infinitely many primes numbers</a> — Dr. Trefor Bazett, tiếng Anh. Có vô hạn số nguyên tố, mẫu phản chứng kinh điển.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=sRDwsfNDXak">PROOF by CONTRADICTION - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Giới thiệu cách giả sử phủ định rồi dẫn tới mâu thuẫn.
+- <a href="https://www.youtube.com/watch?v=huGWXh4l1M0">Proof by Contradiction | Method &amp; First Example</a> — Dr. Trefor Bazett, tiếng Anh. Trình bày khuôn mẫu chứng minh phản chứng và ví dụ mở đầu.
+- <a href="https://www.youtube.com/watch?v=inUkhh8-h-I">Proof: There are infinitely many primes numbers</a> — Dr. Trefor Bazett, tiếng Anh. Chứng minh có vô hạn số nguyên tố, mẫu phản chứng kinh điển.

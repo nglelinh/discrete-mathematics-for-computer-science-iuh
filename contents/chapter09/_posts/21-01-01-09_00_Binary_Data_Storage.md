@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Dữ liệu nhị phân trong máy tính: Từ bit đến bộ nhớ"
 categories: chapter09
@@ -7,7 +6,7 @@ date: 2021-01-01
 order: 0
 required: true
 lang: en
-excerpt: "Trong chương này chúng ta khảo sát cách máy tính lưu trữ và diễn giải dữ liệu ở mức nhị phân — nền tảng cho mọi lớp phần mềm phía trên. Ở Chương 1, logic mệnh…"
+excerpt: "Khảo sát cách máy tính lưu trữ và diễn giải dữ liệu ở mức nhị phân — từ bit, byte, hệ nhị phân, hexadecimal đến cách chương trình gán ý nghĩa cho dãy byte trong RAM."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -18,69 +17,65 @@ excerpt: "Trong chương này chúng ta khảo sát cách máy tính lưu trữ 
 
 </div>
 
-Trong chương này chúng ta khảo sát cách máy tính **lưu trữ và diễn giải** dữ liệu ở mức nhị phân — nền tảng cho mọi lớp phần mềm phía trên. Ở Chương 1, logic mệnh đề đã cho ta biến Boole với hai giá trị $$0$$ và $$1$$; mục này trả lời câu hỏi kế tiếp: **bit đó nằm ở đâu, được gom thành khối thế nào, và vì sao cùng một byte có thể vừa là chữ `A` vừa là số 65?** Câu trả lời bắt đầu từ đơn vị nhỏ nhất — **bit** — rồi mở rộng sang byte, hệ nhị phân, hexadecimal, và cách chương trình gán ý nghĩa cho dãy byte thô trong RAM.
+Trong chương này, chúng ta khảo sát cách máy tính **lưu trữ và diễn giải** dữ liệu ở mức nhị phân — nền tảng cho mọi lớp phần mềm phía trên. Ở Chương 1, logic mệnh đề đã giới thiệu biến Boole với hai giá trị $$0$$ và $$1$$; mục này trả lời câu hỏi kế tiếp: **bit đó nằm ở đâu, được gom thành khối như thế nào, và vì sao cùng một byte có thể vừa là chữ `A` vừa là số 65?** Câu trả lời bắt đầu từ đơn vị nhỏ nhất là **bit**, rồi mở rộng sang byte, hệ nhị phân, hệ thập lục phân (hexadecimal) và cách chương trình gán ý nghĩa cho dãy byte thô trong RAM.
 
 <figure class="image" style="align: center;">
 <p align="center">
   <img src="/discrete-mathematics-for-computer-science-iuh/img/course/Bits_and_Bytes.svg"
        alt="Quan hệ bit và byte — 8 bit ghép thành 1 byte, các đơn vị lưu trữ lớn hơn gom từ byte"
        width="65%" height="65%">
-  <figcaption style="text-align: center;">Hình 9.0a: 8 bit = 1 byte; các đơn vị KB, MB, GB… gom từ byte. Bit không tự biết nó là chữ hay số — chương trình quyết định cách đọc (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Bits_and_Bytes.svg">Fcarmody / Wikimedia Commons</a>, CC BY-SA 4.0).</figcaption>
+  <figcaption style="text-align: center;">Hình 9.0a: 8 bit = 1 byte; các đơn vị KB, MB, GB… được gom từ byte. Bit không tự biết mình là chữ hay số — chương trình mới quyết định cách đọc (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Bits_and_Bytes.svg">Fcarmody / Wikimedia Commons</a>, CC BY-SA 4.0).</figcaption>
 </p>
 </figure>
 
 ## Bit — đơn vị nhỏ nhất
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: **Bit** (binary digit) là đơn vị thông tin nhỏ nhất trong máy tính kỹ thuật số. Mỗi bit chỉ có **hai trạng thái**: $$0$$ hoặc $$1$$.
+**Định nghĩa**: **Bit** (binary digit) là đơn vị thông tin nhỏ nhất trong máy tính kỹ thuật số. Mỗi bit chỉ nhận **hai trạng thái**: $$0$$ hoặc $$1$$.
 </div>
 
+Trong phần cứng, hai trạng thái này thường tương ứng với điện áp thấp/cao, hai chiều từ trường, hoặc rãnh đóng/mở trên đĩa quang. Ở tầng lập trình, ta có thể xem mỗi bit như một biến Boole $$x \in \{0,1\}$$ như đã giới thiệu ở Chương 1.
 
-Trong phần cứng, hai trạng thái đó thường tương ứng với điện áp thấp/cao, từ trường hướng/nghịch, hoặc lỗ hổng đóng/mở trên đĩa quang — nhưng ở tầng lập trình, chúng ta có thể coi bit là biến Boole $$x \in \{0,1\}$$ như Chương 1 đã giới thiệu.
-
-**Ký hiệu**: Một bit viết là $$b \in \{0,1\}$$. Chuỗi $$n$$ bit: $$b_{n-1} b_{n-2} \ldots b_1 b_0$$ (bit $$b_{n-1}$$ là **bit cao nhất**, MSB; $$b_0$$ là **bit thấp nhất**, LSB).
+**Ký hiệu**: Một bit được viết là $$b \in \{0,1\}$$. Một chuỗi $$n$$ bit được viết là $$b_{n-1} b_{n-2} \ldots b_1 b_0$$, trong đó $$b_{n-1}$$ là **bit cao nhất** (MSB) và $$b_0$$ là **bit thấp nhất** (LSB).
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
 - Công tắc đèn: tắt = 0, bật = 1.
-- `bool logged_in` trong C++: `false` thường lưu thành byte toàn 0, `true` thành 1 — nhưng vẫn chỉ cần **một bit** thông tin; ngôn ngữ thường cấp phát cả byte vì RAM đọc theo byte.
+- Biến `bool logged_in` trong C++: `false` thường được lưu dưới dạng byte toàn 0, `true` là 1. Dù chỉ cần **một bit** thông tin, ngôn ngữ lập trình vẫn thường cấp phát cả một byte vì RAM được địa chỉ hóa theo byte.
 </div>
-
 
 <div class="content-box insight-box textbook-block" markdown="1">
-Máy tính **không** lưu chữ “42” hay “A” trực tiếp. Nó lưu **mẫu bit**. Chữ và số là cách **con người và chương trình diễn giải** mẫu đó — giống nốt nhạc trên khuông: cùng vạch, khác nhạc cụ đọc khác âm thanh.
+Máy tính **không** trực tiếp lưu chữ “42” hay ký tự “A”, mà lưu **mẫu bit**. Chữ và số là cách **con người và chương trình diễn giải** mẫu bit đó — tương tự nốt nhạc trên khuông: cùng một ký hiệu, nhưng các nhạc cụ khác nhau tạo ra âm thanh khác nhau.
 </div>
 
-## Byte — tám bit gom một nhóm
+## Byte — nhóm tám bit
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: **Byte** là nhóm **8 bit** liền nhau, là đơn vị địa chỉ hóa phổ biến nhất của bộ nhớ máy tính hiện đại.
+**Định nghĩa**: **Byte** là một nhóm gồm **8 bit** liền kề, đồng thời là đơn vị địa chỉ hóa phổ biến nhất của bộ nhớ máy tính hiện đại.
 </div>
 
-
-**Ký hiệu**: Một byte lưu giá trị nguyên từ $$0$$ đến $$2^8 - 1 = 255$$ khi đọc theo **không dấu** (unsigned). Ví dụ byte `01000001` (nhị phân) = $$64 + 1 = 65$$ (thập phân) = `0x41` (hex).
+**Ký hiệu**: Khi đọc dưới dạng số nguyên **không dấu** (unsigned), một byte biểu diễn được các giá trị từ $$0$$ đến $$2^8 - 1 = 255$$. Chẳng hạn, byte `01000001` (nhị phân) bằng $$64 + 1 = 65$$ (thập phân) và viết gọn là `0x41` (hex).
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
-- Chữ `A` trong ASCII/UTF-8: một byte `0x41`.
-- Màu đỏ trong ảnh RGB thường là ba byte liên tiếp: `FF 00 00`.
-- `int` 32-bit trên hầu hết máy tính để bàn: **4 byte** liền kề trong RAM.
+- Chữ `A` trong ASCII/UTF-8 chiếm một byte `0x41`.
+- Màu đỏ trong ảnh RGB thường được lưu bằng ba byte liên tiếp: `FF 00 00`.
+- Kiểu `int` 32-bit trên hầu hết máy tính để bàn chiếm **4 byte** liền kề trong RAM.
 </div>
 
-
-**Tính chất**: Với 8 bit, số tổ hợp khác nhau là $$2^8 = 256$$. Đó là lý do một byte “vừa đủ” cho ký tự Latin cơ bản trong ASCII (128 ký tự đầu nằm trong 0–127), và là nền mà UTF-8, ảnh bitmap, gói tin mạng đều xây trên byte.
+**Tính chất**: Với 8 bit, tổng số tổ hợp khác nhau là $$2^8 = 256$$. Nhờ vậy, một byte đủ chứa toàn bộ ký tự Latin cơ bản trong bảng ASCII (128 ký tự đầu từ 0 đến 127), đồng thời trở thành đơn vị cơ sở cho UTF-8, ảnh bitmap và gói tin mạng.
 
 ![Một ô nhớ chứa byte 0x12](/discrete-mathematics-for-computer-science-iuh/img/course/memory_byte_12.svg)
 
-<p class="textbook-figure-caption" data-figure="9.0">Một địa chỉ bộ nhớ = một byte = 8 bit. Hex `0x12` chỉ là cách viết gọn của mẫu bit bên trong.</p>
+<p class="textbook-figure-caption" data-figure="9.0">Một địa chỉ bộ nhớ tương ứng với một byte gồm 8 bit. Ký hiệu hex `0x12` chỉ là cách viết gọn cho mẫu bit bên trong.</p>
+
 ## Hệ nhị phân — đếm bằng hai chữ số
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: **Hệ nhị phân** (binary) là hệ cơ số với cơ số 2. Mỗi vị trí bit nhân với lũy thừa của 2.
+**Định nghĩa**: **Hệ nhị phân** (binary) là hệ đếm cơ số 2, trong đó mỗi vị trí bit có trọng số là một lũy thừa của 2.
 </div>
 
-
-**Ký hiệu**: Giá trị của chuỗi bit $$b_{k-1} \ldots b_0$$:
+**Ký hiệu**: Giá trị thập phân của chuỗi bit $$b_{k-1} \ldots b_0$$ là:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -88,6 +83,7 @@ N = \sum_{i=0}^{k-1} b_i \cdot 2^i
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+
 **Ví dụ** — chuyển `1101` (nhị phân) sang thập phân:
 
 <div class="textbook-equation" markdown="1">
@@ -96,7 +92,8 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Bảng đếm 4 bit đầu:
+
+Bảng đếm 4 bit đầu tiên:
 
 | Thập phân | Nhị phân |
 |:---:|:---:|
@@ -109,7 +106,7 @@ Bảng đếm 4 bit đầu:
 | … | … |
 | 15 | `1111` |
 
-**Chuyển thập phân → nhị phân**: chia liên tiếp cho 2, ghi **số dư** từ dưới lên. Ví dụ $$42$$:
+**Chuyển từ thập phân sang nhị phân**: Chia liên tiếp cho 2 rồi đọc các **số dư** theo thứ tự ngược từ dưới lên. Với số $$42$$:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -117,104 +114,101 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Đọc dư từ cuối: **`00101010`** = `0x2A`.
+
+Đọc số dư từ cuối lên ta được **`00101010`** = `0x2A`.
 
 <div class="content-box example-box textbook-block" markdown="1">
-**Ví dụ nhanh**: Số `255` = `11111111` (8 bit toàn 1). Cộng 1 nữa (nếu chỉ có 8 bit) → `00000000` với **carry** bị bỏ — hiện tượng **tràn** (overflow) mà mục Year 2038 sẽ gặp lại ở quy mô 32 bit.
+**Ví dụ nhanh**: Số `255` biểu diễn trên 8 bit là `11111111` (toàn bit 1). Nếu cộng thêm 1 trong phạm vi 8 bit, kết quả quay về `00000000` và bit nhớ (**carry**) bị loại bỏ — đây là hiện tượng **tràn số** (overflow) mà ta sẽ gặp lại ở quy mô 32 bit trong bài Year 2038.
 </div>
 
-## Hexadecimal — viết tắt cho bit
+## Hexadecimal — cách viết gọn cho bit
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: **Hexadecimal** (hex, cơ số 16) dùng chữ số `0–9` và `A–F` (10–15). Mỗi chữ số hex tương ứng **đúng 4 bit** — gọi là **nibble**.
+**Định nghĩa**: **Hexadecimal** (hệ thập lục phân, cơ số 16) sử dụng các chữ số `0–9` và chữ cái `A–F` (biểu diễn 10–15). Mỗi chữ số hex tương ứng với **đúng 4 bit**, gọi là một **nibble**.
 </div>
 
-
-**Ký hiệu**: Tiền tố `0x` (ví dụ `0x2A`). Hai chữ số hex = một byte: `0x41` = `01000001`.
+**Ký hiệu**: Thường dùng tiền tố `0x` (chẳng hạn `0x2A`). Hai chữ số hex ghép thành đúng một byte: `0x41` = `01000001`.
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
 - `0xFF` = `11111111` = 255.
-- Chuỗi UTF-8 của `Hi`: `48 69` (hex) = `H` + `i` trong ASCII.
+- Chuỗi UTF-8 của `Hi` là `48 69` (hex), tương ứng với hai ký tự `H` và `i` trong ASCII.
 
-Hex dump trong debugger hoặc Wireshark hiển thị **byte**, không hiển thị từng bit — vì 8 bit một nhóm vừa đủ để đọc bằng mắt, và mỗi cặp hex digit khớp một byte.
+Các công cụ hex dump trong trình gỡ lỗi (debugger) hoặc Wireshark hiển thị dữ liệu theo từng **byte** thay vì từng bit riêng lẻ, vì mỗi cặp chữ số hex khớp chính xác với một byte và dễ quan sát hơn nhiều bằng mắt thường.
 </div>
-
 
 ## Bộ nhớ: địa chỉ và dãy byte
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: **RAM** (bộ nhớ chính) có thể hình dung như một **con phố dài**: mỗi **địa chỉ** (ví dụ `1000`, `1001`, `1002`, …) trỏ tới **một ô** chứa **đúng một byte**.
+**Định nghĩa**: Có thể hình dung **RAM** (bộ nhớ chính) như một dãy ô nhớ liên tiếp: mỗi **địa chỉ** (ví dụ `1000`, `1001`, `1002`, …) trỏ tới **một ô** chứa **đúng một byte**.
 </div>
 
-
-CPU không “đọc số 42” trong một ô trừu tượng. Nó đọc byte tại địa chỉ, rồi — nếu biến là `int` — đọc thêm 3 byte kế tiếp và **ghép** theo quy tắc kiến trúc (endianness, mục tiếp theo).
+CPU không đọc “số 42” từ một ô trừu tượng duy nhất. Nó đọc byte tại địa chỉ đã cho; nếu biến có kiểu `int` 32-bit, CPU đọc thêm 3 byte liền kề rồi **ghép** chúng lại theo quy ước của kiến trúc máy (endianness, sẽ trình bày ở bài sau).
 
 ![RAM — dãy byte và cách diễn giải](/discrete-mathematics-for-computer-science-iuh/img/course/binary_ram_layout.svg)
 
-*Hình 9.0.1: Cùng vùng RAM có thể là chuỗi ký tự, số nguyên, hoặc phần file nhị phân — tùy chương trình đọc.*
+*Hình 9.0.1: Cùng một vùng RAM có thể được đọc thành chuỗi ký tự, số nguyên hoặc một phần tệp nhị phân, tùy vào chương trình diễn giải.*
 
-**Ví dụ** — biến C `int x = 42` trên máy 32-bit little-endian (phổ biến):
+**Ví dụ** — biến C `int x = 42` trên máy 32-bit little-endian (phổ biến hiện nay):
 
-| Địa chỉ | Byte (hex) | Bit pattern (rút gọn) |
+| Địa chỉ | Byte (hex) | Mẫu bit |
 |:---:|:---:|:---:|
 | `0x1000` | `0x2A` | `00101010` |
 | `0x1001` | `0x00` | `00000000` |
 | `0x1002` | `0x00` | `00000000` |
 | `0x1003` | `0x00` | `00000000` |
 
-Giá trị toán học là 42, nhưng **vật lý trong RAM** là bốn byte; byte đầu không “trông như 42” khi in hex.
+Giá trị toán học là 42, nhưng **ở mức vật lý trong RAM**, đó là bốn byte; khi in dạng hex, byte đầu tiên hiển thị là `0x2A` chứ không phải “42”.
 
 ## Dữ liệu thô và cách diễn giải
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: **Dữ liệu thô** (raw data) là dãy byte không kèm “nhãn” kiểu. **Kiểu dữ liệu** (data type) hoặc **encoding** là quy ước nói cho chương trình biết đọc byte **như thế nào**.
+**Định nghĩa**: **Dữ liệu thô** (raw data) là dãy byte không mang sẵn nhãn kiểu. **Kiểu dữ liệu** (data type) hoặc **bảng mã** (encoding) là quy ước cho chương trình biết cần đọc dãy byte đó **như thế nào**.
 </div>
 
-
-**Ví dụ** — cùng byte `0x41`:
+**Ví dụ** — cùng một byte `0x41`:
 
 | Cách đọc | Kết quả |
 |:---|:---|
 | `char` / ASCII | Chữ `A` |
 | `uint8_t` | Số 65 |
-| Phần đầu file JPEG | Byte header định dạng, không phải chữ |
+| Phần đầu tệp JPEG | Byte tiêu đề định dạng, không phải ký tự |
 
-Hai lớp hay bị gộp nhầm:
+Hai lớp sau rất dễ bị gộp nhầm:
 
 1. **Lớp vật lý**: bit trong transistor, byte trong RAM, sector trên SSD.
-2. **Lớp quy ước**: `int`, `float`, UTF-8, PNG — cách **ánh xạ** byte sang ý nghĩa.
+2. **Lớp quy ước**: `int`, `float`, UTF-8, PNG — tức cách **ánh xạ** dãy byte sang ý nghĩa cụ thể.
 
 <div class="content-box warning-box textbook-block" markdown="1">
-**Cẩn thận**: In `char*` ra màn hình và cast sang `int*` đọc cùng địa chỉ là hai **diễn giải** khác nhau trên cùng bit — hành vi undefined trong C nếu vi phạm strict aliasing, nhưng minh họa rõ: **bit không đổi, ý nghĩa đổi**.
+**Lưu ý**: Đọc cùng một địa chỉ bộ nhớ bằng `char*` rồi ép kiểu sang `int*` là hai **cách diễn giải** khác nhau trên cùng một dãy bit. Trong C, thao tác này có thể gây hành vi không xác định (undefined behavior) nếu vi phạm quy tắc strict aliasing, nhưng nó minh họa rõ một nguyên lý: **bit không đổi, chỉ cách diễn giải thay đổi**.
 </div>
 
 ## Word — khi một số cần nhiều byte
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: **Word** (từ máy) là số bit mà CPU xử lý “tự nhiên” trong một lần trên kiến trúc đó — thường là bội số của 8.
+**Định nghĩa**: **Word** (từ máy) là độ rộng bit mà CPU xử lý tự nhiên trong một thao tác trên một kiến trúc cụ thể, thường là bội số của 8.
 </div>
 
-
-| Tên | Số bit | Số byte | Ví dụ kiểu C |
+| Tên gọi | Số bit | Số byte | Ví dụ kiểu trong C |
 |:---|:---:|:---:|:---|
 | byte | 8 | 1 | `uint8_t` |
 | half-word | 16 | 2 | `uint16_t` |
 | word (32-bit) | 32 | 4 | `int`, `float` |
 | double word | 64 | 8 | `int64_t`, `double` |
 
-Số lớn hơn 255 cần **nhiều byte**. Số $$4660 = 0x1234$$ cần hai byte: `0x12` và `0x34`. Thứ tự hai byte trong RAM là chủ đề **endianness** (mục tiếp theo sau Unicode).
+Mọi số nguyên không dấu lớn hơn 255 đều cần **nhiều byte** để lưu trữ. Ví dụ, số $$4660 = 0x1234$$ cần hai byte là `0x12` và `0x34`. Thứ tự sắp xếp hai byte này trong RAM chính là chủ đề **endianness** ở bài sau (ngay sau bài Unicode).
 
 ## Công cụ tương tác
 
 <div data-demo="logic-operator-widgets"></div>
 
 <script src="{{ '/public/js/logic-operator-widgets.js' | relative_url }}"></script>
-Widget trên ôn lại biến Boole $$0/1$$ — cùng hai giá trị mà mọi bit trong RAM đều dùng, dù sau này ta gom chúng thành byte, số, hoặc chữ.
+
+Widget trên giúp ôn lại biến Boole $$0/1$$ — đúng hai trạng thái mà mọi bit trong RAM sử dụng, trước khi chúng được gom thành byte, số hay ký tự.
 
 ## Ứng dụng trong Khoa học Máy tính
 
-Mọi tầng stack đều dựa trên bit. Ở tầng lập trình, `sizeof(int)` trả về số **byte**, không phải số bit; struct padding thêm byte rỗng để căn chỉnh địa chỉ. Trên mạng, TCP header ghi độ dài bằng byte; Wireshark là hex dump có chú thích protocol. Trong cơ sở dữ liệu, `BLOB` lưu byte thô; `VARCHAR` vẫn là byte trong file page, kèm charset khi hiển thị. Trong bảo mật, hash SHA-256 trả về 32 byte; so sánh bit-by-bit tránh timing attack trong code cẩn thận.
+Mọi tầng của hệ thống phần mềm đều xây dựng trên bit và byte. Ở tầng lập trình, `sizeof(int)` trả về số **byte** chứ không phải số bit, còn struct padding chèn thêm byte đệm để căn chỉnh địa chỉ bộ nhớ. Trong mạng máy tính, tiêu đề TCP ghi độ dài bằng byte, và Wireshark thực chất là một công cụ xem hex dump kèm chú thích giao thức. Trong cơ sở dữ liệu, `BLOB` lưu dãy byte thô, còn `VARCHAR` vẫn lưu bằng byte trong trang dữ liệu và cần bảng mã (charset) khi hiển thị. Trong bảo mật, hàm băm SHA-256 trả về đúng 32 byte, và mã nguồn an toàn thường so sánh theo thời gian hằng để tránh tấn công kênh bên (timing attack).
 
 ```python
 # Đọc 4 byte thô từ file — chưa biết là số hay chữ
@@ -224,26 +218,26 @@ print(list(raw))           # [42, 0, 0, 0] — từng BYTE, không phải bit
 print(int.from_bytes(raw, "little"))  # diễn giải: uint32 little-endian → 42
 ```
 
-Dòng cuối mới **gán ý nghĩa**: cùng `2a000000`, đổi `"big"` hoặc đọc như UTF-8 sẽ ra kết quả khác.
+Chỉ đến dòng cuối cùng, chương trình mới **gán ý nghĩa** cho dữ liệu: với cùng dãy `2a000000`, nếu đổi sang `"big"` hoặc giải mã theo UTF-8, kết quả sẽ hoàn toàn khác.
 
 ## Bài tập thực hành
 
 ### Bài tập 1: Chuyển đổi nhị phân
 
-Chuyển các số thập phân sau sang nhị phân (8 bit, thêm số 0 đầu nếu cần): $$13$$, $$42$$, $$200$$.
+Chuyển các số thập phân sau sang dạng nhị phân 8 bit (thêm các số 0 ở đầu nếu cần): $$13$$, $$42$$, $$200$$.
 
 <details>
 <summary>Đáp án</summary>
 
-- $$13$$: $$13 = 8+4+1$$ → **`00001101`**
-- $$42$$: như trên → **`00101010`**
-- $$200$$: $$200 = 128+64+8$$ → **`11001000`**
+- $$13 = 8 + 4 + 1$$ → **`00001101`**
+- $$42 = 32 + 8 + 2$$ → **`00101010`**
+- $$200 = 128 + 64 + 8$$ → **`11001000`**
 
 </details>
 
 ### Bài tập 2: Hex và byte
 
-(a) Byte `0xC3` là bao nhiêu ở thập phân? (b) Viết bit pattern 8 bit của nó.
+(a) Byte `0xC3` có giá trị thập phân là bao nhiêu? (b) Viết mẫu bit 8 bit của byte đó.
 
 <details>
 <summary>Đáp án</summary>
@@ -256,33 +250,33 @@ Chuyển các số thập phân sau sang nhị phân (8 bit, thêm số 0 đầu
 
 ### Bài tập 3: Đọc hex dump
 
-Một vùng RAM 4 byte (little-endian) hiển thị: `2A 00 00 00`. Nếu đọc là `uint32_t` không dấu, giá trị là bao nhiêu? Nếu chỉ đọc byte đầu như ASCII, ký tự là gì?
+Một vùng RAM 4 byte (little-endian) hiển thị: `2A 00 00 00`. Nếu đọc như `uint32_t` không dấu, giá trị là bao nhiêu? Nếu chỉ đọc byte đầu như ký tự ASCII, kết quả là ký tự gì?
 
 <details>
 <summary>Đáp án</summary>
 
-- `uint32_t` little-endian: byte thấp trước → $$0 \times 2^{24} + 0 \times 2^{16} + 0 \times 2^8 + 0x2A = 42$$.
-- Byte đầu `0x2A` = 42 thập phân; **không** nằm trong bảng ASCII in được (ASCII in được thường 32–126). Nếu ép đọc `char`, có thể là ký tự điều khiển hoặc không in được — minh họa vì sao cần biết **đang đọc kiểu gì**.
+- Đọc theo `uint32_t` little-endian (byte thấp đứng trước): $$0 \times 2^{24} + 0 \times 2^{16} + 0 \times 2^8 + 0x2A = 42$$.
+- Byte đầu `0x2A` bằng 42 trong hệ thập phân; giá trị này nằm trong vùng ký tự ASCII in được (32–126) và tương ứng với ký tự dấu sao **`*`**. Cùng một byte `0x2A` nhưng đọc theo kiểu số nguyên ra `42`, còn đọc theo ASCII lại ra ký tự `*` — minh họa rõ vì sao chương trình phải biết **kiểu dữ liệu đang diễn giải**.
 
 </details>
 
 ### Bài tập 4: Đếm tổ hợp
 
-Một biến lưu bằng $$n$$ bit (không dấu). Có bao nhiêu giá trị khác nhau? Áp dụng với $$n = 8$$, $$n = 32$$.
+Một biến không dấu được lưu bằng $$n$$ bit. Biến này biểu diễn được bao nhiêu giá trị khác nhau? Áp dụng với $$n = 8$$ và $$n = 32$$.
 
 <details>
 <summary>Đáp án</summary>
 
-Số giá trị = $$2^n$$.
+Số giá trị khác nhau là $$2^n$$.
 
-- $$n = 8$$: $$2^8 = 256$$ giá trị (0–255).
-- $$n = 32$$: $$2^{32} = 4\,294\,967\,296$$ giá trị — đủ lớn để chứa Unix timestamp 32-bit unsigned, nhưng signed 32-bit và quy tắc two's complement sẽ giới hạn dải khác (mục sau).
+- Với $$n = 8$$: $$2^8 = 256$$ giá trị (từ 0 đến 255).
+- Với $$n = 32$$: $$2^{32} = 4\,294\,967\,296$$ giá trị — đủ để biểu diễn Unix timestamp 32-bit không dấu, nhưng với số nguyên 32-bit có dấu theo quy tắc bù hai (two's complement), dải biểu diễn sẽ bị giới hạn khác đi (xem bài sau).
 
 </details>
 
 ### Bài tập 5: Bit và bộ nhớ ảnh
 
-Ảnh grayscale $$4 \times 4$$ pixel, mỗi pixel 1 byte (0–255). Hỏi: (a) Tổng số byte lưu ảnh? (b) Tổng số bit?
+Một ảnh mức xám (grayscale) kích thước $$4 \times 4$$ pixel, mỗi pixel chiếm 1 byte (giá trị 0–255). Hỏi: (a) Tổng số byte lưu dữ liệu pixel? (b) Tổng số bit?
 
 <details>
 <summary>Đáp án</summary>
@@ -291,10 +285,9 @@ Số giá trị = $$2^n$$.
 
 (b) $$16 \times 8 = 128$$ **bit**.
 
-File trên disk còn có header (metadata) — thêm byte nữa; câu hỏi chỉ tính **dữ liệu pixel thô**.
+Lưu ý rằng tệp ảnh thực tế trên đĩa còn có thêm phần tiêu đề (header/metadata) chiếm thêm byte; phép tính trên chỉ xét **dữ liệu pixel thô**.
 
 </details>
-
 
 ## Xem thêm / Video gợi ý
 
@@ -303,16 +296,16 @@ File trên disk còn có header (metadata) — thêm byte nữa; câu hỏi ch�
 
 ## Tóm tắt
 
-- **Bit**: đơn vị nhỏ nhất, chỉ 0 hoặc 1 — nền của logic Boole và phần cứng số.
-- **Byte**: 8 bit; RAM địa chỉ hóa theo byte; hex dump đọc theo byte.
-- **Hệ nhị phân / hex**: hai cách viết cùng một mẫu bit; hex gọn hơn khi debug.
-- **Diễn giải**: cùng byte có thể là chữ, số, hoặc opcode — kiểu dữ liệu và encoding quyết định ý nghĩa.
-- **Word**: số lớn cần nhiều byte liền kề; thứ tự byte là chủ đề endianness.
+- **Bit**: Đơn vị thông tin nhỏ nhất, chỉ nhận giá trị 0 hoặc 1 — nền tảng của đại số Boole và phần cứng số.
+- **Byte**: Gồm 8 bit; RAM được địa chỉ hóa theo byte và công cụ hex dump hiển thị theo byte.
+- **Hệ nhị phân và hệ hex**: Hai cách biểu diễn cùng một mẫu bit; hệ hex ngắn gọn và thuận tiện hơn khi gỡ lỗi.
+- **Diễn giải dữ liệu**: Cùng một byte có thể là ký tự, số nguyên hoặc mã lệnh; kiểu dữ liệu và bảng mã quyết định ý nghĩa của nó.
+- **Word**: Số lớn cần nhiều byte liền kề; thứ tự sắp xếp các byte trong bộ nhớ là chủ đề của endianness.
 
-Trong bài tiếp theo, chúng ta sẽ học cách **byte đó được hiểu thành chữ** — Unicode, encoding UTF-8, và vì sao Joel nói không có “văn bản thuần” trên máy tính.
+Trong bài tiếp theo, chúng ta sẽ tìm hiểu cách **dãy byte được diễn giải thành văn bản** thông qua Unicode và UTF-8, cũng như lý do Joel Spolsky khẳng định không có “văn bản thuần” trên máy tính.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=thrx3SBEpL8">Why Use Binary? - Computerphile</a> — Computerphile, tiếng Anh. Xem trước vì sao máy lưu bằng hai mức, đúng mở đầu bit và byte.
-- <a href="https://www.youtube.com/watch?v=ZL-LhaaMTTE">Understanding Binary, Hexadecimal, Decimal (Base-10), and more</a> — Corey Schafer, tiếng Anh. Đổi nhị phân, thập phân và hexadecimal, phần viết tắt bit của bài.
-- <a href="https://www.youtube.com/watch?v=a8eKbrcBYPM">Binary &amp; Hexadecimal Demystified</a> — NesHacker, tiếng Anh. Đọc byte dạng hex, khớp mục địa chỉ và dữ liệu thô.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=thrx3SBEpL8">Why Use Binary? - Computerphile</a> — Computerphile, tiếng Anh. Giải thích vì sao máy tính lưu trữ bằng hai mức trạng thái, mở đầu trực tiếp cho khái niệm bit và byte.
+- <a href="https://www.youtube.com/watch?v=ZL-LhaaMTTE">Understanding Binary, Hexadecimal, Decimal (Base-10), and more</a> — Corey Schafer, tiếng Anh. Hướng dẫn chuyển đổi giữa hệ nhị phân, thập phân và thập lục phân.
+- <a href="https://www.youtube.com/watch?v=a8eKbrcBYPM">Binary &amp; Hexadecimal Demystified</a> — NesHacker, tiếng Anh. Cách đọc byte ở dạng hex, tương ứng với phần địa chỉ bộ nhớ và dữ liệu thô.

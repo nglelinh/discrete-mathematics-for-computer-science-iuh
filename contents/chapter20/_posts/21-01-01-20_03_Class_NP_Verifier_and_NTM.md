@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 3
 required: true
 lang: en
-excerpt: "Định nghĩa NP qua verifier và NTIME; chứng minh tương đương; chứng minh P⊆NP; ví dụ certificate."
+excerpt: "Hai định nghĩa tương đương của lớp NP qua bộ kiểm chứng (verifier) và máy Turing không đơn định (NTM), chứng minh P⊆NP và ví dụ chứng chỉ cho các bài toán kinh điển."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,57 +17,57 @@ excerpt: "Định nghĩa NP qua verifier và NTIME; chứng minh tương đươn
 
 </div>
 
-Trực giác TSP: **kiểm** tour dễ, **tìm** tour khó. $$NP$$ hình thức hóa “Yes có chứng chỉ ngắn”.
+Với bài toán người du lịch (TSP), **kiểm tra** một hành trình cho sẵn rất dễ, nhưng **tìm ra** hành trình tối ưu lại rất khó. Lớp $$NP$$ hình thức hóa đúng trực giác “mọi câu trả lời Có đều có một chứng chỉ ngắn kiểm tra được nhanh”.
 
 ![Verifier](/discrete-mathematics-for-computer-science-iuh/img/course/Complexity_verifier.svg)
 
-<p class="textbook-figure-caption" data-figure="20.2">$$x\in L$$ ⇔ ∃ chứng chỉ $$c$$ ngắn, $$V(x,c)=\mathrm{Yes}$$.</p>
+<p class="textbook-figure-caption" data-figure="20.2">$$x\in L$$ khi và chỉ khi tồn tại chứng chỉ $$c$$ đủ ngắn sao cho bộ kiểm chứng $$V(x,c)=\mathrm{Yes}$$.</p>
 
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
 
-- **Định nghĩa** $$NP$$ hai cách và **chứng minh** tương đương.
-- **Chứng minh** $$P\subseteq NP$$.
-- **Viết** certificate + verifier cho SAT, HC, 3-Color.
+- **Định nghĩa** lớp $$NP$$ theo hai cách (bộ kiểm chứng và NTM) và **chứng minh** chúng tương đương.
+- **Chứng minh** quan hệ bao hàm $$P\subseteq NP$$.
+- **Xây dựng** chứng chỉ (*certificate*) và bộ kiểm chứng (*verifier*) cho SAT, chu trình Hamilton và bài toán 3-Coloring.
 
 </div>
 
-## Verifier
+## Định nghĩa theo bộ kiểm chứng (*verifier*)
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa.** $$L\in NP$$ nếu ∃ đa thức $$p$$ và TM tất định $$V$$:
+**Định nghĩa.** Ngôn ngữ $$L\in NP$$ nếu tồn tại đa thức $$p$$ và máy Turing đơn định $$V$$ thỏa mãn:
 
-1. $$V(x,c)$$ chạy trong thời gian $$\mathrm{poly}(\lvert x\rvert)$$ (từ chối nếu $$\lvert c\rvert>p(\lvert x\rvert)$$).  
-2. $$x\in L\Rightarrow\exists c$$: $$V(x,c)=1$$.  
-3. $$x\notin L\Rightarrow\forall c$$: $$V(x,c)=0$$.
+1. $$V(x,c)$$ chạy trong thời gian $$\mathrm{poly}(\lvert x\rvert)$$ (tự động từ chối nếu $$\lvert c\rvert>p(\lvert x\rvert)$$).
+2. **Tính đầy đủ:** nếu $$x\in L$$ thì tồn tại chứng chỉ $$c$$ sao cho $$V(x,c)=1$$.
+3. **Tính đúng đắn:** nếu $$x\notin L$$ thì với mọi chứng chỉ $$c$$, $$V(x,c)=0$$.
 
 </div>
 
-## NTM
+## Định nghĩa theo máy Turing không đơn định (NTM)
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa.** $$NP=\bigcup_k\mathrm{NTIME}(n^k)$$: NTM chấp nhận $$L$$ trong thời gian đa thức (tồn tại nhánh Yes).
+**Định nghĩa.** $$NP=\bigcup_k\mathrm{NTIME}(n^k)$$, tức là tập các ngôn ngữ được chấp nhận bởi một máy Turing không đơn định trong thời gian đa thức (chấp nhận khi tồn tại ít nhất một nhánh tính toán trả lời Có).
 
 </div>
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý** (tương đương). Verifier ⇔ NTM.
+**Định lý** (Tính tương đương). Hai định nghĩa của lớp $$NP$$ thông qua bộ kiểm chứng và thông qua NTM là tương đương nhau.
 
 </div>
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh.**
 
-*NTM → verifier.* $$c$$ = dãy lựa chọn/cấu hình nhánh; $$V$$ mô phỏng tất định nhánh, kiểm tra hợp lệ $$\delta$$ và accept.
+**Chứng minh.**  
+*Từ NTM sang verifier:* chọn chứng chỉ $$c$$ là dãy các lựa chọn không đơn định (hoặc chuỗi cấu hình) dọc theo một nhánh chấp nhận; bộ kiểm chứng $$V$$ mô phỏng đơn định theo dãy đó, kiểm tra từng bước chuyển $$\delta$$ hợp lệ và kết thúc ở trạng thái chấp nhận.  
+*Từ verifier sang NTM:* máy không đơn định đoán trước một chuỗi $$c$$ có độ dài $$\le p(\lvert x\rvert)$$, sau đó chạy bộ kiểm chứng đơn định $$V(x,c)$$.
 
-*Verifier → NTM.* Đoán $$c$$ không tất định, chạy $$V(x,c)$$.
 </div>
 
-## $$P\subseteq NP$$
+## Quan hệ $$P\subseteq NP$$
 
 <div class="textbook-theorem" markdown="1">
 
@@ -76,36 +76,38 @@ Trực giác TSP: **kiểm** tour dễ, **tìm** tour khó. $$NP$$ hình thức 
 </div>
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh.** $$L\in P$$ với thuật toán $$A$$. Đặt $$V(x,c):=A(x)$$ (bỏ $$c$$). Đầy đủ/âm thanh/thời gian rõ.
+
+**Chứng minh.** Nếu $$L\in P$$ thì tồn tại thuật toán đơn định thời gian đa thức $$A$$ quyết định $$L$$. Đặt bộ kiểm chứng $$V(x,c):=A(x)$$ (bỏ qua chứng chỉ $$c$$). Khi đó tính đầy đủ, tính đúng đắn và thời gian đa thức đều thỏa mãn hiển nhiên.
+
 </div>
 
-## Bảng certificate
+## Ví dụ chứng chỉ cho một số bài toán kinh điển
 
-| Bài | $$c$$ | $$V$$ kiểm |
+| Bài toán | Chứng chỉ $$c$$ | Thao tác của bộ kiểm chứng $$V$$ |
 |:---|:---|:---|
-| SAT | gán biến | đánh giá công thức |
-| Hamilton | hoán vị | $$n$$ cạnh (+ đóng) |
-| 3-Color | tô $$\{1,2,3\}^V$$ | mọi cạnh khác màu |
-| Subset Sum | tập con | tổng = target |
+| SAT | Một phép gán chân trị cho các biến | Thay vào công thức và tính giá trị đúng/sai |
+| Chu trình Hamilton | Một hoán vị các đỉnh | Kiểm tra có đủ $$n$$ cạnh hợp lệ tạo thành chu trình kín |
+| 3-Coloring | Phép gán màu trong $$\{1,2,3\}^V$$ | Kiểm tra mọi cạnh đều nối hai đỉnh khác màu |
+| Subset Sum | Một tập con các phần tử | Cộng các phần tử và so sánh với tổng mục tiêu |
 
 ## Bài tập
 
-1. Viết verifier giả mã cho HC; phân tích thời gian.  
-2. Chứng minh $$P\subseteq NP$$ không suy ra gì về $$NP\subseteq P$$.  
-3. Composite: certificate? (thừa số)
+1. Viết giả mã bộ kiểm chứng cho bài toán chu trình Hamilton (HC) và phân tích thời gian chạy.
+2. Giải thích vì sao chứng minh $$P\subseteq NP$$ không suy ra được gì về chiều ngược lại $$NP\subseteq P$$.
+3. Với bài toán quyết định một số nguyên có phải là hợp số (Composite), chứng chỉ $$c$$ là gì?
 
-## Đọc
+## Tài liệu đọc thêm
 
-Sipser (NP); Arora–Barak §2.1.
+Sipser (phần $$NP$$); Arora–Barak §2.1.
 
 ## Tóm tắt
 
-NP = short proofs · $$P\subseteq NP$$ · hai định nghĩa tương đương.
+Lớp $$NP$$ gồm các bài toán có chứng chỉ ngắn kiểm tra được trong thời gian đa thức; hai định nghĩa qua verifier và NTM tương đương nhau, và luôn có $$P\subseteq NP$$.
 
-**Tiếp:** 20.4 — $$\mathrm{coNP}$$.
+**Bài tiếp theo:** 20.4 — Lớp $$\mathrm{coNP}$$ và các hệ quả cấu trúc.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=YX40hbAHx3s">P vs. NP and the Computational Complexity Zoo</a> — hackerdashery, tiếng Anh. Xem trước NP là lớp có chứng chỉ ngắn kiểm được nhanh.
-- <a href="https://www.youtube.com/watch?v=gQnPM6sydkk">Nondeterministic Turing Machine (Part 1)</a> — Neso Academy, tiếng Anh. Máy Turing không đơn định, định nghĩa NTM của bài.
-- <a href="https://www.youtube.com/watch?v=e2cF8a5aAhE">8. NP-Hard and NP-Complete Problems</a> — Abdul Bari, tiếng Anh. Verifier và hệ quả khi đi tới NP-complete.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=YX40hbAHx3s">P vs. NP and the Computational Complexity Zoo</a> — hackerdashery, tiếng Anh. Giới thiệu lớp $$NP$$ dưới góc nhìn chứng chỉ ngắn kiểm tra nhanh.
+- <a href="https://www.youtube.com/watch?v=gQnPM6sydkk">Nondeterministic Turing Machine (Part 1)</a> — Neso Academy, tiếng Anh. Máy Turing không đơn định tương ứng với định nghĩa NTM trong bài.
+- <a href="https://www.youtube.com/watch?v=e2cF8a5aAhE">8. NP-Hard and NP-Complete Problems</a> — Abdul Bari, tiếng Anh. Kết nối khái niệm bộ kiểm chứng sang lớp NP-complete.

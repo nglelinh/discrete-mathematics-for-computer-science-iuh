@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Connection pool sizing: Đếm kết nối với Little's Law"
 categories: chapter09
@@ -7,135 +6,143 @@ date: 2021-01-01
 order: 5
 required: false
 lang: en
-excerpt: "Ở mục transistor và ALU, chúng ta đã thấy bit và phép cộng ở tầng phần cứng. Mục này chuyển sang hàng đợi ở tầng hệ thống: connection pool sizing — bài toán…"
+excerpt: "Áp dụng định luật Little (Little's Law) và công thức HikariCP để tính kích thước connection pool cho cơ sở dữ liệu, phân biệt rõ số người dùng đồng thời với số kết nối DB thực sự bận."
 ---
 
-Ở mục transistor và ALU, chúng ta đã thấy bit và phép cộng ở tầng phần cứng. Mục này chuyển sang **hàng đợi** ở tầng hệ thống: **connection pool sizing** — bài toán đếm kết nối DB bằng **Little's Law** và công thức HikariCP. Minh họa điển hình: khi marketing báo “10.000 user đồng thời”, CTO đề xuất tăng HikariCP lên 200 mỗi pod — nhưng **concurrent user** không đồng nghĩa **connection busy**; pool quá lớn có thể làm PostgreSQL **chậm hơn**.
+Ở bài transistor và ALU, chúng ta đã quan sát bit và phép cộng ở tầng phần cứng. Mục này chuyển sang **bài toán hàng đợi** ở tầng hệ thống: **connection pool sizing** — tính toán số kết nối cơ sở dữ liệu bằng **định luật Little (Little's Law)** và công thức tham chiếu của HikariCP. Một tình huống rất phổ biến: khi bộ phận marketing báo “10.000 người dùng đồng thời”, CTO đề xuất tăng HikariCP lên 200 kết nối mỗi pod. Tuy nhiên, **người dùng đồng thời** (concurrent users) không đồng nghĩa với **kết nối DB đang bận** (busy connections), và đặt pool quá lớn thậm chí có thể khiến PostgreSQL **chậm hơn**.
 
-Dũng, DevOps lead, mở Grafana. PostgreSQL `active_connections` đã chạm **180** trên máy **8 core + 1 SSD**. P99 query từ 12 ms nhảy lên **340 ms**. Log app:
+Dũng, trưởng nhóm DevOps, mở Grafana và thấy chỉ số `active_connections` của PostgreSQL đã chạm **180** trên máy chủ **8 lõi CPU + 1 SSD**, trong khi độ trễ P99 của truy vấn tăng vọt từ 12 ms lên **340 ms**. Nhật ký ứng dụng liên tục báo lỗi:
 
 ```text
 HikariPool-1 - Connection is not available, request timed out after 30000ms
 ```
 
-Nghịch lý khiến Dũng dừng tay trước khi sửa config: pool **lớn hơn** → DB **chậm hơn** → request **chờ lâu hơn** → timeout nhiều hơn. Khách enterprise vẫn đang chờ trong phòng họp; CTO vẫn tin rằng “càng nhiều connection càng an toàn”.
+Một nghịch lý xuất hiện khiến Dũng dừng tay trước khi tăng thêm cấu hình: pool **lớn hơn** → DB **chậm hơn** → yêu cầu **chờ lâu hơn** → lỗi timeout **nhiều hơn**. Dù khách hàng doanh nghiệp đang chờ buổi demo và CTO vẫn cho rằng “nhiều kết nối hơn sẽ an toàn hơn”, số liệu thực tế lại chỉ ra điều ngược lại.
 
-Brett Wooldridge, tác giả **HikariCP**, viết wiki [About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) dựa trên queuing theory và benchmark PostgreSQL: pool quá lớn làm throughput **giảm** vì context switch và lock contention. Câu trả lời không nằm trong cảm giác “càng nhiều càng tốt” — nằm trong **Little's Law** và một công thức đếm mà Dũng đã gặp ở chương hàng đợi.
+Brett Wooldridge, tác giả **HikariCP**, đã tổng hợp trong bài viết [About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) dựa trên lý thuyết hàng đợi và các bài đo hiệu năng PostgreSQL: pool quá lớn làm giảm thông lượng (throughput) vì chi phí chuyển ngữ cảnh (context switch) và tranh chấp khóa (lock contention). Thay vì ước lượng theo cảm tính, câu trả lời nằm ở **Little's Law** và công thức định cỡ kết nối dựa trên năng lực phần cứng.
 
 <figure class="image" style="align: center;">
 <p align="center">
   <img src="/discrete-mathematics-for-computer-science-iuh/img/course/Client-server-model.svg"
        alt="Mô hình client–server — nhiều client chia sẻ tài nguyên server qua pool kết nối"
        width="55%" height="55%">
-  <figcaption style="text-align: center;">Hình 9.5a: “10k user” không đi thẳng thành 10k connection — chỉ $$L = \lambda \times W$$ mới cho biết cần bao nhiêu kết nối DB thực sự busy (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Client-server-model.svg">Wikimedia Commons</a>, CC BY-SA 3.0).</figcaption>
+  <figcaption style="text-align: center;">Hình 9.5a: “10.000 người dùng” không tương đương 10.000 kết nối DB — chỉ công thức $$L = \lambda \times W$$ mới cho biết cần bao nhiêu kết nối thực sự bận (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Client-server-model.svg">Wikimedia Commons</a>, CC BY-SA 3.0).</figcaption>
 </p>
 </figure>
 
 ---
 
-## User đồng thời ≠ connection DB
+## Người dùng đồng thời khác với kết nối cơ sở dữ liệu
 
-Hai tầng “đồng thời” hay bị nhầm khi tranh luận pool size. **Concurrent users** là số người mở app cùng lúc — họ có thể đọc dashboard, gõ form, hoặc chờ mạng chậm mà **không** giữ kết nối tới PostgreSQL suốt phiên đó. **Concurrent DB connections** là số session TCP và backend process PostgreSQL đang **thực sự giữ** tại một thời điểm: đang chạy query, đang trong transaction, hoặc đang chờ lock.
+Khi bàn về kích thước pool, người ta thường nhầm lẫn hai mức độ “đồng thời”. **Người dùng đồng thời** (concurrent users) là số người đang mở ứng dụng cùng lúc — phần lớn thời gian họ đang đọc giao diện, điền biểu mẫu hoặc chờ mạng mà **không** giữ kết nối tới PostgreSQL. Trong khi đó, **kết nối DB đồng thời** (concurrent DB connections) là số phiên TCP và tiến trình backend PostgreSQL đang **thực sự bận** tại một thời điểm: đang thực thi truy vấn, đang trong giao dịch (transaction) hoặc đang chờ khóa.
 
-Một user đọc dashboard 30 giây chỉ **giữ connection vài millisecond** mỗi lần API gọi xuống DB. Mười nghìn user online không có nghĩa mười nghìn connection — đây là bài toán **đếm có điều kiện**: chỉ đếm request đang *active* trên DB, không đếm toàn bộ session HTTP hay số tab trình duyệt đang mở.
+Một người dùng đọc bảng điều khiển suốt 30 giây thực chất chỉ **giữ kết nối DB trong vài mili giây** mỗi lần API gửi truy vấn. Vì vậy, 10.000 người dùng trực tuyến không đồng nghĩa với 10.000 kết nối. Đây là bài toán **đếm có điều kiện**: ta chỉ đếm các truy vấn đang thực sự *hoạt động* trên cơ sở dữ liệu, không đếm số phiên HTTP hay số thẻ trình duyệt đang mở.
 
-**Connection pool** giữ $$N$$ connection mở sẵn, cho thread mượn khi cần, trả lại sau khi xong. $$N$$ quá nhỏ thì request xếp hàng chờ trong app; $$N$$ quá lớn thì chính DB bị quá tải vì mỗi connection là một process riêng tranh CPU và shared buffer.
+**Connection pool** duy trì sẵn $$N$$ kết nối, cấp cho luồng ứng dụng mượn khi cần và thu hồi ngay khi truy vấn kết thúc. Nếu $$N$$ quá nhỏ, yêu cầu phải xếp hàng chờ ở phía ứng dụng; nhưng nếu $$N$$ quá lớn, bản thân cơ sở dữ liệu sẽ quá tải vì mỗi kết nối PostgreSQL là một tiến trình riêng cạnh tranh CPU và bộ đệm dùng chung (`shared_buffers`).
 
 ![Database connection pool — concept](/discrete-mathematics-for-computer-science-iuh/img/course/Client-server-model.svg)
 
-<p class="textbook-figure-caption" data-figure="9.12">Nhiều client chia sẻ ít connection DB qua pool — không phải 1:1 user:connection.</p>
-Dũng nhớ incident tuần trước: marketing đếm **DAU** (daily active users), SRE đếm **RPS** (request per second), CTO đếm **concurrent browser tab**. Ba con số, ba quyết định pool khác nhau — chỉ một trong số đó đúng cho PostgreSQL. Pool size không trả lời câu hỏi “bao nhiêu người đang online”; nó trả lời “bao nhiêu query đang chạy đồng thời trên DB”.
+<p class="textbook-figure-caption" data-figure="9.12">Nhiều client chia sẻ một số lượng nhỏ kết nối DB thông qua connection pool thay vì ánh xạ 1:1 giữa người dùng và kết nối.</p>
+
+Dũng nhớ lại sự cố tuần trước: marketing đếm **DAU** (số người dùng hoạt động hằng ngày), SRE đếm **RPS** (số yêu cầu mỗi giây), còn CTO đếm **số thẻ trình duyệt mở đồng thời**. Ba đại lượng dẫn đến ba đề xuất kích thước pool khác nhau, nhưng chỉ có số liệu ở tầng truy vấn DB mới phù hợp để định cỡ PostgreSQL. Kích thước pool không trả lời câu hỏi “bao nhiêu người đang trực tuyến” mà trả lời “bao nhiêu truy vấn đang chạy đồng thời trên DB”.
 
 ---
 
-## Little's Law — công thức hàng đợi cứu demo
+## Little's Law — công thức hàng đợi giúp tính đúng kích thước pool
 
-Trong hệ ổn định (steady state), **Little's Law** nối ba đại lượng:
+Ở trạng thái ổn định (steady state), **định luật Little (Little's Law)** liên kết ba đại lượng:
 
 <div class="textbook-equation" markdown="1">
 $$L = \lambda \times W$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Ở đây $$L$$ là số “khách” trung bình đang ở trong hệ — với connection pool, đó là số connection **busy** trung bình. $$\lambda$$ là tốc độ vào, throughput: bao nhiêu query hoàn thành mỗi giây. $$W$$ là thời gian trung bình một query ở trong hệ — từ lúc bắt đầu cho tới lúc trả connection về pool.
 
-Ví dụ đơn giản: nếu DB xử lý $$\lambda = 1000$$ query/s và mỗi query mất trung bình $$W = 0{,}01$$ s (10 ms), thì trung bình có $$L = 10$$ connection busy cùng lúc. Để ít khi chờ khi có biến động spike, người ta đặt pool:
+Trong đó, $$L$$ là số đơn vị trung bình đang ở trong hệ thống (với connection pool, đó là số kết nối **đang bận** trung bình); $$\lambda$$ là tốc độ đến hay thông lượng (số truy vấn hoàn thành mỗi giây); và $$W$$ là thời gian trung bình một truy vấn lưu lại trong hệ thống (từ lúc mượn kết nối cho đến khi trả về pool).
+
+Ví dụ, nếu DB xử lý $$\lambda = 1000$$ truy vấn/giây và mỗi truy vấn tốn trung bình $$W = 0{,}01$$ giây (10 ms), số kết nối bận trung bình là $$L = 10$$. Để hạn chế tình trạng chờ khi lưu lượng dao động ngắn hạn, kích thước pool thường được chọn theo công thức:
 
 <div class="textbook-equation" markdown="1">
 $$N \geq \lceil L \rceil + \text{buffer}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Buffer nhỏ cho đỉnh ngắn — **không** nhân đôi user count hay DAU.
 
-Dũng lấy số liệu demo thật từ Grafana và APM. Peak **500 request/s** tới API login. Mỗi request trung bình **2 query** xuống DB. Mỗi query mất **5 ms** trên PostgreSQL khi pool còn hợp lý. Tính throughput query:
+Khoản đệm (buffer) nhỏ chỉ dùng để hấp thụ các đỉnh tải ngắn hạn, không phải để nhân theo số lượng người dùng hay DAU.
+
+Dũng lấy số liệu đo thực tế từ Grafana và APM: giờ cao điểm có **500 request/s** gửi tới API đăng nhập, mỗi request thực hiện trung bình **2 truy vấn** xuống DB, và mỗi truy vấn mất **5 ms** khi pool còn ở mức hợp lý. Thông lượng truy vấn là:
 
 <div class="textbook-equation" markdown="1">
 $$\lambda = 500 \times 2 = 1000 \text{ query/s}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Thời gian ở trong hệ:
+
+Thời gian trung bình trong hệ thống:
 
 <div class="textbook-equation" markdown="1">
 $$W = 0{,}005 \text{ s}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Số connection busy trung bình:
+
+Số kết nối bận trung bình:
 
 <div class="textbook-equation" markdown="1">
 $$L = 1000 \times 0{,}005 = 5$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Trung bình chỉ **5 connection busy** — pool **10–15** là hợp lý cho một pod. Không phải 200. Dũng gửi lại Slack với bảng tính: “10k user” mà marketing nói có thể là DAU cả ngày; concurrent thực tế lúc peak chỉ vài trăm RPS, và Little's Law cho ra con số đếm được.
+
+Trung bình chỉ có **5 kết nối bận**, nên cấu hình pool khoảng **10–15** cho một pod là hợp lý, thay vì 200. Dũng gửi bảng tính lên Slack giải thích rằng con số “10.000 người dùng” của marketing có thể là DAU cả ngày, còn tải đỉnh thực tế chỉ vài trăm RPS và Little's Law cho ra con số định lượng rõ ràng.
 
 <div class="content-box insight-box textbook-block" markdown="1">
-Incident “10k user” thường là nhầm **DAU**, **concurrent user**, hay **RPS**. Chỉ $$\lambda \times W$$ mới trả lời pool — đó là phép đếm trên workload thật, không phải trên headline marketing.
+Các sự cố “10.000 người dùng” thường bắt nguồn từ việc nhầm lẫn giữa **DAU**, **người dùng đồng thời** và **RPS**. Chỉ tích $$\lambda \times W$$ mới xác định đúng số kết nối cần thiết dựa trên khối lượng truy vấn thực tế.
 </div>
 
 ---
 
 ### Thử nghiệm: hàng đợi và định luật Little
 
-Chỉnh tốc độ đến, thời gian phục vụ và số connection; xem độ dài hàng đợi, thời gian chờ và L = λW.
+Điều chỉnh tốc độ đến, thời gian phục vụ và số kết nối để quan sát độ dài hàng đợi, thời gian chờ và quan hệ $$L = \lambda W$$.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="sim-explainer" data-tab="queue"></div>
 </div>
 <script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
 
-## Công thức HikariCP — vì sao 200 connection chậm hơn 20
+## Công thức HikariCP — vì sao 200 kết nối chậm hơn 20
 
-Wiki HikariCP tóm tắt benchmark từ [PostgreSQL Wiki — Number of connections](https://wiki.postgresql.org/wiki/Number_Of_Database_Connections). Công thức khởi đầu cho OLTP trên **một** instance PostgreSQL:
+Wiki của HikariCP tóm lược các kết quả đo hiệu năng từ [PostgreSQL Wiki — Number of connections](https://wiki.postgresql.org/wiki/Number_Of_Database_Connections) thành công thức khởi điểm cho tải giao dịch (OLTP) trên **một** máy chủ PostgreSQL:
 
 <div class="textbook-equation" markdown="1">
 $$\text{connections} = \text{core\_count} \times 2 + \text{effective\_spindle\_count}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**core_count** là số CPU core **của máy chạy PostgreSQL** — không phải số core trên app server hay số pod Kubernetes. **effective_spindle_count** là số ổ đĩa vật lý (spindle); với **một SSD** người ta thường lấy **1**.
 
-DB server demo của Dũng: 8 core + 1 SSD:
+Ở đây, **core_count** là số lõi CPU **của máy chủ chạy PostgreSQL** (không phải số lõi của máy chủ ứng dụng hay số pod Kubernetes), còn **effective_spindle_count** là số ổ đĩa vật lý (với **một ổ SSD**, giá trị thường lấy là **1**).
+
+Với máy chủ DB của Dũng gồm 8 lõi CPU và 1 SSD:
 
 <div class="textbook-equation" markdown="1">
 $$\text{pool} = 8 \times 2 + 1 = 17$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Khuyến nghị wiki: **không** đặt 200 “cho chắc”. PostgreSQL mỗi connection là một **backend process** cộng thêm memory riêng. Quá nhiều process → tranh CPU (context switch), lock trên shared buffer, checkpoint và IO contention. Đồ thị benchmark trên wiki cho thấy throughput đạt đỉnh ở pool **nhỏ**, rồi **giảm** khi tăng connection — đúng những gì Dũng thấy: P99 từ 12 ms nhảy 340 ms khi `active_connections` chạm 180.
 
-Dũng so sánh hai con số: Little's Law cho workload login ra $$L \approx 5$$ busy trung bình; công thức HikariCP cho **giới hạn trên** tổng connection tới một DB instance là khoảng 17. Hai công thức trả lời hai câu hỏi khác nhau — “cần bao nhiêu cho traffic này?” và “DB chịu được bao nhiêu trước khi tự làm chậm mình?” — nhưng cùng chỉ ra rằng 200 là xa cả hai.
+Khuyến nghị kỹ thuật rất rõ ràng: **không** đặt 200 kết nối “cho chắc”. Trên PostgreSQL, mỗi kết nối tương ứng với một **tiến trình backend** kèm bộ nhớ riêng. Khi số tiến trình vượt quá khả năng xử lý đồng thời của phần cứng, hệ thống tiêu tốn tài nguyên vào việc chuyển ngữ cảnh CPU, tranh chấp khóa trên `shared_buffers`, checkpoint và tắc nghẽn I/O. Biểu đồ đo hiệu năng trên wiki HikariCP cho thấy thông lượng đạt đỉnh ở kích thước pool **nhỏ** rồi **suy giảm** khi tiếp tục tăng số kết nối — khớp với hiện tượng P99 tăng từ 12 ms lên 340 ms lúc `active_connections` chạm 180.
+
+Đối chiếu hai kết quả: Little's Law cho tải đăng nhập cần trung bình $$L \approx 5$$ kết nối bận, còn công thức HikariCP chỉ ra giới hạn hiệu quả cho toàn bộ máy chủ DB là khoảng 17 kết nối. Hai công thức trả lời hai câu hỏi khác nhau — “lưu lượng hiện tại cần bao nhiêu?” và “máy chủ DB xử lý tối ưu khoảng bao nhiêu trước khi tự chậm lại?” — nhưng cả hai đều khẳng định mức 200 là quá lớn.
 
 <div class="content-box warning-box textbook-block" markdown="1">
-Công thức $$2 \times \text{cores} + \text{spindles}$$ là **điểm xuất phát** cho OLTP trên **một** DB instance — workload analytics, replica đọc nặng, hoặc nhiều database trên cùng máy cần profiling riêng. Đừng copy số từ blog sang production mà không đo $$\lambda$$ và $$W$$ trên hệ của chúng ta.
+Công thức $$2 \times \text{cores} + \text{spindles}$$ chỉ là **điểm xuất phát** cho tải OLTP trên **một** instance DB. Các hệ thống thiên về phân tích dữ liệu (analytics), bản sao chỉ đọc (read replica) hoặc máy chủ chạy nhiều cơ sở dữ liệu cần đo đạc (profiling) riêng. Luôn đo $$\lambda$$ và $$W$$ trên hệ thống thực tế trước khi chốt cấu hình production.
 </div>
 
 ---
 
-## Nhiều app server và PgBouncer
+## Nhiều máy chủ ứng dụng và vai trò của PgBouncer
 
-Startup có **3 instance** API. Nếu mỗi instance đặt pool HikariCP **10**, tổng **30 connection** tới PostgreSQL — vẫn trong `max_connections` mặc định 100, nhưng đã vượt công thức 17 cho một DB 8 core. Khi scale thêm pod, tổng connection client tăng tuyến tính theo số replica; DB thì không scale theo cùng tốc độ.
+Khi hệ thống chạy **3 instance** API và mỗi instance đặt pool HikariCP là **10**, tổng số kết nối tới PostgreSQL sẽ là **30** — vẫn thấp hơn giới hạn mặc định `max_connections = 100`, nhưng đã vượt mức tối ưu 17 của máy chủ 8 lõi. Khi mở rộng thêm pod ứng dụng, tổng số kết nối từ phía client tăng tuyến tính theo số replica, trong khi năng lực xử lý của DB đơn lẻ không tăng theo.
 
-**PgBouncer** là lớp trung gian multiplex: nhiều connection từ app được ghép xuống ít connection thật trên PostgreSQL. Hình dung luồng: hàng nghìn thread app → mỗi app giữ pool 50 → PgBouncer gom lại → chỉ ~17 backend process thật trên Postgres. Toán vẫn là Little's Law — chỉ thêm một hàng đợi trung gian; $$W$$ có thể tăng nhẹ nếu PgBouncer transaction mode không khớp pattern giữ connection lâu trong app.
+**PgBouncer** giải quyết vấn đề này bằng cơ chế ghép kênh (multiplexing) ở lớp trung gian: nhiều kết nối từ ứng dụng được gom lại và dùng chung một số lượng nhỏ kết nối thật tới PostgreSQL. Luồng hoạt động trở thành: nhiều luồng ứng dụng → mỗi instance giữ pool 50 kết nối tới PgBouncer → PgBouncer phân phối xuống khoảng 17 tiến trình backend thật trên PostgreSQL. Quy luật toán học vẫn là Little's Law với một hàng đợi trung gian; độ trễ $$W$$ có thể tăng rất nhẹ nếu ứng dụng giữ giao dịch lâu không phù hợp với chế độ `transaction mode` của PgBouncer.
 
-Trong thread incident chiều thứ Sáu, Dũng đề xuất: HikariCP **15 mỗi pod** (3 pod → 45 connection phía client), PgBouncer chạy transaction mode với `default_pool_size=17` — ghép xuống khoảng 17 backend Postgres, sát công thức HikariCP. Redeploy xong, P99 query về lại dưới 20 ms, timeout biến mất. Demo pass. CTO reply: “Ừ. User không bằng connection. Anh nhầm cả đời.”
+Trong kênh xử lý sự cố chiều thứ Sáu, Dũng đề xuất cấu hình HikariCP **15 kết nối mỗi pod** (3 pod tạo 45 kết nối phía client) kết hợp PgBouncer ở chế độ transaction mode với `default_pool_size=17`, sát với công thức HikariCP. Sau khi triển khai lại, độ trễ P99 giảm về dưới 20 ms, lỗi timeout chấm dứt và buổi demo diễn ra suôn sẻ.
 
-Dũng ghi vào runbook ba câu: **concurrent user** đếm người, **$$\lambda$$** đếm query/giây, **pool** đếm connection busy — ba lớp khác nhau. Pool lớn hơn không luôn nhanh hơn; đôi khi chậm hơn rõ rệt vì DB tranh nhau thay vì phục vụ.
+Dũng ghi ba ý chính vào tài liệu vận hành (runbook): **người dùng đồng thời** đếm người, **$$\lambda$$** đếm truy vấn/giây, còn **pool** đếm kết nối DB đang bận — ba đại lượng hoàn toàn khác nhau. Pool lớn hơn không phải lúc nào cũng nhanh hơn; vượt ngưỡng phần cứng sẽ khiến cơ sở dữ liệu chậm đi rõ rệt do tranh chấp tài nguyên.
 
 **Đọc thêm**: [HikariCP — About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing) · [PostgreSQL Wiki — Number of connections](https://wiki.postgresql.org/wiki/Number_Of_Database_Connections)
 
@@ -145,92 +152,97 @@ Dũng ghi vào runbook ba câu: **concurrent user** đếm người, **$$\lambda
 
 ### Bài tập 1
 
-API checkout xử lý peak **200 request/s**. Mỗi request gọi trung bình **3 query** DB, mỗi query mất **8 ms**. Dùng Little's Law, tính $$L$$ (số connection busy trung bình) và gợi ý pool size $$N$$ với buffer 5.
+API thanh toán (checkout) xử lý lúc cao điểm **200 request/s**. Mỗi request gọi trung bình **3 truy vấn** DB, mỗi truy vấn mất **8 ms**. Áp dụng Little's Law, tính $$L$$ (số kết nối bận trung bình) và đề xuất kích thước pool $$N$$ với khoản đệm (buffer) là 5.
 
 <details>
 <summary>Đáp án</summary>
 
-Throughput query:
+Thông lượng truy vấn:
 
 <div class="textbook-equation" markdown="1">
 $$\lambda = 200 \times 3 = 600 \text{ query/s}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Thời gian trong hệ:
+
+Thời gian trung bình trong hệ thống:
 
 <div class="textbook-equation" markdown="1">
 $$W = 0{,}008 \text{ s}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Little's Law:
+
+Áp dụng Little's Law:
 
 <div class="textbook-equation" markdown="1">
 $$L = 600 \times 0{,}008 = 4{,}8$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Trung bình khoảng **4,8** connection busy. Với buffer 5:
+
+Trung bình có **4,8** kết nối bận. Cộng thêm buffer bằng 5:
 
 <div class="textbook-equation" markdown="1">
 $$N \geq \lceil 4{,}8 \rceil + 5 = 5 + 5 = 10$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Gợi ý pool **10** cho một instance app phục vụ workload này — không nhân theo “số user online”.
+
+Nên đặt pool khoảng **10** cho một instance ứng dụng phục vụ tải này, không tính theo số người dùng trực tuyến.
 
 </details>
 
 ### Bài tập 2
 
-PostgreSQL chạy trên máy **16 core**, **2 SSD** (đếm effective spindle = 2). Áp dụng công thức HikariCP, tính số connection khuyến nghị cho **một** DB instance. Nếu có **4 pod** API, mỗi pod pool 20, tổng bao nhiêu? So sánh với giới hạn công thức.
+Một máy chủ PostgreSQL có **16 lõi CPU** và **2 SSD** (lấy effective spindle = 2). Áp dụng công thức HikariCP, tính số kết nối khuyến nghị cho **một** DB instance. Nếu có **4 pod** API, mỗi pod đặt pool bằng 20, tổng số kết nối là bao nhiêu và so với ngưỡng công thức như thế nào?
 
 <details>
 <summary>Đáp án</summary>
 
-Công thức HikariCP:
+Theo công thức HikariCP:
 
 <div class="textbook-equation" markdown="1">
 $$\text{pool} = 16 \times 2 + 2 = 34$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Khuyến nghị tổng connection tới DB instance: khoảng **34**.
 
-Bốn pod, mỗi pod pool 20:
+Tổng số kết nối khuyến nghị tới DB instance là khoảng **34**.
+
+Với 4 pod, mỗi pod 20 kết nối:
 
 <div class="textbook-equation" markdown="1">
 $$4 \times 20 = 80 \text{ connection}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**80 > 34** — vượt gần gấp đôi điểm benchmark. DB có thể vẫn “chạy được” dưới `max_connections`, nhưng throughput và latency thường xấu hơn pool nhỏ hơn. Cần giảm pool mỗi pod (ví dụ ~8–10) hoặc dùng **PgBouncer** để multiplex 80 client xuống ~34 backend thật.
+
+Vì **80 > 34** (vượt hơn gấp đôi ngưỡng tham chiếu), dù vẫn dưới `max_connections`, thông lượng và độ trễ có thể kém hơn so với pool nhỏ. Nên giảm pool mỗi pod xuống khoảng 8–10 hoặc đặt **PgBouncer** phía trước để gom 80 kết nối client xuống khoảng 34 kết nối backend thật.
 
 </details>
 
 ### Bài tập 3
 
-Marketing báo **50.000 DAU**. SRE đo peak **800 RPS** lúc 20h. DevOps đặt HikariCP = 500 “vì user đông”. Phân tích vì sao ba con số này không thay thế được nhau, và đại lượng nào đi vào Little's Law.
+Bộ phận marketing báo **50.000 DAU**, SRE đo được cao điểm **800 RPS** lúc 20 giờ, còn DevOps đặt HikariCP = 500 vì “người dùng đông”. Phân tích vì sao ba con số này không thể thay thế cho nhau và đại lượng nào mới được đưa vào Little's Law.
 
 <details>
 <summary>Đáp án</summary>
 
-**DAU** đếm người dùng khác nhau trong **cả ngày** — không phải số người online cùng lúc lúc peak, cũng không phải RPS. **800 RPS** là throughput HTTP tới app — cần nhân thêm số query mỗi request mới ra $$\lambda$$ (query/s) cho Little's Law. **Pool = 500** nhầm “nhiều user” với “nhiều connection DB”; không có $$W$$ (latency query) trong phép tính.
+**DAU** đếm tổng số người dùng riêng biệt trong **cả ngày**, không phản ánh số người thao tác đồng thời tại giờ cao điểm hay tốc độ truy vấn. **800 RPS** là tốc độ yêu cầu HTTP tới máy chủ ứng dụng — cần nhân với số truy vấn DB trung bình trên mỗi yêu cầu mới ra thông lượng truy vấn $$\lambda$$ (query/s). Cấu hình **pool = 500** nhầm lẫn giữa quy mô người dùng và số kết nối DB, đồng thời bỏ qua hoàn toàn độ trễ truy vấn $$W$$.
 
-Little's Law cần $$\lambda$$ (query hoàn thành/giây) và $$W$$ (giây/query) trên **DB**, không cần DAU. Ví dụ nếu 800 RPS × 2 query × $$W = 6$$ ms thì $$L = 1600 \times 0{,}006 = 9{,}6$$ — pool ~15–20 hợp lý hơn 500, và vẫn phải so với công thức $$2 \times \text{cores} + \text{spindles}$$ của máy DB.
+Little's Law chỉ dùng $$\lambda$$ (truy vấn/giây) và $$W$$ (giây/truy vấn) đo trên **DB**. Ví dụ, nếu 800 RPS × 2 truy vấn × $$W = 6$$ ms thì $$L = 1600 \times 0{,}006 = 9{,}6$$ — mức pool khoảng 15–20 hợp lý hơn nhiều so với 500, và vẫn cần đối chiếu với ngưỡng $$2 \times \text{cores} + \text{spindles}$$ của máy chủ DB.
 
 </details>
 
 ### Bài tập 4
 
-Hệ thống: **5 pod** API, mỗi pod HikariCP **12** → 60 connection client. PgBouncer `default_pool_size=20` xuống PostgreSQL 8 core + 1 SSD. Giải thích vai trò PgBouncer trong bài toán đếm và tại sao 60 ≠ 20 không mâu thuẫn.
+Một hệ thống gồm **5 pod** API, mỗi pod cấu hình HikariCP **12** (tổng 60 kết nối client). PgBouncer đặt `default_pool_size=20` kết nối xuống máy chủ PostgreSQL 8 lõi CPU + 1 SSD. Giải thích vai trò của PgBouncer trong bài toán đếm và vì sao hai con số 60 và 20 không mâu thuẫn nhau.
 
 <details>
 <summary>Đáp án</summary>
 
-**60** là tổng connection từ app tới PgBouncer (hoặc trực tiếp tới DB nếu không có proxy) — mỗi pod giữ pool riêng để thread không chờ acquire quá lâu. **20** là số backend connection thật PgBouncer mở tới PostgreSQL; multiplex nhiều client ngắn trên ít server connection dài.
+**60** là tổng số kết nối từ các pod ứng dụng tới PgBouncer, giúp mỗi pod giữ đủ kết nối chờ để luồng xử lý không bị nghẽn khi mượn kết nối. **20** là số kết nối backend thật mà PgBouncer duy trì tới PostgreSQL bằng cách ghép nhiều giao dịch ngắn của client lên ít kết nối server hơn.
 
-Little's Law áp dụng ở **tầng DB**: $$\lambda$$ và $$W$$ đo trên query hoàn thành tại Postgres; $$L$$ busy trung bình nên xấp xỉ 20 (giới hạn pool PgBouncer), không phải 60. Công thức HikariCP cho 8 core + 1 SSD cho **~17** — `default_pool_size=20` gần đúng; nếu không có PgBouncer, 60 connection thẳng vào Postgres sẽ vượt xa 17 và dễ gặy latency như incident Dũng.
+Little's Law ở **tầng DB** áp dụng cho các truy vấn thực thi tại PostgreSQL, nơi số kết nối bận thực tế bị giới hạn bởi mức 20 của PgBouncer chứ không phải 60. Công thức HikariCP cho máy 8 lõi + 1 SSD cho kết quả **17**, nên `default_pool_size=20` nằm rất gần ngưỡng tối ưu; nếu bỏ PgBouncer và mở thẳng 60 kết nối vào PostgreSQL, hệ thống dễ gặp tăng độ trễ tương tự sự cố của Dũng.
 
 </details>
 
 ---
-
 
 ## Xem thêm / Video gợi ý
 
@@ -239,16 +251,14 @@ Little's Law áp dụng ở **tầng DB**: $$\lambda$$ và $$W$$ đo trên query
 
 ## Tóm tắt
 
-Connection pool sizing là bài toán **đếm** — không phải cảm giác an toàn. **Concurrent users** và **DAU** mô tả người dùng; **$$\lambda$$** mô tả query/giây; **pool** mô tả connection DB đang busy hoặc sẵn sàng cho thread. Ba lớp không map 1:1.
+Định cỡ connection pool là một bài toán **đếm định lượng**, không phải ước lượng theo cảm tính. **Người dùng đồng thời** và **DAU** đo quy mô người dùng, **$$\lambda$$** đo số truy vấn mỗi giây, còn **pool** đo số kết nối DB đang bận hoặc sẵn sàng phục vụ — ba đại lượng này không tương ứng 1:1.
 
-**Little's Law** $$L = \lambda \times W$$ cho biết trung bình cần bao nhiêu connection busy: nhân throughput với latency query, cộng buffer nhỏ cho spike. **Công thức HikariCP** $$2 \times \text{cores} + \text{spindles}$$ cho giới hạn trên hợp lý cho một PostgreSQL instance — pool lớn hơn có thể làm DB **chậm hơn**, không nhanh hơn. Khi nhiều app server scale ngang, **PgBouncer** multiplex để tổng backend vẫn sát công thức.
+**Little's Law** $$L = \lambda \times W$$ xác định số kết nối bận trung bình cần thiết từ thông lượng và độ trễ truy vấn, cộng thêm một khoản đệm nhỏ cho đỉnh tải. **Công thức HikariCP** $$2 \times \text{cores} + \text{spindles}$$ cung cấp mốc khởi điểm cho một máy chủ PostgreSQL để tránh tình trạng pool quá lớn làm DB chậm lại. Khi mở rộng theo chiều ngang với nhiều pod ứng dụng, **PgBouncer** giúp ghép kênh để tổng số kết nối backend luôn giữ gần ngưỡng tối ưu.
 
-Incident demo của Dũng là mẫu điển hình: nhầm “10k user” với “10k connection”, tăng pool, rồi timeout vì DB quá tải. Sửa bằng số — Little's Law cho workload, HikariCP cho máy DB, PgBouncer cho kiến trúc nhiều pod.
-
-Bài sau: **combinatorial explosion** trong QA — [testRigor](https://testrigor.com/blog/what-is-combinatorial-testing/) và cách giảm 324 cấu hình browser–OS–device xuống khoảng 15 test pairwise mà vẫn cover mọi **cặp** tham số, không bỏ sót tương tác hai chiều hay nhầm “test ít” với “test mù”.
+Trong bài tiếp theo, chúng ta sẽ tìm hiểu hiện tượng **bùng nổ tổ hợp (combinatorial explosion)** trong kiểm thử phần mềm theo phân tích của [testRigor](https://testrigor.com/blog/what-is-combinatorial-testing/) — cách rút gọn 324 cấu hình trình duyệt–hệ điều hành–thiết bị xuống khoảng 15 ca kiểm thử pairwise mà vẫn phủ hết mọi **cặp** tham số.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=fYjiS2ogcoE">Little&#x27;s Law Explained | L = λ × W | Queueing Theory &amp; System Design</a> — Industry Ready Coder, tiếng Anh. Xem trước định luật Little: L = λW, đúng công thức sizing của bài.
-- <a href="https://www.youtube.com/watch?v=2Lx7QtaPDKw">Little’s Law In Queuing Theory</a> — Explified Labs, tiếng Anh. Little trong hàng đợi, nối user đồng thời với số kết nối.
-- <a href="https://www.youtube.com/watch?v=Cp-aFYHLiCw">Database Connection Pool Sizing - Demystified! by Jasmin Fluri</a> — Devoxx, tiếng Anh. Định cỡ pool cơ sở dữ liệu trên tải thật, đúng tình huống HikariCP.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=fYjiS2ogcoE">Little&#x27;s Law Explained | L = λ × W | Queueing Theory &amp; System Design</a> — Industry Ready Coder, tiếng Anh. Trình bày trực quan định luật Little $$L = \lambda W$$, nền tảng cho công thức định cỡ pool trong bài.
+- <a href="https://www.youtube.com/watch?v=2Lx7QtaPDKw">Little’s Law In Queuing Theory</a> — Explified Labs, tiếng Anh. Giải thích vai trò của định luật Little trong hàng đợi, liên kết số người dùng đồng thời với số kết nối thực tế.
+- <a href="https://www.youtube.com/watch?v=Cp-aFYHLiCw">Database Connection Pool Sizing - Demystified! by Jasmin Fluri</a> — Devoxx, tiếng Anh. Phân tích định cỡ connection pool trên tải thực tế, tương ứng trực tiếp với tình huống HikariCP.

@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 4
 required: true
 lang: en
-excerpt: "Đường/chu trình Euler và điều kiện bậc; đường/chu trình Hamilton; BFS và DFS với độ phức tạp O(V+E); phân biệt bài toán P và NP-hard."
+excerpt: "Đường đi và chu trình Euler với điều kiện bậc đỉnh; đường đi và chu trình Hamilton; thuật toán duyệt BFS và DFS có độ phức tạp O(V+E); phân biệt lớp bài toán P và NP-hard."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,11 +17,11 @@ excerpt: "Đường/chu trình Euler và điều kiện bậc; đường/chu tr�
 
 </div>
 
-Năm 1736, Euler trả lời câu hỏi thực tế: tại Königsberg, có thể đi qua mỗi cây cầu đúng một lần rồi về điểm xuất phát không? Câu trả lời phụ thuộc **bậc** các đỉnh trên mô hình đồ thị — không phụ thuộc cách vẽ bản đồ. Cùng tinh thần “đi hết” nhưng đổi đối tượng từ cạnh sang đỉnh dẫn tới **chu trình Hamilton** và bài toán người du lịch (TSP), vốn khó về mặt tính toán. Cuối mục, **BFS** và **DFS** là hai khuôn mẫu duyệt mọi đỉnh/cạnh đạt được trong thời gian tuyến tính theo kích thước biểu diễn.
+Năm 1736, Leonhard Euler giải quyết một bài toán thực tế tại Königsberg: liệu có thể đi qua mỗi cây cầu đúng một lần rồi quay về điểm xuất phát hay không? Câu trả lời hoàn toàn phụ thuộc vào **bậc** của các đỉnh trong mô hình đồ thị, không phụ thuộc vào hình vẽ địa lý. Khi đổi mục tiêu từ đi qua mọi cạnh sang đi qua mọi đỉnh đúng một lần, ta gặp bài toán **chu trình Hamilton** và bài toán người du lịch (TSP), vốn có độ khó tính toán cao hơn nhiều. Cuối bài, ta tìm hiểu **BFS** và **DFS** — hai thuật toán duyệt đồ thị cơ bản có thời gian chạy tuyến tính theo kích thước danh sách kề.
 
 ![Leonhard Euler](/discrete-mathematics-for-computer-science-iuh/img/course/Leonhard_Euler.jpg)
 
-<p class="textbook-figure-caption" data-figure="12.8">Leonhard Euler (1707–1783) — bài toán 7 cầu Königsberg mở đầu lý thuyết đồ thị.</p>
+<p class="textbook-figure-caption" data-figure="12.8">Leonhard Euler (1707–1783) và bài toán bảy cây cầu Königsberg — khởi nguồn của lý thuyết đồ thị.</p>
 
 ## Mục tiêu học tập
 
@@ -29,10 +29,10 @@ Năm 1736, Euler trả lời câu hỏi thực tế: tại Königsberg, có th�
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Phân biệt** đường/chu trình Euler và đường/chu trình Hamilton.
-- **Áp dụng** điều kiện bậc cho sự tồn tại đường và chu trình Euler.
-- **Mô tả** BFS và DFS, nêu độ phức tạp $$O(V+E)$$ trên danh sách kề.
-- **Giải thích** vì sao Euler thuộc lớp bài toán đa thức trong khi tối ưu Hamilton/TSP là NP-hard.
+- **Phân biệt** đường đi/chu trình Euler và đường đi/chu trình Hamilton.
+- **Áp dụng** điều kiện về bậc đỉnh để kiểm tra sự tồn tại đường đi và chu trình Euler.
+- **Mô tả** cơ chế hoạt động của BFS và DFS, đồng thời giải thích độ phức tạp $$O(V+E)$$ trên danh sách kề.
+- **Giải thích** vì sao bài toán Euler giải được trong thời gian đa thức (lớp P) trong khi tối ưu Hamilton/TSP thuộc lớp NP-hard.
 
 **Từ khóa**: Euler path/cycle, Hamilton path/cycle, BFS, DFS, Hierholzer, NP-hard.
 
@@ -44,42 +44,42 @@ Năm 1736, Euler trả lời câu hỏi thực tế: tại Königsberg, có th�
 
 **Định nghĩa.**
 
-- **Đường Euler** (*Eulerian path*): trail đi qua **mỗi cạnh** của $$G$$ **đúng một lần**.
-- **Chu trình Euler** (*Eulerian circuit*): đường Euler đóng — bắt đầu và kết thúc cùng một đỉnh.
+- **Đường đi Euler** (*Eulerian path*): trail đi qua **mỗi cạnh** của $$G$$ **đúng một lần**.
+- **Chu trình Euler** (*Eulerian circuit*): đường đi Euler khép kín, có đỉnh bắt đầu và đỉnh kết thúc trùng nhau.
 
 </div>
 
-Đối tượng được “phủ” là **cạnh**. Đỉnh có thể (và thường phải) được thăm nhiều lần.
+Đối tượng cần đi qua hết ở đây là **cạnh**; các đỉnh có thể (và thường phải) được thăm nhiều lần.
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý** (Euler, dạng vô hướng). Cho $$G$$ vô hướng. Giả sử mọi cạnh nằm trong một thành phần liên thông (các đỉnh cô lập có thể bỏ qua). Khi đó:
+**Định lý** (Euler, trường hợp vô hướng). Cho đồ thị vô hướng $$G$$ mà mọi cạnh đều nằm trong cùng một thành phần liên thông (có thể bỏ qua các đỉnh cô lập). Khi đó:
 
-- $$G$$ có **chu trình Euler** khi và chỉ khi mọi đỉnh có bậc **chẵn**;
-- $$G$$ có **đường Euler** (không nhất thiết đóng) khi và chỉ khi số đỉnh bậc **lẻ** bằng **0** hoặc **2**.
+- $$G$$ có **chu trình Euler** khi và chỉ khi mọi đỉnh đều có bậc **chẵn**;
+- $$G$$ có **đường đi Euler** (không nhất thiết khép kín) khi và chỉ khi số đỉnh bậc **lẻ** bằng **0** hoặc **2**:
 
-  - 0 đỉnh bậc lẻ: đường Euler đóng (tức chu trình Euler);
-  - đúng 2 đỉnh bậc lẻ: đường Euler mở, bắt đầu tại một đỉnh bậc lẻ và kết thúc tại đỉnh bậc lẻ còn lại.
+  - nếu có 0 đỉnh bậc lẻ: đường đi Euler khép kín (chính là chu trình Euler);
+  - nếu có đúng 2 đỉnh bậc lẻ: đường đi Euler mở, xuất phát tại một đỉnh bậc lẻ và kết thúc tại đỉnh bậc lẻ còn lại.
 
 </div>
 
-*Ý tưởng.* Mỗi lần trail đi vào rồi ra khỏi một đỉnh “giữa đường” dùng hai “nửa” bậc. Ở đỉnh xuất phát/kết thúc của đường mở, còn dư đúng một hướng. Thuật toán **Hierholzer** xây chu trình Euler trong thời gian $$O(\vert E\vert )$$ khi điều kiện thỏa: luôn nối các chu trình con dọc theo cạnh chưa dùng.
+*Ý tưởng chứng minh.* Mỗi lần hành trình đi vào rồi rời khỏi một đỉnh trung gian, nó sử dụng đúng 2 cạnh kề với đỉnh đó. Riêng tại hai đầu mút của đường đi mở, số cạnh sử dụng bị lẻ đi 1. Khi điều kiện tồn tại được thỏa mãn, thuật toán **Hierholzer** xây dựng chu trình Euler trong thời gian $$O(\vert E\vert )$$ bằng cách liên tục ghép các chu trình con dọc theo các cạnh chưa đi qua.
 
 ![Mô hình 7 cầu Königsberg](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_konigsberg_euler.svg)
 
-<p class="textbook-figure-caption" data-figure="12.9">Bốn vùng đất và bảy cầu: mô hình đa đồ thị với bốn đỉnh bậc lẻ — không có đường Euler.</p>
+<p class="textbook-figure-caption" data-figure="12.9">Bốn khu đất và bảy cây cầu được mô hình hóa thành đa đồ thị có 4 đỉnh bậc lẻ, nên không tồn tại đường đi Euler.</p>
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ 1** (Königsberg). Bốn đỉnh với bậc lẻ (thực tế cả bốn đều lẻ). Số đỉnh bậc lẻ $$= 4 \neq 0,2$$. Theo định lý, **không** tồn tại đường Euler — không thể đi qua mỗi cầu đúng một lần, bất kể điểm xuất phát.
+**Ví dụ 1** (Königsberg). Mô hình đa đồ thị có 4 đỉnh và cả 4 đỉnh đều có bậc lẻ. Vì số đỉnh bậc lẻ là $$4 \neq 0,2$$, theo định lý Euler, **không** tồn tại đường đi Euler — không thể đi qua mỗi cây cầu đúng một lần dù xuất phát từ đâu.
 
 </div>
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ 2.** Đồ thị liên thông với dãy bậc $$2,2,4,4$$: mọi bậc chẵn $$\implies$$ có **chu trình Euler**.
+**Ví dụ 2.** Một đồ thị vô hướng liên thông có dãy bậc $$2,2,4,4$$ có tất cả bậc chẵn $$\implies$$ tồn tại **chu trình Euler**.
 
-Dãy $$3,3,2,2$$: đúng hai đỉnh bậc lẻ $$\implies$$ có **đường Euler** mở, **không** có chu trình Euler.
+Với dãy bậc $$3,3,2,2$$, đồ thị có đúng hai đỉnh bậc lẻ $$\implies$$ tồn tại **đường đi Euler** mở nhưng **không** có chu trình Euler.
 
 </div>
 
@@ -89,7 +89,7 @@ Dãy $$3,3,2,2$$: đúng hai đỉnh bậc lẻ $$\implies$$ có **đường Eul
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/konigsberg-bridges.mp4"></video>
 </div>
 
-Euler mô hình hoá bốn khu đất thành bốn đỉnh và bảy cây cầu thành bảy cạnh. Bậc các đỉnh là $$3,5,3,3$$ — cả bốn đều lẻ. Theo định lý Euler, một đường đi qua mỗi cầu đúng một lần cần $$0$$ hoặc $$2$$ đỉnh bậc lẻ, nên lộ trình như vậy không tồn tại (thử đi sẽ luôn bị kẹt).
+Euler mô hình hóa bốn khu đất thành 4 đỉnh và bảy cây cầu thành 7 cạnh, thu được dãy bậc $$3,5,3,3$$ — cả bốn đỉnh đều bậc lẻ. Theo định lý Euler, một hành trình đi qua mỗi cầu đúng một lần chỉ tồn tại khi số đỉnh bậc lẻ là $$0$$ hoặc $$2$$, nên không thể tìm ra lộ trình thỏa mãn yêu cầu.
 
 ## Đường đi và chu trình Hamilton
 
@@ -97,35 +97,35 @@ Euler mô hình hoá bốn khu đất thành bốn đỉnh và bảy cây cầu 
 
 **Định nghĩa.**
 
-- **Đường Hamilton**: path đi qua **mỗi đỉnh** đúng một lần.
-- **Chu trình Hamilton**: cycle đi qua mọi đỉnh đúng một lần rồi trở về đỉnh xuất phát.
+- **Đường đi Hamilton**: đường đi đơn (path) đi qua **mỗi đỉnh** của đồ thị đúng một lần.
+- **Chu trình Hamilton**: chu trình (cycle) đi qua mọi đỉnh đúng một lần rồi quay lại đỉnh xuất phát.
 
 </div>
 
-Đối tượng phủ là **đỉnh**. Không yêu cầu dùng hết cạnh.
+Đối tượng cần đi qua hết ở đây là **đỉnh**; không bắt buộc phải đi qua toàn bộ các cạnh.
 
 ![Euler so với Hamilton](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_euler_vs_hamilton.svg)
 
-<p class="textbook-figure-caption" data-figure="12.10">Trái: chu trình Euler nhấn mạnh phủ cạnh. Phải: chu trình Hamilton nhấn mạnh phủ đỉnh.</p>
+<p class="textbook-figure-caption" data-figure="12.10">Trái: chu trình Euler yêu cầu đi qua mọi cạnh đúng một lần. Phải: chu trình Hamilton yêu cầu đi qua mọi đỉnh đúng một lần.</p>
 
 | | Euler | Hamilton |
 |:---|:---|:---|
-| Đối tượng | Cạnh | Đỉnh |
-| Điều kiện cổ điển | Bậc chẵn / đúng 0 hoặc 2 bậc lẻ | Không có điều kiện bậc đơn giản tương đương |
-| Thuật toán | Hierholzer $$O(E)$$ | Không có thuật toán đa thức tổng quát cho quyết định/tối ưu |
-| Biến thể tối ưu | Ít gặp trong giáo trình cơ sở | TSP — tìm chu trình Hamilton trọng số nhỏ nhất |
+| Đối tượng phủ | Cạnh | Đỉnh |
+| Điều kiện kiểm tra | Dựa trực tiếp trên bậc chẵn/lẻ | Không có điều kiện bậc đơn giản tương đương |
+| Thuật toán | Hierholzer trong $$O(E)$$ | Chưa biết thuật toán thời gian đa thức tổng quát cho bài toán quyết định hoặc tối ưu |
+| Biến thể tối ưu | Ít gặp trong giáo trình cơ sở | TSP — tìm chu trình Hamilton có tổng trọng số nhỏ nhất |
 
-**TSP** (*Traveling Salesman Problem*): trên đồ thị đầy đủ có trọng số, tìm chu trình Hamilton có tổng trọng số nhỏ nhất. Bài toán tối ưu này (và nhiều biến thể quyết định liên quan) là **NP-hard** — xem thêm Chương 20. Trong thực tế người ta dùng heuristic và xấp xỉ; điều đó **không** mâu thuẫn với việc chu trình Euler vẫn giải được nhanh.
+**TSP** (*Traveling Salesman Problem*): trên đồ thị đầy đủ có trọng số, tìm chu trình Hamilton có tổng trọng số nhỏ nhất. Bài toán tối ưu này (và nhiều biến thể quyết định liên quan) thuộc lớp **NP-hard** (xem thêm Chương 20). Trong thực tế, người ta thường dùng thuật toán heuristic hoặc xấp xỉ để giải TSP; điều này không mâu thuẫn với việc chu trình Euler vẫn giải được nhanh chóng trong thời gian tuyến tính.
 
-## BFS — duyệt theo bề rộng
+## BFS — duyệt theo chiều rộng
 
-**BFS** (*Breadth-First Search*) mở rộng đồ thị theo **tầng** khoảng cách từ đỉnh nguồn $$s$$. Cấu trúc hỗ trợ là **hàng đợi** (*queue*).
+**BFS** (*Breadth-First Search*) duyệt đồ thị theo từng **tầng** khoảng cách tăng dần tính từ đỉnh nguồn $$s$$, sử dụng cấu trúc dữ liệu **hàng đợi** (*queue*).
 
 ![BFS theo tầng](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_bfs_layers.svg)
 
-<p class="textbook-figure-caption" data-figure="12.11">BFS từ $$s$$: tầng $$k$$ gồm các đỉnh có đường ngắn nhất (theo số cạnh) độ dài $$k$$.</p>
+<p class="textbook-figure-caption" data-figure="12.11">BFS xuất phát từ $$s$$: tầng $$k$$ gồm các đỉnh có đường đi ngắn nhất (tính theo số cạnh) bằng $$k$$.</p>
 
-**Tính chất quan trọng.** Trên đồ thị **không trọng số** (mọi cạnh độ dài 1), lần đầu BFS thăm đỉnh $$v$$ chính là thời điểm phát hiện đường đi từ $$s$$ tới $$v$$ với **số cạnh tối thiểu**.
+**Tính chất quan trọng.** Trên đồ thị **không trọng số** (mỗi cạnh có độ dài 1), lần đầu tiên BFS chạm tới đỉnh $$v$$ cũng chính là lúc tìm ra đường đi từ $$s$$ đến $$v$$ với **số cạnh ít nhất**.
 
 ```python
 from collections import deque
@@ -148,18 +148,18 @@ def bfs(graph, start):
 
 ## DFS — duyệt theo chiều sâu
 
-**DFS** (*Depth-First Search*) luôn cố gắng đi tiếp theo một cạnh tới đỉnh chưa thăm trước khi quay lui. Cấu trúc hỗ trợ là **ngăn xếp** (*stack*) tường minh hoặc stack gọi hàm khi viết đệ quy.
+**DFS** (*Depth-First Search*) ưu tiên đi sâu theo một nhánh tới các đỉnh chưa thăm trước khi quay lui, sử dụng **ngăn xếp** (*stack*) tường minh hoặc ngăn xếp gọi hàm khi cài đặt bằng đệ quy.
 
 ![Thứ tự DFS](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_dfs_order.svg)
 
-<p class="textbook-figure-caption" data-figure="12.12">DFS ưu tiên nhánh sâu; cạnh ngược trên rừng DFS dùng để phát hiện chu trình.</p>
+<p class="textbook-figure-caption" data-figure="12.12">DFS mở rộng theo nhánh sâu trước; cạnh ngược trên cây/rừng DFS giúp phát hiện chu trình.</p>
 
-Ứng dụng điển hình:
+Các ứng dụng điển hình của DFS:
 
-- phát hiện chu trình (vô hướng và có hướng);
-- **topological sort** trên DAG;
-- tính thành phần liên thông (và biến thể SCC trên digraph);
-- sinh không gian trạng thái trong backtracking.
+- phát hiện chu trình (trên cả đồ thị vô hướng và có hướng);
+- sắp xếp tôpô (**topological sort**) trên DAG;
+- tìm thành phần liên thông và thành phần liên thông mạnh (SCC) trên đồ thị có hướng;
+- duyệt không gian trạng thái trong kỹ thuật quay lui (backtracking).
 
 ```python
 def dfs(graph, start, visited=None, order=None):
@@ -179,25 +179,25 @@ def dfs(graph, start, visited=None, order=None):
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý** (chi phí duyệt). Với biểu diễn **danh sách kề**, cả BFS và DFS chạy trong thời gian $$O(\vert V\vert  + \vert E\vert )$$ và dùng bộ nhớ phụ $$O(\vert V\vert )$$ cho tập đã thăm cùng hàng đợi hoặc ngăn xếp.
+**Định lý** (chi phí duyệt). Khi đồ thị được biểu diễn bằng **danh sách kề**, cả BFS và DFS đều có thời gian chạy $$O(\vert V\vert  + \vert E\vert )$$ và bộ nhớ phụ $$O(\vert V\vert )$$ để lưu tập đỉnh đã thăm cùng hàng đợi hoặc ngăn xếp.
 
 </div>
 
-*Lý do.* Mỗi đỉnh vào hàng đợi/stack tối đa một lần; mỗi danh sách kề được quét đúng một lần khi đỉnh chủ được xử lý — tổng độ dài các danh sách là $$\Theta(\vert E\vert )$$ (hoặc $$2\vert E\vert $$ vô hướng, cùng bậc lớn).
+*Giải thích.* Mỗi đỉnh được đưa vào hàng đợi hoặc ngăn xếp tối đa một lần, và danh sách kề của mỗi đỉnh chỉ được duyệt đúng một lần khi xử lý đỉnh đó. Tổng độ dài các danh sách kề là $$\Theta(\vert E\vert )$$ (hoặc $$2\vert E\vert $$ đối với đồ thị vô hướng, cùng bậc tăng trưởng).
 
-Trên **ma trận kề**, cùng logic duyệt láng giềng mất $$O(\vert V\vert )$$ mỗi đỉnh, dẫn tới $$O(\vert V\vert ^2)$$ — kém hơn rõ khi đồ thị thưa.
+Nếu dùng **ma trận kề**, thao tác tìm các láng giềng của mỗi đỉnh tốn $$O(\vert V\vert )$$, làm tổng thời gian tăng lên $$O(\vert V\vert ^2)$$ — kém hiệu quả rõ rệt trên đồ thị thưa.
 
-| Thuật toán | Cấu trúc | Khoảng cách / ứng dụng chính |
+| Thuật toán | Cấu trúc hỗ trợ | Ứng dụng chính |
 |:---|:---|:---|
-| BFS | Queue | Đường ngắn nhất theo số cạnh; tầng; kiểm tra hai phía |
-| DFS | Stack / đệ quy | Chu trình; topo sort; SCC; backtracking |
+| BFS | Hàng đợi (Queue) | Đường đi ngắn nhất theo số cạnh; phân tầng; kiểm tra đồ thị hai phía |
+| DFS | Ngăn xếp (Stack) / Đệ quy | Phát hiện chu trình; sắp xếp tôpô; tìm SCC; quay lui |
 
 <div class="textbook-example" markdown="1">
 
 **Ví dụ 3** (ứng dụng).
 
-- BFS từ máy chủ gốc trong mạng hop-count: số tầng = số bước chuyển tối thiểu.
-- DFS trên dependency graph: nếu gặp cạnh ngược tới đỉnh đang nằm trên stack đệ quy thì tồn tại chu trình — báo circular dependency trước khi build.
+- Chạy BFS từ máy chủ gốc trong mạng đo theo số bước nhảy (hop-count): chỉ số tầng chính là số bước chuyển tiếp tối thiểu.
+- Chạy DFS trên đồ thị phụ thuộc: nếu gặp cạnh ngược trỏ về một đỉnh đang nằm trên ngăn xếp đệ quy thì đồ thị chứa chu trình — hệ thống có thể báo lỗi phụ thuộc vòng trước khi build.
 
 </div>
 
@@ -205,7 +205,7 @@ Trên **ma trận kề**, cùng logic duyệt láng giềng mất $$O(\vert V\ve
 
 ### Euler và Hamilton
 
-Bật/tắt cạnh, kiểm tra điều kiện bậc cho chu trình Euler và tìm một chu trình Hamilton (nếu có) trên đồ thị nhỏ.
+Bật/tắt cạnh trên đồ thị nhỏ để kiểm tra điều kiện bậc của chu trình Euler và tìm một chu trình Hamilton (nếu tồn tại).
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="euler-hamilton-checker"></div>
@@ -214,7 +214,7 @@ Bật/tắt cạnh, kiểm tra điều kiện bậc cho chu trình Euler và tì
 
 ### BFS / DFS từng bước
 
-Chạy BFS hoặc DFS từng bước: theo dõi hàng đợi / ngăn xếp, thứ tự thăm và khoảng cách $$d$$ (số cạnh từ nguồn trong BFS).
+Chạy mô phỏng BFS hoặc DFS từng bước để theo dõi trạng thái hàng đợi/ngăn xếp, thứ tự thăm đỉnh và khoảng cách $$d$$ (số cạnh tính từ đỉnh nguồn trong BFS).
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="bfs-dfs-visualizer"></div>
@@ -222,9 +222,9 @@ Chạy BFS hoặc DFS từng bước: theo dõi hàng đợi / ngăn xếp, th�
 <script src="{{ '/public/js/bfs-dfs-visualizer.js' | relative_url }}"></script>
 
 
-### Minh hoạ thuật toán đồ thị (BFS / DFS)
+### Minh họa thuật toán đồ thị (BFS / DFS)
 
-Dùng minh hoạ dùng chung (canvas SVG, chỉnh được đồ thị, chạy từng bước, giả mã được tô) để so sánh BFS và DFS trên cùng một đồ thị. Widget BFS/DFS ngay phía trên vẫn giữ nguyên.
+Sử dụng khung minh họa tương tác (hỗ trợ chỉnh sửa đồ thị trên canvas SVG, chạy từng bước và tô sáng giả mã) để so sánh trực tiếp BFS và DFS trên cùng một đồ thị.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="graph-explainer" data-algorithm="bfs"></div>
@@ -237,52 +237,52 @@ Dùng minh hoạ dùng chung (canvas SVG, chỉnh được đồ thị, chạy t
 
 ### Bài tập 1
 
-Đồ thị vô hướng liên thông, bậc các đỉnh: $$2, 2, 4, 4$$. Có chu trình Euler không?
+Một đồ thị vô hướng liên thông có bậc các đỉnh là $$2, 2, 4, 4$$. Đồ thị này có chu trình Euler không?
 
 <details>
 <summary>Đáp án</summary>
 
-Mọi bậc chẵn và đồ thị liên thông $$\implies$$ **có** chu trình Euler.
+Mọi đỉnh đều có bậc chẵn và đồ thị liên thông $$\implies$$ **có** chu trình Euler.
 
 </details>
 
 ### Bài tập 2
 
-Bậc: $$3, 3, 2, 2$$. Có đường Euler? Có chu trình Euler?
+Một đồ thị vô hướng liên thông có dãy bậc $$3, 3, 2, 2$$. Đồ thị có đường đi Euler không? Có chu trình Euler không?
 
 <details>
 <summary>Đáp án</summary>
 
-Đúng hai đỉnh bậc lẻ $$\implies$$ **có đường Euler** mở, **không** có chu trình Euler.
+Đồ thị có đúng hai đỉnh bậc lẻ $$\implies$$ **có đường đi Euler** mở nhưng **không** có chu trình Euler.
 
 </details>
 
 ### Bài tập 3
 
-Vì sao BFS cho đường đi ngắn nhất theo số cạnh trên đồ thị không trọng số?
+Vì sao BFS tìm được đường đi ngắn nhất theo số cạnh trên đồ thị không trọng số?
 
 <details>
 <summary>Đáp án</summary>
 
-BFS xử lý đỉnh theo thứ tự khoảng cách không giảm từ nguồn. Lần đầu gặp $$v$$, mọi đỉnh ở tầng nhỏ hơn đã được xét; không tồn tại path tới $$v$$ ngắn hơn tầng hiện tại.
+BFS duyệt các đỉnh theo thứ tự khoảng cách không giảm tính từ đỉnh nguồn. Do đó, vào thời điểm đỉnh $$v$$ được phát hiện lần đầu tiên, tất cả các đỉnh ở các tầng gần hơn đã được xét hết, nên không thể tồn tại đường đi nào tới $$v$$ có ít cạnh hơn tầng hiện tại.
 
 </details>
 
 ### Bài tập 4
 
-Phân loại độ khó: (a) tìm chu trình Euler; (b) tìm chu trình Hamilton có tổng trọng số nhỏ nhất (TSP). Thuộc P hay NP-hard (theo hiểu biết giáo trình)?
+Phân loại độ khó của hai bài toán sau (thuộc P hay NP-hard): (a) tìm chu trình Euler; (b) tìm chu trình Hamilton có tổng trọng số nhỏ nhất (TSP).
 
 <details>
 <summary>Đáp án</summary>
 
-(a) Euler: giải được đa thức (Hierholzer) — thuộc **P**.  
-(b) TSP tối ưu: **NP-hard**.
+(a) Tìm chu trình Euler giải được trong thời gian đa thức (thuật toán Hierholzer) — thuộc lớp **P**.  
+(b) Bài toán tối ưu TSP thuộc lớp **NP-hard**.
 
 </details>
 
 ### Bài tập 5
 
-Cho danh sách kề
+Cho đồ thị vô hướng biểu diễn bằng danh sách kề:
 
 ```text
 0: 1, 2
@@ -291,30 +291,30 @@ Cho danh sách kề
 3: 1, 2
 ```
 
-(a) Chạy BFS từ 0 — một thứ tự thăm hợp lệ và khoảng cách tới từng đỉnh.  
+(a) Chạy BFS từ đỉnh 0: nêu một thứ tự thăm hợp lệ và khoảng cách tới từng đỉnh.  
 (b) Đồ thị có chu trình Euler không?
 
 <details>
 <summary>Đáp án</summary>
 
-(a) Một BFS hợp lệ: thăm $$0$$, rồi $$1,2$$ (tầng 1), rồi $$3$$ (tầng 2).  
-$$\mathrm{dist}(0)=0$$, $$\mathrm{dist}(1)=\mathrm{dist}(2)=1$$, $$\mathrm{dist}(3)=2$$.
+(a) Một thứ tự duyệt BFS hợp lệ là: thăm $$0$$, tiếp theo là $$1, 2$$ (tầng 1), rồi đến $$3$$ (tầng 2).  
+Khoảng cách tương ứng: $$\mathrm{dist}(0)=0$$, $$\mathrm{dist}(1)=\mathrm{dist}(2)=1$$, $$\mathrm{dist}(3)=2$$.
 
-(b) Bậc: $$\deg(0)=\deg(1)=\deg(2)=\deg(3)=2$$ — mọi bậc chẵn, liên thông $$\implies$$ **có** chu trình Euler (ví dụ đi quanh chu trình 4 đỉnh).
+(b) Bậc các đỉnh là $$\deg(0)=\deg(1)=\deg(2)=\deg(3)=2$$ — mọi đỉnh đều có bậc chẵn và đồ thị liên thông $$\implies$$ **có** chu trình Euler (chẳng hạn $$0 \to 1 \to 3 \to 2 \to 0$$).
 
 </details>
 
 ## Tóm tắt
 
-1. **Euler** phủ **cạnh**: điều kiện bậc chẵn (chu trình) hoặc đúng 0/2 đỉnh bậc lẻ (đường); thuật toán đa thức.
-2. **Hamilton** phủ **đỉnh**: không có tiêu chuẩn bậc đơn giản tương đương; tối ưu TSP là NP-hard.
-3. **BFS** duyệt theo tầng — đường ngắn nhất không trọng số.
-4. **DFS** duyệt sâu — chu trình, topo sort, SCC; cả hai đạt $$O(V+E)$$ trên danh sách kề.
+1. **Euler** xét việc đi qua mọi **cạnh**: điều kiện là mọi đỉnh bậc chẵn (chu trình) hoặc đúng 0 hay 2 đỉnh bậc lẻ (đường đi), giải được trong thời gian đa thức.
+2. **Hamilton** xét việc đi qua mọi **đỉnh**: không có điều kiện bậc đơn giản tương đương; phiên bản tối ưu TSP thuộc lớp NP-hard.
+3. **BFS** duyệt theo tầng, tìm đường đi ngắn nhất trên đồ thị không trọng số.
+4. **DFS** duyệt theo chiều sâu, phục vụ phát hiện chu trình, sắp xếp tôpô và tìm SCC; cả BFS và DFS đều có độ phức tạp $$O(V+E)$$ trên danh sách kề.
 
-Chương 12 dừng ở tầng đồ thị cơ bản. **Chương 16** (Cây) và **Chương 17** (Đồ thị nâng cao) mở rộng sang cây khung, MST và các thuật toán trên đồ thị có trọng số.
+Chương 12 dừng ở các khái niệm đồ thị cơ bản. **Chương 16** (Cây) và **Chương 17** (Đồ thị nâng cao) sẽ mở rộng sang cây khung, cây khung nhỏ nhất (MST) và các thuật toán trên đồ thị có trọng số.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=dSK5jTEe-AM">Euler Paths &amp; the 7 Bridges of Konigsberg | Graph Theory</a> — Dr. Trefor Bazett, tiếng Anh. Xem trước đường Euler và bảy cây cầu.
-- <a href="https://www.youtube.com/watch?v=t_6VByupc1U">[Discrete Mathematics] Hamilton Cycles</a> — TrevTutor, tiếng Anh. Chu trình Hamilton, nửa kia của tiêu đề bài.
-- <a href="https://www.youtube.com/watch?v=pcKY4hjDrxk">5.1 Graph Traversals - BFS &amp; DFS -Breadth First Search and Depth First Search</a> — Abdul Bari, tiếng Anh. BFS và DFS, phần duyệt đồ thị của bài.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=dSK5jTEe-AM">Euler Paths &amp; the 7 Bridges of Konigsberg | Graph Theory</a> — Dr. Trefor Bazett, tiếng Anh. Trình bày đường đi Euler qua bài toán bảy cây cầu Königsberg.
+- <a href="https://www.youtube.com/watch?v=t_6VByupc1U">[Discrete Mathematics] Hamilton Cycles</a> — TrevTutor, tiếng Anh. Giới thiệu chu trình Hamilton.
+- <a href="https://www.youtube.com/watch?v=pcKY4hjDrxk">5.1 Graph Traversals - BFS &amp; DFS -Breadth First Search and Depth First Search</a> — Abdul Bari, tiếng Anh. Trình bày chi tiết hai thuật toán duyệt đồ thị BFS và DFS.
