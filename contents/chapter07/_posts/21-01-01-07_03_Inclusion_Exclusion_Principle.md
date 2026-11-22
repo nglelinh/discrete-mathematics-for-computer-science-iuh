@@ -32,7 +32,7 @@ Khi nhiều điều kiện chồng lên nhau, việc đếm bằng trực giác 
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/inclusion-exclusion.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 16 giây: ví dụ lớp 50 sinh viên với hai tập, đếm xem mỗi vùng của biểu đồ Venn ba tập được cộng/trừ bao nhiêu lần qua từng bước, ví dụ số từ 1 đến 100 chia hết cho 2, 3 hoặc 5 (ra 74, kiểm tra trên lưới 100 ô), công thức tổng quát cho $$n$$ tập, và ứng dụng đếm số cách bỏ thư mà không lá nào đúng phong bì.
+Video dài khoảng 3 phút 6 giây: ví dụ lớp 50 sinh viên với hai tập, đếm xem mỗi vùng của biểu đồ Venn ba tập được cộng/trừ bao nhiêu lần qua từng bước, ví dụ số từ 1 đến 100 chia hết cho 2, 3 hoặc 5 (ra 74, kiểm tra trên lưới 100 ô), bài tập đếm số từ 1 đến 1000 không chia hết cho 3, 5 và 7 (ra 457), công thức tổng quát cho $$n$$ tập, và ứng dụng đếm số cách bỏ thư mà không lá nào đúng phong bì.
 
 ## Đếm hợp của hai tập hợp
 

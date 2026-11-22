@@ -56,6 +56,41 @@ for bit in ENC:
         cur = ""
 assert "".join(dec) == WORD
 
+# MISSISSIPPI: I4, S4, P2, M1
+W2 = "MISSISSIPPI"
+F2 = Counter(W2)
+assert dict(F2) == {"M": 1, "I": 4, "S": 4, "P": 2}
+O2 = ["I", "S", "P", "M"]
+h2 = [(F2[x], i, x) for i, x in enumerate(O2)]
+heapq.heapify(h2)
+K2, M2, c2 = {}, [], 10
+while len(h2) > 1:
+    a = heapq.heappop(h2)
+    b = heapq.heappop(h2)
+    nm = "T%d" % c2
+    K2[nm] = (a[2], b[2])
+    M2.append((a[2], a[0], b[2], b[0], a[0] + b[0]))
+    heapq.heappush(h2, (a[0] + b[0], c2, nm))
+    c2 += 1
+CODE2 = {}
+
+
+def walk2(n, p):
+    if n in K2:
+        walk2(K2[n][0], p + "0")
+        walk2(K2[n][1], p + "1")
+    else:
+        CODE2[n] = p
+
+
+walk2(h2[0][2], "")
+assert M2 == [("M", 1, "P", 2, 3), ("T10", 3, "I", 4, 7), ("S", 4, "T11", 7, 11)]
+assert CODE2 == {"S": "0", "M": "100", "P": "101", "I": "11"}
+assert sum(F2[x] * len(CODE2[x]) for x in F2) == 21 and 11 * 2 == 22
+# mã không prefix-free: A=0, B=01, C=1 → "01" có hai cách đọc
+AMB = {"A": "0", "B": "01", "C": "1"}
+assert AMB["B"] == AMB["A"] + AMB["C"]
+
 POS = {"N8": (-0.6, 4.8), "A": (-2.5, 3.5), "N7": (1.3, 3.5), "N5": (-0.1, 2.2), "N6": (2.7, 2.2),
        "C": (-0.8, 0.9), "D": (0.6, 0.9), "B": (2.0, 0.9), "R": (3.4, 0.9)}
 COLS = {"A": GOLD, "B": BLUE, "R": GREEN, "C": RED, "D": "#c792ea"}
@@ -93,7 +128,7 @@ def qrow(state, y):
 
 class Huffman(Scene):
     def wait(self, duration=1.0, **kw):
-        super().wait(duration * 1.6, **kw)
+        super().wait(duration * 1.9, **kw)
 
     def construct(self):
         # ===== 1. Mở đầu =====
@@ -225,6 +260,60 @@ class Huffman(Scene):
         pf = para("Không cần dấu phân cách: ký tự chỉ nằm ở lá,\nnên không mã nào là tiền tố của mã khác (prefix-free).", 24, WHITE, y=-4.6)
         self.play(FadeIn(pf), run_time=0.6)
         self.wait(4.0)
+        wipe(self, keep=[c])
+
+        # ===== 4b. Vì sao cần prefix-free =====
+        c = swap_cap(self, c, cap("Nếu mã không prefix-free?", 40, RED))
+        m1 = para("Thử mã: A = 0,  B = 01,  C = 1", 32, WHITE, y=4.8)
+        self.play(FadeIn(m1), run_time=0.6)
+        self.wait(1.5)
+        m2 = para("Nhận được chuỗi bit: 01", 30, GOLD, y=3.6)
+        self.play(FadeIn(m2), run_time=0.5)
+        self.wait(1.2)
+        r1 = para("Đọc là B (01)?", 30, BLUE, y=2.4)
+        r2 = para("Hay A rồi C (0 | 1)?", 30, GREEN, y=1.5)
+        self.play(FadeIn(r1), run_time=0.5)
+        self.wait(1.0)
+        self.play(FadeIn(r2), run_time=0.5)
+        self.wait(1.5)
+        m3 = para("Mã 0 của A là tiền tố của mã 01 của B ⇒ mập mờ.\nNgười nhận không biết cắt chuỗi ở đâu.", 24, RED, y=0.0)
+        self.play(FadeIn(m3), run_time=0.6)
+        self.wait(2.5)
+        m4 = para("Cây Huffman tránh được điều này: ký tự chỉ nằm ở lá,\nnên đường đi đến một lá không đi qua lá khác", 24, GREEN, y=-1.8)
+        self.play(FadeIn(m4), run_time=0.6)
+        self.wait(3.0)
+        wipe(self, keep=[c])
+
+        # ===== 4c. Bài tập MISSISSIPPI =====
+        c = swap_cap(self, c, cap("Luyện tập: MISSISSIPPI", 40, GOLD))
+        f = para("Tần suất: I = 4, S = 4, P = 2, M = 1  (11 ký tự)", 26, WHITE, y=5.0)
+        self.play(FadeIn(f), run_time=0.6)
+        self.wait(1.5)
+        mg = [("① gộp M(1) + P(2) → 3", BLUE), ("② gộp 3 + I(4) → 7", BLUE), ("③ gộp S(4) + 7 → 11 (gốc)", BLUE)]
+        y = 3.8
+        for s_, col in mg:
+            t = para(s_, 28, col, y=y)
+            self.play(FadeIn(t, shift=RIGHT * 0.2), run_time=0.5)
+            self.wait(1.3)
+            y -= 0.85
+        tb = VGroup()
+        for i, ch in enumerate(["S", "I", "P", "M"]):
+            yy = 0.9 - i * 0.7
+            tb.add(VGroup(Text(f"{ch}  ({F2[ch]} lần)", font=FONT, font_size=26).move_to([-2.0, yy, 0]),
+                          Text(CODE2[ch], font=FONT, font_size=28, color=GOLD).move_to([1.0, yy, 0]),
+                          Text(f"{F2[ch]} × {len(CODE2[ch])} = {F2[ch] * len(CODE2[ch])}", font=FONT, font_size=24, color=DIM).move_to([3.0, yy, 0])))
+        for r in tb:
+            self.play(FadeIn(r), run_time=0.4)
+            self.wait(0.6)
+        t1 = para("Huffman: 4 + 8 + 6 + 3 = 21 bit", 30, GOLD, y=-2.3)
+        t2 = para("Mã cố định 2 bit cho 4 ký tự: 11 × 2 = 22 bit", 26, WHITE, y=-3.2)
+        self.play(FadeIn(t1), run_time=0.5)
+        self.wait(1.2)
+        self.play(FadeIn(t2), run_time=0.5)
+        self.wait(1.5)
+        t3 = para("Chỉ lợi 1 bit: tần suất khá đều thì Huffman lợi ít.\nTần suất càng lệch (như ABRACADABRA) càng lợi nhiều.", 24, DIM, y=-4.6)
+        self.play(FadeIn(t3), run_time=0.5)
+        self.wait(3.5)
         wipe(self, keep=[c])
 
         # ===== 5. Vì sao tối ưu + ứng dụng =====

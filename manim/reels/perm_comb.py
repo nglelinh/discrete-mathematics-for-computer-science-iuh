@@ -24,6 +24,13 @@ assert (len(OR), len(ORR), len(UN), len(UNR)) == (6, 9, 3, 6)
 assert len(OR) == perm(3, 2) and len(ORR) == 3 ** 2 and len(UN) == comb(3, 2) and len(UNR) == comb(3 + 2 - 1, 2)
 assert 10 ** 4 == 10000 and comb(5, 2) == 10 and perm(5, 3) == 60 and comb(4 + 3 - 1, 3) == 20
 
+# bàn tròn 5 người: quy về dạng bắt đầu bằng A
+CIRC = {min("".join(p[i:] + p[:i]) for i in range(5)) for p in permutations("ABCDE")}
+assert len(CIRC) == 24 == factorial(5) // 5 == factorial(4)
+# ủy ban 2 nữ (trong 8) + 3 nam (trong 10)
+assert comb(8, 2) == 28 and comb(10, 3) == 120 and 28 * 120 == 3360
+assert comb(18, 5) == 8568
+
 
 def chunk(lst, k):
     return "\n".join("  ".join(lst[i:i + k]) for i in range(0, len(lst), k))
@@ -31,7 +38,7 @@ def chunk(lst, k):
 
 class PermComb(Scene):
     def wait(self, duration=1.0, **kw):
-        super().wait(duration * 1.45, **kw)
+        super().wait(duration * 1.7, **kw)
 
     def construct(self):
         # ===== 1. Mở đầu =====
@@ -175,6 +182,53 @@ class PermComb(Scene):
         sym = para("Chọn 3 người đi = chọn 7 người ở lại:\nC(10, 3) = C(10, 7) = 120", 28, GOLD, y=-1.3)
         self.play(FadeIn(sym), run_time=0.6)
         self.wait(3.5)
+        wipe(self, keep=[c])
+
+        # ===== 5b. Bàn tròn =====
+        c = swap_cap(self, c, cap("Xếp 5 người quanh bàn tròn", 40, GOLD))
+        q = para("Chỉ quan tâm ai ngồi cạnh ai (xoay bàn không đổi)", 26, WHITE, y=5.2)
+        self.play(FadeIn(q), run_time=0.5)
+        ctr = np.array([0, 2.4, 0])
+        table = Circle(radius=1.3, color=DIM, stroke_width=3).move_to(ctr)
+        seats = VGroup()
+        for i, ch in enumerate("ABCDE"):
+            ang = PI / 2 - i * 2 * PI / 5
+            p_ = ctr + 2.0 * np.array([np.cos(ang), np.sin(ang), 0])
+            cc = Circle(radius=0.42, color=BLUE, stroke_width=3, fill_color=CELL, fill_opacity=1).move_to(p_)
+            seats.add(VGroup(cc, Text(ch, font=FONT, font_size=30).move_to(cc)))
+        self.play(Create(table), FadeIn(seats), run_time=0.8)
+        self.wait(1.0)
+        e1 = para("Xoay cả bàn: A B C D E, B C D E A, C D E A B, …\nđều là MỘT cách ngồi", 24, WHITE, y=-0.3)
+        self.play(FadeIn(e1), run_time=0.5)
+        spos = [s_.get_center().copy() for s_ in seats]
+        for step in range(1, 6):
+            self.play(*[seats[i].animate(path_arc=-2 * PI / 5).move_to(spos[(i + step) % 5]) for i in range(5)], run_time=0.7)
+            self.wait(0.3)
+        e2 = para("5! = 120 cách xếp hàng, mỗi cách ngồi bị đếm 5 lần", 24, WHITE, y=-1.6)
+        self.play(FadeIn(e2), run_time=0.5)
+        self.wait(1.5)
+        e3 = para("120 / 5 = (5 − 1)! = 24 cách", 36, GOLD, y=-2.7)
+        self.play(FadeIn(e3, scale=1.2), run_time=0.6)
+        self.wait(1.5)
+        e4 = para("Cách nghĩ khác: cố định A, xếp 4 người còn lại: 4! = 24", 22, DIM, y=-3.8)
+        self.play(FadeIn(e4), run_time=0.5)
+        self.wait(3.0)
+        wipe(self, keep=[c])
+
+        # ===== 5c. Ủy ban =====
+        c = swap_cap(self, c, cap("Ghép hai lần chọn", 42, GOLD))
+        q = para("Lớp có 8 nữ, 10 nam. Chọn ban 5 người\ngồm đúng 2 nữ và 3 nam?", 28, WHITE, y=5.0)
+        self.play(FadeIn(q), run_time=0.6)
+        self.wait(1.5)
+        a1 = para("Chọn 2 nữ: C(8, 2) = 28", 30, RED, y=3.4)
+        a2 = para("Chọn 3 nam: C(10, 3) = 120", 30, BLUE, y=2.4)
+        a3 = para("Quy tắc nhân: 28 × 120 = 3360", 34, GOLD, y=1.2)
+        for m in (a1, a2, a3):
+            self.play(FadeIn(m), run_time=0.5)
+            self.wait(1.5)
+        w = para("Sai lầm hay gặp: C(18, 5) = 8568 là chọn 5 người bất kỳ,\nkhông bảo đảm đúng 2 nữ", 22, DIM, y=-0.3)
+        self.play(FadeIn(w), run_time=0.5)
+        self.wait(3.0)
         wipe(self, keep=[c])
 
         # ===== 6. Bảng 4 trường hợp =====

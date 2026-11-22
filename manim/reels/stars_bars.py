@@ -27,6 +27,8 @@ assert len(UP4) == 6 == comb(12, 2) - 3 * comb(7, 2) + 3 * 1 and comb(12, 2) == 
 assert sorted(UP4) == [(2, 4, 4), (3, 3, 4), (3, 4, 3), (4, 2, 4), (4, 3, 3), (4, 4, 2)]
 assert len(sols(3, 10, lo=[5, 0, 0])) == 21 and len(sols(3, 10, lo=[5, 5, 0])) == 1 and len(sols(3, 10, lo=[5, 5, 5])) == 0
 assert comb(4 + 6 - 1, 6) == 84 and comb(3, 5) == 0
+assert len(sols(4, 6)) == 84 and word((2, 0, 3, 1)) == "**||***|*"
+assert len(sols(4, 10, lo=[2, 2, 2, 2])) == comb(5, 3) == 10 and 10 - 8 == 2
 KCOL = [RED, "#f2a0c0", BLUE]     # sô-cô-la, dâu, việt quất
 
 
@@ -53,7 +55,7 @@ def sb(t, unit=0.42, r=0.16, h=0.5, colored=False):
 
 class StarsBars(Scene):
     def wait(self, duration=1.0, **kw):
-        super().wait(duration * 1.6, **kw)
+        super().wait(duration * 1.85, **kw)
 
     def construct(self):
         # ===== 1. Mở đầu =====
@@ -217,6 +219,34 @@ class StarsBars(Scene):
         self.play(LaggedStart(*[FadeIn(m) for m in sl], lag_ratio=0.2), run_time=1.6)
         n2 = para("Đúng 6 nghiệm: các hoán vị của (4,4,2) và (4,3,3)", 24, WHITE, y=-4.4)
         self.play(FadeIn(n2), run_time=0.5)
+        self.wait(3.5)
+        wipe(self, keep=[c])
+
+        # ===== 6b. Hai bài luyện tập =====
+        c = swap_cap(self, c, cap("Luyện tập", 44, GOLD))
+        q1 = para("① Mua 6 viên kẹo từ 4 loại (được trùng loại).\nCó bao nhiêu cách?", 28, WHITE, y=5.0)
+        self.play(FadeIn(q1), run_time=0.6)
+        self.wait(1.5)
+        ex = sb((2, 0, 3, 1), unit=0.55, r=0.21, h=0.7).move_to([0, 3.5, 0])
+        el = para("loại 1: 2,  loại 2: 0,  loại 3: 3,  loại 4: 1", 22, DIM, y=2.8)
+        self.play(FadeIn(ex), FadeIn(el), run_time=0.7)
+        self.wait(1.5)
+        a1 = para("6 sao + 3 vạch = 9 ô, chọn 6 ô cho sao:\nC(9, 6) = C(9, 3) = 84 cách", 28, GOLD, y=1.6)
+        self.play(FadeIn(a1), run_time=0.6)
+        self.wait(3.0)
+        q2 = para("② Chia 10 viên bi giống nhau cho 4 em,\nmỗi em ít nhất 2 viên?", 28, WHITE, y=-0.3)
+        self.play(FadeIn(q2), run_time=0.6)
+        self.wait(1.5)
+        a2 = para("Phát trước mỗi em 2 viên: còn 10 − 8 = 2 viên", 26, BLUE, y=-1.6)
+        self.play(FadeIn(a2), run_time=0.5)
+        self.wait(1.5)
+        a3 = para("2 sao + 3 vạch: C(5, 3) = 10 cách", 30, GOLD, y=-2.6)
+        self.play(FadeIn(a3), run_time=0.5)
+        self.wait(1.5)
+        ex2 = VGroup(sb((1, 1, 0, 0), unit=0.42, r=0.16, h=0.55), sb((0, 2, 0, 0), unit=0.42, r=0.16, h=0.55), sb((0, 0, 1, 1), unit=0.42, r=0.16, h=0.55)).arrange(RIGHT, buff=0.9).move_to([0, -3.6, 0])
+        self.play(FadeIn(ex2), run_time=0.6)
+        a4 = para("Phần dư (1,1,0,0), (0,2,0,0), (0,0,1,1) cho các cách chia\n(3,3,2,2), (2,4,2,2), (2,2,3,3). Liệt kê bằng máy: đúng 10", 22, DIM, y=-4.6)
+        self.play(FadeIn(a4), run_time=0.5)
         self.wait(3.5)
         wipe(self, keep=[c])
 

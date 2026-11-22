@@ -57,7 +57,7 @@ Trước khi học hoán vị và tổ hợp, chúng ta cần hiểu về giai t
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/permutations-combinations.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 18 giây: cây lựa chọn cho $$3! = 6$$ hoán vị, chỉnh hợp $$P(8,3) = 336$$ qua bục trao huy chương, gom 24 bộ có thứ tự thành 4 tập để thấy $$C(n,k) = P(n,k)/k!$$, so sánh $$P(10,3) = 720$$ với $$C(10,3) = 120$$, bảng bốn kiểu đếm (có/không thứ tự, có/không lặp) liệt kê đủ trên $$\{A,B,C\}$$, và bốn câu đố nhanh.
+Video dài khoảng 3 phút 16 giây: cây lựa chọn cho $$3! = 6$$ hoán vị, chỉnh hợp $$P(8,3) = 336$$ qua bục trao huy chương, gom 24 bộ có thứ tự thành 4 tập để thấy $$C(n,k) = P(n,k)/k!$$, so sánh $$P(10,3) = 720$$ với $$C(10,3) = 120$$, xếp 5 người quanh bàn tròn $$(5-1)! = 24$$, chọn ban 2 nữ 3 nam $$C(8,2)\cdot C(10,3) = 3360$$, bảng bốn kiểu đếm (có/không thứ tự, có/không lặp) liệt kê đủ trên $$\{A,B,C\}$$, và bốn câu đố nhanh.
 
 ## Hoán vị (Permutations)
 
