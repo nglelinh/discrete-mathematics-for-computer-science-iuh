@@ -421,7 +421,7 @@
 .textbook-lesson details {
   border: 1px solid var(--tb-border);
   margin: 0.75rem 0 1.25rem;
-  padding: 0;
+  padding: 12px;
   background: var(--tb-bg-subtle);
 }
 
