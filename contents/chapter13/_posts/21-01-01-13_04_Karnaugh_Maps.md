@@ -250,13 +250,28 @@ $$F=1$$ tại các chỉ số $$0,1,2,5,6,7,8,9,10,14$$.
 
 Quy trình: điền lưới; chọn các nhóm lực lượng lớn nhất trước; phủ các ô **1** còn lại bằng nhóm nhỏ hơn; đọc từng nhóm thành tích.
 
-Một phủ thu được là
+Với quy ước ở trên (hàng $$xy$$, cột $$zw$$, ô ở hàng $$xy$$ và cột $$zw$$ là minterm $$m_k$$ với $$k = 8x+4y+2z+w$$), lưới là:
+
+| $$xy \backslash zw$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
+|---|---|---|---|---|
+| $$00$$ | **1** ($$m_0$$) | **1** ($$m_1$$) | 0 ($$m_3$$) | **1** ($$m_2$$) |
+| $$01$$ | 0 ($$m_4$$) | **1** ($$m_5$$) | **1** ($$m_7$$) | **1** ($$m_6$$) |
+| $$11$$ | 0 ($$m_{12}$$) | 0 ($$m_{13}$$) | 0 ($$m_{15}$$) | **1** ($$m_{14}$$) |
+| $$10$$ | **1** ($$m_8$$) | **1** ($$m_9$$) | 0 ($$m_{11}$$) | **1** ($$m_{10}$$) |
+
+Các nhóm:
+
+- **Nhóm 4 ô vòng mép trên–dưới** $$\{m_0,m_1,m_8,m_9\}$$: hàng $$00$$ và $$10$$ (kề nhau nhờ wrap-around), cột $$00,01$$. Trong nhóm $$y=0$$, $$z=0$$ cố định, còn $$x$$ và $$w$$ đổi giá trị, nên nhóm cho $$\bar y\bar z$$.
+- **Nhóm 4 ô cả cột $$zw=10$$** $$\{m_2,m_6,m_{10},m_{14}\}$$: $$z=1$$, $$w=0$$ cố định, cho $$z\bar w$$.
+- **Nhóm 2 ô** $$\{m_5,m_7\}$$: hàng $$01$$, cột $$01$$ và $$11$$; $$x=0$$, $$y=1$$, $$w=1$$ cố định, cho $$\bar x y w$$.
+
+Ba nhóm đều là tế bào lớn cốt yếu: $$m_9$$ chỉ nằm trong nhóm $$\bar y\bar z$$, $$m_{14}$$ chỉ nằm trong nhóm $$z\bar w$$, và một nhóm hai ô duy nhất phủ được cả $$m_5$$ lẫn $$m_7$$ là $$\bar x y w$$. Phủ tối tiểu (duy nhất, 3 tích, 7 literal) là
 
 $$
-F = \bar z\bar w + \bar x w + \bar x y z + y z\bar w.
+F = \bar y\bar z + z\bar w + \bar x y w.
 $$
 
-Mỗi phủ hợp lệ phải phủ đúng tập minterm của $$F$$ và không chứa ô mang **0**.
+Mỗi phủ hợp lệ phải phủ đúng tập minterm của $$F$$ và không chứa ô mang **0**. Chẳng hạn không được khoanh $$\bar z\bar w$$ (cột $$00$$), vì cột đó chứa $$m_4$$ và $$m_{12}$$ mang **0**; cũng không được khoanh $$\bar x w$$ vì nhóm đó chứa $$m_3$$ mang **0**.
 
 </div>
 
