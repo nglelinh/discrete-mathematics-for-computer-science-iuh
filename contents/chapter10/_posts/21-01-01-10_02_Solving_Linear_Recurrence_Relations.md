@@ -132,13 +132,13 @@ $$
 </div>
 
 
-### Video ngắn: Fibonacci và tỉ lệ vàng
+### Video ngắn: Fibonacci, phương trình đặc trưng và công thức Binet
 
 <div class="reel-video" style="text-align:center;margin:1.5rem 0;">
-<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/fibonacci-golden-ratio.mp4"></video>
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/fibonacci-binet.mp4"></video>
 </div>
 
-Dãy Fibonacci $$F_{n+1}=F_n+F_{n-1}$$ có phương trình đặc trưng $$r^2=r+1$$ với hai nghiệm $$\varphi=\frac{1+\sqrt5}{2}$$ và $$\psi=\frac{1-\sqrt5}{2}$$. Vì $$\vert \psi\vert <1$$ nên $$F_{n+1}/F_n\to\varphi\approx 1{,}618$$, đúng như các chữ số vàng ổn định dần trong video.
+Video dài khoảng 2 phút 40 giây: hình xoắn ốc từ các hình vuông cạnh Fibonacci, tỉ số $$F_{n+1}/F_n$$ tiến về $$\varphi$$, thế $$F_n = r^n$$ để được phương trình đặc trưng $$r^2 = r + 1$$ với hai nghiệm $$\varphi, \psi$$, dùng $$F_0 = 0, F_1 = 1$$ tìm hằng số và ra công thức Binet $$F_n = \frac{\varphi^n - \psi^n}{\sqrt5}$$, giải thích vì sao $$F_n$$ là số nguyên gần $$\varphi^n/\sqrt5$$ nhất, và ví dụ nghiệm kép $$a_n = 4a_{n-1} - 4a_{n-2}$$ cho $$a_n = (1+2n)2^n$$.
 
 ## Nghiệm bội
 

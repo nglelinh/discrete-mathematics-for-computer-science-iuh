@@ -70,13 +70,13 @@ Hai đầu mút $$00$$ và $$10$$ cũng khác nhau một bit, nên mép đối d
 
 <p class="textbook-figure-caption" data-figure="13.41">Thứ tự Gray ba bit.</p>
 
-### Video ngắn: Mã Gray trên khối lập phương
+### Video ngắn: Bản đồ Karnaugh
 
 <div class="reel-video" style="text-align:center;margin:1.5rem 0;">
-<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/gray-code-cube.mp4"></video>
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/karnaugh-maps-gray-code.mp4"></video>
 </div>
 
-Mã Gray $$n$$ bit được tạo bằng cách phản chiếu dãy $$n-1$$ bit rồi thêm tiền tố $$0$$ cho nửa đầu và $$1$$ cho nửa sau. Dãy $$000,001,011,010,110,111,101,100$$ đi qua cả $$8$$ đỉnh của khối lập phương, mỗi bước theo một cạnh (đổi đúng một bit) và quay về đỉnh xuất phát — đó là lý do hai ô kề nhau trên K-map chỉ khác nhau một biến.
+Video dài khoảng 3 phút 16 giây: mã Gray tạo bằng phản chiếu và đường đi trên khối lập phương, vì sao hai ô kề nhau gộp được ($$xy + x\bar y = x$$), K-map 2, 3 và 4 biến với các nhóm 2, 4, 8 ô, nhóm vòng qua mép và nhóm bốn góc, ô don't-care, rồi các quy tắc khoanh nhóm để đọc ra dạng SOP tối giản. Mọi lời giải trong video đều được kiểm tra bằng cách vét cạn mọi cách phủ.
 
 ## Cấu trúc K-map và quy tắc nhóm
 
