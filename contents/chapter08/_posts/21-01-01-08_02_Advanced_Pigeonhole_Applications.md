@@ -90,7 +90,9 @@ Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 s
 **Bài toán**: Trong tập n phần tử, có bao nhiêu tập con k phần tử sao cho bất kỳ 2 tập nào cũng có giao khác rỗng?
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Số lượng tối đa là C(n-1, k-1).
+**Định lý** (Erdős–Ko–Rado): Nếu $$n \ge 2k$$ thì số lượng tối đa là $$C(n-1, k-1)$$, đạt được chẳng hạn khi lấy mọi tập con $$k$$ phần tử chứa một phần tử cố định.
+
+*Lưu ý.* Điều kiện $$n \ge 2k$$ là cần thiết: nếu $$n < 2k$$ thì hai tập con $$k$$ phần tử bất kỳ luôn giao nhau (vì $$k + k > n$$), nên có thể lấy tất cả $$C(n, k)$$ tập, nhiều hơn $$C(n-1, k-1)$$.
 </div>
 
 <div class="textbook-proof" markdown="1">
@@ -208,7 +210,7 @@ def network_congestion_analysis(packets, links, link_capacity):
 
 ### Bài tập 2: Hình học
 1. Cho 5 điểm trong hình vuông đơn vị. Chứng minh rằng có 2 điểm cách nhau ≤ √2/2.
-2. Trong mặt phẳng có 9 điểm, không có 3 điểm thẳng hàng. Chứng minh rằng có tam giác có diện tích ≤ 1/4.
+2. Cho 9 điểm trong hình vuông đơn vị, không có 3 điểm nào thẳng hàng. Chứng minh rằng có 3 điểm trong số đó tạo thành tam giác có diện tích $$\le 1/8$$.
 
 ### Bài tập 3: Khoa học Máy tính
 1. Một hash table có 1000 bucket. Cần bao nhiêu key để đảm bảo có bucket chứa ≥ 5 keys?
@@ -220,6 +222,14 @@ def network_congestion_analysis(packets, links, link_capacity):
 
 1. **Xét dãy 1, 11, 111, ..., 111...1 (n chữ số 1)**. Có n số và n remainder khi chia cho n.
 2. **Sử dụng định lý Wilson**: (p-1)! ≡ -1 (mod p) và tính chất của residue bậc hai.
+
+</details>
+
+<details>
+<summary>Gợi ý Bài tập 2</summary>
+
+1. **Chia hình vuông thành 4 ô vuông cạnh $$1/2$$**: 5 điểm vào 4 ô nên có ô chứa 2 điểm; hai điểm trong cùng một ô cách nhau không quá đường chéo ô $$\sqrt{(1/2)^2 + (1/2)^2} = \sqrt{2}/2$$.
+2. **Cũng chia thành 4 ô vuông cạnh $$1/2$$**: 9 điểm vào 4 ô nên có ô chứa ít nhất $$\lceil 9/4 \rceil = 3$$ điểm. Tam giác có 3 đỉnh nằm trong một hình vuông thì có diện tích không quá một nửa diện tích hình vuông đó, nên diện tích $$\le \frac{1}{2} \cdot \frac{1}{4} = \frac{1}{8}$$.
 
 </details>
 
