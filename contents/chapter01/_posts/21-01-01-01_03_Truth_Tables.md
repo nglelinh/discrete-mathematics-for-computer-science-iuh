@@ -14,7 +14,7 @@ excerpt: "Ở mục trước chúng ta đã học các phép toán logic và cá
 
 Khi biểu thức logic dài ra, trực giác của con người thường không đủ đáng tin. Một điều kiện nhìn hợp lý vẫn có thể sai ở đúng một trường hợp biên — và trường hợp đó có thể làm hỏng giao dịch ngân hàng, mở nhầm quyền truy cập, cho kết quả tìm kiếm sai, hoặc khiến test case bỏ sót lỗi. Nhiều bug trong kỹ thuật phần mềm không nằm ở cú pháp mà ở chỗ lập trình viên tin rằng mình hiểu biểu thức, trong khi máy tính đánh giá theo quy tắc ưu tiên khác.
 
-Bảng chân trị liệt kê **mọi khả năng** một cách có hệ thống, thay cho việc đoán mò hoặc thử vài ví dụ. Nhờ đó chúng ta có thể xác định chính xác hành vi của biểu thức trong mọi trường hợp, kiểm tra tương đương logic giữa hai cách viết, phân loại mệnh đề thành hằng đúng, hằng sai hoặc mệnh đề thường, và chọn tổ hợp đầu vào quan trọng cho kiểm thử. Mục này trình bày cách xây dựng bảng chân trị, đọc ý nghĩa của nó, và ứng dụng vào kiểm chứng logic trong lập trình.
+Bảng chân trị liệt kê **mọi khả năng** một cách có hệ thống, thay cho việc đoán mò hoặc thử vài ví dụ. Nhờ đó chúng ta có thể xác định chính xác hành vi của biểu thức trong mọi trường hợp, phân loại mệnh đề thành hằng đúng, hằng sai hoặc mệnh đề thường, và chọn tổ hợp đầu vào quan trọng cho kiểm thử. Mục này trình bày cách xây dựng bảng chân trị, đọc ý nghĩa của nó, và ứng dụng vào kiểm chứng logic trong lập trình.
 
 ## Mục tiêu học tập
 
@@ -26,7 +26,6 @@ Bảng chân trị liệt kê **mọi khả năng** một cách có hệ thống
 - **Xây dựng** bảng chân trị cho biểu thức có 2, 3 hoặc nhiều biến.
 - **Tính** giá trị của biểu thức phức hợp từng bước.
 - **Phân loại** biểu thức thành hằng đúng, hằng sai, hoặc mệnh đề thường.
-- **Kiểm tra** hai biểu thức có tương đương logic không.
 - **Ứng dụng** bảng chân trị để thiết kế test case bao phủ đủ trường hợp.
 
 
@@ -116,9 +115,7 @@ Khi lập bảng, nên thêm cột phụ cho từng biểu thức con để theo
 | F | T |   T   |    F     | T  | F  |    F    |          T           |
 | F | F |   F   |    T     | T  | T  |    T    |          T           |
 
-**Kết luận**: Biểu thức này luôn đúng (tautology). Đây chính là **định luật De Morgan** — một trong những tương đương quan trọng nhất trong logic!
-
-![Minh họa De Morgan bằng biểu đồ Venn](/discrete-mathematics-for-computer-science-iuh/img/course/Intersections_of_two_sets_and_their_complements.svg)
+**Kết luận**: Cột cuối toàn T, nên biểu thức này luôn đúng (tautology). Nó chính là luật De Morgan, bài 1.4 sẽ nói kỹ hơn.
 
 <p class="textbook-figure-caption" data-figure="1.14">Định luật De Morgan — phần bù của hợp/giao tương ứng với giao/hợp của các phần bù.</p>
 ## Các khái niệm quan trọng
@@ -162,24 +159,7 @@ Mệnh đề có thể đúng hoặc sai tùy thuộc vào giá trị của các
 
 ## Ứng dụng của bảng chân trị
 
-### 1. Kiểm tra tính tương đương logic
-Hai mệnh đề tương đương nếu chúng có cùng bảng chân trị.
-
-<div class="textbook-example" markdown="1">
-**Ví dụ**: Kiểm tra p → q ≡ ¬p ∨ q
-
-| p | q | p → q | ¬p | ¬p ∨ q |
-|---|---|-------|----|----|
-| T | T |   T   | F  | T  |
-| T | F |   F   | F  | F  |
-| F | T |   T   | T  | T  |
-| F | F |   T   | T  | T  |
-
-**Kết luận**: p → q ≡ ¬p ∨ q (tương đương)
-</div>
-
-
-### 2. Kiểm tra tính hợp lệ của lập luận
+### 1. Kiểm tra tính hợp lệ của lập luận
 Lập luận hợp lệ nếu kết luận đúng khi tất cả tiền đề đúng.
 
 <div class="textbook-example" markdown="1">
@@ -243,21 +223,7 @@ Một hệ thống cho phép sinh viên xem điểm nếu:
 2. Từ bảng đó, chọn ít nhất 4 test case quan trọng.
 3. Giải thích vì sao test case "đã đăng nhập nhưng không thuộc lớp" cần được kiểm thử.
 
-### Bài tập 5: So sánh hai điều kiện phân quyền
-
-Kiểm tra bằng bảng chân trị xem hai biểu thức sau có tương đương không:
-
-<div class="textbook-equation" markdown="1">
-$$p \lor (q \land \neg r)$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-<div class="textbook-equation" markdown="1">
-$$(p \lor q) \land \neg r$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-Trong đó $$p$$ là "admin", $$q$$ là "owner", $$r$$ là "resource locked". Nếu không tương đương, hãy chỉ ra một hàng làm phản ví dụ.
-
-### Bài tập 6: Bảng chân trị 3 biến
+### Bài tập 5: Bảng chân trị 3 biến
 
 Xây dựng bảng chân trị đầy đủ cho các biểu thức sau:
 
@@ -290,7 +256,7 @@ Nhận xét:
 
 </details>
 
-### Bài tập 7: Từ bảng chân trị sang biểu thức
+### Bài tập 6: Từ bảng chân trị sang biểu thức
 
 Cho bảng chân trị sau, hãy tìm biểu thức logic tương ứng:
 
@@ -328,7 +294,7 @@ Rút gọn:
 
 </details>
 
-### Bài tập 8: Ứng dụng bảng chân trị trong kiểm thử
+### Bài tập 7: Ứng dụng bảng chân trị trong kiểm thử
 
 Một hàm Python kiểm tra điều kiện nhập học:
 
@@ -339,7 +305,6 @@ def can_enroll(has_degree, passed_exam, is_priority):
 
 (a) Lập bảng chân trị cho hàm `can_enroll`.
 (b) Có bao nhiêu test case cần để bao phủ 100% tổ hợp đầu vào?
-(c) Nếu thay đổi yêu cầu thành "cần có bằng hoặc thi đỗ, và không thuộc diện ưu tiên, và (có bằng hoặc ưu tiên)", hãy viết biểu thức mới và so sánh bảng chân trị.
 
 <details>
 <summary>Đáp án</summary>
@@ -359,19 +324,9 @@ def can_enroll(has_degree, passed_exam, is_priority):
 
 (b) Có 3 biến → $$2^3 = 8$$ test case để bao phủ 100% tổ hợp đầu vào (exhaustive testing).
 
-(c) Biểu thức mới: `(has_degree or passed_exam) and not is_priority and (has_degree or is_priority)`
-
-Rút gọn: $$(p \lor q) \land \neg r \land (p \lor r)$$
-= $$(p \lor q) \land (p \lor r) \land \neg r$$
-= $$(p \lor (q \land r)) \land \neg r$$ (luật phân phối)
-= $$(p \land \neg r) \lor (q \land r \land \neg r)$$
-= $$p \land \neg r$$ (vì $$q \land r \land \neg r = F$$)
-
-Kết quả: Biểu thức mới tương đương với "có bằng và không thuộc diện ưu tiên" — hoàn toàn khác với bảng gốc!
-
 </details>
 
-### Bài tập 9: Tautology, Contradiction, Contingency
+### Bài tập 8: Tautology, Contradiction, Contingency
 
 Phân loại các biểu thức sau:
 
@@ -435,7 +390,6 @@ Bài tập 1: Cho các mệnh đề tham biến P: x<0 và Q: y>0. Hoàn thành 
 
 ## Xem thêm / Video gợi ý
 
-- <a href="https://www.youtube.com/watch?v=FMc7pZbvWKA">Logical Equivalences | Prepositional Logic | Discrete Mathematics</a> — NotesForMsc (Truth table proof + laws)
 - [Discrete Math Full Course — Logic & Proofs](https://www.youtube.com/playlist?list=PLHXZ9OQGMqxersk8fUxiUMSIx0DBqsKZS) — Trefor Bazett (Complete semester playlist)
 
 
@@ -443,14 +397,13 @@ Bài tập 1: Cho các mệnh đề tham biến P: x<0 và Q: y>0. Hoàn thành 
 
 - **Bảng chân trị** liệt kê tất cả tổ hợp giá trị của $$n$$ biến ($$2^n$$ hàng) và giá trị của biểu thức tương ứng.
 - Ba loại mệnh đề: **hằng đúng** (tautology), **hằng sai** (contradiction), **mệnh đề thường** (contingency).
-- Bảng chân trị dùng để **kiểm tra tương đương logic** và **tính hợp lệ của lập luận**.
+- Bảng chân trị dùng để kiểm tra **tính hợp lệ của lập luận**.
 - Lỗi thường gặp: nhầm số hàng ($$2^n$$ không phải $$2n$$), tính sai kéo theo, bỏ qua thứ tự ưu tiên toán tử.
 - Ứng dụng trong thiết kế test case và kiểm thử phần mềm.
 
-Trong bài tiếp theo, chúng ta học **tương đương logic** và cách đưa biểu thức về các **dạng chuẩn tắc** (DNF, CNF).
+Bài sau học **tương đương logic** và các **dạng chuẩn tắc** (DNF, CNF).
 
 ## Video tham khảo
 
 - **xem trước** <a href="https://www.youtube.com/watch?v=UiGu57JzLkE">TRUTH TABLES - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước cách lập bảng chân trị từng hàng, đúng trọng tâm bài.
-- <a href="https://www.youtube.com/watch?v=9fX6n0_MDic">PROOFS with TRUTH TABLES - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Dùng bảng để chứng minh tương đương, nối với ứng dụng của bảng.
 - <a href="https://www.youtube.com/watch?v=LNSfM86I8is">Truth Table Example: ~p V ~q</a> — Dr. Trefor Bazett, tiếng Anh. Một bảng cụ thể cho biểu thức có phủ định và tuyển.
