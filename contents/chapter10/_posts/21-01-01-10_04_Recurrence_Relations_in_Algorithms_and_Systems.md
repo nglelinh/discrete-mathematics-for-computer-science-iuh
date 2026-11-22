@@ -6,20 +6,18 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
-excerpt: "Ở các mục trước chúng ta đã định nghĩa, phân loại và giải quan hệ truy hồi tuyến tính (thuần nhất và không thuần nhất). Mục cuối Chương 10 tổng hợp ứng dụng…"
+excerpt: "Tổng hợp các ứng dụng tiêu biểu của hệ thức truy hồi trong khoa học máy tính: từ Fibonacci, chia để trị, quy hoạch động đến mô hình tăng trưởng và xử lý tín hiệu."
 ---
 
-Ở các mục trước chúng ta đã định nghĩa, phân loại và giải quan hệ truy hồi tuyến tính (thuần nhất và không thuần nhất). Mục cuối Chương 10 tổng hợp **ứng dụng** của hệ thức truy hồi trong khoa học máy tính: thay vì mô tả trực tiếp mọi giá trị, ta nêu quy tắc “giá trị hiện tại phụ thuộc các giá trị trước như thế nào”. Từ bài toán thỏ Fibonacci (1202), đến thuật toán chia để trị, dynamic programming, mô hình dân số và xử lý tín hiệu (IIR filter), truy hồi là ngôn ngữ tự nhiên của các hệ thống có **ký ức** — trạng thái hiện tại mang dấu vết của quá khứ.
+Ở các bài trước, chúng ta đã định nghĩa, phân loại và học cách giải quan hệ truy hồi tuyến tính (cả thuần nhất lẫn không thuần nhất). Bài này tổng hợp những **ứng dụng quan trọng** của hệ thức truy hồi trong khoa học máy tính và kỹ thuật hệ thống. Thay vì mô tả trực tiếp từng giá trị độc lập, truy hồi cho phép ta diễn đạt quy luật "trạng thái hiện tại phụ thuộc vào các trạng thái trước như thế nào". Từ bài toán đôi thỏ của Fibonacci (năm 1202) đến thuật toán chia để trị, quy hoạch động, mô hình tăng trưởng người dùng và bộ lọc tín hiệu (IIR filter), truy hồi là ngôn ngữ tự nhiên của mọi hệ thống có **trạng thái và ký ức**.
 
 ---
 
-## Phần 1: Lịch sử — Fibonacci và bài toán thỏ
+## Phần 1: Góc nhìn lịch sử — Fibonacci và bài toán đôi thỏ
 
-### Bài toán Fibonacci và lịch sử
+### Bài toán Fibonacci
 
-Trong *Liber Abaci* năm 1202,
-Leonardo of Pisa — thường gọi là Fibonacci — nêu bài toán sinh sản của thỏ.
-Từ đó xuất hiện dãy số nổi tiếng:
+Trong tác phẩm *Liber Abaci* xuất bản năm 1202, Leonardo of Pisa — thường được biết đến với tên gọi Fibonacci — đã đề xuất bài toán mô tả quá trình sinh sản của thỏ. Từ đó ra đời dãy số nổi tiếng:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -27,37 +25,24 @@ F_n = F_{n-1} + F_{n-2}
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Điểm hấp dẫn ở đây không chỉ là dãy số.
-Điểm hấp dẫn là ý tưởng mô tả tương lai bằng quá khứ gần.
+
+Giá trị sâu xa của bài toán không chỉ nằm ở bản thân dãy số, mà ở tư duy mô tả trạng thái tương lai thông qua các trạng thái gần nhất trong quá khứ.
 
 ### Tư duy truy hồi là tư duy cấu trúc
 
-Nhiều hiện tượng trong tự nhiên,
-kinh tế,
-và computing
-không thuận tiện nếu mô tả từng bước độc lập.
-Chúng thích hợp hơn với quy luật:
-
-“Giá trị tiếp theo phụ thuộc vào vài giá trị trước đó.”
-
-Chính vì thế,
-hệ thức truy hồi trở thành cầu nối giữa pattern và prediction.
+Rất nhiều hiện tượng trong tự nhiên, kinh tế và khoa học máy tính rất khó diễn tả nếu xét từng thời điểm tách rời nhau. Ngược lại, chúng trở nên rõ ràng và gọn gàng hơn nhiều khi được mô tả bằng một quy luật chuyển tiếp: *"Giá trị tiếp theo phụ thuộc vào một vài giá trị trước đó."* Chính vì vậy, hệ thức truy hồi trở thành cầu nối giữa việc nhận diện quy luật (pattern) và dự đoán hành vi hệ thống (prediction).
 
 ![Xoắn ốc Fibonacci](/discrete-mathematics-for-computer-science-iuh/img/course/Fibonacci_spiral.svg)
 
-<p class="textbook-figure-caption" data-figure="10.15">Bài toán thỏ của Fibonacci mở ra một cách mô tả tăng trưởng và cấu trúc lặp rất bền trong toán học và computing.</p>
+<p class="textbook-figure-caption" data-figure="10.15">Bài toán đôi thỏ của Fibonacci mở ra một cách mô tả tăng trưởng và cấu trúc lặp đầy sức mạnh trong toán học và khoa học máy tính.</p>
+
 ---
 
 ## Phần 2: Phân tích thuật toán chia để trị
 
-### Vì sao divide-and-conquer sinh ra truy hồi
+### Vì sao chia để trị sinh ra hệ thức truy hồi?
 
-Khi thuật toán chia bài toán kích thước `n`
-thành các bài toán con,
-rồi ghép kết quả,
-chi phí thường thỏa một recurrence.
-
-Ví dụ merge sort:
+Khi một thuật toán chia bài toán kích thước $$n$$ thành các bài toán con nhỏ hơn, giải đệ quy từng bài toán con rồi hợp nhất kết quả, tổng chi phí thực thi của nó thường thỏa mãn một hệ thức truy hồi. Chẳng hạn, với thuật toán Merge Sort:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -65,12 +50,12 @@ T(n) = 2T(n/2) + n
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Đây không phải ký hiệu trang trí.
-Nó là bản tóm tắt bản chất thời gian chạy.
 
-### Master Theorem như công cụ công nghiệp nhỏ gọn
+Biểu thức này không phải ký hiệu hình thức, mà là bản tóm tắt chính xác cấu trúc thời gian chạy của thuật toán: chia đôi mảng thành 2 bài toán con kích thước $$n/2$$ và tốn chi phí tuyến tính $$n$$ để trộn kết quả.
 
-Master Theorem giúp giải nhanh nhiều recurrence kiểu:
+### Định lý Thợ (Master Theorem) — công cụ phân tích gọn nhẹ
+
+Định lý Thợ (Master Theorem) cho phép đánh giá nhanh độ phức tạp của lớp truy hồi chia để trị phổ biến:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -78,38 +63,32 @@ T(n)=aT(n/b)+f(n)
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Từ đó,
-kỹ sư có thể phân biệt:
 
-- thuật toán nào scale ổn,
-- thuật toán nào tăng quá nhanh,
-- optimization nào thật sự đáng giá.
+Nhờ công cụ này, kỹ sư phần mềm có thể nhanh chóng xác định:
 
-### Từ sách giáo khoa đến production
+- Thuật toán nào mở rộng (scale) tốt khi dữ liệu tăng lớn.
+- Thuật toán nào có chi phí tăng quá nhanh và sớm chạm ngưỡng nghẽn cổ chai.
+- Cải tiến tối ưu hóa nào thực sự tạo ra khác biệt đáng kể về bậc độ phức tạp.
 
-Search systems,
-parallel sort,
-tree processing,
-geometric partitioning,
-FFT-style methods
-đều có tinh thần divide-and-conquer.
+### Từ giáo trình đến hệ thống thực tế
 
-Phân tích recurrence vì thế không chỉ giúp qua môn.
-Nó giúp hiểu chi phí kiến trúc của nhiều hệ thống thật.
+Tinh thần chia để trị hiện diện rộng rãi trong các hệ thống tìm kiếm, sắp xếp song song (parallel sort), xử lý cấu trúc cây, phân hoạch không gian hình học và các thuật toán biến đổi Fourier nhanh (FFT). Vì thế, kỹ năng phân tích hệ thức truy hồi không chỉ phục vụ việc học lý thuyết mà còn giúp đánh giá chi phí kiến trúc của các hệ thống thực tế.
 
 ![Master Theorem — phân tích chia để trị](/discrete-mathematics-for-computer-science-iuh/img/course/Master_theorem.png)
 
-<p class="textbook-figure-caption" data-figure="10.16">Master Theorem giải nhanh $$T(n)=aT(n/b)+f(n)$$ — công cụ nền cho phân tích merge sort, FFT và nhiều thuật toán chia để trị.</p>
+<p class="textbook-figure-caption" data-figure="10.16">Định lý Thợ (Master Theorem) giúp giải nhanh dạng $$T(n)=aT(n/b)+f(n)$$ — công cụ nền tảng khi phân tích Merge Sort, FFT và nhiều thuật toán chia để trị.</p>
+
 ![Merge Sort — sơ đồ thuật toán](/discrete-mathematics-for-computer-science-iuh/img/course/Merge_sort_algorithm_diagram.svg)
 
-<p class="textbook-figure-caption" data-figure="10.17">Divide-and-conquer sinh truy hồi tự nhiên — chi phí chia, đệ quy con, và ghép kết quả.</p>
+<p class="textbook-figure-caption" data-figure="10.17">Mô hình chia để trị dẫn tới quan hệ truy hồi một cách tự nhiên qua ba pha: chia bài toán, giải đệ quy bài toán con và hợp nhất kết quả.</p>
+
 ---
 
-## Phần 3: Dynamic programming — truy hồi cộng với trí nhớ
+## Phần 3: Quy hoạch động — truy hồi kết hợp với bộ nhớ
 
-### Fibonacci ngây thơ và bài học về chồng lặp
+### Đệ quy ngây thơ và bài học về bài toán con gối nhau
 
-Nếu cài Fibonacci đệ quy trực tiếp:
+Nếu cài đặt dãy Fibonacci trực tiếp theo định nghĩa đệ quy:
 
 ```python
 def fib(n):
@@ -118,9 +97,11 @@ def fib(n):
     return fib(n - 1) + fib(n - 2)
 ```
 
-ta lặp lại rất nhiều lời gọi con giống nhau.
+chương trình sẽ lặp lại rất nhiều lời gọi hàm giống hệt nhau, khiến thời gian chạy bùng nổ theo hàm mũ.
 
-### Memoization biến truy hồi thành hiệu quả
+### Ghi nhớ kết quả (Memoization) giúp truy hồi trở nên hiệu quả
+
+Chỉ cần lưu lại các kết quả đã tính để tái sử dụng:
 
 ```python
 memo = {}
@@ -134,42 +115,35 @@ def fib(n):
     return memo[n]
 ```
 
-Đây là khoảnh khắc dynamic programming tỏa sáng:
-giữ lại kết quả cũ để tránh tính lại.
+Đây chính là cốt lõi của quy hoạch động (dynamic programming): giữ nguyên công thức truy hồi, nhưng bổ sung bộ nhớ để tránh tính toán dư thừa.
 
-### DP trong thế giới thật
+### Quy hoạch động trong thực tế
 
-Dynamic programming sống trong:
+Kỹ thuật quy hoạch động xuất hiện ở rất nhiều bài toán ứng dụng:
 
-- shortest paths,
-- sequence alignment,
-- edit distance,
-- resource allocation,
-- parsing,
-- optimization over states.
+- Tìm đường đi ngắn nhất trên đồ thị (shortest paths).
+- Gióng hàng chuỗi sinh học (sequence alignment).
+- Tính khoảng cách biên tập giữa hai văn bản (edit distance).
+- Phân bổ tài nguyên (resource allocation).
+- Phân tích cú pháp (parsing) và tối ưu hóa theo trạng thái.
 
-Nhiều bài toán công nghiệp nhìn ngoài rất khác nhau,
-nhưng khi bóc lớp vỏ,
-chúng đều nói:
-“bài toán lớn có thể xây từ bài toán con nào,
-và ta có đang lặp lại không?”
+Nhìn bề ngoài, các bài toán này thuộc nhiều lĩnh vực khác nhau, nhưng khi đi vào bản chất, tất cả đều xoay quanh hai câu hỏi: *"Bài toán lớn được xây dựng từ những bài toán con nào?"* và *"Các bài toán con đó có bị tính lặp lại hay không?"*
 
 ![Dynamic programming — memoization](/discrete-mathematics-for-computer-science-iuh/img/course/Dsa_dynamic_programming_salmon_fish_memoized_step_n.png)
 
-<p class="textbook-figure-caption" data-figure="10.18">Dynamic programming khai thác truy hồi nhưng thêm trí nhớ, biến ý tưởng đẹp thành công cụ hiệu quả.</p>
+<p class="textbook-figure-caption" data-figure="10.18">Quy hoạch động khai thác công thức truy hồi kết hợp với cơ chế lưu trữ trạng thái, biến mô hình toán học thành thuật toán hiệu quả.</p>
+
 ![Cây gọi đệ quy Fibonacci — trước memoization](/discrete-mathematics-for-computer-science-iuh/img/course/Algorithms-F6CallTreeMemoized.png)
 
-<p class="textbook-figure-caption" data-figure="10.19">Memoization loại bỏ tính lại — cùng truy hồi nhưng từ exponential xuống linear thời gian.</p>
+<p class="textbook-figure-caption" data-figure="10.19">Kỹ thuật memoization loại bỏ các lời gọi trùng lặp, đưa thời gian chạy từ bậc hàm mũ xuống bậc tuyến tính.</p>
+
 ---
 
-## Phần 4: Population growth và mô hình hóa quá trình
+## Phần 4: Mô hình hóa tăng trưởng dân số và sản phẩm số
 
-### Truy hồi tự nhiên trong mô hình dân số
+### Truy hồi trong mô hình tăng trưởng dân số
 
-Nếu dân số năm sau phụ thuộc dân số năm nay và tỷ lệ sinh-tử,
-ta có recurrence.
-
-Ví dụ đơn giản:
+Khi dân số năm sau phụ thuộc vào dân số năm hiện tại cùng các tỷ lệ sinh, tử và di cư, ta có thể biểu diễn trực tiếp bằng một hệ thức truy hồi. Ở dạng đơn giản nhất (tăng trưởng đều 2% mỗi năm):
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -177,107 +151,80 @@ P_{n+1} = 1.02P_n
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Hoặc mô hình phong phú hơn:
+
+Ở dạng tổng quát hơn:
 
 <div class="textbook-equation" markdown="1">
 $$
-P_{n+1}=P_n + births_n - deaths_n + migration_n
+P_{n+1}=P_n + \text{births}_n - \text{deaths}_n + \text{migration}_n
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-### Từ sinh học đến user growth
 
-Trong digital products,
-tư duy tương tự xuất hiện khi mô hình hóa:
+### Từ sinh thái học đến tăng trưởng người dùng (User Growth)
 
-- active users,
-- retention,
-- churn,
-- referrals,
-- viral growth.
+Trong lĩnh vực sản phẩm số (digital products), cách tư duy tương tự được dùng để mô hình hóa các chỉ số cốt lõi như:
 
-Nghĩa là bài học về population không chỉ dành cho sinh thái học.
-Nó còn gợi trực giác về product dynamics.
+- Lượng người dùng hoạt động (active users).
+- Tỷ lệ giữ chân người dùng (retention) và tỷ lệ rời bỏ (churn).
+- Hiệu ứng giới thiệu (referrals) và tăng trưởng lan truyền (viral growth).
+
+Nhờ vậy, bài toán tăng trưởng dân số không chỉ có ý nghĩa trong sinh thái học mà còn mang lại trực giác hữu ích khi phân tích động học tăng trưởng của sản phẩm công nghệ.
 
 ![Tháp Hà Nội — truy hồi exponential](/discrete-mathematics-for-computer-science-iuh/img/course/Tower_of_Hanoi.gif)
 
-<p class="textbook-figure-caption" data-figure="10.20">Tháp Hà Nội có $$H_n = 2H_{n-1}+1$$ — mô hình tăng trưởng exponential từ truy hồi đơn giản.</p>
+<p class="textbook-figure-caption" data-figure="10.20">Tháp Hà Nội với hệ thức $$H_n = 2H_{n-1}+1$$ minh họa rõ tốc độ tăng trưởng hàm mũ xuất phát từ một quy luật truy hồi rất đơn giản.</p>
+
 ---
 
-## Phần 5: Signal processing và IIR filters
+## Phần 5: Xử lý tín hiệu và bộ lọc IIR
 
 ### Bộ lọc có ký ức
 
-Trong signal processing,
-nhiều bộ lọc tạo output hiện tại dựa trên:
-
-- input hiện tại,
-- input quá khứ,
-- output quá khứ.
-
-Ví dụ dạng đơn giản:
+Trong xử lý tín hiệu số (Digital Signal Processing — DSP), nhiều bộ lọc tạo ra đầu ra (output) tại thời điểm hiện tại dựa trên đầu vào hiện tại, các đầu vào trước đó và cả các đầu ra trong quá khứ. Một dạng bộ lọc phản hồi xung vô hạn (IIR filter) đơn giản có công thức:
 
 <div class="textbook-equation" markdown="1">
 $$
-y_n = ax_n + by_{n-1}
+y_n = a x_n + b y_{n-1}
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Đây là recurrence rất thật.
 
-### Vì sao nó quan trọng với CS
+Đây thực chất là một quan hệ truy hồi tuyến tính không thuần nhất bậc nhất.
 
-Không phải mọi sinh viên CS đều học DSP sâu,
-nhưng tư duy ở đây rất bổ ích:
+### Ý nghĩa đối với sinh viên Khoa học Máy tính
 
-- hệ thống có state,
-- trạng thái hiện tại phụ thuộc lịch sử,
-- stability phụ thuộc hệ số,
-- behavior dài hạn cần phân tích từ recurrence.
+Dù không phải ai cũng đi sâu vào xử lý tín hiệu, góc nhìn này vẫn rất giá trị trong thiết kế hệ thống nói chung:
 
-Ý tưởng này nối tốt sang control systems,
-stream processing,
-feedback loops,
-và một số mô hình thời gian trong ML.
+- Hệ thống có trạng thái (stateful) luôn chịu ảnh hưởng từ lịch sử vận hành.
+- Tính ổn định (stability) của hệ thống phụ thuộc trực tiếp vào độ lớn các hệ số (như mô-đun nghiệm đặc trưng $$\rho$$ đã học ở Bài 10.2).
+- Hành vi dài hạn của hệ thống có thể được dự đoán sớm thông qua việc phân tích hệ thức truy hồi.
+
+Tư duy này liên kết chặt chẽ với hệ thống điều khiển (control systems), xử lý luồng dữ liệu (stream processing), vòng phản hồi (feedback loops) và các mô hình chuỗi thời gian trong học máy.
 
 ---
 
-## Phần 6: Tương lai — recurrence thinking trong AI và systems
+## Phần 6: Tư duy truy hồi trong AI và hệ thống hiện đại
 
-Ngay cả khi công cụ ngày càng hiện đại,
-tư duy truy hồi vẫn còn:
+Ngay cả trong bối cảnh công nghệ AI và hệ thống phân tán phát triển nhanh chóng, tư duy truy hồi vẫn giữ vai trò trung tâm ở nhiều bài toán:
 
-- recurrent architectures,
-- state-space models,
-- streaming analytics,
-- caching dynamics,
-- recursive data structures,
-- time-series forecasting.
+- Các kiến trúc mạng hồi quy (recurrent architectures) và mô hình không gian trạng thái (state-space models).
+- Phân tích dữ liệu luồng (streaming analytics) và dự báo chuỗi thời gian (time-series forecasting).
+- Cơ chế bộ nhớ đệm (caching dynamics) và cấu trúc dữ liệu đệ quy.
 
-Hệ thức truy hồi là ngôn ngữ để nói về “hôm nay mang dấu vết của hôm qua”.
-Và rất nhiều hệ thống tính toán có đúng tính chất đó.
+Hệ thức truy hồi chính là ngôn ngữ toán học để mô tả những hệ thống mà *"hôm nay mang dấu vết của hôm qua"* — đặc trưng phổ biến của phần lớn các hệ thống tính toán hiện đại.
 
 ---
 
 ## Kết luận
 
-Từ bài toán thỏ của Fibonacci,
-đến Master Theorem,
-dynamic programming,
-population models,
-và IIR filters,
-hệ thức truy hồi cho ta một cách nghĩ sâu về cấu trúc lặp và phụ thuộc theo thời gian.
-
-Trong computing,
-đó là một năng lực cực quý:
-thấy được quy luật phía sau quá trình,
-thay vì chỉ nhìn từng bước riêng lẻ.
+Từ bài toán đôi thỏ của Fibonacci đến Định lý Thợ, quy hoạch động, mô hình tăng trưởng người dùng và bộ lọc IIR, hệ thức truy hồi mang lại một góc nhìn sâu sắc về cấu trúc lặp và sự phụ thuộc theo thời gian. Trong khoa học máy tính, đây là năng lực quan trọng giúp kỹ sư nhìn thấy quy luật tổng thể đằng sau một quá trình, thay vì chỉ quan sát rời rạc từng bước thực thi.
 
 ---
 
 ### Minh hoạ tương tác
 
-Minh hoạ chia để trị: định lý Master với T(n)=aT(n/b)+f(n) và cây đệ quy (chế độ Fibonacci hiển thị số lần gọi). Các widget có sẵn bên trên vẫn giữ nguyên.
+Khám phá Định lý Thợ cho truy hồi chia để trị $$T(n) = aT(n/b) + f(n)$$ và quan sát cây gọi đệ quy (với chế độ Fibonacci hiển thị số lần gọi hàm) qua công cụ dưới đây:
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="recurrence-explainer" data-mode="dc"></div>
@@ -286,49 +233,48 @@ Minh hoạ chia để trị: định lý Master với T(n)=aT(n/b)+f(n) và cây
 
 ## Bài tập thực hành
 
-### Bài tập 1: Viết công thức đệ quy
+### Bài tập 1: Thiết lập công thức truy hồi
 
-Viết công thức đệ quy cho số lần gọi hàm trong thuật toán Merge Sort với kích thước n.
-
-<details>
-<summary>Đáp án</summary>
-
-$$T(n) = 2T(n/2) + n$$ (với $$T(1) = 1$$).
-
-</details>
-
-### Bài tập 2: Giải recurrence đơn giản
-
-Giải $$T(n) = T(n-1) + 3$$, $$T(1) = 2$$.
+Hãy viết hệ thức truy hồi mô tả thời gian chạy của thuật toán Merge Sort trên mảng có kích thước $$n$$.
 
 <details>
 <summary>Đáp án</summary>
 
-$$T(n) = 3n - 1$$.
+$$T(n) = 2T(n/2) + n$$ với điều kiện đầu $$T(1) = 1$$ (hoặc hằng số $$c$$).
 
 </details>
 
-### Bài tập 3: Ứng dụng DP
+### Bài tập 2: Giải truy hồi đơn giản
 
-Viết recurrence cho bài toán tính số cách leo cầu thang n bậc (mỗi bước 1 hoặc 2 bậc).
+Tìm công thức đóng của $$T(n) = T(n-1) + 3$$ với $$T(1) = 2$$.
 
 <details>
 <summary>Đáp án</summary>
 
-$$a_n = a_{n-1} + a_{n-2}$$, $$a_1=1$$, $$a_2=2$$ (dãy Fibonacci).
+Đây là cấp số cộng có công sai $$3$$, nên $$T(n) = 2 + 3(n - 1) = 3n - 1$$.
 
 </details>
 
+### Bài tập 3: Ứng dụng quy hoạch động
+
+Viết hệ thức truy hồi kèm điều kiện đầu cho bài toán đếm số cách leo hết cầu thang $$n$$ bậc, biết mỗi bước chỉ được đi 1 bậc hoặc 2 bậc.
+
+<details>
+<summary>Đáp án</summary>
+
+$$a_n = a_{n-1} + a_{n-2}$$ với $$a_1 = 1$$ và $$a_2 = 2$$ (tuân theo quy luật dãy Fibonacci).
+
+</details>
 
 ## Xem thêm / Video gợi ý
 
-- [Relations and Functions](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — Trefor Bazett (Equivalence relations)
+- [Relations and Functions](https://www.youtube.com/watch?v=3jZ5n8k0p0Q) — Trefor Bazett (Ôn tập về quan hệ tương đương)
 
 ## Tóm tắt
 
-Quan hệ đệ quy là ngôn ngữ tự nhiên để mô tả thuật toán chia để trị, quy hoạch động và nhiều hệ thống thực tế. Hiểu cách viết, giải và phân tích recurrence giúp chúng ta đánh giá hiệu năng thuật toán, thiết kế giải pháp tối ưu và mô hình hóa các quá trình động. Đây là cầu nối giữa toán học rời rạc và kỹ thuật phần mềm hiệu quả.
+Quan hệ truy hồi là ngôn ngữ tự nhiên để mô tả các thuật toán chia để trị, quy hoạch động và nhiều hệ thống động trong thực tế. Việc biết cách thiết lập, giải và phân tích hệ thức truy hồi giúp chúng ta đánh giá chính xác hiệu năng thuật toán, thiết kế giải pháp tối ưu và kết nối chặt chẽ toán học rời rạc với kỹ thuật phần mềm.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=OynWkEj0S-s">2.4.1 Masters Theorem in Algorithms for Dividing Function #1</a> — Abdul Bari, tiếng Anh. Xem trước định lý thợ cho truy hồi chia để trị.
-- <a href="https://www.youtube.com/watch?v=eAaP4XaB8hM">RECURRENCE RELATIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Dạng truy hồi tổng quát đứng sau công thức độ phức tạp.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=OynWkEj0S-s">2.4.1 Masters Theorem in Algorithms for Dividing Function #1</a> — Abdul Bari (tiếng Anh). Hướng dẫn chi tiết cách áp dụng Định lý Thợ cho truy hồi chia để trị.
+- <a href="https://www.youtube.com/watch?v=eAaP4XaB8hM">RECURRENCE RELATIONS - DISCRETE MATHEMATICS</a> — TrevTutor (tiếng Anh). Củng cố dạng truy hồi tổng quát đứng sau các công thức đánh giá độ phức tạp.
