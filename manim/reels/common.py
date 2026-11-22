@@ -18,7 +18,10 @@ CAP_Y = 6.3      # vị trí phụ đề (vùng an toàn: |x| <= 4, -6.5 <= y <=
 
 
 def cap(text, size=36, color=WHITE):
-    return Text(text, font=FONT, font_size=size, color=color).move_to([0, CAP_Y, 0])
+    t = Text(text, font=FONT, font_size=size, color=color)
+    if t.width > 8.0:
+        t.scale_to_fit_width(8.0)
+    return t.move_to([0, CAP_Y, 0])
 
 
 def swap_cap(scene, old, new, rt=0.45):
@@ -35,3 +38,22 @@ def gold_digits(num_mobj, text, ref):
         match += 1
     for i, ch in enumerate(num_mobj.submobjects):
         ch.set_color(GOLD if i < match else WHITE)
+
+
+# ---------- Hàm dùng thêm cho các reel dài (2026-11) ----------
+GREEN = "#6bd68a"
+
+
+def para(text, size=30, color=WHITE, y=0.0, x=0.0, w=7.8, **kw):
+    """Đoạn chữ (có thể nhiều dòng), tự thu nhỏ nếu rộng quá w."""
+    m = Text(text, font=FONT, font_size=size, color=color, line_spacing=1.1, **kw)
+    if m.width > w:
+        m.scale_to_fit_width(w)
+    return m.move_to([x, y, 0])
+
+
+def wipe(scene, keep=(), rt=0.5):
+    """Xoá mọi thứ trên màn hình trừ các đối tượng trong keep."""
+    mobs = [m for m in scene.mobjects if m not in keep]
+    if mobs:
+        scene.play(*[FadeOut(m) for m in mobs], run_time=rt)

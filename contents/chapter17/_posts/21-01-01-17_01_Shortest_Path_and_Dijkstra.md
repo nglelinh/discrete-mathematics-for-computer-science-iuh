@@ -114,6 +114,14 @@ Explainer đồ thị dùng chung: chọn **Dijkstra**, theo dõi $$d(v)$$, tậ
 <script src="{{ '/public/js/explainers/graph-explainer.js' | relative_url }}"></script>
 
 
+### Video ngắn: Dijkstra từng bước
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/dijkstra-shortest-path.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 58 giây: chạy Dijkstra từng bước trên đồ thị có hướng 6 đỉnh, theo dõi nhãn $$d[v]$$, phép relax và hàng đợi ưu tiên, dựng cây đường đi ngắn nhất (đường 5 cạnh dài 8 ngắn hơn đường 3 cạnh dài 10), giải thích vì sao bước chốt đúng khi trọng số không âm, và một ví dụ cạnh âm làm Dijkstra cho kết quả sai.
+
 ## Bellman–Ford và trọng số âm
 
 <div class="textbook-theorem" markdown="1">

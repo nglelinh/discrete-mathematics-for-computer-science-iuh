@@ -80,6 +80,14 @@ Xem các domino đổ lần lượt khi đã có **cơ sở** và **bước quy 
 </div>
 <script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
 
+### Video ngắn: Quy nạp toán học
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/induction-dominoes.mp4"></video>
+</div>
+
+Video dài khoảng 3 phút 20 giây: hình ảnh domino và hai bước của quy nạp, chứng minh $$1 + 2 + \cdots + n = \frac{n(n+1)}{2}$$, ví dụ $$n^2 + n + 41$$ cho thấy thử nhiều giá trị chưa phải chứng minh, hai chứng minh sai (quên bước cơ sở, “mọi con ngựa cùng màu”) và phần giới thiệu quy nạp mạnh.
+
 ## Nguyên lý quy nạp toán học
 
 Giả sử $P(n)$ là một mệnh đề phụ thuộc vào số tự nhiên $n$, và ta muốn chứng minh:

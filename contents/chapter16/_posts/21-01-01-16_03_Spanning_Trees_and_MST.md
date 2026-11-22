@@ -109,6 +109,14 @@ Phiên bản Prim riêng để so với Kruskal ở trên: tập $$S$$ lớn d�
 <div data-demo="graph-explainer" data-algorithm="prim"></div>
 </div>
 
+### Video ngắn: Kruskal và Prim
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/mst-kruskal-prim.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 50 giây: chạy Kruskal rồi Prim trên cùng một đồ thị 6 đỉnh, các cạnh bị bỏ vì tạo chu trình, hai thuật toán ra cùng một cây tổng 20, và tính chất lát cắt cùng phép đổi cạnh giải thích vì sao chọn tham lam vẫn tối ưu.
+
 ## Ví dụ tính tay
 
 <div class="textbook-example" markdown="1">

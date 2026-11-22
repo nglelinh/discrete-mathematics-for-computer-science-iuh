@@ -185,6 +185,14 @@ Phương án tương đương (cùng chi phí): $$F = \bar b\,c + \bar b\,\bar d
 
 Hai thao tác then chốt của phương pháp: đánh dấu `*` sau mỗi phép dán (phần 1), và tìm cột chỉ còn một dấu `+` để xác định nguyên tố cốt yếu (phần 2).
 
+### Video ngắn: Quine–McCluskey
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/quine-mccluskey.mp4"></video>
+</div>
+
+Video dài khoảng 3 phút 13 giây, dùng đúng ví dụ bốn biến ở mục trên: nhóm minterm theo số bit 1, dán hai vòng có đánh dấu, đọc bốn nguyên nhân nguyên tố, lập bảng phủ, tìm nguyên tố cốt yếu và ra dạng tối thiểu $$F = \bar b\,\bar d + bd + cd$$. Cuối video có phần don't-care.
+
 ## 5b. Ví dụ đầy đủ — hàm $$F_1$$
 
 Phần dưới trình bày lời giải chi tiết với đủ bảng. Dạng đề điển hình: cho SOP (tổng các tích) dài, yêu cầu rút gọn bằng Quine–McCluskey.

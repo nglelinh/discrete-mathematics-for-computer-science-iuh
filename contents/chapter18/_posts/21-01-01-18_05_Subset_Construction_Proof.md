@@ -41,6 +41,14 @@ $$F_D=\{S:S\cap F_N\neq\emptyset\}$$.
 
 **Có ε:** $$q_{D0}=E(\{q_0\})$$; $$\delta_D(S,a)=E(\bigcup\delta_N(q,a))$$.
 
+### Video ngắn: Từ NFA sang DFA
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/nfa-to-dfa-subset-construction.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 56 giây: NFA nhận các chuỗi bắt đầu bằng 1 và kết thúc bằng 01, theo dõi tập trạng thái đang bật khi đọc chuỗi, lập bảng chuyển DFA từng hàng, trạng thái chết $$\varnothing$$, chạy thử DFA thu được, và vì sao số trạng thái có thể lên tới $$2^n$$.
+
 ## Định lý
 
 <div class="textbook-theorem" markdown="1">

@@ -1,6 +1,6 @@
 # Reel Manim (video dọc 9:16)
 
-Các video ngắn 20–30 giây (1080×1920, không nhạc) minh hoạ bài học bằng [Manim Community](https://www.manim.community/).
+Các video dọc từ 20 giây đến khoảng 3 phút rưỡi (1080×1920, không nhạc) minh hoạ bài học bằng [Manim Community](https://www.manim.community/).
 Phong cách chung: nền tối, phụ đề tiếng Việt, vùng an toàn |x| ≤ 4, |y| ≤ 6,5 (khung 9×16 đơn vị). Cấu hình và hàm dùng chung nằm trong `common.py`.
 
 ## Cài đặt
@@ -36,3 +36,8 @@ ffmpeg -i out.mp4 -i music.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -shortest ou
 | `graycode.py` | `GrayCode` | `gray-code-cube.mp4` | 13-04 |
 | `pigeonhole.py` | `Pigeonhole` | `pigeonhole-square.mp4` | 08-01 |
 | `dnf_cnf.py` | `DnfCnf` | `dnf-cnf-normal-forms.mp4` | 01-04 |
+| `induction.py` | `Induction` | `induction-dominoes.mp4` | 03-03 |
+| `qm.py` | `Qm` | `quine-mccluskey.mp4` | 13-05 |
+| `mst.py` | `Mst` | `mst-kruskal-prim.mp4` | 16-03 |
+| `dijkstra.py` | `Dijkstra` | `dijkstra-shortest-path.mp4` | 17-01 |
+| `nfa_dfa.py` | `NfaDfa` | `nfa-to-dfa-subset-construction.mp4` | 18-05 |
