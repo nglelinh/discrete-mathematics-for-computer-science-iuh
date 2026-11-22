@@ -413,6 +413,14 @@ def is_satisfied(p, q, r):
 
 Mỗi `clause` là một ràng buộc. SAT solver phải tìm một assignment sao cho **không có ràng buộc nào bị vi phạm**. Đây là lý do CNF là dạng đầu vào tự nhiên cho hầu hết các bộ giải SAT hiện đại.
 
+### Video ngắn: DNF và CNF
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/dnf-cnf-normal-forms.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 45 giây: literal là gì, lập DNF từ các hàng T và CNF từ các hàng F của bảng chân trị, biến đổi bằng luật, kiểm tra lại bằng bảng chân trị, và vì sao SAT solver cần CNF.
+
 ## Các định lý quan trọng về DNF và CNF
 
 ### Định lý 1: Sự tồn tại DNF và CNF

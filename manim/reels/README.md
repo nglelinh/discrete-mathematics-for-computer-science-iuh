@@ -35,3 +35,4 @@ ffmpeg -i out.mp4 -i music.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -shortest ou
 | `derangement.py` | `Derangement` | `derangement-one-over-e.mp4` | 11-04 |
 | `graycode.py` | `GrayCode` | `gray-code-cube.mp4` | 13-04 |
 | `pigeonhole.py` | `Pigeonhole` | `pigeonhole-square.mp4` | 08-01 |
+| `dnf_cnf.py` | `DnfCnf` | `dnf-cnf-normal-forms.mp4` | 01-04 |
