@@ -27,16 +27,32 @@ layout: default
   </div>
 </article>
 <script>
+  /* Đánh số mục: h2 = N., h3 = N.M, h4 = N.M.K (không có số bài). Số ghi cứng đầu tiêu đề được thay bằng số tự động. */
   (function () {
     var a = document.querySelector('.textbook-lesson');
     if (!a) return;
-    var re = /^\s*\d+(\.\d+)*[.)]?\s/;
-    ['h2', 'h3'].forEach(function (tag) {
-      var hs = a.querySelectorAll('.textbook-body ' + tag);
-      for (var i = 0; i < hs.length; i++) {
-        if (re.test(hs[i].textContent)) { a.classList.add('tb-manual-' + tag); break; }
-      }
-    });
+    var skipBox = '[data-demo],[data-tool],[class*="explainer"],[class*="demo"],.textbook-example,details';
+    var labelRe = /^\s*(Bài tập|Ví dụ|Định lý|Định nghĩa|Bổ đề|Hệ quả|Exercise|Example|Theorem|Lemma|Definition)\s*\d/i;
+    var numRe = /^\s*\d+(\.\d+)*[.)]?\s+/;
+    var c = [0, 0, 0];
+    var hs = a.querySelectorAll('.textbook-body h2, .textbook-body h3, .textbook-body h4');
+    for (var i = 0; i < hs.length; i++) {
+      var h = hs[i];
+      if (h.closest(skipBox) || labelRe.test(h.textContent)) continue;
+      var lv = +h.tagName.charAt(1) - 2;
+      if (lv > 0 && c[lv - 1] === 0) continue;
+      c[lv]++;
+      for (var k = lv + 1; k < 3; k++) c[k] = 0;
+      var n = c.slice(0, lv + 1);
+      if (lv === 0) n = [c[0]];
+      var t = n.join('.') + (lv === 0 ? '.' : '');
+      var f = h.firstChild;
+      if (f && f.nodeType === 3) f.nodeValue = f.nodeValue.replace(numRe, '');
+      var sp = document.createElement('span');
+      sp.className = 'tb-num';
+      sp.textContent = t;
+      h.insertBefore(sp, h.firstChild);
+    }
   })();
 </script>
 

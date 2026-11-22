@@ -109,13 +109,12 @@
   padding: 0;
   border: none;
   text-align: left;
-  counter-increment: tb-section;
   counter-reset: tb-subsection tb-example;
 }
 
-.textbook-lesson .textbook-body h2::before {
-  content: counter(tb-section) ". ";
+.textbook-lesson .textbook-body .tb-num {
   font-variant-numeric: tabular-nums;
+  margin-right: 0.35em;
 }
 
 .textbook-lesson .textbook-body h3 {
@@ -125,19 +124,8 @@
   color: var(--tb-text);
   margin: 1.75rem 0 0.75rem;
   text-align: left;
-  counter-increment: tb-subsection;
 }
 
-.textbook-lesson .textbook-body h3::before {
-  content: counter(tb-section) "." counter(tb-subsection) " ";
-  font-variant-numeric: tabular-nums;
-}
-
-/* Bài đã tự ghi số trong tiêu đề markdown thì không đánh số tự động nữa */
-.textbook-lesson.tb-manual-h2 .textbook-body h2::before,
-.textbook-lesson.tb-manual-h3 .textbook-body h3::before {
-  content: none;
-}
 
 .textbook-lesson .textbook-body h4 {
   font-family: var(--tb-sans);
