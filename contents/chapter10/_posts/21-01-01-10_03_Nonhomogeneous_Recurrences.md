@@ -46,6 +46,7 @@ trong đó:
 - $a_n^{(h)}$ là nghiệm tổng quát của quan hệ thuần nhất liên kết.
 - $a_n^{(p)}$ là một nghiệm riêng của quan hệ không thuần nhất.
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh (phác).** Gọi $$L$$ là toán tử tuyến tính “chuyển vế trái”:  
 $$L(a)_n = a_n - c_1 a_{n-1} - \cdots - c_k a_{n-k}$$.  
 Quan hệ không thuần nhất là $$L(a)=f$$. Nếu $$a^{(p)}$$ thỏa $$L(a^{(p)})=f$$ và $$b$$ là **một** nghiệm bất kỳ của cùng phương trình, thì  
@@ -55,6 +56,7 @@ L(b-a^{(p)}) = L(b)-L(a^{(p)}) = f-f = 0,
 $$
 
 nên $$b-a^{(p)}$$ là nghiệm của quan hệ **thuần nhất** liên kết — ký hiệu $$a^{(h)}$$. Vậy mọi nghiệm có dạng $$b = a^{(p)} + a^{(h)}$$. (Ngược lại: nếu $$L(h)=0$$ và $$L(p)=f$$ thì $$L(h+p)=f$$.)
+</div>
 
 ## Phương pháp hệ số bất định
 

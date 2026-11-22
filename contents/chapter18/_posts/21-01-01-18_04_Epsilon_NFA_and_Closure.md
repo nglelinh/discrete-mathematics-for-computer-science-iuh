@@ -44,7 +44,9 @@ $$\delta:Q\times(\Sigma\cup\{\varepsilon\})\to\mathcal{P}(Q)$$.
 
 </div>
 
-**Chứng minh.** Tính chất bao đóng phản xạ-bắc cầu của quan hệ “có đường ε”. $$\square$$
+<div class="textbook-proof" markdown="1">
+**Chứng minh.** Tính chất bao đóng phản xạ-bắc cầu của quan hệ “có đường ε”.
+</div>
 
 ## Chấp nhận
 

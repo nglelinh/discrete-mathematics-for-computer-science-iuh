@@ -156,15 +156,19 @@ Luật giao thông thường được diễn đạt dưới dạng **mệnh đ�
 
 Năm 1931, nhà toán học **Kurt Gödel** chứng minh hai định lý cách mạng, cho thấy **giới hạn cơ bản của mọi hệ thống logic hình thức**.
 
-### Định lý bất toàn thứ nhất
+<div class="textbook-theorem" id="định-lý-bất-toàn-thứ-nhất" markdown="1">
+**Định lý bất toàn thứ nhất**:
 
 > **Trong mọi hệ thống logic đủ mạnh để biểu diễn số học, luôn tồn tại những mệnh đề đúng nhưng không thể chứng minh được trong hệ thống đó.**
+</div>
 
 Nói cách khác: Không có hệ thống logic nào có thể chứng minh được **tất cả** các mệnh đề đúng. Luôn có "khe hở" — những sự thật toán học đúng nhưng không thể chứng minh từ các tiên đề của hệ thống.
 
-### Định lý bất toàn thứ hai
+<div class="textbook-theorem" id="định-lý-bất-toàn-thứ-hai" markdown="1">
+**Định lý bất toàn thứ hai**:
 
 > **Một hệ thống logic nhất quán không thể chứng minh được tính nhất quán của chính nó.**
+</div>
 
 Nếu một hệ thống có thể chứng minh rằng nó không mâu thuẫn, thì chính nó đã mâu thuẫn. Nói cách khác: một hệ thống không thể "tự chứng minh tính nhất quán của chính mình" từ bên trong.
 
@@ -298,6 +302,7 @@ can_register = paid_tuition and account_active and (passed_prerequisite or advis
 </div>
 
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh**:
 
 1. Mỗi assignment cho $$n$$ biến có thể được xem như một vector trong $$\{T,F\}^n$$. Có đúng $$2^n$$ vector như vậy.
@@ -308,6 +313,7 @@ can_register = paid_tuition and account_active and (passed_prerequisite or advis
    $$
    2 \times 2 \times \cdots \times 2 \quad (2^n \text{ lần}) = 2^{2^n}.
    $$
+</div>
 
 <div class="textbook-lemma" markdown="1">
 **Hệ quả quan trọng**:

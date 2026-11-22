@@ -234,15 +234,15 @@ Dãy số thu được: 1, 2, 3, 5, 8, 13, ... — đây là dãy Fibonacci như
 <p class="textbook-figure-caption" data-figure="10.4">Mô hình hóa bằng truy hồi — lãi kép và tăng trưởng dân số thường là dãy hình học $a_n = r \cdot a_{n-1}$.</p>
 ## Quan hệ Truy hồi Bậc nhất
 
-### Định nghĩa
-
-Quan hệ truy hồi bậc nhất có dạng tổng quát:
+<div class="textbook-definition" id="định-nghĩa" markdown="1">
+**Định nghĩa**: Quan hệ truy hồi bậc nhất có dạng tổng quát:
 
 <div class="textbook-equation" markdown="1">
 $$a_n = f(a_{n-1}, n)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 nghĩa là $$a_n$$ chỉ phụ thuộc vào số hạng ngay trước nó ($$a_{n-1}$$) và có thể cả chỉ số $$n$$.
+</div>
 
 ### Truy hồi tuyến tính bậc nhất thuần nhất
 

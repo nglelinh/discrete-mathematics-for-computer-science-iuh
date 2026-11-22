@@ -52,10 +52,12 @@ while còn cạnh:
 
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh.**  
 Cover: mọi cạnh bị xóa khi một đầu đã vào $$C$$.  
 $$M$$ = cạnh được chọn: matching. $$\lvert C\rvert=2\lvert M\rvert$$.  
-$$\mathrm{OPT}\ge\lvert M\rvert$$ (phủ matching). $$\square$$
+$$\mathrm{OPT}\ge\lvert M\rvert$$ (phủ matching).
+</div>
 
 ### Thử nghiệm: xấp xỉ gấp đôi cho Vertex Cover
 

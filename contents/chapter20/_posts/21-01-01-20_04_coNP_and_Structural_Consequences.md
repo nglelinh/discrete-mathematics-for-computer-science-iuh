@@ -54,7 +54,9 @@ Tương đương: No-instance có chứng chỉ ngắn kiểm đa thức.
 
 </div>
 
-**Chứng minh.** $$L\in P\Rightarrow\overline{L}\in P$$ (đảo output) $$\Rightarrow\overline{L}\in NP$$ $$\Rightarrow L\in\mathrm{coNP}$$. $$\square$$
+<div class="textbook-proof" markdown="1">
+**Chứng minh.** $$L\in P\Rightarrow\overline{L}\in P$$ (đảo output) $$\Rightarrow\overline{L}\in NP$$ $$\Rightarrow L\in\mathrm{coNP}$$.
+</div>
 
 <div class="textbook-theorem" markdown="1">
 
@@ -62,7 +64,9 @@ Tương đương: No-instance có chứng chỉ ngắn kiểm đa thức.
 
 </div>
 
-**Chứng minh.** Kết hợp $$P\subseteq NP$$ và định lý trên. $$\square$$
+<div class="textbook-proof" markdown="1">
+**Chứng minh.** Kết hợp $$P\subseteq NP$$ và định lý trên.
+</div>
 
 <div class="textbook-theorem" markdown="1">
 

@@ -50,13 +50,15 @@ $$a\equiv b\pmod n \quad\text{khi và chỉ khi}\quad n\mid(a-b).$$
 </div>
 </div>
 
-### Chứng minh đồng dư modulo là quan hệ tương đương
+<div class="textbook-proof" id="chứng-minh-đồng-dư-modulo-là-quan-hệ-tương-đương" markdown="1">
+**Chứng minh đồng dư modulo là quan hệ tương đương**:
 
 - Phản xạ: $$a-a=0$$ chia hết cho $$n$$.
 - Đối xứng: nếu $$n\mid(a-b)$$ thì $$n\mid-(a-b)=b-a$$.
 - Bắc cầu: nếu $$n\mid(a-b)$$ và $$n\mid(b-c)$$ thì $$n\mid((a-b)+(b-c))=a-c$$.
 
 Vậy đồng dư modulo $$n$$ là quan hệ tương đương.
+</div>
 
 ![Quan hệ tương đương và phân hoạch](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
@@ -271,6 +273,7 @@ Không có min/max toàn cục.
 - Ngược lại, nếu $$\{A_i\}$$ là một phân hoạch của $$A$$, thì quan hệ “cùng nằm trong một $$A_i$$” là một quan hệ tương đương.
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh** (chiều thuận):
 
 1. **Phản xạ**: $$a R a$$ vì $$a$$ cùng lớp với chính nó.  
@@ -280,6 +283,7 @@ Không có min/max toàn cục.
 5. Hợp các lớp = $$A$$: mọi $$a$$ thuộc lớp $$[a]$$.
 
 Chiều ngược cũng dễ chứng minh tương tự.
+</div>
 
 **Hệ quả CS**:
 - **Hash table**: mỗi bucket là một lớp tương đương (cùng hash).

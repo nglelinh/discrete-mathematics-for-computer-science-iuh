@@ -27,10 +27,10 @@ excerpt: "Right-linear grammar; chứng minh khung ≡ NFA; liên hệ Ch.18."
 
 </div>
 
-## Định nghĩa
-
-Right-linear: $$A\to wB$$ hoặc $$A\to w$$ ($$w\in\Sigma^*$$).  
+<div class="textbook-definition" id="định-nghĩa" markdown="1">
+**Định nghĩa**: Right-linear: $$A\to wB$$ hoặc $$A\to w$$ ($$w\in\Sigma^*$$).  
 (Thường $$w$$ single symbol sau chuẩn hóa.)
+</div>
 
 ## Định lý
 

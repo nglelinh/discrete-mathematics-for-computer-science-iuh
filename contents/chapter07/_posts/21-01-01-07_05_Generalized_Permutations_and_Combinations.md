@@ -205,6 +205,7 @@ $$
 </div>
 Các hệ số này gọi là **hệ số đa thức** (multinomial coefficients).
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh tổ hợp**: Khai triển
 
 <div class="textbook-equation" markdown="1">
@@ -223,7 +224,8 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-vì đây chính là số hoán vị của đa tập gồm $n$ “bước nhân”, trong đó $k_i$ bước giống nhau (cùng lấy $x_i$). ∎
+vì đây chính là số hoán vị của đa tập gồm $n$ “bước nhân”, trong đó $k_i$ bước giống nhau (cùng lấy $x_i$).
+</div>
 
 **Ý nghĩa đếm khác**: $\binom{n}{k_1,\ldots,k_m}$ cũng bằng số cách chia $n$ đối tượng **phân biệt** vào $m$ nhóm có nhãn, sao cho nhóm $i$ chứa đúng $k_i$ phần tử.
 
@@ -234,6 +236,7 @@ vì đây chính là số hoán vị của đa tập gồm $n$ “bước nhân�
 
 Nếu yêu cầu $0\le x_i\le b_i$, stars and bars đơn thuần chưa đủ. Chúng ta thường đếm tất cả nghiệm không âm rồi loại nghiệm vi phạm $x_i\ge b_i+1$ bằng nguyên lý bù trừ.
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh ý tưởng**: Gọi $U$ là tập mọi nghiệm nguyên không âm của $x_1+\cdots+x_n=r$, và $A_i$ là tập nghiệm có $x_i\ge b_i+1$. Nghiệm hợp lệ là $U\setminus(A_1\cup\cdots\cup A_n)$, nên
 
 <div class="textbook-equation" markdown="1">
@@ -242,7 +245,8 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Với mỗi $A_i$, đặt $x_i'=x_i-(b_i+1)\ge 0$; khi đó số nghiệm trong $A_i$ bằng số nghiệm không âm của một phương trình có tổng giảm đi $b_i+1$ — lại là một bài stars and bars. Giao $A_i\cap A_j$ xử lý tương tự bằng cách trừ đồng thời ở hai biến. Áp dụng công thức bù trừ cho $|A_1\cup\cdots\cup A_n|$ (xem bài `07_03`). ∎
+Với mỗi $A_i$, đặt $x_i'=x_i-(b_i+1)\ge 0$; khi đó số nghiệm trong $A_i$ bằng số nghiệm không âm của một phương trình có tổng giảm đi $b_i+1$ — lại là một bài stars and bars. Giao $A_i\cap A_j$ xử lý tương tự bằng cách trừ đồng thời ở hai biến. Áp dụng công thức bù trừ cho $|A_1\cup\cdots\cup A_n|$ (xem bài `07_03`).
+</div>
 
 ![Bù trừ khi có ràng buộc trên](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)
 

@@ -59,8 +59,10 @@ $$
 
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh.** $$h=g\circ f$$. Tính đúng theo $$\Leftrightarrow$$.  
-$$\lvert f(x)\rvert\le\mathrm{poly}(\lvert x\rvert)$$ vì mỗi bước viết ≤1 ký hiệu. Thời gian $$g(f(x))$$ poly theo $$\lvert f(x)\rvert$$ ⇒ poly theo $$\lvert x\rvert$$. $$\square$$
+$$\lvert f(x)\rvert\le\mathrm{poly}(\lvert x\rvert)$$ vì mỗi bước viết ≤1 ký hiệu. Thời gian $$g(f(x))$$ poly theo $$\lvert f(x)\rvert$$ ⇒ poly theo $$\lvert x\rvert$$.
+</div>
 
 <div class="textbook-theorem" markdown="1">
 
@@ -68,7 +70,9 @@ $$\lvert f(x)\rvert\le\mathrm{poly}(\lvert x\rvert)$$ vì mỗi bước viết �
 
 </div>
 
-**Chứng minh.** Tính $$y=f(x)$$; quyết định $$y\in B$$; trả về. $$\square$$
+<div class="textbook-proof" markdown="1">
+**Chứng minh.** Tính $$y=f(x)$$; quyết định $$y\in B$$; trả về.
+</div>
 
 <div class="textbook-theorem" markdown="1">
 

@@ -52,9 +52,13 @@ excerpt: "Định nghĩa NP-hard/NPC; chứng minh: một NPC trong P ⇒ P=NP; 
 
 </div>
 
-**Chứng minh (1).** $$\forall L\in NP$$: $$L\le_p B\in P\Rightarrow L\in P$$. $$\square$$
+<div class="textbook-proof" markdown="1">
+**Chứng minh (1).** $$\forall L\in NP$$: $$L\le_p B\in P\Rightarrow L\in P$$.
+</div>
 
-**Chứng minh (3).** NP-hard: $$L\le_p B\le_p A\Rightarrow L\le_p A$$. $$\square$$
+<div class="textbook-proof" markdown="1">
+**Chứng minh (3).** NP-hard: $$L\le_p B\le_p A\Rightarrow L\le_p A$$.
+</div>
 
 ## Checklist chứng minh $$A$$ NPC
 

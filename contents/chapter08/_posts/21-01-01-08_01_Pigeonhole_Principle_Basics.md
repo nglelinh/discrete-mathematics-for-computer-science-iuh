@@ -91,7 +91,8 @@ Trong 11 bài kiểm tra, mỗi bài được chấm từ 0-10 điểm. Chứng 
 
 ## Chứng minh Nguyên lý Dirichlet
 
-### Chứng minh phản chứng
+<div class="textbook-proof" id="chứng-minh-phản-chứng" markdown="1">
+**Chứng minh phản chứng**:
 
 **Giả sử** mỗi chuồng chứa nhiều nhất 1 con bồ câu.
 
@@ -99,9 +100,11 @@ Khi đó, tổng số bồ câu ≤ n × 1 = n.
 
 Nhưng chúng ta có n + 1 con bồ câu, mâu thuẫn với giả thiết.
 
-Vậy ít nhất một chuồng chứa ≥ 2 con bồ câu. ∎
+Vậy ít nhất một chuồng chứa ≥ 2 con bồ câu.
+</div>
 
-### Chứng minh tổng quát
+<div class="textbook-proof" id="chứng-minh-tổng-quát" markdown="1">
+**Chứng minh tổng quát**:
 
 **Giả sử** mỗi nhóm chứa < ⌈N/n⌉ đối tượng.
 
@@ -109,7 +112,8 @@ Khi đó, mỗi nhóm chứa ≤ ⌈N/n⌉ - 1 đối tượng.
 
 Tổng số đối tượng ≤ n × (⌈N/n⌉ - 1) < n × (N/n + 1 - 1) = N.
 
-Mâu thuẫn! Vậy ít nhất một nhóm chứa ≥ ⌈N/n⌉ đối tượng. ∎
+Mâu thuẫn! Vậy ít nhất một nhóm chứa ≥ ⌈N/n⌉ đối tượng.
+</div>
 
 ### Video ngắn: Ví dụ hình học: 5 điểm trong hình vuông 2×2
 
@@ -228,12 +232,14 @@ Nếu phân bố ngẫu nhiên N đối tượng vào n nhóm, xác suất để
 **Định lý**: Nếu $$N$$ đối tượng được phân vào $$n$$ nhóm, thì ít nhất một nhóm chứa ít nhất $$\lceil N/n \rceil$$ đối tượng.
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh** (phản chứng):
 
 Giả sử mọi nhóm chứa nhiều nhất $$\lceil N/n \rceil - 1$$ đối tượng.  
 Tổng số đối tượng ≤ $$n(\lceil N/n \rceil - 1) < N$$, mâu thuẫn.
 
 Do đó, ít nhất một nhóm phải chứa ≥ $$\lceil N/n \rceil$$ đối tượng.
+</div>
 
 <div class="textbook-lemma" markdown="1">
 **Hệ quả** (dạng hay dùng trong CS):

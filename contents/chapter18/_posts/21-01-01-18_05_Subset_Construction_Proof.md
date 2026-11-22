@@ -49,10 +49,12 @@ $$F_D=\{S:S\cap F_N\neq\emptyset\}$$.
 
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh.**  
 Bất biến: sau đọc $$w$$, trạng thái $$D$$ là $$\hat\delta_N(\{q_0\},w)$$ (hoặc closure). Quy nạp độ dài $$w$$.  
 Chấp nhận ⇔ giao $$F\neq\emptyset$$ ⇔ $$w\in L(N)$$.  
-Số tập con $$\le 2^{\lvert Q\rvert}$$. $$\square$$
+Số tập con $$\le 2^{\lvert Q\rvert}$$.
+</div>
 
 ## State explosion
 

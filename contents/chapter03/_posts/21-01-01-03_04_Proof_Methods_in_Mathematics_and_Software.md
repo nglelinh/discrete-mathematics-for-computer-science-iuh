@@ -343,13 +343,15 @@ Một kỹ thuật chứng minh đặc biệt hữu ích trong toán rời rạc
 **Định lý (Handshaking Lemma).** Trong mọi đồ thị vô hướng, tổng bậc của các đỉnh là một số chẵn.
 </div>
 
+<div class="textbook-proof" markdown="1">
 *Chứng minh.* Xét đồ thị vô hướng $$G = (V,E)$$. Mỗi cạnh không phải khuyên góp 1 vào bậc của hai đỉnh, mỗi khuyên góp 2 vào bậc của một đỉnh. Do đó mỗi cạnh đóng góp 2 vào tổng $$\sum_{v \in V} \deg(v)$$. Vậy:
 
 <div class="textbook-equation" markdown="1">
 $$\sum_{v \in V} \deg(v) = 2 \cdot |E|$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-— là một số chẵn. ∎
+— là một số chẵn.
+</div>
 
 Đây là một ví dụ kinh điển của "đếm bằng hai cách": đếm tổng bậc theo hướng đỉnh (node-centric) và theo hướng cạnh (edge-centric) cho cùng một kết quả.
 

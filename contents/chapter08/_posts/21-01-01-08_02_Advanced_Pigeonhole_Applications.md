@@ -56,8 +56,10 @@ $$\left|\alpha - p/q\right| < 1/(qN)$$
 </div>
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh**: Xét N+1 số {0, {α}, {2α}, ..., {Nα}} trong đoạn [0,1).
 Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 số {iα}, {jα} trong cùng một đoạn.
+</div>
 
 ![Dirichlet — ứng dụng trong lý thuyết số](/discrete-mathematics-for-computer-science-iuh/img/course/Dirichlet.jpg)
 
@@ -66,7 +68,9 @@ Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 s
 
 **Bài toán**: Chứng minh rằng với mọi số nguyên a không chia hết cho p (p là số nguyên tố), tồn tại số nguyên n sao cho a^n ≡ 1 (mod p).
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh**: Xét dãy a^1, a^2, ..., a^p (mod p). Có p số và p-1 giá trị có thể (1,2,...,p-1). Theo nguyên lý Dirichlet...
+</div>
 
 ## Ứng dụng trong Hình học
 
@@ -81,7 +85,9 @@ Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 s
 **Định lý**: Số lượng tối đa là C(n-1, k-1).
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh bằng Nguyên lý Dirichlet**: Xét n! hoán vị của n phần tử. Mỗi tập con k phần tử xuất hiện trong k!(n-k)! hoán vị...
+</div>
 
 ### Định lý Sperner
 
@@ -93,7 +99,9 @@ Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 s
 
 **Bài toán**: Trong 6 người, chứng minh rằng có 3 người quen nhau hoặc 3 người không quen nhau.
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh**: Chọn 1 người A. Chia 5 người còn lại thành 2 nhóm: quen A và không quen A. Theo nguyên lý Dirichlet, một nhóm có ≥ 3 người...
+</div>
 
 ![Ramsey theory — trật tự bắt buộc xuất hiện](/discrete-mathematics-for-computer-science-iuh/img/course/TooManyPigeons.jpg)
 

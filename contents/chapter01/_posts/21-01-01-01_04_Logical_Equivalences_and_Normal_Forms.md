@@ -426,10 +426,15 @@ Video dài khoảng 2 phút 45 giây: literal là gì, lập DNF từ các hàng
 
 ## Các định lý quan trọng về DNF và CNF
 
-### Định lý 1: Sự tồn tại DNF và CNF
-**Mọi biểu thức mệnh đề đều có thể đưa về DNF và CNF.**
+<div class="textbook-theorem" id="định-lý-1-sự-tồn-tại-dnf-và-cnf" markdown="1">
+**Định lý 1 (Sự tồn tại DNF và CNF)**:
 
+**Mọi biểu thức mệnh đề đều có thể đưa về DNF và CNF.**
+</div>
+
+<div class="textbook-proof" markdown="1">
 **Chứng minh (phác thảo)**: Từ bảng chân trị, ta luôn xây dựng được DNF bằng cách tuyển các hội tương ứng với các hàng đúng; tương tự CNF bằng hội các tuyển tương ứng với các hàng sai. Do mọi biểu thức đều có bảng chân trị hữu hạn, nên DNF/CNF luôn tồn tại.
+</div>
 
 ### Định lý 2: Tính duy nhất của DNF/CNF đầy đủ
 
@@ -443,6 +448,7 @@ Video dài khoảng 2 phút 45 giây: literal là gì, lập DNF từ các hàng
 </div>
 
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh (Tính duy nhất của DNF đầy đủ)**:
 
 Giả sử $$ D_1 $$ và $$ D_2 $$ là hai DNF đầy đủ cùng biểu diễn hàm $$ f $$.
@@ -467,8 +473,11 @@ Giả sử $$ D_1 $$ và $$ D_2 $$ là hai DNF đầy đủ cùng biểu diễn 
    - Điều này mâu thuẫn với giả thiết $$ D_1 \equiv D_2 $$.
 
 Do đó $$ D_1 \equiv D_2 $$.
+</div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh cho CNF đầy đủ**: Hoàn toàn tương tự bằng cách dual hóa (thay $$ \lor $$ bằng $$ \land $$, $$ T $$ bằng $$ F $$, và literal bằng phủ định của nó), hoặc áp dụng Định lý 3 bên dưới cho $$ \neg f $$.
+</div>
 
 <div class="textbook-lemma" markdown="1">
 **Hệ quả quan trọng**:
@@ -476,15 +485,21 @@ Do đó $$ D_1 \equiv D_2 $$.
 - Hai hàm Boolean bằng nhau khi và chỉ khi DNF đầy đủ (hoặc CNF đầy đủ) của chúng trùng nhau.
 </div>
 
-### Định lý 3: Mối quan hệ giữa DNF và CNF qua phủ định
+<div class="textbook-theorem" id="định-lý-3-mối-quan-hệ-giữa-dnf-và-cnf-qua-phủ-định" markdown="1">
+**Định lý 3 (Mối quan hệ giữa DNF và CNF qua phủ định)**:
+
 **Nếu** $$P$$ **có DNF** $$(l_{11} \land l_{12} \land \cdots) \lor (l_{21} \land l_{22} \land \cdots) \lor \cdots$$, **thì** $$\neg P$$ **có CNF** $$( \neg l_{11} \lor \neg l_{12} \lor \cdots) \land ( \neg l_{21} \lor \neg l_{22} \lor \cdots) \land \cdots$$.
+</div>
 
 <div class="textbook-lemma" markdown="1">
 **Hệ quả**: Phủ định của DNF là CNF và ngược lại (áp dụng De Morgan mở rộng).
 </div>
 
-### Định lý 4: Biểu diễn hàm Boolean
+<div class="textbook-theorem" id="định-lý-4-biểu-diễn-hàm-boolean" markdown="1">
+**Định lý 4 (Biểu diễn hàm Boolean)**:
+
 **Mọi hàm Boolean** $$f: \{T,F\}^n \to \{T,F\}$$ **đều có biểu diễn DNF và CNF duy nhất** (đầy đủ).
+</div>
 
 **Ý nghĩa CS**: Đây là nền tảng của:
 - **Compiler optimization**: rút gọn biểu thức Boolean trong mã nguồn và mã trung gian.

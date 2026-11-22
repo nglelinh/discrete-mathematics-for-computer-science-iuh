@@ -28,12 +28,14 @@ excerpt: "Định nghĩa PDA; ID; chấp nhận empty stack/final state; ví d�
 
 </div>
 
-## Định nghĩa
+<div class="textbook-definition" id="định-nghĩa" markdown="1">
+**Định nghĩa**:
 
 $$P=(Q,\Sigma,\Gamma,\delta,q_0,Z_0,F)$$,  
 $$\delta:Q\times(\Sigma\cup\{\varepsilon\})\times\Gamma\to\mathcal{P}(Q\times\Gamma^*)$$ (hữu hạn ảnh).
 
 **ID** $$(q,w,\gamma)$$: trạng thái, input còn, stack.
+</div>
 
 ## Ví dụ $$a^nb^n$$
 

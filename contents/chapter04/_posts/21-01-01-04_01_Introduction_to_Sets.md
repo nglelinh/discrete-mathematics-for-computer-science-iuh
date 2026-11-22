@@ -281,6 +281,7 @@ pow(pow({1})) = {∅, {∅}, {{1}}, {∅, {1}}}.
 </div>
 
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh**:
 
 Giả sử $$A = \{a_1, a_2, \dots, a_n\}$$, $$|A| = n$$.
@@ -295,6 +296,7 @@ Giả sử $$A = \{a_1, a_2, \dots, a_n\}$$, $$|A| = n$$.
    $$
    2 \times 2 \times \cdots \times 2 \quad (n \text{ lần}) = 2^n.
    $$
+</div>
 
 <div class="textbook-lemma" markdown="1">
 **Hệ quả**:

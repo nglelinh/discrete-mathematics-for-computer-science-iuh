@@ -72,6 +72,7 @@ $$
 </div>
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh tổ hợp**: Khi nhân
 
 <div class="textbook-equation" markdown="1">
@@ -81,6 +82,7 @@ $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 mỗi hạng tử trong khai triển được tạo bằng cách chọn từ mỗi ngoặc một $x$ hoặc một $y$. Để nhận được hạng $x^{n-k}y^k$, chúng ta phải chọn $y$ từ đúng $k$ trong $n$ ngoặc. Có $\binom{n}{k}$ cách chọn các ngoặc đó. Vì vậy hệ số của $x^{n-k}y^k$ là $\binom{n}{k}$.
+</div>
 
 ![Trực quan định lý nhị thức](/discrete-mathematics-for-computer-science-iuh/img/course/Binomial_theorem_visualisation.svg)
 

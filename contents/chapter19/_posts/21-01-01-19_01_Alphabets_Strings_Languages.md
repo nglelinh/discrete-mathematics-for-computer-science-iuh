@@ -48,7 +48,9 @@ $$\Sigma^*=\bigcup_{k\ge 0}\Sigma^k$$, $$\Sigma^0=\{\varepsilon\}$$.
 
 </div>
 
-**Chứng minh.** Theo định nghĩa dãy hữu hạn / nối. $$\square$$
+<div class="textbook-proof" markdown="1">
+**Chứng minh.** Theo định nghĩa dãy hữu hạn / nối.
+</div>
 
 ## Bài tập
 

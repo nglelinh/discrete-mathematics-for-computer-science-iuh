@@ -58,7 +58,9 @@ Duyệt mọi cách chia w = uvxyz với |vxy| ≤ p và |vy| ≥ 1.
 
 </div>
 
-**Chứng minh.** $$w=a^pb^pc^p$$. $$vxy$$ nằm trong cửa sổ ≤$$p$$ ⇒ không chạm cả 3 khối chữ cái đủ cách; bơm phá cân bằng 3 số. (Chi tiết case analysis Sipser.) $$\square$$
+<div class="textbook-proof" markdown="1">
+**Chứng minh.** $$w=a^pb^pc^p$$. $$vxy$$ nằm trong cửa sổ ≤$$p$$ ⇒ không chạm cả 3 khối chữ cái đủ cách; bơm phá cân bằng 3 số. (Chi tiết case analysis Sipser.)
+</div>
 
 ## Bài tập
 

@@ -156,6 +156,7 @@ $$\frac{P(c)}{\exists x\,P(x)}$$
 
 **Kết luận cần chứng minh**: $$KnowsLogic(Linh)$$
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh** (các bước suy luận):
 
 | Bước | Mệnh đề | Lý do |
@@ -164,6 +165,7 @@ $$\frac{P(c)}{\exists x\,P(x)}$$
 | 2 | $$Programmer(Linh) → KnowsLogic(Linh)$$ | Từ (1) bằng **Universal Instantiation (UI)** |
 | 3 | $$Programmer(Linh)$$ | Tiền đề (2) |
 | 4 | $$KnowsLogic(Linh)$$ | Từ (2) và (3) bằng **Modus Ponens** |
+</div>
 
 **Kết luận**: $$KnowsLogic(Linh)$$ — đã được chứng minh.
 
@@ -182,6 +184,7 @@ Lập luận:
 2. $$\forall x(LikesMath(x)\to CanLearnDiscreteMath(x))$$
 3. Kết luận: $$\exists x(Student(x)\land CanLearnDiscreteMath(x))$$
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh**:
 
 1. Từ (1), dùng EI đặt một hằng mới $$a$$ sao cho $$Student(a)\land LikesMath(a)$$.
@@ -190,6 +193,7 @@ Lập luận:
 4. Từ $$LikesMath(a)$$ và bước 3, dùng Modus Ponens: $$CanLearnDiscreteMath(a)$$.
 5. Từ $$Student(a)$$ và $$CanLearnDiscreteMath(a)$$, lập hội: $$Student(a)\land CanLearnDiscreteMath(a)$$.
 6. Dùng EG: $$\exists x(Student(x)\land CanLearnDiscreteMath(x))$$.
+</div>
 
 ![Cây quyết định](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 

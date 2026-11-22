@@ -59,11 +59,13 @@ Trực giác TSP: **kiểm** tour dễ, **tìm** tour khó. $$NP$$ hình thức 
 
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh.**
 
 *NTM → verifier.* $$c$$ = dãy lựa chọn/cấu hình nhánh; $$V$$ mô phỏng tất định nhánh, kiểm tra hợp lệ $$\delta$$ và accept.
 
-*Verifier → NTM.* Đoán $$c$$ không tất định, chạy $$V(x,c)$$. $$\square$$
+*Verifier → NTM.* Đoán $$c$$ không tất định, chạy $$V(x,c)$$.
+</div>
 
 ## $$P\subseteq NP$$
 
@@ -73,7 +75,9 @@ Trực giác TSP: **kiểm** tour dễ, **tìm** tour khó. $$NP$$ hình thức 
 
 </div>
 
-**Chứng minh.** $$L\in P$$ với thuật toán $$A$$. Đặt $$V(x,c):=A(x)$$ (bỏ $$c$$). Đầy đủ/âm thanh/thời gian rõ. $$\square$$
+<div class="textbook-proof" markdown="1">
+**Chứng minh.** $$L\in P$$ với thuật toán $$A$$. Đặt $$V(x,c):=A(x)$$ (bỏ $$c$$). Đầy đủ/âm thanh/thời gian rõ.
+</div>
 
 ## Bảng certificate
 

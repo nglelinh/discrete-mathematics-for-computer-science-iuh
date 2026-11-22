@@ -48,9 +48,11 @@ Bất biến: “hậu tố liên quan đến tiền tố của $$01$$”.
 
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh (khung).**  
 (⇒) Bất biến: vào $$q_{01}$$ ⇔ đã đọc …01.  
-(⇐) Mọi $$w\in L$$ buộc đường chạy kết thúc $$q_{01}$$. Chi tiết theo quy nạp độ dài. $$\square$$
+(⇐) Mọi $$w\in L$$ buộc đường chạy kết thúc $$q_{01}$$. Chi tiết theo quy nạp độ dài.
+</div>
 
 ## Ví dụ: chẵn số $$1$$
 

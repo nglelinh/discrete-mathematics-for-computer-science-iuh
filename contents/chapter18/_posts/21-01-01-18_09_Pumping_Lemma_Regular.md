@@ -39,8 +39,10 @@ excerpt: "Phát biểu; chứng minh từ DFA; ứng dụng 0ⁿ1ⁿ; checklist 
 
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh.** Cho DFA $$p=\lvert Q\rvert$$. $$w=a_1\ldots a_n$$, $$n\ge p$$. Dãy $$p+1$$ trạng thái trên tiền tố độ dài $$\le p$$: lặp $$q_i=q_j$$, $$0\le i<j\le p$$.  
-$$x$$ đến $$i$$, $$y$$ từ $$i$$ đến $$j$$, $$z$$ còn lại. Bơm = quay vòng. $$\square$$
+$$x$$ đến $$i$$, $$y$$ từ $$i$$ đến $$j$$, $$z$$ còn lại. Bơm = quay vòng.
+</div>
 
 ### Thử nghiệm: trò chơi bổ đề bơm (ngôn ngữ chính quy)
 
@@ -59,7 +61,9 @@ Chọn p và duyệt mọi cách chia w = xyz; nếu không cách nào bơm đư
 
 </div>
 
-**Chứng minh.** Giả sử chính quy, lấy $$p$$. $$w=0^p1^p=xyz$$, $$\lvert xy\rvert\le p\Rightarrow y=0^{t}$$, $$t\ge 1$$. $$k=2$$: $$0^{p+t}1^p\notin L$$. $$\square$$
+<div class="textbook-proof" markdown="1">
+**Chứng minh.** Giả sử chính quy, lấy $$p$$. $$w=0^p1^p=xyz$$, $$\lvert xy\rvert\le p\Rightarrow y=0^{t}$$, $$t\ge 1$$. $$k=2$$: $$0^{p+t}1^p\notin L$$.
+</div>
 
 ## Checklist
 

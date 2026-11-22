@@ -61,7 +61,9 @@ $$
 
 </div>
 
-**Chứng minh.** Quy nạp $$\lvert w\rvert$$: bước $$\delta$$ xác định duy nhất. $$\square$$
+<div class="textbook-proof" markdown="1">
+**Chứng minh.** Quy nạp $$\lvert w\rvert$$: bước $$\delta$$ xác định duy nhất.
+</div>
 
 ## Ngôn ngữ
 

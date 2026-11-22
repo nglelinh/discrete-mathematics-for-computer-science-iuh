@@ -35,9 +35,11 @@ Trong chương này chúng ta học các phương pháp chứng minh — nền t
 **Từ khóa**: Chứng minh trực tiếp (direct proof), giả thiết (hypothesis), kết luận (conclusion), định nghĩa (definition), bất biến (invariant), correctness.
 </div>
 
-## Định nghĩa
+<div class="textbook-definition" id="định-nghĩa" markdown="1">
+**Định nghĩa**:
 
 **Chứng minh trực tiếp** của mệnh đề có dạng "Nếu P thì Q" ($$P \to Q$$) là một chuỗi suy luận bắt đầu bằng việc giả sử $$P$$ đúng, sau đó dùng định nghĩa, định lý đã biết và quy tắc logic để suy ra $$Q$$.
+</div>
 
 ### Cấu trúc chung (5 bước trực quan)
 
@@ -76,6 +78,7 @@ Trong chứng minh trực tiếp, ta không được giả sử kết luận $$Q
 </div>
 
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh**:
 
 1. Giả sử $$n$$ là số chẵn.
@@ -83,7 +86,8 @@ Trong chứng minh trực tiếp, ta không được giả sử kết luận $$Q
 3. Khi đó:
    $$n^2 = (2k)^2 = 4k^2 = 2(2k^2)$$
 4. Vì $$2k^2 \in \mathbb{Z}$$, nên $$n^2$$ có dạng $$2m$$ với $$m \in \mathbb{Z}$$.
-5. Do đó $$n^2$$ là số chẵn. ∎
+5. Do đó $$n^2$$ là số chẵn.
+</div>
 
 <div class="content-box insight-box textbook-block" markdown="1">
 Bước quan trọng nhất là bước 2 — mở định nghĩa "số chẵn" thành dạng $$n = 2k$$. Nếu không mở định nghĩa, ta không có gì để biến đổi; đây là kỹ năng cốt lõi của mọi chứng minh.
@@ -102,13 +106,15 @@ Bước quan trọng nhất là bước 2 — mở định nghĩa "số chẵn" 
 </div>
 
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh**:
 
 1. Giả sử $$a$$ và $$b$$ là số lẻ.
 2. Theo định nghĩa, tồn tại $$m,n \in \mathbb{Z}$$ sao cho $$a = 2m+1$$ và $$b = 2n+1$$.
 3. Khi đó:
    $$a+b = (2m+1)+(2n+1)=2m+2n+2=2(m+n+1)$$
-4. Vì $$m+n+1 \in \mathbb{Z}$$, nên $$a+b$$ là số chẵn. ∎
+4. Vì $$m+n+1 \in \mathbb{Z}$$, nên $$a+b$$ là số chẵn.
+</div>
 
 <div class="textbook-example" markdown="1">
 **Ví dụ 3**: Chia hết:
@@ -120,13 +126,15 @@ Bước quan trọng nhất là bước 2 — mở định nghĩa "số chẵn" 
 </div>
 
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh**:
 
 1. Giả sử $$a \mid b$$ và $$b \mid c$$.
 2. Theo định nghĩa chia hết, tồn tại $$m,n \in \mathbb{Z}$$ sao cho $$b = am$$ và $$c = bn$$.
 3. Thay $$b = am$$ vào $$c = bn$$, ta có:
    $$c = (am)n = a(mn)$$
-4. Vì $$mn \in \mathbb{Z}$$, nên $$a \mid c$$. ∎
+4. Vì $$mn \in \mathbb{Z}$$, nên $$a \mid c$$.
+</div>
 
 ![Trang chứng minh Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid-proof.jpg)
 
@@ -316,3 +324,5 @@ Trong bài tiếp theo, chúng ta sẽ học **chứng minh phản chứng** —
 - **xem trước** <a href="https://www.youtube.com/watch?v=YFZzLQN5qOU">DIRECT PROOFS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước cấu trúc chứng minh trực tiếp: giả thiết rồi suy ra kết luận.
 - <a href="https://www.youtube.com/watch?v=L74bnJWdHDo">How to Prove Math Theorems | 1st Ex: Even + Odd = Odd</a> — Dr. Trefor Bazett, tiếng Anh. Ví dụ chẵn cộng lẻ, cùng kiểu bài số nguyên của mục này.
 - <a href="https://www.youtube.com/watch?v=oqTg3D_jZWo">Step-By-Step Guide to Proofs | Ex: product of two evens is even</a> — Dr. Trefor Bazett, tiếng Anh. Từng bước viết chứng minh tích hai số chẵn là chẵn.
+
+</div>

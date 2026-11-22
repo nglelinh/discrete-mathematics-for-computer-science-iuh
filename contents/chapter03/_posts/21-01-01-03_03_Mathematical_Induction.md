@@ -145,6 +145,7 @@ $$1 + 2 + \cdots + n = \frac{n(n+1)}{2}$$
 </div>
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh.**
 
 **Bước cơ sở**: Với $n=1$,
@@ -179,7 +180,8 @@ $$= \frac{k(k+1) + 2(k+1)}{2} = \frac{(k+1)(k+2)}{2}$$
 </div>
 Suy ra mệnh đề đúng với $k+1$.
 
-Vậy theo nguyên lý quy nạp toán học, công thức đúng với mọi $n \ge 1$. $\square$
+Vậy theo nguyên lý quy nạp toán học, công thức đúng với mọi $n \ge 1$.
+</div>
 
 Đây là ví dụ mẫu vì biểu thức ở $k+1$ tách thành "phần cũ" cộng "phần mới".
 
@@ -198,6 +200,7 @@ $$1 + 2 + 2^2 + \cdots + 2^n = 2^{n+1} - 1$$
 </div>
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh.**
 
 **Bước cơ sở**: Với $n=0$,
@@ -226,7 +229,8 @@ Ta có:
 $$1 + 2 + 2^2 + \cdots + 2^k + 2^{k+1} = (2^{k+1} - 1) + 2^{k+1} = 2^{k+2} - 1$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Vậy mệnh đề đúng với mọi $n \ge 0$. $\square$
+Vậy mệnh đề đúng với mọi $n \ge 0$.
+</div>
 
 Tổng này thường xuất hiện khi đếm số nút của cây nhị phân đầy đủ theo từng mức, hoặc khi phân tích các thuật toán tách đôi dữ liệu.
 
@@ -237,6 +241,7 @@ Tổng này thường xuất hiện khi đếm số nút của cây nhị phân 
 **Mệnh đề.** Với mọi $n \ge 1$, số $7^n - 1$ chia hết cho $6$.
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh.**
 
 **Bước cơ sở**: Với $n=1$,
@@ -271,7 +276,8 @@ $$7^{k+1} - 1 = 7 \cdot 6m + 6 = 6(7m + 1)$$
 </div>
 Nên $7^{k+1} - 1$ chia hết cho $6$.
 
-Vậy mệnh đề đúng với mọi $n \ge 1$. $\square$
+Vậy mệnh đề đúng với mọi $n \ge 1$.
+</div>
 
 Trong các bài chia hết, sau khi áp dụng giả thiết quy nạp, ta thường cố gắng đưa biểu thức về dạng:
 
@@ -293,6 +299,7 @@ $$(1+x)^n \ge 1 + nx$$
 </div>
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh.**
 
 **Bước cơ sở**: Với $n=0$,
@@ -331,7 +338,8 @@ $$(1+kx)(1+x) = 1 + (k+1)x + kx^2 \ge 1 + (k+1)x$$
 </div>
 do $kx^2 \ge 0$.
 
-Vậy mệnh đề đúng với mọi $n \in \mathbb{N}$. $\square$
+Vậy mệnh đề đúng với mọi $n \in \mathbb{N}$.
+</div>
 
 Ở bài này, điều kiện $x \ge -1$ không phải trang trí. Nó đảm bảo $1+x \ge 0$, nhờ đó khi nhân hai vế của bất đẳng thức với $(1+x)$, chiều bất đẳng thức không đổi.
 
@@ -347,6 +355,7 @@ $$1 + 3 + 5 + \cdots + (2n-1) = n^2$$
 </div>
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh.**
 
 **Bước cơ sở**: Với $n=1$,
@@ -375,7 +384,8 @@ Ta có:
 $$1 + 3 + 5 + \cdots + (2k-1) + (2k+1) = k^2 + (2k+1) = (k+1)^2$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Vậy mệnh đề đúng với mọi $n \ge 1$. $\square$
+Vậy mệnh đề đúng với mọi $n \ge 1$.
+</div>
 
 Mỗi khi từ hình vuông cạnh $k$ sang hình vuông cạnh $k+1$, ta chỉ cần thêm một "viền" gồm đúng $2k+1$ ô vuông. Đây là một ví dụ đẹp cho thấy quy nạp không chỉ là đại số mà còn có trực giác hình học.
 
@@ -441,6 +451,7 @@ $$1 + 2 + 2^2 + \cdots + 2^h = 2^{h+1} - 1$$
 
 nút.
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh theo quy nạp trên $h$.**
 
 **Bước cơ sở**: Với $h=0$, cây chỉ có nút gốc, nên số nút là $1 = 2^{0+1} - 1$.
@@ -455,7 +466,8 @@ $$(2^{k+1} - 1) + 2^{k+1} = 2^{k+2} - 1$$
 </div>
 Mệnh đề đúng với $k+1$.
 
-Vậy công thức đúng với mọi $h \ge 0$. $\square$
+Vậy công thức đúng với mọi $h \ge 0$.
+</div>
 
 Cây nhị phân xuất hiện ở:
 
@@ -921,3 +933,5 @@ Trong chương tiếp theo, chúng ta sẽ chuyển sang **lý thuyết tập h�
 - **xem trước** <a href="https://www.youtube.com/watch?v=Y58qpGu_N1U">M03 - Bài 3- Quy nạp toán học | Nguyễn Hữu Hoàng Tùng Official</a> — Nguyễn Hữu Hoàng Tùng Official, tiếng Việt. Xem trước quy nạp bằng tiếng Việt: cơ sở và bước quy nạp.
 - <a href="https://www.youtube.com/watch?v=Tm2PJPvAULs">MATHEMATICAL INDUCTION - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Khuôn chứng minh quy nạp trên dãy và tổng.
 - <a href="https://www.youtube.com/watch?v=GdM_iA1Zek4">Intro to Mathematical Induction</a> — Dr. Trefor Bazett, tiếng Anh. Một bài quy nạp đầy đủ từ giả thiết P(k) lên P(k+1).
+
+</div>

@@ -148,11 +148,13 @@ Nếu xem kiểu `int -> int`, đây là một mô hình của hàm toán học.
 **Định lý**: Số hàm từ tập $$A$$ ($$\lvert A \rvert = n$$) sang tập $$B$$ ($$\lvert B \rvert = m$$) là $$m^n$$.
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh**:
 
 Mỗi hàm $$f: A \to B$$ được xác định bởi giá trị $$f(a)$$ cho từng $$a \in A$$.  
 Với mỗi $$a$$, có $$m$$ lựa chọn trong $$B$$.  
 Tổng số cách: $$m \times m \times \cdots \times m$$ ($$n$$ lần) $$= m^n$$.
+</div>
 
 <div class="textbook-lemma" markdown="1">
 **Hệ quả**:

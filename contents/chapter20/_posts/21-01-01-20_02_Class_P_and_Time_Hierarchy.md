@@ -48,9 +48,11 @@ Nếu $$L\in P$$ thì $$L^*\in P$$ (Kleene star).
 
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh (star).**  
 Cho thuật toán $$M$$ quyết định $$L$$ trong $$n^k$$. Với $$w$$ độ dài $$n$$, DP: $$S[0]=\mathrm{true}$$; $$S[j]=\bigvee_{i<j}\bigl(S[i]\land M(w_{i+1..j})\bigr)$$.  
-$$O(n^2)$$ ô, mỗi ô gọi $$M$$ trên chuỗi $$\le n$$: tổng $$O(n^{k+2})$$. $$\square$$
+$$O(n^2)$$ ô, mỗi ô gọi $$M$$ trên chuỗi $$\le n$$: tổng $$O(n^{k+2})$$.
+</div>
 
 *(Hợp/giao/bù: chạy song song hoặc đảo output.)*
 

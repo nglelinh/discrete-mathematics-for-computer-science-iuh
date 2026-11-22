@@ -75,15 +75,15 @@ $$\mathcal{P}(A)=\{X\mid X\subseteq A\}.$$
 ![Sơ đồ tập lũy thừa P(A)](/discrete-mathematics-for-computer-science-iuh/img/course/Powerset.svg)
 
 <p class="textbook-figure-caption" data-figure="4.18">Tập lũy thừa $$\mathcal{P}(A)$$ chứa mọi tập con — với $$\lvert A \rvert = n$$ thì $$\lvert \mathcal{P}(A) \rvert = 2^n$$.</p>
-### Chứng minh
-
-Mỗi phần tử của $$A$$ có hai lựa chọn khi tạo một tập con: hoặc được chọn, hoặc không được chọn. Với $$n$$ phần tử độc lập, số cách chọn là:
+<div class="textbook-proof" id="chứng-minh" markdown="1">
+**Chứng minh**: Mỗi phần tử của $$A$$ có hai lựa chọn khi tạo một tập con: hoặc được chọn, hoặc không được chọn. Với $$n$$ phần tử độc lập, số cách chọn là:
 
 <div class="textbook-equation" markdown="1">
 $$2\cdot 2\cdots 2 = 2^n.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 Vì mỗi cách chọn tương ứng đúng một tập con, nên $$\lvert \mathcal{P}(A) \rvert=2^n$$.
+</div>
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Nếu $$A=\{a,b,c\}$$ thì:
@@ -213,6 +213,7 @@ $$
 </div>
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh (phác thảo)**:
 
 1. Vì $$f$$ là đơn ánh, $$A$$ "nhúng" được vào $$B$$, nên $$\lvert A \rvert \leq \lvert B \rvert$$.
@@ -222,6 +223,7 @@ $$
 3. Ý tưởng chứng minh: Xây dựng một song ánh $$h: A \to B$$ bằng cách "ghép" $$f$$ và $$g^{-1}$$ trên các tập con thích hợp (dùng chuỗi tiền ảnh dưới $$g \circ f$$).
 
    (Chi tiết chứng minh thường dùng định lý điểm cố định hoặc phân hoạch $$A$$ thành các chuỗi và chọn $$f$$ hoặc $$g^{-1}$$ trên từng chuỗi.)
+</div>
 
 <div class="textbook-lemma" markdown="1">
 **Hệ quả**:

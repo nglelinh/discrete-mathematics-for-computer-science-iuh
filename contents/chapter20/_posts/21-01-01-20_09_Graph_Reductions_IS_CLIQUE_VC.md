@@ -61,7 +61,9 @@ $$f(G,k)=(\overline{G},k)$$ trong $$O(n^2)$$; khả nghịch.
 **Bổ đề.** $$S$$ IS ⇔ $$V\setminus S$$ vertex cover.
 </div>
 
-**Chứng minh.** Cạnh không thể nằm trọn trong IS; cover phải chạm mọi cạnh. $$\square$$
+<div class="textbook-proof" markdown="1">
+**Chứng minh.** Cạnh không thể nằm trọn trong IS; cover phải chạm mọi cạnh.
+</div>
 
 **Rút gọn:** $$(G,k)\mapsto(G,n-k)$$.  
 IS size $$\ge k$$ ⇔ cover size $$\le n-k$$.

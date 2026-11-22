@@ -32,12 +32,14 @@ excerpt: "Định nghĩa TM; cấu hình; ví dụ; so FSM/PDA; Church–Turing.
 
 </div>
 
-## Định nghĩa
+<div class="textbook-definition" id="định-nghĩa" markdown="1">
+**Định nghĩa**:
 
 $$M=(Q,\Sigma,\Gamma,\delta,q_0,q_A,q_R)$$,  
 $$\delta:(Q\setminus\{q_A,q_R\})\times\Gamma\to Q\times\Gamma\times\{L,R\}$$.
 
 **Cấu hình** $$uqv$$: băng $$uv$$, đầu tại đầu $$v$$, trạng thái $$q$$.
+</div>
 
 ## Sức mạnh
 

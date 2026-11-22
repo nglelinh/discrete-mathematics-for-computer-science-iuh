@@ -27,10 +27,12 @@ excerpt: "Hợp giao bù ghép star; chứng minh đẳng thức; ví dụ."
 
 </div>
 
-## Định nghĩa
+<div class="textbook-definition" id="định-nghĩa" markdown="1">
+**Định nghĩa**:
 
 $$L_1L_2=\{xy:x\in L_1,y\in L_2\}$$,  
 $$L^*=\bigcup_{k\ge 0}L^k$$, $$L^0=\{\varepsilon\}$$, $$L^+=LL^*$$.
+</div>
 
 ## Định lý
 
@@ -44,8 +46,10 @@ $$L^*=\bigcup_{k\ge 0}L^k$$, $$L^0=\{\varepsilon\}$$, $$L^+=LL^*$$.
 
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh (4).** $$L^*\subseteq(L^*)^*$$ vì $$A\subseteq A^*$$.  
-$$(L^*)^*\subseteq L^*$$: phần tử là ghép các từ trong $$L^*$$, mỗi từ là ghép từ $$L$$ ⇒ thuộc $$L^*$$. $$\square$$
+$$(L^*)^*\subseteq L^*$$: phần tử là ghép các từ trong $$L^*$$, mỗi từ là ghép từ $$L$$ ⇒ thuộc $$L^*$$.
+</div>
 
 ## Bài tập
 

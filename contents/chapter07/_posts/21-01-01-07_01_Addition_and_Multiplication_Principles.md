@@ -38,8 +38,9 @@ Quy tắc cộng áp dụng khi các lựa chọn loại trừ nhau; quy tắc n
 
 **Nguyên lý**: Nếu một tác vụ có thể được thực hiện theo m cách hoặc theo n cách (không trùng lặp), thì tổng số cách thực hiện tác vụ là m + n.
 
-### Định nghĩa chính thức
-Nếu $$A$$ và $$B$$ là hai tập hợp rời nhau ($$A \cap B = \emptyset$$), thì $$\lvert A \cup B \rvert = \lvert A \rvert + \lvert B \rvert$$.
+<div class="textbook-definition" id="định-nghĩa-chính-thức" markdown="1">
+**Định nghĩa chính thức**: Nếu $$A$$ và $$B$$ là hai tập hợp rời nhau ($$A \cap B = \emptyset$$), thì $$\lvert A \cup B \rvert = \lvert A \rvert + \lvert B \rvert$$.
+</div>
 
 ![Phép hợp hai tập rời nhau](/discrete-mathematics-for-computer-science-iuh/img/course/Union_of_sets_A_and_B.svg)
 
@@ -93,14 +94,15 @@ Tạo mật khẩu gồm:
 
 Tích Descartes là một khái niệm quan trọng kết nối lý thuyết tập hợp với quy tắc nhân.
 
-### Định nghĩa
-
-Tích Descartes của hai tập hợp A và B, ký hiệu A × B, là tập hợp tất cả các cặp có thứ tự (a, b) với a ∈ A và b ∈ B.
+<div class="textbook-definition" id="định-nghĩa" markdown="1">
+**Định nghĩa**: Tích Descartes của hai tập hợp A và B, ký hiệu A × B, là tập hợp tất cả các cặp có thứ tự (a, b) với a ∈ A và b ∈ B.
 
 <div class="textbook-equation" markdown="1">
 {% raw %}$$A \times B = \{(a,b) \mid a \in A,\; b \in B\}$${% endraw %}
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+</div>
+
 ### Công thức về lực lượng
 
 Nếu $$\lvert A \rvert = m$$ và $$\lvert B \rvert = n$$, thì $$\lvert A \times B \rvert = m \times n$$.

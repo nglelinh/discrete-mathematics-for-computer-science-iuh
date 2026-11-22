@@ -82,6 +82,7 @@ $$
 </div>
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh bằng đếm số lần**: Xét một phần tử thuộc đúng $r$ tập. Trong tổng trên, nó được tính
 
 <div class="textbook-equation" markdown="1">
@@ -91,6 +92,7 @@ $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 Do đó mỗi phần tử trong hợp được đếm đúng một lần.
+</div>
 
 <div class="textbook-theorem" markdown="1">
 **Quy tắc nhớ**: Dấu xen kẽ theo kích thước giao: tập đơn cộng, giao đôi trừ, giao ba cộng, rồi tiếp tục như vậy.

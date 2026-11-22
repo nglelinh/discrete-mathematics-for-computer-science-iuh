@@ -32,9 +32,9 @@ excerpt: "A→α; leftmost derivation; ví dụ ngoặc và biểu thức."
 
 </div>
 
-## Định nghĩa
-
-Mọi production $$A\to\alpha$$, $$A\in V$$, $$\alpha\in(V\cup\Sigma)^*$$.
+<div class="textbook-definition" id="định-nghĩa" markdown="1">
+**Định nghĩa**: Mọi production $$A\to\alpha$$, $$A\in V$$, $$\alpha\in(V\cup\Sigma)^*$$.
+</div>
 
 ## Ví dụ
 
@@ -47,9 +47,11 @@ $$S\to aSb\mid\varepsilon$$ ⇒ $$\{a^nb^n\}$$.
 
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh.**  
 (⊆) Quy nạp dẫn xuất: mỗi lần $$aSb$$ thêm cặp.  
-(⊇) $$a^nb^n$$: $$n$$ lần $$aSb$$ rồi ε. $$\square$$
+(⊇) $$a^nb^n$$: $$n$$ lần $$aSb$$ rồi ε.
+</div>
 
 ## Bài tập
 

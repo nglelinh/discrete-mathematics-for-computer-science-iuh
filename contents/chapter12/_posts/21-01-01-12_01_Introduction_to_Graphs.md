@@ -146,9 +146,11 @@ $$
 
 </div>
 
+<div class="textbook-proof" markdown="1">
 *Phác thảo chứng minh.* Mỗi cạnh $$\{u,v\}$$ được đếm đúng hai lần trong tổng bậc — một lần ở $$u$$ và một lần ở $$v$$. Mỗi khuyên $$\{v,v\}$$ cũng đóng góp đúng $$2$$ vào $$\deg(v)$$ theo quy ước ở Mục 3, nên vẫn được đếm hai lần. Do đó tổng bậc bằng hai lần số cạnh.
 
 Hệ quả suy ra từ quan sát: tổng các số nguyên bằng số chẵn khi và chỉ khi số các số hạng lẻ là chẵn. Vì $$2|E|$$ chẵn, số đỉnh bậc lẻ phải chẵn.
+</div>
 
 <div class="textbook-example" markdown="1">
 

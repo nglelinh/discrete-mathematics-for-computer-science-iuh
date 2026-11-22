@@ -161,6 +161,7 @@ Một khuôn mẫu an toàn là:
 **Định lý:** `√2` là số vô tỷ (irrational number).
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh:**
 
 Giả sử phản chứng rằng `√2` là số hữu tỷ. Khi đó tồn tại các số nguyên `a, b` sao cho:
@@ -187,7 +188,8 @@ Vậy `b²` là số chẵn, suy ra `b` cũng là số chẵn.
 
 Như vậy, cả `a` và `b` đều chẵn. Điều này mâu thuẫn với điều kiện `gcd(a, b) = 1`, vì nếu cả hai cùng chẵn thì chúng có ước chung ít nhất là `2`.
 
-Vậy giả sử `√2` là số hữu tỷ là sai. Do đó `√2` là số vô tỷ. ∎
+Vậy giả sử `√2` là số hữu tỷ là sai. Do đó `√2` là số vô tỷ.
+</div>
 
 ![Số nguyên tố](/discrete-mathematics-for-computer-science-iuh/img/course/Prime_numbers.svg)
 
@@ -217,6 +219,7 @@ Bấm Bước tiếp để xem chứng minh √2 vô tỷ hiện dần, với b�
 **Định lý:** Có vô hạn số nguyên tố.
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh:**
 
 Giả sử phản chứng rằng chỉ có hữu hạn số nguyên tố. Gọi tất cả các số nguyên tố đó là:
@@ -237,7 +240,8 @@ Khi đó `p` chia hết cho tích `p₁p₂...pₙ`, nên `p` cũng chia hết c
 
 Nhưng không có số nguyên tố nào chia hết cho `1`. Mâu thuẫn.
 
-Vậy giả sử chỉ có hữu hạn số nguyên tố là sai. Do đó có vô hạn số nguyên tố. ∎
+Vậy giả sử chỉ có hữu hạn số nguyên tố là sai. Do đó có vô hạn số nguyên tố.
+</div>
 
 ### Ý nghĩa sư phạm
 
@@ -255,13 +259,15 @@ Ví dụ này giúp sinh viên thấy phản chứng không chỉ dùng cho số
 **Mệnh đề:** Không tồn tại số nguyên tố lớn nhất.
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh bằng phản chứng:**
 
 Giả sử tồn tại số nguyên tố lớn nhất, gọi là `p`.
 
 Theo Ví dụ 2, nếu có số nguyên tố lớn nhất thì số lượng số nguyên tố phải là hữu hạn. Nhưng điều đó mâu thuẫn với định lý "có vô hạn số nguyên tố".
 
-Vậy không tồn tại số nguyên tố lớn nhất. ∎
+Vậy không tồn tại số nguyên tố lớn nhất.
+</div>
 
 ### Bài học ở đây
 

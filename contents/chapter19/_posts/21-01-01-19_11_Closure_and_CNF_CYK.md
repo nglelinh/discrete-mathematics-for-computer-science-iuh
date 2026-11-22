@@ -39,8 +39,10 @@ excerpt: "Đóng hợp ghép star; không đóng giao/bù; CNF; thuật toán CY
 
 </div>
 
+<div class="textbook-proof" markdown="1">
 **Chứng minh.** $$L_1=\{a^nb^nc^m\}$$, $$L_2=\{a^nb^mc^m\}$$ CFL nhưng $$L_1\cap L_2=\{a^nb^nc^n\}$$ không CFL.  
-Bù: nếu đóng bù và ∪ thì đóng ∩. $$\square$$
+Bù: nếu đóng bù và ∪ thì đóng ∩.
+</div>
 
 ## CNF
 

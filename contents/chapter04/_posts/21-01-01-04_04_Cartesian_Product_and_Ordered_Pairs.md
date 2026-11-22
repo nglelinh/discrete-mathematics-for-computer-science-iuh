@@ -87,7 +87,9 @@ Ký hiệu $$\mathbb{R}^2 = \mathbb{R} \times \mathbb{R}$$ là mặt phẳng t�
 $$\lvert A \times B \rvert = \lvert A \rvert \cdot \lvert B \rvert.$$
 </div>
 
-**Chứng minh (đếm trực tiếp)**: Với mỗi $$a \in A$$ (có $$\lvert A \rvert$$ lựa chọn), ta chọn $$b \in B$$ ($$\lvert B \rvert$$ lựa chọn). Theo nguyên lý nhân, số cặp là $$\lvert A \rvert \cdot \lvert B \rvert$$. ∎
+<div class="textbook-proof" markdown="1">
+**Chứng minh (đếm trực tiếp)**: Với mỗi $$a \in A$$ (có $$\lvert A \rvert$$ lựa chọn), ta chọn $$b \in B$$ ($$\lvert B \rvert$$ lựa chọn). Theo nguyên lý nhân, số cặp là $$\lvert A \rvert \cdot \lvert B \rvert$$.
+</div>
 
 <div class="textbook-example" markdown="1">
 **Ví dụ (cảnh báo hiệu năng)**:
@@ -107,7 +109,9 @@ $$\lvert A \times B \rvert = \lvert A \rvert \cdot \lvert B \rvert.$$
 $$(Q \times R) \cap (S \times T) = (Q \cap S) \times (R \cap T).$$
 </div>
 
-**Chứng minh**: $$(x,y) \in (Q \times R) \cap (S \times T)$$ ⇔ $$x \in Q, y \in R, x \in S, y \in T$$ ⇔ $$x \in Q \cap S, y \in R \cap T$$ ⇔ $$(x,y) \in (Q \cap S) \times (R \cap T)$$. ∎
+<div class="textbook-proof" markdown="1">
+**Chứng minh**: $$(x,y) \in (Q \times R) \cap (S \times T)$$ ⇔ $$x \in Q, y \in R, x \in S, y \in T$$ ⇔ $$x \in Q \cap S, y \in R \cap T$$ ⇔ $$(x,y) \in (Q \cap S) \times (R \cap T)$$.
+</div>
 
 ### Hợp và tích — không phân phối đơn giản
 

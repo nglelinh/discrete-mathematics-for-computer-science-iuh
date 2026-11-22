@@ -27,7 +27,8 @@ excerpt: "Định nghĩa đệ quy regex; L(r); ví dụ; liên hệ ngôn ngữ
 
 </div>
 
-## Định nghĩa
+<div class="textbook-definition" id="định-nghĩa" markdown="1">
+**Định nghĩa**:
 
 **Cơ sở:** $$\emptyset$$, $$\varepsilon$$, $$a\in\Sigma$$.  
 **Toán tử:** $$r+s$$ (hợp), $$rs$$ (ghép), $$r^*$$ (sao).
@@ -37,6 +38,7 @@ $$L(\emptyset)=\emptyset,\quad L(\varepsilon)=\{\varepsilon\},\quad L(a)=\{a\}.$
 $$L(r+s)=L(r)\cup L(s),\quad L(rs)=L(r)L(s),\quad L(r^*)=\bigcup_{k\ge 0}L(r)^k.$$
 
 *(Tránh align nếu build lỗi — dùng bullet nếu cần.)*
+</div>
 
 ## Ví dụ
 

@@ -85,9 +85,8 @@ $$h\circ(g\circ f)=(h\circ g)\circ f.$$
 </div>
 </div>
 
-### Chứng minh
-
-Với mọi $$x$$ trong domain của $$f$$:
+<div class="textbook-proof" id="chứng-minh" markdown="1">
+**Chứng minh**: Với mọi $$x$$ trong domain của $$f$$:
 
 <div class="textbook-equation" markdown="1">
 $$[h\circ(g\circ f)](x)=h((g\circ f)(x))=h(g(f(x))).$$
@@ -100,6 +99,7 @@ $$[(h\circ g)\circ f](x)=(h\circ g)(f(x))=h(g(f(x))).$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 Hai vế cho cùng giá trị với mọi $$x$$, nên hai hàm bằng nhau.
+</div>
 
 ![Tính kết hợp — (h∘g)∘f = h∘(g∘f)](/discrete-mathematics-for-computer-science-iuh/img/course/Example_for_a_composition_of_two_functions.svg)
 
@@ -150,11 +150,11 @@ Khi tồn tại, chúng ta viết $$g=f^{-1}$$.
 **Định lý**: Hàm $$f:A\to B$$ có nghịch đảo hai phía khi và chỉ khi $$f$$ là song ánh.
 </div>
 
-### Chứng minh ý chính
-
-Nếu $$f$$ có nghịch đảo, thì mỗi $$y\in B$$ được đạt bởi $$x=f^{-1}(y)$$, nên $$f$$ toàn ánh. Nếu $$f(x_1)=f(x_2)$$, áp dụng $$f^{-1}$$ hai vế được $$x_1=x_2$$, nên $$f$$ đơn ánh. Vậy $$f$$ song ánh.
+<div class="textbook-proof" id="chứng-minh-ý-chính" markdown="1">
+**Chứng minh ý chính**: Nếu $$f$$ có nghịch đảo, thì mỗi $$y\in B$$ được đạt bởi $$x=f^{-1}(y)$$, nên $$f$$ toàn ánh. Nếu $$f(x_1)=f(x_2)$$, áp dụng $$f^{-1}$$ hai vế được $$x_1=x_2$$, nên $$f$$ đơn ánh. Vậy $$f$$ song ánh.
 
 Ngược lại, nếu $$f$$ song ánh, mỗi $$y\in B$$ có đúng một tiền ảnh $$x\in A$$. Định nghĩa $$f^{-1}(y)=x$$. Hàm này thỏa hai điều kiện nghịch đảo.
+</div>
 
 ![Hàm nghịch đảo — chỉ tồn tại khi song ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
