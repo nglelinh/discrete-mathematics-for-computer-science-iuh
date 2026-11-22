@@ -7,45 +7,45 @@ date: 2021-01-01
 order: 4
 required: false
 lang: vi
-excerpt: "Ở mục trước chúng ta đã chứng minh công thức bao hàm–loại trừ tổng quát. Mục này áp dụng nguyên lý vào các bài toán cổ điển: sàng Legendre, hàm Euler , số…"
+excerpt: "Áp dụng nguyên lý bao hàm–loại trừ vào các bài toán cổ điển: sàng Legendre, hàm phi Euler, số toàn ánh, hoán vị không điểm cố định (derangement) và tô màu có ràng buộc."
 ---
 
-Ở mục trước chúng ta đã chứng minh công thức bao hàm–loại trừ tổng quát. Mục này áp dụng nguyên lý vào các bài toán cổ điển: **sàng Legendre**, **hàm Euler** $$\phi(n)$$, **số toàn ánh**, **derangement**, và đếm cấu hình có ràng buộc (tô màu). Phần then chốt thường không nằm ở phép cộng trừ mà ở **mô hình hóa** đúng tập cần đếm và các giao $$A_i \cap A_j$$; sau khi xác định được các tập con, công thức còn lại là thay số theo khuôn đã học.
+Ở mục trước, chúng ta đã chứng minh công thức bao hàm–loại trừ tổng quát. Mục này áp dụng nguyên lý đó vào các bài toán cổ điển: **sàng Legendre**, **hàm phi Euler** $$\phi(n)$$, **số toàn ánh**, **derangement** và đếm cấu hình có ràng buộc (như tô màu đồ thị). Bước quan trọng nhất thường không nằm ở phép cộng trừ mà ở việc **mô hình hóa** chính xác các tập vi phạm $$A_i$$ và phần giao của chúng; sau khi xác định xong các tập con này, phần còn lại chỉ là thay số vào công thức đã biết.
 
 ![Ứng dụng bao hàm–loại trừ](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)
 
-<p class="textbook-figure-caption" data-figure="11.16">Sàng Legendre và hàm Euler đều dùng cùng khuôn: cộng, trừ giao, cộng lại giao cao hơn.</p>
+<p class="textbook-figure-caption" data-figure="11.16">Sàng Legendre và hàm phi Euler đều tuân theo cùng cấu trúc: cộng tập đơn, trừ giao đôi và cộng lại giao bậc cao hơn.</p>
 ![Phân tích thừa số nguyên tố](/discrete-mathematics-for-computer-science-iuh/img/course/PrimeDecompositionExample.svg)
 
-<p class="textbook-figure-caption" data-figure="11.17">Hàm $$\phi(n)$$ loại các số chia hết cho từng thừa số nguyên tố của $$n$$.</p>
+<p class="textbook-figure-caption" data-figure="11.17">Hàm $$\phi(n)$$ loại bỏ các số chia hết cho từng thừa số nguyên tố của $$n$$.</p>
 ![Cấu trúc số nguyên](/discrete-mathematics-for-computer-science-iuh/img/course/Euler_diagram_of_number_sets.svg)
 
-<p class="textbook-figure-caption" data-figure="11.18">Đếm số nguyên tố cùng nhau, số toàn ánh và derangement đều là bài toán đếm trên tập số.</p>
+<p class="textbook-figure-caption" data-figure="11.18">Đếm số nguyên tố cùng nhau, số toàn ánh và derangement đều là các bài toán đếm tiêu biểu trên tập rời rạc.</p>
 ![Đếm cấu hình có ràng buộc](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-<p class="textbook-figure-caption" data-figure="11.19">Bài toán tô màu: mỗi vi phạm là một tập con — bao hàm–loại trừ đếm cách tô hợp lệ.</p>
+<p class="textbook-figure-caption" data-figure="11.19">Trong bài toán tô màu, mỗi cạnh vi phạm tạo thành một tập con; bao hàm–loại trừ giúp đếm số cách tô hợp lệ.</p>
 ![Ánh xạ và đếm](/discrete-mathematics-for-computer-science-iuh/img/course/Hash_table_simple_999.svg)
 
-<p class="textbook-figure-caption" data-figure="11.20">Số toàn ánh đếm ánh xạ không bỏ sót giá trị đích — ứng dụng trong phân bố và hashing.</p>
+<p class="textbook-figure-caption" data-figure="11.20">Số toàn ánh đếm các ánh xạ phủ kín tập đích, có ứng dụng trong phân bố dữ liệu và bảng băm (hashing).</p>
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Áp dụng** bao hàm–loại trừ vào sàng Legendre và hàm Euler $$\phi(n)$$.
-- **Tính** số toàn ánh và số derangement bằng công thức IE.
-- **Mô hình hóa** bài toán tô màu / ràng buộc thành hợp các tập vi phạm.
+- **Áp dụng** nguyên lý bao hàm–loại trừ vào sàng Legendre và hàm phi Euler $$\phi(n)$$.
+- **Tính** số toàn ánh và số derangement bằng công thức bao hàm–loại trừ.
+- **Mô hình hóa** bài toán tô màu và các bài toán có ràng buộc thành hợp của những tập vi phạm.
 
 **Từ khóa**: sàng Legendre, hàm Euler, toàn ánh (surjection), derangement, tô màu đồ thị.
 </div>
 
 ## Sàng Legendre và đếm số nguyên tố
 
-Để đếm số nguyên tố không vượt quá $$N$$, ta đếm số số bị chia hết bởi ít nhất một số nguyên tố nhỏ hơn hoặc bằng $$\sqrt N$$, rồi loại bỏ chúng khỏi tập ứng viên. Ý tưởng này không thay thế sàng Eratosthenes trong tính toán thực tế, nhưng minh họa rất rõ cách bao hàm - loại trừ hoạt động.
+Để đếm số nguyên tố không vượt quá $$N$$, ta đếm số các hợp số bị chia hết bởi ít nhất một số nguyên tố không vượt quá $$\sqrt N$$ rồi loại chúng khỏi tập ứng viên. Cách làm này không thay thế sàng Eratosthenes về mặt hiệu năng tính toán, nhưng minh họa rõ cách nguyên lý bao hàm–loại trừ hoạt động trên tập số nguyên.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Với $$N=30$$, các số nguyên tố không vượt quá $$\sqrt{30}$$ là 2, 3, 5. Đếm các số chia hết cho ít nhất một trong 2,3,5 rồi điều chỉnh để không loại nhầm chính 2,3,5.
+**Ví dụ**: Với $$N=30$$, các số nguyên tố không vượt quá $$\sqrt{30}$$ là 2, 3 và 5. Ta đếm các số chia hết cho ít nhất một trong ba số 2, 3, 5 rồi điều chỉnh để không loại nhầm chính 2, 3, 5 (và loại số 1).
 </div>
 
 
@@ -56,7 +56,7 @@ excerpt: "Ở mục trước chúng ta đã chứng minh công thức bao hàm�
 </div>
 
 
-Nếu
+Nếu phân tích thừa số nguyên tố của $$n$$ là
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -72,11 +72,11 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Ý tưởng chứng minh**: Đếm các số từ 1 đến $$n$$, rồi loại các số chia hết cho từng $$p_i$$ bằng bao hàm - loại trừ.
+**Ý tưởng chứng minh**: Xét các số nguyên từ 1 đến $$n$$, sau đó loại bỏ những số chia hết cho ít nhất một thừa số nguyên tố $$p_i$$ bằng nguyên lý bao hàm–loại trừ.
 
 ## Số toàn ánh
 
-Số ánh xạ toàn ánh từ một tập $$m$$ phần tử sang một tập $$n$$ phần tử có thể đếm bằng bao hàm - loại trừ:
+Số ánh xạ toàn ánh từ một tập $$m$$ phần tử sang một tập $$n$$ phần tử được tính bằng bao hàm–loại trừ theo công thức:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -84,11 +84,11 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Trực giác**: Bắt đầu từ tất cả ánh xạ có $$n^m$$ cách. Trừ các ánh xạ bỏ sót ít nhất một giá trị đích. Có $$\binom{n}{1}(n-1)^m$$ ánh xạ bỏ sót một giá trị, cộng lại phần bỏ sót hai giá trị, và cứ tiếp tục như vậy.
+**Trực giác**: Ta bắt đầu từ tổng số $$n^m$$ ánh xạ bất kỳ, sau đó trừ đi các ánh xạ bỏ sót ít nhất một giá trị đích (có $$\binom{n}{1}(n-1)^m$$ trường hợp), cộng lại phần bỏ sót ít nhất hai giá trị đích, rồi tiếp tục xen kẽ dấu như vậy.
 
 ## Hoán vị không điểm cố định
 
-Một hoán vị của $$n$$ phần tử không có điểm cố định gọi là **derangement**. Số derangement ký hiệu $$!n$$ và có công thức
+Một hoán vị của $$n$$ phần tử không có điểm cố định nào được gọi là **derangement**. Số derangement ký hiệu là $$!n$$ và thỏa mãn công thức:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -96,7 +96,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Đây là kết quả kinh điển của bao hàm - loại trừ: bắt đầu từ $$n!$$ hoán vị, trừ hoán vị cố định ít nhất một vị trí, cộng lại hoán vị cố định ít nhất hai vị trí, v.v.
+Đây là kết quả kinh điển của nguyên lý bao hàm–loại trừ: xuất phát từ $$n!$$ hoán vị, trừ đi các hoán vị cố định ít nhất một vị trí, cộng lại các hoán vị cố định ít nhất hai vị trí, và tiếp tục cho đến $$n$$.
 
 ### Video ngắn: Derangement và hằng số $$1/e$$
 
@@ -104,16 +104,14 @@ $$
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/derangement-one-over-e.mp4"></video>
 </div>
 
-Trong $$24$$ hoán vị của $$\{1,2,3,4\}$$ có đúng $$9$$ hoán vị không có phần tử nào đứng đúng chỗ, tức $$D_4=9$$. Theo bao hàm–loại trừ, $$D_n=n!\sum_{k=0}^{n}\frac{(-1)^k}{k!}$$, nên $$D_n/n!\to 1/e\approx 0{,}3679$$: với $$n$$ lớn, khoảng $$36{,}8\%$$ hoán vị là derangement.
+Trong $$24$$ hoán vị của $$\{1,2,3,4\}$$, có đúng $$9$$ hoán vị không có phần tử nào đứng đúng vị trí ban đầu, tức $$D_4=9$$. Theo nguyên lý bao hàm–loại trừ, $$D_n=n!\sum_{k=0}^{n}\frac{(-1)^k}{k!}$$, suy ra $$D_n/n!\to 1/e\approx 0{,}3679$$: khi $$n$$ đủ lớn, khoảng $$36{,}8\%$$ số hoán vị là derangement.
 
 ## Ứng dụng trong tô màu và ràng buộc
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Phần này liên hệ khái niệm toán học với bài toán thực tế trong lập trình và hệ thống.
-
-Trong bài toán tô màu, ta thường cần đếm số cách gán màu sao cho các điều kiện cấm không xảy ra. Gọi $$A_i$$ là tập cách tô vi phạm cạnh thứ $$i$$. Số cách tô hợp lệ là tổng số cách tô trừ đi hợp các vi phạm, tức là dùng bao hàm - loại trừ.
+Trong các bài toán tô màu có ràng buộc, ta cần đếm số cách gán màu sao cho không xảy ra xung đột. Gọi $$A_i$$ là tập các cách tô vi phạm điều kiện tại cạnh thứ $$i$$. Số cách tô hợp lệ bằng tổng số cách tô tùy ý trừ đi kích thước hợp của các tập vi phạm $$A_i$$, tức là áp dụng trực tiếp dạng bù của nguyên lý bao hàm–loại trừ.
 
 <div class="interactive-demo" markdown="1">
-**Demo tương tác đề xuất**: Người học chọn số phần tử miền nguồn và miền đích. Công cụ hiển thị số toàn ánh bằng cách trừ các hàm bỏ sót giá trị đích.
+**Demo tương tác đề xuất**: Chọn số phần tử của tập nguồn và tập đích; công cụ sẽ hiển thị số toàn ánh bằng cách trừ dần các ánh xạ bỏ sót giá trị đích.
 <div data-demo="surjection-counter"></div>
 </div>
 <script src="{{ '/public/js/surjection-counter.js' | relative_url }}"></script>
@@ -127,7 +125,7 @@ Tính $$\phi(12)$$ bằng công thức $$n \prod(1 - 1/p_i)$$.
 <details>
 <summary>Đáp án</summary>
 
-$$12 = 2^2 \cdot 3$$. $$\phi(12) = 12(1 - 1/2)(1 - 1/3) = 12 \cdot 1/2 \cdot 2/3 = 4$$.
+Ta có $$12 = 2^2 \cdot 3$$, nên $$\phi(12) = 12(1 - 1/2)(1 - 1/3) = 12 \cdot \frac{1}{2} \cdot \frac{2}{3} = 4$$.
 
 </details>
 
@@ -138,18 +136,18 @@ Có bao nhiêu ánh xạ toàn ánh từ tập 3 phần tử sang tập 2 phần
 <details>
 <summary>Đáp án</summary>
 
-$$\text{Surj}(3,2) = 2^3 - \binom{2}{1}1^3 = 8 - 2 = 6$$ (hoặc công thức tổng: $$2^3 - 2\cdot 1^3 = 6$$).
+$$\text{Surj}(3,2) = 2^3 - \binom{2}{1}1^3 = 8 - 2 = 6$$.
 
 </details>
 
 ### Bài tập 3
 
-Tính $$!4$$ (số derangement trên 4 phần tử).
+Tính $$!4$$ (số derangement của 4 phần tử).
 
 <details>
 <summary>Đáp án</summary>
 
-$$!4 = 4!(1 - 1 + 1/2 - 1/6 + 1/24) = 24 \cdot 9/24 = 9$$.
+$$!4 = 4!\left(1 - 1 + \frac{1}{2} - \frac{1}{6} + \frac{1}{24}\right) = 24 \cdot \frac{9}{24} = 9$$.
 
 </details>
 
@@ -163,16 +161,16 @@ $$!4 = 4!(1 - 1 + 1/2 - 1/6 + 1/24) = 24 \cdot 9/24 = 9$$.
 
 ## Tóm tắt
 
-- **Sàng Legendre**: loại bội của các số nguyên tố nhỏ — minh họa bao hàm–loại trừ trên tập số.
-- **Hàm Euler** $$\phi(n)$$: $$\phi(n) = n \prod (1 - 1/p_i)$$ — chứng minh bằng loại các số chia hết cho $$p_i$$.
+- **Sàng Legendre**: loại bội của các số nguyên tố không vượt quá $$\sqrt N$$, minh họa cách dùng bao hàm–loại trừ trên tập số nguyên.
+- **Hàm phi Euler** $$\phi(n)$$: $$\phi(n) = n \prod (1 - 1/p_i)$$, chứng minh bằng cách loại các số chia hết cho từng thừa số nguyên tố $$p_i$$.
 - **Số toàn ánh**: $$\text{Surj}(m,n) = \sum_{k=0}^{n} (-1)^k \binom{n}{k}(n-k)^m$$.
 - **Derangement** $$!n$$: $$!n = n! \sum_{k=0}^{n} (-1)^k/k!$$.
-- **Tô màu / ràng buộc**: đếm cấu hình hợp lệ = tổng không gian trừ hợp các vi phạm.
+- **Tô màu và ràng buộc**: số cấu hình hợp lệ bằng tổng số cấu hình trừ đi hợp của các tập vi phạm.
 
-Trong bài tiếp theo, chúng ta tổng hợp **hàm sinh** trong phép đếm, xác suất và lý thuyết mã hóa.
+Ở bài tiếp theo, chúng ta sẽ tổng hợp các ứng dụng mở rộng của **hàm sinh** trong phép đếm, xác suất và lý thuyết mã hóa.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=Y0CYHMqomgI">[Discrete Mathematics] Inclusion Exclusion Problems</a> — TrevTutor, tiếng Anh. Xem trước bài toán ứng dụng bù trừ.
-- <a href="https://www.youtube.com/watch?v=BOFWLhH0Igo">[Discrete Mathematics] Derangements</a> — TrevTutor, tiếng Anh. Sai vị trí, ứng dụng kinh điển của nguyên lý.
-- <a href="https://www.youtube.com/watch?v=D1T3xy_vtxU">[Discrete Mathematics] Inclusion-Exclusion: At Least &amp; Exactly</a> — TrevTutor, tiếng Anh. Chuyển giữa ít nhất và đúng, hay gặp trong bài tập.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=Y0CYHMqomgI">[Discrete Mathematics] Inclusion Exclusion Problems</a> — TrevTutor, tiếng Anh. Các bài toán ứng dụng nguyên lý bao hàm–loại trừ.
+- <a href="https://www.youtube.com/watch?v=BOFWLhH0Igo">[Discrete Mathematics] Derangements</a> — TrevTutor, tiếng Anh. Bài toán hoán vị không điểm cố định — ứng dụng kinh điển của nguyên lý.
+- <a href="https://www.youtube.com/watch?v=D1T3xy_vtxU">[Discrete Mathematics] Inclusion-Exclusion: At Least &amp; Exactly</a> — TrevTutor, tiếng Anh. Cách chuyển đổi giữa điều kiện “ít nhất” và “đúng bằng” thường gặp trong bài tập.

@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 3
 required: true
 lang: en
-excerpt: "Mã hóa đối xứng và bất đối xứng; Caesar, Affine; RSA (tạo khóa, mã/giải); Diffie–Hellman; chữ ký số — gắn với modulo và Euclid."
+excerpt: "Mã hóa đối xứng và bất đối xứng; Caesar, Affine; RSA (tạo khóa, mã hóa và giải mã); Diffie–Hellman; chữ ký số — gắn với số học modulo và thuật toán Euclid."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,11 +17,11 @@ excerpt: "Mã hóa đối xứng và bất đối xứng; Caesar, Affine; RSA (t
 
 </div>
 
-Số học modulo cho phép thao tác trên số dư; **mật mã học** dùng các cấu trúc đó để bảo vệ bí mật, toàn vẹn và xác thực thông tin. Mục này giới thiệu mô hình hệ mật, mã cổ điển (Caesar, Affine), RSA, Diffie–Hellman và chữ ký số — luôn ở mức có thể tính tay với số nhỏ.
+Số học modulo cung cấp công cụ tính toán trên các lớp số dư, còn **mật mã học** ứng dụng những cấu trúc đó để bảo vệ tính bí mật, tính toàn vẹn và xác thực thông tin. Bài học này giới thiệu mô hình hệ mật mã, các phương pháp mã hóa cổ điển (Caesar, Affine), hệ mật RSA, giao thức trao đổi khóa Diffie–Hellman và chữ ký số, sử dụng các ví dụ số nhỏ có thể tính toán trực tiếp bằng tay.
 
 ![Luồng RSA](/discrete-mathematics-for-computer-science-iuh/img/course/Number_rsa_flow.svg)
 
-<p class="textbook-figure-caption" data-figure="15.5">RSA: khóa công khai $$(n,e)$$, khóa riêng $$d$$; $$C \equiv M^e \pmod n$$, $$M \equiv C^d \pmod n$$.</p>
+<p class="textbook-figure-caption" data-figure="15.5">RSA: khóa công khai $$(n,e)$$, khóa riêng $$d$$; mã hóa $$C \equiv M^e \pmod n$$ và giải mã $$M \equiv C^d \pmod n$$.</p>
 
 ## Mục tiêu học tập
 
@@ -29,11 +29,11 @@ Số học modulo cho phép thao tác trên số dư; **mật mã học** dùng 
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Phân biệt** mã hóa đối xứng và bất đối xứng.
-- **Mã / giải** Caesar, Affine và RSA với số nhỏ.
-- **Thực hiện** một vòng Diffie–Hellman số nhỏ.
-- **Giải thích** giả thuyết bảo mật RSA (phân tích thừa số) và DLP.
-- **Mô tả** chữ ký số RSA ở mức khái niệm.
+- **Phân biệt** mã hóa đối xứng và mã hóa bất đối xứng.
+- **Thực hiện** mã hóa và giải mã với Caesar, Affine và RSA trên các số nhỏ.
+- **Thực hiện** một vòng trao đổi khóa Diffie–Hellman với số nhỏ.
+- **Giải thích** các giả thuyết bảo mật của RSA (phân tích thừa số) và bài toán logarit rời rạc (DLP).
+- **Mô tả** nguyên lý chữ ký số RSA ở mức khái niệm.
 
 **Từ khóa**: encryption, public/private key, RSA, Diffie–Hellman, Caesar, Affine, chữ ký số.
 
@@ -43,24 +43,24 @@ Số học modulo cho phép thao tác trên số dư; **mật mã học** dùng 
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa.** **Hệ mật mã** gồm thuật toán **mã hóa** $$E$$ và **giải mã** $$D$$ trên plaintext / ciphertext, điều khiển bởi **khóa**. Mục tiêu: chỉ bên có khóa hợp lệ khôi phục nội dung.
+**Định nghĩa.** Một **hệ mật mã** gồm thuật toán **mã hóa** $$E$$ và thuật toán **giải mã** $$D$$ tác động lên bản rõ (*plaintext*) và bản mã (*ciphertext*), được điều khiển bởi **khóa**. Mục tiêu là chỉ bên nắm giữ khóa hợp lệ mới khôi phục được nội dung ban đầu.
 
-- **Đối xứng** (*symmetric*): cùng khóa bí mật $$K$$ cho $$E_K$$ và $$D_K$$ (AES, ChaCha20).
-- **Bất đối xứng** (*asymmetric*): cặp $$(K_{\mathrm{pub}}, K_{\mathrm{priv}})$$; thường mã bằng công khai, giải bằng riêng (RSA).
+- **Đối xứng** (*symmetric*): dùng chung một khóa bí mật $$K$$ cho cả $$E_K$$ và $$D_K$$ (ví dụ AES, ChaCha20).
+- **Bất đối xứng** (*asymmetric*): sử dụng cặp khóa $$(K_{\mathrm{pub}}, K_{\mathrm{priv}})$$; thông thường mã hóa bằng khóa công khai và giải mã bằng khóa riêng (ví dụ RSA).
 
 </div>
 
 | Mục tiêu | Ý nghĩa |
 |:---|:---|
-| **Confidentiality** | Kẻ ngoài không đọc được nội dung |
-| **Integrity** | Phát hiện sửa đổi (hash, MAC) |
-| **Authentication** | Xác minh nguồn (chữ ký số) |
+| **Confidentiality (Bí mật)** | Bên ngoài không đọc được nội dung |
+| **Integrity (Toàn vẹn)** | Phát hiện được sự sửa đổi dữ liệu (hash, MAC) |
+| **Authentication (Xác thực)** | Xác minh nguồn gốc thông điệp (chữ ký số) |
 
 ## Mã hóa cổ điển
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa** (Caesar). Với chữ cái mã hóa $$0..25$$ và khóa $$k$$:
+**Định nghĩa** (Caesar). Với bảng chữ cái được đánh số từ $$0$$ đến $$25$$ và khóa dịch chuyển $$k$$:
 
 $$
 E(x) = (x+k)\bmod 26, \qquad D(y) = (y-k)\bmod 26.
@@ -70,17 +70,17 @@ $$
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa** (Affine). $$E(x)=(ax+b)\bmod 26$$ với $$\gcd(a,26)=1$$;
+**Định nghĩa** (Affine). Với tham số khóa $$(a,b)$$ thỏa mãn $$\gcd(a,26)=1$$:
 
 $$
-D(y) = a^{-1}(y-b)\bmod 26.
+E(x)=(ax+b)\bmod 26, \qquad D(y) = a^{-1}(y-b)\bmod 26.
 $$
 
 </div>
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ 1.** Caesar $$k=3$$: HELLO → KHOOR. Chỉ 26 khóa — brute-force tức thì; minh họa vì sao cần không gian khóa lớn.
+**Ví dụ 1.** Với mã Caesar khóa $$k=3$$, chuỗi `HELLO` được mã hóa thành `KHOOR`. Vì chỉ có 26 khóa khả dĩ nên mã này dễ dàng bị phá bằng cách thử vét cạn (*brute-force*), cho thấy sự cần thiết của không gian khóa đủ lớn.
 
 </div>
 
@@ -90,27 +90,27 @@ $$
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/rsa-diffie-hellman.mp4"></video>
 </div>
 
-Video dài khoảng 3 phút 22 giây: Diffie–Hellman qua hình ảnh trộn sơn rồi với số ($$p = 23$$, $$g = 5$$, hai bên cùng ra khóa $$K = 2$$), bài toán logarit rời rạc; RSA với $$p = 61$$, $$q = 53$$: $$n = 3233$$, $$\varphi(n) = 3120$$, $$e = 17$$, tìm $$d = 2753$$ bằng Euclid mở rộng, mã hóa $$M = 123$$ thành $$C = 855$$ bằng bình phương liên tiếp, giải mã lại 123, vì sao đúng nhờ định lý Euler, và vì sao RSA an toàn.
+Video dài khoảng 3 phút 22 giây: minh họa Diffie–Hellman qua hình ảnh trộn màu rồi tính bằng số ($$p = 23$$, $$g = 5$$, hai bên cùng thu được khóa chung $$K = 2$$) và bài toán logarit rời rạc; triển khai ví dụ RSA với $$p = 61$$, $$q = 53$$ ($$n = 3233$$, $$\varphi(n) = 3120$$, $$e = 17$$, tìm $$d = 2753$$ bằng thuật toán Euclid mở rộng), mã hóa $$M = 123$$ thành $$C = 855$$ bằng bình phương liên tiếp rồi giải mã lại 123, giải thích cơ sở đúng đắn từ định lý Euler và nền tảng bảo mật của RSA.
 
-## RSA
+## Hệ mật RSA
 
-**Vấn đề trao đổi khóa.** Mã đối xứng cần hai bên đã chia sẻ $$K$$; kênh nghe lén làm việc đó khó. Khóa công khai cho phép công bố $$K_{\mathrm{pub}}$$ và giữ riêng $$K_{\mathrm{priv}}$$.
+**Bài toán trao đổi khóa.** Mã hóa đối xứng đòi hỏi hai bên phải chia sẻ trước cùng một khóa bí mật $$K$$, điều rất khó thực hiện qua kênh truyền có thể bị nghe lén. Mã hóa khóa công khai giải quyết vấn đề này bằng cách cho phép công bố rộng rãi $$K_{\mathrm{pub}}$$ và chỉ giữ bí mật $$K_{\mathrm{priv}}$$.
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa** (RSA — Rivest, Shamir, Adleman, 1977). Hệ bất đối xứng dựa trên độ khó **phân tích thừa số**. Khóa công khai $$(n,e)$$; khóa riêng $$d$$ với $$ed \equiv 1 \pmod{\varphi(n)}$$.
+**Định nghĩa** (RSA — Rivest, Shamir, Adleman, 1977). Hệ mật bất đối xứng dựa trên độ khó của bài toán **phân tích thừa số nguyên tố**. Khóa công khai là $$(n,e)$$ và khóa riêng là $$d$$ thỏa mãn $$ed \equiv 1 \pmod{\varphi(n)}$$.
 
 </div>
 
-**Tạo khóa**
+**Quy trình tạo khóa**
 
 1. Chọn hai số nguyên tố lớn $$p,q$$.
-2. $$n = pq$$, $$\varphi(n)=(p-1)(q-1)$$.
-3. Chọn $$e$$ với $$\gcd(e,\varphi(n))=1$$ (thường $$e=65537$$).
-4. $$d = e^{-1} \bmod \varphi(n)$$ (Euclid mở rộng).
-5. Công khai $$(n,e)$$; riêng $$d$$ (và thường cả $$p,q$$).
+2. Tính $$n = pq$$ và $$\varphi(n)=(p-1)(q-1)$$.
+3. Chọn số mũ công khai $$e$$ sao cho $$\gcd(e,\varphi(n))=1$$ (thường chọn $$e=65537$$).
+4. Tính $$d = e^{-1} \bmod \varphi(n)$$ bằng thuật toán Euclid mở rộng.
+5. Công khai $$(n,e)$$ và giữ bí mật $$d$$ (cùng với $$p,q$$).
 
-**Mã / giải** (thông điệp $$0 \le M < n$$):
+**Mã hóa và giải mã** (với thông điệp $$0 \le M < n$$):
 
 $$
 C \equiv M^e \pmod n, \qquad M \equiv C^d \pmod n.
@@ -118,50 +118,50 @@ $$
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý** (tính đúng RSA). Nếu $$ed \equiv 1 \pmod{\varphi(n)}$$ và $$\gcd(M,n)=1$$ thì $$C^d \equiv M^{ed} \equiv M \pmod n$$ nhờ định lý Euler $$M^{\varphi(n)}\equiv 1 \pmod n$$. (Có mở rộng cho mọi $$M$$ khi $$n=pq$$.)
+**Định lý** (Tính đúng đắn của RSA). Nếu $$ed \equiv 1 \pmod{\varphi(n)}$$ và $$\gcd(M,n)=1$$ thì $$C^d \equiv M^{ed} \equiv M \pmod n$$ nhờ định lý Euler $$M^{\varphi(n)}\equiv 1 \pmod n$$. (Kết quả này cũng mở rộng được cho mọi $$M$$ khi $$n=pq$$ là tích hai số nguyên tố phân biệt.)
 
 </div>
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ 2** (số nhỏ). $$p=61$$, $$q=53$$ → $$n=3233$$, $$\varphi=3120$$. Chọn $$e=17$$, $$d=2753$$.  
-$$M=123$$: $$C = 123^{17}\bmod 3233 = 855$$; giải mã bằng $$855^{2753}\bmod 3233$$ khôi phục $$123$$.
+**Ví dụ 2** (Số nhỏ). Chọn $$p=61$$, $$q=53$$, ta có $$n=3233$$ và $$\varphi(n)=3120$$. Chọn $$e=17$$, tính được $$d=2753$$.  
+Với thông điệp $$M=123$$: bản mã là $$C = 123^{17}\bmod 3233 = 855$$; khi giải mã bằng $$855^{2753}\bmod 3233$$, ta khôi phục đúng $$M=123$$.
 
 </div>
 
-**Giả thuyết bảo mật.** Từ $$(n,e)$$ công khai, suy $$d$$ về thực chất đòi hỏi phân tích $$n=pq$$ — được tin khó với $$n$$ cỡ 2048 bit trở lên trên máy tính cổ điển. Thuật toán Shor trên máy lượng tử đe dọa RSA (Mục 15.4).
+**Giả thuyết bảo mật.** Từ khóa công khai $$(n,e)$$, việc suy ra khóa riêng $$d$$ về thực chất đòi hỏi phân tích $$n=pq$$ — bài toán được tin là rất khó với kích thước $$n$$ từ 2048 bit trở lên trên máy tính cổ điển. Tuy nhiên, thuật toán Shor trên máy tính lượng tử có thể đe dọa tính an toàn của RSA (xem Mục 15.4).
 
 ### Thử nghiệm: kiểm tra nguyên tố Miller–Rabin
 
-Tìm nhân chứng cho hợp số, xem số Carmichael và các cơ sở “nói dối”.
+Tìm nhân chứng cho hợp số, quan sát số Carmichael và các cơ sở “nói dối”:
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="crypto-explainer" data-tab="miller" data-n="561" data-a="2"></div>
 </div>
 
-## Diffie–Hellman
+## Trao đổi khóa Diffie–Hellman
 
 ![Diffie–Hellman](/discrete-mathematics-for-computer-science-iuh/img/course/Number_diffie_hellman.svg)
 
-<p class="textbook-figure-caption" data-figure="15.6">Hai bên tính cùng $$K = g^{ab}\bmod p$$ mà không gửi $$a$$ hay $$b$$.</p>
+<p class="textbook-figure-caption" data-figure="15.6">Hai bên tính ra cùng một khóa chung $$K = g^{ab}\bmod p$$ mà không cần gửi trực tiếp $$a$$ hay $$b$$.</p>
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa** (Diffie–Hellman, 1976). Giao thức trao đổi khóa trên kênh công khai. Tham số công khai: nguyên tố $$p$$, phần tử sinh $$g$$. Alice giữ $$a$$, gửi $$A=g^a\bmod p$$; Bob giữ $$b$$, gửi $$B=g^b\bmod p$$; cả hai tính $$K=g^{ab}\bmod p$$. An toàn dựa trên giả thuyết **logarit rời rạc** (DLP) khó.
+**Định nghĩa** (Diffie–Hellman, 1976). Giao thức trao đổi khóa trên kênh công khai sử dụng tham số công khai gồm số nguyên tố $$p$$ và phần tử sinh $$g$$. Alice giữ bí mật $$a$$ và gửi $$A=g^a\bmod p$$; Bob giữ bí mật $$b$$ và gửi $$B=g^b\bmod p$$; cả hai bên cùng tính được khóa chung $$K=g^{ab}\bmod p$$. Độ an toàn của giao thức dựa trên giả thuyết bài toán **logarit rời rạc** (DLP) là khó giải.
 
 </div>
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ 3.** $$p=23$$, $$g=5$$; $$a=6$$, $$b=15$$.  
-$$A=5^6\bmod 23=8$$, $$B=5^{15}\bmod 23=19$$.  
-$$K=19^6\bmod 23=2$$ và $$K=8^{15}\bmod 23=2$$.
+**Ví dụ 3.** Cho $$p=23$$, $$g=5$$, $$a=6$$ và $$b=15$$.  
+Ta có $$A=5^6\bmod 23=8$$ và $$B=5^{15}\bmod 23=19$$.  
+Cả hai tính khóa chung: $$K=19^6\bmod 23=2$$ và $$K=8^{15}\bmod 23=2$$.
 
 </div>
 
 ### Thử nghiệm: trao đổi khóa Diffie–Hellman
 
-Alice, Bob và Eve với p nhỏ: hai bên ra cùng khóa, Eve dò logarit rời rạc.
+Mô phỏng Alice, Bob và Eve với $$p$$ nhỏ: hai bên thu được cùng một khóa chung trong khi Eve phải dò bài toán logarit rời rạc.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="crypto-explainer" data-tab="dh"></div>
@@ -171,11 +171,11 @@ Alice, Bob và Eve với p nhỏ: hai bên ra cùng khóa, Eve dò logarit rời
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa.** **Chữ ký số**: ký bằng khóa **riêng** $$S=\mathrm{Sign}(M,K_{\mathrm{priv}})$$; xác minh bằng khóa **công khai**. Mục tiêu là **nguồn gốc** và **toàn vẹn**, không nhất thiết che nội dung.
+**Định nghĩa.** Trong **chữ ký số**, người gửi ký thông điệp bằng khóa **riêng** $$S=\mathrm{Sign}(M,K_{\mathrm{priv}})$$ và người nhận xác minh bằng khóa **công khai**. Mục tiêu của chữ ký số là đảm bảo **nguồn gốc** và **tính toàn vẹn**, không nhất thiết che giấu nội dung thông điệp.
 
 </div>
 
-RSA (mô hình đơn giản): $$S \equiv M^d \pmod n$$; xác minh $$S^e \equiv M \pmod n$$. Thực tế ký **hash** (SHA-256) của tài liệu, không ký trực tiếp file lớn.
+Với RSA (ở mô hình đơn giản), chữ ký được tính bằng $$S \equiv M^d \pmod n$$ và xác minh bằng cách kiểm tra $$S^e \equiv M \pmod n$$. Trong thực tế, người ta ký lên **giá trị băm** (như SHA-256) của tài liệu thay vì ký trực tiếp lên tệp kích thước lớn.
 
 ## Thử nghiệm tương tác
 
@@ -184,9 +184,9 @@ RSA (mô hình đơn giản): $$S \equiv M^d \pmod n$$; xác minh $$S^e \equiv M
 </div>
 <script src="{{ '/public/js/rsa-simulator.js' | relative_url }}"></script>
 
-### Minh hoạ tương tác
+### Minh họa tương tác
 
-Minh hoạ số học: RSA đồ chơi — tạo khóa, mã hóa, giải mã với số nhỏ. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh họa RSA trên số nhỏ: tạo khóa, mã hóa và giải mã từng bước.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="numtheory-explainer" data-tab="rsa"></div>
@@ -197,76 +197,77 @@ Minh hoạ số học: RSA đồ chơi — tạo khóa, mã hóa, giải mã v�
 
 ### Bài tập 1
 
-Mã hóa MATH bằng Caesar $$k=5$$.
+Mã hóa chuỗi `MATH` bằng mã Caesar với khóa $$k=5$$.
 
 <details>
 <summary>Đáp án</summary>
 
-M→R, A→F, T→Y, H→M → **RFYM**.
+Dịch mỗi chữ cái tiến 5 vị trí: M → R, A → F, T → Y, H → M. Bản mã thu được là **RFYM**.
 
 </details>
 
 ### Bài tập 2
 
-Affine $$a=7$$, $$b=3$$: nêu công thức giải mã (nghịch đảo của 7 modulo 26).
+Với mã Affine có $$a=7$$, $$b=3$$, hãy nêu công thức giải mã (tìm nghịch đảo của 7 modulo 26).
 
 <details>
 <summary>Đáp án</summary>
 
-$$7\cdot 15=105\equiv 1\pmod{26}$$ → $$a^{-1}\equiv 15$$.  
-$$D(y)=15(y-3)\bmod 26$$.
+Vì $$7\cdot 15=105\equiv 1\pmod{26}$$ nên $$a^{-1}\equiv 15 \pmod{26}$$.  
+Công thức giải mã là $$D(y)=15(y-3)\bmod 26$$.
 
 </details>
 
 ### Bài tập 3
 
-$$p=3$$, $$q=11$$, $$e=7$$: tính $$n$$, $$\varphi$$, $$d$$; mã hóa $$M=5$$.
+Cho $$p=3$$, $$q=11$$, $$e=7$$. Tính $$n$$, $$\varphi(n)$$, $$d$$ và mã hóa thông điệp $$M=5$$.
 
 <details>
 <summary>Đáp án</summary>
 
-$$n=33$$, $$\varphi=20$$, $$d=3$$ (vì $$7\cdot 3\equiv 1\pmod{20}$$).  
-$$C=5^7\bmod 33=14$$ (vì $$5^2=25$$, $$5^4=(25)^2=625\equiv 31$$, $$5^6\equiv 31\cdot 25\equiv 26$$, $$5^7\equiv 26\cdot 5=130\equiv 31$$ — tính cẩn thận: $$5^1=5$$, $$5^2=25$$, $$5^3=125\equiv 26$$, $$5^4\equiv 26\cdot 5=130\equiv 31$$, $$5^5\equiv 31\cdot 5=155\equiv 23$$, $$5^6\equiv 23\cdot 5=115\equiv 16$$, $$5^7\equiv 16\cdot 5=80\equiv 14$$).
+Ta có $$n=33$$, $$\varphi(n)=20$$ và $$d=3$$ (vì $$7\cdot 3=21\equiv 1\pmod{20}$$).  
+Tính bản mã $$C=5^7\bmod 33$$ từng bước: $$5^1=5$$, $$5^2=25$$, $$5^3=125\equiv 26$$, $$5^4\equiv 26\cdot 5=130\equiv 31$$, $$5^5\equiv 31\cdot 5=155\equiv 23$$, $$5^6\equiv 23\cdot 5=115\equiv 16$$, $$5^7\equiv 16\cdot 5=80\equiv 14 \pmod{33}$$.  
+Vậy $$C = 14$$.
 
 </details>
 
 ### Bài tập 4
 
-Diffie–Hellman: $$p=29$$, $$g=2$$, $$a=12$$, $$b=8$$. Tính $$A$$, $$B$$ và $$K$$.
+Trong giao thức Diffie–Hellman với $$p=29$$, $$g=2$$, $$a=12$$ và $$b=8$$, hãy tính $$A$$, $$B$$ và khóa chung $$K$$.
 
 <details>
 <summary>Đáp án</summary>
 
-$$A=2^{12}\bmod 29=7$$; $$B=2^8\bmod 29=24$$.  
-$$K=B^{12}\bmod 29=A^8\bmod 29=20$$ (cả hai cùng $$g^{ab}$$).
+Ta có $$A=2^{12}\bmod 29=7$$ và $$B=2^8\bmod 29=24$$.  
+Khóa chung là $$K=B^{12}\bmod 29=A^8\bmod 29=7$$ (vì $$7^2=49\equiv 20$$, $$7^4\equiv 400\equiv 23\equiv -6$$, suy ra $$7^8\equiv 36\equiv 7 \pmod{29}$$).
 
 </details>
 
 ### Bài tập 5
 
-Eve chặn $$C=15$$, khóa công khai $$(n,e)=(33,7)$$. Phân tích $$n$$, tìm $$d$$, giải mã.
+Eve chặn được bản mã $$C=15$$ cùng khóa công khai $$(n,e)=(33,7)$$. Hãy phân tích $$n$$, tìm khóa riêng $$d$$ và giải mã bản rõ $$M$$.
 
 <details>
 <summary>Đáp án</summary>
 
-$$33=3\cdot 11$$, $$\varphi=20$$, $$d=3$$.  
-$$M=15^3\bmod 33$$: $$15^2=225\equiv 27$$, $$15^3\equiv 27\cdot 15=405\equiv 9\pmod{33}$$.  
-$$M=9$$. Với $$n$$ nhỏ, RSA không an toàn.
+Phân tích $$33=3\cdot 11$$, suy ra $$\varphi(33)=20$$ và $$d=3$$.  
+Giải mã $$M=15^3\bmod 33$$: ta có $$15^2=225\equiv 27$$, nên $$15^3\equiv 27\cdot 15=405\equiv 9\pmod{33}$$.  
+Vậy $$M=9$$. Ví dụ này cho thấy với $$n$$ nhỏ, RSA không an toàn.
 
 </details>
 
 ## Tóm tắt
 
-1. Đối xứng vs bất đối xứng; CIA ở mức khái niệm.
-2. Caesar / Affine — modulo 26, không gian khóa nhỏ.
-3. **RSA**: $$(n,e)$$, $$d$$; Euler bảo đảm tính đúng; an toàn từ factoring.
-4. **Diffie–Hellman**: $$g^{ab}\bmod p$$; an toàn từ DLP.
-5. **Chữ ký**: khóa riêng ký, công khai xác minh.
+1. Phân biệt mã hóa đối xứng và bất đối xứng cùng ba mục tiêu CIA ở mức khái niệm.
+2. Mã Caesar và Affine hoạt động trên modulo 26 với không gian khóa nhỏ.
+3. **RSA**: dùng khóa $$(n,e)$$ và $$d$$; định lý Euler đảm bảo tính đúng đắn, còn độ an toàn dựa trên bài toán phân tích thừa số.
+4. **Diffie–Hellman**: trao đổi khóa chung $$g^{ab}\bmod p$$; độ an toàn dựa trên bài toán logarit rời rạc (DLP).
+5. **Chữ ký số**: ký bằng khóa riêng và xác minh bằng khóa công khai.
 
-Trong bài tiếp theo: hash, PRNG, CRT tăng tốc RSA, ECC và hậu lượng tử.
+Trong bài tiếp theo, ta sẽ tìm hiểu về hàm băm mật mã, PRNG, kỹ thuật dùng CRT tăng tốc RSA, ECC và mật mã hậu lượng tử.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=GSIDS_lvRv4">Public Key Cryptography - Computerphile</a> — Computerphile, tiếng Anh. Xem trước mật mã khóa công khai trước các thuật toán cụ thể.
-- <a href="https://www.youtube.com/watch?v=JD72Ry60eP4">Prime Numbers &amp; RSA Encryption Algorithm - Computerphile</a> — Computerphile, tiếng Anh. RSA từ số nguyên tố và mũ modulo, đúng trọng tâm bài.
-- <a href="https://www.youtube.com/watch?v=4zahvcJ9glg">The RSA Encryption Algorithm (1 of 2: Computing an Example)</a> — Eddie Woo, tiếng Anh. Một ví dụ RSA tính tay từng số.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=GSIDS_lvRv4">Public Key Cryptography - Computerphile</a> — Computerphile, tiếng Anh. Giới thiệu về mật mã khóa công khai trước khi đi vào từng thuật toán cụ thể.
+- <a href="https://www.youtube.com/watch?v=JD72Ry60eP4">Prime Numbers &amp; RSA Encryption Algorithm - Computerphile</a> — Computerphile, tiếng Anh. Giải thích RSA từ số nguyên tố và lũy thừa modulo, sát trọng tâm bài học.
+- <a href="https://www.youtube.com/watch?v=4zahvcJ9glg">The RSA Encryption Algorithm (1 of 2: Computing an Example)</a> — Eddie Woo, tiếng Anh. Minh họa một ví dụ RSA tính tay từng bước.

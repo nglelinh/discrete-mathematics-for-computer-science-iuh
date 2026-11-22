@@ -6,12 +6,12 @@ date: 2021-01-01
 order: 3
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã học hoán vị và tổ hợp. Mục này giới thiệu nguyên lý bù trừ — công cụ sửa sai có hệ thống khi nhiều điều kiện chồng lấn."
+excerpt: "Nguyên lý bù trừ (bao hàm–loại trừ) giúp đếm chính xác hợp của nhiều tập hợp chồng lấn và xử lý các bài toán có nhiều ràng buộc."
 ---
 
-Ở mục trước chúng ta đã học hoán vị và tổ hợp. Mục này giới thiệu **nguyên lý bù trừ** — công cụ sửa sai có hệ thống khi nhiều điều kiện chồng lấn.
+Ở mục trước, chúng ta đã học hoán vị và tổ hợp. Mục này giới thiệu **nguyên lý bù trừ** (hay bao hàm–loại trừ) — công cụ khử đếm trùng có hệ thống khi nhiều điều kiện chồng lấn lên nhau.
 
-Khi nhiều điều kiện chồng lên nhau, việc đếm bằng trực giác rất dễ sai: cộng số phần tử của từng nhóm riêng lẻ rồi vô tình đếm lặp những phần tử thuộc nhiều nhóm cùng lúc. Nguyên lý bù trừ cho phép cộng những gì cần có, trừ phần đã đếm trùng, và tiếp tục cộng trừ theo nhịp đúng khi có nhiều lớp chồng lấn phức tạp hơn.
+Khi một bài toán có nhiều điều kiện giao nhau, việc đếm theo trực giác rất dễ sai: nếu chỉ cộng số phần tử của từng nhóm riêng lẻ, các phần tử thuộc nhiều nhóm cùng lúc sẽ bị đếm lặp. Nguyên lý bù trừ giải quyết vấn đề này bằng cách cộng các tập đơn, trừ phần giao đôi, rồi tiếp tục cộng trừ đan dấu một cách có hệ thống cho đến khi mỗi phần tử được đếm đúng một lần.
 
 ## Mục tiêu học tập
 
@@ -19,9 +19,9 @@ Khi nhiều điều kiện chồng lên nhau, việc đếm bằng trực giác 
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Áp dụng** công thức IE cho 2, 3 tập và dạng đơn giản.
-- **Đếm** phần tử không vi phạm ràng buộc (dạng bù).
-- **Nhận biện** khi cộng thẳng $$\vert A_i\vert $$ gây đếm trùng.
+- **Áp dụng** công thức bù trừ cho 2 tập, 3 tập và dạng tổng quát đơn giản.
+- **Đếm** các phần tử không vi phạm ràng buộc nào thông qua dạng bù.
+- **Nhận biết** khi nào việc cộng trực tiếp $$\vert A_i\vert $$ dẫn đến đếm trùng.
 
 **Từ khóa**: bao hàm–loại trừ, giao tập, đếm có điều kiện.
 </div>
@@ -32,16 +32,16 @@ Khi nhiều điều kiện chồng lên nhau, việc đếm bằng trực giác 
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/inclusion-exclusion.mp4"></video>
 </div>
 
-Video dài khoảng 3 phút 6 giây: ví dụ lớp 50 sinh viên với hai tập, đếm xem mỗi vùng của biểu đồ Venn ba tập được cộng/trừ bao nhiêu lần qua từng bước, ví dụ số từ 1 đến 100 chia hết cho 2, 3 hoặc 5 (ra 74, kiểm tra trên lưới 100 ô), bài tập đếm số từ 1 đến 1000 không chia hết cho 3, 5 và 7 (ra 457), công thức tổng quát cho $$n$$ tập, và ứng dụng đếm số cách bỏ thư mà không lá nào đúng phong bì.
+Video dài khoảng 3 phút 6 giây, trình bày ví dụ lớp 50 sinh viên với hai tập hợp, theo dõi số lần mỗi vùng của biểu đồ Venn ba tập được cộng hoặc trừ qua từng bước, ví dụ đếm các số từ 1 đến 100 chia hết cho 2, 3 hoặc 5 (kết quả 74, đối chiếu trên lưới 100 ô), bài tập đếm số từ 1 đến 1000 không chia hết cho 3, 5 và 7 (kết quả 457), công thức tổng quát cho $$n$$ tập, và ứng dụng đếm số cách bỏ thư sao cho không lá nào vào đúng phong bì.
 
 ## Đếm hợp của hai tập hợp
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Với hai tập hữu hạn $$A$$ và $$B$$, **hợp** $$A \cup B$$ gồm các phần tử thuộc ít nhất một trong hai tập. **Giao** $$A \cap B$$ gồm các phần tử thuộc cả hai tập.
+**Định nghĩa**: Với hai tập hữu hạn $$A$$ và $$B$$, **hợp** $$A \cup B$$ gồm các phần tử thuộc ít nhất một trong hai tập, còn **giao** $$A \cap B$$ gồm các phần tử thuộc đồng thời cả hai tập.
 </div>
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Nếu $$A$$ và $$B$$ hữu hạn thì
+**Định lý**: Nếu $$A$$ và $$B$$ là hai tập hữu hạn thì
 </div>
 
 <div class="textbook-equation" markdown="1">
@@ -50,14 +50,14 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Chứng minh**: Khi tính $$\lvert A \rvert + \lvert B \rvert$$, mỗi phần tử chỉ thuộc $$A$$ hoặc chỉ thuộc $$B$$ được đếm đúng một lần. Mỗi phần tử thuộc $$A \cap B$$ được đếm hai lần: một lần trong $$\lvert A \rvert$$ và một lần trong $$\lvert B \rvert$$. Vì trong hợp chúng ta chỉ muốn đếm nó một lần, chúng ta trừ đi $$\lvert A \cap B \rvert$$. Do đó công thức đúng.
+**Chứng minh**: Khi cộng $$\lvert A \rvert + \lvert B \rvert$$, mỗi phần tử chỉ thuộc $$A$$ hoặc chỉ thuộc $$B$$ được đếm đúng một lần. Ngược lại, mỗi phần tử thuộc $$A \cap B$$ bị đếm hai lần: một lần trong $$\lvert A \rvert$$ và một lần trong $$\lvert B \rvert$$. Để mỗi phần tử trong hợp chỉ được đếm đúng một lần, ta trừ đi $$\lvert A \cap B \rvert$$.
 
 ![Phép hợp hai tập — nguyên lý bù trừ](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_union_B.svg)
 
-<p class="textbook-figure-caption" data-figure="7.11">$$\lvert A \cup B \rvert = \lvert A \rvert + \lvert B \rvert - \lvert A \cap B \rvert$$ — trừ phần giao để không đếm trùng.</p>
+<p class="textbook-figure-caption" data-figure="7.11">$$\lvert A \cup B \rvert = \lvert A \rvert + \lvert B \rvert - \lvert A \cap B \rvert$$ — trừ phần giao để tránh đếm trùng.</p>
 <div class="content-box example-box textbook-block" markdown="1">
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Trong một lớp có 50 sinh viên, 30 sinh viên học tiếng Anh, 20 sinh viên học tiếng Pháp, 10 sinh viên học cả hai. Số sinh viên học ít nhất một ngoại ngữ là
+**Ví dụ**: Trong một lớp có 50 sinh viên, 30 sinh viên học tiếng Anh, 20 sinh viên học tiếng Pháp và 10 sinh viên học cả hai ngôn ngữ. Số sinh viên học ít nhất một ngoại ngữ là:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -65,13 +65,13 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Không thể trả lời $$50$$ chỉ vì $$30+20=50$$; con số $$10$$ ở phần giao là thông tin bắt buộc.
+Ta không thể kết luận là $$50$$ chỉ vì $$30+20=50$$; phần giao gồm $$10$$ sinh viên là dữ kiện bắt buộc để loại trừ phần đếm lặp.
 </div>
 </div>
 
 ## Nguyên lý bù trừ cho ba tập hợp
 
-Với ba tập $$A,B,C$$, công thức là
+Với ba tập hữu hạn $$A,B,C$$, công thức bù trừ có dạng:
 
 <div class="textbook-equation" markdown="1">
 {% raw %}$$
@@ -84,20 +84,20 @@ Với ba tập $$A,B,C$$, công thức là
 $${% endraw %}
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Tại sao phải cộng lại giao ba?** Một phần tử nằm trong cả ba tập được đếm $$3$$ lần ở bước cộng tập đơn, bị trừ $$3$$ lần ở bước trừ giao đôi, nên tổng tạm thời là $$0$$. Chúng ta phải cộng lại một lần để nó được đếm đúng một lần.
+**Vì sao phải cộng lại phần giao ba?** Một phần tử thuộc cả ba tập được cộng $$3$$ lần ở các tập đơn rồi bị trừ $$3$$ lần ở các giao đôi, nên tổng số lần đếm tạm thời bằng $$0$$. Do đó, ta phải cộng lại phần giao ba một lần để phần tử đó được tính đúng một lần.
 
 ![Nguyên lý bù trừ — ba tập hợp](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)
 
-<p class="textbook-figure-caption" data-figure="7.12">Công thức bù trừ cho ba tập — cộng tập đơn, trừ giao đôi, cộng lại giao ba.</p>
+<p class="textbook-figure-caption" data-figure="7.12">Công thức bù trừ cho ba tập — cộng các tập đơn, trừ các giao đôi, rồi cộng lại giao ba.</p>
 <div class="interactive-tool" data-demo="inclusion-exclusion-toggle" markdown="1">
-**Mô phỏng tương tác đề xuất**: Một bảng có ba công tắc `A`, `B`, `C`. Khi chọn vị trí của một phần tử trong sơ đồ Venn, công cụ hiển thị phần tử đó được cộng/trừ bao nhiêu lần trong công thức bù trừ.
+**Mô phỏng tương tác**: Bảng gồm ba công tắc `A`, `B`, `C`. Khi chọn vị trí của một phần tử trên biểu đồ Venn, công cụ sẽ hiển thị phần tử đó được cộng và trừ bao nhiêu lần trong công thức bù trừ.
 </div>
 
 <script src="{{ '/public/js/inclusion-exclusion-toggle.js' | relative_url }}"></script>
 
 ## Công thức tổng quát cho $$n$$ tập hợp
 
-Cho $$A_1,A_2,\ldots,A_n$$ là các tập hữu hạn. Khi đó
+Cho $$A_1,A_2,\ldots,A_n$$ là các tập hữu hạn. Khi đó:
 
 <div class="textbook-equation" markdown="1">
 {% raw %}$$
@@ -112,7 +112,7 @@ Cho $$A_1,A_2,\ldots,A_n$$ là các tập hữu hạn. Khi đó
 $${% endraw %}
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Dạng compact hơn:
+Viết dưới dạng rút gọn:
 
 <div class="textbook-equation" markdown="1">
 {% raw %}$$
@@ -121,7 +121,7 @@ Dạng compact hơn:
 $${% endraw %}
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Khối chứng minh**: Xét một phần tử $$x$$ thuộc đúng $$r$$ trong $$n$$ tập. Trong vế phải, $$x$$ đóng góp
+**Chứng minh**: Xét một phần tử $$x$$ thuộc đúng $$r$$ tập trong số $$n$$ tập đã cho ($$r \ge 1$$). Trong vế phải, phần tử $$x$$ đóng góp:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -129,7 +129,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Theo khai triển nhị thức,
+Theo khai triển nhị thức, ta có:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -137,16 +137,16 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Suy ra tổng xen kẽ không có hạng $$\binom{r}{0}$$ bằng $$1$$. Vậy mỗi phần tử thuộc hợp được đếm đúng một lần.
+Suy ra tổng đan dấu bỏ đi hạng tử $$\binom{r}{0} = 1$$ có giá trị đúng bằng $$1$$. Như vậy, mọi phần tử thuộc hợp đều được đếm đúng một lần.
 
 ![Phép giao hai tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_intersect_B.svg)
 
-<p class="textbook-figure-caption" data-figure="7.13">Mỗi giao $$\lvert A_i \cap A_j \rvert$$ trong công thức tổng quát đại diện phần bị đếm trùng.</p>
+<p class="textbook-figure-caption" data-figure="7.13">Mỗi phần giao $$\lvert A_i \cap A_j \rvert$$ trong công thức tổng quát đại diện cho phần bị đếm trùng.</p>
 ## Dạng bù: đếm phần tử không vi phạm điều kiện nào
 
-Nhiều bài toán dễ hơn nếu đếm số đối tượng **vi phạm ít nhất một điều kiện**, rồi lấy tổng trừ đi số đó.
+Nhiều bài toán trở nên đơn giản hơn khi ta đếm số đối tượng **vi phạm ít nhất một điều kiện**, rồi lấy tổng số đối tượng trừ đi phần vi phạm đó.
 
-Nếu $$U$$ là không gian tất cả đối tượng và $$A_i$$ là tập các đối tượng vi phạm điều kiện thứ $$i$$, thì số đối tượng hợp lệ là
+Nếu $$U$$ là tập vũ trụ chứa mọi đối tượng đang xét và $$A_i$$ là tập các đối tượng vi phạm điều kiện thứ $$i$$, thì số đối tượng hợp lệ là:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -155,9 +155,9 @@ $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Có bao nhiêu số từ $$1$$ đến $$100$$ không chia hết cho $$2$$, $$3$$, hoặc $$5$$?
+**Ví dụ**: Có bao nhiêu số nguyên từ $$1$$ đến $$100$$ không chia hết cho $$2$$, $$3$$ hoặc $$5$$?
 
-Gọi $$A_2,A_3,A_5$$ lần lượt là các số chia hết cho $$2,3,5$$. Chúng ta có
+Gọi $$A_2,A_3,A_5$$ lần lượt là tập các số từ $$1$$ đến $$100$$ chia hết cho $$2,3,5$$. Ta có:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -177,18 +177,19 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Do đó số bị loại là $$50+33+20-16-10-6+3=74$$. Số hợp lệ là $$100-74=26$$.
+Số phần tử bị loại là $$50+33+20-16-10-6+3=74$$. Do đó số các số hợp lệ là $$100-74=26$$.
 
 ![Biểu đồ Venn ba tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
-<p class="textbook-figure-caption" data-figure="7.14">Dạng bù đếm các số không chia hết cho 2, 3 hoặc 5 — loại phần vi phạm ít nhất một điều kiện.</p>
+<p class="textbook-figure-caption" data-figure="7.14">Dạng bù đếm các số không chia hết cho 2, 3 hoặc 5 bằng cách loại bỏ phần vi phạm ít nhất một điều kiện.</p>
 ![Birthday paradox — va chạm sớm hơn trực giác](/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg)
 
-<p class="textbook-figure-caption" data-figure="7.15">Nguyên lý bù trừ cũng xuất hiện khi đếm xác suất hợp nhiều biến cố — tương tự birthday paradox.</p>
+<p class="textbook-figure-caption" data-figure="7.15">Nguyên lý bù trừ cũng xuất hiện khi tính xác suất hợp của nhiều biến cố, tương tự trong nghịch lý sinh nhật.</p>
 </div>
 
 ## Ứng dụng trong Khoa học Máy tính
-Trong cơ sở dữ liệu, truy vấn `OR` giữa nhiều điều kiện có thể tạo ra bản ghi trùng. Hệ quản trị phải loại trùng tương tự nguyên lý bù trừ. Trong bảo mật, khi đếm số mật khẩu thỏa các điều kiện “có chữ hoa”, “có chữ số”, “có ký tự đặc biệt”, cách hiệu quả là đếm phần bù: mật khẩu thiếu ít nhất một loại ký tự. Trong thuật toán, bù trừ xuất hiện trong sàng số nguyên tố, tính xác suất lỗi của hệ thống nhiều thành phần và phân tích các cấu hình bị cấm.
+
+Trong cơ sở dữ liệu, truy vấn `OR` kết hợp nhiều điều kiện có thể trả về các bản ghi trùng lặp, và hệ quản trị cần loại trùng theo cùng tư duy của nguyên lý bù trừ. Trong bảo mật, khi đếm số mật khẩu đáp ứng đồng thời nhiều yêu cầu như “có chữ hoa”, “có chữ số” và “có ký tự đặc biệt”, cách làm hiệu quả là đếm phần bù gồm các mật khẩu thiếu ít nhất một loại ký tự. Trong thiết kế thuật toán, nguyên lý bù trừ còn xuất hiện ở sàng số nguyên tố, bài toán tính xác suất lỗi của hệ thống nhiều thành phần và phân tích các cấu hình bị cấm.
 
 ```python
 from itertools import combinations
@@ -202,7 +203,7 @@ print(inclusion_exclusion({1: 50 + 33 + 20, 2: 16 + 10 + 6, 3: 3}))
 
 ### Minh hoạ tương tác
 
-Minh hoạ Venn ở chế độ bao hàm–loại trừ: so sánh \|A ∪ B ∪ C\| tính trực tiếp với công thức. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ biểu đồ Venn ở chế độ bao hàm–loại trừ: so sánh $$\lvert A \cup B \cup C \rvert$$ tính trực tiếp với kết quả từ công thức bù trừ.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="venn-explainer" data-sets="3" data-focus="ie"></div>
@@ -213,7 +214,7 @@ Minh hoạ Venn ở chế độ bao hàm–loại trừ: so sánh \|A ∪ B ∪ 
 
 ### Bài tập 1: Ba câu lạc bộ
 
-Một lớp có 80 sinh viên. Có 35 sinh viên tham gia CLB Lập trình, 30 tham gia CLB Toán, 25 tham gia CLB Robot. Có 12 sinh viên tham gia cả Lập trình và Toán, 10 tham gia cả Lập trình và Robot, 8 tham gia cả Toán và Robot, và 5 tham gia cả ba. Hỏi có bao nhiêu sinh viên tham gia ít nhất một CLB?
+Một lớp có 80 sinh viên, trong đó 35 sinh viên tham gia CLB Lập trình, 30 tham gia CLB Toán và 25 tham gia CLB Robot. Có 12 sinh viên tham gia cả Lập trình và Toán, 10 tham gia cả Lập trình và Robot, 8 tham gia cả Toán và Robot, và 5 sinh viên tham gia cả ba CLB. Hỏi có bao nhiêu sinh viên tham gia ít nhất một CLB?
 
 <details>
 <summary>Đáp án</summary>
@@ -230,23 +231,23 @@ Có 65 sinh viên tham gia ít nhất một CLB.
 
 ### Bài tập 2: Mật khẩu
 
-Có bao nhiêu chuỗi nhị phân độ dài 8 chứa ít nhất một số 0 và ít nhất một số 1?
+Có bao nhiêu chuỗi nhị phân độ dài 8 chứa ít nhất một chữ số 0 và ít nhất một chữ số 1?
 
 <details>
 <summary>Đáp án</summary>
 
-Tổng số chuỗi là $$2^8=256$$. Chuỗi không có số 0 chỉ có một chuỗi `11111111`; chuỗi không có số 1 chỉ có một chuỗi `00000000`. Vậy số cần tìm là $$256-2=254$$.
+Tổng số chuỗi nhị phân độ dài 8 là $$2^8=256$$. Chuỗi không chứa chữ số 0 chỉ có một chuỗi `11111111`; chuỗi không chứa chữ số 1 chỉ có một chuỗi `00000000`. Vậy số chuỗi thỏa mãn là $$256-2=254$$.
 
 </details>
 
 ### Bài tập 3: Chia hết
 
-Tìm số nguyên dương không vượt quá $$1000$$ chia hết cho $$3$$ hoặc $$5$$ hoặc $$7$$.
+Tìm số lượng các số nguyên dương không vượt quá $$1000$$ chia hết cho $$3$$, $$5$$ hoặc $$7$$.
 
 <details>
 <summary>Đáp án</summary>
 
-Các số lượng đơn: $$333,200,142$$. Giao đôi: chia hết cho $$15,21,35$$ lần lượt là $$66,47,28$$. Giao ba: chia hết cho $$105$$ là $$9$$. Do đó
+Số lượng các tập đơn lần lượt là $$333, 200, 142$$. Số lượng các giao đôi (chia hết cho $$15, 21, 35$$) lần lượt là $$66, 47, 28$$. Giao ba (chia hết cho $$105$$) có $$9$$ số. Do đó:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -269,45 +270,42 @@ $$
 <details>
 <summary>Đáp án</summary>
 
-Đặt các loại ký tự: D = digit (10), L = lower (26), U = upper (26), S = special (15). Tổng bảng chữ: $$10+26+26+15 = 77$$.
+Đặt bốn loại ký tự là: D = chữ số (10), L = chữ thường (26), U = chữ hoa (26), S = ký tự đặc biệt (15). Tổng kích thước bảng chữ cái là $$10+26+26+15 = 77$$ (giả sử $$n \ge 1$$).
 
-(a) Dùng bù trừ. Tổng số password độ dài $$n$$: $$77^n$$.
+(a) Dùng dạng bù. Tổng số mật khẩu độ dài $$n$$ là $$77^n$$.
 
-Số password chỉ dùng **một** loại: $$10^n + 26^n + 26^n + 15^n = 10^n + 2 \cdot 26^n + 15^n$$.
-
-Số password chỉ dùng đúng **hai** loại: Có $$C(4,2) = 6$$ cặp. Với mỗi cặp có kích thước $$a,b$$, số password chỉ từ hai loại đó là $$(a+b)^n - a^n - b^n$$. Tổng cộng:
+Một mật khẩu không có "ít nhất hai loại ký tự" tức là chỉ dùng đúng **một** loại ký tự (vì $$n \ge 1$$). Bốn tập hợp mật khẩu chỉ dùng 1 loại là rời nhau từng đôi một, có tổng kích thước:
 
 <div class="textbook-equation" markdown="1">
-{% raw %}$$
-\begin{aligned}
-S_2 &= (10+26)^n - 10^n - 26^n && \text{(D,L)} \\
-&\quad + (10+26)^n - 10^n - 26^n && \text{(D,U)} \\
-&\quad + (10+15)^n - 10^n - 15^n && \text{(D,S)} \\
-&\quad + (26+26)^n - 26^n - 26^n && \text{(L,U)} \\
-&\quad + (26+15)^n - 26^n - 15^n && \text{(L,S)} \\
-&\quad + (26+15)^n - 26^n - 15^n && \text{(U,S)} \\
-&= 2(36^n - 10^n - 26^n) + (25^n - 10^n - 15^n) \\
-&\quad + (52^n - 2\cdot 26^n) + 2(41^n - 26^n - 15^n)
-\end{aligned}
-$${% endraw %}
+$$
+10^n + 26^n + 26^n + 15^n = 10^n + 2 \cdot 26^n + 15^n.
+$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Yêu cầu "ít nhất hai loại" = Total - một loại - hai loại = $$77^n - (10^n + 2\cdot 26^n + 15^n) - S_2$$.
 
-(b) Password không có hai ký tự kề giống nhau: ký tự đầu có 77 cách chọn, mỗi ký tự sau có 76 cách (khác ký tự trước). Vậy số lượng = $$77 \times 76^{n-1}$$.
+Do đó, số mật khẩu chứa **ít nhất hai loại ký tự** là:
 
-(c) Kết hợp cả hai điều kiện. Gọi A = có ít nhất hai loại ký tự, B = không có hai ký tự kề giống nhau. Chúng ta cần $$\lvert A \cap B \rvert = \lvert B \rvert - \lvert\bar{A} \cap B \rvert$$, với $$\bar{A}$$ = chỉ dùng 0 hoặc 1 loại ký tự.
+<div class="textbook-equation" markdown="1">
+$$
+77^n - \left(10^n + 2 \cdot 26^n + 15^n\right).
+$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
 
-Tính $$\lvert\bar{A} \cap B \rvert$$: số password chỉ dùng 1 loại và không có ký tự kề giống nhau. Với mỗi loại có $$k$$ ký tự, số lượng là $$k \times (k-1)^{n-1}$$ ($$k \ge 2$$) hoặc $$k$$ nếu $$k=1$$. Vậy:
+(b) Mật khẩu không có hai ký tự kề nhau giống nhau: ký tự đầu tiên có 77 cách chọn, mỗi ký tự tiếp theo có 76 cách chọn (khác ký tự đứng ngay trước nó). Vậy tổng số mật khẩu là $$77 \times 76^{n-1}$$.
 
-- Chỉ digit: $$10 \times 9^{n-1}$$ ($$k=10$$)
-- Chỉ lower: $$26 \times 25^{n-1}$$
-- Chỉ upper: $$26 \times 25^{n-1}$$
-- Chỉ special: $$15 \times 14^{n-1}$$
+(c) Kết hợp cả hai điều kiện. Gọi $$A$$ là tập mật khẩu có ít nhất hai loại ký tự và $$B$$ là tập mật khẩu không có hai ký tự kề nhau giống nhau. Ta cần tính $$\lvert A \cap B \rvert = \lvert B \rvert - \lvert\bar{A} \cap B \rvert$$, trong đó $$\bar{A}$$ là tập mật khẩu chỉ dùng đúng 1 loại ký tự.
+
+Tính $$\lvert\bar{A} \cap B \rvert$$: với mỗi loại có $$k$$ ký tự ($$k \ge 2$$), số mật khẩu chỉ dùng loại đó và không có hai ký tự kề giống nhau là $$k \times (k-1)^{n-1}$$. Cụ thể:
+
+- Chỉ dùng chữ số: $$10 \times 9^{n-1}$$
+- Chỉ dùng chữ thường: $$26 \times 25^{n-1}$$
+- Chỉ dùng chữ hoa: $$26 \times 25^{n-1}$$
+- Chỉ dùng ký tự đặc biệt: $$15 \times 14^{n-1}$$
 
 Tổng $$\lvert\bar{A} \cap B \rvert = 10 \times 9^{n-1} + 2 \cdot 26 \times 25^{n-1} + 15 \times 14^{n-1}$$.
 
-Vậy kết quả: $$\lvert A \cap B \rvert = 77 \times 76^{n-1} - \big(10 \times 9^{n-1} + 52 \times 25^{n-1} + 15 \times 14^{n-1}\big)$$.
+Vậy kết quả là: $$\lvert A \cap B \rvert = 77 \times 76^{n-1} - \big(10 \times 9^{n-1} + 52 \times 25^{n-1} + 15 \times 14^{n-1}\big)$$.
 
 </details>
 
@@ -318,16 +316,16 @@ Vậy kết quả: $$\lvert A \cap B \rvert = 77 \times 76^{n-1} - \big(10 \time
 
 ## Tóm tắt
 
-- **Nguyên lý bù trừ** sửa sai cho việc đếm trùng trong hợp các tập hợp.
-- **Dấu xen kẽ**: cộng tập đơn, trừ giao đôi, cộng giao ba, và tiếp tục như vậy.
-- **Dạng bù** đặc biệt hữu ích khi đếm các đối tượng không vi phạm điều kiện nào.
-- **Chứng minh phần tử** cho thấy mỗi phần tử thuộc hợp được đếm đúng một lần.
-- **Ứng dụng CS** gồm truy vấn dữ liệu, kiểm tra mật khẩu, sàng số, xác suất lỗi và phân tích cấu hình bị cấm.
+- **Nguyên lý bù trừ** khử sai số do đếm trùng khi tính lực lượng hợp của nhiều tập hợp.
+- **Quy tắc đan dấu**: cộng các tập đơn, trừ các giao đôi, cộng các giao ba và tiếp tục tương tự.
+- **Dạng bù** rất thuận tiện khi cần đếm số đối tượng không vi phạm bất kỳ điều kiện nào.
+- **Chứng minh theo phần tử** cho thấy mỗi phần tử thuộc hợp đều được đếm đúng một lần.
+- **Ứng dụng trong Khoa học Máy tính**: truy vấn cơ sở dữ liệu, kiểm tra chính sách mật khẩu, sàng số nguyên tố, xác suất lỗi hệ thống và phân tích cấu hình bị cấm.
 
 Trong bài tiếp theo, chúng ta sẽ học về hệ số nhị thức và các đồng nhất thức tổ hợp.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=GS7dIWA6Hpo">INCLUSION-EXCLUSION PRINCIPLE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước công thức bao hàm–loại trừ.
-- <a href="https://www.youtube.com/watch?v=U_kOuvs6zcw">Counting formula for two intersecting sets: N(A union B)=N(A)+N(B)-N(A intersect B)</a> — Dr. Trefor Bazett, tiếng Anh. Trường hợp hai tập, nền của nguyên lý bù trừ.
-- <a href="https://www.youtube.com/watch?v=Y0CYHMqomgI">[Discrete Mathematics] Inclusion Exclusion Problems</a> — TrevTutor, tiếng Anh. Bài toán nhiều tập, luyện phần ứng dụng.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=GS7dIWA6Hpo">INCLUSION-EXCLUSION PRINCIPLE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Trình bày công thức bao hàm–loại trừ từ cơ bản đến tổng quát.
+- <a href="https://www.youtube.com/watch?v=U_kOuvs6zcw">Counting formula for two intersecting sets: N(A union B)=N(A)+N(B)-N(A intersect B)</a> — Dr. Trefor Bazett, tiếng Anh. Trường hợp hai tập giao nhau, làm nền tảng cho nguyên lý bù trừ.
+- <a href="https://www.youtube.com/watch?v=Y0CYHMqomgI">[Discrete Mathematics] Inclusion Exclusion Problems</a> — TrevTutor, tiếng Anh. Luyện tập các bài toán bù trừ cho nhiều tập hợp.

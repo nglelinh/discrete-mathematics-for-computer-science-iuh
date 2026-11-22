@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
-excerpt: "Hàm băm mật mã, PRNG/LCG, CRT tăng tốc RSA, ECC và mật mã hậu lượng tử — ứng dụng thực tế của modulo và số nguyên tố."
+excerpt: "Hàm băm mật mã, PRNG/LCG, CRT tăng tốc RSA, ECC và mật mã hậu lượng tử — các ứng dụng thực tế của số học modulo và số nguyên tố."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,11 +17,11 @@ excerpt: "Hàm băm mật mã, PRNG/LCG, CRT tăng tốc RSA, ECC và mật mã 
 
 </div>
 
-Các mục trước đã cung cấp công cụ số học và mô hình RSA / Diffie–Hellman. Mục này gắn chúng với **ứng dụng hệ thống**: hàm băm, sinh số giả ngẫu nhiên, tăng tốc RSA bằng CRT, đường cong elliptic (ECC) và định hướng **mật mã hậu lượng tử** — ở mức khái niệm phù hợp sinh viên đại học, không thay giáo trình chuyên sâu.
+Các bài trước đã giới thiệu những công cụ số học cơ bản cùng mô hình RSA và Diffie–Hellman. Bài học này liên kết các kiến thức đó với những **ứng dụng hệ thống** quen thuộc: hàm băm mật mã, bộ sinh số giả ngẫu nhiên, tăng tốc RSA bằng CRT, mật mã đường cong elliptic (ECC) và định hướng **mật mã hậu lượng tử** ở mức khái niệm dành cho sinh viên đại học.
 
 ![Hashing modulo](/discrete-mathematics-for-computer-science-iuh/img/course/Hash_table_simple_999.svg)
 
-<p class="textbook-figure-caption" data-figure="15.7">Phân bố bucket bằng modulo — trực giác số học cho bảng băm (không phải hash mật mã).</p>
+<p class="textbook-figure-caption" data-figure="15.7">Phân bố bucket bằng phép chia modulo — trực giác số học cho bảng băm (khác với hàm băm mật mã).</p>
 
 ## Mục tiêu học tập
 
@@ -29,11 +29,11 @@ Các mục trước đã cung cấp công cụ số học và mô hình RSA / Di
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Nêu** yêu cầu của hàm băm mật mã (preimage, collision, avalanche).
-- **Mô tả** LCG và giới hạn khi dùng cho mật mã.
-- **Giải thích** CRT tăng tốc lũy thừa modulo RSA.
-- **So sánh** kích thước khóa RSA vs ECC ở mức bảng.
-- **Nhận biết** mối đe dọa Shor và hướng post-quantum.
+- **Nêu** các yêu cầu cốt lõi của hàm băm mật mã (kháng tiền ảnh, kháng va chạm, hiệu ứng thác lũ).
+- **Mô tả** bộ sinh LCG và giải thích hạn chế của nó trong bảo mật.
+- **Giải thích** cách CRT giúp tăng tốc phép lũy thừa modulo trong RSA.
+- **So sánh** kích thước khóa giữa RSA và ECC ở mức bảng đối chiếu.
+- **Nhận biết** mối đe dọa từ thuật toán Shor và hướng tiếp cận mật mã hậu lượng tử.
 
 **Từ khóa**: hash, SHA-256, PRNG, LCG, CRT-RSA, ECC, post-quantum.
 
@@ -43,102 +43,102 @@ Các mục trước đã cung cấp công cụ số học và mô hình RSA / Di
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa.** **Hàm băm mật mã** $$H$$ ánh xạ thông điệp độ dài tùy ý sang **digest** độ dài cố định (ví dụ 256 bit). Yêu cầu tiêu chuẩn:
+**Định nghĩa.** **Hàm băm mật mã** $$H$$ ánh xạ một thông điệp có độ dài tùy ý sang chuỗi **digest** có độ dài cố định (ví dụ 256 bit), thỏa mãn các yêu cầu tiêu chuẩn sau:
 
-1. **Tất định**: cùng đầu vào → cùng đầu ra.
-2. **Preimage resistance**: cho $$h$$, khó tìm $$m$$ với $$H(m)=h$$.
-3. **Collision resistance**: khó tìm $$m_1\neq m_2$$ với $$H(m_1)=H(m_2)$$.
-4. **Avalanche**: thay đổi nhỏ đầu vào → thay đổi lớn digest.
+1. **Tất định**: cùng một đầu vào luôn cho cùng một đầu ra.
+2. **Preimage resistance (Kháng tiền ảnh)**: cho trước $$h$$, rất khó tìm được $$m$$ sao cho $$H(m)=h$$.
+3. **Collision resistance (Kháng va chạm)**: rất khó tìm được hai đầu vào khác nhau $$m_1\neq m_2$$ sao cho $$H(m_1)=H(m_2)$$.
+4. **Avalanche (Hiệu ứng thác lũ)**: một thay đổi nhỏ ở đầu vào tạo ra thay đổi lớn ở giá trị digest.
 
 </div>
 
-Phân biệt: $$h(k)=k \bmod m$$ trong bảng băm cấu trúc dữ liệu **không** đủ các tính chất trên. Hash mật mã (SHA-256, SHA-3) dùng phép trộn phức tạp, không chỉ một phép modulo.
+Cần phân biệt rõ: hàm $$h(k)=k \bmod m$$ dùng trong bảng băm cấu trúc dữ liệu **không** đáp ứng các tính chất trên. Hàm băm mật mã (như SHA-256, SHA-3) sử dụng nhiều vòng trộn bit phức tạp chứ không chỉ một phép modulo đơn lẻ.
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ 1** (avalanche). Chỉ khác hoa/thường ở chữ cái đầu:
+**Ví dụ 1** (Hiệu ứng avalanche). Chỉ khác nhau chữ hoa/chữ thường ở ký tự đầu tiên:
 
 ```text
 SHA256("Hello") = 185f8db3…1969
 SHA256("hello") = 2cf24dba…9824
 ```
 
-Hai digest hoàn toàn khác — không suy ra “gần nhau” trên plaintext.
+Hai giá trị digest khác nhau hoàn toàn, không thể suy ra mức độ “gần nhau” của hai bản rõ từ đầu ra băm.
 
 </div>
 
-Ứng dụng: toàn vẹn file, commit Git, proof-of-work, và bước hash-then-sign trong chữ ký số.
+Hàm băm mật mã được ứng dụng rộng rãi để kiểm tra toàn vẹn tệp tin, định danh commit trong Git, cơ chế proof-of-work và bước băm trước khi ký (*hash-then-sign*) trong chữ ký số.
 
 ## Sinh số giả ngẫu nhiên (PRNG)
 
-Máy tính số tất định không “tự sinh” entropy thuần; **PRNG** sinh dãy trông ngẫu nhiên từ seed.
+Máy tính số hoạt động theo cơ chế tất định nên không thể tự tạo ra tính ngẫu nhiên thuần túy; **PRNG** sinh ra dãy số có vẻ ngẫu nhiên từ một giá trị khởi tạo (*seed*).
 
 ### Linear Congruential Generator (LCG)
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa** (LCG). Dãy
+**Định nghĩa** (LCG). Bộ sinh tuyến tính đồng dư tạo dãy theo công thức
 
 $$
 x_{n+1} = (a x_n + c) \bmod m
 $$
 
-với hằng số $$a,c,m$$ và seed $$x_0$$. Chu kỳ tối đa $$\le m$$; điều kiện Hull–Dobell cho chu kỳ đầy đủ.
+với các hằng số $$a,c,m$$ và giá trị hạt giống $$x_0$$. Chu kỳ tối đa của dãy không vượt quá $$m$$; điều kiện Hull–Dobell xác định khi nào dãy đạt chu kỳ đầy đủ.
 
 </div>
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ 2.** $$a=5$$, $$c=1$$, $$m=8$$, $$x_0=0$$:
+**Ví dụ 2.** Với $$a=5$$, $$c=1$$, $$m=8$$ và $$x_0=0$$, ta thu được dãy:
 
 $$
 1,6,7,4,5,2,3,0,\ldots
 $$
 
-chu kỳ $$=m=8$$.
+Dãy này có chu kỳ bằng $$m=8$$.
 
 </div>
 
-**Cảnh báo.** LCG **không** đủ cho mật mã (dễ dự đoán sau vài quan sát). Khóa, nonce, salt cần **CSPRNG** (`/dev/urandom`, `secrets` trong Python, API hệ điều hành).
+**Cảnh báo.** LCG **không** đủ an toàn cho mục đích mật mã vì dãy số dễ bị dự đoán chỉ sau vài giá trị quan sát. Khi sinh khóa, nonce hoặc salt, cần dùng **CSPRNG** (như `/dev/urandom`, thư viện `secrets` trong Python hoặc API bảo mật của hệ điều hành).
 
-## CRT tăng tốc RSA
+## Dùng CRT tăng tốc RSA
 
-Thay vì tính $$S = M^d \bmod n$$ trực tiếp với $$n=pq$$ lớn, có thể tính
+Thay vì tính trực tiếp $$S = M^d \bmod n$$ với $$n=pq$$ rất lớn, ta có thể tách thành hai phép tính trên các modulus nhỏ hơn:
 
 $$
 S_p = M^{d \bmod (p-1)} \bmod p, \qquad
 S_q = M^{d \bmod (q-1)} \bmod q,
 $$
 
-rồi ghép $$S$$ bằng CRT. Vì $$p,q$$ khoảng một nửa số bit của $$n$$, chi phí lũy thừa giảm đáng kể — thực tế thường tăng tốc khoảng **3–4 lần** so với một lũy thừa modulo $$n$$ thuần.
+sau đó ghép lại thành $$S$$ bằng Định lý số dư Trung Hoa (CRT). Vì $$p$$ và $$q$$ chỉ dài xấp xỉ một nửa số bit của $$n$$, chi phí tính lũy thừa giảm đáng kể — trong thực tế thường tăng tốc khoảng **3–4 lần** so với việc tính trực tiếp theo modulo $$n$$.
 
 ## ECC và mật mã hậu lượng tử
 
 ### Đường cong elliptic (ECC)
 
-ECC dùng nhóm điểm trên đường cong elliptic trên trường hữu hạn. Cùng mức bảo mật “cổ điển” ước lượng, khóa ECC **ngắn hơn nhiều** so với RSA:
+ECC hoạt động trên nhóm các điểm thuộc một đường cong elliptic định nghĩa trên trường hữu hạn. Ở cùng một mức bảo mật cổ điển ước lượng, khóa ECC **ngắn hơn nhiều** so với khóa RSA:
 
-| Mức bảo mật (ước lượng bits) | RSA (bit modulus) | ECC (bit) |
+| Mức bảo mật (ước lượng bit) | RSA (bit modulus) | ECC (bit) |
 |:---:|:---:|:---:|
 | 128 | ~3072 | ~256 |
 | 256 | ~15360 | ~512 |
 
-ECC xuất hiện trong TLS, Bitcoin (ECDSA), nhiều hệ di động. Chi tiết nhóm điểm nằm ngoài phạm vi chương này; điểm quan trọng: **cùng tinh thần** bất đối xứng (bài toán rời rạc khó) nhưng cấu trúc khác RSA.
+ECC được sử dụng rộng rãi trong TLS, Bitcoin (ECDSA) và nhiều hệ thống di động. Chi tiết về cấu trúc nhóm điểm nằm ngoài phạm vi chương này; điểm cần nắm là ECC giữ **cùng nguyên lý** mật mã bất đối xứng (dựa trên một bài toán rời rạc khó) nhưng xây dựng trên cấu trúc đại số khác với RSA.
 
-### Máy lượng tử và post-quantum
+### Máy tính lượng tử và mật mã hậu lượng tử
 
-Thuật toán **Shor** (máy lượng tử) phân tích thừa số và giải DLP trong thời gian đa thức — đe dọa RSA và nhiều hệ ECC/DH cổ điển. **Mật mã hậu lượng tử** (*post-quantum cryptography*, PQC) tìm primitive dựa trên bài toán được tin kháng lượng tử, ví dụ:
+Thuật toán **Shor** trên máy tính lượng tử có thể phân tích thừa số nguyên tố và giải bài toán logarit rời rạc trong thời gian đa thức, đe dọa trực tiếp RSA cũng như nhiều hệ ECC và Diffie–Hellman cổ điển. **Mật mã hậu lượng tử** (*post-quantum cryptography*, PQC) tập trung xây dựng các thành phần mật mã dựa trên những bài toán được tin là kháng lại máy tính lượng tử, chẳng hạn:
 
-- lattice-based (Kyber, Dilithium — chuẩn hóa NIST),
-- code-based,
-- hash-based signatures,
-- multivariate.
+- mật mã dựa trên mạng tinh thể (*lattice-based*, như Kyber, Dilithium do NIST chuẩn hóa),
+- mật mã dựa trên mã sửa lỗi (*code-based*),
+- chữ ký số dựa trên hàm băm (*hash-based signatures*),
+- mật mã đa biến (*multivariate*).
 
-Sinh viên cần biết: “RSA 2048 vẫn dùng rộng rãi hôm nay” **không** mâu thuẫn với việc chuẩn bị lộ trình PQC cho hệ thống sống nhiều thập kỷ.
+Cần hiểu rằng việc RSA-2048 vẫn đang được sử dụng phổ biến hiện nay **không** mâu thuẫn với yêu cầu chuẩn bị lộ trình chuyển đổi sang PQC cho những hệ thống có vòng đời nhiều thập kỷ.
 
 ## Thử nghiệm tương tác
 
-Hash bucket modulo, ISBN check digit và LCG:
+Thử nghiệm phân bố bucket theo modulo, chữ số kiểm tra ISBN và bộ sinh LCG:
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="number-theory-apps"></div>
@@ -147,11 +147,11 @@ Hash bucket modulo, ISBN check digit và LCG:
 
 ## Nguyên tắc kỹ nghệ
 
-Lý thuyết số có mặt từ chỉ số hash, checksum đến TLS. Sinh viên CS không cần trở thành nhà mật mã, nhưng cần đủ để **không** dùng MD5/SHA-1 cho bảo mật mới, **không** tự chế cipher, và **chọn thư viện** đã review (libsodium, OpenSSL API hiện đại, WebCrypto, …).
+Lý thuyết số hiện diện từ chỉ số bảng băm, mã kiểm tra (checksum) cho tới giao thức TLS. Sinh viên khoa học máy tính không nhất thiết phải trở thành chuyên gia mật mã, nhưng cần nắm vững các nguyên tắc thực hành cơ bản: **không** dùng MD5 hay SHA-1 cho các hệ thống bảo mật mới, **không** tự thiết kế thuật toán mã hóa riêng và luôn **chọn các thư viện** đã qua thẩm định (như libsodium, OpenSSL API hiện đại, WebCrypto, …).
 
-### Minh hoạ tương tác
+### Minh họa tương tác
 
-Minh hoạ số học: lũy thừa modulo nhanh (bình phương liên tiếp), nền tảng của RSA và kiểm tra nguyên tố. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh họa thuật toán lũy thừa modulo nhanh (bình phương liên tiếp) — nền tảng của RSA và kiểm tra tính nguyên tố:
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="numtheory-explainer" data-tab="fastexp"></div>
@@ -162,67 +162,66 @@ Minh hoạ số học: lũy thừa modulo nhanh (bình phương liên tiếp), n
 
 ### Bài tập 1
 
-So sánh digest SHA-256 của hai chuỗi chỉ khác một ký tự (công cụ online hoặc thư viện). Nêu hiện tượng avalanche.
+So sánh giá trị digest SHA-256 của hai chuỗi chỉ khác nhau một ký tự (bằng công cụ trực tuyến hoặc thư viện lập trình) và nhận xét về hiện tượng avalanche.
 
 <details>
 <summary>Đáp án</summary>
 
-Hai digest khác hẳn (khoảng một nửa bit lật về kỳ vọng với hash tốt). Không suy ra quan hệ gần giữa plaintext từ digest.
+Hai giá trị digest khác nhau hoàn toàn (về mặt kỳ vọng, khoảng một nửa số bit bị lật đối với hàm băm tốt). Không thể suy ra mức độ giống nhau của hai bản rõ dựa trên giá trị digest.
 
 </details>
 
 ### Bài tập 2
 
-LCG: $$a=7$$, $$c=3$$, $$m=10$$, $$x_0=2$$. Sinh 10 số đầu; nhận xét chu kỳ.
+Cho bộ sinh LCG với $$a=7$$, $$c=3$$, $$m=10$$ và $$x_0=2$$. Hãy sinh 10 số đầu tiên và nhận xét về chu kỳ của dãy.
 
 <details>
 <summary>Đáp án</summary>
 
-$$x_{n+1}=(7x_n+3)\bmod 10$$:  
-$$2,7,2,7,\ldots$$ — chu kỳ 2, **không** đạt $$m=10$$ (tham số kém).
+Áp dụng $$x_{n+1}=(7x_n+3)\bmod 10$$, ta thu được dãy lặp lại $$2,7,2,7,\ldots$$. Dãy chỉ có chu kỳ bằng 2, **không** đạt chu kỳ tối đa $$m=10$$ do lựa chọn tham số kém.
 
 </details>
 
 ### Bài tập 3
 
-Vì sao RSA-2048 vẫn được dùng rộng rãi năm 2020s nhưng lộ trình PQC vẫn cần thiết?
+Vì sao RSA-2048 vẫn được sử dụng rộng rãi trong thập niên 2020 nhưng lộ trình chuyển đổi sang PQC vẫn cần thiết?
 
 <details>
 <summary>Đáp án</summary>
 
-Trên máy cổ điển, factoring 2048-bit vẫn rất tốn kém. Máy lượng tử đủ lớn (khi/ nếu xuất hiện) phá RSA bằng Shor; dữ liệu mã hóa hôm nay có thể bị lưu để giải sau (*harvest now, decrypt later*). Hệ thống cần chuẩn bị PQC.
+Trên máy tính cổ điển, việc phân tích thừa số một modulus 2048 bit vẫn vượt xa khả năng tính toán thực tế. Tuy nhiên, nếu máy tính lượng tử đủ lớn xuất hiện, thuật toán Shor có thể phá vỡ RSA; dữ liệu mã hóa hôm nay có nguy cơ bị thu thập trước để giải mã về sau (*harvest now, decrypt later*). Vì vậy, các hệ thống cần chuẩn bị sớm cho lộ trình PQC.
 
 </details>
 
 ### Bài tập 4
 
-So sánh gọn kích thước khóa RSA-3072, ECC-256 và Kyber-512 (bậc lớn).
+So sánh ngắn gọn kích thước khóa công khai của RSA-3072, ECC-256 và Kyber-512 ở mức bậc lớn.
 
 <details>
 <summary>Đáp án</summary>
 
-| Hệ | Khóa công khai (xấp xỉ) |
+| Hệ mật | Khóa công khai (xấp xỉ) |
 |:---|:---|
 | RSA-3072 | ~3072 bit |
 | ECC-256 | ~256 bit |
 | Kyber-512 | cỡ hàng trăm byte (lớn hơn ECC, thường nhỏ hơn RSA-3072) |
 
-Kyber hướng kháng lượng tử; RSA/ECC cổ điển thì không (trước Shor).
+Kyber được thiết kế theo hướng kháng lượng tử, còn RSA và ECC cổ điển không kháng được thuật toán Shor.
 
 </details>
 
 ## Tóm tắt
 
-1. **Hash mật mã** ≠ modulo bucket; cần preimage / collision / avalanche.
-2. **LCG** minh họa modulo; **CSPRNG** cho bảo mật.
-3. **CRT** tăng tốc lũy thừa RSA modulo $$p$$ và $$q$$.
-4. **ECC**: khóa ngắn hơn RSA cùng mức ước lượng.
-5. **PQC**: chuẩn bị sau lượng tử; không tự phát minh crypto.
+1. **Hàm băm mật mã** khác với phép chia lấy dư trong bảng băm; nó đòi hỏi kháng tiền ảnh, kháng va chạm và hiệu ứng avalanche.
+2. **LCG** minh họa ứng dụng của số học modulo, nhưng bảo mật thực tế bắt buộc phải dùng **CSPRNG**.
+3. **CRT** tăng tốc phép lũy thừa RSA bằng cách tính riêng theo modulo $$p$$ và $$q$$ rồi ghép kết quả.
+4. **ECC** cho kích thước khóa ngắn hơn đáng kể so với RSA ở cùng mức bảo mật ước lượng.
+5. **PQC** là hướng chuẩn bị cho kỷ nguyên hậu lượng tử; trong thực hành kỹ thuật không nên tự phát minh thuật toán mật mã.
 
-Bài khảo sát 15.5 nối lịch sử từ Euclid đến blockchain; Chương 16 chuyển sang **cây**.
+Bài khảo sát 15.5 sẽ kết nối tiến trình lịch sử từ Euclid đến blockchain, trước khi Chương 16 chuyển sang cấu trúc **cây**.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=e8DtzQkjOMQ">The Chinese Remainder Theorem (Solved Example 1)</a> — Neso Academy, tiếng Anh. Xem trước ví dụ định lý số dư Trung Hoa, dùng khi bài tăng tốc RSA bằng CRT.
-- <a href="https://www.youtube.com/watch?v=NF1pwjL9-DE">Elliptic Curves - Computerphile</a> — Computerphile, tiếng Anh. Đường cong elliptic, đúng phần ECC.
-- <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Va chạm hàm băm, đúng mục hàm băm mật mã mở đầu bài.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=e8DtzQkjOMQ">The Chinese Remainder Theorem (Solved Example 1)</a> — Neso Academy, tiếng Anh. Ví dụ giải Định lý số dư Trung Hoa, hỗ trợ cho phần dùng CRT tăng tốc RSA.
+- <a href="https://www.youtube.com/watch?v=NF1pwjL9-DE">Elliptic Curves - Computerphile</a> — Computerphile, tiếng Anh. Giải thích về đường cong elliptic cho phần ECC.
+- <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Va chạm hàm băm và nghịch lý ngày sinh, liên quan trực tiếp đến mục hàm băm mật mã.

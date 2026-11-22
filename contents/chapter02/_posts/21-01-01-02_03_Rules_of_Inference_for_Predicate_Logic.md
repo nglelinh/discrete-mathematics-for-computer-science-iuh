@@ -7,14 +7,14 @@ date: 2021-01-01
 order: 3
 required: true
 lang: en
-excerpt: "Ở hai mục trước, chúng ta đã học cách biểu diễn các phát biểu phức tạp bằng vị từ và lượng từ. Tuy nhiên, biểu diễn được mới chỉ là nửa chặng đường; câu hỏi…"
+excerpt: "Trình bày bốn quy tắc suy luận cốt lõi với lượng từ trong logic vị từ (UI, UG, EI, EG), cách kết hợp với suy luận mệnh đề và các lỗi thường gặp."
 ---
 
-Ở hai mục trước, chúng ta đã học cách biểu diễn các phát biểu phức tạp bằng vị từ và lượng từ. Tuy nhiên, biểu diễn được mới chỉ là nửa chặng đường; câu hỏi quan trọng hơn là: **từ những gì đã biết, ta có thể suy ra kết luận gì — và bằng cách nào cho đúng?**
+Ở hai mục trước, chúng ta đã học cách biểu diễn các phát biểu phức tạp bằng vị từ và lượng từ. Tuy nhiên, biểu diễn được mới là bước đầu; câu hỏi tiếp theo là: **từ những tiền đề đã biết, ta có thể suy ra kết luận nào và bằng cách nào để bảo đảm chặt chẽ?**
 
-Vấn đề này có ý nghĩa thực tiễn trực tiếp. Mỗi khi hệ thống kiểm chứng phần mềm xác nhận rằng "chương trình thỏa mãn đặc tả", nó đang thực hiện một chuỗi suy luận logic hình thức. Mỗi khi người lập trình đọc tài liệu đặc tả và kết luận hành vi của hàm trong một trường hợp cụ thể, người đó cũng đang suy luận — dù thường không hình thức. Suy luận không hình thức dễ sai: con người có xu hướng nhảy từ trực giác sang kết luận, bỏ qua các bước trung gian nơi lỗi logic ẩn náu. Từ *"Mọi lập trình viên đều biết Python"* và *"An là lập trình viên"*, ta kết luận *"An biết Python"* — suy luận hợp lệ. Nhưng từ *"Mọi lập trình viên đều biết Python"* và *"An biết Python"*, ta **không thể** kết luận *"An là lập trình viên"* — đây là ngụy biện khẳng định hệ quả.
+Câu hỏi này có ý nghĩa thực tiễn trực tiếp. Mỗi khi một hệ thống kiểm chứng phần mềm xác nhận rằng "chương trình thỏa mãn đặc tả", nó đang thực hiện một chuỗi suy luận logic hình thức. Tương tự, khi lập trình viên đọc đặc tả để dự đoán hành vi của hàm ở một trường hợp cụ thể, người đó cũng đang suy luận, dù thường theo trực giác. Suy luận không hình thức rất dễ mắc lỗi vì dễ bỏ qua các bước trung gian. Từ *"Mọi lập trình viên đều biết Python"* và *"An là lập trình viên"*, ta suy ra *"An biết Python"* — đây là lập luận hợp lệ. Nhưng từ *"Mọi lập trình viên đều biết Python"* và *"An biết Python"*, ta **không thể** suy ra *"An là lập trình viên"* — đó là ngụy biện khẳng định hệ quả.
 
-Trong logic vị từ, các **quy tắc suy luận** với lượng từ là bộ công cụ giúp tránh những sai lầm như vậy. Chúng cho biết khi nào được thay "mọi $$x$$" bằng một phần tử cụ thể, khi nào được kết luận "tồn tại" từ một ví dụ, và vì sao một chứng minh hình thức có thể được máy tính kiểm tra từng bước. Mục này trình bày bốn quy tắc cốt lõi: Universal Instantiation, Universal Generalization, Existential Instantiation và Existential Generalization.
+Trong logic vị từ, các **quy tắc suy luận** với lượng từ giúp tránh những sai lầm như vậy. Chúng quy định rõ khi nào được thay "mọi $$x$$" bằng một phần tử cụ thể, khi nào được kết luận "tồn tại" từ một nhân chứng, và nhờ đó giúp máy tính kiểm tra từng bước của chứng minh hình thức. Mục này trình bày bốn quy tắc cốt lõi: Universal Instantiation (UI), Universal Generalization (UG), Existential Instantiation (EI) và Existential Generalization (EG).
 
 ## Mục tiêu học tập
 
@@ -22,16 +22,16 @@ Trong logic vị từ, các **quy tắc suy luận** với lượng từ là b�
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Áp dụng** quy tắc suy diễn cho logic vị từ: UI, EG, EI, UI.
-- **Chứng minh** mệnh đề có lượng từ bằng dòng suy diễn.
-- **Liên hệ** suy diễn vị từ với chứng minh chương trình và đặc tả.
+- **Áp dụng** bốn quy tắc suy diễn cho logic vị từ: UI, UG, EI và EG.
+- **Chứng minh** mệnh đề có lượng từ bằng các bước suy diễn hình thức.
+- **Liên hệ** suy diễn vị từ với chứng minh tính đúng đắn và đặc tả chương trình.
 
-**Từ khóa**: universal instantiation, existential generalization, rules of inference, predicate logic proofs.
+**Từ khóa**: universal instantiation, universal generalization, existential instantiation, existential generalization, rules of inference, predicate logic proofs.
 </div>
 
 ## Ôn tập suy luận mệnh đề
 
-Các quy tắc suy luận mệnh đề vẫn được dùng sau khi ta đã loại bỏ hoặc đưa vào lượng từ đúng cách.
+Các quy tắc suy luận mệnh đề vẫn được sử dụng bình thường sau khi ta đã loại bỏ hoặc đưa vào lượng từ đúng cách.
 
 | Quy tắc | Dạng |
 |---|---|
@@ -45,10 +45,10 @@ Các quy tắc suy luận mệnh đề vẫn được dùng sau khi ta đã lo�
 ![Modus Ponens](/discrete-mathematics-for-computer-science-iuh/img/course/Modus_ponens.png)
 
 <p class="textbook-figure-caption" data-figure="2.11">Modus Ponens — từ $$p \to q$$ và $$p$$ suy ra $$q$$; quy tắc suy luận mệnh đề nền tảng, thường kết hợp với UI trong logic vị từ.</p>
-## Universal Instantiation (UI) - Cụ thể hóa toàn thể - Qui tắc đặc biệt hóa phổ dụng
+## Universal Instantiation (UI) — Cụ thể hóa toàn thể
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Từ một mệnh đề đúng với mọi phần tử, ta được phép suy ra nó đúng với một phần tử cụ thể bất kỳ.
+**Định nghĩa**: Từ một mệnh đề đúng với mọi phần tử trong miền, ta được phép suy ra nó đúng với một phần tử cụ thể $$c$$ bất kỳ trong miền đó.
 </div>
 
 
@@ -56,44 +56,44 @@ Các quy tắc suy luận mệnh đề vẫn được dùng sau khi ta đã lo�
 $$\frac{\forall x\,P(x)}{P(c)}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-trong đó $$c$$ là một phần tử của miền xác định.
+trong đó $$c$$ là một phần tử thuộc miền xác định.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Nếu $$\forall x(Student(x)\to NeedsLogic(x))$$ và $$Student(An)$$, thì bằng UI ta có:
+**Ví dụ**: Nếu $$\forall x\,(Student(x)\to NeedsLogic(x))$$ và $$Student(An)$$, thì áp dụng UI cho $$c = An$$ ta có:
 
 <div class="textbook-equation" markdown="1">
 $$Student(An)\to NeedsLogic(An).$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Kết hợp Modus Ponens, suy ra $$NeedsLogic(An)$$.
+Kết hợp với Modus Ponens, ta suy ra $$NeedsLogic(An)$$.
 </div>
 
 
 <div class="content-box insight-box textbook-block" markdown="1">
-UI là quy tắc **hợp lệ** (valid) — nếu tiền đề đúng thì kết luận chắc chắn đúng. Đây là nền tảng để áp dụng tính chất chung cho đối tượng cụ thể trong chứng minh và kiểm chứng phần mềm.
+UI là quy tắc **hợp lệ** (valid): nếu tiền đề đúng thì kết luận chắc chắn đúng. Đây là bước nền tảng để áp dụng tính chất tổng quát cho từng đối tượng cụ thể trong chứng minh và kiểm chứng phần mềm.
 </div>
 
 ### Bài tập thực hành: Universal Instantiation
 
 **Bài tập 1**: Cho $$\forall x\,(Even(x) \to DivisibleBy2(x))$$ và $$Even(4)$$. Áp dụng UI và Modus Ponens để suy ra kết luận.
 
-**Bài tập 2**: Cho $$\forall x\,(Prime(x) \to HasNoDivisor(x))$$. Viết biểu thức sau khi áp dụng UI cho $$x = 7$$.
+**Bài tập 2**: Cho $$\forall x\,(Prime(x) \to HasNoDivisor(x))$$. Viết biểu thức thu được sau khi áp dụng UI cho $$x = 7$$.
 
-**Bài tập 3**: Giải thích tại sao từ $$\forall x\,P(x)$$ ta không thể suy ra $$\exists x\,P(x)$$ (UI không cho phép kết luận này).
+**Bài tập 3**: Giải thích tại sao từ $$\forall x\,P(x)$$ ta không thể tự động suy ra $$\exists x\,P(x)$$ nếu miền xác định có thể rỗng.
 
 **Đáp án**:
 
-1. $$Even(4) \to DivisibleBy2(4)$$ (UI), sau đó $$DivisibleBy2(4)$$ (MP).
+1. $$Even(4) \to DivisibleBy2(4)$$ (UI), sau đó $$DivisibleBy2(4)$$ (Modus Ponens).
 2. $$Prime(7) \to HasNoDivisor(7)$$.
-3. UI chỉ đi từ "mọi" đến "một"; không bảo đảm tồn tại phần tử nào đó (có thể miền rỗng).
+3. UI chỉ suy ra $$P(c)$$ khi đã có một phần tử $$c$$ thuộc miền xác định; nếu miền rỗng thì không tồn tại phần tử nào để khẳng định $$\exists x\,P(x)$$.
 
 ![Modus Tollens](/discrete-mathematics-for-computer-science-iuh/img/course/Modus_tollens.png)
 
 <p class="textbook-figure-caption" data-figure="2.12">Modus Tollens — từ $$p \to q$$ và $$\neg q$$ suy ra $$\neg p$$; bổ sung cho Modus Ponens trong chuỗi suy luận.</p>
-## Universal Generalization (UG) - Tổng quát hóa toàn thể
+## Universal Generalization (UG) — Tổng quát hóa toàn thể
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Nếu ta chứng minh được $$P(c)$$ cho một phần tử $$c$$ được chọn tùy ý, không dùng giả thiết đặc biệt nào về $$c$$, thì có thể kết luận $$\forall xP(x)$$.
+**Định nghĩa**: Nếu ta chứng minh được $$P(c)$$ cho một phần tử $$c$$ được chọn tùy ý trong miền mà không dùng bất kỳ giả thiết đặc biệt nào về $$c$$, thì có thể kết luận $$\forall x\,P(x)$$.
 </div>
 
 
@@ -103,16 +103,16 @@ UI là quy tắc **hợp lệ** (valid) — nếu tiền đề đúng thì kết
 
 Chứng minh: $$\forall n\in\mathbb{Z},\ n(n+1)$$ chẵn.
 
-Lấy $$n\in\mathbb{Z}$$ tùy ý. Hai số $$n$$ và $$n+1$$ là hai số nguyên liên tiếp, nên một trong hai số chẵn. Do đó tích $$n(n+1)$$ chia hết cho 2. Vì $$n$$ được chọn tùy ý, theo UG, kết luận đúng với mọi số nguyên $$n$$.
+Lấy $$n\in\mathbb{Z}$$ tùy ý. Vì $$n$$ và $$n+1$$ là hai số nguyên liên tiếp nên một trong hai số là số chẵn, do đó tích $$n(n+1)$$ chia hết cho 2. Vì $$n$$ được chọn tùy ý, theo UG ta kết luận mệnh đề đúng với mọi số nguyên $$n$$.
 
 <div class="content-box warning-box textbook-block" markdown="1">
-**Cảnh báo**: Không được dùng UG nếu phần tử đang xét không tùy ý. Nếu biết "An là sinh viên giỏi" thì không thể suy ra "mọi sinh viên đều giỏi".
+**Cảnh báo**: Không được dùng UG nếu phần tử đang xét không phải là phần tử tùy ý. Biết "An là sinh viên giỏi" không cho phép suy ra "mọi sinh viên đều giỏi".
 </div>
 
-## Existential Instantiation (EI) - Cụ thể hóa tồn tại
+## Existential Instantiation (EI) — Cụ thể hóa tồn tại
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Từ $$\exists xP(x)$$, ta được phép đặt một hằng mới $$c$$ sao cho $$P(c)$$ đúng.
+**Định nghĩa**: Từ $$\exists x\,P(x)$$, ta được phép giới thiệu một hằng số mới $$c$$ sao cho $$P(c)$$ đúng.
 </div>
 
 
@@ -120,17 +120,17 @@ Lấy $$n\in\mathbb{Z}$$ tùy ý. Hai số $$n$$ và $$n+1$$ là hai số nguyê
 $$\frac{\exists x\,P(x)}{P(c)}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Điều kiện quan trọng: $$c$$ phải là tên mới, chưa mang thông tin đặc biệt nào khác.
+Điều kiện bắt buộc: $$c$$ phải là một ký hiệu mới, chưa xuất hiện trước đó trong chứng minh và không mang thêm giả thiết đặc biệt nào.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Từ "tồn tại một sinh viên đạt điểm 10", ta có thể gọi sinh viên đó là $$s_0$$ và viết $$Score10(s_0)$$. Nhưng không được tự ý cho rằng $$s_0$$ là An nếu chưa có dữ kiện.
+**Ví dụ**: Từ "tồn tại một sinh viên đạt điểm 10", ta có thể gọi sinh viên đó là $$s_0$$ và viết $$Score10(s_0)$$, nhưng không được tự ý đồng nhất $$s_0$$ với An nếu không có dữ kiện cho phép.
 </div>
 
 
-## Existential Generalization (EG) - Tổng quát hóa tồn tại
+## Existential Generalization (EG) — Tổng quát hóa tồn tại
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Nếu biết $$P(c)$$ đúng với một phần tử cụ thể $$c$$, ta có thể kết luận $$\exists xP(x)$$.
+**Định nghĩa**: Nếu biết $$P(c)$$ đúng với một phần tử cụ thể $$c$$ trong miền, ta có thể kết luận $$\exists x\,P(x)$$.
 </div>
 
 
@@ -139,7 +139,7 @@ $$\frac{P(c)}{\exists x\,P(x)}$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Biết $$Prime(2)$$, suy ra $$\exists xPrime(x)$$.
+**Ví dụ**: Biết $$Prime(2)$$, ta suy ra $$\exists x\,Prime(x)$$.
 
 ![Cây thuật ngữ logic](/discrete-mathematics-for-computer-science-iuh/img/course/Termstammbaum.png)
 
@@ -148,10 +148,10 @@ $$\frac{P(c)}{\exists x\,P(x)}$$
 
 ## Ví dụ tổng hợp
 
-**Bài toán**: Chứng minh lập luận sau hợp lệ.
+**Bài toán**: Chứng minh lập luận sau là hợp lệ.
 
 **Tiền đề**:
-1. $$∀x(Programmer(x) → KnowsLogic(x))$$
+1. $$\forall x\,(Programmer(x) \to KnowsLogic(x))$$
 2. $$Programmer(Linh)$$
 
 **Kết luận cần chứng minh**: $$KnowsLogic(Linh)$$
@@ -161,16 +161,16 @@ $$\frac{P(c)}{\exists x\,P(x)}$$
 
 | Bước | Mệnh đề | Lý do |
 |:---:|:---|:---|
-| 1 | $$∀x(Programmer(x) → KnowsLogic(x))$$ | Tiền đề (1) |
-| 2 | $$Programmer(Linh) → KnowsLogic(Linh)$$ | Từ (1) bằng **Universal Instantiation (UI)** |
+| 1 | $$\forall x\,(Programmer(x) \to KnowsLogic(x))$$ | Tiền đề (1) |
+| 2 | $$Programmer(Linh) \to KnowsLogic(Linh)$$ | Từ (1) bằng **Universal Instantiation (UI)** |
 | 3 | $$Programmer(Linh)$$ | Tiền đề (2) |
 | 4 | $$KnowsLogic(Linh)$$ | Từ (2) và (3) bằng **Modus Ponens** |
 </div>
 
-**Kết luận**: $$KnowsLogic(Linh)$$ — đã được chứng minh.
+**Kết luận**: $$KnowsLogic(Linh)$$ đã được chứng minh.
 
 <div class="content-box example-box textbook-block" markdown="1">
-Bảng chứng minh trên tuân cấu trúc chuẩn: cột **Bước** đánh số thứ tự suy luận (không trùng số tiền đề); cột **Mệnh đề** ghi biểu thức logic thu được; cột **Lý do** nêu quy tắc áp dụng (tiền đề, UI, MP, ...).
+Bảng chứng minh trên tuân theo cấu trúc chuẩn: cột **Bước** đánh số thứ tự từng dòng; cột **Mệnh đề** ghi công thức logic thu được; cột **Lý do** nêu rõ tiền đề hoặc quy tắc áp dụng (UI, MP, ...).
 </div>
 
 ![Socrates](/discrete-mathematics-for-computer-science-iuh/img/course/Socrates_Louvre.jpg)
@@ -178,21 +178,21 @@ Bảng chứng minh trên tuân cấu trúc chuẩn: cột **Bước** đánh s�
 <p class="textbook-figure-caption" data-figure="2.14">Socrates — ví dụ kinh điển trong tam đoạn luận: "Người Hy Lạp là người; người thì phải chết; Socrates là người Hy Lạp" → Socrates phải chết.</p>
 ## Suy luận với lượng từ tồn tại
 
-Lập luận:
+Xét lập luận:
 
-1. $$\exists x(Student(x)\land LikesMath(x))$$
-2. $$\forall x(LikesMath(x)\to CanLearnDiscreteMath(x))$$
-3. Kết luận: $$\exists x(Student(x)\land CanLearnDiscreteMath(x))$$
+1. $$\exists x\,(Student(x)\land LikesMath(x))$$
+2. $$\forall x\,(LikesMath(x)\to CanLearnDiscreteMath(x))$$
+3. Kết luận: $$\exists x\,(Student(x)\land CanLearnDiscreteMath(x))$$
 
 <div class="textbook-proof" markdown="1">
 **Chứng minh**:
 
-1. Từ (1), dùng EI đặt một hằng mới $$a$$ sao cho $$Student(a)\land LikesMath(a)$$.
-2. Suy ra $$Student(a)$$ và $$LikesMath(a)$$ bằng tách hội.
-3. Từ (2), dùng UI: $$LikesMath(a)\to CanLearnDiscreteMath(a)$$.
+1. Từ (1), dùng EI giới thiệu một hằng mới $$a$$ sao cho $$Student(a)\land LikesMath(a)$$.
+2. Dùng phép giản lược (tách hội) để thu được $$Student(a)$$ và $$LikesMath(a)$$.
+3. Từ (2), dùng UI với $$a$$: $$LikesMath(a)\to CanLearnDiscreteMath(a)$$.
 4. Từ $$LikesMath(a)$$ và bước 3, dùng Modus Ponens: $$CanLearnDiscreteMath(a)$$.
-5. Từ $$Student(a)$$ và $$CanLearnDiscreteMath(a)$$, lập hội: $$Student(a)\land CanLearnDiscreteMath(a)$$.
-6. Dùng EG: $$\exists x(Student(x)\land CanLearnDiscreteMath(x))$$.
+5. Từ $$Student(a)$$ và $$CanLearnDiscreteMath(a)$$, dùng phép nối: $$Student(a)\land CanLearnDiscreteMath(a)$$.
+6. Dùng EG: $$\exists x\,(Student(x)\land CanLearnDiscreteMath(x))$$.
 </div>
 
 ![Cây quyết định](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
@@ -202,48 +202,47 @@ Lập luận:
 
 ### Bài tập 1: Nhận diện quy tắc
 
-Xác định quy tắc suy luận nào được dùng trong mỗi bước sau:
+Xác định các quy tắc suy luận được dùng trong mỗi bước sau:
 
-1. $$\forall x (P(x) \to Q(x))$$, $$P(a)$$ → $$Q(a)$$
-2. $$P(c)$$ → $$\exists x P(x)$$
+1. $$\forall x\,(P(x) \to Q(x))$$, $$P(a)$$ → $$Q(a)$$
+2. $$P(c)$$ → $$\exists x\,P(x)$$
 
 <details>
 <summary>Đáp án</summary>
 
-1. Universal Instantiation (UI)
-2. Existential Generalization (EG)
+1. **Universal Instantiation (UI)** (để rút ra $$P(a) \to Q(a)$$) kết hợp với **Modus Ponens** (từ $$P(a) \to Q(a)$$ và $$P(a)$$ suy ra $$Q(a)$$).
+2. **Existential Generalization (EG)**.
 
 </details>
 
 ### Bài tập 2: Hoàn thiện chứng minh
 
-Cho: $$\forall x (Student(x) \to HasID(x))$$ và $$\exists x Student(x)$$.  
-Chứng minh: $$\exists x HasID(x)$$.
+Cho $$\forall x\,(Student(x) \to HasID(x))$$ và $$\exists x\,Student(x)$$. Chứng minh $$\exists x\,HasID(x)$$.
 
 <details>
 <summary>Đáp án</summary>
 
-1. $$\exists x Student(x)$$ (tiền đề)
-2. $$Student(c)$$ (EI)
-3. $$Student(c) \to HasID(c)$$ (UI)
-4. $$HasID(c)$$ (Modus Ponens)
-5. $$\exists x HasID(x)$$ (EG)
+1. $$\exists x\,Student(x)$$ (tiền đề)
+2. $$Student(c)$$ (EI với hằng mới $$c$$)
+3. $$Student(c) \to HasID(c)$$ (UI từ tiền đề còn lại)
+4. $$HasID(c)$$ (Modus Ponens từ 2 và 3)
+5. $$\exists x\,HasID(x)$$ (EG từ 4)
 
 </details>
 
 ### Bài tập 3: Tìm lỗi
 
-Tìm và sửa lỗi trong lập luận sau:
+Tìm và giải thích lỗi trong lập luận sau:
 
-> Mọi sinh viên đều học Discrete Math.  
-> Lan là sinh viên.  
-> Vậy Lan học Discrete Math.  
+> Mọi sinh viên đều học Discrete Math.
+> Lan là sinh viên.
+> Vậy Lan học Discrete Math.
 > Do đó mọi sinh viên đều học Discrete Math.
 
 <details>
 <summary>Đáp án</summary>
 
-Lỗi ở bước cuối: từ một trường hợp cụ thể (Lan) không được suy ra "mọi" (UG chỉ áp dụng khi đối tượng là tùy ý, không phải tên riêng).
+Lỗi nằm ở bước cuối: từ một trường hợp cụ thể (Lan) không được dùng UG để kết luận cho "mọi sinh viên" (UG chỉ áp dụng khi đối tượng được chọn tùy ý, không phải tên riêng cụ thể).
 
 </details>
 
@@ -251,110 +250,89 @@ Lỗi ở bước cuối: từ một trường hợp cụ thể (Lan) không đ�
 
 Cho các giả thiết:
 
-1. $$\forall x (Human(x) \to Mortal(x))$$
+1. $$\forall x\,(Human(x) \to Mortal(x))$$
 2. $$Human(Socrates)$$
 
-Suy ra $$Mortal(Socrates)$$ bằng UI và Modus Ponens.
+Ta suy ra $$Mortal(Socrates)$$ bằng UI và Modus Ponens. Hãy áp dụng quy trình tương tự cho các cặp giả thiết sau:
 
-Hãy áp dụng quy trình tương tự cho:
-
-(a) $$\forall x (Student(x) \to TakesExam(x))$$ và $$Student(Lan)$$
-(b) $$\forall x (Bird(x) \to CanFly(x))$$ và $$Bird(Eagle)$$
-(c) $$\forall n (Even(n) \to DivisibleBy2(n))$$ và $$Even(42)$$
+(a) $$\forall x\,(Student(x) \to TakesExam(x))$$ và $$Student(Lan)$$
+(b) $$\forall x\,(Bird(x) \to CanFly(x))$$ và $$Bird(Eagle)$$
+(c) $$\forall n\,(Even(n) \to DivisibleBy2(n))$$ và $$Even(42)$$
 
 <details>
 <summary>Đáp án</summary>
 
-(a) - UI từ (1): $$Student(Lan) \to TakesExam(Lan)$$
-    - Modus Ponens với $$Student(Lan)$$: $$TakesExam(Lan)$$
-    Kết luận: "Lan thi".
+(a) UI từ (1): $$Student(Lan) \to TakesExam(Lan)$$; Modus Ponens với $$Student(Lan)$$: $$TakesExam(Lan)$$ ("Lan tham gia thi").
 
-(b) - UI từ (1): $$Bird(Eagle) \to CanFly(Eagle)$$
-    - Modus Ponens với $$Bird(Eagle)$$: $$CanFly(Eagle)$$
-    Kết luận: "Đại bàng bay được".
+(b) UI từ (1): $$Bird(Eagle) \to CanFly(Eagle)$$; Modus Ponens với $$Bird(Eagle)$$: $$CanFly(Eagle)$$ ("Đại bàng bay được").
 
-(c) - UI từ (1): $$Even(42) \to DivisibleBy2(42)$$
-    - Modus Ponens với $$Even(42)$$: $$DivisibleBy2(42)$$
-    Kết luận: "42 chia hết cho 2" — đúng.
+(c) UI từ (1): $$Even(42) \to DivisibleBy2(42)$$; Modus Ponens với $$Even(42)$$: $$DivisibleBy2(42)$$ ("42 chia hết cho 2").
 
 </details>
 
 ### Bài tập 5: Existential Instantiation và Existential Generalization
 
-Cho $$\exists x (Student(x) \land \neg Passed(x))$$.
+Cho $$\exists x\,(Student(x) \land \neg Passed(x))$$.
 
-(a) Áp dụng EI để giới thiệu một hằng số mới c. Điều kiện khi dùng EI là gì?
-(b) Từ kết quả của EI, áp dụng EG để suy ra $$\exists x (Student(x))$$.
-(c) Giải thích tại sao từ $$\exists x P(x)$$ không thể suy ra $$\forall x P(x)$$ bằng EG.
+(a) Áp dụng EI để giới thiệu một hằng số mới $$c$$. Điều kiện khi dùng EI là gì?
+(b) Từ kết quả của EI, áp dụng EG để suy ra $$\exists x\,Student(x)$$.
+(c) Giải thích tại sao từ $$\exists x\,P(x)$$ không thể suy ra $$\forall x\,P(x)$$ bằng EG.
 
 <details>
 <summary>Đáp án</summary>
 
-(a) EI cho ta: $$Student(c) \land \neg Passed(c)$$, với c là hằng số mới, chưa từng xuất hiện trong bất kỳ giả thiết hay kết luận nào trước đó.
-    
-    Điều kiện: **c phải là một tên mới, không xuất hiện ở bất kỳ đâu trong chuỗi suy luận**. Lý do: nếu c đã xuất hiện, ta không thể đảm bảo nó là "nhân chứng tùy ý" cho mệnh đề tồn tại.
+(a) EI cho ta $$Student(c) \land \neg Passed(c)$$, với $$c$$ là hằng số mới chưa từng xuất hiện trong bất kỳ giả thiết hay bước suy luận nào trước đó, để tránh gán nhầm các tính chất của đối tượng khác cho nhân chứng này.
 
-(b) Từ $$Student(c)$$ (bằng phép giản lược conjunction), EG cho ta: $$\exists x Student(x)$$.
-    
-    Chú ý: EG cho phép ta chuyển từ một trường hợp cụ thể sang "tồn tại" — đây là quy tắc rất trực quan: nếu Lan là sinh viên thì tồn tại sinh viên.
+(b) Từ $$Student(c) \land \neg Passed(c)$$, dùng phép giản lược thu được $$Student(c)$$, rồi dùng EG suy ra $$\exists x\,Student(x)$$.
 
-(c) EG chỉ cho phép suy ra **tồn tại** (∃), không phải **mọi** (∀). Từ $$P(c)$$ (với c cụ thể), EG cho $$\exists x P(x)$$. Để có $$\forall x P(x)$$, ta cần UG với c là phần tử tùy ý (arbitrary), không phải hằng số từ EI.
-
-    Từ $$\exists x P(x)$$, EI giới thiệu P(c) với c là **nhân chứng cụ thể** (có thể có tính chất đặc biệt). Không thể suy ra mọi x đều có P(x) từ một nhân chứng.
+(c) EG chỉ cho phép suy ra lượng từ tồn tại ($$\exists$$), không suy ra được lượng từ toàn thể ($$\forall$$). Để kết luận $$\forall x\,P(x)$$ cần dùng UG với một phần tử tùy ý, trong khi hằng số $$c$$ sinh ra từ EI chỉ là một nhân chứng cụ thể.
 
 </details>
 
 ### Bài tập 6: Áp dụng UG đúng cách
 
-Xét suy luận sau:
+Cho $$\forall x\,(P(x) \to Q(x))$$ và $$\forall x\,P(x)$$.
 
-Cho $$\forall x (P(x) \to Q(x))$$ và $$\forall x P(x)$$.
-
-(a) Chứng minh $$\forall x Q(x)$$ bằng UI và UG.
-(b) Nếu thay giả thiết thành $$\forall x (P(x) \to Q(x))$$ và $$P(a)$$ (với a là hằng số), có thể suy ra $$\forall x Q(x)$$ không? Giải thích.
+(a) Chứng minh $$\forall x\,Q(x)$$ bằng UI và UG.
+(b) Nếu thay giả thiết thứ hai thành $$P(a)$$ (với $$a$$ là một hằng số cụ thể), có thể suy ra $$\forall x\,Q(x)$$ không? Giải thích và nêu phản ví dụ.
 
 <details>
 <summary>Đáp án</summary>
 
 (a) Chứng minh:
-    - Gọi c là phần tử tùy ý bất kỳ trong miền.
-    - UI từ $$\forall x P(x)$$: $$P(c)$$
-    - UI từ $$\forall x (P(x) \to Q(x))$$: $$P(c) \to Q(c)$$
-    - Modus Ponens: $$Q(c)$$
-    - Vì c là phần tử tùy ý, UG cho: $$\forall x Q(x)$$
-    
-    Đây là một dạng của **sylogism** (tam đoạn luận) trong logic vị từ: nếu mọi x đều có P và mọi x đều có (P kéo theo Q), thì mọi x đều có Q.
+    - Gọi $$c$$ là phần tử tùy ý trong miền xác định.
+    - UI từ $$\forall x\,P(x)$$: $$P(c)$$.
+    - UI từ $$\forall x\,(P(x) \to Q(x))$$: $$P(c) \to Q(c)$$.
+    - Modus Ponens: $$Q(c)$$.
+    - Vì $$c$$ là phần tử tùy ý, áp dụng UG ta được $$\forall x\,Q(x)$$.
+    Đây là dạng tam đoạn luận (syllogism) trong logic vị từ.
 
-(b) **Không thể.** Từ P(a) → Q(a) (UI) và P(a), ta chỉ suy ra Q(a). Không thể dùng UG ở đây vì a là hằng số cụ thể, không phải phần tử tùy ý. UG chỉ áp dụng khi biến được lượng từ hóa phổ dụng từ đầu hoặc là phần tử tùy ý chưa có ràng buộc.
+(b) **Không thể.** Từ $$P(a) \to Q(a)$$ (UI) và $$P(a)$$ ta chỉ suy ra được $$Q(a)$$; không được dùng UG vì $$a$$ là hằng số cụ thể chứ không phải phần tử tùy ý.
 
-    Phản ví dụ: P(x) = "x là số chẵn", Q(x) = "x chia hết cho 4". Nếu biết ∀x (P(x) → Q(x)) (sai!) và P(4) (đúng), không thể suy ra mọi số chẵn đều chia hết cho 4 (sai, vì 2 là số chẵn nhưng không chia hết cho 4).
+    Phản ví dụ trên miền $$\mathbb{Z}$$: đặt $$P(x)$$ là "$$x$$ chia hết cho 4", $$Q(x)$$ là "$$x$$ là số chẵn", và $$a = 4$$. Khi đó cả hai tiền đề $$\forall x\,(P(x) \to Q(x))$$ (mọi bội của 4 đều chẵn) và $$P(4)$$ (4 chia hết cho 4) đều đúng, nhưng kết luận $$\forall x\,Q(x)$$ ("mọi số nguyên đều chẵn") là sai vì 3 là số lẻ.
 
 </details>
 
 ### Bài tập 7: Chứng minh bằng suy luận vị từ — Bài toán "Người Hy Lạp"
 
-Chứng minh kết luận từ các giả thiết:
+Chứng minh kết luận từ các giả thiết sau:
 
-1. $$\forall x (Greek(x) \to Human(x))$$ — Người Hy Lạp là người.
-2. $$\forall x (Human(x) \to Mortal(x))$$ — Người thì phải chết.
+1. $$\forall x\,(Greek(x) \to Human(x))$$ — Người Hy Lạp là người.
+2. $$\forall x\,(Human(x) \to Mortal(x))$$ — Người thì phải chết.
 3. $$Greek(Socrates)$$ — Socrates là người Hy Lạp.
 
-Kết luận: $$\exists x Mortal(x)$$ — Tồn tại người phải chết.
-
-Viết từng bước suy luận.
+Kết luận: $$\exists x\,Mortal(x)$$ — Tồn tại người phải chết. Hãy viết từng bước suy luận.
 
 <details>
 <summary>Đáp án</summary>
 
 - Bước 1 (UI từ 1): $$Greek(Socrates) \to Human(Socrates)$$
 - Bước 2 (UI từ 2): $$Human(Socrates) \to Mortal(Socrates)$$
-- Bước 3 (Hypothetical Syllogism từ B1, B2): $$Greek(Socrates) \to Mortal(Socrates)$$
-- Bước 4 (Modus Ponens từ B3 và giả thiết 3): $$Mortal(Socrates)$$
-- Bước 5 (EG từ B4): $$\exists x Mortal(x)$$
+- Bước 3 (Hypothetical Syllogism từ bước 1 và bước 2): $$Greek(Socrates) \to Mortal(Socrates)$$
+- Bước 4 (Modus Ponens từ bước 3 và giả thiết 3): $$Mortal(Socrates)$$
+- Bước 5 (EG từ bước 4): $$\exists x\,Mortal(x)$$
 
-Kết luận: Tồn tại người phải chết (cụ thể là Socrates).
-
-Nhận xét: Đây là phiên bản logic vị từ của tam đoạn luận kinh điển từ thời Aristotle — một trong những suy luận lâu đời nhất trong lịch sử triết học phương Tây.
+Kết luận: Tồn tại người phải chết (cụ thể là Socrates). Đây là phiên bản logic vị từ của tam đoạn luận kinh điển thời Aristotle.
 
 </details>
 
@@ -362,7 +340,7 @@ Nhận xét: Đây là phiên bản logic vị từ của tam đoạn luận kin
 
 Tìm lỗi trong các suy luận sau:
 
-(a) 
+(a)
 ```
 ∀x ∃y P(x, y)
 EI → P(c, d)  (với c, d là hằng số mới)
@@ -383,24 +361,13 @@ EG → ∀x (P(x) ∧ Q(x))
 <details>
 <summary>Đáp án</summary>
 
-(a) **Lỗi:** EI chỉ áp dụng cho mệnh đề $$\exists x R(x)$$, không áp dụng trực tiếp cho $$\forall x \exists y P(x, y)$$.
-    
-    Cách đúng: Với c tùy ý, UI từ $$\forall x \exists y P(x, y)$$ cho $$\exists y P(c, y)$$. Sau đó EI cho $$P(c, d)$$ với d là hằng số mới (phụ thuộc vào c).
-    
-    Lỗi ở đây là áp dụng EI lên một công thức có lượng từ phổ dụng bên ngoài — EI chỉ áp dụng cho lượng từ tồn tại ở cấp cao nhất.
+(a) **Lỗi:** EI chỉ áp dụng được khi lượng từ tồn tại $$\exists$$ nằm ở ngoài cùng, không áp dụng trực tiếp lên $$\forall x \exists y\,P(x, y)$$.
+    Cách đúng: trước hết dùng UI với phần tử tùy ý $$c$$ để thu được $$\exists y\,P(c, y)$$, sau đó mới dùng EI để giới thiệu hằng số mới $$d$$ (có thể phụ thuộc vào $$c$$) sao cho $$P(c, d)$$.
 
-(b) **Lỗi:** EG suy ra $$\exists$$, không phải $$\forall$$.
-    
-    Từ $$P(a) \land Q(a)$$, EG đúng cho: $$\exists x (P(x) \land Q(x))$$.
-    Muốn có $$\forall x (P(x) \land Q(x))$$, cần UG với a là phần tử tùy ý, không phải hằng số cụ thể.
+(b) **Lỗi:** EG chỉ suy ra được lượng từ tồn tại $$\exists$$, không phải $$\forall$$. Từ $$P(a) \land Q(a)$$, EG cho $$\exists x\,(P(x) \land Q(x))$$; muốn có $$\forall x\,(P(x) \land Q(x))$$ thì cần dùng UG với phần tử tùy ý chứ không phải hằng số cụ thể $$a$$.
 
-(c) **Lỗi:** Hai hằng số từ hai lần EI có thể khác nhau.
-    
-    Từ $$\exists x P(x)$$, EI cho P(c).
-    Từ $$\exists x Q(x)$$, EI cho Q(d) với d ≠ c (cả hai đều là hằng số mới).
-    Ta có P(c) ∧ Q(d), nhưng không thể suy ra ∃x (P(x) ∧ Q(x)) vì c và d có thể khác nhau.
-    
-    Phản ví dụ: P(x) = "x là số chẵn", Q(x) = "x là số lẻ". ∃x P(x) đúng (x=2), ∃x Q(x) đúng (x=3), nhưng ∃x (P(x) ∧ Q(x)) sai vì không số nào vừa chẵn vừa lẻ.
+(c) **Lỗi:** Hai hằng số sinh ra từ hai lần EI không nhất thiết bằng nhau. Từ $$\exists x\,P(x)$$ ta dùng EI được $$P(c)$$; từ $$\exists x\,Q(x)$$ ta phải dùng một hằng số mới $$d$$ (không được tái sử dụng $$c$$) để có $$Q(d)$$, nên không thể suy ra $$\exists x\,(P(x) \land Q(x))$$.
+    Phản ví dụ trên $$\mathbb{Z}$$: $$P(x)$$ là "$$x$$ là số chẵn", $$Q(x)$$ là "$$x$$ là số lẻ". Cả $$\exists x\,P(x)$$ ($$x = 2$$) và $$\exists x\,Q(x)$$ ($$x = 3$$) đều đúng, nhưng $$\exists x\,(P(x) \land Q(x))$$ sai vì không có số nguyên nào vừa chẵn vừa lẻ.
 
 </details>
 
@@ -409,7 +376,7 @@ EG → ∀x (P(x) ∧ Q(x))
 
 ### Thử nghiệm: suy luận vị từ từng dòng
 
-Duyệt từng dòng chứng minh với quy tắc UI, EI, EG, thử hai lỗi kinh điển (dùng lại tên khi EI, UG từ hằng cụ thể) và xem phản ví dụ trên mô hình nhỏ.
+Duyệt từng dòng chứng minh với các quy tắc UI, EI, EG, thử hai lỗi kinh điển (tái sử dụng tên khi dùng EI, hoặc dùng UG từ hằng số cụ thể) và xem phản ví dụ trên mô hình nhỏ.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="predproof-explainer" data-preset="socrates"></div>
@@ -418,7 +385,7 @@ Duyệt từng dòng chứng minh với quy tắc UI, EI, EG, thử hai lỗi ki
 
 ## Công cụ tương tác
 
-Kéo thả các bước suy luận vị từ để lắp một chứng minh ngắn, rồi kiểm tra từng dòng.
+Kéo thả các bước suy luận vị từ để ghép thành một chứng minh ngắn rồi kiểm tra từng dòng.
 <div class="interactive-demo" markdown="1">
 <div data-demo="predicate-proof-dnd"></div>
 </div>
@@ -432,15 +399,15 @@ Kéo thả các bước suy luận vị từ để lắp một chứng minh ng�
 
 ## Tóm tắt
 
-- Bốn quy tắc suy luận với lượng từ: **UI** (cụ thể hóa toàn thể), **UG** (tổng quát hóa toàn thể), **EI** (cụ thể hóa tồn tại), **EG** (tổng quát hóa tồn tại).
-- UI và EI kết hợp với các quy tắc mệnh đề (Modus Ponens, Modus Tollens, tam đoạn luận) tạo thành chuỗi suy luận hợp lệ.
-- UG chỉ áp dụng khi phần tử được chọn **tùy ý**; EI yêu cầu hằng số mới **chưa xuất hiện** trong chuỗi suy luận.
-- Lỗi thường gặp: nhầm EG với UG, áp dụng EI sai cấp lượng từ, hoặc gộp hai nhân chứng từ hai lần EI khác nhau.
+- Bốn quy tắc suy luận với lượng từ gồm: **UI** (cụ thể hóa toàn thể), **UG** (tổng quát hóa toàn thể), **EI** (cụ thể hóa tồn tại) và **EG** (tổng quát hóa tồn tại).
+- UI và EI kết hợp với các quy tắc suy luận mệnh đề (Modus Ponens, Modus Tollens, tam đoạn luận) tạo thành chuỗi chứng minh hợp lệ.
+- UG chỉ được áp dụng khi phần tử được chọn **tùy ý**; EI yêu cầu hằng số mới **chưa xuất hiện** trước đó trong chứng minh.
+- Các lỗi thường gặp: nhầm EG với UG, áp dụng EI khi $$\forall$$ nằm ngoài cùng, hoặc dùng chung một hằng số cho hai lần EI độc lập.
 
-Trong bài tiếp theo, chúng ta sẽ xem **logic vị từ trong lập trình và cơ sở dữ liệu** — cách triển khai thực tế của vị từ và lượng từ.
+Trong bài tiếp theo, chúng ta sẽ tìm hiểu **logic vị từ trong lập trình và cơ sở dữ liệu** — cách các khái niệm vị từ và lượng từ được triển khai trong thực tế.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=akiBw21opuw">Rules of Inference for Quantified Statements (Part 1)</a> — Neso Academy, tiếng Anh. Xem trước quy tắc suy luận cho phát biểu có lượng từ.
-- <a href="https://www.youtube.com/watch?v=RfSGkkkGtPg">Proof in predicate logic  1: Universal Instantiation</a> — Simon Cushing, tiếng Anh. Universal instantiation: đi từ ∀x P(x) xuống một phần tử.
-- <a href="https://www.youtube.com/watch?v=a11_3qvelwE">Predicate Logic Proof Example 2: Using Instantiation and Generalization</a> — FREGE: A Logic Course Elaine Rich, Alan Cline, tiếng Anh. Một chứng minh dùng instantiation và generalization.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=akiBw21opuw">Rules of Inference for Quantified Statements (Part 1)</a> — Neso Academy, tiếng Anh. Giới thiệu các quy tắc suy luận cho phát biểu có lượng từ.
+- <a href="https://www.youtube.com/watch?v=RfSGkkkGtPg">Proof in predicate logic  1: Universal Instantiation</a> — Simon Cushing, tiếng Anh. Trình bày cụ thể quy tắc Universal Instantiation từ $$\forall x\,P(x)$$ xuống một phần tử.
+- <a href="https://www.youtube.com/watch?v=a11_3qvelwE">Predicate Logic Proof Example 2: Using Instantiation and Generalization</a> — FREGE: A Logic Course Elaine Rich, Alan Cline, tiếng Anh. Minh họa một bài chứng minh kết hợp cụ thể hóa và tổng quát hóa.

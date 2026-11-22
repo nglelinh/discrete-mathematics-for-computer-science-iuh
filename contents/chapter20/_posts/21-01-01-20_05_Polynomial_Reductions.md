@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 5
 required: true
 lang: en
-excerpt: "Định nghĩa A≤ₚB; chứng minh phản xạ, bắc cầu, bảo toàn P; Karp vs Cook reduction."
+excerpt: "Định nghĩa phép rút gọn thời gian đa thức A≤ₚB, chứng minh tính phản xạ, bắc cầu, tính bảo toàn lớp P và so sánh rút gọn Karp với rút gọn Cook."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,27 +17,27 @@ excerpt: "Định nghĩa A≤ₚB; chứng minh phản xạ, bắc cầu, bảo 
 
 </div>
 
-Rút gọn là **công cụ so sánh độ khó**: biến instance $$A$$ thành instance $$B$$ nhanh, giữ Yes/No.
+Phép rút gọn là **công cụ so sánh độ khó giữa các bài toán**: biến đổi nhanh một thể hiện của bài toán $$A$$ thành một thể hiện của bài toán $$B$$ sao cho câu trả lời Có/Không được bảo toàn nguyên vẹn.
 
 ![Reduction](/discrete-mathematics-for-computer-science-iuh/img/course/Complexity_reduction.svg)
 
-<p class="textbook-figure-caption" data-figure="20.3">$$x\in A\Leftrightarrow f(x)\in B$$, $$f$$ poly-time.</p>
+<p class="textbook-figure-caption" data-figure="20.3">Phép biến đổi đa thức $$f$$ bảo toàn tính thuộc ngôn ngữ: $$x\in A\Leftrightarrow f(x)\in B$$.</p>
 
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
 
-- **Định nghĩa** $$A\le_p B$$.
-- **Chứng minh** phản xạ, bắc cầu, “$$B\in P\Rightarrow A\in P$$”.
-- **Phân biệt** Karp (many-one) và Cook (Turing).
+- **Định nghĩa** phép rút gọn đa thức $$A\le_p B$$.
+- **Chứng minh** tính phản xạ, tính bắc cầu và tính chất “$$B\in P\Rightarrow A\in P$$”.
+- **Phân biệt** rút gọn Karp (*many-one*) và rút gọn Cook (*Turing*).
 
 </div>
 
-## Định nghĩa Karp
+## Định nghĩa rút gọn Karp
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa.** $$A\le_p B$$ nếu ∃ $$f$$ tính poly-time:
+**Định nghĩa.** Ta nói $$A$$ rút gọn đa thức được về $$B$$, ký hiệu $$A\le_p B$$, nếu tồn tại một hàm $$f$$ tính được trong thời gian đa thức sao cho:
 
 $$
 \forall x:\quad x\in A\iff f(x)\in B.
@@ -45,68 +45,71 @@ $$
 
 </div>
 
-## Định lý
+## Các tính chất cơ bản
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý** (phản xạ). $$A\le_p A$$ với $$f=\mathrm{id}$$.
+**Định lý** (Tính phản xạ). $$A\le_p A$$ với hàm đồng nhất $$f=\mathrm{id}$$.
 
 </div>
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý** (bắc cầu). $$A\le_p B$$, $$B\le_p C$$ ⇒ $$A\le_p C$$.
+**Định lý** (Tính bắc cầu). Nếu $$A\le_p B$$ và $$B\le_p C$$ thì $$A\le_p C$$.
 
 </div>
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh.** $$h=g\circ f$$. Tính đúng theo $$\Leftrightarrow$$.  
-$$\lvert f(x)\rvert\le\mathrm{poly}(\lvert x\rvert)$$ vì mỗi bước viết ≤1 ký hiệu. Thời gian $$g(f(x))$$ poly theo $$\lvert f(x)\rvert$$ ⇒ poly theo $$\lvert x\rvert$$.
+
+**Chứng minh.** Giả sử $$f$$ rút gọn $$A$$ về $$B$$ và $$g$$ rút gọn $$B$$ về $$C$$; xét hàm hợp $$h=g\circ f$$. Tính tương đương Có/Không suy trực tiếp từ tính bắc cầu của phép tương đương $$\Leftrightarrow$$. Về thời gian, vì mỗi bước của $$f$$ ghi ra tối đa một ký hiệu nên $$\lvert f(x)\rvert\le\mathrm{poly}(\lvert x\rvert)$$, do đó thời gian tính $$g(f(x))$$ là đa thức theo $$\lvert f(x)\rvert$$ và suy ra là đa thức theo $$\lvert x\rvert$$.
+
 </div>
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý** (bảo toàn $$P$$). Nếu $$A\le_p B$$ và $$B\in P$$ thì $$A\in P$$.
+**Định lý** (Bảo toàn lớp $$P$$). Nếu $$A\le_p B$$ và $$B\in P$$ thì $$A\in P$$.
 
 </div>
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh.** Tính $$y=f(x)$$; quyết định $$y\in B$$; trả về.
+
+**Chứng minh.** Với đầu vào $$x$$, ta tính $$y=f(x)$$ trong thời gian đa thức, sau đó chạy thuật toán đa thức quyết định $$y\in B$$ rồi trả về đúng kết quả đó.
+
 </div>
 
 <div class="textbook-theorem" markdown="1">
 
-**Hệ quả.** $$A\le_p B$$, $$A\notin P$$ ⇒ $$B\notin P$$.
+**Hệ quả.** Nếu $$A\le_p B$$ và $$A\notin P$$ thì $$B\notin P$$.
 
 </div>
 
-## Karp vs Cook
+## So sánh rút gọn Karp và rút gọn Cook
 
-| | Karp (many-one) | Cook (Turing) |
+| Tiêu chí | Rút gọn Karp (*many-one*) | Rút gọn Cook (*Turing*) |
 |:---|:---|:---|
-| Số lần hỏi $$B$$ | 1 (sau $$f$$) | nhiều |
-| Dùng cho NPC cổ điển | **Có** | hiếm khi làm định nghĩa NPC |
+| Số lần gọi lời giải cho $$B$$ | Đúng 1 lần (sau khi tính $$f(x)$$) | Có thể gọi nhiều lần như một chương trình con (*oracle*) |
+| Dùng để định nghĩa NP-complete cổ điển | **Có** | Hiếm dùng làm định nghĩa chuẩn cho NPC |
 
-Mọi Karp là Cook; ngược lại không tầm thường.
+Mọi phép rút gọn Karp đều là một phép rút gọn Cook, nhưng chiều ngược lại nói chung không tầm thường.
 
 ## Bài tập
 
-1. Chứng minh bắc cầu với chặn: $$f$$ thời gian $$n^2$$, $$g$$ thời gian $$m^3$$.  
-2. Chứng minh $$A\le_p B\Rightarrow\overline{A}\le_p\overline{B}$$.  
-3. Đưa ví dụ “ý” Cook reduction không phải many-one (thảo luận).
+1. Chứng minh định lý bắc cầu với chặn cụ thể khi $$f$$ chạy trong thời gian $$n^2$$ và $$g$$ chạy trong thời gian $$m^3$$.
+2. Chứng minh rằng nếu $$A\le_p B$$ thì $$\overline{A}\le_p\overline{B}$$.
+3. Nêu ý tưởng về một phép rút gọn Cook nhưng không phải rút gọn many-one (thảo luận).
 
-## Đọc
+## Tài liệu đọc thêm
 
 Sipser; Arora–Barak §2.2; Garey–Johnson §5.
 
 ## Tóm tắt
 
-$$\le_p$$ · truyền · kéo $$P$$ · xương sống NPC.
+Phép rút gọn đa thức $$\le_p$$ có tính bắc cầu, truyền khả năng giải đa thức ngược về bài toán nguồn và là nền tảng để định nghĩa NP-hard, NP-complete.
 
-**Tiếp:** 20.6 — NP-hard / NP-complete.
+**Bài tiếp theo:** 20.6 — NP-hard và NP-complete.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=tPRYHkp21YU">Polynomial Time Reductions: Karp Reductions &amp; NP-Completeness Explained!</a> — CodeLucky, tiếng Anh. Xem trước rút gọn Karp trong thời gian đa thức.
-- <a href="https://www.youtube.com/watch?v=O7pq43hIE_0">What is a polynomial-time reduction? (NP-Hard + NP-complete)</a> — Easy Theory, tiếng Anh. Rút gọn đa thức nối NP-hard và NP-complete.
-- <a href="https://www.youtube.com/watch?v=sr9KJwaZH1A">Karp Reductions</a> — Computer Science Theory Explained, tiếng Anh. Karp reduction, đúng kiểu many-one của bài.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=tPRYHkp21YU">Polynomial Time Reductions: Karp Reductions &amp; NP-Completeness Explained!</a> — CodeLucky, tiếng Anh. Giới thiệu phép rút gọn Karp trong thời gian đa thức.
+- <a href="https://www.youtube.com/watch?v=O7pq43hIE_0">What is a polynomial-time reduction? (NP-Hard + NP-complete)</a> — Easy Theory, tiếng Anh. Vai trò của rút gọn đa thức trong việc kết nối NP-hard và NP-complete.
+- <a href="https://www.youtube.com/watch?v=sr9KJwaZH1A">Karp Reductions</a> — Computer Science Theory Explained, tiếng Anh. Phân tích chi tiết phép rút gọn kiểu many-one của Karp.

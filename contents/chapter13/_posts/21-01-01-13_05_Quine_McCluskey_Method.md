@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 5
 required: true
 lang: en
-excerpt: "Phương pháp Quine–McCluskey: tối giản hàm Boole bằng bảng (phép dán, nguyên nhân nguyên tố, bảng phủ, nguyên tố cốt yếu), so với K-map và don't-care."
+excerpt: "Phương pháp bảng Quine–McCluskey tối giản hàm Boole gồm hai giai đoạn: phép dán tìm nguyên nhân nguyên tố và bảng phủ chọn nguyên tố cốt yếu, kèm xử lý don't-care và so sánh với K-map."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,19 +17,19 @@ excerpt: "Phương pháp Quine–McCluskey: tối giản hàm Boole bằng bản
 
 </div>
 
-Phương pháp **Quine–McCluskey** (*tabulation method*) là kỹ thuật **hệ thống** tối thiểu hóa hàm Boolean bằng bảng. Phương pháp đặc biệt hữu ích khi số biến lớn hơn bốn, lúc bản đồ Karnaugh trở nên khó quan sát và dễ bỏ sót nhóm. Các **nguyên nhân hạng $$n$$** (minterm / từ tối tiểu) được ghi dạng bit; các cặp chỉ khác một bit được **dán** (gộp); sau đó chọn một tập hạng gọn nhất vẫn mô tả đúng hàm.
+Phương pháp **Quine–McCluskey** (*tabulation method*) là kỹ thuật tối thiểu hóa hàm Boole có hệ thống dưới dạng bảng. Phương pháp này đặc biệt phù hợp khi số biến vượt quá bốn, thời điểm mà bản đồ Karnaugh trở nên khó quan sát và dễ bỏ sót nhóm. Các **nguyên nhân hạng $$n$$** (minterm / từ tối tiểu) được biểu diễn bằng chuỗi bit; các cặp chỉ khác nhau đúng một bit được **dán** (gộp) lại với nhau; sau đó ta chọn một tập hạng tử gọn nhất vẫn phủ đầy đủ hàm.
 
-Quine–McCluskey thực hiện cùng phép rút gọn như K-map, nhưng dưới dạng quy trình bảng, kiểm chứng được từng bước và có thể thuật toán hóa.
+Về bản chất, Quine–McCluskey thực hiện cùng phép rút gọn đại số như K-map, nhưng trình bày thành quy trình bảng rõ ràng, dễ kiểm chứng từng bước và có thể cài đặt thành thuật toán trên máy tính.
 
-Về cơ bản, phương pháp có **hai phần**:
+Phương pháp gồm **hai phần** chính:
 
 1. **Phần 1 — Tìm dạng tổng chuẩn tắc thu gọn.**  
-   Tìm các số hạng **ứng viên** để đưa vào khai triển cực tiểu — tức các **nguyên nhân nguyên tố** của $$F$$. Điểm xuất phát là tổng các nguyên nhân hạng $$n$$, vốn tạo nên **dạng nối rời chính tắc** (SOP chuẩn / tổng các tích đầy đủ).
+   Xác định toàn bộ các số hạng **ứng viên** cho biểu thức cực tiểu — gọi là các **nguyên nhân nguyên tố** (*prime implicant*) của $$F$$ — xuất phát từ tập nguyên nhân hạng $$n$$ của **dạng nối rời chính tắc** (SOP chuẩn).
 
 2. **Phần 2 — Tìm dạng tổng chuẩn tắc tối thiểu.**  
-   Trên **bảng phủ**, chọn một hệ nguyên nhân nguyên tố gọn nhất vẫn phủ hết các chỗ $$F = 1$$ — thu được **SOP (tổng các tích) tối tiểu**.
+   Dựa trên **bảng phủ**, chọn một tập con nguyên nhân nguyên tố gọn nhất sao cho vẫn phủ hết mọi vị trí $$F = 1$$, từ đó thu được **dạng SOP tối tiểu**.
 
-Kết quả là một SOP hai tầng tối tiểu, hoặc một trong vài cover tối ưu tương đương.
+Kết quả là một dạng SOP hai tầng tối tiểu (hoặc một trong các phủ tối ưu tương đương).
 
 ## Mục tiêu học tập
 
@@ -37,132 +37,128 @@ Kết quả là một SOP hai tầng tối tiểu, hoặc một trong vài cover
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Giải thích** vì sao dùng Quine–McCluskey khi K-map không còn tiện.
-- **Mô tả** hai phần: tìm **nguyên nhân nguyên tố**, rồi chọn cover trên bảng phủ.
-- **Thực hiện** **phép dán** (gộp minterm; dấu `-` tại bit khác nhau) cho hàm nhỏ (3–4 biến).
-- **Nhận** **nguyên nhân nguyên tố cốt yếu** và hoàn tất cover tối tiểu.
-- **Xử lý** don't-care: dùng ở phần 1, không bắt buộc phủ ở phần 2.
-- **So sánh** Quine–McCluskey với K-map về phạm vi và cách trình bày.
+- **Giải thích** lý do sử dụng Quine–McCluskey khi số biến vượt quá phạm vi thuận tiện của K-map.
+- **Trình bày** hai giai đoạn của phương pháp: tìm **nguyên nhân nguyên tố** và chọn phủ trên **bảng phủ**.
+- **Thực hiện** **phép dán** (gộp minterm và đánh dấu `-` tại bit khác nhau) cho hàm 3–4 biến.
+- **Xác định** **nguyên nhân nguyên tố cốt yếu** và hoàn thiện phủ tối tiểu.
+- **Xử lý** các trạng thái don't-care: sử dụng ở phần 1 nhưng không bắt buộc phủ ở phần 2.
+- **So sánh** Quine–McCluskey với K-map về phạm vi áp dụng và cách biểu diễn.
 
 **Từ khóa**: Quine–McCluskey, dạng nối rời chính tắc, nguyên nhân hạng $$n$$ (minterm / từ tối tiểu), phép dán, nguyên nhân nguyên tố, nguyên tố cốt yếu, dạng tổng chuẩn tắc thu gọn / tối thiểu, SOP (tổng các tích), bảng phủ, don't-care.
 
 </div>
 
-## Vì sao cần thuật toán bảng?
+## Vì sao cần thuật toán dạng bảng?
 
-K-map rất trực quan với **hai đến bốn** biến: mỗi ô là một nguyên nhân hạng $$n$$ (minterm), ô kề khác đúng một bit, khoanh nhóm là áp dụng $$xy + x\bar y = x$$ “bằng mắt”. Khi có **năm biến trở lên**, lưới chật, wrap-around nhiều hướng, và dễ bỏ sót nhóm hợp lệ.
+Bản đồ Karnaugh rất trực quan với hàm từ **2 đến 4 biến**: mỗi ô ứng với một minterm, hai ô kề nhau khác nhau đúng một bit, và việc khoanh nhóm tương đương áp dụng $$xy + x\bar y = x$$ bằng trực giác hình học. Tuy nhiên, từ **5 biến trở lên**, lưới trở nên cồng kềnh, có nhiều chiều vòng mép và rất dễ bỏ sót nhóm hợp lệ.
 
-Quine–McCluskey không phụ thuộc hình vẽ:
+Quine–McCluskey khắc phục hạn chế đó bằng cách không phụ thuộc vào hình vẽ:
 
-- mỗi nguyên nhân hạng $$n$$ được viết thành **chuỗi bit** cố định (ví dụ bốn biến $$wxyz$$);
-- hai chuỗi **dán được** khi chỉ khác đúng **một** vị trí — đúng cùng đẳng thức $$xy + x\bar y = x$$;
-- nhóm lớn trên K-map tương ứng chuỗi dán nhiều lần trên bảng.
+- mỗi nguyên nhân hạng $$n$$ được viết thành một **chuỗi bit** cố định (ví dụ 4 bit cho hàm $$wxyz$$);
+- hai chuỗi **dán được** với nhau khi chúng chỉ khác nhau đúng **một** vị trí bit — tương ứng đẳng thức $$xy + x\bar y = x$$;
+- các nhóm lớn trên K-map tương ứng với những chuỗi được dán qua nhiều vòng trên bảng.
 
-Trên lớp, ta luyện tay với ví dụ **ba–bốn** biến để nắm quy trình. Với nhiều biến hơn, **cùng các bước** đó được máy thực hiện — ý tưởng không đổi, chỉ khác quy mô.
+Khi thực hành trên lớp, ta thường làm tay trên ví dụ **3–4 biến** để nắm chắc quy trình; với số biến lớn hơn, máy tính sẽ thực hiện chính xác cùng quy trình này.
 
 ![Bảng Quine–McCluskey](/discrete-mathematics-for-computer-science-iuh/img/course/quine_mccluskey.svg)
 
-<p class="textbook-figure-caption" data-figure="13.21">Phương pháp bảng: nhóm theo số bit 1; mũi tên thể hiện phép dán tạo nguyên nhân rộng hơn (ít litera hơn).</p>
+<p class="textbook-figure-caption" data-figure="13.21">Phương pháp bảng: phân nhóm theo số bit 1; mũi tên minh họa phép dán tạo ra các hạng tử rộng hơn (ít litera hơn).</p>
 
 ![K-map — đối chiếu](/discrete-mathematics-for-computer-science-iuh/img/course/karnaugh_map.svg)
 
-<p class="textbook-figure-caption" data-figure="13.22">Cùng mục tiêu tối thiểu SOP (tổng các tích): K-map trên lưới; Quine–McCluskey trên bảng.</p>
+<p class="textbook-figure-caption" data-figure="13.22">Cùng mục tiêu tìm SOP tối tiểu: K-map thao tác trên lưới, còn Quine–McCluskey thao tác trên bảng.</p>
 
 ## Phần 1 — Tìm dạng tổng chuẩn tắc thu gọn
 
-### (sinh nguyên nhân nguyên tố)
+### Sinh các nguyên nhân nguyên tố
 
-Mục tiêu phần 1: từ **dạng nối rời chính tắc** (tổng các nguyên nhân hạng $$n$$), tìm **mọi** hạng không còn dán rộng thêm được. Trong giáo trình Việt, hạng đó gọi là **nguyên nhân nguyên tố** của $$F$$ (tài liệu tiếng Anh: *prime implicant*). Đó là các tích không còn bỏ thêm biến nào mà vẫn chỉ phủ các chỗ hàm bằng **1** (và don't-care đã cho phép) — chính là **ứng viên** cho khai triển cực tiểu.
+Mục tiêu của phần 1 là từ **dạng nối rời chính tắc** (tổng các nguyên nhân hạng $$n$$), tìm **tất cả** các tích không thể mở rộng thêm được nữa. Trong tài liệu tiếng Việt, mỗi tích như vậy gọi là một **nguyên nhân nguyên tố** của $$F$$ (tiếng Anh: *prime implicant*). Đó là các đơn thức tích không thể bỏ thêm biến nào mà vẫn chỉ phủ các điểm làm $$F = 1$$ (và các ô don't-care cho phép).
 
-**Phương pháp Quine–McCluskey tìm dạng tổng chuẩn tắc thu gọn:**
+**Quy trình tìm dạng tổng chuẩn tắc thu gọn:**
 
-**Bước 1.** Viết vào **cột thứ nhất** các biểu diễn của các **nguyên nhân hạng $$n$$** của hàm Boole $$F$$ (chuỗi bit của minterm / từ tối tiểu). Các biểu diễn được **chia nhóm**: trong mỗi nhóm, số ký hiệu **1** bằng nhau; các nhóm xếp theo **số bit 1 tăng dần**.
+**Bước 1.** Liệt kê vào **cột thứ nhất** chuỗi bit của tất cả các **nguyên nhân hạng $$n$$** của hàm $$F$$ (các minterm), chia thành từng nhóm có cùng số bit **1** và sắp xếp các nhóm theo **số bit 1 tăng dần**.
 
-**Bước 2.** Lần lượt thực hiện tất cả các **phép dán** giữa biểu diễn ở nhóm có $$k$$ bit 1 với biểu diễn ở nhóm có $$k+1$$ bit 1 ($$k = 0, 1, 2, \ldots$$):
+**Bước 2.** Lần lượt thực hiện mọi **phép dán** có thể giữa một chuỗi ở nhóm có $$k$$ bit 1 với một chuỗi ở nhóm có $$k+1$$ bit 1 ($$k = 0, 1, 2, \ldots$$):
 
-- Hai biểu diễn **dán được** khi khác đúng **một** bit; bit khác nhau thay bằng `-`.
-- Biểu diễn nào tham gia **ít nhất một** phép dán được ghi nhận dấu `*` bên cạnh.
-- Kết quả dán được ghi vào **cột tiếp theo**.
+- Hai chuỗi **dán được** khi chỉ khác nhau đúng **một** vị trí bit; vị trí khác nhau được thay bằng dấu `-`.
+- Mọi chuỗi tham gia vào **ít nhất một** phép dán đều được đánh dấu `*` bên cạnh.
+- Các chuỗi mới tạo thành được ghi vào **cột kế tiếp** (loại bỏ bản sao trùng lặp).
 
-**Bước 3.** Lặp lại Bước 2 cho cột kế tiếp cho đến khi **không** thu thêm được cột mới. Khi đó, **tất cả các biểu diễn không có dấu `*`** chính là **mọi nguyên nhân nguyên tố** của $$F$$.
+**Bước 3.** Lặp lại Bước 2 trên cột mới tạo cho đến khi **không** thể thực hiện thêm phép dán nào nữa. Khi đó, **toàn bộ các biểu diễn không có dấu `*`** ở tất cả các cột chính là tập hợp đầy đủ các **nguyên nhân nguyên tố** của $$F$$.
 
-**Cơ sở toán.** Mỗi phép dán là một lần áp dụng
+**Cơ sở toán học.** Mỗi phép dán tương ứng với một lần áp dụng hằng đẳng thức:
 
 $$
 xy + x\bar y = x.
 $$
 
-Chuỗi dán càng dài, tích càng ngắn (ít litera hơn), giống nhóm $$2^k$$ ô trên K-map.
+Số dấu `-` càng nhiều thì tích tương ứng càng ít litera, tương đương với nhóm kích thước $$2^k$$ trên K-map.
 
 ![Bảng chân trị / minterm](/discrete-mathematics-for-computer-science-iuh/img/course/truth_table_grid.svg)
 
-<p class="textbook-figure-caption" data-figure="13.23">Điểm xuất phát là tập nguyên nhân hạng $$n$$ — các hàng $$F = 1$$ — tương ứng dạng nối rời chính tắc (SOP chuẩn).</p>
+<p class="textbook-figure-caption" data-figure="13.23">Điểm xuất phát của thuật toán là tập nguyên nhân hạng $$n$$ (các hàng có $$F = 1$$) trong dạng nối rời chính tắc.</p>
 
 ## Phần 2 — Tìm dạng tổng chuẩn tắc tối thiểu
 
-### (bảng phủ và nguyên tố cốt yếu)
+### Bảng phủ và nguyên tố cốt yếu
 
-Sau phần 1 ta đã có danh sách **nguyên nhân nguyên tố**, nhưng thường **thừa**: không cần dùng hết vẫn mô tả đúng $$F$$. Phần 2 chọn một **phủ tối tiểu** (ít hạng; nếu cùng số hạng thì ưu tiên ít litera).
+Sau phần 1, ta thu được toàn bộ các **nguyên nhân nguyên tố**, nhưng thường không cần dùng hết tất cả để biểu diễn $$F$$. Phần 2 chọn ra một **phủ tối tiểu** (ưu tiên ít hạng tử nhất; nếu bằng nhau thì ưu tiên ít litera nhất).
 
-Lập **bảng phủ** như sau:
+Cách lập **bảng phủ**:
 
-- mỗi **hàng** là một nguyên nhân nguyên tố;
-- mỗi **cột** là một nguyên nhân hạng $$n$$ **bắt buộc** (chỗ $$F = 1$$; **không** đưa don't-care vào cột);
-- đánh dấu `+` (hoặc ×) nếu hàng đó phủ cột tương ứng.
+- mỗi **hàng** ứng với một nguyên nhân nguyên tố;
+- mỗi **cột** ứng với một minterm **bắt buộc** (vị trí $$F = 1$$; **không** đưa các vị trí don't-care vào cột);
+- đánh dấu `+` (hoặc ×) tại giao điểm nếu nguyên nhân nguyên tố ở hàng đó phủ minterm ở cột tương ứng.
 
-Một nguyên nhân nguyên tố gọi là **cốt yếu** khi tồn tại một cột chỉ có **đúng một** dấu: cột đó **bắt buộc** chọn đúng hàng đó — không có lựa chọn khác. Tên đầy đủ: **nguyên nhân nguyên tố cốt yếu** (tiếng Anh: *essential prime implicant*).
+Một nguyên nhân nguyên tố gọi là **cốt yếu** (*essential prime implicant*) nếu tồn tại ít nhất một cột chỉ chứa **đúng một** dấu `+` nằm trên hàng của nó — khi đó ta bắt buộc phải chọn hàng này.
 
-**Phương pháp Quine–McCluskey tìm dạng tổng chuẩn tắc tối thiểu:**
+**Quy trình tìm dạng tổng chuẩn tắc tối thiểu:**
 
-**Bước 1.** Phát hiện tất cả các **nguyên nhân nguyên tố cốt yếu**.
+**Bước 1.** Xác định toàn bộ các **nguyên nhân nguyên tố cốt yếu**.
 
-**Bước 2.** Xóa tất cả các **cột** đã được phủ bởi các nguyên tố cốt yếu.
+**Bước 2.** Xóa tất cả các **cột** đã được phủ bởi những nguyên nhân nguyên tố cốt yếu này.
 
-**Bước 3.** Trong bảng còn lại, xóa nốt những **dòng** không còn dấu `+`. Nếu có **hai cột giống nhau** thì xóa bớt một cột.
+**Bước 3.** Trên bảng thu gọn, xóa các **dòng** không còn dấu `+`. Nếu có hai cột giống hệt nhau thì có thể bỏ bớt một cột.
 
-**Bước 4.** Trên phần còn lại, tìm một hệ $$S$$ các nguyên nhân nguyên tố với **số hạng / số biến ít nhất** vẫn phủ các cột còn lại.
+**Bước 4.** Từ các hàng còn lại, chọn một tập $$S$$ gồm ít nguyên nhân nguyên tố nhất (và ít litera nhất) sao cho phủ hết các cột còn lại.
 
-Kết quả: $$F$$ viết thành tổng các nguyên nhân trong (các nguyên tố cốt yếu) ∪ $$S$$ — đó là **dạng tổng chuẩn tắc tối thiểu** (SOP tối tiểu).
-
-Trên K-map, các bước tương ứng là chọn tế bào cốt yếu rồi hoàn tất phủ (Mục 13.4).
+Kết quả thu được là tổng của các nguyên tố cốt yếu hợp với $$S$$ — đó là **dạng tổng chuẩn tắc tối thiểu** (SOP tối tiểu). Quy trình này hoàn toàn tương ứng với việc chọn tế bào cốt yếu rồi hoàn tất phủ trên K-map (Mục 13.4).
 
 ## Don't-care trong Quine–McCluskey
 
-Đôi khi đặc tả **không quan tâm** đầu ra tại vài tổ hợp (mã không dùng, trạng thái không tới). Các vị trí đó gọi là **don't-care**, ký hiệu $$d$$ hoặc $$X$$.
+Khi đặc tả bài toán **không quan tâm** giá trị đầu ra tại một số tổ hợp đầu vào (tổ hợp không bao giờ xuất hiện), ta ký hiệu chúng là **don't-care** ($$d$$ hoặc $$X$$).
 
-Cách dùng trong QM rất rõ nếu tách theo phần:
+Cách xử lý don't-care trong Quine–McCluskey tách bạch rõ theo hai giai đoạn:
 
-- **Phần 1 (thu gọn):** đưa don't-care vào danh sách **như thể** chúng là nguyên nhân hạng $$n$$. Chúng giúp tạo nguyên nhân nguyên tố **lớn hơn** (ít litera hơn).
-- **Phần 2 (tối thiểu):** **không** mở cột cho don't-care — ta **không bắt buộc** phủ chúng.
-
-Như vậy $$X$$ chỉ dùng để sinh hạng gọn hơn; không bắt buộc xuất hiện trong cover tối thiểu.
+- **Phần 1 (tìm nguyên nhân nguyên tố):** đưa các vị trí don't-care vào bảng ngay từ đầu như các minterm thông thường để tăng cơ hội dán thành các nguyên nhân nguyên tố lớn hơn (ít litera hơn).
+- **Phần 2 (bảng phủ):** **không** lập cột cho các vị trí don't-care vì ta không bắt buộc phải phủ chúng.
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ phác (3 biến).** Cho $$F(a,b,c)$$ bằng **1** tại các hàng **1, 2, 5**; don't-care tại **0, 7**.
+**Ví dụ (3 biến có don't-care).** Cho $$F(a,b,c)$$ bằng **1** tại các hàng **1, 2, 5** và don't-care tại **0, 7**.
 
-Ở phần 1, ta dán cả $$0$$ và $$7$$ cùng các minterm thật. Ở phần 2, bảng phủ **chỉ** có cột $$1$$, $$2$$, $$5$$. Một cover tối ưu thường gặp là
+Ở phần 1, ta đưa cả $$0$$ và $$7$$ vào dán cùng với $$1, 2, 5$$. Sang phần 2, bảng phủ **chỉ** gồm ba cột $$1$$, $$2$$, $$5$$. Một phủ tối tiểu thu được là:
 
 $$
-F = \bar a\,\bar c + \bar b\,c
+F = \bar a\,\bar c + \bar b\,c.
 $$
 
-Đối chiếu bằng bảng chân trị tám dòng.
+Ta có thể kiểm chứng lại trên bảng chân trị 8 dòng (bằng 1 tại 1, 2, 5 và bằng 0 tại 3, 4, 6).
 
 </div>
 
 ## Ví dụ bốn biến
 
-Xét $$F(a,b,c,d)$$ bằng **1** tại các hàng **0, 2, 3, 5, 7, 8, 10, 11, 13, 15**.
+Xét hàm $$F(a,b,c,d)$$ nhận giá trị **1** tại các hàng **0, 2, 3, 5, 7, 8, 10, 11, 13, 15**.
 
-Sau khi nhóm theo số bit 1, dán cặp ở cột 1 rồi dán tiếp ở cột 2, ta được **bốn** nguyên nhân nguyên tố (mỗi cái phủ 4 minterm và không dán thêm được nữa):
+Sau khi phân nhóm theo số bit 1 và thực hiện hai vòng phép dán, ta thu được **bốn** nguyên nhân nguyên tố (mỗi nguyên nhân phủ 4 minterm và không thể dán tiếp):
 
 - $$N_1=\bar b\,\bar d$$ phủ $$0,2,8,10$$;
 - $$N_2=\bar b\,c$$ phủ $$2,3,10,11$$;
 - $$N_3=cd$$ phủ $$3,7,11,15$$;
 - $$N_4=bd$$ phủ $$5,7,13,15$$.
 
-Bảng phủ (cột là mười minterm bắt buộc; dấu `+` nghĩa là “hàng này phủ cột đó”):
+Bảng phủ cho 10 minterm bắt buộc:
 
 | Nguyên nhân nguyên tố | 0 | 2 | 3 | 5 | 7 | 8 | 10 | 11 | 13 | 15 |
 |:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -171,19 +167,19 @@ Bảng phủ (cột là mười minterm bắt buộc; dấu `+` nghĩa là “h�
 | $$N_3=cd$$ |  |  | + |  | + |  |  | + |  | + |
 | $$N_4=bd$$ |  |  |  | + | + |  |  |  | + | + |
 
-**Nguyên tố cốt yếu.** Cột $$0$$ và $$8$$ chỉ có $$N_1$$; cột $$5$$ và $$13$$ chỉ có $$N_4$$. Vậy $$N_1=\bar b\,\bar d$$ và $$N_4=bd$$ đều **cốt yếu**. Hai nguyên tố này đã phủ $$0,2,8,10$$ và $$5,7,13,15$$; **còn lại** các cột $$3$$ và $$11$$.
+**Xác định nguyên tố cốt yếu.** Cột $$0$$ và $$8$$ chỉ có dấu `+` ở $$N_1$$; cột $$5$$ và $$13$$ chỉ có dấu `+` ở $$N_4$$. Do đó $$N_1=\bar b\,\bar d$$ và $$N_4=bd$$ là hai nguyên tố **cốt yếu**. Hai nguyên tố này phủ các cột $$0,2,8,10$$ và $$5,7,13,15$$, chỉ **còn lại** hai cột $$3$$ và $$11$$.
 
-**Vì sao không thể bỏ $$bd$$.** Hai minterm $$5=0101$$ và $$13=1101$$ có $$c=0$$ và $$b=1$$: $$\bar b\,\bar d$$ cần $$b=0$$, còn $$cd$$ cần $$c=1$$, nên cả hai đều **không** phủ được $$5$$ và $$13$$. Chỉ $$bd$$ phủ chúng — vì vậy $$cd+\bar b\,\bar d$$ **chưa** là một cover của $$F$$.
+**Vì sao không thể bỏ $$bd$$.** Hai minterm $$5=0101$$ và $$13=1101$$ đều có $$b=1$$ và $$c=0$$, trong khi $$\bar b\,\bar d$$ đòi hỏi $$b=0$$ còn $$cd$$ đòi hỏi $$c=1$$. Chỉ có $$bd$$ phủ được $$5$$ và $$13$$, nên $$cd+\bar b\,\bar d$$ không phải là một phủ đầy đủ của $$F$$.
 
-**Phủ nốt $$3$$ và $$11$$.** Cả $$N_3=cd$$ lẫn $$N_2=\bar b\,c$$ đều phủ $$3$$ và $$11$$ và cùng hai literal, nên chọn **một** trong hai là đủ. Một kết quả tối tiểu (3 hạng, 6 literal):
+**Phủ nốt cột $$3$$ và $$11$$.** Cả $$N_3=cd$$ và $$N_2=\bar b\,c$$ đều phủ được cả $$3$$ lẫn $$11$$ và cùng có 2 litera, nên chọn một trong hai đều cho phủ tối tiểu (3 hạng, 6 litera):
 
 $$
-F = cd + \bar b\,\bar d + bd.
+F = cd + \bar b\,\bar d + bd
 $$
 
-Phương án tương đương (cùng chi phí): $$F = \bar b\,c + \bar b\,\bar d + bd$$. Không có cover chỉ với 2 hạng, vì hai nguyên tố cốt yếu $$\bar b\,\bar d$$ và $$bd$$ chưa phủ $$3$$ và $$11$$.
+hoặc phương án tương đương $$F = \bar b\,c + \bar b\,\bar d + bd$$. Không thể có phủ chỉ gồm 2 hạng vì hai nguyên tố cốt yếu chưa phủ được $$3$$ và $$11$$.
 
-Hai thao tác then chốt của phương pháp: đánh dấu `*` sau mỗi phép dán (phần 1), và tìm cột chỉ còn một dấu `+` để xác định nguyên tố cốt yếu (phần 2).
+Hai thao tác cần chú ý nhất khi làm bài là đánh dấu `*` đầy đủ sau mỗi phép dán (phần 1) và rà soát các cột chỉ có duy nhất một dấu `+` để không bỏ sót nguyên tố cốt yếu (phần 2).
 
 ### Video ngắn: Quine–McCluskey
 
@@ -191,15 +187,15 @@ Hai thao tác then chốt của phương pháp: đánh dấu `*` sau mỗi phép
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/quine-mccluskey.mp4"></video>
 </div>
 
-Video dài khoảng 3 phút 13 giây, dùng đúng ví dụ bốn biến ở mục trên: nhóm minterm theo số bit 1, dán hai vòng có đánh dấu, đọc bốn nguyên nhân nguyên tố, lập bảng phủ, tìm nguyên tố cốt yếu và ra dạng tối thiểu $$F = \bar b\,\bar d + bd + cd$$. Cuối video có phần don't-care.
+Video dài khoảng 3 phút 13 giây, minh họa trực tiếp ví dụ bốn biến ở trên: phân nhóm minterm theo số bit 1, dán qua hai vòng kèm đánh dấu, xác định bốn nguyên nhân nguyên tố, lập bảng phủ, chọn nguyên tố cốt yếu để thu được $$F = \bar b\,\bar d + bd + cd$$, và kết thúc với ví dụ có don't-care.
 
-## 5b. Ví dụ đầy đủ — hàm $$F_1$$
+## Ví dụ đầy đủ — hàm $$F_1$$
 
-Phần dưới trình bày lời giải chi tiết với đủ bảng. Dạng đề điển hình: cho SOP (tổng các tích) dài, yêu cầu rút gọn bằng Quine–McCluskey.
+Phần dưới đây trình bày trọn vẹn lời giải dạng bảng cho một bài toán tiêu biểu: rút gọn một biểu thức SOP 4 biến bằng Quine–McCluskey.
 
 <div class="textbook-example" markdown="1">
 
-**Đề.** Cho
+**Đề bài.** Cho hàm Boole:
 
 $$
 \begin{aligned}
@@ -214,15 +210,15 @@ F_1
 \end{aligned}
 $$
 
-Hãy tối thiểu hóa $$F_1$$ bằng Quine–McCluskey (cả hai phần). Quy ước thứ tự biến $$wxyz$$ (bit cao đến thấp).
+Hãy tối thiểu hóa $$F_1$$ bằng phương pháp Quine–McCluskey theo thứ tự biến $$wxyz$$ (từ bit cao đến bit thấp).
 
-### Bước 0 — Đổi mỗi hạng thành nguyên nhân hạng $$n$$ (minterm)
+### Bước 0 — Chuyển từng hạng thành nguyên nhân hạng $$n$$ (minterm)
 
-Trước khi lập bảng, cần biết **hàm bằng 1 ở những hàng nào**. Với mỗi tích đầy đủ bốn litera:
+Với mỗi tích đầy đủ 4 biến:
 
-- biến **không** gạch trên → bit **1**;
-- biến **có** gạch trên → bit **0**;
-- đọc bốn bit như một số thập phân → chỉ số minterm.
+- biến ở dạng nguyên (không gạch trên) ứng với bit **1**;
+- biến ở dạng bù (có gạch trên) ứng với bit **0**;
+- đổi chuỗi 4 bit sang hệ thập phân để lấy chỉ số minterm.
 
 | Hạng trong $$F_1$$ | Mã $$wxyz$$ | Nguyên nhân hạng $$n$$ |
 |:---|:---:|:---:|
@@ -233,11 +229,9 @@ Trước khi lập bảng, cần biết **hàm bằng 1 ở những hàng nào**
 | $$w\overline{x}yz$$ | $$1011$$ | $$m_{11}$$ |
 | $$wxyz$$ | $$1111$$ | $$m_{15}$$ |
 
-Vậy $$F_1$$ bằng **1** tại các hàng **5, 6, 7, 9, 11, 15**.
+Như vậy, $$F_1$$ bằng **1** tại 6 hàng **5, 6, 7, 9, 11, 15** (không có don't-care).
 
-Đề có đúng **sáu** hạng và **không** don't-care — sáu minterm trên chính là toàn bộ chỗ $$F_1 = 1$$ (dạng nối rời chính tắc của $$F_1$$).
-
-### Phần 1 — Nhóm theo số bit 1 (Bước 1)
+### Phần 1 — Phân nhóm theo số bit 1 (Bước 1)
 
 | Nhóm (số bit 1) | Minterm | Mã $$wxyz$$ |
 |:---:|:---:|:---:|
@@ -250,7 +244,7 @@ Vậy $$F_1$$ bằng **1** tại các hàng **5, 6, 7, 9, 11, 15**.
 
 ### Phần 1 — Phép dán lần 1 (Bước 2)
 
-Chỉ so **nhóm 2 với nhóm 3**, rồi **nhóm 3 với nhóm 4**. Hai mã dán được khi khác đúng một bit: bit khác nhau thay bằng `-`, và ta gắn dấu `*` cho mọi biểu diễn đã tham gia dán.
+Ta so sánh từng cặp giữa **nhóm 2 và nhóm 3**, rồi giữa **nhóm 3 và nhóm 4**. Hai mã khác nhau đúng một bit được dán lại bằng cách thay bit khác nhau bằng `-`, đồng thời đánh dấu `*` cho mọi mã đã tham gia dán.
 
 | Cặp dán | Mã mới | Phủ các minterm | Tích tương ứng |
 |:---|:---:|:---:|:---|
@@ -260,21 +254,21 @@ Chỉ so **nhóm 2 với nhóm 3**, rồi **nhóm 3 với nhóm 4**. Hai mã dá
 | $$7$$ với $$15$$ | $${-}111$$ | $$7,15$$ | $$xyz$$ ($$w$$ tự do) |
 | $$11$$ với $$15$$ | $$1{-}11$$ | $$11,15$$ | $$wyz$$ ($$x$$ tự do) |
 
-Vì **mọi** minterm $$5,6,7,9,11,15$$ đều đã được dùng trong ít nhất một cặp, không còn minterm đơn nào (không `*`) là nguyên nhân nguyên tố.
+Vì cả 6 minterm $$5,6,7,9,11,15$$ đều đã được dán ít nhất một lần, không còn minterm đơn lẻ nào là nguyên nhân nguyên tố.
 
-### Phần 1 — Có dán lần 2 không? (Bước 3)
+### Phần 1 — Kiểm tra phép dán lần 2 (Bước 3)
 
-Hai mã đã có `-` chỉ dán tiếp được khi:
+Hai mã đã chứa dấu `-` chỉ dán tiếp được khi:
 
-1. các dấu `-` nằm **cùng vị trí**, và  
-2. phần bit còn lại khác **đúng một** chỗ.
+1. các dấu `-` nằm ở **cùng vị trí**, và  
+2. các bit còn lại khác nhau đúng **một** vị trí.
 
-Với các mã vừa thu được:
+Kiểm tra các mã vừa tạo:
 
-- $$01{-}1$$ và $$10{-}1$$ có `-` cùng cột, nhưng phần còn lại $$01$$ so với $$10$$ khác **hai** bit → **không** dán;
-- các cặp khác thường lệch vị trí `-` (ví dụ $$011{-}$$ với $${-}111$$) → **không** dán.
+- $$01{-}1$$ và $$10{-}1$$ có dấu `-` ở cùng cột, nhưng phần bit còn lại $$01$$ và $$10$$ khác nhau tới **hai** bit nên không dán được;
+- các cặp còn lại đều có vị trí dấu `-` khác nhau nên cũng không dán được.
 
-Do đó **không** sinh được nguyên nhân phủ 4 minterm. Cả **năm** mã 2-ô ở bảng trên đều không bị đánh dấu `*` thêm, nên cả năm là **nguyên nhân nguyên tố**:
+Do đó không sinh thêm được nguyên nhân nào phủ 4 minterm. Cả **năm** mã thu được ở vòng 1 đều không có dấu `*`, nên chúng là toàn bộ các **nguyên nhân nguyên tố**:
 
 | Ký hiệu | Mã | Tích (nguyên nhân nguyên tố) | Phủ |
 |:---:|:---:|:---|:---|
@@ -284,11 +278,7 @@ Do đó **không** sinh được nguyên nhân phủ 4 minterm. Cả **năm** m�
 | $$N_4$$ | $${-}111$$ | $$xyz$$ | $$7,15$$ |
 | $$N_5$$ | $$1{-}11$$ | $$wyz$$ | $$11,15$$ |
 
-*(Ký hiệu $$N_i$$ = nguyên nhân nguyên tố thứ $$i$$ — tránh chữ cái tiếng Anh.)*
-
 ### Phần 2 — Bảng phủ
-
-Hàng là nguyên nhân nguyên tố; cột là minterm bắt buộc; dấu `+` nghĩa là “hàng này phủ cột đó”.
 
 | Nguyên nhân nguyên tố | 5 | 6 | 7 | 9 | 11 | 15 |
 |:---|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -298,30 +288,22 @@ Hàng là nguyên nhân nguyên tố; cột là minterm bắt buộc; dấu `+` 
 | $$N_4=xyz$$ |  |  | + |  |  | + |
 | $$N_5=wyz$$ |  |  |  |  | + | + |
 
-### Phần 2 — Tìm nguyên tố cốt yếu (Bước 1)
+### Phần 2 — Xác định nguyên tố cốt yếu (Bước 1)
 
-Xem từng cột: nếu chỉ có **một** dấu `+` thì nguyên nhân đó **bắt buộc** (cốt yếu).
-
-| Cột minterm | Ai phủ? | Kết luận |
+| Cột minterm | Các nguyên nhân phủ | Kết luận |
 |:---:|:---|:---|
 | 5 | chỉ $$N_1$$ | $$N_1$$ **cốt yếu** |
 | 6 | chỉ $$N_2$$ | $$N_2$$ **cốt yếu** |
 | 9 | chỉ $$N_3$$ | $$N_3$$ **cốt yếu** |
-| 7 | $$N_1$$, $$N_2$$, $$N_4$$ | chưa buộc thêm |
-| 11 | $$N_3$$, $$N_5$$ | chưa buộc thêm |
-| 15 | $$N_4$$, $$N_5$$ | chưa buộc thêm |
+| 7 | $$N_1$$, $$N_2$$, $$N_4$$ | chưa bắt buộc thêm |
+| 11 | $$N_3$$, $$N_5$$ | chưa bắt buộc thêm |
+| 15 | $$N_4$$, $$N_5$$ | chưa bắt buộc thêm |
 
-Chọn ba nguyên tố cốt yếu $$N_1$$, $$N_2$$, $$N_3$$ (Bước 2: xóa các cột đã phủ):
-
-- $$N_1$$ phủ $$5$$ và $$7$$;
-- $$N_2$$ phủ $$6$$ và $$7$$;
-- $$N_3$$ phủ $$9$$ và $$11$$.
-
-Các minterm đã xong: $$5,6,7,9,11$$. **Còn lại** duy nhất cột $$15$$.
+Khi chọn ba nguyên tố cốt yếu $$N_1, N_2, N_3$$ và xóa các cột đã được phủ (Bước 2), ta đã phủ xong $$5, 6, 7, 9, 11$$, chỉ **còn lại** duy nhất cột $$15$$.
 
 ### Phần 2 — Phủ nốt $$m_{15}$$ (Bước 3–4)
 
-Cột $$15$$ có hai lựa chọn ngang nhau: $$N_4=xyz$$ hoặc $$N_5=wyz$$. Chọn **một** trong hai đều cho cover tối tiểu (cùng 4 hạng tích):
+Cột $$15$$ có thể được phủ bởi $$N_4=xyz$$ hoặc $$N_5=wyz$$ với cùng chi phí. Chọn một trong hai đều cho SOP tối tiểu gồm 4 tích:
 
 $$
 \begin{aligned}
@@ -332,7 +314,7 @@ F_1
 \end{aligned}
 $$
 
-Nếu muốn viết gọn hơn (cùng hàm), có thể gom nhân tử:
+Nếu muốn viết gọn hơn ở dạng nhiều tầng, có thể đặt nhân tử chung:
 
 $$
 \begin{aligned}
@@ -343,37 +325,37 @@ F_1
 \end{aligned}
 $$
 
-Lưu ý: **không** có cover chỉ với 3 hạng — vì đã buộc chọn ba nguyên tố cốt yếu, mà $$m_{15}$$ vẫn cần thêm đúng một nguyên nhân nguyên tố nữa.
+Không tồn tại phủ nào ít hơn 4 hạng vì cả ba nguyên tố cốt yếu đều bắt buộc mà vẫn còn thiếu $$m_{15}$$.
 
 ### Kiểm chứng nhanh
 
-- Biểu thức gốc có **6** hạng; cover tối tiểu còn **4** tích (rút rõ).
-- Tại $$m_{15}$$ ($$wxyz=1111$$): cả hai dạng đều bằng **1** nhờ $$xyz$$ hoặc $$wyz$$.
-- Tại $$m_5$$ ($$0101$$): chỉ hạng $$\overline{w}xz$$ bằng **1**.
-- Tại $$m_0$$ ($$0000$$): mọi hạng bằng **0** — đúng vì $$0$$ không thuộc tập minterm.
+- Biểu thức ban đầu có **6** hạng; dạng SOP tối tiểu chỉ còn **4** hạng.
+- Tại $$m_{15}$$ ($$1111$$): cả hai đáp án đều bằng **1** nhờ $$xyz$$ hoặc $$wyz$$.
+- Tại $$m_5$$ ($$0101$$): chỉ có hạng $$\overline{w}xz$$ bằng **1**.
+- Tại $$m_0$$ ($$0000$$): mọi hạng đều bằng **0**, khớp với tập minterm ban đầu.
 
-Cùng tập minterm **5, 6, 7, 9, 11, 15** trên K-map bốn biến cho các nhóm tương ứng $$N_1,\ldots,N_5$$; bảng Quine–McCluskey biểu diễn cùng phép gộp dưới dạng dán bit.
+Nếu vẽ tập minterm **5, 6, 7, 9, 11, 15** lên K-map 4 biến, ta sẽ thấy chính xác năm nhóm tương ứng với $$N_1, \ldots, N_5$$.
 
 </div>
 
-## So sánh với K-map
+## So sánh với bản đồ Karnaugh
 
-| Phương pháp | Đặc trưng | Phạm vi điển hình |
+| Phương pháp | Đặc trưng | Phạm vi phù hợp |
 |:---|:---|:---|
-| K-map | Trực quan trên lưới | 2–4 biến |
-| Quine–McCluskey | Bảng, phép dán, bảng phủ | Thuật toán hóa; số biến lớn hơn |
-| Phần mềm hỗ trợ | Tự động hóa cùng khung khái niệm | Quy mô lớn |
+| Bản đồ Karnaugh (K-map) | Trực quan trên lưới hai chiều | 2–4 biến |
+| Quine–McCluskey | Quy trình bảng, phép dán và bảng phủ | Dễ thuật toán hóa; áp dụng cho số biến lớn hơn |
+| Công cụ phần mềm EDA | Tự động hóa trên cùng khung nguyên lý | Mạch quy mô lớn |
 
-Cốt lõi chung của hai phương pháp là **dán các nguyên nhân kề (khác một bit)** rồi **chọn một phủ đủ và gọn**.
+Cốt lõi chung của cả hai phương pháp là **gộp các hạng tử kề nhau (khác nhau đúng 1 bit)** rồi **chọn một phủ đầy đủ và ngắn gọn nhất**.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="quine-mccluskey-simplifier"></div>
 </div>
 <script src="{{ '/public/js/quine-mccluskey-simplifier.js' | relative_url }}"></script>
 
-### Minh hoạ tương tác
+### Minh họa tương tác
 
-Chạy Quine–McCluskey từng bước trên chính các ví dụ của bài (F₁ ở mục 5b, ví dụ don't-care ở mục 4, ví dụ bốn biến ở mục 5): xếp nhóm theo số bit 1, dán cặp có dấu «-», đánh dấu ✓, liệt kê nguyên nhân nguyên tố, rồi bảng phủ với nguyên tố cốt yếu, trội hàng/cột và phương pháp Petrick. Với 2–4 biến có K-map bên cạnh để đối chiếu. Có thể nhập minterm, don't-care hoặc một biểu thức, 2–6 biến. Widget bên trên vẫn giữ nguyên.
+Chạy mô phỏng Quine–McCluskey từng bước trên các ví dụ trong bài (hàm $$F_1$$, ví dụ có don't-care và ví dụ bốn biến): phân nhóm theo số bit 1, dán cặp có dấu `-`, đánh dấu ✓, liệt kê nguyên nhân nguyên tố, lập bảng phủ với nguyên tố cốt yếu, trội hàng/cột và phương pháp Petrick. Với 2–4 biến, công cụ hiển thị kèm K-map để đối chiếu; bạn cũng có thể nhập trực tiếp minterm, don't-care hoặc biểu thức từ 2 đến 6 biến.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="qm-explainer" data-preset="f1"></div>
@@ -384,42 +366,38 @@ Chạy Quine–McCluskey từng bước trên chính các ví dụ của bài (F
 
 ### Bài tập 1
 
-Chạy Quine–McCluskey (làm tay) cho
-
-$$F(a,b,c,d)$$ bằng **1** tại các hàng **0, 2, 3, 5, 7, 8, 10, 11, 13, 15**
-
-và nêu các **nguyên nhân nguyên tố cốt yếu**.
+Thực hiện Quine–McCluskey bằng tay cho hàm $$F(a,b,c,d)$$ nhận giá trị **1** tại các hàng **0, 2, 3, 5, 7, 8, 10, 11, 13, 15** và xác định các **nguyên nhân nguyên tố cốt yếu**.
 
 <details>
 <summary>Đáp án</summary>
 
-Tham khảo mục 5. Có bốn nguyên nhân nguyên tố: $$\bar b\,\bar d$$, $$\bar b\,c$$, $$cd$$, $$bd$$. **Cốt yếu** là $$\bar b\,\bar d$$ (chỉ nó phủ $$0$$ và $$8$$) và $$bd$$ (chỉ nó phủ $$5$$ và $$13$$). Phủ nốt $$3$$ và $$11$$ bằng $$cd$$ (hoặc $$\bar b\,c$$). Một cover tối tiểu: $$F = cd + \bar b\,\bar d + bd$$.
+Đối chiếu phần *Ví dụ bốn biến*: hàm có bốn nguyên nhân nguyên tố là $$\bar b\,\bar d$$, $$\bar b\,c$$, $$cd$$ và $$bd$$. Hai nguyên tố **cốt yếu** là $$\bar b\,\bar d$$ (duy nhất phủ $$0$$ và $$8$$) và $$bd$$ (duy nhất phủ $$5$$ và $$13$$). Để phủ nốt $$3$$ và $$11$$, chọn $$cd$$ (hoặc $$\bar b\,c$$), thu được SOP tối tiểu $$F = cd + \bar b\,\bar d + bd$$.
 
 </details>
 
 ### Bài tập 2
 
-Cho $$F(a,b,c)$$ bằng **1** tại các hàng **1, 2, 5**; don't-care tại **0, 7**. Hoàn tất phần 1 và phần 2 (nhớ: don't-care chỉ giúp dán ở phần 1).
+Cho $$F(a,b,c)$$ bằng **1** tại các hàng **1, 2, 5** và don't-care tại **0, 7**. Hoàn thành cả phần 1 và phần 2 của phương pháp Quine–McCluskey (lưu ý: don't-care chỉ dùng để dán ở phần 1).
 
 <details>
 <summary>Đáp án</summary>
 
-Một cover tối ưu thường gặp: $$F = \bar a\,\bar c + \bar b\,c$$. Đối chiếu bằng bảng tám dòng.
+Một phủ tối tiểu là $$F = \bar a\,\bar c + \bar b\,c$$ (có thể kiểm chứng trên bảng chân trị 8 dòng).
 
 </details>
 
 ### Bài tập 3
 
-Cho $$F(x,y,z)$$ bằng **1** tại các hàng **0, 1, 4, 5, 6**. Làm bằng **K-map** và bằng **Quine–McCluskey**, rồi so sánh SOP (tổng các tích) thu được.
+Cho $$F(x,y,z)$$ bằng **1** tại các hàng **0, 1, 4, 5, 6**. Tối thiểu hóa hàm bằng cả **K-map** và **Quine–McCluskey**, rồi so sánh kết quả SOP thu được.
 
 <details>
 <summary>Đáp án</summary>
 
-Hai phương pháp phải cho **cùng hàm** (có thể khác cách viết hạng nhưng tương đương). Một dạng thường gặp: $$F = \bar x\,\bar z + x\bar y + y\bar z$$ — kiểm lại trên bảng 8 dòng.
+Cả hai phương pháp đều cho cùng một hàm tối tiểu duy nhất: nhóm 4 minterm $$\{0, 1, 4, 5\}$$ cho $$\bar y$$ và nhóm 2 minterm $$\{4, 6\}$$ cho $$x\bar z$$, nên $$F = \bar y + x\bar z$$. (Kiểm chứng trên bảng 8 dòng: hàm bằng 1 đúng tại các hàng 0, 1, 4, 5, 6.)
 
 </details>
 
-### Bài tập 4 — $$F_1$$ (xem lời giải đầy đủ ở mục 5b)
+### Bài tập 4 — Hàm $$F_1$$ (đối chiếu ví dụ đầy đủ ở trên)
 
 Cho
 
@@ -436,10 +414,10 @@ F_1
 \end{aligned}
 $$
 
-1. Liệt kê các hàng $$F_1=1$$ (dạng nối rời chính tắc) với thứ tự bit $$wxyz$$.
-2. Chạy **phần 1**: nhóm, phép dán, liệt kê mọi **nguyên nhân nguyên tố**.
-3. Lập **bảng phủ**, chỉ ra **nguyên tố cốt yếu**, hoàn tất cover.
-4. Viết ít nhất một SOP (tổng các tích) tối tiểu; nêu cover tối tiểu thứ hai nếu có.
+1. Liệt kê các hàng có $$F_1=1$$ (dạng nối rời chính tắc) theo thứ tự bit $$wxyz$$.
+2. Thực hiện **phần 1**: phân nhóm, dán cặp và liệt kê toàn bộ **nguyên nhân nguyên tố**.
+3. Lập **bảng phủ**, xác định các **nguyên tố cốt yếu** và hoàn tất phủ.
+4. Viết ít nhất một dạng SOP tối tiểu và nêu phủ tối tiểu thứ hai (nếu có).
 
 <details>
 <summary>Đáp án chi tiết</summary>
@@ -455,13 +433,13 @@ $$
 | $$w\overline{x}yz$$ | $$1011$$ | 11 |
 | $$wxyz$$ | $$1111$$ | 15 |
 
-Vậy $$F_1$$ bằng **1** tại các hàng **5, 6, 7, 9, 11, 15**.
+Vậy $$F_1 = 1$$ tại các hàng **5, 6, 7, 9, 11, 15**.
 
 **2. Phần 1 — phép dán**
 
-Nhóm theo số bit 1: $$\{5,6,9\}$$ (2 bit), $$\{7,11\}$$ (3 bit), $$\{15\}$$ (4 bit).
+Phân nhóm theo số bit 1: $$\{5,6,9\}$$ (2 bit), $$\{7,11\}$$ (3 bit), $$\{15\}$$ (4 bit).
 
-Các **nguyên nhân nguyên tố** (không dán được thành nhóm 4 ô):
+Năm **nguyên nhân nguyên tố** (không dán tiếp được thành nhóm 4 ô):
 
 | Mã | Tích | Phủ |
 |:---:|:---|:---|
@@ -481,10 +459,10 @@ Các **nguyên nhân nguyên tố** (không dán được thành nhóm 4 ô):
 | $$xyz$$ |  |  | + |  |  | + |
 | $$wyz$$ |  |  |  |  | + | + |
 
-Cốt yếu: cột 5 → $$\overline{w}xz$$; cột 6 → $$\overline{w}xy$$; cột 9 → $$w\overline{x}z$$.  
-Ba nguyên nhân này phủ $$5,6,7,9,11$$. Còn $$15$$ → chọn **$$xyz$$** hoặc **$$wyz$$**.
+Các nguyên tố cốt yếu: cột 5 → $$\overline{w}xz$$; cột 6 → $$\overline{w}xy$$; cột 9 → $$w\overline{x}z$$.  
+Ba nguyên tố này phủ $$5,6,7,9,11$$; còn lại cột $$15$$ nên chọn thêm **$$xyz$$** hoặc **$$wyz$$**.
 
-**4. SOP tối tiểu** (hai cover tương đương)
+**4. SOP tối tiểu** (hai phủ tương đương):
 
 $$
 F_1 = \overline{w}xz + \overline{w}xy + w\overline{x}z + xyz
@@ -496,33 +474,33 @@ $$
 F_1 = \overline{w}xz + \overline{w}xy + w\overline{x}z + wyz.
 $$
 
-Có thể gom:
+Có thể đặt nhân tử chung:
 
 $$
 F_1 = \overline{w}x(y+z) + w\overline{x}z + xyz
 = \overline{w}x(y+z) + wz(\overline{x}+y).
 $$
 
-Xem thêm **mục 5b** để đối chiếu từng bảng và phần kiểm chứng.
+Xem lại mục *Ví dụ đầy đủ — hàm $$F_1$$* ở trên để đối chiếu từng bảng và bước kiểm chứng.
 
 </details>
 
 ## Xem thêm
 
-- Mục 13.4 — bản đồ Karnaugh (tế bào lớn ↔ nguyên nhân nguyên tố).  
+- Mục 13.4 — bản đồ Karnaugh (tế bào lớn tương ứng với nguyên nhân nguyên tố).  
 - Mục 13.2 — dạng nối rời chính tắc (SOP chuẩn).  
-- Mục 13.6 — bối cảnh ứng dụng.
+- Mục 13.6 — ứng dụng trong thiết kế mạch số.
 
 ## Tóm tắt
 
-1. Quine–McCluskey tối thiểu hóa hàm Boolean bằng **bảng**, hữu ích khi số biến lớn hơn phạm vi K-map.  
-2. **Phần 1** (dạng tổng chuẩn tắc thu gọn): phép **dán** các nguyên nhân hạng $$n$$ khác đúng một bit; biểu diễn không có dấu `*` là **nguyên nhân nguyên tố**.  
-3. **Phần 2** (dạng tổng chuẩn tắc tối thiểu): **bảng phủ**, chọn **nguyên tố cốt yếu**, rồi phủ nốt phần còn lại.  
-4. **Don't-care** chỉ tham gia phần 1; phần 2 không bắt buộc phủ chúng.  
-5. K-map và Quine–McCluskey cùng khung “dán rồi phủ”, khác về hình thức trình bày và quy mô áp dụng.
+1. Quine–McCluskey tối thiểu hóa hàm Boole bằng **bảng**, phù hợp khi số biến vượt quá phạm vi trực quan của K-map.  
+2. **Phần 1** (dạng tổng chuẩn tắc thu gọn): dán các chuỗi bit khác nhau đúng một vị trí; các biểu diễn không bị đánh dấu `*` là **nguyên nhân nguyên tố**.  
+3. **Phần 2** (dạng tổng chuẩn tắc tối thiểu): lập **bảng phủ**, chọn các **nguyên tố cốt yếu** rồi phủ tiếp các cột còn lại.  
+4. **Don't-care** chỉ tham gia ở phần 1 để tạo hạng tử gọn hơn, không bắt buộc phủ ở phần 2.  
+5. K-map và Quine–McCluskey dựa trên cùng nguyên lý “dán rồi phủ”, chỉ khác nhau về hình thức biểu diễn và quy mô áp dụng.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=8YbbV42UX7Q">#006 TOÁN RỜI RẠC Tối thiểu hóa biểu thức logic mệnh đề  bằng Thuật toán Quine_McCluskey</a> — Đỗ Văn Đức - ĐH GTVT, tiếng Việt. Xem trước Quine–McCluskey bằng tiếng Việt trên biểu thức logic.
-- <a href="https://www.youtube.com/watch?v=l1jgq0R5EwQ">Quine-McCluskey Minimization Technique (Tabular Method)</a> — Neso Academy, tiếng Anh. Phương pháp bảng: dán minterm rồi chọn phủ.
-- <a href="https://www.youtube.com/watch?v=wmM7Y5qQqu4">Quine-McCluskey Method: Boolean Function Minimization Explained!</a> — CodeLucky, tiếng Anh. Một lượt tối thiểu hóa ngắn để đối chiếu các bước.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=8YbbV42UX7Q">#006 TOÁN RỜI RẠC Tối thiểu hóa biểu thức logic mệnh đề  bằng Thuật toán Quine_McCluskey</a> — Đỗ Văn Đức - ĐH GTVT, tiếng Việt. Hướng dẫn thuật toán Quine–McCluskey bằng tiếng Việt.
+- <a href="https://www.youtube.com/watch?v=l1jgq0R5EwQ">Quine-McCluskey Minimization Technique (Tabular Method)</a> — Neso Academy, tiếng Anh. Trình bày phương pháp bảng: dán minterm và chọn phủ.
+- <a href="https://www.youtube.com/watch?v=wmM7Y5qQqu4">Quine-McCluskey Method: Boolean Function Minimization Explained!</a> — CodeLucky, tiếng Anh. Ví dụ ngắn gọn giúp đối chiếu các bước tối thiểu hóa.

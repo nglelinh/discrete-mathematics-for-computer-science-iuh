@@ -7,7 +7,7 @@ date: 2021-01-01
 order: 1
 required: true
 lang: vi
-excerpt: "Trong chương này chúng ta giới thiệu hàm sinh (generating function) — công cụ gói cả một dãy vô hạn vào một biểu thức duy nhất để thao tác bằng đại số. Thay…"
+excerpt: "Giới thiệu hàm sinh (generating function) — công cụ đóng gói một dãy vô hạn thành một chuỗi lũy thừa hình thức để thao tác bằng đại số trong bài toán đếm và truy hồi."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -18,25 +18,25 @@ excerpt: "Trong chương này chúng ta giới thiệu hàm sinh (generating fun
 
 </div>
 
-Trong chương này chúng ta giới thiệu **hàm sinh** (generating function) — công cụ gói cả một dãy vô hạn $$a_0, a_1, a_2, \ldots$$ vào một biểu thức duy nhất $$G(x) = \sum_{n\ge 0} a_n x^n$$ để thao tác bằng đại số. Thay vì liệt kê từng số hạng, chúng ta làm việc trên chuỗi lũy thừa hình thức; các phép cộng, nhân, dịch chỉ số và đạo hàm trên $$G(x)$$ phản ánh trực tiếp cấu trúc bài toán đếm hoặc truy hồi phía sau. Từ góc nhìn khoa học máy tính, đây là một cách **đổi biểu diễn** — tương tự việc chọn cấu trúc dữ liệu phù hợp trước khi xử lý — giúp lời giải gọn và có hệ thống hơn.
+Trong chương này, chúng ta tìm hiểu về **hàm sinh** (generating function) — công cụ đóng gói một dãy vô hạn $$a_0, a_1, a_2, \ldots$$ vào một biểu thức duy nhất $$G(x) = \sum_{n\ge 0} a_n x^n$$ để có thể thao tác bằng các phép biến đổi đại số. Thay vì liệt kê từng số hạng rời rạc, ta làm việc trên chuỗi lũy thừa hình thức; các phép cộng, nhân, dịch chỉ số và đạo hàm trên $$G(x)$$ phản ánh trực tiếp cấu trúc của bài toán đếm hoặc hệ thức truy hồi phía sau. Dưới góc nhìn khoa học máy tính, đây là một cách **chuyển đổi biểu diễn** — tương tự việc chọn cấu trúc dữ liệu phù hợp trước khi xử lý — giúp lời giải ngắn gọn và có hệ thống hơn.
 
-Mục này làm quen với định nghĩa, ký hiệu hệ số $$[x^n]G(x)$$, và các phép toán cơ bản trên hàm sinh.
+Bài học này trình bày định nghĩa hàm sinh, ký hiệu trích xuất hệ số $$[x^n]G(x)$$ và các phép toán cơ bản trên hàm sinh.
 
 ![Chuỗi lũy thừa hình thức](/discrete-mathematics-for-computer-science-iuh/img/course/Laurent_series.svg)
 
-<p class="textbook-figure-caption" data-figure="11.1">Chuỗi lũy thừa $$G(x)=\sum a_n x^n$$ — mỗi hệ số $$a_n$$ mã hóa một số hạng của dãy.</p>
+<p class="textbook-figure-caption" data-figure="11.1">Chuỗi lũy thừa $$G(x)=\sum a_n x^n$$, trong đó mỗi hệ số $$a_n$$ mã hóa một số hạng của dãy.</p>
 ![Hàm sinh (generating function)](/discrete-mathematics-for-computer-science-iuh/img/course/R._V._Lapshin__Generating_functions_and_squares.png)
 
-<p class="textbook-figure-caption" data-figure="11.2">Hàm sinh gói cả dãy số vào một biểu thức duy nhất để thao tác bằng đại số.</p>
+<p class="textbook-figure-caption" data-figure="11.2">Hàm sinh đóng gói toàn bộ dãy số vào một biểu thức duy nhất để thao tác bằng đại số.</p>
 ![Leonhard Euler](/discrete-mathematics-for-computer-science-iuh/img/course/Leonhard_Euler.jpg)
 
-<p class="textbook-figure-caption" data-figure="11.3">Leonhard Euler (1707–1783) — nhà toán học tiên phong trong lý thuyết hàm sinh và chuỗi lũy thừa.</p>
+<p class="textbook-figure-caption" data-figure="11.3">Leonhard Euler (1707–1783), nhà toán học đặt nền móng cho lý thuyết hàm sinh và chuỗi lũy thừa.</p>
 ![Dãy số học](/discrete-mathematics-for-computer-science-iuh/img/course/Arithmetic_progression.svg)
 
-<p class="textbook-figure-caption" data-figure="11.4">Dãy số học là ví dụ đầu tiên: hệ số tăng tuyến tính tương ứng với cấu trúc đếm đơn giản.</p>
+<p class="textbook-figure-caption" data-figure="11.4">Cấp số cộng là một ví dụ cơ bản với các hệ số tăng tuyến tính, tương ứng với cấu trúc đếm đơn giản.</p>
 ![Ký hiệu tổng Σ](/discrete-mathematics-for-computer-science-iuh/img/course/Sigma_summation_notation.svg)
 
-<p class="textbook-figure-caption" data-figure="11.5">Ký hiệu Σ liên kết hàm sinh với các tổng hữu hạn và vô hạn trong tổ hợp.</p>
+<p class="textbook-figure-caption" data-figure="11.5">Ký hiệu tổng Σ liên kết hàm sinh với các tổng hữu hạn và vô hạn trong toán tổ hợp.</p>
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
@@ -46,8 +46,8 @@ Mục này làm quen với định nghĩa, ký hiệu hệ số $$[x^n]G(x)$$, v
 - **Định nghĩa** hàm sinh thông thường $$G(x)=\sum a_n x^n$$ và ký hiệu hệ số $$[x^n]G(x)$$.
 - **Phân biệt** chuỗi lũy thừa hình thức và chuỗi hội tụ trong ngữ cảnh toán rời rạc.
 - **Áp dụng** các phép cộng, nhân, dịch chỉ số và đạo hàm trên hàm sinh.
-- **Nhận biết** các hàm sinh chuẩn: hình học, nhị thức, hệ số tổ hợp.
-- **Giải thích** vai trò hàm sinh trong đếm, phân tích thuật toán và mô hình trạng thái.
+- **Nhận biết** các hàm sinh cơ bản: cấp số nhân, nhị thức và hệ số tổ hợp.
+- **Giải thích** vai trò của hàm sinh trong bài toán đếm, phân tích thuật toán và mô hình trạng thái.
 
 **Từ khóa**: hàm sinh (generating function), chuỗi lũy thừa hình thức (formal power series), hệ số $$[x^n]$$, phép nhân Cauchy, hàm sinh hình học.
 </div>
@@ -59,7 +59,7 @@ Mục này làm quen với định nghĩa, ký hiệu hệ số $$[x^n]G(x)$$, v
 
 $$G(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + \cdots$$
 
-Ký hiệu $$[x^n]G(x) = a_n$$ nghĩa là $$a_n$$ là hệ số của $$x^n$$ trong khai triển của $$G(x)$$.
+Ký hiệu $$[x^n]G(x) = a_n$$ biểu thị $$a_n$$ là hệ số của $$x^n$$ trong khai triển của $$G(x)$$.
 </div>
 
 <div class="textbook-example" markdown="1">
@@ -67,16 +67,16 @@ Ký hiệu $$[x^n]G(x) = a_n$$ nghĩa là $$a_n$$ là hệ số của $$x^n$$ tr
 
 $$G(x) = 1 + x + x^2 + \cdots = \frac{1}{1-x}$$
 
-(khi xem là chuỗi hình thức hoặc chuỗi hội tụ với $$\vert x\vert  < 1$$).
+(xét như chuỗi lũy thừa hình thức, hoặc như chuỗi hội tụ khi $$\vert x\vert  < 1$$).
 </div>
 
 ## Chuỗi lũy thừa hình thức
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: **Chuỗi lũy thừa hình thức** là đối tượng đại số $$G(x) = \sum_{n \ge 0} a_n x^n$$ trong đó ta chỉ quan tâm đến **hệ số** $$a_n$$, không cần xét miền hội tụ của $$x$$.
+**Định nghĩa**: **Chuỗi lũy thừa hình thức** là đối tượng đại số $$G(x) = \sum_{n \ge 0} a_n x^n$$, trong đó ta chỉ quan tâm đến dãy **hệ số** $$a_n$$ mà không cần xét miền hội tụ của biến $$x$$.
 </div>
 
-Hai chuỗi hình thức bằng nhau khi và chỉ khi mọi hệ số tương ứng trùng nhau. Điều này cho phép ta thao tác đại số (cộng, nhân, đạo hàm) trên dãy mà không lo vấn đề hội tụ.
+Hai chuỗi lũy thừa hình thức bằng nhau khi và chỉ khi mọi hệ số tương ứng của chúng bằng nhau. Cách tiếp cận này cho phép thực hiện các phép toán đại số (cộng, nhân, đạo hàm) trên dãy số mà không phải kiểm tra điều kiện hội tụ.
 
 ## Các phép toán cơ bản
 
@@ -88,20 +88,20 @@ Hai chuỗi hình thức bằng nhau khi và chỉ khi mọi hệ số tương �
 | $$b_n = (n+1) a_{n+1}$$ | $$B(x) = A'(x)$$ |
 
 <div class="textbook-theorem" markdown="1">
-**Định lý** (nhân Cauchy): Nếu $$A(x) = \sum a_n x^n$$ và $$C(x) = \sum c_n x^n$$ thì hệ số của $$A(x) \cdot C(x)$$ tại $$x^n$$ là
+**Định lý** (phép nhân Cauchy): Nếu $$A(x) = \sum a_n x^n$$ và $$C(x) = \sum c_n x^n$$ thì hệ số của $$x^n$$ trong tích $$A(x) \cdot C(x)$$ là
 
 $$[x^n](A \cdot C) = \sum_{k=0}^{n} a_k c_{n-k}$$
 
-Đây là công thức **tích chập** — nền của đếm có cấu trúc (chọn $$k$$ từ cấu hình A, $$n-k$$ từ cấu hình C).
+Đây chính là công thức **tích chập** — cơ sở cho các bài toán đếm có cấu trúc (chọn $$k$$ phần tử từ cấu hình A và $$n-k$$ phần tử từ cấu hình C).
 </div>
 
 <div class="textbook-example" markdown="1">
-**Ví dụ** (dịch chỉ số): Dãy Fibonacci thỏa $$F_n = F_{n-1} + F_{n-2}$$. Nhân truy hồi với $$x^n$$ và cộng cho thấy dịch $$F_{n-1}$$ tương ứng nhân $$G(x)$$ với $$x$$, dịch $$F_{n-2}$$ tương ứng nhân $$x^2$$ — chủ đề mục 11.2.
+**Ví dụ** (dịch chỉ số): Dãy Fibonacci thỏa mãn hệ thức $$F_n = F_{n-1} + F_{n-2}$$. Khi nhân hai vế với $$x^n$$ rồi lấy tổng theo $$n$$, phép dịch chỉ số $$F_{n-1}$$ tương ứng với việc nhân $$G(x)$$ với $$x$$, còn dịch chỉ số $$F_{n-2}$$ tương ứng với việc nhân $$G(x)$$ với $$x^2$$. Nội dung này sẽ được trình bày chi tiết ở mục 11.2.
 </div>
 
 ## Hàm sinh chuẩn
 
-Các công thức sau dùng lặp lại trong mọi bài toán hàm sinh:
+Các công thức dưới đây xuất hiện thường xuyên trong các bài toán hàm sinh:
 
 | Dãy $$a_n$$ | Hàm sinh $$G(x)$$ |
 |:---|:---|
@@ -111,18 +111,16 @@ Các công thức sau dùng lặp lại trong mọi bài toán hàm sinh:
 | $$1, 0, 1, 0, \ldots$$ | $$\dfrac{1}{1-x^2}$$ |
 
 <div class="textbook-example" markdown="1">
-**Ví dụ** (đếm cách chia tiền): Có bao nhiêu cách đưa tổng $$n$$ bằng các đồng 1đ và 2đ? Mỗi cách tương ứng một tổ hợp số 1 và 2. Hàm sinh là tích
+**Ví dụ** (đếm cách đổi tiền): Có bao nhiêu cách tạo tổng giá trị $$n$$ từ các đồng xu mệnh giá 1đ và 2đ? Mỗi cách chọn tương ứng với một tổ hợp các đồng 1đ và 2đ, nên hàm sinh của bài toán là tích
 
 $$G(x) = \frac{1}{1-x} \cdot \frac{1}{1-x^2}$$
 
-Hệ số $$[x^n]G(x)$$ cho đáp số — không cần liệt kê từng cách.
+Hệ số $$[x^n]G(x)$$ cho biết trực tiếp đáp số mà không cần liệt kê từng phương án.
 </div>
 
 ## Ứng dụng trong Khoa học Máy tính
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Phần này liên hệ khái niệm toán học với bài toán thực tế trong lập trình và hệ thống.
-
-Hàm sinh được dùng để đếm cấu hình, phân tích thuật toán, mô hình hóa trạng thái động và suy ra công thức cho số cách phân rã một đối tượng tổ hợp. Trong lập trình sinh ngẫu nhiên và phân tích ký hiệu, các chuỗi sinh còn cho phép suy ra phân phối kích thước của đối tượng sinh ra.
+Hàm sinh được dùng để đếm cấu hình, phân tích thuật toán, mô hình hóa trạng thái động và tìm công thức cho số cách phân rã một đối tượng tổ hợp. Trong lập trình sinh ngẫu nhiên và tính toán ký hiệu, hàm sinh còn cho phép xác định phân phối kích thước của các đối tượng được tạo ra.
 
 ```python
 def coeffs(seq):
@@ -134,7 +132,7 @@ print(coeffs([1, 1, 1, 1]))
 
 ## Công cụ tương tác
 
-Nhập một dãy ngắn và xem hàm sinh tương ứng, rồi thử khai triển vài số hạng đầu.
+Nhập một dãy ngắn để xem hàm sinh tương ứng và thử khai triển một vài số hạng đầu.
 <div class="interactive-demo" markdown="1">
 <div data-demo="generating-function-explorer"></div>
 </div>
@@ -164,7 +162,7 @@ Tìm hàm sinh của dãy $$a_n=n$$.
 <details>
 <summary>Đáp án</summary>
 
-Dùng công thức chuẩn:
+Áp dụng công thức chuẩn:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -176,12 +174,12 @@ $$
 
 ### Bài tập 3
 
-Giải thích vì sao dịch chuỗi bằng cách nhân với $$x$$ lại hữu ích khi làm việc với truy hồi.
+Giải thích vì sao phép dịch chuỗi bằng cách nhân với $$x$$ lại hữu ích khi xử lý hệ thức truy hồi.
 
 <details>
 <summary>Đáp án</summary>
 
-Vì các hạng $$a_{n-1}$$, $$a_{n-2}$$ trong truy hồi sẽ trở thành các hệ số của chuỗi sau khi nhân với $$x$$ hoặc $$x^2$$. Nhờ vậy, truy hồi được biến thành phương trình đại số trên hàm sinh.
+Nhờ phép nhân với $$x$$ hoặc $$x^2$$, các số hạng dịch chỉ số như $$a_{n-1}$$, $$a_{n-2}$$ trong hệ thức truy hồi được biểu diễn trực tiếp qua hàm sinh $$G(x)$$. Qua đó, hệ thức truy hồi chuyển thành một phương trình đại số theo $$G(x)$$.
 
 </details>
 
@@ -192,18 +190,18 @@ Cho $$A(x) = 1 + x$$ và $$C(x) = 1 + x + x^2$$. Tính hệ số $$[x^2](A \cdot
 <details>
 <summary>Đáp án</summary>
 
-$$[x^2](A \cdot C) = a_0 c_2 + a_1 c_1 + a_2 c_0 = 1 \cdot 1 + 1 \cdot 1 + 0 \cdot 1 = 2$$. Kiểm tra: $$(1+x)(1+x+x^2) = 1 + 2x + 2x^2 + x^3$$.
+$$[x^2](A \cdot C) = a_0 c_2 + a_1 c_1 + a_2 c_0 = 1 \cdot 1 + 1 \cdot 1 + 0 \cdot 1 = 2$$. Kiểm tra lại bằng khai triển trực tiếp: $$(1+x)(1+x+x^2) = 1 + 2x + 2x^2 + x^3$$.
 
 </details>
 
 ### Bài tập 5
 
-Dãy $$a_n = \binom{n+2}{2}$$ (số tam giác). Tìm hàm sinh $$G(x)$$.
+Cho dãy số tam giác $$a_n = \binom{n+2}{2}$$. Tìm hàm sinh $$G(x)$$.
 
 <details>
 <summary>Đáp án</summary>
 
-$$\sum_{n \ge 0} \binom{n+2}{2} x^n = \frac{1}{(1-x)^3}$$ — hàm sinh của hệ số nhị thức bậc 2.
+$$\sum_{n \ge 0} \binom{n+2}{2} x^n = \frac{1}{(1-x)^3}$$ — đây là hàm sinh của hệ số nhị thức với $$k = 2$$.
 
 </details>
 
@@ -213,16 +211,16 @@ $$\sum_{n \ge 0} \binom{n+2}{2} x^n = \frac{1}{(1-x)^3}$$ — hàm sinh của h�
 
 ## Tóm tắt
 
-- Hàm sinh thông thường: $$G(x)=\sum_{n\ge 0} a_n x^n$$; ký hiệu $$[x^n]G(x)=a_n$$.
-- Chuỗi lũy thừa **hình thức** cho phép thao tác hệ số mà không cần xét hội tụ.
-- Ví dụ chuẩn: $$1+x+x^2+\cdots = 1/(1-x)$$; $$\sum nx^n = x/(1-x)^2$$.
-- Phép cộng, nhân, dịch chỉ số và đạo hàm mã hóa thao tác trên dãy.
-- Trong CS: đếm cấu hình, phân tích thuật toán, mô hình trạng thái động.
+- Hàm sinh thông thường: $$G(x)=\sum_{n\ge 0} a_n x^n$$; ký hiệu hệ số $$[x^n]G(x)=a_n$$.
+- Chuỗi lũy thừa **hình thức** cho phép thao tác trên hệ số mà không cần xét điều kiện hội tụ.
+- Một số hàm sinh chuẩn: $$1+x+x^2+\cdots = 1/(1-x)$$; $$\sum nx^n = x/(1-x)^2$$.
+- Các phép cộng, nhân, dịch chỉ số và đạo hàm mã hóa trực tiếp các thao tác trên dãy số.
+- Trong khoa học máy tính, hàm sinh hỗ trợ đếm cấu hình, phân tích thuật toán và mô hình hóa trạng thái động.
 
-Trong bài tiếp theo, chúng ta dùng hàm sinh để **giải quan hệ truy hồi** bằng phương pháp bốn bước.
+Ở bài tiếp theo, chúng ta sẽ dùng hàm sinh để **giải quan hệ truy hồi** theo quy trình bốn bước.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=-drdeNMoe8w">GENERATING FUNCTIONS - Discrete Mathematics</a> — TrevTutor, tiếng Anh. Xem trước hàm sinh thường: dãy số thành chuỗi lũy thừa hình thức.
-- <a href="https://www.youtube.com/watch?v=YB7qnuo-GRY">A brief introduction to generating functions</a> — YY Ahn, tiếng Anh. Giới thiệu ngắn trước các phép nhân chuỗi.
-- <a href="https://www.youtube.com/watch?v=bOXCLR3Wric">Olympiad level counting  (Generating functions)</a> — 3Blue1Brown, tiếng Anh. Đếm bằng hệ số của hàm sinh, đúng mục đích bài.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=-drdeNMoe8w">GENERATING FUNCTIONS - Discrete Mathematics</a> — TrevTutor, tiếng Anh. Giới thiệu hàm sinh thông thường: chuyển dãy số thành chuỗi lũy thừa hình thức.
+- <a href="https://www.youtube.com/watch?v=YB7qnuo-GRY">A brief introduction to generating functions</a> — YY Ahn, tiếng Anh. Tổng quan ngắn trước khi đi vào các phép nhân chuỗi.
+- <a href="https://www.youtube.com/watch?v=bOXCLR3Wric">Olympiad level counting  (Generating functions)</a> — 3Blue1Brown, tiếng Anh. Minh họa kỹ thuật đếm thông qua hệ số của hàm sinh.

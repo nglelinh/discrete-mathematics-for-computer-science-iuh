@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. AlphaGeometry (Nature 2024) and AlphaProof (I
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite direct proof, contradiction, or induction.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại chứng minh trực tiếp, phản chứng hay quy nạp.
+Bài ghi chú ứng dụng song ngữ. Nội dung này **không** thay thế hay viết lại các bài về chứng minh trực tiếp, phản chứng và quy nạp.
 
 </div>
 
@@ -38,18 +38,18 @@ The discrete-math point is unchanged: a “proof” that a kernel cannot check i
 
 ## Tiếng Việt
 
-Các mục bắt buộc coi chứng minh là chuỗi hữu hạn bước được phép. Hai hệ thống 2024–2025 biến định nghĩa đó thành quy trình ở quy mô olympic.
+Các bài học bắt buộc xem một chứng minh là chuỗi hữu hạn các bước suy luận hợp lệ. Hai hệ thống công bố trong giai đoạn 2024–2025 đã đưa định nghĩa đó vào vận hành ở quy mô bài toán Olympic.
 
-**AlphaGeometry** (*Nature*, 17/01/2024) là bộ chứng minh hình học neuro-symbolic: mô hình ngôn ngữ đề xuất dựng hình phụ; engine ký hiệu khép mạch suy diễn. Trên bộ IMO-AG-30 nó giải 25/30 bài; chứng minh xuất bản là chuỗi suy diễn đọc được, không phải điểm số hộp đen.
+**AlphaGeometry** (*Nature*, 17/01/2024) là hệ thống chứng minh hình học lai thần kinh–ký hiệu (neuro-symbolic): mô hình ngôn ngữ đề xuất các nét dựng hình phụ, còn bộ suy diễn ký hiệu hoàn tất chuỗi lập luận. Trên tập bài IMO-AG-30, hệ thống giải được 25/30 bài; các lời giải công bố là chuỗi suy diễn mà con người có thể đọc hiểu (dùng phản chứng, chia trường hợp và biến đổi góc), chứ không phải điểm số đầu ra của mô hình hộp đen.
 
-**AlphaProof** tìm chứng minh trong **Lean**. DeepMind (25/07/2024) báo cáo AlphaProof kết hợp AlphaGeometry 2 đạt 28/42 trên đề IMO 2024 (ngưỡng bạc), giải bốn trên sáu bài sau khi chuyên gia formalize đề. Bài *Nature* 2025 mô tả agent kiểu AlphaZero huấn luyện trên hàng triệu bài auto-formalize; kernel Lean kiểm từng bước.
+**AlphaProof** tìm kiếm chứng minh trong ngôn ngữ kiểm chứng **Lean**. Ngày 25/07/2024, DeepMind công bố AlphaProof kết hợp AlphaGeometry 2 đạt 28/42 điểm trên đề thi IMO 2024 (tương đương mức huy chương bạc), giải được bốn trên sáu bài sau khi các chuyên gia hình thức hóa đề bài. Bài báo đăng trên *Nature* năm 2025 mô tả tác nhân kiểu AlphaZero được huấn luyện trên hàng triệu bài toán hình thức hóa tự động, trong đó nhân (kernel) của Lean kiểm tra tính hợp lệ của từng bước chứng minh.
 
-Điểm toán rời rạc không đổi: “chứng minh” mà kernel không kiểm được vẫn chỉ là phác thảo. AI đề xuất ứng viên; các phương pháp của chương này quyết định ứng viên có phải chứng minh hay không.
+Nguyên lý toán rời rạc cốt lõi không thay đổi: một "chứng minh" chưa vượt qua kiểm tra của nhân kiểm chứng vẫn chỉ là phác thảo. Tìm kiếm bằng AI đề xuất các lời giải ứng viên, còn các phương pháp chứng minh của chương này quyết định liệu ứng viên đó có thực sự là một chứng minh hợp lệ hay không.
 
-**Câu hỏi.** (1) Tactic `by contradiction` trong Lean mã hóa phương pháp nào? (2) Vì sao bước formalize đề IMO nằm *ngoài* bảo đảm của kernel?
+**Câu hỏi.** (1) Chiến thuật (tactic) `by contradiction` trong Lean mã hóa phương pháp chứng minh nào? (2) Vì sao bước hình thức hóa đề thi IMO (do con người hay tự động thực hiện) nằm *ngoài* phạm vi bảo đảm của nhân kiểm chứng?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=4NlrfOl0l8U">The AI that solved IMO Geometry Problems | Guest video by @Aleph0</a> — 3Blue1Brown, tiếng Anh. Xem trước AlphaGeometry: suy diễn hình học có kiểm chứng, đúng hệ bài nhắc.
-- <a href="https://www.youtube.com/watch?v=prYaTrZUces">Automated Mathematical Proofs - Computerphile</a> — Computerphile, tiếng Anh. Chứng minh kiểm tra bằng máy, cùng ý chứng minh là dãy bước hợp lệ.
-- <a href="https://www.youtube.com/watch?v=POHVMMG7pqE">10 minute Lean tutorial : proving logical propositions</a> — Xena Project, tiếng Anh. Lean kiểm từng bước logic, minh họa proof assistant.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=4NlrfOl0l8U">The AI that solved IMO Geometry Problems | Guest video by @Aleph0</a> — 3Blue1Brown, tiếng Anh. Giới thiệu AlphaGeometry với suy diễn hình học có kiểm chứng, tương ứng hệ thống được nhắc trong bài.
+- <a href="https://www.youtube.com/watch?v=prYaTrZUces">Automated Mathematical Proofs - Computerphile</a> — Computerphile, tiếng Anh. Trình bày việc kiểm tra chứng minh bằng máy tính, gắn với quan điểm chứng minh là dãy bước hợp lệ.
+- <a href="https://www.youtube.com/watch?v=POHVMMG7pqE">10 minute Lean tutorial : proving logical propositions</a> — Xena Project, tiếng Anh. Minh họa cách Lean kiểm tra từng bước logic trong công cụ hỗ trợ chứng minh (proof assistant).

@@ -6,9 +6,8 @@ date: 2021-01-01
 order: 5
 required: true
 lang: en
-excerpt: "Định lý tương đương; chứng minh L(D)=L(N); bound 2^|Q|; reachable only."
+excerpt: "Định lý tương đương Rabin–Scott giữa NFA và DFA, chứng minh L(D)=L(N), cận trên 2^|Q| trạng thái và tối ưu chỉ xét các tập con đạt được."
 ---
-
 
 <div class="textbook-epigraph" markdown="1">
 
@@ -20,26 +19,23 @@ excerpt: "Định lý tương đương; chứng minh L(D)=L(N); bound 2^|Q|; rea
 
 ![Subset](/discrete-mathematics-for-computer-science-iuh/img/course/Automata_subset_construction.svg)
 
-<p class="textbook-figure-caption" data-figure="18.3">Trạng thái DFA = tập trạng thái NFA.</p>
+<p class="textbook-figure-caption" data-figure="18.3">Mỗi trạng thái của DFA tương ứng với một tập con các trạng thái của NFA.</p>
 
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
 
-- **Xây** DFA từ NFA (có/không ε).
-- **Chứng minh** $$L(D)=L(N)$$.
-- **Nêu** bound $$2^{\lvert Q\rvert}$$.
+- **Xây dựng** DFA tương đương từ một NFA (có hoặc không có chuyển ε).
+- **Chứng minh** đẳng thức ngôn ngữ $$L(D)=L(N)$$.
+- **Nêu** cận trên số trạng thái $$2^{\lvert Q\rvert}$$ và hiện tượng bùng nổ trạng thái.
 
 </div>
 
-## Construction (không ε)
+## Phép xây dựng tập con (không có ε)
 
-$$Q_D=\mathcal{P}(Q_N)$$ (hoặc chỉ reachable).  
-$$q_{D0}=\{q_0\}$$.  
-$$\delta_D(S,a)=\bigcup_{q\in S}\delta_N(q,a)$$.  
-$$F_D=\{S:S\cap F_N\neq\emptyset\}$$.
+Từ NFA $$N=(Q_N,\Sigma,\delta_N,q_0,F_N)$$, ta xây dựng DFA $$D$$ như sau: tập trạng thái $$Q_D=\mathcal{P}(Q_N)$$ (trong thực tế chỉ cần giữ các tập con đạt được từ trạng thái đầu), trạng thái khởi đầu $$q_{D0}=\{q_0\}$$, hàm chuyển $$\delta_D(S,a)=\bigcup_{q\in S}\delta_N(q,a)$$, và tập trạng thái kết thúc $$F_D=\{S \in Q_D : S\cap F_N\neq\emptyset\}$$.
 
-**Có ε:** $$q_{D0}=E(\{q_0\})$$; $$\delta_D(S,a)=E(\bigcup\delta_N(q,a))$$.
+**Trường hợp có chuyển ε:** ta đặt $$q_{D0}=E(\{q_0\})$$ và $$\delta_D(S,a)=E\bigl(\bigcup_{q\in S}\delta_N(q,a)\bigr)$$.
 
 ### Video ngắn: Từ NFA sang DFA
 
@@ -47,30 +43,31 @@ $$F_D=\{S:S\cap F_N\neq\emptyset\}$$.
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/nfa-to-dfa-subset-construction.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 56 giây: NFA nhận các chuỗi bắt đầu bằng 1 và kết thúc bằng 01, theo dõi tập trạng thái đang bật khi đọc chuỗi, lập bảng chuyển DFA từng hàng, trạng thái chết $$\varnothing$$, chạy thử DFA thu được, và vì sao số trạng thái có thể lên tới $$2^n$$.
+Video dài khoảng 2 phút 56 giây: xét NFA nhận các chuỗi bắt đầu bằng 1 và kết thúc bằng 01, theo dõi tập trạng thái đang hoạt động khi đọc chuỗi, lập bảng chuyển DFA từng hàng, xử lý trạng thái chết $$\varnothing$$, chạy thử DFA thu được và giải thích vì sao số trạng thái có thể tăng đến $$2^n$$.
 
-## Định lý
+## Định lý tương đương
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý** (Rabin–Scott). Với mọi NFA $$N$$ tồn tại DFA $$D$$: $$L(D)=L(N)$$ và $$\lvert Q_D\rvert\le 2^{\lvert Q_N\rvert}$$.
+**Định lý** (Rabin–Scott). Với mọi NFA $$N$$, luôn tồn tại một DFA $$D$$ sao cho $$L(D)=L(N)$$ và $$\lvert Q_D\rvert\le 2^{\lvert Q_N\rvert}$$.
 
 </div>
 
 <div class="textbook-proof" markdown="1">
+
 **Chứng minh.**  
-Bất biến: sau đọc $$w$$, trạng thái $$D$$ là $$\hat\delta_N(\{q_0\},w)$$ (hoặc closure). Quy nạp độ dài $$w$$.  
-Chấp nhận ⇔ giao $$F\neq\emptyset$$ ⇔ $$w\in L(N)$$.  
-Số tập con $$\le 2^{\lvert Q\rvert}$$.
+Bất biến: sau khi đọc bất kỳ chuỗi $$w \in \Sigma^*$$, trạng thái hiện tại của DFA $$D$$ chính là tập trạng thái $$\hat\delta_N(\{q_0\},w)$$ (hoặc phiên bản có bao đóng ε). Bất biến này được chứng minh trực tiếp bằng quy nạp theo độ dài chuỗi $$w$$.  
+Do đó, $$D$$ chấp nhận $$w$$ khi và chỉ khi tập trạng thái kết thúc có giao khác rỗng với $$F_N$$, tức là khi và chỉ khi $$w\in L(N)$$. Vì mỗi trạng thái của $$D$$ là một tập con của $$Q_N$$ nên số trạng thái tối đa là $$2^{\lvert Q_N\rvert}$$.
+
 </div>
 
-## State explosion
+## Bùng nổ trạng thái (*state explosion*)
 
-Tồn tại family ngôn ngữ DFA tối tiểu $$\Omega(2^n)$$ trong khi NFA $$O(n)$$ (ví dụ “ký tự thứ $$n$$ từ cuối là 1”).
+Cận trên hàm mũ là chặt: tồn tại những họ ngôn ngữ mà DFA tối tiểu bắt buộc phải có $$\Omega(2^n)$$ trạng thái trong khi NFA chỉ cần $$O(n)$$ trạng thái (chẳng hạn ngôn ngữ “ký tự thứ $$n$$ tính từ cuối là 1”).
 
-### Minh hoạ tương tác
+### Minh họa tương tác
 
-Minh hoạ otomat: xây dựng tập con từng bước, thấy bảng chuyển và DFA hiện dần; NFA 4 trạng thái cho DFA 8 trạng thái. Các widget có sẵn bên trên vẫn giữ nguyên.
+Theo dõi phép xây dựng tập con từng bước để thấy bảng chuyển và sơ đồ DFA hiện dần (một NFA 4 trạng thái tạo ra DFA 8 trạng thái):
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="automata-explainer" data-preset="nfa3" data-tab="subset"></div>
@@ -79,22 +76,22 @@ Minh hoạ otomat: xây dựng tập con từng bước, thấy bảng chuyển 
 
 ## Bài tập
 
-1. Chạy subset trên NFA ends-01; liệt kê reachable.  
-2. Chứng minh chỉ cần reachable subset.  
-3. Tìm example explosion (Sipser).
+1. Áp dụng phép xây dựng tập con lên NFA nhận chuỗi kết thúc bằng `01` và liệt kê các trạng thái đạt được.
+2. Chứng minh rằng việc loại bỏ các tập con không đạt được từ $$q_{D0}$$ không làm thay đổi ngôn ngữ $$L(D)$$.
+3. Tìm thêm một ví dụ về hiện tượng bùng nổ trạng thái (tham khảo Sipser).
 
-## Đọc
+## Tài liệu đọc thêm
 
 Sipser §1.2; Hopcroft–Ullman.
 
 ## Tóm tắt
 
-Powerset · $$L$$ bảo toàn · $$2^n$$ bound.
+Phép xây dựng tập con (*powerset construction*) chứng minh NFA và DFA có cùng sức mạnh biểu diễn ngôn ngữ, với chi phí tối đa $$2^{\lvert Q\rvert}$$ trạng thái.
 
-**Tiếp:** Mealy/Moore.
+**Bài tiếp theo:** Máy Mealy và máy Moore.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=--CSVsFIDng">Conversion of NFA to DFA</a> — Neso Academy, tiếng Anh. Xem trước dựng DFA từ tập con trạng thái của NFA.
-- <a href="https://www.youtube.com/watch?v=pnyXgIXpKnc">Conversion of NFA to DFA (Example 1)</a> — Neso Academy, tiếng Anh. Ví dụ subset construction thứ nhất.
-- <a href="https://www.youtube.com/watch?v=i-fk9o46oVY">Conversion of NFA to DFA (Example 2)</a> — Neso Academy, tiếng Anh. Ví dụ thứ hai, đối chiếu với chứng minh tương đương.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=--CSVsFIDng">Conversion of NFA to DFA</a> — Neso Academy, tiếng Anh. Giới thiệu cách dựng DFA từ các tập con trạng thái của NFA.
+- <a href="https://www.youtube.com/watch?v=pnyXgIXpKnc">Conversion of NFA to DFA (Example 1)</a> — Neso Academy, tiếng Anh. Ví dụ thứ nhất về phép xây dựng tập con.
+- <a href="https://www.youtube.com/watch?v=i-fk9o46oVY">Conversion of NFA to DFA (Example 2)</a> — Neso Academy, tiếng Anh. Ví dụ thứ hai giúp đối chiếu với chứng minh tương đương.

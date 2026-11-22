@@ -6,9 +6,8 @@ date: 2021-01-01
 order: 13
 required: true
 lang: en
-excerpt: "Recursive vs RE; chứng minh khung A_TM RE; Halting undecidable (phác diagonal)."
+excerpt: "Phân biệt ngôn ngữ quyết định được (decidable) và đệ quy liệt kê (RE); bài toán A_TM và tính không quyết định được của bài toán dừng (Halting Problem)."
 ---
-
 
 <div class="textbook-epigraph" markdown="1">
 
@@ -18,15 +17,15 @@ excerpt: "Recursive vs RE; chứng minh khung A_TM RE; Halting undecidable (phá
 
 </div>
 
-Nối Ch.18 → Ch.20: không chỉ **khó đa thức**, còn **không quyết định được**.
+Bài học này đóng vai trò cầu nối giữa Chương 18 và Chương 20: ngoài những bài toán khó giải trong thời gian đa thức, tồn tại những bài toán hoàn toàn **không thể quyết định được** bằng bất kỳ thuật toán nào.
 
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
 
-- **Phân biệt** decidable / RE.
-- **Phác** $$A_{\mathrm{TM}}$$ RE nhưng undecidable.
-- **Nêu** hệ quả cho verification.
+- **Phân biệt** ngôn ngữ quyết định được (*decidable*) và ngôn ngữ đệ quy liệt kê (*RE*).
+- **Phác thảo** lý do bài toán $$A_{\mathrm{TM}}$$ thuộc lớp RE nhưng không quyết định được.
+- **Nêu** hệ quả của tính không quyết định được đối với kiểm chứng phần mềm (*verification*).
 
 </div>
 
@@ -34,41 +33,39 @@ Nối Ch.18 → Ch.20: không chỉ **khó đa thức**, còn **không quyết �
 
 <div class="textbook-definition" markdown="1">
 
-**Decidable (recursive):** ∃ TM luôn dừng, accept đúng $$L$$.  
-**RE (Turing-recognizable):** ∃ TM accept đúng $$L$$ (có thể loop ngoài $$L$$).
+- **Decidable (quyết định được / đệ quy):** tồn tại một máy Turing luôn dừng trên mọi đầu vào và chấp nhận đúng các chuỗi thuộc $$L$$.
+- **RE (đệ quy liệt kê / Turing-recognizable):** tồn tại một máy Turing chấp nhận đúng các chuỗi thuộc $$L$$, nhưng có thể lặp vô hạn đối với các chuỗi không thuộc $$L$$.
 
 </div>
 
-$$\mathrm{decidable}\subsetneq\mathrm{RE}\subsetneq$$ mọi ngôn ngữ.
+Quan hệ bao hàm chặt giữa các lớp ngôn ngữ là: $$\mathrm{decidable}\subsetneq\mathrm{RE}\subsetneq$$ tập mọi ngôn ngữ.
 
-## $$A_{\mathrm{TM}}$$
+## Bài toán $$A_{\mathrm{TM}}$$
 
-$$A_{\mathrm{TM}}=\{\langle M,w\rangle:M\text{ accept }w\}.$$  
-**RE:** mô phỏng $$M$$ trên $$w$$.  
-**Undecidable:** diagonal / reduction từ $$A_{\mathrm{TM}}$$ (Sipser §4–5).
+Xét ngôn ngữ $$A_{\mathrm{TM}}=\{\langle M,w\rangle:M\text{ chấp nhận }w\}$$. Ngôn ngữ này thuộc lớp **RE** vì máy Turing phổ dụng có thể mô phỏng $$M$$ trên đầu vào $$w$$ và chấp nhận khi $$M$$ chấp nhận. Tuy nhiên, $$A_{\mathrm{TM}}$$ **không quyết định được** (chứng minh bằng lập luận đường chéo, xem Sipser §4–5).
 
-## Halting
+## Bài toán Dừng (*Halting Problem*)
 
-$$\mathrm{HALT}=\{\langle M,w\rangle:M\text{ dừng trên }w\}$$ undecidable.
+Bài toán dừng $$\mathrm{HALT}=\{\langle M,w\rangle:M\text{ dừng trên }w\}$$ cũng là bài toán không quyết định được (có thể chứng minh bằng phép quy giảm từ $$A_{\mathrm{TM}}$$).
 
 ## Bài tập
 
-1. Chứng minh decidable ⊆ RE.  
-2. Nếu $$A_{\mathrm{TM}}$$ decidable thì sao?  
-3. Liên hệ “verify program” thực tế.
+1. Chứng minh mọi ngôn ngữ quyết định được đều thuộc lớp RE ($$\mathrm{decidable} \subseteq \mathrm{RE}$$).
+2. Nếu giả sử $$A_{\mathrm{TM}}$$ quyết định được thì điều gì sẽ xảy ra?
+3. Liên hệ tính không quyết định được của bài toán dừng với bài toán kiểm chứng chương trình tự động trong thực tế.
 
-## Đọc
+## Tài liệu đọc thêm
 
-Sipser §4–5; Davis computability.
+Sipser §4–5; Davis, *Computability and Unsolvability*.
 
 ## Tóm tắt
 
-Decidable ⊂ RE · halting impossible.
+Lớp ngôn ngữ quyết định được là tập con thực sự của lớp RE, và bài toán dừng khẳng định giới hạn tuyệt đối của khả năng tính toán bằng thuật toán.
 
-**Tiếp:** lộ trình nghiên cứu automata.
+**Bài tiếp theo:** Lộ trình nghiên cứu ô-tô-mát và lý thuyết khả tính.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=macM_MtS_w4">Turing &amp; The Halting Problem - Computerphile</a> — Computerphile, tiếng Anh. Xem trước bài toán dừng và vì sao không quyết định được.
-- <a href="https://www.youtube.com/watch?v=6XZvw9W9QSc">The Halting Problem</a> — Neso Academy, tiếng Anh. Phát biểu bài toán dừng trong khung decidable và undecidable.
-- <a href="https://www.youtube.com/watch?v=_eM0-KfAmhQ">Undecidability of the Halting Problem</a> — Neso Academy, tiếng Anh. Chứng minh không quyết định được bằng tự áp dụng.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=macM_MtS_w4">Turing &amp; The Halting Problem - Computerphile</a> — Computerphile, tiếng Anh. Giới thiệu bài toán dừng và lý do không tồn tại thuật toán giải tổng quát.
+- <a href="https://www.youtube.com/watch?v=6XZvw9W9QSc">The Halting Problem</a> — Neso Academy, tiếng Anh. Đặt bài toán dừng vào khung khái niệm decidable và undecidable.
+- <a href="https://www.youtube.com/watch?v=_eM0-KfAmhQ">Undecidability of the Halting Problem</a> — Neso Academy, tiếng Anh. Chứng minh tính không quyết định được bằng kỹ thuật tự áp dụng.

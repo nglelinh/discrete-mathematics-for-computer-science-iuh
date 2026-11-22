@@ -1,5 +1,4 @@
 ---
-
 layout: post
 title: "Endianness và Byte Order Mark: Khi cùng một số, hai cách lưu"
 categories: chapter09
@@ -7,109 +6,110 @@ date: 2021-01-01
 order: 2
 required: false
 lang: en
-excerpt: "Ở mục Unicode, chúng ta đã tách hai lớp: Unicode cho biết ký tự là số nào, encoding cho biết ghi số đó thành byte thế nào. Câu hỏi tương tự lặp lại với số…"
+excerpt: "Phân tích hai quy ước sắp xếp byte trong bộ nhớ (big-endian và little-endian), vai trò của Byte Order Mark trong UTF-16 và chuẩn network byte order trên mạng."
 ---
 
-Ở mục Unicode, chúng ta đã tách hai lớp: Unicode cho biết ký tự là số nào, encoding cho biết ghi số đó thành byte thế nào. Câu hỏi tương tự lặp lại với **số nguyên** — timestamp, cổng mạng, độ dài gói tin. Khi một số cần nhiều hơn một byte, máy phải quyết định byte nào đứng trước, byte nào đứng sau trong bộ nhớ; hai quy ước xếp đó gọi là **big-endian** và **little-endian**, và toàn bộ quy ước này gọi chung là **endianness** (thứ tự byte).
+Ở bài Unicode, chúng ta đã tách hai lớp: Unicode cho biết ký tự ứng với mã số nào, còn encoding cho biết ghi mã số đó thành dãy byte ra sao. Câu hỏi tương tự cũng xuất hiện với **số nguyên** như timestamp, cổng mạng hay độ dài gói tin. Khi một số cần nhiều hơn một byte để lưu trữ, máy tính phải quy ước byte nào đứng trước và byte nào đứng sau trong bộ nhớ. Hai cách sắp xếp đó gọi là **big-endian** và **little-endian**, và khái niệm chung gọi là **endianness** (thứ tự byte).
 
-Một ý cần giữ suốt mục này: **cùng một giá trị số có thể được cất trong RAM theo hai kiểu xếp byte khác nhau.** Đọc sai quy ước — ví dụ dùng `struct.unpack(">I", ...)` trên file little-endian — có thể biến timestamp hợp lệ thành năm 2286 dù byte trong file không đổi. Nắm được điều đó là đủ để tránh lỗi khó thấy khi đọc file nhị phân, parse header mạng, hoặc copy chuỗi UTF-16 giữa hai máy.
+Ý cốt lõi cần giữ xuyên suốt bài này là: **cùng một giá trị số có thể được lưu trong RAM theo hai thứ tự byte khác nhau.** Nếu đọc nhầm quy ước — chẳng hạn dùng `struct.unpack(">I", ...)` cho một tệp ghi theo little-endian — một timestamp hoàn toàn hợp lệ có thể bị hiểu thành năm 2286 dù các byte trong tệp không hề thay đổi. Nắm vững quy ước này giúp tránh những lỗi khó phát hiện khi đọc tệp nhị phân, phân tích tiêu đề gói tin mạng hoặc sao chép chuỗi UTF-16 giữa các hệ thống khác nhau.
 
 <figure class="image" style="align: center;">
 <p align="center">
   <img src="/discrete-mathematics-for-computer-science-iuh/img/course/32bit-Endianess.svg"
        alt="Số nguyên 32-bit 0x0A0B0C0D lưu trong RAM theo big-endian và little-endian"
        width="65%" height="65%">
-  <figcaption style="text-align: center;">Hình 9.2a: Cùng một giá trị số, hai cách xếp byte trong RAM — đọc sai convention là đủ để timestamp nhảy sang năm 2286 như Lan gặp (nguồn: <a href="https://commons.wikimedia.org/wiki/File:32bit-Endianess.svg">Aeroid / Wikimedia Commons</a>, CC BY-SA 4.0).</figcaption>
+  <figcaption style="text-align: center;">Hình 9.2a: Cùng một giá trị số nhưng có hai cách sắp xếp byte trong RAM; đọc sai quy ước đủ để timestamp nhảy sang năm 2286 như trường hợp của Lan (nguồn: <a href="https://commons.wikimedia.org/wiki/File:32bit-Endianess.svg">Aeroid / Wikimedia Commons</a>, CC BY-SA 4.0).</figcaption>
 </p>
 </figure>
 
 ## Vì sao một số cần nhiều byte?
 
-Một ô nhớ nhỏ nhất gọi là **byte**, lưu được số từ 0 đến 255. Số lớn hơn 255 thì một byte không đủ. Ví dụ số **4660** viết trong hệ hexadecimal là **0x1234** — tức là cần **hai byte**: một byte mang phần `12`, một byte mang phần `34`.
+Ô nhớ nhỏ nhất được địa chỉ hóa là **byte**, chỉ biểu diễn được số nguyên không dấu từ 0 đến 255. Với số lớn hơn 255, một byte không đủ chứa. Chẳng hạn, số **4660** viết trong hệ thập lục phân là **0x1234**, cần **hai byte**: một byte mang phần `12` và một byte mang phần `34`.
 
-Trong hai byte đó, người ta gọi `12` là **byte cao** (MSB — phần “nặng” hơn, giống chữ số hàng chục trong số thập phân) và `34` là **byte thấp** (LSB — phần “nhẹ” hơn, giống hàng đơn vị). Khi chúng ta viết `0x1234` lên giấy, chúng ta luôn viết `12` trước rồi mới đến `34`. Nhiều chúng ta mới học cũng mặc định máy tính sẽ cất trong bộ nhớ y hệt như vậy — thực tế không phải lúc nào cũng thế, và đó chính là chỗ gây nhầm.
+Trong hai byte này, `12` gọi là **byte cao** (MSB — phần có trọng số lớn hơn, tương tự chữ số hàng cao trong số thập phân) và `34` gọi là **byte thấp** (LSB — phần có trọng số nhỏ hơn). Khi viết `0x1234` trên giấy, ta luôn viết `12` trước rồi đến `34`. Nhiều người mới học thường mặc định máy tính cũng lưu trong bộ nhớ đúng theo thứ tự đó, nhưng thực tế không phải lúc nào cũng như vậy.
 
-## Địa chỉ 1000 chứa `12` — bên trong ô nhớ là gì?
+## Địa chỉ 1000 chứa `12` — bên trong ô nhớ có gì?
 
-Khi bài học viết “ô `1000` chứa `12`”, nhiều chúng ta hình dung sai: tưởng trong RAM có chữ `1` và chữ `2`, hoặc tưởng số `1234` nằm trọn trong một ô. Không phải vậy.
+Khi tài liệu viết “ô `1000` chứa `12`”, nhiều người dễ hiểu lầm rằng trong RAM lưu hai ký tự `1` và `2`, hoặc cả số `1234` nằm trọn trong một ô nhớ. Thực tế không phải vậy.
 
-**Địa chỉ** (ví dụ `1000`, `1001`) giống **số nhà** trên một con phố dài gọi là RAM. Mỗi số nhà trỏ tới **đúng một ô**, và mỗi ô lưu **đúng một byte** — tức **8 bit** (tám chỗ chỉ được điện cao `1` hoặc thấp `0`). Không có ô nào lưu cả số `1234` một lần; số lớn phải **chia** ra nhiều ô liền kề.
+**Địa chỉ bộ nhớ** (ví dụ `1000`, `1001`) giống như số nhà trên một dãy phố dài là RAM. Mỗi địa chỉ trỏ tới **đúng một ô**, và mỗi ô lưu **đúng một byte** — tức **8 bit** (tám vị trí mang mức điện áp cao `1` hoặc thấp `0`). Không có ô nhớ đơn lẻ nào chứa trọn số `1234`; số lớn bắt buộc phải **tách** sang nhiều ô liền kề.
 
-Giá trị hex **`0x12`** là cách viết gọn của số **18** trong hệ thập phân. Khi nói ô `1000` “chứa `12`”, ý là **cả ô đó** đang mang giá trị 18. Bên trong phần cứng, tám bit của ô đó ở trạng thái:
+Giá trị hex **`0x12`** là cách viết gọn của số **18** trong hệ thập phân. Nói ô `1000` “chứa `12`” nghĩa là **toàn bộ ô đó** đang mang giá trị 18. Ở tầng phần cứng, tám bit bên trong ô đó có trạng thái:
 
 `0001 0010` (nhị phân)
 
-Bit bên trái là bit “nặng” nhất của byte, bit bên phải là bit “nhẹ” nhất. Máy không lưu ký hiệu `12` như trong sách; nó lưu **mẫu điện** trên tám đường dây. Khi chúng ta xem hex dump, công cụ chỉ **dịch** mẫu đó ra hai ký tự `1` và `2` cho dễ đọc.
+Bit ngoài cùng bên trái có trọng số lớn nhất trong byte, còn bit ngoài cùng bên phải có trọng số nhỏ nhất. Phần cứng không lưu ký hiệu `12` như trên giấy mà lưu **mẫu điện áp** trên tám đường dây; công cụ hex dump chỉ chuyển đổi mẫu bit đó thành hai ký tự `1` và `2` để con người dễ đọc.
 
-Ô kế tiếp, địa chỉ `1001`, chứa byte **`0x34`** (tức 52 thập phân), với tám bit khác: `0011 0100`. Hai ô `1000` và `1001` **đứng cạnh nhau** trên con phố RAM. Khi CPU cần đọc một số 16-bit bắt đầu tại `1000`, nó lấy nội dung ô `1000`, lấy nội dung ô `1001`, rồi **ghép** theo quy tắc endian — đó mới thành `0x1234`.
+Ô kế tiếp tại địa chỉ `1001` chứa byte **`0x34`** (bằng 52 ở hệ thập phân), với mẫu 8 bit là `0011 0100`. Hai ô `1000` và `1001` nằm cạnh nhau trong RAM. Khi CPU cần đọc một số nguyên 16-bit bắt đầu từ địa chỉ `1000`, nó lấy giá trị tại `1000`, lấy tiếp giá trị tại `1001`, rồi **ghép** chúng lại theo quy ước endian để thu được `0x1234`.
 
 ![Một ô nhớ chứa byte 0x12](/discrete-mathematics-for-computer-science-iuh/img/course/memory_byte_12.svg)
 
-<p class="textbook-figure-caption" data-figure="9.4">Một địa chỉ = một byte = 8 bit. `0x12` là cách viết hex của giá trị lưu trong ô.</p>
+<p class="textbook-figure-caption" data-figure="9.4">Một địa chỉ tương ứng một byte gồm 8 bit; `0x12` là cách viết hex của giá trị lưu trong ô.</p>
+
 <div class="content-box insight-box textbook-block" markdown="1">
-Tóm lại ba tầng dễ lẫn: **(1)** số toán học `4660` hay `0x1234`; **(2)** từng **byte** `0x12`, `0x34` trong từng ô nhớ; **(3)** bên trong mỗi byte là **8 bit** nhị phân. Endianness chỉ nói byte `0x12` và `0x34` nằm ở ô `1000` hay `1001` — không đổi bit bên trong từng byte.
+Có ba lớp cần phân biệt rõ: **(1)** giá trị toán học `4660` (viết gọn `0x1234`); **(2)** từng **byte** `0x12` và `0x34` nằm trong từng ô nhớ; **(3)** bên trong mỗi byte là **8 bit** nhị phân. Endianness chỉ quy định byte `0x12` và `0x34` nằm ở ô `1000` hay `1001`, chứ không đảo thứ tự bit bên trong từng byte.
 </div>
 
 ---
 
-## Big-endian — xếp giống cách viết trên giấy
+## Big-endian — sắp xếp giống cách viết trên giấy
 
-**Big-endian** nghĩa là: byte cao được đặt ở **địa chỉ bộ nhớ thấp hơn** (ô nhớ đứng trước khi chúng ta đọc từ trái sang phải).
+**Big-endian** đặt byte cao ở **địa chỉ bộ nhớ thấp hơn** (tức ô nhớ đứng trước khi đọc từ trái sang phải).
 
-Quay lại ví dụ trên: số `0x1234` được cất bắt đầu từ ô `1000`. Với big-endian, ô `1000` chứa byte `0x12` (tám bit `0001 0010`), ô `1001` chứa byte `0x34` (tám bit `0011 0100`). Hex dump hiện `12 34` — đúng thứ tự viết trên giấy. CPU đọc ô `1000` trước, lấy phần cao; đọc ô `1001` sau, lấy phần thấp; ghép lại được `0x1234`.
+Quay lại ví dụ số `0x1234` lưu từ địa chỉ `1000`: theo big-endian, ô `1000` chứa byte `0x12` (`0001 0010`) và ô `1001` chứa byte `0x34` (`0011 0100`). Khi xem hex dump, ta thấy `12 34` — trùng khớp với thứ tự viết trên giấy. CPU đọc ô `1000` lấy phần cao, đọc ô `1001` lấy phần thấp rồi ghép thành `0x1234`.
 
-Một số hệ thống và nhiều **chuẩn trên mạng** dùng big-endian. Khi hai máy trao đổi dữ liệu qua Internet, người ta thường thống nhất kiểu “byte cao trước” để không ai phải đoán.
+Một số kiến trúc phần cứng và phần lớn **giao thức mạng** sử dụng big-endian. Khi hai máy tính trao đổi dữ liệu qua Internet, việc thống nhất “byte cao trước” giúp hai bên hiểu cùng một giá trị mà không phải đoán.
 
 ![Sơ đồ 16-bit big vs little](/discrete-mathematics-for-computer-science-iuh/img/course/endian_16bit_1234.svg)
 
-*Hình 9.5a: Cùng số 0x1234, nhưng hai cách xếp trong RAM.*
+*Hình 9.5a: Cùng giá trị `0x1234` nhưng được sắp xếp theo hai thứ tự byte khác nhau trong RAM.*
 
 ---
 
 ## Little-endian — byte thấp đứng trước
 
-**Little-endian** làm ngược lại: byte **thấp** (`0x34`) nằm ở ô có địa chỉ **thấp hơn**, byte **cao** (`0x12`) nằm ở ô kế tiếp.
+**Little-endian** sắp xếp ngược lại: byte **thấp** (`0x34`) nằm ở ô có địa chỉ **thấp hơn**, còn byte **cao** (`0x12`) nằm ở ô kế tiếp.
 
-Cùng số `0x1234`, cùng hai ô `1000` và `1001`, nhưng lần này ô `1000` chứa `0x34`, ô `1001` chứa `0x12`. Hex dump hiện `34 12`. Lỗi hay gặp nhất: nhìn `34 12` mà vẫn ghép trái sang phải thành `0x3412` — ra **13330**, hoàn toàn sai. Muốn đọc đúng trên máy little-endian, chúng ta cần nhớ ô trước là byte thấp, ô sau là byte cao, rồi mới ghép thành `0x1234`.
+Với cùng số `0x1234` trên hai ô `1000` và `1001`, ô `1000` nay chứa `0x34` và ô `1001` chứa `0x12`. Hex dump hiển thị `34 12`. Lỗi phổ biến nhất là đọc thẳng từ trái sang phải thành `0x3412` — tương ứng **13330**, hoàn toàn sai lệch. Để đọc đúng trên máy little-endian, cần nhớ ô đứng trước là byte thấp và ô đứng sau là byte cao, rồi mới ghép thành `0x1234`.
 
-Phần lớn máy tính cá nhân hôm nay — Windows, Linux, Mac trên chip Intel hoặc Apple Silicon — dùng **little-endian**. Vì vậy khi chúng ta học lập trình trên PC, dãy byte trong RAM thường “trông ngược” so với cách viết hex trên giấy. Đó không phải bug; đó là quy ước phần cứng.
+Phần lớn máy tính cá nhân hiện nay — chạy Windows, Linux hoặc macOS trên bộ xử lý Intel x86 hay Apple Silicon — đều dùng **little-endian**. Do đó, khi kiểm tra RAM lúc lập trình trên PC, dãy byte thường trông “ngược” so với cách viết hex trên giấy; đây là quy ước phần cứng chứ không phải lỗi.
 
 <div class="content-box warning-box textbook-block" markdown="1">
-Đừng nhầm little-endian với “đảo ngược từng bit”. Bên trong mỗi byte, bit vẫn xếp bình thường. Chỉ có **thứ tự hai byte** (hoặc bốn byte, tám byte…) khi ghép thành một số lớn là đổi chỗ. Số 4660 vẫn là 4660; thay đổi duy nhất là ô nhớ nào giữ `12`, ô nào giữ `34`.
+Không nên nhầm little-endian với việc “đảo ngược từng bit”. Thứ tự bit bên trong mỗi byte vẫn giữ nguyên; chỉ **thứ tự các byte** (2 byte, 4 byte, 8 byte…) khi ghép thành một số lớn mới đảo ngược. Giá trị 4660 không đổi, chỉ vị trí ô nhớ giữ `12` và `34` đổi chỗ cho nhau.
 </div>
 
 ---
 
-### Minh hoạ thứ tự byte: big-endian và little-endian
+### Minh họa thứ tự byte: big-endian và little-endian
 
-Nhập một số hex 32 bit và xem 4 byte nằm ở những địa chỉ nào trong bộ nhớ theo từng kiểu endian; đọc nhầm kiểu sẽ ra giá trị khác.
+Nhập một số hex 32-bit để quan sát 4 byte được phân bố vào các địa chỉ bộ nhớ theo từng kiểu endian; khi đọc sai kiểu, giá trị thu được sẽ khác hẳn.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="bits-explainer" data-tab="endian"></div>
 </div>
 <script src="{{ '/public/js/explainers/logic-explainer.js' | relative_url }}"></script>
 
-## Tại sao lại tồn tại cả hai cách?
+## Vì sao cả hai quy ước cùng tồn tại?
 
-Câu hỏi tự nhiên sau khi biết big và little: **sao không chọn một kiểu cho cả thế giới?** Lý do không phải vì một kiểu “sai” và kiể kia “đúng”. Cả hai đều là **quy ước** — cách các nhóm kỹ sư khác nhau quyết định xếp byte khi thiết kế chip và giao thức, từ những thập niên 1970–1980. Khi đã có hàng triệu máy, file, và chương trình chạy theo một quy ước, đổi toàn bộ rất tốn kém — nên hai kiểu cùng tồn tại đến hôm nay.
+Một câu hỏi tự nhiên là: **vì sao không chọn duy nhất một kiểu cho toàn bộ hệ thống máy tính?** Lý do không nằm ở việc kiểu nào “đúng” hay “sai”. Cả hai đều là **quy ước thiết kế** mà các nhóm kỹ sư lựa chọn khi xây dựng vi xử lý và giao thức trong thập niên 1970–1980. Khi đã có hàng triệu thiết bị, định dạng tệp và phần mềm phụ thuộc vào từng quy ước, chi phí chuyển đổi toàn bộ là quá lớn nên cả hai tiếp tục song hành.
 
-**Big-endian** được nhiều người thấy “tự nhiên” vì hex dump đọc giống cách viết số trên giấy: `12` trước, `34` sau. Các máy mainframe, một số chip MIPS/PowerPC, và đặc biệt **giao thức mạng** (Internet) chọn kiểu này để hai máy khác hãng nói chuyện mà không phải đoán. Khi chúng ta đọc tài liệu RFC hay spec file PNG, thường gặp quy ước “byte cao trước” — đó là di sản của lựa chọn này.
+**Big-endian** trực quan khi đọc hex dump vì thứ tự byte khớp với cách viết số trên giấy (`12` trước, `34` sau). Các hệ thống mainframe, một số dòng chip MIPS/PowerPC và đặc biệt là **giao thức mạng** trên Internet chọn kiểu này để mọi máy khác hãng có thể giao tiếp thống nhất. Nhiều đặc tả RFC và định dạng tệp như PNG đều giữ quy ước “byte cao trước”.
 
-**Little-endian** xuất phát từ cách CPU làm việc với số nhiều byte. Nhiều phép tính (cộng, nhân từng bước) xử lý từ **bit/byte thấp** lên **byte cao** — giống chúng ta cộng số từ hàng đơn vị lên hàng chục. Đặt byte thấp ở địa chỉ nhỏ hơn giúp vi xử lý Intel (x86) từ thập niên 1978 tiện khi đọc tuần tự địa chỉ tăng dần. PC phổ biến ngày nay kế thừa dòng quy ước đó, nên RAM máy chúng ta thường là little-endian.
+**Little-endian** lại thuận tiện cho cách CPU thực hiện phép toán nhiều byte. Nhiều phép tính như cộng hoặc nhân xử lý tuần tự từ **byte thấp** lên **byte cao** (tương tự cách cộng từ hàng đơn vị lên hàng chục). Việc đặt byte thấp ở địa chỉ nhỏ hơn giúp dòng vi xử lý Intel x86 từ năm 1978 đọc dữ liệu thuận lợi theo chiều địa chỉ tăng dần. Các máy tính cá nhân hiện đại kế thừa kiến trúc này nên RAM trên PC chủ yếu là little-endian.
 
-Hai hãng, hai thời điểm, hai ưu tiên thiết kế — không có cuộc họp toàn cầu bắt buộc thống nhất. Kết quả: thế giới thật **lẫn cả hai**. Giải pháp thực tế không phải “chọn một kiểu và xóa kiểu kia”, mà là **ghi rõ trong spec** (file này big hay little), **quy ước chung trên dây mạng** (luôn big-endian), và **hàm chuyển đổi** trong code (`htonl`, `ntohl`, dấu `<` / `>` trong Python). Lập trình viên học cách hỏi “byte nào trước?” thay vì giả định mọi nơi giống máy mình.
+Vì không có một quy ước duy nhất trên toàn cầu, cách xử lý thực tế trong kỹ thuật phần mềm là **ghi rõ thứ tự byte trong đặc tả định dạng** (tệp dùng big hay little), **thống nhất một chuẩn chung trên đường truyền mạng** (big-endian) và sử dụng **hàm chuyển đổi** trong mã nguồn (như `htonl`, `ntohl` trong C hoặc ký hiệu `<`, `>` trong Python). Lập trình viên cần luôn kiểm tra “byte nào đứng trước” thay vì mặc định mọi hệ thống giống máy cục bộ.
 
 <div class="content-box note-box textbook-block" markdown="1">
-Có thể hình dung như hai quốc gia viết ngày-tháng: `21/06/2026` hay `06/21/2026`. Cùng một ngày, không ai sai toán — chỉ khác **thói quen ghi**. Khi trao đổi, phải nói rõ đang dùng format nào; endianness cũng vậy.
+Có thể liên hệ với cách ghi ngày tháng giữa các quốc gia: `21/06/2026` và `06/21/2026` biểu diễn cùng một ngày, không cách nào sai về mặt toán học mà chỉ khác **quy ước ghi**. Khi trao đổi dữ liệu, hai bên buộc phải nói rõ định dạng đang dùng — endianness cũng tương tự.
 </div>
 
 ---
 
-## Cùng một số, hai dãy byte — ví dụ Lan gặp trong file log
+## Cùng một số, hai dãy byte — ví dụ trong tệp log của Lan
 
-Mở rộng sang số 32-bit (bốn byte), nguyên tắc không đổi. Số 4660 đầy đủ viết là `0x00001234`. Trên PC little-endian, bốn byte trong file có thể là `34 12 00 00` — byte thấp nhất `34` đứng đầu, các byte `00` đứng sau.
+Mở rộng sang số nguyên 32-bit (4 byte), nguyên tắc vẫn giữ nguyên. Số 4660 viết đầy đủ ở dạng 32-bit hex là `0x00001234`. Trên máy PC little-endian, bốn byte trong tệp là `34 12 00 00` — byte thấp nhất `34` đứng đầu, các byte `00` đứng sau.
 
-Lan đọc đúng bằng Python như sau:
+Lan đọc đúng giá trị này bằng Python như sau:
 
 ```python
 import struct
@@ -117,48 +117,49 @@ data = bytes.fromhex("34 12 00 00")
 struct.unpack("<I", data)   # '<' nghĩa là little-endian
 ```
 
-Dấu `<` trong `struct` là cách Python nói: “hãy đọc bốn byte theo kiểu little-endian”. Kết quả là `(4660,)`.
+Ký hiệu `<` trong `struct` báo cho Python đọc bốn byte theo quy ước little-endian, trả về `(4660,)`.
 
-Nếu file được ghi theo chuẩn mạng (big-endian), bốn byte sẽ là `00 00 12 34` — trông giống cách viết trên giấy hơn. Đọc đúng bằng `struct.unpack(">I", ...)` với dấu `>` nghĩa là big-endian.
+Nếu tệp được ghi theo chuẩn mạng (big-endian), bốn byte sẽ là `00 00 12 34` và cần đọc bằng `struct.unpack(">I", ...)` với ký hiệu `>` chỉ big-endian.
 
-Vấn đề của Lan là dùng `>` trên file mà thực tế được ghi kiểu `<`. Cùng bốn byte vật lý trong file, nhưng hiểu nhầm thứ tự → ra số khác hoàn toàn, có thể thành timestamp năm 2286. Không có phép tính sai; chỉ có **đọc sai quy ước**.
+Sự cố của Lan xảy ra khi dùng `>` cho một tệp thực chất được ghi theo `<`. Bốn byte vật lý trong tệp hoàn toàn chính xác, nhưng việc ghép nhầm thứ tự tạo ra một giá trị số khác hẳn — đủ khiến timestamp nhảy sang năm 2286. Không có phép tính nào sai, chỉ có **quy ước đọc bị lệch**.
 
 ![Endianness 32-bit](/discrete-mathematics-for-computer-science-iuh/img/course/32bit-Endianess.svg)
 
-*Hình 9.5b: Khi số dài hơn, vẫn chỉ là chuyện xếp nhiều byte theo hai chiều.*
+*Hình 9.5b: Với số nhiều byte hơn, nguyên lý vẫn là hai chiều sắp xếp byte trong bộ nhớ.*
 
 ---
 
-## Endianness cũng ảnh hưởng tới chữ (UTF-16)
+## Endianness ảnh hưởng đến văn bản UTF-16
 
-Nhớ lại UTF-16 từ bài Unicode: mỗi ký tự (trong phạm vi cơ bản) thường chiếm **hai byte**. Chữ `H` có mã Unicode `U+0048`, tức hai byte hex là `00` và `48`. Câu hỏi endian lại xuất hiện: byte `00` đứng trước hay byte `48` đứng trước?
+Nhắc lại bài Unicode: trong UTF-16, phần lớn ký tự thuộc phạm vi cơ bản chiếm **hai byte**. Ký tự `H` có mã Unicode `U+0048`, gồm hai byte hex là `00` và `48`. Lúc này câu hỏi về thứ tự byte lại xuất hiện: `00` đứng trước hay `48` đứng trước?
 
-Với big-endian, file chứa `00 48`. Với little-endian, file chứa `48 00`. Cùng một chữ `H`, nhưng nhìn hex dump đã khác. Cả chuỗi `Hello` cũng vậy — một máy có thể ghi `00 48 00 65…`, máy kia ghi `48 00 65 00…`. Copy file qua USB mà không biết máy ghi theo kiểu nào, chữ có thể thành ô vuông, ký tự lạ, hoặc mất hẳn.
+Theo big-endian, tệp lưu `00 48`; theo little-endian, tệp lưu `48 00`. Cả chuỗi `Hello` cũng khác nhau tương ứng (`00 48 00 65…` so với `48 00 65 00…`). Khi sao chép tệp giữa các máy mà không rõ chiều ghi, văn bản có thể hiển thị thành ô vuông, ký tự lạ hoặc không đọc được.
 
-Vì UTF-16 không tự giải thích “tôi là kiểu nào”, chuẩn Unicode khuyên ghi thêm vài byte đặc biệt ở **đầu file** gọi là **BOM** (Byte Order Mark). Nếu hai byte đầu là `FE FF`, file là UTF-16 big-endian. Nếu là `FF FE`, file là UTF-16 little-endian. Ví dụ chuỗi “He” kiểu little-endian bắt đầu bằng `FF FE`, rồi đến `48 00` cho chữ H và `65 00` cho chữ e. Đọc nhầm endian sau BOM thì toàn bộ phần còn lại của file sẽ sai.
+Vì bản thân chuỗi byte UTF-16 không tự khai báo thứ tự byte, chuẩn Unicode quy định có thể đặt thêm hai byte đặc biệt ở **đầu tệp** gọi là **BOM** (Byte Order Mark). Nếu hai byte đầu là `FE FF`, tệp dùng UTF-16 big-endian; nếu là `FF FE`, tệp dùng UTF-16 little-endian. Ví dụ, chuỗi `He` theo UTF-16 little-endian bắt đầu bằng `FF FE`, tiếp theo là `48 00` (chữ `H`) và `65 00` (chữ `e`). Nếu bỏ qua hoặc hiểu sai BOM, toàn bộ phần nội dung phía sau sẽ bị giải mã sai.
 
-UTF-8 ít dính chuyện endian hơn vì mỗi ký tự là dãy byte đọc tuần tự từ trái sang, không chia thành “cặp byte 16-bit” như UTF-16. Endian chủ yếu làm phiền khi làm việc với **số nguyên nhiều byte** và **file UTF-16**.
+Ngược lại, UTF-8 không chịu ảnh hưởng của endianness vì mỗi ký tự được đọc tuần tự theo từng byte đơn lẻ thay vì ghép theo đơn vị 16-bit. Do đó, endianness chủ yếu cần lưu ý khi làm việc với **số nguyên nhiều byte** và **tệp UTF-16**.
 
 ---
 
-## Trên mạng, mọi người thống nhất một kiểu
+## Trên mạng, các hệ thống thống nhất một chuẩn chung
 
-Hai máy khác endian gửi cho nhau số cổng 8080 hoặc độ dài gói tin. Nếu máy A gửi byte theo RAM của A, máy B đọc theo RAM của B, kết quả lệch ngay. Giải pháp lâu đời: trên dây mạng luôn dùng **big-endian**, gọi là **network byte order**.
+Khi hai máy có endianness khác nhau trao đổi số cổng (như 8080) hoặc độ dài gói tin, nếu máy gửi truyền nguyên thứ tự byte trong RAM của mình và máy nhận đọc theo RAM của máy nhận, giá trị sẽ bị sai lệch. Giải pháp tiêu chuẩn được dùng từ lâu trên Internet là luôn truyền theo **big-endian**, gọi là **network byte order**.
 
-Trên PC little-endian, trước khi gửi đi chúng ta chuyển sang dạng mạng, sau khi nhận về chúng ta chuyển lại dạng máy mình. Trong C có sẵn hàm `htonl` (host to network, long) và `ntohl` (network to host). Tên hàm nghe khó, nhưng ý rất đơn giản: **đừng để mỗi máy tự đoán; trên dây luôn dùng một quy ước chung.**
+Trên máy PC little-endian, chương trình chuyển đổi dữ liệu sang dạng mạng trước khi gửi và chuyển ngược về dạng máy cục bộ sau khi nhận. Ngôn ngữ C cung cấp sẵn các hàm `htonl` (host to network, long) và `ntohl` (network to host). Nguyên tắc rất rõ ràng: **không để các máy tự suy đoán; mọi dữ liệu trên đường truyền mạng đều tuân theo một quy ước chung.**
 
 ![Mô hình OSI](/discrete-mathematics-for-computer-science-iuh/img/course/OSI_Model_v1.svg)
 
-<p class="textbook-figure-caption" data-figure="9.6">Trong header gói tin, các trường số nhiều byte phải hiểu cùng một thứ tự.</p>
+<p class="textbook-figure-caption" data-figure="9.6">Trong tiêu đề gói tin mạng, mọi trường số nhiều byte đều phải được diễn giải theo cùng một thứ tự byte.</p>
+
 ---
 
-## Làm sao biết file hoặc API dùng kiểu nào?
+## Làm sao biết tệp hoặc API dùng quy ước nào?
 
-Không có “file binary thuần” theo nghĩa mọi byte đều giống nhau trên mọi máy. Mỗi định dạng ghi rõ trong tài liệu. File PNG quy định độ dài mỗi khối là bốn byte **big-endian**. Java `ByteBuffer` mặc định có thể khác với RAM PC; chúng ta phải gọi `buf.order(ByteOrder.BIG_ENDIAN)` nếu spec yêu cầu.
+Không có “tệp nhị phân thuần” dùng chung một thứ tự byte ngầm định trên mọi máy; mỗi định dạng đều ghi rõ quy ước trong đặc tả. Ví dụ, chuẩn PNG quy định độ dài mỗi khối dữ liệu là số 4 byte **big-endian**. Lớp `ByteBuffer` trong Java cũng có thứ tự byte mặc định riêng (big-endian), nên lập trình viên cần chủ động gọi `buf.order(ByteOrder.BIG_ENDIAN)` hoặc `LITTLE_ENDIAN` theo đúng yêu cầu đặc tả.
 
-Trong Python, dấu `<` sau lệnh unpack nghĩa là little-endian, dấu `>` là big-endian. Chữ `I` nghĩa là số nguyên không dấu 32 bit. Vì vậy `struct.unpack("<I", data)` đọc bốn byte theo kiểu PC; `struct.unpack(">I", data)` đọc theo kiểu mạng hoặc nhiều file chuẩn cũ.
+Trong Python, ký hiệu `<` trong `struct.unpack` biểu thị little-endian, `>` biểu thị big-endian, và `I` biểu thị số nguyên không dấu 32-bit. Do đó, `struct.unpack("<I", data)` đọc 4 byte theo kiểu PC, còn `struct.unpack(">I", data)` đọc theo chuẩn mạng hoặc nhiều định dạng tệp truyền thống.
 
-Khi đọc file nhị phân hoặc parse buffer, luôn tra cứu trong tài liệu định dạng **byte nào được ghi trước** — không suy đoán theo endianness của máy cục bộ.
+Khi đọc tệp nhị phân hoặc phân tích bộ đệm dữ liệu, luôn tra cứu tài liệu đặc tả để biết **byte nào được ghi trước**, thay vì suy đoán theo endianness của máy đang chạy.
 
 ---
 
@@ -166,29 +167,29 @@ Khi đọc file nhị phân hoặc parse buffer, luôn tra cứu trong tài li�
 
 ### Bài tập 1
 
-Trong bộ nhớ, ô `0x1000` chứa byte `34`, ô `0x1001` chứa byte `12`. Máy dùng little-endian. Số 16-bit là bao nhiêu?
+Trong bộ nhớ, ô `0x1000` chứa byte `34` và ô `0x1001` chứa byte `12`. Máy sử dụng little-endian. Giá trị số nguyên không dấu 16-bit là bao nhiêu?
 
 <details>
 <summary>Đáp án</summary>
 
-Little-endian đặt byte thấp ở địa chỉ thấp hơn. Ô `1000` là `34` (byte thấp), ô `1001` là `12` (byte cao). Ghép lại được `0x1234`, tức **4660** trong hệ thập phân.
+Little-endian đặt byte thấp ở địa chỉ thấp hơn: ô `0x1000` là `34` (byte thấp), ô `0x1001` là `12` (byte cao). Ghép lại ta được `0x1234`, bằng **4660** trong hệ thập phân.
 
 </details>
 
 ### Bài tập 2
 
-Cùng hai byte `34` và `12`, nhưng chúng ta vô tình đọc như big-endian (ghép trái sang phải thành một số hex). Kết quả là gì?
+Với cùng hai byte `34` và `12` ở bài trên, nếu đọc nhầm theo big-endian (ghép từ trái sang phải thành một số hex), kết quả thu được là bao nhiêu?
 
 <details>
 <summary>Đáp án</summary>
 
-Đọc big-endian nghĩa là ghép `34` rồi `12` thành `0x3412`, tức **13330**. So với đáp án đúng 4660, sai lệch rất lớn — đủ để làm timestamp hoặc mã cổng “nhảy” sang giá trị vô lý.
+Đọc theo big-endian sẽ ghép `34` trước rồi đến `12`, tạo thành `0x3412` = **13330**. Mức sai lệch so với giá trị đúng 4660 rất lớn, đủ làm timestamp hoặc số cổng mạng nhảy sang một giá trị vô nghĩa.
 
 </details>
 
 ### Bài tập 3
 
-Viết một dòng Python đọc bốn byte `34 12 00 00` thành số 32-bit trên PC little-endian.
+Viết một đoạn mã Python ngắn đọc bốn byte `34 12 00 00` thành số nguyên không dấu 32-bit theo kiểu little-endian.
 
 <details>
 <summary>Đáp án</summary>
@@ -198,23 +199,22 @@ import struct
 struct.unpack("<I", bytes.fromhex("34 12 00 00"))
 ```
 
-Dấu `<` báo little-endian, chữ `I` là unsigned 32-bit. Kết quả là `(4660,)`.
+Ký hiệu `<` chỉ little-endian và `I` chỉ số nguyên không dấu 32-bit. Kết quả trả về là `(4660,)`.
 
 </details>
 
 ### Bài tập 4
 
-File bắt đầu bằng `FE FF 00 48`. Đây là UTF-16 kiểu nào? Ba byte sau BOM có thể là chữ gì?
+Một tệp bắt đầu bằng dãy byte `FE FF 00 48`. Đây là UTF-16 kiểu nào? Hai byte ngay sau BOM biểu diễn ký tự gì?
 
 <details>
 <summary>Đáp án</summary>
 
-`FE FF` là BOM của UTF-16 **big-endian**. Hai byte `00 48` ghép theo big-endian là mã `U+0048`, tức chữ **H**.
+`FE FF` là BOM của UTF-16 **big-endian**. Hai byte `00 48` ghép theo big-endian tạo thành code point `U+0048`, tương ứng với ký tự **H**.
 
 </details>
 
 ---
-
 
 ## Xem thêm / Video gợi ý
 
@@ -223,14 +223,14 @@ File bắt đầu bằng `FE FF 00 48`. Đây là UTF-16 kiểu nào? Ba byte sa
 
 ## Tóm tắt
 
-Endianness là câu chuyện **cùng một số, nhưng xếp byte khác nhau trong RAM**. Big-endian giống cách viết hex trên giấy — byte cao trước. Little-endian đặt byte thấp trước — đây là kiểu phổ biến trên PC chúng ta đang dùng. Nhầm kiểu đọc thì hex dump vẫn “có vẻ hợp lý” nhưng số ra sai, như Lan thấy với timestamp năm 2286.
+Endianness là quy ước sắp xếp thứ tự các byte của cùng một giá trị số trong bộ nhớ. **Big-endian** đặt byte cao ở địa chỉ thấp hơn (giống cách viết hex trên giấy), còn **little-endian** đặt byte thấp ở địa chỉ thấp hơn (phổ biến trên phần lớn máy tính cá nhân hiện nay). Đọc nhầm quy ước khiến dãy byte hợp lệ bị hiểu thành một giá trị hoàn toàn sai, như sự cố timestamp năm 2286 của Lan.
 
-Chữ UTF-16 cũng chịu ảnh hưởng vì mỗi ký tự là hai byte; BOM ở đầu file giúp máy biết đọc theo chiều nào. Trên mạng, mọi người thống nhất big-endian để khỏi đoán. Khi code, hãy đọc spec hoặc dùng đúng dấu `<` / `>` trong Python — đó là cách chúng ta nói với máy: “hãy đọc byte theo thứ tự này”.
+Văn bản UTF-16 cũng chịu ảnh hưởng của endianness vì mỗi đơn vị mã chiếm 2 byte; do đó BOM ở đầu tệp được dùng để khai báo thứ tự byte. Trên mạng Internet, các giao thức thống nhất dùng big-endian (network byte order). Khi lập trình, cần đối chiếu đặc tả định dạng và chỉ rõ thứ tự byte (như `<` hoặc `>` trong Python `struct`).
 
-Trong bài tiếp theo, chúng ta chuyển sang **số có dấu trong máy**: cộng một giây vào timestamp 32-bit có thể đưa đồng hồ về năm 1901 — hiện tượng Year 2038 và cách máy lưu số âm bằng two's complement.
+Trong bài tiếp theo, chúng ta sẽ chuyển sang **số nguyên có dấu trong máy tính**: vì sao cộng thêm 1 giây vào timestamp 32-bit có thể kéo đồng hồ lùi về năm 1901 — cơ chế của sự cố Year 2038 và cách biểu diễn số âm bằng bù hai (two's complement).
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=NcaiHcBvDR4">Endianness Explained With an Egg - Computerphile</a> — Computerphile, tiếng Anh. Xem trước big-endian và little-endian trên một số nhiều byte.
-- <a href="https://www.youtube.com/watch?v=LxvFb63OOs8">Endianness Explained</a> — Aaron Yoo, tiếng Anh. Thứ tự byte trong bộ nhớ, đúng hai cách xếp của bài.
-- <a href="https://www.youtube.com/watch?v=T1C9Kj_78ek">Lecture 22. Big Endian and Little Endian</a> — Embedded Systems and Deep Learning, tiếng Anh. So sánh hai endian trên ví dụ địa chỉ.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=NcaiHcBvDR4">Endianness Explained With an Egg - Computerphile</a> — Computerphile, tiếng Anh. Giới thiệu trực quan big-endian và little-endian trên số nhiều byte.
+- <a href="https://www.youtube.com/watch?v=LxvFb63OOs8">Endianness Explained</a> — Aaron Yoo, tiếng Anh. Trình bày thứ tự byte trong bộ nhớ theo hai cách sắp xếp của bài.
+- <a href="https://www.youtube.com/watch?v=T1C9Kj_78ek">Lecture 22. Big Endian and Little Endian</a> — Embedded Systems and Deep Learning, tiếng Anh. So sánh hai kiểu endian qua ví dụ địa chỉ bộ nhớ cụ thể.

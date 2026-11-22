@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. The TACL 2024 survey places transformers on t
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite CFG, PDA, pumping for CFL, or CYK.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại CFG, PDA, pumping CFL hay CYK.
+Bài ghi chú ứng dụng song ngữ. Bài này **không** thay thế các nội dung về CFG, PDA, bổ đề bơm CFL hay thuật toán CYK.
 
 </div>
 
@@ -40,18 +40,18 @@ Use this after 19.10–19.12. It is a reading pointer, not a new pumping lemma.
 
 ## Tiếng Việt
 
-Chương 19 là Chomsky hierarchy kèm chứng minh: CFG $$=$$ PDA, pumping, CNF, CYK. Survey 2024 của Strobl et al. (*TACL*) là paper **tùy chọn** khớp chương này, không phải bản viết lại automata thứ hai.
+Chương 19 trình bày phân cấp Chomsky kèm các chứng minh chuẩn mực: CFG $$=$$ PDA, bổ đề bơm, dạng chuẩn CNF và thuật toán CYK. Bài khảo sát năm 2024 của Strobl và cộng sự (*TACL*) là tài liệu đọc **tùy chọn** tương ứng cho chương này, không thay thế phần lý thuyết ô-tô-mát và văn phạm.
 
-Họ coi input là chuỗi không chặn trên bảng chữ hữu hạn — cùng đối tượng $$L \subseteq \Sigma^*$$. Kết quả phụ thuộc encoder/decoder, kiểu attention, và độ chính xác số học. Đó là lý do một bài nói “transformer nhận mọi ngôn ngữ chính quy” còn bài khác phủ nhận: họ không chốt cùng một máy.
+Các tác giả xét đầu vào là những chuỗi có độ dài không bị chặn trên một bảng chữ cái hữu hạn — đúng với đối tượng $$L \subseteq \Sigma^*$$ của chương. Các định lý thu được phụ thuộc trực tiếp vào kiến trúc encoder hay decoder (có sinh ký hiệu trung gian hay không), loại cơ chế chú ý (*attention*) và độ chính xác số học. Chính vì vậy, một công trình có thể khẳng định “transformer nhận được mọi ngôn ngữ chính quy” trong khi công trình khác phủ nhận: họ đang xét hai mô hình máy khác nhau.
 
-Với sinh viên hướng compiler: **CFG và CYK vẫn parse ngôn ngữ lập trình**; transformer là bộ nhận khác, sức mạnh hình thức phải trích kèm giả thiết của survey.
+Đối với sinh viên theo hướng trình biên dịch, kết luận thực hành không thay đổi: **CFG và các thuật toán như CYK vẫn là công cụ chuẩn để phân tích ngôn ngữ lập trình**; còn transformer là một mô hình nhận dạng khác mà mọi phát biểu về sức mạnh hình thức đều phải đi kèm giả thiết cụ thể trong bài khảo sát.
 
-Đọc sau 19.10–19.12. Đây là pointer đọc, không phải pumping lemma mới.
+Nên đọc ghi chú này sau khi hoàn thành mục 19.10–19.12; đây là gợi ý tài liệu đọc thêm chứ không phải một bổ đề bơm mới.
 
-**Câu hỏi.** (1) Nêu một CFL mà pumping lemma loại; transformer-có-scratchpad có nhất thiết nhận nó? (2) Vì sao cận $$O(n^3)$$ của CYK dễ phát biểu hơn cận “expressivity” của transformer?
+**Câu hỏi.** (1) Nêu một ngôn ngữ bị bổ đề bơm CFL của chương này loại (không phải CFL); liệu một transformer có bộ nhớ nháp (*scratchpad*) có nhất thiết nhận dạng được ngôn ngữ đó không? (2) Vì sao cận thời gian $$O(n^3)$$ của thuật toán CYK dễ phát biểu chặt chẽ hơn so với cận về “sức mạnh biểu diễn” (*expressivity*) của transformer?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=wjZofJX0v4M">Transformers, the tech behind LLMs | Deep Learning Chapter 5</a> — 3Blue1Brown, tiếng Anh. Xem trước transformer, mô hình bài đặt lên bản đồ ngôn ngữ hình thức.
-- <a href="https://www.youtube.com/watch?v=224plb3bCog">Chomsky Hierarchy - Computerphile</a> — Computerphile, tiếng Anh. Phân cấp Chomsky, thang CFG và PDA của chương.
-- <a href="https://www.youtube.com/watch?v=5_tfVe7ED3g">Context Free Grammar &amp; Context Free Language</a> — Neso Academy, tiếng Anh. CFG, lớp bài khảo sát so với khả năng của transformer.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=wjZofJX0v4M">Transformers, the tech behind LLMs | Deep Learning Chapter 5</a> — 3Blue1Brown, tiếng Anh. Giới thiệu kiến trúc transformer — mô hình được đặt lên bản đồ ngôn ngữ hình thức trong bài.
+- <a href="https://www.youtube.com/watch?v=224plb3bCog">Chomsky Hierarchy - Computerphile</a> — Computerphile, tiếng Anh. Phân cấp Chomsky với hai cột mốc CFG và PDA của chương.
+- <a href="https://www.youtube.com/watch?v=5_tfVe7ED3g">Context Free Grammar &amp; Context Free Language</a> — Neso Academy, tiếng Anh. Ôn lại CFG — lớp ngôn ngữ được đối chiếu với khả năng của transformer trong bài khảo sát.

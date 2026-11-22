@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. Kissat (SAT 2024) and CLRS-30 (ICML 2022) sho
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite Cook–Levin, reductions, FPT, or ETH.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại Cook–Levin, rút gọn, FPT hay ETH.
+Bài ghi chú ứng dụng song ngữ. Bài này **không** thay thế các nội dung về Cook–Levin, phép rút gọn, FPT hay ETH.
 
 </div>
 
@@ -36,17 +36,17 @@ Optional synthesis with 20.13 (fine-grained / average-case): competition SAT and
 
 ## Tiếng Việt
 
-SAT là NP-đầy đủ (chương này). Định lý **không** nói mọi instance đều khó. Hai hiện vật 2022–2024 giúp phân biệt điều đó khi dạy.
+SAT là bài toán NP-complete (như đã chứng minh trong chương này), nhưng định lý đó **không** khẳng định rằng mọi thể hiện đầu vào đều khó giải. Hai dẫn chứng thực nghiệm giai đoạn 2022–2024 giúp phân biệt rõ điểm này:
 
-1. **SAT công nghiệp.** Kissat 4.0 thắng cả ba vàng track chính SAT Competition 2024. CDCL thường xuyên giải CNF kiểm chứng hàng triệu biến. Đầy đủ worst-case và thực hành median-case là hai câu khác nhau — giáo trình đã nói; huy chương là hiện vật có ngày.
-2. **Thuật toán học.** CLRS-30 (ICML 2022) cho thấy bộ thực thi neural trông chính xác trên đồ thị nhỏ rồi thất bại khi $$n$$ tăng. Đó là thất bại **tổng quát hóa**, không phải lớp phức tạp mới — nhưng nó cảnh báo đừng coi mạng đã huấn luyện là thuật toán đa thức có chứng minh.
+1. **Bộ giải SAT công nghiệp.** Kissat 4.0 giành cả ba huy chương vàng ở các hạng mục chính tại SAT Competition 2024. Các bộ giải theo kiến trúc CDCL thường xuyên xử lý thành công những công thức CNF kiểm chứng phần mềm có hàng triệu biến. Tính NP-complete ở trường hợp xấu nhất và hiệu năng thực tế ở trường hợp trung vị là hai phát biểu hoàn toàn khác nhau — kết quả cuộc thi là minh chứng cụ thể cho sự phân biệt đó.
+2. **Thuật toán học từ dữ liệu.** Bộ chuẩn CLRS-30 (ICML 2022) cho thấy nhiều mô hình mạng nơ-ron đạt độ chính xác cao trên đồ thị nhỏ nhưng sụp đổ khi kích thước $$n$$ tăng lên. Đây là hạn chế về khả năng **tổng quát hóa thực nghiệm** chứ không tạo ra một lớp độ phức tạp mới, đồng thời nhắc nhở rằng không thể xem một mạng đã huấn luyện là một thuật toán thời gian đa thức có chứng minh tính đúng đắn.
 
-Tổng hợp tùy chọn với 20.13 (fine-grained / average-case): SAT thi đấu và lỗ hổng OOD của CLRS chính là *lý do* các lý thuyết mịn hơn tồn tại. Ghi chú không thêm phép rút gọn.
+Liên hệ với Bài 20.13 (độ phức tạp mịn và trường hợp trung bình): khoảng cách thực tế ở các bộ giải SAT và hiện tượng sụt giảm ngoài phân phối (OOD) trên CLRS chính là *lý do* các lý thuyết phân tích sâu hơn này ra đời. Ghi chú này không bổ sung thêm phép rút gọn mới.
 
-**Câu hỏi.** (1) Phát biểu Cook–Levin và kết quả huy chương SAT 2024 thành hai câu *không mâu thuẫn*. (2) Nếu GNN giải BFS CLRS 16 đỉnh 99%, tuyên bố nào vẫn bị cấm?
+**Câu hỏi.** (1) Hãy phát biểu định lý Cook–Levin và kết quả huy chương của Kissat tại SAT Competition 2024 thành hai câu *không mâu thuẫn* với nhau. (2) Nếu một GNN đạt độ chính xác 99% cho bài toán BFS trên đồ thị 16 đỉnh của CLRS, nhận định nào về mặt lý thuyết thuật toán vẫn không được phép đưa ra?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=YX40hbAHx3s">P vs. NP and the Computational Complexity Zoo</a> — hackerdashery, tiếng Anh. Xem trước NP-complete là xấu nhất, không phải mọi instance đều khó.
-- <a href="https://www.youtube.com/watch?v=YUqR-8rZ_gQ">Lecture 10-3 CDCL (Lecture 5 in CS433)</a> — Automated Reasoning, tiếng Anh. CDCL giải nhiều SAT công nghiệp, cùng lớp với Kissat.
-- <a href="https://www.youtube.com/watch?v=DZDrRxM6RwI">Petar Veličković (DeepMind) — Neural Algorithmic Reasoning</a> — Zeta Alpha, tiếng Anh. Mạng học thuật toán đồ thị có thể sai ngoài phân phối huấn luyện.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=YX40hbAHx3s">P vs. NP and the Computational Complexity Zoo</a> — hackerdashery, tiếng Anh. Nhấn mạnh rằng NP-complete phản ánh độ khó trường hợp xấu nhất, không có nghĩa mọi thể hiện đều khó.
+- <a href="https://www.youtube.com/watch?v=YUqR-8rZ_gQ">Lecture 10-3 CDCL (Lecture 5 in CS433)</a> — Automated Reasoning, tiếng Anh. Giải thích kiến trúc CDCL đằng sau các bộ giải SAT công nghiệp như Kissat.
+- <a href="https://www.youtube.com/watch?v=DZDrRxM6RwI">Petar Veličković (DeepMind) — Neural Algorithmic Reasoning</a> — Zeta Alpha, tiếng Anh. Phân tích khả năng và giới hạn ngoài phân phối của mạng nơ-ron khi học thuật toán đồ thị.

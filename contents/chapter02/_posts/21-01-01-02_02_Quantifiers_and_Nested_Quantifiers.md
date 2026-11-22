@@ -7,12 +7,12 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "Ở mục trước, chúng ta đã định nghĩa vị từ, miền xác định và giới thiệu sơ bộ hai lượng từ , . Mục này phát triển đầy đủ cách sử dụng lượng từ phổ dụng và…"
+excerpt: "Trình bày chi tiết lượng từ toàn thể, tồn tại, duy nhất, lượng từ lồng nhau, quy tắc phủ định De Morgan và cách dịch câu tự nhiên sang logic vị từ."
 ---
 
-Ở mục trước, chúng ta đã định nghĩa vị từ, miền xác định và giới thiệu sơ bộ hai lượng từ $$\forall$$, $$\exists$$. Mục này phát triển đầy đủ cách sử dụng lượng từ phổ dụng và lượng từ tồn tại, đặc biệt khi chúng lồng nhau. Trong toán học và lập trình, ta hiếm khi nói về một đối tượng cụ thể — thường cần khẳng định về **tất cả** hoặc **ít nhất một** phần tử trong tập hợp. Chỉ thay "mọi" bằng "tồn tại" có thể đảo ngược hoàn toàn ý nghĩa: *"Mọi sinh viên đều qua môn"* là khẳng định mạnh (một ngoại lệ là đủ để sai), trong khi *"Tồn tại một sinh viên qua môn"* yếu hơn nhiều (chỉ cần một nhân chứng). Trong database, `FOR ALL` và `EXISTS` dẫn đến hai truy vấn có kết quả khác nhau; trong kiểm chứng phần mềm, đặt sai lượng từ có thể biến đặc tả đúng thành vô nghĩa; trong toán học, nhầm thứ tự lượng từ lồng nhau là một trong những lỗi suy luận tinh vi nhất.
+Ở mục trước, chúng ta đã định nghĩa vị từ, miền xác định và giới thiệu sơ bộ hai lượng từ $$\forall$$ và $$\exists$$. Mục này trình bày đầy đủ cách sử dụng lượng từ toàn thể và lượng từ tồn tại, đặc biệt là khi nhiều lượng từ lồng vào nhau. Trong toán học và lập trình, ta thường cần khẳng định tính chất cho **tất cả** hoặc **ít nhất một** phần tử trong một tập hợp. Chỉ cần thay "mọi" bằng "tồn tại" là ý nghĩa thay đổi hoàn toàn: *"Mọi sinh viên đều qua môn"* là khẳng định mạnh (chỉ một ngoại lệ là đủ làm mệnh đề sai), còn *"Tồn tại một sinh viên qua môn"* yếu hơn nhiều (chỉ cần một nhân chứng). Trong cơ sở dữ liệu, `FOR ALL` và `EXISTS` cho hai kết quả truy vấn khác hẳn; trong kiểm chứng phần mềm, đặt sai lượng từ có thể làm sai lệch đặc tả; và trong toán học, nhầm thứ tự lượng từ lồng nhau là một trong những lỗi suy luận dễ mắc nhất.
 
-**Lượng từ** kiểm soát **phạm vi** của phát biểu và **độ mạnh** của kết luận. Khi lượng từ lồng nhau — "với mọi $$x$$, tồn tại $$y$$ sao cho..." — ta bước vào vùng mà nhiều lỗi suy luận tinh vi xuất hiện, nhưng cũng là nơi tạo nên sức mạnh của toán học, specification và các bài toán tìm kiếm, tối ưu, chứng minh tự động. Mục này trình bày cách sử dụng $$\forall$$ và $$\exists$$, cách kết hợp chúng với vị từ, và cách đọc đúng ý nghĩa khi nhiều lượng từ lồng vào nhau.
+**Lượng từ** kiểm soát **phạm vi** của phát biểu và **độ mạnh** của kết luận. Khi lượng từ lồng nhau — chẳng hạn "với mọi $$x$$, tồn tại $$y$$ sao cho..." — việc đọc và viết chính xác thứ tự lượng từ trở thành kỹ năng thiết yếu cho toán học, đặc tả phần mềm và các bài toán tìm kiếm, tối ưu, chứng minh tự động. Mục này trình bày cách dùng $$\forall$$, $$\exists$$, $$\exists!$$, quy tắc phủ định lượng từ và cách diễn giải lượng từ lồng nhau.
 
 ## Mục tiêu học tập
 
@@ -20,9 +20,9 @@ excerpt: "Ở mục trước, chúng ta đã định nghĩa vị từ, miền x�
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Sử dụng** lượng từ phổ quát $$orall$$ và tồn tại $$\exists$$ đúng ngữ cảnh.
-- **Phân tích** lượng từ lồng nhau và thứ tự lượng từ.
-- **Dịch** câu toán học và yêu cầu phần mềm sang công thức có lượng từ.
+- **Sử dụng** lượng từ toàn thể $$\forall$$ và tồn tại $$\exists$$ đúng ngữ cảnh.
+- **Phân tích** lượng từ lồng nhau và ảnh hưởng của thứ tự lượng từ.
+- **Dịch** các phát biểu toán học và yêu cầu phần mềm sang công thức có lượng từ.
 
 **Từ khóa**: lượng từ (quantifier), lồng lượng từ, phạm vi (scope), phủ định lượng từ.
 </div>
@@ -30,7 +30,7 @@ excerpt: "Ở mục trước, chúng ta đã định nghĩa vị từ, miền x�
 ## Vị từ, miền xác định và lượng từ
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Một **vị từ** $$P(x)$$ là một phát biểu chứa biến, chưa có giá trị chân trị cho đến khi biến được gán giá trị trong một **miền xác định**.
+**Định nghĩa**: Một **vị từ** $$P(x)$$ là phát biểu chứa biến, chưa có giá trị chân trị cho đến khi biến được gán giá trị cụ thể trong một **miền xác định**.
 </div>
 
 
@@ -41,13 +41,13 @@ excerpt: "Ở mục trước, chúng ta đã định nghĩa vị từ, miền x�
 - $$P(x,y)$$: vị từ hai biến.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Nếu $$U = \mathbb{Z}$$ và $$P(x)$$ là "$$x$$ chia hết cho 2", thì $$P(4)$$ đúng, $$P(5)$$ sai.
+**Ví dụ**: Nếu $$U = \mathbb{Z}$$ và $$P(x)$$ là "$$x$$ chia hết cho 2", thì $$P(4)$$ đúng và $$P(5)$$ sai.
 </div>
 
 
 #### Minh họa: miền xác định và phạm vi chân trị
 
-**Miền xác định** quy định tập giá trị mà biến có thể nhận; vị từ mô tả tính chất cần kiểm tra trên miền đó. Ví dụ, với miền $$\mathbb{R}$$, mệnh đề "Mọi $$x$$ đều có $$x^2 \geq 0$$" đúng; nhưng "Mọi $$x$$ đều có nghịch đảo" sai nếu miền chứa 0. Quy tắc tổng quát: miền càng rộng thì mệnh đề toàn thể càng khó đúng; miền càng hẹp thì dễ thỏa mãn hơn.
+**Miền xác định** quy định tập giá trị mà biến có thể nhận, còn vị từ mô tả tính chất cần kiểm tra trên miền đó. Chẳng hạn trên miền $$\mathbb{R}$$, mệnh đề "Mọi $$x$$ đều có $$x^2 \geq 0$$" là đúng, nhưng "Mọi $$x$$ đều có nghịch đảo" lại sai vì miền chứa số 0. Tổng quát, miền càng rộng thì mệnh đề toàn thể càng khó đúng, còn miền càng hẹp thì càng dễ thỏa mãn.
 
 ![Miền xác định](/discrete-mathematics-for-computer-science-iuh/img/course/Universe_of_discourse_1.png)
 
@@ -65,20 +65,20 @@ SELECT * FROM students WHERE gpa >= 3.5;      -- Có thể đúng/sai
 ## Lượng từ toàn thể
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: $$\forall x\,P(x)$$ đọc là "với mọi $$x$$, $$P(x)$$ đúng". Mệnh đề này đúng khi $$P(x)$$ đúng với tất cả phần tử trong miền xác định.
+**Định nghĩa**: $$\forall x\,P(x)$$ đọc là "với mọi $$x$$, $$P(x)$$ đúng". Mệnh đề này đúng khi $$P(x)$$ đúng với tất cả các phần tử trong miền xác định.
 </div>
 
 
-**Ký hiệu**: $$\forall$$, thường gợi nhớ từ tiếng Anh "for all".
+**Ký hiệu**: $$\forall$$, gợi nhớ từ tiếng Anh "for all".
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
 
 - $$\forall x \in \mathbb{R},\ x^2 \ge 0$$ là đúng.
 - $$\forall n \in \mathbb{N},\ n+1 > n$$ là đúng.
-- $$\forall n \in \mathbb{Z},\ n^2 > n$$ là sai vì $$n=0$$ là phản ví dụ.
+- $$\forall n \in \mathbb{Z},\ n^2 > n$$ là sai vì $$n = 0$$ là phản ví dụ.
 
-**Chứng minh một mệnh đề toàn thể** thường cần lập luận cho một phần tử tùy ý. Ví dụ, để chứng minh $$\forall n \in \mathbb{Z},\ n(n+1)$$ chẵn, lấy $$n$$ tùy ý. Trong hai số liên tiếp $$n$$ và $$n+1$$, một số chẵn, nên tích chia hết cho 2.
+**Chứng minh một mệnh đề toàn thể** thường thực hiện bằng cách xét một phần tử tùy ý. Chẳng hạn, để chứng minh $$\forall n \in \mathbb{Z},\ n(n+1)$$ chẵn, lấy $$n \in \mathbb{Z}$$ tùy ý: trong hai số nguyên liên tiếp $$n$$ và $$n + 1$$ luôn có một số chẵn, nên tích của chúng chia hết cho 2.
 
 ![Bảng đối lập với một vị từ](/discrete-mathematics-for-computer-science-iuh/img/course/Square_of_opposition__one_predicate.svg)
 
@@ -92,16 +92,16 @@ SELECT * FROM students WHERE gpa >= 3.5;      -- Có thể đúng/sai
 </div>
 
 
-**Ký hiệu**: $$\exists$$, thường gợi nhớ từ "exists".
+**Ký hiệu**: $$\exists$$, gợi nhớ từ tiếng Anh "exists".
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
 
-- $$\exists x \in \mathbb{Z},\ x^2 = 9$$ đúng vì $$x=3$$ hoặc $$x=-3$$.
-- $$\exists n \in \mathbb{N},\ n < 0$$ sai nếu $$\mathbb{N}$$ là tập số tự nhiên không âm.
-- $$\exists p \in \mathbb{P},\ p$$ chẵn đúng vì $$p=2$$.
+- $$\exists x \in \mathbb{Z},\ x^2 = 9$$ đúng vì có $$x = 3$$ (hoặc $$x = -3$$).
+- $$\exists n \in \mathbb{N},\ n < 0$$ sai khi $$\mathbb{N}$$ là tập số tự nhiên không âm.
+- $$\exists p \in \mathbb{P},\ p$$ chẵn đúng vì có số nguyên tố $$p = 2$$.
 
-**Chứng minh tồn tại** có thể bằng cách đưa ra nhân chứng (witness). Ví dụ, để chứng minh $$\exists x \in \mathbb{Z}, x^2 = 16$$, chỉ cần nêu $$x=4$$.
+**Chứng minh tồn tại** có thể thực hiện bằng cách chỉ ra một nhân chứng (witness). Ví dụ, để chứng minh $$\exists x \in \mathbb{Z},\ x^2 = 16$$, chỉ cần nêu $$x = 4$$.
 
 ![Lượng từ tồn tại](/discrete-mathematics-for-computer-science-iuh/img/course/Existential_Quantification.png)
 
@@ -111,27 +111,27 @@ SELECT * FROM students WHERE gpa >= 3.5;      -- Có thể đúng/sai
 ## Lượng từ duy nhất
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: $$\exists!x\,P(x)$$ nghĩa là tồn tại đúng một $$x$$ sao cho $$P(x)$$ đúng.
+**Định nghĩa**: $$\exists!x\,P(x)$$ nghĩa là tồn tại **đúng một** $$x$$ sao cho $$P(x)$$ đúng.
 </div>
 
 
-Một cách viết tương đương:
+Cách viết tương đương bằng $$\exists$$ và $$\forall$$:
 
 <div class="textbook-equation" markdown="1">
 $$\exists x\big(P(x) \land \forall y(P(y) \to y=x)\big).$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Trong tập số nguyên, $$\exists!x(x+3=10)$$ đúng vì chỉ có $$x=7$$.
+**Ví dụ**: Trong tập số nguyên, $$\exists!x\,(x+3=10)$$ đúng vì chỉ có duy nhất $$x = 7$$ thỏa mãn.
 </div>
 
 
 ## Lượng từ lồng nhau
 
-Lượng từ lồng nhau là nơi nhiều lỗi suy luận xuất hiện. Thứ tự lượng từ có thể thay đổi ý nghĩa hoàn toàn.
+Lượng từ lồng nhau là vị trí rất dễ phát sinh lỗi suy luận, vì việc đổi thứ tự lượng từ có thể làm thay đổi hoàn toàn ý nghĩa của mệnh đề.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Với miền là sinh viên và môn học, đặt $$T(x,y)$$ là "sinh viên $$x$$ thích môn $$y$$".
+**Ví dụ**: Với miền là tập sinh viên và tập môn học, đặt $$T(x,y)$$ là "sinh viên $$x$$ thích môn $$y$$".
 
 - $$\forall x\exists y\,T(x,y)$$: mỗi sinh viên thích ít nhất một môn nào đó.
 - $$\exists y\forall x\,T(x,y)$$: có một môn mà tất cả sinh viên đều thích.
@@ -142,13 +142,13 @@ Mệnh đề thứ hai mạnh hơn mệnh đề thứ nhất.
 
 ### Vì sao thứ tự lượng từ quan trọng
 
-Giả sử có ba sinh viên An, Bình, Chi và ba môn Toán, Lý, Tin.
+Giả sử có ba sinh viên An, Bình, Chi và ba môn Toán, Lý, Tin:
 
 - An thích Toán.
 - Bình thích Lý.
 - Chi thích Tin.
 
-Khi đó $$\forall x\exists y\,T(x,y)$$ đúng: ai cũng có ít nhất một môn thích. Nhưng $$\exists y\forall x\,T(x,y)$$ sai: không có môn chung cho cả ba.
+Khi đó $$\forall x\exists y\,T(x,y)$$ đúng vì sinh viên nào cũng có ít nhất một môn yêu thích, nhưng $$\exists y\forall x\,T(x,y)$$ sai vì không có môn nào được cả ba sinh viên cùng thích.
 
 ![Lượng từ lồng nhau](/discrete-mathematics-for-computer-science-iuh/img/course/Square_of_opposition__set_diagrams.svg)
 
@@ -168,13 +168,13 @@ $$\neg\exists x\,P(x) \equiv \forall x\,\neg P(x)$$
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
 
-Câu: "Mọi sinh viên đều nộp bài."
+Xét câu "Mọi sinh viên đều nộp bài":
 
 <div class="textbook-equation" markdown="1">
 $$\forall x\,N(x)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Phủ định đúng là: "Tồn tại ít nhất một sinh viên không nộp bài."
+Phủ định đúng là "Tồn tại ít nhất một sinh viên không nộp bài":
 
 <div class="textbook-equation" markdown="1">
 $$\exists x\,\neg N(x)$$
@@ -225,7 +225,7 @@ WHERE EXISTS (
 );
 ```
 
-Lượng từ cũng xuất hiện trong đặc tả phần mềm: "mọi request hợp lệ đều nhận response", "tồn tại một đường đi từ node nguồn đến node đích", "mỗi khóa ánh xạ đến đúng một giá trị".
+Lượng từ cũng xuất hiện thường xuyên trong đặc tả phần mềm: "mọi yêu cầu hợp lệ đều nhận được phản hồi", "tồn tại một đường đi từ nút nguồn đến nút đích", hay "mỗi khóa ánh xạ đến đúng một giá trị".
 
 ## Bài tập thực hành
 
@@ -233,20 +233,20 @@ Lượng từ cũng xuất hiện trong đặc tả phần mềm: "mọi request
 
 Viết phủ định của các công thức sau:
 
-1. $$\forall x (P(x) \to Q(x))$$
-2. $$\exists x \forall y (R(x,y))$$
+1. $$\forall x\, (P(x) \to Q(x))$$
+2. $$\exists x\, \forall y\, (R(x,y))$$
 
 <details>
 <summary>Đáp án</summary>
 
-1. $$\exists x (P(x) \land \lnot Q(x))$$
-2. $$\forall x \exists y \lnot R(x,y)$$
+1. $$\exists x\, (P(x) \land \lnot Q(x))$$
+2. $$\forall x\, \exists y\, \lnot R(x,y)$$
 
 </details>
 
 ### Bài tập 2: Dịch sang logic vị từ
 
-Dịch câu sau sang ngôn ngữ logic vị từ (x là sinh viên, y là môn học):
+Dịch câu sau sang ngôn ngữ logic vị từ ($$x$$ là sinh viên, $$y$$ là môn học):
 
 "Mọi sinh viên đều có ít nhất một môn học mà họ đạt điểm tối đa."
 
@@ -254,30 +254,31 @@ Dịch câu sau sang ngôn ngữ logic vị từ (x là sinh viên, y là môn h
 <summary>Đáp án</summary>
 
 <div class="textbook-equation" markdown="1">
-$$\forall x \exists y (Student(x) \land Course(y) \land Takes(x,y) \land Score(x,y,10))$$
+$$\forall x\,\big(Student(x) \to \exists y\,(Course(y) \land Takes(x,y) \land Score(x,y,10))\big)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+(Lưu ý: với lượng từ toàn thể $$\forall x$$, điều kiện lọc miền $$Student(x)$$ đi với phép kéo theo $$\to$$, không dùng phép hội $$\land$$.)
 </details>
 
 ### Bài tập 3: Phân biệt thứ tự lượng từ
 
-Giải thích tại sao hai công thức sau **không** tương đương:
+Giải thích tại sao hai công thức sau **không** tương đương trên $$\mathbb{R}$$:
 
-- $$\forall x \exists y (y > x)$$
-- $$\exists y \forall x (y > x)$$
+- $$\forall x\, \exists y\, (y > x)$$
+- $$\exists y\, \forall x\, (y > x)$$
 
 <details>
 <summary>Đáp án</summary>
 
-Công thức thứ nhất đúng trên $$\mathbb{R}$$ (với mọi x luôn tồn tại y = x+1). Công thức thứ hai sai vì không tồn tại một y nào lớn hơn mọi x.
+Công thức thứ nhất đúng trên $$\mathbb{R}$$ vì với mọi $$x$$ ta luôn chọn được $$y = x + 1 > x$$. Công thức thứ hai sai vì không tồn tại số thực $$y$$ nào lớn hơn mọi số thực $$x$$.
 
 </details>
 
 ### Bài tập 4: Ứng dụng Python/SQL
 
-Viết đoạn code Python và câu truy vấn SQL tương ứng với mệnh đề:
+Viết đoạn mã Python và câu truy vấn SQL tương ứng với mệnh đề:
 
-" Tồn tại một sinh viên có điểm trung bình > 9.0 "
+"Tồn tại một sinh viên có điểm trung bình > 9.0."
 
 <details>
 <summary>Đáp án</summary>
@@ -309,13 +310,16 @@ SELECT EXISTS (
 <details>
 <summary>Đáp án</summary>
 
-(a) **Sai.** Giả sử tồn tại x. Với y = 0: x + 0 = x·0 ⇔ x = 0. Với y = 1: x + 1 = x·1 ⇔ x + 1 = x ⇔ 1 = 0 (vô lý). Vậy không tồn tại x thỏa mãn.
+(a) **Sai.** Giả sử tồn tại $$x \in \mathbb{R}$$ thỏa mãn. Với $$y = 0$$ ta có $$x + 0 = 0 \iff x = 0$$. Khi đó thay $$y = 1$$ ta được $$0 + 1 = 0 \cdot 1 \iff 1 = 0$$ (vô lý). Vậy không tồn tại $$x$$ thỏa mãn.
 
-(b) **Sai.** Giả sử tồn tại x. Với y = 0, bất phương trình: x + 0 ≤ 2·x·0 ⇔ x ≤ 0. Với y = 1: x + 1 ≤ 2x ⇔ 1 ≤ x. Kết hợp x ≤ 0 và x ≥ 1 là vô lý.
+(b) **Sai.** Giả sử tồn tại $$x \in \mathbb{R}$$ thỏa mãn. Với $$y = 0$$, bất phương trình cho $$x \leq 0$$. Với $$y = 1$$, bất phương trình cho $$x + 1 \leq 2x \iff x \geq 1$$. Hai điều kiện $$x \leq 0$$ và $$x \geq 1$$ mâu thuẫn nhau.
 
-(c) **Sai.** Giả sử tồn tại x. Chọn y = 0: ⌈0⌉ = 0, ⌊0 + x⌋ = ⌊x⌋ = 0 ⇒ x ∈ [0,1). Chọn y = 1: ⌈1⌉ = 1, ⌊1 + x⌋. Với x ∈ [0,1): 1 + x ∈ [1,2) ⇒ ⌊1 + x⌋ = 1. OK. Nhưng chọn y = 0.5: ⌈0.5⌉ = 1, ⌊0.5 + x⌋. Với x ∈ [0,1): ⌊0.5 + x⌋ = 0 hoặc 1. Để bằng 1, cần 0.5 + x ≥ 1 ⇒ x ≥ 0.5. Nhưng với x ∈ [0.5,1), chọn y = -0.5: ⌈-0.5⌉ = 0, ⌊-0.5 + x⌋. Với x < 1: -0.5 + x < 0.5 ⇒ ⌊-0.5 + x⌋ ∈ {-1, 0}. Để bằng 0, cần -0.5 + x ≥ 0 ⇒ x ≥ 0.5. Với x ∈ [0.5,1): -0.5 + x ∈ [0, 0.5) ⇒ ⌊-0.5 + x⌋ = 0 ≠ ⌈-0.5⌉ = 0. OK. Thực tế x = 0.5 thỏa mãn? Kiểm tra: y = -0.5 ⇒ ⌈-0.5⌉ = 0, ⌊-0.5 + 0.5⌋ = ⌊0⌋ = 0 OK. Vậy mệnh đề **đúng** với x = 0.5.
+(c) **Sai.** Giả sử tồn tại $$x \in \mathbb{R}$$ sao cho $$\lceil y \rceil = \lfloor y + x \rfloor$$ với mọi $$y \in \mathbb{R}$$.
+    - Thay $$y = 0$$: $$\lceil 0 \rceil = 0$$, nên $$\lfloor x \rfloor = 0 \implies 0 \leq x < 1$$.
+    - Với mọi $$x \in [0, 1)$$, chọn $$y = \frac{1 - x}{2}$$. Khi đó $$0 < y < 1$$ nên $$\lceil y \rceil = 1$$, nhưng $$0 < y + x = \frac{1 + x}{2} < 1$$ nên $$\lfloor y + x \rfloor = 0 \neq 1$$ (chẳng hạn nếu $$x = 0.5$$ và $$y = 0.25$$ thì $$\lceil 0.25 \rceil = 1 \neq \lfloor 0.75 \rfloor = 0$$).
+    Vậy không tồn tại $$x \in \mathbb{R}$$ thỏa mãn.
 
-(d) **Đúng.** Với x ∈ ℤ, cần tìm y ∈ ℕ sao cho (y² ≤ x² ⇒ x ≤ 0). Biến đổi P ⇒ Q ≡ ¬P ∨ Q ≡ (y² > x²) ∨ (x ≤ 0). Với x ≤ 0, chọn y = 0 bất kỳ đều thỏa mãn vì Q đúng. Với x > 0 (x ≥ 1), cần ¬P đúng, tức y² > x², hay y > x. Chọn y = x + 1 ∈ ℕ, ta có y² > x². Vậy với mọi x, luôn tồn tại y thỏa mãn.
+(d) **Đúng.** Với $$x \in \mathbb{Z}$$, biến đổi $$(y^2 \leq x^2 \Rightarrow x \leq 0) \equiv (y^2 > x^2) \lor (x \leq 0)$$. Nếu $$x \leq 0$$, chọn $$y = 0 \in \mathbb{N}$$ thì vế phải đúng. Nếu $$x > 0$$, chọn $$y = x + 1 \in \mathbb{N}$$ thì $$y^2 > x^2$$ nên vế trái đúng. Do đó với mọi $$x \in \mathbb{Z}$$ luôn tồn tại $$y \in \mathbb{N}$$ thỏa mãn.
 
 </details>
 
@@ -332,20 +336,22 @@ SELECT EXISTS (
 <details>
 <summary>Đáp án</summary>
 
-(a) **Tương đương.** Vế trái: ∃x P(x) ∧ ∀y Q(y) — nghĩa là tồn tại x thỏa P và mọi y thỏa Q. Vế phải: ∀y ∃x (P(x) ∧ Q(y)) — với mọi y, tồn tại x (phụ thuộc vào y) sao cho P(x) và Q(y). Nếu vế trái đúng với x₀, thì với mọi y, chọn x = x₀, ta có P(x₀) ∧ Q(y). Ngược lại, nếu vế phải đúng thì với mọi y, tồn tại x_y. Vì Q(y) đúng với mọi y (theo ∀y), và miền không rỗng, chọn y₀ bất kỳ, x_{y₀} thỏa P. Hơn nữa Q(y) đúng với mọi y, nên vế trái đúng.
+(a) **Tương đương.** Nếu vế trái đúng, tồn tại $$x_0$$ thỏa $$P(x_0)$$ và mọi $$y$$ thỏa $$Q(y)$$; khi đó với mọi $$y$$, chọn $$x = x_0$$ ta có $$P(x_0) \land Q(y)$$, nên vế phải đúng. Ngược lại, nếu vế phải đúng: do miền không rỗng, lấy một $$y_0$$ bất kỳ sẽ có $$x_{y_0}$$ thỏa $$P(x_{y_0})$$, đồng thời với mọi $$y$$ đều có $$Q(y)$$ đúng, nên vế trái đúng.
 
-(b) **Không tương đương.** Phản ví dụ: Miền {0,1}. Đặt P(0,0)=T, P(0,1)=F, P(1,0)=F, P(1,1)=T, Q(0,0)=F, Q(0,1)=T, Q(1,0)=T, Q(1,1)=F. Vế trái: ∀x∃y (P(x,y)∨Q(x,y)). Với x=0: P(0,0)∨Q(0,0)=T∨F=T. Với x=1: P(1,1)∨Q(1,1)=T∨F=T. Vế trái đúng. Vế phải: (∀x∃y P(x,y)) ∨ (∀x∃y Q(x,y)). Vế trái của ∨: với x=0 ∃y P(0,y)=T (y=0), với x=1 ∃y P(1,y)=T (y=1) ⇒ đúng. Vế phải của ∨: với x=0 ∃y Q(0,y)=T (y=1), với x=1 ∃y Q(1,y)=T (y=0) ⇒ đúng. Cần phản ví dụ khác. Đặt P(0,0)=T, P(0,1)=F, P(1,0)=F, P(1,1)=F. Q(0,0)=F, Q(0,1)=T, Q(1,0)=F, Q(1,1)=F. Vế trái: x=0: T∨F=T, x=1: F∨F=F ⇒ vế trái sai. Vế phải: ∀x∃y P: x=0 ∃y P=T, x=1 ∃y P=F ⇒ sai. ∀x∃y Q: x=0 ∃y Q=T, x=1 ∃y Q=F ⇒ sai. Sai ∨ Sai = Sai. Vậy tương đương trong trường hợp này. Thử P(0,0)=T, P(0,1)=F, P(1,0)=F, P(1,1)=F. Q(0,0)=F, Q(0,1)=F, Q(1,0)=F, Q(1,1)=T. Vế trái: x=0: T∨F=T, x=1: F∨T=T ⇒ đúng. Vế phải: ∀x∃y P: x=0 T, x=1 F ⇒ sai. ∀x∃y Q: x=0 F, x=1 T ⇒ sai. Sai∨Sai = Sai. Vậy vế trái đúng, vế phải sai ⇒ **không tương đương**.
+(b) **Không tương đương.** Phản ví dụ trên miền $$\{0, 1\}$$: đặt $$P(0,0) = T$$ và $$P(x,y) = F$$ với các cặp còn lại; đặt $$Q(1,1) = T$$ và $$Q(x,y) = F$$ với các cặp còn lại.
+    - Vế trái $$\forall x \exists y\,(P(x,y) \lor Q(x,y))$$: với $$x = 0$$ chọn $$y = 0$$ ($$P(0,0) = T$$), với $$x = 1$$ chọn $$y = 1$$ ($$Q(1,1) = T$$) → **đúng**.
+    - Vế phải: $$\forall x \exists y\,P(x,y)$$ sai (tại $$x = 1$$ không có $$y$$ nào), và $$\forall x \exists y\,Q(x,y)$$ sai (tại $$x = 0$$ không có $$y$$ nào), nên tuyển hai vế **sai**.
 
-(c) **Tương đương.** Cả hai vế đều có dạng A ⇒ B. A = ∃x∀y P(x,y). B₁ = ∀y∃x P(x,y), B₂ = ∃x∃y P(x,y). Đã biết ∃x∀y P ⇒ ∀y∃x P (luôn đúng trong logic bậc nhất). Và ∀y∃x P ⇒ ∃x∃y P (vì nếu với mọi y tồn tại x, thì hiển nhiên tồn tại x và y). Vậy B₁ ⇒ B₂. Do đó khi A đúng, A ⇒ B₁ và A ⇒ B₂ đều đúng. Khi A sai, cả hai đều đúng (vì false ⇒ anything). Vậy hai vế tương đương.
+(c) **Tương đương.** Cả hai vế đều là hằng đúng trên miền không rỗng: từ $$\exists x \forall y\,P(x,y)$$ luôn suy ra $$\forall y \exists x\,P(x,y)$$, và từ $$\forall y \exists x\,P(x,y)$$ (trên miền không rỗng) luôn suy ra $$\exists x \exists y\,P(x,y)$$. Vì hai vế đều luôn đúng nên chúng tương đương logic.
 
 </details>
 
 ### Bài tập 7: Phủ định lượng từ trong đời thường
 
-Phủ định các câu sau và viết dưới dạng câu tự nhiên (không dùng ký hiệu toán học):
+Phủ định các câu sau và diễn đạt lại bằng câu tiếng Việt tự nhiên (không dùng ký hiệu toán học):
 
 (a) "Mọi sinh viên trong lớp đều nộp bài đúng hạn."
-(b) "Có ít nhất một server còn hoạt động."
+(b) "Có ít nhất một máy chủ còn hoạt động."
 (c) "Mọi giao dịch đều được ghi log."
 (d) "Tồn tại một lỗ hổng bảo mật chưa được vá."
 (e) "Không ai không thích âm nhạc." (gợi ý: viết lại dưới dạng lượng từ trước)
@@ -354,27 +360,25 @@ Phủ định các câu sau và viết dưới dạng câu tự nhiên (không d
 <summary>Đáp án</summary>
 
 (a) **Phủ định**: "Có ít nhất một sinh viên trong lớp không nộp bài đúng hạn."
-    Ký hiệu: $$\neg\forall x N(x) \equiv \exists x \neg N(x)$$
+    Ký hiệu: $$\neg\forall x\, N(x) \equiv \exists x\, \neg N(x)$$.
 
-(b) **Phủ định**: "Mọi server đều ngừng hoạt động." (không còn server nào hoạt động)
-    Ký hiệu: $$\neg\exists x H(x) \equiv \forall x \neg H(x)$$
+(b) **Phủ định**: "Mọi máy chủ đều ngừng hoạt động." (Không còn máy chủ nào hoạt động.)
+    Ký hiệu: $$\neg\exists x\, H(x) \equiv \forall x\, \neg H(x)$$.
 
 (c) **Phủ định**: "Có ít nhất một giao dịch không được ghi log."
-    Ký hiệu: $$\neg\forall x L(x) \equiv \exists x \neg L(x)$$
+    Ký hiệu: $$\neg\forall x\, L(x) \equiv \exists x\, \neg L(x)$$.
 
 (d) **Phủ định**: "Mọi lỗ hổng bảo mật đều đã được vá."
-    Ký hiệu: $$\neg\exists x V(x) \equiv \forall x \neg V(x)$$
+    Ký hiệu: $$\neg\exists x\, V(x) \equiv \forall x\, \neg V(x)$$.
 
-(e) "Không ai không thích âm nhạc" = $$\neg\exists x \neg M(x) \equiv \forall x M(x)$$.
-    **Phủ định**: "Có người không thích âm nhạc." ($$\exists x \neg M(x)$$)
-    
-    Lưu ý: Câu gốc "không ai không thích" là câu phủ định kép, tương đương với "mọi người đều thích". Việc nắm vững phủ định lượng từ giúp tránh hiểu nhầm các câu phức tạp trong đời thường và trong văn bản pháp lý.
+(e) Câu gốc "Không ai không thích âm nhạc" là $$\neg\exists x\, \neg M(x) \equiv \forall x\, M(x)$$ ("mọi người đều thích âm nhạc").
+    **Phủ định**: "Có ít nhất một người không thích âm nhạc." ($$\exists x\, \neg M(x)$$).
 
 </details>
 
 ### Bài tập 8: Dịch câu tiếng Việt có lượng từ lồng nhau
 
-Dịch các câu sau sang logic vị từ. Xác định miền xác định phù hợp.
+Dịch các câu sau sang logic vị từ và xác định miền xác định phù hợp:
 
 (a) "Mọi sinh viên đều có một mã số duy nhất."
 (b) "Có một cuốn sách mà mọi sinh viên đều đọc."
@@ -385,32 +389,22 @@ Dịch các câu sau sang logic vị từ. Xác định miền xác định phù
 <details>
 <summary>Đáp án</summary>
 
-(a) $$\forall s \in Student\; \exists! m \in ID\; HasID(s, m)$$
-    "Mỗi sinh viên s có duy nhất một mã số m." Lượng từ tồn tại duy nhất (∃!) dùng để diễn tả "duy nhất".
-    
-    Không dùng ∃!? Có thể viết: $$\forall s \exists m (HasID(s,m) \land \forall n (HasID(s,n) \to n = m))$$
+(a) $$\forall s \in Student\; \exists! m \in ID\; HasID(s, m)$$ — mỗi sinh viên $$s$$ có duy nhất một mã số $$m$$. Nếu không dùng $$\exists!$$, có thể viết:
+    $$\forall s\, \exists m\, \big(HasID(s,m) \land \forall n\, (HasID(s,n) \to n = m)\big)$$.
 
-(b) $$\exists b \in Book\; \forall s \in Student\; Read(s, b)$$
-    "Tồn tại một cuốn sách b mà mọi sinh viên s đều đọc b."
-    Lưu ý thứ tự: ∃ trước ∀ — có cùng một cuốn sách.
+(b) $$\exists b \in Book\; \forall s \in Student\; Read(s, b)$$ — lượng từ $$\exists$$ đứng trước $$\forall$$ biểu thị cùng một cuốn sách chung cho mọi sinh viên.
 
-(c) $$\forall p \in People\; \exists q \in People\; Love(p, q)$$
-    "Với mọi người p, tồn tại người q (có thể phụ thuộc vào p) sao cho p yêu q."
-    Lưu ý: q phụ thuộc vào p — mỗi người có thể yêu một người khác nhau.
+(c) $$\forall p \in People\; \exists q \in People\; Love(p, q)$$ — $$q$$ phụ thuộc vào $$p$$, nên mỗi người có thể yêu thương một người khác nhau.
 
-(d) $$\exists p \in People\; \forall q \in People\; Respect(q, p)$$
-    "Tồn tại người p mà mọi người q đều kính trọng p."
-    Đây là mệnh đề rất mạnh — chỉ một người duy nhất được mọi người kính trọng.
+(d) $$\exists p \in People\; \forall q \in People\; Respect(q, p)$$ — tồn tại cùng một người $$p$$ được mọi người kính trọng.
 
-(e) $$\neg\exists s \in Student\; \forall m \in Subject\; Like(s, m)$$
-    Tương đương: $$\forall s \in Student\; \exists m \in Subject\; \neg Like(s, m)$$
-    "Với mọi sinh viên s, tồn tại ít nhất một môn m mà s không thích."
+(e) $$\neg\exists s \in Student\; \forall m \in Subject\; Like(s, m)$$, tương đương với $$\forall s \in Student\; \exists m \in Subject\; \neg Like(s, m)$$ ("với mọi sinh viên $$s$$, tồn tại ít nhất một môn $$m$$ mà $$s$$ không thích").
 
 </details>
 
 ### Bài tập 9: Xác định chân trị với lượng từ lồng nhau
 
-Cho miền $$U = \mathbb{Z}$$ (số nguyên). Xác định các mệnh đề sau đúng hay sai:
+Cho miền $$U = \mathbb{Z}$$ (tập số nguyên). Xác định các mệnh đề sau đúng hay sai:
 
 (a) $$\forall x\; \exists y\; (x + y = 0)$$
 (b) $$\exists y\; \forall x\; (x + y = 0)$$
@@ -421,26 +415,26 @@ Cho miền $$U = \mathbb{Z}$$ (số nguyên). Xác định các mệnh đề sau
 <details>
 <summary>Đáp án</summary>
 
-(a) **Đúng.** Với mọi x, chọn y = -x (số đối). Khi đó x + (-x) = 0. Lưu ý y phụ thuộc vào x.
+(a) **Đúng.** Với mọi $$x \in \mathbb{Z}$$, chọn $$y = -x \in \mathbb{Z}$$ thì $$x + (-x) = 0$$ ($$y$$ phụ thuộc vào $$x$$).
 
-(b) **Sai.** Mệnh đề này yêu cầu tồn tại một y duy nhất cộng với mọi x đều bằng 0. Nếu y = 0, thì với x = 1: 1 + 0 = 1 ≠ 0. Với y bất kỳ, chọn x ≠ -y là thấy sai. Không có y nào thỏa mãn với mọi x.
+(b) **Sai.** Không có số nguyên $$y$$ cố định nào cộng với mọi $$x \in \mathbb{Z}$$ đều bằng 0 (với bất kỳ $$y$$ nào, chỉ cần chọn $$x \neq -y$$ sẽ làm $$x + y \neq 0$$).
 
-(c) **Sai.** Với x = -3, y = 2: x < y (-3 < 2) đúng, nhưng x² = 9 > 4 = y². Mệnh đề chỉ đúng trên ℕ (số tự nhiên không âm), không đúng trên ℤ.
+(c) **Sai.** Phản ví dụ: $$x = -3, y = 2$$ có $$x < y$$ nhưng $$x^2 = 9 > 4 = y^2$$. (Mệnh đề này đúng trên $$\mathbb{N}$$, nhưng sai trên $$\mathbb{Z}$$.)
 
-(d) **Đúng.** Chọn x = 0, y = 0: 0² + 0² = 0. Đây là cặp duy nhất thỏa mãn.
+(d) **Đúng.** Chọn $$x = 0, y = 0$$ ta có $$0^2 + 0^2 = 0$$.
 
-(e) **Sai.** Với x = -1: y = (-1)² = 1 — vậy thỏa mãn. Nhưng y = x² luôn không âm. Với mọi x, y = x² luôn tồn tại. WAIT: Mệnh đề này nói "với mọi x, tồn tại y sao cho y = x²" — điều này **đúng** vì với mỗi x, ta chỉ cần gán y = x². Tuy nhiên cần lưu ý: y có phải là số nguyên không? x² luôn là số nguyên với x ∈ ℤ, nên y ∈ ℤ. Vậy mệnh đề **đúng**.
+(e) **Đúng.** Với mọi số nguyên $$x \in \mathbb{Z}$$, bình phương $$x^2$$ cũng là một số nguyên, nên luôn tồn tại $$y = x^2 \in \mathbb{Z}$$ thỏa mãn.
 
 </details>
 
 ### Bài tập 10: Ứng dụng truy vấn cơ sở dữ liệu
 
-Cho lược đồ CSDL:
-- SinhVien(mãSV, tên, tuổi, lớp)
-- HọcPhần(mãHP, tênHP, tínChỉ)
-- ĐăngKý(mãSV, mãHP, điểm)
+Cho lược đồ cơ sở dữ liệu:
+- `SinhVien(mãSV, tên, tuổi, lớp)`
+- `HọcPhần(mãHP, tênHP, tínChỉ)`
+- `ĐăngKý(mãSV, mãHP, điểm)`
 
-Viết câu SQL và câu logic vị từ tương ứng cho:
+Viết công thức logic vị từ và câu truy vấn SQL tương ứng cho các yêu cầu sau:
 
 (a) "Tìm tất cả sinh viên đăng ký học phần 'Toán Rời Rạc'."
 (b) "Sinh viên nào đã đăng ký mọi học phần?"
@@ -451,11 +445,11 @@ Viết câu SQL và câu logic vị từ tương ứng cho:
 <summary>Đáp án</summary>
 
 Đặt các vị từ:
-- $$SV(s, n, t, l)$$: s là sinh viên với tên n, tuổi t, lớp l
-- $$HP(m, ten, tc)$$: m là mã học phần với tên ten, số tín chỉ tc
-- $$DK(s, m, d)$$: sinh viên s đăng ký học phần m với điểm d
+- $$SV(s, n, t, l)$$: $$s$$ là sinh viên có tên $$n$$, tuổi $$t$$, lớp $$l$$.
+- $$HP(m, ten, tc)$$: $$m$$ là mã học phần có tên $$ten$$, số tín chỉ $$tc$$.
+- $$DK(s, m, d)$$: sinh viên $$s$$ đăng ký học phần $$m$$ với điểm $$d$$.
 
-(a) $$\exists m (HP(m, "Toán Rời Rạc", tc) \land DK(s, m, d))$$
+(a) $$\exists m, tc, d\, (HP(m, \text{"Toán Rời Rạc"}, tc) \land DK(s, m, d))$$
 ```sql
 SELECT sv.* FROM SinhVien sv
 JOIN DangKy dk ON sv.maSV = dk.maSV
@@ -463,7 +457,7 @@ JOIN HocPhan hp ON dk.maHP = hp.maHP
 WHERE hp.tenHP = 'Toán Rời Rạc'
 ```
 
-(b) $$\forall m (HP(m, ten, tc) \to \exists d DK(s, m, d))$$
+(b) $$\forall m, ten, tc\, (HP(m, ten, tc) \to \exists d\, DK(s, m, d))$$
 ```sql
 SELECT maSV FROM SinhVien sv
 WHERE NOT EXISTS (
@@ -483,7 +477,7 @@ WHERE NOT EXISTS (
 )
 ```
 
-(d) $$\exists m, ten, d (HP(m, ten, 3) \land DK(s, m, d))$$
+(d) $$\exists m, ten, d\, (HP(m, ten, 3) \land DK(s, m, d))$$
 ```sql
 SELECT DISTINCT sv.* FROM SinhVien sv
 JOIN DangKy dk ON sv.maSV = dk.maSV
@@ -498,7 +492,7 @@ WHERE hp.tinChi = 3
 
 ## Công cụ tương tác
 
-Bật/tắt các ô trong lưới “sinh viên × môn học” để thấy sự khác nhau giữa $$\forall x\exists y$$ và $$\exists y\forall x$$.
+Bật/tắt các ô trong lưới “sinh viên × môn học” để quan sát sự khác nhau giữa $$\forall x\exists y$$ và $$\exists y\forall x$$.
 <div class="interactive-demo" markdown="1">
 <div data-demo="nested-quantifier-grid"></div>
 </div>
@@ -512,16 +506,16 @@ Bật/tắt các ô trong lưới “sinh viên × môn học” để thấy s�
 
 ## Tóm tắt
 
-- Lượng từ $$\forall$$ (toàn thể) và $$\exists$$ (tồn tại) kiểm soát phạm vi và độ mạnh của phát biểu; thay đổi lượng từ có thể đảo ngược ý nghĩa hoàn toàn.
-- **Thứ tự lượng từ lồng nhau** quyết định ngữ nghĩa: $$\forall x \exists y$$ khác $$\exists y \forall x$$.
-- **Phủ định lượng từ** tuân luật De Morgan: $$\neg\forall x\,P(x) \equiv \exists x\,\neg P(x)$$ và $$\neg\exists x\,P(x) \equiv \forall x\,\neg P(x)$$.
-- Lượng từ duy nhất $$\exists!$$ diễn tả "đúng một" phần tử thỏa mãn vị từ.
-- Trong SQL và Python, `EXISTS`/`NOT EXISTS`, `all()`/`any()` là triển khai trực tiếp của $$\exists$$ và $$\forall$$.
+- Lượng từ $$\forall$$ (toàn thể) và $$\exists$$ (tồn tại) kiểm soát phạm vi và độ mạnh của phát biểu; thay đổi lượng từ có thể làm đảo ngược ý nghĩa.
+- **Thứ tự lượng từ lồng nhau** quyết định ngữ nghĩa: $$\forall x \exists y$$ khác với $$\exists y \forall x$$.
+- **Phủ định lượng từ** tuân theo luật De Morgan: $$\neg\forall x\,P(x) \equiv \exists x\,\neg P(x)$$ và $$\neg\exists x\,P(x) \equiv \forall x\,\neg P(x)$$.
+- Lượng từ duy nhất $$\exists!$$ diễn đạt "tồn tại đúng một" phần tử thỏa mãn vị từ.
+- Trong SQL và Python, `EXISTS`/`NOT EXISTS` và `all()`/`any()` là hiện thực trực tiếp của $$\exists$$ và $$\forall$$.
 
-Trong bài tiếp theo, chúng ta sẽ học **quy tắc suy luận** với lượng từ — cách từ các tiền đề đã biết suy ra kết luận hợp lệ.
+Trong bài tiếp theo, chúng ta sẽ học **quy tắc suy luận** với lượng từ để rút ra kết luận hợp lệ từ các tiền đề đã biết.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=jLVKV5LJjaw">Negating Logical Statements with Multiple Quantifiers</a> — Dr. Trefor Bazett, tiếng Anh. Xem trước lượng từ lồng nhau và thứ tự khi phủ định.
-- <a href="https://www.youtube.com/watch?v=q1rKFGSiZE8">Negating Universal and Existential Quantifiers</a> — Dr. Trefor Bazett, tiếng Anh. Phủ định ∀ và ∃ từng bước, đúng phần đổi lượng từ.
-- <a href="https://www.youtube.com/watch?v=7HvCgm4vBv4">[Discrete Mathematics] Negating Quantifiers and Translation Examples</a> — TrevTutor, tiếng Anh. Dịch câu có lượng từ và viết phủ định.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=jLVKV5LJjaw">Negating Logical Statements with Multiple Quantifiers</a> — Dr. Trefor Bazett, tiếng Anh. Trình bày lượng từ lồng nhau và cách giữ đúng thứ tự khi phủ định.
+- <a href="https://www.youtube.com/watch?v=q1rKFGSiZE8">Negating Universal and Existential Quantifiers</a> — Dr. Trefor Bazett, tiếng Anh. Hướng dẫn phủ định $$\forall$$ và $$\exists$$ từng bước.
+- <a href="https://www.youtube.com/watch?v=7HvCgm4vBv4">[Discrete Mathematics] Negating Quantifiers and Translation Examples</a> — TrevTutor, tiếng Anh. Minh họa cách dịch câu có lượng từ và viết phủ định.

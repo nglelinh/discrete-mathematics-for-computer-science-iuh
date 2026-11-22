@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. Strobl et al. (TACL 2024) survey which formal
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite DFA/NFA, pumping, Myhill–Nerode, or Turing machines.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại DFA/NFA, pumping, Myhill–Nerode hay máy Turing.
+Bài ghi chú ứng dụng song ngữ. Bài này **không** thay thế các nội dung về DFA/NFA, bổ đề bơm, Myhill–Nerode hay máy Turing.
 
 </div>
 
@@ -34,16 +34,16 @@ Read Sipser-style proofs first. Then use the 2024 survey as a reading list, not 
 
 ## Tiếng Việt
 
-Chương này phân loại máy theo ngôn ngữ chúng nhận. Từ khoảng 2021, một dòng bài song song hỏi cùng câu cho **transformer**. Strobl, Merrill, Weiss, Chiang và Angluin (*TACL* 2024) thống nhất các kết quả trông mâu thuẫn vì mỗi bài giả định mask, độ chính xác và API encoder/decoder khác nhau.
+Chương này phân loại các mô hình máy theo lớp ngôn ngữ mà chúng nhận dạng được. Từ năm 2021 trở lại đây, một hướng nghiên cứu song song đặt câu hỏi tương tự cho kiến trúc **transformer**. Công trình khảo sát của Strobl, Merrill, Weiss, Chiang và Angluin (*TACL*, 2024) hệ thống hóa lại các kết quả vốn thoạt nhìn có vẻ mâu thuẫn do mỗi bài báo giả định cơ chế che mặt nạ (*mask*), độ chính xác số học và giao diện encoder/decoder khác nhau.
 
-Slogan hữu ích (đọc bài để thấy caveat): khi có chain-of-thought / ký hiệu trung gian, mô hình kiểu decoder mô phỏng máy mạnh hơn; encoder-only với attention hạn chế thường nằm trong lớp mạch nhỏ ($$\mathsf{AC}^0$$ / $$\mathsf{TC}^0$$ trong survey). Bài học tùy chọn: **regular / CFL / decidable** vẫn là thước đúng. Transformer không “vượt Chomsky” cho đến khi bạn chốt mô hình tính toán — đúng điều survey buộc phải chốt.
+Một nhận định cô đọng từ bài khảo sát (cần đọc bài gốc để nắm đầy đủ điều kiện giả thiết): khi được phép sinh chuỗi suy nghĩ (*chain-of-thought*) hay ký hiệu nháp trung gian, mô hình dạng decoder có thể mô phỏng các lớp máy mạnh hơn; trong khi đó, mô hình chỉ có encoder với cơ chế chú ý hạn chế thường nằm trong các lớp mạch nhỏ (như $$\mathsf{AC}^0$$ hoặc $$\mathsf{TC}^0$$). Điểm cốt lõi cần ghi nhớ: các mốc **chính quy / phi ngữ cảnh / quyết định được** vẫn là thước đo chuẩn xác; không thể nói transformer “vượt phân cấp Chomsky” khi chưa chốt rõ mô hình tính toán cụ thể.
 
-Đọc chứng minh kiểu Sipser trước. Rồi dùng survey 2024 như danh mục đọc, không phải chương thay thế.
+Hãy nắm vững các chứng minh cổ điển theo phong cách Sipser trước, rồi dùng bài khảo sát năm 2024 này như danh mục tài liệu đọc thêm chứ không thay thế nội dung chương.
 
-**Câu hỏi.** (1) Máy Chương 18 nào bạn nhận nếu cho transformer scratch token không chặn (tạm hiểu: một băng)? (2) Vì sao phải nêu “softmax hay hard attention” trước khi trích định lý expressivity?
+**Câu hỏi.** (1) Nếu cho phép một transformer sử dụng số lượng token nháp không bị chặn (tương tự như một băng nhớ), mô hình đó tương ứng với loại máy nào trong Chương 18? (2) Vì sao cần nêu rõ giả thiết “softmax hay hard attention” trước khi trích dẫn một định lý về sức mạnh biểu diễn?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=wjZofJX0v4M">Transformers, the tech behind LLMs | Deep Learning Chapter 5</a> — 3Blue1Brown, tiếng Anh. Xem trước transformer, mô hình bài đối chiếu với otomat.
-- <a href="https://www.youtube.com/watch?v=Qa6csfkK7_I">Finite State Machine (Finite Automata)</a> — Neso Academy, tiếng Anh. DFA, lớp máy hữu hạn nằm trong bản đồ bài khảo sát.
-- <a href="https://www.youtube.com/watch?v=224plb3bCog">Chomsky Hierarchy - Computerphile</a> — Computerphile, tiếng Anh. Phân cấp Chomsky, thang ngôn ngữ mà transformer được đặt lên.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=wjZofJX0v4M">Transformers, the tech behind LLMs | Deep Learning Chapter 5</a> — 3Blue1Brown, tiếng Anh. Giới thiệu kiến trúc transformer — mô hình được đối chiếu với ô-tô-mát trong bài.
+- <a href="https://www.youtube.com/watch?v=Qa6csfkK7_I">Finite State Machine (Finite Automata)</a> — Neso Academy, tiếng Anh. Ôn lại DFA, lớp máy hữu hạn nằm trong bản đồ của bài khảo sát.
+- <a href="https://www.youtube.com/watch?v=224plb3bCog">Chomsky Hierarchy - Computerphile</a> — Computerphile, tiếng Anh. Phân cấp Chomsky — hệ quy chiếu ngôn ngữ dùng để đánh giá sức mạnh của transformer.

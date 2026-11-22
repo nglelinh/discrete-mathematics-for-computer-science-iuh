@@ -7,12 +7,12 @@ date: 2021-01-01
 order: 2
 required: true
 lang: en
-excerpt: "Ở mục trước chúng ta đã học phát biểu cơ bản và tổng quát của nguyên lý Dirichlet. Mục này trình bày các ứng dụng nâng cao và biến thể mở rộng của nguyên lý."
+excerpt: "Các biến thể mở rộng và ứng dụng nâng cao của nguyên lý Dirichlet trong lý thuyết số, hình học tổ hợp, phân tích va chạm băm, cân bằng tải và tắc nghẽn mạng."
 ---
 
-Ở mục trước chúng ta đã học phát biểu cơ bản và tổng quát của nguyên lý Dirichlet. Mục này trình bày các **ứng dụng nâng cao** và biến thể mở rộng của nguyên lý.
+Ở mục trước, chúng ta đã học phát biểu cơ bản và dạng tổng quát của nguyên lý Dirichlet. Mục này trình bày các **ứng dụng nâng cao** cùng một số biến thể mở rộng của nguyên lý trong toán học và khoa học máy tính.
 
-Một nguyên lý nhìn rất đơn giản có thể tạo ra các kết luận tinh tế về số học, hình học, tổ hợp và các bài toán trong khoa học máy tính. Ở mức nâng cao, chúng ta không chỉ hỏi "có ít nhất hai phần tử rơi cùng một ngăn hay không" mà còn muốn biết ít nhất bao nhiêu phần tử phải rơi vào cùng một nhóm. Khả năng mô hình hóa trở nên quan trọng hơn bản thân công thức.
+Từ một ý tưởng rất đơn giản, nguyên lý Dirichlet có thể dẫn đến nhiều kết quả sâu sắc trong lý thuyết số, hình học tổ hợp và phân tích hệ thống. Ở mức độ nâng cao, câu hỏi không chỉ dừng lại ở việc có hai phần tử rơi vào cùng một ngăn hay không, mà còn xác định cận dưới về trọng số, số lượng phần tử hay cấu trúc bắt buộc phải xuất hiện. Vì vậy, bước khó nhất và quan trọng nhất là kỹ năng mô hình hóa bài toán.
 
 ## Mục tiêu học tập
 
@@ -20,9 +20,9 @@ Một nguyên lý nhìn rất đơn giản có thể tạo ra các kết luận 
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Áp dụng** biến thể tổng quát và đa chiều của nguyên lý Dirichlet.
-- **Giải** bài toán số học, hình học và tổ hợp bằng pigeonhole.
-- **Liên hệ** nguyên lý với load balancing và xấp xỉ thuật toán.
+- **Áp dụng** các biến thể có trọng số và đa chiều của nguyên lý Dirichlet.
+- **Giải** các bài toán lý thuyết số, hình học và tổ hợp bằng lập luận chuồng bồ câu.
+- **Liên hệ** nguyên lý với cân bằng tải, phân tích bộ nhớ đệm và đánh giá tắc nghẽn mạng.
 
 **Từ khóa**: Dirichlet tổng quát, đa chiều, load balancing, chứng minh tồn tại.
 </div>
@@ -33,30 +33,30 @@ Một nguyên lý nhìn rất đơn giản có thể tạo ra các kết luận 
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/pigeonhole-advanced.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 52 giây: dạng $$\lceil N/n \rceil$$ với hash table và cân bằng tải, 5 điểm trong hình vuông cạnh 1 luôn có hai điểm cách nhau không quá $$\sqrt{2}/2$$ (và vì sao không thể tốt hơn), 9 điểm luôn có tam giác diện tích không quá $$1/8$$, chọn 6 số từ 1 đến 10 có cặp tổng 11, tổng tiền tố và số dư để tìm đoạn liên tiếp chia hết cho 7 (cùng bội của 6 chỉ gồm chữ số 0 và 1: $$1110$$), và định lý Erdős–Szekeres bằng cách gắn nhãn $$(t, g)$$ trên một dãy 10 số cụ thể.
+Video dài khoảng 2 phút 52 giây: trình bày dạng tổng quát $$\lceil N/n \rceil$$ với bảng băm và cân bằng tải, bài toán 5 điểm trong hình vuông cạnh 1 luôn có hai điểm cách nhau không quá $$\sqrt{2}/2$$ (và lý do không thể cải thiện cận này), 9 điểm luôn có tam giác diện tích không quá $$1/8$$, chọn 6 số từ 1 đến 10 luôn có cặp tổng bằng 11, dùng tổng tiền tố và số dư để tìm đoạn liên tiếp chia hết cho 7 (cùng bội của 6 chỉ gồm chữ số 0 và 1 là $$1110$$), và định lý Erdős–Szekeres qua cách gắn nhãn $$(t, g)$$ trên một dãy 10 số cụ thể.
 
-## Nguyên lý Dirichlet Tổng quát
+## Các biến thể mở rộng của Nguyên lý Dirichlet
 
-### Nguyên lý Dirichlet với Trọng số
+### Nguyên lý Dirichlet có trọng số
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Nếu N đối tượng có tổng trọng số W được phân vào n nhóm, thì ít nhất một nhóm có tổng trọng số ≥ W/n.
+**Định lý**: Nếu $$N$$ đối tượng có tổng trọng số $$W$$ được phân vào $$n$$ nhóm, thì tồn tại ít nhất một nhóm có tổng trọng số lớn hơn hoặc bằng $$W/n$$.
 </div>
 
-**Ứng dụng**: Load balancing, phân phối tài nguyên, thuật toán xấp xỉ.
+**Ứng dụng**: cân bằng tải (load balancing), phân phối tài nguyên và thiết kế thuật toán xấp xỉ.
 
-### Nguyên lý Dirichlet Đa chiều
+### Nguyên lý Dirichlet đa chiều
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Nếu N điểm được đặt trong lưới k chiều với mỗi chiều có n ô, thì ít nhất một ô chứa ≥ ⌈N/n^k⌉ điểm.
+**Định lý**: Nếu đặt $$N$$ điểm vào một lưới $$k$$ chiều mà mỗi chiều được chia thành $$n$$ khoảng (tổng cộng $$n^k$$ ô), thì tồn tại ít nhất một ô chứa tối thiểu $$\lceil N/n^k \rceil$$ điểm.
 </div>
 
 ## Ứng dụng trong Lý thuyết Số
 
-### Định lý Dirichlet về Xấp xỉ Diophantine
+### Định lý Dirichlet về xấp xỉ Diophantine
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Với mọi số thực α và số nguyên dương N, tồn tại các số nguyên p, q với 1 ≤ q ≤ N sao cho:
+**Định lý**: Với mọi số thực $$\alpha$$ và mọi số nguyên dương $$N$$, tồn tại các số nguyên $$p, q$$ với $$1 \le q \le N$$ sao cho:
 
 <div class="textbook-equation" markdown="1">
 $$\left\vert \alpha - p/q\right\vert  < 1/(qN)$$
@@ -65,60 +65,59 @@ $$\left\vert \alpha - p/q\right\vert  < 1/(qN)$$
 </div>
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh**: Xét N+1 số {0, {α}, {2α}, ..., {Nα}} trong đoạn [0,1).
-Chia [0,1) thành N đoạn con bằng nhau. Theo nguyên lý Dirichlet, có 2 số {iα}, {jα} trong cùng một đoạn.
+**Ý tưởng chứng minh**: Xét $$N+1$$ phần lẻ $$\{0\}, \{\alpha\}, \{2\alpha\}, \ldots, \{N\alpha\}$$ nằm trong nửa khoảng $$[0,1)$$. Chia $$[0,1)$$ thành $$N$$ đoạn con bằng nhau, mỗi đoạn có độ dài $$1/N$$. Theo nguyên lý Dirichlet, có ít nhất hai giá trị $$\{i\alpha\}$$ và $$\{j\alpha\}$$ ($$0 \le i < j \le N$$) rơi vào cùng một đoạn con, từ đó suy ra tồn tại $$q = j - i$$ và $$p$$ thỏa mãn bất đẳng thức trên.
 </div>
 
 ![Dirichlet — ứng dụng trong lý thuyết số](/discrete-mathematics-for-computer-science-iuh/img/course/Dirichlet.jpg)
 
-<p class="textbook-figure-caption" data-figure="8.7">Định lý Dirichlet về xấp xỉ Diophantine — chia đoạn [0,1) thành $$N$$ chuồng để ép hai phân số gần nhau.</p>
-### Bài toán Tồn tại Nghiệm
+<p class="textbook-figure-caption" data-figure="8.7">Định lý Dirichlet về xấp xỉ Diophantine — chia đoạn [0,1) thành $$N$$ chuồng để ép hai phần lẻ nằm sát nhau.</p>
+### Bài toán tồn tại nghiệm đồng dư
 
-**Bài toán**: Chứng minh rằng với mọi số nguyên a không chia hết cho p (p là số nguyên tố), tồn tại số nguyên n sao cho a^n ≡ 1 (mod p).
+**Bài toán**: Chứng minh rằng với mọi số nguyên $$a$$ không chia hết cho số nguyên tố $$p$$, tồn tại số nguyên dương $$n$$ sao cho $$a^n \equiv 1 \pmod p$$.
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh**: Xét dãy a^1, a^2, ..., a^p (mod p). Có p số và p-1 giá trị có thể (1,2,...,p-1). Theo nguyên lý Dirichlet...
+**Ý tưởng chứng minh**: Xét dãy $$p$$ số $$a^1, a^2, \ldots, a^p \pmod p$$. Vì $$a$$ không chia hết cho $$p$$, mọi số hạng chỉ có thể nhận một trong $$p-1$$ số dư khác 0 là $$1, 2, \ldots, p-1$$. Theo nguyên lý Dirichlet, tồn tại $$1 \le i < j \le p$$ sao cho $$a^i \equiv a^j \pmod p$$, suy ra $$a^{j-i} \equiv 1 \pmod p$$.
 </div>
 
-## Ứng dụng trong Hình học
+## Ứng dụng trong Hình học và Tổ hợp
 
 ![Biểu đồ Venn — phân vùng không gian](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
-<p class="textbook-figure-caption" data-figure="8.8">Chia hình vuông thành các ô — mỗi ô là một chuồng, mỗi điểm là một bồ câu trong bài toán hình học.</p>
-### Bài toán Erdős-Ko-Rado
+<p class="textbook-figure-caption" data-figure="8.8">Phân vùng không gian thành các ô — mỗi ô là một chuồng và mỗi điểm là một bồ câu trong các bài toán hình học.</p>
+### Định lý Erdős–Ko–Rado
 
-**Bài toán**: Trong tập n phần tử, có bao nhiêu tập con k phần tử sao cho bất kỳ 2 tập nào cũng có giao khác rỗng?
+**Bài toán**: Trong một tập gồm $$n$$ phần tử, ta có thể chọn tối đa bao nhiêu tập con gồm $$k$$ phần tử (với $$n \ge 2k$$) sao cho hai tập bất kỳ đều có giao khác rỗng?
 
 <div class="textbook-theorem" markdown="1">
-**Định lý** (Erdős–Ko–Rado): Nếu $$n \ge 2k$$ thì số lượng tối đa là $$C(n-1, k-1)$$, đạt được chẳng hạn khi lấy mọi tập con $$k$$ phần tử chứa một phần tử cố định.
+**Định lý** (Erdős–Ko–Rado): Khi $$n \ge 2k$$, số lượng tập con tối đa là $$C(n-1, k-1)$$, đạt được chẳng hạn khi chọn mọi tập con $$k$$ phần tử cùng chứa một phần tử cố định.
 
-*Lưu ý.* Điều kiện $$n \ge 2k$$ là cần thiết: nếu $$n < 2k$$ thì hai tập con $$k$$ phần tử bất kỳ luôn giao nhau (vì $$k + k > n$$), nên có thể lấy tất cả $$C(n, k)$$ tập, nhiều hơn $$C(n-1, k-1)$$.
+*Lưu ý:* Điều kiện $$n \ge 2k$$ là cần thiết. Nếu $$n < 2k$$, hai tập con $$k$$ phần tử bất kỳ luôn giao nhau (do $$k + k > n$$), nên ta có thể chọn tất cả $$C(n, k)$$ tập, lớn hơn $$C(n-1, k-1)$$.
 </div>
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh bằng Nguyên lý Dirichlet**: Xét n! hoán vị của n phần tử. Mỗi tập con k phần tử xuất hiện trong k!(n-k)! hoán vị...
+**Ý tưởng chứng minh**: Xét các hoán vị vòng tròn của $$n$$ phần tử và đếm số tập con thuộc họ xuất hiện như các cung liên tiếp độ dài $$k$$ trên mỗi vòng tròn; trên mỗi vòng tròn, nhiều nhất $$k$$ cung như vậy có thể đôi một giao nhau.
 </div>
 
 ### Định lý Sperner
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Trong tập n phần tử, số lượng tối đa các tập con sao cho không tập nào chứa tập nào khác là C(n, ⌊n/2⌋).
+**Định lý**: Trong tập $$n$$ phần tử, số lượng tối đa các tập con sao cho không có tập nào chứa tập nào khác là $$C(n, \lfloor n/2 \rfloor)$$.
 </div>
 
-### Bài toán Ramsey đơn giản
+### Bài toán Ramsey cơ bản
 
-**Bài toán**: Trong 6 người, chứng minh rằng có 3 người quen nhau hoặc 3 người không quen nhau.
+**Bài toán**: Trong một nhóm 6 người bất kỳ, chứng minh rằng luôn có 3 người đôi một quen nhau hoặc 3 người đôi một không quen nhau.
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh**: Chọn 1 người A. Chia 5 người còn lại thành 2 nhóm: quen A và không quen A. Theo nguyên lý Dirichlet, một nhóm có ≥ 3 người...
+**Ý tưởng chứng minh**: Chọn một người A bất kỳ và chia 5 người còn lại thành 2 nhóm: nhóm quen A và nhóm không quen A. Theo nguyên lý Dirichlet, ít nhất một nhóm có từ 3 người trở lên; xét các mối quan hệ giữa 3 người trong nhóm đó sẽ thu được ngay bộ ba thỏa mãn.
 </div>
 
 ![Ramsey theory — trật tự bắt buộc xuất hiện](/discrete-mathematics-for-computer-science-iuh/img/course/TooManyPigeons.jpg)
 
-<p class="textbook-figure-caption" data-figure="8.9">Ramsey theory mở rộng tinh thần chuồng chim — cấu trúc đủ lớn thì một mẫu trật tự nhất định không thể tránh.</p>
+<p class="textbook-figure-caption" data-figure="8.9">Lý thuyết Ramsey mở rộng tinh thần chuồng chim — khi cấu trúc đủ lớn, một mẫu trật tự nhất định tất yếu phải xuất hiện.</p>
 ## Ứng dụng trong Khoa học Máy tính
 
-### Thuật toán Hash và Collision
+### Thuật toán băm và va chạm
 
 ```python
 class PigeonholeHashAnalysis:
@@ -148,8 +147,8 @@ print(f"Pigeonhole guarantee: 2^128 + 1 attempts")
 
 ![Birthday attack — va chạm hash](/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg)
 
-<p class="textbook-figure-caption" data-figure="8.10">Phân tích hash collision kết hợp nguyên lý chuồng chim và birthday bound — hai công cụ nền trong cryptography.</p>
-### Load Balancing và Distributed Systems
+<p class="textbook-figure-caption" data-figure="8.10">Phân tích va chạm hàm băm kết hợp nguyên lý chuồng chim và ngưỡng sinh nhật — hai công cụ nền tảng trong mật mã học.</p>
+### Cân bằng tải và hệ thống phân tán
 
 ```python
 def optimal_load_distribution(tasks, servers):
@@ -177,7 +176,7 @@ def cache_hit_analysis(cache_size, access_pattern_size):
     return f"At least {guaranteed_misses} cache misses guaranteed"
 ```
 
-### Network Routing và Congestion
+### Định tuyến mạng và tắc nghẽn
 
 ```python
 def network_congestion_analysis(packets, links, link_capacity):
@@ -205,23 +204,23 @@ def network_congestion_analysis(packets, links, link_capacity):
 ## Bài tập Nâng cao
 
 ### Bài tập 1: Lý thuyết Số
-1. Chứng minh rằng với mọi số nguyên n, tồn tại bội số của n chỉ chứa các chữ số 0 và 1.
-2. Cho p là số nguyên tố lẻ. Chứng minh rằng tồn tại số nguyên a sao cho a² ≡ -1 (mod p) khi và chỉ khi p ≡ 1 (mod 4).
+1. Chứng minh rằng với mọi số nguyên dương $$n$$, tồn tại một bội số dương của $$n$$ chỉ gồm các chữ số 0 và 1.
+2. Cho $$p$$ là số nguyên tố lẻ. Chứng minh rằng tồn tại số nguyên $$a$$ sao cho $$a^2 \equiv -1 \pmod p$$ khi và chỉ khi $$p \equiv 1 \pmod 4$$.
 
 ### Bài tập 2: Hình học
-1. Cho 5 điểm trong hình vuông đơn vị. Chứng minh rằng có 2 điểm cách nhau ≤ √2/2.
-2. Cho 9 điểm trong hình vuông đơn vị, không có 3 điểm nào thẳng hàng. Chứng minh rằng có 3 điểm trong số đó tạo thành tam giác có diện tích $$\le 1/8$$.
+1. Cho 5 điểm trong hình vuông đơn vị (cạnh bằng 1). Chứng minh rằng tồn tại 2 điểm có khoảng cách không vượt quá $$\sqrt{2}/2$$.
+2. Cho 9 điểm trong hình vuông đơn vị sao cho không có 3 điểm nào thẳng hàng. Chứng minh rằng tồn tại 3 điểm tạo thành một tam giác có diện tích $$\le 1/8$$.
 
 ### Bài tập 3: Khoa học Máy tính
-1. Một hash table có 1000 bucket. Cần bao nhiêu key để đảm bảo có bucket chứa ≥ 5 keys?
-2. Trong hệ thống phân tán có 10 server, cần phân phối 97 task. Tính load tối thiểu và tối đa của mỗi server.
-3. Chứng minh rằng trong mọi thuật toán sắp xếp so sánh, cần ít nhất ⌈log₂(n!)⌉ phép so sánh trong trường hợp xấu nhất.
+1. Một bảng băm có 1.000 ngăn chứa (bucket). Cần tối thiểu bao nhiêu khóa để đảm bảo có ít nhất một ngăn chứa từ 5 khóa trở lên?
+2. Trong một hệ thống phân tán có 10 máy chủ cần xử lý 97 tác vụ, nếu phân bổ đều nhất có thể thì tải tối thiểu và tải tối đa của mỗi máy chủ là bao nhiêu?
+3. Chứng minh rằng mọi thuật toán sắp xếp dựa trên so sánh đều cần ít nhất $$\lceil \log_2(n!) \rceil$$ phép so sánh trong trường hợp xấu nhất.
 
 <details>
 <summary>Gợi ý Bài tập 1</summary>
 
-1. **Xét dãy 1, 11, 111, ..., 111...1 (n chữ số 1)**. Có n số và n remainder khi chia cho n.
-2. **Sử dụng định lý Wilson**: (p-1)! ≡ -1 (mod p) và tính chất của residue bậc hai.
+1. **Xét dãy $$n$$ số $$1, 11, 111, \ldots, \underbrace{11\ldots1}_{n\text{ chữ số }1}$$**: nếu có một số chia hết cho $$n$$ thì xong; ngược lại, $$n$$ số chỉ nhận các số dư trong $$n-1$$ giá trị $$1, 2, \ldots, n-1$$, nên có hai số cùng số dư khi chia cho $$n$$ và hiệu của chúng là bội số dương của $$n$$ chỉ gồm chữ số 1 và 0.
+2. **Sử dụng định lý Wilson**: $$(p-1)! \equiv -1 \pmod p$$ kết hợp với tính chất của thặng dư bậc hai theo modulo $$p$$.
 
 </details>
 
@@ -235,17 +234,17 @@ def network_congestion_analysis(packets, links, link_capacity):
 
 ## Kỹ thuật Chứng minh Nâng cao
 
-### Nguyên lý Dirichlet Xác suất
+### Nguyên lý Dirichlet xác suất
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Nếu phân bố ngẫu nhiên N quả bóng vào n hộp, thì xác suất để có hộp chứa ≥ k quả bóng là:
+**Định lý**: Khi phân bổ ngẫu nhiên đều $$N$$ quả bóng vào $$n$$ hộp ($$n \ge 2$$), xác suất để có ít nhất một hộp chứa từ 2 quả bóng trở lên thỏa mãn cận dưới:
 </div>
 
-P(max ≥ k) ≥ 1 - n(1 - 1/n)^N nếu k = 2
+$$P(\max \ge 2) \ge 1 - n\left(1 - \frac{1}{n}\right)^N.$$
 
-### Nguyên lý Dirichlet Constructive
+### Nguyên lý Dirichlet mang tính xây dựng (Constructive)
 
-Thay vì chỉ chứng minh tồn tại, chúng ta có thể xây dựng thuật toán để tìm đối tượng thỏa mãn.
+Bên cạnh chứng minh sự tồn tại thuần túy, trong nhiều bài toán lập trình ta có thể thiết kế thuật toán trực tiếp tìm ra nhóm thỏa mãn tính chất cần thiết.
 
 ```python
 def constructive_pigeonhole(objects, groups, property_checker):
@@ -273,35 +272,18 @@ def constructive_pigeonhole(objects, groups, property_checker):
 - [Pigeonhole Principle — Advanced](https://www.youtube.com/watch?v=9jZ5n8k0p0Q) — 3Blue1Brown (Generalized version)
 
 ## Tóm tắt
-**Nguyên lý Dirichlet Nâng cao** mở ra nhiều ứng dụng mạnh mẽ:
 
-**Lý thuyết Số**:
-- Xấp xỉ Diophantine và liên phân số
-- Định lý về residue và congruence
-- Chứng minh tồn tại nghiệm
+**Nguyên lý Dirichlet nâng cao** mở rộng khả năng suy luận sang nhiều lĩnh vực:
 
-**Hình học**:
-- Bài toán Ramsey và tô màu
-- Định lý Erdős-Ko-Rado
-- Phân tích không gian metric
+- **Lý thuyết số**: xấp xỉ Diophantine, đồng dư thức và chứng minh tồn tại nghiệm.
+- **Hình học và tổ hợp**: bài toán Ramsey, định lý Erdős–Ko–Rado, định lý Sperner và phân vùng không gian.
+- **Khoa học máy tính**: va chạm hàm băm và tấn công sinh nhật, cân bằng tải, phân tích bộ nhớ đệm và tắc nghẽn mạng.
+- **Kỹ thuật chứng minh**: phân biệt chứng minh tồn tại với thuật toán xây dựng, biến thể xác suất và mở rộng đa chiều.
 
-**Khoa học Máy tính**:
-- Hash collision và birthday attack
-- Load balancing tối ưu
-- Network congestion analysis
-- Thuật toán xấp xỉ
-
-**Kỹ thuật Chứng minh**:
-- Constructive vs. existential proofs
-- Probabilistic applications
-- Multi-dimensional extensions
-
-Nguyên lý Dirichlet là cầu nối giữa toán học thuần túy và ứng dụng thực tế, đặc biệt quan trọng trong thiết kế và phân tích hệ thống máy tính hiện đại.
-
-Trong **Chương 9: Ứng dụng Toán Rời Rạc trong CNTT Hiện đại**, chúng ta sẽ gắn các khái niệm đã học vào case study thực tế từ blog và hệ thống production.
+Trong **Chương 9: Ứng dụng Toán Rời Rạc trong CNTT Hiện đại**, chúng ta sẽ gắn các khái niệm đã học vào các tình huống thực tế từ hệ thống sản xuất.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=pPuvnD4PYNE">[Discrete Mathematics] Pigeonhole Principle Examples</a> — TrevTutor, tiếng Anh. Xem trước các ví dụ nâng cao của nguyên lý Dirichlet.
-- <a href="https://www.youtube.com/watch?v=TCZ3YwbcDaw">The Pigeon Hole Principle: 7 gorgeous proofs</a> — Mathologer, tiếng Anh. Nhiều chứng minh đẹp, dùng khi bài đòi dạng tổng quát.
-- <a href="https://www.youtube.com/watch?v=NdnByi_tK6Q">A Hairy Problem (and a Feathery Solution) - Numberphile</a> — Numberphile, tiếng Anh. Bài toán tóc và lông, mẫu đếm kiểu chuồng bồ câu.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=pPuvnD4PYNE">[Discrete Mathematics] Pigeonhole Principle Examples</a> — TrevTutor, tiếng Anh. Trình bày các ví dụ nâng cao vận dụng nguyên lý Dirichlet.
+- <a href="https://www.youtube.com/watch?v=TCZ3YwbcDaw">The Pigeon Hole Principle: 7 gorgeous proofs</a> — Mathologer, tiếng Anh. Giới thiệu bảy chứng minh điển hình cho thấy sức mạnh của dạng tổng quát.
+- <a href="https://www.youtube.com/watch?v=NdnByi_tK6Q">A Hairy Problem (and a Feathery Solution) - Numberphile</a> — Numberphile, tiếng Anh. Ví dụ kinh điển về số sợi tóc minh họa trực quan mô hình chuồng bồ câu.

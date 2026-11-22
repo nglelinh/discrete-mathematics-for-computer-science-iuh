@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. AlphaDev (Nature 2023) found faster sort3/4/5
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite Big-O, worst-case analysis, or the historical algorithms lesson.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại Big-O, phân tích worst-case, hay bài từ al-Khwarizmi đến quy mô toàn cầu.
+Bài ghi chú ứng dụng song ngữ, **không** viết lại phần lý thuyết Big-O, phân tích trường hợp xấu nhất hay bài khảo sát từ Al-Khwarizmi đến quy mô toàn cầu.
 
 </div>
 
@@ -35,15 +35,15 @@ Asymptotically these are still $$\Theta(1)$$ sorts of a constant number of keys;
 
 ## Tiếng Việt
 
-Chương 14 hỏi thuật toán có đúng không và $$T(n)$$ tăng ra sao. AlphaDev (*Nature*, 07/06/2023) giữ tính đúng và đánh **độ trễ hệ số hằng** ở tầng assembly.
+Chương 14 đặt ra hai câu hỏi cốt lõi: thuật toán có đúng đắn không và thời gian chạy $$T(n)$$ tăng trưởng như thế nào? Hệ thống AlphaDev (*Nature*, 07/06/2023) giữ nguyên yêu cầu về tính đúng đắn và tối ưu hóa **độ trễ ở mức hệ số hằng** ngay tại tầng hợp ngữ (assembly).
 
-Họ đặt “sinh routine sort đúng” thành trò chơi một người, huấn luyện RL, và ra sort cố định cho 3, 4, 5 phần tử (kèm bản độ dài biến thiên). DeepMind báo cáo libc++ nhanh hơn tới khoảng **70%** trên dãy ngắn và khoảng **1.7%** khi dài hơn 250.000 phần tử. Các routine đã vào LLVM libc++.
+Nhóm nghiên cứu mô hình hóa bài toán “tạo một đoạn mã sắp xếp đúng” thành trò chơi một người chơi, huấn luyện tác nhân học tăng cường (RL) và tìm ra các đoạn mã sắp xếp mới cho dãy cố định 3, 4 và 5 phần tử (cùng các biến thể độ dài thay đổi). Theo báo cáo của DeepMind, các đoạn mã này giúp hàm sắp xếp trong thư viện LLVM libc++ nhanh hơn tới khoảng **70%** đối với dãy ngắn và khoảng **1,7%** đối với dãy dài trên 250.000 phần tử; các đoạn mã `sort3`/`sort4`/`sort5` này đã được tích hợp vào LLVM libc++.
 
-Tiệm cận chúng vẫn là sort $$\Theta(1)$$ cho một số khóa cố định; câu chuyện Big-O của khóa học không đổi. Tin 2023 là *cài đặt* của một primitive được gọi hàng nghìn tỷ lần vẫn cải thiện được, và sự cải thiện được kiểm tính đúng trước khi ship.
+Về mặt tiệm cận, các phép sắp xếp cho số phần tử cố định vẫn có độ phức tạp $$\Theta(1)$$, nên lý thuyết Big-O của chương này không thay đổi. Điểm đáng chú ý của kết quả năm 2023 là phần *cài đặt cụ thể* của một thao tác cơ bản được gọi hàng nghìn tỷ lần mỗi ngày vẫn có thể tối ưu thêm, và tính đúng đắn của đoạn mã mới đã được kiểm chứng tự động trước khi phát hành.
 
-**Câu hỏi.** (1) Vì sao AlphaDev thắng `sort3` của người mà không thắng $$\Theta(n\log n)$$ của mergesort? (2) Tiêu chí Chương 14 nào là “độ trễ branchless trên Skylake”, tiêu chí nào là “hoán vị khóa đúng”?
+**Câu hỏi.** (1) Vì sao AlphaDev có thể cải thiện tốc độ của `sort3` so với mã do con người viết nhưng không làm thay đổi cận $$\Theta(n\log n)$$ của sắp xếp trộn? (2) Trong các tiêu chí ở Chương 14, “độ trễ không rẽ nhánh trên kiến trúc Skylake” và “hoán vị đúng thứ tự các khóa” lần lượt tương ứng với tiêu chí nào?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=Gnx6EgpW6kY">AlphaDev | Daniel Mankowitz and Andrea Michi</a> — ICARL, tiếng Anh. Xem trước AlphaDev do Daniel Mankowitz và Andrea Michi trình bày, đúng hệ bài nhắc.
-- <a href="https://www.youtube.com/watch?v=__vX2sjlpXU">Big-O notation in 5 minutes</a> — Michael Sambol, tiếng Anh. Big-O vẫn là thước đo bài không thay: tối ưu hằng số không đổi bậc.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=Gnx6EgpW6kY">AlphaDev | Daniel Mankowitz and Andrea Michi</a> — ICARL, tiếng Anh. Phần trình bày của hai tác giả Daniel Mankowitz và Andrea Michi về AlphaDev.
+- <a href="https://www.youtube.com/watch?v=__vX2sjlpXU">Big-O notation in 5 minutes</a> — Michael Sambol, tiếng Anh. Ôn lại khái niệm Big-O để thấy việc tối ưu hằng số không làm thay đổi bậc tăng trưởng.

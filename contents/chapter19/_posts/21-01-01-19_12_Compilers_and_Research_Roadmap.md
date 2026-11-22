@@ -6,9 +6,8 @@ date: 2021-01-01
 order: 12
 required: true
 lang: en
-excerpt: "Lexer vs parser; LL/LR ý; checklist DSL; lộ trình 12 tuần NCS; thư mục."
+excerpt: "Phân tách tầng từ vựng (lexer) và phân tích cú pháp (parser), tổng quan LL/LR, các nhánh nghiên cứu ngôn ngữ hình thức và lộ trình tự học 12 tuần."
 ---
-
 
 <div class="textbook-epigraph" markdown="1">
 
@@ -20,57 +19,57 @@ excerpt: "Lexer vs parser; LL/LR ý; checklist DSL; lộ trình 12 tuần NCS; t
 
 ![Phases](/discrete-mathematics-for-computer-science-iuh/img/course/compiler_phases.svg)
 
-<p class="textbook-figure-caption" data-figure="19.4">Lexer regular · parser CFG.</p>
+<p class="textbook-figure-caption" data-figure="19.4">Phân tách kinh điển trong trình biên dịch: bộ phân tích từ vựng dùng ngôn ngữ chính quy, còn bộ phân tích cú pháp dùng văn phạm phi ngữ cảnh.</p>
 
-## Bản đồ Ch.19
+## Bản đồ Chương 19
 
-Σ* → grammar → Chomsky → CFG/PDA → pump → CNF/CYK → compiler.
+Mạch nội dung của chương đi từ $$\Sigma^*$$ và phép toán ngôn ngữ → văn phạm và phân cấp Chomsky → CFG, PDA và sự tương đương → bổ đề bơm → CNF và CYK → ứng dụng trong trình biên dịch.
 
-## Compiler
+## Ứng dụng trong trình biên dịch
 
-| Tầng | Lớp | Công cụ |
+| Giai đoạn | Lớp ngôn ngữ | Công cụ điển hình |
 |:---|:---|:---|
-| Lexer | Regular | Flex, regex |
-| Parser | CFL (thường LALR/LL) | yacc, ANTLR, hand RD |
+| Bộ phân tích từ vựng (Lexer) | Chính quy (Regular) | Flex, biểu thức chính quy |
+| Bộ phân tích cú pháp (Parser) | Phi ngữ cảnh (thường là LALR / LL) | yacc, ANTLR, bộ phân tích đệ quy viết tay |
 
-**DCFL** ⊂ CFL: deterministic PDA — liên hệ parsing thực tế.
+Trong thực hành phân tích cú pháp, lớp ngôn ngữ phi ngữ cảnh đơn định (**DCFL** $$\subset$$ CFL, nhận bởi PDA đơn định) đóng vai trò đặc biệt quan trọng vì cho phép phân tích nhanh trong thời gian tuyến tính.
 
-## Nhánh nghiên cứu
+## Các nhánh nghiên cứu liên quan
 
-| Nhánh | Chủ đề |
+| Nhánh nghiên cứu | Chủ đề tiêu biểu |
 |:---|:---|
-| Parsing theory | GLL, GLR, earley, PEG |
-| Grammar inference | learning CFGs |
-| Tree automata | XML, compilers |
-| Weighted/SCFG | NLP |
-| Verification | pushdown systems |
+| Lý thuyết phân tích cú pháp (*Parsing theory*) | GLL, GLR, Earley, PEG |
+| Suy diễn văn phạm (*Grammar inference*) | Học văn phạm CFG từ dữ liệu |
+| Ô-tô-mát cây (*Tree automata*) | Xử lý XML, tối ưu hóa trình biên dịch |
+| Văn phạm có trọng số / xác suất (SCFG) | Xử lý ngôn ngữ tự nhiên (NLP) |
+| Kiểm chứng hình thức (*Verification*) | Hệ thống đẩy xuống (*pushdown systems*) |
 
-## Lộ trình 12 tuần
+## Lộ trình tự đọc trong 12 tuần
 
-1–2: 19.1–19.5 + Ch.18 regular bridge  
-3–5: CFG PDA pump  
-6–7: CNF CYK implement  
-8: Dragon book parsing chapters  
-9–10: chọn nhánh + papers  
-11–12: mini parser / note hardness CFL
+- **Tuần 1–2:** Ôn mục 19.1–19.5 và nối lại với ngôn ngữ chính quy ở Chương 18.
+- **Tuần 3–5:** Làm chắc CFG, PDA và bổ đề bơm CFL.
+- **Tuần 6–7:** Chuyển đổi CNF và tự cài đặt thuật toán CYK.
+- **Tuần 8:** Đọc các chương về phân tích cú pháp trong sách *Dragon Book*.
+- **Tuần 9–10:** Chọn một nhánh nghiên cứu và đọc các bài báo nền tảng.
+- **Tuần 11–12:** Xây dựng một trình phân tích cú pháp nhỏ hoặc viết ghi chú về độ khó tính toán của các bài toán văn phạm.
 
-## Portfolio
+## Danh mục bài tập cốt lõi
 
-1. Chứng minh $$a^nb^n$$ CFG + không regular  
-2. $$a^nb^nc^n$$ không CFL  
-3. CYK code + test  
-4. Grammar không mơ hồ cho expr
+1. Chứng minh $$\{a^nb^n\}$$ là CFL nhưng không phải ngôn ngữ chính quy.
+2. Chứng minh $$\{a^nb^nc^n\}$$ không phải là CFL.
+3. Cài đặt và kiểm thử thuật toán CYK.
+4. Viết một văn phạm không mơ hồ cho biểu thức số học.
 
-## Thư mục
+## Tài liệu tham khảo chính
 
-Sipser; Hopcroft; Aho et al. *Compilers*; Grune *Parsing Techniques*; Sakarovitch; Kozen.
+Sipser; Hopcroft–Ullman; Aho et al., *Compilers*; Grune, *Parsing Techniques*; Sakarovitch; Kozen.
 
 ## Tóm tắt Chương 19
 
-12 bài: từ chuỗi đến CFL/PDA/CYK và cửa ngõ nghiên cứu ngôn ngữ/biên dịch — nối Ch.18 (regular/TM) và Ch.20 (complexity của parsing ∈ P cho CNF, nhưng nhiều bài grammar hard).
+Qua 12 bài học từ khái niệm chuỗi cơ bản đến CFL, PDA và thuật toán CYK, chương này kết nối chặt chẽ giữa Chương 18 (ô-tô-mát chính quy và máy Turing) với Chương 20 (độ phức tạp tính toán: bài toán thành viên cho CNF thuộc lớp P, nhưng nhiều bài toán khác trên văn phạm lại khó).
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=bxpc9Pp5pZM">Parsing Explained - Computerphile</a> — Computerphile, tiếng Anh. Xem trước phân tích cú pháp: lexer và parser trên văn phạm.
-- <a href="https://www.youtube.com/watch?v=OIKL6wFjFOo">Introduction to Parsers</a> — Neso Academy, tiếng Anh. Parser trong thiết kế trình biên dịch, đúng bảng tầng của bài.
-- <a href="https://www.youtube.com/watch?v=upu_TeZImN0">Regular Expression</a> — Neso Academy, tiếng Anh. Biểu thức chính quy cho tầng từ vựng.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=bxpc9Pp5pZM">Parsing Explained - Computerphile</a> — Computerphile, tiếng Anh. Giới thiệu trực quan quá trình phân tích cú pháp gồm lexer và parser trên văn phạm.
+- <a href="https://www.youtube.com/watch?v=OIKL6wFjFOo">Introduction to Parsers</a> — Neso Academy, tiếng Anh. Vai trò của bộ phân tích cú pháp trong thiết kế trình biên dịch.
+- <a href="https://www.youtube.com/watch?v=upu_TeZImN0">Regular Expression</a> — Neso Academy, tiếng Anh. Ôn lại biểu thức chính quy dùng cho tầng phân tích từ vựng.

@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. Binary fuse filters (JEA 2022) store an appro
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite unions, products, or cardinality theory.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại hợp, tích Descartes hay lý thuyết lực lượng.
+Bài ghi chú ứng dụng song ngữ. Nội dung này **không** thay thế hay viết lại các bài về phép hợp, tích Descartes hay lý thuyết lực lượng.
 
 </div>
 
@@ -40,18 +40,18 @@ Use this after the required set lessons and the database applications lesson. It
 
 ## Tiếng Việt
 
-Tập hữu hạn $$S \subseteq U$$ được xác định bởi hàm đặc trưng $$\mathbf{1}_S$$. Khi $$\vert S\vert $$ rất lớn, hệ thống lưu **tập xấp xỉ gọn**: trả lời “$$x \in S$$?” với sai một phía.
+Một tập hữu hạn $$S \subseteq U$$ được xác định hoàn toàn bởi hàm đặc trưng $$\mathbf{1}_S : U \to \{0,1\}$$. Khi $$\vert S\vert$$ rất lớn và việc lưu trữ chính xác quá tốn kém, các hệ thống thường dùng **cấu trúc biểu diễn tập xấp xỉ gọn**: trả lời câu hỏi “$$x \in S$$?” với sai số một phía (có thể dương tính giả, không có âm tính giả).
 
-Graf và Lemire (JEA 2022) xây *binary fuse filter* cách cận dưới lưu trữ lý thuyết thông tin khoảng **13%** (khoảng **8%** nếu chấp nhận truy vấn chậm hơn), xây thường nhanh hơn xor filter hơn hai lần. Họ so với Bloom, blocked Bloom, cuckoo, ribbon và xor.
+Trong bài báo trên *ACM JEA* năm 2022, Graf và Lemire đề xuất *binary fuse filter* với dung lượng lưu trữ chỉ cách cận dưới lý thuyết thông tin khoảng **13%** (còn khoảng **8%** nếu chấp nhận truy vấn chậm hơn), đồng thời có tốc độ xây dựng thường nhanh gấp hơn hai lần so với xor filter. Nhóm tác giả cũng so sánh cấu trúc này với Bloom filter, blocked Bloom, cuckoo, ribbon và xor filter.
 
-Cách đọc toán rời rạc: đối tượng lưu vẫn là biểu diễn của một **tập**; dương tính giả bị buộc bởi chuồng bồ câu khi ngân sách bit thấp hơn $$\log_2 \binom{\vert U\vert }{\vert S\vert }$$; kỹ sư chọn $$\vert S\vert $$, độ rộng fingerprint và xác suất lỗi — vẫn là tham số tập hợp.
+Dưới góc nhìn toán rời rạc: đối tượng được lưu vẫn là một cách biểu diễn của **tập hợp**; dương tính giả là hệ quả tất yếu của nguyên lý chuồng bồ câu khi số bit lưu trữ nhỏ hơn $$\log_2 \binom{\vert U\vert}{\vert S\vert}$$; và các tham số kỹ sư lựa chọn — gồm $$\vert S\vert$$, độ rộng dấu vân tay (fingerprint) và xác suất sai số — vẫn là những tham số của bài toán biểu diễn tập hợp.
 
-Đọc sau các mục tập hợp bắt buộc. Đây là ảnh chụp 2022 của cách hệ thống production mã hóa tập khi RAM là tài nguyên hiếm.
+Bạn nên đọc phần này sau các mục tập hợp bắt buộc để thấy một ví dụ từ năm 2022 về cách hệ thống thực tế mã hóa tập hợp khi bộ nhớ RAM bị giới hạn.
 
-**Câu hỏi.** (1) Binary fuse filter là tập con của $$U$$ hay là *mã hóa mất mát* của một tập? (2) Phép toán tập nào vẫn rẻ sau khi chỉ còn filter?
+**Câu hỏi.** (1) Binary fuse filter là một tập con của $$U$$ hay là một *biểu diễn nén có mất mát* của tập con đó? (2) Phép toán tập hợp nào vẫn có chi phí thấp khi hệ thống chỉ lưu giữ bộ lọc này?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Xem trước tập xấp xỉ: Bloom filter trả lời thuộc về với sai một phía.
-- <a href="https://www.youtube.com/watch?v=kfFacplFY4Y">What Are Bloom Filters?</a> — Spanning Tree, tiếng Anh. Cách bit và hàm băm mã hóa một tập lớn trong bộ nhớ nhỏ.
-- <a href="https://www.youtube.com/watch?v=mPxslXpg8wA">Advanced Data Structures: Count-Min Sketches</a> — Niema Moshiri, tiếng Anh. Count-Min Sketch, cùng họ cấu trúc nén tập hoặc đa tập.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=V3pzxngeLqw">Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a> — ByteByteGo, tiếng Anh. Giới thiệu tập xấp xỉ qua Bloom filter — trả lời câu hỏi thuộc tập với sai số một phía.
+- <a href="https://www.youtube.com/watch?v=kfFacplFY4Y">What Are Bloom Filters?</a> — Spanning Tree, tiếng Anh. Giải thích cách mảng bit và hàm băm mã hóa một tập lớn trong bộ nhớ nhỏ.
+- <a href="https://www.youtube.com/watch?v=mPxslXpg8wA">Advanced Data Structures: Count-Min Sketches</a> — Niema Moshiri, tiếng Anh. Giới thiệu Count-Min Sketch, thuộc cùng nhóm cấu trúc dữ liệu nén tập hợp và đa tập.

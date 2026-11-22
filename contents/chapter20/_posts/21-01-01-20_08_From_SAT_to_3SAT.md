@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 8
 required: true
 lang: en
-excerpt: "Chứng minh đầy đủ SAT≤ₚ3SAT: pad mệnh đề 1, 2, ≥4 literal; 3SAT NP-complete."
+excerpt: "Chứng minh đầy đủ phép rút gọn SAT≤ₚ3SAT bằng kỹ thuật chuẩn hóa các mệnh đề có 1, 2 và ≥4 literal, qua đó khẳng định 3SAT là NP-complete."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,47 +17,52 @@ excerpt: "Chứng minh đầy đủ SAT≤ₚ3SAT: pad mệnh đề 1, 2, ≥4 l
 
 </div>
 
-Mọi hardness graph thường đi từ **3SAT**. Mục này chứng minh $$3\mathrm{SAT}$$ NP-complete từ Cook–Levin.
+Phần lớn các phép chứng minh NP-complete trên đồ thị đều xuất phát từ **3SAT**. Bài học này chứng minh $$3\mathrm{SAT}$$ là NP-complete dựa trên định lý Cook–Levin bằng phép rút gọn trực tiếp từ SAT.
 
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
 
-- **Xây** $$f$$ poly-time: CNF → 3CNF bảo toàn thỏa được.
-- **Chứng minh** từng trường hợp độ dài mệnh đề.
-- **Kết luận** $$3\mathrm{SAT}$$ NPC.
+- **Xây dựng** phép biến đổi đa thức $$f$$ chuyển công thức CNF thành 3CNF mà vẫn bảo toàn tính thỏa mãn được.
+- **Chứng minh** tính đúng đắn cho từng trường hợp độ dài mệnh đề.
+- **Kết luận** $$3\mathrm{SAT}$$ là bài toán NP-complete.
 
 </div>
 
-## $$3\mathrm{SAT}\in NP$$
+## Bước 1: $$3\mathrm{SAT}\in NP$$
 
-Certificate = gán. Verifier đánh giá: poly. $$\square$$
+Tương tự SAT, chứng chỉ là một phép gán chân trị cho các biến và bộ kiểm chứng đánh giá công thức trong thời gian đa thức. $$\square$$
 
-## Construction
+## Bước 2: Phép biến đổi từng mệnh đề
 
-Cho $$\varphi=C_1\land\cdots\land C_m$$. Xử lý từng $$C$$:
+Cho công thức CNF $$\varphi=C_1\land\cdots\land C_m$$. Ta xử lý độc lập từng mệnh đề $$C$$ tùy theo số lượng literal $$\lvert C\rvert$$:
 
-### $$\lvert C\rvert=3$$
-Giữ nguyên.
+### Trường hợp $$\lvert C\rvert=3$$
 
-### $$\lvert C\rvert=1$$: $$C=(\ell)$$
-Biến mới $$u,v$$:
+Giữ nguyên mệnh đề.
+
+### Trường hợp $$\lvert C\rvert=1$$: $$C=(\ell)$$
+
+Đưa thêm hai biến phụ mới $$u,v$$ và thay $$C$$ bằng hội của bốn mệnh đề 3-literal:
 
 $$
 (\ell\lor u\lor v)\land(\ell\lor u\lor\neg v)\land(\ell\lor\neg u\lor v)\land(\ell\lor\neg u\lor\neg v).
 $$
 
 <div class="textbook-lemma" markdown="1">
-**Bổ đề.** Thỏa ⇔ $$\ell$$ true.  
-*Chứng minh.* $$\ell$$ true ⇒ ok. $$\ell$$ false ⇒ bốn mệnh đề yêu cầu mọi tổ hợp $$u,v$$ — mâu thuẫn. $$\square$$
+
+**Bổ đề.** Hệ bốn mệnh đề trên thỏa mãn được khi và chỉ khi $$\ell$$ nhận giá trị đúng.  
+*Chứng minh.* Nếu $$\ell$$ đúng thì cả bốn mệnh đề tự động đúng. Nếu $$\ell$$ sai thì với mọi cách gán $$(u,v)$$, luôn có đúng một trong bốn mệnh đề trở thành sai — mâu thuẫn. $$\square$$
+
 </div>
 
-### $$\lvert C\rvert=2$$: $$(\ell_1\lor\ell_2)$$
-Biến $$u$$: $$(\ell_1\lor\ell_2\lor u)\land(\ell_1\lor\ell_2\lor\neg u)$$.  
-Thỏa ⇔ $$\ell_1\lor\ell_2$$.
+### Trường hợp $$\lvert C\rvert=2$$: $$C=(\ell_1\lor\ell_2)$$
 
-### $$\lvert C\rvert=k\ge 4$$: $$(\ell_1\lor\cdots\lor\ell_k)$$
-Biến $$y_1,\ldots,y_{k-3}$$:
+Đưa thêm một biến phụ $$u$$ và thay $$C$$ bằng $$(\ell_1\lor\ell_2\lor u)\land(\ell_1\lor\ell_2\lor\neg u)$$. Công thức này thỏa mãn được khi và chỉ khi $$\ell_1\lor\ell_2$$ đúng.
+
+### Trường hợp $$\lvert C\rvert=k\ge 4$$: $$C=(\ell_1\lor\cdots\lor\ell_k)$$
+
+Đưa thêm $$k-3$$ biến phụ mới $$y_1,\ldots,y_{k-3}$$ và tách thành chuỗi mệnh đề 3-literal:
 
 $$
 (\ell_1\lor\ell_2\lor y_1)
@@ -67,50 +72,51 @@ $$
 $$
 
 <div class="textbook-lemma" markdown="1">
-**Bổ đề.** Thỏa ⇔ ∃ $$\ell_j$$ true.  
-*(⇒)* Mọi $$\ell$$ false buộc dây $$y_i$$ dẫn mâu thuẫn cuối.  
-*(⇐)* Gán $$y$$ “prefix true đến trước literal đúng”. $$\square$$
+
+**Bổ đề.** Chuỗi mệnh đề trên thỏa mãn được khi và chỉ khi tồn tại ít nhất một literal $$\ell_j$$ nhận giá trị đúng.  
+*Chứng minh.*  
+Chiều ($$\Rightarrow$$): Nếu mọi $$\ell_j$$ đều sai thì mệnh đề đầu buộc $$y_1$$ đúng, kế tiếp buộc $$y_2$$ đúng, kéo dây chuyền đến $$y_{k-3}$$ đúng, làm mệnh đề cuối cùng trở thành sai — mâu thuẫn.  
+Chiều ($$\Leftarrow$$): Nếu $$\ell_j$$ đúng, ta gán $$y_1=\cdots=y_{j-2}=\mathrm{true}$$ và các biến $$y$$ còn lại bằng $$\mathrm{false}$$, mọi mệnh đề trong chuỗi đều đúng. $$\square$$
+
 </div>
 
 ### Thử nghiệm: SAT → 3SAT
 
-Tách từng mệnh đề thành mệnh đề ≤ 3 literal bằng biến phụ; kiểm tra tương đương thỏa mãn được.
+Quan sát cách tách từng mệnh đề thành các mệnh đề tối đa 3 literal bằng biến phụ và kiểm tra tính tương đương thỏa mãn được:
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="reduction-explainer" data-tab="3sat"></div>
 </div>
 <script src="{{ '/public/js/explainers/complexity-explainer.js' | relative_url }}"></script>
 
-## Tổng hợp
+## Tổng hợp kết quả
 
-$$f(\varphi)$$ = hội mọi mệnh đề 3-literal sau pad.  
-Poly-time (tuyến tính).  
-$$\varphi$$ sat ⇔ $$f(\varphi)$$ sat.
+Công thức $$f(\varphi)$$ là hội của tất cả các mệnh đề 3-literal thu được sau khi chuẩn hóa từng mệnh đề của $$\varphi$$. Phép biến đổi chạy trong thời gian tuyến tính theo kích thước $$\varphi$$ và bảo toàn tính thỏa mãn được: $$\varphi$$ thỏa mãn được khi và chỉ khi $$f(\varphi)$$ thỏa mãn được.
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý.** $$\mathrm{SAT}\le_p 3\mathrm{SAT}$$. Kết hợp Cook–Levin: $$3\mathrm{SAT}$$ NP-complete.
+**Định lý.** $$\mathrm{SAT}\le_p 3\mathrm{SAT}$$. Kết hợp với định lý Cook–Levin, suy ra $$3\mathrm{SAT}$$ là bài toán NP-complete.
 
 </div>
 
 ## Bài tập
 
-1. Chứng minh đủ pad $$k=5$$ bằng bảng gán.  
-2. Ước số biến mới theo $$\sum(\lvert C_j\rvert)$$.  
-3. Vì sao 2SAT ∈ P không mâu thuẫn? (2SAT không NPC trừ P=NP)
+1. Kiểm chứng đầy đủ phép tách cho mệnh đề độ dài $$k=5$$ bằng cách thử các trường hợp gán chân trị.
+2. Ước lượng số lượng biến phụ mới được tạo ra theo tổng độ dài các mệnh đề $$\sum\lvert C_j\rvert$$.
+3. Giải thích vì sao việc $$2\mathrm{SAT}\in P$$ không mâu thuẫn với kết quả $$3\mathrm{SAT}$$ là NP-complete.
 
-## Đọc
+## Tài liệu đọc thêm
 
-Sipser; CLRS NPC; Garey–Johnson.
+Sipser; CLRS (chương NP-Completeness); Garey–Johnson.
 
 ## Tóm tắt
 
-Pad mệnh đề · 3SAT NPC · nguồn rút gọn đồ thị.
+Kỹ thuật đệm và tách mệnh đề bằng biến phụ đưa mọi công thức CNF về 3CNF trong thời gian tuyến tính, xác lập 3SAT là bài toán nguồn chủ lực cho các phép rút gọn tổ hợp.
 
-**Tiếp:** 20.9 — IS, CLIQUE, VC.
+**Bài tiếp theo:** 20.9 — Các phép rút gọn trên đồ thị: Independent Set (IS), Clique và Vertex Cover (VC).
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=GCw07nZckps">SAT and 3SAT</a> — Computer Science Theory Explained, tiếng Anh. Xem trước SAT và 3SAT, hai bài toán của phép rút gọn.
-- <a href="https://www.youtube.com/watch?v=ylItc6O3A4Y">SAT to 3SAT</a> — Georgia Tech CS 3510, tiếng Anh. Dựng rút gọn SAT sang 3SAT từng bước.
-- <a href="https://www.youtube.com/watch?v=egLlOOqQ5YY">3SAT is NP-complete Proof</a> — Easy Theory, tiếng Anh. 3SAT là NP-complete sau khi có rút gọn từ SAT.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=GCw07nZckps">SAT and 3SAT</a> — Computer Science Theory Explained, tiếng Anh. Giới thiệu bài toán SAT và 3SAT làm nền cho phép rút gọn.
+- <a href="https://www.youtube.com/watch?v=ylItc6O3A4Y">SAT to 3SAT</a> — Georgia Tech CS 3510, tiếng Anh. Hướng dẫn từng bước phép biến đổi từ SAT sang 3SAT.
+- <a href="https://www.youtube.com/watch?v=egLlOOqQ5YY">3SAT is NP-complete Proof</a> — Easy Theory, tiếng Anh. Chứng minh hoàn chỉnh 3SAT là NP-complete từ SAT.

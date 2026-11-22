@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 7
 required: true
 lang: en
-excerpt: "Chứng minh SAT NP-complete: biến tableau, mệnh đề G1–G4, tính đúng rút gọn L≤ₚSAT."
+excerpt: "Chứng minh SAT là NP-complete bằng bảng cấu hình (tableau): xây dựng biến logic, bốn nhóm mệnh đề G1–G4 và chứng minh tính đúng đắn của rút gọn L≤ₚSAT."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,75 +17,69 @@ excerpt: "Chứng minh SAT NP-complete: biến tableau, mệnh đề G1–G4, t�
 
 </div>
 
-Đây là **định lý trung tâm** mở ngành NPC: mọi $$L\in NP$$ rút gọn về **SAT**.
+Định lý Cook–Levin là **kết quả trung tâm** khai sinh lý thuyết NP-đầy đủ: mọi ngôn ngữ $$L\in NP$$ đều có thể rút gọn đa thức về bài toán thỏa mãn công thức logic **SAT**.
 
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
 
 - **Chứng minh** $$\mathrm{SAT}\in NP$$.
-- **Xây** tableau và các nhóm mệnh đề.
-- **Chứng minh** $$L\le_p\mathrm{SAT}$$ cho $$L\in NP$$ tùy ý.
+- **Xây dựng** bảng cấu hình (*tableau*) và bốn nhóm mệnh đề logic mã hóa quá trình tính toán.
+- **Chứng minh** $$L\le_p\mathrm{SAT}$$ cho một ngôn ngữ $$L\in NP$$ tùy ý.
 
 </div>
 
-## $$\mathrm{SAT}\in NP$$
+## Bước 1: $$\mathrm{SAT}\in NP$$
 
-Certificate = gán chân trị. Verifier đánh giá công thức: thời gian tuyến tính theo $$\lvert\varphi\rvert$$. $$\square$$
+Chọn chứng chỉ là một phép gán chân trị cho các biến của công thức $$\varphi$$. Bộ kiểm chứng chỉ cần thay giá trị vào và tính công thức trong thời gian tuyến tính theo $$\lvert\varphi\rvert$$. Vậy $$\mathrm{SAT}\in NP$$. $$\square$$
 
-## Từ verifier/TM đến CNF
+## Bước 2: Mã hóa tính toán của máy Turing thành công thức CNF
 
-Cho $$L\in NP$$, verifier/TM $$M$$ thời gian $$T=N^{O(1)}$$ trên $$z=\langle x,c\rangle$$ độ dài $$N$$. Cửa sổ băng $$[-T,T]$$.
+Xét một ngôn ngữ bất kỳ $$L\in NP$$ với bộ kiểm chứng (hoặc máy Turing không đơn định) $$M$$ chạy trong thời gian đa thức $$T=N^{O(1)}$$ trên đầu vào $$z=\langle x,c\rangle$$ độ dài $$N$$. Trong $$T$$ bước, đầu đọc/ghi chỉ có thể di chuyển trong cửa sổ băng $$[-T,T]$$.
 
-### Biến
+### Tập biến bảng cấu hình (*tableau*)
 
-- $$C_{t,i,a}$$: ô $$i$$ lúc $$t$$ chứa $$a$$.  
-- $$H_{t,i}$$: đầu ở $$i$$ lúc $$t$$.  
-- $$Q_{t,q}$$: trạng thái $$q$$ lúc $$t$$.  
+Ta định nghĩa ba nhóm biến Boolean để mô tả toàn bộ lịch sử tính toán của $$M$$:
 
-Số biến $$O(T^2)$$.
+- $$C_{t,i,a}$$: tại thời điểm $$t$$, ô băng $$i$$ chứa ký hiệu $$a$$.
+- $$H_{t,i}$$: tại thời điểm $$t$$, đầu đọc/ghi nằm ở ô $$i$$.
+- $$Q_{t,q}$$: tại thời điểm $$t$$, máy đang ở trạng thái $$q$$.
 
-### Mệnh đề (CNF local)
+Tổng số biến nằm trong $$O(T^2)$$.
 
-**G1 Khởi tạo** $$t=0$$: băng = $$z$$, blank ngoài, đầu 0, $$q_0$$.  
-**G2 Uniqueness:** đúng một trạng thái / một đầu / một ký hiệu mỗi ô.  
-**G3 Transition:**  
-- đầu không ở $$i$$ ⇒ ô $$i$$ không đổi;  
-- đầu ở $$i$$, $$(q,a)\mapsto(q',b,D)$$ ⇒ cập nhật $$q',b$$, đầu mới.  
-$$X\Rightarrow Y$$ thành $$\neg X\lor Y$$; phân phối hội trong $$X$$.  
-**G4 Accept:** $$\bigvee_t Q_{t,q_A}$$.
+### Bốn nhóm mệnh đề ràng buộc (CNF cục bộ)
 
-### Tính đúng
+- **G1 (Khởi tạo tại $$t=0$$):** nội dung băng ban đầu là $$z$$ (các ô ngoài là ký hiệu trống), đầu đọc đặt ở vị trí 0 và trạng thái là $$q_0$$.
+- **G2 (Tính duy nhất):** tại mỗi thời điểm $$t$$, máy ở đúng một trạng thái, đầu đọc nằm ở đúng một vị trí và mỗi ô băng chứa đúng một ký hiệu.
+- **G3 (Quy tắc chuyển trạng thái):** nếu đầu đọc không nằm tại ô $$i$$ thì ký hiệu ở ô $$i$$ giữ nguyên sang bước $$t+1$$; nếu đầu đọc ở ô $$i$$ với cấu hình $$(q,a)\mapsto(q',b,D)$$ thì cập nhật trạng thái mới $$q'$$, ghi ký hiệu $$b$$ và dịch đầu đọc theo hướng $$D$$. Mỗi phép kéo theo $$X\Rightarrow Y$$ được viết lại thành $$\neg X\lor Y$$ rồi biến đổi về dạng CNF.
+- **G4 (Chấp nhận):** tồn tại ít nhất một thời điểm máy đạt trạng thái chấp nhận: $$\bigvee_t Q_{t,q_A}$$.
 
-Chạy thật $$M$$ ⇒ gán transcript thỏa $$\varphi_z$$.  
-Gán thỏa ⇒ tableau = chạy hợp lệ + accept.  
-$$z\mapsto\varphi_z$$ poly-time.
+### Tính đúng đắn của phép rút gọn
 
-Vậy $$L\le_p\mathrm{SAT}$$. Kết hợp §1: **SAT NP-complete**. $$\square$$
+Nếu $$M$$ có một đường chạy chấp nhận trên đầu vào, lịch sử các cấu hình tương ứng sẽ tạo ra một phép gán chân trị thỏa mãn $$\varphi_z$$. Ngược lại, mọi phép gán thỏa mãn $$\varphi_z$$ đều xác định một bảng cấu hình hợp lệ mô tả đúng một đường chạy chấp nhận của $$M$$. Vì công thức $$\varphi_z$$ có kích thước đa thức và dựng được trong thời gian đa thức, ta có $$L\le_p\mathrm{SAT}$$. Kết hợp với Bước 1, **SAT là NP-complete**. $$\square$$
 
-## Ghi chú viết paper
+## Ghi chú khi viết bài báo
 
-Thường viết: “by the standard tableau construction (Sipser / Arora–Barak)”.  
-Seminar: phải tường minh G1–G4.
+Trong các công trình nghiên cứu, phép dựng này thường được trích dẫn gọn là *“by the standard tableau construction (Sipser / Arora–Barak)”*; tuy nhiên khi trình bày seminar, cần nêu rõ cả bốn nhóm ràng buộc G1–G4.
 
 ## Bài tập
 
-1. Ước số biến nếu $$T=n^3$$, $$\lvert\Gamma\rvert=10$$.  
-2. Viết CNF cho “đúng một trong $$x_1,x_2,x_3$$”.  
-3. Đối chiếu cửa sổ Sipser vs Arora–Barak (1 trang).
+1. Ước lượng bậc độ lớn của số biến nếu $$T=n^3$$ và $$\lvert\Gamma\rvert=10$$.
+2. Viết công thức CNF biểu diễn ràng buộc “có đúng một trong ba biến $$x_1,x_2,x_3$$ nhận giá trị đúng”.
+3. Đối chiếu cách dùng cửa sổ $$2\times 3$$ trong Sipser với cách trình bày trong Arora–Barak (tóm tắt khoảng 1 trang).
 
-## Đọc
+## Tài liệu đọc thêm
 
-**Sipser** Cook–Levin; **Arora–Barak** §2; Cook STOC 1971.
+Sipser (chứng minh Cook–Levin); Arora–Barak §2; Cook (STOC 1971).
 
 ## Tóm tắt
 
-Tableau $$O(T^2)$$ · local gates · SAT NPC.
+Phép dựng bảng cấu hình kích thước $$O(T^2)$$ biến mọi tính toán đa thức của máy Turing thành công thức Boolean cục bộ, chứng minh SAT là bài toán NP-complete đầu tiên.
 
-**Tiếp:** 20.8 — SAT→3SAT.
+**Bài tiếp theo:** 20.8 — Rút gọn $$\mathrm{SAT}\le_p 3\mathrm{SAT}$$.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=W9G_1xG77LE">NP-Complete Explained (Cook-Levin Theorem)</a> — Undefined Behavior, tiếng Anh. Xem trước ý định lý Cook–Levin trước chứng minh tableau.
-- <a href="https://www.youtube.com/watch?v=Kux0iFe2yyA">The Cook-Levin Theorem (part I)</a> — Computer Science Theory Explained, tiếng Anh. Phần đầu chứng minh mã hóa tính toán thành SAT.
-- <a href="https://www.youtube.com/watch?v=LW_37i96htQ">Cook-Levin Theorem: Full Proof (SAT is NP-complete)</a> — Easy Theory, tiếng Anh. Chứng minh đầy đủ SAT là NP-complete.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=W9G_1xG77LE">NP-Complete Explained (Cook-Levin Theorem)</a> — Undefined Behavior, tiếng Anh. Giới thiệu ý tưởng chính của định lý Cook–Levin trước khi đi vào chi tiết bảng cấu hình.
+- <a href="https://www.youtube.com/watch?v=Kux0iFe2yyA">The Cook-Levin Theorem (part I)</a> — Computer Science Theory Explained, tiếng Anh. Phần đầu của chứng minh mã hóa quá trình tính toán thành SAT.
+- <a href="https://www.youtube.com/watch?v=LW_37i96htQ">Cook-Levin Theorem: Full Proof (SAT is NP-complete)</a> — Easy Theory, tiếng Anh. Chứng minh đầy đủ định lý SAT là NP-complete.

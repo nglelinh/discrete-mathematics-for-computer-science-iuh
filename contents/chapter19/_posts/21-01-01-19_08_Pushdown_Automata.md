@@ -6,9 +6,8 @@ date: 2021-01-01
 order: 8
 required: true
 lang: en
-excerpt: "Định nghĩa PDA; ID; chấp nhận empty stack/final state; ví dụ aⁿbⁿ."
+excerpt: "Định nghĩa hình thức ô-tô-mát đẩy xuống (PDA), mô tả tức thời (ID), hai chế độ chấp nhận (ngăn xếp rỗng và trạng thái kết thúc) cùng ví dụ aⁿbⁿ."
 ---
-
 
 <div class="textbook-epigraph" markdown="1">
 
@@ -22,32 +21,35 @@ excerpt: "Định nghĩa PDA; ID; chấp nhận empty stack/final state; ví d�
 
 <div class="textbook-objectives" markdown="1">
 
-- **Định nghĩa** PDA.
-- **Mô phỏng** $$a^nb^n$$.
-- **Phân biệt** accept by empty stack vs final state.
+- **Định nghĩa** ô-tô-mát đẩy xuống (*Pushdown Automaton*, PDA).
+- **Mô phỏng** quá trình PDA nhận dạng ngôn ngữ $$\{a^nb^n\}$$.
+- **Phân biệt** hai chế độ chấp nhận: theo ngăn xếp rỗng (*empty stack*) và theo trạng thái kết thúc (*final state*).
 
 </div>
 
 <div class="textbook-definition" id="định-nghĩa" markdown="1">
-**Định nghĩa**:
 
-$$P=(Q,\Sigma,\Gamma,\delta,q_0,Z_0,F)$$,  
-$$\delta:Q\times(\Sigma\cup\{\varepsilon\})\times\Gamma\to\mathcal{P}(Q\times\Gamma^*)$$ (hữu hạn ảnh).
+**Định nghĩa.** Một ô-tô-mát đẩy xuống (PDA) là bộ bảy
 
-**ID** $$(q,w,\gamma)$$: trạng thái, input còn, stack.
+$$P=(Q,\Sigma,\Gamma,\delta,q_0,Z_0,F),$$
+
+với hàm chuyển $$\delta:Q\times(\Sigma\cup\{\varepsilon\})\times\Gamma\to\mathcal{P}(Q\times\Gamma^*)$$ (có tập ảnh hữu hạn cho mỗi bộ đầu vào).
+
+**Mô tả tức thời (ID)** $$(q,w,\gamma)$$ ghi lại toàn bộ cấu hình của máy tại một thời điểm: trạng thái hiện tại $$q$$, phần chuỗi đầu vào còn lại $$w$$ và nội dung ngăn xếp $$\gamma$$.
+
 </div>
 
-## Ví dụ $$a^nb^n$$
+## Ví dụ ngôn ngữ $$a^nb^n$$
 
-Đẩy $$A$$ cho mỗi $$a$$; pop cho mỗi $$b$$; accept empty/final.
+Để nhận dạng chuỗi $$a^nb^n$$, máy đẩy một ký hiệu $$A$$ vào ngăn xếp cho mỗi ký tự $$a$$ đọc được, sau đó lấy ra (*pop*) một ký hiệu $$A$$ cho mỗi ký tự $$b$$ tương ứng, và chấp nhận khi ngăn xếp rỗng hoặc đạt trạng thái kết thúc.
 
-## Tương đương chấp nhận
+## Sự tương đương giữa hai chế độ chấp nhận
 
-Empty stack ≡ final state (construction chuẩn Hopcroft/Sipser).
+Hai chế độ chấp nhận — theo ngăn xếp rỗng và theo trạng thái kết thúc — có sức mạnh hoàn toàn tương đương nhau (có thể chuyển đổi qua lại bằng phép dựng chuẩn trong Hopcroft hoặc Sipser).
 
-### Minh hoạ PDA: ngăn xếp từng bước
+### Minh họa PDA: ngăn xếp từng bước
 
-Theo dõi một nhánh tính toán của PDA: chuỗi vào, trạng thái và ngăn xếp thay đổi theo từng chuyển tiếp (có ví dụ không tất định wwᴿ).
+Theo dõi từng nhánh tính toán của PDA với chuỗi đầu vào, trạng thái và nội dung ngăn xếp thay đổi qua mỗi bước chuyển (bao gồm ví dụ không đơn định $$ww^R$$):
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="pda-explainer" data-preset="anbn"></div>
@@ -56,22 +58,22 @@ Theo dõi một nhánh tính toán của PDA: chuỗi vào, trạng thái và ng
 
 ## Bài tập
 
-1. PDA ngoặc.  
-2. Vì sao DFA không đủ.  
-3. Nondeterminism trong PDA quan trọng?
+1. Xây dựng PDA nhận ngôn ngữ các chuỗi ngoặc cân bằng.
+2. Giải thích vì sao DFA không đủ khả năng nhận dạng ngôn ngữ $$a^nb^n$$ như PDA.
+3. Thảo luận vai trò của tính không đơn định (*nondeterminism*) trong PDA — khác gì so với DFA/NFA?
 
-## Đọc
+## Tài liệu đọc thêm
 
-Sipser §2.2; Hopcroft.
+Sipser §2.2; Hopcroft–Ullman.
 
 ## Tóm tắt
 
-Stack · ID · $$a^nb^n$$.
+PDA mở rộng ô-tô-mát hữu hạn bằng một ngăn xếp không giới hạn, cho phép nhận dạng các cấu trúc lồng nhau như $$a^nb^n$$.
 
-**Tiếp:** CFG ≡ PDA.
+**Bài tiếp theo:** Tương đương giữa CFG và PDA.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=4ejIAmp_Atw">Pushdown Automata (Introduction)</a> — Neso Academy, tiếng Anh. Xem trước PDA: trạng thái cộng ngăn xếp.
-- <a href="https://www.youtube.com/watch?v=JtRyd7Svlew">Pushdown Automata (Formal Definition)</a> — Neso Academy, tiếng Anh. Định nghĩa hình thức, đúng bộ bảy của bài.
-- <a href="https://www.youtube.com/watch?v=eY7fwj5jvC4">Pushdown Automata (Graphical Notation)</a> — Neso Academy, tiếng Anh. Đọc sơ đồ chuyển của PDA, gồm ví dụ dạng a^n b^n.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=4ejIAmp_Atw">Pushdown Automata (Introduction)</a> — Neso Academy, tiếng Anh. Giới thiệu trực quan về PDA: bộ điều khiển trạng thái kết hợp ngăn xếp.
+- <a href="https://www.youtube.com/watch?v=JtRyd7Svlew">Pushdown Automata (Formal Definition)</a> — Neso Academy, tiếng Anh. Định nghĩa hình thức tương ứng với bộ bảy trong bài.
+- <a href="https://www.youtube.com/watch?v=eY7fwj5jvC4">Pushdown Automata (Graphical Notation)</a> — Neso Academy, tiếng Anh. Cách đọc sơ đồ chuyển của PDA cùng ví dụ dạng $$a^n b^n$$.

@@ -7,12 +7,12 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
-excerpt: "Ở các mục trước chúng ta đã xây dựng nền tảng lý thuyết về hàm số. Mục bổ sung này nối khái niệm hàm toán học với hàm tính toán được, lập trình hàm, hàm băm…"
+excerpt: "Bài đọc mở rộng nối nền tảng lý thuyết hàm số với hàm tính toán được, lập trình hàm, hàm băm mật mã, thiết kế API và mô hình học máy."
 ---
 
-Ở các mục trước chúng ta đã xây dựng nền tảng lý thuyết về hàm số. Mục bổ sung này nối khái niệm hàm toán học với hàm tính toán được, lập trình hàm, hàm băm mật mã và mô hình học máy.
+Ở các mục trước, chúng ta đã xây dựng nền tảng lý thuyết về hàm số. Mục bổ sung này kết nối khái niệm hàm toán học với hàm tính toán được, lập trình hàm, hàm băm mật mã, thiết kế API và mô hình học máy.
 
-Mỗi lần gọi `user.get_profile(user_id)` hay viết `orders.map(o => o.total)`, chúng ta đang dùng cùng một hợp đồng: đầu vào rõ ràng, đầu ra xác định, có thể kiểm thử độc lập. Từ Church và Turing đến `map`/`filter`/`reduce` và endpoint dự đoán ML, khái niệm hàm là một trong những xương sống bền nhất của khoa học máy tính.
+Mỗi khi gọi `user.get_profile(user_id)` hay viết `orders.map(o => o.total)`, ta đều sử dụng cùng một hợp đồng: đầu vào rõ ràng, đầu ra xác định và có thể kiểm thử độc lập. Từ Church và Turing cho đến `map`/`filter`/`reduce` và các endpoint dự đoán trong học máy, khái niệm hàm luôn là một trong những nền tảng bền vững nhất của khoa học máy tính.
 
 ## Mục tiêu học tập
 
@@ -20,11 +20,11 @@ Mỗi lần gọi `user.get_profile(user_id)` hay viết `orders.map(o => o.tota
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Giải thích** mối liên hệ giữa hàm toán học, hàm tính toán được, và hàm trong ngôn ngữ lập trình.
-- **Viết** và **ghép** hàm bằng `map`, `filter`, `reduce`, closure, và composition.
-- **Phân biệt** hàm thuần (pure) và hàm có tác dụng phụ (side effect), và biết khi nào nên tách chúng.
-- **Mô hình hóa** API endpoint, pipeline dữ liệu, và mô hình ML như các hàm $$f: X \to Y$$ có hợp đồng rõ ràng.
-- **Áp dụng** tính chất đơn ánh/toàn ánh khi thiết kế hash function, khóa chính, và hàm đảo ngược (decode, undo).
+- **Giải thích** mối liên hệ giữa hàm toán học, hàm tính toán được và hàm trong ngôn ngữ lập trình.
+- **Viết** và **ghép** hàm bằng `map`, `filter`, `reduce`, closure và composition.
+- **Phân biệt** hàm thuần (pure) với hàm có tác dụng phụ (side effect), đồng thời biết cách tách biệt chúng.
+- **Mô hình hóa** API endpoint, pipeline dữ liệu và mô hình học máy như các hàm $$f: X \to Y$$ có hợp đồng rõ ràng.
+- **Áp dụng** tính chất đơn ánh, toàn ánh khi thiết kế hàm băm, khóa chính và các phép biến đổi khả nghịch (decode, undo).
 
 **Từ khóa**: hàm tính toán được (computable function), lập trình hàm (functional programming), hàm bậc cao (higher-order function), closure, hàm thuần (pure function), hàm băm (hash function), hợp đồng hàm (function contract).
 </div>
@@ -35,70 +35,39 @@ Mỗi lần gọi `user.get_profile(user_id)` hay viết `orders.map(o => o.tota
 
 ### Hàm trước thời máy tính
 
-Trong toán học cổ điển,
-hàm giúp mô tả sự phụ thuộc:
-đầu vào thay đổi,
-đầu ra thay đổi theo quy luật.
+Trong toán học cổ điển, hàm số dùng để mô tả mối quan hệ phụ thuộc: khi đầu vào thay đổi, đầu ra thay đổi theo một quy luật xác định. Chẳng hạn, biểu thức $$f(x)=x^2$$ nén vô số cặp giá trị vào một công thức ngắn gọn. Đây là sức mạnh đầu tiên của hàm số: biến một quy luật thành một đối tượng toán học có thể thao tác trực tiếp.
 
-Ví dụ,
-$$f(x)=x^2$$ là cách nén vô số cặp giá trị thành một công thức ngắn.
-Đây là sức mạnh lớn đầu tiên của hàm:
-biến quy luật thành đối tượng có thể thao tác.
+### Church, lambda calculus và khái niệm tính toán
 
-### Church, lambda calculus, và khái niệm tính toán
+Khi khoa học máy tính chưa hình thành như một ngành độc lập, Alonzo Church đã sử dụng phép tính lambda (lambda calculus) để nghiên cứu quá trình tính toán bằng ngôn ngữ của hàm số. Ý tưởng cốt lõi là biểu diễn mọi phép tính thông qua việc áp dụng hàm lên đối số, rồi rút gọn biểu thức theo các quy tắc hình thức chính xác.
 
-Khi khoa học máy tính chưa tồn tại như một ngành độc lập,
-Alonzo Church đã dùng lambda calculus để nghiên cứu computation bằng ngôn ngữ của hàm.
-
-Ý tưởng rất táo bạo:
-chúng ta có thể biểu diễn việc tính toán như áp dụng hàm lên đối số,
-rồi rút gọn biểu thức theo quy tắc chính xác.
-
-Lambda calculus không phải ngôn ngữ lập trình thực dụng đầu tiên,
-nhưng nó ảnh hưởng sâu lên Haskell,
-ML,
-Scala,
-F#,
-và nhiều ngôn ngữ hiện đại.
+Dù không phải là ngôn ngữ lập trình thực dụng đầu tiên, lambda calculus đã ảnh hưởng sâu sắc đến Haskell, ML, Scala, F# và nhiều ngôn ngữ hiện đại khác.
 
 ### Turing và mô hình cơ học của tính toán
 
-Alan Turing tiếp cận vấn đề từ góc khác:
-thay vì bắt đầu bằng hàm trừu tượng,
-ông mô hình hóa một cỗ máy thao tác ký hiệu trên băng.
-
-Church và Turing đi hai đường,
-nhưng gặp nhau ở cùng kết luận:
-có một khái niệm sâu về “tính được”.
-
-Trong đó,
-hàm tính toán được (computable function)
-trở thành đối tượng cốt lõi.
+Alan Turing tiếp cận bài toán từ một hướng khác: thay vì bắt đầu bằng hàm trừu tượng, ông mô hình hóa một cỗ máy cơ học thao tác các ký hiệu trên băng nhớ. Dù đi theo hai con đường khác nhau, Church và Turing đều đi đến cùng một kết luận về khái niệm "tính toán được". Từ đó, **hàm tính toán được** (computable function) trở thành đối tượng trung tâm của khoa học máy tính lý thuyết.
 
 ![Alan Turing — nền tảng tính toán](/discrete-mathematics-for-computer-science-iuh/img/course/Alan_Turing_Aged_16.jpg)
 
 <p class="textbook-figure-caption" data-figure="6.19">Alan Turing và Alonzo Church (lambda calculus) đặt "hàm tính toán được" làm trung tâm của khoa học máy tính.</p>
 ---
 
-## Phần 2: Functional programming — khi chương trình được xây từ hàm
+## Phần 2: Lập trình hàm — khi chương trình được xây từ hàm
 
 ### Khai báo điều muốn làm thay vì điều khiển từng bước
 
-Functional programming đặt hàm ở trung tâm thiết kế chương trình.
-Thay vì tập trung vào biến đổi trạng thái,
-nó khuyến khích:
+Lập trình hàm (functional programming) đặt hàm số ở vị trí trung tâm trong thiết kế chương trình. Thay vì xoay quanh việc thay đổi trạng thái từng bước, phong cách này khuyến khích:
 
-- pure functions,
-- immutability,
-- composition,
-- higher-order functions.
+- hàm thuần (pure functions),
+- dữ liệu bất biến (immutability),
+- phép hợp hàm (composition),
+- hàm bậc cao (higher-order functions).
 
-Ý tưởng này rất hấp dẫn,
-vì nó làm reasoning về chương trình dễ hơn trong nhiều tình huống.
+Cách tiếp cận này giúp việc lập luận về tính đúng đắn của chương trình trở nên rõ ràng và dễ kiểm soát hơn trong nhiều tình huống.
 
 ### `map`, `filter`, `reduce`
 
-Toán học: nếu $$f: A \to B$$ và $$S \subseteq A$$, chúng ta có thể nói $$f(S) = \{f(x) \mid x \in S\}$$. Trong lập trình, đó chính là `map`.
+Trong toán học, nếu $$f: A \to B$$ và $$S \subseteq A$$, ta có tập ảnh $$f(S) = \{f(x) \mid x \in S\}$$. Trong lập trình, phép biến đổi này chính là `map`.
 
 **Python**:
 
@@ -120,7 +89,7 @@ product = reduce(lambda acc, x: acc * x, nums, 1)  # 120
 squares_lc = [x * x for x in nums if x % 2 == 1]   # [1, 9, 25]
 ```
 
-**JavaScript** (rất phổ biến trong frontend):
+**JavaScript** (rất phổ biến trong phát triển giao diện):
 
 ```javascript
 const orders = [
@@ -135,14 +104,14 @@ const paidTotals = orders
 const revenue = paidTotals.reduce((sum, t) => sum + t, 0);  // 120
 ```
 
-Mỗi thao tác là cách áp dụng hàm lên tập dữ liệu. Chúng ta mô tả **điều muốn biến đổi**, không mô tả từng bước lặp tay — đúng tinh thần declarative của lập trình hàm.
+Mỗi thao tác trên đều áp dụng một hàm lên tập dữ liệu. Ta mô tả **điều muốn biến đổi** thay vì viết tay từng bước lặp — đúng với tinh thần khai báo (declarative) của lập trình hàm.
 
 ![Lập trình hàm — map, filter, reduce](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
-<p class="textbook-figure-caption" data-figure="6.20">map, filter, reduce áp dụng hàm lên tập dữ liệu — tinh thần functional programming.</p>
+<p class="textbook-figure-caption" data-figure="6.20">map, filter, reduce áp dụng hàm lên tập dữ liệu — thể hiện tinh thần của lập trình hàm.</p>
 ### Composition và tái sử dụng
 
-Nếu $$f: A \to B$$ và $$g: B \to C$$, chúng ta có hàm hợp $$(g \circ f)(x) = g(f(x))$$. Trong code, đó là pipeline — output của hàm này là input của hàm kế tiếp.
+Nếu $$f: A \to B$$ và $$g: B \to C$$, ta có hàm hợp $$(g \circ f)(x) = g(f(x))$$. Trong mã nguồn, cấu trúc này tương ứng với một pipeline, nơi đầu ra của hàm trước trở thành đầu vào của hàm kế tiếp.
 
 ```python
 def parse_csv(raw: str) -> list[dict]:
@@ -163,30 +132,28 @@ def process_upload(raw: str) -> str:
     return to_json(normalize(validate_rows(parse_csv(raw))))
 ```
 
-Trong data engineering và backend, pipeline thường gồm: **parse → clean → validate → transform → aggregate**. Mỗi bước là một hàm nhỏ, dễ test riêng, dễ thay thế.
+Trong kỹ thuật dữ liệu (data engineering) và phát triển backend, pipeline thường đi theo chuỗi **parse → clean → validate → transform → aggregate**. Mỗi bước là một hàm nhỏ, dễ kiểm thử riêng lẻ và dễ thay thế.
 
 <div class="content-box insight-box textbook-block" markdown="1">
-**Mẹo thiết kế**: Nếu một hàm vừa đọc file, vừa parse, vừa validate, vừa ghi database — nó không còn là "một hàm" theo nghĩa dễ reason. Tách thành chuỗi hàm nhỏ; mỗi hàm một trách nhiệm (single responsibility).
+**Mẹo thiết kế**: Nếu một hàm vừa đọc tệp, vừa phân tích dữ liệu, vừa kiểm tra hợp lệ rồi ghi vào cơ sở dữ liệu, nó sẽ rất khó theo dõi và kiểm thử. Hãy tách thành chuỗi các hàm nhỏ, mỗi hàm đảm nhận một trách nhiệm duy nhất (single responsibility).
 </div>
 
-### Vì sao dân công nghiệp vẫn quan tâm functional style
+### Vì sao kỹ sư phần mềm vẫn áp dụng phong cách hàm
 
-Ngay cả khi không dùng Haskell,
-nhiều hệ thống production vẫn mượn tinh thần functional vì:
+Ngay cả khi không lập trình bằng Haskell, nhiều hệ thống vận hành thực tế vẫn mượn các nguyên lý của lập trình hàm vì những lợi ích cụ thể:
 
-- dễ test,
-- giảm side effects,
-- reasoning tốt hơn,
-- hợp với concurrency,
-- composition linh hoạt.
+- dễ viết kiểm thử đơn vị,
+- giảm tác dụng phụ không mong muốn,
+- dễ suy luận về hành vi chương trình,
+- thuận lợi hơn khi xử lý đồng thời (concurrency),
+- dễ ghép nối và tái sử dụng qua composition.
 
-Điều đó cho thấy khái niệm hàm không chỉ sống trong giáo trình.
-Nó còn ảnh hưởng đến cách ta thiết kế chương trình.
+Điều này cho thấy khái niệm hàm không chỉ nằm trong giáo trình lý thuyết mà còn định hình trực tiếp cách thiết kế phần mềm.
 
 ### Hàm bậc cao (higher-order functions)
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Hàm bậc cao là hàm nhận hàm khác làm tham số, hoặc trả về hàm.
+**Định nghĩa**: Hàm bậc cao là hàm nhận hàm khác làm tham số, hoặc trả về một hàm làm kết quả.
 </div>
 
 ```python
@@ -207,11 +174,11 @@ print(double(5))   # 10
 print(triple(5))   # 15
 ```
 
-`map`, `filter`, `reduce` đều là hàm bậc cao. Decorator trong Python cũng vậy — bọc một hàm bằng hàm khác để thêm logging, cache, hoặc kiểm tra quyền.
+`map`, `filter` và `reduce` đều là các hàm bậc cao. Decorator trong Python cũng hoạt động theo cơ chế tương tự: bọc một hàm bằng một hàm khác để bổ sung tính năng ghi log, lưu đệm (cache) hoặc kiểm tra quyền truy cập.
 
 ### Closure và decorator
 
-**Closure**: hàm con "nhớ" biến của hàm cha ngay cả khi hàm cha đã kết thúc.
+**Closure** là hàm lồng bên trong vẫn "ghi nhớ" các biến thuộc phạm vi của hàm bao ngoài ngay cả sau khi hàm bao ngoài đã kết thúc.
 
 ```python
 def make_logger(prefix):
@@ -223,7 +190,7 @@ auth_log = make_logger("AUTH")
 auth_log("User logged in")   # [AUTH] User logged in
 ```
 
-**Decorator** — pattern rất phổ biến trong web framework:
+**Decorator** là mẫu thiết kế rất phổ biến trong các web framework:
 
 ```python
 import time
@@ -245,16 +212,16 @@ def fetch_users():
 fetch_users()  # fetch_users took 0.1001s
 ```
 
-Decorator biến hàm gốc thành hàm mới $$(g \circ f)$$: vẫn cùng input/output, nhưng thêm hành vi phụ (đo thời gian, ghi log).
+Decorator biến hàm gốc thành một hàm mới dạng $$(g \circ f)$$: vẫn giữ nguyên đầu vào và đầu ra, nhưng bổ sung thêm hành vi phụ như đo thời gian chạy hay ghi nhật ký.
 
-### Hàm thuần (pure) vs hàm có tác dụng phụ
+### Hàm thuần (pure) và hàm có tác dụng phụ (impure)
 
 | | **Pure function** | **Impure function** |
 |:---|:---|:---|
-| Cùng input | Luôn cùng output | Có thể khác output |
-| Side effect | Không đọc/ghi state bên ngoài | Đọc DB, ghi file, gọi API |
-| Kiểm thử | Dễ — chỉ cần assert input/output | Khó — cần mock môi trường |
-| Song song hóa | An toàn hơn | Cần đồng bộ, lock |
+| Cùng input | Luôn trả về cùng output | Có thể trả về output khác nhau |
+| Side effect | Không đọc/ghi trạng thái bên ngoài | Đọc cơ sở dữ liệu, ghi tệp, gọi API |
+| Kiểm thử | Dễ — chỉ cần kiểm tra cặp input/output | Khó hơn — cần giả lập (mock) môi trường |
+| Song song hóa | An toàn hơn | Cần đồng bộ hóa, khóa (lock) |
 
 ```python
 # Pure — chỉ phụ thuộc tham số
@@ -272,12 +239,12 @@ def track_visit(user_id: str) -> str:
 ```
 
 <div class="content-box warning-box textbook-block" markdown="1">
-**Thực hành tốt**: Giữ **core logic** dưới dạng hàm thuần; đẩy I/O (database, HTTP, file) ra lớp ngoài. Ví dụ: `calculate_tax(amount, rules)` thuần, `save_invoice(invoice)` impure — dễ unit test phần tính thuế mà không cần database thật.
+**Thực hành tốt**: Hãy giữ **logic cốt lõi** dưới dạng hàm thuần và đẩy các thao tác I/O (cơ sở dữ liệu, HTTP, hệ thống tệp) ra lớp ngoài. Ví dụ: tách `calculate_tax(amount, rules)` (thuần) khỏi `save_invoice(invoice)` (impure) giúp kiểm thử phần tính thuế mà không cần kết nối cơ sở dữ liệu thật.
 </div>
 
 ### Type hints và hợp đồng hàm
 
-Type hints không thay đổi hành vi runtime, nhưng làm **hợp đồng hàm** (function contract) rõ ràng — giống khai báo domain/codomain:
+Type hints không làm thay đổi hành vi khi chạy (runtime) trong Python, nhưng giúp **hợp đồng hàm** (function contract) trở nên tường minh — tương tự việc khai báo domain và codomain trong toán học:
 
 ```python
 from typing import Callable
@@ -297,7 +264,7 @@ result = pipeline(
 # ['An', 'Bình']
 ```
 
-Trong TypeScript, hợp đồng còn chặt hơn:
+Trong TypeScript, hợp đồng kiểu còn được kiểm tra chặt chẽ hơn ở bước biên dịch:
 
 ```typescript
 type User = { id: number; email: string };
@@ -308,16 +275,15 @@ function getUserById(id: number): User | null {
 }
 ```
 
-Khi domain/codomain mơ hồ (`any`, `object`, `dict` không rõ key), bug thường xuất hiện ở ranh giới tích hợp — đúng chỗ mà định nghĩa hàm toán học yêu cầu "mỗi phần tử domain có đúng một ảnh".
+Khi domain hoặc codomain mơ hồ (như `any`, `object`, hoặc `dict` không rõ khóa), lỗi thường phát sinh tại ranh giới tích hợp giữa các thành phần — đúng nơi mà định nghĩa hàm toán học yêu cầu mỗi đầu vào hợp lệ phải có đúng một đầu ra xác định.
 
 ---
 
-## Phần 3: Machine learning models như các hàm dự đoán
+## Phần 3: Mô hình học máy như các hàm dự đoán
 
-### Một mô hình học máy có thể nhìn như hàm
+### Nhìn mô hình học máy dưới góc độ hàm số
 
-Ở mức trừu tượng,
-model học máy là hàm:
+Ở mức trừu tượng, một mô hình học máy là một hàm:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -328,16 +294,13 @@ $$
 Trong đó:
 
 - $$X$$ là không gian đầu vào,
-- $$Y$$ là không gian đầu ra hoặc phân phối xác suất.
+- $$Y$$ là không gian đầu ra hoặc không gian các phân phối xác suất.
 
-Ví dụ,
-mô hình nhận ảnh và trả nhãn,
-nhận văn bản và trả sentiment,
-nhận dữ liệu khách hàng và trả xác suất rời bỏ.
+Chẳng hạn, mô hình có thể nhận ảnh và trả về nhãn phân loại, nhận văn bản và trả về cảm xúc, hoặc nhận dữ liệu khách hàng và ước lượng xác suất rời bỏ dịch vụ.
 
-### Input-to-prediction là tư duy hàm số ở quy mô mới
+### Từ đầu vào đến dự đoán
 
-**Mô hình tuyến tính đơn giản** (dễ đọc, dễ test):
+**Mô hình tuyến tính đơn giản** (dễ đọc và dễ kiểm thử):
 
 ```python
 def predict_credit_risk(features: dict) -> bool:
@@ -349,7 +312,7 @@ def predict_credit_risk(features: dict) -> bool:
     return score > 0.7
 ```
 
-**Scikit-learn** — cùng ý tưởng $$f: \mathbb{R}^n \to \{0,1\}$$, nhưng `fit` học trọng số từ dữ liệu:
+**Scikit-learn** — vẫn là ánh xạ $$f: \mathbb{R}^n \to \{0,1\}$$, nhưng phương thức `fit` học bộ trọng số trực tiếp từ dữ liệu:
 
 ```python
 from sklearn.linear_model import LogisticRegression
@@ -368,7 +331,7 @@ def predict_risk(features: list[float]) -> int:
 predict_risk([0.85, 3])  # 1
 ```
 
-**Inference endpoint** (FastAPI) — đóng gói hàm cho production:
+**Inference endpoint** (FastAPI) — đóng gói hàm dự đoán để phục vụ trong môi trường vận hành:
 
 ```python
 from pydantic import BaseModel
@@ -386,25 +349,23 @@ def predict_endpoint(body: CreditFeatures) -> dict:
     return {"risky": bool(risky)}
 ```
 
-Mô hình thật có hàng triệu tham số, nhưng **hợp đồng không đổi**: vector đặc trưng vào, nhãn hoặc xác suất ra. Hàm `forward` của mạng nơ-ron cũng là $$f_\theta: X \to Y$$ với $$\theta$$ cố định sau khi train.
+Một mô hình thực tế có thể chứa hàng triệu tham số, nhưng **hợp đồng hàm không đổi**: đầu vào là vector đặc trưng, đầu ra là nhãn hoặc xác suất. Tương tự, bước lan truyền tiến (`forward`) của mạng nơ-ron là một hàm $$f_\theta: X \to Y$$ với bộ tham số $$\theta$$ cố định sau khi huấn luyện.
 
-### Loss function, activation function, objective function
+### Hàm mất mát, hàm kích hoạt và hàm mục tiêu
 
-Thế giới ML đầy các hàm:
+Hệ sinh thái học máy xoay quanh nhiều loại hàm khác nhau:
 
-- loss functions,
-- activation functions,
-- kernel functions,
-- scoring functions,
-- objective functions.
+- hàm mất mát (loss functions),
+- hàm kích hoạt (activation functions),
+- hàm nhân (kernel functions),
+- hàm chấm điểm (scoring functions),
+- hàm mục tiêu (objective functions).
 
-Nói cách khác,
-ngay cả khi mô hình rất hiện đại,
-ngôn ngữ cơ bản để mô tả nó vẫn là ngôn ngữ của hàm.
+Dù kiến trúc mô hình ngày càng phức tạp, ngôn ngữ nền tảng để mô tả và phân tích chúng vẫn là ngôn ngữ của hàm số.
 
-### Training loop — hàm loss và hàm cập nhật
+### Vòng lặp huấn luyện — hàm loss và hàm cập nhật
 
-Huấn luyện ML là quá trình tìm $$\theta$$ sao cho hàm dự đoán $$f_\theta$$ khớp dữ liệu. **Loss function** $$L(\theta)$$ đo sai số; **optimizer** là hàm cập nhật tham số:
+Huấn luyện mô hình là quá trình tìm tham số $$\theta$$ sao cho hàm dự đoán $$f_\theta$$ khớp tốt với dữ liệu. Trong đó, **hàm mất mát** $$L(\theta)$$ đo lường sai số, còn **bộ tối ưu hóa (optimizer)** là hàm cập nhật tham số:
 
 ```python
 def mse_loss(y_true: float, y_pred: float) -> float:
@@ -424,19 +385,18 @@ for x, y in [(1, 2), (2, 4), (3, 6)]:
     loss = train_step(w, x, y)
 ```
 
-Ở đây có **ba lớp hàm**: $$f_\theta$$ (dự đoán), $$L$$ (đo lỗi), và bước cập nhật $$\theta \leftarrow \theta - \eta \nabla L$$. Tách rõ từng hàm giúp debug và thay optimizer mà không đổi mô hình.
+Ở đây có **ba lớp hàm** phối hợp với nhau: $$f_\theta$$ (dự đoán), $$L$$ (đo sai số) và quy tắc cập nhật $$\theta \leftarrow \theta - \eta \nabla L$$. Việc tách rõ từng hàm giúp dễ gỡ lỗi và thay đổi bộ tối ưu hóa mà không phải sửa kiến trúc mô hình.
 
 ![Mô hình học máy như hàm ánh xạ](/discrete-mathematics-for-computer-science-iuh/img/course/Neural_network.svg)
 
-<p class="textbook-figure-caption" data-figure="6.21">Mô hình ML là hàm $$f: X \to Y$$ được học từ dữ liệu — từ đặc trưng đầu vào đến dự đoán đầu ra.</p>
+<p class="textbook-figure-caption" data-figure="6.21">Mô hình học máy là hàm $$f: X \to Y$$ được học từ dữ liệu — ánh xạ từ đặc trưng đầu vào đến kết quả dự đoán.</p>
 ---
 
-## Phần 4: Cryptographic hash functions
+## Phần 4: Hàm băm mật mã (Cryptographic hash functions)
 
-### Hash function không phải hàm ngẫu nhiên
+### Hàm băm không phải hàm ngẫu nhiên
 
-Cryptographic hash function nhận input bất kỳ độ dài
-và trả digest kích thước cố định.
+Hàm băm mật mã nhận đầu vào có độ dài tùy ý và trả về chuỗi giá trị băm (digest) có độ dài cố định.
 
 Ví dụ:
 
@@ -448,9 +408,9 @@ digest = hashlib.sha256(message).hexdigest()
 print(digest)
 ```
 
-Đây là hàm theo nghĩa rất chính xác: cùng input, cùng output.
+Đây là hàm số theo đúng nghĩa toán học: cùng một đầu vào luôn cho ra cùng một đầu ra.
 
-**Lưu mật khẩu** — không lưu plaintext, chỉ lưu ảnh của hàm băm:
+**Lưu mật khẩu** — hệ thống không lưu mật khẩu dạng văn bản thuần (plaintext) mà chỉ lưu ảnh của hàm băm kèm muối (salt):
 
 ```python
 import hashlib
@@ -472,55 +432,49 @@ assert verify_password("mySecret123", salt, stored)
 assert not verify_password("wrong", salt, stored)
 ```
 
-`verify_password` là hàm **boolean** $$f: \text{String} \times \text{Salt} \times \text{Digest} \to \{\text{True}, \text{False}\}$$ — không đơn ánh (nhiều mật khẩu sai → `False`), nhưng vẫn xác định.
+Hàm `verify_password` là một hàm **Boolean** $$f: \text{String} \times \text{Salt} \times \text{Digest} \to \{\text{True}, \text{False}\}$$: nó không đơn ánh (vì mọi mật khẩu sai đều trả về `False`), nhưng vẫn hoàn toàn xác định.
 
-### Nhưng nó cần nhiều tính chất đặc biệt
+### Các yêu cầu bảo mật đặc thù
 
-Một hash tốt cho bảo mật không chỉ “tính ra giá trị”.
-Nó còn cần:
+Một hàm băm dùng trong bảo mật không chỉ cần tính toán xác định mà còn phải đáp ứng thêm các tính chất nghiêm ngặt:
 
-- khó đảo ngược,
-- khó tìm collision,
-- nhạy với thay đổi nhỏ ở input,
-- phân bố output đều.
+- khó đảo ngược từ giá trị băm về đầu vào gốc,
+- khó tìm được hai đầu vào khác nhau có cùng giá trị băm (chống va chạm),
+- nhạy cảm với thay đổi nhỏ ở đầu vào,
+- phân bố đầu ra đều trên miền đích.
 
-Đó là ví dụ đẹp cho thấy:
-trong computing,
-hàm không chỉ là ánh xạ.
-Nó còn mang specification rất cụ thể.
+Điều này minh họa rằng trong khoa học máy tính, hàm không chỉ là một ánh xạ mà còn đi kèm những đặc tả (specification) kỹ thuật chặt chẽ.
 
 ![Hàm băm — toàn ánh nhưng không đơn ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Surjection.svg)
 
-<p class="textbook-figure-caption" data-figure="6.22">SHA-256 là hàm toàn ánh (mọi digest đều khả dĩ) nhưng không đơn ánh (domain vô hạn → collision không tránh khỏi).</p>
-### Ứng dụng của hash
+<p class="textbook-figure-caption" data-figure="6.22">SHA-256 có miền đích gồm $$2^{256}$$ giá trị nhưng không đơn ánh vì miền xác định vô hạn, nên va chạm là điều không thể tránh khỏi về mặt lý thuyết.</p>
+### Ứng dụng của hàm băm
 
-Hash functions sống trong:
+Hàm băm mật mã xuất hiện trong nhiều thành phần hạ tầng quan trọng:
 
-- lưu mật khẩu,
-- kiểm tra tính toàn vẹn,
+- lưu trữ và xác thực mật khẩu,
+- kiểm tra tính toàn vẹn dữ liệu,
 - chữ ký số,
 - blockchain,
-- content addressing,
-- deduplication,
-- distributed systems.
+- định địa chỉ theo nội dung (content addressing),
+- khử trùng lặp dữ liệu (deduplication),
+- hệ thống phân tán.
 
-Chúng là ví dụ mạnh cho việc một định nghĩa toán học đơn giản
-có thể trở thành thành phần hạ tầng cực quan trọng.
+Từ một định nghĩa toán học ngắn gọn, hàm băm đã trở thành thành phần nền tảng của bảo mật và hạ tầng phần mềm hiện đại.
 
 ---
 
-## Phần 5: API design như đặc tả hàm
+## Phần 5: Thiết kế API như đặc tả hàm
 
-### Một API tốt giống một hàm tốt
+### Một API tốt giống một hàm được đặc tả rõ
 
-Khi thiết kế API,
-chúng ta đang làm điều gần với định nghĩa hàm:
+Khi thiết kế một API, ta thực chất đang xác định đầy đủ các thành phần tương tự một hàm toán học:
 
-- input là gì,
-- output là gì,
-- preconditions ra sao,
-- errors khi nào,
-- side effects có không.
+- đầu vào hợp lệ là gì,
+- đầu ra có cấu trúc ra sao,
+- tiền điều kiện (preconditions) cần thỏa mãn,
+- các trường hợp lỗi được xử lý thế nào,
+- thao tác có gây ra tác dụng phụ (side effects) hay không.
 
 Ví dụ:
 
@@ -562,63 +516,49 @@ def transfer_money(
     return TransferResult(True, transaction_id="tx-001"), new_balances
 ```
 
-Hàm này tưởng đơn giản, nhưng specification cần rõ:
+Dù nghiệp vụ tưởng chừng đơn giản, đặc tả của hàm cần nêu rõ:
 
-- `amount` phải dương (domain constraint),
-- sender phải đủ tiền (precondition),
-- không chuyển cho chính mình,
-- trả về state mới thay vì mutate global (dễ test, dễ undo).
+- `amount` phải là số dương (ràng buộc miền xác định),
+- tài khoản gửi phải đủ số dư (tiền điều kiện),
+- tài khoản gửi và nhận phải khác nhau,
+- trả về trạng thái mới thay vì sửa trực tiếp dữ liệu toàn cục (giúp dễ kiểm thử và dễ hoàn tác).
 
-**REST API** cũng là hàm: `POST /transfer` nhận JSON body, trả status code + JSON. OpenAPI/Swagger chính là tài liệu hóa domain/codomain của endpoint.
+**REST API** cũng mang bản chất của hàm số: endpoint `POST /transfer` nhận phần thân JSON và trả về mã trạng thái kèm dữ liệu JSON. Các chuẩn tài liệu như OpenAPI/Swagger chính là cách mô tả chính thức domain và codomain của từng endpoint.
 
-### Hàm mơ hồ tạo hệ thống mơ hồ
+### Đặc tả mơ hồ dẫn đến hệ thống dễ lỗi
 
-Rất nhiều bug sản phẩm không đến từ thuật toán khó.
-Chúng đến từ specification mờ:
+Nhiều lỗi trong sản phẩm thực tế không bắt nguồn từ thuật toán phức tạp mà từ đặc tả không rõ ràng:
 
-- input nào hợp lệ,
-- null được hiểu ra sao,
-- timezone xử lý thế nào,
-- idempotency có được đảm bảo không.
+- đầu vào nào được xem là hợp lệ,
+- giá trị `null` được diễn giải ra sao,
+- múi giờ (timezone) được chuẩn hóa như thế nào,
+- tính lũy đẳng (idempotency) có được đảm bảo khi gửi lại yêu cầu hay không.
 
-Nhìn API như hàm được đặc tả tốt
-giúp kỹ sư viết code chính xác hơn,
-review tốt hơn,
-và tài liệu hóa rõ hơn.
+Tiếp cận API như một hàm được đặc tả chặt chẽ giúp kỹ sư viết mã chính xác hơn, duyệt mã (review) hiệu quả hơn và tài liệu hóa nhất quán hơn.
 
 ![API design — đặc tả hàm rõ ràng](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
-<p class="textbook-figure-caption" data-figure="6.23">API tốt giống hàm tốt — input, output, preconditions và errors phải được đặc tả không mơ hồ.</p>
-### Pure interface, messy world
+<p class="textbook-figure-caption" data-figure="6.23">API tốt giống một hàm được đặc tả rõ ràng — đầu vào, đầu ra, tiền điều kiện và mã lỗi đều không mơ hồ.</p>
+### Giao diện thuần trong thế giới có tác dụng phụ
 
-Dĩ nhiên,
-phần mềm thật có side effects.
-Nhưng chính vì thế,
-việc giữ phần interface càng “giống hàm” càng tốt
-lại càng có giá trị.
-
-Nó giảm bất ngờ,
-giảm lỗi tích hợp,
-và làm reasoning dễ hơn cho cả người viết lẫn người dùng API.
+Phần mềm thực tế không thể tránh khỏi tác dụng phụ khi tương tác với mạng, tệp tin hay cơ sở dữ liệu. Chính vì vậy, việc giữ phần giao diện càng gần với mô hình hàm thuần càng có giá trị: nó hạn chế các hành vi ngoài dự đoán, giảm lỗi khi tích hợp và giúp cả người xây dựng lẫn người sử dụng API dễ dàng suy luận hơn.
 
 ---
 
-## Phần 6: Tương lai — function thinking trong hệ thống phức tạp
+## Phần 6: Tư duy hàm trong các hệ thống phức tạp
 
-Khi hệ thống lớn lên,
-tư duy hàm càng hữu ích:
+Khi hệ thống phần mềm ngày càng mở rộng, tư duy hàm tiếp tục phát huy vai trò trong nhiều kiến trúc hiện đại:
 
-- serverless functions,
-- data pipelines,
-- ML inference endpoints,
-- reactive programming,
-- deterministic transforms,
-- verified interfaces.
+- các hàm serverless (serverless functions),
+- đường ống xử lý dữ liệu (data pipelines),
+- các dịch vụ suy luận học máy (ML inference endpoints),
+- lập trình phản ứng (reactive programming),
+- các phép biến đổi tất định (deterministic transforms),
+- các giao diện đã được kiểm chứng (verified interfaces).
 
-Ngay cả trong distributed systems đầy side effects,
-kỹ sư giỏi vẫn thường cố đẩy nhiều phần nhất có thể về dạng “hàm sạch, dễ reason”.
+Ngay cả trong các hệ thống phân tán vốn chứa nhiều tác dụng phụ, các kỹ sư vẫn thường tách biệt và đưa càng nhiều phần xử lý càng tốt về dạng hàm gọn gàng, dễ suy luận.
 
-**Serverless (AWS Lambda, Cloud Functions)** — mỗi handler là một hàm:
+**Serverless (AWS Lambda, Cloud Functions)** — mỗi trình xử lý (handler) là một hàm:
 
 ```python
 import json
@@ -639,24 +579,16 @@ def lambda_handler(event: dict, context) -> dict:
     return {"statusCode": 200, "body": json.dumps(user)}
 ```
 
-**Callback và event handler** (JavaScript, GUI, game loop) cũng là hàm: `onClick`, `onMessage`, `setTimeout(fn, 1000)` — đều là $$f: \text{Event} \to \text{Action}$$.
+**Callback và trình xử lý sự kiện (event handler)** trong JavaScript, giao diện đồ họa (GUI) hay vòng lặp trò chơi (game loop) cũng tuân theo mô hình hàm: `onClick`, `onMessage`, `setTimeout(fn, 1000)` đều có thể xem là ánh xạ $$f: \text{Event} \to \text{Action}$$.
 
 ![Hàm hợp trong hệ thống phân tán](/discrete-mathematics-for-computer-science-iuh/img/course/Example_for_a_composition_of_two_functions.svg)
 
-<p class="textbook-figure-caption" data-figure="6.24">Serverless functions và data pipelines là chuỗi hàm hợp — mỗi bước ánh xạ input sang output xác định.</p>
+<p class="textbook-figure-caption" data-figure="6.24">Serverless functions và data pipelines hoạt động như chuỗi hàm hợp — mỗi bước ánh xạ đầu vào sang đầu ra xác định.</p>
 ---
 
 ## Kết luận
 
-Hàm số không chỉ có trong đại số phổ thông.
-Trong lập trình, ta gặp nó ở mọi nơi:
-mỗi hàm trong code, mỗi API, mỗi mô hình học máy đều là một hàm.
-
-Từ Church và Turing,
-đến Haskell,
-SHA-256,
-và prediction services,
-khái niệm hàm đã trở thành một trong những chiếc xương sống bền nhất của computing.
+Hàm số không chỉ giới hạn trong đại số phổ thông mà hiện diện ở hầu hết mọi tầng của phần mềm: từ từng hàm trong mã nguồn, giao diện API cho đến các mô hình học máy. Từ nền tảng lý thuyết của Church và Turing đến Haskell, SHA-256 và các dịch vụ dự đoán hiện đại, khái niệm hàm luôn giữ vai trò cốt lõi trong khoa học máy tính.
 
 ---
 
@@ -664,7 +596,7 @@ khái niệm hàm đã trở thành một trong những chiếc xương sống b
 
 ### Bài tập 1: Hàm đệ quy
 
-Viết hàm đệ quy tính $$f(n) = n!$$ và giải thích tại sao đây là hàm tính toán được theo Turing.
+Viết hàm đệ quy tính $$f(n) = n!$$ và giải thích tại sao đây là hàm tính toán được theo nghĩa của Turing.
 
 <details>
 <summary>Đáp án</summary>
@@ -675,29 +607,29 @@ def factorial(n):
     return n * factorial(n-1)
 ```
 
-Hàm này có thể được tính bằng máy Turing (có thuật toán hữu hạn).
+Hàm này tính toán được bằng máy Turing vì tồn tại thuật toán hữu hạn bước cho ra kết quả chính xác với mọi số nguyên không âm $$n$$.
 
 </details>
 
 ### Bài tập 2: Hàm băm
 
-Giải thích tại sao hàm băm SHA-256 là toàn ánh nhưng không đơn ánh trên thực tế.
+Giải thích tại sao trên thực tế hàm băm SHA-256 thường được xem là toàn ánh nhưng không đơn ánh.
 
 <details>
 <summary>Đáp án</summary>
 
-Toàn ánh vì output là 256-bit (có $$2^{256}$$ giá trị). Không đơn ánh vì domain lớn hơn nhiều (các file có kích thước bất kỳ).
+SHA-256 có đầu ra 256-bit (gồm $$2^{256}$$ giá trị khả dĩ), nhưng miền xác định chứa tập vô hạn các chuỗi đầu vào có độ dài bất kỳ. Vì miền xác định lớn hơn rất nhiều so với miền đích nên hàm chắc chắn không đơn ánh (tồn tại va chạm).
 
 </details>
 
-### Bài tập 3: Hàm trong ML
+### Bài tập 3: Hàm trong học máy
 
 Trong mô hình học máy, hàm dự đoán $$f: \mathbb{R}^n \to \mathbb{R}$$ thường không phải song ánh. Tại sao?
 
 <details>
 <summary>Đáp án</summary>
 
-Vì nhiều input khác nhau có thể cho cùng output (nhiều điểm dữ liệu có cùng nhãn hoặc giá trị dự đoán).
+Vì nhiều đầu vào khác nhau (các điểm dữ liệu khác nhau trong $$\mathbb{R}^n$$) có thể ánh xạ về cùng một nhãn hoặc cùng một giá trị dự đoán, nên hàm không đơn ánh.
 
 </details>
 
@@ -711,11 +643,11 @@ raw = ["  AN@UNIV.EDU.VN  ", "", "binh@univ.edu.vn", "invalid"]
 
 Viết hàm `process_emails(raw) -> list[str]` gồm ba bước (ba hàm con):
 
-1. `strip_each` — bỏ khoảng trắng đầu cuối.
-2. `drop_empty` — loại chuỗi rỗng.
-3. `normalize_case` — chuyển về chữ thường.
+1. `strip_each` — bỏ khoảng trắng đầu và cuối chuỗi.
+2. `drop_empty` — loại bỏ các chuỗi rỗng.
+3. `normalize_case` — chuyển toàn bộ về chữ thường.
 
-Ghép bằng composition (gọi lần lượt hoặc dùng `map`/`filter`). Kết quả mong đợi: `["an@univ.edu.vn", "binh@univ.edu.vn", "invalid"]`.
+Ghép các bước bằng composition (gọi lồng nhau hoặc dùng `map`/`filter`). Kết quả mong đợi: `["an@univ.edu.vn", "binh@univ.edu.vn", "invalid"]`.
 
 <details>
 <summary>Đáp án</summary>
@@ -738,9 +670,9 @@ assert process_emails(raw) == ["an@univ.edu.vn", "binh@univ.edu.vn", "invalid"]
 
 </details>
 
-### Bài tập 5: Pure vs impure
+### Bài tập 5: Pure và impure
 
-Phân loại các hàm sau là **pure** hay **impure**, giải thích ngắn:
+Phân loại các hàm sau là **pure** hay **impure** và giải thích ngắn gọn:
 
 ```python
 def add_tax(price, rate):
@@ -760,16 +692,16 @@ def parse_int(s):
 <details>
 <summary>Đáp án</summary>
 
-- `add_tax` — **pure**: chỉ phụ thuộc `price`, `rate`.
-- `get_current_user` — **impure**: đọc DB và session (side effect / external state).
-- `random_id` — **impure**: cùng "input" rỗng nhưng output khác nhau mỗi lần gọi.
-- `parse_int` — **pure** với giả định `s` là chuỗi hợp lệ; ném exception nếu không parse được vẫn là deterministic với cùng `s`.
+- `add_tax` — **pure**: kết quả chỉ phụ thuộc vào hai tham số `price` và `rate`.
+- `get_current_user` — **impure**: đọc dữ liệu từ cơ sở dữ liệu và trạng thái phiên (`session`), phụ thuộc trạng thái bên ngoài.
+- `random_id` — **impure**: dù không có tham số nhưng mỗi lần gọi lại trả về một kết quả ngẫu nhiên khác nhau.
+- `parse_int` — **pure** trên miền các chuỗi số nguyên hợp lệ; với cùng một đầu vào `s`, hành vi (trả về số nguyên hoặc ném ngoại lệ) là hoàn toàn xác định.
 
 </details>
 
 ### Bài tập 6: Decorator kiểm tra tham số
 
-Viết decorator `@require_positive` bọc hàm nhận số `amount`, ném `ValueError` nếu `amount <= 0`, ngược lại gọi hàm gốc.
+Viết decorator `@require_positive` bọc hàm nhận tham số `amount`: nếu `amount <= 0` thì ném `ValueError`, ngược lại gọi hàm gốc.
 
 ```python
 @require_positive
@@ -805,12 +737,12 @@ else:
 
 ### Bài tập 7: API như hàm
 
-Endpoint `GET /users/{id}` trả user hoặc 404. Viết pseudo-code Python (hoặc FastAPI) mô tả:
+Endpoint `GET /users/{id}` trả về thông tin người dùng hoặc mã lỗi 404. Viết mã giả Python (hoặc FastAPI) thể hiện rõ:
 
 - domain: `id` là số nguyên dương,
-- codomain: `User` hoặc lỗi,
+- codomain: thông tin `User` hoặc phản hồi lỗi,
 - precondition: `id` hợp lệ,
-- postcondition: không expose mật khẩu trong response.
+- postcondition: không làm lộ mật khẩu trong dữ liệu trả về.
 
 <details>
 <summary>Đáp án</summary>
@@ -831,16 +763,16 @@ def get_user(user_id: int) -> dict:
     }
 ```
 
-Domain: `user_id > 0`. Codomain: HTTP response + JSON an toàn. Tách `user_repo` giúp test handler với mock.
+Domain: `user_id > 0`. Codomain: phản hồi HTTP kèm JSON an toàn. Việc tách `user_repo` ra lớp riêng giúp kiểm thử handler dễ dàng bằng đối tượng giả lập (mock).
 
 </details>
 
 ### Bài tập 8: `map`/`reduce` trong thống kê
 
-Cho `scores = [7, 8, 5, 9, 6]`:
+Cho danh sách điểm `scores = [7, 8, 5, 9, 6]`:
 
-(a) Dùng `map` tính điểm sau khi cộng 10% điểm thưởng (làm tròn 1 chữ số thập phân).
-(b) Dùng `reduce` tìm điểm cao nhất (không dùng `max()`).
+(a) Dùng `map` tính điểm sau khi cộng thêm 10% điểm thưởng (làm tròn 1 chữ số thập phân).
+(b) Dùng `reduce` tìm điểm cao nhất (không dùng hàm `max()`).
 
 <details>
 <summary>Đáp án</summary>
@@ -865,15 +797,15 @@ highest = reduce(lambda a, b: a if a >= b else b, scores)
 
 ## Tóm tắt
 
-- **Hàm trong lập trình**: mỗi hàm là hợp đồng domain → codomain; cùng input phải cho cùng output (trừ hàm impure có state bên ngoài).
-- **Lập trình hàm**: `map`, `filter`, `reduce`, composition, closure, decorator — ghép hàm nhỏ thành pipeline dễ test.
-- **Pure vs impure**: giữ logic tính toán thuần; tách I/O ra layer riêng.
-- **ML**: `model.predict` là hàm $$f_\theta$$; training là tìm $$\theta$$ qua loss và optimizer.
-- **Hash & API**: SHA-256 và REST endpoint đều cần đặc tả tính chất hàm (xác định, toàn ánh, preconditions) rõ ràng.
-- **Tính chất toán**: đơn ánh, toàn ánh, song ánh và hàm nghịch đảo (xem bài 06_02, 06_03) giúp thiết kế khóa, undo, và giải mã chính xác.
+- **Hàm trong lập trình**: mỗi hàm là một hợp đồng từ domain sang codomain; cùng một đầu vào cho cùng một đầu ra (trừ hàm impure phụ thuộc trạng thái ngoài).
+- **Lập trình hàm**: `map`, `filter`, `reduce`, composition, closure và decorator giúp ghép các hàm nhỏ thành pipeline dễ kiểm thử.
+- **Pure và impure**: giữ logic tính toán cốt lõi dưới dạng hàm thuần và tách các thao tác I/O ra lớp ngoài.
+- **Học máy**: `model.predict` là hàm $$f_\theta$$; quá trình huấn luyện tìm bộ tham số $$\theta$$ thông qua hàm mất mát và bộ tối ưu hóa.
+- **Hàm băm và API**: SHA-256 hay REST endpoint đều đòi hỏi đặc tả tính chất hàm (tính xác định, tiền điều kiện, đầu vào/đầu ra) rõ ràng.
+- **Tính chất toán học**: đơn ánh, toàn ánh, song ánh và hàm nghịch đảo (xem bài 06_02, 06_03) hỗ trợ thiết kế khóa, cơ chế hoàn tác và giải mã chính xác.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=dNRDvLACg5Q">Turing Machines Explained - Computerphile</a> — Computerphile, tiếng Anh. Xem trước hàm tính được trên máy Turing, đúng phần lịch sử bài.
-- <a href="https://www.youtube.com/watch?v=OixshZzH8t0">FUNCTIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Hợp đồng đầu vào–đầu ra, cùng ý map và hàm trong chương trình.
-- <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Hàm băm và va chạm, đúng phần hàm băm mật mã của bài.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=dNRDvLACg5Q">Turing Machines Explained - Computerphile</a> — Computerphile, tiếng Anh. Giới thiệu khái niệm hàm tính toán được trên máy Turing, khớp với phần lịch sử của bài.
+- <a href="https://www.youtube.com/watch?v=OixshZzH8t0">FUNCTIONS - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Hợp đồng đầu vào–đầu ra, liên hệ trực tiếp với `map` và hàm trong lập trình.
+- <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Hàm băm và hiện tượng va chạm, gắn với phần hàm băm mật mã trong bài.

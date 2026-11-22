@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. Tree of Thoughts (NeurIPS 2023) is BFS/DFS on
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite traversals, MST, Huffman, or BST.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại duyệt cây, MST, Huffman hay BST.
+Bài ghi chú ứng dụng song ngữ. Bài này **không** thay thế các nội dung về duyệt cây, MST, Huffman hay BST.
 
 </div>
 
@@ -34,16 +34,16 @@ Optional link to this chapter: ToT is not a new tree definition. It is tree *sea
 
 ## Tiếng Việt
 
-Cây có gốc đã là mô hình backtracking: mỗi đỉnh là tiền tố nghiệm, con là bước hợp lệ, DFS/BFS chọn thứ tự. Yao và cộng sự (NeurIPS 2023) áp dụng mô hình đó cho suy luận LLM.
+Cây có gốc vốn là mô hình quen thuộc của kỹ thuật quay lui (*backtracking*): mỗi nút biểu diễn một phần lời giải ban đầu, các nút con là những bước mở rộng hợp lệ, còn DFS/BFS quyết định thứ tự duyệt. Yao và cộng sự (NeurIPS 2023) đã áp dụng chính mô hình này vào quá trình suy luận của mô hình ngôn ngữ lớn (LLM).
 
-Một trạng thái là $$s = [x, z_{1\cdots i}]$$ (input cộng các thought đến nay). Bài báo nêu bốn lựa chọn thiết kế — cắt bước thought, mở rộng, chấm điểm, thuật toán tìm — và cài BFS (Game of 24) cùng DFS có cắt nhánh (mini crossword). Số headline: GPT-4 + chain-of-thought giải **4%** Game of 24; ToT đạt **74%**.
+Mỗi trạng thái được biểu diễn dưới dạng $$s = [x, z_{1\cdots i}]$$ (đầu vào kèm chuỗi bước suy nghĩ đã sinh ra). Bài báo xác định bốn lựa chọn thiết kế — cách phân tách một bước suy nghĩ, cách mở rộng nhánh, cách chấm điểm trạng thái và thuật toán tìm kiếm — rồi triển khai cụ thể bằng BFS (cho bài toán Game of 24) và DFS có cắt tỉa (cho trò chơi ô chữ nhỏ). Kết quả nổi bật: GPT-4 kết hợp chuỗi suy nghĩ (*chain-of-thought*) chỉ giải được **4%** bài toán Game of 24, trong khi Tree of Thoughts (ToT) đạt **74%**.
 
-Liên hệ tùy chọn: ToT không định nghĩa cây mới. Nó là *tìm kiếm trên cây* (các phép duyệt bạn đã viết) cộng bộ đánh giá heuristic. Huffman và BST vẫn về mã hóa và khóa có thứ tự; ToT là duyệt cây trạng thái khi hệ số nhánh là ngôn ngữ chứ không phải số.
+Liên hệ với nội dung chương: ToT không đưa ra một định nghĩa cây mới mà là *tìm kiếm trên cây* (dựa trên chính các phép duyệt đã học) kết hợp với bộ đánh giá heuristic. Nếu Huffman và BST phục vụ mã hóa và quản lý khóa có thứ tự, thì ToT khai phá cây trạng thái khi các nhánh mở rộng mang bản chất ngôn ngữ thay vì số học.
 
-**Câu hỏi.** (1) Vẽ cây trạng thái ToT cho một instance Game of 24, nhánh 3, sâu 2. (2) Phép duyệt nào khớp “mở mọi thought ở độ sâu này, giữ top $$b$$”?
+**Câu hỏi.** (1) Vẽ cây trạng thái ToT cho một ví dụ Game of 24 có hệ số nhánh bằng 3 và độ sâu bằng 2. (2) Phép duyệt nào tương ứng với chiến lược “mở rộng mọi bước suy nghĩ ở độ sâu hiện tại và giữ lại $$b$$ nhánh tốt nhất”?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=MXBxNUnC7iY">Tree of Thoughts: Deliberate Problem Solving with Large Language Models \| Paper Summary</a> — Lucas Soares \| Automata Learning Lab, tiếng Anh. Xem trước Tree of Thoughts: cây các lời giải dở và cách duyệt.
-- <a href="https://www.youtube.com/watch?v=ut5kp56wW_4">Tree of Thoughts: Deliberate Problem Solving with Large Language Models (Full Paper Review)</a> — Yannic Kilcher, tiếng Anh. Đọc bài báo: tìm kiếm có chủ đích trên cây suy nghĩ.
-- <a href="https://www.youtube.com/watch?v=z_OwSnFY_5s">[Discrete Mathematics] Tree Directories and Traversals</a> — TrevTutor, tiếng Anh. Duyệt cây cổ điển, cùng BFS/DFS mà phương pháp này dùng.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=MXBxNUnC7iY">Tree of Thoughts: Deliberate Problem Solving with Large Language Models \| Paper Summary</a> — Lucas Soares \| Automata Learning Lab, tiếng Anh. Tóm tắt bài báo Tree of Thoughts về cây các lời giải trung gian và cách duyệt.
+- <a href="https://www.youtube.com/watch?v=ut5kp56wW_4">Tree of Thoughts: Deliberate Problem Solving with Large Language Models (Full Paper Review)</a> — Yannic Kilcher, tiếng Anh. Phân tích chi tiết bài báo về tìm kiếm có chủ đích trên cây suy nghĩ.
+- <a href="https://www.youtube.com/watch?v=z_OwSnFY_5s">[Discrete Mathematics] Tree Directories and Traversals</a> — TrevTutor, tiếng Anh. Ôn lại các phép duyệt cây cổ điển (BFS/DFS) làm nền tảng cho phương pháp này.

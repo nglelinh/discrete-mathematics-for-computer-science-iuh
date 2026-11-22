@@ -7,19 +7,19 @@ date: 2021-01-01
 order: 5
 required: false
 lang: en
-excerpt: "Ở mục trước chúng ta đã học hệ số nhị thức và đồng nhất thức. Mục này mở rộng sang hoán vị và tổ hợp tổng quát — xử lý các tình huống có lặp, có phần tử trùng…"
+excerpt: "Mở rộng phép đếm sang tổ hợp có lặp (stars and bars), phương trình nghiệm nguyên có ràng buộc, hoán vị đa tập và hệ số đa thức."
 ---
 
-Ở mục trước chúng ta đã học hệ số nhị thức và đồng nhất thức. Mục này mở rộng sang **hoán vị và tổ hợp tổng quát** — xử lý các tình huống có lặp, có phần tử trùng hoặc có ràng buộc bổ sung.
+Ở mục trước, chúng ta đã học hệ số nhị thức và các đồng nhất thức tổ hợp. Mục này mở rộng sang **hoán vị và tổ hợp tổng quát** để xử lý những bài toán có yếu tố lặp, có các phần tử giống nhau hoặc đi kèm ràng buộc bổ sung.
 
-Trong bài toán thực tế, các đối tượng không phải lúc nào cũng phân biệt hoàn toàn. Có khi phần tử được phép lặp lại, có khi nhiều phần tử giống nhau, có khi số cách chọn phải tính dưới ràng buộc phân phối. Điểm khó không nằm ở công thức dài mà ở chỗ nhận ra bản chất khác biệt so với bài toán chuẩn.
+Trong thực tế, các đối tượng không phải lúc nào cũng hoàn toàn phân biệt: có khi một loại phần tử được chọn nhiều lần, có khi nhiều phần tử trong tập hợp giống hệt nhau, hoặc số lượng phân phối phải thỏa mãn cận dưới và cận trên. Điểm mấu chốt không nằm ở việc ghi nhớ công thức dài, mà ở chỗ nhận diện chính xác mô hình bài toán.
 
 ## Tổ hợp có lặp
 
-**Bài toán**: Có $$n$$ loại đồ vật, mỗi loại có số lượng không giới hạn. Chọn $$r$$ đồ vật, không xét thứ tự. Có bao nhiêu cách?
+**Bài toán**: Có $$n$$ loại đồ vật khác nhau, mỗi loại có số lượng không giới hạn. Hỏi có bao nhiêu cách chọn $$r$$ đồ vật mà không xét thứ tự?
 
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Số tổ hợp có lặp chập $$r$$ từ $$n$$ loại là
+**Định lý**: Số tổ hợp có lặp chập $$r$$ từ $$n$$ loại là:
 </div>
 
 <div class="textbook-equation" markdown="1">
@@ -30,7 +30,7 @@ $$
 </div>
 ![Tổ hợp có lặp — chọn r đồ vật từ n loại](/discrete-mathematics-for-computer-science-iuh/img/course/combination_with_repetition.svg)
 
-<p class="textbook-figure-caption" data-figure="7.21">Tổ hợp có lặp — mỗi cách chọn ghi số lượng từng loại $$(x_1,\ldots,x_n)$$, không xét thứ tự, cho phép lặp.</p>
+<p class="textbook-figure-caption" data-figure="7.21">Tổ hợp có lặp — mỗi cách chọn được xác định bởi bộ số lượng từng loại $$(x_1,\ldots,x_n)$$, không xét thứ tự và cho phép lặp.</p>
 
 ### Video ngắn: Sao và vạch
 
@@ -38,20 +38,20 @@ $$
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/stars-and-bars.mp4"></video>
 </div>
 
-Video dài khoảng 3 phút 1 giây: chọn 5 chiếc bánh từ 3 loại được mã hóa thành dãy 5 sao và 2 vạch, đếm bằng cách chọn 2 trong 7 vị trí cho vạch ($$\binom{7}{2} = 21$$, liệt kê đủ 21 dãy), công thức $$\binom{r+n-1}{n-1}$$ với ví dụ $$x_1+x_2+x_3+x_4 = 10$$, ràng buộc dưới bằng cách phát trước, ràng buộc trên bằng bù trừ ($$66 - 63 + 3 = 6$$), và hai bài luyện tập: mua 6 viên kẹo từ 4 loại ($$\binom{9}{6} = 84$$), chia 10 viên bi cho 4 em mỗi em ít nhất 2 viên ($$\binom{5}{3} = 10$$).
+Video dài khoảng 3 phút 1 giây, minh họa bài toán chọn 5 chiếc bánh từ 3 loại bằng dãy 5 ngôi sao và 2 vạch ngăn, đếm số cách bằng việc chọn 2 trong 7 vị trí cho vạch ($$\binom{7}{2} = 21$$, liệt kê đủ 21 dãy), tổng quát thành công thức $$\binom{r+n-1}{n-1}$$ qua ví dụ $$x_1+x_2+x_3+x_4 = 10$$, xử lý ràng buộc dưới bằng cách phát trước và ràng buộc trên bằng nguyên lý bù trừ ($$66 - 63 + 3 = 6$$), cùng hai bài luyện tập: mua 6 viên kẹo từ 4 loại ($$\binom{9}{6} = 84$$) và chia 10 viên bi cho 4 em mỗi em ít nhất 2 viên ($$\binom{5}{3} = 10$$).
 
-### Phương pháp Stars and Bars
+### Phương pháp Stars and Bars (Sao và vạch)
 
-Biểu diễn $$r$$ đồ vật bằng $$r$$ ngôi sao và dùng $$n-1$$ vạch để chia thành $$n$$ nhóm. Mỗi nhóm cho biết số đồ vật thuộc một loại.
+Ta biểu diễn $$r$$ đồ vật bằng $$r$$ ngôi sao và dùng $$n-1$$ vạch ngăn để chia chúng thành $$n$$ nhóm, mỗi nhóm tương ứng với số đồ vật thuộc một loại.
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Chọn 5 chiếc bánh từ 3 loại. Một cấu hình
+**Ví dụ**: Chọn 5 chiếc bánh từ 3 loại. Cấu hình
 
 ```text
 **|***|
 ```
 
-nghĩa là chọn 2 bánh loại 1, 3 bánh loại 2, 0 bánh loại 3. Tổng cộng có $$5$$ sao và $$2$$ vạch, nên số cách là
+biểu thị việc chọn 2 bánh loại 1, 3 bánh loại 2 và 0 bánh loại 3. Vì có tổng cộng $$5$$ ngôi sao và $$2$$ vạch ngăn nên số cách chọn là:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -59,9 +59,9 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Chứng minh (song ánh)** — gồm hai bước:
+**Chứng minh (song ánh)** gồm hai bước:
 
-**Bước 1. Một cách chọn ↔ một bộ đếm.** Mỗi lần chọn $$r$$ đồ vật từ $$n$$ loại (không xét thứ tự, lặp được) tương ứng duy nhất với một bộ số nguyên không âm
+**Bước 1. Tương ứng giữa cách chọn và bộ đếm.** Mỗi cách chọn $$r$$ đồ vật từ $$n$$ loại (không xét thứ tự, cho phép lặp) tương ứng duy nhất với một bộ số nguyên không âm
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -69,11 +69,11 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-trong đó $$x_i$$ là số đồ vật **loại $$i$$** được lấy. Ngược lại, mỗi bộ $$(x_1,\ldots,x_n)$$ xác định đúng một cách chọn. Vậy chúng ta chỉ cần đếm số bộ như vậy.
+trong đó $$x_i$$ là số đồ vật thuộc **loại $$i$$** được chọn. Ngược lại, mỗi bộ $$(x_1,\ldots,x_n)$$ cũng xác định đúng một cách chọn. Do đó, bài toán quy về đếm số bộ nghiệm như vậy.
 
-**Bước 2. Stars and bars.** Với một bộ $$(x_1,\ldots,x_n)$$ cố định, vẽ $$x_1$$ sao, một vạch, $$x_2$$ sao, một vạch, …, $$x_n$$ sao. Tổng cộng có đúng $$r$$ sao và $$n-1$$ vạch, tức một chuỗi dài $$r+n-1$$ ký hiệu chỉ gồm sao và vạch.
+**Bước 2. Mã hóa bằng sao và vạch.** Với mỗi bộ $$(x_1,\ldots,x_n)$$, ta viết liên tiếp $$x_1$$ ngôi sao, một vạch, $$x_2$$ ngôi sao, một vạch, …, đến $$x_n$$ ngôi sao. Chuỗi thu được dài đúng $$r+n-1$$ ký hiệu, gồm $$r$$ ngôi sao và $$n-1$$ vạch.
 
-Hai chuỗi khác nhau cho hai bộ $$(x_1,\ldots,x_n)$$ khác nhau, và mọi chuỗi hợp lệ đều sinh ra một bộ hợp lệ. Do đó số cách chọn bằng số cách sắp $$r$$ sao và $$n-1$$ vạch trên $$r+n-1$$ vị trí, tức số cách chọn vị trí cho các vạch:
+Hai chuỗi khác nhau tương ứng với hai bộ $$(x_1,\ldots,x_n)$$ khác nhau, và mọi chuỗi hợp lệ đều cho ra một bộ nghiệm duy nhất. Vậy số cách chọn bằng số cách chọn vị trí cho $$n-1$$ vạch trong tổng số $$r+n-1$$ vị trí:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -85,21 +85,21 @@ $$
 </div>
 
 <div class="content-box insight-box textbook-block" markdown="1">
-**Nhận xét**: Công thức $$\binom{n+r-1}{r}$$ **không** phải $$\binom{n}{r}$$. Khi $$r>n$$, tổ hợp thường cho $$0$$, nhưng tổ hợp có lặp vẫn có thể lớn — vì chúng ta đang đếm **loại**, không phải $$n$$ vật phân biệt.
+**Nhận xét**: Công thức $$\binom{n+r-1}{r}$$ **khác** với $$\binom{n}{r}$$. Khi $$r>n$$, tổ hợp không lặp bằng $$0$$, nhưng tổ hợp có lặp vẫn dương vì ta được phép chọn nhiều đồ vật thuộc cùng một loại.
 </div>
 
 ![Phương pháp stars and bars](/discrete-mathematics-for-computer-science-iuh/img/course/stars_and_bars.svg)
 
-<p class="textbook-figure-caption" data-figure="7.22">Chuỗi sao–vạch tương ứng một phân phối $$(x_1,x_2,x_3)$$; số cách = $$\binom{r+n-1}{n-1}$$.</p>
+<p class="textbook-figure-caption" data-figure="7.22">Mỗi chuỗi sao–vạch tương ứng với một phân phối $$(x_1,x_2,x_3)$$; tổng số cách bằng $$\binom{r+n-1}{n-1}$$.</p>
 <div class="interactive-tool" data-demo="stars-bars-visualizer" markdown="1">
-**Demo tương tác đề xuất**: Thanh kéo chọn $$n$$ và $$r$$, công cụ sinh các chuỗi sao-vạch tương ứng và chuyển từng chuỗi thành nghiệm $$(x_1,\ldots,x_n)$$.
+**Demo tương tác**: Dùng thanh kéo để chọn $$n$$ và $$r$$, công cụ sẽ sinh các chuỗi sao–vạch tương ứng và chuyển từng chuỗi thành bộ nghiệm $$(x_1,\ldots,x_n)$$.
 </div>
 
 <script src="{{ '/public/js/stars-bars-visualizer.js' | relative_url }}"></script>
 
 ## Phương trình nghiệm nguyên không âm
 
-Số nghiệm nguyên không âm của
+Số nghiệm nguyên không âm của phương trình
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -115,10 +115,10 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Chứng minh**: Theo Bước 1 ở mục 1, mỗi nghiệm nguyên không âm $$(x_1,\ldots,x_n)$$ của phương trình tương ứng một cách chọn $$r$$ đồ vật từ $$n$$ loại, và ngược lại. Số nghiệm vì thế bằng số tổ hợp có lặp, đã chứng minh ở trên. ∎
+**Chứng minh**: Theo Bước 1 ở mục trên, mỗi nghiệm nguyên không âm $$(x_1,\ldots,x_n)$$ của phương trình tương ứng một–một với một cách chọn $$r$$ đồ vật từ $$n$$ loại, nên số nghiệm bằng đúng số tổ hợp có lặp đã chứng minh. ∎
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Số nghiệm nguyên không âm của $$x_1+x_2+x_3+x_4=10$$ là
+**Ví dụ**: Số nghiệm nguyên không âm của phương trình $$x_1+x_2+x_3+x_4=10$$ là:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -130,7 +130,7 @@ $$
 
 ### Ràng buộc dưới
 
-Nếu $$x_i\ge a_i$$, đặt $$y_i=x_i-a_i\ge 0$$. Khi đó
+Nếu các biến có cận dưới $$x_i\ge a_i$$, ta đổi biến $$y_i=x_i-a_i\ge 0$$ để đưa về phương trình:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -138,7 +138,7 @@ y_1+\cdots+y_n=r-(a_1+\cdots+a_n).
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Chứng minh (song ánh)**: Đặt $$y_i=x_i-a_i$$. Khi đó $$x_i\ge a_i$$ khi và chỉ khi $$y_i\ge 0$$, và
+**Chứng minh (song ánh)**: Đặt $$y_i=x_i-a_i$$. Khi đó $$x_i\ge a_i$$ khi và chỉ khi $$y_i\ge 0$$, đồng thời:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -146,16 +146,16 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Ánh xạ $$(x_1,\ldots,x_n)\mapsto(y_1,\ldots,y_n)$$ là song ánh giữa tập nghiệm có ràng buộc dưới và tập nghiệm không âm của phương trình mới. Số nghiệm bằng $$\binom{n+r-(a_1+\cdots+a_n)-1}{n-1}$$ khi vế phải không âm; nếu $$r<a_1+\cdots+a_n$$ thì không có nghiệm. ∎
+Ánh xạ $$(x_1,\ldots,x_n)\mapsto(y_1,\ldots,y_n)$$ là một song ánh giữa tập nghiệm có ràng buộc dưới và tập nghiệm nguyên không âm của phương trình mới. Số nghiệm bằng $$\binom{n+r-(a_1+\cdots+a_n)-1}{n-1}$$ nếu vế phải không âm; nếu $$r<a_1+\cdots+a_n$$ thì phương trình vô nghiệm. ∎
 
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Số nghiệm của $$x_1+x_2+x_3=12$$ với $$x_1\ge2,x_2\ge1,x_3\ge4$$ là số nghiệm của $$y_1+y_2+y_3=5$$, bằng $$\binom{7}{2}=21$$.
+**Ví dụ**: Số nghiệm nguyên của $$x_1+x_2+x_3=12$$ với $$x_1\ge2, x_2\ge1, x_3\ge4$$ bằng số nghiệm nguyên không âm của $$y_1+y_2+y_3=5$$, tức $$\binom{7}{2}=21$$.
 </div>
 
 ## Hoán vị của đa tập
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Một **đa tập** (multiset) cho phép phần tử xuất hiện nhiều lần. Nếu có $$n$$ đối tượng, trong đó loại 1 lặp $$n_1$$ lần, loại 2 lặp $$n_2$$ lần, ..., loại $$k$$ lặp $$n_k$$ lần, với $$n_1+\cdots+n_k=n$$, thì số hoán vị phân biệt là
+**Định nghĩa**: Một **đa tập** (multiset) cho phép phần tử xuất hiện nhiều lần. Nếu có $$n$$ đối tượng gồm $$k$$ loại, trong đó loại 1 lặp $$n_1$$ lần, loại 2 lặp $$n_2$$ lần, …, loại $$k$$ lặp $$n_k$$ lần (với $$n_1+\cdots+n_k=n$$), thì số hoán vị phân biệt là:
 </div>
 
 <div class="textbook-equation" markdown="1">
@@ -164,11 +164,9 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Chứng minh tổ hợp**: Tạm thời **đánh nhãn** các phần tử trùng nhau để chúng trở thành phân biệt — ví dụ $$S_1,S_2,S_3,S_4$$ thay cho bốn chữ S giống nhau. Khi đó có $$n!$$ cách sắp xếp toàn bộ $$n$$ vị trí.
+**Chứng minh tổ hợp**: Tạm thời **đánh nhãn** các phần tử giống nhau để xem chúng như phân biệt (ví dụ $$S_1, S_2, S_3, S_4$$ thay cho bốn chữ S giống nhau). Khi đó có $$n!$$ cách sắp xếp toàn bộ $$n$$ vị trí.
 
-Một hoán vị **thực sự khác nhau** của đa tập (không phân biệt nhãn) tương ứng với đúng $$n_1!\,n_2!\cdots n_k!$$ cách sắp xếp có nhãn: chúng ta có thể hoán đổi các phần tử cùng loại mà không đổi kết quả. Mỗi hoán vị đa tập vì thế bị đếm thừa $$n_1!n_2!\cdots n_k!$$ lần trong $$n!$$.
-
-Chia cho hệ số trùng lặp:
+Tuy nhiên, mỗi hoán vị phân biệt của đa tập (khi bỏ nhãn) tương ứng với đúng $$n_1!\,n_2!\cdots n_k!$$ cách sắp xếp có nhãn, vì việc hoán đổi nội bộ các phần tử cùng loại không tạo ra cấu hình mới. Do đó mỗi hoán vị thực sự đã bị đếm lặp $$n_1!n_2!\cdots n_k!$$ lần trong $$n!$$. Chia cho hệ số trùng lặp này, ta thu được:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -180,9 +178,9 @@ $$
 
 ![Hoán vị của đa tập — MISSISSIPPI](/discrete-mathematics-for-computer-science-iuh/img/course/multiset_permutation.svg)
 
-<p class="textbook-figure-caption" data-figure="7.23">Hoán vị đa tập — chữ cùng loại (I, S, …) hoán đổi không đổi từ, nên chia $$n!$$ cho $$n_1!\cdots n_k!$$.</p>
+<p class="textbook-figure-caption" data-figure="7.23">Hoán vị đa tập — việc đổi chỗ các chữ cùng loại (I, S, …) không tạo từ mới, nên ta chia $$n!$$ cho $$n_1!\cdots n_k!$$.</p>
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Từ `MISSISSIPPI` có 11 chữ cái: M xuất hiện 1, I xuất hiện 4, S xuất hiện 4, P xuất hiện 2. Số hoán vị phân biệt là
+**Ví dụ**: Từ `MISSISSIPPI` gồm 11 chữ cái: M xuất hiện 1 lần, I xuất hiện 4 lần, S xuất hiện 4 lần và P xuất hiện 2 lần. Số hoán vị phân biệt là:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -190,12 +188,12 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-**Lý do phải chia**: Nếu tạm xem các chữ S là $$S_1,S_2,S_3,S_4$$ thì có $$11!$$ hoán vị. Nhưng hoán đổi các chữ S với nhau không tạo từ mới, nên mỗi từ bị đếm $$4!$$ lần do S, $$4!$$ lần do I và $$2!$$ lần do P.
+**Lý do phải chia**: Nếu tạm phân biệt các chữ S thành $$S_1,S_2,S_3,S_4$$ thì có $$11!$$ cách xếp, nhưng đổi chỗ các chữ S không tạo từ mới nên mỗi từ bị đếm lặp $$4!$$ lần do S, $$4!$$ lần do I và $$2!$$ lần do P.
 </div>
 
 ## Hệ số đa thức
 
-Định lý nhị thức có bản mở rộng cho nhiều biến:
+Định lý nhị thức có thể mở rộng cho tổng của nhiều biến:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -212,41 +210,38 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Các hệ số này gọi là **hệ số đa thức** (multinomial coefficients).
+Các hệ số này được gọi là **hệ số đa thức** (multinomial coefficients).
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh tổ hợp**: Khai triển
+**Chứng minh tổ hợp**: Khai triển tích gồm $$n$$ ngoặc:
 
 <div class="textbook-equation" markdown="1">
 $$
-(x_1+x_2+\cdots+x_m)^n=(x_1+x_2+\cdots+x_m)(x_1+x_2+\cdots+x_m)\cdots(x_1+x_2+\cdots+x_m)
+(x_1+x_2+\cdots+x_m)^n=(x_1+x_2+\cdots+x_m)(x_1+x_2+\cdots+x_m)\cdots(x_1+x_2+\cdots+x_m).
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-($$n$$ ngoặc). Mỗi hạng tử trong tích là tích của $$n$$ lựa chọn, mỗi lựa chọn lấy một biến từ một ngoặc.
-
-Để nhận hạng $$x_1^{k_1}x_2^{k_2}\cdots x_m^{k_m}$$ với $$k_1+\cdots+k_m=n$$, chúng ta phải chọn đúng $$k_1$$ ngoặc lấy $$x_1$$, đúng $$k_2$$ ngoặc lấy $$x_2$$, …, đúng $$k_m$$ ngoặc lấy $$x_m$$. Số cách chọn là
+Mỗi hạng tử thu được bằng cách chọn một biến từ mỗi ngoặc rồi nhân lại. Để nhận hạng tử $$x_1^{k_1}x_2^{k_2}\cdots x_m^{k_m}$$ với $$k_1+\cdots+k_m=n$$, ta phải chọn đúng $$k_1$$ ngoặc lấy $$x_1$$, $$k_2$$ ngoặc lấy $$x_2$$, …, và $$k_m$$ ngoặc lấy $$x_m$$. Số cách chọn chính là số hoán vị của đa tập gồm $$n$$ bước chọn, trong đó có $$k_i$$ bước cùng lấy $$x_i$$:
 
 <div class="textbook-equation" markdown="1">
 $$
-\binom{n}{k_1,k_2,\ldots,k_m}=\frac{n!}{k_1!k_2!\cdots k_m!},
+\binom{n}{k_1,k_2,\ldots,k_m}=\frac{n!}{k_1!k_2!\cdots k_m!}.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-vì đây chính là số hoán vị của đa tập gồm $$n$$ “bước nhân”, trong đó $$k_i$$ bước giống nhau (cùng lấy $$x_i$$).
 </div>
 
-**Ý nghĩa đếm khác**: $$\binom{n}{k_1,\ldots,k_m}$$ cũng bằng số cách chia $$n$$ đối tượng **phân biệt** vào $$m$$ nhóm có nhãn, sao cho nhóm $$i$$ chứa đúng $$k_i$$ phần tử.
+**Ý nghĩa đếm khác**: $$\binom{n}{k_1,\ldots,k_m}$$ cũng là số cách chia $$n$$ đối tượng **phân biệt** vào $$m$$ nhóm có nhãn, sao cho nhóm thứ $$i$$ nhận đúng $$k_i$$ phần tử.
 
 ![Hệ số đa thức — chia nhóm có nhãn](/discrete-mathematics-for-computer-science-iuh/img/course/multinomial_partition.svg)
 
-<p class="textbook-figure-caption" data-figure="7.24">Hệ số đa thức $$\binom{n}{k_1,\ldots,k_m}$$ đếm số cách chia $$n$$ đối tượng phân biệt vào $$m$$ nhóm có kích thước cố định.</p>
+<p class="textbook-figure-caption" data-figure="7.24">Hệ số đa thức $$\binom{n}{k_1,\ldots,k_m}$$ đếm số cách chia $$n$$ đối tượng phân biệt vào $$m$$ nhóm có kích thước cho trước.</p>
 ## Ràng buộc trên và nguyên lý bù trừ
 
-Nếu yêu cầu $$0\le x_i\le b_i$$, stars and bars đơn thuần chưa đủ. Chúng ta thường đếm tất cả nghiệm không âm rồi loại nghiệm vi phạm $$x_i\ge b_i+1$$ bằng nguyên lý bù trừ.
+Khi bài toán yêu cầu thêm cận trên $$0\le x_i\le b_i$$, phương pháp sao và vạch đơn thuần không còn đủ. Ta đếm toàn bộ nghiệm nguyên không âm rồi dùng nguyên lý bù trừ để loại bỏ các nghiệm vi phạm $$x_i\ge b_i+1$$.
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh ý tưởng**: Gọi $$U$$ là tập mọi nghiệm nguyên không âm của $$x_1+\cdots+x_n=r$$, và $$A_i$$ là tập nghiệm có $$x_i\ge b_i+1$$. Nghiệm hợp lệ là $$U\setminus(A_1\cup\cdots\cup A_n)$$, nên
+**Chứng minh ý tưởng**: Gọi $$U$$ là tập tất cả các nghiệm nguyên không âm của $$x_1+\cdots+x_n=r$$, và $$A_i$$ là tập các nghiệm thỏa $$x_i\ge b_i+1$$. Tập nghiệm hợp lệ là $$U\setminus(A_1\cup\cdots\cup A_n)$$, nên:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -254,16 +249,16 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Với mỗi $$A_i$$, đặt $$x_i'=x_i-(b_i+1)\ge 0$$; khi đó số nghiệm trong $$A_i$$ bằng số nghiệm không âm của một phương trình có tổng giảm đi $$b_i+1$$ — lại là một bài stars and bars. Giao $$A_i\cap A_j$$ xử lý tương tự bằng cách trừ đồng thời ở hai biến. Áp dụng công thức bù trừ cho $$\vert A_1\cup\cdots\cup A_n\vert $$ (xem bài `07_03`).
+Với mỗi tập $$A_i$$, đổi biến $$x_i'=x_i-(b_i+1)\ge 0$$ đưa bài toán về đếm nghiệm không âm với tổng giảm đi $$b_i+1$$ (lại giải bằng sao và vạch). Các phần giao $$A_i\cap A_j$$ được xử lý tương tự bằng cách trừ đồng thời ở nhiều biến, sau đó áp dụng công thức bù trừ cho $$\vert A_1\cup\cdots\cup A_n\vert $$ (xem bài `07_03`).
 </div>
 
 ![Bù trừ khi có ràng buộc trên](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)
 
-<p class="textbook-figure-caption" data-figure="7.25">Loại các nghiệm vi phạm $$x_i\ge b_i+1$$ bằng nguyên lý bù trừ (bài `07_03`).</p>
+<p class="textbook-figure-caption" data-figure="7.25">Loại bỏ các nghiệm vi phạm $$x_i\ge b_i+1$$ bằng nguyên lý bù trừ (bài `07_03`).</p>
 <div class="textbook-example" markdown="1">
-**Ví dụ**: Số nghiệm của $$x_1+x_2+x_3=10$$ với $$0\le x_i\le 4$$.
+**Ví dụ**: Tìm số nghiệm nguyên của $$x_1+x_2+x_3=10$$ thỏa $$0\le x_i\le 4$$.
 
-Tổng nghiệm không âm là $$\binom{12}{2}=66$$. Gọi $$A_i$$ là tập nghiệm có $$x_i\ge5$$. Với $$x_i'=x_i-5$$, chúng ta có số nghiệm trong mỗi $$A_i$$ là $$\binom{7}{2}=21$$. Giao đôi, ví dụ $$x_1,x_2\ge5$$, còn tổng bằng $$0$$, có $$1$$ nghiệm. Không có giao ba. Do đó số hợp lệ là
+Tổng số nghiệm không âm là $$\binom{12}{2}=66$$. Gọi $$A_i$$ là tập nghiệm có $$x_i\ge5$$. Đặt $$x_i'=x_i-5$$, mỗi $$A_i$$ có $$\binom{7}{2}=21$$ nghiệm. Mỗi giao đôi (chẳng hạn $$x_1,x_2\ge5$$) còn tổng bằng $$0$$ nên chỉ có $$1$$ nghiệm. Giao ba bằng rỗng vì $$5+5+5 > 10$$. Do đó số nghiệm hợp lệ là:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -276,7 +271,7 @@ $$
 
 ### Minh hoạ tương tác
 
-Minh hoạ đếm: bài toán "ngôi sao và thanh chắn" — chia k vật vào n hộp và so với công thức tổ hợp lặp. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ bài toán "sao và vạch": chia $$k$$ vật giống nhau vào $$n$$ hộp phân biệt và đối chiếu với công thức tổ hợp có lặp.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="counting-explainer" data-tab="stars"></div>
@@ -287,7 +282,7 @@ Minh hoạ đếm: bài toán "ngôi sao và thanh chắn" — chia k vật vào
 
 ### Bài tập 1
 
-Có bao nhiêu cách chọn 6 viên kẹo từ 4 loại (không xét thứ tự, cho phép lặp)?
+Có bao nhiêu cách chọn 6 viên kẹo từ 4 loại kẹo khác nhau (không xét thứ tự, cho phép chọn trùng loại)?
 
 <details>
 <summary>Đáp án</summary>
@@ -298,7 +293,7 @@ $$\binom{4+6-1}{6} = \binom{9}{6} = 84$$.
 
 ### Bài tập 2
 
-Sắp xếp chữ MISSISSIPPI. Có bao nhiêu hoán vị khác nhau?
+Sắp xếp các chữ cái của từ `MISSISSIPPI`. Có bao nhiêu hoán vị phân biệt?
 
 <details>
 <summary>Đáp án</summary>
@@ -309,12 +304,12 @@ $$11! / (4! \cdot 4! \cdot 2!) = 34650$$.
 
 ### Bài tập 3
 
-Số nghiệm không âm của $$x_1 + x_2 + x_3 = 10$$ với $$x_i \le 4$$ cho mọi $$i$$?
+Tìm số nghiệm nguyên không âm của phương trình $$x_1 + x_2 + x_3 = 10$$ thỏa mãn $$x_i \le 4$$ với mọi $$i$$.
 
 <details>
 <summary>Đáp án</summary>
 
-Tổng không ràng buộc: $$\binom{12}{2} = 66$$. IE: $$66 - 3\cdot 21 + 3\cdot 1 = 6$$.
+Tổng số nghiệm không ràng buộc: $$\binom{12}{2} = 66$$. Áp dụng nguyên lý bù trừ: $$66 - 3\cdot 21 + 3\cdot 1 = 6$$.
 
 </details>
 
@@ -325,13 +320,13 @@ Tổng không ràng buộc: $$\binom{12}{2} = 66$$. IE: $$66 - 3\cdot 21 + 3\cdo
 
 ## Tóm tắt
 
-- **Tổ hợp có lặp**: chọn $$r$$ đồ vật từ $$n$$ loại (không giới hạn số lượng mỗi loại) cho $$\binom{n+r-1}{r}$$ cách; phương pháp stars and bars
-- **Hoán vị có lặp**: sắp xếp $$n$$ đối tượng với $$n_i$$ phần tử giống nhau loại $$i$$ cho $$\frac{n!}{n_1! n_2! \cdots n_k!}$$ cách
-- **Phân phối vào nhóm**: đếm cách chia đối tượng vào các ô có ràng buộc
-- **Ứng dụng CS**: thiết kế mật khẩu, cấp phát tài nguyên, mã hóa và phân tích trạng thái hệ thống
+- **Tổ hợp có lặp**: chọn $$r$$ đồ vật từ $$n$$ loại (số lượng mỗi loại không giới hạn) có $$\binom{n+r-1}{r}$$ cách, chứng minh qua phương pháp sao và vạch (stars and bars).
+- **Hoán vị đa tập**: sắp xếp $$n$$ đối tượng gồm $$k$$ loại với số lượng $$n_1, \ldots, n_k$$ cho $$\frac{n!}{n_1! n_2! \cdots n_k!}$$ cách.
+- **Phân phối có ràng buộc**: xử lý cận dưới bằng phép đổi biến và cận trên bằng nguyên lý bù trừ.
+- **Ứng dụng trong Khoa học Máy tính**: thiết kế mật khẩu, cấp phát tài nguyên, mã hóa và phân tích trạng thái hệ thống.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=ZcSSI6VY1kM">COMBINATIONS with REPETITION - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Xem trước tổ hợp có lặp.
-- <a href="https://www.youtube.com/watch?v=P37nKjSWv_o">Toán rời rạc 20. Tổ hợp lặp và Chỉnh hợp lặp</a> — TITV, tiếng Việt. Tổ hợp lặp và chỉnh hợp lặp bằng tiếng Việt.
-- <a href="https://www.youtube.com/watch?v=je6xyt2UZCw">How many ways are there to reorder the word MISSISSIPPI?  // Choose Formula Example</a> — Dr. Trefor Bazett, tiếng Anh. Hoán vị của từ có chữ lặp, như MISSISSIPPI.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=ZcSSI6VY1kM">COMBINATIONS with REPETITION - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Giới thiệu tổ hợp có lặp và phương pháp sao và vạch.
+- <a href="https://www.youtube.com/watch?v=P37nKjSWv_o">Toán rời rạc 20. Tổ hợp lặp và Chỉnh hợp lặp</a> — TITV, tiếng Việt. Bài giảng tiếng Việt về tổ hợp lặp và chỉnh hợp lặp.
+- <a href="https://www.youtube.com/watch?v=je6xyt2UZCw">How many ways are there to reorder the word MISSISSIPPI?  // Choose Formula Example</a> — Dr. Trefor Bazett, tiếng Anh. Minh họa hoán vị của đa tập qua ví dụ từ MISSISSIPPI.

@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. FlashAttention (NeurIPS 2022) computes the sa
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite injections, inverses, or the existing ML history lesson.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại đơn ánh, hàm ngược, hay bài hàm số từ Turing đến học máy.
+Ghi chú ứng dụng song ngữ (tiếng Anh, sau đó là tiếng Việt). Bài này **không** thay thế nội dung về đơn ánh, hàm nghịch đảo hay bài học về hàm số từ Turing đến học máy.
 
 </div>
 
@@ -41,18 +41,18 @@ Chapter 6 already distinguishes a function from a procedure that computes it. Fl
 
 ## Tiếng Việt
 
-Attention là một **hàm** xác định rõ. Với ma trận $$Q,K,V$$ có $$n$$ hàng,
+Attention là một **hàm số** được định nghĩa chặt chẽ. Với các ma trận $$Q,K,V$$ gồm $$n$$ hàng (tương ứng $$n$$ token) và số chiều mỗi đầu attention là $$d$$,
 
 $$\mathrm{Att}(Q,K,V) = \mathrm{softmax}(QK^\top/\sqrt{d})\,V.$$
 
-Cách tính ngây thơ materialize ma trận $$n \times n$$ — hợp của các ánh xạ tuyến tính và softmax, bậc hai theo $$n$$. Dao và cộng sự (NeurIPS 2022) giữ **cùng hàm** (softmax attention exact) nhưng đổi *thuật toán*: tiling và tính lại để giảm traffic HBM. Họ chứng minh cận IO và báo cáo khoảng $$3\times$$ nhanh hơn trên GPT-2 (độ dài 1K) so với attention chuẩn.
+Cách tính trực tiếp (ngây thơ) tạo ra và lưu toàn bộ ma trận $$n \times n$$ của tích $$QK^\top$$ trong bộ nhớ — là phép hợp của các ánh xạ tuyến tính với hàm softmax, có độ phức tạp bậc hai theo $$n$$. Trong công trình tại NeurIPS 2022, Dao và cộng sự giữ nguyên **cùng một hàm** (softmax attention chính xác) nhưng thay đổi *thuật toán* tính toán: áp dụng kỹ thuật chia khối (tiling) kết hợp tính lại (recomputation) nhằm giảm lưu lượng truyền dữ liệu với bộ nhớ HBM của GPU. Các tác giả chứng minh cận độ phức tạp IO và báo cáo tốc độ thực thi thực tế nhanh hơn khoảng $$3\times$$ trên mô hình GPT-2 (độ dài chuỗi 1K) so với cài đặt attention chuẩn.
 
-Chương 6 đã phân biệt hàm với thủ tục tính hàm. FlashAttention là ví dụ 2022: $$\mathrm{Att}$$ không đổi; cài đặt là một phân tích khác của cùng ánh xạ. Các phương pháp attention xấp xỉ tính một hàm *khác* để cắt FLOP — và bài báo lập luận chúng thường thua thời gian tường vì bỏ qua hệ thống phân cấp bộ nhớ.
+Chương 6 đã phân biệt giữa bản thân hàm số và thủ tục dùng để tính hàm đó. FlashAttention là một minh họa cụ thể cho sự phân biệt này: ánh xạ $$\mathrm{Att}$$ không hề thay đổi, chỉ có cách cài đặt được tổ chức lại cho cùng một hàm. Ngược lại, các phương pháp attention xấp xỉ tính một hàm *khác* để giảm số phép tính dấu phẩy động (FLOPs), và bài báo chỉ ra rằng chúng thường vẫn chậm hơn về thời gian thực thi thực tế (wall-clock time) do bỏ qua hệ thống phân cấp bộ nhớ.
 
-**Câu hỏi.** (1) Theo ngôn ngữ chương này, FlashAttention là hàm mới hay thuật toán mới cho hàm cũ? (2) Vì sao “exact” quan trọng khi so với attention hạng thấp?
+**Câu hỏi.** (1) Theo ngôn ngữ của chương này, FlashAttention là một hàm mới hay một thuật toán mới cho hàm cũ? (2) Vì sao tính chất “chính xác” (exact) lại quan trọng khi so sánh FlashAttention với attention hạng thấp (low-rank attention)?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=eMlx5fFNoYc">Attention in transformers, step-by-step | Deep Learning Chapter 6</a> — 3Blue1Brown, tiếng Anh. Xem trước attention là một hàm của Q, K, V, đúng công thức bài.
-- <a href="https://www.youtube.com/watch?v=LKwyHWYEIMQ">FlashAttention: Accelerate LLM training</a> — Machine Learning Studio, tiếng Anh. FlashAttention tính đúng hàm đó nhưng theo khối để giảm IO.
-- <a href="https://www.youtube.com/watch?v=fjJOgb-E41w">Attention mechanism: Overview</a> — Google Cloud Tech, tiếng Anh. Sơ đồ attention ngắn trước khi đọc phân tích IO.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=eMlx5fFNoYc">Attention in transformers, step-by-step | Deep Learning Chapter 6</a> — 3Blue1Brown, tiếng Anh. Trình bày attention như một hàm của $$Q, K, V$$, khớp với công thức trong bài.
+- <a href="https://www.youtube.com/watch?v=LKwyHWYEIMQ">FlashAttention: Accelerate LLM training</a> — Machine Learning Studio, tiếng Anh. Giải thích cách FlashAttention tính đúng cùng hàm attention nhưng theo từng khối để giảm chi phí IO.
+- <a href="https://www.youtube.com/watch?v=fjJOgb-E41w">Attention mechanism: Overview</a> — Google Cloud Tech, tiếng Anh. Sơ đồ tổng quan ngắn gọn về cơ chế attention trước khi đọc phần phân tích IO.

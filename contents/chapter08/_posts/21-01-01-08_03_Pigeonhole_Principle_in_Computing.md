@@ -7,232 +7,145 @@ date: 2021-01-01
 order: 3
 required: false
 lang: en
-excerpt: "Ở các mục trước chúng ta đã học nguyên lý Dirichlet và các ứng dụng nâng cao. Mục bổ sung này trình bày vai trò của nguyên lý trong khoa học máy tính: va chạm…"
+excerpt: "Bài đọc mở rộng phân tích vai trò của nguyên lý Dirichlet trong khoa học máy tính: va chạm băm, giới hạn nén không mất mát, mã phát hiện lỗi và lý thuyết Ramsey."
 ---
 
-Ở các mục trước chúng ta đã học nguyên lý Dirichlet và các ứng dụng nâng cao. Mục bổ sung này trình bày vai trò của nguyên lý trong khoa học máy tính: va chạm băm, nén không mất mát, phát hiện lỗi và lý thuyết Ramsey.
+Ở các mục trước, chúng ta đã học nguyên lý Dirichlet cùng các ứng dụng nâng cao. Mục bổ sung này phân tích vai trò của nguyên lý trong khoa học máy tính qua bốn chủ đề: va chạm hàm băm, nén dữ liệu không mất mát, mã phát hiện lỗi và lý thuyết Ramsey.
 
-Có những định lý mạnh vì chúng quá đơn giản. Nếu có nhiều chim hơn chuồng, ít nhất một chuồng phải chứa từ hai con trở lên — từ đó, chúng ta rút ra các kết luận về hash collision, giới hạn nén và khả năng phân biệt thông điệp. Đây là minh chứng cho chân lý: đôi khi ý tưởng đơn giản nhất lại là công cụ sắc nhất.
+Nhiều định lý mạnh mẽ lại xuất phát từ một nhận xét cực kỳ đơn giản. Khi số chim lớn hơn số chuồng, ít nhất một chuồng phải chứa từ hai con trở lên — chỉ từ đó, ta đã có thể chứng minh tính tất yếu của va chạm băm, giới hạn lý thuyết của mọi thuật toán nén không mất mát và cận trên đối với khả năng phân biệt lỗi truyền tin.
 
 ## Phần 1: Dirichlet và nguyên lý năm 1834
 
-### Ý tưởng đơn giản, tác động rộng
+### Ý tưởng đơn giản, ảnh hưởng sâu rộng
 
-Nguyên lý này thường gắn với Johann Peter Gustav Lejeune Dirichlet.
-Trong thế kỷ XIX,
-ông dùng nó như công cụ suy luận trong number theory.
+Nguyên lý chuồng chim gắn liền với tên tuổi của Johann Peter Gustav Lejeune Dirichlet, người đã sử dụng nó từ thế kỷ XIX như một công cụ lập luận trong lý thuyết số. Sức mạnh của nguyên lý không nằm ở kỹ thuật biến đổi phức tạp, mà ở chỗ chỉ từ một phép so sánh lực lượng cơ bản, ta có thể khẳng định chắc chắn sự tồn tại của một hiện tượng.
 
-Sức mạnh của nguyên lý không nằm ở độ phức tạp kỹ thuật.
-Nó nằm ở chỗ:
-từ một lập luận đếm rất cơ bản,
-chúng ta có thể ép buộc sự tồn tại của hiện tượng nào đó.
+### “Phải tồn tại” — ngôn ngữ của nhiều chứng minh sắc bén
 
-### “Phải tồn tại” là ngôn ngữ của nhiều proof đẹp
+Nguyên lý chuồng chim không chỉ ra đối tượng cần tìm nằm *ở đâu*, mà khẳng định rằng nó *chắc chắn phải tồn tại*. Lối lập luận này xuất hiện thường xuyên trong toán học và khoa học máy tính:
 
-Nguyên lý chuồng chim không nói cho chúng ta *ở đâu*.
-Nó thường chỉ nói rằng *chắc chắn phải có*.
-
-Kiểu reasoning này xuất hiện rất nhiều trong toán học và computer science:
-
-- phải có va chạm,
-- phải có hai trạng thái giống nhau,
-- phải có thông điệp không phân biệt được,
-- phải có cấu hình lặp.
+- phải tồn tại va chạm giữa hai đầu vào,
+- phải tồn tại hai trạng thái trùng nhau,
+- phải tồn tại hai thông điệp không thể phân biệt,
+- phải tồn tại một cấu hình lặp lại.
 
 ![Johann Peter Gustav Lejeune Dirichlet](/discrete-mathematics-for-computer-science-iuh/img/course/Dirichlet.jpg)
 
-<p class="textbook-figure-caption" data-figure="8.11">Một lập luận đếm ngắn của Dirichlet trở thành công cụ nền cho rất nhiều kết quả hiện đại trong khoa học máy tính.</p>
+<p class="textbook-figure-caption" data-figure="8.11">Một lập luận đếm ngắn gọn của Dirichlet đã trở thành công cụ nền cho nhiều kết quả quan trọng trong khoa học máy tính hiện đại.</p>
 ---
 
-## Phần 2: Hash collisions là không thể tránh
+## Phần 2: Va chạm hàm băm là điều không thể tránh
 
-### Vì sao collision là định mệnh chứ không phải tai nạn
+### Vì sao va chạm là hệ quả tất yếu
 
-Giả sử hash function ánh xạ vô số chuỗi input
-vào dải output hữu hạn 256 bit.
+Giả sử một hàm băm ánh xạ tập vô hạn các chuỗi đầu vào vào tập hữu hạn các chuỗi đầu ra 256-bit. Theo nguyên lý chuồng chim, chắc chắn tồn tại ít nhất hai đầu vào khác nhau cho cùng một giá trị băm. Kết luận này không phụ thuộc vào việc hàm băm được thiết kế tốt hay kém, mà là hệ quả logic tất yếu khi số đầu vào vượt quá số đầu ra.
 
-Theo nguyên lý chuồng chim,
-phải tồn tại ít nhất hai input khác nhau cho cùng hash value.
+### Từ tính tất yếu đến thiết kế kỹ thuật
 
-Điều này không phụ thuộc hash tốt hay xấu.
-Nó là hệ quả logic của việc nhiều đầu vào hơn đầu ra.
+Mục tiêu của kỹ sư không phải là “triệt tiêu hoàn toàn va chạm” vì điều đó bất khả thi về mặt toán học. Thay vào đó, công việc kỹ thuật tập trung vào:
 
-### Từ inevitability đến engineering
+- giữ xác suất va chạm ở mức cực thấp trong phạm vi sử dụng thực tế,
+- xử lý va chạm một cách an toàn khi nó xảy ra,
+- ngăn kẻ tấn công cố tình tạo ra va chạm có lợi cho mình,
+- lựa chọn họ hàm băm phù hợp với yêu cầu về hiệu năng hoặc bảo mật.
 
-Điều kỹ sư cần làm không phải “loại bỏ hoàn toàn collision”.
-Điều đó bất khả.
+### Bảng băm trong thực tế
 
-Điều họ cần làm là:
-
-- giảm xác suất collision trong phạm vi sử dụng,
-- xử lý collision an toàn,
-- tránh để attacker lợi dụng collision structure,
-- chọn hash phù hợp với mục tiêu hiệu năng hay bảo mật.
-
-### Hash tables ngoài đời thật
-
-Trong hash tables,
-collision được xử lý bằng chaining,
-open addressing,
-hoặc các chiến lược khác.
-
-Điểm quan trọng là:
-nguyên lý chuồng chim giải thích ngay từ đầu vì sao xử lý collision không phải “edge case”.
-Nó là phần tất yếu của thiết kế.
+Trong các bảng băm (hash tables), va chạm được xử lý bằng kỹ thuật nối kết (chaining), địa chỉ mở (open addressing) hoặc các chiến lược phân giải khác. Nguyên lý chuồng chim giải thích ngay từ đầu vì sao xử lý va chạm không phải là một trường hợp ngoại lệ phụ, mà là thành phần cốt lõi trong thiết kế cấu trúc dữ liệu này.
 
 ![Nguyên lý chuồng chim — hash collision](/discrete-mathematics-for-computer-science-iuh/img/course/Pigeonhole.jpg)
 
-<p class="textbook-figure-caption" data-figure="8.12">Hash collision là hệ quả logic — nhiều đầu vào hơn đầu ra thì ít nhất hai input phải ánh xạ cùng một giá trị.</p>
+<p class="textbook-figure-caption" data-figure="8.12">Va chạm băm là hệ quả logic tất yếu — khi số đầu vào lớn hơn số đầu ra, ít nhất hai đầu vào phải ánh xạ về cùng một giá trị.</p>
 ---
 
-## Phần 3: Lossless compression và giới hạn không thể vượt qua
+## Phần 3: Nén không mất mát và giới hạn không thể vượt qua
 
-### Mọi file đều nén nhỏ hơn? Không thể
+### Không thể nén nhỏ mọi tệp tin
 
-Nhiều người mới học dễ tưởng:
-nếu thông minh đủ,
-chúng ta có thể luôn nén file nhỏ hơn bản gốc bằng lossless compression.
+Người mới học đôi khi lầm tưởng rằng một thuật toán đủ thông minh có thể nén mọi tệp tin xuống kích thước nhỏ hơn bản gốc mà vẫn giải nén khôi phục nguyên vẹn (nén không mất mát — lossless compression). Nguyên lý chuồng chim bác bỏ giả định này ngay lập tức: nếu mọi tệp độ dài $$n$$ bit đều được ánh xạ sang một chuỗi ngắn hơn $$n$$ bit và có thể giải nén chính xác, thì ta phải gán $$2^n$$ đầu vào phân biệt vào chỉ $$2^n - 1$$ chuỗi ngắn hơn mà không xảy ra trùng lặp — điều hoàn toàn bất khả thi.
 
-Nguyên lý chuồng chim bác bỏ điều đó rất nhanh.
+### Bài học về bản chất của nén dữ liệu
 
-Nếu mọi file độ dài `n` bit
-đều được ánh xạ sang chuỗi ngắn hơn `n` bit
-và vẫn giải nén chính xác,
-thì chúng ta đang nhét nhiều input hơn vào ít output hơn mà không collision.
-Điều đó bất khả.
+Hệ quả trực tiếp là với mọi thuật toán nén không mất mát:
 
-### Bài học sâu hơn về thông tin
+- có những tệp nén được xuống kích thước nhỏ hơn đáng kể,
+- có những tệp hầu như không giảm kích thước,
+- và chắc chắn tồn tại những tệp không thể nén ngắn hơn (thậm chí dài ra thêm).
 
-Nghĩa là:
-
-- có những file nén được,
-- có những file nén rất ít,
-- và chắc chắn có những file không thể nén ngắn hơn bằng phương pháp lossless.
-
-Đây là ranh giới logic của compression,
-không phải giới hạn do kỹ sư lười.
-
-### Vì sao insight này quan trọng
-
-Nó giúp chúng ta hiểu đúng bản chất của compression:
-khai thác cấu trúc,
-thừa lặp,
-và phân bố không đồng đều.
-
-Không có cấu trúc,
-không có phép màu.
+Đây là giới hạn logic của lý thuyết thông tin chứ không phải giới hạn kỹ thuật tạm thời. Nhờ đó, ta hiểu đúng bản chất của nén dữ liệu: thuật toán nén chỉ hiệu quả khi khai thác được cấu trúc, tính dư thừa và phân bố không đều trong dữ liệu; với dữ liệu ngẫu nhiên hoàn toàn, không thể có thuật toán nào nén nhỏ lại được.
 
 ![Quá nhiều file — không thể nén tất cả](/discrete-mathematics-for-computer-science-iuh/img/course/TooManyPigeons.jpg)
 
-<p class="textbook-figure-caption" data-figure="8.13">Nguyên lý chuồng chim cho thấy vì sao lossless compression không thể thắng tuyệt đối trên mọi dữ liệu.</p>
+<p class="textbook-figure-caption" data-figure="8.13">Nguyên lý chuồng chim giải thích vì sao thuật toán nén không mất mát không thể rút gọn mọi tệp đầu vào.</p>
 ![Birthday paradox — giới hạn ánh xạ song ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg)
 
-<p class="textbook-figure-caption" data-figure="8.14">Nén lossless là ánh xạ song ánh — khi số file lớn hơn số chuỗi ngắn hơn, collision là bất khả tránh.</p>
+<p class="textbook-figure-caption" data-figure="8.14">Nén không mất mát đòi hỏi ánh xạ đơn ánh — khi số tệp gốc lớn hơn số chuỗi đích ngắn hơn, va chạm là không thể tránh khỏi.</p>
 ---
 
-## Phần 4: Error detection codes và parity bits
+## Phần 4: Mã phát hiện lỗi và bit chẵn lẻ
 
-### Thêm bit để phát hiện lỗi
+### Thêm bit dự phòng để phát hiện lỗi
 
-Giả sử chúng ta truyền 7 bit dữ liệu và thêm 1 parity bit để tổng số bit 1 là chẵn.
+Giả sử ta truyền 7 bit dữ liệu và bổ sung 1 bit chẵn lẻ (parity bit) sao cho tổng số bit 1 trong khối 8 bit luôn là số chẵn. Nếu có đúng một bit bị lật trên đường truyền, tính chẵn lẻ sẽ thay đổi và bên nhận lập tức phát hiện có lỗi xảy ra.
 
-Nếu một bit bị lật trong quá trình truyền,
-parity sẽ đổi,
-và hệ thống phát hiện có lỗi.
+### Giới hạn phân biệt mẫu lỗi
 
-### Nhưng không phải mọi lỗi đều được phân biệt hoàn hảo
+Không gian các chuỗi nhận được có kích thước lớn, trong khi số từ mã hợp lệ và số bit kiểm tra đều hữu hạn. Tư duy đếm và nguyên lý chuồng chim cho thấy:
 
-Không gian các thông điệp nhận được rất lớn,
-trong khi số mã hợp lệ hữu hạn.
-Nguyên lý đếm và chuồng chim giúp chúng ta hiểu rằng:
+- có những dạng lỗi phát hiện được,
+- có những dạng lỗi vượt quá khả năng sửa (hoặc làm mất dấu hiệu lỗi, như khi hai bit cùng bị lật),
+- có giới hạn rõ ràng về số mẫu lỗi có thể phân biệt với một lượng bit kiểm tra cho trước.
 
-- có lỗi phát hiện được,
-- có lỗi không sửa được,
-- có giới hạn cho số pattern lỗi có thể phân biệt với số bit kiểm tra cho trước.
+### Từ bit chẵn lẻ đến lý thuyết mã hóa
 
-### Từ parity đến coding theory
-
-Các mã mạnh hơn như Hamming,
-Reed–Solomon,
-LDPC
-đều đối đầu cùng câu hỏi nền:
-với số dư thừa hữu hạn,
-chúng ta phân tách không gian lỗi đến mức nào?
-
-Ở sâu bên dưới,
-tư duy chuồng chim vẫn hiện diện:
-số lượng pattern cần phân biệt so với số lượng codewords/metadata sẵn có.
+Các bộ mã mạnh hơn như Hamming, Reed–Solomon hay LDPC đều giải quyết cùng một bài toán cốt lõi: với một lượng bit dư thừa hữu hạn, ta có thể phân tách không gian lỗi đến mức nào? Phía sau các cận lý thuyết của mã sửa lỗi vẫn là lập luận chuồng chim so sánh số mẫu lỗi cần phân biệt với số trạng thái kiểm tra sẵn có.
 
 ![Cây quyết định — phân tách không gian lỗi](/discrete-mathematics-for-computer-science-iuh/img/course/Decision_tree.svg)
 
-<p class="textbook-figure-caption" data-figure="8.15">Với số bit kiểm tra hữu hạn, số pattern lỗi có thể phân biệt cũng hữu hạn — nguyên lý chuồng chim đặt giới hạn cho coding theory.</p>
+<p class="textbook-figure-caption" data-figure="8.15">Với số bit kiểm tra hữu hạn, số mẫu lỗi có thể phân biệt cũng hữu hạn — nguyên lý chuồng chim đặt ra cận lý thuyết cho lý thuyết mã hóa.</p>
 ---
 
-## Phần 5: Ramsey theory — trật tự xuất hiện từ hỗn độn
+## Phần 5: Lý thuyết Ramsey — trật tự tất yếu trong cấu trúc lớn
 
-### Một bước xa hơn của tinh thần chuồng chim
+### Bước mở rộng của tư duy chuồng chim
 
-Ramsey theory nghiên cứu điều đáng kinh ngạc:
-nếu cấu trúc đủ lớn,
-chúng ta không thể tránh hoàn toàn một số mẫu trật tự.
+Lý thuyết Ramsey nghiên cứu một hiện tượng đáng chú ý: khi một cấu trúc đạt đến kích thước đủ lớn, ta không thể tránh khỏi sự xuất hiện của một số mẫu trật tự nhất định. Ví dụ kinh điển là trong một nhóm đủ đông người, luôn tồn tại một nhóm con gồm các thành viên đôi một quen nhau hoặc đôi một không quen nhau theo kích thước cho trước.
 
-Ví dụ phổ biến:
-trong nhóm đủ đông người,
-sẽ luôn có tập con người hoặc đôi nào quen nhau,
-hoặc đôi nào hoàn toàn không quen nhau,
-theo cấu hình nhất định.
+### Mối quan tâm trong khoa học máy tính
 
-### Vì sao điều này làm dân CS tò mò
+Tư duy kiểu Ramsey xuất hiện trong nhiều chủ đề nghiên cứu:
 
-Ramsey-style thinking chạm vào:
+- phân tích cấu trúc mạng (network structure),
+- chứng minh cận dưới tổ hợp (combinatorial lower bounds),
+- phân tích tính tất yếu trong trường hợp xấu nhất,
+- sự hình thành cấu trúc con trong dữ liệu quy mô lớn.
 
-- network structure,
-- combinatorial lower bounds,
-- worst-case inevitability,
-- pattern emergence trong dữ liệu lớn.
-
-Đó là minh chứng rằng từ nguyên lý cực đơn giản,
-toán học có thể đi rất xa.
+Điều này cho thấy từ một nguyên lý đếm rất ngắn gọn, toán học có thể mở rộng sang nhiều kết quả sâu sắc.
 
 ![Ramsey theory — mẫu trật tự bắt buộc](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
-<p class="textbook-figure-caption" data-figure="8.16">Ramsey theory nghiên cứu khi nào một cấu trúc nhất định phải xuất hiện trong hệ thống đủ lớn.</p>
+<p class="textbook-figure-caption" data-figure="8.16">Lý thuyết Ramsey xác định ngưỡng kích thước mà từ đó một mẫu cấu trúc con nhất định bắt buộc phải xuất hiện.</p>
 ---
 
-## Phần 6: Tương lai — từ systems đến theory
+## Phần 6: Từ hệ thống thực tế đến lý thuyết
 
-Nguyên lý chuồng chim sẽ còn mãi hữu ích vì mọi hệ thống hữu hạn đều đối diện bài toán phân bổ.
+Nguyên lý chuồng chim giữ giá trị lâu dài vì mọi hệ thống máy tính hữu hạn đều phải xử lý bài toán phân bổ không gian trạng thái:
 
-Chúng ta gặp nó trong:
+- hàm băm và bảng băm,
+- nén dữ liệu,
+- mã hóa phát hiện và sửa lỗi,
+- lập luận về không gian trạng thái,
+- mật mã học,
+- cận dưới độ phức tạp thuật toán,
+- cấp phát mã định danh phân tán.
 
-- hashing,
-- compression,
-- coding,
-- state space arguments,
-- cryptography,
-- lower bounds,
-- distributed identifiers.
-
-Khi kỹ sư quên nguyên lý này,
-họ dễ theo đuổi những mục tiêu bất khả.
-Khi nhớ nó,
-họ thiết kế thực tế hơn.
+Hiểu rõ nguyên lý này giúp kỹ sư tránh theo đuổi những mục tiêu bất khả thi về mặt lý thuyết và xây dựng các thiết kế thực tế, vững chắc hơn.
 
 ---
 
 ## Kết luận
 
-Nguyên lý chuồng chim là ví dụ đẹp cho sức mạnh của sự hiển nhiên được phát biểu đúng cách.
-
-Từ Dirichlet,
-đến hash collision,
-compression limits,
-error detection,
-và Ramsey theory,
-chúng ta thấy một định lý ngắn có thể mở ra hàng loạt hệ quả sâu và rất thực tế.
-
-Giới hạn của một hệ thống đôi khi không nằm ở code,
-mà nằm ở chuyện nhét nhiều thứ vào ít chỗ.
+Nguyên lý chuồng chim cho thấy sức mạnh của một sự thật hiển nhiên khi được phát biểu chính xác. Từ lập luận số học của Dirichlet đến va chạm hàm băm, giới hạn nén dữ liệu, mã phát hiện lỗi và lý thuyết Ramsey, một định lý ngắn gọn đã dẫn tới hàng loạt hệ quả thực tiễn. Nhiều giới hạn của hệ thống không bắt nguồn từ chất lượng mã nguồn, mà từ chính sự chênh lệch giữa số lượng đối tượng và số lượng trạng thái hữu hạn.
 
 ---
 
@@ -240,34 +153,34 @@ mà nằm ở chuyện nhét nhiều thứ vào ít chỗ.
 
 ### Bài tập 1: Va chạm băm
 
-Một hàm băm 32-bit. Hỏi cần ít nhất bao nhiêu input để chắc chắn có va chạm?
+Một hàm băm cho đầu ra dài 32-bit. Cần ít nhất bao nhiêu đầu vào khác nhau để chắc chắn xảy ra va chạm?
 
 <details>
 <summary>Đáp án</summary>
 
-$$2^{32} + 1$$ input (nguyên lý chuồng chim bồ câu).
+Cần ít nhất $$2^{32} + 1$$ đầu vào (theo nguyên lý chuồng bồ câu, vì chỉ có $$2^{32}$$ giá trị băm khả dĩ).
 
 </details>
 
 ### Bài tập 2: Nén không mất mát
 
-Giải thích tại sao không thể nén mọi file 1KB thành file nhỏ hơn 1KB mà không mất thông tin.
+Giải thích tại sao không tồn tại thuật toán nào có thể nén mọi tệp kích thước 1KB thành tệp nhỏ hơn 1KB mà không làm mất thông tin.
 
 <details>
 <summary>Đáp án</summary>
 
-Số file 1KB là $$2^{8192}$$. Số file nhỏ hơn 1KB ít hơn nhiều → không đủ để ánh xạ song ánh.
+Số tệp kích thước đúng 1KB (1.024 byte = 8.192 bit) là $$2^{8192}$$. Tổng số chuỗi bit có độ dài nhỏ hơn 8.192 bit (từ 0 đến 8.191 bit) chỉ là $$2^{8192} - 1 < 2^{8192}$$ (và nếu xét tệp theo đơn vị byte từ 0 đến 1.023 byte thì còn ít hơn nhiều). Vì số đầu vào lớn hơn số đầu ra khả dĩ nên không thể tồn tại ánh xạ đơn ánh, tức chắc chắn có hai tệp 1KB nén ra cùng kết quả và không thể giải nén chính xác.
 
 </details>
 
 ### Bài tập 3: Phát hiện lỗi
 
-Một hệ thống dùng bit chẵn lẻ. Giải thích tại sao nguyên lý chuồng chim giúp phát hiện lỗi.
+Một hệ thống sử dụng 1 bit chẵn lẻ (parity bit). Giải thích vì sao một bit kiểm tra không thể phân biệt mọi dạng lỗi có thể xảy ra.
 
 <details>
 <summary>Đáp án</summary>
 
-Nếu số bit 1 không đúng chẵn/lẻ thì chắc chắn có lỗi (một trong các "chuồng" bị vi phạm).
+Một bit kiểm tra chỉ có 2 giá trị (chẵn hoặc lẻ), nên nếu số bit bị lật là lẻ (ví dụ 1 bit) thì tính chẵn lẻ thay đổi và hệ thống phát hiện được lỗi. Tuy nhiên, vì có nhiều mẫu lỗi khác nhau nhưng chỉ có 2 trạng thái kiểm tra, theo nguyên lý chuồng chim chắc chắn tồn tại các mẫu lỗi rơi vào cùng trạng thái hợp lệ (chẳng hạn 2 bit bị lật cùng lúc) khiến hệ thống không phát hiện ra.
 
 </details>
 
@@ -277,10 +190,10 @@ Nếu số bit 1 không đúng chẵn/lẻ thì chắc chắn có lỗi (một t
 
 ## Tóm tắt
 
-Nguyên lý chuồng chim bồ câu là công cụ chứng minh sự tồn tại mà không cần xây dựng đối tượng. Nó giải thích vì sao va chạm băm không tránh khỏi và vì sao nén không mất mát luôn có giới hạn.
+Nguyên lý chuồng chim bồ câu là công cụ chứng minh sự tồn tại mà không cần xây dựng trực tiếp đối tượng. Trong khoa học máy tính, nguyên lý này giải thích tính tất yếu của va chạm băm, giới hạn của thuật toán nén không mất mát và cận lý thuyết của mã phát hiện lỗi.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Xem trước va chạm băm chính là chuồng bồ câu trên tập giá trị băm.
-- <a href="https://www.youtube.com/watch?v=OUQVhnuTMVU">Closer Look at the Birthday Paradox - Numberphile</a> — Numberphile, tiếng Anh. Công thức sinh nhật, cùng ước lượng va chạm trong bài.
-- <a href="https://www.youtube.com/watch?v=2-mxYrCNX60">PIGEONHOLE PRINCIPLE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Phát biểu nguyên lý trước khi áp vào ID và bảng băm.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=jsraR-el8_o">Hash Collisions &amp; The Birthday Paradox - Computerphile</a> — Computerphile, tiếng Anh. Giải thích va chạm hàm băm dưới góc nhìn nguyên lý chuồng bồ câu trên tập giá trị băm.
+- <a href="https://www.youtube.com/watch?v=OUQVhnuTMVU">Closer Look at the Birthday Paradox - Numberphile</a> — Numberphile, tiếng Anh. Phân tích công thức nghịch lý sinh nhật gắn với ước lượng va chạm trong bài.
+- <a href="https://www.youtube.com/watch?v=2-mxYrCNX60">PIGEONHOLE PRINCIPLE - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Ôn lại phát biểu nguyên lý trước khi áp dụng cho mã định danh và bảng băm.

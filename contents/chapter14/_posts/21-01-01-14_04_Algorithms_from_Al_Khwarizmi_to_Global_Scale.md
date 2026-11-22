@@ -6,7 +6,7 @@ date: 2021-01-01
 order: 4
 required: false
 lang: en
-excerpt: "Khảo sát: nguồn gốc algorithm; sắp xếp/tìm kiếm; thuật toán trên mạng và dữ liệu lớn; trade-off độ phức tạp thực tế."
+excerpt: "Khảo sát nguồn gốc thuật ngữ algorithm, tác động của bậc tăng trưởng khi dữ liệu đạt quy mô lớn và các đánh đổi thực tế giữa thời gian, bộ nhớ và tính ổn định."
 ---
 
 <div class="textbook-epigraph" markdown="1">
@@ -17,11 +17,11 @@ excerpt: "Khảo sát: nguồn gốc algorithm; sắp xếp/tìm kiếm; thuật
 
 </div>
 
-Mục 14.1–14.3 đặt định nghĩa và Big-O. Mục khảo sát nối **lịch sử từ ngữ** và vài **bài toán quy mô lớn**: tìm kiếm web, sắp xếp phân tán, chi phí năng lượng/thời gian — không thay giáo trình cấu trúc dữ liệu đầy đủ.
+Các mục 14.1–14.3 đã trình bày định nghĩa thuật toán và các ký hiệu phân tích tiệm cận. Bài khảo sát này liên hệ **nguồn gốc lịch sử của thuật ngữ** với các **bài toán ở quy mô hệ thống lớn** như tìm kiếm web, sắp xếp dữ liệu lớn và đánh đổi giữa thời gian thực thi với tài nguyên phần cứng.
 
 ![Al-Khwarizmi](/discrete-mathematics-for-computer-science-iuh/img/course/Al-Khwarizmi.jpg)
 
-<p class="textbook-figure-caption" data-figure="14.6">Al-Khwarizmi — nguồn gốc từ *al-jabr* / *algorithm* trong truyền thống châu Âu trung cổ.</p>
+<p class="textbook-figure-caption" data-figure="14.6">Nhà toán học Al-Khwarizmi — nguồn gốc của hai thuật ngữ *al-jabr* (đại số) và *algorithm* (thuật toán) trong truyền thống học thuật châu Âu trung cổ.</p>
 
 ## Mục tiêu học tập
 
@@ -29,10 +29,10 @@ Mục 14.1–14.3 đặt định nghĩa và Big-O. Mục khảo sát nối **l�
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Nêu** nguồn gốc thuật ngữ *algorithm*.
-- **Liên hệ** Big-O với lựa chọn thuật toán khi $$n$$ lớn.
-- **Mô tả** vài bài toán quy mô hệ thống (index, sort, graph).
-- **Thảo luận** trade-off thời gian / không gian / đơn giản triển khai.
+- **Nêu** nguồn gốc lịch sử của thuật ngữ *algorithm*.
+- **Liên hệ** ký hiệu Big-O với việc lựa chọn thuật toán khi kích thước dữ liệu $$n$$ lớn.
+- **Mô tả** một số bài toán thuật toán điển hình ở quy mô hệ thống (lập chỉ mục, sắp xếp ngoài, thuật toán đồ thị).
+- **Phân tích** sự đánh đổi giữa thời gian chạy, dung lượng bộ nhớ và độ đơn giản khi triển khai.
 
 **Từ khóa**: scale, indexing, distributed sort, practical complexity.
 
@@ -40,52 +40,52 @@ Mục 14.1–14.3 đặt định nghĩa và Big-O. Mục khảo sát nối **l�
 
 ## Từ Al-Khwarizmi đến Knuth
 
-Quy trình số học Ả Rập–Ba Tư được Latin hóa thành *algorismus*, rồi *algorithm*. Khoa học máy tính hiện đại (Knuth, CLRS, …) chuẩn hóa **phân tích tiệm cận** và mã giả — đúng tinh thần 14.1–14.3.
+Các quy trình tính toán số học trong truyền thống Ả Rập–Ba Tư (gắn với tên tuổi Al-Khwarizmi) được Latin hóa thành *algorismus*, rồi trở thành *algorithm* trong tiếng Anh hiện đại. Đến thế kỷ XX, khoa học máy tính (tiêu biểu qua công trình của Donald Knuth và giáo trình CLRS) đã chuẩn hóa ngôn ngữ mã giả và **phân tích tiệm cận** như đã học ở Mục 14.1–14.3.
 
-## Khi $$n$$ tăng một bậc
+## Tác động khi kích thước $$n$$ tăng lên
 
 | $$n$$ | $$n$$ | $$n\log n$$ | $$n^2$$ | $$2^n$$ |
 |:---:|:---:|:---:|:---:|:---:|
-| $$20$$ | nhỏ | nhỏ | nhỏ | ~1M |
-| $$40$$ | nhỏ | nhỏ | vừa | khổng lồ |
-| $$10^6$$ | OK | OK | nặng | không |
+| $$20$$ | nhỏ | nhỏ | nhỏ | xấp xỉ 1 triệu |
+| $$40$$ | nhỏ | nhỏ | trung bình | rất lớn ($$\approx 10^{12}$$) |
+| $$10^6$$ | nhanh | nhanh | rất chậm | không khả thi |
 
-Bài toán “khả thi” phụ thuộc **bậc** chứ không chỉ “máy nhanh hơn năm ngoái”.
+Khả năng giải quyết một bài toán quy mô lớn phụ thuộc chủ yếu vào **bậc tăng trưởng của thuật toán**, chứ không chỉ vào việc nâng cấp tốc độ phần cứng.
 
-## Hệ thống thực tế (ý)
+## Thuật toán trong các hệ thống thực tế
 
-- **Tìm kiếm**: index + cấu trúc (cây, hash) để tránh quét $$\Theta(n)$$ toàn corpus.
-- **Sắp xếp**: merge/heap $$\Theta(n\log n)$$; external sort khi không lọt RAM.
-- **Đồ thị** (Ch.12–17): BFS/Dijkstra/MST — chi phí theo $$V,E$$.
-- **Heuristic**: khi bài NP-hard (Ch.20), chấp nhận xấp xỉ / timeout.
+- **Tìm kiếm**: sử dụng chỉ mục (index) cùng cấu trúc cây hoặc bảng băm để tránh duyệt tuyến tính $$\Theta(n)$$ toàn bộ kho dữ liệu ở mỗi truy vấn.
+- **Sắp xếp**: dùng các thuật toán $$\Theta(n\log n)$$ như merge sort, heapsort; khi dữ liệu vượt quá dung lượng RAM thì áp dụng sắp xếp ngoài (*external sort*).
+- **Đồ thị** (Chương 12–17): các thuật toán như BFS, Dijkstra hay cây khung nhỏ nhất (MST) có chi phí phụ thuộc trực tiếp vào $$\vert V\vert $$ và $$\vert E\vert $$.
+- **Heuristic và xấp xỉ**: đối với bài toán thuộc lớp NP-hard (Chương 20), hệ thống thường dùng thuật toán xấp xỉ hoặc đặt giới hạn thời gian thay vì tìm nghiệm tối ưu tuyệt đối.
 
-## Trade-off kỹ nghệ
+## Các đánh đổi trong kỹ thuật phần mềm
 
-1. Đúng trước — rồi tối ưu chỗ hot path (đo đạc).
-2. $$\Theta(n\log n)$$ ổn định thường tốt hơn average nhanh nhưng worst thảm họa (nếu SLA cần worst).
-3. Bộ nhớ phụ rẻ hơn thời gian CPU trong nhiều hệ — nhưng không phải lúc nào cũng vậy (embedded).
+1. Đảm bảo **tính đúng đắn trước**, sau đó mới đo đạc và tối ưu những phần thực thi thường xuyên (*hot path*).
+2. Một thuật toán có độ phức tạp trường hợp xấu nhất $$\Theta(n\log n)$$ ổn định thường được ưu tiên hơn thuật toán có thời gian trung bình nhanh nhưng trường hợp xấu nhất $$O(n^2)$$ khi hệ thống yêu cầu cam kết độ trễ chặt (SLA).
+3. Trong nhiều hệ thống máy chủ, bộ nhớ phụ có chi phí thấp hơn thời gian CPU, nhưng trên hệ thống nhúng (*embedded*), bộ nhớ lại là tài nguyên giới hạn nghiêm ngặt.
 
 ## Bài tập
 
 ### Bài tập 1
 
-Vì sao web search không linear-scan mọi trang mỗi truy vấn?
+Vì sao các công cụ tìm kiếm web không duyệt tuần tự toàn bộ các trang web cho mỗi truy vấn?
 
 <details>
 <summary>Đáp án</summary>
 
-$$n$$ quá lớn; cần index / cấu trúc để tra gần $$O(\log n)$$ hoặc tốt hơn theo thiết kế, không $$\Theta(n)$$ mỗi lần.
+Số lượng trang web $$n$$ quá lớn nên chi phí $$\Theta(n)$$ cho mỗi truy vấn là không khả thi về thời gian phản hồi. Hệ thống cần xây dựng chỉ mục (inverted index) cùng các cấu trúc tra cứu hiệu quả để giảm thời gian tìm kiếm xuống mức tiệm cận $$O(\log n)$$ hoặc thấp hơn theo thiết kế.
 
 </details>
 
 ### Bài tập 2
 
-Chọn sort $$\Theta(n\log n)$$ worst vs sort average nhanh hơn nhưng $$O(n^2)$$ worst cho hệ thanh toán — ưu tiên gì?
+Khi thiết kế một hệ thống xử lý giao dịch thanh toán, bạn cần chọn giữa thuật toán sắp xếp có trường hợp xấu nhất $$\Theta(n\log n)$$ và thuật toán có thời gian trung bình nhanh hơn một chút nhưng trường hợp xấu nhất $$O(n^2)$$. Nên ưu tiên lựa chọn nào?
 
 <details>
 <summary>Đáp án</summary>
 
-Thường ưu tiên **chặn worst-case** (SLA, an toàn) — merge/heapsort-style hoặc sort thư viện đã kiểm chứng.
+Nên ưu tiên thuật toán có **chặn trường hợp xấu nhất** $$\Theta(n\log n)$$ (như merge sort, heapsort hoặc hàm sắp xếp chuẩn đã được kiểm chứng của thư viện) để đảm bảo cam kết độ trễ (SLA) và tránh rủi ro suy giảm hiệu năng đột ngột trước dữ liệu xấu.
 
 </details>
 
@@ -93,15 +93,15 @@ Thường ưu tiên **chặn worst-case** (SLA, an toàn) — merge/heapsort-sty
 
 | Mục | Nội dung |
 |:---|:---|
-| 14.1 | Định nghĩa thuật toán |
-| 14.2 | Big-O / Θ / Ω |
-| 14.3 | Phân tích $$T(n)$$, $$S(n)$$ |
-| 14.4 | Quy mô và trade-off |
+| 14.1 | Định nghĩa và tính chất thuật toán |
+| 14.2 | Các ký hiệu tiệm cận Big-O, $$\Theta$$, $$\Omega$$ |
+| 14.3 | Phân tích độ phức tạp thời gian $$T(n)$$ và không gian $$S(n)$$ |
+| 14.4 | Quy mô dữ liệu và các đánh đổi kỹ thuật |
 
-Chương 15–17 áp dụng thuật toán trên số và đồ thị; Ch.20 hỏi **có** thuật toán đa thức hay không.
+Các Chương 15–17 sẽ áp dụng tư duy thuật toán vào lý thuyết số và đồ thị, còn Chương 20 đặt câu hỏi nền tảng về việc liệu một bài toán có tồn tại thuật toán thời gian đa thức hay không.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=0IAPZzGSbME">1. Introduction to Algorithms</a> — Abdul Bari, tiếng Anh. Xem trước khái niệm thuật toán, từ tên Al-Khwarizmi tới mô tả hình thức.
-- <a href="https://www.youtube.com/watch?v=cOwyHTiW4KE">EUCLIDEAN ALGORITHM - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Thuật toán Euclid, mẫu thuật toán cổ vẫn phân tích được độ phức tạp.
-- <a href="https://www.youtube.com/watch?v=__vX2sjlpXU">Big-O notation in 5 minutes</a> — Michael Sambol, tiếng Anh. Khi n tăng, bậc tăng trưởng quyết định quy mô, đúng mục sau của bài.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=0IAPZzGSbME">1. Introduction to Algorithms</a> — Abdul Bari, tiếng Anh. Giới thiệu khái niệm thuật toán từ nguồn gốc Al-Khwarizmi đến cách mô tả hình thức.
+- <a href="https://www.youtube.com/watch?v=cOwyHTiW4KE">EUCLIDEAN ALGORITHM - DISCRETE MATHEMATICS</a> — TrevTutor, tiếng Anh. Minh họa thuật toán Euclid — một thuật toán cổ điển có thể phân tích độ phức tạp chặt chẽ.
+- <a href="https://www.youtube.com/watch?v=__vX2sjlpXU">Big-O notation in 5 minutes</a> — Michael Sambol, tiếng Anh. Giải thích vai trò của bậc tăng trưởng khi kích thước dữ liệu tăng lớn.

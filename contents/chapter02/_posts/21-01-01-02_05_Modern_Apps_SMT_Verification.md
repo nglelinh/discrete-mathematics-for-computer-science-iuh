@@ -14,7 +14,7 @@ excerpt: "Optional bilingual note. cvc5 (TACAS 2022) and industrial SMT show how
 
 **Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite quantifiers, inference rules, or the existing programming/database lesson.
 
-Bài ghi chú ứng dụng song ngữ. **Không** viết lại lượng từ, quy tắc suy diễn, hay bài logic vị từ trong lập trình/CSDL.
+Bài ghi chú ứng dụng song ngữ. **Không** thay thế các bài học về lượng từ, quy tắc suy diễn hay logic vị từ trong lập trình và cơ sở dữ liệu.
 
 </div>
 
@@ -43,16 +43,16 @@ cvc5 does not change the meaning of $$\forall$$. It decides fragments where the 
 
 ## Tiếng Việt
 
-Logic vị từ thêm cấu trúc trong mệnh đề: vị từ, miền xác định, $$\forall$$ / $$\exists$$. **SMT** là dạng công nghiệp của cùng ý tưởng — SAT trên bộ khung Boole, cộng bộ giải riêng cho số nguyên, bit-vector, mảng và hàm không diễn giải.
+Logic vị từ bổ sung cấu trúc bên trong mỗi mệnh đề thông qua vị từ, miền xác định và các lượng từ $$\forall$$, $$\exists$$. **SMT** (Satisfiability Modulo Theories) là dạng ứng dụng công nghiệp của cùng ý tưởng đó: giải SAT trên phần khung Boolean kết hợp với các bộ giải chuyên biệt cho số nguyên, bit-vector, mảng và hàm không diễn giải.
 
-Barbosa và cộng sự (TACAS 2022) mô tả cvc5: đánh giá trên toàn bộ SMT-LIB, so với CVC4 và Z3, xuất chứng minh, xử lý số học phi tuyến và thể hiện lượng từ. Đó chính là độ khó lượng từ lồng nhau ở Mục 2.2, nay thành thủ tục tự động.
+Barbosa và cộng sự (TACAS 2022) giới thiệu **cvc5** (phiên bản kế nhiệm của CVC4), đánh giá trên toàn bộ bộ chuẩn SMT-LIB và so sánh với CVC4 cũng như Z3. Bộ giải này có khả năng xuất chứng minh, xử lý số học phi tuyến và tự động cụ thể hóa lượng từ (quantifier instantiation) — biến thách thức về lượng từ lồng nhau ở Mục 2.2 thành một thủ tục tự động.
 
-Một truy vấn kiểm chứng điển hình vẫn là câu logic vị từ, ví dụ $$\forall i.\; (0 \le i < n) \rightarrow (a[i] \ge 0)$$. cvc5 không đổi nghĩa của $$\forall$$; nó quyết định các mảnh (fragment) đủ mạnh cho trình biên dịch, hợp đồng thông minh và bộ kiểm chứng chương trình. Đọc sau các mục lượng từ bắt buộc.
+Một truy vấn kiểm chứng điển hình vẫn là một công thức logic vị từ, chẳng hạn $$\forall i.\; (0 \le i < n) \rightarrow (a[i] \ge 0)$$. Bộ giải cvc5 không thay đổi ngữ nghĩa của $$\forall$$; thay vào đó, nó giải quyết các phân mảnh (fragment) mà sự kết hợp giữa suy luận CNF và bổ đề lý thuyết đủ mạnh cho trình biên dịch, hợp đồng thông minh và công cụ kiểm chứng chương trình. Sinh viên nên đọc ghi chú này sau khi hoàn thành các mục bắt buộc về lượng từ.
 
-**Câu hỏi.** (1) Phần nào của truy vấn SMT là SAT mệnh đề, phần nào là lý thuyết? (2) Vì sao thể hiện lượng từ không đầy đủ trên một số fragment mà giáo trình vẫn viết được?
+**Câu hỏi.** (1) Trong một truy vấn SMT, phần nào thuộc bài toán SAT mệnh đề và phần nào thuộc các lý thuyết nền? (2) Vì sao quá trình cụ thể hóa lượng từ không đầy đủ trên một số phân mảnh logic mà giáo trình vẫn viết được?
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=CNQwSXKBGgw">From z3 to cvc5</a> — cvc solver, tiếng Anh. Xem trước cùng họ solver: từ Z3 sang cvc5 mà bài ghi chú nhắc.
-- <a href="https://www.youtube.com/watch?v=EacYNe7moSs">Z3 Explained - Satisfiability Modulo Theories &amp; SMT Solvers</a> — Guided Hacking, tiếng Anh. SMT là SAT cộng lý thuyết, đúng khung predicate logic của chương.
-- <a href="https://www.youtube.com/watch?v=e07bWJ2L9VY">cvc5 pythonic API</a> — cvc solver, tiếng Anh. API Python của cvc5, để thấy lượng từ được gọi trong code.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=CNQwSXKBGgw">From z3 to cvc5</a> — cvc solver, tiếng Anh. Giới thiệu quá trình phát triển trong cùng họ bộ giải từ Z3 đến cvc5 được nhắc trong bài.
+- <a href="https://www.youtube.com/watch?v=EacYNe7moSs">Z3 Explained - Satisfiability Modulo Theories &amp; SMT Solvers</a> — Guided Hacking, tiếng Anh. Giải thích SMT như sự kết hợp giữa SAT và các lý thuyết, gắn với khung logic vị từ của chương.
+- <a href="https://www.youtube.com/watch?v=e07bWJ2L9VY">cvc5 pythonic API</a> — cvc solver, tiếng Anh. Minh họa cách gọi lượng từ trong mã nguồn qua API Python của cvc5.
