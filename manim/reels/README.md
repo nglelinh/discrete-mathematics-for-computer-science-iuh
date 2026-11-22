@@ -48,3 +48,10 @@ ffmpeg -i out.mp4 -i music.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -shortest ou
 | `tree_traversal.py` | `TreeTraversal` | `tree-traversal.mp4` | 16-02 |
 | `huffman.py` | `Huffman` | `huffman-coding.mp4` | 16-04 |
 | `relations.py` | `Relations` | `equivalence-partial-order.mp4` | 05-03 |
+| `cantor.py` | `Cantor` | `cantor-diagonal.mp4` | 04-03 |
+| `pigeon_adv.py` | `PigeonAdv` | `pigeonhole-advanced.mp4` | 08-02 |
+| `nonhom.py` | `NonHom` | `nonhomogeneous-recurrence.mp4` | 10-03 |
+| `divide_conquer.py` | `DivideConquer` | `divide-and-conquer-master.mp4` | 10-04 |
+| `bfs_dfs.py` | `BfsDfs` | `bfs-vs-dfs.mp4` | 12-04 |
+| `big_o.py` | `BigO` | `big-o-growth.mp4` | 14-02 |
+| `rsa_dh.py` | `Rsa` | `rsa-diffie-hellman.mp4` | 15-03 |

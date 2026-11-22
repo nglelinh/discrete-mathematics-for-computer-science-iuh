@@ -27,6 +27,14 @@ Một nguyên lý nhìn rất đơn giản có thể tạo ra các kết luận 
 **Từ khóa**: Dirichlet tổng quát, đa chiều, load balancing, chứng minh tồn tại.
 </div>
 
+### Video ngắn: Dirichlet nâng cao
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/pigeonhole-advanced.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 52 giây: dạng $$\lceil N/n \rceil$$ với hash table và cân bằng tải, 5 điểm trong hình vuông cạnh 1 luôn có hai điểm cách nhau không quá $$\sqrt{2}/2$$ (và vì sao không thể tốt hơn), 9 điểm luôn có tam giác diện tích không quá $$1/8$$, chọn 6 số từ 1 đến 10 có cặp tổng 11, tổng tiền tố và số dư để tìm đoạn liên tiếp chia hết cho 7 (cùng bội của 6 chỉ gồm chữ số 0 và 1: $$1110$$), và định lý Erdős–Szekeres bằng cách gắn nhãn $$(t, g)$$ trên một dãy 10 số cụ thể.
+
 ## Nguyên lý Dirichlet Tổng quát
 
 ### Nguyên lý Dirichlet với Trọng số
