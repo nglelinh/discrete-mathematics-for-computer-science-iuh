@@ -184,7 +184,7 @@ Kết quả: $$\gcd = 21$$.
 
 </div>
 
-Số bước thuộc $$O(\log \min(|a|,|b|))$$ — đủ nhanh cho số hàng nghìn bit trong thư viện mật mã.
+Số bước thuộc $$O(\log \min(\vert a\vert ,\vert b\vert ))$$ — đủ nhanh cho số hàng nghìn bit trong thư viện mật mã.
 
 ### Video ngắn: Euclid lát hình chữ nhật
 

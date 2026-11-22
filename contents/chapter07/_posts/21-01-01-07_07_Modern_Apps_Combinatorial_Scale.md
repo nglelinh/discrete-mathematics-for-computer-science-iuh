@@ -32,7 +32,7 @@ Pairwise test design (already in Chapter 9) is the dual: you *refuse* to count t
 1. A. Biere et al., SAT Competition 2024 solver description, Univ. Helsinki B-2024-1, pp. 8–10. [PDF](https://cca.informatik.uni-freiburg.de/papers/BiereFallerFazekasFleuryFroleyksPollitt-SAT-Competition-2024-solvers.pdf)
 2. D. J. Mankowitz et al., “Faster sorting algorithms discovered using deep reinforcement learning,” *Nature* 618 (2023). [DOI](https://doi.org/10.1038/s41586-023-06004-9)
 
-**Questions.** (1) Write $$|\text{assignments}|$$ and $$|\text{assembly programs of length } L|$$ with the multiplication rule. (2) What quantity does CDCL *avoid enumerating*?
+**Questions.** (1) Write $$\vert \text{assignments}\vert $$ and $$\vert \text{assembly programs of length } L\vert $$ with the multiplication rule. (2) What quantity does CDCL *avoid enumerating*?
 
 ## Tiếng Việt
 
@@ -43,7 +43,7 @@ Quy tắc nhân giải thích vì sao vét cạn chết. CNF $$n$$ biến có $$
 
 Pairwise testing (Chương 9) là mặt đối: *từ chối* đếm hết tích Descartes, chỉ phủ bộ đôi. Ghi chú này chỉ cập nhật bằng chứng 2023–2024: phép đếm vẫn quyết định tìm kiếm nào còn nghĩ được.
 
-**Câu hỏi.** (1) Viết $$|\text{phép gán}|$$ và $$|\text{chương trình độ dài } L|$$ bằng quy tắc nhân. (2) CDCL *tránh liệt kê* đại lượng nào?
+**Câu hỏi.** (1) Viết $$\vert \text{phép gán}\vert $$ và $$\vert \text{chương trình độ dài } L\vert $$ bằng quy tắc nhân. (2) CDCL *tránh liệt kê* đại lượng nào?
 
 ## Video tham khảo
 

@@ -86,7 +86,7 @@ Phát hiện chu trình (biến thể): cạnh tới đỉnh **đang** trên sta
 1. Tính $$\mathrm{indeg}(v)$$ với mọi $$v$$.
 2. Queue các đỉnh $$\mathrm{indeg}=0$$.
 3. Lặp: lấy $$u$$; ghi vào kết quả; với mỗi $$(u,v)$$ giảm $$\mathrm{indeg}(v)$$; nếu về 0 thì enqueue $$v$$.
-4. Nếu số đỉnh xuất $$<|V|$$ ⇒ **có chu trình**.
+4. Nếu số đỉnh xuất $$<\vert V\vert $$ ⇒ **có chu trình**.
 
 **Độ phức tạp.** Cả DFS và Kahn: $$O(V+E)$$ với danh sách kề.
 
@@ -147,7 +147,7 @@ Thêm $$S\to P$$. Còn topo sort không? Kahn phát hiện thế nào?
 <details>
 <summary>Đáp án</summary>
 
-Không — chu trình $$P\to\cdots\to S\to P$$. Kahn không bao giờ lấy đủ $$|V|$$ đỉnh (không còn indeg 0 sau vài bước, hoặc ngay từ đầu không xử lý hết).
+Không — chu trình $$P\to\cdots\to S\to P$$. Kahn không bao giờ lấy đủ $$\vert V\vert $$ đỉnh (không còn indeg 0 sau vài bước, hoặc ngay từ đầu không xử lý hết).
 
 </details>
 

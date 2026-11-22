@@ -30,7 +30,7 @@ excerpt: "Ở mục trước, chúng ta đã định nghĩa tập hợp, phần 
 ### Hợp (Union) -- ∪
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: A ∪ B = {x | x ∈ A hoặc x ∈ B}
+**Định nghĩa**: A ∪ B = {x \| x ∈ A hoặc x ∈ B}
 </div>
 
 
@@ -63,7 +63,7 @@ print(Python.union(Java))   # Tương tự
 ### Giao (Intersection) -- ∩
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: A ∩ B = {x | x ∈ A và x ∈ B}
+**Định nghĩa**: A ∩ B = {x \| x ∈ A và x ∈ B}
 </div>
 
 
@@ -97,7 +97,7 @@ print(Python.intersection(Java))
 ### Hiệu (Difference) -- \
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: A \ B = {x | x ∈ A và x ∉ B}
+**Định nghĩa**: A \ B = {x \| x ∈ A và x ∉ B}
 </div>
 
 
@@ -122,7 +122,7 @@ print(Java - Python)    # {'Dung', 'Em'} -- học Java nhưng không học Pytho
 ### Phần bù (Complement) -- Aᶜ
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Aᶜ = U \ A = {x ∈ U | x ∉ A}
+**Định nghĩa**: Aᶜ = U \ A = {x ∈ U \| x ∉ A}
 (với U là tập vũ trụ -- universal set)
 </div>
 

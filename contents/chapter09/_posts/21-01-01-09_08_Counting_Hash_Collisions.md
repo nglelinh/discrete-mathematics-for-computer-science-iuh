@@ -311,7 +311,7 @@ Khi $$\alpha$$ tăng, $$E$$ tăng nhanh — gần nửa bucket đã có key thì
 
 **Triệu chứng:** Prometheus OOM sau khi thêm label `user_id` vào metric `login_total`.
 
-**Toán:** Cardinality $|V_C|$ = số giá trị **distinct** trên cột $C$. Mỗi user_id là một label riêng → triệu time series.
+**Toán:** Cardinality $\|V_C\|$ = số giá trị **distinct** trên cột $C$. Mỗi user_id là một label riêng → triệu time series.
 
 **Công thức:** Giả sử 500k DAU, mỗi user login 2 lần/ngày → ~1M series chỉ từ 1 metric.
 

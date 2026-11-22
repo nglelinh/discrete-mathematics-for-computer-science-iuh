@@ -21,7 +21,7 @@ Khi nhiều điều kiện chồng lên nhau, việc đếm bằng trực giác 
 
 - **Áp dụng** công thức IE cho 2, 3 tập và dạng đơn giản.
 - **Đếm** phần tử không vi phạm ràng buộc (dạng bù).
-- **Nhận biện** khi cộng thẳng $$|A_i|$$ gây đếm trùng.
+- **Nhận biện** khi cộng thẳng $$\vert A_i\vert $$ gây đếm trùng.
 
 **Từ khóa**: bao hàm–loại trừ, giao tập, đếm có điều kiện.
 </div>
@@ -194,7 +194,7 @@ print(inclusion_exclusion({1: 50 + 33 + 20, 2: 16 + 10 + 6, 3: 3}))
 
 ### Minh hoạ tương tác
 
-Minh hoạ Venn ở chế độ bao hàm–loại trừ: so sánh |A ∪ B ∪ C| tính trực tiếp với công thức. Các widget có sẵn bên trên vẫn giữ nguyên.
+Minh hoạ Venn ở chế độ bao hàm–loại trừ: so sánh \|A ∪ B ∪ C\| tính trực tiếp với công thức. Các widget có sẵn bên trên vẫn giữ nguyên.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="venn-explainer" data-sets="3" data-focus="ie"></div>

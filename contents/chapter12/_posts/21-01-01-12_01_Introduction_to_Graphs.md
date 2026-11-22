@@ -90,7 +90,7 @@ Ngoài phân loại theo hướng và trọng số, ta phân biệt theo cấu t
 |:---|:---|
 | **Đồ thị đơn** (*simple graph*) | Tối đa một cạnh giữa hai đỉnh; không có **khuyên** (cạnh $$\{v,v\}$$ hoặc $$(v,v)$$) |
 | **Đa đồ thị** (*multigraph*) | Cho phép nhiều cạnh song song giữa cùng một cặp đỉnh |
-| **Đồ thị đầy đủ** $$K_n$$ | $$n$$ đỉnh; mọi cặp đỉnh khác nhau có đúng một cạnh (vô hướng). Khi đó $$|E| = \binom{n}{2}$$ |
+| **Đồ thị đầy đủ** $$K_n$$ | $$n$$ đỉnh; mọi cặp đỉnh khác nhau có đúng một cạnh (vô hướng). Khi đó $$\vert E\vert  = \binom{n}{2}$$ |
 | **Đồ thị hai phía** (*bipartite*) | $$V = A \cup B$$, $$A \cap B = \emptyset$$; mọi cạnh nối một đỉnh thuộc $$A$$ với một đỉnh thuộc $$B$$ |
 
 ![Đồ thị đầy đủ và hai phía](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_complete_bipartite.svg)
@@ -149,7 +149,7 @@ $$
 <div class="textbook-proof" markdown="1">
 *Phác thảo chứng minh.* Mỗi cạnh $$\{u,v\}$$ được đếm đúng hai lần trong tổng bậc — một lần ở $$u$$ và một lần ở $$v$$. Mỗi khuyên $$\{v,v\}$$ cũng đóng góp đúng $$2$$ vào $$\deg(v)$$ theo quy ước ở Mục 3, nên vẫn được đếm hai lần. Do đó tổng bậc bằng hai lần số cạnh.
 
-Hệ quả suy ra từ quan sát: tổng các số nguyên bằng số chẵn khi và chỉ khi số các số hạng lẻ là chẵn. Vì $$2|E|$$ chẵn, số đỉnh bậc lẻ phải chẵn.
+Hệ quả suy ra từ quan sát: tổng các số nguyên bằng số chẵn khi và chỉ khi số các số hạng lẻ là chẵn. Vì $$2\vert E\vert $$ chẵn, số đỉnh bậc lẻ phải chẵn.
 </div>
 
 <div class="textbook-example" markdown="1">
@@ -168,7 +168,7 @@ khớp với việc đếm cạnh trên hình.
 
 **Ví dụ 4** (không tồn tại). Có tồn tại đồ thị vô hướng đơn với dãy bậc $$3,3,3$$ trên ba đỉnh không?
 
-Tổng bậc $$= 9$$ lẻ, trong khi $$2|E|$$ luôn chẵn. Theo định lý bắt tay, **không** tồn tại đồ thị nào (kể cả đa đồ thị) với dãy bậc đó.
+Tổng bậc $$= 9$$ lẻ, trong khi $$2\vert E\vert $$ luôn chẵn. Theo định lý bắt tay, **không** tồn tại đồ thị nào (kể cả đa đồ thị) với dãy bậc đó.
 
 </div>
 
@@ -178,7 +178,7 @@ Tổng bậc $$= 9$$ lẻ, trong khi $$2|E|$$ luôn chẵn. Theo định lý b�
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/handshake-lemma.mp4"></video>
 </div>
 
-Mỗi cạnh được cộng vào bậc của **cả hai** đầu mút, nên mỗi lần thêm một cạnh thì tổng bậc tăng đúng $$2$$ (một khuyên có hai đầu trùng nhau nên cũng cộng $$2$$ vào bậc của chính đỉnh đó). Vì vậy $$\sum_v \deg(v)=2|E|$$ luôn là số chẵn, và số đỉnh bậc lẻ phải chẵn. Trong đồ thị minh hoạ (đồ thị đơn, không có khuyên) có $$8$$ cạnh, tổng bậc $$16$$ và $$4$$ đỉnh bậc lẻ.
+Mỗi cạnh được cộng vào bậc của **cả hai** đầu mút, nên mỗi lần thêm một cạnh thì tổng bậc tăng đúng $$2$$ (một khuyên có hai đầu trùng nhau nên cũng cộng $$2$$ vào bậc của chính đỉnh đó). Vì vậy $$\sum_v \deg(v)=2\vert E\vert $$ luôn là số chẵn, và số đỉnh bậc lẻ phải chẵn. Trong đồ thị minh hoạ (đồ thị đơn, không có khuyên) có $$8$$ cạnh, tổng bậc $$16$$ và $$4$$ đỉnh bậc lẻ.
 
 ## Ứng dụng nhanh trong tin học
 
@@ -192,7 +192,7 @@ Các mục tiếp theo sẽ gắn cấu trúc này với biểu diễn máy tín
 
 ## Thử nghiệm tương tác
 
-Bật/tắt cạnh trên đồ thị năm đỉnh; ma trận kề và bậc cập nhật tức thời. Kiểm tra trực tiếp hệ thức $$\sum \deg(v) = 2|E|$$.
+Bật/tắt cạnh trên đồ thị năm đỉnh; ma trận kề và bậc cập nhật tức thời. Kiểm tra trực tiếp hệ thức $$\sum \deg(v) = 2\vert E\vert $$.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="graph-adjacency-builder"></div>
@@ -243,12 +243,12 @@ Kiểm tra: $$5 \cdot 4 = 20 = 2 \cdot 10$$.
 
 ### Bài tập 3
 
-Cho dãy bậc: $$3, 3, 2, 2, 2, 2$$. Dãy này có thể là dãy bậc của một đồ thị vô hướng không? Nếu có, tính $$|E|$$.
+Cho dãy bậc: $$3, 3, 2, 2, 2, 2$$. Dãy này có thể là dãy bậc của một đồ thị vô hướng không? Nếu có, tính $$\vert E\vert $$.
 
 <details>
 <summary>Đáp án</summary>
 
-Tổng bậc $$= 14$$ (chẵn) $$\implies |E| = 7$$. Số đỉnh bậc lẻ bằng 2 (chẵn) — thỏa hệ quả định lý bắt tay. Vậy **có thể** tồn tại đồ thị với dãy bậc đó (điều kiện handshaking là cần; với đồ thị đơn còn cần thêm điều kiện Havel–Hakimi / Erdős–Gállai, ngoài phạm vi mục này).
+Tổng bậc $$= 14$$ (chẵn) $$\implies \vert E\vert  = 7$$. Số đỉnh bậc lẻ bằng 2 (chẵn) — thỏa hệ quả định lý bắt tay. Vậy **có thể** tồn tại đồ thị với dãy bậc đó (điều kiện handshaking là cần; với đồ thị đơn còn cần thêm điều kiện Havel–Hakimi / Erdős–Gállai, ngoài phạm vi mục này).
 
 </details>
 
@@ -274,7 +274,7 @@ $$
 | libB | 1 | 1 |
 | core | 0 | 2 |
 
-Tổng bậc ra = tổng bậc vào = $$|E| = 4$$.
+Tổng bậc ra = tổng bậc vào = $$\vert E\vert  = 4$$.
 
 </details>
 
@@ -283,7 +283,7 @@ Tổng bậc ra = tổng bậc vào = $$|E| = 4$$.
 1. **Đồ thị** $$G=(V,E)$$ mô hình hóa quan hệ cặp; cạnh vô hướng hoặc có hướng (và có thể mang trọng số).
 2. Phân loại cấu trúc: đơn / đa; $$K_n$$; hai phía — mỗi loại phản ánh ràng buộc khác nhau trên $$E$$.
 3. **Bậc** đo mức “kết nối cục bộ”; trên digraph dùng bậc vào và bậc ra.
-4. **Định lý bắt tay**: $$\sum \deg(v) = 2|E|$$; số đỉnh bậc lẻ luôn chẵn — công cụ kiểm tra nhanh tính khả thi của dãy bậc.
+4. **Định lý bắt tay**: $$\sum \deg(v) = 2\vert E\vert $$; số đỉnh bậc lẻ luôn chẵn — công cụ kiểm tra nhanh tính khả thi của dãy bậc.
 
 Trong bài tiếp theo, cùng một đồ thị trừu tượng được **biểu diễn** trên máy tính bằng ma trận kề hoặc danh sách kề; lựa chọn này quyết định độ phức tạp của các thao tác cơ bản.
 

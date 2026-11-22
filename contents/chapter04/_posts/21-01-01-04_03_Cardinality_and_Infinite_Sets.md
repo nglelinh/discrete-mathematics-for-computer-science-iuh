@@ -18,7 +18,7 @@ excerpt: "Ở hai mục trước, chúng ta đã định nghĩa tập hợp và 
 
 **Mục tiêu học tập.** Sau bài học này, sinh viên có thể:
 
-- **Tính** lực lượng tập hữu hạn và $$|\mathcal{P}(A)| = 2^{|A|}$$.
+- **Tính** lực lượng tập hữu hạn và $$\vert \mathcal{P}(A)\vert  = 2^{\vert A\vert }$$.
 - **Phân biệt** tập đếm được và không đếm được (Cantor).
 - **Áp dụng** bao hàm–loại trừ cơ bản trên tập.
 
@@ -294,10 +294,10 @@ $$\lvert P \cup J \rvert = 50 + 40 - 30 = 60$$.
 
 ## Tóm tắt
 
-- **Lực lượng** $$|A|$$ đo số phần tử; với tập hữu hạn $$n$$ phần tử, $$|\mathcal{P}(A)| = 2^n$$.
-- **Nguyên lý bao hàm–loại trừ**: $$|A \cup B| = |A| + |B| - |A \cap B|$$; mở rộng cho ba tập và nhiều tập.
+- **Lực lượng** $$\vert A\vert $$ đo số phần tử; với tập hữu hạn $$n$$ phần tử, $$\vert \mathcal{P}(A)\vert  = 2^n$$.
+- **Nguyên lý bao hàm–loại trừ**: $$\vert A \cup B\vert  = \vert A\vert  + \vert B\vert  - \vert A \cap B\vert $$; mở rộng cho ba tập và nhiều tập.
 - Tập **đếm được** (ℕ, ℤ, ℚ) có thể liệt kê bởi ℕ; tập **không đếm được** (ℝ, (0,1)) — lập luận đường chéo Cantor.
-- **Định lý Schröder–Bernstein**: nếu $$|A| \leq |B|$$ và $$|B| \leq |A|$$ thì $$|A| = |B|$$.
+- **Định lý Schröder–Bernstein**: nếu $$\vert A\vert  \leq \vert B\vert $$ và $$\vert B\vert  \leq \vert A\vert $$ thì $$\vert A\vert  = \vert B\vert $$.
 - Ứng dụng CS: phân tích không gian trạng thái $$2^n$$, đếm test case, giới hạn tính toán.
 
 ## Video tham khảo

@@ -43,7 +43,7 @@ excerpt: "Phát biểu; ý chứng minh parse tree; aⁿbⁿcⁿ không CFL."
 
 ### Thử nghiệm: bổ đề bơm cho CFL
 
-Duyệt mọi cách chia w = uvxyz với |vxy| ≤ p và |vy| ≥ 1.
+Duyệt mọi cách chia w = uvxyz với \|vxy\| ≤ p và \|vy\| ≥ 1.
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="pumping-explainer" data-kind="cfl" data-lang="anbncn" data-p="2"></div>

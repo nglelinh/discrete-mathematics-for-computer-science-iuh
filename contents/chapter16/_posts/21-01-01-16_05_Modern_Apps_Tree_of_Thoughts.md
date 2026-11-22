@@ -44,6 +44,6 @@ Liên hệ tùy chọn: ToT không định nghĩa cây mới. Nó là *tìm ki�
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=MXBxNUnC7iY">Tree of Thoughts: Deliberate Problem Solving with Large Language Models | Paper Summary</a> — Lucas Soares | Automata Learning Lab, tiếng Anh. Xem trước Tree of Thoughts: cây các lời giải dở và cách duyệt.
+- **xem trước** <a href="https://www.youtube.com/watch?v=MXBxNUnC7iY">Tree of Thoughts: Deliberate Problem Solving with Large Language Models \| Paper Summary</a> — Lucas Soares \| Automata Learning Lab, tiếng Anh. Xem trước Tree of Thoughts: cây các lời giải dở và cách duyệt.
 - <a href="https://www.youtube.com/watch?v=ut5kp56wW_4">Tree of Thoughts: Deliberate Problem Solving with Large Language Models (Full Paper Review)</a> — Yannic Kilcher, tiếng Anh. Đọc bài báo: tìm kiếm có chủ đích trên cây suy nghĩ.
 - <a href="https://www.youtube.com/watch?v=z_OwSnFY_5s">[Discrete Mathematics] Tree Directories and Traversals</a> — TrevTutor, tiếng Anh. Duyệt cây cổ điển, cùng BFS/DFS mà phương pháp này dùng.

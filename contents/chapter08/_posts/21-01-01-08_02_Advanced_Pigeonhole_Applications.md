@@ -51,7 +51,7 @@ Một nguyên lý nhìn rất đơn giản có thể tạo ra các kết luận 
 **Định lý**: Với mọi số thực α và số nguyên dương N, tồn tại các số nguyên p, q với 1 ≤ q ≤ N sao cho:
 
 <div class="textbook-equation" markdown="1">
-$$\left|\alpha - p/q\right| < 1/(qN)$$
+$$\left\vert \alpha - p/q\right\vert  < 1/(qN)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 </div>

@@ -42,7 +42,7 @@ Mục này xây dựng hai biểu diễn, so sánh độ phức tạp, và nêu 
 
 ## Ma trận kề
 
-Giả sử các đỉnh được đánh số $$0, 1, \ldots, n-1$$ với $$n = |V|$$.
+Giả sử các đỉnh được đánh số $$0, 1, \ldots, n-1$$ với $$n = \vert V\vert $$.
 
 <div class="textbook-definition" markdown="1">
 
@@ -110,7 +110,7 @@ graph = {
 }
 ```
 
-Tổng độ dài các danh sách bằng $$2|E| = 8$$ trên đồ thị vô hướng (mỗi cạnh được lưu hai chiều).
+Tổng độ dài các danh sách bằng $$2\vert E\vert  = 8$$ trên đồ thị vô hướng (mỗi cạnh được lưu hai chiều).
 
 </div>
 
@@ -118,7 +118,7 @@ Tổng độ dài các danh sách bằng $$2|E| = 8$$ trên đồ thị vô hư�
 |:---|:---|
 | Kiểm tra có cạnh $$(i,j)$$ | $$O(\deg(i))$$ (duyệt list của $$i$$; hoặc $$O(1)$$ trung bình nếu dùng set) |
 | Duyệt láng giềng của $$i$$ | $$O(\deg(i))$$ |
-| Bộ nhớ | $$O(n + m)$$ với $$m = |E|$$ (vô hướng: $$O(n + 2m)$$ chỗ lưu chiều) |
+| Bộ nhớ | $$O(n + m)$$ với $$m = \vert E\vert $$ (vô hướng: $$O(n + 2m)$$ chỗ lưu chiều) |
 
 ## So sánh và nguyên tắc chọn
 

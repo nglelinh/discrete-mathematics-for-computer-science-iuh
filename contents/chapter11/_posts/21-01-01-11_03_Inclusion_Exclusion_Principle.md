@@ -10,7 +10,7 @@ lang: vi
 excerpt: "Ở Chương 4 chúng ta đã làm việc với tập hợp, hợp, giao và hiệu. Mục này xây dựng nguyên lý bao hàm–loại trừ (inclusion–exclusion) — công thức chính xác đếm…"
 ---
 
-Ở Chương 4 chúng ta đã làm việc với tập hợp, hợp, giao và hiệu. Mục này xây dựng **nguyên lý bao hàm–loại trừ** (inclusion–exclusion) — công thức chính xác đếm $$|A_1 \cup \cdots \cup A_n|$$ khi các tập con có giao nhau. Cộng thẳng $$|A_i|$$ sẽ đếm trùng phần giao; nguyên lý bù trừ xen kẽ theo kích thước giao sửa sai số đó. Công cụ này xuất hiện trong xác suất, truy vấn dữ liệu (`UNION`/`INTERSECT` trong SQL) và nhiều bài toán tổ hợp có ràng buộc chồng lấn.
+Ở Chương 4 chúng ta đã làm việc với tập hợp, hợp, giao và hiệu. Mục này xây dựng **nguyên lý bao hàm–loại trừ** (inclusion–exclusion) — công thức chính xác đếm $$\vert A_1 \cup \cdots \cup A_n\vert $$ khi các tập con có giao nhau. Cộng thẳng $$\vert A_i\vert $$ sẽ đếm trùng phần giao; nguyên lý bù trừ xen kẽ theo kích thước giao sửa sai số đó. Công cụ này xuất hiện trong xác suất, truy vấn dữ liệu (`UNION`/`INTERSECT` trong SQL) và nhiều bài toán tổ hợp có ràng buộc chồng lấn.
 
 ![Bao hàm–loại trừ ba tập](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)
 
@@ -47,7 +47,7 @@ excerpt: "Ở Chương 4 chúng ta đã làm việc với tập hợp, hợp, gi
 
 <div class="textbook-definition" markdown="1">
 **Định nghĩa** (hai tập): Với $$A, B$$ hữu hạn,
-$$|A \cup B| = |A| + |B| - |A \cap B|.$$
+$$\vert A \cup B\vert  = \vert A\vert  + \vert B\vert  - \vert A \cap B\vert .$$
 </div>
 
 Với hai tập hữu hạn $A,B$,
@@ -160,7 +160,7 @@ Trong lớp 30 học sinh, 18 học Toán, 15 học Lý, 8 học cả hai. Hỏi
 <details>
 <summary>Đáp án</summary>
 
-$$|A \cup B| = 18 + 15 - 8 = 25$$.
+$$\vert A \cup B\vert  = 18 + 15 - 8 = 25$$.
 
 </details>
 
@@ -171,7 +171,7 @@ $$|A \cup B| = 18 + 15 - 8 = 25$$.
 <details>
 <summary>Đáp án</summary>
 
-Dạng bù: $$1000 - |A_2 \cup A_3 \cup A_5|$$ với $$|A_2|=500$$, $$|A_3|=333$$, $$|A_5|=200$$, giao đôi 166, 100, 66, giao ba 33. IE: $$500+333+200-166-100-66+33=734$$ vi phạm. Đáp số: $$1000 - 734 = 266$$.
+Dạng bù: $$1000 - \vert A_2 \cup A_3 \cup A_5\vert $$ với $$\vert A_2\vert =500$$, $$\vert A_3\vert =333$$, $$\vert A_5\vert =200$$, giao đôi 166, 100, 66, giao ba 33. IE: $$500+333+200-166-100-66+33=734$$ vi phạm. Đáp số: $$1000 - 734 = 266$$.
 
 </details>
 
@@ -207,8 +207,8 @@ $$5! - \binom{5}{1}4! + \binom{5}{2}3! - \binom{5}{3}2! + \binom{5}{4}1! - \bino
 
 ## Tóm tắt
 
-- Hai tập: $$|A \cup B| = |A| + |B| - |A \cap B|$$; ba tập: công thức cộng–trừ giao đôi, giao ba.
-- Công thức tổng quát: $$|\bigcup A_i| = \sum (-1)^{|I|+1} |\bigcap_{i\in I} A_i|$$.
+- Hai tập: $$\vert A \cup B\vert  = \vert A\vert  + \vert B\vert  - \vert A \cap B\vert $$; ba tập: công thức cộng–trừ giao đôi, giao ba.
+- Công thức tổng quát: $$\vert \bigcup A_i\vert  = \sum (-1)^{\vert I\vert +1} \vert \bigcap_{i\in I} A_i\vert $$.
 - **Chứng minh đếm số lần**: phần tử thuộc đúng $$r$$ tập được đếm đúng một lần.
 - **Dạng bù**: đếm phần tử không vi phạm = không gian mẫu trừ hợp các tập vi phạm.
 - Ứng dụng cơ bản: đếm số chia hết cho 2 hoặc 5 trong $$1..100$$.

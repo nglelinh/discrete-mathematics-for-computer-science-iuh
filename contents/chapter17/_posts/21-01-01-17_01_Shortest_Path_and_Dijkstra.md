@@ -126,7 +126,7 @@ Video dài khoảng 2 phút 58 giây: chạy Dijkstra từng bước trên đồ
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý / quan sát.** Nếu tồn tại **chu trình âm** reachable từ $$s$$, khoảng cách ngắn nhất **không bị chặn dưới** (đi vòng vô hạn). **Bellman–Ford** thực hiện $$|V|-1$$ vòng relax mọi cạnh; vòng thứ $$|V|$$ còn cải thiện được $$\implies$$ có chu trình âm.
+**Định lý / quan sát.** Nếu tồn tại **chu trình âm** reachable từ $$s$$, khoảng cách ngắn nhất **không bị chặn dưới** (đi vòng vô hạn). **Bellman–Ford** thực hiện $$\vert V\vert -1$$ vòng relax mọi cạnh; vòng thứ $$\vert V\vert $$ còn cải thiện được $$\implies$$ có chu trình âm.
 
 </div>
 

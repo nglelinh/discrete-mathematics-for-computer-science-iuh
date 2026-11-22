@@ -48,7 +48,7 @@ Quân mã không đi theo hàng/cột/diagonal như xe/tượng; mỗi ô có **
 
 Coi mỗi ô $$(r,c)$$ là một **đỉnh**. Nối cạnh giữa hai ô nếu quân mã có thể nhảy từ ô này sang ô kia trong một nước. Ta được đồ thị vô hướng $$G = (V, E)$$:
 
-- $$|V| = n^2$$
+- $$\vert V\vert  = n^2$$
 - Bậc đỉnh thay đổi: ô góc bậc 2, cạnh biên bậc 3–4, vùng trung tâm bậc tối đa 8 (bàn đủ lớn).
 
 ![Đồ thị vô hướng — mô hình láng giềng](/discrete-mathematics-for-computer-science-iuh/img/course/Undirected_graph.svg)
@@ -121,7 +121,7 @@ Trên $$5 \times 5$$, hàm này thường trả lời trong mili giây. Trên $$
 **Ý tưởng** (H. C. von Warnsdorf, 1823): từ ô hiện tại, chọn ô tiếp theo có **số láng giềng chưa thăm ít nhất** (accessibility thấp nhất). Ô “cổ chai” phải đi sớm; ô trung tâm nhiều lối thoát có thể để sau.
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Với ô ứng viên $$v$$, đặt $$W(v) = |\{ u : u \text{ láng giềng mã của } v,\ u \text{ chưa thăm} \}|$$. Chọn $$v$$ với $$W(v)$$ **nhỏ nhất**. Hòa số: chọn ngẫu nhiên hoặc theo thứ tự cố định (ví dụ lexicographic $$(r,c)$$).
+**Định nghĩa**: Với ô ứng viên $$v$$, đặt $$W(v) = \vert \{ u : u \text{ láng giềng mã của } v,\ u \text{ chưa thăm} \}\vert $$. Chọn $$v$$ với $$W(v)$$ **nhỏ nhất**. Hòa số: chọn ngẫu nhiên hoặc theo thứ tự cố định (ví dụ lexicographic $$(r,c)$$).
 </div>
 
 
@@ -273,7 +273,7 @@ Bàn $$4 \times 4$$ có bao nhiêu đỉnh và (theo định nghĩa bài) tối 
 <details>
 <summary>Đáp án</summary>
 
-$$|V| = 16$$. Ô góc bậc **2**. Tổng số cạnh: đếm tay hoặc chương trình — mỗi cạnh nối hai ô cách nhau một nước mã; đồ thị sparse, không phải $$K_{16}$$.
+$$\vert V\vert  = 16$$. Ô góc bậc **2**. Tổng số cạnh: đếm tay hoặc chương trình — mỗi cạnh nối hai ô cách nhau một nước mã; đồ thị sparse, không phải $$K_{16}$$.
 
 </details>
 

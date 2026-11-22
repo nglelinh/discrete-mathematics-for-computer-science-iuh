@@ -197,12 +197,12 @@ Chênh lệch 4.000 = số email bị đếm hai lần khi dùng `UNION ALL`.
 
 ### Bài tập 2: INTERSECT và EXCEPT
 
-Cho $$|A|=120$$, $$|B|=95$$, $$|C|=40$$, $$|A \cap B|=50$$, $$|A \cap C|=10$$, $$|B \cap C|=8$$, $$|A \cap B \cap C|=5$$. Tính $$|(A \cap B) \setminus C|$$. Viết SQL tương đương.
+Cho $$\vert A\vert =120$$, $$\vert B\vert =95$$, $$\vert C\vert =40$$, $$\vert A \cap B\vert =50$$, $$\vert A \cap C\vert =10$$, $$\vert B \cap C\vert =8$$, $$\vert A \cap B \cap C\vert =5$$. Tính $$\vert (A \cap B) \setminus C\vert $$. Viết SQL tương đương.
 
 <details>
 <summary>Đáp án</summary>
 
-$$|(A \cap B) \setminus C| = 50 - 5 = 45$$.
+$$\vert (A \cap B) \setminus C\vert  = 50 - 5 = 45$$.
 
 ```sql
 (SELECT student_id FROM enrollments WHERE course = 'DM')

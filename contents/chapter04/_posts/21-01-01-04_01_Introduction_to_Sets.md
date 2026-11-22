@@ -73,7 +73,7 @@ Liệt kê tất cả các phần tử trong dấu ngoặc nhọn. Đây là cá
 
 Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữu ích khi tập có quá nhiều phần tử hoặc vô hạn.
 
-**Cú pháp**: {x | P(x)} hoặc {x : P(x)}
+**Cú pháp**: {x \| P(x)} hoặc {x : P(x)}
 Đọc: "Tập hợp các x sao cho P(x)"
 
 ![Biểu đồ Venn 3 tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
@@ -81,9 +81,9 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 <p class="textbook-figure-caption" data-figure="4.3">Biểu đồ Venn minh họa quan hệ giữa 3 tập hợp — vùng giao (intersection) và vùng hợp (union).</p>
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
-- A = {x | x là số nguyên và 1 ≤ x ≤ 5}
-- B = {x | x^2 = 4}
-- C = {n ∈ ℕ | n là số chẵn}
+- A = {x \| x là số nguyên và 1 ≤ x ≤ 5}
+- B = {x \| x^2 = 4}
+- C = {n ∈ ℕ \| n là số chẵn}
 </div>
 
 
@@ -91,9 +91,9 @@ Mô tả tập hợp bằng tính chất của các phần tử. Cách này hữ
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
-- [0, 1] = {x ∈ ℝ | 0 ≤ x ≤ 1}
-- (0, 1) = {x ∈ ℝ | 0 < x < 1}
-- [0, ∞) = {x ∈ ℝ | x ≥ 0}
+- [0, 1] = {x ∈ ℝ \| 0 ≤ x ≤ 1}
+- (0, 1) = {x ∈ ℝ \| 0 < x < 1}
+- [0, ∞) = {x ∈ ℝ \| x ≥ 0}
 
 ![Ký hiệu khoảng trên trục số thực](/discrete-mathematics-for-computer-science-iuh/img/course/Interval.svg)
 
@@ -148,15 +148,15 @@ print({'c'}.issubset(A))  # False
 ### Lực lượng (Cardinality)
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: Số phần tử của tập hợp A, ký hiệu |A| hoặc #A.
+**Định nghĩa**: Số phần tử của tập hợp A, ký hiệu \|A\| hoặc #A.
 </div>
 
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
-- |{1, 2, 3}| = 3
-- |∅| = 0
-- |ℕ| = ∞ (vô hạn đếm được -- sẽ học chi tiết ở bài 4.3)
+- \|{1, 2, 3}\| = 3
+- \|∅\| = 0
+- \|ℕ\| = ∞ (vô hạn đếm được -- sẽ học chi tiết ở bài 4.3)
 </div>
 
 
@@ -204,10 +204,10 @@ b) Tập các ước số của 12
 <summary>Đáp án</summary>
 
 a) Liệt kê: {0, 2, 4, 6, 8}
-   Mô tả: A = {n ∈ ℕ₀ | n là số chẵn và n < 10} hoặc A = {2k | k ∈ ℕ₀, 2k < 10}
+   Mô tả: A = {n ∈ ℕ₀ \| n là số chẵn và n < 10} hoặc A = {2k \| k ∈ ℕ₀, 2k < 10}
 
 b) Liệt kê: {1, 2, 3, 4, 6, 12}
-   Mô tả: B = {n ∈ ℕ | n chia hết 12}
+   Mô tả: B = {n ∈ ℕ \| n chia hết 12}
 </details>
 
 ### Bài tập 3: Quan hệ tập con
@@ -219,7 +219,7 @@ Cho A = {1, 2, 3, 4}. Tìm tất cả tập con của A có đúng 2 phần tử
 
 Có 6 tập con: {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}.
 
-Công thức: Với tập có |A| = n, số tập con có đúng k phần tử là C(n,k) = n!/(k!(n-k)!).
+Công thức: Với tập có \|A\| = n, số tập con có đúng k phần tử là C(n,k) = n!/(k!(n-k)!).
 Ở đây: C(4,2) = 4!/(2!2!) = 6.
 </details>
 
@@ -277,14 +277,14 @@ pow(pow({1})) = {∅, {∅}, {{1}}, {∅, {1}}}.
 
 <p class="textbook-figure-caption" data-figure="4.7">Tập lũy thừa P(S) gồm tất cả tập con của S — với |S| = n phần tử thì |P(S)| = 2ⁿ.</p>
 <div class="textbook-theorem" markdown="1">
-**Định lý**: Một tập hợp hữu hạn $$A$$ có đúng $$2^{|A|}$$ tập con (bao gồm cả ∅ và $$A$$).
+**Định lý**: Một tập hợp hữu hạn $$A$$ có đúng $$2^{\vert A\vert }$$ tập con (bao gồm cả ∅ và $$A$$).
 </div>
 
 
 <div class="textbook-proof" markdown="1">
 **Chứng minh**:
 
-Giả sử $$A = \{a_1, a_2, \dots, a_n\}$$, $$|A| = n$$.
+Giả sử $$A = \{a_1, a_2, \dots, a_n\}$$, $$\vert A\vert  = n$$.
 
 1. Mỗi tập con $$B \subseteq A$$ được xác định bởi việc chọn hoặc không chọn từng phần tử $$a_i$$.
 
@@ -300,10 +300,10 @@ Giả sử $$A = \{a_1, a_2, \dots, a_n\}$$, $$|A| = n$$.
 
 <div class="textbook-lemma" markdown="1">
 **Hệ quả**:
-- $$|A| = 0$$ (tập rỗng): có $$2^0 = 1$$ tập con (chính nó).
-- $$|A| = 1$$: có 2 tập con.
-- $$|A| = 10$$: có $$2^{10} = 1024$$ tập con.
-- $$|A| = 20$$: đã có hơn 1 triệu tập con.
+- $$\vert A\vert  = 0$$ (tập rỗng): có $$2^0 = 1$$ tập con (chính nó).
+- $$\vert A\vert  = 1$$: có 2 tập con.
+- $$\vert A\vert  = 10$$: có $$2^{10} = 1024$$ tập con.
+- $$\vert A\vert  = 20$$: đã có hơn 1 triệu tập con.
 </div>
 
 **Ý nghĩa trong Khoa học Máy tính**:
@@ -328,7 +328,7 @@ Trong toán học và khoa học máy tính, ta thường gặp các tập số 
 - Ba cách biểu diễn: **liệt kê**, **mô tả tính chất**, **khoảng số**
 - **Tập rỗng** ∅: tập không có phần tử nào
 - **Tập con** A ⊆ B: mọi phần tử của A đều thuộc B
-- **Lực lượng** |A|: số phần tử của tập hữu hạn A
+- **Lực lượng** \|A\|: số phần tử của tập hữu hạn A
 - Các tập hợp số: ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ
 
 Trong bài tiếp theo, chúng ta sẽ tìm hiểu các phép toán trên tập hợp: hợp, giao, hiệu, phần bù và hiệu đối xứng -- những công cụ mạnh mẽ để kết hợp và biến đổi các tập hợp.

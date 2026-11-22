@@ -63,7 +63,7 @@ Năm 1736, Euler trả lời câu hỏi thực tế: tại Königsberg, có th�
 
 </div>
 
-*Ý tưởng.* Mỗi lần trail đi vào rồi ra khỏi một đỉnh “giữa đường” dùng hai “nửa” bậc. Ở đỉnh xuất phát/kết thúc của đường mở, còn dư đúng một hướng. Thuật toán **Hierholzer** xây chu trình Euler trong thời gian $$O(|E|)$$ khi điều kiện thỏa: luôn nối các chu trình con dọc theo cạnh chưa dùng.
+*Ý tưởng.* Mỗi lần trail đi vào rồi ra khỏi một đỉnh “giữa đường” dùng hai “nửa” bậc. Ở đỉnh xuất phát/kết thúc của đường mở, còn dư đúng một hướng. Thuật toán **Hierholzer** xây chu trình Euler trong thời gian $$O(\vert E\vert )$$ khi điều kiện thỏa: luôn nối các chu trình con dọc theo cạnh chưa dùng.
 
 ![Mô hình 7 cầu Königsberg](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_konigsberg_euler.svg)
 
@@ -179,13 +179,13 @@ def dfs(graph, start, visited=None, order=None):
 
 <div class="textbook-theorem" markdown="1">
 
-**Định lý** (chi phí duyệt). Với biểu diễn **danh sách kề**, cả BFS và DFS chạy trong thời gian $$O(|V| + |E|)$$ và dùng bộ nhớ phụ $$O(|V|)$$ cho tập đã thăm cùng hàng đợi hoặc ngăn xếp.
+**Định lý** (chi phí duyệt). Với biểu diễn **danh sách kề**, cả BFS và DFS chạy trong thời gian $$O(\vert V\vert  + \vert E\vert )$$ và dùng bộ nhớ phụ $$O(\vert V\vert )$$ cho tập đã thăm cùng hàng đợi hoặc ngăn xếp.
 
 </div>
 
-*Lý do.* Mỗi đỉnh vào hàng đợi/stack tối đa một lần; mỗi danh sách kề được quét đúng một lần khi đỉnh chủ được xử lý — tổng độ dài các danh sách là $$\Theta(|E|)$$ (hoặc $$2|E|$$ vô hướng, cùng bậc lớn).
+*Lý do.* Mỗi đỉnh vào hàng đợi/stack tối đa một lần; mỗi danh sách kề được quét đúng một lần khi đỉnh chủ được xử lý — tổng độ dài các danh sách là $$\Theta(\vert E\vert )$$ (hoặc $$2\vert E\vert $$ vô hướng, cùng bậc lớn).
 
-Trên **ma trận kề**, cùng logic duyệt láng giềng mất $$O(|V|)$$ mỗi đỉnh, dẫn tới $$O(|V|^2)$$ — kém hơn rõ khi đồ thị thưa.
+Trên **ma trận kề**, cùng logic duyệt láng giềng mất $$O(\vert V\vert )$$ mỗi đỉnh, dẫn tới $$O(\vert V\vert ^2)$$ — kém hơn rõ khi đồ thị thưa.
 
 | Thuật toán | Cấu trúc | Khoảng cách / ứng dụng chính |
 |:---|:---|:---|

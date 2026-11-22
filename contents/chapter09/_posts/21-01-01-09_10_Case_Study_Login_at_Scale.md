@@ -368,7 +368,7 @@ Với 120.000 session/ngày, nếu coi như tích lũy ID active trong window ng
 
 PR cuối tuần gộp hai thay đổi: (1) metric `login_requests_total{user_id, email, status}`; (2) email welcome HTML không khai `charset`, API trả JSON không header charset. Thứ Hai: Prometheus OOM và ticket Nhật `????` cho tên kanji.
 
-(a) Ước lượng số time series Prometheus nếu **500.000 DAU** mỗi người tạo trung bình **2** login/ngày và mỗi `user_id` là label riêng. (b) So sánh với metric chỉ label `status`, `method`, `region` ($$|V| \approx 30$$). (c) Liệt kê bốn lớp pipeline encoding cần thống nhất UTF-8 (từ incident 4). (d) Viết đoạn review PR từ chối cả hai thay đổi — mỗi thay đổi một câu lý do toán rời rạc.
+(a) Ước lượng số time series Prometheus nếu **500.000 DAU** mỗi người tạo trung bình **2** login/ngày và mỗi `user_id` là label riêng. (b) So sánh với metric chỉ label `status`, `method`, `region` ($$\vert V\vert  \approx 30$$). (c) Liệt kê bốn lớp pipeline encoding cần thống nhất UTF-8 (từ incident 4). (d) Viết đoạn review PR từ chối cả hai thay đổi — mỗi thay đổi một câu lý do toán rời rạc.
 
 <details>
 <summary>Đáp án</summary>
@@ -406,7 +406,7 @@ Sáng Thứ Hai của TaskFlow không phải một bug — là **năm** bài đ�
 
 **Incident 3** đưa birthday paradox vào schema: INT32 random đạt 50% collision quanh **77.000** session, không phải 4 tỷ; UUID v4 và `expires_at` BIGINT ms tránh cả va chạm ID lẫn Y2038. Hash audit bucket là câu hỏi Matt Might (kỳ vọng match), không gộp với uniqueness session. **Incident 4** tái hiện Joel 2003: email và API gửi **byte** không khai charset → `????` thay vì `田中太郎`; UTF-8 thống nhất từ HTTP, DB, MIME email đến log. **Incident 5** là cardinality trên metric: label `user_id` tạo ~triệu time series, Prometheus OOM — cùng logic Cloudflare khi aggregate theo chiều high-cardinality thay vì `status`/`region` vài chục giá trị.
 
-Case study không thêm công thức lạ; nó chứng minh các mảnh Chương 9 **cộng lại** ở một entry point thực tế. Minh tắt laptop với design doc đếm được: pool theo $$\lambda \times W$$, test theo cặp tham số, ID theo $$\sqrt{d}$$, byte theo charset, metric theo $$|V|$$ label. Một triệu DAU không phải một triệu bài toán — là vài phép nhân bị bỏ qua vì trông quá đơn giản.
+Case study không thêm công thức lạ; nó chứng minh các mảnh Chương 9 **cộng lại** ở một entry point thực tế. Minh tắt laptop với design doc đếm được: pool theo $$\lambda \times W$$, test theo cặp tham số, ID theo $$\sqrt{d}$$, byte theo charset, metric theo $$\vert V\vert $$ label. Một triệu DAU không phải một triệu bài toán — là vài phép nhân bị bỏ qua vì trông quá đơn giản.
 
 Sau đó, **Chương 10: Quan hệ truy hồi** sẽ dạy cách mô hình hóa tăng trưởng theo thời gian — dự báo không chỉ snapshot 7:45 sáng, mà cả quý sau khi DAU đôi lên.
 

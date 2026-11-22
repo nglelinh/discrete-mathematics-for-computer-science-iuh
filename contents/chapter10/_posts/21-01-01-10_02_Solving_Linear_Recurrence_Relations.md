@@ -138,7 +138,7 @@ $$
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/fibonacci-golden-ratio.mp4"></video>
 </div>
 
-Dãy Fibonacci $F_{n+1}=F_n+F_{n-1}$ có phương trình đặc trưng $r^2=r+1$ với hai nghiệm $\varphi=\frac{1+\sqrt5}{2}$ và $\psi=\frac{1-\sqrt5}{2}$. Vì $|\psi|<1$ nên $F_{n+1}/F_n\to\varphi\approx 1{,}618$, đúng như các chữ số vàng ổn định dần trong video.
+Dãy Fibonacci $F_{n+1}=F_n+F_{n-1}$ có phương trình đặc trưng $r^2=r+1$ với hai nghiệm $\varphi=\frac{1+\sqrt5}{2}$ và $\psi=\frac{1-\sqrt5}{2}$. Vì $\|\psi\|<1$ nên $F_{n+1}/F_n\to\varphi\approx 1{,}618$, đúng như các chữ số vàng ổn định dần trong video.
 
 ## Nghiệm bội
 

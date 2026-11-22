@@ -49,14 +49,14 @@ Từ góc nhìn toán học, quan hệ là tập con của tích Cartesian $$A \
 ### Tích Cartesian
 
 <div class="textbook-definition" markdown="1">
-**Định nghĩa**: A × B = {(a, b) | a ∈ A và b ∈ B}
+**Định nghĩa**: A × B = {(a, b) \| a ∈ A và b ∈ B}
 </div>
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
 - A = {1, 2}, B = {x, y}
 - A × B = {(1, x), (1, y), (2, x), (2, y)}
-- |A × B| = |A| × |B| = 2 × 2 = 4
+- \|A × B\| = \|A\| × \|B\| = 2 × 2 = 4
 </div>
 
 <div class="content-box insight-box textbook-block" markdown="1">
@@ -80,7 +80,7 @@ Khi A = B, chúng ta nói R là **quan hệ trên A** (R ⊆ A × A). Đây là 
 
 ### Mô tả bằng tính chất
 <div class="textbook-example" markdown="1">
-**Ví dụ**: R = {(x, y) | x < y} trên tập số thực
+**Ví dụ**: R = {(x, y) \| x < y} trên tập số thực
 </div>
 
 ### Ma trận quan hệ
@@ -185,7 +185,7 @@ Minh hoạ quan hệ: sửa ma trận/đồ thị của quan hệ trên tập nh
 
 ### Bài tập 1: Tích Cartesian
 
-Cho A = {1, 2, 3} và B = {a, b}. Tính A × B và |A × B|.
+Cho A = {1, 2, 3} và B = {a, b}. Tính A × B và \|A × B\|.
 
 <details>
 <summary>Đáp án</summary>
@@ -237,7 +237,7 @@ R = {(a, a), (a, c), (b, b), (c, b), (c, c)}
 - **Quan hệ** R từ A đến B là tập con của A × B
 - Biểu diễn: **liệt kê**, **mô tả**, **ma trận**, **đồ thị có hướng**
 - **Quan hệ trên A**: R ⊆ A × A
-- **Tích Cartesian**: A × B, lực lượng |A| × |B|
+- **Tích Cartesian**: A × B, lực lượng \|A\| × \|B\|
 - Ứng dụng: cơ sở dữ liệu quan hệ (SQL JOIN), đồ thị, mạng xã hội
 
 Trong bài tiếp theo, chúng ta sẽ xem xét bốn tính chất cơ bản của quan hệ: phản xạ, đối xứng, phản đối xứng, và bắc cầu -- chìa khóa để phân loại quan hệ.

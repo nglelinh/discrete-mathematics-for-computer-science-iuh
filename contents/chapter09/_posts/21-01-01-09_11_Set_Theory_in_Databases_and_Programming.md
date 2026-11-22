@@ -234,20 +234,20 @@ $$52{,}000 - 48{,}000 = 4{,}000$$
 
 Cho ba tập (theo `student_id`):
 
-- $$A$$: đăng ký môn DM — $$|A| = 120$$
-- $$B$$: đăng ký môn DB — $$|B| = 95$$
-- $$C$$: đăng ký môn AI — $$|C| = 40$$
-- $$|A \cap B| = 50$$, $$|A \cap C| = 10$$, $$|B \cap C| = 8$$, $$|A \cap B \cap C| = 5$$
+- $$A$$: đăng ký môn DM — $$\vert A\vert  = 120$$
+- $$B$$: đăng ký môn DB — $$\vert B\vert  = 95$$
+- $$C$$: đăng ký môn AI — $$\vert C\vert  = 40$$
+- $$\vert A \cap B\vert  = 50$$, $$\vert A \cap C\vert  = 10$$, $$\vert B \cap C\vert  = 8$$, $$\vert A \cap B \cap C\vert  = 5$$
 
-Tính $$|(A \cap B) \setminus C|$$ — tức sinh viên học cả DM và DB nhưng không học AI. Viết SQL tương đương dùng `INTERSECT` và `EXCEPT`.
+Tính $$\vert (A \cap B) \setminus C\vert $$ — tức sinh viên học cả DM và DB nhưng không học AI. Viết SQL tương đương dùng `INTERSECT` và `EXCEPT`.
 
 <details>
 <summary>Đáp án</summary>
 
-Học cả DM và DB: $$|A \cap B| = 50$$. Trong đó có 5 người cũng học AI, nên:
+Học cả DM và DB: $$\vert A \cap B\vert  = 50$$. Trong đó có 5 người cũng học AI, nên:
 
 <div class="textbook-equation" markdown="1">
-$$|(A \cap B) \setminus C| = 50 - 5 = 45$$
+$$\vert (A \cap B) \setminus C\vert  = 50 - 5 = 45$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 SQL:

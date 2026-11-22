@@ -82,7 +82,7 @@ Chương 12 đã giới thiệu đồ thị tổng quát. **Cây** (*tree*) là 
 
 <div class="textbook-definition" markdown="1">
 
-**Định nghĩa.** **Cây khung** (*spanning tree*) của đồ thị liên thông $$G=(V,E)$$ là đồ thị con $$T=(V,E')$$ với $$E'\subseteq E$$ sao cho $$T$$ là cây — tức nối **mọi** đỉnh, không chu trình, $$|E'|=|V|-1$$.
+**Định nghĩa.** **Cây khung** (*spanning tree*) của đồ thị liên thông $$G=(V,E)$$ là đồ thị con $$T=(V,E')$$ với $$E'\subseteq E$$ sao cho $$T$$ là cây — tức nối **mọi** đỉnh, không chu trình, $$\vert E'\vert =\vert V\vert -1$$.
 
 </div>
 
@@ -128,7 +128,7 @@ Minh hoạ cây: dựng cây từ dãy khóa và xem số nút, chiều cao. Cá
 <details>
 <summary>Đáp án</summary>
 
-Có: liên thông và $$|E|=|V|-1$$ (điều kiện tương đương).
+Có: liên thông và $$\vert E\vert =\vert V\vert -1$$ (điều kiện tương đương).
 
 </details>
 
@@ -161,7 +161,7 @@ Mỗi đối tượng có **một** đường từ root (đúng một path đơn
 <details>
 <summary>Đáp án</summary>
 
-Rừng: $$|E| = |V| - c$$ với $$c$$ = số thành phần. $$9 = 12 - c \implies c = 3$$.
+Rừng: $$\vert E\vert  = \vert V\vert  - c$$ với $$c$$ = số thành phần. $$9 = 12 - c \implies c = 3$$.
 
 </details>
 

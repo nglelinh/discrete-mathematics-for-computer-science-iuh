@@ -245,7 +245,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Với mỗi $A_i$, đặt $x_i'=x_i-(b_i+1)\ge 0$; khi đó số nghiệm trong $A_i$ bằng số nghiệm không âm của một phương trình có tổng giảm đi $b_i+1$ — lại là một bài stars and bars. Giao $A_i\cap A_j$ xử lý tương tự bằng cách trừ đồng thời ở hai biến. Áp dụng công thức bù trừ cho $|A_1\cup\cdots\cup A_n|$ (xem bài `07_03`).
+Với mỗi $A_i$, đặt $x_i'=x_i-(b_i+1)\ge 0$; khi đó số nghiệm trong $A_i$ bằng số nghiệm không âm của một phương trình có tổng giảm đi $b_i+1$ — lại là một bài stars and bars. Giao $A_i\cap A_j$ xử lý tương tự bằng cách trừ đồng thời ở hai biến. Áp dụng công thức bù trừ cho $\|A_1\cup\cdots\cup A_n\|$ (xem bài `07_03`).
 </div>
 
 ![Bù trừ khi có ràng buộc trên](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)

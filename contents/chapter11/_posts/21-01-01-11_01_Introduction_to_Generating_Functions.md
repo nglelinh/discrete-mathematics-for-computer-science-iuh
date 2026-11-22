@@ -67,7 +67,7 @@ Ký hiệu $$[x^n]G(x) = a_n$$ nghĩa là $$a_n$$ là hệ số của $$x^n$$ tr
 
 $$G(x) = 1 + x + x^2 + \cdots = \frac{1}{1-x}$$
 
-(khi xem là chuỗi hình thức hoặc chuỗi hội tụ với $$|x| < 1$$).
+(khi xem là chuỗi hình thức hoặc chuỗi hội tụ với $$\vert x\vert  < 1$$).
 </div>
 
 ## Chuỗi lũy thừa hình thức

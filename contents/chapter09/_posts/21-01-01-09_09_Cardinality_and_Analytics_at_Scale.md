@@ -10,13 +10,13 @@ lang: en
 excerpt: "Ở mục trước chúng ta đã phân biệt và . Mục này xét đại lượng đếm khác: cardinality — , số giá trị distinct trên một cột — quyết định aggregate log/analytics…"
 ---
 
-Ở mục trước chúng ta đã phân biệt $$P(\text{collision})$$ và $$E[\text{matches}]$$. Mục này xét đại lượng đếm khác: **cardinality** — $$|V_C|$$, số giá trị **distinct** trên một cột — quyết định aggregate log/analytics có **nén** được hay không. [Cloudflare Blog](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/) (Vavruša, 2017) mô tả hệ thống xử lý **hơn 1 triệu DNS queries/giây**: aggregate theo `response_code` (~12 giá trị) giảm mạnh số dòng; aggregate theo `query_name` (có thể hàng triệu unique) có thể **không nén** (reduction 0–60×, worst case 1×). Incident điển hình: dashboard zone-level “xanh” trong khi subset `qname` cụ thể “đỏ” — signal nằm ở chiều high-cardinality bị dilute khi aggregate sai chiều.
+Ở mục trước chúng ta đã phân biệt $$P(\text{collision})$$ và $$E[\text{matches}]$$. Mục này xét đại lượng đếm khác: **cardinality** — $$\vert V_C\vert $$, số giá trị **distinct** trên một cột — quyết định aggregate log/analytics có **nén** được hay không. [Cloudflare Blog](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/) (Vavruša, 2017) mô tả hệ thống xử lý **hơn 1 triệu DNS queries/giây**: aggregate theo `response_code` (~12 giá trị) giảm mạnh số dòng; aggregate theo `query_name` (có thể hàng triệu unique) có thể **không nén** (reduction 0–60×, worst case 1×). Incident điển hình: dashboard zone-level “xanh” trong khi subset `qname` cụ thể “đỏ” — signal nằm ở chiều high-cardinality bị dilute khi aggregate sai chiều.
 
 Một bài toán toán rời rạc nổi lên ngay:
 
 > Aggregate theo cột **độ cao cardinality** (nhiều giá trị unique) có thể **không giảm** số dòng — đôi khi **tăng** so với raw log.
 
-**Response code** chỉ có khoảng 12 giá trị → aggregate theo phút **giảm** mạnh số dòng. **Query name** có thể **hàng triệu** domain khác nhau → reduction **0–60×**, không ổn định. Cardinality không phải buzzword BI — là **|tập giá trị distinct|** quyết định aggregate có **nén** được hay không.
+**Response code** chỉ có khoảng 12 giá trị → aggregate theo phút **giảm** mạnh số dòng. **Query name** có thể **hàng triệu** domain khác nhau → reduction **0–60×**, không ổn định. Cardinality không phải buzzword BI — là **\|tập giá trị distinct\|** quyết định aggregate có **nén** được hay không.
 
 <figure class="image" style="align: center;">
 <p align="center">
@@ -42,14 +42,14 @@ Pipeline Cloudflare mô tả trong blog: edge server log **Cap'n Proto** → mul
 
 ## Vì sao aggregate “theo qname” không scale
 
-Gọi $$R$$ là số dòng raw log trong một phút. Khi aggregate theo chiều $$C$$ với cardinality $$|V_C|$$ giá trị unique trong cửa sổ thời gian, số dòng sau aggregate phụ thuộc vào **|tập giá trị distinct|**, không phụ thuộc vào tên cột trên dashboard.
+Gọi $$R$$ là số dòng raw log trong một phút. Khi aggregate theo chiều $$C$$ với cardinality $$\vert V_C\vert $$ giá trị unique trong cửa sổ thời gian, số dòng sau aggregate phụ thuộc vào **\|tập giá trị distinct\|**, không phụ thuộc vào tên cột trên dashboard.
 
-Với **response code**, $$|V| \approx 12$$. Một triệu query trong phút, phân bố đều qua các mã, mỗi bucket thời gian tối đa **12 dòng/phút** — reduction lý tưởng khoảng 83.000×. Cacheable queries lặp nhiều lần cùng mã `NOERROR` hay `NXDOMAIN` nên aggregate thực tế còn gọn hơn nữa.
+Với **response code**, $$\vert V\vert  \approx 12$$. Một triệu query trong phút, phân bố đều qua các mã, mỗi bucket thời gian tối đa **12 dòng/phút** — reduction lý tưởng khoảng 83.000×. Cacheable queries lặp nhiều lần cùng mã `NOERROR` hay `NXDOMAIN` nên aggregate thực tế còn gọn hơn nữa.
 
-Với **query name**, $$|V|$$ có thể tiệm cận hàng triệu: typo, subdomain ngẫu nhiên, random subdomain attacks. Blog Cloudflare ghi reduction chỉ **0–60×** — không ổn định. Worst case: mỗi query name unique → **1M dòng/phút**, reduction **1×**, không giảm gì so với raw.
+Với **query name**, $$\vert V\vert $$ có thể tiệm cận hàng triệu: typo, subdomain ngẫu nhiên, random subdomain attacks. Blog Cloudflare ghi reduction chỉ **0–60×** — không ổn định. Worst case: mỗi query name unique → **1M dòng/phút**, reduction **1×**, không giảm gì so với raw.
 
 <div class="content-box warning-box textbook-block" markdown="1">
-Khi $$|V|$$ gần $$R$$, mỗi dòng aggregate gần như một unique key → **không nén được**. Nhiều chiều cardinality cao nhân với nhau — **explosion** ô aggregate.
+Khi $$\vert V\vert $$ gần $$R$$, mỗi dòng aggregate gần như một unique key → **không nén được**. Nhiều chiều cardinality cao nhân với nhau — **explosion** ô aggregate.
 </div>
 
 Khi aggregate theo $$k$$ cột với cardinality $$c_1, \ldots, c_k$$ trong cùng cửa sổ:
@@ -103,7 +103,7 @@ Cardinality quyết định aggregate có **nén** được không. Low cardinal
 
 ### Bài tập 1
 
-Trong một phút có **900.000** dòng raw DNS log. Aggregate theo `response_code` với $$|V| = 12$$ giá trị distinct, phân bố đều. Ước lượng số dòng sau aggregate và reduction factor (so với raw).
+Trong một phút có **900.000** dòng raw DNS log. Aggregate theo `response_code` với $$\vert V\vert  = 12$$ giá trị distinct, phân bố đều. Ước lượng số dòng sau aggregate và reduction factor (so với raw).
 
 <details>
 <summary>Đáp án</summary>
@@ -179,7 +179,7 @@ Hai lớp hợp lý: (1) **pre-aggregated** `zone + response_code` (và có th�
 
 ## Tóm tắt
 
-Cardinality là **|tập giá trị distinct|** trên một cột — đại lượng toán rời rạc quyết định aggregate có nén được log hay không. Cloudflare xử lý **hơn 1 triệu DNS queries/giây**; mỗi log ~150 byte metadata vẫn thành terabyte/tháng nếu không thiết kế schema đếm có chủ đích.
+Cardinality là **\|tập giá trị distinct\|** trên một cột — đại lượng toán rời rạc quyết định aggregate có nén được log hay không. Cloudflare xử lý **hơn 1 triệu DNS queries/giây**; mỗi log ~150 byte metadata vẫn thành terabyte/tháng nếu không thiết kế schema đếm có chủ đích.
 
 **Low cardinality** (`response_code`, ~12 giá trị) → aggregate giảm mạnh số dòng, dashboard rẻ. **High cardinality** (`query_name`, có thể hàng triệu) → reduction 0–60×, worst case 1×; nhiều chiều cao nhân theo $$\prod c_i$$ và gây explosion. **HyperLogLog** trả lời “bao nhiêu unique?” với bộ nhớ cố định và sai số nhỏ, thay cho `COUNT(DISTINCT)` trên terabyte.
 

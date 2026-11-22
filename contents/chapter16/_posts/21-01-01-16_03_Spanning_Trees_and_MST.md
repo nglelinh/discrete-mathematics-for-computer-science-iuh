@@ -69,7 +69,7 @@ Hệ quả: thuật toán luôn thêm cạnh “an toàn” theo cut hoặc theo
 1. Sắp xếp mọi cạnh theo trọng số **tăng dần**.
 2. Khởi tạo rừng: mỗi đỉnh là một thành phần (Union–Find).
 3. Duyệt cạnh $$(u,v)$$ theo thứ tự: nếu $$u$$ và $$v$$ thuộc **hai thành phần khác nhau**, **thêm** cạnh vào MST và **hợp** hai thành phần; nếu cùng thành phần thì **bỏ** (tránh chu trình).
-4. Dừng khi đã chọn $$|V|-1$$ cạnh.
+4. Dừng khi đã chọn $$\vert V\vert -1$$ cạnh.
 
 **Độ phức tạp:** $$O(E\log E)$$ cho sort; Union–Find gần $$O(E\,\alpha(V))$$ với path compression / union by rank.
 
@@ -81,7 +81,7 @@ Hệ quả: thuật toán luôn thêm cạnh “an toàn” theo cut hoặc theo
 ## Thuật toán Prim
 
 1. Chọn đỉnh xuất phát $$s$$; tập $$S=\{s\}$$.
-2. Lặp cho đến khi $$|S|=|V|$$: chọn cạnh **nhẹ nhất** nối một đỉnh trong $$S$$ với một đỉnh ngoài $$S$$; thêm cạnh đó vào MST và đưa đỉnh mới vào $$S$$.
+2. Lặp cho đến khi $$\vert S\vert =\vert V\vert $$: chọn cạnh **nhẹ nhất** nối một đỉnh trong $$S$$ với một đỉnh ngoài $$S$$; thêm cạnh đó vào MST và đưa đỉnh mới vào $$S$$.
 3. Cấu trúc hỗ trợ: hàng đợi ưu tiên (binary heap / Fibonacci heap).
 
 **Độ phức tạp:** với binary heap thường $$O(E\log V)$$.
@@ -157,7 +157,7 @@ Vì sao Kruskal bỏ cạnh tạo chu trình?
 <details>
 <summary>Đáp án</summary>
 
-Cây khung có đúng $$|V|-1$$ cạnh và không chu trình. Cạnh nối hai đỉnh đã cùng thành phần sẽ tạo chu trình và không cần cho liên thông của rừng đang xây.
+Cây khung có đúng $$\vert V\vert -1$$ cạnh và không chu trình. Cạnh nối hai đỉnh đã cùng thành phần sẽ tạo chu trình và không cần cho liên thông của rừng đang xây.
 
 </details>
 

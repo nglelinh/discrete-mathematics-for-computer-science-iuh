@@ -347,7 +347,7 @@ Một kỹ thuật chứng minh đặc biệt hữu ích trong toán rời rạc
 *Chứng minh.* Xét đồ thị vô hướng $$G = (V,E)$$. Mỗi cạnh không phải khuyên góp 1 vào bậc của hai đỉnh, mỗi khuyên góp 2 vào bậc của một đỉnh. Do đó mỗi cạnh đóng góp 2 vào tổng $$\sum_{v \in V} \deg(v)$$. Vậy:
 
 <div class="textbook-equation" markdown="1">
-$$\sum_{v \in V} \deg(v) = 2 \cdot |E|$$
+$$\sum_{v \in V} \deg(v) = 2 \cdot \vert E\vert $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 — là một số chẵn.
@@ -361,7 +361,7 @@ $$\sum_{v \in V} \deg(v) = 2 \cdot |E|$$
 
 **Nguyên lý:** Nếu có nhiều hơn $$n$$ chim bồ câu bay vào $$n$$ chuồng, thì ít nhất một chuồng có ít nhất hai chim.
 
-Phát biểu hình thức: Với mọi tập hữu hạn $$S$$ và $$T$$ thỏa $$|S| > |T|$$ và mọi hàm $$f: S \to T$$, tồn tại $$x \ne y \in S$$ sao cho $$f(x) = f(y)$$.
+Phát biểu hình thức: Với mọi tập hữu hạn $$S$$ và $$T$$ thỏa $$\vert S\vert  > \vert T\vert $$ và mọi hàm $$f: S \to T$$, tồn tại $$x \ne y \in S$$ sao cho $$f(x) = f(y)$$.
 
 > **Ví dụ 1:** Trong số 367 người, có ít nhất hai người sinh cùng ngày (vì chỉ có 366 ngày trong năm kể cả năm nhuận).
 >
