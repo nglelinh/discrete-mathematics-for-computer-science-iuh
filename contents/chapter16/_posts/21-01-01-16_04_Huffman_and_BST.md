@@ -38,6 +38,14 @@ Hai ứng dụng kinh điển của cây nhị phân: **mã Huffman** gán bit n
 
 </div>
 
+### Video ngắn: Mã Huffman
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/huffman-coding.mp4"></video>
+</div>
+
+Video dài khoảng 1 phút 56 giây: đếm tần suất trong ABRACADABRA (5, 2, 2, 1, 1, cùng bộ tần suất với Ví dụ 1), gộp dần hai nút nhẹ nhất bằng hàng đợi ưu tiên, gán 0/1 cho nhánh trái/phải, bảng mã cho 23 bit thay vì 33 bit, giải mã bằng con trỏ đi trên cây (mã prefix-free), và ý tưởng vì sao thuật toán tham lam này tối ưu. Video về các cách duyệt cây nằm ở Mục 16.2.
+
 ## Mã hóa Huffman
 
 <div class="textbook-definition" markdown="1">

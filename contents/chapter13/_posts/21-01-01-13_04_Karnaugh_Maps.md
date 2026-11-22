@@ -70,13 +70,13 @@ Hai đầu mút $$00$$ và $$10$$ cũng khác nhau một bit, nên mép đối d
 
 <p class="textbook-figure-caption" data-figure="13.41">Thứ tự Gray ba bit.</p>
 
-### Video ngắn: Mã Gray trên khối lập phương
+### Video ngắn: Bản đồ Karnaugh
 
 <div class="reel-video" style="text-align:center;margin:1.5rem 0;">
-<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/gray-code-cube.mp4"></video>
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/karnaugh-maps-gray-code.mp4"></video>
 </div>
 
-Mã Gray $$n$$ bit được tạo bằng cách phản chiếu dãy $$n-1$$ bit rồi thêm tiền tố $$0$$ cho nửa đầu và $$1$$ cho nửa sau. Dãy $$000,001,011,010,110,111,101,100$$ đi qua cả $$8$$ đỉnh của khối lập phương, mỗi bước theo một cạnh (đổi đúng một bit) và quay về đỉnh xuất phát — đó là lý do hai ô kề nhau trên K-map chỉ khác nhau một biến.
+Video dài khoảng 3 phút 16 giây: mã Gray tạo bằng phản chiếu và đường đi trên khối lập phương, vì sao hai ô kề nhau gộp được ($$xy + x\bar y = x$$), K-map 2, 3 và 4 biến với các nhóm 2, 4, 8 ô, nhóm vòng qua mép và nhóm bốn góc, ô don't-care, rồi các quy tắc khoanh nhóm để đọc ra dạng SOP tối giản. Mọi lời giải trong video đều được kiểm tra bằng cách vét cạn mọi cách phủ.
 
 ## Cấu trúc K-map và quy tắc nhóm
 
@@ -250,13 +250,28 @@ $$F=1$$ tại các chỉ số $$0,1,2,5,6,7,8,9,10,14$$.
 
 Quy trình: điền lưới; chọn các nhóm lực lượng lớn nhất trước; phủ các ô **1** còn lại bằng nhóm nhỏ hơn; đọc từng nhóm thành tích.
 
-Một phủ thu được là
+Với quy ước ở trên (hàng $$xy$$, cột $$zw$$, ô ở hàng $$xy$$ và cột $$zw$$ là minterm $$m_k$$ với $$k = 8x+4y+2z+w$$), lưới là:
+
+| $$xy \backslash zw$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
+|---|---|---|---|---|
+| $$00$$ | **1** ($$m_0$$) | **1** ($$m_1$$) | 0 ($$m_3$$) | **1** ($$m_2$$) |
+| $$01$$ | 0 ($$m_4$$) | **1** ($$m_5$$) | **1** ($$m_7$$) | **1** ($$m_6$$) |
+| $$11$$ | 0 ($$m_{12}$$) | 0 ($$m_{13}$$) | 0 ($$m_{15}$$) | **1** ($$m_{14}$$) |
+| $$10$$ | **1** ($$m_8$$) | **1** ($$m_9$$) | 0 ($$m_{11}$$) | **1** ($$m_{10}$$) |
+
+Các nhóm:
+
+- **Nhóm 4 ô vòng mép trên–dưới** $$\{m_0,m_1,m_8,m_9\}$$: hàng $$00$$ và $$10$$ (kề nhau nhờ wrap-around), cột $$00,01$$. Trong nhóm $$y=0$$, $$z=0$$ cố định, còn $$x$$ và $$w$$ đổi giá trị, nên nhóm cho $$\bar y\bar z$$.
+- **Nhóm 4 ô cả cột $$zw=10$$** $$\{m_2,m_6,m_{10},m_{14}\}$$: $$z=1$$, $$w=0$$ cố định, cho $$z\bar w$$.
+- **Nhóm 2 ô** $$\{m_5,m_7\}$$: hàng $$01$$, cột $$01$$ và $$11$$; $$x=0$$, $$y=1$$, $$w=1$$ cố định, cho $$\bar x y w$$.
+
+Ba nhóm đều là tế bào lớn cốt yếu: $$m_9$$ chỉ nằm trong nhóm $$\bar y\bar z$$, $$m_{14}$$ chỉ nằm trong nhóm $$z\bar w$$, và một nhóm hai ô duy nhất phủ được cả $$m_5$$ lẫn $$m_7$$ là $$\bar x y w$$. Phủ tối tiểu (duy nhất, 3 tích, 7 literal) là
 
 $$
-F = \bar z\bar w + \bar x w + \bar x y z + y z\bar w.
+F = \bar y\bar z + z\bar w + \bar x y w.
 $$
 
-Mỗi phủ hợp lệ phải phủ đúng tập minterm của $$F$$ và không chứa ô mang **0**.
+Mỗi phủ hợp lệ phải phủ đúng tập minterm của $$F$$ và không chứa ô mang **0**. Chẳng hạn không được khoanh $$\bar z\bar w$$ (cột $$00$$), vì cột đó chứa $$m_4$$ và $$m_{12}$$ mang **0**; cũng không được khoanh $$\bar x w$$ vì nhóm đó chứa $$m_3$$ mang **0**.
 
 </div>
 

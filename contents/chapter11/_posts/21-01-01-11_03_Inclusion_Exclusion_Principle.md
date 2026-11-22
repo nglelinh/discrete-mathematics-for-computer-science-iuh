@@ -43,6 +43,14 @@ excerpt: "Ở Chương 4 chúng ta đã làm việc với tập hợp, hợp, gi
 **Khác Ch.7**: Mục 7.3 giới thiệu IE cơ bản trong đếm; mục này (Ch.11) nhấn mạnh **chứng minh tổng quát**, **dạng bù** và **cầu nối sang hàm sinh** cho bài toán nâng cao.
 </div>
 
+### Video ngắn: Nguyên lý bù trừ
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/inclusion-exclusion.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 16 giây: ví dụ lớp 50 sinh viên với hai tập, đếm xem mỗi vùng của biểu đồ Venn ba tập được cộng/trừ bao nhiêu lần qua từng bước, ví dụ số từ 1 đến 100 chia hết cho 2, 3 hoặc 5 (ra 74, kiểm tra trên lưới 100 ô), công thức tổng quát cho $$n$$ tập, và ứng dụng đếm số cách bỏ thư mà không lá nào đúng phong bì.
+
 ## Công thức cho hai và ba tập
 
 <div class="textbook-definition" markdown="1">

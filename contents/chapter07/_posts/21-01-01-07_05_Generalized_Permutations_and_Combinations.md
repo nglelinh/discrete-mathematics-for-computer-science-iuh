@@ -31,6 +31,15 @@ $$
 ![Tổ hợp có lặp — chọn r đồ vật từ n loại](/discrete-mathematics-for-computer-science-iuh/img/course/combination_with_repetition.svg)
 
 <p class="textbook-figure-caption" data-figure="7.21">Tổ hợp có lặp — mỗi cách chọn ghi số lượng từng loại $$(x_1,\ldots,x_n)$$, không xét thứ tự, cho phép lặp.</p>
+
+### Video ngắn: Sao và vạch
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/stars-and-bars.mp4"></video>
+</div>
+
+Video dài khoảng 2 phút 15 giây: chọn 5 chiếc bánh từ 3 loại được mã hóa thành dãy 5 sao và 2 vạch, đếm bằng cách chọn 2 trong 7 vị trí cho vạch ($$\binom{7}{2} = 21$$, liệt kê đủ 21 dãy), công thức $$\binom{r+n-1}{n-1}$$ với ví dụ $$x_1+x_2+x_3+x_4 = 10$$, ràng buộc dưới bằng cách phát trước, và ràng buộc trên bằng bù trừ ($$66 - 63 + 3 = 6$$).
+
 ### Phương pháp Stars and Bars
 
 Biểu diễn $$r$$ đồ vật bằng $$r$$ ngôi sao và dùng $$n-1$$ vạch để chia thành $$n$$ nhóm. Mỗi nhóm cho biết số đồ vật thuộc một loại.

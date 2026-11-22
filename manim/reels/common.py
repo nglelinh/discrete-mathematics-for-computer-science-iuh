@@ -57,3 +57,34 @@ def wipe(scene, keep=(), rt=0.5):
     mobs = [m for m in scene.mobjects if m not in keep]
     if mobs:
         scene.play(*[FadeOut(m) for m in mobs], run_time=rt)
+
+
+def bexpr(s, size=32, color=WHITE):
+    """Biểu thức Boole: '~' đứng trước một chữ = phủ định, vẽ gạch ngang riêng trên chữ đó."""
+    plain, neg_idx, gi, i = "", [], 0, 0
+    while i < len(s):
+        ch = s[i]
+        if ch == "~":
+            neg_idx.append(gi)
+            i += 1
+            continue
+        plain += ch
+        if not ch.isspace():
+            gi += 1
+        i += 1
+    t = Text(plain, font=FONT, font_size=size, color=color)
+    g = VGroup(t)
+    if neg_idx:
+        top = max(t[j].get_top()[1] for j in neg_idx) + 0.05 * size / 32
+        for j in neg_idx:
+            ch = t[j]
+            inset = 0.14 * ch.width + 0.02 * size / 32
+            g.add(Line([ch.get_left()[0] + inset, top, 0], [ch.get_right()[0] - inset, top, 0],
+                       color=color, stroke_width=2.6 * size / 32))
+    return g
+
+
+def fitw(m, w=7.8):
+    if m.width > w:
+        m.scale_to_fit_width(w)
+    return m
