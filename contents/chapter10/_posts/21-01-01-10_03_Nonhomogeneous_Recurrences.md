@@ -6,14 +6,16 @@ date: 2021-01-01
 order: 3
 required: true
 lang: vi
-excerpt: "Truy hồi tuyến tính không thuần nhất: nguyên lý a=a_h+a_p, hệ số bất định, cộng hưởng, ví dụ bậc 1–2 (2x+1, tổng n^2, +3^n) và liên hệ thuật toán."
+excerpt: "Giải quan hệ truy hồi tuyến tính không thuần nhất bằng nguyên lý chồng chất, phương pháp hệ số bất định, xử lý cộng hưởng và liên hệ phân tích thuật toán."
 ---
 
-Ở mục trước chúng ta đã giải quan hệ truy hồi **tuyến tính thuần nhất** bằng phương trình đặc trưng. Mục này mở rộng sang **quan hệ truy hồi không thuần nhất** — khi ngoài các số hạng $$a_{n-i}$$ còn có thêm thành phần $$f(n)$$ (hằng số, đa thức, $$b^n$$, …). Dạng này mô tả nhiều quá trình thực tế hơn: mỗi bước vừa kế thừa trạng thái cũ vừa nhận tác động bên ngoài (chi phí cố định, dữ liệu mới, yêu cầu phát sinh). Trong phân tích thuật toán, ví dụ điển hình là $$T(n)=2T(n/2)+n$$ của merge sort — thuần nhất về cấu trúc đệ quy nhưng có thành phần công việc $$f(n)=n$$ ở mỗi mức. Chúng ta học **nguyên lý chồng chất** và **phương pháp hệ số bất định**, kể cả trường hợp **cộng hưởng** khi dạng nghiệm thử trùng nghiệm thuần nhất.
+Ở bài trước, chúng ta đã giải quan hệ truy hồi **tuyến tính thuần nhất** bằng phương trình đặc trưng. Bài học này mở rộng sang **quan hệ truy hồi tuyến tính không thuần nhất** — trường hợp phương trình có thêm một thành phần tự do $$f(n)$$ (như hằng số, đa thức, hàm mũ $$b^n$$, …) bên cạnh các số hạng $$a_{n-i}$$.
+
+Dạng truy hồi này phản ánh sát hơn nhiều hệ thống thực tế, nơi mỗi bước vừa kế thừa trạng thái cũ vừa chịu thêm tác động từ bên ngoài (chẳng hạn chi phí cố định, dữ liệu mới phát sinh hoặc khối lượng công việc bổ sung). Trong phân tích thuật toán, ví dụ quen thuộc nhất là hệ thức $$T(n) = 2T(n/2) + n$$ của Merge Sort, trong đó $$f(n) = n$$ biểu thị chi phí trộn dữ liệu ở mỗi tầng đệ quy. Chúng ta sẽ lần lượt tìm hiểu **nguyên lý chồng chất**, **phương pháp hệ số bất định** và cách xử lý hiện tượng **cộng hưởng** khi dạng nghiệm thử trùng với nghiệm thuần nhất.
 
 ## Dạng tổng quát
 
-Quan hệ truy hồi tuyến tính không thuần nhất bậc $$k$$ có dạng
+Quan hệ truy hồi tuyến tính không thuần nhất bậc $$k$$ có hệ số hằng được viết dưới dạng:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -21,9 +23,10 @@ a_n=c_1a_{n-1}+c_2a_{n-2}+\cdots+c_ka_{n-k}+f(n),
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-trong đó $$f(n)$$ không đồng nhất bằng 0.
 
-Quan hệ thuần nhất liên kết là
+trong đó $$f(n)$$ không đồng nhất bằng $$0$$.
+
+Nếu bỏ đi thành phần $$f(n)$$, ta thu được **quan hệ truy hồi thuần nhất liên kết**:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -31,9 +34,10 @@ a_n=c_1a_{n-1}+c_2a_{n-2}+\cdots+c_ka_{n-k}.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+
 ## Nguyên lý chồng chất
 
-Nghiệm tổng quát có dạng
+Nghiệm tổng quát của quan hệ truy hồi tuyến tính không thuần nhất luôn có dạng:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -41,39 +45,42 @@ a_n=a_n^{(h)}+a_n^{(p)},
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
+
 trong đó:
 
 - $$a_n^{(h)}$$ là nghiệm tổng quát của quan hệ thuần nhất liên kết.
-- $$a_n^{(p)}$$ là một nghiệm riêng của quan hệ không thuần nhất.
+- $$a_n^{(p)}$$ là một nghiệm riêng bất kỳ thỏa mãn quan hệ không thuần nhất ban đầu.
 
 <div class="textbook-proof" markdown="1">
-**Chứng minh (phác).** Gọi $$L$$ là toán tử tuyến tính “chuyển vế trái”:  
+**Phác thảo chứng minh.** Xét toán tử tuyến tính $$L$$ được định nghĩa bởi  
 $$L(a)_n = a_n - c_1 a_{n-1} - \cdots - c_k a_{n-k}$$.  
-Quan hệ không thuần nhất là $$L(a)=f$$. Nếu $$a^{(p)}$$ thỏa $$L(a^{(p)})=f$$ và $$b$$ là **một** nghiệm bất kỳ của cùng phương trình, thì  
+Khi đó, quan hệ không thuần nhất có thể viết gọn là $$L(a) = f$$. Giả sử $$a^{(p)}$$ là một nghiệm riêng ($$L(a^{(p)}) = f$$) và $$b$$ là một nghiệm bất kỳ của phương trình. Nhờ tính tuyến tính của $$L$$, ta có:
 
 $$
-L(b-a^{(p)}) = L(b)-L(a^{(p)}) = f-f = 0,
+L(b - a^{(p)}) = L(b) - L(a^{(p)}) = f - f = 0.
 $$
 
-nên $$b-a^{(p)}$$ là nghiệm của quan hệ **thuần nhất** liên kết — ký hiệu $$a^{(h)}$$. Vậy mọi nghiệm có dạng $$b = a^{(p)} + a^{(h)}$$. (Ngược lại: nếu $$L(h)=0$$ và $$L(p)=f$$ thì $$L(h+p)=f$$.)
+Điều này chứng tỏ hiệu $$b - a^{(p)}$$ là nghiệm của quan hệ thuần nhất liên kết — ký hiệu là $$a^{(h)}$$. Suy ra mọi nghiệm đều có dạng $$b = a^{(h)} + a^{(p)}$$. Chiều ngược lại cũng đúng: nếu $$L(a^{(h)}) = 0$$ và $$L(a^{(p)}) = f$$ thì $$L(a^{(h)} + a^{(p)}) = f$$.
 </div>
 
 ## Phương pháp hệ số bất định
 
-Khi $$f(n)$$ có dạng quen thuộc, ta đoán nghiệm riêng cùng “họ” với $$f(n)$$.
+Khi thành phần $$f(n)$$ có dạng quen thuộc (hằng số, đa thức, hàm mũ hoặc tích của đa thức và hàm mũ), ta có thể tìm nghiệm riêng $$a_n^{(p)}$$ bằng cách dự đoán một biểu thức cùng "họ" với $$f(n)$$ rồi thay vào phương trình để đồng nhất hệ số.
 
-| Dạng $$f(n)$$ | Dạng thử cho $$a_n^{(p)}$$ |
-|------------|---------------------------|
+| Dạng của $$f(n)$$ | Dạng thử cho $$a_n^{(p)}$$ |
+|:------------|:---------------------------|
 | Hằng số $$d$$ | $$A$$ |
-| Đa thức bậc $$m$$ | đa thức bậc $$m$$ |
-| $$b^n$$ | $$Ab^n$$ |
-| $$n^m b^n$$ | đa thức bậc $$m$$ nhân $$b^n$$ |
+| Đa thức bậc $$m$$ | Đa thức tổng quát bậc $$m$$ |
+| $$b^n$$ | $$A b^n$$ |
+| $$n^m b^n$$ | (Đa thức tổng quát bậc $$m$$) $$\cdot b^n$$ |
 
-Nếu dạng thử trùng với nghiệm thuần nhất, nhân thêm $$n$$ đủ số lần để độc lập tuyến tính.
+**Quy tắc xử lý trùng lặp (cộng hưởng):** Nếu dạng nghiệm thử bị trùng với một thành phần trong nghiệm thuần nhất $$a_n^{(h)}$$, ta nhân dạng thử với $$n^s$$ (với $$s$$ là bội của nghiệm đặc trưng tương ứng) để đảm bảo tính độc lập tuyến tính.
 
-Khi $$f(n)$$ là hằng số, theo bảng ở mục 3 ta đoán nghiệm riêng $$a_n^{(p)}=A$$, thế vào quan hệ để xác định $$A$$, rồi ghép với nghiệm thuần nhất và điều kiện ban đầu.
+### Ví dụ với hằng số
 
-Giải
+Khi $$f(n)$$ là hằng số, theo bảng trên ta chọn nghiệm riêng dạng hằng số $$a_n^{(p)} = A$$, thay vào phương trình để tìm $$A$$, sau đó ghép với nghiệm thuần nhất và sử dụng điều kiện đầu.
+
+Giải quan hệ truy hồi:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -81,9 +88,9 @@ a_n=2a_{n-1}+3,\quad a_0=1.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Phần thuần nhất: $$a_n^{(h)}=C2^n$$.
 
-Thử nghiệm riêng hằng $$a_n^{(p)}=A$$. Thay vào:
+- **Nghiệm thuần nhất:** $$a_n^{(h)} = C \cdot 2^n$$.
+- **Nghiệm riêng:** Thử $$a_n^{(p)} = A$$. Thay vào phương trình ta được:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -91,7 +98,8 @@ A=2A+3\Rightarrow A=-3.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Vậy $$a_n=C2^n-3$$. Từ $$a_0=1$$, $$C-3=1$$ nên $$C=4$$. Do đó
+
+- **Nghiệm tổng quát và điều kiện đầu:** $$a_n = C \cdot 2^n - 3$$. Từ $$a_0 = 1$$ suy ra $$C - 3 = 1 \Rightarrow C = 4$$. Vậy:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -102,21 +110,23 @@ $$
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ (bậc 1 — kiểu Tháp Hà Nội / “gấp đôi rồi cộng 1”).**  
-Giải $$x_n = 2x_{n-1} + 1$$, $$x_1 = 1$$.  
-Thuần nhất: $$x_n^{(h)} = A\cdot 2^n$$.  
-Thử riêng hằng $$x_n^{(p)}=C$$: $$C=2C+1\Rightarrow C=-1$$.  
-Tổng quát: $$x_n = A\cdot 2^n - 1$$.  
-$$x_1=1$$: $$2A-1=1\Rightarrow A=1$$.  
-Vậy $$x_n = 2^n - 1$$ (đúng $$1,3,7,15,\ldots$$).
+**Ví dụ (bậc 1 — bài toán Tháp Hà Nội):**  
+Giải $$x_n = 2x_{n-1} + 1$$ với $$x_1 = 1$$.
+
+- **Nghiệm thuần nhất:** $$x_n^{(h)} = A \cdot 2^n$$.
+- **Nghiệm riêng:** Thử hằng số $$x_n^{(p)} = C$$. Thay vào phương trình: $$C = 2C + 1 \Rightarrow C = -1$$.
+- **Nghiệm tổng quát:** $$x_n = A \cdot 2^n - 1$$.
+- **Áp dụng điều kiện đầu:** Từ $$x_1 = 1$$ ta có $$2A - 1 = 1 \Rightarrow A = 1$$.
+
+Vậy $$x_n = 2^n - 1$$, tạo ra dãy số $$1, 3, 7, 15, \dots$$ đúng như kết quả của bài toán Tháp Hà Nội.
 
 </div>
 
 ## Ví dụ với đa thức
 
-Với $$f(n)$$ là đa thức bậc $$m$$, ta chọn nghiệm riêng cùng bậc; nếu dạng thử trùng nghiệm thuần nhất thì tăng bậc một để đảm bảo độc lập tuyến tính.
+Khi $$f(n)$$ là đa thức bậc $$m$$, ta thường chọn nghiệm riêng là một đa thức cùng bậc $$m$$. Tuy nhiên, nếu $$r = 1$$ là nghiệm của phương trình đặc trưng (tức hằng số đã là một nghiệm thuần nhất), ta cần nhân thêm $$n$$ vào đa thức thử để tránh trùng lặp.
 
-Giải dạng tổng quát:
+Xét quan hệ truy hồi:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -124,7 +134,8 @@ a_n=a_{n-1}+n.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Phần thuần nhất có nghiệm $$C$$. Vì $$f(n)=n$$ là đa thức bậc 1, thử $$a_n^{(p)}=An^2+Bn$$. Thay vào:
+
+Phương trình thuần nhất liên kết $$a_n = a_{n-1}$$ có nghiệm đặc trưng $$r = 1$$, nên $$a_n^{(h)} = C$$ (hằng số). Vì $$f(n) = n$$ là đa thức bậc nhất nhưng bị cộng hưởng với nghiệm thuần nhất hằng số, ta nhân thêm $$n$$ và thử $$a_n^{(p)} = n(An + B) = An^2 + Bn$$. Thay vào phương trình:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -132,75 +143,81 @@ An^2+Bn=A(n-1)^2+B(n-1)+n.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-So sánh hệ số cho $$A=\frac12$$. Ta có thể chọn $$B=\frac12$$, khi đó
+
+Khai triển và đồng nhất hệ số hai vế cho ta $$2A = 1$$ và $$B - A = 0$$, suy ra $$A = \frac{1}{2}$$ và $$B = \frac{1}{2}$$. Do đó:
 
 <div class="textbook-equation" markdown="1">
 $$
-a_n^{(p)}=\frac{n(n+1)}2.
+a_n^{(p)}=\frac{n(n+1)}{2}.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Đây chính là tổng $$1+2+\cdots+n$$.
+
+Với $$a_0 = 0$$ thì $$C = 0$$, và ta thu lại công thức tổng Gauss quen thuộc $$1 + 2 + \cdots + n = \frac{n(n+1)}{2}$$.
 
 ![Dãy số học — tổng $$1+2+\cdots+n$$](/discrete-mathematics-for-computer-science-iuh/img/course/Arithmetic_progression.svg)
 
-<p class="textbook-figure-caption" data-figure="10.13">Truy hồi $$a_n = a_{n-1} + n$$ có nghiệm riêng bậc hai — chính là công thức tổng Gauss.</p>
+<p class="textbook-figure-caption" data-figure="10.13">Quan hệ truy hồi $$a_n = a_{n-1} + n$$ có nghiệm riêng bậc hai — chính là công thức tổng Gauss.</p>
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ (tổng bình phương — cộng hưởng đa thức).**  
-Đặt $$a_n = 1^2 + 2^2 + \cdots + n^2$$ ($$n\ge 1$$), $$a_0=0$$. Khi đó  
-$$a_n = a_{n-1} + n^2.$$  
-Thuần nhất: $$a_n^{(h)}=C$$ (nghiệm $$r=1$$). Vì $$f(n)=n^2$$ là đa thức bậc 2 và **hằng số đã là nghiệm thuần nhất**, thử riêng  
-$$a_n^{(p)} = n(qn^2 + sn + t) = qn^3 + sn^2 + tn$$  
-(bậc 3). Thế vào $$a_n - a_{n-1} = n^2$$ và đồng nhất hệ số (hoặc nhớ công thức) cho  
-$$a_n^{(p)} = \frac{n(n+1)(2n+1)}{6}.$$  
-Với $$a_0=0$$ thì $$C=0$$, nên  
-$$a_n = \frac{n(n+1)(2n+1)}{6}.$$
+**Ví dụ (tổng bình phương — cộng hưởng đa thức):**  
+Đặt $$a_n = 1^2 + 2^2 + \cdots + n^2$$ với $$n \ge 1$$ và $$a_0 = 0$$. Khi đó dãy thỏa mãn:
+$$a_n = a_{n-1} + n^2.$$
+
+- **Nghiệm thuần nhất:** $$a_n^{(h)} = C$$ (ứng với nghiệm đặc trưng $$r = 1$$).
+- **Nghiệm riêng:** Do $$f(n) = n^2$$ là đa thức bậc 2 và hằng số đã nằm trong nghiệm thuần nhất, ta nhân thêm $$n$$ và thử dạng bậc 3:
+  $$a_n^{(p)} = n(qn^2 + sn + t) = qn^3 + sn^2 + tn.$$
+  Thay vào $$a_n - a_{n-1} = n^2$$ rồi đồng nhất hệ số, ta thu được:
+  $$a_n^{(p)} = \frac{n(n+1)(2n+1)}{6}.$$
+- **Điều kiện đầu:** Với $$a_0 = 0$$ thì $$C = 0$$, nên:
+  $$a_n = \frac{n(n+1)(2n+1)}{6}.$$
 
 </div>
 
-## 5b. Ví dụ bậc 2 không thuần nhất
+## Ví dụ quan hệ truy hồi bậc hai không thuần nhất
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ ($$f(n)=3^n$$, thuần nhất có nghiệm bội $$r=1$$).**  
-$$X_n = 2X_{n-1} - X_{n-2} + 3^n$$, $$X_0=1$$, $$X_1=3$$.
+**Ví dụ 1 ($$f(n) = 3^n$$, phần thuần nhất có nghiệm kép $$r = 1$$):**  
+Giải $$X_n = 2X_{n-1} - X_{n-2} + 3^n$$ với $$X_0 = 1$$, $$X_1 = 3$$.
 
-**Thuần nhất.** Đặc trưng $$r^2-2r+1=(r-1)^2=0$$ → $$X_n^{(h)}=A+Bn$$.
+1. **Nghiệm thuần nhất:** Phương trình đặc trưng $$r^2 - 2r + 1 = (r - 1)^2 = 0$$ có nghiệm kép $$r = 1$$, nên $$X_n^{(h)} = A + Bn$$.
+2. **Nghiệm riêng:** Vì cơ số $$3$$ không phải nghiệm của phương trình đặc trưng, ta thử $$X_n^{(p)} = C \cdot 3^n$$. Thay vào quan hệ truy hồi:
+   $$C \cdot 3^n = 2C \cdot 3^{n-1} - C \cdot 3^{n-2} + 3^n.$$
+   Chia cả hai vế cho $$3^{n-2}$$:
+   $$9C = 6C - C + 9 \Rightarrow 4C = 9 \Rightarrow C = \dfrac{9}{4}.$$
+   Vậy $$X_n^{(p)} = \dfrac{9}{4}\,3^n$$.
+3. **Nghiệm tổng quát và điều kiện đầu:**  
+   $$X_n = A + Bn + \dfrac{9}{4}\,3^n.$$
+   - Với $$n = 0$$: $$A + \dfrac{9}{4} = 1 \Rightarrow A = -\dfrac{5}{4}$$.
+   - Với $$n = 1$$: $$-\dfrac{5}{4} + B + \dfrac{27}{4} = 3 \Rightarrow B = -\dfrac{5}{2}$$.
 
-**Riêng.** Thử $$X_n^{(p)}=C\cdot 3^n$$ ($$3$$ không phải nghiệm $$r=1$$):  
-$$C\cdot 3^n = 2C\cdot 3^{n-1} - C\cdot 3^{n-2} + 3^n.$$  
-Chia $$3^{n-2}$$: $$9C = 6C - C + 9 \Rightarrow 4C=9 \Rightarrow C=\dfrac{9}{4}$$.  
-Vậy $$X_n^{(p)}=\dfrac{9}{4}\,3^n$$.
+   Vậy công thức đóng là:
+   $$X_n = -\dfrac{5}{4} - \dfrac{5}{2}n + \dfrac{9}{4}\,3^n.$$
 
-**Tổng quát + điều kiện đầu.**  
-$$X_n = A + Bn + \dfrac{9}{4}\,3^n.$$  
-$$n=0$$: $$A+\dfrac{9}{4}=1 \Rightarrow A=-\dfrac{5}{4}$$.  
-$$n=1$$: $$-\dfrac{5}{4}+B+\dfrac{27}{4}=3 \Rightarrow B=-\dfrac{5}{2}$$.  
-$$X_n = -\dfrac{5}{4} - \dfrac{5}{2}n + \dfrac{9}{4}\,3^n.$$  
-Kiểm $$n=2$$: truy hồi $$X_2=2\cdot 3-1+9=14$$; công thức $$-5/4-5+(9/4)\cdot 9=14$$.
+   *Kiểm tra với $$n = 2$$:* Từ truy hồi ta có $$X_2 = 2\cdot 3 - 1 + 9 = 14$$; thay vào công thức cũng cho $$-\dfrac{5}{4} - 5 + \dfrac{9}{4}\cdot 9 = 14$$ ✓.
 
 </div>
 
 <div class="textbook-example" markdown="1">
 
-**Ví dụ ($$f(n)=n^2$$, bậc 2).**  
-$$a_n = 2a_{n-1} + a_{n-2} + n^2.$$  
-Thuần nhất: $$r^2-2r-1=0$$ → $$r=1\pm\sqrt{2}$$,  
-$$a_n^{(h)}=C_1(1+\sqrt{2})^n + C_2(1-\sqrt{2})^n.$$  
-Vì $$1$$ không phải nghiệm đặc trưng, thử $$a_n^{(p)}=An^2+Bn+C$$.  
-Thế $$a_n-2a_{n-1}-a_{n-2}=n^2$$, khai $$(n-1)^2$$, $$(n-2)^2$$ và so hệ số:  
-$$A=-\dfrac12,\quad B=-2,\quad C=-\dfrac52.$$  
-Vậy  
-$$a_n = C_1(1+\sqrt{2})^n + C_2(1-\sqrt{2})^n - \dfrac{n^2}{2} - 2n - \dfrac{5}{2},$$  
-với $$C_1,C_2$$ từ điều kiện đầu (nếu đề cho).
+**Ví dụ 2 ($$f(n) = n^2$$, truy hồi bậc hai):**  
+Tìm nghiệm tổng quát của $$a_n = 2a_{n-1} + a_{n-2} + n^2$$.
+
+1. **Nghiệm thuần nhất:** Phương trình đặc trưng $$r^2 - 2r - 1 = 0$$ có hai nghiệm phân biệt $$r = 1 \pm \sqrt{2}$$, nên:
+   $$a_n^{(h)} = C_1(1+\sqrt{2})^n + C_2(1-\sqrt{2})^n.$$
+2. **Nghiệm riêng:** Vì $$r = 1$$ không phải nghiệm đặc trưng, ta thử đa thức bậc hai $$a_n^{(p)} = An^2 + Bn + C$$. Thay vào $$a_n - 2a_{n-1} - a_{n-2} = n^2$$, khai triển $$(n-1)^2$$, $$(n-2)^2$$ và đồng nhất hệ số hai vế, ta giải được:
+   $$A = -\dfrac{1}{2},\quad B = -2,\quad C = -\dfrac{5}{2}.$$
+3. **Nghiệm tổng quát:**
+   $$a_n = C_1(1+\sqrt{2})^n + C_2(1-\sqrt{2})^n - \dfrac{n^2}{2} - 2n - \dfrac{5}{2},$$
+   trong đó $$C_1, C_2$$ sẽ được xác định khi có đủ hai điều kiện đầu.
 
 </div>
 
 ## Trường hợp cộng hưởng
 
-Xét
+Xét quan hệ truy hồi:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -208,27 +225,27 @@ a_n=2a_{n-1}+2^n.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Phần thuần nhất có nghiệm $$C2^n$$. Nếu thử $$A2^n$$, nó trùng với nghiệm thuần nhất nên không thể xác định $$A$$. Ta phải thử
+
+Phần thuần nhất có nghiệm $$a_n^{(h)} = C \cdot 2^n$$. Nếu ta thử nghiệm riêng dạng $$a_n^{(p)} = A \cdot 2^n$$, biểu thức này trùng hoàn toàn với nghiệm thuần nhất nên khi thay vào phương trình, $$A$$ sẽ bị triệt tiêu (dẫn đến mâu thuẫn $$0 = 2^n$$). Để khắc phục, ta nhân thêm $$n$$ vào dạng nghiệm thử:
 
 <div class="textbook-equation" markdown="1">
 $$
-a_n^{(p)}=An2^n.
+a_n^{(p)}=A n 2^n.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Đây gọi là hiện tượng **cộng hưởng**: tác động ngoài có cùng dạng với nghiệm tự nhiên của hệ.
+
+Hiện tượng này được gọi là **cộng hưởng** (resonance): tác động bên ngoài $$f(n)$$ có cùng dạng tăng trưởng với dao động hoặc tốc độ tăng tự nhiên của hệ thuần nhất.
 
 <div class="interactive-tool" markdown="1">
-**Demo tương tác đề xuất**: Người học chọn dạng $$f(n)$$ và nghiệm đặc trưng. Công cụ đề xuất dạng nghiệm riêng, cảnh báo khi xảy ra cộng hưởng và tự nhân thêm $$n$$.
+**Công cụ tương tác**: Bạn có thể chọn dạng của $$f(n)$$ cùng các nghiệm đặc trưng để xem công cụ gợi ý dạng nghiệm riêng tương ứng, tự động cảnh báo khi xảy ra cộng hưởng và nhân thêm nhân tử $$n$$.
 <div data-demo="characteristic-solver"></div>
 </div>
 <script src="{{ '/public/js/characteristic-solver.js' | relative_url }}"></script>
 
-## Ứng dụng phân tích thuật toán
+## Ứng dụng trong phân tích thuật toán
 
-Phần ứng dụng là nơi khái niệm toán học được gắn lại với bài toán thật trong lập trình và hệ thống. Phần này liên hệ khái niệm toán học với bài toán thực tế trong lập trình và hệ thống.
-
-Quan hệ
+Trong lập trình và thiết kế hệ thống, quan hệ truy hồi không thuần nhất là công cụ quen thuộc để đánh giá chi phí tính toán. Chẳng hạn, hệ thức:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -236,12 +253,14 @@ T(n)=2T(n/2)+n
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-mô tả nhiều thuật toán chia để trị như merge sort. Đây không phải truy hồi tuyến tính theo chỉ số $$n-1$$, nhưng tư tưởng vẫn giống: nghiệm gồm phần do đệ quy và phần chi phí ngoài $$n$$ ở mỗi mức. Kết quả $$T(n)=\Theta(n\log n)$$ cho thấy thành phần không thuần nhất quyết định đáng kể độ phức tạp.
+
+mô tả thời gian chạy của nhiều thuật toán chia để trị như Merge Sort. Dù chỉ số giảm theo phép chia $$n/2$$ thay vì $$n-1$$, tư tưởng vẫn tương tự: tổng chi phí gồm phần gọi đệ quy và phần công việc bổ sung $$f(n) = n$$ ở mỗi tầng. Kết quả $$T(n) = \Theta(n\log n)$$ cho thấy thành phần không thuần nhất ảnh hưởng trực tiếp đến bậc độ phức tạp cuối cùng.
 
 ![Dãy hình học — thành phần $$f(n)$$ trong truy hồi](/discrete-mathematics-for-computer-science-iuh/img/course/Geometric_sequence.svg)
 
-<p class="textbook-figure-caption" data-figure="10.14">Thành phần $$f(n)$$ trong truy hồi không thuần nhất mô tả tác động bên ngoài — chi phí cố định, dữ liệu mới, hoặc công việc phụ mỗi bước.</p>
-Với truy hồi tuyến tính, ví dụ số phép gán trong một vòng lặp tích lũy có thể thỏa
+<p class="textbook-figure-caption" data-figure="10.14">Thành phần $$f(n)$$ trong truy hồi không thuần nhất phản ánh tác động bên ngoài: chi phí cố định, dữ liệu mới hoặc khối lượng xử lý bổ sung ở mỗi bước.</p>
+
+Với truy hồi tuyến tính theo chỉ số $$n-1$$, số phép gán tích lũy trong một vòng lặp lồng nhau thường có dạng:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -249,11 +268,12 @@ a_n=a_{n-1}+2n+1,
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-và nghiệm riêng bậc hai cho ta tổng chi phí bậc $$\Theta(n^2)$$.
+
+trong đó nghiệm riêng bậc hai cho ta tổng chi phí tăng theo bậc $$\Theta(n^2)$$.
 
 ### Minh hoạ tương tác
 
-Minh hoạ hệ thức truy hồi không thuần nhất: nghiệm riêng cộng nghiệm thuần nhất. Các widget có sẵn bên trên vẫn giữ nguyên.
+Quan sát cách kết hợp nghiệm thuần nhất và nghiệm riêng trong hệ thức truy hồi không thuần nhất qua minh họa dưới đây:
 
 <div class="interactive-demo" markdown="1">
 <div data-demo="recurrence-explainer" data-mode="linear" data-preset="nonhom"></div>
@@ -264,51 +284,59 @@ Minh hoạ hệ thức truy hồi không thuần nhất: nghiệm riêng cộng 
 
 ### Bài tập 1
 
-Giải $$a_n = 2a_{n-1} + 3$$, $$a_0 = 0$$ bằng phương pháp hệ số bất định.
+Giải $$a_n = 2a_{n-1} + 3$$ với $$a_0 = 0$$ bằng phương pháp hệ số bất định.
 
 <details>
 <summary>Đáp án</summary>
 
-Thuần nhất: $$a_n^{(h)} = c \cdot 2^n$$. Thử riêng $$a_n^{(p)} = A$$ (hằng). Thay: $$A = 2A + 3 \Rightarrow A = -3$$. $$a_n = c \cdot 2^n - 3$$, $$a_0 = 0 \Rightarrow c = 3$$. Vậy $$a_n = 3 \cdot 2^n - 3$$.
+- Nghiệm thuần nhất: $$a_n^{(h)} = c \cdot 2^n$$.
+- Thử nghiệm riêng hằng số $$a_n^{(p)} = A$$. Thay vào phương trình: $$A = 2A + 3 \Rightarrow A = -3$$.
+- Nghiệm tổng quát: $$a_n = c \cdot 2^n - 3$$. Với $$a_0 = 0 \Rightarrow c = 3$$.
+- Vậy $$a_n = 3 \cdot 2^n - 3$$.
 
 </details>
 
 ### Bài tập 2
 
-Giải $$a_n = a_{n-1} + 2n$$, $$a_0 = 1$$.
+Giải $$a_n = a_{n-1} + 2n$$ với $$a_0 = 1$$.
 
 <details>
 <summary>Đáp án</summary>
 
-$$a_n^{(h)} = c$$. Thử $$a_n^{(p)} = An + B$$. Thay: $$An + B = A(n-1) + B + 2n \Rightarrow A = 2$$. $$a_n = c + 2n$$, $$a_0 = 1 \Rightarrow c = 1$$. $$a_n = 1 + 2n$$.
+- Nghiệm thuần nhất: $$a_n^{(h)} = c$$ (ứng với nghiệm đặc trưng $$r = 1$$).
+- Vì $$f(n) = 2n$$ là đa thức bậc nhất và bị cộng hưởng với nghiệm thuần nhất hằng số ($$r = 1$$), ta nhân thêm $$n$$ và thử nghiệm riêng $$a_n^{(p)} = An^2 + Bn$$.
+- Thay vào phương trình: $$An^2 + Bn = A(n-1)^2 + B(n-1) + 2n \Rightarrow 2An + (B - A) = 2n$$.
+- Đồng nhất hệ số: $$2A = 2 \Rightarrow A = 1$$ và $$B - A = 0 \Rightarrow B = 1$$.
+- Nghiệm tổng quát: $$a_n = c + n^2 + n$$. Từ $$a_0 = 1 \Rightarrow c = 1$$.
+- Vậy $$a_n = n^2 + n + 1$$. (Kiểm tra: $$a_1 = 1 + 2 = 3$$, công thức cho $$1 + 1 + 1 = 3$$ ✓.)
 
 </details>
 
 ### Bài tập 3
 
-Giải thích **cộng hưởng**: vì sao với $$a_n = 2a_{n-1} + 2^n$$ ta thử $$a_n^{(p)} = A n 2^n$$ thay vì $$A 2^n$$?
+Giải thích hiện tượng **cộng hưởng**: vì sao khi giải $$a_n = 2a_{n-1} + 2^n$$, ta phải thử nghiệm riêng $$a_n^{(p)} = A n 2^n$$ thay vì $$A 2^n$$?
 
 <details>
 <summary>Đáp án</summary>
 
-$$2^n$$ là nghiệm thuần nhất của phương trình đặc trưng $$r - 2 = 0$$. Thử $$A 2^n$$ cho riêng sẽ triệt tiêu — phải nhân thêm $$n$$ (hoặc $$n^s$$ nếu nghiệm bội).
+Vì $$r = 2$$ là nghiệm của phương trình đặc trưng $$r - 2 = 0$$, nên $$2^n$$ đã là nghiệm của phần thuần nhất. Nếu thử $$a_n^{(p)} = A 2^n$$, vế trái và vế phải sẽ triệt tiêu $$A$$ khi thay vào phương trình. Do đó ta phải nhân thêm $$n$$ (hoặc $$n^s$$ nếu $$r$$ là nghiệm bội $$s$$) để nghiệm thử độc lập tuyến tính với nghiệm thuần nhất.
 
 </details>
 
-### Bài tập 4 (từ giáo trình — bậc 1)
+### Bài tập 4 (bậc 1 — Tháp Hà Nội)
 
-Giải $$x_n = 2x_{n-1} + 1$$, $$x_1 = 1$$. Viết công thức đóng và $$x_5$$.
+Giải $$x_n = 2x_{n-1} + 1$$ với $$x_1 = 1$$. Tìm công thức đóng và tính giá trị $$x_5$$.
 
 <details>
 <summary>Đáp án</summary>
 
-$$x_n = 2^n - 1$$; $$x_5 = 31$$.
+Công thức đóng là $$x_n = 2^n - 1$$; suy ra $$x_5 = 2^5 - 1 = 31$$.
 
 </details>
 
 ### Bài tập 5 (tổng bình phương)
 
-Đặt $$a_n = a_{n-1} + n^2$$, $$a_0=0$$. Giải bằng hệ số bất định (nhắc: cộng hưởng với $$r=1$$) và đối chiếu công thức $$\sum_{k=1}^n k^2$$.
+Xét $$a_n = a_{n-1} + n^2$$ với $$a_0 = 0$$. Hãy giải bằng phương pháp hệ số bất định (lưu ý cộng hưởng với $$r = 1$$) và đối chiếu với công thức tổng $$\sum_{k=1}^n k^2$$.
 
 <details>
 <summary>Đáp án</summary>
@@ -317,28 +345,29 @@ $$a_n = \dfrac{n(n+1)(2n+1)}{6}$$.
 
 </details>
 
-### Bài tập 6 (bậc 2 + $$3^n$$)
+### Bài tập 6 (bậc 2 với thành phần $$3^n$$)
 
-Giải $$X_n = 2X_{n-1} - X_{n-2} + 3^n$$, $$X_0=1$$, $$X_1=3$$ (làm đủ ba bước: thuần nhất, riêng, điều kiện đầu).
+Giải $$X_n = 2X_{n-1} - X_{n-2} + 3^n$$ với $$X_0 = 1$$, $$X_1 = 3$$ theo đầy đủ ba bước (tìm nghiệm thuần nhất, tìm nghiệm riêng và áp dụng điều kiện đầu).
 
 <details>
 <summary>Đáp án</summary>
 
-$$X_n = -\dfrac{5}{4} - \dfrac{5}{2}n + \dfrac{9}{4}\,3^n$$  
-(xem ví dụ 5b trong bài).
+$$X_n = -\dfrac{5}{4} - \dfrac{5}{2}n + \dfrac{9}{4}\,3^n$$ (xem chi tiết các bước biến đổi ở Ví dụ 1 trong mục ví dụ bậc hai).
 
 </details>
 
-### Bài tập 7 (thách thức)
+### Bài tập 7 (thử thách)
 
-Giải $$a_n = 2a_{n-1} + a_{n-2} + n^2$$ với $$a_0=0$$, $$a_1=1$$ (dùng dạng riêng ở ví dụ 5b, rồi tìm $$C_1,C_2$$).
+Giải $$a_n = 2a_{n-1} + a_{n-2} + n^2$$ với $$a_0 = 0$$, $$a_1 = 1$$ (sử dụng nghiệm riêng đã tìm ở Ví dụ 2, sau đó giải hệ để tìm $$C_1, C_2$$).
 
 <details>
 <summary>Đáp án</summary>
 
-$$a_n^{(p)} = -\dfrac{n^2}{2}-2n-\dfrac{5}{2}$$.  
-$$a_n = C_1(1+\sqrt{2})^n + C_2(1-\sqrt{2})^n + a_n^{(p)}$$.  
-Từ $$a_0,a_1$$ giải hệ tuyến tính cho $$C_1,C_2$$ (tính số: $$n=0$$: $$C_1+C_2-5/2=0$$; $$n=1$$: $$C_1(1+\sqrt{2})+C_2(1-\sqrt{2})-1/2-2-5/2=1$$).
+- Nghiệm riêng: $$a_n^{(p)} = -\dfrac{n^2}{2} - 2n - \dfrac{5}{2}$$.
+- Nghiệm tổng quát: $$a_n = C_1(1+\sqrt{2})^n + C_2(1-\sqrt{2})^n - \dfrac{n^2}{2} - 2n - \dfrac{5}{2}$$.
+- Thay điều kiện đầu để lập hệ phương trình tìm $$C_1, C_2$$:
+  - Với $$n = 0$$: $$C_1 + C_2 - \dfrac{5}{2} = 0 \Rightarrow C_1 + C_2 = \dfrac{5}{2}$$.
+  - Với $$n = 1$$: $$C_1(1+\sqrt{2}) + C_2(1-\sqrt{2}) - \dfrac{1}{2} - 2 - \dfrac{5}{2} = 1 \Rightarrow C_1(1+\sqrt{2}) + C_2(1-\sqrt{2}) = 6$$.
 
 </details>
 
@@ -346,21 +375,20 @@ Từ $$a_0,a_1$$ giải hệ tuyến tính cho $$C_1,C_2$$ (tính số: $$n=0$$:
 
 ## Xem thêm / Video gợi ý
 
-- <a href="https://www.youtube.com/watch?v=ghSnXV4RHiI">Solving non-homogeneous recurrence relations</a> — worked examples
-- Tài liệu gốc khóa: `material/Chuong 3. He Thuc Hoi Quy.pdf` (bậc 1–2, nghiệm bội / phức / không thuần nhất)
+- <a href="https://www.youtube.com/watch?v=ghSnXV4RHiI">Solving non-homogeneous recurrence relations</a> — Các ví dụ minh họa giải chi tiết.
+- Tài liệu gốc của khóa học: `material/Chuong 3. He Thuc Hoi Quy.pdf` (trình bày truy hồi bậc 1–2, nghiệm bội, nghiệm phức và phương trình không thuần nhất).
 
 ## Tóm tắt
 
-- Quan hệ không thuần nhất: $$a_n = c_1 a_{n-1} + \cdots + c_k a_{n-k} + f(n)$$.
-- **Nguyên lý chồng chất**: $$a_n = a_n^{(h)} + a_n^{(p)}$$ — mọi nghiệm = một riêng + thuần nhất tổng quát.
-- **Hệ số bất định**: đoán $$a_n^{(p)}$$ cùng họ $$f(n)$$ (hằng, đa thức, $$b^n$$).
-- **Cộng hưởng**: dạng thử trùng nghiệm thuần nhất → nhân $$n$$ (hoặc $$n^s$$); với $$a_n-a_{n-1}=n^2$$ nhận công thức tổng bình phương.
-- Ví dụ chuẩn: $$2x_{n-1}+1$$, $$+3^n$$ với $$(r-1)^2$$, $$+n^2$$ bậc 2.
-- Ứng dụng: chia để trị $$T(n)=2T(n/2)+n$$.
+- **Quan hệ truy hồi tuyến tính không thuần nhất**: $$a_n = c_1 a_{n-1} + \cdots + c_k a_{n-k} + f(n)$$ với $$f(n) \not\equiv 0$$.
+- **Nguyên lý chồng chất**: Mọi nghiệm tổng quát đều viết được dưới dạng $$a_n = a_n^{(h)} + a_n^{(p)}$$ (tổng của nghiệm thuần nhất tổng quát và một nghiệm riêng).
+- **Phương pháp hệ số bất định**: Dự đoán $$a_n^{(p)}$$ cùng họ hàm với $$f(n)$$ (hằng số, đa thức, $$b^n$$, $$n^m b^n$$).
+- **Cộng hưởng**: Khi dạng thử trùng với nghiệm thuần nhất, cần nhân thêm $$n$$ (hoặc $$n^s$$ ứng với bội của nghiệm đặc trưng).
+- **Ứng dụng**: Là công cụ cốt lõi để phân tích các thuật toán chia để trị như $$T(n) = 2T(n/2) + n$$ và các vòng lặp tích lũy.
 
-Trong bài tiếp theo, chúng ta tổng hợp ứng dụng quan hệ truy hồi trong thuật toán và hệ thống thực tế.
+Trong bài tiếp theo, chúng ta sẽ tổng hợp các ứng dụng tiêu biểu của hệ thức truy hồi trong thuật toán và hệ thống phần mềm thực tế.
 
 ## Video tham khảo
 
-- **xem trước** <a href="https://www.youtube.com/watch?v=EfF_XSEX1Sk">NON-HOMOGENEOUS RECURRENCE RELATIONS - Discrete Mathematics</a> — TrevTutor, tiếng Anh. Xem trước nghiệm riêng cộng nghiệm thuần nhất.
-- <a href="https://www.youtube.com/watch?v=UVuSLfdcT_Y">[Discrete Mathematics] Nonhomogeneous Recurrence Relation Examples</a> — TrevTutor, tiếng Anh. Ví dụ truy hồi không thuần nhất làm tới cùng.
+- **Nên xem trước:** <a href="https://www.youtube.com/watch?v=EfF_XSEX1Sk">NON-HOMOGENEOUS RECURRENCE RELATIONS - Discrete Mathematics</a> — TrevTutor (tiếng Anh). Giới thiệu trực quan nguyên lý kết hợp nghiệm thuần nhất và nghiệm riêng.
+- <a href="https://www.youtube.com/watch?v=UVuSLfdcT_Y">[Discrete Mathematics] Nonhomogeneous Recurrence Relation Examples</a> — TrevTutor (tiếng Anh). Giải chi tiết trọn vẹn nhiều ví dụ truy hồi không thuần nhất.
