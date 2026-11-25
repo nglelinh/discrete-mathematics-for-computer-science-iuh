@@ -10,11 +10,23 @@ lang: en
 excerpt: "Trình bày bốn quy tắc suy luận cốt lõi với lượng từ trong logic vị từ (UI, UG, EI, EG), cách kết hợp với suy luận mệnh đề và các lỗi thường gặp."
 ---
 
-Ở hai mục trước, chúng ta đã học cách biểu diễn các phát biểu phức tạp bằng vị từ và lượng từ. Tuy nhiên, biểu diễn được mới là bước đầu; câu hỏi tiếp theo là: **từ những tiền đề đã biết, ta có thể suy ra kết luận nào và bằng cách nào để bảo đảm chặt chẽ?**
+Ở Chương 1, ta đã dùng Modus Ponens để suy diễn giữa các mệnh đề. Nhưng khi bước sang Logic Vị từ, các tiền đề đều bị "bọc" bên trong lớp vỏ lượng từ $\forall x$ và $\exists x$. Làm sao tháo bỏ lớp vỏ lượng từ để áp dụng suy diễn mệnh đề, rồi đóng gói lại kết luận mà **không vô tình chứng minh những điều sai sự thật**?
 
-Câu hỏi này có ý nghĩa thực tiễn trực tiếp. Mỗi khi một hệ thống kiểm chứng phần mềm xác nhận rằng "chương trình thỏa mãn đặc tả", nó đang thực hiện một chuỗi suy luận logic hình thức. Tương tự, khi lập trình viên đọc đặc tả để dự đoán hành vi của hàm ở một trường hợp cụ thể, người đó cũng đang suy luận, dù thường theo trực giác. Suy luận không hình thức rất dễ mắc lỗi vì dễ bỏ qua các bước trung gian. Từ *"Mọi lập trình viên đều biết Python"* và *"An là lập trình viên"*, ta suy ra *"An biết Python"* — đây là lập luận hợp lệ. Nhưng từ *"Mọi lập trình viên đều biết Python"* và *"An biết Python"*, ta **không thể** suy ra *"An là lập trình viên"* — đó là ngụy biện khẳng định hệ quả.
+Bốn quy tắc suy diễn vị từ (**UI, UG, EI, EG**) chính là bộ luật kiểm soát việc "mở hộp" và "đóng hộp" biến lượng từ một cách tuyệt đối an toàn.
 
-Trong logic vị từ, các **quy tắc suy luận** với lượng từ giúp tránh những sai lầm như vậy. Chúng quy định rõ khi nào được thay "mọi $$x$$" bằng một phần tử cụ thể, khi nào được kết luận "tồn tại" từ một nhân chứng, và nhờ đó giúp máy tính kiểm tra từng bước của chứng minh hình thức. Mục này trình bày bốn quy tắc cốt lõi: Universal Instantiation (UI), Universal Generalization (UG), Existential Instantiation (EI) và Existential Generalization (EG).
+## Bản đồ kiến thức nền: Bốn quy tắc chuyển đổi giữa Lượng từ và Cá thể
+
+1. **Cụ thể hóa Toàn thể (UI — Universal Instantiation)**:
+   Từ $\forall x\, P(x)$, ta được phép suy ra $P(c)$ cho **bất kỳ** phần tử $c$ nào trong miền xác định (vì tính chất đúng cho tất cả nên tất nhiên đúng cho $c$).
+
+2. **Tổng quát hóa Toàn thể (UG — Universal Generalization)**:
+   Nếu ta chứng minh được $P(c)$ đúng cho một phần tử $c$ **hoàn toàn tùy ý** (không giả sử thêm đặc tính riêng nào của $c$), ta được phép kết luận $\forall x\, P(x)$.
+
+3. **Cụ thể hóa Tồn tại (EI — Existential Instantiation)**:
+   Từ $\exists x\, P(x)$, ta biết có ít nhất một nhân chứng nên được phép đặt tên nó là $c$ thỏa $P(c)$—**với điều kiện nghiêm ngặt $c$ phải là tên mới tinh (fresh constant)** chưa từng xuất hiện trước đó!
+
+4. **Tổng quát hóa Tồn tại (EG — Existential Generalization)**:
+   Nếu có một phần tử cụ thể $c$ thỏa $P(c)$, ta lập tức suy ra $\exists x\, P(x)$.
 
 ## Mục tiêu học tập
 
@@ -108,6 +120,30 @@ Lấy $$n\in\mathbb{Z}$$ tùy ý. Vì $$n$$ và $$n+1$$ là hai số nguyên li�
 <div class="content-box warning-box textbook-block" markdown="1">
 **Cảnh báo**: Không được dùng UG nếu phần tử đang xét không phải là phần tử tùy ý. Biết "An là sinh viên giỏi" không cho phép suy ra "mọi sinh viên đều giỏi".
 </div>
+
+### Khung giải thích (nên đọc chậm): Bắt quả tang lỗi "dùng lại tên biến trong EI" và sửa thành chứng minh chuẩn
+
+Tại sao quy tắc **EI** bắt buộc phải chọn tên hằng mới tinh $c$? Hãy xem một "chứng minh" giả mạo cực kỳ tinh vi trên miền số nguyên $\mathbb{Z}$:
+- Tiền đề 1: $\exists x\, \text{Chẵn}(x)$ (Đúng, ví dụ 2).
+- Tiền đề 2: $\exists x\, \text{Lẻ}(x)$ (Đúng, ví dụ 3).
+- Bước 3 (EI từ P1): Chọn $c$ sao cho $\text{Chẵn}(c)$.
+- Bước 4 (**SAI!** EI từ P2 nhưng dùng lại cùng tên $c$): Chọn $c$ sao cho $\text{Lẻ}(c)$.
+- Bước 5 (Hội + EG): Suy ra $\exists x\, (\text{Chẵn}(x) \land \text{Lẻ}(x))$ — *"Tồn tại số vừa chẵn vừa lẻ!"* (**Vô lý!**)
+
+**Nguyên nhân lỗi**: Bước 4 vi phạm điều kiện *fresh constant* của EI—nhân chứng của số lẻ phải đặt tên khác là $d$, cho ra $\text{Chẵn}(c) \land \text{Lẻ}(d)$, hoàn toàn không suy ra được số vừa chẵn vừa lẻ!
+
+#### Chuỗi suy diễn chuẩn (áp dụng đúng thứ tự EI trước UI)
+Cho tiền đề: (1) $\forall x\,(C(x) \to P(x))$ (*Mọi sinh viên CNTT đều học lập trình*) và (2) $\exists x\,(C(x) \land R(x))$ (*Có sinh viên CNTT học Rust*). Chứng minh $\exists x\,(P(x) \land R(x))$:
+
+| Bước | Biểu thức | Quy tắc |
+| :---: | :--- | :--- |
+| 1 | $\exists x\,(C(x) \land R(x))$ | Tiền đề 2 |
+| 2 | $C(a) \land R(a)$ | **EI** (chọn hằng mới tinh $a$ **trước**!) |
+| 3 | $C(a)$ và $R(a)$ | Rút gọn hội (Simplification) từ (2) |
+| 4 | $C(a) \to P(a)$ | **UI** từ Tiền đề 1 (thế $x = a$ — hoàn toàn hợp lệ vì UI cho phép dùng bất kỳ $a$ nào!) |
+| 5 | $P(a)$ | **Modus Ponens** từ (3) và (4) |
+| 6 | $P(a) \land R(a)$ | Phép hội từ (5) và (3) |
+| 7 | **$\exists x\,(P(x) \land R(x))$** | **EG** từ (6) — **ĐPCM!** |
 
 ## Existential Instantiation (EI) — Cụ thể hóa tồn tại
 

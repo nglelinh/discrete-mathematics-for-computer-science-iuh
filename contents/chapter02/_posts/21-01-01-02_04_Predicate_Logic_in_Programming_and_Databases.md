@@ -10,25 +10,23 @@ lang: en
 excerpt: "Kết nối vị từ và lượng từ với thực hành kỹ thuật phần mềm: truy vấn SQL (EXISTS, CHECK, FOREIGN KEY), assertion, schema validation và Design by Contract."
 ---
 
-Ở ba mục trước, chúng ta đã học vị từ, lượng từ và quy tắc suy luận trong logic vị từ. Mục này kết nối các khái niệm đó với thực hành kỹ thuật phần mềm: mỗi khi viết `assert age >= 18` hay thêm điều kiện `WHERE NOT EXISTS (...)`, ta đang sử dụng cùng một nền tảng toán học — **logic vị từ** (predicate logic) với hai lượng từ $$\forall$$ và $$\exists$$.
+Nếu bạn từng nghĩ lượng từ $\forall$ và $\exists$ chỉ sống trên bảng phấn toán học, hãy mở ngay một tệp truy vấn SQL hoặc mã Python/TypeScript của bất kỳ ứng dụng web nào: `EXISTS (SELECT ...)`, `NOT EXISTS`, `all(...)`, `any(...)`, `assert`, và ràng buộc `CHECK` trong cơ sở dữ liệu chính là **Logic Vị từ đang chạy ở tốc độ triệu bản ghi mỗi giây**.
 
-```python
-from pydantic import BaseModel, Field, field_validator
+## Bản đồ kiến thức nền: Bốn cầu nối trực tiếp từ Logic Vị từ sang Phần mềm & CSDL
 
-class Student(BaseModel):
-    id: int = Field(gt=0)
-    gpa: float = Field(ge=0.0, le=4.0)
+1. **Phép tính Quan hệ (Relational Calculus) → SQL**:
+   SQL được Edgar F. Codd thiết kế trực tiếp từ Logic Vị từ bậc nhất: mỗi bảng là một vị từ (ví dụ `Enrolled(sid, cid)` đúng khi sinh viên `sid` đăng ký môn `cid`), mệnh đề `WHERE` là điều kiện lọc, và `EXISTS` chính là lượng từ $\exists$.
 
-    @field_validator("gpa")
-    @classmethod
-    def gpa_must_be_finite(cls, v: float) -> float:
-        assert v == v  # ∀ giá trị hợp lệ: không phải NaN
-        return v
-```
+2. **Biểu diễn lượng từ Toàn thể ($\forall$) trong SQL bằng Phủ định kép**:
+   SQL không có từ khóa `FOR ALL` trực tiếp. Để truy vấn *"Tìm sinh viên đã học **tất cả** các môn bắt buộc"*, ta dùng chính Luật De Morgan lượng từ:
+   $$\forall c\, P(s, c) \;\equiv\; \neg \exists c\, \neg P(s, c)$$
+   và viết thành `WHERE NOT EXISTS (... WHERE NOT EXISTS (...))`!
 
-Đoạn mã trên không chỉ kiểm tra dữ liệu đầu vào mà còn đóng vai trò như một **đặc tả** (specification): với mọi đối tượng `Student` được khởi tạo hợp lệ, các vị từ `id > 0` và `0 ≤ gpa ≤ 4` đều đúng. Trong SQL, cùng ý tưởng đó thể hiện qua các ràng buộc `CHECK`, `FOREIGN KEY` và truy vấn `EXISTS` / `NOT EXISTS`.
+3. **Tiền điều kiện, Hậu điều kiện & Bất biến (Design by Contract)**:
+   Trong lập trình, `assert all(a[i] <= a[i+1] for i in range(n-1))` dịch thẳng công thức hậu điều kiện $\forall i \in [0, n-2],\; a[i] \le a[i+1]$ của thuật toán sắp xếp thành mã kiểm chứng tự động.
 
-Từ nền tảng logic vị từ của Frege đến validation schema, lập trình theo hợp đồng (Design by Contract) và truy vấn quan hệ, mục này kết nối kiến thức Chương 2 với cách kỹ sư phần mềm xây dựng hệ thống an toàn hàng ngày.
+4. **Logic 3 giá trị (`TRUE`, `FALSE`, `UNKNOWN`) với `NULL` trong SQL**:
+   Một khác biệt thực tế sống còn: trong SQL, so sánh với `NULL` trả về `UNKNOWN`, nên `NOT IN (SELECT ...)` sẽ trả về **tập rỗng** nếu truy vấn con chứa dù chỉ 1 giá trị `NULL`—đó là lý do kỹ sư CSDL luôn ưu tiên `NOT EXISTS`.
 
 ## Mục tiêu học tập
 
@@ -155,6 +153,36 @@ ADD CONSTRAINT gpa_range CHECK (gpa >= 0 AND gpa <= 4);
 Ràng buộc này biểu diễn $$\forall s \in Students,\ 0 \le s.gpa \le 4$$ và được hệ quản trị cơ sở dữ liệu kiểm tra mỗi khi thực hiện `INSERT` hoặc `UPDATE`.
 
 ---
+
+### Khung giải thích (nên đọc chậm): Chuyển hóa câu hỏi "Sinh viên học ĐỦ mọi môn bắt buộc" từ Logic Vị từ sang SQL và chạy tay trên bảng mẫu
+
+Cho 2 bảng nhỏ:
+- `Required(cid)`: `{ 'CS101', 'CS102' }`
+- `Enrolled(sid, cid)`: `{ ('An', 'CS101'), ('An', 'CS102'), ('Bình', 'CS101') }`
+
+**Bước 1 — Viết bằng Logic Vị từ**:
+Tìm sinh viên $s$ thỏa $\forall c \in \text{Required},\; \text{Enrolled}(s, c)$.
+
+**Bước 2 — Biến đổi bằng De Morgan để khử $\forall$**:
+$$\forall c \in \text{Required},\; \text{Enrolled}(s, c) \;\equiv\; \neg \exists c \in \text{Required},\; \neg \text{Enrolled}(s, c).$$
+*(Đọc thành lời: "Không tồn tại môn bắt buộc $c$ nào mà sinh viên $s$ chưa đăng ký!")*
+
+**Bước 3 — Dịch thẳng sang SQL**:
+```sql
+SELECT s.sid
+FROM Students s
+WHERE NOT EXISTS (
+    SELECT 1 FROM Required r
+    WHERE NOT EXISTS (
+        SELECT 1 FROM Enrolled e
+        WHERE e.sid = s.sid AND e.cid = r.cid
+    )
+);
+```
+
+**Bước 4 — Chạy tay trên từng sinh viên**:
+- Với **`An`**: Môn `CS101` có trong `Enrolled` (subquery trong = `True` → `NOT EXISTS` trong = `False`); môn `CS102` cũng có (`False`). Vậy tập các môn *bị thiếu* của An là **rỗng $\emptyset$** → `NOT EXISTS` ngoài trả về **`True` → Chọn `An`!**
+- Với **`Bình`**: Môn `CS102` không có trong `Enrolled` → tập các môn *bị thiếu* của Bình là `{'CS102'}` (khác rỗng!) → `NOT EXISTS` ngoài trả về **`False` → Loại `Bình`!**
 
 ## Phần 3: Assertion và schema trong mã nguồn
 

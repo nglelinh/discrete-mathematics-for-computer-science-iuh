@@ -9,6 +9,8 @@ lang: en
 excerpt: "Sự tương đương giữa biểu thức chính quy, ε-NFA, NFA và DFA; phép dựng Thompson và phương pháp loại bỏ trạng thái."
 ---
 
+> **Câu chuyện mở đầu:** Bên tay trái ta có **DFA/NFA** — những cỗ máy trạng thái cơ khí chạy bằng sơ đồ mũi tên. Bên tay phải ta có **Biểu thức Chính quy** — những công thức đại số thuần túy chỉ dùng `+`, `·`, `*`. Năm 1956, Stephen Kleene chứng minh một định lý hợp nhất kinh điển: **hai thế giới tưởng chừng khác hẳn nhau đó định nghĩa CHÍNH XÁC CÙNG MỘT LỚP NGÔN NGỮ**! Và hai thuật toán chuyển đổi hai chiều — **Thompson** (Regex $$\to \varepsilon$$-NFA) và **Khử trạng thái** (DFA $$\to$$ Regex) — chính là trái tim của mọi bộ máy Regex hiện đại!
+
 <div class="textbook-epigraph" markdown="1">
 
 "Three notations, one class: regular languages."
@@ -30,6 +32,57 @@ excerpt: "Sự tương đương giữa biểu thức chính quy, ε-NFA, NFA và
 - **Trình bày** khung chứng minh tương đương theo hai chiều.
 
 </div>
+
+## Bản đồ kiến thức nền: Định lý Kleene và Hai Chiều Chuyển đổi
+
+### 1. Chiều thuận — Thuật toán Thompson (Regex $$\to \varepsilon$$-NFA)
+- **Bản chất:** Xây dựng quy nạp từ dưới lên theo cây cú pháp của Regex! Mỗi khối con đều có **đúng 1 trạng thái vào** và **đúng 1 trạng thái ra** (không có cung đi ngược vào đầu vào hay đi ra từ đầu ra). Nhờ cấu trúc sạch sẽ đó, mỗi phép `+`, `·`, `*` chỉ cần thêm tối đa **2 trạng thái và 4 cung $$\varepsilon$$** — tổng số trạng thái tuyến tính $$O(\lvert R\rvert)$$!
+
+### 2. Chiều ngược — Phương pháp Khử Trạng thái (DFA $$\to$$ GNFA $$\to$$ Regex)
+- **Bản chất:** Biến DFA thành **GNFA** (mỗi cạnh có thể gắn nhãn cả một **Regex**!) có đúng 1 trạng thái bắt đầu mới $$q_{\text{start}}$$ và 1 trạng thái kết thúc mới $$q_{\text{accept}}$$. Lần lượt "xóa" từng trạng thái trung gian $$k$$ bằng cách cập nhật mọi đường đi $$i \to k \to j$$ thành đường tắt:
+  $$
+  R_{ij}^{\text{mới}} = R_{ij} + R_{ik}\,(R_{kk})^*\,R_{kj}!
+  $$
+  Khi xóa sạch mọi trạng thái giữa, nhãn duy nhất còn lại trên mũi tên $$q_{\text{start}} \to q_{\text{accept}}$$ chính là Regex cần tìm!
+
+## Ví dụ tính tay cầm tay chỉ việc: Áp dụng Công thức Khử trạng thái cho DFA 2 trạng thái "Số bit `1` chẵn"
+
+Xét DFA 2 trạng thái $$q_0$$ (bắt đầu & kết thúc) và $$q_1$$: tự vòng `0` ở cả hai, và hai mũi tên `1` nối qua lại $$q_0 \leftrightarrow q_1$$.
+1. Thêm $$q_{\text{start}} \xrightarrow{\varepsilon} q_0$$ và $$q_0 \xrightarrow{\varepsilon} q_{\text{accept}}$$.
+2. **Khử trạng thái $$q_1$$:** Đường đi qua $$q_1$$ duy nhất là $$q_0 \xrightarrow{1} q_1 \xrightarrow{0^*} q_1 \xrightarrow{1} q_0$$!
+   Cập nhật tự vòng trên $$q_0$$:
+   $$
+   R_{00}^{\text{mới}} = 0 + 1\,0^*\,1!
+   $$
+3. **Khử nốt trạng thái $$q_0$$:** Đường từ $$q_{\text{start}}$$ qua $$q_0$$ tới $$q_{\text{accept}}$$ có nhãn:
+   $$
+   R = \varepsilon\,(0 + 10^*1)^*\,\varepsilon = (0 + 10^*1)^*!
+   $$
+   Kiểm tra bằng mắt: lặp tùy ý giữa từng số `0` đơn lẻ hoặc từng **cặp số `1`** kẹp giữa bởi bao nhiêu `0` cũng được — chuẩn xác 100% ngôn ngữ "chẵn bit `1`"! ✓
+
+### Khung giải thích: Vòng tròn khép kín 4 đỉnh của Ngôn ngữ Chính quy (nên đọc chậm)
+
+#### Bước 1: Regex $$\xrightarrow{\text{Thompson}}$$ $$\varepsilon$$-NFA
+Lắp ráp như xếp Lego từ các lá (ký tự đơn) lên gốc cây biểu thức.
+
+#### Bước 2: $$\varepsilon$$-NFA $$\xrightarrow{\text{ECLOSE + Subset Construction}}$$ DFA
+Loại bỏ hoàn toàn cung $$\varepsilon$$ và tính không tất định để chạy trong $$O(\lvert w\rvert)$$.
+
+#### Bước 3: DFA $$\xrightarrow{\text{State Elimination}}$$ Regex
+Gom mọi trạng thái trung gian qua công thức đường tắt $$R_{ij} + R_{ik} R_{kk}^* R_{kj}$$ (lưu ý: chọn thứ tự khử các trạng thái ít mũi tên trước sẽ cho Regex gọn hơn rất nhiều!).
+
+#### Bước 4: Tận dụng sự tương đương trong chứng minh lý thuyết
+Từ đây, muốn chứng minh ngôn ngữ $$L$$ là chính quy, bạn được tự do chọn **bất kỳ** công cụ nào tiện tay nhất: viết Regex, vẽ NFA, hay vẽ DFA!
+
+$$
+\text{Regex}
+\;\xrightarrow{\;\text{Thompson}\;}\;
+\varepsilon\text{-NFA}
+\;\xrightarrow{\;\text{Subset}\;}\;
+\text{DFA}
+\;\xrightarrow{\;\text{State Elimination}\;}\;
+\text{Regex}.
+$$
 
 ## Định lý Kleene
 

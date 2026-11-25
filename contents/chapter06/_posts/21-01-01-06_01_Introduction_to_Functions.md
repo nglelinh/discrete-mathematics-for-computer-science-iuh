@@ -10,6 +10,9 @@ lang: en
 excerpt: "Trong chương này, chúng ta tìm hiểu hàm số — ánh xạ gán mỗi phần tử trong miền xác định với đúng một phần tử trong miền đích, cùng các cách biểu diễn và ứng dụng trong khoa học máy tính."
 ---
 
+
+Hãy tưởng tượng một máy bán nước tự động: nếu bạn bấm nút `B3`, lúc thì máy nhả chai nước suối, lúc lại nhả lon cà phê, hoặc tệ hơn là im bặt không trả ra gì cả—chiếc máy đó bị lỗi nghiêm trọng. Lời cam kết khắt khe rằng **mỗi đầu vào hợp lệ phải tương ứng với đúng một đầu ra xác định** chính là linh hồn của **Hàm số (Function)**—viên gạch nền chung cho cả toán học hiện đại, hàm lập trình, cơ sở dữ liệu và mạng nơ-ron AI.
+
 <div class="textbook-epigraph" markdown="1">
 
 "A function is a rule that assigns to each input exactly one output."
@@ -21,6 +24,22 @@ excerpt: "Trong chương này, chúng ta tìm hiểu hàm số — ánh xạ gá
 Trong chương này, chúng ta nghiên cứu **hàm số** — ánh xạ gán cho mỗi phần tử thuộc miền xác định đúng một phần tử thuộc miền đích. Từ một mã định danh người dùng (user ID) trả về hồ sơ tương ứng, từ một chuỗi đầu vào tính ra giá trị băm, đến việc dùng chỉ số mảng để truy xuất đúng một phần tử, tất cả đều dựa trên cùng một ý tưởng toán học. Mục 6.1 bắt đầu từ định nghĩa hàm số, miền xác định, miền đích và các cách biểu diễn cơ bản.
 
 Trong toán rời rạc, hàm là một quan hệ đặc biệt thỏa mãn tính tồn tại và tính duy nhất; còn trong khoa học máy tính, hàm là mô hình đứng sau lời gọi hàm, ánh xạ khóa–giá trị, biến đổi dữ liệu và mã hóa. Điểm cốt lõi của hàm số là tính xác định: cùng một đầu vào phải luôn cho ra đúng một đầu ra.
+
+## Bản đồ kiến thức nền: Bốn trụ cột định nghĩa nên khái niệm Hàm số
+
+1. **Hàm số là một Quan hệ đặc biệt (Tính duy nhất & Tính toàn phần)**:
+   Một hàm $f: A \to B$ là một tập con của $A \times B$ thỏa mãn hai ràng buộc chặt: mỗi $a \in A$ phải có ảnh (*không bỏ sót đầu vào*) và ảnh đó phải là **duy nhất** (*một đầu vào không thể phân nhánh ra hai đầu ra*).
+
+2. **Phân biệt rạch ròi ba tập: Domain, Codomain và Range**:
+   - **Domain ($A$)**: tập toàn bộ đầu vào hợp lệ.
+   - **Codomain ($B$)**: tập các giá trị đầu ra *được khai báo* (kiểu trả về trong lập trình).
+   - **Range ($f(A) \subseteq B$)**: tập các giá trị đầu ra *thực sự đạt được*. Nhiều nhầm lẫn trong bài tập xuất phát từ việc đánh đồng Codomain với Range!
+
+3. **Hàm toàn phần (Total) vs. Hàm bộ phận (Partial)**:
+   Hàm toàn phần xác định trên mọi $x \in A$; hàm bộ phận có thể không xác định tại một số đầu vào (ví dụ $f(x) = 1/x$ tại $x = 0$, hay hàm tra cứu khóa trong `dict` không tìm thấy key).
+
+4. **Số lượng hàm giữa hai tập hữu hạn ($|B|^{|A|}$)**:
+   Mỗi phần tử trong $|A|$ đầu vào có độc lập $|B|$ cách chọn đầu ra, nên có đúng $|B|^{|A|}$ hàm từ $A$ vào $B$—công thức giải thích vì sao có tới $2^{2^n}$ hàm Boolean $n$ biến.
 
 ## Mục tiêu học tập
 
@@ -187,6 +206,26 @@ class MockModel:
 ```
 
 Đoạn mã trên mô phỏng giao diện `predict()` quen thuộc trong `sklearn`: nhận một tập đầu vào và trả về đầu ra xác định tương ứng cho từng mẫu.
+
+### Khung giải thích (nên đọc chậm): Phân biệt quan hệ với hàm số, tách bạch Domain–Codomain–Range và đếm số hàm trên tập nhỏ
+
+Xét hai tập hữu hạn $A = \{1, 2, 3\}$ và $B = \{a, b\}$.
+
+**Phần A — Kiểm tra 3 quan hệ $R \subseteq A \times B$ xem cái nào là hàm toàn phần $A \to B$**:
+- $R_1 = \{(1, a), (2, b), (3, a)\}$: **Là hàm số!** Mọi phần tử của $A$ đều xuất hiện đúng 1 lần ở tọa độ đầu (hai đầu vào `1` và `3` có thể trỏ chung về `a` mà không hề vi phạm định nghĩa hàm).
+- $R_2 = \{(1, a), (1, b), (2, a), (3, b)\}$: **Không phải hàm số**, vì đầu vào `1` bắn ra tới hai đầu ra khác nhau là `a` và `b`.
+- $R_3 = \{(1, a), (2, a)\}$: **Không phải hàm toàn phần trên $A$**, vì phần tử `3` bị bỏ rơi không có ảnh (đây là một *hàm bộ phận*).
+
+**Phần B — Phân biệt Codomain và Range trên hàm quen thuộc**:
+Với $f: \mathbb{Z} \to \mathbb{Z}$ định nghĩa bởi $f(x) = x^2$:
+- $\text{Domain} = \mathbb{Z}$ (mọi số nguyên).
+- $\text{Codomain} = \mathbb{Z}$ (tập đích khai báo).
+- $\text{Range} = \{0, 1, 4, 9, 16, \dots\}$ (chỉ gồm các số chính phương không âm — nhỏ hơn rất nhiều so với Codomain $\mathbb{Z}$!).
+
+**Phần C — Đếm số hàm giữa $A = \{1, 2, 3\}$ ($|A|=3$) và $B = \{a, b\}$ ($|B|=2$)**:
+- Số hàm từ $A \to B$: mỗi phần tử $1, 2, 3$ có 2 lựa chọn $\implies 2 \times 2 \times 2 = 2^3 = \mathbf{8}$ hàm.
+- Số hàm từ $B \to A$: mỗi phần tử $a, b$ có 3 lựa chọn $\implies 3 \times 3 = 3^2 = \mathbf{9}$ hàm.
+Chú ý thứ tự cơ số và số mũ: luôn là $|\text{Đích}|^{|\text{Nguồn}|}$!
 
 ## Ứng dụng trong Khoa học Máy tính
 

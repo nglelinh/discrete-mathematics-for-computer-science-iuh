@@ -18,6 +18,22 @@ excerpt: "Giới thiệu nguyên lý Dirichlet (nguyên lý chuồng chim) dạn
 
 </div>
 
+
+Thoạt nghe, phát biểu *"nhốt 10 con chim bồ câu vào 9 cái chuồng thì chắc chắn có ít nhất một chuồng chứa từ 2 con trở lên"* nghe hiển nhiên đến mức tưởng như trò đùa trẻ con! Ấy vậy mà vào năm 1834, Peter Gustav Lejeune Dirichlet đã biến nhận xét hiển nhiên ấy thành một trong những vũ khí chứng minh tồn tại sắc bén nhất của toán học và khoa học máy tính — từ việc chứng minh bảng băm **chắc chắn** có va chạm cho tới việc dự đoán số điểm tối thiểu trong một hình vuông.
+
+**Mạch bài học:** Bản đồ kiến thức nền (dạng đơn giản, dạng tổng quát $$\lceil N/k\rceil$$, phân biệt đảm bảo 100% với xác suất sinh nhật) → Phát biểu & chứng minh phản chứng → Ví dụ tính tay cầm tay chỉ việc (5 điểm trong hình vuông $$2\times 2$$ & công thức $$k(m-1)+1$$) → Khung giải thích chậm: 3 bước chọn đúng "Chim" và "Chuồng" → Ứng dụng CS & Bài tập.
+
+## Bản đồ kiến thức nền: Nguyên lý Dirichlet và Tư duy Chứng minh Tồn tại
+
+### 1. Chứng minh tồn tại phi kiến thiết (Non-constructive Existence)
+Nguyên lý Dirichlet khẳng định **chắc chắn tồn tại** một chuồng bị quá tải, nhưng *không hề chỉ đích danh* đó là chuồng nào! Chính sự tối giản đó giúp nó áp dụng được trên những không gian khổng lồ nơi ta không thể liệt kê từng phần tử.
+
+### 2. Dạng tổng quát — cận dưới trung bình $$\lceil N/k \rceil$$
+Nếu chia $$N$$ đối tượng vào $$k$$ ngăn, thì theo nguyên lý trung bình, ít nhất một ngăn phải chứa **ít nhất $$\lceil N/k \rceil$$** đối tượng (hàm trần). Đảo ngược câu hỏi: muốn *chắc chắn* có một ngăn chứa ít nhất $$m$$ đối tượng, ta cần tối thiểu $$N = k(m - 1) + 1$$ đối tượng!
+
+### 3. Bảo đảm tuyệt đối (Dirichlet) vs. Xác suất cao (Nghịch lý Sinh nhật)
+Trong một phòng họp, cần tới **367 người** để Dirichlet bảo đảm 100% có hai người trùng sinh nhật (tính cả ngày 29/2); nhưng chỉ cần **23 người** là xác suất trùng sinh nhật đã vượt $$50\%$$! Phân biệt rành mạch "chắc chắn 100%" với "rất dễ xảy ra" là kỹ năng sống còn khi thiết kế bảng băm và ID hệ thống.
+
 Trong chương này, chúng ta nghiên cứu **nguyên lý Dirichlet** (còn gọi là nguyên lý chuồng chim hay chuồng bồ câu) — công cụ chứng minh sự tồn tại dựa trên một lập luận đếm đơn giản. Nếu có 11 tệp tin nhưng chỉ có 10 thư mục để lưu trữ, chắc chắn có ít nhất một thư mục chứa từ hai tệp trở lên. Mục 8.1 trình bày phát biểu cơ bản, dạng tổng quát và các ví dụ nhập môn.
 
 Điểm đặc biệt của nguyên lý Dirichlet là cho phép khẳng định một đối tượng hoặc cấu hình chắc chắn tồn tại mà không cần chỉ ra cụ thể nó nằm ở đâu. Nguyên lý này xuất hiện thường xuyên trong phân tích va chạm hàm băm, cân bằng tải, lập lịch và các chứng minh tổ hợp. Chỉ cần xác định đúng đâu là "đối tượng" và đâu là "ngăn chứa", ta có thể rút ra những kết luận chặt chẽ từ một nhận xét rất gọn.
@@ -180,6 +196,35 @@ Minh hoạ nguyên lý chuồng bồ câu: điều chỉnh số bồ câu và s�
 <div data-demo="counting-explainer" data-tab="pigeon"></div>
 </div>
 <script src="{{ '/public/js/explainers/counting-explainer.js' | relative_url }}"></script>
+
+
+## Ví dụ tính tay cầm tay chỉ việc: Bài toán 5 điểm trong hình vuông $$2\times 2$$ & Công thức $$k(m-1)+1$$
+
+1. **5 điểm bất kỳ trong hình vuông cạnh $$2$$:** Chia hình vuông $$2 \times 2$$ thành đúng $$k = 4$$ hình vuông con cạnh $$1 \times 1$$ ("4 chuồng"). Đặt $$N = 5$$ điểm ("5 chim") vào hình vuông lớn: theo Dirichlet, chắc chắn có ít nhất 1 hình vuông con chứa $$\lceil 5/4 \rceil = 2$$ điểm! Khoảng cách lớn nhất giữa hai điểm trong hình vuông cạnh $$1$$ là đường chéo $$\sqrt{1^2 + 1^2} = \sqrt{2} \approx 1.414$$ $$\implies$$ **luôn tồn tại hai điểm cách nhau không quá $$\sqrt{2}$$!**
+2. **Đếm số người tối thiểu để chắc chắn 4 người sinh cùng tháng:** Có $$k = 12$$ tháng ("chuồng"), muốn một tháng chứa ít nhất $$m = 4$$ người:
+   $$
+   N_{\min} = k(m - 1) + 1 = 12 \times (4 - 1) + 1 = \mathbf{37\text{ người}}!
+   $$
+   *(Với 36 người, kịch bản xấu nhất là mỗi tháng đúng 3 người — chưa đạt; người thứ 37 bắt buộc đẩy một tháng lên 4!)*
+
+### Khung giải thích: 3 bước giải mọi bài toán Dirichlet không bao giờ bị bí (nên đọc chậm)
+
+#### Bước 1: Xác định rõ cái gì là "Chim" ($$N$$) và cái gì là "Chuồng" ($$k$$)
+Đừng chọn bừa! Hãy nhìn vào **kết luận cần chứng minh** ("hai phần tử có cùng tính chất X"): chính **các giá trị có thể của tính chất X** là số chuồng $$k$$ (ví dụ: 4 hình vuông con, 12 tháng, hoặc $$m$$ số dư modulo $$m$$).
+
+#### Bước 2: Kiểm tra kịch bản "xấu nhất" (phân bố đều nhất có thể)
+Thử nhét tối đa $$m - 1$$ con chim vào mỗi chuồng: tổng cộng chứa được nhiều nhất $$k(m - 1)$$ con. Hễ $$N \ge k(m - 1) + 1$$ (tương đương $$\lceil N/k \rceil \ge m$$), kịch bản xấu nhất lập tức vỡ trận!
+
+#### Bước 3: Dịch ngược kết luận từ "cùng chuồng" về tính chất toán học
+Hai con chim nằm chung chuồng nghĩa là chúng có chung số dư modulo $$m$$ (hiệu chia hết cho $$m$$), nằm chung hình vuông con (khoảng cách $$\le \sqrt{2}$$), hoặc rơi vào cùng một bucket bảng băm (gây va chạm)!
+
+$$
+\text{Kết luận "cùng tính chất } X\text{"}
+\;\xrightarrow{\text{Chọn } k = \vert X\vert}\;
+N > k(m-1)
+\;\Longrightarrow\;
+\exists\,\text{chuồng chứa } \ge m \text{ phần tử}.
+$$
 
 ## Bài tập thực hành
 

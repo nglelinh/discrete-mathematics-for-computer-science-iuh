@@ -9,6 +9,8 @@ lang: en
 excerpt: "Các thứ tự duyệt preorder, inorder, postorder trên cây nhị phân; duyệt theo tầng level-order (BFS); độ phức tạp O(n) và ứng dụng trong tuần tự hóa, BST, giải phóng cây."
 ---
 
+> **Câu chuyện mở đầu:** Một mảng 1 chiều chỉ có hai cách đọc: từ trái sang phải hoặc ngược lại. Nhưng với một **cây phân cấp** (như cây biểu thức toán học hay cây thư mục), có tới **bốn thứ tự duyệt kinh điển** — và mỗi thứ tự phục vụ một mục đích hoàn toàn khác nhau: **Preorder** để sao chép cây, **Inorder** để in ra dãy đã sắp xếp trên BST, **Postorder** để tính dung lượng thư mục từ con lên cha (hoặc xóa cây an toàn!), và **Level-order (BFS)** để tìm nút gần gốc nhất!
+
 <div class="textbook-epigraph" markdown="1">
 
 "The order in which we visit the nodes is not cosmetic — it is the algorithm."
@@ -45,6 +47,53 @@ excerpt: "Các thứ tự duyệt preorder, inorder, postorder trên cây nhị 
 </div>
 
 Video dài khoảng 3 phút: minh họa cách đi quanh cây để đọc đồng thời preorder $$ABDECF$$, inorder $$DBEACF$$ và postorder $$DEBFCA$$; xét cây biểu thức $$(3+4)\times(5-2)$$ với ba dạng tiền tố, trung tố, hậu tố và cách tính biểu thức hậu tố bằng ngăn xếp; trình bày inorder trên BST cho dãy tăng dần, level-order bằng hàng đợi, và cách dựng lại cây từ preorder kết hợp inorder (cũng như lý do preorder kết hợp postorder không đủ xác định duy nhất cây).
+
+## Bản đồ kiến thức nền: Bốn chiến lược Duyệt Cây & Ứng dụng Thực tế
+
+### 1. Ba thứ tự Duyệt theo Chiều sâu (DFS — Dùng Đệ quy / Stack)
+- **Preorder (Gốc – Trái – Phải):** Thăm nút cha trước khi xuống con $$\to$$ xuất ký pháp tiền tố (Ba Lan), nhân bản cây.
+- **Inorder (Trái – Gốc – Phải):** Thăm con trái, rồi cha, rồi con phải $$\to$$ trên Cây Tìm kiếm Nhị phân (BST) luôn cho **dãy khóa tăng dần**!
+- **Postorder (Trái – Phải – Gốc):** Xử lý xong hết con rồi mới xử lý cha $$\to$$ xuất ký pháp hậu tố (RPN), tính biểu thức từ dưới lên, giải phóng bộ nhớ cây!
+
+### 2. Duyệt theo Tầng (Level-order / BFS — Dùng Hàng đợi Queue)
+- **Bản chất:** Thăm hết tầng 0, rồi tầng 1, tầng 2... nhờ cấu trúc FIFO của Queue — đảm bảo tìm đường đi ít bước nhất từ gốc.
+
+### 3. Khôi phục duy nhất Cây Nhị phân từ Chuỗi Duyệt
+- **Nguyên lý vàng:** Chỉ riêng Preorder (hoặc Postorder) là **chưa đủ** dựng lại cây. Nhưng cặp **(Inorder + Preorder)** hoặc **(Inorder + Postorder)** (với các khóa phân biệt) luôn **xác định duy nhất** cây nhị phân gốc!
+
+## Ví dụ tính tay cầm tay chỉ việc: Duyệt Cây Biểu thức của $$(3 + 4) \times (5 - 2)$$
+
+Dựng cây biểu thức có gốc là `×`, con trái là `+` (hai lá `3, 4`), con phải là `-` (hai lá `5, 2`):
+1. **Preorder (Gốc–Trái–Phải):** `×  +  3  4  -  5  2` (Ký pháp tiền tố Ba Lan — không cần dấu ngoặc!).
+2. **Inorder (Trái–Gốc–Phải):** `(3 + 4) × (5 - 2)` (Biểu thức trung tố quen thuộc).
+3. **Postorder (Trái–Phải–Gốc):** `3  4  +  5  2  -  ×` (Ký pháp hậu tố RPN!).
+   - **Tính thử RPN bằng Stack:** Đẩy `3, 4` $$\to$$ gặp `+` lấy ra tính `3+4 = 7` đẩy vào; đẩy `5, 2` $$\to$$ gặp `-` tính `5-2 = 3` đẩy vào; gặp `×` tính `7 × 3 = 21`! ✓
+4. **Level-order (BFS qua Queue):** `×  +  -  3  4  5  2`.
+
+### Khung giải thích: Quy tắc 4 bước không bao giờ nhầm thứ tự Duyệt Cây (nên đọc chậm)
+
+#### Bước 1: Nhớ đúng vị trí chữ "Gốc" trong tên tiếng Anh
+**Pre** = gốc đứng *trước* (Gốc–Trái–Phải); **In** = gốc đứng *giữa* (Trái–Gốc–Phải); **Post** = gốc đứng *sau* (Trái–Phải–Gốc). Trái luôn đứng trước Phải!
+
+#### Bước 2: Dùng "Đường viền quanh cây" (Euler Tour) để kiểm tra siêu nhanh bằng mắt
+Vẽ một nét bút ôm sát mép ngoài cây bắt đầu từ bên trái gốc: chạm **bên trái** nút là Preorder, chạm **phía dưới** nút là Inorder, chạm **bên phải** nút là Postorder!
+
+#### Bước 3: Phân tích độ phức tạp thống nhất
+Cả 4 phép duyệt đều thăm mỗi đỉnh đúng 1 lần nên tốn thời gian **$$\Theta(n)$$**. Bộ nhớ phụ của DFS là $$O(h)$$ (chiều cao cây), còn của BFS là $$O(w)$$ (bề rộng lớn nhất của một tầng — có thể tới $$O(n)$$ ở tầng lá!).
+
+#### Bước 4: Khôi phục cây từ Preorder + Inorder
+Phần tử đầu tiên của Preorder luôn là **gốc**; tìm vị trí gốc đó trong Inorder lập tức tách rành mạch cây con trái và cây con phải rồi gọi đệ quy!
+
+$$
+\text{Cây nhị phân }T
+\;\longrightarrow\;
+\begin{cases}
+\text{DFS (Stack, }O(h)\text{): Preorder / Inorder / Postorder} \\
+\text{BFS (Queue, }O(w)\text{): Level-order}
+\end{cases}
+\;\implies\;
+\Theta(n).
+$$
 
 ## Ba thứ tự DFS trên cây nhị phân
 

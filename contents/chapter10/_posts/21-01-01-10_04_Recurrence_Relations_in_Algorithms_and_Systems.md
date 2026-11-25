@@ -9,6 +9,16 @@ lang: en
 excerpt: "Tổng hợp các ứng dụng tiêu biểu của hệ thức truy hồi trong khoa học máy tính: từ Fibonacci, chia để trị, quy hoạch động đến mô hình tăng trưởng và xử lý tín hiệu."
 ---
 
+Nếu ba bài đầu của Chương 10 trang bị cho bạn bộ công cụ đại số để giải truy hồi trên giấy, thì bài này mở rộng ống kính ra toàn bộ thế giới phần mềm và kỹ thuật: từ tốc độ của **Merge Sort**, bảng ghi nhớ của **Quy hoạch động**, đường cong tăng trưởng người dùng cho đến **bộ lọc tín hiệu số IIR** trong tai nghe chống ồn và các mô hình chuỗi trong AI hiện đại.
+
+**Mạch bài học:** Từ bài toán đôi thỏ Fibonacci $$\longrightarrow$$ **Chia để trị & Định lý Thợ (Master Theorem)** $$\longrightarrow$$ **Quy hoạch động (DP)** $$\longrightarrow$$ mô hình tăng trưởng sản phẩm số, **bộ lọc IIR** trong DSP và tư duy trạng thái hồi quy trong AI.
+
+## Bản đồ kiến thức nền: Vì sao truy hồi là ngôn ngữ chung của Thuật toán, DSP và AI?
+
+- **Chia để trị & Định lý Thợ (Divide-and-Conquer & Master Theorem):** Biểu diễn thời gian chạy $$T(n) = aT(n/b) + f(n)$$ qua cuộc giằng co giữa tốc độ sinh nhánh đệ quy $$n^{\log_b a}$$ và chi phí gộp kết quả $$f(n)$$ tại mỗi tầng.
+- **Quy hoạch động (Dynamic Programming = Recurrence + Memoization):** Biến một hệ thức truy hồi có các bài toán con gối nhau (overlapping subproblems) từ cây đệ quy mũ $$O(2^n)$$ thành bảng điền tuần tự đa thức $$O(n)$$ hoặc $$O(n^2)$$.
+- **Hệ thống có ký ức (Stateful Systems — IIR Filters & RNN/SSM):** Trong xử lý tín hiệu số, bộ lọc phản hồi vô hạn $$y[n] = \alpha x[n] + (1-\alpha) y[n-1]$$ chính là truy hồi tuyến tính bậc 1; còn trong học sâu, mạng hồi quy (RNN) và mô hình không gian trạng thái (State Space Models như Mamba) đều cập nhật trạng thái ẩn $$h_t = F(h_{t-1}, x_t)$$ bằng đúng tư duy truy hồi.
+
 Ở các bài trước, chúng ta đã định nghĩa, phân loại và học cách giải quan hệ truy hồi tuyến tính (cả thuần nhất lẫn không thuần nhất). Bài này tổng hợp những **ứng dụng quan trọng** của hệ thức truy hồi trong khoa học máy tính và kỹ thuật hệ thống. Thay vì mô tả trực tiếp từng giá trị độc lập, truy hồi cho phép ta diễn đạt quy luật "trạng thái hiện tại phụ thuộc vào các trạng thái trước như thế nào". Từ bài toán đôi thỏ của Fibonacci (năm 1202) đến thuật toán chia để trị, quy hoạch động, mô hình tăng trưởng người dùng và bộ lọc tín hiệu (IIR filter), truy hồi là ngôn ngữ tự nhiên của mọi hệ thống có **trạng thái và ký ức**.
 
 ---
@@ -238,6 +248,30 @@ Khám phá Định lý Thợ cho truy hồi chia để trị $$T(n) = aT(n/b) + 
 <div data-demo="recurrence-explainer" data-mode="dc"></div>
 </div>
 <script src="{{ '/public/js/explainers/recurrence-explainer.js' | relative_url }}"></script>
+
+## Ví dụ tính tay cầm tay chỉ việc: Bộ lọc làm mượt IIR bậc 1 và Quy hoạch động cầu thang
+
+**Phần A — Chạy tay bộ lọc làm mượt mũ (Exponential Moving Average — IIR bậc 1) trong giám sát độ trễ API:**
+Hệ thức truy hồi: $$y_n = 0{,}5 x_n + 0{,}5 y_{n-1}$$ với $$y_0 = 0$$. Giả sử độ trễ API đo được có một cú sốc đơn vị ở giây 1 rồi trở về bình thường: $$x = (100, 0, 0, 0, \dots)$$ (ms).
+- $$y_1 = 0{,}5(100) + 0{,}5(0) = 50\text{ ms}$$
+- $$y_2 = 0{,}5(0) + 0{,}5(50) = 25\text{ ms}$$
+- $$y_3 = 0{,}5(0) + 0{,}5(25) = 12{,}5\text{ ms}$$
+- $$y_4 = 0{,}5(0) + 0{,}5(12{,}5) = 6{,}25\text{ ms}$$
+- **Nhận xét:** Nghiệm đặc trưng của phần thuần nhất là $$r = 0{,}5 < 1$$, nên cú sốc giảm theo cấp số nhân $$y_n = 100 \cdot (0{,}5)^n$$ và bộ lọc **ổn định (stable)**. Nếu hệ số phản hồi là $$1{,}1 > 1$$, chỉ một nhiễu nhỏ cũng làm đầu ra bùng nổ ra vô cực!
+
+**Phần B — So sánh độ phức tạp đệ quy thuần vs. DP cho bài toán leo $$n=5$$ bậc thang (mỗi bước đi 1 hoặc 2 bậc):**
+- Truy hồi: $$w_n = w_{n-1} + w_{n-2}$$ với $$w_0 = 1, w_1 = 1$$.
+- Điền bảng DP từ trái sang phải (chỉ cần 4 phép cộng, bộ nhớ $$O(1)$$):
+  $$w_2 = 1 + 1 = 2, \quad w_3 = 2 + 1 = 3, \quad w_4 = 3 + 2 = 5, \quad w_5 = 5 + 3 = 8\text{ cách.}$$
+- Trong khi đó, đệ quy thuần không lưu bảng phải gọi lại $$w_2$$ tới 3 lần và tổng số lời gọi bùng nổ theo $$O(\varphi^n)$$ với $$\varphi \approx 1{,}618$$.
+
+### Khung giải thích: Ba góc nhìn thống nhất của tư duy truy hồi trong kỹ thuật (nên đọc chậm)
+
+1. **Bước 1 — Dùng truy hồi để đo chi phí thuật toán:** Khi thấy hàm gọi lại chính nó trên nửa dữ liệu, viết ngay $$T(n) = aT(n/b) + f(n)$$ để biết liệu thuật toán thuộc $$O(n)$$, $$O(n\log n)$$ hay $$O(n^2)$$.
+2. **Bước 2 — Dùng truy hồi để thiết kế thuật toán (DP):** Nếu bài toán tối ưu có cấu trúc con tối ưu, viết công thức truy hồi trước rồi biến nó thành vòng lặp điền bảng — tránh sa lầy vào chi tiết cài đặt quá sớm.
+3. **Bước 3 — Dùng nghiệm đặc trưng để kiểm tra độ ổn định hệ thống:** Trong bộ lọc IIR, chuỗi tăng trưởng người dùng hay kiến trúc AI tuần tự, điều kiện $$\vert r_{\max} \vert < 1$$ đảm bảo nhiễu quá khứ tắt dần thay vì làm mất ổn định hệ thống.
+
+$$\text{Truy hồi } y_n = F(y_{n-1}, x_n) \;\Longrightarrow\; \text{Master Theorem (Chia để trị)} \;+\; \text{DP (Bảng nhớ)} \;+\; \text{IIR/SSM (Ổn định } \vert r \vert < 1\text{)}.$$
 
 ## Bài tập thực hành
 

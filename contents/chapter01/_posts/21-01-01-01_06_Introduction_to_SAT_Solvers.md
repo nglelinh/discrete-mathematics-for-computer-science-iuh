@@ -10,9 +10,21 @@ lang: en
 excerpt: "Giới thiệu bài toán thỏa mãn Boolean (SAT), vai trò của dạng chuẩn CNF và các thuật toán giải SAT từ Backtracking, DPLL đến CDCL."
 ---
 
-Ở mục trước, chúng ta đã học **quy tắc suy diễn**, trong đó **phép giải** (resolution) là nền tảng của chứng minh bác bỏ. Kết hợp với **dạng chuẩn tắc hội (CNF)** ở Mục 1.4, ta có thể đặt câu hỏi: làm thế nào máy tính tự động kiểm tra xem một công thức Boolean có thỏa mãn được hay không?
+Trên lý thuyết độ phức tạp tính toán, bài toán **Thỏa mãn Boolean (SAT)** là "ông tổ" của lớp bài toán **NP-đầy đủ** (Định lý Cook–Levin, 1971): trong trường hợp xấu nhất không có thuật toán đa thức nào được biết để giải nó. Thế nhưng trong thực tế kỹ thuật ngày nay, các bộ giải **SAT Solver hiện đại** (MiniSat, Kissat, CaDiCaL, Z3) giải gọn những công thức có **hàng trăm nghìn biến và hàng triệu mệnh đề** chỉ trong vài giây—từ giải xung đột gói phần mềm (`apt`, `cargo`, `uv`), lập lịch bay cho đến kiểm chứng chip Intel/AMD!
 
-Câu trả lời nằm ở **SAT solver** — một công cụ quan trọng của khoa học máy tính hiện đại. Không chỉ phục vụ các bài toán logic lý thuyết, SAT solver còn được ứng dụng rộng rãi trong kiểm chứng phần mềm, lập lịch, lập kế hoạch AI và phân tích bảo mật.
+## Bản đồ kiến thức nền: Bốn trụ cột biến bài toán NP-đầy đủ thành công cụ thực chiến
+
+1. **Định nghĩa SAT & Định dạng chuẩn CNF (DIMACS)**:
+   SAT hỏi: *Có tồn tại phép gán `True`/`False` cho các biến sao cho toàn bộ công thức CNF đều Đúng không?* Nếu có, trả về **SAT** kèm nghiệm (model); nếu không tồn tại phép gán nào, trả về **UNSAT** kèm chứng minh bác bỏ.
+
+2. **Lan truyền đơn vị (Unit Propagation) — Trái tim của DPLL**:
+   Nếu một mệnh đề trong CNF chỉ còn đúng **1 literal chưa gán** (mệnh đề đơn vị, ví dụ $(\neg x_3)$), ta **bắt buộc** phải gán $x_3 = \text{False}$ mà không cần rẽ nhánh đoán thử. Một phép gán cưỡng bức như vậy thường kéo theo hiệu ứng domino giải hàng trăm biến kế tiếp!
+
+3. **CDCL (Conflict-Driven Clause Learning)**:
+   Bước nhảy vọt từ DPLL (1962) lên SAT hiện đại (1996–nay): mỗi khi gặp mâu thuẫn, solver không chỉ quay lui 1 bước mà phân tích đồ thị suy diễn để **học ra một mệnh đề xung đột mới** (conflict clause), thêm vào CNF rồi **nhảy ngược không tuần tự (backjumping)** để vĩnh viễn không lặp lại cùng một ngõ cụt.
+
+4. **Mã hóa bài toán thực tế về SAT (Reduction)**:
+   Sudoku, tô màu đồ thị, lập lịch thi, tìm lỗi tràn bộ đệm trong mã C/Rust và giải phụ thuộc phiên bản thư viện đều có thể mã hóa thành các mệnh đề CNF rồi giao trọn cho SAT Solver giải.
 
 ## SAT là gì?
 
@@ -140,6 +152,23 @@ def check_clause(clause, assignment):
             return True
     return False  # clause bị vi phạm
 ```
+
+### Khung giải thích (nên đọc chậm): Chạy tay thuật toán DPLL + Unit Propagation trên công thức 3 biến
+
+Xét công thức CNF gồm 4 mệnh đề trên 3 biến $(x_1, x_2, x_3)$:
+$$F = \underbrace{(x_1 \lor x_2)}_{C_1} \;\land\; \underbrace{(\neg x_1 \lor x_3)}_{C_2} \;\land\; \underbrace{(\neg x_2 \lor \neg x_3)}_{C_3} \;\land\; \underbrace{(\neg x_1 \lor \neg x_3)}_{C_4}.$$
+
+Hãy chạy tay từng bước như một SAT Solver thực thụ:
+
+| Bước | Hành động của Solver | Trạng thái 4 mệnh đề sau rút gọn | Kết luận bước |
+| :---: | :--- | :--- | :--- |
+| 1 | Chưa có mệnh đề đơn vị → **Đoán nhánh 1**: gán $x_1 = \text{True}$ | $C_1$: Đúng (bỏ); $C_2 \to (x_3)$; $C_3 \to (\neg x_2 \lor \neg x_3)$; $C_4 \to (\neg x_3)$ | Xuất hiện 2 mệnh đề đơn vị $(x_3)$ và $(\neg x_3)$! |
+| 2 | **Unit Propagation** từ $C_2$: buộc $x_3 = \text{True}$ | Thay vào $C_4 = (\neg x_3)$ → trở thành **mệnh đề rỗng `()` (MÂU THUẪN!)** | Nhánh $x_1 = \text{True}$ bị loại (CDCL học ngay mệnh đề $(\neg x_1)$!) |
+| 3 | **Quay lui (Backtrack)** → thử nhánh $x_1 = \text{False}$ | $C_1 \to (x_2)$; $C_2$: Đúng (bỏ); $C_3 \to (\neg x_2 \lor \neg x_3)$; $C_4$: Đúng (bỏ) | $C_1$ trở thành mệnh đề đơn vị $(x_2)$! |
+| 4 | **Unit Propagation** từ $C_1$: buộc $x_2 = \text{True}$ | Thay vào $C_3 \to (\neg x_3)$ | $C_3$ trở thành mệnh đề đơn vị $(\neg x_3)$! |
+| 5 | **Unit Propagation** từ $C_3$: buộc $x_3 = \text{False}$ | Mọi mệnh đề đều đã thỏa mãn (tập mệnh đề rỗng) | **Trả về `SAT` với nghiệm $(x_1=\text{F}, x_2=\text{T}, x_3=\text{F})$!** |
+
+Kiểm tra nhanh nghiệm $(F, T, F)$: $C_1 = F \lor T = T$; $C_2 = T \lor F = T$; $C_3 = F \lor T = T$; $C_4 = T \lor T = T$. Ta chỉ phải đoán **1 lần duy nhất** thay vì duyệt cả $2^3 = 8$ dòng bảng chân trị!
 
 ## Các thuật toán SAT Solver cơ bản
 

@@ -9,6 +9,8 @@ lang: en
 excerpt: "Khảo sát nguồn gốc thuật ngữ algorithm, tác động của bậc tăng trưởng khi dữ liệu đạt quy mô lớn và các đánh đổi thực tế giữa thời gian, bộ nhớ và tính ổn định."
 ---
 
+> **Câu chuyện mở đầu:** Ngay cả từ **"Algorithm" (Thuật toán)** cũng mang trong mình một hành trình lịch sử dài hơn 1.200 năm: nó xuất phát từ tên Latin hóa của nhà toán học Ba Tư thế kỷ IX **Muhammad ibn Musa al-Khwarizmi** tại Nhà Thông Thái (Baghdad)! Từ những bảng tính tay giải phương trình bậc hai của al-Khwarizmi, đến bộ sách kinh điển *The Art of Computer Programming* của Donald Knuth, rồi đến các hệ thống tìm kiếm xử lý hàng tỷ truy vấn mỗi ngày — lịch sử thuật toán chính là lịch sử chinh phục **bức tường quy mô $$n$$**!
+
 <div class="textbook-epigraph" markdown="1">
 
 "Algorithms are the verbs of computation — and scale is where their cost becomes visible."
@@ -37,6 +39,45 @@ Các mục 14.1–14.3 đã trình bày định nghĩa thuật toán và các k�
 **Từ khóa**: scale, indexing, distributed sort, practical complexity.
 
 </div>
+
+## Bản đồ kiến thức nền: Vì sao Độ phức tạp quyết định ranh giới "Khả thi vs. Bất khả thi"?
+
+### 1. Ranh giới Đa thức ($$P$$) vs. Hàm mũ ($$2^n$$)
+- **Bản chất:** Phần cứng nhanh gấp 1.000 lần chỉ giúp thuật toán $$O(2^n)$$ giải thêm được đúng **$$\log_2(1000) \approx 10$$ phần tử**! Ngược lại, cải tiến thuật toán từ $$O(n^2)$$ xuống $$O(n\log n)$$ cho phép xử lý dữ liệu lớn gấp **hàng chục nghìn lần** trên cùng một chiếc máy tính cũ!
+
+### 2. Lớp Bài toán $$P$$, $$NP$$ và $$NP$$-đầy đủ
+- **Bản chất:** $$P$$ là lớp bài toán *giải* được trong thời gian đa thức; $$NP$$ là lớp bài toán *kiểm tra* nghiệm đúng trong thời gian đa thức. Câu hỏi **$$P = NP?$$** là một trong 7 Bài toán Thiên niên kỷ (1 triệu USD) chưa có lời giải!
+
+### 3. Nghệ thuật Quy mô Toàn cầu (Global Scale)
+- **Bản chất:** Khi $$n$$ đạt quy mô Internet (tỷ trang web, tỷ người dùng), ngay cả $$O(n^2)$$ cũng trở nên bất khả thi; các hệ thống thực tế bắt buộc phải dựa vào thuật toán $$O(n\log n)$$, $$O(n)$$, hoặc dưới tuyến tính $$O(\log n)$$ (chỉ mục B-tree, bảng băm, thuật toán xấp xỉ & ngẫu nhiên hóa).
+
+## Ví dụ tính tay cầm tay chỉ việc: Phần cứng tăng tốc $$1000\times$$ giúp được gì cho $$O(n^2)$$ vs. $$O(2^n)$$?
+
+Giả sử máy tính cũ thực hiện được tối đa $$M$$ phép tính trong 1 giây, cho phép giải kích thước tối đa $$n_{\text{cũ}}$$. Bây giờ bạn mua siêu máy tính mới **nhanh gấp $$1000$$ lần** ($$1000M$$ phép tính/giây):
+1. **Thuật toán $$O(n)$$:** $$n_{\text{mới}} = 1000\, n_{\text{cũ}}$$ (quy mô tăng **1000 lần**!).
+2. **Thuật toán $$O(n^2)$$:** $$n_{\text{mới}}^2 = 1000\,n_{\text{cũ}}^2 \implies n_{\text{mới}} = \sqrt{1000}\,n_{\text{cũ}} \approx 31.6\,n_{\text{cũ}}$$ (tăng **31.6 lần**).
+3. **Thuật toán $$O(2^n)$$:** $$2^{n_{\text{mới}}} = 1000 \cdot 2^{n_{\text{cũ}}} \implies n_{\text{mới}} = n_{\text{cũ}} + \log_2(1000) \approx n_{\text{cũ}} + 9.97$$!
+   Siêu máy tính đắt gấp nghìn lần chỉ giúp thuật toán hàm mũ giải thêm được đúng **9 phần tử**! (Đó là minh chứng sắc bén nhất vì sao **thiết kế thuật toán tốt luôn thắng mua phần cứng mạnh**!)
+
+### Khung giải thích: 4 bài học chiến lược từ lịch sử Thuật toán (nên đọc chậm)
+
+#### Bước 1: Luôn kiểm tra "trần $$n$$ thực tế" trước khi chọn thuật toán
+Với CPU $$\sim 10^8$$ phép toán/giây: $$O(2^n)$$ chỉ chạy nổi $$n \le 25$$; $$O(n^2)$$ chạy tốt tới $$n \le 10^4$$; $$O(n\log n)$$ dễ dàng xử lý $$n \sim 10^7$$!
+
+#### Bước 2: Nhận diện sớm bài toán $$NP$$-khó
+Khi gặp bài toán Người du lịch (TSP), Tô màu đồ thị, SAT hay Balô (Knapsack), đừng tốn công tìm thuật toán chính xác đa thức — hãy chuyển sang quy hoạch động, nhánh cận, heuristic, hoặc thuật toán xấp xỉ có bảo chứng sai số!
+
+#### Bước 3: Trả giá bằng Bộ nhớ để mua Thời gian (Time–Space Tradeoff)
+Bảng băm (Hash Table), bảng tra cứu trước (Memoization) và chỉ mục cơ sở dữ liệu là những ví dụ kinh điển dùng thêm RAM để kéo thời gian từ $$O(n)$$ xuống $$O(1)$$ hoặc $$O(\log n)$$.
+
+#### Bước 4: Đừng dừng ở "chạy đúng trên máy cá nhân"
+Ở quy mô toàn cầu, thuật toán còn phải tính tới bộ nhớ đệm (cache locality), tính song song phân tán (MapReduce) và độ trễ mạng.
+
+$$
+\text{Phần cứng }1000\times \;(\text{chỉ } +10\text{ cho }2^n)
+\quad \ll \quad
+\text{Đột phá thuật toán }(2^n \to n\log n \to \log n).
+$$
 
 ## Từ Al-Khwarizmi đến Knuth
 

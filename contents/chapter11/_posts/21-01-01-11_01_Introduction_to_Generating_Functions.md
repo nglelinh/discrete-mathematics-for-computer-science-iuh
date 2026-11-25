@@ -18,6 +18,17 @@ excerpt: "Giới thiệu hàm sinh (generating function) — công cụ đóng g
 
 </div>
 
+
+Hãy hình dung bạn có cả một dãy số vô hạn $$a_0, a_1, a_2, \dots$$ — thay vì giữ từng con số rời rạc trong đầu, bạn "treo" chúng lên một sợi dây phơi vô hạn gắn nhãn $$1, x, x^2, x^3, \dots$$ để tạo thành một biểu thức duy nhất $$G(x) = \sum_{n=0}^{\infty} a_n x^n$$. Phép đóng gói kỳ diệu ấy — gọi là **hàm sinh (generating function)** — biến những bài toán đếm tổ hợp hóc búa thành các phép nhân, chia đa thức hoàn toàn cơ học!
+
+**Mạch bài học:** Định nghĩa **hàm sinh thường (OGF)** và **chuỗi lũy thừa hình thức** $$\longrightarrow$$ từ điển ánh xạ giữa phép toán dãy và phép toán trên $$G(x)$$ $$\longrightarrow$$ các **hàm sinh chuẩn** (cấp số nhân, nhị thức mở rộng) $$\longrightarrow$$ ứng dụng đếm nghiệm nguyên và tổ hợp có ràng buộc.
+
+## Bản đồ kiến thức nền: Hàm sinh và chuỗi lũy thừa hình thức nghiên cứu gì?
+
+- **Vành chuỗi lũy thừa hình thức (Formal Power Series $$\mathbb{R}[[x]]$$):** Khác với giải tích thực nơi ta phải lo bán kính hội tụ, trong tổ hợp $$x$$ chỉ là một **biến đánh dấu vị trí (placeholder)**. Ta cộng, nhân, lấy đạo hàm hình thức chuỗi lũy thừa để theo dõi hệ số $$[x^n]G(x)$$ mà không cần thay giá trị số cho $$x$$.
+- **Tích chập Cauchy & Bài toán đếm phân hoạch (Convolution & Counting):** Khi nhân hai hàm sinh $$A(x)B(x)$$, hệ số của $$x^n$$ tự động là tổng tích chập $$\sum_{k=0}^n a_k b_{n-k}$$ — đúng bằng quy tắc cộng–nhân khi chọn hai thành phần độc lập có tổng kích thước bằng $$n$$!
+- **Định lý Nhị thức mở rộng (Extended Binomial Theorem):** Khai triển $$(1-x)^{-k} = \sum_{n=0}^{\infty} \binom{n+k-1}{k-1} x^n$$ kết nối trực tiếp đại số hàm hữu tỷ với bài toán tổ hợp lặp (stars and bars) đã học ở Chương 7.
+
 Trong chương này, chúng ta tìm hiểu về **hàm sinh** (generating function) — công cụ đóng gói một dãy vô hạn $$a_0, a_1, a_2, \ldots$$ vào một biểu thức duy nhất $$G(x) = \sum_{n\ge 0} a_n x^n$$ để có thể thao tác bằng các phép biến đổi đại số. Thay vì liệt kê từng số hạng rời rạc, ta làm việc trên chuỗi lũy thừa hình thức; các phép cộng, nhân, dịch chỉ số và đạo hàm trên $$G(x)$$ phản ánh trực tiếp cấu trúc của bài toán đếm hoặc hệ thức truy hồi phía sau. Dưới góc nhìn khoa học máy tính, đây là một cách **chuyển đổi biểu diễn** — tương tự việc chọn cấu trúc dữ liệu phù hợp trước khi xử lý — giúp lời giải ngắn gọn và có hệ thống hơn.
 
 Bài học này trình bày định nghĩa hàm sinh, ký hiệu trích xuất hệ số $$[x^n]G(x)$$ và các phép toán cơ bản trên hàm sinh.
@@ -137,6 +148,35 @@ Nhập một dãy ngắn để xem hàm sinh tương ứng và thử khai triể
 <div data-demo="generating-function-explorer"></div>
 </div>
 <script src="{{ '/public/js/generating-function-explorer.js' | relative_url }}"></script>
+
+## Ví dụ tính tay cầm tay chỉ việc: Đếm số cách đổi 4 đồng bằng hàm sinh
+
+Giả sử bạn muốn chọn **tổng cộng 4 viên kẹo** từ 3 loại (Dâu, Cam, Chanh) với ràng buộc:
+- Kẹo Dâu: chọn tối đa **2 viên** ($$0, 1, 2$$).
+- Kẹo Cam: chọn số **chẵn** viên ($$0, 2, 4, \dots$$).
+- Kẹo Chanh: chọn bao nhiêu cũng được ($$0, 1, 2, \dots$$).
+
+1. **Bước 1 — Dịch từng ràng buộc thành một nhân tử hàm sinh:**
+   - Dâu: $$1 + x + x^2 = \frac{1 - x^3}{1 - x}$$.
+   - Cam: $$1 + x^2 + x^4 + \cdots = \frac{1}{1 - x^2}$$.
+   - Chanh: $$1 + x + x^2 + \cdots = \frac{1}{1 - x}$$.
+2. **Bước 2 — Nhân 3 nhân tử lại để tìm hệ số $$[x^4]$$:**
+   Vì ta chỉ cần hệ số của $$x^4$$, mọi số hạng bậc $$> 4$$ có thể bỏ qua ngay khi nhân tay:
+   $$G(x) = (1 + x + x^2)(1 + x^2 + x^4 + \cdots)(1 + x + x^2 + x^3 + x^4 + \cdots).$$
+   - Nhân hai ngoặc đầu (giữ đến $$x^4$$):
+     $$(1 + x + x^2)(1 + x^2 + x^4) = 1 + x + 2x^2 + x^3 + 2x^4 + \cdots$$
+   - Nhân tiếp với $$(1 + x + x^2 + x^3 + x^4)$$ và chỉ gom các tích tạo ra $$x^4$$:
+     $$[x^4]G(x) = 1\cdot 1 + 1\cdot 1 + 2\cdot 1 + 1\cdot 1 + 2\cdot 1 = 1 + 1 + 2 + 1 + 2 = 7\text{ cách!}$$
+3. **Bước 3 — Kiểm chứng bằng cách liệt kê tay 7 bộ (Dâu, Cam, Chanh) có tổng = 4:**
+   $$(0,0,4),\; (0,2,2),\; (0,4,0),\; (1,0,3),\; (1,2,1),\; (2,0,2),\; (2,2,0)$$ — đúng **7 cách**, không thiếu, không trùng!
+
+### Khung giải thích: Vì sao "đóng gói dãy thành hàm" lại mạnh đến vậy (nên đọc chậm)
+
+1. **Bước 1 — Biến số mũ thành "bộ đếm tổng":** Quy tắc $$x^a \cdot x^b = x^{a+b}$$ tự động thực hiện phép cộng ràng buộc (tổng số viên kẹo = 4) mà bạn không phải chia trường hợp thủ công.
+2. **Bước 2 — Biến hệ số thành "số cách chọn":** Mỗi lần cùng một số mũ $$x^4$$ xuất hiện từ các nhánh nhân khác nhau, phép cộng đa thức tự động gom chúng lại thành tổng số cách hợp lệ.
+3. **Bước 3 — Rút gọn vô hạn thành hữu hạn:** Chuỗi vô hạn $$1 + x + x^2 + \cdots$$ thu gọn thành phân thức tí hon $$\frac{1}{1-x}$$, giúp ta dùng toàn bộ kỹ thuật đại số (rút gọn, tách phân thức, đạo hàm) để xử lý những bài toán đếm mà cách liệt kê thuần túy hoàn toàn bất lực.
+
+$$(a_n)_{n\ge 0} \;\xleftrightarrow{\text{đóng gói}}\; G(x) = \sum_{n=0}^{\infty} a_n x^n \;\xrightarrow{\text{nhân đại số}}\; [x^n]\big(A(x)B(x)\big) = \sum_{k=0}^n a_k b_{n-k}.$$
 
 ## Bài tập
 

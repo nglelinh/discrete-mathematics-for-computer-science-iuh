@@ -10,9 +10,26 @@ lang: en
 excerpt: "Bài đọc mở rộng nối nền tảng lý thuyết hàm số với hàm tính toán được, lập trình hàm, hàm băm mật mã, thiết kế API và mô hình học máy."
 ---
 
+
+Thập niên 1930 chứng kiến một cuộc hội tụ kỳ diệu trong lịch sử khoa học máy tính: Alonzo Church định nghĩa tính toán bằng phép gọi hàm thuần túy (*Lambda Calculus*), còn Alan Turing mô hình hóa nó bằng một cỗ máy băng giấy cơ học—và cả hai thế giới tưởng chừng đối lập ấy hóa ra lại tương đương nhau tuyệt đối. Từ nền móng đó, khái niệm **hàm số** đã tiến hóa xuyên suốt gần một thế kỷ để trở thành xương sống của lập trình hàm (`map`/`filter`/`reduce`), hàm băm mật mã SHA-256, thiết kế API và các mạng nơ-ron học sâu ngày nay.
+
 Ở các mục trước, chúng ta đã xây dựng nền tảng lý thuyết về hàm số. Mục bổ sung này kết nối khái niệm hàm toán học với hàm tính toán được, lập trình hàm, hàm băm mật mã, thiết kế API và mô hình học máy.
 
 Mỗi khi gọi `user.get_profile(user_id)` hay viết `orders.map(o => o.total)`, ta đều sử dụng cùng một hợp đồng: đầu vào rõ ràng, đầu ra xác định và có thể kiểm thử độc lập. Từ Church và Turing cho đến `map`/`filter`/`reduce` và các endpoint dự đoán trong học máy, khái niệm hàm luôn là một trong những nền tảng bền vững nhất của khoa học máy tính.
+
+## Bản đồ kiến thức nền: Bốn chặng tiến hóa của Hàm số trong Khoa học Máy tính
+
+1. **Từ hàm toán học đến Hàm tính toán được (Luận đề Church–Turing)**:
+   Không phải mọi hàm toán học đều có thuật toán tính được (ví dụ bài toán dừng *Halting Problem*). Church và Turing đã vẽ ra ranh giới chính xác cho lớp các hàm mà máy tính có thể thực thi hữu hạn bước.
+
+2. **Lập trình hàm (Functional Programming) — Hàm thuần khiết & Bậc cao**:
+   **Hàm thuần (pure function)** luôn trả về cùng một kết quả cho cùng đầu vào và không gây tác dụng phụ (*side effect*). Khi kết hợp với hàm bậc cao (`map`, `filter`, `reduce`) và phép hợp (*composition*), mã nguồn trở nên ngắn gọn, dễ kiểm thử và an toàn khi chạy song song.
+
+3. **Hàm băm mật mã (Cryptographic Hash) — Ánh xạ một chiều bất khả nghịch**:
+   Hàm băm $H: \{0,1\}^* \to \{0,1\}^{256}$ cố tình phá vỡ tính song ánh (miền vào vô hạn, miền ra hữu hạn) nhưng đòi hỏi ba tường thành bảo mật: kháng tiền ảnh (không đảo ngược được), kháng tiền ảnh thứ hai và kháng va chạm.
+
+4. **Học máy & Thiết kế API — Hàm tham số hóa $f_\theta(x)$ và Hợp đồng giao diện**:
+   Mỗi mô hình AI thực chất là một hàm khổng lồ $f_\theta(x)$ nơi ta không tự viết tay công thức, mà dùng **hàm mất mát (loss)** và gradient descent để tự động tìm bộ tham số $\theta$ tối ưu; còn một API tốt chính là một đặc tả hàm chặt chẽ về miền vào, miền ra và mã lỗi.
 
 ## Mục tiêu học tập
 
@@ -585,6 +602,24 @@ def lambda_handler(event: dict, context) -> dict:
 
 <p class="textbook-figure-caption" data-figure="6.24">Serverless functions và data pipelines hoạt động như chuỗi hàm hợp — mỗi bước ánh xạ đầu vào sang đầu ra xác định.</p>
 ---
+
+### Khung giải thích (nên đọc chậm): Chạy tay một chuỗi `filter–map–reduce` và một bước học tham số của hàm $f_w(x)$
+
+**Phần A — Chuỗi xử lý hàm thuần khiết (Pure Pipeline)**
+
+Cho danh sách điểm số `S = [4, 7, 9, 5, 10]`. Ta ghép 3 hàm bậc cao nối tiếp nhau (không hề làm biến đổi mảng gốc `S`):
+1. `filter(x >= 5, S)` $\to$ `[7, 9, 5, 10]` (lọc giữ các điểm đạt).
+2. `map(x -> x * 10, ...)` $\to$ `[70, 90, 50, 100]` (quy đổi sang thang điểm 100).
+3. `reduce((acc, x) -> acc + x, ..., 0)` $\to$ $70 + 90 + 50 + 100 = \mathbf{310}$ (tổng điểm, trung bình $\mathbf{77{,}5}$).
+
+**Phần B — Một bước huấn luyện mô hình Học máy như tối ưu hóa hàm $f_w(x) = w \cdot x$**
+
+Giả sử ta có một điểm dữ liệu $(x = 2,\; y = 10)$ (hàm đúng là $y = 5x$), nhưng mô hình khởi tạo sai ở $w_0 = 3$, tốc độ học $\eta = 0{,}1$, hàm mất mát $L(w) = \frac{1}{2}(wx - y)^2$:
+1. **Dự đoán ban đầu**: $\hat{y}_0 = f_3(2) = 3 \times 2 = 6 \implies$ sai số $e_0 = \hat{y}_0 - y = 6 - 10 = -4$, độ mất mát $L(3) = \frac{1}{2}(-4)^2 = \mathbf{8{,}00}$.
+2. **Tính đạo hàm theo tham số $w$**: $L'(w) = (wx - y)\cdot x = (-4) \times 2 = \mathbf{-8}$.
+3. **Cập nhật tham số ngược chiều gradient**:
+   $$w_1 = w_0 - \eta \cdot L'(w_0) = 3 - 0{,}1 \times (-8) = \mathbf{3{,}8}.$$
+4. **Kiểm tra sau đúng 1 bước**: Dự đoán mới $\hat{y}_1 = 3{,}8 \times 2 = 7{,}6$, mất mát tụt mạnh xuống $L(3{,}8) = \frac{1}{2}(7{,}6 - 10)^2 = \mathbf{2{,}88}$ (giảm từ `8,00` xuống `2,88` chỉ sau một vòng lặp!). Mọi mô hình LLM hàng trăm tỷ tham số đều lặp lại chính cơ chế tối ưu hàm này ở quy mô lớn hơn.
 
 ## Kết luận
 

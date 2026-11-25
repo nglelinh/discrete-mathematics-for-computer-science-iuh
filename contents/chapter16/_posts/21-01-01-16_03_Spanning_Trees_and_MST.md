@@ -9,6 +9,8 @@ lang: en
 excerpt: "Cây khung, cây khung nhỏ nhất (MST), tính chất tham lam (cut property), thuật toán Kruskal (Union–Find) và Prim (hàng đợi ưu tiên), độ phức tạp và ứng dụng mạng."
 ---
 
+> **Câu chuyện mở đầu:** Công ty điện lực cần kéo cáp quang kết nối $$n$$ thành phố với **tổng chi phí thấp nhất**. Họ không cần mọi cặp thành phố đều có đường nối trực tiếp — chỉ cần tất cả thông suốt với nhau (một **cây khung nhỏ nhất — MST**). Kỳ diệu thay, dù phần lớn các bài toán tối ưu trên đồ thị đều rất khó, với MST thì **chiến lược tham lam (Greedy)** lại cho ra **đáp án tối ưu toàn cục 100%** nhờ hai thuật toán kinh điển **Kruskal** và **Prim**!
+
 <div class="textbook-epigraph" markdown="1">
 
 "A minimum spanning tree is the cheapest way to keep a network connected."
@@ -37,6 +39,52 @@ Bài toán kết nối toàn bộ các trạm với **tổng chi phí cáp nhỏ
 **Từ khóa**: spanning tree, MST, Kruskal, Prim, Union–Find, greedy.
 
 </div>
+
+## Bản đồ kiến thức nền: Cây khung Nhỏ nhất (MST) và Tính chất Lát cắt (Cut Property)
+
+### 1. Vì sao Tham lam lại đúng tuyệt đối trên MST? — Tính chất Lát cắt
+- **Định lý Lát cắt (Cut Property):** Chia tập đỉnh $$V$$ thành hai nhóm bất kỳ $$(S, V\setminus S)$$. Cạnh có **trọng số nhỏ nhất** bắc ngang qua hai nhóm đó **chắc chắn thuộc về một cây khung nhỏ nhất**! (Chứng minh bằng phép tráo đổi cạnh: nếu MST không dùng cạnh nhẹ nhất $$e$$, thêm $$e$$ vào tạo chu trình cắt qua lát cắt thêm một cạnh $$e'$$ nặng hơn $$\implies$$ đổi $$e'$$ lấy $$e$$ giảm tổng trọng số!)
+
+### 2. Hai chiến lược Tham lam: Kruskal (theo cạnh) vs. Prim (theo đỉnh)
+- **Kruskal:** Sắp xếp mọi cạnh tăng dần theo trọng số; lần lượt nhặt cạnh nhỏ nhất **không tạo chu trình** (kiểm tra cực nhanh trong $$O(\alpha(V))$$ bằng cấu trúc **Disjoint Set Union — DSU**). Tổng thời gian: $$O(E \log E)$$, cực mạnh trên **đồ thị thưa**!
+- **Prim:** Xuất phát từ 1 đỉnh gốc, mỗi bước mở rộng cây bằng cạnh nhẹ nhất nối từ cây hiện tại sang đỉnh chưa thăm (dùng **Min-Heap**). Tổng thời gian: $$O(E \log V)$$ (hoặc $$O(V^2)$$ trên đồ thị dày đặc).
+
+## Ví dụ tính tay cầm tay chỉ việc: Chạy Kruskal trên đồ thị 4 đỉnh $$A, B, C, D$$
+
+Cho đồ thị vô hướng 4 đỉnh với 5 cạnh có trọng số:
+$$(A, B) = 1,\quad (B, C) = 2,\quad (A, C) = 3,\quad (C, D) = 4,\quad (B, D) = 5.$$
+Ta cần chọn đúng $$V - 1 = 3$$ cạnh theo thứ tự trọng số tăng dần:
+1. Xét $$(A, B) = 1$$: $$A$$ và $$B$$ ở hai tập rời nhau $$\implies$$ **CHỌN** (nhóm: $$\{A,B\}, \{C\}, \{D\}$$).
+2. Xét $$(B, C) = 2$$: $$B$$ và $$C$$ ở hai tập rời nhau $$\implies$$ **CHỌN** (nhóm: $$\{A,B,C\}, \{D\}$$).
+3. Xét $$(A, C) = 3$$: $$A$$ và $$C$$ đã chung nhóm $$\{A,B,C\}$$ (thêm vào sẽ tạo chu trình $$A-B-C$$!) $$\implies$$ **BỎ QUA**!
+4. Xét $$(C, D) = 4$$: $$C$$ và $$D$$ ở hai tập rời nhau $$\implies$$ **CHỌN** (nhóm: $$\{A,B,C,D\}$$).
+
+Đủ $$3$$ cạnh $$\implies$$ **DỪNG!** MST gồm $$\{(A,B), (B,C), (C,D)\}$$ với tổng trọng số tối ưu bằng **$$1 + 2 + 4 = 7$$**!
+
+### Khung giải thích: Phân biệt rạch ròi Cây MST với Cây Đường đi ngắn nhất (Dijkstra) (nên đọc chậm)
+
+#### Bước 1: Đừng nhầm MST với Dijkstra!
+MST tối ưu **tổng chi phí toàn bộ mạng cáp**, không hề cam kết đường đi từ $$A$$ đến $$D$$ là ngắn nhất! (Ví dụ tam giác cạnh $$5, 5, 8$$: MST dùng hai cạnh $$5+5=10$$ nên đường giữa hai đỉnh kia dài $$10$$ thay vì cạnh trực tiếp $$8$$!)
+
+#### Bước 2: Dùng DSU (Path Compression + Union by Rank) cho Kruskal
+Nhờ DSU, kiểm tra chu trình tốn gần như $$O(1)$$ mỗi cạnh; nút thắt duy nhất của Kruskal là bước sắp xếp cạnh $$O(E\log E)$$.
+
+#### Bước 3: Xử lý cạnh trọng số trùng nhau
+Nếu mọi trọng số đôi một khác nhau, MST là **duy nhất**. Nếu có cạnh bằng nhau, có thể có nhiều MST khác nhau nhưng **tổng trọng số nhỏ nhất luôn duy nhất**!
+
+#### Bước 4: Ứng dụng ngoài hạ tầng mạng — Gom cụm (Single-Linkage Clustering)
+Chạy Kruskal dừng sớm trước $$k - 1$$ cạnh cuối cùng sẽ tự động chia dữ liệu thành đúng $$k$$ cụm có khoảng cách liên cụm lớn nhất!
+
+$$
+\text{Đồ thị có trọng số }G=(V,E,w)
+\;\xrightarrow{\;\text{Cut Property}\;}\;
+\begin{cases}
+\text{Kruskal + DSU: } O(E\log E) \\
+\text{Prim + Heap: } O(E\log V)
+\end{cases}
+\;\implies\;
+\text{MST tối ưu toàn cục}.
+$$
 
 ## Cây khung và MST
 

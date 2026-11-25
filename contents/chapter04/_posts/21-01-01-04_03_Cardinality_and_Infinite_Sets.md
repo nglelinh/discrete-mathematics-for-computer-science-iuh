@@ -10,7 +10,21 @@ lang: en
 excerpt: "Trình bày lực lượng tập hợp, tập lũy thừa, nguyên lý bao hàm–loại trừ cho hai và ba tập, tập đếm được và không đếm được, lập luận đường chéo Cantor và định lý Schröder–Bernstein."
 ---
 
-Ở hai mục trước, chúng ta đã định nghĩa tập hợp cùng các phép toán hợp, giao, hiệu và phần bù. Mục này mở rộng sang **lực lượng tập hợp** (cardinality) và **nguyên lý bao hàm–loại trừ**. Khi hệ thống tăng quy mô, câu hỏi đặt ra không chỉ là "có những phần tử nào" mà còn là "có bao nhiêu phần tử" — chẳng hạn số người dùng hoạt động, số ca kiểm thử hay mức độ chồng lấn giữa các nhóm điều kiện. Khái niệm lực lượng cung cấp cách đo kích thước của cả tập hữu hạn lẫn tập vô hạn. Khi các tập hợp giao nhau, việc cộng trực tiếp số phần tử từng tập sẽ gây đếm trùng; nguyên lý bao hàm–loại trừ giải quyết vấn đề đó và xuất hiện rộng rãi trong tổ hợp, xác suất và phân tích thuật toán.
+Đếm số phần tử của một tập hữu hạn thì dễ—nhưng làm sao so sánh kích thước của hai **tập vô hạn** như tập số tự nhiên $\mathbb{N}$, tập số chẵn, tập số hữu tỉ $\mathbb{Q}$ và tập số thực $\mathbb{R}$? Georg Cantor đã làm rung chuyển toàn bộ nền toán học thế kỷ 19 khi chứng minh rằng **có những cái vô hạn lớn hơn cái vô hạn khác**—và chính kỹ thuật **đường chéo hóa (diagonalization)** của ông sau này đã giúp Alan Turing chứng minh tồn tại những bài toán *không một máy tính nào giải được*!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Lực lượng (Cardinality) & Tập Vô hạn
+
+1. **So sánh lực lượng bằng Song ánh (Bijection)**:
+   Hai tập $A$ và $B$ có cùng lực lượng ($\vert A \vert = \vert B \vert$) khi và chỉ khi tồn tại một ánh xạ 1–1 và lên (song ánh) giữa chúng—một định nghĩa hoạt động mượt mà cho cả tập hữu hạn lẫn vô hạn!
+
+2. **Tập đếm được (Countable — $\aleph_0$)**:
+   Một tập vô hạn là **đếm được** nếu ta có thể lập danh sách đánh số $a_1, a_2, a_3, \dots$ khớp 1–1 với $\mathbb{N}$. Điều kỳ diệu: tập số nguyên $\mathbb{Z}$ và cả tập phân số $\mathbb{Q}$ đều **đếm được** (cùng kích thước với $\mathbb{N}$!).
+
+3. **Tập không đếm được (Uncountable) & Lập luận đường chéo Cantor**:
+   Tập số thực $\mathbb{R}$ và tập lũy thừa $\mathcal{P}(\mathbb{N})$ là **không đếm được**: mọi nỗ lực lập danh sách toàn bộ chúng đều bỏ sót ít nhất một phần tử mới tạo ra bằng cách lật chữ số/bit trên đường chéo chính.
+
+4. **Hệ quả chấn động cho Khoa học Máy tính**:
+   Tập tất cả các chương trình máy tính hợp lệ (chuỗi ký tự hữu hạn) là **đếm được** ($\aleph_0$), nhưng tập tất cả các bài toán quyết định $f: \mathbb{N} \to \{0, 1\}$ là **không đếm được** ($2^{\aleph_0}$) ⇒ **tồn tại vô số bài toán không thể tính toán được (uncomputable)!**
 
 ## Mục tiêu học tập
 
@@ -95,6 +109,22 @@ $$\mathcal{P}(A)=\{\emptyset,\{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\}
 Tập này có $$2^3=8$$ phần tử.
 </div>
 
+
+### Khung giải thích (nên đọc chậm): Tự tay dựng số bị bỏ sót bằng Lập luận đường chéo Cantor trên 4 chuỗi nhị phân
+
+Giả sử ai đó tuyên bố đã lập được danh sách đánh số **tất cả** các chuỗi nhị phân vô hạn (tương ứng với các tập con của $\mathbb{N}$), bắt đầu bằng 4 dòng đầu:
+- $s_1 = \mathbf{0}\, 1\, 0\, 1\, \dots$
+- $s_2 = 1\, \mathbf{1}\, 1\, 0\, \dots$
+- $s_3 = 0\, 0\, \mathbf{0}\, 1\, \dots$
+- $s_4 = 1\, 0\, 1\, \mathbf{1}\, \dots$
+
+Hãy dựng chuỗi mới $d$ bằng quy tắc: **lấy bit thứ $i$ của chuỗi $s_i$ trên đường chéo chính rồi lật ngược (`0 → 1`, `1 → 0`)**:
+- Vị trí 1: $s_1[1] = \mathbf{0} \implies d[1] = \mathbf{1}$ (chắc chắn $d \neq s_1$!).
+- Vị trí 2: $s_2[2] = \mathbf{1} \implies d[2] = \mathbf{0}$ (chắc chắn $d \neq s_2$!).
+- Vị trí 3: $s_3[3] = \mathbf{0} \implies d[3] = \mathbf{1}$ (chắc chắn $d \neq s_3$!).
+- Vị trí 4: $s_4[4] = \mathbf{1} \implies d[4] = \mathbf{0}$ (chắc chắn $d \neq s_4$!).
+
+Vậy $d = 1\, 0\, 1\, 0\, \dots$ **khác mọi chuỗi $s_k$ ở ít nhất vị trí thứ $k$**, nên $d$ không thể xuất hiện ở bất kỳ dòng nào trong danh sách! Mâu thuẫn này chứng minh tập chuỗi nhị phân vô hạn là **không đếm được**.
 
 ## Nguyên lý bao hàm - loại trừ cho hai tập
 

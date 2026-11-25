@@ -17,6 +17,17 @@ excerpt: "Đường đi và chu trình Euler với điều kiện bậc đỉnh;
 
 </div>
 
+
+Hai câu hỏi nghe gần như sinh đôi: *"Có đi qua mọi **cạnh** đúng một lần được không?"* (Euler) và *"Có đi qua mọi **đỉnh** đúng một lần được không?"* (Hamilton). Thế nhưng trong khoa học máy tính, chúng nằm ở hai đầu cực hoàn toàn trái ngược của độ phức tạp: bài toán Euler giải xong chỉ trong thời gian tuyến tính bằng cách **đếm bậc đỉnh**, còn bài toán Hamilton lại thuộc lớp **NP-complete** nổi tiếng chưa ai tìm được thuật toán đa thức!
+
+**Mạch bài học:** Tiêu chuẩn bậc đỉnh cho **đường đi / chu trình Euler** $$\longrightarrow$$ **đường đi / chu trình Hamilton** và sự bùng nổ độ phức tạp $$\longrightarrow$$ hai thuật toán duyệt nền tảng **BFS (hàng đợi — đường ngắn nhất không trọng số)** và **DFS (ngăn xếp/đệ quy — phát hiện chu trình)** cùng độ phức tạp $$O(V + E)$$.
+
+## Bản đồ kiến thức nền: Euler, Hamilton và BFS/DFS đứng ở đâu trong thuật toán đồ thị?
+
+- **Chu trình Euler — Điều kiện cần và đủ địa phương (Eulerian Criterion):** Một đồ thị vô hướng liên thông (bỏ đỉnh cô lập) có **chu trình Euler** khi và chỉ khi **mọi đỉnh đều có bậc chẵn**, và có **đường đi Euler** (không khép kín) khi và chỉ khi có **đúng 2 đỉnh bậc lẻ**. Chỉ một tiêu chuẩn địa phương siêu gọn đã giải trọn bài toán 7 cây cầu Königsberg!
+- **Chu trình Hamilton — Bài toán toàn cục NP-complete:** Không tồn tại điều kiện cần và đủ đơn giản theo bậc đỉnh cho Hamilton (chỉ có các điều kiện đủ mạnh như định lý Dirac $$\deg(v) \ge n/2$$). Đây là họ hàng trực tiếp của bài toán Người du lịch (TSP).
+- **Duyệt đồ thị BFS & DFS (Graph Traversal):** Mọi thuật toán đồ thị hiện đại đều bắt đầu từ hai khung duyệt $$O(V+E)$$ này: **BFS** dùng hàng đợi (Queue) loang theo từng lớp khoảng cách nên tìm được đường đi ít cạnh nhất; **DFS** dùng ngăn xếp (Stack) đi sâu hết nhánh rồi quay lui nên lý tưởng để tìm chu trình, sắp xếp tô-pô và thành phần liên thông mạnh.
+
 Năm 1736, Leonhard Euler giải quyết một bài toán thực tế tại Königsberg: liệu có thể đi qua mỗi cây cầu đúng một lần rồi quay về điểm xuất phát hay không? Câu trả lời hoàn toàn phụ thuộc vào **bậc** của các đỉnh trong mô hình đồ thị, không phụ thuộc vào hình vẽ địa lý. Khi đổi mục tiêu từ đi qua mọi cạnh sang đi qua mọi đỉnh đúng một lần, ta gặp bài toán **chu trình Hamilton** và bài toán người du lịch (TSP), vốn có độ khó tính toán cao hơn nhiều. Cuối bài, ta tìm hiểu **BFS** và **DFS** — hai thuật toán duyệt đồ thị cơ bản có thời gian chạy tuyến tính theo kích thước danh sách kề.
 
 ![Leonhard Euler](/discrete-mathematics-for-computer-science-iuh/img/course/Leonhard_Euler.jpg)
@@ -239,7 +250,34 @@ Sử dụng khung minh họa tương tác (hỗ trợ chỉnh sửa đồ thị 
 </div>
 <script src="{{ '/public/js/explainers/graph-explainer.js' | relative_url }}"></script>
 
+## Ví dụ tính tay cầm tay chỉ việc: Giải bài toán 7 cầu Königsberg và chạy tay BFS vs. DFS
 
+**Phần A — Chẩn đoán Euler trên đồ thị 7 cây cầu Königsberg (4 vùng đất A, B, C, D):**
+- Bậc của 4 đỉnh lần lượt là: $$\deg(A) = 5,\; \deg(B) = 3,\; \deg(C) = 3,\; \deg(D) = 3$$.
+- Số đỉnh bậc lẻ = **4** (khác 0 và khác 2).
+- **Kết luận ngay trong 1 dòng:** Không có chu trình Euler, cũng **không có đường đi Euler** — bất khả thi để đi qua cả 7 cây cầu mỗi cầu đúng một lần!
+
+**Phần B — Chạy tay BFS và DFS từ đỉnh `0` trên đồ thị 5 đỉnh:**
+Danh sách kề (đã sắp thứ tự tăng dần):
+`0: [1, 2]`, `1: [0, 3, 4]`, `2: [0, 4]`, `3: [1]`, `4: [1, 2]`.
+
+1. **BFS từ `0` (dùng Queue — vào sau ra sau, loang từng tầng):**
+   - Khởi tạo: `Q = [0]`, khoảng cách `dist[0] = 0`.
+   - Lấy `0` $$\Rightarrow$$ thêm `1, 2` (`dist = 1`): `Q = [1, 2]`.
+   - Lấy `1` $$\Rightarrow$$ thêm `3, 4` (`dist = 2`): `Q = [2, 3, 4]`.
+   - Lấy `2` (`0, 4` đã thăm), lấy `3`, lấy `4`.
+   - **Thứ tự thăm BFS:** `0 → 1 → 2 → 3 → 4`, tìm ra đường ngắn nhất từ `0` đến `4` có đúng **2 cạnh** ($$0 \to 1 \to 4$$ hoặc $$0 \to 2 \to 4$$).
+2. **DFS đệ quy từ `0` (đi sâu nhánh đầu tiên trước):**
+   - `0` $$\to$$ `1` $$\to$$ `3` (hết nhánh, quay lui về `1`) $$\to$$ `4` $$\to$$ `2` (hết nhánh, quay lui về `0`).
+   - **Thứ tự thăm DFS:** `0 → 1 → 3 → 4 → 2` (chú ý DFS tìm ra đường `0 → 1 → 4 → 2` dài 3 cạnh đến `2`, trong khi đường ngắn nhất thực ra chỉ có 1 cạnh `0 → 2`!).
+
+### Khung giải thích: Tại sao BFS và DFS đều đạt đúng $$O(V + E)$$ trên danh sách kề (nên đọc chậm)
+
+1. **Bước 1 — Mỗi đỉnh vào/ra hàng đợi (hoặc ngăn xếp) tối đa 1 lần:** Nhờ mảng đánh dấu `visited[v]`, chi phí xử lý đỉnh trên toàn thuật toán là $$O(V)$$.
+2. **Bước 2 — Mỗi cạnh được quét qua tối đa 2 lần (đồ thị vô hướng):** Khi duyệt danh sách kề của mọi đỉnh $$u$$, tổng số vòng lặp trong là $$\sum_{u \in V} \deg(u) = 2\vert E \vert$$ theo chính Định lý Bắt tay!
+3. **Bước 3 — Chọn BFS hay DFS theo mục tiêu bài toán:** Cần **số bước ít nhất** (trò chơi tìm lối ra mê cung, khoảng cách mạng xã hội) $$\Rightarrow$$ chọn **BFS**. Cần **cấu trúc đệ quy sâu** (phát hiện chu trình, thứ tự tô-pô, thành phần liên thông mạnh) $$\Rightarrow$$ chọn **DFS**.
+
+$$\text{Euler: } O(V+E)\text{ (đếm bậc lẻ)} \quad\text{vs.}\quad \text{Hamilton: NP-complete}, \qquad T_{\text{BFS/DFS}} = O(V + E).$$
 
 ## Bài tập
 

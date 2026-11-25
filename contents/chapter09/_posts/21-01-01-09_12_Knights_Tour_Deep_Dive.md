@@ -9,6 +9,16 @@ lang: en
 excerpt: "Phân tích bài toán mã đi tuần (Knight's Tour) dưới góc nhìn đồ thị Hamilton, hiện tượng bùng nổ tổ hợp trong quay lui (backtracking) và quy tắc heuristic Warnsdorf."
 ---
 
+Một quân mã nhỏ bé nhảy theo hình chữ L trên bàn cờ vua 64 ô có thể đi qua **đúng mọi ô mỗi ô một lần** hay không? Câu đố giải trí từ thế kỷ thứ 9 này thực ra là bài toán kinh điển mở cửa vào hai trụ cột lớn của khoa học máy tính: **tìm kiếm quay lui (backtracking)** và **độ phức tạp NP-hard của đường đi Hamilton**.
+
+**Mạch bài học:** Biểu diễn bàn cờ thành **đồ thị nước mã** $$\longrightarrow$$ định nghĩa **đường đi / chu trình Hamilton** $$\longrightarrow$$ lý do vét cạn bùng nổ theo cấp số mũ $$\longrightarrow$$ **quy tắc heuristic Warnsdorf (1823)** đưa thời gian tìm nghiệm trên bàn $$8\times 8$$ từ hàng thế kỷ xuống vài mili-giây.
+
+## Bản đồ kiến thức nền: Bài toán Mã đi tuần kết nối những nhánh toán học nào?
+
+- **Lý thuyết đồ thị & Đường đi Hamilton (Hamiltonian Paths):** Mô hình hóa mỗi ô cờ $$(r, c)$$ thành một đỉnh, hai ô nối cạnh nếu cách nhau một nước mã ($$\vert \Delta r \vert \cdot \vert \Delta c \vert = 2$$). Một hành trình mã đi tuần chính là đường đi Hamilton (open tour) hoặc chu trình Hamilton (closed tour) trên đồ thị 64 đỉnh này.
+- **Cây tìm kiếm & Cắt nhánh (Backtracking & Search Space Pruning):** Khi duyệt theo chiều sâu (DFS), mỗi bước có tối đa 8 lựa chọn nên cây tìm kiếm thô có thể phình tới bậc $$O(8^{n^2})$$. Backtracking quay lui ngay khi gặp ngõ cụt, nhưng chỉ thật sự bứt tốc khi kết hợp **thứ tự ưu tiên nhánh thông minh**.
+- **Heuristic tham lam cục bộ (Warnsdorf's Rule):** Chiến lược chọn ô kế tiếp có **ít nước đi hợp lệ tiếp theo nhất** (bậc còn lại nhỏ nhất) — nguyên tắc "xử lý các góc kẹt trước khi chúng trở thành ngõ cụt cô lập", tiền thân của heuristic *Minimum Remaining Values (MRV)* trong bài toán thỏa mãn ràng buộc (CSP) và AI hiện đại.
+
 Ở các mục trước, chúng ta đã gặp hiện tượng **bùng nổ tổ hợp (combinatorial explosion)** trong kiểm thử phần mềm và vận hành hệ thống. Mục bổ sung chuyên sâu (deep dive) này khảo sát cùng hiện tượng đó qua một bài toán cổ điển của khoa học máy tính — **bài toán mã đi tuần (Knight's Tour)**: quân **mã** trên bàn cờ $$n \times n$$ phải **đi qua mọi ô đúng một lần**. Trong mô hình đồ thị láng giềng nước mã, **open tour** tương ứng với **đường đi Hamilton**, còn **closed tour** tương ứng với **chu trình Hamilton**. Trên bàn $$5 \times 5$$, quay lui (backtracking) thuần túy thường chạy rất nhanh; nhưng trên bàn $$8 \times 8$$, cây tìm kiếm phình to theo cấp số mũ nên cần **quy tắc heuristic Warnsdorf** (1823) và cắt nhánh. Bài viết trình bày mô hình đồ thị, khung mã backtracking, con số ~26,5 nghìn tỷ closed tour có hướng trên bàn $$8 \times 8$$, và mối liên hệ với độ phức tạp của bài toán đường/chu trình Hamilton (Chương 12).
 
 <figure class="image" style="align: center;">
@@ -219,6 +229,35 @@ Widget trên minh họa sự khác biệt giữa **Euler và Hamilton** trên đ
 Minh giữ lại hàm `warnsdorf_neighbors` trong kho mã cá nhân như một ví dụ trực quan mỗi khi cần giải thích vì sao tìm kiếm vét cạn nhanh chóng chạm giới hạn tổ hợp.
 
 ---
+
+## Ví dụ tính tay cầm tay chỉ việc: So sánh bậc đỉnh và áp dụng quy tắc Warnsdorf
+
+**Phần A — Chứng minh bàn cờ $$3 \times 3$$ KHÔNG có hành trình mã đi tuần (chứng minh 3 dòng bằng bậc đỉnh):**
+- Trên bàn $$3 \times 3$$ có 9 ô. Xét ô chính giữa $$(1, 1)$$: từ đây không thể nhảy 2 ô theo bất kỳ hướng nào mà vẫn nằm trong bàn $$3 \times 3$$!
+- Vậy ô trung tâm có **bậc bằng 0** (đỉnh cô lập), còn 8 ô viền ngoài tạo thành đúng một chu trình độ dài 8.
+- Vì đồ thị **không liên thông**, chắc chắn không tồn tại đường đi Hamilton nào đi qua cả 9 ô.
+
+**Phần B — Chạy tay 2 bước đầu theo quy tắc Warnsdorf trên bàn $$5 \times 5$$ (đánh số hàng, cột từ 0 đến 4):**
+Giả sử quân mã xuất phát tại góc $$(0, 0)$$.
+1. **Bước 1 — Từ $$(0, 0)$$ có 2 ô kế tiếp hợp lệ:** $$(1, 2)$$ và $$(2, 1)$$.
+   - Tính số lối thoát chưa thăm (bậc còn lại) từ $$(1, 2)$$: các ô lân cận nước mã là $$(0,4), (2,4), (3,3), (3,1), (2,0)$$ $$\Rightarrow$$ **5 lối thoát** (đã trừ $$(0,0)$$ đã thăm).
+   - Tương tự, từ $$(2, 1)$$ cũng có **5 lối thoát**. Hai ô đối xứng nhau, ta chọn $$(1, 2)$$.
+2. **Bước 2 — Từ $$(1, 2)$$ xét 5 ứng viên chưa thăm:**
+   - $$(0, 4)$$ (góc bàn cờ): chỉ còn **1 lối thoát** chưa thăm là $$(2, 3)$$!
+   - $$(2, 0)$$: còn **2 lối thoát** là $$(4, 1)$$ và $$(3, 2)$$.
+   - $$(3, 1)$$: còn **4 lối thoát**.
+   - $$(3, 3)$$: còn **4 lối thoát**.
+   - $$(2, 4)$$: còn **2 lối thoát**.
+   - **Quy tắc Warnsdorf lập tức chọn $$(0, 4)$$** (bậc còn lại = 1 nhỏ nhất). Nếu ta bỏ qua $$(0, 4)$$ để đi vào giữa bàn cờ trước, lát nữa ô góc này có thể mất nốt lối vào duy nhất và biến thành ngõ cụt không thể cứu vãn!
+
+### Khung giải thích: Vì sao "chọn ô chật hẹp nhất trước" lại giải được bài toán bùng nổ (nên đọc chậm)
+
+1. **Bước 1 — Ngõ cụt thường sinh ra ở biên và góc:** Các ô ở góc bàn cờ chỉ có bậc 2 (1 lối vào, 1 lối ra). Nếu các ô trung tâm bị thăm hết trước, các ô góc sẽ bị cô lập và làm sập toàn bộ nhánh tìm kiếm ở độ sâu 50–60.
+2. **Bước 2 — Warnsdorf giải quyết nút thắt cổ chai ngay lập tức:** Luôn đi vào ô có số lối thoát nhỏ nhất buộc quân mã quét sát mép ngoài theo hình xoắn ốc vào trong, giữ lại vùng trung tâm giàu kết nối (bậc 6–8) làm "vùng đệm linh hoạt" cho những nước đi cuối cùng.
+3. **Bước 3 — Chi phí tính heuristic siêu rẻ so với lợi ích:** Tại mỗi bước chỉ cần kiểm tra tối đa $$8 \times 8 = 64$$ phép tính lân cận — thời gian $$O(1)$$ — nhưng đổi lại cắt gần như 100% số lần quay lui trên bàn $$8\times 8$$.
+4. **Bước 4 — Bài học tổng quát trong AI & SAT/CSP:** Cùng một nguyên lý *Fail-First / MRV* (chọn biến ít lựa chọn nhất trước) chính là chìa khóa tăng tốc cho bộ giải Sudoku, lập lịch và bài toán thỏa mãn ràng buộc.
+
+$$\text{Backtracking thuần: } O(8^{64}) \;\xrightarrow{\text{Warnsdorf (chọn } \min \deg_{\text{rem}} \text{)}}\; \text{Tìm tour } 8\times 8 \text{ gần như tuyến tính } O(n^2).$$
 
 ## Bài tập thực hành
 

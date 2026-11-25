@@ -21,6 +21,19 @@ excerpt: "Định nghĩa NP-hard và NP-complete, chứng minh hệ quả nếu 
 
 <p class="textbook-figure-caption" data-figure="20.4">Các bài toán NP-complete là nhóm “khó nhất” trong lớp NP theo thứ tự rút gọn $$\le_p$$.</p>
 
+Trong hàng nghìn bài toán hóc búa từ lập lịch chuyến bay, gấp nếp protein đến tối ưu hóa vi mạch, điều gì khiến chúng gắn kết với nhau như một khối domino khổng lồ? Đó là khái niệm **NP-complete** — những bài toán "khó nhất" trong lớp $$NP$$. Chỉ cần tìm ra một thuật toán thời gian đa thức cho *đúng một* bài toán NP-complete duy nhất, toàn bộ hàng nghìn bài toán NP-complete khác lập tức sụp đổ về lớp $$P$$ cùng lúc!
+
+## Bản đồ kiến thức nền: Bốn trụ cột của NP-hard và NP-complete
+
+1. **Phân biệt rạch ròi NP-hard và NP-complete**:
+   - **NP-hard:** Khó ít nhất bằng mọi bài toán trong $$NP$$ ($$\forall A \in NP, A \le_p B$$). Lưu ý: một bài toán NP-hard **không nhất thiết thuộc $$NP$$** — thậm chí Bài toán Dừng bất khả quyết định cũng là NP-hard!
+   - **NP-complete:** Vừa nằm *trong* $$NP$$ (có bộ kiểm chứng đa thức), vừa là *NP-hard*.
+2. **Quy trình 2 bước chuẩn mực chứng minh $$B$$ là NP-complete**:
+   - Bước 1: Chứng minh $$B \in NP$$ (chỉ ra chứng chỉ $$c$$ và bộ kiểm chứng đa thức).
+   - Bước 2: Chọn một bài toán $$A$$ *đã biết là NP-complete* (như `3SAT`, `VC`, `CLIQUE`) và xây dựng rút gọn đa thức $$A \le_p B$$ (chứng minh thời gian đa thức + đúng cả hai chiều $$\iff$$).
+3. **Định lý Ladner (1975 — Vùng đất NP-intermediate)**:
+   Nếu $$P \neq NP$$, giữa $$P$$ và NP-complete **không phải là khoảng trống** mà tồn tại vô hạn bài toán trung gian ($$NP \setminus (P \cup \mathrm{NPC})$$), nơi các ứng viên nổi tiếng như `FACTORING` và `GRAPH-ISOMORPHISM` có thể đang cư trú.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -86,6 +99,18 @@ Nói cách khác, dưới giả thuyết $$P\neq NP$$, tồn tại những bài 
 - $$NP$$ **không** có nghĩa là “không giải được” (mọi bài toán trong $$NP$$ đều quyết định được trong thời gian hàm mũ).
 - Một bài toán **NP-hard** không nhất thiết phải thuộc $$NP$$.
 - Bài toán phân tích thừa số nguyên tố (Factoring) hiện chưa được biết là NP-complete.
+
+### Khung giải thích (nên đọc chậm): Bảng phân loại nhanh 5 bài toán vào đúng 4 vùng độ phức tạp
+
+| Bài toán | Thuộc $$P$$? | Thuộc $$NP$$? | Là NP-hard? | Xếp loại chính xác |
+| :--- | :---: | :---: | :---: | :--- |
+| `2SAT` (mỗi mệnh đề tối đa 2 literal) | Có | Có | Không (trừ khi $$P=NP$$) | **Thuộc $$P$$** |
+| `3SAT` (mỗi mệnh đề 3 literal) | Chưa biết | Có | **Có** | **NP-complete** |
+| `TSP-OPT` (tìm hành trình ngắn nhất, trả về giá trị) | Chưa biết | Không (không phải bài quyết định) | **Có** | **NP-hard** (không phải NPC) |
+| `HALT` (Bài toán Dừng) | Không | Không (bất khả quyết định!) | **Có** | **NP-hard** (và undecidable) |
+| `FACTORING` (phân tích thừa số) | Chưa biết | Có (và $$\in \mathrm{coNP}$$) | Có lẽ không | **Ứng viên NP-intermediate** |
+
+Bảng phân loại 5 dòng này xóa sạch hiểu lầm phổ biến nhất của người học: *"NP-hard nghĩa là bài toán nằm trong NP nhưng rất khó"* — hoàn toàn sai, NP-hard có thể nằm vượt ra ngoài $$NP$$ rất xa!
 
 ## Bài tập
 

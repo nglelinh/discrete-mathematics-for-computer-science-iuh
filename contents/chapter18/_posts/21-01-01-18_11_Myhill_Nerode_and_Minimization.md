@@ -9,6 +9,8 @@ lang: en
 excerpt: "Quan hệ tương đương Myhill–Nerode ~L, định lý Myhill–Nerode, chứng minh ngôn ngữ không chính quy và thuật toán tối tiểu hóa DFA."
 ---
 
+> **Câu chuyện mở đầu:** Cho cùng một ngôn ngữ chính quy, hai lập trình viên có thể thiết kế hai DFA trông rất khác nhau — một cái 4 trạng thái, một cái 9 trạng thái. Liệu có tồn tại một **DFA nhỏ nhất duy nhất** giống như phân số tối giản trong số học không? **Định lý Myhill–Nerode** (1957–1958) trả lời **CÓ một cách tuyệt đối**: mọi ngôn ngữ chính quy đều có **đúng 1 DFA tối tiểu duy nhất (sai khác đổi tên trạng thái)** — và số trạng thái tối tiểu đó chính là số lớp tương đương của quan hệ phân biệt hậu tố $$\equiv_L$$!
+
 <div class="textbook-epigraph" markdown="1">
 
 "The number of states you need is the number of distinguishable futures."
@@ -28,6 +30,61 @@ excerpt: "Quan hệ tương đương Myhill–Nerode ~L, định lý Myhill–Ne
 - **Áp dụng** định lý để chứng minh ngôn ngữ không chính quy và tìm cận dưới số trạng thái DFA.
 
 </div>
+
+## Bản đồ kiến thức nền: Định lý Myhill–Nerode & Tối tiểu hóa DFA
+
+### 1. Quan hệ Tương đương Myhill–Nerode ($$x \equiv_L y$$)
+- **Bản chất:** Hai chuỗi tiền tố $$x, y \in \Sigma^*$$ gọi là **không phân biệt được theo $$L$$** ($$x \equiv_L y$$) nếu với **MỌI** hậu tố $$z \in \Sigma^*$$:
+  $$
+  xz \in L \quad\Longleftrightarrow\quad yz \in L.
+  $$
+  Ngược lại, chỉ cần tồn tại **1 hậu tố phân cách** $$z$$ sao cho đúng 1 trong 2 chuỗi $$xz, yz$$ thuộc $$L$$, thì $$x \not\equiv_L y$$ — nghĩa là mọi DFA nhận $$L$$ **bắt buộc phải đưa $$x$$ và $$y$$ vào 2 trạng thái KHÁC NHAU**!
+
+### 2. Định lý Myhill–Nerode (Điều kiện CẦN VÀ ĐỦ — mạnh hơn cả Bổ đề Bơm!)
+- **Định lý:** Ngôn ngữ $$L$$ là chính quy **khi và chỉ khi** số lớp tương đương (chỉ số) của $$\equiv_L$$ là **hữu hạn**! Hơn nữa, số lớp tương đương $$k$$ chính là **số trạng thái của DFA tối tiểu duy nhất** nhận $$L$$!
+
+### 3. Thuật toán Tối tiểu hóa DFA (Table-Filling / Hopcroft)
+- **Bản chất:** Loại bỏ các trạng thái không đạt tới được từ $$q_0$$, rồi chia đôi dần các nhóm trạng thái (bắt đầu từ 2 nhóm $$F$$ và $$Q \setminus F$$) bất cứ khi nào hai trạng thái trong cùng nhóm chuyển sang hai nhóm khác nhau trên cùng một ký tự $$a$$!
+
+## Ví dụ tính tay cầm tay chỉ việc
+
+### Ví dụ 1: Tìm số trạng thái tối tiểu của $$L = \{\text{chuỗi nhị phân kết thúc bằng } 01\}$$
+Xét 3 chuỗi đại diện $$\varepsilon,\; 0,\; 01$$ và kiểm tra từng cặp bằng hậu tố phân cách:
+- $$\varepsilon$$ vs. $$0$$: chọn hậu tố $$z = 1$$ $$\implies \varepsilon\cdot 1 = 1 \notin L$$, nhưng $$0\cdot 1 = 01 \in L \implies \varepsilon \not\equiv_L 0$$!
+- $$\varepsilon$$ vs. $$01$$: chọn hậu tố $$z = \varepsilon$$ $$\implies \varepsilon \notin L$$, nhưng $$01 \in L \implies \varepsilon \not\equiv_L 01$$!
+- $$0$$ vs. $$01$$: chọn hậu tố $$z = \varepsilon$$ $$\implies 0 \notin L$$, nhưng $$01 \in L \implies 0 \not\equiv_L 01$$!
+
+Mọi chuỗi bất kỳ $$w \in \{0,1\}^*$$ đều rơi vào đúng 1 trong 3 lớp: (1) kết thúc bằng `01` ($$[01]$$), (2) kết thúc bằng `0` ($$[0]$$), hoặc (3) phần còn lại ($$[\varepsilon]$$). Vậy **DFA tối tiểu bắt buộc có đúng 3 trạng thái**!
+
+### Ví dụ 2: Chứng minh 2 dòng $$L = \{0^n 1^n\}$$ KHÔNG chính quy bằng Myhill–Nerode
+Xét tập vô hạn các chuỗi $$S = \{\varepsilon, 0, 0^2, 0^3, \dots\}$$. Với hai chỉ số bất kỳ $$i \neq j$$, chọn hậu tố phân cách $$z = 1^i$$:
+$$
+0^i \cdot 1^i \in L, \qquad \text{nhưng} \qquad 0^j \cdot 1^i \notin L \;(\text{vì } j \neq i)!
+$$
+Vậy vô hạn chuỗi trong $$S$$ đôi một **không tương đương nhau** $$\implies \equiv_L$$ có **vô hạn lớp tương đương** $$\implies$$ theo Myhill–Nerode, $$L$$ **KHÔNG chính quy**! (Nhanh và gọn hơn Bổ đề Bơm gấp nhiều lần!)
+
+### Khung giải thích: 4 bước áp dụng Myhill–Nerode & Tối tiểu hóa DFA (nên đọc chậm)
+
+#### Bước 1: Dùng Myhill–Nerode như công cụ chứng minh "Không chính quy" sắc bén nhất
+Chỉ cần tìm một tập vô hạn $$S$$ mà mọi cặp $$x \neq y \in S$$ đều có 1 hậu tố phân cách $$z$$ — không bao giờ bị vướng trường hợp như Bổ đề Bơm!
+
+#### Bước 2: Dùng Myhill–Nerode để tìm cận dưới số trạng thái DFA
+Chỉ ra $$k$$ chuỗi đôi một phân biệt được bằng hậu tố $$\implies$$ mọi DFA nhận $$L$$ phải có ít nhất $$k$$ trạng thái!
+
+#### Bước 3: Chạy thuật toán Phân hoạch (Partition Refinement) để tối tiểu hóa DFA
+Bước 0: Xóa mọi trạng thái không đi tới được từ $$q_0$$. Bước 1: Tách $$P_0 = \{F, Q\setminus F\}$$. Bước lặp: tách nhóm nếu hai trạng thái dẫn sang hai nhóm khác nhau trên cùng 1 ký tự $$a$$, dừng khi phân hoạch ổn định!
+
+#### Bước 4: Kiểm tra tính duy nhất của DFA tối tiểu
+Gộp mỗi nhóm cuối thành 1 trạng thái: kết quả là DFA tối tiểu **duy nhất** — cho phép kiểm tra hai DFA có tương đương không bằng cách tối tiểu hóa cả hai rồi so sánh đẳng cấu!
+
+$$
+\text{Ngôn ngữ }L
+\;\xrightarrow{\;x \equiv_L y \iff (\forall z:\; xz\in L \Leftrightarrow yz\in L)\;}\;
+\begin{cases}
+\text{Vô hạn lớp} \implies L \text{ KHÔNG chính quy} \\
+k\text{ lớp hữu hạn} \implies \text{DFA tối tiểu duy nhất (}k\text{ trạng thái)}
+\end{cases}
+$$
 
 ## Quan hệ tương đương Myhill–Nerode
 

@@ -9,6 +9,8 @@ lang: en
 excerpt: "Bài toán đường đi ngắn nhất: BFS (không trọng số), Dijkstra (trọng số ≥ 0), Bellman–Ford (có cạnh âm); phép relax, binary heap O((V+E) log V) và phân biệt với MST."
 ---
 
+> **Câu chuyện mở đầu:** Năm 1956, Edsger W. Dijkstra ngồi uống cà phê ở Amsterdam cùng vợ sắp cưới để nghĩ một bài toán trình diễn cho chiếc máy tính ARMAC mới lắp: tìm tuyến đường ngắn nhất nối hai thành phố Hà Lan. Chỉ trong **20 phút** không dùng giấy bút, ông đã phát minh ra thuật toán mang tên mình — và ngày nay, **thuật toán Dijkstra** đang chạy hàng tỷ lần mỗi ngày trong Google Maps, định tuyến Internet (OSPF) và trò chơi điện tử!
+
 <div class="textbook-epigraph" markdown="1">
 
 "The shortest path is not always the path with the fewest edges."
@@ -38,6 +40,54 @@ Hệ thống dẫn đường GPS và định tuyến mạng đều cần giải 
 **Từ khóa**: single-source shortest path, Dijkstra, relax, priority queue, Bellman–Ford, chu trình âm.
 
 </div>
+
+## Bản đồ kiến thức nền: Đường đi Ngắn nhất & Điều kiện Sống còn của Dijkstra
+
+### 1. Phép Nới lỏng Cạnh (Edge Relaxation)
+- **Bản chất:** Mọi thuật toán đường đi ngắn nhất đều xoay quanh một thao tác sơ cấp: nếu đi tới $$u$$ mất $$d[u]$$ và có cạnh $$(u, v)$$ nặng $$w(u, v)$$ sao cho $$d[u] + w(u, v) < d[v]$$, ta lập tức cập nhật $$d[v] \leftarrow d[u] + w(u, v)$$!
+
+### 2. Bất biến Tham lam của Dijkstra (Chỉ đúng khi $$w(u, v) \ge 0$$!)
+- **Bản chất:** Tại mỗi bước, Dijkstra chọn đỉnh $$u$$ chưa chốt có $$d[u]$$ **nhỏ nhất** trong Min-Heap và tuyên bố $$d[u]$$ đã là **khoảng cách ngắn nhất cuối cùng**! Điều này đúng 100% **chỉ vì mọi cạnh đều không âm**: không thể đi vòng qua đỉnh khác lớn hơn rồi cộng thêm số dương mà lại nhỏ hơn $$d[u]$$ được!
+
+### 3. Bản đồ chọn Thuật toán theo Trọng số
+- **Không trọng số:** BFS ($$O(V + E)$$).
+- **Trọng số không âm ($$w \ge 0$$):** **Dijkstra + Min-Heap** ($$O((V + E)\log V)$$).
+- **Có trọng số âm (không có chu trình âm):** **Bellman–Ford** ($$O(VE)$$, nới lỏng toàn bộ cạnh $$V - 1$$ lần).
+
+## Ví dụ tính tay cầm tay chỉ việc: Chạy Dijkstra & Phản ví dụ Cạnh âm
+
+### Ví dụ 1: Theo vết bảng Dijkstra trên đồ thị 4 đỉnh $$S, A, B, T$$
+Các cạnh có hướng: $$(S, A)=1,\; (S, B)=4,\; (A, B)=2,\; (A, T)=6,\; (B, T)=1$$. Khởi tạo $$d = (0, \infty, \infty, \infty)$$:
+1. **Chốt $$S$$ ($$d[S]=0$$):** Nới lỏng $$(S,A), (S,B) \implies d[A] = 1,\; d[B] = 4,\; d[T] = \infty$$.
+2. **Chốt $$A$$ (nhỏ nhất: $$d[A]=1$$):** Nới lỏng $$(A,B)$$ cho $$1 + 2 = 3 < 4 \implies d[B] = 3$$; nới lỏng $$(A,T)$$ cho $$1 + 6 = 7 \implies d[T] = 7$$.
+3. **Chốt $$B$$ (nhỏ nhất: $$d[B]=3$$):** Nới lỏng $$(B,T)$$ cho $$3 + 1 = 4 < 7 \implies d[T] = 4$$!
+4. **Chốt $$T$$ ($$d[T]=4$$):** Kết thúc! Đường đi ngắn nhất là $$S \to A \to B \to T$$ với tổng độ dài **$$1 + 2 + 1 = 4$$**!
+
+### Ví dụ 2: Vì sao 1 cạnh âm duy nhất làm Dijkstra trả kết quả SAI?
+Xét 3 đỉnh $$S, A, B$$ với các cạnh: $$(S, A) = 2,\; (S, B) = 5,\; (B, A) = -4$$!
+- Dijkstra thấy $$d[A] = 2 < 5 = d[B]$$ nên **chốt vĩnh viễn $$d[A] = 2$$** ngay bước 1 — bỏ lỡ hoàn toàn đường đi $$S \to B \to A$$ có độ dài thực là **$$5 + (-4) = 1 < 2$$**!
+
+### Khung giải thích: 4 bước nắm chắc chứng minh Tính đúng của Dijkstra (nên đọc chậm)
+
+#### Bước 1: Giả sử phản chứng tại đỉnh đầu tiên $$u$$ bị chốt sai
+Gọi $$u$$ là đỉnh đầu tiên được rút khỏi Min-Heap mà $$d[u] > \delta(S, u)$$ (khoảng cách ngắn nhất thật).
+
+#### Bước 2: Lần theo đường đi ngắn nhất thật từ $$S$$ tới $$u$$
+Đường đi thật này bắt đầu trong tập đã chốt $$S_{\text{done}}$$ và kết thúc ở $$u \notin S_{\text{done}}$$, nên phải có cạnh đầu tiên $$(x, y)$$ vượt ranh giới từ $$x \in S_{\text{done}}$$ sang $$y \notin S_{\text{done}}$$.
+
+#### Bước 3: Dùng tính không âm của trọng số để tạo mâu thuẫn
+Vì $$x$$ đã chốt đúng trước $$u$$, sau khi nới lỏng $$(x, y)$$ ta có $$d[y] = \delta(S, y)$$. Mà mọi cạnh phía sau $$y$$ đến $$u$$ đều **không âm** nên $$d[y] = \delta(S, y) \le \delta(S, u) < d[u]$$ — mâu thuẫn với việc Dijkstra vừa chọn $$u$$ là đỉnh có $$d$$ nhỏ nhất!
+
+#### Bước 4: Tối ưu thực tế bằng Thuật toán $$A^*$$
+Trong bản đồ GPS thực tế, cộng thêm hàm ước lượng khoảng cách chim bay $$h(v)$$ (heuristic chấp nhận được) vào độ ưu tiên của Dijkstra tạo ra **thuật toán $$A^*$$**, thu hẹp vùng tìm kiếm hàng chục lần mà vẫn giữ nguyên độ chính xác!
+
+$$
+\text{Trọng số }w \ge 0
+\;\xrightarrow{\;\text{Min-Heap + Relaxation}\;}\;
+\text{Dijkstra }O((V+E)\log V)
+\;\xrightarrow{\;+\text{ heuristic }h(v)\;}\;
+\text{Thuật toán }A^*.
+$$
 
 ## Bài toán đường đi ngắn nhất
 

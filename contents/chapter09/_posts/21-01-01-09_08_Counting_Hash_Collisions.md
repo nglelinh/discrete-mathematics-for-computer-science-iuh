@@ -9,6 +9,16 @@ lang: en
 excerpt: "Phân biệt xác suất có ít nhất một va chạm P(collision) với kỳ vọng số lần trùng lặp E[matches] theo công thức Matt Might, ứng dụng trong ước lượng tải công việc và bảng băm."
 ---
 
+Ở bài trước, nghịch lý sinh nhật trả lời câu hỏi nhị phân: *"Có ít nhất một vụ va chạm xảy ra hay không?"* Nhưng khi vận hành một bệnh viện, một bảng băm hay một hệ thống chống trùng lặp dữ liệu, câu hỏi thực tế lại sắc hơn nhiều: *"Khi xác suất trùng đã là 99,99%, trung bình sẽ có **bao nhiêu** ca trùng cần xử lý?"* Để trả lời, ta chuyển từ xác suất biến cố sang **kỳ vọng số lần va chạm**.
+
+**Mạch bài học:** Phân biệt $$P(\text{collision})$$ với kỳ vọng $$E[\text{matches}]$$ $$\longrightarrow$$ tính tuyến tính của kỳ vọng (linearity of expectation) $$\longrightarrow$$ công thức đóng của Matt Might $$\longrightarrow$$ áp dụng tính nhân sự rà soát hồ sơ và độ dài chuỗi bảng băm.
+
+## Bản đồ kiến thức nền: Biến ngẫu nhiên chỉ thị và kỳ vọng rời rạc nghiên cứu gì?
+
+- **Tính tuyến tính của kỳ vọng (Linearity of Expectation):** Công cụ mạnh bậc nhất của xác suất rời rạc: $$E\left[\sum_{i=1}^n X_i\right] = \sum_{i=1}^n E[X_i]$$ **luôn đúng ngay cả khi các biến ngẫu nhiên $$X_i$$ phụ thuộc lẫn nhau**.
+- **Bài toán phân bổ bóng vào hộp (Balls-into-Bins Model):** Ném ngẫu nhiên $$n$$ quả bóng (khóa/bệnh nhân) vào $$D$$ hộp (ô bảng băm/mã bệnh). Số hộp trống, số hộp bị trùng, và số lần rơi vào hộp đã có sẵn bóng đều tính được chính xác bằng biến chỉ thị.
+- **Định cỡ chi phí vận hành (Capacity & Chaining Cost):** Phân biệt rõ giữa "số cặp trùng" $$\binom{n}{2}/D$$ và "số lần chèn gặp hộp đã có phần tử" $$n - D + D(1-1/D)^n$$ — đúng bằng số phần tử dư ra ngoài các hộp phân biệt.
+
 Ở bài trước, chúng ta đã tìm hiểu **nghịch lý sinh nhật** với câu hỏi xác suất: *có ít nhất một va chạm xảy ra hay không?* — đại lượng $$P(\text{collision})$$. Mục này đặt một câu hỏi **đếm** khác: *trung bình có bao nhiêu lần một phần tử mới đưa vào bị trùng với phần tử đã có?* — tức **kỳ vọng số lần trùng** $$E[\text{matches}]$$. Từ cùng mô hình “từng người lần lượt bước vào phòng”, Matt Might ([matt.might.net](https://matt.might.net/articles/counting-hash-collisions/)) xây dựng công thức đóng tính tổng số lần trùng theo thứ tự thêm vào. Kết quả này giúp ước lượng nhân sự xử lý hồ sơ trùng (như mạng lưới đối chiếu bệnh nhân), tính chi phí nối chuỗi (chaining) trong bảng băm, và tách bạch rõ ràng với ngưỡng xác suất ở bài Tom Archer.
 
 Xét ví dụ thực tế trong một thử nghiệm lâm sàng gồm **500 mã bệnh** và dự kiến **1.000 bệnh nhân**: câu hỏi “cần bao nhiêu điều dưỡng để rà soát các ca trùng mã?” không thể trả lời bằng $$P(\text{collision})$$ (vốn đã gần như bằng 1), mà phải dùng $$E[\text{matches}]$$.
@@ -188,6 +198,32 @@ Tóm lại, bài `09_07` (nghịch lý sinh nhật) trả lời *có va chạm h
 **Đọc thêm**: [matt.might.net — Counting hash collisions](https://matt.might.net/articles/counting-hash-collisions/)
 
 ---
+
+## Ví dụ tính tay cầm tay chỉ việc: 4 khóa ném vào 3 ô bảng băm ($$n=4, D=3$$)
+
+Hãy kiểm chứng công thức của Matt Might $$E[\text{collisions}] = n - D + D\left(1 - \frac{1}{D}\right)^n$$ bằng cả hai cách: **trực tiếp từng bước** và **công thức đóng**.
+
+1. **Cách 1 — Tính bằng công thức đóng với $$n=4, D=3$$:**
+   - Số hộp trống kỳ vọng sau 4 lần ném:
+     $$E[\text{empty}] = D\left(1 - \frac{1}{D}\right)^n = 3 \cdot \left(\frac{2}{3}\right)^4 = 3 \cdot \frac{16}{81} = \frac{16}{27} \approx 0{,}593\text{ hộp.}$$
+   - Số hộp **khác rỗng** (tức số giá trị phân biệt) kỳ vọng:
+     $$E[\text{occupied}] = D - E[\text{empty}] = 3 - \frac{16}{27} = \frac{65}{27} \approx 2{,}407\text{ hộp.}$$
+   - Vì mỗi phần tử đầu tiên rơi vào một hộp tạo ra 1 hộp khác rỗng, còn mọi phần tử rơi sau vào hộp đã có mặt đều là **1 lần va chạm**, ta có ngay:
+     $$E[\text{collisions}] = n - E[\text{occupied}] = 4 - \frac{65}{27} = \frac{43}{27} \approx 1{,}593\text{ lần va chạm.}$$
+2. **Cách 2 — Đối chiếu với ví dụ lâm sàng ($$D = 500$$ mã bệnh, $$n = 1\,000$$ bệnh nhân):**
+   - Dùng xấp xỉ $$\left(1 - \frac{1}{500}\right)^{1000} \approx e^{-1000/500} = e^{-2} \approx 0{,}1353$$.
+   - Số mã bệnh chưa có ai mắc: $$500 \times 0{,}1353 \approx 67{,}7$$.
+   - Số mã bệnh đã xuất hiện: $$500 - 67{,}7 = 432{,}3$$.
+   - Kỳ vọng số lần bệnh nhân mới trùng mã với người đã nhập trước đó: $$1\,000 - 432{,}3 \approx 567{,}7$$ ca!
+
+### Khung giải thích: Mẹo đếm ngược qua "số hộp trống" (nên đọc chậm)
+
+1. **Bước 1 — Chuyển bài toán sang từng hộp cố định:** Thay vì theo dõi đường đi phức tạp của $$n$$ quả bóng, hãy đứng tại **hộp thứ $$j$$** và hỏi: xác suất hộp $$j$$ hoàn toàn trống sau $$n$$ lần ném là bao nhiêu? Mỗi lần ném trượt hộp $$j$$ có xác suất $$1 - 1/D$$, nên sau $$n$$ lần độc lập là $$(1 - 1/D)^n$$.
+2. **Bước 2 — Cộng kỳ vọng cho cả $$D$$ hộp:** Đặt biến chỉ thị $$I_j = 1$$ nếu hộp $$j$$ trống, ngược lại $$0$$. Dù trạng thái các hộp phụ thuộc nhau, tính tuyến tính của kỳ vọng vẫn cho $$E[\text{empty}] = \sum_{j=1}^D E[I_j] = D(1 - 1/D)^n$$.
+3. **Bước 3 — Dùng định luật bảo toàn phần tử:** Tổng số phần tử chèn vào luôn tách làm đúng hai phần: phần tử "mở hộp mới" (bằng số hộp có bóng $$D - \text{empty}$$) và phần tử "va chạm vào hộp cũ".
+4. **Bước 4 — Khác biệt với số cặp trùng:** Số lần va chạm khi chèn $$E[\text{collisions}]$$ luôn $$\le n$$, trong khi số cặp trùng $$\binom{n}{2}/D$$ có thể lớn hơn $$n$$ rất nhiều khi nhiều phần tử dồn vào cùng một hộp.
+
+$$E[\text{collisions}] = n - \big(D - E[\text{empty}]\big) = n - D + D\!\left(1 - \frac{1}{D}\right)^n.$$
 
 ## Bài tập thực hành
 

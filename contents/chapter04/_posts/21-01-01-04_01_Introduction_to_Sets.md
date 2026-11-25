@@ -20,6 +20,23 @@ excerpt: "Giới thiệu các khái niệm nền tảng của lý thuyết tập
 
 Trong chương này, chúng ta xây dựng **lý thuyết tập hợp** — nền tảng của toán học rời rạc và khoa học máy tính. Khi viết truy vấn SQL, lọc người dùng theo vai trò, lưu danh sách các nút đã duyệt trong thuật toán, hay mô tả tập ký tự hợp lệ của trình phân tích cú pháp, ta đều đang làm việc với cùng một khái niệm: **tập hợp**. Tập hợp giúp xác định rạch ròi phần tử nào thuộc nhóm và phần tử nào không — đó là ngôn ngữ cơ sở của dữ liệu, quan hệ, hàm số, xác suất và đồ thị. Nếu thiếu tư duy tập hợp, các phát biểu kỹ thuật dễ trở nên mơ hồ; hai điều kiện trông tương tự nhau có thể cho kết quả khác hẳn chỉ vì miền giá trị khác nhau. Mục 4.1 bắt đầu từ khái niệm phần tử, ký hiệu, cách biểu diễn và các loại tập hợp quen thuộc.
 
+Mọi đối tượng trong toán học rời rạc—từ đồ thị, quan hệ, hàm số, bảng cơ sở dữ liệu cho đến kiểu `HashSet`/`set` trong lập trình—đều được xây dựng từ một viên gạch nền duy nhất: **Tập hợp (Set)**. Một tập hợp đơn giản là một bộ sưu tập không phân biệt thứ tự và không lặp lại các phần tử phân biệt.
+
+## Bản đồ kiến thức nền: Bốn khái niệm cốt lõi mở đầu Lý thuyết Tập hợp
+
+1. **Hai đặc tính bất biến: Không thứ tự & Không trùng lặp**:
+   $\{1, 2, 3\} = \{3, 1, 2\} = \{1, 1, 2, 3\}$. Nếu cần giữ thứ tự ta dùng **bộ (tuple)**; nếu cần giữ số lần lặp ta dùng **đa tập (multiset / bag)**.
+
+2. **Hai cách biểu diễn tập hợp**:
+   - **Liệt kê (Roster)**: $\{2, 4, 6, 8\}$.
+   - **Chỉ ra tính chất đặc trưng (Set-builder)**: $\{x \in \mathbb{Z} \mid x \text{ chẵn và } 1 \le x \le 8\}$ — chính là nguyên mẫu toán học của *list/set comprehension* trong Python!
+
+3. **Phân biệt rạch ròi Thuộc ($\in$) và Tập con ($\subseteq$)**:
+   Đây là bẫy kinh điển nhất: $a \in A$ kiểm tra $a$ có phải là **một phần tử** nằm trong $A$ hay không; còn $B \subseteq A$ kiểm tra mọi phần tử của $B$ có đều thuộc $A$ hay không ($\forall x\,(x \in B \to x \in A)$). Đặc biệt, tập rỗng $\emptyset$ là tập con của **mọi** tập hợp ($\emptyset \subseteq A$ luôn đúng rỗng!).
+
+4. **Tập lũy thừa (Power Set $\mathcal{P}(A)$) & Mảng bit (Bitmask)**:
+   $\mathcal{P}(A)$ là tập chứa *tất cả* các tập con của $A$. Nếu $\vert A \vert = n$ thì $\vert \mathcal{P}(A) \vert = 2^n$—mỗi tập con tương ứng 1–1 với một chuỗi nhị phân $n$ bit, nền tảng của kỹ thuật **Bitmask DP** trong thuật toán!
+
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
@@ -268,6 +285,25 @@ $$\text{pow}(\text{pow}(\{1\})) = \{\emptyset, \{\emptyset\}, \{\{1\}\}, \{\empt
 (c) **Sai.** Lấy phản ví dụ $$S = \{1\}$$ và $$T = \{2\}$$. Khi đó $$S \cup T = \{1, 2\} \notin \text{pow}(S) \cup \text{pow}(T)$$ vì $$\{1, 2\}$$ không phải tập con của $$S$$ và cũng không phải tập con của $$T$$.
 
 </details>
+
+### Khung giải thích (nên đọc chậm): Ánh xạ 1–1 giữa Tập lũy thừa $\mathcal{P}(\{a, b, c\})$ và 8 chuỗi nhị phân 3-bit
+
+Với tập $A = \{a, b, c\}$ có $n = 3$ phần tử, mỗi phần tử có đúng 2 lựa chọn độc lập (`1` = chọn vào tập con, `0` = không chọn), tạo ra đúng $2^3 = 8$ tập con:
+
+| Bitmask `(a, b, c)` | Giá trị thập phân | Tập con tương ứng trong $\mathcal{P}(A)$ | Số phần tử |
+| :---: | :---: | :--- | :---: |
+| `000` | `0` | $\emptyset$ | `0` |
+| `001` | `1` | $\{c\}$ | `1` |
+| `010` | `2` | $\{b\}$ | `1` |
+| `011` | `3` | $\{b, c\}$ | `2` |
+| `100` | `4` | $\{a\}$ | `1` |
+| `101` | `5` | $\{a, c\}$ | `2` |
+| `110` | `6` | $\{a, b\}$ | `2` |
+| `111` | `7` | $\{a, b, c\}$ | `3` |
+
+**Kiểm tra nhanh cái bẫy $\in$ vs. $\subseteq$ trên chính bảng trên**:
+- $\{a\} \subseteq A$ là **Đúng**, nhưng $\{a\} \in A$ là **Sai** (vì phần tử của $A$ là $a$, không phải $\{a\}$).
+- Ngược lại, $\{a\} \in \mathcal{P}(A)$ là **Đúng** (vì mỗi phần tử của $\mathcal{P}(A)$ là một tập con của $A$)!
 
 ## Định lý: Số tập con của một tập hợp hữu hạn
 

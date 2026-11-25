@@ -9,6 +9,8 @@ lang: en
 excerpt: "Chứng minh tính đóng của lớp ngôn ngữ chính quy dưới các phép toán hợp, giao, bù, nối chuỗi, bao đóng sao, đảo chuỗi và đồng cấu."
 ---
 
+> **Câu chuyện mở đầu:** Nếu bạn biết hai ngôn ngữ $$L_1, L_2$$ đều là ngôn ngữ chính quy, liệu hợp $$L_1 \cup L_2$$, giao $$L_1 \cap L_2$$, phần bù $$\overline{L_1}$$, hay đảo ngược $$L_1^R$$ có còn là ngôn ngữ chính quy không? Tin vui: **Lớp Ngôn ngữ Chính quy là lớp "bất khả xâm phạm" nhất trong Lý thuyết Tính toán** — nó đóng dưới **TẤT CẢ** các phép toán tập hợp và chuỗi cơ bản! Không chỉ giúp xây dựng ô-tô-mát phức tạp từ các mảnh nhỏ, **Tính đóng** còn là vũ khí tuyệt vời để chứng minh ngôn ngữ *không* chính quy chỉ trong 2 dòng!
+
 <div class="textbook-epigraph" markdown="1">
 
 "Closure proofs are constructions — and constructions are algorithms."
@@ -25,6 +27,49 @@ excerpt: "Chứng minh tính đóng của lớp ngôn ngữ chính quy dưới c
 - **Sử dụng** phép dựng ô-tô-mát tích (*product automaton*) để chứng minh tính đóng dưới phép giao.
 
 </div>
+
+## Bản đồ kiến thức nền: Bảng Tính đóng & Kỹ thuật Ô-tô-mát Tích
+
+### 1. Đóng dưới các Phép toán Biểu thức Chính quy (Hợp, Nối tiếp, Sao Kleene)
+- **Bản chất:** Hiển nhiên ngay từ Định lý Kleene (hoặc ghép $$\varepsilon$$-NFA kiểu Thompson).
+
+### 2. Đóng dưới Phần bù ($$\bar{L}$$) & Giao ($$L_1 \cap L_2$$) — Dùng DFA!
+- **Phần bù (Complement):** Chỉ cần lấy **DFA đầy đủ** nhận $$L$$ rồi **đảo tập kết thúc** $$F \mapsto Q \setminus F$$! *(Cảnh báo chết người: KHÔNG ĐƯỢC đảo $$F$$ trực tiếp trên NFA vì một chuỗi có thể vừa có nhánh vào $$F$$ vừa có nhánh vào $$Q\setminus F$$!)*
+- **Giao (Intersection) — Ô-tô-mát Tích (Product Construction):** Chạy đồng thời hai DFA $$M_1, M_2$$ trên cặp trạng thái $$(q_1, q_2) \in Q_1 \times Q_2$$ với $$\delta((q_1, q_2), a) = (\delta_1(q_1, a), \delta_2(q_2, a))$$ và $$F = F_1 \times F_2$$! (Đổi $$F$$ thành $$(F_1 \times Q_2) \cup (Q_1 \times F_2)$$ ra ngay phép Hợp; đổi thành $$F_1 \times (Q_2 \setminus F_2)$$ ra ngay phép Hiệu $$L_1 \setminus L_2$$!)
+
+### 3. Đóng dưới Đảo ngược ($$L^R$$) & Đồng cấu Chuỗi (Homomorphism)
+- **Đảo ngược:** Đảo chiều tất cả mũi tên của NFA, đổi trạng thái bắt đầu và kết thúc (thêm 1 trạng thái đầu mới nối $$\varepsilon$$ tới tất cả các $$F$$ cũ)!
+
+## Ví dụ tính tay cầm tay chỉ việc: Dùng Tính đóng chứng minh 2 dòng $$L = \{w : \#_0(w) = \#_1(w)\}$$ KHÔNG chính quy
+
+Thay vì chật vật với nhiều trường hợp của Bổ đề Bơm trên $$L = \{w \in \{0, 1\}^* : \text{số bit 0 bằng số bit 1}\}$$, hãy dùng **Tính đóng dưới phép giao**:
+1. Giả sử phản chứng $$L$$ là ngôn ngữ chính quy.
+2. Ta biết rõ $$R = L(0^* 1^*)$$ là ngôn ngữ chính quy (mọi số `0` đứng trước mọi số `1`).
+3. Vì lớp ngôn ngữ chính quy **đóng dưới phép giao**, nên giao của hai ngôn ngữ chính quy phải là ngôn ngữ chính quy:
+   $$
+   L \cap L(0^* 1^*) = \{0^n 1^n : n \ge 0\}.
+   $$
+4. Nhưng ta đã chứng minh ở bài 18.09 rằng $$\{0^n 1^n\}$$ **KHÔNG chính quy** $$\implies$$ **mâu thuẫn**! Vậy $$L$$ không phải ngôn ngữ chính quy!
+
+### Khung giải thích: 4 ứng dụng thực chiến của Tính đóng & Ô-tô-mát Tích (nên đọc chậm)
+
+#### Bước 1: Luôn chuyển sang DFA ĐẦY ĐỦ trước khi lấy Phần bù
+Nếu bỏ sót trạng thái bẫy (dead state) rồi đảo $$F \mapsto Q\setminus F$$, kết quả sẽ sai hoàn toàn!
+
+#### Bước 2: Dùng Ô-tô-mát Tích để giải mọi bài toán "Thỏa ĐỒNG THỜI 2 điều kiện"
+Ví dụ: nhận chuỗi vừa có chẵn bit `0` (DFA 2 trạng thái) vừa chia hết cho 3 (DFA 3 trạng thái) $$\implies$$ DFA tích có đúng $$2 \times 3 = 6$$ trạng thái!
+
+#### Bước 3: Dùng tính đóng dưới Phép Giao để kiểm tra tương đương hai DFA
+Hai DFA $$M_1, M_2$$ nhận cùng ngôn ngữ $$\iff (L_1 \setminus L_2) \cup (L_2 \setminus L_1) = \emptyset$$ — kiểm tra được tự động bằng thuật toán duyệt đồ thị BFS từ trạng thái khởi đầu của DFA tích!
+
+#### Bước 4: Đòn "Mượn dao giết người" chứng minh Không chính quy
+Khi gặp ngôn ngữ khó tách $$y$$ bằng Bổ đề Bơm, hãy lấy **phần bù** hoặc **giao** với một Regex khéo chọn (như $$0^*1^*$$) để rút gọn về đúng ngôn ngữ kinh điển $$\{0^n 1^n\}$$!
+
+$$
+L_1, L_2 \text{ chính quy}
+\;\Longrightarrow\;
+L_1 \cup L_2,\; L_1 \cap L_2,\; \overline{L_1},\; L_1 \setminus L_2,\; L_1^R \text{ đều chính quy!}
+$$
 
 ## Định lý tính đóng
 

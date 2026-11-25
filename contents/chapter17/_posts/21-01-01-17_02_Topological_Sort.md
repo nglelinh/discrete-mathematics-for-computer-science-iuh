@@ -9,6 +9,8 @@ lang: en
 excerpt: "Đồ thị có hướng không chu trình (DAG) và sắp xếp topo; thuật toán DFS (postorder đảo ngược) và Kahn (bậc vào kết hợp hàng đợi); độ phức tạp O(V+E) cùng ứng dụng trong hệ thống build, xếp lịch và phát hiện chu trình."
 ---
 
+> **Câu chuyện mở đầu:** Buổi sáng thức dậy bạn không thể đi giày trước khi mang tất, và ở đại học bạn không thể học *Thuật toán* trước khi qua môn *Cấu trúc Dữ liệu*! Trong Khoa học Máy tính, bất kỳ hệ thống nào có ràng buộc thứ tự phụ thuộc — từ `Makefile` biên dịch hàng nghìn tệp mã nguồn, lịch quản lý dự án (PERT/CPM), cho đến thứ tự tính đạo hàm ngược (backpropagation) trong PyTorch — đều được mô hình hóa bằng **Đồ thị có hướng không chu trình (DAG)** và giải quyết gọn gàng bằng **Sắp xếp Topo**!
+
 <div class="textbook-epigraph" markdown="1">
 
 "If A must finish before B, draw A → B — then ask for a linear order that respects every arrow."
@@ -37,6 +39,56 @@ Trong một hệ thống biên dịch (build system), mô-đun $$B$$ chỉ đư�
 **Từ khóa**: DAG, topological sort, in-degree, Kahn, DFS postorder, cycle detection.
 
 </div>
+
+## Bản đồ kiến thức nền: DAG và Hai Thuật toán Sắp xếp Topo Kinh điển
+
+### 1. Điều kiện Cần và Đủ để tồn tại Sắp xếp Topo
+- **Định lý cốt lõi:** Một đồ thị có hướng $$G$$ có thứ tự sắp xếp topo (mọi cạnh $$u \to v$$ đều có $$u$$ đứng trước $$v$$) **khi và chỉ khi $$G$$ là một DAG** (không chứa bất kỳ chu trình có hướng nào!).
+
+### 2. Hai thuật toán tuyến tính $$O(V + E)$$
+- **Thuật toán Kahn (Dựa trên Bậc vào — BFS/Queue):** Lặp lại việc rút một đỉnh có `in-degree = 0` (không còn điều kiện tiên quyết nào!), ghi vào kết quả và giảm bậc vào của các đỉnh kề đi 1. Nếu cuối cùng xuất ra ít hơn $$V$$ đỉnh $$\implies$$ **đồ thị chắc chắn có chu trình**!
+- **Thuật toán DFS (Dựa trên Thời điểm kết thúc `finish time`):** Chạy DFS; mỗi khi một đỉnh duyệt xong hết các con, đẩy nó vào đầu danh sách (hoặc đảo ngược thứ tự kết thúc DFS)!
+
+### 3. Đường găng (Critical Path) trên DAG
+- **Bản chất:** Sau khi sắp xếp topo, ta tìm được **đường đi ngắn nhất VÀ đường đi dài nhất** trên DAG trong thời gian tuyến tính $$O(V + E)$$ (kể cả khi có trọng số âm!) chỉ bằng một vòng lặp quy hoạch động duy nhất!
+
+## Ví dụ tính tay cầm tay chỉ việc: Chạy Thuật toán Kahn cho Lộ trình 5 Môn học
+
+Cho 5 môn với các cạnh tiên quyết:
+`Toán RR → CTDL`, `Lập trình → CTDL`, `CTDL → Thuật toán`, `CTDL → Hệ điều hành`.
+
+1. **Tính bậc vào ban đầu (`in-degree`):**
+   - `Toán RR`: **0**, `Lập trình`: **0**, `CTDL`: **2**, `Thuật toán`: **1**, `Hệ điều hành`: **1**.
+   - Khởi tạo Queue chứa các đỉnh bậc vào 0: `[Toán RR, Lập trình]`.
+2. **Rút `Toán RR`:** Giảm bậc vào `CTDL` từ `2 → 1`. Kết quả: `[Toán RR]`.
+3. **Rút `Lập trình`:** Giảm bậc vào `CTDL` từ `1 → 0` $$\to$$ đẩy `CTDL` vào Queue! Kết quả: `[Toán RR, Lập trình]`.
+4. **Rút `CTDL`:** Giảm bậc vào `Thuật toán` (`1 → 0`) và `Hệ điều hành` (`1 → 0`) $$\to$$ đẩy cả hai vào Queue!
+5. **Rút `Thuật toán` rồi `Hệ điều hành`:** Thu được thứ tự hợp lệ gồm đủ **5/5 đỉnh**:
+   `Toán RR → Lập trình → CTDL → Thuật toán → Hệ điều hành`!
+   *(Chú ý: thứ tự topo **không nhất thiết duy nhất** — đổi `Lập trình` lên trước `Toán RR` vẫn hoàn toàn hợp lệ!)*
+
+### Khung giải thích: 4 bước dùng Sắp xếp Topo giải bài toán Phụ thuộc và Quy hoạch động (nên đọc chậm)
+
+#### Bước 1: Vẽ đúng chiều mũi tên phụ thuộc
+Quy ước nhất quán: nếu $$A$$ phải làm **trước** $$B$$ thì vẽ cạnh $$A \to B$$ ($$B$$ phụ thuộc $$A$$). Vẽ ngược chiều sẽ cho thứ tự đảo ngược!
+
+#### Bước 2: Dùng Kahn để vừa sắp xếp vừa phát hiện lỗi vòng lặp (Cycle Detection)
+Trong trình quản lý gói (`npm`, `pip`, `cargo`), nếu gói A cần B và B cần A, bậc vào của cả A và B mãi bằng 1 nên Kahn dừng sớm với số đỉnh $$< V$$ — báo ngay lỗi *circular dependency*!
+
+#### Bước 3: Kiểm tra tính duy nhất của Thứ tự Topo
+Một DAG có thứ tự topo **duy nhất** khi và chỉ khi tại mọi bước của thuật toán Kahn, hàng đợi Queue luôn có **đúng 1 phần tử** (tương đương tồn tại một đường đi Hamilton nối liền tất cả $$V$$ đỉnh!).
+
+#### Bước 4: Mở khóa Quy hoạch động trên DAG trong $$O(V + E)$$
+Duyệt các đỉnh theo đúng thứ tự topo đảm bảo khi tính `dp[v]`, mọi đỉnh tiền nhiệm `dp[u]` ($$u \to v$$) đều đã được tính xong — biến hàng loạt bài toán đếm đường đi và lịch biểu dự án thành 5 dòng code!
+
+$$
+\text{Đồ thị phụ thuộc }G
+\;\xrightarrow{\;\text{Kahn (in-degree) / DFS}\;}\;
+\begin{cases}
+\text{Đủ }V\text{ đỉnh} \implies \text{DAG + Thứ tự Topo }O(V+E) \\
+< V\text{ đỉnh} \implies \text{Có chu trình phụ thuộc!}
+\end{cases}
+$$
 
 ## DAG và sắp xếp topo
 

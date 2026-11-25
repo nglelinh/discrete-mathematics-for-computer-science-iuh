@@ -23,6 +23,19 @@ Phép rút gọn là **công cụ so sánh độ khó giữa các bài toán**: 
 
 <p class="textbook-figure-caption" data-figure="20.3">Phép biến đổi đa thức $$f$$ bảo toàn tính thuộc ngôn ngữ: $$x\in A\Leftrightarrow f(x)\in B$$.</p>
 
+Nếu bạn không biết cách giải bài toán $$A$$, nhưng bạn biết cách *dịch nhanh* mọi dữ liệu của $$A$$ thành bài toán $$B$$ rồi nhờ thuật toán giải $$B$$ trả lời hộ, thì có hai kết luận cực kỳ sâu sắc cùng lúc: nếu $$B$$ dễ thì $$A$$ cũng dễ; và ngược lại, nếu $$A$$ đã nổi tiếng là khó thì $$B$$ **ít nhất phải khó ngang $$A$$**! Phép dịch nhanh đó chính là **rút gọn đa thức Karp ($$A \le_p B$$)** — chiếc cân so sánh độ khó giữa hàng nghìn bài toán tính toán.
+
+## Bản đồ kiến thức nền: Ba trụ cột của Rút gọn Đa thức
+
+1. **Định nghĩa Rút gọn Nhiều–Một Đa thức (Karp Reduction $$A \le_p B$$)**:
+   Tồn tại hàm tính được trong thời gian đa thức $$f: \{0,1\}^* \to \{0,1\}^*$$ sao cho với **mọi** đầu vào $$x$$:
+   $$x \in A \iff f(x) \in B.$$
+   Chú ý hai chiều của dấu $$\iff$$: phải chứng minh cả chiều thuận (YES $$\implies$$ YES) lẫn chiều đảo (YES ở $$B \implies$$ YES ở $$A$$, tương đương NO $$\implies$$ NO)!
+2. **Tính bắc cầu & Bảo toàn lớp $$P, NP$$**:
+   Nếu $$A \le_p B$$ và $$B \le_p C$$ thì $$A \le_p C$$ (vì hợp thành hai đa thức vẫn là đa thức). Nếu $$B \in P$$ thì $$A \in P$$; nếu $$A \notin P$$ thì $$B \notin P$$.
+3. **Rút gọn Karp ($$\le_p$$) vs. Rút gọn Cook/Turing ($$\le_T^p$$)**:
+   Karp chỉ cho phép gọi "nhà tiên tri" $$B$$ đúng **1 lần ở cuối** và giữ nguyên câu trả lời (không đảo ngược), nên giữ chặt ranh giới giữa $$NP$$ và $$\mathrm{coNP}$$. Cook cho gọi $$B$$ nhiều lần và được phép phủ định kết quả (nên $$\mathrm{SAT} \le_T^p \overline{\mathrm{SAT}}$$).
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -91,6 +104,17 @@ $$
 | Dùng để định nghĩa NP-complete cổ điển | **Có** | Hiếm dùng làm định nghĩa chuẩn cho NPC |
 
 Mọi phép rút gọn Karp đều là một phép rút gọn Cook, nhưng chiều ngược lại nói chung không tầm thường.
+
+### Khung giải thích (nên đọc chậm): Chiều rút gọn — Lỗi sai kinh điển nhất của sinh viên khi chứng minh NP-hard
+
+Giả sử bạn đã biết `3SAT` là bài toán rất khó (NP-complete) và muốn chứng minh bài toán mới `MY-PROB` cũng khó tương đương. Bạn phải chọn **đúng chiều mũi tên**:
+
+| Chiều rút gọn | Ý nghĩa trực giác | Kết luận rút ra | Đúng hay Sai cho mục tiêu chứng minh `MY-PROB` khó? |
+| :--- | :--- | :--- | :---: |
+| `MY-PROB` $$\le_p$$ `3SAT` | `MY-PROB` *không khó hơn* `3SAT` | `MY-PROB` $$\in NP$$ (chỉ chặn trên!) | **SAI** (ngay cả bài toán tầm thường `1+1=2` cũng $$\le_p$$ `3SAT`!) |
+| `3SAT` $$\le_p$$ `MY-PROB` | `MY-PROB` *khó ít nhất bằng* `3SAT` | `MY-PROB` là **NP-hard**! | **ĐÚNG!** |
+
+**Mẹo nhớ không bao giờ nhầm:** Dấu $$\le_p$$ đọc là *"dễ hơn hoặc bằng"*. Muốn chứng minh $$B$$ khó, phải đặt bài toán **ĐÃ BIẾT KHÓ ở bên TRÁI** ($$\text{Đã biết khó} \le_p B$$) để đẩy độ khó sang $$B$$!
 
 ## Bài tập
 

@@ -19,6 +19,17 @@ excerpt: "Tiêu chí chọn đề tài nghiên cứu độ phức tạp, cấu t
 
 Sau các bài 20.1–20.13, bạn đã có **ngôn ngữ chuẩn** để đọc bài báo chuyên ngành cùng **bộ chứng minh mẫu**. Bài cuối này hướng dẫn bước chuyển sang *thực hành nghiên cứu*: chọn đề tài phù hợp, đọc tài liệu theo tầng, viết chứng minh và thiết kế thực nghiệm.
 
+Đọc xong định lý Cook–Levin và các phép rút gọn đồ thị là một chuyện, nhưng làm sao biến kiến thức Chương 20 thành năng lực **tự nghiên cứu, chạy thực nghiệm với SAT/ILP solver và viết một bài báo khoa học đạt chuẩn**? Bài tổng kết này đóng vai trò "sổ tay thực chiến" giúp sinh viên năm cuối và học viên cao học nối liền lý thuyết độ phức tạp với thực hành nghiên cứu hiện đại.
+
+## Bản đồ kiến thức nền: Ba trụ cột Thực hành Nghiên cứu Độ phức tạp
+
+1. **Từ Bài toán Thực tế đến Khung phân tích Độ phức tạp**:
+   Khi gặp một bài toán mới (ví dụ xếp lịch thi, định tuyến xe điện), nhà nghiên cứu luôn chạy qua 4 câu hỏi theo thứ tự: (1) Có thuộc $$P$$ không? (2) Nếu NP-hard, có tham số nhỏ $$k$$ để thiết kế thuật toán FPT không? (3) Có thuật toán xấp xỉ tỉ lệ hằng số không? (4) Mã hóa sang SAT/ILP chạy thực nghiệm ra sao?
+2. **Công cụ thực nghiệm (CDCL SAT Solver & ILP/CP-SAT)**:
+   Hiểu cách mã hóa ràng buộc thực tế sang CNF (dùng `PySAT`, `Z3`, `OR-Tools`) giúp biến các bộ giải công nghiệp hàng đầu thế giới thành "động cơ giải thuê" cho bài toán NP-hard của mình.
+3. **Kỷ luật viết chứng minh & Đọc bài báo theo tầng**:
+   Bắt đầu từ giáo trình chuẩn (Sipser → Arora–Barak → Cygan et al. về FPT), đọc theo cấu trúc: phát biểu chính xác định lý → ví dụ nhỏ tự kiểm tra → chứng minh từng chiều rút gọn.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -107,6 +118,19 @@ Các bộ giải tiêu biểu gồm: **SAT** (Kissat, Glucose), **SMT** (Z3) và
 | 12 | Parameterized Complexity (FPT) | Phân tích theo tham số |
 | 13 | ETH, fine-grained, average-case | Bản đồ độ phức tạp hiện đại |
 | 14 | Thực hành nghiên cứu | Triển khai dự án nghiên cứu |
+
+### Khung giải thích (nên đọc chậm): Quy trình 4 bước giải quyết một bài toán tối ưu mới trong đồ án / nghiên cứu
+
+Giả sử bạn gặp bài toán **Xếp lịch coi thi đại học** sao cho không giảng viên nào bị trùng giờ và tổng số phòng thi nhỏ nhất:
+
+| Bước thực chiến | Hành động cụ thể | Kiến thức Chương 20 áp dụng |
+| :---: | :--- | :--- |
+| **1. Định vị độ khó** | Nhận ra bài toán tổng quát hóa Tô màu đồ thị (`k-COLORING`) | Chứng minh NP-hard bằng rút gọn $$3\text{COLOR} \le_p \text{ExamSchedule}$$ |
+| **2. Mã hóa Solver** | Tạo biến $$x_{e, t} \in \{0,1\}$$ ("môn $$e$$ thi ca $$t$$"), viết mệnh đề xung đột $$(\neg x_{e_1, t} \lor \neg x_{e_2, t})$$ | Nạp vào `PySAT` / `OR-Tools CP-SAT` để giải chính xác quy mô trường học (~1.000 môn) |
+| **3. Khai thác cấu trúc** | Kiểm tra xem đồ thị xung đột môn học có chia theo từng khoa độc lập không | Nếu độ rộng cây nhỏ, thiết kế thuật toán FPT / quy hoạch động trên từng khoa |
+| **4. Báo cáo thực nghiệm** | Đo thời gian giải, khoảng cách tối ưu (optimality gap) và so sánh với baseline tham lam | Trình bày chuẩn bảng thực nghiệm khoa học |
+
+Đây chính là cách các kỹ sư thuật toán và nhà nghiên cứu biến lý thuyết NP-complete từ "tin xấu" thành lộ trình giải quyết vấn đề bài bản!
 
 ## Bài tập cuối chương
 

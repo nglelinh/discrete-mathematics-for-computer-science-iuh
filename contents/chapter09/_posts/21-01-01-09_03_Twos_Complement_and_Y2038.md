@@ -9,6 +9,16 @@ lang: en
 excerpt: "Tìm hiểu cách máy tính biểu diễn số nguyên có dấu bằng bù hai (two's complement), phân biệt giới hạn 32-bit signed/unsigned và cơ chế tràn số gây ra sự cố Year 2038."
 ---
 
+Hãy tưởng tượng một bộ điều khiển tín hiệu giao thông hay thiết bị y tế lắp đặt từ năm 2015, chạy êm ru suốt hơn hai thập kỷ — rồi đúng 03:14:08 UTC ngày 19/01/2038, đồng hồ nội bộ bỗng nhảy ngược về ngày 13/12/1901. Không có hacker nào tấn công, không có phần cứng nào cháy hỏng; thủ phạm chỉ là phép **cộng thêm 1** vào số nguyên 32-bit có dấu cực đại theo quy ước **bù hai (two's complement)**.
+
+**Mạch bài học:** Từ quy ước đếm giây **Unix epoch** $$\longrightarrow$$ giới hạn số nguyên 32-bit có dấu $$2^{31}-1$$ $$\longrightarrow$$ toán học mô-đun của **bù hai** và cách ALU dùng chung một mạch cộng $$\longrightarrow$$ bài toán nâng cấp hệ thống trước năm 2038.
+
+## Bản đồ kiến thức nền: Bù hai và số học mô-đun nghiên cứu gì?
+
+- **Số học đồng dư mô-đun $$2^n$$ (Modular Arithmetic):** Phần cứng máy tính không có trục số vô hạn $$\mathbb{Z}$$; mọi thanh ghi $$n$$-bit thực chất tính toán trên vòng hữu hạn $$\mathbb{Z}/2^n\mathbb{Z}$$, nơi $$2^n \equiv 0 \pmod{2^n}$$ và giá trị lớn nhất "cuộn vòng" sang giá trị nhỏ nhất.
+- **Biểu diễn số nguyên có dấu (Two's Complement):** Thay vì tách riêng bit dấu (gây ra hai số $$+0$$ và $$-0$$), máy tính gán trọng số âm $$-2^{n-1}$$ cho bit cao nhất (MSB), giúp biểu diễn duy nhất mọi số trong đoạn $$[-2^{n-1}, 2^{n-1}-1]$$ và biến phép trừ $$a - b$$ thành phép cộng $$a + (-b)$$.
+- **Kỹ thuật hệ thống thời gian thực (Systems & Epoch Design):** Cách hệ điều hành, CSDL và giao thức mạng mã hóa thời gian thành số nguyên (`time_t`, `TIMESTAMP`), cùng rủi ro tràn số (integer overflow) khi không gian biểu diễn chạm trần.
+
 Ở bài endianness, chúng ta đã thấy cùng một dãy byte có thể cho ra những giá trị khác nhau tùy theo quy ước sắp xếp thứ tự byte. Mục này xét một vấn đề tương tự đối với **số nguyên có dấu**: trên cùng một dãy bit trong bộ nhớ, máy tính áp dụng quy tắc **bù hai** (two's complement) để phân biệt số dương và số âm. Nhiều hệ thống không lưu “ngày giờ” theo định dạng hiển thị trên đồng hồ mà lưu **một số nguyên** đếm số giây trôi qua kể từ mốc epoch Unix (01/01/1970). Mỗi giây, số này tăng thêm 1; khi biến đếm chỉ rộng **32 bit có dấu** (signed), giá trị cực đại là $$2^{31}-1$$, tương ứng **03:14:07 UTC ngày 19/01/2038**. Cộng thêm 1 giây nữa sẽ gây **tràn số** (overflow) và đẩy timestamp quay ngược về khoảng năm **1901**.
 
 Khác với sự cố **Y2K** (do lưu năm bằng hai chữ số dẫn đến nhầm lẫn giữa 1900 và 2000), **Y2038** bắt nguồn từ việc **ô nhớ đầy**: không thể khắc phục chỉ bằng cách “thêm chữ số”, mà phải mở rộng độ rộng biểu diễn (`int64_t`, `time_t` 64-bit) hoặc thay thế thiết bị cũ. Điểm cần nhớ: **thời gian trong máy tính là một số nguyên có giới hạn biên; cộng thêm 1 tại biên có thể làm lệch cả một thế kỷ.** Trong thực tế, các firmware PLC, camera IP và định dạng tệp lưu trữ dùng timestamp `int32` vẫn chạy bình thường vào năm 2026 nhưng có nguy cơ gặp sự cố sau năm 2038 nếu không được kiểm tra và nâng cấp.
@@ -156,6 +166,33 @@ Tính từ năm 2026, mốc Y2038 chỉ còn khoảng **12 năm**. Khác với Y
 **Đọc thêm**: [Planet Mainframe — Y2K38 (2026)](https://planetmainframe.com/2026/01/inside-the-math-that-will-break-time-the-y2k38-problem/) · [Wikipedia — Year 2038 problem](https://en.wikipedia.org/wiki/Year_2038_problem)
 
 ---
+
+## Ví dụ tính tay cầm tay chỉ việc: Tràn số 4-bit và mô phỏng Y2038 thu nhỏ
+
+Để thấy tận mắt tại sao cộng thêm $$1$$ lại đẩy thời gian lùi về quá khứ mà không cần viết 32 bit dài ngoằng, ta thu nhỏ bài toán về thanh ghi **4-bit có dấu** theo bù hai (miền giá trị $$[-2^3, 2^3-1] = [-8, +7]$$):
+
+1. **Tìm biểu diễn bù hai của $$-5$$ trên 4 bit:**
+   - Viết $$+5$$ ở hệ nhị phân 4-bit: $$0101_2$$.
+   - Đảo tất cả các bit (bù một): $$1010_2$$.
+   - Cộng thêm $$1$$: $$1010_2 + 0001_2 = 1011_2$$.
+   - Kiểm tra ngược bằng công thức trọng số MSB âm: $$-1 \cdot 2^3 + 0 \cdot 2^2 + 1 \cdot 2^1 + 1 \cdot 2^0 = -8 + 0 + 2 + 1 = -5$$. Chính xác!
+2. **Thực hiện phép trừ $$6 - 5$$ bằng mạch cộng thuần túy:**
+   - $$6 = 0110_2$$, $$-5 = 1011_2$$.
+   - Cộng nhị phân 4-bit: $$0110_2 + 1011_2 = (1)\,0001_2$$.
+   - Bỏ bit nhớ thứ 5 tràn ra ngoài thanh ghi 4-bit, ta thu được $$0001_2 = +1$$. Không cần mạch trừ riêng!
+3. **Mô phỏng khoảnh khắc Y2038 ở biên cực đại $$+7 = 0111_2$$:**
+   - Cộng thêm $$1$$ giây: $$0111_2 + 0001_2 = 1000_2$$.
+   - Đọc $$1000_2$$ theo bù hai 4-bit: $$-1 \cdot 2^3 + 0 = -8$$.
+   - Mở rộng y hệt lên 32-bit: $$0\underbrace{11\ldots 1}_{31\text{ bit}} + 1 = 1\underbrace{00\ldots 0}_{31\text{ bit}}$$, tức $$+(2^{31}-1) + 1 \equiv -2^{31} = -2\,147\,483\,648$$ giây tính từ 01/01/1970, rơi đúng vào ngày 13/12/1901.
+
+### Khung giải thích: Vì sao Y2038 là hệ quả tất yếu của đại số đồng dư (nên đọc chậm)
+
+1. **Bước 1 — Thanh ghi là vòng tròn, không phải đường thẳng:** Một thanh ghi 32-bit chỉ có đúng $$2^{32}$$ trạng thái. Mọi phép cộng đều lấy dư theo mô-đun $$2^{32}$$.
+2. **Bước 2 — Chia vòng tròn làm hai nửa dương và âm:** Quy ước bù hai cắt vòng tròn ngay ranh giới giữa `0x7FFFFFFF` ($$+2^{31}-1$$) và `0x80000000` ($$-2^{31}$$). Hai số đối cực nhau về mặt ngữ nghĩa lại nằm kề nhau đúng 1 bước nhảy trên vòng bit.
+3. **Bước 3 — Phần cứng không biết "thời gian":** Bộ cộng ALU chỉ bật cờ tràn (`OF = 1`) và tiếp tục trả về dãy bit `0x80000000`. Nếu phần mềm không kiểm tra tràn và dùng `int32_t` cho `time_t`, hệ thống lập tức hiểu nhầm năm 2038 thành năm 1901.
+4. **Bước 4 — Lời giải duy nhất ở gốc rễ:** Chuyển sang 64-bit có dấu (`int64_t`) đẩy trần thời gian lên $$2^{63}-1 \approx 9{,}22 \times 10^{18}$$ giây — tức khoảng **292 tỷ năm**, gấp hơn 20 lần tuổi vũ trụ hiện tại.
+
+$$\text{Unix } t \in \mathbb{Z}_{32} \;\xrightarrow{+1 \text{ tại } 2^{31}-1}\; -2^{31} \text{ (1901)} \;\xrightarrow{\text{nâng lên } 64\text{-bit}}\; 2^{63}-1 \approx 2{,}92 \times 10^{11} \text{ năm.}$$
 
 ## Bài tập thực hành
 

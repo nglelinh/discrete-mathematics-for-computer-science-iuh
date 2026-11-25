@@ -23,6 +23,17 @@ Với bài toán người du lịch (TSP), **kiểm tra** một hành trình cho
 
 <p class="textbook-figure-caption" data-figure="20.2">$$x\in L$$ khi và chỉ khi tồn tại chứng chỉ $$c$$ đủ ngắn sao cho bộ kiểm chứng $$V(x,c)=\mathrm{Yes}$$.</p>
 
+Giải một câu đố Sudoku cỡ $$100 \times 100$$ từ đầu có thể tốn hàng thế kỷ, nhưng nếu ai đó đưa cho bạn một bảng đã điền sẵn và bảo *"Đây là lời giải!"*, bạn chỉ mất vài giây để kiểm tra từng hàng, từng cột và từng ô vuông xem có đúng không. Sự bất đối xứng kỳ lạ giữa **tự tìm lời giải** và **kiểm chứng một lời giải cho sẵn** chính là linh hồn của lớp $$NP$$ và bài toán thiên niên kỷ trị giá 1 triệu USD: **$$P \stackrel{?}{=} NP$$**.
+
+## Bản đồ kiến thức nền: Ba trụ cột của Lớp $$NP$$
+
+1. **Định nghĩa theo Bộ kiểm chứng (Polynomial-Time Verifier)**:
+   $$L \in NP$$ khi và chỉ khi tồn tại thuật toán đa thức $$V(x, c)$$ sao cho $$x \in L \iff \exists c$$ (độ dài $$\vert c \vert \le \text{poly}(\vert x \vert)$$) để $$V(x, c) = 1$$. Chuỗi $$c$$ gọi là **chứng chỉ (certificate / witness)**.
+2. **Định nghĩa tương đương theo Máy Turing Không đơn định (NTM)**:
+   NTM giải $$L$$ bằng đúng 2 pha: *Đoán không đơn định* chứng chỉ $$c$$ trong thời gian đa thức, rồi *kiểm chứng đơn định* bằng $$V(x, c)$$. (Lưu ý: $$NP$$ viết tắt của *Nondeterministic Polynomial*, **không phải** "Non-Polynomial"!).
+3. **Chuỗi bao hàm căn bản $$P \subseteq NP \subseteq \mathrm{EXP}$$**:
+   Mọi bài toán trong $$P$$ đều thuộc $$NP$$ (chỉ cần bỏ qua chứng chỉ và tự giải); mọi bài toán trong $$NP$$ đều giải được trong $$\mathrm{EXP}$$ bằng cách vét cạn tất cả $$2^{\text{poly}(n)}$$ chứng chỉ khả dĩ.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -89,6 +100,16 @@ Với bài toán người du lịch (TSP), **kiểm tra** một hành trình cho
 | Chu trình Hamilton | Một hoán vị các đỉnh | Kiểm tra có đủ $$n$$ cạnh hợp lệ tạo thành chu trình kín |
 | 3-Coloring | Phép gán màu trong $$\{1,2,3\}^V$$ | Kiểm tra mọi cạnh đều nối hai đỉnh khác màu |
 | Subset Sum | Một tập con các phần tử | Cộng các phần tử và so sánh với tổng mục tiêu |
+
+### Khung giải thích (nên đọc chậm): Thiết kế tay cặp (Chứng chỉ $$c$$, Bộ kiểm chứng $$V$$) cho 3 bài toán kinh điển
+
+| Bài toán quyết định | Đầu vào $$x$$ | Chứng chỉ $$c$$ (kích thước đa thức) | Thuật toán kiểm chứng $$V(x, c)$$ | Thời gian kiểm chứng |
+| :--- | :--- | :--- | :--- | :---: |
+| **`SAT`** | Công thức CNF $$\varphi$$ có $$n$$ biến, $$m$$ mệnh đề | Phép gán $$n$$ bit $$(b_1, \dots, b_n) \in \{0,1\}^n$$ | Thay từng bit vào $$\varphi$$, kiểm tra mọi mệnh đề đều Đúng | $$O(n + m)$$ |
+| **`CLIQUE`** | Đồ thị $$G=(V,E)$$ và số nguyên $$k$$ | Tập $$k$$ đỉnh $$S = \{v_1, \dots, v_k\} \subseteq V$$ | Kiểm tra đủ $$k$$ đỉnh phân biệt và mọi cặp $$(u,v) \in S$$ đều có cạnh | $$O(k^2)$$ |
+| **`SUBSET-SUM`** | Tập số nguyên $$A = \{a_1,\dots,a_n\}$$ và đích $$t$$ | Tập chỉ số $$I \subseteq \{1,\dots,n\}$$ | Cộng các số $$\sum_{i \in I} a_i$$ và so sánh có bằng $$t$$ không | $$O(n \log t)$$ |
+
+**Cảnh báo lỗi kinh điển:** Nếu bạn chỉ dùng thuật toán quay lui vét cạn để tìm nghiệm mà không chỉ ra chứng chỉ $$c$$ ngắn, bạn chưa chứng minh được bài toán thuộc $$NP$$. Trong mọi bài chứng minh $$A \in NP$$, chỉ cần viết đúng 3 dòng: (1) $$c$$ là gì, (2) vì sao $$\vert c \vert = \text{poly}(\vert x \vert)$$, và (3) bộ kiểm chứng $$V(x, c)$$ chạy đa thức ra sao.
 
 ## Bài tập
 

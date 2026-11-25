@@ -10,6 +10,16 @@ lang: vi
 excerpt: "Áp dụng hàm sinh để giải quan hệ truy hồi theo quy trình 4 bước: chuyển hệ thức đệ quy thành phương trình đại số trên G(x), phân tích phân thức và đọc lại hệ số."
 ---
 
+Ở Chương 10, muốn giải truy hồi tuyến tính bạn phải ghi nhớ riêng nhiều trường hợp: thuần nhất, không thuần nhất, nghiệm bội, cộng hưởng... Nhưng khi bước sang miền **hàm sinh**, tất cả những quy tắc rời rạc ấy bỗng hợp nhất thành **một quy trình đại số duy nhất gồm 4 bước** — không cần đoán dạng nghiệm riêng và tự động xử lý gọn cả điều kiện đầu ngay từ dòng đầu tiên!
+
+**Mạch bài học:** Quy trình 4 bước chuyển truy hồi sang phương trình theo $$G(x)$$ $$\longrightarrow$$ giải đại số tìm biểu thức đóng của $$G(x)$$ $$\longrightarrow$$ **phân tách phân thức từng phần (partial fractions)** $$\longrightarrow$$ đọc ngược hệ số $$a_n = [x^n]G(x)$$.
+
+## Bản đồ kiến thức nền: Hàm sinh biến đổi bài toán truy hồi như thế nào?
+
+- **Phép biến đổi miền (Transform Method):** Giống biến đổi Laplace trong phương trình vi phân hay biến đổi Z trong xử lý tín hiệu số, hàm sinh chuyển phép **dịch chỉ số** ($$a_{n-1} \mapsto x G(x)$$) thành phép **nhân với $$x$$** — biến phương trình truy hồi thành phương trình đại số bậc nhất theo $$G(x)$$.
+- **Phân tách phân thức từng phần (Partial Fraction Decomposition):** Mọi hàm hữu tỷ thực sự $$\frac{P(x)}{Q(x)}$$ đều tách được thành tổng các phân thức sơ cấp dạng $$\frac{A}{(1 - rx)^m}$$, mà mỗi phân thức sơ cấp đều có khai triển chuỗi lũy thừa đóng tường minh!
+- **Thống nhất mọi trường hợp của Chương 10:** Nghiệm bội và cộng hưởng không còn là "luật ngoại lệ" phải học thuộc — chúng tự nhiên xuất hiện dưới dạng mẫu số bậc cao $$(1 - rx)^2$$, lập tức sinh ra thừa số $$(n+1)r^n$$ khi khai triển bằng nhị thức mở rộng.
+
 Ở mục trước, chúng ta đã định nghĩa hàm sinh $$G(x)=\sum a_n x^n$$. Mục này áp dụng công cụ đó để **giải quan hệ truy hồi**: thay vì xử lý từng số hạng riêng lẻ, ta chuyển cả dãy sang miền hàm, biến hệ thức đệ quy thành phương trình đại số theo $$G(x)$$, rồi khai triển lại để đọc hệ số $$a_n$$. Đây là cách **chuyển đổi biểu diễn** quen thuộc trong khoa học máy tính — tương tự việc chọn cấu trúc dữ liệu phù hợp trước khi xử lý — giúp nhiều bài toán truy hồi phức tạp trở nên dễ giải quyết hơn.
 
 ![Dãy Fibonacci](/discrete-mathematics-for-computer-science-iuh/img/course/Fibonacci_spiral.svg)
@@ -154,6 +164,39 @@ Phân tích $$G(x)$$ thành tổng các phân thức đơn giản sẽ cho công
 <div data-demo="gf-recurrence-solver"></div>
 </div>
 <script src="{{ '/public/js/gf-recurrence-solver.js' | relative_url }}"></script>
+
+## Ví dụ tính tay cầm tay chỉ việc: Giải $$a_n = 3a_{n-1} + 2^n$$ ($$n \ge 1$$), $$a_0 = 1$$ bằng Hàm sinh
+
+Hãy chạy trọn 4 bước mà **không cần** tách nghiệm thuần nhất hay đoán nghiệm riêng:
+
+1. **Bước 1 — Nhân hai vế với $$x^n$$ rồi lấy tổng từ $$n = 1$$ đến $$\infty$$:**
+   $$\sum_{n=1}^{\infty} a_n x^n = 3 \sum_{n=1}^{\infty} a_{n-1} x^n + \sum_{n=1}^{\infty} 2^n x^n.$$
+2. **Bước 2 — Biểu diễn từng tổng qua $$G(x) = \sum_{n=0}^{\infty} a_n x^n$$:**
+   - Vế trái: $$G(x) - a_0 = G(x) - 1$$.
+   - Tổng thứ nhất vế phải: $$3x \sum_{n=1}^{\infty} a_{n-1} x^{n-1} = 3x G(x)$$.
+   - Tổng thứ hai vế phải: $$\frac{2x}{1 - 2x}$$ (vì tổng bắt đầu từ $$n=1$$, tức $$2x + 4x^2 + 8x^3 + \cdots$$).
+   - Ghép lại thành phương trình đại số:
+     $$G(x) - 1 = 3x G(x) + \frac{2x}{1 - 2x} \iff (1 - 3x)G(x) = 1 + \frac{2x}{1 - 2x} = \frac{1}{1 - 2x}.$$
+   - Suy ra biểu thức đóng gọn bất ngờ:
+     $$G(x) = \frac{1}{(1 - 3x)(1 - 2x)}.$$
+3. **Bước 3 — Tách phân thức từng phần:**
+   Đặt $$\frac{1}{(1 - 3x)(1 - 2x)} = \frac{A}{1 - 3x} + \frac{B}{1 - 2x}$$.
+   - Nhân quy đồng: $$A(1 - 2x) + B(1 - 3x) = 1$$.
+   - Thay $$x = \frac{1}{3}$$: $$A\left(1 - \frac{2}{3}\right) = 1 \Rightarrow A = 3$$.
+   - Thay $$x = \frac{1}{2}$$: $$B\left(1 - \frac{3}{2}\right) = 1 \Rightarrow B = -2$$.
+   - Vậy $$G(x) = \frac{3}{1 - 3x} - \frac{2}{1 - 2x}$$.
+4. **Bước 4 — Khai triển chuỗi hình học và đọc hệ số $$[x^n]$$:**
+   $$G(x) = 3\sum_{n=0}^{\infty} 3^n x^n - 2\sum_{n=0}^{\infty} 2^n x^n = \sum_{n=0}^{\infty} \left(3^{n+1} - 2^{n+1}\right) x^n \;\Longrightarrow\; a_n = 3^{n+1} - 2^{n+1}.$$
+   - **Kiểm tra tay:** $$n=0 \Rightarrow 3 - 2 = 1$$ (khớp $$a_0$$); $$n=1 \Rightarrow 9 - 4 = 5$$ (truy hồi: $$3(1)+2=5$$); $$n=2 \Rightarrow 27 - 8 = 19$$ (truy hồi: $$3(5)+4=19$$). Hoàn toàn chính xác!
+
+### Khung giải thích: Tại sao phương pháp hàm sinh là "cỗ máy tự động" (nên đọc chậm)
+
+1. **Bước 1 — Cẩn thận chỉ số bắt đầu của tổng:** Luôn kiểm tra hệ thức truy hồi đúng từ $$n = 1$$ hay $$n = 2$$, và trừ đúng các số hạng đầu ($$a_0$$, $$a_1 x$$) khi viết vế trái theo $$G(x)$$.
+2. **Bước 2 — Gom mọi số hạng chứa $$G(x)$$ về một vế:** Hệ số đứng trước $$G(x)$$ chính là đa thức nghịch đảo của đa thức đặc trưng (ví dụ $$1 - 3x$$ ứng với $$r = 3$$).
+3. **Bước 3 — Tách về hai mẫu số chuẩn duy nhất:** Nhớ hai công thức tra bảng: $$\frac{1}{1 - rx} = \sum r^n x^n$$ và $$\frac{1}{(1 - rx)^k} = \sum \binom{n+k-1}{k-1} r^n x^n$$.
+4. **Bước 4 — Tự kiểm tra 3 số hạng đầu:** Thế $$n = 0, 1, 2$$ vào công thức vừa tìm và đối chiếu với truy hồi gốc — bất kỳ sai dấu nhỏ nào khi tách phân thức sẽ lộ ngay lập tức.
+
+$$\text{Truy hồi } a_n \;\xrightarrow{\sum \cdot x^n}\; \text{PT đại số } G(x) \;\xrightarrow{\text{Partial Fractions}}\; \sum \frac{A_i}{(1 - r_i x)^{m_i}} \;\xrightarrow{[x^n]}\; \text{Công thức đóng } a_n.$$
 
 ## Bài tập
 

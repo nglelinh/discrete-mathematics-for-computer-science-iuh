@@ -9,6 +9,16 @@ lang: en
 excerpt: "Kết nối lý thuyết tập hợp (Chương 4) với thực hành SQL (UNION, INTERSECT, EXCEPT, JOIN), Python set, Bloom filter, chỉ mục cơ sở dữ liệu và hệ thống kiểu (type system)."
 ---
 
+Một lỗi gửi email quảng cáo hai lần cho cùng một khách hàng thường bị đổ cho "nhầm câu SQL". Nhưng gốc rễ của nó lại nằm ở sự phân biệt tinh tế của lý thuyết tập hợp: **tập hợp (set)** không chứa phần tử lặp, còn **đa tập (multiset / bag)** thì có. Khi Edgar F. Codd đặt nền móng cho cơ sở dữ liệu quan hệ năm 1970, toàn bộ SQL, bảng băm, hệ thống kiểu dữ liệu và Bloom filter đều lớn lên từ các phép toán tập hợp cơ bản này.
+
+**Mạch bài học:** Từ lý thuyết tập hợp Cantor–Codd $$\longrightarrow$$ khác biệt giữa **Set (`UNION`)** và **Bag (`UNION ALL`)** trong SQL $$\longrightarrow$$ phép hợp–giao–hiệu $$O(1)$$ trên `set` Python & bảng băm $$\longrightarrow$$ tập hợp xấp xỉ **Bloom filter** và kiểu dữ liệu như tập giá trị.
+
+## Bản đồ kiến thức nền: Lý thuyết tập hợp vận hành bên trong phần mềm như thế nào?
+
+- **Đại số quan hệ & Phân biệt Set vs. Bag (Relational Algebra):** Mô hình quan hệ chuẩn coi mỗi bảng là một **tập hợp** các bộ (tuples), nơi các phép chọn ($$\sigma$$), chiếu ($$\pi$$), hợp ($$\cup$$), giao ($$\cap$$), hiệu ($$\setminus$$) loại bỏ trùng lặp. SQL thực tế mặc định dùng **đa tập (bag)** để tiết kiệm chi phí khử trùng lặp, nên lập trình viên phải chủ động phân biệt `UNION` và `UNION ALL`.
+- **Cấu trúc dữ liệu kiểm tra phần tử thuộc tập (Membership Data Structures):** Câu hỏi $$x \in S$$ quyết định hiệu năng của hầu hết chương trình: danh sách tốn $$O(n)$$, cây cân bằng tốn $$O(\log n)$$, bảng băm (`set`/`dict`) đạt trung bình $$O(1)$$, còn **Bloom filter** đánh đổi một xác suất dương tính giả nhỏ để nén bộ nhớ xuống vài bit mỗi phần tử.
+- **Lý thuyết kiểu như lý thuyết tập hợp (Types as Sets):** Trong TypeScript, Rust hay Python typing, mỗi kiểu dữ liệu ứng với một tập giá trị; kiểu hợp `A | B` là $$A \cup B$$, kiểu giao `A & B` là $$A \cap B$$, còn kiểu `never` tương ứng tập rỗng $$\emptyset$$.
+
 Ở các mục trước, chúng ta đã thấy lực lượng tập hợp (**cardinality**) quyết định khả năng nén dữ liệu và tính ổn định của hệ thống giám sát. Mục này quay lại **lý thuyết tập hợp** (Chương 4) trong môi trường kỹ thuật thực tế — từ PostgreSQL, Redis, Python, TypeScript đến Bloom filter. Mọi tầng đều xoay quanh cùng những câu hỏi nền tảng: phần tử có thuộc tập hay không, và các phép hợp–giao–hiệu hoạt động như thế nào? Một lỗi thực tế rất phổ biến: chiến dịch email gửi **hai lần** cho cùng một khách hàng chỉ vì câu lệnh SQL dùng `UNION ALL` (nối đa tập/bag, giữ bản sao) thay vì `UNION` (hợp tập, loại trùng).
 
 Linh, kỹ sư dữ liệu tại một công ty thương mại điện tử, kiểm tra câu truy vấn do thực tập sinh viết:
@@ -198,6 +208,30 @@ Nếu case study TaskFlow (`09_10`) tập hợp các lỗi đếm ở tầng h�
 **Đọc thêm**: [PostgreSQL — UNION, INTERSECT, EXCEPT](https://www.postgresql.org/docs/current/queries-union.html) · [Use The Index, Luke — Anatomy of an Index](https://use-the-index-luke.com/sql/anatomy) · [Wikipedia — Bloom filter](https://en.wikipedia.org/wiki/Bloom_filter)
 
 ---
+
+## Ví dụ tính tay cầm tay chỉ việc: So sánh `UNION` vs. `UNION ALL` và tính tay Bloom Filter
+
+**Phần A — Hai tập khách hàng trong ETL:**
+Giả sử tập khách hàng mở app hôm nay là $$A = \{101, 102, 103\}$$ và tập khách hàng có đơn hàng là $$B = \{102, 103, 104\}$$.
+- `A UNION B` (hợp tập $$A \cup B$$): $$\{101, 102, 103, 104\}$$ — lực lượng **4** (khách 102, 103 chỉ nhận **1** email).
+- `A UNION ALL B` (hợp đa tập $$A \uplus B$$): $$\{101, 102, 102, 103, 103, 104\}$$ — lực lượng **6** (khách 102, 103 bị spam **2** lần!).
+- `A EXCEPT B` (hiệu tập $$A \setminus B$$): $$\{101\}$$ — khách mở app nhưng chưa mua hàng.
+
+**Phần B — Chạy tay Bloom Filter nhỏ có $$m = 8$$ bit (đánh số 0..7) và $$k = 2$$ hàm băm:**
+Ban đầu mảng bit là `0 0 0 0 0 0 0 0`.
+1. **Chèn `"an"`** với $$h_1(\text{"an"}) = 1, h_2(\text{"an"}) = 5$$ $$\Rightarrow$$ bật bit 1 và 5: `0 1 0 0 0 1 0 0`.
+2. **Chèn `"binh"`** với $$h_1(\text{"binh"}) = 3, h_2(\text{"binh"}) = 5$$ $$\Rightarrow$$ bật bit 3 và 5: `0 1 0 1 0 1 0 0`.
+3. **Truy vấn `"chi"`** có $$h_1(\text{"chi"}) = 1, h_2(\text{"chi"}) = 6$$: bit 1 là `1`, nhưng bit 6 là `0` $$\Rightarrow$$ **chắc chắn 100% `"chi"` KHÔNG thuộc tập** (zero false negative).
+4. **Truy vấn `"dung"`** có $$h_1(\text{"dung"}) = 1, h_2(\text{"dung"}) = 3$$: cả bit 1 lẫn bit 3 đều đang là `1` (do `"an"` và `"binh"` vô tình bật sẵn) $$\Rightarrow$$ bộ lọc báo "có thể thuộc tập" dù `"dung"` chưa từng được chèn (**false positive**!).
+
+### Khung giải thích: Một lý thuyết tập hợp — bốn tầng trừu tượng của phần mềm (nên đọc chậm)
+
+1. **Bước 1 — Ý nghĩa nghiệp vụ quyết định Set hay Bag:** Trước khi viết SQL hay ETL, luôn hỏi: bản sao có mang nghĩa không? Đếm tổng doanh thu cần đa tập (`UNION ALL`), còn gửi thông báo cho người dùng duy nhất bắt buộc phải là tập hợp (`UNION` / `DISTINCT`).
+2. **Bước 2 — Chi phí của phép toán $$x \in S$$:** Khử trùng lặp không miễn phí — SQL `UNION` phải sắp xếp hoặc băm toàn bộ tập kết quả tốn $$O(n \log n)$$ hoặc $$O(n)$$ RAM.
+3. **Bước 3 — Khi RAM là giới hạn cứng, chấp nhận sai số một chiều:** Bloom filter không bao giờ bỏ sót phần tử thật (no false negative), nên nó đóng vai "người gác cổng" siêu rẻ trước ổ đĩa hoặc CSDL để loại bỏ nhanh phần lớn truy vấn không tồn tại.
+4. **Bước 4 — Hệ thống kiểu bảo vệ tập giá trị từ lúc biên dịch:** Khi khai báo `type Status = "idle" | "loading" | "done"`, trình biên dịch đang kiểm tra quan hệ tập con $$x \in S$$ ngay trước khi chương trình chạy.
+
+$$\text{Tập hợp } (A \cup B,\, x \in S) \;\Longrightarrow\; \text{SQL (Set/Bag)} \;+\; \text{Hash Set } O(1) \;+\; \text{Bloom Filter} \;+\; \text{Type System.}$$
 
 ## Bài tập thực hành
 

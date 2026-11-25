@@ -9,6 +9,8 @@ lang: en
 excerpt: "Bài khảo sát tổng hợp Chương 15: từ Euclid và Gauss đến RSA, HTTPS, hàm băm, mã Reed–Solomon, chứng minh không tiết lộ thông tin (zero-knowledge), blockchain và hậu lượng tử."
 ---
 
+> **Câu chuyện mở đầu:** Ít có câu chuyện nào trong lịch sử khoa học kịch tính như cú lật kèo của Lý thuyết Số: năm 1940, nhà toán học lừng danh G. H. Hardy từng viết đầy tự hào rằng *"chưa ai từng tìm ra ứng dụng thực tế nào cho lý thuyết số"*. Chỉ 37 năm sau, RSA ra đời; và đến thế kỷ XXI, chính các đường cong elliptic, bài toán logarit rời rạc và cây băm Merkle đã trở thành **xương sống niềm tin của toàn bộ Internet, thương mại điện tử và Blockchain**!
+
 <div class="textbook-epigraph" markdown="1">
 
 "Number theory is the purest mathematics — and now the quiet machinery of the Internet."
@@ -37,6 +39,58 @@ Các bài trước trong Chương 15 đã lần lượt trình bày tính chia h
 **Từ khóa**: Euclid, Gauss, RSA, HTTPS, blockchain, ECDSA, zero-knowledge, post-quantum.
 
 </div>
+
+## Bản đồ kiến thức nền: Dòng chảy 2.300 năm từ Euclid đến Blockchain
+
+### 1. Từ Euclid (300 TCN) đến Gauss (1801)
+- **Euclid:** Chứng minh vô hạn số nguyên tố và thuật toán GCD.
+- **Fermat, Euler, Gauss:** Xây dựng hệ thống đồng dư $$\mathbb{Z}_m$$, định lý Fermat–Euler và luật thuận nghịch bậc hai — đặt sẵn toàn bộ vũ khí đại số trước khi máy tính ra đời gần 200 năm!
+
+### 2. Hai bài toán Khó tạo nên An ninh Internet
+- **Phân tích thừa số nguyên tố (RSA):** Dễ nhân $$p\cdot q$$, khó tách $$n$$.
+- **Logarit rời rạc (Diffie–Hellman, ECC/ECDSA):** Dễ tính $$g^a \bmod p$$, cực kỳ khó tìm lại $$a$$ từ $$g^a \bmod p$$!
+
+### 3. Blockchain: Chuỗi Băm + Chữ ký Đường cong Elliptic (ECDSA)
+- **Bản chất:** Mỗi khối trong Blockchain chứa **mã băm của khối trước đó** (tạo chuỗi bất biến: sửa 1 bit quá khứ làm hỏng toàn bộ chuỗi sau!), và mỗi giao dịch được ký bằng **chữ ký số đường cong elliptic** (như `secp256k1` trong Bitcoin/Ethereum) giúp mọi nút mạng xác minh mà không cần ngân hàng trung ương!
+
+## Ví dụ tính tay cầm tay chỉ việc: Trao đổi khóa Diffie–Hellman trên $$p = 23,\; g = 5$$
+
+Công bố công khai số nguyên tố $$p = 23$$ và phần tử sinh $$g = 5$$ (kẻ nghe lén Eve biết rõ cả $$23$$ và $$5$$!):
+1. **Alice** chọn bí mật $$a = 6$$, tính và gửi công khai:
+   $$
+   A = 5^6 \bmod 23 = (5^3)^2 \bmod 23 = 125^2 \bmod 23 \equiv 10^2 = 100 \equiv 8 \pmod{23}.
+   $$
+2. **Bob** chọn bí mật $$b = 15$$, tính và gửi công khai:
+   $$
+   B = 5^{15} \bmod 23 = (5^6)^2 \cdot 5^3 \equiv 8^2 \cdot 10 = 640 = 27\cdot 23 + 19 \equiv 19 \pmod{23}.
+   $$
+3. **Tính khóa bí mật chung (không hề truyền qua mạng!):**
+   - **Alice** tính từ $$B = 19$$: $$K_A = 19^6 \bmod 23 \equiv (-4)^6 = 4096 = 178\cdot 23 + 2 \equiv 2 \pmod{23}$$!
+   - **Bob** tính từ $$A = 8$$: $$K_B = 8^{15} \bmod 23 = (8^3)^5 \equiv 512^5 \equiv 6^5 = 7776 = 338\cdot 23 + 2 \equiv 2 \pmod{23}$$!
+
+Cả hai cùng thu được **khóa chung $$K = 2$$** ngay trước mắt kẻ nghe lén Eve (chỉ thấy $$23, 5, 8, 19$$)!
+
+### Khung giải thích: 4 cột mốc biến Lý thuyết Số thành hạ tầng niềm tin số (nên đọc chậm)
+
+#### Bước 1: Sự ra đời của Hàm một chiều (1976)
+Diffie–Hellman chứng minh hai người lạ hoàn toàn có thể thiết lập bí mật chung trên kênh công khai nhờ độ khó của logarit rời rạc.
+
+#### Bước 2: RSA & Cơ sở hạ tầng Khóa Công khai PKI (1977–1990s)
+Kết hợp mã hóa khóa công khai và chữ ký số mở đường cho TLS/HTTPS và thương mại điện tử toàn cầu.
+
+#### Bước 3: Đường cong Elliptic ECC — Cùng độ an toàn, khóa ngắn gấp 10 lần
+Khóa ECC 256-bit có độ bảo mật tương đương khóa RSA 3072-bit — tối ưu hoàn hảo cho thiết bị di động, IoT và giao dịch Blockchain.
+
+#### Bước 4: Chuẩn bị cho kỷ nguyên Lượng tử
+Lịch sử tiếp tục lặp lại: khi máy tính lượng tử đe dọa RSA/ECC, các nhà toán học lại tìm thấy pháo đài mới trong **Lý thuyết Mạng tinh thể (Lattice)** ở bài 15.06!
+
+$$
+\text{Euclid / Gauss}
+\;\xrightarrow{\;\text{Hàm một chiều}\;}\;
+\text{Diffie–Hellman \& RSA}
+\;\xrightarrow{\;\text{ECC + SHA-256}\;}\;
+\text{HTTPS \& Blockchain}.
+$$
 
 ## Từ Euclid đến Gauss
 

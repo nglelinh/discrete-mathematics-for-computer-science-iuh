@@ -19,6 +19,18 @@ excerpt: "Định nghĩa tỉ số xấp xỉ, PTAS và FPTAS; chứng minh thu�
 
 Tính NP-complete loại trừ khả năng giải chính xác trong thời gian đa thức (dưới giả thuyết $$P\neq NP$$). **Thuật toán xấp xỉ** tiếp cận theo hướng khác: chấp nhận lời giải gần tối ưu trong thời gian đa thức nhưng có **bảo đảm chặt chẽ về tỉ lệ sai số**.
 
+Khi biết bài toán của công ty là NP-hard, kỹ sư không thể quay lại nói với sếp *"Bài này NP-complete nên tôi không làm nữa!"*. Một trong những lối thoát thực tiễn và toán học nhất là **Thuật toán Xấp xỉ (Approximation Algorithms)**: chấp nhận từ bỏ nghiệm tối ưu tuyệt đối 100%, đổi lại thuật toán chạy **thời gian đa thức** nhưng đi kèm **chứng minh toán học bảo đảm** nghiệm tìm được không bao giờ tệ hơn $$\rho$$ lần nghiệm tối ưu $$\mathrm{OPT}$$!
+
+## Bản đồ kiến thức nền: Ba trụ cột của Thuật toán Xấp xỉ
+
+1. **Tỉ lệ xấp xỉ $$\rho$$ & So sánh với Nghiệm tối ưu ẩn $$\mathrm{OPT}$$**:
+   Với bài toán cực tiểu hóa, ta cần $$\mathrm{ALG}(I) \le \rho \cdot \mathrm{OPT}(I)$$ cho *mọi* đầu vào $$I$$. Bí quyết chứng minh là tìm một **chặn dưới** dễ tính (như kích thước cặp ghép cực đại hay nghiệm nới lỏng LP) nằm dưới $$\mathrm{OPT}$$.
+2. **Xấp xỉ tỉ lệ 2 cho Vertex Cover & Metric TSP**:
+   - **Vertex Cover:** Chọn liên tiếp cạnh $$(u,v)$$ bất kỳ, lấy *cả hai đầu mút* $$u, v$$ rồi xóa mọi cạnh chạm vào chúng. Vì tập các cạnh đã chọn tạo thành cặp ghép $$M$$ nên $$\mathrm{OPT} \ge \vert M \vert$$, còn thuật toán lấy $$2\vert M \vert \le 2\,\mathrm{OPT}$$.
+   - **Metric TSP:** Dùng cây khung nhỏ nhất MST ($$\le \mathrm{OPT}$$) nhân đôi cạnh rồi cắt tắt (shortcutting) nhờ bất đẳng thức tam giác cho tỉ lệ 2 (và thuật toán Christofides cải thiện xuống **1,5**).
+3. **Ranh giới Không thể Xấp xỉ (Inapproximability)**:
+   Không phải bài NP-hard nào cũng xấp xỉ được: **TSP tổng quát** (không có bất đẳng thức tam giác) không có bất kỳ thuật toán xấp xỉ hằng số $$\rho$$ nào trừ khi $$P = NP$$!
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -83,6 +95,18 @@ Chọn dần từng cạnh chưa được phủ và thêm cả hai đầu mút v
 ## Giới hạn không thể xấp xỉ (*Inapproximability*)
 
 Với TSP tổng quát (không thỏa bất đẳng thức tam giác), không tồn tại thuật toán xấp xỉ với bất kỳ tỉ số hằng số nào trừ khi $$P=NP$$ (Sahni–Gonzalez). Định lý PCP còn mở đường cho nhiều kết quả giới hạn xấp xỉ sâu hơn đối với MAX-3SAT, CLIQUE và nhiều bài toán tối ưu khác (xem Arora–Barak).
+
+### Khung giải thích (nên đọc chậm): Chứng minh tay vì sao General TSP không thể xấp xỉ với tỉ lệ 1.000 (trừ khi $$P = NP$$)
+
+Giả sử có một thuật toán đa thức $$\mathcal{A}$$ luôn tìm được hành trình TSP có chi phí $$\le 1.000 \cdot \mathrm{OPT}$$. Ta sẽ dùng $$\mathcal{A}$$ để giải chính xác bài toán NP-complete `Hamilton Cycle` trên đồ thị $$G$$ có $$n$$ đỉnh!
+- Xây đồ thị đầy đủ $$K_n$$ với trọng số:
+  - $$w(u,v) = 1$$ nếu $$(u,v) \in E(G)$$.
+  - $$w(u,v) = 1.000 \cdot n + 1$$ nếu $$(u,v) \notin E(G)$$ (phạt cực nặng nếu đi cạnh giả!).
+- Chạy thuật toán xấp xỉ $$\mathcal{A}$$ trên $$K_n$$:
+  - Nếu $$G$$ **có** chu trình Hamilton: $$\mathrm{OPT} = n$$, nên $$\mathcal{A}$$ chắc chắn trả về hành trình có chi phí $$\le 1.000 \cdot n$$.
+  - Nếu $$G$$ **không có** chu trình Hamilton: mọi hành trình phải dùng ít nhất 1 cạnh giả, nên chi phí $$\ge (n-1) + (1.000 \cdot n + 1) > 1.000 \cdot n$$!
+
+Vậy chỉ cần nhìn xem $$\mathcal{A}$$ trả về $$\le 1.000n$$ hay $$> 1.000n$$ là ta giải được ngay `Hamilton Cycle` trong thời gian đa thức $$\implies P = NP$$! Đây là lý do **bất đẳng thức tam giác** là chiếc chìa khóa thần kỳ phân tách Metric TSP (xấp xỉ được 1,5) với General TSP (không thể xấp xỉ).
 
 ## Bài tập
 

@@ -9,6 +9,8 @@ lang: en
 excerpt: "Phương pháp bảng Quine–McCluskey tối giản hàm Boole gồm hai giai đoạn: phép dán tìm nguyên nhân nguyên tố và bảng phủ chọn nguyên tố cốt yếu, kèm xử lý don't-care và so sánh với K-map."
 ---
 
+> **Câu chuyện mở đầu:** Bản đồ Karnaugh tuyệt vời cho 3–4 biến, hơi chật chội ở 5 biến, và gần như **bất khả thi với mắt người** từ 6 biến trở lên (một mạch giải mã 16 biến có tới 65.536 ô!). Năm 1952–1956, Willard Quine và Edward McCluskey đã biến trực giác ghép cặp của K-map thành một **thuật toán dạng bảng hoàn toàn cơ khí hóa được trên máy tính**, đảm bảo tìm ra biểu thức SOP tối tiểu chính xác 100% cho bất kỳ số biến $$n$$ nào!
+
 <div class="textbook-epigraph" markdown="1">
 
 "Tabulate, combine, cover — Quine–McCluskey is the Karnaugh map written as an algorithm."
@@ -47,6 +49,58 @@ Kết quả là một dạng SOP hai tầng tối tiểu (hoặc một trong cá
 **Từ khóa**: Quine–McCluskey, dạng nối rời chính tắc, nguyên nhân hạng $$n$$ (minterm / từ tối tiểu), phép dán, nguyên nhân nguyên tố, nguyên tố cốt yếu, dạng tổng chuẩn tắc thu gọn / tối thiểu, SOP (tổng các tích), bảng phủ, don't-care.
 
 </div>
+
+## Bản đồ kiến thức nền: Phương pháp Quine–McCluskey (QM) là gì?
+
+### 1. Giai đoạn 1 — Gom nhóm theo Trọng số Hamming để tìm mọi Prime Implicant (PI)
+- **Bản chất:** Hai minterm chỉ ghép cặp khử được 1 biến ($$xy + x\bar{y} = x$$) nếu biểu diễn nhị phân của chúng khác nhau đúng **1 vị trí** — nghĩa là số lượng bit $$1$$ (**trọng số Hamming**) của chúng hơn kém nhau đúng **1 đơn vị**! Chia các minterm vào từng nhóm theo trọng số $$0, 1, 2, \dots, n$$ giúp chỉ cần so sánh hai nhóm kề nhau!
+
+### 2. Giai đoạn 2 — Bảng phủ Prime Implicant (Bài toán Set Cover)
+- **Bản chất:** Sau khi thu toàn bộ các PI (những cụm không thể ghép thêm được nữa), ta lập bảng hàng là PI, cột là các minterm gốc cần phủ: chọn hết các **Essential PI** (cột chỉ có đúng 1 dấu `×`), rồi rút gọn hàng/cột bị trội (hoặc dùng **phương pháp Petrick** khi gặp vòng lặp đối xứng).
+
+### 3. Giới hạn Độ phức tạp (NP-hard) & Cầu nối sang Espresso / SAT
+- **Bản chất:** Số lượng PI trong trường hợp xấu nhất tăng theo hàm mũ $$\Omega(3^n/n)$$, và bài toán Set Cover là NP-hard. Vì thế trong thiết kế chip thực tế (hàng triệu cổng), QM là chuẩn mực chính xác cho $$n$$ nhỏ còn các bộ tổng hợp công nghiệp dùng heuristic (Espresso) và SAT!
+
+## Ví dụ tính tay cầm tay chỉ việc: Chạy Quine–McCluskey cho $$f(A,B,C) = \sum m(0, 1, 2, 5, 6, 7)$$
+
+1. **Bước 1 — Phân nhóm theo số bit $$1$$:**
+   - Nhóm 0: $$m_0 = 000$$
+   - Nhóm 1: $$m_1 = 001,\; m_2 = 010$$
+   - Nhóm 2: $$m_5 = 101,\; m_6 = 110$$
+   - Nhóm 3: $$m_7 = 111$$
+
+2. **Bước 2 — Ghép các cặp kề khác nhau đúng 1 bit (thay bit khác bằng dấu `-`):**
+   - Nhóm 0–1: $$(0,1) \to 00-\; (\bar{A}\bar{B})$$, $$(0,2) \to 0-0\; (\bar{A}\bar{C})$$
+   - Nhóm 1–2: $$(1,5) \to -01\; (\bar{B}C)$$, $$(2,6) \to -10\; (B\bar{C})$$
+   - Nhóm 2–3: $$(5,7) \to 1-1\; (AC)$$, $$(6,7) \to 11-\; (AB)$$
+   *(Kiểm tra vòng ghép tiếp theo: không có hai cụm nào có dấu `-` ở cùng vị trí mà chỉ khác 1 bit! Nên cả **6 cụm** trên đều là Prime Implicant!)*
+
+3. **Bước 3 — Lập bảng phủ & phát hiện Chu trình đối xứng (Cyclic Core):**
+   Mỗi minterm $$0, 1, 2, 5, 6, 7$$ đều được phủ bởi đúng **2 PI** (không có EPI nào!). Ta có hai nghiệm tối tiểu đồng hạng (đều gồm đúng 3 PI):
+   - Nghiệm 1: $$\bar{A}\bar{B} + B\bar{C} + AC$$ (phủ $$(0,1), (2,6), (5,7)$$).
+   - Nghiệm 2: $$\bar{A}\bar{C} + \bar{B}C + AB$$ (phủ $$(0,2), (1,5), (6,7)$$).
+
+### Khung giải thích: Tại sao Quine–McCluskey vừa chính xác tuyệt đối vừa dễ lập trình? (nên đọc chậm)
+
+#### Bước 1: Thay trực giác thị giác bằng trọng số Hamming
+Không cần vẽ bảng 2D hay 3D — máy tính chỉ cần đếm số bit $$1$$ rồi so sánh các chuỗi nhị phân ở hai nhóm kề nhau (phép XOR chỉ có đúng một bit $$1$$!).
+
+#### Bước 2: Đánh dấu tick `✓` để lọc ra mọi Prime Implicant
+Bất kỳ chuỗi nào không ghép được với ai ở vòng kế tiếp đều tự động là một Prime Implicant cực đại.
+
+#### Bước 3: Rút gọn bảng phủ bằng EPI và Luật Trội (Dominance)
+Chọn ngay mọi EPI, xóa các cột đã phủ; xóa hàng bị trội (phủ ít hơn nhưng tốn nhiều biến hơn) và cột trội (dư thừa).
+
+#### Bước 4: Dùng phương pháp Petrick xử lý phần lõi tuần hoàn (Cyclic Core)
+Khi bảng còn lại không có EPI (như ví dụ trên!), viết tích các tổng điều kiện phủ từng cột rồi khai triển để tìm tập PI ít phần tử nhất.
+
+$$
+\text{Minterm}
+\;\xrightarrow{\;\text{Nhóm trọng số Hamming + XOR}\;}\;
+\text{Toàn bộ Prime Implicants}
+\;\xrightarrow{\;\text{Bảng phủ + EPI / Petrick}\;}\;
+\text{SOP tối tiểu chính xác}.
+$$
 
 ## Vì sao cần thuật toán dạng bảng?
 

@@ -35,6 +35,20 @@ From the perspective of Chapter 10, tiling can be viewed as a recurrence over bl
 1. Write a schematic recurrence for processing $$n$$ tokens in blocks of size $$B$$.
 2. If HBM memory transfers are the primary bottleneck rather than arithmetic, what does the non-recursive term $$f(n)$$ represent?
 
+### Background Knowledge Map: How IO-Aware Recurrences Reshape GPU Algorithms
+
+- **Memory Hierarchy & External-Memory Model:** On modern GPUs, on-chip SRAM is tiny (e.g., ~20 MB) but ~10× faster than main HBM (tens of GB). Counting FLOPs alone misses the true runtime bottleneck: **bytes moved between HBM and SRAM**.
+- **Tiling as Block Recurrence:** Partitioning an $$N \times d$$ matrix into blocks of size $$B_r \times d$$ and $$B_c \times d$$ turns an $$O(N^2)$$ memory-materializing computation into a nested block recurrence whose working set fits entirely inside SRAM.
+- **Online Softmax Merging (Associative Recurrence):** To avoid reading the attention matrix twice, FlashAttention maintains running row-wise maximum $$m$$ and normalizer $$\ell$$, updating them incrementally block-by-block with exact numerical equivalence.
+
+### Deep-Dive Explanation: Hand-Verifiable HBM Traffic Comparison (Read Slowly)
+
+1. **Step 1 — Standard Attention HBM Traffic:** Given sequence length $$N = 4\,096$$, head dimension $$d = 64$$, and 2 bytes per FP16 value, materializing the $$N \times N$$ attention matrix $$S = QK^\top$$ and $$P = \text{softmax}(S)$$ requires reading and writing multiple $$4\,096^2 \approx 16.78\text{M}$$ matrices — roughly **134 MB** of HBM traffic per head (scaling as $$\Theta(N^2)$$).
+2. **Step 2 — FlashAttention Tiled HBM Traffic:** Suppose SRAM fits block size $$M$$ elements so $$B_c = B_r \approx M/(4d)$$. With $$M = 65\,536$$ elements (128 KB per block slice), FlashAttention never writes $$S$$ or $$P$$ to HBM; total HBM accesses scale as $$\Theta\!\left(\frac{N^2 d^2}{M}\right)$$. Plugging in $$N=4\,096, d=64, M=65\,536$$ gives $$\frac{N^2 d^2}{M} = N^2 \cdot \frac{4\,096}{65\,536} = \frac{N^2}{16}$$ — an immediate **$$16\times$$ reduction** in HBM traffic!
+3. **Step 3 — Why the Chapter 10 lens still applies:** Just like divide-and-conquer merges subproblem answers, FlashAttention's block recurrence merges $$(m_1, \ell_1)$$ and $$(m_2, \ell_2)$$ via $$m_{\text{new}} = \max(m_1, m_2)$$ and $$\ell_{\text{new}} = e^{m_1 - m_{\text{new}}}\ell_1 + e^{m_2 - m_{\text{new}}}\ell_2$$ — exact arithmetic, dramatically less IO.
+
+$$\text{Standard Attention IO: } \Theta(Nd + N^2) \;\xrightarrow{\text{SRAM Tiling (size } M\text{)}}\; \text{FlashAttention IO: } \Theta\!\left(\frac{N^2 d^2}{M}\right).$$
+
 ## Tiếng Việt
 
 Xuyên suốt Chương 10, quan hệ truy hồi chia để trị dạng $$T(n) = a\,T(n/b) + f(n)$$ là công cụ chủ đạo để phân tích chi phí thuật toán. **FlashAttention** (Dao et al., NeurIPS 2022, [arXiv:2205.14135](https://arxiv.org/abs/2205.14135)) cho thấy một góc nhìn hiện đại của tư duy này: trên phần cứng GPU, điểm nghẽn quyết định thường không nằm ở số phép tính số học (FLOPs) mà ở chi phí **truy xuất bộ nhớ (IO)** — tức lượng dữ liệu phải đọc và ghi qua lại giữa bộ nhớ HBM của GPU và bộ nhớ đệm SRAM trên chip.
@@ -47,6 +61,20 @@ Thay vì lưu toàn bộ ma trận attention kích thước $$n \times n$$ trên
 
 1. Hãy viết dạng hệ thức truy hồi phác thảo cho quá trình xử lý $$n$$ token theo từng khối có kích thước $$B$$.
 2. Khi nút thắt cổ chai nằm ở việc truyền dữ liệu với HBM thay vì phép tính số học, thành phần $$f(n)$$ trong hệ thức truy hồi biểu diễn chi phí gì?
+
+### Bản đồ kiến thức nền: Truy hồi nhận thức IO tái định hình thuật toán GPU ra sao?
+
+- **Phân cấp bộ nhớ (Memory Hierarchy):** Trên GPU hiện đại, SRAM trên chip rất nhỏ (~20 MB) nhưng nhanh hơn HBM hàng chục lần. Chỉ đếm số phép nhân–cộng (FLOPs) sẽ bỏ sót nút thắt cổ chai thực sự: **lưu lượng byte đọc/ghi giữa HBM và SRAM**.
+- **Chia khối như hệ thức truy hồi (Block Tiling Recurrence):** Chia ma trận $$N \times d$$ thành các khối nhỏ vừa khít SRAM giúp loại bỏ việc ghi ma trận trung gian $$N \times N$$ ra HBM.
+- **Gộp Softmax trực tuyến (Online Softmax Merging):** Thay vì duyệt hai lượt trên HBM, FlashAttention cập nhật truy hồi hai thống kê chạy là giá trị lớn nhất theo hàng $$m$$ và tổng chuẩn hóa $$\ell$$ qua từng khối, đảm bảo kết quả **chính xác tuyệt đối** như phép tính chuẩn.
+
+### Khung giải thích: Tính tay mức giảm lưu lượng HBM của FlashAttention (nên đọc chậm)
+
+1. **Bước 1 — Lưu lượng HBM của Attention chuẩn:** Với độ dài chuỗi $$N = 4\,096$$ và chiều ẩn $$d = 64$$, việc lưu ma trận điểm $$S = QK^\top$$ và $$P = \text{softmax}(S)$$ kích thước $$N \times N$$ tốn lưu lượng HBM tỷ lệ $$\Theta(N^2)$$ (khoảng $$16{,}78$$ triệu phần tử cho mỗi ma trận trung gian).
+2. **Bước 2 — Lưu lượng HBM khi chia khối SRAM:** Với dung lượng SRAM làm việc $$M = 65\,536$$ phần tử, tổng truy xuất HBM của FlashAttention giảm còn $$\Theta\!\left(\frac{N^2 d^2}{M}\right)$$. Thay $$d = 64 \Rightarrow d^2 = 4\,096$$, ta có $$\frac{d^2}{M} = \frac{4\,096}{65\,536} = \frac{1}{16}$$ — tức lưu lượng HBM giảm ngay **16 lần**!
+3. **Bước 3 — Công thức gộp truy hồi theo khối:** Khi gộp khối 1 có $$(m_1, \ell_1)$$ với khối 2 có $$(m_2, \ell_2)$$, ta cập nhật $$m_{\text{mới}} = \max(m_1, m_2)$$ và $$\ell_{\text{mới}} = e^{m_1 - m_{\text{mới}}}\ell_1 + e^{m_2 - m_{\text{mới}}}\ell_2$$ — tư duy gộp nghiệm con quen thuộc của Chương 10, nhưng tối ưu thẳng vào chi phí bộ nhớ!
+
+$$\text{IO chuẩn: } \Theta(Nd + N^2) \;\xrightarrow{\text{Chia khối SRAM } M}\; \text{FlashAttention IO: } \Theta\!\left(\frac{N^2 d^2}{M}\right).$$
 
 ## Video tham khảo
 

@@ -9,6 +9,8 @@ lang: en
 excerpt: "Định nghĩa thuật toán và các tính chất bắt buộc, cách viết mã giả, tìm kiếm tuần tự và tìm kiếm nhị phân, vết chạy (trace) và khái niệm tính đúng đắn."
 ---
 
+> **Câu chuyện mở đầu:** Nếu bạn có một danh bạ điện thoại đã sắp xếp thứ tự chữ cái gồm **1 tỷ cái tên**, tìm kiếm tuần tự từ trang đầu đến trang cuối có thể tốn tới 1 tỷ bước — nhưng chỉ cần mở đúng trang chính giữa rồi bỏ đi một nửa (**Tìm kiếm nhị phân**), bạn chỉ cần tối đa **30 bước**! Cùng một bài toán, cùng một chiếc máy tính, nhưng **sự khác biệt giữa hai thuật toán có thể là hàng trăm triệu lần tốc độ**. Chương 14 mở ra nghệ thuật thiết kế, chứng minh tính đúng và đo lường sức mạnh của thuật toán.
+
 <div class="textbook-epigraph" markdown="1">
 
 "An algorithm must be seen to be believed."
@@ -38,6 +40,48 @@ excerpt: "Định nghĩa thuật toán và các tính chất bắt buộc, cách
 **Từ khóa**: algorithm, input/output, pseudocode, correctness, finiteness, definiteness.
 
 </div>
+
+## Bản đồ kiến thức nền: Thuật toán học là gì và nghiên cứu những gì?
+
+### 1. Bảy tính chất chuẩn của một Thuật toán (Knuth)
+- **Bản chất:** Không chỉ là "đoạn code chạy được", một thuật toán toán học phải rõ ràng (**tính xác định**), có đầu vào/đầu ra chuẩn, **dừng sau hữu hạn bước**, mỗi bước thực thi được (**tính hiệu quả**) và giải quyết được **cả một lớp bài toán tổng quát**.
+
+### 2. Chứng minh Tính đúng bằng Bất biến Vòng lặp (Loop Invariant)
+- **Bản chất:** Kiểm thử trên 1.000 bộ test vẫn không chứng minh thuật toán đúng với mọi đầu vào! Phương pháp chuẩn của Khoa học Máy tính là tìm một mệnh đề **bất biến vòng lặp** $$I$$ và chứng minh 3 bước (hệt quy nạp toán học): **Khởi tạo** (đúng trước vòng 1) $$\to$$ **Duy trì** (đúng sau mỗi bước lặp) $$\to$$ **Kết thúc** (khi vòng lặp dừng, $$I$$ + điều kiện dừng suy ra đáp án đúng!).
+
+### 3. Hai bài toán Nền tảng: Tìm kiếm & Sắp xếp
+- **Bản chất:** Tìm kiếm tuyến tính vs. tìm kiếm nhị phân và các thuật toán sắp xếp (Bubble, Insertion, Merge) là "phòng thí nghiệm chuẩn" để thực hành viết mã giả, chứng minh tính đúng và phân tích độ phức tạp.
+
+## Ví dụ tính tay cầm tay chỉ việc: Theo vết Tìm kiếm Nhị phân & Bất biến Vòng lặp
+
+Tìm khóa $$x = 23$$ trong mảng đã sắp xếp $$A[0..7] = [3, 7, 11, 15, 19, 23, 31, 42]$$:
+- **Bất biến vòng lặp $$I$$:** *"Nếu $$x$$ có mặt trong mảng $$A$$, thì chỉ số của $$x$$ chắc chắn nằm trong đoạn $$[L, R]$$."*
+- **Khởi tạo:** $$L = 0,\; R = 7$$ ($$I$$ hiển nhiên đúng vì toàn bộ mảng nằm trong $$[0, 7]$$).
+- **Bước 1:** $$mid = \lfloor (0+7)/2 \rfloor = 3$$, $$A[3] = 15 < 23 \implies$$ loại nửa trái, đặt $$L = 4,\; R = 7$$ (vì mảng tăng dần nên $$x$$ chỉ có thể ở $$[4, 7]$$ — $$I$$ được duy trì!).
+- **Bước 2:** $$mid = \lfloor (4+7)/2 \rfloor = 5$$, $$A[5] = 23 = x \implies$$ **tìm thấy tại chỉ số 5 sau đúng 2 phép so sánh** (so với 6 phép của tìm kiếm tuyến tính)!
+- **Tổng quát cho $$n = 10^9$$:** Sau mỗi bước độ dài đoạn giảm một nửa, nên số bước tối đa là $$\lfloor \log_2(10^9) \rfloor + 1 = 30$$!
+
+### Khung giải thích: Quy trình 4 bước thiết kế một Thuật toán đáng tin cậy (nên đọc chậm)
+
+#### Bước 1: Phát biểu rõ Tiền điều kiện (Precondition) và Hậu điều kiện (Postcondition)
+Ví dụ: tìm kiếm nhị phân đòi hỏi tiền điều kiện **mảng phải đã được sắp xếp**; nếu thiếu điều kiện này, thuật toán sẽ trả kết quả sai dù code không báo lỗi!
+
+#### Bước 2: Phác thảo bằng Mã giả (Pseudocode) độc lập ngôn ngữ lập trình
+Tập trung vào luồng logic, điều kiện biên ($$L \le R$$ hay $$L < R$$?) và cấu trúc dữ liệu thay vì cú pháp riêng của C++ hay Python.
+
+#### Bước 3: Chứng minh Tính dừng (Termination) và Tính đúng (Loop Invariant)
+Chọn một đại lượng nguyên không âm giảm ngặt sau mỗi bước (như độ dài $$R - L + 1$$) để bảo đảm vòng lặp **không bao giờ chạy vô hạn**, rồi kiểm tra bất biến vòng lặp.
+
+#### Bước 4: Đánh giá chi phí thời gian và bộ nhớ (sang bài 14.02–14.03)
+Đếm số phép toán cơ bản theo kích thước đầu vào $$n$$ để biết thuật toán có chịu tải nổi khi $$n$$ tăng lên hàng triệu hay không.
+
+$$
+\text{Bài toán + Tiền điều kiện}
+\;\xrightarrow{\;\text{Mã giả}\;}\;
+\text{Bất biến vòng lặp + Tính dừng}
+\;\xrightarrow{\;\text{Đếm phép toán}\;}\;
+\text{Thuật toán đúng \& hiệu quả}.
+$$
 
 ## Định nghĩa và tính chất
 

@@ -17,6 +17,19 @@ excerpt: "Tổng hợp mạch kiến thức 18.1–18.13, các nhánh nghiên c�
 
 </div>
 
+Sau 13 bài học từ DFA nhỏ bé đến bài toán dừng bất khả quyết định của Turing, bạn đã đi qua gần một thế kỷ nền móng của Khoa học Máy tính lý thuyết. Nhưng lý thuyết automata không hề nằm yên trong sách giáo khoa cổ điển: nó đang sống động trong các công cụ kiểm chứng phần cứng chip bán dẫn, bộ biên dịch hiện đại, xác minh giao thức mạng và cả việc phân tích giới hạn của mạng nơ-ron.
+
+## Bản đồ kiến thức nền: Bốn nhánh nghiên cứu mở rộng từ Chương 18
+
+1. **Kiểm chứng mô hình (Model Checking) & Automata trên từ vô hạn ($$\omega$$-automata)**:
+   Hệ điều hành và giao thức mạng không dừng sau vài bước mà chạy liên tục vô hạn. Büchi automata và logic thời gian tuyến tính (LTL) kiểm tra tự động các thuộc tính như *"mọi yêu cầu gửi đi cuối cùng đều được phản hồi"*.
+2. **Automata định lượng & Xác suất (Weighted / Probabilistic Automata)**:
+   Thay vì chỉ trả lời Đúng/Sai, mỗi cạnh chuyển trạng thái mang một trọng số hoặc xác suất — tạo thành cầu nối trực tiếp sang Chuỗi Markov, Mô hình Markov Ẩn (HMM) và xử lý ngôn ngữ tự nhiên.
+3. **Tối thiểu hóa & Học Automata chủ động (Angluin's $$L^*$$)**:
+   Biến định lý Myhill–Nerode thành thuật toán tự động suy ra mô hình DFA của một "hộp đen" (như triển khai TLS hay giao thức ngân hàng) chỉ qua các truy vấn thành viên và tương đương.
+4. **Lý thuyết tính toán được & Độ phức tạp (Computability → Complexity)**:
+   Chương 18 hỏi *"Bài toán có giải được không?"*; Chương 20 sẽ tiếp nối bằng câu hỏi thực tế hơn: *"Nếu giải được, có giải được trong thời gian đa thức hay không?"*
+
 ## Bản đồ kiến thức 18.1–18.13
 
 Mạch lý thuyết của chương đi theo trình tự: DFA → sự tương đương NFA ≡ DFA → biểu thức chính quy và định lý Kleene → bổ đề bơm và định lý Myhill–Nerode → máy Turing → tính không quyết định được.
@@ -38,6 +51,17 @@ Mạch lý thuyết của chương đi theo trình tự: DFA → sự tương đ
 - **Tuần 6–7:** Máy Turing và tính không quyết định được.
 - **Tuần 8:** Chọn một nhánh nghiên cứu và đọc khảo sát khoảng 10 bài báo.
 - **Tuần 9–10:** Viết ghi chú tổng hợp khoảng 6 trang hoặc chuẩn bị bài trình bày ngắn.
+
+### Khung giải thích (nên đọc chậm): Ánh xạ nhanh 4 câu hỏi nghiên cứu thực tế về đúng mô hình Chương 18
+
+| Bài toán thực tế trong kỹ thuật phần mềm | Câu hỏi lý thuyết tương ứng | Công cụ Chương 18 liên quan |
+| :--- | :--- | :--- |
+| Bộ lọc tường lửa kiểm tra gói tin ở tốc độ 100 Gbps | Ngôn ngữ có nhận dạng được với bộ nhớ $$O(1)$$ không? | DFA, tối thiểu hóa Myhill–Nerode |
+| Kiểm tra một hàm đệ quy có bao giờ bị treo vô hạn không | Có tồn tại thuật toán đúng cho *mọi* chương trình không? | Bài toán Dừng, Định lý Rice (bất khả quyết định) |
+| Kiểm chứng giao thức bắt tay không bao giờ rơi vào bế tắc (deadlock) | Mọi vết thực thi vô hạn có thỏa công thức LTL không? | Büchi automata, kiểm chứng mô hình |
+| Suy ra đặc tả máy trạng thái của một chip phần cứng hộp đen | Có học được DFA tối thiểu qua truy vấn tương tác không? | Thuật toán $$L^*$$ của Angluin |
+
+Bảng ánh xạ này giúp bạn định vị ngay đề tài nghiên cứu hoặc đồ án tốt nghiệp của mình đang đứng ở bậc thang nào trên bản đồ Automata & Computability.
 
 ## Danh mục bài tập cốt lõi
 

@@ -10,6 +10,16 @@ lang: en
 excerpt: "Tổng hợp các ứng dụng mở rộng của hàm sinh: từ ý tưởng của Euler năm 1748, bài toán phân hoạch, hàm sinh xác suất (PGF), giải truy hồi phức tạp đến đa thức đếm trọng số trong lý thuyết mã hóa."
 ---
 
+Năm 1748, Leonhard Euler nhận được một bức thư hỏi về số cách tách một số nguyên thành tổng các số nguyên nhỏ hơn (bài toán phân hoạch). Thay vì đếm thủ công từng trường hợp, Euler viết ra một tích vô hạn của các chuỗi hình học — khai sinh ra phương pháp **hàm sinh** hiện đại. Hơn hai thế kỷ sau, đúng công cụ ấy lại xuất hiện ở trung tâm của **lý thuyết xác suất (PGF)** và **mã sửa lỗi (weight enumerator)** trong viễn thông 5G và lưu trữ đám mây.
+
+**Mạch bài học:** Bước ngoặt **phân hoạch số nguyên** của Euler (1748) $$\longrightarrow$$ **hàm sinh xác suất (PGF)** tính kỳ vọng và phương sai bằng đạo hàm $$\longrightarrow$$ **đa thức đếm trọng số (weight enumerator)** trong mã sửa lỗi $$\longrightarrow$$ phương pháp ký hiệu (symbolic method) trong tổ hợp hiện đại.
+
+## Bản đồ kiến thức nền: Hàm sinh kết nối Số học, Xác suất và Lý thuyết Mã hóa như thế nào?
+
+- **Phân hoạch số nguyên (Integer Partitions):** Số cách phân tích $$n$$ thành tổng các số nguyên dương không kể thứ tự $$p(n)$$ không có công thức sơ cấp đơn giản, nhưng hàm sinh của nó lại đẹp đến ngỡ ngàng: $$\sum_{n=0}^{\infty} p(n)x^n = \prod_{k=1}^{\infty} \frac{1}{1 - x^k}$$.
+- **Hàm sinh xác suất (Probability Generating Function — PGF):** Với biến ngẫu nhiên rời rạc $$X \in \{0, 1, 2, \dots\}$$, đặt $$P_X(s) = \sum_{k \ge 0} \Pr(X=k)s^k$$. Phép cộng hai biến độc lập $$X + Y$$ biến thành phép **nhân** $$P_{X+Y}(s) = P_X(s)P_Y(s)$$, còn kỳ vọng chỉ việc lấy đạo hàm tại $$s = 1$$: $$E[X] = P_X'(1)$$!
+- **Đa thức đếm trọng số (Weight Enumerator in Coding Theory):** Một mã tuyến tính $$C$$ gồm các từ mã nhị phân có hàm sinh $$W_C(x) = \sum_{w=0}^n A_w x^w$$ ($$A_w$$ là số từ mã có đúng $$w$$ bit `1`). Biểu thức này cho phép tính ngay xác suất lỗi không phát hiện được trên kênh truyền nhiễu!
+
 Ở các mục trước, chúng ta đã định nghĩa hàm sinh, áp dụng hàm sinh để giải quan hệ truy hồi và tìm hiểu nguyên lý bao hàm–loại trừ. Mục cuối của Chương 11 tổng hợp các **ứng dụng mở rộng** của hàm sinh: từ ý tưởng của Euler (1748) khi biến dãy số thành đối tượng đại số, cho đến bài toán phân hoạch (partition), **hàm sinh xác suất** (PGF), giải các hệ thức truy hồi phức tạp và **đa thức đếm trọng số** (weight enumerator) trong lý thuyết mã hóa. Khi việc liệt kê trực tiếp không còn khả thi, đóng gói cả dãy vào $$G(x)=\sum a_n x^n$$ cho phép ta xử lý bài toán bằng công cụ đại số thay vì đếm thủ công từng bước.
 
 ---
@@ -171,6 +181,30 @@ Các phương pháp này cho thấy việc chọn đúng cách biểu diễn bà
 Từ ý tưởng của Euler đến bài toán phân hoạch, hàm sinh xác suất, giải hệ thức truy hồi và lý thuyết mã hóa, hàm sinh thể hiện một nguyên lý xuyên suốt: đóng gói cấu trúc rời rạc vào dạng hàm và dùng đại số để xử lý. Đây là phong cách tư duy không chỉ phục vụ riêng Chương 11 mà còn xuất hiện nhiều lần trong khoa học máy tính.
 
 ---
+
+## Ví dụ tính tay cầm tay chỉ việc: Tính kỳ vọng bằng PGF và đa thức trọng số mã lặp
+
+**Phần A — Tính kỳ vọng và phương sai khi tung 1 con xúc xắc bằng PGF:**
+Hàm sinh xác suất của 1 lần tung xúc xắc (1..6 đều xác suất $$1/6$$) là:
+$$P_X(s) = \frac{1}{6}(s + s^2 + s^3 + s^4 + s^5 + s^6).$$
+1. **Kiểm tra chuẩn hóa tại $$s = 1$$:** $$P_X(1) = \frac{1}{6}(6) = 1$$.
+2. **Tính kỳ vọng bằng đạo hàm cấp 1 tại $$s = 1$$:**
+   $$P_X'(s) = \frac{1}{6}(1 + 2s + 3s^2 + 4s^3 + 5s^4 + 6s^5) \;\Longrightarrow\; E[X] = P_X'(1) = \frac{1+2+3+4+5+6}{6} = \frac{21}{6} = 3{,}5.$$
+3. **Tung 2 con xúc xắc độc lập $$S = X_1 + X_2$$:** PGF của tổng là $$\big(P_X(s)\big)^2$$, nên hệ số của $$s^7$$ chính là xác suất tổng bằng 7: $$[s^7]\big(P_X(s)\big)^2 = \frac{6}{36} = \frac{1}{6}$$!
+
+**Phần B — Đa thức đếm trọng số của mã kiểm tra chẵn lẻ $$C$$ độ dài 3 (3 bit, tổng bit chẵn):**
+Các từ mã hợp lệ của $$C$$ là: `000` (trọng số 0), `011`, `101`, `110` (đều trọng số 2).
+- Đa thức trọng số: $$W_C(x) = 1 + 3x^2$$.
+- Nếu truyền từ mã `000` qua kênh đối xứng nhị phân có xác suất lật bit $$p = 0{,}01$$, lỗi chỉ **không bị phát hiện** khi biến thành một từ mã hợp lệ khác (tức bị lật đúng 2 bit):
+  $$P_{\text{undetected}} = 3 p^2 (1 - p) = 3 (0{,}01)^2 (0{,}99) = 0{,}000297 \approx 0{,}03\%.$$
+
+### Khung giải thích: Ba công dụng "vượt biên giới" của hàm sinh (nên đọc chậm)
+
+1. **Bước 1 — Trong tổ hợp, tích của các chuỗi là bài toán chọn độc lập:** Tích Euler $$\prod_{k \ge 1}(1-x^k)^{-1}$$ chọn số lần xuất hiện của từng mệnh giá $$1, 2, 3, \dots$$ rồi tự động cộng tổng bằng số mũ.
+2. **Bước 2 — Trong xác suất, đạo hàm tại $$s = 1$$ kéo số mũ xuống làm trọng số:** Nhờ $$(s^k)'\vert_{s=1} = k$$, các mô-men thống kê (kỳ vọng, phương sai) được tính hoàn toàn bằng phép vi phân đại số thay vì cộng chuỗi thủ công.
+3. **Bước 3 — Trong mã hóa, đa thức trọng số tóm gọn khả năng chống nhiễu:** Thay giá trị $$x = \frac{p}{1-p}$$ vào đa thức trọng số $$W_C(x)$$ lập tức cho biết chính xác xác suất giải mã sai của cả hệ thống truyền tin!
+
+$$\text{PGF: } E[X] = P_X'(1), \qquad \text{Coding: } W_C(x) = \sum_{w=0}^n A_w x^w \;\Longrightarrow\; P_{\text{undetected}} = (1-p)^n\!\left[W_C\!\left(\frac{p}{1-p}\right) - 1\right].$$
 
 ## Bài tập thực hành
 

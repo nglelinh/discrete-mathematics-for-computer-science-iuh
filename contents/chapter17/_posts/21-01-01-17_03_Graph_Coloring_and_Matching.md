@@ -9,6 +9,8 @@ lang: en
 excerpt: "Tô màu đỉnh, sắc số χ(G) và tô màu tham lam; ghép cặp trên đồ thị hai phía (bipartite matching); liên hệ với xếp lịch, phân bổ thanh ghi và các bài toán NP-hard."
 ---
 
+> **Câu chuyện mở đầu:** Phòng đào tạo cần xếp lịch thi cuối kỳ sao cho không sinh viên nào bị trùng hai môn thi cùng một ca; trình biên dịch C++ cần phân bổ hàng trăm biến vào chỉ 16 thanh ghi CPU; còn nền tảng gọi xe cần ghép tài xế với hành khách sao cho phục vụ được nhiều chuyến nhất. Ba bài toán tưởng như chẳng liên quan gì nhau ấy thực chất đều là hai bài toán trụ cột của Lý thuyết Đồ thị: **Tô màu Đồ thị (Graph Coloring)** và **Ghép cặp (Matching)**!
+
 <div class="textbook-epigraph" markdown="1">
 
 "Color so that neighbors disagree — match so that no two edges share a vertex."
@@ -37,6 +39,52 @@ Khi xếp lịch thi, hai môn học có chung sinh viên không thể thi cùng
 **Từ khóa**: graph coloring, chromatic number, greedy coloring, bipartite matching, NP-hard.
 
 </div>
+
+## Bản đồ kiến thức nền: Tô màu Đồ thị, Đồ thị Hai phía và Ghép cặp
+
+### 1. Sắc số $$\chi(G)$$ & Độ phức tạp tính toán
+- **Tô màu đỉnh hợp lệ:** Hai đỉnh nối cạnh phải khác màu (tương ứng hai môn thi có chung sinh viên phải khác ca!). Số màu ít nhất gọi là **sắc số $$\chi(G)$$**.
+- **Ranh giới độ phức tạp sắc nét:** Kiểm tra $$\chi(G) \le 2$$ cực dễ trong $$O(V + E)$$ (chính là kiểm tra **đồ thị hai phía** bằng BFS!), nhưng kiểm tra $$\chi(G) \le 3$$ lập tức nhảy vọt thành **NP-đầy đủ**!
+
+### 2. Đặc trưng Đồ thị Hai phía (Bipartite Graph)
+- **Định lý kinh điển:** Một đồ thị là hai phía (tô được bằng 2 màu) **khi và chỉ khi nó không chứa bất kỳ chu trình độ dài LẺ nào** (như tam giác $$C_3$$, ngũ giác $$C_5$$)!
+
+### 3. Ghép cặp Cực đại & Định lý Hôn nhân Hall
+- **Ghép cặp (Matching):** Tập các cạnh đôi một không chung đỉnh.
+- **Định lý Hall:** Trên đồ thị hai phía $$G = (L \cup R, E)$$, tồn tại ghép cặp phủ hết tập trái $$L$$ **khi và chỉ khi** với mọi tập con $$S \subseteq L$$, tập láng giềng $$N(S) \subseteq R$$ thỏa mãn **$$\lvert N(S)\rvert \ge \lvert S\rvert$$**!
+- **Thuật toán Đường tăng (Augmenting Path / Hopcroft–Karp):** Tìm đường đi xen kẽ cạnh ngoài/trong ghép cặp nối hai đỉnh tự do rồi đảo trạng thái để tăng kích thước ghép cặp lên $$+1$$ (Định lý Berge)!
+
+## Ví dụ tính tay cầm tay chỉ việc: Áp dụng Định lý Hall kiểm tra Ghép cặp 3 Ứng viên – 3 Vị trí
+
+Cho 3 ứng viên $$L = \{A, B, C\}$$ và 3 công việc $$R = \{J_1, J_2, J_3\}$$:
+- **Trường hợp 1:** $$A \to \{J_1\}$$, $$B \to \{J_1\}$$, $$C \to \{J_1, J_2, J_3\}$$.
+  Kiểm tra tập con $$S = \{A, B\}$$: $$\lvert S\rvert = 2$$, nhưng tập láng giềng $$N(S) = \{J_1\}$$ chỉ có $$\lvert N(S)\rvert = 1 < 2$$! Vi phạm điều kiện Hall $$\implies$$ **không thể** xếp đủ việc cho cả 3 người!
+- **Trường hợp 2:** Sửa lại cho $$B$$ biết thêm $$J_2$$ ($$B \to \{J_1, J_2\}$$) và $$C \to \{J_2, J_3\}$$.
+  Kiểm tra nhanh mọi tập con $$S \subseteq \{A, B, C\}$$:
+  - Kích thước 1: $$\lvert N(A)\rvert = 1,\; \lvert N(B)\rvert = 2,\; \lvert N(C)\rvert = 2$$ (đều $$\ge 1$$). ✓
+  - Kích thước 2: $$\lvert N(A,B)\rvert = 2,\; \lvert N(A,C)\rvert = 3,\; \lvert N(B,C)\rvert = 3$$ (đều $$\ge 2$$). ✓
+  - Kích thước 3: $$\lvert N(A,B,C)\rvert = 3 \ge 3$$. ✓
+  Thỏa mãn 100% điều kiện Hall $$\implies$$ tồn tại ghép cặp hoàn hảo: **$$A-J_1,\; B-J_2,\; C-J_3$$**!
+
+### Khung giải thích: 4 bước giải quyết bài toán Lập lịch và Phân công bằng Đồ thị (nên đọc chậm)
+
+#### Bước 1: Mô hình hóa "Xung đột" thành Tô màu, "Ghép đôi" thành Matching
+Hễ hai đối tượng *không được dùng chung tài nguyên* (hai môn thi trùng sinh viên, hai biến sống đồng thời trong hàm) $$\to$$ nối cạnh và **tô màu**. Hễ cần *ghép 1–1* giữa hai nhóm (tài xế–khách, ứng viên–việc) $$\to$$ dựng đồ thị hai phía và tìm **ghép cặp cực đại**.
+
+#### Bước 2: Dùng chặn trên nhanh $$\chi(G) \le \Delta(G) + 1$$ (Thuật toán Tham lam)
+Với bậc lớn nhất $$\Delta$$, thuật toán tô màu tham lam luôn dùng không quá $$\Delta + 1$$ màu (và theo Định lý Brooks, chỉ trừ đồ thị đầy đủ $$K_n$$ và chu trình lẻ $$C_{2k+1}$$, ta thậm chí chỉ cần tối đa $$\Delta$$ màu!).
+
+#### Bước 3: Kiểm tra nhanh tính Hai phía trước khi tìm Matching
+Chạy BFS tô 2 màu Đỏ/Xanh; nếu gặp cạnh nối hai đỉnh cùng màu $$\implies$$ phát hiện ngay chu trình lẻ!
+
+#### Bước 4: Quy bài toán Ghép cặp Hai phía về Luồng Cực đại (Max Flow)
+Nối nguồn $$s$$ tới mọi đỉnh $$L$$ (dung lượng 1) và mọi đỉnh $$R$$ tới đích $$t$$ (dung lượng 1): kích thước ghép cặp cực đại chính bằng **luồng cực đại từ $$s$$ đến $$t$$**!
+
+$$
+\text{Xung đột} \to \text{Tô màu }\chi(G)
+\qquad \Big\vert \qquad
+\text{Phân công 1–1} \to \text{Hai phía + Hall }(\lvert N(S)\rvert \ge \lvert S\rvert) \to \text{Đường tăng}.
+$$
 
 ## Tô màu đỉnh
 

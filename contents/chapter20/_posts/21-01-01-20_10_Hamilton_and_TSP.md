@@ -19,6 +19,17 @@ excerpt: "Chứng minh HC và TSP-DEC thuộc NP, chứng minh đầy đủ HC�
 
 Ở Chương 12, ta đã thấy bài toán chu trình Euler giải được trong thời gian đa thức trong khi chu trình Hamilton lại khó. Bài học này đặt chu trình Hamilton và bài toán người du lịch (TSP) vào khung lý thuyết NP-complete.
 
+Một người giao hàng cần đi qua tất cả $$n$$ thành phố, mỗi thành phố đúng một lần rồi quay về điểm xuất phát với tổng quãng đường ngắn nhất — đó là **Bài toán Người bán hàng (TSP)**, có lẽ là bài toán NP-complete nổi tiếng nhất ngoài phòng thí nghiệm toán học. Điều thú vị là nếu chỉ cần *kiểm tra* có tồn tại chu trình đi qua mọi đỉnh đúng một lần hay không (**Hamilton Cycle**), độ khó đã đạt trần NP-complete; và chỉ cần gán trọng số `1` cho cạnh thật, `2` cho cạnh giả là ta kéo ngay độ khó đó sang TSP!
+
+## Bản đồ kiến thức nền: Ba trụ cột của Hamilton Cycle và TSP
+
+1. **Chu trình Euler (Thuộc $$P$$) vs. Chu trình Hamilton (NP-complete)**:
+   Đi qua mỗi *cạnh* đúng 1 lần (Euler) kiểm tra trong $$O(V+E)$$ chỉ bằng cách đếm bậc chẵn; đi qua mỗi *đỉnh* đúng 1 lần (Hamilton) lại là NP-complete! Một thay đổi nhỏ từ "cạnh" sang "đỉnh" tạo ra vực thẳm độ phức tạp.
+2. **Rút gọn $$\mathrm{HC} \le_p \mathrm{TSP\text{-}DEC}$$ bằng trọng số $$\{1, 2\}$$**:
+   Cho đồ thị $$G = (V, E)$$ gồm $$n$$ đỉnh, xây đồ thị đầy đủ $$K_n$$ với trọng số $$w(u,v) = 1$$ nếu $$(u,v) \in E$$ và $$w(u,v) = 2$$ nếu $$(u,v) \notin E$$, đặt ngân sách $$B = n$$. Đặc biệt: hàm trọng số $$\{1, 2\}$$ thỏa **bất đẳng thức tam giác**, nên ngay cả **Metric TSP** vẫn là NP-complete!
+3. **Ý tưởng rút gọn $$\mathrm{3SAT} \le_p \mathrm{HC}$$ (Mảnh ghép kim cương)**:
+   Mỗi biến $$x_i$$ trở thành một hành lang đi từ trái sang phải (chọn True) hoặc từ phải sang trái (chọn False); mỗi mệnh đề là một nút rẽ nhánh chỉ có thể ghé thăm nếu ít nhất một biến đi đúng chiều thỏa mãn mệnh đề đó.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -59,6 +70,13 @@ Phép rút gọn sử dụng các gadget đỉnh/cạnh để mô phỏng từng
 **Định lý.** Cả HC và TSP-DEC đều là bài toán NP-complete (HC suy từ phép rút gọn gadget 3SAT→HC và TSP-DEC suy từ phép rút gọn HC→TSP-DEC ở trên).
 
 </div>
+
+### Khung giải thích (nên đọc chậm): Kiểm tra tay phép rút gọn $$\mathrm{HC} \le_p \mathrm{TSP\text{-}DEC}$$ trên đồ thị 4 đỉnh
+
+Cho đồ thị 4 đỉnh $$G$$ có các cạnh $$\{(1,2), (2,3), (3,4), (4,1), (1,3)\}$$ ($$n = 4$$). Ta xây ma trận khoảng cách $$K_4$$ với trọng số `1` cho cạnh có trong $$G$$ và `2` cho cạnh thiếu `(2,4)`, đặt ngưỡng $$B = n = 4$$:
+- **Nếu $$G$$ có chu trình Hamilton** (ví dụ $$1 \to 2 \to 3 \to 4 \to 1$$): cả 4 cạnh đều thuộc $$G$$ nên đều có trọng số `1`. Tổng chi phí hành trình = $$1 + 1 + 1 + 1 = \mathbf{4} \le B$$!
+- **Nếu ta xóa cạnh $$(3,4)$$ khỏi $$G$$** (khiến $$G$$ không còn chu trình Hamilton): bất kỳ hành trình nào đi qua cả 4 đỉnh trong $$K_4$$ đều phải dùng ít nhất **1 cạnh không có trong $$G$$** (trọng số `2`), nên tổng chi phí ít nhất là $$1 + 1 + 1 + 2 = \mathbf{5} > 4$$!
+- **Kiểm tra bất đẳng thức tam giác:** Với mọi bộ ba đỉnh $$(u,v,w)$$, tổng hai cạnh luôn $$\ge 1 + 1 = 2 \ge w(u,w)$$. Vậy phép rút gọn chứng minh luôn **Metric TSP** là NP-complete!
 
 ## Bài tập
 

@@ -19,6 +19,17 @@ excerpt: "Phân biệt ngôn ngữ quyết định được (decidable) và đ�
 
 Bài học này đóng vai trò cầu nối giữa Chương 18 và Chương 20: ngoài những bài toán khó giải trong thời gian đa thức, tồn tại những bài toán hoàn toàn **không thể quyết định được** bằng bất kỳ thuật toán nào.
 
+Mọi lập trình viên đều từng mơ về một công cụ kiểm tra mã nguồn hoàn hảo: nạp vào bất kỳ chương trình `P` và đầu vào `w` nào, công cụ lập tức báo chính xác `P(w)` có bị treo vòng lặp vô hạn hay không. Năm 1936, Alan Turing chứng minh giấc mơ đó là **bất khả thi về mặt toán học** — không phải vì máy tính còn chậm hay ta chưa đủ thông minh, mà vì chính logic tự quy chiếu đã dựng nên một bức tường không thể vượt qua.
+
+## Bản đồ kiến thức nền: Ba trụ cột của Tính quyết định được và Bài toán Dừng
+
+1. **Ngôn ngữ Quyết định được (Decidable / Recursive) vs. Nhận dạng được (RE)**:
+   Một ngôn ngữ là *decidable* nếu có máy Turing luôn dừng và trả lời Đúng/Sai cho mọi đầu vào. Ngược lại, ngôn ngữ *RE* chỉ cần dừng và chấp nhận khi $$w \in L$$, nhưng có thể chạy mãi không dừng khi $$w \notin L$$.
+2. **Định lý Bù ($$L$$ và $$\overline{L}$$ đều RE $$\iff L$$ Decidable)**:
+   Nếu có máy nhận dạng cho $$L$$ và máy nhận dạng cho phần bù $$\overline{L}$$, ta chỉ cần chạy song song hai máy từng bước một — chắc chắn một trong hai sẽ dừng, biến cả hai thành bộ quyết định.
+3. **Phép chéo hóa Cantor (Diagonalization) & Rút gọn (Reduction)**:
+   Chứng minh $$A_{\mathrm{TM}}$$ không quyết định được dùng đúng kỹ thuật chéo hóa của Cantor (tạo ra máy nghịch lý $$D$$ làm ngược lại dự đoán về chính nó); sau đó dùng phép rút gọn để chứng minh hàng loạt bài toán thực tế khác (như `HALT`, kiểm tra tương đương hai chương trình) cũng bất khả quyết định.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -47,6 +58,25 @@ Xét ngôn ngữ $$A_{\mathrm{TM}}=\{\langle M,w\rangle:M\text{ chấp nhận }w
 ## Bài toán Dừng (*Halting Problem*)
 
 Bài toán dừng $$\mathrm{HALT}=\{\langle M,w\rangle:M\text{ dừng trên }w\}$$ cũng là bài toán không quyết định được (có thể chứng minh bằng phép quy giảm từ $$A_{\mathrm{TM}}$$).
+
+### Khung giải thích (nên đọc chậm): Theo dõi tận mắt nghịch lý tự quy chiếu của máy $$D$$
+
+Giả sử tồn tại một bộ quyết định hoàn hảo $$H(\langle M, w \rangle)$$ luôn dừng và trả về:
+- `ACCEPT` nếu máy $$M$$ chấp nhận chuỗi $$w$$;
+- `REJECT` nếu máy $$M$$ từ chối hoặc chạy vô hạn trên $$w$$.
+
+Bây giờ ta viết một chương trình ngắn $$D$$ nhận mã nguồn của một máy bất kỳ $$\langle M \rangle$$ làm đầu vào:
+1. $$D$$ gọi $$H(\langle M, \langle M \rangle \rangle)$$ để hỏi: *"Nếu nạp chính mã nguồn của $$M$$ vào cho $$M$$ chạy thì sao?"*
+2. $$D$$ **cố tình làm ngược lại**: nếu $$H$$ bảo `ACCEPT` thì $$D$$ trả về `REJECT`; nếu $$H$$ bảo `REJECT` thì $$D$$ trả về `ACCEPT`.
+
+**Khoảnh khắc sụp đổ:** Điều gì xảy ra khi ta nạp **chính mã nguồn $$\langle D \rangle$$** vào cho $$D$$ chạy?
+
+| Giả sử kết quả của $$D(\langle D \rangle)$$ | Bộ quyết định $$H(\langle D, \langle D \rangle \rangle)$$ phải báo gì? | Hành động thực tế của $$D(\langle D \rangle)$$ (làm ngược lại $$H$$) | Kết luận |
+| :--- | :---: | :---: | :---: |
+| Trường hợp 1: $$D(\langle D \rangle)$$ **ACCEPT** | `ACCEPT` | **REJECT** | Mâu thuẫn! |
+| Trường hợp 2: $$D(\langle D \rangle)$$ **REJECT** | `REJECT` | **ACCEPT** | Mâu thuẫn! |
+
+Cả hai nhánh đều dẫn tới mâu thuẫn tuyệt đối. Vì mọi bước xây dựng $$D$$ từ $$H$$ đều hợp lệ, thứ duy nhất sai chính là giả định ban đầu rằng bộ quyết định $$H$$ tồn tại. Do đó, $$A_{\mathrm{TM}}$$ (và theo phép rút gọn là Bài toán Dừng) là **bất khả quyết định**.
 
 ## Bài tập
 

@@ -9,6 +9,16 @@ lang: en
 excerpt: "Phân tích hiện tượng bùng nổ tổ hợp (combinatorial explosion) theo quy tắc nhân trong kiểm thử phần mềm và cách kiểm thử pairwise (2-wise) giảm 324 cấu hình xuống khoảng 15 ca kiểm thử."
 ---
 
+Một yêu cầu tưởng rất hợp lý trong buổi họp sprint — *"nhớ test hết mọi tổ hợp trình duyệt, hệ điều hành, thiết bị và cổng thanh toán nhé!"* — thực ra lại là một cái bẫy toán học. Chỉ cần thêm vài tùy chọn vào giao diện, số kịch bản kiểm thử không cộng thêm vài chục ca mà nhân vọt lên hàng nghìn, vượt xa quỹ thời gian của cả đội QA.
+
+**Mạch bài học:** **Quy tắc nhân** và hiện tượng bùng nổ tổ hợp $$N = \prod v_i$$ $$\longrightarrow$$ quan sát thực nghiệm rằng phần lớn lỗi phần mềm xuất phát từ tương tác **1 hoặc 2 tham số** $$\longrightarrow$$ **kiểm thử theo cặp (pairwise / covering arrays)** rút 324 ca xuống ~15 ca.
+
+## Bản đồ kiến thức nền: Toán tổ hợp trong kiểm thử phần mềm nghiên cứu gì?
+
+- **Quy tắc nhân & Tích Descartes (Product Rule):** Với $$k$$ tham số độc lập mà tham số thứ $$i$$ có $$v_i$$ giá trị, không gian cấu hình đầy đủ là tích Descartes $$S_1 \times \cdots \times S_k$$ có lực lượng $$N = \prod_{i=1}^k v_i$$ — tăng theo hàm mũ theo số tham số $$k$$.
+- **Mảng phủ $$t$$-chiều (Covering Arrays $$CA(N; t, k, v)$$):** Đối tượng cốt lõi của tổ hợp ứng dụng: tìm tập con nhỏ nhất gồm $$N$$ dòng cấu hình sao cho với mọi nhóm $$t$$ cột bất kỳ (thường $$t=2$$, tức *pairwise*), **mọi bộ giá trị $$t$$-chiều có thể đều xuất hiện ít nhất một lần**.
+- **Đánh đổi độ phủ và chi phí (Coverage–Cost Trade-off):** Dùng chứng cứ thực nghiệm (như nghiên cứu của NIST cho thấy phần lớn lỗi thực tế bị kích hoạt bởi tương tác 1–2 tham số) để phân bổ ngân sách kiểm thử có cơ sở toán học thay vì chọn cảm tính.
+
 Ở bài connection pool, chúng ta đã thấy tác hại của việc nhầm lẫn giữa các đại lượng đếm (DAU, RPS và kết nối bận). Mục này xét một bài toán đếm khác trong **kiểm thử phần mềm**: **bùng nổ tổ hợp** (combinatorial explosion). Khi kết hợp nhiều tham số môi trường (trình duyệt × hệ điều hành × thiết bị × …), số cấu hình kiểm thử vét cạn (exhaustive) tăng theo **tích** chứ không theo tổng. Câu hỏi “vì sao không kiểm thử hết mọi tổ hợp?” thường xuất phát từ việc chưa tính trực tiếp tích $$N = \prod v_i$$.
 
 Hương, trưởng nhóm QA phụ trách luồng thanh toán, gặp câu hỏi đó gần như mỗi sprint. Khi lập bảng cho luồng **đăng ký / thanh toán** mới bàn giao — gồm 5 tham số là trình duyệt, hệ điều hành, loại người dùng, thiết bị và trạng thái ứng dụng — áp dụng quy tắc nhân đã cho ra **324 cấu hình** chỉ riêng cho một luồng. Nếu bổ sung thêm cổng thanh toán, ngôn ngữ (locale) hay điều kiện mạng chậm, con số lập tức lên tới **hàng nghìn**. Với mỗi cấu hình gồm 10 bước kiểm tra, một sprint hai tuần hoàn toàn không đủ thời gian để chạy hết, chưa kể các bộ kiểm thử hồi quy (regression) khác.
@@ -113,6 +123,39 @@ Bùng nổ tổ hợp là nguyên nhân thực tế gây trễ lịch phát hàn
 **Đọc thêm:** [testRigor — Combinatorial Testing](https://testrigor.com/blog/what-is-combinatorial-testing/) · [Optivem — Combinatorial Explosion](https://journal.optivem.com/p/combinatorial-explosion) · [Microsoft PICT](https://github.com/microsoft/pict)
 
 ---
+
+## Ví dụ tính tay cầm tay chỉ việc: Giảm 8 cấu hình xuống 4 ca kiểm thử Pairwise hoàn hảo
+
+Xét một mô-đun thanh toán nhỏ có **3 tham số nhị phân** (mỗi tham số 2 giá trị):
+- **Trình duyệt (B):** Chrome (`C`), Safari (`S`)
+- **Hệ điều hành (O):** macOS (`M`), Windows (`W`)
+- **Chế độ mạng (N):** Nhanh (`F`), Chậm (`L`)
+
+1. **Kiểm thử vét cạn (Exhaustive):** Số cấu hình là $$2 \times 2 \times 2 = 8$$ ca.
+2. **Đếm tổng số cặp giá trị cần phủ cho Pairwise ($$t=2$$):**
+   - Cặp (B, O): $$2 \times 2 = 4$$ cặp (`CM, CW, SM, SW`).
+   - Cặp (B, N): $$2 \times 2 = 4$$ cặp (`CF, CL, SF, SL`).
+   - Cặp (O, N): $$2 \times 2 = 4$$ cặp (`MF, ML, WF, WL`).
+   - Tổng cộng có $$4 + 4 + 4 = 12$$ cặp cần phủ. Vì mỗi ca kiểm thử chứa $$\binom{3}{2} = 3$$ cặp, cận dưới lý thuyết tối thiểu là $$\lceil 12 / 3 \rceil = 4$$ ca.
+3. **Dựng tay bộ 4 ca kiểm thử đạt đúng cận dưới (bảng trực giao $$OA(4, 3, 2, 2)$$):**
+
+| Ca test | Trình duyệt (B) | Hệ điều hành (O) | Mạng (N) | 3 cặp được phủ |
+| :--- | :--- | :--- | :--- | :--- |
+| T1 | C | M | F | (C,M), (C,F), (M,F) |
+| T2 | C | W | L | (C,W), (C,L), (W,L) |
+| T3 | S | M | L | (S,M), (S,L), (M,L) |
+| T4 | S | W | F | (S,W), (S,F), (W,F) |
+
+4. **Kiểm tra thủ công:** Đếm cột cuối cùng — cả **12/12 cặp** đều xuất hiện đúng 1 lần, không thiếu cặp nào, trong khi số ca kiểm thử giảm một nửa (từ 8 xuống 4). Khi số tham số tăng lên 5–10 biến, tỷ lệ nén nhảy vọt từ $$324 \to 15$$ hoặc từ hàng chục nghìn xuống vài chục ca!
+
+### Khung giải thích: Tại sao Pairwise đánh bại bùng nổ tổ hợp (nên đọc chậm)
+
+1. **Bước 1 — Chiều sâu nhân nhanh hơn chiều rộng:** Mỗi khi thêm một tham số mới có 3 giá trị, không gian vét cạn nhân 3 ngay lập tức, còn số cặp mới cần phủ chỉ tăng tuyến tính theo số tham số hiện có.
+2. **Bước 2 — Một ca kiểm thử phủ nhiều cặp cùng lúc:** Với $$k$$ tham số, một dòng cấu hình duy nhất đồng thời kiểm tra $$\binom{k}{2}$$ cặp tham số. Nhờ tính "chia sẻ dòng" này, kích thước mảng phủ pairwise tăng xấp xỉ theo $$O(\log k)$$ thay vì $$O(v^k)$$.
+3. **Bước 3 — Nhắm trúng vùng mật độ lỗi cao:** Phần lớn lỗi tương thích đến từ một giá trị đơn lẻ (1-way) hoặc xung đột giữa hai thành phần (2-way, ví dụ Safari + OAuth).
+4. **Bước 4 — Kết hợp rủi ro nghiệp vụ:** Pairwise là nền tảng tối ưu; với vài tổ hợp bậc 3 đặc biệt nhạy cảm (như iOS + Safari + cổng thanh toán chính), ta chủ động bổ sung thêm vài ca mục tiêu.
+
+$$N_{\text{exhaustive}} = \prod_{i=1}^k v_i \sim v^k \quad\text{vs.}\quad N_{\text{pairwise}} \approx O(v^2 \log k).$$
 
 ## Bài tập thực hành
 

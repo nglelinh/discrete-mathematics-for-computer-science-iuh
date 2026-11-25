@@ -19,6 +19,18 @@ excerpt: "Độ phức tạp tham số hóa (FPT so với XP), chứng minh cây
 
 Độ phức tạp tham số hóa tách phần tăng trưởng hàm mũ khỏi kích thước đầu vào $$n$$: thuật toán có thời gian $$f(k)n^{O(1)}$$ vẫn thực thi nhanh khi tham số cấu trúc $$k$$ nhỏ (như kích thước lời giải hoặc *treewidth*), ngay cả khi $$n$$ rất lớn.
 
+Thuật toán xấp xỉ đánh đổi độ chính xác để lấy tốc độ. Còn một lối thoát tinh tế thứ hai giữ nguyên **nghiệm chính xác 100%** cho bài toán NP-hard: **Độ phức tạp Tham số hóa (Parameterized Complexity)**. Ý tưởng cốt lõi: thay vì đo độ phức tạp chỉ theo một biến kích thước $$n$$, hãy tách riêng một tham số cấu trúc $$k$$ (như kích thước nghiệm cần tìm hoặc độ rộng cây) và **giam toàn bộ sự bùng nổ hàm mũ vào riêng $$k$$**, để phần phụ thuộc $$n$$ vẫn là đa thức nhỏ gọn!
+
+## Bản đồ kiến thức nền: Ba trụ cột của Độ phức tạp Tham số hóa & FPT
+
+1. **Lớp FPT (Fixed-Parameter Tractable — $$f(k) \cdot n^{O(1)}$$)**:
+   Khác hẳn $$O(n^k)$$ (khi $$k = 10, n = 1000$$ thì $$1000^{10} = 10^{30}$$ vô phương cứu chữa), thuật toán FPT kiểu $$O(2^k \cdot n)$$ với $$k = 10, n = 1000$$ chỉ mất khoảng $$10^6$$ phép tính (chạy dưới 1 mili-giây!).
+2. **Hai kỹ thuật thiết kế FPT kinh điển (Bounded Search Tree & Kernelization)**:
+   - *Cây tìm kiếm bị chặn:* Với `Vertex Cover`, mọi cạnh $$(u,v)$$ bắt buộc phải chọn $$u$$ hoặc $$v$$ → rẽ 2 nhánh, mỗi nhánh giảm $$k$$ đi 1 → cây sâu tối đa $$k$$, tổng chỉ $$O(2^k \cdot (V+E))$$!
+   - *Rút gọn hạt nhân (Kernelization):* Áp dụng quy tắc tiền xử lý đa thức để co đồ thị khổng lồ xuống "hạt nhân" cỡ chỉ phụ thuộc $$k$$ (ví dụ quy tắc Buss cho `Vertex Cover` thu gọn còn tối đa $$k^2$$ cạnh!).
+3. **Phân cấp $$W[1]$$ & Độ rộng cây (Treewidth)**:
+   Không phải bài nào cũng có thuật toán FPT: `CLIQUE` là $$W[1]$$-complete (khó có thể giải trong $$f(k) \cdot n^{O(1)}$$). Tuy nhiên, với các đồ thị giống cây (treewidth $$tw$$ nhỏ), định lý Courcelle cho phép giải rất nhiều bài toán NP-hard trong thời gian tuyến tính theo $$n$$!
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -71,6 +83,15 @@ Khác với Vertex Cover, bài toán Clique tham số hóa theo kích thước $
 ## Độ rộng cây (*Treewidth*)
 
 Nhiều bài toán biểu diễn được bằng logic bậc hai đơn ngôi (MSO) trên đồ thị có *treewidth* $$w$$ đều giải được trong thời gian $$f(w)n$$ theo định lý Courcelle; tuy hằng số lý thuyết rất lớn, quy hoạch động trực tiếp trên phân rã cây thường đạt $$2^{O(w)}n^{O(1)}$$ trong thực hành.
+
+### Khung giải thích (nên đọc chậm): Chạy tay quy tắc Buss (Kernelization) thu gọn đồ thị `Vertex Cover`
+
+Giả sử bạn cần kiểm tra xem một đồ thị khổng lồ $$G$$ có **10.000 đỉnh** có tồn tại tập phủ đỉnh cỡ $$k = 5$$ hay không. Quy tắc Buss làm hai bước cực đơn giản:
+1. **Quy tắc đỉnh bậc cao:** Nếu có đỉnh $$v$$ nào có bậc $$\deg(v) > k$$ (tức $$\ge 6$$ cạnh nối vào $$v$$), thì **bắt buộc phải chọn $$v$$ vào tập phủ đỉnh**! (Vì nếu không chọn $$v$$, ta phải chọn toàn bộ $$\ge 6$$ hàng xóm của $$v$$, vượt ngay ngân sách $$k = 5$$!). Chọn $$v$$, xóa $$v$$ cùng các cạnh kề nó, và giảm $$k \leftarrow k - 1$$.
+2. **Xóa đỉnh cô lập:** Mọi đỉnh bậc `0` không phủ cạnh nào nên xóa bỏ an toàn.
+3. **Kiểm tra ngưỡng dừng:** Sau khi không còn đỉnh nào bậc $$> k'$$, mỗi đỉnh được chọn phủ tối đa $$k'$$ cạnh, nên nếu đồ thị còn lại có **nhiều hơn $$(k')^2$$ cạnh** (ví dụ $$> 25$$ cạnh) thì lập tức kết luận **KHÔNG có nghiệm**!
+
+Từ đồ thị 10.000 đỉnh ban đầu, quy tắc Buss nén bài toán xuống một hạt nhân nhỏ xíu tối đa **25 cạnh** trong vài mili-giây trước khi chạy tìm kiếm!
 
 ## Bài tập
 

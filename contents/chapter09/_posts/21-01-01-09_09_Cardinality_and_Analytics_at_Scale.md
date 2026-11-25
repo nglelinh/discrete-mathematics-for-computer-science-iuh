@@ -9,6 +9,16 @@ lang: en
 excerpt: "Phân tích khái niệm cardinality (số giá trị phân biệt trên một cột) qua bài toán xử lý hơn 1 triệu truy vấn DNS mỗi giây của Cloudflare và vai trò của HyperLogLog trong hệ thống phân tích dữ liệu."
 ---
 
+Một bảng tổng hợp (rollup) trong hệ thống phân tích dữ liệu nghe như phép màu nén dung lượng: gom 1 triệu dòng log mỗi giây thành vài chục dòng thống kê. Nhưng phép màu ấy chỉ xảy ra khi cột bạn `GROUP BY` có **ít giá trị phân biệt**. Chỉ cần vô tình gom nhóm theo một cột có **cardinality cao** như `query_name`, `user_id` hay `trace_id`, tỷ lệ nén lập tức sụp về $$1\times$$ và cụm giám sát có thể tràn bộ nhớ trong vài phút.
+
+**Mạch bài học:** Định nghĩa **lực lượng tập hợp (cardinality)** $$\vert V_C \vert$$ $$\longrightarrow$$ mối liên hệ giữa cardinality và tỷ lệ nén khi `GROUP BY` $$\longrightarrow$$ bài toán thực chiến DNS của Cloudflare $$\longrightarrow$$ ước lượng số phần tử phân biệt với bộ nhớ siêu nhỏ bằng **HyperLogLog**.
+
+## Bản đồ kiến thức nền: Lực lượng tập hợp và thuật toán dòng dữ liệu nghiên cứu gì?
+
+- **Lực lượng tập hợp (Set Cardinality):** Với một cột $$C$$ trong bảng gồm $$N$$ dòng, lực lượng $$\vert V_C \vert$$ là số giá trị **phân biệt** xuất hiện trong $$C$$. Tỷ lệ nén tối đa khi tổng hợp theo $$C$$ bị chặn trên bởi $$N / \vert V_C \vert$$.
+- **Bùng nổ tích Descartes đa chiều (Multi-Dimensional Cardinality Explosion):** Khi tổng hợp đồng thời theo nhiều cột (hoặc gắn nhiều nhãn label trong Prometheus), số chuỗi thời gian tiềm năng có thể đạt tới $$\prod_i \vert V_{C_i} \vert$$, gây nổ RAM ở cả tầng lưu trữ lẫn truy vấn.
+- **Thuật toán dòng dữ liệu xác suất (Streaming Cardinality Estimation — HyperLogLog):** Thay vì lưu toàn bộ tập khóa tốn $$O(\vert V_C \vert)$$ bộ nhớ, thuật toán băm từng phần tử thành chuỗi bit ngẫu nhiên và quan sát **số bit `0` liên tiếp dài nhất ở đầu** để ước lượng $$\vert V_C \vert$$ chỉ với vài kilobyte RAM.
+
 Ở bài trước, chúng ta đã phân biệt xác suất va chạm $$P(\text{collision})$$ và kỳ vọng số lần trùng $$E[\text{matches}]$$. Mục này xét một đại lượng đếm khác trong hạ tầng dữ liệu: **lực lượng (cardinality)** — $$\vert V_C\vert $$, số giá trị **phân biệt** trên một cột — yếu tố quyết định việc tổng hợp (aggregate) nhật ký có **nén** được dữ liệu hay không. Bài viết trên [Cloudflare Blog](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/) (Vavruša, 2017) mô tả hệ thống xử lý **hơn 1 triệu truy vấn DNS mỗi giây**: tổng hợp theo `response_code` (khoảng 12 giá trị) giảm mạnh số dòng lưu trữ, còn tổng hợp theo `query_name` (có thể lên tới hàng triệu tên miền khác nhau) có mức nén rất thấp và không ổn định (0–60×, trường hợp xấu nhất là 1×). Một sự cố thực tế hay gặp là bảng điều khiển ở mức zone hiển thị hoàn toàn bình thường trong khi một tập con `qname` cụ thể lại có độ trễ rất cao — tín hiệu ở chiều cardinality cao bị làm loãng khi tổng hợp sai chiều.
 
 Bài toán toán rời rạc cốt lõi ở đây có thể tóm gọn như sau:
@@ -100,6 +110,31 @@ Tóm lại, cardinality quyết định liệu phép tổng hợp có nén đư�
 **Đọc thêm**: [Cloudflare — 1M DNS queries/sec](https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/) · [HyperLogLog — Wikipedia](https://en.wikipedia.org/wiki/HyperLogLog)
 
 ---
+
+## Ví dụ tính tay cầm tay chỉ việc: Tỷ lệ nén `GROUP BY` và trực giác HyperLogLog
+
+**Phần A — Tính tỷ lệ nén trên cửa sổ 1 giây gồm $$N = 1\,000\,000$$ truy vấn DNS:**
+1. **Tổng hợp theo `response_code`** (khoảng $$\vert V_{\text{rcode}} \vert = 10$$ mã như `NOERROR`, `NXDOMAIN`, `SERVFAIL`...):
+   - Số dòng sau `GROUP BY`: tối đa $$10$$ dòng.
+   - Tỷ lệ nén: $$\frac{1\,000\,000}{10} = 100\,000\times$$ — cực kỳ gọn nhẹ!
+2. **Tổng hợp theo `qname` trong đợt tấn công random-subdomain** (mỗi truy vấn hỏi một tên miền con ngẫu nhiên `a8f3k.victim.com`, nên $$\vert V_{\text{qname}} \vert = 950\,000$$):
+   - Số dòng sau `GROUP BY`: $$950\,000$$ dòng.
+   - Tỷ lệ nén: $$\frac{1\,000\,000}{950\,000} \approx 1{,}05\times$$ — hầu như **không nén được gì**, lại tốn thêm CPU và RAM để dựng bảng băm gần 1 triệu khóa!
+
+**Phần B — Tính tay ước lượng HyperLogLog với $$m = 4$$ thanh ghi (registers):**
+Giả sử ta băm các `user_id` vào chuỗi bit, lấy 2 bit đầu chọn 1 trong $$m=4$$ giỏ, và đếm vị trí bit `1` đầu tiên $$\rho$$ trong phần bit còn lại. Sau khi đọc hết luồng dữ liệu, giá trị lớn nhất ghi nhận ở 4 giỏ là $$M = [4, 5, 4, 3]$$.
+- Áp dụng công thức trung bình điều hòa của HyperLogLog (với hệ số hiệu chỉnh $$\alpha_4 \approx 0{,}532$$):
+  $$\hat{n} = \alpha_m \cdot m^2 \cdot \left(\sum_{j=1}^m 2^{-M_j}\right)^{-1} = 0{,}532 \times 16 \times \left(2^{-4} + 2^{-5} + 2^{-4} + 2^{-3}\right)^{-1}.$$
+- Tính tổng trong ngoặc: $$\frac{1}{16} + \frac{1}{32} + \frac{1}{16} + \frac{1}{8} = \frac{2 + 1 + 2 + 4}{32} = \frac{9}{32} = 0{,}28125$$.
+- Suy ra: $$\hat{n} \approx \frac{8{,}512}{0{,}28125} \approx 30{,}3$$ phần tử phân biệt — mà bộ nhớ chỉ cần lưu **4 số nguyên nhỏ** thay vì toàn bộ 30 khóa gốc!
+
+### Khung giải thích: Tại sao đếm số bit `0` đầu chuỗi lại đo được lực lượng tập hợp (nên đọc chậm)
+
+1. **Bước 1 — Băm biến mọi dữ liệu thành tung đồng xu công bằng:** Một hàm băm tốt ánh xạ mỗi giá trị phân biệt sang một chuỗi bit đều nhau; giá trị lặp lại luôn cho đúng chuỗi bit cũ nên tự động bị bỏ qua (idempotent).
+2. **Bước 2 — Sự kiện hiếm tiết lộ quy mô mẫu:** Xác suất thấy $$k$$ bit `0` liên tiếp ở đầu chuỗi là $$2^{-k}$$. Nếu bạn thấy chuỗi bắt đầu bằng `000001...` (5 số 0), trung bình bạn phải đã tung khoảng $$2^5 = 32$$ đồng xu phân biệt khác nhau.
+3. **Bước 3 — Chia nhiều giỏ + trung bình điều hòa để triệt nhiễu:** Chỉ dùng 1 thanh ghi thì rất dễ bị lệch nếu vô tình gặp 1 chuỗi nhiều số 0 quá sớm. Chia thành $$m$$ giỏ (thường $$m = 2^{14} = 16\,384$$) rồi lấy **trung bình điều hòa** giúp triệt tiêu ngoại lai, đạt sai số chuẩn chỉ $$\approx 1{,}04/\sqrt{m} \approx 0{,}81\%$$ với chỉ ~12 KB RAM.
+
+$$\text{Tỷ lệ nén} \le \frac{N}{\vert V_C \vert}, \qquad \text{HLL: } \hat{n} \propto m^2 \Big/\! \sum_{j=1}^m 2^{-M_j}\;\text{ với sai số }\approx \frac{1{,}04}{\sqrt{m}}.$$
 
 ## Bài tập thực hành
 

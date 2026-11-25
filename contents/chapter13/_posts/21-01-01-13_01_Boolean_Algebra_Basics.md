@@ -17,6 +17,17 @@ excerpt: "Đại số logic trên {0,1}, hệ tiên đề Huntington, các hằn
 
 </div>
 
+
+Năm 1854, George Boole xuất bản cuốn *The Laws of Thought* với tham vọng biến suy luận logic thành phép tính đại số — khi ấy chưa ai nghĩ đến máy tính điện tử. Gần một thế kỷ sau (1937), chàng sinh viên 21 tuổi Claude Shannon nhận ra trong luận văn thạc sĩ của mình rằng toàn bộ hệ tiên đề khô khan của Boole lại mô tả **chính xác từng công tắc rơ-le đóng–mở** của mạch điện số. Từ đó, đại số Boole trở thành nền móng toán học trực tiếp của mọi bộ vi xử lý trên Trái Đất.
+
+**Mạch bài học:** Đại số logic nhị phân $$B = \{0, 1\}$$ $$\longrightarrow$$ định nghĩa tiên đề của **Đại số Boole trừu tượng** $$\longrightarrow$$ bộ **hằng đẳng thức rút gọn** (hấp thụ, De Morgan, phân phối kép) $$\longrightarrow$$ **Nguyên lý Đối ngẫu (Duality Principle)** nhân đôi mọi định lý miễn phí và cầu nối sang mạch logic.
+
+## Bản đồ kiến thức nền: Đại số Boole trừu tượng khác gì đại số số thực thông thường?
+
+- **Tính phân phối kép (Dual Distributivity):** Trong số thực, phép nhân phân phối qua phép cộng ($$a(b+c)=ab+ac$$) nhưng phép cộng **không** phân phối qua phép nhân. Trong đại số Boole, **cả hai chiều đều đúng**: $$x + (y \cdot z) = (x + y)(x + z)$$ — nguồn gốc của nhiều phép rút gọn mạch kỳ diệu!
+- **Nguyên lý Đối ngẫu (Duality Principle):** Nếu một đẳng thức đúng trong mọi đại số Boole, thì khi ta hoán đổi đồng thời $$+ \leftrightarrow \cdot$$ và $$0 \leftrightarrow 1$$, đẳng thức mới thu được **tự động đúng mà không cần chứng minh lại**!
+- **Đẳng cấu giữa ba thế giới (Logic – Tập hợp – Mạch số):** Đại số mệnh đề ($$\lor, \land, \neg, F, T$$), đại số tập hợp ($$\cup, \cap, \overline{\cdot}, \emptyset, U$$) và mạch cổng số ($$\text{OR}, \text{AND}, \text{NOT}, 0, 1$$) thực chất là **cùng một cấu trúc đại số Boole** khoác ba chiếc áo ký hiệu khác nhau.
+
 Đại số Boole là nền tảng toán học của logic số, thiết kế mạch và tối ưu hóa biểu thức điều kiện. Mọi phép đánh giá điều kiện trong chương trình máy tính cũng như mọi mạch công tắc hay cổng logic đều vận hành trên cùng một cấu trúc đại số với hai giá trị $$0$$ và $$1$$. Bài học này trình bày đại số logic $$B=\{0,1\}$$, định nghĩa hình thức của đại số Boole, hệ tiên đề Huntington và các hằng đẳng thức cơ bản.
 
 ![George Boole](/discrete-mathematics-for-computer-science-iuh/img/course/George_Boole.jpg)
@@ -304,6 +315,32 @@ Ngoài ba phép toán cơ bản AND, OR, NOT, trên $$B = \{0, 1\}$$ còn có c�
 **Ví dụ.** Truy vấn tìm kiếm dạng “cat AND dog NOT fish” là một biểu thức Boole trên tập tài liệu, trong đó mỗi tài liệu được gán giá trị **1** hoặc **0** tùy vào việc có chứa từng từ khóa hay không.
 
 </div>
+
+## Ví dụ tính tay cầm tay chỉ việc: Rút gọn biểu thức Boole bằng đại số & kiểm tra bằng đối ngẫu
+
+**Phần A — Rút gọn biểu thức mạch $$F(x, y, z) = x y + \bar{x} z + y z$$ (Định lý đồng thuận — Consensus Theorem):**
+Ta muốn chứng minh số hạng thừa $$y z$$ có thể **xóa bỏ hoàn toàn** (tiết kiệm 1 cổng AND và 1 đầu vào OR trên chip!):
+1. **Nhân thêm $$1 = x + \bar{x}$$ vào số hạng $$yz$$:**
+   $$F = x y + \bar{x} z + (x + \bar{x}) y z = x y + \bar{x} z + x y z + \bar{x} y z.$$
+2. **Gom nhóm theo $$xy$$ và $$\bar{x}z$$:**
+   $$F = x y (1 + z) + \bar{x} z (1 + y).$$
+3. **Dùng luật thống trị $$1 + z = 1$$ và $$1 + y = 1$$:**
+   $$F = x y \cdot 1 + \bar{x} z \cdot 1 = x y + \bar{x} z.$$
+- **Kiểm chứng nhanh tại $$x=1, y=1, z=1$$:** Gốc cho $$1 + 0 + 1 = 1$$; rút gọn cho $$1 + 0 = 1$$. Tại $$x=0, y=1, z=1$$: gốc cho $$0 + 1 + 1 = 1$$; rút gọn cho $$0 + 1 = 1$$. Chính xác!
+
+**Phần B — Áp dụng Nguyên lý Đối ngẫu để nhận ngay định lý thứ hai miễn phí:**
+Từ đẳng thức vừa chứng minh $$x y + \bar{x} z + y z = x y + \bar{x} z$$, hoán đổi toàn bộ $$+ \leftrightarrow \cdot$$:
+$$(x + y)(\bar{x} + z)(y + z) = (x + y)(\bar{x} + z).$$
+Không tốn thêm một dòng chứng minh nào, ta thu ngay thêm một luật rút gọn dạng tích các tổng (POS)!
+
+### Khung giải thích: Bốn mẹo đại số để rút gọn biểu thức Boole nhanh và không sót (nên đọc chậm)
+
+1. **Bước 1 — Đẩy dấu phủ định vào tận biến đơn bằng De Morgan trước tiên:** Biến $$\overline{x + y} = \bar{x}\bar{y}$$ và $$\overline{xy} = \bar{x} + \bar{y}$$ để giải phóng ngoặc lớn.
+2. **Bước 2 — Tìm cặp bù $$A + \bar{A} = 1$$ và luật hấp thụ $$A + AB = A$$:** Mọi số hạng chứa thừa một nhân tử đã có mặt độc lập đều biến mất ngay lập tức.
+3. **Bước 3 — Dùng "chiêu chèn $$1 = x + \bar{x}$$" khi thấy thiếu biến:** Như ví dụ Định lý đồng thuận ở trên, nhân thêm $$(x + \bar{x})$$ giúp tạo nhân tử chung để triệt tiêu số hạng dư.
+4. **Bước 4 — Kiểm tra chéo trên vài bộ giá trị $$(0, 1)$$:** Với 3 biến chỉ có $$2^3 = 8$$ tổ hợp; thay nhanh 2–3 tổ hợp biên là đủ phát hiện ngay nếu lỡ sai dấu phủ định!
+
+$$(\mathcal{B}, +, \cdot, \bar{\phantom{x}}, 0, 1) \;\xleftrightarrow{\text{Đối ngẫu}}\; (+ \leftrightarrow \cdot,\; 0 \leftrightarrow 1) \;\Longrightarrow\; \text{Logic} \cong \text{Tập hợp} \cong \text{Mạch số.}$$
 
 ## Bài tập
 

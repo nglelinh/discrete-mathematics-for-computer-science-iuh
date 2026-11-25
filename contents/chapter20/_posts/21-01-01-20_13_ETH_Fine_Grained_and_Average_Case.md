@@ -19,6 +19,18 @@ excerpt: "Giả thuyết thời gian mũ (ETH/SETH) và hệ quả, độ phức
 
 Bài học này giới thiệu ba hướng tiếp cận **tinh tế hơn** lý thuyết NP-complete cổ điển: giả thuyết thời gian mũ (ETH/SETH), cận dưới bên trong chính lớp $$P$$ (độ phức tạp mịn) và độ khó trường hợp trung bình gắn với mật mã học.
 
+Giả thuyết $$P \neq NP$$ chỉ nói rằng `3SAT` không giải được trong thời gian đa thức, nhưng nó không cho biết liệu `3SAT` có giải được trong $$2^{\sqrt{n}}$$ hay không, cũng như không phân biệt được giữa thuật toán $$O(n^2)$$ và $$O(n^{1.5})$$ ngay bên trong lớp $$P$$. Bài học này mở cánh cửa vào biên giới nghiên cứu hiện đại của độ phức tạp: **ETH/SETH**, **Độ phức tạp mịn (Fine-Grained Complexity)** và **Độ khó trung bình (Average-Case Complexity)**.
+
+## Bản đồ kiến thức nền: Ba trụ cột của Độ phức tạp Hiện đại
+
+1. **Giả thuyết Thời gian Mũ (ETH & SETH)**:
+   - **ETH:** `3SAT` không giải được trong thời gian dưới hàm mũ $$2^{o(n)}$$.
+   - **SETH:** Khi $$k \to \infty$$, hằng số mũ cho `k-SAT` tiến sát $$2^n$$ (không tồn tại thuật toán $$O((2-\varepsilon)^n)$$ cho mọi $$k$$). Hai giả thuyết này mạnh hơn $$P \neq NP$$ nhưng giúp chứng minh nhiều chặn dưới sắc bén cực kỳ đẹp.
+2. **Độ phức tạp Mịn (Fine-Grained Complexity ngay trong lớp $$P$$)**:
+   Rút gọn từ SETH, `3SUM` hoặc `APSP` chứng minh các bài toán quen thuộc như **Khoảng cách soạn thảo (Edit Distance)** hay **Longest Common Subsequence (LCS)** khó có thể vượt qua bức tường $$O(n^{2-\varepsilon})$$ — giải thích vì sao 50 năm qua chưa ai tìm ra thuật toán $$O(n^{1.99})$$ cho Edit Distance!
+3. **Trường hợp xấu nhất vs. Trung bình & Năm thế giới của Impagliazzo**:
+   Mật mã học hiện đại (như RSA, mã hóa hậu lượng tử dựa trên mạng lưới LWE) không chỉ cần bài toán khó ở *trường hợp xấu nhất* mà phải khó ở **trường hợp trung bình** (sinh khóa ngẫu nhiên). Năm thế giới của Impagliazzo (`Algorithmica`, `Heuristica`, `Pessiland`, `Minicrypt`, `Cryptomania`) phân loại rõ vũ trụ toán học ta đang sống.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -62,6 +74,16 @@ Impagliazzo (1995) phác họa năm kịch bản có thể xảy ra cho thế gi
 ## Tính ngẫu nhiên và bài toán đếm
 
 Bên cạnh đó còn các nhánh lớn như lớp ngẫu nhiên **BPP** cùng khử ngẫu nhiên (*derandomization*) dưới cận dưới mạch (Arora–Barak), và lớp đếm **#P** gắn với định lý Valiant về *permanent*.
+
+### Khung giải thích (nên đọc chậm): Phân biệt nhanh 3 bậc giả thuyết độ phức tạp trên cùng một trục
+
+| Giả thuyết | Khẳng định cốt lõi | Hệ quả tiêu biểu |
+| :--- | :--- | :--- |
+| **1. $$P \neq NP$$** | `3SAT` $$\notin O(n^c)$$ với mọi hằng $$c$$ | Tách bài toán đa thức khỏi NP-complete, nhưng không cấm thuật toán $$2^{\sqrt{n}}$$ |
+| **2. ETH** | `3SAT` $$\notin 2^{o(n)}$$ | `Vertex Cover` không giải được trong $$2^{o(k)} n^{O(1)}$$; `k-CLIQUE` không giải được trong $$n^{o(k)}$$ |
+| **3. SETH** | `CNF-SAT` $$\notin O((2-\varepsilon)^n)$$ | **Edit Distance** và **LCS** không giải được trong $$O(n^{2-\varepsilon})$$ (chặn dưới ngay trong lớp $$P$$!) |
+
+Mối quan hệ kéo theo chặt chẽ là: $$\text{SETH} \implies \text{ETH} \implies P \neq NP$$. Nắm được chuỗi này giúp bạn đọc hiểu ngay phần "Hardness Assumptions" trong các bài báo STOC/FOCS/SODA ngày nay.
 
 ## Bài tập
 

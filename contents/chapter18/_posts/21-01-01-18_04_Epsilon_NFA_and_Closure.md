@@ -9,6 +9,8 @@ lang: en
 excerpt: "Chuyển trạng thái ε, định nghĩa bao đóng epsilon E(S), thuật toán tính bao đóng và điều kiện chấp nhận của ε-NFA."
 ---
 
+> **Câu chuyện mở đầu:** Nếu bạn đã thiết kế xong một NFA nhận số nguyên và một NFA nhận số thập phân, làm sao **nối hai cỗ máy đó lại với nhau** thành một máy duy nhất nhận "số nguyên HOẶC số thập phân" mà không phải vẽ lại từ đầu? Câu trả lời là thêm **mũi tên chuyển rỗng ($$\varepsilon$$-transition)** — cho phép máy nhảy sang trạng thái khác mà **không cần đọc bất kỳ ký tự nào**! Đó là **$$\varepsilon$$-NFA**, mảnh ghép hoàn hảo để chứng minh Định lý Kleene!
+
 <div class="textbook-epigraph" markdown="1">
 
 "ε-moves stitch machines together — Kleene’s algebra becomes automata."
@@ -26,6 +28,55 @@ excerpt: "Chuyển trạng thái ε, định nghĩa bao đóng epsilon E(S), thu
 - **Tính** $$E(S)$$ bằng thuật toán DFS hoặc BFS trên các cạnh ε.
 
 </div>
+
+## Bản đồ kiến thức nền: $$\varepsilon$$-NFA và Bao đóng Epsilon ($$\mathrm{ECLOSE}$$)
+
+### 1. Chuyển trạng thái Rỗng ($$\varepsilon$$-transition)
+- **Bản chất:** Mở rộng hàm chuyển lên $$\delta: Q \times (\Sigma \cup \{\varepsilon\}) \to \mathcal{P}(Q)$$. Một cung gắn nhãn $$\varepsilon$$ cho phép máy tự do "dịch chuyển tức thời" mà không tiêu thụ ký tự đầu vào nào.
+
+### 2. Bao đóng Epsilon $$\mathrm{ECLOSE}(q)$$
+- **Bản chất:** $$\mathrm{ECLOSE}(q)$$ là tập hợp **tất cả** các trạng thái có thể đi tới từ $$q$$ chỉ bằng **0, 1, 2, ... bước cung $$\varepsilon$$** (tính bằng DFS/BFS chỉ đi trên các cạnh $$\varepsilon$$!). Lưu ý: luôn có $$q \in \mathrm{ECLOSE}(q)$$ (0 bước)!
+
+### 3. Quy tắc "Kẹp Bánh mì ECLOSE" cho $$\hat{\delta}$$
+- **Bản chất:** Khởi đầu tại $$\mathrm{ECLOSE}(q_0)$$. Mỗi khi đọc 1 ký tự $$a$$ từ tập trạng thái $$S$$, ta đi theo mũi tên $$a$$ rồi **lập tức lấy $$\mathrm{ECLOSE}$$ lần nữa**:
+  $$
+  \hat{\delta}(S, a) = \mathrm{ECLOSE}\!\left(\bigcup_{p \in S} \delta(p, a)\right).
+  $$
+
+## Ví dụ tính tay cầm tay chỉ việc: Tính $$\mathrm{ECLOSE}$$ và 1 bước chuyển trên $$\varepsilon$$-NFA 4 trạng thái
+
+Xét $$\varepsilon$$-NFA có các cung: $$q_0 \xrightarrow{\varepsilon} q_1$$, $$q_1 \xrightarrow{\varepsilon} q_2$$, $$q_1 \xrightarrow{a} q_3$$, $$q_2 \xrightarrow{a} q_2$$, $$q_3 \xrightarrow{\varepsilon} q_2$$.
+1. **Tính $$\mathrm{ECLOSE}$$ cho từng trạng thái:**
+   - $$\mathrm{ECLOSE}(q_0) = \{q_0, q_1, q_2\}$$ (0 bước: $$q_0$$; 1 bước: $$q_1$$; 2 bước: $$q_2$$).
+   - $$\mathrm{ECLOSE}(q_1) = \{q_1, q_2\}$$.
+   - $$\mathrm{ECLOSE}(q_2) = \{q_2\}$$.
+   - $$\mathrm{ECLOSE}(q_3) = \{q_3, q_2\}$$.
+2. **Tính bước đọc ký tự `a` từ trạng thái khởi đầu $$q_0$$:**
+   - Tập khởi đầu sau bao đóng: $$S_0 = \mathrm{ECLOSE}(q_0) = \{q_0, q_1, q_2\}$$.
+   - Đi theo mũi tên `a` từ từng phần tử của $$S_0$$: $$\delta(q_0, a) = \emptyset,\; \delta(q_1, a) = \{q_3\},\; \delta(q_2, a) = \{q_2\} \implies$$ hợp lại là $$\{q_2, q_3\}$$.
+   - Lấy $$\mathrm{ECLOSE}$$ một lần nữa: $$\mathrm{ECLOSE}(\{q_2, q_3\}) = \{q_2\} \cup \{q_2, q_3\} = \{q_2, q_3\}$$!
+
+### Khung giải thích: 4 bước khử cung $$\varepsilon$$ an toàn (nên đọc chậm)
+
+#### Bước 1: Tính sẵn bảng $$\mathrm{ECLOSE}(q)$$ cho mọi trạng thái $$q$$
+Chỉ đi theo cung $$\varepsilon$$; nhớ rằng mọi trạng thái luôn chứa chính nó trong $$\mathrm{ECLOSE}$$.
+
+#### Bước 2: Không bao giờ quên bước $$\mathrm{ECLOSE}$$ ở trạng thái khởi đầu $$q_0$$
+Ngay cả chuỗi rỗng $$\varepsilon$$ cũng được chấp nhận nếu $$\mathrm{ECLOSE}(q_0) \cap F \neq \emptyset$$!
+
+#### Bước 3: Chuyển đổi $$\varepsilon$$-NFA $$\to$$ NFA thường trong 1 công thức
+Thay $$\delta'(q, a) = \mathrm{ECLOSE}(\delta(\mathrm{ECLOSE}(q), a))$$ và đặt $$F' = \{q : \mathrm{ECLOSE}(q) \cap F \neq \emptyset\}$$ — toàn bộ cung $$\varepsilon$$ biến mất sạch!
+
+#### Bước 4: Vai trò cầu nối cho Định lý Kleene
+Nhờ cung $$\varepsilon$$, ghép nối hai ô-tô-mát (Hợp, Nối tiếp, Sao Kleene) chỉ tốn 2 trạng thái mới và vài mũi tên $$\varepsilon$$ — tạo ra thuật toán Thompson thanh lịch ở bài 18.08!
+
+$$
+\varepsilon\text{-NFA}
+\;\xrightarrow{\;\mathrm{ECLOSE}(q)\;}\;
+\text{NFA thường}
+\;\xrightarrow{\;\text{Subset Construction}\;}\;
+\text{DFA tương đương}.
+$$
 
 ## Định nghĩa
 

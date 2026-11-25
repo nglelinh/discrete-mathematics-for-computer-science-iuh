@@ -9,6 +9,25 @@ lang: en
 excerpt: "Phân tích hai quy ước sắp xếp byte trong bộ nhớ (big-endian và little-endian), vai trò của Byte Order Mark trong UTF-16 và chuẩn network byte order trên mạng."
 ---
 
+Cùng một con số 32-bit `0x12345678` nằm gọn trong 4 ô RAM liên tiếp từ địa chỉ `1000` đến `1003` — nhưng nếu bạn chạy code trên máy chủ x86/ARM thông thường rồi gửi thẳng 4 byte đó qua mạng sang một bộ định tuyến chuẩn mạng (network byte order), hai máy sẽ đọc ra **hai con số khác nhau một trời một vực**!
+
+Hiện tượng đó gọi là **Endianness** (thứ tự byte: **Big-Endian** đặt byte có trọng số cao nhất trước, còn **Little-Endian** đặt byte thấp nhất trước). Hiểu rõ endianness giúp bạn giải mã đúng mọi gói tin TCP/IP, tệp ảnh/âm thanh nhị phân (WAV, PNG) và chuỗi UTF-16 có Byte Order Mark (BOM).
+
+**Mạch bài học:** Bản đồ kiến thức nền (Big-Endian vs. Little-Endian, Network Byte Order RFC 1700, BOM trong UTF-16) → Vì sao cả hai quy ước cùng tồn tại & ví dụ log của Lan → Ví dụ tính tay cầm tay chỉ việc: khi quên `htons()` biến cổng HTTP `80` thành `20480`! → Khung giải thích chậm: 3 nguyên tắc vàng tránh lỗi đảo byte khi lập trình mạng & đọc tệp nhị phân → Bài tập thực hành.
+
+## Bản đồ kiến thức nền: Thứ tự Byte (Endianness) trong Kiến trúc Máy tính và Mạng
+
+### 1. Big-Endian vs. Little-Endian — chỉ áp dụng cho thứ tự BYTE, không đảo BIT!
+Với số 32-bit `0x12345678` (gồm 4 byte `12`, `34`, `56`, `78`):
+- **Big-Endian:** lưu `12 34 56 78` (giống cách con người viết từ trái sang phải; dễ đọc hex dump).
+- **Little-Endian:** lưu `78 56 34 12` (chuẩn của CPU x86-64 và đa số ARM hiện đại; thuận lợi khi ép kiểu xuống số nguyên nhỏ hơn ở cùng địa chỉ gốc!).
+
+### 2. Network Byte Order = Big-Endian
+Để máy Little-Endian và Big-Endian nói chuyện được với nhau trên Internet, mọi giao thức mạng tiêu chuẩn (IP, TCP, UDP) thống nhất dùng **Big-Endian** — đó là lý do C/Python có các hàm chuyển đổi `htons()` / `htonl()` (*host-to-network*) và ký hiệu `>` trong `struct.pack(">I", ...)`.
+
+### 3. Endianness trong văn bản UTF-16 và vai trò của BOM (`0xFEFF`)
+Vì UTF-8 đọc từng byte một nên **không có vấn đề endianness**. Ngược lại, UTF-16 lưu từng đơn vị 2 byte nên có hai biến thể **UTF-16BE** và **UTF-16LE** — cần 2 byte mở đầu **BOM** (`FE FF` cho BE, `FF FE` cho LE) để báo cho trình đọc biết thứ tự byte.
+
 Ở bài Unicode, chúng ta đã tách hai lớp: Unicode cho biết ký tự ứng với mã số nào, còn encoding cho biết ghi mã số đó thành dãy byte ra sao. Câu hỏi tương tự cũng xuất hiện với **số nguyên** như timestamp, cổng mạng hay độ dài gói tin. Khi một số cần nhiều hơn một byte để lưu trữ, máy tính phải quy ước byte nào đứng trước và byte nào đứng sau trong bộ nhớ. Hai cách sắp xếp đó gọi là **big-endian** và **little-endian**, và khái niệm chung gọi là **endianness** (thứ tự byte).
 
 Ý cốt lõi cần giữ xuyên suốt bài này là: **cùng một giá trị số có thể được lưu trong RAM theo hai thứ tự byte khác nhau.** Nếu đọc nhầm quy ước — chẳng hạn dùng `struct.unpack(">I", ...)` cho một tệp ghi theo little-endian — một timestamp hoàn toàn hợp lệ có thể bị hiểu thành năm 2286 dù các byte trong tệp không hề thay đổi. Nắm vững quy ước này giúp tránh những lỗi khó phát hiện khi đọc tệp nhị phân, phân tích tiêu đề gói tin mạng hoặc sao chép chuỗi UTF-16 giữa các hệ thống khác nhau.
@@ -162,6 +181,37 @@ Trong Python, ký hiệu `<` trong `struct.unpack` biểu thị little-endian, `
 Khi đọc tệp nhị phân hoặc phân tích bộ đệm dữ liệu, luôn tra cứu tài liệu đặc tả để biết **byte nào được ghi trước**, thay vì suy đoán theo endianness của máy đang chạy.
 
 ---
+
+
+## Ví dụ tính tay cầm tay chỉ việc: Khi quên `htons()` biến cổng HTTP `80` thành `20480`!
+
+Giả sử bạn viết một chương trình socket trên máy tính x86 (**Little-Endian**) và gửi cổng HTTP **$$80$$** (kiểu 16-bit không dấu `uint16`) mà quên chuyển sang Network Byte Order (**Big-Endian**):
+1. **Đổi $$80$$ sang 2 byte hex:** $$80 = 5 \times 16 + 0 = \texttt{0x0050}$$ (byte cao = `0x00`, byte thấp = `0x50`).
+2. **Máy Little-Endian ghi ra RAM theo thứ tự:** `50 00`.
+3. **Router / máy nhận đọc theo chuẩn mạng Big-Endian (`50` là byte cao, `00` là byte thấp):**
+   $$
+   \texttt{0x5000} = 5 \times 16^3 = 5 \times 4096 = \mathbf{20{,}480}!
+   $$
+Chỉ vì quên đúng 1 lời gọi `htons(80)` (hoặc `struct.pack(">H", 80)`), gói tin của bạn đã lao thẳng vào cổng **20480** thay vì cổng **80**!
+
+### Khung giải thích: 3 nguyên tắc vàng để không bao giờ dính lỗi Endianness (nên đọc chậm)
+
+#### Bước 1: Không bao giờ ép con trỏ struct C gửi thẳng ra mạng hay ghi thẳng ra đĩa
+Luôn tuần tự hóa tường minh từng trường số nguyên với thứ tự byte quy định rõ (ví dụ `struct.pack(">I", ts)` cho Big-Endian hoặc `struct.pack("<I", ts)` cho Little-Endian trong Python).
+
+#### Bước 2: Dùng phép dịch bit độc lập kiến trúc khi tự viết parser
+Nếu bạn đọc 4 byte `b0, b1, b2, b3` theo chuẩn Big-Endian, công thức `(b0 << 24) | (b1 << 16) | (b2 << 8) | b3` cho kết quả **giống hệt nhau trên mọi CPU** (dù máy chạy x86 Little-Endian hay mainframe Big-Endian)!
+
+#### Bước 3: Kiểm tra đặc tả định dạng tệp trước khi giải mã
+Gói tin TCP/IP, PNG, Java bytecode dùng **Big-Endian**; tệp WAV (PCM), ELF x86, Windows BMP và bộ nhớ x86 dùng **Little-Endian**; còn văn bản web luôn ưu tiên **UTF-8** để triệt tiêu hoàn toàn bài toán endianness!
+
+$$
+\text{Số } \texttt{0x0050}\ (80)
+\;\xrightarrow{\text{Little-Endian RAM}}\;
+\texttt{50 00}
+\;\xrightarrow{\text{Đọc nhầm Big-Endian}}\;
+\texttt{0x5000}\ (20{,}480!).
+$$
 
 ## Bài tập thực hành
 

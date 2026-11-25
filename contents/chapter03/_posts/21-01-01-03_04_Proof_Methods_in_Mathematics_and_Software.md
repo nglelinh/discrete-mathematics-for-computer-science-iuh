@@ -10,9 +10,21 @@ lang: en
 excerpt: "Mở rộng góc nhìn về các phương pháp chứng minh trong toán học và kỹ thuật phần mềm: từ Euclid, bất biến vòng lặp, Hoare logic đến chứng minh mật mã, đếm hai cách và chứng minh bằng thuật toán."
 ---
 
-Ở ba mục trước, chúng ta đã học chứng minh trực tiếp, phản chứng và quy nạp toán học. Mục này mở rộng bức tranh: trong khoa học máy tính, câu hỏi đặt ra không chỉ dừng ở việc chương trình "đã chạy được chưa", mà còn là "chương trình có luôn đúng không", "nó sai trong trường hợp nào" và "ta căn cứ vào đâu để khẳng định điều đó". Từ *Elements* của Euclid đến bất biến vòng lặp, Hoare logic, chứng minh giao thức mật mã, cũng như mối quan hệ giữa kiểm thử và chứng minh hình thức, các phương pháp chứng minh vẫn giữ vai trò nền tảng trong kỹ thuật phần mềm hiện đại.
+Từ bộ *Cơ sở (Elements)* của Euclid hơn 2.300 năm trước đến bộ kiểm chứng phần mềm hàng không và giao thức TLS bảo vệ tài khoản ngân hàng của bạn hôm nay, nghệ thuật chứng minh toán học chưa bao giờ đứng yên trong tháp ngà. Trong kỹ nghệ phần mềm hiện đại, Edsger Dijkstra từng nói câu bất hủ: *"Kiểm thử chỉ có thể cho thấy sự hiện diện của lỗi, không bao giờ chứng minh được sự vắng mặt của lỗi."*
 
----
+## Bản đồ kiến thức nền: Bốn cầu nối từ Chứng minh Toán học sang Kỹ nghệ Phần mềm & Mật mã
+
+1. **Hệ tiên đề Euclid → Đặc tả hình thức (Formal Specification)**:
+   Mọi chứng minh đều bắt đầu từ các tiên đề không cần chứng minh và xây chồng định lý lên nhau—giống hệt cách đặc tả giao thức mạng hay bộ tập lệnh CPU định nghĩa tập bất biến nền tảng.
+
+2. **Bộ ba Hoare $\{P\}\; C\; \{Q\}$ & Bất biến vòng lặp**:
+   Tính đúng đắn từng phần của đoạn mã $C$ được phát biểu bằng tiền điều kiện $P$ và hậu điều kiện $Q$: nếu $P$ đúng trước khi chạy $C$ và $C$ kết thúc, thì $Q$ chắc chắn đúng. Kết hợp thêm một **hàm biến thể giảm ngặt** (termination variant) cho ta tính đúng đắn toàn phần!
+
+3. **Chứng minh quy dẫn trong Mật mã học (Security Reduction)**:
+   Làm sao chứng minh một hệ mật mới an toàn? Nhà mật mã dùng chính chứng minh phản đảo/quy dẫn: *"Nếu kẻ tấn công phá được hệ mật X trong thời gian đa thức, ta sẽ dùng kẻ tấn công đó làm hàm con để giải bài toán phân tích thừa số nguyên tố RSA!"*
+
+4. **Kiểm thử (Testing) + Chứng minh hình thức (Formal Methods)**:
+   Trong thực tế, hai lớp này bổ trợ nhau: Unit/Fuzz testing tìm nhanh lỗi phổ biến với chi phí thấp, còn chứng minh hình thức bảo vệ tuyệt đối những lõi siêu trọng yếu (nhân hệ điều hành, hợp đồng thông minh, mật mã, thiết bị y tế).
 
 ## Phần 1: Euclid và chuẩn mực của lập luận suy diễn
 
@@ -80,6 +92,22 @@ Chứng minh tính đúng đắn chương trình không chỉ mang tính lý thu
 
 <p class="textbook-figure-caption" data-figure="3.17">Từ bất biến vòng lặp đến Hoare logic — đồ thị luồng điều khiển nối lập trình với suy luận toán học thông qua tiền điều kiện và hậu điều kiện.</p>
 ---
+
+### Khung giải thích (nên đọc chậm): Chứng minh tính đúng đắn của thuật toán tìm `max` bằng Bất biến vòng lặp (Hoare Logic)
+
+Xét hàm tìm giá trị lớn nhất trong mảng không rỗng `A[0..n-1]`:
+```python
+m = A[0]
+for i in range(1, n):
+    if A[i] > m:
+        m = A[i]
+return m
+```
+Ta chọn **Bất biến vòng lặp $I(i)$**: *"Sau khi xử lý đến chỉ số $i - 1$, biến `m` luôn bằng $\max(A[0], A[1], \dots, A[i-1])$."*
+
+1. **Khởi tạo (Initialization, $i = 1$)**: Trước vòng lặp, `m = A[0] = max(A[0..0])` → $I(1)$ **Đúng**.
+2. **Bảo toàn (Maintenance)**: Giả sử đầu lượt lặp $i$, $I(i)$ đúng tức `m = max(A[0..i-1])`. Sau lệnh `if A[i] > m: m = A[i]`, giá trị mới của `m` là $\max(\max(A[0..i-1]), A[i]) = \max(A[0..i])$, nên $I(i+1)$ **Đúng**.
+3. **Kết thúc (Termination)**: Vòng lặp tăng $i$ từ $1$ đến $n$ (biến thể $n - i$ giảm ngặt về $0$, chắc chắn dừng!). Khi dừng ở $i = n$, bất biến $I(n)$ cho ngay **`m = max(A[0..n-1])`** — chứng minh đúng tuyệt đối cho mọi mảng kích thước $n \ge 1$!
 
 ## Phần 3: Chứng minh trong mật mã học
 

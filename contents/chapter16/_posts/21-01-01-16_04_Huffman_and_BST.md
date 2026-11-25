@@ -9,6 +9,8 @@ lang: en
 excerpt: "Mã Huffman không tiền tố (prefix-free) và thuật toán tham lam gộp tần suất; cây tìm kiếm nhị phân (BST), tìm kiếm/chèn, duyệt inorder tăng dần; so sánh với AVL và bảng băm."
 ---
 
+> **Câu chuyện mở đầu:** Nếu bạn nén một văn bản tiếng Việt bằng mã ASCII cố định (8 bit cho mỗi chữ cái), chữ `a` xuất hiện hàng nghìn lần lại tốn y hệt số bit như chữ `z` hiếm gặp! Năm 1951, khi đang là sinh viên cao học tại MIT làm bài tập thay cho kỳ thi cuối kỳ, **David Huffman** đã nghĩ ra thuật toán xây cây từ dưới lên tạo ra **bộ mã tiền tố tối ưu tuyệt đối** — nền tảng của ZIP, JPEG và MP3 ngày nay! Song hành cùng nó là **Cây Tìm kiếm Nhị phân (BST)**, cấu trúc dữ liệu giúp tìm kiếm, chèn và xóa trong $$O(\log n)$$!
+
 <div class="textbook-epigraph" markdown="1">
 
 "Short codes for frequent symbols — trees make compression optimal under a simple model."
@@ -45,6 +47,52 @@ Hai ứng dụng kinh điển của cây nhị phân trong khoa học máy tính
 </div>
 
 Video dài khoảng 3 phút 7 giây: đếm tần suất ký tự trong chuỗi ABRACADABRA (5, 2, 2, 1, 1 — cùng bộ tần suất với Ví dụ 1), gộp dần hai nút nhẹ nhất bằng hàng đợi ưu tiên, gán bit 0/1 cho nhánh trái/phải để nén xuống 23 bit thay vì 33 bit, minh họa giải mã bằng con trỏ đi trên cây nhờ tính chất prefix-free, ví dụ $$A = 0, B = 01, C = 1$$ cho thấy mã không prefix-free gây nhập nhằng, bài luyện tập MISSISSIPPI (21 bit so với 22 bit của mã độ dài cố định), và giải thích vì sao cách gộp tham lam này tối ưu. Video về các thứ tự duyệt cây nằm ở Mục 16.2.
+
+## Bản đồ kiến thức nền: Mã hóa Huffman và Cây Tìm kiếm Nhị phân (BST)
+
+### 1. Mã Tiền tố (Prefix Code) & Thuật toán Tham lam Huffman
+- **Mã tiền tố:** Không có mã của ký tự nào là phần đầu (prefix) của mã ký tự khác $$\iff$$ mọi ký tự đều nằm ở **nút lá** của một cây nhị phân (giải mã mượt mà không cần dấu phân cách!).
+- **Thuật toán Huffman:** Lặp lại thao tác dùng Min-Heap lấy ra **hai nút có tần suất nhỏ nhất**, gộp thành nút cha có trọng số bằng tổng hai con, cho đến khi còn đúng 1 gốc — chứng minh được là đạt **độ dài mã trung bình nhỏ nhất có thể** (sát cận entropy Shannon $$H = -\sum p_i \log_2 p_i$$)!
+
+### 2. Cây Tìm kiếm Nhị phân (BST) & Cân bằng Cây
+- **Bất biến BST:** Tại mọi nút $$u$$, **toàn bộ** cây con trái đều có khóa $$< u$$ và **toàn bộ** cây con phải đều có khóa $$> u$$ (nhờ đó duyệt **Inorder** luôn ra dãy tăng dần!).
+- **Cảnh báo suy biến:** Nếu chèn dãy đã sắp xếp $$1, 2, 3, \dots, n$$ vào BST thường, cây biến thành danh sách liên kết cao $$n$$ (tìm kiếm tụt xuống $$O(n)$$) — động lực ra đời các cây tự cân bằng **AVL, Red–Black và B-tree**!
+
+## Ví dụ tính tay cầm tay chỉ việc: Dựng cây mã Huffman cho 4 ký tự
+
+Cho 4 ký tự với xác suất xuất hiện: **A: $$0.45$$**, **B: $$0.30$$**, **C: $$0.15$$**, **D: $$0.10$$**.
+1. **Bước 1:** Hai tần suất nhỏ nhất là `D(0.10)` và `C(0.15)` $$\to$$ gộp thành nút `(CD: 0.25)`. Hàng đợi còn: `{A: 0.45, B: 0.30, CD: 0.25}`.
+2. **Bước 2:** Hai tần suất nhỏ nhất là `CD(0.25)` và `B(0.30)` $$\to$$ gộp thành `(B+CD: 0.55)`. Hàng đợi còn: `{A: 0.45, B+CD: 0.55}`.
+3. **Bước 3:** Gộp hai nút cuối thành gốc `(1.00)`. Gán cạnh trái `0`, cạnh phải `1`:
+   - `A` $$\to$$ `0` (1 bit)
+   - `B` $$\to$$ `10` (2 bit)
+   - `C` $$\to$$ `110` (3 bit)
+   - `D` $$\to$$ `111` (3 bit)
+4. **So sánh hiệu quả nén:**
+   - Mã cố định: tốn **$$2.00$$ bit/ký tự**.
+   - Mã Huffman: $$0.45(1) + 0.30(2) + 0.15(3) + 0.10(3) = 0.45 + 0.60 + 0.45 + 0.30 = \mathbf{1.80}$$ **bit/ký tự** (gần sát giới hạn lý thuyết entropy Shannon $$H \approx 1.78$$ bit!).
+
+### Khung giải thích: 4 bước làm chủ Huffman và thao tác Xóa nút trên BST (nên đọc chậm)
+
+#### Bước 1: Luôn dùng Min-Heap cho Huffman ($$O(k\log k)$$)
+Mỗi bước gộp giảm số cây đi 1, nên với $$k$$ ký tự cần đúng $$k - 1$$ lần gộp; ký tự ít xuất hiện nhất luôn bị đẩy xuống tầng sâu nhất (mã dài nhất).
+
+#### Bước 2: Kiểm tra bất biến BST trên TOÀN BỘ cây con (không chỉ con trực tiếp!)
+Một lỗi kinh điển là chỉ kiểm tra `left < root < right` — phải kiểm tra `max(cây trái) < root < min(cây phải)`!
+
+#### Bước 3: Xử lý 3 trường hợp khi Xóa nút trên BST
+- Nút lá: xóa thẳng.
+- Có 1 con: nối thẳng cha với con duy nhất đó.
+- Có 2 con: thay khóa nút đó bằng **phần tử kế tiếp Inorder** (nút nhỏ nhất của cây con phải — vốn chỉ có tối đa 1 con phải!), rồi xóa nút kế tiếp ấy!
+
+#### Bước 4: Giữ cây cân bằng để khóa chặt hiệu năng $$O(\log n)$$
+Tốc độ mọi thao tác BST đều là $$O(h)$$; các cơ chế xoay cây (AVL, Red–Black) bảo đảm $$h = O(\log n)$$ trong mọi kịch bản đầu vào!
+
+$$
+\text{Min-Heap tần suất} \xrightarrow{\text{Gộp 2 nhỏ nhất}} \text{Mã Huffman tối ưu}
+\qquad \Big\vert \qquad
+\text{Bất biến BST} \xrightarrow{\text{Inorder}} \text{Dãy tăng dần } O(h).
+$$
 
 ## Mã hóa Huffman
 

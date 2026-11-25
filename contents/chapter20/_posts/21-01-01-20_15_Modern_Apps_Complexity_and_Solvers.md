@@ -20,6 +20,17 @@ Bài ghi chú ứng dụng song ngữ. Bài này **không** thay thế các nộ
 
 ## English
 
+Modern computational complexity presents a striking paradox: `SAT` is the canonical NP-complete problem, yet industrial **CDCL SAT solvers** routinely solve instances with millions of variables for hardware verification and computer-assisted math proofs—while neural networks trained to solve NP-hard problems often struggle with out-of-distribution (OOD) size generalization.
+
+### Background Knowledge Map: Three Pillars of Modern Solvers & Complexity
+
+1. **Conflict-Driven Clause Learning (CDCL)**:
+   Enhances backtracking with unit propagation, conflict analysis that learns new pruning clauses, non-chronological backjumping, and restarts to exploit real-world instance structure.
+2. **Certifying Solvers & DRAT Proofs**:
+   When a solver returns `UNSAT`, it emits a machine-checkable proof trace (DRAT) verified by an independent trusted checker—bridging complexity theory with formal mathematics.
+3. **Neural-Guided Solvers vs. OOD Limits**:
+   Rather than replacing exact search end-to-end, 2022–2026 systems increasingly pair learned heuristics with exact branch-and-bound or SAT/MIP engines to preserve correctness and OOD scaling.
+
 SAT is NP-complete (this chapter). That theorem does **not** say every instance is hard. Two 2022–2024 artifacts make the distinction teachable.
 
 1. **Industrial SAT.** Kissat 4.0 took all three main-track golds at SAT Competition 2024 ([medals](https://cca.informatik.uni-freiburg.de/sat24medals/); Biere et al., Univ. Helsinki B-2024-1, pp. 8–10). CDCL regularly solves verification CNFs with millions of variables. Worst-case completeness and median-case practice are different sentences — the course already said so; the medals are a dated exhibit.
@@ -34,7 +45,25 @@ Optional synthesis with 20.13 (fine-grained / average-case): competition SAT and
 
 **Questions.** (1) State Cook–Levin and the SAT-2024 medal result as two *non-contradictory* sentences. (2) If a GNN solves 16-node CLRS BFS at 99%, what claim is still forbidden?
 
+### Deep-Dive Explanation (Read Slowly): One Concrete Clause-Learning Step in CDCL
+
+Consider $$C_1 = (\neg x_1 \lor x_2)$$, $$C_2 = (\neg x_1 \lor \neg x_2 \lor x_3)$$, and $$C_3 = (\neg x_1 \lor \neg x_3)$$:
+1. The solver branches on $$x_1 = \text{True}$$.
+2. Unit propagation forces $$x_2 = \text{True}$$ (from $$C_1$$), then $$x_3 = \text{True}$$ (from $$C_2$$), which falsifies $$C_3$$ (**conflict!**).
+3. Conflict analysis deduces the learned unit clause $$C_{\text{learned}} = (\neg x_1)$$ and adds it permanently to the clause database—pruning the entire $$x_1 = \text{True}$$ half of the search tree once and for all.
+
 ## Tiếng Việt
+
+Một nghịch lý thú vị của khoa học máy tính hiện đại: `SAT` là bài toán NP-complete kinh điển khó nhất trong lớp $$NP$$, nhưng các bộ giải **CDCL SAT solver** ngày nay lại giải gọn gàng các công thức có hàng triệu biến trong kiểm chứng chip Intel/AMD, chứng minh định lý toán học (như bài toán bộ ba Pythagore Boolean) và giải bài toán lập lịch công nghiệp. Trong khi đó, các mạng nơ-ron học giải bài toán NP-hard (như TSP hay SAT) thường gặp rào cản khái quát ngoài phân phối (OOD) khi kích thước đồ thị tăng lên.
+
+### Bản đồ kiến thức nền: Ba trụ cột của Độ phức tạp Hiện đại & Bộ giải Thực tế
+
+1. **CDCL SAT Solver (Conflict-Driven Clause Learning)**:
+   Thay vì quay lui mù quáng (DPLL), CDCL phân tích nguyên nhân mâu thuẫn để **học thêm mệnh đề mới (conflict clause)**, nhảy lùi không tuần tự (*backjumping*) và khởi động lại thông minh — khai thác triệt để cấu trúc ẩn của bài toán thực tế.
+2. **Chứng chỉ không thỏa được (DRAT Proofs)**:
+   Khi SAT solver báo `UNSAT` (như chứng minh một định lý toán học hay xác nhận thiết kế chip không có lỗi), nó xuất ra một tệp chứng minh DRAT có thể kiểm chứng độc lập bằng trình kiểm tra cực nhỏ — bảo đảm độ tin cậy tuyệt đối.
+3. **Học máy kết hợp Bộ giải (Neural-Guided Search & OOD Limits)**:
+   Mạng nơ-ron khó thay thế hoàn toàn bộ giải chính xác ở kích thước lớn ngoài tập huấn luyện (OOD), nên hướng đi hiệu quả giai đoạn 2022–2026 là dùng mạng nơ-ron làm *heuristic chọn nhánh* bên trong khung tìm kiếm chính xác (branch-and-bound / CDCL).
 
 SAT là bài toán NP-complete (như đã chứng minh trong chương này), nhưng định lý đó **không** khẳng định rằng mọi thể hiện đầu vào đều khó giải. Hai dẫn chứng thực nghiệm giai đoạn 2022–2024 giúp phân biệt rõ điểm này:
 
@@ -44,6 +73,17 @@ SAT là bài toán NP-complete (như đã chứng minh trong chương này), nh�
 Liên hệ với Bài 20.13 (độ phức tạp mịn và trường hợp trung bình): khoảng cách thực tế ở các bộ giải SAT và hiện tượng sụt giảm ngoài phân phối (OOD) trên CLRS chính là *lý do* các lý thuyết phân tích sâu hơn này ra đời. Ghi chú này không bổ sung thêm phép rút gọn mới.
 
 **Câu hỏi.** (1) Hãy phát biểu định lý Cook–Levin và kết quả huy chương của Kissat tại SAT Competition 2024 thành hai câu *không mâu thuẫn* với nhau. (2) Nếu một GNN đạt độ chính xác 99% cho bài toán BFS trên đồ thị 16 đỉnh của CLRS, nhận định nào về mặt lý thuyết thuật toán vẫn không được phép đưa ra?
+
+### Khung giải thích (nên đọc chậm): Minh họa 1 bước "học mệnh đề từ mâu thuẫn" (Clause Learning) trong CDCL
+
+Xét công thức nhỏ có 3 mệnh đề:
+$$C_1 = (\neg x_1 \lor x_2), \qquad C_2 = (\neg x_1 \lor \neg x_2 \lor x_3), \qquad C_3 = (\neg x_1 \lor \neg x_3).$$
+1. Giả sử bộ giải quyết định thử nhánh $$x_1 = \text{True}$$.
+2. Lan truyền đơn vị (Unit Propagation):
+   - Từ $$C_1$$ suy bắt buộc $$x_2 = \text{True}$$.
+   - Từ $$C_2$$ (với $$x_1=T, x_2=T$$) suy bắt buộc $$x_3 = \text{True}$$.
+   - Thế vào $$C_3 = (\neg x_1 \lor \neg x_3)$$ → **MÂU THUẪN!**
+3. **Học mệnh đề mới:** Thay vì chỉ lùi lại thử nhánh khác rồi sau này lại vô tình đặt $$x_1 = \text{True}$$ lần nữa ở một nhánh khác, CDCL rút ra ngay mệnh đề học được $$C_{\text{learned}} = (\neg x_1)$$ và bổ sung vào công thức! Từ giây phút đó, toàn bộ nửa không gian tìm kiếm có $$x_1 = \text{True}$$ bị cắt tỉa vĩnh viễn!
 
 ## Video tham khảo
 

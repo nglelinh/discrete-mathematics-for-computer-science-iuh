@@ -9,6 +9,8 @@ lang: en
 excerpt: "Hàm băm mật mã, PRNG/LCG, CRT tăng tốc RSA, ECC và mật mã hậu lượng tử — các ứng dụng thực tế của số học modulo và số nguyên tố."
 ---
 
+> **Câu chuyện mở đầu:** Lý thuyết số không chỉ sống trong phòng mật mã! Ngay khi bạn quét mã vạch một cuốn sách ở thư viện (ISBN), gọi `random()` trong Python, hay lưu mật khẩu người dùng bằng hàm băm SHA-256, bạn đang trực tiếp hưởng lợi từ những đẳng thức đồng dư tinh gọn của số học modulo!
+
 <div class="textbook-epigraph" markdown="1">
 
 "Don't invent your own crypto — use reviewed standards."
@@ -38,6 +40,56 @@ Các bài trước đã giới thiệu những công cụ số học cơ bản c
 **Từ khóa**: hash, SHA-256, PRNG, LCG, CRT-RSA, ECC, post-quantum.
 
 </div>
+
+## Bản đồ kiến thức nền: Ba ứng dụng Lý thuyết Số phổ biến nhất trong Kỹ thuật Phần mềm
+
+### 1. Hàm băm (Hashing) & Hàm băm Mật mã (SHA-256)
+- **Băm cấu trúc dữ liệu:** $$h(k) = k \bmod m$$ (chọn $$m$$ là số nguyên tố để tránh đụng độ do ước chung với mẫu dữ liệu!).
+- **Băm mật mã:** Phải thỏa mãn 3 tính chất sắt đá: **một chiều** (không đảo ngược được mật khẩu từ mã băm), **kháng tiền ảnh thứ hai**, và **kháng đụng độ** (hiệu ứng tuyết lở: đổi 1 bit đầu vào làm đảo lộn ~50% bit đầu ra!).
+
+### 2. Bộ sinh Số giả ngẫu nhiên Đồng dư Tuyến tính (LCG)
+- **Bản chất:** Công thức truy hồi siêu nhẹ $$x_{n+1} = (a x_n + c) \bmod m$$. Theo **Định lý Hull–Dobell**, LCG đạt chu kỳ đầy đủ tối đa $$m$$ khi và chỉ khi: (1) $$\gcd(c, m) = 1$$, (2) $$a - 1$$ chia hết cho mọi ước nguyên tố của $$m$$, và (3) nếu $$4 \mid m$$ thì $$4 \mid (a-1)$$. *(Lưu ý: LCG tốt cho mô phỏng đơn giản nhưng TUYỆT ĐỐI không dùng cho mật mã vì dễ đoán ngược!)*
+
+### 3. Chữ số Kiểm soát (Check Digits: ISBN, EAN, Thẻ tín dụng Luhn)
+- **Bản chất:** Gắn thêm một chữ số kiểm tra thỏa mãn phương trình đồng dư có trọng số (ví dụ modulo 11 cho ISBN-10, modulo 10 cho ISBN-13/Luhn) để phát hiện **100% lỗi gõ sai 1 chữ số** và **lỗi đảo chỗ hai chữ số kề nhau**!
+
+## Ví dụ tính tay cầm tay chỉ việc
+
+### Ví dụ 1: Kiểm tra bộ sinh LCG $$x_{n+1} = (5x_n + 3) \bmod 8$$ với hạt giống $$x_0 = 1$$
+Kiểm tra điều kiện Hull–Dobell ($$m = 8, a = 5, c = 3$$): $$\gcd(3, 8) = 1$$ ✓; $$a - 1 = 4$$ chia hết cho ước nguyên tố $$2$$ và chia hết cho $$4$$ ✓ $$\implies$$ **chắc chắn đạt chu kỳ đủ 8**!
+Chạy tay từng bước từ $$x_0 = 1$$:
+$$
+1 \to 0 \to 3 \to 2 \to 5 \to 4 \to 7 \to 6 \to 1 \dots
+$$
+Đúng cả 8 giá trị $$\{0,1,2,3,4,5,6,7\}$$ xuất hiện trước khi lặp lại!
+
+### Ví dụ 2: Phát hiện lỗi gõ nhầm bằng mã kiểm tra ISBN-10 (modulo 11)
+Quy tắc ISBN-10 hợp lệ: $$\sum_{i=1}^{10} i \cdot d_i \equiv 0 \pmod{11}$$.
+Giả sử một mã hợp lệ bị **đảo chỗ hai chữ số kề nhau** $$d_k$$ và $$d_{k+1}$$ ($$d_k \neq d_{k+1}$$). Độ lệch tổng có trọng số thay đổi đúng một lượng:
+$$
+\Delta = \bigl(k\,d_{k+1} + (k+1)d_k\bigr) - \bigl(k\,d_k + (k+1)d_{k+1}\bigr) = d_k - d_{k+1}.
+$$
+Vì $$d_k \neq d_{k+1}$$ nằm trong $$\{0,\dots,10\}$$ nên $$1 \le \lvert d_k - d_{k+1}\rvert \le 10$$ — **không bao giờ chia hết cho số nguyên tố 11**! Do đó ISBN-10 phát hiện 100% mọi lỗi đảo chỗ hai chữ số liền kề!
+
+### Khung giải thích: 4 nguyên tắc chọn công cụ Lý thuyết Số trong Phần mềm (nên đọc chậm)
+
+#### Bước 1: Dùng số nguyên tố làm kích thước bảng băm và modulo kiểm tra
+Số nguyên tố triệt tiêu mọi ước chung bất ngờ (như lý do ISBN-10 chọn $$p = 11$$ thay vì $$10$$!).
+
+#### Bước 2: Phân biệt rạch ròi PRNG thông thường với CSPRNG mật mã
+LCG hay Mersenne Twister tuyệt vời cho mô phỏng Monte Carlo và game, nhưng sinh khóa/token bảo mật bắt buộc phải dùng CSPRNG (như `secrets` trong Python hoặc `/dev/urandom`).
+
+#### Bước 3: Hiểu Nghịch lý Sinh nhật (Birthday Paradox) khi đánh giá độ dài mã băm
+Một hàm băm $$b$$-bit chỉ cần khoảng $$2^{b/2}$$ phép thử để tìm thấy đụng độ (đó là lý do MD5 128-bit và SHA-1 160-bit bị khai tử, phải chuyển sang SHA-256 có độ an toàn đụng độ $$2^{128}$$!).
+
+#### Bước 4: Luôn thêm Salt khi băm mật khẩu
+Băm trần `SHA256(password)` dễ bị tra ngược bằng Rainbow Table; cộng thêm chuỗi ngẫu nhiên riêng cho từng tài khoản (**salt**) và dùng hàm băm chậm (Argon2/bcrypt) mới an toàn thực sự!
+
+$$
+\text{Số học modulo }\mathbb{Z}_m
+\;\longrightarrow\;
+\text{Bảng băm }\&\text{ SHA-256} \;\vert\; \text{LCG (Hull–Dobell)} \;\vert\; \text{Mã kiểm tra ISBN/Luhn}.
+$$
 
 ## Hàm băm mật mã
 

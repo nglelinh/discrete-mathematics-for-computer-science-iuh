@@ -10,6 +10,21 @@ lang: en
 excerpt: "Bài đọc mở rộng về ứng dụng của phép đếm: từ bài toán chia tiền cược của Pascal và Fermat đến bảo mật mật khẩu, phân tích Big-O, nghịch lý sinh nhật và kiểm thử tổ hợp."
 ---
 
+Mùa hè năm 1654, một quý tộc mê bài bạc người Pháp tên Chevalier de Méré gửi thư hỏi Blaise Pascal một thắc mắc tưởng như vụn vặt: *nếu ván bài bị gián đoạn giữa chừng, nên chia tiền cược thế nào cho công bằng?* Cuộc trao đổi thư từ giữa Pascal và Pierre de Fermat đã khai sinh ra lý thuyết xác suất — và gần 400 năm sau, chính tư duy đếm không gian khả năng ấy lại là bức tường phòng thủ đầu tiên bảo vệ mật khẩu ngân hàng, mã phiên đăng nhập (`session_id`) và thuật toán Big-O của chúng ta!
+
+**Mạch bài học:** Bản đồ kiến thức nền (không gian mẫu rời rạc, entropy mật khẩu theo bit, phân tích chi phí thuật toán) → Pascal–Fermat 1654 → An ninh mạng (mật khẩu, PIN, Session ID, CSRF) & Big-O → Ví dụ tính tay cầm tay chỉ việc: tính entropy (bit) và thời gian brute-force của mật khẩu 8 ký tự thường vs. passphrase 4 từ → Khung giải thích chậm: 3 bước chuyển bài toán an ninh thành phép đếm không gian khóa → Bài tập.
+
+## Bản đồ kiến thức nền: Phép đếm kết nối Xác suất, Mật mã học và Thuật toán như thế nào?
+
+### 1. Không gian khả năng & Xác suất cổ điển
+Khi mọi kết quả sơ cấp đồng khả năng, xác suất là tỷ số của hai phép đếm: $$P(E) = \vert E\vert / \vert\Omega\vert$$. Trực giác con người rất dễ đánh giá sai tích lũy xác suất — chỉ có phép đếm chính xác mới trả lời đúng.
+
+### 2. Entropy mật khẩu — đo độ mạnh bằng số bit $$H = \log_2(\vert\mathcal{K}\vert)$$
+Nếu không gian khóa có $$\vert\mathcal{K}\vert = N^L$$ chuỗi đều nhau (bảng chữ cái cỡ $$N$$, độ dài $$L$$), thì **entropy** bằng $$H = L \log_2 N$$ bit. Mỗi khi tăng thêm **1 bit entropy**, thời gian dò vét cạn (brute-force) của kẻ tấn công **tăng gấp đôi**!
+
+### 3. Đếm số bước cơ bản $$\to$$ Độ phức tạp thuật toán Big-O
+Đếm số lần lặp lồng nhau của thuật toán sắp xếp hay tìm kiếm giúp dự báo chính xác chương trình có "chết đứng" hay không khi dữ liệu phình từ $$n = 10^3$$ lên $$n = 10^6$$.
+
 Ở các mục trước, chúng ta đã xây dựng bộ công cụ tổ hợp cơ bản. Mục bổ sung này trình bày ứng dụng của phép đếm từ nguồn gốc lịch sử đến an ninh mạng, kiểm thử phần mềm và phân tích độ phức tạp thuật toán.
 
 Động lực ban đầu của lý thuyết xác suất và phép đếm xuất phát từ các bài toán cờ bạc thế kỷ XVII. Từ nền tảng đó, tư duy đếm khả năng đã trở thành công cụ thiết yếu để đánh giá độ mạnh mật khẩu, ước lượng xác suất va chạm mã định danh và thiết kế bộ ca kiểm thử hiệu quả. Phép đếm không chỉ trả lời câu hỏi "có bao nhiêu cách", mà còn giúp định lượng quy mô thực sự của một bài toán.
@@ -294,6 +309,37 @@ Không phải lúc nào ta cũng cần hoặc có thể tính ra con số chính
 Từ bài toán chia tiền cược của Pascal và Fermat đến bẻ khóa mật khẩu, phân tích Big-O, nghịch lý sinh nhật và kiểm thử tổ hợp, phép đếm luôn xuất hiện ở những nơi cần định lượng quy mô của khả năng. Một hệ thống không chỉ gặp sự cố vì lỗi logic, mà nhiều khi còn thất bại vì không ai tính trước có bao nhiêu trường hợp có thể xảy ra.
 
 ---
+
+
+## Ví dụ tính tay cầm tay chỉ việc: So sánh mật khẩu 8 chữ thường vs. Passphrase 4 từ (XKCD)
+
+Giả sử kẻ tấn công dùng dàn GPU thử được $$10^{10}$$ mật khẩu mỗi giây (10 tỷ lần/giây):
+1. **Mật khẩu ngẫu nhiên 8 chữ cái thường** ($$N = 26,\; L = 8$$):
+   - Kích thước không gian khóa: $$26^8 \approx 2.09 \times 10^{11}$$ tổ hợp.
+   - Entropy: $$H = 8 \log_2(26) \approx 8 \times 4.70 = \mathbf{37.6\text{ bit}}$$.
+   - Thời gian thử hết trung bình (50% không gian): $$\frac{2.09 \times 10^{11}}{2 \times 10^{10}} \approx \mathbf{10.4\text{ giây}}$$!
+2. **Passphrase chọn ngẫu nhiên 4 từ tiếng Anh** từ từ điển $$N = 2048 = 2^{11}$$ từ ($$L = 4$$):
+   - Kích thước không gian khóa: $$(2^{11})^4 = 2^{44} \approx 1.76 \times 10^{13}$$ tổ hợp.
+   - Entropy: $$H = 4 \times 11 = \mathbf{44\text{ bit}}$$ (tăng lên 5 từ đạt $$55\text{ bit}$$, tức hơn **57 ngày** ở tốc độ 10 tỷ/giây — và nếu băm chậm bằng Argon2 ở $$10^4$$ lần/giây thì mất tới **57 triệu năm**!).
+
+### Khung giải thích: 3 bước kiểm định độ an toàn của một mã bí mật bằng phép đếm (nên đọc chậm)
+
+#### Bước 1: Tính không gian khóa THỰC TẾ, không phải lý thuyết
+Một mật khẩu 8 ký tự có chữ hoa/thường/số/ký tự đặc biệt có không gian lý thuyết $$94^8 \approx 6\times 10^{15}$$, nhưng nếu người dùng chọn theo mẫu `Ten + NamSinh + !`, không gian thực tế tụt xuống chỉ còn vài triệu — kẻ tấn công dùng từ điển phá trong chưa đầy 1 giây!
+
+#### Bước 2: Quy đổi sang bit entropy và chia cho tốc độ thử thực tế
+Lấy $$H = \log_2(\vert\mathcal{K}_{\text{thực}}\vert)$$. So sánh tốc độ thử của hàm băm nhanh (MD5/SHA-256: $$10^{10}$$ lần/s trên GPU) với hàm băm chậm chuyên dụng (bcrypt/Argon2: $$10^3\text{–}10^4$$ lần/s) và giới hạn rate-limit mạng (ví dụ 5 lần/phút cho OTP 6 số).
+
+#### Bước 3: Kiểm tra rủi ro va chạm sinh nhật cho ID không bí mật
+Với `session_id` hay `CSRF token` $$b$$-bit, va chạm xảy ra sớm ở ngưỡng $$\approx 2^{b/2}$$ chứ không phải $$2^b$$ — nên chuẩn hiện đại luôn đòi hỏi ít nhất **128 bit ngẫu nhiên** (ngưỡng sinh nhật $$2^{64} \approx 1.8 \times 10^{19}$$)!
+
+$$
+\text{Không gian thực } \vert\mathcal{K}\vert
+\;\xrightarrow{H = \log_2 \vert\mathcal{K}\vert}\;
+\text{Bit entropy}
+\;\xrightarrow{\div \text{Tốc độ thử}}\;
+\text{Thời gian phá thực tế}.
+$$
 
 ## Bài tập thực hành
 

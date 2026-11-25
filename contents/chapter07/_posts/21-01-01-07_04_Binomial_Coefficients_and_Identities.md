@@ -10,9 +10,26 @@ lang: en
 excerpt: "Hệ số nhị thức, định lý nhị thức, tam giác Pascal và các đồng nhất thức tổ hợp quan trọng — cầu nối giữa đại số và phép đếm."
 ---
 
+
+Khai triển đa thức $(a+b)^5$ cho dãy hệ số `1, 5, 10, 10, 5, 1`; đếm số tập con theo kích thước của tập 5 phần tử cũng ra đúng `1, 5, 10, 10, 5, 1`; đếm số đường đi ngắn nhất trên lưới ô vuông cũng chạm lại đúng hàng số ấy. **Hệ số nhị thức $\binom{n}{k}$** là sợi dây kỳ diệu nối liền đại số đa thức với tư duy tổ hợp—nơi nhiều đồng nhất thức tưởng như phức tạp bỗng trở nên trong suốt chỉ bằng một câu chuyện đếm hai cách.
+
 Ở mục trước, chúng ta đã học nguyên lý bù trừ. Mục này giới thiệu **hệ số nhị thức** và các **đồng nhất thức tổ hợp** — cầu nối trực tiếp giữa đại số và phép đếm.
 
 Biểu thức $$(a+b)^n$$ thoạt nhìn có vẻ thuần đại số, nhưng phía sau nó là một câu chuyện đếm rất rõ ràng: ở mỗi thừa số $$(a+b)$$, ta chọn lấy $$a$$ hoặc lấy $$b$$, rồi đếm xem một hạng tử cụ thể xuất hiện bao nhiêu lần. Khi nắm được ý nghĩa tổ hợp của hệ số nhị thức, nhiều đồng nhất thức sẽ trở nên tự nhiên và dễ nhớ hơn vì ta có thể chứng minh chúng bằng cách đếm cùng một đối tượng theo hai cách khác nhau.
+
+## Bản đồ kiến thức nền: Bốn trụ cột của Hệ số Nhị thức và Đồng nhất thức Tổ hợp
+
+1. **Định lý Nhị thức $(a+b)^n = \sum_{k=0}^n \binom{n}{k} a^{n-k}b^k$**:
+   Khi nhân $n$ dấu ngoặc $(a+b)(a+b)\cdots(a+b)$, mỗi số hạng $a^{n-k}b^k$ xuất hiện đúng bằng số cách chọn $k$ ngoặc lấy $b$ (và $n-k$ ngoặc còn lại lấy $a$), tức $\binom{n}{k}$.
+
+2. **Hệ thức truy hồi Pascal $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$**:
+   Cố định một phần tử đặc biệt $x$: mọi tập con $k$ phần tử hoặc *chứa $x$* ($\binom{n-1}{k-1}$ cách), hoặc *không chứa $x$* ($\binom{n-1}{k}$ cách). Trong lập trình, công thức này cho phép tính $\binom{n}{k}$ bằng quy hoạch động $O(nk)$ chỉ dùng phép cộng, tránh tràn số khi tính $n!$.
+
+3. **Nghệ thuật "Đếm hai cách" (Double Counting)**:
+   Thay vì khai triển giai thừa dài dòng, ta nghĩ ra một bài toán đếm rồi giải theo hai góc nhìn khác nhau—nhờ đó các đồng nhất thức như **Tổng hàng ($2^n$)**, **Tổng xen kẽ ($0$)**, **Cây gậy khúc côn cầu** và **Vandermonde** hiện lên đầy trực giác.
+
+4. **Cầu nối sang Xác suất, Đồ thị và Thuật toán**:
+   Hệ số nhị thức là trái tim của phân phối nhị thức $B(n, p)$, đếm số đường đi đơn điệu trên lưới $(0,0) \to (m,n)$, và phân tích độ phức tạp thuật toán chia để trị.
 
 ## Mục tiêu học tập
 
@@ -199,6 +216,30 @@ $$
 </div>
 
 Chuỗi Nilakantha $$\pi = 3 + \sum_{k\ge 1} (-1)^{k+1}\dfrac{4}{2k(2k+1)(2k+2)}$$ có thể viết lại thành $$\pi = 3 + \tfrac{2}{3}\sum_{k\ge 1} \dfrac{(-1)^{k+1}}{\binom{2k+2}{3}}$$. Các mẫu số $$\binom{4}{3}, \binom{6}{3}, \binom{8}{3}, \ldots = 4, 20, 56, 120, 220, \ldots$$ chính là các số nằm trên đường chéo thứ ba của tam giác Pascal, lấy cách một số.
+
+### Khung giải thích (nên đọc chậm): Tìm tay hệ số của $x^3$ trong $(2x - 1)^5$ và kiểm chứng số đồng nhất thức Vandermonde
+
+**Phần A — Tìm hệ số của $x^3$ trong khai triển $(2x - 1)^5$**
+
+Áp dụng Định lý Nhị thức với $a = 2x$, $b = -1$, $n = 5$:
+$$(2x - 1)^5 = \sum_{k=0}^{5} \binom{5}{k}(2x)^{5-k}(-1)^k.$$
+Để thu được bậc $x^3$, ta cần $5 - k = 3 \implies k = 2$. Thay $k = 2$ vào số hạng tổng quát:
+$$\binom{5}{2}(2x)^3(-1)^2 = \frac{5 \times 4}{2} \cdot (8x^3) \cdot (+1) = 10 \cdot 8x^3 = \mathbf{80x^3}.$$
+*(Chú ý lỗi hay gặp: quên lũy thừa hệ số `2` thành $2^3 = 8$, hoặc quên dấu $(-1)^k$ khi $k$ lẻ!)*
+
+**Phần B — Kiểm chứng bằng số & trực giác "Đếm hai cách" cho đồng nhất thức Vandermonde**
+
+Đề bài: Một nhóm gồm $m = 4$ nam và $n = 3$ nữ (tổng $7$ người). Có bao nhiêu cách chọn ra một đội gồm $r = 3$ người?
+- **Cách 1 (chọn trực tiếp từ cả 7 người)**:
+  $$\binom{4 + 3}{3} = \binom{7}{3} = \frac{7 \times 6 \times 5}{3 \times 2 \times 1} = \mathbf{35}\text{ cách}.$$
+- **Cách 2 (chia trường hợp theo số bạn nữ $k \in \{0, 1, 2, 3\}$ trong đội)**:
+  - $k = 0$ nữ, $3$ nam: $\binom{4}{3}\binom{3}{0} = 4 \times 1 = 4$.
+  - $k = 1$ nữ, $2$ nam: $\binom{4}{2}\binom{3}{1} = 6 \times 3 = 18$.
+  - $k = 2$ nữ, $1$ nam: $\binom{4}{1}\binom{3}{2} = 4 \times 3 = 12$.
+  - $k = 3$ nữ, $0$ nam: $\binom{4}{0}\binom{3}{3} = 1 \times 1 = 1$.
+  - Tổng cộng: $4 + 18 + 12 + 1 = \mathbf{35}\text{ cách}$.
+
+Cả hai cách cùng đếm đúng một tập hợp nên luôn bằng nhau: $\sum_{k=0}^{r} \binom{m}{r-k}\binom{n}{k} = \binom{m+n}{r}$—không cần biến đổi một dòng đại số nào!
 
 ## Ứng dụng trong Khoa học Máy tính
 

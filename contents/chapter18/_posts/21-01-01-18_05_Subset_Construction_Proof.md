@@ -9,6 +9,8 @@ lang: en
 excerpt: "Định lý tương đương Rabin–Scott giữa NFA và DFA, chứng minh L(D)=L(N), cận trên 2^|Q| trạng thái và tối ưu chỉ xét các tập con đạt được."
 ---
 
+> **Câu chuyện mở đầu:** Thoạt nhìn, NFA với khả năng "phân thân" và "đoán trước tương lai" tưởng như phải mạnh hơn DFA gấp bội. Thế nhưng năm 1959, Michael Rabin và Dana Scott đã chứng minh một định lý mang về cho họ Giải Turing: **mọi NFA $$n$$ trạng thái đều tương đương hoàn toàn với một DFA có tối đa $$2^n$$ trạng thái**! Bí quyết đẹp đến khó tin: biến **mỗi tập con các trạng thái NFA** thành **1 trạng thái đơn lẻ của DFA**!
+
 <div class="textbook-epigraph" markdown="1">
 
 "Powerset construction trades nondeterminism for exponentially many states."
@@ -30,6 +32,54 @@ excerpt: "Định lý tương đương Rabin–Scott giữa NFA và DFA, chứng
 - **Nêu** cận trên số trạng thái $$2^{\lvert Q\rvert}$$ và hiện tượng bùng nổ trạng thái.
 
 </div>
+
+## Bản đồ kiến thức nền: Thuật toán Xây dựng Tập con (Rabin–Scott, 1959)
+
+### 1. Ý tưởng Cốt lõi: Trạng thái của DFA = Tập con trạng thái của NFA ($$Q_D = \mathcal{P}(Q_N)$$)
+- **Trạng thái khởi đầu:** $$q_{0D} = \{q_0\}$$ (hoặc $$\mathrm{ECLOSE}(q_0)$$ nếu có $$\varepsilon$$).
+- **Hàm chuyển tất định:** $$\delta_D(S, a) = \bigcup_{p \in S} \delta_N(p, a)$$ (luôn xác định duy nhất một tập con $$S' \in \mathcal{P}(Q_N)$$!).
+- **Tập kết thúc:** $$F_D = \{S \subseteq Q_N : S \cap F_N \neq \emptyset\}$$.
+
+### 2. Chiến lược "Chỉ sinh Trạng thái Đạt tới được" (Reachable States Only)
+- **Bản chất:** Thay vì liệt kê đủ $$2^n$$ tập con (phần lớn không bao giờ đi tới!), ta dùng BFS bắt đầu từ $$\{q_0\}$$ để chỉ tạo những tập con thực sự xuất hiện — thực tế thường chỉ có vài trạng thái!
+
+### 3. Bùng nổ Hàm mũ $$2^n$$ trong Trường hợp Xấu nhất
+- **Lưu ý quan trọng:** Với ngôn ngữ "ký tự thứ $$k$$ từ cuối lên là `1`", NFA chỉ cần $$k+1$$ trạng thái nhưng **mọi DFA** bắt buộc phải có ít nhất $$2^k$$ trạng thái — cận trên $$2^n$$ là **chặt tuyệt đối**!
+
+## Ví dụ tính tay cầm tay chỉ việc: Biến NFA "Kết thúc bằng `01`" thành DFA bằng Subset Construction
+
+Xuất phát từ NFA 3 trạng thái ở bài 18.03 ($$q_0 \xrightarrow{0} \{q_0, q_1\},\; q_0 \xrightarrow{1} \{q_0\},\; q_1 \xrightarrow{1} \{q_2\},\; F_N = \{q_2\}$$):
+1. **Bắt đầu với trạng thái $$A = \{q_0\}$$:**
+   - $$\delta_D(A, 0) = \{q_0, q_1\} = B$$ (trạng thái mới!).
+   - $$\delta_D(A, 1) = \{q_0\} = A$$.
+2. **Mở rộng trạng thái $$B = \{q_0, q_1\}$$:**
+   - $$\delta_D(B, 0) = \delta(q_0, 0) \cup \delta(q_1, 0) = \{q_0, q_1\} = B$$.
+   - $$\delta_D(B, 1) = \delta(q_0, 1) \cup \delta(q_1, 1) = \{q_0, q_2\} = C$$ (trạng thái mới — chứa $$q_2 \implies C \in F_D$$!).
+3. **Mở rộng trạng thái $$C = \{q_0, q_2\}$$:**
+   - $$\delta_D(C, 0) = \delta(q_0, 0) \cup \delta(q_2, 0) = \{q_0, q_1\} = B$$.
+   - $$\delta_D(C, 1) = \delta(q_0, 1) \cup \delta(q_2, 1) = \{q_0\} = A$$.
+
+**Kết quả:** Không còn tập con mới nào! Thay vì $$2^3 = 8$$ trạng thái, DFA tối ưu sinh ra chỉ có **đúng 3 trạng thái $$A, B, C$$**!
+
+### Khung giải thích: Chứng minh 4 bước cho Định lý Rabin–Scott (NFA $$\equiv$$ DFA) (nên đọc chậm)
+
+#### Bước 1: Định nghĩa $$\delta_D(S, a)$$ bằng phép hợp
+Chính việc gộp mọi trạng thái NFA đang sống vào một "cái túi" $$S$$ đã triệt tiêu hoàn toàn tính không tất định!
+
+#### Bước 2: Chứng minh quy nạp $$\hat{\delta}_D(\{q_0\}, w) = \hat{\delta}_N(q_0, w)$$
+Với $$\lvert w\rvert = 0$$: hai vế đều bằng $$\{q_0\}$$. Bước quy nạp $$w \to wa$$ khớp ngay nhờ định nghĩa $$\delta_D$$.
+
+#### Bước 3: Đối chiếu điều kiện chấp nhận
+$$w \in L(D) \iff \hat{\delta}_D(\{q_0\}, w) \in F_D \iff \hat{\delta}_N(q_0, w) \cap F_N \neq \emptyset \iff w \in L(N)$$!
+
+#### Bước 4: Tối tiểu hóa tiếp (sang bài 18.11)
+Sau khi chạy Subset Construction, ta có thể chạy thêm thuật toán tối tiểu hóa Hopcroft/Myhill–Nerode để thu gọn DFA về kích thước nhỏ nhất duy nhất!
+
+$$
+\text{NFA }N\;(n\text{ trạng thái})
+\;\xrightarrow{\;\text{Subset Construction (BFS)}\;}\;
+\text{DFA }D\;(\le 2^n\text{ trạng thái}),\quad L(D) = L(N).
+$$
 
 ## Phép xây dựng tập con (không có ε)
 

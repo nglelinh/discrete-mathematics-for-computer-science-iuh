@@ -9,6 +9,8 @@ lang: en
 excerpt: "Xây dựng half adder, full adder, bộ cộng lan truyền nhớ (ripple-carry) n-bit, mạch nhân không dấu bằng tích riêng phần, cùng các khối tổ hợp MUX, decoder và comparator."
 ---
 
+> **Câu chuyện mở đầu:** Máy tính của bạn vừa cộng hai số nguyên 64-bit chỉ trong **chưa đầy một phần tỷ giây** — làm thế nào những cổng AND, OR, XOR vô tri lại biết "cộng có nhớ" như học sinh tiểu học? Bí mật nằm ở cấu trúc xếp tầng kỳ diệu của **mạch tổ hợp**: ghép đúng **2 cổng (XOR + AND)** thành một bộ nửa cộng (Half Adder), ghép tiếp thành bộ cộng đủ (Full Adder), rồi giải quyết nút thắt "truyền nhớ gợn sóng" bằng mạch **Carry Lookahead** để tăng tốc vượt bậc!
+
 <div class="textbook-epigraph" markdown="1">
 
 "An ALU is not magic — it is a carefully arranged forest of adders, multiplexers, and Boolean glue."
@@ -44,6 +46,58 @@ Các phép toán `a + b` hay `a * b` trong ngôn ngữ lập trình được hi�
 **Từ khóa**: half adder, full adder, ripple-carry, partial product, MUX, decoder, comparator, mạch tổ hợp.
 
 </div>
+
+## Bản đồ kiến thức nền: Các khối Mạch Tổ hợp cốt lõi của CPU
+
+### 1. Mạch Tổ hợp (Combinational) vs. Mạch Tuần tự (Sequential)
+- **Mạch tổ hợp:** Đầu ra tại thời điểm $$t$$ chỉ phụ thuộc **duy nhất vào đầu vào tại đúng thời điểm $$t$$** (không có bộ nhớ/vòng hồi tiếp): Half Adder, Full Adder, Bộ cộng nhiều bit, Multiplexer (MUX), Decoder, Encoder.
+
+### 2. Bộ Cộng Nhị phân: Half Adder $$\to$$ Full Adder $$\to$$ Carry Lookahead
+- **Half Adder:** Cộng 2 bit $$A, B$$ ra Tổng $$S = A \oplus B$$ và Nhớ $$C = A \cdot B$$.
+- **Full Adder:** Cộng 3 bit $$A, B, C_{\text{in}}$$ ra $$S = A \oplus B \oplus C_{\text{in}}$$ và $$C_{\text{out}} = AB + C_{\text{in}}(A \oplus B)$$.
+- **Nút thắt Ripple-Carry:** Nối nối tiếp $$n$$ bộ Full Adder khiến bit nhớ phải "chạy bộ" qua cả $$n$$ tầng (độ trễ $$O(n)$$). **Carry Lookahead (CLA)** dùng tín hiệu sinh nhớ $$G_i = A_i B_i$$ và truyền nhớ $$P_i = A_i \oplus B_i$$ để tính trước mọi bit nhớ song song trong $$O(\log n)$$!
+
+### 3. Mạch Chọn kênh (MUX) và Giải mã (Decoder)
+- **Multiplexer (MUX $$2^k\text{-to-}1$$):** Công tắc chọn 1 trong $$2^k$$ đường dữ liệu nhờ $$k$$ bit chọn — thậm chí một MUX $$2^n\text{-to-}1$$ có thể cài đặt **bất kỳ** hàm Boole $$n$$ biến nào (nguyên lý lõi của FPGA LUT!).
+
+## Ví dụ tính tay cầm tay chỉ việc: Cộng 4-bit $$1011_2 + 0110_2$$ ($$11 + 6 = 17$$) qua Full Adder & Tính trước Carry Lookahead
+
+Cộng $$A = 1011_2\; (A_3A_2A_1A_0)$$ với $$B = 0110_2\; (B_3B_2B_1B_0)$$, $$C_0 = 0$$:
+- **Bit 0 ($$A_0=1, B_0=0, C_0=0$$):** $$S_0 = 1\oplus 0\oplus 0 = 1$$, $$C_1 = 0$$.
+- **Bit 1 ($$A_1=1, B_1=1, C_1=0$$):** $$S_1 = 1\oplus 1\oplus 0 = 0$$, $$C_2 = 1$$ (sinh nhớ $$G_1 = 1$$!).
+- **Bit 2 ($$A_2=0, B_2=1, C_2=1$$):** $$S_2 = 0\oplus 1\oplus 1 = 0$$, $$C_3 = 1$$ (truyền nhớ $$P_2 = 1$$!).
+- **Bit 3 ($$A_3=1, B_3=0, C_3=1$$):** $$S_3 = 1\oplus 0\oplus 1 = 0$$, $$C_4 = 1$$ (truyền nhớ $$P_3 = 1$$!).
+- **Kết quả:** $$(C_4 S_3 S_2 S_1 S_0)_2 = 10001_2 = 16 + 1 = 17$$! ✓
+
+**Kiểm tra tốc độ Carry Lookahead cho $$C_4$$:** Thay vì chờ $$C_1 \to C_2 \to C_3 \to C_4$$, CLA tính thẳng:
+$$
+C_4 = G_3 + P_3 G_2 + P_3 P_2 G_1 + P_3 P_2 P_1 G_0 + P_3 P_2 P_1 P_0 C_0.
+$$
+Thay $$G = (0,0,1,0)$$ và $$P = (1,1,0,1)$$: số hạng $$P_3 P_2 G_1 = 1\cdot 1\cdot 1 = 1 \implies C_4 = 1$$ ngay sau **2 tầng cổng**!
+
+### Khung giải thích: Kiến trúc phân cấp 4 bước xây dựng Bộ Số học Logic (ALU) (nên đọc chậm)
+
+#### Bước 1: Tách nhỏ phép cộng nhiều bit thành bài toán 1-bit (Full Adder)
+Mọi cột nhị phân đều làm đúng một phép cộng 3 bit giống hệt nhau: $$A_i + B_i + C_i$$.
+
+#### Bước 2: Biến phép trừ thành phép cộng nhờ Số bù 2 (Two's Complement)
+Muốn tính $$A - B$$, chỉ cần đảo từng bit của $$B$$ bằng cổng XOR ($$B_i \oplus 1 = \bar{B}_i$$) và đặt $$C_0 = 1$$! Một bộ cộng duy nhất lập tức kiêm luôn cả cộng lẫn trừ!
+
+#### Bước 3: Phá vỡ độ trễ tuyến tính bằng Carry Lookahead
+Tách hành vi nhớ tại mỗi bit thành hai câu hỏi độc lập với $$C_i$$: bit này có *tự sinh nhớ* ($$G_i = A_i B_i$$) hay *truyền nhớ đi qua* ($$P_i = A_i \oplus B_i$$) không?
+
+#### Bước 4: Dùng MUX để gom các phép toán thành một ALU hoàn chỉnh
+Đặt đầu ra của mạch cộng, mạch trừ, mạch AND, mạch OR vào các ngõ vào của một **Multiplexer** — mã lệnh (opcode) của CPU chỉ đơn giản là các bit chọn của MUX!
+
+$$
+\text{XOR + AND (Half Adder)}
+\;\longrightarrow\;
+\text{Full Adder}
+\;\xrightarrow{\;G_i, P_i\text{ (CLA)}\;}\;
+\text{Bộ Cộng/Trừ siêu tốc}
+\;\xrightarrow{\;\text{MUX}\;}\;
+\text{ALU của CPU}.
+$$
 
 ## Mạch tổ hợp
 

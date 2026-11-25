@@ -9,6 +9,8 @@ lang: en
 excerpt: "Tổng hợp Chương 13: từ đại số Boole và mạng công tắc của Shannon đến quy trình năm bước thiết kế mạch tổ hợp, mối liên hệ giữa rút gọn biểu thức và số cổng, bộ giải SAT và FPGA/LUT."
 ---
 
+> **Câu chuyện mở đầu:** Năm 1854, nhà toán học tự học George Boole xuất bản cuốn *The Laws of Thought* với mục đích thuần túy triết học: diễn đạt tư duy suy luận bằng đại số. Suốt hơn 80 năm, giới kỹ sư điện không hề mảy may chú ý tới cuốn sách đó — cho đến năm 1937, khi một chàng thạc sĩ 21 tuổi tại MIT tên **Claude Shannon** nhận ra rằng **mọi rơ-le đóng/mở nối tiếp và song song thực chất chính là phép AND và OR của George Boole**! Luận văn thạc sĩ dài vỏn vẹn vài chục trang ấy đã khai sinh toàn bộ kỷ nguyên máy tính số!
+
 <div class="textbook-epigraph" markdown="1">
 
 "It has been found that the symbolism of Algebra is capable of indicating… the laws of those mental operations which are involved in reasoning."
@@ -43,6 +45,51 @@ Các mục 13.1–13.5 đã lần lượt trình bày đại số Boole, hàm v�
 **Từ khóa**: đại số Boole, Claude Shannon, mạng công tắc, thiết kế tổ hợp, tối thiểu hóa, half/full adder, SAT, FPGA, LUT.
 
 </div>
+
+## Bản đồ kiến thức nền: Dòng chảy từ Đại số Boole thuần túy đến Vi mạch CMOS
+
+### 1. Bước ngoặt Lý thuyết — Boole (1854) & Shannon (1937)
+- **George Boole:** Đại số hóa mệnh đề đúng/sai thành phép toán trên $$\{0, 1\}$$.
+- **Claude Shannon:** Đặt tương ứng **công tắc nối tiếp $$\leftrightarrow$$ AND**, **công tắc song song $$\leftrightarrow$$ OR**, **tiếp điểm thường đóng $$\leftrightarrow$$ NOT** — biến thiết kế mạch điện từ nghệ thuật mò mẫm thành khoa học đại số chính xác!
+
+### 2. Từ Rơ-le cơ khí đến Transistor CMOS & Quy trình Tổng hợp Logic (EDA)
+- **Bản chất:** Ngày nay không ai vẽ tay K-map cho con chip 50 tỷ transistor. Kỹ sư viết mô tả hành vi bằng **HDL (Verilog/SystemVerilog)**, rồi trình **Logic Synthesis** tự động biên dịch thành mạng cổng chuẩn (Standard Cells), tối ưu hóa diện tích–tốc độ–công suất (PPA) và kiểm chứng tương đương bằng bộ giải SAT!
+
+### 3. Mối quan hệ giữa Độ sâu Mạch và Tần số Xung nhịp (GHz)
+- **Bản chất:** Mọi tín hiệu đi qua một cổng logic đều mất một độ trễ nhỏ $$\tau$$. Đường đi dài nhất từ đầu vào tới đầu ra (**đường găng — critical path**) giới hạn tần số xung nhịp tối đa $$f_{\max} \le 1 / T_{\text{critical}}$$ của CPU!
+
+## Ví dụ tính tay cầm tay chỉ việc: Từ Công tắc Shannon đến Đường găng Mạch 2 tầng
+
+1. **Mạch công tắc đèn cầu thang (XOR):** Đèn sáng khi đúng 1 trong 2 công tắc $$x, y$$ bật:
+   $$
+   f(x, y) = x\bar{y} + \bar{x}y.
+   $$
+   Theo quy tắc Shannon: mắc **song song** hai nhánh; nhánh trên gồm công tắc $$x$$ **nối tiếp** công tắc đảo $$\bar{y}$$, nhánh dưới gồm $$\bar{x}$$ **nối tiếp** $$y$$! Kiểm tra 4 trạng thái $$(0,0) \to 0,\; (0,1) \to 1,\; (1,0) \to 1,\; (1,1) \to 0$$ — đèn bật/tắt hoàn hảo từ cả hai đầu cầu thang!
+2. **So sánh độ trễ đường găng:** Giả sử mỗi cổng 2 ngõ vào có độ trễ $$\tau = 0.2\text{ ns}$$.
+   - Tính OR của 8 biến theo kiểu chuỗi nối tiếp $$((((((x_1+x_2)+x_3)+\dots)+x_8))$$: đi qua **7 tầng** $$\implies$$ độ trễ $$7 \times 0.2 = 1.4\text{ ns}$$ ($$f_{\max} \approx 714\text{ MHz}$$).
+   - Cân bằng thành **cây nhị phân** 3 tầng ($$\log_2 8 = 3$$): đi qua đúng **3 tầng** $$\implies$$ độ trễ $$3 \times 0.2 = 0.6\text{ ns}$$ ($$f_{\max} \approx 1.67\text{ GHz}$$ — nhanh hơn **2.3 lần** dù dùng cùng đúng 7 cổng OR!).
+
+### Khung giải thích: Hành trình 4 bước từ Ý tưởng Toán học đến Con Chip Silicon (nên đọc chậm)
+
+#### Bước 1: Đặc tả hành vi bằng Bảng chân trị hoặc Ngôn ngữ RTL (Verilog)
+Chuyển bài toán thực tế (bộ cộng, bộ điều khiển đèn giao thông, ALU) thành các hàm Boole xác định rõ đầu vào và đầu ra.
+
+#### Bước 2: Tối ưu hóa độc lập công nghệ (Logic Minimization)
+Nén biểu thức Boole (dùng định luật đại số, K-map, Espresso, đồ thị AIG) để loại bỏ cổng dư thừa và rút ngắn đường găng.
+
+#### Bước 3: Ánh xạ công nghệ (Technology Mapping) & Kiểm chứng tương đương
+Chuyển mạng cổng trừu tượng sang thư viện cổng CMOS thực tế (NAND, NOR, INV) rồi dùng bộ giải SAT chứng minh mạch sau tối ưu **tương đương logic 100%** với đặc tả gốc!
+
+#### Bước 4: Đặt linh kiện và Đi dây vật lý (Place & Route)
+Sắp xếp hàng tỷ cổng lên phiến silicon nanomet và mô phỏng độ trễ, nhiệt lượng trước khi đúc chip (tape-out).
+
+$$
+\text{Đại số Boole (1854)}
+\;\xrightarrow{\;\text{Shannon (1937)}\;}\;
+\text{Mạng cổng CMOS}
+\;\xrightarrow{\;\text{EDA Synthesis + SAT}\;}\;
+\text{Vi xử lý hàng tỷ transistor}.
+$$
 
 ## Hai bước ngoặt lịch sử: Boole và Shannon
 

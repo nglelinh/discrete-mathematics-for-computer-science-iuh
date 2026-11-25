@@ -19,6 +19,19 @@ excerpt: "Định nghĩa lớp coNP, chứng minh P⊆NP∩coNP, hệ quả nế
 
 Nếu lớp $$NP$$ đặc trưng cho các bài toán có chứng chỉ ngắn cho câu trả lời **Có (Yes)**, thì $$\mathrm{coNP}$$ đặc trưng cho các bài toán có chứng chỉ ngắn cho câu trả lời **Không (No)**. Mối quan hệ giữa $$NP$$ và $$\mathrm{coNP}$$ mang nhiều hệ quả cấu trúc sâu sắc và gắn chặt với mật mã học.
 
+Để chứng minh một công thức logic là *thỏa được* (`SAT`), bạn chỉ cần đưa ra **1 phép gán đúng** duy nhất. Nhưng để chứng minh công thức đó là *hằng đúng* (`TAUTOLOGY` — đúng với mọi phép gán), làm sao thuyết phục người khác chỉ bằng một chứng chỉ ngắn gọn? Câu hỏi về tính bất đối xứng giữa câu trả lời **CÓ** và câu trả lời **KHÔNG** sinh ra lớp $$\mathrm{coNP}$$ — người anh em song sinh phản chiếu của $$NP$$.
+
+## Bản đồ kiến thức nền: Ba trụ cột của $$\mathrm{coNP}$$ và Hệ quả Cấu trúc
+
+1. **Định nghĩa $$\mathrm{coNP} = \{L \mid \overline{L} \in NP\}$$**:
+   Một bài toán thuộc $$\mathrm{coNP}$$ khi các trường hợp trả lời **KHÔNG (NO-instance)** có chứng chỉ ngắn kiểm tra được trong thời gian đa thức (ví dụ: 1 phép gán làm công thức sai là chứng chỉ ngắn bác bỏ `TAUTOLOGY`).
+2. **Bốn định lý cấu trúc xương sống**:
+   - $$P \subseteq NP \cap \mathrm{coNP}$$ (vì $$P$$ đóng dưới phần bù).
+   - Nếu $$P = NP$$ thì $$NP = \mathrm{coNP}$$ (nên chứng minh $$NP \neq \mathrm{coNP}$$ sẽ lập tức giải quyết luôn $$P \neq NP$$!).
+   - Nếu tồn tại một bài toán NP-complete thuộc $$\mathrm{coNP}$$ thì toàn bộ $$NP = \mathrm{coNP}$$.
+3. **Vùng giao thú vị $$NP \cap \mathrm{coNP}$$ (Trường hợp `FACTORING`)**:
+   Phân tích thừa số nguyên tố (nền tảng của mã hóa RSA) nằm trong cả $$NP$$ lẫn $$\mathrm{coNP}$$ (nhờ kiểm tra nguyên tố ở $$P$$). Vì thế giới lý thuyết tin mạnh rằng $$NP \neq \mathrm{coNP}$$, `FACTORING` rất khó có khả năng là NP-complete!
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -85,6 +98,20 @@ Tương đương, mọi thể hiện trả lời Không (No) của $$L$$ đều 
 ## Lưu ý về bài toán phân tích thừa số (*Factoring*)
 
 Phiên bản quyết định chuẩn của bài toán phân tích thừa số nguyên tố (Integer Factoring) thuộc giao $$NP\cap\mathrm{coNP}$$, nhưng hiện **không** được biết (và cũng không được kỳ vọng) là NP-complete. Vì vậy, không thể nói độ an toàn của RSA dựa trên giả thiết “phân tích thừa số là NP-complete”.
+
+### Khung giải thích (nên đọc chậm): Kiểm chứng `FACTORING` thuộc cả $$NP$$ lẫn $$\mathrm{coNP}$$ bằng số cụ thể
+
+Xét phiên bản quyết định của bài toán phân tích thừa số:
+$$\mathrm{FACT} = \{ \langle N, k \rangle \mid N \text{ có ít nhất một ước không tầm thường } d \text{ thỏa } 1 < d \le k \}.$$
+
+Thử trên đầu vào $$N = 91, k = 10$$:
+- **Chứng chỉ cho câu trả lời CÓ ($$\mathrm{FACT} \in NP$$):** Đưa ra $$d = 7$$. Bộ kiểm chứng chỉ cần thử $$1 < 7 \le 10$$ và chia $$91 \div 7 = 13$$ dư `0` → **Xong trong $$O(\log^2 N)$$!**
+- **Chứng chỉ cho câu trả lời KHÔNG ($$\mathrm{FACT} \in \mathrm{coNP}$$):** Xét đầu vào $$N = 91, k = 5$$ (câu trả lời là KHÔNG vì ước nhỏ nhất là 7). Chứng chỉ ngắn là **toàn bộ phân tích nguyên tố đầy đủ** $$c = (7, 13)$$. Bộ kiểm chứng làm 3 bước đa thức:
+  1. Nhân lại: $$7 \times 13 = 91$$ (khớp $$N$$).
+  2. Kiểm tra từng thừa số $$7, 13$$ đều là **số nguyên tố** (dùng thuật toán AKS trong $$P$$!).
+  3. Kiểm tra mọi thừa số nguyên tố đều $$> k = 5$$ → theo tính duy nhất của phân tích nguyên tố, chắc chắn không có ước nào $$\le 5$$!
+
+Vì cả trường hợp CÓ lẫn trường hợp KHÔNG đều có chứng chỉ đa thức, $$\mathrm{FACT} \in NP \cap \mathrm{coNP}$$.
 
 ## Bài tập
 

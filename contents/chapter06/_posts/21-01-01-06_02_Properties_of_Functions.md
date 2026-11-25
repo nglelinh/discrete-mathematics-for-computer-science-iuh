@@ -10,9 +10,26 @@ lang: en
 excerpt: "Sau khi tìm hiểu định nghĩa và cách biểu diễn hàm số ở mục trước, bài học này giới thiệu ba tính chất cốt lõi: đơn ánh, toàn ánh và song ánh."
 ---
 
+
+Nếu một thuật toán nén dữ liệu không mất mát (lossless) nén hai tệp tin khác nhau thành cùng một chuỗi bit, bạn sẽ vĩnh viễn không thể giải nén về đúng bản gốc; còn nếu một hệ thống cấp mã sinh viên bỏ trống một nửa dải giá trị hoặc không phủ hết các lớp mục tiêu, ánh xạ sẽ mất cân đối. Ba tính chất **đơn ánh (injective), toàn ánh (surjective) và song ánh (bijective)** chính là ba thước đo cốt lõi cho biết một hàm có làm mất thông tin hay không, có phủ kín miền đích hay không, và liệu có thể đảo ngược hoàn hảo hay không.
+
 Ở mục trước, chúng ta đã định nghĩa hàm số, phân biệt miền xác định với miền đích và xem các cách biểu diễn hàm. Mục này giới thiệu ba tính chất quan trọng của ánh xạ: **đơn ánh**, **toàn ánh** và **song ánh**.
 
 Chỉ biết một ánh xạ là hàm vẫn chưa đủ để đánh giá các đặc tính cấu trúc của nó. Hàm đơn ánh bảo toàn sự phân biệt giữa các đầu vào; hàm toàn ánh phủ kín toàn bộ codomain; còn hàm song ánh thỏa mãn cả hai điều kiện, cho phép ghép cặp một–một giữa hai tập hợp. Những tính chất này xuất hiện thường xuyên trong thiết kế mã định danh, hàm băm, nén dữ liệu và các chứng minh về lực lượng tập hợp.
+
+## Bản đồ kiến thức nền: Ba tính chất vàng và vai trò sống còn của Miền
+
+1. **Đơn ánh (Injective / 1–1) — Không đụng độ, không mất thông tin**:
+   $\forall x_1, x_2 \in A,\; f(x_1) = f(x_2) \to x_1 = x_2$ (tương đương: đầu vào khác nhau $\to$ đầu ra khác nhau). Trên tập hữu hạn, điều kiện cần là $|A| \le |B|$.
+
+2. **Toàn ánh (Surjective / Onto) — Phủ kín toàn bộ miền đích**:
+   $\forall y \in B,\; \exists x \in A,\; f(x) = y$, tức $\text{Range}(f) = \text{Codomain}(B)$. Trên tập hữu hạn, điều kiện cần là $|A| \ge |B|$.
+
+3. **Song ánh (Bijective) = Đơn ánh + Toàn ánh — Ghép cặp 1–1 hoàn hảo**:
+   Mỗi phần tử ở $B$ có **đúng một** tạo ảnh ở $A$. Đây là điều kiện cần và đủ để hàm tồn tại **hàm nghịch đảo $f^{-1}$**, đồng thời là cơ sở để chứng minh hai tập hợp có cùng lực lượng ($|A| = |B|$).
+
+4. **Miền xác định và Miền đích quyết định tính chất của hàm**:
+   Một công thức đại số đơn lẻ như $f(x) = x^2$ chưa đủ để kết luận đơn ánh hay toàn ánh—chỉ cần thu hẹp Domain hoặc Codomain, cùng công thức đó có thể biến từ "không thỏa gì cả" thành song ánh hoàn hảo!
 
 ## Mục tiêu học tập
 
@@ -125,6 +142,21 @@ Cùng một công thức đại số có thể mang những tính chất khác n
 
 <p class="textbook-figure-caption" data-figure="6.10">Domain và codomain quyết định tính chất của hàm — cùng công thức $$f(x)=x^2$$ nhưng thay đổi domain/codomain sẽ cho kết quả đơn ánh, toàn ánh hay song ánh khác nhau.</p>
 </div>
+
+### Khung giải thích (nên đọc chậm): Cùng một công thức $f(x) = x^2$ biến hóa qua 4 lựa chọn Miền khác nhau
+
+Hãy theo dõi sát cách một công thức duy nhất $f(x) = x^2$ thay đổi toàn bộ tính chất chỉ bằng việc đổi Domain và Codomain:
+
+| Hàm số $f(x) = x^2$ | Đơn ánh? | Toàn ánh? | Song ánh? | Lý do cụ thể |
+| :--- | :---: | :---: | :---: | :--- |
+| **1. $\mathbb{R} \to \mathbb{R}$** | **Không** | **Không** | **Không** | $f(-2) = f(2) = 4$ (đụng độ); $y = -1$ không có $x \in \mathbb{R}$ nào thỏa $x^2 = -1$. |
+| **2. $\mathbb{R}_{\ge 0} \to \mathbb{R}$** | **Có** | **Không** | **Không** | Với $x_1, x_2 \ge 0$, $x_1^2 = x_2^2 \implies x_1 = x_2$; nhưng $y = -1$ vẫn bị bỏ trống. |
+| **3. $\mathbb{R} \to \mathbb{R}_{\ge 0}$** | **Không** | **Có** | **Không** | Mọi $y \ge 0$ đều có tạo ảnh $x = \sqrt{y}$; nhưng vẫn còn đụng độ $f(-2) = f(2)$. |
+| **4. $\mathbb{R}_{\ge 0} \to \mathbb{R}_{\ge 0}$** | **Có** | **Có** | **Có** | Vừa không đụng độ, vừa phủ kín mọi $y \ge 0$ $\implies$ có nghịch đảo $f^{-1}(y) = \sqrt{y}$! |
+
+**Mẹo kiểm tra nhanh trên bài thi tập hữu hạn**: Trước khi xét chi tiết từng phần tử của $f: A \to B$, hãy liếc ngay kích thước $|A|$ và $|B|$:
+- Nếu $|A| > |B|$ (nhiều chim hơn chuồng) $\implies$ chắc chắn **không thể đơn ánh** (Nguyên lý Chuồng bồ câu!).
+- Nếu $|A| < |B|$ (quá ít mũi tên để chạm hết đích) $\implies$ chắc chắn **không thể toàn ánh**.
 
 ## Ứng dụng trong Khoa học Máy tính
 

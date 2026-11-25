@@ -24,6 +24,25 @@ Trong chương này, chúng ta mở rộng **logic mệnh đề** thành **logic
 
 Logic vị từ bổ sung ba thành phần: **biến** (đại diện cho đối tượng), **vị từ** (mô tả thuộc tính hoặc quan hệ) và **lượng từ** (xác định phạm vi). Nhờ đó, chúng ta có thể biểu diễn truy vấn SQL với `WHERE` và `EXISTS`, đặc tả luật trong Prolog, và xây dựng các hệ suy luận trong kiểm chứng phần mềm và trí tuệ nhân tạo. Mục này trả lời hai câu hỏi căn bản: **vị từ là gì**, và **làm thế nào chuyển phát biểu chứa biến thành mệnh đề có thể đánh giá đúng/sai**.
 
+Logic mệnh đề rất sắc bén, nhưng nó bất lực trước câu lập luận nổi tiếng nhất thời cổ đại: *"Mọi con người đều phải chết. Socrates là con người. Vậy Socrates phải chết."* Với logic mệnh đề, ba câu đó chỉ là ba ký hiệu $p, q, r$ rời rạc chẳng liên quan gì nhau—ta không thể nhìn vào bên trong câu để thấy mối quan hệ giữa tập hợp *con người* và cá thể *Socrates*.
+
+**Logic Vị từ (Predicate Logic / First-Order Logic)** mở khóa cấu trúc bên trong của phát biểu bằng **biến**, **vị từ** (hàm trả về `True`/`False`), **miền xác định (Domain)** và hai **lượng từ** ($\forall, \exists$)—chính là nền tảng toán học của SQL, ngôn ngữ truy vấn đồ thị, Prolog và đặc tả phần mềm.
+
+## Bản đồ kiến thức nền: Bốn viên gạch của Logic Vị từ (Bậc nhất)
+
+1. **Vị từ (Predicate / Propositional Function)**:
+   Một vị từ $P(x)$ là một hàm nhận đối tượng $x$ trong miền xác định $D$ và trả về giá trị chân trị (`True`/`False`). Bản thân $P(x)$ chưa phải mệnh đề; nó chỉ trở thành mệnh đề khi ta **gắn giá trị cụ thể** ($P(5)$) hoặc **ràng buộc biến bằng lượng từ** ($\forall x\, P(x)$).
+
+2. **Miền xác định (Domain of Discourse / Universe)**:
+   Chân trị của cùng một công thức phụ thuộc chặt chẽ vào miền xác định! Ví dụ $\exists x\,(x^2 = 2)$ là **Sai** trên tập số nguyên $\mathbb{Z}$, nhưng là **Đúng** trên tập số thực $\mathbb{R}$.
+
+3. **Lượng từ Toàn thể ($\forall$) & Lượng từ Tồn tại ($\exists$)**:
+   - $\forall x\, P(x)$ tương đương phép HỘI khổng lồ $P(x_1) \land P(x_2) \land \dots$ trên toàn miền (chỉ cần **1 phản ví dụ** để bác bỏ!).
+   - $\exists x\, P(x)$ tương đương phép TUYỂN khổng lồ $P(x_1) \lor P(x_2) \lor \dots$ (chỉ cần **1 nhân chứng** để chứng minh!).
+
+4. **Biến tự do (Free Variable) vs. Biến bị ràng buộc (Bound Variable)**:
+   Giống hệt biến cục bộ và biến toàn cục trong lập trình, một biến nằm trong tầm vực của $\forall x$ hoặc $\exists x$ là biến bị ràng buộc; công thức không còn biến tự do nào mới có chân trị xác định.
+
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
@@ -161,6 +180,19 @@ Các mệnh đề tương ứng:
 3. "Không có số lớn nhất": $$\neg\exists x\, \forall y\, (E(y,x) \lor L(y,x))$$
 </div>
 
+
+### Khung giải thích (nên đọc chậm): Kiểm tra bằng tay chân trị 4 công thức trên miền hữu hạn $D = \{1, 2, 3\}$
+
+Để cảm nhận chính xác $\forall$ là phép `AND` còn $\exists$ là phép `OR`, hãy tự định giá trên miền nhỏ $D = \{1, 2, 3\}$ với vị từ $P(x, y): \; x + y = 4$:
+
+| Công thức | Mở rộng tường minh trên $D = \{1, 2, 3\}$ | Chân trị | Nhân chứng / Phản ví dụ |
+| :--- | :--- | :---: | :--- |
+| $\forall x\, \exists y\, (x + y = 4)$ | Với $x=1$ chọn $y=3$ (`1+3=4`); $x=2$ chọn $y=2$ (`2+2=4`); $x=3$ chọn $y=1$ (`3+1=4`) | **`True`** | Mọi $x \in D$ đều tìm được $y = 4 - x \in D$ |
+| $\exists y\, \forall x\, (x + y = 4)$ | Cần **1 số $y$ cố định** sao cho $1+y=4$ VÀ $2+y=4$ VÀ $3+y=4$ | **`False`** | Không có số $y$ nào cùng lúc bằng 3, 2 và 1! |
+| $\exists x\, (x^2 > 5)$ | $(1 > 5) \lor (4 > 5) \lor (9 > 5)$ | **`True`** | Nhân chứng: $x = 3$ ($3^2 = 9 > 5$) |
+| $\forall x\, (x \text{ là số lẻ})$ | $P(1) \land P(2) \land P(3) = \text{T} \land \text{F} \land \text{T}$ | **`False`** | Phản ví dụ: $x = 2$ |
+
+Chỉ cần nhìn hai dòng đầu ($\forall x\, \exists y$ đúng nhưng $\exists y\, \forall x$ sai), bạn thấy ngay quy tắc vàng: **không bao giờ được tùy tiện đổi thứ tự giữa $\forall$ và $\exists$**!
 
 ## Thứ tự của các lượng từ
 

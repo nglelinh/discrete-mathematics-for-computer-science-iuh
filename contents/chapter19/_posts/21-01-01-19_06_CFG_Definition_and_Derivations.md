@@ -21,6 +21,17 @@ excerpt: "Định nghĩa văn phạm phi ngữ cảnh (CFG), dẫn xuất trái 
 
 <p class="textbook-figure-caption" data-figure="19.3">Ngôn ngữ ngoặc cân bằng — ví dụ kinh điển của văn phạm phi ngữ cảnh.</p>
 
+Mỗi khi bạn viết một biểu thức toán học `(3 + 5) * (2 - 1)` hay một khối lệnh `if (...) { if (...) { ... } }` trong C/Java/Python, dấu ngoặc có thể lồng sâu bao nhiêu tầng tùy ý. Biểu thức chính quy bất lực trước cấu trúc đệ quy này — và đó là lúc **văn phạm phi ngữ cảnh (Context-Free Grammar — CFG)** bước ra sân khấu. Tên gọi "phi ngữ cảnh" bắt nguồn từ quy tắc cực kỳ gọn: vế trái luôn chỉ là **một biến duy nhất** $$A \to \alpha$$, nghĩa là ta có thể thay thế $$A$$ mà không cần nhìn sang hàng xóm hai bên.
+
+## Bản đồ kiến thức nền: Ba trụ cột của Văn phạm Phi ngữ cảnh (CFG)
+
+1. **Định nghĩa bộ bốn $$G = (V, \Sigma, R, S)$$**:
+   Mọi luật sinh đều có dạng $$A \to \alpha$$ với $$A \in V$$ và $$\alpha \in (V \cup \Sigma)^*$$, cho phép mô tả đệ quy tự nhiên các cấu trúc lồng nhau (biểu thức số học, JSON, XML, cú pháp lập trình).
+2. **Dẫn xuất trái nhất (Leftmost) và Phải nhất (Rightmost)**:
+   Để tránh việc cùng một cấu trúc lại có nhiều thứ tự thay thế lộn xộn, trình biên dịch luôn cố định thứ tự mở rộng: bộ phân tích từ trên xuống (LL) bám theo dẫn xuất trái nhất, còn bộ phân tích từ dưới lên (LR) tái tạo ngược dẫn xuất phải nhất.
+3. **Ký hiệu BNF (Backus–Naur Form)**:
+   Chính là dạng viết kỹ thuật của CFG được dùng trong tài liệu đặc tả chính thức của hầu hết mọi ngôn ngữ lập trình hiện đại.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -55,6 +66,21 @@ Chiều ($$\subseteq$$): Quy nạp theo số bước dẫn xuất: mỗi lần �
 Chiều ($$\supseteq$$): Để sinh chuỗi $$a^nb^n$$ bất kỳ, áp dụng $$n$$ lần luật $$S\to aSb$$ rồi áp dụng một lần luật $$S\to\varepsilon$$.
 
 </div>
+
+### Khung giải thích (nên đọc chậm): So sánh dẫn xuất trái nhất và phải nhất cho biểu thức `id + id * id`
+
+Xét văn phạm biểu thức số học có thứ tự ưu tiên chuẩn (nhân chặt hơn cộng):
+$$E \to E + T \mid T, \qquad T \to T * F \mid F, \qquad F \to (E) \mid \mathrm{id}.$$
+
+**Dẫn xuất trái nhất (luôn thay biến ngoài cùng bên trái):**
+1. $$E \Rightarrow_{\mathrm{lm}} E + T \Rightarrow_{\mathrm{lm}} T + T \Rightarrow_{\mathrm{lm}} F + T \Rightarrow_{\mathrm{lm}} \mathrm{id} + T$$
+2. $$\Rightarrow_{\mathrm{lm}} \mathrm{id} + T * F \Rightarrow_{\mathrm{lm}} \mathrm{id} + F * F \Rightarrow_{\mathrm{lm}} \mathrm{id} + \mathrm{id} * F \Rightarrow_{\mathrm{lm}} \mathrm{id} + \mathrm{id} * \mathrm{id}.$$
+
+**Dẫn xuất phải nhất (luôn thay biến ngoài cùng bên phải):**
+1. $$E \Rightarrow_{\mathrm{rm}} E + T \Rightarrow_{\mathrm{rm}} E + T * F \Rightarrow_{\mathrm{rm}} E + T * \mathrm{id} \Rightarrow_{\mathrm{rm}} E + F * \mathrm{id}$$
+2. $$\Rightarrow_{\mathrm{rm}} E + \mathrm{id} * \mathrm{id} \Rightarrow_{\mathrm{rm}} T + \mathrm{id} * \mathrm{id} \Rightarrow_{\mathrm{rm}} F + \mathrm{id} * \mathrm{id} \Rightarrow_{\mathrm{rm}} \mathrm{id} + \mathrm{id} * \mathrm{id}.$$
+
+Cả hai cách viết trông khác thứ tự nhưng đều sinh ra **đúng một cây phân tích duy nhất**, trong đó `id * id` được gom nhóm trước khi cộng với `id` bên trái!
 
 ## Bài tập
 

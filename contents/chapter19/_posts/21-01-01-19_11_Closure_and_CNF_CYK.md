@@ -17,6 +17,17 @@ excerpt: "Tính đóng của CFL dưới hợp, nối, sao; tính không đóng 
 
 </div>
 
+Cho một văn phạm phi ngữ cảnh $$G$$ và một chuỗi $$w$$ dài $$n$$ ký tự, làm sao máy tính kiểm tra xem $$w \in L(G)$$ hay không mà không rơi vào vòng lặp vô hạn kiểu $$A \Rightarrow B \Rightarrow A$$ hay thử nổ tổ hợp? Câu trả lời là một bộ đôi kinh điển: trước hết chuẩn hóa văn phạm về **Dạng chuẩn Chomsky (CNF)** để mọi cây phân tích đều là cây nhị phân chặt, rồi dùng quy hoạch động **thuật toán CYK** giải quyết bài toán thành viên trong đúng $$O(n^3 \cdot \vert G \vert)$$.
+
+## Bản đồ kiến thức nền: Ba trụ cột của Tính đóng, CNF và CYK
+
+1. **Tính đóng bất đối xứng của CFL**:
+   CFL đóng dưới hợp, nối và bao đóng Kleene (nhưng **không đóng** dưới giao và phần bù!). Bù lại, CFL đóng dưới **giao với ngôn ngữ chính quy** ($$L \cap R$$ vẫn là CFL) — công cụ cực mạnh để chứng minh một ngôn ngữ không phải CFL mà không cần Bổ đề Bơm dài dòng.
+2. **Dạng chuẩn Chomsky (CNF)**:
+   Chỉ cho phép hai loại quy tắc: $$A \to BC$$ (tách đôi) và $$A \to a$$ (sinh lá), cộng thêm $$S \to \varepsilon$$ nếu cần. Mọi chuỗi dài $$n \ge 1$$ luôn có đúng $$2n - 1$$ bước dẫn xuất!
+3. **Thuật toán CYK (Quy hoạch động trên đoạn con $$[i, j]$$)**:
+   Bảng tam giác $$T[i, j]$$ lưu tập tất cả biến $$A$$ sinh được chuỗi con $$w_i \dots w_j$$. Ô dài $$l$$ được điền bằng cách thử mọi điểm cắt $$k \in [i, j-1]$$ ghép hai ô con đã tính sẵn.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -68,6 +79,26 @@ Với văn phạm ở dạng chuẩn CNF, thuật toán CYK dùng quy hoạch đ
 <div data-demo="cyk-explainer" data-preset="classic"></div>
 </div>
 <script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
+
+### Khung giải thích (nên đọc chậm): Điền tay bảng tam giác CYK cho chuỗi `aabb`
+
+Xét văn phạm CNF sinh $$a^n b^n$$ ($$n \ge 1$$):
+$$S \to AB \mid AX, \quad X \to SB, \quad A \to a, \quad B \to b.$$
+
+Kiểm tra chuỗi $$w = a_1 a_2 b_3 b_4$$ (độ dài $$n = 4$$):
+- **Hàng độ dài 1** (từng ký tự đơn):
+  $$T[1,1] = \{A\}, \quad T[2,2] = \{A\}, \quad T[3,3] = \{B\}, \quad T[4,4] = \{B\}.$$
+- **Hàng độ dài 2** (ghép 1 + 1):
+  - $$T[1,2]$$ từ $$T[1,1] \times T[2,2] = \{AA\} \implies \emptyset$$.
+  - $$T[2,3]$$ từ $$T[2,2] \times T[3,3] = \{AB\} \implies \mathbf{\{S\}}$$ (vì $$S \to AB$$).
+  - $$T[3,4]$$ từ $$T[3,3] \times T[4,4] = \{BB\} \implies \emptyset$$.
+- **Hàng độ dài 3** (thử 2 cách cắt):
+  - $$T[1,3]$$: cắt `(1|2..3)` cho $$AS$$ (không có luật), cắt `(1..2|3)` cho $$\emptyset \implies \emptyset$$.
+  - $$T[2,4]$$: cắt `(2|3..4)` cho $$\emptyset$$, cắt `(2..3|4)` cho $$SB \implies \mathbf{\{X\}}$$ (vì $$X \to SB$$).
+- **Ô đỉnh độ dài 4 ($$T[1,4]$$)**:
+  - Cắt `(1|2..4)` cho $$T[1,1] \times T[2,4] = \{AX\} \implies \mathbf{\{S\}}$$ (vì $$S \to AX$$)!
+
+Vì $$S \in T[1,4]$$, thuật toán CYK kết luận **`aabb` thuộc $$L(G)$$** chỉ sau vài phép tra bảng mà hoàn toàn không cần quay lui!
 
 ## Bài tập
 

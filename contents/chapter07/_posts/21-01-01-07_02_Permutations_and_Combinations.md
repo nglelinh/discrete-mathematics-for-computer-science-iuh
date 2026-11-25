@@ -10,9 +10,26 @@ lang: en
 excerpt: "Hoán vị, chỉnh hợp, tổ hợp và hoán vị vòng tròn — phân biệt thứ tự, xếp hàng thẳng so với bàn tròn, cùng các công thức n!, P(n,k), C(n,k), (n−1)!."
 ---
 
+
+Chọn 3 sinh viên từ một lớp 30 người: nếu bạn bầu họ vào 3 chức vụ *Lớp trưởng, Lớp phó, Thủ quỹ*, việc tráo đổi An và Bình lập tức tạo ra một ban cán sự mới; nhưng nếu chỉ chọn 3 bạn lập một *nhóm bài tập*, tráo đổi họ chẳng thay đổi gì cả. Đúng một câu hỏi định mệnh—**"Thứ tự sắp xếp có quan trọng hay không?"**—chia đôi toàn bộ bài toán đếm cơ bản thành **Hoán vị / Chỉnh hợp** và **Tổ hợp**.
+
 Ở mục trước, chúng ta đã học quy tắc cộng và quy tắc nhân. Mục này giới thiệu **hoán vị** và **tổ hợp** — hai khái niệm cơ bản được phân biệt dựa trên việc thứ tự sắp xếp có quan trọng hay không.
 
 Khi sắp lịch thuyết trình, chọn đội tuyển hay sinh chuỗi ký tự, câu hỏi không chỉ là chọn **những phần tử nào**, mà còn là có xét đến **thứ tự** hay không. Nếu thứ tự quan trọng, số khả năng tăng rất nhanh; nếu không, nhiều cách sắp xếp khác nhau sẽ được gộp làm một. Các công thức giai thừa, chỉnh hợp và tổ hợp đều bắt nguồn trực tiếp từ việc phân tích quá trình chọn và sắp xếp đó.
+
+## Bản đồ kiến thức nền: Bốn cột mốc phân biệt Giai thừa, Hoán vị, Chỉnh hợp và Tổ hợp
+
+1. **Giai thừa ($n!$) & Hoán vị toàn bộ ($P_n = n!$)**:
+   Số cách sắp xếp toàn bộ $n$ phần tử phân biệt thành một hàng ngang. Riêng khi xếp thành **vòng tròn** (xoay vòng được xem là trùng nhau), ta cố định 1 phần tử làm mốc nên chỉ còn $(n - 1)!$ cách.
+
+2. **Chỉnh hợp ($P(n, k) = A_n^k = \frac{n!}{(n-k)!}$) — Chọn $k$ phần tử và CÓ xếp thứ tự**:
+   Áp dụng khi mỗi vị trí có vai trò/nhãn riêng (bảng xếp hạng huy chương Vàng–Bạc–Đồng, mật khẩu không lặp, gán tác vụ vào các máy chủ khác nhau).
+
+3. **Tổ hợp ($C(n, k) = \binom{n}{k} = \frac{P(n, k)}{k!} = \frac{n!}{k!(n-k)!}$) — Chọn $k$ phần tử KHÔNG xét thứ tự**:
+   Mỗi tập con $k$ phần tử bị đếm lặp đúng $k!$ lần trong $P(n, k)$, nên chia cho $k!$ sẽ khử sạch yếu tố thứ tự. Áp dụng khi chọn ủy ban, tập con, bộ bài, hay nhóm phần tử bình đẳng.
+
+4. **Quy tắc kiểm tra chéo trong 1 giây**:
+   Lấy thử một kết quả hợp lệ rồi **đổi chỗ 2 phần tử bên trong**—nếu ra phương án *khác* $\to$ dùng **Chỉnh hợp / Hoán vị**; nếu vẫn là *cùng một* phương án $\to$ dùng **Tổ hợp**.
 
 ## Mục tiêu học tập
 
@@ -198,6 +215,24 @@ $$C(n,k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}$$
 | **So sánh giá trị** | P(n,k) ≥ C(n,k) | C(n,k) ≤ P(n,k) |
 
 **Mối quan hệ**: P(n,k) = k! × C(n,k), bởi mỗi tổ hợp gồm $$k$$ phần tử có thể sắp xếp theo $$k!$$ thứ tự khác nhau.
+
+### Khung giải thích (nên đọc chậm): Đối chiếu tay $P(5, 3)$, $C(5, 3)$ và hoán vị vòng tròn trên cùng một nhóm 5 sinh viên
+
+Xét 5 sinh viên phân biệt `A, B, C, D, E`:
+
+1. **Chọn 3 bạn làm Nhóm trưởng – Thư ký – Thủ quỹ (Có thứ tự $\to$ Chỉnh hợp)**:
+   - Nhóm trưởng: 5 cách; Thư ký: 4 cách; Thủ quỹ: 3 cách.
+   - Tổng cộng: $P(5, 3) = \frac{5!}{(5-3)!} = 5 \times 4 \times 3 = \mathbf{60}$ cách.
+   *(Lưu ý: bộ `(A, B, C)` khác hoàn toàn `(B, A, C)` vì chức vụ đã đổi!)*
+
+2. **Chọn 3 bạn vào một đội thi bình đẳng (Không thứ tự $\to$ Tổ hợp)**:
+   Trong 60 cách ở trên, đúng một đội `{A, B, C}` đã xuất hiện tới $3! = 6$ lần dưới dạng 6 cách phân vai: `ABC, ACB, BAC, BCA, CAB, CBA`. Để không đếm trùng, ta chia cho $3!$:
+   $$C(5, 3) = \binom{5}{3} = \frac{P(5, 3)}{3!} = \frac{60}{6} = \mathbf{10}\text{ đội}.$$
+   *(Mẹo kiểm tra nhanh tính đối xứng: chọn 3 bạn đi thi cũng chính là chọn 2 bạn ở nhà, nên $\binom{5}{3} = \binom{5}{2} = \frac{5 \times 4}{2} = 10$!)*
+
+3. **Xếp cả 5 bạn ngồi quanh một bàn tròn (Hoán vị vòng tròn)**:
+   Nếu xếp hàng ngang có $5! = 120$ cách. Khi ngồi bàn tròn, 5 cách xoay vòng (`ABCDE, BCDEA, CDEAB, DEABC, EABCD`) thực chất là một kiểu ngồi duy nhất. Cố định `A` tại vị trí 12 giờ, còn 4 ghế cho 4 bạn còn lại:
+   $$(5 - 1)! = 4! = \mathbf{24}\text{ cách}.$$
 
 ## Bảng tổng kết các công thức cơ bản
 

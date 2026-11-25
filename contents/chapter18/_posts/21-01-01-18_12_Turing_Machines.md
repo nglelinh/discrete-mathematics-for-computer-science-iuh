@@ -21,6 +21,17 @@ excerpt: "Định nghĩa hình thức máy Turing bộ 7, cấu hình và bướ
 
 <p class="textbook-figure-caption" data-figure="18.6">Băng đọc/ghi vô hạn cung cấp bộ nhớ không bị giới hạn như ở DFA.</p>
 
+Năm 1936, khi máy tính điện tử còn chưa ra đời, Alan Turing ngồi tự hỏi: *"Một người tính toán cầm bút chì và cuốn vở kẻ ô có thể làm được những phép tính nào?"* Để trả lời câu hỏi đó, ông rút gọn toàn bộ hành động tính toán của con người thành một thiết bị cực kỳ tối giản: một cuộn băng giấy dài vô hạn chia thành từng ô, một đầu đọc/ghi chỉ di chuyển từng ô sang trái hoặc phải, và một bảng quy tắc hữu hạn. Điều kỳ diệu là mô hình tưởng chừng thô sơ ấy lại mạnh ngang ngửa với mọi siêu máy tính hiện đại ngày nay.
+
+## Bản đồ kiến thức nền: Ba trụ cột của Máy Turing
+
+1. **Bộ nhớ đọc/ghi không giới hạn (Băng vô hạn)**:
+   Khác với DFA (chỉ nhớ trạng thái hữu hạn) hay PDA (chỉ chạm được đỉnh ngăn xếp LIFO), máy Turing có thể đi tới đi lui tùy ý trên băng, ghi đè kết quả trung gian và dùng chính băng làm bộ nhớ nháp không giới hạn.
+2. **Cấu hình (Configuration) và Quan hệ bước chuyển $$\vdash$$**:
+   Toàn bộ trạng thái của một máy tính đang chạy được chụp gọn thành một chuỗi $$uqv$$: phần bên trái đầu đọc là $$u$$, trạng thái hiện tại là $$q$$, và ký hiệu ngay dưới đầu đọc là ký tự đầu tiên của $$v$$. Một tính toán chỉ là dãy bước chuyển $$C_0 \vdash C_1 \vdash \cdots \vdash C_k$$.
+3. **Luận đề Church–Turing (Chuẩn mực phổ quát của thuật toán)**:
+   Mọi mô hình tính toán vật lý hợp lý (máy nhiều băng, RAM, phép tính $$\lambda$$, Python, C++) đều tính được đúng cùng một lớp hàm như máy Turing đơn định 1 băng — chỉ khác nhau về tốc độ chứ không khác về *khả năng tính được*.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -63,6 +74,24 @@ Chạy thử máy Turing từng bước để xem quá trình đọc ký hiệu,
 <div data-demo="tm-explainer" data-preset="inc"></div>
 </div>
 <script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
+
+### Khung giải thích (nên đọc chậm): Chạy tay máy Turing cộng 1 vào số nhị phân `1011`
+
+Để thấy máy Turing thực sự "tính toán" ra sao mà không cần CPU phức tạp, ta thiết kế máy cộng 1 vào số nhị phân (đầu đọc bắt đầu ở bit đầu tiên bên trái):
+- **Trạng thái $$q_{\text{right}}$$**: Đi sang phải (`R`) qua mọi ký tự `0`, `1` cho đến khi gặp ô trống $$\sqcup$$, thì quay sang trái (`L`) và chuyển sang $$q_{\text{carry}}$$.
+- **Trạng thái $$q_{\text{carry}}$$**: Nếu gặp `1` thì đổi thành `0` và đi tiếp sang trái (`L`, giữ nhớ 1); nếu gặp `0` (hoặc $$\sqcup$$) thì đổi thành `1` và chuyển sang trạng thái dừng chấp nhận $$q_A$$.
+
+Theo dõi từng cấu hình $$uqv$$ với đầu vào `1011` (giá trị thập phân $$11$$):
+
+| Bước | Cấu hình $$uqv$$ | Ký hiệu đọc | Hành động của $$\delta$$ | Giải thích trực quan |
+| :---: | :--- | :---: | :--- | :--- |
+| 0 | $$q_{\text{right}} 1011$$ | `1` | Ghi `1`, đi `R`, giữ $$q_{\text{right}}$$ | Bỏ qua để tìm bit cuối |
+| 1–3 | $$1011 q_{\text{right}} \sqcup$$ | $$\sqcup$$ | Ghi $$\sqcup$$, đi `L`, sang $$q_{\text{carry}}$$ | Đã tới cuối chuỗi, quay lại cộng 1 |
+| 4 | $$101 q_{\text{carry}} 1$$ | `1` | Ghi `0`, đi `L`, giữ $$q_{\text{carry}}$$ | $$1 + 1 = 0$$ nhớ 1 |
+| 5 | $$10 q_{\text{carry}} 10$$ | `1` | Ghi `0`, đi `L`, giữ $$q_{\text{carry}}$$ | $$1 + 1 = 0$$ nhớ 1 |
+| 6 | $$1 q_{\text{carry}} 000$$ | `0` | Ghi `1`, đi `R`, sang $$q_A$$ | $$0 + 1 = 1$$, hết nhớ → **Dừng!** |
+
+Kết quả trên băng là `1100` (giá trị $$12$$). Chỉ với 2 trạng thái làm việc, máy Turing đã thực hiện hoàn chỉnh phép cộng nhớ nhị phân cho chuỗi dài tùy ý!
 
 ## Bài tập
 

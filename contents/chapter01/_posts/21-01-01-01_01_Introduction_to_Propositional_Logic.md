@@ -10,6 +10,9 @@ lang: en
 excerpt: "Xây dựng nền tảng logic mệnh đề — hệ thống hình thức cho phép biểu diễn, phân tích và suy luận về các phát biểu có giá trị đúng hoặc sai."
 ---
 
+
+Một hợp đồng phần mềm ghi rằng *"Khách hàng VIP hoặc có hóa đơn trên 1 triệu và thanh toán trước hạn sẽ được hoàn tiền"*—chỉ một câu tiếng Việt tưởng chừng bình thường ấy lại có thể bị hai lập trình viên hiểu theo hai cách hoàn toàn khác nhau, dẫn đến thất thoát hàng tỷ đồng khi triển khai. **Logic mệnh đề (Propositional Logic)** ra đời chính để dập tắt sự mơ hồ đó: nó rút gọn mọi phát biểu khẳng định về đúng hai giá trị chân trị rạch ròi **Đúng (`True`)** hoặc **Sai (`False`)**, tạo nên nền móng chung cho toán học chặt chẽ, mạch điện tử silicon và mọi câu lệnh điều kiện trong lập trình.
+
 <div class="textbook-epigraph" markdown="1">
 
 "Logic is the beginning of wisdom, not the end of it."
@@ -25,6 +28,19 @@ Mỗi lần lập trình viên viết `if (score >= 5)` hay thêm điều kiện
 Khi hệ thống phức tạp hơn, trực giác của con người dễ dẫn đến sai sót: một điều kiện tưởng như hợp lý vẫn có thể cho kết quả ngược ở một trường hợp biên; yêu cầu nghiệp vụ viết bằng ngôn ngữ tự nhiên có thể bị hiểu theo nhiều cách; một đoạn mã chạy không báo lỗi chưa chắc đã đúng với mọi đầu vào. Logic mệnh đề chuyển các câu khẳng định mơ hồ thành đối tượng có thể **kiểm tra, phân tích và tính toán** một cách chính xác. Nắm vững khái niệm này giúp chúng ta viết điều kiện rõ ràng hơn, thiết kế bộ kiểm thử (test case) bao phủ đủ trường hợp, đọc hiểu yêu cầu nghiệp vụ chính xác hơn, và hiểu cách máy tính đánh giá logic ở tầng thấp nhất.
 
 Mục này tập trung trả lời hai câu hỏi căn bản: **mệnh đề là gì**, và **vì sao không phải mọi câu đều là mệnh đề**.
+
+Mọi dòng lệnh `if (x > 0 && !is_locked)` trong chương trình, mọi cổng logic bằng silicon bên trong CPU, và mọi câu truy vấn `WHERE` trong cơ sở dữ liệu đều bắt nguồn từ một ngôn ngữ tối giản nhưng cực kỳ sắc bén: **Logic Mệnh đề (Propositional Logic)**. Thay vì để ngôn ngữ tự nhiên gây mơ hồ ("sinh viên giỏi Toán hoặc Tin học"), logic mệnh đề chắt lọc mọi phát biểu thành đúng hai giá trị chân trị rạch ròi: **Đúng (`True` / `1`)** hoặc **Sai (`False` / `0`)**.
+
+## Bản đồ kiến thức nền: Logic Mệnh đề đứng trên những trụ cột nào?
+
+1. **Nguyên lý nhị trị (Law of Excluded Middle & Non-Contradiction)**:
+   Một mệnh đề hợp lệ phải có giá trị chân trị xác định duy nhất—hoặc Đúng, hoặc Sai, không bao giờ vừa Đúng vừa Sai. Các câu hỏi, câu cảm thán, mệnh lệnh hay câu chứa biến tự do chưa gắn giá trị (như "$x + 2 = 5$") đều **không phải** mệnh đề.
+
+2. **Cú pháp (Syntax) vs. Ngữ nghĩa (Semantics)**:
+   **Cú pháp** quy định cách ghép biến mệnh đề ($p, q, r$) với các phép toán logic thành công thức hợp lệ (*well-formed formula*). **Ngữ nghĩa** gán giá trị chân trị `T`/`F` cho từng biến để định giá toàn bộ công thức.
+
+3. **Cầu nối từ Logic đến Khoa học Máy tính**:
+   Mỗi biến mệnh đề tương ứng với 1 bit (`0`/`1`), mỗi công thức tương ứng với một mạch tổ hợp (combinational circuit) hoặc biểu thức điều kiện Boolean—nền tảng trực tiếp cho thiết kế vi mạch, kiểm chứng phần mềm và truy vấn cơ sở dữ liệu.
 
 ## Mục tiêu học tập
 
@@ -181,6 +197,19 @@ Nếu một hệ thống đủ mạnh có thể tự chứng minh rằng nó kh�
 | Liên hệ với bài toán dừng (Halting Problem) | Không thể viết một chương trình tổng quát dự đoán mọi chương trình khác có dừng hay không |
 
 **Liên hệ với lập trình**: Định lý bất toàn giải thích vì sao không thể xây dựng một trình biên dịch tự động phát hiện mọi lỗi logic trong mọi chương trình — luôn tồn tại những trường hợp không thể quyết định được.
+
+### Khung giải thích (nên đọc chậm): Phân loại 6 phát biểu thực tế bằng tiêu chuẩn mệnh đề
+
+Để tránh nhầm lẫn phổ biến nhất khi mới học Logic, hãy tự kiểm tra bằng tay 6 phát biểu sau theo đúng 2 tiêu chí: *(1) có phải câu trần thuật không?* và *(2) có chân trị Đúng/Sai xác định độc lập với biến chưa biết không?*
+
+| STT | Phát biểu | Là mệnh đề? | Giải thích cầm tay chỉ việc |
+| :---: | :--- | :---: | :--- |
+| 1 | `"17 là số nguyên tố."` | **Có (`True`)** | Câu trần thuật có chân trị xác định (17 chỉ chia hết cho 1 và 17). |
+| 2 | `"2 + 2 = 5."` | **Có (`False`)** | Mệnh đề **sai** vẫn là mệnh đề! Đừng nhầm "mệnh đề" với "câu đúng". |
+| 3 | `"Hãy đóng cửa lại!"` | **Không** | Câu mệnh lệnh, không có nghĩa Đúng/Sai. |
+| 4 | `"x + 3 = 7."` | **Không** | Chứa biến tự do $x$: đúng khi $x = 4$, sai khi $x = 0$ (đây là *vị từ*, học ở Chương 2). |
+| 5 | `"Trên sao Hỏa từng có nước lỏng."` | **Có** | Chân trị tồn tại khách quan dù con người đã biết hay chưa. |
+| 6 | `"Câu này là sai."` | **Không** | Nghịch lý kẻ nói dối: nếu Đúng thì hóa Sai, nếu Sai thì hóa Đúng (vi phạm nguyên lý nhị trị). |
 
 ## Ký hiệu mệnh đề
 

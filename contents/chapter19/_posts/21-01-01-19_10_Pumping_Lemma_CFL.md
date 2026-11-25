@@ -17,6 +17,17 @@ excerpt: "Phát biểu bổ đề bơm cho ngôn ngữ phi ngữ cảnh (CFL), �
 
 </div>
 
+Làm thế nào để khẳng định chắc chắn rằng *không một ai trên thế giới* có thể viết ra một văn phạm phi ngữ cảnh cho ngôn ngữ $$L = \{a^n b^n c^n \mid n \ge 0\}$$? Ta không thể thử vô hạn văn phạm. Giống như Bổ đề Bơm cho ngôn ngữ chính quy khai thác chu trình trên đồ thị DFA, **Bổ đề Bơm cho CFL** khai thác nguyên lý Dirichlet trên **chiều cao của cây phân tích**: khi chuỗi đủ dài, một biến $$A$$ bắt buộc phải lặp lại trên cùng một đường đi từ gốc xuống lá, tạo ra hai đoạn bơm đối xứng $$v$$ và $$y$$.
+
+## Bản đồ kiến thức nền: Ba trụ cột của Bổ đề Bơm CFL
+
+1. **Nguyên lý Dirichlet trên Cây phân tích (Phiên bản CNF)**:
+   Nếu văn phạm ở dạng chuẩn Chomsky có $$\vert V \vert$$ biến, mọi cây phân tích có chiều cao $$\le \vert V \vert$$ chỉ sinh tối đa $$2^{\vert V \vert - 1}$$ lá. Vậy mọi chuỗi dài $$p = 2^{\vert V \vert}$$ trở lên bắt buộc có đường đi chứa một biến $$A$$ lặp lại ít nhất 2 lần.
+2. **Tách năm phần $$s = uvxyz$$ với ba điều kiện vàng**:
+   (1) $$\vert vy \vert \ge 1$$ (ít nhất một trong hai đoạn bơm khác rỗng), (2) $$\vert vxy \vert \le p$$ (cửa sổ bơm bị giới hạn chiều dài), và (3) $$u v^i x y^i z \in L$$ với mọi $$i \ge 0$$ (kể cả bơm xuống $$i = 0$$!).
+3. **Cấu trúc trò chơi đối kháng (Adversary Game)**:
+   Đối thủ chọn hằng số $$p$$ → Ta chọn chuỗi $$s \in L$$ phụ thuộc $$p$$ → Đối thủ chọn cách chia $$uvxyz$$ hợp lệ → Ta chỉ ra một giá trị $$i$$ (thường là $$i=0$$ hoặc $$i=2$$) làm $$u v^i x y^i z \notin L$$.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -62,6 +73,20 @@ Duyệt mọi cách chia $$w = uvxyz$$ thỏa mãn $$\lvert vxy\rvert \le p$$ v�
 **Chứng minh.** Giả sử phản chứng $$L$$ là CFL với hằng số bơm $$p$$, và xét chuỗi $$w=a^pb^pc^p \in L$$. Vì đoạn $$vxy$$ có độ dài không vượt quá $$p$$, nó không thể đồng thời chứa cả ba ký tự $$a, b, c$$. Do đó khi bơm với $$k=2$$ (hoặc $$k=0$$), số lượng của ít nhất một trong ba ký tự sẽ thay đổi không đồng đều với các ký tự còn lại, phá vỡ điều kiện cân bằng ba nhóm (chi tiết phân tích từng trường hợp xem trong Sipser).
 
 </div>
+
+### Khung giải thích (nên đọc chậm): Chứng minh từng bước $$L = \{a^n b^n c^n \mid n \ge 0\}$$ không phải CFL
+
+Giả sử phản chứng $$L$$ là CFL với độ dài bơm $$p \ge 1$$. Ta chọn chuỗi thử cực sắc bén:
+$$s = a^p b^p c^p \in L \qquad (\vert s \vert = 3p \ge p).$$
+
+Theo Bổ đề Bơm, đối thủ chia $$s = uvxyz$$ với $$\vert vxy \vert \le p$$ và $$\vert vy \vert \ge 1$$.
+- **Nhận xét then chốt từ $$\vert vxy \vert \le p$$:** Vì khối $$b^p$$ ở giữa dài đúng $$p$$, cửa sổ $$vxy$$ dài tối đa $$p$$ **không thể chạm đồng thời vào cả `a` lẫn `c`**! Do đó $$vxy$$ chứa tối đa **2 loại ký tự** (chỉ `a` và `b`, hoặc chỉ `b` và `c`, hoặc chỉ 1 loại).
+- **Bơm lên với $$i = 2$$** để tạo chuỗi $$s' = u v^2 x y^2 z$$:
+  - Vì $$\vert vy \vert \ge 1$$, số lượng của ít nhất 1 loại ký tự tăng thêm chặt ($$> p$$).
+  - Vì $$vxy$$ thiếu ít nhất 1 loại ký tự (hoặc `a` hoặc `c`), loại ký tự bị bỏ sót đó vẫn giữ nguyên số lượng là $$p$$.
+  - Suy ra trong $$s'$$, số lượng `a`, `b`, `c` **không thể bằng nhau cả ba** $$\implies s' \notin L$$!
+
+Mâu thuẫn hoàn toàn với Bổ đề Bơm — vậy $$a^n b^n c^n$$ chắc chắn nằm ngoài lớp CFL!
 
 ## Bài tập
 

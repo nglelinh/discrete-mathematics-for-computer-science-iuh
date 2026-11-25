@@ -10,6 +10,16 @@ lang: vi
 excerpt: "Xây dựng nguyên lý bao hàm–loại trừ (inclusion–exclusion) để đếm chính xác hợp của nhiều tập hợp giao nhau, kèm chứng minh tổng quát và dạng bù."
 ---
 
+Giả sử lớp có 30 sinh viên học Python và 25 sinh viên học SQL — tổng số sinh viên học ít nhất một trong hai môn có phải là $$30 + 25 = 55$$ không? Chỉ đúng khi không ai học cả hai! Nếu có 10 bạn học cả hai môn, phép cộng ngây thơ đã đếm nhầm 10 bạn đó hai lần, buộc ta phải trừ đi 10. **Nguyên lý Bao hàm – Loại trừ (Inclusion–Exclusion Principle)** khái quát trực giác "cộng thừa rồi trừ bớt, trừ quá lại cộng bù" này lên $$n$$ tập hợp bất kỳ.
+
+**Mạch bài học:** Từ công thức 2 tập và 3 tập trên biểu đồ Venn $$\longrightarrow$$ công thức tổng quát với **dấu xen kẽ $$(-1)^{k-1}$$** $$\longrightarrow$$ **dạng phần bù** đếm các phần tử **không** thỏa bất kỳ tính chất cấm nào $$\longrightarrow$$ ứng dụng đếm số chia hết.
+
+## Bản đồ kiến thức nền: Nguyên lý Bao hàm – Loại trừ đứng ở đâu trong Toán rời rạc?
+
+- **Lý thuyết đếm với tập giao nhau (Overlapping Counting):** Quy tắc cộng cơ bản đòi hỏi các tập rời nhau đôi một. Bao hàm – Loại trừ dỡ bỏ hoàn toàn điều kiện rời nhau đó bằng cách hiệu chỉnh lần lượt theo kích thước giao bậc 2, bậc 3, ..., bậc $$n$$.
+- **Chứng minh bằng Định lý Nhị thức (Binomial Cancellation):** Tại sao một phần tử thuộc đúng $$m \ge 1$$ tập hợp luôn được đếm **đúng 1 lần** trong tổng xen kẽ? Vì số lần nó bị cộng–trừ là $$\binom{m}{1} - \binom{m}{2} + \binom{m}{3} - \cdots + (-1)^{m-1}\binom{m}{m} = 1 - (1 - 1)^m = 1$$!
+- **Dạng phần bù & Ràng buộc phủ định (Complementary Form):** Trong khoa học máy tính và tổ hợp, ta thường muốn đếm các đối tượng **tránh toàn bộ các điều kiện lỗi $$A_1, \dots, A_n$$**: $$\vert \overline{A_1} \cap \cdots \cap \overline{A_n} \vert = \vert U \vert - \sum \vert A_i \vert + \sum \vert A_i \cap A_j \vert - \cdots$$.
+
 Ở Chương 4, chúng ta đã làm việc với tập hợp cùng các phép toán hợp, giao và hiệu. Mục này xây dựng **nguyên lý bao hàm–loại trừ** (inclusion–exclusion) — công thức đếm chính xác $$\vert A_1 \cup \cdots \cup A_n\vert $$ khi các tập hợp có phần giao nhau. Nếu chỉ cộng trực tiếp $$\vert A_i\vert $$, các phần tử nằm trong phần giao sẽ bị đếm trùng; nguyên lý bù trừ xen kẽ dấu theo kích thước phần giao để khử sai số đó. Công cụ này được dùng rộng rãi trong lý thuyết xác suất, truy vấn cơ sở dữ liệu (`UNION`/`INTERSECT` trong SQL) và nhiều bài toán tổ hợp có ràng buộc chồng lấn.
 
 ![Bao hàm–loại trừ ba tập](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)
@@ -158,6 +168,38 @@ Minh họa biểu đồ Venn ở chế độ bao hàm–loại trừ giúp quan 
 <div data-demo="venn-explainer" data-sets="3" data-focus="ie"></div>
 </div>
 <script src="{{ '/public/js/explainers/venn-explainer.js' | relative_url }}"></script>
+
+## Ví dụ tính tay cầm tay chỉ việc: Đếm số nguyên từ 1 đến 100 KHÔNG chia hết cho 2, 3 hoặc 5
+
+Đặt vũ trụ $$U = \{1, 2, \dots, 100\}$$ ($$\vert U \vert = 100$$), và các tập "vi phạm":
+- $$A_2$$: các số chia hết cho 2; $$A_3$$: chia hết cho 3; $$A_5$$: chia hết cho 5.
+
+1. **Đếm từng tập đơn (cộng vào phần vi phạm):**
+   - $$\vert A_2 \vert = \lfloor 100/2 \rfloor = 50$$
+   - $$\vert A_3 \vert = \lfloor 100/3 \rfloor = 33$$
+   - $$\vert A_5 \vert = \lfloor 100/5 \rfloor = 20$$
+   - Tổng bậc 1: $$S_1 = 50 + 33 + 20 = 103$$.
+2. **Đếm các giao đôi (trừ phần bị đếm trùng):**
+   - $$\vert A_2 \cap A_3 \vert = \lfloor 100/6 \rfloor = 16$$
+   - $$\vert A_2 \cap A_5 \vert = \lfloor 100/10 \rfloor = 10$$
+   - $$\vert A_3 \cap A_5 \vert = \lfloor 100/15 \rfloor = 6$$
+   - Tổng bậc 2: $$S_2 = 16 + 10 + 6 = 32$$.
+3. **Đếm giao ba (cộng bù lại phần vừa bị trừ sạch):**
+   - $$\vert A_2 \cap A_3 \cap A_5 \vert = \lfloor 100/30 \rfloor = 3$$ (gồm 30, 60, 90).
+   - Tổng bậc 3: $$S_3 = 3$$.
+4. **Áp dụng công thức Bao hàm – Loại trừ:**
+   - Số chia hết cho ít nhất một trong 2, 3, 5:
+     $$\vert A_2 \cup A_3 \cup A_5 \vert = S_1 - S_2 + S_3 = 103 - 32 + 3 = 74.$$
+   - Số **KHÔNG** chia hết cho cả 2, 3 và 5 (dạng phần bù):
+     $$\vert \overline{A_2} \cap \overline{A_3} \cap \overline{A_5} \vert = 100 - 74 = 26\text{ số!}$$
+
+### Khung giải thích: Tại sao dấu cộng–trừ xen kẽ luôn triệt tiêu chính xác sai số (nên đọc chậm)
+
+1. **Bước 1 — Theo dõi số phận của một phần tử nằm trong đúng $$m$$ tập:** Giả sử số `30` nằm trong cả $$A_2, A_3, A_5$$ ($$m = 3$$). Trong $$S_1$$ nó được cộng $$\binom{3}{1} = 3$$ lần; trong $$-S_2$$ nó bị trừ $$\binom{3}{2} = 3$$ lần (tạm về 0); đến $$+S_3$$ nó được cộng lại $$\binom{3}{3} = 1$$ lần — tổng cuối cùng là $$3 - 3 + 1 = 1$$!
+2. **Bước 2 — Quy tắc đảo ngược bài toán sang tập vi phạm:** Khi đề bài yêu cầu "không có tính chất nào trong $$P_1, \dots, P_n$$", hãy định nghĩa $$A_i$$ là tập **vi phạm** điều kiện $$i$$ — vì phần giao $$A_i \cap A_j$$ (đồng thời vi phạm cả $$i$$ và $$j$$) luôn dễ đếm hơn nhiều so với hợp trực tiếp.
+3. **Bước 3 — Bất đẳng thức Bonferroni khi không tính hết được:** Nếu $$n$$ quá lớn ($$2^n$$ số hạng), chỉ cần dừng ở bậc lẻ ta có **cận trên** ($$S_1$$, $$S_1 - S_2 + S_3$$), còn dừng ở bậc chẵn ta có **cận dưới** ($$S_1 - S_2$$) — rất hữu ích trong ước lượng xác suất và truy vấn CSDL!
+
+$$\left\vert \bigcup_{i=1}^n A_i \right\vert = \sum_{k=1}^n (-1)^{k-1} \sum_{1 \le i_1 < \cdots < i_k \le n} \left\vert A_{i_1} \cap \cdots \cap A_{i_k} \right\vert.$$
 
 ## Bài tập
 

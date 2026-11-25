@@ -9,6 +9,8 @@ lang: en
 excerpt: "Đồng dư a ≡ b (mod n), phép toán modulo, phương trình đồng dư tuyến tính, nghịch đảo modulo và Euclid mở rộng, CRT, lũy thừa modulo nhanh, Fermat và Euler."
 ---
 
+> **Câu chuyện mở đầu:** Nếu bây giờ là 10 giờ tối và 5 tiếng nữa chuông báo thức kêu, bạn không trả lời "15 giờ" — bạn lập tức trả lời **3 giờ sáng**! Bạn vừa thực hiện phép tính $$10 + 5 \equiv 3 \pmod{12}$$ trong **số học đồng hồ (số học modulo)** mà Carl Friedrich Gauss đã hệ thống hóa thành một đại số hoàn chỉnh năm 1801. Từ tìm nghịch đảo modulo, Định lý Fermat nhỏ cho đến **Định lý Số dư Trung Hoa (CRT)** — đây chính là bộ động cơ số học của mật mã học và tính toán phân tán!
+
 <div class="textbook-epigraph" markdown="1">
 
 "Disquisitiones Arithmeticae made congruence the everyday language of number theory."
@@ -38,6 +40,60 @@ excerpt: "Đồng dư a ≡ b (mod n), phép toán modulo, phương trình đồ
 **Từ khóa**: đồng dư (congruence), modulo, nghịch đảo modulo, CRT, lũy thừa modulo, định lý Fermat nhỏ, định lý Euler.
 
 </div>
+
+## Bản đồ kiến thức nền: Số học Modulo và ba Định lý Trụ cột
+
+### 1. Vành $$\mathbb{Z}_m$$ & Nghịch đảo Modulo
+- **Bản chất:** $$a \equiv b \pmod m$$ nghĩa là $$m \mid (a - b)$$. Ta cộng, trừ, nhân tự do theo modulo $$m$$, nhưng **phép chia chỉ tồn tại khi $$\gcd(a, m) = 1$$**: khi đó tồn tại duy nhất nghịch đảo $$a^{-1} \bmod m$$ tìm bằng Thuật toán Euclid mở rộng!
+
+### 2. Định lý Fermat nhỏ & Định lý Euler
+- **Fermat nhỏ:** Với $$p$$ nguyên tố và $$p \nmid a$$: $$a^{p-1} \equiv 1 \pmod p$$.
+- **Euler tổng quát:** Với $$\gcd(a, n) = 1$$: $$a^{\varphi(n)} \equiv 1 \pmod n$$ — nền tảng trực tiếp chứng minh bước giải mã của RSA!
+
+### 3. Định lý Số dư Trung Hoa (CRT)
+- **Bản chất:** Nếu $$m_1, \dots, m_k$$ đôi một nguyên tố cùng nhau, hệ đồng dư $$x \equiv a_i \pmod{m_i}$$ luôn có **nghiệm duy nhất** theo modulo $$M = m_1\cdots m_k$$ — cho phép tách phép tính trên số khổng lồ thành nhiều phép tính song song trên các modulo nhỏ!
+
+## Ví dụ tính tay cầm tay chỉ việc
+
+### Ví dụ 1: Tìm nghịch đảo $$7^{-1} \pmod{26}$$ bằng Euclid mở rộng
+Ta cần giải $$7x + 26y = 1$$:
+- $$26 = 3 \cdot 7 + 5$$
+- $$7 = 1 \cdot 5 + 2$$
+- $$5 = 2 \cdot 2 + 1 \implies 1 = 5 - 2\cdot 2 = 5 - 2(7 - 5) = 3\cdot 5 - 2\cdot 7 = 3(26 - 3\cdot 7) - 2\cdot 7 = 3\cdot 26 - 11\cdot 7$$.
+Vậy $$7 \cdot (-11) \equiv 1 \pmod{26}$$. Cộng $$26$$ để lấy đại diện dương: $$-11 + 26 = 15$$!
+**Kiểm tra:** $$7 \times 15 = 105 = 4 \times 26 + 1 \equiv 1 \pmod{26}$$! ✓
+
+### Ví dụ 2: Giải hệ Định lý Số dư Trung Hoa cổ điển của Tôn Tử
+Tìm $$x$$ thỏa: $$x \equiv 2 \pmod 3,\; x \equiv 3 \pmod 5,\; x \equiv 2 \pmod 7$$.
+- $$M = 3\cdot 5\cdot 7 = 105$$; các tích phụ: $$M_1 = 35,\; M_2 = 21,\; M_3 = 15$$.
+- Tìm nghịch đảo từng tích phụ:
+  - $$35 y_1 \equiv 2 y_1 \equiv 1 \pmod 3 \implies y_1 = 2$$.
+  - $$21 y_2 \equiv 1 y_2 \equiv 1 \pmod 5 \implies y_2 = 1$$.
+  - $$15 y_3 \equiv 1 y_3 \equiv 1 \pmod 7 \implies y_3 = 1$$.
+- Công thức CRT: $$x \equiv 2(35)(2) + 3(21)(1) + 2(15)(1) = 140 + 63 + 30 = 233 \equiv 23 \pmod{105}$$!
+**Kiểm tra:** $$23 = 7\cdot 3 + 2$$, $$23 = 4\cdot 5 + 3$$, $$23 = 3\cdot 7 + 2$$ — khớp cả 3 phương trình! ✓
+
+### Khung giải thích: 4 bước tính nhanh mọi bài toán Số học Modulo (nên đọc chậm)
+
+#### Bước 1: Luôn rút gọn số dư trước khi nhân hay lũy thừa
+Không bao giờ tính $$237^{100}$$ rồi mới chia! Thay cơ số bằng số dư nhỏ nhất và dùng **lũy thừa nhị phân (binary exponentiation)** chỉ tốn $$O(\log e)$$ phép nhân!
+
+#### Bước 2: Dùng Fermat / Euler để hạ số mũ khổng lồ
+Muốn tính $$a^k \bmod p$$, chỉ cần lấy số mũ theo modulo $$(p-1)$$ trước!
+
+#### Bước 3: Kiểm tra $$\gcd(a, m)$$ trước khi giải $$ax \equiv b \pmod m$$
+Nếu $$d = \gcd(a, m)$$ không chia hết $$b$$ thì vô nghiệm ngay lập tức; nếu $$d \mid b$$ thì chia cả 3 số $$a, b, m$$ cho $$d$$ rồi nhân với nghịch đảo!
+
+#### Bước 4: Dùng CRT để tăng tốc giải mã RSA gấp 4 lần
+Trong thực tế, thay vì tính $$C^d \bmod (pq)$$, thư viện OpenSSL tính riêng $$C^d \bmod p$$ và $$C^d \bmod q$$ rồi ghép bằng CRT!
+
+$$
+\text{Đồng dư }a \equiv b \pmod m
+\;\xrightarrow{\;\text{Euclid mở rộng}\;}\;
+a^{-1} \bmod m
+\;\xrightarrow{\;\text{Euler + CRT}\;}\;
+\text{RSA \& Tính toán song song}.
+$$
 
 ## Đồng dư
 

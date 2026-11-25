@@ -17,6 +17,17 @@ excerpt: "Định nghĩa đồ thị G = (V, E), phân loại đồ thị vô h�
 
 </div>
 
+
+Năm 1736, cư dân thành phố Königsberg đố nhau xem có thể đi dạo qua cả bảy cây cầu bắc qua sông Pregel sao cho mỗi cây cầu chỉ đi qua đúng một lần hay không. Leonhard Euler đã giải dứt điểm câu đố ấy bằng một bước nhảy trừu tượng thiên tài: **vứt bỏ toàn bộ hình dạng con sông, độ dài con đường và diện tích hòn đảo**, chỉ giữ lại 4 chấm tròn (đỉnh) và 7 nét nối (cạnh). Lý thuyết đồ thị — ngôn ngữ mô hình hóa mạng lưới của toàn bộ khoa học máy tính — đã ra đời từ chính nét vẽ tối giản đó.
+
+**Mạch bài học:** Định nghĩa hình thức $$G = (V, E)$$ $$\longrightarrow$$ phân loại đồ thị (đơn, đa đồ thị, có hướng, có trọng số) $$\longrightarrow$$ **bậc đỉnh** (degree, in-degree, out-degree) $$\longrightarrow$$ **Định lý Bắt tay (Handshaking Lemma)** và ứng dụng trong tin học.
+
+## Bản đồ kiến thức nền: Lý thuyết đồ thị mở đầu bằng những khái niệm trụ cột nào?
+
+- **Trừu tượng hóa quan hệ nhị phân (Graph Abstraction $$G=(V,E)$$):** Mọi hệ thống gồm các thực thể và kết nối giữa chúng — từ mạng xã hội, định tuyến Internet, phụ thuộc gói phần mềm (`npm`/`pip`) đến bản đồ đường đi — đều thu gọn về tập đỉnh $$V$$ và tập cạnh $$E$$.
+- **Phân loại cấu trúc cạnh (Graph Taxonomy):** Phân biệt đồ thị vô hướng vs. có hướng (digraph), đồ thị đơn (không khuyên, không cạnh song song) vs. đa đồ thị (multigraph), và đồ thị có trọng số (weighted graph) để chọn đúng thuật toán tương ứng.
+- **Định lý Bắt tay & Tính chẵn lẻ (Handshaking Lemma):** Vì mỗi cạnh nối đúng 2 đầu mút, tổng bậc mọi đỉnh luôn bằng **đúng hai lần số cạnh**: $$\sum_{v \in V} \deg(v) = 2\vert E \vert$$ — kéo theo hệ quả bất biến cực mạnh: **số đỉnh bậc lẻ luôn luôn là một số chẵn**!
+
 Ở Chương 5, quan hệ được mô tả như một tập hợp các cặp phần tử. **Đồ thị** (graph) hình thức hóa cùng ý tưởng đó dưới dạng cấu trúc $$G = (V, E)$$, trong đó đỉnh biểu diễn đối tượng và cạnh biểu diễn mối liên kết giữa chúng. Nhiều hệ thống trong khoa học máy tính có cấu trúc đồ thị tự nhiên — như mạng xã hội, đồ thị phụ thuộc mô-đun, đồ thị gọi hàm (call graph), đồ thị luồng điều khiển (control-flow graph) và tôpô định tuyến mạng — nên các khái niệm trong chương này là nền tảng cho thuật toán và phân tích mạng ở các mục tiếp theo.
 
 Bài học này trình bày các khái niệm cơ bản: định nghĩa đồ thị, cách phân loại, bậc của đỉnh và định lý bắt tay (*handshaking lemma*).
@@ -208,6 +219,34 @@ So sánh hai đồ thị nhỏ để kiểm tra xem chúng có cùng cấu trúc
 <div data-demo="graph-isomorphism-checker"></div>
 </div>
 <script src="{{ '/public/js/graph-isomorphism-checker.js' | relative_url }}"></script>
+
+## Ví dụ tính tay cầm tay chỉ việc: Kiểm chứng Định lý Bắt tay và bác bỏ đồ thị bất khả thi
+
+**Ví dụ 1 — Tính bậc đỉnh trên một mạng nội bộ nhỏ 5 máy chủ:**
+Cho đồ thị vô hướng đơn $$G = (V, E)$$ với $$V = \{A, B, C, D, E\}$$ và 6 dây cáp:
+$$E = \{\{A,B\}, \{A,C\}, \{B,C\}, \{B,D\}, \{C,E\}, \{D,E\}\}.$$
+1. Đếm bậc từng đỉnh:
+   - $$\deg(A) = 2$$ (nối $$B, C$$)
+   - $$\deg(B) = 3$$ (nối $$A, C, D$$)
+   - $$\deg(C) = 3$$ (nối $$A, B, E$$)
+   - $$\deg(D) = 2$$ (nối $$B, E$$)
+   - $$\deg(E) = 2$$ (nối $$C, D$$)
+2. Kiểm tra Định lý Bắt tay:
+   $$\sum_{v \in V} \deg(v) = 2 + 3 + 3 + 2 + 2 = 12 = 2 \times 6 = 2\vert E \vert.$$
+3. Đếm số đỉnh bậc lẻ: chỉ có $$B$$ và $$C$$ (2 đỉnh — một số chẵn!).
+
+**Ví dụ 2 — Dùng Định lý Bắt tay để phát hiện yêu cầu mạng "bất khả thi" trong 5 giây:**
+Một kiến trúc sư đề xuất nối **9 máy chủ** sao cho mỗi máy kết nối trực tiếp với đúng **3 máy khác** (đồ thị 3-chính quy). Có thể nối được không?
+- Tính tổng bậc yêu cầu: $$\sum \deg(v) = 9 \times 3 = 27$$ — là một **số lẻ**!
+- Vì $$2\vert E \vert$$ bắt buộc phải chẵn, nên **chắc chắn KHÔNG tồn tại** sơ đồ nối dây nào thỏa mãn (khỏi tốn công thử vẽ!).
+
+### Khung giải thích: Ba câu hỏi đầu tiên khi mô hình hóa bất kỳ bài toán nào bằng đồ thị (nên đọc chậm)
+
+1. **Bước 1 — Đỉnh là gì, cạnh là gì?** Xác định rõ thực thể (người dùng, giao lộ, hàm gọi) làm đỉnh và mối quan hệ (kết bạn, đường một chiều, lời gọi hàm) làm cạnh.
+2. **Bước 2 — Quan hệ có đối xứng không?** Nếu "A theo dõi B" không kéo theo "B theo dõi A" (như X/Twitter hay phụ thuộc thư viện), bắt buộc dùng **đồ thị có hướng** và theo dõi riêng $$\deg^-(v), \deg^+(v)$$ với bất biến $$\sum \deg^-(v) = \sum \deg^+(v) = \vert E \vert$$.
+3. **Bước 3 — Dùng Định lý Bắt tay làm phép kiểm tra nhanh:** Tổng bậc chia 2 cho biết ngay số cạnh, và số đỉnh bậc lẻ phải luôn chẵn — quy tắc bất biến đơn giản nhưng chặn đứng rất nhiều sai sót thiết kế.
+
+$$\sum_{v \in V} \deg(v) = 2\vert E \vert \quad (\text{vô hướng}), \qquad \sum_{v \in V} \deg^-(v) = \sum_{v \in V} \deg^+(v) = \vert E \vert \quad (\text{có hướng}).$$
 
 ## Bài tập
 

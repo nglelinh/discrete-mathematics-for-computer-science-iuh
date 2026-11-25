@@ -10,6 +10,15 @@ owner: nglelinh
 
 Khóa học **Toán Rời Rạc cho Khoa học Máy tính** được thiết kế để cung cấp nền tảng toán học vững chắc cho sinh viên Khoa học Máy tính, tập trung vào các ứng dụng thực tế trong lập trình và khoa học máy tính.
 
+## Bản đồ kiến thức nền: Vì sao Khoa học Máy tính được xây trên Toán Rời Rạc?
+
+1. **Thế giới của bit là thế giới rời rạc**:
+   Khác với Giải tích làm việc với đường cong liên tục, máy tính lưu trữ và xử lý từng bit `0`/`1`, từng trạng thái hữu hạn và từng bước rời rạc — đúng đối tượng nghiên cứu của Toán Rời Rạc.
+2. **Từ trực giác sang chứng minh chặt chẽ**:
+   Toán Rời Rạc rèn kỹ năng chứng minh thuật toán luôn đúng trên *mọi* đầu vào (quy nạp, phản chứng, bất biến vòng lặp) thay vì chỉ thử vài test mẫu.
+3. **Ngôn ngữ chung của mọi nhánh chuyên sâu**:
+   Từ cơ sở dữ liệu (đại số quan hệ), mạng máy tính (đồ thị), trình biên dịch (văn phạm CFG) đến trí tuệ nhân tạo (xác suất rời rạc, tối ưu tổ hợp) đều dùng trực tiếp khái niệm của môn học này.
+
 ## Học viên đạt được gì khi kết thúc khóa học
 
 Khi hoàn thành khóa học, học viên sẽ đạt được các năng lực sau:
@@ -74,3 +83,11 @@ Website này sử dụng công nghệ hiện đại để tạo trải nghiệm 
 Hãy bắt đầu với tinh thần học hỏi và sự kiên trì. Toán rời rạc có thể thử thách, nhưng sẽ mang lại nền tảng vững chắc cho sự nghiệp trong lĩnh vực công nghệ thông tin.
 
 **Chúc bạn học tập hiệu quả!** 🚀
+
+### Khung giải thích (nên đọc chậm): Thử sức nhanh với một bài toán rời rạc 30 giây — Bắt tay trong phòng học
+
+Trong một phòng học có **30 sinh viên**, nếu hai sinh viên bất kỳ đều bắt tay nhau đúng 1 lần thì có tất cả bao nhiêu cái bắt tay?
+- Mỗi sinh viên bắt tay với $$29$$ bạn còn lại $$\implies 30 \times 29 = 870$$ lượt.
+- Vì cái bắt tay giữa A và B bị đếm hai lần (một lần từ A, một lần từ B), ta chia đôi:
+  $$\binom{30}{2} = \frac{30 \times 29}{2} = \mathbf{435\text{ cái bắt tay}}.$$
+- Dưới góc nhìn **Lý thuyết Đồ thị**, đó chính là số cạnh của đồ thị đầy đủ $$K_{30}$$, đồng thời là số kết nối mạng trực tiếp cần thiết nếu 30 máy chủ nối thẳng đôi một với nhau (kiến trúc full-mesh)!

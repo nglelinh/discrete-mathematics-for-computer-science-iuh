@@ -9,6 +9,8 @@ lang: en
 excerpt: "Bản đồ Karnaugh (K-map) cho hàm 2–4 biến theo thứ tự mã Gray, khái niệm tế bào lớn, quy trình 5 bước tìm phủ tối tiểu và xử lý trạng thái không xác định (don't-care)."
 ---
 
+> **Câu chuyện mở đầu:** Rút gọn đại số Boole bằng tay giống như giải cờ vua mù: rất dễ bỏ sót một phép nhân bản $$a = a + a$$ hay một số hạng đồng thuận ẩn! Năm 1953, kỹ sư viễn thông Maurice Karnaugh tại Bell Labs nghĩ ra một mẹo thị giác tuyệt đẹp: **sắp xếp bảng chân trị lên một hình chữ nhật theo thứ tự mã Gray sao cho hai ô kề nhau luôn chỉ khác nhau đúng 1 bit** — biến đại số Boole thành trò chơi khoanh các hình chữ nhật kích thước $$1, 2, 4, 8$$!
+
 <div class="textbook-epigraph" markdown="1">
 
 "A Karnaugh map is a truth table rearranged so that adjacency means algebraic cancellation."
@@ -43,6 +45,52 @@ Với các hàm Boole từ 2 đến 4 biến, K-map cho phép tìm trực quan d
 **Từ khóa**: K-map, mã Gray, minterm, tế bào lớn, hạng nguyên tố (*prime implicant*), phủ tối tiểu, don't-care.
 
 </div>
+
+## Bản đồ kiến thức nền: Bản đồ Karnaugh (K-map) và Tô-pô của Siêu lập phương
+
+### 1. Mã Gray & Tính kề trên Siêu lập phương $$Q_n$$
+- **Bản chất:** Trên trục K-map 2 biến, thứ tự luôn là **$$00,\; 01,\; 11,\; 10$$** (KHÔNG phải $$00, 01, 10, 11$$!), để hai cột kề nhau — kể cả cột đầu $$00$$ với cột cuối $$10$$ — luôn chỉ khác đúng **1 bit**! Về mặt tô-pô, K-map 4 biến chính là mặt **hình xuyến $$T^2$$** (mép trên nối mép dưới, mép trái nối mép phải!).
+
+### 2. Khoanh nhóm $$2^k$$ ô = Khử đúng $$k$$ biến!
+- **Bản chất:** Một nhóm hình chữ nhật hợp lệ gồm $$2^k$$ ô toàn số $$1$$ tương ứng với một mặt con $$k$$-chiều của siêu lập phương $$Q_n$$ — tự động áp dụng luật $$xy + x\bar{y} = x$$ lặp lại $$k$$ lần để **khử đúng $$k$$ biến**!
+
+### 3. Implicant Nguyên tố Cốt yếu (EPI) & Trạng thái Không quan tâm (Don't-care $$d$$)
+- **Bản chất:** Khoanh các nhóm lớn nhất có thể (**Prime Implicant**), ưu tiên chọn nhóm chứa ít nhất một ô $$1$$ không ai khác phủ được (**Essential PI**). Các ô **Don't-care ($$d$$)** (tổ hợp đầu vào không bao giờ xảy ra, như mã BCD $$10..15$$) được tự do coi là $$1$$ nếu giúp mở rộng nhóm to hơn, hoặc $$0$$ nếu không cần!
+
+## Ví dụ tính tay cầm tay chỉ việc: Tối thiểu hóa hàm 3 biến $$f(A,B,C) = \sum m(0, 2, 4, 5, 6)$$ trên K-map
+
+Lập bảng K-map 3 biến với hàng $$A \in \{0, 1\}$$ và cột $$BC \in \{00, 01, 11, 10\}$$:
+
+| $$A \setminus BC$$ | $$00$$ | $$01$$ | $$11$$ | $$10$$ |
+|---|---|---|---|---|
+| **$$0$$** | **1** ($$m_0$$) | 0 ($$m_1$$) | 0 ($$m_3$$) | **1** ($$m_2$$) |
+| **$$1$$** | **1** ($$m_4$$) | **1** ($$m_5$$) | 0 ($$m_7$$) | **1** ($$m_6$$) |
+
+1. **Nhóm 1 (4 ô cuộn vòng mép trái–phải!):** Cột $$BC = 00$$ ($$m_0, m_4$$) ghép vòng với cột $$BC = 10$$ ($$m_2, m_6$$). Kiểm tra biến không đổi: $$A$$ đổi ($$0,1$$), $$B$$ đổi ($$0,1$$), chỉ còn **$$C = 0$$** không đổi $$\implies$$ số hạng **$$\bar{C}$$**!
+2. **Nhóm 2 (2 ô phủ nốt $$m_5$$):** Ghép $$m_4(100)$$ với $$m_5(101)$$ (tái sử dụng $$m_4$$ để nhóm lớn nhất!). Biến không đổi: $$A=1, B=0 \implies$$ số hạng **$$A\bar{B}$$**!
+3. **Kết quả tối tiểu:** $$f(A, B, C) = \bar{C} + A\bar{B}$$ (chỉ cần 1 cổng NOT, 1 cổng AND, 1 cổng OR — so với 5 minterm ban đầu!).
+
+### Khung giải thích: Quy tắc 4 bước khoanh K-map không bao giờ sai (nên đọc chậm)
+
+#### Bước 1: Kiểm tra thứ tự Mã Gray trên cả hai trục
+Luôn viết $$00, 01, 11, 10$$ và nhớ rằng mép trên chạm mép dưới, mép trái chạm mép phải (4 góc của K-map 4 biến thậm chí ghép thành 1 nhóm 4 ô!).
+
+#### Bước 2: Tìm mọi nhóm cực đại có kích thước lũy thừa của 2 ($$1, 2, 4, 8, 16$$)
+Nhóm càng lớn, số biến bị khử càng nhiều và cổng AND càng gọn. Được phép dùng chung một ô $$1$$ cho nhiều nhóm khác nhau nhờ luật $$a + a = a$$.
+
+#### Bước 3: Bắt buộc chọn hết các Essential Prime Implicants (EPI) trước
+Nếu một ô $$1$$ chỉ nằm trong duy nhất 1 nhóm cực đại, nhóm đó **bắt buộc** có mặt trong đáp án tối ưu.
+
+#### Bước 4: Phủ nốt các ô $$1$$ còn sót bằng ít nhóm nhất (bỏ qua các ô Don't-care chưa dùng)
+Không bao giờ thêm nhóm chỉ để phủ riêng ô Don't-care $$d$$!
+
+$$
+\text{Mã Gray (kề 1 bit)}
+\;\xrightarrow{\;\text{Khoanh nhóm }2^k\text{ ô}\;}\;
+\text{Khử }k\text{ biến}
+\;\xrightarrow{\;\text{Chọn EPI + Phủ tối tiểu}\;}\;
+\text{SOP tối giản}.
+$$
 
 ## Mã Gray và tính kề trên trục
 

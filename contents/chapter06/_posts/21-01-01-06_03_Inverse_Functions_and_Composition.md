@@ -10,9 +10,27 @@ lang: en
 excerpt: "Sau các tính chất đơn ánh, toàn ánh và song ánh, bài học này trình bày hàm hợp và hàm nghịch đảo — nền tảng của pipeline xử lý dữ liệu và phép biến đổi khả nghịch."
 ---
 
+
+Buổi sáng bạn đi tất trước rồi mới xỏ giày; tối về nhà bạn bắt buộc phải tháo giày trước rồi mới cởi tất—đảo ngược thứ tự đó là bất khả thi. Quy luật đời thường tưởng chừng hiển nhiên ấy chính là định lý $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$ trong lý thuyết **hàm hợp và hàm nghịch đảo**, nền tảng cho mọi chuỗi xử lý dữ liệu (*pipeline*), phép biến đổi đồ họa 3D và cơ chế mã hóa–giải mã bảo mật.
+
 Ở mục trước, chúng ta đã học ba tính chất đơn ánh, toàn ánh và song ánh. Mục này giới thiệu **hàm hợp** và **hàm nghịch đảo** — hai khái niệm gắn trực tiếp với chuỗi xử lý dữ liệu (pipeline) và các phép biến đổi có thể đảo ngược.
 
 Trong phần mềm, dữ liệu hiếm khi chỉ đi qua một bước duy nhất mà thường được biến đổi theo chuỗi như phân tích (parse) – kiểm tra hợp lệ (validate) – mã hóa (encode). Hàm hợp mô tả việc ghép nhiều ánh xạ nối tiếp thành một chuỗi xử lý; còn hàm nghịch đảo trả lời câu hỏi liệu ta có thể khôi phục chính xác đầu vào ban đầu hay không. Không phải hàm nào cũng có nghịch đảo — điều kiện cần và đủ là hàm phải song ánh.
+
+## Bản đồ kiến thức nền: Bốn quy luật cốt lõi của Hàm hợp và Hàm nghịch đảo
+
+1. **Hàm hợp $(g \circ f)(x) = g(f(x))$ — Luôn thực thi từ phải sang trái**:
+   Đầu vào $x$ đi qua $f$ trước để ra $f(x)$, rồi kết quả đó làm đầu vào cho $g$. Để hợp được, miền giá trị của $f$ phải nằm gọn trong miền xác định của $g$: $\text{Range}(f) \subseteq \text{Domain}(g)$.
+
+2. **Không giao hoán nhưng có tính kết hợp**:
+   Nói chung $g \circ f \neq f \circ g$ (thứ tự áp dụng bước xử lý cực kỳ quan trọng!). Tuy nhiên, phép hợp luôn **kết hợp**: $(h \circ g) \circ f = h \circ (g \circ f)$, cho phép gom nhóm các tầng xử lý trong pipeline một cách linh hoạt.
+
+3. **Hàm nghịch đảo $f^{-1}$ chỉ tồn tại khi và chỉ khi $f$ là Song ánh**:
+   Nếu $f: A \to B$ là song ánh, tồn tại duy nhất $f^{-1}: B \to A$ sao cho $f^{-1}(f(a)) = a$ (hàm đồng nhất $\mathrm{id}_A$) và $f(f^{-1}(b)) = b$ ($\mathrm{id}_B$). Nếu $f$ không đơn ánh thì $f^{-1}$ không xác định duy nhất; nếu không toàn ánh thì có đầu vào ở $B$ không có ảnh ngược.
+
+4. **Quy tắc "Đi tất – Đi giày" khi đảo ngược chuỗi hàm**:
+   Khi nối tiếp hai phép biến đổi song ánh $f$ rồi $g$, phép hoàn tác phải tháo theo **thứ tự ngược lại**:
+   $$(g \circ f)^{-1} = f^{-1} \circ g^{-1}.$$
 
 ## Mục tiêu học tập
 
@@ -186,6 +204,25 @@ $$f^{-1}(x)=\frac{x+2}{3}.$$
 ## Khi nào không có nghịch đảo?
 
 Hàm $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^2$$ không có nghịch đảo trên toàn $$\mathbb{R}$$ vì nó không đơn ánh (chẳng hạn $$f(2)=f(-2)$$) và cũng không toàn ánh. Tuy nhiên, nếu thu hẹp cả domain lẫn codomain về $$[0,\infty)$$, hàm trở thành song ánh và có nghịch đảo là $$f^{-1}(x)=\sqrt{x}$$.
+
+### Khung giải thích (nên đọc chậm): Tính tay $g \circ f$, $f \circ g$ và kiểm chứng quy tắc $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$
+
+Cho hai hàm song ánh trên $\mathbb{R}$: $f(x) = 2x + 3$ và $g(x) = x - 5$.
+
+1. **Tính hai chiều hàm hợp và thử tại $x = 4$**:
+   - $(g \circ f)(x) = g(f(x)) = g(2x + 3) = (2x + 3) - 5 = \mathbf{2x - 2}$.
+     Thử $x = 4$: $f(4) = 11 \xrightarrow{g} g(11) = \mathbf{6}$ (khớp $2(4) - 2 = 6$).
+   - $(f \circ g)(x) = f(g(x)) = f(x - 5) = 2(x - 5) + 3 = \mathbf{2x - 7}$.
+     Thử $x = 4$: $g(4) = -1 \xrightarrow{f} f(-1) = \mathbf{1}$ (khớp $2(4) - 7 = 1$).
+   $\implies$ Vì $6 \neq 1$, ta thấy ngay $g \circ f \neq f \circ g$!
+2. **Tìm hàm nghịch đảo từng hàm**:
+   - Đặt $y = 2x + 3 \implies x = \frac{y - 3}{2} \implies f^{-1}(y) = \frac{y - 3}{2}$.
+   - Đặt $y = x - 5 \implies x = y + 5 \implies g^{-1}(y) = y + 5$.
+3. **Kiểm chứng quy tắc $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$**:
+   - **Cách 1 (đảo trực tiếp $h(x) = 2x - 2$)**: Đặt $y = 2x - 2 \implies h^{-1}(y) = \mathbf{\frac{y + 2}{2}}$.
+   - **Cách 2 (hợp ngược $f^{-1} \circ g^{-1}$)**:
+     $$(f^{-1} \circ g^{-1})(y) = f^{-1}(g^{-1}(y)) = f^{-1}(y + 5) = \frac{(y + 5) - 3}{2} = \mathbf{\frac{y + 2}{2}}.$$
+   Thử hoàn tác từ kết quả $y = 6$: $g^{-1}(6) = 11 \xrightarrow{f^{-1}} f^{-1}(11) = \frac{11 - 3}{2} = \mathbf{4}$ — quay chính xác về giá trị $x = 4$ ban đầu! (Nếu bạn thử ngược sai thứ tự $g^{-1}(f^{-1}(6)) = \frac{3}{2} + 5 = 6{,}5 \neq 4$ sẽ sai ngay!)
 
 ## Ứng dụng trong Khoa học Máy tính
 

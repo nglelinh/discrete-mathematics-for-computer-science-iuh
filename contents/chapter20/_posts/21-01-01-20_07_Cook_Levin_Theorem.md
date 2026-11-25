@@ -19,6 +19,20 @@ excerpt: "Chứng minh SAT là NP-complete bằng bảng cấu hình (tableau): 
 
 Định lý Cook–Levin là **kết quả trung tâm** khai sinh lý thuyết NP-đầy đủ: mọi ngôn ngữ $$L\in NP$$ đều có thể rút gọn đa thức về bài toán thỏa mãn công thức logic **SAT**.
 
+Để chứng minh một bài toán mới là NP-complete, ta chỉ cần rút gọn từ một bài toán đã biết là NP-complete. Nhưng câu hỏi "con gà và quả trứng" hiện ra ngay lập tức: **làm sao tìm được bài toán NP-complete ĐẦU TIÊN khi trong tay chưa có bài nào để rút gọn?** Năm 1971, Stephen Cook (và độc lập bởi Leonid Levin năm 1973) đã làm được điều phi thường: dịch *trực tiếp* toàn bộ bảng tính toán của một máy Turing không đơn định bất kỳ thành một công thức Boolean CNF — khai sinh bài toán NP-complete đầu tiên trong lịch sử: **`SAT`**.
+
+## Bản đồ kiến thức nền: Bốn khối mệnh đề trong chứng minh Tableau của Cook–Levin
+
+1. **Bảng tính toán (Computation Tableau) cỡ $$n^k \times n^k$$**:
+   Ghi lại toàn bộ lịch sử chạy của NTM $$M$$ trên đầu vào $$x$$ thành một lưới ô: hàng $$i$$ là cấu hình tại bước thời gian $$i$$, cột $$j$$ là ô băng thứ $$j$$. Vì $$M$$ chạy trong $$n^k$$ bước, toàn bộ lịch sử nằm gọn trong đúng $$O(n^{2k})$$ ô.
+2. **Biến Boolean chỉ báo $$x_{i, j, s}$$**:
+   Mỗi biến trả lời câu hỏi *"Tại bước $$i$$, ô băng $$j$$ có chứa ký hiệu $$s$$ (ký tự băng hoặc trạng thái đầu đọc) hay không?"*. Tổng số biến là đa thức $$O(n^{2k} \cdot \vert C \vert)$$.
+3. **Bốn nhóm mệnh đề CNF ép bảng là một tính toán hợp lệ**:
+   - $$\varphi_{\text{cell}}$$: mỗi ô chứa **đúng 1** ký hiệu.
+   - $$\varphi_{\text{start}}$$: hàng đầu tiên là cấu hình khởi đầu $$q_0 x_1 \dots x_n \sqcup \dots$$.
+   - $$\varphi_{\text{accept}}$$: xuất hiện trạng thái chấp nhận $$q_A$$ ở đâu đó trong bảng.
+   - $$\varphi_{\text{move}}$$: mọi **cửa sổ cục bộ $$2 \times 3$$** (3 ô liên tiếp ở hàng $$i$$ và 3 ô ngay dưới nó ở hàng $$i+1$$) phải tuân thủ đúng hàm chuyển $$\delta$$ của máy Turing!
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -61,6 +75,20 @@ Nếu $$M$$ có một đường chạy chấp nhận trên đầu vào, lịch s
 ## Ghi chú khi viết bài báo
 
 Trong các công trình nghiên cứu, phép dựng này thường được trích dẫn gọn là *“by the standard tableau construction (Sipser / Arora–Barak)”*; tuy nhiên khi trình bày seminar, cần nêu rõ cả bốn nhóm ràng buộc G1–G4.
+
+### Khung giải thích (nên đọc chậm): Vì sao chỉ cần kiểm tra các cửa sổ nhỏ $$2 \times 3$$ là đủ đảm bảo cả bảng tính toán hợp lệ?
+
+Đây là bước thiên tài nhất của định lý Cook–Levin. Giả sử tại bước $$i$$, đầu đọc đang ở ô $$j$$ với trạng thái $$q$$ đọc ký tự `a`, và luật chuyển $$\delta(q, a) = (q', b, R)$$ (ghi `b`, dịch phải sang ô $$j+1$$).
+Hãy quan sát cửa sổ $$2 \times 3$$ gồm 3 cột $$(j-1, j, j+1)$$ ở hàng $$i$$ và hàng $$i+1$$:
+
+| Hàng thời gian | Cột $$j-1$$ | Cột $$j$$ | Cột $$j+1$$ |
+| :---: | :---: | :---: | :---: |
+| **Hàng $$i$$** | `c` | $$(q, a)$$ | `d` |
+| **Hàng $$i+1$$** | `c` | `b` | $$(q', d)$$ |
+
+- Tại mọi vị trí *xa đầu đọc*, ký tự ở hàng $$i+1$$ giữ nguyên y hệt hàng $$i$$ — chỉ cần nhìn 3 ô phía trên là biết chắc đầu đọc không tới từ trái hay phải!
+- Tại vị trí có đầu đọc, vì đầu đọc mỗi bước chỉ dịch tối đa **1 ô** (sang trái hoặc phải), toàn bộ thay đổi giữa hàng $$i$$ và hàng $$i+1$$ nằm gọn trong đúng **3 cột liên tiếp**!
+- Số cửa sổ $$2 \times 3$$ trên toàn bảng là $$(n^k - 1)(n^k - 2) = O(n^{2k})$$, và mỗi cửa sổ chỉ cần một số hằng mệnh đề CNF để mô tả các cấu hình $$2 \times 3$$ hợp lệ. Vậy tổng kích thước công thức $$\varphi_{M,x}$$ chắc chắn là **đa thức**!
 
 ## Bài tập
 

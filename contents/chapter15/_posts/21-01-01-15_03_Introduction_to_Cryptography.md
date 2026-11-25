@@ -9,6 +9,8 @@ lang: en
 excerpt: "Mã hóa đối xứng và bất đối xứng; Caesar, Affine; RSA (tạo khóa, mã hóa và giải mã); Diffie–Hellman; chữ ký số — gắn với số học modulo và thuật toán Euclid."
 ---
 
+> **Câu chuyện mở đầu:** Suốt hàng nghìn năm lịch sử, mọi hệ mật mã (từ mã dịch vòng Caesar đến máy Enigma trong Thế chiến II) đều mắc chung một điểm yếu chí mạng: **hai người phải bí mật gặp nhau trước để trao đổi chung một chìa khóa**! Nếu kẻ thù nghe lén được chìa khóa đó, toàn bộ bí mật sụp đổ. Năm 1976–1977, Diffie–Hellman và bộ ba Rivest–Shamir–Adleman (**RSA**) tạo ra phép màu **Mật mã Khóa Công khai**: *bạn công bố ổ khóa cho cả thế giới thấy để ai cũng khóa thư gửi cho bạn được, nhưng chỉ duy nhất chiếc chìa khóa bí mật trong tay bạn mới mở được!*
+
 <div class="textbook-epigraph" markdown="1">
 
 "We stand today on the brink of a revolution in cryptography."
@@ -38,6 +40,68 @@ Số học modulo cung cấp công cụ tính toán trên các lớp số dư, c
 **Từ khóa**: encryption, public/private key, RSA, Diffie–Hellman, Caesar, Affine, chữ ký số.
 
 </div>
+
+## Bản đồ kiến thức nền: Mật mã học Hiện đại dựa trên những trụ cột nào?
+
+### 1. Mật mã Đối xứng (Symmetric) vs. Bất đối xứng (Public-Key)
+- **Đối xứng (Caesar, Affine, AES):** Dùng **chung 1 khóa** để mã hóa và giải mã — siêu nhanh cho dữ liệu lớn, nhưng khó trao đổi khóa qua mạng công cộng.
+- **Bất đối xứng (RSA, ECC):** Dùng cặp **(Khóa công khai $$e$$, Khóa bí mật $$d$$)** nối nhau qua một **hàm cửa sập một chiều (trapdoor one-way function)**: nhân $$p \cdot q = n$$ mất 1 micro giây, nhưng phân tích $$n$$ ngược lại thành $$p, q$$ mất hàng triệu năm!
+
+### 2. Kiến trúc Toán học của Hệ mật RSA
+- Chọn hai số nguyên tố lớn $$p, q$$; đặt $$n = pq$$ và $$\varphi(n) = (p-1)(q-1)$$.
+- Chọn $$e$$ nguyên tố cùng nhau với $$\varphi(n)$$, tính $$d = e^{-1} \bmod \varphi(n)$$.
+- **Mã hóa:** $$C = M^e \bmod n$$. **Giải mã:** $$M = C^d \bmod n$$ (đúng nhờ Định lý Euler: $$(M^e)^d = M^{ed} = M^{1 + k\varphi(n)} \equiv M \pmod n$$!).
+
+### 3. Chữ ký Số (Digital Signatures)
+- **Bản chất:** Đảo ngược vai trò khóa: người gửi ký bằng **khóa bí mật $$d$$** ($$S = h(M)^d \bmod n$$), bất kỳ ai cũng xác thực được bằng **khóa công khai $$e$$** (kiểm tra $$S^e \equiv h(M) \pmod n$$) — bảo đảm tính xác thực và chống chối bỏ!
+
+## Ví dụ tính tay cầm tay chỉ việc: Chạy trọn vẹn RSA từ A đến Z với $$p = 5,\; q = 11$$
+
+1. **Sinh khóa:**
+   - $$n = p \cdot q = 5 \times 11 = 55$$.
+   - $$\varphi(n) = (5 - 1)(11 - 1) = 4 \times 10 = 40$$.
+   - Chọn khóa công khai **$$e = 3$$** ($$\gcd(3, 40) = 1$$).
+   - Tìm khóa bí mật $$d = 3^{-1} \bmod 40$$: vì $$3 \times 27 = 81 = 2\cdot 40 + 1 \equiv 1 \pmod{40}$$, nên **$$d = 27$$**!
+   *(Công bố $$(n, e) = (55, 3)$$; giữ kín $$d = 27$$ và hủy $$p, q, \varphi(n)$$!)*
+
+2. **Mã hóa thông điệp $$M = 7$$:**
+   $$
+   C = 7^3 \bmod 55 = 343 \bmod 55 = 13 \quad (\text{vì } 55 \times 6 = 330,\; 343 - 330 = 13).
+   $$
+
+3. **Giải mã bản mã $$C = 13$$ bằng bình phương liên tiếp ($$27 = 16 + 8 + 2 + 1$$):**
+   - $$13^1 \equiv 13 \pmod{55}$$
+   - $$13^2 = 169 \equiv 4 \pmod{55}$$
+   - $$13^4 \equiv 4^2 = 16 \pmod{55}$$
+   - $$13^8 \equiv 16^2 = 256 \equiv 36 \pmod{55}$$
+   - $$13^{16} \equiv 36^2 = 1296 = 23\cdot 55 + 31 \equiv 31 \pmod{55}$$
+   Nhân các thành phần ứng với bit $$1$$ của $$27$$:
+   $$
+   13^{27} \equiv 31 \cdot 36 \cdot 4 \cdot 13 \pmod{55}.
+   $$
+   Tính gọn từng cặp: $$31 \cdot 36 = 1116 \equiv 16 \pmod{55}$$; $$4 \cdot 13 = 52 \equiv -3 \pmod{55}$$; cuối cùng $$16 \cdot (-3) = -48 \equiv 7 \pmod{55}$$! Thu lại **chính xác $$M = 7$$**! ✓
+
+### Khung giải thích: Tại sao HTTPS ngoài đời thực lại kết hợp CẢ RSA/ECC lẫn AES? (nên đọc chậm)
+
+#### Bước 1: Dùng mật mã khóa công khai (RSA/ECC) để giải bài toán trao đổi khóa & xác thực
+Trong bước bắt tay TLS, máy chủ dùng chứng chỉ số (chữ ký công khai) chứng minh danh tính, và hai bên thỏa thuận một **khóa phiên bí mật tạm thời** (session key).
+
+#### Bước 2: Chuyển sang mật mã đối xứng (AES-GCM) để mã hóa toàn bộ lưu lượng
+Phép lũy thừa modulo 2048-bit chậm hơn AES hàng nghìn lần; nên ngay khi có khóa phiên chung, toàn bộ video/dữ liệu được mã hóa bằng AES ở tốc độ gigabit/giây!
+
+#### Bước 3: Không bao giờ dùng "Textbook RSA" trần trụi
+RSA nguyên bản có tính tất định (cùng $$M$$ luôn ra cùng $$C$$) và tính nhân ($$(M_1M_2)^e = M_1^e M_2^e$$); thực tế bắt buộc thêm đệm ngẫu nhiên **OAEP** (khi mã hóa) và **PSS** (khi ký số).
+
+#### Bước 4: Hướng tới tương lai Hậu lượng tử (bài 15.06)
+Thuật toán Shor trên máy tính lượng tử quy mô lớn có thể phân tích $$n = pq$$ trong thời gian đa thức — thúc đẩy quá trình chuyển đổi sang chuẩn hậu lượng tử NIST 2024!
+
+$$
+(p, q) \to n = pq,\; ed \equiv 1 \pmod{\varphi(n)}
+\;\xrightarrow{\;C = M^e \bmod n\;}\;
+\text{Bản mã }C
+\;\xrightarrow{\;C^d \bmod n\;}\;
+M.
+$$
 
 ## Hệ mật mã
 

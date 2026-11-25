@@ -10,9 +10,26 @@ lang: en
 excerpt: "Trình bày quan hệ tương đương, lớp tương đương và tập thương; thứ tự bộ phận, thứ tự toàn phần, thứ tự từ điển, biểu đồ Hasse, phần tử nhỏ nhất/lớn nhất, tối tiểu/tối đại và thứ tự tốt."
 ---
 
+
+Khi đối mặt với hàng triệu đối tượng hỗn độn, cả toán học lẫn khoa học máy tính đều dựa vào đúng hai chiến lược tổ chức tối thượng: **gom nhóm những thứ tương đương vào cùng một ngăn** (như `GROUP BY` trong SQL hay đồng dư modulo trong mật mã) và **sắp xếp thứ tự phụ thuộc** (như thứ tự biên dịch `Makefile` hay cây phụ thuộc gói `npm`/`pip`). Hai chiến lược đó chính là **Quan hệ tương đương** và **Quan hệ thứ tự bộ phận**.
+
 Ở mục trước, chúng ta đã học bốn tính chất cơ bản của quan hệ. Mục này xây dựng hai lớp quan hệ quan trọng từ các tính chất đó: **quan hệ tương đương** và **quan hệ thứ tự bộ phận**.
 
 Một số quan hệ dùng để gom các đối tượng "tương đương nhau" theo một tiêu chí, như phân nhóm sinh viên theo lớp hay quan hệ đồng dư modulo $$n$$. Ngược lại, một số quan hệ khác dùng để sắp xếp đối tượng theo sự phụ thuộc hoặc bao hàm, như cấu trúc thư mục hay quan hệ chia hết. Tuy đều bắt nguồn từ bốn tính chất cơ bản, hai lớp quan hệ này tạo ra hai cấu trúc hoàn toàn khác nhau: lớp tương đương và phân hoạch ở một phía, tập sắp thứ tự bộ phận (poset) và biểu đồ Hasse ở phía kia.
+
+## Bản đồ kiến thức nền: Hai cấu trúc vàng được dựng từ Bốn tính chất Quan hệ
+
+1. **Quan hệ tương đương (Equivalence Relation) = Phản xạ + Đối xứng + Bắc cầu**:
+   Mô hình hóa khái niệm *"giống nhau theo một tiêu chí nào đó"* (như cùng số dư khi chia cho $m$, cùng thành phần liên thông trong đồ thị, hay cùng mã lỗi HTTP).
+
+2. **Lớp tương đương & Định lý Phân hoạch (Partition)**:
+   Mỗi quan hệ tương đương trên $A$ tự động cắt $A$ thành các **lớp tương đương** $[a]_R$ đôi một rời nhau và hợp lại bằng đúng $A$. Ngược lại, mọi phân hoạch của $A$ đều sinh ra duy nhất một quan hệ tương đương—một cầu nối song ánh tuyệt đẹp.
+
+3. **Quan hệ thứ tự bộ phận (Partial Order / Poset) = Phản xạ + Phản đối xứng + Bắc cầu**:
+   Mô hình hóa thứ bậc và sự phụ thuộc ($\le$, $\subseteq$, phép chia hết $\mid$). Khác với thứ tự toàn phần, hai phần tử có thể **không so sánh được** với nhau (như $4$ và $6$ trong quan hệ chia hết).
+
+4. **Biểu đồ Hasse & Các phần tử biên (Tối tiểu / Tối đại / Nhỏ nhất / Lớn nhất)**:
+   Biểu đồ Hasse lược bỏ toàn bộ khuyên phản xạ và các cạnh bắc cầu thừa để giữ lại khung xương tối giản của poset. Từ biểu đồ này, ta đọc ngay các phần tử tối tiểu/tối đại (có thể có nhiều) và phần tử nhỏ nhất/lớn nhất (nếu tồn tại thì duy nhất).
 
 ## Mục tiêu học tập
 
@@ -296,6 +313,29 @@ Poset này không có phần tử nhỏ nhất và cũng không có phần tử 
 ![Định lý: quan hệ tương đương ⇔ phân hoạch](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
 
 <p class="textbook-figure-caption" data-figure="5.17">Mỗi quan hệ tương đương tương ứng duy nhất với một phân hoạch của tập nền, và ngược lại.</p>
+
+### Khung giải thích (nên đọc chậm): Tự tay dựng một Phân hoạch (mod 3) và một Biểu đồ Hasse (ước số của 12)
+
+**Phần A — Quan hệ tương đương cắt tập hợp thành phân hoạch**
+
+Xét $A = \{0, 1, 2, 3, 4, 5, 6, 7, 8\}$ với quan hệ $a \equiv b \pmod 3$. Ta gom các phần tử có cùng số dư khi chia cho 3:
+- $[0] = \{0, 3, 6\}$ (dư 0)
+- $[1] = \{1, 4, 7\}$ (dư 1)
+- $[2] = \{2, 5, 8\}$ (dư 2)
+
+Kiểm tra điều kiện phân hoạch: không lớp nào rỗng, giao của hai lớp bất kỳ đều bằng $\emptyset$, và $[0] \cup [1] \cup [2] = A$. Mọi bài toán phân nhóm dữ liệu (như Union-Find / Disjoint Set Union) đều duy trì đúng cấu trúc phân hoạch này!
+
+**Phần B — Rút gọn quan hệ chia hết trên $D_{12} = \{1, 2, 3, 4, 6, 12\}$ thành Biểu đồ Hasse**
+
+1. **Xuất phát từ đồ thị đầy đủ**: Quan hệ chia hết trên 6 phần tử có 6 khuyên phản xạ và nhiều cạnh bắc cầu dài như $1 \to 4$, $1 \to 6$, $1 \to 12$, $2 \to 12$, $3 \to 12$.
+2. **Xóa sạch 6 khuyên phản xạ** ($a \to a$) và **xóa mọi cạnh bắc cầu** (ví dụ xóa $1 \to 4$ vì đã có đường $1 \to 2 \to 4$; xóa $2 \to 12$ vì đã có $2 \to 4 \to 12$).
+3. **Chỉ còn đúng 7 cạnh phủ (cover edges)** đi từ dưới lên trên:
+   $$1 \to 2, \quad 1 \to 3, \quad 2 \to 4, \quad 2 \to 6, \quad 3 \to 6, \quad 4 \to 12, \quad 6 \to 12.$$
+4. **Đọc cấu trúc thứ tự ngay trên biểu đồ**:
+   - **Phần tử nhỏ nhất (cũng là tối tiểu duy nhất)**: $1$.
+   - **Phần tử lớn nhất (cũng là tối đại duy nhất)**: $12$.
+   - **Cặp không so sánh được**: $2$ và $3$, $4$ và $6$, $3$ và $4$ (không có đường đi hướng lên nào nối giữa chúng). Nếu ta bỏ đi phần tử $1$ và $12$, tập con $\{2, 3, 4, 6\}$ sẽ có **2 phần tử tối tiểu** ($2, 3$) và **2 phần tử tối đại** ($4, 6$), nhưng **không có** phần tử nhỏ nhất hay lớn nhất!
+
 ## Ứng dụng trong Khoa học Máy tính
 
 - **Union-Find (Disjoint Set Union)**: quản lý các lớp tương đương trong bài toán tìm thành phần liên thông.

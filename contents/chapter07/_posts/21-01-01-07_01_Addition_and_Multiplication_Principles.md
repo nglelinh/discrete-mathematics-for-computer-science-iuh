@@ -9,6 +9,9 @@ lang: en
 excerpt: "Mở đầu chương phép đếm và tổ hợp với hai nguyên tắc nền tảng: quy tắc cộng, quy tắc nhân và tích Descartes."
 ---
 
+
+Một mật khẩu 8 ký tự gồm chữ thường và chữ số mất bao lâu để tin tặc dò vét cạn? Một bộ kiểm thử có bao nhiêu tổ hợp cấu hình cần chạy? Bạn không thể ngồi liệt kê hàng nghìn tỷ trường hợp bằng tay—nhưng chỉ với hai nguyên tắc tối giản là **Quy tắc Cộng** (chia trường hợp rời nhau) và **Quy tắc Nhân** (ghép các bước nối tiếp), bạn có thể tính chính xác kích thước của những không gian khổng lồ chỉ trong vài giây.
+
 <div class="textbook-epigraph" markdown="1">
 
 "Combinatorics is the art of counting without actually counting."
@@ -20,6 +23,20 @@ excerpt: "Mở đầu chương phép đếm và tổ hợp với hai nguyên t�
 Trong chương này, chúng ta nghiên cứu **phép đếm** và **tổ hợp** — bộ công cụ giúp tính số lượng cấu hình mà không cần liệt kê thủ công từng trường hợp. Một hệ thống có bao nhiêu cách đăng nhập, một quy tắc đặt mật khẩu tạo ra bao nhiêu khả năng, hay một thuật toán phải duyệt qua bao nhiêu cấu hình — tất cả đều là bài toán đếm. Mục 7.1 bắt đầu với hai nguyên tắc nền tảng nhất: **quy tắc cộng** và **quy tắc nhân**.
 
 Quy tắc cộng được áp dụng khi các lựa chọn loại trừ lẫn nhau; quy tắc nhân được áp dụng khi một quá trình gồm nhiều bước thực hiện nối tiếp. Hai nguyên tắc này là nền móng cho hầu hết các kỹ thuật đếm về sau. Sai lầm trong bài toán đếm thường không đến từ công thức phức tạp, mà từ việc xác định nhầm cấu trúc bài toán: đâu là lựa chọn "hoặc" và đâu là chuỗi bước "và".
+
+## Bản đồ kiến thức nền: Bốn nguyên lý cốt lõi của Nghệ thuật Đếm cơ bản
+
+1. **Quy tắc Cộng (Addition Principle) — "Hoặc trường hợp này, hoặc trường hợp kia"**:
+   Nếu một công việc có thể hoàn thành theo một trong $k$ phương án **đôi một rời nhau** ($A_i \cap A_j = \emptyset$), thì tổng số cách là tổng số cách của từng phương án: $|A_1 \cup \dots \cup A_k| = \sum |A_i|$.
+
+2. **Quy tắc Nhân (Multiplication Principle) — "Làm bước 1, rồi tiếp bước 2, ..."**:
+   Nếu một quy trình gồm $k$ bước nối tiếp nhau, bước thứ $i$ luôn có đúng $n_i$ lựa chọn bất kể các bước trước chọn gì, thì tổng số cách là tích $n_1 \cdot n_2 \cdots n_k$ (chính là lực lượng tích Descartes $|A_1 \times \dots \times A_k|$).
+
+3. **Cây quyết định (Decision Tree) & Thứ tự chọn bước khó trước**:
+   Khi các bước có ràng buộc ràng buộc lẫn nhau (như số chẵn không lặp chữ số), hãy luôn **chọn vị trí bị ràng buộc chặt nhất trước** (ví dụ chữ số tận cùng), hoặc vẽ nhánh cây để không bỏ sót ràng buộc phụ thuộc.
+
+4. **Phối hợp Cộng + Nhân & Đòn bẩy Phần bù (Complement)**:
+   Bài toán thực tế thường chia trường hợp lớn bằng **Quy tắc Cộng**, rồi đếm bên trong mỗi trường hợp bằng **Quy tắc Nhân**. Khi gặp cụm từ *"có ít nhất một..."*, hãy nghĩ ngay đến **đếm phần bù**: $\text{Thỏa mãn} = \text{Tổng tất cả} - \text{Không có cái nào}$.
 
 ## Mục tiêu học tập
 
@@ -173,6 +190,29 @@ Một trang web cho phép tạo tên đăng nhập (username) theo 2 định d�
 - Định dạng 2: 26 × 26 × 10 × 10 = 67.600 tên đăng nhập.
 - Tổng cộng: 26.000 + 67.600 = 93.600 tên đăng nhập.
 </div>
+
+### Khung giải thích (nên đọc chậm): Đếm tay mã PIN 4 chữ số bằng chia trường hợp (Cộng + Nhân) và kỹ thuật Phần bù
+
+**Bài toán A — Có bao nhiêu số tự nhiên chẵn gồm 4 chữ số đôi một khác nhau?**
+*(Chữ số đầu $d_1 \in \{1..9\}$, chữ số cuối $d_4 \in \{0, 2, 4, 6, 8\}$.)*
+
+Vì lựa chọn $d_4 = 0$ hay $d_4 \neq 0$ làm thay đổi số cách chọn $d_1$, ta bắt buộc phải **chia 2 trường hợp rời nhau** (Quy tắc Cộng):
+1. **Trường hợp 1 ($d_4 = 0$ — 1 cách)**:
+   - Chọn $d_1 \in \{1..9\}$: **9 cách** (không lo trùng `0`).
+   - Chọn $d_2$ (bỏ $d_4, d_1$): **8 cách**; chọn $d_3$: **7 cách**.
+   - Số cách (Quy tắc Nhân): $1 \times 9 \times 8 \times 7 = \mathbf{504}$.
+2. **Trường hợp 2 ($d_4 \in \{2, 4, 6, 8\}$ — 4 cách)**:
+   - Chọn $d_1$: phải khác `0` và khác $d_4$ $\implies$ **8 cách**.
+   - Chọn $d_2$: lúc này chữ số `0` được phép dùng trở lại, chỉ trừ $d_4$ và $d_1$ $\implies$ **8 cách**.
+   - Chọn $d_3$: trừ 3 chữ số đã dùng $\implies$ **7 cách**.
+   - Số cách (Quy tắc Nhân): $4 \times 8 \times 8 \times 7 = \mathbf{1{,}792}$.
+3. **Tổng hợp (Quy tắc Cộng)**: $504 + 1{,}792 = \mathbf{2{,}296}$ số.
+
+**Bài toán B — Có bao nhiêu mã PIN 4 chữ số (từ `0000` đến `9999`, được lặp) chứa ít nhất một chữ số `9`?**
+Thay vì chia tới 15 trường hợp vị trí của chữ số `9`, ta dùng **Phần bù**:
+- Tổng số mã PIN bất kỳ: $10^4 = \mathbf{10{,}000}$.
+- Số mã PIN **không chứa chữ số `9` nào** (mỗi vị trí chọn từ 9 chữ số `{0..8}`): $9^4 = \mathbf{6{,}561}$.
+- Kết quả: $10{,}000 - 6{,}561 = \mathbf{3{,}439}$ mã PIN!
 
 ## Ứng dụng trong Khoa học Máy tính
 

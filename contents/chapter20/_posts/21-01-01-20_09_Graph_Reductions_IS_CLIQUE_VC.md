@@ -19,6 +19,17 @@ excerpt: "Chứng minh đầy đủ các phép rút gọn 3SAT≤ₚIS, IS≡CLI
 
 Tập độc lập (Independent Set), Clique và Phủ đỉnh (Vertex Cover) là ba bài toán đồ thị cốt lõi, làm nền cho nhiều chứng minh độ khó NP-complete khác.
 
+Làm sao biến một công thức logic khô khan đầy dấu $$\lor, \land, \neg$$ thành một đồ thị gồm các đỉnh và cạnh? Phép rút gọn kinh điển từ `3SAT` sang `INDEPENDENT-SET` (tập độc lập), rồi nối tiếp sang `CLIQUE` (đồ thị đầy đủ con) và `VERTEX-COVER` (tập phủ đỉnh) là kiệt tác đầu tiên của nghệ thuật **thiết kế mảnh ghép (gadget design)** trong lý thuyết độ phức tạp.
+
+## Bản đồ kiến thức nền: Chuỗi rút gọn Tam giác Vàng trên Đồ thị
+
+1. **Rút gọn $$\mathrm{3SAT} \le_p \mathrm{IS}$$ (Mỗi mệnh đề = 1 tam giác)**:
+   Với $$m$$ mệnh đề, dựng $$m$$ tam giác (mỗi tam giác 3 đỉnh ứng với 3 literal). Nối cạnh xung đột giữa mọi cặp literal mâu thuẫn $$x_i$$ và $$\neg x_i$$. Chọn được tập độc lập cỡ $$m$$ tương đương chọn đúng 1 literal Đúng trong mỗi mệnh đề mà không có hai literal nào mâu thuẫn nhau!
+2. **Đồ thị bù $$\overline{G}$$ nối $$\mathrm{IS} \equiv \mathrm{CLIQUE}$$**:
+   Tập đỉnh $$S$$ là tập độc lập trong $$G$$ (không có cạnh nào giữa các đỉnh trong $$S$$) **khi và chỉ khi** $$S$$ là một clique trong đồ thị bù $$\overline{G}$$ (mọi cặp đỉnh trong $$S$$ đều có cạnh nối).
+3. **Quan hệ bù tập đỉnh nối $$\mathrm{IS} \equiv \mathrm{VC}$$**:
+   $$S$$ là tập độc lập trong $$G = (V, E)$$ **khi và chỉ khi** $$V \setminus S$$ là tập phủ đỉnh (chạm ít nhất một đầu mút của mọi cạnh). Do đó: $$\alpha(G) + \tau(G) = \vert V \vert$$.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -79,6 +90,20 @@ Quan sát mối liên hệ qua phép lấy phần bù giữa tập độc lập 
 <div data-demo="reduction-explainer" data-tab="clique"></div>
 </div>
 <script src="{{ '/public/js/explainers/complexity-explainer.js' | relative_url }}"></script>
+
+### Khung giải thích (nên đọc chậm): Dựng tay đồ thị cho công thức 3SAT có 2 mệnh đề
+
+Xét công thức $$\varphi = (x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor x_3)$$ ($$m = 2$$ mệnh đề):
+1. **Dựng 2 tam giác (6 đỉnh):**
+   - Tam giác 1: đỉnh $$a_1(x_1)$$, $$a_2(\neg x_2)$$, $$a_3(x_3)$$ (nối đôi một với nhau).
+   - Tam giác 2: đỉnh $$b_1(\neg x_1)$$, $$b_2(x_2)$$, $$b_3(x_3)$$ (nối đôi một với nhau).
+2. **Nối cạnh xung đột giữa 2 tam giác:**
+   - Nối $$a_1(x_1)$$ với $$b_1(\neg x_1)$$ (mâu thuẫn $$x_1$$ và $$\neg x_1$$).
+   - Nối $$a_2(\neg x_2)$$ với $$b_2(x_2)$$ (mâu thuẫn $$\neg x_2$$ và $$x_2$$).
+3. **Tìm tập độc lập cỡ $$k = m = 2$$:**
+   - Chọn $$a_1(x_1)$$ ở Tam giác 1 và $$b_2(x_2)$$ ở Tam giác 2: không có cạnh nối giữa $$a_1$$ và $$b_2$$! Suy ra phép gán thỏa mãn $$x_1 = \text{True}, x_2 = \text{True}$$ ($$x_3$$ tùy ý).
+   - Ngược lại, không thể chọn đồng thời $$a_1(x_1)$$ và $$b_1(\neg x_1)$$ vì giữa chúng có cạnh xung đột!
+4. **Kiểm tra ngay sang `VERTEX-COVER`:** Vì $$\vert V \vert = 6$$ và có tập độc lập $$S = \{a_1, b_2\}$$ cỡ $$2$$, phần bù $$V \setminus S = \{a_2, a_3, b_1, b_3\}$$ cỡ $$6 - 2 = \mathbf{4}$$ chắc chắn là một tập phủ đỉnh hợp lệ của đồ thị!
 
 ## Bài tập
 

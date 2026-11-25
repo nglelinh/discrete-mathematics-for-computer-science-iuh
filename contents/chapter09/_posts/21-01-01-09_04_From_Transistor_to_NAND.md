@@ -9,6 +9,16 @@ lang: en
 excerpt: "Đi từ transistor đến cổng logic NAND, latch, flip-flop và mạch cộng ALU trên breadboard, cho thấy đại số Boole trực tiếp tạo nên phần cứng máy tính."
 ---
 
+Mỗi khi bạn gõ `c = a + b` trong C hay Python, phép cộng trông trừu tượng như một dòng chữ trên màn hình. Nhưng sâu bên dưới hệ điều hành và trình biên dịch, toàn bộ phép tính ấy chỉ là hàng tỷ công tắc điện tử siêu nhỏ bật–tắt ở tốc độ gigahertz, ghép thành một loại cổng duy nhất là **NAND**.
+
+**Mạch bài học:** Từ **transistor** đóng vai công tắc vật lý $$\longrightarrow$$ tính đầy đủ hàm của cổng **NAND** $$\longrightarrow$$ mạch nhớ tuần tự (**SR latch / flip-flop**) $$\longrightarrow$$ bộ cộng **half-adder / full-adder** biến đại số Boole thành phép cộng số học.
+
+## Bản đồ kiến thức nền: Kiến trúc mạch số nối toán rời rạc với silicon ra sao?
+
+- **Tính đầy đủ hàm (Functional Completeness):** Một tập cổng logic được gọi là đầy đủ nếu mọi hàm Boole $$f:\{0,1\}^k \to \{0,1\}$$ đều biểu diễn được từ tập đó. Cổng **NAND** ($$\overline{A \cdot B}$$) tự một mình đã đủ dựng nên `NOT`, `AND`, `OR`, `XOR` và mọi mạch tổ hợp phức tạp.
+- **Mạch tổ hợp vs. Mạch tuần tự (Combinational vs. Sequential Logic):** Mạch tổ hợp (như bộ cộng) cho đầu ra chỉ phụ thuộc đầu vào hiện tại; còn mạch tuần tự (latch, flip-flop, RAM) có vòng phản hồi (feedback loop) nên **ghi nhớ được trạng thái quá khứ** — nền tảng của bộ nhớ và thanh ghi CPU.
+- **Số học nhị phân trên phần cứng (Binary Arithmetic Circuits):** Cách tách phép cộng hai số $$n$$-bit thành chuỗi các bộ cộng toàn phần (full-adder) nối tiếp bit nhớ (ripple-carry), dùng chung một mạch cho cả cộng lẫn trừ bù hai.
+
 Ở bài Year 2038, chúng ta đã phân tích phép **cộng 1** trên số 32-bit có dấu ở mức công thức; vậy phép cộng đó thực sự diễn ra ở đâu bên trong máy tính? Mục này trả lời câu hỏi đó bằng cách đi từng tầng phần cứng từ **transistor** đến cổng logic, latch, flip-flop và mạch cộng ALU trên breadboard theo loạt video của Ben Eater. Mục tiêu là thấy rõ đại số Boole (Chương 1, Chương 13) hiện diện trực tiếp trong **phần cứng silicon**: mọi câu lệnh `if (x && y)` và mọi phép cộng bù hai cuối cùng đều được thực hiện bởi transistor và cổng NAND. Ben Eater dùng breadboard cùng đèn LED hiển thị từng bit để xây dựng một [**máy tính 8-bit hoàn chỉnh**](https://eater.net/8bit/) gồm program counter, thanh ghi (register), ALU, RAM và khối điều khiển (control unit), rồi chạy chương trình tính dãy Fibonacci bằng mã lệnh assembly thực thụ.
 
 Khi xem [video lập trình máy tính 8-bit](https://www.youtube.com/watch?v=9PPrrSyubG0) lần đầu, người học dễ nhận ra rằng phép `a + b` trong C thực chất là hàng chục cổng logic đang chuyển trạng thái cùng lúc — chỉ khác là trên máy tính cá nhân ta không nhìn thấy đèn LED. Nếu Chương 13 trình bày đại số Boole và bìa Karnaugh trên giấy, thì dự án của Ben Eater cho thấy các biểu thức Boole đó vận hành trực tiếp trên mạch vật lý như thế nào.
@@ -93,6 +103,38 @@ Xét ví dụ 8-bit để thấy rõ: cực đại không dấu là `11111111` (
 Khi xem lại video về ALU của Ben Eater sau khi đọc bài viết trên Planet Mainframe, Lan nhận ra sự kiện phần cứng đằng sau bài `09_03`: hai số dương cộng với nhau làm bit dấu bật từ 0 lên 1. Mạch silicon không biết đến khái niệm “năm 2038”; nó chỉ thực hiện đúng quy tắc lan truyền bit nhớ.
 
 ---
+
+## Ví dụ tính tay cầm tay chỉ việc: Dựng NOT, AND, OR chỉ từ NAND và cộng nhị phân 2-bit
+
+**Phần A — Chứng minh bằng bảng chân trị rằng NAND sinh được NOT và AND:**
+Định nghĩa $$\text{NAND}(A, B) = \overline{A \cdot B}$$.
+
+1. **Tạo `NOT(A)`:** Nối hai đầu vào của NAND vào cùng tín hiệu $$A$$:
+   $$\text{NAND}(A, A) = \overline{A \cdot A} = \overline{A}.$$
+   Kiểm tra: nếu $$A=0 \Rightarrow \overline{0\cdot 0}=1$; nếu $$A=1 \Rightarrow \overline{1\cdot 1}=0$.
+2. **Tạo `AND(A, B)`:** Đưa đầu ra của $$\text{NAND}(A, B)$$ qua một cổng `NOT` làm từ NAND:
+   $$\text{NAND}\big(\text{NAND}(A, B),\, \text{NAND}(A, B)\big) = \overline{\overline{A \cdot B}} = A \cdot B.$$
+3. **Tạo `OR(A, B)` nhờ định luật De Morgan:** Đảo từng đầu vào bằng NAND rồi đưa vào NAND thứ ba:
+   $$\text{NAND}(\overline{A}, \overline{B}) = \overline{\overline{A} \cdot \overline{B}} = A + B.$$
+
+**Phần B — Chạy tay bộ cộng 2-bit cho phép tính $$3 + 2 = 5$$ ($$11_2 + 10_2$$):**
+Gọi $$A = a_1 a_0 = 11_2$$, $$B = b_1 b_0 = 10_2$$.
+- **Bit 0 (Half-Adder):**
+  - Tổng $$s_0 = a_0 \oplus b_0 = 1 \oplus 0 = 1$$.
+  - Bit nhớ $$c_1 = a_0 \cdot b_0 = 1 \cdot 0 = 0$$.
+- **Bit 1 (Full-Adder nhận $$a_1=1, b_1=1, c_1=0$$):**
+  - Tổng $$s_1 = a_1 \oplus b_1 \oplus c_1 = 1 \oplus 1 \oplus 0 = 0$$.
+  - Bit nhớ ra $$c_2 = (a_1 \cdot b_1) + c_1 \cdot (a_1 \oplus b_1) = (1 \cdot 1) + 0 = 1$$.
+- **Kết quả ghép lại:** $$c_2 s_1 s_0 = 101_2 = 4 + 0 + 1 = 5$$. Hoàn toàn khớp với số học thông thường!
+
+### Khung giải thích: Cầu nối 4 tầng từ vật lý đến chương trình máy tính (nên đọc chậm)
+
+1. **Bước 1 — Vật lý rời rạc hóa điện áp:** Transistor biến điện áp tương tự (0V / 5V) thành hai ký hiệu rời rạc `0` và `1`, giúp loại bỏ nhiễu nhỏ ở mỗi tầng mạch.
+2. **Bước 2 — Đại số Boole tạo khối tính toán:** Nhờ tính đầy đủ hàm của NAND, mọi bảng chân trị hữu hạn — kể cả bộ cộng `Sum = A XOR B` và `Carry = A AND B` — đều đóng gói được thành mạch tổ hợp.
+3. **Bước 3 — Vòng phản hồi tạo ra trí nhớ:** Khi nối đầu ra cổng NAND quay ngược về đầu vào cổng bên cạnh (SR latch), mạch giữ nguyên bit `0` hoặc `1` ngay cả khi tín hiệu kích đã ngắt — biến mạch logic thành thanh ghi và RAM.
+4. **Bước 4 — Đồng hồ nhịp (clock) điều phối toàn CPU:** Kết hợp thanh ghi + ALU + xung clock, máy tính đọc lệnh từ RAM, cộng/trừ trên thanh ghi rồi ghi kết quả ngược lại, biến lý thuyết đại số Boole thành bộ vi xử lý thực thụ.
+
+$$\text{Transistor} \;\xrightarrow{\text{đóng/ngắt}}\; \text{NAND} \;\xrightarrow{\text{De Morgan}}\; \text{ALU \& Latch} \;\xrightarrow{\text{Clock}}\; \text{CPU chạy mã máy.}$$
 
 ## Bài tập thực hành
 

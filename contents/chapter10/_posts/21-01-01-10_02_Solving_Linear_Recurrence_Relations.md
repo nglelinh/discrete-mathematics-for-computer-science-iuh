@@ -9,6 +9,16 @@ lang: vi
 excerpt: "Giải quan hệ truy hồi tuyến tính thuần nhất hệ số hằng bằng phương trình đặc trưng: nghiệm phân biệt, nghiệm bội, nghiệm phức liên hợp, công thức De Moivre và dạng thực sin–cos."
 ---
 
+Tính số Fibonacci thứ 1.000 bằng cách cộng dồn từng bước là chuyện dễ với máy tính, nhưng nếu bạn muốn biết tốc độ tăng trưởng chính xác của dãy mà không phải chạy vòng lặp, bạn cần một "chiếc chìa khóa đại số" biến phương trình truy hồi thành phương trình đa thức quen thuộc thời phổ thông. Chiếc chìa khóa đó là thử nghiệm dạng lũy thừa $$a_n = r^n$$ để sinh ra **phương trình đặc trưng**.
+
+**Mạch bài học:** Phép thử $$a_n = r^n$$ và **phương trình đặc trưng** $$\longrightarrow$$ xử lý **3 dạng nghiệm** (thực phân biệt, nghiệm bội, nghiệm phức liên hợp) $$\longrightarrow$$ chuyển nghiệm phức về dạng thực $$\rho^n(A\cos n\theta + B\sin n\theta)$$ nhờ định lý De Moivre $$\longrightarrow$$ mở rộng lên bậc $$k$$ bất kỳ.
+
+## Bản đồ kiến thức nền: Giải truy hồi tuyến tính thuần nhất dựa trên những trụ cột nào?
+
+- **Không gian nghiệm tuyến tính (Linear Solution Space):** Mọi nghiệm của quan hệ truy hồi tuyến tính thuần nhất bậc $$k$$ tạo thành một **không gian vector $$k$$ chiều**; do đó chỉ cần tìm đúng $$k$$ nghiệm cơ sở độc lập tuyến tính rồi tổ hợp chúng lại để khớp với $$k$$ điều kiện đầu.
+- **Đa thức đặc trưng & Đại số đa thức (Characteristic Polynomial):** Thay $$a_n = r^n$$ biến toán tử dịch chuyển bậc $$k$$ thành đa thức bậc $$k$$. Nghiệm đơn $$r_i$$ sinh ra $$r_i^n$$, còn nghiệm bội $$m$$ đòi hỏi nhân thêm các bậc $$n, n^2, \dots, n^{m-1}$$ để đảm bảo đủ $$m$$ nghiệm độc lập.
+- **Số phức & Công thức De Moivre (Complex Numbers & Oscillations):** Khi đa thức đặc trưng có biệt thức $$\Delta < 0$$, cặp nghiệm phức liên hợp $$r = \rho e^{\pm i\theta}$$ không hề "vô nghĩa" — chúng chính là cơ chế sinh ra **dao động tuần hoàn tắt dần hoặc khuếch đại** của dãy số thực.
+
 Ở bài trước, chúng ta đã làm quen với định nghĩa và cách phân loại quan hệ truy hồi theo bậc, tính tuyến tính và tính thuần nhất. Bài học này tập trung vào lớp bài toán quan trọng bậc nhất: **quan hệ truy hồi tuyến tính thuần nhất có hệ số hằng**. Với lớp truy hồi này, thay vì phải tính lần lượt từng số hạng từ đầu, ta có thể tìm được công thức đóng tường minh cho $$a_n$$ hoặc đánh giá trực tiếp tốc độ tăng trưởng của dãy.
 
 Trong khoa học máy tính, từ số lời gọi đệ quy, số cấu hình tổ hợp đến phân tích thuật toán chia để trị, rất nhiều bài toán đều quy về giải một quan hệ truy hồi tuyến tính. Công cụ chủ đạo ở đây là **phương trình đặc trưng**, dẫn đến ba trường hợp nghiệm: nghiệm thực phân biệt, nghiệm bội và nghiệm phức liên hợp. Để xử lý trọn vẹn trường hợp biệt thức âm, bài học cũng hệ thống lại ngắn gọn các kiến thức nền về **số phức**, **ba cách biểu diễn** và **định lý De Moivre**, giúp bạn chuyển đổi nghiệm phức sang dạng thực chứa $$\cos$$ và $$\sin$$ một cách chắc chắn.
@@ -896,6 +906,35 @@ Khám phá mối liên hệ giữa đa thức đặc trưng, các loại nghiệ
 <div data-demo="recurrence-explainer" data-mode="linear" data-preset="complex"></div>
 </div>
 <script src="{{ '/public/js/explainers/recurrence-explainer.js' | relative_url }}"></script>
+
+## Ví dụ tính tay cầm tay chỉ việc: Giải trọn vẹn cả 3 trường hợp nghiệm bậc 2
+
+**Trường hợp 1 (Nghiệm thực phân biệt):** Giải $$a_n = 5a_{n-1} - 6a_{n-2}$$ với $$a_0 = 2, a_1 = 5$$.
+- Phương trình đặc trưng: $$r^2 - 5r + 6 = 0 \iff (r-2)(r-3) = 0 \Rightarrow r_1 = 2, r_2 = 3$$.
+- Nghiệm tổng quát: $$a_n = c_1 \cdot 2^n + c_2 \cdot 3^n$$.
+- Thay $$n=0, 1$$: $$\begin{cases} c_1 + c_2 = 2 \\ 2c_1 + 3c_2 = 5 \end{cases} \Rightarrow c_2 = 1, c_1 = 1$$.
+- Kết quả: $$a_n = 2^n + 3^n$$. Kiểm tra $$n=2$$: công thức cho $$4 + 9 = 13$$; truy hồi cho $$5(5) - 6(2) = 13$$. Khớp!
+
+**Trường hợp 2 (Nghiệm bội):** Giải $$b_n = 4b_{n-1} - 4b_{n-2}$$ với $$b_0 = 1, b_1 = 6$$.
+- Phương trình đặc trưng: $$r^2 - 4r + 4 = (r-2)^2 = 0 \Rightarrow r = 2$$ (bội 2).
+- Nghiệm tổng quát: $$b_n = (c_1 + c_2 n) \cdot 2^n$$.
+- Thay $$n=0, 1$$: $$c_1 = 1$$ và $$(1 + c_2)\cdot 2 = 6 \Rightarrow c_2 = 2$$.
+- Kết quả: $$b_n = (1 + 2n) \cdot 2^n$$. Kiểm tra $$n=2$$: công thức cho $$5 \cdot 4 = 20$$; truy hồi cho $$4(6) - 4(1) = 20$$. Khớp!
+
+**Trường hợp 3 (Nghiệm phức):** Giải $$d_n = 2d_{n-1} - 2d_{n-2}$$ với $$d_0 = 1, d_1 = 1$$.
+- Phương trình đặc trưng: $$r^2 - 2r + 2 = 0 \Rightarrow r = 1 \pm i = \sqrt{2}\left(\cos\frac{\pi}{4} \pm i\sin\frac{\pi}{4}\right)$$.
+- Nghiệm dạng thực: $$d_n = (\sqrt{2})^n\left(A\cos\frac{n\pi}{4} + B\sin\frac{n\pi}{4}\right)$$.
+- Thay $$n=0 \Rightarrow A = 1$$; thay $$n=1 \Rightarrow \sqrt{2}\left(\frac{\sqrt{2}}{2} + B\frac{\sqrt{2}}{2}\right) = 1 + B = 1 \Rightarrow B = 0$$.
+- Kết quả: $$d_n = (\sqrt{2})^n \cos\frac{n\pi}{4}$$. Kiểm tra $$n=2$$: $$2\cos(\pi/2) = 0$$; truy hồi cho $$2(1) - 2(1) = 0$$. Hoàn hảo!
+
+### Khung giải thích: Quy trình 4 bước giải mọi truy hồi tuyến tính thuần nhất (nên đọc chậm)
+
+1. **Bước 1 — Chuyển sang đa thức đặc trưng:** Thay $$a_{n-j}$$ bằng $$r^{k-j}$$ để thu về phương trình đại số bậc $$k$$.
+2. **Bước 2 — Đọc đúng dạng nghiệm cơ sở từ loại nghiệm:** Nghiệm đơn $$r$$ đóng góp $$r^n$$; nghiệm bội $$m$$ đóng góp $$r^n, nr^n, \dots, n^{m-1}r^n$$; cặp phức $$\rho e^{\pm i\theta}$$ đóng góp $$\rho^n\cos(n\theta)$$ và $$\rho^n\sin(n\theta)$$.
+3. **Bước 3 — Giải hệ tuyến tính từ điều kiện đầu:** Thế $$n = 0, 1, \dots, k-1$$ để xác định duy nhất các hằng số $$c_i$$.
+4. **Bước 4 — Đọc tốc độ tiệm cận ngay từ nghiệm lớn nhất:** Mô-đun cực đại $$\max \vert r_i \vert$$ quyết định hành vi dài hạn của dãy — tương đương với trị riêng trội (dominant eigenvalue) của ma trận chuyển trạng thái!
+
+$$a_n + c_1 a_{n-1} + \cdots + c_k a_{n-k} = 0 \;\xrightarrow{a_n = r^n}\; P(r)=0 \;\xrightarrow{\text{3 dạng nghiệm}}\; a_n = \sum c_j \phi_j(n).$$
 
 ## Bài tập
 

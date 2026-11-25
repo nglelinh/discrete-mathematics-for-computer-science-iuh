@@ -9,6 +9,21 @@ lang: en
 excerpt: "Phân tách hai lớp Unicode (ký tự ứng với mã số nào) và encoding (mã số đó được ghi thành dãy byte nào), giải thích nguyên nhân lỗi mojibake trong hệ thống thực tế."
 ---
 
+Một buổi chiều thứ Sáu yên bình ở team backend, bài test vừa xanh hết thì Product Owner chụp màn hình gửi lên Slack: tên khách hàng `Nguyễn Thị Lan` bỗng biến hình thành `Nguyá»…n Thá»‹ Lan`! Lỗi hiển thị chữ quái dị ấy (**mojibake**) không phải do "phông chữ bị lỗi" hay "cơ sở dữ liệu hỏng" — nó bắt nguồn từ định lý vàng của Joel Spolsky năm 2003: **không hề tồn tại thứ gọi là "văn bản thuần" (plain text) nếu bạn không nói rõ bảng mã (encoding)!**
+
+**Mạch bài học:** Bản đồ kiến thức nền (tách bạch 2 lớp: Unicode Code Point vs. Byte Encoding, thiết kế tự đồng bộ của UTF-8) → Câu chuyện TaskFlow & lịch sử ASCII/UTF-8/UTF-16 → Ví dụ tính tay cầm tay chỉ việc: tự tay mã hóa chữ `'ễ'` (`U+1EC5`) ra đúng 3 byte UTF-8 `E1 BB 85` và tái hiện lỗi `Nguyá»…n`! → Khung giải thích chậm: 3 bước dập tắt mojibake tận gốc trong đường ống Web/DB → Tóm tắt & Video.
+
+## Bản đồ kiến thức nền: Unicode và Encoding giải quyết bài toán gì?
+
+### 1. Lớp 1 — Unicode (Bảng ánh xạ Ký tự $$\to$$ Số nguyên Code Point)
+**Unicode** KHÔNG quy định cách lưu byte trên đĩa! Nó chỉ là một cuốn danh bạ toàn cầu gán cho mỗi ký tự trên thế giới một mã số duy nhất gọi là **code point** `U+XXXX`: ví dụ `'A'` là `U+0041` (65), `'ễ'` là `U+1EC5`, emoji `'😀'` là `U+1F600`.
+
+### 2. Lớp 2 — Encoding (Quy tắc đóng gói Code Point thành dãy Byte)
+**Encoding** (như **UTF-8**, **UTF-16**, **Windows-1252**) mới là thuật toán biến con số `U+XXXX` thành 1, 2, 3 hoặc 4 byte cụ thể! Cùng một chữ `'ễ'` nhưng UTF-8 ghi thành 3 byte (`E1 BB 85`), còn UTF-16LE ghi thành 2 byte (`C5 1E`).
+
+### 3. Thiết kế thiên tài của UTF-8 (Ken Thompson & Rob Pike, 1992)
+UTF-8 thống trị hơn 98% trang web toàn cầu nhờ ba tính chất toán học: (1) tương thích ngược 100% với ASCII 7-bit (`0xxxxxxx`), (2) **tự đồng bộ** (byte đầu luôn bắt đầu bằng `110`, `1110`, `11110`, còn byte tiếp nối luôn là `10xxxxxx` — nên nhìn vào giữa luồng byte vẫn tìm lại được ranh giới ký tự!), và (3) không bị ảnh hưởng bởi endianness!
+
 Ở mục trước, chúng ta đã thấy mọi dữ liệu trong RAM cuối cùng đều là **bit** và **byte**; chương trình mới là bên quyết định đọc chúng thành số, ảnh hay chữ. Mục này đi sâu vào trường hợp **văn bản**: không có dãy byte nào tự mang nhãn “tôi là ký tự Unicode”. Chúng ta cần phân tách rõ hai lớp — **Unicode** (ký tự ứng với mã số nào) và **encoding** (mã số đó được ghi thành dãy byte nào) — vì sự nhầm lẫn giữa hai lớp này là nguyên nhân phổ biến gây ra lỗi hiển thị chữ (**mojibake**) trong các hệ thống thực tế.
 
 Trong tuần đầu tiên làm backend cho **TaskFlow**, Minh triển khai tính năng hiển thị tên khách hàng lên trang quản trị staging. API trả về JSON đúng lược đồ, bài kiểm thử vượt qua, QA xác nhận ổn. Nhưng chiều thứ Sáu, Product Owner gửi một ảnh chụp màn hình vào Slack:
@@ -175,6 +190,44 @@ Không có văn bản thuần — chỉ có byte và quy ước.
 **Đọc thêm:** [Joel on Software — Unicode (2003)](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/) · [Unicode Standard — Character Encoding Forms](https://www.unicode.org/versions/Unicode15.0.0/ch03.pdf) · [Lịch sử UTF-8 — Ken Thompson](http://www.cl.cam.ac.uk/~mgk25/ucs/utf-8-history.txt)
 
 ---
+
+
+## Ví dụ tính tay cầm tay chỉ việc: Mã hóa chữ `'ễ'` (`U+1EC5`) sang UTF-8 và tái hiện lỗi `Nguyá»…n`!
+
+Hãy tự tay thực hiện quy tắc UTF-8 cho chữ **`'ễ'`** trong tên `Nguyễn`:
+1. **Lấy mã Unicode:** `'ễ'` = `U+1EC5`. Vì `U+0800 <= U+1EC5 <= U+FFFF`, UTF-8 dùng mẫu **3 byte**: `1110xxxx 10xxxxxx 10xxxxxx` (chứa đúng $$4 + 6 + 6 = 16$$ bit).
+2. **Đổi `0x1EC5` sang 16 bit nhị phân:**
+   $$
+   \texttt{1} = \texttt{0001},\quad \texttt{E} = \texttt{1110},\quad \texttt{C} = \texttt{1100},\quad \texttt{5} = \texttt{0101}
+   \;\Longrightarrow\;
+   \underbrace{\texttt{0001}}_{4\text{ bit}}\;\underbrace{\texttt{111011}}_{6\text{ bit}}\;\underbrace{\texttt{000101}}_{6\text{ bit}}.
+   $$
+3. **Điền vào mẫu 3 byte UTF-8:**
+   - Byte 1: `1110` + `0001` = `11100001` = **`0xE1`**
+   - Byte 2: `10` + `111011` = `10111011` = **`0xBB`**
+   - Byte 3: `10` + `000101` = `10000101` = **`0x85`**
+4. **Giải mã hiện trường vụ án mojibake:** Nếu trình duyệt hoặc DB đọc nhầm 3 byte `E1 BB 85` theo bảng mã **Windows-1252** (1 byte = 1 ký tự): `0xE1` là **`á`**, `0xBB` là **`»`**, `0x85` là **`…`** $$\implies$$ **`Nguyễn` lập tức biến thành `Nguyá»…n`!!**
+
+### Khung giải thích: 3 bước truy tìm và khóa chặt Mojibake trong hệ thống thực tế (nên đọc chậm)
+
+#### Bước 1: Không bao giờ đoán — kiểm tra dãy byte thô bằng hex!
+Thấy chữ Việt 1 ký tự bị bung thành 3 ký tự lạ (`á»…`, `Ã¡`)? Đó là dấu vân tay 100% của **UTF-8 bị giải mã nhầm thành Latin-1 / Windows-1252**! Còn nếu hiện `????` thì ký tự đã bị *phá hủy mất dữ liệu* do cột DB dùng `latin1` hoặc `utf8` 3-byte cũ (MySQL cần `utf8mb4` để lưu emoji 4-byte!).
+
+#### Bước 2: Khóa chuẩn UTF-8 tại mọi đường biên giao tiếp
+Đảm bảo đồng bộ ở cả 4 điểm chạm: kết nối DB (`charset=utf8mb4`), HTTP header (`Content-Type: application/json; charset=utf-8`), đọc/ghi tệp (`encoding="utf-8"`), và thẻ `<meta charset="utf-8">` trên HTML.
+
+#### Bước 3: Phân biệt `len(s)` theo code point, UTF-16 code unit và số byte UTF-8
+Trong Python, `len("😀") == 1` (1 code point), trong JavaScript/Java `"😀".length == 2` (2 đơn vị UTF-16 surrogate pair), còn `len("😀".encode("utf-8")) == 4` (4 byte)! Không hiểu sự khác biệt này là nguồn gốc của hàng loạt lỗi cắt chuỗi gây hỏng JSON!
+
+$$
+\text{Ký tự } \texttt{'ễ'}
+\;\xrightarrow{\text{Unicode}}\;
+\texttt{U+1EC5}
+\;\xrightarrow{\text{UTF-8}}\;
+\texttt{E1 BB 85}
+\;\xrightarrow{\text{Đọc nhầm Win-1252}}\;
+\texttt{á»…}\ (\text{Mojibake!}).
+$$
 
 ## Xem thêm / Video gợi ý
 

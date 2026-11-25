@@ -10,7 +10,21 @@ lang: en
 excerpt: "Trình bày các phép toán hợp, giao, hiệu, phần bù, hiệu đối xứng, các hằng đẳng thức tập hợp (bao gồm luật De Morgan) và ứng dụng trong SQL, Python và Bloom filter."
 ---
 
-Ở mục trước, chúng ta đã định nghĩa tập hợp, phần tử, tập con và lực lượng. Mục này giới thiệu **phép toán tập hợp** — công cụ kết hợp, so sánh và loại trừ giữa các tập hợp. Trong thực tế, ta thường xuyên gặp các thao tác như tìm người dùng thuộc nhóm A **hoặc** B, tìm bản ghi xuất hiện trong nhật ký hôm qua nhưng không có hôm nay, xác định tài nguyên chung của hai dịch vụ, hay danh sách các nút chưa được duyệt. Các phép hợp, giao, hiệu và phần bù diễn đạt những yêu cầu đó một cách chính xác và làm nền tảng cho truy vấn dữ liệu, tối ưu điều kiện logic và mô hình hóa trạng thái. Hiểu rõ từng phép toán giúp tránh những lỗi phổ biến như nhầm giao với hợp hoặc bỏ quên tập vũ trụ khi lấy phần bù.
+Nếu tập hợp là danh từ thì các **phép toán tập hợp**—Hợp ($\cup$), Giao ($\cap$), Hiệu ($\setminus$), Hiệu đối xứng ($\triangle$) và Phần bù ($\overline{A}$)—là động từ giúp ta lọc khách hàng chung giữa hai chiến dịch, gộp quyền truy cập (RBAC), hay thực hiện `UNION`, `INTERSECT`, `EXCEPT` trong SQL.
+
+## Bản đồ kiến thức nền: Bốn trục liên kết của Phép toán Tập hợp
+
+1. **Song hành 1–1 giữa Phép toán Tập hợp và Phép toán Logic**:
+   Mỗi phép toán tập hợp đều ánh xạ thẳng sang một toán tử logic Chương 1: $x \in A \cup B \iff (x \in A) \lor (x \in B)$; $x \in A \cap B \iff (x \in A) \land (x \in B)$; $x \in \overline{A} \iff \neg(x \in A)$; $x \in A \triangle B \iff (x \in A) \oplus (x \in B)$.
+
+2. **Các Hằng đẳng thức Tập hợp & Luật De Morgan**:
+   Nhờ sự song hành trên, toàn bộ luật phân phối, hấp thụ và **De Morgan** ($\overline{A \cup B} = \overline{A} \cap \overline{B}$, $\overline{A \cap B} = \overline{A} \cup \overline{B}$) đều đúng y hệt—và có thể chứng minh bằng *bảng thành viên (membership table)* hoặc biến đổi logic.
+
+3. **Biểu diễn Bitvector trong máy tính ($O(1)$ phép toán tập hợp!)**:
+   Khi tập vũ trụ $U$ cố định (ví dụ 64 quyền hệ thống), mỗi tập con lưu gọn trong 1 số nguyên `u64`: Hợp là `a | b`, Giao là `a & b`, Hiệu là `a & ~b`, Hiệu đối xứng là `a ^ b`—tính xong cả 64 phần tử trong **đúng 1 chu kỳ xung nhịp CPU**!
+
+4. **Ứng dụng trực tiếp trong truy vấn & thuật toán**:
+   Bộ máy tìm kiếm (Inverted Index) dùng phép **Giao** trên danh sách tài liệu của các từ khóa; Git diff và đồng bộ tệp dùng phép **Hiệu** và **Hiệu đối xứng**.
 
 ## Mục tiêu học tập
 
@@ -193,6 +207,24 @@ not (x in A and x in B) == (x not in A) or (x not in B)
 ```
 
 **Quy tắc ghi nhớ**: Khi đưa `not` vào trong ngoặc, đổi `or` thành `and` và ngược lại.
+
+### Khung giải thích (nên đọc chậm): Tính tay 4 phép toán tập hợp bằng cả Tập hợp và Bitvector 6-bit
+
+Cho tập vũ trụ 6 quyền truy cập $U = \{0:\text{read}, 1:\text{write}, 2:\text{exec}, 3:\text{del}, 4:\text{share}, 5:\text{admin}\}$.
+- Vai trò `Editor`: $A = \{0, 1, 4\}$ → bitvector 6-bit (bit 5 bên trái → bit 0 bên phải): `010011`.
+- Vai trò `Reviewer`: $B = \{0, 2, 4\}$ → bitvector 6-bit: `010101`.
+
+Kiểm tra từng phép toán bằng cả hai cách:
+
+| Phép toán | Kết quả tập hợp | Phép toán bit trên CPU | Bitvector kết quả | Khớp? |
+| :--- | :--- | :--- | :---: | :---: |
+| **Hợp ($A \cup B$)** | $\{0, 1, 2, 4\}$ | `010011 \| 010101` | `010111` (bit 0,1,2,4) | 100% |
+| **Giao ($A \cap B$)** | $\{0, 4\}$ | `010011 & 010101` | `010001` (bit 0,4) | 100% |
+| **Hiệu ($A \setminus B$)** | $\{1\}$ | `010011 & ~010101` (`& 101010`) | `000010` (bit 1) | 100% |
+| **Hiệu đối xứng ($A \triangle B$)** | $\{1, 2\}$ | `010011 ^ 010101` | `000110` (bit 1,2) | 100% |
+| **Phần bù ($\overline{A}$)** | $\{2, 3, 5\}$ | `~010011` (trên 6 bit) | `101100` (bit 2,3,5) | 100% |
+
+Chỉ cần nhìn bảng này, bạn thấy rõ vì sao cờ phân quyền Linux (`chmod 755`) và cờ hệ thống trong C/Rust đều dùng bitmask để chạy các phép toán tập hợp với tốc độ phần cứng!
 
 ## Ứng dụng trong Khoa học Máy tính
 

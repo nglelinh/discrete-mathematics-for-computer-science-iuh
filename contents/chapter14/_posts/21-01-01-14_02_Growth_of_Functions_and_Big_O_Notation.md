@@ -9,6 +9,8 @@ lang: en
 excerpt: "Các ký hiệu tiệm cận Big-O, Omega và Theta; thứ tự các bậc tăng trưởng phổ biến; quy tắc tổng và tích trong phân tích độ phức tạp."
 ---
 
+> **Câu chuyện mở đầu:** Giả sử thuật toán A mất $$1000n$$ phép tính còn thuật toán B chỉ mất $$n^2$$ phép tính. Với $$n = 10$$, thuật toán B nhanh gấp **100 lần** thuật toán A! Nhưng khi dữ liệu thực tế tăng lên $$n = 10^6$$, thuật toán A chạy trong $$10^9$$ bước (chưa đầy 1 giây), còn thuật toán B tốn $$10^{12}$$ bước (mất gần 15 phút)! Để không bị đánh lừa bởi các hằng số nhỏ và tốc độ phần cứng, khoa học máy tính dùng **ký hiệu tiệm cận $$O, \Omega, \Theta$$** — chiếc kính hiển vi nhìn thẳng vào **tốc độ bùng nổ khi $$n \to \infty$$**.
+
 <div class="textbook-epigraph" markdown="1">
 
 "Ignore machine constants — compare how cost grows with input size."
@@ -46,6 +48,56 @@ Khi so sánh hai thuật toán, ta không chỉ đo thời gian chạy bằng mi
 </div>
 
 Video dài khoảng 2 phút 56 giây: so sánh số phép tính của $$n$$, $$n\log n$$, $$n^2$$, $$2^n$$ ($$2^{60}$$ phép tính mất khoảng 36 năm), minh họa các đường tăng trưởng và định nghĩa $$O$$ với $$c, n_0$$ trên đồ thị cho $$3n^2 + 5n + 2 \le 4n^2$$ khi $$n \ge 6$$ (cặp $$c = 10, n_0 = 1$$ trong bài cũng hợp lệ), giới thiệu $$\Omega$$ và $$\Theta$$, các quy tắc rút gọn, cách đếm bước trong vòng lặp và năm lỗi thường gặp.
+
+## Bản đồ kiến thức nền: Ký hiệu Tiệm cận $$O, \Omega, \Theta$$ là gì?
+
+### 1. Bộ ba Ký hiệu Tiệm cận (Bachmann–Landau–Knuth)
+- **$$f(n) = O(g(n))$$ (Chặn trên — giống dấu $$\le$$):** Tồn tại hằng số $$C > 0$$ và ngưỡng $$n_0$$ sao cho $$\lvert f(n)\rvert \le C\lvert g(n)\rvert$$ với mọi $$n \ge n_0$$.
+- **$$f(n) = \Omega(g(n))$$ (Chặn dưới — giống dấu $$\ge$$):** $$\lvert f(n)\rvert \ge c\lvert g(n)\rvert$$ với mọi $$n \ge n_0$$.
+- **$$f(n) = \Theta(g(n))$$ (Chặn chặt — giống dấu $$=$$):** Vừa là $$O(g(n))$$ vừa là $$\Omega(g(n))$$!
+
+### 2. Bậc thang Tăng trưởng Kinh điển (từ chậm đến bùng nổ)
+$$
+O(1) < O(\log n) < O(n) < O(n\log n) < O(n^2) < O(n^3) < O(2^n) < O(n!).
+$$
+Lưu ý quan trọng: **đa thức bất kỳ $$n^k$$ luôn bị hàm mũ $$2^n$$ (hay $$1.001^n$$) vượt mặt** khi $$n$$ đủ lớn, và **mọi hàm logarit $$\log_a n$$ đều đồng bậc $$\Theta(\log n)$$** vì chỉ khác nhau hằng số đổi cơ số!
+
+### 3. Quy tắc Tổng & Tích (Bỏ hằng số và số hạng bậc thấp)
+- $$O(f) + O(g) = O(\max(f, g))$$ (bước chạy chậm nhất chi phối toàn bộ chương trình!).
+- $$O(f) \cdot O(g) = O(f \cdot g)$$ (vòng lặp lồng nhau nhân độ phức tạp!).
+
+## Ví dụ tính tay cầm tay chỉ việc: Chứng minh trực tiếp từ định nghĩa $$3n^2 + 5n + 7 = \Theta(n^2)$$
+
+1. **Chứng minh $$3n^2 + 5n + 7 = O(n^2)$$:** Với mọi $$n \ge 1$$, ta có $$5n \le 5n^2$$ và $$7 \le 7n^2$$, nên:
+   $$
+   3n^2 + 5n + 7 \le 3n^2 + 5n^2 + 7n^2 = 15n^2.
+   $$
+   Chọn cặp chứng nhân **$$C = 15,\; n_0 = 1$$** $$\implies 3n^2 + 5n + 7 = O(n^2)$$! ✓
+2. **Chứng minh $$3n^2 + 5n + 7 = \Omega(n^2)$$:** Với mọi $$n \ge 1$$, $$5n + 7 > 0$$ nên $$3n^2 + 5n + 7 \ge 3n^2$$. Chọn **$$c = 3,\; n_0 = 1$$** $$\implies \Omega(n^2)$$! ✓
+3. **Kết hợp (1) và (2):** $$3n^2 + 5n + 7 = \Theta(n^2)$$!
+4. **Phản chứng $$2^{2n} \neq O(2^n)$$:** Xét tỉ số $$\frac{2^{2n}}{2^n} = 2^n \to +\infty$$ khi $$n \to \infty$$ — không thể bị chặn bởi bất kỳ hằng số $$C$$ nào! (Ngược lại, $$2^{n+10} = 1024 \cdot 2^n = \Theta(2^n)$$!)
+
+### Khung giải thích: 4 bước làm chủ Ký hiệu Big-O không nhầm lẫn (nên đọc chậm)
+
+#### Bước 1: Đừng nhầm Big-O với "trường hợp xấu nhất"
+Big-O chỉ là **chặn trên toán học của một hàm số**! Bạn có thể dùng $$O, \Omega, \Theta$$ để mô tả trường hợp tốt nhất, trung bình, lẫn xấu nhất.
+
+#### Bước 2: Dùng phép tính giới hạn $$\lim_{n\to\infty} f(n)/g(n)$$ để so sánh siêu nhanh
+- Nếu giới hạn $$= 0 \implies f = o(g)$$ (nhỏ hơn chặt).
+- Nếu giới hạn $$= L \in (0, \infty) \implies f = \Theta(g)$$ (đồng bậc!).
+- Nếu giới hạn $$= +\infty \implies g = o(f)$$.
+
+#### Bước 3: Luôn kiểm tra cặp chứng nhân $$(C, n_0)$$ khi chứng minh chặt
+Đừng chỉ nói "bỏ bậc thấp"; hãy thay mọi số hạng $$n^k$$ ($$k < d$$) bằng $$n^d$$ (với $$n \ge 1$$) để chỉ ra hằng số $$C$$ tường minh.
+
+#### Bước 4: Đừng quên hằng số ẩn trong thực tế kỹ thuật
+Khi $$n$$ nhỏ (ví dụ $$n \le 32$$), Insertion Sort $$O(n^2)$$ với hằng số cực bé thường chạy nhanh hơn Merge Sort $$O(n\log n)$$ — đó là lý do `Timsort` (Python) và `Introsort` (C++) kết hợp cả hai!
+
+$$
+\text{Hàm chi phí }T(n)
+\;\xrightarrow{\;\exists C, n_0:\; T(n) \le C g(n)\;}\;
+O(g(n)) \;/\; \Omega(g(n)) \;/\; \Theta(g(n)).
+$$
 
 ## Định nghĩa các ký hiệu tiệm cận
 

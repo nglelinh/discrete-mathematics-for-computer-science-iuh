@@ -19,6 +19,18 @@ excerpt: "Chứng minh đầy đủ phép rút gọn SAT≤ₚ3SAT bằng kỹ t
 
 Phần lớn các phép chứng minh NP-complete trên đồ thị đều xuất phát từ **3SAT**. Bài học này chứng minh $$3\mathrm{SAT}$$ là NP-complete dựa trên định lý Cook–Levin bằng phép rút gọn trực tiếp từ SAT.
 
+Định lý Cook–Levin cho ta `SAT` là NP-complete, nhưng một công thức CNF tổng quát có thể chứa những mệnh đề dài hàng trăm literal, rất khó dùng để thiết kế các "mảnh ghép đồ thị" (gadget). Chỉ cần chuẩn hóa sao cho **mọi mệnh đề đều có đúng 3 literal** (`3SAT`), ta có ngay điểm xuất phát gọn gàng nhất cho hàng trăm phép rút gọn NP-complete trong suốt phần còn lại của lý thuyết độ phức tạp.
+
+## Bản đồ kiến thức nền: Ba trụ cột của phép rút gọn $$\mathrm{SAT} \le_p 3\mathrm{SAT}$$
+
+1. **Tính bảo toàn khả thỏa (Equisatisfiability) vs. Tương đương logic**:
+   Khi thêm biến phụ $$y_1, y_2, \dots$$ để bẻ gãy mệnh đề dài, công thức mới $$\varphi'$$ **không** tương đương logic với $$\varphi$$ (vì có thêm biến mới), nhưng luôn **đồng khả thỏa**: $$\varphi$$ có nghiệm $$\iff \varphi'$$ có nghiệm!
+2. **Kỹ thuật dây chuyền biến phụ (Tseitin Splitting)**:
+   Một mệnh đề dài $$k \ge 4$$ literal $$(l_1 \lor l_2 \lor \dots \lor l_k)$$ được cắt thành chuỗi $$k-2$$ mệnh đề 3-literal bằng $$k-3$$ biến phụ:
+   $$(l_1 \lor l_2 \lor y_1) \land (\neg y_1 \lor l_3 \lor y_2) \land \cdots \land (\neg y_{k-3} \lor l_{k-1} \lor l_k).$$
+3. **Bổ sung biến đệm (Padding) cho mệnh đề ngắn ($$k = 1, 2$$)**:
+   Mệnh đề 1 literal $$(l_1)$$ hay 2 literal $$(l_1 \lor l_2)$$ được đệm thêm biến phụ (hoặc lặp literal tùy quy ước) thành đúng 3 literal mà không đổi tính khả thỏa.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -98,6 +110,21 @@ Công thức $$f(\varphi)$$ là hội của tất cả các mệnh đề 3-liter
 **Định lý.** $$\mathrm{SAT}\le_p 3\mathrm{SAT}$$. Kết hợp với định lý Cook–Levin, suy ra $$3\mathrm{SAT}$$ là bài toán NP-complete.
 
 </div>
+
+### Khung giải thích (nên đọc chậm): Chẻ tay một mệnh đề 5 literal $$(l_1 \lor l_2 \lor l_3 \lor l_4 \lor l_5)$$ thành 3 mệnh đề 3SAT
+
+Với $$k = 5$$, ta cần $$k - 3 = 2$$ biến phụ $$y_1, y_2$$ để tạo ra $$k - 2 = 3$$ mệnh đề:
+$$C' = (l_1 \lor l_2 \lor y_1) \;\land\; (\neg y_1 \lor l_3 \lor y_2) \;\land\; (\neg y_2 \lor l_4 \lor l_5).$$
+
+**Kiểm tra cả hai chiều đồng khả thỏa bằng tay:**
+- **Chiều thuận (giả sử đúng 1 literal, ví dụ $$l_3 = \text{True}$$, 4 literal kia đều False):**
+  Ta chỉ cần đặt $$y_1 = \text{True}$$ (để thỏa mệnh đề 1) và $$y_2 = \text{False}$$ (để thỏa mệnh đề 3). Mệnh đề 2 có $$l_3 = \text{True}$$ nên cũng Đúng! Cả 3 mệnh đề đều Đúng.
+- **Chiều đảo (giả sử cả 5 literal $$l_1, \dots, l_5$$ đều False):**
+  - Mệnh đề 1 $$(F \lor F \lor y_1)$$ ép bắt buộc $$y_1 = \text{True}$$.
+  - Thay $$y_1 = \text{True}$$ vào mệnh đề 2 $$(F \lor F \lor y_2)$$ ép bắt buộc $$y_2 = \text{True}$$.
+  - Thay $$y_2 = \text{True}$$ vào mệnh đề 3 $$(F \lor F \lor F)$$ → **SAI!** Không có cách gán $$y_1, y_2$$ nào cứu được.
+
+Một mệnh đề dài $$k$$ chỉ sinh thêm $$O(k)$$ mệnh đề mới, nên tổng kích thước tăng tuyến tính!
 
 ## Bài tập
 

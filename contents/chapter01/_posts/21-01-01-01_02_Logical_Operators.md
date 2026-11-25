@@ -10,11 +10,21 @@ lang: en
 excerpt: "Giới thiệu các phép toán logic cơ bản (phủ định, hội, tuyển, XOR, kéo theo, tương đương), thứ tự ưu tiên toán tử và các luật biến đổi biểu thức."
 ---
 
-Ở mục trước, chúng ta đã định nghĩa **mệnh đề** và thấy rằng mỗi phát biểu logic đều gắn với một giá trị đúng hoặc sai. Mục này mở rộng sang **phép toán logic** — các toán tử dùng để ghép nhiều mệnh đề sơ cấp thành biểu thức phức hợp.
+Một mệnh đề đơn lẻ như *"Mật khẩu đúng"* hiếm khi đủ để mô tả luật nghiệp vụ hay thuật toán thực tế. Sức mạnh thật sự của logic xuất hiện khi ta ghép nhiều mệnh đề lại bằng các **toán tử logic** ($\neg, \land, \lor, \oplus, \to, \leftrightarrow$)—từ điều kiện đăng nhập bảo mật cho đến mạch cộng nhị phân 64-bit trong bộ xử lý.
 
-Trong thực tế, hệ thống phần mềm hiếm khi ra quyết định chỉ dựa trên một điều kiện duy nhất. Một website chỉ cho phép đăng nhập khi mật khẩu đúng **và** tài khoản chưa bị khóa; đơn hàng được giảm giá nếu khách hàng là thành viên VIP **hoặc** có mã khuyến mãi; API chỉ cấp quyền truy cập khi người dùng đã xác thực **và** có vai trò phù hợp. Khi đó, bài toán không còn là xét riêng lẻ từng mệnh đề, mà là **ghép nhiều điều kiện**, hiểu chính xác nghĩa của **và**, **hoặc**, **không** trong ngữ cảnh logic, và tránh những sai sót nhỏ trong biểu thức có thể gây hậu quả lớn.
+## Bản đồ kiến thức nền: Bốn trục tư duy khi làm việc với Toán tử Logic
 
-Các phép toán logic là nền tảng của câu lệnh `if`, `while`, bộ lọc tìm kiếm, kiểm soát truy cập, luật nghiệp vụ và hệ thống cảnh báo. Nhiều lỗi nghiêm trọng trong phần mềm không xuất phát từ thuật toán phức tạp mà từ các điều kiện tưởng chừng quen thuộc: nhầm `and` với `or`, thiếu dấu ngoặc, hoặc hiểu sai mệnh đề kéo theo đều có thể dẫn đến cấp nhầm quyền, từ chối giao dịch hợp lệ, bỏ sót test case hoặc tạo ra lỗi logic khó phát hiện. Mục này trình bày lần lượt các phép nối cơ bản: phủ định, hội, tuyển, XOR, kéo theo và tương đương.
+1. **Năm toán tử cơ bản và độ ưu tiên (Precedence)**:
+   Thứ tự ưu tiên chuẩn từ cao xuống thấp là: dấu ngoặc `()` $\succ$ Phủ định ($\neg$) $\succ$ Hội ($\land$) $\succ$ Tuyển ($\lor$) $\succ$ Kéo theo ($\to$) $\succ$ Tương đương ($\leftrightarrow$). Nắm chắc thứ tự này giúp đọc công thức phức hợp không sai ngoặc.
+
+2. **Tuyển bao hàm (Inclusive OR $\lor$) vs. Tuyển loại trừ (XOR $\oplus$)**:
+   Trong tiếng Việt hàng ngày, chữ *"hoặc"* thường mang nghĩa chọn 1 trong 2 (XOR: *"trà hoặc cà phê"*). Trong toán học và lập trình, $\lor$ (`||`) là **tuyển bao hàm** (đúng cả khi cả hai vế cùng đúng), còn $\oplus$ (`^`) chỉ đúng khi hai vế **khác nhau**—và là phép toán xương sống của mật mã đối xứng và mã sửa lỗi.
+
+3. **Phép kéo theo ($p \to q$) — "Lời hứa hợp đồng"**:
+   $p \to q$ chỉ **Sai** trong duy nhất một trường hợp: điều kiện $p$ Đúng nhưng kết luận $q$ Sai (thất hứa). Khi $p$ Sai, lời hứa không hề bị vi phạm nên $p \to q$ mặc nhiên **Đúng** (*vacuously true*).
+
+4. **Đánh giá đoản mạch (Short-Circuit Evaluation) trong lập trình**:
+   Trong C/Java/Python/Rust, `A && B` không thèm tính `B` nếu `A` đã `False`, và `A || B` không tính `B` nếu `A` đã `True`—nhờ đó biểu thức `ptr != null && ptr.value > 0` an toàn tuyệt đối.
 
 ## Mục tiêu học tập
 
@@ -114,6 +124,22 @@ Mệnh đề trong logic được phân thành hai loại:
 <div class="content-box insight-box textbook-block" markdown="1">
 **Lưu ý**: Phân biệt mệnh đề sơ cấp và mệnh đề phức hợp giúp xác định rõ các thành phần cơ bản và cấu trúc ghép nối trong biểu thức logic. Khi phân tích một điều kiện trong mã nguồn, ta luôn bắt đầu bằng việc tách ra các mệnh đề sơ cấp trước khi ghép chúng lại bằng các phép toán.
 </div>
+
+### Khung giải thích (nên đọc chậm): Tính tay giá trị một điều kiện kiểm tra quyền truy cập và bảng chân trị $p \to q$
+
+Giả sử hệ thống học vụ kiểm tra điều kiện cấp quyền tải đề thi cho sinh viên theo công thức:
+$$F \equiv (\neg b \land (s \lor t)) \to a$$
+trong đó: $b$: tài khoản bị khóa (`is_banned`), $s$: đã đóng học phí (`fee_paid`), $t$: là giảng viên (`is_teacher`), $a$: được phép truy cập (`allowed`).
+
+Hãy kiểm tra bằng tay 3 tình huống cụ thể:
+
+| Tình huống | $(b, s, t, a)$ | $\neg b$ | $s \lor t$ | Tiền đề $P = \neg b \land (s \lor t)$ | Kết quả $P \to a$ | Ý nghĩa thực tế |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **1. Sinh viên hợp lệ được vào** | `(F, T, F, T)` | `T` | `T` | `T` | **`T`** | Thỏa điều kiện và được cấp quyền → Hợp lệ |
+| **2. Giảng viên không bị khóa nhưng bị chặn** | `(F, F, T, F)` | `T` | `T` | `T` | **`F`** | Tiền đề `T` nhưng kết luận `F` → **Hệ thống vi phạm hợp đồng!** |
+| **3. Tài khoản bị khóa** | `(T, T, F, F)` | `F` | `T` | `F` | **`T`** | Tiền đề `F` → Phép kéo theo đúng rỗng (*vacuously true*), quy tắc không bị vi phạm |
+
+Nhìn vào dòng 3, bạn thấy ngay vì sao quy ước `F → F = T` không hề "vô lý": quy tắc chỉ hứa cấp quyền cho người *không bị khóa*, nên khi tài khoản bị khóa, việc từ chối truy cập hoàn toàn tuân thủ hợp đồng!
 
 ## Phép phủ định (Negation) — NOT
 

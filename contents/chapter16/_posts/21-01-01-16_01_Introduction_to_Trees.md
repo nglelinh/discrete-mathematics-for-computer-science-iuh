@@ -9,6 +9,8 @@ lang: en
 excerpt: "Cây là đồ thị liên thông không chu trình; cây có gốc, lá, độ sâu, chiều cao; tính chất n−1 cạnh; cây khung; biểu diễn và ứng dụng trong hệ thống tệp, DOM và AST."
 ---
 
+> **Câu chuyện mở đầu:** Từ cây thư mục trên ổ cứng máy tính, cây phân tích cú pháp (AST) trong trình biên dịch, cho đến cây gia phả và hệ thống định tuyến mạng LAN — cấu trúc **Cây (Tree)** xuất hiện ở mọi ngóc ngách của Khoa học Máy tính. Vì sao? Bởi vì trong thế giới đồ thị, cây chính là cấu trúc **tiết kiệm cạnh tối đa** để giữ mạng liên thông: thêm 1 cạnh lập tức sinh vòng lặp thừa, bỏ 1 cạnh lập tức đứt mạng!
+
 <div class="textbook-epigraph" markdown="1">
 
 "A tree is a connected graph with no cycles — one of the most important structures in computer science."
@@ -37,6 +39,60 @@ Chương 12 đã giới thiệu khái niệm đồ thị tổng quát. **Cây** 
 **Từ khóa**: cây (tree), gốc (root), lá (leaf), độ sâu (depth), chiều cao (height), rừng (forest), cây khung (spanning tree).
 
 </div>
+
+## Bản đồ kiến thức nền: Cây là gì và có những đặc trưng tương đương nào?
+
+### 1. Bốn định nghĩa Tương đương của một Cây $$T$$ có $$n$$ đỉnh
+Với một đồ thị đơn $$T$$ có $$n$$ đỉnh, bốn phát biểu sau hoàn toàn tương đương nhau (biết 1 là suy ra cả 3 cái còn lại!):
+1. $$T$$ **liên thông và không có chu trình**.
+2. $$T$$ **liên thông và có đúng $$n - 1$$ cạnh**.
+3. $$T$$ **không có chu trình và có đúng $$n - 1$$ cạnh**.
+4. Giữa hai đỉnh bất kỳ tồn tại **duy nhất một đường đi đơn**!
+
+### 2. Cây có Gốc (Rooted Tree) & Cây $$m$$-phân
+- **Bản chất:** Chọn một đỉnh làm **gốc (root)** tự động định hướng quan hệ cha–con, độ sâu (depth), chiều cao $$h$$ và phân loại đỉnh thành **nút trong** và **nút lá** (không có con).
+- **Cây $$m$$-phân đầy đủ** (mỗi nút trong có đúng $$m$$ con) có $$i$$ nút trong luôn thỏa: tổng số nút $$n = mi + 1$$ và số lá $$l = (m-1)i + 1$$!
+
+### 3. Cây Khung (Spanning Tree)
+- **Bản chất:** Mọi đồ thị liên thông đều chứa ít nhất một cây khung (đồ thị con là cây đi qua đủ $$n$$ đỉnh) — dùng để loại bỏ vòng lặp phát sóng (broadcast storm) trong mạng máy tính!
+
+## Ví dụ tính tay cầm tay chỉ việc: Kiểm chứng công thức Cây nhị phân đầy đủ & Số lá tối thiểu
+
+1. **Cây nhị phân hoàn hảo chiều cao $$h = 3$$** (mọi nút trong đều có 2 con, mọi lá ở mức 3):
+   - Số nút ở từng tầng $$0, 1, 2, 3$$: $$1 + 2 + 4 + 8 = 15 = 2^{3+1} - 1$$ nút!
+   - Số cạnh: $$n - 1 = 15 - 1 = 14$$ cạnh.
+   - Kiểm tra công thức $$n = 2i + 1$$ và $$l = i + 1$$: có $$i = 1 + 2 + 4 = 7$$ nút trong và $$l = 8$$ lá $$\implies 2(7)+1 = 15,\; 7+1 = 8$$! ✓
+
+2. **Chứng minh bằng tay: Mọi cây có $$n \ge 2$$ đỉnh luôn có ít nhất 2 lá!**
+   Xét tổng bậc của tất cả $$n$$ đỉnh theo Bổ đề Bắt tay:
+   $$
+   \sum_{v=1}^{n} \deg(v) = 2E = 2(n - 1) = 2n - 2.
+   $$
+   Vì cây liên thông ($$n \ge 2$$) nên mọi đỉnh có $$\deg(v) \ge 1$$. Nếu chỉ có tối đa 1 lá (đỉnh bậc 1), thì $$n - 1$$ đỉnh còn lại đều có bậc $$\ge 2$$, dẫn tới tổng bậc $$\ge 1 + 2(n - 1) = 2n - 1 > 2n - 2$$ — **mâu thuẫn**! Vậy mọi cây $$n \ge 2$$ chắc chắn có ít nhất **2 lá**!
+
+### Khung giải thích: 4 tính chất cốt lõi giúp giải nhanh mọi bài toán về Cây (nên đọc chậm)
+
+#### Bước 1: Luôn nhớ đẳng thức vàng $$E = V - 1$$ (và cho rừng $$k$$ cây: $$E = V - k$$)
+Hầu hết bài toán đếm đỉnh/cạnh/lá đều giải gọn trong 2 dòng bằng cách ghép $$E = V - 1$$ với Bổ đề bắt tay $$\sum \deg(v) = 2E$$!
+
+#### Bước 2: Dùng Quy nạp bằng cách "ngắt lá"
+Vì mọi cây $$n \ge 2$$ đều có lá (đỉnh bậc 1), ngắt đi 1 lá cùng cạnh nối của nó luôn để lại một cây $$n - 1$$ đỉnh — cách chứng minh quy nạp sạch sẽ nhất cho mọi tính chất cây!
+
+#### Bước 3: Khống chế chiều cao $$h \ge \lceil \log_m l \rceil$$
+Cây $$m$$-phân càng cân bằng thì chiều cao $$h \approx \log_m n$$ càng thấp — đây chính là lý do cây tìm kiếm cân bằng (AVL, Red–Black, B-tree) tìm kiếm dữ liệu trong $$O(\log n)$$!
+
+#### Bước 4: Nhận diện Cây trong thực tế
+Hệ thống tệp tin, DOM của trang HTML, cây quyết định trong Machine Learning và giao thức Spanning Tree Protocol (STP) trong switch mạng đều là ứng dụng trực tiếp của bài học này.
+
+$$
+\text{Liên thông + Không chu trình}
+\;\Longleftrightarrow\;
+E = V - 1
+\;\Longleftrightarrow\;
+\text{Đường đi duy nhất}
+\;\xrightarrow{\;\text{Chọn gốc}\;}\;
+h = \Theta(\log n).
+$$
 
 ## Định nghĩa cây
 

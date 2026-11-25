@@ -17,6 +17,17 @@ excerpt: "Phân biệt walk, trail, path, cycle; khái niệm liên thông trên
 
 </div>
 
+
+Một hệ thống build phần mềm (như `make`, `webpack` hay trình quản lý gói `pip`) đột ngột báo lỗi `Circular dependency detected`, còn mạng máy tính mất kết nối hoàn toàn chỉ vì đứt đúng một sợi cáp quang. Cả hai sự cố rất quen thuộc đó đều là biểu hiện trực tiếp của **đường đi, chu trình và tính liên thông** trong lý thuyết đồ thị.
+
+**Mạch bài học:** Phân biệt chính xác 4 khái niệm **walk, trail, path, cycle** $$\longrightarrow$$ **liên thông** trên đồ thị vô hướng & cầu/đỉnh khớp $$\longrightarrow$$ **liên thông mạnh (SCC)** trên đồ thị có hướng $$\longrightarrow$$ **DAG (đồ thị có hướng không chu trình)** và ứng dụng sắp xếp phụ thuộc.
+
+## Bản đồ kiến thức nền: Đường đi, chu trình và tính liên thông trả lời những câu hỏi gì?
+
+- **Phân cấp hành trình trên đồ thị (Walk $$\supset$$ Trail $$\supset$$ Path):** *Walk* cho phép lặp cả đỉnh lẫn cạnh; *Trail* không lặp cạnh; *Path* không lặp đỉnh (nên tự động không lặp cạnh); còn *Cycle* là đường đi khép kín chỉ lặp lại đỉnh đầu = đỉnh cuối. Phân biệt rạch ròi 4 từ này giúp tránh nhầm lẫn khi chứng minh định lý Euler/Hamilton ở bài sau.
+- **Liên thông & Thành phần liên thông (Connectivity & SCC):** Trên đồ thị vô hướng, quan hệ "có đường đi giữa $$u$$ và $$v$$" là một quan hệ tương đương phân hoạch đồ thị thành các **thành phần liên thông**. Trên đồ thị có hướng, ta phân biệt *liên thông yếu* (bỏ mũi tên thì liên thông) và *liên thông mạnh* (đi được cả hai chiều $$u \leadsto v$$ lẫn $$v \leadsto u$$).
+- **DAG & Thứ tự Tô-pô (Directed Acyclic Graphs):** Một đồ thị có hướng có thể sắp xếp theo thứ tự thực thi hợp lệ (topological sort) **khi và chỉ khi nó không chứa chu trình có hướng nào (là DAG)** — nền tảng của lập lịch tác vụ, Git commit history và đồ thị tính toán trong PyTorch/TensorFlow.
+
 Các cách biểu diễn đồ thị ở mục trước cho biết trực tiếp đỉnh nào kề với đỉnh nào. Tuy nhiên, nhiều câu hỏi thực tế lại xoay quanh cấu trúc toàn cục của đồ thị: hai máy tính có liên lạc được với nhau không, các mô-đun có phụ thuộc vòng hay không, hay một tập trang web có tách thành các cụm rời rạc hay không. Các khái niệm **đường đi**, **chu trình** và **liên thông** mô tả chính xác các câu hỏi đó và là cơ sở cho BFS, DFS, Union–Find cũng như phát hiện phụ thuộc vòng (circular dependency) trong hệ thống build.
 
 ![Walk, path và cycle](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_path_cycle_walk.svg)
@@ -166,6 +177,32 @@ Bật/tắt các cạnh và quan sát ma trận kề: nếu một đỉnh có c�
 </div>
 <script src="{{ '/public/js/graph-adjacency-builder.js' | relative_url }}"></script>
 
+## Ví dụ tính tay cầm tay chỉ việc: Phân biệt Walk/Trail/Path và kiểm tra DAG trên 5 đỉnh
+
+Xét đồ thị có hướng gồm 5 tác vụ phần mềm $$V = \{A, B, C, D, E\}$$ với các cạnh phụ thuộc:
+$$A \to B, \quad A \to C, \quad B \to D, \quad C \to D, \quad D \to E.$$
+
+1. **Kiểm tra phân loại hành trình (nếu xét phiên bản vô hướng):**
+   - $$A - B - D - C - A - B$$: lặp cả đỉnh $$A, B$$ và cạnh $$AB$$ $$\Rightarrow$$ chỉ là **walk** (không phải trail).
+   - $$A - B - D - C - A$$: không lặp cạnh nào, chỉ lặp đỉnh đầu/cuối $$A$$ $$\Rightarrow$$ **cycle** (và là closed trail).
+   - $$A - B - D - E$$: không lặp đỉnh nào $$\Rightarrow$$ **path** độ dài 3.
+2. **Kiểm tra xem đồ thị có hướng ban đầu có phải DAG không (bằng thuật toán Kahn — xóa dần đỉnh bậc vào = 0):**
+   - Ban đầu bậc vào: $$\deg^-(A)=0,\; \deg^-(B)=1,\; \deg^-(C)=1,\; \deg^-(D)=2,\; \deg^-(E)=1$$.
+   - Bước 1: Chọn `A` ($$\deg^- = 0$$), xóa cạnh ra $$\Rightarrow \deg^-(B)=0, \deg^-(C)=0$$.
+   - Bước 2: Chọn `B`, rồi `C` $$\Rightarrow \deg^-(D)$$ giảm từ 2 về 0.
+   - Bước 3: Chọn `D` $$\Rightarrow \deg^-(E)=0$$, cuối cùng chọn `E`.
+   - Ta xếp được cả 5/5 đỉnh: **`A → B → C → D → E`** (hoặc `A → C → B → D → E`) $$\Rightarrow$$ **Chắc chắn là DAG!**
+3. **Nếu thêm đúng 1 cạnh ngược $$E \to B$$:**
+   - Xuất hiện chu trình có hướng $$B \to D \to E \to B$$.
+   - Tập $$\{B, D, E\}$$ gộp thành một **thành phần liên thông mạnh (SCC)** 3 đỉnh — không thể chạy build theo thứ tự tuyến tính được nữa!
+
+### Khung giải thích: Liên kết từ cục bộ (cạnh) đến toàn cục (cấu trúc mạng) (nên đọc chậm)
+
+1. **Bước 1 — Bổ đề rút gọn Walk thành Path:** Nếu tồn tại một walk bất kỳ từ $$u$$ tới $$v$$, bằng cách cắt bỏ mọi vòng lặp trung gian ta **luôn thu được một đường đi đơn (path)** từ $$u$$ tới $$v$$ với độ dài ngắn hơn hoặc bằng.
+2. **Bước 2 — Đếm số cạnh tối thiểu để giữ liên thông:** Một đồ thị vô hướng liên thông có $$n$$ đỉnh cần ít nhất $$n - 1$$ cạnh (khi đó nó là một **cây** và mọi cạnh đều là **cầu** — đứt 1 cạnh là đứt mạng!).
+3. **Bước 3 — Thu gọn mọi đồ thị có hướng về một DAG:** Nếu gom mỗi thành phần liên thông mạnh (SCC) thành một "siêu đỉnh" duy nhất, đồ thị thu gọn (condensation graph) thu được **luôn luôn là một DAG** — kết nối trọn vẹn hai khái niệm SCC và DAG thành một bức tranh thống nhất.
+
+$$\text{Walk} \supset \text{Trail (không lặp cạnh)} \supset \text{Path (không lặp đỉnh)}, \qquad \text{DAG} \iff \text{Tồn tại thứ tự Tô-pô.}$$
 
 ## Bài tập
 

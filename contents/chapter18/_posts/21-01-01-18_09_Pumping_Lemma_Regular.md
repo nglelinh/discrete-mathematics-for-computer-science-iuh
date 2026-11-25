@@ -9,6 +9,8 @@ lang: en
 excerpt: "Phát biểu và chứng minh bổ đề bơm từ DFA, ứng dụng chứng minh {0ⁿ1ⁿ} không chính quy và quy trình phản chứng."
 ---
 
+> **Câu chuyện mở đầu:** Nếu DFA chỉ có đúng $$p$$ trạng thái (bộ nhớ hữu hạn!) mà bạn cho nó đọc một chuỗi dài từ $$p$$ ký tự trở lên, chuyện gì chắc chắn phải xảy ra? Theo **Nguyên lý Chuồng bồ câu**, máy **bắt buộc phải ghé lại ít nhất một trạng thái hai lần** — tạo thành một **vòng lặp**! Và hễ đã có vòng lặp, bạn có thể chạy qua vòng đó **0 lần, 2 lần, hay 100 lần** mà máy vẫn chấp nhận! Đó chính là **Bổ đề Bơm (Pumping Lemma)** — con dao sắc bén nhất để chứng minh một ngôn ngữ **KHÔNG phải ngôn ngữ chính quy**!
+
 <div class="textbook-epigraph" markdown="1">
 
 "If it is regular, long enough strings pump — use that to kill candidates."
@@ -26,6 +28,53 @@ excerpt: "Phát biểu và chứng minh bổ đề bơm từ DFA, ứng dụng c
 - **Áp dụng** quy trình phản chứng chuẩn để bác bỏ tính chính quy của một ngôn ngữ.
 
 </div>
+
+## Bản đồ kiến thức nền: Bổ đề Bơm & Giới hạn của Bộ nhớ Hữu hạn
+
+### 1. Bản chất Hình học của Bổ đề Bơm (Nguyên lý Chuồng bồ câu)
+- **Phát biểu:** Nếu $$L$$ chính quy, tồn tại hằng số bơm $$p \ge 1$$ (chính là số trạng thái của một DFA nhận $$L$$!) sao cho mọi chuỗi $$s \in L$$ dài $$\lvert s\rvert \ge p$$ đều tách được thành $$s = xyz$$ thỏa đủ 3 điều kiện:
+  1. $$\lvert xy\rvert \le p$$ (vòng lặp đầu tiên phải xuất hiện ngay trong $$p$$ ký tự đầu!).
+  2. $$\lvert y\rvert \ge 1$$ (vòng lặp không rỗng!).
+  3. $$x y^i z \in L$$ với **mọi** $$i \ge 0$$ (bơm lên $$i=2,3,\dots$$ hoặc rút xuống $$i=0$$ đều vẫn thuộc $$L$$!).
+
+### 2. Cấu trúc Logic "Trò chơi Đối kháng" (Phản chứng!)
+- **Cảnh báo sinh viên hay sai nhất:** Bổ đề Bơm là **điều kiện CẦN, KHÔNG phải điều kiện ĐỦ** (chỉ dùng để chứng minh **KHÔNG** chính quy, không bao giờ dùng để chứng minh *có* chính quy!).
+- Trong chứng minh phản chứng, **đối thủ** chọn $$p$$ và cách tách $$xyz$$; **bạn** được quyền chọn chuỗi $$s \in L$$ (theo $$p$$) và chọn số lần bơm $$i$$ để đánh bại **mọi** cách tách hợp lệ của đối thủ!
+
+## Ví dụ tính tay cầm tay chỉ việc: Chứng minh trọn vẹn $$L = \{0^n 1^n : n \ge 0\}$$ KHÔNG chính quy
+
+Giả sử phản chứng $$L$$ là ngôn ngữ chính quy, gọi $$p \ge 1$$ là hằng số bơm của Bổ đề Bơm:
+1. **Bạn chọn chuỗi thử:** Lấy **$$s = 0^p 1^p$$**. Kiểm tra: $$s \in L$$ và $$\lvert s\rvert = 2p \ge p$$. ✓
+2. **Đối thủ tách $$s = xyz$$** thỏa $$\lvert xy\rvert \le p$$ và $$\lvert y\rvert \ge 1$$:
+   - Vì $$p$$ ký tự đầu tiên của $$s = 0^p 1^p$$ **toàn là số `0`**, điều kiện $$\lvert xy\rvert \le p$$ ép cả $$x$$ lẫn $$y$$ chỉ gồm toàn số `0`!
+   - Do $$\lvert y\rvert \ge 1$$, ta viết $$y = 0^k$$ với **$$k \ge 1$$**.
+3. **Bạn chọn số lần bơm $$i = 2$$** (bơm thêm 1 vòng lặp):
+   $$
+   x y^2 z = 0^{p + k} 1^p.
+   $$
+4. **Mâu thuẫn:** Vì $$k \ge 1$$ nên $$p + k > p \implies 0^{p+k} 1^p \notin L$$! Trái với Bổ đề Bơm $$\implies$$ **$$L = \{0^n 1^n\}$$ KHÔNG phải ngôn ngữ chính quy**! (Hệ quả thực tế: không thể dùng Regex thuần để kiểm tra dấu ngoặc lồng nhau tùy ý `((()))` hay cú pháp HTML!)
+
+### Khung giải thích: 4 bước áp dụng Bổ đề Bơm chuẩn không bị đối thủ "lách luật" (nên đọc chậm)
+
+#### Bước 1: Không bao giờ chọn hằng số $$p$$ cụ thể!
+$$p$$ là ẩn số bất kỳ do đối thủ đưa ra — chuỗi $$s$$ bạn chọn phải được viết **theo biến $$p$$** (như $$0^p 1^p$$, $$a^p b^{p+1}$$, $$0^{p^2}$$).
+
+#### Bước 2: Lợi dụng tối đa điều kiện $$\lvert xy\rvert \le p$$ để "khóa chặt" nội dung của $$y$$
+Hãy thiết kế $$p$$ ký tự đầu của $$s$$ thật đồng nhất (ví dụ toàn `0`) để bất chấp đối thủ tách thế nào, $$y$$ cũng chỉ có đúng một loại ký tự!
+
+#### Bước 3: Thử cả bơm lên ($$i = 2$$) lẫn bơm xuống ($$i = 0$$)
+Đôi khi $$i = 2$$ vẫn nằm trong $$L$$ (ví dụ $$L = \{0^m 1^n : m < n\}$$ nếu chọn $$s = 0^p 1^{p+1}$$ thì bơm lên $$i=2$$ ra $$0^{p+k}1^{p+1} \notin L$$ ngay, còn với $$m > n$$ chọn $$s = 0^{p+1}1^p$$ thì bơm xuống $$i = 0$$ ra $$0^{p+1-k}1^p \notin L$$!).
+
+#### Bước 4: Kết hợp với Tính đóng (bài 18.10) để tiết kiệm nửa trang giấy!
+Nếu ngôn ngữ có cấu trúc phức tạp (như "số `0` bằng số `1`"), hãy giao với $$0^*1^*$$ trước để rút về $$0^n 1^n$$ rồi mới dùng Bổ đề Bơm!
+
+$$
+\text{Giả sử }L\text{ chính quy}
+\;\xrightarrow{\;\text{Chọn }s(p) \in L\;}\;
+\lvert xy\rvert \le p \;(\text{khóa }y)
+\;\xrightarrow{\;\text{Bơm }i = 0 \text{ hoặc } 2\;}\;
+xy^i z \notin L \;(\text{Mâu thuẫn!}).
+$$
 
 ## Phát biểu và chứng minh
 

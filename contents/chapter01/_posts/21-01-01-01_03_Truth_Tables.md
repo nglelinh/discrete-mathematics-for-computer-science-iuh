@@ -10,11 +10,23 @@ lang: en
 excerpt: "Giới thiệu bảng chân trị (truth table) — công cụ liệt kê mọi tổ hợp giá trị chân lý của biến, phân loại mệnh đề và thiết kế test case kiểm thử."
 ---
 
-Ở mục trước, chúng ta đã học các phép toán logic và cách ghép chúng thành biểu thức điều kiện. Mục này giới thiệu **bảng chân trị** (truth table) — công cụ liệt kê mọi tổ hợp giá trị chân lý của biến và tính giá trị tương ứng của biểu thức.
+Làm sao chứng minh tuyệt đối rằng hai đoạn mã `if` phức tạp cho ra kết quả giống hệt nhau trên mọi đầu vào, hoặc một công thức logic luôn đúng trong mọi vũ trụ khả dĩ? Khi số biến còn nhỏ, **Bảng chân trị (Truth Table)** là kính hiển vi vét cạn: nó liệt kê toàn bộ $2^n$ tổ hợp chân trị của $n$ biến mệnh đề, không bỏ sót bất kỳ trường hợp biên nào.
 
-Khi biểu thức logic trở nên dài và nhiều nhánh, trực giác của con người không còn đủ tin cậy. Một điều kiện nhìn qua có vẻ hợp lý vẫn có thể sai ở đúng một trường hợp biên, gây lỗi giao dịch, cấp nhầm quyền truy cập, trả kết quả tìm kiếm sai hoặc khiến bộ kiểm thử bỏ sót lỗi. Nhiều lỗi trong kỹ thuật phần mềm không nằm ở cú pháp mà ở chỗ lập trình viên tin rằng mình đã hiểu đúng biểu thức, trong khi máy tính đánh giá theo thứ tự ưu tiên khác.
+## Bản đồ kiến thức nền: Bốn ý niệm cốt lõi xung quanh Bảng chân trị
 
-Bảng chân trị liệt kê **mọi khả năng** một cách có hệ thống thay cho việc đoán mò hay chỉ thử vài ví dụ rời rạc. Nhờ đó, chúng ta có thể xác định chính xác hành vi của biểu thức trên mọi đầu vào, phân loại mệnh đề thành hằng đúng, hằng sai hoặc mệnh đề thường, và chọn ra các tổ hợp đầu vào quan trọng cho kiểm thử. Mục này trình bày cách xây dựng bảng chân trị, cách đọc kết quả và ứng dụng của nó trong kiểm chứng logic lập trình.
+1. **Quy mô tổ hợp $2^n$ và Bùng nổ hàm mũ**:
+   Với $n$ biến mệnh đề, bảng chân trị có đúng $2^n$ dòng ($n=2 \Rightarrow 4$, $n=3 \Rightarrow 8$, $n=10 \Rightarrow 1.024$, $n=64 \Rightarrow 1{,}8 \times 10^{19}$). Đây chính là lý do bảng chân trị hoàn hảo cho kiểm chứng tay với $n \le 4$, nhưng ở quy mô hàng nghìn biến ta phải chuyển sang biến đổi tương đương và SAT Solver.
+
+2. **Ba phân loại ngữ nghĩa của công thức**:
+   - **Hằng đúng (Tautology)**: Cột kết quả gồm 100% giá trị `T` (ví dụ $p \lor \neg p$).
+   - **Hằng sai / Mâu thuẫn (Contradiction)**: Cột kết quả gồm 100% giá trị `F` (ví dụ $p \land \neg p$).
+   - **Tiếp liên (Contingency)**: Có ít nhất một dòng `T` và ít nhất một dòng `F`.
+
+3. **Kiểm chứng tương đương logic bằng so sánh cột**:
+   Hai công thức $A$ và $B$ tương đương logic ($A \equiv B$) khi và chỉ khi cột chân trị của chúng trùng khớp từng dòng một trên cả $2^n$ tổ hợp (tương đương $A \leftrightarrow B$ là hằng đúng).
+
+4. **Liên hệ với Bảng kiểm thử biên (Decision Table Testing)**:
+   Trong kiểm thử phần mềm (QA), mỗi dòng của bảng chân trị ứng với một ca kiểm thử (*test case*) giúp phát hiện lỗi thiếu nhánh `else` hoặc điều kiện phủ chồng lên nhau.
 
 ## Mục tiêu học tập
 
@@ -90,6 +102,21 @@ Với 3 biến $$p, q, r$$:
 ```
 
 Khi lập bảng, nên thêm cột phụ cho từng biểu thức con để theo dõi rõ từng bước tính toán.
+
+### Khung giải thích (nên đọc chậm): Tính tay bảng chân trị và chứng minh luật phản đảo $(p \to q) \equiv (\neg q \to \neg p)$
+
+Thay vì thuộc lòng rằng *"Nếu trời mưa thì đường ướt"* tương đương với *"Nếu đường không ướt thì trời không mưa"*, hãy kiểm chứng từng ô bằng tay với $n = 2$ biến ($2^2 = 4$ dòng):
+
+| Dòng | $p$ | $q$ | $\neg p$ | $\neg q$ | $A = (p \to q)$ | $B = (\neg q \to \neg p)$ | $A \leftrightarrow B$ |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 1 | `T` | `T` | `F` | `F` | `T` | `T` | **`T`** |
+| 2 | `T` | `F` | `F` | `T` | `F` | `F` | **`T`** |
+| 3 | `F` | `T` | `T` | `F` | `T` | `T` | **`T`** |
+| 4 | `F` | `F` | `T` | `T` | `T` | `T` | **`T`** |
+
+- So sánh cột $A$ (`T, F, T, T`) và cột $B$ (`T, F, T, T`): khớp nhau 100% trên cả 4 dòng!
+- Cột $A \leftrightarrow B$ toàn bộ là `T` → là **Hằng đúng (Tautology)**, xác nhận $(p \to q) \equiv (\neg q \to \neg p)$.
+- **Mẹo kiểm tra nhanh**: Lưu ý nếu viết nhầm thành mệnh đề đảo $q \to p$, cột kết quả là `T, T, F, T` (lệch ở dòng 2 và 3), chứng minh ngay bằng phản ví dụ rằng $p \to q \not\equiv q \to p$.
 
 ## Ví dụ 1: Bảng chân trị cho (p ∧ q) → r
 

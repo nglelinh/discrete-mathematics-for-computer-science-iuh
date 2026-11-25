@@ -17,6 +17,17 @@ excerpt: "Cây phân tích (parse tree), tương ứng với dẫn xuất trái 
 
 </div>
 
+Nếu bạn gõ `2 + 3 * 4` vào máy tính bỏ túi, kết quả phải là `14`, không thể lúc thì `14` lúc lại thành `20`. Nhưng nếu một văn phạm phi ngữ cảnh được viết cẩu thả kiểu $$E \to E + E \mid E * E \mid \text{num}$$, trình biên dịch sẽ rơi vào **sự mơ hồ (ambiguity)**: cùng một chuỗi ký tự lại có tới hai cây phân tích khác nhau mang hai ý nghĩa hoàn toàn trái ngược. Hiểu rõ cây phân tích và kỹ thuật khử mơ hồ là kỹ năng sống còn khi thiết kế ngôn ngữ lập trình.
+
+## Bản đồ kiến thức nền: Ba trụ cột của Cây phân tích và Tính mơ hồ
+
+1. **Cây phân tích (Parse Tree) — Biểu diễn hình học bất biến với thứ tự dẫn xuất**:
+   Nút gốc là $$S$$, nút trong là biến $$V$$, lá đọc từ trái sang phải tạo ra chuỗi $$w$$. Một cây phân tích tương ứng duy nhất 1–1 với đúng một dẫn xuất trái nhất (và đúng một dẫn xuất phải nhất).
+2. **Văn phạm mơ hồ vs. Ngôn ngữ mơ hồ nội tại (Inherently Ambiguous)**:
+   Phần lớn sự mơ hồ là do *cách viết văn phạm* (có thể sửa bằng cách phân tầng mức ưu tiên và tính kết hợp). Tuy nhiên, tồn tại những ngôn ngữ (như $$\{a^i b^j c^k \mid i=j \text{ hoặc } j=k\}$$) mà **mọi** CFG sinh ra nó đều buộc phải mơ hồ.
+3. **Kỹ thuật khử mơ hồ trong trình biên dịch**:
+   Phân tầng biến theo độ ưu tiên (`Expr → Term → Factor`), chọn đệ quy trái cho phép toán kết hợp trái (`a - b - c = (a - b) - c`), và quy ước ghép `else` vào `if` gần nhất cho bài toán *dangling else*.
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -55,6 +66,18 @@ Theo dõi dẫn xuất trái nhất dựng cây phân tích từng bước; vớ
 <div data-demo="derive-explainer" data-preset="expr-amb"></div>
 </div>
 <script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
+
+### Khung giải thích (nên đọc chậm): Khử lỗi tính sai biểu thức `10 - 3 - 2` bằng đệ quy trái
+
+Xét văn phạm mơ hồ $$E \to E - E \mid \text{num}$$ trên chuỗi `10 - 3 - 2`:
+- **Cây 1 (kết hợp trái):** `((10 - 3) - 2)` $$= 7 - 2 = \mathbf{5}$$ (Đúng theo toán học!).
+- **Cây 2 (kết hợp phải):** `(10 - (3 - 2))` $$= 10 - 1 = \mathbf{9}$$ (Sai!).
+
+**Cách sửa chỉ bằng 1 dòng quy tắc:** Bắt buộc vế phải chỉ đệ quy sang bên trái:
+$$E \to E - T \mid T, \qquad T \to \text{num}.$$
+Bây giờ thử phân tích lại `10 - 3 - 2`: vì toán hạng bên phải dấu `-` chỉ có thể là $$T$$ (một số đơn lẻ, không chứa dấu `-`), nên dấu `-` thứ hai bắt buộc nằm ở gốc trên cùng:
+$$E \Rightarrow E - T \Rightarrow (E - T) - T \Rightarrow (10 - 3) - 2 = \mathbf{5}.$$
+Cây phân tích sai `(10 - (3 - 2))` bị loại bỏ hoàn toàn về mặt cú pháp!
 
 ## Bài tập
 

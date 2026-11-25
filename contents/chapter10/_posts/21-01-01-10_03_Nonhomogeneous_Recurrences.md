@@ -9,6 +9,16 @@ lang: vi
 excerpt: "Giải quan hệ truy hồi tuyến tính không thuần nhất bằng nguyên lý chồng chất, phương pháp hệ số bất định, xử lý cộng hưởng và liên hệ phân tích thuật toán."
 ---
 
+Thế giới thực hiếm khi hoàn toàn "thuần nhất": một tài khoản ngân hàng mỗi tháng vừa sinh lãi kép vừa nhận thêm tiền gửi cố định; một thuật toán chia để trị vừa gọi đệ quy vừa tốn thêm chi phí trộn $$f(n)$$ ở mỗi tầng. Thành phần phụ trội $$f(n)$$ đó biến bài toán thành **quan hệ truy hồi không thuần nhất** — và đôi khi còn tạo ra hiện tượng thú vị gọi là **cộng hưởng (resonance)** khi ngoại lực $$f(n)$$ trùng nhịp với dao động riêng của hệ.
+
+**Mạch bài học:** **Nguyên lý chồng chất** $$a_n = a_n^{(h)} + a_n^{(p)}$$ $$\longrightarrow$$ **phương pháp hệ số bất định** cho đa thức và hàm mũ $$\longrightarrow$$ cơ chế nhân thêm $$n^s$$ khi gặp **cộng hưởng** $$\longrightarrow$$ đối chiếu với các hệ thức phân tích thuật toán.
+
+## Bản đồ kiến thức nền: Truy hồi không thuần nhất và hiện tượng cộng hưởng là gì?
+
+- **Cấu trúc nghiệm không gian afin (Affine Solution Space):** Giống hệ phương trình tuyến tính $$Ax = b$$, nghiệm tổng quát của truy hồi không thuần nhất luôn bằng **một nghiệm riêng $$a_n^{(p)}$$ cộng với toàn bộ nghiệm thuần nhất $$a_n^{(h)}$$**. Mọi hằng số tự do đều chỉ nằm trong $$a_n^{(h)}$$ và được chốt ở bước cuối cùng sau khi ghép cả hai phần!
+- **Phương pháp hệ số bất định (Method of Undetermined Coefficients):** Khi vế phải $$f(n)$$ là tổ hợp của đa thức $$P(n)$$ và hàm mũ $$b^n$$, nghiệm riêng $$a_n^{(p)}$$ cũng giữ nguyên "hình dáng" ấy — chỉ cần đặt ẩn hệ số rồi thế ngược vào truy hồi để đồng nhất hệ số hai vế.
+- **Cộng hưởng (Resonance):** Xảy ra khi cơ số $$b$$ của ngoại lực $$b^n$$ trùng với một nghiệm bội $$s$$ của phương trình đặc trưng thuần nhất. Lúc này dạng thử thông thường bị triệt tiêu về $$0$$, buộc ta phải nâng bậc thêm thừa số $$n^s$$ — y hệt hiện tượng cộng hưởng trong cơ học và phương trình vi phân!
+
 Ở bài trước, chúng ta đã giải quan hệ truy hồi **tuyến tính thuần nhất** bằng phương trình đặc trưng. Bài học này mở rộng sang **quan hệ truy hồi tuyến tính không thuần nhất** — trường hợp phương trình có thêm một thành phần tự do $$f(n)$$ (như hằng số, đa thức, hàm mũ $$b^n$$, …) bên cạnh các số hạng $$a_{n-i}$$.
 
 Dạng truy hồi này phản ánh sát hơn nhiều hệ thống thực tế, nơi mỗi bước vừa kế thừa trạng thái cũ vừa chịu thêm tác động từ bên ngoài (chẳng hạn chi phí cố định, dữ liệu mới phát sinh hoặc khối lượng công việc bổ sung). Trong phân tích thuật toán, ví dụ quen thuộc nhất là hệ thức $$T(n) = 2T(n/2) + n$$ của Merge Sort, trong đó $$f(n) = n$$ biểu thị chi phí trộn dữ liệu ở mỗi tầng đệ quy. Chúng ta sẽ lần lượt tìm hiểu **nguyên lý chồng chất**, **phương pháp hệ số bất định** và cách xử lý hiện tượng **cộng hưởng** khi dạng nghiệm thử trùng với nghiệm thuần nhất.
@@ -287,6 +297,35 @@ Quan sát cách kết hợp nghiệm thuần nhất và nghiệm riêng trong h�
 <div data-demo="recurrence-explainer" data-mode="linear" data-preset="nonhom"></div>
 </div>
 <script src="{{ '/public/js/explainers/recurrence-explainer.js' | relative_url }}"></script>
+
+## Ví dụ tính tay cầm tay chỉ việc: Giải trọn vẹn một bài có cộng hưởng
+
+Giải quan hệ truy hồi $$a_n - 3a_{n-1} = 2 \cdot 3^n$$ với điều kiện đầu $$a_0 = 5$$.
+
+1. **Bước 1 — Giải phần thuần nhất $$a_n - 3a_{n-1} = 0$$:**
+   - Phương trình đặc trưng: $$r - 3 = 0 \Rightarrow r = 3$$ (bội $$s = 1$$).
+   - Nghiệm thuần nhất: $$a_n^{(h)} = c \cdot 3^n$$.
+2. **Bước 2 — Phát hiện cộng hưởng và chọn nghiệm riêng $$a_n^{(p)}$$:**
+   - Vế phải là $$f(n) = 2 \cdot 3^n$$ có cơ số $$b = 3$$ **trùng đúng với nghiệm đặc trưng $$r = 3$$** (bội $$s = 1$$).
+   - Nếu thử $$a_n^{(p)} = A \cdot 3^n$$ thì vế trái thành $$A\cdot 3^n - 3(A\cdot 3^{n-1}) = 0 \ne 2\cdot 3^n$$ (vô nghiệm!).
+   - Do đó ta nhân thêm $$n^1$$: thử $$a_n^{(p)} = A \cdot n \cdot 3^n$$.
+3. **Bước 3 — Tìm hằng số $$A$$ bằng cách thế vào truy hồi gốc:**
+   $$A n \cdot 3^n - 3 \cdot A(n-1) \cdot 3^{n-1} = 2 \cdot 3^n \iff \big(An - A(n-1)\big) \cdot 3^n = 2 \cdot 3^n \iff A \cdot 3^n = 2 \cdot 3^n \Rightarrow A = 2.$$
+   Vậy nghiệm riêng là $$a_n^{(p)} = 2n \cdot 3^n$$.
+4. **Bước 4 — Ghép nghiệm tổng quát rồi MỚI thay điều kiện đầu $$a_0 = 5$$:**
+   - $$a_n = a_n^{(h)} + a_n^{(p)} = c \cdot 3^n + 2n \cdot 3^n = (c + 2n) \cdot 3^n$$.
+   - Thay $$n = 0$$: $$a_0 = c \cdot 1 = 5 \Rightarrow c = 5$$.
+   - **Đáp số:** $$a_n = (5 + 2n) \cdot 3^n$$.
+   - **Kiểm tra tay ở $$n=1, 2$$:** Công thức cho $$a_1 = 7 \cdot 3 = 21$$, $$a_2 = 9 \cdot 9 = 81$$. Truy hồi cho $$a_1 = 3(5) + 2(3) = 21$$, $$a_2 = 3(21) + 2(9) = 81$$. Khớp hoàn toàn!
+
+### Khung giải thích: Bốn lưu ý tránh sai lầm kinh điển khi giải truy hồi không thuần nhất (nên đọc chậm)
+
+1. **Bước 1 — Luôn giải phần thuần nhất trước:** Bạn chỉ biết có cộng hưởng hay không sau khi đã có danh sách đầy đủ nghiệm đặc trưng và số bội $$s$$ của chúng.
+2. **Bước 2 — Đừng bao giờ thay điều kiện đầu vào $$a_n^{(h)}$$ quá sớm:** Điều kiện đầu $$a_0, a_1$$ là của **nghiệm toàn phần $$a_n = a_n^{(h)} + a_n^{(p)}$$**, không phải của riêng $$a_n^{(h)}$$.
+3. **Bước 3 — Nếu $$f(n) = f_1(n) + f_2(n)$$, hãy tách nhỏ để giải:** Nhờ tính tuyến tính, bạn tìm nghiệm riêng $$a_n^{(p1)}$$ cho $$f_1(n)$$, tìm $$a_n^{(p2)}$$ cho $$f_2(n)$$, rồi cộng chúng lại — tránh nhầm lẫn đại số khi gom nhiều loại hàm.
+4. **Bước 4 — Hiểu ý nghĩa của thừa số $$n$$ trong cộng hưởng:** Khi ngoại lực đẩy đúng tần số tự nhiên của hệ, biên độ không chỉ giữ dạng $$b^n$$ mà còn được khuếch đại thêm theo tuyến tính $$n \cdot b^n$$ (y hệt lý do Merge Sort có thêm thừa số $$\log n$$ khi chi phí trộn cân bằng với số nhánh chia!).
+
+$$a_n = a_n^{(h)} + a_n^{(p)}, \qquad b \text{ là nghiệm bội } s \;\Longrightarrow\; a_n^{(p)} = n^s Q(n) b^n.$$
 
 ## Bài tập
 

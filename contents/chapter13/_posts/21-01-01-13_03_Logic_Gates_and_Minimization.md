@@ -9,6 +9,8 @@ lang: en
 excerpt: "Bảy cổng logic cơ bản (AND, OR, NOT, NAND, NOR, XOR, XNOR) qua bảng chân trị, các kỹ thuật tối thiểu hóa hàm Boole bằng đại số và tính đầy đủ chức năng của NAND/NOR."
 ---
 
+> **Câu chuyện mở đầu:** Bên trong một con chip hiện đại có hàng chục tỷ transistor đóng–mở hàng tỷ lần mỗi giây. Mỗi cổng logic dư thừa không chỉ tốn diện tích silicon mà còn tỏa nhiệt và làm chậm xung nhịp CPU! Vì thế, nghệ thuật **biến đổi đại số Boole** để nén một biểu thức 10 cổng xuống còn 3 cổng (hoặc quy toàn bộ mạch về duy nhất cổng **NAND**) là kỹ năng nền tảng của mọi kỹ sư thiết kế phần cứng.
+
 <div class="textbook-epigraph" markdown="1">
 
 "Boolean algebra is the algebra of truth values — and each gate is one truth table made concrete."
@@ -36,6 +38,55 @@ Quy trình thiết kế mạch từ đặc tả bằng lời, đếm số cổng
 **Từ khóa**: cổng logic, bảng chân trị, XOR, XNOR, NAND, NOR, tối thiểu hóa đại số, hấp thụ, De Morgan, đầy đủ chức năng.
 
 </div>
+
+## Bản đồ kiến thức nền: Cổng Logic và Tối thiểu hóa Đại số
+
+### 1. Từ Biểu thức Boole sang Mạng Cổng Điện tử
+- **Bản chất:** Phép AND, OR, NOT tương ứng trực tiếp với các mạch transistor CMOS. Độ sâu (số tầng cổng từ đầu vào tới đầu ra) quyết định **độ trễ truyền lan**, còn tổng số cổng quyết định **diện tích và điện năng**.
+
+### 2. Tính Đầy đủ Phổ quát của NAND và NOR
+- **Bản chất:** Trong công nghệ CMOS thực tế, cổng **NAND** và **NOR** rẻ hơn và nhanh hơn cả AND/OR! Nhờ Định lý De Morgan, mọi mạch logic đều viết lại được 100% chỉ bằng cổng NAND.
+
+### 3. Ba Luật Rút gọn Đại số Quyền lực nhất
+- **Luật ghép cặp:** $$xy + x\bar{y} = x$$ (khử biến $$y$$!).
+- **Luật hấp thụ:** $$x + xy = x$$ và $$x + \bar{x}y = x + y$$.
+- **Định lý Đồng thuận (Consensus):** $$xy + \bar{x}z + yz = xy + \bar{x}z$$ (loại số hạng thừa $$yz$$!).
+
+## Ví dụ tính tay cầm tay chỉ việc: Biểu diễn NOT, AND, OR chỉ bằng NAND & Kiểm chứng Luật Đồng thuận
+
+### Ví dụ 1: Xây dựng cả 3 cổng cơ bản chỉ từ cổng NAND (ký hiệu $$a \uparrow b = \overline{ab}$$)
+1. **NOT:** $$x \uparrow x = \overline{x \cdot x} = \bar{x}$$ (1 cổng NAND).
+2. **AND:** $$(x \uparrow y) \uparrow (x \uparrow y) = \overline{\overline{xy}} = xy$$ (2 cổng NAND).
+3. **OR:** $$(x \uparrow x) \uparrow (y \uparrow y) = \overline{\bar{x}\cdot \bar{y}} = x + y$$ theo De Morgan (3 cổng NAND)!
+
+### Ví dụ 2: Chứng minh bằng tay Định lý Đồng thuận $$xy + \bar{x}z + yz = xy + \bar{x}z$$
+Nhân thêm $$(x + \bar{x}) = 1$$ vào số hạng thứ ba $$yz$$:
+$$
+xy + \bar{x}z + yz = xy + \bar{x}z + (x + \bar{x})yz = (xy + xyz) + (\bar{x}z + \bar{x}yz) = xy(1+z) + \bar{x}z(1+y) = xy + \bar{x}z!
+$$
+Một phép biến đổi 1 dòng đã xóa sổ hoàn toàn một cổng AND 2 ngõ vào và giảm bậc cổng OR!
+
+### Khung giải thích: Quy trình 4 bước tối thiểu hóa mạch bằng Đại số Boole (nên đọc chậm)
+
+#### Bước 1: Đẩy mọi dấu phủ định vào sát biến bằng De Morgan
+Áp dụng $$\overline{x+y} = \bar{x}\bar{y}$$ và $$\overline{xy} = \bar{x}+\bar{y}$$ để đưa biểu thức về dạng tổng các tích (SOP) phẳng.
+
+#### Bước 2: Gom cặp khử biến và hấp thụ
+Tìm các tích chỉ khác nhau đúng 1 biến ($$xy + x\bar{y} = x$$) và loại các tích bị bao hàm ($$x + xy = x$$).
+
+#### Bước 3: Kiểm tra số hạng đồng thuận thừa
+Nếu thấy $$A x + B \bar{x} + AB$$, lập tức xóa $$AB$$ nhờ Định lý Đồng thuận.
+
+#### Bước 4: Ánh xạ sang công nghệ cổng thực tế (NAND-only)
+Dùng luật phủ định kép $$AB + CD = \overline{\overline{AB}\cdot\overline{CD}}$$ để chuyển thẳng mạng hai tầng AND–OR thành mạng hai tầng **NAND–NAND** mà không tăng số cổng!
+
+$$
+\text{Biểu thức SOP}
+\;\xrightarrow{\;\text{Hấp thụ + Đồng thuận}\;}\;
+\text{SOP tối giản}
+\;\xrightarrow{\;\text{De Morgan}\;}\;
+\text{Mạch NAND–NAND 2 tầng}.
+$$
 
 ## Cổng logic là gì?
 

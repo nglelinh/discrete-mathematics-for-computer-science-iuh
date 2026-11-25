@@ -20,6 +20,22 @@ excerpt: "Giới thiệu phương pháp chứng minh trực tiếp cho mệnh đ
 
 Trong chương này, chúng ta tìm hiểu các phương pháp chứng minh — nền tảng của lập luận chặt chẽ trong toán rời rạc và khoa học máy tính. Từ việc kiểm tra điều kiện trong mã nguồn đến chứng minh một thuật toán luôn cho kết quả đúng, mọi bài toán đều đòi hỏi cùng một nguyên tắc: khi giả thiết đúng, kết luận phải được suy ra rõ ràng và không có khoảng trống lập luận. Mục 3.1 bắt đầu với **chứng minh trực tiếp** — kỹ thuật cơ bản nhất, trong đó ta giả sử giả thiết $$P$$ đúng, rồi vận dụng định nghĩa, tính chất và các quy tắc suy luận hợp lệ để đi từng bước đến kết luận $$Q$$. Cách tiếp cận này tương đồng với cách lập trình viên giải thích vì sao một hàm hoạt động đúng với mọi đầu vào thỏa mãn tiền điều kiện, đồng thời rèn luyện thói quen không nhảy bước vì chỉ một suy luận thiếu căn cứ cũng có thể làm sai lệch toàn bộ chứng minh.
 
+Chạy thử một hàm với 1.000 số chẵn thấy bình phương của chúng đều là số chẵn chỉ cho ta *niềm tin*, chưa phải *sự chắc chắn*—biết đâu số thứ 1.001 lại sai? Trong toán học và khoa học máy tính, **Chứng minh trực tiếp (Direct Proof)** là con đường thẳng thắn và thanh lịch nhất: xuất phát từ giả thiết $P$, mở định nghĩa bằng đại số rõ ràng, và đi từng bước suy diễn chắc chắn đến kết luận $Q$ cho **vô hạn** trường hợp cùng lúc.
+
+## Bản đồ kiến thức nền: Bốn viên gạch của một Chứng minh Trực tiếp chuẩn mực
+
+1. **Cấu trúc khung $P \to Q$**:
+   Giả sử $P$ đúng với một đối tượng **tùy ý** (không chọn số cụ thể như $n = 4$!), khai triển định nghĩa hình thức của $P$, biến đổi đại số hợp lệ, và chỉ ra đối tượng kết quả thỏa đúng định nghĩa của $Q$.
+
+2. **Định nghĩa hình thức là "đòn bẩy" đầu tiên**:
+   Phần lớn bế tắc khi viết chứng minh đến từ việc không mở định nghĩa: số chẵn là $n = 2k$ ($k \in \mathbb{Z}$), số lẻ là $n = 2k+1$, chia hết $a \mid b$ là $\exists c \in \mathbb{Z},\; b = ac$, số hữu tỉ là $p/q$ với $q \neq 0$.
+
+3. **Chứng minh phản đảo (Proof by Contraposition) — Người anh em song sinh**:
+   Khi $P \to Q$ khó đi thẳng (ví dụ *"Nếu $n^2$ chẵn thì $n$ chẵn"*), ta dùng luật tương đương $(P \to Q) \equiv (\neg Q \to \neg P)$ và chứng minh trực tiếp từ $\neg Q$ sang $\neg P$ dễ hơn gấp bội!
+
+4. **Ứng dụng trong Khoa học Máy tính**:
+   Chứng minh độ phức tạp $O(n)$, tính đúng đắn của phép biến đổi tương đương trong trình biên dịch và tính bảo toàn khóa mã hóa đều sử dụng chứng minh trực tiếp hàng ngày.
+
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
@@ -209,6 +225,17 @@ Việc chứng minh bất biến này cho toàn bộ vòng lặp thường dùng
 
 
 <div class="interactive-tool" markdown="1">
+### Khung giải thích (nên đọc chậm): So sánh hai hướng đi — Chứng minh trực tiếp vs. Chứng minh phản đảo
+
+**Bài toán**: Chứng minh rằng với mọi số nguyên $n \in \mathbb{Z}$, nếu $3n + 2$ là số lẻ thì $n$ là số lẻ.
+
+- **Thử đi thẳng ($P \to Q$)**: Giả sử $3n + 2 = 2k + 1 \implies 3n = 2k - 1 \implies n = \frac{2k - 1}{3}$. Ta bị kẹt ở phép chia cho 3—rất vướng!
+- **Đổi sang Phản đảo ($\neg Q \to \neg P$)**: Giả sử $n$ **không lẻ**, tức là $n$ chẵn. Khi đó theo định nghĩa, tồn tại $k \in \mathbb{Z}$ sao cho $n = 2k$. Thay trực tiếp vào $3n + 2$:
+  $$3n + 2 = 3(2k) + 2 = 6k + 2 = 2(3k + 1).$$
+  Đặt $m = 3k + 1 \in \mathbb{Z}$, ta có $3n + 2 = 2m$ nên $3n + 2$ là số **chẵn** (tức $\neg P$ đúng!).
+
+Chỉ bằng một bước đảo hướng sang phản đảo, phép chia cho 3 biến mất hoàn toàn và chứng minh gọn lại chỉ còn **3 dòng đại số trong suốt**!
+
 ## Checklist khi viết chứng minh trực tiếp
 
 - Xác định rõ giả thiết và kết luận của mệnh đề.

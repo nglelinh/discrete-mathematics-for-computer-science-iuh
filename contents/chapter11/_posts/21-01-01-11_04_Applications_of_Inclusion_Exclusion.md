@@ -10,6 +10,16 @@ lang: vi
 excerpt: "Áp dụng nguyên lý bao hàm–loại trừ vào các bài toán cổ điển: sàng Legendre, hàm phi Euler, số toàn ánh, hoán vị không điểm cố định (derangement) và tô màu có ràng buộc."
 ---
 
+Một công thức tưởng chỉ dùng để giải đố biểu đồ Venn lại hóa ra là "chiếc rìu đa năng" giải quyết liền bốn bài toán kinh điển của Toán học và Khoa học Máy tính: đếm số nguyên tố bằng **Sàng Legendre**, chứng minh công thức **hàm phi Euler $$\varphi(n)$$** (nền tảng của mật mã RSA), đếm số **toàn ánh** phân việc cho máy chủ, và tính xác suất không ai nhận đúng mũ của mình (**Derangements $$D_n$$**).
+
+**Mạch bài học:** Chọn đúng **tập vi phạm $$A_i$$** $$\longrightarrow$$ **Sàng Legendre** & **Hàm phi Euler $$\varphi(n)$$** $$\longrightarrow$$ đếm **toàn ánh (onto functions)** $$\longrightarrow$$ **hoán vị không điểm cố định (derangements $$D_n$$)** và giới hạn bất ngờ $$D_n/n! \to 1/e$$.
+
+## Bản đồ kiến thức nền: Bốn bài toán kinh điển dưới cùng một lăng kính Bao hàm – Loại trừ
+
+- **Lý thuyết số & Mật mã (Legendre Sieve & Euler's Totient $$\varphi(n)$$):** Đếm các số nguyên tố cùng nhau với $$n = p_1^{e_1}\cdots p_r^{e_r}$$ chính là loại bỏ bội của từng ước nguyên tố $$p_i$$, dẫn ngay đến tích gọn $$\varphi(n) = n \prod_{i=1}^r \left(1 - \frac{1}{p_i}\right)$$ — trái tim của hệ mật RSA.
+- **Ánh xạ & Số Stirling loại hai (Surjections):** Đếm số toàn ánh từ tập $$m$$ phần tử vào tập $$n$$ phần tử tương ứng bài toán phân bổ $$m$$ tác vụ phân biệt vào $$n$$ máy chủ sao cho **không máy chủ nào rảnh rỗi** (vi phạm $$A_i$$: máy chủ $$i$$ không nhận tác vụ nào).
+- **Hoán vị không điểm cố định (Derangements $$D_n$$):** Đếm số hoán vị $$\pi$$ sao cho $$\pi(i) \ne i$$ với mọi $$i$$ (vi phạm $$A_i$$: phần tử $$i$$ đứng yên đúng vị trí $$i$$). Đáng kinh ngạc là xác suất một hoán vị ngẫu nhiên là derangement hội tụ cực nhanh về $$1/e \approx 36{,}79\%$$ bất kể $$n$$ lớn đến đâu!
+
 Ở mục trước, chúng ta đã chứng minh công thức bao hàm–loại trừ tổng quát. Mục này áp dụng nguyên lý đó vào các bài toán cổ điển: **sàng Legendre**, **hàm phi Euler** $$\phi(n)$$, **số toàn ánh**, **derangement** và đếm cấu hình có ràng buộc (như tô màu đồ thị). Bước quan trọng nhất thường không nằm ở phép cộng trừ mà ở việc **mô hình hóa** chính xác các tập vi phạm $$A_i$$ và phần giao của chúng; sau khi xác định xong các tập con này, phần còn lại chỉ là thay số vào công thức đã biết.
 
 ![Ứng dụng bao hàm–loại trừ](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)
@@ -115,6 +125,33 @@ Trong các bài toán tô màu có ràng buộc, ta cần đếm số cách gán
 <div data-demo="surjection-counter"></div>
 </div>
 <script src="{{ '/public/js/surjection-counter.js' | relative_url }}"></script>
+
+## Ví dụ tính tay cầm tay chỉ việc: Tính tay $$\varphi(30)$$, số toàn ánh và $$D_4$$
+
+**Ví dụ 1 — Hàm phi Euler $$\varphi(30)$$:**
+Phân tích $$30 = 2 \times 3 \times 5$$. Đặt $$A_2, A_3, A_5$$ là các bội của 2, 3, 5 trong $$\{1,\dots,30\}$$.
+- Bằng Bao hàm – Loại trừ:
+  $$\varphi(30) = 30 - (15 + 10 + 6) + (5 + 3 + 2) - 1 = 30 - 31 + 10 - 1 = 8.$$
+- Đối chiếu công thức tích: $$30\left(1-\frac{1}{2}\right)\left(1-\frac{1}{3}\right)\left(1-\frac{1}{5}\right) = 30 \cdot \frac{1}{2} \cdot \frac{2}{3} \cdot \frac{4}{5} = 8$$. (Đúng 8 số: $$1, 7, 11, 13, 17, 19, 23, 29$$.)
+
+**Ví dụ 2 — Phân 4 tác vụ phân biệt vào 3 máy chủ sao cho không máy nào rảnh (số toàn ánh $$m=4, n=3$$):**
+- Không ràng buộc: $$3^4 = 81$$ cách.
+- Ít nhất 1 máy rảnh ($$k=1$$): $$\binom{3}{1} \cdot 2^4 = 3 \times 16 = 48$$.
+- Ít nhất 2 máy rảnh ($$k=2$$): $$\binom{3}{2} \cdot 1^4 = 3 \times 1 = 3$$.
+- Cả 3 máy rảnh ($$k=3$$): $$0$$.
+- **Kết quả:** $$81 - 48 + 3 = 36$$ toàn ánh!
+
+**Ví dụ 3 — Đếm số derangement $$D_4$$ (4 lá thư cho vào 4 phong bì sai địa chỉ hoàn toàn):**
+$$D_4 = 4!\left(1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \frac{1}{4!}\right) = 24\left(1 - 1 + \frac{1}{2} - \frac{1}{6} + \frac{1}{24}\right) = 12 - 4 + 1 = 9\text{ cách.}$$
+- Kiểm tra tỷ lệ: $$D_4 / 4! = 9/24 = 0{,}375$$ — mới ở $$n=4$$ mà đã sát $$1/e \approx 0{,}3679$$!
+
+### Khung giải thích: Khuôn mẫu chung 3 bước của mọi ứng dụng Bao hàm – Loại trừ (nên đọc chậm)
+
+1. **Bước 1 — Đặt tên chính xác tập "xấu" $$A_i$$:** Trong $$\varphi(n)$$, $$A_i$$ là "chia hết cho $$p_i$$"; trong toàn ánh, $$A_i$$ là "giá trị $$i$$ không có tiền ảnh"; trong derangement, $$A_i$$ là "người $$i$$ nhận đúng mũ của mình".
+2. **Bước 2 — Khai thác tính đối xứng để rút gọn tổng:** Khi mọi giao của $$k$$ tập đều có **cùng lực lượng** $$g(k)$$ (như $$(n-k)^m$$ ở toàn ánh hay $$(n-k)!$$ ở derangement), tổng dài $$2^n$$ số hạng lập tức co gọn thành tổng $$n+1$$ số hạng: $$\sum_{k=0}^n (-1)^k \binom{n}{k} g(k)$$.
+3. **Bước 3 — Nhận diện chuỗi Taylor ẩn bên trong:** Ở bài toán derangement, $$\binom{n}{k}(n-k)! = \frac{n!}{k!}$$, nên $$D_n = n! \sum_{k=0}^n \frac{(-1)^k}{k!}$$ — đúng là tổng riêng bậc $$n$$ của chuỗi Taylor cho $$e^{-1}$$, giải thích tại sao $$D_n = \text{round}(n!/e)$$ với mọi $$n \ge 1$$!
+
+$$D_n = n!\sum_{k=0}^n \frac{(-1)^k}{k!} \approx \frac{n!}{e}, \qquad \text{Onto}(m,n) = \sum_{k=0}^n (-1)^k \binom{n}{k}(n-k)^m.$$
 
 ## Bài tập
 

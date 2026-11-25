@@ -9,6 +9,8 @@ lang: en
 excerpt: "Phân tích độ phức tạp thời gian T(n) và không gian S(n): trường hợp tốt nhất, trung bình, xấu nhất; phân tích vòng lặp và chia để trị; so sánh tìm kiếm và sắp xếp."
 ---
 
+> **Câu chuyện mở đầu:** Nhìn vào hai vòng lặp `for` lồng nhau, nhiều sinh viên phản xạ ngay "$$O(n^2)$$"! Nhưng khoan đã: nếu vòng lặp trong có bước nhảy nhân đôi `j = j * 2`, tổng số bước thực ra chỉ là $$O(n \log n)$$; còn nếu vòng ngoài nhân đôi `i = i * 2` và vòng trong chạy `1..i`, tổng số bước thậm chí chỉ là **$$O(n)$$**! Phân tích độ phức tạp là nghệ thuật biến cấu trúc mã nguồn thành **tổng đại số hoặc hệ thức truy hồi** rồi tính chính xác bậc tăng trưởng.
+
 <div class="textbook-epigraph" markdown="1">
 
 "Count the dominant operations as a function of n — then wrap the result in Θ or O."
@@ -38,6 +40,58 @@ Sau khi có ngôn ngữ tiệm cận Big-O ở bài trước, mục này trình 
 **Từ khóa**: time complexity, space complexity, worst-case, loop analysis, divide-and-conquer.
 
 </div>
+
+## Bản đồ kiến thức nền: Phân tích Độ phức tạp Thời gian & Không gian
+
+### 1. Mô hình RAM & Ba kịch bản Phân tích
+- **Bản chất:** Trên mô hình RAM chuẩn, mỗi phép toán cơ bản (cộng, so sánh, truy cập mảng) tốn $$O(1)$$. Ta phân biệt **tốt nhất (best-case)**, **xấu nhất (worst-case)** — chuẩn an toàn cho kỹ thuật — và **trung bình (average-case)** (dùng kỳ vọng xác suất).
+
+### 2. Vòng lặp Lồng nhau & Tổng Chuỗi kinh điển
+- Vòng lặp tuyến tính tam giác: $$\sum_{i=1}^n i = \frac{n(n+1)}{2} = \Theta(n^2)$$.
+- Vòng lặp nhân đôi (cấp số nhân): $$1 + 2 + 4 + \dots + n = 2n - 1 = \Theta(n)$$!
+- Tổng điều hòa: $$\sum_{i=1}^n \frac{1}{i} = \ln n + O(1) = \Theta(\log n)$$ (dùng để chứng minh Sàng Eratosthenes chạy trong $$O(n \log \log n)$$!).
+
+### 3. Thuật toán Đệ quy & Định lý Thợ (Master Theorem)
+- **Bản chất:** Với thuật toán chia để trị $$T(n) = a\,T(n/b) + f(n)$$, **Master Theorem** so sánh công việc ở lá ($$n^{\log_b a}$$) với công việc ghép ở gốc ($$f(n)$$) để đọc ngay kết quả:
+  - Merge Sort: $$T(n) = 2T(n/2) + \Theta(n) \implies \Theta(n\log n)$$.
+  - Binary Search: $$T(n) = T(n/2) + \Theta(1) \implies \Theta(\log n)$$.
+
+## Ví dụ tính tay cầm tay chỉ việc: Bóc tách 2 vòng lặp lồng nhau "đánh lừa trực giác"
+
+1. **Vòng lặp 1:** `i` chạy `1, 2, 4, 8, ..., n` (nhân đôi); với mỗi `i`, `j` chạy từ `1` đến `i`:
+   Tổng số bước chính xác (đặt $$n = 2^k$$):
+   $$
+   T(n) = 1 + 2 + 4 + \cdots + 2^k = 2^{k+1} - 1 = 2n - 1 = \Theta(n)!
+   $$
+   *(Không phải $$O(n\log n)$$ — công việc ở lần lặp cuối cùng chiếm hơn một nửa tổng thời gian!)*
+
+2. **Vòng lặp 2 (kiểu Sàng):** `i` chạy từ `1` đến `n`; với mỗi `i`, `j` tăng bước `i` (`j = i, 2i, 3i, ..., <= n`):
+   Số lần chạy của vòng trong là $$\lfloor n/i \rfloor$$, nên tổng số bước là:
+   $$
+   T(n) = \sum_{i=1}^n \left\lfloor \frac{n}{i} \right\rfloor \approx n\left(1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}\right) = n \cdot H_n = \Theta(n \log n)!
+   $$
+
+### Khung giải thích: Quy trình 4 bước tính độ phức tạp của mọi đoạn mã (nên đọc chậm)
+
+#### Bước 1: Chọn phép toán cơ bản (Basic Operation)
+Thường là phép so sánh (trong sắp xếp/tìm kiếm) hoặc phép nhân/cộng nằm ở vòng lặp sâu nhất.
+
+#### Bước 2: Chuyển cấu trúc lặp thành dấu tổng $$\sum$$, cấu trúc đệ quy thành hệ thức $$T(n)$$
+Đừng đoán bằng cảm giác — hãy viết tường minh cận trên, cận dưới của từng vòng `for`/`while`.
+
+#### Bước 3: Tính gọn tổng hoặc giải truy hồi (Master Theorem / Cây đệ quy)
+Dùng 3 công thức bỏ túi: tổng cấp số cộng $$\Theta(n^2)$$, tổng cấp số nhân $$\Theta(\text{số hạng lớn nhất})$$, tổng điều hòa $$\Theta(\log n)$$.
+
+#### Bước 4: Đừng bỏ quên Độ phức tạp Bộ nhớ (Space Complexity)
+Nhớ tính cả **ngăn xếp đệ quy (call stack)**: QuickSort trung bình tốn $$O(\log n)$$ không gian stack, còn Merge Sort tốn $$O(n)$$ mảng phụ!
+
+$$
+\text{Mã nguồn (Lặp / Đệ quy)}
+\;\xrightarrow{\;\sum \text{ hoặc } T(n)\;}\;
+\text{Tổng chuỗi / Master Theorem}
+\;\xrightarrow{\;\text{Tiệm cận}\;}\;
+\text{Thời gian \& Bộ nhớ }\Theta(\cdot).
+$$
 
 ## Mô hình đếm phép toán
 

@@ -9,6 +9,8 @@ lang: en
 excerpt: "Định lý chia, số nguyên tố, định lý cơ bản của số học, sàng Eratosthenes, ước chung lớn nhất (GCD) và thuật toán Euclid — nền tảng cho đồng dư và mật mã."
 ---
 
+> **Câu chuyện mở đầu:** Suốt hai thiên niên kỷ kể từ Euclid, các nhà toán học thuần túy từng tự hào rằng **Lý thuyết Số** — đặc biệt là số nguyên tố và phép chia có dư — là ngành toán "trong sạch nhất", hoàn toàn vô dụng ngoài đời thực! Thế nhưng ngày nay, mỗi khi bạn chuyển khoản ngân hàng hay đăng nhập vào một trang web `https://`, chính **thuật toán Euclid mở rộng** (2.300 năm tuổi!) và **sự khó khăn của việc phân tích thừa số nguyên tố** đang bảo vệ dữ liệu của bạn từng mili giây!
+
 <div class="textbook-epigraph" markdown="1">
 
 "Mathematics is the queen of the sciences and number theory is the queen of mathematics."
@@ -42,6 +44,54 @@ excerpt: "Định lý chia, số nguyên tố, định lý cơ bản của số 
 **Từ khóa**: chia hết (divisibility), số nguyên tố (prime), GCD, thuật toán Euclid, định lý cơ bản số học, Bézout.
 
 </div>
+
+## Bản đồ kiến thức nền: Tính chia hết, Số nguyên tố và Thuật toán Euclid
+
+### 1. Thuật toán Chia & Định lý Cơ bản của Số học (FTA)
+- **Bản chất:** Mọi số nguyên $$a$$ chia cho $$d > 0$$ đều có thương $$q$$ và số dư $$r$$ duy nhất ($$a = dq + r,\; 0 \le r < d$$). Định lý Cơ bản của Số học khẳng định mọi số nguyên $$n \ge 2$$ đều phân tích **duy nhất** thành tích các lũy thừa số nguyên tố — các số nguyên tố chính là **bảng tuần hoàn nguyên tử** của tập số nguyên $$\mathbb{Z}$$!
+
+### 2. Ước chung lớn nhất (GCD) & Định lý Bézout
+- **Bản chất:** Thuật toán Euclid dựa trên đẳng thức đơn giản $$\gcd(a, b) = \gcd(b, a \bmod b)$$ để tìm $$\gcd(a, b)$$ trong thời gian siêu nhanh $$O(\log b)$$ (không cần phân tích thừa số!). Chạy ngược lại (**Euclid mở rộng**) cho ngay hai hệ số Bézout $$x, y \in \mathbb{Z}$$ thỏa mãn $$ax + by = \gcd(a, b)$$ — chìa khóa tìm nghịch đảo modulo trong RSA!
+
+### 3. Phân bố Số nguyên tố & Sàng Eratosthenes
+- **Bản chất:** Có vô hạn số nguyên tố (chứng minh phản chứng tuyệt đẹp của Euclid!), mật độ giảm dần theo **Định lý Số nguyên tố** $$\pi(x) \sim x / \ln x$$, và Sàng Eratosthenes liệt kê mọi số nguyên tố $$\le N$$ trong $$O(N \log\log N)$$!
+
+## Ví dụ tính tay cầm tay chỉ việc: Chạy Thuật toán Euclid mở rộng cho $$(a, b) = (252, 198)$$
+
+1. **Chiều xuôi (chia liên tiếp để tìm $$\gcd$$):**
+   - $$252 = 1 \cdot 198 + 54$$
+   - $$198 = 3 \cdot 54 + 36$$
+   - $$54 = 1 \cdot 36 + 18$$
+   - $$36 = 2 \cdot 18 + 0 \implies \gcd(252, 198) = 18$$!
+2. **Chiều ngược (thế ngược để tìm hệ số Bézout $$252x + 198y = 18$$):**
+   - Từ dòng 3: $$18 = 54 - 1\cdot 36$$.
+   - Thế $$36 = 198 - 3\cdot 54$$ từ dòng 2:
+     $$18 = 54 - (198 - 3\cdot 54) = 4\cdot 54 - 1\cdot 198$$.
+   - Thế $$54 = 252 - 1\cdot 198$$ từ dòng 1:
+     $$18 = 4(252 - 198) - 198 = 4\cdot 252 + (-5)\cdot 198!$$
+   - **Kiểm tra trực tiếp bằng tay:** $$4 \times 252 - 5 \times 198 = 1008 - 990 = 18$$! ✓ (Cặp Bézout là $$x = 4,\; y = -5$$!)
+
+### Khung giải thích: Tại sao Thuật toán Euclid nhanh đến khó tin? (nên đọc chậm)
+
+#### Bước 1: Bất biến GCD qua phép chia lấy dư
+Mọi ước chung của $$(a, b)$$ đều chia hết cho $$r = a - qb$$ và ngược lại $$\implies \gcd(a, b) = \gcd(b, r)$$.
+
+#### Bước 2: Sau tối đa 2 bước, số dư luôn giảm ít nhất một nửa!
+Thật vậy: nếu $$r \le b/2$$ thì xong ngay bước 1; nếu $$r > b/2$$ thì ở bước kế tiếp $$b \bmod r = b - r < b/2$$! Nhờ tốc độ chia đôi này, ngay cả hai số nguyên **1000 chữ số** cũng chỉ cần dưới **$$2\log_2(10^{1000}) \approx 6600$$ phép chia**!
+
+#### Bước 3: Trường hợp xấu nhất gọi tên Dãy Fibonacci (Định lý Lamé)
+Cặp số làm thuật toán Euclid chạy nhiều bước nhất (với cùng độ lớn) chính là hai số Fibonacci liên tiếp $$(F_{k+1}, F_k)$$ vì mọi thương đều bằng $$1$$!
+
+#### Bước 4: Sự bất đối xứng vàng của Mật mã học
+Tìm $$\gcd$$ hay kiểm tra một số 1000 chữ số có nguyên tố không tốn vài mili giây, nhưng **phân tích tích $$N = p \cdot q$$ của hai số nguyên tố 1000 chữ số** lại cực kỳ khó — chính khoảng cách khổng lồ này nuôi sống hệ mật mã RSA ở bài 15.03!
+
+$$
+\text{Phép chia }a = bq + r
+\;\xrightarrow{\;\text{Euclid }O(\log b)\;}\;
+\gcd(a, b)
+\;\xrightarrow{\;\text{Thế ngược}\;}\;
+ax + by = \gcd(a, b) \text{ (Bézout)}.
+$$
 
 ## Tính chia hết
 

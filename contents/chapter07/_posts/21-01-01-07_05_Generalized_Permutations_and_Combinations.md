@@ -10,6 +10,21 @@ lang: en
 excerpt: "Mở rộng phép đếm sang tổ hợp có lặp (stars and bars), phương trình nghiệm nguyên có ràng buộc, hoán vị đa tập và hệ số đa thức."
 ---
 
+Hãy thử bước vào một tiệm trà sữa có 4 loại topping khác nhau và bạn được chọn đúng 6 phần topping (có thể chọn trùng loại) — có bao nhiêu cách phối hợp? Hay một bài toán kinh điển của kỹ sư hệ thống: có 10 tác vụ giống hệt nhau cần chia vào 4 máy chủ sao cho mỗi máy nhận ít nhất 1 tác vụ. Những bài toán đời thực ấy vượt ra ngoài công thức $$P(n,r)$$ hay $$C(n,r)$$ cơ bản vì chúng có **lặp lại**, **phần tử đồng nhất**, hoặc **ràng buộc cận dưới–cận trên**.
+
+**Mạch bài học:** Bản đồ kiến thức nền (tổ hợp có lặp, hoán vị đa tập, hệ số đa thức) → Phương pháp Sao và Vạch (Stars and Bars) & phương trình nghiệm nguyên → Ví dụ tính tay cầm tay chỉ việc (chia 10 tác vụ có cận dưới & cận trên) → Khung giải thích chậm: 3 bước biến mọi bài toán phân phối thành tổ hợp chuẩn → Minh họa tương tác & Bài tập.
+
+## Bản đồ kiến thức nền: Tổ hợp Mở rộng nghiên cứu những mô hình nào?
+
+### 1. Tổ hợp có lặp & Phương pháp Sao và Vạch (Stars and Bars)
+Chọn $$r$$ phần tử từ $$n$$ loại (được lặp, không kể thứ tự) tương đương tuyệt đối với việc đếm nghiệm nguyên không âm của $$x_1 + x_2 + \cdots + x_n = r$$ — và bằng song ánh xếp $$r$$ ngôi sao cùng $$n-1$$ vạch ngăn, đáp số luôn là $$\binom{r + n - 1}{r}$$.
+
+### 2. Hoán vị đa tập & Hệ số đa thức (Multinomial Coefficients)
+Khi sắp xếp $$n$$ đối tượng gồm $$k$$ nhóm giống hệt nhau có kích thước $$n_1, \ldots, n_k$$ ($$\sum n_i = n$$), ta phải chia $$n!$$ cho tích hoán vị nội bộ $$n_1! n_2! \cdots n_k!$$ — cũng chính là hệ số của $$x_1^{n_1}\cdots x_k^{n_k}$$ trong khai triển $$(x_1 + \cdots + x_k)^n$$.
+
+### 3. Xử lý ràng buộc cận dưới và cận trên
+Ràng buộc **cận dưới** ($$x_i \ge c_i$$) giải quyết tức thì bằng phép đổi biến $$y_i = x_i - c_i \ge 0$$; còn ràng buộc **cận trên** ($$x_i \le u_i$$) kết hợp Stars and Bars với **Nguyên lý Bù trừ** (trừ đi các cấu hình vi phạm $$x_i \ge u_i + 1$$).
+
 Ở mục trước, chúng ta đã học hệ số nhị thức và các đồng nhất thức tổ hợp. Mục này mở rộng sang **hoán vị và tổ hợp tổng quát** để xử lý những bài toán có yếu tố lặp, có các phần tử giống nhau hoặc đi kèm ràng buộc bổ sung.
 
 Trong thực tế, các đối tượng không phải lúc nào cũng hoàn toàn phân biệt: có khi một loại phần tử được chọn nhiều lần, có khi nhiều phần tử trong tập hợp giống hệt nhau, hoặc số lượng phân phối phải thỏa mãn cận dưới và cận trên. Điểm mấu chốt không nằm ở việc ghi nhớ công thức dài, mà ở chỗ nhận diện chính xác mô hình bài toán.
@@ -277,6 +292,41 @@ Minh hoạ bài toán "sao và vạch": chia $$k$$ vật giống nhau vào $$n$$
 <div data-demo="counting-explainer" data-tab="stars"></div>
 </div>
 <script src="{{ '/public/js/explainers/counting-explainer.js' | relative_url }}"></script>
+
+
+## Ví dụ tính tay cầm tay chỉ việc: Chia 10 tác vụ vào 3 máy chủ có cả cận dưới lẫn cận trên
+
+Đếm số nghiệm nguyên của phương trình $$x_1 + x_2 + x_3 = 10$$ thỏa $$x_1 \ge 1,\; x_2 \ge 2,\; x_3 \ge 0$$ và mỗi máy nhận **không quá 5 tác vụ** ($$x_i \le 5$$):
+1. **Khử cận dưới** bằng đặt $$y_1 = x_1 - 1 \ge 0$$, $$y_2 = x_2 - 2 \ge 0$$, $$y_3 = x_3 \ge 0$$:
+   $$
+   y_1 + y_2 + y_3 = 10 - 1 - 2 = 7, \qquad \text{với } y_1 \le 4,\; y_2 \le 3,\; y_3 \le 5.
+   $$
+2. **Đếm tổng không ràng buộc cận trên:** $$\binom{7 + 3 - 1}{2} = \binom{9}{2} = 36$$ cách.
+3. **Trừ các trường hợp vi phạm cận trên** (tập $$A_1: y_1 \ge 5$$, $$A_2: y_2 \ge 4$$, $$A_3: y_3 \ge 6$$):
+   - $$\vert A_1\vert = \binom{(7-5)+2}{2} = \binom{4}{2} = 6$$; $$\vert A_2\vert = \binom{(7-4)+2}{2} = \binom{5}{2} = 10$$; $$\vert A_3\vert = \binom{(7-6)+2}{2} = \binom{3}{2} = 3$$.
+   - Mọi giao đôi đều rỗng vì $$5+4=9 > 7$$, $$5+6=11 > 7$$, $$4+6=10 > 7$$!
+4. **Kết quả chính xác:** $$36 - (6 + 10 + 3) = \mathbf{17}$$ cách phân bổ hợp lệ!
+
+### Khung giải thích: 3 bước nhận diện nhanh mọi mô hình đếm mở rộng (nên đọc chậm)
+
+#### Bước 1: Hỏi hai câu hỏi phân loại: "Có phân biệt thứ tự không?" và "Có được lặp không?"
+- Có thứ tự + có lặp $$\to n^r$$.
+- Có thứ tự + nhóm phần tử giống nhau $$\to \frac{n!}{n_1!\cdots n_k!}$$ (hoán vị đa tập, ví dụ số anagram của `MISSISSIPPI`).
+- Không thứ tự + có lặp $$\to \binom{r+n-1}{r}$$ (Stars and Bars).
+
+#### Bước 2: Chuyển mọi bài toán chia kẹo / chia tài nguyên về phương trình nghiệm nguyên
+Viết rõ ẩn $$x_i$$ là số đơn vị gán cho loại/ngăn $$i$$, ghi ngay tổng $$\sum x_i = r$$ và toàn bộ ràng buộc cận dưới $$c_i$$, cận trên $$u_i$$.
+
+#### Bước 3: Khử cận dưới trước bằng đổi biến, rồi mới khử cận trên bằng bù trừ
+Đổi biến $$y_i = x_i - c_i$$ luôn giảm vế phải từ $$r$$ xuống $$r' = r - \sum c_i$$ và làm gọn toàn bộ cận trên tương ứng — giúp các giao đôi/giao ba trong bù trừ nhỏ đi rõ rệt!
+
+$$
+\text{Phân phối có ràng buộc}
+\;\xrightarrow{y_i = x_i - c_i}\;
+\sum y_i = r'\ (0 \le y_i \le u'_i)
+\;\xrightarrow{\text{Stars \& Bars + Bù trừ}}\;
+\text{Đáp số chính xác}.
+$$
 
 ## Bài tập
 

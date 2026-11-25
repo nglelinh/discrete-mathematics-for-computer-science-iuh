@@ -17,6 +17,17 @@ excerpt: "Phép chuyển đổi hai chiều giữa văn phạm phi ngữ cảnh 
 
 </div>
 
+Hai thế giới tưởng như tách biệt — một bên là **bộ sinh chuỗi** bằng quy tắc thay thế (CFG), một bên là **máy nhận dạng** dùng ngăn xếp (PDA) — hóa ra lại mô tả đúng một tập hợp ngôn ngữ duy nhất: lớp ngôn ngữ phi ngữ cảnh (CFL). Định lý tương đương CFG $$\equiv$$ PDA chính là cầu nối biến đặc tả ngữ pháp trong sách thành mã máy parser chạy thực sự trong trình biên dịch.
+
+## Bản đồ kiến thức nền: Hai chiều của Định lý CFG $$\equiv$$ PDA
+
+1. **Chiều CFG $$\to$$ PDA (Mô phỏng dẫn xuất trái nhất bằng ngăn xếp)**:
+   Chỉ cần một PDA **1 trạng thái** (chấp nhận bằng ngăn xếp rỗng): đẩy $$S$$ vào ngăn xếp, nếu đỉnh là biến $$A$$ thì chọn không đơn định một quy tắc $$A \to \alpha$$ để thay thế; nếu đỉnh là ký tự kết thúc $$a$$ thì đối chiếu và tiêu thụ đúng ký tự $$a$$ từ đầu vào.
+2. **Chiều PDA $$\to$$ CFG (Biến bộ ba $$[p, X, q]$$)**:
+   Mỗi biến $$A_{pXq}$$ sinh ra chính xác mọi chuỗi con khiến PDA đi từ trạng thái $$p$$ sang trạng thái $$q$$ và làm rỗng đúng một ký hiệu $$X$$ trên đỉnh ngăn xếp (không chạm sâu hơn xuống dưới $$X$$).
+3. **Ý nghĩa thực hành trong trình biên dịch**:
+   Chiều CFG $$\to$$ PDA chính là cơ chế của **Top-Down Parser (LL)**, chỉ cần thêm kỹ thuật nhìn trước $$k$$ ký tự (lookahead) để loại bỏ bước đoán không đơn định!
+
 ## Mục tiêu
 
 <div class="textbook-objectives" markdown="1">
@@ -48,6 +59,22 @@ Ta đưa vào các ký hiệu không kết thúc dạng $$A_{pq}$$ đại diện
 **Định lý.** Một ngôn ngữ $$L$$ là ngôn ngữ phi ngữ cảnh (CFL) khi và chỉ khi tồn tại một PDA $$P$$ sao cho $$L=L(P)$$.
 
 </div>
+
+### Khung giải thích (nên đọc chậm): Chạy tay PDA 1 trạng thái mô phỏng CFG $$S \to aSb \mid \varepsilon$$ trên chuỗi `aabb`
+
+PDA khởi tạo ngăn xếp bằng $$S$$ (chỉ có 1 trạng thái $$q$$ duy nhất):
+
+| Bước | Chuỗi còn lại | Ngăn xếp (đỉnh bên trái) | Hành động của PDA |
+| :---: | :---: | :---: | :--- |
+| 0 | `aabb` | $$S$$ | Khởi đầu với ký hiệu gốc $$S$$ |
+| 1 | `aabb` | $$aSb$$ | Đỉnh là biến $$S$$ → thay bằng $$aSb$$ (không đọc đầu vào) |
+| 2 | `abb` | $$Sb$$ | Đỉnh là `a` khớp đầu vào `a` → tiêu thụ cả hai |
+| 3 | `abb` | $$aSbb$$ | Đỉnh là biến $$S$$ → thay bằng $$aSb$$ |
+| 4 | `bb` | $$Sbb$$ | Khớp và tiêu thụ `a` |
+| 5 | `bb` | $$bb$$ | Đỉnh là biến $$S$$ → thay bằng $$\varepsilon$$ |
+| 6–7 | $$\varepsilon$$ | $$\varepsilon$$ | Lần lượt khớp và tiêu thụ hai ký tự `b` → **Ngăn xếp rỗng → Chấp nhận!** |
+
+Nhìn vào cột "Hành động", PDA đã thực hiện lại chính xác từng bước của dẫn xuất trái nhất $$S \Rightarrow aSb \Rightarrow aaSbb \Rightarrow aabb$$!
 
 ## Bài tập
 

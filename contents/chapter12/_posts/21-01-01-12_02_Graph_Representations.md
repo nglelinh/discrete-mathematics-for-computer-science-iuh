@@ -17,6 +17,17 @@ excerpt: "Ma trận kề và danh sách kề: cách xây dựng, độ phức t�
 
 </div>
 
+
+Một đồ thị trên giấy chỉ là vài chấm tròn nối nét, nhưng bên trong RAM máy tính thì không có chấm tròn nào cả — chỉ có mảng số và con trỏ. Chọn sai cách lưu đồ thị có thể biến một thuật toán chạy 10 mili-giây thành lỗi tràn bộ nhớ (Out-Of-Memory): với mạng xã hội 1 triệu người dùng, **ma trận kề** ngốn tới **1 terabyte RAM**, trong khi **danh sách kề** chỉ cần vài chục megabyte!
+
+**Mạch bài học:** **Ma trận kề (Adjacency Matrix)** $$\longrightarrow$$ **Danh sách kề (Adjacency List)** $$\longrightarrow$$ so sánh chi phí không gian & thời gian trên **đồ thị thưa vs. đồ thị dày** $$\longrightarrow$$ các biến thể thực chiến (CSR, ma trận trọng số, bảng băm kề).
+
+## Bản đồ kiến thức nền: Cấu trúc dữ liệu đồ thị cân bằng những đánh đổi nào?
+
+- **Đồ thị thưa vs. Đồ thị dày (Sparse vs. Dense Graphs):** Một đồ thị đơn $$n$$ đỉnh có tối đa $$\binom{n}{2} = \frac{n(n-1)}{2}$$ cạnh. Nếu $$\vert E \vert = O(\vert V \vert)$$ (như bản đồ đường bộ, mạng xã hội, lưới 3D), đồ thị là **thưa**; nếu $$\vert E \vert = \Theta(\vert V \vert^2)$$, đồ thị là **dày**.
+- **Đánh đổi Tra cứu cạnh vs. Duyệt láng giềng:** Ma trận kề kiểm tra `(u, v) in E` trong đúng $$O(1)$$ nhưng tốn $$\Theta(V^2)$$ bộ nhớ và $$\Theta(V)$$ để liệt kê láng giềng của một đỉnh; ngược lại, danh sách kề tốn chỉ $$\Theta(V + E)$$ bộ nhớ và $$O(\deg(u))$$ để duyệt láng giềng — chìa khóa giúp BFS/DFS đạt $$O(V + E)$$.
+- **Đại số tuyến tính trên đồ thị (Matrix Powers):** Một sức mạnh đặc biệt của ma trận kề $$A$$: phần tử $$(A^k)_{ij}$$ chính là **số đường đi (walk) có độ dài đúng $$k$$ từ đỉnh $$i$$ đến đỉnh $$j$$**!
+
 Ở mục trước, đồ thị được định nghĩa trừu tượng dưới dạng $$G = (V, E)$$. Để thuật toán có thể xử lý, cấu trúc này cần được **lưu trữ** và **truy vấn** trong bộ nhớ máy tính. Hai cách biểu diễn tiêu chuẩn là **ma trận kề** (*adjacency matrix*) và **danh sách kề** (*adjacency list*). Cả hai cùng mã hóa thông tin về quan hệ kề, nhưng khác nhau rõ rệt về chi phí bộ nhớ và thời gian thực hiện các thao tác cơ bản như kiểm tra cạnh, liệt kê láng giềng hay duyệt toàn bộ đồ thị.
 
 Bài học này trình bày cách xây dựng hai biểu diễn, so sánh độ phức tạp và nêu nguyên tắc lựa chọn tùy theo mật độ cạnh.
@@ -175,6 +186,32 @@ Xây dựng ma trận kề bằng cách bật/tắt các cạnh, sau đó đối
 </div>
 <script src="{{ '/public/js/graph-adjacency-builder.js' | relative_url }}"></script>
 
+## Ví dụ tính tay cầm tay chỉ việc: Biểu diễn cùng một đồ thị 4 đỉnh và tính $$A^2$$
+
+Cho đồ thị vô hướng 4 đỉnh $$V = \{0, 1, 2, 3\}$$ với 4 cạnh $$E = \{(0,1), (0,2), (1,2), (2,3)\}$$.
+
+1. **Ma trận kề $$A$$ (kích thước $$4 \times 4 = 16$$ ô):**
+   $$A = \begin{pmatrix} 0 & 1 & 1 & 0 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix}.$$
+   - Kiểm tra nhanh: tổng hàng 2 là $$1+1+0+1 = 3 = \deg(2)$$. Kiểm tra có cạnh $$(1,3)$$ không: đọc `A[1][3] = 0` trong $$O(1)$$.
+2. **Danh sách kề (tổng số nút lưu trữ = $$2\vert E \vert = 8$$ phần tử):**
+   - `0: [1, 2]`
+   - `1: [0, 2]`
+   - `2: [0, 1, 3]`
+   - `3: [2]`
+3. **Tính tay bình phương ma trận kề $$A^2$$ tại hai ô tiêu biểu:**
+   - Ô đường chéo $$(A^2)_{2,2} = 1\cdot 1 + 1\cdot 1 + 0\cdot 0 + 1\cdot 1 = 3$$ — đúng bằng bậc $$\deg(2) = 3$$ (3 cách bước ra một đỉnh kề rồi quay lại đỉnh 2!).
+   - Ô $$(A^2)_{0,3} = 0\cdot 0 + 1\cdot 0 + 1\cdot 1 + 0\cdot 0 = 1$$ — có đúng **1 đường đi độ dài 2** từ `0` tới `3`, đó là $$0 \to 2 \to 3$$!
+4. **Quy mô thực tế với $$V = 100\,000$$ đỉnh, bậc trung bình 10 ($$E = 500\,000$$):**
+   - Ma trận kề (1 byte/ô): $$100\,000^2 = 10^{10}$$ byte $$\approx 10\text{ GB}$$ (99,99% là số `0`!).
+   - Danh sách kề (4 byte/ID): $$2 \times 500\,000 \times 4 = 4\text{ MB}$$ — nhỏ hơn **2.500 lần**!
+
+### Khung giải thích: Quy tắc 3 bước chọn cấu trúc biểu diễn đồ thị trong thực tế (nên đọc chậm)
+
+1. **Bước 1 — Ước lượng mật độ $$\vert E \vert / \vert V \vert^2$$:** Hầu hết đồ thị ngoài đời thực đều thưa ($$\vert E \vert \ll \vert V \vert^2$$), nên **Danh sách kề** là lựa chọn mặc định cho 90% bài toán thuật toán (BFS, DFS, Dijkstra).
+2. **Bước 2 — Khi nào chọn Ma trận kề?** Chỉ chọn khi $$\vert V \vert$$ nhỏ (thường $$\le 5\,000$$), đồ thị dày, cần tra cứu `(u, v) in E` liên tục trong $$O(1)$$, hoặc cần chạy các thuật toán ma trận như Floyd–Warshall, PageRank, đếm đường đi bằng $$A^k$$.
+3. **Bước 3 — Tối ưu bộ nhớ đệm CPU (CSR):** Với đồ thị tĩnh khổng lồ (như lưới GraphCast hay đồ thị web), nén danh sách kề thành 2 mảng phẳng liên tiếp (*Compressed Sparse Row — CSR*) để vừa tiết kiệm RAM $$\Theta(V+E)$$ vừa thân thiện với CPU/GPU cache.
+
+$$\text{Ma trận kề: } \Theta(V^2) \text{ RAM, } O(1) \text{ tra cạnh} \quad\text{vs.}\quad \text{Danh sách kề: } \Theta(V+E) \text{ RAM, } O(\deg u) \text{ duyệt kề.}$$
 
 ## Bài tập
 
