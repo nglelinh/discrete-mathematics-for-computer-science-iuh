@@ -212,7 +212,7 @@ $$
 
 ### Từ tam giác Pascal ra $$\pi$$
 
-Tam giác Pascal chỉ gồm các phép cộng số nguyên, vậy mà từ nó ta lấy ra được $$\pi$$. Đoạn video dưới đây (4 phút 14 giây) đi từng bước: dựng tam giác, nhìn các đường chéo, lấy cách một số trên đường chéo thứ ba, ghép thành một chuỗi, chứng minh chuỗi đó bằng $$\pi$$ rồi xem nó hội tụ nhanh đến đâu.
+Tam giác Pascal chỉ gồm các phép cộng số nguyên, vậy mà từ nó ta lấy ra được $$\pi$$. Đoạn video dưới đây (4 phút 18 giây, có lời dẫn) đi từng bước: dựng tam giác, nhìn các đường chéo, lấy cách một số trên đường chéo thứ ba, ghép thành một chuỗi, chứng minh chuỗi đó bằng $$\pi$$ rồi xem nó hội tụ nhanh đến đâu.
 
 <div class="reel-video" style="text-align:center;margin:1.5rem 0;">
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/pascal-to-pi.mp4"></video>
