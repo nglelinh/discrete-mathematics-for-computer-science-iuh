@@ -28,18 +28,18 @@ Trong toán rời rạc, hàm là một quan hệ đặc biệt thỏa mãn tín
 ## Bản đồ kiến thức nền: Bốn trụ cột định nghĩa nên khái niệm Hàm số
 
 1. **Hàm số là một Quan hệ đặc biệt (Tính duy nhất & Tính toàn phần)**:
-   Một hàm $f: A \to B$ là một tập con của $A \times B$ thỏa mãn hai ràng buộc chặt: mỗi $a \in A$ phải có ảnh (*không bỏ sót đầu vào*) và ảnh đó phải là **duy nhất** (*một đầu vào không thể phân nhánh ra hai đầu ra*).
+   Một hàm $$f: A \to B$$ là một tập con của $$A \times B$$ thỏa mãn hai ràng buộc chặt: mỗi $$a \in A$$ phải có ảnh (*không bỏ sót đầu vào*) và ảnh đó phải là **duy nhất** (*một đầu vào không thể phân nhánh ra hai đầu ra*).
 
 2. **Phân biệt rạch ròi ba tập: Domain, Codomain và Range**:
-   - **Domain ($A$)**: tập toàn bộ đầu vào hợp lệ.
-   - **Codomain ($B$)**: tập các giá trị đầu ra *được khai báo* (kiểu trả về trong lập trình).
-   - **Range ($f(A) \subseteq B$)**: tập các giá trị đầu ra *thực sự đạt được*. Nhiều nhầm lẫn trong bài tập xuất phát từ việc đánh đồng Codomain với Range!
+   - **Domain ($$A$$)**: tập toàn bộ đầu vào hợp lệ.
+   - **Codomain ($$B$$)**: tập các giá trị đầu ra *được khai báo* (kiểu trả về trong lập trình).
+   - **Range ($$f(A) \subseteq B$$)**: tập các giá trị đầu ra *thực sự đạt được*. Nhiều nhầm lẫn trong bài tập xuất phát từ việc đánh đồng Codomain với Range!
 
 3. **Hàm toàn phần (Total) vs. Hàm bộ phận (Partial)**:
-   Hàm toàn phần xác định trên mọi $x \in A$; hàm bộ phận có thể không xác định tại một số đầu vào (ví dụ $f(x) = 1/x$ tại $x = 0$, hay hàm tra cứu khóa trong `dict` không tìm thấy key).
+   Hàm toàn phần xác định trên mọi $$x \in A$$; hàm bộ phận có thể không xác định tại một số đầu vào (ví dụ $$f(x) = 1/x$$ tại $$x = 0$$, hay hàm tra cứu khóa trong `dict` không tìm thấy key).
 
-4. **Số lượng hàm giữa hai tập hữu hạn ($|B|^{|A|}$)**:
-   Mỗi phần tử trong $|A|$ đầu vào có độc lập $|B|$ cách chọn đầu ra, nên có đúng $|B|^{|A|}$ hàm từ $A$ vào $B$—công thức giải thích vì sao có tới $2^{2^n}$ hàm Boolean $n$ biến.
+4. **Số lượng hàm giữa hai tập hữu hạn ($$\lvert B\rvert^{\lvert A\rvert}$$)**:
+   Mỗi phần tử trong số $$\lvert A\rvert$$ phần tử của $$A$$ có độc lập $$\lvert B\rvert$$ cách chọn đầu ra, nên có đúng $$\lvert B\rvert^{\lvert A\rvert}$$ hàm từ $$A$$ vào $$B$$—công thức giải thích vì sao có tới $$2^{2^n}$$ hàm Boolean $$n$$ biến.
 
 ## Mục tiêu học tập
 
@@ -209,23 +209,23 @@ class MockModel:
 
 ### Khung giải thích (nên đọc chậm): Phân biệt quan hệ với hàm số, tách bạch Domain–Codomain–Range và đếm số hàm trên tập nhỏ
 
-Xét hai tập hữu hạn $A = \{1, 2, 3\}$ và $B = \{a, b\}$.
+Xét hai tập hữu hạn $$A = \{1, 2, 3\}$$ và $$B = \{a, b\}$$.
 
-**Phần A — Kiểm tra 3 quan hệ $R \subseteq A \times B$ xem cái nào là hàm toàn phần $A \to B$**:
-- $R_1 = \{(1, a), (2, b), (3, a)\}$: **Là hàm số!** Mọi phần tử của $A$ đều xuất hiện đúng 1 lần ở tọa độ đầu (hai đầu vào `1` và `3` có thể trỏ chung về `a` mà không hề vi phạm định nghĩa hàm).
-- $R_2 = \{(1, a), (1, b), (2, a), (3, b)\}$: **Không phải hàm số**, vì đầu vào `1` bắn ra tới hai đầu ra khác nhau là `a` và `b`.
-- $R_3 = \{(1, a), (2, a)\}$: **Không phải hàm toàn phần trên $A$**, vì phần tử `3` bị bỏ rơi không có ảnh (đây là một *hàm bộ phận*).
+**Phần A — Kiểm tra 3 quan hệ $$R \subseteq A \times B$$ xem cái nào là hàm toàn phần $$A \to B$$**:
+- $$R_1 = \{(1, a), (2, b), (3, a)\}$$: **Là hàm số!** Mọi phần tử của $$A$$ đều xuất hiện đúng 1 lần ở tọa độ đầu (hai đầu vào `1` và `3` có thể trỏ chung về `a` mà không hề vi phạm định nghĩa hàm).
+- $$R_2 = \{(1, a), (1, b), (2, a), (3, b)\}$$: **Không phải hàm số**, vì đầu vào `1` bắn ra tới hai đầu ra khác nhau là `a` và `b`.
+- $$R_3 = \{(1, a), (2, a)\}$$: **Không phải hàm toàn phần trên $$A$$**, vì phần tử `3` bị bỏ rơi không có ảnh (đây là một *hàm bộ phận*).
 
 **Phần B — Phân biệt Codomain và Range trên hàm quen thuộc**:
-Với $f: \mathbb{Z} \to \mathbb{Z}$ định nghĩa bởi $f(x) = x^2$:
-- $\text{Domain} = \mathbb{Z}$ (mọi số nguyên).
-- $\text{Codomain} = \mathbb{Z}$ (tập đích khai báo).
-- $\text{Range} = \{0, 1, 4, 9, 16, \dots\}$ (chỉ gồm các số chính phương không âm — nhỏ hơn rất nhiều so với Codomain $\mathbb{Z}$!).
+Với $$f: \mathbb{Z} \to \mathbb{Z}$$ định nghĩa bởi $$f(x) = x^2$$:
+- $$\text{Domain} = \mathbb{Z}$$ (mọi số nguyên).
+- $$\text{Codomain} = \mathbb{Z}$$ (tập đích khai báo).
+- $$\text{Range} = \{0, 1, 4, 9, 16, \dots\}$$ (chỉ gồm các số chính phương không âm — nhỏ hơn rất nhiều so với Codomain $$\mathbb{Z}$$!).
 
-**Phần C — Đếm số hàm giữa $A = \{1, 2, 3\}$ ($|A|=3$) và $B = \{a, b\}$ ($|B|=2$)**:
-- Số hàm từ $A \to B$: mỗi phần tử $1, 2, 3$ có 2 lựa chọn $\implies 2 \times 2 \times 2 = 2^3 = \mathbf{8}$ hàm.
-- Số hàm từ $B \to A$: mỗi phần tử $a, b$ có 3 lựa chọn $\implies 3 \times 3 = 3^2 = \mathbf{9}$ hàm.
-Chú ý thứ tự cơ số và số mũ: luôn là $|\text{Đích}|^{|\text{Nguồn}|}$!
+**Phần C — Đếm số hàm giữa $$A = \{1, 2, 3\}$$ ($$\lvert A \rvert=3$$) và $$B = \{a, b\}$$ ($$\lvert B \rvert=2$$)**:
+- Số hàm từ $$A \to B$$: mỗi phần tử $$1, 2, 3$$ có 2 lựa chọn $$\implies 2 \times 2 \times 2 = 2^3 = \mathbf{8}$$ hàm.
+- Số hàm từ $$B \to A$$: mỗi phần tử $$a, b$$ có 3 lựa chọn $$\implies 3 \times 3 = 3^2 = \mathbf{9}$$ hàm.
+Chú ý thứ tự cơ số và số mũ: luôn là $$\lvert \text{Đích} \rvert^{\lvert \text{Nguồn} \rvert}$$!
 
 ## Ứng dụng trong Khoa học Máy tính
 
@@ -235,9 +235,9 @@ Chú ý thứ tự cơ số và số mũ: luôn là $|\text{Đích}|^{|\text{Ngu
 - **Lập trình hàm (Functional programming)**: ưu tiên dùng hàm thuần túy để dễ kiểm thử và lập luận.
 - **Học máy (Machine learning)**: mô hình học máy là hàm xấp xỉ ánh xạ từ đặc trưng đầu vào đến kết quả dự đoán.
 
-![Hash function — ánh xạ khóa → giá trị](/discrete-mathematics-for-computer-science-iuh/img/course/Database.svg)
+![Hàm băm — ánh xạ khóa vào ngăn bảng, có va chạm](/discrete-mathematics-for-computer-science-iuh/img/course/hash_function_mapping.svg)
 
-<p class="textbook-figure-caption" data-figure="6.6">Hàm băm và khóa cơ sở dữ liệu là những ví dụ thực tế về hàm — ánh xạ dữ liệu đầu vào sang giá trị xác định.</p>
+<p class="textbook-figure-caption" data-figure="6.6">Hàm băm h(k) = k mod 5 gán mỗi khóa vào đúng một ngăn trong bảng. Hai khóa MSSV 2101 và MSSV 2106 cùng rơi vào ngăn 1 (va chạm) — vẫn là hàm, nhưng không đơn ánh.</p>
 
 ### Minh hoạ tương tác
 

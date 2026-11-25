@@ -10,26 +10,26 @@ lang: en
 excerpt: "Trình bày chi tiết lượng từ toàn thể, tồn tại, duy nhất, lượng từ lồng nhau, quy tắc phủ định De Morgan và cách dịch câu tự nhiên sang logic vị từ."
 ---
 
-Hầu hết các định nghĩa tinh hoa nhất trong toán học và khoa học máy tính—từ định nghĩa giới hạn $\varepsilon\text{–}\delta$ trong giải tích, tính liên tục, cho đến ràng buộc khóa ngoại trong cơ sở dữ liệu hay thuật toán sắp xếp—đều được viết bằng **lượng từ lồng nhau (Nested Quantifiers)** như $\forall x\,\exists y\, P(x, y)$.
+Hầu hết các định nghĩa tinh hoa nhất trong toán học và khoa học máy tính—từ định nghĩa giới hạn $$\varepsilon\text{–}\delta$$ trong giải tích, tính liên tục, cho đến ràng buộc khóa ngoại trong cơ sở dữ liệu hay thuật toán sắp xếp—đều được viết bằng **lượng từ lồng nhau (Nested Quantifiers)** như $$\forall x\,\exists y\, P(x, y)$$.
 
 Hiểu đúng lượng từ lồng nhau giống như đọc đúng **vòng lặp `for` lồng nhau** trong mã nguồn: chỉ cần đảo sai thứ tự hai vòng lặp hoặc phủ định nhầm một dấu, toàn bộ ý nghĩa chương trình đảo ngược hoàn toàn.
 
 ## Bản đồ kiến thức nền: Bốn chìa khóa làm chủ Lượng từ Lồng nhau
 
 1. **Tương đương vòng lặp lồng nhau (`all` / `any`)**:
-   - $\forall x\, \exists y\, P(x, y)$ $\iff$ `all(any(P(x, y) for y in D) for x in D)` (giá trị $y$ được phép **phụ thuộc** vào $x$).
-   - $\exists y\, \forall x\, P(x, y)$ $\iff$ `any(all(P(x, y) for x in D) for y in D)` (phải chọn **một $y$ duy nhất dùng chung** cho mọi $x$).
+   - $$\forall x\, \exists y\, P(x, y)$$ $$\iff$$ `all(any(P(x, y) for y in D) for x in D)` (giá trị $$y$$ được phép **phụ thuộc** vào $$x$$).
+   - $$\exists y\, \forall x\, P(x, y)$$ $$\iff$$ `any(all(P(x, y) for x in D) for y in D)` (phải chọn **một $$y$$ duy nhất dùng chung** cho mọi $$x$$).
 
 2. **Luật De Morgan mở rộng cho Lượng từ**:
    Phủ định đi qua lượng từ sẽ **lật ngược loại lượng từ**:
    $$\neg(\forall x\, P(x)) \equiv \exists x\, \neg P(x), \qquad \neg(\exists x\, P(x)) \equiv \forall x\, \neg P(x).$$
-   Với lượng từ lồng nhau, dấu $\neg$ đi từ trái sang phải và lật lần lượt từng lượng từ một!
+   Với lượng từ lồng nhau, dấu $$\neg$$ đi từ trái sang phải và lật lần lượt từng lượng từ một!
 
-3. **Lượng từ tồn tại duy nhất ($\exists! x\, P(x)$)**:
-   Diễn tả *"có đúng một phần tử $x$ thỏa $P(x)$"*, được định nghĩa chặt bằng hai vế: **tồn tại** ($\exists x\, P(x)$) VÀ **duy nhất** ($\forall y\,(P(y) \to y = x)$).
+3. **Lượng từ tồn tại duy nhất ($$\exists! x\, P(x)$$)**:
+   Diễn tả *"có đúng một phần tử $$x$$ thỏa $$P(x)$$"*, được định nghĩa chặt bằng hai vế: **tồn tại** ($$\exists x\, P(x)$$) VÀ **duy nhất** ($$\forall y\,(P(y) \to y = x)$$).
 
-4. **Cách ghép điều kiện giới hạn miền với $\forall$ và $\exists$**:
-   Lỗi kinh điển nhất của sinh viên là dùng sai liên từ: với **$\forall$** phải dùng **kéo theo ($\to$)** ($\forall x\,(SV(x) \to HocToan(x))$), còn với **$\exists$** phải dùng **hội ($\land$)** ($\exists x\,(SV(x) \land Diem10(x))$).
+4. **Cách ghép điều kiện giới hạn miền với $$\forall$$ và $$\exists$$**:
+   Lỗi kinh điển nhất của sinh viên là dùng sai liên từ: với **$$\forall$$** phải dùng **kéo theo ($$\to$$)** ($$\forall x\,(SV(x) \to HocToan(x))$$), còn với **$$\exists$$** phải dùng **hội ($$\land$$)** ($$\exists x\,(SV(x) \land Diem10(x))$$).
 
 ## Mục tiêu học tập
 
@@ -127,20 +127,20 @@ SELECT * FROM students WHERE gpa >= 3.5;      -- Có thể đúng/sai
 
 ### Khung giải thích (nên đọc chậm): Phủ định từng bước một phát biểu lượng từ lồng nhau 3 tầng
 
-Hãy tự tay phủ định mệnh đề: *"Mọi sinh viên đều có ít nhất một môn học mà họ đạt điểm tối đa"* trên miền sinh viên $S$ và miền môn học $C$:
+Hãy tự tay phủ định mệnh đề: *"Mọi sinh viên đều có ít nhất một môn học mà họ đạt điểm tối đa"* trên miền sinh viên $$S$$ và miền môn học $$C$$:
 $$A \equiv \forall s \in S,\; \exists c \in C,\; \text{MaxScore}(s, c).$$
 
-Ta đẩy dấu $\neg$ lần lượt từ ngoài vào trong từng tầng một:
-1. **Đẩy $\neg$ qua $\forall s \in S$** (lật thành $\exists s \in S$):
+Ta đẩy dấu $$\neg$$ lần lượt từ ngoài vào trong từng tầng một:
+1. **Đẩy $$\neg$$ qua $$\forall s \in S$$** (lật thành $$\exists s \in S$$):
    $$\neg A \equiv \exists s \in S,\; \neg\big(\exists c \in C,\; \text{MaxScore}(s, c)\big).$$
-2. **Đẩy $\neg$ qua $\exists c \in C$** (lật thành $\forall c \in C$):
+2. **Đẩy $$\neg$$ qua $$\exists c \in C$$** (lật thành $$\forall c \in C$$):
    $$\neg A \equiv \exists s \in S,\; \forall c \in C,\; \neg \text{MaxScore}(s, c).$$
 
 **Dịch ngược sang tiếng Việt tự nhiên**: *"Tồn tại ít nhất một sinh viên mà ở mọi môn học họ đều không đạt điểm tối đa."*
 
-**Kiểm chứng bằng ma trận $2 \times 2$** (`1` = đạt điểm tối đa, `0` = không đạt):
-- Bảng 1: `An: [1, 0]`, `Bình: [0, 1]` → Mỗi hàng đều có ít nhất một số `1` ⇒ $A = \mathbf{\text{True}}$, $\neg A = \mathbf{\text{False}}$.
-- Bảng 2: `An: [1, 1]`, `Bình: [0, 0]` → Hàng của Bình toàn số `0` (nhân chứng $s = \text{Bình}$ thỏa $\forall c, \neg\text{MaxScore}$) ⇒ $A = \mathbf{\text{False}}$, $\neg A = \mathbf{\text{True}}$.
+**Kiểm chứng bằng ma trận $$2 \times 2$$** (`1` = đạt điểm tối đa, `0` = không đạt):
+- Bảng 1: `An: [1, 0]`, `Bình: [0, 1]` → Mỗi hàng đều có ít nhất một số `1` ⇒ $$A = \mathbf{\text{True}}$$, $$\neg A = \mathbf{\text{False}}$$.
+- Bảng 2: `An: [1, 1]`, `Bình: [0, 0]` → Hàng của Bình toàn số `0` (nhân chứng $$s = \text{Bình}$$ thỏa $$\forall c, \neg\text{MaxScore}$$) ⇒ $$A = \mathbf{\text{False}}$$, $$\neg A = \mathbf{\text{True}}$$.
 
 ## Lượng từ duy nhất
 

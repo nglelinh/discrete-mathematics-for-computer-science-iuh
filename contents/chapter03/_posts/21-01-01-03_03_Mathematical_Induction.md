@@ -16,15 +16,15 @@ excerpt: "Giới thiệu nguyên lý quy nạp toán học, quy trình hai bư�
 
 <p class="textbook-figure-caption" data-figure="3.11">Hiệu ứng domino — nếu quân đầu tiên ngã và mỗi quân ngã đều làm quân kế tiếp ngã, thì toàn bộ hàng domino sẽ ngã.</p>
 
-Làm sao một lập trình viên chứng minh một hàm đệ quy như `merge_sort(arr)` hoạt động đúng với **mọi** kích thước mảng $n = 1, 2, 3, \dots, 10^9$ mà không thể chạy thử vô hạn lần? Câu trả lời chính là **Quy nạp Toán học (Mathematical Induction)**—hình ảnh kinh điển của hàng quân domino vô hạn: chỉ cần xô đổ quân đầu tiên và đảm bảo hễ quân thứ $k$ đổ thì quân thứ $k+1$ chắc chắn đổ theo, toàn bộ hàng vô hạn sẽ đổ rạp!
+Làm sao một lập trình viên chứng minh một hàm đệ quy như `merge_sort(arr)` hoạt động đúng với **mọi** kích thước mảng $$n = 1, 2, 3, \dots, 10^9$$ mà không thể chạy thử vô hạn lần? Câu trả lời chính là **Quy nạp Toán học (Mathematical Induction)**—hình ảnh kinh điển của hàng quân domino vô hạn: chỉ cần xô đổ quân đầu tiên và đảm bảo hễ quân thứ $$k$$ đổ thì quân thứ $$k+1$$ chắc chắn đổ theo, toàn bộ hàng vô hạn sẽ đổ rạp!
 
 ## Bản đồ kiến thức nền: Bốn trụ cột của Quy nạp Toán học & Đệ quy
 
 1. **Quy nạp yếu (Weak Induction)**:
-   Để chứng minh $\forall n \ge n_0,\; P(n)$: chứng minh **Bước cơ sở** $P(n_0)$, sau đó chứng minh **Bước quy nạp** $P(k) \to P(k+1)$ với mọi $k \ge n_0$.
+   Để chứng minh $$\forall n \ge n_0,\; P(n)$$: chứng minh **Bước cơ sở** $$P(n_0)$$, sau đó chứng minh **Bước quy nạp** $$P(k) \to P(k+1)$$ với mọi $$k \ge n_0$$.
 
 2. **Quy nạp mạnh (Strong Induction)**:
-   Giả thiết quy nạp cho phép dùng toàn bộ $P(n_0), P(n_0+1), \dots, P(k)$ để chứng minh $P(k+1)$. Cực kỳ thiết yếu cho định lý phân tích thừa số nguyên tố, dãy Fibonacci và thuật toán chia để trị (như Merge Sort gọi đệ quy trên kích thước $n/2$ chứ không phải $n-1$!).
+   Giả thiết quy nạp cho phép dùng toàn bộ $$P(n_0), P(n_0+1), \dots, P(k)$$ để chứng minh $$P(k+1)$$. Cực kỳ thiết yếu cho định lý phân tích thừa số nguyên tố, dãy Fibonacci và thuật toán chia để trị (như Merge Sort gọi đệ quy trên kích thước $$n/2$$ chứ không phải $$n-1$$!).
 
 3. **Quy nạp cấu trúc (Structural Induction)**:
    Mở rộng quy nạp từ số tự nhiên sang các cấu trúc dữ liệu đệ quy trong Khoa học Máy tính: danh sách liên kết, cây nhị phân, cây cú pháp trừu tượng (AST) và công thức logic.
@@ -144,21 +144,21 @@ Khi viết lời giải, nên tuân theo cấu trúc sau:
 4. Chứng minh $$P(k+1)$$ đúng.
 5. Kết luận theo nguyên lý quy nạp toán học.
 
-### Khung giải thích (nên đọc chậm): Chạy tay một chứng minh quy nạp bất đẳng thức $2^n > n^2$ (với mọi $n \ge 5$)
+### Khung giải thích (nên đọc chậm): Chạy tay một chứng minh quy nạp bất đẳng thức $$2^n > n^2$$ (với mọi $$n \ge 5$$)
 
-Chú ý điểm khởi đầu không phải lúc nào cũng là $n = 1$! Với $n = 2, 3, 4$ ta thấy $2^4 = 16 \not> 16 = 4^2$. Mệnh đề chỉ bắt đầu đúng từ $n_0 = 5$:
+Chú ý điểm khởi đầu không phải lúc nào cũng là $$n = 1$$! Với $$n = 2, 3, 4$$ ta thấy $$2^4 = 16 \not> 16 = 4^2$$. Mệnh đề chỉ bắt đầu đúng từ $$n_0 = 5$$:
 
-1. **Bước cơ sở ($n = 5$)**:
-   - Vế trái: $2^5 = 32$. Vế phải: $5^2 = 25$. Vì $32 > 25$, $P(5)$ **Đúng**!
-2. **Giả thiết quy nạp**: Giả sử với một số nguyên $k \ge 5$ nào đó, ta đã có $2^k > k^2$.
-3. **Bước quy nạp (chứng minh $2^{k+1} > (k+1)^2$)**:
+1. **Bước cơ sở ($$n = 5$$)**:
+   - Vế trái: $$2^5 = 32$$. Vế phải: $$5^2 = 25$$. Vì $$32 > 25$$, $$P(5)$$ **Đúng**!
+2. **Giả thiết quy nạp**: Giả sử với một số nguyên $$k \ge 5$$ nào đó, ta đã có $$2^k > k^2$$.
+3. **Bước quy nạp (chứng minh $$2^{k+1} > (k+1)^2$$)**:
    Xuất phát từ vế trái và dùng giả thiết quy nạp:
    $$2^{k+1} = 2 \cdot 2^k > 2k^2 = k^2 + k^2.$$
-   Ta cần so sánh $k^2 + k^2$ với $(k+1)^2 = k^2 + 2k + 1$, tức là chỉ cần kiểm tra $k^2 > 2k + 1$ với $k \ge 5$:
+   Ta cần so sánh $$k^2 + k^2$$ với $$(k+1)^2 = k^2 + 2k + 1$$, tức là chỉ cần kiểm tra $$k^2 > 2k + 1$$ với $$k \ge 5$$:
    $$k^2 - 2k - 1 = (k - 1)^2 - 2 \ge (5 - 1)^2 - 2 = 16 - 2 = 14 > 0!$$
-   Do đó $k^2 > 2k + 1$, suy ra:
+   Do đó $$k^2 > 2k + 1$$, suy ra:
    $$2^{k+1} > k^2 + k^2 > k^2 + 2k + 1 = (k+1)^2.$$
-4. **Kết luận**: Theo nguyên lý quy nạp toán học, $2^n > n^2$ đúng với mọi số nguyên $n \ge 5$ (giải thích trực tiếp vì sao thuật toán $O(2^n)$ luôn chậm hơn $O(n^2)$ ngay từ kích thước rất nhỏ!).
+4. **Kết luận**: Theo nguyên lý quy nạp toán học, $$2^n > n^2$$ đúng với mọi số nguyên $$n \ge 5$$ (giải thích trực tiếp vì sao thuật toán $$O(2^n)$$ luôn chậm hơn $$O(n^2)$$ ngay từ kích thước rất nhỏ!).
 
 ## Sai lầm thường gặp khi học quy nạp
 

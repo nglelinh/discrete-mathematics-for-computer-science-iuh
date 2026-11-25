@@ -72,7 +72,7 @@ Với hai tập hữu hạn $$A,B$$:
 
 <div class="textbook-equation" markdown="1">
 $$
-|A\cup B|=|A|+|B|-|A\cap B|.
+\lvert A\cup B \rvert=\lvert A \rvert+\lvert B \rvert-\lvert A\cap B \rvert.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
@@ -80,7 +80,7 @@ Với ba tập hữu hạn $$A,B,C$$:
 
 <div class="textbook-equation" markdown="1">
 $$
-|A\cup B\cup C|=|A|+|B|+|C|-|A\cap B|-|A\cap C|-|B\cap C|+|A\cap B\cap C|.
+\lvert A\cup B\cup C \rvert=\lvert A \rvert+\lvert B \rvert+\lvert C \rvert-\lvert A\cap B \rvert-\lvert A\cap C \rvert-\lvert B\cap C \rvert+\lvert A\cap B\cap C \rvert.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
@@ -94,7 +94,7 @@ $$
 <div class="textbook-equation" markdown="1">
 $$
 \left|\bigcup_{i=1}^{n}A_i\right|
-=\sum_{\emptyset\neq I\subseteq\{1,\ldots,n\}}(-1)^{|I|+1}\left|\bigcap_{i\in I}A_i\right|.
+=\sum_{\emptyset\neq I\subseteq\{1,\ldots,n\}}(-1)^{\lvert I \rvert+1}\left|\bigcap_{i\in I}A_i\right|.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
@@ -142,7 +142,7 @@ Gọi $$A$$ là tập các số chia hết cho 2 và $$B$$ là tập các số c
 
 <div class="textbook-equation" markdown="1">
 $$
-|A|=50,\quad |B|=20,\quad |A\cap B|=10.
+\lvert A \rvert=50,\quad \lvert B \rvert=20,\quad \lvert A\cap B \rvert=10.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
@@ -150,7 +150,7 @@ Suy ra:
 
 <div class="textbook-equation" markdown="1">
 $$
-|A\cup B|=50+20-10=60.
+\lvert A\cup B \rvert=50+20-10=60.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>

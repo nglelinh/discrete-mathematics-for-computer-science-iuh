@@ -25,17 +25,17 @@ Mọi đối tượng trong toán học rời rạc—từ đồ thị, quan h�
 ## Bản đồ kiến thức nền: Bốn khái niệm cốt lõi mở đầu Lý thuyết Tập hợp
 
 1. **Hai đặc tính bất biến: Không thứ tự & Không trùng lặp**:
-   $\{1, 2, 3\} = \{3, 1, 2\} = \{1, 1, 2, 3\}$. Nếu cần giữ thứ tự ta dùng **bộ (tuple)**; nếu cần giữ số lần lặp ta dùng **đa tập (multiset / bag)**.
+   $$\{1, 2, 3\} = \{3, 1, 2\} = \{1, 1, 2, 3\}$$. Nếu cần giữ thứ tự ta dùng **bộ (tuple)**; nếu cần giữ số lần lặp ta dùng **đa tập (multiset / bag)**.
 
 2. **Hai cách biểu diễn tập hợp**:
-   - **Liệt kê (Roster)**: $\{2, 4, 6, 8\}$.
-   - **Chỉ ra tính chất đặc trưng (Set-builder)**: $\{x \in \mathbb{Z} \mid x \text{ chẵn và } 1 \le x \le 8\}$ — chính là nguyên mẫu toán học của *list/set comprehension* trong Python!
+   - **Liệt kê (Roster)**: $$\{2, 4, 6, 8\}$$.
+   - **Chỉ ra tính chất đặc trưng (Set-builder)**: $$\{x \in \mathbb{Z} \mid x \text{ chẵn và } 1 \le x \le 8\}$$ — chính là nguyên mẫu toán học của *list/set comprehension* trong Python!
 
-3. **Phân biệt rạch ròi Thuộc ($\in$) và Tập con ($\subseteq$)**:
-   Đây là bẫy kinh điển nhất: $a \in A$ kiểm tra $a$ có phải là **một phần tử** nằm trong $A$ hay không; còn $B \subseteq A$ kiểm tra mọi phần tử của $B$ có đều thuộc $A$ hay không ($\forall x\,(x \in B \to x \in A)$). Đặc biệt, tập rỗng $\emptyset$ là tập con của **mọi** tập hợp ($\emptyset \subseteq A$ luôn đúng rỗng!).
+3. **Phân biệt rạch ròi Thuộc ($$\in$$) và Tập con ($$\subseteq$$)**:
+   Đây là bẫy kinh điển nhất: $$a \in A$$ kiểm tra $$a$$ có phải là **một phần tử** nằm trong $$A$$ hay không; còn $$B \subseteq A$$ kiểm tra mọi phần tử của $$B$$ có đều thuộc $$A$$ hay không ($$\forall x\,(x \in B \to x \in A)$$). Đặc biệt, tập rỗng $$\emptyset$$ là tập con của **mọi** tập hợp ($$\emptyset \subseteq A$$ luôn đúng rỗng!).
 
-4. **Tập lũy thừa (Power Set $\mathcal{P}(A)$) & Mảng bit (Bitmask)**:
-   $\mathcal{P}(A)$ là tập chứa *tất cả* các tập con của $A$. Nếu $\vert A \vert = n$ thì $\vert \mathcal{P}(A) \vert = 2^n$—mỗi tập con tương ứng 1–1 với một chuỗi nhị phân $n$ bit, nền tảng của kỹ thuật **Bitmask DP** trong thuật toán!
+4. **Tập lũy thừa (Power Set $$\mathcal{P}(A)$$) & Mảng bit (Bitmask)**:
+   $$\mathcal{P}(A)$$ là tập chứa *tất cả* các tập con của $$A$$. Nếu $$\vert A \vert = n$$ thì $$\vert \mathcal{P}(A) \vert = 2^n$$—mỗi tập con tương ứng 1–1 với một chuỗi nhị phân $$n$$ bit, nền tảng của kỹ thuật **Bitmask DP** trong thuật toán!
 
 ## Mục tiêu học tập
 
@@ -286,24 +286,24 @@ $$\text{pow}(\text{pow}(\{1\})) = \{\emptyset, \{\emptyset\}, \{\{1\}\}, \{\empt
 
 </details>
 
-### Khung giải thích (nên đọc chậm): Ánh xạ 1–1 giữa Tập lũy thừa $\mathcal{P}(\{a, b, c\})$ và 8 chuỗi nhị phân 3-bit
+### Khung giải thích (nên đọc chậm): Ánh xạ 1–1 giữa Tập lũy thừa $$\mathcal{P}(\{a, b, c\})$$ và 8 chuỗi nhị phân 3-bit
 
-Với tập $A = \{a, b, c\}$ có $n = 3$ phần tử, mỗi phần tử có đúng 2 lựa chọn độc lập (`1` = chọn vào tập con, `0` = không chọn), tạo ra đúng $2^3 = 8$ tập con:
+Với tập $$A = \{a, b, c\}$$ có $$n = 3$$ phần tử, mỗi phần tử có đúng 2 lựa chọn độc lập (`1` = chọn vào tập con, `0` = không chọn), tạo ra đúng $$2^3 = 8$$ tập con:
 
-| Bitmask `(a, b, c)` | Giá trị thập phân | Tập con tương ứng trong $\mathcal{P}(A)$ | Số phần tử |
+| Bitmask `(a, b, c)` | Giá trị thập phân | Tập con tương ứng trong $$\mathcal{P}(A)$$ | Số phần tử |
 | :---: | :---: | :--- | :---: |
-| `000` | `0` | $\emptyset$ | `0` |
-| `001` | `1` | $\{c\}$ | `1` |
-| `010` | `2` | $\{b\}$ | `1` |
-| `011` | `3` | $\{b, c\}$ | `2` |
-| `100` | `4` | $\{a\}$ | `1` |
-| `101` | `5` | $\{a, c\}$ | `2` |
-| `110` | `6` | $\{a, b\}$ | `2` |
-| `111` | `7` | $\{a, b, c\}$ | `3` |
+| `000` | `0` | $$\emptyset$$ | `0` |
+| `001` | `1` | $$\{c\}$$ | `1` |
+| `010` | `2` | $$\{b\}$$ | `1` |
+| `011` | `3` | $$\{b, c\}$$ | `2` |
+| `100` | `4` | $$\{a\}$$ | `1` |
+| `101` | `5` | $$\{a, c\}$$ | `2` |
+| `110` | `6` | $$\{a, b\}$$ | `2` |
+| `111` | `7` | $$\{a, b, c\}$$ | `3` |
 
-**Kiểm tra nhanh cái bẫy $\in$ vs. $\subseteq$ trên chính bảng trên**:
-- $\{a\} \subseteq A$ là **Đúng**, nhưng $\{a\} \in A$ là **Sai** (vì phần tử của $A$ là $a$, không phải $\{a\}$).
-- Ngược lại, $\{a\} \in \mathcal{P}(A)$ là **Đúng** (vì mỗi phần tử của $\mathcal{P}(A)$ là một tập con của $A$)!
+**Kiểm tra nhanh cái bẫy $$\in$$ vs. $$\subseteq$$ trên chính bảng trên**:
+- $$\{a\} \subseteq A$$ là **Đúng**, nhưng $$\{a\} \in A$$ là **Sai** (vì phần tử của $$A$$ là $$a$$, không phải $$\{a\}$$).
+- Ngược lại, $$\{a\} \in \mathcal{P}(A)$$ là **Đúng** (vì mỗi phần tử của $$\mathcal{P}(A)$$ là một tập con của $$A$$)!
 
 ## Định lý: Số tập con của một tập hợp hữu hạn
 

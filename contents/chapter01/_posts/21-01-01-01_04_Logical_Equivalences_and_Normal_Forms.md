@@ -10,19 +10,19 @@ lang: en
 excerpt: "Trình bày khái niệm tương đương logic, các luật biến đổi biểu thức mệnh đề, cây biểu thức Boolean và hai dạng chuẩn tắc DNF, CNF."
 ---
 
-Khi một hàm kiểm tra điều kiện có 12 biến Boolean, bảng chân trị phình lên $2^{12} = 4.096$ dòng—quá lớn để kiểm tra bằng tay và quá chậm để tối ưu mạch phần cứng. Thay vào đó, các nhà toán học và trình biên dịch dùng **đại số biến đổi tương đương** (như Luật De Morgan, phân phối, hấp thụ) để rút gọn biểu thức và đưa mọi công thức về hai dạng chuẩn vàng: **CNF (Conjunctive Normal Form)** và **DNF (Disjunctive Normal Form)**.
+Khi một hàm kiểm tra điều kiện có 12 biến Boolean, bảng chân trị phình lên $$2^{12} = 4.096$$ dòng—quá lớn để kiểm tra bằng tay và quá chậm để tối ưu mạch phần cứng. Thay vào đó, các nhà toán học và trình biên dịch dùng **đại số biến đổi tương đương** (như Luật De Morgan, phân phối, hấp thụ) để rút gọn biểu thức và đưa mọi công thức về hai dạng chuẩn vàng: **CNF (Conjunctive Normal Form)** và **DNF (Disjunctive Normal Form)**.
 
 ## Bản đồ kiến thức nền: Bốn trụ cột của Tương đương Logic & Dạng chuẩn
 
 1. **Hệ thống Luật Tương đương (Đại số Boole)**:
-   Giống như các hằng đẳng thức đại số quen thuộc, bộ luật giao hoán, kết hợp, phân phối, hấp thụ ($p \lor (p \land q) \equiv p$), và đặc biệt **Luật De Morgan** ($\neg(p \land q) \equiv \neg p \lor \neg q$) cho phép biến đổi biểu thức mà bảo toàn tuyệt đối ngữ nghĩa.
+   Giống như các hằng đẳng thức đại số quen thuộc, bộ luật giao hoán, kết hợp, phân phối, hấp thụ ($$p \lor (p \land q) \equiv p$$), và đặc biệt **Luật De Morgan** ($$\neg(p \land q) \equiv \neg p \lor \neg q$$) cho phép biến đổi biểu thức mà bảo toàn tuyệt đối ngữ nghĩa.
 
 2. **Khử phép kéo theo & tương đương**:
-   Mọi công thức logic đều quy về được chỉ 3 phép $\{\neg, \land, \lor\}$ nhờ hai phép thay thế nền tảng: $p \to q \equiv \neg p \lor q$ và $p \leftrightarrow q \equiv (\neg p \lor q) \land (\neg q \lor p)$.
+   Mọi công thức logic đều quy về được chỉ 3 phép $$\{\neg, \land, \lor\}$$ nhờ hai phép thay thế nền tảng: $$p \to q \equiv \neg p \lor q$$ và $$p \leftrightarrow q \equiv (\neg p \lor q) \land (\neg q \lor p)$$.
 
 3. **Dạng chuẩn hội (CNF) và Dạng chuẩn tuyển (DNF)**:
-   - **CNF** là phép HỘI ($\land$) của các mệnh đề tuyển (*clauses*): $(l_1 \lor l_2) \land (l_3 \lor \neg l_4)$. Đây là đầu vào tiêu chuẩn bắt buộc của mọi **SAT Solver**.
-   - **DNF** là phép TUYỂN ($\lor$) của các mệnh đề hội: $(l_1 \land l_2) \lor (\neg l_1 \land l_3)$. Rất trực quan để liệt kê các kịch bản làm biểu thức Đúng (ví dụ trong bảng chân trị hoặc luật kinh doanh).
+   - **CNF** là phép HỘI ($$\land$$) của các mệnh đề tuyển (*clauses*): $$(l_1 \lor l_2) \land (l_3 \lor \neg l_4)$$. Đây là đầu vào tiêu chuẩn bắt buộc của mọi **SAT Solver**.
+   - **DNF** là phép TUYỂN ($$\lor$$) của các mệnh đề hội: $$(l_1 \land l_2) \lor (\neg l_1 \land l_3)$$. Rất trực quan để liệt kê các kịch bản làm biểu thức Đúng (ví dụ trong bảng chân trị hoặc luật kinh doanh).
 
 4. **Ứng dụng tối ưu hóa mã nguồn & vi mạch**:
    Trình biên dịch (LLVM/GCC) và công cụ tổng hợp mạch (FPGA/ASIC) áp dụng chính các luật rút gọn này để loại bỏ cổng logic thừa, giảm diện tích silicon và tiết kiệm điện năng.
@@ -100,24 +100,24 @@ Hai cột cuối giống nhau ở mọi hàng, do đó $$p \to q \equiv \neg p \
 
 Các luật **De Morgan**, **phân phối** và **bù** là những luật được dùng thường xuyên nhất khi rút gọn biểu thức.
 
-### Khung giải thích (nên đọc chậm): Biến đổi cầm tay chỉ việc công thức $(p \to q) \to r$ về đúng dạng chuẩn CNF
+### Khung giải thích (nên đọc chậm): Biến đổi cầm tay chỉ việc công thức $$(p \to q) \to r$$ về đúng dạng chuẩn CNF
 
-Hãy thực hiện từng bước đại số chuẩn mực để chuyển $F = (p \to q) \to r$ sang dạng chuẩn hội (CNF), không bỏ qua bước trung gian nào:
+Hãy thực hiện từng bước đại số chuẩn mực để chuyển $$F = (p \to q) \to r$$ sang dạng chuẩn hội (CNF), không bỏ qua bước trung gian nào:
 
-1. **Bước 1 — Khử phép kéo theo bên trong** ($A \to B \equiv \neg A \lor B$):
+1. **Bước 1 — Khử phép kéo theo bên trong** ($$A \to B \equiv \neg A \lor B$$):
    $$F \equiv (\neg p \lor q) \to r.$$
 2. **Bước 2 — Khử phép kéo theo bên ngoài**:
    $$F \equiv \neg(\neg p \lor q) \lor r.$$
 3. **Bước 3 — Đẩy dấu phủ định vào sát biến bằng Luật De Morgan & Phủ định kép**:
    $$F \equiv (\neg(\neg p) \land \neg q) \lor r \equiv (p \land \neg q) \lor r.$$
-4. **Bước 4 — Áp dụng Luật Phân phối của $\lor$ đối với $\land$** ($(A \land B) \lor C \equiv (A \lor C) \land (B \lor C)$):
+4. **Bước 4 — Áp dụng Luật Phân phối của $$\lor$$ đối với $$\land$$** ($$(A \land B) \lor C \equiv (A \lor C) \land (B \lor C)$$):
    $$F \equiv (p \lor r) \land (\neg q \lor r).$$
 
 **Kiểm chứng lại bằng tay**:
-- Công thức kết quả $(p \lor r) \land (\neg q \lor r)$ có đúng 2 mệnh đề tuyển nối nhau bằng $\land$ → **chuẩn CNF 100%**!
-- Thử kiểm tra nhanh tại tổ hợp $(p, q, r) = (\text{F}, \text{T}, \text{F})$:
-  - Biểu thức gốc: $(\text{F} \to \text{T}) \to \text{F} = \text{T} \to \text{F} = \mathbf{\text{F}}$.
-  - Dạng CNF: $(\text{F} \lor \text{F}) \land (\text{F} \lor \text{F}) = \text{F} \land \text{F} = \mathbf{\text{F}}$. Khớp tuyệt đối!
+- Công thức kết quả $$(p \lor r) \land (\neg q \lor r)$$ có đúng 2 mệnh đề tuyển nối nhau bằng $$\land$$ → **chuẩn CNF 100%**!
+- Thử kiểm tra nhanh tại tổ hợp $$(p, q, r) = (\text{F}, \text{T}, \text{F})$$:
+  - Biểu thức gốc: $$(\text{F} \to \text{T}) \to \text{F} = \text{T} \to \text{F} = \mathbf{\text{F}}$$.
+  - Dạng CNF: $$(\text{F} \lor \text{F}) \land (\text{F} \lor \text{F}) = \text{F} \land \text{F} = \mathbf{\text{F}}$$. Khớp tuyệt đối!
 
 ## Công thức Boolean dưới dạng cây
 

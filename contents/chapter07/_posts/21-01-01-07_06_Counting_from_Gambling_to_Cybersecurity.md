@@ -55,7 +55,7 @@ Một mật khẩu dài $$n$$ ký tự, trong đó mỗi vị trí được ch�
 
 <div class="textbook-equation" markdown="1">
 $$
-|\text{Passwords}| = a^n.
+\lvert \text{Passwords} \rvert = a^n.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>

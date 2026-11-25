@@ -113,7 +113,7 @@ Ngoài hướng và trọng số, đồ thị còn được phân loại theo c�
 **Ví dụ 2.** Số cạnh của $$K_5$$ là:
 
 $$
-|E(K_5)| = \binom{5}{2} = 10.
+\lvert E(K_5) \rvert = \binom{5}{2} = 10.
 $$
 
 Trong đồ thị vô hướng đơn $$K_n$$, mỗi đỉnh nối với tất cả $$n-1$$ đỉnh còn lại, nên $$\deg(v) = n-1$$ với mọi đỉnh $$v$$.
@@ -138,7 +138,7 @@ Trong đồ thị **có hướng**:
 Trên đồ thị có hướng, ta luôn có hệ thức sau từ định nghĩa tập cạnh:
 
 $$
-\sum_{v \in V} \deg^+(v) = \sum_{v \in V} \deg^-(v) = |E|,
+\sum_{v \in V} \deg^+(v) = \sum_{v \in V} \deg^-(v) = \lvert E \rvert,
 $$
 
 vì mỗi cạnh có hướng đóng góp đúng 1 vào tổng bậc ra và đúng 1 vào tổng bậc vào.
@@ -150,7 +150,7 @@ vì mỗi cạnh có hướng đóng góp đúng 1 vào tổng bậc ra và đú
 **Định lý** (Handshaking Lemma). Với mọi đồ thị vô hướng $$G = (V,E)$$ (đồ thị đơn hoặc đa đồ thị; mỗi **khuyên** được tính **hai lần** vào bậc của đỉnh chứa nó), ta có:
 
 $$
-\sum_{v \in V} \deg(v) = 2|E|.
+\sum_{v \in V} \deg(v) = 2\lvert E \rvert.
 $$
 
 **Hệ quả.** Số đỉnh có bậc lẻ trong một đồ thị vô hướng luôn là một **số chẵn**.
@@ -168,7 +168,7 @@ Hệ quả suy ra từ tính chất số học: tổng các số nguyên là s�
 **Ví dụ 3.** Đồ thị ở Hình 12.1 có bậc các đỉnh lần lượt là $$2,3,2,2,3$$. Tổng bậc bằng:
 
 $$
-2+3+2+2+3 = 12 = 2|E| \implies |E| = 6,
+2+3+2+2+3 = 12 = 2\lvert E \rvert \implies \lvert E \rvert = 6,
 $$
 
 khớp với số cạnh đếm trực tiếp trên hình.
@@ -260,7 +260,7 @@ Một đồ thị vô hướng có 8 đỉnh, mỗi đỉnh đều có bậc 3. 
 Theo định lý bắt tay:
 
 $$
-\sum \deg(v) = 8 \cdot 3 = 24 = 2|E| \implies |E| = 12.
+\sum \deg(v) = 8 \cdot 3 = 24 = 2\lvert E \rvert \implies \lvert E \rvert = 12.
 $$
 
 </details>
@@ -273,7 +273,7 @@ $$
 <summary>Đáp án</summary>
 
 $$
-|E| = \binom{5}{2} = 10, \qquad \deg(v) = 4 \text{ với mọi đỉnh}.
+\lvert E \rvert = \binom{5}{2} = 10, \qquad \deg(v) = 4 \text{ với mọi đỉnh}.
 $$
 
 Kiểm tra lại bằng định lý bắt tay: $$5 \cdot 4 = 20 = 2 \cdot 10$$.

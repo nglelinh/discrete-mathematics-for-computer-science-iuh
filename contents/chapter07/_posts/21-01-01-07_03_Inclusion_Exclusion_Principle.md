@@ -10,7 +10,7 @@ excerpt: "Nguyên lý bù trừ (bao hàm–loại trừ) giúp đếm chính x�
 ---
 
 
-Khảo sát một lớp 35 sinh viên cho thấy 25 bạn biết Python và 20 bạn biết SQL—nếu vội vàng cộng $25 + 20 = 45$, bạn đã vô tình đếm trùng hai lần những bạn giỏi cả hai ngôn ngữ! Khi bài toán có ba, bốn hay $n$ điều kiện chồng lấn chằng chịt lên nhau, **Nguyên lý Bù trừ (Inclusion–Exclusion Principle)** cung cấp một công thức dấu đan xen (`+`, `−`, `+`, `−`) chính xác tuyệt đối để triệt tiêu mọi phần đếm lặp.
+Khảo sát một lớp 35 sinh viên cho thấy 25 bạn biết Python và 20 bạn biết SQL—nếu vội vàng cộng $$25 + 20 = 45$$, bạn đã vô tình đếm trùng hai lần những bạn giỏi cả hai ngôn ngữ! Khi bài toán có ba, bốn hay $$n$$ điều kiện chồng lấn chằng chịt lên nhau, **Nguyên lý Bù trừ (Inclusion–Exclusion Principle)** cung cấp một công thức dấu đan xen (`+`, `−`, `+`, `−`) chính xác tuyệt đối để triệt tiêu mọi phần đếm lặp.
 
 Ở mục trước, chúng ta đã học hoán vị và tổ hợp. Mục này giới thiệu **nguyên lý bù trừ** (hay bao hàm–loại trừ) — công cụ khử đếm trùng có hệ thống khi nhiều điều kiện chồng lấn lên nhau.
 
@@ -19,18 +19,18 @@ Khi một bài toán có nhiều điều kiện giao nhau, việc đếm theo tr
 ## Bản đồ kiến thức nền: Bốn trụ cột làm chủ Nguyên lý Bù trừ
 
 1. **Cơ chế khử đếm trùng bằng dấu đan xen**:
-   Muốn tính lực lượng hợp $|A_1 \cup \dots \cup A_n|$: **cộng** tổng kích thước các tập đơn, **trừ** tổng các giao đôi, **cộng lại** tổng các giao ba, cứ thế đan xen dấu $(-1)^{k-1}$ cho đến giao của cả $n$ tập.
+   Muốn tính lực lượng hợp $$\lvert A_1 \cup \dots \cup A_n \rvert$$: **cộng** tổng kích thước các tập đơn, **trừ** tổng các giao đôi, **cộng lại** tổng các giao ba, cứ thế đan xen dấu $$(-1)^{k-1}$$ cho đến giao của cả $$n$$ tập.
 
 2. **Trực giác đếm số lần mỗi phần tử được tính**:
-   Một phần tử thuộc đúng $m \ge 1$ tập hợp sẽ được cộng/trừ tổng cộng $\binom{m}{1} - \binom{m}{2} + \binom{m}{3} - \dots + (-1)^{m-1}\binom{m}{m} = 1 - (1 - 1)^m = \mathbf{1}$ lần—tức mọi phần tử trong hợp đều được đếm **chính xác 1 lần**, không thừa không thiếu!
+   Một phần tử thuộc đúng $$m \ge 1$$ tập hợp sẽ được cộng/trừ tổng cộng $$\binom{m}{1} - \binom{m}{2} + \binom{m}{3} - \dots + (-1)^{m-1}\binom{m}{m} = 1 - (1 - 1)^m = \mathbf{1}$$ lần—tức mọi phần tử trong hợp đều được đếm **chính xác 1 lần**, không thừa không thiếu!
 
 3. **Dạng phần bù — Đếm phần tử KHÔNG vi phạm điều kiện nào**:
-   Đặt $A_i$ là tập các phần tử *vi phạm* ràng buộc thứ $i$, khi đó số phần tử hợp lệ là:
-   $$\left|\bigcap_{i=1}^{n} \overline{A_i}\right| = |U| - \left|\bigcup_{i=1}^{n} A_i\right|.$$
+   Đặt $$A_i$$ là tập các phần tử *vi phạm* ràng buộc thứ $$i$$, khi đó số phần tử hợp lệ là:
+   $$\left|\bigcap_{i=1}^{n} \overline{A_i}\right| = \lvert U \rvert - \left|\bigcup_{i=1}^{n} A_i\right|.$$
    Đây là dạng được dùng nhiều nhất trong bài toán mật khẩu, chia hết và phân phối.
 
 4. **Ứng dụng kinh điển trong Toán rời rạc & CS**:
-   Tính hàm phi Euler $\varphi(n)$ trong mật mã RSA, đếm số **hàm toàn ánh** từ tập $m$ phần tử sang $n$ phần tử, và đếm số **hoán vị không điểm cố định** (*derangements* $D_n$).
+   Tính hàm phi Euler $$\varphi(n)$$ trong mật mã RSA, đếm số **hàm toàn ánh** từ tập $$m$$ phần tử sang $$n$$ phần tử, và đếm số **hoán vị không điểm cố định** (*derangements* $$D_n$$).
 
 ## Mục tiêu học tập
 
@@ -208,22 +208,22 @@ Số phần tử bị loại là $$50+33+20-16-10-6+3=74$$. Do đó số các s�
 
 ### Khung giải thích (nên đọc chậm): Đếm tay bao nhiêu số nguyên từ 1 đến 120 KHÔNG chia hết cho 2, 3, hay 5
 
-Đặt không gian mẫu $U = \{1, 2, \dots, 120\}$ ($|U| = 120$), và gọi $A_2, A_3, A_5$ lần lượt là tập các số trong $U$ chia hết cho $2, 3, 5$.
+Đặt không gian mẫu $$U = \{1, 2, \dots, 120\}$$ ($$\lvert U \rvert = 120$$), và gọi $$A_2, A_3, A_5$$ lần lượt là tập các số trong $$U$$ chia hết cho $$2, 3, 5$$.
 
 1. **Bước 1 — Tính từng tập đơn**:
-   $$|A_2| = \left\lfloor \frac{120}{2} \right\rfloor = 60, \quad |A_3| = \left\lfloor \frac{120}{3} \right\rfloor = 40, \quad |A_5| = \left\lfloor \frac{120}{5} \right\rfloor = 24.$$
-   $\implies$ Tổng đơn $S_1 = 60 + 40 + 24 = \mathbf{124}$.
-2. **Bước 2 — Tính các giao đôi** (chia hết cho cả $p$ và $q$ $\iff$ chia hết cho $\operatorname{BCNN}(p, q)$):
-   $$|A_2 \cap A_3| = \frac{120}{6} = 20, \quad |A_2 \cap A_5| = \frac{120}{10} = 12, \quad |A_3 \cap A_5| = \frac{120}{15} = 8.$$
-   $\implies$ Tổng đôi $S_2 = 20 + 12 + 8 = \mathbf{40}$.
+   $$\lvert A_2 \rvert = \left\lfloor \frac{120}{2} \right\rfloor = 60, \quad \lvert A_3 \rvert = \left\lfloor \frac{120}{3} \right\rfloor = 40, \quad \lvert A_5 \rvert = \left\lfloor \frac{120}{5} \right\rfloor = 24.$$
+   $$\implies$$ Tổng đơn $$S_1 = 60 + 40 + 24 = \mathbf{124}$$.
+2. **Bước 2 — Tính các giao đôi** (chia hết cho cả $$p$$ và $$q$$ $$\iff$$ chia hết cho $$\operatorname{BCNN}(p, q)$$):
+   $$\lvert A_2 \cap A_3 \rvert = \frac{120}{6} = 20, \quad \lvert A_2 \cap A_5 \rvert = \frac{120}{10} = 12, \quad \lvert A_3 \cap A_5 \rvert = \frac{120}{15} = 8.$$
+   $$\implies$$ Tổng đôi $$S_2 = 20 + 12 + 8 = \mathbf{40}$$.
 3. **Bước 3 — Tính giao cả ba**:
-   $$|A_2 \cap A_3 \cap A_5| = \frac{120}{\operatorname{BCNN}(2, 3, 5)} = \frac{120}{30} = \mathbf{4}.$$
-4. **Bước 4 — Hợp các số chia hết cho ít nhất một trong $\{2, 3, 5\}$**:
-   $$|A_2 \cup A_3 \cup A_5| = S_1 - S_2 + S_3 = 124 - 40 + 4 = \mathbf{88}.$$
+   $$\lvert A_2 \cap A_3 \cap A_5 \rvert = \frac{120}{\operatorname{BCNN}(2, 3, 5)} = \frac{120}{30} = \mathbf{4}.$$
+4. **Bước 4 — Hợp các số chia hết cho ít nhất một trong $$\{2, 3, 5\}$$**:
+   $$\lvert A_2 \cup A_3 \cup A_5 \rvert = S_1 - S_2 + S_3 = 124 - 40 + 4 = \mathbf{88}.$$
 5. **Bước 5 — Lấy phần bù để tìm các số KHÔNG chia hết cho 2, 3, hay 5**:
-   $$|U| - |A_2 \cup A_3 \cup A_5| = 120 - 88 = \mathbf{32}.$$
+   $$\lvert U \rvert - \lvert A_2 \cup A_3 \cup A_5 \rvert = 120 - 88 = \mathbf{32}.$$
 
-**Kiểm chứng chéo bằng Lý thuyết số**: Vì $120 = 2^3 \cdot 3 \cdot 5$, số các số nguyên tố cùng nhau với 120 chính là hàm Euler $\varphi(120) = 120\left(1 - \frac{1}{2}\right)\left(1 - \frac{1}{3}\right)\left(1 - \frac{1}{5}\right) = \mathbf{32}$—khớp tuyệt đối!
+**Kiểm chứng chéo bằng Lý thuyết số**: Vì $$120 = 2^3 \cdot 3 \cdot 5$$, số các số nguyên tố cùng nhau với 120 chính là hàm Euler $$\varphi(120) = 120\left(1 - \frac{1}{2}\right)\left(1 - \frac{1}{3}\right)\left(1 - \frac{1}{5}\right) = \mathbf{32}$$—khớp tuyệt đối!
 
 ## Ứng dụng trong Khoa học Máy tính
 

@@ -11,7 +11,7 @@ excerpt: "Optional bilingual note. FlashAttention (NeurIPS 2022) computes the sa
 ---
 
 
-Vì sao các mô hình ngôn ngữ lớn (LLM) trước năm 2022 thường bị nghẽn cứng khi đọc văn bản dài vài chục nghìn từ? Công thức **Attention** trông cực kỳ gọn gàng trên giấy, nhưng cách tính trực tiếp tạo ra ma trận khổng lồ $n \times n$ làm tắc nghẽn băng thông bộ nhớ GPU. **FlashAttention (NeurIPS 2022)** đã tạo nên bước ngoặt tốc độ gấp $3\times$ mà **không sửa đổi một bit nào của hàm toán học**—minh chứng hoàn hảo cho ranh giới giữa *bản thân hàm số* và *thuật toán tính hàm số đó*.
+Vì sao các mô hình ngôn ngữ lớn (LLM) trước năm 2022 thường bị nghẽn cứng khi đọc văn bản dài vài chục nghìn từ? Công thức **Attention** trông cực kỳ gọn gàng trên giấy, nhưng cách tính trực tiếp tạo ra ma trận khổng lồ $$n \times n$$ làm tắc nghẽn băng thông bộ nhớ GPU. **FlashAttention (NeurIPS 2022)** đã tạo nên bước ngoặt tốc độ gấp $$3\times$$ mà **không sửa đổi một bit nào của hàm toán học**—minh chứng hoàn hảo cho ranh giới giữa *bản thân hàm số* và *thuật toán tính hàm số đó*.
 
 <div class="note-box" markdown="1">
 
@@ -24,13 +24,13 @@ Ghi chú ứng dụng song ngữ (tiếng Anh, sau đó là tiếng Việt). Bà
 ## Bản đồ kiến thức nền: Ba trụ cột nhìn Cơ chế Attention dưới lăng kính Lý thuyết Hàm
 
 1. **Attention là một Hàm hợp (Composition of Functions) xác định chặt chẽ**:
-   $\mathrm{Att}(Q, K, V) = \mathrm{softmax}(QK^\top / \sqrt{d})\,V$ ghép nối ba ánh xạ liên tiếp: tính độ tương đồng tuyến tính $QK^\top / \sqrt{d}$, chuẩn hóa từng hàng thành phân phối xác suất bằng $\mathrm{softmax}$, rồi lấy tổng trọng số trên các vector giá trị $V$.
+   $$\mathrm{Att}(Q, K, V) = \mathrm{softmax}(QK^\top / \sqrt{d})\,V$$ ghép nối ba ánh xạ liên tiếp: tính độ tương đồng tuyến tính $$QK^\top / \sqrt{d}$$, chuẩn hóa từng hàng thành phân phối xác suất bằng $$\mathrm{softmax}$$, rồi lấy tổng trọng số trên các vector giá trị $$V$$.
 
 2. **Tách bạch Hàm số (*What*) khỏi Thuật toán (*How*)**:
-   Trong Toán rời rạc Chương 6, hai thuật toán khác nhau tính ra cùng một cặp $(x, f(x))$ trên mọi đầu vào thì định nghĩa **cùng một hàm số**. FlashAttention thay đổi cách tổ chức tính toán (chia khối *tiling* trên bộ nhớ SRAM siêu nhanh + tính lại *recomputation*) để xuất ra **chính xác cùng một ma trận đầu ra**.
+   Trong Toán rời rạc Chương 6, hai thuật toán khác nhau tính ra cùng một cặp $$(x, f(x))$$ trên mọi đầu vào thì định nghĩa **cùng một hàm số**. FlashAttention thay đổi cách tổ chức tính toán (chia khối *tiling* trên bộ nhớ SRAM siêu nhanh + tính lại *recomputation*) để xuất ra **chính xác cùng một ma trận đầu ra**.
 
 3. **Tối ưu IO chính xác vs. Attention xấp xỉ**:
-   Các phương pháp attention hạng thấp (low-rank / sparse) cố tình thay đổi sang một **hàm số khác** để cắt giảm số phép nhân FLOPs, nhưng thường vẫn chậm hơn trên GPU thực tế vì nút cổ chai thật sự nằm ở băng thông đọc/ghi bộ nhớ HBM ($O(n^2)$) chứ không phải tốc độ tính toán.
+   Các phương pháp attention hạng thấp (low-rank / sparse) cố tình thay đổi sang một **hàm số khác** để cắt giảm số phép nhân FLOPs, nhưng thường vẫn chậm hơn trên GPU thực tế vì nút cổ chai thật sự nằm ở băng thông đọc/ghi bộ nhớ HBM ($$O(n^2)$$) chứ không phải tốc độ tính toán.
 
 ## English
 
@@ -65,21 +65,21 @@ Chương 6 đã phân biệt giữa bản thân hàm số và thủ tục dùng 
 
 **Câu hỏi.** (1) Theo ngôn ngữ của chương này, FlashAttention là một hàm mới hay một thuật toán mới cho hàm cũ? (2) Vì sao tính chất “chính xác” (exact) lại quan trọng khi so sánh FlashAttention với attention hạng thấp (low-rank attention)?
 
-### Khung giải thích (nên đọc chậm): Tính tay đầy đủ hàm Attention cho $n = 2$ token ($d = 4$) và thấy nút cổ chai bộ nhớ
+### Khung giải thích (nên đọc chậm): Tính tay đầy đủ hàm Attention cho $$n = 2$$ token ($$d = 4$$) và thấy nút cổ chai bộ nhớ
 
-Giả sử câu có $n = 2$ token với chiều $d = 4$ (nên $\sqrt{d} = 2$), và các ma trận đầu vào:
+Giả sử câu có $$n = 2$$ token với chiều $$d = 4$$ (nên $$\sqrt{d} = 2$$), và các ma trận đầu vào:
 $$Q = \begin{pmatrix} 2 & 0 & 0 & 0 \\ 0 & 2 & 0 & 0 \end{pmatrix}, \qquad K = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \end{pmatrix}, \qquad V = \begin{pmatrix} 10 & 0 \\ 0 & 20 \end{pmatrix}.$$
 
-1. **Bước 1 — Ma trận điểm tương đồng $S = \frac{QK^\top}{\sqrt{d}}$**:
+1. **Bước 1 — Ma trận điểm tương đồng $$S = \frac{QK^\top}{\sqrt{d}}$$**:
    $$QK^\top = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} \implies S = \frac{1}{2}\begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}.$$
-2. **Bước 2 — Áp dụng $\mathrm{softmax}$ theo từng hàng** (với $e^1 \approx 2{,}718$, $e^0 = 1$, tổng hàng $\approx 3{,}718$):
+2. **Bước 2 — Áp dụng $$\mathrm{softmax}$$ theo từng hàng** (với $$e^1 \approx 2{,}718$$, $$e^0 = 1$$, tổng hàng $$\approx 3{,}718$$):
    $$\frac{e^1}{e^1 + e^0} \approx \mathbf{0{,}731}, \qquad \frac{e^0}{e^1 + e^0} \approx \mathbf{0{,}269} \implies P \approx \begin{pmatrix} 0{,}731 & 0{,}269 \\ 0{,}269 & 0{,}731 \end{pmatrix}.$$
-3. **Bước 3 — Tổng trọng số với $V$ ($O = PV$)**:
-   - Token 1: $(0{,}731 \times 10,\; 0{,}269 \times 20) = \mathbf{(7{,}31,\; 5{,}38)}$.
-   - Token 2: $(0{,}269 \times 10,\; 0{,}731 \times 20) = \mathbf{(2{,}69,\; 14{,}62)}$.
+3. **Bước 3 — Tổng trọng số với $$V$$ ($$O = PV$$)**:
+   - Token 1: $$(0{,}731 \times 10,\; 0{,}269 \times 20) = \mathbf{(7{,}31,\; 5{,}38)}$$.
+   - Token 2: $$(0{,}269 \times 10,\; 0{,}731 \times 20) = \mathbf{(2{,}69,\; 14{,}62)}$$.
 
-**So sánh bộ nhớ khi mở rộng lên $n = 16{,}384$ token (FP16 — 2 byte/số)**:
-Cách tính trực tiếp buộc phải ghi và đọc toàn bộ ma trận $S$ và $P$ kích thước $n \times n$ ra bộ nhớ HBM chậm, tốn $16{,}384^2 \times 2 \approx \mathbf{536{,}9\text{ MB}}$ cho **mỗi đầu attention**. FlashAttention chia $Q, K, V$ thành các khối nhỏ vừa khít SRAM nội chip, cộng dồn hệ số chuẩn hóa trực tuyến (*online softmax*) để cho ra **đúng từng chữ số `(7,31; 5,38)`** mà chỉ dùng bộ nhớ HBM tuyến tính $O(n)$!
+**So sánh bộ nhớ khi mở rộng lên $$n = 16{,}384$$ token (FP16 — 2 byte/số)**:
+Cách tính trực tiếp buộc phải ghi và đọc toàn bộ ma trận $$S$$ và $$P$$ kích thước $$n \times n$$ ra bộ nhớ HBM chậm, tốn $$16{,}384^2 \times 2 \approx \mathbf{536{,}9\text{ MB}}$$ cho **mỗi đầu attention**. FlashAttention chia $$Q, K, V$$ thành các khối nhỏ vừa khít SRAM nội chip, cộng dồn hệ số chuẩn hóa trực tuyến (*online softmax*) để cho ra **đúng từng chữ số `(7,31; 5,38)`** mà chỉ dùng bộ nhớ HBM tuyến tính $$O(n)$$!
 
 ## Video tham khảo
 

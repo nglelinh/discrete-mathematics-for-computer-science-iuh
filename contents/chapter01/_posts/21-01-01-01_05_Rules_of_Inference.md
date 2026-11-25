@@ -15,17 +15,17 @@ Biết viết công thức logic mới chỉ là có "từ vựng"; biết nối
 ## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Suy diễn
 
 1. **Lập luận hợp lệ (Valid Argument) vs. Tiền đề đúng (Soundness)**:
-   Một lập luận $(P_1 \land P_2 \land \dots \land P_k) \to Q$ là **hợp lệ (valid)** nếu nó là hằng đúng—nghĩa là *không thể nào* mọi tiền đề đều Đúng mà kết luận lại Sai. Nếu mọi tiền đề còn đúng trong thực tế nữa, lập luận được gọi là **vững chắc (sound)**.
+   Một lập luận $$(P_1 \land P_2 \land \dots \land P_k) \to Q$$ là **hợp lệ (valid)** nếu nó là hằng đúng—nghĩa là *không thể nào* mọi tiền đề đều Đúng mà kết luận lại Sai. Nếu mọi tiền đề còn đúng trong thực tế nữa, lập luận được gọi là **vững chắc (sound)**.
 
 2. **Bộ quy tắc suy diễn kinh điển**:
-   - **Modus Ponens**: Từ $p$ và $p \to q$, suy ra $q$.
-   - **Modus Tollens**: Từ $\neg q$ và $p \to q$, suy ra $\neg p$.
-   - **Tam đoạn luận giả định**: Từ $p \to q$ và $q \to r$, suy ra $p \to r$.
-   - **Tam đoạn luận tuyển**: Từ $p \lor q$ và $\neg p$, suy ra $q$.
-   - **Phân giải (Resolution)**: Từ $p \lor q$ và $\neg p \lor r$, suy ra $q \lor r$ (nền tảng của Prolog và SAT/CDCL!).
+   - **Modus Ponens**: Từ $$p$$ và $$p \to q$$, suy ra $$q$$.
+   - **Modus Tollens**: Từ $$\neg q$$ và $$p \to q$$, suy ra $$\neg p$$.
+   - **Tam đoạn luận giả định**: Từ $$p \to q$$ và $$q \to r$$, suy ra $$p \to r$$.
+   - **Tam đoạn luận tuyển**: Từ $$p \lor q$$ và $$\neg p$$, suy ra $$q$$.
+   - **Phân giải (Resolution)**: Từ $$p \lor q$$ và $$\neg p \lor r$$, suy ra $$q \lor r$$ (nền tảng của Prolog và SAT/CDCL!).
 
 3. **Ngụy biện hình thức (Formal Fallacies)**:
-   Hai cái bẫy phổ biến nhất: **Khẳng định hệ quả** (từ $p \to q$ và $q$ suy ra $p$ — SAI!) và **Phủ định tiền đề** (từ $p \to q$ và $\neg p$ suy ra $\neg q$ — SAI!).
+   Hai cái bẫy phổ biến nhất: **Khẳng định hệ quả** (từ $$p \to q$$ và $$q$$ suy ra $$p$$ — SAI!) và **Phủ định tiền đề** (từ $$p \to q$$ và $$\neg p$$ suy ra $$\neg q$$ — SAI!).
 
 4. **Chứng minh từng dòng (Natural Deduction)**:
    Mỗi dòng trong một chuỗi suy diễn đều phải ghi rõ **xuất xứ** (Tiền đề, Luật tương đương, hay Quy tắc suy diễn áp dụng lên những dòng nào trước đó), giúp cả con người lẫn máy tính kiểm chứng cơ học từng bước.
@@ -113,22 +113,22 @@ Các biểu thức $$p_1, p_2, \dots, p_n$$ gọi là **giả thiết** (hay **t
 ### Khung giải thích (nên đọc chậm): Dựng chuỗi suy diễn 6 bước tìm nguyên nhân sập máy chủ
 
 Giả sử hệ thống giám sát ghi nhận 4 sự kiện (tiền đề) sau:
-- $P_1$: Nếu CPU quá tải ($c$) thì độ trễ tăng cao ($l$): $c \to l$.
-- $P_2$: Nếu độ trễ tăng cao ($l$) thì cảnh báo đỏ sẽ bật ($a$): $l \to a$.
-- $P_3$: Hoặc CPU quá tải ($c$), hoặc kết nối cơ sở dữ liệu bị ngắt ($d$): $c \lor d$.
-- $P_4$: Thực tế cảnh báo đỏ **không** bật ($\neg a$).
+- $$P_1$$: Nếu CPU quá tải ($$c$$) thì độ trễ tăng cao ($$l$$): $$c \to l$$.
+- $$P_2$$: Nếu độ trễ tăng cao ($$l$$) thì cảnh báo đỏ sẽ bật ($$a$$): $$l \to a$$.
+- $$P_3$$: Hoặc CPU quá tải ($$c$$), hoặc kết nối cơ sở dữ liệu bị ngắt ($$d$$): $$c \lor d$$.
+- $$P_4$$: Thực tế cảnh báo đỏ **không** bật ($$\neg a$$).
 
-**Mục tiêu**: Chứng minh chặt chẽ rằng kết nối cơ sở dữ liệu đã bị ngắt ($d$).
+**Mục tiêu**: Chứng minh chặt chẽ rằng kết nối cơ sở dữ liệu đã bị ngắt ($$d$$).
 
 | Bước | Biểu thức suy ra | Căn cứ áp dụng |
 | :---: | :--- | :--- |
-| 1 | $c \to l$ | Tiền đề $P_1$ |
-| 2 | $l \to a$ | Tiền đề $P_2$ |
-| 3 | $c \to a$ | **Tam đoạn luận giả định** từ bước (1) và (2) |
-| 4 | $\neg a$ | Tiền đề $P_4$ |
-| 5 | $\neg c$ | **Modus Tollens** từ bước (3) và (4) |
-| 6 | $c \lor d$ | Tiền đề $P_3$ |
-| 7 | **$d$** | **Tam đoạn luận tuyển** từ bước (6) và (5) — **ĐPCM!** |
+| 1 | $$c \to l$$ | Tiền đề $$P_1$$ |
+| 2 | $$l \to a$$ | Tiền đề $$P_2$$ |
+| 3 | $$c \to a$$ | **Tam đoạn luận giả định** từ bước (1) và (2) |
+| 4 | $$\neg a$$ | Tiền đề $$P_4$$ |
+| 5 | $$\neg c$$ | **Modus Tollens** từ bước (3) và (4) |
+| 6 | $$c \lor d$$ | Tiền đề $$P_3$$ |
+| 7 | **$$d$$** | **Tam đoạn luận tuyển** từ bước (6) và (5) — **ĐPCM!** |
 
 Chuỗi 7 dòng này chính là cách một công cụ chẩn đoán sự cố tự động (hoặc bộ suy diễn logic) đi từ các triệu chứng quan sát được đến đúng nguyên nhân gốc rễ mà không hề đoán mò.
 

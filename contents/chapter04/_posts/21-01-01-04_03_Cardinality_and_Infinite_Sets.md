@@ -10,21 +10,21 @@ lang: en
 excerpt: "Trình bày lực lượng tập hợp, tập lũy thừa, nguyên lý bao hàm–loại trừ cho hai và ba tập, tập đếm được và không đếm được, lập luận đường chéo Cantor và định lý Schröder–Bernstein."
 ---
 
-Đếm số phần tử của một tập hữu hạn thì dễ—nhưng làm sao so sánh kích thước của hai **tập vô hạn** như tập số tự nhiên $\mathbb{N}$, tập số chẵn, tập số hữu tỉ $\mathbb{Q}$ và tập số thực $\mathbb{R}$? Georg Cantor đã làm rung chuyển toàn bộ nền toán học thế kỷ 19 khi chứng minh rằng **có những cái vô hạn lớn hơn cái vô hạn khác**—và chính kỹ thuật **đường chéo hóa (diagonalization)** của ông sau này đã giúp Alan Turing chứng minh tồn tại những bài toán *không một máy tính nào giải được*!
+Đếm số phần tử của một tập hữu hạn thì dễ—nhưng làm sao so sánh kích thước của hai **tập vô hạn** như tập số tự nhiên $$\mathbb{N}$$, tập số chẵn, tập số hữu tỉ $$\mathbb{Q}$$ và tập số thực $$\mathbb{R}$$? Georg Cantor đã làm rung chuyển toàn bộ nền toán học thế kỷ 19 khi chứng minh rằng **có những cái vô hạn lớn hơn cái vô hạn khác**—và chính kỹ thuật **đường chéo hóa (diagonalization)** của ông sau này đã giúp Alan Turing chứng minh tồn tại những bài toán *không một máy tính nào giải được*!
 
 ## Bản đồ kiến thức nền: Bốn trụ cột của Lực lượng (Cardinality) & Tập Vô hạn
 
 1. **So sánh lực lượng bằng Song ánh (Bijection)**:
-   Hai tập $A$ và $B$ có cùng lực lượng ($\vert A \vert = \vert B \vert$) khi và chỉ khi tồn tại một ánh xạ 1–1 và lên (song ánh) giữa chúng—một định nghĩa hoạt động mượt mà cho cả tập hữu hạn lẫn vô hạn!
+   Hai tập $$A$$ và $$B$$ có cùng lực lượng ($$\vert A \vert = \vert B \vert$$) khi và chỉ khi tồn tại một ánh xạ 1–1 và lên (song ánh) giữa chúng—một định nghĩa hoạt động mượt mà cho cả tập hữu hạn lẫn vô hạn!
 
-2. **Tập đếm được (Countable — $\aleph_0$)**:
-   Một tập vô hạn là **đếm được** nếu ta có thể lập danh sách đánh số $a_1, a_2, a_3, \dots$ khớp 1–1 với $\mathbb{N}$. Điều kỳ diệu: tập số nguyên $\mathbb{Z}$ và cả tập phân số $\mathbb{Q}$ đều **đếm được** (cùng kích thước với $\mathbb{N}$!).
+2. **Tập đếm được (Countable — $$\aleph_0$$)**:
+   Một tập vô hạn là **đếm được** nếu ta có thể lập danh sách đánh số $$a_1, a_2, a_3, \dots$$ khớp 1–1 với $$\mathbb{N}$$. Điều kỳ diệu: tập số nguyên $$\mathbb{Z}$$ và cả tập phân số $$\mathbb{Q}$$ đều **đếm được** (cùng kích thước với $$\mathbb{N}$$!).
 
 3. **Tập không đếm được (Uncountable) & Lập luận đường chéo Cantor**:
-   Tập số thực $\mathbb{R}$ và tập lũy thừa $\mathcal{P}(\mathbb{N})$ là **không đếm được**: mọi nỗ lực lập danh sách toàn bộ chúng đều bỏ sót ít nhất một phần tử mới tạo ra bằng cách lật chữ số/bit trên đường chéo chính.
+   Tập số thực $$\mathbb{R}$$ và tập lũy thừa $$\mathcal{P}(\mathbb{N})$$ là **không đếm được**: mọi nỗ lực lập danh sách toàn bộ chúng đều bỏ sót ít nhất một phần tử mới tạo ra bằng cách lật chữ số/bit trên đường chéo chính.
 
 4. **Hệ quả chấn động cho Khoa học Máy tính**:
-   Tập tất cả các chương trình máy tính hợp lệ (chuỗi ký tự hữu hạn) là **đếm được** ($\aleph_0$), nhưng tập tất cả các bài toán quyết định $f: \mathbb{N} \to \{0, 1\}$ là **không đếm được** ($2^{\aleph_0}$) ⇒ **tồn tại vô số bài toán không thể tính toán được (uncomputable)!**
+   Tập tất cả các chương trình máy tính hợp lệ (chuỗi ký tự hữu hạn) là **đếm được** ($$\aleph_0$$), nhưng tập tất cả các bài toán quyết định $$f: \mathbb{N} \to \{0, 1\}$$ là **không đếm được** ($$2^{\aleph_0}$$) ⇒ **tồn tại vô số bài toán không thể tính toán được (uncomputable)!**
 
 ## Mục tiêu học tập
 
@@ -112,19 +112,19 @@ Tập này có $$2^3=8$$ phần tử.
 
 ### Khung giải thích (nên đọc chậm): Tự tay dựng số bị bỏ sót bằng Lập luận đường chéo Cantor trên 4 chuỗi nhị phân
 
-Giả sử ai đó tuyên bố đã lập được danh sách đánh số **tất cả** các chuỗi nhị phân vô hạn (tương ứng với các tập con của $\mathbb{N}$), bắt đầu bằng 4 dòng đầu:
-- $s_1 = \mathbf{0}\, 1\, 0\, 1\, \dots$
-- $s_2 = 1\, \mathbf{1}\, 1\, 0\, \dots$
-- $s_3 = 0\, 0\, \mathbf{0}\, 1\, \dots$
-- $s_4 = 1\, 0\, 1\, \mathbf{1}\, \dots$
+Giả sử ai đó tuyên bố đã lập được danh sách đánh số **tất cả** các chuỗi nhị phân vô hạn (tương ứng với các tập con của $$\mathbb{N}$$), bắt đầu bằng 4 dòng đầu:
+- $$s_1 = \mathbf{0}\, 1\, 0\, 1\, \dots$$
+- $$s_2 = 1\, \mathbf{1}\, 1\, 0\, \dots$$
+- $$s_3 = 0\, 0\, \mathbf{0}\, 1\, \dots$$
+- $$s_4 = 1\, 0\, 1\, \mathbf{1}\, \dots$$
 
-Hãy dựng chuỗi mới $d$ bằng quy tắc: **lấy bit thứ $i$ của chuỗi $s_i$ trên đường chéo chính rồi lật ngược (`0 → 1`, `1 → 0`)**:
-- Vị trí 1: $s_1[1] = \mathbf{0} \implies d[1] = \mathbf{1}$ (chắc chắn $d \neq s_1$!).
-- Vị trí 2: $s_2[2] = \mathbf{1} \implies d[2] = \mathbf{0}$ (chắc chắn $d \neq s_2$!).
-- Vị trí 3: $s_3[3] = \mathbf{0} \implies d[3] = \mathbf{1}$ (chắc chắn $d \neq s_3$!).
-- Vị trí 4: $s_4[4] = \mathbf{1} \implies d[4] = \mathbf{0}$ (chắc chắn $d \neq s_4$!).
+Hãy dựng chuỗi mới $$d$$ bằng quy tắc: **lấy bit thứ $$i$$ của chuỗi $$s_i$$ trên đường chéo chính rồi lật ngược (`0 → 1`, `1 → 0`)**:
+- Vị trí 1: $$s_1[1] = \mathbf{0} \implies d[1] = \mathbf{1}$$ (chắc chắn $$d \neq s_1$$!).
+- Vị trí 2: $$s_2[2] = \mathbf{1} \implies d[2] = \mathbf{0}$$ (chắc chắn $$d \neq s_2$$!).
+- Vị trí 3: $$s_3[3] = \mathbf{0} \implies d[3] = \mathbf{1}$$ (chắc chắn $$d \neq s_3$$!).
+- Vị trí 4: $$s_4[4] = \mathbf{1} \implies d[4] = \mathbf{0}$$ (chắc chắn $$d \neq s_4$$!).
 
-Vậy $d = 1\, 0\, 1\, 0\, \dots$ **khác mọi chuỗi $s_k$ ở ít nhất vị trí thứ $k$**, nên $d$ không thể xuất hiện ở bất kỳ dòng nào trong danh sách! Mâu thuẫn này chứng minh tập chuỗi nhị phân vô hạn là **không đếm được**.
+Vậy $$d = 1\, 0\, 1\, 0\, \dots$$ **khác mọi chuỗi $$s_k$$ ở ít nhất vị trí thứ $$k$$**, nên $$d$$ không thể xuất hiện ở bất kỳ dòng nào trong danh sách! Mâu thuẫn này chứng minh tập chuỗi nhị phân vô hạn là **không đếm được**.
 
 ## Nguyên lý bao hàm - loại trừ cho hai tập
 
@@ -211,7 +211,7 @@ $$50+40+30-20-15-10+5=80.$$
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/cantor-diagonal.mp4"></video>
 </div>
 
-Video dài khoảng 2 phút 57 giây: xếp $$\mathbb{Z}$$ thành một hàng $$0, 1, -1, 2, -2, \dots$$, khách sạn Hilbert, đường zigzag liệt kê $$\mathbb{Q}$$ (bỏ qua phân số chưa tối giản), lập luận đường chéo trên bảng các dãy 0/1 để dựng một dãy nằm ngoài mọi danh sách, cùng ý tưởng với số thực trong $$(0,1)$$ để có $$|\mathbb{N}| < |\mathbb{R}|$$ và $$|A| < |\mathcal{P}(A)|$$, rồi bảng chương trình – đầu vào cho thấy bài toán dừng không giải được.
+Video dài khoảng 2 phút 57 giây: xếp $$\mathbb{Z}$$ thành một hàng $$0, 1, -1, 2, -2, \dots$$, khách sạn Hilbert, đường zigzag liệt kê $$\mathbb{Q}$$ (bỏ qua phân số chưa tối giản), lập luận đường chéo trên bảng các dãy 0/1 để dựng một dãy nằm ngoài mọi danh sách, cùng ý tưởng với số thực trong $$(0,1)$$ để có $$\lvert \mathbb{N} \rvert < \lvert \mathbb{R} \rvert$$ và $$\lvert A \rvert < \lvert \mathcal{P}(A) \rvert$$, rồi bảng chương trình – đầu vào cho thấy bài toán dừng không giải được.
 
 ## Tập không đếm được
 

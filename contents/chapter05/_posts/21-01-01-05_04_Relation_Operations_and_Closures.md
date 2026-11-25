@@ -11,7 +11,7 @@ excerpt: "Trình bày quan hệ ngược, phép hợp thành quan hệ, tích ma
 ---
 
 
-Bạn có bảng danh sách các chuyến bay thẳng giữa các thành phố—đó là một quan hệ $R$. Nhưng hành khách lại hỏi: *"Tôi có thể bay từ Hà Nội đến Lisbon bằng bất kỳ số chặng quá cảnh nào không?"* Để trả lời câu hỏi đó, ta cần ghép nối nhiều bước đi liên tiếp bằng **hợp thành quan hệ**, mở rộng thành **bao đóng bắc cầu**, và tăng tốc việc tính toán xuống $O(n^3)$ nhờ **thuật toán Warshall**.
+Bạn có bảng danh sách các chuyến bay thẳng giữa các thành phố—đó là một quan hệ $$R$$. Nhưng hành khách lại hỏi: *"Tôi có thể bay từ Hà Nội đến Lisbon bằng bất kỳ số chặng quá cảnh nào không?"* Để trả lời câu hỏi đó, ta cần ghép nối nhiều bước đi liên tiếp bằng **hợp thành quan hệ**, mở rộng thành **bao đóng bắc cầu**, và tăng tốc việc tính toán xuống $$O(n^3)$$ nhờ **thuật toán Warshall**.
 
 Ở mục trước, chúng ta đã tìm hiểu quan hệ tương đương và thứ tự bộ phận. Mục này mở rộng sang các **phép toán trên quan hệ** và khái niệm **bao đóng** — công cụ giúp biến đổi và mở rộng cấu trúc liên kết một cách có hệ thống.
 
@@ -19,20 +19,20 @@ Trong các hệ thống thực tế, ta thường cần đảo chiều liên k�
 
 ## Bản đồ kiến thức nền: Bốn phép toán biến đổi và mở rộng Quan hệ
 
-1. **Quan hệ ngược ($R^{-1}$) — Đảo chiều mọi mũi tên**:
-   $(b, a) \in R^{-1} \iff (a, b) \in R$. Trên ma trận quan hệ, lấy quan hệ ngược đơn giản là phép chuyển vị $M_{R^{-1}} = M_R^T$.
+1. **Quan hệ ngược ($$R^{-1}$$) — Đảo chiều mọi mũi tên**:
+   $$(b, a) \in R^{-1} \iff (a, b) \in R$$. Trên ma trận quan hệ, lấy quan hệ ngược đơn giản là phép chuyển vị $$M_{R^{-1}} = M_R^T$$.
 
-2. **Hợp thành quan hệ ($S \circ R$) & Tích Boolean ($M_R \odot M_S$)**:
-   $(a, c) \in S \circ R$ nghĩa là tồn tại đỉnh trung gian $b$ sao cho $a \xrightarrow{R} b \xrightarrow{S} c$. Chú ý thứ tự ma trận: $M_{S \circ R} = M_R \odot M_S$ (thay phép nhân bằng `AND`, phép cộng bằng `OR`).
+2. **Hợp thành quan hệ ($$S \circ R$$) & Tích Boolean ($$M_R \odot M_S$$)**:
+   $$(a, c) \in S \circ R$$ nghĩa là tồn tại đỉnh trung gian $$b$$ sao cho $$a \xrightarrow{R} b \xrightarrow{S} c$$. Chú ý thứ tự ma trận: $$M_{S \circ R} = M_R \odot M_S$$ (thay phép nhân bằng `AND`, phép cộng bằng `OR`).
 
-3. **Ba loại bao đóng cơ bản ($r(R), s(R), t(R)$)**:
-   Bao đóng là **quan hệ nhỏ nhất chứa $R$** mà thỏa mãn tính chất mong muốn:
-   - Phản xạ: $r(R) = R \cup \Delta_A$ (bật đường chéo chính lên `1`).
-   - Đối xứng: $s(R) = R \cup R^{-1}$ (thêm mũi tên chiều ngược lại).
-   - Bắc cầu: $t(R) = R^+ = R \cup R^2 \cup \dots \cup R^n$ (mọi cặp có đường đi độ dài $\ge 1$).
+3. **Ba loại bao đóng cơ bản ($$r(R), s(R), t(R)$$)**:
+   Bao đóng là **quan hệ nhỏ nhất chứa $$R$$** mà thỏa mãn tính chất mong muốn:
+   - Phản xạ: $$r(R) = R \cup \Delta_A$$ (bật đường chéo chính lên `1`).
+   - Đối xứng: $$s(R) = R \cup R^{-1}$$ (thêm mũi tên chiều ngược lại).
+   - Bắc cầu: $$t(R) = R^+ = R \cup R^2 \cup \dots \cup R^n$$ (mọi cặp có đường đi độ dài $$\ge 1$$).
 
-4. **Thuật toán Warshall — Quy hoạch động tìm bao đóng bắc cầu trong $O(n^3)$**:
-   Thay vì nhân ma trận $n$ lần tốn $O(n^4)$, Warshall cho phép dần từng đỉnh trung gian $k = 1, 2, \dots, n$ theo công thức cập nhật:
+4. **Thuật toán Warshall — Quy hoạch động tìm bao đóng bắc cầu trong $$O(n^3)$$**:
+   Thay vì nhân ma trận $$n$$ lần tốn $$O(n^4)$$, Warshall cho phép dần từng đỉnh trung gian $$k = 1, 2, \dots, n$$ theo công thức cập nhật:
    $$W^{(k)}_{ij} = W^{(k-1)}_{ij} \lor \big(W^{(k-1)}_{ik} \land W^{(k-1)}_{kj}\big).$$
 
 ## Mục tiêu học tập
@@ -195,24 +195,24 @@ def warshall(M):
 
 <p class="textbook-figure-caption" data-figure="5.24">Thuật toán Warshall tính bao đóng bắc cầu trên ma trận kề, trả lời bài toán liên thông (reachability) giữa mọi cặp đỉnh.</p>
 
-### Khung giải thích (nên đọc chậm): Chạy tay thuật toán Warshall từng bước $W^{(0)} \to W^{(4)}$ trên đồ thị 4 đỉnh
+### Khung giải thích (nên đọc chậm): Chạy tay thuật toán Warshall từng bước $$W^{(0)} \to W^{(4)}$$ trên đồ thị 4 đỉnh
 
-Xét $A = \{1, 2, 3, 4\}$ và quan hệ $R = \{(1,2), (2,3), (3,4), (4,2)\}$ (đỉnh `1` đi vào chu trình `2 → 3 → 4 → 2`).
+Xét $$A = \{1, 2, 3, 4\}$$ và quan hệ $$R = \{(1,2), (2,3), (3,4), (4,2)\}$$ (đỉnh `1` đi vào chu trình `2 → 3 → 4 → 2`).
 
-**Bước 0 — Ma trận ban đầu $W^{(0)} = M_R$**:
+**Bước 0 — Ma trận ban đầu $$W^{(0)} = M_R$$**:
 $$W^{(0)} = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 1 & 0 & 0 \end{pmatrix}$$
 
-Ta xét lần lượt từng đỉnh trung gian $k$ (chỉ cần tìm các hàng $i$ có cột $k$ bằng `1`, rồi `OR` hàng $k$ vào các hàng $i$ đó!):
+Ta xét lần lượt từng đỉnh trung gian $$k$$ (chỉ cần tìm các hàng $$i$$ có cột $$k$$ bằng `1`, rồi `OR` hàng $$k$$ vào các hàng $$i$$ đó!):
 
-1. **$k = 1$**: Cột 1 của $W^{(0)}$ toàn số `0` (không đỉnh nào đi vào `1`) $\implies$ **$W^{(1)} = W^{(0)}$** (không đổi).
-2. **$k = 2$**: Cột 2 bằng `1` ở hàng `1` và hàng `4`; hàng 2 là `(0, 0, 1, 0)` $\implies$ `OR` hàng 2 vào hàng `1` và hàng `4`, thêm được hai cặp mới **$(1,3)$** và **$(4,3)$**:
+1. **$$k = 1$$**: Cột 1 của $$W^{(0)}$$ toàn số `0` (không đỉnh nào đi vào `1`) $$\implies$$ **$$W^{(1)} = W^{(0)}$$** (không đổi).
+2. **$$k = 2$$**: Cột 2 bằng `1` ở hàng `1` và hàng `4`; hàng 2 là `(0, 0, 1, 0)` $$\implies$$ `OR` hàng 2 vào hàng `1` và hàng `4`, thêm được hai cặp mới **$$(1,3)$$** và **$$(4,3)$$**:
    $$W^{(2)} = \begin{pmatrix} 0 & 1 & \mathbf{1} & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 1 & \mathbf{1} & 0 \end{pmatrix}$$
-3. **$k = 3$**: Cột 3 bằng `1` ở các hàng `1, 2, 4`; hàng 3 là `(0, 0, 0, 1)` $\implies$ `OR` hàng 3 vào các hàng `1, 2, 4`, thêm **$(1,4), (2,4), (4,4)$**:
+3. **$$k = 3$$**: Cột 3 bằng `1` ở các hàng `1, 2, 4`; hàng 3 là `(0, 0, 0, 1)` $$\implies$$ `OR` hàng 3 vào các hàng `1, 2, 4`, thêm **$$(1,4), (2,4), (4,4)$$**:
    $$W^{(3)} = \begin{pmatrix} 0 & 1 & 1 & \mathbf{1} \\ 0 & 0 & 1 & \mathbf{1} \\ 0 & 0 & 0 & 1 \\ 0 & 1 & 1 & \mathbf{1} \end{pmatrix}$$
-4. **$k = 4$**: Cột 4 bằng `1` ở cả 4 hàng `1, 2, 3, 4`; hàng 4 là `(0, 1, 1, 1)` $\implies$ `OR` hàng 4 vào cả 4 hàng, thêm **$(2,2), (3,2), (3,3)$**:
+4. **$$k = 4$$**: Cột 4 bằng `1` ở cả 4 hàng `1, 2, 3, 4`; hàng 4 là `(0, 1, 1, 1)` $$\implies$$ `OR` hàng 4 vào cả 4 hàng, thêm **$$(2,2), (3,2), (3,3)$$**:
    $$W^{(4)} = \begin{pmatrix} 0 & 1 & 1 & 1 \\ 0 & \mathbf{1} & 1 & 1 \\ 0 & \mathbf{1} & \mathbf{1} & 1 \\ 0 & 1 & 1 & 1 \end{pmatrix}$$
 
-**Kiểm chứng trực giác**: Cột 1 vẫn toàn `0` vì không có mũi tên nào quay về đỉnh `1`; còn từ mọi đỉnh `1, 2, 3, 4` ta đều đi tới được toàn bộ cụm chu trình `{2, 3, 4}`! Mẹo *"tìm cột $k$ bằng 1 rồi OR hàng $k$ vào"* giúp bạn chạy tay Warshall vừa nhanh vừa không bao giờ sót cặp.
+**Kiểm chứng trực giác**: Cột 1 vẫn toàn `0` vì không có mũi tên nào quay về đỉnh `1`; còn từ mọi đỉnh `1, 2, 3, 4` ta đều đi tới được toàn bộ cụm chu trình `{2, 3, 4}`! Mẹo *"tìm cột $$k$$ bằng 1 rồi OR hàng $$k$$ vào"* giúp bạn chạy tay Warshall vừa nhanh vừa không bao giờ sót cặp.
 
 ## Ứng dụng trong Khoa học Máy tính
 

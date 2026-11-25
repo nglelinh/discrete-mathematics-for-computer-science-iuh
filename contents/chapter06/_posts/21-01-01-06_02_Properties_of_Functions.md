@@ -20,16 +20,16 @@ Chỉ biết một ánh xạ là hàm vẫn chưa đủ để đánh giá các �
 ## Bản đồ kiến thức nền: Ba tính chất vàng và vai trò sống còn của Miền
 
 1. **Đơn ánh (Injective / 1–1) — Không đụng độ, không mất thông tin**:
-   $\forall x_1, x_2 \in A,\; f(x_1) = f(x_2) \to x_1 = x_2$ (tương đương: đầu vào khác nhau $\to$ đầu ra khác nhau). Trên tập hữu hạn, điều kiện cần là $|A| \le |B|$.
+   $$\forall x_1, x_2 \in A,\; f(x_1) = f(x_2) \to x_1 = x_2$$ (tương đương: đầu vào khác nhau $$\to$$ đầu ra khác nhau). Trên tập hữu hạn, điều kiện cần là $$\lvert A \rvert \le \lvert B \rvert$$.
 
 2. **Toàn ánh (Surjective / Onto) — Phủ kín toàn bộ miền đích**:
-   $\forall y \in B,\; \exists x \in A,\; f(x) = y$, tức $\text{Range}(f) = \text{Codomain}(B)$. Trên tập hữu hạn, điều kiện cần là $|A| \ge |B|$.
+   $$\forall y \in B,\; \exists x \in A,\; f(x) = y$$, tức $$\text{Range}(f) = \text{Codomain}(B)$$. Trên tập hữu hạn, điều kiện cần là $$\lvert A \rvert \ge \lvert B \rvert$$.
 
 3. **Song ánh (Bijective) = Đơn ánh + Toàn ánh — Ghép cặp 1–1 hoàn hảo**:
-   Mỗi phần tử ở $B$ có **đúng một** tạo ảnh ở $A$. Đây là điều kiện cần và đủ để hàm tồn tại **hàm nghịch đảo $f^{-1}$**, đồng thời là cơ sở để chứng minh hai tập hợp có cùng lực lượng ($|A| = |B|$).
+   Mỗi phần tử ở $$B$$ có **đúng một** tạo ảnh ở $$A$$. Đây là điều kiện cần và đủ để hàm tồn tại **hàm nghịch đảo $$f^{-1}$$**, đồng thời là cơ sở để chứng minh hai tập hợp có cùng lực lượng ($$\lvert A \rvert = \lvert B \rvert$$).
 
 4. **Miền xác định và Miền đích quyết định tính chất của hàm**:
-   Một công thức đại số đơn lẻ như $f(x) = x^2$ chưa đủ để kết luận đơn ánh hay toàn ánh—chỉ cần thu hẹp Domain hoặc Codomain, cùng công thức đó có thể biến từ "không thỏa gì cả" thành song ánh hoàn hảo!
+   Một công thức đại số đơn lẻ như $$f(x) = x^2$$ chưa đủ để kết luận đơn ánh hay toàn ánh—chỉ cần thu hẹp Domain hoặc Codomain, cùng công thức đó có thể biến từ "không thỏa gì cả" thành song ánh hoàn hảo!
 
 ## Mục tiêu học tập
 
@@ -143,20 +143,20 @@ Cùng một công thức đại số có thể mang những tính chất khác n
 <p class="textbook-figure-caption" data-figure="6.10">Domain và codomain quyết định tính chất của hàm — cùng công thức $$f(x)=x^2$$ nhưng thay đổi domain/codomain sẽ cho kết quả đơn ánh, toàn ánh hay song ánh khác nhau.</p>
 </div>
 
-### Khung giải thích (nên đọc chậm): Cùng một công thức $f(x) = x^2$ biến hóa qua 4 lựa chọn Miền khác nhau
+### Khung giải thích (nên đọc chậm): Cùng một công thức $$f(x) = x^2$$ biến hóa qua 4 lựa chọn Miền khác nhau
 
-Hãy theo dõi sát cách một công thức duy nhất $f(x) = x^2$ thay đổi toàn bộ tính chất chỉ bằng việc đổi Domain và Codomain:
+Hãy theo dõi sát cách một công thức duy nhất $$f(x) = x^2$$ thay đổi toàn bộ tính chất chỉ bằng việc đổi Domain và Codomain:
 
-| Hàm số $f(x) = x^2$ | Đơn ánh? | Toàn ánh? | Song ánh? | Lý do cụ thể |
+| Hàm số $$f(x) = x^2$$ | Đơn ánh? | Toàn ánh? | Song ánh? | Lý do cụ thể |
 | :--- | :---: | :---: | :---: | :--- |
-| **1. $\mathbb{R} \to \mathbb{R}$** | **Không** | **Không** | **Không** | $f(-2) = f(2) = 4$ (đụng độ); $y = -1$ không có $x \in \mathbb{R}$ nào thỏa $x^2 = -1$. |
-| **2. $\mathbb{R}_{\ge 0} \to \mathbb{R}$** | **Có** | **Không** | **Không** | Với $x_1, x_2 \ge 0$, $x_1^2 = x_2^2 \implies x_1 = x_2$; nhưng $y = -1$ vẫn bị bỏ trống. |
-| **3. $\mathbb{R} \to \mathbb{R}_{\ge 0}$** | **Không** | **Có** | **Không** | Mọi $y \ge 0$ đều có tạo ảnh $x = \sqrt{y}$; nhưng vẫn còn đụng độ $f(-2) = f(2)$. |
-| **4. $\mathbb{R}_{\ge 0} \to \mathbb{R}_{\ge 0}$** | **Có** | **Có** | **Có** | Vừa không đụng độ, vừa phủ kín mọi $y \ge 0$ $\implies$ có nghịch đảo $f^{-1}(y) = \sqrt{y}$! |
+| **1. $$\mathbb{R} \to \mathbb{R}$$** | **Không** | **Không** | **Không** | $$f(-2) = f(2) = 4$$ (đụng độ); $$y = -1$$ không có $$x \in \mathbb{R}$$ nào thỏa $$x^2 = -1$$. |
+| **2. $$\mathbb{R}_{\ge 0} \to \mathbb{R}$$** | **Có** | **Không** | **Không** | Với $$x_1, x_2 \ge 0$$, $$x_1^2 = x_2^2 \implies x_1 = x_2$$; nhưng $$y = -1$$ vẫn bị bỏ trống. |
+| **3. $$\mathbb{R} \to \mathbb{R}_{\ge 0}$$** | **Không** | **Có** | **Không** | Mọi $$y \ge 0$$ đều có tạo ảnh $$x = \sqrt{y}$$; nhưng vẫn còn đụng độ $$f(-2) = f(2)$$. |
+| **4. $$\mathbb{R}_{\ge 0} \to \mathbb{R}_{\ge 0}$$** | **Có** | **Có** | **Có** | Vừa không đụng độ, vừa phủ kín mọi $$y \ge 0$$ $$\implies$$ có nghịch đảo $$f^{-1}(y) = \sqrt{y}$$! |
 
-**Mẹo kiểm tra nhanh trên bài thi tập hữu hạn**: Trước khi xét chi tiết từng phần tử của $f: A \to B$, hãy liếc ngay kích thước $|A|$ và $|B|$:
-- Nếu $|A| > |B|$ (nhiều chim hơn chuồng) $\implies$ chắc chắn **không thể đơn ánh** (Nguyên lý Chuồng bồ câu!).
-- Nếu $|A| < |B|$ (quá ít mũi tên để chạm hết đích) $\implies$ chắc chắn **không thể toàn ánh**.
+**Mẹo kiểm tra nhanh trên bài thi tập hữu hạn**: Trước khi xét chi tiết từng phần tử của $$f: A \to B$$, hãy liếc ngay kích thước $$\lvert A \rvert$$ và $$\lvert B \rvert$$:
+- Nếu $$\lvert A \rvert > \lvert B \rvert$$ (nhiều chim hơn chuồng) $$\implies$$ chắc chắn **không thể đơn ánh** (Nguyên lý Chuồng bồ câu!).
+- Nếu $$\lvert A \rvert < \lvert B \rvert$$ (quá ít mũi tên để chạm hết đích) $$\implies$$ chắc chắn **không thể toàn ánh**.
 
 ## Ứng dụng trong Khoa học Máy tính
 

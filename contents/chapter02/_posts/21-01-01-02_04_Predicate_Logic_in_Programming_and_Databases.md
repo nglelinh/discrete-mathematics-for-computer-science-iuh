@@ -10,20 +10,20 @@ lang: en
 excerpt: "Kết nối vị từ và lượng từ với thực hành kỹ thuật phần mềm: truy vấn SQL (EXISTS, CHECK, FOREIGN KEY), assertion, schema validation và Design by Contract."
 ---
 
-Nếu bạn từng nghĩ lượng từ $\forall$ và $\exists$ chỉ sống trên bảng phấn toán học, hãy mở ngay một tệp truy vấn SQL hoặc mã Python/TypeScript của bất kỳ ứng dụng web nào: `EXISTS (SELECT ...)`, `NOT EXISTS`, `all(...)`, `any(...)`, `assert`, và ràng buộc `CHECK` trong cơ sở dữ liệu chính là **Logic Vị từ đang chạy ở tốc độ triệu bản ghi mỗi giây**.
+Nếu bạn từng nghĩ lượng từ $$\forall$$ và $$\exists$$ chỉ sống trên bảng phấn toán học, hãy mở ngay một tệp truy vấn SQL hoặc mã Python/TypeScript của bất kỳ ứng dụng web nào: `EXISTS (SELECT ...)`, `NOT EXISTS`, `all(...)`, `any(...)`, `assert`, và ràng buộc `CHECK` trong cơ sở dữ liệu chính là **Logic Vị từ đang chạy ở tốc độ triệu bản ghi mỗi giây**.
 
 ## Bản đồ kiến thức nền: Bốn cầu nối trực tiếp từ Logic Vị từ sang Phần mềm & CSDL
 
 1. **Phép tính Quan hệ (Relational Calculus) → SQL**:
-   SQL được Edgar F. Codd thiết kế trực tiếp từ Logic Vị từ bậc nhất: mỗi bảng là một vị từ (ví dụ `Enrolled(sid, cid)` đúng khi sinh viên `sid` đăng ký môn `cid`), mệnh đề `WHERE` là điều kiện lọc, và `EXISTS` chính là lượng từ $\exists$.
+   SQL được Edgar F. Codd thiết kế trực tiếp từ Logic Vị từ bậc nhất: mỗi bảng là một vị từ (ví dụ `Enrolled(sid, cid)` đúng khi sinh viên `sid` đăng ký môn `cid`), mệnh đề `WHERE` là điều kiện lọc, và `EXISTS` chính là lượng từ $$\exists$$.
 
-2. **Biểu diễn lượng từ Toàn thể ($\forall$) trong SQL bằng Phủ định kép**:
+2. **Biểu diễn lượng từ Toàn thể ($$\forall$$) trong SQL bằng Phủ định kép**:
    SQL không có từ khóa `FOR ALL` trực tiếp. Để truy vấn *"Tìm sinh viên đã học **tất cả** các môn bắt buộc"*, ta dùng chính Luật De Morgan lượng từ:
    $$\forall c\, P(s, c) \;\equiv\; \neg \exists c\, \neg P(s, c)$$
    và viết thành `WHERE NOT EXISTS (... WHERE NOT EXISTS (...))`!
 
 3. **Tiền điều kiện, Hậu điều kiện & Bất biến (Design by Contract)**:
-   Trong lập trình, `assert all(a[i] <= a[i+1] for i in range(n-1))` dịch thẳng công thức hậu điều kiện $\forall i \in [0, n-2],\; a[i] \le a[i+1]$ của thuật toán sắp xếp thành mã kiểm chứng tự động.
+   Trong lập trình, `assert all(a[i] <= a[i+1] for i in range(n-1))` dịch thẳng công thức hậu điều kiện $$\forall i \in [0, n-2],\; a[i] \le a[i+1]$$ của thuật toán sắp xếp thành mã kiểm chứng tự động.
 
 4. **Logic 3 giá trị (`TRUE`, `FALSE`, `UNKNOWN`) với `NULL` trong SQL**:
    Một khác biệt thực tế sống còn: trong SQL, so sánh với `NULL` trả về `UNKNOWN`, nên `NOT IN (SELECT ...)` sẽ trả về **tập rỗng** nếu truy vấn con chứa dù chỉ 1 giá trị `NULL`—đó là lý do kỹ sư CSDL luôn ưu tiên `NOT EXISTS`.
@@ -161,11 +161,11 @@ Cho 2 bảng nhỏ:
 - `Enrolled(sid, cid)`: `{ ('An', 'CS101'), ('An', 'CS102'), ('Bình', 'CS101') }`
 
 **Bước 1 — Viết bằng Logic Vị từ**:
-Tìm sinh viên $s$ thỏa $\forall c \in \text{Required},\; \text{Enrolled}(s, c)$.
+Tìm sinh viên $$s$$ thỏa $$\forall c \in \text{Required},\; \text{Enrolled}(s, c)$$.
 
-**Bước 2 — Biến đổi bằng De Morgan để khử $\forall$**:
+**Bước 2 — Biến đổi bằng De Morgan để khử $$\forall$$**:
 $$\forall c \in \text{Required},\; \text{Enrolled}(s, c) \;\equiv\; \neg \exists c \in \text{Required},\; \neg \text{Enrolled}(s, c).$$
-*(Đọc thành lời: "Không tồn tại môn bắt buộc $c$ nào mà sinh viên $s$ chưa đăng ký!")*
+*(Đọc thành lời: "Không tồn tại môn bắt buộc $$c$$ nào mà sinh viên $$s$$ chưa đăng ký!")*
 
 **Bước 3 — Dịch thẳng sang SQL**:
 ```sql
@@ -181,7 +181,7 @@ WHERE NOT EXISTS (
 ```
 
 **Bước 4 — Chạy tay trên từng sinh viên**:
-- Với **`An`**: Môn `CS101` có trong `Enrolled` (subquery trong = `True` → `NOT EXISTS` trong = `False`); môn `CS102` cũng có (`False`). Vậy tập các môn *bị thiếu* của An là **rỗng $\emptyset$** → `NOT EXISTS` ngoài trả về **`True` → Chọn `An`!**
+- Với **`An`**: Môn `CS101` có trong `Enrolled` (subquery trong = `True` → `NOT EXISTS` trong = `False`); môn `CS102` cũng có (`False`). Vậy tập các môn *bị thiếu* của An là **rỗng $$\emptyset$$** → `NOT EXISTS` ngoài trả về **`True` → Chọn `An`!**
 - Với **`Bình`**: Môn `CS102` không có trong `Enrolled` → tập các môn *bị thiếu* của Bình là `{'CS102'}` (khác rỗng!) → `NOT EXISTS` ngoài trả về **`False` → Loại `Bình`!**
 
 ## Phần 3: Assertion và schema trong mã nguồn

@@ -34,10 +34,10 @@ Mọi dòng lệnh `if (x > 0 && !is_locked)` trong chương trình, mọi cổn
 ## Bản đồ kiến thức nền: Logic Mệnh đề đứng trên những trụ cột nào?
 
 1. **Nguyên lý nhị trị (Law of Excluded Middle & Non-Contradiction)**:
-   Một mệnh đề hợp lệ phải có giá trị chân trị xác định duy nhất—hoặc Đúng, hoặc Sai, không bao giờ vừa Đúng vừa Sai. Các câu hỏi, câu cảm thán, mệnh lệnh hay câu chứa biến tự do chưa gắn giá trị (như "$x + 2 = 5$") đều **không phải** mệnh đề.
+   Một mệnh đề hợp lệ phải có giá trị chân trị xác định duy nhất—hoặc Đúng, hoặc Sai, không bao giờ vừa Đúng vừa Sai. Các câu hỏi, câu cảm thán, mệnh lệnh hay câu chứa biến tự do chưa gắn giá trị (như "$$x + 2 = 5$$") đều **không phải** mệnh đề.
 
 2. **Cú pháp (Syntax) vs. Ngữ nghĩa (Semantics)**:
-   **Cú pháp** quy định cách ghép biến mệnh đề ($p, q, r$) với các phép toán logic thành công thức hợp lệ (*well-formed formula*). **Ngữ nghĩa** gán giá trị chân trị `T`/`F` cho từng biến để định giá toàn bộ công thức.
+   **Cú pháp** quy định cách ghép biến mệnh đề ($$p, q, r$$) với các phép toán logic thành công thức hợp lệ (*well-formed formula*). **Ngữ nghĩa** gán giá trị chân trị `T`/`F` cho từng biến để định giá toàn bộ công thức.
 
 3. **Cầu nối từ Logic đến Khoa học Máy tính**:
    Mỗi biến mệnh đề tương ứng với 1 bit (`0`/`1`), mỗi công thức tương ứng với một mạch tổ hợp (combinational circuit) hoặc biểu thức điều kiện Boolean—nền tảng trực tiếp cho thiết kế vi mạch, kiểm chứng phần mềm và truy vấn cơ sở dữ liệu.
@@ -207,7 +207,7 @@ Nếu một hệ thống đủ mạnh có thể tự chứng minh rằng nó kh�
 | 1 | `"17 là số nguyên tố."` | **Có (`True`)** | Câu trần thuật có chân trị xác định (17 chỉ chia hết cho 1 và 17). |
 | 2 | `"2 + 2 = 5."` | **Có (`False`)** | Mệnh đề **sai** vẫn là mệnh đề! Đừng nhầm "mệnh đề" với "câu đúng". |
 | 3 | `"Hãy đóng cửa lại!"` | **Không** | Câu mệnh lệnh, không có nghĩa Đúng/Sai. |
-| 4 | `"x + 3 = 7."` | **Không** | Chứa biến tự do $x$: đúng khi $x = 4$, sai khi $x = 0$ (đây là *vị từ*, học ở Chương 2). |
+| 4 | `"x + 3 = 7."` | **Không** | Chứa biến tự do $$x$$: đúng khi $$x = 4$$, sai khi $$x = 0$$ (đây là *vị từ*, học ở Chương 2). |
 | 5 | `"Trên sao Hỏa từng có nước lỏng."` | **Có** | Chân trị tồn tại khách quan dù con người đã biết hay chưa. |
 | 6 | `"Câu này là sai."` | **Không** | Nghịch lý kẻ nói dối: nếu Đúng thì hóa Sai, nếu Sai thì hóa Đúng (vi phạm nguyên lý nhị trị). |
 

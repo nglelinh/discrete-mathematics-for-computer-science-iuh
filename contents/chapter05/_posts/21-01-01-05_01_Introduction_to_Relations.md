@@ -11,7 +11,7 @@ excerpt: "Giới thiệu khái niệm quan hệ như tập con của tích Desca
 ---
 
 
-Một danh sách sinh viên và một danh sách môn học đứng tách rời nhau chỉ là hai tập hợp vô hồn; hệ thống đào tạo chỉ thực sự "sống dậy" khi ta nối chúng lại bằng các cặp có thứ tự *(sinh viên $a$, môn học $b$)*. Từ bảng ghi danh trong SQL, mạng lưới người theo dõi trên mạng xã hội cho đến sơ đồ gọi hàm giữa các microservice, mọi sự kết nối có cấu trúc trong khoa học máy tính đều quy về một khái niệm duy nhất: **Quan hệ (Relation)**.
+Một danh sách sinh viên và một danh sách môn học đứng tách rời nhau chỉ là hai tập hợp vô hồn; hệ thống đào tạo chỉ thực sự "sống dậy" khi ta nối chúng lại bằng các cặp có thứ tự *(sinh viên $$a$$, môn học $$b$$)*. Từ bảng ghi danh trong SQL, mạng lưới người theo dõi trên mạng xã hội cho đến sơ đồ gọi hàm giữa các microservice, mọi sự kết nối có cấu trúc trong khoa học máy tính đều quy về một khái niệm duy nhất: **Quan hệ (Relation)**.
 
 <div class="textbook-epigraph" markdown="1">
 
@@ -27,19 +27,19 @@ Dưới góc nhìn toán học, quan hệ hai ngôi là một tập con của t�
 
 ## Bản đồ kiến thức nền: Bốn góc nhìn cốt lõi về Quan hệ Hai ngôi
 
-1. **Tích Descartes $A \times B$ — Không gian mọi liên kết có thể xảy ra**:
-   Trước khi xét quan hệ, ta tạo tập tất cả các cặp có thứ tự $(a, b)$ với $a \in A, b \in B$. Khác với tập hợp, thứ tự trong cặp rất quan trọng: $(a, b) \neq (b, a)$ khi $a \neq b$, và $|A \times B| = |A| \cdot |B|$.
+1. **Tích Descartes $$A \times B$$ — Không gian mọi liên kết có thể xảy ra**:
+   Trước khi xét quan hệ, ta tạo tập tất cả các cặp có thứ tự $$(a, b)$$ với $$a \in A, b \in B$$. Khác với tập hợp, thứ tự trong cặp rất quan trọng: $$(a, b) \neq (b, a)$$ khi $$a \neq b$$, và $$\lvert A \times B \rvert = \lvert A \rvert \cdot \lvert B \rvert$$.
 
-2. **Quan hệ $R \subseteq A \times B$ — Chọn lọc những liên kết thực sự tồn tại**:
-   Một quan hệ hai ngôi từ $A$ đến $B$ đơn giản là một **tập con** của $A \times B$. Ta viết $aRb$ (hoặc $(a, b) \in R$) để khẳng định $a$ có quan hệ $R$ với $b$. Nếu $A = B$, ta gọi là quan hệ **trên tập $A$**.
+2. **Quan hệ $$R \subseteq A \times B$$ — Chọn lọc những liên kết thực sự tồn tại**:
+   Một quan hệ hai ngôi từ $$A$$ đến $$B$$ đơn giản là một **tập con** của $$A \times B$$. Ta viết $$aRb$$ (hoặc $$(a, b) \in R$$) để khẳng định $$a$$ có quan hệ $$R$$ với $$b$$. Nếu $$A = B$$, ta gọi là quan hệ **trên tập $$A$$**.
 
 3. **Bốn cách biểu diễn tương đương (chọn đúng công cụ cho đúng bài toán)**:
    - *Liệt kê cặp* và *Mô tả tính chất*: gọn gàng cho tư duy toán học và chứng minh.
-   - *Ma trận quan hệ $M_R$ (0–1)*: tối ưu cho máy tính, phép nhân Boolean và thuật toán đồ thị dày.
+   - *Ma trận quan hệ $$M_R$$ (0–1)*: tối ưu cho máy tính, phép nhân Boolean và thuật toán đồ thị dày.
    - *Đồ thị có hướng (Digraph)*: trực quan nhất để nhìn đường đi, chu trình và khuyên (self-loop).
 
-4. **Quy mô bùng nổ tổ hợp ($2^{|A|\cdot|B|}$)**:
-   Vì mỗi cặp trong $A \times B$ có 2 lựa chọn (thuộc $R$ hoặc không), nên trên tập $A$ gồm $n$ phần tử có tới $2^{n^2}$ quan hệ khác nhau—ngay cả với $n = 4$ đã có $2^{16} = 65{,}536$ quan hệ!
+4. **Quy mô bùng nổ tổ hợp ($$2^{\lvert A \rvert\cdot\lvert B \rvert}$$)**:
+   Vì mỗi cặp trong $$A \times B$$ có 2 lựa chọn (thuộc $$R$$ hoặc không), nên trên tập $$A$$ gồm $$n$$ phần tử có tới $$2^{n^2}$$ quan hệ khác nhau—ngay cả với $$n = 4$$ đã có $$2^{16} = 65{,}536$$ quan hệ!
 
 ## Mục tiêu học tập
 
@@ -133,23 +133,23 @@ Cho $$A = \{a_1, a_2, \ldots, a_m\}$$ và $$B = \{b_1, b_2, \ldots, b_n\}$$. Ma 
 
 <p class="textbook-figure-caption" data-figure="5.2">Tích Descartes A × B — mỗi cặp (a, b) ghép một phần tử từ A với một phần tử từ B.</p>
 
-### Khung giải thích (nên đọc chậm): Biểu diễn quan hệ chia hết trên $A = \{1, 2, 3, 4\}$ theo đủ 4 cách
+### Khung giải thích (nên đọc chậm): Biểu diễn quan hệ chia hết trên $$A = \{1, 2, 3, 4\}$$ theo đủ 4 cách
 
-Xét tập $A = \{1, 2, 3, 4\}$ và quan hệ $R$ trên $A$ định nghĩa bởi $aRb \iff a \mid b$ ($a$ là ước của $b$).
+Xét tập $$A = \{1, 2, 3, 4\}$$ và quan hệ $$R$$ trên $$A$$ định nghĩa bởi $$aRb \iff a \mid b$$ ($$a$$ là ước của $$b$$).
 
 1. **Cách 1 — Mô tả bằng tính chất**:
    $$R = \{(a, b) \in A \times A \mid b \bmod a = 0\}.$$
-2. **Cách 2 — Liệt kê từng cặp có thứ tự** (duyệt từng hàng $a = 1, 2, 3, 4$):
-   - $a = 1$ chia hết mọi phần tử: $(1,1), (1,2), (1,3), (1,4)$ (4 cặp).
-   - $a = 2$ chia hết $2$ và $4$: $(2,2), (2,4)$ (2 cặp).
-   - $a = 3$ chỉ chia hết $3$: $(3,3)$ (1 cặp).
-   - $a = 4$ chỉ chia hết $4$: $(4,4)$ (1 cặp).
-   Tổng cộng $|R| = 4 + 2 + 1 + 1 = \mathbf{8}$ cặp trên tổng số $|A \times A| = 4 \times 4 = 16$ cặp khả dĩ.
-3. **Cách 3 — Ma trận quan hệ $M_R$ ($4 \times 4$)** (hàng là $a$, cột là $b$; ghi `1` nếu $a \mid b$, ngược lại `0`):
+2. **Cách 2 — Liệt kê từng cặp có thứ tự** (duyệt từng hàng $$a = 1, 2, 3, 4$$):
+   - $$a = 1$$ chia hết mọi phần tử: $$(1,1), (1,2), (1,3), (1,4)$$ (4 cặp).
+   - $$a = 2$$ chia hết $$2$$ và $$4$$: $$(2,2), (2,4)$$ (2 cặp).
+   - $$a = 3$$ chỉ chia hết $$3$$: $$(3,3)$$ (1 cặp).
+   - $$a = 4$$ chỉ chia hết $$4$$: $$(4,4)$$ (1 cặp).
+   Tổng cộng $$\lvert R \rvert = 4 + 2 + 1 + 1 = \mathbf{8}$$ cặp trên tổng số $$\lvert A \times A \rvert = 4 \times 4 = 16$$ cặp khả dĩ.
+3. **Cách 3 — Ma trận quan hệ $$M_R$$ ($$4 \times 4$$)** (hàng là $$a$$, cột là $$b$$; ghi `1` nếu $$a \mid b$$, ngược lại `0`):
    $$M_R = \begin{pmatrix} 1 & 1 & 1 & 1 \\ 0 & 1 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}$$
    *Mẹo đọc nhanh*: Đường chéo chính toàn số `1` (mọi số đều chia hết chính nó), và toàn bộ nửa dưới đường chéo đều là `0` (vì số lớn không bao giờ chia hết số nhỏ hơn trong tập dương).
 4. **Cách 4 — Đồ thị có hướng (Digraph)**:
-   Vẽ 4 đỉnh `1, 2, 3, 4`. Có **4 khuyên** tại chính mỗi đỉnh (`1→1, 2→2, 3→3, 4→4`) và **4 mũi tên nối hai đỉnh khác nhau** (`1→2, 1→3, 1→4, 2→4`). Đếm lại: $4 + 4 = 8$ cung, khớp hoàn toàn với số phần tử `1` trong ma trận $M_R$!
+   Vẽ 4 đỉnh `1, 2, 3, 4`. Có **4 khuyên** tại chính mỗi đỉnh (`1→1, 2→2, 3→3, 4→4`) và **4 mũi tên nối hai đỉnh khác nhau** (`1→2, 1→3, 1→4, 2→4`). Đếm lại: $$4 + 4 = 8$$ cung, khớp hoàn toàn với số phần tử `1` trong ma trận $$M_R$$!
 
 ## Ứng dụng trong Khoa học Máy tính
 

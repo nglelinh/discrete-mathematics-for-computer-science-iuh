@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" font-family="Source Sans Pro, Inter, Arial, Helvetica, sans-serif" role="img" aria-label="Hàm băm h(k) = k mod 5 ánh xạ khóa vào ngăn bảng, có một va chạm">
+  <rect width="920" height="540" fill="#fafbfc"/>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#004586"/>
+    </marker>
+    <marker id="arrow-warn" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#d97706"/>
+    </marker>
+  </defs>
+
+  <text x="460" y="32" text-anchor="middle" font-size="17" font-weight="600" fill="#1a1a2e">Hàm băm: ánh xạ khóa vào ngăn bảng</text>
+  <text x="460" y="54" text-anchor="middle" font-size="13" fill="#5c6370">h(k) = k mod 5, với k là số nguyên gắn với mỗi khóa</text>
+
+  <!-- Column headers -->
+  <text x="150" y="82" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a2e">Khóa k  ·  miền xác định</text>
+  <text x="770" y="82" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a2e">Ngăn h(k)  ·  miền đích</text>
+
+  <!-- Key cards: y = 100, 190, 280, 370; size 228x72 -->
+  <!-- 1. an@iuh.edu.vn, k=12 → 2 -->
+  <rect x="36" y="100" width="228" height="72" rx="8" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="150" y="130" text-anchor="middle" font-size="14" fill="#1a1a2e">an@iuh.edu.vn</text>
+  <text x="150" y="152" text-anchor="middle" font-size="12" fill="#5c6370">k = 12</text>
+
+  <!-- 2. MSSV 2101, k=2101 → 1 -->
+  <rect x="36" y="190" width="228" height="72" rx="8" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="150" y="220" text-anchor="middle" font-size="14" fill="#1a1a2e">MSSV 2101</text>
+  <text x="150" y="242" text-anchor="middle" font-size="12" fill="#5c6370">k = 2101</text>
+
+  <!-- 3. binh, k=23 → 3 -->
+  <rect x="36" y="280" width="228" height="72" rx="8" fill="#fff" stroke="#004586" stroke-width="1.5"/>
+  <text x="150" y="310" text-anchor="middle" font-size="14" fill="#1a1a2e">binh</text>
+  <text x="150" y="332" text-anchor="middle" font-size="12" fill="#5c6370">k = 23</text>
+
+  <!-- 4. MSSV 2106, k=2106 → 1 (collision) -->
+  <rect x="36" y="370" width="228" height="72" rx="8" fill="#fff8eb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="150" y="400" text-anchor="middle" font-size="14" fill="#1a1a2e">MSSV 2106</text>
+  <text x="150" y="422" text-anchor="middle" font-size="12" fill="#92400e">k = 2106  ·  va chạm với 2101</text>
+
+  <!-- Hash function box -->
+  <rect x="370" y="230" width="180" height="96" rx="10" fill="#dbeafe" stroke="#004586" stroke-width="2"/>
+  <text x="460" y="268" text-anchor="middle" font-size="15" font-weight="600" fill="#1a1a2e">h(k) = k mod 5</text>
+  <text x="460" y="294" text-anchor="middle" font-size="12" fill="#334155">mỗi khóa → đúng một ngăn</text>
+
+  <!-- Hash table slots: x=670, w=200, h=56, start y=100 -->
+  <!-- slot 0 empty -->
+  <rect x="670" y="100" width="200" height="56" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.25"/>
+  <text x="696" y="134" text-anchor="middle" font-size="16" font-weight="600" fill="#64748b">0</text>
+  <text x="790" y="134" text-anchor="middle" font-size="13" fill="#94a3b8">trống</text>
+
+  <!-- slot 1 collision -->
+  <rect x="670" y="156" width="200" height="56" fill="#fef3c7" stroke="#d97706" stroke-width="1.75"/>
+  <text x="696" y="190" text-anchor="middle" font-size="16" font-weight="600" fill="#92400e">1</text>
+  <text x="790" y="178" text-anchor="middle" font-size="13" fill="#1a1a2e">2101,  2106</text>
+  <text x="790" y="196" text-anchor="middle" font-size="11" font-weight="600" fill="#d97706">va chạm — không đơn ánh</text>
+
+  <!-- slot 2: 12 -->
+  <rect x="670" y="212" width="200" height="56" fill="#fff" stroke="#004586" stroke-width="1.25"/>
+  <text x="696" y="246" text-anchor="middle" font-size="16" font-weight="600" fill="#004586">2</text>
+  <text x="790" y="246" text-anchor="middle" font-size="13" fill="#1a1a2e">12</text>
+
+  <!-- slot 3: 23 -->
+  <rect x="670" y="268" width="200" height="56" fill="#fff" stroke="#004586" stroke-width="1.25"/>
+  <text x="696" y="302" text-anchor="middle" font-size="16" font-weight="600" fill="#004586">3</text>
+  <text x="790" y="302" text-anchor="middle" font-size="13" fill="#1a1a2e">23</text>
+
+  <!-- slot 4 empty -->
+  <rect x="670" y="324" width="200" height="56" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.25"/>
+  <text x="696" y="358" text-anchor="middle" font-size="16" font-weight="600" fill="#64748b">4</text>
+  <text x="790" y="358" text-anchor="middle" font-size="13" fill="#94a3b8">trống</text>
+
+  <!-- Incoming arrows: key right (264, keycy) -> box left (370, ...) -->
+  <!-- key centers: 100+36=136, 190+36=226, 280+36=316, 370+36=406 -->
+  <line x1="264" y1="136" x2="370" y2="250" stroke="#004586" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="264" y1="226" x2="370" y2="272" stroke="#004586" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="264" y1="316" x2="370" y2="294" stroke="#004586" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="264" y1="406" x2="370" y2="312" stroke="#d97706" stroke-width="1.6" marker-end="url(#arrow-warn)"/>
+
+  <!-- Outgoing arrows: box right (550, ...) -> slot left (670, slotcy) -->
+  <!-- slot centers: 100+28=128, 156+28=184, 212+28=240, 268+28=296, 324+28=352 -->
+  <!-- 12 → slot 2 (240); 2101 → slot 1 (184); 23 → slot 3 (296); 2106 → slot 1 offset (172) -->
+  <line x1="550" y1="250" x2="670" y2="240" stroke="#004586" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="550" y1="268" x2="670" y2="192" stroke="#004586" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="550" y1="292" x2="670" y2="296" stroke="#004586" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="550" y1="310" x2="670" y2="176" stroke="#d97706" stroke-width="1.6" marker-end="url(#arrow-warn)"/>
+
+  <!-- Arithmetic labels beside each key arrow, away from crossings -->
+  <text x="318" y="118" text-anchor="middle" font-size="11" fill="#334155">12 mod 5 = 2</text>
+  <text x="318" y="208" text-anchor="middle" font-size="11" fill="#334155">2101 mod 5 = 1</text>
+  <text x="318" y="348" text-anchor="middle" font-size="11" fill="#334155">23 mod 5 = 3</text>
+  <text x="318" y="438" text-anchor="middle" font-size="11" fill="#92400e">2106 mod 5 = 1</text>
+
+  <text x="460" y="500" text-anchor="middle" font-size="13" fill="#5c6370">Mỗi khóa có đúng một ngăn — đây là hàm. Hai khóa khác nhau cùng ngăn 1 nên hàm không đơn ánh.</text>
+  <text x="460" y="522" text-anchor="middle" font-size="12" fill="#64748b">Kiểm tra: 12 = 2·5 + 2,  2101 = 420·5 + 1,  23 = 4·5 + 3,  2106 = 421·5 + 1.</text>
+</svg>

@@ -23,14 +23,14 @@ Bài ghi chú ứng dụng song ngữ. Nội dung này **không** thay thế hay
 
 ## Bản đồ kiến thức nền: Ba trụ cột của Cấu trúc Biểu diễn Tập Xấp xỉ Gọn
 
-1. **Hàm đặc trưng $\mathbf{1}_S$ & Cận dưới lý thuyết thông tin**:
-   Một tập con $S \subseteq U$ tương đương với hàm đặc trưng $\mathbf{1}_S : U \to \{0, 1\}$. Nếu muốn lưu xấp xỉ $S$ với tỷ lệ dương tính giả không quá $\varepsilon$, lý thuyết thông tin chứng minh mọi cấu trúc dữ liệu đều cần ít nhất $\log_2(1/\varepsilon)$ bit cho mỗi phần tử.
+1. **Hàm đặc trưng $$\mathbf{1}_S$$ & Cận dưới lý thuyết thông tin**:
+   Một tập con $$S \subseteq U$$ tương đương với hàm đặc trưng $$\mathbf{1}_S : U \to \{0, 1\}$$. Nếu muốn lưu xấp xỉ $$S$$ với tỷ lệ dương tính giả không quá $$\varepsilon$$, lý thuyết thông tin chứng minh mọi cấu trúc dữ liệu đều cần ít nhất $$\log_2(1/\varepsilon)$$ bit cho mỗi phần tử.
 
 2. **Sai số một phía do Nguyên lý Chuồng bồ câu**:
-   Khi ngân sách bộ nhớ nhỏ hơn $\log_2 \binom{|U|}{|S|}$ bit, theo Nguyên lý Chuồng bồ câu chắc chắn có hai tập khác nhau chia sẻ cùng một trạng thái bộ nhớ—nên dương tính giả (*false positive*) là cái giá toán học bắt buộc để đổi lấy dung lượng siêu nhỏ, trong khi vẫn giữ tuyệt đối không có âm tính giả.
+   Khi ngân sách bộ nhớ nhỏ hơn $$\log_2 \binom{\lvert U \rvert}{\lvert S \rvert}$$ bit, theo Nguyên lý Chuồng bồ câu chắc chắn có hai tập khác nhau chia sẻ cùng một trạng thái bộ nhớ—nên dương tính giả (*false positive*) là cái giá toán học bắt buộc để đổi lấy dung lượng siêu nhỏ, trong khi vẫn giữ tuyệt đối không có âm tính giả.
 
 3. **Bước nhảy từ Bloom Filter đến Binary Fuse Filter (Graf & Lemire, 2022)**:
-   Bloom filter cổ điển tốn tới $\approx 1{,}44 \log_2(1/\varepsilon)$ bit/phần tử (dư 44% so với cận lý thuyết). **Binary Fuse Filter** giải một hệ phương trình XOR thưa trên đồ thị phân đoạn, kéo dung lượng xuống chỉ còn **1,13x** (bản 3-wise) hoặc **1,08x** (bản 4-wise) cận dưới lý thuyết thông tin và xây dựng nhanh hơn gấp đôi Xor filter.
+   Bloom filter cổ điển tốn tới $$\approx 1{,}44 \log_2(1/\varepsilon)$$ bit/phần tử (dư 44% so với cận lý thuyết). **Binary Fuse Filter** giải một hệ phương trình XOR thưa trên đồ thị phân đoạn, kéo dung lượng xuống chỉ còn **1,13x** (bản 3-wise) hoặc **1,08x** (bản 4-wise) cận dưới lý thuyết thông tin và xây dựng nhanh hơn gấp đôi Xor filter.
 
 ## English
 
@@ -64,17 +64,17 @@ Bạn nên đọc phần này sau các mục tập hợp bắt buộc để th�
 
 **Câu hỏi.** (1) Binary fuse filter là một tập con của $$U$$ hay là một *biểu diễn nén có mất mát* của tập con đó? (2) Phép toán tập hợp nào vẫn có chi phí thấp khi hệ thống chỉ lưu giữ bộ lọc này?
 
-### Khung giải thích (nên đọc chậm): Tính tay dung lượng RAM cho 10 triệu phần tử ở mức sai số $\varepsilon \approx 0{,}39\%$
+### Khung giải thích (nên đọc chậm): Tính tay dung lượng RAM cho 10 triệu phần tử ở mức sai số $$\varepsilon \approx 0{,}39\%$$
 
-Giả sử hệ thống cần lưu một tập tĩnh gồm $|S| = 10{,}000{,}000$ URL độc hại và yêu cầu tỷ lệ dương tính giả $\varepsilon = 2^{-8} = \frac{1}{256} \approx 0{,}39\%$ (tương ứng dấu vân tay dài $f = 8$ bit):
+Giả sử hệ thống cần lưu một tập tĩnh gồm $$\lvert S \rvert = 10{,}000{,}000$$ URL độc hại và yêu cầu tỷ lệ dương tính giả $$\varepsilon = 2^{-8} = \frac{1}{256} \approx 0{,}39\%$$ (tương ứng dấu vân tay dài $$f = 8$$ bit):
 
 1. **Cận dưới lý thuyết thông tin (không thuật toán nào vượt qua được)**:
    $$\text{Số bit/khóa} = \log_2\!\left(\frac{1}{\varepsilon}\right) = \log_2(256) = \mathbf{8\text{ bit/khóa}} \implies 8 \times 10^7\text{ bit} = \mathbf{10{,}00\text{ MB}}.$$
-2. **Bloom Filter chuẩn** (chi phí $\frac{1}{\ln 2}\log_2(1/\varepsilon) \approx 1{,}4427 \times 8$):
+2. **Bloom Filter chuẩn** (chi phí $$\frac{1}{\ln 2}\log_2(1/\varepsilon) \approx 1{,}4427 \times 8$$):
    $$\text{Số bit/khóa} \approx \mathbf{11{,}54\text{ bit/khóa}} \implies \mathbf{14{,}43\text{ MB}} \quad (\text{dư } 44{,}3\%).$$
-3. **Binary Fuse Filter 3-wise (2022)** (chi phí $\approx 1{,}13 \times 8$):
+3. **Binary Fuse Filter 3-wise (2022)** (chi phí $$\approx 1{,}13 \times 8$$):
    $$\text{Số bit/khóa} \approx \mathbf{9{,}04\text{ bit/khóa}} \implies \mathbf{11{,}30\text{ MB}} \quad (\text{chỉ dư } 13\%).$$
-4. **Binary Fuse Filter 4-wise (2022)** (chi phí $\approx 1{,}08 \times 8$):
+4. **Binary Fuse Filter 4-wise (2022)** (chi phí $$\approx 1{,}08 \times 8$$):
    $$\text{Số bit/khóa} \approx \mathbf{8{,}64\text{ bit/khóa}} \implies \mathbf{10{,}80\text{ MB}} \quad (\text{chỉ dư } 8\%).$$
 
 Chỉ bằng cách đổi cấu trúc mã hóa tập hợp từ Bloom filter sang Binary Fuse Filter, hệ thống tiết kiệm được hơn **3,1–3,6 MB RAM** trên mỗi 10 triệu khóa mà không tăng thêm một phần nghìn sai số nào—lợi ích nhân lên thành hàng chục gigabyte trên hạ tầng cơ sở dữ liệu phân tán.

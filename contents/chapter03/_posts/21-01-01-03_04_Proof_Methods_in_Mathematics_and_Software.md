@@ -17,8 +17,8 @@ Từ bộ *Cơ sở (Elements)* của Euclid hơn 2.300 năm trước đến b�
 1. **Hệ tiên đề Euclid → Đặc tả hình thức (Formal Specification)**:
    Mọi chứng minh đều bắt đầu từ các tiên đề không cần chứng minh và xây chồng định lý lên nhau—giống hệt cách đặc tả giao thức mạng hay bộ tập lệnh CPU định nghĩa tập bất biến nền tảng.
 
-2. **Bộ ba Hoare $\{P\}\; C\; \{Q\}$ & Bất biến vòng lặp**:
-   Tính đúng đắn từng phần của đoạn mã $C$ được phát biểu bằng tiền điều kiện $P$ và hậu điều kiện $Q$: nếu $P$ đúng trước khi chạy $C$ và $C$ kết thúc, thì $Q$ chắc chắn đúng. Kết hợp thêm một **hàm biến thể giảm ngặt** (termination variant) cho ta tính đúng đắn toàn phần!
+2. **Bộ ba Hoare $$\{P\}\; C\; \{Q\}$$ & Bất biến vòng lặp**:
+   Tính đúng đắn từng phần của đoạn mã $$C$$ được phát biểu bằng tiền điều kiện $$P$$ và hậu điều kiện $$Q$$: nếu $$P$$ đúng trước khi chạy $$C$$ và $$C$$ kết thúc, thì $$Q$$ chắc chắn đúng. Kết hợp thêm một **hàm biến thể giảm ngặt** (termination variant) cho ta tính đúng đắn toàn phần!
 
 3. **Chứng minh quy dẫn trong Mật mã học (Security Reduction)**:
    Làm sao chứng minh một hệ mật mới an toàn? Nhà mật mã dùng chính chứng minh phản đảo/quy dẫn: *"Nếu kẻ tấn công phá được hệ mật X trong thời gian đa thức, ta sẽ dùng kẻ tấn công đó làm hàm con để giải bài toán phân tích thừa số nguyên tố RSA!"*
@@ -103,11 +103,11 @@ for i in range(1, n):
         m = A[i]
 return m
 ```
-Ta chọn **Bất biến vòng lặp $I(i)$**: *"Sau khi xử lý đến chỉ số $i - 1$, biến `m` luôn bằng $\max(A[0], A[1], \dots, A[i-1])$."*
+Ta chọn **Bất biến vòng lặp $$I(i)$$**: *"Sau khi xử lý đến chỉ số $$i - 1$$, biến `m` luôn bằng $$\max(A[0], A[1], \dots, A[i-1])$$."*
 
-1. **Khởi tạo (Initialization, $i = 1$)**: Trước vòng lặp, `m = A[0] = max(A[0..0])` → $I(1)$ **Đúng**.
-2. **Bảo toàn (Maintenance)**: Giả sử đầu lượt lặp $i$, $I(i)$ đúng tức `m = max(A[0..i-1])`. Sau lệnh `if A[i] > m: m = A[i]`, giá trị mới của `m` là $\max(\max(A[0..i-1]), A[i]) = \max(A[0..i])$, nên $I(i+1)$ **Đúng**.
-3. **Kết thúc (Termination)**: Vòng lặp tăng $i$ từ $1$ đến $n$ (biến thể $n - i$ giảm ngặt về $0$, chắc chắn dừng!). Khi dừng ở $i = n$, bất biến $I(n)$ cho ngay **`m = max(A[0..n-1])`** — chứng minh đúng tuyệt đối cho mọi mảng kích thước $n \ge 1$!
+1. **Khởi tạo (Initialization, $$i = 1$$)**: Trước vòng lặp, `m = A[0] = max(A[0..0])` → $$I(1)$$ **Đúng**.
+2. **Bảo toàn (Maintenance)**: Giả sử đầu lượt lặp $$i$$, $$I(i)$$ đúng tức `m = max(A[0..i-1])`. Sau lệnh `if A[i] > m: m = A[i]`, giá trị mới của `m` là $$\max(\max(A[0..i-1]), A[i]) = \max(A[0..i])$$, nên $$I(i+1)$$ **Đúng**.
+3. **Kết thúc (Termination)**: Vòng lặp tăng $$i$$ từ $$1$$ đến $$n$$ (biến thể $$n - i$$ giảm ngặt về $$0$$, chắc chắn dừng!). Khi dừng ở $$i = n$$, bất biến $$I(n)$$ cho ngay **`m = max(A[0..n-1])`** — chứng minh đúng tuyệt đối cho mọi mảng kích thước $$n \ge 1$$!
 
 ## Phần 3: Chứng minh trong mật mã học
 

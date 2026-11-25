@@ -10,21 +10,21 @@ lang: en
 excerpt: "Giới thiệu phương pháp chứng minh phản chứng (proof by contradiction), cách nhận diện mâu thuẫn và ứng dụng trong toán rời rạc cùng khoa học máy tính."
 ---
 
-Có những chân lý sâu sắc nhất của toán học và khoa học máy tính mà con đường đi thẳng dường như bịt kín: làm sao chứng minh $\sqrt{2}$ **không thể** viết dưới dạng phân số, số nguyên tố là **vô hạn**, hay không tồn tại thuật toán nào giải được **Bài toán Dừng (Halting Problem)**? Khi đối mặt với các phát biểu phủ định hoặc "không tồn tại", **Chứng minh Phản chứng (Proof by Contradiction)** là vũ khí sắc bén nhất: tạm giả sử điều ta muốn chứng minh là *sai*, rồi đẩy giả thiết đó đến một mâu thuẫn không thể cứu vãn.
+Có những chân lý sâu sắc nhất của toán học và khoa học máy tính mà con đường đi thẳng dường như bịt kín: làm sao chứng minh $$\sqrt{2}$$ **không thể** viết dưới dạng phân số, số nguyên tố là **vô hạn**, hay không tồn tại thuật toán nào giải được **Bài toán Dừng (Halting Problem)**? Khi đối mặt với các phát biểu phủ định hoặc "không tồn tại", **Chứng minh Phản chứng (Proof by Contradiction)** là vũ khí sắc bén nhất: tạm giả sử điều ta muốn chứng minh là *sai*, rồi đẩy giả thiết đó đến một mâu thuẫn không thể cứu vãn.
 
 ## Bản đồ kiến thức nền: Bốn trụ cột của Chứng minh Phản chứng
 
-1. **Cơ sở Logic ($\neg P \to F \equiv P$)**:
-   Nếu giả sử $\neg P$ đúng mà qua các bước suy diễn hợp lệ ta dẫn tới một mâu thuẫn $r \land \neg r$ (luôn Sai), thì giả thiết $\neg P$ buộc phải Sai—suy ra $P$ chắc chắn Đúng!
+1. **Cơ sở Logic ($$\neg P \to F \equiv P$$)**:
+   Nếu giả sử $$\neg P$$ đúng mà qua các bước suy diễn hợp lệ ta dẫn tới một mâu thuẫn $$r \land \neg r$$ (luôn Sai), thì giả thiết $$\neg P$$ buộc phải Sai—suy ra $$P$$ chắc chắn Đúng!
 
 2. **Bốn bước chuẩn mực**:
-   (1) Giả sử ngược lại $\neg P$ đúng (với $A \to B$, phủ định là **$A \land \neg B$**!); (2) Suy diễn hợp lệ từ giả thiết đó; (3) Chỉ rõ mâu thuẫn tường minh (ví dụ số vừa chẵn vừa lẻ, phân số tối giản nhưng tử mẫu cùng chia hết cho 2); (4) Kết luận $P$ đúng.
+   (1) Giả sử ngược lại $$\neg P$$ đúng (với $$A \to B$$, phủ định là **$$A \land \neg B$$**!); (2) Suy diễn hợp lệ từ giả thiết đó; (3) Chỉ rõ mâu thuẫn tường minh (ví dụ số vừa chẵn vừa lẻ, phân số tối giản nhưng tử mẫu cùng chia hết cho 2); (4) Kết luận $$P$$ đúng.
 
 3. **Khi nào nên nghĩ ngay đến Phản chứng?**:
    Khi định lý chứa từ khóa *"không tồn tại"*, *"vô tỉ"*, *"vô hạn"*, *"duy nhất"*, hoặc *"không có thuật toán nào..."*—nơi việc giả sử đối tượng đó *có tồn tại* cho ta ngay một công thức cụ thể để thao tác đại số.
 
 4. **Dấu ấn lịch sử trong Khoa học Máy tính**:
-   Định lý Euclid (vô hạn số nguyên tố), tính vô tỉ của $\sqrt{2}$, bài toán Dừng của Alan Turing (1936), và định lý CAP trong hệ phân tán đều là những kiệt tác của chứng minh phản chứng.
+   Định lý Euclid (vô hạn số nguyên tố), tính vô tỉ của $$\sqrt{2}$$, bài toán Dừng của Alan Turing (1936), và định lý CAP trong hệ phân tán đều là những kiệt tác của chứng minh phản chứng.
 
 ## Mục tiêu học tập
 
@@ -130,19 +130,19 @@ Nhiều phát biểu trong khoa học máy tính có dạng này:
 - Một phần tử vừa thuộc tập hợp vừa không thuộc tập hợp đó.
 - Một trạng thái hệ thống vừa đạt được ("reachable") vừa không đạt được ("unreachable").
 
-### Khung giải thích (nên đọc chậm): Theo dõi từng bước chứng minh kinh điển $\sqrt{2}$ là số vô tỉ
+### Khung giải thích (nên đọc chậm): Theo dõi từng bước chứng minh kinh điển $$\sqrt{2}$$ là số vô tỉ
 
 Để thấy rõ sức mạnh của việc "tạm giả sử có tồn tại", hãy kiểm tra từng dòng của chứng minh 2.500 năm tuổi này:
 
-1. **Giả sử phản chứng**: Giả sử $\sqrt{2}$ là số **hữu tỉ**. Khi đó tồn tại hai số nguyên $a, b \in \mathbb{Z}$ ($b \neq 0$) sao cho $\sqrt{2} = \frac{a}{b}$ và phân số này **tối giản**, tức $\gcd(a, b) = 1$ (không cùng chia hết cho 2).
+1. **Giả sử phản chứng**: Giả sử $$\sqrt{2}$$ là số **hữu tỉ**. Khi đó tồn tại hai số nguyên $$a, b \in \mathbb{Z}$$ ($$b \neq 0$$) sao cho $$\sqrt{2} = \frac{a}{b}$$ và phân số này **tối giản**, tức $$\gcd(a, b) = 1$$ (không cùng chia hết cho 2).
 2. **Bình phương hai vế**:
    $$2 = \frac{a^2}{b^2} \implies a^2 = 2b^2.$$
-3. **Suy ra $a$ chẵn**: Vì $a^2 = 2b^2$ là số chẵn nên $a$ phải chẵn (nếu $a$ lẻ thì $a^2$ lẻ). Do đó $a = 2k$ với $k \in \mathbb{Z}$.
-4. **Thế ngược lại để suy ra $b$ chẵn**:
+3. **Suy ra $$a$$ chẵn**: Vì $$a^2 = 2b^2$$ là số chẵn nên $$a$$ phải chẵn (nếu $$a$$ lẻ thì $$a^2$$ lẻ). Do đó $$a = 2k$$ với $$k \in \mathbb{Z}$$.
+4. **Thế ngược lại để suy ra $$b$$ chẵn**:
    $$(2k)^2 = 2b^2 \implies 4k^2 = 2b^2 \implies b^2 = 2k^2.$$
-   Suy ra $b^2$ chẵn, kéo theo $b$ cũng là số **chẵn**!
-5. **Bắt quả tang mâu thuẫn**: Cả $a$ và $b$ đều chia hết cho $2 \implies \gcd(a, b) \ge 2$, mâu thuẫn trực diện với giả thiết $\gcd(a, b) = 1$ ở Bước 1!
-6. **Kết luận**: Giả sử ban đầu sai, vậy $\sqrt{2}$ chắc chắn là **số vô tỉ**.
+   Suy ra $$b^2$$ chẵn, kéo theo $$b$$ cũng là số **chẵn**!
+5. **Bắt quả tang mâu thuẫn**: Cả $$a$$ và $$b$$ đều chia hết cho $$2 \implies \gcd(a, b) \ge 2$$, mâu thuẫn trực diện với giả thiết $$\gcd(a, b) = 1$$ ở Bước 1!
+6. **Kết luận**: Giả sử ban đầu sai, vậy $$\sqrt{2}$$ chắc chắn là **số vô tỉ**.
 
 ## Quy trình viết chứng minh phản chứng
 

@@ -260,7 +260,7 @@ Khi bài toán yêu cầu thêm cận trên $$0\le x_i\le b_i$$, phương pháp 
 
 <div class="textbook-equation" markdown="1">
 $$
-|U\setminus(A_1\cup\cdots\cup A_n)|=|U|-|A_1\cup\cdots\cup A_n|.
+\lvert U\setminus(A_1\cup\cdots\cup A_n) \rvert=\lvert U \rvert-\lvert A_1\cup\cdots\cup A_n \rvert.
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>

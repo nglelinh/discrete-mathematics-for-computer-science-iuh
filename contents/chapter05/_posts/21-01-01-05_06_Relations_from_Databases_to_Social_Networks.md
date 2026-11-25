@@ -20,13 +20,13 @@ Trong toán học rời rạc, quan hệ là một tập con của tích Descart
 ## Bản đồ kiến thức nền: Bốn cây cầu đưa Quan hệ Toán học vào Hệ thống Công nghiệp
 
 1. **Mô hình Quan hệ & Đại số Quan hệ của E. F. Codd**:
-   Mỗi bảng SQL là một quan hệ $n$-ngôi $R \subseteq D_1 \times \dots \times D_n$; mọi câu truy vấn `SELECT / WHERE / JOIN` đều được bộ tối ưu hóa dịch thành các phép toán đại số quan hệ ($\pi, \sigma, \bowtie$).
+   Mỗi bảng SQL là một quan hệ $$n$$-ngôi $$R \subseteq D_1 \times \dots \times D_n$$; mọi câu truy vấn `SELECT / WHERE / JOIN` đều được bộ tối ưu hóa dịch thành các phép toán đại số quan hệ ($$\pi, \sigma, \bowtie$$).
 
 2. **Ràng buộc Khóa ngoại (Foreign Key) & Toàn vẹn Tham chiếu**:
-   Khóa ngoại thiết lập một quan hệ có kiểm soát giữa hai bảng ($T_{\text{con}} \to T_{\text{cha}}$), ngăn hệ thống sinh ra dữ liệu "mồ côi" (ví dụ hóa đơn trỏ tới một mã khách hàng không tồn tại).
+   Khóa ngoại thiết lập một quan hệ có kiểm soát giữa hai bảng ($$T_{\text{con}} \to T_{\text{cha}}$$), ngăn hệ thống sinh ra dữ liệu "mồ côi" (ví dụ hóa đơn trỏ tới một mã khách hàng không tồn tại).
 
 3. **Đồ thị Mạng xã hội & Tính chất Quan hệ**:
-   Kết bạn trên Facebook là quan hệ *đối xứng*; theo dõi trên X/Instagram là quan hệ *không đối xứng*; còn phép nhân ma trận quan hệ $M_R^2$ đếm chính xác số lượng **bạn chung** giữa hai người chưa quen nhau—trái tim của tính năng *"Người bạn có thể biết"*.
+   Kết bạn trên Facebook là quan hệ *đối xứng*; theo dõi trên X/Instagram là quan hệ *không đối xứng*; còn phép nhân ma trận quan hệ $$M_R^2$$ đếm chính xác số lượng **bạn chung** giữa hai người chưa quen nhau—trái tim của tính năng *"Người bạn có thể biết"*.
 
 4. **Phân vùng Tương đương (Equivalence Partitioning) & Ma trận User–Item**:
    Kỹ sư QA dùng quan hệ tương đương để chia không gian đầu vào vô hạn thành vài lớp kiểm thử đại diện, trong khi các nền tảng như Netflix/Spotify biểu diễn sở thích người dùng dưới dạng ma trận quan hệ hai phía (bipartite) để chạy lọc cộng tác.
@@ -148,21 +148,21 @@ Khi dữ liệu ngày càng có nhiều liên kết phức tạp, vai trò của
 
 ---
 
-### Khung giải thích (nên đọc chậm): Tính tay tính năng "Bạn có thể biết" bằng bình phương ma trận quan hệ $M_R^2$
+### Khung giải thích (nên đọc chậm): Tính tay tính năng "Bạn có thể biết" bằng bình phương ma trận quan hệ $$M_R^2$$
 
 Giả sử một mạng xã hội nhỏ có 4 người dùng `1: An`, `2: Bình`, `3: Chi`, `4: Dũng` với quan hệ bạn bè đối xứng gồm 4 cặp: `(An–Bình)`, `(An–Chi)`, `(Bình–Dũng)`, `(Chi–Dũng)` (chú ý: `An` và `Dũng` **chưa** kết bạn với nhau).
 
-1. **Ma trận kề đối xứng $M_R$**:
+1. **Ma trận kề đối xứng $$M_R$$**:
    $$M_R = \begin{pmatrix} 0 & 1 & 1 & 0 \\ 1 & 0 & 0 & 1 \\ 1 & 0 & 0 & 1 \\ 0 & 1 & 1 & 0 \end{pmatrix}$$
-2. **Tính tích ma trận số học thông thường $M_R^2 = M_R \times M_R$** (thay vì Boolean `OR`, ta dùng phép cộng số học để **đếm** số đường đi độ dài 2, tức số bạn chung!):
-   - Ô $(1, 4)$ (`An` – `Dũng`): $0\cdot 0 + 1\cdot 1 + 1\cdot 1 + 0\cdot 0 = \mathbf{2}$ (hai bạn chung là `Bình` và `Chi`!).
-   - Ô $(2, 3)$ (`Bình` – `Chi`): $1\cdot 1 + 0\cdot 0 + 0\cdot 0 + 1\cdot 1 = \mathbf{2}$ (hai bạn chung là `An` và `Dũng`!).
-   - Toàn bộ ma trận $M_R^2$:
+2. **Tính tích ma trận số học thông thường $$M_R^2 = M_R \times M_R$$** (thay vì Boolean `OR`, ta dùng phép cộng số học để **đếm** số đường đi độ dài 2, tức số bạn chung!):
+   - Ô $$(1, 4)$$ (`An` – `Dũng`): $$0\cdot 0 + 1\cdot 1 + 1\cdot 1 + 0\cdot 0 = \mathbf{2}$$ (hai bạn chung là `Bình` và `Chi`!).
+   - Ô $$(2, 3)$$ (`Bình` – `Chi`): $$1\cdot 1 + 0\cdot 0 + 0\cdot 0 + 1\cdot 1 = \mathbf{2}$$ (hai bạn chung là `An` và `Dũng`!).
+   - Toàn bộ ma trận $$M_R^2$$:
      $$M_R^2 = \begin{pmatrix} 2 & 0 & 0 & \mathbf{2} \\ 0 & 2 & \mathbf{2} & 0 \\ 0 & \mathbf{2} & 2 & 0 \\ \mathbf{2} & 0 & 0 & 2 \end{pmatrix}$$
 3. **Đọc kết quả gợi ý cho `An` (hàng 1)**:
-   - Bỏ qua đường chéo chính $(1,1) = 2$ (đó là bậc của `An` — tổng số bạn hiện có).
-   - Bỏ qua các người đã là bạn ($M_R[1, j] = 1$).
-   - Ứng viên sáng giá nhất còn lại là **`Dũng`** với điểm số $M_R^2[1, 4] = \mathbf{2}$ bạn chung. Chính phép hợp thành quan hệ hai bước này là bước khởi đầu của thuật toán gợi ý kết nối trên mọi mạng xã hội!
+   - Bỏ qua đường chéo chính $$(1,1) = 2$$ (đó là bậc của `An` — tổng số bạn hiện có).
+   - Bỏ qua các người đã là bạn ($$M_R[1, j] = 1$$).
+   - Ứng viên sáng giá nhất còn lại là **`Dũng`** với điểm số $$M_R^2[1, 4] = \mathbf{2}$$ bạn chung. Chính phép hợp thành quan hệ hai bước này là bước khởi đầu của thuật toán gợi ý kết nối trên mọi mạng xã hội!
 
 ## Kết luận
 

@@ -20,18 +20,18 @@ Việc luyện tập trên nhiều dạng bài khác nhau giúp hệ thống hó
 ## Bản đồ kiến thức nền: Bốn nguyên tắc vàng trước khi giải bài tập Quan hệ
 
 1. **Phản ví dụ để bác bỏ — Định nghĩa tổng quát để chứng minh**:
-   Để chứng minh một tính chất **Sai**, chỉ cần chỉ ra **đúng một** cặp (hoặc bộ ba) vi phạm. Để chứng minh **Đúng** trên tập vô hạn (như $\mathbb{Z}$), phải lập luận với phần tử tổng quát $a, b, c$ chứ không được thử vài số cụ thể.
+   Để chứng minh một tính chất **Sai**, chỉ cần chỉ ra **đúng một** cặp (hoặc bộ ba) vi phạm. Để chứng minh **Đúng** trên tập vô hạn (như $$\mathbb{Z}$$), phải lập luận với phần tử tổng quát $$a, b, c$$ chứ không được thử vài số cụ thể.
 
-2. **Bộ ba mẹo đọc nhanh từ ma trận $M_R$**:
-   - *Phản xạ*: mọi phần tử đường chéo chính $= 1$.
-   - *Đối xứng*: $M_R = M_R^T$; *Phản đối xứng*: với mọi $i \neq j$, không có cặp nào mà cả $m_{ij} = 1$ và $m_{ji} = 1$.
-   - *Bắc cầu*: mọi vị trí bằng `1` trong $M_R^{[2]} = M_R \odot M_R$ đều phải đã bằng `1` trong $M_R$.
+2. **Bộ ba mẹo đọc nhanh từ ma trận $$M_R$$**:
+   - *Phản xạ*: mọi phần tử đường chéo chính $$= 1$$.
+   - *Đối xứng*: $$M_R = M_R^T$$; *Phản đối xứng*: với mọi $$i \neq j$$, không có cặp nào mà cả $$m_{ij} = 1$$ và $$m_{ji} = 1$$.
+   - *Bắc cầu*: mọi vị trí bằng `1` trong $$M_R^{[2]} = M_R \odot M_R$$ đều phải đã bằng `1` trong $$M_R$$.
 
 3. **Tách bạch hai nhánh cấu trúc lớn**:
-   Gặp đề yêu cầu *"tìm lớp tương đương / phân hoạch"* $\to$ kiểm tra **Phản xạ + Đối xứng + Bắc cầu**. Gặp đề yêu cầu *"vẽ biểu đồ Hasse / tìm tối tiểu, tối đại"* $\to$ kiểm tra **Phản xạ + Phản đối xứng + Bắc cầu**.
+   Gặp đề yêu cầu *"tìm lớp tương đương / phân hoạch"* $$\to$$ kiểm tra **Phản xạ + Đối xứng + Bắc cầu**. Gặp đề yêu cầu *"vẽ biểu đồ Hasse / tìm tối tiểu, tối đại"* $$\to$$ kiểm tra **Phản xạ + Phản đối xứng + Bắc cầu**.
 
 4. **Quy trình 3 bước tính bao đóng không sót cặp**:
-   $r(R)$ bổ sung đường chéo chính; $s(R)$ bổ sung cặp đảo ngược; $t(R)$ dùng thuật toán Warshall hoặc vẽ đồ thị có hướng rồi tìm mọi cặp có đường đi độ dài $\ge 1$.
+   $$r(R)$$ bổ sung đường chéo chính; $$s(R)$$ bổ sung cặp đảo ngược; $$t(R)$$ dùng thuật toán Warshall hoặc vẽ đồ thị có hướng rồi tìm mọi cặp có đường đi độ dài $$\ge 1$$.
 
 ## Mục tiêu học tập
 
@@ -83,23 +83,23 @@ Việc luyện tập trên nhiều dạng bài khác nhau giúp hệ thống hó
 
 <p class="textbook-figure-caption" data-figure="5.26">Chuyển quan hệ sang ma trận 0-1 hoặc đồ thị có hướng giúp kiểm tra từng tính chất một cách có hệ thống.</p>
 
-### Khung giải thích (nên đọc chậm): Giải mẫu trọn vẹn một bài thi tổng hợp từ $R$ đến ba loại bao đóng
+### Khung giải thích (nên đọc chậm): Giải mẫu trọn vẹn một bài thi tổng hợp từ $$R$$ đến ba loại bao đóng
 
-Cho tập $A = \{1, 2, 3\}$ và quan hệ $R = \{(1,1), (1,2), (2,3), (3,3)\}$. Hãy xác định 4 tính chất cơ bản và tìm $r(R), s(R), t(R)$.
+Cho tập $$A = \{1, 2, 3\}$$ và quan hệ $$R = \{(1,1), (1,2), (2,3), (3,3)\}$$. Hãy xác định 4 tính chất cơ bản và tìm $$r(R), s(R), t(R)$$.
 
-1. **Bước 1 — Viết ma trận quan hệ $M_R$**:
+1. **Bước 1 — Viết ma trận quan hệ $$M_R$$**:
    $$M_R = \begin{pmatrix} 1 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 1 \end{pmatrix}$$
 2. **Bước 2 — Kiểm tra 4 tính chất (kèm bằng chứng rõ ràng)**:
-   - **Phản xạ**: **Không** — phản ví dụ: $(2,2) \notin R$ (ô $m_{22} = 0$).
-   - **Đối xứng**: **Không** — phản ví dụ: $(1,2) \in R$ nhưng $(2,1) \notin R$.
-   - **Phản đối xứng**: **Có** — với mọi $i \neq j$, không có cặp $(i, j)$ và $(j, i)$ nào cùng bằng `1`.
-   - **Bắc cầu**: **Không** — phản ví dụ: $(1,2) \in R$ và $(2,3) \in R$, nhưng $(1,3) \notin R$.
+   - **Phản xạ**: **Không** — phản ví dụ: $$(2,2) \notin R$$ (ô $$m_{22} = 0$$).
+   - **Đối xứng**: **Không** — phản ví dụ: $$(1,2) \in R$$ nhưng $$(2,1) \notin R$$.
+   - **Phản đối xứng**: **Có** — với mọi $$i \neq j$$, không có cặp $$(i, j)$$ và $$(j, i)$$ nào cùng bằng `1`.
+   - **Bắc cầu**: **Không** — phản ví dụ: $$(1,2) \in R$$ và $$(2,3) \in R$$, nhưng $$(1,3) \notin R$$.
 3. **Bước 3 — Tính ba bao đóng nhỏ nhất**:
-   - **Bao đóng phản xạ**: $r(R) = R \cup \{(2,2)\} = \{(1,1), (1,2), (2,2), (2,3), (3,3)\}$.
-   - **Bao đóng đối xứng**: $s(R) = R \cup \{(2,1), (3,2)\} = \{(1,1), (1,2), (2,1), (2,3), (3,2), (3,3)\}$.
-   - **Bao đóng bắc cầu**: Đường đi duy nhất chưa có cạnh tắt là $1 \to 2 \to 3$, nên thêm đúng một cặp $(1,3)$:
+   - **Bao đóng phản xạ**: $$r(R) = R \cup \{(2,2)\} = \{(1,1), (1,2), (2,2), (2,3), (3,3)\}$$.
+   - **Bao đóng đối xứng**: $$s(R) = R \cup \{(2,1), (3,2)\} = \{(1,1), (1,2), (2,1), (2,3), (3,2), (3,3)\}$$.
+   - **Bao đóng bắc cầu**: Đường đi duy nhất chưa có cạnh tắt là $$1 \to 2 \to 3$$, nên thêm đúng một cặp $$(1,3)$$:
      $$t(R) = R \cup \{(1,3)\} = \{(1,1), (1,2), (1,3), (2,3), (3,3)\}.$$
-   *Kiểm tra lại $t(R)$*: mọi đường đi 2 bước (như $1\to 1\to 3$, $1\to 2\to 3$, $1\to 3\to 3$) đều đã có cạnh trực tiếp trong $t(R)$ → Hoàn tất!
+   *Kiểm tra lại $$t(R)$$*: mọi đường đi 2 bước (như $$1\to 1\to 3$$, $$1\to 2\to 3$$, $$1\to 3\to 3$$) đều đã có cạnh trực tiếp trong $$t(R)$$ → Hoàn tất!
 
 ## Bài tập về biểu diễn quan hệ
 

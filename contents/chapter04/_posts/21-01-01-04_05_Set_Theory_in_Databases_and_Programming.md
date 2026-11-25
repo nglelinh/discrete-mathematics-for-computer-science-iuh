@@ -29,14 +29,14 @@ Một lỗi thường gặp trong thực tế là chiến dịch email gửi hai
 1. **SQL & Đại số quan hệ — Bảng dữ liệu là tập hợp (hoặc đa tập)**:
    Các phép toán `UNION` (hợp khử trùng), `UNION ALL` (hợp đa tập giữ trùng), `INTERSECT` (giao), `EXCEPT` (hiệu) và `JOIN` (tích Descartes kèm điều kiện lọc) ánh xạ 1–1 với các phép toán tập hợp cơ bản.
 
-2. **Kiểu `set` & Bảng băm (Hash Table) — Kiểm tra thuộc tập trong $O(1)$**:
-   Thay vì duyệt tuyến tính $O(n)$ trên danh sách, bảng băm ánh xạ phần tử sang vị trí ô nhớ để trả lời câu hỏi $x \in S$ trong thời gian trung bình $O(1)$—chìa khóa để loại bỏ trùng lặp và giao/hiệu dữ liệu lớn.
+2. **Kiểu `set` & Bảng băm (Hash Table) — Kiểm tra thuộc tập trong $$O(1)$$**:
+   Thay vì duyệt tuyến tính $$O(n)$$ trên danh sách, bảng băm ánh xạ phần tử sang vị trí ô nhớ để trả lời câu hỏi $$x \in S$$ trong thời gian trung bình $$O(1)$$—chìa khóa để loại bỏ trùng lặp và giao/hiệu dữ liệu lớn.
 
 3. **Bloom Filter — Đánh đổi RAM lấy tập xấp xỉ sai số một phía**:
-   Khi tập hợp có hàng trăm triệu phần tử không thể nạp hết vào RAM, Bloom filter dùng mảng bit kết hợp nhiều hàm băm để nén tập hợp cực gọn: đảm bảo **không bao giờ âm tính giả** (báo `False` thì chắc chắn $x \notin S$), chỉ chấp nhận tỷ lệ nhỏ dương tính giả.
+   Khi tập hợp có hàng trăm triệu phần tử không thể nạp hết vào RAM, Bloom filter dùng mảng bit kết hợp nhiều hàm băm để nén tập hợp cực gọn: đảm bảo **không bao giờ âm tính giả** (báo `False` thì chắc chắn $$x \notin S$$), chỉ chấp nhận tỷ lệ nhỏ dương tính giả.
 
 4. **Hệ thống kiểu dữ liệu (Type System) — Mỗi kiểu là một tập giá trị**:
-   Một kiểu như `bool` chính là tập $\{\text{True}, \text{False}\}$, kiểu hợp (*Union Type* `int | str`) là phép hợp tập hợp, còn kiểu tích (*Tuple / Struct*) là tích Descartes $A \times B$—nhờ đó trình biên dịch bắt lỗi logic ngay trước khi chương trình chạy.
+   Một kiểu như `bool` chính là tập $$\{\text{True}, \text{False}\}$$, kiểu hợp (*Union Type* `int | str`) là phép hợp tập hợp, còn kiểu tích (*Tuple / Struct*) là tích Descartes $$A \times B$$—nhờ đó trình biên dịch bắt lỗi logic ngay trước khi chương trình chạy.
 
 ## Mục tiêu học tập
 
@@ -200,21 +200,21 @@ Kiểu hợp phân biệt (discriminated union) như `{ ok: true, data: T } | { 
 **Phần A — So sánh các phép toán SQL trên hai bảng nhỏ**
 
 Giả sử bảng `A` (khách mua sách) có 4 dòng `ID = {1, 2, 2, 3}` (có trùng `2`) và bảng `B` (khách mua khóa học) có 3 dòng `ID = {2, 3, 4}`:
-- `SELECT ID FROM A UNION SELECT ID FROM B` → Khử trùng như tập hợp chuẩn: $\{1, 2, 3, 4\}$ (**4 dòng**).
+- `SELECT ID FROM A UNION SELECT ID FROM B` → Khử trùng như tập hợp chuẩn: $$\{1, 2, 3, 4\}$$ (**4 dòng**).
 - `SELECT ID FROM A UNION ALL SELECT ID FROM B` → Giữ nguyên đa tập: `[1, 2, 2, 3, 2, 3, 4]` (**7 dòng**).
-- `A INTERSECT B` → $\{2, 3\}$ (**2 dòng**); `A EXCEPT B` → $\{1\}$ (**1 dòng**).
-- `A CROSS JOIN B` → Tích Descartes có đúng $4 \times 3 = \mathbf{12}$ dòng; khi thêm điều kiện `ON A.ID = B.ID` (`INNER JOIN`), ta chỉ giữ các cặp khớp: `(2,2)` xuất hiện 2 lần (do `A` có hai dòng `ID=2`) và `(3,3)` xuất hiện 1 lần → **3 dòng**.
+- `A INTERSECT B` → $$\{2, 3\}$$ (**2 dòng**); `A EXCEPT B` → $$\{1\}$$ (**1 dòng**).
+- `A CROSS JOIN B` → Tích Descartes có đúng $$4 \times 3 = \mathbf{12}$$ dòng; khi thêm điều kiện `ON A.ID = B.ID` (`INNER JOIN`), ta chỉ giữ các cặp khớp: `(2,2)` xuất hiện 2 lần (do `A` có hai dòng `ID=2`) và `(3,3)` xuất hiện 1 lần → **3 dòng**.
 
-**Phần B — Mô phỏng bằng tay một Bloom Filter $m = 10$ bit**
+**Phần B — Mô phỏng bằng tay một Bloom Filter $$m = 10$$ bit**
 
-Khởi tạo mảng 10 bit toàn `0`: `B = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]` (chỉ số `0..9`), dùng $k = 2$ hàm băm:
+Khởi tạo mảng 10 bit toàn `0`: `B = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]` (chỉ số `0..9`), dùng $$k = 2$$ hàm băm:
 $$h_1(x) = (2x + 1) \bmod 10, \qquad h_2(x) = (3x + 2) \bmod 10.$$
-1. **Chèn $x = 4$**: $h_1(4) = 9$, $h_2(4) = 14 \bmod 10 = 4$ → Bật bit `4` và `9`.
-2. **Chèn $x = 7$**: $h_1(7) = 15 \bmod 10 = 5$, $h_2(7) = 23 \bmod 10 = 3$ → Bật bit `3` và `5`.
+1. **Chèn $$x = 4$$**: $$h_1(4) = 9$$, $$h_2(4) = 14 \bmod 10 = 4$$ → Bật bit `4` và `9`.
+2. **Chèn $$x = 7$$**: $$h_1(7) = 15 \bmod 10 = 5$$, $$h_2(7) = 23 \bmod 10 = 3$$ → Bật bit `3` và `5`.
    Mảng bit hiện tại: chỉ số `{3, 4, 5, 9}` bằng `1`, các vị trí còn lại bằng `0`.
-3. **Truy vấn $x = 6$ (không có trong tập)**: $h_1(6) = 3$ (bit = `1`), $h_2(6) = 0$ (bit = `0`) → Thấy ngay một bit `0`, kết luận **chắc chắn $6 \notin S$** (âm tính chuẩn xác 100%).
-4. **Truy vấn $x = 2$ (không có trong tập)**: $h_1(2) = 5$ (bit = `1`), $h_2(2) = 8$ (bit = `0`) → Chắc chắn $2 \notin S$.
-5. **Truy vấn $x = 9$ (không có trong tập)**: $h_1(9) = 19 \bmod 10 = 9$ (bit = `1`), $h_2(9) = 29 \bmod 10 = 9$ (bit = `1`) → Cả hai bit đều tình cờ đã bật từ trước nên bộ lọc báo "có thể thuộc $S$" — đây chính là một **dương tính giả (false positive)** được tạo ra do đụng độ băm trên mảng bit hữu hạn!
+3. **Truy vấn $$x = 6$$ (không có trong tập)**: $$h_1(6) = 3$$ (bit = `1`), $$h_2(6) = 0$$ (bit = `0`) → Thấy ngay một bit `0`, kết luận **chắc chắn $$6 \notin S$$** (âm tính chuẩn xác 100%).
+4. **Truy vấn $$x = 2$$ (không có trong tập)**: $$h_1(2) = 5$$ (bit = `1`), $$h_2(2) = 8$$ (bit = `0`) → Chắc chắn $$2 \notin S$$.
+5. **Truy vấn $$x = 9$$ (không có trong tập)**: $$h_1(9) = 19 \bmod 10 = 9$$ (bit = `1`), $$h_2(9) = 29 \bmod 10 = 9$$ (bit = `1`) → Cả hai bit đều tình cờ đã bật từ trước nên bộ lọc báo "có thể thuộc $$S$$" — đây chính là một **dương tính giả (false positive)** được tạo ra do đụng độ băm trên mảng bit hữu hạn!
 
 ## Bài tập thực hành
 

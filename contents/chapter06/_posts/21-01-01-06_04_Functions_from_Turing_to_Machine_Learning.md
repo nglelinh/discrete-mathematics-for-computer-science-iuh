@@ -26,10 +26,10 @@ Mỗi khi gọi `user.get_profile(user_id)` hay viết `orders.map(o => o.total)
    **Hàm thuần (pure function)** luôn trả về cùng một kết quả cho cùng đầu vào và không gây tác dụng phụ (*side effect*). Khi kết hợp với hàm bậc cao (`map`, `filter`, `reduce`) và phép hợp (*composition*), mã nguồn trở nên ngắn gọn, dễ kiểm thử và an toàn khi chạy song song.
 
 3. **Hàm băm mật mã (Cryptographic Hash) — Ánh xạ một chiều bất khả nghịch**:
-   Hàm băm $H: \{0,1\}^* \to \{0,1\}^{256}$ cố tình phá vỡ tính song ánh (miền vào vô hạn, miền ra hữu hạn) nhưng đòi hỏi ba tường thành bảo mật: kháng tiền ảnh (không đảo ngược được), kháng tiền ảnh thứ hai và kháng va chạm.
+   Hàm băm $$H: \{0,1\}^* \to \{0,1\}^{256}$$ cố tình phá vỡ tính song ánh (miền vào vô hạn, miền ra hữu hạn) nhưng đòi hỏi ba tường thành bảo mật: kháng tiền ảnh (không đảo ngược được), kháng tiền ảnh thứ hai và kháng va chạm.
 
-4. **Học máy & Thiết kế API — Hàm tham số hóa $f_\theta(x)$ và Hợp đồng giao diện**:
-   Mỗi mô hình AI thực chất là một hàm khổng lồ $f_\theta(x)$ nơi ta không tự viết tay công thức, mà dùng **hàm mất mát (loss)** và gradient descent để tự động tìm bộ tham số $\theta$ tối ưu; còn một API tốt chính là một đặc tả hàm chặt chẽ về miền vào, miền ra và mã lỗi.
+4. **Học máy & Thiết kế API — Hàm tham số hóa $$f_\theta(x)$$ và Hợp đồng giao diện**:
+   Mỗi mô hình AI thực chất là một hàm khổng lồ $$f_\theta(x)$$ nơi ta không tự viết tay công thức, mà dùng **hàm mất mát (loss)** và gradient descent để tự động tìm bộ tham số $$\theta$$ tối ưu; còn một API tốt chính là một đặc tả hàm chặt chẽ về miền vào, miền ra và mã lỗi.
 
 ## Mục tiêu học tập
 
@@ -603,23 +603,23 @@ def lambda_handler(event: dict, context) -> dict:
 <p class="textbook-figure-caption" data-figure="6.24">Serverless functions và data pipelines hoạt động như chuỗi hàm hợp — mỗi bước ánh xạ đầu vào sang đầu ra xác định.</p>
 ---
 
-### Khung giải thích (nên đọc chậm): Chạy tay một chuỗi `filter–map–reduce` và một bước học tham số của hàm $f_w(x)$
+### Khung giải thích (nên đọc chậm): Chạy tay một chuỗi `filter–map–reduce` và một bước học tham số của hàm $$f_w(x)$$
 
 **Phần A — Chuỗi xử lý hàm thuần khiết (Pure Pipeline)**
 
 Cho danh sách điểm số `S = [4, 7, 9, 5, 10]`. Ta ghép 3 hàm bậc cao nối tiếp nhau (không hề làm biến đổi mảng gốc `S`):
-1. `filter(x >= 5, S)` $\to$ `[7, 9, 5, 10]` (lọc giữ các điểm đạt).
-2. `map(x -> x * 10, ...)` $\to$ `[70, 90, 50, 100]` (quy đổi sang thang điểm 100).
-3. `reduce((acc, x) -> acc + x, ..., 0)` $\to$ $70 + 90 + 50 + 100 = \mathbf{310}$ (tổng điểm, trung bình $\mathbf{77{,}5}$).
+1. `filter(x >= 5, S)` $$\to$$ `[7, 9, 5, 10]` (lọc giữ các điểm đạt).
+2. `map(x -> x * 10, ...)` $$\to$$ `[70, 90, 50, 100]` (quy đổi sang thang điểm 100).
+3. `reduce((acc, x) -> acc + x, ..., 0)` $$\to$$ $$70 + 90 + 50 + 100 = \mathbf{310}$$ (tổng điểm, trung bình $$\mathbf{77{,}5}$$).
 
-**Phần B — Một bước huấn luyện mô hình Học máy như tối ưu hóa hàm $f_w(x) = w \cdot x$**
+**Phần B — Một bước huấn luyện mô hình Học máy như tối ưu hóa hàm $$f_w(x) = w \cdot x$$**
 
-Giả sử ta có một điểm dữ liệu $(x = 2,\; y = 10)$ (hàm đúng là $y = 5x$), nhưng mô hình khởi tạo sai ở $w_0 = 3$, tốc độ học $\eta = 0{,}1$, hàm mất mát $L(w) = \frac{1}{2}(wx - y)^2$:
-1. **Dự đoán ban đầu**: $\hat{y}_0 = f_3(2) = 3 \times 2 = 6 \implies$ sai số $e_0 = \hat{y}_0 - y = 6 - 10 = -4$, độ mất mát $L(3) = \frac{1}{2}(-4)^2 = \mathbf{8{,}00}$.
-2. **Tính đạo hàm theo tham số $w$**: $L'(w) = (wx - y)\cdot x = (-4) \times 2 = \mathbf{-8}$.
+Giả sử ta có một điểm dữ liệu $$(x = 2,\; y = 10)$$ (hàm đúng là $$y = 5x$$), nhưng mô hình khởi tạo sai ở $$w_0 = 3$$, tốc độ học $$\eta = 0{,}1$$, hàm mất mát $$L(w) = \frac{1}{2}(wx - y)^2$$:
+1. **Dự đoán ban đầu**: $$\hat{y}_0 = f_3(2) = 3 \times 2 = 6 \implies$$ sai số $$e_0 = \hat{y}_0 - y = 6 - 10 = -4$$, độ mất mát $$L(3) = \frac{1}{2}(-4)^2 = \mathbf{8{,}00}$$.
+2. **Tính đạo hàm theo tham số $$w$$**: $$L'(w) = (wx - y)\cdot x = (-4) \times 2 = \mathbf{-8}$$.
 3. **Cập nhật tham số ngược chiều gradient**:
    $$w_1 = w_0 - \eta \cdot L'(w_0) = 3 - 0{,}1 \times (-8) = \mathbf{3{,}8}.$$
-4. **Kiểm tra sau đúng 1 bước**: Dự đoán mới $\hat{y}_1 = 3{,}8 \times 2 = 7{,}6$, mất mát tụt mạnh xuống $L(3{,}8) = \frac{1}{2}(7{,}6 - 10)^2 = \mathbf{2{,}88}$ (giảm từ `8,00` xuống `2,88` chỉ sau một vòng lặp!). Mọi mô hình LLM hàng trăm tỷ tham số đều lặp lại chính cơ chế tối ưu hàm này ở quy mô lớn hơn.
+4. **Kiểm tra sau đúng 1 bước**: Dự đoán mới $$\hat{y}_1 = 3{,}8 \times 2 = 7{,}6$$, mất mát tụt mạnh xuống $$L(3{,}8) = \frac{1}{2}(7{,}6 - 10)^2 = \mathbf{2{,}88}$$ (giảm từ `8,00` xuống `2,88` chỉ sau một vòng lặp!). Mọi mô hình LLM hàng trăm tỷ tham số đều lặp lại chính cơ chế tối ưu hàm này ở quy mô lớn hơn.
 
 ## Kết luận
 

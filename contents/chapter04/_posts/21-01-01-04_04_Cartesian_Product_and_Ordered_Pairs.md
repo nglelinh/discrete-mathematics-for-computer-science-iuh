@@ -19,21 +19,21 @@ excerpt: "Giới thiệu cặp có thứ tự, tích Descartes A × B, các tín
 
 Ở các mục trước, chúng ta làm việc với **tập hợp** — nơi thứ tự các phần tử không quan trọng. Tuy nhiên, trong khoa học máy tính, thứ tự thường mang ý nghĩa quyết định: tọa độ $$(x, y)$$ trên màn hình, cặp `(user_id, role)` trong bảng phân quyền, hay bộ `(sinh_viên, môn_học, điểm)` trong cơ sở dữ liệu. Để kết hợp các phần tử từ nhiều tập hợp theo **cặp có thứ tự**, ta sử dụng **tích Descartes** (Cartesian product). Đây là cầu nối trực tiếp sang **quan hệ** ở Chương 5, vì mỗi quan hệ hai ngôi là một tập con của tích Descartes.
 
-Tập hợp vốn không quan tâm đến thứ tự ($\{1, 2\} = \{2, 1\}$), nhưng thế giới thực lại sống dựa vào thứ tự: tọa độ `(x, y)` khác `(y, x)`, cạnh có hướng `(An → Bình)` khác `(Bình → An)`, và một dòng trong bảng cơ sở dữ liệu `(mssv, ho_ten, diem)` phải giữ đúng vị trí từng cột. **Cặp có thứ tự (Ordered Pair)** và **Tích Descartes (Cartesian Product $A \times B$)** chính là cây cầu đưa cấu trúc thứ tự vào lý thuyết tập hợp.
+Tập hợp vốn không quan tâm đến thứ tự ($$\{1, 2\} = \{2, 1\}$$), nhưng thế giới thực lại sống dựa vào thứ tự: tọa độ `(x, y)` khác `(y, x)`, cạnh có hướng `(An → Bình)` khác `(Bình → An)`, và một dòng trong bảng cơ sở dữ liệu `(mssv, ho_ten, diem)` phải giữ đúng vị trí từng cột. **Cặp có thứ tự (Ordered Pair)** và **Tích Descartes (Cartesian Product $$A \times B$$)** chính là cây cầu đưa cấu trúc thứ tự vào lý thuyết tập hợp.
 
 ## Bản đồ kiến thức nền: Bốn ý niệm cốt lõi của Tích Descartes
 
-1. **Cặp có thứ tự $(a, b)$ & Bộ $n$-thành phần ($n$-tuple)**:
-   $(a, b) = (c, d) \iff (a = c) \land (b = d)$. Mở rộng ra $n$ chiều, ta có bộ $(a_1, a_2, \dots, a_n)$—chính là một `tuple`/`struct` trong lập trình hay một bản ghi (*row*) trong bảng SQL.
+1. **Cặp có thứ tự $$(a, b)$$ & Bộ $$n$$-thành phần ($$n$$-tuple)**:
+   $$(a, b) = (c, d) \iff (a = c) \land (b = d)$$. Mở rộng ra $$n$$ chiều, ta có bộ $$(a_1, a_2, \dots, a_n)$$—chính là một `tuple`/`struct` trong lập trình hay một bản ghi (*row*) trong bảng SQL.
 
-2. **Tích Descartes $A \times B$ và Lực lượng**:
-   $A \times B = \{(a, b) \mid a \in A \text{ và } b \in B\}$. Lực lượng luôn thỏa quy tắc nhân: $\vert A \times B \vert = \vert A \vert \cdot \vert B \vert$. Đặc biệt: $A \times B \neq B \times A$ (không giao hoán khi $A \neq B$ và cả hai khác rỗng!), và $A \times \emptyset = \emptyset$.
+2. **Tích Descartes $$A \times B$$ và Lực lượng**:
+   $$A \times B = \{(a, b) \mid a \in A \text{ và } b \in B\}$$. Lực lượng luôn thỏa quy tắc nhân: $$\vert A \times B \vert = \vert A \vert \cdot \vert B \vert$$. Đặc biệt: $$A \times B \neq B \times A$$ (không giao hoán khi $$A \neq B$$ và cả hai khác rỗng!), và $$A \times \emptyset = \emptyset$$.
 
 3. **Liên hệ trực tiếp với `CROSS JOIN` trong SQL và Không gian trạng thái**:
-   Lệnh `SELECT * FROM Sizes CROSS JOIN Colors` trong SQL chính là tính tích Descartes $\text{Sizes} \times \text{Colors}$. Trong kiểm thử tự động và thuật toán, không gian trạng thái của hệ thống đa biến là tích Descartes của các miền biến.
+   Lệnh `SELECT * FROM Sizes CROSS JOIN Colors` trong SQL chính là tính tích Descartes $$\text{Sizes} \times \text{Colors}$$. Trong kiểm thử tự động và thuật toán, không gian trạng thái của hệ thống đa biến là tích Descartes của các miền biến.
 
 4. **Bệ phóng sang Chương 5 (Quan hệ) và Chương 6 (Hàm số)**:
-   Mọi quan hệ hai ngôi từ $A$ đến $B$ đơn giản chỉ là một **tập con** $R \subseteq A \times B$, và mọi hàm số $f: A \to B$ là một quan hệ đặc biệt trong $A \times B$!
+   Mọi quan hệ hai ngôi từ $$A$$ đến $$B$$ đơn giản chỉ là một **tập con** $$R \subseteq A \times B$$, và mọi hàm số $$f: A \to B$$ là một quan hệ đặc biệt trong $$A \times B$$!
 
 ## Mục tiêu học tập
 
@@ -149,15 +149,15 @@ Nếu $$A = \emptyset$$ hoặc $$B = \emptyset$$ thì $$A \times B = \emptyset$$
 ### Khung giải thích (nên đọc chậm): Tính tay kích thước `CROSS JOIN` (Tích Descartes) và tránh bẫy bùng nổ dòng trong SQL
 
 Giả sử cửa hàng áo thun có:
-- Tập kích cỡ $S = \{\text{M}, \text{L}\}$ ($\vert S \vert = 2$)
-- Tập màu sắc $C = \{\text{Đen}, \text{Trắng}, \text{Xanh}\}$ ($\vert C \vert = 3$)
+- Tập kích cỡ $$S = \{\text{M}, \text{L}\}$$ ($$\vert S \vert = 2$$)
+- Tập màu sắc $$C = \{\text{Đen}, \text{Trắng}, \text{Xanh}\}$$ ($$\vert C \vert = 3$$)
 
-1. **Liệt kê đầy đủ $S \times C$** ($\vert S \times C \vert = 2 \times 3 = 6$ mã SKU):
+1. **Liệt kê đầy đủ $$S \times C$$** ($$\vert S \times C \vert = 2 \times 3 = 6$$ mã SKU):
    $$S \times C = \{(\text{M}, \text{Đen}), (\text{M}, \text{Trắng}), (\text{M}, \text{Xanh}), (\text{L}, \text{Đen}), (\text{L}, \text{Trắng}), (\text{L}, \text{Xanh})\}.$$
-2. **Kiểm tra không giao hoán**: $(\text{M}, \text{Đen}) \in S \times C$, nhưng $(\text{M}, \text{Đen}) \notin C \times S$ (vì phần tử đầu của $C \times S$ phải là màu sắc!).
+2. **Kiểm tra không giao hoán**: $$(\text{M}, \text{Đen}) \in S \times C$$, nhưng $$(\text{M}, \text{Đen}) \notin C \times S$$ (vì phần tử đầu của $$C \times S$$ phải là màu sắc!).
 3. **Cảnh báo thực tế trong SQL**: Nếu bảng `Users` có `10.000` dòng và bảng `Orders` có `50.000` dòng, một câu lệnh `SELECT * FROM Users, Orders` quên mệnh đề `WHERE Users.id = Orders.user_id` sẽ buộc CSDL tính trọn tích Descartes:
    $$10.000 \times 50.000 = \mathbf{500.000.000\text{ dòng}}$$
-   —làm treo ngay máy chủ CSDL! Biết công thức $\vert A \times B \vert = \vert A \vert \cdot \vert B \vert$ giúp bạn nhận ra ngay cái bẫy `CROSS JOIN` vô tình.
+   —làm treo ngay máy chủ CSDL! Biết công thức $$\vert A \times B \vert = \vert A \vert \cdot \vert B \vert$$ giúp bạn nhận ra ngay cái bẫy `CROSS JOIN` vô tình.
 
 ## Tích nhiều tập và khái niệm quan hệ
 
