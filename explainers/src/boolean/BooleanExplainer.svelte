@@ -185,7 +185,9 @@
       {#if custom}<strong>Hàm tùy chỉnh</strong> (đã sửa bảng / K-map){:else}F = <strong>{prettyAst(pa.ast)}</strong>{/if}
       {#if custom}<button type="button" class="sec mini" onclick={applyExpr}>Khôi phục biểu thức</button>{/if}
       <br />
-      SOP tối tiểu: <strong>{sopStr}</strong> · POS tối tiểu: <strong>{posStr}</strong>
+      SOP tối tiểu: <strong>{sopStr}</strong> · 
+      <br />
+      POS tối tiểu: <strong>{posStr}</strong>
       {#if hasDc}· <em>có don't-care (×) nên dạng tối tiểu có thể gọn hơn</em>{/if}
     </p>
   {/if}
