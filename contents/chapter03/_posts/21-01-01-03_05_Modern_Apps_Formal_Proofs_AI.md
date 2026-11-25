@@ -71,7 +71,7 @@ Nguyên lý toán rời rạc cốt lõi không thay đổi: một "chứng minh
 
 **Câu hỏi.** (1) Chiến thuật (tactic) `by contradiction` trong Lean mã hóa phương pháp chứng minh nào? (2) Vì sao bước hình thức hóa đề thi IMO (do con người hay tự động thực hiện) nằm *ngoài* phạm vi bảo đảm của nhân kiểm chứng?
 
-### Bản đồ kiến thức nền: Trợ lý chứng minh hình thức (Lean 4) & Kỷ nguyên AI chứng minh định lý
+### Kiến thức cần nhớ: Trợ lý chứng minh hình thức (Lean 4) & Kỷ nguyên AI chứng minh định lý
 
 Mọi kỹ thuật chứng minh ở Chương 3 (trực tiếp, phản chứng, quy nạp) nay đã bước ra khỏi bảng phấn để trở thành mã nguồn được máy tính kiểm chứng tuyệt đối trong các hệ thống như **Lean 4**, Coq và Isabelle:
 
@@ -82,7 +82,7 @@ Mọi kỹ thuật chứng minh ở Chương 3 (trực tiếp, phản chứng, q
 3. **Đột phá công nghiệp & toán học**:
    Từ vi nhân hệ điều hành **seL4** được chứng minh không lỗi bộ nhớ, thư viện mật mã của AWS, đến **AlphaProof** giải toán Olympic IMO bằng Lean 4, chứng minh hình thức đang mở ra chuẩn mực độ tin cậy cao nhất cho phần mềm và toán học.
 
-### Khung giải thích (nên đọc chậm): Máy tính kiểm tra bài chứng minh quy nạp $$2\sum_{i=0}^{n} i = n(n+1)$$ từng bước như thế nào?
+### Giải thích: Máy tính kiểm tra bài chứng minh quy nạp $$2\sum_{i=0}^{n} i = n(n+1)$$ từng bước như thế nào?
 
 Khi bạn viết chứng minh quy nạp trong Lean 4, bộ kiểm tra kiểu tự động sinh ra đúng 2 mục tiêu bắt buộc (không thể bỏ sót):
 - **Mục tiêu 1 (Cơ sở $$n = 0$$)**: Cần chứng minh $$2 \cdot \text{sum}(0) = 0 \cdot 1$$. Nhân tự rút gọn hai vế về `0 = 0` → khớp bằng tính phản xạ (`rfl`).

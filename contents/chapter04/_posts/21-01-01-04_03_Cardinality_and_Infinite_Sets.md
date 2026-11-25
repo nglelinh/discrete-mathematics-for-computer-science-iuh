@@ -12,7 +12,7 @@ excerpt: "Trình bày lực lượng tập hợp, tập lũy thừa, nguyên lý
 
 Đếm số phần tử của một tập hữu hạn thì dễ—nhưng làm sao so sánh kích thước của hai **tập vô hạn** như tập số tự nhiên $$\mathbb{N}$$, tập số chẵn, tập số hữu tỉ $$\mathbb{Q}$$ và tập số thực $$\mathbb{R}$$? Georg Cantor đã làm rung chuyển toàn bộ nền toán học thế kỷ 19 khi chứng minh rằng **có những cái vô hạn lớn hơn cái vô hạn khác**—và chính kỹ thuật **đường chéo hóa (diagonalization)** của ông sau này đã giúp Alan Turing chứng minh tồn tại những bài toán *không một máy tính nào giải được*!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Lực lượng (Cardinality) & Tập Vô hạn
+## Kiến thức cần nhớ: Bốn trụ cột của Lực lượng (Cardinality) & Tập Vô hạn
 
 1. **So sánh lực lượng bằng Song ánh (Bijection)**:
    Hai tập $$A$$ và $$B$$ có cùng lực lượng ($$\vert A \vert = \vert B \vert$$) khi và chỉ khi tồn tại một ánh xạ 1–1 và lên (song ánh) giữa chúng—một định nghĩa hoạt động mượt mà cho cả tập hữu hạn lẫn vô hạn!
@@ -61,7 +61,7 @@ excerpt: "Trình bày lực lượng tập hợp, tập lũy thừa, nguyên lý
 
 ![Đếm phần tử trong tập hợp](/discrete-mathematics-for-computer-science-iuh/img/course/Pascal_triangle.svg)
 
-<p class="textbook-figure-caption" data-figure="4.17">Lực lượng $$\lvert A \rvert$$ đo số phần tử phân biệt — nền tảng cho bài toán đếm, thống kê và phân tích quy mô dữ liệu.</p>
+<p class="textbook-figure-caption" data-figure="4.17">Lực lượng $\lvert A \rvert$ đo số phần tử phân biệt — nền tảng cho bài toán đếm, thống kê và phân tích quy mô dữ liệu.</p>
 **Tính chất cơ bản**:
 
 - Nếu $$A\subseteq B$$ và $$A,B$$ là các tập hữu hạn thì $$\lvert A \rvert\le \lvert B \rvert$$.
@@ -88,7 +88,7 @@ $$\mathcal{P}(A)=\{X\mid X\subseteq A\}.$$
 
 ![Sơ đồ tập lũy thừa P(A)](/discrete-mathematics-for-computer-science-iuh/img/course/Powerset.svg)
 
-<p class="textbook-figure-caption" data-figure="4.18">Tập lũy thừa $$\mathcal{P}(A)$$ chứa mọi tập con của $$A$$ — với $$\lvert A \rvert = n$$ thì $$\lvert \mathcal{P}(A) \rvert = 2^n$$.</p>
+<p class="textbook-figure-caption" data-figure="4.18">Tập lũy thừa $\mathcal{P}(A)$ chứa mọi tập con của $A$ — với $\lvert A \rvert = n$ thì $\lvert \mathcal{P}(A) \rvert = 2^n$.</p>
 <div class="textbook-proof" id="chứng-minh" markdown="1">
 **Chứng minh**: Để tạo một tập con của $$A$$, mỗi phần tử trong $$A$$ có hai lựa chọn độc lập: được chọn hoặc không được chọn. Với $$n$$ phần tử, tổng số cách chọn là:
 
@@ -110,7 +110,7 @@ Tập này có $$2^3=8$$ phần tử.
 </div>
 
 
-### Khung giải thích (nên đọc chậm): Tự tay dựng số bị bỏ sót bằng Lập luận đường chéo Cantor trên 4 chuỗi nhị phân
+### Giải thích: Tự tay dựng số bị bỏ sót bằng Lập luận đường chéo Cantor trên 4 chuỗi nhị phân
 
 Giả sử ai đó tuyên bố đã lập được danh sách đánh số **tất cả** các chuỗi nhị phân vô hạn (tương ứng với các tập con của $$\mathbb{N}$$), bắt đầu bằng 4 dòng đầu:
 - $$s_1 = \mathbf{0}\, 1\, 0\, 1\, \dots$$
@@ -144,7 +144,7 @@ Khi cộng $$\lvert A \rvert+\lvert B \rvert$$, mỗi phần tử thuộc phần
 
 ![Nguyên lý bao hàm–loại trừ: hai tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_intersect_B.svg)
 
-<p class="textbook-figure-caption" data-figure="4.19">Vùng giao $$A \cap B$$ bị đếm hai lần khi cộng $$\lvert A \rvert + \lvert B \rvert$$, nên cần trừ $$\lvert A \cap B \rvert$$ để tính đúng $$\lvert A \cup B \rvert$$.</p>
+<p class="textbook-figure-caption" data-figure="4.19">Vùng giao $A \cap B$ bị đếm hai lần khi cộng $\lvert A \rvert + \lvert B \rvert$, nên cần trừ $\lvert A \cap B \rvert$ để tính đúng $\lvert A \cup B \rvert$.</p>
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Trong lớp có 40 sinh viên, trong đó 25 sinh viên học Python, 18 sinh viên học Java và 10 sinh viên học cả hai ngôn ngữ. Số sinh viên học ít nhất một trong hai ngôn ngữ là:
 
@@ -227,7 +227,7 @@ Video dài khoảng 2 phút 57 giây: xếp $$\mathbb{Z}$$ thành một hàng $$
 <p class="textbook-figure-caption" data-figure="4.22">Phương pháp đường chéo Cantor — xây dựng một số mới khác mọi số trong danh sách giả định để chứng minh (0,1) không đếm được.</p>
 ![Đếm được vs continuum](/discrete-mathematics-for-computer-science-iuh/img/course/Countable.vs.Continuum.svg)
 
-<p class="textbook-figure-caption" data-figure="4.23">So sánh lực lượng — tập đếm được ($$\aleph_0$$) có lực lượng nhỏ hơn lực lượng continuum ($$2^{\aleph_0} = \lvert \mathbb{R} \rvert$$).</p>
+<p class="textbook-figure-caption" data-figure="4.23">So sánh lực lượng — tập đếm được ($\aleph_0$) có lực lượng nhỏ hơn lực lượng continuum ($2^{\aleph_0} = \lvert \mathbb{R} \rvert$).</p>
 ### Thử nghiệm: Đường chéo Cantor, khách sạn Hilbert và hàm ghép cặp
 
 Đảo các bit trên đường chéo để tạo một dãy nhị phân không nằm trong danh sách; sắp xếp khách mới vào khách sạn vô hạn; hoặc xem cách ghép cặp $$\mathbb{N} \times \mathbb{N}$$ với $$\mathbb{N}$$.
@@ -294,7 +294,7 @@ Chứng minh rằng tập hợp các số tự nhiên $$\mathbb{N}$$ và tập h
 <details>
 <summary>Đáp án</summary>
 
-Với quy ước $$\mathbb{N} = \{1, 2, 3, \ldots\}$$, ánh xạ $$f(n) = 2n$$ là một song ánh từ $$\mathbb{N}$$ lên tập các số chẵn dương $$\{2, 4, 6, \ldots\}$$ (nếu tính $$\mathbb{N} = \{0, 1, 2, \ldots\}$$, ta dùng song ánh $$f(n) = 2n + 2$$). Do đó hai tập có cùng lực lượng $$\aleph_0$$.
+Với quy ước $\mathbb{N} = \{1, 2, 3, \ldots\}$, ánh xạ $f(n) = 2n$ là một song ánh từ $\mathbb{N}$ lên tập các số chẵn dương $\{2, 4, 6, \ldots\}$ (nếu tính $\mathbb{N} = \{0, 1, 2, \ldots\}$, ta dùng song ánh $f(n) = 2n + 2$). Do đó hai tập có cùng lực lượng $\aleph_0$.
 
 </details>
 
@@ -305,7 +305,7 @@ Tính lực lượng của tập hợp tất cả các tập con của $$\{1,2,3
 <details>
 <summary>Đáp án</summary>
 
-Tập có $$2^3 = 8$$ tập con (bao gồm cả tập rỗng và chính tập $$\{1, 2, 3\}$$).
+Tập có $2^3 = 8$ tập con (bao gồm cả tập rỗng và chính tập $\{1, 2, 3\}$).
 
 </details>
 
@@ -316,7 +316,7 @@ Có 50 sinh viên học Python, 40 sinh viên học Java và 30 sinh viên học
 <details>
 <summary>Đáp án</summary>
 
-$$\lvert P \cup J \rvert = 50 + 40 - 30 = 60$$ sinh viên.
+$\lvert P \cup J \rvert = 50 + 40 - 30 = 60$ sinh viên.
 
 </details>
 

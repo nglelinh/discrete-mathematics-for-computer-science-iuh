@@ -13,7 +13,7 @@ Một bảng tổng hợp (rollup) trong hệ thống phân tích dữ liệu ng
 
 **Mạch bài học:** Định nghĩa **lực lượng tập hợp (cardinality)** $$\vert V_C \vert$$ $$\longrightarrow$$ mối liên hệ giữa cardinality và tỷ lệ nén khi `GROUP BY` $$\longrightarrow$$ bài toán thực chiến DNS của Cloudflare $$\longrightarrow$$ ước lượng số phần tử phân biệt với bộ nhớ siêu nhỏ bằng **HyperLogLog**.
 
-## Bản đồ kiến thức nền: Lực lượng tập hợp và thuật toán dòng dữ liệu nghiên cứu gì?
+## Kiến thức cần nhớ: Lực lượng tập hợp và thuật toán dòng dữ liệu nghiên cứu gì?
 
 - **Lực lượng tập hợp (Set Cardinality):** Với một cột $$C$$ trong bảng gồm $$N$$ dòng, lực lượng $$\vert V_C \vert$$ là số giá trị **phân biệt** xuất hiện trong $$C$$. Tỷ lệ nén tối đa khi tổng hợp theo $$C$$ bị chặn trên bởi $$N / \vert V_C \vert$$.
 - **Bùng nổ tích Descartes đa chiều (Multi-Dimensional Cardinality Explosion):** Khi tổng hợp đồng thời theo nhiều cột (hoặc gắn nhiều nhãn label trong Prometheus), số chuỗi thời gian tiềm năng có thể đạt tới $$\prod_i \vert V_{C_i} \vert$$, gây nổ RAM ở cả tầng lưu trữ lẫn truy vấn.
@@ -111,7 +111,7 @@ Tóm lại, cardinality quyết định liệu phép tổng hợp có nén đư�
 
 ---
 
-## Ví dụ tính tay cầm tay chỉ việc: Tỷ lệ nén `GROUP BY` và trực giác HyperLogLog
+## Ví dụ tính tay làm từng bước: Tỷ lệ nén `GROUP BY` và trực giác HyperLogLog
 
 **Phần A — Tính tỷ lệ nén trên cửa sổ 1 giây gồm $$N = 1\,000\,000$$ truy vấn DNS:**
 1. **Tổng hợp theo `response_code`** (khoảng $$\vert V_{\text{rcode}} \vert = 10$$ mã như `NOERROR`, `NXDOMAIN`, `SERVFAIL`...):
@@ -128,8 +128,7 @@ Giả sử ta băm các `user_id` vào chuỗi bit, lấy 2 bit đầu chọn 1 
 - Tính tổng trong ngoặc: $$\frac{1}{16} + \frac{1}{32} + \frac{1}{16} + \frac{1}{8} = \frac{2 + 1 + 2 + 4}{32} = \frac{9}{32} = 0{,}28125$$.
 - Suy ra: $$\hat{n} \approx \frac{8{,}512}{0{,}28125} \approx 30{,}3$$ phần tử phân biệt — mà bộ nhớ chỉ cần lưu **4 số nguyên nhỏ** thay vì toàn bộ 30 khóa gốc!
 
-### Khung giải thích: Tại sao đếm số bit `0` đầu chuỗi lại đo được lực lượng tập hợp (nên đọc chậm)
-
+### Giải thích: Tại sao đếm số bit `0` đầu chuỗi lại đo được lực lượng tập hợp
 1. **Bước 1 — Băm biến mọi dữ liệu thành tung đồng xu công bằng:** Một hàm băm tốt ánh xạ mỗi giá trị phân biệt sang một chuỗi bit đều nhau; giá trị lặp lại luôn cho đúng chuỗi bit cũ nên tự động bị bỏ qua (idempotent).
 2. **Bước 2 — Sự kiện hiếm tiết lộ quy mô mẫu:** Xác suất thấy $$k$$ bit `0` liên tiếp ở đầu chuỗi là $$2^{-k}$$. Nếu bạn thấy chuỗi bắt đầu bằng `000001...` (5 số 0), trung bình bạn phải đã tung khoảng $$2^5 = 32$$ đồng xu phân biệt khác nhau.
 3. **Bước 3 — Chia nhiều giỏ + trung bình điều hòa để triệt nhiễu:** Chỉ dùng 1 thanh ghi thì rất dễ bị lệch nếu vô tình gặp 1 chuỗi nhiều số 0 quá sớm. Chia thành $$m$$ giỏ (thường $$m = 2^{14} = 16\,384$$) rồi lấy **trung bình điều hòa** giúp triệt tiêu ngoại lai, đạt sai số chuẩn chỉ $$\approx 1{,}04/\sqrt{m} \approx 0{,}81\%$$ với chỉ ~12 KB RAM.

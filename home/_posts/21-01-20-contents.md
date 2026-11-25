@@ -18,7 +18,7 @@ Khóa học toàn diện về toán rời rạc, bao gồm logic, lý thuyết t
 
 Một lập trình viên có thể viết mã chạy được chỉ bằng kinh nghiệm, nhưng muốn thiết kế thuật toán không sập ở quy mô triệu người dùng, chứng minh hệ thống không có lỗ hổng logic hay đọc hiểu các công trình AI hiện đại, ta cần **Toán Rời Rạc** làm xương sống. Trang mục lục này giúp bạn nhìn bao quát lộ trình 20 chương của khóa học tại IUH.
 
-## Bản đồ kiến thức nền: Bốn khối kiến thức lớn của Khóa học Toán Rời Rạc
+## Kiến thức cần nhớ: Bốn khối kiến thức lớn của Khóa học Toán Rời Rạc
 
 1. **Logic, Chứng minh & Cấu trúc Nền tảng (Chương 1–6)**:
    Logic mệnh đề, logic vị từ, kỹ thuật chứng minh quy nạp, tập hợp, quan hệ, hàm số và lý thuyết số làm cơ sở cho mật mã học.
@@ -35,7 +35,7 @@ Một lập trình viên có thể viết mã chạy được chỉ bằng kinh 
 
 - Bernard Kolman & Robert C. Busby, Discrete Mathematical Structures, 6th Edition, Pearson, 2015.
 
-### Khung giải thích (nên đọc chậm): Cách tự kiểm tra lộ trình học theo từng mục tiêu nghề nghiệp
+### Giải thích: Cách tự kiểm tra lộ trình học theo từng mục tiêu nghề nghiệp
 
 | Mục tiêu của sinh viên | Cụm chương trọng tâm | Ví dụ bài toán ứng dụng trực tiếp |
 | :--- | :---: | :--- |

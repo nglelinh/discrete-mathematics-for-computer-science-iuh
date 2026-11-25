@@ -21,7 +21,7 @@ Bài ghi chú ứng dụng song ngữ. Nội dung này **không** thay thế hay
 
 </div>
 
-## Bản đồ kiến thức nền: Ba trụ cột của Học sâu Quan hệ (Relational Deep Learning)
+## Kiến thức cần nhớ: Ba trụ cột của Học sâu Quan hệ (Relational Deep Learning)
 
 1. **Từ bảng phẳng (Flat Table) sang Đồ thị Quan hệ Dị thể (Heterogeneous Graph)**:
    Mỗi dòng dữ liệu trong bảng là một **đỉnh** (có kiểu theo tên bảng: Khách hàng, Đơn hàng, Sản phẩm), còn mỗi liên kết khóa chính–khóa ngoại $$R_{\text{FK}} \subseteq T_{\text{con}} \times T_{\text{cha}}$$ là một **cung có hướng**.
@@ -66,7 +66,7 @@ Không cần đi sâu vào lý thuyết GNN, ta vẫn thấy rõ phần lõi to�
 
 **Câu hỏi.** (1) Vì sao liên kết khóa ngoại thường là quan hệ *nhiều–một*, và tính chất đó ràng buộc cấu trúc đồ thị như thế nào? (2) Loại bao đóng nào của $$R_{\text{FK}} \cup R_{\text{FK}}^{-1}$$ mô tả tập hợp "mọi dòng có thể đi tới được bằng các phép join"?
 
-### Khung giải thích (nên đọc chậm): Chuyển tay 3 bảng dữ liệu thành đồ thị quan hệ và tính 1 bước truyền thông điệp
+### Giải thích: Chuyển tay 3 bảng dữ liệu thành đồ thị quan hệ và tính 1 bước truyền thông điệp
 
 Xét cơ sở dữ liệu mini gồm 3 bảng:
 - **`Users`**: `U1 (An)`, `U2 (Bình)`

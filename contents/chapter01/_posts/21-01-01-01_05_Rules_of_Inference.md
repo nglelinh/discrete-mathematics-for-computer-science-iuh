@@ -12,7 +12,7 @@ excerpt: "Giới thiệu các quy tắc suy diễn cơ bản trong logic mệnh 
 
 Biết viết công thức logic mới chỉ là có "từ vựng"; biết nối các tiền đề thành một chuỗi lập luận không thể bác bỏ mới là biết "suy nghĩ toán học". Từ bộ kiểm tra kiểu (type checker) của trình biên dịch, hệ chuyên gia suy luận luật, cho đến các bộ chứng minh định lý tự động, mọi cỗ máy suy diễn đều vận hành dựa trên một tập nhỏ các **Quy tắc Suy diễn (Rules of Inference)** chuẩn xác.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Lý thuyết Suy diễn
+## Kiến thức cần nhớ: Bốn trụ cột của Lý thuyết Suy diễn
 
 1. **Lập luận hợp lệ (Valid Argument) vs. Tiền đề đúng (Soundness)**:
    Một lập luận $$(P_1 \land P_2 \land \dots \land P_k) \to Q$$ là **hợp lệ (valid)** nếu nó là hằng đúng—nghĩa là *không thể nào* mọi tiền đề đều Đúng mà kết luận lại Sai. Nếu mọi tiền đề còn đúng trong thực tế nữa, lập luận được gọi là **vững chắc (sound)**.
@@ -110,7 +110,7 @@ Các biểu thức $$p_1, p_2, \dots, p_n$$ gọi là **giả thiết** (hay **t
 <p class="textbook-figure-caption" data-figure="1.21">Quy tắc suy diễn là nền tảng của mọi lập luận hợp lệ — từ tiền đề đúng rút ra kết luận đúng.</p>
 ---
 
-### Khung giải thích (nên đọc chậm): Dựng chuỗi suy diễn 6 bước tìm nguyên nhân sập máy chủ
+### Giải thích: Dựng chuỗi suy diễn 6 bước tìm nguyên nhân sập máy chủ
 
 Giả sử hệ thống giám sát ghi nhận 4 sự kiện (tiền đề) sau:
 - $$P_1$$: Nếu CPU quá tải ($$c$$) thì độ trễ tăng cao ($$l$$): $$c \to l$$.
@@ -521,13 +521,13 @@ Xác định quy tắc suy diễn được dùng trong mỗi lập luận sau:
 <details>
 <summary>Đáp án</summary>
 
-(a) **Modus Ponens**: $$p \to q$$ (nếu thứ Bảy thì không có lớp), $$p$$ (thứ Bảy), suy ra $$q$$ (không có lớp).
+(a) **Modus Ponens**: $p \to q$ (nếu thứ Bảy thì không có lớp), $p$ (thứ Bảy), suy ra $q$ (không có lớp).
 
-(b) **Modus Tollens**: $$p \to q$$ (nếu mưa thì mang ô), $$\neg q$$ (không mang ô), suy ra $$\neg p$$ (không mưa).
+(b) **Modus Tollens**: $p \to q$ (nếu mưa thì mang ô), $\neg q$ (không mang ô), suy ra $\neg p$ (không mưa).
 
-(c) **Hypothetical Syllogism**: $$p \to q$$ và $$q \to r$$, suy ra $$p \to r$$.
+(c) **Hypothetical Syllogism**: $p \to q$ và $q \to r$, suy ra $p \to r$.
 
-(d) **Disjunctive Syllogism**: $$p \lor q$$ (bên ngoài hoặc nội bộ) và $$\neg q$$ (không từ nội bộ), suy ra $$p$$ (từ bên ngoài).
+(d) **Disjunctive Syllogism**: $p \lor q$ (bên ngoài hoặc nội bộ) và $\neg q$ (không từ nội bộ), suy ra $p$ (từ bên ngoài).
 
 </details>
 
@@ -544,11 +544,11 @@ Mỗi suy luận sau có hợp lệ không? Nếu không, hãy chỉ ra lỗi ng
 <details>
 <summary>Đáp án</summary>
 
-(a) **Không hợp lệ về mặt hình thức** — Ngụy biện khẳng định hệ quả (affirming the consequent): từ $$p \to q$$ và $$q$$ không thể suy ra $$p$$. Ở đây kết luận tình cờ đúng về mặt số học vì "chia hết cho 2" và "là số chẵn" tương đương nhau, nhưng dạng lập luận là sai. Phản ví dụ cho dạng lập luận này: "Nếu là chó thì có 4 chân. Con vật này có 4 chân. Vậy nó là chó" (sai vì mèo cũng có 4 chân).
+(a) **Không hợp lệ về mặt hình thức** — Ngụy biện khẳng định hệ quả (affirming the consequent): từ $p \to q$ và $q$ không thể suy ra $p$. Ở đây kết luận tình cờ đúng về mặt số học vì "chia hết cho 2" và "là số chẵn" tương đương nhau, nhưng dạng lập luận là sai. Phản ví dụ cho dạng lập luận này: "Nếu là chó thì có 4 chân. Con vật này có 4 chân. Vậy nó là chó" (sai vì mèo cũng có 4 chân).
 
-(b) **Không hợp lệ** — Ngụy biện phủ định tiền đề (denying the antecedent): từ $$p \to q$$ và $$\neg p$$ không thể suy ra $$\neg q$$. Phản ví dụ cần làm hai tiền đề đúng ($$p$$ sai, nên $$p \to q$$ và $$\neg p$$ đều đúng) nhưng kết luận sai ($$q$$ đúng): chẳng hạn file không còn tồn tại trên đĩa ($$p$$ sai) nhưng nội dung vẫn đọc được từ bộ nhớ đệm/cache ($$q$$ đúng). Phản ví dụ tổng quát hơn: "Nếu trời mưa thì đường ướt. Trời không mưa. Vậy đường không ướt" (sai vì đường có thể ướt do xe tưới nước).
+(b) **Không hợp lệ** — Ngụy biện phủ định tiền đề (denying the antecedent): từ $p \to q$ và $\neg p$ không thể suy ra $\neg q$. Phản ví dụ cần làm hai tiền đề đúng ($p$ sai, nên $p \to q$ và $\neg p$ đều đúng) nhưng kết luận sai ($q$ đúng): chẳng hạn file không còn tồn tại trên đĩa ($p$ sai) nhưng nội dung vẫn đọc được từ bộ nhớ đệm/cache ($q$ đúng). Phản ví dụ tổng quát hơn: "Nếu trời mưa thì đường ướt. Trời không mưa. Vậy đường không ướt" (sai vì đường có thể ướt do xe tưới nước).
 
-(c) **Không hợp lệ** — Từ $$p \to (r \lor s)$$ và $$p$$, Modus Ponens chỉ cho phép suy ra $$r \lor s$$ (máy chủ quá tải hoặc mạng chậm), không thể kết luận riêng $$r$$ (máy chủ quá tải) vì có thể chỉ có $$s$$ đúng (mạng chậm trong khi máy chủ bình thường).
+(c) **Không hợp lệ** — Từ $p \to (r \lor s)$ và $p$, Modus Ponens chỉ cho phép suy ra $r \lor s$ (máy chủ quá tải hoặc mạng chậm), không thể kết luận riêng $r$ (máy chủ quá tải) vì có thể chỉ có $s$ đúng (mạng chậm trong khi máy chủ bình thường).
 
 </details>
 
@@ -571,11 +571,11 @@ Biết rằng `user.is_admin()` trả về `False`. Hãy dùng quy tắc suy di�
 <details>
 <summary>Đáp án</summary>
 
-Đặt $$p$$: `user.is_admin()` đúng, $$q$$: `user.has_permission("edit")` đúng. Điều kiện của `if` là $$p \lor q$$. Ta biết $$\neg p$$ đúng.
+Đặt $p$: `user.is_admin()` đúng, $q$: `user.has_permission("edit")` đúng. Điều kiện của `if` là $p \lor q$. Ta biết $\neg p$ đúng.
 
-(a) Nếu $$q$$ đúng: từ $$q$$, áp dụng **Addition** (phép thêm) ta có $$p \lor q$$ đúng. Áp dụng **Modus Ponens** với nhánh `if`, suy ra `document.editable = True`.
+(a) Nếu $q$ đúng: từ $q$, áp dụng **Addition** (phép thêm) ta có $p \lor q$ đúng. Áp dụng **Modus Ponens** với nhánh `if`, suy ra `document.editable = True`.
 
-(b) Nếu $$q$$ sai (tức $$\neg q$$ đúng): từ $$\neg p$$ và $$\neg q$$, áp dụng **Conjunction** (phép nối) ta có $$\neg p \land \neg q$$, theo luật De Morgan tương đương với $$\neg(p \lor q)$$. Điều kiện `if` sai nên nhánh `else` được thực thi, suy ra `document.editable = False`.
+(b) Nếu $q$ sai (tức $\neg q$ đúng): từ $\neg p$ và $\neg q$, áp dụng **Conjunction** (phép nối) ta có $\neg p \land \neg q$, theo luật De Morgan tương đương với $\neg(p \lor q)$. Điều kiện `if` sai nên nhánh `else` được thực thi, suy ra `document.editable = False`.
 
 </details>
 
@@ -593,22 +593,22 @@ Biết người dùng không bị chặn. Hãy dùng các quy tắc suy diễn �
 <summary>Đáp án</summary>
 
 Đặt:
-- $$p$$: "người dùng là admin"
-- $$q$$: "người dùng có token hợp lệ"
-- $$r$$: "người dùng được truy cập"
-- $$s$$: "người dùng bị chặn"
+- $p$: "người dùng là admin"
+- $q$: "người dùng có token hợp lệ"
+- $r$: "người dùng được truy cập"
+- $s$: "người dùng bị chặn"
 
 Các giả thiết:
-1. $$q \to r$$ (R1)
-2. $$p \to q$$ (R2)
-3. $$p \lor s$$ (R3)
-4. $$\neg s$$ (dữ kiện cho trước)
+1. $q \to r$ (R1)
+2. $p \to q$ (R2)
+3. $p \lor s$ (R3)
+4. $\neg s$ (dữ kiện cho trước)
 
 Các bước suy luận:
 
-- Bước 1: Từ $$p \lor s$$ (3) và $$\neg s$$ (4), theo **Disjunctive Syllogism** → $$p$$.
-- Bước 2: Từ $$p \to q$$ (2) và $$p$$ (bước 1), theo **Modus Ponens** → $$q$$.
-- Bước 3: Từ $$q \to r$$ (1) và $$q$$ (bước 2), theo **Modus Ponens** → $$r$$.
+- Bước 1: Từ $p \lor s$ (3) và $\neg s$ (4), theo **Disjunctive Syllogism** → $p$.
+- Bước 2: Từ $p \to q$ (2) và $p$ (bước 1), theo **Modus Ponens** → $q$.
+- Bước 3: Từ $q \to r$ (1) và $q$ (bước 2), theo **Modus Ponens** → $r$.
 
 Kết luận: Người dùng được truy cập.
 
@@ -626,11 +626,11 @@ Kiểm tra xem từ các giả thiết sau đây có thể dùng các quy tắc 
 <details>
 <summary>Đáp án</summary>
 
-- Bước 1: Từ (1) $$p \to q$$ và (4) $$p$$, theo **Modus Ponens** → $$q$$.
-- Bước 2: Từ (2) $$q \to r$$ và $$q$$ (bước 1), theo **Modus Ponens** → $$r$$.
-- Bước 3: Từ (3) $$r \to s$$ và $$r$$ (bước 2), theo **Modus Ponens** → $$s$$.
+- Bước 1: Từ (1) $p \to q$ và (4) $p$, theo **Modus Ponens** → $q$.
+- Bước 2: Từ (2) $q \to r$ và $q$ (bước 1), theo **Modus Ponens** → $r$.
+- Bước 3: Từ (3) $r \to s$ và $r$ (bước 2), theo **Modus Ponens** → $s$.
 
-Từ các giả thiết đã cho, ta chỉ suy ra được $$s$$ chứ **không thể suy ra $$t$$** (vì không có giả thiết nào liên hệ $$t$$ với $$p, q, r, s$$; phép Addition chỉ cho $$s \lor t$$). Nếu muốn suy ra $$t$$, cần bổ sung thêm giả thiết chẳng hạn $$s \to t$$.
+Từ các giả thiết đã cho, ta chỉ suy ra được $s$ chứ **không thể suy ra $t$** (vì không có giả thiết nào liên hệ $t$ với $p, q, r, s$; phép Addition chỉ cho $s \lor t$). Nếu muốn suy ra $t$, cần bổ sung thêm giả thiết chẳng hạn $s \to t$.
 
 </details>
 
@@ -646,13 +646,13 @@ Xác định quy tắc suy diễn (hoặc lỗi ngụy biện) trong mỗi tình
 <details>
 <summary>Đáp án</summary>
 
-(a) **Modus Ponens**: $$p \to q$$ (mưa → ướt) và $$p$$ (mưa), suy ra $$q$$ (ướt). Lập luận hợp lệ.
+(a) **Modus Ponens**: $p \to q$ (mưa → ướt) và $p$ (mưa), suy ra $q$ (ướt). Lập luận hợp lệ.
 
-(b) **Không hợp lệ** — Ngụy biện khẳng định hệ quả (affirming the consequent): $$p \to q$$ và $$q$$ không suy ra $$p$$. Một người không phải sinh viên vẫn có thể tự học Toán Rời Rạc.
+(b) **Không hợp lệ** — Ngụy biện khẳng định hệ quả (affirming the consequent): $p \to q$ và $q$ không suy ra $p$. Một người không phải sinh viên vẫn có thể tự học Toán Rời Rạc.
 
-(c) **Hợp lệ** — Đặt $$p$$: "phát hiện xâm nhập", $$q$$: "ghi log", $$r$$: "gửi cảnh báo". Ta có $$p \to (q \land r)$$ và $$\neg q$$. Từ $$\neg q$$, theo Addition có $$\neg q \lor \neg r$$, theo De Morgan là $$\neg(q \land r)$$, rồi áp dụng **Modus Tollens** suy ra $$\neg p$$ (không phát hiện xâm nhập). Lưu ý trong thực tế, kết luận chỉ đáng tin khi tiền đề $$p \to (q \land r)$$ thực sự đúng (hệ thống ghi log không bị lỗi).
+(c) **Hợp lệ** — Đặt $p$: "phát hiện xâm nhập", $q$: "ghi log", $r$: "gửi cảnh báo". Ta có $p \to (q \land r)$ và $\neg q$. Từ $\neg q$, theo Addition có $\neg q \lor \neg r$, theo De Morgan là $\neg(q \land r)$, rồi áp dụng **Modus Tollens** suy ra $\neg p$ (không phát hiện xâm nhập). Lưu ý trong thực tế, kết luận chỉ đáng tin khi tiền đề $p \to (q \land r)$ thực sự đúng (hệ thống ghi log không bị lỗi).
 
-(d) **Không hợp lệ** — Ngụy biện khẳng định hệ quả. Phản ví dụ: $$x = 6$$ là số chẵn nhưng không chia hết cho 4.
+(d) **Không hợp lệ** — Ngụy biện khẳng định hệ quả. Phản ví dụ: $x = 6$ là số chẵn nhưng không chia hết cho 4.
 
 </details>
 
@@ -669,10 +669,10 @@ Hãy chứng minh: "Tôi đi bơi." Viết rõ từng bước và nêu tên quy 
 <details>
 <summary>Đáp án</summary>
 
-- Bước 1: Từ (1) $$s \to \neg c$$ và (3) $$s$$, theo **Modus Ponens** → $$\neg c$$.
-- Bước 2: Từ (2) $$\neg c \to b$$ và $$\neg c$$ (bước 1), theo **Modus Ponens** → $$b$$.
+- Bước 1: Từ (1) $s \to \neg c$ và (3) $s$, theo **Modus Ponens** → $\neg c$.
+- Bước 2: Từ (2) $\neg c \to b$ và $\neg c$ (bước 1), theo **Modus Ponens** → $b$.
 
-Kết luận: Tôi đi bơi. (Cũng có thể dùng **Hypothetical Syllogism** cho (1) và (2) để thu được $$s \to b$$, sau đó dùng Modus Ponens với (3) để suy ra $$b$$.)
+Kết luận: Tôi đi bơi. (Cũng có thể dùng **Hypothetical Syllogism** cho (1) và (2) để thu được $s \to b$, sau đó dùng Modus Ponens với (3) để suy ra $b$.)
 
 </details>
 
@@ -689,11 +689,11 @@ Mỗi suy luận sau trông có vẻ hợp lý nhưng mắc lỗi logic. Hãy ch
 <details>
 <summary>Đáp án</summary>
 
-(a) **Ngụy biện phủ định tiền đề** (Denying the Antecedent): dạng $$p \to q$$, $$\neg p$$, suy ra $$\neg q$$ là không hợp lệ. Phản ví dụ: một người không học giỏi vẫn có thể kiếm được nhiều tiền nhờ kinh doanh hoặc trúng thưởng.
+(a) **Ngụy biện phủ định tiền đề** (Denying the Antecedent): dạng $p \to q$, $\neg p$, suy ra $\neg q$ là không hợp lệ. Phản ví dụ: một người không học giỏi vẫn có thể kiếm được nhiều tiền nhờ kinh doanh hoặc trúng thưởng.
 
-(b) **Không hợp lệ về mặt hình thức** — Đây là dạng ngụy biện khẳng định hệ quả ($$p \to q$$ và $$q$$ không suy ra $$p$$). Kết luận ở đây đúng về mặt số học chỉ vì theo nội dung toán học, "chia hết cho 6" tương đương với "chia hết cho 2 và cho 3", chứ không phải do hình thức suy luận hợp lệ.
+(b) **Không hợp lệ về mặt hình thức** — Đây là dạng ngụy biện khẳng định hệ quả ($p \to q$ và $q$ không suy ra $p$). Kết luận ở đây đúng về mặt số học chỉ vì theo nội dung toán học, "chia hết cho 6" tương đương với "chia hết cho 2 và cho 3", chứ không phải do hình thức suy luận hợp lệ.
 
-(c) **Ngụy biện khẳng định hệ quả** (Affirming the Consequent): $$p \to q$$ (chó → sủa) và $$q$$ (sủa) không suy ra $$p$$ (chó). Phản ví dụ: chó sói (wolf) hoặc một con robot được lập trình phát tiếng sủa.
+(c) **Ngụy biện khẳng định hệ quả** (Affirming the Consequent): $p \to q$ (chó → sủa) và $q$ (sủa) không suy ra $p$ (chó). Phản ví dụ: chó sói (wolf) hoặc một con robot được lập trình phát tiếng sủa.
 
 </details>
 
@@ -709,13 +709,13 @@ Sử dụng quy tắc **Resolution** $$(p \lor q) \land (\neg p \lor r) \Rightar
 <details>
 <summary>Đáp án</summary>
 
-(a) Từ $$(a \lor b)$$ và $$(\neg a \lor c)$$ suy ra $$(b \lor c)$$. Nếu $$a$$ đúng thì từ mệnh đề 2 có $$c$$ đúng; nếu $$a$$ sai thì từ mệnh đề 1 có $$b$$ đúng.
+(a) Từ $(a \lor b)$ và $(\neg a \lor c)$ suy ra $(b \lor c)$. Nếu $a$ đúng thì từ mệnh đề 2 có $c$ đúng; nếu $a$ sai thì từ mệnh đề 1 có $b$ đúng.
 
-(b) Từ $$(x \lor \neg y)$$ và $$(y \lor z)$$ suy ra $$(x \lor z)$$ (khử cặp bù $$\neg y$$ và $$y$$).
+(b) Từ $(x \lor \neg y)$ và $(y \lor z)$ suy ra $(x \lor z)$ (khử cặp bù $\neg y$ và $y$).
 
-(c) Từ $$(\neg p \lor q)$$ và $$(\neg q \lor r)$$ suy ra $$(\neg p \lor r)$$. Đây chính là **Hypothetical Syllogism** viết dưới dạng CNF vì $$(\neg p \lor q) \equiv (p \to q)$$, $$(\neg q \lor r) \equiv (q \to r)$$ và $$(\neg p \lor r) \equiv (p \to r)$$.
+(c) Từ $(\neg p \lor q)$ và $(\neg q \lor r)$ suy ra $(\neg p \lor r)$. Đây chính là **Hypothetical Syllogism** viết dưới dạng CNF vì $(\neg p \lor q) \equiv (p \to q)$, $(\neg q \lor r) \equiv (q \to r)$ và $(\neg p \lor r) \equiv (p \to r)$.
 
-(d) Từ $$(p \lor q \lor r)$$ và $$(\neg p \lor s)$$ suy ra $$(q \lor r \lor s)$$: khử cặp bù $$p$$ và $$\neg p$$, giữ lại tuyển của các literal còn lại.
+(d) Từ $(p \lor q \lor r)$ và $(\neg p \lor s)$ suy ra $(q \lor r \lor s)$: khử cặp bù $p$ và $\neg p$, giữ lại tuyển của các literal còn lại.
 
 </details>
 

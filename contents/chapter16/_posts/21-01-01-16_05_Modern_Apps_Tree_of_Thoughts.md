@@ -52,11 +52,11 @@ Liên hệ với nội dung chương: ToT không đưa ra một định nghĩa c
 
 **Câu hỏi.** (1) Vẽ cây trạng thái ToT cho một ví dụ Game of 24 có hệ số nhánh bằng 3 và độ sâu bằng 2. (2) Phép duyệt nào tương ứng với chiến lược “mở rộng mọi bước suy nghĩ ở độ sâu hiện tại và giữ lại $$b$$ nhánh tốt nhất”?
 
-### Bản đồ kiến thức nền: Cây Suy luận (Tree-of-Thoughts) cho Mô hình Ngôn ngữ Lớn
+### Kiến thức cần nhớ: Cây Suy luận (Tree-of-Thoughts) cho Mô hình Ngôn ngữ Lớn
 - **Hạn chế của Chain-of-Thought (Chuỗi suy nghĩ):** Sinh văn bản tuyến tính một chiều giống như đi trong mê cung mà **không được quay lui** — chỉ cần sai một bước tính nhỏ ở đầu, toàn bộ lời giải phía sau sụp đổ!
 - **Tree-of-Thoughts (ToT, 2023–2026):** Biến quá trình suy luận thành một **cây tìm kiếm thực thụ** (chương 16!): mỗi nút là một trạng thái tư duy trung gian, kết hợp **BFS/DFS, cắt tỉa nhánh chết và quay lui (backtracking)** cùng hàm lượng giá!
 
-### Ví dụ tính tay cầm tay chỉ việc: Cây suy luận giải bài toán "Game of 24" với `(4, 9, 10, 13)`
+### Ví dụ tính tay làm từng bước: Cây suy luận giải bài toán "Game of 24" với `(4, 9, 10, 13)`
 Mục tiêu: dùng cộng, trừ, nhân, chia đúng 4 số `(4, 9, 10, 13)` để ra **24**:
 1. **Tầng 1 (Sinh nhánh từ gốc):**
    - Nhánh A: `13 - 9 = 4` $$\to$$ còn `(4, 4, 10)` (*Khả thi!*).
@@ -66,7 +66,7 @@ Mục tiêu: dùng cộng, trừ, nhân, chia đúng 4 số `(4, 9, 10, 13)` đ�
    - `10 - 4 = 6` $$\to$$ còn `(4, 6)` (*Chắc chắn ra 24!*).
 3. **Tầng 3 (Đích):** `4 × 6 = 24` $$\implies$$ lời giải hoàn chỉnh: **$$(10 - (13 - 9)) \times 4 = 24$$** (hoặc $$(10 - 4) \times (13 - 9) = 24$$)!
 
-### Khung giải thích: 4 bước nối Lý thuyết Cây Chương 16 với AI Suy luận (nên đọc chậm)
+### Giải thích: 4 bước nối Lý thuyết Cây Chương 16 với AI Suy luận
 #### Bước 1: Định nghĩa "nút" là một bước tư duy hoàn chỉnh (không phải từng từ rời)
 Giúp độ sâu cây $$d$$ chỉ khoảng 3–10 tầng thay vì hàng trăm token.
 #### Bước 2: Chọn chiến lược duyệt BFS (Beam Search) hay DFS (Backtracking)

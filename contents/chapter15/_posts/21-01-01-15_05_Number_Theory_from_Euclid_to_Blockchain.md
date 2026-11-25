@@ -40,7 +40,7 @@ Các bài trước trong Chương 15 đã lần lượt trình bày tính chia h
 
 </div>
 
-## Bản đồ kiến thức nền: Dòng chảy 2.300 năm từ Euclid đến Blockchain
+## Kiến thức cần nhớ: Dòng chảy 2.300 năm từ Euclid đến Blockchain
 
 ### 1. Từ Euclid (300 TCN) đến Gauss (1801)
 - **Euclid:** Chứng minh vô hạn số nguyên tố và thuật toán GCD.
@@ -53,7 +53,7 @@ Các bài trước trong Chương 15 đã lần lượt trình bày tính chia h
 ### 3. Blockchain: Chuỗi Băm + Chữ ký Đường cong Elliptic (ECDSA)
 - **Bản chất:** Mỗi khối trong Blockchain chứa **mã băm của khối trước đó** (tạo chuỗi bất biến: sửa 1 bit quá khứ làm hỏng toàn bộ chuỗi sau!), và mỗi giao dịch được ký bằng **chữ ký số đường cong elliptic** (như `secp256k1` trong Bitcoin/Ethereum) giúp mọi nút mạng xác minh mà không cần ngân hàng trung ương!
 
-## Ví dụ tính tay cầm tay chỉ việc: Trao đổi khóa Diffie–Hellman trên $$p = 23,\; g = 5$$
+## Ví dụ tính tay làm từng bước: Trao đổi khóa Diffie–Hellman trên $$p = 23,\; g = 5$$
 
 Công bố công khai số nguyên tố $$p = 23$$ và phần tử sinh $$g = 5$$ (kẻ nghe lén Eve biết rõ cả $$23$$ và $$5$$!):
 1. **Alice** chọn bí mật $$a = 6$$, tính và gửi công khai:
@@ -70,8 +70,7 @@ Công bố công khai số nguyên tố $$p = 23$$ và phần tử sinh $$g = 5$
 
 Cả hai cùng thu được **khóa chung $$K = 2$$** ngay trước mắt kẻ nghe lén Eve (chỉ thấy $$23, 5, 8, 19$$)!
 
-### Khung giải thích: 4 cột mốc biến Lý thuyết Số thành hạ tầng niềm tin số (nên đọc chậm)
-
+### Giải thích: 4 cột mốc biến Lý thuyết Số thành hạ tầng niềm tin số
 #### Bước 1: Sự ra đời của Hàm một chiều (1976)
 Diffie–Hellman chứng minh hai người lạ hoàn toàn có thể thiết lập bí mật chung trên kênh công khai nhờ độ khó của logarit rời rạc.
 

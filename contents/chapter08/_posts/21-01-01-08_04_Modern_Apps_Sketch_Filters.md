@@ -73,14 +73,13 @@ Trong công trình trên tạp chí *J. Exp. Algorithmics* (2022), Graf và Lemi
 **Câu hỏi.** (1) Nếu yêu cầu $$\varepsilon = 0$$ với $$n > m$$ dấu vân tay (fingerprint), định lý nào của chương này được áp dụng? (2) Vì sao phát biểu “cao hơn cận dưới 13%” mang bản chất của nguyên lý chuồng bồ câu chứ không phải học máy?
 
 
-### Bản đồ kiến thức nền: Cận Chuồng bồ câu trong Bộ lọc Xác suất Hiện đại
+### Kiến thức cần nhớ: Cận Chuồng bồ câu trong Bộ lọc Xác suất Hiện đại
 
 1. **Tập chính xác vs. Bộ lọc xấp xỉ:** Lưu chính xác $$n$$ khóa 64-bit tốn ít nhất $$64n$$ bit. Trong RocksDB hay bộ định tuyến CDN, các bộ lọc **Bloom**, **Xor** và **Ribbon** chấp nhận tỷ lệ dương tính giả nhỏ $$\varepsilon$$ để tiết kiệm gấp nhiều lần RAM.
 2. **Sàn lý thuyết từ Nguyên lý Chuồng bồ câu:** Bằng phép đếm chuồng bồ câu, *mọi* bộ lọc thành viên tĩnh có tỷ lệ dương tính giả $$\varepsilon$$ bắt buộc tốn tối thiểu **$$\log_2(1/\varepsilon)$$ bit cho mỗi khóa**!
 3. **Bộ lọc tĩnh 2022–2026 (Binary Fuse & Ribbon):** Bộ lọc Binary Fuse (Graf & Lemire, 2022) tiến sát sàn lý thuyết chỉ còn dư $$8\text{–}13\%$$ — gọn hơn hẳn mức dư $$44\%$$ ($$1.44\log_2(1/\varepsilon)$$) của Bloom filter kinh điển!
 
-### Khung giải thích: Tính tay số MB RAM cho 10 triệu khóa ở mức $$\varepsilon = 1/256$$ (nên đọc chậm)
-
+### Giải thích: Tính tay số MB RAM cho 10 triệu khóa ở mức $$\varepsilon = 1/256$$
 #### Bước 1: Tính sàn lý thuyết chuồng bồ câu
 Với tỷ lệ dương tính giả $$\varepsilon = 2^{-8} \approx 0.39\%$$, sàn lý thuyết tối thiểu là:
 $$

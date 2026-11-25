@@ -13,7 +13,7 @@ Một yêu cầu tưởng rất hợp lý trong buổi họp sprint — *"nhớ 
 
 **Mạch bài học:** **Quy tắc nhân** và hiện tượng bùng nổ tổ hợp $$N = \prod v_i$$ $$\longrightarrow$$ quan sát thực nghiệm rằng phần lớn lỗi phần mềm xuất phát từ tương tác **1 hoặc 2 tham số** $$\longrightarrow$$ **kiểm thử theo cặp (pairwise / covering arrays)** rút 324 ca xuống ~15 ca.
 
-## Bản đồ kiến thức nền: Toán tổ hợp trong kiểm thử phần mềm nghiên cứu gì?
+## Kiến thức cần nhớ: Toán tổ hợp trong kiểm thử phần mềm nghiên cứu gì?
 
 - **Quy tắc nhân & Tích Descartes (Product Rule):** Với $$k$$ tham số độc lập mà tham số thứ $$i$$ có $$v_i$$ giá trị, không gian cấu hình đầy đủ là tích Descartes $$S_1 \times \cdots \times S_k$$ có lực lượng $$N = \prod_{i=1}^k v_i$$ — tăng theo hàm mũ theo số tham số $$k$$.
 - **Mảng phủ $$t$$-chiều (Covering Arrays $$CA(N; t, k, v)$$):** Đối tượng cốt lõi của tổ hợp ứng dụng: tìm tập con nhỏ nhất gồm $$N$$ dòng cấu hình sao cho với mọi nhóm $$t$$ cột bất kỳ (thường $$t=2$$, tức *pairwise*), **mọi bộ giá trị $$t$$-chiều có thể đều xuất hiện ít nhất một lần**.
@@ -124,7 +124,7 @@ Bùng nổ tổ hợp là nguyên nhân thực tế gây trễ lịch phát hàn
 
 ---
 
-## Ví dụ tính tay cầm tay chỉ việc: Giảm 8 cấu hình xuống 4 ca kiểm thử Pairwise hoàn hảo
+## Ví dụ tính tay làm từng bước: Giảm 8 cấu hình xuống 4 ca kiểm thử Pairwise hoàn hảo
 
 Xét một mô-đun thanh toán nhỏ có **3 tham số nhị phân** (mỗi tham số 2 giá trị):
 - **Trình duyệt (B):** Chrome (`C`), Safari (`S`)
@@ -148,8 +148,7 @@ Xét một mô-đun thanh toán nhỏ có **3 tham số nhị phân** (mỗi tha
 
 4. **Kiểm tra thủ công:** Đếm cột cuối cùng — cả **12/12 cặp** đều xuất hiện đúng 1 lần, không thiếu cặp nào, trong khi số ca kiểm thử giảm một nửa (từ 8 xuống 4). Khi số tham số tăng lên 5–10 biến, tỷ lệ nén nhảy vọt từ $$324 \to 15$$ hoặc từ hàng chục nghìn xuống vài chục ca!
 
-### Khung giải thích: Tại sao Pairwise đánh bại bùng nổ tổ hợp (nên đọc chậm)
-
+### Giải thích: Tại sao Pairwise đánh bại bùng nổ tổ hợp
 1. **Bước 1 — Chiều sâu nhân nhanh hơn chiều rộng:** Mỗi khi thêm một tham số mới có 3 giá trị, không gian vét cạn nhân 3 ngay lập tức, còn số cặp mới cần phủ chỉ tăng tuyến tính theo số tham số hiện có.
 2. **Bước 2 — Một ca kiểm thử phủ nhiều cặp cùng lúc:** Với $$k$$ tham số, một dòng cấu hình duy nhất đồng thời kiểm tra $$\binom{k}{2}$$ cặp tham số. Nhờ tính "chia sẻ dòng" này, kích thước mảng phủ pairwise tăng xấp xỉ theo $$O(\log k)$$ thay vì $$O(v^k)$$.
 3. **Bước 3 — Nhắm trúng vùng mật độ lỗi cao:** Phần lớn lỗi tương thích đến từ một giá trị đơn lẻ (1-way) hoặc xung đột giữa hai thành phần (2-way, ví dụ Safari + OAuth).

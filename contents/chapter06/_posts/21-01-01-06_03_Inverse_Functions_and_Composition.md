@@ -17,7 +17,7 @@ Buổi sáng bạn đi tất trước rồi mới xỏ giày; tối về nhà b�
 
 Trong phần mềm, dữ liệu hiếm khi chỉ đi qua một bước duy nhất mà thường được biến đổi theo chuỗi như phân tích (parse) – kiểm tra hợp lệ (validate) – mã hóa (encode). Hàm hợp mô tả việc ghép nhiều ánh xạ nối tiếp thành một chuỗi xử lý; còn hàm nghịch đảo trả lời câu hỏi liệu ta có thể khôi phục chính xác đầu vào ban đầu hay không. Không phải hàm nào cũng có nghịch đảo — điều kiện cần và đủ là hàm phải song ánh.
 
-## Bản đồ kiến thức nền: Bốn quy luật cốt lõi của Hàm hợp và Hàm nghịch đảo
+## Kiến thức cần nhớ: Bốn quy luật cốt lõi của Hàm hợp và Hàm nghịch đảo
 
 1. **Hàm hợp $$(g \circ f)(x) = g(f(x))$$ — Luôn thực thi từ phải sang trái**:
    Đầu vào $$x$$ đi qua $$f$$ trước để ra $$f(x)$$, rồi kết quả đó làm đầu vào cho $$g$$. Để hợp được, miền giá trị của $$f$$ phải nằm gọn trong miền xác định của $$g$$: $$\text{Range}(f) \subseteq \text{Domain}(g)$$.
@@ -73,7 +73,7 @@ Hai biểu thức này khác nhau, cho thấy phép hợp hàm không có tính 
 
 ![Hàm hợp g∘f — ghép hai ánh xạ](/discrete-mathematics-for-computer-science-iuh/img/course/Example_for_a_composition_of_two_functions.svg)
 
-<p class="textbook-figure-caption" data-figure="6.13">Hàm hợp $$(g \circ f)(x) = g(f(x))$$ — thực hiện f trước rồi đến g, cho ra ánh xạ từ A sang C.</p>
+<p class="textbook-figure-caption" data-figure="6.13">Hàm hợp $(g \circ f)(x) = g(f(x))$ — thực hiện f trước rồi đến g, cho ra ánh xạ từ A sang C.</p>
 </div>
 
 ## Điều kiện để hợp được
@@ -89,7 +89,7 @@ $$f(A)\subseteq \operatorname{dom}(g).$$
 
 ![Điều kiện hợp — ảnh của f nằm trong domain của g](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
-<p class="textbook-figure-caption" data-figure="6.14">Để $$g \circ f$$ xác định, mọi giá trị $$f(x)$$ phải thuộc domain của g — đầu ra của bước 1 là đầu vào của bước 2.</p>
+<p class="textbook-figure-caption" data-figure="6.14">Để $g \circ f$ xác định, mọi giá trị $f(x)$ phải thuộc domain của g — đầu ra của bước 1 là đầu vào của bước 2.</p>
 </div>
 
 ## Tính kết hợp của hàm hợp
@@ -143,7 +143,7 @@ Như vậy, hàm đồng nhất đóng vai trò phần tử trung hòa đối v�
 
 ![Hàm đồng nhất id(x) = x](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
-<p class="textbook-figure-caption" data-figure="6.16">Hàm đồng nhất $$id_A$$ là phần tử trung hòa — $$f \circ id = id \circ f = f$$.</p>
+<p class="textbook-figure-caption" data-figure="6.16">Hàm đồng nhất $id_A$ là phần tử trung hòa — $f \circ id = id \circ f = f$.</p>
 ## Hàm nghịch đảo
 
 <div class="textbook-definition" markdown="1">
@@ -175,7 +175,7 @@ Ngược lại, nếu $$f$$ song ánh, mỗi $$y\in B$$ có đúng một tiền 
 
 ![Hàm nghịch đảo — chỉ tồn tại khi song ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Bijection.svg)
 
-<p class="textbook-figure-caption" data-figure="6.17">Hàm nghịch đảo $$f^{-1}$$ tồn tại khi và chỉ khi f song ánh — cho phép đảo chiều mũi tên mà không làm mất thông tin.</p>
+<p class="textbook-figure-caption" data-figure="6.17">Hàm nghịch đảo $f^{-1}$ tồn tại khi và chỉ khi f song ánh — cho phép đảo chiều mũi tên mà không làm mất thông tin.</p>
 ## Tìm hàm nghịch đảo
 
 <div class="textbook-example" markdown="1">
@@ -205,7 +205,7 @@ $$f^{-1}(x)=\frac{x+2}{3}.$$
 
 Hàm $$f:\mathbb{R}\to\mathbb{R}$$, $$f(x)=x^2$$ không có nghịch đảo trên toàn $$\mathbb{R}$$ vì nó không đơn ánh (chẳng hạn $$f(2)=f(-2)$$) và cũng không toàn ánh. Tuy nhiên, nếu thu hẹp cả domain lẫn codomain về $$[0,\infty)$$, hàm trở thành song ánh và có nghịch đảo là $$f^{-1}(x)=\sqrt{x}$$.
 
-### Khung giải thích (nên đọc chậm): Tính tay $$g \circ f$$, $$f \circ g$$ và kiểm chứng quy tắc $$(g \circ f)^{-1} = f^{-1} \circ g^{-1}$$
+### Giải thích: Tính tay $$g \circ f$$, $$f \circ g$$ và kiểm chứng quy tắc $$(g \circ f)^{-1} = f^{-1} \circ g^{-1}$$
 
 Cho hai hàm song ánh trên $$\mathbb{R}$$: $$f(x) = 2x + 3$$ và $$g(x) = x - 5$$.
 
@@ -271,8 +271,8 @@ Cho $$f(x) = 2x$$ và $$g(x) = x+3$$. Tính $$f \circ g$$ và $$g \circ f$$.
 <details>
 <summary>Đáp án</summary>
 
-- $$(f \circ g)(x) = 2(x+3) = 2x+6$$
-- $$(g \circ f)(x) = 2x+3$$
+- $(f \circ g)(x) = 2(x+3) = 2x+6$
+- $(g \circ f)(x) = 2x+3$
 
 </details>
 
@@ -283,7 +283,7 @@ Hàm $$f(x) = 3x + 1$$ có nghịch đảo trên $$\R$$ không? Nếu có, hãy 
 <details>
 <summary>Đáp án</summary>
 
-Có, vì $$f$$ là song ánh trên $$\R$$. Hàm nghịch đảo là $$f^{-1}(x) = \frac{x-1}{3}$$.
+Có, vì $f$ là song ánh trên $\R$. Hàm nghịch đảo là $f^{-1}(x) = \frac{x-1}{3}$.
 
 </details>
 

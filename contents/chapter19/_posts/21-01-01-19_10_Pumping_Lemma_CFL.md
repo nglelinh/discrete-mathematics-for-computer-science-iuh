@@ -19,7 +19,7 @@ excerpt: "Phát biểu bổ đề bơm cho ngôn ngữ phi ngữ cảnh (CFL), �
 
 Làm thế nào để khẳng định chắc chắn rằng *không một ai trên thế giới* có thể viết ra một văn phạm phi ngữ cảnh cho ngôn ngữ $$L = \{a^n b^n c^n \mid n \ge 0\}$$? Ta không thể thử vô hạn văn phạm. Giống như Bổ đề Bơm cho ngôn ngữ chính quy khai thác chu trình trên đồ thị DFA, **Bổ đề Bơm cho CFL** khai thác nguyên lý Dirichlet trên **chiều cao của cây phân tích**: khi chuỗi đủ dài, một biến $$A$$ bắt buộc phải lặp lại trên cùng một đường đi từ gốc xuống lá, tạo ra hai đoạn bơm đối xứng $$v$$ và $$y$$.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Bổ đề Bơm CFL
+## Kiến thức cần nhớ: Ba trụ cột của Bổ đề Bơm CFL
 
 1. **Nguyên lý Dirichlet trên Cây phân tích (Phiên bản CNF)**:
    Nếu văn phạm ở dạng chuẩn Chomsky có $$\vert V \vert$$ biến, mọi cây phân tích có chiều cao $$\le \vert V \vert$$ chỉ sinh tối đa $$2^{\vert V \vert - 1}$$ lá. Vậy mọi chuỗi dài $$p = 2^{\vert V \vert}$$ trở lên bắt buộc có đường đi chứa một biến $$A$$ lặp lại ít nhất 2 lần.
@@ -74,7 +74,7 @@ Duyệt mọi cách chia $$w = uvxyz$$ thỏa mãn $$\lvert vxy\rvert \le p$$ v�
 
 </div>
 
-### Khung giải thích (nên đọc chậm): Chứng minh từng bước $$L = \{a^n b^n c^n \mid n \ge 0\}$$ không phải CFL
+### Giải thích: Chứng minh từng bước $$L = \{a^n b^n c^n \mid n \ge 0\}$$ không phải CFL
 
 Giả sử phản chứng $$L$$ là CFL với độ dài bơm $$p \ge 1$$. Ta chọn chuỗi thử cực sắc bén:
 $$s = a^p b^p c^p \in L \qquad (\vert s \vert = 3p \ge p).$$

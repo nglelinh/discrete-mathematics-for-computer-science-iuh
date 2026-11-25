@@ -46,7 +46,7 @@ Với các hàm Boole từ 2 đến 4 biến, K-map cho phép tìm trực quan d
 
 </div>
 
-## Bản đồ kiến thức nền: Bản đồ Karnaugh (K-map) và Tô-pô của Siêu lập phương
+## Kiến thức cần nhớ: Bản đồ Karnaugh (K-map) và Tô-pô của Siêu lập phương
 
 ### 1. Mã Gray & Tính kề trên Siêu lập phương $$Q_n$$
 - **Bản chất:** Trên trục K-map 2 biến, thứ tự luôn là **$$00,\; 01,\; 11,\; 10$$** (KHÔNG phải $$00, 01, 10, 11$$!), để hai cột kề nhau — kể cả cột đầu $$00$$ với cột cuối $$10$$ — luôn chỉ khác đúng **1 bit**! Về mặt tô-pô, K-map 4 biến chính là mặt **hình xuyến $$T^2$$** (mép trên nối mép dưới, mép trái nối mép phải!).
@@ -57,7 +57,7 @@ Với các hàm Boole từ 2 đến 4 biến, K-map cho phép tìm trực quan d
 ### 3. Implicant Nguyên tố Cốt yếu (EPI) & Trạng thái Không quan tâm (Don't-care $$d$$)
 - **Bản chất:** Khoanh các nhóm lớn nhất có thể (**Prime Implicant**), ưu tiên chọn nhóm chứa ít nhất một ô $$1$$ không ai khác phủ được (**Essential PI**). Các ô **Don't-care ($$d$$)** (tổ hợp đầu vào không bao giờ xảy ra, như mã BCD $$10..15$$) được tự do coi là $$1$$ nếu giúp mở rộng nhóm to hơn, hoặc $$0$$ nếu không cần!
 
-## Ví dụ tính tay cầm tay chỉ việc: Tối thiểu hóa hàm 3 biến $$f(A,B,C) = \sum m(0, 2, 4, 5, 6)$$ trên K-map
+## Ví dụ tính tay làm từng bước: Tối thiểu hóa hàm 3 biến $$f(A,B,C) = \sum m(0, 2, 4, 5, 6)$$ trên K-map
 
 Lập bảng K-map 3 biến với hàng $$A \in \{0, 1\}$$ và cột $$BC \in \{00, 01, 11, 10\}$$:
 
@@ -70,8 +70,7 @@ Lập bảng K-map 3 biến với hàng $$A \in \{0, 1\}$$ và cột $$BC \in \{
 2. **Nhóm 2 (2 ô phủ nốt $$m_5$$):** Ghép $$m_4(100)$$ với $$m_5(101)$$ (tái sử dụng $$m_4$$ để nhóm lớn nhất!). Biến không đổi: $$A=1, B=0 \implies$$ số hạng **$$A\bar{B}$$**!
 3. **Kết quả tối tiểu:** $$f(A, B, C) = \bar{C} + A\bar{B}$$ (chỉ cần 1 cổng NOT, 1 cổng AND, 1 cổng OR — so với 5 minterm ban đầu!).
 
-### Khung giải thích: Quy tắc 4 bước khoanh K-map không bao giờ sai (nên đọc chậm)
-
+### Giải thích: Quy tắc 4 bước khoanh K-map không bao giờ sai
 #### Bước 1: Kiểm tra thứ tự Mã Gray trên cả hai trục
 Luôn viết $$00, 01, 11, 10$$ và nhớ rằng mép trên chạm mép dưới, mép trái chạm mép phải (4 góc của K-map 4 biến thậm chí ghép thành 1 nhóm 4 ô!).
 

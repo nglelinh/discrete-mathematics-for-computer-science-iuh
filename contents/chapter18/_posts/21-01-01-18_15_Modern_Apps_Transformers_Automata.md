@@ -54,7 +54,7 @@ Consider the regular language `PARITY` of binary strings with an even number of 
 
 Một câu hỏi cực kỳ hấp dẫn xuất hiện trong kỷ nguyên mô hình ngôn ngữ lớn (LLM): *Nếu một mạng Transformer có độ sâu cố định và độ chính xác dấu phẩy động hữu hạn, nó có thực sự "biết tính toán" như máy Turing hay thực chất chỉ là một máy trạng thái hữu hạn khổng lồ?* Các công trình nghiên cứu giai đoạn 2022–2026 đã dùng chính công cụ của Chương 18 (DFA, máy Turing, mạch ngưỡng) để đo chính xác trần năng lực của Transformer.
 
-### Bản đồ kiến thức nền: Ba trụ cột nối Automata cổ điển với Transformer hiện đại
+### Kiến thức cần nhớ: Ba trụ cột nối Automata cổ điển với Transformer hiện đại
 
 1. **Giới hạn của Transformer một lượt (Fixed-depth Forward Pass)**:
    Một lượt suy luận thẳng không sinh token trung gian tương ứng với mạch song song độ sâu hằng số ($$\mathrm{TC}^0$$), nên gặp khó khăn khi khái quát độ dài (length generalization) cho các bài toán theo dõi trạng thái tuần tự như kiểm tra chẵn lẻ (`PARITY`).
@@ -71,7 +71,7 @@ Hãy nắm vững các chứng minh cổ điển theo phong cách Sipser trướ
 
 **Câu hỏi.** (1) Nếu cho phép một transformer sử dụng số lượng token nháp không bị chặn (tương tự như một băng nhớ), mô hình đó tương ứng với loại máy nào trong Chương 18? (2) Vì sao cần nêu rõ giả thiết “softmax hay hard attention” trước khi trích dẫn một định lý về sức mạnh biểu diễn?
 
-### Khung giải thích (nên đọc chậm): Minh họa vì sao bài toán `PARITY` dễ với DFA 2 trạng thái nhưng khó với Transformer một lượt
+### Giải thích: Minh họa vì sao bài toán `PARITY` dễ với DFA 2 trạng thái nhưng khó với Transformer một lượt
 
 Xét ngôn ngữ `PARITY` gồm các chuỗi nhị phân có **số bit `1` là chẵn**:
 - **Với DFA**: Chỉ cần đúng **2 trạng thái** ($$q_{\text{chẵn}}, q_{\text{lẻ}}$$). Đọc chuỗi dài 10 bit hay 10.000 bit đều dùng đúng 2 trạng thái và đạt độ chính xác **100%**.

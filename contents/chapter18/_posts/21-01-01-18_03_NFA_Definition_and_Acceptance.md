@@ -32,7 +32,7 @@ excerpt: "Hàm chuyển đa trị của NFA, khái niệm đường chạy, ngô
 
 </div>
 
-## Bản đồ kiến thức nền: NFA (Không tất định) khác DFA ở điểm nào?
+## Kiến thức cần nhớ: NFA (Không tất định) khác DFA ở điểm nào?
 
 ### 1. Hàm chuyển Trả về Tập con: $$\delta: Q \times \Sigma \to \mathcal{P}(Q)$$
 - **Bản chất:** Tại trạng thái $$q$$ khi đọc ký tự $$a$$, NFA được phép có **0 mũi tên** (nhánh chết), **1 mũi tên**, hoặc **nhiều mũi tên** (phân thân đồng thời sang nhiều trạng thái!).
@@ -44,7 +44,7 @@ excerpt: "Hàm chuyển đa trị của NFA, khái niệm đường chạy, ngô
 ### 3. Bất ngờ lớn: Sức mạnh Biểu đạt NFA $$\equiv$$ DFA!
 - **Bản chất:** Dù NFA gọn hơn gấp nhiều lần (có khi giảm số trạng thái theo hàm mũ!), NFA **không hề mạnh hơn DFA** về tập ngôn ngữ nhận được — mọi NFA đều đổi được sang DFA tương đương nhờ Thuật toán Xây dựng Tập con (bài 18.05)!
 
-## Ví dụ tính tay cầm tay chỉ việc: Theo vết Tập trạng thái của NFA nhận "Kết thúc bằng `01`"
+## Ví dụ tính tay làm từng bước: Theo vết Tập trạng thái của NFA nhận "Kết thúc bằng `01`"
 
 Xét NFA 3 trạng thái $$Q = \{q_0, q_1, q_2\}$$, $$F = \{q_2\}$$:
 - $$\delta(q_0, 0) = \{q_0, q_1\}$$ (đoán xem `0` này có phải ký tự áp chót không!), $$\delta(q_0, 1) = \{q_0\}$$.
@@ -58,8 +58,7 @@ Theo vết tập trạng thái khả dĩ $$\hat{\delta}(\{q_0\}, w)$$ trên chu�
 4. Đọc `1`: $$S_3 = \delta(q_0, 1) \cup \delta(q_1, 1) = \{q_0\} \cup \{q_2\} = \{q_0, q_2\}$$.
 Vì $$S_3 \cap F = \{q_2\} \neq \emptyset \implies$$ **CHẤP NHẬN `001`**!
 
-### Khung giải thích: 4 bước làm chủ tư duy Không tất định (nên đọc chậm)
-
+### Giải thích: 4 bước làm chủ tư duy Không tất định
 #### Bước 1: Dùng "phân thân" để thiết kế cực nhanh
 Gặp điều kiện "kết thúc bằng...", "chứa mẫu...", "hoặc A hoặc B": cứ đặt tự vòng ở $$q_0$$ rồi cho nhánh rẽ ra đoán mẫu!
 

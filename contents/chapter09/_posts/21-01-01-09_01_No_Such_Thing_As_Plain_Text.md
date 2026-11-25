@@ -11,9 +11,9 @@ excerpt: "Phân tách hai lớp Unicode (ký tự ứng với mã số nào) và
 
 Một buổi chiều thứ Sáu yên bình ở team backend, bài test vừa xanh hết thì Product Owner chụp màn hình gửi lên Slack: tên khách hàng `Nguyễn Thị Lan` bỗng biến hình thành `Nguyá»…n Thá»‹ Lan`! Lỗi hiển thị chữ quái dị ấy (**mojibake**) không phải do "phông chữ bị lỗi" hay "cơ sở dữ liệu hỏng" — nó bắt nguồn từ định lý vàng của Joel Spolsky năm 2003: **không hề tồn tại thứ gọi là "văn bản thuần" (plain text) nếu bạn không nói rõ bảng mã (encoding)!**
 
-**Mạch bài học:** Bản đồ kiến thức nền (tách bạch 2 lớp: Unicode Code Point vs. Byte Encoding, thiết kế tự đồng bộ của UTF-8) → Câu chuyện TaskFlow & lịch sử ASCII/UTF-8/UTF-16 → Ví dụ tính tay cầm tay chỉ việc: tự tay mã hóa chữ `'ễ'` (`U+1EC5`) ra đúng 3 byte UTF-8 `E1 BB 85` và tái hiện lỗi `Nguyá»…n`! → Khung giải thích chậm: 3 bước dập tắt mojibake tận gốc trong đường ống Web/DB → Tóm tắt & Video.
+**Mạch bài học:** Kiến thức cần nhớ (tách bạch 2 lớp: Unicode Code Point vs. Byte Encoding, thiết kế tự đồng bộ của UTF-8) → Câu chuyện TaskFlow & lịch sử ASCII/UTF-8/UTF-16 → Ví dụ tính tay làm từng bước: tự tay mã hóa chữ `'ễ'` (`U+1EC5`) ra đúng 3 byte UTF-8 `E1 BB 85` và tái hiện lỗi `Nguyá»…n`! → Giải thích: 3 bước dập tắt mojibake tận gốc trong đường ống Web/DB → Tóm tắt & Video.
 
-## Bản đồ kiến thức nền: Unicode và Encoding giải quyết bài toán gì?
+## Kiến thức cần nhớ: Unicode và Encoding giải quyết bài toán gì?
 
 ### 1. Lớp 1 — Unicode (Bảng ánh xạ Ký tự $$\to$$ Số nguyên Code Point)
 **Unicode** KHÔNG quy định cách lưu byte trên đĩa! Nó chỉ là một cuốn danh bạ toàn cầu gán cho mỗi ký tự trên thế giới một mã số duy nhất gọi là **code point** `U+XXXX`: ví dụ `'A'` là `U+0041` (65), `'ễ'` là `U+1EC5`, emoji `'😀'` là `U+1F600`.
@@ -192,7 +192,7 @@ Không có văn bản thuần — chỉ có byte và quy ước.
 ---
 
 
-## Ví dụ tính tay cầm tay chỉ việc: Mã hóa chữ `'ễ'` (`U+1EC5`) sang UTF-8 và tái hiện lỗi `Nguyá»…n`!
+## Ví dụ tính tay làm từng bước: Mã hóa chữ `'ễ'` (`U+1EC5`) sang UTF-8 và tái hiện lỗi `Nguyá»…n`!
 
 Hãy tự tay thực hiện quy tắc UTF-8 cho chữ **`'ễ'`** trong tên `Nguyễn`:
 1. **Lấy mã Unicode:** `'ễ'` = `U+1EC5`. Vì `U+0800 <= U+1EC5 <= U+FFFF`, UTF-8 dùng mẫu **3 byte**: `1110xxxx 10xxxxxx 10xxxxxx` (chứa đúng $$4 + 6 + 6 = 16$$ bit).
@@ -208,8 +208,7 @@ Hãy tự tay thực hiện quy tắc UTF-8 cho chữ **`'ễ'`** trong tên `Ng
    - Byte 3: `10` + `000101` = `10000101` = **`0x85`**
 4. **Giải mã hiện trường vụ án mojibake:** Nếu trình duyệt hoặc DB đọc nhầm 3 byte `E1 BB 85` theo bảng mã **Windows-1252** (1 byte = 1 ký tự): `0xE1` là **`á`**, `0xBB` là **`»`**, `0x85` là **`…`** $$\implies$$ **`Nguyễn` lập tức biến thành `Nguyá»…n`!!**
 
-### Khung giải thích: 3 bước truy tìm và khóa chặt Mojibake trong hệ thống thực tế (nên đọc chậm)
-
+### Giải thích: 3 bước truy tìm và khóa chặt Mojibake trong hệ thống thực tế
 #### Bước 1: Không bao giờ đoán — kiểm tra dãy byte thô bằng hex!
 Thấy chữ Việt 1 ký tự bị bung thành 3 ký tự lạ (`á»…`, `Ã¡`)? Đó là dấu vân tay 100% của **UTF-8 bị giải mã nhầm thành Latin-1 / Windows-1252**! Còn nếu hiện `????` thì ký tự đã bị *phá hủy mất dữ liệu* do cột DB dùng `latin1` hoặc `utf8` 3-byte cũ (MySQL cần `utf8mb4` để lưu emoji 4-byte!).
 

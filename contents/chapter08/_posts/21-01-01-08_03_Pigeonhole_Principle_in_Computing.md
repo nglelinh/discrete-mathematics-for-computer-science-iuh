@@ -12,9 +12,9 @@ excerpt: "Bài đọc mở rộng phân tích vai trò của nguyên lý Dirichl
 
 Mỗi vài năm trên Internet lại xuất hiện một startup quảng cáo *"thuật toán nén không mất mát thần kỳ, nén MỌI tệp tin xuống còn một nửa kích thước — thậm chí nén đi nén lại nhiều lần!"*. Bạn không cần đọc một dòng code nào của họ để biết chắc chắn 100% đó là trò lừa đảo: chỉ cần đúng **hai dòng Nguyên lý Chuồng chim** của Dirichlet năm 1834!
 
-**Mạch bài học:** Bản đồ kiến thức nền (tính tất yếu của va chạm băm, giới hạn nén không mất mát, khoảng cách Hamming trong mã sửa lỗi) → Bốn trụ cột ứng dụng trong Khoa học Máy tính → Ví dụ tính tay cầm tay chỉ việc: đếm số tệp 8-bit so với tất cả tệp ngắn hơn (256 vs. 255!) và mã Hamming(7,4) → Khung giải thích chậm: 3 bước dùng Dirichlet thiết lập giới hạn vật lý của tin học → Bài tập.
+**Mạch bài học:** Kiến thức cần nhớ (tính tất yếu của va chạm băm, giới hạn nén không mất mát, khoảng cách Hamming trong mã sửa lỗi) → Bốn trụ cột ứng dụng trong Khoa học Máy tính → Ví dụ tính tay làm từng bước: đếm số tệp 8-bit so với tất cả tệp ngắn hơn (256 vs. 255!) và mã Hamming(7,4) → Giải thích: 3 bước dùng Dirichlet thiết lập giới hạn vật lý của tin học → Bài tập.
 
-## Bản đồ kiến thức nền: Ba giới hạn bất khả vượt của Tin học từ Nguyên lý Dirichlet
+## Kiến thức cần nhớ: Ba giới hạn bất khả vượt của Tin học từ Nguyên lý Dirichlet
 
 ### 1. Va chạm hàm băm là định luật toán học, không phải lỗi lập trình
 Hàm băm ánh xạ không gian đầu vào vô hạn (hoặc khổng lồ như $$2^{1000}$$ chuỗi) vào đầu ra cố định $$m$$ bit (chỉ có $$2^m$$ giá trị). Vì số "chim" vượt xa số "chuồng", **va chạm chắc chắn tồn tại** — kỹ sư không xóa va chạm mà thiết kế bảng băm (chaining, open addressing) và hàm băm mật mã (SHA-256) sao cho va chạm cực hiếm và bất khả tìm chủ đích!
@@ -165,7 +165,7 @@ Nguyên lý chuồng chim cho thấy sức mạnh của một sự thật hiển
 ---
 
 
-## Ví dụ tính tay cầm tay chỉ việc: Chứng minh bất khả nén cho tệp 8-bit & Cận Hamming cho gói 7-bit
+## Ví dụ tính tay làm từng bước: Chứng minh bất khả nén cho tệp 8-bit & Cận Hamming cho gói 7-bit
 
 1. **Tại sao không thể nén nhỏ mọi tệp 8-bit (1 byte)?**
    - Tổng số tệp 8-bit khác nhau ("chim"): $$2^8 = \mathbf{256}$$ tệp.
@@ -177,8 +177,7 @@ Nguyên lý chuồng chim cho thấy sức mạnh của một sự thật hiển
 2. **Mã Hamming(7, 4) — chạm trần hoàn hảo của cận đóng gói:**
    Với gói tin $$n = 7$$ bit ($$2^7 = 128$$ chuỗi), mỗi từ mã sửa được 1 bit lỗi chiếm đúng $$1 + 7 = 8$$ chuỗi. Số từ mã tối đa là $$\lfloor 128 / 8 \rfloor = 16 = 2^4$$ — nghĩa là dùng **3 bit kiểm tra** bảo vệ **4 bit dữ liệu** đạt đúng giới hạn lý thuyết không thừa một trạng thái nào!
 
-### Khung giải thích: 3 bước dùng Dirichlet để phản biện các tuyên bố công nghệ "quá tốt để là thật" (nên đọc chậm)
-
+### Giải thích: 3 bước dùng Dirichlet để phản biện các tuyên bố công nghệ "quá tốt để là thật"
 #### Bước 1: Đếm kích thước tập đầu vào (miền xác định) và tập đầu ra (miền giá trị)
 Mọi thuật toán không mất mát (mã hóa, nén, băm không va chạm) đều đòi hỏi ánh xạ **đơn ánh** $$f: A \to B$$, tức bắt buộc $$\vert A\vert \le \vert B\vert$$.
 

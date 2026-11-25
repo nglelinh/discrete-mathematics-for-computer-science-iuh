@@ -21,7 +21,7 @@ Tập độc lập (Independent Set), Clique và Phủ đỉnh (Vertex Cover) l�
 
 Làm sao biến một công thức logic khô khan đầy dấu $$\lor, \land, \neg$$ thành một đồ thị gồm các đỉnh và cạnh? Phép rút gọn kinh điển từ `3SAT` sang `INDEPENDENT-SET` (tập độc lập), rồi nối tiếp sang `CLIQUE` (đồ thị đầy đủ con) và `VERTEX-COVER` (tập phủ đỉnh) là kiệt tác đầu tiên của nghệ thuật **thiết kế mảnh ghép (gadget design)** trong lý thuyết độ phức tạp.
 
-## Bản đồ kiến thức nền: Chuỗi rút gọn Tam giác Vàng trên Đồ thị
+## Kiến thức cần nhớ: Chuỗi rút gọn Tam giác Vàng trên Đồ thị
 
 1. **Rút gọn $$\mathrm{3SAT} \le_p \mathrm{IS}$$ (Mỗi mệnh đề = 1 tam giác)**:
    Với $$m$$ mệnh đề, dựng $$m$$ tam giác (mỗi tam giác 3 đỉnh ứng với 3 literal). Nối cạnh xung đột giữa mọi cặp literal mâu thuẫn $$x_i$$ và $$\neg x_i$$. Chọn được tập độc lập cỡ $$m$$ tương đương chọn đúng 1 literal Đúng trong mỗi mệnh đề mà không có hai literal nào mâu thuẫn nhau!
@@ -91,7 +91,7 @@ Quan sát mối liên hệ qua phép lấy phần bù giữa tập độc lập 
 </div>
 <script src="{{ '/public/js/explainers/complexity-explainer.js' | relative_url }}"></script>
 
-### Khung giải thích (nên đọc chậm): Dựng tay đồ thị cho công thức 3SAT có 2 mệnh đề
+### Giải thích: Dựng tay đồ thị cho công thức 3SAT có 2 mệnh đề
 
 Xét công thức $$\varphi = (x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor x_3)$$ ($$m = 2$$ mệnh đề):
 1. **Dựng 2 tam giác (6 đỉnh):**

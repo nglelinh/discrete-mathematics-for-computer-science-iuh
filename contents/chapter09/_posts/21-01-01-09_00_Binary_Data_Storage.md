@@ -20,11 +20,11 @@ excerpt: "Khảo sát cách máy tính lưu trữ và diễn giải dữ liệu 
 
 Mở một bức ảnh PNG, một bài hát MP3 và một tệp văn bản trong trình soạn thảo hex (hex editor), bạn sẽ thấy một sự thật làm thay đổi cách nhìn về máy tính: **bên trong RAM, không hề tồn tại "chữ cái", "màu sắc" hay "âm thanh"** — tất cả chỉ là một dãy vô tận các công tắc điện 0 và 1 được gom thành từng ô **8 bit (1 byte)** gắn địa chỉ!
 
-Chính chương trình đọc bộ nhớ mới là kẻ "phiên dịch" xem cùng một byte `01000001` (`0x41`) là số nguyên `65`, chữ cái `'A'`, một sắc độ màu xám, hay một lệnh CPU. Bài học mở màn Chương 9 này xây nền móng vững chắc từ bit, byte, hệ nhị phân–thập lục phân (hex) cho tới word 32/64-bit.
+Chính chương trình đọc bộ nhớ mới là kẻ "phiên dịch" xem cùng một byte `01000001` (`0x41`) là số nguyên `65`, chữ cái `'A'`, một sắc độ màu xám, hay một lệnh CPU. Bài học mở màn Chương 9 này bắt đầu từ bit, byte, hệ nhị phân–thập lục phân (hex) cho tới word 32/64-bit.
 
-**Mạch bài học:** Bản đồ kiến thức nền (biểu diễn vị trí cơ số 2 & 16, đơn vị byte & địa chỉ RAM, tính đa nghĩa của dữ liệu thô) → Bit, Byte, Nhị phân, Hex & Word → Ví dụ tính tay cầm tay chỉ việc: đổi `0xCA` giữa Nhị phân–Thập phân–Hex và kiểm tra 3 cách diễn giải `0x41` → Khung giải thích chậm: 3 bước đọc bất kỳ chuỗi hex dump nào trong 10 giây → Công cụ tương tác & Bài tập.
+**Mạch bài học:** Kiến thức cần nhớ (biểu diễn vị trí cơ số 2 & 16, đơn vị byte & địa chỉ RAM, tính đa nghĩa của dữ liệu thô) → Bit, Byte, Nhị phân, Hex & Word → Ví dụ tính tay làm từng bước: đổi `0xCA` giữa Nhị phân–Thập phân–Hex và kiểm tra 3 cách diễn giải `0x41` → Giải thích: 3 bước đọc bất kỳ chuỗi hex dump nào trong 10 giây → Công cụ tương tác & Bài tập.
 
-## Bản đồ kiến thức nền: Biểu diễn Dữ liệu Nhị phân trong Hệ thống Máy tính
+## Kiến thức cần nhớ: Biểu diễn Dữ liệu Nhị phân trong Hệ thống Máy tính
 
 ### 1. Hệ đếm vị trí cơ số 2 và cơ số 16 (Hex)
 Mỗi bit $$b_i \in \{0, 1\}$$ đóng góp giá trị $$b_i \cdot 2^i$$. Vì $$16 = 2^4$$, **mỗi chữ số thập lục phân (0–9, A–F) tương ứng chính xác 1–1 với đúng 4 bit (1 nibble)** — giúp 1 byte 8 bit luôn viết gọn thành đúng 2 ký tự hex (từ `0x00` đến `0xFF`)!
@@ -239,7 +239,7 @@ print(int.from_bytes(raw, "little"))  # diễn giải: uint32 little-endian → 
 Chỉ đến dòng cuối cùng, chương trình mới **gán ý nghĩa** cho dữ liệu: với cùng dãy `2a000000`, nếu đổi sang `"big"` hoặc giải mã theo UTF-8, kết quả sẽ hoàn toàn khác.
 
 
-## Ví dụ tính tay cầm tay chỉ việc: Chuyển đổi `0xCA` và giải mã 1 byte theo 3 góc nhìn
+## Ví dụ tính tay làm từng bước: Chuyển đổi `0xCA` và giải mã 1 byte theo 3 góc nhìn
 
 1. **Chuyển đổi nhanh `0xCA` (hex) $$\leftrightarrow$$ nhị phân $$\leftrightarrow$$ thập phân:**
    - Tách từng chữ số hex thành đúng 4 bit: `C` = $$12 = 8 + 4 = \texttt{1100}_2$$; `A` = $$10 = 8 + 2 = \texttt{1010}_2$$.
@@ -250,8 +250,7 @@ Chỉ đến dòng cuối cùng, chương trình mới **gán ý nghĩa** cho d�
    - Đọc kiểu ký tự ASCII / UTF-8: chữ hoa **`'A'`**.
    - Đọc kiểu kênh màu đỏ trong RGB (0–255): sắc đỏ đậm khoảng **$$25.5\%$$** độ sáng!
 
-### Khung giải thích: 3 bước đọc thuộc lòng bất kỳ chuỗi Hex Dump nào (nên đọc chậm)
-
+### Giải thích: 3 bước đọc thuộc lòng bất kỳ chuỗi Hex Dump nào
 #### Bước 1: Chia chuỗi hex thành từng cặp 2 ký tự = 1 byte
 Nhìn thấy `48 69 21`, lập tức biết đây là đúng **3 byte** liên tiếp trong bộ nhớ (độ dài $$3 \times 8 = 24$$ bit).
 

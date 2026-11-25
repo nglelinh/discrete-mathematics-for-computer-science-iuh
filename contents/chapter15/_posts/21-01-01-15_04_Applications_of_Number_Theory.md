@@ -41,7 +41,7 @@ Các bài trước đã giới thiệu những công cụ số học cơ bản c
 
 </div>
 
-## Bản đồ kiến thức nền: Ba ứng dụng Lý thuyết Số phổ biến nhất trong Kỹ thuật Phần mềm
+## Kiến thức cần nhớ: Ba ứng dụng Lý thuyết Số phổ biến nhất trong Kỹ thuật Phần mềm
 
 ### 1. Hàm băm (Hashing) & Hàm băm Mật mã (SHA-256)
 - **Băm cấu trúc dữ liệu:** $$h(k) = k \bmod m$$ (chọn $$m$$ là số nguyên tố để tránh đụng độ do ước chung với mẫu dữ liệu!).
@@ -53,7 +53,7 @@ Các bài trước đã giới thiệu những công cụ số học cơ bản c
 ### 3. Chữ số Kiểm soát (Check Digits: ISBN, EAN, Thẻ tín dụng Luhn)
 - **Bản chất:** Gắn thêm một chữ số kiểm tra thỏa mãn phương trình đồng dư có trọng số (ví dụ modulo 11 cho ISBN-10, modulo 10 cho ISBN-13/Luhn) để phát hiện **100% lỗi gõ sai 1 chữ số** và **lỗi đảo chỗ hai chữ số kề nhau**!
 
-## Ví dụ tính tay cầm tay chỉ việc
+## Ví dụ tính tay làm từng bước
 
 ### Ví dụ 1: Kiểm tra bộ sinh LCG $$x_{n+1} = (5x_n + 3) \bmod 8$$ với hạt giống $$x_0 = 1$$
 Kiểm tra điều kiện Hull–Dobell ($$m = 8, a = 5, c = 3$$): $$\gcd(3, 8) = 1$$ ✓; $$a - 1 = 4$$ chia hết cho ước nguyên tố $$2$$ và chia hết cho $$4$$ ✓ $$\implies$$ **chắc chắn đạt chu kỳ đủ 8**!
@@ -71,8 +71,7 @@ $$
 $$
 Vì $$d_k \neq d_{k+1}$$ nằm trong $$\{0,\dots,10\}$$ nên $$1 \le \lvert d_k - d_{k+1}\rvert \le 10$$ — **không bao giờ chia hết cho số nguyên tố 11**! Do đó ISBN-10 phát hiện 100% mọi lỗi đảo chỗ hai chữ số liền kề!
 
-### Khung giải thích: 4 nguyên tắc chọn công cụ Lý thuyết Số trong Phần mềm (nên đọc chậm)
-
+### Giải thích: 4 nguyên tắc chọn công cụ Lý thuyết Số trong Phần mềm
 #### Bước 1: Dùng số nguyên tố làm kích thước bảng băm và modulo kiểm tra
 Số nguyên tố triệt tiêu mọi ước chung bất ngờ (như lý do ISBN-10 chọn $$p = 11$$ thay vì $$10$$!).
 

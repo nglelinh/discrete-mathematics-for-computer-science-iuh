@@ -25,7 +25,7 @@ Trong chương này, chúng ta nghiên cứu **quan hệ** — cấu trúc toán
 
 Dưới góc nhìn toán học, quan hệ hai ngôi là một tập con của tích Descartes $$A \times B$$; dưới góc nhìn khoa học máy tính, đây là nền tảng của mô hình cơ sở dữ liệu quan hệ, ma trận kề, mô hình trạng thái và hệ thống phân quyền. Khi đã biểu diễn bài toán dưới dạng quan hệ, ta có thể phân tích các tính chất như phản xạ, đối xứng, bắc cầu và suy diễn thêm các liên kết mới ở các mục tiếp theo.
 
-## Bản đồ kiến thức nền: Bốn góc nhìn cốt lõi về Quan hệ Hai ngôi
+## Kiến thức cần nhớ: Bốn góc nhìn cốt lõi về Quan hệ Hai ngôi
 
 1. **Tích Descartes $$A \times B$$ — Không gian mọi liên kết có thể xảy ra**:
    Trước khi xét quan hệ, ta tạo tập tất cả các cặp có thứ tự $$(a, b)$$ với $$a \in A, b \in B$$. Khác với tập hợp, thứ tự trong cặp rất quan trọng: $$(a, b) \neq (b, a)$$ khi $$a \neq b$$, và $$\lvert A \times B \rvert = \lvert A \rvert \cdot \lvert B \rvert$$.
@@ -133,7 +133,7 @@ Cho $$A = \{a_1, a_2, \ldots, a_m\}$$ và $$B = \{b_1, b_2, \ldots, b_n\}$$. Ma 
 
 <p class="textbook-figure-caption" data-figure="5.2">Tích Descartes A × B — mỗi cặp (a, b) ghép một phần tử từ A với một phần tử từ B.</p>
 
-### Khung giải thích (nên đọc chậm): Biểu diễn quan hệ chia hết trên $$A = \{1, 2, 3, 4\}$$ theo đủ 4 cách
+### Giải thích: Biểu diễn quan hệ chia hết trên $$A = \{1, 2, 3, 4\}$$ theo đủ 4 cách
 
 Xét tập $$A = \{1, 2, 3, 4\}$$ và quan hệ $$R$$ trên $$A$$ định nghĩa bởi $$aRb \iff a \mid b$$ ($$a$$ là ước của $$b$$).
 
@@ -225,9 +225,9 @@ Cho $$A = \{1, 2, 3\}$$ và $$B = \{a, b\}$$. Hãy liệt kê $$A \times B$$ và
 <details>
 <summary>Đáp án</summary>
 
-$$A \times B = \{(1, a), (1, b), (2, a), (2, b), (3, a), (3, b)\}$$
+$A \times B = \{(1, a), (1, b), (2, a), (2, b), (3, a), (3, b)\}$
 
-$$\lvert A \times B \rvert = 3 \times 2 = 6$$
+$\lvert A \times B \rvert = 3 \times 2 = 6$
 </details>
 
 ### Bài tập 2: Ma trận quan hệ
@@ -260,7 +260,7 @@ Liệt kê các cặp thuộc $$R$$.
 <details>
 <summary>Đáp án</summary>
 
-$$R = \{(a, a), (a, c), (b, b), (c, b), (c, c)\}$$
+$R = \{(a, a), (a, c), (b, b), (c, b), (c, c)\}$
 </details>
 
 ## Xem thêm / Video gợi ý

@@ -13,9 +13,9 @@ Cùng một con số 32-bit `0x12345678` nằm gọn trong 4 ô RAM liên tiếp
 
 Hiện tượng đó gọi là **Endianness** (thứ tự byte: **Big-Endian** đặt byte có trọng số cao nhất trước, còn **Little-Endian** đặt byte thấp nhất trước). Hiểu rõ endianness giúp bạn giải mã đúng mọi gói tin TCP/IP, tệp ảnh/âm thanh nhị phân (WAV, PNG) và chuỗi UTF-16 có Byte Order Mark (BOM).
 
-**Mạch bài học:** Bản đồ kiến thức nền (Big-Endian vs. Little-Endian, Network Byte Order RFC 1700, BOM trong UTF-16) → Vì sao cả hai quy ước cùng tồn tại & ví dụ log của Lan → Ví dụ tính tay cầm tay chỉ việc: khi quên `htons()` biến cổng HTTP `80` thành `20480`! → Khung giải thích chậm: 3 nguyên tắc vàng tránh lỗi đảo byte khi lập trình mạng & đọc tệp nhị phân → Bài tập thực hành.
+**Mạch bài học:** Kiến thức cần nhớ (Big-Endian vs. Little-Endian, Network Byte Order RFC 1700, BOM trong UTF-16) → Vì sao cả hai quy ước cùng tồn tại & ví dụ log của Lan → Ví dụ tính tay làm từng bước: khi quên `htons()` biến cổng HTTP `80` thành `20480`! → Giải thích: 3 nguyên tắc vàng tránh lỗi đảo byte khi lập trình mạng & đọc tệp nhị phân → Bài tập thực hành.
 
-## Bản đồ kiến thức nền: Thứ tự Byte (Endianness) trong Kiến trúc Máy tính và Mạng
+## Kiến thức cần nhớ: Thứ tự Byte (Endianness) trong Kiến trúc Máy tính và Mạng
 
 ### 1. Big-Endian vs. Little-Endian — chỉ áp dụng cho thứ tự BYTE, không đảo BIT!
 Với số 32-bit `0x12345678` (gồm 4 byte `12`, `34`, `56`, `78`):
@@ -183,7 +183,7 @@ Khi đọc tệp nhị phân hoặc phân tích bộ đệm dữ liệu, luôn t
 ---
 
 
-## Ví dụ tính tay cầm tay chỉ việc: Khi quên `htons()` biến cổng HTTP `80` thành `20480`!
+## Ví dụ tính tay làm từng bước: Khi quên `htons()` biến cổng HTTP `80` thành `20480`!
 
 Giả sử bạn viết một chương trình socket trên máy tính x86 (**Little-Endian**) và gửi cổng HTTP **$$80$$** (kiểu 16-bit không dấu `uint16`) mà quên chuyển sang Network Byte Order (**Big-Endian**):
 1. **Đổi $$80$$ sang 2 byte hex:** $$80 = 5 \times 16 + 0 = \texttt{0x0050}$$ (byte cao = `0x00`, byte thấp = `0x50`).
@@ -194,8 +194,7 @@ Giả sử bạn viết một chương trình socket trên máy tính x86 (**Lit
    $$
 Chỉ vì quên đúng 1 lời gọi `htons(80)` (hoặc `struct.pack(">H", 80)`), gói tin của bạn đã lao thẳng vào cổng **20480** thay vì cổng **80**!
 
-### Khung giải thích: 3 nguyên tắc vàng để không bao giờ dính lỗi Endianness (nên đọc chậm)
-
+### Giải thích: 3 nguyên tắc vàng để không bao giờ dính lỗi Endianness
 #### Bước 1: Không bao giờ ép con trỏ struct C gửi thẳng ra mạng hay ghi thẳng ra đĩa
 Luôn tuần tự hóa tường minh từng trường số nguyên với thứ tự byte quy định rõ (ví dụ `struct.pack(">I", ts)` cho Big-Endian hoặc `struct.pack("<I", ts)` cho Little-Endian trong Python).
 

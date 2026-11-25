@@ -17,7 +17,7 @@ Khai triển đa thức $$(a+b)^5$$ cho dãy hệ số `1, 5, 10, 10, 5, 1`; đ�
 
 Biểu thức $$(a+b)^n$$ thoạt nhìn có vẻ thuần đại số, nhưng phía sau nó là một câu chuyện đếm rất rõ ràng: ở mỗi thừa số $$(a+b)$$, ta chọn lấy $$a$$ hoặc lấy $$b$$, rồi đếm xem một hạng tử cụ thể xuất hiện bao nhiêu lần. Khi nắm được ý nghĩa tổ hợp của hệ số nhị thức, nhiều đồng nhất thức sẽ trở nên tự nhiên và dễ nhớ hơn vì ta có thể chứng minh chúng bằng cách đếm cùng một đối tượng theo hai cách khác nhau.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Hệ số Nhị thức và Đồng nhất thức Tổ hợp
+## Kiến thức cần nhớ: Bốn trụ cột của Hệ số Nhị thức và Đồng nhất thức Tổ hợp
 
 1. **Định lý Nhị thức $$(a+b)^n = \sum_{k=0}^n \binom{n}{k} a^{n-k}b^k$$**:
    Khi nhân $$n$$ dấu ngoặc $$(a+b)(a+b)\cdots(a+b)$$, mỗi số hạng $$a^{n-k}b^k$$ xuất hiện đúng bằng số cách chọn $$k$$ ngoặc lấy $$b$$ (và $$n-k$$ ngoặc còn lại lấy $$a$$), tức $$\binom{n}{k}$$.
@@ -60,7 +60,8 @@ Quy ước $$\binom{n}{k}=0$$ nếu $$k<0$$ hoặc $$k>n$$.
 
 ![Hệ số nhị thức — n chọn k](/discrete-mathematics-for-computer-science-iuh/img/course/Combination.svg)
 
-<p class="textbook-figure-caption" data-figure="7.16">Hệ số nhị thức $$\binom{n}{k}$$ đếm số cách chọn $$k$$ phần tử từ $$n$$ phần tử, không xét thứ tự.</p>
+<p class="textbook-figure-caption" data-figure="7.16">Hệ số nhị thức $\binom{n}{k}$ đếm số cách chọn $k$ phần tử từ $n$ phần tử, không xét thứ tự.</p>
+
 **Ký hiệu**: $$\binom{n}{k}$$ đọc là “$$n$$ chọn $$k$$”. Trong nhiều tài liệu, ký hiệu $$C(n,k)$$ hoặc $$C_n^k$$ cũng được dùng tương đương.
 
 <div class="content-box example-box textbook-block" markdown="1">
@@ -103,7 +104,7 @@ mỗi hạng tử được tạo thành bằng cách chọn $$x$$ hoặc $$y$$ t
 
 ![Trực quan định lý nhị thức](/discrete-mathematics-for-computer-science-iuh/img/course/Binomial_theorem_visualisation.svg)
 
-<p class="textbook-figure-caption" data-figure="7.17">Mỗi hạng tử trong khai triển $$(x+y)^n$$ tương ứng với một cách chọn $$k$$ vị trí lấy $$y$$ từ $$n$$ ngoặc.</p>
+<p class="textbook-figure-caption" data-figure="7.17">Mỗi hạng tử trong khai triển $(x+y)^n$ tương ứng với một cách chọn $k$ vị trí lấy $y$ từ $n$ ngoặc.</p>
 <div class="textbook-example" markdown="1">
 **Ví dụ**:
 
@@ -143,7 +144,7 @@ $$
 
 ![Khai triển nhị thức và tam giác Pascal](/discrete-mathematics-for-computer-science-iuh/img/course/Binomial_expansion_with_Pascal_s_triangle.svg)
 
-<p class="textbook-figure-caption" data-figure="7.19">Khai triển $$(a+b)^n$$ — hệ số của mỗi hạng tử chính là $$\binom{n}{k}$$ nằm ở hàng thứ $$n$$ của tam giác Pascal.</p>
+<p class="textbook-figure-caption" data-figure="7.19">Khai triển $(a+b)^n$ — hệ số của mỗi hạng tử chính là $\binom{n}{k}$ nằm ở hàng thứ $n$ của tam giác Pascal.</p>
 <div class="interactive-demo" markdown="1">
 **Demo tương tác**: Nhập $$n, k$$ để công cụ tô màu hai ô $$\binom{n-1}{k-1}$$ và $$\binom{n-1}{k}$$ trong tam giác Pascal, rồi hiển thị tổng của chúng bằng $$\binom{n}{k}$$.
 </div>
@@ -217,7 +218,7 @@ $$
 
 Chuỗi Nilakantha $$\pi = 3 + \sum_{k\ge 1} (-1)^{k+1}\dfrac{4}{2k(2k+1)(2k+2)}$$ có thể viết lại thành $$\pi = 3 + \tfrac{2}{3}\sum_{k\ge 1} \dfrac{(-1)^{k+1}}{\binom{2k+2}{3}}$$. Các mẫu số $$\binom{4}{3}, \binom{6}{3}, \binom{8}{3}, \ldots = 4, 20, 56, 120, 220, \ldots$$ chính là các số nằm trên đường chéo thứ ba của tam giác Pascal, lấy cách một số.
 
-### Khung giải thích (nên đọc chậm): Tìm tay hệ số của $$x^3$$ trong $$(2x - 1)^5$$ và kiểm chứng số đồng nhất thức Vandermonde
+### Giải thích: Tìm tay hệ số của $$x^3$$ trong $$(2x - 1)^5$$ và kiểm chứng số đồng nhất thức Vandermonde
 
 **Phần A — Tìm hệ số của $$x^3$$ trong khai triển $$(2x - 1)^5$$**
 
@@ -258,7 +259,7 @@ for k in range(0, 6):
 
 <div class="interactive-tool" markdown="1">
 <h3>🔬 Công cụ Tương tác: Máy tính Hệ số Nhị thức</h3>
-<p>Công cụ này tính $$C(n,k)$$, tô sáng vị trí tương ứng trong tam giác Pascal và hiển thị khai triển $$(a+b)^n$$.</p>
+<p>Công cụ này tính $C(n,k)$, tô sáng vị trí tương ứng trong tam giác Pascal và hiển thị khai triển $(a+b)^n$.</p>
 <div data-demo="binomial-coefficient-calc"></div>
 </div>
 <script src="{{ '/public/js/binomial-coefficient-calc.js' | relative_url }}"></script>
@@ -281,7 +282,7 @@ Tìm hệ số của $$x^7y^3$$ trong khai triển $$(x+y)^{10}$$.
 <details>
 <summary>Đáp án</summary>
 
-Vì số mũ của $$y$$ là $$3$$, hệ số cần tìm là:
+Vì số mũ của $y$ là $3$, hệ số cần tìm là:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -298,7 +299,7 @@ Chứng minh $$\binom{n}{1}+\binom{n}{2}+\cdots+\binom{n}{n}=2^n-1$$.
 <details>
 <summary>Đáp án</summary>
 
-Tổng tất cả $$\binom{n}{k}$$ với $$k$$ từ $$0$$ đến $$n$$ bằng $$2^n$$ (tổng số tập con của một tập $$n$$ phần tử). Hạng tử $$k=0$$ ứng với tập rỗng ($$\binom{n}{0} = 1$$). Bỏ tập rỗng đi, ta còn lại $$2^n-1$$ tập con khác rỗng.
+Tổng tất cả $\binom{n}{k}$ với $k$ từ $0$ đến $n$ bằng $2^n$ (tổng số tập con của một tập $n$ phần tử). Hạng tử $k=0$ ứng với tập rỗng ($\binom{n}{0} = 1$). Bỏ tập rỗng đi, ta còn lại $2^n-1$ tập con khác rỗng.
 
 </details>
 
@@ -318,7 +319,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Kết quả này trùng với cách chọn trực tiếp $$\binom{9}{3}=84$$.
+Kết quả này trùng với cách chọn trực tiếp $\binom{9}{3}=84$.
 
 </details>
 

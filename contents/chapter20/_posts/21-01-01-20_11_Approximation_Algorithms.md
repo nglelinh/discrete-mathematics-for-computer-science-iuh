@@ -21,7 +21,7 @@ Tính NP-complete loại trừ khả năng giải chính xác trong thời gian 
 
 Khi biết bài toán của công ty là NP-hard, kỹ sư không thể quay lại nói với sếp *"Bài này NP-complete nên tôi không làm nữa!"*. Một trong những lối thoát thực tiễn và toán học nhất là **Thuật toán Xấp xỉ (Approximation Algorithms)**: chấp nhận từ bỏ nghiệm tối ưu tuyệt đối 100%, đổi lại thuật toán chạy **thời gian đa thức** nhưng đi kèm **chứng minh toán học bảo đảm** nghiệm tìm được không bao giờ tệ hơn $$\rho$$ lần nghiệm tối ưu $$\mathrm{OPT}$$!
 
-## Bản đồ kiến thức nền: Ba trụ cột của Thuật toán Xấp xỉ
+## Kiến thức cần nhớ: Ba trụ cột của Thuật toán Xấp xỉ
 
 1. **Tỉ lệ xấp xỉ $$\rho$$ & So sánh với Nghiệm tối ưu ẩn $$\mathrm{OPT}$$**:
    Với bài toán cực tiểu hóa, ta cần $$\mathrm{ALG}(I) \le \rho \cdot \mathrm{OPT}(I)$$ cho *mọi* đầu vào $$I$$. Bí quyết chứng minh là tìm một **chặn dưới** dễ tính (như kích thước cặp ghép cực đại hay nghiệm nới lỏng LP) nằm dưới $$\mathrm{OPT}$$.
@@ -96,7 +96,7 @@ Chọn dần từng cạnh chưa được phủ và thêm cả hai đầu mút v
 
 Với TSP tổng quát (không thỏa bất đẳng thức tam giác), không tồn tại thuật toán xấp xỉ với bất kỳ tỉ số hằng số nào trừ khi $$P=NP$$ (Sahni–Gonzalez). Định lý PCP còn mở đường cho nhiều kết quả giới hạn xấp xỉ sâu hơn đối với MAX-3SAT, CLIQUE và nhiều bài toán tối ưu khác (xem Arora–Barak).
 
-### Khung giải thích (nên đọc chậm): Chứng minh tay vì sao General TSP không thể xấp xỉ với tỉ lệ 1.000 (trừ khi $$P = NP$$)
+### Giải thích: Chứng minh tay vì sao General TSP không thể xấp xỉ với tỉ lệ 1.000 (trừ khi $$P = NP$$)
 
 Giả sử có một thuật toán đa thức $$\mathcal{A}$$ luôn tìm được hành trình TSP có chi phí $$\le 1.000 \cdot \mathrm{OPT}$$. Ta sẽ dùng $$\mathcal{A}$$ để giải chính xác bài toán NP-complete `Hamilton Cycle` trên đồ thị $$G$$ có $$n$$ đỉnh!
 - Xây đồ thị đầy đủ $$K_n$$ với trọng số:

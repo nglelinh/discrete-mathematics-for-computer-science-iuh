@@ -33,7 +33,7 @@ excerpt: "Định lý tương đương Rabin–Scott giữa NFA và DFA, chứng
 
 </div>
 
-## Bản đồ kiến thức nền: Thuật toán Xây dựng Tập con (Rabin–Scott, 1959)
+## Kiến thức cần nhớ: Thuật toán Xây dựng Tập con (Rabin–Scott, 1959)
 
 ### 1. Ý tưởng Cốt lõi: Trạng thái của DFA = Tập con trạng thái của NFA ($$Q_D = \mathcal{P}(Q_N)$$)
 - **Trạng thái khởi đầu:** $$q_{0D} = \{q_0\}$$ (hoặc $$\mathrm{ECLOSE}(q_0)$$ nếu có $$\varepsilon$$).
@@ -46,7 +46,7 @@ excerpt: "Định lý tương đương Rabin–Scott giữa NFA và DFA, chứng
 ### 3. Bùng nổ Hàm mũ $$2^n$$ trong Trường hợp Xấu nhất
 - **Lưu ý quan trọng:** Với ngôn ngữ "ký tự thứ $$k$$ từ cuối lên là `1`", NFA chỉ cần $$k+1$$ trạng thái nhưng **mọi DFA** bắt buộc phải có ít nhất $$2^k$$ trạng thái — cận trên $$2^n$$ là **chặt tuyệt đối**!
 
-## Ví dụ tính tay cầm tay chỉ việc: Biến NFA "Kết thúc bằng `01`" thành DFA bằng Subset Construction
+## Ví dụ tính tay làm từng bước: Biến NFA "Kết thúc bằng `01`" thành DFA bằng Subset Construction
 
 Xuất phát từ NFA 3 trạng thái ở bài 18.03 ($$q_0 \xrightarrow{0} \{q_0, q_1\},\; q_0 \xrightarrow{1} \{q_0\},\; q_1 \xrightarrow{1} \{q_2\},\; F_N = \{q_2\}$$):
 1. **Bắt đầu với trạng thái $$A = \{q_0\}$$:**
@@ -61,8 +61,7 @@ Xuất phát từ NFA 3 trạng thái ở bài 18.03 ($$q_0 \xrightarrow{0} \{q_
 
 **Kết quả:** Không còn tập con mới nào! Thay vì $$2^3 = 8$$ trạng thái, DFA tối ưu sinh ra chỉ có **đúng 3 trạng thái $$A, B, C$$**!
 
-### Khung giải thích: Chứng minh 4 bước cho Định lý Rabin–Scott (NFA $$\equiv$$ DFA) (nên đọc chậm)
-
+### Giải thích: Chứng minh 4 bước cho Định lý Rabin–Scott (NFA $$\equiv$$ DFA)
 #### Bước 1: Định nghĩa $$\delta_D(S, a)$$ bằng phép hợp
 Chính việc gộp mọi trạng thái NFA đang sống vào một "cái túi" $$S$$ đã triệt tiêu hoàn toàn tính không tất định!
 

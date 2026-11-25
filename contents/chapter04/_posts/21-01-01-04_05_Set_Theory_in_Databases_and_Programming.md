@@ -24,7 +24,7 @@ Sau bốn mục lý thuyết về định nghĩa tập hợp, phép toán, lực
 
 Một lỗi thường gặp trong thực tế là chiến dịch email gửi hai lần cho cùng một địa chỉ chỉ vì truy vấn dùng `UNION ALL` thay cho `UNION`. Đây không phải lỗi của hệ thống gửi thư, mà là sự nhầm lẫn giữa **phép hợp tập hợp** (loại bỏ bản sao) với **phép nối đa tập** (giữ nguyên mọi bản sao). Bài học này khép lại Chương 4 bằng cách nối lý thuyết tập hợp với các công cụ kỹ thuật hằng ngày.
 
-## Bản đồ kiến thức nền: Bốn hiện thân của Lý thuyết Tập hợp trong Hệ thống Phần mềm
+## Kiến thức cần nhớ: Bốn hiện thân của Lý thuyết Tập hợp trong Hệ thống Phần mềm
 
 1. **SQL & Đại số quan hệ — Bảng dữ liệu là tập hợp (hoặc đa tập)**:
    Các phép toán `UNION` (hợp khử trùng), `UNION ALL` (hợp đa tập giữ trùng), `INTERSECT` (giao), `EXCEPT` (hiệu) và `JOIN` (tích Descartes kèm điều kiện lọc) ánh xạ 1–1 với các phép toán tập hợp cơ bản.
@@ -195,7 +195,7 @@ Kiểu `string | number` chính là **phép hợp** của hai tập giá trị h
 
 Kiểu hợp phân biệt (discriminated union) như `{ ok: true, data: T } | { ok: false, error: string }` mô tả một **phân hoạch** của tập kết quả: mỗi nhánh là một tập con rời nhau, và hợp của chúng phủ kín toàn bộ không gian trạng thái thành công và lỗi.
 
-### Khung giải thích (nên đọc chậm): Tính tay phép tập hợp SQL, kích thước `JOIN` và một Bloom Filter 10-bit
+### Giải thích: Tính tay phép tập hợp SQL, kích thước `JOIN` và một Bloom Filter 10-bit
 
 **Phần A — So sánh các phép toán SQL trên hai bảng nhỏ**
 
@@ -225,9 +225,9 @@ Bảng `newsletter_subscribers` có 30.000 địa chỉ email phân biệt và b
 <details>
 <summary>Đáp án</summary>
 
-`UNION ALL` trả về $$30{,}000 + 22{,}000 = 52{,}000$$ dòng (giữ nguyên các bản sao).
+`UNION ALL` trả về $30{,}000 + 22{,}000 = 52{,}000$ dòng (giữ nguyên các bản sao).
 
-`UNION` trả về $$30{,}000 + 22{,}000 - 4{,}000 = 48{,}000$$ email phân biệt (theo nguyên lý bao hàm–loại trừ ở mục 4.3).
+`UNION` trả về $30{,}000 + 22{,}000 - 4{,}000 = 48{,}000$ email phân biệt (theo nguyên lý bao hàm–loại trừ ở mục 4.3).
 
 Phần chênh lệch 4.000 dòng chính là số địa chỉ email bị lặp hai lần khi dùng `UNION ALL`.
 
@@ -240,7 +240,7 @@ Cho $$\vert A\vert =120$$, $$\vert B\vert =95$$, $$\vert C\vert =40$$, $$\vert A
 <details>
 <summary>Đáp án</summary>
 
-$$\vert (A \cap B) \setminus C\vert = \vert A \cap B\vert - \vert A \cap B \cap C\vert = 50 - 5 = 45$$.
+$\vert (A \cap B) \setminus C\vert = \vert A \cap B\vert - \vert A \cap B \cap C\vert = 50 - 5 = 45$.
 
 ```sql
 (SELECT student_id FROM enrollments WHERE course = 'DM')
@@ -265,8 +265,8 @@ Tính kết quả của `(dm | db) - ai` và `dm & db & ai` rồi viết lại b
 <details>
 <summary>Đáp án</summary>
 
-- `dm | db` $$= \{\text{s1}, \text{s2}, \text{s3}, \text{s4}\}$$, do đó `(dm | db) - ai` $$= \{\text{s1}, \text{s2}, \text{s4}\}$$.
-- `dm & db` $$= \{\text{s2}\}$$, nhưng `"s2"` không thuộc `ai`, nên `dm & db & ai` $$= \emptyset$$ (tập rỗng, không có phần tử nào thuộc cả ba tập).
+- `dm | db` $= \{\text{s1}, \text{s2}, \text{s3}, \text{s4}\}$, do đó `(dm | db) - ai` $= \{\text{s1}, \text{s2}, \text{s4}\}$.
+- `dm & db` $= \{\text{s2}\}$, nhưng `"s2"` không thuộc `ai`, nên `dm & db & ai` $= \emptyset$ (tập rỗng, không có phần tử nào thuộc cả ba tập).
 
 </details>
 

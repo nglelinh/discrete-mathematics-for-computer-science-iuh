@@ -23,7 +23,7 @@ excerpt: "Định nghĩa bảng chữ cái Σ, chuỗi w, chuỗi rỗng ε, bao
 
 Trước khi xây dựng trình biên dịch cho Python hay thiết kế một biểu thức chính quy lọc email, khoa học máy tính cần một nền móng ký hiệu tuyệt đối chặt chẽ: thế nào là một ký tự, một chuỗi rỗng khác gì với một tập ngôn ngữ rỗng, và làm sao chứng minh một tính chất đúng với *mọi* chuỗi dài tùy ý? Bài học mở đầu Chương 19 thiết lập đúng "bảng chữ cái toán học" đó cho toàn bộ lý thuyết ngôn ngữ hình thức.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Chuỗi và Ngôn ngữ hình thức
+## Kiến thức cần nhớ: Ba trụ cột của Chuỗi và Ngôn ngữ hình thức
 
 1. **Bảng chữ cái ($$\Sigma$$), Chuỗi ($$w$$) và Chuỗi rỗng ($$\varepsilon$$)**:
    $$\Sigma$$ là tập hữu hạn khác rỗng các ký hiệu; $$\Sigma^*$$ là tập tất cả các chuỗi hữu hạn sinh từ $$\Sigma$$ (kể cả chuỗi rỗng $$\varepsilon$$ có độ dài $$0$$).
@@ -64,7 +64,7 @@ Trước khi xây dựng trình biên dịch cho Python hay thiết kế một b
 
 </div>
 
-### Khung giải thích (nên đọc chậm): Tính tay kích thước $$\Sigma^k$$ và phân biệt $$\emptyset$$ với $$\{\varepsilon\}$$
+### Giải thích: Tính tay kích thước $$\Sigma^k$$ và phân biệt $$\emptyset$$ với $$\{\varepsilon\}$$
 
 Cho bảng chữ cái nhị phân $$\Sigma = \{0, 1\}$$ (có $$\vert \Sigma \vert = 2$$ ký hiệu):
 

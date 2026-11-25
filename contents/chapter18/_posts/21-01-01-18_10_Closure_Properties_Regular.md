@@ -28,7 +28,7 @@ excerpt: "Chứng minh tính đóng của lớp ngôn ngữ chính quy dưới c
 
 </div>
 
-## Bản đồ kiến thức nền: Bảng Tính đóng & Kỹ thuật Ô-tô-mát Tích
+## Kiến thức cần nhớ: Bảng Tính đóng & Kỹ thuật Ô-tô-mát Tích
 
 ### 1. Đóng dưới các Phép toán Biểu thức Chính quy (Hợp, Nối tiếp, Sao Kleene)
 - **Bản chất:** Hiển nhiên ngay từ Định lý Kleene (hoặc ghép $$\varepsilon$$-NFA kiểu Thompson).
@@ -40,7 +40,7 @@ excerpt: "Chứng minh tính đóng của lớp ngôn ngữ chính quy dưới c
 ### 3. Đóng dưới Đảo ngược ($$L^R$$) & Đồng cấu Chuỗi (Homomorphism)
 - **Đảo ngược:** Đảo chiều tất cả mũi tên của NFA, đổi trạng thái bắt đầu và kết thúc (thêm 1 trạng thái đầu mới nối $$\varepsilon$$ tới tất cả các $$F$$ cũ)!
 
-## Ví dụ tính tay cầm tay chỉ việc: Dùng Tính đóng chứng minh 2 dòng $$L = \{w : \#_0(w) = \#_1(w)\}$$ KHÔNG chính quy
+## Ví dụ tính tay làm từng bước: Dùng Tính đóng chứng minh 2 dòng $$L = \{w : \#_0(w) = \#_1(w)\}$$ KHÔNG chính quy
 
 Thay vì chật vật với nhiều trường hợp của Bổ đề Bơm trên $$L = \{w \in \{0, 1\}^* : \text{số bit 0 bằng số bit 1}\}$$, hãy dùng **Tính đóng dưới phép giao**:
 1. Giả sử phản chứng $$L$$ là ngôn ngữ chính quy.
@@ -51,8 +51,7 @@ Thay vì chật vật với nhiều trường hợp của Bổ đề Bơm trên 
    $$
 4. Nhưng ta đã chứng minh ở bài 18.09 rằng $$\{0^n 1^n\}$$ **KHÔNG chính quy** $$\implies$$ **mâu thuẫn**! Vậy $$L$$ không phải ngôn ngữ chính quy!
 
-### Khung giải thích: 4 ứng dụng thực chiến của Tính đóng & Ô-tô-mát Tích (nên đọc chậm)
-
+### Giải thích: 4 ứng dụng thực chiến của Tính đóng & Ô-tô-mát Tích
 #### Bước 1: Luôn chuyển sang DFA ĐẦY ĐỦ trước khi lấy Phần bù
 Nếu bỏ sót trạng thái bẫy (dead state) rồi đảo $$F \mapsto Q\setminus F$$, kết quả sẽ sai hoàn toàn!
 

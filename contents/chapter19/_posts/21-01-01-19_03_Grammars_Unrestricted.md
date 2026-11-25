@@ -19,7 +19,7 @@ excerpt: "Định nghĩa văn phạm G=(V,Σ,P,S), quan hệ dẫn xuất, ngôn
 
 Thay vì xây một chiếc máy để *kiểm tra* một chuỗi có hợp lệ hay không (cách tiếp cận của automata), ta có thể lật ngược góc nhìn: xây một bộ quy tắc thay thế để *sinh ra* toàn bộ các chuỗi hợp lệ. Đó chính là khái niệm **văn phạm hình thức (formal grammar)** do Noam Chomsky đặt nền móng vào năm 1956 — từ loại tổng quát nhất không giới hạn quy tắc (Loại 0) tương đương trọn vẹn với sức mạnh của máy Turing.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Văn phạm Tổng quát
+## Kiến thức cần nhớ: Ba trụ cột của Văn phạm Tổng quát
 
 1. **Bộ bốn thành phần $$G = (V, T, P, S)$$**:
    Phân biệt rạch ròi ký hiệu không kết thúc (biến $$V$$, đại diện cho cấu trúc ngữ pháp chưa hoàn chỉnh) và ký hiệu kết thúc ($$T$$, các ký tự xuất hiện trong chuỗi đầu ra cuối cùng), bắt đầu từ ký hiệu gốc $$S$$.
@@ -53,7 +53,7 @@ $$L(G)=\{w\in\Sigma^*:S\Rightarrow^* w\}.$$
 
 Văn phạm với luật sinh $$S\to aSb\mid\varepsilon$$ (thuộc lớp CFG) sinh ra đúng ngôn ngữ $$\{a^nb^n : n \ge 0\}$$.
 
-### Khung giải thích (nên đọc chậm): Dẫn xuất từng bước chuỗi `aabbcc` bằng văn phạm không giới hạn
+### Giải thích: Dẫn xuất từng bước chuỗi `aabbcc` bằng văn phạm không giới hạn
 
 Ngôn ngữ $$L = \{a^n b^n c^n \mid n \ge 1\}$$ không thể sinh bởi văn phạm phi ngữ cảnh (CFG), nhưng lại sinh gọn gàng bằng quy tắc có ngữ cảnh (hoán vị `CB -> BC`):
 - Quy tắc: $$S \to aSBC \mid aBC$$, $$CB \to BC$$, $$aB \to ab$$, $$bB \to bb$$, $$bC \to bc$$, $$cC \to cc$$.

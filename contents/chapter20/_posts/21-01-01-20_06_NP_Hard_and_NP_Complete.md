@@ -23,7 +23,7 @@ excerpt: "Định nghĩa NP-hard và NP-complete, chứng minh hệ quả nếu 
 
 Trong hàng nghìn bài toán hóc búa từ lập lịch chuyến bay, gấp nếp protein đến tối ưu hóa vi mạch, điều gì khiến chúng gắn kết với nhau như một khối domino khổng lồ? Đó là khái niệm **NP-complete** — những bài toán "khó nhất" trong lớp $$NP$$. Chỉ cần tìm ra một thuật toán thời gian đa thức cho *đúng một* bài toán NP-complete duy nhất, toàn bộ hàng nghìn bài toán NP-complete khác lập tức sụp đổ về lớp $$P$$ cùng lúc!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của NP-hard và NP-complete
+## Kiến thức cần nhớ: Bốn trụ cột của NP-hard và NP-complete
 
 1. **Phân biệt rạch ròi NP-hard và NP-complete**:
    - **NP-hard:** Khó ít nhất bằng mọi bài toán trong $$NP$$ ($$\forall A \in NP, A \le_p B$$). Lưu ý: một bài toán NP-hard **không nhất thiết thuộc $$NP$$** — thậm chí Bài toán Dừng bất khả quyết định cũng là NP-hard!
@@ -100,7 +100,7 @@ Nói cách khác, dưới giả thuyết $$P\neq NP$$, tồn tại những bài 
 - Một bài toán **NP-hard** không nhất thiết phải thuộc $$NP$$.
 - Bài toán phân tích thừa số nguyên tố (Factoring) hiện chưa được biết là NP-complete.
 
-### Khung giải thích (nên đọc chậm): Bảng phân loại nhanh 5 bài toán vào đúng 4 vùng độ phức tạp
+### Giải thích: Bảng phân loại nhanh 5 bài toán vào đúng 4 vùng độ phức tạp
 
 | Bài toán | Thuộc $$P$$? | Thuộc $$NP$$? | Là NP-hard? | Xếp loại chính xác |
 | :--- | :---: | :---: | :---: | :--- |

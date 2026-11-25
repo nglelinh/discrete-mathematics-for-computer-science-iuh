@@ -35,7 +35,7 @@ Máy hữu hạn trạng thái là một mô hình tính toán sử dụng **b�
 
 </div>
 
-## Bản đồ kiến thức nền: DFA là gì và nằm ở đâu trên Thang Chomsky?
+## Kiến thức cần nhớ: DFA là gì và nằm ở đâu trên Thang Chomsky?
 
 ### 1. Bộ 5 thành phần $$M = (Q, \Sigma, \delta, q_0, F)$$
 - **Bản chất:** $$Q$$ là tập hữu hạn trạng thái (bộ nhớ!), $$\Sigma$$ là bảng chữ cái đầu vào, $$\delta: Q \times \Sigma \to Q$$ là hàm chuyển trạng thái **tất định** (tại mỗi trạng thái, với mỗi ký tự chỉ có **đúng 1** mũi tên đi ra!), $$q_0$$ là trạng thái khởi đầu, và $$F \subseteq Q$$ là tập trạng thái kết thúc (chấp nhận).
@@ -46,7 +46,7 @@ Máy hữu hạn trạng thái là một mô hình tính toán sử dụng **b�
 ### 3. Nền móng của Trình biên dịch (Lexical Analyzer) & Giao thức
 - **Ứng dụng:** Bộ tách từ khóa/biến/số trong trình biên dịch (Lexer) và máy trạng thái giao thức mạng (TCP state machine) đều chạy trực tiếp trên DFA với tốc độ siêu nhanh **$$O(\lvert w\rvert)$$** và bộ nhớ **$$O(1)$$**!
 
-## Ví dụ tính tay cầm tay chỉ việc: Chạy DFA kiểm tra "Số lượng bit `1` là CHẴN"
+## Ví dụ tính tay làm từng bước: Chạy DFA kiểm tra "Số lượng bit `1` là CHẴN"
 
 Xét DFA 2 trạng thái $$Q = \{q_{\text{chẵn}}, q_{\text{lẻ}}\}$$, $$q_0 = q_{\text{chẵn}}$$, $$F = \{q_{\text{chẵn}}\}$$:
 - Đọc `0`: giữ nguyên trạng thái; đọc `1`: đổi giữa $$q_{\text{chẵn}} \leftrightarrow q_{\text{lẻ}}$$.
@@ -57,8 +57,7 @@ Chạy tay hàm chuyển mở rộng $$\hat{\delta}$$ trên hai chuỗi:
 2. **Chuỗi `1010`:**
    $$q_{\text{chẵn}} \xrightarrow{1} q_{\text{lẻ}} \xrightarrow{0} q_{\text{lẻ}} \xrightarrow{1} q_{\text{chẵn}} \xrightarrow{0} q_{\text{chẵn}} \in F \implies$$ **CHẤP NHẬN** (2 bit `1` — chẵn!).
 
-### Khung giải thích: 4 bước đọc và kiểm tra một DFA (nên đọc chậm)
-
+### Giải thích: 4 bước đọc và kiểm tra một DFA
 #### Bước 1: Kiểm tra tính "Tất định và Đầy đủ"
 Tại **mọi** trạng thái $$q \in Q$$ và **mọi** ký tự $$a \in \Sigma$$, phải có **đúng 1** mũi tên gắn nhãn $$a$$ đi ra (không thiếu, không thừa!).
 

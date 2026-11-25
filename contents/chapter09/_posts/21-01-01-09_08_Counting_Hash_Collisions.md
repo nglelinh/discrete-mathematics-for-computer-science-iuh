@@ -13,7 +13,7 @@ excerpt: "Phân biệt xác suất có ít nhất một va chạm P(collision) v
 
 **Mạch bài học:** Phân biệt $$P(\text{collision})$$ với kỳ vọng $$E[\text{matches}]$$ $$\longrightarrow$$ tính tuyến tính của kỳ vọng (linearity of expectation) $$\longrightarrow$$ công thức đóng của Matt Might $$\longrightarrow$$ áp dụng tính nhân sự rà soát hồ sơ và độ dài chuỗi bảng băm.
 
-## Bản đồ kiến thức nền: Biến ngẫu nhiên chỉ thị và kỳ vọng rời rạc nghiên cứu gì?
+## Kiến thức cần nhớ: Biến ngẫu nhiên chỉ thị và kỳ vọng rời rạc nghiên cứu gì?
 
 - **Tính tuyến tính của kỳ vọng (Linearity of Expectation):** Công cụ mạnh bậc nhất của xác suất rời rạc: $$E\left[\sum_{i=1}^n X_i\right] = \sum_{i=1}^n E[X_i]$$ **luôn đúng ngay cả khi các biến ngẫu nhiên $$X_i$$ phụ thuộc lẫn nhau**.
 - **Bài toán phân bổ bóng vào hộp (Balls-into-Bins Model):** Ném ngẫu nhiên $$n$$ quả bóng (khóa/bệnh nhân) vào $$D$$ hộp (ô bảng băm/mã bệnh). Số hộp trống, số hộp bị trùng, và số lần rơi vào hộp đã có sẵn bóng đều tính được chính xác bằng biến chỉ thị.
@@ -199,7 +199,7 @@ Tóm lại, bài `09_07` (nghịch lý sinh nhật) trả lời *có va chạm h
 
 ---
 
-## Ví dụ tính tay cầm tay chỉ việc: 4 khóa ném vào 3 ô bảng băm ($$n=4, D=3$$)
+## Ví dụ tính tay làm từng bước: 4 khóa ném vào 3 ô bảng băm ($$n=4, D=3$$)
 
 Hãy kiểm chứng công thức của Matt Might $$E[\text{collisions}] = n - D + D\left(1 - \frac{1}{D}\right)^n$$ bằng cả hai cách: **trực tiếp từng bước** và **công thức đóng**.
 
@@ -216,8 +216,7 @@ Hãy kiểm chứng công thức của Matt Might $$E[\text{collisions}] = n - D
    - Số mã bệnh đã xuất hiện: $$500 - 67{,}7 = 432{,}3$$.
    - Kỳ vọng số lần bệnh nhân mới trùng mã với người đã nhập trước đó: $$1\,000 - 432{,}3 \approx 567{,}7$$ ca!
 
-### Khung giải thích: Mẹo đếm ngược qua "số hộp trống" (nên đọc chậm)
-
+### Giải thích: Mẹo đếm ngược qua "số hộp trống"
 1. **Bước 1 — Chuyển bài toán sang từng hộp cố định:** Thay vì theo dõi đường đi phức tạp của $$n$$ quả bóng, hãy đứng tại **hộp thứ $$j$$** và hỏi: xác suất hộp $$j$$ hoàn toàn trống sau $$n$$ lần ném là bao nhiêu? Mỗi lần ném trượt hộp $$j$$ có xác suất $$1 - 1/D$$, nên sau $$n$$ lần độc lập là $$(1 - 1/D)^n$$.
 2. **Bước 2 — Cộng kỳ vọng cho cả $$D$$ hộp:** Đặt biến chỉ thị $$I_j = 1$$ nếu hộp $$j$$ trống, ngược lại $$0$$. Dù trạng thái các hộp phụ thuộc nhau, tính tuyến tính của kỳ vọng vẫn cho $$E[\text{empty}] = \sum_{j=1}^D E[I_j] = D(1 - 1/D)^n$$.
 3. **Bước 3 — Dùng định luật bảo toàn phần tử:** Tổng số phần tử chèn vào luôn tách làm đúng hai phần: phần tử "mở hộp mới" (bằng số hộp có bóng $$D - \text{empty}$$) và phần tử "va chạm vào hộp cũ".

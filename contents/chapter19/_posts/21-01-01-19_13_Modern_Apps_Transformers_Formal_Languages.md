@@ -66,7 +66,7 @@ This concrete trace shows how 1950s CFG parsing directly powers reliable structu
 
 Nếu đưa các ngôn ngữ hình thức từ phân cấp Chomsky (chính quy, phi ngữ cảnh như dấu ngoặc Dyck, cảm ngữ cảnh như $$a^n b^n c^n$$) làm "bài kiểm tra chuẩn" cho mạng Transformer và các mô hình chuỗi hiện đại (RNN, Mamba/SSM), ta sẽ khám phá ra điều gì? Các bài báo nổi bật năm 2024 đã biến phân cấp Chomsky thành thước đo khoa học để hiểu kiến trúc mạng nơ-ron nào phù hợp với loại cấu trúc ngôn ngữ nào.
 
-### Bản đồ kiến thức nền: Ba trụ cột kết nối Phân cấp Chomsky và Mô hình Chuỗi 2024
+### Kiến thức cần nhớ: Ba trụ cột kết nối Phân cấp Chomsky và Mô hình Chuỗi 2024
 
 1. **Thí nghiệm Phân cấp Chomsky trên Mạng Nơ-ron (Delétang et al.)**:
    Huấn luyện mạng trên chuỗi ngắn rồi kiểm tra khái quát hóa trên chuỗi dài hơn nhiều lần (length generalization): mạng có bộ nhớ trạng thái cố định (SSM/RNN tuyến tính) giỏi tác vụ Chính quy, trong khi kiến trúc có ngăn xếp ngoài hoặc bộ nhớ động mạnh hơn ở tác vụ Phi ngữ cảnh.
@@ -85,7 +85,7 @@ Nên đọc ghi chú này sau khi hoàn thành mục 19.10–19.12; đây là g�
 
 **Câu hỏi.** (1) Nêu một ngôn ngữ bị bổ đề bơm CFL của chương này loại (không phải CFL); liệu một transformer có bộ nhớ nháp (*scratchpad*) có nhất thiết nhận dạng được ngôn ngữ đó không? (2) Vì sao cận thời gian $$O(n^3)$$ của thuật toán CYK dễ phát biểu chặt chẽ hơn so với cận về “sức mạnh biểu diễn” (*expressivity*) của transformer?
 
-### Khung giải thích (nên đọc chậm): So sánh cơ chế ép JSON hợp lệ bằng CFG khi LLM sinh từng token
+### Giải thích: So sánh cơ chế ép JSON hợp lệ bằng CFG khi LLM sinh từng token
 
 Giả sử ta yêu cầu LLM trả về JSON theo văn phạm nhỏ:
 `Obj -> "{" "\"score\":" Num "}"`, `Num -> [0-9]+`.
@@ -99,7 +99,7 @@ Giả sử ta yêu cầu LLM trả về JSON theo văn phạm nhỏ:
 | 3 | `"{\"score\":"` | Chỉ các chữ số `0..9` | Đảm bảo giá trị chắc chắn là số, không bị sinh nhầm chữ |
 | 4 | `"{\"score\":95"` | Chữ số `0..9` hoặc `"}"` | Cho phép tiếp tục số hoặc đóng ngoặc kết thúc hợp lệ |
 
-Ví dụ cầm tay chỉ việc này cho thấy lý thuyết CFG năm 1956 đang trực tiếp giải quyết bài toán kỹ thuật nóng nhất của hệ thống AI tác nhân (AI Agent) giai đoạn 2024–2026!
+Ví dụ làm từng bước này cho thấy lý thuyết CFG năm 1956 đang trực tiếp giải quyết bài toán kỹ thuật nóng nhất của hệ thống AI tác nhân (AI Agent) giai đoạn 2024–2026!
 
 ## Video tham khảo
 

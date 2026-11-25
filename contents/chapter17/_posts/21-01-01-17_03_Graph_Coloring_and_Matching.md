@@ -40,7 +40,7 @@ Khi xếp lịch thi, hai môn học có chung sinh viên không thể thi cùng
 
 </div>
 
-## Bản đồ kiến thức nền: Tô màu Đồ thị, Đồ thị Hai phía và Ghép cặp
+## Kiến thức cần nhớ: Tô màu Đồ thị, Đồ thị Hai phía và Ghép cặp
 
 ### 1. Sắc số $$\chi(G)$$ & Độ phức tạp tính toán
 - **Tô màu đỉnh hợp lệ:** Hai đỉnh nối cạnh phải khác màu (tương ứng hai môn thi có chung sinh viên phải khác ca!). Số màu ít nhất gọi là **sắc số $$\chi(G)$$**.
@@ -54,7 +54,7 @@ Khi xếp lịch thi, hai môn học có chung sinh viên không thể thi cùng
 - **Định lý Hall:** Trên đồ thị hai phía $$G = (L \cup R, E)$$, tồn tại ghép cặp phủ hết tập trái $$L$$ **khi và chỉ khi** với mọi tập con $$S \subseteq L$$, tập láng giềng $$N(S) \subseteq R$$ thỏa mãn **$$\lvert N(S)\rvert \ge \lvert S\rvert$$**!
 - **Thuật toán Đường tăng (Augmenting Path / Hopcroft–Karp):** Tìm đường đi xen kẽ cạnh ngoài/trong ghép cặp nối hai đỉnh tự do rồi đảo trạng thái để tăng kích thước ghép cặp lên $$+1$$ (Định lý Berge)!
 
-## Ví dụ tính tay cầm tay chỉ việc: Áp dụng Định lý Hall kiểm tra Ghép cặp 3 Ứng viên – 3 Vị trí
+## Ví dụ tính tay làm từng bước: Áp dụng Định lý Hall kiểm tra Ghép cặp 3 Ứng viên – 3 Vị trí
 
 Cho 3 ứng viên $$L = \{A, B, C\}$$ và 3 công việc $$R = \{J_1, J_2, J_3\}$$:
 - **Trường hợp 1:** $$A \to \{J_1\}$$, $$B \to \{J_1\}$$, $$C \to \{J_1, J_2, J_3\}$$.
@@ -66,8 +66,7 @@ Cho 3 ứng viên $$L = \{A, B, C\}$$ và 3 công việc $$R = \{J_1, J_2, J_3\}
   - Kích thước 3: $$\lvert N(A,B,C)\rvert = 3 \ge 3$$. ✓
   Thỏa mãn 100% điều kiện Hall $$\implies$$ tồn tại ghép cặp hoàn hảo: **$$A-J_1,\; B-J_2,\; C-J_3$$**!
 
-### Khung giải thích: 4 bước giải quyết bài toán Lập lịch và Phân công bằng Đồ thị (nên đọc chậm)
-
+### Giải thích: 4 bước giải quyết bài toán Lập lịch và Phân công bằng Đồ thị
 #### Bước 1: Mô hình hóa "Xung đột" thành Tô màu, "Ghép đôi" thành Matching
 Hễ hai đối tượng *không được dùng chung tài nguyên* (hai môn thi trùng sinh viên, hai biến sống đồng thời trong hàm) $$\to$$ nối cạnh và **tô màu**. Hễ cần *ghép 1–1* giữa hai nhóm (tài xế–khách, ứng viên–việc) $$\to$$ dựng đồ thị hai phía và tìm **ghép cặp cực đại**.
 

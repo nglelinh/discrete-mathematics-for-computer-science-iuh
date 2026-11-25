@@ -24,7 +24,7 @@ Trong chương này, chúng ta nghiên cứu **phép đếm** và **tổ hợp**
 
 Quy tắc cộng được áp dụng khi các lựa chọn loại trừ lẫn nhau; quy tắc nhân được áp dụng khi một quá trình gồm nhiều bước thực hiện nối tiếp. Hai nguyên tắc này là nền móng cho hầu hết các kỹ thuật đếm về sau. Sai lầm trong bài toán đếm thường không đến từ công thức phức tạp, mà từ việc xác định nhầm cấu trúc bài toán: đâu là lựa chọn "hoặc" và đâu là chuỗi bước "và".
 
-## Bản đồ kiến thức nền: Bốn nguyên lý cốt lõi của Nghệ thuật Đếm cơ bản
+## Kiến thức cần nhớ: Bốn nguyên lý cốt lõi của Nghệ thuật Đếm cơ bản
 
 1. **Quy tắc Cộng (Addition Principle) — "Hoặc trường hợp này, hoặc trường hợp kia"**:
    Nếu một công việc có thể hoàn thành theo một trong $$k$$ phương án **đôi một rời nhau** ($$A_i \cap A_j = \emptyset$$), thì tổng số cách là tổng số cách của từng phương án: $$\lvert A_1 \cup \dots \cup A_k \rvert = \sum \lvert A_i \rvert$$.
@@ -191,7 +191,7 @@ Một trang web cho phép tạo tên đăng nhập (username) theo 2 định d�
 - Tổng cộng: 26.000 + 67.600 = 93.600 tên đăng nhập.
 </div>
 
-### Khung giải thích (nên đọc chậm): Đếm tay mã PIN 4 chữ số bằng chia trường hợp (Cộng + Nhân) và kỹ thuật Phần bù
+### Giải thích: Đếm tay mã PIN 4 chữ số bằng chia trường hợp (Cộng + Nhân) và kỹ thuật Phần bù
 
 **Bài toán A — Có bao nhiêu số tự nhiên chẵn gồm 4 chữ số đôi một khác nhau?**
 *(Chữ số đầu $$d_1 \in \{1..9\}$$, chữ số cuối $$d_4 \in \{0, 2, 4, 6, 8\}$$.)*

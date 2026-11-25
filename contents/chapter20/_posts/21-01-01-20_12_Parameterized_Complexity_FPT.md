@@ -21,7 +21,7 @@ excerpt: "Độ phức tạp tham số hóa (FPT so với XP), chứng minh cây
 
 Thuật toán xấp xỉ đánh đổi độ chính xác để lấy tốc độ. Còn một lối thoát tinh tế thứ hai giữ nguyên **nghiệm chính xác 100%** cho bài toán NP-hard: **Độ phức tạp Tham số hóa (Parameterized Complexity)**. Ý tưởng cốt lõi: thay vì đo độ phức tạp chỉ theo một biến kích thước $$n$$, hãy tách riêng một tham số cấu trúc $$k$$ (như kích thước nghiệm cần tìm hoặc độ rộng cây) và **giam toàn bộ sự bùng nổ hàm mũ vào riêng $$k$$**, để phần phụ thuộc $$n$$ vẫn là đa thức nhỏ gọn!
 
-## Bản đồ kiến thức nền: Ba trụ cột của Độ phức tạp Tham số hóa & FPT
+## Kiến thức cần nhớ: Ba trụ cột của Độ phức tạp Tham số hóa & FPT
 
 1. **Lớp FPT (Fixed-Parameter Tractable — $$f(k) \cdot n^{O(1)}$$)**:
    Khác hẳn $$O(n^k)$$ (khi $$k = 10, n = 1000$$ thì $$1000^{10} = 10^{30}$$ vô phương cứu chữa), thuật toán FPT kiểu $$O(2^k \cdot n)$$ với $$k = 10, n = 1000$$ chỉ mất khoảng $$10^6$$ phép tính (chạy dưới 1 mili-giây!).
@@ -84,7 +84,7 @@ Khác với Vertex Cover, bài toán Clique tham số hóa theo kích thước $
 
 Nhiều bài toán biểu diễn được bằng logic bậc hai đơn ngôi (MSO) trên đồ thị có *treewidth* $$w$$ đều giải được trong thời gian $$f(w)n$$ theo định lý Courcelle; tuy hằng số lý thuyết rất lớn, quy hoạch động trực tiếp trên phân rã cây thường đạt $$2^{O(w)}n^{O(1)}$$ trong thực hành.
 
-### Khung giải thích (nên đọc chậm): Chạy tay quy tắc Buss (Kernelization) thu gọn đồ thị `Vertex Cover`
+### Giải thích: Chạy tay quy tắc Buss (Kernelization) thu gọn đồ thị `Vertex Cover`
 
 Giả sử bạn cần kiểm tra xem một đồ thị khổng lồ $$G$$ có **10.000 đỉnh** có tồn tại tập phủ đỉnh cỡ $$k = 5$$ hay không. Quy tắc Buss làm hai bước cực đơn giản:
 1. **Quy tắc đỉnh bậc cao:** Nếu có đỉnh $$v$$ nào có bậc $$\deg(v) > k$$ (tức $$\ge 6$$ cạnh nối vào $$v$$), thì **bắt buộc phải chọn $$v$$ vào tập phủ đỉnh**! (Vì nếu không chọn $$v$$, ta phải chọn toàn bộ $$\ge 6$$ hàng xóm của $$v$$, vượt ngay ngân sách $$k = 5$$!). Chọn $$v$$, xóa $$v$$ cùng các cạnh kề nó, và giảm $$k \leftarrow k - 1$$.

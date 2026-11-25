@@ -14,7 +14,7 @@ Một công thức tưởng chỉ dùng để giải đố biểu đồ Venn l�
 
 **Mạch bài học:** Chọn đúng **tập vi phạm $$A_i$$** $$\longrightarrow$$ **Sàng Legendre** & **Hàm phi Euler $$\varphi(n)$$** $$\longrightarrow$$ đếm **toàn ánh (onto functions)** $$\longrightarrow$$ **hoán vị không điểm cố định (derangements $$D_n$$)** và giới hạn bất ngờ $$D_n/n! \to 1/e$$.
 
-## Bản đồ kiến thức nền: Bốn bài toán kinh điển dưới cùng một lăng kính Bao hàm – Loại trừ
+## Kiến thức cần nhớ: Bốn bài toán kinh điển dưới cùng một lăng kính Bao hàm – Loại trừ
 
 - **Lý thuyết số & Mật mã (Legendre Sieve & Euler's Totient $$\varphi(n)$$):** Đếm các số nguyên tố cùng nhau với $$n = p_1^{e_1}\cdots p_r^{e_r}$$ chính là loại bỏ bội của từng ước nguyên tố $$p_i$$, dẫn ngay đến tích gọn $$\varphi(n) = n \prod_{i=1}^r \left(1 - \frac{1}{p_i}\right)$$ — trái tim của hệ mật RSA.
 - **Ánh xạ & Số Stirling loại hai (Surjections):** Đếm số toàn ánh từ tập $$m$$ phần tử vào tập $$n$$ phần tử tương ứng bài toán phân bổ $$m$$ tác vụ phân biệt vào $$n$$ máy chủ sao cho **không máy chủ nào rảnh rỗi** (vi phạm $$A_i$$: máy chủ $$i$$ không nhận tác vụ nào).
@@ -126,7 +126,7 @@ Trong các bài toán tô màu có ràng buộc, ta cần đếm số cách gán
 </div>
 <script src="{{ '/public/js/surjection-counter.js' | relative_url }}"></script>
 
-## Ví dụ tính tay cầm tay chỉ việc: Tính tay $$\varphi(30)$$, số toàn ánh và $$D_4$$
+## Ví dụ tính tay làm từng bước: Tính tay $$\varphi(30)$$, số toàn ánh và $$D_4$$
 
 **Ví dụ 1 — Hàm phi Euler $$\varphi(30)$$:**
 Phân tích $$30 = 2 \times 3 \times 5$$. Đặt $$A_2, A_3, A_5$$ là các bội của 2, 3, 5 trong $$\{1,\dots,30\}$$.
@@ -145,8 +145,7 @@ Phân tích $$30 = 2 \times 3 \times 5$$. Đặt $$A_2, A_3, A_5$$ là các bộ
 $$D_4 = 4!\left(1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \frac{1}{4!}\right) = 24\left(1 - 1 + \frac{1}{2} - \frac{1}{6} + \frac{1}{24}\right) = 12 - 4 + 1 = 9\text{ cách.}$$
 - Kiểm tra tỷ lệ: $$D_4 / 4! = 9/24 = 0{,}375$$ — mới ở $$n=4$$ mà đã sát $$1/e \approx 0{,}3679$$!
 
-### Khung giải thích: Khuôn mẫu chung 3 bước của mọi ứng dụng Bao hàm – Loại trừ (nên đọc chậm)
-
+### Giải thích: Khuôn mẫu chung 3 bước của mọi ứng dụng Bao hàm – Loại trừ
 1. **Bước 1 — Đặt tên chính xác tập "xấu" $$A_i$$:** Trong $$\varphi(n)$$, $$A_i$$ là "chia hết cho $$p_i$$"; trong toàn ánh, $$A_i$$ là "giá trị $$i$$ không có tiền ảnh"; trong derangement, $$A_i$$ là "người $$i$$ nhận đúng mũ của mình".
 2. **Bước 2 — Khai thác tính đối xứng để rút gọn tổng:** Khi mọi giao của $$k$$ tập đều có **cùng lực lượng** $$g(k)$$ (như $$(n-k)^m$$ ở toàn ánh hay $$(n-k)!$$ ở derangement), tổng dài $$2^n$$ số hạng lập tức co gọn thành tổng $$n+1$$ số hạng: $$\sum_{k=0}^n (-1)^k \binom{n}{k} g(k)$$.
 3. **Bước 3 — Nhận diện chuỗi Taylor ẩn bên trong:** Ở bài toán derangement, $$\binom{n}{k}(n-k)! = \frac{n!}{k!}$$, nên $$D_n = n! \sum_{k=0}^n \frac{(-1)^k}{k!}$$ — đúng là tổng riêng bậc $$n$$ của chuỗi Taylor cho $$e^{-1}$$, giải thích tại sao $$D_n = \text{round}(n!/e)$$ với mọi $$n \ge 1$$!

@@ -62,14 +62,13 @@ Thay vì lưu toàn bộ ma trận attention kích thước $$n \times n$$ trên
 1. Hãy viết dạng hệ thức truy hồi phác thảo cho quá trình xử lý $$n$$ token theo từng khối có kích thước $$B$$.
 2. Khi nút thắt cổ chai nằm ở việc truyền dữ liệu với HBM thay vì phép tính số học, thành phần $$f(n)$$ trong hệ thức truy hồi biểu diễn chi phí gì?
 
-### Bản đồ kiến thức nền: Truy hồi nhận thức IO tái định hình thuật toán GPU ra sao?
+### Kiến thức cần nhớ: Truy hồi nhận thức IO tái định hình thuật toán GPU ra sao?
 
 - **Phân cấp bộ nhớ (Memory Hierarchy):** Trên GPU hiện đại, SRAM trên chip rất nhỏ (~20 MB) nhưng nhanh hơn HBM hàng chục lần. Chỉ đếm số phép nhân–cộng (FLOPs) sẽ bỏ sót nút thắt cổ chai thực sự: **lưu lượng byte đọc/ghi giữa HBM và SRAM**.
 - **Chia khối như hệ thức truy hồi (Block Tiling Recurrence):** Chia ma trận $$N \times d$$ thành các khối nhỏ vừa khít SRAM giúp loại bỏ việc ghi ma trận trung gian $$N \times N$$ ra HBM.
 - **Gộp Softmax trực tuyến (Online Softmax Merging):** Thay vì duyệt hai lượt trên HBM, FlashAttention cập nhật truy hồi hai thống kê chạy là giá trị lớn nhất theo hàng $$m$$ và tổng chuẩn hóa $$\ell$$ qua từng khối, đảm bảo kết quả **chính xác tuyệt đối** như phép tính chuẩn.
 
-### Khung giải thích: Tính tay mức giảm lưu lượng HBM của FlashAttention (nên đọc chậm)
-
+### Giải thích: Tính tay mức giảm lưu lượng HBM của FlashAttention
 1. **Bước 1 — Lưu lượng HBM của Attention chuẩn:** Với độ dài chuỗi $$N = 4\,096$$ và chiều ẩn $$d = 64$$, việc lưu ma trận điểm $$S = QK^\top$$ và $$P = \text{softmax}(S)$$ kích thước $$N \times N$$ tốn lưu lượng HBM tỷ lệ $$\Theta(N^2)$$ (khoảng $$16{,}78$$ triệu phần tử cho mỗi ma trận trung gian).
 2. **Bước 2 — Lưu lượng HBM khi chia khối SRAM:** Với dung lượng SRAM làm việc $$M = 65\,536$$ phần tử, tổng truy xuất HBM của FlashAttention giảm còn $$\Theta\!\left(\frac{N^2 d^2}{M}\right)$$. Thay $$d = 64 \Rightarrow d^2 = 4\,096$$, ta có $$\frac{d^2}{M} = \frac{4\,096}{65\,536} = \frac{1}{16}$$ — tức lưu lượng HBM giảm ngay **16 lần**!
 3. **Bước 3 — Công thức gộp truy hồi theo khối:** Khi gộp khối 1 có $$(m_1, \ell_1)$$ với khối 2 có $$(m_2, \ell_2)$$, ta cập nhật $$m_{\text{mới}} = \max(m_1, m_2)$$ và $$\ell_{\text{mới}} = e^{m_1 - m_{\text{mới}}}\ell_1 + e^{m_2 - m_{\text{mới}}}\ell_2$$ — tư duy gộp nghiệm con quen thuộc của Chương 10, nhưng tối ưu thẳng vào chi phí bộ nhớ!

@@ -13,7 +13,7 @@ Một quân mã nhỏ bé nhảy theo hình chữ L trên bàn cờ vua 64 ô c�
 
 **Mạch bài học:** Biểu diễn bàn cờ thành **đồ thị nước mã** $$\longrightarrow$$ định nghĩa **đường đi / chu trình Hamilton** $$\longrightarrow$$ lý do vét cạn bùng nổ theo cấp số mũ $$\longrightarrow$$ **quy tắc heuristic Warnsdorf (1823)** đưa thời gian tìm nghiệm trên bàn $$8\times 8$$ từ hàng thế kỷ xuống vài mili-giây.
 
-## Bản đồ kiến thức nền: Bài toán Mã đi tuần kết nối những nhánh toán học nào?
+## Kiến thức cần nhớ: Bài toán Mã đi tuần kết nối những nhánh toán học nào?
 
 - **Lý thuyết đồ thị & Đường đi Hamilton (Hamiltonian Paths):** Mô hình hóa mỗi ô cờ $$(r, c)$$ thành một đỉnh, hai ô nối cạnh nếu cách nhau một nước mã ($$\vert \Delta r \vert \cdot \vert \Delta c \vert = 2$$). Một hành trình mã đi tuần chính là đường đi Hamilton (open tour) hoặc chu trình Hamilton (closed tour) trên đồ thị 64 đỉnh này.
 - **Cây tìm kiếm & Cắt nhánh (Backtracking & Search Space Pruning):** Khi duyệt theo chiều sâu (DFS), mỗi bước có tối đa 8 lựa chọn nên cây tìm kiếm thô có thể phình tới bậc $$O(8^{n^2})$$. Backtracking quay lui ngay khi gặp ngõ cụt, nhưng chỉ thật sự bứt tốc khi kết hợp **thứ tự ưu tiên nhánh thông minh**.
@@ -230,7 +230,7 @@ Minh giữ lại hàm `warnsdorf_neighbors` trong kho mã cá nhân như một v
 
 ---
 
-## Ví dụ tính tay cầm tay chỉ việc: So sánh bậc đỉnh và áp dụng quy tắc Warnsdorf
+## Ví dụ tính tay làm từng bước: So sánh bậc đỉnh và áp dụng quy tắc Warnsdorf
 
 **Phần A — Chứng minh bàn cờ $$3 \times 3$$ KHÔNG có hành trình mã đi tuần (chứng minh 3 dòng bằng bậc đỉnh):**
 - Trên bàn $$3 \times 3$$ có 9 ô. Xét ô chính giữa $$(1, 1)$$: từ đây không thể nhảy 2 ô theo bất kỳ hướng nào mà vẫn nằm trong bàn $$3 \times 3$$!
@@ -250,8 +250,7 @@ Giả sử quân mã xuất phát tại góc $$(0, 0)$$.
    - $$(2, 4)$$: còn **2 lối thoát**.
    - **Quy tắc Warnsdorf lập tức chọn $$(0, 4)$$** (bậc còn lại = 1 nhỏ nhất). Nếu ta bỏ qua $$(0, 4)$$ để đi vào giữa bàn cờ trước, lát nữa ô góc này có thể mất nốt lối vào duy nhất và biến thành ngõ cụt không thể cứu vãn!
 
-### Khung giải thích: Vì sao "chọn ô chật hẹp nhất trước" lại giải được bài toán bùng nổ (nên đọc chậm)
-
+### Giải thích: Vì sao "chọn ô chật hẹp nhất trước" lại giải được bài toán bùng nổ
 1. **Bước 1 — Ngõ cụt thường sinh ra ở biên và góc:** Các ô ở góc bàn cờ chỉ có bậc 2 (1 lối vào, 1 lối ra). Nếu các ô trung tâm bị thăm hết trước, các ô góc sẽ bị cô lập và làm sập toàn bộ nhánh tìm kiếm ở độ sâu 50–60.
 2. **Bước 2 — Warnsdorf giải quyết nút thắt cổ chai ngay lập tức:** Luôn đi vào ô có số lối thoát nhỏ nhất buộc quân mã quét sát mép ngoài theo hình xoắn ốc vào trong, giữ lại vùng trung tâm giàu kết nối (bậc 6–8) làm "vùng đệm linh hoạt" cho những nước đi cuối cùng.
 3. **Bước 3 — Chi phí tính heuristic siêu rẻ so với lợi ích:** Tại mỗi bước chỉ cần kiểm tra tối đa $$8 \times 8 = 64$$ phép tính lân cận — thời gian $$O(1)$$ — nhưng đổi lại cắt gần như 100% số lần quay lui trên bàn $$8\times 8$$.

@@ -53,16 +53,16 @@ Chương 17 tập trung vào các thuật toán đồ thị cổ điển. Hai h�
 
 **Câu hỏi.** (1) Gợi ý (*hint*) nào trong CLRS tương ứng với mảng khoảng cách của Dijkstra sau $$k$$ bước relax? (2) Vì sao sự sụt giảm độ chính xác trên dữ liệu OOD lại bác bỏ nhận định rằng GNN đã thực sự “học được” thuật toán?
 
-### Bản đồ kiến thức nền: Suy luận Thuật toán bằng Mạng Nơ-ron (CLRS-30)
+### Kiến thức cần nhớ: Suy luận Thuật toán bằng Mạng Nơ-ron (CLRS-30)
 - **Sự tương đồng toán học giữa GNN và Quy hoạch động đồ thị:** Mỗi tầng GNN cập nhật trạng thái nút $$v$$ bằng phép gom thông điệp từ các hàng xóm: $$h_v^{(t+1)} = \phi\bigl(h_v^{(t)},\; \bigoplus_{u \in N(v)} \psi(h_u^{(t)}, w_{uv})\bigr)$$. Khi chọn phép gom $$\bigoplus = \min$$ và hàm thông điệp $$\psi(d_u, w_{uv}) = d_u + w_{uv}$$, **một tầng GNN chính là một vòng lặp nới lỏng cạnh của Bellman–Ford!**
 - **Mục tiêu thực sự:** Không phải để thay thế code Dijkstra chạy trên đồ thị sạch, mà để xây dựng mô hình học đầu-cuối biết **tự suy luận thuật toán ngay trên dữ liệu thô đầy nhiễu** (ảnh bản đồ vệ tinh, luồng giao thông thời gian thực)!
 
-### Ví dụ tính tay cầm tay chỉ việc: Một tầng GNN `min`-aggregation mô phỏng Bellman–Ford
+### Ví dụ tính tay làm từng bước: Một tầng GNN `min`-aggregation mô phỏng Bellman–Ford
 Trên đồ thị 3 đỉnh $$S \xrightarrow{2} A \xrightarrow{3} T$$ và cạnh thẳng $$S \xrightarrow{8} T$$, khởi tạo $$h^{(0)} = (0, \infty, \infty)$$:
 - **Tầng 1:** $$h_A^{(1)} = \min(\infty, 0 + 2) = 2$$; $$h_T^{(1)} = \min(\infty, 0 + 8, \infty + 3) = 8$$.
 - **Tầng 2:** $$h_T^{(2)} = \min(8, 0 + 8, 2 + 3) = 5$$ — tái tạo chính xác đường đi ngắn nhất!
 
-### Khung giải thích: 4 bước nối Thuật toán Đồ thị Chương 17 với Mạng Nơ-ron (nên đọc chậm)
+### Giải thích: 4 bước nối Thuật toán Đồ thị Chương 17 với Mạng Nơ-ron
 #### Bước 1: Chọn phép gom (Aggregator) khớp với cấu trúc đại số của thuật toán
 Đường đi ngắn nhất (Bellman–Ford/Dijkstra) cần phép gom `min`; BFS cần `max/or`; đếm đường đi cần `sum` (thiên kiến quy nạp thuật toán!).
 #### Bước 2: Huấn luyện kèm "gợi ý trung gian" (Algorithmic Hints — CLRS-30)

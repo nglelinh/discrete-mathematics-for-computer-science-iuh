@@ -25,7 +25,7 @@ Phép rút gọn là **công cụ so sánh độ khó giữa các bài toán**: 
 
 Nếu bạn không biết cách giải bài toán $$A$$, nhưng bạn biết cách *dịch nhanh* mọi dữ liệu của $$A$$ thành bài toán $$B$$ rồi nhờ thuật toán giải $$B$$ trả lời hộ, thì có hai kết luận cực kỳ sâu sắc cùng lúc: nếu $$B$$ dễ thì $$A$$ cũng dễ; và ngược lại, nếu $$A$$ đã nổi tiếng là khó thì $$B$$ **ít nhất phải khó ngang $$A$$**! Phép dịch nhanh đó chính là **rút gọn đa thức Karp ($$A \le_p B$$)** — chiếc cân so sánh độ khó giữa hàng nghìn bài toán tính toán.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Rút gọn Đa thức
+## Kiến thức cần nhớ: Ba trụ cột của Rút gọn Đa thức
 
 1. **Định nghĩa Rút gọn Nhiều–Một Đa thức (Karp Reduction $$A \le_p B$$)**:
    Tồn tại hàm tính được trong thời gian đa thức $$f: \{0,1\}^* \to \{0,1\}^*$$ sao cho với **mọi** đầu vào $$x$$:
@@ -105,7 +105,7 @@ $$
 
 Mọi phép rút gọn Karp đều là một phép rút gọn Cook, nhưng chiều ngược lại nói chung không tầm thường.
 
-### Khung giải thích (nên đọc chậm): Chiều rút gọn — Lỗi sai kinh điển nhất của sinh viên khi chứng minh NP-hard
+### Giải thích: Chiều rút gọn — Lỗi sai kinh điển nhất của sinh viên khi chứng minh NP-hard
 
 Giả sử bạn đã biết `3SAT` là bài toán rất khó (NP-complete) và muốn chứng minh bài toán mới `MY-PROB` cũng khó tương đương. Bạn phải chọn **đúng chiều mũi tên**:
 

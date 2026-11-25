@@ -19,7 +19,7 @@ excerpt: "Tính đóng của CFL dưới hợp, nối, sao; tính không đóng 
 
 Cho một văn phạm phi ngữ cảnh $$G$$ và một chuỗi $$w$$ dài $$n$$ ký tự, làm sao máy tính kiểm tra xem $$w \in L(G)$$ hay không mà không rơi vào vòng lặp vô hạn kiểu $$A \Rightarrow B \Rightarrow A$$ hay thử nổ tổ hợp? Câu trả lời là một bộ đôi kinh điển: trước hết chuẩn hóa văn phạm về **Dạng chuẩn Chomsky (CNF)** để mọi cây phân tích đều là cây nhị phân chặt, rồi dùng quy hoạch động **thuật toán CYK** giải quyết bài toán thành viên trong đúng $$O(n^3 \cdot \vert G \vert)$$.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Tính đóng, CNF và CYK
+## Kiến thức cần nhớ: Ba trụ cột của Tính đóng, CNF và CYK
 
 1. **Tính đóng bất đối xứng của CFL**:
    CFL đóng dưới hợp, nối và bao đóng Kleene (nhưng **không đóng** dưới giao và phần bù!). Bù lại, CFL đóng dưới **giao với ngôn ngữ chính quy** ($$L \cap R$$ vẫn là CFL) — công cụ cực mạnh để chứng minh một ngôn ngữ không phải CFL mà không cần Bổ đề Bơm dài dòng.
@@ -80,7 +80,7 @@ Với văn phạm ở dạng chuẩn CNF, thuật toán CYK dùng quy hoạch đ
 </div>
 <script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
 
-### Khung giải thích (nên đọc chậm): Điền tay bảng tam giác CYK cho chuỗi `aabb`
+### Giải thích: Điền tay bảng tam giác CYK cho chuỗi `aabb`
 
 Xét văn phạm CNF sinh $$a^n b^n$$ ($$n \ge 1$$):
 $$S \to AB \mid AX, \quad X \to SB, \quad A \to a, \quad B \to b.$$

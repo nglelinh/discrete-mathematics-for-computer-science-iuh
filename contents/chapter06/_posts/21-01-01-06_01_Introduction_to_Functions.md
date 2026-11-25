@@ -25,7 +25,7 @@ Trong chương này, chúng ta nghiên cứu **hàm số** — ánh xạ gán ch
 
 Trong toán rời rạc, hàm là một quan hệ đặc biệt thỏa mãn tính tồn tại và tính duy nhất; còn trong khoa học máy tính, hàm là mô hình đứng sau lời gọi hàm, ánh xạ khóa–giá trị, biến đổi dữ liệu và mã hóa. Điểm cốt lõi của hàm số là tính xác định: cùng một đầu vào phải luôn cho ra đúng một đầu ra.
 
-## Bản đồ kiến thức nền: Bốn trụ cột định nghĩa nên khái niệm Hàm số
+## Kiến thức cần nhớ: Bốn trụ cột định nghĩa nên khái niệm Hàm số
 
 1. **Hàm số là một Quan hệ đặc biệt (Tính duy nhất & Tính toàn phần)**:
    Một hàm $$f: A \to B$$ là một tập con của $$A \times B$$ thỏa mãn hai ràng buộc chặt: mỗi $$a \in A$$ phải có ảnh (*không bỏ sót đầu vào*) và ảnh đó phải là **duy nhất** (*một đầu vào không thể phân nhánh ra hai đầu ra*).
@@ -207,7 +207,7 @@ class MockModel:
 
 Đoạn mã trên mô phỏng giao diện `predict()` quen thuộc trong `sklearn`: nhận một tập đầu vào và trả về đầu ra xác định tương ứng cho từng mẫu.
 
-### Khung giải thích (nên đọc chậm): Phân biệt quan hệ với hàm số, tách bạch Domain–Codomain–Range và đếm số hàm trên tập nhỏ
+### Phân biệt quan hệ với hàm số, tách bạch Domain–Codomain–Range và đếm số hàm trên tập nhỏ
 
 Xét hai tập hữu hạn $$A = \{1, 2, 3\}$$ và $$B = \{a, b\}$$.
 
@@ -257,7 +257,7 @@ Xét quan hệ $$R = \{(1,2),(2,4),(3,6)\}$$ trên $$\N$$. Hỏi $$R$$ có phả
 <details>
 <summary>Đáp án</summary>
 
-Nếu xét miền xác định là $$\{1, 2, 3\}$$ thì $$R$$ là hàm toàn phần, vì mỗi phần tử được ánh xạ đến đúng một giá trị. Tuy nhiên, nếu xét trên toàn tập $$\N$$ thì $$R$$ không phải hàm toàn phần (chỉ là hàm bộ phận), vì các phần tử khác ngoài $$\{1, 2, 3\}$$ không có ảnh.
+Nếu xét miền xác định là $\{1, 2, 3\}$ thì $R$ là hàm toàn phần, vì mỗi phần tử được ánh xạ đến đúng một giá trị. Tuy nhiên, nếu xét trên toàn tập $\N$ thì $R$ không phải hàm toàn phần (chỉ là hàm bộ phận), vì các phần tử khác ngoài $\{1, 2, 3\}$ không có ảnh.
 
 </details>
 
@@ -268,9 +268,9 @@ Cho hàm $$f: \N \to \N$$, $$f(x) = x^2 + 1$$. Hãy xác định domain, codomai
 <details>
 <summary>Đáp án</summary>
 
-- Domain: $$\N$$
-- Codomain: $$\N$$
-- Range: $$\{2,5,10,17,...\}$$ (các số có dạng $$n^2+1$$, với quy ước $$\N = \{1, 2, 3, \dots\}$$; nếu tính cả $$0 \in \N$$ thì tập giá trị bắt đầu từ $$1$$).
+- Domain: $\N$
+- Codomain: $\N$
+- Range: $\{2,5,10,17,...\}$ (các số có dạng $n^2+1$, với quy ước $\N = \{1, 2, 3, \dots\}$; nếu tính cả $0 \in \N$ thì tập giá trị bắt đầu từ $1$).
 
 </details>
 

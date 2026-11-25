@@ -13,7 +13,7 @@ Một trong những phản xạ tốn kém nhất khi hệ thống chậm là "v
 
 **Mạch bài học:** Tách bạch **người dùng đồng thời** với **kết nối DB đang bận** $$\longrightarrow$$ **Định luật Little** $$L = \lambda W$$ $$\longrightarrow$$ công thức thực nghiệm **HikariCP** $$\longrightarrow$$ mở rộng nhiều pod bằng **PgBouncer**.
 
-## Bản đồ kiến thức nền: Lý thuyết hàng đợi và hệ thống CSDL đứng sau connection pool là gì?
+## Kiến thức cần nhớ: Lý thuyết hàng đợi và hệ thống CSDL đứng sau connection pool là gì?
 
 - **Lý thuyết hàng đợi & Định luật Little (Queueing Theory):** Nghiên cứu mối quan hệ trạng thái dừng giữa tốc độ đến trung bình $$\lambda$$ (requests/giây), thời gian phục vụ trung bình $$W$$ (giây), và số lượng yêu cầu đang nằm trong hệ thống $$L = \lambda W$$ — đúng cho mọi phân phối đến/phục vụ ổn định.
 - **Tranh chấp tài nguyên & Đổi ngữ cảnh (Contention & Context Switching):** Khi số kết nối DB đang chạy song song vượt xa số lõi CPU và băng thông I/O của máy chủ DB, nhân hệ điều hành phải liên tục chuyển luồng và tranh khóa (lock contention), làm $$W$$ tăng phi tuyến và đẩy thông lượng đi xuống.
@@ -158,7 +158,7 @@ Dũng ghi ba ý chính vào tài liệu vận hành (runbook): **người dùng 
 
 ---
 
-## Ví dụ tính tay cầm tay chỉ việc: Áp dụng Định luật Little và công thức HikariCP cho 10.000 người dùng
+## Ví dụ tính tay làm từng bước: Áp dụng Định luật Little và công thức HikariCP cho 10.000 người dùng
 
 Giả sử ứng dụng web của bạn đang có **10.000 người dùng đồng thời**, trung bình mỗi người bấm một thao tác gọi API mỗi **20 giây** (think time = 20s). Mỗi request API thực hiện **2 truy vấn SQL**, mỗi truy vấn mất trung bình **5 ms** ($$0{,}005$$ giây) trên máy chủ PostgreSQL có **8 lõi CPU** và **1 ổ SSD**.
 
@@ -174,8 +174,7 @@ Giả sử ứng dụng web của bạn đang có **10.000 người dùng đồn
    - Nếu không có PgBouncer, chia đều trần 20 kết nối cho 4 pod $$\Rightarrow$$ mỗi pod chỉ nên đặt `maximumPoolSize = 5` (thay vì `50` hay `200`).
    - Kiểm tra hệ số tải trung bình: $$L / 20 = 5 / 20 = 25\%$$, đủ khoảng đệm gấp 4 lần cho các đợt tăng đột biến (burst) mà vẫn giữ CPU DB ở vùng thông lượng tối ưu.
 
-### Khung giải thích: Vì sao pool nhỏ hơn lại chạy nhanh hơn (nên đọc chậm)
-
+### Giải thích: Vì sao pool nhỏ hơn lại chạy nhanh hơn
 1. **Bước 1 — Đếm đúng đại lượng:** Phần lớn thời gian trong một phiên, người dùng đang đọc màn hình chứ không giữ kết nối DB. Đại lượng quyết định kích thước pool là $$L = \lambda W$$, không phải tổng số người đang mở trình duyệt.
 2. **Bước 2 — Giới hạn vật lý nằm ở CPU và đĩa của DB:** Máy chủ 8 lõi tại một thời điểm chỉ thực thi tối đa 8 luồng CPU. Mở 180 kết nối đồng thời không tạo thêm lõi CPU nào — nó chỉ bắt PostgreSQL tốn chu kỳ đổi ngữ cảnh, đẩy cache CPU (L1/L2) bị xóa liên tục và kéo dài $$W$$.
 3. **Bước 3 — Vòng xoáy tích cực khi giữ pool gọn:** Khi xếp hàng ở tầng ứng dụng (pool size $$\approx 16\text{–}20$$), mỗi truy vấn vào DB được phục vụ nhanh gọn trong vài mili-giây ($$W$$ nhỏ), nên hàng đợi xả cực nhanh và độ trễ P99 giảm mạnh.

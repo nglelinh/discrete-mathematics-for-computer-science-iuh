@@ -17,7 +17,7 @@ Chọn 3 sinh viên từ một lớp 30 người: nếu bạn bầu họ vào 3 
 
 Khi sắp lịch thuyết trình, chọn đội tuyển hay sinh chuỗi ký tự, câu hỏi không chỉ là chọn **những phần tử nào**, mà còn là có xét đến **thứ tự** hay không. Nếu thứ tự quan trọng, số khả năng tăng rất nhanh; nếu không, nhiều cách sắp xếp khác nhau sẽ được gộp làm một. Các công thức giai thừa, chỉnh hợp và tổ hợp đều bắt nguồn trực tiếp từ việc phân tích quá trình chọn và sắp xếp đó.
 
-## Bản đồ kiến thức nền: Bốn cột mốc phân biệt Giai thừa, Hoán vị, Chỉnh hợp và Tổ hợp
+## Kiến thức cần nhớ: Bốn cột mốc phân biệt Giai thừa, Hoán vị, Chỉnh hợp và Tổ hợp
 
 1. **Giai thừa ($$n!$$) & Hoán vị toàn bộ ($$P_n = n!$$)**:
    Số cách sắp xếp toàn bộ $$n$$ phần tử phân biệt thành một hàng ngang. Riêng khi xếp thành **vòng tròn** (xoay vòng được xem là trùng nhau), ta cố định 1 phần tử làm mốc nên chỉ còn $$(n - 1)!$$ cách.
@@ -121,7 +121,7 @@ $$P_{\text{vòng}}(n) = (n-1)! = \frac{n!}{n}$$
 
 ![Hoán vị vòng tròn — cố định một người](/discrete-mathematics-for-computer-science-iuh/img/course/circular_permutation.svg)
 
-<p class="textbook-figure-caption" data-figure="7.7b">Cố định một người quanh bàn tròn để loại bỏ các phép xoay tương đương — số cách còn lại là $$(n-1)!$$.</p>
+<p class="textbook-figure-caption" data-figure="7.7b">Cố định một người quanh bàn tròn để loại bỏ các phép xoay tương đương — số cách còn lại là $(n-1)!$.</p>
 
 <div class="textbook-example" markdown="1">
 **Ví dụ 1**: Xếp 5 người A, B, C, D, E ngồi quanh một bàn tròn. Có bao nhiêu cách?
@@ -216,7 +216,7 @@ $$C(n,k) = \binom{n}{k} = \frac{n!}{k!(n-k)!}$$
 
 **Mối quan hệ**: P(n,k) = k! × C(n,k), bởi mỗi tổ hợp gồm $$k$$ phần tử có thể sắp xếp theo $$k!$$ thứ tự khác nhau.
 
-### Khung giải thích (nên đọc chậm): Đối chiếu tay $$P(5, 3)$$, $$C(5, 3)$$ và hoán vị vòng tròn trên cùng một nhóm 5 sinh viên
+### Giải thích: Đối chiếu tay $$P(5, 3)$$, $$C(5, 3)$$ và hoán vị vòng tròn trên cùng một nhóm 5 sinh viên
 
 Xét 5 sinh viên phân biệt `A, B, C, D, E`:
 

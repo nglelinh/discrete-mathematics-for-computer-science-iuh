@@ -43,7 +43,7 @@ $$L(r+s)=L(r)\cup L(s),\quad L(rs)=L(r)L(s),\quad L(r^*)=\bigcup_{k\ge 0}L(r)^k.
 
 </div>
 
-## Bản đồ kiến thức nền: Đại số Biểu thức Chính quy (Regex)
+## Kiến thức cần nhớ: Đại số Biểu thức Chính quy (Regex)
 
 ### 1. Định nghĩa Quy nạp với 3 Phép toán Cơ bản
 - **Nguyên tử cơ sở:** $$\emptyset$$ (ngôn ngữ rỗng — không chứa chuỗi nào), $$\varepsilon$$ (chứa đúng chuỗi rỗng), và từng ký tự $$a \in \Sigma$$.
@@ -57,7 +57,7 @@ $$L(r+s)=L(r)\cup L(s),\quad L(rs)=L(r)L(s),\quad L(r^*)=\bigcup_{k\ge 0}L(r)^k.
 ### 3. Mối quan hệ với Ô-tô-mát
 - **Bản chất:** Biểu thức chính quy là **cách mô tả khai báo (declarative)** cho con người đọc và viết, còn DFA/NFA là **cỗ máy thực thi (operational)** cho máy tính chạy — và Định lý Kleene ở bài sau chứng minh cả hai có sức mạnh **tương đương 100%**!
 
-## Ví dụ tính tay cầm tay chỉ việc: Giải mã & Kiểm thử 2 Biểu thức Chính quy kinh điển
+## Ví dụ tính tay làm từng bước: Giải mã & Kiểm thử 2 Biểu thức Chính quy kinh điển
 
 1. **Ngôn ngữ $$L_1$$: Chuỗi nhị phân chứa ít nhất một cụm `00`:**
    $$
@@ -74,8 +74,7 @@ $$L(r+s)=L(r)\cup L(s),\quad L(rs)=L(r)L(s),\quad L(r^*)=\bigcup_{k\ge 0}L(r)^k.
    - Kiểm tra `011010`: tách thành `(01)(1)(01) + (0)` $$\implies$$ khớp! ✓
    - Kiểm tra `1001`: sau `0` đầu tiên không phải `1` mà lại là `0` $$\implies$$ không thể tách được! ✓
 
-### Khung giải thích: 4 mẹo viết Biểu thức Chính quy gọn và không sót biên (nên đọc chậm)
-
+### Giải thích: 4 mẹo viết Biểu thức Chính quy gọn và không sót biên
 #### Bước 1: Dùng $$(0 + 1)^*$$ làm "ký tự đại diện tùy ý"
 Gặp yêu cầu "bắt đầu bằng...", "kết thúc bằng...", "chứa..." hãy dùng $$(0+1)^*$$ bọc vào các vị trí tự do.
 

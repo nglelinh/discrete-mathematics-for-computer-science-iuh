@@ -14,7 +14,7 @@ excerpt: "Trình bày bốn quy tắc suy luận cốt lõi với lượng từ 
 
 Bốn quy tắc suy diễn vị từ (**UI, UG, EI, EG**) chính là bộ luật kiểm soát việc "mở hộp" và "đóng hộp" biến lượng từ một cách tuyệt đối an toàn.
 
-## Bản đồ kiến thức nền: Bốn quy tắc chuyển đổi giữa Lượng từ và Cá thể
+## Kiến thức cần nhớ: Bốn quy tắc chuyển đổi giữa Lượng từ và Cá thể
 
 1. **Cụ thể hóa Toàn thể (UI — Universal Instantiation)**:
    Từ $$\forall x\, P(x)$$, ta được phép suy ra $$P(c)$$ cho **bất kỳ** phần tử $$c$$ nào trong miền xác định (vì tính chất đúng cho tất cả nên tất nhiên đúng cho $$c$$).
@@ -56,7 +56,7 @@ Các quy tắc suy luận mệnh đề vẫn được sử dụng bình thườn
 
 ![Modus Ponens](/discrete-mathematics-for-computer-science-iuh/img/course/Modus_ponens.png)
 
-<p class="textbook-figure-caption" data-figure="2.11">Modus Ponens — từ $$p \to q$$ và $$p$$ suy ra $$q$$; quy tắc suy luận mệnh đề nền tảng, thường kết hợp với UI trong logic vị từ.</p>
+<p class="textbook-figure-caption" data-figure="2.11">Modus Ponens — từ $p \to q$ và $p$ suy ra $q$; quy tắc suy luận mệnh đề nền tảng, thường kết hợp với UI trong logic vị từ.</p>
 ## Universal Instantiation (UI) — Cụ thể hóa toàn thể
 
 <div class="textbook-definition" markdown="1">
@@ -101,7 +101,7 @@ UI là quy tắc **hợp lệ** (valid): nếu tiền đề đúng thì kết lu
 
 ![Modus Tollens](/discrete-mathematics-for-computer-science-iuh/img/course/Modus_tollens.png)
 
-<p class="textbook-figure-caption" data-figure="2.12">Modus Tollens — từ $$p \to q$$ và $$\neg q$$ suy ra $$\neg p$$; bổ sung cho Modus Ponens trong chuỗi suy luận.</p>
+<p class="textbook-figure-caption" data-figure="2.12">Modus Tollens — từ $p \to q$ và $\neg q$ suy ra $\neg p$; bổ sung cho Modus Ponens trong chuỗi suy luận.</p>
 ## Universal Generalization (UG) — Tổng quát hóa toàn thể
 
 <div class="textbook-definition" markdown="1">
@@ -121,7 +121,7 @@ Lấy $$n\in\mathbb{Z}$$ tùy ý. Vì $$n$$ và $$n+1$$ là hai số nguyên li�
 **Cảnh báo**: Không được dùng UG nếu phần tử đang xét không phải là phần tử tùy ý. Biết "An là sinh viên giỏi" không cho phép suy ra "mọi sinh viên đều giỏi".
 </div>
 
-### Khung giải thích (nên đọc chậm): Bắt quả tang lỗi "dùng lại tên biến trong EI" và sửa thành chứng minh chuẩn
+### Giải thích: Bắt quả tang lỗi "dùng lại tên biến trong EI" và sửa thành chứng minh chuẩn
 
 Tại sao quy tắc **EI** bắt buộc phải chọn tên hằng mới tinh $$c$$? Hãy xem một "chứng minh" giả mạo cực kỳ tinh vi trên miền số nguyên $$\mathbb{Z}$$:
 - Tiền đề 1: $$\exists x\, \text{Chẵn}(x)$$ (Đúng, ví dụ 2).
@@ -246,7 +246,7 @@ Xác định các quy tắc suy luận được dùng trong mỗi bước sau:
 <details>
 <summary>Đáp án</summary>
 
-1. **Universal Instantiation (UI)** (để rút ra $$P(a) \to Q(a)$$) kết hợp với **Modus Ponens** (từ $$P(a) \to Q(a)$$ và $$P(a)$$ suy ra $$Q(a)$$).
+1. **Universal Instantiation (UI)** (để rút ra $P(a) \to Q(a)$) kết hợp với **Modus Ponens** (từ $P(a) \to Q(a)$ và $P(a)$ suy ra $Q(a)$).
 2. **Existential Generalization (EG)**.
 
 </details>
@@ -258,11 +258,11 @@ Cho $$\forall x\,(Student(x) \to HasID(x))$$ và $$\exists x\,Student(x)$$. Ch�
 <details>
 <summary>Đáp án</summary>
 
-1. $$\exists x\,Student(x)$$ (tiền đề)
-2. $$Student(c)$$ (EI với hằng mới $$c$$)
-3. $$Student(c) \to HasID(c)$$ (UI từ tiền đề còn lại)
-4. $$HasID(c)$$ (Modus Ponens từ 2 và 3)
-5. $$\exists x\,HasID(x)$$ (EG từ 4)
+1. $\exists x\,Student(x)$ (tiền đề)
+2. $Student(c)$ (EI với hằng mới $c$)
+3. $Student(c) \to HasID(c)$ (UI từ tiền đề còn lại)
+4. $HasID(c)$ (Modus Ponens từ 2 và 3)
+5. $\exists x\,HasID(x)$ (EG từ 4)
 
 </details>
 
@@ -298,11 +298,11 @@ Ta suy ra $$Mortal(Socrates)$$ bằng UI và Modus Ponens. Hãy áp dụng quy t
 <details>
 <summary>Đáp án</summary>
 
-(a) UI từ (1): $$Student(Lan) \to TakesExam(Lan)$$; Modus Ponens với $$Student(Lan)$$: $$TakesExam(Lan)$$ ("Lan tham gia thi").
+(a) UI từ (1): $Student(Lan) \to TakesExam(Lan)$; Modus Ponens với $Student(Lan)$: $TakesExam(Lan)$ ("Lan tham gia thi").
 
-(b) UI từ (1): $$Bird(Eagle) \to CanFly(Eagle)$$; Modus Ponens với $$Bird(Eagle)$$: $$CanFly(Eagle)$$ ("Đại bàng bay được").
+(b) UI từ (1): $Bird(Eagle) \to CanFly(Eagle)$; Modus Ponens với $Bird(Eagle)$: $CanFly(Eagle)$ ("Đại bàng bay được").
 
-(c) UI từ (1): $$Even(42) \to DivisibleBy2(42)$$; Modus Ponens với $$Even(42)$$: $$DivisibleBy2(42)$$ ("42 chia hết cho 2").
+(c) UI từ (1): $Even(42) \to DivisibleBy2(42)$; Modus Ponens với $Even(42)$: $DivisibleBy2(42)$ ("42 chia hết cho 2").
 
 </details>
 
@@ -317,11 +317,11 @@ Cho $$\exists x\,(Student(x) \land \neg Passed(x))$$.
 <details>
 <summary>Đáp án</summary>
 
-(a) EI cho ta $$Student(c) \land \neg Passed(c)$$, với $$c$$ là hằng số mới chưa từng xuất hiện trong bất kỳ giả thiết hay bước suy luận nào trước đó, để tránh gán nhầm các tính chất của đối tượng khác cho nhân chứng này.
+(a) EI cho ta $Student(c) \land \neg Passed(c)$, với $c$ là hằng số mới chưa từng xuất hiện trong bất kỳ giả thiết hay bước suy luận nào trước đó, để tránh gán nhầm các tính chất của đối tượng khác cho nhân chứng này.
 
-(b) Từ $$Student(c) \land \neg Passed(c)$$, dùng phép giản lược thu được $$Student(c)$$, rồi dùng EG suy ra $$\exists x\,Student(x)$$.
+(b) Từ $Student(c) \land \neg Passed(c)$, dùng phép giản lược thu được $Student(c)$, rồi dùng EG suy ra $\exists x\,Student(x)$.
 
-(c) EG chỉ cho phép suy ra lượng từ tồn tại ($$\exists$$), không suy ra được lượng từ toàn thể ($$\forall$$). Để kết luận $$\forall x\,P(x)$$ cần dùng UG với một phần tử tùy ý, trong khi hằng số $$c$$ sinh ra từ EI chỉ là một nhân chứng cụ thể.
+(c) EG chỉ cho phép suy ra lượng từ tồn tại ($\exists$), không suy ra được lượng từ toàn thể ($\forall$). Để kết luận $\forall x\,P(x)$ cần dùng UG với một phần tử tùy ý, trong khi hằng số $c$ sinh ra từ EI chỉ là một nhân chứng cụ thể.
 
 </details>
 
@@ -336,16 +336,16 @@ Cho $$\forall x\,(P(x) \to Q(x))$$ và $$\forall x\,P(x)$$.
 <summary>Đáp án</summary>
 
 (a) Chứng minh:
-    - Gọi $$c$$ là phần tử tùy ý trong miền xác định.
-    - UI từ $$\forall x\,P(x)$$: $$P(c)$$.
-    - UI từ $$\forall x\,(P(x) \to Q(x))$$: $$P(c) \to Q(c)$$.
-    - Modus Ponens: $$Q(c)$$.
-    - Vì $$c$$ là phần tử tùy ý, áp dụng UG ta được $$\forall x\,Q(x)$$.
+    - Gọi $c$ là phần tử tùy ý trong miền xác định.
+    - UI từ $\forall x\,P(x)$: $P(c)$.
+    - UI từ $\forall x\,(P(x) \to Q(x))$: $P(c) \to Q(c)$.
+    - Modus Ponens: $Q(c)$.
+    - Vì $c$ là phần tử tùy ý, áp dụng UG ta được $\forall x\,Q(x)$.
     Đây là dạng tam đoạn luận (syllogism) trong logic vị từ.
 
-(b) **Không thể.** Từ $$P(a) \to Q(a)$$ (UI) và $$P(a)$$ ta chỉ suy ra được $$Q(a)$$; không được dùng UG vì $$a$$ là hằng số cụ thể chứ không phải phần tử tùy ý.
+(b) **Không thể.** Từ $P(a) \to Q(a)$ (UI) và $P(a)$ ta chỉ suy ra được $Q(a)$; không được dùng UG vì $a$ là hằng số cụ thể chứ không phải phần tử tùy ý.
 
-    Phản ví dụ trên miền $$\mathbb{Z}$$: đặt $$P(x)$$ là "$$x$$ chia hết cho 4", $$Q(x)$$ là "$$x$$ là số chẵn", và $$a = 4$$. Khi đó cả hai tiền đề $$\forall x\,(P(x) \to Q(x))$$ (mọi bội của 4 đều chẵn) và $$P(4)$$ (4 chia hết cho 4) đều đúng, nhưng kết luận $$\forall x\,Q(x)$$ ("mọi số nguyên đều chẵn") là sai vì 3 là số lẻ.
+    Phản ví dụ trên miền $\mathbb{Z}$: đặt $P(x)$ là "$x$ chia hết cho 4", $Q(x)$ là "$x$ là số chẵn", và $a = 4$. Khi đó cả hai tiền đề $\forall x\,(P(x) \to Q(x))$ (mọi bội của 4 đều chẵn) và $P(4)$ (4 chia hết cho 4) đều đúng, nhưng kết luận $\forall x\,Q(x)$ ("mọi số nguyên đều chẵn") là sai vì 3 là số lẻ.
 
 </details>
 
@@ -362,11 +362,11 @@ Kết luận: $$\exists x\,Mortal(x)$$ — Tồn tại người phải chết. H
 <details>
 <summary>Đáp án</summary>
 
-- Bước 1 (UI từ 1): $$Greek(Socrates) \to Human(Socrates)$$
-- Bước 2 (UI từ 2): $$Human(Socrates) \to Mortal(Socrates)$$
-- Bước 3 (Hypothetical Syllogism từ bước 1 và bước 2): $$Greek(Socrates) \to Mortal(Socrates)$$
-- Bước 4 (Modus Ponens từ bước 3 và giả thiết 3): $$Mortal(Socrates)$$
-- Bước 5 (EG từ bước 4): $$\exists x\,Mortal(x)$$
+- Bước 1 (UI từ 1): $Greek(Socrates) \to Human(Socrates)$
+- Bước 2 (UI từ 2): $Human(Socrates) \to Mortal(Socrates)$
+- Bước 3 (Hypothetical Syllogism từ bước 1 và bước 2): $Greek(Socrates) \to Mortal(Socrates)$
+- Bước 4 (Modus Ponens từ bước 3 và giả thiết 3): $Mortal(Socrates)$
+- Bước 5 (EG từ bước 4): $\exists x\,Mortal(x)$
 
 Kết luận: Tồn tại người phải chết (cụ thể là Socrates). Đây là phiên bản logic vị từ của tam đoạn luận kinh điển thời Aristotle.
 
@@ -397,13 +397,13 @@ EG → ∀x (P(x) ∧ Q(x))
 <details>
 <summary>Đáp án</summary>
 
-(a) **Lỗi:** EI chỉ áp dụng được khi lượng từ tồn tại $$\exists$$ nằm ở ngoài cùng, không áp dụng trực tiếp lên $$\forall x \exists y\,P(x, y)$$.
-    Cách đúng: trước hết dùng UI với phần tử tùy ý $$c$$ để thu được $$\exists y\,P(c, y)$$, sau đó mới dùng EI để giới thiệu hằng số mới $$d$$ (có thể phụ thuộc vào $$c$$) sao cho $$P(c, d)$$.
+(a) **Lỗi:** EI chỉ áp dụng được khi lượng từ tồn tại $\exists$ nằm ở ngoài cùng, không áp dụng trực tiếp lên $\forall x \exists y\,P(x, y)$.
+    Cách đúng: trước hết dùng UI với phần tử tùy ý $c$ để thu được $\exists y\,P(c, y)$, sau đó mới dùng EI để giới thiệu hằng số mới $d$ (có thể phụ thuộc vào $c$) sao cho $P(c, d)$.
 
-(b) **Lỗi:** EG chỉ suy ra được lượng từ tồn tại $$\exists$$, không phải $$\forall$$. Từ $$P(a) \land Q(a)$$, EG cho $$\exists x\,(P(x) \land Q(x))$$; muốn có $$\forall x\,(P(x) \land Q(x))$$ thì cần dùng UG với phần tử tùy ý chứ không phải hằng số cụ thể $$a$$.
+(b) **Lỗi:** EG chỉ suy ra được lượng từ tồn tại $\exists$, không phải $\forall$. Từ $P(a) \land Q(a)$, EG cho $\exists x\,(P(x) \land Q(x))$; muốn có $\forall x\,(P(x) \land Q(x))$ thì cần dùng UG với phần tử tùy ý chứ không phải hằng số cụ thể $a$.
 
-(c) **Lỗi:** Hai hằng số sinh ra từ hai lần EI không nhất thiết bằng nhau. Từ $$\exists x\,P(x)$$ ta dùng EI được $$P(c)$$; từ $$\exists x\,Q(x)$$ ta phải dùng một hằng số mới $$d$$ (không được tái sử dụng $$c$$) để có $$Q(d)$$, nên không thể suy ra $$\exists x\,(P(x) \land Q(x))$$.
-    Phản ví dụ trên $$\mathbb{Z}$$: $$P(x)$$ là "$$x$$ là số chẵn", $$Q(x)$$ là "$$x$$ là số lẻ". Cả $$\exists x\,P(x)$$ ($$x = 2$$) và $$\exists x\,Q(x)$$ ($$x = 3$$) đều đúng, nhưng $$\exists x\,(P(x) \land Q(x))$$ sai vì không có số nguyên nào vừa chẵn vừa lẻ.
+(c) **Lỗi:** Hai hằng số sinh ra từ hai lần EI không nhất thiết bằng nhau. Từ $\exists x\,P(x)$ ta dùng EI được $P(c)$; từ $\exists x\,Q(x)$ ta phải dùng một hằng số mới $d$ (không được tái sử dụng $c$) để có $Q(d)$, nên không thể suy ra $\exists x\,(P(x) \land Q(x))$.
+    Phản ví dụ trên $\mathbb{Z}$: $P(x)$ là "$x$ là số chẵn", $Q(x)$ là "$x$ là số lẻ". Cả $\exists x\,P(x)$ ($x = 2$) và $\exists x\,Q(x)$ ($x = 3$) đều đúng, nhưng $\exists x\,(P(x) \land Q(x))$ sai vì không có số nguyên nào vừa chẵn vừa lẻ.
 
 </details>
 

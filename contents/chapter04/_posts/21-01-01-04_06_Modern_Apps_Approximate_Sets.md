@@ -21,7 +21,7 @@ Bài ghi chú ứng dụng song ngữ. Nội dung này **không** thay thế hay
 
 </div>
 
-## Bản đồ kiến thức nền: Ba trụ cột của Cấu trúc Biểu diễn Tập Xấp xỉ Gọn
+## Kiến thức cần nhớ: Ba trụ cột của Cấu trúc Biểu diễn Tập Xấp xỉ Gọn
 
 1. **Hàm đặc trưng $$\mathbf{1}_S$$ & Cận dưới lý thuyết thông tin**:
    Một tập con $$S \subseteq U$$ tương đương với hàm đặc trưng $$\mathbf{1}_S : U \to \{0, 1\}$$. Nếu muốn lưu xấp xỉ $$S$$ với tỷ lệ dương tính giả không quá $$\varepsilon$$, lý thuyết thông tin chứng minh mọi cấu trúc dữ liệu đều cần ít nhất $$\log_2(1/\varepsilon)$$ bit cho mỗi phần tử.
@@ -64,7 +64,7 @@ Bạn nên đọc phần này sau các mục tập hợp bắt buộc để th�
 
 **Câu hỏi.** (1) Binary fuse filter là một tập con của $$U$$ hay là một *biểu diễn nén có mất mát* của tập con đó? (2) Phép toán tập hợp nào vẫn có chi phí thấp khi hệ thống chỉ lưu giữ bộ lọc này?
 
-### Khung giải thích (nên đọc chậm): Tính tay dung lượng RAM cho 10 triệu phần tử ở mức sai số $$\varepsilon \approx 0{,}39\%$$
+### Giải thích: Tính tay dung lượng RAM cho 10 triệu phần tử ở mức sai số $$\varepsilon \approx 0{,}39\%$$
 
 Giả sử hệ thống cần lưu một tập tĩnh gồm $$\lvert S \rvert = 10{,}000{,}000$$ URL độc hại và yêu cầu tỷ lệ dương tính giả $$\varepsilon = 2^{-8} = \frac{1}{256} \approx 0{,}39\%$$ (tương ứng dấu vân tay dài $$f = 8$$ bit):
 

@@ -41,7 +41,7 @@ excerpt: "Đồng dư a ≡ b (mod n), phép toán modulo, phương trình đồ
 
 </div>
 
-## Bản đồ kiến thức nền: Số học Modulo và ba Định lý Trụ cột
+## Kiến thức cần nhớ: Số học Modulo và ba Định lý Trụ cột
 
 ### 1. Vành $$\mathbb{Z}_m$$ & Nghịch đảo Modulo
 - **Bản chất:** $$a \equiv b \pmod m$$ nghĩa là $$m \mid (a - b)$$. Ta cộng, trừ, nhân tự do theo modulo $$m$$, nhưng **phép chia chỉ tồn tại khi $$\gcd(a, m) = 1$$**: khi đó tồn tại duy nhất nghịch đảo $$a^{-1} \bmod m$$ tìm bằng Thuật toán Euclid mở rộng!
@@ -53,7 +53,7 @@ excerpt: "Đồng dư a ≡ b (mod n), phép toán modulo, phương trình đồ
 ### 3. Định lý Số dư Trung Hoa (CRT)
 - **Bản chất:** Nếu $$m_1, \dots, m_k$$ đôi một nguyên tố cùng nhau, hệ đồng dư $$x \equiv a_i \pmod{m_i}$$ luôn có **nghiệm duy nhất** theo modulo $$M = m_1\cdots m_k$$ — cho phép tách phép tính trên số khổng lồ thành nhiều phép tính song song trên các modulo nhỏ!
 
-## Ví dụ tính tay cầm tay chỉ việc
+## Ví dụ tính tay làm từng bước
 
 ### Ví dụ 1: Tìm nghịch đảo $$7^{-1} \pmod{26}$$ bằng Euclid mở rộng
 Ta cần giải $$7x + 26y = 1$$:
@@ -73,8 +73,7 @@ Tìm $$x$$ thỏa: $$x \equiv 2 \pmod 3,\; x \equiv 3 \pmod 5,\; x \equiv 2 \pmo
 - Công thức CRT: $$x \equiv 2(35)(2) + 3(21)(1) + 2(15)(1) = 140 + 63 + 30 = 233 \equiv 23 \pmod{105}$$!
 **Kiểm tra:** $$23 = 7\cdot 3 + 2$$, $$23 = 4\cdot 5 + 3$$, $$23 = 3\cdot 7 + 2$$ — khớp cả 3 phương trình! ✓
 
-### Khung giải thích: 4 bước tính nhanh mọi bài toán Số học Modulo (nên đọc chậm)
-
+### Giải thích: 4 bước tính nhanh mọi bài toán Số học Modulo
 #### Bước 1: Luôn rút gọn số dư trước khi nhân hay lũy thừa
 Không bao giờ tính $$237^{100}$$ rồi mới chia! Thay cơ số bằng số dư nhỏ nhất và dùng **lũy thừa nhị phân (binary exponentiation)** chỉ tốn $$O(\log e)$$ phép nhân!
 

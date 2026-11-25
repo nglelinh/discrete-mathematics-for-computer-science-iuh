@@ -48,7 +48,7 @@ excerpt: "Các thứ tự duyệt preorder, inorder, postorder trên cây nhị 
 
 Video dài khoảng 3 phút: minh họa cách đi quanh cây để đọc đồng thời preorder $$ABDECF$$, inorder $$DBEACF$$ và postorder $$DEBFCA$$; xét cây biểu thức $$(3+4)\times(5-2)$$ với ba dạng tiền tố, trung tố, hậu tố và cách tính biểu thức hậu tố bằng ngăn xếp; trình bày inorder trên BST cho dãy tăng dần, level-order bằng hàng đợi, và cách dựng lại cây từ preorder kết hợp inorder (cũng như lý do preorder kết hợp postorder không đủ xác định duy nhất cây).
 
-## Bản đồ kiến thức nền: Bốn chiến lược Duyệt Cây & Ứng dụng Thực tế
+## Kiến thức cần nhớ: Bốn chiến lược Duyệt Cây & Ứng dụng Thực tế
 
 ### 1. Ba thứ tự Duyệt theo Chiều sâu (DFS — Dùng Đệ quy / Stack)
 - **Preorder (Gốc – Trái – Phải):** Thăm nút cha trước khi xuống con $$\to$$ xuất ký pháp tiền tố (Ba Lan), nhân bản cây.
@@ -61,7 +61,7 @@ Video dài khoảng 3 phút: minh họa cách đi quanh cây để đọc đồn
 ### 3. Khôi phục duy nhất Cây Nhị phân từ Chuỗi Duyệt
 - **Nguyên lý vàng:** Chỉ riêng Preorder (hoặc Postorder) là **chưa đủ** dựng lại cây. Nhưng cặp **(Inorder + Preorder)** hoặc **(Inorder + Postorder)** (với các khóa phân biệt) luôn **xác định duy nhất** cây nhị phân gốc!
 
-## Ví dụ tính tay cầm tay chỉ việc: Duyệt Cây Biểu thức của $$(3 + 4) \times (5 - 2)$$
+## Ví dụ tính tay làm từng bước: Duyệt Cây Biểu thức của $$(3 + 4) \times (5 - 2)$$
 
 Dựng cây biểu thức có gốc là `×`, con trái là `+` (hai lá `3, 4`), con phải là `-` (hai lá `5, 2`):
 1. **Preorder (Gốc–Trái–Phải):** `×  +  3  4  -  5  2` (Ký pháp tiền tố Ba Lan — không cần dấu ngoặc!).
@@ -70,8 +70,7 @@ Dựng cây biểu thức có gốc là `×`, con trái là `+` (hai lá `3, 4`)
    - **Tính thử RPN bằng Stack:** Đẩy `3, 4` $$\to$$ gặp `+` lấy ra tính `3+4 = 7` đẩy vào; đẩy `5, 2` $$\to$$ gặp `-` tính `5-2 = 3` đẩy vào; gặp `×` tính `7 × 3 = 21`! ✓
 4. **Level-order (BFS qua Queue):** `×  +  -  3  4  5  2`.
 
-### Khung giải thích: Quy tắc 4 bước không bao giờ nhầm thứ tự Duyệt Cây (nên đọc chậm)
-
+### Giải thích: Quy tắc 4 bước không bao giờ nhầm thứ tự Duyệt Cây
 #### Bước 1: Nhớ đúng vị trí chữ "Gốc" trong tên tiếng Anh
 **Pre** = gốc đứng *trước* (Gốc–Trái–Phải); **In** = gốc đứng *giữa* (Trái–Gốc–Phải); **Post** = gốc đứng *sau* (Trái–Phải–Gốc). Trái luôn đứng trước Phải!
 

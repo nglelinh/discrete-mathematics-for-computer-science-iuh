@@ -12,9 +12,9 @@ excerpt: "Các biến thể mở rộng và ứng dụng nâng cao của nguyên
 
 Nếu bài trước cho thấy Nguyên lý Dirichlet giải nhanh các câu đố đếm cơ bản, thì bài này sẽ khiến bạn bất ngờ: cùng một ý tưởng giản dị ấy có thể chứng minh những định lý lừng danh bậc nhất của lý thuyết số và tổ hợp — từ **Định lý xấp xỉ Diophantine** (mọi số vô tỷ như $$\pi$$ đều xấp xỉ siêu sát bằng phân số!), **Định lý Erdős–Szekeres** về dãy con đơn điệu, cho tới **Lý thuyết Ramsey** ("hỗn loạn hoàn toàn là điều bất khả thi")!
 
-**Mạch bài học:** Bản đồ kiến thức nền (Dirichlet có trọng số, xấp xỉ Diophantine, Ramsey & Erdős–Szekeres) → Các biến thể mở rộng & ứng dụng lý thuyết số, hình học, tổ hợp → Ví dụ tính tay cầm tay chỉ việc: chứng minh $$R(3,3) = 6$$ (bữa tiệc 6 người) và xấp xỉ $$\sqrt{2}$$ với $$N = 5$$ → Khung giải thích chậm: 3 kỹ thuật chế tạo "chuồng ẩn" → Bài tập.
+**Mạch bài học:** Kiến thức cần nhớ (Dirichlet có trọng số, xấp xỉ Diophantine, Ramsey & Erdős–Szekeres) → Các biến thể mở rộng & ứng dụng lý thuyết số, hình học, tổ hợp → Ví dụ tính tay làm từng bước: chứng minh $$R(3,3) = 6$$ (bữa tiệc 6 người) và xấp xỉ $$\sqrt{2}$$ với $$N = 5$$ → Giải thích: 3 kỹ thuật chế tạo "chuồng ẩn" → Bài tập.
 
-## Bản đồ kiến thức nền: Từ Chuồng Chim cơ bản sang Toán học Chuyên sâu
+## Kiến thức cần nhớ: Từ Chuồng Chim cơ bản sang Toán học Chuyên sâu
 
 ### 1. Nguyên lý Dirichlet có trọng số (Trung bình cộng)
 Nếu tổng trọng số của $$k$$ đối tượng là $$S$$, thì tồn tại ít nhất một đối tượng có trọng số $$\ge S/k$$ và ít nhất một đối tượng $$\le S/k$$. Mở rộng liên tục này cho phép làm việc với diện tích, độ dài, xác suất và thời gian tải CPU!
@@ -217,7 +217,7 @@ def network_congestion_analysis(packets, links, link_capacity):
 ```
 
 
-## Ví dụ tính tay cầm tay chỉ việc: Chứng minh bữa tiệc 6 người $$R(3,3) = 6$$ & Xấp xỉ $$\sqrt{2}$$
+## Ví dụ tính tay làm từng bước: Chứng minh bữa tiệc 6 người $$R(3,3) = 6$$ & Xấp xỉ $$\sqrt{2}$$
 
 1. **Chứng minh $$R(3, 3) = 6$$ trong 3 dòng:**
    - Chọn 1 người bất kỳ $$A$$ trong 6 người. $$A$$ có **5 mối quan hệ** ("5 chim") với 5 người còn lại, mỗi quan hệ thuộc 1 trong **2 loại**: *Quen* hoặc *Lạ* ("2 chuồng").
@@ -226,8 +226,7 @@ def network_congestion_analysis(packets, links, link_capacity):
 2. **Xấp xỉ $$\sqrt{2} \approx 1.4142$$ với $$N = 5$$ chuồng:**
    Xét 6 phần lẻ $$\{k\sqrt{2}\}$$ ($$k = 0..5$$): $$0.000,\; 0.414,\; 0.828,\; 0.243,\; 0.657,\; 0.071$$. Hai giá trị $$k = 0$$ ($$0.000$$) và $$k = 5$$ ($$0.071$$) cùng rơi vào chuồng $$[0, 0.2)$$, nên $$\vert 5\sqrt{2} - 7 \vert = 0.071 < 0.2 \implies \left\vert \sqrt{2} - \frac{7}{5} \right\vert = 0.0142 < \frac{1}{5^2} = 0.04$$!
 
-### Khung giải thích: 3 kỹ thuật "chế tạo chuồng ẩn" cho bài toán nâng cao (nên đọc chậm)
-
+### Giải thích: 3 kỹ thuật "chế tạo chuồng ẩn" cho bài toán nâng cao
 #### Bước 1: Dùng hiệu của hai phần tử cùng chuồng (kỹ thuật số dư & phần lẻ)
 Khi cần tìm một tổng chia hết cho $$n$$ hoặc một phân số gần $$\alpha$$, hãy đặt "chim" là **các tổng tiền tố** $$S_1, S_2, \ldots, S_n$$ hoặc **các phần lẻ** $$\{k\alpha\}$$. Hai con chim chung chuồng lập tức cho hiệu $$S_j - S_i$$ thỏa chính xác điều kiện!
 

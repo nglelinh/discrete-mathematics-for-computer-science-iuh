@@ -12,9 +12,9 @@ excerpt: "Bài đọc mở rộng về ứng dụng của phép đếm: từ bà
 
 Mùa hè năm 1654, một quý tộc mê bài bạc người Pháp tên Chevalier de Méré gửi thư hỏi Blaise Pascal một thắc mắc tưởng như vụn vặt: *nếu ván bài bị gián đoạn giữa chừng, nên chia tiền cược thế nào cho công bằng?* Cuộc trao đổi thư từ giữa Pascal và Pierre de Fermat đã khai sinh ra lý thuyết xác suất — và gần 400 năm sau, chính tư duy đếm không gian khả năng ấy lại là bức tường phòng thủ đầu tiên bảo vệ mật khẩu ngân hàng, mã phiên đăng nhập (`session_id`) và thuật toán Big-O của chúng ta!
 
-**Mạch bài học:** Bản đồ kiến thức nền (không gian mẫu rời rạc, entropy mật khẩu theo bit, phân tích chi phí thuật toán) → Pascal–Fermat 1654 → An ninh mạng (mật khẩu, PIN, Session ID, CSRF) & Big-O → Ví dụ tính tay cầm tay chỉ việc: tính entropy (bit) và thời gian brute-force của mật khẩu 8 ký tự thường vs. passphrase 4 từ → Khung giải thích chậm: 3 bước chuyển bài toán an ninh thành phép đếm không gian khóa → Bài tập.
+**Mạch bài học:** Kiến thức cần nhớ (không gian mẫu rời rạc, entropy mật khẩu theo bit, phân tích chi phí thuật toán) → Pascal–Fermat 1654 → An ninh mạng (mật khẩu, PIN, Session ID, CSRF) & Big-O → Ví dụ tính tay làm từng bước: tính entropy (bit) và thời gian brute-force của mật khẩu 8 ký tự thường vs. passphrase 4 từ → Giải thích: 3 bước chuyển bài toán an ninh thành phép đếm không gian khóa → Bài tập.
 
-## Bản đồ kiến thức nền: Phép đếm kết nối Xác suất, Mật mã học và Thuật toán như thế nào?
+## Kiến thức cần nhớ: Phép đếm kết nối Xác suất, Mật mã học và Thuật toán như thế nào?
 
 ### 1. Không gian khả năng & Xác suất cổ điển
 Khi mọi kết quả sơ cấp đồng khả năng, xác suất là tỷ số của hai phép đếm: $$P(E) = \vert E\vert / \vert\Omega\vert$$. Trực giác con người rất dễ đánh giá sai tích lũy xác suất — chỉ có phép đếm chính xác mới trả lời đúng.
@@ -240,7 +240,7 @@ Vì vậy, phép đếm chính là điểm khởi đầu của kỹ thuật tố
 <p class="textbook-figure-caption" data-figure="7.28">Đếm số thao tác là bước đầu giúp thấy rõ vì sao tốc độ của hai thuật toán có thể chênh lệch hoàn toàn khi dữ liệu lớn lên.</p>
 ![Các lớp độ phức tạp tính toán](/discrete-mathematics-for-computer-science-iuh/img/course/Complexity_classes.svg)
 
-<p class="textbook-figure-caption" data-figure="7.29">Big-O phản ánh hàm tăng trưởng chính — sự khác biệt giữa $$n \log n$$ và $$n^2$$ quyết định khả năng mở rộng của hệ thống.</p>
+<p class="textbook-figure-caption" data-figure="7.29">Big-O phản ánh hàm tăng trưởng chính — sự khác biệt giữa $n \log n$ và $n^2$ quyết định khả năng mở rộng của hệ thống.</p>
 ---
 
 ## Phần 4: Va chạm hàm băm và nghịch lý sinh nhật
@@ -263,7 +263,7 @@ Trong mật mã học, **tấn công sinh nhật (birthday attack)** khai thác 
 
 ![Birthday paradox — va chạm sớm hơn trực giác](/discrete-mathematics-for-computer-science-iuh/img/course/Birthdaymatch.svg)
 
-<p class="textbook-figure-caption" data-figure="7.30">Nghịch lý sinh nhật giải thích vì sao va chạm băm xảy ra sớm hơn trực giác — chỉ cần khoảng $$\sqrt{N}$$ phần tử trong không gian $$N$$ ngăn chứa.</p>
+<p class="textbook-figure-caption" data-figure="7.30">Nghịch lý sinh nhật giải thích vì sao va chạm băm xảy ra sớm hơn trực giác — chỉ cần khoảng $\sqrt{N}$ phần tử trong không gian $N$ ngăn chứa.</p>
 ---
 
 ## Phần 5: Kiểm thử tổ hợp và covering arrays
@@ -311,7 +311,7 @@ Từ bài toán chia tiền cược của Pascal và Fermat đến bẻ khóa m�
 ---
 
 
-## Ví dụ tính tay cầm tay chỉ việc: So sánh mật khẩu 8 chữ thường vs. Passphrase 4 từ (XKCD)
+## Ví dụ tính tay làm từng bước: So sánh mật khẩu 8 chữ thường vs. Passphrase 4 từ (XKCD)
 
 Giả sử kẻ tấn công dùng dàn GPU thử được $$10^{10}$$ mật khẩu mỗi giây (10 tỷ lần/giây):
 1. **Mật khẩu ngẫu nhiên 8 chữ cái thường** ($$N = 26,\; L = 8$$):
@@ -322,8 +322,7 @@ Giả sử kẻ tấn công dùng dàn GPU thử được $$10^{10}$$ mật kh�
    - Kích thước không gian khóa: $$(2^{11})^4 = 2^{44} \approx 1.76 \times 10^{13}$$ tổ hợp.
    - Entropy: $$H = 4 \times 11 = \mathbf{44\text{ bit}}$$ (tăng lên 5 từ đạt $$55\text{ bit}$$, tức hơn **57 ngày** ở tốc độ 10 tỷ/giây — và nếu băm chậm bằng Argon2 ở $$10^4$$ lần/giây thì mất tới **57 triệu năm**!).
 
-### Khung giải thích: 3 bước kiểm định độ an toàn của một mã bí mật bằng phép đếm (nên đọc chậm)
-
+### Giải thích: 3 bước kiểm định độ an toàn của một mã bí mật bằng phép đếm
 #### Bước 1: Tính không gian khóa THỰC TẾ, không phải lý thuyết
 Một mật khẩu 8 ký tự có chữ hoa/thường/số/ký tự đặc biệt có không gian lý thuyết $$94^8 \approx 6\times 10^{15}$$, nhưng nếu người dùng chọn theo mẫu `Ten + NamSinh + !`, không gian thực tế tụt xuống chỉ còn vài triệu — kẻ tấn công dùng từ điển phá trong chưa đầy 1 giây!
 
@@ -350,7 +349,7 @@ Một mật khẩu dài 8 ký tự, mỗi ký tự là chữ cái thường ho�
 <details>
 <summary>Đáp án</summary>
 
-$$36^8 \approx 2.8 \times 10^{12}$$ mật khẩu.
+$36^8 \approx 2.8 \times 10^{12}$ mật khẩu.
 
 </details>
 
@@ -361,7 +360,7 @@ Với 23 người, xác suất có ít nhất 2 người cùng sinh nhật vào 
 <details>
 <summary>Đáp án</summary>
 
-Vì số cặp người cần so sánh tăng theo $$\binom{n}{2} = \frac{n(n-1)}{2}$$ chứ không tăng tuyến tính theo $$n$$. Dùng công thức xấp xỉ $$1 - e^{-n^2/(2d)}$$ với $$d=365$$ và $$n=23$$, ta thu được xác suất xấp xỉ $$0.5$$.
+Vì số cặp người cần so sánh tăng theo $\binom{n}{2} = \frac{n(n-1)}{2}$ chứ không tăng tuyến tính theo $n$. Dùng công thức xấp xỉ $1 - e^{-n^2/(2d)}$ với $d=365$ và $n=23$, ta thu được xác suất xấp xỉ $0.5$.
 
 </details>
 
@@ -372,7 +371,7 @@ Có 5 tính năng, mỗi tính năng có 2 lựa chọn (bật/tắt). Có bao n
 <details>
 <summary>Đáp án</summary>
 
-Số cặp tính năng là $$\binom{5}{2} = 10$$. Mỗi cặp có $$2 \times 2 = 4$$ tổ hợp giá trị, nên tổng cộng có $$10 \times 4 = 40$$ cặp tổ hợp cần bao phủ (nếu kiểm thử riêng lẻ từng cặp cần 40 ca; còn khi dùng covering array, một ca kiểm thử phủ được nhiều cặp cùng lúc nên số ca thực tế nhỏ hơn nhiều).
+Số cặp tính năng là $\binom{5}{2} = 10$. Mỗi cặp có $2 \times 2 = 4$ tổ hợp giá trị, nên tổng cộng có $10 \times 4 = 40$ cặp tổ hợp cần bao phủ (nếu kiểm thử riêng lẻ từng cặp cần 40 ca; còn khi dùng covering array, một ca kiểm thử phủ được nhiều cặp cùng lúc nên số ca thực tế nhỏ hơn nhiều).
 
 </details>
 
@@ -383,7 +382,7 @@ So sánh entropy (tính theo bit) của mật khẩu dài 8 ký tự trong hai t
 <details>
 <summary>Đáp án</summary>
 
-(a) $$8 \log_2 36 \approx 41.4$$ bit. (b) $$8 \log_2 77 \approx 50.1$$ bit. Chênh lệch khoảng $$8.8$$ bit, tương đương không gian khóa lớn hơn khoảng $$2^{8.8} \approx 438$$ lần ($$(77/36)^8 \approx 438$$).
+(a) $8 \log_2 36 \approx 41.4$ bit. (b) $8 \log_2 77 \approx 50.1$ bit. Chênh lệch khoảng $8.8$ bit, tương đương không gian khóa lớn hơn khoảng $2^{8.8} \approx 438$ lần ($(77/36)^8 \approx 438$).
 
 </details>
 
@@ -394,7 +393,7 @@ Một hệ thống dùng Session ID ngẫu nhiên dài 64-bit. Khoảng bao nhi�
 <details>
 <summary>Đáp án</summary>
 
-Ngưỡng sinh nhật xấp xỉ $$\sqrt{2^{64}} = 2^{32} \approx 4 \times 10^9$$ phiên.
+Ngưỡng sinh nhật xấp xỉ $\sqrt{2^{64}} = 2^{32} \approx 4 \times 10^9$ phiên.
 
 </details>
 
@@ -405,7 +404,7 @@ Một CSRF token gồm 6 chữ số ($$N = 10^6$$). Khi có 500 biểu mẫu ho�
 <details>
 <summary>Đáp án</summary>
 
-$$P \approx \binom{500}{2} / 10^6 = 124{,}750 / 10^6 \approx 0.12$$ (12%) — mức rủi ro quá cao đối với hệ thống vận hành thực tế.
+$P \approx \binom{500}{2} / 10^6 = 124{,}750 / 10^6 \approx 0.12$ (12%) — mức rủi ro quá cao đối với hệ thống vận hành thực tế.
 
 </details>
 
@@ -416,7 +415,7 @@ Mã PIN gồm 6 chữ số ($$10^6$$ khả năng). Nếu không khóa tài kho�
 <details>
 <summary>Đáp án</summary>
 
-$$T \approx \dfrac{10^6/2}{3.3 \times 10^3} \approx 150$$ giây $$\approx$$ **2,5 phút** cho một nửa không gian (và khoảng **5 phút** để duyệt toàn bộ $$10^6$$ khả năng). Trong thực tế, ATM khóa thẻ sau vài lần nhập sai.
+$T \approx \dfrac{10^6/2}{3.3 \times 10^3} \approx 150$ giây $\approx$ **2,5 phút** cho một nửa không gian (và khoảng **5 phút** để duyệt toàn bộ $10^6$ khả năng). Trong thực tế, ATM khóa thẻ sau vài lần nhập sai.
 
 </details>
 
@@ -427,7 +426,7 @@ Một mã xác nhận email gồm 6 ký tự base36. Tính kích thước không
 <details>
 <summary>Đáp án</summary>
 
-$$36^6 = 2{,}176{,}782{,}336 \approx 2.2 \times 10^9$$; $$H \approx 6 \log_2 36 \approx 31$$ bit. Tỷ lệ $$36^6 / 10^6 \approx 2{,}177$$ — lớn hơn mã PIN 6 số gần **2.200 lần**.
+$36^6 = 2{,}176{,}782{,}336 \approx 2.2 \times 10^9$; $H \approx 6 \log_2 36 \approx 31$ bit. Tỷ lệ $36^6 / 10^6 \approx 2{,}177$ — lớn hơn mã PIN 6 số gần **2.200 lần**.
 
 </details>
 

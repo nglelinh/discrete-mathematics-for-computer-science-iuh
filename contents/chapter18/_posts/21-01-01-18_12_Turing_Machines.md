@@ -23,7 +23,7 @@ excerpt: "Định nghĩa hình thức máy Turing bộ 7, cấu hình và bướ
 
 Năm 1936, khi máy tính điện tử còn chưa ra đời, Alan Turing ngồi tự hỏi: *"Một người tính toán cầm bút chì và cuốn vở kẻ ô có thể làm được những phép tính nào?"* Để trả lời câu hỏi đó, ông rút gọn toàn bộ hành động tính toán của con người thành một thiết bị cực kỳ tối giản: một cuộn băng giấy dài vô hạn chia thành từng ô, một đầu đọc/ghi chỉ di chuyển từng ô sang trái hoặc phải, và một bảng quy tắc hữu hạn. Điều kỳ diệu là mô hình tưởng chừng thô sơ ấy lại mạnh ngang ngửa với mọi siêu máy tính hiện đại ngày nay.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Máy Turing
+## Kiến thức cần nhớ: Ba trụ cột của Máy Turing
 
 1. **Bộ nhớ đọc/ghi không giới hạn (Băng vô hạn)**:
    Khác với DFA (chỉ nhớ trạng thái hữu hạn) hay PDA (chỉ chạm được đỉnh ngăn xếp LIFO), máy Turing có thể đi tới đi lui tùy ý trên băng, ghi đè kết quả trung gian và dùng chính băng làm bộ nhớ nháp không giới hạn.
@@ -75,7 +75,7 @@ Chạy thử máy Turing từng bước để xem quá trình đọc ký hiệu,
 </div>
 <script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
 
-### Khung giải thích (nên đọc chậm): Chạy tay máy Turing cộng 1 vào số nhị phân `1011`
+### Giải thích: Chạy tay máy Turing cộng 1 vào số nhị phân `1011`
 
 Để thấy máy Turing thực sự "tính toán" ra sao mà không cần CPU phức tạp, ta thiết kế máy cộng 1 vào số nhị phân (đầu đọc bắt đầu ở bit đầu tiên bên trái):
 - **Trạng thái $$q_{\text{right}}$$**: Đi sang phải (`R`) qua mọi ký tự `0`, `1` cho đến khi gặp ô trống $$\sqcup$$, thì quay sang trái (`L`) và chuyển sang $$q_{\text{carry}}$$.

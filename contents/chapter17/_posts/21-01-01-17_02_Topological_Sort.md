@@ -40,7 +40,7 @@ Trong một hệ thống biên dịch (build system), mô-đun $$B$$ chỉ đư�
 
 </div>
 
-## Bản đồ kiến thức nền: DAG và Hai Thuật toán Sắp xếp Topo Kinh điển
+## Kiến thức cần nhớ: DAG và Hai Thuật toán Sắp xếp Topo Kinh điển
 
 ### 1. Điều kiện Cần và Đủ để tồn tại Sắp xếp Topo
 - **Định lý cốt lõi:** Một đồ thị có hướng $$G$$ có thứ tự sắp xếp topo (mọi cạnh $$u \to v$$ đều có $$u$$ đứng trước $$v$$) **khi và chỉ khi $$G$$ là một DAG** (không chứa bất kỳ chu trình có hướng nào!).
@@ -52,7 +52,7 @@ Trong một hệ thống biên dịch (build system), mô-đun $$B$$ chỉ đư�
 ### 3. Đường găng (Critical Path) trên DAG
 - **Bản chất:** Sau khi sắp xếp topo, ta tìm được **đường đi ngắn nhất VÀ đường đi dài nhất** trên DAG trong thời gian tuyến tính $$O(V + E)$$ (kể cả khi có trọng số âm!) chỉ bằng một vòng lặp quy hoạch động duy nhất!
 
-## Ví dụ tính tay cầm tay chỉ việc: Chạy Thuật toán Kahn cho Lộ trình 5 Môn học
+## Ví dụ tính tay làm từng bước: Chạy Thuật toán Kahn cho Lộ trình 5 Môn học
 
 Cho 5 môn với các cạnh tiên quyết:
 `Toán RR → CTDL`, `Lập trình → CTDL`, `CTDL → Thuật toán`, `CTDL → Hệ điều hành`.
@@ -67,8 +67,7 @@ Cho 5 môn với các cạnh tiên quyết:
    `Toán RR → Lập trình → CTDL → Thuật toán → Hệ điều hành`!
    *(Chú ý: thứ tự topo **không nhất thiết duy nhất** — đổi `Lập trình` lên trước `Toán RR` vẫn hoàn toàn hợp lệ!)*
 
-### Khung giải thích: 4 bước dùng Sắp xếp Topo giải bài toán Phụ thuộc và Quy hoạch động (nên đọc chậm)
-
+### Giải thích: 4 bước dùng Sắp xếp Topo giải bài toán Phụ thuộc và Quy hoạch động
 #### Bước 1: Vẽ đúng chiều mũi tên phụ thuộc
 Quy ước nhất quán: nếu $$A$$ phải làm **trước** $$B$$ thì vẽ cạnh $$A \to B$$ ($$B$$ phụ thuộc $$A$$). Vẽ ngược chiều sẽ cho thứ tự đảo ngược!
 

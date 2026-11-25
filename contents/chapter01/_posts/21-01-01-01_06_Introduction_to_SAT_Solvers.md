@@ -12,7 +12,7 @@ excerpt: "Giới thiệu bài toán thỏa mãn Boolean (SAT), vai trò của d�
 
 Trên lý thuyết độ phức tạp tính toán, bài toán **Thỏa mãn Boolean (SAT)** là "ông tổ" của lớp bài toán **NP-đầy đủ** (Định lý Cook–Levin, 1971): trong trường hợp xấu nhất không có thuật toán đa thức nào được biết để giải nó. Thế nhưng trong thực tế kỹ thuật ngày nay, các bộ giải **SAT Solver hiện đại** (MiniSat, Kissat, CaDiCaL, Z3) giải gọn những công thức có **hàng trăm nghìn biến và hàng triệu mệnh đề** chỉ trong vài giây—từ giải xung đột gói phần mềm (`apt`, `cargo`, `uv`), lập lịch bay cho đến kiểm chứng chip Intel/AMD!
 
-## Bản đồ kiến thức nền: Bốn trụ cột biến bài toán NP-đầy đủ thành công cụ thực chiến
+## Kiến thức cần nhớ: Bốn trụ cột biến bài toán NP-đầy đủ thành công cụ thực chiến
 
 1. **Định nghĩa SAT & Định dạng chuẩn CNF (DIMACS)**:
    SAT hỏi: *Có tồn tại phép gán `True`/`False` cho các biến sao cho toàn bộ công thức CNF đều Đúng không?* Nếu có, trả về **SAT** kèm nghiệm (model); nếu không tồn tại phép gán nào, trả về **UNSAT** kèm chứng minh bác bỏ.
@@ -153,7 +153,7 @@ def check_clause(clause, assignment):
     return False  # clause bị vi phạm
 ```
 
-### Khung giải thích (nên đọc chậm): Chạy tay thuật toán DPLL + Unit Propagation trên công thức 3 biến
+### Giải thích: Chạy tay thuật toán DPLL + Unit Propagation trên công thức 3 biến
 
 Xét công thức CNF gồm 4 mệnh đề trên 3 biến $$(x_1, x_2, x_3)$$:
 $$F = \underbrace{(x_1 \lor x_2)}_{C_1} \;\land\; \underbrace{(\neg x_1 \lor x_3)}_{C_2} \;\land\; \underbrace{(\neg x_2 \lor \neg x_3)}_{C_3} \;\land\; \underbrace{(\neg x_1 \lor \neg x_3)}_{C_4}.$$
@@ -303,13 +303,13 @@ Một cửa hàng có 3 loại đồ uống: Cà phê (C), Trà (T), Nước ng�
 <details>
 <summary>Đáp án</summary>
 
-(a) Ký hiệu $$c$$: "chọn Cà phê", $$t$$: "chọn Trà", $$n$$: "chọn Nước ngọt".
-    - "Ít nhất một loại": $$c \lor t \lor n$$.
-    - "Cà phê → không Nước ngọt": $$c \to \neg n \equiv \neg c \lor \neg n$$.
-    - "Trà hoặc Nước ngọt": $$t \lor n$$.
+(a) Ký hiệu $c$: "chọn Cà phê", $t$: "chọn Trà", $n$: "chọn Nước ngọt".
+    - "Ít nhất một loại": $c \lor t \lor n$.
+    - "Cà phê → không Nước ngọt": $c \to \neg n \equiv \neg c \lor \neg n$.
+    - "Trà hoặc Nước ngọt": $t \lor n$.
 
 (b) Cả ba ràng buộc đều đã là mệnh đề con tuyển các literal, nên CNF là:
-    $$(c \lor t \lor n) \land (\neg c \lor \neg n) \land (t \lor n)$$.
+    $(c \lor t \lor n) \land (\neg c \lor \neg n) \land (t \lor n)$.
 
 (c) Liệt kê tất cả 8 phép gán và kiểm tra từng trường hợp:
 
@@ -343,25 +343,25 @@ Ba người A, B, C cần xếp lịch trực; mỗi người trực đúng mộ
 <summary>Đáp án</summary>
 
 (a) Đặt biến:
-    - $$A_s$$: "A trực sáng", $$A_c$$: "A trực chiều".
-    - $$B_s$$: "B trực sáng", $$B_c$$: "B trực chiều".
-    - $$C_s$$: "C trực sáng", $$C_c$$: "C trực chiều".
+    - $A_s$: "A trực sáng", $A_c$: "A trực chiều".
+    - $B_s$: "B trực sáng", $B_c$: "B trực chiều".
+    - $C_s$: "C trực sáng", $C_c$: "C trực chiều".
 
     Ràng buộc:
     1. Mỗi người trực đúng một buổi:
-       $$(A_s \oplus A_c) \land (B_s \oplus B_c) \land (C_s \oplus C_c)$$.
-    2. Mỗi buổi có đúng một người trực (ít nhất một người và không quá một người; lưu ý không dùng $$A_s \oplus B_s \oplus C_s$$ vì XOR 3 biến vẫn đúng khi cả ba biến cùng đúng):
-       - Buổi sáng: $$(A_s \lor B_s \lor C_s) \land (\neg A_s \lor \neg B_s) \land (\neg A_s \lor \neg C_s) \land (\neg B_s \lor \neg C_s)$$.
-       - Buổi chiều: $$(A_c \lor B_c \lor C_c) \land (\neg A_c \lor \neg B_c) \land (\neg A_c \lor \neg C_c) \land (\neg B_c \lor \neg C_c)$$.
-    3. A không trực sáng: $$\neg A_s$$.
-    4. Nếu B trực sáng thì C trực chiều: $$B_s \to C_c \equiv \neg B_s \lor C_c$$.
+       $(A_s \oplus A_c) \land (B_s \oplus B_c) \land (C_s \oplus C_c)$.
+    2. Mỗi buổi có đúng một người trực (ít nhất một người và không quá một người; lưu ý không dùng $A_s \oplus B_s \oplus C_s$ vì XOR 3 biến vẫn đúng khi cả ba biến cùng đúng):
+       - Buổi sáng: $(A_s \lor B_s \lor C_s) \land (\neg A_s \lor \neg B_s) \land (\neg A_s \lor \neg C_s) \land (\neg B_s \lor \neg C_s)$.
+       - Buổi chiều: $(A_c \lor B_c \lor C_c) \land (\neg A_c \lor \neg B_c) \land (\neg A_c \lor \neg C_c) \land (\neg B_c \lor \neg C_c)$.
+    3. A không trực sáng: $\neg A_s$.
+    4. Nếu B trực sáng thì C trực chiều: $B_s \to C_c \equiv \neg B_s \lor C_c$.
 
 (b) Chuyển sang CNF:
-    - Từ $$A_s \oplus A_c$$: $$(A_s \lor A_c) \land (\neg A_s \lor \neg A_c)$$ (tương tự cho B và C).
+    - Từ $A_s \oplus A_c$: $(A_s \lor A_c) \land (\neg A_s \lor \neg A_c)$ (tương tự cho B và C).
     - Ràng buộc "mỗi buổi có đúng một người" ở trên đã ở sẵn dạng CNF cho cả buổi sáng và buổi chiều.
-    - Thêm hai clause $$\neg A_s$$ và $$(\neg B_s \lor C_c)$$.
+    - Thêm hai clause $\neg A_s$ và $(\neg B_s \lor C_c)$.
 
-(c) Vì $$\neg A_s$$ đúng nên $$A_s = F$$; từ $$A_s \oplus A_c$$ suy ra $$A_c = T$$. Vì buổi chiều đã có A nên $$B_c = F$$ và $$C_c = F$$. Khi đó từ ràng buộc mỗi người trực một buổi, suy ra $$B_s = T$$ và $$C_s = T$$. Buổi sáng khi đó có 2 người trực (B và C), vi phạm ràng buộc mỗi buổi chỉ có đúng một người. Vậy **không có lịch hợp lệ** (UNSAT).
+(c) Vì $\neg A_s$ đúng nên $A_s = F$; từ $A_s \oplus A_c$ suy ra $A_c = T$. Vì buổi chiều đã có A nên $B_c = F$ và $C_c = F$. Khi đó từ ràng buộc mỗi người trực một buổi, suy ra $B_s = T$ và $C_s = T$. Buổi sáng khi đó có 2 người trực (B và C), vi phạm ràng buộc mỗi buổi chỉ có đúng một người. Vậy **không có lịch hợp lệ** (UNSAT).
 
 </details>
 
@@ -380,24 +380,24 @@ Mô phỏng thuật toán DPLL từng bước:
 <details>
 <summary>Đáp án</summary>
 
-(a) Chọn $$p$$ để phân nhánh.
+(a) Chọn $p$ để phân nhánh.
 
-**Nhánh $$p = T$$**:
-- Clause 1: $$(T \lor q) = T$$ (đã thỏa mãn, loại bỏ).
-- Clause 2: $$(\neg T \lor r) = (F \lor r) = r$$ → mệnh đề đơn vị, suy ra $$r = T$$.
-- Thay $$r = T$$ vào hai clause còn lại:
-  - Clause 3: $$(\neg q \lor \neg T) = \neg q$$ → suy ra $$q = F$$.
-  - Clause 4: $$(q \lor \neg T) = q$$ → suy ra $$q = T$$.
-- Xung đột: $$q$$ vừa phải là $$F$$ vừa phải là $$T$$ → nhánh $$p = T$$ gặp **conflict**.
+**Nhánh $p = T$**:
+- Clause 1: $(T \lor q) = T$ (đã thỏa mãn, loại bỏ).
+- Clause 2: $(\neg T \lor r) = (F \lor r) = r$ → mệnh đề đơn vị, suy ra $r = T$.
+- Thay $r = T$ vào hai clause còn lại:
+  - Clause 3: $(\neg q \lor \neg T) = \neg q$ → suy ra $q = F$.
+  - Clause 4: $(q \lor \neg T) = q$ → suy ra $q = T$.
+- Xung đột: $q$ vừa phải là $F$ vừa phải là $T$ → nhánh $p = T$ gặp **conflict**.
 
-**Nhánh $$p = F$$**:
-- Clause 1: $$(F \lor q) = q$$ → mệnh đề đơn vị, suy ra $$q = T$$.
-- Clause 2: $$(\neg F \lor r) = T$$ (loại bỏ).
-- Clause 3: $$(\neg T \lor \neg r) = \neg r$$ → mệnh đề đơn vị, suy ra $$r = F$$.
-- Clause 4: $$(T \lor \neg F) = T$$ (loại bỏ).
+**Nhánh $p = F$**:
+- Clause 1: $(F \lor q) = q$ → mệnh đề đơn vị, suy ra $q = T$.
+- Clause 2: $(\neg F \lor r) = T$ (loại bỏ).
+- Clause 3: $(\neg T \lor \neg r) = \neg r$ → mệnh đề đơn vị, suy ra $r = F$.
+- Clause 4: $(T \lor \neg F) = T$ (loại bỏ).
 - Không còn clause nào chưa thỏa mãn → **SAT**.
 
-Nghiệm thu được: $$p = F, q = T, r = F$$.
+Nghiệm thu được: $p = F, q = T, r = F$.
 
 </details>
 
@@ -417,37 +417,37 @@ Xét bàn cờ 3×3, cần đặt 3 quân xe (rook) sao cho không quân nào ă
 <summary>Đáp án</summary>
 
 (a) Mỗi hàng có ít nhất một quân:
-    - Hàng 1: $$x_{11} \lor x_{12} \lor x_{13}$$
-    - Hàng 2: $$x_{21} \lor x_{22} \lor x_{23}$$
-    - Hàng 3: $$x_{31} \lor x_{32} \lor x_{33}$$
+    - Hàng 1: $x_{11} \lor x_{12} \lor x_{13}$
+    - Hàng 2: $x_{21} \lor x_{22} \lor x_{23}$
+    - Hàng 3: $x_{31} \lor x_{32} \lor x_{33}$
 
 (b) Mỗi hàng có không quá một quân (với mỗi cặp cột khác nhau):
-    - Hàng 1: $$(\neg x_{11} \lor \neg x_{12}) \land (\neg x_{11} \lor \neg x_{13}) \land (\neg x_{12} \lor \neg x_{13})$$
-    - Hàng 2: $$(\neg x_{21} \lor \neg x_{22}) \land (\neg x_{21} \lor \neg x_{23}) \land (\neg x_{22} \lor \neg x_{23})$$
-    - Hàng 3: $$(\neg x_{31} \lor \neg x_{32}) \land (\neg x_{31} \lor \neg x_{33}) \land (\neg x_{32} \lor \neg x_{33})$$
+    - Hàng 1: $(\neg x_{11} \lor \neg x_{12}) \land (\neg x_{11} \lor \neg x_{13}) \land (\neg x_{12} \lor \neg x_{13})$
+    - Hàng 2: $(\neg x_{21} \lor \neg x_{22}) \land (\neg x_{21} \lor \neg x_{23}) \land (\neg x_{22} \lor \neg x_{23})$
+    - Hàng 3: $(\neg x_{31} \lor \neg x_{32}) \land (\neg x_{31} \lor \neg x_{33}) \land (\neg x_{32} \lor \neg x_{33})$
 
 (c) Mỗi cột có ít nhất một quân:
-    - Cột 1: $$x_{11} \lor x_{21} \lor x_{31}$$
-    - Cột 2: $$x_{12} \lor x_{22} \lor x_{32}$$
-    - Cột 3: $$x_{13} \lor x_{23} \lor x_{33}$$
+    - Cột 1: $x_{11} \lor x_{21} \lor x_{31}$
+    - Cột 2: $x_{12} \lor x_{22} \lor x_{32}$
+    - Cột 3: $x_{13} \lor x_{23} \lor x_{33}$
 
 (d) Mỗi cột có không quá một quân:
-    - Cột 1: $$(\neg x_{11} \lor \neg x_{21}) \land (\neg x_{11} \lor \neg x_{31}) \land (\neg x_{21} \lor \neg x_{31})$$
-    - Cột 2: $$(\neg x_{12} \lor \neg x_{22}) \land (\neg x_{12} \lor \neg x_{32}) \land (\neg x_{22} \lor \neg x_{32})$$
-    - Cột 3: $$(\neg x_{13} \lor \neg x_{23}) \land (\neg x_{13} \lor \neg x_{33}) \land (\neg x_{23} \lor \neg x_{33})$$
+    - Cột 1: $(\neg x_{11} \lor \neg x_{21}) \land (\neg x_{11} \lor \neg x_{31}) \land (\neg x_{21} \lor \neg x_{31})$
+    - Cột 2: $(\neg x_{12} \lor \neg x_{22}) \land (\neg x_{12} \lor \neg x_{32}) \land (\neg x_{22} \lor \neg x_{32})$
+    - Cột 3: $(\neg x_{13} \lor \neg x_{23}) \land (\neg x_{13} \lor \neg x_{33}) \land (\neg x_{23} \lor \neg x_{33})$
 
 (e) Đếm số clause cho bàn cờ 3×3:
     - "Ít nhất một" cho hàng: 3 clause.
-    - "Không quá một" cho hàng: $$3 \times 3 = 9$$ clause.
+    - "Không quá một" cho hàng: $3 \times 3 = 9$ clause.
     - "Ít nhất một" cho cột: 3 clause.
-    - "Không quá một" cho cột: $$3 \times 3 = 9$$ clause.
-    - Tổng: $$3 + 9 + 3 + 9 = 24$$ clause.
+    - "Không quá một" cho cột: $3 \times 3 = 9$ clause.
+    - Tổng: $3 + 9 + 3 + 9 = 24$ clause.
 
     Mở rộng cho bài toán **8 quân xe** trên bàn cờ 8×8 (chỉ xét ràng buộc hàng và cột):
     - 8 clause (mỗi hàng có ít nhất một quân) + 8 clause (mỗi cột có ít nhất một quân).
-    - $$8 \times \binom{8}{2} = 8 \times 28 = 224$$ clause (không quá một quân mỗi hàng).
-    - $$8 \times \binom{8}{2} = 224$$ clause (không quá một quân mỗi cột).
-    - Tổng: $$8 + 8 + 224 + 224 = 464$$ clause. (Lưu ý: với bài toán 8 quân hậu, cần bổ sung thêm các clause ràng buộc trên các đường chéo.)
+    - $8 \times \binom{8}{2} = 8 \times 28 = 224$ clause (không quá một quân mỗi hàng).
+    - $8 \times \binom{8}{2} = 224$ clause (không quá một quân mỗi cột).
+    - Tổng: $8 + 8 + 224 + 224 = 464$ clause. (Lưu ý: với bài toán 8 quân hậu, cần bổ sung thêm các clause ràng buộc trên các đường chéo.)
 
 </details>
 
@@ -460,9 +460,9 @@ Xét bàn cờ 3×3, cần đặt 3 quân xe (rook) sao cho không quân nào ă
 <details>
 <summary>Đáp án</summary>
 
-(a) **2-SAT** có thể giải trong thời gian tuyến tính $$O(n + m)$$ với $$n$$ biến và $$m$$ mệnh đề (tối đa $$O(n^2)$$ khi không có mệnh đề trùng lặp) bằng cách xây dựng đồ thị kéo theo (implication graph) và kiểm tra xem có thành phần liên thông mạnh (SCC) nào chứa cả $$p$$ và $$\neg p$$ hay không.
+(a) **2-SAT** có thể giải trong thời gian tuyến tính $O(n + m)$ với $n$ biến và $m$ mệnh đề (tối đa $O(n^2)$ khi không có mệnh đề trùng lặp) bằng cách xây dựng đồ thị kéo theo (implication graph) và kiểm tra xem có thành phần liên thông mạnh (SCC) nào chứa cả $p$ và $\neg p$ hay không.
 
-    Cụ thể, mỗi clause $$(a \lor b)$$ tương đương với $$(\neg a \to b) \land (\neg b \to a)$$. Ta tạo đỉnh cho từng literal, nối cạnh theo các phép kéo theo, rồi dùng thuật toán Kosaraju hoặc Tarjan để tìm các thành phần liên thông mạnh.
+    Cụ thể, mỗi clause $(a \lor b)$ tương đương với $(\neg a \to b) \land (\neg b \to a)$. Ta tạo đỉnh cho từng literal, nối cạnh theo các phép kéo theo, rồi dùng thuật toán Kosaraju hoặc Tarjan để tìm các thành phần liên thông mạnh.
 
 (b) **3-SAT** là bài toán NP-đầy đủ vì:
     - Thuộc lớp NP (có thể kiểm tra tính đúng của một nghiệm trong thời gian đa thức).

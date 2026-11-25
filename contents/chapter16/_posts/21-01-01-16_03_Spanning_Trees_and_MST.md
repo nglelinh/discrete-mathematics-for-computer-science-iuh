@@ -40,7 +40,7 @@ Bài toán kết nối toàn bộ các trạm với **tổng chi phí cáp nhỏ
 
 </div>
 
-## Bản đồ kiến thức nền: Cây khung Nhỏ nhất (MST) và Tính chất Lát cắt (Cut Property)
+## Kiến thức cần nhớ: Cây khung Nhỏ nhất (MST) và Tính chất Lát cắt (Cut Property)
 
 ### 1. Vì sao Tham lam lại đúng tuyệt đối trên MST? — Tính chất Lát cắt
 - **Định lý Lát cắt (Cut Property):** Chia tập đỉnh $$V$$ thành hai nhóm bất kỳ $$(S, V\setminus S)$$. Cạnh có **trọng số nhỏ nhất** bắc ngang qua hai nhóm đó **chắc chắn thuộc về một cây khung nhỏ nhất**! (Chứng minh bằng phép tráo đổi cạnh: nếu MST không dùng cạnh nhẹ nhất $$e$$, thêm $$e$$ vào tạo chu trình cắt qua lát cắt thêm một cạnh $$e'$$ nặng hơn $$\implies$$ đổi $$e'$$ lấy $$e$$ giảm tổng trọng số!)
@@ -49,7 +49,7 @@ Bài toán kết nối toàn bộ các trạm với **tổng chi phí cáp nhỏ
 - **Kruskal:** Sắp xếp mọi cạnh tăng dần theo trọng số; lần lượt nhặt cạnh nhỏ nhất **không tạo chu trình** (kiểm tra cực nhanh trong $$O(\alpha(V))$$ bằng cấu trúc **Disjoint Set Union — DSU**). Tổng thời gian: $$O(E \log E)$$, cực mạnh trên **đồ thị thưa**!
 - **Prim:** Xuất phát từ 1 đỉnh gốc, mỗi bước mở rộng cây bằng cạnh nhẹ nhất nối từ cây hiện tại sang đỉnh chưa thăm (dùng **Min-Heap**). Tổng thời gian: $$O(E \log V)$$ (hoặc $$O(V^2)$$ trên đồ thị dày đặc).
 
-## Ví dụ tính tay cầm tay chỉ việc: Chạy Kruskal trên đồ thị 4 đỉnh $$A, B, C, D$$
+## Ví dụ tính tay làm từng bước: Chạy Kruskal trên đồ thị 4 đỉnh $$A, B, C, D$$
 
 Cho đồ thị vô hướng 4 đỉnh với 5 cạnh có trọng số:
 $$(A, B) = 1,\quad (B, C) = 2,\quad (A, C) = 3,\quad (C, D) = 4,\quad (B, D) = 5.$$
@@ -61,8 +61,7 @@ Ta cần chọn đúng $$V - 1 = 3$$ cạnh theo thứ tự trọng số tăng d
 
 Đủ $$3$$ cạnh $$\implies$$ **DỪNG!** MST gồm $$\{(A,B), (B,C), (C,D)\}$$ với tổng trọng số tối ưu bằng **$$1 + 2 + 4 = 7$$**!
 
-### Khung giải thích: Phân biệt rạch ròi Cây MST với Cây Đường đi ngắn nhất (Dijkstra) (nên đọc chậm)
-
+### Giải thích: Phân biệt rạch ròi Cây MST với Cây Đường đi ngắn nhất (Dijkstra)
 #### Bước 1: Đừng nhầm MST với Dijkstra!
 MST tối ưu **tổng chi phí toàn bộ mạng cáp**, không hề cam kết đường đi từ $$A$$ đến $$D$$ là ngắn nhất! (Ví dụ tam giác cạnh $$5, 5, 8$$: MST dùng hai cạnh $$5+5=10$$ nên đường giữa hai đỉnh kia dài $$10$$ thay vì cạnh trực tiếp $$8$$!)
 

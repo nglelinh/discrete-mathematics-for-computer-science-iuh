@@ -22,7 +22,7 @@ Khi đối mặt với một bài toán đếm phức tạp — như xếp gạc
 
 **Mạch bài học:** Ý tưởng mô tả dãy bằng trạng thái trước đó $$\longrightarrow$$ phân loại truy hồi theo **bậc, tính tuyến tính và tính thuần nhất** $$\longrightarrow$$ mô hình hóa các bài toán kinh điển (Fibonacci, Tháp Hà Nội, lát gạch) $$\longrightarrow$$ giải truy hồi bậc nhất bằng phương pháp lặp (unrolling).
 
-## Bản đồ kiến thức nền: Quan hệ truy hồi nghiên cứu gì trong Toán rời rạc và Khoa học Máy tính?
+## Kiến thức cần nhớ: Quan hệ truy hồi nghiên cứu gì trong Toán rời rạc và Khoa học Máy tính?
 
 - **Hệ động lực rời rạc (Discrete Dynamical Systems):** Quan hệ truy hồi là phiên bản rời rạc của phương trình vi phân: thay vì đạo hàm liên tục $$y'(t)$$, ta mô tả sự tiến hóa của dãy $$(a_n)_{n \ge 0}$$ theo các bước nhảy nguyên $$n \to n+1$$ kèm **điều kiện biên (base cases)** xác định nghiệm duy nhất.
 - **Phân loại cấu trúc đại số (Order, Linearity, Homogeneity):** Bậc $$k$$ cho biết bộ nhớ cần nhìn lại bao nhiêu bước; tính tuyến tính (không có $$a_{n-1}^2$$ hay $$a_{n-1}a_{n-2}$$) và tính thuần nhất (không có số hạng tự do $$f(n)$$) quyết định liệu ta có dùng được phương trình đặc trưng hay không.
@@ -412,7 +412,7 @@ Bạn có thể thử tính các số hạng, quan sát đồ thị tăng trư�
 </div>
 <script src="{{ '/public/js/explainers/recurrence-explainer.js' | relative_url }}"></script>
 
-## Ví dụ tính tay cầm tay chỉ việc: Mở vòng lặp giải bài toán Tháp Hà Nội $$H_n = 2H_{n-1} + 1$$
+## Ví dụ tính tay làm từng bước: Mở vòng lặp giải bài toán Tháp Hà Nội $$H_n = 2H_{n-1} + 1$$
 
 Với điều kiện đầu $$H_1 = 1$$ (1 đĩa cần đúng 1 bước chuyển), hãy giải công thức đóng cho $$H_n$$ hoàn toàn bằng tay qua kỹ thuật **thay thế lặp (unrolling)**:
 
@@ -432,8 +432,7 @@ Với điều kiện đầu $$H_1 = 1$$ (1 đĩa cần đúng 1 bước chuyển
    \end{aligned}$$
 3. **Kiểm tra ngược bằng thế vào truy hồi:** $$2H_{n-1} + 1 = 2(2^{n-1} - 1) + 1 = 2^n - 2 + 1 = 2^n - 1 = H_n$$. Chính xác! Với $$n = 64$$ đĩa, $$H_{64} = 2^{64} - 1 \approx 1{,}84 \times 10^{19}$$ bước.
 
-### Khung giải thích: Ba bước vàng để lập mô hình bằng truy hồi (nên đọc chậm)
-
+### Giải thích: Ba bước vàng để lập mô hình bằng truy hồi
 1. **Bước 1 — Phân hoạch theo lựa chọn cuối cùng (hoặc đầu tiên):** Để đếm $$a_n$$, hãy chia toàn bộ tập cấu hình kích thước $$n$$ thành các trường hợp **rời nhau và phủ kín** dựa trên phần tử thứ $$n$$ (ví dụ: viên gạch cuối đặt dọc hay đặt ngang).
 2. **Bước 2 — Ghép điều kiện đầu đủ số bậc:** Một truy hồi bậc $$k$$ cần đúng $$k$$ điều kiện đầu độc lập (ví dụ $$a_0, a_1$$ cho bậc 2). Thiếu 1 điều kiện đầu thì dãy có vô số nghiệm.
 3. **Bước 3 — Kiểm tra nhỏ trước khi chứng minh tổng quát:** Luôn tính tay $$a_1, a_2, a_3, a_4$$ và đối chiếu trực tiếp bằng cách liệt kê cấu hình nhỏ — đây là cách nhanh nhất để phát hiện sai lệch hệ số hoặc thiếu trường hợp biên.

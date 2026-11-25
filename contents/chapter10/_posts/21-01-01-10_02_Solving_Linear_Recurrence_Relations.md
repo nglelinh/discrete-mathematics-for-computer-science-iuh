@@ -13,7 +13,7 @@ Tính số Fibonacci thứ 1.000 bằng cách cộng dồn từng bước là ch
 
 **Mạch bài học:** Phép thử $$a_n = r^n$$ và **phương trình đặc trưng** $$\longrightarrow$$ xử lý **3 dạng nghiệm** (thực phân biệt, nghiệm bội, nghiệm phức liên hợp) $$\longrightarrow$$ chuyển nghiệm phức về dạng thực $$\rho^n(A\cos n\theta + B\sin n\theta)$$ nhờ định lý De Moivre $$\longrightarrow$$ mở rộng lên bậc $$k$$ bất kỳ.
 
-## Bản đồ kiến thức nền: Giải truy hồi tuyến tính thuần nhất dựa trên những trụ cột nào?
+## Kiến thức cần nhớ: Giải truy hồi tuyến tính thuần nhất dựa trên những trụ cột nào?
 
 - **Không gian nghiệm tuyến tính (Linear Solution Space):** Mọi nghiệm của quan hệ truy hồi tuyến tính thuần nhất bậc $$k$$ tạo thành một **không gian vector $$k$$ chiều**; do đó chỉ cần tìm đúng $$k$$ nghiệm cơ sở độc lập tuyến tính rồi tổ hợp chúng lại để khớp với $$k$$ điều kiện đầu.
 - **Đa thức đặc trưng & Đại số đa thức (Characteristic Polynomial):** Thay $$a_n = r^n$$ biến toán tử dịch chuyển bậc $$k$$ thành đa thức bậc $$k$$. Nghiệm đơn $$r_i$$ sinh ra $$r_i^n$$, còn nghiệm bội $$m$$ đòi hỏi nhân thêm các bậc $$n, n^2, \dots, n^{m-1}$$ để đảm bảo đủ $$m$$ nghiệm độc lập.
@@ -907,7 +907,7 @@ Khám phá mối liên hệ giữa đa thức đặc trưng, các loại nghiệ
 </div>
 <script src="{{ '/public/js/explainers/recurrence-explainer.js' | relative_url }}"></script>
 
-## Ví dụ tính tay cầm tay chỉ việc: Giải trọn vẹn cả 3 trường hợp nghiệm bậc 2
+## Ví dụ tính tay làm từng bước: Giải trọn vẹn cả 3 trường hợp nghiệm bậc 2
 
 **Trường hợp 1 (Nghiệm thực phân biệt):** Giải $$a_n = 5a_{n-1} - 6a_{n-2}$$ với $$a_0 = 2, a_1 = 5$$.
 - Phương trình đặc trưng: $$r^2 - 5r + 6 = 0 \iff (r-2)(r-3) = 0 \Rightarrow r_1 = 2, r_2 = 3$$.
@@ -927,8 +927,7 @@ Khám phá mối liên hệ giữa đa thức đặc trưng, các loại nghiệ
 - Thay $$n=0 \Rightarrow A = 1$$; thay $$n=1 \Rightarrow \sqrt{2}\left(\frac{\sqrt{2}}{2} + B\frac{\sqrt{2}}{2}\right) = 1 + B = 1 \Rightarrow B = 0$$.
 - Kết quả: $$d_n = (\sqrt{2})^n \cos\frac{n\pi}{4}$$. Kiểm tra $$n=2$$: $$2\cos(\pi/2) = 0$$; truy hồi cho $$2(1) - 2(1) = 0$$. Hoàn hảo!
 
-### Khung giải thích: Quy trình 4 bước giải mọi truy hồi tuyến tính thuần nhất (nên đọc chậm)
-
+### Giải thích: Quy trình 4 bước giải mọi truy hồi tuyến tính thuần nhất
 1. **Bước 1 — Chuyển sang đa thức đặc trưng:** Thay $$a_{n-j}$$ bằng $$r^{k-j}$$ để thu về phương trình đại số bậc $$k$$.
 2. **Bước 2 — Đọc đúng dạng nghiệm cơ sở từ loại nghiệm:** Nghiệm đơn $$r$$ đóng góp $$r^n$$; nghiệm bội $$m$$ đóng góp $$r^n, nr^n, \dots, n^{m-1}r^n$$; cặp phức $$\rho e^{\pm i\theta}$$ đóng góp $$\rho^n\cos(n\theta)$$ và $$\rho^n\sin(n\theta)$$.
 3. **Bước 3 — Giải hệ tuyến tính từ điều kiện đầu:** Thế $$n = 0, 1, \dots, k-1$$ để xác định duy nhất các hằng số $$c_i$$.

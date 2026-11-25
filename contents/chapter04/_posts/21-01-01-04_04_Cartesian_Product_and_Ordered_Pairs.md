@@ -21,7 +21,7 @@ excerpt: "Giới thiệu cặp có thứ tự, tích Descartes A × B, các tín
 
 Tập hợp vốn không quan tâm đến thứ tự ($$\{1, 2\} = \{2, 1\}$$), nhưng thế giới thực lại sống dựa vào thứ tự: tọa độ `(x, y)` khác `(y, x)`, cạnh có hướng `(An → Bình)` khác `(Bình → An)`, và một dòng trong bảng cơ sở dữ liệu `(mssv, ho_ten, diem)` phải giữ đúng vị trí từng cột. **Cặp có thứ tự (Ordered Pair)** và **Tích Descartes (Cartesian Product $$A \times B$$)** chính là cây cầu đưa cấu trúc thứ tự vào lý thuyết tập hợp.
 
-## Bản đồ kiến thức nền: Bốn ý niệm cốt lõi của Tích Descartes
+## Kiến thức cần nhớ: Bốn ý niệm cốt lõi của Tích Descartes
 
 1. **Cặp có thứ tự $$(a, b)$$ & Bộ $$n$$-thành phần ($$n$$-tuple)**:
    $$(a, b) = (c, d) \iff (a = c) \land (b = d)$$. Mở rộng ra $$n$$ chiều, ta có bộ $$(a_1, a_2, \dots, a_n)$$—chính là một `tuple`/`struct` trong lập trình hay một bản ghi (*row*) trong bảng SQL.
@@ -83,7 +83,7 @@ $$A \times B = \{(a,b) \mid a \in A \land b \in B\}.$$
 
 ![Tích Descartes A × B](/discrete-mathematics-for-computer-science-iuh/img/course/Cartesian_Product_qtl1.svg)
 
-<p class="textbook-figure-caption" data-figure="4.19">Tích Descartes $$A \times B$$ — mỗi điểm trên lưới tương ứng với một cặp có thứ tự $$(a,b)$$.</p>
+<p class="textbook-figure-caption" data-figure="4.19">Tích Descartes $A \times B$ — mỗi điểm trên lưới tương ứng với một cặp có thứ tự $(a,b)$.</p>
 
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Cho $$A = \{1, 2\}$$ và $$B = \{x, y\}$$. Khi đó:
@@ -146,7 +146,7 @@ Nắm rõ điểm này giúp tránh suy luận sai khi gộp dữ liệu từ nh
 
 Nếu $$A = \emptyset$$ hoặc $$B = \emptyset$$ thì $$A \times B = \emptyset$$, vì không có cặp nào được tạo ra. Trong SQL, điều này tương ứng với việc `CROSS JOIN` cùng một bảng rỗng luôn trả về kết quả rỗng.
 
-### Khung giải thích (nên đọc chậm): Tính tay kích thước `CROSS JOIN` (Tích Descartes) và tránh bẫy bùng nổ dòng trong SQL
+### Giải thích: Tính tay kích thước `CROSS JOIN` (Tích Descartes) và tránh bẫy bùng nổ dòng trong SQL
 
 Giả sử cửa hàng áo thun có:
 - Tập kích cỡ $$S = \{\text{M}, \text{L}\}$$ ($$\vert S \vert = 2$$)
@@ -197,7 +197,7 @@ Cho $$A = \{0, 1\}$$ và $$B = \{a, b, c\}$$. Liệt kê $$A \times B$$ và tín
 <details>
 <summary>Đáp án</summary>
 
-$$A \times B = \{(0,a), (0,b), (0,c), (1,a), (1,b), (1,c)\}$$, lực lượng $$\lvert A \times B \rvert = 2 \times 3 = 6$$.
+$A \times B = \{(0,a), (0,b), (0,c), (1,a), (1,b), (1,c)\}$, lực lượng $\lvert A \times B \rvert = 2 \times 3 = 6$.
 
 </details>
 
@@ -208,7 +208,7 @@ Chứng minh $$(Q \times R) \cap (S \times T) = (Q \cap S) \times (R \cap T)$$ b
 <details>
 <summary>Đáp án</summary>
 
-Xét cặp $$(x,y)$$ bất kỳ. Theo định nghĩa tích Descartes và phép giao, chuỗi tương đương ở mục "Tích Descartes và phép giao" phía trên cho chứng minh cả hai chiều. ∎
+Xét cặp $(x,y)$ bất kỳ. Theo định nghĩa tích Descartes và phép giao, chuỗi tương đương ở mục "Tích Descartes và phép giao" phía trên cho chứng minh cả hai chiều. ∎
 
 </details>
 
@@ -219,7 +219,7 @@ Bảng `A` có 2.000 dòng và bảng `B` có 3.000 dòng. Truy vấn `SELECT * 
 <details>
 <summary>Đáp án</summary>
 
-`CROSS JOIN` tạo ra $$2{,}000 \times 3{,}000 = 6{,}000{,}000$$ dòng. Sau khi lọc theo khóa, nếu mỗi dòng của `A` khớp trung bình 2 dòng của `B`, kết quả chỉ còn khoảng $$2{,}000 \times 2 = 4{,}000$$ dòng — nhỏ hơn rất nhiều so với tích Descartes đầy đủ.
+`CROSS JOIN` tạo ra $2{,}000 \times 3{,}000 = 6{,}000{,}000$ dòng. Sau khi lọc theo khóa, nếu mỗi dòng của `A` khớp trung bình 2 dòng của `B`, kết quả chỉ còn khoảng $2{,}000 \times 2 = 4{,}000$ dòng — nhỏ hơn rất nhiều so với tích Descartes đầy đủ.
 
 </details>
 
@@ -233,11 +233,11 @@ Cho $$S = \{1,2,3\}$$, $$T = \{a,b\}$$ và $$R = \{(1,a), (2,b), (3,a)\}$$.
 <details>
 <summary>Đáp án</summary>
 
-(a) Mỗi cặp trong $$R$$ đều có thành phần thứ nhất thuộc $$S$$ và thành phần thứ hai thuộc $$T$$, nên $$R \subseteq S \times T$$.
+(a) Mỗi cặp trong $R$ đều có thành phần thứ nhất thuộc $S$ và thành phần thứ hai thuộc $T$, nên $R \subseteq S \times T$.
 
-(b) $$\lvert S \times T \rvert = 3 \times 2 = 6$$.
+(b) $\lvert S \times T \rvert = 3 \times 2 = 6$.
 
-(c) Tỷ lệ là $$3/6 = 1/2$$, cho biết một nửa số cặp khả dĩ của $$S \times T$$ thuộc quan hệ $$R$$ (phản ánh mật độ của quan hệ).
+(c) Tỷ lệ là $3/6 = 1/2$, cho biết một nửa số cặp khả dĩ của $S \times T$ thuộc quan hệ $R$ (phản ánh mật độ của quan hệ).
 
 </details>
 

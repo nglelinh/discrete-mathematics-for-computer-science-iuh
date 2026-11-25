@@ -13,7 +13,7 @@ Mỗi khi bạn gõ `c = a + b` trong C hay Python, phép cộng trông trừu t
 
 **Mạch bài học:** Từ **transistor** đóng vai công tắc vật lý $$\longrightarrow$$ tính đầy đủ hàm của cổng **NAND** $$\longrightarrow$$ mạch nhớ tuần tự (**SR latch / flip-flop**) $$\longrightarrow$$ bộ cộng **half-adder / full-adder** biến đại số Boole thành phép cộng số học.
 
-## Bản đồ kiến thức nền: Kiến trúc mạch số nối toán rời rạc với silicon ra sao?
+## Kiến thức cần nhớ: Kiến trúc mạch số nối toán rời rạc với silicon ra sao?
 
 - **Tính đầy đủ hàm (Functional Completeness):** Một tập cổng logic được gọi là đầy đủ nếu mọi hàm Boole $$f:\{0,1\}^k \to \{0,1\}$$ đều biểu diễn được từ tập đó. Cổng **NAND** ($$\overline{A \cdot B}$$) tự một mình đã đủ dựng nên `NOT`, `AND`, `OR`, `XOR` và mọi mạch tổ hợp phức tạp.
 - **Mạch tổ hợp vs. Mạch tuần tự (Combinational vs. Sequential Logic):** Mạch tổ hợp (như bộ cộng) cho đầu ra chỉ phụ thuộc đầu vào hiện tại; còn mạch tuần tự (latch, flip-flop, RAM) có vòng phản hồi (feedback loop) nên **ghi nhớ được trạng thái quá khứ** — nền tảng của bộ nhớ và thanh ghi CPU.
@@ -104,7 +104,7 @@ Khi xem lại video về ALU của Ben Eater sau khi đọc bài viết trên Pl
 
 ---
 
-## Ví dụ tính tay cầm tay chỉ việc: Dựng NOT, AND, OR chỉ từ NAND và cộng nhị phân 2-bit
+## Ví dụ tính tay làm từng bước: Dựng NOT, AND, OR chỉ từ NAND và cộng nhị phân 2-bit
 
 **Phần A — Chứng minh bằng bảng chân trị rằng NAND sinh được NOT và AND:**
 Định nghĩa $$\text{NAND}(A, B) = \overline{A \cdot B}$$.
@@ -127,8 +127,7 @@ Gọi $$A = a_1 a_0 = 11_2$$, $$B = b_1 b_0 = 10_2$$.
   - Bit nhớ ra $$c_2 = (a_1 \cdot b_1) + c_1 \cdot (a_1 \oplus b_1) = (1 \cdot 1) + 0 = 1$$.
 - **Kết quả ghép lại:** $$c_2 s_1 s_0 = 101_2 = 4 + 0 + 1 = 5$$. Hoàn toàn khớp với số học thông thường!
 
-### Khung giải thích: Cầu nối 4 tầng từ vật lý đến chương trình máy tính (nên đọc chậm)
-
+### Giải thích: Cầu nối 4 tầng từ vật lý đến chương trình máy tính
 1. **Bước 1 — Vật lý rời rạc hóa điện áp:** Transistor biến điện áp tương tự (0V / 5V) thành hai ký hiệu rời rạc `0` và `1`, giúp loại bỏ nhiễu nhỏ ở mỗi tầng mạch.
 2. **Bước 2 — Đại số Boole tạo khối tính toán:** Nhờ tính đầy đủ hàm của NAND, mọi bảng chân trị hữu hạn — kể cả bộ cộng `Sum = A XOR B` và `Carry = A AND B` — đều đóng gói được thành mạch tổ hợp.
 3. **Bước 3 — Vòng phản hồi tạo ra trí nhớ:** Khi nối đầu ra cổng NAND quay ngược về đầu vào cổng bên cạnh (SR latch), mạch giữ nguyên bit `0` hoặc `1` ngay cả khi tín hiệu kích đã ngắt — biến mạch logic thành thanh ghi và RAM.

@@ -33,7 +33,7 @@ excerpt: "Sự tương đương giữa biểu thức chính quy, ε-NFA, NFA và
 
 </div>
 
-## Bản đồ kiến thức nền: Định lý Kleene và Hai Chiều Chuyển đổi
+## Kiến thức cần nhớ: Định lý Kleene và Hai Chiều Chuyển đổi
 
 ### 1. Chiều thuận — Thuật toán Thompson (Regex $$\to \varepsilon$$-NFA)
 - **Bản chất:** Xây dựng quy nạp từ dưới lên theo cây cú pháp của Regex! Mỗi khối con đều có **đúng 1 trạng thái vào** và **đúng 1 trạng thái ra** (không có cung đi ngược vào đầu vào hay đi ra từ đầu ra). Nhờ cấu trúc sạch sẽ đó, mỗi phép `+`, `·`, `*` chỉ cần thêm tối đa **2 trạng thái và 4 cung $$\varepsilon$$** — tổng số trạng thái tuyến tính $$O(\lvert R\rvert)$$!
@@ -45,7 +45,7 @@ excerpt: "Sự tương đương giữa biểu thức chính quy, ε-NFA, NFA và
   $$
   Khi xóa sạch mọi trạng thái giữa, nhãn duy nhất còn lại trên mũi tên $$q_{\text{start}} \to q_{\text{accept}}$$ chính là Regex cần tìm!
 
-## Ví dụ tính tay cầm tay chỉ việc: Áp dụng Công thức Khử trạng thái cho DFA 2 trạng thái "Số bit `1` chẵn"
+## Ví dụ tính tay làm từng bước: Áp dụng Công thức Khử trạng thái cho DFA 2 trạng thái "Số bit `1` chẵn"
 
 Xét DFA 2 trạng thái $$q_0$$ (bắt đầu & kết thúc) và $$q_1$$: tự vòng `0` ở cả hai, và hai mũi tên `1` nối qua lại $$q_0 \leftrightarrow q_1$$.
 1. Thêm $$q_{\text{start}} \xrightarrow{\varepsilon} q_0$$ và $$q_0 \xrightarrow{\varepsilon} q_{\text{accept}}$$.
@@ -60,8 +60,7 @@ Xét DFA 2 trạng thái $$q_0$$ (bắt đầu & kết thúc) và $$q_1$$: tự 
    $$
    Kiểm tra bằng mắt: lặp tùy ý giữa từng số `0` đơn lẻ hoặc từng **cặp số `1`** kẹp giữa bởi bao nhiêu `0` cũng được — chuẩn xác 100% ngôn ngữ "chẵn bit `1`"! ✓
 
-### Khung giải thích: Vòng tròn khép kín 4 đỉnh của Ngôn ngữ Chính quy (nên đọc chậm)
-
+### Giải thích: Vòng tròn khép kín 4 đỉnh của Ngôn ngữ Chính quy
 #### Bước 1: Regex $$\xrightarrow{\text{Thompson}}$$ $$\varepsilon$$-NFA
 Lắp ráp như xếp Lego từ các lá (ký tự đơn) lên gốc cây biểu thức.
 

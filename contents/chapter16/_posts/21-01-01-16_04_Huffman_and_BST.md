@@ -48,7 +48,7 @@ Hai ứng dụng kinh điển của cây nhị phân trong khoa học máy tính
 
 Video dài khoảng 3 phút 7 giây: đếm tần suất ký tự trong chuỗi ABRACADABRA (5, 2, 2, 1, 1 — cùng bộ tần suất với Ví dụ 1), gộp dần hai nút nhẹ nhất bằng hàng đợi ưu tiên, gán bit 0/1 cho nhánh trái/phải để nén xuống 23 bit thay vì 33 bit, minh họa giải mã bằng con trỏ đi trên cây nhờ tính chất prefix-free, ví dụ $$A = 0, B = 01, C = 1$$ cho thấy mã không prefix-free gây nhập nhằng, bài luyện tập MISSISSIPPI (21 bit so với 22 bit của mã độ dài cố định), và giải thích vì sao cách gộp tham lam này tối ưu. Video về các thứ tự duyệt cây nằm ở Mục 16.2.
 
-## Bản đồ kiến thức nền: Mã hóa Huffman và Cây Tìm kiếm Nhị phân (BST)
+## Kiến thức cần nhớ: Mã hóa Huffman và Cây Tìm kiếm Nhị phân (BST)
 
 ### 1. Mã Tiền tố (Prefix Code) & Thuật toán Tham lam Huffman
 - **Mã tiền tố:** Không có mã của ký tự nào là phần đầu (prefix) của mã ký tự khác $$\iff$$ mọi ký tự đều nằm ở **nút lá** của một cây nhị phân (giải mã mượt mà không cần dấu phân cách!).
@@ -58,7 +58,7 @@ Video dài khoảng 3 phút 7 giây: đếm tần suất ký tự trong chuỗi 
 - **Bất biến BST:** Tại mọi nút $$u$$, **toàn bộ** cây con trái đều có khóa $$< u$$ và **toàn bộ** cây con phải đều có khóa $$> u$$ (nhờ đó duyệt **Inorder** luôn ra dãy tăng dần!).
 - **Cảnh báo suy biến:** Nếu chèn dãy đã sắp xếp $$1, 2, 3, \dots, n$$ vào BST thường, cây biến thành danh sách liên kết cao $$n$$ (tìm kiếm tụt xuống $$O(n)$$) — động lực ra đời các cây tự cân bằng **AVL, Red–Black và B-tree**!
 
-## Ví dụ tính tay cầm tay chỉ việc: Dựng cây mã Huffman cho 4 ký tự
+## Ví dụ tính tay làm từng bước: Dựng cây mã Huffman cho 4 ký tự
 
 Cho 4 ký tự với xác suất xuất hiện: **A: $$0.45$$**, **B: $$0.30$$**, **C: $$0.15$$**, **D: $$0.10$$**.
 1. **Bước 1:** Hai tần suất nhỏ nhất là `D(0.10)` và `C(0.15)` $$\to$$ gộp thành nút `(CD: 0.25)`. Hàng đợi còn: `{A: 0.45, B: 0.30, CD: 0.25}`.
@@ -72,8 +72,7 @@ Cho 4 ký tự với xác suất xuất hiện: **A: $$0.45$$**, **B: $$0.30$$**
    - Mã cố định: tốn **$$2.00$$ bit/ký tự**.
    - Mã Huffman: $$0.45(1) + 0.30(2) + 0.15(3) + 0.10(3) = 0.45 + 0.60 + 0.45 + 0.30 = \mathbf{1.80}$$ **bit/ký tự** (gần sát giới hạn lý thuyết entropy Shannon $$H \approx 1.78$$ bit!).
 
-### Khung giải thích: 4 bước làm chủ Huffman và thao tác Xóa nút trên BST (nên đọc chậm)
-
+### Giải thích: 4 bước làm chủ Huffman và thao tác Xóa nút trên BST
 #### Bước 1: Luôn dùng Min-Heap cho Huffman ($$O(k\log k)$$)
 Mỗi bước gộp giảm số cây đi 1, nên với $$k$$ ký tự cần đúng $$k - 1$$ lần gộp; ký tự ít xuất hiện nhất luôn bị đẩy xuống tầng sâu nhất (mã dài nhất).
 

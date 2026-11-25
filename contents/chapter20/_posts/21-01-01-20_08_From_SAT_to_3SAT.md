@@ -21,7 +21,7 @@ Phần lớn các phép chứng minh NP-complete trên đồ thị đều xuất
 
 Định lý Cook–Levin cho ta `SAT` là NP-complete, nhưng một công thức CNF tổng quát có thể chứa những mệnh đề dài hàng trăm literal, rất khó dùng để thiết kế các "mảnh ghép đồ thị" (gadget). Chỉ cần chuẩn hóa sao cho **mọi mệnh đề đều có đúng 3 literal** (`3SAT`), ta có ngay điểm xuất phát gọn gàng nhất cho hàng trăm phép rút gọn NP-complete trong suốt phần còn lại của lý thuyết độ phức tạp.
 
-## Bản đồ kiến thức nền: Ba trụ cột của phép rút gọn $$\mathrm{SAT} \le_p 3\mathrm{SAT}$$
+## Kiến thức cần nhớ: Ba trụ cột của phép rút gọn $$\mathrm{SAT} \le_p 3\mathrm{SAT}$$
 
 1. **Tính bảo toàn khả thỏa (Equisatisfiability) vs. Tương đương logic**:
    Khi thêm biến phụ $$y_1, y_2, \dots$$ để bẻ gãy mệnh đề dài, công thức mới $$\varphi'$$ **không** tương đương logic với $$\varphi$$ (vì có thêm biến mới), nhưng luôn **đồng khả thỏa**: $$\varphi$$ có nghiệm $$\iff \varphi'$$ có nghiệm!
@@ -111,7 +111,7 @@ Công thức $$f(\varphi)$$ là hội của tất cả các mệnh đề 3-liter
 
 </div>
 
-### Khung giải thích (nên đọc chậm): Chẻ tay một mệnh đề 5 literal $$(l_1 \lor l_2 \lor l_3 \lor l_4 \lor l_5)$$ thành 3 mệnh đề 3SAT
+### Giải thích: Chẻ tay một mệnh đề 5 literal $$(l_1 \lor l_2 \lor l_3 \lor l_4 \lor l_5)$$ thành 3 mệnh đề 3SAT
 
 Với $$k = 5$$, ta cần $$k - 3 = 2$$ biến phụ $$y_1, y_2$$ để tạo ra $$k - 2 = 3$$ mệnh đề:
 $$C' = (l_1 \lor l_2 \lor y_1) \;\land\; (\neg y_1 \lor l_3 \lor y_2) \;\land\; (\neg y_2 \lor l_4 \lor l_5).$$

@@ -13,7 +13,7 @@ Hãy tưởng tượng một bộ điều khiển tín hiệu giao thông hay th
 
 **Mạch bài học:** Từ quy ước đếm giây **Unix epoch** $$\longrightarrow$$ giới hạn số nguyên 32-bit có dấu $$2^{31}-1$$ $$\longrightarrow$$ toán học mô-đun của **bù hai** và cách ALU dùng chung một mạch cộng $$\longrightarrow$$ bài toán nâng cấp hệ thống trước năm 2038.
 
-## Bản đồ kiến thức nền: Bù hai và số học mô-đun nghiên cứu gì?
+## Kiến thức cần nhớ: Bù hai và số học mô-đun nghiên cứu gì?
 
 - **Số học đồng dư mô-đun $$2^n$$ (Modular Arithmetic):** Phần cứng máy tính không có trục số vô hạn $$\mathbb{Z}$$; mọi thanh ghi $$n$$-bit thực chất tính toán trên vòng hữu hạn $$\mathbb{Z}/2^n\mathbb{Z}$$, nơi $$2^n \equiv 0 \pmod{2^n}$$ và giá trị lớn nhất "cuộn vòng" sang giá trị nhỏ nhất.
 - **Biểu diễn số nguyên có dấu (Two's Complement):** Thay vì tách riêng bit dấu (gây ra hai số $$+0$$ và $$-0$$), máy tính gán trọng số âm $$-2^{n-1}$$ cho bit cao nhất (MSB), giúp biểu diễn duy nhất mọi số trong đoạn $$[-2^{n-1}, 2^{n-1}-1]$$ và biến phép trừ $$a - b$$ thành phép cộng $$a + (-b)$$.
@@ -167,7 +167,7 @@ Tính từ năm 2026, mốc Y2038 chỉ còn khoảng **12 năm**. Khác với Y
 
 ---
 
-## Ví dụ tính tay cầm tay chỉ việc: Tràn số 4-bit và mô phỏng Y2038 thu nhỏ
+## Ví dụ tính tay làm từng bước: Tràn số 4-bit và mô phỏng Y2038 thu nhỏ
 
 Để thấy tận mắt tại sao cộng thêm $$1$$ lại đẩy thời gian lùi về quá khứ mà không cần viết 32 bit dài ngoằng, ta thu nhỏ bài toán về thanh ghi **4-bit có dấu** theo bù hai (miền giá trị $$[-2^3, 2^3-1] = [-8, +7]$$):
 
@@ -185,8 +185,7 @@ Tính từ năm 2026, mốc Y2038 chỉ còn khoảng **12 năm**. Khác với Y
    - Đọc $$1000_2$$ theo bù hai 4-bit: $$-1 \cdot 2^3 + 0 = -8$$.
    - Mở rộng y hệt lên 32-bit: $$0\underbrace{11\ldots 1}_{31\text{ bit}} + 1 = 1\underbrace{00\ldots 0}_{31\text{ bit}}$$, tức $$+(2^{31}-1) + 1 \equiv -2^{31} = -2\,147\,483\,648$$ giây tính từ 01/01/1970, rơi đúng vào ngày 13/12/1901.
 
-### Khung giải thích: Vì sao Y2038 là hệ quả tất yếu của đại số đồng dư (nên đọc chậm)
-
+### Giải thích: Vì sao Y2038 là hệ quả tất yếu của đại số đồng dư
 1. **Bước 1 — Thanh ghi là vòng tròn, không phải đường thẳng:** Một thanh ghi 32-bit chỉ có đúng $$2^{32}$$ trạng thái. Mọi phép cộng đều lấy dư theo mô-đun $$2^{32}$$.
 2. **Bước 2 — Chia vòng tròn làm hai nửa dương và âm:** Quy ước bù hai cắt vòng tròn ngay ranh giới giữa `0x7FFFFFFF` ($$+2^{31}-1$$) và `0x80000000` ($$-2^{31}$$). Hai số đối cực nhau về mặt ngữ nghĩa lại nằm kề nhau đúng 1 bước nhảy trên vòng bit.
 3. **Bước 3 — Phần cứng không biết "thời gian":** Bộ cộng ALU chỉ bật cờ tràn (`OF = 1`) và tiếp tục trả về dãy bit `0x80000000`. Nếu phần mềm không kiểm tra tràn và dùng `int32_t` cho `time_t`, hệ thống lập tức hiểu nhầm năm 2038 thành năm 1901.

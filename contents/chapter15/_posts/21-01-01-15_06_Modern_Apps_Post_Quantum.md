@@ -65,17 +65,17 @@ FIPS 203 quy định các bộ tham số ML-KEM-512, ML-KEM-768 và ML-KEM-1024.
 
 **Câu hỏi.** (1) Cơ chế KEM *thay thế* cho thành phần mật mã nào của Chương 15 trong quá trình bắt tay kiểu TLS? (2) Vì sao việc đã triển khai “Kyber Round 3” không đồng nghĩa với việc tuân thủ chuẩn “FIPS 203”?
 
-### Bản đồ kiến thức nền: Chuẩn Mật mã Hậu lượng tử NIST (2024) và Bài toán Mạng tinh thể (LWE)
+### Kiến thức cần nhớ: Chuẩn Mật mã Hậu lượng tử NIST (2024) và Bài toán Mạng tinh thể (LWE)
 - **Nguy cơ từ Thuật toán Shor:** Máy tính lượng tử đủ lớn có thể giải phân tích thừa số (RSA) và logarit rời rạc (ECC) trong thời gian đa thức. Tháng 8/2024, NIST chính thức ban hành các chuẩn hậu lượng tử đầu tiên: **ML-KEM (FIPS 203 — Kyber)** cho trao đổi khóa và **ML-DSA (FIPS 204 — Dilithium)**, **SLH-DSA (FIPS 205)** cho chữ ký số.
 - **Bài toán Học có Nhiễu (LWE — Learning With Errors):** Giải hệ tuyến tính $$A\mathbf{s} \equiv \mathbf{b} \pmod q$$ bằng khử Gauss cực dễ, nhưng chỉ cần cộng thêm một vectơ **nhiễu nhỏ $$\mathbf{e}$$** ($$\mathbf{b} \equiv A\mathbf{s} + \mathbf{e} \pmod q$$), bài toán trở nên khó tương đương tìm vectơ ngắn nhất trên mạng tinh thể nhiều chiều — chống chịu được cả máy tính lượng tử!
 
-### Ví dụ tính tay cầm tay chỉ việc: Quan sát Nhiễu LWE làm hỏng Khử Gauss modulo $$q = 17$$
+### Ví dụ tính tay làm từng bước: Quan sát Nhiễu LWE làm hỏng Khử Gauss modulo $$q = 17$$
 Giả sử khóa bí mật là $$\mathbf{s} = (3, 5)^\top \in \mathbb{Z}_{17}^2$$:
 - Phương trình 1: $$a_1 = (2, 1) \implies 2(3) + 1(5) = 11$$. Cộng nhiễu nhỏ $$e_1 = +1 \implies b_1 = 12$$.
 - Phương trình 2: $$a_2 = (4, 3) \implies 4(3) + 3(5) = 27 \equiv 10 \pmod{17}$$. Cộng nhiễu nhỏ $$e_2 = -1 \implies b_2 = 9$$.
 Nếu kẻ tấn công thử khử Gauss trực tiếp trên hệ $$(2s_1 + s_2 = 12,\; 4s_1 + 3s_2 = 9) \pmod{17}$$: lấy PT2 trừ $$2\times$$PT1 được $$s_2 \equiv 9 - 24 = -15 \equiv 2 \pmod{17}$$ — **sai hoàn toàn so với đáp án thật $$s_2 = 5$$**! Ở kích thước thực tế $$n = 512..1024$$, tổ hợp tuyến tính làm nhiễu khuếch đại che phủ hoàn toàn khóa bí mật!
 
-### Khung giải thích: 4 bước chuyển đổi Internet sang Kỷ nguyên Hậu lượng tử (nên đọc chậm)
+### Giải thích: 4 bước chuyển đổi Internet sang Kỷ nguyên Hậu lượng tử
 #### Bước 1: Phòng thủ sớm trước tấn công "Thu thập hôm nay, giải mã tương lai"
 Dữ liệu mã hóa bằng RSA/ECC truyền hôm nay có thể bị lưu lại chờ máy tính lượng tử giải mã sau 10–15 năm.
 #### Bước 2: Chuyển nền tảng toán học từ Số học Nhân sang Đại số Tuyến tính có Nhiễu (LWE/Module-LWE)

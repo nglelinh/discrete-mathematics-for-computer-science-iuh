@@ -21,7 +21,7 @@ Bài học này giới thiệu ba hướng tiếp cận **tinh tế hơn** lý t
 
 Giả thuyết $$P \neq NP$$ chỉ nói rằng `3SAT` không giải được trong thời gian đa thức, nhưng nó không cho biết liệu `3SAT` có giải được trong $$2^{\sqrt{n}}$$ hay không, cũng như không phân biệt được giữa thuật toán $$O(n^2)$$ và $$O(n^{1.5})$$ ngay bên trong lớp $$P$$. Bài học này mở cánh cửa vào biên giới nghiên cứu hiện đại của độ phức tạp: **ETH/SETH**, **Độ phức tạp mịn (Fine-Grained Complexity)** và **Độ khó trung bình (Average-Case Complexity)**.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Độ phức tạp Hiện đại
+## Kiến thức cần nhớ: Ba trụ cột của Độ phức tạp Hiện đại
 
 1. **Giả thuyết Thời gian Mũ (ETH & SETH)**:
    - **ETH:** `3SAT` không giải được trong thời gian dưới hàm mũ $$2^{o(n)}$$.
@@ -75,7 +75,7 @@ Impagliazzo (1995) phác họa năm kịch bản có thể xảy ra cho thế gi
 
 Bên cạnh đó còn các nhánh lớn như lớp ngẫu nhiên **BPP** cùng khử ngẫu nhiên (*derandomization*) dưới cận dưới mạch (Arora–Barak), và lớp đếm **#P** gắn với định lý Valiant về *permanent*.
 
-### Khung giải thích (nên đọc chậm): Phân biệt nhanh 3 bậc giả thuyết độ phức tạp trên cùng một trục
+### Giải thích: Phân biệt nhanh 3 bậc giả thuyết độ phức tạp trên cùng một trục
 
 | Giả thuyết | Khẳng định cốt lõi | Hệ quả tiêu biểu |
 | :--- | :--- | :--- |

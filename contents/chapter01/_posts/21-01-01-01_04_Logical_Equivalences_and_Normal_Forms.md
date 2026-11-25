@@ -12,7 +12,7 @@ excerpt: "Trình bày khái niệm tương đương logic, các luật biến đ
 
 Khi một hàm kiểm tra điều kiện có 12 biến Boolean, bảng chân trị phình lên $$2^{12} = 4.096$$ dòng—quá lớn để kiểm tra bằng tay và quá chậm để tối ưu mạch phần cứng. Thay vào đó, các nhà toán học và trình biên dịch dùng **đại số biến đổi tương đương** (như Luật De Morgan, phân phối, hấp thụ) để rút gọn biểu thức và đưa mọi công thức về hai dạng chuẩn vàng: **CNF (Conjunctive Normal Form)** và **DNF (Disjunctive Normal Form)**.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Tương đương Logic & Dạng chuẩn
+## Kiến thức cần nhớ: Bốn trụ cột của Tương đương Logic & Dạng chuẩn
 
 1. **Hệ thống Luật Tương đương (Đại số Boole)**:
    Giống như các hằng đẳng thức đại số quen thuộc, bộ luật giao hoán, kết hợp, phân phối, hấp thụ ($$p \lor (p \land q) \equiv p$$), và đặc biệt **Luật De Morgan** ($$\neg(p \land q) \equiv \neg p \lor \neg q$$) cho phép biến đổi biểu thức mà bảo toàn tuyệt đối ngữ nghĩa.
@@ -100,7 +100,7 @@ Hai cột cuối giống nhau ở mọi hàng, do đó $$p \to q \equiv \neg p \
 
 Các luật **De Morgan**, **phân phối** và **bù** là những luật được dùng thường xuyên nhất khi rút gọn biểu thức.
 
-### Khung giải thích (nên đọc chậm): Biến đổi cầm tay chỉ việc công thức $$(p \to q) \to r$$ về đúng dạng chuẩn CNF
+### Giải thích: Biến đổi làm từng bước công thức $$(p \to q) \to r$$ về đúng dạng chuẩn CNF
 
 Hãy thực hiện từng bước đại số chuẩn mực để chuyển $$F = (p \to q) \to r$$ sang dạng chuẩn hội (CNF), không bỏ qua bước trung gian nào:
 
@@ -578,10 +578,10 @@ Cho biểu thức $$(p \lor q) \land (\neg p \lor r)$$.
 <details>
 <summary>Đáp án</summary>
 
-- **DNF rút gọn**: Áp dụng luật phân phối ta có $$(p \land \neg p) \lor (p \land r) \lor (q \land \neg p) \lor (q \land r) \equiv (p \land r) \lor (\neg p \land q) \lor (q \land r)$$.
-- **DNF đầy đủ** (mỗi term chứa đủ 3 biến $$p, q, r$$):
-  $$(p \land q \land r) \lor (p \land \neg q \land r) \lor (\neg p \land q \land r) \lor (\neg p \land q \land \neg r)$$.
-- **CNF**: Giữ nguyên $$(p \lor q) \land (\neg p \lor r)$$.
+- **DNF rút gọn**: Áp dụng luật phân phối ta có $(p \land \neg p) \lor (p \land r) \lor (q \land \neg p) \lor (q \land r) \equiv (p \land r) \lor (\neg p \land q) \lor (q \land r)$.
+- **DNF đầy đủ** (mỗi term chứa đủ 3 biến $p, q, r$):
+  $(p \land q \land r) \lor (p \land \neg q \land r) \lor (\neg p \land q \land r) \lor (\neg p \land q \land \neg r)$.
+- **CNF**: Giữ nguyên $(p \lor q) \land (\neg p \lor r)$.
 
 </details>
 
@@ -638,27 +638,27 @@ Rút gọn các biểu thức sau bằng luật De Morgan và các luật tươn
 <details>
 <summary>Đáp án</summary>
 
-(a) $$\neg(p \lor \neg q) \equiv \neg p \land \neg(\neg q) \equiv \neg p \land q$$.
+(a) $\neg(p \lor \neg q) \equiv \neg p \land \neg(\neg q) \equiv \neg p \land q$.
 
-(b) $$\neg(\neg p \land (q \lor r)) \equiv \neg(\neg p) \lor \neg(q \lor r) \equiv p \lor (\neg q \land \neg r)$$.
+(b) $\neg(\neg p \land (q \lor r)) \equiv \neg(\neg p) \lor \neg(q \lor r) \equiv p \lor (\neg q \land \neg r)$.
 
-(c) $$(\neg p \land \neg q) \lor \neg(\neg r \lor p)$$
-    $$\equiv (\neg p \land \neg q) \lor (\neg(\neg r) \land \neg p)$$
-    $$\equiv (\neg p \land \neg q) \lor (r \land \neg p)$$
-    $$\equiv \neg p \land (\neg q \lor r)$$ (luật phân phối).
+(c) $(\neg p \land \neg q) \lor \neg(\neg r \lor p)$
+    $\equiv (\neg p \land \neg q) \lor (\neg(\neg r) \land \neg p)$
+    $\equiv (\neg p \land \neg q) \lor (r \land \neg p)$
+    $\equiv \neg p \land (\neg q \lor r)$ (luật phân phối).
 
-(d) $$\neg((p \land q) \lor (\neg p \land \neg q))$$
-    $$\equiv \neg(p \land q) \land \neg(\neg p \land \neg q)$$
-    $$\equiv (\neg p \lor \neg q) \land (p \lor q)$$
-    $$\equiv (\neg p \land p) \lor (\neg p \land q) \lor (\neg q \land p) \lor (\neg q \land q)$$
-    $$\equiv F \lor (\neg p \land q) \lor (p \land \neg q) \lor F$$
-    $$\equiv (\neg p \land q) \lor (p \land \neg q) \equiv p \oplus q$$.
+(d) $\neg((p \land q) \lor (\neg p \land \neg q))$
+    $\equiv \neg(p \land q) \land \neg(\neg p \land \neg q)$
+    $\equiv (\neg p \lor \neg q) \land (p \lor q)$
+    $\equiv (\neg p \land p) \lor (\neg p \land q) \lor (\neg q \land p) \lor (\neg q \land q)$
+    $\equiv F \lor (\neg p \land q) \lor (p \land \neg q) \lor F$
+    $\equiv (\neg p \land q) \lor (p \land \neg q) \equiv p \oplus q$.
     Kết luận: Biểu thức tương đương với phép **XOR**.
 
-(e) $$\neg(p \to q) \lor \neg(q \to p)$$
-    $$\equiv \neg(\neg p \lor q) \lor \neg(\neg q \lor p)$$
-    $$\equiv (p \land \neg q) \lor (q \land \neg p)$$
-    $$\equiv p \oplus q$$.
+(e) $\neg(p \to q) \lor \neg(q \to p)$
+    $\equiv \neg(\neg p \lor q) \lor \neg(\neg q \lor p)$
+    $\equiv (p \land \neg q) \lor (q \land \neg p)$
+    $\equiv p \oplus q$.
     Kết luận: Biểu thức cũng tương đương với phép **XOR**.
 
 </details>
@@ -675,14 +675,14 @@ Không dùng bảng chân trị, hãy chứng minh các tương đương sau b�
 <details>
 <summary>Đáp án</summary>
 
-(a) $$p \to (q \to r) \equiv \neg p \lor (\neg q \lor r) \equiv (\neg p \lor \neg q) \lor r \equiv \neg(p \land q) \lor r \equiv (p \land q) \to r$$.
+(a) $p \to (q \to r) \equiv \neg p \lor (\neg q \lor r) \equiv (\neg p \lor \neg q) \lor r \equiv \neg(p \land q) \lor r \equiv (p \land q) \to r$.
     Đây là luật **exportation**: hai điều kiện lồng nhau tương đương với điều kiện hội.
 
-(b) $$(p \to q) \land (p \to r) \equiv (\neg p \lor q) \land (\neg p \lor r) \equiv \neg p \lor (q \land r) \equiv p \to (q \land r)$$ (áp dụng luật phân phối).
+(b) $(p \to q) \land (p \to r) \equiv (\neg p \lor q) \land (\neg p \lor r) \equiv \neg p \lor (q \land r) \equiv p \to (q \land r)$ (áp dụng luật phân phối).
 
-(c) Đây chính là định nghĩa của phép tương đương hai chiều: $$p \leftrightarrow q \equiv (p \to q) \land (q \to p)$$, có thể kiểm chứng trực tiếp bằng bảng chân trị.
+(c) Đây chính là định nghĩa của phép tương đương hai chiều: $p \leftrightarrow q \equiv (p \to q) \land (q \to p)$, có thể kiểm chứng trực tiếp bằng bảng chân trị.
 
-(d) $$p \to (q \to p) \equiv \neg p \lor (\neg q \lor p) \equiv (\neg p \lor p) \lor \neg q \equiv T \lor \neg q \equiv T$$.
+(d) $p \to (q \to p) \equiv \neg p \lor (\neg q \lor p) \equiv (\neg p \lor p) \lor \neg q \equiv T \lor \neg q \equiv T$.
     Vậy biểu thức là hằng đúng (tautology).
 
 </details>
@@ -698,16 +698,16 @@ Cho biểu thức: $$(p \land q) \lor (\neg p \land \neg q)$$.
 <details>
 <summary>Đáp án</summary>
 
-(a) **Đã ở dạng DNF** — DNF là tuyển của các hội. Biểu thức có dạng $$C_1 \lor C_2$$ với $$C_1 = p \land q$$ và $$C_2 = \neg p \land \neg q$$; mỗi hội chứa đúng hai literal và mỗi biến xuất hiện đúng một lần (đây cũng là DNF đầy đủ).
+(a) **Đã ở dạng DNF** — DNF là tuyển của các hội. Biểu thức có dạng $C_1 \lor C_2$ với $C_1 = p \land q$ và $C_2 = \neg p \land \neg q$; mỗi hội chứa đúng hai literal và mỗi biến xuất hiện đúng một lần (đây cũng là DNF đầy đủ).
 
 (b) Chuyển sang CNF:
-    $$(p \land q) \lor (\neg p \land \neg q)$$
-    $$\equiv [(p \land q) \lor \neg p] \land [(p \land q) \lor \neg q]$$ (phân phối)
-    $$\equiv [(p \lor \neg p) \land (q \lor \neg p)] \land [(p \lor \neg q) \land (q \lor \neg q)]$$
-    $$\equiv [T \land (q \lor \neg p)] \land [(p \lor \neg q) \land T]$$
-    $$\equiv (\neg p \lor q) \land (p \lor \neg q)$$.
+    $(p \land q) \lor (\neg p \land \neg q)$
+    $\equiv [(p \land q) \lor \neg p] \land [(p \land q) \lor \neg q]$ (phân phối)
+    $\equiv [(p \lor \neg p) \land (q \lor \neg p)] \land [(p \lor \neg q) \land (q \lor \neg q)]$
+    $\equiv [T \land (q \lor \neg p)] \land [(p \lor \neg q) \land T]$
+    $\equiv (\neg p \lor q) \land (p \lor \neg q)$.
 
-(c) Biểu thức này tương đương với **$$p \leftrightarrow q$$** (phép tương đương). Dạng DNF diễn đạt "hoặc cả hai cùng đúng, hoặc cả hai cùng sai"; dạng CNF diễn đạt "nếu $$p$$ thì $$q$$, và nếu $$q$$ thì $$p$$".
+(c) Biểu thức này tương đương với **$p \leftrightarrow q$** (phép tương đương). Dạng DNF diễn đạt "hoặc cả hai cùng đúng, hoặc cả hai cùng sai"; dạng CNF diễn đạt "nếu $p$ thì $q$, và nếu $q$ thì $p$".
 
 </details>
 
@@ -728,11 +728,11 @@ if (user.is_active and not user.is_banned) or (user.is_active and user.has_vip):
 <details>
 <summary>Đáp án</summary>
 
-(a) Đặt $$a$$: `user.is_active`, $$b$$: `user.is_banned`, $$v$$: `user.has_vip`.
-    Biểu thức: $$(a \land \neg b) \lor (a \land v)$$.
+(a) Đặt $a$: `user.is_active`, $b$: `user.is_banned`, $v$: `user.has_vip`.
+    Biểu thức: $(a \land \neg b) \lor (a \land v)$.
 
 (b) Rút gọn theo luật phân phối:
-    $$(a \land \neg b) \lor (a \land v) \equiv a \land (\neg b \lor v)$$.
+    $(a \land \neg b) \lor (a \land v) \equiv a \land (\neg b \lor v)$.
     Ý nghĩa: "Người dùng đang hoạt động VÀ (không bị cấm HOẶC có VIP)".
 
 (c) Mã nguồn sau khi rút gọn:
@@ -741,9 +741,9 @@ if (user.is_active and not user.is_banned) or (user.is_active and user.has_vip):
         grant_access()
     ```
 
-(d) Kiểm tra với $$a = T, b = T, v = F$$:
-    - Mã gốc: $$(T \land \neg T) \lor (T \land F) = (T \land F) \lor F = F \lor F = F$$.
-    - Mã rút gọn: $$T \land (\neg T \lor F) = T \land (F \lor F) = T \land F = F$$.
+(d) Kiểm tra với $a = T, b = T, v = F$:
+    - Mã gốc: $(T \land \neg T) \lor (T \land F) = (T \land F) \lor F = F \lor F = F$.
+    - Mã rút gọn: $T \land (\neg T \lor F) = T \land (F \lor F) = T \land F = F$.
     Hai cách cho kết quả giống nhau (cả hai đều không cấp quyền truy cập).
 
 </details>
@@ -761,15 +761,15 @@ Cho các biểu thức sau, xác định xem mỗi biểu thức đã ở dạng
 <details>
 <summary>Đáp án</summary>
 
-(a) **CNF** — Hội của hai mệnh đề con tuyển các literal: $$(p \lor q)$$ và $$(\neg p \lor r)$$.
+(a) **CNF** — Hội của hai mệnh đề con tuyển các literal: $(p \lor q)$ và $(\neg p \lor r)$.
 
-(b) **DNF** — Tuyển của ba hội các literal: $$(p \land \neg q)$$, $$(q \land r)$$ và $$(\neg p \land \neg r)$$.
+(b) **DNF** — Tuyển của ba hội các literal: $(p \land \neg q)$, $(q \land r)$ và $(\neg p \land \neg r)$.
 
-(c) **CNF** — Biểu thức đang ở dạng hội của hai clause $$(p \lor q)$$ và $$(r)$$. Để đưa về DNF, cần áp dụng luật phân phối thành $$(p \land r) \lor (q \land r)$$.
+(c) **CNF** — Biểu thức đang ở dạng hội của hai clause $(p \lor q)$ và $(r)$. Để đưa về DNF, cần áp dụng luật phân phối thành $(p \land r) \lor (q \land r)$.
 
-(d) **DNF** — Tuyển của hai term $$p$$ và $$(q \land r)$$ (trong đó $$p$$ là hội của một literal).
+(d) **DNF** — Tuyển của hai term $p$ và $(q \land r)$ (trong đó $p$ là hội của một literal).
 
-(e) **Không phải dạng chuẩn** — Biểu thức còn chứa phép kéo theo $$\to$$. Sau khi loại bỏ phép kéo theo, ta thu được $$(\neg p \lor q) \land (\neg q \lor r)$$, khi đó mới là CNF.
+(e) **Không phải dạng chuẩn** — Biểu thức còn chứa phép kéo theo $\to$. Sau khi loại bỏ phép kéo theo, ta thu được $(\neg p \lor q) \land (\neg q \lor r)$, khi đó mới là CNF.
 
 </details>
 

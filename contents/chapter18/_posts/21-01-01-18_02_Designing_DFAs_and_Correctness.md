@@ -30,7 +30,7 @@ Thiết kế một DFA đúng bản chất là chọn **bất biến** rõ ràng
 
 </div>
 
-## Bản đồ kiến thức nền: Nghệ thuật Thiết kế DFA & Chứng minh Tính đúng
+## Kiến thức cần nhớ: Nghệ thuật Thiết kế DFA & Chứng minh Tính đúng
 
 ### 1. Tư duy "Trạng thái = Tóm tắt Tối thiểu của Quá khứ"
 - **Bản chất:** Khi đang đọc dở một chuỗi, bạn cần nhớ **đúng thông tin gì** để quyết định số phận của chuỗi về sau? Mỗi khả năng của thông tin cần nhớ ấy chính là **1 trạng thái** của DFA!
@@ -44,7 +44,7 @@ Thiết kế một DFA đúng bản chất là chọn **bất biến** rõ ràng
 ### 3. Chứng minh Tính đúng bằng Quy nạp theo Độ dài Chuỗi $$\lvert w\rvert$$
 - **Bản chất:** Phát biểu mệnh đề bất biến $$P(w)$$: *"$$\hat{\delta}(q_0, w) = q_i \iff w$$ thỏa tính chất $$i$$"*, rồi chứng minh cơ sở $$\lvert w\rvert = 0$$ và bước quy nạp $$w \to wa$$!
 
-## Ví dụ tính tay cầm tay chỉ việc: Thiết kế DFA nhận số nhị phân chia hết cho 3
+## Ví dụ tính tay làm từng bước: Thiết kế DFA nhận số nhị phân chia hết cho 3
 
 Xây dựng DFA trên $$\Sigma = \{0, 1\}$$ nhận mọi chuỗi nhị phân có giá trị thập phân chia hết cho $$3$$:
 1. **Định nghĩa ý nghĩa 3 trạng thái:** $$q_r$$ ($$r \in \{0, 1, 2\}$$) nghĩa là *"giá trị số của chuỗi đã đọc tới hiện tại chia 3 dư $$r$$"*. Trạng thái đầu $$q_0$$, trạng thái chấp nhận $$F = \{q_0\}$$.
@@ -60,8 +60,7 @@ Xây dựng DFA trên $$\Sigma = \{0, 1\}$$ nhận mọi chuỗi nhị phân có
    - `110`: $$q_0 \xrightarrow{1} q_1 \xrightarrow{1} q_0 \xrightarrow{0} q_0 \in F$$ (6 chia hết cho 3!). ✓
    - `101`: $$q_0 \xrightarrow{1} q_1 \xrightarrow{0} q_2 \xrightarrow{1} q_2 \notin F$$ (5 chia 3 dư 2!). ✓
 
-### Khung giải thích: Quy trình 4 bước thiết kế DFA chuẩn không lỗi (nên đọc chậm)
-
+### Giải thích: Quy trình 4 bước thiết kế DFA chuẩn không lỗi
 #### Bước 1: Xác định thông tin tối thiểu cần lưu (Đặt tên trạng thái rõ nghĩa)
 Viết ra câu mô tả bằng lời cho từng trạng thái $$q_i$$ (như "dư 0, dư 1, dư 2" hay "đã khớp 0, 1, 2 ký tự").
 

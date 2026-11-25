@@ -22,7 +22,7 @@ Năm 1736, cư dân thành phố Königsberg đố nhau xem có thể đi dạo 
 
 **Mạch bài học:** Định nghĩa hình thức $$G = (V, E)$$ $$\longrightarrow$$ phân loại đồ thị (đơn, đa đồ thị, có hướng, có trọng số) $$\longrightarrow$$ **bậc đỉnh** (degree, in-degree, out-degree) $$\longrightarrow$$ **Định lý Bắt tay (Handshaking Lemma)** và ứng dụng trong tin học.
 
-## Bản đồ kiến thức nền: Lý thuyết đồ thị mở đầu bằng những khái niệm trụ cột nào?
+## Kiến thức cần nhớ: Lý thuyết đồ thị mở đầu bằng những khái niệm trụ cột nào?
 
 - **Trừu tượng hóa quan hệ nhị phân (Graph Abstraction $$G=(V,E)$$):** Mọi hệ thống gồm các thực thể và kết nối giữa chúng — từ mạng xã hội, định tuyến Internet, phụ thuộc gói phần mềm (`npm`/`pip`) đến bản đồ đường đi — đều thu gọn về tập đỉnh $$V$$ và tập cạnh $$E$$.
 - **Phân loại cấu trúc cạnh (Graph Taxonomy):** Phân biệt đồ thị vô hướng vs. có hướng (digraph), đồ thị đơn (không khuyên, không cạnh song song) vs. đa đồ thị (multigraph), và đồ thị có trọng số (weighted graph) để chọn đúng thuật toán tương ứng.
@@ -73,7 +73,7 @@ Khi mỗi cạnh được gán thêm một số thực (chẳng hạn chi phí, 
 
 ![Đồ thị có hướng](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_directed_example.svg)
 
-<p class="textbook-figure-caption" data-figure="12.2">Đồ thị có hướng: cạnh $$(u,v)$$ biểu diễn quan hệ một chiều (phụ thuộc, gọi hàm, luồng dữ liệu).</p>
+<p class="textbook-figure-caption" data-figure="12.2">Đồ thị có hướng: cạnh $(u,v)$ biểu diễn quan hệ một chiều (phụ thuộc, gọi hàm, luồng dữ liệu).</p>
 
 <div class="textbook-example" markdown="1">
 
@@ -106,7 +106,7 @@ Ngoài hướng và trọng số, đồ thị còn được phân loại theo c�
 
 ![Đồ thị đầy đủ và hai phía](/discrete-mathematics-for-computer-science-iuh/img/course/Graph_complete_bipartite.svg)
 
-<p class="textbook-figure-caption" data-figure="12.4">Trái: đồ thị đầy đủ $$K_4$$ gồm 6 cạnh. Phải: đồ thị hai phía với các cạnh chỉ nối giữa hai tập đỉnh, không nối trong cùng một tập.</p>
+<p class="textbook-figure-caption" data-figure="12.4">Trái: đồ thị đầy đủ $K_4$ gồm 6 cạnh. Phải: đồ thị hai phía với các cạnh chỉ nối giữa hai tập đỉnh, không nối trong cùng một tập.</p>
 
 <div class="textbook-example" markdown="1">
 
@@ -220,7 +220,7 @@ So sánh hai đồ thị nhỏ để kiểm tra xem chúng có cùng cấu trúc
 </div>
 <script src="{{ '/public/js/graph-isomorphism-checker.js' | relative_url }}"></script>
 
-## Ví dụ tính tay cầm tay chỉ việc: Kiểm chứng Định lý Bắt tay và bác bỏ đồ thị bất khả thi
+## Ví dụ tính tay làm từng bước: Kiểm chứng Định lý Bắt tay và bác bỏ đồ thị bất khả thi
 
 **Ví dụ 1 — Tính bậc đỉnh trên một mạng nội bộ nhỏ 5 máy chủ:**
 Cho đồ thị vô hướng đơn $$G = (V, E)$$ với $$V = \{A, B, C, D, E\}$$ và 6 dây cáp:
@@ -240,8 +240,7 @@ Một kiến trúc sư đề xuất nối **9 máy chủ** sao cho mỗi máy k�
 - Tính tổng bậc yêu cầu: $$\sum \deg(v) = 9 \times 3 = 27$$ — là một **số lẻ**!
 - Vì $$2\vert E \vert$$ bắt buộc phải chẵn, nên **chắc chắn KHÔNG tồn tại** sơ đồ nối dây nào thỏa mãn (khỏi tốn công thử vẽ!).
 
-### Khung giải thích: Ba câu hỏi đầu tiên khi mô hình hóa bất kỳ bài toán nào bằng đồ thị (nên đọc chậm)
-
+### Giải thích: Ba câu hỏi đầu tiên khi mô hình hóa bất kỳ bài toán nào bằng đồ thị
 1. **Bước 1 — Đỉnh là gì, cạnh là gì?** Xác định rõ thực thể (người dùng, giao lộ, hàm gọi) làm đỉnh và mối quan hệ (kết bạn, đường một chiều, lời gọi hàm) làm cạnh.
 2. **Bước 2 — Quan hệ có đối xứng không?** Nếu "A theo dõi B" không kéo theo "B theo dõi A" (như X/Twitter hay phụ thuộc thư viện), bắt buộc dùng **đồ thị có hướng** và theo dõi riêng $$\deg^-(v), \deg^+(v)$$ với bất biến $$\sum \deg^-(v) = \sum \deg^+(v) = \vert E \vert$$.
 3. **Bước 3 — Dùng Định lý Bắt tay làm phép kiểm tra nhanh:** Tổng bậc chia 2 cho biết ngay số cạnh, và số đỉnh bậc lẻ phải luôn chẵn — quy tắc bất biến đơn giản nhưng chặn đứng rất nhiều sai sót thiết kế.
@@ -259,9 +258,9 @@ Một đồ thị vô hướng có 8 đỉnh, mỗi đỉnh đều có bậc 3. 
 
 Theo định lý bắt tay:
 
-$$
+$
 \sum \deg(v) = 8 \cdot 3 = 24 = 2\lvert E \rvert \implies \lvert E \rvert = 12.
-$$
+$
 
 </details>
 
@@ -272,11 +271,11 @@ $$
 <details>
 <summary>Đáp án</summary>
 
-$$
+$
 \lvert E \rvert = \binom{5}{2} = 10, \qquad \deg(v) = 4 \text{ với mọi đỉnh}.
-$$
+$
 
-Kiểm tra lại bằng định lý bắt tay: $$5 \cdot 4 = 20 = 2 \cdot 10$$.
+Kiểm tra lại bằng định lý bắt tay: $5 \cdot 4 = 20 = 2 \cdot 10$.
 
 </details>
 
@@ -287,7 +286,7 @@ Cho dãy số nguyên $$3, 3, 2, 2, 2, 2$$. Dãy này có thể là dãy bậc c
 <details>
 <summary>Đáp án</summary>
 
-Tổng bậc bằng $$14$$ (chẵn), suy ra $$\vert E\vert  = 7$$. Số đỉnh bậc lẻ là 2 (số chẵn), thỏa mãn hệ quả của định lý bắt tay. Vì vậy, **có thể** tồn tại đồ thị vô hướng ứng với dãy bậc này (định lý bắt tay là điều kiện cần; với đồ thị đơn còn cần kiểm tra thêm tiêu chuẩn Havel–Hakimi hoặc Erdős–Gállai, ngoài phạm vi bài học này).
+Tổng bậc bằng $14$ (chẵn), suy ra $\vert E\vert  = 7$. Số đỉnh bậc lẻ là 2 (số chẵn), thỏa mãn hệ quả của định lý bắt tay. Vì vậy, **có thể** tồn tại đồ thị vô hướng ứng với dãy bậc này (định lý bắt tay là điều kiện cần; với đồ thị đơn còn cần kiểm tra thêm tiêu chuẩn Havel–Hakimi hoặc Erdős–Gállai, ngoài phạm vi bài học này).
 
 </details>
 
@@ -298,22 +297,22 @@ Mô hình hóa hệ thống build gồm các gói `app`, `libA`, `libB`, `core`.
 <details>
 <summary>Đáp án</summary>
 
-$$
+$
 V = \{\mathrm{app}, \mathrm{libA}, \mathrm{libB}, \mathrm{core}\},
-$$
+$
 
-$$
+$
 E = \{(\mathrm{app},\mathrm{libA}), (\mathrm{app},\mathrm{libB}), (\mathrm{libA},\mathrm{core}), (\mathrm{libB},\mathrm{core})\}.
-$$
+$
 
-| Đỉnh | $$\deg^+$$ | $$\deg^-$$ |
+| Đỉnh | $\deg^+$ | $\deg^-$ |
 |:---|:---:|:---:|
 | app | 2 | 0 |
 | libA | 1 | 1 |
 | libB | 1 | 1 |
 | core | 0 | 2 |
 
-Tổng bậc ra bằng tổng bậc vào và bằng $$\vert E\vert  = 4$$.
+Tổng bậc ra bằng tổng bậc vào và bằng $\vert E\vert  = 4$.
 
 </details>
 

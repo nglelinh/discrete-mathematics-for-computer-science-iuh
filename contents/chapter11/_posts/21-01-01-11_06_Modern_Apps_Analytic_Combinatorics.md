@@ -59,14 +59,13 @@ Ghi chú này không xây dựng thêm đồng nhất thức hàm sinh mới, m�
 
 **Câu hỏi.** (1) Hàm sinh nào có thể mã hóa “số lượng bộ lọc $$m$$ bit”? (2) Nguyên lý bao hàm–loại trừ xuất hiện ở bước nào khi tính tỷ lệ dương tính giả với ba vị trí băm?
 
-### Bản đồ kiến thức nền: Phép đếm, Hàm sinh và Bao hàm – Loại trừ thiết lập cận dưới bộ lọc ra sao?
+### Kiến thức cần nhớ: Phép đếm, Hàm sinh và Bao hàm – Loại trừ thiết lập cận dưới bộ lọc ra sao?
 
 - **Cận dưới lý thuyết thông tin từ phép đếm:** Mọi cấu trúc dữ liệu biểu diễn tập con $$n$$ phần tử với tỷ lệ dương tính giả $$\le \varepsilon$$ đều cần phân tách $$\binom{\vert U \vert}{n}$$ tập bằng $$2^m$$ trạng thái bit, kéo theo cận cứng $$m \ge n\log_2(1/\varepsilon)$$ bit.
 - **Hàm sinh & Ngưỡng bóc vỏ siêu đồ thị (Hypergraph Peeling):** Binary fuse filter dựng siêu đồ thị băm bậc 3 rồi "bóc" dần các đỉnh bậc 1; tổ hợp giải tích (dùng hàm sinh phân tích lõi siêu đồ thị ngẫu nhiên) dự đoán chính xác ngưỡng tải (~87%–92%) để quá trình bóc vỏ thành công.
 - **Bao hàm – Loại trừ cho va chạm đa hàm băm:** Khi kiểm tra $$k$$ vị trí băm, xác suất có ít nhất một vị trí báo `0` (loại bỏ đúng phần tử ngoại lai) chính là tổng xen kẽ của Nguyên lý Bao hàm – Loại trừ.
 
-### Khung giải thích: Tính tay Bao hàm – Loại trừ cho 3 vị trí băm (nên đọc chậm)
-
+### Giải thích: Tính tay Bao hàm – Loại trừ cho 3 vị trí băm
 1. **Bước 1 — Thiết lập bài toán:** Giả sử mỗi phép tra cứu kiểm tra $$k = 3$$ vị trí băm độc lập, xác suất mỗi vị trí đang là bit `1` là $$0{,}2$$ (suy ra xác suất gặp bit `0` là $$\Pr(A_i) = 0{,}8$$).
 2. **Bước 2 — Tính xác suất loại bỏ đúng (có ít nhất một bit `0`) bằng Bao hàm – Loại trừ:**
    $$\Pr(A_1 \cup A_2 \cup A_3) = 3(0{,}8) - 3(0{,}8)^2 + (0{,}8)^3 = 2{,}4 - 1{,}92 + 0{,}512 = 0{,}992.$$

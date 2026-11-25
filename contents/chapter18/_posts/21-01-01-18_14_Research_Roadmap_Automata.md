@@ -19,7 +19,7 @@ excerpt: "Tổng hợp mạch kiến thức 18.1–18.13, các nhánh nghiên c�
 
 Sau 13 bài học từ DFA nhỏ bé đến bài toán dừng bất khả quyết định của Turing, bạn đã đi qua gần một thế kỷ nền móng của Khoa học Máy tính lý thuyết. Nhưng lý thuyết automata không hề nằm yên trong sách giáo khoa cổ điển: nó đang sống động trong các công cụ kiểm chứng phần cứng chip bán dẫn, bộ biên dịch hiện đại, xác minh giao thức mạng và cả việc phân tích giới hạn của mạng nơ-ron.
 
-## Bản đồ kiến thức nền: Bốn nhánh nghiên cứu mở rộng từ Chương 18
+## Kiến thức cần nhớ: Bốn nhánh nghiên cứu mở rộng từ Chương 18
 
 1. **Kiểm chứng mô hình (Model Checking) & Automata trên từ vô hạn ($$\omega$$-automata)**:
    Hệ điều hành và giao thức mạng không dừng sau vài bước mà chạy liên tục vô hạn. Büchi automata và logic thời gian tuyến tính (LTL) kiểm tra tự động các thuộc tính như *"mọi yêu cầu gửi đi cuối cùng đều được phản hồi"*.
@@ -30,7 +30,7 @@ Sau 13 bài học từ DFA nhỏ bé đến bài toán dừng bất khả quyế
 4. **Lý thuyết tính toán được & Độ phức tạp (Computability → Complexity)**:
    Chương 18 hỏi *"Bài toán có giải được không?"*; Chương 20 sẽ tiếp nối bằng câu hỏi thực tế hơn: *"Nếu giải được, có giải được trong thời gian đa thức hay không?"*
 
-## Bản đồ kiến thức 18.1–18.13
+## Tóm tắt các mục 18.1–18.13
 
 Mạch lý thuyết của chương đi theo trình tự: DFA → sự tương đương NFA ≡ DFA → biểu thức chính quy và định lý Kleene → bổ đề bơm và định lý Myhill–Nerode → máy Turing → tính không quyết định được.
 
@@ -52,7 +52,7 @@ Mạch lý thuyết của chương đi theo trình tự: DFA → sự tương đ
 - **Tuần 8:** Chọn một nhánh nghiên cứu và đọc khảo sát khoảng 10 bài báo.
 - **Tuần 9–10:** Viết ghi chú tổng hợp khoảng 6 trang hoặc chuẩn bị bài trình bày ngắn.
 
-### Khung giải thích (nên đọc chậm): Ánh xạ nhanh 4 câu hỏi nghiên cứu thực tế về đúng mô hình Chương 18
+### Giải thích: Ánh xạ nhanh 4 câu hỏi nghiên cứu thực tế về đúng mô hình Chương 18
 
 | Bài toán thực tế trong kỹ thuật phần mềm | Câu hỏi lý thuyết tương ứng | Công cụ Chương 18 liên quan |
 | :--- | :--- | :--- |

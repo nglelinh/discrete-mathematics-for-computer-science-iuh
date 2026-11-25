@@ -45,7 +45,7 @@ excerpt: "Định lý chia, số nguyên tố, định lý cơ bản của số 
 
 </div>
 
-## Bản đồ kiến thức nền: Tính chia hết, Số nguyên tố và Thuật toán Euclid
+## Kiến thức cần nhớ: Tính chia hết, Số nguyên tố và Thuật toán Euclid
 
 ### 1. Thuật toán Chia & Định lý Cơ bản của Số học (FTA)
 - **Bản chất:** Mọi số nguyên $$a$$ chia cho $$d > 0$$ đều có thương $$q$$ và số dư $$r$$ duy nhất ($$a = dq + r,\; 0 \le r < d$$). Định lý Cơ bản của Số học khẳng định mọi số nguyên $$n \ge 2$$ đều phân tích **duy nhất** thành tích các lũy thừa số nguyên tố — các số nguyên tố chính là **bảng tuần hoàn nguyên tử** của tập số nguyên $$\mathbb{Z}$$!
@@ -56,7 +56,7 @@ excerpt: "Định lý chia, số nguyên tố, định lý cơ bản của số 
 ### 3. Phân bố Số nguyên tố & Sàng Eratosthenes
 - **Bản chất:** Có vô hạn số nguyên tố (chứng minh phản chứng tuyệt đẹp của Euclid!), mật độ giảm dần theo **Định lý Số nguyên tố** $$\pi(x) \sim x / \ln x$$, và Sàng Eratosthenes liệt kê mọi số nguyên tố $$\le N$$ trong $$O(N \log\log N)$$!
 
-## Ví dụ tính tay cầm tay chỉ việc: Chạy Thuật toán Euclid mở rộng cho $$(a, b) = (252, 198)$$
+## Ví dụ tính tay làm từng bước: Chạy Thuật toán Euclid mở rộng cho $$(a, b) = (252, 198)$$
 
 1. **Chiều xuôi (chia liên tiếp để tìm $$\gcd$$):**
    - $$252 = 1 \cdot 198 + 54$$
@@ -71,8 +71,7 @@ excerpt: "Định lý chia, số nguyên tố, định lý cơ bản của số 
      $$18 = 4(252 - 198) - 198 = 4\cdot 252 + (-5)\cdot 198!$$
    - **Kiểm tra trực tiếp bằng tay:** $$4 \times 252 - 5 \times 198 = 1008 - 990 = 18$$! ✓ (Cặp Bézout là $$x = 4,\; y = -5$$!)
 
-### Khung giải thích: Tại sao Thuật toán Euclid nhanh đến khó tin? (nên đọc chậm)
-
+### Giải thích: Tại sao Thuật toán Euclid nhanh đến khó tin?
 #### Bước 1: Bất biến GCD qua phép chia lấy dư
 Mọi ước chung của $$(a, b)$$ đều chia hết cho $$r = a - qb$$ và ngược lại $$\implies \gcd(a, b) = \gcd(b, r)$$.
 

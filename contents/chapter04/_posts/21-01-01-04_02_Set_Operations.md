@@ -12,7 +12,7 @@ excerpt: "Trình bày các phép toán hợp, giao, hiệu, phần bù, hiệu �
 
 Nếu tập hợp là danh từ thì các **phép toán tập hợp**—Hợp ($$\cup$$), Giao ($$\cap$$), Hiệu ($$\setminus$$), Hiệu đối xứng ($$\triangle$$) và Phần bù ($$\overline{A}$$)—là động từ giúp ta lọc khách hàng chung giữa hai chiến dịch, gộp quyền truy cập (RBAC), hay thực hiện `UNION`, `INTERSECT`, `EXCEPT` trong SQL.
 
-## Bản đồ kiến thức nền: Bốn trục liên kết của Phép toán Tập hợp
+## Kiến thức cần nhớ: Bốn trục liên kết của Phép toán Tập hợp
 
 1. **Song hành 1–1 giữa Phép toán Tập hợp và Phép toán Logic**:
    Mỗi phép toán tập hợp đều ánh xạ thẳng sang một toán tử logic Chương 1: $$x \in A \cup B \iff (x \in A) \lor (x \in B)$$; $$x \in A \cap B \iff (x \in A) \land (x \in B)$$; $$x \in \overline{A} \iff \neg(x \in A)$$; $$x \in A \triangle B \iff (x \in A) \oplus (x \in B)$$.
@@ -208,7 +208,7 @@ not (x in A and x in B) == (x not in A) or (x not in B)
 
 **Quy tắc ghi nhớ**: Khi đưa `not` vào trong ngoặc, đổi `or` thành `and` và ngược lại.
 
-### Khung giải thích (nên đọc chậm): Tính tay 4 phép toán tập hợp bằng cả Tập hợp và Bitvector 6-bit
+### Giải thích: Tính tay 4 phép toán tập hợp bằng cả Tập hợp và Bitvector 6-bit
 
 Cho tập vũ trụ 6 quyền truy cập $$U = \{0:\text{read}, 1:\text{write}, 2:\text{exec}, 3:\text{del}, 4:\text{share}, 5:\text{admin}\}$$.
 - Vai trò `Editor`: $$A = \{0, 1, 4\}$$ → bitvector 6-bit (bit 5 bên trái → bit 0 bên phải): `010011`.
@@ -288,11 +288,11 @@ e) $$A^c$$
 <details>
 <summary>Đáp án</summary>
 
-a) $$A \cup B = \{1, 2, 3, 4, 5, 6, 7, 8\}$$  
-b) $$A \cap B = \{4, 5\}$$  
-c) $$A \setminus B = \{1, 2, 3\}$$  
-d) $$B \setminus A = \{6, 7, 8\}$$  
-e) $$A^c = U \setminus A = \{6, 7, 8, 9, 10\}$$
+a) $A \cup B = \{1, 2, 3, 4, 5, 6, 7, 8\}$  
+b) $A \cap B = \{4, 5\}$  
+c) $A \setminus B = \{1, 2, 3\}$  
+d) $B \setminus A = \{6, 7, 8\}$  
+e) $A^c = U \setminus A = \{6, 7, 8, 9, 10\}$
 </details>
 
 ### Bài tập 2: Luật De Morgan
@@ -302,11 +302,11 @@ Chứng minh $$(A \cup B)^c = A^c \cap B^c$$ bằng phương pháp lấy phần 
 <details>
 <summary>Đáp án</summary>
 
-Lấy $$x \in (A \cup B)^c$$. Khi đó $$x \notin (A \cup B)$$, nghĩa là $$x \notin A$$ và $$x \notin B$$. Suy ra $$x \in A^c$$ và $$x \in B^c$$, tức $$x \in A^c \cap B^c$$.
+Lấy $x \in (A \cup B)^c$. Khi đó $x \notin (A \cup B)$, nghĩa là $x \notin A$ và $x \notin B$. Suy ra $x \in A^c$ và $x \in B^c$, tức $x \in A^c \cap B^c$.
 
-Ngược lại, lấy $$x \in A^c \cap B^c$$. Khi đó $$x \in A^c$$ và $$x \in B^c$$, nghĩa là $$x \notin A$$ và $$x \notin B$$, suy ra $$x \notin (A \cup B)$$, tức $$x \in (A \cup B)^c$$.
+Ngược lại, lấy $x \in A^c \cap B^c$. Khi đó $x \in A^c$ và $x \in B^c$, nghĩa là $x \notin A$ và $x \notin B$, suy ra $x \notin (A \cup B)$, tức $x \in (A \cup B)^c$.
 
-Vậy $$(A \cup B)^c = A^c \cap B^c$$. ∎
+Vậy $(A \cup B)^c = A^c \cap B^c$. ∎
 </details>
 
 ### Bài tập 3: Nhận diện phép toán
@@ -321,10 +321,10 @@ d) Tìm sinh viên đăng ký đúng một trong hai môn.
 <details>
 <summary>Đáp án</summary>
 
-a) Hợp ($$\cup$$)  
-b) Giao ($$\cap$$)  
-c) Hiệu ($$\setminus$$)  
-d) Hiệu đối xứng ($$\triangle$$)
+a) Hợp ($\cup$)  
+b) Giao ($\cap$)  
+c) Hiệu ($\setminus$)  
+d) Hiệu đối xứng ($\triangle$)
 </details>
 
 ### Bài tập 4: Tính chất của phép toán tập hợp
@@ -352,23 +352,23 @@ Trong các khẳng định sau, khẳng định nào luôn đúng với mọi t�
 <details>
 <summary>Đáp án</summary>
 
-(a) **Sai.** Phản ví dụ: $$S = \{1\}, T = \{2\}$$ cho $$S \setminus T = \{1\} \ne \{2\} = T \setminus S$$.
+(a) **Sai.** Phản ví dụ: $S = \{1\}, T = \{2\}$ cho $S \setminus T = \{1\} \ne \{2\} = T \setminus S$.
 
-(b) **Đúng.** $$x \in S \setminus T \iff x \in S \land x \notin T \iff x \in S \land x \in \overline{T} \iff x \in S \cap \overline{T}$$.
+(b) **Đúng.** $x \in S \setminus T \iff x \in S \land x \notin T \iff x \in S \land x \in \overline{T} \iff x \in S \cap \overline{T}$.
 
-(c) **Sai.** Phản ví dụ: $$S = \{1\}, T = \{2\}$$ cho $$S \setminus T = \{1\} \ne \{1, 2\} = S \cup T$$.
+(c) **Sai.** Phản ví dụ: $S = \{1\}, T = \{2\}$ cho $S \setminus T = \{1\} \ne \{1, 2\} = S \cup T$.
 
-(d) **Đúng.** Vì $$S \setminus S = \emptyset$$ và $$T \setminus T = \emptyset$$ với mọi tập $$S, T$$.
+(d) **Đúng.** Vì $S \setminus S = \emptyset$ và $T \setminus T = \emptyset$ với mọi tập $S, T$.
 
-(e) **Đúng.** Ta có $$S \setminus (S \setminus T) = S \cap T$$ và $$T \setminus (T \setminus S) = T \cap S = S \cap T$$, nên hai vế luôn bằng nhau.
+(e) **Đúng.** Ta có $S \setminus (S \setminus T) = S \cap T$ và $T \setminus (T \setminus S) = T \cap S = S \cap T$, nên hai vế luôn bằng nhau.
 
-(f) **Sai.** Vế trái là $$(U \setminus T) \setminus S = U \setminus (T \cup S)$$, còn vế phải là $$U \setminus (T \setminus S) = (U \setminus T) \cup S$$. Phản ví dụ: $$U = \{1, 2, 3\}, T = \{1\}, S = \{2\}$$, khi đó $$(U \setminus T) \setminus S = \{3\}$$ còn $$U \setminus (T \setminus S) = \{2, 3\}$$.
+(f) **Sai.** Vế trái là $(U \setminus T) \setminus S = U \setminus (T \cup S)$, còn vế phải là $U \setminus (T \setminus S) = (U \setminus T) \cup S$. Phản ví dụ: $U = \{1, 2, 3\}, T = \{1\}, S = \{2\}$, khi đó $(U \setminus T) \setminus S = \{3\}$ còn $U \setminus (T \setminus S) = \{2, 3\}$.
 
-(g) **Đúng.** $$(S \setminus T) \cup (T \setminus S) = S \triangle T$$; mọi phần tử thuộc $$S \triangle T$$ đều nằm trong $$U$$ và không đồng thời thuộc cả $$S$$ và $$T$$, nên thuộc $$U \setminus (S \cap T)$$.
+(g) **Đúng.** $(S \setminus T) \cup (T \setminus S) = S \triangle T$; mọi phần tử thuộc $S \triangle T$ đều nằm trong $U$ và không đồng thời thuộc cả $S$ và $T$, nên thuộc $U \setminus (S \cap T)$.
 
-(h) **Sai.** Phép lấy phần bù đảo chiều bao hàm: nếu $$S \subseteq T$$ thì $$\overline{T} \subseteq \overline{S}$$. Phản ví dụ: $$U = \{1, 2\}, S = \{1\}, T = \{1, 2\}$$ có $$\overline{S} = \{2\} \not\subseteq \emptyset = \overline{T}$$.
+(h) **Sai.** Phép lấy phần bù đảo chiều bao hàm: nếu $S \subseteq T$ thì $\overline{T} \subseteq \overline{S}$. Phản ví dụ: $U = \{1, 2\}, S = \{1\}, T = \{1, 2\}$ có $\overline{S} = \{2\} \not\subseteq \emptyset = \overline{T}$.
 
-(i) **Sai.** Giả thiết $$T \subseteq S \cap T$$ chỉ tương đương với $$T \subseteq S$$, không suy ra $$S \subseteq T$$. Phản ví dụ: $$T = \{1\}, S = \{1, 2\}$$, khi đó $$S \cap T = \{1\}$$ nên $$T \subseteq S \cap T$$ đúng, nhưng $$S = \{1, 2\} \not\subseteq \{1\} = T \cap S$$.
+(i) **Sai.** Giả thiết $T \subseteq S \cap T$ chỉ tương đương với $T \subseteq S$, không suy ra $S \subseteq T$. Phản ví dụ: $T = \{1\}, S = \{1, 2\}$, khi đó $S \cap T = \{1\}$ nên $T \subseteq S \cap T$ đúng, nhưng $S = \{1, 2\} \not\subseteq \{1\} = T \cap S$.
 
 </details>
 
@@ -385,11 +385,11 @@ Trong các khẳng định sau, khẳng định nào luôn đúng với mọi t�
 <details>
 <summary>Đáp án</summary>
 
-(a) **Đúng.** $$(x, y) \in (Q \times R) \cap (S \times T) \iff x \in Q \land y \in R \land x \in S \land y \in T \iff x \in Q \cap S \land y \in R \cap T \iff (x, y) \in (Q \cap S) \times (R \cap T)$$.
+(a) **Đúng.** $(x, y) \in (Q \times R) \cap (S \times T) \iff x \in Q \land y \in R \land x \in S \land y \in T \iff x \in Q \cap S \land y \in R \cap T \iff (x, y) \in (Q \cap S) \times (R \cap T)$.
 
-(b) **Sai.** Phản ví dụ: $$Q = \{1\}, R = \{a\}, S = \{2\}, T = \{b\}$$. Vế trái là $$\{(1,a), (2,b)\}$$, còn vế phải là $$\{1,2\} \times \{a,b\} = \{(1,a), (1,b), (2,a), (2,b)\}$$.
+(b) **Sai.** Phản ví dụ: $Q = \{1\}, R = \{a\}, S = \{2\}, T = \{b\}$. Vế trái là $\{(1,a), (2,b)\}$, còn vế phải là $\{1,2\} \times \{a,b\} = \{(1,a), (1,b), (2,a), (2,b)\}$.
 
-(c) **Sai.** Phản ví dụ: $$Q = \{1,2\}, R = \{a\}, S = \{2\}, T = \{a\}$$. Vế trái là $$\{(1,a), (2,a)\} \setminus \{(2,a)\} = \{(1,a)\}$$, còn vế phải là $$\{1\} \times \emptyset = \emptyset$$.
+(c) **Sai.** Phản ví dụ: $Q = \{1,2\}, R = \{a\}, S = \{2\}, T = \{a\}$. Vế trái là $\{(1,a), (2,a)\} \setminus \{(2,a)\} = \{(1,a)\}$, còn vế phải là $\{1\} \times \emptyset = \emptyset$.
 
 </details>
 
@@ -406,11 +406,11 @@ Trong các khẳng định sau, khẳng định nào luôn đúng với mọi t�
 <details>
 <summary>Đáp án</summary>
 
-(a) **Đúng.** Nếu $$R \cup S \subseteq T$$ thì mọi phần tử của $$R$$ và của $$S$$ đều thuộc $$T$$, suy ra $$R \subseteq T$$ và $$S \subseteq T$$. Ngược lại, nếu $$R \subseteq T$$ và $$S \subseteq T$$ thì mọi phần tử thuộc $$R \cup S$$ đều thuộc $$T$$, nên $$R \cup S \subseteq T$$.
+(a) **Đúng.** Nếu $R \cup S \subseteq T$ thì mọi phần tử của $R$ và của $S$ đều thuộc $T$, suy ra $R \subseteq T$ và $S \subseteq T$. Ngược lại, nếu $R \subseteq T$ và $S \subseteq T$ thì mọi phần tử thuộc $R \cup S$ đều thuộc $T$, nên $R \cup S \subseteq T$.
 
-(b) **Sai.** Chiều $$(\Leftarrow)$$ luôn đúng, nhưng chiều $$(\Rightarrow)$$ không đúng tổng quát. Phản ví dụ: $$R = \{1\}, S = \{2\}, T = \{3\}$$, khi đó $$R \cap S = \emptyset \subseteq T$$ đúng, nhưng cả $$R \subseteq T$$ lẫn $$S \subseteq T$$ đều sai.
+(b) **Sai.** Chiều $(\Leftarrow)$ luôn đúng, nhưng chiều $(\Rightarrow)$ không đúng tổng quát. Phản ví dụ: $R = \{1\}, S = \{2\}, T = \{3\}$, khi đó $R \cap S = \emptyset \subseteq T$ đúng, nhưng cả $R \subseteq T$ lẫn $S \subseteq T$ đều sai.
 
-(c) **Sai** nếu cho phép tập rỗng. Chiều $$(\Leftarrow)$$ luôn đúng, nhưng chiều $$(\Rightarrow)$$ sai khi $$Q = \emptyset$$ hoặc $$R = \emptyset$$. Phản ví dụ: $$Q = \emptyset, R = \{1\}, S = \{1\}, T = \emptyset$$, khi đó $$Q \times R = \emptyset \subseteq \emptyset = S \times T$$ đúng, nhưng $$R \subseteq T$$ sai. *(Mệnh đề chỉ đúng khi bổ sung điều kiện $$Q \ne \emptyset$$ và $$R \ne \emptyset$$.)*
+(c) **Sai** nếu cho phép tập rỗng. Chiều $(\Leftarrow)$ luôn đúng, nhưng chiều $(\Rightarrow)$ sai khi $Q = \emptyset$ hoặc $R = \emptyset$. Phản ví dụ: $Q = \emptyset, R = \{1\}, S = \{1\}, T = \emptyset$, khi đó $Q \times R = \emptyset \subseteq \emptyset = S \times T$ đúng, nhưng $R \subseteq T$ sai. *(Mệnh đề chỉ đúng khi bổ sung điều kiện $Q \ne \emptyset$ và $R \ne \emptyset$.)*
 
 </details>
 

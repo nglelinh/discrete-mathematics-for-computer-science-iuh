@@ -22,7 +22,7 @@ Trong chương này, chúng ta xây dựng **lý thuyết tập hợp** — nề
 
 Mọi đối tượng trong toán học rời rạc—từ đồ thị, quan hệ, hàm số, bảng cơ sở dữ liệu cho đến kiểu `HashSet`/`set` trong lập trình—đều được xây dựng từ một viên gạch nền duy nhất: **Tập hợp (Set)**. Một tập hợp đơn giản là một bộ sưu tập không phân biệt thứ tự và không lặp lại các phần tử phân biệt.
 
-## Bản đồ kiến thức nền: Bốn khái niệm cốt lõi mở đầu Lý thuyết Tập hợp
+## Kiến thức cần nhớ: Bốn khái niệm cốt lõi mở đầu Lý thuyết Tập hợp
 
 1. **Hai đặc tính bất biến: Không thứ tự & Không trùng lặp**:
    $$\{1, 2, 3\} = \{3, 1, 2\} = \{1, 1, 2, 3\}$$. Nếu cần giữ thứ tự ta dùng **bộ (tuple)**; nếu cần giữ số lần lặp ta dùng **đa tập (multiset / bag)**.
@@ -204,10 +204,10 @@ d) $$\emptyset \in A$$
 <details>
 <summary>Đáp án</summary>
 
-a) Đúng, vì 3 là một phần tử của $$A$$.  
-b) Sai, vì 2 không nằm trong $$A$$.  
-c) Đúng, vì 6 không thuộc $$A$$.  
-d) Sai, vì $$\emptyset$$ (tập rỗng) không phải là phần tử của $$A$$ (các phần tử của $$A$$ đều là số nguyên, không phải tập hợp; tuy nhiên $$\emptyset \subseteq A$$ thì đúng).
+a) Đúng, vì 3 là một phần tử của $A$.  
+b) Sai, vì 2 không nằm trong $A$.  
+c) Đúng, vì 6 không thuộc $A$.  
+d) Sai, vì $\emptyset$ (tập rỗng) không phải là phần tử của $A$ (các phần tử của $A$ đều là số nguyên, không phải tập hợp; tuy nhiên $\emptyset \subseteq A$ thì đúng).
 </details>
 
 ### Bài tập 2: Biểu diễn tập hợp
@@ -220,11 +220,11 @@ b) Tập các ước nguyên dương của 12.
 <details>
 <summary>Đáp án</summary>
 
-a) Liệt kê: $$\{0, 2, 4, 6, 8\}$$.  
-   Mô tả: $$A = \{n \in \mathbb{N}_0 \mid n \text{ là số chẵn và } n < 10\}$$ hoặc $$A = \{2k \mid k \in \mathbb{N}_0,\, 2k < 10\}$$.
+a) Liệt kê: $\{0, 2, 4, 6, 8\}$.  
+   Mô tả: $A = \{n \in \mathbb{N}_0 \mid n \text{ là số chẵn và } n < 10\}$ hoặc $A = \{2k \mid k \in \mathbb{N}_0,\, 2k < 10\}$.
 
-b) Liệt kê: $$\{1, 2, 3, 4, 6, 12\}$$.  
-   Mô tả: $$B = \{n \in \mathbb{N} \mid n \ge 1 \text{ và } 12 \text{ chia hết cho } n\}$$.
+b) Liệt kê: $\{1, 2, 3, 4, 6, 12\}$.  
+   Mô tả: $B = \{n \in \mathbb{N} \mid n \ge 1 \text{ và } 12 \text{ chia hết cho } n\}$.
 </details>
 
 ### Bài tập 3: Quan hệ tập con
@@ -234,9 +234,9 @@ Cho $$A = \{1, 2, 3, 4\}$$. Tìm tất cả các tập con của $$A$$ có đún
 <details>
 <summary>Đáp án</summary>
 
-Có 6 tập con: $$\{1,2\}, \{1,3\}, \{1,4\}, \{2,3\}, \{2,4\}, \{3,4\}$$.
+Có 6 tập con: $\{1,2\}, \{1,3\}, \{1,4\}, \{2,3\}, \{2,4\}, \{3,4\}$.
 
-Tổng quát, với tập có $$\lvert A \rvert = n$$, số tập con gồm đúng $$k$$ phần tử là $$C(n,k) = \frac{n!}{k!(n-k)!}$$. Ở đây $$C(4,2) = \frac{4!}{2!2!} = 6$$.
+Tổng quát, với tập có $\lvert A \rvert = n$, số tập con gồm đúng $k$ phần tử là $C(n,k) = \frac{n!}{k!(n-k)!}$. Ở đây $C(4,2) = \frac{4!}{2!2!} = 6$.
 </details>
 
 ### Bài tập 4: Lập trình
@@ -277,16 +277,16 @@ print(A.issubset(B))  # True
 <details>
 <summary>Đáp án</summary>
 
-(a) Ta có $$\text{pow}(\{1\}) = \{\emptyset, \{1\}\}$$. Do đó:
-$$\text{pow}(\text{pow}(\{1\})) = \{\emptyset, \{\emptyset\}, \{\{1\}\}, \{\emptyset, \{1\}\}\}$$.
+(a) Ta có $\text{pow}(\{1\}) = \{\emptyset, \{1\}\}$. Do đó:
+$\text{pow}(\text{pow}(\{1\})) = \{\emptyset, \{\emptyset\}, \{\{1\}\}, \{\emptyset, \{1\}\}\}$.
 
-(b) **Đúng.** Vì $$S \cap T \subseteq S$$ nên theo định nghĩa tập lũy thừa, $$S \cap T \in \text{pow}(S)$$. Tương tự, vì $$S \cap T \subseteq T$$ nên $$S \cap T \in \text{pow}(T)$$. Do đó, $$S \cap T \in \text{pow}(S) \cap \text{pow}(T)$$.
+(b) **Đúng.** Vì $S \cap T \subseteq S$ nên theo định nghĩa tập lũy thừa, $S \cap T \in \text{pow}(S)$. Tương tự, vì $S \cap T \subseteq T$ nên $S \cap T \in \text{pow}(T)$. Do đó, $S \cap T \in \text{pow}(S) \cap \text{pow}(T)$.
 
-(c) **Sai.** Lấy phản ví dụ $$S = \{1\}$$ và $$T = \{2\}$$. Khi đó $$S \cup T = \{1, 2\} \notin \text{pow}(S) \cup \text{pow}(T)$$ vì $$\{1, 2\}$$ không phải tập con của $$S$$ và cũng không phải tập con của $$T$$.
+(c) **Sai.** Lấy phản ví dụ $S = \{1\}$ và $T = \{2\}$. Khi đó $S \cup T = \{1, 2\} \notin \text{pow}(S) \cup \text{pow}(T)$ vì $\{1, 2\}$ không phải tập con của $S$ và cũng không phải tập con của $T$.
 
 </details>
 
-### Khung giải thích (nên đọc chậm): Ánh xạ 1–1 giữa Tập lũy thừa $$\mathcal{P}(\{a, b, c\})$$ và 8 chuỗi nhị phân 3-bit
+### Giải thích: Ánh xạ 1–1 giữa Tập lũy thừa $$\mathcal{P}(\{a, b, c\})$$ và 8 chuỗi nhị phân 3-bit
 
 Với tập $$A = \{a, b, c\}$$ có $$n = 3$$ phần tử, mỗi phần tử có đúng 2 lựa chọn độc lập (`1` = chọn vào tập con, `0` = không chọn), tạo ra đúng $$2^3 = 8$$ tập con:
 

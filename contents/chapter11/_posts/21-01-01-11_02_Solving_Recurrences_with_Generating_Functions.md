@@ -14,7 +14,7 @@ excerpt: "Áp dụng hàm sinh để giải quan hệ truy hồi theo quy trình
 
 **Mạch bài học:** Quy trình 4 bước chuyển truy hồi sang phương trình theo $$G(x)$$ $$\longrightarrow$$ giải đại số tìm biểu thức đóng của $$G(x)$$ $$\longrightarrow$$ **phân tách phân thức từng phần (partial fractions)** $$\longrightarrow$$ đọc ngược hệ số $$a_n = [x^n]G(x)$$.
 
-## Bản đồ kiến thức nền: Hàm sinh biến đổi bài toán truy hồi như thế nào?
+## Kiến thức cần nhớ: Hàm sinh biến đổi bài toán truy hồi như thế nào?
 
 - **Phép biến đổi miền (Transform Method):** Giống biến đổi Laplace trong phương trình vi phân hay biến đổi Z trong xử lý tín hiệu số, hàm sinh chuyển phép **dịch chỉ số** ($$a_{n-1} \mapsto x G(x)$$) thành phép **nhân với $$x$$** — biến phương trình truy hồi thành phương trình đại số bậc nhất theo $$G(x)$$.
 - **Phân tách phân thức từng phần (Partial Fraction Decomposition):** Mọi hàm hữu tỷ thực sự $$\frac{P(x)}{Q(x)}$$ đều tách được thành tổng các phân thức sơ cấp dạng $$\frac{A}{(1 - rx)^m}$$, mà mỗi phân thức sơ cấp đều có khai triển chuỗi lũy thừa đóng tường minh!
@@ -165,7 +165,7 @@ Phân tích $$G(x)$$ thành tổng các phân thức đơn giản sẽ cho công
 </div>
 <script src="{{ '/public/js/gf-recurrence-solver.js' | relative_url }}"></script>
 
-## Ví dụ tính tay cầm tay chỉ việc: Giải $$a_n = 3a_{n-1} + 2^n$$ ($$n \ge 1$$), $$a_0 = 1$$ bằng Hàm sinh
+## Ví dụ tính tay làm từng bước: Giải $$a_n = 3a_{n-1} + 2^n$$ ($$n \ge 1$$), $$a_0 = 1$$ bằng Hàm sinh
 
 Hãy chạy trọn 4 bước mà **không cần** tách nghiệm thuần nhất hay đoán nghiệm riêng:
 
@@ -189,8 +189,7 @@ Hãy chạy trọn 4 bước mà **không cần** tách nghiệm thuần nhất 
    $$G(x) = 3\sum_{n=0}^{\infty} 3^n x^n - 2\sum_{n=0}^{\infty} 2^n x^n = \sum_{n=0}^{\infty} \left(3^{n+1} - 2^{n+1}\right) x^n \;\Longrightarrow\; a_n = 3^{n+1} - 2^{n+1}.$$
    - **Kiểm tra tay:** $$n=0 \Rightarrow 3 - 2 = 1$$ (khớp $$a_0$$); $$n=1 \Rightarrow 9 - 4 = 5$$ (truy hồi: $$3(1)+2=5$$); $$n=2 \Rightarrow 27 - 8 = 19$$ (truy hồi: $$3(5)+4=19$$). Hoàn toàn chính xác!
 
-### Khung giải thích: Tại sao phương pháp hàm sinh là "cỗ máy tự động" (nên đọc chậm)
-
+### Giải thích: Tại sao phương pháp hàm sinh là "cỗ máy tự động"
 1. **Bước 1 — Cẩn thận chỉ số bắt đầu của tổng:** Luôn kiểm tra hệ thức truy hồi đúng từ $$n = 1$$ hay $$n = 2$$, và trừ đúng các số hạng đầu ($$a_0$$, $$a_1 x$$) khi viết vế trái theo $$G(x)$$.
 2. **Bước 2 — Gom mọi số hạng chứa $$G(x)$$ về một vế:** Hệ số đứng trước $$G(x)$$ chính là đa thức nghịch đảo của đa thức đặc trưng (ví dụ $$1 - 3x$$ ứng với $$r = 3$$).
 3. **Bước 3 — Tách về hai mẫu số chuẩn duy nhất:** Nhớ hai công thức tra bảng: $$\frac{1}{1 - rx} = \sum r^n x^n$$ và $$\frac{1}{(1 - rx)^k} = \sum \binom{n+k-1}{k-1} r^n x^n$$.

@@ -41,7 +41,7 @@ Sau khi có ngôn ngữ tiệm cận Big-O ở bài trước, mục này trình 
 
 </div>
 
-## Bản đồ kiến thức nền: Phân tích Độ phức tạp Thời gian & Không gian
+## Kiến thức cần nhớ: Phân tích Độ phức tạp Thời gian & Không gian
 
 ### 1. Mô hình RAM & Ba kịch bản Phân tích
 - **Bản chất:** Trên mô hình RAM chuẩn, mỗi phép toán cơ bản (cộng, so sánh, truy cập mảng) tốn $$O(1)$$. Ta phân biệt **tốt nhất (best-case)**, **xấu nhất (worst-case)** — chuẩn an toàn cho kỹ thuật — và **trung bình (average-case)** (dùng kỳ vọng xác suất).
@@ -56,7 +56,7 @@ Sau khi có ngôn ngữ tiệm cận Big-O ở bài trước, mục này trình 
   - Merge Sort: $$T(n) = 2T(n/2) + \Theta(n) \implies \Theta(n\log n)$$.
   - Binary Search: $$T(n) = T(n/2) + \Theta(1) \implies \Theta(\log n)$$.
 
-## Ví dụ tính tay cầm tay chỉ việc: Bóc tách 2 vòng lặp lồng nhau "đánh lừa trực giác"
+## Ví dụ tính tay làm từng bước: Bóc tách 2 vòng lặp lồng nhau "đánh lừa trực giác"
 
 1. **Vòng lặp 1:** `i` chạy `1, 2, 4, 8, ..., n` (nhân đôi); với mỗi `i`, `j` chạy từ `1` đến `i`:
    Tổng số bước chính xác (đặt $$n = 2^k$$):
@@ -71,8 +71,7 @@ Sau khi có ngôn ngữ tiệm cận Big-O ở bài trước, mục này trình 
    T(n) = \sum_{i=1}^n \left\lfloor \frac{n}{i} \right\rfloor \approx n\left(1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}\right) = n \cdot H_n = \Theta(n \log n)!
    $$
 
-### Khung giải thích: Quy trình 4 bước tính độ phức tạp của mọi đoạn mã (nên đọc chậm)
-
+### Giải thích: Quy trình 4 bước tính độ phức tạp của mọi đoạn mã
 #### Bước 1: Chọn phép toán cơ bản (Basic Operation)
 Thường là phép so sánh (trong sắp xếp/tìm kiếm) hoặc phép nhân/cộng nằm ở vòng lặp sâu nhất.
 

@@ -40,7 +40,7 @@ Chương 12 đã giới thiệu khái niệm đồ thị tổng quát. **Cây** 
 
 </div>
 
-## Bản đồ kiến thức nền: Cây là gì và có những đặc trưng tương đương nào?
+## Kiến thức cần nhớ: Cây là gì và có những đặc trưng tương đương nào?
 
 ### 1. Bốn định nghĩa Tương đương của một Cây $$T$$ có $$n$$ đỉnh
 Với một đồ thị đơn $$T$$ có $$n$$ đỉnh, bốn phát biểu sau hoàn toàn tương đương nhau (biết 1 là suy ra cả 3 cái còn lại!):
@@ -56,7 +56,7 @@ Với một đồ thị đơn $$T$$ có $$n$$ đỉnh, bốn phát biểu sau ho
 ### 3. Cây Khung (Spanning Tree)
 - **Bản chất:** Mọi đồ thị liên thông đều chứa ít nhất một cây khung (đồ thị con là cây đi qua đủ $$n$$ đỉnh) — dùng để loại bỏ vòng lặp phát sóng (broadcast storm) trong mạng máy tính!
 
-## Ví dụ tính tay cầm tay chỉ việc: Kiểm chứng công thức Cây nhị phân đầy đủ & Số lá tối thiểu
+## Ví dụ tính tay làm từng bước: Kiểm chứng công thức Cây nhị phân đầy đủ & Số lá tối thiểu
 
 1. **Cây nhị phân hoàn hảo chiều cao $$h = 3$$** (mọi nút trong đều có 2 con, mọi lá ở mức 3):
    - Số nút ở từng tầng $$0, 1, 2, 3$$: $$1 + 2 + 4 + 8 = 15 = 2^{3+1} - 1$$ nút!
@@ -70,8 +70,7 @@ Với một đồ thị đơn $$T$$ có $$n$$ đỉnh, bốn phát biểu sau ho
    $$
    Vì cây liên thông ($$n \ge 2$$) nên mọi đỉnh có $$\deg(v) \ge 1$$. Nếu chỉ có tối đa 1 lá (đỉnh bậc 1), thì $$n - 1$$ đỉnh còn lại đều có bậc $$\ge 2$$, dẫn tới tổng bậc $$\ge 1 + 2(n - 1) = 2n - 1 > 2n - 2$$ — **mâu thuẫn**! Vậy mọi cây $$n \ge 2$$ chắc chắn có ít nhất **2 lá**!
 
-### Khung giải thích: 4 tính chất cốt lõi giúp giải nhanh mọi bài toán về Cây (nên đọc chậm)
-
+### Giải thích: 4 tính chất cốt lõi giúp giải nhanh mọi bài toán về Cây
 #### Bước 1: Luôn nhớ đẳng thức vàng $$E = V - 1$$ (và cho rừng $$k$$ cây: $$E = V - k$$)
 Hầu hết bài toán đếm đỉnh/cạnh/lá đều giải gọn trong 2 dòng bằng cách ghép $$E = V - 1$$ với Bổ đề bắt tay $$\sum \deg(v) = 2E$$!
 

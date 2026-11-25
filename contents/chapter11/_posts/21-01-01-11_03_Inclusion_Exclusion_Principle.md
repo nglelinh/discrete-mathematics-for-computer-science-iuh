@@ -14,7 +14,7 @@ Giả sử lớp có 30 sinh viên học Python và 25 sinh viên học SQL — 
 
 **Mạch bài học:** Từ công thức 2 tập và 3 tập trên biểu đồ Venn $$\longrightarrow$$ công thức tổng quát với **dấu xen kẽ $$(-1)^{k-1}$$** $$\longrightarrow$$ **dạng phần bù** đếm các phần tử **không** thỏa bất kỳ tính chất cấm nào $$\longrightarrow$$ ứng dụng đếm số chia hết.
 
-## Bản đồ kiến thức nền: Nguyên lý Bao hàm – Loại trừ đứng ở đâu trong Toán rời rạc?
+## Kiến thức cần nhớ: Nguyên lý Bao hàm – Loại trừ đứng ở đâu trong Toán rời rạc?
 
 - **Lý thuyết đếm với tập giao nhau (Overlapping Counting):** Quy tắc cộng cơ bản đòi hỏi các tập rời nhau đôi một. Bao hàm – Loại trừ dỡ bỏ hoàn toàn điều kiện rời nhau đó bằng cách hiệu chỉnh lần lượt theo kích thước giao bậc 2, bậc 3, ..., bậc $$n$$.
 - **Chứng minh bằng Định lý Nhị thức (Binomial Cancellation):** Tại sao một phần tử thuộc đúng $$m \ge 1$$ tập hợp luôn được đếm **đúng 1 lần** trong tổng xen kẽ? Vì số lần nó bị cộng–trừ là $$\binom{m}{1} - \binom{m}{2} + \binom{m}{3} - \cdots + (-1)^{m-1}\binom{m}{m} = 1 - (1 - 1)^m = 1$$!
@@ -27,16 +27,16 @@ Giả sử lớp có 30 sinh viên học Python và 25 sinh viên học SQL — 
 <p class="textbook-figure-caption" data-figure="11.11">Công thức bao hàm–loại trừ cho ba tập: cộng từng tập, trừ các giao đôi, rồi cộng lại giao ba.</p>
 ![Giao hai tập A ∩ B](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_intersect_B.svg)
 
-<p class="textbook-figure-caption" data-figure="11.12">Phần giao bị đếm hai lần khi cộng $$\vert A\vert +\vert B\vert $$, do đó cần trừ đi $$\vert A\cap B\vert $$.</p>
+<p class="textbook-figure-caption" data-figure="11.12">Phần giao bị đếm hai lần khi cộng $\vert A\vert +\vert B\vert $, do đó cần trừ đi $\vert A\cap B\vert $.</p>
 ![Hợp hai tập A ∪ B](/discrete-mathematics-for-computer-science-iuh/img/course/Union_of_sets_A_and_B.svg)
 
-<p class="textbook-figure-caption" data-figure="11.13">Nguyên lý bao hàm–loại trừ cho $$\vert A\cup B\vert $$ — nền tảng của phép đếm có điều kiện chồng lấn.</p>
+<p class="textbook-figure-caption" data-figure="11.13">Nguyên lý bao hàm–loại trừ cho $\vert A\cup B\vert $ — nền tảng của phép đếm có điều kiện chồng lấn.</p>
 ![De Morgan và bao hàm](/discrete-mathematics-for-computer-science-iuh/img/course/Intersections_of_two_sets_and_their_complements.svg)
 
 <p class="textbook-figure-caption" data-figure="11.14">Dạng bù: đếm các phần tử không vi phạm điều kiện bằng cách lấy kích thước không gian mẫu trừ đi hợp các tập vi phạm.</p>
 ![Biểu đồ Venn ba tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn3.svg)
 
-<p class="textbook-figure-caption" data-figure="11.15">Mô hình hóa trực quan các tập $$A_i$$ và phần giao giữa chúng trước khi áp dụng công thức.</p>
+<p class="textbook-figure-caption" data-figure="11.15">Mô hình hóa trực quan các tập $A_i$ và phần giao giữa chúng trước khi áp dụng công thức.</p>
 ## Mục tiêu học tập
 
 <div class="textbook-objectives" markdown="1">
@@ -169,7 +169,7 @@ Minh họa biểu đồ Venn ở chế độ bao hàm–loại trừ giúp quan 
 </div>
 <script src="{{ '/public/js/explainers/venn-explainer.js' | relative_url }}"></script>
 
-## Ví dụ tính tay cầm tay chỉ việc: Đếm số nguyên từ 1 đến 100 KHÔNG chia hết cho 2, 3 hoặc 5
+## Ví dụ tính tay làm từng bước: Đếm số nguyên từ 1 đến 100 KHÔNG chia hết cho 2, 3 hoặc 5
 
 Đặt vũ trụ $$U = \{1, 2, \dots, 100\}$$ ($$\vert U \vert = 100$$), và các tập "vi phạm":
 - $$A_2$$: các số chia hết cho 2; $$A_3$$: chia hết cho 3; $$A_5$$: chia hết cho 5.
@@ -193,8 +193,7 @@ Minh họa biểu đồ Venn ở chế độ bao hàm–loại trừ giúp quan 
    - Số **KHÔNG** chia hết cho cả 2, 3 và 5 (dạng phần bù):
      $$\vert \overline{A_2} \cap \overline{A_3} \cap \overline{A_5} \vert = 100 - 74 = 26\text{ số!}$$
 
-### Khung giải thích: Tại sao dấu cộng–trừ xen kẽ luôn triệt tiêu chính xác sai số (nên đọc chậm)
-
+### Giải thích: Tại sao dấu cộng–trừ xen kẽ luôn triệt tiêu chính xác sai số
 1. **Bước 1 — Theo dõi số phận của một phần tử nằm trong đúng $$m$$ tập:** Giả sử số `30` nằm trong cả $$A_2, A_3, A_5$$ ($$m = 3$$). Trong $$S_1$$ nó được cộng $$\binom{3}{1} = 3$$ lần; trong $$-S_2$$ nó bị trừ $$\binom{3}{2} = 3$$ lần (tạm về 0); đến $$+S_3$$ nó được cộng lại $$\binom{3}{3} = 1$$ lần — tổng cuối cùng là $$3 - 3 + 1 = 1$$!
 2. **Bước 2 — Quy tắc đảo ngược bài toán sang tập vi phạm:** Khi đề bài yêu cầu "không có tính chất nào trong $$P_1, \dots, P_n$$", hãy định nghĩa $$A_i$$ là tập **vi phạm** điều kiện $$i$$ — vì phần giao $$A_i \cap A_j$$ (đồng thời vi phạm cả $$i$$ và $$j$$) luôn dễ đếm hơn nhiều so với hợp trực tiếp.
 3. **Bước 3 — Bất đẳng thức Bonferroni khi không tính hết được:** Nếu $$n$$ quá lớn ($$2^n$$ số hạng), chỉ cần dừng ở bậc lẻ ta có **cận trên** ($$S_1$$, $$S_1 - S_2 + S_3$$), còn dừng ở bậc chẵn ta có **cận dưới** ($$S_1 - S_2$$) — rất hữu ích trong ước lượng xác suất và truy vấn CSDL!
@@ -210,7 +209,7 @@ Trong một lớp có 30 học sinh, 18 em học Toán, 15 em học Lý và 8 em
 <details>
 <summary>Đáp án</summary>
 
-$$\vert A \cup B\vert  = 18 + 15 - 8 = 25$$ học sinh.
+$\vert A \cup B\vert  = 18 + 15 - 8 = 25$ học sinh.
 
 </details>
 
@@ -221,7 +220,7 @@ $$\vert A \cup B\vert  = 18 + 15 - 8 = 25$$ học sinh.
 <details>
 <summary>Đáp án</summary>
 
-Áp dụng dạng bù: $$1000 - \vert A_2 \cup A_3 \cup A_5\vert $$, trong đó $$\vert A_2\vert =500$$, $$\vert A_3\vert =333$$, $$\vert A_5\vert =200$$; các giao đôi lần lượt là $$\vert A_2 \cap A_3\vert = 166$$, $$\vert A_2 \cap A_5\vert = 100$$, $$\vert A_3 \cap A_5\vert = 66$$; giao ba là $$\vert A_2 \cap A_3 \cap A_5\vert = 33$$. Theo công thức bao hàm–loại trừ: $$500+333+200-166-100-66+33=734$$ số chia hết cho ít nhất một trong ba số. Đáp số: $$1000 - 734 = 266$$.
+Áp dụng dạng bù: $1000 - \vert A_2 \cup A_3 \cup A_5\vert $, trong đó $\vert A_2\vert =500$, $\vert A_3\vert =333$, $\vert A_5\vert =200$; các giao đôi lần lượt là $\vert A_2 \cap A_3\vert = 166$, $\vert A_2 \cap A_5\vert = 100$, $\vert A_3 \cap A_5\vert = 66$; giao ba là $\vert A_2 \cap A_3 \cap A_5\vert = 33$. Theo công thức bao hàm–loại trừ: $500+333+200-166-100-66+33=734$ số chia hết cho ít nhất một trong ba số. Đáp số: $1000 - 734 = 266$.
 
 </details>
 
@@ -232,7 +231,7 @@ Giải thích vì sao trong chứng minh nguyên lý bao hàm–loại trừ, m�
 <details>
 <summary>Đáp án</summary>
 
-Theo khai triển nhị thức Newton, $$(1-1)^r = \sum_{k=0}^{r} (-1)^k \binom{r}{k} = 0$$. Khi tách hạng tử $$k=0$$ (bằng $$\binom{r}{0} = 1$$) sang vế kia và đổi dấu, ta thu được $$\binom{r}{1} - \binom{r}{2} + \cdots + (-1)^{r+1}\binom{r}{r} = 1$$.
+Theo khai triển nhị thức Newton, $(1-1)^r = \sum_{k=0}^{r} (-1)^k \binom{r}{k} = 0$. Khi tách hạng tử $k=0$ (bằng $\binom{r}{0} = 1$) sang vế kia và đổi dấu, ta thu được $\binom{r}{1} - \binom{r}{2} + \cdots + (-1)^{r+1}\binom{r}{r} = 1$.
 
 </details>
 
@@ -243,7 +242,7 @@ Có bao nhiêu hoán vị của $$\{1,\ldots,5\}$$ **không** có điểm cố �
 <details>
 <summary>Đáp án</summary>
 
-$$5! - \binom{5}{1}4! + \binom{5}{2}3! - \binom{5}{3}2! + \binom{5}{4}1! - \binom{5}{5}0! = 120 - 120 + 60 - 20 + 5 - 1 = 44$$. (Công thức tổng quát được trình bày ở mục 11.4.)
+$5! - \binom{5}{1}4! + \binom{5}{2}3! - \binom{5}{3}2! + \binom{5}{4}1! - \binom{5}{5}0! = 120 - 120 + 60 - 20 + 5 - 1 = 44$. (Công thức tổng quát được trình bày ở mục 11.4.)
 
 </details>
 

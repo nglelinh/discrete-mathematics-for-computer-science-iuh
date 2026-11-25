@@ -13,7 +13,7 @@ Nếu ba bài đầu của Chương 10 trang bị cho bạn bộ công cụ đ�
 
 **Mạch bài học:** Từ bài toán đôi thỏ Fibonacci $$\longrightarrow$$ **Chia để trị & Định lý Thợ (Master Theorem)** $$\longrightarrow$$ **Quy hoạch động (DP)** $$\longrightarrow$$ mô hình tăng trưởng sản phẩm số, **bộ lọc IIR** trong DSP và tư duy trạng thái hồi quy trong AI.
 
-## Bản đồ kiến thức nền: Vì sao truy hồi là ngôn ngữ chung của Thuật toán, DSP và AI?
+## Kiến thức cần nhớ: Vì sao truy hồi là ngôn ngữ chung của Thuật toán, DSP và AI?
 
 - **Chia để trị & Định lý Thợ (Divide-and-Conquer & Master Theorem):** Biểu diễn thời gian chạy $$T(n) = aT(n/b) + f(n)$$ qua cuộc giằng co giữa tốc độ sinh nhánh đệ quy $$n^{\log_b a}$$ và chi phí gộp kết quả $$f(n)$$ tại mỗi tầng.
 - **Quy hoạch động (Dynamic Programming = Recurrence + Memoization):** Biến một hệ thức truy hồi có các bài toán con gối nhau (overlapping subproblems) từ cây đệ quy mũ $$O(2^n)$$ thành bảng điền tuần tự đa thức $$O(n)$$ hoặc $$O(n^2)$$.
@@ -249,7 +249,7 @@ Khám phá Định lý Thợ cho truy hồi chia để trị $$T(n) = aT(n/b) + 
 </div>
 <script src="{{ '/public/js/explainers/recurrence-explainer.js' | relative_url }}"></script>
 
-## Ví dụ tính tay cầm tay chỉ việc: Bộ lọc làm mượt IIR bậc 1 và Quy hoạch động cầu thang
+## Ví dụ tính tay làm từng bước: Bộ lọc làm mượt IIR bậc 1 và Quy hoạch động cầu thang
 
 **Phần A — Chạy tay bộ lọc làm mượt mũ (Exponential Moving Average — IIR bậc 1) trong giám sát độ trễ API:**
 Hệ thức truy hồi: $$y_n = 0{,}5 x_n + 0{,}5 y_{n-1}$$ với $$y_0 = 0$$. Giả sử độ trễ API đo được có một cú sốc đơn vị ở giây 1 rồi trở về bình thường: $$x = (100, 0, 0, 0, \dots)$$ (ms).
@@ -265,8 +265,7 @@ Hệ thức truy hồi: $$y_n = 0{,}5 x_n + 0{,}5 y_{n-1}$$ với $$y_0 = 0$$. G
   $$w_2 = 1 + 1 = 2, \quad w_3 = 2 + 1 = 3, \quad w_4 = 3 + 2 = 5, \quad w_5 = 5 + 3 = 8\text{ cách.}$$
 - Trong khi đó, đệ quy thuần không lưu bảng phải gọi lại $$w_2$$ tới 3 lần và tổng số lời gọi bùng nổ theo $$O(\varphi^n)$$ với $$\varphi \approx 1{,}618$$.
 
-### Khung giải thích: Ba góc nhìn thống nhất của tư duy truy hồi trong kỹ thuật (nên đọc chậm)
-
+### Giải thích: Ba góc nhìn thống nhất của tư duy truy hồi trong kỹ thuật
 1. **Bước 1 — Dùng truy hồi để đo chi phí thuật toán:** Khi thấy hàm gọi lại chính nó trên nửa dữ liệu, viết ngay $$T(n) = aT(n/b) + f(n)$$ để biết liệu thuật toán thuộc $$O(n)$$, $$O(n\log n)$$ hay $$O(n^2)$$.
 2. **Bước 2 — Dùng truy hồi để thiết kế thuật toán (DP):** Nếu bài toán tối ưu có cấu trúc con tối ưu, viết công thức truy hồi trước rồi biến nó thành vòng lặp điền bảng — tránh sa lầy vào chi tiết cài đặt quá sớm.
 3. **Bước 3 — Dùng nghiệm đặc trưng để kiểm tra độ ổn định hệ thống:** Trong bộ lọc IIR, chuỗi tăng trưởng người dùng hay kiến trúc AI tuần tự, điều kiện $$\vert r_{\max} \vert < 1$$ đảm bảo nhiễu quá khứ tắt dần thay vì làm mất ổn định hệ thống.

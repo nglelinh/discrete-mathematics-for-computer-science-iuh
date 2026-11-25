@@ -22,7 +22,7 @@ Trong chương này, chúng ta tìm hiểu các phương pháp chứng minh — 
 
 Chạy thử một hàm với 1.000 số chẵn thấy bình phương của chúng đều là số chẵn chỉ cho ta *niềm tin*, chưa phải *sự chắc chắn*—biết đâu số thứ 1.001 lại sai? Trong toán học và khoa học máy tính, **Chứng minh trực tiếp (Direct Proof)** là con đường thẳng thắn và thanh lịch nhất: xuất phát từ giả thiết $$P$$, mở định nghĩa bằng đại số rõ ràng, và đi từng bước suy diễn chắc chắn đến kết luận $$Q$$ cho **vô hạn** trường hợp cùng lúc.
 
-## Bản đồ kiến thức nền: Bốn viên gạch của một Chứng minh Trực tiếp chuẩn mực
+## Kiến thức cần nhớ: Bốn viên gạch của một Chứng minh Trực tiếp chuẩn mực
 
 1. **Cấu trúc khung $$P \to Q$$**:
    Giả sử $$P$$ đúng với một đối tượng **tùy ý** (không chọn số cụ thể như $$n = 4$$!), khai triển định nghĩa hình thức của $$P$$, biến đổi đại số hợp lệ, và chỉ ra đối tượng kết quả thỏa đúng định nghĩa của $$Q$$.
@@ -225,7 +225,7 @@ Việc chứng minh bất biến này cho toàn bộ vòng lặp thường dùng
 
 
 <div class="interactive-tool" markdown="1">
-### Khung giải thích (nên đọc chậm): So sánh hai hướng đi — Chứng minh trực tiếp vs. Chứng minh phản đảo
+### Giải thích: So sánh hai hướng đi — Chứng minh trực tiếp vs. Chứng minh phản đảo
 
 **Bài toán**: Chứng minh rằng với mọi số nguyên $$n \in \mathbb{Z}$$, nếu $$3n + 2$$ là số lẻ thì $$n$$ là số lẻ.
 
@@ -302,7 +302,7 @@ Chứng minh trực tiếp: nếu $$n$$ là số nguyên chẵn thì $$n^2$$ là
 <details>
 <summary>Đáp án</summary>
 
-Giả sử $$n = 2k$$ với $$k \in \mathbb{Z}$$. Khi đó $$n^2 = 4k^2 = 2(2k^2)$$ chia hết cho 2, nên $$n^2$$ là số chẵn.
+Giả sử $n = 2k$ với $k \in \mathbb{Z}$. Khi đó $n^2 = 4k^2 = 2(2k^2)$ chia hết cho 2, nên $n^2$ là số chẵn.
 
 </details>
 
@@ -313,7 +313,7 @@ Chứng minh: tổng của hai số lẻ là một số chẵn.
 <details>
 <summary>Đáp án</summary>
 
-Đặt $$a = 2k+1$$ và $$b = 2m+1$$ với $$k, m \in \mathbb{Z}$$. Khi đó $$a+b = 2(k+m+1)$$, là số chẵn.
+Đặt $a = 2k+1$ và $b = 2m+1$ với $k, m \in \mathbb{Z}$. Khi đó $a+b = 2(k+m+1)$, là số chẵn.
 
 </details>
 
@@ -324,7 +324,7 @@ Tìm một phản ví dụ cho mệnh đề: "Mọi số chia hết cho 4 đều
 <details>
 <summary>Đáp án</summary>
 
-Chọn $$n = 4$$: số này chia hết cho 4 nhưng không chia hết cho 8.
+Chọn $n = 4$: số này chia hết cho 4 nhưng không chia hết cho 8.
 
 </details>
 

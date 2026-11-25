@@ -47,7 +47,7 @@ Các phép toán `a + b` hay `a * b` trong ngôn ngữ lập trình được hi�
 
 </div>
 
-## Bản đồ kiến thức nền: Các khối Mạch Tổ hợp cốt lõi của CPU
+## Kiến thức cần nhớ: Các khối Mạch Tổ hợp cốt lõi của CPU
 
 ### 1. Mạch Tổ hợp (Combinational) vs. Mạch Tuần tự (Sequential)
 - **Mạch tổ hợp:** Đầu ra tại thời điểm $$t$$ chỉ phụ thuộc **duy nhất vào đầu vào tại đúng thời điểm $$t$$** (không có bộ nhớ/vòng hồi tiếp): Half Adder, Full Adder, Bộ cộng nhiều bit, Multiplexer (MUX), Decoder, Encoder.
@@ -60,7 +60,7 @@ Các phép toán `a + b` hay `a * b` trong ngôn ngữ lập trình được hi�
 ### 3. Mạch Chọn kênh (MUX) và Giải mã (Decoder)
 - **Multiplexer (MUX $$2^k\text{-to-}1$$):** Công tắc chọn 1 trong $$2^k$$ đường dữ liệu nhờ $$k$$ bit chọn — thậm chí một MUX $$2^n\text{-to-}1$$ có thể cài đặt **bất kỳ** hàm Boole $$n$$ biến nào (nguyên lý lõi của FPGA LUT!).
 
-## Ví dụ tính tay cầm tay chỉ việc: Cộng 4-bit $$1011_2 + 0110_2$$ ($$11 + 6 = 17$$) qua Full Adder & Tính trước Carry Lookahead
+## Ví dụ tính tay làm từng bước: Cộng 4-bit $$1011_2 + 0110_2$$ ($$11 + 6 = 17$$) qua Full Adder & Tính trước Carry Lookahead
 
 Cộng $$A = 1011_2\; (A_3A_2A_1A_0)$$ với $$B = 0110_2\; (B_3B_2B_1B_0)$$, $$C_0 = 0$$:
 - **Bit 0 ($$A_0=1, B_0=0, C_0=0$$):** $$S_0 = 1\oplus 0\oplus 0 = 1$$, $$C_1 = 0$$.
@@ -75,8 +75,7 @@ C_4 = G_3 + P_3 G_2 + P_3 P_2 G_1 + P_3 P_2 P_1 G_0 + P_3 P_2 P_1 P_0 C_0.
 $$
 Thay $$G = (0,0,1,0)$$ và $$P = (1,1,0,1)$$: số hạng $$P_3 P_2 G_1 = 1\cdot 1\cdot 1 = 1 \implies C_4 = 1$$ ngay sau **2 tầng cổng**!
 
-### Khung giải thích: Kiến trúc phân cấp 4 bước xây dựng Bộ Số học Logic (ALU) (nên đọc chậm)
-
+### Giải thích: Kiến trúc phân cấp 4 bước xây dựng Bộ Số học Logic (ALU)
 #### Bước 1: Tách nhỏ phép cộng nhiều bit thành bài toán 1-bit (Full Adder)
 Mọi cột nhị phân đều làm đúng một phép cộng 3 bit giống hệt nhau: $$A_i + B_i + C_i$$.
 

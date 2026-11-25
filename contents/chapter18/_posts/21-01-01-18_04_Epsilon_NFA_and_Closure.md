@@ -29,7 +29,7 @@ excerpt: "Chuyển trạng thái ε, định nghĩa bao đóng epsilon E(S), thu
 
 </div>
 
-## Bản đồ kiến thức nền: $$\varepsilon$$-NFA và Bao đóng Epsilon ($$\mathrm{ECLOSE}$$)
+## Kiến thức cần nhớ: $$\varepsilon$$-NFA và Bao đóng Epsilon ($$\mathrm{ECLOSE}$$)
 
 ### 1. Chuyển trạng thái Rỗng ($$\varepsilon$$-transition)
 - **Bản chất:** Mở rộng hàm chuyển lên $$\delta: Q \times (\Sigma \cup \{\varepsilon\}) \to \mathcal{P}(Q)$$. Một cung gắn nhãn $$\varepsilon$$ cho phép máy tự do "dịch chuyển tức thời" mà không tiêu thụ ký tự đầu vào nào.
@@ -43,7 +43,7 @@ excerpt: "Chuyển trạng thái ε, định nghĩa bao đóng epsilon E(S), thu
   \hat{\delta}(S, a) = \mathrm{ECLOSE}\!\left(\bigcup_{p \in S} \delta(p, a)\right).
   $$
 
-## Ví dụ tính tay cầm tay chỉ việc: Tính $$\mathrm{ECLOSE}$$ và 1 bước chuyển trên $$\varepsilon$$-NFA 4 trạng thái
+## Ví dụ tính tay làm từng bước: Tính $$\mathrm{ECLOSE}$$ và 1 bước chuyển trên $$\varepsilon$$-NFA 4 trạng thái
 
 Xét $$\varepsilon$$-NFA có các cung: $$q_0 \xrightarrow{\varepsilon} q_1$$, $$q_1 \xrightarrow{\varepsilon} q_2$$, $$q_1 \xrightarrow{a} q_3$$, $$q_2 \xrightarrow{a} q_2$$, $$q_3 \xrightarrow{\varepsilon} q_2$$.
 1. **Tính $$\mathrm{ECLOSE}$$ cho từng trạng thái:**
@@ -56,8 +56,7 @@ Xét $$\varepsilon$$-NFA có các cung: $$q_0 \xrightarrow{\varepsilon} q_1$$, $
    - Đi theo mũi tên `a` từ từng phần tử của $$S_0$$: $$\delta(q_0, a) = \emptyset,\; \delta(q_1, a) = \{q_3\},\; \delta(q_2, a) = \{q_2\} \implies$$ hợp lại là $$\{q_2, q_3\}$$.
    - Lấy $$\mathrm{ECLOSE}$$ một lần nữa: $$\mathrm{ECLOSE}(\{q_2, q_3\}) = \{q_2\} \cup \{q_2, q_3\} = \{q_2, q_3\}$$!
 
-### Khung giải thích: 4 bước khử cung $$\varepsilon$$ an toàn (nên đọc chậm)
-
+### Giải thích: 4 bước khử cung $$\varepsilon$$ an toàn
 #### Bước 1: Tính sẵn bảng $$\mathrm{ECLOSE}(q)$$ cho mọi trạng thái $$q$$
 Chỉ đi theo cung $$\varepsilon$$; nhớ rằng mọi trạng thái luôn chứa chính nó trong $$\mathrm{ECLOSE}$$.
 

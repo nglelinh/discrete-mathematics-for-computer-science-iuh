@@ -46,7 +46,7 @@ Một biểu thức điều kiện trong lập trình, chẳng hạn `if ((x && 
 
 </div>
 
-## Bản đồ kiến thức nền: Hàm Boole và Dạng chuẩn nằm ở đâu trong Khoa học Máy tính?
+## Kiến thức cần nhớ: Hàm Boole và Dạng chuẩn nằm ở đâu trong Khoa học Máy tính?
 
 ### 1. Đại số Boole trên $$\{0, 1\}^n$$
 - **Bản chất:** Một hàm Boole $$f: \{0, 1\}^n \to \{0, 1\}$$ được xác định hoàn toàn bởi bảng chân trị gồm $$2^n$$ dòng.
@@ -59,7 +59,7 @@ Một biểu thức điều kiện trong lập trình, chẳng hạn `if ((x && 
 ### 3. Tính Đầy đủ Hàm (Functional Completeness)
 - **Bản chất:** Nhờ dạng SOP chuẩn, bộ ba cổng $$\{\text{AND}, \text{OR}, \text{NOT}\}$$ biểu diễn được **mọi** hàm Boole. Thậm chí chỉ riêng cổng **NAND** (hoặc chỉ riêng **NOR**) cũng đủ xây dựng toàn bộ CPU!
 
-## Ví dụ tính tay cầm tay chỉ việc: Hàm Đa số 3 biến (Majority Function)
+## Ví dụ tính tay làm từng bước: Hàm Đa số 3 biến (Majority Function)
 
 Xét mạch biểu quyết 3 cảm biến $$f(x, y, z) = 1$$ khi và chỉ khi có ít nhất **2 trong 3** biến bằng $$1$$:
 1. **Liệt kê các dòng mà $$f = 1$$** (theo chỉ số nhị phân $$(x,y,z)_2$$):
@@ -75,8 +75,7 @@ Xét mạch biểu quyết 3 cảm biến $$f(x, y, z) = 1$$ khi và chỉ khi c
    Từ 4 minterm (12 cổng/đầu vào) rút xuống còn đúng 3 tích 2 biến!
 4. **Dạng POS chuẩn:** Các dòng $$f = 0$$ là $$0, 1, 2, 4 \implies f = \prod M(0, 1, 2, 4)$$.
 
-### Khung giải thích: Từ Bảng chân trị sang Biểu thức Chuẩn (nên đọc chậm)
-
+### Giải thích: Từ Bảng chân trị sang Biểu thức Chuẩn
 #### Bước 1: Đọc chỉ số nhị phân từng dòng bảng chân trị
 Mỗi tổ hợp $$n$$ bit $$(x_{n-1}\dots x_0)$$ ứng với một số nguyên $$i \in \{0, \dots, 2^n-1\}$$.
 

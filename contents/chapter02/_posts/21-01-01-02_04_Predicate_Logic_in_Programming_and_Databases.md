@@ -12,7 +12,7 @@ excerpt: "Kết nối vị từ và lượng từ với thực hành kỹ thuậ
 
 Nếu bạn từng nghĩ lượng từ $$\forall$$ và $$\exists$$ chỉ sống trên bảng phấn toán học, hãy mở ngay một tệp truy vấn SQL hoặc mã Python/TypeScript của bất kỳ ứng dụng web nào: `EXISTS (SELECT ...)`, `NOT EXISTS`, `all(...)`, `any(...)`, `assert`, và ràng buộc `CHECK` trong cơ sở dữ liệu chính là **Logic Vị từ đang chạy ở tốc độ triệu bản ghi mỗi giây**.
 
-## Bản đồ kiến thức nền: Bốn cầu nối trực tiếp từ Logic Vị từ sang Phần mềm & CSDL
+## Kiến thức cần nhớ: Bốn cầu nối trực tiếp từ Logic Vị từ sang Phần mềm & CSDL
 
 1. **Phép tính Quan hệ (Relational Calculus) → SQL**:
    SQL được Edgar F. Codd thiết kế trực tiếp từ Logic Vị từ bậc nhất: mỗi bảng là một vị từ (ví dụ `Enrolled(sid, cid)` đúng khi sinh viên `sid` đăng ký môn `cid`), mệnh đề `WHERE` là điều kiện lọc, và `EXISTS` chính là lượng từ $$\exists$$.
@@ -26,7 +26,7 @@ Nếu bạn từng nghĩ lượng từ $$\forall$$ và $$\exists$$ chỉ sống 
    Trong lập trình, `assert all(a[i] <= a[i+1] for i in range(n-1))` dịch thẳng công thức hậu điều kiện $$\forall i \in [0, n-2],\; a[i] \le a[i+1]$$ của thuật toán sắp xếp thành mã kiểm chứng tự động.
 
 4. **Logic 3 giá trị (`TRUE`, `FALSE`, `UNKNOWN`) với `NULL` trong SQL**:
-   Một khác biệt thực tế sống còn: trong SQL, so sánh với `NULL` trả về `UNKNOWN`, nên `NOT IN (SELECT ...)` sẽ trả về **tập rỗng** nếu truy vấn con chứa dù chỉ 1 giá trị `NULL`—đó là lý do kỹ sư CSDL luôn ưu tiên `NOT EXISTS`.
+   Một khác biệt thực tế quan trọng: trong SQL, so sánh với `NULL` trả về `UNKNOWN`, nên `NOT IN (SELECT ...)` sẽ trả về **tập rỗng** nếu truy vấn con chứa dù chỉ 1 giá trị `NULL`—đó là lý do kỹ sư CSDL luôn ưu tiên `NOT EXISTS`.
 
 ## Mục tiêu học tập
 
@@ -154,7 +154,7 @@ Ràng buộc này biểu diễn $$\forall s \in Students,\ 0 \le s.gpa \le 4$$ v
 
 ---
 
-### Khung giải thích (nên đọc chậm): Chuyển hóa câu hỏi "Sinh viên học ĐỦ mọi môn bắt buộc" từ Logic Vị từ sang SQL và chạy tay trên bảng mẫu
+### Giải thích: Chuyển hóa câu hỏi "Sinh viên học ĐỦ mọi môn bắt buộc" từ Logic Vị từ sang SQL và chạy tay trên bảng mẫu
 
 Cho 2 bảng nhỏ:
 - `Required(cid)`: `{ 'CS101', 'CS102' }`
@@ -303,7 +303,7 @@ WHERE NOT EXISTS (
 );
 ```
 
-Tương đương với $$\forall s,\ \lnot Enrolled(s, c)$$ cho từng khóa học $$c$$ được chọn.
+Tương đương với $\forall s,\ \lnot Enrolled(s, c)$ cho từng khóa học $c$ được chọn.
 
 </details>
 
@@ -320,7 +320,7 @@ Câu "Không phải mọi sinh viên đều đạt điểm ≥ 5" tương đươ
 <details>
 <summary>Đáp án</summary>
 
-**(b)**. Theo luật De Morgan cho lượng từ: $$\lnot \forall s,\ Score(s) \ge 5 \equiv \exists s,\ \lnot(Score(s) \ge 5) \equiv \exists s,\ Score(s) < 5$$.
+**(b)**. Theo luật De Morgan cho lượng từ: $\lnot \forall s,\ Score(s) \ge 5 \equiv \exists s,\ \lnot(Score(s) \ge 5) \equiv \exists s,\ Score(s) < 5$.
 
 Phương án (a) sai vì khẳng định *mọi* sinh viên đều dưới 5; phương án (c) sai vì phủ định hoàn toàn việc có sinh viên đạt ≥ 5.
 
@@ -354,7 +354,7 @@ class Booking(BaseModel):
         return self
 ```
 
-Vị từ tương ứng: $$\forall booking,\ booking.end\_date \ge booking.start\_date$$.
+Vị từ tương ứng: $\forall booking,\ booking.end\_date \ge booking.start\_date$.
 
 </details>
 
@@ -430,7 +430,7 @@ def test_square_non_negative():
         assert x * x >= 0
 ```
 
-Kiểm thử chỉ đánh giá được trên một số hữu hạn giá trị, trong khi $$\forall$$ khẳng định trên tập vô hạn các số nguyên. Để khẳng định cho toàn miền, cần chứng minh toán học (đại số hoặc quy nạp) hoặc kiểm chứng hình thức; vì vậy kiểm thử và đặc tả luôn bổ sung cho nhau.
+Kiểm thử chỉ đánh giá được trên một số hữu hạn giá trị, trong khi $\forall$ khẳng định trên tập vô hạn các số nguyên. Để khẳng định cho toàn miền, cần chứng minh toán học (đại số hoặc quy nạp) hoặc kiểm chứng hình thức; vì vậy kiểm thử và đặc tả luôn bổ sung cho nhau.
 
 </details>
 

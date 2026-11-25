@@ -31,7 +31,7 @@ excerpt: "Quan hệ tương đương Myhill–Nerode ~L, định lý Myhill–Ne
 
 </div>
 
-## Bản đồ kiến thức nền: Định lý Myhill–Nerode & Tối tiểu hóa DFA
+## Kiến thức cần nhớ: Định lý Myhill–Nerode & Tối tiểu hóa DFA
 
 ### 1. Quan hệ Tương đương Myhill–Nerode ($$x \equiv_L y$$)
 - **Bản chất:** Hai chuỗi tiền tố $$x, y \in \Sigma^*$$ gọi là **không phân biệt được theo $$L$$** ($$x \equiv_L y$$) nếu với **MỌI** hậu tố $$z \in \Sigma^*$$:
@@ -46,7 +46,7 @@ excerpt: "Quan hệ tương đương Myhill–Nerode ~L, định lý Myhill–Ne
 ### 3. Thuật toán Tối tiểu hóa DFA (Table-Filling / Hopcroft)
 - **Bản chất:** Loại bỏ các trạng thái không đạt tới được từ $$q_0$$, rồi chia đôi dần các nhóm trạng thái (bắt đầu từ 2 nhóm $$F$$ và $$Q \setminus F$$) bất cứ khi nào hai trạng thái trong cùng nhóm chuyển sang hai nhóm khác nhau trên cùng một ký tự $$a$$!
 
-## Ví dụ tính tay cầm tay chỉ việc
+## Ví dụ tính tay làm từng bước
 
 ### Ví dụ 1: Tìm số trạng thái tối tiểu của $$L = \{\text{chuỗi nhị phân kết thúc bằng } 01\}$$
 Xét 3 chuỗi đại diện $$\varepsilon,\; 0,\; 01$$ và kiểm tra từng cặp bằng hậu tố phân cách:
@@ -63,8 +63,7 @@ $$
 $$
 Vậy vô hạn chuỗi trong $$S$$ đôi một **không tương đương nhau** $$\implies \equiv_L$$ có **vô hạn lớp tương đương** $$\implies$$ theo Myhill–Nerode, $$L$$ **KHÔNG chính quy**! (Nhanh và gọn hơn Bổ đề Bơm gấp nhiều lần!)
 
-### Khung giải thích: 4 bước áp dụng Myhill–Nerode & Tối tiểu hóa DFA (nên đọc chậm)
-
+### Giải thích: 4 bước áp dụng Myhill–Nerode & Tối tiểu hóa DFA
 #### Bước 1: Dùng Myhill–Nerode như công cụ chứng minh "Không chính quy" sắc bén nhất
 Chỉ cần tìm một tập vô hạn $$S$$ mà mọi cặp $$x \neq y \in S$$ đều có 1 hậu tố phân cách $$z$$ — không bao giờ bị vướng trường hợp như Bổ đề Bơm!
 

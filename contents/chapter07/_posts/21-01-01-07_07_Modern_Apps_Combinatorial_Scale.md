@@ -72,14 +72,13 @@ Kiểm thử từng cặp (pairwise testing, ở Chương 9) thể hiện hướ
 **Câu hỏi.** (1) Hãy viết biểu thức cho $$\vert \text{phép gán}\vert $$ và $$\vert \text{chương trình hợp ngữ độ dài } L\vert $$ bằng quy tắc nhân. (2) Thuật toán CDCL *tránh phải liệt kê* đại lượng nào?
 
 
-### Bản đồ kiến thức nền: Vì sao Phép đếm Tổ hợp là trái tim của Bộ giải Hiện đại?
+### Kiến thức cần nhớ: Vì sao Phép đếm Tổ hợp là trái tim của Bộ giải Hiện đại?
 
 1. **Bùng nổ không gian tìm kiếm ($$2^n$$):** Một công thức SAT chỉ 500 biến đã có $$2^{500} \approx 3.27 \times 10^{150}$$ phép gán — vượt xa số nguyên tử trong vũ trụ quan sát được, khiến duyệt vét cạn hoàn toàn bất khả thi.
 2. **Cắt tỉa CDCL (Conflict-Driven Clause Learning):** Mỗi khi bộ giải học được một mệnh đề xung đột dài $$k$$ biến, nó lập tức gạch bỏ gọn $$2^{n-k}$$ nhánh vô nghiệm chỉ trong một bước!
 3. **Phá đối xứng (Symmetry Breaking):** Khóa thứ tự trên $$k$$ đối tượng tương đương giúp thu nhỏ không gian tìm kiếm đi đúng $$k!$$ lần mà không đánh mất nghiệm tối ưu nào.
 
-### Khung giải thích: Một mệnh đề xung đột xóa sổ $$2^{n-k}$$ nhánh chết như thế nào? (nên đọc chậm)
-
+### Giải thích: Một mệnh đề xung đột xóa sổ $$2^{n-k}$$ nhánh chết như thế nào?
 #### Bước 1: Tính tay sức mạnh cắt tỉa trên bài toán $$n = 20$$ biến
 Với $$n = 20$$ biến (tổng cộng $$2^{20} = 1{,}048{,}576$$ trạng thái), nếu bộ giải CDCL phát hiện mâu thuẫn chỉ từ $$k = 3$$ biến ($$x_1 = 1, x_2 = 0, x_5 = 1$$) và lưu mệnh đề $$(\neg x_1 \lor x_2 \lor \neg x_5)$$, số trạng thái bị loại vĩnh viễn là $$2^{20-3} = 2^{17} = \mathbf{131{,}072}$$ — tức xóa sạch **$$12.5\%$$ toàn bộ không gian** chỉ sau một xung đột!
 

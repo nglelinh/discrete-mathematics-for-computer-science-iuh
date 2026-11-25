@@ -12,7 +12,7 @@ excerpt: "Mở rộng góc nhìn về các phương pháp chứng minh trong to�
 
 Từ bộ *Cơ sở (Elements)* của Euclid hơn 2.300 năm trước đến bộ kiểm chứng phần mềm hàng không và giao thức TLS bảo vệ tài khoản ngân hàng của bạn hôm nay, nghệ thuật chứng minh toán học chưa bao giờ đứng yên trong tháp ngà. Trong kỹ nghệ phần mềm hiện đại, Edsger Dijkstra từng nói câu bất hủ: *"Kiểm thử chỉ có thể cho thấy sự hiện diện của lỗi, không bao giờ chứng minh được sự vắng mặt của lỗi."*
 
-## Bản đồ kiến thức nền: Bốn cầu nối từ Chứng minh Toán học sang Kỹ nghệ Phần mềm & Mật mã
+## Kiến thức cần nhớ: Bốn cầu nối từ Chứng minh Toán học sang Kỹ nghệ Phần mềm & Mật mã
 
 1. **Hệ tiên đề Euclid → Đặc tả hình thức (Formal Specification)**:
    Mọi chứng minh đều bắt đầu từ các tiên đề không cần chứng minh và xây chồng định lý lên nhau—giống hệt cách đặc tả giao thức mạng hay bộ tập lệnh CPU định nghĩa tập bất biến nền tảng.
@@ -93,7 +93,7 @@ Chứng minh tính đúng đắn chương trình không chỉ mang tính lý thu
 <p class="textbook-figure-caption" data-figure="3.17">Từ bất biến vòng lặp đến Hoare logic — đồ thị luồng điều khiển nối lập trình với suy luận toán học thông qua tiền điều kiện và hậu điều kiện.</p>
 ---
 
-### Khung giải thích (nên đọc chậm): Chứng minh tính đúng đắn của thuật toán tìm `max` bằng Bất biến vòng lặp (Hoare Logic)
+### Giải thích: Chứng minh tính đúng đắn của thuật toán tìm `max` bằng Bất biến vòng lặp (Hoare Logic)
 
 Xét hàm tìm giá trị lớn nhất trong mảng không rỗng `A[0..n-1]`:
 ```python
@@ -324,7 +324,7 @@ Chứng minh: Nếu $$a^2$$ là số chẵn thì $$a$$ là số chẵn (dùng ch
 <details>
 <summary>Đáp án</summary>
 
-Giả sử $$a$$ là số lẻ, khi đó $$a = 2k+1$$ với $$k \in \mathbb{Z}$$. Suy ra $$a^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$$ là số lẻ, mâu thuẫn với giả thiết $$a^2$$ chẵn. Vậy $$a$$ phải là số chẵn.
+Giả sử $a$ là số lẻ, khi đó $a = 2k+1$ với $k \in \mathbb{Z}$. Suy ra $a^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$ là số lẻ, mâu thuẫn với giả thiết $a^2$ chẵn. Vậy $a$ phải là số chẵn.
 
 </details>
 

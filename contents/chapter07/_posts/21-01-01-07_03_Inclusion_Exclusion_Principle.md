@@ -16,7 +16,7 @@ Khảo sát một lớp 35 sinh viên cho thấy 25 bạn biết Python và 20 b
 
 Khi một bài toán có nhiều điều kiện giao nhau, việc đếm theo trực giác rất dễ sai: nếu chỉ cộng số phần tử của từng nhóm riêng lẻ, các phần tử thuộc nhiều nhóm cùng lúc sẽ bị đếm lặp. Nguyên lý bù trừ giải quyết vấn đề này bằng cách cộng các tập đơn, trừ phần giao đôi, rồi tiếp tục cộng trừ đan dấu một cách có hệ thống cho đến khi mỗi phần tử được đếm đúng một lần.
 
-## Bản đồ kiến thức nền: Bốn trụ cột làm chủ Nguyên lý Bù trừ
+## Kiến thức cần nhớ: Bốn trụ cột làm chủ Nguyên lý Bù trừ
 
 1. **Cơ chế khử đếm trùng bằng dấu đan xen**:
    Muốn tính lực lượng hợp $$\lvert A_1 \cup \dots \cup A_n \rvert$$: **cộng** tổng kích thước các tập đơn, **trừ** tổng các giao đôi, **cộng lại** tổng các giao ba, cứ thế đan xen dấu $$(-1)^{k-1}$$ cho đến giao của cả $$n$$ tập.
@@ -73,7 +73,7 @@ $$
 
 ![Phép hợp hai tập — nguyên lý bù trừ](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_union_B.svg)
 
-<p class="textbook-figure-caption" data-figure="7.11">$$\lvert A \cup B \rvert = \lvert A \rvert + \lvert B \rvert - \lvert A \cap B \rvert$$ — trừ phần giao để tránh đếm trùng.</p>
+<p class="textbook-figure-caption" data-figure="7.11">$\lvert A \cup B \rvert = \lvert A \rvert + \lvert B \rvert - \lvert A \cap B \rvert$ — trừ phần giao để tránh đếm trùng.</p>
 <div class="content-box example-box textbook-block" markdown="1">
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Trong một lớp có 50 sinh viên, 30 sinh viên học tiếng Anh, 20 sinh viên học tiếng Pháp và 10 sinh viên học cả hai ngôn ngữ. Số sinh viên học ít nhất một ngoại ngữ là:
@@ -160,7 +160,7 @@ Suy ra tổng đan dấu bỏ đi hạng tử $$\binom{r}{0} = 1$$ có giá tr�
 
 ![Phép giao hai tập](/discrete-mathematics-for-computer-science-iuh/img/course/Venn_A_intersect_B.svg)
 
-<p class="textbook-figure-caption" data-figure="7.13">Mỗi phần giao $$\lvert A_i \cap A_j \rvert$$ trong công thức tổng quát đại diện cho phần bị đếm trùng.</p>
+<p class="textbook-figure-caption" data-figure="7.13">Mỗi phần giao $\lvert A_i \cap A_j \rvert$ trong công thức tổng quát đại diện cho phần bị đếm trùng.</p>
 ## Dạng bù: đếm phần tử không vi phạm điều kiện nào
 
 Nhiều bài toán trở nên đơn giản hơn khi ta đếm số đối tượng **vi phạm ít nhất một điều kiện**, rồi lấy tổng số đối tượng trừ đi phần vi phạm đó.
@@ -206,7 +206,7 @@ Số phần tử bị loại là $$50+33+20-16-10-6+3=74$$. Do đó số các s�
 <p class="textbook-figure-caption" data-figure="7.15">Nguyên lý bù trừ cũng xuất hiện khi tính xác suất hợp của nhiều biến cố, tương tự trong nghịch lý sinh nhật.</p>
 </div>
 
-### Khung giải thích (nên đọc chậm): Đếm tay bao nhiêu số nguyên từ 1 đến 120 KHÔNG chia hết cho 2, 3, hay 5
+### Giải thích: Đếm tay bao nhiêu số nguyên từ 1 đến 120 KHÔNG chia hết cho 2, 3, hay 5
 
 Đặt không gian mẫu $$U = \{1, 2, \dots, 120\}$$ ($$\lvert U \rvert = 120$$), và gọi $$A_2, A_3, A_5$$ lần lượt là tập các số trong $$U$$ chia hết cho $$2, 3, 5$$.
 
@@ -274,7 +274,7 @@ Có bao nhiêu chuỗi nhị phân độ dài 8 chứa ít nhất một chữ s�
 <details>
 <summary>Đáp án</summary>
 
-Tổng số chuỗi nhị phân độ dài 8 là $$2^8=256$$. Chuỗi không chứa chữ số 0 chỉ có một chuỗi `11111111`; chuỗi không chứa chữ số 1 chỉ có một chuỗi `00000000`. Vậy số chuỗi thỏa mãn là $$256-2=254$$.
+Tổng số chuỗi nhị phân độ dài 8 là $2^8=256$. Chuỗi không chứa chữ số 0 chỉ có một chuỗi `11111111`; chuỗi không chứa chữ số 1 chỉ có một chuỗi `00000000`. Vậy số chuỗi thỏa mãn là $256-2=254$.
 
 </details>
 
@@ -285,7 +285,7 @@ Tìm số lượng các số nguyên dương không vượt quá $$1000$$ chia h
 <details>
 <summary>Đáp án</summary>
 
-Số lượng các tập đơn lần lượt là $$333, 200, 142$$. Số lượng các giao đôi (chia hết cho $$15, 21, 35$$) lần lượt là $$66, 47, 28$$. Giao ba (chia hết cho $$105$$) có $$9$$ số. Do đó:
+Số lượng các tập đơn lần lượt là $333, 200, 142$. Số lượng các giao đôi (chia hết cho $15, 21, 35$) lần lượt là $66, 47, 28$. Giao ba (chia hết cho $105$) có $9$ số. Do đó:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -308,11 +308,11 @@ $$
 <details>
 <summary>Đáp án</summary>
 
-Đặt bốn loại ký tự là: D = chữ số (10), L = chữ thường (26), U = chữ hoa (26), S = ký tự đặc biệt (15). Tổng kích thước bảng chữ cái là $$10+26+26+15 = 77$$ (giả sử $$n \ge 1$$).
+Đặt bốn loại ký tự là: D = chữ số (10), L = chữ thường (26), U = chữ hoa (26), S = ký tự đặc biệt (15). Tổng kích thước bảng chữ cái là $10+26+26+15 = 77$ (giả sử $n \ge 1$).
 
-(a) Dùng dạng bù. Tổng số mật khẩu độ dài $$n$$ là $$77^n$$.
+(a) Dùng dạng bù. Tổng số mật khẩu độ dài $n$ là $77^n$.
 
-Một mật khẩu không có "ít nhất hai loại ký tự" tức là chỉ dùng đúng **một** loại ký tự (vì $$n \ge 1$$). Bốn tập hợp mật khẩu chỉ dùng 1 loại là rời nhau từng đôi một, có tổng kích thước:
+Một mật khẩu không có "ít nhất hai loại ký tự" tức là chỉ dùng đúng **một** loại ký tự (vì $n \ge 1$). Bốn tập hợp mật khẩu chỉ dùng 1 loại là rời nhau từng đôi một, có tổng kích thước:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -330,20 +330,20 @@ $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 
-(b) Mật khẩu không có hai ký tự kề nhau giống nhau: ký tự đầu tiên có 77 cách chọn, mỗi ký tự tiếp theo có 76 cách chọn (khác ký tự đứng ngay trước nó). Vậy tổng số mật khẩu là $$77 \times 76^{n-1}$$.
+(b) Mật khẩu không có hai ký tự kề nhau giống nhau: ký tự đầu tiên có 77 cách chọn, mỗi ký tự tiếp theo có 76 cách chọn (khác ký tự đứng ngay trước nó). Vậy tổng số mật khẩu là $77 \times 76^{n-1}$.
 
-(c) Kết hợp cả hai điều kiện. Gọi $$A$$ là tập mật khẩu có ít nhất hai loại ký tự và $$B$$ là tập mật khẩu không có hai ký tự kề nhau giống nhau. Ta cần tính $$\lvert A \cap B \rvert = \lvert B \rvert - \lvert\bar{A} \cap B \rvert$$, trong đó $$\bar{A}$$ là tập mật khẩu chỉ dùng đúng 1 loại ký tự.
+(c) Kết hợp cả hai điều kiện. Gọi $A$ là tập mật khẩu có ít nhất hai loại ký tự và $B$ là tập mật khẩu không có hai ký tự kề nhau giống nhau. Ta cần tính $\lvert A \cap B \rvert = \lvert B \rvert - \lvert\bar{A} \cap B \rvert$, trong đó $\bar{A}$ là tập mật khẩu chỉ dùng đúng 1 loại ký tự.
 
-Tính $$\lvert\bar{A} \cap B \rvert$$: với mỗi loại có $$k$$ ký tự ($$k \ge 2$$), số mật khẩu chỉ dùng loại đó và không có hai ký tự kề giống nhau là $$k \times (k-1)^{n-1}$$. Cụ thể:
+Tính $\lvert\bar{A} \cap B \rvert$: với mỗi loại có $k$ ký tự ($k \ge 2$), số mật khẩu chỉ dùng loại đó và không có hai ký tự kề giống nhau là $k \times (k-1)^{n-1}$. Cụ thể:
 
-- Chỉ dùng chữ số: $$10 \times 9^{n-1}$$
-- Chỉ dùng chữ thường: $$26 \times 25^{n-1}$$
-- Chỉ dùng chữ hoa: $$26 \times 25^{n-1}$$
-- Chỉ dùng ký tự đặc biệt: $$15 \times 14^{n-1}$$
+- Chỉ dùng chữ số: $10 \times 9^{n-1}$
+- Chỉ dùng chữ thường: $26 \times 25^{n-1}$
+- Chỉ dùng chữ hoa: $26 \times 25^{n-1}$
+- Chỉ dùng ký tự đặc biệt: $15 \times 14^{n-1}$
 
-Tổng $$\lvert\bar{A} \cap B \rvert = 10 \times 9^{n-1} + 2 \cdot 26 \times 25^{n-1} + 15 \times 14^{n-1}$$.
+Tổng $\lvert\bar{A} \cap B \rvert = 10 \times 9^{n-1} + 2 \cdot 26 \times 25^{n-1} + 15 \times 14^{n-1}$.
 
-Vậy kết quả là: $$\lvert A \cap B \rvert = 77 \times 76^{n-1} - \big(10 \times 9^{n-1} + 52 \times 25^{n-1} + 15 \times 14^{n-1}\big)$$.
+Vậy kết quả là: $\lvert A \cap B \rvert = 77 \times 76^{n-1} - \big(10 \times 9^{n-1} + 52 \times 25^{n-1} + 15 \times 14^{n-1}\big)$.
 
 </details>
 

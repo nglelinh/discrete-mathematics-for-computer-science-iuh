@@ -21,7 +21,7 @@ Nếu lớp $$NP$$ đặc trưng cho các bài toán có chứng chỉ ngắn ch
 
 Để chứng minh một công thức logic là *thỏa được* (`SAT`), bạn chỉ cần đưa ra **1 phép gán đúng** duy nhất. Nhưng để chứng minh công thức đó là *hằng đúng* (`TAUTOLOGY` — đúng với mọi phép gán), làm sao thuyết phục người khác chỉ bằng một chứng chỉ ngắn gọn? Câu hỏi về tính bất đối xứng giữa câu trả lời **CÓ** và câu trả lời **KHÔNG** sinh ra lớp $$\mathrm{coNP}$$ — người anh em song sinh phản chiếu của $$NP$$.
 
-## Bản đồ kiến thức nền: Ba trụ cột của $$\mathrm{coNP}$$ và Hệ quả Cấu trúc
+## Kiến thức cần nhớ: Ba trụ cột của $$\mathrm{coNP}$$ và Hệ quả Cấu trúc
 
 1. **Định nghĩa $$\mathrm{coNP} = \{L \mid \overline{L} \in NP\}$$**:
    Một bài toán thuộc $$\mathrm{coNP}$$ khi các trường hợp trả lời **KHÔNG (NO-instance)** có chứng chỉ ngắn kiểm tra được trong thời gian đa thức (ví dụ: 1 phép gán làm công thức sai là chứng chỉ ngắn bác bỏ `TAUTOLOGY`).
@@ -99,7 +99,7 @@ Tương đương, mọi thể hiện trả lời Không (No) của $$L$$ đều 
 
 Phiên bản quyết định chuẩn của bài toán phân tích thừa số nguyên tố (Integer Factoring) thuộc giao $$NP\cap\mathrm{coNP}$$, nhưng hiện **không** được biết (và cũng không được kỳ vọng) là NP-complete. Vì vậy, không thể nói độ an toàn của RSA dựa trên giả thiết “phân tích thừa số là NP-complete”.
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng `FACTORING` thuộc cả $$NP$$ lẫn $$\mathrm{coNP}$$ bằng số cụ thể
+### Giải thích: Kiểm chứng `FACTORING` thuộc cả $$NP$$ lẫn $$\mathrm{coNP}$$ bằng số cụ thể
 
 Xét phiên bản quyết định của bài toán phân tích thừa số:
 $$\mathrm{FACT} = \{ \langle N, k \rangle \mid N \text{ có ít nhất một ước không tầm thường } d \text{ thỏa } 1 < d \le k \}.$$

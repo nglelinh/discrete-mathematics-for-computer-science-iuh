@@ -13,7 +13,7 @@ Trong các môn học lý thuyết, từng khái niệm toán rời rạc thư�
 
 **Mạch bài học:** Chẩn đoán đồng thời **5 sự cố thực chiến** trên hệ thống đăng nhập TaskFlow $$\longrightarrow$$ truy vết từng sự cố về đúng công cụ toán rời rạc gốc $$\longrightarrow$$ hợp nhất thành bản thiết kế kiến trúc chịu tải bền vững.
 
-## Bản đồ kiến thức nền: Năm trụ cột toán rời rạc hội tụ trong một luồng đăng nhập
+## Kiến thức cần nhớ: Năm trụ cột toán rời rạc hội tụ trong một luồng đăng nhập
 
 - **Hàng đợi & Tổ hợp cấu hình (Queueing & Combinatorics):** Định luật Little ($$L = \lambda W$$) định cỡ pool kết nối DB thay vì đoán theo DAU; còn kiểm thử Pairwise cắt bùng nổ tổ hợp $$N = \prod v_i$$ của ma trận trình duyệt–OS–ngôn ngữ–OAuth xuống tập ca kiểm thử chạy kịp trong CI/CD.
 - **Xác suất va chạm & Mã hóa nhị phân (Birthday Bound & Encoding):** Ngưỡng va chạm $$\approx 1{,}177\sqrt{D}$$ bác bỏ việc dùng `INT32` cho `session_id` (buộc dùng 128-bit/UUID v4); còn chuẩn mã hóa **UTF-8 đồng nhất end-to-end** chặn đứng lỗi `????` khi chuỗi đa ngôn ngữ đi qua nhiều tầng ứng dụng–CSDL.
@@ -253,7 +253,7 @@ Một triệu DAU không đòi hỏi một triệu lời giải phức tạp —
 
 ---
 
-## Ví dụ tính tay cầm tay chỉ việc: Bảng kiểm toán 5 thông số cho TaskFlow (1.000.000 DAU)
+## Ví dụ tính tay làm từng bước: Bảng kiểm toán 5 thông số cho TaskFlow (1.000.000 DAU)
 
 Trước khi triển khai bản vá lên production, một kỹ sư trưởng sẽ kiểm tra nhanh bằng 5 phép tính nhẩm trong 2 phút:
 
@@ -267,8 +267,7 @@ Trước khi triển khai bản vá lên production, một kỹ sư trưởng s�
 4. **Chuỗi tiếng Nhật UTF-8:** 1 ký tự Kanji như `東` (U+6771) chiếm **3 byte** trong UTF-8 (`E6 9D B1`); nếu cột MySQL dùng `latin1` (1 byte/ký tự) thay vì `utf8mb4`, dữ liệu bị cắt hỏng thành `???`.
 5. **Cardinality của Prometheus:** Gắn nhãn `user_id` cho 1 triệu DAU tạo ra $$1\,000\,000$$ time-series riêng lẻ (tốn hàng GB RAM); đổi sang nhãn `auth_method` (3 giá trị) $$\times$$ `status_code` (4 giá trị) chỉ tạo tối đa $$3 \times 4 = 12$$ time-series!
 
-### Khung giải thích: Tư duy kiến trúc hệ thống bằng toán rời rạc (nên đọc chậm)
-
+### Giải thích: Tư duy kiến trúc hệ thống bằng toán rời rạc
 1. **Bước 1 — Mọi sự cố vận hành đều có "chữ ký toán học":** Độ trễ tăng khi tăng pool là chữ ký của tranh chấp hàng đợi; lỗi lặp khóa bất ngờ là chữ ký của $$\sqrt{D}$$; RAM tăng đều theo lượng người dùng là chữ ký của cardinality không chặn.
 2. **Bước 2 — Tính bậc độ lớn trước khi viết code:** Chỉ cần 5 phép tính nháp ($$L=\lambda W$$, $$\prod v_i$$, $$1{,}177\sqrt{D}$$, số byte/ký tự, $$\prod \vert V_i \vert$$) đã loại bỏ được phần lớn lỗi kiến trúc ngay trên giấy.
 3. **Bước 3 — Hệ thống bền vững nhờ chặn cận trên:** Mọi tài nguyên hữu hạn (kết nối DB, số ca CI, bộ nhớ metric) phải được chặn bằng các đại lượng có cận trên tường minh thay vì để tăng tự do theo lưu lượng người dùng.

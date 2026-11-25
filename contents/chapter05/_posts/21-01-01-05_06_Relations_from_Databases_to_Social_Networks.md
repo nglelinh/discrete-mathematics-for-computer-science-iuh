@@ -17,7 +17,7 @@ Năm 1970, nhà toán học Edgar F. Codd tại phòng thí nghiệm IBM công b
 
 Trong toán học rời rạc, quan hệ là một tập con của tích Descartes; trong khoa học máy tính, khái niệm đó là nền tảng của mô hình cơ sở dữ liệu quan hệ, đồ thị dữ liệu, hệ thống gợi ý và kỹ thuật phân vùng kiểm thử. Từ việc sinh viên đăng ký môn học, người dùng theo dõi nhau đến khách hàng mua sản phẩm, mọi tình huống đều có thể mô hình hóa bằng các cặp có cấu trúc.
 
-## Bản đồ kiến thức nền: Bốn cây cầu đưa Quan hệ Toán học vào Hệ thống Công nghiệp
+## Kiến thức cần nhớ: Bốn cây cầu đưa Quan hệ Toán học vào Hệ thống Công nghiệp
 
 1. **Mô hình Quan hệ & Đại số Quan hệ của E. F. Codd**:
    Mỗi bảng SQL là một quan hệ $$n$$-ngôi $$R \subseteq D_1 \times \dots \times D_n$$; mọi câu truy vấn `SELECT / WHERE / JOIN` đều được bộ tối ưu hóa dịch thành các phép toán đại số quan hệ ($$\pi, \sigma, \bowtie$$).
@@ -148,7 +148,7 @@ Khi dữ liệu ngày càng có nhiều liên kết phức tạp, vai trò của
 
 ---
 
-### Khung giải thích (nên đọc chậm): Tính tay tính năng "Bạn có thể biết" bằng bình phương ma trận quan hệ $$M_R^2$$
+### Giải thích: Tính tay tính năng "Bạn có thể biết" bằng bình phương ma trận quan hệ $$M_R^2$$
 
 Giả sử một mạng xã hội nhỏ có 4 người dùng `1: An`, `2: Bình`, `3: Chi`, `4: Dũng` với quan hệ bạn bè đối xứng gồm 4 cặp: `(An–Bình)`, `(An–Chi)`, `(Bình–Dũng)`, `(Chi–Dũng)` (chú ý: `An` và `Dũng` **chưa** kết bạn với nhau).
 

@@ -14,7 +14,7 @@ Hầu hết các định nghĩa tinh hoa nhất trong toán học và khoa học
 
 Hiểu đúng lượng từ lồng nhau giống như đọc đúng **vòng lặp `for` lồng nhau** trong mã nguồn: chỉ cần đảo sai thứ tự hai vòng lặp hoặc phủ định nhầm một dấu, toàn bộ ý nghĩa chương trình đảo ngược hoàn toàn.
 
-## Bản đồ kiến thức nền: Bốn chìa khóa làm chủ Lượng từ Lồng nhau
+## Kiến thức cần nhớ: Bốn chìa khóa làm chủ Lượng từ Lồng nhau
 
 1. **Tương đương vòng lặp lồng nhau (`all` / `any`)**:
    - $$\forall x\, \exists y\, P(x, y)$$ $$\iff$$ `all(any(P(x, y) for y in D) for x in D)` (giá trị $$y$$ được phép **phụ thuộc** vào $$x$$).
@@ -125,7 +125,7 @@ SELECT * FROM students WHERE gpa >= 3.5;      -- Có thể đúng/sai
 <p class="textbook-figure-caption" data-figure="2.8">Ký hiệu ∃ (existential quantification) — khẳng định tồn tại ít nhất một phần tử trong miền thỏa mãn vị từ.</p>
 </div>
 
-### Khung giải thích (nên đọc chậm): Phủ định từng bước một phát biểu lượng từ lồng nhau 3 tầng
+### Giải thích: Phủ định từng bước một phát biểu lượng từ lồng nhau 3 tầng
 
 Hãy tự tay phủ định mệnh đề: *"Mọi sinh viên đều có ít nhất một môn học mà họ đạt điểm tối đa"* trên miền sinh viên $$S$$ và miền môn học $$C$$:
 $$A \equiv \forall s \in S,\; \exists c \in C,\; \text{MaxScore}(s, c).$$
@@ -273,8 +273,8 @@ Viết phủ định của các công thức sau:
 <details>
 <summary>Đáp án</summary>
 
-1. $$\exists x\, (P(x) \land \lnot Q(x))$$
-2. $$\forall x\, \exists y\, \lnot R(x,y)$$
+1. $\exists x\, (P(x) \land \lnot Q(x))$
+2. $\forall x\, \exists y\, \lnot R(x,y)$
 
 </details>
 
@@ -291,7 +291,7 @@ Dịch câu sau sang ngôn ngữ logic vị từ ($$x$$ là sinh viên, $$y$$ l�
 $$\forall x\,\big(Student(x) \to \exists y\,(Course(y) \land Takes(x,y) \land Score(x,y,10))\big)$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-(Lưu ý: với lượng từ toàn thể $$\forall x$$, điều kiện lọc miền $$Student(x)$$ đi với phép kéo theo $$\to$$, không dùng phép hội $$\land$$.)
+(Lưu ý: với lượng từ toàn thể $\forall x$, điều kiện lọc miền $Student(x)$ đi với phép kéo theo $\to$, không dùng phép hội $\land$.)
 </details>
 
 ### Bài tập 3: Phân biệt thứ tự lượng từ
@@ -304,7 +304,7 @@ Giải thích tại sao hai công thức sau **không** tương đương trên $
 <details>
 <summary>Đáp án</summary>
 
-Công thức thứ nhất đúng trên $$\mathbb{R}$$ vì với mọi $$x$$ ta luôn chọn được $$y = x + 1 > x$$. Công thức thứ hai sai vì không tồn tại số thực $$y$$ nào lớn hơn mọi số thực $$x$$.
+Công thức thứ nhất đúng trên $\mathbb{R}$ vì với mọi $x$ ta luôn chọn được $y = x + 1 > x$. Công thức thứ hai sai vì không tồn tại số thực $y$ nào lớn hơn mọi số thực $x$.
 
 </details>
 
@@ -344,16 +344,16 @@ SELECT EXISTS (
 <details>
 <summary>Đáp án</summary>
 
-(a) **Sai.** Giả sử tồn tại $$x \in \mathbb{R}$$ thỏa mãn. Với $$y = 0$$ ta có $$x + 0 = 0 \iff x = 0$$. Khi đó thay $$y = 1$$ ta được $$0 + 1 = 0 \cdot 1 \iff 1 = 0$$ (vô lý). Vậy không tồn tại $$x$$ thỏa mãn.
+(a) **Sai.** Giả sử tồn tại $x \in \mathbb{R}$ thỏa mãn. Với $y = 0$ ta có $x + 0 = 0 \iff x = 0$. Khi đó thay $y = 1$ ta được $0 + 1 = 0 \cdot 1 \iff 1 = 0$ (vô lý). Vậy không tồn tại $x$ thỏa mãn.
 
-(b) **Sai.** Giả sử tồn tại $$x \in \mathbb{R}$$ thỏa mãn. Với $$y = 0$$, bất phương trình cho $$x \leq 0$$. Với $$y = 1$$, bất phương trình cho $$x + 1 \leq 2x \iff x \geq 1$$. Hai điều kiện $$x \leq 0$$ và $$x \geq 1$$ mâu thuẫn nhau.
+(b) **Sai.** Giả sử tồn tại $x \in \mathbb{R}$ thỏa mãn. Với $y = 0$, bất phương trình cho $x \leq 0$. Với $y = 1$, bất phương trình cho $x + 1 \leq 2x \iff x \geq 1$. Hai điều kiện $x \leq 0$ và $x \geq 1$ mâu thuẫn nhau.
 
-(c) **Sai.** Giả sử tồn tại $$x \in \mathbb{R}$$ sao cho $$\lceil y \rceil = \lfloor y + x \rfloor$$ với mọi $$y \in \mathbb{R}$$.
-    - Thay $$y = 0$$: $$\lceil 0 \rceil = 0$$, nên $$\lfloor x \rfloor = 0 \implies 0 \leq x < 1$$.
-    - Với mọi $$x \in [0, 1)$$, chọn $$y = \frac{1 - x}{2}$$. Khi đó $$0 < y < 1$$ nên $$\lceil y \rceil = 1$$, nhưng $$0 < y + x = \frac{1 + x}{2} < 1$$ nên $$\lfloor y + x \rfloor = 0 \neq 1$$ (chẳng hạn nếu $$x = 0.5$$ và $$y = 0.25$$ thì $$\lceil 0.25 \rceil = 1 \neq \lfloor 0.75 \rfloor = 0$$).
-    Vậy không tồn tại $$x \in \mathbb{R}$$ thỏa mãn.
+(c) **Sai.** Giả sử tồn tại $x \in \mathbb{R}$ sao cho $\lceil y \rceil = \lfloor y + x \rfloor$ với mọi $y \in \mathbb{R}$.
+    - Thay $y = 0$: $\lceil 0 \rceil = 0$, nên $\lfloor x \rfloor = 0 \implies 0 \leq x < 1$.
+    - Với mọi $x \in [0, 1)$, chọn $y = \frac{1 - x}{2}$. Khi đó $0 < y < 1$ nên $\lceil y \rceil = 1$, nhưng $0 < y + x = \frac{1 + x}{2} < 1$ nên $\lfloor y + x \rfloor = 0 \neq 1$ (chẳng hạn nếu $x = 0.5$ và $y = 0.25$ thì $\lceil 0.25 \rceil = 1 \neq \lfloor 0.75 \rfloor = 0$).
+    Vậy không tồn tại $x \in \mathbb{R}$ thỏa mãn.
 
-(d) **Đúng.** Với $$x \in \mathbb{Z}$$, biến đổi $$(y^2 \leq x^2 \Rightarrow x \leq 0) \equiv (y^2 > x^2) \lor (x \leq 0)$$. Nếu $$x \leq 0$$, chọn $$y = 0 \in \mathbb{N}$$ thì vế phải đúng. Nếu $$x > 0$$, chọn $$y = x + 1 \in \mathbb{N}$$ thì $$y^2 > x^2$$ nên vế trái đúng. Do đó với mọi $$x \in \mathbb{Z}$$ luôn tồn tại $$y \in \mathbb{N}$$ thỏa mãn.
+(d) **Đúng.** Với $x \in \mathbb{Z}$, biến đổi $(y^2 \leq x^2 \Rightarrow x \leq 0) \equiv (y^2 > x^2) \lor (x \leq 0)$. Nếu $x \leq 0$, chọn $y = 0 \in \mathbb{N}$ thì vế phải đúng. Nếu $x > 0$, chọn $y = x + 1 \in \mathbb{N}$ thì $y^2 > x^2$ nên vế trái đúng. Do đó với mọi $x \in \mathbb{Z}$ luôn tồn tại $y \in \mathbb{N}$ thỏa mãn.
 
 </details>
 
@@ -370,13 +370,13 @@ SELECT EXISTS (
 <details>
 <summary>Đáp án</summary>
 
-(a) **Tương đương.** Nếu vế trái đúng, tồn tại $$x_0$$ thỏa $$P(x_0)$$ và mọi $$y$$ thỏa $$Q(y)$$; khi đó với mọi $$y$$, chọn $$x = x_0$$ ta có $$P(x_0) \land Q(y)$$, nên vế phải đúng. Ngược lại, nếu vế phải đúng: do miền không rỗng, lấy một $$y_0$$ bất kỳ sẽ có $$x_{y_0}$$ thỏa $$P(x_{y_0})$$, đồng thời với mọi $$y$$ đều có $$Q(y)$$ đúng, nên vế trái đúng.
+(a) **Tương đương.** Nếu vế trái đúng, tồn tại $x_0$ thỏa $P(x_0)$ và mọi $y$ thỏa $Q(y)$; khi đó với mọi $y$, chọn $x = x_0$ ta có $P(x_0) \land Q(y)$, nên vế phải đúng. Ngược lại, nếu vế phải đúng: do miền không rỗng, lấy một $y_0$ bất kỳ sẽ có $x_{y_0}$ thỏa $P(x_{y_0})$, đồng thời với mọi $y$ đều có $Q(y)$ đúng, nên vế trái đúng.
 
-(b) **Không tương đương.** Phản ví dụ trên miền $$\{0, 1\}$$: đặt $$P(0,0) = T$$ và $$P(x,y) = F$$ với các cặp còn lại; đặt $$Q(1,1) = T$$ và $$Q(x,y) = F$$ với các cặp còn lại.
-    - Vế trái $$\forall x \exists y\,(P(x,y) \lor Q(x,y))$$: với $$x = 0$$ chọn $$y = 0$$ ($$P(0,0) = T$$), với $$x = 1$$ chọn $$y = 1$$ ($$Q(1,1) = T$$) → **đúng**.
-    - Vế phải: $$\forall x \exists y\,P(x,y)$$ sai (tại $$x = 1$$ không có $$y$$ nào), và $$\forall x \exists y\,Q(x,y)$$ sai (tại $$x = 0$$ không có $$y$$ nào), nên tuyển hai vế **sai**.
+(b) **Không tương đương.** Phản ví dụ trên miền $\{0, 1\}$: đặt $P(0,0) = T$ và $P(x,y) = F$ với các cặp còn lại; đặt $Q(1,1) = T$ và $Q(x,y) = F$ với các cặp còn lại.
+    - Vế trái $\forall x \exists y\,(P(x,y) \lor Q(x,y))$: với $x = 0$ chọn $y = 0$ ($P(0,0) = T$), với $x = 1$ chọn $y = 1$ ($Q(1,1) = T$) → **đúng**.
+    - Vế phải: $\forall x \exists y\,P(x,y)$ sai (tại $x = 1$ không có $y$ nào), và $\forall x \exists y\,Q(x,y)$ sai (tại $x = 0$ không có $y$ nào), nên tuyển hai vế **sai**.
 
-(c) **Tương đương.** Cả hai vế đều là hằng đúng trên miền không rỗng: từ $$\exists x \forall y\,P(x,y)$$ luôn suy ra $$\forall y \exists x\,P(x,y)$$, và từ $$\forall y \exists x\,P(x,y)$$ (trên miền không rỗng) luôn suy ra $$\exists x \exists y\,P(x,y)$$. Vì hai vế đều luôn đúng nên chúng tương đương logic.
+(c) **Tương đương.** Cả hai vế đều là hằng đúng trên miền không rỗng: từ $\exists x \forall y\,P(x,y)$ luôn suy ra $\forall y \exists x\,P(x,y)$, và từ $\forall y \exists x\,P(x,y)$ (trên miền không rỗng) luôn suy ra $\exists x \exists y\,P(x,y)$. Vì hai vế đều luôn đúng nên chúng tương đương logic.
 
 </details>
 
@@ -394,19 +394,19 @@ Phủ định các câu sau và diễn đạt lại bằng câu tiếng Việt t
 <summary>Đáp án</summary>
 
 (a) **Phủ định**: "Có ít nhất một sinh viên trong lớp không nộp bài đúng hạn."
-    Ký hiệu: $$\neg\forall x\, N(x) \equiv \exists x\, \neg N(x)$$.
+    Ký hiệu: $\neg\forall x\, N(x) \equiv \exists x\, \neg N(x)$.
 
 (b) **Phủ định**: "Mọi máy chủ đều ngừng hoạt động." (Không còn máy chủ nào hoạt động.)
-    Ký hiệu: $$\neg\exists x\, H(x) \equiv \forall x\, \neg H(x)$$.
+    Ký hiệu: $\neg\exists x\, H(x) \equiv \forall x\, \neg H(x)$.
 
 (c) **Phủ định**: "Có ít nhất một giao dịch không được ghi log."
-    Ký hiệu: $$\neg\forall x\, L(x) \equiv \exists x\, \neg L(x)$$.
+    Ký hiệu: $\neg\forall x\, L(x) \equiv \exists x\, \neg L(x)$.
 
 (d) **Phủ định**: "Mọi lỗ hổng bảo mật đều đã được vá."
-    Ký hiệu: $$\neg\exists x\, V(x) \equiv \forall x\, \neg V(x)$$.
+    Ký hiệu: $\neg\exists x\, V(x) \equiv \forall x\, \neg V(x)$.
 
-(e) Câu gốc "Không ai không thích âm nhạc" là $$\neg\exists x\, \neg M(x) \equiv \forall x\, M(x)$$ ("mọi người đều thích âm nhạc").
-    **Phủ định**: "Có ít nhất một người không thích âm nhạc." ($$\exists x\, \neg M(x)$$).
+(e) Câu gốc "Không ai không thích âm nhạc" là $\neg\exists x\, \neg M(x) \equiv \forall x\, M(x)$ ("mọi người đều thích âm nhạc").
+    **Phủ định**: "Có ít nhất một người không thích âm nhạc." ($\exists x\, \neg M(x)$).
 
 </details>
 
@@ -423,16 +423,16 @@ Dịch các câu sau sang logic vị từ và xác định miền xác định p
 <details>
 <summary>Đáp án</summary>
 
-(a) $$\forall s \in Student\; \exists! m \in ID\; HasID(s, m)$$ — mỗi sinh viên $$s$$ có duy nhất một mã số $$m$$. Nếu không dùng $$\exists!$$, có thể viết:
-    $$\forall s\, \exists m\, \big(HasID(s,m) \land \forall n\, (HasID(s,n) \to n = m)\big)$$.
+(a) $\forall s \in Student\; \exists! m \in ID\; HasID(s, m)$ — mỗi sinh viên $s$ có duy nhất một mã số $m$. Nếu không dùng $\exists!$, có thể viết:
+    $\forall s\, \exists m\, \big(HasID(s,m) \land \forall n\, (HasID(s,n) \to n = m)\big)$.
 
-(b) $$\exists b \in Book\; \forall s \in Student\; Read(s, b)$$ — lượng từ $$\exists$$ đứng trước $$\forall$$ biểu thị cùng một cuốn sách chung cho mọi sinh viên.
+(b) $\exists b \in Book\; \forall s \in Student\; Read(s, b)$ — lượng từ $\exists$ đứng trước $\forall$ biểu thị cùng một cuốn sách chung cho mọi sinh viên.
 
-(c) $$\forall p \in People\; \exists q \in People\; Love(p, q)$$ — $$q$$ phụ thuộc vào $$p$$, nên mỗi người có thể yêu thương một người khác nhau.
+(c) $\forall p \in People\; \exists q \in People\; Love(p, q)$ — $q$ phụ thuộc vào $p$, nên mỗi người có thể yêu thương một người khác nhau.
 
-(d) $$\exists p \in People\; \forall q \in People\; Respect(q, p)$$ — tồn tại cùng một người $$p$$ được mọi người kính trọng.
+(d) $\exists p \in People\; \forall q \in People\; Respect(q, p)$ — tồn tại cùng một người $p$ được mọi người kính trọng.
 
-(e) $$\neg\exists s \in Student\; \forall m \in Subject\; Like(s, m)$$, tương đương với $$\forall s \in Student\; \exists m \in Subject\; \neg Like(s, m)$$ ("với mọi sinh viên $$s$$, tồn tại ít nhất một môn $$m$$ mà $$s$$ không thích").
+(e) $\neg\exists s \in Student\; \forall m \in Subject\; Like(s, m)$, tương đương với $\forall s \in Student\; \exists m \in Subject\; \neg Like(s, m)$ ("với mọi sinh viên $s$, tồn tại ít nhất một môn $m$ mà $s$ không thích").
 
 </details>
 
@@ -449,15 +449,15 @@ Cho miền $$U = \mathbb{Z}$$ (tập số nguyên). Xác định các mệnh đ�
 <details>
 <summary>Đáp án</summary>
 
-(a) **Đúng.** Với mọi $$x \in \mathbb{Z}$$, chọn $$y = -x \in \mathbb{Z}$$ thì $$x + (-x) = 0$$ ($$y$$ phụ thuộc vào $$x$$).
+(a) **Đúng.** Với mọi $x \in \mathbb{Z}$, chọn $y = -x \in \mathbb{Z}$ thì $x + (-x) = 0$ ($y$ phụ thuộc vào $x$).
 
-(b) **Sai.** Không có số nguyên $$y$$ cố định nào cộng với mọi $$x \in \mathbb{Z}$$ đều bằng 0 (với bất kỳ $$y$$ nào, chỉ cần chọn $$x \neq -y$$ sẽ làm $$x + y \neq 0$$).
+(b) **Sai.** Không có số nguyên $y$ cố định nào cộng với mọi $x \in \mathbb{Z}$ đều bằng 0 (với bất kỳ $y$ nào, chỉ cần chọn $x \neq -y$ sẽ làm $x + y \neq 0$).
 
-(c) **Sai.** Phản ví dụ: $$x = -3, y = 2$$ có $$x < y$$ nhưng $$x^2 = 9 > 4 = y^2$$. (Mệnh đề này đúng trên $$\mathbb{N}$$, nhưng sai trên $$\mathbb{Z}$$.)
+(c) **Sai.** Phản ví dụ: $x = -3, y = 2$ có $x < y$ nhưng $x^2 = 9 > 4 = y^2$. (Mệnh đề này đúng trên $\mathbb{N}$, nhưng sai trên $\mathbb{Z}$.)
 
-(d) **Đúng.** Chọn $$x = 0, y = 0$$ ta có $$0^2 + 0^2 = 0$$.
+(d) **Đúng.** Chọn $x = 0, y = 0$ ta có $0^2 + 0^2 = 0$.
 
-(e) **Đúng.** Với mọi số nguyên $$x \in \mathbb{Z}$$, bình phương $$x^2$$ cũng là một số nguyên, nên luôn tồn tại $$y = x^2 \in \mathbb{Z}$$ thỏa mãn.
+(e) **Đúng.** Với mọi số nguyên $x \in \mathbb{Z}$, bình phương $x^2$ cũng là một số nguyên, nên luôn tồn tại $y = x^2 \in \mathbb{Z}$ thỏa mãn.
 
 </details>
 
@@ -479,11 +479,11 @@ Viết công thức logic vị từ và câu truy vấn SQL tương ứng cho c�
 <summary>Đáp án</summary>
 
 Đặt các vị từ:
-- $$SV(s, n, t, l)$$: $$s$$ là sinh viên có tên $$n$$, tuổi $$t$$, lớp $$l$$.
-- $$HP(m, ten, tc)$$: $$m$$ là mã học phần có tên $$ten$$, số tín chỉ $$tc$$.
-- $$DK(s, m, d)$$: sinh viên $$s$$ đăng ký học phần $$m$$ với điểm $$d$$.
+- $SV(s, n, t, l)$: $s$ là sinh viên có tên $n$, tuổi $t$, lớp $l$.
+- $HP(m, ten, tc)$: $m$ là mã học phần có tên $ten$, số tín chỉ $tc$.
+- $DK(s, m, d)$: sinh viên $s$ đăng ký học phần $m$ với điểm $d$.
 
-(a) $$\exists m, tc, d\, (HP(m, \text{"Toán Rời Rạc"}, tc) \land DK(s, m, d))$$
+(a) $\exists m, tc, d\, (HP(m, \text{"Toán Rời Rạc"}, tc) \land DK(s, m, d))$
 ```sql
 SELECT sv.* FROM SinhVien sv
 JOIN DangKy dk ON sv.maSV = dk.maSV
@@ -491,7 +491,7 @@ JOIN HocPhan hp ON dk.maHP = hp.maHP
 WHERE hp.tenHP = 'Toán Rời Rạc'
 ```
 
-(b) $$\forall m, ten, tc\, (HP(m, ten, tc) \to \exists d\, DK(s, m, d))$$
+(b) $\forall m, ten, tc\, (HP(m, ten, tc) \to \exists d\, DK(s, m, d))$
 ```sql
 SELECT maSV FROM SinhVien sv
 WHERE NOT EXISTS (
@@ -503,7 +503,7 @@ WHERE NOT EXISTS (
 ```
 Đây là phép chia (division) trong đại số quan hệ.
 
-(c) $$\neg\exists s, d\; DK(s, m, d)$$
+(c) $\neg\exists s, d\; DK(s, m, d)$
 ```sql
 SELECT * FROM HocPhan hp
 WHERE NOT EXISTS (
@@ -511,7 +511,7 @@ WHERE NOT EXISTS (
 )
 ```
 
-(d) $$\exists m, ten, d\, (HP(m, ten, 3) \land DK(s, m, d))$$
+(d) $\exists m, ten, d\, (HP(m, ten, 3) \land DK(s, m, d))$
 ```sql
 SELECT DISTINCT sv.* FROM SinhVien sv
 JOIN DangKy dk ON sv.maSV = dk.maSV

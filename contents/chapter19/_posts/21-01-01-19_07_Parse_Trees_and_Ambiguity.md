@@ -17,9 +17,9 @@ excerpt: "Cây phân tích (parse tree), tương ứng với dẫn xuất trái 
 
 </div>
 
-Nếu bạn gõ `2 + 3 * 4` vào máy tính bỏ túi, kết quả phải là `14`, không thể lúc thì `14` lúc lại thành `20`. Nhưng nếu một văn phạm phi ngữ cảnh được viết cẩu thả kiểu $$E \to E + E \mid E * E \mid \text{num}$$, trình biên dịch sẽ rơi vào **sự mơ hồ (ambiguity)**: cùng một chuỗi ký tự lại có tới hai cây phân tích khác nhau mang hai ý nghĩa hoàn toàn trái ngược. Hiểu rõ cây phân tích và kỹ thuật khử mơ hồ là kỹ năng sống còn khi thiết kế ngôn ngữ lập trình.
+Nếu bạn gõ `2 + 3 * 4` vào máy tính bỏ túi, kết quả phải là `14`, không thể lúc thì `14` lúc lại thành `20`. Nhưng nếu một văn phạm phi ngữ cảnh được viết cẩu thả kiểu $$E \to E + E \mid E * E \mid \text{num}$$, trình biên dịch sẽ rơi vào **sự mơ hồ (ambiguity)**: cùng một chuỗi ký tự lại có tới hai cây phân tích khác nhau mang hai ý nghĩa hoàn toàn trái ngược. Hiểu rõ cây phân tích và kỹ thuật khử mơ hồ là kỹ năng cần có khi thiết kế ngôn ngữ lập trình.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Cây phân tích và Tính mơ hồ
+## Kiến thức cần nhớ: Ba trụ cột của Cây phân tích và Tính mơ hồ
 
 1. **Cây phân tích (Parse Tree) — Biểu diễn hình học bất biến với thứ tự dẫn xuất**:
    Nút gốc là $$S$$, nút trong là biến $$V$$, lá đọc từ trái sang phải tạo ra chuỗi $$w$$. Một cây phân tích tương ứng duy nhất 1–1 với đúng một dẫn xuất trái nhất (và đúng một dẫn xuất phải nhất).
@@ -67,7 +67,7 @@ Theo dõi dẫn xuất trái nhất dựng cây phân tích từng bước; vớ
 </div>
 <script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
 
-### Khung giải thích (nên đọc chậm): Khử lỗi tính sai biểu thức `10 - 3 - 2` bằng đệ quy trái
+### Giải thích: Khử lỗi tính sai biểu thức `10 - 3 - 2` bằng đệ quy trái
 
 Xét văn phạm mơ hồ $$E \to E - E \mid \text{num}$$ trên chuỗi `10 - 3 - 2`:
 - **Cây 1 (kết hợp trái):** `((10 - 3) - 2)` $$= 7 - 2 = \mathbf{5}$$ (Đúng theo toán học!).

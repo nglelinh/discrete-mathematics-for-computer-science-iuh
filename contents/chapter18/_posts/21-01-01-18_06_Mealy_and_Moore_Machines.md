@@ -33,7 +33,7 @@ excerpt: "Bộ biến đổi hữu hạn trạng thái (transducer), so sánh h�
 
 </div>
 
-## Bản đồ kiến thức nền: So sánh Máy Moore và Máy Mealy
+## Kiến thức cần nhớ: So sánh Máy Moore và Máy Mealy
 
 ### 1. Máy Moore: Đầu ra chỉ phụ thuộc Trạng thái hiện tại ($$\lambda: Q \to \Gamma$$)
 - **Bản chất:** Ngay khi ở trạng thái $$q_0$$ (chưa đọc ký tự nào), máy Moore đã phát ra ký tự đầu tiên $$\lambda(q_0)$$. Vì thế với đầu vào dài $$n$$, đầu ra có độ dài **$$n + 1$$**.
@@ -46,7 +46,7 @@ excerpt: "Bộ biến đổi hữu hạn trạng thái (transducer), so sánh h�
 ### 3. Tương đương Chức năng Moore $$\leftrightarrow$$ Mealy
 - **Bản chất:** Mọi máy Moore đều chuyển được sang máy Mealy tương đương (bỏ qua ký tự đầu $$\lambda(q_0)$$) và ngược lại (nhân bản trạng thái của Mealy theo từng đầu ra có thể đi vào nó — tối đa $$\lvert Q\rvert \cdot \lvert\Gamma\rvert$$ trạng thái!).
 
-## Ví dụ tính tay cầm tay chỉ việc: Bộ phát hiện chuỗi con `01` trên đầu vào `0101`
+## Ví dụ tính tay làm từng bước: Bộ phát hiện chuỗi con `01` trên đầu vào `0101`
 
 Mục tiêu: xuất `1` ngay khi vừa nhận xong chuỗi con `01`, các vị trí khác xuất `0`.
 1. **Máy Mealy (chỉ cần 2 trạng thái $$q_0, q_1$$):**
@@ -57,8 +57,7 @@ Mục tiêu: xuất `1` ngay khi vừa nhận xong chuỗi con `01`, các vị t
    - $$q_2$$ chuyên để xuất `1` khi vừa nhận xong `01`!
    - **Chạy trên `0101`:** $$q_0[0] \xrightarrow{0} q_1[0] \xrightarrow{1} q_2[1] \xrightarrow{0} q_1[0] \xrightarrow{1} q_2[1] \implies$$ đầu ra **`00101`** (độ dài 5 — thêm đúng 1 bit khởi đầu `0`!).
 
-### Khung giải thích: 4 bước chọn và chuyển đổi giữa Moore và Mealy (nên đọc chậm)
-
+### Giải thích: 4 bước chọn và chuyển đổi giữa Moore và Mealy
 #### Bước 1: Kiểm tra độ dài đầu ra
 Nếu đầu ra dài $$n$$ (phản ứng đồng thời với đầu vào) $$\to$$ **Mealy**; nếu dài $$n + 1$$ (có trạng thái khởi tạo ban đầu) $$\to$$ **Moore**.
 

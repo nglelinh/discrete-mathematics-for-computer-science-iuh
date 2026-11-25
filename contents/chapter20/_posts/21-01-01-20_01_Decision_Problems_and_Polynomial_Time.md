@@ -25,7 +25,7 @@ excerpt: "Mô hình hóa bài toán quyết định dưới dạng ngôn ngữ h
 
 Một bài toán *giải được* về mặt lý thuyết không có nghĩa là nó *giải được trong thực tế*. Nếu một thuật toán cần $$2^{100}$$ phép tính, ngay cả khi ghép toàn bộ siêu máy tính trên Trái Đất lại chạy từ vụ nổ Big Bang tới nay cũng chưa tính xong! Chương 20 mở ra **Lý thuyết Độ phức tạp Tính toán**: ranh giới giữa những gì thực sự khả thi trong thời gian đa thức (lớp $$P$$) và bức tường hàm mũ.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Bài toán Quyết định & Thời gian Đa thức
+## Kiến thức cần nhớ: Ba trụ cột của Bài toán Quyết định & Thời gian Đa thức
 
 1. **Mã hóa đầu vào (Binary Encoding) & Kích thước $$n = \vert \langle x \rangle \vert$$**:
    Độ phức tạp luôn đo theo **số bit** biểu diễn đầu vào chứ không phải giá trị số học của nó. Ví dụ số nguyên $$N$$ chỉ cần $$n = \lceil \log_2 N \rceil$$ bit — nên thuật toán thử chia $$\sqrt{N} = 2^{n/2}$$ thực chất là **hàm mũ** theo kích thước đầu vào!
@@ -96,7 +96,7 @@ $$
 
 Lớp $$P$$ chỉ khẳng định *sự tồn tại* của một thuật toán thời gian đa thức: một thuật toán chạy trong $$n^{100}$$ vẫn thuộc $$P$$ về mặt lý thuyết nhưng không dùng được trong thực tế. Vì vậy nghiên cứu thuật toán vừa cần phân loại lý thuyết vừa cần giảm số mũ thực tế.
 
-### Khung giải thích (nên đọc chậm): So sánh tốc độ bùng nổ giữa $$n^3$$ (Đa thức) và $$2^n$$ (Hàm mũ)
+### Giải thích: So sánh tốc độ bùng nổ giữa $$n^3$$ (Đa thức) và $$2^n$$ (Hàm mũ)
 
 Giả sử máy tính thực hiện đúng **$$10^9$$ phép tính/giây** (1 tỷ phép/giây):
 

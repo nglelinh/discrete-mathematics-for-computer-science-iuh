@@ -22,7 +22,7 @@ Một đồ thị trên giấy chỉ là vài chấm tròn nối nét, nhưng b�
 
 **Mạch bài học:** **Ma trận kề (Adjacency Matrix)** $$\longrightarrow$$ **Danh sách kề (Adjacency List)** $$\longrightarrow$$ so sánh chi phí không gian & thời gian trên **đồ thị thưa vs. đồ thị dày** $$\longrightarrow$$ các biến thể thực chiến (CSR, ma trận trọng số, bảng băm kề).
 
-## Bản đồ kiến thức nền: Cấu trúc dữ liệu đồ thị cân bằng những đánh đổi nào?
+## Kiến thức cần nhớ: Cấu trúc dữ liệu đồ thị cân bằng những đánh đổi nào?
 
 - **Đồ thị thưa vs. Đồ thị dày (Sparse vs. Dense Graphs):** Một đồ thị đơn $$n$$ đỉnh có tối đa $$\binom{n}{2} = \frac{n(n-1)}{2}$$ cạnh. Nếu $$\vert E \vert = O(\vert V \vert)$$ (như bản đồ đường bộ, mạng xã hội, lưới 3D), đồ thị là **thưa**; nếu $$\vert E \vert = \Theta(\vert V \vert^2)$$, đồ thị là **dày**.
 - **Đánh đổi Tra cứu cạnh vs. Duyệt láng giềng:** Ma trận kề kiểm tra `(u, v) in E` trong đúng $$O(1)$$ nhưng tốn $$\Theta(V^2)$$ bộ nhớ và $$\Theta(V)$$ để liệt kê láng giềng của một đỉnh; ngược lại, danh sách kề tốn chỉ $$\Theta(V + E)$$ bộ nhớ và $$O(\deg(u))$$ để duyệt láng giềng — chìa khóa giúp BFS/DFS đạt $$O(V + E)$$.
@@ -186,7 +186,7 @@ Xây dựng ma trận kề bằng cách bật/tắt các cạnh, sau đó đối
 </div>
 <script src="{{ '/public/js/graph-adjacency-builder.js' | relative_url }}"></script>
 
-## Ví dụ tính tay cầm tay chỉ việc: Biểu diễn cùng một đồ thị 4 đỉnh và tính $$A^2$$
+## Ví dụ tính tay làm từng bước: Biểu diễn cùng một đồ thị 4 đỉnh và tính $$A^2$$
 
 Cho đồ thị vô hướng 4 đỉnh $$V = \{0, 1, 2, 3\}$$ với 4 cạnh $$E = \{(0,1), (0,2), (1,2), (2,3)\}$$.
 
@@ -205,8 +205,7 @@ Cho đồ thị vô hướng 4 đỉnh $$V = \{0, 1, 2, 3\}$$ với 4 cạnh $$E
    - Ma trận kề (1 byte/ô): $$100\,000^2 = 10^{10}$$ byte $$\approx 10\text{ GB}$$ (99,99% là số `0`!).
    - Danh sách kề (4 byte/ID): $$2 \times 500\,000 \times 4 = 4\text{ MB}$$ — nhỏ hơn **2.500 lần**!
 
-### Khung giải thích: Quy tắc 3 bước chọn cấu trúc biểu diễn đồ thị trong thực tế (nên đọc chậm)
-
+### Giải thích: Quy tắc 3 bước chọn cấu trúc biểu diễn đồ thị trong thực tế
 1. **Bước 1 — Ước lượng mật độ $$\vert E \vert / \vert V \vert^2$$:** Hầu hết đồ thị ngoài đời thực đều thưa ($$\vert E \vert \ll \vert V \vert^2$$), nên **Danh sách kề** là lựa chọn mặc định cho 90% bài toán thuật toán (BFS, DFS, Dijkstra).
 2. **Bước 2 — Khi nào chọn Ma trận kề?** Chỉ chọn khi $$\vert V \vert$$ nhỏ (thường $$\le 5\,000$$), đồ thị dày, cần tra cứu `(u, v) in E` liên tục trong $$O(1)$$, hoặc cần chạy các thuật toán ma trận như Floyd–Warshall, PageRank, đếm đường đi bằng $$A^k$$.
 3. **Bước 3 — Tối ưu bộ nhớ đệm CPU (CSR):** Với đồ thị tĩnh khổng lồ (như lưới GraphCast hay đồ thị web), nén danh sách kề thành 2 mảng phẳng liên tiếp (*Compressed Sparse Row — CSR*) để vừa tiết kiệm RAM $$\Theta(V+E)$$ vừa thân thiện với CPU/GPU cache.

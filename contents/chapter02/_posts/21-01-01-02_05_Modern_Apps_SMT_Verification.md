@@ -74,7 +74,7 @@ Một truy vấn kiểm chứng điển hình vẫn là một công thức logic
 
 **Câu hỏi.** (1) Trong một truy vấn SMT, phần nào thuộc bài toán SAT mệnh đề và phần nào thuộc các lý thuyết nền? (2) Vì sao quá trình cụ thể hóa lượng từ không đầy đủ trên một số phân mảnh logic mà giáo trình vẫn viết được?
 
-### Bản đồ kiến thức nền: SMT Solver biến Logic Vị từ thành vũ khí kiểm chứng phần mềm như thế nào?
+### Kiến thức cần nhớ: SMT Solver biến Logic Vị từ thành vũ khí kiểm chứng phần mềm như thế nào?
 
 Kiểm thử thông thường chỉ thử được vài chục đầu vào cụ thể và cầu mong không có lỗi ẩn ở biên. **SMT (Satisfiability Modulo Theories)**—với các bộ giải như Z3 và cvc5—kết hợp Logic Vị từ Chương 2 với các lý thuyết toán học chuyên biệt trên ba trụ cột:
 
@@ -85,7 +85,7 @@ Kiểm thử thông thường chỉ thử được vài chục đầu vào cụ 
 3. **Ứng dụng thực tiễn quy mô lớn**:
    AWS dùng SMT (Zelkova/Cedar) để chứng minh chính sách phân quyền IAM không bao giờ hở quyền công khai, còn các công cụ như Kani/CBMC kiểm chứng mã Rust/C chống tràn số và truy cập ngoài biên mảng.
 
-### Khung giải thích (nên đọc chậm): Bắt lỗi tràn số `i32` trong tìm kiếm nhị phân bằng một câu truy vấn SMT
+### Giải thích: Bắt lỗi tràn số `i32` trong tìm kiếm nhị phân bằng một câu truy vấn SMT
 
 Công thức trung điểm quen thuộc `mid = (low + high) / 2` từng gây lỗi ẩn suốt gần 20 năm trên kiểu số nguyên có dấu 32-bit (`i32`, giá trị tối đa $$2^{31} - 1 = 2.147.483.647$$):
 - **Truy vấn phủ định gửi Z3**: Tìm `low, high` thỏa $$0 \le \text{low} \le \text{high}$$ nhưng `(low + high) / 2 < 0`.

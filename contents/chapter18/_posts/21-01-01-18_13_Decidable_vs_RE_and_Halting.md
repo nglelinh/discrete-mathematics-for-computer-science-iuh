@@ -21,7 +21,7 @@ Bài học này đóng vai trò cầu nối giữa Chương 18 và Chương 20: 
 
 Mọi lập trình viên đều từng mơ về một công cụ kiểm tra mã nguồn hoàn hảo: nạp vào bất kỳ chương trình `P` và đầu vào `w` nào, công cụ lập tức báo chính xác `P(w)` có bị treo vòng lặp vô hạn hay không. Năm 1936, Alan Turing chứng minh giấc mơ đó là **bất khả thi về mặt toán học** — không phải vì máy tính còn chậm hay ta chưa đủ thông minh, mà vì chính logic tự quy chiếu đã dựng nên một bức tường không thể vượt qua.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Tính quyết định được và Bài toán Dừng
+## Kiến thức cần nhớ: Ba trụ cột của Tính quyết định được và Bài toán Dừng
 
 1. **Ngôn ngữ Quyết định được (Decidable / Recursive) vs. Nhận dạng được (RE)**:
    Một ngôn ngữ là *decidable* nếu có máy Turing luôn dừng và trả lời Đúng/Sai cho mọi đầu vào. Ngược lại, ngôn ngữ *RE* chỉ cần dừng và chấp nhận khi $$w \in L$$, nhưng có thể chạy mãi không dừng khi $$w \notin L$$.
@@ -59,7 +59,7 @@ Xét ngôn ngữ $$A_{\mathrm{TM}}=\{\langle M,w\rangle:M\text{ chấp nhận }w
 
 Bài toán dừng $$\mathrm{HALT}=\{\langle M,w\rangle:M\text{ dừng trên }w\}$$ cũng là bài toán không quyết định được (có thể chứng minh bằng phép quy giảm từ $$A_{\mathrm{TM}}$$).
 
-### Khung giải thích (nên đọc chậm): Theo dõi tận mắt nghịch lý tự quy chiếu của máy $$D$$
+### Giải thích: Theo dõi tận mắt nghịch lý tự quy chiếu của máy $$D$$
 
 Giả sử tồn tại một bộ quyết định hoàn hảo $$H(\langle M, w \rangle)$$ luôn dừng và trả về:
 - `ACCEPT` nếu máy $$M$$ chấp nhận chuỗi $$w$$;

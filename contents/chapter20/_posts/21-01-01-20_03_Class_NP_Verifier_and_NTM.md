@@ -25,7 +25,7 @@ Với bài toán người du lịch (TSP), **kiểm tra** một hành trình cho
 
 Giải một câu đố Sudoku cỡ $$100 \times 100$$ từ đầu có thể tốn hàng thế kỷ, nhưng nếu ai đó đưa cho bạn một bảng đã điền sẵn và bảo *"Đây là lời giải!"*, bạn chỉ mất vài giây để kiểm tra từng hàng, từng cột và từng ô vuông xem có đúng không. Sự bất đối xứng kỳ lạ giữa **tự tìm lời giải** và **kiểm chứng một lời giải cho sẵn** chính là linh hồn của lớp $$NP$$ và bài toán thiên niên kỷ trị giá 1 triệu USD: **$$P \stackrel{?}{=} NP$$**.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Lớp $$NP$$
+## Kiến thức cần nhớ: Ba trụ cột của Lớp $$NP$$
 
 1. **Định nghĩa theo Bộ kiểm chứng (Polynomial-Time Verifier)**:
    $$L \in NP$$ khi và chỉ khi tồn tại thuật toán đa thức $$V(x, c)$$ sao cho $$x \in L \iff \exists c$$ (độ dài $$\vert c \vert \le \text{poly}(\vert x \vert)$$) để $$V(x, c) = 1$$. Chuỗi $$c$$ gọi là **chứng chỉ (certificate / witness)**.
@@ -101,7 +101,7 @@ Giải một câu đố Sudoku cỡ $$100 \times 100$$ từ đầu có thể t�
 | 3-Coloring | Phép gán màu trong $$\{1,2,3\}^V$$ | Kiểm tra mọi cạnh đều nối hai đỉnh khác màu |
 | Subset Sum | Một tập con các phần tử | Cộng các phần tử và so sánh với tổng mục tiêu |
 
-### Khung giải thích (nên đọc chậm): Thiết kế tay cặp (Chứng chỉ $$c$$, Bộ kiểm chứng $$V$$) cho 3 bài toán kinh điển
+### Giải thích: Thiết kế tay cặp (Chứng chỉ $$c$$, Bộ kiểm chứng $$V$$) cho 3 bài toán kinh điển
 
 | Bài toán quyết định | Đầu vào $$x$$ | Chứng chỉ $$c$$ (kích thước đa thức) | Thuật toán kiểm chứng $$V(x, c)$$ | Thời gian kiểm chứng |
 | :--- | :--- | :--- | :--- | :---: |

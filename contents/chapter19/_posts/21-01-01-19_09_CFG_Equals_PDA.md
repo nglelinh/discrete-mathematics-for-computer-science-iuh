@@ -19,7 +19,7 @@ excerpt: "Phép chuyển đổi hai chiều giữa văn phạm phi ngữ cảnh 
 
 Hai thế giới tưởng như tách biệt — một bên là **bộ sinh chuỗi** bằng quy tắc thay thế (CFG), một bên là **máy nhận dạng** dùng ngăn xếp (PDA) — hóa ra lại mô tả đúng một tập hợp ngôn ngữ duy nhất: lớp ngôn ngữ phi ngữ cảnh (CFL). Định lý tương đương CFG $$\equiv$$ PDA chính là cầu nối biến đặc tả ngữ pháp trong sách thành mã máy parser chạy thực sự trong trình biên dịch.
 
-## Bản đồ kiến thức nền: Hai chiều của Định lý CFG $$\equiv$$ PDA
+## Kiến thức cần nhớ: Hai chiều của Định lý CFG $$\equiv$$ PDA
 
 1. **Chiều CFG $$\to$$ PDA (Mô phỏng dẫn xuất trái nhất bằng ngăn xếp)**:
    Chỉ cần một PDA **1 trạng thái** (chấp nhận bằng ngăn xếp rỗng): đẩy $$S$$ vào ngăn xếp, nếu đỉnh là biến $$A$$ thì chọn không đơn định một quy tắc $$A \to \alpha$$ để thay thế; nếu đỉnh là ký tự kết thúc $$a$$ thì đối chiếu và tiêu thụ đúng ký tự $$a$$ từ đầu vào.
@@ -60,7 +60,7 @@ Ta đưa vào các ký hiệu không kết thúc dạng $$A_{pq}$$ đại diện
 
 </div>
 
-### Khung giải thích (nên đọc chậm): Chạy tay PDA 1 trạng thái mô phỏng CFG $$S \to aSb \mid \varepsilon$$ trên chuỗi `aabb`
+### Giải thích: Chạy tay PDA 1 trạng thái mô phỏng CFG $$S \to aSb \mid \varepsilon$$ trên chuỗi `aabb`
 
 PDA khởi tạo ngăn xếp bằng $$S$$ (chỉ có 1 trạng thái $$q$$ duy nhất):
 

@@ -17,7 +17,7 @@ Khi đối mặt với hàng triệu đối tượng hỗn độn, cả toán h�
 
 Một số quan hệ dùng để gom các đối tượng "tương đương nhau" theo một tiêu chí, như phân nhóm sinh viên theo lớp hay quan hệ đồng dư modulo $$n$$. Ngược lại, một số quan hệ khác dùng để sắp xếp đối tượng theo sự phụ thuộc hoặc bao hàm, như cấu trúc thư mục hay quan hệ chia hết. Tuy đều bắt nguồn từ bốn tính chất cơ bản, hai lớp quan hệ này tạo ra hai cấu trúc hoàn toàn khác nhau: lớp tương đương và phân hoạch ở một phía, tập sắp thứ tự bộ phận (poset) và biểu đồ Hasse ở phía kia.
 
-## Bản đồ kiến thức nền: Hai cấu trúc vàng được dựng từ Bốn tính chất Quan hệ
+## Kiến thức cần nhớ: Hai cấu trúc vàng được dựng từ Bốn tính chất Quan hệ
 
 1. **Quan hệ tương đương (Equivalence Relation) = Phản xạ + Đối xứng + Bắc cầu**:
    Mô hình hóa khái niệm *"giống nhau theo một tiêu chí nào đó"* (như cùng số dư khi chia cho $$m$$, cùng thành phần liên thông trong đồ thị, hay cùng mã lỗi HTTP).
@@ -173,7 +173,7 @@ Nếu mọi cặp phần tử của $$S$$ đều so sánh được thì $$(S,\pr
 
 ![Thứ tự bộ phận trên tập lũy thừa](/discrete-mathematics-for-computer-science-iuh/img/course/Hasse_diagram_of_powerset_of_3.svg)
 
-<p class="textbook-figure-caption" data-figure="5.15">Poset $$(\mathcal{P}(S), \subseteq)$$ — không phải mọi cặp phần tử đều so sánh được (chẳng hạn {a} và {b}).</p>
+<p class="textbook-figure-caption" data-figure="5.15">Poset $(\mathcal{P}(S), \subseteq)$ — không phải mọi cặp phần tử đều so sánh được (chẳng hạn {a} và {b}).</p>
 </div>
 
 ### Thứ tự từ điển trên chuỗi bit
@@ -314,7 +314,7 @@ Poset này không có phần tử nhỏ nhất và cũng không có phần tử 
 
 <p class="textbook-figure-caption" data-figure="5.17">Mỗi quan hệ tương đương tương ứng duy nhất với một phân hoạch của tập nền, và ngược lại.</p>
 
-### Khung giải thích (nên đọc chậm): Tự tay dựng một Phân hoạch (mod 3) và một Biểu đồ Hasse (ước số của 12)
+### Giải thích: Tự tay dựng một Phân hoạch (mod 3) và một Biểu đồ Hasse (ước số của 12)
 
 **Phần A — Quan hệ tương đương cắt tập hợp thành phân hoạch**
 
@@ -381,9 +381,9 @@ Xét quan hệ $$R$$ trên $$\mathbb{Z}$$ định nghĩa bởi $$aRb \iff a - b$
 <details>
 <summary>Đáp án</summary>
 
-- Phản xạ: $$a-a=0$$ chia hết cho 3 với mọi $$a \in \mathbb{Z}$$.
-- Đối xứng: nếu $$a-b$$ chia hết cho 3 thì $$b-a = -(a-b)$$ cũng chia hết cho 3.
-- Bắc cầu: nếu $$a-b$$ và $$b-c$$ cùng chia hết cho 3 thì $$a-c = (a-b)+(b-c)$$ cũng chia hết cho 3.
+- Phản xạ: $a-a=0$ chia hết cho 3 với mọi $a \in \mathbb{Z}$.
+- Đối xứng: nếu $a-b$ chia hết cho 3 thì $b-a = -(a-b)$ cũng chia hết cho 3.
+- Bắc cầu: nếu $a-b$ và $b-c$ cùng chia hết cho 3 thì $a-c = (a-b)+(b-c)$ cũng chia hết cho 3.
 
 </details>
 
@@ -394,7 +394,7 @@ Tìm các lớp tương đương của quan hệ "có cùng số dư khi chia ch
 <details>
 <summary>Đáp án</summary>
 
-Bốn lớp tương đương là: $$\{0,4\}$$, $$\{1,5\}$$, $$\{2,6\}$$ và $$\{3,7\}$$.
+Bốn lớp tương đương là: $\{0,4\}$, $\{1,5\}$, $\{2,6\}$ và $\{3,7\}$.
 
 </details>
 
@@ -405,12 +405,12 @@ Vẽ biểu đồ Hasse cho tập $$\{1,2,3,6,12\}$$ với quan hệ chia hết.
 <details>
 <summary>Đáp án</summary>
 
-Các cạnh phủ (từ dưới lên trên) là: $$(1, 2)$$, $$(1, 3)$$, $$(2, 6)$$, $$(3, 6)$$ và $$(6, 12)$$, tạo thành hai nhánh nối chung tại $$1$$ và $$6$$:
+Các cạnh phủ (từ dưới lên trên) là: $(1, 2)$, $(1, 3)$, $(2, 6)$, $(3, 6)$ và $(6, 12)$, tạo thành hai nhánh nối chung tại $1$ và $6$:
 
-- $$1 \to 2 \to 6 \to 12$$
-- $$1 \to 3 \to 6 \to 12$$
+- $1 \to 2 \to 6 \to 12$
+- $1 \to 3 \to 6 \to 12$
 
-*(Lưu ý: không vẽ cạnh trực tiếp $$1 \to 6$$, $$1 \to 12$$, $$2 \to 12$$ hay $$3 \to 12$$ vì chúng suy ra được từ tính bắc cầu.)*
+*(Lưu ý: không vẽ cạnh trực tiếp $1 \to 6$, $1 \to 12$, $2 \to 12$ hay $3 \to 12$ vì chúng suy ra được từ tính bắc cầu.)*
 
 </details>
 
@@ -425,9 +425,9 @@ Cho poset $$(\{2,4,5,10,12,20,25\},\mid)$$.
 <details>
 <summary>Đáp án</summary>
 
-1. Tối tiểu: $$2, 5$$. Tối đại: $$12, 20, 25$$.
+1. Tối tiểu: $2, 5$. Tối đại: $12, 20, 25$.
 2. Không có min (không có phần tử nào là ước của mọi phần tử còn lại) và không có max (không có phần tử nào là bội của mọi phần tử còn lại).
-3. Không, vì $$4\nmid 5$$ và $$5\nmid 4$$.
+3. Không, vì $4\nmid 5$ và $5\nmid 4$.
 
 </details>
 
@@ -439,8 +439,8 @@ Cho poset $$(\{2,4,5,10,12,20,25\},\mid)$$.
 <details>
 <summary>Đáp án</summary>
 
-(a) $$(\mathbb{N},\le)$$ là thứ tự tốt; $$(\mathbb{Z},\le)$$ không phải vì tập $$\mathbb{Z}$$ không có phần tử nhỏ nhất.  
-(b) Thứ tự từ điển: $$00\prec 01\prec 10\prec 11$$. Theo thứ tự tọa độ, $$01$$ và $$10$$ không so sánh được.
+(a) $(\mathbb{N},\le)$ là thứ tự tốt; $(\mathbb{Z},\le)$ không phải vì tập $\mathbb{Z}$ không có phần tử nhỏ nhất.  
+(b) Thứ tự từ điển: $00\prec 01\prec 10\prec 11$. Theo thứ tự tọa độ, $01$ và $10$ không so sánh được.
 
 </details>
 

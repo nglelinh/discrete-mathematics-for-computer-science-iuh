@@ -17,7 +17,7 @@ Nếu một thuật toán nén dữ liệu không mất mát (lossless) nén hai
 
 Chỉ biết một ánh xạ là hàm vẫn chưa đủ để đánh giá các đặc tính cấu trúc của nó. Hàm đơn ánh bảo toàn sự phân biệt giữa các đầu vào; hàm toàn ánh phủ kín toàn bộ codomain; còn hàm song ánh thỏa mãn cả hai điều kiện, cho phép ghép cặp một–một giữa hai tập hợp. Những tính chất này xuất hiện thường xuyên trong thiết kế mã định danh, hàm băm, nén dữ liệu và các chứng minh về lực lượng tập hợp.
 
-## Bản đồ kiến thức nền: Ba tính chất vàng và vai trò sống còn của Miền
+## Kiến thức cần nhớ: ba tính chất của hàm và vai trò của miền xác định
 
 1. **Đơn ánh (Injective / 1–1) — Không đụng độ, không mất thông tin**:
    $$\forall x_1, x_2 \in A,\; f(x_1) = f(x_2) \to x_1 = x_2$$ (tương đương: đầu vào khác nhau $$\to$$ đầu ra khác nhau). Trên tập hữu hạn, điều kiện cần là $$\lvert A \rvert \le \lvert B \rvert$$.
@@ -29,7 +29,7 @@ Chỉ biết một ánh xạ là hàm vẫn chưa đủ để đánh giá các �
    Mỗi phần tử ở $$B$$ có **đúng một** tạo ảnh ở $$A$$. Đây là điều kiện cần và đủ để hàm tồn tại **hàm nghịch đảo $$f^{-1}$$**, đồng thời là cơ sở để chứng minh hai tập hợp có cùng lực lượng ($$\lvert A \rvert = \lvert B \rvert$$).
 
 4. **Miền xác định và Miền đích quyết định tính chất của hàm**:
-   Một công thức đại số đơn lẻ như $$f(x) = x^2$$ chưa đủ để kết luận đơn ánh hay toàn ánh—chỉ cần thu hẹp Domain hoặc Codomain, cùng công thức đó có thể biến từ "không thỏa gì cả" thành song ánh hoàn hảo!
+   Một công thức như $$f(x) = x^2$$ chưa đủ để kết luận đơn ánh hay toàn ánh. Chỉ cần đổi miền xác định hoặc miền đích, cùng công thức đó có thể trở thành song ánh.
 
 ## Mục tiêu học tập
 
@@ -140,12 +140,12 @@ Cùng một công thức đại số có thể mang những tính chất khác n
 
 ![Cùng công thức, khác tính chất theo domain/codomain](/discrete-mathematics-for-computer-science-iuh/img/course/Function_machine2.svg)
 
-<p class="textbook-figure-caption" data-figure="6.10">Domain và codomain quyết định tính chất của hàm — cùng công thức $$f(x)=x^2$$ nhưng thay đổi domain/codomain sẽ cho kết quả đơn ánh, toàn ánh hay song ánh khác nhau.</p>
+<p class="textbook-figure-caption" data-figure="6.10">Domain và codomain quyết định tính chất của hàm — cùng công thức $f(x)=x^2$ nhưng thay đổi domain/codomain sẽ cho kết quả đơn ánh, toàn ánh hay song ánh khác nhau.</p>
 </div>
 
-### Khung giải thích (nên đọc chậm): Cùng một công thức $$f(x) = x^2$$ biến hóa qua 4 lựa chọn Miền khác nhau
+### Giải thích: cùng một công thức $$f(x) = x^2$$ với bốn cách chọn miền
 
-Hãy theo dõi sát cách một công thức duy nhất $$f(x) = x^2$$ thay đổi toàn bộ tính chất chỉ bằng việc đổi Domain và Codomain:
+Cùng công thức $$f(x) = x^2$$, tính chất của hàm đổi khi đổi miền xác định và miền đích:
 
 | Hàm số $$f(x) = x^2$$ | Đơn ánh? | Toàn ánh? | Song ánh? | Lý do cụ thể |
 | :--- | :---: | :---: | :---: | :--- |
@@ -203,8 +203,8 @@ Xét hàm $$f: \R \to \R$$, $$f(x) = x^2$$. Hỏi $$f$$ có phải là đơn án
 <details>
 <summary>Đáp án</summary>
 
-- Không đơn ánh vì $$f(2) = f(-2) = 4$$ nhưng $$2 \ne -2$$.
-- Không toàn ánh vì không tồn tại $$x \in \R$$ sao cho $$f(x) = -1$$.
+- Không đơn ánh vì $f(2) = f(-2) = 4$ nhưng $2 \ne -2$.
+- Không toàn ánh vì không tồn tại $x \in \R$ sao cho $f(x) = -1$.
 
 </details>
 
@@ -215,7 +215,7 @@ Tìm một hàm song ánh từ $$\{1,2,3\}$$ sang $$\{a,b,c\}$$.
 <details>
 <summary>Đáp án</summary>
 
-$$f(1)=a, f(2)=b, f(3)=c$$ (hoặc bất kỳ hoán vị nào khác của $$\{a,b,c\}$$).
+$f(1)=a, f(2)=b, f(3)=c$ (hoặc bất kỳ hoán vị nào khác của $\{a,b,c\}$).
 
 </details>
 

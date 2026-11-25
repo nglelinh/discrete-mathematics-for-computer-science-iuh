@@ -21,7 +21,7 @@ excerpt: "Chứng minh SAT là NP-complete bằng bảng cấu hình (tableau): 
 
 Để chứng minh một bài toán mới là NP-complete, ta chỉ cần rút gọn từ một bài toán đã biết là NP-complete. Nhưng câu hỏi "con gà và quả trứng" hiện ra ngay lập tức: **làm sao tìm được bài toán NP-complete ĐẦU TIÊN khi trong tay chưa có bài nào để rút gọn?** Năm 1971, Stephen Cook (và độc lập bởi Leonid Levin năm 1973) đã làm được điều phi thường: dịch *trực tiếp* toàn bộ bảng tính toán của một máy Turing không đơn định bất kỳ thành một công thức Boolean CNF — khai sinh bài toán NP-complete đầu tiên trong lịch sử: **`SAT`**.
 
-## Bản đồ kiến thức nền: Bốn khối mệnh đề trong chứng minh Tableau của Cook–Levin
+## Kiến thức cần nhớ: Bốn khối mệnh đề trong chứng minh Tableau của Cook–Levin
 
 1. **Bảng tính toán (Computation Tableau) cỡ $$n^k \times n^k$$**:
    Ghi lại toàn bộ lịch sử chạy của NTM $$M$$ trên đầu vào $$x$$ thành một lưới ô: hàng $$i$$ là cấu hình tại bước thời gian $$i$$, cột $$j$$ là ô băng thứ $$j$$. Vì $$M$$ chạy trong $$n^k$$ bước, toàn bộ lịch sử nằm gọn trong đúng $$O(n^{2k})$$ ô.
@@ -76,7 +76,7 @@ Nếu $$M$$ có một đường chạy chấp nhận trên đầu vào, lịch s
 
 Trong các công trình nghiên cứu, phép dựng này thường được trích dẫn gọn là *“by the standard tableau construction (Sipser / Arora–Barak)”*; tuy nhiên khi trình bày seminar, cần nêu rõ cả bốn nhóm ràng buộc G1–G4.
 
-### Khung giải thích (nên đọc chậm): Vì sao chỉ cần kiểm tra các cửa sổ nhỏ $$2 \times 3$$ là đủ đảm bảo cả bảng tính toán hợp lệ?
+### Giải thích: Vì sao chỉ cần kiểm tra các cửa sổ nhỏ $$2 \times 3$$ là đủ đảm bảo cả bảng tính toán hợp lệ?
 
 Đây là bước thiên tài nhất của định lý Cook–Levin. Giả sử tại bước $$i$$, đầu đọc đang ở ô $$j$$ với trạng thái $$q$$ đọc ký tự `a`, và luật chuyển $$\delta(q, a) = (q', b, R)$$ (ghi `b`, dịch phải sang ô $$j+1$$).
 Hãy quan sát cửa sổ $$2 \times 3$$ gồm 3 cột $$(j-1, j, j+1)$$ ở hàng $$i$$ và hàng $$i+1$$:

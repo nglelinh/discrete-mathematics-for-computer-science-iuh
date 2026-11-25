@@ -12,7 +12,7 @@ excerpt: "Giới thiệu các phép toán logic cơ bản (phủ định, hội,
 
 Một mệnh đề đơn lẻ như *"Mật khẩu đúng"* hiếm khi đủ để mô tả luật nghiệp vụ hay thuật toán thực tế. Sức mạnh thật sự của logic xuất hiện khi ta ghép nhiều mệnh đề lại bằng các **toán tử logic** ($$\neg, \land, \lor, \oplus, \to, \leftrightarrow$$)—từ điều kiện đăng nhập bảo mật cho đến mạch cộng nhị phân 64-bit trong bộ xử lý.
 
-## Bản đồ kiến thức nền: Bốn trục tư duy khi làm việc với Toán tử Logic
+## Kiến thức cần nhớ: Bốn trục tư duy khi làm việc với Toán tử Logic
 
 1. **Năm toán tử cơ bản và độ ưu tiên (Precedence)**:
    Thứ tự ưu tiên chuẩn từ cao xuống thấp là: dấu ngoặc `()` $$\succ$$ Phủ định ($$\neg$$) $$\succ$$ Hội ($$\land$$) $$\succ$$ Tuyển ($$\lor$$) $$\succ$$ Kéo theo ($$\to$$) $$\succ$$ Tương đương ($$\leftrightarrow$$). Nắm chắc thứ tự này giúp đọc công thức phức hợp không sai ngoặc.
@@ -125,7 +125,7 @@ Mệnh đề trong logic được phân thành hai loại:
 **Lưu ý**: Phân biệt mệnh đề sơ cấp và mệnh đề phức hợp giúp xác định rõ các thành phần cơ bản và cấu trúc ghép nối trong biểu thức logic. Khi phân tích một điều kiện trong mã nguồn, ta luôn bắt đầu bằng việc tách ra các mệnh đề sơ cấp trước khi ghép chúng lại bằng các phép toán.
 </div>
 
-### Khung giải thích (nên đọc chậm): Tính tay giá trị một điều kiện kiểm tra quyền truy cập và bảng chân trị $$p \to q$$
+### Giải thích: Tính tay giá trị một điều kiện kiểm tra quyền truy cập và bảng chân trị $$p \to q$$
 
 Giả sử hệ thống học vụ kiểm tra điều kiện cấp quyền tải đề thi cho sinh viên theo công thức:
 $$F \equiv (\neg b \land (s \lor t)) \to a$$
@@ -681,10 +681,10 @@ Cho $$p = T$$, $$q = F$$, $$r = T$$. Tính giá trị chân lý của các biể
 <details>
 <summary>Đáp án</summary>
 
-1. $$p \land \neg q = T \land T = T$$.
-2. $$(p \lor q) \to r = T \to T = T$$.
-3. $$p \leftrightarrow (q \lor r) = T \leftrightarrow T = T$$.
-4. $$\neg(p \land q) \lor r = T \lor T = T$$.
+1. $p \land \neg q = T \land T = T$.
+2. $(p \lor q) \to r = T \to T = T$.
+3. $p \leftrightarrow (q \lor r) = T \leftrightarrow T = T$.
+4. $\neg(p \land q) \lor r = T \lor T = T$.
 
 </details>
 
@@ -786,15 +786,15 @@ Viết các câu sau dưới dạng ký hiệu logic:
 <details>
 <summary>Đáp án</summary>
 
-(a) $$p \to q$$ — "Nếu $$p$$ thì $$q$$".
+(a) $p \to q$ — "Nếu $p$ thì $q$".
 
-(b) $$r \to q$$ — "Chỉ khi $$q$$ mới $$r$$" có nghĩa là nếu có việc làm tốt thì bắt buộc phải đạt điểm cao (tức $$q$$ là điều kiện cần cho $$r$$).
+(b) $r \to q$ — "Chỉ khi $q$ mới $r$" có nghĩa là nếu có việc làm tốt thì bắt buộc phải đạt điểm cao (tức $q$ là điều kiện cần cho $r$).
 
-(c) $$r \to s$$ — "$$r$$ là điều kiện đủ để $$s$$".
+(c) $r \to s$ — "$r$ là điều kiện đủ để $s$".
 
-(d) $$q \to p$$ — "$$p$$ là điều kiện cần cho $$q$$" nghĩa là không thể có $$q$$ nếu không có $$p$$, hay "nếu $$q$$ thì $$p$$" (lưu ý tránh viết nhầm thành $$p \to q$$).
+(d) $q \to p$ — "$p$ là điều kiện cần cho $q$" nghĩa là không thể có $q$ nếu không có $p$, hay "nếu $q$ thì $p$" (lưu ý tránh viết nhầm thành $p \to q$).
 
-(e) $$(\neg p \to \neg q) \land (\neg q \to \neg r)$$. Theo tam đoạn luận giả định, từ hai mệnh đề này có thể suy ra $$\neg p \to \neg r$$ ("nếu không chăm chỉ thì không có việc làm tốt").
+(e) $(\neg p \to \neg q) \land (\neg q \to \neg r)$. Theo tam đoạn luận giả định, từ hai mệnh đề này có thể suy ra $\neg p \to \neg r$ ("nếu không chăm chỉ thì không có việc làm tốt").
 
 </details>
 
@@ -892,7 +892,7 @@ Diễn giải các biểu thức sau thành câu tiếng Việt tự nhiên:
 
 (b) "Nếu tài khoản đã xác thực email thì nó là admin hoặc moderator." — Tình huống giả định, cho thấy chiều kéo theo khác với yêu cầu thực tế thông thường.
 
-(c) "Tài khoản là admin hoặc moderator khi và chỉ khi nó không bị khóa." — Mệnh đề hai chiều này khẳng định cả hai chiều, trong đó chiều $$\neg b \to (a \lor m)$$ ngụ ý mọi tài khoản không bị khóa đều là admin hoặc moderator (thường không đúng trong hệ thống thực tế vì tài khoản thường cũng không bị khóa).
+(c) "Tài khoản là admin hoặc moderator khi và chỉ khi nó không bị khóa." — Mệnh đề hai chiều này khẳng định cả hai chiều, trong đó chiều $\neg b \to (a \lor m)$ ngụ ý mọi tài khoản không bị khóa đều là admin hoặc moderator (thường không đúng trong hệ thống thực tế vì tài khoản thường cũng không bị khóa).
 
 (d) "Hoặc (tài khoản là admin và không bị khóa), hoặc (tài khoản là moderator và đã xác thực email)." — Mô tả hai nhóm điều kiện phân quyền riêng biệt.
 

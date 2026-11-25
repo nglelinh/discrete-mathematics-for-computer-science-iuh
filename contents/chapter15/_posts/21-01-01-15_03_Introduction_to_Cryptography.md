@@ -41,7 +41,7 @@ Số học modulo cung cấp công cụ tính toán trên các lớp số dư, c
 
 </div>
 
-## Bản đồ kiến thức nền: Mật mã học Hiện đại dựa trên những trụ cột nào?
+## Kiến thức cần nhớ: Mật mã học Hiện đại dựa trên những trụ cột nào?
 
 ### 1. Mật mã Đối xứng (Symmetric) vs. Bất đối xứng (Public-Key)
 - **Đối xứng (Caesar, Affine, AES):** Dùng **chung 1 khóa** để mã hóa và giải mã — siêu nhanh cho dữ liệu lớn, nhưng khó trao đổi khóa qua mạng công cộng.
@@ -55,7 +55,7 @@ Số học modulo cung cấp công cụ tính toán trên các lớp số dư, c
 ### 3. Chữ ký Số (Digital Signatures)
 - **Bản chất:** Đảo ngược vai trò khóa: người gửi ký bằng **khóa bí mật $$d$$** ($$S = h(M)^d \bmod n$$), bất kỳ ai cũng xác thực được bằng **khóa công khai $$e$$** (kiểm tra $$S^e \equiv h(M) \pmod n$$) — bảo đảm tính xác thực và chống chối bỏ!
 
-## Ví dụ tính tay cầm tay chỉ việc: Chạy trọn vẹn RSA từ A đến Z với $$p = 5,\; q = 11$$
+## Ví dụ tính tay làm từng bước: Chạy trọn vẹn RSA từ A đến Z với $$p = 5,\; q = 11$$
 
 1. **Sinh khóa:**
    - $$n = p \cdot q = 5 \times 11 = 55$$.
@@ -81,8 +81,7 @@ Số học modulo cung cấp công cụ tính toán trên các lớp số dư, c
    $$
    Tính gọn từng cặp: $$31 \cdot 36 = 1116 \equiv 16 \pmod{55}$$; $$4 \cdot 13 = 52 \equiv -3 \pmod{55}$$; cuối cùng $$16 \cdot (-3) = -48 \equiv 7 \pmod{55}$$! Thu lại **chính xác $$M = 7$$**! ✓
 
-### Khung giải thích: Tại sao HTTPS ngoài đời thực lại kết hợp CẢ RSA/ECC lẫn AES? (nên đọc chậm)
-
+### Giải thích: Tại sao HTTPS ngoài đời thực lại kết hợp CẢ RSA/ECC lẫn AES?
 #### Bước 1: Dùng mật mã khóa công khai (RSA/ECC) để giải bài toán trao đổi khóa & xác thực
 Trong bước bắt tay TLS, máy chủ dùng chứng chỉ số (chữ ký công khai) chứng minh danh tính, và hai bên thỏa thuận một **khóa phiên bí mật tạm thời** (session key).
 

@@ -22,7 +22,7 @@ Hai câu hỏi nghe gần như sinh đôi: *"Có đi qua mọi **cạnh** đúng
 
 **Mạch bài học:** Tiêu chuẩn bậc đỉnh cho **đường đi / chu trình Euler** $$\longrightarrow$$ **đường đi / chu trình Hamilton** và sự bùng nổ độ phức tạp $$\longrightarrow$$ hai thuật toán duyệt nền tảng **BFS (hàng đợi — đường ngắn nhất không trọng số)** và **DFS (ngăn xếp/đệ quy — phát hiện chu trình)** cùng độ phức tạp $$O(V + E)$$.
 
-## Bản đồ kiến thức nền: Euler, Hamilton và BFS/DFS đứng ở đâu trong thuật toán đồ thị?
+## Kiến thức cần nhớ: Euler, Hamilton và BFS/DFS đứng ở đâu trong thuật toán đồ thị?
 
 - **Chu trình Euler — Điều kiện cần và đủ địa phương (Eulerian Criterion):** Một đồ thị vô hướng liên thông (bỏ đỉnh cô lập) có **chu trình Euler** khi và chỉ khi **mọi đỉnh đều có bậc chẵn**, và có **đường đi Euler** (không khép kín) khi và chỉ khi có **đúng 2 đỉnh bậc lẻ**. Chỉ một tiêu chuẩn địa phương siêu gọn đã giải trọn bài toán 7 cây cầu Königsberg!
 - **Chu trình Hamilton — Bài toán toàn cục NP-complete:** Không tồn tại điều kiện cần và đủ đơn giản theo bậc đỉnh cho Hamilton (chỉ có các điều kiện đủ mạnh như định lý Dirac $$\deg(v) \ge n/2$$). Đây là họ hàng trực tiếp của bài toán Người du lịch (TSP).
@@ -250,7 +250,7 @@ Sử dụng khung minh họa tương tác (hỗ trợ chỉnh sửa đồ thị 
 </div>
 <script src="{{ '/public/js/explainers/graph-explainer.js' | relative_url }}"></script>
 
-## Ví dụ tính tay cầm tay chỉ việc: Giải bài toán 7 cầu Königsberg và chạy tay BFS vs. DFS
+## Ví dụ tính tay làm từng bước: Giải bài toán 7 cầu Königsberg và chạy tay BFS vs. DFS
 
 **Phần A — Chẩn đoán Euler trên đồ thị 7 cây cầu Königsberg (4 vùng đất A, B, C, D):**
 - Bậc của 4 đỉnh lần lượt là: $$\deg(A) = 5,\; \deg(B) = 3,\; \deg(C) = 3,\; \deg(D) = 3$$.
@@ -271,8 +271,7 @@ Danh sách kề (đã sắp thứ tự tăng dần):
    - `0` $$\to$$ `1` $$\to$$ `3` (hết nhánh, quay lui về `1`) $$\to$$ `4` $$\to$$ `2` (hết nhánh, quay lui về `0`).
    - **Thứ tự thăm DFS:** `0 → 1 → 3 → 4 → 2` (chú ý DFS tìm ra đường `0 → 1 → 4 → 2` dài 3 cạnh đến `2`, trong khi đường ngắn nhất thực ra chỉ có 1 cạnh `0 → 2`!).
 
-### Khung giải thích: Tại sao BFS và DFS đều đạt đúng $$O(V + E)$$ trên danh sách kề (nên đọc chậm)
-
+### Giải thích: Tại sao BFS và DFS đều đạt đúng $$O(V + E)$$ trên danh sách kề
 1. **Bước 1 — Mỗi đỉnh vào/ra hàng đợi (hoặc ngăn xếp) tối đa 1 lần:** Nhờ mảng đánh dấu `visited[v]`, chi phí xử lý đỉnh trên toàn thuật toán là $$O(V)$$.
 2. **Bước 2 — Mỗi cạnh được quét qua tối đa 2 lần (đồ thị vô hướng):** Khi duyệt danh sách kề của mọi đỉnh $$u$$, tổng số vòng lặp trong là $$\sum_{u \in V} \deg(u) = 2\vert E \vert$$ theo chính Định lý Bắt tay!
 3. **Bước 3 — Chọn BFS hay DFS theo mục tiêu bài toán:** Cần **số bước ít nhất** (trò chơi tìm lối ra mê cung, khoảng cách mạng xã hội) $$\Rightarrow$$ chọn **BFS**. Cần **cấu trúc đệ quy sâu** (phát hiện chu trình, thứ tự tô-pô, thành phần liên thông mạnh) $$\Rightarrow$$ chọn **DFS**.

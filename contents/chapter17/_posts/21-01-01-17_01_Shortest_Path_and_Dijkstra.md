@@ -41,7 +41,7 @@ Hệ thống dẫn đường GPS và định tuyến mạng đều cần giải 
 
 </div>
 
-## Bản đồ kiến thức nền: Đường đi Ngắn nhất & Điều kiện Sống còn của Dijkstra
+## Kiến thức cần nhớ: Đường đi Ngắn nhất & Điều kiện Sống còn của Dijkstra
 
 ### 1. Phép Nới lỏng Cạnh (Edge Relaxation)
 - **Bản chất:** Mọi thuật toán đường đi ngắn nhất đều xoay quanh một thao tác sơ cấp: nếu đi tới $$u$$ mất $$d[u]$$ và có cạnh $$(u, v)$$ nặng $$w(u, v)$$ sao cho $$d[u] + w(u, v) < d[v]$$, ta lập tức cập nhật $$d[v] \leftarrow d[u] + w(u, v)$$!
@@ -54,7 +54,7 @@ Hệ thống dẫn đường GPS và định tuyến mạng đều cần giải 
 - **Trọng số không âm ($$w \ge 0$$):** **Dijkstra + Min-Heap** ($$O((V + E)\log V)$$).
 - **Có trọng số âm (không có chu trình âm):** **Bellman–Ford** ($$O(VE)$$, nới lỏng toàn bộ cạnh $$V - 1$$ lần).
 
-## Ví dụ tính tay cầm tay chỉ việc: Chạy Dijkstra & Phản ví dụ Cạnh âm
+## Ví dụ tính tay làm từng bước: Chạy Dijkstra & Phản ví dụ Cạnh âm
 
 ### Ví dụ 1: Theo vết bảng Dijkstra trên đồ thị 4 đỉnh $$S, A, B, T$$
 Các cạnh có hướng: $$(S, A)=1,\; (S, B)=4,\; (A, B)=2,\; (A, T)=6,\; (B, T)=1$$. Khởi tạo $$d = (0, \infty, \infty, \infty)$$:
@@ -67,8 +67,7 @@ Các cạnh có hướng: $$(S, A)=1,\; (S, B)=4,\; (A, B)=2,\; (A, T)=6,\; (B, 
 Xét 3 đỉnh $$S, A, B$$ với các cạnh: $$(S, A) = 2,\; (S, B) = 5,\; (B, A) = -4$$!
 - Dijkstra thấy $$d[A] = 2 < 5 = d[B]$$ nên **chốt vĩnh viễn $$d[A] = 2$$** ngay bước 1 — bỏ lỡ hoàn toàn đường đi $$S \to B \to A$$ có độ dài thực là **$$5 + (-4) = 1 < 2$$**!
 
-### Khung giải thích: 4 bước nắm chắc chứng minh Tính đúng của Dijkstra (nên đọc chậm)
-
+### Giải thích: 4 bước nắm chắc chứng minh Tính đúng của Dijkstra
 #### Bước 1: Giả sử phản chứng tại đỉnh đầu tiên $$u$$ bị chốt sai
 Gọi $$u$$ là đỉnh đầu tiên được rút khỏi Min-Heap mà $$d[u] > \delta(S, u)$$ (khoảng cách ngắn nhất thật).
 

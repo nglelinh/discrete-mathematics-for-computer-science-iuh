@@ -23,7 +23,7 @@ Hãy hình dung bạn có cả một dãy số vô hạn $$a_0, a_1, a_2, \dots$
 
 **Mạch bài học:** Định nghĩa **hàm sinh thường (OGF)** và **chuỗi lũy thừa hình thức** $$\longrightarrow$$ từ điển ánh xạ giữa phép toán dãy và phép toán trên $$G(x)$$ $$\longrightarrow$$ các **hàm sinh chuẩn** (cấp số nhân, nhị thức mở rộng) $$\longrightarrow$$ ứng dụng đếm nghiệm nguyên và tổ hợp có ràng buộc.
 
-## Bản đồ kiến thức nền: Hàm sinh và chuỗi lũy thừa hình thức nghiên cứu gì?
+## Kiến thức cần nhớ: Hàm sinh và chuỗi lũy thừa hình thức nghiên cứu gì?
 
 - **Vành chuỗi lũy thừa hình thức (Formal Power Series $$\mathbb{R}[[x]]$$):** Khác với giải tích thực nơi ta phải lo bán kính hội tụ, trong tổ hợp $$x$$ chỉ là một **biến đánh dấu vị trí (placeholder)**. Ta cộng, nhân, lấy đạo hàm hình thức chuỗi lũy thừa để theo dõi hệ số $$[x^n]G(x)$$ mà không cần thay giá trị số cho $$x$$.
 - **Tích chập Cauchy & Bài toán đếm phân hoạch (Convolution & Counting):** Khi nhân hai hàm sinh $$A(x)B(x)$$, hệ số của $$x^n$$ tự động là tổng tích chập $$\sum_{k=0}^n a_k b_{n-k}$$ — đúng bằng quy tắc cộng–nhân khi chọn hai thành phần độc lập có tổng kích thước bằng $$n$$!
@@ -149,7 +149,7 @@ Nhập một dãy ngắn để xem hàm sinh tương ứng và thử khai triể
 </div>
 <script src="{{ '/public/js/generating-function-explorer.js' | relative_url }}"></script>
 
-## Ví dụ tính tay cầm tay chỉ việc: Đếm số cách đổi 4 đồng bằng hàm sinh
+## Ví dụ tính tay làm từng bước: Đếm số cách đổi 4 đồng bằng hàm sinh
 
 Giả sử bạn muốn chọn **tổng cộng 4 viên kẹo** từ 3 loại (Dâu, Cam, Chanh) với ràng buộc:
 - Kẹo Dâu: chọn tối đa **2 viên** ($$0, 1, 2$$).
@@ -170,8 +170,7 @@ Giả sử bạn muốn chọn **tổng cộng 4 viên kẹo** từ 3 loại (D�
 3. **Bước 3 — Kiểm chứng bằng cách liệt kê tay 7 bộ (Dâu, Cam, Chanh) có tổng = 4:**
    $$(0,0,4),\; (0,2,2),\; (0,4,0),\; (1,0,3),\; (1,2,1),\; (2,0,2),\; (2,2,0)$$ — đúng **7 cách**, không thiếu, không trùng!
 
-### Khung giải thích: Vì sao "đóng gói dãy thành hàm" lại mạnh đến vậy (nên đọc chậm)
-
+### Giải thích: Vì sao "đóng gói dãy thành hàm" lại mạnh đến vậy
 1. **Bước 1 — Biến số mũ thành "bộ đếm tổng":** Quy tắc $$x^a \cdot x^b = x^{a+b}$$ tự động thực hiện phép cộng ràng buộc (tổng số viên kẹo = 4) mà bạn không phải chia trường hợp thủ công.
 2. **Bước 2 — Biến hệ số thành "số cách chọn":** Mỗi lần cùng một số mũ $$x^4$$ xuất hiện từ các nhánh nhân khác nhau, phép cộng đa thức tự động gom chúng lại thành tổng số cách hợp lệ.
 3. **Bước 3 — Rút gọn vô hạn thành hữu hạn:** Chuỗi vô hạn $$1 + x + x^2 + \cdots$$ thu gọn thành phân thức tí hon $$\frac{1}{1-x}$$, giúp ta dùng toàn bộ kỹ thuật đại số (rút gọn, tách phân thức, đạo hàm) để xử lý những bài toán đếm mà cách liệt kê thuần túy hoàn toàn bất lực.

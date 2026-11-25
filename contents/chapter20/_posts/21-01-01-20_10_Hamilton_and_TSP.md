@@ -21,7 +21,7 @@ excerpt: "Chứng minh HC và TSP-DEC thuộc NP, chứng minh đầy đủ HC�
 
 Một người giao hàng cần đi qua tất cả $$n$$ thành phố, mỗi thành phố đúng một lần rồi quay về điểm xuất phát với tổng quãng đường ngắn nhất — đó là **Bài toán Người bán hàng (TSP)**, có lẽ là bài toán NP-complete nổi tiếng nhất ngoài phòng thí nghiệm toán học. Điều thú vị là nếu chỉ cần *kiểm tra* có tồn tại chu trình đi qua mọi đỉnh đúng một lần hay không (**Hamilton Cycle**), độ khó đã đạt trần NP-complete; và chỉ cần gán trọng số `1` cho cạnh thật, `2` cho cạnh giả là ta kéo ngay độ khó đó sang TSP!
 
-## Bản đồ kiến thức nền: Ba trụ cột của Hamilton Cycle và TSP
+## Kiến thức cần nhớ: Ba trụ cột của Hamilton Cycle và TSP
 
 1. **Chu trình Euler (Thuộc $$P$$) vs. Chu trình Hamilton (NP-complete)**:
    Đi qua mỗi *cạnh* đúng 1 lần (Euler) kiểm tra trong $$O(V+E)$$ chỉ bằng cách đếm bậc chẵn; đi qua mỗi *đỉnh* đúng 1 lần (Hamilton) lại là NP-complete! Một thay đổi nhỏ từ "cạnh" sang "đỉnh" tạo ra vực thẳm độ phức tạp.
@@ -71,7 +71,7 @@ Phép rút gọn sử dụng các gadget đỉnh/cạnh để mô phỏng từng
 
 </div>
 
-### Khung giải thích (nên đọc chậm): Kiểm tra tay phép rút gọn $$\mathrm{HC} \le_p \mathrm{TSP\text{-}DEC}$$ trên đồ thị 4 đỉnh
+### Giải thích: Kiểm tra tay phép rút gọn $$\mathrm{HC} \le_p \mathrm{TSP\text{-}DEC}$$ trên đồ thị 4 đỉnh
 
 Cho đồ thị 4 đỉnh $$G$$ có các cạnh $$\{(1,2), (2,3), (3,4), (4,1), (1,3)\}$$ ($$n = 4$$). Ta xây ma trận khoảng cách $$K_4$$ với trọng số `1` cho cạnh có trong $$G$$ và `2` cho cạnh thiếu `(2,4)`, đặt ngưỡng $$B = n = 4$$:
 - **Nếu $$G$$ có chu trình Hamilton** (ví dụ $$1 \to 2 \to 3 \to 4 \to 1$$): cả 4 cạnh đều thuộc $$G$$ nên đều có trọng số `1`. Tổng chi phí hành trình = $$1 + 1 + 1 + 1 = \mathbf{4} \le B$$!

@@ -12,7 +12,7 @@ excerpt: "Giới thiệu phương pháp chứng minh phản chứng (proof by co
 
 Có những chân lý sâu sắc nhất của toán học và khoa học máy tính mà con đường đi thẳng dường như bịt kín: làm sao chứng minh $$\sqrt{2}$$ **không thể** viết dưới dạng phân số, số nguyên tố là **vô hạn**, hay không tồn tại thuật toán nào giải được **Bài toán Dừng (Halting Problem)**? Khi đối mặt với các phát biểu phủ định hoặc "không tồn tại", **Chứng minh Phản chứng (Proof by Contradiction)** là vũ khí sắc bén nhất: tạm giả sử điều ta muốn chứng minh là *sai*, rồi đẩy giả thiết đó đến một mâu thuẫn không thể cứu vãn.
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Chứng minh Phản chứng
+## Kiến thức cần nhớ: Bốn trụ cột của Chứng minh Phản chứng
 
 1. **Cơ sở Logic ($$\neg P \to F \equiv P$$)**:
    Nếu giả sử $$\neg P$$ đúng mà qua các bước suy diễn hợp lệ ta dẫn tới một mâu thuẫn $$r \land \neg r$$ (luôn Sai), thì giả thiết $$\neg P$$ buộc phải Sai—suy ra $$P$$ chắc chắn Đúng!
@@ -130,7 +130,7 @@ Nhiều phát biểu trong khoa học máy tính có dạng này:
 - Một phần tử vừa thuộc tập hợp vừa không thuộc tập hợp đó.
 - Một trạng thái hệ thống vừa đạt được ("reachable") vừa không đạt được ("unreachable").
 
-### Khung giải thích (nên đọc chậm): Theo dõi từng bước chứng minh kinh điển $$\sqrt{2}$$ là số vô tỉ
+### Giải thích: Theo dõi từng bước chứng minh kinh điển $$\sqrt{2}$$ là số vô tỉ
 
 Để thấy rõ sức mạnh của việc "tạm giả sử có tồn tại", hãy kiểm tra từng dòng của chứng minh 2.500 năm tuổi này:
 

@@ -23,7 +23,7 @@ excerpt: "Định nghĩa văn phạm phi ngữ cảnh (CFG), dẫn xuất trái 
 
 Mỗi khi bạn viết một biểu thức toán học `(3 + 5) * (2 - 1)` hay một khối lệnh `if (...) { if (...) { ... } }` trong C/Java/Python, dấu ngoặc có thể lồng sâu bao nhiêu tầng tùy ý. Biểu thức chính quy bất lực trước cấu trúc đệ quy này — và đó là lúc **văn phạm phi ngữ cảnh (Context-Free Grammar — CFG)** bước ra sân khấu. Tên gọi "phi ngữ cảnh" bắt nguồn từ quy tắc cực kỳ gọn: vế trái luôn chỉ là **một biến duy nhất** $$A \to \alpha$$, nghĩa là ta có thể thay thế $$A$$ mà không cần nhìn sang hàng xóm hai bên.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Văn phạm Phi ngữ cảnh (CFG)
+## Kiến thức cần nhớ: Ba trụ cột của Văn phạm Phi ngữ cảnh (CFG)
 
 1. **Định nghĩa bộ bốn $$G = (V, \Sigma, R, S)$$**:
    Mọi luật sinh đều có dạng $$A \to \alpha$$ với $$A \in V$$ và $$\alpha \in (V \cup \Sigma)^*$$, cho phép mô tả đệ quy tự nhiên các cấu trúc lồng nhau (biểu thức số học, JSON, XML, cú pháp lập trình).
@@ -67,7 +67,7 @@ Chiều ($$\supseteq$$): Để sinh chuỗi $$a^nb^n$$ bất kỳ, áp dụng $$
 
 </div>
 
-### Khung giải thích (nên đọc chậm): So sánh dẫn xuất trái nhất và phải nhất cho biểu thức `id + id * id`
+### Giải thích: So sánh dẫn xuất trái nhất và phải nhất cho biểu thức `id + id * id`
 
 Xét văn phạm biểu thức số học có thứ tự ưu tiên chuẩn (nhân chặt hơn cộng):
 $$E \to E + T \mid T, \qquad T \to T * F \mid F, \qquad F \to (E) \mid \mathrm{id}.$$

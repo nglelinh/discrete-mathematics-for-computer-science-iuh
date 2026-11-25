@@ -23,7 +23,7 @@ excerpt: "Phân tách tầng từ vựng (lexer) và phân tích cú pháp (pars
 
 Mỗi khi bạn bấm "Run" trên một đoạn mã Python, Rust hay TypeScript, toàn bộ lý thuyết Chương 19 lập tức hoạt động chỉ trong vài mili-giây: bộ phân tích từ vựng (Lexer) dùng DFA cắt văn bản thành chuỗi token, rồi bộ phân tích cú pháp (Parser) dùng CFG/DPDA dựng cây cú pháp trừu tượng (AST) để kiểm tra lỗi cú pháp trước khi sinh mã máy. Bài tổng kết này nối liền lý thuyết ngôn ngữ hình thức với kiến trúc trình biên dịch thực tế và các hướng nghiên cứu hiện đại.
 
-## Bản đồ kiến thức nền: Ba cầu nối từ Chương 19 sang Trình biên dịch & Nghiên cứu
+## Kiến thức cần nhớ: Ba cầu nối từ Chương 19 sang Trình biên dịch & Nghiên cứu
 
 1. **Đường ống Frontend của Trình biên dịch (Lexer → Parser → Semantic Check)**:
    Tách biệt rạch ròi tầng Chính quy (DFA cho từ khóa, định danh, số) khỏi tầng Phi ngữ cảnh (LL/LR parser cho biểu thức, vòng lặp, hàm), rồi giao các ràng buộc cảm ngữ cảnh (kiểm tra khai báo biến, kiểu dữ liệu) cho tầng ngữ nghĩa.
@@ -64,7 +64,7 @@ Trong thực hành phân tích cú pháp, lớp ngôn ngữ phi ngữ cảnh đ�
 - **Tuần 9–10:** Chọn một nhánh nghiên cứu và đọc các bài báo nền tảng.
 - **Tuần 11–12:** Xây dựng một trình phân tích cú pháp nhỏ hoặc viết ghi chú về độ khó tính toán của các bài toán văn phạm.
 
-### Khung giải thích (nên đọc chậm): Theo dõi một dòng lệnh `if (x > 0) y = 1;` đi qua 3 tầng của Trình biên dịch
+### Giải thích: Theo dõi một dòng lệnh `if (x > 0) y = 1;` đi qua 3 tầng của Trình biên dịch
 
 | Tầng xử lý | Mô hình lý thuyết Chương 19 | Đầu ra cụ thể | Lỗi nào bị bắt ở tầng này? |
 | :--- | :---: | :--- | :--- |

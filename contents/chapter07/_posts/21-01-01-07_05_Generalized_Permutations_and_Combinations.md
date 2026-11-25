@@ -12,9 +12,9 @@ excerpt: "Mở rộng phép đếm sang tổ hợp có lặp (stars and bars), p
 
 Hãy thử bước vào một tiệm trà sữa có 4 loại topping khác nhau và bạn được chọn đúng 6 phần topping (có thể chọn trùng loại) — có bao nhiêu cách phối hợp? Hay một bài toán kinh điển của kỹ sư hệ thống: có 10 tác vụ giống hệt nhau cần chia vào 4 máy chủ sao cho mỗi máy nhận ít nhất 1 tác vụ. Những bài toán đời thực ấy vượt ra ngoài công thức $$P(n,r)$$ hay $$C(n,r)$$ cơ bản vì chúng có **lặp lại**, **phần tử đồng nhất**, hoặc **ràng buộc cận dưới–cận trên**.
 
-**Mạch bài học:** Bản đồ kiến thức nền (tổ hợp có lặp, hoán vị đa tập, hệ số đa thức) → Phương pháp Sao và Vạch (Stars and Bars) & phương trình nghiệm nguyên → Ví dụ tính tay cầm tay chỉ việc (chia 10 tác vụ có cận dưới & cận trên) → Khung giải thích chậm: 3 bước biến mọi bài toán phân phối thành tổ hợp chuẩn → Minh họa tương tác & Bài tập.
+**Mạch bài học:** Kiến thức cần nhớ (tổ hợp có lặp, hoán vị đa tập, hệ số đa thức) → Phương pháp Sao và Vạch (Stars and Bars) & phương trình nghiệm nguyên → Ví dụ tính tay làm từng bước (chia 10 tác vụ có cận dưới & cận trên) → Giải thích: 3 bước biến mọi bài toán phân phối thành tổ hợp chuẩn → Minh họa tương tác & Bài tập.
 
-## Bản đồ kiến thức nền: Tổ hợp Mở rộng nghiên cứu những mô hình nào?
+## Kiến thức cần nhớ: Tổ hợp Mở rộng nghiên cứu những mô hình nào?
 
 ### 1. Tổ hợp có lặp & Phương pháp Sao và Vạch (Stars and Bars)
 Chọn $$r$$ phần tử từ $$n$$ loại (được lặp, không kể thứ tự) tương đương tuyệt đối với việc đếm nghiệm nguyên không âm của $$x_1 + x_2 + \cdots + x_n = r$$ — và bằng song ánh xếp $$r$$ ngôi sao cùng $$n-1$$ vạch ngăn, đáp số luôn là $$\binom{r + n - 1}{r}$$.
@@ -45,7 +45,7 @@ $$
 </div>
 ![Tổ hợp có lặp — chọn r đồ vật từ n loại](/discrete-mathematics-for-computer-science-iuh/img/course/combination_with_repetition.svg)
 
-<p class="textbook-figure-caption" data-figure="7.21">Tổ hợp có lặp — mỗi cách chọn được xác định bởi bộ số lượng từng loại $$(x_1,\ldots,x_n)$$, không xét thứ tự và cho phép lặp.</p>
+<p class="textbook-figure-caption" data-figure="7.21">Tổ hợp có lặp — mỗi cách chọn được xác định bởi bộ số lượng từng loại $(x_1,\ldots,x_n)$, không xét thứ tự và cho phép lặp.</p>
 
 ### Video ngắn: Sao và vạch
 
@@ -105,7 +105,7 @@ $$
 
 ![Phương pháp stars and bars](/discrete-mathematics-for-computer-science-iuh/img/course/stars_and_bars.svg)
 
-<p class="textbook-figure-caption" data-figure="7.22">Mỗi chuỗi sao–vạch tương ứng với một phân phối $$(x_1,x_2,x_3)$$; tổng số cách bằng $$\binom{r+n-1}{n-1}$$.</p>
+<p class="textbook-figure-caption" data-figure="7.22">Mỗi chuỗi sao–vạch tương ứng với một phân phối $(x_1,x_2,x_3)$; tổng số cách bằng $\binom{r+n-1}{n-1}$.</p>
 <div class="interactive-tool" data-demo="stars-bars-visualizer" markdown="1">
 **Demo tương tác**: Dùng thanh kéo để chọn $$n$$ và $$r$$, công cụ sẽ sinh các chuỗi sao–vạch tương ứng và chuyển từng chuỗi thành bộ nghiệm $$(x_1,\ldots,x_n)$$.
 </div>
@@ -193,7 +193,7 @@ $$
 
 ![Hoán vị của đa tập — MISSISSIPPI](/discrete-mathematics-for-computer-science-iuh/img/course/multiset_permutation.svg)
 
-<p class="textbook-figure-caption" data-figure="7.23">Hoán vị đa tập — việc đổi chỗ các chữ cùng loại (I, S, …) không tạo từ mới, nên ta chia $$n!$$ cho $$n_1!\cdots n_k!$$.</p>
+<p class="textbook-figure-caption" data-figure="7.23">Hoán vị đa tập — việc đổi chỗ các chữ cùng loại (I, S, …) không tạo từ mới, nên ta chia $n!$ cho $n_1!\cdots n_k!$.</p>
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Từ `MISSISSIPPI` gồm 11 chữ cái: M xuất hiện 1 lần, I xuất hiện 4 lần, S xuất hiện 4 lần và P xuất hiện 2 lần. Số hoán vị phân biệt là:
 
@@ -250,7 +250,7 @@ $$
 
 ![Hệ số đa thức — chia nhóm có nhãn](/discrete-mathematics-for-computer-science-iuh/img/course/multinomial_partition.svg)
 
-<p class="textbook-figure-caption" data-figure="7.24">Hệ số đa thức $$\binom{n}{k_1,\ldots,k_m}$$ đếm số cách chia $$n$$ đối tượng phân biệt vào $$m$$ nhóm có kích thước cho trước.</p>
+<p class="textbook-figure-caption" data-figure="7.24">Hệ số đa thức $\binom{n}{k_1,\ldots,k_m}$ đếm số cách chia $n$ đối tượng phân biệt vào $m$ nhóm có kích thước cho trước.</p>
 ## Ràng buộc trên và nguyên lý bù trừ
 
 Khi bài toán yêu cầu thêm cận trên $$0\le x_i\le b_i$$, phương pháp sao và vạch đơn thuần không còn đủ. Ta đếm toàn bộ nghiệm nguyên không âm rồi dùng nguyên lý bù trừ để loại bỏ các nghiệm vi phạm $$x_i\ge b_i+1$$.
@@ -269,7 +269,7 @@ Với mỗi tập $$A_i$$, đổi biến $$x_i'=x_i-(b_i+1)\ge 0$$ đưa bài to
 
 ![Bù trừ khi có ràng buộc trên](/discrete-mathematics-for-computer-science-iuh/img/course/Inclusion-exclusion-3sets.svg)
 
-<p class="textbook-figure-caption" data-figure="7.25">Loại bỏ các nghiệm vi phạm $$x_i\ge b_i+1$$ bằng nguyên lý bù trừ (bài `07_03`).</p>
+<p class="textbook-figure-caption" data-figure="7.25">Loại bỏ các nghiệm vi phạm $x_i\ge b_i+1$ bằng nguyên lý bù trừ (bài `07_03`).</p>
 <div class="textbook-example" markdown="1">
 **Ví dụ**: Tìm số nghiệm nguyên của $$x_1+x_2+x_3=10$$ thỏa $$0\le x_i\le 4$$.
 
@@ -294,7 +294,7 @@ Minh hoạ bài toán "sao và vạch": chia $$k$$ vật giống nhau vào $$n$$
 <script src="{{ '/public/js/explainers/counting-explainer.js' | relative_url }}"></script>
 
 
-## Ví dụ tính tay cầm tay chỉ việc: Chia 10 tác vụ vào 3 máy chủ có cả cận dưới lẫn cận trên
+## Ví dụ tính tay làm từng bước: Chia 10 tác vụ vào 3 máy chủ có cả cận dưới lẫn cận trên
 
 Đếm số nghiệm nguyên của phương trình $$x_1 + x_2 + x_3 = 10$$ thỏa $$x_1 \ge 1,\; x_2 \ge 2,\; x_3 \ge 0$$ và mỗi máy nhận **không quá 5 tác vụ** ($$x_i \le 5$$):
 1. **Khử cận dưới** bằng đặt $$y_1 = x_1 - 1 \ge 0$$, $$y_2 = x_2 - 2 \ge 0$$, $$y_3 = x_3 \ge 0$$:
@@ -307,8 +307,7 @@ Minh hoạ bài toán "sao và vạch": chia $$k$$ vật giống nhau vào $$n$$
    - Mọi giao đôi đều rỗng vì $$5+4=9 > 7$$, $$5+6=11 > 7$$, $$4+6=10 > 7$$!
 4. **Kết quả chính xác:** $$36 - (6 + 10 + 3) = \mathbf{17}$$ cách phân bổ hợp lệ!
 
-### Khung giải thích: 3 bước nhận diện nhanh mọi mô hình đếm mở rộng (nên đọc chậm)
-
+### Giải thích: 3 bước nhận diện nhanh mọi mô hình đếm mở rộng
 #### Bước 1: Hỏi hai câu hỏi phân loại: "Có phân biệt thứ tự không?" và "Có được lặp không?"
 - Có thứ tự + có lặp $$\to n^r$$.
 - Có thứ tự + nhóm phần tử giống nhau $$\to \frac{n!}{n_1!\cdots n_k!}$$ (hoán vị đa tập, ví dụ số anagram của `MISSISSIPPI`).
@@ -337,7 +336,7 @@ Có bao nhiêu cách chọn 6 viên kẹo từ 4 loại kẹo khác nhau (không
 <details>
 <summary>Đáp án</summary>
 
-$$\binom{4+6-1}{6} = \binom{9}{6} = 84$$.
+$\binom{4+6-1}{6} = \binom{9}{6} = 84$.
 
 </details>
 
@@ -348,7 +347,7 @@ Sắp xếp các chữ cái của từ `MISSISSIPPI`. Có bao nhiêu hoán vị 
 <details>
 <summary>Đáp án</summary>
 
-$$11! / (4! \cdot 4! \cdot 2!) = 34650$$.
+$11! / (4! \cdot 4! \cdot 2!) = 34650$.
 
 </details>
 
@@ -359,7 +358,7 @@ Tìm số nghiệm nguyên không âm của phương trình $$x_1 + x_2 + x_3 = 
 <details>
 <summary>Đáp án</summary>
 
-Tổng số nghiệm không ràng buộc: $$\binom{12}{2} = 66$$. Áp dụng nguyên lý bù trừ: $$66 - 3\cdot 21 + 3\cdot 1 = 6$$.
+Tổng số nghiệm không ràng buộc: $\binom{12}{2} = 66$. Áp dụng nguyên lý bù trừ: $66 - 3\cdot 21 + 3\cdot 1 = 6$.
 
 </details>
 

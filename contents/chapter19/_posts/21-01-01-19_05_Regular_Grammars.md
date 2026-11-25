@@ -19,7 +19,7 @@ excerpt: "Văn phạm tuyến tính phải (right-linear grammar), chứng minh 
 
 Một trong những vẻ đẹp đối xứng đầu tiên của lý thuyết ngôn ngữ hình thức là: cùng một lớp ngôn ngữ chính quy có thể được mô tả bằng ba góc nhìn hoàn toàn khác nhau — biểu thức chính quy (đại số), máy trạng thái hữu hạn DFA/NFA (máy nhận dạng), và văn phạm chính quy (bộ sinh chuỗi). Bài học này nối chặt mắt xích thứ ba: cách chuyển đổi qua lại trực tiếp giữa văn phạm tuyến tính phải và NFA.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Văn phạm Chính quy
+## Kiến thức cần nhớ: Ba trụ cột của Văn phạm Chính quy
 
 1. **Văn phạm Tuyến tính phải (Right-linear) & Tuyến tính trái (Left-linear)**:
    Trong văn phạm tuyến tính phải, mỗi quy tắc có dạng $$A \to wB$$ hoặc $$A \to w$$ (biến chỉ xuất hiện ở *cuối* vế phải). Quan trọng: không được trộn lẫn tuyến tính phải và tuyến tính trái trong cùng một văn phạm nếu muốn giữ nguyên lớp chính quy!
@@ -55,7 +55,7 @@ Một trong những vẻ đẹp đối xứng đầu tiên của lý thuyết ng
 Chiều từ văn phạm sang NFA: xem mỗi ký hiệu không kết thúc là một trạng thái; luật sinh $$A\to aB$$ tương ứng với cạnh chuyển từ $$A$$ sang $$B$$ mang nhãn $$a$$, còn luật $$A\to a$$ đi tới trạng thái kết thúc mới.  
 Chiều từ NFA sang văn phạm: thực hiện phép biến đổi ngược lại từ tập trạng thái và cạnh chuyển sang tập luật sinh. $$\square$$
 
-### Khung giải thích (nên đọc chậm): Chuyển đổi trực tiếp bằng tay một văn phạm tuyến tính phải sang NFA
+### Giải thích: Chuyển đổi trực tiếp bằng tay một văn phạm tuyến tính phải sang NFA
 
 Cho văn phạm tuyến tính phải sinh các chuỗi nhị phân kết thúc bằng `01`:
 $$S \to 0S \mid 1S \mid 0A, \qquad A \to 1B, \qquad B \to \varepsilon.$$

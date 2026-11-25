@@ -56,7 +56,7 @@ Consider $$C_1 = (\neg x_1 \lor x_2)$$, $$C_2 = (\neg x_1 \lor \neg x_2 \lor x_3
 
 Một nghịch lý thú vị của khoa học máy tính hiện đại: `SAT` là bài toán NP-complete kinh điển khó nhất trong lớp $$NP$$, nhưng các bộ giải **CDCL SAT solver** ngày nay lại giải gọn gàng các công thức có hàng triệu biến trong kiểm chứng chip Intel/AMD, chứng minh định lý toán học (như bài toán bộ ba Pythagore Boolean) và giải bài toán lập lịch công nghiệp. Trong khi đó, các mạng nơ-ron học giải bài toán NP-hard (như TSP hay SAT) thường gặp rào cản khái quát ngoài phân phối (OOD) khi kích thước đồ thị tăng lên.
 
-### Bản đồ kiến thức nền: Ba trụ cột của Độ phức tạp Hiện đại & Bộ giải Thực tế
+### Kiến thức cần nhớ: Ba trụ cột của Độ phức tạp Hiện đại & Bộ giải Thực tế
 
 1. **CDCL SAT Solver (Conflict-Driven Clause Learning)**:
    Thay vì quay lui mù quáng (DPLL), CDCL phân tích nguyên nhân mâu thuẫn để **học thêm mệnh đề mới (conflict clause)**, nhảy lùi không tuần tự (*backjumping*) và khởi động lại thông minh — khai thác triệt để cấu trúc ẩn của bài toán thực tế.
@@ -74,7 +74,7 @@ Liên hệ với Bài 20.13 (độ phức tạp mịn và trường hợp trung 
 
 **Câu hỏi.** (1) Hãy phát biểu định lý Cook–Levin và kết quả huy chương của Kissat tại SAT Competition 2024 thành hai câu *không mâu thuẫn* với nhau. (2) Nếu một GNN đạt độ chính xác 99% cho bài toán BFS trên đồ thị 16 đỉnh của CLRS, nhận định nào về mặt lý thuyết thuật toán vẫn không được phép đưa ra?
 
-### Khung giải thích (nên đọc chậm): Minh họa 1 bước "học mệnh đề từ mâu thuẫn" (Clause Learning) trong CDCL
+### Giải thích: Minh họa 1 bước "học mệnh đề từ mâu thuẫn" (Clause Learning) trong CDCL
 
 Xét công thức nhỏ có 3 mệnh đề:
 $$C_1 = (\neg x_1 \lor x_2), \qquad C_2 = (\neg x_1 \lor \neg x_2 \lor x_3), \qquad C_3 = (\neg x_1 \lor \neg x_3).$$

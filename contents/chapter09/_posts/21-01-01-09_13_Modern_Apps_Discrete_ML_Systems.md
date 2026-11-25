@@ -64,14 +64,13 @@ Hãy xem bảng trên như một **chỉ mục tham khảo mở rộng**, không
 
 **Câu hỏi gợi mở.** (1) Tình huống nào trong Chương 9 chia sẻ cùng mô hình đếm tăng trưởng mũ $$2^n$$ với bài toán SAT? (2) Vì sao lưới dự báo của GraphCast được mô hình hóa như một *đồ thị* theo nghĩa của Chương 12 thay vì một bộ giải phương trình đạo hàm riêng (PDE) liên tục?
 
-### Bản đồ kiến thức nền: Ba trụ cột toán rời rạc trong hệ thống 2022–2026
+### Kiến thức cần nhớ: Ba trụ cột toán rời rạc trong hệ thống 2022–2026
 
 - **Tập hợp xấp xỉ & Lý thuyết thông tin (Binary Fuse Filter):** Thay vì lưu toàn bộ khóa gốc, các bộ lọc tĩnh hiện đại giải hệ tuyến tính trên đồ thị băm để nén bộ nhớ xuống sát cận dưới lý thuyết thông tin $$\log_2(1/\varepsilon)$$ bit/khóa (chỉ vượt khoảng 8%–13%).
 - **Đồ thị lưới đa phân giải & Truyền thông điệp (GraphCast):** Rời rạc hóa khí quyển Trái Đất thành lưới đa diện hai mươi mặt giúp biến bài toán dự báo toàn cầu thành hữu hạn vòng tổng hợp thông tin từ các đỉnh láng giềng trên đồ thị.
 - **Logic mệnh đề & Tìm kiếm học từ xung đột (Kissat / CDCL):** Các bộ giải SAT hiện đại giải được công thức Boole hàng trăm nghìn biến bằng cách học mệnh đề xung đột (conflict clause learning) để cắt bỏ phần lớn không gian tìm kiếm $$2^n$$.
 
-### Khung giải thích: Tính tay ngân sách bit của Binary Fuse Filter so với Bloom Filter (nên đọc chậm)
-
+### Giải thích: Tính tay ngân sách bit của Binary Fuse Filter so với Bloom Filter
 1. **Bước 1 — Cận dưới lý thuyết thông tin:** Với $$n = 1\,000\,000$$ khóa và tỷ lệ dương tính giả $$\varepsilon = 2^{-8} \approx 0{,}39\%$$, mọi bộ lọc đều cần ít nhất $$\log_2(1/\varepsilon) = 8$$ bit/khóa (tương đương $$1{,}00\text{ MB}$$).
 2. **Bước 2 — So sánh trực tiếp:** Bloom filter cổ điển tốn $$\approx 1{,}44 \times 8 = 11{,}52$$ bit/khóa ($$1{,}44\text{ MB}$$, dư 44%). Binary fuse filter chỉ cần khoảng $$1{,}13 \times 8 = 9{,}04$$ bit/khóa ($$1{,}13\text{ MB}$$), tiết kiệm hơn **21%** bộ nhớ RAM mà vẫn tra cứu nhanh hơn.
 3. **Bước 3 — Mẫu số chung của kỹ thuật hệ thống:** Cả ba công trình 2022–2024 đều chứng minh rằng chọn đúng mô hình toán rời rạc (tập xấp xỉ, đồ thị lưới, mệnh đề CNF) quyết định trực tiếp giới hạn tốc độ và bộ nhớ của phần mềm hiện đại.

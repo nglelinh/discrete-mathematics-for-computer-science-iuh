@@ -13,7 +13,7 @@ Thế giới thực hiếm khi hoàn toàn "thuần nhất": một tài khoản 
 
 **Mạch bài học:** **Nguyên lý chồng chất** $$a_n = a_n^{(h)} + a_n^{(p)}$$ $$\longrightarrow$$ **phương pháp hệ số bất định** cho đa thức và hàm mũ $$\longrightarrow$$ cơ chế nhân thêm $$n^s$$ khi gặp **cộng hưởng** $$\longrightarrow$$ đối chiếu với các hệ thức phân tích thuật toán.
 
-## Bản đồ kiến thức nền: Truy hồi không thuần nhất và hiện tượng cộng hưởng là gì?
+## Kiến thức cần nhớ: Truy hồi không thuần nhất và hiện tượng cộng hưởng là gì?
 
 - **Cấu trúc nghiệm không gian afin (Affine Solution Space):** Giống hệ phương trình tuyến tính $$Ax = b$$, nghiệm tổng quát của truy hồi không thuần nhất luôn bằng **một nghiệm riêng $$a_n^{(p)}$$ cộng với toàn bộ nghiệm thuần nhất $$a_n^{(h)}$$**. Mọi hằng số tự do đều chỉ nằm trong $$a_n^{(h)}$$ và được chốt ở bước cuối cùng sau khi ghép cả hai phần!
 - **Phương pháp hệ số bất định (Method of Undetermined Coefficients):** Khi vế phải $$f(n)$$ là tổ hợp của đa thức $$P(n)$$ và hàm mũ $$b^n$$, nghiệm riêng $$a_n^{(p)}$$ cũng giữ nguyên "hình dáng" ấy — chỉ cần đặt ẩn hệ số rồi thế ngược vào truy hồi để đồng nhất hệ số hai vế.
@@ -298,7 +298,7 @@ Quan sát cách kết hợp nghiệm thuần nhất và nghiệm riêng trong h�
 </div>
 <script src="{{ '/public/js/explainers/recurrence-explainer.js' | relative_url }}"></script>
 
-## Ví dụ tính tay cầm tay chỉ việc: Giải trọn vẹn một bài có cộng hưởng
+## Ví dụ tính tay làm từng bước: Giải trọn vẹn một bài có cộng hưởng
 
 Giải quan hệ truy hồi $$a_n - 3a_{n-1} = 2 \cdot 3^n$$ với điều kiện đầu $$a_0 = 5$$.
 
@@ -318,8 +318,7 @@ Giải quan hệ truy hồi $$a_n - 3a_{n-1} = 2 \cdot 3^n$$ với điều kiệ
    - **Đáp số:** $$a_n = (5 + 2n) \cdot 3^n$$.
    - **Kiểm tra tay ở $$n=1, 2$$:** Công thức cho $$a_1 = 7 \cdot 3 = 21$$, $$a_2 = 9 \cdot 9 = 81$$. Truy hồi cho $$a_1 = 3(5) + 2(3) = 21$$, $$a_2 = 3(21) + 2(9) = 81$$. Khớp hoàn toàn!
 
-### Khung giải thích: Bốn lưu ý tránh sai lầm kinh điển khi giải truy hồi không thuần nhất (nên đọc chậm)
-
+### Giải thích: Bốn lưu ý tránh sai lầm kinh điển khi giải truy hồi không thuần nhất
 1. **Bước 1 — Luôn giải phần thuần nhất trước:** Bạn chỉ biết có cộng hưởng hay không sau khi đã có danh sách đầy đủ nghiệm đặc trưng và số bội $$s$$ của chúng.
 2. **Bước 2 — Đừng bao giờ thay điều kiện đầu vào $$a_n^{(h)}$$ quá sớm:** Điều kiện đầu $$a_0, a_1$$ là của **nghiệm toàn phần $$a_n = a_n^{(h)} + a_n^{(p)}$$**, không phải của riêng $$a_n^{(h)}$$.
 3. **Bước 3 — Nếu $$f(n) = f_1(n) + f_2(n)$$, hãy tách nhỏ để giải:** Nhờ tính tuyến tính, bạn tìm nghiệm riêng $$a_n^{(p1)}$$ cho $$f_1(n)$$, tìm $$a_n^{(p2)}$$ cho $$f_2(n)$$, rồi cộng chúng lại — tránh nhầm lẫn đại số khi gom nhiều loại hàm.

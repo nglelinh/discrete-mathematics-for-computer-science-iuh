@@ -17,7 +17,7 @@ Trong các kỳ thi Toán rời rạc, sinh viên hiếm khi mất điểm vì q
 
 Việc luyện tập trên nhiều dạng bài khác nhau giúp hệ thống hóa kiến thức và nhận diện sớm các điểm dễ nhầm lẫn. Khi giải bài tập, mục tiêu không chỉ là tìm ra kết quả đúng mà còn rèn quy trình đọc đề, chọn cách biểu diễn phù hợp và kiểm tra lại lập luận bằng định nghĩa hoặc phản ví dụ.
 
-## Bản đồ kiến thức nền: Bốn nguyên tắc vàng trước khi giải bài tập Quan hệ
+## Kiến thức cần nhớ: Bốn nguyên tắc vàng trước khi giải bài tập Quan hệ
 
 1. **Phản ví dụ để bác bỏ — Định nghĩa tổng quát để chứng minh**:
    Để chứng minh một tính chất **Sai**, chỉ cần chỉ ra **đúng một** cặp (hoặc bộ ba) vi phạm. Để chứng minh **Đúng** trên tập vô hạn (như $$\mathbb{Z}$$), phải lập luận với phần tử tổng quát $$a, b, c$$ chứ không được thử vài số cụ thể.
@@ -83,7 +83,7 @@ Việc luyện tập trên nhiều dạng bài khác nhau giúp hệ thống hó
 
 <p class="textbook-figure-caption" data-figure="5.26">Chuyển quan hệ sang ma trận 0-1 hoặc đồ thị có hướng giúp kiểm tra từng tính chất một cách có hệ thống.</p>
 
-### Khung giải thích (nên đọc chậm): Giải mẫu trọn vẹn một bài thi tổng hợp từ $$R$$ đến ba loại bao đóng
+### Giải thích: Giải mẫu trọn vẹn một bài thi tổng hợp từ $$R$$ đến ba loại bao đóng
 
 Cho tập $$A = \{1, 2, 3\}$$ và quan hệ $$R = \{(1,1), (1,2), (2,3), (3,3)\}$$. Hãy xác định 4 tính chất cơ bản và tìm $$r(R), s(R), t(R)$$.
 
@@ -118,7 +118,7 @@ $$R=\{(a,b)\mid a\in A, b\in B, a\text{ lẻ}\}.$$
 $$A\times B=\{(1,x),(1,y),(2,x),(2,y),(3,x),(3,y)\}.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Vì $$a$$ lẻ nên $$a=1$$ hoặc $$a=3$$. Do đó:
+Vì $a$ lẻ nên $a=1$ hoặc $a=3$. Do đó:
 
 <div class="textbook-equation" markdown="1">
 $$R=\{(1,x),(1,y),(3,x),(3,y)\}.$$
@@ -133,7 +133,7 @@ Cho quan hệ $$R=\{(1,1),(1,3),(2,1),(3,2)\}$$ trên $$A=\{1,2,3\}$$. Viết ma
 <details>
 <summary>Đáp án và giải thích</summary>
 
-Ma trận quan hệ (hàng và cột theo thứ tự $$1,2,3$$) là:
+Ma trận quan hệ (hàng và cột theo thứ tự $1,2,3$) là:
 
 <div class="textbook-equation" markdown="1">
 $$
@@ -147,7 +147,7 @@ $$
 $$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Mỗi hàng ứng với phần tử nguồn và mỗi cột ứng với phần tử đích: ô $$(i,j)=1$$ khi $$(i,j)\in R$$.
+Mỗi hàng ứng với phần tử nguồn và mỗi cột ứng với phần tử đích: ô $(i,j)=1$ khi $(i,j)\in R$.
 </details>
 
 ![Ma trận quan hệ](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
@@ -162,10 +162,10 @@ Xét $$R=\{(1,1),(2,2),(3,3),(1,2),(2,1)\}$$ trên $$A=\{1,2,3\}$$. Quan hệ n�
 <details>
 <summary>Đáp án và giải thích</summary>
 
-- Phản xạ: có, vì đủ ba cặp $$(1,1),(2,2),(3,3)$$.
-- Đối xứng: có, vì $$(1,2)$$ và $$(2,1)$$ cùng có mặt, còn các cặp trên đường chéo tự đối xứng.
-- Phản đối xứng: không, vì $$1\ne 2$$ nhưng cả $$(1,2)$$ và $$(2,1)$$ đều thuộc $$R$$.
-- Bắc cầu: có, vì mọi chuỗi hợp lệ trên $$\{1,2\}$$ đều đóng (chẳng hạn $$(1,2)$$ và $$(2,1)$$ kéo theo $$(1,1) \in R$$, $$(2,1)$$ và $$(1,2)$$ kéo theo $$(2,2) \in R$$), còn $$3$$ chỉ liên hệ với chính nó.
+- Phản xạ: có, vì đủ ba cặp $(1,1),(2,2),(3,3)$.
+- Đối xứng: có, vì $(1,2)$ và $(2,1)$ cùng có mặt, còn các cặp trên đường chéo tự đối xứng.
+- Phản đối xứng: không, vì $1\ne 2$ nhưng cả $(1,2)$ và $(2,1)$ đều thuộc $R$.
+- Bắc cầu: có, vì mọi chuỗi hợp lệ trên $\{1,2\}$ đều đóng (chẳng hạn $(1,2)$ và $(2,1)$ kéo theo $(1,1) \in R$, $(2,1)$ và $(1,2)$ kéo theo $(2,2) \in R$), còn $3$ chỉ liên hệ với chính nó.
 </details>
 
 ![So sánh tính phản xạ, đối xứng, bắc cầu](/discrete-mathematics-for-computer-science-iuh/img/course/Undirected_graph.svg)
@@ -178,8 +178,8 @@ Cho $$R=\{(1,2),(2,3),(1,3)\}$$ trên $$A=\{1,2,3\}$$. Quan hệ này có bắc 
 <details>
 <summary>Đáp án và giải thích</summary>
 
-- Bắc cầu: có, vì cặp đường đi duy nhất độ dài 2 là $$(1,2)$$ và $$(2,3)$$, và cặp $$(1,3)$$ đã có mặt trong $$R$$.
-- Phản xạ: không, vì thiếu các cặp $$(1,1),(2,2),(3,3)$$.
+- Bắc cầu: có, vì cặp đường đi duy nhất độ dài 2 là $(1,2)$ và $(2,3)$, và cặp $(1,3)$ đã có mặt trong $R$.
+- Phản xạ: không, vì thiếu các cặp $(1,1),(2,2),(3,3)$.
 </details>
 
 ## Bài tập về quan hệ tương đương
@@ -191,11 +191,11 @@ Trên $$\mathbb{Z}$$, định nghĩa $$aRb$$ khi $$a-b$$ chia hết cho 4. Chứ
 <details>
 <summary>Đáp án và giải thích</summary>
 
-- Phản xạ: $$a-a=0$$ chia hết cho 4.
-- Đối xứng: nếu $$4\mid(a-b)$$ thì $$4\mid(b-a)$$.
-- Bắc cầu: nếu $$4\mid(a-b)$$ và $$4\mid(b-c)$$ thì $$4\mid(a-c)$$.
+- Phản xạ: $a-a=0$ chia hết cho 4.
+- Đối xứng: nếu $4\mid(a-b)$ thì $4\mid(b-a)$.
+- Bắc cầu: nếu $4\mid(a-b)$ và $4\mid(b-c)$ thì $4\mid(a-c)$.
 
-Bốn lớp tương đương tương ứng với bốn số dư khi chia cho 4 là $$[0],[1],[2],[3]$$.
+Bốn lớp tương đương tương ứng với bốn số dư khi chia cho 4 là $[0],[1],[2],[3]$.
 </details>
 
 ### Bài 6
@@ -205,7 +205,7 @@ Quan hệ "có cùng độ dài" trên tập các xâu nhị phân có phải l�
 <details>
 <summary>Đáp án và giải thích</summary>
 
-Có. Mỗi xâu có cùng độ dài với chính nó (phản xạ); nếu xâu $$u$$ cùng độ dài với $$v$$ thì $$v$$ cùng độ dài với $$u$$ (đối xứng); và nếu $$u$$ cùng độ dài với $$v$$, $$v$$ cùng độ dài với $$w$$ thì $$u$$ cùng độ dài với $$w$$ (bắc cầu).
+Có. Mỗi xâu có cùng độ dài với chính nó (phản xạ); nếu xâu $u$ cùng độ dài với $v$ thì $v$ cùng độ dài với $u$ (đối xứng); và nếu $u$ cùng độ dài với $v$, $v$ cùng độ dài với $w$ thì $u$ cùng độ dài với $w$ (bắc cầu).
 </details>
 
 ![Quan hệ tương đương — lớp và phân hoạch](/discrete-mathematics-for-computer-science-iuh/img/course/Set_partitions_4__Hasse__matrices.svg)
@@ -220,9 +220,9 @@ Xét quan hệ chia hết $$\mid$$ trên $$A=\{1,2,3,6\}$$. Chứng minh đây l
 <details>
 <summary>Đáp án và giải thích</summary>
 
-Quan hệ chia hết trên tập số nguyên dương có tính phản xạ ($$a\mid a$$), phản đối xứng (nếu $$a\mid b$$ và $$b\mid a$$ với $$a,b>0$$ thì $$a=b$$) và bắc cầu (nếu $$a\mid b$$ và $$b\mid c$$ thì $$a\mid c$$).
+Quan hệ chia hết trên tập số nguyên dương có tính phản xạ ($a\mid a$), phản đối xứng (nếu $a\mid b$ và $b\mid a$ với $a,b>0$ thì $a=b$) và bắc cầu (nếu $a\mid b$ và $b\mid c$ thì $a\mid c$).
 
-Các cặp phủ trong biểu đồ Hasse là: $$(1,2), (1,3), (2,6), (3,6)$$.
+Các cặp phủ trong biểu đồ Hasse là: $(1,2), (1,3), (2,6), (3,6)$.
 </details>
 
 ### Bài 8
@@ -232,7 +232,7 @@ Trong poset $$(\mathcal{P}(\{a,b,c\}),\subseteq)$$, hai phần tử $$\{a,b\}$$ 
 <details>
 <summary>Đáp án và giải thích</summary>
 
-Không. Ta có $$\{a,b\}\nsubseteq\{b,c\}$$ (vì $$a \notin \{b,c\}$$) và $$\{b,c\}\nsubseteq\{a,b\}$$ (vì $$c \notin \{a,b\}$$).
+Không. Ta có $\{a,b\}\nsubseteq\{b,c\}$ (vì $a \notin \{b,c\}$) và $\{b,c\}\nsubseteq\{a,b\}$ (vì $c \notin \{a,b\}$).
 </details>
 
 ## Bài tập về bao đóng
@@ -250,7 +250,7 @@ Bao đóng phản xạ:
 $$R_{\text{ref}} = R\cup\{(1,1),(2,2),(3,3)\}.$$
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
-Bao đóng bắc cầu: vì có đường đi $$1\to 2\to 3$$ nên cần bổ sung cặp $$(1,3)$$. Do đó:
+Bao đóng bắc cầu: vì có đường đi $1\to 2\to 3$ nên cần bổ sung cặp $(1,3)$. Do đó:
 
 <div class="textbook-equation" markdown="1">
 $$R^+=\{(1,2),(2,3),(1,3)\}.$$
@@ -265,7 +265,7 @@ Cho $$R=\{(a,b),(b,c),(c,a)\}$$. Bao đóng bắc cầu của $$R$$ có chứa c
 <details>
 <summary>Đáp án và giải thích</summary>
 
-Có. Vì tồn tại đường đi độ dài 3 là $$a\to b\to c\to a$$, cặp $$(a,a)$$ thuộc bao đóng bắc cầu $$R^+$$. Tương tự, $$(b,b)$$ và $$(c,c)$$ cũng thuộc $$R^+$$.
+Có. Vì tồn tại đường đi độ dài 3 là $a\to b\to c\to a$, cặp $(a,a)$ thuộc bao đóng bắc cầu $R^+$. Tương tự, $(b,b)$ và $(c,c)$ cũng thuộc $R^+$.
 </details>
 
 ![Biểu đồ Hasse — thứ tự bộ phận](/discrete-mathematics-for-computer-science-iuh/img/course/Simple_hasse_diagram.svg)
@@ -290,9 +290,9 @@ Xác định các tính chất: phản xạ, đối xứng và bắc cầu.
 <details>
 <summary>Đáp án</summary>
 
-- Phản xạ: Có (chứa đủ các cặp chéo $$(1,1),(2,2),(3,3)$$).
-- Đối xứng: Có (có cả $$(1,2)$$ và $$(2,1)$$).
-- Bắc cầu: Có (các tổ hợp giữa $$(1,2)$$ và $$(2,1)$$ tạo ra $$(1,1)$$ và $$(2,2)$$, đều đã thuộc $$R$$).
+- Phản xạ: Có (chứa đủ các cặp chéo $(1,1),(2,2),(3,3)$).
+- Đối xứng: Có (có cả $(1,2)$ và $(2,1)$).
+- Bắc cầu: Có (các tổ hợp giữa $(1,2)$ và $(2,1)$ tạo ra $(1,1)$ và $(2,2)$, đều đã thuộc $R$).
 
 </details>
 
@@ -303,7 +303,7 @@ Tìm tất cả các quan hệ tương đương trên tập $$A = \{a,b\}$$.
 <details>
 <summary>Đáp án</summary>
 
-Có đúng 2 quan hệ tương đương (tương ứng 2 phân hoạch của $$\{a,b\}$$): quan hệ đồng nhất $$\{(a,a),(b,b)\}$$ và quan hệ toàn phần $$\{(a,a),(b,b),(a,b),(b,a)\}$$.
+Có đúng 2 quan hệ tương đương (tương ứng 2 phân hoạch của $\{a,b\}$): quan hệ đồng nhất $\{(a,a),(b,b)\}$ và quan hệ toàn phần $\{(a,a),(b,b),(a,b),(b,a)\}$.
 
 </details>
 
@@ -316,10 +316,10 @@ Vẽ biểu đồ Hasse cho tập lũy thừa của $$\{1,2,3\}$$ theo quan hệ
 
 Các mức từ dưới lên trên (mỗi cạnh nối hai tập hơn kém nhau đúng 1 phần tử):
 
-- Mức 0: $$\emptyset$$
-- Mức 1: $$\{1\}, \{2\}, \{3\}$$ (đều phủ $$\emptyset$$)
-- Mức 2: $$\{1,2\}$$ phủ $$\{1\}, \{2\}$$; $$\{1,3\}$$ phủ $$\{1\}, \{3\}$$; $$\{2,3\}$$ phủ $$\{2\}, \{3\}$$
-- Mức 3: $$\{1,2,3\}$$ phủ $$\{1,2\}, \{1,3\}, \{2,3\}$$
+- Mức 0: $\emptyset$
+- Mức 1: $\{1\}, \{2\}, \{3\}$ (đều phủ $\emptyset$)
+- Mức 2: $\{1,2\}$ phủ $\{1\}, \{2\}$; $\{1,3\}$ phủ $\{1\}, \{3\}$; $\{2,3\}$ phủ $\{2\}, \{3\}$
+- Mức 3: $\{1,2,3\}$ phủ $\{1,2\}, \{1,3\}, \{2,3\}$
 
 </details>
 

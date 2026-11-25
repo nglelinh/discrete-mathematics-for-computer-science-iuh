@@ -29,7 +29,7 @@ excerpt: "Phát biểu và chứng minh bổ đề bơm từ DFA, ứng dụng c
 
 </div>
 
-## Bản đồ kiến thức nền: Bổ đề Bơm & Giới hạn của Bộ nhớ Hữu hạn
+## Kiến thức cần nhớ: Bổ đề Bơm & Giới hạn của Bộ nhớ Hữu hạn
 
 ### 1. Bản chất Hình học của Bổ đề Bơm (Nguyên lý Chuồng bồ câu)
 - **Phát biểu:** Nếu $$L$$ chính quy, tồn tại hằng số bơm $$p \ge 1$$ (chính là số trạng thái của một DFA nhận $$L$$!) sao cho mọi chuỗi $$s \in L$$ dài $$\lvert s\rvert \ge p$$ đều tách được thành $$s = xyz$$ thỏa đủ 3 điều kiện:
@@ -41,7 +41,7 @@ excerpt: "Phát biểu và chứng minh bổ đề bơm từ DFA, ứng dụng c
 - **Cảnh báo sinh viên hay sai nhất:** Bổ đề Bơm là **điều kiện CẦN, KHÔNG phải điều kiện ĐỦ** (chỉ dùng để chứng minh **KHÔNG** chính quy, không bao giờ dùng để chứng minh *có* chính quy!).
 - Trong chứng minh phản chứng, **đối thủ** chọn $$p$$ và cách tách $$xyz$$; **bạn** được quyền chọn chuỗi $$s \in L$$ (theo $$p$$) và chọn số lần bơm $$i$$ để đánh bại **mọi** cách tách hợp lệ của đối thủ!
 
-## Ví dụ tính tay cầm tay chỉ việc: Chứng minh trọn vẹn $$L = \{0^n 1^n : n \ge 0\}$$ KHÔNG chính quy
+## Ví dụ tính tay làm từng bước: Chứng minh trọn vẹn $$L = \{0^n 1^n : n \ge 0\}$$ KHÔNG chính quy
 
 Giả sử phản chứng $$L$$ là ngôn ngữ chính quy, gọi $$p \ge 1$$ là hằng số bơm của Bổ đề Bơm:
 1. **Bạn chọn chuỗi thử:** Lấy **$$s = 0^p 1^p$$**. Kiểm tra: $$s \in L$$ và $$\lvert s\rvert = 2p \ge p$$. ✓
@@ -54,8 +54,7 @@ Giả sử phản chứng $$L$$ là ngôn ngữ chính quy, gọi $$p \ge 1$$ l�
    $$
 4. **Mâu thuẫn:** Vì $$k \ge 1$$ nên $$p + k > p \implies 0^{p+k} 1^p \notin L$$! Trái với Bổ đề Bơm $$\implies$$ **$$L = \{0^n 1^n\}$$ KHÔNG phải ngôn ngữ chính quy**! (Hệ quả thực tế: không thể dùng Regex thuần để kiểm tra dấu ngoặc lồng nhau tùy ý `((()))` hay cú pháp HTML!)
 
-### Khung giải thích: 4 bước áp dụng Bổ đề Bơm chuẩn không bị đối thủ "lách luật" (nên đọc chậm)
-
+### Giải thích: 4 bước áp dụng Bổ đề Bơm chuẩn không bị đối thủ "lách luật"
 #### Bước 1: Không bao giờ chọn hằng số $$p$$ cụ thể!
 $$p$$ là ẩn số bất kỳ do đối thủ đưa ra — chuỗi $$s$$ bạn chọn phải được viết **theo biến $$p$$** (như $$0^p 1^p$$, $$a^p b^{p+1}$$, $$0^{p^2}$$).
 

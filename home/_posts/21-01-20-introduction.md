@@ -10,7 +10,7 @@ owner: nglelinh
 
 Khóa học **Toán Rời Rạc cho Khoa học Máy tính** được thiết kế để cung cấp nền tảng toán học vững chắc cho sinh viên Khoa học Máy tính, tập trung vào các ứng dụng thực tế trong lập trình và khoa học máy tính.
 
-## Bản đồ kiến thức nền: Vì sao Khoa học Máy tính được xây trên Toán Rời Rạc?
+## Kiến thức cần nhớ: Vì sao Khoa học Máy tính được xây trên Toán Rời Rạc?
 
 1. **Thế giới của bit là thế giới rời rạc**:
    Khác với Giải tích làm việc với đường cong liên tục, máy tính lưu trữ và xử lý từng bit `0`/`1`, từng trạng thái hữu hạn và từng bước rời rạc — đúng đối tượng nghiên cứu của Toán Rời Rạc.
@@ -84,7 +84,7 @@ Hãy bắt đầu với tinh thần học hỏi và sự kiên trì. Toán rời
 
 **Chúc bạn học tập hiệu quả!** 🚀
 
-### Khung giải thích (nên đọc chậm): Thử sức nhanh với một bài toán rời rạc 30 giây — Bắt tay trong phòng học
+### Giải thích: Thử sức nhanh với một bài toán rời rạc 30 giây — Bắt tay trong phòng học
 
 Trong một phòng học có **30 sinh viên**, nếu hai sinh viên bất kỳ đều bắt tay nhau đúng 1 lần thì có tất cả bao nhiêu cái bắt tay?
 - Mỗi sinh viên bắt tay với $$29$$ bạn còn lại $$\implies 30 \times 29 = 870$$ lượt.

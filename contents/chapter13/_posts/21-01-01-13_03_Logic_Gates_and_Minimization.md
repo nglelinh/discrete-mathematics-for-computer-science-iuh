@@ -39,7 +39,7 @@ Quy trình thiết kế mạch từ đặc tả bằng lời, đếm số cổng
 
 </div>
 
-## Bản đồ kiến thức nền: Cổng Logic và Tối thiểu hóa Đại số
+## Kiến thức cần nhớ: Cổng Logic và Tối thiểu hóa Đại số
 
 ### 1. Từ Biểu thức Boole sang Mạng Cổng Điện tử
 - **Bản chất:** Phép AND, OR, NOT tương ứng trực tiếp với các mạch transistor CMOS. Độ sâu (số tầng cổng từ đầu vào tới đầu ra) quyết định **độ trễ truyền lan**, còn tổng số cổng quyết định **diện tích và điện năng**.
@@ -52,7 +52,7 @@ Quy trình thiết kế mạch từ đặc tả bằng lời, đếm số cổng
 - **Luật hấp thụ:** $$x + xy = x$$ và $$x + \bar{x}y = x + y$$.
 - **Định lý Đồng thuận (Consensus):** $$xy + \bar{x}z + yz = xy + \bar{x}z$$ (loại số hạng thừa $$yz$$!).
 
-## Ví dụ tính tay cầm tay chỉ việc: Biểu diễn NOT, AND, OR chỉ bằng NAND & Kiểm chứng Luật Đồng thuận
+## Ví dụ tính tay làm từng bước: Biểu diễn NOT, AND, OR chỉ bằng NAND & Kiểm chứng Luật Đồng thuận
 
 ### Ví dụ 1: Xây dựng cả 3 cổng cơ bản chỉ từ cổng NAND (ký hiệu $$a \uparrow b = \overline{ab}$$)
 1. **NOT:** $$x \uparrow x = \overline{x \cdot x} = \bar{x}$$ (1 cổng NAND).
@@ -66,8 +66,7 @@ xy + \bar{x}z + yz = xy + \bar{x}z + (x + \bar{x})yz = (xy + xyz) + (\bar{x}z + 
 $$
 Một phép biến đổi 1 dòng đã xóa sổ hoàn toàn một cổng AND 2 ngõ vào và giảm bậc cổng OR!
 
-### Khung giải thích: Quy trình 4 bước tối thiểu hóa mạch bằng Đại số Boole (nên đọc chậm)
-
+### Giải thích: Quy trình 4 bước tối thiểu hóa mạch bằng Đại số Boole
 #### Bước 1: Đẩy mọi dấu phủ định vào sát biến bằng De Morgan
 Áp dụng $$\overline{x+y} = \bar{x}\bar{y}$$ và $$\overline{xy} = \bar{x}+\bar{y}$$ để đưa biểu thức về dạng tổng các tích (SOP) phẳng.
 

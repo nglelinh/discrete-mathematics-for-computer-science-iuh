@@ -64,14 +64,13 @@ Chương 12 đã giới thiệu cấu trúc $$G = (V,E)$$, quan hệ kề và đ
 
 **Câu hỏi.** (1) Grid2Mesh là đồ thị vô hướng đơn, đồ thị hai phía hay đa đồ thị — giải thích vì sao? (2) Bạn sẽ chọn cách biểu diễn nào trong Chương 12 để lưu trữ một lưới icosahedral tĩnh?
 
-### Bản đồ kiến thức nền: Lý thuyết đồ thị vận hành mô hình dự báo thời tiết GraphCast ra sao?
+### Kiến thức cần nhớ: Lý thuyết đồ thị vận hành mô hình dự báo thời tiết GraphCast ra sao?
 
 - **Đồ thị hai phía (`Grid2Mesh` & `Mesh2Grid`):** Lưới kinh–vĩ độ $$0{,}25^\circ$$ bị dồn dày bất thường ở hai cực Trái Đất; GraphCast dùng đồ thị hai phía để chuyển dữ liệu sang một lưới khối hai mươi mặt (icosahedral mesh) phủ đều toàn cầu.
 - **Đa lưới thưa & Biểu diễn CSR:** Chồng nhiều cấp độ lưới thô–mịn trên cùng tập đỉnh tạo ra đồ thị thưa ($$\vert E \vert = O(\vert V \vert)$$) có cả cạnh ngắn cục bộ lẫn "đường cao tốc" xuyên lục địa, phù hợp lưu bằng danh sách cạnh / CSR thay vì ma trận kề.
 - **Truyền thông điệp như BFS khả vi:** Mỗi lớp GNN cập nhật trạng thái đỉnh từ láng giềng cách 1 bước; xếp chồng $$K$$ lớp cho phép thông tin khí tượng lan xa đúng bán kính $$K$$ bước trên đồ thị — phiên bản khả vi của duyệt BFS $$K$$ tầng!
 
-### Khung giải thích: Tính tay quy mô đỉnh và lợi ích nén bộ nhớ của lưới GraphCast (nên đọc chậm)
-
+### Giải thích: Tính tay quy mô đỉnh và lợi ích nén bộ nhớ của lưới GraphCast
 1. **Bước 1 — Đếm số đỉnh lưới kinh–vĩ độ ở độ phân giải $$0{,}25^\circ$$:** Kinh độ $$360^\circ / 0{,}25^\circ = 1\,440$$ điểm, vĩ độ $$180^\circ / 0{,}25^\circ + 1 = 721$$ điểm $$\Rightarrow \vert V_{\text{grid}} \vert = 1\,440 \times 721 = 1\,038\,240$$ đỉnh!
 2. **Bước 2 — So sánh ma trận kề vs. danh sách kề trên lưới 40.962 đỉnh:** Ma trận kề dày đặc cần $$40\,962^2 \approx 1{,}68$$ tỷ ô (~6,7 GB), trong khi danh sách cạnh / CSR với bậc trung bình ~12 chỉ tốn ~490.000 cạnh (~4 MB) — **nhỏ hơn hơn 1.600 lần**!
 3. **Bước 3 — Sức mạnh của cạnh đa tỷ lệ:** Nhờ các cạnh dài từ lưới thô rút ngắn đường kính đồ thị, chỉ **16 bước truyền thông điệp** đã đủ kết nối luồng khí quyển tầm xa và chạy dự báo 10 ngày dưới 1 phút.

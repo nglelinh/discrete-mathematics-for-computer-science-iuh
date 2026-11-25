@@ -12,7 +12,7 @@ excerpt: "Giới thiệu bảng chân trị (truth table) — công cụ liệt 
 
 Làm sao chứng minh tuyệt đối rằng hai đoạn mã `if` phức tạp cho ra kết quả giống hệt nhau trên mọi đầu vào, hoặc một công thức logic luôn đúng trong mọi vũ trụ khả dĩ? Khi số biến còn nhỏ, **Bảng chân trị (Truth Table)** là kính hiển vi vét cạn: nó liệt kê toàn bộ $$2^n$$ tổ hợp chân trị của $$n$$ biến mệnh đề, không bỏ sót bất kỳ trường hợp biên nào.
 
-## Bản đồ kiến thức nền: Bốn ý niệm cốt lõi xung quanh Bảng chân trị
+## Kiến thức cần nhớ: Bốn ý niệm cốt lõi xung quanh Bảng chân trị
 
 1. **Quy mô tổ hợp $$2^n$$ và Bùng nổ hàm mũ**:
    Với $$n$$ biến mệnh đề, bảng chân trị có đúng $$2^n$$ dòng ($$n=2 \Rightarrow 4$$, $$n=3 \Rightarrow 8$$, $$n=10 \Rightarrow 1.024$$, $$n=64 \Rightarrow 1{,}8 \times 10^{19}$$). Đây chính là lý do bảng chân trị hoàn hảo cho kiểm chứng tay với $$n \le 4$$, nhưng ở quy mô hàng nghìn biến ta phải chuyển sang biến đổi tương đương và SAT Solver.
@@ -103,7 +103,7 @@ Với 3 biến $$p, q, r$$:
 
 Khi lập bảng, nên thêm cột phụ cho từng biểu thức con để theo dõi rõ từng bước tính toán.
 
-### Khung giải thích (nên đọc chậm): Tính tay bảng chân trị và chứng minh luật phản đảo $$(p \to q) \equiv (\neg q \to \neg p)$$
+### Giải thích: Tính tay bảng chân trị và chứng minh luật phản đảo $$(p \to q) \equiv (\neg q \to \neg p)$$
 
 Thay vì thuộc lòng rằng *"Nếu trời mưa thì đường ướt"* tương đương với *"Nếu đường không ướt thì trời không mưa"*, hãy kiểm chứng từng ô bằng tay với $$n = 2$$ biến ($$2^2 = 4$$ dòng):
 
@@ -275,7 +275,7 @@ Bảng chân trị 3 biến (8 dòng):
 
 Nhận xét:
 - (a) chỉ đúng khi có ít nhất 2 trong 3 biến đúng.
-- (b) là **tautology** — luôn đúng, vì $$p \to q$$ chỉ sai khi $$p = T, q = F$$ còn $$q \to r$$ chỉ sai khi $$q = T, r = F$$; hai trường hợp này không thể đồng thời xảy ra.
+- (b) là **tautology** — luôn đúng, vì $p \to q$ chỉ sai khi $p = T, q = F$ còn $q \to r$ chỉ sai khi $q = T, r = F$; hai trường hợp này không thể đồng thời xảy ra.
 - (c) là kiểm tra chẵn lẻ (parity check): đúng khi số biến nhận giá trị True là số lẻ.
 - (d) đúng khi có ít nhất 2 biến đúng — tương đương với (a) nhưng viết dưới dạng khác.
 
@@ -302,10 +302,10 @@ Gợi ý: Dùng phương pháp **SOP** (tổng các tích / *sum of products*) �
 <summary>Đáp án</summary>
 
 Các hàng có kết quả True:
-- Hàng 1: $$p = F, q = F, r = F$$ → $$\neg p \land \neg q \land \neg r$$
-- Hàng 4: $$p = F, q = T, r = T$$ → $$\neg p \land q \land r$$
-- Hàng 6: $$p = T, q = F, r = T$$ → $$p \land \neg q \land r$$
-- Hàng 8: $$p = T, q = T, r = T$$ → $$p \land q \land r$$
+- Hàng 1: $p = F, q = F, r = F$ → $\neg p \land \neg q \land \neg r$
+- Hàng 4: $p = F, q = T, r = T$ → $\neg p \land q \land r$
+- Hàng 6: $p = T, q = F, r = T$ → $p \land \neg q \land r$
+- Hàng 8: $p = T, q = T, r = T$ → $p \land q \land r$
 
 Biểu thức DNF:
 <div class="textbook-equation" markdown="1">
@@ -313,9 +313,9 @@ $$(\neg p \land \neg q \land \neg r) \lor (\neg p \land q \land r) \lor (p \land
 <span class="textbook-equation-number" aria-hidden="true"></span>
 </div>
 Rút gọn:
-- Nhóm hai hạng tử giữa: $$(\neg p \land \neg q \land \neg r) \lor (p \land q \land r) \lor [(\neg p \land q \land r) \lor (p \land \neg q \land r)]$$.
-- Rút $$r$$ ra ngoài: $$r \land [(\neg p \land q) \lor (p \land \neg q)] \equiv r \land (p \oplus q)$$.
-- Kết quả cuối: $$(\neg p \land \neg q \land \neg r) \lor (p \land q \land r) \lor (r \land (p \oplus q))$$.
+- Nhóm hai hạng tử giữa: $(\neg p \land \neg q \land \neg r) \lor (p \land q \land r) \lor [(\neg p \land q \land r) \lor (p \land \neg q \land r)]$.
+- Rút $r$ ra ngoài: $r \land [(\neg p \land q) \lor (p \land \neg q)] \equiv r \land (p \oplus q)$.
+- Kết quả cuối: $(\neg p \land \neg q \land \neg r) \lor (p \land q \land r) \lor (r \land (p \oplus q))$.
 
 </details>
 
@@ -347,7 +347,7 @@ def can_enroll(has_degree, passed_exam, is_priority):
 | T | T | F | T | T | T |
 | T | T | T | T | F | F |
 
-(b) Có 3 biến nên cần $$2^3 = 8$$ test case để bao phủ 100% tổ hợp đầu vào (exhaustive testing).
+(b) Có 3 biến nên cần $2^3 = 8$ test case để bao phủ 100% tổ hợp đầu vào (exhaustive testing).
 
 </details>
 
@@ -364,17 +364,17 @@ Phân loại các biểu thức sau:
 <details>
 <summary>Đáp án</summary>
 
-(a) **Tautology** — Với mọi tổ hợp của $$p, q$$, luôn có ít nhất một trong hai mệnh đề kéo theo đúng. Nếu $$p = T, q = F$$ thì $$p \to q = F$$ nhưng $$q \to p = T$$; nếu $$p = F, q = T$$ thì $$p \to q = T$$.
+(a) **Tautology** — Với mọi tổ hợp của $p, q$, luôn có ít nhất một trong hai mệnh đề kéo theo đúng. Nếu $p = T, q = F$ thì $p \to q = F$ nhưng $q \to p = T$; nếu $p = F, q = T$ thì $p \to q = T$.
 
-(b) **Contradiction** — Do $$p \to q \equiv \neg p \lor q$$, kết hợp với $$p \land \neg q$$ ta có:
-    $$(\neg p \lor q) \land p \land \neg q$$.
-    Áp dụng luật phân phối: $$(\neg p \land p \land \neg q) \lor (q \land p \land \neg q) = F \lor F = F$$.
+(b) **Contradiction** — Do $p \to q \equiv \neg p \lor q$, kết hợp với $p \land \neg q$ ta có:
+    $(\neg p \lor q) \land p \land \neg q$.
+    Áp dụng luật phân phối: $(\neg p \land p \land \neg q) \lor (q \land p \land \neg q) = F \lor F = F$.
 
-(c) **Tautology** — Nếu $$p \land q$$ đúng thì cả $$p$$ và $$q$$ đều đúng, suy ra $$p \lor q$$ đúng. Nếu $$p \land q$$ sai thì mệnh đề kéo theo luôn đúng.
+(c) **Tautology** — Nếu $p \land q$ đúng thì cả $p$ và $q$ đều đúng, suy ra $p \lor q$ đúng. Nếu $p \land q$ sai thì mệnh đề kéo theo luôn đúng.
 
-(d) **Contradiction** — Nếu $$p \to q$$ và $$q \to r$$ cùng đúng thì theo tam đoạn luận giả định, $$p \to r$$ phải đúng nên $$\neg(p \to r)$$ không thể đúng. Đây là dạng phủ định của một quy tắc suy diễn hợp lệ.
+(d) **Contradiction** — Nếu $p \to q$ và $q \to r$ cùng đúng thì theo tam đoạn luận giả định, $p \to r$ phải đúng nên $\neg(p \to r)$ không thể đúng. Đây là dạng phủ định của một quy tắc suy diễn hợp lệ.
 
-(e) **Tautology** — Nếu $$p \oplus q$$ sai (chẳng hạn $$p = F, q = F$$) thì mệnh đề kéo theo đúng; nếu $$p \oplus q$$ đúng thì có đúng một biến đúng, suy ra $$p \lor q$$ cũng đúng nên mệnh đề kéo theo đúng.
+(e) **Tautology** — Nếu $p \oplus q$ sai (chẳng hạn $p = F, q = F$) thì mệnh đề kéo theo đúng; nếu $p \oplus q$ đúng thì có đúng một biến đúng, suy ra $p \lor q$ cũng đúng nên mệnh đề kéo theo đúng.
 
 </details>
 

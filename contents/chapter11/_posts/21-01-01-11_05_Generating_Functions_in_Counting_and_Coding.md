@@ -14,7 +14,7 @@ Năm 1748, Leonhard Euler nhận được một bức thư hỏi về số cách
 
 **Mạch bài học:** Bước ngoặt **phân hoạch số nguyên** của Euler (1748) $$\longrightarrow$$ **hàm sinh xác suất (PGF)** tính kỳ vọng và phương sai bằng đạo hàm $$\longrightarrow$$ **đa thức đếm trọng số (weight enumerator)** trong mã sửa lỗi $$\longrightarrow$$ phương pháp ký hiệu (symbolic method) trong tổ hợp hiện đại.
 
-## Bản đồ kiến thức nền: Hàm sinh kết nối Số học, Xác suất và Lý thuyết Mã hóa như thế nào?
+## Kiến thức cần nhớ: Hàm sinh kết nối Số học, Xác suất và Lý thuyết Mã hóa như thế nào?
 
 - **Phân hoạch số nguyên (Integer Partitions):** Số cách phân tích $$n$$ thành tổng các số nguyên dương không kể thứ tự $$p(n)$$ không có công thức sơ cấp đơn giản, nhưng hàm sinh của nó lại đẹp đến ngỡ ngàng: $$\sum_{n=0}^{\infty} p(n)x^n = \prod_{k=1}^{\infty} \frac{1}{1 - x^k}$$.
 - **Hàm sinh xác suất (Probability Generating Function — PGF):** Với biến ngẫu nhiên rời rạc $$X \in \{0, 1, 2, \dots\}$$, đặt $$P_X(s) = \sum_{k \ge 0} \Pr(X=k)s^k$$. Phép cộng hai biến độc lập $$X + Y$$ biến thành phép **nhân** $$P_{X+Y}(s) = P_X(s)P_Y(s)$$, còn kỳ vọng chỉ việc lấy đạo hàm tại $$s = 1$$: $$E[X] = P_X'(1)$$!
@@ -182,7 +182,7 @@ Từ ý tưởng của Euler đến bài toán phân hoạch, hàm sinh xác su�
 
 ---
 
-## Ví dụ tính tay cầm tay chỉ việc: Tính kỳ vọng bằng PGF và đa thức trọng số mã lặp
+## Ví dụ tính tay làm từng bước: Tính kỳ vọng bằng PGF và đa thức trọng số mã lặp
 
 **Phần A — Tính kỳ vọng và phương sai khi tung 1 con xúc xắc bằng PGF:**
 Hàm sinh xác suất của 1 lần tung xúc xắc (1..6 đều xác suất $$1/6$$) là:
@@ -198,8 +198,7 @@ Các từ mã hợp lệ của $$C$$ là: `000` (trọng số 0), `011`, `101`, 
 - Nếu truyền từ mã `000` qua kênh đối xứng nhị phân có xác suất lật bit $$p = 0{,}01$$, lỗi chỉ **không bị phát hiện** khi biến thành một từ mã hợp lệ khác (tức bị lật đúng 2 bit):
   $$P_{\text{undetected}} = 3 p^2 (1 - p) = 3 (0{,}01)^2 (0{,}99) = 0{,}000297 \approx 0{,}03\%.$$
 
-### Khung giải thích: Ba công dụng "vượt biên giới" của hàm sinh (nên đọc chậm)
-
+### Giải thích: Ba công dụng "vượt biên giới" của hàm sinh
 1. **Bước 1 — Trong tổ hợp, tích của các chuỗi là bài toán chọn độc lập:** Tích Euler $$\prod_{k \ge 1}(1-x^k)^{-1}$$ chọn số lần xuất hiện của từng mệnh giá $$1, 2, 3, \dots$$ rồi tự động cộng tổng bằng số mũ.
 2. **Bước 2 — Trong xác suất, đạo hàm tại $$s = 1$$ kéo số mũ xuống làm trọng số:** Nhờ $$(s^k)'\vert_{s=1} = k$$, các mô-men thống kê (kỳ vọng, phương sai) được tính hoàn toàn bằng phép vi phân đại số thay vì cộng chuỗi thủ công.
 3. **Bước 3 — Trong mã hóa, đa thức trọng số tóm gọn khả năng chống nhiễu:** Thay giá trị $$x = \frac{p}{1-p}$$ vào đa thức trọng số $$W_C(x)$$ lập tức cho biết chính xác xác suất giải mã sai của cả hệ thống truyền tin!

@@ -50,7 +50,7 @@ Kết quả là một dạng SOP hai tầng tối tiểu (hoặc một trong cá
 
 </div>
 
-## Bản đồ kiến thức nền: Phương pháp Quine–McCluskey (QM) là gì?
+## Kiến thức cần nhớ: Phương pháp Quine–McCluskey (QM) là gì?
 
 ### 1. Giai đoạn 1 — Gom nhóm theo Trọng số Hamming để tìm mọi Prime Implicant (PI)
 - **Bản chất:** Hai minterm chỉ ghép cặp khử được 1 biến ($$xy + x\bar{y} = x$$) nếu biểu diễn nhị phân của chúng khác nhau đúng **1 vị trí** — nghĩa là số lượng bit $$1$$ (**trọng số Hamming**) của chúng hơn kém nhau đúng **1 đơn vị**! Chia các minterm vào từng nhóm theo trọng số $$0, 1, 2, \dots, n$$ giúp chỉ cần so sánh hai nhóm kề nhau!
@@ -61,7 +61,7 @@ Kết quả là một dạng SOP hai tầng tối tiểu (hoặc một trong cá
 ### 3. Giới hạn Độ phức tạp (NP-hard) & Cầu nối sang Espresso / SAT
 - **Bản chất:** Số lượng PI trong trường hợp xấu nhất tăng theo hàm mũ $$\Omega(3^n/n)$$, và bài toán Set Cover là NP-hard. Vì thế trong thiết kế chip thực tế (hàng triệu cổng), QM là chuẩn mực chính xác cho $$n$$ nhỏ còn các bộ tổng hợp công nghiệp dùng heuristic (Espresso) và SAT!
 
-## Ví dụ tính tay cầm tay chỉ việc: Chạy Quine–McCluskey cho $$f(A,B,C) = \sum m(0, 1, 2, 5, 6, 7)$$
+## Ví dụ tính tay làm từng bước: Chạy Quine–McCluskey cho $$f(A,B,C) = \sum m(0, 1, 2, 5, 6, 7)$$
 
 1. **Bước 1 — Phân nhóm theo số bit $$1$$:**
    - Nhóm 0: $$m_0 = 000$$
@@ -80,8 +80,7 @@ Kết quả là một dạng SOP hai tầng tối tiểu (hoặc một trong cá
    - Nghiệm 1: $$\bar{A}\bar{B} + B\bar{C} + AC$$ (phủ $$(0,1), (2,6), (5,7)$$).
    - Nghiệm 2: $$\bar{A}\bar{C} + \bar{B}C + AB$$ (phủ $$(0,2), (1,5), (6,7)$$).
 
-### Khung giải thích: Tại sao Quine–McCluskey vừa chính xác tuyệt đối vừa dễ lập trình? (nên đọc chậm)
-
+### Giải thích: Tại sao Quine–McCluskey vừa chính xác tuyệt đối vừa dễ lập trình?
 #### Bước 1: Thay trực giác thị giác bằng trọng số Hamming
 Không cần vẽ bảng 2D hay 3D — máy tính chỉ cần đếm số bit $$1$$ rồi so sánh các chuỗi nhị phân ở hai nhóm kề nhau (phép XOR chỉ có đúng một bit $$1$$!).
 

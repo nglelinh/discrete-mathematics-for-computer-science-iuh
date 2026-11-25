@@ -13,7 +13,7 @@ Một lỗi gửi email quảng cáo hai lần cho cùng một khách hàng thư
 
 **Mạch bài học:** Từ lý thuyết tập hợp Cantor–Codd $$\longrightarrow$$ khác biệt giữa **Set (`UNION`)** và **Bag (`UNION ALL`)** trong SQL $$\longrightarrow$$ phép hợp–giao–hiệu $$O(1)$$ trên `set` Python & bảng băm $$\longrightarrow$$ tập hợp xấp xỉ **Bloom filter** và kiểu dữ liệu như tập giá trị.
 
-## Bản đồ kiến thức nền: Lý thuyết tập hợp vận hành bên trong phần mềm như thế nào?
+## Kiến thức cần nhớ: Lý thuyết tập hợp vận hành bên trong phần mềm như thế nào?
 
 - **Đại số quan hệ & Phân biệt Set vs. Bag (Relational Algebra):** Mô hình quan hệ chuẩn coi mỗi bảng là một **tập hợp** các bộ (tuples), nơi các phép chọn ($$\sigma$$), chiếu ($$\pi$$), hợp ($$\cup$$), giao ($$\cap$$), hiệu ($$\setminus$$) loại bỏ trùng lặp. SQL thực tế mặc định dùng **đa tập (bag)** để tiết kiệm chi phí khử trùng lặp, nên lập trình viên phải chủ động phân biệt `UNION` và `UNION ALL`.
 - **Cấu trúc dữ liệu kiểm tra phần tử thuộc tập (Membership Data Structures):** Câu hỏi $$x \in S$$ quyết định hiệu năng của hầu hết chương trình: danh sách tốn $$O(n)$$, cây cân bằng tốn $$O(\log n)$$, bảng băm (`set`/`dict`) đạt trung bình $$O(1)$$, còn **Bloom filter** đánh đổi một xác suất dương tính giả nhỏ để nén bộ nhớ xuống vài bit mỗi phần tử.
@@ -209,7 +209,7 @@ Nếu case study TaskFlow (`09_10`) tập hợp các lỗi đếm ở tầng h�
 
 ---
 
-## Ví dụ tính tay cầm tay chỉ việc: So sánh `UNION` vs. `UNION ALL` và tính tay Bloom Filter
+## Ví dụ tính tay làm từng bước: So sánh `UNION` vs. `UNION ALL` và tính tay Bloom Filter
 
 **Phần A — Hai tập khách hàng trong ETL:**
 Giả sử tập khách hàng mở app hôm nay là $$A = \{101, 102, 103\}$$ và tập khách hàng có đơn hàng là $$B = \{102, 103, 104\}$$.
@@ -224,8 +224,7 @@ Ban đầu mảng bit là `0 0 0 0 0 0 0 0`.
 3. **Truy vấn `"chi"`** có $$h_1(\text{"chi"}) = 1, h_2(\text{"chi"}) = 6$$: bit 1 là `1`, nhưng bit 6 là `0` $$\Rightarrow$$ **chắc chắn 100% `"chi"` KHÔNG thuộc tập** (zero false negative).
 4. **Truy vấn `"dung"`** có $$h_1(\text{"dung"}) = 1, h_2(\text{"dung"}) = 3$$: cả bit 1 lẫn bit 3 đều đang là `1` (do `"an"` và `"binh"` vô tình bật sẵn) $$\Rightarrow$$ bộ lọc báo "có thể thuộc tập" dù `"dung"` chưa từng được chèn (**false positive**!).
 
-### Khung giải thích: Một lý thuyết tập hợp — bốn tầng trừu tượng của phần mềm (nên đọc chậm)
-
+### Giải thích: Một lý thuyết tập hợp — bốn tầng trừu tượng của phần mềm
 1. **Bước 1 — Ý nghĩa nghiệp vụ quyết định Set hay Bag:** Trước khi viết SQL hay ETL, luôn hỏi: bản sao có mang nghĩa không? Đếm tổng doanh thu cần đa tập (`UNION ALL`), còn gửi thông báo cho người dùng duy nhất bắt buộc phải là tập hợp (`UNION` / `DISTINCT`).
 2. **Bước 2 — Chi phí của phép toán $$x \in S$$:** Khử trùng lặp không miễn phí — SQL `UNION` phải sắp xếp hoặc băm toàn bộ tập kết quả tốn $$O(n \log n)$$ hoặc $$O(n)$$ RAM.
 3. **Bước 3 — Khi RAM là giới hạn cứng, chấp nhận sai số một chiều:** Bloom filter không bao giờ bỏ sót phần tử thật (no false negative), nên nó đóng vai "người gác cổng" siêu rẻ trước ổ đĩa hoặc CSDL để loại bỏ nhanh phần lớn truy vấn không tồn tại.

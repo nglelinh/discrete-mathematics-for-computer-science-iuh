@@ -31,7 +31,7 @@ Mục này tập trung trả lời hai câu hỏi căn bản: **mệnh đề là
 
 Mọi dòng lệnh `if (x > 0 && !is_locked)` trong chương trình, mọi cổng logic bằng silicon bên trong CPU, và mọi câu truy vấn `WHERE` trong cơ sở dữ liệu đều bắt nguồn từ một ngôn ngữ tối giản nhưng cực kỳ sắc bén: **Logic Mệnh đề (Propositional Logic)**. Thay vì để ngôn ngữ tự nhiên gây mơ hồ ("sinh viên giỏi Toán hoặc Tin học"), logic mệnh đề chắt lọc mọi phát biểu thành đúng hai giá trị chân trị rạch ròi: **Đúng (`True` / `1`)** hoặc **Sai (`False` / `0`)**.
 
-## Bản đồ kiến thức nền: Logic Mệnh đề đứng trên những trụ cột nào?
+## Kiến thức cần nhớ: Logic Mệnh đề đứng trên những trụ cột nào?
 
 1. **Nguyên lý nhị trị (Law of Excluded Middle & Non-Contradiction)**:
    Một mệnh đề hợp lệ phải có giá trị chân trị xác định duy nhất—hoặc Đúng, hoặc Sai, không bao giờ vừa Đúng vừa Sai. Các câu hỏi, câu cảm thán, mệnh lệnh hay câu chứa biến tự do chưa gắn giá trị (như "$$x + 2 = 5$$") đều **không phải** mệnh đề.
@@ -198,11 +198,11 @@ Nếu một hệ thống đủ mạnh có thể tự chứng minh rằng nó kh�
 
 **Liên hệ với lập trình**: Định lý bất toàn giải thích vì sao không thể xây dựng một trình biên dịch tự động phát hiện mọi lỗi logic trong mọi chương trình — luôn tồn tại những trường hợp không thể quyết định được.
 
-### Khung giải thích (nên đọc chậm): Phân loại 6 phát biểu thực tế bằng tiêu chuẩn mệnh đề
+### Giải thích: Phân loại 6 phát biểu thực tế bằng tiêu chuẩn mệnh đề
 
 Để tránh nhầm lẫn phổ biến nhất khi mới học Logic, hãy tự kiểm tra bằng tay 6 phát biểu sau theo đúng 2 tiêu chí: *(1) có phải câu trần thuật không?* và *(2) có chân trị Đúng/Sai xác định độc lập với biến chưa biết không?*
 
-| STT | Phát biểu | Là mệnh đề? | Giải thích cầm tay chỉ việc |
+| STT | Phát biểu | Là mệnh đề? | Giải thích làm từng bước |
 | :---: | :--- | :---: | :--- |
 | 1 | `"17 là số nguyên tố."` | **Có (`True`)** | Câu trần thuật có chân trị xác định (17 chỉ chia hết cho 1 và 17). |
 | 2 | `"2 + 2 = 5."` | **Có (`False`)** | Mệnh đề **sai** vẫn là mệnh đề! Đừng nhầm "mệnh đề" với "câu đúng". |
@@ -413,10 +413,10 @@ Trong các câu sau, câu nào là mệnh đề? Nếu là mệnh đề, cho bi�
 <details>
 <summary>Đáp án</summary>
 
-(a) **Mệnh đề** — Giá trị: F (sai, vì $$1 + 1 = 2$$, không phải 3).
+(a) **Mệnh đề** — Giá trị: F (sai, vì $1 + 1 = 2$, không phải 3).
 (b) **Không phải mệnh đề** — Câu mệnh lệnh, không có giá trị chân lý.
 (c) **Mệnh đề** — Giá trị phụ thuộc vào ngày hiện tại (nếu hôm nay là thứ Hai thì T, ngược lại F).
-(d) **Không phải mệnh đề** — Câu chứa biến $$x$$ chưa được gán giá trị, nên chưa xác định được đúng/sai (đây là vị từ, không phải mệnh đề).
+(d) **Không phải mệnh đề** — Câu chứa biến $x$ chưa được gán giá trị, nên chưa xác định được đúng/sai (đây là vị từ, không phải mệnh đề).
 (e) **Mệnh đề** — Giá trị: T (theo định nghĩa tam giác đều).
 (f) **Mệnh đề** — Giá trị: F (2026 không chia hết cho 4 nên không phải năm nhuận).
 (g) **Không phải mệnh đề** — Nghịch lý tự tham chiếu (nếu giả sử đúng thì suy ra sai, và ngược lại).
@@ -436,17 +436,17 @@ Phân tích các mệnh đề phức hợp sau thành các mệnh đề sơ cấ
 <details>
 <summary>Đáp án</summary>
 
-(a) $$p$$: "Trời mưa", $$q$$: "Tôi có ô", $$r$$: "Tôi sẽ đi làm".
-    Mệnh đề phức hợp: $$(p \land q) \to r$$.
+(a) $p$: "Trời mưa", $q$: "Tôi có ô", $r$: "Tôi sẽ đi làm".
+    Mệnh đề phức hợp: $(p \land q) \to r$.
 
-(b) $$p$$: "Số chia hết cho 2", $$q$$: "Số chia hết cho 3", $$r$$: "Số chia hết cho 6".
-    Mệnh đề phức hợp: $$(p \land q) \leftrightarrow r$$.
+(b) $p$: "Số chia hết cho 2", $q$: "Số chia hết cho 3", $r$: "Số chia hết cho 6".
+    Mệnh đề phức hợp: $(p \land q) \leftrightarrow r$.
 
-(c) $$p$$: "Bạn làm bài tập", $$q$$: "Bạn sẽ qua môn".
-    Mệnh đề phức hợp: $$p \lor \neg q$$ (hoặc dạng tương đương $$\neg p \to \neg q$$).
+(c) $p$: "Bạn làm bài tập", $q$: "Bạn sẽ qua môn".
+    Mệnh đề phức hợp: $p \lor \neg q$ (hoặc dạng tương đương $\neg p \to \neg q$).
 
-(d) $$p$$: "Người dùng là admin", $$q$$: "Tài khoản đã bị khóa".
-    Mệnh đề phức hợp: $$\neg p \land q$$.
+(d) $p$: "Người dùng là admin", $q$: "Tài khoản đã bị khóa".
+    Mệnh đề phức hợp: $\neg p \land q$.
 
 </details>
 
@@ -463,20 +463,20 @@ Viết các câu sau dưới dạng ký hiệu logic với các biến mệnh đ
 <details>
 <summary>Đáp án</summary>
 
-(a) Đặt $$p$$: "Bạn trên 18 tuổi", $$q$$: "Bạn có thẻ thành viên", $$r$$: "Bạn được phép vào câu lạc bộ".
-    Công thức: $$(p \land q) \to r$$.
+(a) Đặt $p$: "Bạn trên 18 tuổi", $q$: "Bạn có thẻ thành viên", $r$: "Bạn được phép vào câu lạc bộ".
+    Công thức: $(p \land q) \to r$.
 
-(b) Đặt $$t$$: "Nhiệt độ > 100°C", $$p$$: "Áp suất < mức an toàn", $$w$$: "Hệ thống gửi cảnh báo".
-    Công thức: $$(t \lor p) \to w$$.
+(b) Đặt $t$: "Nhiệt độ > 100°C", $p$: "Áp suất < mức an toàn", $w$: "Hệ thống gửi cảnh báo".
+    Công thức: $(t \lor p) \to w$.
 
-(c) Đặt $$g$$: "Điểm TB >= 8.0", $$h$$: "Hạnh kiểm Tốt", $$r$$: "Có thành tích nghiên cứu", $$s$$: "Được nhận học bổng".
-    Công thức: $$((g \land h) \lor r) \to s$$.
+(c) Đặt $g$: "Điểm TB >= 8.0", $h$: "Hạnh kiểm Tốt", $r$: "Có thành tích nghiên cứu", $s$: "Được nhận học bổng".
+    Công thức: $((g \land h) \lor r) \to s$.
 
-(d) Đặt $$p$$: "Đăng nhập thành công", $$q$$: "Đăng nhập thất bại".
-    Công thức: $$\neg(p \land q)$$ — hai sự kiện không thể đồng thời xảy ra.
+(d) Đặt $p$: "Đăng nhập thành công", $q$: "Đăng nhập thất bại".
+    Công thức: $\neg(p \land q)$ — hai sự kiện không thể đồng thời xảy ra.
 
-(e) Đặt $$w$$: "Hôm nay là cuối tuần", $$d$$: "Có deadline", $$g$$: "Tôi đi chơi", $$s$$: "Tôi học bài".
-    Công thức: $$((w \land \neg d) \to g) \land (\neg(w \land \neg d) \to s)$$.
+(e) Đặt $w$: "Hôm nay là cuối tuần", $d$: "Có deadline", $g$: "Tôi đi chơi", $s$: "Tôi học bài".
+    Công thức: $((w \land \neg d) \to g) \land (\neg(w \land \neg d) \to s)$.
 
 </details>
 
@@ -500,16 +500,16 @@ def validate_input(x, y, z):
 <summary>Đáp án</summary>
 
 (a)
-- $$p$$: "$$x > 0$$"
-- $$q$$: "$$y < 100$$"
-- $$r$$: "$$z = \text{"active"}$$"
+- $p$: "$x > 0$"
+- $q$: "$y < 100$"
+- $r$: "$z = \text{"active"}$"
 
-(b) Mệnh đề phức hợp: $$(p \land q) \lor (r \land p)$$.
-    Rút gọn bằng tính phân phối: $$p \land (q \lor r)$$.
+(b) Mệnh đề phức hợp: $(p \land q) \lor (r \land p)$.
+    Rút gọn bằng tính phân phối: $p \land (q \lor r)$.
 
 (c) Các tổ hợp kiểm thử để bao phủ toàn bộ 8 trường hợp:
 
-| $$p$$ (x>0) | $$q$$ (y<100) | $$r$$ (z=active) | $$p \land (q \lor r)$$ | Kết quả |
+| $p$ (x>0) | $q$ (y<100) | $r$ (z=active) | $p \land (q \lor r)$ | Kết quả |
 |:---:|:---:|:---:|:---:|:---|
 | F | F | F | F | Không hợp lệ |
 | F | F | T | F | Không hợp lệ |
@@ -520,7 +520,7 @@ def validate_input(x, y, z):
 | T | T | F | T | Hợp lệ |
 | T | T | T | T | Hợp lệ |
 
-Từ bảng trên, điều kiện chỉ đúng khi $$p$$ đúng ($$x > 0$$) và có ít nhất một trong hai mệnh đề $$q$$ hoặc $$r$$ đúng. Tập kiểm thử tối thiểu cho hai nhánh kết quả gồm một trường hợp có $$p = T, (q \lor r) = T$$ và một trường hợp có $$p = F$$ (hoặc $$q = r = F$$).
+Từ bảng trên, điều kiện chỉ đúng khi $p$ đúng ($x > 0$) và có ít nhất một trong hai mệnh đề $q$ hoặc $r$ đúng. Tập kiểm thử tối thiểu cho hai nhánh kết quả gồm một trường hợp có $p = T, (q \lor r) = T$ và một trường hợp có $p = F$ (hoặc $q = r = F$).
 
 </details>
 
@@ -546,18 +546,18 @@ else:
 <summary>Đáp án</summary>
 
 (a)
-- $$a$$: `user.is_authenticated`
-- $$i$$: `user.is_admin`
-- $$p$$: `doc.is_public`
-- $$r$$: `doc.is_archived`
+- $a$: `user.is_authenticated`
+- $i$: `user.is_admin`
+- $p$: `doc.is_public`
+- $r$: `doc.is_archived`
 
 (b)
-- **allow_access**: $$a \land (i \lor (p \land \neg r))$$.
-- **show_preview**: $$a \land \neg(i \lor (p \land \neg r))$$ (đã xác thực nhưng không đủ quyền).
-- **redirect_to_login**: $$\neg a$$ (chưa xác thực).
+- **allow_access**: $a \land (i \lor (p \land \neg r))$.
+- **show_preview**: $a \land \neg(i \lor (p \land \neg r))$ (đã xác thực nhưng không đủ quyền).
+- **redirect_to_login**: $\neg a$ (chưa xác thực).
 
-(c) Với $$a = T$$ (đã xác thực), $$i = F$$ (không phải admin), $$p = T$$ (public), $$r = T$$ (đã archived):
-    $$i \lor (p \land \neg r) = F \lor (T \land F) = F$$.
+(c) Với $a = T$ (đã xác thực), $i = F$ (không phải admin), $p = T$ (public), $r = T$ (đã archived):
+    $i \lor (p \land \neg r) = F \lor (T \land F) = F$.
     Do đó **show_preview** được thực thi: người dùng chỉ thấy bản xem trước và không được truy cập đầy đủ.
 
 </details>

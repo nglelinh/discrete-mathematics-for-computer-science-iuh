@@ -49,7 +49,7 @@ Khi so sánh hai thuật toán, ta không chỉ đo thời gian chạy bằng mi
 
 Video dài khoảng 2 phút 56 giây: so sánh số phép tính của $$n$$, $$n\log n$$, $$n^2$$, $$2^n$$ ($$2^{60}$$ phép tính mất khoảng 36 năm), minh họa các đường tăng trưởng và định nghĩa $$O$$ với $$c, n_0$$ trên đồ thị cho $$3n^2 + 5n + 2 \le 4n^2$$ khi $$n \ge 6$$ (cặp $$c = 10, n_0 = 1$$ trong bài cũng hợp lệ), giới thiệu $$\Omega$$ và $$\Theta$$, các quy tắc rút gọn, cách đếm bước trong vòng lặp và năm lỗi thường gặp.
 
-## Bản đồ kiến thức nền: Ký hiệu Tiệm cận $$O, \Omega, \Theta$$ là gì?
+## Kiến thức cần nhớ: Ký hiệu Tiệm cận $$O, \Omega, \Theta$$ là gì?
 
 ### 1. Bộ ba Ký hiệu Tiệm cận (Bachmann–Landau–Knuth)
 - **$$f(n) = O(g(n))$$ (Chặn trên — giống dấu $$\le$$):** Tồn tại hằng số $$C > 0$$ và ngưỡng $$n_0$$ sao cho $$\lvert f(n)\rvert \le C\lvert g(n)\rvert$$ với mọi $$n \ge n_0$$.
@@ -66,7 +66,7 @@ Lưu ý quan trọng: **đa thức bất kỳ $$n^k$$ luôn bị hàm mũ $$2^n$
 - $$O(f) + O(g) = O(\max(f, g))$$ (bước chạy chậm nhất chi phối toàn bộ chương trình!).
 - $$O(f) \cdot O(g) = O(f \cdot g)$$ (vòng lặp lồng nhau nhân độ phức tạp!).
 
-## Ví dụ tính tay cầm tay chỉ việc: Chứng minh trực tiếp từ định nghĩa $$3n^2 + 5n + 7 = \Theta(n^2)$$
+## Ví dụ tính tay làm từng bước: Chứng minh trực tiếp từ định nghĩa $$3n^2 + 5n + 7 = \Theta(n^2)$$
 
 1. **Chứng minh $$3n^2 + 5n + 7 = O(n^2)$$:** Với mọi $$n \ge 1$$, ta có $$5n \le 5n^2$$ và $$7 \le 7n^2$$, nên:
    $$
@@ -77,8 +77,7 @@ Lưu ý quan trọng: **đa thức bất kỳ $$n^k$$ luôn bị hàm mũ $$2^n$
 3. **Kết hợp (1) và (2):** $$3n^2 + 5n + 7 = \Theta(n^2)$$!
 4. **Phản chứng $$2^{2n} \neq O(2^n)$$:** Xét tỉ số $$\frac{2^{2n}}{2^n} = 2^n \to +\infty$$ khi $$n \to \infty$$ — không thể bị chặn bởi bất kỳ hằng số $$C$$ nào! (Ngược lại, $$2^{n+10} = 1024 \cdot 2^n = \Theta(2^n)$$!)
 
-### Khung giải thích: 4 bước làm chủ Ký hiệu Big-O không nhầm lẫn (nên đọc chậm)
-
+### Giải thích: 4 bước làm chủ Ký hiệu Big-O không nhầm lẫn
 #### Bước 1: Đừng nhầm Big-O với "trường hợp xấu nhất"
 Big-O chỉ là **chặn trên toán học của một hàm số**! Bạn có thể dùng $$O, \Omega, \Theta$$ để mô tả trường hợp tốt nhất, trung bình, lẫn xấu nhất.
 

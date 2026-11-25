@@ -17,7 +17,7 @@ Bạn có bảng danh sách các chuyến bay thẳng giữa các thành phố�
 
 Trong các hệ thống thực tế, ta thường cần đảo chiều liên kết, ghép hai quan hệ thành một bước suy diễn mới, hoặc bổ sung các cặp còn thiếu để quan hệ đạt được một tính chất mong muốn. Chẳng hạn, từ quan hệ phụ thuộc trực tiếp giữa các mô-đun, ta cần suy ra mọi phụ thuộc gián tiếp; từ quan hệ kết nối mạng, ta cần biết cặp nút nào có thể liên thông với nhau. Những bài toán đó dẫn trực tiếp đến bao đóng bắc cầu và thuật toán Warshall.
 
-## Bản đồ kiến thức nền: Bốn phép toán biến đổi và mở rộng Quan hệ
+## Kiến thức cần nhớ: Bốn phép toán biến đổi và mở rộng Quan hệ
 
 1. **Quan hệ ngược ($$R^{-1}$$) — Đảo chiều mọi mũi tên**:
    $$(b, a) \in R^{-1} \iff (a, b) \in R$$. Trên ma trận quan hệ, lấy quan hệ ngược đơn giản là phép chuyển vị $$M_{R^{-1}} = M_R^T$$.
@@ -78,7 +78,7 @@ Ngoài ra, $$R$$ đối xứng khi và chỉ khi $$R^{-1}=R$$.
 
 ![Quan hệ ngược — đảo chiều cung](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
-<p class="textbook-figure-caption" data-figure="5.19">Quan hệ ngược $$R^{-1}$$ đảo hướng mọi cung: (a, b) ∈ R tương ứng với (b, a) ∈ R⁻¹.</p>
+<p class="textbook-figure-caption" data-figure="5.19">Quan hệ ngược $R^{-1}$ đảo hướng mọi cung: (a, b) ∈ R tương ứng với (b, a) ∈ R⁻¹.</p>
 ## Hợp thành quan hệ
 
 <div class="textbook-definition" markdown="1">
@@ -102,7 +102,7 @@ Vậy $$S\circ R=\{(1,1),(2,3)\}$$.
 
 ![Hợp thành quan hệ — ghép hai bước](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
-<p class="textbook-figure-caption" data-figure="5.20">Hợp thành $$S \circ R$$ ghép hai bước liên tiếp: (a, c) ∈ S∘R khi tồn tại phần tử trung gian b sao cho (a, b) ∈ R và (b, c) ∈ S.</p>
+<p class="textbook-figure-caption" data-figure="5.20">Hợp thành $S \circ R$ ghép hai bước liên tiếp: (a, c) ∈ S∘R khi tồn tại phần tử trung gian b sao cho (a, b) ∈ R và (b, c) ∈ S.</p>
 </div>
 
 ## Ma trận quan hệ và tích Boolean
@@ -131,7 +131,7 @@ Trong phép nhân này, phép nhân số học được thay bằng phép `AND` 
 
 ![Lũy thừa quan hệ — đường đi nhiều bước](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_simple_directed_graph.svg)
 
-<p class="textbook-figure-caption" data-figure="5.22">$$R^k$$ gồm các cặp (a, b) có đường đi độ dài đúng k từ a đến b trong đồ thị của R.</p>
+<p class="textbook-figure-caption" data-figure="5.22">$R^k$ gồm các cặp (a, b) có đường đi độ dài đúng k từ a đến b trong đồ thị của R.</p>
 ## Bao đóng
 
 <div class="textbook-definition" markdown="1">
@@ -172,7 +172,7 @@ trong đó $$I_A=\{(a,a)\mid a\in A\}$$.
 
 ![Bao đóng bắc cầu — thêm cung gián tiếp](/discrete-mathematics-for-computer-science-iuh/img/course/Directed_graph.svg)
 
-<p class="textbook-figure-caption" data-figure="5.23">Bao đóng phản xạ–bắc cầu $$R^*$$ thêm mọi cặp (a, c) có đường đi từ a đến c, kể cả các khuyên phản xạ.</p>
+<p class="textbook-figure-caption" data-figure="5.23">Bao đóng phản xạ–bắc cầu $R^*$ thêm mọi cặp (a, c) có đường đi từ a đến c, kể cả các khuyên phản xạ.</p>
 ## Thuật toán Warshall
 
 **Ý tưởng**: Thuật toán Warshall tính bao đóng bắc cầu trực tiếp từ ma trận kề $$M$$. Lần lượt cho phép từng đỉnh $$k$$ làm đỉnh trung gian, ta cập nhật:
@@ -195,7 +195,7 @@ def warshall(M):
 
 <p class="textbook-figure-caption" data-figure="5.24">Thuật toán Warshall tính bao đóng bắc cầu trên ma trận kề, trả lời bài toán liên thông (reachability) giữa mọi cặp đỉnh.</p>
 
-### Khung giải thích (nên đọc chậm): Chạy tay thuật toán Warshall từng bước $$W^{(0)} \to W^{(4)}$$ trên đồ thị 4 đỉnh
+### Giải thích: Chạy tay thuật toán Warshall từng bước $$W^{(0)} \to W^{(4)}$$ trên đồ thị 4 đỉnh
 
 Xét $$A = \{1, 2, 3, 4\}$$ và quan hệ $$R = \{(1,2), (2,3), (3,4), (4,2)\}$$ (đỉnh `1` đi vào chu trình `2 → 3 → 4 → 2`).
 
@@ -248,8 +248,8 @@ Cho $$R = \{(1,2),(2,3)\}$$ và $$S = \{(2,4),(3,5)\}$$. Tính $$R \circ S$$ và
 <details>
 <summary>Đáp án</summary>
 
-- $$R \circ S = \emptyset$$ (không có phần tử trung gian $$b$$ nào thỏa mãn $$(a,b) \in S$$ và $$(b,c) \in R$$).
-- $$S \circ R = \{(1,4),(2,5)\}$$ (vì $$(1,2)\in R, (2,4)\in S$$ và $$(2,3)\in R, (3,5)\in S$$).
+- $R \circ S = \emptyset$ (không có phần tử trung gian $b$ nào thỏa mãn $(a,b) \in S$ và $(b,c) \in R$).
+- $S \circ R = \{(1,4),(2,5)\}$ (vì $(1,2)\in R, (2,4)\in S$ và $(2,3)\in R, (3,5)\in S$).
 
 </details>
 
@@ -260,7 +260,7 @@ Tìm bao đóng phản xạ–bắc cầu của quan hệ $$R = \{(1,2),(2,3)\}$
 <details>
 <summary>Đáp án</summary>
 
-Bao đóng phản xạ–bắc cầu là: $$\{(1,1),(2,2),(3,3),(1,2),(2,3),(1,3)\}$$.
+Bao đóng phản xạ–bắc cầu là: $\{(1,1),(2,2),(3,3),(1,2),(2,3),(1,3)\}$.
 
 </details>
 
@@ -271,7 +271,7 @@ Cho một ma trận quan hệ kích thước $$3 \times 3$$, viết công thức
 <details>
 <summary>Đáp án</summary>
 
-Ở mỗi bước $$k \in \{0, 1, 2\}$$, cập nhật mọi phần tử $$W[i, j] = W[i, j] \lor (W[i, k] \land W[k, j])$$ (viết gọn dạng ma trận là $$W \leftarrow W \lor (W[:,k] \land W[k,:])$$).
+Ở mỗi bước $k \in \{0, 1, 2\}$, cập nhật mọi phần tử $W[i, j] = W[i, j] \lor (W[i, k] \land W[k, j])$ (viết gọn dạng ma trận là $W \leftarrow W \lor (W[:,k] \land W[k,:])$).
 
 </details>
 

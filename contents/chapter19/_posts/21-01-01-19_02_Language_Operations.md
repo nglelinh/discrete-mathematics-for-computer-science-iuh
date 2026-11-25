@@ -19,7 +19,7 @@ excerpt: "Các phép toán hợp, giao, bù, nối và bao đóng sao Kleene tr�
 
 Nếu các ngôn ngữ là những viên gạch, thì các phép toán hợp, giao, bù, nối và bao đóng Kleene chính là lớp vữa ghép chúng thành các biểu thức chính quy, bộ phân tích từ vựng và ngôn ngữ lập trình phức tạp. Quan trọng hơn, câu hỏi *"Lớp ngôn ngữ $$\mathcal{C}$$ có đóng dưới phép toán này không?"* là một trong những vũ khí mạnh nhất để chứng minh một ngôn ngữ không thuộc lớp chính quy hay phi ngữ cảnh.
 
-## Bản đồ kiến thức nền: Ba nhóm phép toán trên Ngôn ngữ
+## Kiến thức cần nhớ: Ba nhóm phép toán trên Ngôn ngữ
 
 1. **Phép toán tập hợp (Boolean)**:
    Hợp ($$L_1 \cup L_2$$), giao ($$L_1 \cap L_2$$), hiệu và phần bù ($$\overline{L} = \Sigma^* \setminus L$$). Lưu ý phần bù luôn phụ thuộc vào bảng chữ cái $$\Sigma$$ đã cố định.
@@ -64,7 +64,7 @@ Nếu các ngôn ngữ là những viên gạch, thì các phép toán hợp, gi
 
 </div>
 
-### Khung giải thích (nên đọc chậm): Kiểm chứng bằng tay sự khác biệt giữa $$(L_1 \cup L_2)^*$$ và $$L_1^* \cup L_2^*$$
+### Giải thích: Kiểm chứng bằng tay sự khác biệt giữa $$(L_1 \cup L_2)^*$$ và $$L_1^* \cup L_2^*$$
 
 Cho hai ngôn ngữ cực nhỏ $$L_1 = \{a\}$$ và $$L_2 = \{b\}$$:
 - $$L_1^* = \{\varepsilon, a, aa, aaa, \ldots\}$$ (chỉ toàn chữ `a`).

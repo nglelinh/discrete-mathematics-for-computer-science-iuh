@@ -21,7 +21,7 @@ Sau các bài 20.1–20.13, bạn đã có **ngôn ngữ chuẩn** để đọc 
 
 Đọc xong định lý Cook–Levin và các phép rút gọn đồ thị là một chuyện, nhưng làm sao biến kiến thức Chương 20 thành năng lực **tự nghiên cứu, chạy thực nghiệm với SAT/ILP solver và viết một bài báo khoa học đạt chuẩn**? Bài tổng kết này đóng vai trò "sổ tay thực chiến" giúp sinh viên năm cuối và học viên cao học nối liền lý thuyết độ phức tạp với thực hành nghiên cứu hiện đại.
 
-## Bản đồ kiến thức nền: Ba trụ cột Thực hành Nghiên cứu Độ phức tạp
+## Kiến thức cần nhớ: Ba trụ cột Thực hành Nghiên cứu Độ phức tạp
 
 1. **Từ Bài toán Thực tế đến Khung phân tích Độ phức tạp**:
    Khi gặp một bài toán mới (ví dụ xếp lịch thi, định tuyến xe điện), nhà nghiên cứu luôn chạy qua 4 câu hỏi theo thứ tự: (1) Có thuộc $$P$$ không? (2) Nếu NP-hard, có tham số nhỏ $$k$$ để thiết kế thuật toán FPT không? (3) Có thuật toán xấp xỉ tỉ lệ hằng số không? (4) Mã hóa sang SAT/ILP chạy thực nghiệm ra sao?
@@ -119,7 +119,7 @@ Các bộ giải tiêu biểu gồm: **SAT** (Kissat, Glucose), **SMT** (Z3) và
 | 13 | ETH, fine-grained, average-case | Bản đồ độ phức tạp hiện đại |
 | 14 | Thực hành nghiên cứu | Triển khai dự án nghiên cứu |
 
-### Khung giải thích (nên đọc chậm): Quy trình 4 bước giải quyết một bài toán tối ưu mới trong đồ án / nghiên cứu
+### Giải thích: Quy trình 4 bước giải quyết một bài toán tối ưu mới trong đồ án / nghiên cứu
 
 Giả sử bạn gặp bài toán **Xếp lịch coi thi đại học** sao cho không giảng viên nào bị trùng giờ và tổng số phòng thi nhỏ nhất:
 

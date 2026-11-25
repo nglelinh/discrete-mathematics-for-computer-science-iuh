@@ -21,7 +21,7 @@ Sau khi định nghĩa lớp $$P$$, bài học này làm rõ ba điểm: những
 
 Lớp $$P$$ là ngôi nhà của những thuật toán hiệu quả nhất mà khoa học máy tính từng khám phá — từ đường đi ngắn nhất Dijkstra, luồng cực đại, quy hoạch tuyến tính đến kiểm tra số nguyên tố AKS. Nhưng liệu *cho thêm thời gian* có thực sự giúp máy tính giải được những bài toán khó hơn hẳn không? **Định lý Phân cấp Thời gian (Time Hierarchy Theorem)** trả lời dứt khoát là CÓ — bằng đúng kỹ thuật chéo hóa mà ta đã dùng ở Bài toán Dừng, nhưng lần này có gắn thêm "đồng hồ đếm giờ".
 
-## Bản đồ kiến thức nền: Ba trụ cột của Lớp $$P$$ và Phân cấp Thời gian
+## Kiến thức cần nhớ: Ba trụ cột của Lớp $$P$$ và Phân cấp Thời gian
 
 1. **Những bài toán trụ cột trong $$P$$**:
    `PATH` (BFS/DFS $$O(V+E)$$), `2SAT` (đồ thị kéo theo $$O(n+m)$$), `PRIMES` (thuật toán AKS 2002), `LP` (phương pháp Ellipsoid/điểm trong), `RELPRIME` (Euclid $$O(\log^2 N)$$).
@@ -95,7 +95,7 @@ $$
 
 **Lưu ý nghiên cứu.** Định lý phân cấp thời gian **không** tách được $$P$$ khỏi $$NP$$ vì kỹ thuật đường chéo đơn giản có tính tương đối hóa (*relativize*), chưa đủ tinh tế để phân biệt tính đơn định và không đơn định.
 
-### Khung giải thích (nên đọc chậm): Hiểu cơ chế "Chéo hóa có đồng hồ" trong Định lý Phân cấp Thời gian
+### Giải thích: Hiểu cơ chế "Chéo hóa có đồng hồ" trong Định lý Phân cấp Thời gian
 
 Vì sao ta chứng minh được $$\mathrm{TIME}(n^2) \subsetneq \mathrm{TIME}(n^4)$$ một cách chặt chẽ?
 1. Ta xây một máy Turing $$D$$ chạy trong thời gian $$O(n^4)$$ nhận mã nguồn $$\langle M \rangle$$ làm đầu vào (độ dài $$n = \vert \langle M \rangle \vert$$).

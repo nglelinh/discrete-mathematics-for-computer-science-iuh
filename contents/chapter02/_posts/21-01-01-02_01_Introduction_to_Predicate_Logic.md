@@ -28,7 +28,7 @@ Logic mệnh đề rất sắc bén, nhưng nó bất lực trước câu lập 
 
 **Logic Vị từ (Predicate Logic / First-Order Logic)** mở khóa cấu trúc bên trong của phát biểu bằng **biến**, **vị từ** (hàm trả về `True`/`False`), **miền xác định (Domain)** và hai **lượng từ** ($$\forall, \exists$$)—chính là nền tảng toán học của SQL, ngôn ngữ truy vấn đồ thị, Prolog và đặc tả phần mềm.
 
-## Bản đồ kiến thức nền: Bốn viên gạch của Logic Vị từ (Bậc nhất)
+## Kiến thức cần nhớ: Bốn viên gạch của Logic Vị từ (Bậc nhất)
 
 1. **Vị từ (Predicate / Propositional Function)**:
    Một vị từ $$P(x)$$ là một hàm nhận đối tượng $$x$$ trong miền xác định $$D$$ và trả về giá trị chân trị (`True`/`False`). Bản thân $$P(x)$$ chưa phải mệnh đề; nó chỉ trở thành mệnh đề khi ta **gắn giá trị cụ thể** ($$P(5)$$) hoặc **ràng buộc biến bằng lượng từ** ($$\forall x\, P(x)$$).
@@ -181,7 +181,7 @@ Các mệnh đề tương ứng:
 </div>
 
 
-### Khung giải thích (nên đọc chậm): Kiểm tra bằng tay chân trị 4 công thức trên miền hữu hạn $$D = \{1, 2, 3\}$$
+### Giải thích: Kiểm tra bằng tay chân trị 4 công thức trên miền hữu hạn $$D = \{1, 2, 3\}$$
 
 Để cảm nhận chính xác $$\forall$$ là phép `AND` còn $$\exists$$ là phép `OR`, hãy tự định giá trên miền nhỏ $$D = \{1, 2, 3\}$$ với vị từ $$P(x, y): \; x + y = 4$$:
 
@@ -284,8 +284,8 @@ Xác định các biểu thức sau là vị từ hay mệnh đề:
 <details>
 <summary>Đáp án</summary>
 
-1. **Mệnh đề** — $$P(5)$$ là "$$5 > 3$$", có giá trị chân lý T.
-2. **Vị từ** — $$Q(x,y)$$ chưa biết giá trị của $$x, y$$ nên chưa xác định được đúng/sai.
+1. **Mệnh đề** — $P(5)$ là "$5 > 3$", có giá trị chân lý T.
+2. **Vị từ** — $Q(x,y)$ chưa biết giá trị của $x, y$ nên chưa xác định được đúng/sai.
 3. **Mệnh đề** — Câu khẳng định có giá trị chân lý F.
 </details>
 
@@ -310,13 +310,13 @@ Biểu diễn bằng vị từ và lượng từ:
 <details>
 <summary>Đáp án</summary>
 
-(a) **Đúng.** Với mọi số nguyên $$x$$, chọn $$y = x + 0.5 \in \mathbb{R}$$. Khi đó $$x < x + 0.5 < x + 1$$ luôn đúng.
+(a) **Đúng.** Với mọi số nguyên $x$, chọn $y = x + 0.5 \in \mathbb{R}$. Khi đó $x < x + 0.5 < x + 1$ luôn đúng.
 
-(b) **Sai.** Phản ví dụ: chọn $$x = 0 \in \mathbb{R}$$. Điều kiện $$0 < y < 1$$ không có số nguyên $$y \in \mathbb{Z}$$ nào thỏa mãn.
+(b) **Sai.** Phản ví dụ: chọn $x = 0 \in \mathbb{R}$. Điều kiện $0 < y < 1$ không có số nguyên $y \in \mathbb{Z}$ nào thỏa mãn.
 
-(c) **Đúng.** Chọn $$y = 0 \in \mathbb{R}$$ (hoặc bất kỳ số nguyên nào). Với mọi $$x \in \mathbb{Z}$$, ta xét $$P(x, 0)$$ là $$x < 0 < x + 1$$: nếu $$x \geq 0$$ thì $$x < 0$$ sai; nếu $$x \leq -1$$ thì $$x + 1 \leq 0$$ nên $$0 < x + 1$$ sai. Do đó $$P(x, 0)$$ luôn sai, tức $$\neg P(x, 0)$$ đúng với mọi $$x \in \mathbb{Z}$$.
+(c) **Đúng.** Chọn $y = 0 \in \mathbb{R}$ (hoặc bất kỳ số nguyên nào). Với mọi $x \in \mathbb{Z}$, ta xét $P(x, 0)$ là $x < 0 < x + 1$: nếu $x \geq 0$ thì $x < 0$ sai; nếu $x \leq -1$ thì $x + 1 \leq 0$ nên $0 < x + 1$ sai. Do đó $P(x, 0)$ luôn sai, tức $\neg P(x, 0)$ đúng với mọi $x \in \mathbb{Z}$.
 
-(d) **Sai.** Với mọi số nguyên $$y \in \mathbb{Z}$$, ta luôn có thể chọn $$x = y - 0.5 \in \mathbb{R}$$; khi đó $$P(y - 0.5, y)$$ là $$y - 0.5 < y < y + 0.5$$ (đúng), nên $$\neg P(x, y)$$ sai. Vậy không tồn tại $$y \in \mathbb{Z}$$ thỏa mãn.
+(d) **Sai.** Với mọi số nguyên $y \in \mathbb{Z}$, ta luôn có thể chọn $x = y - 0.5 \in \mathbb{R}$; khi đó $P(y - 0.5, y)$ là $y - 0.5 < y < y + 0.5$ (đúng), nên $\neg P(x, y)$ sai. Vậy không tồn tại $y \in \mathbb{Z}$ thỏa mãn.
 
 </details>
 
@@ -333,22 +333,22 @@ Cho các câu sau, hãy xác định vị từ (predicate) và miền xác đị
 <details>
 <summary>Đáp án</summary>
 
-(a) Vị từ $$Prime(x)$$: "$$x$$ là số nguyên tố" với miền $$U = \mathbb{Z}$$ (hoặc vị từ "$$x > 1$$" với miền là tập số nguyên tố).
-    Dạng logic: $$\forall x\, (Prime(x) \to x > 1)$$.
+(a) Vị từ $Prime(x)$: "$x$ là số nguyên tố" với miền $U = \mathbb{Z}$ (hoặc vị từ "$x > 1$" với miền là tập số nguyên tố).
+    Dạng logic: $\forall x\, (Prime(x) \to x > 1)$.
 
-(b) Vị từ $$Q(x)$$: "$$x^2 = -1$$" với miền $$U = \mathbb{R}$$.
-    Dạng logic: $$\exists x\, (x^2 = -1)$$.
-    Giá trị chân lý: **Sai**, vì không có số thực nào có bình phương bằng $$-1$$.
+(b) Vị từ $Q(x)$: "$x^2 = -1$" với miền $U = \mathbb{R}$.
+    Dạng logic: $\exists x\, (x^2 = -1)$.
+    Giá trị chân lý: **Sai**, vì không có số thực nào có bình phương bằng $-1$.
 
-(c) Vị từ $$S(x)$$: "$$x$$ học Toán Rời Rạc" với miền $$U = \{\text{sinh viên CNTT}\}$$.
-    Dạng logic: $$\forall x\, S(x)$$.
+(c) Vị từ $S(x)$: "$x$ học Toán Rời Rạc" với miền $U = \{\text{sinh viên CNTT}\}$.
+    Dạng logic: $\forall x\, S(x)$.
 
-(d) Vị từ $$F(x)$$: "$$x$$ không liên tục" với miền $$U = \{\text{các hàm số}\}$$.
-    Dạng logic: $$\exists x\, F(x)$$.
-    Giá trị chân lý: **Đúng**, chẳng hạn hàm $$f(x) = \frac{1}{x}$$ không liên tục tại $$x = 0$$.
+(d) Vị từ $F(x)$: "$x$ không liên tục" với miền $U = \{\text{các hàm số}\}$.
+    Dạng logic: $\exists x\, F(x)$.
+    Giá trị chân lý: **Đúng**, chẳng hạn hàm $f(x) = \frac{1}{x}$ không liên tục tại $x = 0$.
 
-(e) Vị từ $$B(x)$$: "$$x$$ biết bay" với miền $$U = \{\text{loài chim}\}$$.
-    Dạng logic: $$\forall x\, B(x)$$.
+(e) Vị từ $B(x)$: "$x$ biết bay" với miền $U = \{\text{loài chim}\}$.
+    Dạng logic: $\forall x\, B(x)$.
     Giá trị chân lý: **Sai**, vì có những loài chim không bay được như đà điểu, chim cánh cụt.
 
 </details>
@@ -412,20 +412,20 @@ Trong mỗi cặp sau, hai phát biểu có tương đương về mặt logic kh
 <details>
 <summary>Đáp án</summary>
 
-(a) **Tương đương.** Đặt $$G(x)$$: "$$x$$ giỏi toán".
-    - Câu 1: $$\forall x\, G(x)$$
-    - Câu 2: $$\neg\exists x\, \neg G(x)$$ ("không có ai không giỏi toán")
-    Theo luật phủ định lượng từ: $$\forall x\, G(x) \equiv \neg\exists x\, \neg G(x)$$.
+(a) **Tương đương.** Đặt $G(x)$: "$x$ giỏi toán".
+    - Câu 1: $\forall x\, G(x)$
+    - Câu 2: $\neg\exists x\, \neg G(x)$ ("không có ai không giỏi toán")
+    Theo luật phủ định lượng từ: $\forall x\, G(x) \equiv \neg\exists x\, \neg G(x)$.
 
-(b) **Tương đương.** Đặt $$C(x)$$: "$$x$$ thích cà phê".
-    - Câu 1: $$\exists x\, C(x)$$
-    - Câu 2: $$\neg\forall x\, \neg C(x)$$ ("không phải mọi người đều không thích cà phê")
-    Theo luật phủ định lượng từ: $$\exists x\, C(x) \equiv \neg\forall x\, \neg C(x)$$.
+(b) **Tương đương.** Đặt $C(x)$: "$x$ thích cà phê".
+    - Câu 1: $\exists x\, C(x)$
+    - Câu 2: $\neg\forall x\, \neg C(x)$ ("không phải mọi người đều không thích cà phê")
+    Theo luật phủ định lượng từ: $\exists x\, C(x) \equiv \neg\forall x\, \neg C(x)$.
 
-(c) **Phủ định của nhau.** Đặt $$N(x)$$: "$$x$$ có bình phương không âm".
-    - Câu 1: $$\forall x\, N(x)$$ (đúng trên $$\mathbb{R}$$ vì $$x^2 \geq 0$$ với mọi $$x \in \mathbb{R}$$).
-    - Câu 2: $$\exists x\, \neg N(x)$$ (sai vì không có số thực nào có bình phương âm).
-    Hai câu là phủ định của nhau: $$\neg\forall x\, N(x) \equiv \exists x\, \neg N(x)$$.
+(c) **Phủ định của nhau.** Đặt $N(x)$: "$x$ có bình phương không âm".
+    - Câu 1: $\forall x\, N(x)$ (đúng trên $\mathbb{R}$ vì $x^2 \geq 0$ với mọi $x \in \mathbb{R}$).
+    - Câu 2: $\exists x\, \neg N(x)$ (sai vì không có số thực nào có bình phương âm).
+    Hai câu là phủ định của nhau: $\neg\forall x\, N(x) \equiv \exists x\, \neg N(x)$.
 
 </details>
 
@@ -448,13 +448,13 @@ Viết công thức logic cho các phát biểu sau:
 <details>
 <summary>Đáp án</summary>
 
-(a) $$\forall p\, (E(p) \to Bright(p))$$ — "Nếu $$p$$ là biên thì $$p$$ có độ sáng cao."
+(a) $\forall p\, (E(p) \to Bright(p))$ — "Nếu $p$ là biên thì $p$ có độ sáng cao."
 
-(b) $$\exists p\, (R(p) \land B(p))$$ — Về mặt cú pháp logic, công thức này hợp lệ vì bản thân các vị từ chưa mang ràng buộc loại trừ lẫn nhau. Nếu muốn mô hình hóa ràng buộc thực tế (mỗi pixel chỉ mang một nhãn màu duy nhất), ta cần bổ sung tiên đề rằng $$R(p), G(p), B(p)$$ loại trừ lẫn nhau.
+(b) $\exists p\, (R(p) \land B(p))$ — Về mặt cú pháp logic, công thức này hợp lệ vì bản thân các vị từ chưa mang ràng buộc loại trừ lẫn nhau. Nếu muốn mô hình hóa ràng buộc thực tế (mỗi pixel chỉ mang một nhãn màu duy nhất), ta cần bổ sung tiên đề rằng $R(p), G(p), B(p)$ loại trừ lẫn nhau.
 
-(c) $$\forall p\, (\neg E(p) \to \neg R(p))$$ — Tương đương logic với $$\forall p\, (R(p) \to E(p))$$ theo quy tắc phản đảo (khác cách diễn đạt trong ngôn ngữ tự nhiên nhưng cùng ý nghĩa logic).
+(c) $\forall p\, (\neg E(p) \to \neg R(p))$ — Tương đương logic với $\forall p\, (R(p) \to E(p))$ theo quy tắc phản đảo (khác cách diễn đạt trong ngôn ngữ tự nhiên nhưng cùng ý nghĩa logic).
 
-(d) $$\exists p\, (E(p) \land G(p))$$.
+(d) $\exists p\, (E(p) \land G(p))$.
 
 </details>
 

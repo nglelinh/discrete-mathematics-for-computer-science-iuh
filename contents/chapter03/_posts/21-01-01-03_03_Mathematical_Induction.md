@@ -18,7 +18,7 @@ excerpt: "Giới thiệu nguyên lý quy nạp toán học, quy trình hai bư�
 
 Làm sao một lập trình viên chứng minh một hàm đệ quy như `merge_sort(arr)` hoạt động đúng với **mọi** kích thước mảng $$n = 1, 2, 3, \dots, 10^9$$ mà không thể chạy thử vô hạn lần? Câu trả lời chính là **Quy nạp Toán học (Mathematical Induction)**—hình ảnh kinh điển của hàng quân domino vô hạn: chỉ cần xô đổ quân đầu tiên và đảm bảo hễ quân thứ $$k$$ đổ thì quân thứ $$k+1$$ chắc chắn đổ theo, toàn bộ hàng vô hạn sẽ đổ rạp!
 
-## Bản đồ kiến thức nền: Bốn trụ cột của Quy nạp Toán học & Đệ quy
+## Kiến thức cần nhớ: Bốn trụ cột của Quy nạp Toán học & Đệ quy
 
 1. **Quy nạp yếu (Weak Induction)**:
    Để chứng minh $$\forall n \ge n_0,\; P(n)$$: chứng minh **Bước cơ sở** $$P(n_0)$$, sau đó chứng minh **Bước quy nạp** $$P(k) \to P(k+1)$$ với mọi $$k \ge n_0$$.
@@ -133,7 +133,7 @@ Lưu ý rằng ta **không được** chọn một giá trị cụ thể như $$
 
 ![Trực quan hóa quy nạp](/discrete-mathematics-for-computer-science-iuh/img/course/Visualization_of_induction.svg)
 
-<p class="textbook-figure-caption" data-figure="3.13">Trực quan hóa quy nạp toán học — hai bước cơ sở và quy nạp kết hợp để khẳng định mệnh đề đúng với mọi $$n$$.</p>
+<p class="textbook-figure-caption" data-figure="3.13">Trực quan hóa quy nạp toán học — hai bước cơ sở và quy nạp kết hợp để khẳng định mệnh đề đúng với mọi $n$.</p>
 ## Mẫu trình bày một chứng minh quy nạp
 
 Khi viết lời giải, nên tuân theo cấu trúc sau:
@@ -144,7 +144,7 @@ Khi viết lời giải, nên tuân theo cấu trúc sau:
 4. Chứng minh $$P(k+1)$$ đúng.
 5. Kết luận theo nguyên lý quy nạp toán học.
 
-### Khung giải thích (nên đọc chậm): Chạy tay một chứng minh quy nạp bất đẳng thức $$2^n > n^2$$ (với mọi $$n \ge 5$$)
+### Giải thích: Chạy tay một chứng minh quy nạp bất đẳng thức $$2^n > n^2$$ (với mọi $$n \ge 5$$)
 
 Chú ý điểm khởi đầu không phải lúc nào cũng là $$n = 1$$! Với $$n = 2, 3, 4$$ ta thấy $$2^4 = 16 \not> 16 = 4^2$$. Mệnh đề chỉ bắt đầu đúng từ $$n_0 = 5$$:
 
@@ -222,7 +222,7 @@ Vậy theo nguyên lý quy nạp toán học, công thức đúng với mọi $$
 
 ![Chứng minh Pythagore](/discrete-mathematics-for-computer-science-iuh/img/course/Pythagorean_proof.svg)
 
-<p class="textbook-figure-caption" data-figure="3.14">Chứng minh hình học — quy nạp thường gắn với trực giác hình học, chẳng hạn tổng $$n$$ số lẻ đầu tiên bằng $$n^2$$ tương ứng với diện tích hình vuông cạnh $$n$$.</p>
+<p class="textbook-figure-caption" data-figure="3.14">Chứng minh hình học — quy nạp thường gắn với trực giác hình học, chẳng hạn tổng $n$ số lẻ đầu tiên bằng $n^2$ tương ứng với diện tích hình vuông cạnh $n$.</p>
 ## Ví dụ 2: Tổng cấp số nhân
 
 <div class="textbook-lemma" markdown="1">
@@ -458,7 +458,7 @@ Quy nạp vì vậy là nền tảng của nhiều chứng minh về tính đún
 
 ![Đồ thị luồng điều khiển](/discrete-mathematics-for-computer-science-iuh/img/course/Control_flow_graph_of_function_with_two_if_else_statements.svg)
 
-<p class="textbook-figure-caption" data-figure="3.15">Đồ thị luồng điều khiển — bất biến vòng lặp được chứng minh bằng quy nạp theo số lần lặp, tương ứng với bước quy nạp $$P(k) \Rightarrow P(k+1)$$.</p>
+<p class="textbook-figure-caption" data-figure="3.15">Đồ thị luồng điều khiển — bất biến vòng lặp được chứng minh bằng quy nạp theo số lần lặp, tương ứng với bước quy nạp $P(k) \Rightarrow P(k+1)$.</p>
 ## Ví dụ 7: Ứng dụng trong Khoa học Máy tính — Số nút của cây nhị phân đầy đủ
 
 <div class="textbook-lemma" markdown="1">

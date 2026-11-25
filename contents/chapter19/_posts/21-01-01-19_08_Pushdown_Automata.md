@@ -19,7 +19,7 @@ excerpt: "Định nghĩa hình thức ô-tô-mát đẩy xuống (PDA), mô tả
 
 Nếu bạn trao cho một máy trạng thái hữu hạn (NFA) đúng một công cụ bổ sung duy nhất — một chiếc **ngăn xếp (stack)** chỉ cho phép đẩy vào và lấy ra ở đỉnh — sức mạnh của chiếc máy lập tức nhảy vọt từ ngôn ngữ chính quy lên toàn bộ ngôn ngữ phi ngữ cảnh. Chiếc máy đó chính là **Automat đẩy xuống (Pushdown Automaton — PDA)**, mô hình toán học đứng sau mọi bộ phân tích cú pháp (parser) trong trình biên dịch.
 
-## Bản đồ kiến thức nền: Ba trụ cột của Automat Đẩy xuống (PDA)
+## Kiến thức cần nhớ: Ba trụ cột của Automat Đẩy xuống (PDA)
 
 1. **Hàm chuyển bộ ba $$\delta(q, a, X) \ni (p, \gamma)$$**:
    Tại trạng thái $$q$$, đọc ký hiệu vào $$a$$ (hoặc $$\varepsilon$$) và lấy ký hiệu $$X$$ trên đỉnh ngăn xếp, PDA chuyển sang trạng thái $$p$$ rồi đẩy chuỗi $$\gamma$$ thay vào đỉnh ngăn xếp ($$\gamma = \varepsilon$$ nghĩa là *pop* thuần túy).
@@ -67,7 +67,7 @@ Theo dõi từng nhánh tính toán của PDA với chuỗi đầu vào, trạng
 </div>
 <script src="{{ '/public/js/explainers/language-explainer.js' | relative_url }}"></script>
 
-### Khung giải thích (nên đọc chậm): Chạy tay ngăn xếp PDA trên chuỗi `aabb`
+### Giải thích: Chạy tay ngăn xếp PDA trên chuỗi `aabb`
 
 Xét PDA nhận $$L = \{a^n b^n \mid n \ge 1\}$$ với ký hiệu đáy ngăn xếp $$Z_0$$:
 - Ở $$q_0$$: gặp `a` thì đẩy `A` lên đỉnh ngăn xếp.

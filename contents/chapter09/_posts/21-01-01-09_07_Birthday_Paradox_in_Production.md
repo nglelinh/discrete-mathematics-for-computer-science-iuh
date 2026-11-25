@@ -13,7 +13,7 @@ Khi chọn một không gian định danh rộng 4 tỷ giá trị (`INT32`), tr
 
 **Mạch bài học:** Vì sao trực giác tuyến tính $$n/D$$ đánh lừa ta $$\longrightarrow$$ mô hình xác suất bổ sung của **Nghịch lý Sinh nhật** $$\longrightarrow$$ xấp xỉ căn bậc hai $$n_{0.5} \approx 1{,}177\sqrt{D}$$ $$\longrightarrow$$ quyết định kỹ thuật chuyển từ `INT32` sang **UUID v4** (122 bit ngẫu nhiên).
 
-## Bản đồ kiến thức nền: Xác suất tổ hợp và thiết kế định danh nghiên cứu gì?
+## Kiến thức cần nhớ: Xác suất tổ hợp và thiết kế định danh nghiên cứu gì?
 
 - **Nghịch lý Sinh nhật (Birthday Paradox):** Phân tích xác suất xuất hiện ít nhất một cặp trùng nhau khi lấy mẫu ngẫu nhiên có hoàn lại $$n$$ phần tử từ tập $$D$$ phần tử. Vì số cặp là $$\binom{n}{2} = \frac{n(n-1)}{2}$$, xác suất va chạm chạm mốc 50% ngay khi $$n \approx \sqrt{2 \ln 2 \cdot D} \approx 1{,}177\sqrt{D}$$.
 - **Xấp xỉ mũ trong phân tích tiệm cận (Exponential Approximation):** Dùng bất đẳng thức $$1 - x \approx e^{-x}$$ (khi $$x \ll 1$$) để biến tích dài $$\prod_{k=0}^{n-1}(1 - k/D)$$ thành công thức đóng gọn $$P(\text{collision}) \approx 1 - e^{-n(n-1)/(2D)}$$.
@@ -186,7 +186,7 @@ Huy lưu lại đoạn mã ước lượng trong `tools/collision_estimator.py` 
 
 ---
 
-## Ví dụ tính tay cầm tay chỉ việc: So sánh ngưỡng va chạm của ID 10-bit, `INT32` và UUID v4
+## Ví dụ tính tay làm từng bước: So sánh ngưỡng va chạm của ID 10-bit, `INT32` và UUID v4
 
 **Phần A — Tính chính xác bằng tay trên không gian nhỏ $$D = 10$$ (ví dụ chữ số cuối 0–9) với $$n = 4$$ người:**
 - Người 1 chọn tự do: xác suất không trùng là $$\frac{10}{10} = 1$$.
@@ -204,8 +204,7 @@ Huy lưu lại đoạn mã ước lượng trong `tools/collision_estimator.py` 
    $$n_{0.5} \approx 1{,}177 \times 2^{61} \approx 2{,}71 \times 10^{18}\text{ phiên.}$$
    Ngay cả khi sinh **1 tỷ UUID mỗi giây**, phải mất hơn **85 năm** xác suất trùng mới chạm mức 50%.
 
-### Khung giải thích: Tại sao căn bậc hai $$\sqrt{D}$$ lại xuất hiện (nên đọc chậm)
-
+### Giải thích: Tại sao căn bậc hai $$\sqrt{D}$$ lại xuất hiện
 1. **Bước 1 — Đảo ngược câu hỏi sang biến cố bù:** Đếm trực tiếp "có ít nhất 1 cặp trùng" rất rắc rối vì có thể trùng 2, 3 hoặc nhiều cặp. Tính xác suất "tất cả $$n$$ phần tử đôi một khác nhau" dễ hơn nhiều bằng phép nhân tuần tự.
 2. **Bước 2 — Tổng số cặp quyết định số mũ:** Khi áp dụng $$1 - k/D \approx e^{-k/D}$$, tích các xác suất biến thành tổng ở trên số mũ: $$\sum_{k=0}^{n-1} \frac{k}{D} = \frac{n(n-1)}{2D}$$.
 3. **Bước 3 — Giải mốc 50%:** Đặt $$e^{-n^2/(2D)} = 0{,}5 \iff \frac{n^2}{2D} = \ln 2 \iff n = \sqrt{2 \ln 2} \cdot \sqrt{D} \approx 1{,}177\sqrt{D}$$.

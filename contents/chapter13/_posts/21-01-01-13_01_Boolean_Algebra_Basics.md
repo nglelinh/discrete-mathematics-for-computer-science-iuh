@@ -22,7 +22,7 @@ Năm 1854, George Boole xuất bản cuốn *The Laws of Thought* với tham v�
 
 **Mạch bài học:** Đại số logic nhị phân $$B = \{0, 1\}$$ $$\longrightarrow$$ định nghĩa tiên đề của **Đại số Boole trừu tượng** $$\longrightarrow$$ bộ **hằng đẳng thức rút gọn** (hấp thụ, De Morgan, phân phối kép) $$\longrightarrow$$ **Nguyên lý Đối ngẫu (Duality Principle)** nhân đôi mọi định lý miễn phí và cầu nối sang mạch logic.
 
-## Bản đồ kiến thức nền: Đại số Boole trừu tượng khác gì đại số số thực thông thường?
+## Kiến thức cần nhớ: Đại số Boole trừu tượng khác gì đại số số thực thông thường?
 
 - **Tính phân phối kép (Dual Distributivity):** Trong số thực, phép nhân phân phối qua phép cộng ($$a(b+c)=ab+ac$$) nhưng phép cộng **không** phân phối qua phép nhân. Trong đại số Boole, **cả hai chiều đều đúng**: $$x + (y \cdot z) = (x + y)(x + z)$$ — nguồn gốc của nhiều phép rút gọn mạch kỳ diệu!
 - **Nguyên lý Đối ngẫu (Duality Principle):** Nếu một đẳng thức đúng trong mọi đại số Boole, thì khi ta hoán đổi đồng thời $$+ \leftrightarrow \cdot$$ và $$0 \leftrightarrow 1$$, đẳng thức mới thu được **tự động đúng mà không cần chứng minh lại**!
@@ -316,7 +316,7 @@ Ngoài ba phép toán cơ bản AND, OR, NOT, trên $$B = \{0, 1\}$$ còn có c�
 
 </div>
 
-## Ví dụ tính tay cầm tay chỉ việc: Rút gọn biểu thức Boole bằng đại số & kiểm tra bằng đối ngẫu
+## Ví dụ tính tay làm từng bước: Rút gọn biểu thức Boole bằng đại số & kiểm tra bằng đối ngẫu
 
 **Phần A — Rút gọn biểu thức mạch $$F(x, y, z) = x y + \bar{x} z + y z$$ (Định lý đồng thuận — Consensus Theorem):**
 Ta muốn chứng minh số hạng thừa $$y z$$ có thể **xóa bỏ hoàn toàn** (tiết kiệm 1 cổng AND và 1 đầu vào OR trên chip!):
@@ -333,8 +333,7 @@ Từ đẳng thức vừa chứng minh $$x y + \bar{x} z + y z = x y + \bar{x} z
 $$(x + y)(\bar{x} + z)(y + z) = (x + y)(\bar{x} + z).$$
 Không tốn thêm một dòng chứng minh nào, ta thu ngay thêm một luật rút gọn dạng tích các tổng (POS)!
 
-### Khung giải thích: Bốn mẹo đại số để rút gọn biểu thức Boole nhanh và không sót (nên đọc chậm)
-
+### Giải thích: Bốn mẹo đại số để rút gọn biểu thức Boole nhanh và không sót
 1. **Bước 1 — Đẩy dấu phủ định vào tận biến đơn bằng De Morgan trước tiên:** Biến $$\overline{x + y} = \bar{x}\bar{y}$$ và $$\overline{xy} = \bar{x} + \bar{y}$$ để giải phóng ngoặc lớn.
 2. **Bước 2 — Tìm cặp bù $$A + \bar{A} = 1$$ và luật hấp thụ $$A + AB = A$$:** Mọi số hạng chứa thừa một nhân tử đã có mặt độc lập đều biến mất ngay lập tức.
 3. **Bước 3 — Dùng "chiêu chèn $$1 = x + \bar{x}$$" khi thấy thiếu biến:** Như ví dụ Định lý đồng thuận ở trên, nhân thêm $$(x + \bar{x})$$ giúp tạo nhân tử chung để triệt tiêu số hạng dư.

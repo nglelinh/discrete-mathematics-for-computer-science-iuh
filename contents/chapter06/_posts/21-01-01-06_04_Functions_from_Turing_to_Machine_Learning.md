@@ -17,7 +17,7 @@ Thập niên 1930 chứng kiến một cuộc hội tụ kỳ diệu trong lịc
 
 Mỗi khi gọi `user.get_profile(user_id)` hay viết `orders.map(o => o.total)`, ta đều sử dụng cùng một hợp đồng: đầu vào rõ ràng, đầu ra xác định và có thể kiểm thử độc lập. Từ Church và Turing cho đến `map`/`filter`/`reduce` và các endpoint dự đoán trong học máy, khái niệm hàm luôn là một trong những nền tảng bền vững nhất của khoa học máy tính.
 
-## Bản đồ kiến thức nền: Bốn chặng tiến hóa của Hàm số trong Khoa học Máy tính
+## Kiến thức cần nhớ: Bốn chặng tiến hóa của Hàm số trong Khoa học Máy tính
 
 1. **Từ hàm toán học đến Hàm tính toán được (Luận đề Church–Turing)**:
    Không phải mọi hàm toán học đều có thuật toán tính được (ví dụ bài toán dừng *Halting Problem*). Church và Turing đã vẽ ra ranh giới chính xác cho lớp các hàm mà máy tính có thể thực thi hữu hạn bước.
@@ -406,7 +406,7 @@ for x, y in [(1, 2), (2, 4), (3, 6)]:
 
 ![Mô hình học máy như hàm ánh xạ](/discrete-mathematics-for-computer-science-iuh/img/course/Neural_network.svg)
 
-<p class="textbook-figure-caption" data-figure="6.21">Mô hình học máy là hàm $$f: X \to Y$$ được học từ dữ liệu — ánh xạ từ đặc trưng đầu vào đến kết quả dự đoán.</p>
+<p class="textbook-figure-caption" data-figure="6.21">Mô hình học máy là hàm $f: X \to Y$ được học từ dữ liệu — ánh xạ từ đặc trưng đầu vào đến kết quả dự đoán.</p>
 ---
 
 ## Phần 4: Hàm băm mật mã (Cryptographic hash functions)
@@ -464,7 +464,7 @@ Một hàm băm dùng trong bảo mật không chỉ cần tính toán xác đ�
 
 ![Hàm băm — toàn ánh nhưng không đơn ánh](/discrete-mathematics-for-computer-science-iuh/img/course/Surjection.svg)
 
-<p class="textbook-figure-caption" data-figure="6.22">SHA-256 có miền đích gồm $$2^{256}$$ giá trị nhưng không đơn ánh vì miền xác định vô hạn, nên va chạm là điều không thể tránh khỏi về mặt lý thuyết.</p>
+<p class="textbook-figure-caption" data-figure="6.22">SHA-256 có miền đích gồm $2^{256}$ giá trị nhưng không đơn ánh vì miền xác định vô hạn, nên va chạm là điều không thể tránh khỏi về mặt lý thuyết.</p>
 ### Ứng dụng của hàm băm
 
 Hàm băm mật mã xuất hiện trong nhiều thành phần hạ tầng quan trọng:
@@ -603,7 +603,7 @@ def lambda_handler(event: dict, context) -> dict:
 <p class="textbook-figure-caption" data-figure="6.24">Serverless functions và data pipelines hoạt động như chuỗi hàm hợp — mỗi bước ánh xạ đầu vào sang đầu ra xác định.</p>
 ---
 
-### Khung giải thích (nên đọc chậm): Chạy tay một chuỗi `filter–map–reduce` và một bước học tham số của hàm $$f_w(x)$$
+### Giải thích: Chạy tay một chuỗi `filter–map–reduce` và một bước học tham số của hàm $$f_w(x)$$
 
 **Phần A — Chuỗi xử lý hàm thuần khiết (Pure Pipeline)**
 
@@ -642,7 +642,7 @@ def factorial(n):
     return n * factorial(n-1)
 ```
 
-Hàm này tính toán được bằng máy Turing vì tồn tại thuật toán hữu hạn bước cho ra kết quả chính xác với mọi số nguyên không âm $$n$$.
+Hàm này tính toán được bằng máy Turing vì tồn tại thuật toán hữu hạn bước cho ra kết quả chính xác với mọi số nguyên không âm $n$.
 
 </details>
 
@@ -653,7 +653,7 @@ Giải thích tại sao trên thực tế hàm băm SHA-256 thường được x
 <details>
 <summary>Đáp án</summary>
 
-SHA-256 có đầu ra 256-bit (gồm $$2^{256}$$ giá trị khả dĩ), nhưng miền xác định chứa tập vô hạn các chuỗi đầu vào có độ dài bất kỳ. Vì miền xác định lớn hơn rất nhiều so với miền đích nên hàm chắc chắn không đơn ánh (tồn tại va chạm).
+SHA-256 có đầu ra 256-bit (gồm $2^{256}$ giá trị khả dĩ), nhưng miền xác định chứa tập vô hạn các chuỗi đầu vào có độ dài bất kỳ. Vì miền xác định lớn hơn rất nhiều so với miền đích nên hàm chắc chắn không đơn ánh (tồn tại va chạm).
 
 </details>
 
@@ -664,7 +664,7 @@ Trong mô hình học máy, hàm dự đoán $$f: \mathbb{R}^n \to \mathbb{R}$$ 
 <details>
 <summary>Đáp án</summary>
 
-Vì nhiều đầu vào khác nhau (các điểm dữ liệu khác nhau trong $$\mathbb{R}^n$$) có thể ánh xạ về cùng một nhãn hoặc cùng một giá trị dự đoán, nên hàm không đơn ánh.
+Vì nhiều đầu vào khác nhau (các điểm dữ liệu khác nhau trong $\mathbb{R}^n$) có thể ánh xạ về cùng một nhãn hoặc cùng một giá trị dự đoán, nên hàm không đơn ánh.
 
 </details>
 
