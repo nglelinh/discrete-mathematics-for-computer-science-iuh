@@ -88,9 +88,9 @@ Mật khẩu được sinh ngẫu nhiên đều trên toàn bộ không gian m�
 **Lưu ý**: Chính sách yêu cầu “ít nhất 2 trong 4 loại ký tự” **không** có kích thước $$77^8$$ mà phải tính bằng nguyên lý bù trừ (bài `07_03`). Các ràng buộc phức tạp không thể quy giản thành phép nhân $$a^n$$ đơn thuần.
 </div>
 
-![Tam giác Pascal — không gian khóa](/discrete-mathematics-for-computer-science-iuh/img/course/Pascal_triangle.svg)
+![Không gian mật khẩu: L vị trí, mỗi vị trí N ký tự, tổng cộng N^L chuỗi](/discrete-mathematics-for-computer-science-iuh/img/course/password_entropy.svg)
 
-<p class="textbook-figure-caption" data-figure="7.27">Entropy của mật khẩu phản ánh kích thước không gian tổ hợp mà kẻ tấn công phải duyệt khi vét cạn.</p>
+<p class="textbook-figure-caption" data-figure="7.27">Với bảng chữ cái cỡ $N$ và mật khẩu dài $L$ ký tự, có đúng $N^L$ chuỗi. Entropy $H = L \cdot \log_2 N$ bit đo độ lớn không gian mà kẻ tấn công phải duyệt khi vét cạn.</p>
 ### Ước lượng thời gian brute-force
 
 Giả sử kẻ tấn công thử được $$R$$ mật khẩu mỗi giây (tấn công ngoại tuyến khi hàm băm yếu bị lộ). Thời gian trung bình để duyệt qua một nửa không gian là:
