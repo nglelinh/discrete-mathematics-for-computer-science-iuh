@@ -210,13 +210,101 @@ $$
 </div>
 **Chứng minh tổ hợp**: Xét bài toán chọn $$r$$ người từ một lớp gồm $$m$$ nam và $$n$$ nữ. Nếu chọn đúng $$i$$ nam và $$r-i$$ nữ thì có $$\binom{m}{i}\binom{n}{r-i}$$ cách. Cộng theo mọi $$i$$ từ $$0$$ đến $$r$$ cho tổng số cách bằng việc chọn trực tiếp $$r$$ người từ $$m+n$$ người.
 
-### Video ngắn: Từ tam giác Pascal ra $$\pi$$
+### Từ tam giác Pascal ra $$\pi$$
+
+Tam giác Pascal chỉ gồm các phép cộng số nguyên, vậy mà từ nó ta lấy ra được $$\pi$$. Đoạn video dưới đây (4 phút 14 giây) đi từng bước: dựng tam giác, nhìn các đường chéo, lấy cách một số trên đường chéo thứ ba, ghép thành một chuỗi, chứng minh chuỗi đó bằng $$\pi$$ rồi xem nó hội tụ nhanh đến đâu.
 
 <div class="reel-video" style="text-align:center;margin:1.5rem 0;">
 <video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/pascal-to-pi.mp4"></video>
 </div>
 
-Chuỗi Nilakantha $$\pi = 3 + \sum_{k\ge 1} (-1)^{k+1}\dfrac{4}{2k(2k+1)(2k+2)}$$ có thể viết lại thành $$\pi = 3 + \tfrac{2}{3}\sum_{k\ge 1} \dfrac{(-1)^{k+1}}{\binom{2k+2}{3}}$$. Các mẫu số $$\binom{4}{3}, \binom{6}{3}, \binom{8}{3}, \ldots = 4, 20, 56, 120, 220, \ldots$$ chính là các số nằm trên đường chéo thứ ba của tam giác Pascal, lấy cách một số.
+**Ý chính.** Đường chéo thứ ba của tam giác Pascal gồm các số $$\binom{n}{3}$$: $$1, 4, 10, 20, 35, 56, 84, 120, 165, 220, \ldots$$. Nếu chỉ lấy cách một số, ta được $$\binom{4}{3}, \binom{6}{3}, \binom{8}{3}, \ldots = 4, 20, 56, 120, 220, \ldots$$ Lấy nghịch đảo của các số này rồi cộng trừ xen kẽ, kết quả tiến về $$\pi$$.
+
+**Vì sao $$\binom{2k+2}{3}$$?** Đường chéo thứ nhất là $$\binom{n}{1}=n$$, đường chéo thứ hai là các số tam giác $$\binom{n}{2}$$, còn đường chéo thứ ba là $$\binom{n}{3}$$. Theo đồng nhất thức hình gậy khúc côn cầu, mỗi số trên đường chéo này bằng tổng các số liền trước của đường chéo bên cạnh, chẳng hạn $$20=\binom{6}{3}=1+3+6+10$$. Lấy hàng $$n=2k+2$$ (hàng $$4, 6, 8, \ldots$$) thì
+
+<div class="textbook-equation" markdown="1">
+$$
+\binom{2k+2}{3}=\frac{(2k+2)(2k+1)(2k)}{6}.
+$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+
+Tích ba số nguyên liên tiếp $$2k,\,2k+1,\,2k+2$$ xuất hiện đúng ở mẫu số của chuỗi Nilakantha. Đó là lý do tam giác Pascal "nhìn thấy" chuỗi này: $$\dfrac{4}{2k(2k+1)(2k+2)}=\dfrac{2}{3}\cdot\dfrac{1}{\binom{2k+2}{3}}$$.
+
+<div class="textbook-theorem" markdown="1">
+**Định lý (chuỗi Nilakantha)**: Chuỗi sau hội tụ về $$\pi$$:
+
+<div class="textbook-equation" markdown="1">
+$$
+\pi = 3+\frac{4}{2\cdot 3\cdot 4}-\frac{4}{4\cdot 5\cdot 6}+\frac{4}{6\cdot 7\cdot 8}-\cdots = 3+\frac{2}{3}\sum_{k=1}^{\infty}\frac{(-1)^{k+1}}{\binom{2k+2}{3}}.
+$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+</div>
+
+Chuỗi này do Nilakantha Somayaji (Ấn Độ, thế kỷ 15) tìm ra. Hãy tính vài số hạng đầu. Cột "Số hạng" là $$\dfrac{4}{2k(2k+1)(2k+2)}$$ với dấu $$(-1)^{k+1}$$, cột $$S_k$$ là tổng riêng $$3+$$ (tổng $$k$$ số hạng đầu).
+
+| $$k$$ | $$\binom{2k+2}{3}$$ | Số hạng | $$S_k$$ | $$\vert S_k-\pi\vert$$ |
+|:---:|:---:|:---:|:---:|:---:|
+| 1 | 4 | $$+\tfrac{1}{6}$$ | 3,166667 | 0,0251 |
+| 2 | 20 | $$-\tfrac{1}{30}$$ | 3,133333 | 0,0083 |
+| 3 | 56 | $$+\tfrac{1}{84}$$ | 3,145238 | 0,0037 |
+| 4 | 120 | $$-\tfrac{1}{180}$$ | 3,139683 | 0,0019 |
+| 5 | 220 | $$+\tfrac{1}{330}$$ | 3,142713 | 0,0011 |
+| 6 | 364 | $$-\tfrac{1}{546}$$ | 3,140881 | 0,00071 |
+| 7 | 560 | $$+\tfrac{1}{840}$$ | 3,142072 | 0,00048 |
+| 8 | 816 | $$-\tfrac{1}{1224}$$ | 3,141255 | 0,00034 |
+| 9 | 1140 | $$+\tfrac{1}{1710}$$ | 3,141840 | 0,00025 |
+| 10 | 1540 | $$-\tfrac{1}{2310}$$ | 3,141407 | 0,00019 |
+
+Các tổng riêng nhảy lên xuống quanh $$\pi \approx 3{,}14159265$$ và biên độ giảm rất nhanh, vì $$\pi$$ luôn nằm giữa hai tổng riêng liên tiếp.
+
+<div class="textbook-proof" markdown="1">
+**Chứng minh**: Đặt $$m=2k$$ và tách phân thức:
+
+<div class="textbook-equation" markdown="1">
+$$
+\frac{4}{m(m+1)(m+2)}=\frac{2}{m}-\frac{4}{m+1}+\frac{2}{m+2}.
+$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+
+Thử với $$m=2$$: vế trái bằng $$\tfrac{4}{24}=\tfrac{1}{6}$$, vế phải bằng $$1-\tfrac{4}{3}+\tfrac{1}{2}=\tfrac{1}{6}$$. Thay $$m=2k$$ rồi nhân dấu $$(-1)^{k+1}$$, tổng của chuỗi gồm hai phần.
+
+*Phần chẵn* $$\dfrac{2}{2k}+\dfrac{2}{2k+2}=\dfrac{1}{k}+\dfrac{1}{k+1}$$. Tổng xen dấu của phần này là
+
+<div class="textbook-equation" markdown="1">
+$$
+\left(1+\tfrac{1}{2}\right)-\left(\tfrac{1}{2}+\tfrac{1}{3}\right)+\left(\tfrac{1}{3}+\tfrac{1}{4}\right)-\cdots = 1,
+$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+
+vì các số hạng triệt tiêu từng cặp (tổng riêng thứ $$n$$ bằng $$1\pm\frac{1}{n+1}$$ nên tiến về $$1$$).
+
+*Phần lẻ* $$-\dfrac{4}{2k+1}$$. Theo chuỗi Leibniz $$1-\tfrac{1}{3}+\tfrac{1}{5}-\cdots=\tfrac{\pi}{4}$$, ta có $$\tfrac{1}{3}-\tfrac{1}{5}+\tfrac{1}{7}-\cdots=1-\tfrac{\pi}{4}$$. Do đó
+
+<div class="textbook-equation" markdown="1">
+$$
+-4\left(\tfrac{1}{3}-\tfrac{1}{5}+\tfrac{1}{7}-\cdots\right)=-4\left(1-\tfrac{\pi}{4}\right)=\pi-4.
+$$
+<span class="textbook-equation-number" aria-hidden="true"></span>
+</div>
+
+Cộng hai phần: $$1+(\pi-4)=\pi-3$$, nên $$3+(\pi-3)=\pi$$. $$\blacksquare$$
+</div>
+
+**Hội tụ nhanh đến đâu?** Đây là chuỗi đan dấu có số hạng giảm dần về $$0$$, nên sai số nhỏ hơn số hạng kế tiếp, khoảng $$\dfrac{1}{2k^3}$$. Tính chính xác hơn, sai số xấp xỉ $$\dfrac{1}{4k^3}$$. Bảng trên khớp với công thức này: ở $$k=10$$ có $$\frac{1}{4\cdot 10^3}=0{,}00025$$, so với sai số thật $$0{,}00019$$.
+
+Chuỗi Leibniz có sai số cỡ $$\dfrac{1}{k}$$, nên mỗi chữ số thập phân đúng thêm đòi hỏi nhiều gấp $$10$$ lần số hạng. Với Nilakantha, nhân số hạng lên $$10$$ lần thì sai số giảm $$10^3$$ lần, tức được thêm $$3$$ chữ số:
+
+| Số hạng $$k$$ | Sai số Leibniz | Sai số Nilakantha |
+|:---:|:---:|:---:|
+| 10 | $$\approx 10^{-1}$$ | $$\approx 10^{-4}$$ |
+| 100 | $$\approx 10^{-2}$$ | $$\approx 10^{-7}$$ |
+| 1000 | $$\approx 10^{-3}$$ | $$\approx 10^{-10}$$ |
+
+Muốn đúng $$10$$ chữ số thập phân cần $$k=1709$$ số hạng. Con số này nhanh hơn Leibniz rất nhiều, nhưng vẫn kém xa các công thức hiện đại như chuỗi của Ramanujan hay Chudnovsky. Mục đích của ví dụ này là thấy một con số liên hệ với tam giác Pascal, không phải tìm cách tính $$\pi$$ hiệu quả nhất.
 
 ### Giải thích: Tìm tay hệ số của $$x^3$$ trong $$(2x - 1)^5$$ và kiểm chứng số đồng nhất thức Vandermonde
 

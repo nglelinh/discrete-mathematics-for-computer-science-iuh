@@ -1,6 +1,6 @@
 # Reel Manim (video dọc 9:16)
 
-Các video dọc từ 20 giây đến khoảng 3 phút rưỡi (1080×1920, không nhạc) minh hoạ bài học bằng [Manim Community](https://www.manim.community/).
+Các video dọc từ 20 giây đến khoảng 4 phút rưỡi (1080×1920, không nhạc) minh hoạ bài học bằng [Manim Community](https://www.manim.community/).
 Phong cách chung: nền tối, phụ đề tiếng Việt, vùng an toàn |x| ≤ 4, |y| ≤ 6,5 (khung 9×16 đơn vị). Cấu hình và hàm dùng chung nằm trong `common.py`.
 
 ## Cài đặt
@@ -27,7 +27,7 @@ ffmpeg -i out.mp4 -i music.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -shortest ou
 ## Danh sách
 | File | Scene | Video | Bài |
 |---|---|---|---|
-| `pascal_pi.py` | `PascalPi` | `pascal-to-pi.mp4` | 07-04 |
+| `pascal_pi.py` | `PascalPi` | `pascal-to-pi.mp4` (tiếng Việt, 4 phút 14 giây, không tiếng) và `pascal-to-pi_en.mp4` (tiếng Anh) | 07-04 |
 | `handshake.py` | `Handshake` | `handshake-lemma.mp4` | 12-01 |
 | `konigsberg.py` | `Konigsberg` | `konigsberg-bridges.mp4` | 12-04 |
 | `fibonacci.py` | `Fibonacci` | `fibonacci-binet.mp4` | 10-02 |
@@ -55,3 +55,8 @@ ffmpeg -i out.mp4 -i music.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -shortest ou
 | `bfs_dfs.py` | `BfsDfs` | `bfs-vs-dfs.mp4` | 12-04 |
 | `big_o.py` | `BigO` | `big-o-growth.mp4` | 14-02 |
 | `rsa_dh.py` | `Rsa` | `rsa-diffie-hellman.mp4` | 15-03 |
+
+### Ghi chú về `pascal_pi.py`
+- Chọn ngôn ngữ bằng biến môi trường: `REEL_LANG=vi manim -qh --disable_caching -o pascal_pi_vi pascal_pi.py PascalPi` (hoặc `REEL_LANG=en`). Cảnh chỉ dùng `Text` Unicode, không cần LaTeX.
+- Nội dung: dựng tam giác Pascal, các đường chéo, lấy cách một số trên đường chéo thứ ba, chuỗi Nilakantha, chứng minh bằng tách phân thức và chuỗi Leibniz, tốc độ hội tụ. Đầu file có các `assert` kiểm tra mọi con số bằng numpy và mpmath.
+- `vo_scripts_pascal_pi.py` chứa lời dẫn tiếng Việt theo từng mục và mốc thời gian để thu âm sau. Video hiện chưa có tiếng.
