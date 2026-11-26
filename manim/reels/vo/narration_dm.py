@@ -195,3 +195,14 @@ REELS['incl-excl'] = ('incl_excl.py', 'InclExcl', 'inclusion-exclusion.mp4', [
     (134.98, 'Với n tập hợp, phần tử thuộc đúng m tập được đếm C m một trừ C m hai cộng C m ba và cứ thế, đúng một lần. N tập cho hai mũ n trừ một số hạng, bốn tập đã là mười lăm số hạng.'),
     (153.88, 'Ứng dụng: không lá thư nào đúng chỗ. Ba lá thư bỏ ngẫu nhiên vào ba phong bì, có bao nhiêu cách để không lá nào đúng? Bù trừ cho sáu trừ sáu cộng ba trừ một bằng hai. Đó là hai cách, B C A và C A B. Với bốn lá thư thì có chín cách. Bù trừ còn dùng để đếm số không chia hết, mật khẩu thiếu loại ký tự, số toàn ánh giữa hai tập.'),
 ])
+
+
+REELS['nfa-dfa'] = ('nfa_dfa.py', 'NfaDfa', 'nfa-to-dfa-subset-construction.mp4', [
+    (0.4, 'Otomat hữu hạn: từ NFA sang DFA.'),
+    (5.0, 'Đây là một NFA bốn trạng thái, nhận các chuỗi bắt đầu bằng một và kết thúc bằng không một. Không tất định: ở q một đọc không thì có hai lựa chọn. Còn q ba đọc gì cũng không có cạnh, nhánh đó chết.'),
+    (22.45, 'NFA chấp nhận nếu có ít nhất một cách đi kết thúc ở trạng thái chấp nhận. Ta theo dõi mọi nhánh cùng lúc bằng một tập trạng thái. Đọc một, một, không, một: tập cuối chứa q ba, nên chấp nhận. Còn chuỗi không một không một thì mọi nhánh chết ngay, tập rỗng, bị loại.'),
+    (56.3, 'Ý tưởng: mỗi tập trạng thái của NFA là một trạng thái của DFA. Bắt đầu từ tập q không, gọi là A. Với mỗi tập và mỗi ký tự, lấy hợp các bước đi của từng phần tử. A đọc không ra tập rỗng, A đọc một ra B. B đọc không ra C, gồm q một và q hai. B đọc một vẫn ở B. C đọc không vẫn là C, C đọc một ra D, gồm q một và q ba. D đọc không về C, đọc một về B. Tập rỗng là trạng thái chết, đọc gì cũng quay lại chính nó. Hết tập mới, bảng xong, năm trạng thái.'),
+    (107.95, 'Đây là DFA thu được: mỗi trạng thái, mỗi ký tự, đúng một cạnh. Trạng thái chấp nhận là D, vì chứa q ba. Thử một không không một: dừng ở D, chấp nhận, giống NFA. Thử một không một một không: kết thúc ở C, không phải trạng thái chấp nhận, nên loại. Chuỗi bắt đầu bằng không rơi ngay vào tập rỗng.'),
+    (148.25, 'Vì sao đúng? Sau khi đọc w, DFA ở đúng tập các trạng thái NFA có thể tới bằng w. Chứng minh bằng quy nạp theo độ dài w. Cái giá là có thể tới hai mũ n trạng thái. Ký tự thứ n từ cuối là một: NFA cần n cộng một trạng thái, DFA nhỏ nhất cần hai mũ n.'),
+    (166.7, 'Nên chỉ dựng các tập tới được từ trạng thái đầu.'),
+])
