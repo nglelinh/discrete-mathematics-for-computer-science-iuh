@@ -29,7 +29,7 @@ def cur_cap(scene):
     best = None
     for m in scene.mobjects:
         if isinstance(m, Text) and abs(m.get_center()[1] - 6.3) < 0.05 and abs(m.get_center()[0]) < 0.05:
-            best = m.text if best is None else best
+            best = getattr(m, 'original_text', None) or m.text
     return best
 
 

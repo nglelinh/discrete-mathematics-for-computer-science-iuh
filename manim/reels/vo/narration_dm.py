@@ -30,3 +30,18 @@ REELS = {
         (11.95, 'Luôn có hai điểm rơi vào cùng một ô. Hình vuông cạnh hai, mỗi ô cạnh một, nên hai điểm đó cách nhau không quá căn hai.'),
     ]),
 }
+
+
+REELS['induction-dominoes'] = ('induction.py', 'Induction', 'induction-dominoes.mp4', [
+    (0.4, 'Quy nạp toán học: chứng minh cho mọi en.'),
+    (5.1, 'Một cộng hai cộng đến en bằng en nhân en cộng một, chia hai. Thử đến một nghìn vẫn đúng, nhưng en có vô hạn giá trị.'),
+    (17.15, 'Hình ảnh domino. Cần hai điều. Một, viên số một đổ: đó là bước cơ sở. Hai, viên ca đổ thì kéo viên ca cộng một đổ, với mọi ca: đó là bước quy nạp. Có đủ hai điều, mọi viên đều đổ. Thiếu một, không ai đẩy viên đầu. Thiếu hai ở một chỗ, chuỗi bị đứt, các viên sau vẫn đứng.'),
+    (49.2, 'Nguyên lý quy nạp. Pê của ca là giả thiết quy nạp. Ca là số bất kỳ, ta không chứng minh nó, chỉ giả sử để suy ra pê của ca cộng một.'),
+    (63.05, 'Ghép hai tam giác bậc thang thành hình chữ nhật bốn nhân năm bằng hai mươi, nên tổng một đến bốn là mười. Tổng quát: hai lần tổng bằng en nhân en cộng một.'),
+    (78.8, 'Chứng minh bằng quy nạp. Cơ sở: en bằng một, hai vế đều bằng một. Quy nạp: giả sử đúng với ca. Thêm số hạng ca cộng một, dùng giả thiết, rồi đặt ca cộng một ra ngoài, ta được ca cộng một nhân ca cộng hai, chia hai. Vậy đúng với mọi en từ một.'),
+    (109.75, 'Thử nhiều giá trị chưa phải chứng minh. En bình phương cộng en cộng bốn mươi mốt là nguyên tố bốn mươi lần liền, nhưng en bằng bốn mươi thì không.'),
+    (123.8, 'Chứng minh sai thứ nhất, quên bước cơ sở. Cho rằng en bình phương cộng en là số lẻ. Bước quy nạp nghe hoàn toàn đúng, nhưng en bằng một cho hai, là số chẵn. Thật ra tích hai số liên tiếp luôn chẵn.'),
+    (144.95, 'Chứng minh sai thứ hai: mọi con ngựa cùng màu. Bỏ con cuối, bỏ con đầu, hai nhóm có phần chung nên cả đàn cùng màu. Nhưng từ một con sang hai con, hai nhóm không có con chung. Bước quy nạp phải đúng với mọi ca.'),
+    (168.8, 'Quy nạp mạnh. Muốn chứng minh sáu mươi là tích các số nguyên tố, ta tách thành sáu nhân mười. Hai số này nhỏ hơn sáu mươi nhưng không phải năm mươi chín, nên cần giả thiết cho mọi số nhỏ hơn.'),
+    (188.85, 'Khuôn trình bày: cơ sở, giả thiết, bước quy nạp, kết luận. Sai một bước là cả chứng minh sụp đổ.'),
+])
