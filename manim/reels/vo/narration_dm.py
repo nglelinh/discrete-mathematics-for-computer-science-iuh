@@ -93,3 +93,14 @@ REELS['tree-traversal'] = ('tree_traversal.py', 'TreeTraversal', 'tree-traversal
     (132.6, 'Dựng lại cây từ hai dãy duyệt. Phần tử đầu của preorder là gốc a. Trong inorder, bên trái a là cây con trái đê bê e, bên phải là xê ép. Lặp lại cho cây trái: gốc bê, đê bên trái, e bên phải. Cây phải: gốc xê, ép là con phải. Chỉ có preorder và postorder thì không đủ, vì hai cây khác nhau có thể cùng hai dãy.'),
     (165.95, 'Chọn cách duyệt nào còn tùy mục đích: preorder để sao chép, inorder cho dãy tăng, postorder để tính biểu thức, level order theo từng mức. Bài sau là cây Huffman.'),
 ])
+
+
+REELS['huffman'] = ('huffman.py', 'Huffman', 'huffman-coding.mp4', [
+    (0.4, 'Mã Huffman: ký tự hay gặp mã ngắn, ký tự hiếm mã dài.'),
+    (7.25, 'Bước không: đếm tần suất. ABRACADABRA có mười một ký tự: a năm lần, bê hai, rờ hai, xê một, đê một. Mã cố định cần ba bit mỗi ký tự, tổng ba mươi ba bit. Chữ a gặp năm lần mà vẫn tốn ba bit: phí!'),
+    (28.15, 'Gộp hai nút nhẹ nhất, lặp lại. Xê một cộng đê một thành hai. Bê hai cộng rờ hai thành bốn, hòa thì lấy theo thứ tự. Hai cộng bốn thành sáu. Cuối cùng a năm cộng sáu thành mười một: còn một nút, đó là gốc. Quy ước nhánh trái là không, nhánh phải là một. Tổng cộng chỉ hai mươi ba bit thay vì ba mươi ba, tiết kiệm ba mươi phần trăm, trung bình hai phẩy không chín bit mỗi ký tự.'),
+    (75.27, 'Mã hóa và giải mã. Thay mỗi ký tự bằng mã của nó rồi bỏ khoảng trắng, chỉ còn chuỗi bit. Không cần dấu phân cách, vì ký tự chỉ nằm ở lá, nên không mã nào là tiền tố của mã khác. Ta gọi đó là prefix free.'),
+    (103.75, 'Nếu mã không prefix free thì sao? Thử a bằng không, bê bằng không một, xê bằng một. Nhận chuỗi không một: đọc là bê, hay a rồi xê? Mã không của a là tiền tố của mã không một của bê, nên mập mờ. Cây Huffman tránh được điều này, vì đường đến một lá không đi qua lá khác.'),
+    (128.27, 'Luyện tập với MISSISSIPPI. Tần suất: i bốn, ét bốn, pê hai, em một, tổng mười một ký tự. Huffman cho bốn cộng tám cộng sáu cộng ba, bằng hai mươi mốt bit. Mã cố định hai bit cho bốn ký tự thì mười một nhân hai bằng hai mươi hai bit. Chỉ lợi một bit: tần suất khá đều thì Huffman lợi ít, tần suất càng lệch như ABRACADABRA càng lợi nhiều.'),
+    (160.93, 'Vì sao tham lam lại tối ưu? Số bit bằng tổng tần suất nhân độ sâu của lá. Hai ký tự hiếm nhất nên nằm sâu nhất, làm hai lá anh em, đổi chỗ không làm tổng tăng. Gộp chúng thành một ký tự mới, bài toán nhỏ đi một ký tự, rồi lặp lại bằng quy nạp. Huffman có trong ZIP, PNG, JPEG, MP3.'),
+])
