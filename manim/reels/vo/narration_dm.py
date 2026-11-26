@@ -129,3 +129,15 @@ REELS['cantor'] = ('cantor.py', 'Cantor', 'cantor-diagonal.mp4', [
     (136.52, 'Đường chéo trong tin học: bài toán dừng. Các chương trình đếm được. Bảng: hàng là chương trình, cột là đầu vào, một là dừng, không là chạy mãi. Giả sử có H đoán đúng mọi ô, dựng D làm ngược với ô n n. D trùng hàng k nào đó, nhưng khác ở ô k k: mâu thuẫn! Bài toán dừng không giải được, Turing, một chín ba sáu.'),
     (162.67, 'Tóm tắt: N, Z, Q đều đếm được. Đường chéo dựng phần tử nằm ngoài danh sách, nên số thực không đếm được. Cùng kỹ thuật cho thấy bài toán dừng không giải được.'),
 ])
+
+
+REELS['fibonacci'] = ('fibonacci.py', 'Fibonacci', 'fibonacci-binet.mp4', [
+    (0.4, 'Fibonacci: từ hình xoắn ốc, tỉ lệ vàng đến công thức Binet.'),
+    (6.25, 'Dãy một, một, hai, ba, năm, tám, mười ba: mỗi số bằng tổng hai số trước. Ghép hình vuông cạnh F n, mỗi hình vuông mới có cạnh bằng tổng hai cạnh trước.'),
+    (20.02, 'Xét tỉ số hai số liên tiếp, F n cộng một chia F n. Nó tiến dần tới phi, bằng một cộng căn năm chia hai, khoảng một phẩy sáu một tám. Vì sao lại ra đúng số này? Câu trả lời nằm ở phương trình đặc trưng.'),
+    (39.33, 'Phương trình đặc trưng: thay F n bằng r mũ n, chia hai vế cho r mũ n trừ hai, ta được r bình phương bằng r cộng một. Hai nghiệm là phi bằng một cộng căn năm chia hai, và psi bằng một trừ căn năm chia hai. Truy hồi tuyến tính nên mọi tổ hợp A phi mũ n cộng B psi mũ n đều thỏa mãn.'),
+    (64.98, 'Tìm A, B từ điều kiện đầu. F không bằng không cho B bằng trừ A. F một bằng một cho A nhân phi trừ psi bằng một, mà phi trừ psi bằng căn năm, nên A bằng một chia căn năm. Đó là công thức Binet. Thử n bằng mười ra đúng năm mươi lăm.'),
+    (92.33, 'Vì sao tỉ số tiến tới phi? Vì trị tuyệt đối của psi khoảng không phẩy sáu một tám, nhỏ hơn một, nên psi mũ n tiến về không. Do đó F n xấp xỉ phi mũ n chia căn năm, và tỉ số F n cộng một chia F n xấp xỉ phi.'),
+    (113.73, 'Khi phương trình có nghiệm kép. Với a n bằng bốn a n trừ một trừ bốn a n trừ hai, ta có r bằng hai kép. Thử A cộng B nhân hai mũ n chỉ còn một hằng số, sai. Dạng đúng là A cộng B n, nhân hai mũ n. Từ a không bằng một và a một bằng sáu, được A bằng một, B bằng hai: a n bằng một cộng hai n, nhân hai mũ n.'),
+    (144.68, 'Ba bước giải truy hồi bậc hai: viết phương trình đặc trưng; nghiệm khác nhau thì A r một mũ n cộng B r hai mũ n, nghiệm kép thì A cộng B n nhân r mũ n; rồi dùng a không, a một để tìm A, B.'),
+])
