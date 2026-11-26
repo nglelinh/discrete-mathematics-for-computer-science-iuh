@@ -45,3 +45,16 @@ REELS['induction-dominoes'] = ('induction.py', 'Induction', 'induction-dominoes.
     (168.8, 'Quy nạp mạnh. Muốn chứng minh sáu mươi là tích các số nguyên tố, ta tách thành sáu nhân mười. Hai số này nhỏ hơn sáu mươi nhưng không phải năm mươi chín, nên cần giả thiết cho mọi số nhỏ hơn.'),
     (188.85, 'Khuôn trình bày: cơ sở, giả thiết, bước quy nạp, kết luận. Sai một bước là cả chứng minh sụp đổ.'),
 ])
+
+
+REELS['bfs-vs-dfs'] = ('bfs_dfs.py', 'BfsDfs', 'bfs-vs-dfs.mp4', [
+    (0.4, 'Duyệt đồ thị: cùng một đồ thị, hai cách đi, hàng đợi và ngăn xếp.'),
+    (7.5, 'BFS duyệt theo bề rộng. Bắt đầu từ a, ta thăm từng lớp một: khoảng cách không, rồi một, rồi hai, rồi ba. Số vàng là số cạnh ít nhất từ a. Cạnh nối xê với e không thuộc cây, vì e đã được bê thêm vào trước.'),
+    (36.35, 'Cây BFS cho đường đi ngắn nhất. Muốn đi từ a đến giê, ta lần ngược theo cha: a, bê, đê, giê, ba cạnh, đúng bằng khoảng cách. Vì BFS xong hết một lớp mới sang lớp sau. Chỉ đúng khi các cạnh cùng trọng số, có trọng số thì dùng Dijkstra.'),
+    (58.4, 'DFS đi sâu nhất có thể, hết đường thì quay lui. Thứ tự DFS là a, bê, đê, giê, e, xê, ép, khác với thứ tự BFS. Đến xê, đỉnh a đã thăm mà không phải cha của xê, nên đó là cạnh ngược.'),
+    (84.65, 'Cạnh ngược cho ta chu trình a, bê, e, xê, a. Đồ thị vô hướng có chu trình khi và chỉ khi DFS gặp cạnh ngược. Không có thì đồ thị là rừng.'),
+    (101.5, 'Trong code chỉ khác một dòng. Lấy đỉnh vào sớm nhất, tức hàng đợi, là BFS. Đổi thành lấy đỉnh vào muộn nhất, tức ngăn xếp, ta luôn đi tiếp từ đỉnh mới nhất: đó là DFS. Thứ tự hơi khác bản đệ quy, nhưng vẫn là DFS hợp lệ.'),
+    (124.75, 'Đặt cạnh nhau. BFS tỏa ra theo lớp, DFS lao thẳng xuống sâu. Cả hai đều có độ phức tạp ô của vê cộng e: mỗi đỉnh vào một lần, mỗi cạnh được xét hai lần.'),
+    (148.0, 'Đếm thành phần liên thông: duyệt từng đỉnh, gặp đỉnh chưa thăm thì bắt đầu một lần BFS hoặc DFS mới, tức một thành phần mới. Ở đây có ba thành phần. Ứng dụng: nhóm bạn trong mạng xã hội, tô màu vùng, kiểm tra mạng còn liên thông.'),
+    (170.65, 'Tóm lại: BFS dùng hàng đợi cho đường đi ngắn nhất, DFS dùng ngăn xếp để tìm chu trình, và cả hai đều đếm được thành phần liên thông.'),
+])
