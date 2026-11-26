@@ -154,3 +154,17 @@ REELS['divide-conquer'] = ('divide_conquer.py', 'DivideConquer', 'divide-and-con
     (136.35, 'Áp dụng định lý thợ: merge sort và tìm kiếm nhị phân thuộc trường hợp hai. Karatsuba ra n mũ một phẩy năm tám lăm, Strassen ra n mũ hai phẩy tám một. Với n log n làm chi phí gộp thì không áp dụng được, ta vẽ cây và được n log bình phương n.'),
     (158.48, 'Tóm tắt: vẽ cây đệ quy, cộng chi phí theo từng tầng. Tầng bằng nhau thì thêm log n, tăng dần thì lá thắng, giảm dần thì gốc thắng.'),
 ])
+
+
+REELS['dnf-cnf'] = ('dnf_cnf.py', 'DnfCnf', 'dnf-cnf-normal-forms.mp4', [
+    (0.4, 'Dạng chuẩn tắc: DNF và CNF.'),
+    (4.3, 'Literal là một biến, hoặc phủ định của một biến. Phủ định của cả công thức ghép thì không phải literal.'),
+    (14.55, 'DNF là tuyển của các hội: các khung và nối với nhau bằng hoặc. CNF là hội của các tuyển: các clause hoặc nối với nhau bằng và. Hai dạng đổi vai và, hoặc cho nhau.'),
+    (30.8, 'Từ bảng chân trị ra DNF: chỉ xét các hàng có f bằng đúng. Mỗi hàng cho một hội, biến đúng thì giữ nguyên, biến sai thì thêm phủ định. Nối bốn hội đó bằng hoặc, ta được DNF đầy đủ của f.'),
+    (53.65, 'Từ bảng chân trị ra CNF thì ngược lại: chỉ xét các hàng có f bằng sai. Mỗi hàng cho một mệnh đề con, biến đúng thì thêm phủ định, biến sai thì giữ nguyên. Nối bốn mệnh đề đó bằng và, ta được CNF đầy đủ của f.'),
+    (79.7, 'Đưa công thức về DNF, CNF, với g bằng p tương đương q, suy ra r. Ba việc: bỏ suy ra và tương đương, đẩy phủ định vào trong, rồi phân phối. Dùng De Morgan và phủ định kép, ta được p và không q, hoặc không p và q, hoặc r. Đã là DNF.'),
+    (107.05, 'Muốn CNF thì phân phối hoặc qua và. Rút gọn p hoặc không p bằng đúng, ta được p hoặc q hoặc r, và không p hoặc không q hoặc r. Đã là CNF.'),
+    (124.1, 'Kiểm tra: ba cột g, DNF và CNF giống nhau ở cả tám hàng.'),
+    (137.35, 'Vì sao cần CNF? Mọi công thức đều có cả DNF lẫn CNF. SAT solver nhận đầu vào là CNF: mỗi mệnh đề con là một ràng buộc, solver tìm cách gán sao cho mọi ràng buộc cùng đúng.'),
+    (153.7, 'Tóm tắt: biến đổi bằng luật, bỏ suy ra và tương đương, đẩy phủ định vào trong, rồi phân phối.'),
+])
