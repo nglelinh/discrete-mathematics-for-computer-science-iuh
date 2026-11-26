@@ -104,3 +104,28 @@ REELS['huffman'] = ('huffman.py', 'Huffman', 'huffman-coding.mp4', [
     (128.27, 'Luyện tập với MISSISSIPPI. Tần suất: i bốn, ét bốn, pê hai, em một, tổng mười một ký tự. Huffman cho bốn cộng tám cộng sáu cộng ba, bằng hai mươi mốt bit. Mã cố định hai bit cho bốn ký tự thì mười một nhân hai bằng hai mươi hai bit. Chỉ lợi một bit: tần suất khá đều thì Huffman lợi ít, tần suất càng lệch như ABRACADABRA càng lợi nhiều.'),
     (160.93, 'Vì sao tham lam lại tối ưu? Số bit bằng tổng tần suất nhân độ sâu của lá. Hai ký tự hiếm nhất nên nằm sâu nhất, làm hai lá anh em, đổi chỗ không làm tổng tăng. Gộp chúng thành một ký tự mới, bài toán nhỏ đi một ký tự, rồi lặp lại bằng quy nạp. Huffman có trong ZIP, PNG, JPEG, MP3.'),
 ])
+
+
+REELS['big-o'] = ('big_o.py', 'BigO', 'big-o-growth.mp4', [
+    (0.4, 'Big O: khi n lớn dần, thuật toán nào chậm đi nhanh hơn?'),
+    (7.12, 'Máy chạy một tỉ phép tính mỗi giây. Hai mũ bốn mươi phép tính mất khoảng mười tám phút, nhưng hai mũ sáu mươi phép là ba mươi sáu năm! Trong khi đó sáu mươi bình phương chỉ là ba nghìn sáu trăm phép, chưa tới một phần triệu giây.'),
+    (31.87, 'Hãy nhìn các đường tăng trưởng. Hai mũ n vượt khỏi khung từ n khoảng bảy, còn n bình phương chậm hơn nhưng vẫn bỏ xa n log n. Big O chỉ quan tâm hình dạng đường cong khi n lớn, không quan tâm vài giá trị đầu.'),
+    (52.27, 'Định nghĩa: f của n là O của g của n nếu có hằng số c dương và n không, để f của n nhỏ hơn hoặc bằng c nhân g của n với mọi n từ n không trở đi. Ví dụ, từ n bằng sáu trở đi f luôn nhỏ hơn bốn n bình phương, nên f là O của n bình phương. Chọn c bằng mười cũng được: c và n không không duy nhất.'),
+    (75.65, 'Ô mê ga là chặn dưới, Thê ta là đúng cỡ: vừa O vừa Ô mê ga. Khi n từ sáu, f bị kẹp giữa ba n bình phương và bốn n bình phương, nên f là Thê ta của n bình phương. O chỉ nói không lớn hơn, Thê ta mới là đúng cỡ.'),
+    (95.98, 'Quy tắc rút gọn: bỏ hằng số nhân, giữ số hạng lớn nhất, cơ số log không quan trọng. Vòng lặp nối tiếp thì cộng, lồng nhau thì nhân. Thứ tự tăng: một, log n, n, n log n, n bình phương, n mũ ba, hai mũ n, n giai thừa.'),
+    (117.13, 'Đếm bước trong code. Vòng lồng nhau chạy n nhân n trừ một chia hai lần, là Thê ta của n bình phương. Vòng chia đôi mỗi lần, một nghìn chỉ cần chín vòng, là Thê ta của log n. Lồng vòng chia đôi trong vòng n thì được n log n.'),
+    (135.77, 'Những bẫy thường gặp. O chỉ là chặn trên: n là O của n bình phương vẫn đúng, nhưng Thê ta của n mới chính xác. Hằng số vẫn quan trọng khi n nhỏ. Hai mũ n cộng một vẫn là O của hai mũ n, nhưng bốn mũ n thì không. N bình phương không là O của n. Và O của n bình phương không có nghĩa là chạy n bình phương giây.'),
+    (161.42, 'Tóm tắt: O là chặn trên, Ô mê ga là chặn dưới, Thê ta là đúng cỡ. Chứng minh là tìm c và n không. Bỏ hằng số, giữ số hạng trội. Hai mũ n bùng nổ, nên tránh thuật toán mũ khi n lớn.'),
+])
+
+
+REELS['cantor'] = ('cantor.py', 'Cantor', 'cantor-diagonal.mp4', [
+    (0.4, 'Đường chéo Cantor: có vô hạn lớn hơn vô hạn không?'),
+    (6.87, 'Một tập đếm được nếu ta đánh số được các phần tử thành a một, a hai, a ba, mà không bỏ sót. Số nguyên có gấp đôi số tự nhiên không? Không: xếp không, một, trừ một, hai, trừ hai, ba, trừ ba, mỗi số nguyên có đúng một số thứ tự. Với tập vô hạn, tập con thật sự vẫn có thể cùng lực lượng.'),
+    (31.28, 'Khách sạn Hilbert có vô hạn phòng và đã kín chỗ. Một khách mới đến: khách phòng n chuyển sang phòng n cộng một, phòng một trống. Vô hạn khách mới thì khách phòng n chuyển sang phòng hai n, dành hết các phòng lẻ cho khách mới.'),
+    (50.2, 'Ngay cả tập số hữu tỉ cũng đếm được. Mọi phân số dương p trên q đều nằm trong một bảng vô hạn. Đi theo từng hàng thì không bao giờ xuống được hàng hai, nhưng đi theo đường chéo thì đến được mọi ô. Bỏ qua các phân số không tối giản vì đã gặp giá trị đó rồi, rồi xen kẽ thêm không và các số âm như với số nguyên. Vậy Q cũng đếm được.'),
+    (79.12, 'Thử liệt kê các dãy nhị phân vô hạn. Giả sử có một danh sách s một, s hai, s ba, chứa mọi dãy không một vô hạn. Nhìn đường chéo: bit thứ k của dãy thứ k. Lật từng bit đường chéo, không thành một, một thành không, ta được dãy mới d. D khác s một ở bit thứ nhất, khác s hai ở bit thứ hai, nên d khác mọi dãy trong danh sách. Mâu thuẫn: tập các dãy không một vô hạn không đếm được.'),
+    (111.25, 'Cùng ý tưởng với số thực trong khoảng không đến một. Quy tắc: chữ số đường chéo là năm thì đổi thành bốn, khác năm thì đổi thành năm, chỉ dùng bốn và năm để tránh không phẩy bốn chín chín bằng không phẩy năm. Số mới x khác mọi số trong danh sách, nên số thực không đếm được. Theo định lý Cantor, có vô số cỡ vô hạn khác nhau.'),
+    (136.52, 'Đường chéo trong tin học: bài toán dừng. Các chương trình đếm được. Bảng: hàng là chương trình, cột là đầu vào, một là dừng, không là chạy mãi. Giả sử có H đoán đúng mọi ô, dựng D làm ngược với ô n n. D trùng hàng k nào đó, nhưng khác ở ô k k: mâu thuẫn! Bài toán dừng không giải được, Turing, một chín ba sáu.'),
+    (162.67, 'Tóm tắt: N, Z, Q đều đếm được. Đường chéo dựng phần tử nằm ngoài danh sách, nên số thực không đếm được. Cùng kỹ thuật cho thấy bài toán dừng không giải được.'),
+])
