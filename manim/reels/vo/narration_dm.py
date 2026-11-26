@@ -168,3 +168,18 @@ REELS['dnf-cnf'] = ('dnf_cnf.py', 'DnfCnf', 'dnf-cnf-normal-forms.mp4', [
     (137.35, 'Vì sao cần CNF? Mọi công thức đều có cả DNF lẫn CNF. SAT solver nhận đầu vào là CNF: mỗi mệnh đề con là một ràng buộc, solver tìm cách gán sao cho mọi ràng buộc cùng đúng.'),
     (153.7, 'Tóm tắt: biến đổi bằng luật, bỏ suy ra và tương đương, đẩy phủ định vào trong, rồi phân phối.'),
 ])
+
+
+REELS['karnaugh'] = ('graycode.py', 'GrayCode', 'karnaugh-maps-gray-code.mp4', [
+    (0.4, 'Bản đồ Karnaugh: khoanh nhóm các ô một trên lưới sắp theo mã Gray.'),
+    (6.5, 'Mã Gray: phản chiếu dãy rồi thêm không, thêm một. Hai mã liền nhau khác đúng một bit, kể cả mã cuối với mã đầu. Thứ tự nhị phân thường thì không: không một sang một không đổi cả hai bit.'),
+    (23.88, 'Mã Gray ba bit là đi dọc các cạnh của khối lập phương.'),
+    (35.43, 'Vì sao cần khác đúng một biến? Biến đổi giá trị trong nhóm thì bị triệt. Gộp hai ô bỏ một biến, bốn ô bỏ hai biến, tám ô bỏ ba biến. Nhóm phải là hình chữ nhật có một, hai, bốn, tám ô.'),
+    (51.68, 'K-map hai biến dùng thứ tự Gray cho trục, nên hai ô cạnh nhau chỉ khác một biến. Cột y bằng một: x đổi, còn y. Hàng x bằng một: y đổi, còn x. Ô mười một nằm trong cả hai nhóm, được phép. Vậy F bằng x cộng y.'),
+    (73.13, 'K-map ba biến. Hàng xy theo thứ tự Gray: không không, không một, một một, một không. F bằng tổng các minterm không, một, hai, năm, bảy. Khoanh các nhóm lớn nhất, rồi đọc mỗi nhóm thành một hạng tử. Có cách khoanh khác cũng tối tiểu, cùng ba hạng tử, sáu literal.'),
+    (102.58, 'Mép trên kề mép dưới: hàng không không và hàng một không chỉ khác bit x, như cuộn lưới thành ống. Hai minterm không và bốn cho F bằng y phủ định z phủ định.'),
+    (115.33, 'K-map bốn biến: hàng xy và cột zw đều theo Gray, cột trái kề cột phải, hàng trên kề hàng dưới. Với mười hai minterm, tám ô ở hai cột giữa cho w, các ô còn lại gom thành y phủ định. Vậy F bằng y phủ định cộng w: mỗi minterm bốn literal, rút còn hai.'),
+    (140.88, 'Bốn góc cũng là một nhóm. Với F bằng tổng các minterm không, hai, năm, bảy, tám, mười, mười ba, mười lăm: bốn góc cho y phủ định w phủ định, khối hai nhân hai ở giữa cho y w. Vậy F bằng y phủ định w phủ định cộng y w.'),
+    (160.63, 'Ô don\'t care, ký hiệu X. F bằng một tại m không, một, ba; không quan tâm tại m năm, bảy. Coi X là một thì được x phủ định y phủ định cộng z, nhóm to hơn. X chỉ dùng khi làm nhóm to hơn, không bắt buộc phải phủ.'),
+    (180.78, 'Quy tắc khoanh nhóm: nhóm to nhất có thể, kích thước lũy thừa của hai. Đọc nhóm: biến đổi giá trị thì bỏ, biến luôn một giữ nguyên, biến luôn không lấy phủ định.'),
+])
