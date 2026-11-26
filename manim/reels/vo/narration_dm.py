@@ -58,3 +58,16 @@ REELS['bfs-vs-dfs'] = ('bfs_dfs.py', 'BfsDfs', 'bfs-vs-dfs.mp4', [
     (148.0, 'Đếm thành phần liên thông: duyệt từng đỉnh, gặp đỉnh chưa thăm thì bắt đầu một lần BFS hoặc DFS mới, tức một thành phần mới. Ở đây có ba thành phần. Ứng dụng: nhóm bạn trong mạng xã hội, tô màu vùng, kiểm tra mạng còn liên thông.'),
     (170.65, 'Tóm lại: BFS dùng hàng đợi cho đường đi ngắn nhất, DFS dùng ngăn xếp để tìm chu trình, và cả hai đều đếm được thành phần liên thông.'),
 ])
+
+
+REELS['dijkstra'] = ('dijkstra.py', 'Dijkstra', 'dijkstra-shortest-path.mp4', [
+    (0.4, 'Dijkstra: đường đi ngắn nhất từ một đỉnh.'),
+    (5.0, 'Đồ thị có hướng, số trên cạnh là độ dài. Đường ít cạnh nhất có phải ngắn nhất? Chưa chắc.'),
+    (17.85, 'Hai thao tác. Đê của vê là độ dài tốt nhất tìm được tới vê, ban đầu của ét bằng không, còn lại vô cực. Relax cạnh: đi qua u mà ngắn hơn thì cập nhật. Rồi chốt đỉnh có đê nhỏ nhất.'),
+    (33.5, 'Chạy Dijkstra từ ét. Ban đầu chỉ có ét trong hàng đợi. Mỗi lần ta lấy ra đỉnh có đê nhỏ nhất và chốt nó, rồi relax các cạnh đi ra: lấy đê của u cộng trọng số, so với đê của vê. Nhỏ hơn thì cập nhật, không nhỏ hơn thì giữ nguyên.'),
+    (75.0, 'Đỉnh nào đã chốt thì khoảng cách của nó không đổi nữa. Khi hàng đợi rỗng, mọi đỉnh đều có đường ngắn nhất.'),
+    (101.65, 'Cây đường đi ngắn nhất: mỗi đỉnh nhớ cạnh cuối làm đê của nó giảm. Tới e là năm cạnh, dài tám, ngắn hơn đường ba cạnh dài mười.'),
+    (113.6, 'Vì sao chốt là đúng? Khi chốt u, đê của u nhỏ nhất trong các đỉnh đang chờ. Đường khác tới u phải qua một đỉnh đang chờ, nên không thể ngắn hơn. Điểm mấu chốt là mọi trọng số không âm.'),
+    (128.45, 'Khi có cạnh âm. Cạnh bê a có trọng số trừ hai. Dijkstra chốt a quá sớm, rồi cạnh âm làm một đường đi vòng về sau lại rẻ hơn, nhưng a đã chốt nên không được sửa. Dijkstra cho đê của a bằng hai, của xê bằng ba. Đúng ra đường ét, bê, a dài một, nên đê của xê là hai. Có cạnh âm thì dùng Bellman Ford, và nó phát hiện được cả chu trình âm.'),
+    (165.2, 'Tóm tắt: dùng hàng đợi ưu tiên, độ phức tạp ô của vê cộng e nhân lô-ga vê. Dùng trong định tuyến mạng, bản đồ, game, nhưng chỉ khi mọi trọng số không âm.'),
+])
