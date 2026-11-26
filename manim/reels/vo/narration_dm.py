@@ -71,3 +71,25 @@ REELS['dijkstra'] = ('dijkstra.py', 'Dijkstra', 'dijkstra-shortest-path.mp4', [
     (128.45, 'Khi có cạnh âm. Cạnh bê a có trọng số trừ hai. Dijkstra chốt a quá sớm, rồi cạnh âm làm một đường đi vòng về sau lại rẻ hơn, nhưng a đã chốt nên không được sửa. Dijkstra cho đê của a bằng hai, của xê bằng ba. Đúng ra đường ét, bê, a dài một, nên đê của xê là hai. Có cạnh âm thì dùng Bellman Ford, và nó phát hiện được cả chu trình âm.'),
     (165.2, 'Tóm tắt: dùng hàng đợi ưu tiên, độ phức tạp ô của vê cộng e nhân lô-ga vê. Dùng trong định tuyến mạng, bản đồ, game, nhưng chỉ khi mọi trọng số không âm.'),
 ])
+
+
+REELS['mst'] = ('mst.py', 'Mst', 'mst-kruskal-prim.mp4', [
+    (0.4, 'Cây khung nhỏ nhất: nối mọi đỉnh với chi phí thấp nhất.'),
+    (5.0, 'Sáu thành phố, số trên cạnh là chi phí kéo cáp. Cần chọn các cạnh sao cho mọi đỉnh liên thông và tổng chi phí nhỏ nhất. Tập tối ưu không có chu trình, nên là cây, đúng năm cạnh.'),
+    (19.77, 'Thử hết mọi cây khung? Đồ thị này có năm mươi lăm cây, nhưng mười đỉnh đã có một trăm triệu cây. Cần cách chọn tham lam, mỗi bước lấy cạnh rẻ nhất mà vẫn an toàn.'),
+    (33.62, 'Kruskal: cạnh nhẹ trước. Xét các cạnh theo trọng số tăng dần, cạnh nào tạo chu trình thì bỏ. Ta dùng Union Find để biết hai đỉnh có cùng thành phần không. Hai đầu ở hai thành phần khác nhau thì lấy cạnh, cùng thành phần thì bỏ vì tạo chu trình. Đủ năm cạnh thì dừng, khỏi xét cạnh e ép chín. Kết quả: đê e, a đê, bê e, xê e, xê ép, tổng hai mươi.'),
+    (84.27, 'Prim lớn dần từ một đỉnh. Bắt đầu từ a, mỗi bước lấy cạnh nhẹ nhất đi từ tập ét ra ngoài, rồi thêm đỉnh mới vào ét. Cuối cùng ta có cùng năm cạnh, cùng tổng hai mươi như Kruskal. Thứ tự chọn khác nhau: Prim lấy a đê trước đê e. Nếu trọng số khác nhau đôi một thì cây khung nhỏ nhất là duy nhất.'),
+    (130.12, 'Vì sao tham lam lại đúng? Tính chất lát cắt: chia đỉnh thành ét và phần còn lại, cạnh nhẹ nhất băng qua lát cắt luôn nằm trong cây khung nhỏ nhất. Giả sử có cây không chứa đê e, tổng hai mươi ba. Thêm đê e vào thì có chu trình, bỏ cạnh a bê, giữ đê e, tổng giảm xuống hai mươi.'),
+    (157.17, 'Kruskal hay Prim? Cả hai cho cùng một tổng nhỏ nhất. Đừng nhầm với đường đi ngắn nhất của Dijkstra.'),
+])
+
+
+REELS['tree-traversal'] = ('tree_traversal.py', 'TreeTraversal', 'tree-traversal.mp4', [
+    (0.4, 'Duyệt cây nhị phân: thăm mọi nút, mỗi nút đúng một lần.'),
+    (6.37, 'Ba thứ tự DFS khác nhau ở lúc thăm gốc. Preorder thăm gốc trước, inorder thăm gốc ở giữa, postorder thăm gốc sau cùng. Mẹo: đi vòng quanh cây sát mép, bắt đầu từ bên trái gốc, gặp cạnh trái của nút thì ghi preorder, gặp đáy thì ghi inorder, gặp cạnh phải thì ghi postorder. Với cây này ta được a bê đê e xê ép, đê bê e a xê ép, và đê e bê ép xê a.'),
+    (42.85, 'Cây biểu thức ba cộng bốn nhân năm trừ hai. Preorder cho ra tiền tố, postorder cho ra hậu tố, inorder cần thêm ngoặc để giữ đúng cấu trúc. Tính hậu tố bằng ngăn xếp: gặp số thì đẩy vào, gặp phép toán thì lấy hai số trên cùng ra tính rồi đẩy kết quả. Ba cộng bốn được bảy, năm trừ hai được ba, bảy nhân ba bằng hai mươi mốt.'),
+    (79.93, 'Inorder trên cây tìm kiếm nhị phân. Chèn lần lượt tám, ba, mười, một, sáu, mười bốn, bốn, bảy: nhỏ hơn đi trái, lớn hơn đi phải. Inorder luôn cho dãy tăng dần, vì mọi khóa bên trái nhỏ hơn gốc, và gốc nhỏ hơn mọi khóa bên phải.'),
+    (107.38, 'Level order duyệt theo mức bằng hàng đợi: lấy nút đầu hàng đợi, thăm nó, đẩy các con vào cuối. Đây chính là BFS trên cây. Mọi cách duyệt đều ô của en, vì mỗi nút vào ra đúng một lần.'),
+    (132.6, 'Dựng lại cây từ hai dãy duyệt. Phần tử đầu của preorder là gốc a. Trong inorder, bên trái a là cây con trái đê bê e, bên phải là xê ép. Lặp lại cho cây trái: gốc bê, đê bên trái, e bên phải. Cây phải: gốc xê, ép là con phải. Chỉ có preorder và postorder thì không đủ, vì hai cây khác nhau có thể cùng hai dãy.'),
+    (165.95, 'Chọn cách duyệt nào còn tùy mục đích: preorder để sao chép, inorder cho dãy tăng, postorder để tính biểu thức, level order theo từng mức. Bài sau là cây Huffman.'),
+])
