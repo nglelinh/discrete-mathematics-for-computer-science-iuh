@@ -206,3 +206,15 @@ REELS['nfa-dfa'] = ('nfa_dfa.py', 'NfaDfa', 'nfa-to-dfa-subset-construction.mp4'
     (148.25, 'Vì sao đúng? Sau khi đọc w, DFA ở đúng tập các trạng thái NFA có thể tới bằng w. Chứng minh bằng quy nạp theo độ dài w. Cái giá là có thể tới hai mũ n trạng thái. Ký tự thứ n từ cuối là một: NFA cần n cộng một trạng thái, DFA nhỏ nhất cần hai mũ n.'),
     (166.7, 'Nên chỉ dựng các tập tới được từ trạng thái đầu.'),
 ])
+
+
+REELS['stars-bars'] = ('stars_bars.py', 'StarsBars', 'stars-and-bars.mp4', [
+    (0.4, 'Tổ hợp có lặp, hay sao và vạch: đếm cách chọn khi được lấy trùng và không xét thứ tự.'),
+    (7.52, 'Chọn năm chiếc bánh từ ba loại: sô-cô-la, dâu, việt quất, mỗi loại còn rất nhiều. Chỉ quan tâm số lượng mỗi loại. Mỗi cách chọn là một dãy năm sao và hai vạch, vạch là vách ngăn giữa các loại.'),
+    (32.08, 'Bảy ô, chọn hai ô làm vạch, năm ô còn lại là sao. Số cách là C bảy chọn hai, bằng hai mươi mốt. Đủ cả hai mươi mốt dãy, không thiếu, không trùng, đó là một song ánh.'),
+    (59.77, 'Công thức tổng quát: C r cộng n trừ một chọn n trừ một, bằng C r cộng n trừ một chọn r. Ví dụ, x một cộng x hai cộng x ba cộng x bốn bằng mười có C mười ba chọn ba, hai trăm tám mươi sáu nghiệm. Chọn sáu viên kẹo từ bốn loại: C chín chọn sáu, tám mươi bốn. Đừng nhầm với C n chọn r thường.'),
+    (89.53, 'Ràng buộc dưới thì phát trước. Với x một lớn hơn hoặc bằng hai, x hai lớn hơn hoặc bằng một, x ba lớn hơn hoặc bằng bốn, tổng bằng mười hai: đặt sẵn bảy sao, còn năm sao chia tự do, C bảy chọn hai, hai mươi mốt nghiệm.'),
+    (111.7, 'Ràng buộc trên thì cần bù trừ. Ba biến tổng bằng mười, mỗi biến không quá bốn. Lấy sáu mươi sáu nghiệm tổng cộng, trừ sáu mươi ba nghiệm có biến vượt quá, cộng lại ba nghiệm trùng, ra sáu. Đúng sáu nghiệm, là các hoán vị của bốn bốn hai và bốn ba ba.'),
+    (137.07, 'Luyện tập. Một: mua sáu viên kẹo từ bốn loại, có trùng loại, C chín chọn ba, tám mươi bốn cách. Hai: chia mười viên bi giống nhau cho bốn em, mỗi em ít nhất hai viên. Phát trước tám viên, còn hai viên, C năm chọn ba, mười cách.'),
+    (168.47, 'Tóm lại: đổi bài toán chia thành sắp sao và vạch.'),
+])
