@@ -78,6 +78,10 @@ Video dài khoảng 3 phút 16 giây, minh họa cây lựa chọn cho $$3! = 6$
 
 ## Hoán vị (Permutations)
 
+![Giai thừa 0! đến 4!](/discrete-mathematics-for-computer-science-iuh/img/course/Factorial_from_0__to_4_.svg)
+
+![Giai thừa 1! đến 5!](/discrete-mathematics-for-computer-science-iuh/img/course/Factorial_1-5.svg)
+
 <div class="textbook-definition" markdown="1">
 **Định nghĩa**: Hoán vị là một cách sắp xếp toàn bộ $$n$$ đối tượng phân biệt theo một thứ tự xác định.
 </div>

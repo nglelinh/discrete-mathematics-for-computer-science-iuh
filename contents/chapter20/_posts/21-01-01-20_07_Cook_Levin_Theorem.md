@@ -45,7 +45,17 @@ excerpt: "Chứng minh SAT là NP-complete bằng bảng cấu hình (tableau): 
 
 ## Bước 1: $$\mathrm{SAT}\in NP$$
 
+![Stephen Cook — người đặt nền móng định lý Cook–Levin](/discrete-mathematics-for-computer-science-iuh/img/course/stephen_cook.svg)
+
 Chọn chứng chỉ là một phép gán chân trị cho các biến của công thức $$\varphi$$. Bộ kiểm chứng chỉ cần thay giá trị vào và tính công thức trong thời gian tuyến tính theo $$\lvert\varphi\rvert$$. Vậy $$\mathrm{SAT}\in NP$$. $$\square$$
+
+### Video ngắn: Định lý Cook–Levin & Bảng tính toán
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/cook-levin-tableau.mp4"></video>
+</div>
+
+Video dài khoảng 39 giây (có thuyết minh tiếng Việt): mã hóa lịch sử chạy máy Turing không đơn định thành bảng $n^k\times n^k$ và bốn khối mệnh đề CNF cho SAT.
 
 ## Bước 2: Mã hóa tính toán của máy Turing thành công thức CNF
 

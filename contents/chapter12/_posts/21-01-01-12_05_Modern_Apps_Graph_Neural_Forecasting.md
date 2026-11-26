@@ -6,51 +6,17 @@ date: 2021-01-01
 order: 5
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. GraphCast (Science 2023) runs message passing on a multi-mesh graph. Does not replace basic graph theory."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite definitions, representations, or Euler/Hamilton lessons.
-
-Bài ghi chú ứng dụng song ngữ, **không** viết lại phần định nghĩa đồ thị, biểu diễn đồ thị hay bài toán Euler/Hamilton.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-GraphCast (Lam, Sanchez-Gonzalez, Willson, et al., “Learning skillful medium-range global weather forecasting,” *Science*, 2023, [DOI 10.1126/science.adi2336](https://doi.org/10.1126/science.adi2336); preprint [arXiv:2212.12794](https://arxiv.org/abs/2212.12794)) is a GNN with the classical encode–process–decode pattern:
-
-- **Grid2Mesh** — bipartite graph from the latitude–longitude grid to an icosahedral **multi-mesh**;
-- **Mesh** — message passing on mesh vertices and edges;
-- **Mesh2Grid** — bipartite graph back to the grid.
-
-The published system predicts hundreds of variables for 10 days at $$0.25^\circ$$ globally in under one minute, and outperforms the operational deterministic baseline on **90% of 1380** verification targets, with gains on cyclones, atmospheric rivers, and extremes.
-
-Chapter 12 already defined $$G = (V,E)$$, adjacency, and walks. GraphCast is a 2023 reminder that those objects scale: $$V$$ is a mesh of the Earth, $$E$$ encodes local (and multi-scale) neighbourhoods, and “algorithm” is a fixed number of neighbourhood aggregations. You do not need to learn meteorology to see BFS-like diffusion of information across a graph.
-
-**Citations**
-
-1. R. Lam et al., “Learning skillful medium-range global weather forecasting,” *Science* (2023). [DOI](https://doi.org/10.1126/science.adi2336)
-
-**Questions.** (1) Is Grid2Mesh a simple undirected graph, a bipartite graph, or a multigraph — and why? (2) Which Chapter 12 representation would you store for a static icosahedral mesh?
-
-### Background Knowledge Map: How Graph Theory Powers Global Weather AI (GraphCast)
-
-- **Bipartite Mapping Graphs (`Grid2Mesh` & `Mesh2Grid`):** Translating observations from a regular $$0.25^\circ$$ latitude–longitude grid (which crowds points near the poles!) onto a uniform spherical icosahedral mesh uses directed **bipartite graphs** $$G = (V_{\text{grid}} \cup V_{\text{mesh}}, E)$$.
-- **Multi-Scale Mesh & Sparse Storage:** By overlaying coarse and fine icosahedral refinements onto the same vertex set, GraphCast builds a sparse multi-scale graph (small average degree, $$O(V)$$ edges) that allows long-range atmospheric signals to cross continents in just a few hops.
-- **Message Passing as Differentiable BFS:** Each GNN layer updates every node's state by aggregating messages from its 1-hop neighbors. Stacking $$K$$ message-passing layers lets information propagate up to graph distance $$K$$ — the differentiable cousin of $$K$$-step Breadth-First Search!
-
-### Deep-Dive Explanation: Hand-Verifiable Hop-Count & Memory Scaling on the Multi-Mesh (Read Slowly)
-
-1. **Step 1 — Count the grid nodes at $$0.25^\circ$$ resolution:** Earth spans $$360^\circ$$ in longitude ($$1\,440$$ steps) and $$180^\circ$$ in latitude ($$721$$ steps including both poles), giving $$\vert V_{\text{grid}} \vert = 1\,440 \times 721 = 1\,038\,240 \approx 1.04\text{ million}$$ grid points!
-2. **Step 2 — Why an adjacency matrix is impossible here:** Storing a dense adjacency matrix for $$40\,962$$ icosahedral mesh vertices alone would take $$40\,962^2 \approx 1.68 \times 10^9$$ entries (~6.7 GB in FP32 for edges alone), whereas a **sparse edge list / CSR adjacency list** with average degree ~12 stores only $$40\,962 \times 12 \approx 4.9 \times 10^5$$ edges (~4 MB — **over 1,600× smaller**).
-3. **Step 3 — Why multi-scale edges beat a single fine mesh:** On a fine mesh alone, a storm signal traveling 64 grid cells would need 64 sequential layers. Adding coarse icosahedral "highway edges" shrinks the graph diameter dramatically so **16 message-passing layers** cover global weather dynamics in under one minute.
-
-$$\vert V_{\text{grid}} \vert \approx 1.04 \times 10^6 \;\xrightarrow{\text{Grid2Mesh (Bipartite)}}\; \vert V_{\text{mesh}} \vert = 40\,962 \;\xrightarrow{16\text{ GNN hops (CSR)}}\; \text{10-day forecast } < 1\text{ min.}$$
-
-## Tiếng Việt
+![Dự báo Chuỗi thời gian trên Đồ thị Không–Thời gian](/discrete-mathematics-for-computer-science-iuh/img/course/graph_neural_forecasting.svg)
 
 GraphCast (Lam và cộng sự, *Science* 2023) là một mạng nơ-ron đồ thị (GNN) hoạt động theo kiến trúc encode–process–decode:
 

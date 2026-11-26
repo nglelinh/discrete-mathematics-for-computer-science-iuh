@@ -109,6 +109,10 @@ Phần hiện thực vật lý (công tắc, mạch tích hợp, sơ đồ mạc
 
 ## Bảy cổng logic cơ bản
 
+![Cổng AND chuẩn ANSI](/discrete-mathematics-for-computer-science-iuh/img/course/AND_ANSI_Labelled.svg)
+
+![Cổng NOT chuẩn ANSI](/discrete-mathematics-for-computer-science-iuh/img/course/NOT_ANSI_Labelled.svg)
+
 ### NOT (cổng đảo)
 
 Ngõ ra đảo ngược giá trị của ngõ vào: $$Y = A'$$ (còn viết $$\bar A$$).
@@ -312,7 +316,35 @@ Ta có thể kiểm tra lại bằng cách thay một vài bộ giá trị $$(a,
 
 </div>
 
+## Phương pháp Thỏa thuận (Consensus Method) tìm Tiền đề Nguyên tố
+
+Bên cạnh bản đồ Karnaugh (trực quan cho $$\le 4$$ biến) và thuật toán Quine–McCluskey (dựa trên bảng minterm), giáo trình *Toán rời rạc* của GS. Nguyễn Hữu Anh trình bày **Phương pháp Thỏa thuận** (*Consensus Method* — dạng chuẩn Blake) để tìm **toàn bộ tập tiền đề nguyên tố** hoàn toàn bằng biến đổi đại số trên các đơn thức:
+
+- **Quy tắc Thỏa thuận:** Nếu hai đơn thức có dạng $$x A$$ và $$\bar{x} B$$, trong đó $$A$$ và $$B$$ không chứa cặp biến đối nhau nào khác, thì đơn thức **thỏa thuận** của chúng là $$AB$$ (vì $$x A \vee \bar{x} B = x A \vee \bar{x} B \vee AB$$).
+- **Quy tắc Hấp thụ:** Nếu đơn thức $$M$$ chứa hết các chữ cái của $$N$$ (tức $$M \preceq N$$, chẳng hạn $$xyz \preceq xy$$), loại bỏ $$M$$.
+- **Quy trình:** Duyệt lần lượt từng biến $$x_1, x_2, \ldots, x_n$$: tại biến $$x_i$$, tạo mọi đơn thức thỏa thuận từ các cặp chứa $$x_i$$ và $$\bar{x}_i$$, thêm vào tập hiện tại rồi áp dụng hấp thụ. Sau khi duyệt hết $$n$$ biến, tập còn lại chính là **tất cả các tiền đề nguyên tố** của hàm.
+
+**Ví dụ tính tay 4 biến:** Tìm mọi tiền đề nguyên tố của $$f(x, y, z, t) = xy \vee \bar{x}z \vee y\bar{z}t$$.
+1. **Biến $$x$$:** Cặp $$(xy, \bar{x}z)$$ sinh ra thỏa thuận $$yz$$. Tập đơn thức: $$\{xy, \bar{x}z, y\bar{z}t, yz\}$$.
+2. **Biến $$y$$:** Không có $$\bar{y}$$ → không sinh thêm.
+3. **Biến $$z$$:** Cặp $$(\bar{x}z, y\bar{z}t)$$ sinh ra $$\bar{x}yt$$; cặp $$(yz, y\bar{z}t)$$ sinh ra $$yt$$. Áp dụng hấp thụ: $$\bar{x}yt$$ và $$y\bar{z}t$$ đều bị $$yt$$ hấp thụ (vì $$yt \vee \bar{x}yt = yt$$ và $$yt \vee y\bar{z}t = yt$$).
+4. **Biến $$t$$:** Không có $$\bar{t}$$ → dừng.
+
+Kết quả thu được đúng 4 tiền đề nguyên tố: $$\{xy,\; \bar{x}z,\; yz,\; yt\}$$. Từ đây chỉ cần chọn phủ tối tiểu: $$f = xy \vee \bar{x}z \vee yt$$ (tiền đề $$yz$$ dư thừa nếu đã có $$xy$$ và $$\bar{x}z$$).
+
 ## Tính đầy đủ chức năng của NAND và NOR
+
+![Cổng NOT từ NAND](/discrete-mathematics-for-computer-science-iuh/img/course/NAND_to_NOT.svg)
+
+![Cổng AND từ NAND](/discrete-mathematics-for-computer-science-iuh/img/course/NAND_to_AND.svg)
+
+![Cổng OR từ NAND](/discrete-mathematics-for-computer-science-iuh/img/course/NAND_to_OR.svg)
+
+![Cổng NOT từ NOR](/discrete-mathematics-for-computer-science-iuh/img/course/NOR_to_NOT.svg)
+
+![Cổng AND từ NOR](/discrete-mathematics-for-computer-science-iuh/img/course/NOR_to_AND.svg)
+
+![Cổng OR từ NOR](/discrete-mathematics-for-computer-science-iuh/img/course/NOR_to_OR.svg)
 
 Chỉ riêng cổng **NAND** (hoặc chỉ riêng cổng **NOR**) đủ để biểu diễn mọi hàm Boole, vì từ chúng có thể xây dựng lại cả ba phép cơ bản NOT, AND và OR:
 

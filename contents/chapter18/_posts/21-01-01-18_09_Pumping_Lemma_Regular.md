@@ -21,6 +21,8 @@ excerpt: "Phát biểu và chứng minh bổ đề bơm từ DFA, ứng dụng c
 
 ## Mục tiêu
 
+![Bổ đề Bơm cho Ngôn ngữ Chính quy (Chu trình trên DFA)](/discrete-mathematics-for-computer-science-iuh/img/course/pumping_lemma_regular.svg)
+
 <div class="textbook-objectives" markdown="1">
 
 - **Phát biểu** và **chứng minh** bổ đề bơm (*pumping lemma*) cho ngôn ngữ chính quy.

@@ -23,6 +23,8 @@ Một người giao hàng cần đi qua tất cả $$n$$ thành phố, mỗi th�
 
 ## Kiến thức cần nhớ: Ba trụ cột của Hamilton Cycle và TSP
 
+![Quy giản Chu trình Hamilton sang Bài toán Người du lịch (TSP)](/discrete-mathematics-for-computer-science-iuh/img/course/hamilton_to_tsp.svg)
+
 1. **Chu trình Euler (Thuộc $$P$$) vs. Chu trình Hamilton (NP-complete)**:
    Đi qua mỗi *cạnh* đúng 1 lần (Euler) kiểm tra trong $$O(V+E)$$ chỉ bằng cách đếm bậc chẵn; đi qua mỗi *đỉnh* đúng 1 lần (Hamilton) lại là NP-complete! Một thay đổi nhỏ từ "cạnh" sang "đỉnh" tạo ra vực thẳm độ phức tạp.
 2. **Rút gọn $$\mathrm{HC} \le_p \mathrm{TSP\text{-}DEC}$$ bằng trọng số $$\{1, 2\}$$**:

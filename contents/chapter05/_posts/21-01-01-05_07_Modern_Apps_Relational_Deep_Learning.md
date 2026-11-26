@@ -6,8 +6,8 @@ date: 2021-01-01
 order: 7
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. Relational Deep Learning (ICML 2024) treats primary–foreign-key relations as a heterogeneous graph. Does not replace relation theory."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 
@@ -15,11 +15,11 @@ Trong suốt nhiều thập kỷ, mỗi khi muốn đưa dữ liệu doanh nghi�
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite properties of relations, closures, or orders.
-
-Bài ghi chú ứng dụng song ngữ. Nội dung này **không** thay thế hay viết lại các bài về tính chất quan hệ, bao đóng hay thứ tự.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
+
+![Học sâu Quan hệ trên Cơ sở dữ liệu Đa bảng](/discrete-mathematics-for-computer-science-iuh/img/course/relational_dl_schema.svg)
 
 ## Kiến thức cần nhớ: Ba trụ cột của Học sâu Quan hệ (Relational Deep Learning)
 
@@ -31,32 +31,6 @@ Bài ghi chú ứng dụng song ngữ. Nội dung này **không** thay thế hay
 
 3. **Truyền thông điệp (Message Passing) chính là Hợp thành Quan hệ nhiều bước**:
    Ở mỗi tầng mạng GNN, một đỉnh tổng hợp vector đặc trưng từ các láng giềng đi dọc theo $$R_{\text{FK}}$$ và quan hệ ngược $$R_{\text{FK}}^{-1}$$. Chạy $$L$$ tầng truyền thông điệp tương đương với việc tự động học các đặc trưng dọc theo mọi đường đi quan hệ độ dài tối đa $$L$$—không cần kỹ sư viết tay phép tổng hợp!
-
-## English
-
-A relational database is a family of sets (tables) plus **relations** given by primary–foreign keys — exactly the binary relations of this chapter, typed by schema. Fey et al., “Position: Relational Deep Learning — Graph Representation Learning on Relational Databases,” *ICML 2024*, [PMLR v235](https://proceedings.mlr.press/v235/fey24a.html), argue that the standard ML pipeline *destroys* that structure by flattening joins into one table.
-
-Their blueprint: each row is a node; each foreign-key link is a directed edge; time stamps make the graph temporal and heterogeneous. A GNN then learns representations **without** hand-built aggregate features. RelBench (Robinson et al., NeurIPS 2024) is the accompanying benchmark ([relbench.stanford.edu](https://relbench.stanford.edu/)).
-
-You do not need GNN theory to see the discrete core:
-
-<div class="textbook-equation" markdown="1">
-$$
-R_{\text{FK}} \subseteq T_{\text{child}} \times T_{\text{parent}}.
-$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-
-Message passing is iteration along that relation (and its converse) — the same walk you already used for path relations and closures. RDL is optional context for how 2024 ML research reused Chapter 5 instead of replacing it.
-
-**Citations**
-
-1. M. Fey et al., “Position: Relational Deep Learning — Graph Representation Learning on Relational Databases,” ICML 2024. [PMLR](https://proceedings.mlr.press/v235/fey24a.html)
-2. J. Robinson et al., “RelBench: A Benchmark for Deep Learning on Relational Databases,” NeurIPS 2024. [Site](https://relbench.stanford.edu/)
-
-**Questions.** (1) Why is a foreign key a *many-to-one* relation (usually), and how does that constrain the graph? (2) Which closure of $$R_{\text{FK}} \cup R_{\text{FK}}^{-1}$$ describes “all rows reachable by joins”?
-
-## Tiếng Việt
 
 Một cơ sở dữ liệu quan hệ gồm một họ các tập hợp (bảng) cùng các **quan hệ** khóa chính–khóa ngoại — chính là những quan hệ hai ngôi có kiểu xác định theo lược đồ. Trong bài báo tại *ICML 2024*, Fey và cộng sự chỉ ra rằng quy trình học máy truyền thống thường làm mất cấu trúc quan hệ đó khi làm phẳng các phép nối (join) thành một bảng duy nhất.
 

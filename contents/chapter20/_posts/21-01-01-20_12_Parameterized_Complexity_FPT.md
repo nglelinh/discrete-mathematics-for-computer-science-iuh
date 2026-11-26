@@ -23,6 +23,8 @@ Thuật toán xấp xỉ đánh đổi độ chính xác để lấy tốc độ
 
 ## Kiến thức cần nhớ: Ba trụ cột của Độ phức tạp Tham số hóa & FPT
 
+![Độ phức tạp Tham số hóa (FPT) và Hạt nhân hóa](/discrete-mathematics-for-computer-science-iuh/img/course/fpt_kernelization.svg)
+
 1. **Lớp FPT (Fixed-Parameter Tractable — $$f(k) \cdot n^{O(1)}$$)**:
    Khác hẳn $$O(n^k)$$ (khi $$k = 10, n = 1000$$ thì $$1000^{10} = 10^{30}$$ vô phương cứu chữa), thuật toán FPT kiểu $$O(2^k \cdot n)$$ với $$k = 10, n = 1000$$ chỉ mất khoảng $$10^6$$ phép tính (chạy dưới 1 mili-giây!).
 2. **Hai kỹ thuật thiết kế FPT kinh điển (Bounded Search Tree & Kernelization)**:

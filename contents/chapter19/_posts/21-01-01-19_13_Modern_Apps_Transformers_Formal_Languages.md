@@ -6,63 +6,17 @@ date: 2021-01-01
 order: 13
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. The TACL 2024 survey places transformers on the same formal-language map as CFG/PDA. Does not replace grammars, pumping, or CYK."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite CFG, PDA, pumping for CFL, or CYK.
-
-Bài ghi chú ứng dụng song ngữ. Bài này **không** thay thế các nội dung về CFG, PDA, bổ đề bơm CFL hay thuật toán CYK.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-Using the Chomsky hierarchy as a controlled benchmark for modern sequence models (Transformers, RNNs, State Space Models) turns formal language theory into a sharp diagnostic lens for deep learning. Studies through 2024 test how well neural architectures generalize beyond training lengths on regular, context-free (Dyck), and context-sensitive tasks.
-
-### Background Knowledge Map: Three Pillars Linking the Chomsky Hierarchy to Sequence Models
-
-1. **Length Generalization Across Chomsky Levels**:
-   Evaluating models on unseen sequence lengths separates architectures with fixed recurrent state (strong on regular state tracking) from attention-based or stack-augmented models (better at structured lookup and bounded-depth hierarchies).
-2. **Dyck Languages & Hierarchical Nesting**:
-   Bounded-depth Dyck languages mirror nested code and syntax trees; fixed-depth Transformers capture bounded nesting cleanly yet degrade when nesting depth exceeds training bounds.
-3. **Grammar-Constrained Decoding (CFG-Guided Generation)**:
-   Production LLM pipelines pair neural next-token probabilities with incremental CFG parsers (e.g., GBNF) to guarantee 100% syntactically valid JSON, SQL, or code outputs.
-
-Chapter 19 is the Chomsky hierarchy with proofs: CFG $$=$$ PDA, pumping, CNF, CYK. The 2024 survey of Strobl et al., “What Formal Languages Can Transformers Express?,” *TACL* 12:543–561, [DOI 10.1162/tacl_a_00663](https://doi.org/10.1162/tacl_a_00663), is the matching **optional** paper for this chapter rather than a second automata rewrite.
-
-They treat inputs as unbounded strings over a finite alphabet — the same objects as $$L \subseteq \Sigma^*$$. Results then depend on:
-
-- encoder vs decoder (whether intermediate symbols are written);
-- attention (softmax, average-hard, leftmost/rightmost-hard);
-- arithmetic precision.
-
-That is why one paper can say “transformers recognize all regular languages” and another can deny it: they did not fix the same machine. For a compiler-track student, the practical moral is unchanged: **CFGs and CYK still parse programming languages**; transformers are a different recognizer whose formal power you must cite with the survey’s hypotheses attached.
-
-Use this after 19.10–19.12. It is a reading pointer, not a new pumping lemma.
-
-**Citations**
-
-1. L. Strobl, W. Merrill, G. Weiss, D. Chiang, D. Angluin, “What Formal Languages Can Transformers Express? A Survey,” *TACL* 12 (2024), pp. 543–561. [Anthology](https://aclanthology.org/2024.tacl-1.30/)
-
-**Questions.** (1) Name one CFL this chapter’s pumping lemma excludes; would a transformer-with-scratchpad necessarily recognize it? (2) Why is CYK’s $$O(n^3)$$ bound easier to state than a transformer’s “expressivity” bound?
-
-### Deep-Dive Explanation (Read Slowly): Step-by-Step CFG Masking During Token Generation
-
-Suppose we enforce the mini-CFG `Obj -> "{" "\"score\":" Num "}"` with `Num -> [0-9]+` over a 50,000-token vocabulary:
-
-| Step | Prefix generated | CFG-legal next tokens | Effect of Grammar Masking |
-| :---: | :--- | :--- | :--- |
-| 1 | `""` | Only `"{"` | Zeroes out 49,999 illegal tokens (no `"Sure, here is..."` preamble) |
-| 2 | `"{"` | Only `"\"score\":"` | Locks the exact schema key |
-| 3 | `"{\"score\":"` | Digits `0..9` only | Prevents non-numeric hallucinations |
-| 4 | `"{\"score\":95"` | Digits `0..9` or `"}"` | Guarantees a cleanly closed, parseable JSON object |
-
-This concrete trace shows how 1950s CFG parsing directly powers reliable structured outputs in modern LLM agents.
-
-## Tiếng Việt
+![Ngôn ngữ Hình thức & Khả năng Tổng quát hóa của LLM](/discrete-mathematics-for-computer-science-iuh/img/course/transformers_formal_languages.svg)
 
 Nếu đưa các ngôn ngữ hình thức từ phân cấp Chomsky (chính quy, phi ngữ cảnh như dấu ngoặc Dyck, cảm ngữ cảnh như $$a^n b^n c^n$$) làm "bài kiểm tra chuẩn" cho mạng Transformer và các mô hình chuỗi hiện đại (RNN, Mamba/SSM), ta sẽ khám phá ra điều gì? Các bài báo nổi bật năm 2024 đã biến phân cấp Chomsky thành thước đo khoa học để hiểu kiến trúc mạng nơ-ron nào phù hợp với loại cấu trúc ngôn ngữ nào.
 

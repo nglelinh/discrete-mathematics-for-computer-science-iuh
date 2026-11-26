@@ -21,6 +21,8 @@ Nếu bạn gõ `2 + 3 * 4` vào máy tính bỏ túi, kết quả phải là `1
 
 ## Kiến thức cần nhớ: Ba trụ cột của Cây phân tích và Tính mơ hồ
 
+![Cây Phân tích Cú pháp và Tính Mơ hồ của Văn phạm](/discrete-mathematics-for-computer-science-iuh/img/course/cfg_parse_tree_ambiguity.svg)
+
 1. **Cây phân tích (Parse Tree) — Biểu diễn hình học bất biến với thứ tự dẫn xuất**:
    Nút gốc là $$S$$, nút trong là biến $$V$$, lá đọc từ trái sang phải tạo ra chuỗi $$w$$. Một cây phân tích tương ứng duy nhất 1–1 với đúng một dẫn xuất trái nhất (và đúng một dẫn xuất phải nhất).
 2. **Văn phạm mơ hồ vs. Ngôn ngữ mơ hồ nội tại (Inherently Ambiguous)**:

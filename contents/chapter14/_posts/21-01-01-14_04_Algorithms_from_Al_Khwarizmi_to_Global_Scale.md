@@ -84,6 +84,8 @@ Các quy trình tính toán số học trong truyền thống Ả Rập–Ba Tư
 
 ## Tác động khi kích thước $$n$$ tăng lên
 
+![Chân dung Muhammad ibn Musa al-Khwarizmi](/discrete-mathematics-for-computer-science-iuh/img/course/Muhammad_ibn_Musa_al-Khwarizmi.jpg)
+
 | $$n$$ | $$n$$ | $$n\log n$$ | $$n^2$$ | $$2^n$$ |
 |:---:|:---:|:---:|:---:|:---:|
 | $$20$$ | nhỏ | nhỏ | nhỏ | xấp xỉ 1 triệu |

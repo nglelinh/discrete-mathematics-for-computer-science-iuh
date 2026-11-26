@@ -86,6 +86,10 @@ Trong máy Mealy, hàm đầu ra $$\omega:Q\times\Sigma\to\Delta$$ phụ thuộc
 
 ## Tính tương đương giữa hai mô hình
 
+![So sánh máy Mealy và máy Moore](/discrete-mathematics-for-computer-science-iuh/img/course/mealy_moore.svg)
+
+![Biểu đồ trạng thái UML](/discrete-mathematics-for-computer-science-iuh/img/course/uml_state_machine.svg)
+
 <div class="textbook-theorem" markdown="1">
 
 **Định lý** (Ý chính). Mọi máy Mealy đều có một máy Moore tương đương (với độ trễ đầu ra bằng 1, xét theo ký tự đầu ra khởi tạo) và ngược lại, bằng cách mở rộng không gian trạng thái để lưu thông tin đầu ra.

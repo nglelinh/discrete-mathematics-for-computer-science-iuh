@@ -43,6 +43,8 @@ Khi biết bài toán của công ty là NP-hard, kỹ sư không thể quay l�
 
 ## Định nghĩa
 
+![Bức tranh toàn cảnh các lớp độ phức tạp](/discrete-mathematics-for-computer-science-iuh/img/course/Complexity_landscape.svg)
+
 <div class="textbook-definition" markdown="1">
 
 Đối với bài toán tối thiểu hóa, một thuật toán đạt **tỉ số xấp xỉ** $$\rho \ge 1$$ nếu với mọi thể hiện đầu vào $$I$$, giá trị lời giải $$A(I)$$ thỏa $$A(I)\le\rho\cdot\mathrm{OPT}(I)$$.

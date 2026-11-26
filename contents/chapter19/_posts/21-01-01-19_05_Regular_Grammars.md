@@ -21,6 +21,8 @@ Một trong những vẻ đẹp đối xứng đầu tiên của lý thuyết ng
 
 ## Kiến thức cần nhớ: Ba trụ cột của Văn phạm Chính quy
 
+![Tương đương Văn phạm Chính quy và Ôtômat Hữu hạn](/discrete-mathematics-for-computer-science-iuh/img/course/regular_grammar_equiv.svg)
+
 1. **Văn phạm Tuyến tính phải (Right-linear) & Tuyến tính trái (Left-linear)**:
    Trong văn phạm tuyến tính phải, mỗi quy tắc có dạng $$A \to wB$$ hoặc $$A \to w$$ (biến chỉ xuất hiện ở *cuối* vế phải). Quan trọng: không được trộn lẫn tuyến tính phải và tuyến tính trái trong cùng một văn phạm nếu muốn giữ nguyên lớp chính quy!
 2. **Song ánh cấu trúc giữa Biến văn phạm và Trạng thái NFA**:

@@ -21,6 +21,8 @@ excerpt: "Định nghĩa đệ quy biểu thức chính quy (regex), ngôn ngữ
 
 ## Mục tiêu
 
+![Chuyển đổi Biểu thức Chính quy sang ε-NFA (Thompson)](/discrete-mathematics-for-computer-science-iuh/img/course/regex_to_nfa_flow.svg)
+
 <div class="textbook-objectives" markdown="1">
 
 - **Định nghĩa** biểu thức chính quy (*regular expression*) và ngôn ngữ tương ứng $$L(r)$$.

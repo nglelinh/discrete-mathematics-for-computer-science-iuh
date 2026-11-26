@@ -21,6 +21,8 @@ Làm thế nào để khẳng định chắc chắn rằng *không một ai trê
 
 ## Kiến thức cần nhớ: Ba trụ cột của Bổ đề Bơm CFL
 
+![Bổ đề Bơm cho Ngôn ngữ Phi ngữ cảnh (Lặp biến A)](/discrete-mathematics-for-computer-science-iuh/img/course/pumping_lemma_cfl.svg)
+
 1. **Nguyên lý Dirichlet trên Cây phân tích (Phiên bản CNF)**:
    Nếu văn phạm ở dạng chuẩn Chomsky có $$\vert V \vert$$ biến, mọi cây phân tích có chiều cao $$\le \vert V \vert$$ chỉ sinh tối đa $$2^{\vert V \vert - 1}$$ lá. Vậy mọi chuỗi dài $$p = 2^{\vert V \vert}$$ trở lên bắt buộc có đường đi chứa một biến $$A$$ lặp lại ít nhất 2 lần.
 2. **Tách năm phần $$s = uvxyz$$ với ba điều kiện vàng**:

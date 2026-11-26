@@ -23,6 +23,8 @@ Lớp $$P$$ là ngôi nhà của những thuật toán hiệu quả nhất mà k
 
 ## Kiến thức cần nhớ: Ba trụ cột của Lớp $$P$$ và Phân cấp Thời gian
 
+![Lớp P và Định lý Phân cấp Thời gian](/discrete-mathematics-for-computer-science-iuh/img/course/class_p_time_hierarchy.svg)
+
 1. **Những bài toán trụ cột trong $$P$$**:
    `PATH` (BFS/DFS $$O(V+E)$$), `2SAT` (đồ thị kéo theo $$O(n+m)$$), `PRIMES` (thuật toán AKS 2002), `LP` (phương pháp Ellipsoid/điểm trong), `RELPRIME` (Euclid $$O(\log^2 N)$$).
 2. **Tính đóng đại số của $$P$$**:

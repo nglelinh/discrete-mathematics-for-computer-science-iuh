@@ -160,6 +160,14 @@ $$\exists x\big(P(x) \land \forall y(P(y) \to y=x)\big).$$
 </div>
 
 
+### Video ngắn: Lượng từ lồng nhau và Luật De Morgan
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/quantifiers-nested.mp4"></video>
+</div>
+
+Video dài khoảng 28 giây (có thuyết minh tiếng Việt): phân biệt thứ tự $\forall x\exists y$ với $\exists y\forall x$ và quy tắc đẩy dấu phủ định qua lượng từ.
+
 ## Lượng từ lồng nhau
 
 Lượng từ lồng nhau là vị trí rất dễ phát sinh lỗi suy luận, vì việc đổi thứ tự lượng từ có thể làm thay đổi hoàn toàn ý nghĩa của mệnh đề.

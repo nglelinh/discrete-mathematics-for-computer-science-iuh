@@ -6,44 +6,17 @@ date: 2021-01-01
 order: 5
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. AlphaDev (Nature 2023) found faster sort3/4/5 assembly now in LLVM libc++. Does not replace Big-O theory."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite Big-O, worst-case analysis, or the historical algorithms lesson.
-
-Bài ghi chú ứng dụng song ngữ, **không** viết lại phần lý thuyết Big-O, phân tích trường hợp xấu nhất hay bài khảo sát từ Al-Khwarizmi đến quy mô toàn cầu.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-Chapter 14 asks whether an algorithm is correct and how $$T(n)$$ grows. AlphaDev (Mankowitz et al., “Faster sorting algorithms discovered using deep reinforcement learning,” *Nature* 618:257–263, 7 June 2023, [DOI 10.1038/s41586-023-06004-9](https://doi.org/10.1038/s41586-023-06004-9)) keeps correctness and attacks **constant-factor latency** at the assembly level.
-
-They formulate “emit a correct sort routine” as a single-player game, train an RL agent, and obtain new fixed sorts for 3, 4 and 5 elements (plus variable-length variants). DeepMind’s companion note reports up to about **70%** faster libc++ sorting on short sequences and about **1.7%** on sequences longer than 250,000 elements. The routines landed in LLVM libc++ (`sort3`/`sort4`/`sort5` branchless paths; see the [llvm-project commit](https://github.com/llvm/llvm-project/commit/194d1965d2c841fa81e107d19e27fae1467e7f11)).
-
-Asymptotically these are still $$\Theta(1)$$ sorts of a constant number of keys; the course’s Big-O story does not change. The 2023 news is that the *implementation* of a primitive called trillions of times was still improvable, and that improvement was machine-checked for functional correctness before it shipped.
-
-**Citations**
-
-1. D. J. Mankowitz et al., “Faster sorting algorithms discovered using deep reinforcement learning,” *Nature* 618 (2023). [DOI](https://doi.org/10.1038/s41586-023-06004-9)
-2. DeepMind, “AlphaDev discovers faster sorting algorithms,” 7 June 2023. [Blog](https://deepmind.google/blog/alphadev-discovers-faster-sorting-algorithms/)
-
-**Questions.** (1) Why can AlphaDev beat a human `sort3` without beating mergesort’s $$\Theta(n\log n)$$? (2) Which Chapter 14 criterion is “branchless latency on Skylake,” and which is “permutes keys correctly”?
-
-### Background Knowledge Map: Reinforcement Learning Meets Classic Algorithms
-- **Algorithm Discovery as a Game (AlphaTensor 2022, AlphaDev 2023):** Represent choosing the next elementary operation (a bilinear rank-1 matrix step or a CPU assembly instruction) as a move in a single-player game, scored by correctness + latency/operation count.
-- **Concrete Breakthroughs:** AlphaTensor lowered $$4\times 4$$ matrix multiplication over $$\mathbb{F}_2$$ from Strassen’s 49 multiplications (1969) to **47**; AlphaDev trimmed 1–2 assembly instructions off fixed-length sorting networks (`sort3`, `sort4`, `sort5`) merged into LLVM `libc++`!
-
-### Deep-Dive Explanation: Why Strassen’s $$7$$ Multiplications Beats $$8$$ (Read Slowly)
-1. **Step 1 (Base Case $$2\times 2$$):** Standard schoolbook $$2\times 2$$ matrix multiplication uses **8** scalar multiplications ($$O(n^3)$$ recursively).
-2. **Step 2 (Strassen 1969):** Uses **7** clever bilinear products, dropping recursive complexity to $$O(n^{\log_2 7}) \approx O(n^{2.807})$$!
-3. **Step 3 (AlphaTensor 2022):** Framed $$4\times 4$$ multiplication as decomposing a 3D tensor into rank-1 outer products, discovering a **47-product** scheme over $$\mathbb{F}_2$$ (beating $$7^2 = 49$$!).
-4. **Step 4 (Caveat):** RL optimizes small fixed sizes and constants brilliantly, while proving asymptotic optimality still relies on mathematical analysis!
-
-## Tiếng Việt
+![Thuật toán Tăng cường Học máy (Algorithms with Predictions)](/discrete-mathematics-for-computer-science-iuh/img/course/learned_algorithms_aug.svg)
 
 Chương 14 đặt ra hai câu hỏi cốt lõi: thuật toán có đúng đắn không và thời gian chạy $$T(n)$$ tăng trưởng như thế nào? Hệ thống AlphaDev (*Nature*, 07/06/2023) giữ nguyên yêu cầu về tính đúng đắn và tối ưu hóa **độ trễ ở mức hệ số hằng** ngay tại tầng hợp ngữ (assembly).
 

@@ -118,6 +118,10 @@ $$
 
 ## Các bậc tăng trưởng thường gặp
 
+![Biểu đồ các bậc tăng trưởng Big-O](/discrete-mathematics-for-computer-science-iuh/img/course/Big-O-notation.png)
+
+![So sánh các lớp hàm Big-O phổ biến](/discrete-mathematics-for-computer-science-iuh/img/course/BigOnotation_popular.svg)
+
 | Bậc | Tên gọi | Ví dụ thuật toán |
 |:---|:---|:---|
 | $$O(1)$$ | Hằng số | Truy cập phần tử mảng theo chỉ số |

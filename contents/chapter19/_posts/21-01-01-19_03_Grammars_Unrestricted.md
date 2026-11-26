@@ -39,6 +39,8 @@ Thay vì xây một chiếc máy để *kiểm tra* một chuỗi có hợp lệ
 
 ## Định nghĩa
 
+![Mô hình ngôn ngữ hình thức](/discrete-mathematics-for-computer-science-iuh/img/course/Formal_languages.svg)
+
 <div class="textbook-definition" markdown="1">
 
 Một **văn phạm hình thức** là bộ bốn $$G=(V,\Sigma,P,S)$$, gồm tập ký hiệu không kết thúc (*nonterminal*) $$V$$, tập ký hiệu kết thúc (*terminal*) $$\Sigma$$, tập luật sinh $$P$$ dạng $$\alpha\to\beta$$ (trong đó $$\alpha$$ chứa ít nhất một ký hiệu không kết thúc) và ký hiệu khởi đầu $$S \in V$$.

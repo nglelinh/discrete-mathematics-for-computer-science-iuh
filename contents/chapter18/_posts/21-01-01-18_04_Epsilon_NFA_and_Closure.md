@@ -79,6 +79,10 @@ $$
 
 ## Định nghĩa
 
+![Chuyển đổi NFA sang DFA bằng tập lũy thừa](/discrete-mathematics-for-computer-science-iuh/img/course/DFA-powerset-construction-example.svg)
+
+![Bảng và đồ thị chuyển trạng thái](/discrete-mathematics-for-computer-science-iuh/img/course/state_transition.svg)
+
 Trong ε-NFA, hàm chuyển được mở rộng để cho phép dịch chuyển mà không cần đọc ký hiệu đầu vào: $$\delta:Q\times(\Sigma\cup\{\varepsilon\})\to\mathcal{P}(Q)$$.
 
 <div class="textbook-definition" markdown="1">

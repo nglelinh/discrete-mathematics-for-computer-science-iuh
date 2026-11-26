@@ -71,6 +71,14 @@ Tăng gấp đôi số phần tử ($$n \to 2n$$) làm tăng gấp bốn lần s
 
 ---
 
+### Video ngắn: Nghịch lý Ngày sinh nhật & Va chạm ID
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/birthday-paradox.mp4"></video>
+</div>
+
+Video dài khoảng 33 giây (có thuyết minh tiếng Việt): ngưỡng va chạm $1{,}18\sqrt{N}$ từ bài toán 23 người đến bài học chuyển từ INT32 sang UUID v4.
+
 ## Mô hình toán học — từ ngày sinh nhật đến `session_id`
 
 Giả sử ta chọn độc lập và đều (uniform) $$n$$ phần tử trong một không gian có $$d$$ giá trị. Ta cần tính xác suất để có **ít nhất một cặp trùng nhau**.

@@ -23,6 +23,8 @@ excerpt: "Quan hệ tương đương Myhill–Nerode ~L, định lý Myhill–Ne
 
 ## Mục tiêu
 
+![Định lý Myhill–Nerode & Tối tiểu hóa DFA](/discrete-mathematics-for-computer-science-iuh/img/course/myhill_nerode_min.svg)
+
 <div class="textbook-objectives" markdown="1">
 
 - **Định nghĩa** quan hệ tương đương không phân biệt hậu tố $$x\sim_L y$$.

@@ -56,6 +56,8 @@ với hàm chuyển $$\delta:(Q\setminus\{q_A,q_R\})\times\Gamma\to Q\times\Gamm
 
 ## So sánh sức mạnh các mô hình
 
+![Ví dụ băng và đầu đọc Máy Turing](/discrete-mathematics-for-computer-science-iuh/img/course/Example_of_a_Turing_machine.svg)
+
 | Mô hình | Bộ nhớ | Ví dụ ngôn ngữ nằm ngoài lớp |
 |:---|:---|:---|
 | DFA | Hữu hạn | $$0^n1^n$$ |

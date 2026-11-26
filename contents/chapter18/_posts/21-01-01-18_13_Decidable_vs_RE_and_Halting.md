@@ -53,6 +53,10 @@ Quan hệ bao hàm chặt giữa các lớp ngôn ngữ là: $$\mathrm{decidable
 
 ## Bài toán $$A_{\mathrm{TM}}$$
 
+![Máy Turing phổ dụng (UTM)](/discrete-mathematics-for-computer-science-iuh/img/course/Universal_Turing_machine.svg)
+
+![Tổng quan lý thuyết Ôtômat](/discrete-mathematics-for-computer-science-iuh/img/course/Automata_theory.svg)
+
 Xét ngôn ngữ $$A_{\mathrm{TM}}=\{\langle M,w\rangle:M\text{ chấp nhận }w\}$$. Ngôn ngữ này thuộc lớp **RE** vì máy Turing phổ dụng có thể mô phỏng $$M$$ trên đầu vào $$w$$ và chấp nhận khi $$M$$ chấp nhận. Tuy nhiên, $$A_{\mathrm{TM}}$$ **không quyết định được** (chứng minh bằng lập luận đường chéo, xem Sipser §4–5).
 
 ## Bài toán Dừng (*Halting Problem*)

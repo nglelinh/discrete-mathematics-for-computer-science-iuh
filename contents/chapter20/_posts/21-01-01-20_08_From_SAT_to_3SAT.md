@@ -23,6 +23,8 @@ Phần lớn các phép chứng minh NP-complete trên đồ thị đều xuất
 
 ## Kiến thức cần nhớ: Ba trụ cột của phép rút gọn $$\mathrm{SAT} \le_p 3\mathrm{SAT}$$
 
+![Quy giản Đa thức từ SAT tổng quát về 3-SAT](/discrete-mathematics-for-computer-science-iuh/img/course/sat_to_3sat_reduction.svg)
+
 1. **Tính bảo toàn khả thỏa (Equisatisfiability) vs. Tương đương logic**:
    Khi thêm biến phụ $$y_1, y_2, \dots$$ để bẻ gãy mệnh đề dài, công thức mới $$\varphi'$$ **không** tương đương logic với $$\varphi$$ (vì có thêm biến mới), nhưng luôn **đồng khả thỏa**: $$\varphi$$ có nghiệm $$\iff \varphi'$$ có nghiệm!
 2. **Kỹ thuật dây chuyền biến phụ (Tseitin Splitting)**:

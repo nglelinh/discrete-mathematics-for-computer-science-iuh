@@ -6,65 +6,17 @@ date: 2021-01-01
 order: 5
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. cvc5 (TACAS 2022) and industrial SMT show how quantifiers and theories implement the predicate logic of this chapter. Does not replace the theory lessons."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite quantifiers, inference rules, or the existing programming/database lesson.
-
-Bài ghi chú ứng dụng song ngữ. **Không** thay thế các bài học về lượng từ, quy tắc suy diễn hay logic vị từ trong lập trình và cơ sở dữ liệu.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-Predicate logic adds structure inside a proposition: predicates, domains, and $$\forall$$ / $$\exists$$. **SMT** (satisfiability modulo theories) is the industrial form of that idea — SAT on a Boolean skeleton, plus dedicated solvers for integers, bit-vectors, arrays, and uninterpreted functions.
-
-Barbosa et al., “cvc5: A Versatile and Industrial-Strength SMT Solver,” *TACAS 2022*, LNCS 13243, pp. 415–442, [DOI 10.1007/978-3-030-99524-9_24](https://doi.org/10.1007/978-3-030-99524-9_24) ([PDF](https://cvc5.github.io/papers/2022/BarbosaBBKLMMMN-TACAS22.pdf)), describe cvc5 as the successor of CVC4. They evaluate it on the full SMT-LIB corpus and compare against CVC4 and Z3. The solver produces proofs, handles nonlinear arithmetic, and instantiates quantifiers — exactly the nested-quantifier difficulty from Section 2.2, now as an automated procedure.
-
-A typical verification query is still a predicate-logic sentence, for example
-
-<div class="textbook-equation" markdown="1">
-$$
-\forall i.\; (0 \le i < n) \rightarrow (a[i] \ge 0).
-$$
-<span class="textbook-equation-number" aria-hidden="true"></span>
-</div>
-
-cvc5 does not change the meaning of $$\forall$$. It decides fragments where the combination of CNF reasoning and theory lemmas is complete enough for compilers, smart contracts, and program verifiers. Read this after the required quantifier lessons; it is an optional map from $$\forall$$/$$\exists$$ to a 2022-era production solver.
-
-**Citations**
-
-1. H. Barbosa et al., “cvc5: A Versatile and Industrial-Strength SMT Solver,” TACAS 2022, LNCS 13243, pp. 415–442. [DOI](https://doi.org/10.1007/978-3-030-99524-9_24)
-
-**Questions.** (1) Which part of an SMT query is propositional SAT, and which part is a theory? (2) Why is quantifier instantiation incomplete for some fragments you can still write in this chapter?
-
-### Background Knowledge Map: How SMT Solvers Turn Predicate Logic Into Automated Software Verification
-
-Traditional testing checks a handful of concrete inputs (`x = 0, 5, -1`) and hopes no hidden bug lurks at `x = 2_147_483_647`. **SMT (Satisfiability Modulo Theories)** solvers—such as Z3 and cvc5—bridge Chapter 2's predicate logic directly into production software verification across three pillars:
-
-1. **Boolean SAT Core + Theory Solvers (DPLL(T))**:
-   An SMT solver pairs a fast SAT engine (handling logical connectives $$\land, \lor, \neg$$) with specialized decision procedures for mathematical theories: linear integer/real arithmetic ($$\mathbb{Z}, \mathbb{R}$$), fixed-width **bitvectors** (32-bit/64-bit wraparound arithmetic), arrays, and strings.
-2. **Negate-and-Check Verification (Proving by Finding Counterexamples)**:
-   To prove a safety property $$P(x)$$ holds for **all** inputs ($$\forall x\, P(x)$$), the solver asks whether its negation $$\exists x\, \neg P(x)$$ is satisfiable. `UNSAT` is a mathematical proof that no bug exists; `SAT` hands you the exact crashing input!
-3. **Industrial Impact**:
-   AWS uses SMT (Zelkova & Cedar) to verify millions of IAM access policies every second, while Rust/C verification tools (Kani, CBMC) translate code paths into bitvector SMT queries to catch integer overflows and out-of-bounds memory accesses before deployment.
-
-### Deep-Dive Explanation: Catching a Classic 32-Bit Binary-Search Overflow With an SMT Query (Read Slowly)
-
-For nearly 20 years, Java's standard library binary search computed the midpoint as `mid = (low + high) / 2`—and silently overflowed on arrays larger than $$2^{30}$$ elements! Watch how an SMT solver catches this in milliseconds on signed 32-bit bitvectors (`i32`, max value $$2^{31} - 1 = 2{,}147{,}483{,}647$$):
-
-- **Precondition**: $$0 \le \text{low} \le \text{high} \le 2{,}147{,}483{,}647$$.
-- **Safety property we want**: $$\text{low} + \text{high}$$ does not wrap negative (i.e. $$\text{mid} \ge 0$$).
-- **Negated SMT query ($$\exists$$ bug)**: Ask Z3 for `low, high: BitVec(32)` satisfying `0 <= low <= high` AND `(low + high) / 2 < 0`.
-- **Solver output (`SAT` — Concrete Counterexample)**:
-  $$\text{low} = 1{,}073{,}741{,}824 \; (2^{30}), \qquad \text{high} = 1{,}073{,}741{,}824 \; (2^{30}).$$
-  In 32-bit two's complement, $$2^{30} + 2^{30} = 2^{31} \equiv \mathbf{-2{,}147{,}483{,}648}$$ (`0x8000_0000`), so `mid = -1_073_741_824` → instant array-index crash!
-- **Verified fix**: Rewrite `mid = low + (high - low) / 2` and re-run the exact same negated query → Z3 returns **`UNSAT`**, proving mathematically that the fix never overflows for **all** $$2^{62}$$ valid `(low, high)` pairs!
-
-## Tiếng Việt
+![Quy trình Kiểm chứng Hình thức với Bộ giải SMT](/discrete-mathematics-for-computer-science-iuh/img/course/smt_verification_pipeline.svg)
 
 Logic vị từ bổ sung cấu trúc bên trong mỗi mệnh đề thông qua vị từ, miền xác định và các lượng từ $$\forall$$, $$\exists$$. **SMT** (Satisfiability Modulo Theories) là dạng ứng dụng công nghiệp của cùng ý tưởng đó: giải SAT trên phần khung Boolean kết hợp với các bộ giải chuyên biệt cho số nguyên, bit-vector, mảng và hàm không diễn giải.
 

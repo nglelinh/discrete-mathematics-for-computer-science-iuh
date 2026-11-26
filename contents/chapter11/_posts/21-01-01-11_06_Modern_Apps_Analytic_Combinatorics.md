@@ -12,44 +12,11 @@ excerpt: "Bài ghi chú tùy chọn song ngữ: cận lưu trữ của binary fu
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite generating-function algebra or inclusion–exclusion. Tagged `lang: vi` with this chapter’s theory posts.
-
-Bài ghi chú ứng dụng song ngữ, **không** viết lại phần lý thuyết đại số hàm sinh hay nguyên lý bao hàm–loại trừ.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-Ordinary generating functions package a counting sequence $$(a_n)$$ as $$A(x) = \sum a_n x^n$$. Space lower bounds for approximate sets are the same kind of count: how many distinct filters of $$m$$ bits can you have, and how many $$n$$-element sets must they separate up to false-positive rate $$\varepsilon$$?
-
-Graf and Lemire (JEA 2022, [DOI 10.1145/3510449](https://doi.org/10.1145/3510449)) show binary fuse filters land within **13%** (resp. **8%**) of that information-theoretic floor. The floor itself is a counting / generating-function statement: the number of representable “yes” patterns cannot be smaller than the number of sets you claim to distinguish. Inclusion–exclusion (this chapter) appears when you estimate collision probabilities across several hash locations — the same union bound / exact-count tension you used for derangements.
-
-This optional note does not derive a new GF identity. It points at a 2022 structure whose *headline number* (percent above the bound) is meaningless unless you can read it as a counting argument.
-
-**Citations**
-
-1. T. M. Graf and D. Lemire, “Binary Fuse Filters: Fast and Smaller Than Xor Filters,” *J. Exp. Algorithmics* 27 (2022). [DOI](https://doi.org/10.1145/3510449)
-
-**Questions.** (1) Which generating function would encode “number of $$m$$-bit filters”? (2) Where does inclusion–exclusion enter a false-positive calculation with three hash positions?
-
-### Background Knowledge Map: How Counting & Inclusion–Exclusion Set Filter Lower Bounds
-
-- **Pigeonhole & Counting Lower Bound (Information-Theoretic Floor):** Any data structure encoding an $$n$$-element subset of a universe $$U$$ ($$\vert U \vert \gg n$$) with false-positive rate $$\le \varepsilon$$ must distinguish $$\binom{\vert U \vert}{n}$$ sets using $$2^m$$ bit-states, forcing $$m \ge n \log_2(1/\varepsilon)$$ bits.
-- **Generating Functions & Hypergraph Peeling:** Binary fuse filters construct a sparse 3-uniform hypergraph and "peel" vertices of degree 1; analytic combinatorics (via generating functions for random hypergraph cores) predicts the exact load threshold (~87%–92%) where peeling succeeds with high probability.
-- **Inclusion–Exclusion for Multi-Hash Collisions:** When querying $$k$$ hash positions, the exact probability that at least one collision occurs is an alternating sum over intersections of hash events — where the first term (union bound) gives a fast upper bound and higher terms tighten it.
-
-### Deep-Dive Explanation: Hand-Verifiable Inclusion–Exclusion on 3 Hash Probes (Read Slowly)
-
-1. **Step 1 — Setup:** Suppose a filter probes $$k = 3$$ positions, and each single probe collides with an existing bit independently with probability $$p = 0.2$$ (so the event $$A_i$$ = "probe $$i$$ hits 0", with $$\Pr(A_i) = 0.8$$).
-2. **Step 2 — Probability of at least one 0 (true rejection) via Inclusion–Exclusion:**
-   $$\Pr(A_1 \cup A_2 \cup A_3) = 3(0.8) - 3(0.8)^2 + (0.8)^3 = 2.4 - 1.92 + 0.512 = 0.992.$$
-3. **Step 3 — False-positive rate (complementary form):** The query is falsely accepted only when **none** of the 3 probes hits 0:
-   $$\varepsilon = 1 - 0.992 = 0.008 = (0.2)^3.$$
-   And by the counting floor, achieving $$\varepsilon = 0.008$$ requires at least $$\log_2(1/0.008) = \log_2(125) \approx 6.97$$ bits per key — the exact yardstick against which Graf & Lemire's 2022 binary fuse filter measures its 8%–13% overhead!
-
-$$m \ge n\log_2(1/\varepsilon), \qquad \Pr\!\left(\bigcup_{i=1}^3 A_i\right) = \sum \Pr(A_i) - \sum \Pr(A_i \cap A_j) + \Pr(A_1 \cap A_2 \cap A_3).$$
-
-## Tiếng Việt
+![Tổ hợp Giải tích: Từ Hàm sinh tới Điểm cực Phức](/discrete-mathematics-for-computer-science-iuh/img/course/analytic_combinatorics_poles.svg)
 
 Hàm sinh thông thường đóng gói một dãy đếm $$(a_n)$$ thành $$A(x) = \sum a_n x^n$$. Cận dưới về dung lượng lưu trữ cho cấu trúc biểu diễn tập xấp xỉ cũng thuộc cùng dạng bài toán đếm này: có bao nhiêu bộ lọc $$m$$ bit phân biệt nhau, và chúng cần phân tách bao nhiêu tập $$n$$ phần tử với tỷ lệ dương tính giả không vượt quá $$\varepsilon$$?
 

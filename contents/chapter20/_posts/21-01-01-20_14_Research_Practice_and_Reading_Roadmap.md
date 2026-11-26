@@ -23,6 +23,8 @@ Sau các bài 20.1–20.13, bạn đã có **ngôn ngữ chuẩn** để đọc 
 
 ## Kiến thức cần nhớ: Ba trụ cột Thực hành Nghiên cứu Độ phức tạp
 
+![Lộ trình Nghiên cứu Độ phức tạp Tính toán](/discrete-mathematics-for-computer-science-iuh/img/course/complexity_research_roadmap.svg)
+
 1. **Từ Bài toán Thực tế đến Khung phân tích Độ phức tạp**:
    Khi gặp một bài toán mới (ví dụ xếp lịch thi, định tuyến xe điện), nhà nghiên cứu luôn chạy qua 4 câu hỏi theo thứ tự: (1) Có thuộc $$P$$ không? (2) Nếu NP-hard, có tham số nhỏ $$k$$ để thiết kế thuật toán FPT không? (3) Có thuật toán xấp xỉ tỉ lệ hằng số không? (4) Mã hóa sang SAT/ILP chạy thực nghiệm ra sao?
 2. **Công cụ thực nghiệm (CDCL SAT Solver & ILP/CP-SAT)**:

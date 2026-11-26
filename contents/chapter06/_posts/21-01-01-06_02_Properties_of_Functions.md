@@ -44,6 +44,14 @@ Chỉ biết một ánh xạ là hàm vẫn chưa đủ để đánh giá các �
 **Từ khóa**: đơn ánh (injective), toàn ánh (surjective), song ánh (bijective).
 </div>
 
+### Video ngắn: Đơn ánh, Toàn ánh và Song ánh
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/functions-bijection.mp4"></video>
+</div>
+
+Video dài khoảng 28 giây (có thuyết minh tiếng Việt): ba tính chất cốt lõi của ánh xạ và ví dụ $f(x)=x^2$ khi thay đổi miền xác định/giá trị.
+
 ## Đơn ánh
 
 <div class="textbook-definition" markdown="1">

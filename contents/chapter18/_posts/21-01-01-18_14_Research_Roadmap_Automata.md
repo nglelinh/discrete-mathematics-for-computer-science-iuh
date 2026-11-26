@@ -21,6 +21,8 @@ Sau 13 bài học từ DFA nhỏ bé đến bài toán dừng bất khả quyế
 
 ## Kiến thức cần nhớ: Bốn nhánh nghiên cứu mở rộng từ Chương 18
 
+![Bản đồ Kết nối Lý thuyết Ôtômat và Nghiên cứu Hiện đại](/discrete-mathematics-for-computer-science-iuh/img/course/automata_research_map.svg)
+
 1. **Kiểm chứng mô hình (Model Checking) & Automata trên từ vô hạn ($$\omega$$-automata)**:
    Hệ điều hành và giao thức mạng không dừng sau vài bước mà chạy liên tục vô hạn. Büchi automata và logic thời gian tuyến tính (LTL) kiểm tra tự động các thuộc tính như *"mọi yêu cầu gửi đi cuối cùng đều được phản hồi"*.
 2. **Automata định lượng & Xác suất (Weighted / Probabilistic Automata)**:

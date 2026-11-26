@@ -21,6 +21,8 @@ Nếu các ngôn ngữ là những viên gạch, thì các phép toán hợp, gi
 
 ## Kiến thức cần nhớ: Ba nhóm phép toán trên Ngôn ngữ
 
+![Các Phép toán trên Ngôn ngữ Hình thức](/discrete-mathematics-for-computer-science-iuh/img/course/language_operations_kleene.svg)
+
 1. **Phép toán tập hợp (Boolean)**:
    Hợp ($$L_1 \cup L_2$$), giao ($$L_1 \cap L_2$$), hiệu và phần bù ($$\overline{L} = \Sigma^* \setminus L$$). Lưu ý phần bù luôn phụ thuộc vào bảng chữ cái $$\Sigma$$ đã cố định.
 2. **Phép toán chuỗi mở rộng (Nối, Đảo ngược, Bao đóng Kleene)**:

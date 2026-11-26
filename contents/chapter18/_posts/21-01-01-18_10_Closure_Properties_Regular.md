@@ -21,6 +21,8 @@ excerpt: "Chứng minh tính đóng của lớp ngôn ngữ chính quy dưới c
 
 ## Mục tiêu
 
+![Tính đóng của Lớp Ngôn ngữ Chính quy](/discrete-mathematics-for-computer-science-iuh/img/course/closure_regular_ops.svg)
+
 <div class="textbook-objectives" markdown="1">
 
 - **Chứng minh** lớp ngôn ngữ chính quy đóng dưới các phép toán hợp, giao, bù, nối chuỗi và bao đóng sao.

@@ -6,8 +6,8 @@ date: 2021-01-01
 order: 6
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. Binary fuse filters (JEA 2022) store an approximate indicator of a finite set near the information-theoretic limit. Does not replace set-theory lessons."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 
@@ -15,11 +15,11 @@ Mỗi lần bạn gõ một địa chỉ web vào trình duyệt, hệ thống b
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite unions, products, or cardinality theory.
-
-Bài ghi chú ứng dụng song ngữ. Nội dung này **không** thay thế hay viết lại các bài về phép hợp, tích Descartes hay lý thuyết lực lượng.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
+
+![Cấu trúc Tập hợp Xấp xỉ: Bloom Filter & HyperLogLog](/discrete-mathematics-for-computer-science-iuh/img/course/approximate_sets_hll.svg)
 
 ## Kiến thức cần nhớ: Ba trụ cột của Cấu trúc Biểu diễn Tập Xấp xỉ Gọn
 
@@ -31,28 +31,6 @@ Bài ghi chú ứng dụng song ngữ. Nội dung này **không** thay thế hay
 
 3. **Bước nhảy từ Bloom Filter đến Binary Fuse Filter (Graf & Lemire, 2022)**:
    Bloom filter cổ điển tốn tới $$\approx 1{,}44 \log_2(1/\varepsilon)$$ bit/phần tử (dư 44% so với cận lý thuyết). **Binary Fuse Filter** giải một hệ phương trình XOR thưa trên đồ thị phân đoạn, kéo dung lượng xuống chỉ còn **1,13x** (bản 3-wise) hoặc **1,08x** (bản 4-wise) cận dưới lý thuyết thông tin và xây dựng nhanh hơn gấp đôi Xor filter.
-
-## English
-
-A finite set $$S \subseteq U$$ is fully specified by its characteristic function $$\mathbf{1}_S : U \to \{0,1\}$$. When $$\vert S\vert $$ is huge and exact membership is too expensive, systems store a **compact approximate set**: a structure that answers “$$x \in S$$?” with one-sided error.
-
-Graf and Lemire, “Binary Fuse Filters: Fast and Smaller Than Xor Filters,” *ACM Journal of Experimental Algorithmics* 27, Article 1.5 (2022), [DOI 10.1145/3510449](https://doi.org/10.1145/3510449), construct filters within about **13%** of the information-theoretic storage lower bound (about **8%** if query speed is relaxed), with construction often more than twice as fast as xor filters. They compare Bloom, blocked Bloom, cuckoo, ribbon, and xor filters.
-
-The discrete-math reading is direct:
-
-- the stored object is still a representation of a **set**;
-- false positives are forced by pigeonhole once the bit budget is below $$\log_2 \binom{\vert U\vert }{\vert S\vert }$$;
-- engineers choose $$\vert S\vert $$, fingerprint width, and failure probability — set parameters, not a different theory.
-
-Use this after the required set lessons and the database applications lesson. It is an optional 2022 snapshot of how production systems encode sets when RAM is the scarce resource.
-
-**Citations**
-
-1. T. M. Graf and D. Lemire, “Binary Fuse Filters: Fast and Smaller Than Xor Filters,” *J. Exp. Algorithmics* 27 (2022). [DOI](https://doi.org/10.1145/3510449)
-
-**Questions.** (1) Is a binary fuse filter a subset of $$U$$, or a *lossy encoding* of one? (2) Which set operation remains cheap after you only store a filter?
-
-## Tiếng Việt
 
 Một tập hữu hạn $$S \subseteq U$$ được xác định hoàn toàn bởi hàm đặc trưng $$\mathbf{1}_S : U \to \{0,1\}$$. Khi $$\vert S\vert$$ rất lớn và việc lưu trữ chính xác quá tốn kém, các hệ thống thường dùng **cấu trúc biểu diễn tập xấp xỉ gọn**: trả lời câu hỏi “$$x \in S$$?” với sai số một phía (có thể dương tính giả, không có âm tính giả).
 

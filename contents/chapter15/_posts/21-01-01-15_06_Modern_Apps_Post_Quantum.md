@@ -6,50 +6,17 @@ date: 2021-01-01
 order: 6
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. FIPS 203/204/205 (13 August 2024) standardise ML-KEM, ML-DSA, and SLH-DSA — lattice and hash number theory for a quantum-safe public key. Does not replace Euclid/RSA lessons."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite divisibility, RSA, or the Euclid-to-blockchain survey (which already mentions post-quantum at a high level).
-
-Bài ghi chú ứng dụng song ngữ. Bài này **không** thay thế các nội dung về tính chia hết, RSA hay bài khảo sát từ Euclid đến blockchain.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-RSA and Diffie–Hellman in this chapter rest on integer factorisation and discrete logs. On **13 August 2024** NIST issued three FIPS standards for public-key algorithms intended to remain secure against large quantum computers ([NIST announcement](https://www.nist.gov/news-events/news/2024/08/announcing-approval-three-federal-information-processing-standards-fips)):
-
-| Standard | Name | Derived from | Role |
-|:---|:---|:---|:---|
-| [FIPS 203](https://csrc.nist.gov/pubs/fips/203/final) | ML-KEM | CRYSTALS-Kyber | Key encapsulation (KEM) |
-| FIPS 204 | ML-DSA | CRYSTALS-Dilithium | Lattice signatures |
-| FIPS 205 | SLH-DSA | SPHINCS+ | Stateless hash signatures |
-
-FIPS 203 ([DOI 10.6028/NIST.FIPS.203](https://doi.org/10.6028/NIST.FIPS.203)) specifies ML-KEM-512/768/1024. Security is tied to **Module Learning With Errors** (a structured lattice problem), not to factoring $$n = pq$$. Parameter sets trade security strength against speed. Implementations must follow the FIPS text: ML-KEM is not byte-for-byte “Kyber Round 3.”
-
-Optional point for the course: modular arithmetic and hashes do not disappear — they move *inside* polynomial rings and SHAKE. The new hardness assumption is a different number-theoretic object. Read RSA first, then this 2024 standards snapshot.
-
-**Citations**
-
-1. NIST, *FIPS 203: Module-Lattice-Based Key-Encapsulation Mechanism Standard*, 13 Aug 2024. [CSRC](https://csrc.nist.gov/pubs/fips/203/final)
-2. NIST, approval notice for FIPS 203, 204, 205, 13 Aug 2024. [News](https://www.nist.gov/news-events/news/2024/08/announcing-approval-three-federal-information-processing-standards-fips)
-
-**Questions.** (1) Which Chapter 15 primitive does a KEM *replace* in a TLS-style handshake? (2) Why is “we shipped Kyber Round 3” not the same as “we are FIPS 203 compliant”?
-
-### Background Knowledge Map: Why Quantum Computers Break RSA & How Lattices Save Us
-- **Shor’s Algorithm Threat:** A large fault-tolerant quantum computer solves integer factorization (RSA) and discrete logarithms (ECC) in polynomial time, motivating NIST’s **2024 Post-Quantum Cryptography (PQC) standards**: **ML-KEM (FIPS 203, Kyber)** for key encapsulation and **ML-DSA (FIPS 204, Dilithium)** for signatures.
-- **Learning With Errors (LWE):** Solving a clean modular linear system $$A\mathbf{s} \equiv \mathbf{b} \pmod q$$ is trivial via Gaussian elimination. Adding a tiny random error vector $$\mathbf{e}$$ ($$\mathbf{b} \equiv A\mathbf{s} + \mathbf{e} \pmod q$$) turns it into a hard **high-dimensional lattice problem** believed resistant even to quantum computers!
-
-### Deep-Dive Explanation: A Tiny Hand-Checkable LWE Example Modulo $$q = 17$$ (Read Slowly)
-1. **Step 1 (Secret):** Pick a secret vector $$\mathbf{s} = (3, 5)^\top \pmod{17}$$.
-2. **Step 2 (Noiseless vs. Noisy Equations):** Take $$a_1 = (2, 1) \implies a_1\cdot s = 11$$; add tiny noise $$e_1 = +1 \implies b_1 = 12$$. Take $$a_2 = (4, 3) \implies a_2\cdot s = 27 \equiv 10$$; add noise $$e_2 = -1 \implies b_2 = 9$$.
-3. **Step 3 (Why Gaussian Elimination Collapses):** In high dimension ($$n \approx 512..1024$$), combining equations amplifies the tiny errors $$e_i$$ linearly until the noise completely swamps the signal modulo $$q$$!
-4. **Step 4 (Migration Strategy):** Today’s browsers and TLS 1.3 deploy **hybrid mode** (X25519 + ML-KEM-768) to defend against "harvest now, decrypt later" attacks!
-
-## Tiếng Việt
+![Mật mã Hậu Lượng tử dựa trên Lưới (Learning With Errors)](/discrete-mathematics-for-computer-science-iuh/img/course/post_quantum_lwe.svg)
 
 RSA và Diffie–Hellman trong chương này dựa trên bài toán phân tích thừa số nguyên tố và logarit rời rạc. Ngày **13/08/2024**, NIST đã ban hành ba chuẩn FIPS cho các thuật toán khóa công khai hướng tới khả năng chống chịu trước máy tính lượng tử quy mô lớn:
 

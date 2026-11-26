@@ -12,44 +12,11 @@ excerpt: "Bài đọc mở rộng song ngữ về FlashAttention (NeurIPS 2022) 
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** This is a bilingual application note (English followed by Vietnamese). It extends the algorithms and systems discussion rather than rewriting linear recurrence theory, and is tagged `lang: vi` to stay grouped with this chapter’s main posts.
-
-Đây là bài đọc ứng dụng mở rộng dạng song ngữ (không thay thế phần lý thuyết truy hồi tuyến tính). Bài được gắn nhãn `lang: vi` để hiển thị cùng nhóm bài lý thuyết của Chương 10.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-Throughout Chapter 10, divide-and-conquer recurrences of the form $$T(n) = a\,T(n/b) + f(n)$$ serve as our main lens for analyzing algorithms. **FlashAttention** (Dao et al., NeurIPS 2022, [arXiv:2205.14135](https://arxiv.org/abs/2205.14135)) illustrates a modern twist on this idea: on GPU hardware, the decisive bottleneck is often not arithmetic operations (FLOPs), but **IO** — reading and writing data between high-bandwidth memory (HBM) and fast on-chip SRAM.
-
-Rather than materializing the full $$n \times n$$ attention matrix in HBM, FlashAttention splits it into tiles that fit inside SRAM and recomputes softmax normalization statistics during the backward pass. By analyzing IO complexity directly, the authors prove that their tiling scheme is IO-optimal across a broad range of SRAM capacities. Empirically, it delivers roughly a $$3\times$$ wall-clock speedup on GPT-2 (sequence length 1K) and achieves the first better-than-chance performance on Path-X (sequence length 16K) among the Transformer baselines evaluated.
-
-From the perspective of Chapter 10, tiling can be viewed as a recurrence over block sizes: each block forms a self-contained subproblem, followed by a linear merge that updates running softmax statistics ($$m$$ and $$\ell$$) for numerical stability. The core recurrence framework remains the same — only the cost model shifts from counting arithmetic steps to counting *memory traffic*, which dominates real wall-clock runtime on modern GPUs.
-
-**Citations**
-
-1. T. Dao et al., “FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness,” NeurIPS 2022. [DOI/proceedings](https://proceedings.neurips.cc/paper/2022/hash/67d57c32e20fd0a7a302cb81d36e40d5-Abstract-Conference.html)
-
-**Discussion Questions**
-
-1. Write a schematic recurrence for processing $$n$$ tokens in blocks of size $$B$$.
-2. If HBM memory transfers are the primary bottleneck rather than arithmetic, what does the non-recursive term $$f(n)$$ represent?
-
-### Background Knowledge Map: How IO-Aware Recurrences Reshape GPU Algorithms
-
-- **Memory Hierarchy & External-Memory Model:** On modern GPUs, on-chip SRAM is tiny (e.g., ~20 MB) but ~10× faster than main HBM (tens of GB). Counting FLOPs alone misses the true runtime bottleneck: **bytes moved between HBM and SRAM**.
-- **Tiling as Block Recurrence:** Partitioning an $$N \times d$$ matrix into blocks of size $$B_r \times d$$ and $$B_c \times d$$ turns an $$O(N^2)$$ memory-materializing computation into a nested block recurrence whose working set fits entirely inside SRAM.
-- **Online Softmax Merging (Associative Recurrence):** To avoid reading the attention matrix twice, FlashAttention maintains running row-wise maximum $$m$$ and normalizer $$\ell$$, updating them incrementally block-by-block with exact numerical equivalence.
-
-### Deep-Dive Explanation: Hand-Verifiable HBM Traffic Comparison (Read Slowly)
-
-1. **Step 1 — Standard Attention HBM Traffic:** Given sequence length $$N = 4\,096$$, head dimension $$d = 64$$, and 2 bytes per FP16 value, materializing the $$N \times N$$ attention matrix $$S = QK^\top$$ and $$P = \text{softmax}(S)$$ requires reading and writing multiple $$4\,096^2 \approx 16.78\text{M}$$ matrices — roughly **134 MB** of HBM traffic per head (scaling as $$\Theta(N^2)$$).
-2. **Step 2 — FlashAttention Tiled HBM Traffic:** Suppose SRAM fits block size $$M$$ elements so $$B_c = B_r \approx M/(4d)$$. With $$M = 65\,536$$ elements (128 KB per block slice), FlashAttention never writes $$S$$ or $$P$$ to HBM; total HBM accesses scale as $$\Theta\!\left(\frac{N^2 d^2}{M}\right)$$. Plugging in $$N=4\,096, d=64, M=65\,536$$ gives $$\frac{N^2 d^2}{M} = N^2 \cdot \frac{4\,096}{65\,536} = \frac{N^2}{16}$$ — an immediate **$$16\times$$ reduction** in HBM traffic!
-3. **Step 3 — Why the Chapter 10 lens still applies:** Just like divide-and-conquer merges subproblem answers, FlashAttention's block recurrence merges $$(m_1, \ell_1)$$ and $$(m_2, \ell_2)$$ via $$m_{\text{new}} = \max(m_1, m_2)$$ and $$\ell_{\text{new}} = e^{m_1 - m_{\text{new}}}\ell_1 + e^{m_2 - m_{\text{new}}}\ell_2$$ — exact arithmetic, dramatically less IO.
-
-$$\text{Standard Attention IO: } \Theta(Nd + N^2) \;\xrightarrow{\text{SRAM Tiling (size } M\text{)}}\; \text{FlashAttention IO: } \Theta\!\left(\frac{N^2 d^2}{M}\right).$$
-
-## Tiếng Việt
+![Phân cấp Bộ nhớ và Độ phức tạp I/O (Cache-Oblivious)](/discrete-mathematics-for-computer-science-iuh/img/course/io_complexity_hierarchy.svg)
 
 Xuyên suốt Chương 10, quan hệ truy hồi chia để trị dạng $$T(n) = a\,T(n/b) + f(n)$$ là công cụ chủ đạo để phân tích chi phí thuật toán. **FlashAttention** (Dao et al., NeurIPS 2022, [arXiv:2205.14135](https://arxiv.org/abs/2205.14135)) cho thấy một góc nhìn hiện đại của tư duy này: trên phần cứng GPU, điểm nghẽn quyết định thường không nằm ở số phép tính số học (FLOPs) mà ở chi phí **truy xuất bộ nhớ (IO)** — tức lượng dữ liệu phải đọc và ghi qua lại giữa bộ nhớ HBM của GPU và bộ nhớ đệm SRAM trên chip.
 

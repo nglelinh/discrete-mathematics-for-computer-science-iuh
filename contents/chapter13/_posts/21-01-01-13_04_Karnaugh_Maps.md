@@ -320,6 +320,16 @@ Lưu ý rằng mọi nhóm hợp lệ chỉ được chứa các ô **1** (khôn
 
 ## Phủ tối tiểu
 
+![K-map bước 1: điền bảng chân trị](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_step_1.svg)
+
+![K-map bước 2: tìm tế bào đơn độc](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_step_2.svg)
+
+![K-map bước 3: khoanh tế bào lớn](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_step_3.svg)
+
+![K-map bước 4: chọn phủ tối tiểu](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_step_4.svg)
+
+![K-map bước 5: đọc công thức tối tiểu](/discrete-mathematics-for-computer-science-iuh/img/course/Kmap_step_5.svg)
+
 Mục tiêu cuối cùng là chọn một họ tế bào lớn phủ hết mọi ô **1**, không dư thừa và cho biểu thức SOP ngắn gọn nhất.
 
 ### Phủ tập hợp

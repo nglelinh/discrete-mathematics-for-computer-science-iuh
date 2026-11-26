@@ -23,6 +23,8 @@ Giả thuyết $$P \neq NP$$ chỉ nói rằng `3SAT` không giải được tro
 
 ## Kiến thức cần nhớ: Ba trụ cột của Độ phức tạp Hiện đại
 
+![Giả thuyết Thời gian Mũ (ETH) & Độ phức tạp Tinh chỉnh](/discrete-mathematics-for-computer-science-iuh/img/course/eth_fine_grained.svg)
+
 1. **Giả thuyết Thời gian Mũ (ETH & SETH)**:
    - **ETH:** `3SAT` không giải được trong thời gian dưới hàm mũ $$2^{o(n)}$$.
    - **SETH:** Khi $$k \to \infty$$, hằng số mũ cho `k-SAT` tiến sát $$2^n$$ (không tồn tại thuật toán $$O((2-\varepsilon)^n)$$ cho mọi $$k$$). Hai giả thuyết này mạnh hơn $$P \neq NP$$ nhưng giúp chứng minh nhiều chặn dưới sắc bén cực kỳ đẹp.

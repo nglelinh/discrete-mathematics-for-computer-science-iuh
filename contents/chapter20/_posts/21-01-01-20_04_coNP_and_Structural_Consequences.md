@@ -23,6 +23,8 @@ Nếu lớp $$NP$$ đặc trưng cho các bài toán có chứng chỉ ngắn ch
 
 ## Kiến thức cần nhớ: Ba trụ cột của $$\mathrm{coNP}$$ và Hệ quả Cấu trúc
 
+![Quan hệ giữa P, NP và co-NP](/discrete-mathematics-for-computer-science-iuh/img/course/conp_structural_map.svg)
+
 1. **Định nghĩa $$\mathrm{coNP} = \{L \mid \overline{L} \in NP\}$$**:
    Một bài toán thuộc $$\mathrm{coNP}$$ khi các trường hợp trả lời **KHÔNG (NO-instance)** có chứng chỉ ngắn kiểm tra được trong thời gian đa thức (ví dụ: 1 phép gán làm công thức sai là chứng chỉ ngắn bác bỏ `TAUTOLOGY`).
 2. **Bốn định lý cấu trúc xương sống**:

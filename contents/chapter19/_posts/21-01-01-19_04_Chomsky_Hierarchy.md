@@ -46,6 +46,10 @@ Khi Noam Chomsky phân loại các văn phạm hình thức thành bốn tầng 
 
 ## Bảng phân loại Chomsky
 
+![Hệ thống phân cấp Chomsky](/discrete-mathematics-for-computer-science-iuh/img/course/Chomsky_hierarchy.svg)
+
+![Chân dung Noam Chomsky](/discrete-mathematics-for-computer-science-iuh/img/course/Noam_Chomsky.jpg)
+
 | Loại | Tên lớp ngôn ngữ | Dạng luật sinh (ý chính) | Mô hình máy tương ứng |
 |:---:|:---|:---|:---|
 | 3 | Chính quy (Regular) | $$A\to aB$$ hoặc $$A\to a$$ | DFA / NFA |

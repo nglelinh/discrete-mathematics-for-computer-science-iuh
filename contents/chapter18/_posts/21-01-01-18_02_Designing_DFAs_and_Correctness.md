@@ -83,6 +83,8 @@ $$
 
 ## Quy trình thiết kế
 
+![Ví dụ máy hữu hạn trạng thái kèm chú thích](/discrete-mathematics-for-computer-science-iuh/img/course/Finite_state_machine_example_with_comments.svg)
+
 1. Phát biểu rõ tính chất xác định ngôn ngữ $$L\subseteq\Sigma^*$$.
 2. Phân lớp các tiền tố theo lượng “thông tin tối thiểu cần nhớ” (số lớp phải hữu hạn).
 3. Gán mỗi lớp cho một trạng thái và xây dựng hàm chuyển $$\delta$$ sao cho bất biến được bảo toàn sau mỗi ký hiệu.

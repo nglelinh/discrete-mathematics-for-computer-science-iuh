@@ -6,51 +6,17 @@ date: 2021-01-01
 order: 15
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. Strobl et al. (TACL 2024) survey which formal languages transformer variants can recognize — a 2022–2024 map onto DFA/NFA/TM. Does not replace automata theory."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite DFA/NFA, pumping, Myhill–Nerode, or Turing machines.
-
-Bài ghi chú ứng dụng song ngữ. Bài này **không** thay thế các nội dung về DFA/NFA, bổ đề bơm, Myhill–Nerode hay máy Turing.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-A central theoretical question in the LLM era asks: *how does a fixed-depth Transformer compare against classical automata and Turing machines?* Research from 2022–2026 uses the exact machinery of Chapter 18—DFAs, threshold circuits, and Turing tapes—to characterize both the limits of single-pass Transformers and why intermediate tokens change their computational power.
-
-### Background Knowledge Map: Three Pillars Linking Automata to Transformers
-
-1. **Single-Pass Transformers & Constant-Depth Circuits ($$\mathrm{TC}^0$$)**:
-   A bounded-precision Transformer without scratchpad tokens maps naturally to constant-depth threshold circuits, explaining systematic length-generalization failures on sequential state-tracking tasks such as `PARITY`.
-2. **Chain-of-Thought as a Turing-Machine Scratchpad**:
-   Allowing the model to emit and re-read intermediate tokens turns the context window into a read/write tape, dramatically expanding expressivity toward Turing completeness under unbounded steps.
-3. **Constrained Decoding via DFAs**:
-   Production LLM systems compile JSON schemas or regular expressions into DFAs and mask out invalid next tokens at every decoding step according to $$\delta(q, a)$$.
-
-This chapter classifies machines by what languages they recognize. From 2021 onward a parallel literature asks the same question of **transformers**. Strobl, Merrill, Weiss, Chiang, and Angluin, “What Formal Languages Can Transformers Express? A Survey,” *Transactions of the ACL* 12:543–561 (2024), [DOI 10.1162/tacl_a_00663](https://doi.org/10.1162/tacl_a_00663), [ACL Anthology](https://aclanthology.org/2024.tacl-1.30/), unify results that otherwise look contradictory because papers assume different masks, precision, and encoder/decoder APIs.
-
-A useful slogan from that survey (read the paper for caveats): with chain-of-thought / intermediate symbols, decoder-style models can simulate more powerful machines; encoder-only models with restricted attention often sit inside small circuit classes (e.g. $$\mathsf{AC}^0$$ / $$\mathsf{TC}^0$$ discussions in the survey). The optional lesson for NCS students: **regular / CFL / decidable** remain the right yardsticks. A transformer is not “beyond the Chomsky hierarchy” until you fix the computational model the survey insists on fixing.
-
-Read Sipser-style proofs first. Then use the 2024 survey as a reading list, not as a replacement chapter.
-
-**Citations**
-
-1. L. Strobl et al., “What Formal Languages Can Transformers Express? A Survey,” *TACL* 12 (2024). [DOI](https://doi.org/10.1162/tacl_a_00663)
-
-**Questions.** (1) Which Chapter 18 machine do you get if you allow a transformer unbounded scratch tokens (informally: a tape)? (2) Why must “softmax vs hard attention” be stated before quoting an expressivity theorem?
-
-### Deep-Dive Explanation (Read Slowly): Why `PARITY` Separates a 2-State DFA from a Single-Pass Transformer
-
-Consider the regular language `PARITY` of binary strings with an even number of `1`s:
-- **2-state DFA**: Tracks only $$q_{\text{even}}$$ and $$q_{\text{odd}}$$; achieves **100%** accuracy on length $$n = 10$$ and length $$n = 10{,}000$$ alike.
-- **Single-pass Transformer (no CoT)**: Trained on lengths $$n \le 20$$, fixed-depth attention aggregates all positions simultaneously in finite precision and typically degrades toward random guessing ($$50\%$$) on $$n = 100$$.
-- **With Chain-of-Thought**: Emitting the running parity after each bit (`0 -> 1 -> 1 -> 0`) explicitly simulates the 2-state DFA transition function $$\delta$$ on the token scratchpad, restoring accurate state tracking over much longer inputs.
-
-## Tiếng Việt
+![Biểu diễn Ôtômat Hữu hạn trong Kiến trúc Transformer](/discrete-mathematics-for-computer-science-iuh/img/course/transformers_automata_limits.svg)
 
 Một câu hỏi cực kỳ hấp dẫn xuất hiện trong kỷ nguyên mô hình ngôn ngữ lớn (LLM): *Nếu một mạng Transformer có độ sâu cố định và độ chính xác dấu phẩy động hữu hạn, nó có thực sự "biết tính toán" như máy Turing hay thực chất chỉ là một máy trạng thái hữu hạn khổng lồ?* Các công trình nghiên cứu giai đoạn 2022–2026 đã dùng chính công cụ của Chương 18 (DFA, máy Turing, mạch ngưỡng) để đo chính xác trần năng lực của Transformer.
 

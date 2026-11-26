@@ -258,7 +258,7 @@ s = \bar x y + x \bar y = x \oplus y,\qquad
 c = x y.
 $$
 
-![Half adder](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
+![Half adder](/discrete-mathematics-for-computer-science-iuh/img/course/half_adder.svg)
 
 <p class="textbook-figure-caption" data-figure="13.31">Half adder với $$s = x \oplus y$$ và $$c = xy$$.</p>
 

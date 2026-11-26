@@ -60,3 +60,8 @@ ffmpeg -i out.mp4 -i music.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -shortest ou
 - Chọn ngôn ngữ bằng biến môi trường: `REEL_LANG=vi manim -qh --disable_caching -o pascal_pi_vi pascal_pi.py PascalPi` (hoặc `REEL_LANG=en`). Cảnh chỉ dùng `Text` Unicode, không cần LaTeX.
 - Nội dung: dựng tam giác Pascal, các đường chéo, lấy cách một số trên đường chéo thứ ba, chuỗi Nilakantha, chứng minh bằng tách phân thức và chuỗi Leibniz, tốc độ hội tụ. Đầu file có các `assert` kiểm tra mọi con số bằng numpy và mpmath.
 - `vo_scripts_pascal_pi.py` chứa lời dẫn tiếng Việt theo từng mục và mốc thời gian để thu âm và ghép tiếng. Bản tiếng Việt đã có lời dẫn (ElevenLabs, giọng Trường, eleven_v3); `vo/pascal_pi_pads.json` thêm khoảng dừng cuối mục 3 và 5 để lời dẫn không tràn. Bản tiếng Anh vẫn không tiếng.
+| `quantifiers_nested.py` | `QuantifiersNested` | `quantifiers-nested.mp4` | `02_02_Quantifiers_and_Nested_Quantifiers` |
+| `functions_bijection.py` | `FunctionsBijection` | `functions-bijection.mp4` | `06_02_Properties_of_Functions` |
+| `birthday_paradox.py` | `BirthdayParadox` | `birthday-paradox.mp4` | `09_07_Birthday_Paradox_in_Production` |
+| `pda_stack.py` | `PDAStack` | `pda-stack.mp4` | `19_08_Pushdown_Automata` |
+| `cook_levin.py` | `CookLevin` | `cook-levin-tableau.mp4` | `20_07_Cook_Levin_Theorem` |

@@ -6,43 +6,17 @@ date: 2021-01-01
 order: 5
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. Tree of Thoughts (NeurIPS 2023) is BFS/DFS on a tree of partial solutions — the same objects as this chapter. Does not replace tree theory."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite traversals, MST, Huffman, or BST.
-
-Bài ghi chú ứng dụng song ngữ. Bài này **không** thay thế các nội dung về duyệt cây, MST, Huffman hay BST.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-A rooted tree is already the model for backtracking: each node is a prefix of a solution, children are legal extensions, DFS/BFS decide the visit order. Yao, Yu, Zhao, Shafran, Griffiths, Cao, and Narasimhan, “Tree of Thoughts: Deliberate Problem Solving with Large Language Models,” *NeurIPS 2023*, [proceedings PDF](https://proceedings.neurips.cc/paper_files/paper/2023/file/271db9922b8d1f4dd7aaef84ed5ac703-Paper-Conference.html), [arXiv:2305.10601](https://arxiv.org/abs/2305.10601), apply that model to LLM inference.
-
-A state is $$s = [x, z_{1\cdots i}]$$ (input plus thoughts so far). The paper specifies four design choices — how to cut a thought step, how to expand, how to score, which search to run — and instantiates BFS (Game of 24) and DFS with pruning (mini crosswords). Headline number: GPT-4 with chain-of-thought solved **4%** of Game of 24; ToT reached **74%**. Code: [princeton-nlp/tree-of-thought-llm](https://github.com/princeton-nlp/tree-of-thought-llm).
-
-Optional link to this chapter: ToT is not a new tree definition. It is tree *search* (the traversals you already wrote) plus a heuristic evaluator. Huffman and BST remain about encoding and ordered keys; ToT is about exploring a state tree when the branching factor is linguistic rather than numeric.
-
-**Citations**
-
-1. S. Yao et al., “Tree of Thoughts: Deliberate Problem Solving with Large Language Models,” NeurIPS 2023. [arXiv](https://arxiv.org/abs/2305.10601)
-
-**Questions.** (1) Draw the ToT state tree for one Game-of-24 instance with branching factor 3 and depth 2. (2) Which traversal matches “expand all thoughts at this depth, keep top $$b$$”?
-
-### Background Knowledge Map: From Chain-of-Thought to Tree Search in LLMs
-- **Chain-of-Thought (CoT) as a Single Path:** Standard autoregressive decoding generates tokens linearly left-to-right; one early mistake derails the entire derivation with no way to backtrack.
-- **Tree-of-Thoughts (ToT, Yao et al. 2023) & Test-Time Compute:** Models each intermediate reasoning step as a **node in a search tree**, applying Chapter 16’s classic **BFS, DFS, and pruning** guided by a learned or prompted value heuristic!
-
-### Deep-Dive Explanation: Tracing ToT on the Game of 24 with `(4, 9, 10, 13)` (Read Slowly)
-1. **Step 1 (Thought Generator — Branching):** From `(4, 9, 10, 13)`, propose candidate first moves: `13 - 9 = 4` (leaves `4, 4, 10`), `10 - 4 = 6` (leaves `6, 9, 13`), `13 + 10 = 23` (leaves `4, 9, 23`).
-2. **Step 2 (Value Evaluator — Pruning):** Score each child state as *sure / maybe / impossible* to reach 24; immediately prune dead ends!
-3. **Step 3 (BFS / DFS Search):** Expand top-$$b$$ promising nodes (beam width $$b$$): from `(4, 4, 10)` try `10 - 4 = 6` $$\to$$ `(4, 6)` $$\to$$ `4 × 6 = 24`!
-4. **Step 4 (Cost–Accuracy Tradeoff):** Tree search multiplies inference tokens ($$O(b^d)$$) to dramatically boost accuracy on planning, math, and coding puzzles.
-
-## Tiếng Việt
+![Cây Suy nghĩ (Tree of Thoughts) trong Suy luận AI](/discrete-mathematics-for-computer-science-iuh/img/course/tree_of_thoughts_search.svg)
 
 Cây có gốc vốn là mô hình quen thuộc của kỹ thuật quay lui (*backtracking*): mỗi nút biểu diễn một phần lời giải ban đầu, các nút con là những bước mở rộng hợp lệ, còn DFS/BFS quyết định thứ tự duyệt. Yao và cộng sự (NeurIPS 2023) đã áp dụng chính mô hình này vào quá trình suy luận của mô hình ngôn ngữ lớn (LLM).
 

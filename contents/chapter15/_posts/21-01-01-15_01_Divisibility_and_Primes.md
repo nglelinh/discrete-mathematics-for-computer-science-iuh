@@ -189,6 +189,10 @@ Ta chỉ cần bắt đầu gạch từ $$i^2$$ vì các bội nhỏ hơn là $$
 
 ## Ước chung lớn nhất (GCD)
 
+![Cây cú pháp thuật toán Euclid](/discrete-mathematics-for-computer-science-iuh/img/course/Abstract_syntax_tree_for_Euclidean_algorithm.svg)
+
+![Trang sách Cơ sở của Euclid (1482)](/discrete-mathematics-for-computer-science-iuh/img/course/Euclid_s_Elements_1482.jpg)
+
 <div class="textbook-definition" markdown="1">
 
 **Định nghĩa.** Cho $$a, b \in \mathbb{Z}$$ không đồng thời bằng 0. **Ước chung lớn nhất** $$\gcd(a,b)$$ là số nguyên dương lớn nhất $$d$$ sao cho $$d \mid a$$ và $$d \mid b$$. Nếu $$\gcd(a,b)=1$$, ta nói $$a$$ và $$b$$ **nguyên tố cùng nhau** (*coprime* hoặc *relatively prime*).

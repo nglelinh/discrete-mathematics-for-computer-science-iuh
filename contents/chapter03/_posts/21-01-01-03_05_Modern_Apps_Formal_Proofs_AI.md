@@ -6,60 +6,17 @@ date: 2021-01-01
 order: 5
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. AlphaGeometry (Nature 2024) and AlphaProof (IMO 2024 / Nature 2025) use formal deduction — the same proof methods — inside Lean or a geometry engine. Does not replace the proof-method lessons."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite direct proof, contradiction, or induction.
-
-Bài ghi chú ứng dụng song ngữ. Nội dung này **không** thay thế hay viết lại các bài về chứng minh trực tiếp, phản chứng và quy nạp.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-The required lessons treat a proof as a finite chain of licensed steps. Two 2024–2025 systems make that definition operational at olympiad scale.
-
-**AlphaGeometry** (Trinh, Wu, Le, He, Luong, *Nature*, 17 January 2024, [DOI 10.1038/s41586-023-06747-5](https://doi.org/10.1038/s41586-023-06747-5)) is a neuro-symbolic geometry prover: a language model proposes auxiliary constructions; a symbolic engine closes the deduction. On IMO-AG-30 it solved 25 of 30 problems. The published proofs are human-readable deduction chains — contradiction, case splits, and angle-chasing — not a black-box score.
-
-**AlphaProof** searches for proofs in **Lean**. DeepMind reported (25 July 2024) that AlphaProof plus AlphaGeometry 2 scored 28/42 on the 2024 IMO problems (silver-medal range), solving four of six after experts formalized the statements. The journal paper is “Olympiad-level formal mathematical reasoning with reinforcement learning,” *Nature* (2025), [DOI 10.1038/s41586-025-09833-y](https://doi.org/10.1038/s41586-025-09833-y): an AlphaZero-style agent trains on millions of auto-formalized problems; Lean’s kernel checks every step.
-
-The discrete-math point is unchanged: a “proof” that a kernel cannot check is still only a sketch. AI search proposes candidates; the methods of this chapter decide whether a candidate is a proof.
-
-**Citations**
-
-1. T. H. Trinh et al., “Solving olympiad geometry without human demonstrations,” *Nature* (2024). [DOI](https://doi.org/10.1038/s41586-023-06747-5)
-2. DeepMind, “AI achieves silver-medal standard solving International Mathematical Olympiad problems,” 25 July 2024. [Blog](https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/)
-3. AlphaProof team, “Olympiad-level formal mathematical reasoning with reinforcement learning,” *Nature* (2025). [DOI](https://doi.org/10.1038/s41586-025-09833-y)
-
-**Questions.** (1) Which proof method is a Lean tactic `by contradiction` encoding? (2) Why does formalizing the IMO statement (human or auto) sit *outside* the kernel’s guarantee?
-
-### Background Knowledge Map: Interactive Theorem Provers (Lean 4) and AI-Assisted Formal Proofs
-
-Every proof technique in Chapter 3—direct proof, contradiction, and mathematical induction—is no longer confined to chalkboards. In **Interactive Theorem Provers (ITPs)** like **Lean 4**, Coq, and Isabelle, mathematical proofs are compiled programs checked down to every single logical axiom by a tiny trusted kernel:
-
-1. **Curry–Howard Correspondence ("Propositions as Types, Proofs as Programs")**:
-   A theorem statement is a *type*, and a valid proof is a *program* that type-checks to that type. An implication $$A \to B$$ is literally a function taking a proof of $$A$$ and returning a proof of $$B$$.
-2. **Small Trusted Kernel (De Bruijn Criterion)**:
-   Even if an AI model generates a 500-line proof using complex heuristics, Lean's tiny kernel verifies every step from first principles. AI cannot "hallucinate" a fake proof past the kernel—it either compiles (`0` errors) or is rejected!
-3. **Industrial & Mathematical Breakthroughs**:
-   From proving the seL4 microkernel free of buffer overflows and null dereferences, to verifying AWS cryptographic routines, to DeepMind's AlphaProof solving International Mathematical Olympiad (IMO) problems in Lean, formal verification is becoming a mainstream engineering superpower.
-
-### Deep-Dive Explanation: Tracing a Machine-Checked Induction Proof of $$\sum_{i=0}^{n} i = \frac{n(n+1)}{2}$$ in Lean-Style Logic (Read Slowly)
-
-How does a proof assistant check induction without letting a human wave their hands? Watch the exact type obligations generated for `2 * sum(n) = n * (n + 1)`:
-
-| Proof Obligation | Mathematical Goal | Machine Verification Step |
-| :--- | :--- | :--- |
-| **Base case (`n = 0`)** | $$2 \cdot \text{sum}(0) = 0 \cdot (0 + 1)$$ | Kernel reduces both sides by definition: `0 = 0` (`rfl` — reflexivity passes!) |
-| **Inductive hypothesis (`ih`)** | Assume $$2 \cdot \text{sum}(k) = k(k+1)$$ | Given as an explicit local variable `ih` in the typing context |
-| **Inductive step (`n = k + 1`)** | Prove $$2 \cdot \text{sum}(k+1) = (k+1)(k+2)$$ | Expand `sum(k+1) = sum(k) + (k+1)` → `2*sum(k) + 2*(k+1)` → rewrite via `ih` → `k*(k+1) + 2*(k+1)` → factor to `(k+1)*(k+2)` (`ring` tactic closes goal!) |
-
-Notice the magic: if you accidentally forget the base case or assume what you are trying to prove, the compiler refuses to build—turning mathematical rigor into an automated feedback loop.
-
-## Tiếng Việt
+![Kiểm chứng Chứng minh Toán học bằng Trợ lý Hình thức & AI](/discrete-mathematics-for-computer-science-iuh/img/course/formal_proofs_ai_lean.svg)
 
 Các bài học bắt buộc xem một chứng minh là chuỗi hữu hạn các bước suy luận hợp lệ. Hai hệ thống công bố trong giai đoạn 2024–2025 đã đưa định nghĩa đó vào vận hành ở quy mô bài toán Olympic.
 

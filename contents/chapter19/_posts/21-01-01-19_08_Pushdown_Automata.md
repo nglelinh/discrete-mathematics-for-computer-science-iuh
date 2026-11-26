@@ -21,6 +21,8 @@ Nếu bạn trao cho một máy trạng thái hữu hạn (NFA) đúng một cô
 
 ## Kiến thức cần nhớ: Ba trụ cột của Automat Đẩy xuống (PDA)
 
+![Mô hình Ôtômat Đẩy xuống (PDA) với Ngăn xếp](/discrete-mathematics-for-computer-science-iuh/img/course/pda_stack_model.svg)
+
 1. **Hàm chuyển bộ ba $$\delta(q, a, X) \ni (p, \gamma)$$**:
    Tại trạng thái $$q$$, đọc ký hiệu vào $$a$$ (hoặc $$\varepsilon$$) và lấy ký hiệu $$X$$ trên đỉnh ngăn xếp, PDA chuyển sang trạng thái $$p$$ rồi đẩy chuỗi $$\gamma$$ thay vào đỉnh ngăn xếp ($$\gamma = \varepsilon$$ nghĩa là *pop* thuần túy).
 2. **Hai chế độ chấp nhận tương đương (Trạng thái cuối vs. Ngăn xếp rỗng)**:
@@ -49,6 +51,14 @@ với hàm chuyển $$\delta:Q\times(\Sigma\cup\{\varepsilon\})\times\Gamma\to\m
 **Mô tả tức thời (ID)** $$(q,w,\gamma)$$ ghi lại toàn bộ cấu hình của máy tại một thời điểm: trạng thái hiện tại $$q$$, phần chuỗi đầu vào còn lại $$w$$ và nội dung ngăn xếp $$\gamma$$.
 
 </div>
+
+### Video ngắn: Ôtômat Đẩy xuống (PDA) & Ngăn xếp LIFO
+
+<div class="reel-video" style="text-align:center;margin:1.5rem 0;">
+<video controls playsinline preload="metadata" style="width:100%;max-width:360px;height:auto;aspect-ratio:9/16;border-radius:8px;background:#0e0e10;" src="{{ site.baseurl }}/public/videos/reels/pda-stack.mp4"></video>
+</div>
+
+Video dài khoảng 30 giây (có thuyết minh tiếng Việt): cách PDA dùng ngăn xếp nhận diện $a^n b^n$ và sự tương đương giữa chấp nhận theo trạng thái kết với ngăn xếp rỗng.
 
 ## Ví dụ ngôn ngữ $$a^nb^n$$
 

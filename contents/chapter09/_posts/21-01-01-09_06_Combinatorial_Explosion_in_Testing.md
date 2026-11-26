@@ -27,7 +27,7 @@ Hiện tượng này gọi là **combinatorial explosion**: không gian tổ h�
 
 <figure class="image" style="align: center;">
 <p align="center">
-  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/Exponential.svg"
+  <img src="/discrete-mathematics-for-computer-science-iuh/img/course/exponential.svg"
        alt="So sánh tăng trưởng tuyến tính, lũy thừa và hàm mũ 2^x"
        width="55%" height="55%">
   <figcaption style="text-align: center;">Hình 9.6a: Quy tắc nhân tạo ra 324 cấu hình; kỹ thuật pairwise rút gọn xuống khoảng 15 ca kiểm thử bằng cách phủ mọi *cặp* tham số thay vì mọi *bộ* năm chiều (nguồn: <a href="https://commons.wikimedia.org/wiki/File:Exponential.svg">McSush / Wikimedia Commons</a>, public domain / CC0).</figcaption>
@@ -57,7 +57,7 @@ $$N = \prod_{i=1}^{5} v_i = 4 \cdot 3 \cdot 3 \cdot 3 \cdot 3 = 4 \times 3^4 = 3
 
 Mỗi tham số bổ sung sẽ **nhân** thêm một thừa số chứ không chỉ cộng thêm vài ca kiểm thử. Vì thế, yêu cầu tưởng như nhỏ (“thêm một tùy chọn nữa”) có thể làm khối lượng kiểm thử tăng gấp đôi hoặc gấp ba.
 
-![Combinatorial growth — Wikimedia](/discrete-mathematics-for-computer-science-iuh/img/course/Exponential.svg)
+![Combinatorial growth — Wikimedia](/discrete-mathematics-for-computer-science-iuh/img/course/exponential.svg)
 
 <p class="textbook-figure-caption" data-figure="9.13">Quy tắc nhân — mỗi tham số mới nhân thêm một hệ số vào tổng số cấu hình.</p>
 

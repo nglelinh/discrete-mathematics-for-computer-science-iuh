@@ -6,44 +6,17 @@ date: 2021-01-01
 order: 4
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. CLRS-30 (ICML 2022) asks GNNs to execute Dijkstra, BFS, and other textbook graph algorithms; GraphCast (2023) is message passing at Earth scale. Does not replace shortest-path theory."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite Dijkstra, topological sort, or coloring/matching.
-
-Bài ghi chú ứng dụng song ngữ. Bài này **không** thay thế các nội dung về Dijkstra, sắp xếp topo, tô màu hay ghép cặp.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-Chapter 17 is classical graph algorithms: shortest paths, topo order, matching. Two recent lines ask whether a **learned** message-passing procedure can *imitate* those algorithms — or replace a numerical solver on a huge graph.
-
-**CLRS-30.** Veličković et al., “The CLRS Algorithmic Reasoning Benchmark,” *ICML 2022*, PMLR 162:22084–22102, [paper](https://proceedings.mlr.press/v162/velickovic22a.html), ship trajectories (inputs, hints, outputs) for 30 textbook algorithms, including graph routines. Encode–process–decode GNNs predict both the answer and intermediate pointers. A recurring finding: in-distribution scores on 16-node graphs can look strong while **out-of-distribution** 64-node tests collapse — so “the network ran Dijkstra” is not the same as “the network *is* Dijkstra.” Library: [github.com/deepmind/clrs](https://github.com/deepmind/clrs).
-
-**GraphCast** (Lam et al., *Science* 2023, [DOI 10.1126/science.adi2336](https://doi.org/10.1126/science.adi2336)) is not claiming to implement Dijkstra; it *is* claiming that learned message passing on a multi-mesh is a useful 10-day weather operator. Together, the two citations separate **algorithmic fidelity** (CLRS) from **graph-shaped numerical models** (GraphCast).
-
-**Citations**
-
-1. P. Veličković et al., “The CLRS Algorithmic Reasoning Benchmark,” ICML 2022. [PMLR](https://proceedings.mlr.press/v162/velickovic22a.html)
-2. R. Lam et al., “Learning skillful medium-range global weather forecasting,” *Science* (2023). [DOI](https://doi.org/10.1126/science.adi2336)
-
-**Questions.** (1) Which CLRS “hint” would correspond to Dijkstra’s distance array after $$k$$ relaxations? (2) Why does an OOD accuracy drop block the claim that the GNN learned the algorithm?
-
-### Background Knowledge Map: Neural Algorithmic Reasoning (CLRS-30)
-- **Alignment Between GNNs and Dynamic Programming:** A Graph Neural Network updates each node’s embedding by aggregating messages from neighbors: $$h_v^{(t+1)} = \phi\bigl(h_v^{(t)},\; \bigoplus_{u \in N(v)} \psi(h_u^{(t)}, w_{uv})\bigr)$$. Notice that when $$\bigoplus = \min$$ and $$\psi(d_u, w_{uv}) = d_u + w_{uv}$$, **one GNN layer is literally one round of Bellman–Ford edge relaxation**!
-- **Why Teach Neural Networks Classic Algorithms?** Not to replace exact C++ Dijkstra on clean graphs, but so an end-to-end neural system can run **algorithmic reasoning directly on noisy, raw sensor/image inputs** (where exact edge weights don’t exist!).
-
-### Deep-Dive Explanation: One Bellman–Ford GNN Message-Passing Step by Hand (Read Slowly)
-1. **Step 1 (Init):** On a 3-node graph $$S \xrightarrow{2} A \xrightarrow{3} T$$ and $$S \xrightarrow{8} T$$, initialize node states $$h^{(0)} = (0, \infty, \infty)$$.
-2. **Step 2 (Layer 1 — `min` aggregation):** $$h_A^{(1)} = \min(\infty, 0+2) = 2$$; $$h_T^{(1)} = \min(\infty, 0+8, \infty+3) = 8$$.
-3. **Step 3 (Layer 2 — `min` aggregation):** $$h_T^{(2)} = \min(8, 0+8, 2+3) = 5$$! Exact shortest path recovered!
-4. **Step 4 (Out-of-Distribution Generalization):** On CLRS-30 (2022–2026), choosing the right aggregator (`min`/`max` instead of `sum`) and training on intermediate algorithm hints lets GNNs generalize from 16-node graphs to 64+ nodes!
-
-## Tiếng Việt
+![Mô phỏng Thuật toán Đồ thị bằng Mạng Nơ-ron (CLRS)](/discrete-mathematics-for-computer-science-iuh/img/course/neural_graph_algorithms.svg)
 
 Chương 17 tập trung vào các thuật toán đồ thị cổ điển. Hai hướng nghiên cứu gần đây đặt câu hỏi liệu một cơ chế truyền thông điệp (*message passing*) **được học từ dữ liệu** có thể *mô phỏng* những thuật toán đó, hay thậm chí thay thế bộ giải số trên các đồ thị quy mô rất lớn hay không.
 

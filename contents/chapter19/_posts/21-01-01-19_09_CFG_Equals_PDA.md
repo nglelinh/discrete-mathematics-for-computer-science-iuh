@@ -21,6 +21,8 @@ Hai thế giới tưởng như tách biệt — một bên là **bộ sinh chu�
 
 ## Kiến thức cần nhớ: Hai chiều của Định lý CFG $$\equiv$$ PDA
 
+![Tương đương giữa Văn phạm Phi ngữ cảnh (CFG) và PDA](/discrete-mathematics-for-computer-science-iuh/img/course/cfg_equals_pda.svg)
+
 1. **Chiều CFG $$\to$$ PDA (Mô phỏng dẫn xuất trái nhất bằng ngăn xếp)**:
    Chỉ cần một PDA **1 trạng thái** (chấp nhận bằng ngăn xếp rỗng): đẩy $$S$$ vào ngăn xếp, nếu đỉnh là biến $$A$$ thì chọn không đơn định một quy tắc $$A \to \alpha$$ để thay thế; nếu đỉnh là ký tự kết thúc $$a$$ thì đối chiếu và tiêu thụ đúng ký tự $$a$$ từ đầu vào.
 2. **Chiều PDA $$\to$$ CFG (Biến bộ ba $$[p, X, q]$$)**:

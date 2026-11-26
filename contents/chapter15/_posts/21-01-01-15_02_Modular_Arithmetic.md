@@ -96,6 +96,10 @@ $$
 
 ## Đồng dư
 
+![Minh họa số học đồng dư modulo](/discrete-mathematics-for-computer-science-iuh/img/course/modular_arithmetic.svg)
+
+![Chân dung Carl Friedrich Gauss](/discrete-mathematics-for-computer-science-iuh/img/course/Carl_Friedrich_Gauss.jpg)
+
 <div class="textbook-definition" markdown="1">
 
 **Định nghĩa.** Cho $$a,b \in \mathbb{Z}$$ và $$n \in \mathbb{Z}^+$$. Ta nói $$a$$ **đồng dư** với $$b$$ modulo $$n$$, ký hiệu

@@ -103,6 +103,8 @@ $$
 
 ## Mã giả
 
+![Lưu đồ thuật toán](/discrete-mathematics-for-computer-science-iuh/img/course/algorithm_flow.svg)
+
 Mã giả (*pseudocode*) mô tả thuật toán độc lập với ngôn ngữ lập trình cụ thể, sử dụng các cấu trúc cơ bản như phép gán, rẽ nhánh điều kiện, vòng lặp và lệnh trả về.
 
 ```text

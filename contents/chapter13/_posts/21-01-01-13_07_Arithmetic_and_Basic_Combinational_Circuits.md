@@ -152,7 +152,7 @@ $$
 
 Tên gọi **half adder** (“nửa” bộ cộng) xuất phát từ việc mạch **không** có ngõ nhớ vào ($$C_{in}$$). Khối này đủ để cộng 2 bit độc lập hoặc cột bit thấp nhất, nhưng chưa đủ cho các cột giữa trong bộ cộng $$n$$-bit.
 
-![Half adder](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
+![Half adder](/discrete-mathematics-for-computer-science-iuh/img/course/half_adder.svg)
 
 <p class="textbook-figure-caption" data-figure="13.36">Half adder: cổng XOR cho bit tổng và cổng AND cho bit nhớ.</p>
 
@@ -433,6 +433,12 @@ $$
 Như vậy, khối ALU là một mạng cổng tổ hợp có cấu trúc gồm các bộ cộng, bộ nhân, MUX, comparator và các mạch bitwise.
 
 ## Liên hệ với tối thiểu hóa
+
+![Thiết kế mạch bước 2: bảng chân trị](/discrete-mathematics-for-computer-science-iuh/img/course/Design_step_2.svg)
+
+![Thiết kế mạch bước 3: tối thiểu hóa K-map](/discrete-mathematics-for-computer-science-iuh/img/course/Design_step_3.svg)
+
+![Thiết kế mạch bước 4: sơ đồ cổng logic](/discrete-mathematics-for-computer-science-iuh/img/course/Design_step_4.svg)
 
 Half adder và full adder vốn đã có biểu thức gọn (XOR và hàm đa số). Các mạch MUX và decoder ở dạng SOP chuẩn ánh xạ trực tiếp sang các bảng tra cứu LUT trên FPGA (Mục 13.6). Khi cần hiện thực chỉ bằng cổng NAND, ta biến đổi biểu thức qua luật De Morgan và các kỹ thuật tối thiểu hóa ở Mục 13.3–13.5.
 

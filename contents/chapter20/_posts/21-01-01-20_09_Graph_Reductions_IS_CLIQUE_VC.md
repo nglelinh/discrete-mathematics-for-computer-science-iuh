@@ -42,6 +42,10 @@ Làm sao biến một công thức logic khô khan đầy dấu $$\lor, \land, \
 
 ## Rút gọn $$3\mathrm{SAT}\le_p\mathrm{INDEPENDENT\text{-}SET}$$
 
+![Mạng lưới 21 bài toán NP-đầy đủ của Richard Karp](/discrete-mathematics-for-computer-science-iuh/img/course/Complexity_karp_web.svg)
+
+![Richard Karp](/discrete-mathematics-for-computer-science-iuh/img/course/richard_karp.svg)
+
 **Phép dựng:** Cho công thức 3CNF gồm $$m$$ mệnh đề $$C_j=\{\ell_{j1},\ell_{j2},\ell_{j3}\}$$. Ta dựng đồ thị $$G$$ gồm $$3m$$ đỉnh $$v_{j,r}$$ (mỗi đỉnh ứng với một literal trong một mệnh đề) với hai loại cạnh: (i) nối thành tam giác giữa 3 đỉnh trong cùng một mệnh đề, và (ii) nối mọi cặp đỉnh ứng với hai literal mâu thuẫn nhau (như $$x$$ và $$\neg x$$) thuộc hai mệnh đề khác nhau. Đặt ngưỡng kích thước tập độc lập $$k=m$$.
 
 **Tính đúng đắn:**  

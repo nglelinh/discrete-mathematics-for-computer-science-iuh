@@ -160,6 +160,8 @@ Quan sát tam giác Pascal được xây dựng từng hàng từ đỉnh: với
 
 ## Các đồng nhất thức quan trọng
 
+![Tam giác Pascal mở rộng](/discrete-mathematics-for-computer-science-iuh/img/course/Pascal_triangle_extended.svg)
+
 ### Tính đối xứng
 
 <div class="textbook-equation" markdown="1">

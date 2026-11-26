@@ -38,6 +38,8 @@ Mạch nội dung của chương đi từ $$\Sigma^*$$ và phép toán ngôn ng�
 
 ## Ứng dụng trong trình biên dịch
 
+![Giai đoạn phân tích từ vựng trong trình biên dịch](/discrete-mathematics-for-computer-science-iuh/img/course/lexical_analysis.svg)
+
 | Giai đoạn | Lớp ngôn ngữ | Công cụ điển hình |
 |:---|:---|:---|
 | Bộ phân tích từ vựng (Lexer) | Chính quy (Regular) | Flex, biểu thức chính quy |

@@ -6,53 +6,17 @@ date: 2021-01-01
 order: 15
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. Kissat (SAT 2024) and CLRS-30 (ICML 2022) show the gap between worst-case NP-completeness, industrial SAT, and learned algorithms that fail out of distribution. Does not replace P/NP theory."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite Cook–Levin, reductions, FPT, or ETH.
-
-Bài ghi chú ứng dụng song ngữ. Bài này **không** thay thế các nội dung về Cook–Levin, phép rút gọn, FPT hay ETH.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-Modern computational complexity presents a striking paradox: `SAT` is the canonical NP-complete problem, yet industrial **CDCL SAT solvers** routinely solve instances with millions of variables for hardware verification and computer-assisted math proofs—while neural networks trained to solve NP-hard problems often struggle with out-of-distribution (OOD) size generalization.
-
-### Background Knowledge Map: Three Pillars of Modern Solvers & Complexity
-
-1. **Conflict-Driven Clause Learning (CDCL)**:
-   Enhances backtracking with unit propagation, conflict analysis that learns new pruning clauses, non-chronological backjumping, and restarts to exploit real-world instance structure.
-2. **Certifying Solvers & DRAT Proofs**:
-   When a solver returns `UNSAT`, it emits a machine-checkable proof trace (DRAT) verified by an independent trusted checker—bridging complexity theory with formal mathematics.
-3. **Neural-Guided Solvers vs. OOD Limits**:
-   Rather than replacing exact search end-to-end, 2022–2026 systems increasingly pair learned heuristics with exact branch-and-bound or SAT/MIP engines to preserve correctness and OOD scaling.
-
-SAT is NP-complete (this chapter). That theorem does **not** say every instance is hard. Two 2022–2024 artifacts make the distinction teachable.
-
-1. **Industrial SAT.** Kissat 4.0 took all three main-track golds at SAT Competition 2024 ([medals](https://cca.informatik.uni-freiburg.de/sat24medals/); Biere et al., Univ. Helsinki B-2024-1, pp. 8–10). CDCL regularly solves verification CNFs with millions of variables. Worst-case completeness and median-case practice are different sentences — the course already said so; the medals are a dated exhibit.
-2. **Learned algorithms.** CLRS-30 (Veličković et al., ICML 2022, [PMLR 162:22084–22102](https://proceedings.mlr.press/v162/velickovic22a.html)) shows neural executors that look accurate on small graphs and then fail when $$n$$ grows. That is an empirical **generalisation** failure, not a new complexity class — but it warns against treating a trained net as a polynomial algorithm with a proof.
-
-Optional synthesis with 20.13 (fine-grained / average-case): competition SAT and CLRS OOD gaps are *why* those finer theories exist. This note does not add a reduction.
-
-**Citations**
-
-1. SAT Competition 2024 medals and Biere et al. solver description, Univ. Helsinki B-2024-1, pp. 8–10. [PDF](https://cca.informatik.uni-freiburg.de/papers/BiereFallerFazekasFleuryFroleyksPollitt-SAT-Competition-2024-solvers.pdf)
-2. P. Veličković et al., “The CLRS Algorithmic Reasoning Benchmark,” ICML 2022. [PMLR](https://proceedings.mlr.press/v162/velickovic22a.html)
-
-**Questions.** (1) State Cook–Levin and the SAT-2024 medal result as two *non-contradictory* sentences. (2) If a GNN solves 16-node CLRS BFS at 99%, what claim is still forbidden?
-
-### Deep-Dive Explanation (Read Slowly): One Concrete Clause-Learning Step in CDCL
-
-Consider $$C_1 = (\neg x_1 \lor x_2)$$, $$C_2 = (\neg x_1 \lor \neg x_2 \lor x_3)$$, and $$C_3 = (\neg x_1 \lor \neg x_3)$$:
-1. The solver branches on $$x_1 = \text{True}$$.
-2. Unit propagation forces $$x_2 = \text{True}$$ (from $$C_1$$), then $$x_3 = \text{True}$$ (from $$C_2$$), which falsifies $$C_3$$ (**conflict!**).
-3. Conflict analysis deduces the learned unit clause $$C_{\text{learned}} = (\neg x_1)$$ and adds it permanently to the clause database—pruning the entire $$x_1 = \text{True}$$ half of the search tree once and for all.
-
-## Tiếng Việt
+![Độ phức tạp NP-Khó và Sức mạnh Bộ giải Thực tế (SAT/MIP)](/discrete-mathematics-for-computer-science-iuh/img/course/complexity_modern_solvers.svg)
 
 Một nghịch lý thú vị của khoa học máy tính hiện đại: `SAT` là bài toán NP-complete kinh điển khó nhất trong lớp $$NP$$, nhưng các bộ giải **CDCL SAT solver** ngày nay lại giải gọn gàng các công thức có hàng triệu biến trong kiểm chứng chip Intel/AMD, chứng minh định lý toán học (như bài toán bộ ba Pythagore Boolean) và giải bài toán lập lịch công nghiệp. Trong khi đó, các mạng nơ-ron học giải bài toán NP-hard (như TSP hay SAT) thường gặp rào cản khái quát ngoài phân phối (OOD) khi kích thước đồ thị tăng lên.
 

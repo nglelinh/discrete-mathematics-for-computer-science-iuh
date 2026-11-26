@@ -157,6 +157,10 @@ Video dài khoảng 3 phút 22 giây: minh họa Diffie–Hellman qua hình ản
 
 ## Hệ mật RSA
 
+![Mô hình mã hóa khóa công khai](/discrete-mathematics-for-computer-science-iuh/img/course/Public_key_encryption_keys.svg)
+
+![Quy trình sinh khóa RSA](/discrete-mathematics-for-computer-science-iuh/img/course/rsa_key_generation.svg)
+
 **Bài toán trao đổi khóa.** Mã hóa đối xứng đòi hỏi hai bên phải chia sẻ trước cùng một khóa bí mật $$K$$, điều rất khó thực hiện qua kênh truyền có thể bị nghe lén. Mã hóa khóa công khai giải quyết vấn đề này bằng cách cho phép công bố rộng rãi $$K_{\mathrm{pub}}$$ và chỉ giữ bí mật $$K_{\mathrm{priv}}$$.
 
 <div class="textbook-definition" markdown="1">

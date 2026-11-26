@@ -6,51 +6,17 @@ date: 2021-01-01
 order: 13
 required: false
 lesson_type: optional
-lang: en
-excerpt: "Optional bilingual note. A short 2022–2026 pointer pack: Kissat, binary fuse filters, GraphCast — tying this applications chapter to recent deployed discrete structure. Does not replace existing case studies."
+lang: vi
+excerpt: "Bài ghi chú ứng dụng hiện đại (tiếng Việt) kết nối lý thuyết Toán rời rạc trong chương với các hệ thống tính toán và AI thực tế."
 ---
 
 <div class="note-box" markdown="1">
 
-**Optional / Tùy chọn.** Bilingual application note (English, then Vietnamese). It does **not** rewrite the binary-data, testing, or login case studies.
-
-Ghi chú ứng dụng song ngữ (tiếng Anh trước, tiếng Việt sau). Nội dung này chỉ bổ sung tài liệu tham chiếu gần đây, **không** thay thế các bài học về dữ liệu nhị phân, kiểm thử hay đăng nhập ở trên.
+**Tùy chọn.** Bài ghi chú ứng dụng mở rộng (tiếng Việt). **Không** thay thế các bài học nền tảng trong chương.
 
 </div>
 
-## English
-
-Chapter 9 already connects discrete math to production (endianness, pools, pairwise tests, collisions). This optional note only adds **three dated artifacts** from 2022–2024 that a systems student can open next.
-
-| Year | Artifact | Discrete object | Why it belongs here |
-|:---:|:---|:---|:---|
-| 2022 | Binary fuse filters (Graf & Lemire, JEA) | Approximate set | Same collision budget as birthday / hash notes |
-| 2023 | GraphCast (Lam et al., *Science*) | Mesh graph + GNN | Graphs and message passing at weather scale |
-| 2024 | Kissat at SAT Competition | CNF / CDCL | Logic and combinatorial explosion, now with medals |
-
-- Graf & Lemire, [DOI 10.1145/3510449](https://doi.org/10.1145/3510449) — filters within ~13% of the storage lower bound.
-- Lam et al., “Learning skillful medium-range global weather forecasting,” *Science* (2023), [DOI 10.1126/science.adi2336](https://doi.org/10.1126/science.adi2336) — 10-day global forecast, $$0.25^\circ$$, under one minute, better than the operational deterministic baseline on 90% of 1380 targets.
-- SAT Competition 2024 medals: [Freiburg page](https://cca.informatik.uni-freiburg.de/sat24medals/).
-
-Read this as a **landing index**, not a new theory chapter. Each row points at a chapter you already have (4–8, 12–13, 1).
-
-**Questions.** (1) Which Chapter 9 case study shares its counting model with SAT’s $$2^n$$? (2) Why is GraphCast’s mesh a *graph* in the sense of Chapter 12, not a continuous PDE solver?
-
-### Background Knowledge Map: Where Do Deployed Discrete Structures Live in 2022–2026 Systems?
-
-- **Approximate Membership & Information Theory (Binary Fuse Filters):** Instead of storing full keys, modern static filters solve linear systems over finite fields (XOR/peeling hypergraphs) to stay within ~8%–13% of the information-theoretic lower bound $$\log_2(1/\varepsilon)$$ bits per key.
-- **Discrete Geometric Graphs & Message Passing (GraphCast):** Discretizing Earth's atmosphere onto an icosahedral multi-mesh turns global weather prediction into a fixed number of graph neighborhood aggregations — bypassing tiny explicit PDE time-step constraints.
-- **Propositional Logic & Conflict-Driven Search (Kissat / CDCL):** Modern SAT solvers routinely decide Boolean formulas with hundreds of thousands of variables by learning conflict clauses that prune exponential $$2^n$$ search trees.
-
-### Deep-Dive Explanation: A Hand-Verifiable Bit-Budget Calculation (Read Slowly)
-
-1. **Step 1 — Compute the information-theoretic floor:** Suppose you need a static filter for $$n = 1\,000\,000$$ keys with false-positive rate $$\varepsilon = 2^{-8} \approx 0.39\%$$. Information theory demands at least $$\log_2(1/\varepsilon) = 8$$ bits per key, or $$1.00\text{ MB}$$ total.
-2. **Step 2 — Compare Bloom vs. Binary Fuse Filter:** A classic Bloom filter requires $$\approx 1.44 \log_2(1/\varepsilon) = 1.44 \times 8 = 11.52$$ bits/key ($$1.44\text{ MB}$$, a 44% overhead). A 3-wise binary fuse filter uses roughly $$1.13 \times 8 = 9.04$$ bits/key ($$1.13\text{ MB}$$), saving over **21%** of RAM while answering queries with fewer cache misses.
-3. **Step 3 — See the common thread:** Whether choosing 9.04 bits/key in a filter, pruning clauses in Kissat, or aggregating neighbors on GraphCast's mesh, production systems win by choosing the tightest discrete model for their hardware budget.
-
-$$\text{Bloom: } 1.44\log_2(1/\varepsilon) \;\xrightarrow{\text{Binary Fuse (2022)}}\; \approx 1.08\text{–}1.13\log_2(1/\varepsilon)\text{ bits/key.}$$
-
-## Tiếng Việt
+![Toán rời rạc trong Hạ tầng Hệ thống Học máy](/discrete-mathematics-for-computer-science-iuh/img/course/discrete_ml_systems.svg)
 
 Chương 9 đã kết nối toán rời rạc với các hệ thống vận hành thực tế (endianness, connection pool, kiểm thử pairwise, va chạm băm). Ghi chú ngắn này bổ sung **ba công trình tiêu biểu** giai đoạn 2022–2024 để người học có thể tham khảo mở rộng:
 

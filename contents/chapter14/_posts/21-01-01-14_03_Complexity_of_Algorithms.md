@@ -104,6 +104,8 @@ $$
 
 ## Phân tích vòng lặp
 
+![Minh họa sắp xếp nổi bọt O(n²)](/discrete-mathematics-for-computer-science-iuh/img/course/Bubble_sort_animation.gif)
+
 - Một vòng lặp chạy từ $$1$$ đến $$n$$ với thân mất $$O(1)$$ cho $$T(n) = \Theta(n)$$.
 - Hai vòng lặp lồng nhau độc lập $$i, j = 1 \ldots n$$ cho $$T(n) = \Theta(n^2)$$.
 - Vòng lặp trong phụ thuộc biến ngoài $$i$$ (chạy từ $$1$$ đến $$i$$) thực hiện $$\sum_{i=1}^{n} i = \frac{n(n+1)}{2} = \Theta(n^2)$$ lần.

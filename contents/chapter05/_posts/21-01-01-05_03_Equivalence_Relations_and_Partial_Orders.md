@@ -290,6 +290,18 @@ Poset này không có phần tử nhỏ nhất và cũng không có phần tử 
 
 **Sự tồn tại trên poset hữu hạn.** Trong mọi poset **hữu hạn** khác rỗng, luôn tồn tại ít nhất một phần tử tối tiểu và ít nhất một phần tử tối đại. Thật vậy, xuất phát từ một phần tử $$a_0$$ bất kỳ: nếu $$a_0$$ chưa tối tiểu thì tồn tại $$a_1 \prec a_0$$; quá trình này không thể kéo dài vô hạn trong tập hữu hạn nên phải dừng tại một phần tử tối tiểu. Lập luận tương tự theo chiều tăng cho phần tử tối đại.
 
+## Dàn (Lattice), Dàn $$2^E$$ và Dàn $$U_n$$
+
+Một tập hợp có thứ tự bộ phận $$(L, \preceq)$$ được gọi là một **Dàn (Lattice)** nếu mọi cặp phần tử $$a, b \in L$$ đều tồn tại **cận trên đúng** (tổng, ký hiệu $$a \vee b = \sup\{a, b\}$$) và **cận dưới đúng** (tích, ký hiệu $$a \wedge b = \inf\{a, b\}$$). Hai mô hình dàn kinh điển trong giáo trình Toán rời rạc là cầu nối trực tiếp sang Đại số Boole ở Chương 13:
+
+1. **Dàn tập lũy thừa $$(2^E, \subseteq)$$:** Với mọi tập hữu hạn $$E$$, hai tập con $$A, B \subseteq E$$ có $$A \vee B = A \cup B$$ và $$A \wedge B = A \cap B$$. Phần tử nhỏ nhất là $$\emptyset$$, lớn nhất là $$E$$, và các **nguyên tử** (phần tử ngay trên $$\emptyset$$) chính là các đơn tập $$\{x\}$$.
+2. **Dàn ước số $$(U_n, \mid)$$:** Xét tập $$U_n$$ gồm các ước nguyên dương của $$n$$ với quan hệ chia hết $$a \mid b$$. Khi đó:
+   $$a \vee b = \operatorname{lcm}(a, b), \qquad a \wedge b = \operatorname{gcd}(a, b).$$
+
+**Ví dụ cầm tay — So sánh $$U_{30}$$ và $$U_{12}$$:**
+- Với $$n = 30 = 2 \cdot 3 \cdot 5$$ (tích các số nguyên tố phân biệt), $$U_{30} = \{1, 2, 3, 5, 6, 10, 15, 30\}$$. Mọi phần tử $$a \in U_{30}$$ đều có phần bù duy nhất $$\bar{a} = 30 / a$$ thỏa $$\gcd(a, \bar{a}) = 1$$ và $$\operatorname{lcm}(a, \bar{a}) = 30$$. Do đó $$(U_{30}, \mid)$$ là một **Đại số Boole** đẳng cấu với $$2^{\{2, 3, 5\}}$$.
+- Ngược lại, với $$n = 12 = 2^2 \cdot 3$$ (có thừa số chính phương $$2^2$$), $$U_{12} = \{1, 2, 3, 4, 6, 12\}$$ vẫn là một dàn, nhưng phần tử $$a = 2$$ **không có phần bù**: không tồn tại $$x \in U_{12}$$ nào thỏa đồng thời $$\gcd(2, x) = 1$$ và $$\operatorname{lcm}(2, x) = 12$$. Tổng quát, $$(U_n, \mid)$$ là Đại số Boole khi và chỉ khi $$n$$ không chia hết cho bình phương của bất kỳ số nguyên tố nào (*square-free*).
+
 ## Định lý: Quan hệ tương đương ⇔ Phân hoạch
 
 <div class="textbook-theorem" markdown="1">

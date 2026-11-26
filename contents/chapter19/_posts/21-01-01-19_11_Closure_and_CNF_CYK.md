@@ -21,6 +21,8 @@ Cho một văn phạm phi ngữ cảnh $$G$$ và một chuỗi $$w$$ dài $$n$$ 
 
 ## Kiến thức cần nhớ: Ba trụ cột của Tính đóng, CNF và CYK
 
+![Dạng chuẩn Chomsky (CNF) & Bảng Quy hoạch động CYK](/discrete-mathematics-for-computer-science-iuh/img/course/cnf_cyk_dp_table.svg)
+
 1. **Tính đóng bất đối xứng của CFL**:
    CFL đóng dưới hợp, nối và bao đóng Kleene (nhưng **không đóng** dưới giao và phần bù!). Bù lại, CFL đóng dưới **giao với ngôn ngữ chính quy** ($$L \cap R$$ vẫn là CFL) — công cụ cực mạnh để chứng minh một ngôn ngữ không phải CFL mà không cần Bổ đề Bơm dài dòng.
 2. **Dạng chuẩn Chomsky (CNF)**:

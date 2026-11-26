@@ -206,7 +206,7 @@ $$
 
 Cách làm thực hành luôn có hệ thống: duyệt cột $$F$$, lấy tất cả các hàng có giá trị **1**, viết minterm cho từng hàng rồi nối chúng bằng phép OR mà không cần đoán công thức.
 
-![Half adder — SOP](/discrete-mathematics-for-computer-science-iuh/img/course/Half_Adder.svg)
+![Half adder — SOP](/discrete-mathematics-for-computer-science-iuh/img/course/half_adder.svg)
 
 <p class="textbook-figure-caption" data-figure="13.9">Bit tổng của mạch cộng nửa (half adder) là phép XOR: gồm hai minterm $$A'B + AB'$$ ở dạng SOP chuẩn.</p>
 
@@ -303,6 +303,8 @@ Tập $$\{\text{AND}, \text{OR}, \text{NOT}\}$$ đủ để biểu diễn mọi 
 <p class="textbook-figure-caption" data-figure="13.10">Phép AND tương ứng với phép giao hai tập hợp, còn phép OR tương ứng với phép hợp.</p>
 
 ## Từ SOP chuẩn đến công thức đa thức tối tiểu
+
+![Mạch tổng tích hai mức Two-level SOP](/discrete-mathematics-for-computer-science-iuh/img/course/Two_level_SOP.svg)
 
 Dạng SOP **chuẩn** luôn chính xác nhưng thường khá **dài**. Các bài tiếp theo hướng tới **công thức đa thức tối tiểu**: một biểu thức SOP ngắn gọn hơn (ít hạng tử và ít litera hơn) nhưng có **cùng bảng chân trị** với hàm ban đầu.
 
