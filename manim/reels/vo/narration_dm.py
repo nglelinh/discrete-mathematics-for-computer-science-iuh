@@ -183,3 +183,15 @@ REELS['karnaugh'] = ('graycode.py', 'GrayCode', 'karnaugh-maps-gray-code.mp4', [
     (160.63, 'Ô don\'t care, ký hiệu X. F bằng một tại m không, một, ba; không quan tâm tại m năm, bảy. Coi X là một thì được x phủ định y phủ định cộng z, nhóm to hơn. X chỉ dùng khi làm nhóm to hơn, không bắt buộc phải phủ.'),
     (180.78, 'Quy tắc khoanh nhóm: nhóm to nhất có thể, kích thước lũy thừa của hai. Đọc nhóm: biến đổi giá trị thì bỏ, biến luôn một giữ nguyên, biến luôn không lấy phủ định.'),
 ])
+
+
+REELS['incl-excl'] = ('incl_excl.py', 'InclExcl', 'inclusion-exclusion.mp4', [
+    (0.4, 'Nguyên lý bù trừ: cộng các tập, trừ phần đếm trùng, rồi cộng lại phần trừ quá tay.'),
+    (6.75, 'Lớp năm mươi sinh viên: ba mươi học Anh, hai mươi học Pháp, mười học cả hai. Cộng ba mươi với hai mươi là sai, vì mười bạn ở phần giao bị đếm hai lần. Đúng là ba mươi cộng hai mươi trừ mười bằng bốn mươi, còn mười bạn không học môn nào.'),
+    (28.03, 'Ba tập thì mỗi vùng bị đếm mấy lần? Bước một: cộng A, B, C. Phần giao đôi bị đếm hai lần, phần giữa ba lần. Bước hai: trừ các giao đôi A B, A C, B C. Phần giữa bị trừ ba lần, giờ thành không. Bước ba: cộng giao ba tập. Mọi vùng đều được đếm đúng một lần.'),
+    (58.33, 'Từ một đến một trăm, bao nhiêu số chia hết cho hai, ba hoặc năm? Chia hết cho cả hai và ba nghĩa là chia hết cho sáu, vì hai và ba nguyên tố cùng nhau. Giao ba tập là phần nguyên của một trăm chia ba mươi, bằng ba. Tổng: năm mươi cộng ba mươi ba cộng hai mươi trừ mười sáu, trừ mười, trừ sáu, cộng ba, bằng bảy mươi bốn.'),
+    (84.63, 'Kiểm tra trên lưới từ một đến một trăm: bảy mươi bốn ô được tô, hai mươi sáu ô còn trống. Dạng bù: một trăm trừ bảy mươi bốn bằng hai mươi sáu số không chia hết cho số nào. Mỗi ba mươi số liên tiếp có đúng tám số như vậy.'),
+    (104.68, 'Bài tập: từ một đến một nghìn, bao nhiêu số không chia hết cho ba, năm và bảy? Đếm phần bù: số chia hết cho ít nhất một trong ba số, là sáu trăm bảy mươi lăm trừ một trăm bốn mươi mốt cộng chín, bằng năm trăm bốn mươi ba. Vậy không chia hết: một nghìn trừ năm trăm bốn mươi ba bằng bốn trăm năm mươi bảy.'),
+    (134.98, 'Với n tập hợp, phần tử thuộc đúng m tập được đếm C m một trừ C m hai cộng C m ba và cứ thế, đúng một lần. N tập cho hai mũ n trừ một số hạng, bốn tập đã là mười lăm số hạng.'),
+    (153.88, 'Ứng dụng: không lá thư nào đúng chỗ. Ba lá thư bỏ ngẫu nhiên vào ba phong bì, có bao nhiêu cách để không lá nào đúng? Bù trừ cho sáu trừ sáu cộng ba trừ một bằng hai. Đó là hai cách, B C A và C A B. Với bốn lá thư thì có chín cách. Bù trừ còn dùng để đếm số không chia hết, mật khẩu thiếu loại ký tự, số toàn ánh giữa hai tập.'),
+])
