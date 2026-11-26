@@ -141,3 +141,16 @@ REELS['fibonacci'] = ('fibonacci.py', 'Fibonacci', 'fibonacci-binet.mp4', [
     (113.73, 'Khi phương trình có nghiệm kép. Với a n bằng bốn a n trừ một trừ bốn a n trừ hai, ta có r bằng hai kép. Thử A cộng B nhân hai mũ n chỉ còn một hằng số, sai. Dạng đúng là A cộng B n, nhân hai mũ n. Từ a không bằng một và a một bằng sáu, được A bằng một, B bằng hai: a n bằng một cộng hai n, nhân hai mũ n.'),
     (144.68, 'Ba bước giải truy hồi bậc hai: viết phương trình đặc trưng; nghiệm khác nhau thì A r một mũ n cộng B r hai mũ n, nghiệm kép thì A cộng B n nhân r mũ n; rồi dùng a không, a một để tìm A, B.'),
 ])
+
+
+REELS['divide-conquer'] = ('divide_conquer.py', 'DivideConquer', 'divide-and-conquer-master.mp4', [
+    (0.4, 'Hệ thức truy hồi chia để trị: T n bằng a nhân T n chia b, cộng f n.'),
+    (8.18, 'Cây đệ quy cho T n bằng hai T n chia hai cộng n, tức merge sort. Với n bằng mười sáu, mỗi tầng tốn đúng n. Có bốn tầng chia và một tầng lá. Vậy T mười sáu bằng mười sáu nhân bốn cộng mười sáu bằng tám mươi, nên T n là Thê ta của n log n.'),
+    (33.15, 'Cách khác là thế ngược. Thay T n chia hai bằng hai T n chia bốn cộng n chia hai, rồi lặp lại. Dừng khi n chia hai mũ j bằng một, tức j bằng log hai của n, ta được n log n cộng n. Cùng kết quả với cây đệ quy: mười sáu nhân bốn cộng mười sáu bằng tám mươi.'),
+    (59.12, 'Tìm kiếm nhị phân, T n bằng T n chia hai cộng một: mỗi bước bỏ một nửa. Mỗi tầng một nút, nên T n là Thê ta của log n. Một tỉ phần tử chỉ cần khoảng ba mươi phép so sánh.'),
+    (76.38, 'Với T n bằng bốn T n chia hai cộng n, số nút tăng nhanh hơn chi phí giảm. Chi phí mỗi tầng nhân đôi, tổng bằng hai n bình phương trừ n, tầng lá chiếm phần lớn, nên T n là Thê ta của n bình phương.'),
+    (93.63, 'Với T n bằng hai T n chia hai cộng n bình phương, chi phí gộp lớn nên gốc nặng nhất. Tầng i tốn n bình phương chia hai mũ i, giảm một nửa mỗi tầng, tổng nhỏ hơn hai n bình phương. Cũng là Thê ta của n bình phương, nhưng ở đây gốc thắng.'),
+    (112.58, 'Định lý thợ. Đặt k bằng log a chia log b, số lá là n mũ k. Trường hợp một: f nhỏ hơn n mũ k, lá thắng, T n là Thê ta của n mũ k. Trường hợp hai: f cùng cỡ n mũ k, các tầng ngang nhau, thêm thừa số log n. Trường hợp ba: f lớn hơn, gốc thắng, T n là Thê ta của f n.'),
+    (136.35, 'Áp dụng định lý thợ: merge sort và tìm kiếm nhị phân thuộc trường hợp hai. Karatsuba ra n mũ một phẩy năm tám lăm, Strassen ra n mũ hai phẩy tám một. Với n log n làm chi phí gộp thì không áp dụng được, ta vẽ cây và được n log bình phương n.'),
+    (158.48, 'Tóm tắt: vẽ cây đệ quy, cộng chi phí theo từng tầng. Tầng bằng nhau thì thêm log n, tăng dần thì lá thắng, giảm dần thì gốc thắng.'),
+])
