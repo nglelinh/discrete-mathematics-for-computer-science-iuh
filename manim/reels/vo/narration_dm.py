@@ -218,3 +218,15 @@ REELS['stars-bars'] = ('stars_bars.py', 'StarsBars', 'stars-and-bars.mp4', [
     (137.07, 'Luyện tập. Một: mua sáu viên kẹo từ bốn loại, có trùng loại, C chín chọn ba, tám mươi bốn cách. Hai: chia mười viên bi giống nhau cho bốn em, mỗi em ít nhất hai viên. Phát trước tám viên, còn hai viên, C năm chọn ba, mười cách.'),
     (168.47, 'Tóm lại: đổi bài toán chia thành sắp sao và vạch.'),
 ])
+
+
+REELS['pigeon-adv'] = ('pigeon_adv.py', 'PigeonAdv', 'pigeonhole-advanced.mp4', [
+    (0.4, 'Nguyên lý chuồng bồ câu nâng cao: khó nhất là chọn chuồng.'),
+    (7.0, 'Dạng tổng quát: N con bồ câu vào n chuồng thì có chuồng chứa ít nhất trần của N chia n con. Chín con, bốn chuồng: có chuồng ba con. Bốn nghìn lẻ một khóa thì chắc chắn có bucket năm khóa.'),
+    (26.15, 'Năm điểm trong hình vuông cạnh một. Chia thành bốn ô vuông cạnh một phần hai, thì có ô chứa hai điểm. Hai điểm đó cách nhau không quá căn hai trên hai, tức khoảng bảy phần mười. Không thể tốt hơn.'),
+    (53.1, 'Chín điểm trong hình vuông, không ba điểm thẳng hàng. Có ô chứa ba điểm, tam giác có diện tích không quá một phần tám.'),
+    (65.95, 'Chọn sáu số từ một đến mười. Lập năm chuồng là các cặp có tổng mười một. Sáu số, năm chuồng, nên có hai số cùng chuồng, tổng mười một. Với năm số thì chưa chắc.'),
+    (85.8, 'Bảy số nguyên bất kỳ luôn có đoạn liên tiếp có tổng chia hết cho bảy. Xét bảy tổng riêng đầu tiên. Nếu có tổng dư không thì xong. Nếu không, chỉ có sáu số dư khác không, nên hai tổng cùng số dư. Hiệu của chúng là đoạn cần tìm.'),
+    (118.35, 'Erdős Szekeres: dãy mười số khác nhau luôn có dãy con tăng hoặc giảm dài bốn. Gán mỗi số một nhãn: độ dài dãy tăng và giảm dài nhất kết thúc tại đó. Mười nhãn đôi một khác nhau. Nếu mọi độ dài không quá ba thì chỉ có chín nhãn, vô lý.'),
+    (156.7, 'Mẹo: bồ câu nhiều hơn chuồng thì va chạm chắc chắn xảy ra.'),
+])
